@@ -1,0 +1,7 @@
+Voici les fichiers utilisés :
+
+linker.ld : Permet de préciser le mapping mémoire.
+boot.S : Comme son nom l'indique, c'est le code assembleur lancé au boot et qui va lancer le main.
+kernel.c : Le code exemple.
+ioports.h : Ajoute les fonctions inb et outb.
+multiboot.h : Header pour récupérer les infos passées par grub.
