@@ -1,4 +1,5 @@
 #include <types.h>
+#include <idt.h>
 
 /* Code inspiré de SOS. 
  * Permet d'initialiser la table des descripteurs d'interruption (et son registre associé)
@@ -31,7 +32,7 @@ struct x86_idt_register
 } __attribute__((packed, aligned (8)));
 
 /* IDT */
-static struct x86_idt_entry idt[IDT_ENTRIES_NUM];
+static struct x86_idt_entry idt[IDT_ENTRIES_NUM]; /* On devrait peut être aligner à 8 octets ? */
 
 void idt_setup()
 {
@@ -50,7 +51,7 @@ void idt_setup()
 		idte->zero      = 0;
 
 		/* Aucun handler : */
-		/*idt_set_handler(i, (vaddr_t)NULL, 0); TODO !*/
+		idt_disable_handler(i);
 	}
 
 	/* On configure le registre idt en lui donnant l'adresse de la table : */
@@ -61,4 +62,35 @@ void idt_setup()
 
 	/* Commit the IDT into the CPU */
 	asm volatile ("lidt %0\n"::"m"(idtr):"memory");
+}
+
+void idt_disable_handler(uint8_t index)
+{
+	idt_set_handler(index, (paddr_t)NULL, 0);
+}
+
+int idt_set_handler(uint8_t index, paddr_t handler_address, uint8_t priority)
+{
+	struct x86_idt_entry *idt_entry;
+
+	if (priority > 3) {
+		return -2;
+	}
+
+	idt_entry = &idt[index];
+
+	if (handler_address == (paddr_t)NULL) {
+		idt_entry->offset_low = 0;
+		idt_entry->offset_high = 0;
+		idt_entry->dpl = 0;
+		idt_entry->present = 0;
+	} else {
+		/* Offset correspond à l'adresse du handler. Sauf qu'on découpe la valeur en 2 champs */
+		idt_entry->offset_low = handler_address & 0xffff; /* 2 octets de poids faible */
+		idt_entry->offset_high = (handler_address >> 16) ; /* 2 octets de poids fort */
+		idt_entry->dpl = priority;
+		idt_entry->present = 1;
+	}
+
+	return 0;
 }
