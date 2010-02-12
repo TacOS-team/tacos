@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+void sleep()
+{
+	int i,j,k;
+	float paf;
+	
+	for(i=0 ; i<999999999 ; i++)
+	{
+		for(k=0 ; j<99999999 ; j++)
+		{
+			for(k=0 ; k<99999999 ; k++)
+			{
+				paf *= (float)i*(float)j*(float)k;
+			}
+		}
+	}
+}
+
+int dummy_process_main(int argc, char* argv[])
+{	
+	while(1)
+	{
+		if(argc>1)
+		{
+			printf("Process %d\n",argv[1]);
+			sleep();
+		}
+		else
+		{
+			printf("Unknown process\n");
+			sleep();
+		}
+	}
+}

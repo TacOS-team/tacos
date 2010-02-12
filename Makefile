@@ -27,6 +27,12 @@ gdt.o: gdt.c gdt.h types.h
 mempage.o: mempage.c mempage.h types.h
 	$(CC) -o mempage.o -c mempage.c $(CFLAGS)
 
+scheduler.o: scheduler.c stdio.h types.h
+	$(CC) -o scheduler.o -c scheduler.c $(CFLAGS)
+
+dummy_process.o: dummy_process.c stdio.h types.h
+	$(CC) -o dummy_process.o -c dummy_process.c $(CFLAGS)
+
 img:
 	echo "drive v: file=\"`pwd`/core.img\" 1.44M filter" > mtoolsrc
 	gzip -dc < grub.img.gz > core.img
