@@ -25,7 +25,7 @@
  * Intel-specific I/O space access routines.
  */
 
-/* This macro allows to write to an I/O port */
+// write one byte to a port
 #define outb(value, port)                                       \
   __asm__ volatile (                                            \
         "outb %b0,%w1"                                          \
@@ -37,7 +37,45 @@
 ({                                                              \
   unsigned char _v;                                             \
   __asm__ volatile (                                            \
-        "inb %w1,%0"                                            \
+        "inb %1,%0"                                            \
+        :"=a" (_v)                                              \
+        :"Nd" (port)                                            \
+        );                                                      \
+  _v;                                                           \
+})
+
+// write one word to a port
+#define outw(value, port)                                       \
+  __asm__ volatile (                                            \
+        "outb %w0,%w1"                                          \
+        ::"a" (value),"Nd" (port)                               \
+        )                                                       \
+
+// read one word from port
+#define inw(port)                                               \
+({                                                              \
+  unsigned short int _v;                                             \
+  __asm__ volatile (                                            \
+        "inw %w1,%0"                                            \
+        :"=a" (_v)                                              \
+        :"Nd" (port)                                            \
+        );                                                      \
+  _v;                                                           \
+})
+
+// write one double-word to a port
+#define outl(value, port)                                       \
+  __asm__ volatile (                                            \
+        "outd %d0,%w1"                                          \
+        ::"a" (value),"Nd" (port)                               \
+        )                                                       \
+
+// read one double-word from port
+#define inl(port)                                               \
+({                                                              \
+  unsigned long int _v;                                             \
+  __asm__ volatile (                                            \
+        "ind %d1,%0"                                            \
         :"=a" (_v)                                              \
         :"Nd" (port)                                            \
         );                                                      \
