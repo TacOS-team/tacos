@@ -87,3 +87,4 @@ void i8259_setup(void)
 	 */
 	outb(ALL_IRQS & ~IRQ2, MASTER_PIC_OCW1);
 }
+

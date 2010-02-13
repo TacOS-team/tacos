@@ -77,6 +77,7 @@ int idt_set_handler(uint8_t index, paddr_t handler_address, uint8_t priority)
 		return -2;
 	}
 
+
 	idt_entry = &idt[index];
 
 	if (handler_address == (paddr_t)NULL) {

@@ -3,8 +3,8 @@ CFLAGS=-W -Wall -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I
 
 all: kernel.bin
 
-kernel.bin: kernel.o boot.o stdio.o i8259.o idt.o mempage.o gdt.o linker.ld
-	ld -T linker.ld -o kernel.bin boot.o kernel.o stdio.o i8259.o idt.o mempage.o gdt.o
+kernel.bin: kernel.o boot.o stdio.o i8259.o idt.o mempage.o gdt.o exception.o exception_wrappers.o linker.ld
+	ld -T linker.ld -o kernel.bin boot.o kernel.o stdio.o i8259.o idt.o mempage.o exception_wrappers.o exception.o gdt.o
 
 kernel.o: kernel.c multiboot.h types.h mempage.h stdio.h gdt.h idt.h
 	$(CC) -o kernel.o -c kernel.c $(CFLAGS)
@@ -26,6 +26,12 @@ gdt.o: gdt.c gdt.h types.h
 
 mempage.o: mempage.c mempage.h types.h
 	$(CC) -o mempage.o -c mempage.c $(CFLAGS)
+
+exception.o: exception.c exception.h types.h idt.h
+	$(CC) -o exception.o -c exception.c $(CFLAGS)
+
+exception_wrappers.o: exception_wrappers.S exception.h
+	$(CC) -o exception_wrappers.o -c exception_wrappers.S $(CFLAGS) -DASM_SOURCE=1 -fno-stack-protector
 
 scheduler.o: scheduler.c stdio.h types.h
 	$(CC) -o scheduler.o -c scheduler.c $(CFLAGS)

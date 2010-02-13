@@ -4,9 +4,16 @@
 #include <stdio.h>
 #include <mempage.h>
 #include <gdt.h>
+#include <exception.h>
 
 /* Forward declarations. */
 void cmain (unsigned long magic, unsigned long addr);
+
+static void testhandlerexception(int error_id)
+{
+	/* TODO : L'erreur renvoyée devrait être 0 car il n'y a pas de code retour. */
+	printf("Exception : %d\n", error_id);
+}
 
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
@@ -44,11 +51,15 @@ void cmain (unsigned long magic, unsigned long addr) {
 	/* Configuration du i8259 qui s'occupe des interruptions. */
 	i8259_setup();
 
+	exception_set_routine(EXCEPTION_DIVIDE_ERROR, testhandlerexception);
+
 	/* Configuration de la pagination */
 	mempage_setup((mbi->mem_upper << 10) + (1 << 20));
 
-	mempage_print_free_pages();
-	mempage_print_used_pages();
+	//mempage_print_free_pages();
+	//mempage_print_used_pages();
+
+	printf("Div 0 : %d.\n", 3/0);
 
 	for(;;){}
 }
