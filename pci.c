@@ -6,6 +6,23 @@
 #define CONFIG_ADDRESS	0xCF8
 #define CONFIG_DATA	0xCFC
 
+#define PCI_MAX_DEVICES 256
+
+struct pci_device_descriptor
+{
+	uint8_t bus;
+	uint8_t device;
+
+	uint8_t function_nb;
+};
+
+/* Table contenant les descripteurs des périphériques pci identifiés */
+static struct pci_device_descriptor pci_table[PCI_MAX_DEVICES];
+
+/* taille de pci_table */
+static uint16_t pci_table_len = 0;
+
+
 uint32_t pci_read_register(uint8_t bus,
 			   uint8_t device,
 			   uint8_t func,
@@ -24,8 +41,10 @@ uint32_t pci_read_register(uint8_t bus,
               		     (dw_func << 8)	| 
                              (dw_reg & 0xfc)	|
                              ((uint32_t)0x80000000));
+
 	outl(address, CONFIG_ADDRESS);
 	reg_data = inl(CONFIG_DATA);
+
 	return reg_data;
 }
 
@@ -76,46 +95,40 @@ void pci_scan()
 
 	uint32_t tmp_reg;
 	uint16_t tmp_vendor;
-	uint16_t tmp_device;
-	uint8_t tmp_baseclass; 
-	uint8_t tmp_subclass; 
-	uint8_t tmp_progif;
+	uint16_t tmp_device;	
 
-	printf("Scanning pci bus...\n");
+	printf("Scanning pci bus...");
+	
+	/* On scan les 256 bus possibles */
 	for(bus = 0; bus<256; bus++)
 	{
+		/* les 32 périphériques maximum par bus */
 		for(device = 0; device<32; device++)
 		{
 			tmp_reg = pci_read_register((uint16_t)bus, device, 0, 0);
 			tmp_vendor = (uint16_t)(tmp_reg & 0xffff);
 			if(tmp_vendor!=0xffff)
 			{
+				pci_table_len++;
+				/* On ajoute le périphérique trouvé à la table */
+				pci_table[pci_table_len - 1].bus = bus;
+				pci_table[pci_table_len - 1].device = bus;
+				pci_table[pci_table_len - 1].function_nb = 0;
+
+				/* Puis on compte les fonctions proposées par le périphérique (jusqu'a 8 par périph) */
 				for(func = 0; func<8; func++)
 				{
 					tmp_reg = pci_read_register((uint16_t)bus, device, func, 0);
 					tmp_vendor = (uint16_t)(tmp_reg & 0xffff);
 					if(tmp_vendor!=0xffff)
 					{
-						tmp_device = (uint16_t)((tmp_reg >> 16) & 0xffff);
-
-						tmp_reg = pci_read_register((uint16_t)bus, device, func, 8);
-						tmp_baseclass = (uint8_t)((tmp_reg>>24)&0xff);
-						tmp_subclass = (uint8_t)((tmp_reg>>16)&0xff);
-						tmp_progif = (uint8_t)((tmp_reg>>8)&0xff);
-						//pintf("Bus %d Device %d Function %d:\n", bus, device, func);
-						printf("    %s : %s %s\n",pci_get_vendor(tmp_vendor)->VenFull,
-                                                                            pci_get_classcode(tmp_baseclass, 
-                                                                                              tmp_subclass, 
-                                                                                              tmp_progif)->SubDesc,
-									    pci_get_classcode(tmp_baseclass, 
-                                                                                              tmp_subclass, 
-                                                                                              tmp_progif)->BaseDesc);
+						pci_table[pci_table_len - 1].function_nb++;
 					}
 				}
 			}
 		}
 	}
-	printf("Scanning done.\n");
+	pci_table_len>0?printf("%d device(s) found.\n",pci_table_len):printf("no device found.\n");;
 }
 
 
