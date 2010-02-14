@@ -102,8 +102,8 @@ void pci_scan()
 						tmp_baseclass = (uint8_t)((tmp_reg>>24)&0xff);
 						tmp_subclass = (uint8_t)((tmp_reg>>16)&0xff);
 						tmp_progif = (uint8_t)((tmp_reg>>8)&0xff);
-						printf("Bus %d Device %d Function %d:\n", bus, device, func);
-						printf("    %s : %s %s\n\n",pci_get_vendor(tmp_vendor)->VenFull,
+						//pintf("Bus %d Device %d Function %d:\n", bus, device, func);
+						printf("    %s : %s %s\n",pci_get_vendor(tmp_vendor)->VenFull,
                                                                             pci_get_classcode(tmp_baseclass, 
                                                                                               tmp_subclass, 
                                                                                               tmp_progif)->SubDesc,

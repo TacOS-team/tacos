@@ -33,7 +33,13 @@ void cmain (unsigned long magic, unsigned long addr) {
 	mbi = (multiboot_info_t *) addr;
   
 	/* The Hello World */
-	printf("\nHello World !\n\n");
+	//printf("\nHello World !\n\n");
+	/* Mieux! */
+	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
+	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");
+	printf("    _|    _|    _|  _|        _|    _|    _|_|  \n");
+	printf("    _|    _|    _|  _|        _|    _|        _|\n");
+	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|  \n\n\n");
 
 	printf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
 
