@@ -1559,7 +1559,7 @@ PCI_VENTABLE	PciVenTable [] =
 
 // Use this value for loop control during searching:
 #define	PCI_VENTABLE_LEN	(sizeof(PciVenTable)/sizeof(PCI_VENTABLE))
-
+/*
 typedef struct _PCI_DEVTABLE
 {
 	unsigned short	VenId ;
@@ -7801,7 +7801,7 @@ PCI_DEVTABLE	PciDevTable [] =
 	{ 0x11D5, 0x0116, "10118", "DR11-W emulator" } ,
 	{ 0x11D5, 0x0117, "10117", "Versatec Parallel Interface (VPI) + Centronics" } ,
 	{ 0x11D5, 0x0118, "10118", "DR11-W emulator" } ,
-} ;
+} ;*/
 
 
 // Use this value for loop control during searching:

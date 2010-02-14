@@ -5,6 +5,7 @@
 #include <mempage.h>
 #include <gdt.h>
 #include <exception.h>
+#include <pci.h>
 
 /* Forward declarations. */
 void cmain (unsigned long magic, unsigned long addr);
@@ -59,7 +60,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	//mempage_print_free_pages();
 	//mempage_print_used_pages();
 
-	printf("Div 0 : %d.\n", 3/0);
-
+	//printf("Div 0 : %d.\n", 3/0);
+	pci_scan();
 	for(;;){}
 }

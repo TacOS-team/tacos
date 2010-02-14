@@ -3,8 +3,8 @@ CFLAGS=-W -Wall -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I
 
 all: kernel.bin
 
-kernel.bin: kernel.o boot.o stdio.o i8259.o idt.o mempage.o gdt.o exception.o exception_wrappers.o linker.ld
-	ld -T linker.ld -o kernel.bin boot.o kernel.o stdio.o i8259.o idt.o mempage.o exception_wrappers.o exception.o gdt.o
+kernel.bin: kernel.o boot.o stdio.o i8259.o idt.o mempage.o gdt.o exception.o exception_wrappers.o pci.o linker.ld
+	ld -T linker.ld -o kernel.bin boot.o kernel.o stdio.o i8259.o idt.o mempage.o exception_wrappers.o exception.o gdt.o pci.o
 
 kernel.o: kernel.c multiboot.h types.h mempage.h stdio.h gdt.h idt.h
 	$(CC) -o kernel.o -c kernel.c $(CFLAGS)
@@ -38,6 +38,9 @@ scheduler.o: scheduler.c stdio.h types.h
 
 dummy_process.o: dummy_process.c stdio.h types.h
 	$(CC) -o dummy_process.o -c dummy_process.c $(CFLAGS)
+
+pci.o : pci.c
+	$(CC) -o pci.o -c pci.c $(CFLAGS)
 
 img:
 	echo "drive v: file=\"`pwd`/core.img\" 1.44M filter" > mtoolsrc
