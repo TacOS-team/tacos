@@ -23,6 +23,8 @@ static struct pci_device_descriptor pci_table[PCI_MAX_DEVICES];
 /* taille de pci_table */
 static uint16_t pci_table_len = 0;
 
+
+/* Retourne la valeur d'un registre pour une fonction données (ie. bus+device+function) */
 uint32_t pci_read_register(uint8_t bus,
 			   uint8_t device,
 			   uint8_t func,
@@ -95,10 +97,14 @@ void pci_scan()
 
 
 
-PPCI_VENTABLE pci_get_vendor(uint16_t vendor_id)
+PPCI_VENTABLE pci_get_vendor(pci_device_t device, uint8_t function)
 {
 	uint16_t i;
+	uint16_t vendor_id;
 	PPCI_VENTABLE vendor = NULL;
+
+	/* On récupère le vendor_id contenu dans le premier registre */
+	vendor_id = pci_read_register( pci_table[device].bus, pci_table[device].device, function, 0) & 0xffff;
 
 	for(i=0; i<(uint16_t)PCI_VENTABLE_LEN; i++)
 	{
@@ -112,13 +118,23 @@ PPCI_VENTABLE pci_get_vendor(uint16_t vendor_id)
 	return vendor;
 }
 
-PPCI_CLASSCODETABLE pci_get_classcode(uint8_t baseclass, 
-				      uint8_t subclass, 
-				      uint8_t progif)
+PPCI_CLASSCODETABLE pci_get_classcode(pci_device_t device, uint8_t function)
 {
 	uint16_t i;
+	uint8_t baseclass;
+	uint8_t subclass;
+	uint8_t progif;
+	uint32_t tmp_reg;
 	PPCI_CLASSCODETABLE classcode = NULL;
 	
+	/* On récupère le registre 0x08*/
+	tmp_reg = pci_read_register( pci_table[device].bus, pci_table[device].device, function, 0x08);
+
+	/* Et on en extrait les valeurs classcode */
+	baseclass = (uint8_t)(tmp_reg>>24);
+	subclass = (uint8_t)((tmp_reg>>16)&0xff);
+	progif = (uint8_t)((tmp_reg>>8)&0xff);
+
 	for(i=0; i<(uint16_t)PCI_CLASSCODETABLE_LEN; i++)
 	{
 		if(PciClassCodeTable[i].BaseClass == baseclass && 
