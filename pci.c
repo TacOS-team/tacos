@@ -1,4 +1,5 @@
 #include <ioports.h>
+#include <pci.h>
 #include <pci_vendor.h>
 #include <stdio.h>
 #include <types.h>
@@ -21,7 +22,6 @@ static struct pci_device_descriptor pci_table[PCI_MAX_DEVICES];
 
 /* taille de pci_table */
 static uint16_t pci_table_len = 0;
-
 
 uint32_t pci_read_register(uint8_t bus,
 			   uint8_t device,
@@ -46,44 +46,6 @@ uint32_t pci_read_register(uint8_t bus,
 	reg_data = inl(CONFIG_DATA);
 
 	return reg_data;
-}
-
-PPCI_VENTABLE pci_get_vendor(uint16_t vendor_id)
-{
-	uint16_t i;
-	PPCI_VENTABLE vendor = NULL;
-
-	for(i=0; i<(uint16_t)PCI_VENTABLE_LEN; i++)
-	{
-		if(PciVenTable[i].VenId == vendor_id)
-		{
-			vendor = &PciVenTable[i];
-			break;
-		}
-	}
-
-	return vendor;
-}
-
-PPCI_CLASSCODETABLE pci_get_classcode(uint8_t baseclass, 
-				      uint8_t subclass, 
-				      uint8_t progif)
-{
-	uint16_t i;
-	PPCI_CLASSCODETABLE classcode = NULL;
-	
-	for(i=0; i<(uint16_t)PCI_CLASSCODETABLE_LEN; i++)
-	{
-		if(PciClassCodeTable[i].BaseClass == baseclass && 
-		   PciClassCodeTable[i].SubClass == subclass   && 
-                   PciClassCodeTable[i].ProgIf == progif)
-		{
-			classcode = &PciClassCodeTable[i];
-			break;
-		}
-	}
-	
-	return classcode;
 }
 
 void pci_scan()
@@ -129,6 +91,46 @@ void pci_scan()
 		}
 	}
 	pci_table_len>0?printf("%d device(s) found.\n",pci_table_len):printf("no device found.\n");;
+}
+
+
+
+PPCI_VENTABLE pci_get_vendor(uint16_t vendor_id)
+{
+	uint16_t i;
+	PPCI_VENTABLE vendor = NULL;
+
+	for(i=0; i<(uint16_t)PCI_VENTABLE_LEN; i++)
+	{
+		if(PciVenTable[i].VenId == vendor_id)
+		{
+			vendor = &PciVenTable[i];
+			break;
+		}
+	}
+
+	return vendor;
+}
+
+PPCI_CLASSCODETABLE pci_get_classcode(uint8_t baseclass, 
+				      uint8_t subclass, 
+				      uint8_t progif)
+{
+	uint16_t i;
+	PPCI_CLASSCODETABLE classcode = NULL;
+	
+	for(i=0; i<(uint16_t)PCI_CLASSCODETABLE_LEN; i++)
+	{
+		if(PciClassCodeTable[i].BaseClass == baseclass && 
+		   PciClassCodeTable[i].SubClass == subclass   && 
+                   PciClassCodeTable[i].ProgIf == progif)
+		{
+			classcode = &PciClassCodeTable[i];
+			break;
+		}
+	}
+	
+	return classcode;
 }
 
 
