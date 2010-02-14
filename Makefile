@@ -3,8 +3,8 @@ CFLAGS=-W -Wall -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I
 
 all: kernel.bin
 
-kernel.bin: kernel.o boot.o stdio.o i8259.o idt.o mempage.o gdt.o exception.o exception_wrappers.o pci.o linker.ld
-	ld -T linker.ld -o kernel.bin boot.o kernel.o stdio.o i8259.o idt.o mempage.o exception_wrappers.o exception.o gdt.o pci.o
+kernel.bin: kernel.o boot.o stdio.o i8259.o idt.o mempage.o gdt.o exception.o exception_wrappers.o interrupts.o interrupts_wrappers.o pci.o linker.ld
+	ld -T linker.ld -o kernel.bin boot.o kernel.o stdio.o i8259.o idt.o mempage.o exception_wrappers.o exception.o gdt.o interrupts.o interrupts_wrappers.o pci.o
 
 kernel.o: kernel.c multiboot.h types.h mempage.h stdio.h gdt.h idt.h
 	$(CC) -o kernel.o -c kernel.c $(CFLAGS)
@@ -32,6 +32,12 @@ exception.o: exception.c exception.h types.h idt.h
 
 exception_wrappers.o: exception_wrappers.S exception.h
 	$(CC) -o exception_wrappers.o -c exception_wrappers.S $(CFLAGS) -DASM_SOURCE=1 -fno-stack-protector
+
+interrupts.o: interrupts.c interrupts.h types.h idt.h
+	$(CC) -o interrupts.o -c interrupts.c $(CFLAGS)
+
+interrupts_wrappers.o: interrupts_wrappers.S interrupts.h
+	$(CC) -o interrupts_wrappers.o -c interrupts_wrappers.S $(CFLAGS) -DASM_SOURCE=1 -fno-stack-protector
 
 scheduler.o: scheduler.c stdio.h types.h
 	$(CC) -o scheduler.o -c scheduler.c $(CFLAGS)

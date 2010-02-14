@@ -3,6 +3,7 @@
  * @see http://www.etud.insa-toulouse.fr/~projet_tut_OS/w/Interruption
  */
 
+#include <types.h>
 #include "ioports.h"
 
 /* Defines repris du projet coreboot (GPLv2) */
@@ -78,13 +79,46 @@ void i8259_setup(void)
 	 */
 
 	/*
-	 * Sur le Slave on accepte tout.
+	 * Sur le Slave on masque tout.
 	 */
 	outb(ALL_IRQS, SLAVE_PIC_OCW1);
 
 	/*
-	 * Sur le maitre on accepte tout sauf l'IRQ2 car on a cascadé le 2 sur le slave.
+	 * Sur le maitre on masque tout sauf l'IRQ2 car on a cascadé le 2 sur le slave.
 	 */
 	outb(ALL_IRQS & ~IRQ2, MASTER_PIC_OCW1);
 }
+
+/*
+ * Il faut démasquer le bit du port !
+ */
+void i8259_enable_irq_line(uint8_t n)
+{
+	if (n < 8) {
+		/* MASTER */
+		uint8_t old_value = inb(SLAVE_PIC_OCW1);
+		outb(old_value & ~(1 << n), SLAVE_PIC_OCW1);
+	} else {
+		/* SLAVE */
+		uint8_t old_value = inb(SLAVE_PIC_OCW1);
+		outb(old_value & ~(1 << (n-8)), SLAVE_PIC_OCW1);
+	}
+}
+
+/*
+ * Pour desactiver, il faut le masquer
+ */
+void i8259_disable_irq_line(uint8_t n)
+{
+	if (n < 8) {
+		/* MASTER */
+		uint8_t old_value = inb(SLAVE_PIC_OCW1);
+		outb(old_value | (1 << n), SLAVE_PIC_OCW1);
+	} else {
+		/* SLAVE */
+		uint8_t old_value = inb(SLAVE_PIC_OCW1);
+		outb(old_value | (1 << (n-8)), SLAVE_PIC_OCW1);
+	}
+}
+
 

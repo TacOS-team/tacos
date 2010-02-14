@@ -5,6 +5,7 @@
 #include <mempage.h>
 #include <gdt.h>
 #include <exception.h>
+#include <interrupts.h>
 #include <pci.h>
 
 /* Forward declarations. */
@@ -14,6 +15,11 @@ static void testhandlerexception(int error_id)
 {
 	/* TODO : L'erreur renvoyée devrait être 0 car il n'y a pas de code retour. */
 	printf("Exception : %d\n", error_id);
+}
+
+static void tick(int interrupt_id)
+{
+	printf("Tick %d\n", interrupt_id);
 }
 
 void cmain (unsigned long magic, unsigned long addr) {
@@ -59,6 +65,11 @@ void cmain (unsigned long magic, unsigned long addr) {
 	i8259_setup();
 
 	exception_set_routine(EXCEPTION_DIVIDE_ERROR, testhandlerexception);
+	interrupt_set_routine(0, tick);
+	interrupt_set_routine(1, tick);
+	interrupt_set_routine(8, tick);
+
+	asm volatile ("sti\n");
 
 	/* Configuration de la pagination */
 	mempage_setup((mbi->mem_upper << 10) + (1 << 20));
