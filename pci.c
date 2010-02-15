@@ -1,18 +1,14 @@
-#include <ioports.h>
 #include <pci.h>
-#include <pci_vendor.h>
+#include <pci_config.h>
 #include <stdio.h>
 #include <types.h>
-
-#define CONFIG_ADDRESS	0xCF8
-#define CONFIG_DATA	0xCFC
 
 #define PCI_MAX_DEVICES 256
 
 struct pci_device_descriptor
 {
 	uint8_t bus;
-	uint8_t device;
+	uint8_t slot;
 
 	uint8_t function_nb;
 };
@@ -24,42 +20,35 @@ static struct pci_device_descriptor pci_table[PCI_MAX_DEVICES];
 static uint16_t pci_table_len = 0;
 
 
-/* Retourne la valeur d'un registre pour une fonction données (ie. bus+device+function) */
-uint32_t pci_read_register(uint8_t bus,
-			   uint8_t device,
-			   uint8_t func,
-			   uint8_t reg)
+/* Procedures d'accès aux données de pci_device_descriptor */
+/** TODO : sécuriser les acces (vérifier les débordements de tableau par exemple **/
+uint8_t pci_get_device_bus( pci_device_t device )
 {
-	uint32_t reg_data = 0;
-	uint32_t address;
-
-	uint32_t dw_bus = (uint32_t) bus;
-	uint32_t dw_device = (uint32_t) device;
-	uint32_t dw_func = (uint32_t) func;
-	uint32_t dw_reg = (uint32_t) reg; 
-
-	address = (uint32_t)((dw_bus << 16)	| 
-                             (dw_device << 11)	|
-              		     (dw_func << 8)	| 
-                             (dw_reg & 0xfc)	|
-                             ((uint32_t)0x80000000));
-
-	outl(address, CONFIG_ADDRESS);
-	reg_data = inl(CONFIG_DATA);
-
-	return reg_data;
+	return pci_table[device].bus;
 }
 
+uint8_t pci_get_device_slot( pci_device_t device )
+{
+	return pci_table[device].bus;
+}
+
+uint8_t pci_get_device_function_nb( pci_device_t device )
+{
+	return pci_table[device].function_nb;
+}
+
+
+/* Scan le bus pci et ajoute les périphériques trouvés à pci_table */
 void pci_scan()
 {
 	uint16_t bus;
-	uint8_t device;
+	uint8_t slot;
 	uint8_t func;
 	//uint8_t reg;
 
 	uint32_t tmp_reg;
 	uint16_t tmp_vendor;
-	uint16_t tmp_device;	
+	uint16_t tmp_slot;	
 
 	printf("Scanning pci bus...");
 	
@@ -67,22 +56,22 @@ void pci_scan()
 	for(bus = 0; bus<256; bus++)
 	{
 		/* les 32 périphériques maximum par bus */
-		for(device = 0; device<32; device++)
+		for(slot = 0; slot<32; slot++)
 		{
-			tmp_reg = pci_read_register((uint16_t)bus, device, 0, 0);
+			tmp_reg = pci_read_register((uint16_t)bus, slot, 0, 0);
 			tmp_vendor = (uint16_t)(tmp_reg & 0xffff);
 			if(tmp_vendor!=0xffff)
 			{
 				pci_table_len++;
 				/* On ajoute le périphérique trouvé à la table */
 				pci_table[pci_table_len - 1].bus = bus;
-				pci_table[pci_table_len - 1].device = bus;
+				pci_table[pci_table_len - 1].slot = bus;
 				pci_table[pci_table_len - 1].function_nb = 0;
 
 				/* Puis on compte les fonctions proposées par le périphérique (jusqu'a 8 par périph) */
 				for(func = 0; func<8; func++)
 				{
-					tmp_reg = pci_read_register((uint16_t)bus, device, func, 0);
+					tmp_reg = pci_read_register((uint16_t)bus, slot, func, 0);
 					tmp_vendor = (uint16_t)(tmp_reg & 0xffff);
 					if(tmp_vendor!=0xffff)
 					{
@@ -97,57 +86,6 @@ void pci_scan()
 
 
 
-PPCI_VENTABLE pci_get_vendor(pci_device_t device, uint8_t function)
-{
-	uint16_t i;
-	uint16_t vendor_id;
-	PPCI_VENTABLE vendor = NULL;
-
-	/* On récupère le vendor_id contenu dans le premier registre */
-	vendor_id = pci_read_register( pci_table[device].bus, pci_table[device].device, function, 0) & 0xffff;
-
-	for(i=0; i<(uint16_t)PCI_VENTABLE_LEN; i++)
-	{
-		if(PciVenTable[i].VenId == vendor_id)
-		{
-			vendor = &PciVenTable[i];
-			break;
-		}
-	}
-
-	return vendor;
-}
-
-PPCI_CLASSCODETABLE pci_get_classcode(pci_device_t device, uint8_t function)
-{
-	uint16_t i;
-	uint8_t baseclass;
-	uint8_t subclass;
-	uint8_t progif;
-	uint32_t tmp_reg;
-	PPCI_CLASSCODETABLE classcode = NULL;
-	
-	/* On récupère le registre 0x08*/
-	tmp_reg = pci_read_register( pci_table[device].bus, pci_table[device].device, function, 0x08);
-
-	/* Et on en extrait les valeurs classcode */
-	baseclass = (uint8_t)(tmp_reg>>24);
-	subclass = (uint8_t)((tmp_reg>>16)&0xff);
-	progif = (uint8_t)((tmp_reg>>8)&0xff);
-
-	for(i=0; i<(uint16_t)PCI_CLASSCODETABLE_LEN; i++)
-	{
-		if(PciClassCodeTable[i].BaseClass == baseclass && 
-		   PciClassCodeTable[i].SubClass == subclass   && 
-                   PciClassCodeTable[i].ProgIf == progif)
-		{
-			classcode = &PciClassCodeTable[i];
-			break;
-		}
-	}
-	
-	return classcode;
-}
 
 
 
