@@ -1,5 +1,5 @@
-CC=/usr/bin/i686-unknown-linux-gnu-gcc
-LD=/usr/bin/i686-unknown-linux-gnu-ld
+CC=gcc
+LD=ld
 CFLAGS=-W -Wall -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 
 all: kernel.bin
