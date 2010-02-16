@@ -10,6 +10,7 @@
 #include <pci_config.h>
 #include <scheduler.h>
 #include <dummy_process.h>
+#include <keyboard.h>
 
 /* Forward declarations. */
 void cmain (unsigned long magic, unsigned long addr);
@@ -22,7 +23,14 @@ static void testhandlerexception(int error_id)
 
 static void tick(int interrupt_id)
 {
-	printf("Tick %d\n", interrupt_id);
+  static int tic = 0, tac = 0;
+  tic++;
+  tic %= 10;
+  if(tic == 0)
+  {
+    tac++;
+    printf("clock %d\n", tac);
+  }  
 }
 
 void cmain (unsigned long magic, unsigned long addr) {
@@ -68,23 +76,22 @@ void cmain (unsigned long magic, unsigned long addr) {
 	i8259_setup();
 
 	exception_set_routine(EXCEPTION_DIVIDE_ERROR, testhandlerexception);
-	interrupt_set_routine(0, tick);
-	interrupt_set_routine(1, tick);
-	interrupt_set_routine(8, tick);
+	interrupt_set_routine(IRQ_TIMER, tick);
+  interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt);
 
 	asm volatile ("sti\n");
 
 	/* Configuration de la pagination */
-	mempage_setup((mbi->mem_upper << 10) + (1 << 20));
+//	mempage_setup((mbi->mem_upper << 10) + (1 << 20));
 
 	//mempage_print_free_pages();
 	//mempage_print_used_pages();
 
 	//printf("Div 0 : %d.\n", 3/0);
-	pci_scan();
-	 pci_list();
+//	pci_scan();
+//	pci_list();
 
-	
+/*	
 	//recopie de dummy process plus loin en memoire
 	paddr_t rec = (mbi->mem_upper+mbi->mem_lower)/2;
 	for(i=0 ; i<mbi->mem_upper/10 ; i++) 
@@ -96,7 +103,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	printf("\nExecuting process dummy 1\n");
 	char* args[] = {"dummy","1"};
 	add_process(rec,2,(uint8_t**)args);
-	
+	*/
 	printf("\n\n--Done--\n");
 	for(;;){}
 }
+

@@ -96,8 +96,8 @@ void i8259_enable_irq_line(uint8_t n)
 {
 	if (n < 8) {
 		/* MASTER */
-		uint8_t old_value = inb(SLAVE_PIC_OCW1);
-		outb(old_value & ~(1 << n), SLAVE_PIC_OCW1);
+		uint8_t old_value = inb(MASTER_PIC_OCW1);
+		outb(old_value & ~(1 << n), MASTER_PIC_OCW1);
 	} else {
 		/* SLAVE */
 		uint8_t old_value = inb(SLAVE_PIC_OCW1);
@@ -112,8 +112,8 @@ void i8259_disable_irq_line(uint8_t n)
 {
 	if (n < 8) {
 		/* MASTER */
-		uint8_t old_value = inb(SLAVE_PIC_OCW1);
-		outb(old_value | (1 << n), SLAVE_PIC_OCW1);
+		uint8_t old_value = inb(MASTER_PIC_OCW1);
+		outb(old_value | (1 << n), MASTER_PIC_OCW1);
 	} else {
 		/* SLAVE */
 		uint8_t old_value = inb(SLAVE_PIC_OCW1);

@@ -1,10 +1,11 @@
-CC=gcc
+CC=/usr/bin/i686-unknown-linux-gnu-gcc
+LD=/usr/bin/i686-unknown-linux-gnu-ld
 CFLAGS=-W -Wall -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 
 all: kernel.bin
 
-kernel.bin: kernel.o boot.o stdio.o i8259.o idt.o mempage.o gdt.o exception.o exception_wrappers.o interrupts.o interrupts_wrappers.o pci.o pci_config.o scheduler.o dummy_process.o linker.ld
-	ld -T linker.ld -o kernel.bin boot.o kernel.o stdio.o i8259.o idt.o mempage.o exception_wrappers.o exception.o gdt.o interrupts.o interrupts_wrappers.o pci.o pci_config.o scheduler.o dummy_process.o -melf_i386
+kernel.bin: kernel.o boot.o stdio.o i8259.o idt.o mempage.o gdt.o exception.o exception_wrappers.o interrupts.o interrupts_wrappers.o pci.o pci_config.o scheduler.o dummy_process.o keyboard.o linker.ld
+	$(LD) -T linker.ld -o kernel.bin boot.o kernel.o stdio.o i8259.o idt.o mempage.o exception_wrappers.o exception.o gdt.o interrupts.o interrupts_wrappers.o pci.o pci_config.o scheduler.o dummy_process.o keyboard.o -melf_i386
 
 kernel.o: kernel.c multiboot.h types.h mempage.h stdio.h gdt.h idt.h scheduler.h dummy_process.h
 	$(CC) -o kernel.o -c kernel.c $(CFLAGS)
@@ -49,6 +50,10 @@ pci.o : pci.c
 	$(CC) -o pci.o -c pci.c $(CFLAGS)
 pci_config.o : pci_config.o
 	$(CC) -o pci_config.o -c pci_config.c $(CFLAGS)
+
+keyboard.o : keyboard.c
+	$(CC) -o $@ -c $^ $(CFLAGS)
+
 
 img:
 	echo "drive v: file=\"`pwd`/core.img\" 1.44M filter" > mtoolsrc

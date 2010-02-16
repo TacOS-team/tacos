@@ -2,7 +2,6 @@
 	Copyright (C) 2004  The KOS Team
    Copyright (C) 1999  Free Software Foundation, Inc.
 */
-#include "interrupts.h"
          
 .file "interrupts_wrappers.S"
 
@@ -42,12 +41,7 @@
                 pushw %fs
                 pushw %gs
  
-					/* La seule difference avec les exceptions : */
-					 /* Send EOI to PIC. See i8259 datasheet */
-					 movb $0x20, %al
-					 outb %al, $0x20
-
-                /* Call the handler with irq number as
+               /* Call the handler with irq number as
                  * argument */
                 pushl $\id
                 leal  interrupts_handler_array,%edi
@@ -71,6 +65,11 @@
 
                 /* Remove fake error code */
                 addl $4, %esp
+
+                /* La seule difference avec les exceptions : */
+                /* Send EOI to PIC. See i8259 datasheet */
+                movb $0x20, %al
+                outb %al, $0x20
 
                 iret
 .endr 
@@ -107,11 +106,6 @@
                 pushw %fs
                 pushw %gs
 
-					 /* */
-					 movb $0x20, %al
-					 outb %al, $0xa0
-					 outb %al, $0x20
-
                 /* Call the handler with interrupt number as
                  * argument */
                 pushl $\id
@@ -137,6 +131,11 @@
                 /* Error code isn't compatible with iretd */
                 addl $4, %esp
  
+                /* EOI */
+                movb $0x20, %al
+                outb %al, $0xa0 /* PIC2 */
+                outb %al, $0x20 /* PIC1 */
+
                 iret
 .endr
 
