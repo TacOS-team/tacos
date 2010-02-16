@@ -1,5 +1,5 @@
 timeout 10
 default 0
-title kernel
+title Tacos(fajitas)
 root (fd0)
 kernel /system/kernel.bin
