@@ -7,6 +7,7 @@
 #include <exception.h>
 #include <interrupts.h>
 #include <pci.h>
+#include <pci_config.h>
 
 /* Forward declarations. */
 void cmain (unsigned long magic, unsigned long addr);
@@ -45,7 +46,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");
 	printf("    _|    _|    _|  _|        _|    _|    _|_|  \n");
 	printf("    _|    _|    _|  _|        _|    _|        _|\n");
-	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|  \n\n\n");
+	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    (codename:fajitas)\n\n\n");
 
 	printf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
 
@@ -79,5 +80,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	//printf("Div 0 : %d.\n", 3/0);
 	pci_scan();
+	printf("\n0x%x\n", pci_read_value(4,0,PCI_BAR0));
 	for(;;){}
 }

@@ -3,8 +3,8 @@
 
 #include <pci.h>
 
-#define PCI_VENDOR_ID		0x00, 2
-#define PCI_DEVICE_ID		0x02, 2
+#define PCI_DEVICE_ID		0x00, 2
+#define PCI_VENDOR_ID		0x02, 2
 #define PCI_STATUS		0x04, 2
 #define PCI_COMMAND		0x06, 2
 #define PCI_CLASS_CODE		0x08, 1
