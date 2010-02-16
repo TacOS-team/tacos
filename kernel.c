@@ -95,7 +95,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	// execution de dummy process	
 	printf("\nExecuting process dummy 1\n");
 	char* args[] = {"dummy","1"};
-	add_process(rec,2,args);
+	add_process(rec,2,(uint8_t**)args);
 	
 	printf("\n\n--Done--\n");
 	for(;;){}
