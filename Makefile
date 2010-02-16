@@ -3,10 +3,10 @@ CFLAGS=-W -Wall -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I
 
 all: kernel.bin
 
-kernel.bin: kernel.o boot.o stdio.o i8259.o idt.o mempage.o gdt.o exception.o exception_wrappers.o interrupts.o interrupts_wrappers.o pci.o pci_config.o linker.ld
-	ld -T linker.ld -o kernel.bin boot.o kernel.o stdio.o i8259.o idt.o mempage.o exception_wrappers.o exception.o gdt.o interrupts.o interrupts_wrappers.o pci.o pci_config.o -melf_i386
+kernel.bin: kernel.o boot.o stdio.o i8259.o idt.o mempage.o gdt.o exception.o exception_wrappers.o interrupts.o interrupts_wrappers.o pci.o pci_config.o scheduler.o dummy_process.o linker.ld
+	ld -T linker.ld -o kernel.bin boot.o kernel.o stdio.o i8259.o idt.o mempage.o exception_wrappers.o exception.o gdt.o interrupts.o interrupts_wrappers.o pci.o pci_config.o scheduler.o dummy_process.o -melf_i386
 
-kernel.o: kernel.c multiboot.h types.h mempage.h stdio.h gdt.h idt.h
+kernel.o: kernel.c multiboot.h types.h mempage.h stdio.h gdt.h idt.h scheduler.h dummy_process.h
 	$(CC) -o kernel.o -c kernel.c $(CFLAGS)
 
 stdio.o: stdio.c stdio.h ioports.h types.h
@@ -39,10 +39,10 @@ interrupts.o: interrupts.c interrupts.h types.h idt.h
 interrupts_wrappers.o: interrupts_wrappers.S interrupts.h
 	$(CC) -o interrupts_wrappers.o -c interrupts_wrappers.S $(CFLAGS) -DASM_SOURCE=1 -fno-stack-protector
 
-scheduler.o: scheduler.c stdio.h types.h
+scheduler.o: scheduler.c stdio.h types.h scheduler.h
 	$(CC) -o scheduler.o -c scheduler.c $(CFLAGS)
 
-dummy_process.o: dummy_process.c stdio.h types.h
+dummy_process.o: dummy_process.c stdio.h types.h dummy_process.h
 	$(CC) -o dummy_process.o -c dummy_process.c $(CFLAGS)
 
 pci.o : pci.c

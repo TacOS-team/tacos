@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <types.h>
+#include <scheduler.h>
 
 typedef int (*main_func_type) (uint32_t, uint8_t*);
 

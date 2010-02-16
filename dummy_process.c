@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <dummy_process.h>
 
 void sleep()
 {
@@ -23,7 +24,7 @@ int dummy_process_main(int argc, char* argv[])
 	{
 		if(argc>1)
 		{
-			printf("Process %d\n",argv[1]);
+			printf("Process %s %s\n",argv[0],argv[1]);
 			sleep();
 		}
 		else

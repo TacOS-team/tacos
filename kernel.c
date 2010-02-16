@@ -8,6 +8,8 @@
 #include <interrupts.h>
 #include <pci.h>
 #include <pci_config.h>
+#include <scheduler.h>
+#include <dummy_process.h>
 
 /* Forward declarations. */
 void cmain (unsigned long magic, unsigned long addr);
@@ -81,5 +83,19 @@ void cmain (unsigned long magic, unsigned long addr) {
 	//printf("Div 0 : %d.\n", 3/0);
 	pci_scan();
 	printf("\n0x%x\n", pci_read_value(4,0,PCI_BAR0));
+	
+	//recopie de dummy process plus loin en memoire
+	paddr_t rec = (mbi->mem_upper+mbi->mem_lower)/2;
+	for(i=0 ; i<mbi->mem_upper/10 ; i++) 
+	{
+		*((uint8_t*)(rec+i)) = *((uint8_t*)(dummy_process_main+i));
+	}
+	
+	// execution de dummy process	
+	printf("\nExecuting process dummy 1\n");
+	char* args[] = {"dummy","1"};
+	add_process(rec,2,args);
+	
+	printf("\n\n--Done--\n");
 	for(;;){}
 }
