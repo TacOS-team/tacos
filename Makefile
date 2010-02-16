@@ -48,7 +48,7 @@ dummy_process.o: dummy_process.c stdio.h types.h dummy_process.h
 
 pci.o : pci.c
 	$(CC) -o pci.o -c pci.c $(CFLAGS)
-pci_config.o : pci_config.o
+pci_config.o : pci_config.c
 	$(CC) -o pci_config.o -c pci_config.c $(CFLAGS)
 
 keyboard.o : keyboard.c
