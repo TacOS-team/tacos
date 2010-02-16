@@ -82,7 +82,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	//printf("Div 0 : %d.\n", 3/0);
 	pci_scan();
-	printf("\n0x%x\n", pci_read_value(4,0,PCI_BAR0));
+	 pci_list();
+
 	
 	//recopie de dummy process plus loin en memoire
 	paddr_t rec = (mbi->mem_upper+mbi->mem_lower)/2;

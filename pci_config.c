@@ -1,7 +1,8 @@
 #include <ioports.h>
 #include <types.h>
-#include <pci.h>
- #include <pci_vendor.h>
+#include <pci_vendor.h>
+#include <pci_types.h>
+#include <stdio.h>
 
 #define CONFIG_ADDRESS	0xCF8
 #define CONFIG_DATA	0xCFC
@@ -32,11 +33,11 @@ uint32_t pci_read_register(uint8_t bus,
 	return reg_data;
 }
 
-uint32_t pci_read_value(pci_device_t device, uint8_t function, uint8_t offset, uint8_t size)
+uint32_t pci_read_value(pci_function_p func, uint8_t offset, uint8_t size)
 {
 	uint32_t reg;
 
-	reg = pci_read_register( pci_get_device_bus(device), pci_get_device_slot(device), function, (offset & 0xfc));
+	reg = pci_read_register( func->bus, func->slot, func->function, (offset & 0xfc));
 	
 	/* Formula from hell */
 	reg >>= (4-(offset & 3)-size)*4;
@@ -46,14 +47,14 @@ uint32_t pci_read_value(pci_device_t device, uint8_t function, uint8_t offset, u
 
 }
 
-PPCI_VENTABLE pci_get_vendor(pci_device_t device, uint8_t function)
+PPCI_VENTABLE pci_get_vendor(uint8_t bus, uint8_t slot, uint8_t function)
 {
 	uint16_t i;
 	uint16_t vendor_id;
 	PPCI_VENTABLE vendor = NULL;
 
 	/* On récupère le vendor_id contenu dans le premier registre */
-	vendor_id = pci_read_register( pci_get_device_bus(device), pci_get_device_slot(device), function, 0) & 0xffff;
+	vendor_id = pci_read_register( bus, slot, function, 0) & 0xffff;
 
 	for(i=0; i<(uint16_t)PCI_VENTABLE_LEN; i++)
 	{
@@ -67,7 +68,7 @@ PPCI_VENTABLE pci_get_vendor(pci_device_t device, uint8_t function)
 	return vendor;
 }
 
-PPCI_CLASSCODETABLE pci_get_classcode(pci_device_t device, uint8_t function)
+PPCI_CLASSCODETABLE pci_get_classcode(uint8_t bus, uint8_t slot, uint8_t function)
 {
 	uint16_t i;
 	uint8_t baseclass;
@@ -77,7 +78,7 @@ PPCI_CLASSCODETABLE pci_get_classcode(pci_device_t device, uint8_t function)
 	PPCI_CLASSCODETABLE classcode = NULL;
 	
 	/* On récupère le registre 0x08*/
-	tmp_reg = pci_read_register( pci_get_device_bus(device), pci_get_device_slot(device), function, 0x08);
+	tmp_reg = pci_read_register( bus, slot, function, 0x08);
 
 	/* Et on en extrait les valeurs classcode */
 	baseclass = (uint8_t)(tmp_reg>>24);
@@ -96,5 +97,13 @@ PPCI_CLASSCODETABLE pci_get_classcode(pci_device_t device, uint8_t function)
 	}
 	
 	return classcode;
+}
+
+void pci_print_info(pci_function_p func)
+{
+	printf("Bus %x, Slot %x, Func %x:\n",func->bus, func->slot, func->function);
+	printf("    %s:%s %s\n\n",pci_get_vendor(func->bus,func->slot,func->function)->VenFull, 
+                                  pci_get_classcode(func->bus,func->slot,func->function)->SubDesc, 
+                                  pci_get_classcode(func->bus,func->slot,func->function)->BaseDesc);
 }
 

@@ -1,7 +1,7 @@
 #ifndef _PCI_CONFIG_H
 #define _PCI_CONFIG_H
 
-#include <pci.h>
+#include <pci_types.h>
 
 #define PCI_DEVICE_ID		0x00, 2
 #define PCI_VENDOR_ID		0x02, 2
@@ -33,8 +33,9 @@
 
 uint32_t pci_read_register(uint8_t bus, uint8_t device, uint8_t func, uint8_t reg);
 
-uint32_t pci_read_value(pci_device_t device, uint8_t function, uint8_t offset, uint8_t size);
+uint32_t pci_read_value( uint8_t bus, uint8_t slot, uint8_t function, uint8_t offset, uint8_t size);
 
+void pci_print_info( pci_function_p function);
 
 
 #endif
