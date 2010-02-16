@@ -68,6 +68,32 @@ PPCI_VENTABLE pci_get_vendor(uint8_t bus, uint8_t slot, uint8_t function)
 	return vendor;
 }
 
+PPCI_DEVTABLE pci_get_device(uint8_t bus, uint8_t slot, uint8_t function)
+{
+	uint16_t i;
+	uint16_t vendor_id;
+	uint16_t device_id;
+	uint32_t tmp_reg;
+	PPCI_DEVTABLE device = NULL;
+
+	/* On récupère le vendor_id contenu dans le premier registre */
+	tmp_reg = pci_read_register( bus, slot, function, 0);
+	vendor_id = tmp_reg & 0xffff;
+	device_id = (tmp_reg >> 16) & 0xffff;
+
+	for(i=0; i<(uint16_t)PCI_DEVTABLE_LEN; i++)
+	{
+		if(PciDevTable[i].VenId == vendor_id && PciDevTable[i].DevId == device_id)
+		{
+			device = &PciDevTable[i];
+			break;
+		}
+	}
+
+	return device;
+}
+
+
 PPCI_CLASSCODETABLE pci_get_classcode(uint8_t bus, uint8_t slot, uint8_t function)
 {
 	uint16_t i;
@@ -102,8 +128,8 @@ PPCI_CLASSCODETABLE pci_get_classcode(uint8_t bus, uint8_t slot, uint8_t functio
 void pci_print_info(pci_function_p func)
 {
 	printf("Bus %x, Slot %x, Func %x:\n",func->bus, func->slot, func->function);
-	printf("    %s:%s %s\n\n",pci_get_vendor(func->bus,func->slot,func->function)->VenFull, 
-                                  pci_get_classcode(func->bus,func->slot,func->function)->SubDesc, 
-                                  pci_get_classcode(func->bus,func->slot,func->function)->BaseDesc);
+	printf("    %s : %s(%s)\n",pci_get_vendor(func->bus,func->slot,func->function)->VenFull, 
+                                  pci_get_device(func->bus,func->slot,func->function)->ChipDesc, 
+                                  pci_get_device(func->bus,func->slot,func->function)->Chip);
 }
 

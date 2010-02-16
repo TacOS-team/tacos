@@ -24,7 +24,6 @@ pci_function_p pci_get_function( pci_desc_t desc )
 		return &(pci_table[desc]);
 }
 
-
 /* Scan le bus pci et ajoute les périphériques trouvés à pci_table */
 void pci_scan()
 {
@@ -35,7 +34,7 @@ void pci_scan()
 
 	uint32_t tmp_reg;
 	uint16_t tmp_vendor;
-	uint16_t tmp_slot;	
+	//uint16_t tmp_slot;	
 
 	printf("Scanning pci bus...");
 	
@@ -74,7 +73,7 @@ void pci_scan()
 
 void pci_list()
 {
-	uint16_t i,j;
+	uint16_t i;
 
 	for(i=0; i<pci_table_len; i++)
 	{
