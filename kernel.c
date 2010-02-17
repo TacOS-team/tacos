@@ -25,11 +25,11 @@ static void tick(int interrupt_id)
 {
   static int tic = 0, tac = 0;
   tic++;
-  tic %= 10;
+  tic %= 100;
   if(tic == 0)
   {
     tac++;
-    printf("clock %d\n", tac);
+    //printf("clock %d\n", tac);
   }  
 }
 
@@ -56,16 +56,12 @@ void cmain (unsigned long magic, unsigned long addr) {
 	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");
 	printf("    _|    _|    _|  _|        _|    _|    _|_|  \n");
 	printf("    _|    _|    _|  _|        _|    _|        _|\n");
-	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    (codename:fajitas)\n\n\n");
+	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
+  printf("(codename:fajitas)\n\n\n");
 
 	printf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
 
 	printf("%d\n", mbi->mem_lower);
-
-	int i;
-	for (i = 0; i < 5; i++) {
-		printf("test %d\n", i+1);
-	}
 
 	//gdt_setup();
 
@@ -82,14 +78,14 @@ void cmain (unsigned long magic, unsigned long addr) {
 	asm volatile ("sti\n");
 
 	/* Configuration de la pagination */
-//	mempage_setup((mbi->mem_upper << 10) + (1 << 20));
+	mempage_setup((mbi->mem_upper << 10) + (1 << 20));
 
 	//mempage_print_free_pages();
 	//mempage_print_used_pages();
 
 	//printf("Div 0 : %d.\n", 3/0);
-//	pci_scan();
-//	pci_list();
+	pci_scan();
+	pci_list();
 
 /*	
 	//recopie de dummy process plus loin en memoire
@@ -104,7 +100,13 @@ void cmain (unsigned long magic, unsigned long addr) {
 	char* args[] = {"dummy","1"};
 	add_process(rec,2,(uint8_t**)args);
 	*/
-	printf("\n\n--Done--\n");
-	for(;;){}
+
+	for(;;)
+  {
+    char c;
+    printf("\n> ");
+    while((c = getchar()) != '\n')
+      putchar(c);
+  }
 }
 

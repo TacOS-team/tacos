@@ -1,3 +1,4 @@
+#include <types.h>
 #include <ioports.h>
 
 /* Some screen stuff. */
@@ -6,9 +7,15 @@
 /* The number of lines. */
 #define LINES                   25
 /* The attribute of an character. */
-#define ATTRIBUTE               7
+#define ATTRIBUTE               0x02
 /* The video memory address. */
 #define VIDEO                   0xB8000
+
+#define CRT_REG_INDEX 0x3d4
+#define CRT_REG_DATA  0x3d5
+#define CURSOR_POS_MSB 0x0E
+#define CURSOR_POS_LSB 0x0F
+
 
 /* Variables. */
 /* Save the X position. */
@@ -27,24 +34,25 @@ typedef struct {
 static volatile x86_video_mem *video = (volatile x86_video_mem*)VIDEO;
 
 static void scrollup();
+static void updateCursorPosition();
 
-/* Clear the screen and initialize VIDEO, XPOS and YPOS. */
-void cls (void) {
-	int i;
-
-#define CRT_REG_INDEX 0x3d4
-#define CRT_REG_DATA  0x3d5
-
-	/* CRT index port => ask for access to register 0xa ("cursor
+void disableCursor()
+{
+  /* CRT index port => ask for access to register 0xa ("cursor
 	   start") */
 	outb(0x0a, CRT_REG_INDEX);
 
 	/* (RBIL Tables 708 & 654) CRT Register 0xa => bit 5 = cursor OFF */
 	outb(1 << 5, CRT_REG_DATA);
+}
 
+/* Clear the screen and initialize VIDEO, XPOS and YPOS. */
+void cls (void) {
+	int i;
+ 
 	for (i = 0; i < COLUMNS * LINES; i++) {
 	  (*video)[i].character = 0;
-	  (*video)[i].attribute = 0;
+	  (*video)[i].attribute = ATTRIBUTE;
 	}
 
 	xpos = 0;
@@ -114,25 +122,43 @@ static void scrollup() {
 	}
 }
 
+static void updateCursorPosition()
+{
+  int pos = xpos + ypos*COLUMNS;
+
+  outb(CURSOR_POS_LSB, CRT_REG_INDEX);
+  outb((uint8_t) pos, CRT_REG_DATA);
+  outb(CURSOR_POS_MSB, CRT_REG_INDEX);
+  outb((uint8_t) (pos >> 8), CRT_REG_DATA);
+}
+
+void newline()
+{
+  xpos = 0;
+	ypos++;
+	if (ypos >= LINES)
+  {
+		scrollup();
+		ypos = LINES - 1;
+	}
+}
+
 /* Put the character C on the screen. */
 void putchar (int c) {
-	if (c == '\n' || c == '\r') {
-		newline:
-			xpos = 0;
-			ypos++;
-			if (ypos >= LINES) {
-				scrollup();
-				ypos = LINES - 1;
-			}
-			return;
-	}
+	if (c == '\n' || c == '\r')
+  {
+    newline();
+	} else
+  {
+  	(*video)[xpos + ypos * COLUMNS].character = c & 0xFF;
+  	(*video)[xpos + ypos * COLUMNS].attribute = ATTRIBUTE;
 
-	(*video)[xpos + ypos * COLUMNS].character = c & 0xFF;
-	(*video)[xpos + ypos * COLUMNS].attribute = ATTRIBUTE;
+  	xpos++;
+	  if (xpos >= COLUMNS)
+      newline();
+  }
 
-	xpos++;
-	if (xpos >= COLUMNS)
-		goto newline;
+  updateCursorPosition();
 }
 
 /* Format a string and print it on the screen, just like the libc

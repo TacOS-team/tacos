@@ -2,7 +2,6 @@
    cpu: count=1, ips=10000000
    i440fxsupport: enabled=1, slot2=ne2k
 
-   vgaromimage: file=/usr/share/vgabios/vgabios.bin 
    1.44M 3.5" media:
      floppya: 1_44=core.img, status=inserted
    boot: floppy
