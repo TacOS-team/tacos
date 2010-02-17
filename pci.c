@@ -15,7 +15,6 @@ static uint16_t pci_table_len = 0;
 
 
 /* Procedures d'accès aux données de pci_device_descriptor */
-/** TODO : sécuriser les acces (vérifier les débordements de tableau par exemple **/
 pci_function_p pci_get_function( pci_desc_t desc )
 {
 	if(desc >= pci_table_len)
@@ -77,7 +76,7 @@ void pci_list()
 
 	for(i=0; i<pci_table_len; i++)
 	{
-		pci_print_info(pci_get_function(i));
+		pci_print_detailed_info(pci_get_function(i));
 	}
 }
 
