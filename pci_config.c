@@ -1,7 +1,7 @@
 #include <ioports.h>
 #include <types.h>
+#include <pci_config.h>
 #include <pci_vendor.h>
-#include <pci_types.h>
 #include <stdio.h>
 
 #define CONFIG_ADDRESS	0xCF8
@@ -33,17 +33,17 @@ uint32_t pci_read_register(uint8_t bus,
 	return reg_data;
 }
 
-uint32_t pci_read_value(pci_function_p func, uint8_t offset, uint8_t size)
+uint32_t pci_read_value(pci_function_p func, uint8_t reg, uint8_t offset, uint32_t mask)
 {
-	uint32_t reg;
+	uint32_t tmp_reg;
 
-	reg = pci_read_register( func->bus, func->slot, func->function, (offset & 0xfc));
-	
-	/* Formula from hell */
-	reg >>= (4-(offset & 3)-size)*4;
-	reg &= (0xffff>>((4-size)*16));
+	tmp_reg = pci_read_register( func->bus, func->slot, func->function, reg);
+	//printf("DATA:%x %x %x\n", offset, mask, tmp_reg);
+	tmp_reg >>= offset;
+	tmp_reg &= mask;
+	//printf("OUT:%x\n", tmp_reg);
 
-	return reg;
+	return tmp_reg;
 
 }
 
@@ -135,6 +135,7 @@ void pci_print_info(pci_function_p func)
 
 void pci_print_detailed_info(pci_function_p func)
 {
+	uint32_t bar = 0;
 	printf("Bus %x, Slot %x, Func %x:\n",func->bus, func->slot, func->function);
 	printf("      Device: %s (%s)\n",pci_get_device(func->bus,func->slot,func->function)->ChipDesc, 
                                            pci_get_device(func->bus,func->slot,func->function)->Chip);
@@ -143,6 +144,31 @@ void pci_print_detailed_info(pci_function_p func)
    					       pci_get_classcode(func->bus,func->slot,func->function)->BaseDesc,
                                                pci_get_classcode(func->bus,func->slot,func->function)->ProgDesc);
 	
+	bar = pci_read_value(func, PCI_BAR0);
+	if(bar!=0)
+		printf("      BAR0=0x%x\n",bar);
+
+	bar = pci_read_value(func, PCI_BAR1);
+	if(bar!=0)
+		printf("      BAR1=0x%x\n",bar);
+
+	bar = pci_read_value(func, PCI_BAR2);
+	if(bar!=0)
+		printf("      BAR2=0x%x\n",bar);
+
+	bar = pci_read_value(func, PCI_BAR3);
+	if(bar!=0)
+		printf("      BAR0=3x%x\n",bar);
+
+	bar = pci_read_value(func, PCI_BAR4);
+	if(bar!=0)
+		printf("      BAR4=0x%x\n",bar);
+
+	bar = pci_read_value(func, PCI_BAR5);
+	if(bar!=0)
+		printf("      BAR0=0x%x\n",bar);
+
 }
+
 	
 

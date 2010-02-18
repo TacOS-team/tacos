@@ -76,7 +76,8 @@ void pci_list()
 
 	for(i=0; i<pci_table_len; i++)
 	{
-		pci_print_detailed_info(pci_get_function(i));
+		//pci_print_detailed_info(pci_get_function(i));
+		pci_print_info(pci_get_function(i));
 	}
 }
 

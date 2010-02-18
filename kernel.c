@@ -87,6 +87,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	pci_scan();
 	pci_list();
 
+
 /*	
 	//recopie de dummy process plus loin en memoire
 	paddr_t rec = (mbi->mem_upper+mbi->mem_lower)/2;
