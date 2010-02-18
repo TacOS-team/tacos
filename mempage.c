@@ -121,3 +121,54 @@ void mempage_setup(size_t ram_size) {
 		phys_page_addr += PAGE_SIZE;
 	}
 }
+
+paddr_t mempage_reserve_page()
+{
+  struct physical_page_descr *p = free_pages;
+ 
+  // pop it from free page stack
+  free_pages = free_pages->next;
+  if(free_pages != NULL)
+    free_pages->prev = NULL;
+ 
+  // put the new reserved on used page stack
+	used_pages->prev = p;
+  p->next = used_pages;
+  used_pages = p;
+  p->prev = NULL;
+
+  return p->addr;
+}
+
+void mempage_free_page(paddr_t addr)
+{
+  int found = 0;
+	struct physical_page_descr *p;
+
+	p = used_pages;
+	while (p != NULL)
+  {
+    if(p->addr == addr)
+    {
+      found = 1;
+      if(p->next != NULL)
+        p->next->prev = p->prev;
+      if(p->prev != NULL)
+        p->prev->next = p->next;
+
+      break;
+    }
+	}
+  
+  if(!found)
+    return -1;
+
+  used_pages = used_pages->next;
+
+  if(free_pages != NULL) 
+    free_pages->prev = p;
+  p->prev = NULL;
+  p->next = free_pages;
+  free_pages = p;
+}
+

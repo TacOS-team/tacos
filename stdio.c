@@ -7,7 +7,7 @@
 /* The number of lines. */
 #define LINES                   25
 /* The attribute of an character. */
-#define ATTRIBUTE               0x02
+#define ATTRIBUTE               0x09
 /* The video memory address. */
 #define VIDEO                   0xB8000
 

@@ -14,6 +14,7 @@
 
 /* Forward declarations. */
 void cmain (unsigned long magic, unsigned long addr);
+void testPageReservation();
 
 static void testhandlerexception(int error_id)
 {
@@ -109,5 +110,29 @@ void cmain (unsigned long magic, unsigned long addr) {
     while((c = getchar()) != '\n')
       putchar(c);
   }
+}
+
+void waitReturn()
+{
+  while(getchar() != '\n')
+    ;
+}
+
+void testPageReservation()
+{
+  paddr_t addr;
+  mempage_print_free_pages();
+  mempage_print_used_pages();
+  waitReturn();
+
+  addr = mempage_reserve_page();
+  mempage_print_free_pages();
+  mempage_print_used_pages();
+  waitReturn();
+
+  mempage_free_page(addr);
+  mempage_print_free_pages();
+  mempage_print_used_pages();
+  waitReturn();
 }
 
