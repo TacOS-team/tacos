@@ -7,5 +7,6 @@ void itoa (char *buf, int base, int d);
 void newline();
 void putchar (int c);
 void printf (const char *format, ...);
+void enableFinnouMode(int enable);
 
 #endif

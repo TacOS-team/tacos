@@ -11,5 +11,6 @@ void mempage_print_used_pages();
 void mempage_print_free_pages();
 void mempage_setup(size_t ram_size);
 paddr_t mempage_reserve_page();
+void mempage_free_page(paddr_t addr);
 
 #endif

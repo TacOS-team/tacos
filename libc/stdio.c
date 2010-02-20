@@ -6,8 +6,6 @@
 #define COLUMNS                 80
 /* The number of lines. */
 #define LINES                   25
-/* The attribute of an character. */
-#define ATTRIBUTE               0x09
 /* The video memory address. */
 #define VIDEO                   0xB8000
 
@@ -18,6 +16,9 @@
 
 
 /* Variables. */
+static finnouMode = 0; //disable par défaut, quand même 
+/* Attribute of a character */
+static uint8_t attribute = 0x09;
 /* Save the X position. */
 static int xpos;
 /* Save the Y position. */
@@ -52,7 +53,7 @@ void cls (void) {
  
 	for (i = 0; i < COLUMNS * LINES; i++) {
 	  (*video)[i].character = 0;
-	  (*video)[i].attribute = ATTRIBUTE;
+	  (*video)[i].attribute = attribute;
 	}
 
 	xpos = 0;
@@ -118,7 +119,7 @@ static void scrollup() {
 	 */
 	for (c = 0; c < COLUMNS; c++) {
 		(*video)[(LINES-1) * COLUMNS + c].character = ' ';
-		(*video)[(LINES-1) * COLUMNS + c].attribute = ATTRIBUTE;
+		(*video)[(LINES-1) * COLUMNS + c].attribute = attribute;
 	}
 }
 
@@ -151,12 +152,15 @@ void putchar (int c) {
 	} else
   {
   	(*video)[xpos + ypos * COLUMNS].character = c & 0xFF;
-  	(*video)[xpos + ypos * COLUMNS].attribute = ATTRIBUTE;
+  	(*video)[xpos + ypos * COLUMNS].attribute = attribute;
 
   	xpos++;
 	  if (xpos >= COLUMNS)
       newline();
   }
+  
+  if(finnouMode)
+    attribute = 0x0F & (attribute + 13 % 8);
 
   updateCursorPosition();
 }
@@ -200,3 +204,9 @@ void printf (const char *format, ...) {
 		}
 	}
 }
+
+void enableFinnouMode(int enable)
+{
+  finnouMode = enable;
+}
+

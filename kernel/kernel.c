@@ -12,9 +12,15 @@
 #include <dummy_process.h>
 #include <keyboard.h>
 
+typedef struct
+{
+  uint8_t lol;
+} kernel_options;
+
 /* Forward declarations. */
 void cmain (unsigned long magic, unsigned long addr);
-void testPageReservation();
+static void testPageReservation();
+static void initKernelOptions(const char *cmdLine, kernel_options *options);
 
 static void testhandlerexception(int error_id)
 {
@@ -36,6 +42,7 @@ static void tick(int interrupt_id)
 
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
+  kernel_options options;
 
 	/* Clear the screen. */
 	cls ();
@@ -49,7 +56,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	/* Set MBI to the address of the Multiboot information structure. */
 	mbi = (multiboot_info_t *) addr;
-  
+  initKernelOptions((char *)mbi->cmdline, &options);
+
 	/* The Hello World */
 	//printf("\nHello World !\n\n");
 	/* Mieux! */
@@ -63,7 +71,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	printf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
 
 	printf("%d\n", mbi->mem_lower);
-
+  
 	//gdt_setup();
 
 	/* Mise en place de la table qui contient les descripteurs d'interruption (idt) */
@@ -134,5 +142,43 @@ void testPageReservation()
   mempage_print_free_pages();
   mempage_print_used_pages();
   waitReturn();
+}
+
+static void defaultOptions(kernel_options *options)
+{
+  options->lol = 0;
+}
+
+static char get_opt(char **cmdLine)
+{
+  while(**cmdLine != '-' && **cmdLine != '\0') 
+    (*cmdLine)++;
+
+  if(**cmdLine == '\0')
+    return -1;
+
+  *cmdLine += 2;
+  return *(*cmdLine - 1);
+}
+
+static void initKernelOptions(const char *cmdLine, kernel_options *options)
+{
+  char *cmd = cmdLine;
+  char opt;
+
+  printf("Command line : %s\n", cmdLine);
+
+  defaultOptions(options);
+  while((opt = get_opt(&cmd)) != -1)
+  {
+    switch(opt)
+    {
+    case 'l':
+        options->lol = 1;
+        enableFinnouMode(1);
+        break;
+    default: printf("Unknown option %c\n", opt);
+    }
+  }
 }
 
