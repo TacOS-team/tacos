@@ -1,59 +1,27 @@
-CC=gcc
-LD=ld
-CFLAGS=-W -Wall -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
+export MAKE=make
+export CC=gcc
+export LD=ld
+export CFLAGS=-W -Wall -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
+LDFLAGS=-Llib/
+LDLIBS=-lc -lpci -lkeyboard
 
-all: kernel.bin
+all: libc pci keyboard kernel.bin
 
-kernel.bin: kernel.o boot.o stdio.o i8259.o idt.o mempage.o gdt.o exception.o exception_wrappers.o interrupts.o interrupts_wrappers.o pci.o pci_config.o scheduler.o dummy_process.o keyboard.o linker.ld
-	$(LD) -T linker.ld -o kernel.bin boot.o kernel.o stdio.o i8259.o idt.o mempage.o exception_wrappers.o exception.o gdt.o interrupts.o interrupts_wrappers.o pci.o pci_config.o scheduler.o dummy_process.o keyboard.o -melf_i386
+kernel.bin: force_look 
+	$(MAKE) -C kernel
+	$(LD) -T linker.ld -o kernel.bin kernel/boot.o kernel/kernel.o kernel/i8259.o kernel/idt.o kernel/mempage.o kernel/exception_wrappers.o kernel/exception.o kernel/gdt.o kernel/interrupts.o kernel/interrupts_wrappers.o kernel/scheduler.o kernel/dummy_process.o -melf_i386 $(LDFLAGS) $(LDLIBS)
 
-kernel.o: kernel.c multiboot.h types.h mempage.h stdio.h gdt.h idt.h scheduler.h dummy_process.h
-	$(CC) -o kernel.o -c kernel.c $(CFLAGS)
+keyboard: force_look 
+	$(MAKE) -C keyboard
 
-stdio.o: stdio.c stdio.h ioports.h types.h
-	$(CC) -o stdio.o -c stdio.c $(CFLAGS)
+libc: force_look 
+	$(MAKE) -C libc
 
-boot.o: boot.S
-	$(CC) -o boot.o -c boot.S $(CFLAGS) -fno-stack-protector
+pci: force_look 
+	$(MAKE) -C pci
 
-i8259.o: i8259.c i8259.h types.h
-	$(CC) -o i8259.o -c i8259.c $(CFLAGS)
-
-idt.o: idt.c idt.h types.h
-	$(CC) -o idt.o -c idt.c $(CFLAGS)
-
-gdt.o: gdt.c gdt.h types.h
-	$(CC) -o gdt.o -c gdt.c $(CFLAGS)
-
-mempage.o: mempage.c mempage.h types.h
-	$(CC) -o mempage.o -c mempage.c $(CFLAGS)
-
-exception.o: exception.c exception.h types.h idt.h
-	$(CC) -o exception.o -c exception.c $(CFLAGS)
-
-exception_wrappers.o: exception_wrappers.S exception.h
-	$(CC) -o exception_wrappers.o -c exception_wrappers.S $(CFLAGS) -DASM_SOURCE=1 -fno-stack-protector
-
-interrupts.o: interrupts.c interrupts.h types.h idt.h
-	$(CC) -o interrupts.o -c interrupts.c $(CFLAGS)
-
-interrupts_wrappers.o: interrupts_wrappers.S interrupts.h
-	$(CC) -o interrupts_wrappers.o -c interrupts_wrappers.S $(CFLAGS) -DASM_SOURCE=1 -fno-stack-protector
-
-scheduler.o: scheduler.c stdio.h types.h scheduler.h
-	$(CC) -o scheduler.o -c scheduler.c $(CFLAGS)
-
-dummy_process.o: dummy_process.c stdio.h types.h dummy_process.h
-	$(CC) -o dummy_process.o -c dummy_process.c $(CFLAGS)
-
-pci.o : pci.c
-	$(CC) -o pci.o -c pci.c $(CFLAGS)
-pci_config.o : pci_config.c
-	$(CC) -o pci_config.o -c pci_config.c $(CFLAGS)
-
-keyboard.o : keyboard.c
-	$(CC) -o $@ -c $^ $(CFLAGS)
-
+force_look:
+	@true
 
 img:
 	echo "drive v: file=\"`pwd`/core.img\" 1.44M filter" > mtoolsrc
@@ -63,11 +31,16 @@ img:
 	MTOOLSRC=mtoolsrc mcopy kernel.bin v:/system/
 	rm mtoolsrc
 
-runqemu: 
+runqemu:
 	qemu -fda core.img -m 32
 
 runbochs:
 	BOCHSRC=bochsrc bochs
 
 clean:
+	$(MAKE) -C kernel clean
+	$(MAKE) -C libc clean
+	$(MAKE) -C pci clean
+	$(MAKE) -C keyboard clean
 	rm -f *.o *.bin *.img
+
