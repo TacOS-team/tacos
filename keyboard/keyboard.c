@@ -50,7 +50,7 @@ typedef struct {
   char uppercase;
 } letter;
 
-static letter letters[] = {
+static letter letters_qwerty[] = {
   {0x02, '1', '!'},
   {0x03, '2', '@'},
   {0x04, '3', '#'},
@@ -92,6 +92,48 @@ static letter letters[] = {
 };
 
 
+static letter letters_azerty[] = {
+  {0x02, '&', '1'},
+  {0x03, 130, '2'},
+  {0x04, '"', '3'},
+  {0x05, '\'', '4'},
+  {0x06, '(', '5'},
+  {0x07, '-', '6'},
+  {0x08, 138, '7'},
+  {0x09, '_', '8'},
+  {0x0a, 135, '9'},
+  {0x0b, 133, '0'},
+  {0x0c, ')', 167},
+  {0x0d, '=', '+'},
+  {0x10, 'a', 'A'},
+  {0x11, 'z', 'Z'},
+  {0x12, 'e', 'E'},
+  {0x13, 'r', 'R'},
+  {0x14, 't', 'T'},
+  {0x15, 'y', 'Y'},
+  {0x16, 'u', 'U'},
+  {0x17, 'i', 'I'},
+  {0x18, 'o', 'O'},
+  {0x19, 'p', 'P'},
+  {0x1E, 'q', 'Q'}, 
+  {0x1F, 's', 'S'}, 
+  {0x20, 'd', 'D'}, 
+  {0x21, 'f', 'F'}, 
+  {0x22, 'g', 'G'}, 
+  {0x23, 'h', 'H'}, 
+  {0x24, 'j', 'J'}, 
+  {0x25, 'k', 'K'}, 
+  {0x26, 'l', 'L'}, 
+  {0x27, 'm', 'M'},
+  {0x2C, 'w', 'W'}, 
+  {0x2D, 'x', 'X'}, 
+  {0x2E, 'c', 'C'}, 
+  {0x2F, 'v', 'V'}, 
+  {0x30, 'b', 'B'}, 
+  {0x31, 'n', 'N'}, 
+  {0x32, ',', '?'} 
+};
+
 static char buffer[BUFFER_SIZE];
 static int begin = 0, end = 0;
 static int shift = 0;
@@ -121,12 +163,12 @@ char keyBufferPop()
 
 char keyboardConvertToChar(uint8_t scancode) {
 	unsigned int i;
-   for (i=0 ; i < sizeof(letters); i++) {
-		if (scancode == letters[i].scancode) {
+   for (i=0 ; i < sizeof(letters_azerty); i++) {
+		if (scancode == letters_azerty[i].scancode) {
 			if ((shift == 1 && capslock == 0) || (shift == 0 && capslock == 1)) {
-				return letters[i].uppercase;
+				return letters_azerty[i].uppercase;
 			} else {
-				return letters[i].lowercase;
+				return letters_azerty[i].lowercase;
 			}
 		}
    }
