@@ -3,7 +3,8 @@
 
 #include <types.h>
 
-void *malloc(size_t n, size_t size);
+void *malloc(size_t size);
+void printMallocated();
 
 #endif
 

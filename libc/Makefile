@@ -2,11 +2,10 @@ INCLUDES=-I../include/
 
 all: libc
 
-libc: stdio.o
+libc: stdio.o stdlib.o
 	  ar rv ../lib/$@.a $^
 
 %.o: %.c
-	echo $(CFLAGS)
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
 stdio.o: ../include/stdio.h ../include/ioports.h ../include/types.h

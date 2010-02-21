@@ -2,6 +2,7 @@
 #include <idt.h>
 #include <i8259.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <mempage.h>
 #include <gdt.h>
 #include <exception.h>
@@ -108,7 +109,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	char* args[] = {"dummy","1"};
 	add_process(rec,2,(uint8_t**)args);
 	*/
-
+  
 	for(;;)
   {
     char c;
@@ -140,6 +141,25 @@ void testPageReservation()
   mempage_print_free_pages();
   mempage_print_used_pages();
   waitReturn();
+}
+
+void testMalloc()
+{
+  int *nyu1, *nyu2, *nyu3, *nyu4;
+  printf("NYU : %d\n", nyu1 = (int *) malloc(10));
+  printMallocated();
+  printf("NYU : %d\n", nyu2 = (int *) malloc(20));
+  printMallocated();
+  printf("NYU : %d\n", nyu3 = (int *) malloc(42));
+  printMallocated();
+  printf("NYU : %d\n", nyu4 = (int *) malloc(1337));
+  printMallocated();
+
+  free(nyu3);
+  printMallocated();
+
+  printf("NYU : %d\n", nyu3 = (int *) malloc(10));
+  printMallocated();
 }
 
 static void defaultOptions(kernel_options *options)

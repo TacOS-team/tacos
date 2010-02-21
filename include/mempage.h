@@ -3,7 +3,7 @@
 
 #include <types.h>
 
-#define PAGE_SIZE 4196
+#define PAGE_SIZE 4096
 #define BIOS_RESERVED_BASE 0xa0000
 #define BIOS_RESERVED_TOP 0x100000
 
