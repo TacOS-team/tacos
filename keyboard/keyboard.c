@@ -25,9 +25,24 @@
 #define KEYBOARD_PAUSE    0xE1 // pause/break
 #define KEYBOARD_LOGITECH 0xE2
 
-#define KEY_SHIFT   0x2A
+#define KEY_ESCAPE  0x01
+#define KEY_LSHIFT  0x2A
+#define KEY_RSHIFT  0x36
+#define KEY_CAPSLOCK 0x3A
 #define KEY_RETURN  0x1C
 #define KEY_SPACE   0x39
+#define KEY_F1      0x3b
+#define KEY_F2      0x3c
+#define KEY_F3      0x3d
+#define KEY_F4      0x3e
+#define KEY_F5      0x3f
+#define KEY_F6      0x40
+#define KEY_F7      0x41
+#define KEY_F8      0x42
+#define KEY_F9      0x43
+#define KEY_F10     0x44
+#define KEY_F11     0x57
+#define KEY_F12     0x58
 
 typedef struct {
   uint8_t scancode;
@@ -35,8 +50,19 @@ typedef struct {
   char uppercase;
 } letter;
 
-#define NB_LETTERS 26
-static letter letters[NB_LETTERS] = {
+static letter letters[] = {
+  {0x02, '1', '!'},
+  {0x03, '2', '@'},
+  {0x04, '3', '#'},
+  {0x05, '4', '$'},
+  {0x06, '5', '%'},
+  {0x07, '6', '^'},
+  {0x08, '7', '&'},
+  {0x09, '8', '*'},
+  {0x0a, '9', '('},
+  {0x0b, '0', ')'},
+  {0x0c, '-', '_'},
+  {0x0d, '=', '+'},
   {0x10, 'q', 'Q'},
   {0x11, 'w', 'W'},
   {0x12, 'e', 'E'},
@@ -62,13 +88,14 @@ static letter letters[NB_LETTERS] = {
   {0x2F, 'v', 'V'}, 
   {0x30, 'b', 'B'}, 
   {0x31, 'n', 'N'}, 
-  {0x32, 'm', 'M'}, 
+  {0x32, 'm', 'M'} 
 };
 
 
 static char buffer[BUFFER_SIZE];
 static int begin = 0, end = 0;
 static int shift = 0;
+static int capslock = 0;
 
 void keyBufferPush(char c)
 {
@@ -92,32 +119,52 @@ char keyBufferPop()
   return c;
 }
 
+char keyboardConvertToChar(uint8_t scancode) {
+	unsigned int i;
+   for (i=0 ; i < sizeof(letters); i++) {
+		if (scancode == letters[i].scancode) {
+			if ((shift == 1 && capslock == 0) || (shift == 0 && capslock == 1)) {
+				return letters[i].uppercase;
+			} else {
+				return letters[i].lowercase;
+			}
+		}
+   }
+	return 0;
+}
+
 void keyboardInterrupt(int id)
 {
-  int i;
   uint8_t scancode = inb(0x60);
   switch(scancode)
   {
-  case KEY_SHIFT:
+  case KEY_LSHIFT:
     shift = 1;
     break;
-  case KEY_SHIFT | KEY_RELEASE:
+  case KEY_LSHIFT | KEY_RELEASE:
     shift = 0;
     break;
+  case KEY_RSHIFT:
+    shift = 1;
+    break;
+  case KEY_RSHIFT | KEY_RELEASE:
+    shift = 0;
+    break;
+  case KEY_CAPSLOCK:
+	 capslock = !capslock;
+	 break;
   case KEY_RETURN:
     keyBufferPush('\n');
     break;
   case KEY_SPACE:
     keyBufferPush(' ');
-  default:
-    for(i=0 ; i<NB_LETTERS ; i++)
-    {
-      if(scancode == letters[i].scancode) 
-      {
-        keyBufferPush(shift ? letters[i].uppercase : letters[i].lowercase);
-        break;
-      }
-    }
+	 break;
+  default: {
+    char c = keyboardConvertToChar(scancode);
+    if (c != 0) {
+		 keyBufferPush(c);
+	 }
+			  }
   }
 }
 
