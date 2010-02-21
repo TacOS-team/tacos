@@ -3,22 +3,25 @@ export CC=gcc
 export LD=ld
 export CFLAGS=-W -Wall -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LDFLAGS=-Llib/
-LDLIBS=-lc -lpci -lkeyboard
+LDLIBS=-lc -lpci -lkeyboard -lclock
 
-all: libc pci keyboard kernel.bin
+all: libc pci keyboard clock kernel.bin
 
 kernel.bin: force_look 
 	$(MAKE) -C kernel
 	$(LD) -T linker.ld -o kernel.bin kernel/boot.o kernel/kernel.o kernel/i8259.o kernel/idt.o kernel/mempage.o kernel/exception_wrappers.o kernel/exception.o kernel/gdt.o kernel/interrupts.o kernel/interrupts_wrappers.o kernel/scheduler.o kernel/dummy_process.o -melf_i386 $(LDFLAGS) $(LDLIBS)
 
 keyboard: force_look 
-	$(MAKE) -C keyboard
+	$(MAKE) -C $@ 
 
 libc: force_look 
-	$(MAKE) -C libc
+	$(MAKE) -C $@ 
 
 pci: force_look 
-	$(MAKE) -C pci
+	$(MAKE) -C $@
+
+clock: force_look 
+	$(MAKE) -C $@
 
 force_look:
 	@true

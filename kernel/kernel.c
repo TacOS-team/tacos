@@ -12,6 +12,7 @@
 #include <scheduler.h>
 #include <dummy_process.h>
 #include <keyboard.h>
+#include <clock.h>
 
 typedef struct
 {
@@ -27,18 +28,6 @@ static void testhandlerexception(int error_id)
 {
 	/* TODO : L'erreur renvoyée devrait être 0 car il n'y a pas de code retour. */
 	printf("Exception : %d\n", error_id);
-}
-
-static void tick(int interrupt_id)
-{
-  static int tic = 0, tac = 0;
-  tic++;
-  tic %= 100;
-  if(tic == 0)
-  {
-    tac++;
-    //printf("clock %d\n", tac);
-  }  
 }
 
 void cmain (unsigned long magic, unsigned long addr) {
@@ -80,7 +69,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	i8259_setup();
 
 	exception_set_routine(EXCEPTION_DIVIDE_ERROR, testhandlerexception);
-	interrupt_set_routine(IRQ_TIMER, tick);
+  clock_init(); 
   interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt);
 
 	asm volatile ("sti\n");
