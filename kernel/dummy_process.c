@@ -20,17 +20,16 @@ void sleep()
 
 int dummy_process_main(int argc, char* argv[])
 {	
-	while(1)
-	{
+
 		if(argc>1)
 		{
 			printf("Process %s %s\n",argv[0],argv[1]);
-			sleep();
+			//sleep();
 		}
 		else
 		{
 			printf("Unknown process\n");
-			sleep();
+			//sleep();
 		}
-	}
+		return 0;
 }

@@ -96,19 +96,20 @@ void cmain (unsigned long magic, unsigned long addr) {
 	pci_list();
 
 
-/*	
+
 	//recopie de dummy process plus loin en memoire
+	int i;
 	paddr_t rec = (mbi->mem_upper+mbi->mem_lower)/2;
 	for(i=0 ; i<mbi->mem_upper/10 ; i++) 
 	{
-		*((uint8_t*)(rec+i)) = *((uint8_t*)(dummy_process_main+i));
+		*((uint32_t*)(rec+i)) = *((uint32_t*)(dummy_process_main+i));
 	}
 	
 	// execution de dummy process	
 	printf("\nExecuting process dummy 1\n");
 	char* args[] = {"dummy","1"};
 	add_process(rec,2,(uint8_t**)args);
-	*/
+	
   
 	for(;;)
   {

@@ -27,6 +27,34 @@ struct x86_segment_descriptor
 
 } __attribute__ ((packed, aligned (8)));
 
+struct tss {
+    uint16_t    previous_task, __previous_task_unused;
+    uint32_t    esp0;
+    uint16_t    ss0, __ss0_unused;
+    uint32_t    esp1;
+    uint16_t    ss1, __ss1_unused;
+    uint32_t    esp2;
+    uint16_t    ss2, __ss2_unused;
+    uint32_t    cr3;
+    uint32_t    eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;
+    uint16_t    es, __es_unused;
+    uint16_t    cs, __cs_unused;
+    uint16_t    ss, __ss_unused;
+    uint16_t    ds, __ds_unused;
+    uint16_t    fs, __fs_unused;
+    uint16_t    gs, __gs_unused;
+    uint16_t    ldt_selector, __ldt_sel_unused;
+    uint16_t    debug_flag, io_map;
+} __attribute__ ((packed));
+
+struct tss default_tss;
+
+/*
+    default_tss.debug_flag = 0x00;
+    default_tss.io_map = 0x00;
+    default_tss.esp0 = 0x1FFF0;
+    default_tss.ss0 = 0x18;
+*/
 /*
  * Registre gdt
  */
@@ -76,7 +104,25 @@ static struct x86_segment_descriptor gdt[] = {
 		.zero = 0,
 		.operation_size = 1,
 		.granularity = 1
+	},
+	
+	/* Descripteur de la TSS (Cf doc Intel v3 6.2.2) */
+	[3] = (struct x86_segment_descriptor){
+		.segment_limit_15_0 = (sizeof(default_tss) & 0xffff),
+		.segment_limit_19_16 = ((sizeof(default_tss) >> 16) & 0xf),
+		.base_address_15_0 = 0,
+		.base_address_23_16 = 0,
+		.base_address_31_24 = 0,
+		.segment_type = 0x9,  // Pas sûr pour le busy flag 
+		.descriptor_type = 0,
+		.dpl = 0,
+		.present = 1,
+		.available = 1, 
+		.zero = 0,
+		.operation_size = 1,
+		.granularity = 1
 	}
+
 	/* Peut être aussi pour la stack ? à voir... */
 };
 
@@ -91,6 +137,11 @@ void gdt_setup() {
 
 	/* Offset/Taille de la gdt */
 	gdtr.limit     = sizeof(gdt) - 1;
+	
+	/* Initialisation du descripteur de TSS dans la GDT */
+	gdt[3].base_address_15_0 = ((uint32_t)(&default_tss) & 0xffff);
+	gdt[3].base_address_23_16 = (((uint32_t)(&default_tss) >> 16) & 0xff);
+	gdt[3].base_address_31_24 = (((uint32_t)(&default_tss) >> 24) & 0xff);
 
 	/* Commit the GDT into the CPU, and update the segment
 		registers. The CS register may only be updated with a long jump
