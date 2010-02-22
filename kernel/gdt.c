@@ -60,7 +60,7 @@ struct tss default_tss;
  */
 struct x86_gdt_register {
 	/* Contient la taille */
-	uint32_t limit; /* Attention, un descripteur de segment faisant 8 octets, 
+	uint16_t limit; /* Attention, un descripteur de segment faisant 8 octets, 
 							 la limite doit être un multiple de 8, moins 1 (8N-1). */
 
 	/* Et l'adresse où sont les descripteurs de segment. */
