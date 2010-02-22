@@ -26,7 +26,7 @@ struct cpu_cxt {
 
 } __attribute__((packed));
 
-int cup_ctxt_init (paddr_t* pStack, paddr_t* pFunct) {
+int cpu_ctxt_init (paddr_t* pStack, paddr_t* pFunct) {
   
   paddr_t CurrentSatck;
   asm volatile (\

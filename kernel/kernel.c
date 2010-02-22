@@ -112,8 +112,8 @@ void cmain (unsigned long magic, unsigned long addr) {
   
   asm volatile (" movl %%esp, %0;" :: "m"(pCurrentStack) );
  
-  cup_ctxt_init(processA);
-  cup_ctxt_init(processB);
+  cpu_ctxt_init(processA);
+  cpu_ctxt_init(processB);
 
   //cpu_ctxt_switch(&pCurrentStack, &pStackA);
 
