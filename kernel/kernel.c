@@ -3,7 +3,7 @@
 #include <i8259.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <mempage.h>
+#include <memory.h>
 #include <gdt.h>
 #include <exception.h>
 #include <interrupts.h>
@@ -92,10 +92,10 @@ void cmain (unsigned long magic, unsigned long addr) {
 	asm volatile ("sti\n");
 
 	/* Configuration de la pagination */
-	mempage_setup((mbi->mem_upper << 10) + (1 << 20));
+	memory_setup((mbi->mem_upper << 10) + (1 << 20));
 
-	//mempage_print_free_pages();
-	//mempage_print_used_pages();
+	//memory_print_free_pages();
+	//memory_print_used_pages();
 
 	//printf("Div 0 : %d.\n", 3/0);
 	pci_scan();
@@ -105,9 +105,9 @@ void cmain (unsigned long magic, unsigned long addr) {
   //----------- TEST CONTEXT SWICHING ------------------------- //
   //Creation des piles pour les Processus A et B
   paddr_t pPage, pStackA, pStackB, pCurrentStack;
-  pPage = mempage_reserve_page();
+  pPage = memory_reserve_page();
   pStackA = pPage + PAGE_SIZE -1;
-  pPage = mempage_reserve_page();
+  pPage = memory_reserve_page();
   pStackB = pPage + PAGE_SIZE -1;
   
   asm volatile (" movl %%esp, %0;" :: "m"(pCurrentStack) );
@@ -149,18 +149,18 @@ void waitReturn()
 void testPageReservation()
 {
   paddr_t addr;
-  mempage_print_free_pages();
-  mempage_print_used_pages();
+  memory_print_free_pages();
+  memory_print_used_pages();
   waitReturn();
 
-  addr = mempage_reserve_page();
-  mempage_print_free_pages();
-  mempage_print_used_pages();
+  addr = memory_reserve_page();
+  memory_print_free_pages();
+  memory_print_used_pages();
   waitReturn();
 
-  mempage_free_page(addr);
-  mempage_print_free_pages();
-  mempage_print_used_pages();
+  memory_free_page(addr);
+  memory_print_free_pages();
+  memory_print_used_pages();
   waitReturn();
 }
 

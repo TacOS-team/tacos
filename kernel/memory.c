@@ -1,6 +1,6 @@
 #include <types.h>
 #include <stdio.h>
-#include "mempage.h"
+#include "memory.h"
 
 struct physical_page_descr {
 	/* Contient bien sûr l'adresse physique de la zone mémoire ! */
@@ -22,14 +22,14 @@ static struct physical_page_descr * phys_page_descr_array;
 /**
  * Retourne l'adresse de la page en arrondissant à l'inférieur.
  */
-static paddr_t mempage_align_page_inf(paddr_t value) {
+static paddr_t memory_align_page_inf(paddr_t value) {
 	return value - value%PAGE_SIZE;
 };
 
 /**
  * Retourne l'adresse de la page en arrondissant au supérieur.
  */
-static paddr_t mempage_align_page_sup(paddr_t value) {
+static paddr_t memory_align_page_sup(paddr_t value) {
 	if (value % PAGE_SIZE == 0) {
 		return value;
 	}
@@ -40,7 +40,7 @@ static paddr_t mempage_align_page_sup(paddr_t value) {
 /**
  * Affiche les pages utilisées.
  */
-void mempage_print_used_pages() {
+void memory_print_used_pages() {
 	struct physical_page_descr *p;
 
 	printf("Used pages : ");
@@ -56,7 +56,7 @@ void mempage_print_used_pages() {
 /**
  * Affiche les pages disponibles.
  */
-void mempage_print_free_pages() {
+void memory_print_free_pages() {
 	struct physical_page_descr *p;
 
 	printf("Free pages : ");
@@ -74,20 +74,20 @@ void mempage_print_free_pages() {
  * virtuelle, c'est donc juste une association linéaire avec autant de pages
  * que de cadres.
  */
-void mempage_setup(size_t ram_size) {
-	ram_size = mempage_align_page_inf(ram_size); /* On abandonne un petit bout de mémoire pour avoir que des pages completes */
+void memory_setup(size_t ram_size) {
+	ram_size = memory_align_page_inf(ram_size); /* On abandonne un petit bout de mémoire pour avoir que des pages completes */
 
 	/* On place le tableau de pages juste après la fin du kernel. */
-	phys_page_descr_array = (struct physical_page_descr*) mempage_align_page_sup((size_t)(& __e_kernel));
+	phys_page_descr_array = (struct physical_page_descr*) memory_align_page_sup((size_t)(& __e_kernel));
 
 	size_t phys_mem_base = PAGE_SIZE; /* La page d'adresse 0 est réservée pour les erreurs. (c'est un choix arbitraire) */
 	size_t phys_mem_top = ram_size;
 
 	/* Maintenant on va récupérer les pages qui chevauchent l'emplacement où est le
 	 * kernel ainsi que la table qui contient les pages. On va les marquer utilisées. */
-	paddr_t kernel_base = mempage_align_page_inf((paddr_t)(& _start));
+	paddr_t kernel_base = memory_align_page_inf((paddr_t)(& _start));
 	uint32_t n_pages = ram_size / PAGE_SIZE; /* ram_size est un multiple de PAGE_SIZE ! */
-	paddr_t kernel_top = (paddr_t)phys_page_descr_array + mempage_align_page_sup(n_pages * sizeof(struct physical_page_descr));
+	paddr_t kernel_top = (paddr_t)phys_page_descr_array + memory_align_page_sup(n_pages * sizeof(struct physical_page_descr));
 
 	struct physical_page_descr *phys_page_descr = (struct physical_page_descr*) phys_page_descr_array;
 	paddr_t phys_page_addr = phys_mem_base; /* Adresse d'une page */
@@ -122,7 +122,7 @@ void mempage_setup(size_t ram_size) {
 	}
 }
 
-paddr_t mempage_reserve_page()
+paddr_t memory_reserve_page()
 {
   struct physical_page_descr *p = free_pages;
  
@@ -140,7 +140,7 @@ paddr_t mempage_reserve_page()
   return p->addr;
 }
 
-void mempage_free_page(paddr_t addr)
+int memory_free_page(paddr_t addr)
 {
   int found = 0;
 	struct physical_page_descr *p;
@@ -170,5 +170,7 @@ void mempage_free_page(paddr_t addr)
   p->prev = NULL;
   p->next = free_pages;
   free_pages = p;
+
+  return 0;
 }
 

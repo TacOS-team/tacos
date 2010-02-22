@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <mempage.h>
+#include <memory.h>
 #include <types.h>
 
 typedef struct malloc_page_
@@ -38,7 +38,7 @@ static mallocated_queue allocatedMem = {NULL, NULL};
 // réserver pour pour la description de l'occutpion de cette page.
 malloc_page *reserve_page()
 {
-  malloc_page *p = (malloc_page *) mempage_reserve_page();
+  malloc_page *p = (malloc_page *) memory_reserve_page();
   p->nbAllocated = 0;
   p->next = NULL;
 
