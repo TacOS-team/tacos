@@ -30,6 +30,23 @@ static void testhandlerexception(int error_id)
 	printf("Exception : %d\n", error_id);
 }
 
+static void processA (paddr_t* pStackA, paddr_t* pStackB) {
+    int i;
+    for (i=0;i<5;i++) {
+      printf(" PA(%d) ",i);
+      cpu_ctxt_switch(pStackA, pStackB);
+    }
+    cpu_ctxt_switch(pStackA, pStackB);
+}
+static void processB (paddr_t* pStackA, paddr_t* pStackB, paddr_t* pStackMain) {
+    int i;
+    for (i=0;i<5;i++) {
+      printf(" PB(%d) ",i);
+      cpu_ctxt_switch(pStackB, pStackA);
+    }
+    cpu_ctxt_switch(pStackB, pStackMain);
+}
+
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
   kernel_options options;
@@ -85,6 +102,20 @@ void cmain (unsigned long magic, unsigned long addr) {
 	pci_list();
 
 
+  //----------- TEST CONTEXT SWICHING ------------------------- //
+  //Creation des piles pour les Processus A et B
+  paddr_t pPage, pStackA, pStackB, pCurrentStack;
+  pPage = mempage_reserve_page();
+  pStackA = pPage + PAGE_SIZE -1;
+  pPage = mempage_reserve_page();
+  pStackB = pPage + PAGE_SIZE -1;
+  
+  asm volatile (" movl %%esp, %0;" :: "m"(pCurrentStack) );
+ 
+  cup_ctxt_init(processA);
+  cup_ctxt_init(processB);
+
+  //cpu_ctxt_switch(&pCurrentStack, &pStackA);
 
 	//recopie de dummy process plus loin en memoire
 	int i;

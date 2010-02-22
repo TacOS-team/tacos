@@ -3,7 +3,7 @@ LDFLAGS=-L../lib/
 LDLIBS=-lc
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
   
-all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gdt.o mempage.o exception.o interrupts.o scheduler.o dummy_process.o 
+all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gdt.o mempage.o exception.o interrupts.o scheduler.o dummy_process.o process.o 
 
 boot.o: boot.S
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDE) -fno-stack-protector
@@ -32,6 +32,8 @@ exception.o: ../include/exception.h ../include/types.h include/idt.h
 interrupts.o: ../include/interrupts.h ../include/types.h include/idt.h
 
 scheduler.o: ../include/stdio.h ../include/types.h include/scheduler.h
+
+process.o : ../include/stdio.h ../include/stdlib.h ../include/process.h ../include/types.h
 
 dummy_process.o: ../include/stdio.h ../include/types.h include/dummy_process.h
 
