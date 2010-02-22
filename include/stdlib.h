@@ -5,6 +5,7 @@
 
 void *malloc(size_t size);
 void printMallocated();
+void free(void *addr);
 
 #endif
 

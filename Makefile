@@ -1,7 +1,7 @@
 export MAKE=make
 export CC=gcc
 export LD=ld
-export CFLAGS=-W -Wall -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
+export CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LDFLAGS=-Llib/
 LDLIBS=-lc -lpci -lkeyboard -lclock
 

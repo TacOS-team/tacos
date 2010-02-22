@@ -21,7 +21,7 @@ struct x86_segment_descriptor
 	uint8_t segment_limit_19_16:4; /* Suite du segment limit. */
 	uint8_t available:1; /* Un bit disponible pour nous... */
 	uint8_t zero:1; /* Bit réservé qui doit prendre la valeur 0. */
-	uint8_t operation_size; /* 0 = 16bits, 1 = 32bits */
+	uint8_t operation_size:1; /* 0 = 16bits, 1 = 32bits */
 	uint8_t granularity:1; /* Granularité : Détermine l'échele du segment limit. 0 : c'est des bytes, 1 : c'est par 4kio */
 	uint8_t base_address_31_24; /* Fin de la base address. Soit 32 bits ce qui correspond aux 4Gio adressables. */
 
@@ -143,23 +143,17 @@ void gdt_setup() {
 	gdt[3].base_address_23_16 = (((uint32_t)(&default_tss) >> 16) & 0xff);
 	gdt[3].base_address_31_24 = (((uint32_t)(&default_tss) >> 24) & 0xff);
 
-	/* Commit the GDT into the CPU, and update the segment
-		registers. The CS register may only be updated with a long jump
-		to an absolute address in the given segment (see Intel x86 doc
-		vol 3, section 4.8.1). (Code repris) */
+	/* On commit la gdt avec lgdt. Puis on fait un saut long dans le segment code où on va ensuite reloader les registres avec le segment data.  */
 	asm volatile ("lgdt %0          \n\
-						ljmp %1,$1f      \n\
-						1:               \n\
-						movw %2, %%ax    \n\
+						ljmp $0x08,$1f \n\
+						1: \n\
+						movw $0x10, %%ax    \n\
 						movw %%ax,  %%ss \n\
 						movw %%ax,  %%ds \n\
 						movw %%ax,  %%es \n\
 						movw %%ax,  %%fs \n\
 						movw %%ax,  %%gs"
 			:
-			:"m"(gdtr),
-			 "i"(8),
-			 "i"(16)
-			:"memory","eax"); /* TODO: Vérifier cette dernière ligne, 
-										je l'ai vu dans plusieurs exemples sur internet mais je sais pas à quoi ça sert ! */
+			:"m"(gdtr)
+			:"memory","eax"); // memory pour lui dire d'appliquer direct les modifs sur eax.
 }

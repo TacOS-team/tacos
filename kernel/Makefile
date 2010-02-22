@@ -1,6 +1,7 @@
 INCLUDE=-I../include/ -Iinclude/
 LDFLAGS=-L../lib/
 LDLIBS=-lc
+CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
   
 all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gdt.o mempage.o exception.o interrupts.o scheduler.o dummy_process.o 
 
