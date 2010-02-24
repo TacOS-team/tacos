@@ -1,8 +1,11 @@
 #ifndef _PROCESS_H_
 #define _PROCESS_H_
 
-
 #include <types.h>
+
+#define PROCSTATE_IDLE 1
+#define PROCSTATE_RUNNING 2
+#define PROCSTATE_WAITING 3
 
 struct cpu_ctxt {
     uint16_t  gs;
