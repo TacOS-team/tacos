@@ -1,17 +1,35 @@
 #include <stdio.h>
 #include <types.h>
 #include <scheduler.h>
+#include <process.h>
 
-typedef int (*main_func_type) (uint32_t, uint8_t**);
+#define MAX_PROC 255
 
-typedef struct s_process
+struct process process_list[MAX_PROC];
+uint8_t num_proc;
+
+void init_scheduler()
 {
+	num_proc = 0;
 	
-} process;
+}
 
-void add_process(paddr_t prog, uint32_t argc, uint8_t** argv)
+int add_process(paddr_t prog, uint32_t argc, uint8_t** argv)
 {
-	int (*p)(uint32_t, uint8_t**) = (main_func_type)prog;
+	if(num_proc < MAX_PROC)
+	{
+		struct process new_proc;
+		
+		if(init_process(prog, argc, argv, &new_proc) != 0)
+		{
+			return 2;
+		}
+
+		num_proc++;		
+		process_list[num_proc] = new_proc;
+		
+		return 0;
+	}
 	
-	p(argc,argv);
+	return 1;
 }

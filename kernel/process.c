@@ -4,27 +4,26 @@
 
 #include "process.h"
 
-struct cpu_cxt {
+typedef int (*main_func_type) (uint32_t, uint8_t**);
 
-    uint16_t  gs;
-    uint16_t  fs;
-    uint16_t  ds;
-    uint16_t  ss;
-    uint16_t  cs; 
-    uint16_t  alignement; //inutilisé
-
-    uint32_t  edi;
-    uint32_t  esi;
-    uint32_t  ebp;
-    uint32_t  esp;
-    uint32_t  ebx;
-    uint32_t  edx;
-    uint32_t  ecx;
-    uint32_t  eax;
-    uint32_t  eflags;
-    uint32_t  eip;
-
-} __attribute__((packed));
+int init_process(paddr_t prog, uint32_t argc, uint8_t** argv, struct process* new_proc)
+{
+	/* VIEUX CODE DE DEBUG
+	int (*p)(uint32_t, uint8_t**) = (main_func_type)prog;
+	p(argc,argv);
+	*/
+	
+	/*
+	 * non implemente
+	 * TODO :
+	 * mettre en place une stack
+	 * mettre en place un segment data
+	 * initialiser la stack (empiler les arguments...)
+	 * remplir le struct process
+	 */
+	
+	return 1;
+}
 
 int cpu_ctxt_init (paddr_t* pStack, paddr_t* pFunct) {
   
