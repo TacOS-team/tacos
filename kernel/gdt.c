@@ -1,4 +1,5 @@
 #include <types.h>
+#include "memory.h"
 
 /*
  * Segment Descriptor (cf doc intel v3. 3.4.3)
@@ -129,7 +130,7 @@ static struct x86_segment_descriptor gdt[] = {
 /*
  * Configuration de la gdt.
  */
-void gdt_setup() {
+void gdt_setup(size_t ram_size) {
 	struct x86_gdt_register gdtr;
 
 	/* Adresse de la GDT */
@@ -138,6 +139,15 @@ void gdt_setup() {
 	/* Offset/Taille de la gdt */
 	gdtr.limit     = sizeof(gdt) - 1;
 	
+	/* On utilise des segments dont la limite correspond à la mémoire physique ! */
+
+	/*
+	gdt[1].segment_limit_15_0 = (ram_size / PAGE_SIZE + 1) & 0xffff;
+	gdt[1].segment_limit_19_16 = ((ram_size / PAGE_SIZE + 1) >> 16) & 0xf;
+	gdt[2].segment_limit_15_0 = (ram_size / PAGE_SIZE + 1) & 0xffff;
+	gdt[2].segment_limit_19_16 = ((ram_size / PAGE_SIZE + 1) >> 16) & 0xf;
+	*/
+
 	/* Initialisation du descripteur de TSS dans la GDT */
 	gdt[3].base_address_15_0 = ((uint32_t)(&default_tss) & 0xffff);
 	gdt[3].base_address_23_16 = (((uint32_t)(&default_tss) >> 16) & 0xff);

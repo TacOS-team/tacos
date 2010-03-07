@@ -77,7 +77,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	printf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
 
-	gdt_setup();
+	gdt_setup((mbi->mem_upper << 10) + (1 << 20));
 
 	/* Mise en place de la table qui contient les descripteurs d'interruption (idt) */
 	idt_setup();

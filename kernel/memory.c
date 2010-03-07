@@ -73,8 +73,10 @@ void memory_print_free_pages() {
  * Découpage de la mémoire physique en taille fixe. Pour l'instant il n'y a pas de mémoire 
  * virtuelle, c'est donc juste une association linéaire avec autant de pages
  * que de cadres.
+ * ram_size en octets.
  */
 void memory_setup(size_t ram_size) {
+
 	ram_size = memory_align_page_inf(ram_size); /* On abandonne un petit bout de mémoire pour avoir que des pages completes */
 
 	/* On place le tableau de pages juste après la fin du kernel. */
