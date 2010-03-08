@@ -10,7 +10,7 @@
 void memory_print_used_pages();
 void memory_print_free_pages();
 void memory_setup(size_t ram_size);
-paddr_t memory_reserve_page();
-int memory_free_page(paddr_t addr);
+paddr_t memory_reserve_page_frame();
+int memory_free_page_frame(paddr_t addr);
 
 #endif

@@ -124,55 +124,55 @@ void memory_setup(size_t ram_size) {
 	}
 }
 
-paddr_t memory_reserve_page()
+paddr_t memory_reserve_page_frame()
 {
-  struct physical_page_descr *p = free_pages;
+	struct physical_page_descr *p = free_pages;
  
-  // pop it from free page stack
-  free_pages = free_pages->next;
-  if(free_pages != NULL)
-    free_pages->prev = NULL;
+	// pop it from free page stack
+	free_pages = free_pages->next;
+	if(free_pages != NULL)
+		free_pages->prev = NULL;
  
-  // put the new reserved on used page stack
+	// put the new reserved on used page stack
 	used_pages->prev = p;
-  p->next = used_pages;
-  used_pages = p;
-  p->prev = NULL;
+	p->next = used_pages;
+	used_pages = p;
+	p->prev = NULL;
 
-  return p->addr;
+	return p->addr;
 }
 
-int memory_free_page(paddr_t addr)
+int memory_free_page_frame(paddr_t addr)
 {
-  int found = 0;
+	int found = 0;
 	struct physical_page_descr *p;
 
 	p = used_pages;
 	while (p != NULL)
-  {
-    if(p->addr == addr)
-    {
-      found = 1;
-      if(p->next != NULL)
-        p->next->prev = p->prev;
-      if(p->prev != NULL)
-        p->prev->next = p->next;
+	{
+		if(p->addr == addr)
+		{
+			found = 1;
+			if(p->next != NULL)
+				p->next->prev = p->prev;
+			if(p->prev != NULL)
+				p->prev->next = p->next;
 
-      break;
-    }
+			break;
+		}
 	}
-  
-  if(!found)
-    return -1;
+	
+	if(!found)
+		return -1;
 
-  used_pages = used_pages->next;
+	used_pages = used_pages->next;
 
-  if(free_pages != NULL) 
-    free_pages->prev = p;
-  p->prev = NULL;
-  p->next = free_pages;
-  free_pages = p;
+	if(free_pages != NULL) 
+		free_pages->prev = p;
+	p->prev = NULL;
+	p->next = free_pages;
+	free_pages = p;
 
-  return 0;
+	return 0;
 }
 

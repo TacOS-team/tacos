@@ -38,7 +38,7 @@ static mallocated_queue allocatedMem = {NULL, NULL};
 // réserver pour pour la description de l'occutpion de cette page.
 malloc_page *reserve_page()
 {
-  malloc_page *p = (malloc_page *) memory_reserve_page();
+  malloc_page *p = (malloc_page *) memory_reserve_page_frame();
   p->nbAllocated = 0;
   p->next = NULL;
 

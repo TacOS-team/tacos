@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory.h>
+#include <pagination.h>
 #include <gdt.h>
 #include <exception.h>
 #include <interrupts.h>
@@ -31,25 +32,25 @@ static void testhandlerexception(int error_id)
 }
 
 static void processA (paddr_t* pStackA, paddr_t* pStackB) {
-    int i;
-    for (i=0;i<5;i++) {
-      printf(" PA(%d) ",i);
-      cpu_ctxt_switch(pStackA, pStackB);
-    }
-    cpu_ctxt_switch(pStackA, pStackB);
+	int i;
+	for (i=0;i<5;i++) {
+		printf(" PA(%d) ",i);
+		cpu_ctxt_switch(pStackA, pStackB);
+	}
+	cpu_ctxt_switch(pStackA, pStackB);
 }
 static void processB (paddr_t* pStackA, paddr_t* pStackB, paddr_t* pStackMain) {
-    int i;
-    for (i=0;i<5;i++) {
-      printf(" PB(%d) ",i);
-      cpu_ctxt_switch(pStackB, pStackA);
-    }
-    cpu_ctxt_switch(pStackB, pStackMain);
+	int i;
+	for (i=0;i<5;i++) {
+		printf(" PB(%d) ",i);
+		cpu_ctxt_switch(pStackB, pStackA);
+	}
+	cpu_ctxt_switch(pStackB, pStackMain);
 }
 
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
-  kernel_options options;
+	kernel_options options;
 
 	/* Clear the screen. */
 	cls ();
@@ -63,7 +64,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	/* Set MBI to the address of the Multiboot information structure. */
 	mbi = (multiboot_info_t *) addr;
-  initKernelOptions((char *)mbi->cmdline, &options);
+	initKernelOptions((char *)mbi->cmdline, &options);
 
 	/* The Hello World */
 	//printf("\nHello World !\n\n");
@@ -73,7 +74,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	printf("    _|    _|    _|  _|        _|    _|    _|_|  \n");
 	printf("    _|    _|    _|  _|        _|    _|        _|\n");
 	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
-  printf("(codename:fajitas)\n\n\n");
+	printf("(codename:fajitas)\n\n\n");
 
 	printf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
 
@@ -86,13 +87,14 @@ void cmain (unsigned long magic, unsigned long addr) {
 	i8259_setup();
 
 	exception_set_routine(EXCEPTION_DIVIDE_ERROR, testhandlerexception);
-  clock_init(); 
-  interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt);
+	clock_init(); 
+	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt);
 
 	asm volatile ("sti\n");
 
 	/* Configuration de la pagination */
 	memory_setup((mbi->mem_upper << 10) + (1 << 20));
+	//pagination_setup();
 
 	//memory_print_free_pages();
 	//memory_print_used_pages();
@@ -102,20 +104,20 @@ void cmain (unsigned long magic, unsigned long addr) {
 	pci_list();
 
 
-  //----------- TEST CONTEXT SWICHING ------------------------- //
-  //Creation des piles pour les Processus A et B
-  paddr_t pPage, pStackA, pStackB, pCurrentStack;
-  pPage = memory_reserve_page();
-  pStackA = pPage + PAGE_SIZE -1;
-  pPage = memory_reserve_page();
-  pStackB = pPage + PAGE_SIZE -1;
-  
-  asm volatile (" movl %%esp, %0;" :: "m"(pCurrentStack) );
+	//----------- TEST CONTEXT SWICHING ------------------------- //
+	//Creation des piles pour les Processus A et B
+	paddr_t pPage, pStackA, pStackB, pCurrentStack;
+	pPage = memory_reserve_page_frame();
+	pStackA = pPage + PAGE_SIZE -1;
+	pPage = memory_reserve_page_frame();
+	pStackB = pPage + PAGE_SIZE -1;
+	
+	asm volatile (" movl %%esp, %0;" :: "m"(pCurrentStack) );
  
-  cpu_ctxt_init(processA);
-  cpu_ctxt_init(processB);
+	cpu_ctxt_init(processA);
+	cpu_ctxt_init(processB);
 
-  //cpu_ctxt_switch(&pCurrentStack, &pStackA);
+	//cpu_ctxt_switch(&pCurrentStack, &pStackA);
 
 	//recopie de dummy process plus loin en memoire
 	int i;
@@ -130,94 +132,94 @@ void cmain (unsigned long magic, unsigned long addr) {
 	char* args[] = {"dummy","1"};
 	add_process(rec,2,(uint8_t**)args);
 	
-  
+	
 	for(;;)
-  {
-    char c;
-    printf("\n> ");
-    while((c = getchar()) != '\n')
-      putchar(c);
-  }
+	{
+		char c;
+		printf("\n> ");
+		while((c = getchar()) != '\n')
+			putchar(c);
+	}
 }
 
 void waitReturn()
 {
-  while(getchar() != '\n')
-    ;
+	while(getchar() != '\n')
+		;
 }
 
 void testPageReservation()
 {
-  paddr_t addr;
-  memory_print_free_pages();
-  memory_print_used_pages();
-  waitReturn();
+	paddr_t addr;
+	memory_print_free_pages();
+	memory_print_used_pages();
+	waitReturn();
 
-  addr = memory_reserve_page();
-  memory_print_free_pages();
-  memory_print_used_pages();
-  waitReturn();
+	addr = memory_reserve_page_frame();
+	memory_print_free_pages();
+	memory_print_used_pages();
+	waitReturn();
 
-  memory_free_page(addr);
-  memory_print_free_pages();
-  memory_print_used_pages();
-  waitReturn();
+	memory_free_page_frame(addr);
+	memory_print_free_pages();
+	memory_print_used_pages();
+	waitReturn();
 }
 
 void testMalloc()
 {
-  int *nyu1, *nyu2, *nyu3, *nyu4;
-  printf("NYU : %d\n", nyu1 = (int *) malloc(10));
-  printMallocated();
-  printf("NYU : %d\n", nyu2 = (int *) malloc(20));
-  printMallocated();
-  printf("NYU : %d\n", nyu3 = (int *) malloc(42));
-  printMallocated();
-  printf("NYU : %d\n", nyu4 = (int *) malloc(1337));
-  printMallocated();
+	int *nyu1, *nyu2, *nyu3, *nyu4;
+	printf("NYU : %d\n", nyu1 = (int *) malloc(10));
+	printMallocated();
+	printf("NYU : %d\n", nyu2 = (int *) malloc(20));
+	printMallocated();
+	printf("NYU : %d\n", nyu3 = (int *) malloc(42));
+	printMallocated();
+	printf("NYU : %d\n", nyu4 = (int *) malloc(1337));
+	printMallocated();
 
-  free(nyu3);
-  printMallocated();
+	free(nyu3);
+	printMallocated();
 
-  printf("NYU : %d\n", nyu3 = (int *) malloc(10));
-  printMallocated();
+	printf("NYU : %d\n", nyu3 = (int *) malloc(10));
+	printMallocated();
 }
 
 static void defaultOptions(kernel_options *options)
 {
-  options->lol = 0;
+	options->lol = 0;
 }
 
 static char get_opt(char **cmdLine)
 {
-  while(**cmdLine != '-' && **cmdLine != '\0') 
-    (*cmdLine)++;
+	while(**cmdLine != '-' && **cmdLine != '\0') 
+		(*cmdLine)++;
 
-  if(**cmdLine == '\0')
-    return -1;
+	if(**cmdLine == '\0')
+		return -1;
 
-  *cmdLine += 2;
-  return *(*cmdLine - 1);
+	*cmdLine += 2;
+	return *(*cmdLine - 1);
 }
 
 static void initKernelOptions(const char *cmdLine, kernel_options *options)
 {
-  char *cmd = cmdLine;
-  char opt;
+	char *cmd = cmdLine;
+	char opt;
 
-  printf("Command line : %s\n", cmdLine);
+	printf("Command line : %s\n", cmdLine);
 
-  defaultOptions(options);
-  while((opt = get_opt(&cmd)) != -1)
-  {
-    switch(opt)
-    {
-    case 'l':
-        options->lol = 1;
-        enableFinnouMode(1);
-        break;
-    default: printf("Unknown option %c\n", opt);
-    }
-  }
+	defaultOptions(options);
+	while((opt = get_opt(&cmd)) != -1)
+	{
+		switch(opt)
+		{
+		case 'l':
+				options->lol = 1;
+				enableFinnouMode(1);
+				break;
+		default: printf("Unknown option %c\n", opt);
+		}
+	}
 }
 
