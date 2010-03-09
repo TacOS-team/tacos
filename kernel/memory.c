@@ -2,15 +2,6 @@
 #include <stdio.h>
 #include "memory.h"
 
-struct physical_page_descr {
-	/* Contient bien sûr l'adresse physique de la zone mémoire ! */
-	paddr_t addr;
-
-	/* Cet élément fera parti d'un liste doublement chainée (page utilisée ou libre) */
-	struct physical_page_descr *next;
-	struct physical_page_descr *prev;
-};
-
 static struct physical_page_descr *used_pages = NULL;
 static struct physical_page_descr *free_pages = NULL;
 
@@ -67,6 +58,40 @@ void memory_print_free_pages() {
 		p = p->next;
 	}
 	printf("\n");
+}
+
+/**
+ * Donne une copie du pointeur du haut de la pile des pages utilisées
+ */
+struct physical_page_descr * memory_get_first_used_page() {
+	return used_pages;
+}
+
+/**
+ * Donne une copie du pointeur du haut de la pile des pages libres
+ */
+struct physical_page_descr * memory_get_first_free_page() {
+	return free_pages;
+}
+
+/**
+ * Retourne vrai s'il y a encore une page.
+ */
+bool memory_has_next_page(struct physical_page_descr * iterator) {
+	return (iterator != NULL && iterator->next != NULL);
+}
+
+/**
+ * Retourne la prochaine page occupée.
+ */
+paddr_t memory_next_page(struct physical_page_descr ** iterator) {
+	if (iterator != NULL) {
+		paddr_t r = (*iterator)->addr;
+		*iterator = (*iterator)->next;
+		return r;
+	} else {
+		return 0;
+	}
 }
 
 /**
