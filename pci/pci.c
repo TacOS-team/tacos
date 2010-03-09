@@ -72,12 +72,12 @@ void pci_scan()
 
 void pci_list()
 {
-	uint16_t i;
+	uint16_t i=0;
 
 	for(i=0; i<pci_table_len; i++)
 	{
-		//pci_print_detailed_info(pci_get_function(i));
-		pci_print_info(pci_get_function(i));
+		pci_print_detailed_info(pci_get_function(i));
+		//pci_print_info(pci_get_function(2));
 	}
 }
 
@@ -88,5 +88,6 @@ void pci_list()
 
  
 			
+	
 	
 

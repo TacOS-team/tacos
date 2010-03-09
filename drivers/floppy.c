@@ -1,7 +1,11 @@
 #include <ioports.h>
+#include <stdio.h>
+#include <types.h>
 
 #define FLOPPY_BASE	0x03f0
 #define FLOPPY_IRQ	6
+
+
 
 enum floppy_registers
 {
@@ -46,6 +50,18 @@ static const char * drive_types[8] = {
 	"720kB 5.25\"",
 	"1.44MB 3.5\"",
 	"2.88MB 3.5\"",
-	"unknown type",
-	"unknown type"
+	"unknown type (unmounted?)",
+	"unknown type (unmounted?)"
 };
+
+// Récupère les lecteurs floppy disponibles en interrogeant le CMOS
+void floppy_detect_drives() {
+	uint8_t drives;
+	
+	// Lecture du registre CMOS contenant les types de lecteur disquette
+	outb(0x70, 0x10);
+	drives = inb(0x71);
+	
+	printf("Floppy drive 1: %s\n", drive_types[drives >> 4]);
+	printf("Floppy drive 2: %s\n", drive_types[drives & 0xf]);
+}

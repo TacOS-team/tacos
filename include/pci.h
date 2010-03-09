@@ -9,5 +9,6 @@ uint8_t pci_get_device_slot( pci_device_t device );
 uint8_t pci_get_device_function_nb( pci_device_t device );
 
 void pci_scan();
+void pci_list();
 
 #endif

@@ -139,11 +139,17 @@ void pci_print_detailed_info(pci_function_p func)
 	printf("Bus %x, Slot %x, Func %x:\n",func->bus, func->slot, func->function);
 	printf("      Device: %s (%s)\n",pci_get_device(func->bus,func->slot,func->function)->ChipDesc, 
                                            pci_get_device(func->bus,func->slot,func->function)->Chip);
+
 	printf("      Vendor: %s\n",pci_get_vendor(func->bus,func->slot,func->function)->VenFull);
-	printf("      Class: %s %s (%s)\n",pci_get_classcode(func->bus,func->slot,func->function)->SubDesc,
+	
+/*	printf("      Class: 0x%x 0x%x (0x%x)\n",pci_get_classcode(func->bus,func->slot,func->function)->SubClass,
+   					       pci_get_classcode(func->bus,func->slot,func->function)->BaseClass,
+                                             pci_get_classcode(func->bus,func->slot,func->function)->ProgIf);
+*/
+/*	printf("      Class: %s %s (%s)\n",pci_get_classcode(func->bus,func->slot,func->function)->BaseDesc,
    					       pci_get_classcode(func->bus,func->slot,func->function)->BaseDesc,
                                                pci_get_classcode(func->bus,func->slot,func->function)->ProgDesc);
-	
+*/
 	bar = pci_read_value(func, PCI_BAR0);
 	if(bar!=0)
 		printf("      BAR0=0x%x\n",bar);
