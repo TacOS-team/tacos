@@ -94,7 +94,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	/* Configuration de la pagination */
 	memory_setup((mbi->mem_upper << 10) + (1 << 20));
-	//pagination_setup();
+	pagination_setup();
 
 	//memory_print_free_pages();
 	//memory_print_used_pages();
@@ -103,6 +103,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	pci_scan();
 	pci_list();
 
+	/* PLANTE !!!!
 
 	//----------- TEST CONTEXT SWICHING ------------------------- //
 	//Creation des piles pour les Processus A et B
@@ -132,6 +133,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	char* args[] = {"dummy","1"};
 	add_process(rec,2,(uint8_t**)args);
 	
+	*/
+
 	
 	for(;;)
 	{

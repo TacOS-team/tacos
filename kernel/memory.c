@@ -33,6 +33,7 @@ static paddr_t memory_align_page_sup(paddr_t value) {
  */
 void memory_print_used_pages() {
 	struct physical_page_descr *p;
+	int c = 0;
 
 	printf("Used pages : ");
 
@@ -40,8 +41,9 @@ void memory_print_used_pages() {
 	while (p != NULL) {
 		printf("%x ", p->addr);
 		p = p->next;
+		c++;
 	}
-	printf("\n");
+	printf(" (%d pages) \n", c);
 }
 
 /**
