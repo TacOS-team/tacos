@@ -5,8 +5,6 @@
 #define FLOPPY_BASE	0x03f0
 #define FLOPPY_IRQ	6
 
-
-
 enum floppy_registers
 {
 	FLOPPY_SRA = 0, // Status register A		-- read-only
@@ -59,10 +57,44 @@ void floppy_detect_drives() {
 	uint8_t drives;
 	
 	// Lecture du registre CMOS contenant les types de lecteur disquette
-	outb(0x10, 0x70);
+	outb(0x10, 0x70); // Selection du registre 0x10 du CMOS
 	drives = inb(0x71);
 	
 	printf("CMOS 0x10: 0x%x\n",drives);
 	printf("Floppy drive 1: %s\n", drive_types[drives >> 4]);
 	printf("Floppy drive 2: %s\n", drive_types[drives & 0xf]);
 }
+
+bool floppy_ready(int base)
+{
+	return ((0x80 & inb(base + FLOPPY_MSR))== TRUE);
+}
+	
+
+int floppy_write_command(int base, char cmd)
+{
+	int ret = -1;
+	
+	/*TODO: Ajouter un timeout plutot que d'abandonner si la FIFO n'est pas prête */
+	
+	if(floppy_ready(base)) // On envoi la commande que si la FIFO est prête
+	{
+		outb(cmd, base + FLOPPY_FIFO);
+		ret = 0;
+	}
+	
+	return ret;
+}
+
+uint8_t floppy_read_data(int base)
+{
+	uint8_t ret = 0;
+	
+	if(floppy_ready(base)) // On ne lis que si la FIFO est prête
+	{
+		ret = inb(base + FLOPPY_FIFO);
+	}
+	
+	return ret;
+}
+	
