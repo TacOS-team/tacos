@@ -102,7 +102,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	//printf("Div 0 : %d.\n", 3/0);
 	pci_scan();
-	pci_list();
+//	pci_list();
 
 	/* PLANTE !!!!
 
@@ -137,6 +137,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	*/
 
 	floppy_detect_drives();
+	printf("Floppy controller version: 0x%x.\n", floppy_get_version());
 	for(;;)
 	{
 		char c;

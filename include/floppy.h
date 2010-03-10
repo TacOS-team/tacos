@@ -3,4 +3,6 @@
 
 void floppy_detect_drives();
 
+uint8_t floppy_get_version();
+
 #endif

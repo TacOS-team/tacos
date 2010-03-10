@@ -59,15 +59,19 @@ void floppy_detect_drives() {
 	// Lecture du registre CMOS contenant les types de lecteur disquette
 	outb(0x10, 0x70); // Selection du registre 0x10 du CMOS
 	drives = inb(0x71);
-	
-	printf("CMOS 0x10: 0x%x\n",drives);
+
 	printf("Floppy drive 1: %s\n", drive_types[drives >> 4]);
 	printf("Floppy drive 2: %s\n", drive_types[drives & 0xf]);
 }
 
 bool floppy_ready(int base)
 {
-	return ((0x80 & inb(base + FLOPPY_MSR))== TRUE);
+	/* DEBUG 
+	int i = inb(base + FLOPPY_MSR);
+	printf("MSR:0x%x.\n", i&);
+	*/
+		
+	return ((0x80 & inb(base + FLOPPY_MSR))!=0);
 }
 	
 
@@ -97,4 +101,12 @@ uint8_t floppy_read_data(int base)
 	
 	return ret;
 }
+	
+uint8_t floppy_get_version()
+{
+	floppy_write_command(FLOPPY_BASE, VERSION);
+		
+	return floppy_read_data(FLOPPY_BASE);
+}
+	
 	
