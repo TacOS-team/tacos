@@ -1,7 +1,9 @@
 #include <memory.h>
 #include <pagination.h>
 
-
+/*
+ * Cette fonction sert à mapper une adresse par identity mapping. Cela ne peut être fait qu'avant l'activation de la pagination !
+ */
 void pagination_identity_map_addr(struct page_directory_entry * pagination_kernel, paddr_t page_addr) {
 	static int c = 0;
 
