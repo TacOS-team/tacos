@@ -54,6 +54,10 @@ bool floppy_ready(int base);
 int floppy_write_command(int base, char cmd);
 uint8_t floppy_read_data(int base);
 
+// Drive selection
+uint8_t floppy_get_current_drive();
+void floppy_set_current_drive(uint8_t drive);
+
 /*	
  * MISC  
  */

@@ -3,6 +3,8 @@
 #include <types.h>
 #include "floppy_utils.h"
 
+static volatile uint8_t current_drive = 0;
+
 bool floppy_ready(int base)
 {
 	return ((0x80 & inb(base + FLOPPY_MSR))!=0);
@@ -33,6 +35,17 @@ uint8_t floppy_read_data(int base)
 	}
 	
 	return ret;
+}
+
+// Drive selection
+uint8_t floppy_get_current_drive()
+{
+	return current_drive;
+}
+
+void floppy_set_current_drive(uint8_t drive)
+{
+	current_drive = drive;
 }
 
 /*	

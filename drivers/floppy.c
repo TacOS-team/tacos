@@ -3,14 +3,17 @@
 #include <types.h>
 #include "floppy_interrupt.h"
 #include "floppy_utils.h"
+#include "floppy_motor.h"
 
 
 // Repositionne la tête de lecture sur le cylindre 0
-int floppy_calibrate(int base, int drive)
+int floppy_calibrate(int base)
 {
 	int i, st0, cy1 = -1;
+	int drive = floppy_get_current_drive();
 	
-	// TODO: Allumer le moteur
+	// Allumer le moteur
+	floppy_motor(FLOPPY_BASE, ON);
 	
 	// On essaye 5 fois (oui c'est totalement arbitraire
 	for(i=0; i<5; i++)
@@ -42,6 +45,7 @@ int floppy_calibrate(int base, int drive)
 		if(!cy1) // si cy1=0, on a bien atteint le cylindre 0 et on peut arreter la calibration
 		{
 			// TODO: éteindre le moteur;
+			floppy_motor(FLOPPY_BASE, OFF);
 			return 0;
 		}
 	}
@@ -52,8 +56,9 @@ int floppy_calibrate(int base, int drive)
 	return -1;
 }
 
-void init_floppy(int drive)
+int init_floppy()
 {
+	int drive = floppy_get_current_drive();
 	uint8_t drive_type = 0;
 	uint8_t CCR;
 	
@@ -95,7 +100,8 @@ void init_floppy(int drive)
 	outb(CCR, FLOPPY_BASE + FLOPPY_CCR);
 	
 	// On calibre le lecteur
-	if(floppy_calibrate(FLOPPY_BASE, drive)) return -1;
+	if(floppy_calibrate(FLOPPY_BASE)) return -1;
+	return 0;
 }
 
 	
