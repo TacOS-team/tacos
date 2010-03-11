@@ -38,6 +38,8 @@
 
 #ifndef ASM_SOURCE
 
+#include <types.h>
+
 typedef void (*exception_handler_t)(int error_id);
 
 int exception_set_routine(uint8_t exception_id, exception_handler_t routine);

@@ -27,15 +27,11 @@ static void clock_tick(int interrupt_id)
 {
   increaseSec--;
 
-	//if(increaseSec%1000==0) printf("%d\n",increaseSec);
-
   if(increaseSec <= 0)
   {
     date.sec++;
-    //printf("TICK : %dh%dm%ds\n", date.hour, date.minute, date.sec);
-
     increaseSec = I8254_MAX_FREQ/1000;
-    //printf("NYYYUU %d\n", increaseSec);
+    
     if(date.sec == 60)
     {
       date.sec = 0;
