@@ -30,7 +30,7 @@
 void i8254_init(uint16_t freq)
 {
   uint8_t controlByte;
-  uint16_t nb_tick = (I8254_MAX_FREQ / freq) * 0xFFFF;
+  uint16_t nb_tick = (I8254_MAX_FREQ / freq);
 
   controlByte = (SELECT_COUNTER_0 << 6) |
                 (RW_ALL           << 4) |

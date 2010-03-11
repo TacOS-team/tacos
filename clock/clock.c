@@ -27,13 +27,15 @@ static void clock_tick(int interrupt_id)
 {
   increaseSec--;
 
+	//if(increaseSec%1000==0) printf("%d\n",increaseSec);
+
   if(increaseSec <= 0)
   {
     date.sec++;
-    printf("TICK : %dh%dm%ds\n", date.hour, date.minute, date.sec);
+    //printf("TICK : %dh%dm%ds\n", date.hour, date.minute, date.sec);
 
-    increaseSec = I8254_MAX_FREQ;
-    printf("NYYYUU %d\n", increaseSec);
+    increaseSec = I8254_MAX_FREQ/1000;
+    //printf("NYYYUU %d\n", increaseSec);
     if(date.sec == 60)
     {
       date.sec = 0;
@@ -46,7 +48,7 @@ static void clock_tick(int interrupt_id)
     }
   }
   
-  i8254_init(I8254_MAX_FREQ);
+  i8254_init(I8254_MAX_FREQ/1000);
 }
 
 // http://www-ivs.cs.uni-magdeburg.de/~zbrog/asm/cmos.html
@@ -68,8 +70,17 @@ void clock_init()
 
   printf("TICK : %dh%dm%ds\n", date.hour, date.minute, date.sec);
 
-  increaseSec = I8254_MAX_FREQ;
-  i8254_init(I8254_MAX_FREQ);
+  increaseSec = I8254_MAX_FREQ/1000;
+  i8254_init(I8254_MAX_FREQ/1000);
   interrupt_set_routine(IRQ_TIMER, clock_tick);
 }
 
+date_t get_date()
+{
+	return date;
+}
+
+void add_event(void* call, date_t time)
+{
+	// non implementé
+}

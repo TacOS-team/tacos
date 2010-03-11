@@ -88,9 +88,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 	i8259_setup();
 
 	exception_set_routine(EXCEPTION_DIVIDE_ERROR, testhandlerexception);
-	clock_init(); 
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt);
-
+	clock_init(); 
+	
 	asm volatile ("sti\n");
 
 	/* Configuration de la pagination */
@@ -141,7 +141,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 	for(;;)
 	{
 		char c;
-		printf("\n> ");
+		date_t date = get_date();
+		printf("\n%d\\%d\\%d : %dh%dm%ds > ", date.day, date.month, date.year,
+												date.hour, date.minute, date.sec);
 		while((c = getchar()) != '\n')
 			putchar(c);
 	}

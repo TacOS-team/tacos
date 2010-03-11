@@ -5,7 +5,7 @@ export CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-
 LDFLAGS=-Llib/
 LDLIBS=-lc -lpci -lkeyboard -lclock -ldrivers
 
-all: libc  drivers pci keyboard clock kernel.bin
+all: libc  drivers pci keyboard clock kernel.bin utils
 
 kernel.bin: force_look 
 	$(MAKE) -C kernel
@@ -24,6 +24,9 @@ pci: force_look
 	$(MAKE) -C $@
 
 clock: force_look 
+	$(MAKE) -C $@
+
+utils: force_look
 	$(MAKE) -C $@
 
 force_look:
@@ -49,5 +52,6 @@ clean:
 	$(MAKE) -C pci clean
 	$(MAKE) -C drivers clean
 	$(MAKE) -C keyboard clean
+	$(MAKE) -C utils clean
 	rm -f *.o *.bin *.img
 
