@@ -51,24 +51,29 @@ static void clock_tick(int interrupt_id)
   i8254_init(I8254_MAX_FREQ/1000);
 }
 
+// nombres à 2 chiffres donc :
+// highbyte * 10 + lowbyte
+uint8_t bcd2binary(uint8_t n) 
+{
+  return 10*((n & 0xF0) >> 4) + (n &0x0F);
+}
+
 // http://www-ivs.cs.uni-magdeburg.de/~zbrog/asm/cmos.html
 void clock_init()
 {
   outb(RTC_DATE_OF_MONTH, RTC_REQUEST);
-  date.day = inb(RTC_ANSWER);
+  date.day = bcd2binary(inb(RTC_ANSWER));
   outb(RTC_MONTH, RTC_REQUEST);
-  date.month = inb(RTC_ANSWER);
+  date.month = bcd2binary(inb(RTC_ANSWER));
   outb(RTC_YEAR, RTC_REQUEST);
-  date.year = inb(RTC_ANSWER);
+  date.year = bcd2binary(inb(RTC_ANSWER));
 
   outb(RTC_HOUR, RTC_REQUEST);
-  date.hour = inb(RTC_ANSWER) & 0xFF;
+  date.hour = bcd2binary(inb(RTC_ANSWER));
   outb(RTC_MINUTE, RTC_REQUEST);
-  date.minute = inb(RTC_ANSWER) & 0x3F;
+  date.minute = bcd2binary(inb(RTC_ANSWER));
   outb(RTC_SECOND, RTC_REQUEST);
-  date.sec = inb(RTC_ANSWER) & 0x3F;
-
-  printf("TICK : %dh%dm%ds\n", date.hour, date.minute, date.sec);
+  date.sec = bcd2binary(inb(RTC_ANSWER));
 
   increaseSec = I8254_MAX_FREQ/1000;
   i8254_init(I8254_MAX_FREQ/1000);
