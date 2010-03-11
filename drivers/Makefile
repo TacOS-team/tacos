@@ -4,13 +4,15 @@ LDLIBS=-lc
 
 all: libdrivers
 
-libdrivers: floppy.o
+libdrivers: floppy.o floppy_interrupt.o
 	  ar rv ../lib/$@.a $^
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
 floppy.o: ../include/floppy.h
+
+
 
 clean:
 	rm -f *.o

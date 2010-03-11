@@ -1,9 +1,9 @@
 #include <ioports.h>
 #include <stdio.h>
 #include <types.h>
+#include "floppy_interrupt.h"
 
 #define FLOPPY_BASE	0x03f0
-#define FLOPPY_IRQ	6
 
 enum floppy_registers
 {
@@ -105,7 +105,7 @@ uint8_t floppy_read_data(int base)
 uint8_t floppy_get_version()
 {
 	floppy_write_command(FLOPPY_BASE, VERSION);
-		
+	
 	return floppy_read_data(FLOPPY_BASE);
 }
 	
