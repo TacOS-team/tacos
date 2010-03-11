@@ -1,6 +1,7 @@
 #include <types.h>
 #include <interrupts.h>
 #include <stdio.h>
+#include "floppy_utils.h"
 
 volatile bool irq_received = FALSE;
 
@@ -24,6 +25,22 @@ void floppy_init_interrupt()
 void floppy_reset_irq()
 {
 	irq_received = FALSE;
+}
+
+void floppy_sense_interrupt(int base, int* st0, int* cy1)
+{
+	floppy_write_command(base, SENSE_INTERRUPT);
+	
+	// Si on ne lance pas un sense en aveugle, on récupère les valeurs
+	if(st0!=NULL && cy1!=NULL)
+	{
+		*st0 = floppy_read_data(base); // Status register 1
+		*cy1 = floppy_read_data(base); // Cylindre actuel
+	}
+	else{
+		floppy_read_data(base);
+		floppy_read_data(base); 
+	}
 }
 
 

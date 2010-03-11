@@ -4,7 +4,7 @@ LDLIBS=-lc
 
 all: libdrivers
 
-libdrivers: floppy.o floppy_interrupt.o
+libdrivers: floppy.o floppy_interrupt.o floppy_utils.o
 	  ar rv ../lib/$@.a $^
 
 %.o: %.c
