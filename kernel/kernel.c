@@ -89,6 +89,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	exception_set_routine(EXCEPTION_DIVIDE_ERROR, testhandlerexception);
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt);
+	floppy_init_interrupt();
+	
 	clock_init(); 
 	
 	asm volatile ("sti\n");
@@ -138,6 +140,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	floppy_detect_drives();
 	printf("Floppy controller version: 0x%x.\n", floppy_get_version());
+	
+	init_floppy(0);
 	for(;;)
 	{
 		char c;

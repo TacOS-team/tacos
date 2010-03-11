@@ -1,16 +1,17 @@
 #include <types.h>
 #include <interrupts.h>
+#include <stdio.h>
 
-static bool irq_received = FALSE;
+volatile bool irq_received = FALSE;
 
-interrupt_handler_t floppy_handler(int interrupt_id)
+void floppy_handler(int interrupt_id)
 {
 	irq_received = TRUE;
 }
 
 void floppy_wait_irq()
 {
-	while(!irq_received){}
+	while(!irq_received);
 	
 	irq_received = FALSE;
 }

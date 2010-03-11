@@ -52,25 +52,12 @@ static const char * drive_types[8] = {
 	"none"
 };
 
-// Récupère les lecteurs floppy disponibles en interrogeant le CMOS
-void floppy_detect_drives() {
-	uint8_t drives;
-	
-	// Lecture du registre CMOS contenant les types de lecteur disquette
-	outb(0x10, 0x70); // Selection du registre 0x10 du CMOS
-	drives = inb(0x71);
-
-	printf("Floppy drive 1: %s\n", drive_types[drives >> 4]);
-	printf("Floppy drive 2: %s\n", drive_types[drives & 0xf]);
-}
-
 bool floppy_ready(int base)
 {
 	/* DEBUG 
 	int i = inb(base + FLOPPY_MSR);
 	printf("MSR:0x%x.\n", i&);
 	*/
-		
 	return ((0x80 & inb(base + FLOPPY_MSR))!=0);
 }
 	
@@ -101,7 +88,105 @@ uint8_t floppy_read_data(int base)
 	
 	return ret;
 }
+
+void floppy_sense_interrupt(int base, int* st0, int* cy1)
+{
+	floppy_write_command(base, SENSE_INTERRUPT);
 	
+	// Si on ne lance pas un sense en aveugle, on récupère les valeurs
+	if(st0!=NULL && cy1!=NULL)
+	{
+		*st0 = floppy_read_data(base); // Status register 1
+		*cy1 = floppy_read_data(base); // Cylindre actuel
+	}
+	else{
+		floppy_read_data(base);
+		floppy_read_data(base); 
+	}
+}
+
+// Repositionne la tête de lecture sur le cylindre 0
+int floppy_calibrate(int base, int drive)
+{
+	int i, st0, cy1 = -1;
+	
+	// TODO: Allumer le moteur
+	
+	// On essaye 5 fois (oui c'est totalement arbitraire
+	for(i=0; i<5; i++)
+	{
+		// Le recalibrage déclenche l'IRQ, on se prépare donc à attendre l'IRQ
+		floppy_reset_irq();
+		
+		// Procedure de calibrage:
+		// On envoi dans un premier temps la commande RECALIBRATE,
+		// puis on envoi le numero du lecteur que l'on veut recalibrer
+		floppy_write_command(base, RECALIBRATE);
+		floppy_write_command(base, drive);
+		
+		// On attend la réponse
+		floppy_wait_irq();
+		
+		// une fois l'IRQ arrivée, on peut récuperer les données de retour via SENSE_INTERRUPT
+		floppy_sense_interrupt(base, &st0, &cy1);
+		
+		if(st0 & 0xC0)
+		{
+			static const char * status[] =
+			{ 0, "error", "invalid", "drive" };
+			printf("floppy_recalibrate: status = %s.\n", status[st0 >> 6]);
+			printf("ST0:0x%x.\nCY1:0x%x.\n", st0, cy1);
+			continue;
+		}
+		
+		if(!cy1) // si cy1=0, on a bien atteint le cylindre 0 et on peut arreter la calibration
+		{
+			// TODO: éteindre le moteur;
+			return 0;
+		}
+	}
+	printf("floppy_recalibrate: failure.\n");
+	
+	//TODO: éteindre le moteur
+	
+	return -1;
+}
+
+void init_floppy(int drive)
+{
+		int i;
+
+
+	floppy_reset_irq();
+	
+	outb(0x00, FLOPPY_BASE + FLOPPY_DOR);
+	outb(0x0C, FLOPPY_BASE + FLOPPY_DOR);
+	
+	floppy_wait_irq();
+
+	floppy_sense_interrupt(FLOPPY_BASE, NULL,NULL);
+	
+	floppy_calibrate(FLOPPY_BASE, drive);
+}
+	
+	
+
+/*	
+ * MISC  
+ */
+
+// Récupère les lecteurs floppy disponibles en interrogeant le CMOS
+void floppy_detect_drives() {
+	uint8_t drives;
+	
+	// Lecture du registre CMOS contenant les types de lecteur disquette
+	outb(0x10, 0x70); // Selection du registre 0x10 du CMOS
+	drives = inb(0x71);
+
+	printf("Floppy drive 1: %s\n", drive_types[drives >> 4]);
+	printf("Floppy drive 2: %s\n", drive_types[drives & 0xf]);
+}
+
 uint8_t floppy_get_version()
 {
 	floppy_write_command(FLOPPY_BASE, VERSION);
