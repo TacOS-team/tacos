@@ -19,7 +19,7 @@ interrupt_handler_t interrupts_handler_array[INTERRUPT_NUM];
 
 int interrupt_set_routine(uint8_t interrupt_id, interrupt_handler_t routine)
 {
-  uint32_t flags;
+	uint32_t flags;
 
 	if (interrupt_id >= INTERRUPT_NUM) {
 		return -1;

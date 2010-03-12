@@ -30,6 +30,8 @@ static void testhandlerexception(int error_id)
 {
 	/* TODO : L'erreur renvoyée devrait être 0 car il n'y a pas de code retour. */
 	printf("Exception : %d\n", error_id);
+   asm("cli");
+   asm("hlt");
 }
 
 static void processA (paddr_t* pStackA, paddr_t* pStackB) {
@@ -102,7 +104,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	//memory_print_free_pages();
 	//memory_print_used_pages();
 
-	//printf("Div 0 : %d.\n", 3/0);
+//	printf("Div 0 : %d.\n", 3/0);
 	pci_scan();
 //	pci_list();
 

@@ -18,17 +18,22 @@ extern paddr_t exception_wrapper_array[EXCEPTION_NUM];
 exception_handler_t exception_handler_array[EXCEPTION_NUM];
 
 int exception_set_routine(uint8_t exception_id, exception_handler_t routine)
-{
+{ 
+	uint32_t flags;
 	if (exception_id >= EXCEPTION_NUM) {
 		return -1;
 	}
 
-	/* TODO : arrêter les autres interruptions et exceptions avec asm(cli), 
-	 * et sauvegarder les flags ? */
+	// arrêter les autres interruptions et exceptions et sauvegarde les flags
+	asm volatile("pushfl ; popl %0":"=g"(flags)::"memory");
+	asm("cli\n");
 
 	exception_handler_array[exception_id] = routine;
 
-	idt_set_handler(EXCEPTION_BASE + exception_id, (paddr_t)routine, 0);
+	idt_set_handler(EXCEPTION_BASE + exception_id, (paddr_t)exception_wrapper_array[exception_id], 0);
+
+	// reenable irqs (restore flags) 
+	asm volatile("push %0; popfl"::"g"(flags):"memory");
 
 	return 0;
 }
