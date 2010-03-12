@@ -52,51 +52,35 @@
         .p2align 2, 0x90
         exception_wrapper_\id:
         .type exception_wrapper_\id,@function
- 
-                /* Fake error code */
-                pushl $0
-                /* Backup the context */
-                pushl %ebp
-                movl %esp, %ebp
- 
-                pushl %edi
-                pushl %esi
-                pushl %edx
-                pushl %ecx
-                pushl %ebx
-                pushl %eax
-                subl  $2,%esp
-                pushw %ss
-                pushw %ds
-                pushw %es
-                pushw %fs
-                pushw %gs
- 
+					pusha
+					
+					mov %ds, %ax
+					push %eax
+					
+					mov $0x10, %ax					
+					mov %ax, %ds
+					mov %ax, %es
+					mov %ax, %fs
+					mov %ax, %gs
+
                 /* Call the handler with exception number as
                  * argument */
-                pushl $\id
+                pushl $0
                 leal  exception_handler_array,%edi
                 call  *\id*4(%edi)
                 addl  $4, %esp
 
-                /* Restore the context */
-                popw  %gs
-                popw  %fs
-                popw  %es
-                popw  %ds
-                popw  %ss
-                addl  $2,%esp
-                popl  %eax
-                popl  %ebx
-                popl  %ecx
-                popl  %edx
-                popl  %esi
-                popl  %edi
- 
-                popl  %ebp
-                /* Remove fake error code */
-                addl $4, %esp
-                iret
+
+					pop %ebx
+               mov %bx, %ds
+               mov %bx, %es
+               mov %bx, %fs
+               mov %bx, %gs
+
+					popa
+					add $8, %esp
+					sti
+               iret
 .endr 
  
         /* On fait la meme chose avec les exceptions avec code retour */

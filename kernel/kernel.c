@@ -70,9 +70,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	mbi = (multiboot_info_t *) addr;
 	initKernelOptions((char *)mbi->cmdline, &options);
 
-	/* The Hello World */
-	//printf("\nHello World !\n\n");
-	/* Mieux! */
 	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
 	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");
 	printf("    _|    _|    _|  _|        _|    _|    _|_|  \n");
