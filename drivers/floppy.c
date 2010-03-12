@@ -4,6 +4,7 @@
 #include "floppy_interrupt.h"
 #include "floppy_utils.h"
 #include "floppy_motor.h"
+#include "floppy_dma.h"
 
 
 // Repositionne la tête de lecture sur le cylindre 0
@@ -100,6 +101,8 @@ int init_floppy()
 	
 	// On calibre le lecteur
 	if(floppy_calibrate(FLOPPY_BASE)) return -1;
+	
+	floppy_dma_init(floppy_read);
 	return 0;
 }
 

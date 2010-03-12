@@ -143,7 +143,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	if(init_floppy() != 0)
 		printf("Initialisation du lecteur a echoue.\n");
-	floppy_seek(0x03f0, 42, 0);
+	//ppy_seek(0x03f0, 42, 0);
 	
 	for(;;)
 	{
