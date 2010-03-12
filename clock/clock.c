@@ -21,6 +21,7 @@
 #define RTC_MONTH         0x08
 #define RTC_YEAR          0x09
 
+static const int TIMER_FREQ = I8254_MAX_FREQ/1000;
 static int increaseSec = 0;
 static date_t date = {0, 0, 0, 0, 0, 0};
 
@@ -33,7 +34,7 @@ static void clock_tick(int interrupt_id)
   if(increaseSec <= 0)
   {
     date.sec++;
-    increaseSec = I8254_MAX_FREQ/1000;
+    increaseSec = TIMER_FREQ;
     
     if(date.sec == 60)
     {
@@ -47,7 +48,7 @@ static void clock_tick(int interrupt_id)
     }
   }
   
-  i8254_init(I8254_MAX_FREQ/1000);
+  i8254_init(TIMER_FREQ);
 }
 
 // nombres à 2 chiffres donc :
@@ -79,10 +80,10 @@ void clock_init()
   outb(RTC_SECOND, RTC_REQUEST);
   date.sec = bcd2binary(inb(RTC_ANSWER));
 
-  increaseSec = I8254_MAX_FREQ/1000;
-  i8254_init(I8254_MAX_FREQ/1000);
+  increaseSec = TIMER_FREQ;
+  i8254_init(TIMER_FREQ);
   interrupt_set_routine(IRQ_TIMER, clock_tick);
-  
+
   initHeap(&events, (cmp_func_type)compare_times);
 }
 
@@ -95,3 +96,4 @@ void add_event(void* call, int time)
 {
 	// non implementé
 }
+

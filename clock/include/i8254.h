@@ -7,7 +7,7 @@
 #define I8254_MIN_FREQ 2
 #define I8254_MAX_FREQ 1193182
 
-void i8254_init(uint16_t freq);
+int i8254_init(uint16_t freq);
 
 #endif
 

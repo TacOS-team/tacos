@@ -27,10 +27,15 @@
 #define BINARY_COUNT  0x0
 #define DECIMAL_COUNT 0x1
 
-void i8254_init(uint16_t freq)
+int i8254_init(uint16_t freq)
 {
   uint8_t controlByte;
-  uint16_t nb_tick = (I8254_MAX_FREQ / freq);
+  uint16_t nb_tick;
+  
+  if(freq > I8254_MAX_FREQ)
+    return -1;
+  
+  nb_tick = I8254_MAX_FREQ / freq;
 
   controlByte = (SELECT_COUNTER_0 << 6) |
                 (RW_ALL           << 4) |
@@ -39,5 +44,7 @@ void i8254_init(uint16_t freq)
   outb(controlByte, CONTROL_REG);
   outb(nb_tick & 0xFF, COUNTER_0);
   outb((nb_tick >> 8) & 0xFF, COUNTER_0);
+
+  return 0;
 }
 
