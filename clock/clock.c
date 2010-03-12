@@ -81,8 +81,8 @@ void clock_init()
   date.sec = bcd2binary(inb(RTC_ANSWER));
 
   increaseSec = TIMER_FREQ;
-  i8254_init(TIMER_FREQ);
   interrupt_set_routine(IRQ_TIMER, clock_tick);
+  i8254_init(TIMER_FREQ);
 
   initHeap(&events, (cmp_func_type)compare_times);
 }
