@@ -58,6 +58,8 @@ uint8_t floppy_read_data(int base);
 uint8_t floppy_get_current_drive();
 void floppy_set_current_drive(uint8_t drive);
 
+int floppy_seek(int base, int cylindre, int head);
+
 /*	
  * MISC  
  */

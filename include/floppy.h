@@ -4,7 +4,9 @@
 void floppy_detect_drives();
 int init_floppy();
 uint8_t floppy_get_version();
-int floppy_seek(int base, int cylindre, int head);
+int floppy_cylinder(int base, int cylinder, int io_dir);
+
+
 
 
 #endif
