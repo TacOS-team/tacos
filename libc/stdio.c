@@ -33,6 +33,8 @@ typedef struct {
 /** The base pointer for the video memory */
 /* volatile pour éviter des problèmes d'optimisation de gcc. */
 static volatile x86_video_mem *video = (volatile x86_video_mem*)VIDEO;
+static x86_video_mem buffer_video;
+static int bottom_buffer = 0;
 
 static void scrollup();
 static void updateCursorPosition();
@@ -47,18 +49,30 @@ void disableCursor()
 	outb(1 << 5, CRT_REG_DATA);
 }
 
+void refresh (void) {
+	int i;
+	for (i = 0; i < COLUMNS * LINES; i++) {
+	  (*video)[i].character = buffer_video[(i + bottom_buffer*80)%(25*80)].character;
+	  (*video)[i].attribute = buffer_video[(i + bottom_buffer*80)%(25*80)].attribute;
+	}
+}
+
 /* Clear the screen and initialize VIDEO, XPOS and YPOS. */
 void cls (void) {
 	int i;
  
 	for (i = 0; i < COLUMNS * LINES; i++) {
-	  (*video)[i].character = 0;
-	  (*video)[i].attribute = attribute;
+	  buffer_video[i].character = 0;
+	  buffer_video[i].attribute = attribute;
 	}
+
+	refresh();
 
 	xpos = 0;
 	ypos = 0;
 }
+
+
 
 /* Convert the integer D to a string and save the string in BUF. If
 	 BASE is equal to 'd', interpret that D is decimal, and if BASE is
@@ -104,23 +118,17 @@ void itoa (char *buf, int base, int d) {
 static void scrollup() {
 	int c, l;
 
-	/*
-	 * On décalle vers le haut.
-	 */
-	for (l = 0; l < LINES - 1; l++) {
-		for (c = 0; c < COLUMNS; c++) {
-			(*video)[l*COLUMNS + c].character = (*video)[(l+1)*COLUMNS + c].character;
-			(*video)[l*COLUMNS + c].attribute = (*video)[(l+1)*COLUMNS + c].attribute;
-		}
-	}
+	bottom_buffer++;
 
 	/*
 	 * On met des espaces sur la dernière ligne
 	 */
 	for (c = 0; c < COLUMNS; c++) {
-		(*video)[(LINES-1) * COLUMNS + c].character = ' ';
-		(*video)[(LINES-1) * COLUMNS + c].attribute = attribute;
+		buffer_video[((bottom_buffer+LINES-1) * COLUMNS + c)%(25*80)].character = ' ';
+		buffer_video[((bottom_buffer+LINES-1) * COLUMNS + c)%(25*80)].attribute = attribute;
 	}
+
+	refresh();
 }
 
 static void updateCursorPosition()
@@ -135,34 +143,36 @@ static void updateCursorPosition()
 
 void newline()
 {
-  xpos = 0;
+	xpos = 0;
 	ypos++;
-	if (ypos >= LINES)
-  {
+	if (ypos >= LINES) {
 		scrollup();
 		ypos = LINES - 1;
 	}
 }
 
+void putchar_position(char c, int x, int y) {
+	buffer_video[x + ((y+bottom_buffer)%25) * COLUMNS].character = c & 0xFF;
+	buffer_video[x + ((y+bottom_buffer)%25) * COLUMNS].attribute = attribute;
+	(*video)[x + y * COLUMNS].character = c & 0xFF;
+	(*video)[x + y * COLUMNS].attribute = attribute;
+}
+
 /* Put the character C on the screen. */
-void putchar (int c) {
-	if (c == '\n' || c == '\r')
-  {
-    newline();
-	} else
-  {
-  	(*video)[xpos + ypos * COLUMNS].character = c & 0xFF;
-  	(*video)[xpos + ypos * COLUMNS].attribute = attribute;
-
-  	xpos++;
-	  if (xpos >= COLUMNS)
-      newline();
-  }
+void putchar (char c) {
+	if (c == '\n' || c == '\r') {
+		newline();
+	} else {
+		putchar_position(c, xpos, ypos);
+	  	xpos++;
+		if (xpos >= COLUMNS)
+			newline();
+	}
   
-  if(finnouMode)
-    attribute = 0x0F & (attribute + 13 % 8);
+	if(finnouMode)
+		attribute = 0x0F & (attribute + 13 % 8);
 
-  updateCursorPosition();
+	updateCursorPosition();
 }
 
 /* Format a string and print it on the screen, just like the libc
