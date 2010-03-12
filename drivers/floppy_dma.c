@@ -127,10 +127,7 @@ int floppy_cylinder(int base, int cylinder, floppy_io io_dir)
 		
 		printf("READ/WRITE succeed \\o/ \n");
 		
-		/*for(i=0; i<512; i++)
-		{
-			printf("%c",floppy_dma_buffer[i]);
-		}*/
+		printf("MBR Signature: 0x%x%x.\n",(uint8_t)floppy_dma_buffer[0x01FE],(uint8_t)floppy_dma_buffer[0x01FF]);
 		
 		
 //	}
