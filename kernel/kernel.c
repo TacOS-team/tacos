@@ -14,6 +14,7 @@
 #include <dummy_process.h>
 #include <keyboard.h>
 #include <clock.h>
+#include <events.h>
 #include <floppy.h>
 
 typedef struct
@@ -93,7 +94,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt);
 	floppy_init_interrupt();
 	
-	clock_init(); 
+	events_init(); 
 	
 	asm volatile ("sti\n");
 

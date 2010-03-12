@@ -14,6 +14,8 @@
 // M - Mode
 // BCD - Binary Counter
 #define SELECT_COUNTER_0 0x0
+#define SELECT_COUNTER_1 0x1
+#define SELECT_COUNTER_2 0x2
 #define NO_RW   0x0
 #define RW_LOW  0x1
 #define RW_HIGH 0x2

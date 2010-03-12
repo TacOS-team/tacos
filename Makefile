@@ -50,6 +50,7 @@ clean:
 	$(MAKE) -C kernel clean
 	$(MAKE) -C libc clean
 	$(MAKE) -C pci clean
+	$(MAKE) -C clock clean
 	$(MAKE) -C drivers clean
 	$(MAKE) -C keyboard clean
 	$(MAKE) -C utils clean

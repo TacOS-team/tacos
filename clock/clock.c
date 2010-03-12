@@ -1,11 +1,7 @@
 #include <types.h>
-#include <stdio.h>
 #include <ioports.h>
-#include <keyboard.h>
 #include <i8254.h>
-#include <interrupts.h>
 #include <clock.h>
-#include <heap.h>
 
 #define RTC_REQUEST 0x70
 #define RTC_ANSWER  0x71
@@ -21,34 +17,21 @@
 #define RTC_MONTH         0x08
 #define RTC_YEAR          0x09
 
-static const int TIMER_FREQ = I8254_MAX_FREQ/1000;
-static int increaseSec = 0;
 static date_t date = {0, 0, 0, 0, 0, 0};
 
-static heap_t events;
-
-static void clock_tick(int interrupt_id)
+void clock_tick()
 {
-  increaseSec--;
-
-  if(increaseSec <= 0)
+  date.sec++;
+  if(date.sec == 60)
   {
-    date.sec++;
-    increaseSec = TIMER_FREQ;
-    
-    if(date.sec == 60)
+    date.sec = 0;
+    date.minute++;
+    if(date.minute == 60)
     {
-      date.sec = 0;
-      date.minute++;
-      if(date.minute == 60)
-      {
-        date.minute = 0;
-        date.hour++;
-      }
+      date.minute = 0;
+      date.hour++;
     }
   }
-  
-  i8254_init(TIMER_FREQ);
 }
 
 // nombres à 2 chiffres donc :
@@ -56,11 +39,6 @@ static void clock_tick(int interrupt_id)
 uint8_t bcd2binary(uint8_t n) 
 {
   return 10*((n & 0xF0) >> 4) + (n &0x0F);
-}
-
-int compare_times(void* a, void* b)
-{
-	return 1; // not implemented
 }
 
 // http://www-ivs.cs.uni-magdeburg.de/~zbrog/asm/cmos.html
@@ -79,21 +57,15 @@ void clock_init()
   date.minute = bcd2binary(inb(RTC_ANSWER));
   outb(RTC_SECOND, RTC_REQUEST);
   date.sec = bcd2binary(inb(RTC_ANSWER));
+}
 
-  increaseSec = TIMER_FREQ;
-  interrupt_set_routine(IRQ_TIMER, clock_tick);
-  i8254_init(TIMER_FREQ);
-
-  initHeap(&events, (cmp_func_type)compare_times);
+int compare_times(date_t a, date_t b)
+{
+	return 1; // XXX : not implemented
 }
 
 date_t get_date()
 {
 	return date;
-}
-
-void add_event(void* call, int time)
-{
-	// non implementé
 }
 
