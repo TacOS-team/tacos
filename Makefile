@@ -3,9 +3,9 @@ export CC=gcc
 export LD=ld
 export CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LDFLAGS=-Llib/
-LDLIBS=-lc -lpci -lkeyboard -lclock -ldrivers
+LDLIBS=-lc -lpci -lkeyboard -lclock -ldrivers -lutils
 
-all: libc  drivers pci keyboard clock kernel.bin utils
+all: libc  utils drivers pci keyboard clock kernel.bin
 
 kernel.bin: force_look 
 	$(MAKE) -C kernel

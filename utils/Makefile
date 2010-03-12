@@ -3,7 +3,10 @@ LDFLAGS=-L../lib/
 LDLIBS=-lc
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
   
-all: heap.o
+all: libutils
+
+libutils: heap.o
+	  ar rv ../lib/$@.a $^
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDE) 

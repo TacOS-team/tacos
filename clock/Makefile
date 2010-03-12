@@ -10,7 +10,7 @@ libclock: clock.o i8254.o
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
-clock.c: ../include/clock.h include/i8254.h ../include/interrupts.h ../include/types.h
+clock.c: ../include/clock.h include/i8254.h ../include/interrupts.h ../include/types.h ../include/heap.h
 
 i8254.c: include/i8254.h ../include/types.h
 

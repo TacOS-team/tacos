@@ -17,7 +17,7 @@ typedef struct
 void clock_init();
 date_t get_date();
 
-void add_event(void* call, date_t time);
+void add_event(void* call, int time);
 
 #endif
 

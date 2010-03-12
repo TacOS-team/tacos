@@ -5,6 +5,7 @@
 #include <i8254.h>
 #include <interrupts.h>
 #include <clock.h>
+#include <heap.h>
 
 #define RTC_REQUEST 0x70
 #define RTC_ANSWER  0x71
@@ -22,6 +23,8 @@
 
 static int increaseSec = 0;
 static date_t date = {0, 0, 0, 0, 0, 0};
+
+static heap_t events;
 
 static void clock_tick(int interrupt_id)
 {
@@ -54,6 +57,11 @@ uint8_t bcd2binary(uint8_t n)
   return 10*((n & 0xF0) >> 4) + (n &0x0F);
 }
 
+int compare_times(void* a, void* b)
+{
+	return 1; // not implemented
+}
+
 // http://www-ivs.cs.uni-magdeburg.de/~zbrog/asm/cmos.html
 void clock_init()
 {
@@ -74,6 +82,8 @@ void clock_init()
   increaseSec = I8254_MAX_FREQ/1000;
   i8254_init(I8254_MAX_FREQ/1000);
   interrupt_set_routine(IRQ_TIMER, clock_tick);
+  
+  initHeap(&events, (cmp_func_type)compare_times);
 }
 
 date_t get_date()
@@ -81,7 +91,7 @@ date_t get_date()
 	return date;
 }
 
-void add_event(void* call, date_t time)
+void add_event(void* call, int time)
 {
 	// non implementé
 }
