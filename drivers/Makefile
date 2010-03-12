@@ -12,8 +12,6 @@ libdrivers: floppy.o floppy_interrupt.o floppy_utils.o floppy_motor.o floppy_dma
 
 floppy.o: ../include/floppy.h
 
-
-
 clean:
 	rm -f *.o
 
