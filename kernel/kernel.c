@@ -141,7 +141,10 @@ void cmain (unsigned long magic, unsigned long addr) {
 	floppy_detect_drives();
 	printf("Floppy controller version: 0x%x.\n", floppy_get_version());
 	
-	init_floppy(0);
+	if(init_floppy() != 0)
+		printf("Initialisation du lecteur a echoue.\n");
+	floppy_seek(0x03f0, 42, 0);
+	
 	for(;;)
 	{
 		char c;

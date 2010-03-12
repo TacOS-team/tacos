@@ -2,8 +2,9 @@
 #define _FLOPPY_H_
 
 void floppy_detect_drives();
-void init_floppy();
+int init_floppy();
 uint8_t floppy_get_version();
+int floppy_seek(int base, int cylindre, int head);
 
 
 #endif
