@@ -22,56 +22,31 @@
         interrupt_wrapper_\id:
         .type interrupt_wrapper_\id,@function
  
-                /* Fake error code */
-                pushl $0
-                /* Backup the context */
-                pushl %ebp
-                movl %esp, %ebp
- 
-                pushl %edi
-                pushl %esi
-                pushl %edx
-                pushl %ecx
-                pushl %ebx
-                pushl %eax
-                subl  $2,%esp
-                pushw %ss
-                pushw %ds
-                pushw %es
-                pushw %fs
-                pushw %gs
- 
-               /* Call the handler with irq number as
-                 * argument */
-                pushl $\id
-                leal  interrupts_handler_array,%edi
-                call  *\id*4(%edi)
-                addl  $4, %esp
+					pusha
+					push %gs
+					push %fs
+					push %ds
+					push %es
 
-                /* Restore the context */
-                popw  %gs
-                popw  %fs
-                popw  %es
-                popw  %ds
-                popw  %ss
-                addl  $2,%esp
-                popl  %eax
-                popl  %ebx
-                popl  %ecx
-                popl  %edx
-                popl  %esi
-                popl  %edi
-                popl  %ebp
+					/* Call the handler with exception number as
+					 * argument */
+					pushl $\id
+					leal  interrupts_handler_array,%edi
+					call  *\id*4(%edi)
+               /* La seule difference avec les exceptions : */
+               /* Send EOI to PIC. See i8259 datasheet */
+               movb $0x20, %al
+               outb %al, $0x20
 
-                /* Remove fake error code */
-                addl $4, %esp
+					addl  $4, %esp
 
-                /* La seule difference avec les exceptions : */
-                /* Send EOI to PIC. See i8259 datasheet */
-                movb $0x20, %al
-                outb %al, $0x20
+					pop %es
+					pop %ds
+					pop %fs
+					pop %gs
+					popa
 
-                iret
+               iret
 .endr 
  
 /* sur le slave : */
@@ -81,62 +56,32 @@
         interrupt_wrapper_\id:
         .type interrupt_wrapper_\id,@function
  
-                /* ret eflags */
-                /* ret cs */
-                /* ret eip */
-                /* Error code */
+					pusha
+					push %gs
+					push %fs
+					push %ds
+					push %es
 
-					 /* Fake error code */
-					 pushl $0
+					/* Call the handler with exception number as
+					 * argument */
+					pushl $\id
+					leal  interrupts_handler_array,%edi
+					call  *\id*4(%edi)
+               /* La seule difference avec les exceptions : */
+               /* Send EOI to PIC. See i8259 datasheet */
+               movb $0x20, %al
+               outb %al, $0xa0 /* PIC2 */
+               outb %al, $0x20 /* PIC1 */
 
-                /* Backup the context */
-                pushl %ebp
-                movl %esp, %ebp
- 
-                pushl %edi
-                pushl %esi
-                pushl %edx
-                pushl %ecx
-                pushl %ebx
-                pushl %eax
-                subl  $2,%esp
-                pushw %ss
-                pushw %ds
-                pushw %es
-                pushw %fs
-                pushw %gs
+					addl  $4, %esp
 
-                /* Call the handler with interrupt number as
-                 * argument */
-                pushl $\id
-                leal  interrupts_handler_array,%edi
-                call  *\id*4(%edi)
-                addl  $4, %esp
+					pop %es
+					pop %ds
+					pop %fs
+					pop %gs
+					popa
 
-                /* Restore the context */
-                popw  %gs
-                popw  %fs
-                popw  %es
-                popw  %ds
-                popw  %ss
-                addl  $2,%esp
-                popl  %eax
-                popl  %ebx
-                popl  %ecx
-                popl  %edx
-                popl  %esi
-                popl  %edi
-                popl  %ebp
- 
-                /* Error code isn't compatible with iretd */
-                addl $4, %esp
- 
-                /* EOI */
-                movb $0x20, %al
-                outb %al, $0xa0 /* PIC2 */
-                outb %al, $0x20 /* PIC1 */
-
-                iret
+               iret
 .endr
 
 

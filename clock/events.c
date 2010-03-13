@@ -6,7 +6,7 @@
 #include <events.h>
 #include <stdio.h>
 
-static const int TIMER_FREQ = I8254_MAX_FREQ/1000;
+static const int TIMER_FREQ = I8254_MAX_FREQ;
 static int ticks;
 static heap_t events;
 

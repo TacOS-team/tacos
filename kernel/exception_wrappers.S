@@ -63,24 +63,22 @@
 					mov %ax, %fs
 					mov %ax, %gs
 
-                /* Call the handler with exception number as
-                 * argument */
-                pushl $0
-                leal  exception_handler_array,%edi
-                call  *\id*4(%edi)
-                addl  $4, %esp
-
+					/* Call the handler with exception number as
+					 * argument */
+					pushl $0
+					leal  exception_handler_array,%edi
+					call  *\id*4(%edi)
+					addl  $4, %esp
 
 					pop %ebx
-               mov %bx, %ds
-               mov %bx, %es
-               mov %bx, %fs
-               mov %bx, %gs
-
+					mov %bx, %ds
+					mov %bx, %es
+					mov %bx, %fs
+					mov %bx, %gs
 					popa
 					add $8, %esp
 					sti
-               iret
+					iret
 .endr 
  
         /* On fait la meme chose avec les exceptions avec code retour */
