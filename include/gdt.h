@@ -57,6 +57,7 @@ typedef struct tss {
 
 
 //pas testée encore (faudrait pouvoir intialiser une TSS pour ca)
+// TODO : Expliquer ce que du code C fiche dans ce header.
 static inline void jmp_to_tss(uint16_t tss_sel)
 {
 	static struct {
@@ -71,5 +72,6 @@ static inline void jmp_to_tss(uint16_t tss_sel)
 }
 
 
+void gdt_setup(size_t ram_size);
 
 #endif

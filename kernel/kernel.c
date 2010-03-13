@@ -3,6 +3,7 @@
 #include <i8259.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <memory.h>
 #include <pagination.h>
 #include <gdt.h>
@@ -146,15 +147,25 @@ void cmain (unsigned long magic, unsigned long addr) {
 		
 	floppy_cylinder(0x03F0, 0, 2);
 
-	
+	char buffer[80];
+	int i = 0;
 	for(;;)
 	{
 		char c;
 		date_t date = get_date();
 		printf("\n%d\\%d\\%d : %dh%dm%ds > ", date.day, date.month, date.year,
 												date.hour, date.minute, date.sec);
-		while((c = getchar()) != '\n')
+		while((c = getchar()) != '\n') {
+			buffer[i%80] = c;
 			putchar(c);
+			i++;
+		}
+		buffer[i%80] = '\0';
+		i = 0;
+
+		if (strcmp(buffer, "reboot") == 0) {
+			printf("\nReboot non implemente, desole !");
+		} else printf("%s\n", buffer);
 	}
 }
 

@@ -17,7 +17,7 @@ interrupts_wrappers.o: interrupts_wrappers.S ../include/interrupts.h
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDE) 
 
-kernel.o: include/multiboot.h ../include/types.h ../include/memory.h ../include/stdio.h include/gdt.h include/idt.h include/scheduler.h include/dummy_process.h ../include/clock.h
+kernel.o: include/multiboot.h ../include/types.h ../include/memory.h ../include/stdio.h ../include/string.h include/gdt.h include/idt.h include/scheduler.h include/dummy_process.h ../include/clock.h
 
 i8259.o: include/i8259.h ../include/types.h
 
