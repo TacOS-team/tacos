@@ -218,8 +218,9 @@ char getchar()
   while((c = keyBufferPop()) == -1)
   {
     // XXX : Mais pourquoi y a besoin de cette fucking tempo ?
-    for(i = 0 ; i<100000 ; i++)
+//  for(i = 0 ; i<100000 ; i++)
       ;
+	// Ca marche sans la tempo en +... ?
   }
   return c;
 }
