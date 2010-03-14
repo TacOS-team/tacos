@@ -17,6 +17,7 @@
 #include <clock.h>
 #include <events.h>
 #include <floppy.h>
+#include <kpanic.h>
 
 typedef struct
 {
@@ -27,14 +28,6 @@ typedef struct
 void cmain (unsigned long magic, unsigned long addr);
 static void testPageReservation();
 static void initKernelOptions(const char *cmdLine, kernel_options *options);
-
-static void testhandlerexception(int error_id)
-{
-	/* TODO : L'erreur renvoyée devrait être 0 car il n'y a pas de code retour. */
-	printf("Exception : %d\n", error_id);
-   asm("cli");
-   asm("hlt");
-}
 
 static void processA (paddr_t* pStackA, paddr_t* pStackB) {
 	int i;
@@ -88,8 +81,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 	/* Configuration du i8259 qui s'occupe des interruptions. */
 	i8259_setup();
 
-	exception_set_routine(EXCEPTION_DIVIDE_ERROR, testhandlerexception);
-	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt);
+	kpanic_init();
+  
+  interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt);
 	floppy_init_interrupt();
 	
 	events_init(); 
@@ -196,25 +190,6 @@ void testPageReservation()
 	memory_print_free_pages();
 	memory_print_used_pages();
 	waitReturn();
-}
-
-void testMalloc()
-{
-	int *nyu1, *nyu2, *nyu3, *nyu4;
-	printf("NYU : %d\n", nyu1 = (int *) malloc(10));
-	printMallocated();
-	printf("NYU : %d\n", nyu2 = (int *) malloc(20));
-	printMallocated();
-	printf("NYU : %d\n", nyu3 = (int *) malloc(42));
-	printMallocated();
-	printf("NYU : %d\n", nyu4 = (int *) malloc(1337));
-	printMallocated();
-
-	free(nyu3);
-	printMallocated();
-
-	printf("NYU : %d\n", nyu3 = (int *) malloc(10));
-	printMallocated();
 }
 
 static void defaultOptions(kernel_options *options)

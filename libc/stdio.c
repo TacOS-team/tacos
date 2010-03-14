@@ -14,11 +14,12 @@
 #define CURSOR_POS_MSB 0x0E
 #define CURSOR_POS_LSB 0x0F
 
+#define DEFAULT_ATTRIBUTE_VALUE 0x09
 
 /* Variables. */
-static finnouMode = 0; //disable par défaut, quand même 
+static int finnouMode = 0; //disable par défaut, quand même 
 /* Attribute of a character */
-static uint8_t attribute = 0x09;
+static uint8_t attribute = DEFAULT_ATTRIBUTE_VALUE;
 /* Save the X position. */
 static int xpos;
 /* Save the Y position. */
@@ -116,7 +117,7 @@ void itoa (char *buf, int base, int d) {
 }
 
 static void scrollup() {
-	int c, l;
+	int c;
 
 	bottom_buffer++;
 
@@ -218,5 +219,15 @@ void printf (const char *format, ...) {
 void enableFinnouMode(int enable)
 {
   finnouMode = enable;
+}
+
+void set_attribute(uint8_t background, uint8_t foreground)
+{
+  attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
+}
+
+void reset_attribute()
+{
+  attribute = DEFAULT_ATTRIBUTE_VALUE;
 }
 

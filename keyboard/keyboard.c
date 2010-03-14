@@ -170,7 +170,7 @@ char keyBufferPop()
 
 char keyboardConvertToChar(uint8_t scancode) {
 	unsigned int i;
-   for (i=0 ; i < sizeof(letters_azerty) / 3; i++) {
+   for (i=0 ; i < sizeof(letters_azerty) / sizeof(letter); i++) {
 		if (scancode == letters_azerty[i].scancode) {
 			if ((shift && !capslock) || (!shift && capslock)) {
 				return letters_azerty[i].uppercase;
