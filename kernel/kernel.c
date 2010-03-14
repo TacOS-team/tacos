@@ -165,7 +165,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 		if (strcmp(buffer, "reboot") == 0) {
 			printf("\nReboot non implemente, desole !");
-		} else printf("%s\n", buffer);
+		} 
 	}
 }
 
