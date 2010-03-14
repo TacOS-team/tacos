@@ -153,8 +153,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	{
 		char c;
 		date_t date = get_date();
-		printf("\n%d\\%d\\%d : %dh%dm%ds > ", date.day, date.month, date.year,
-												date.hour, date.minute, date.sec);
+		printf("\n%d\\%d\\%d : %s%dh%s%dm%s%ds > ", date.day, date.month, date.year,
+												date.hour < 10 ? "0" : "", date.hour, date.minute < 10 ? "0" : "", date.minute, date.sec < 10 ? "0" : "", date.sec);
 		while((c = getchar()) != '\n') {
 			buffer[i%80] = c;
 			putchar(c);
@@ -165,7 +165,12 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 		if (strcmp(buffer, "reboot") == 0) {
 			printf("\nReboot non implemente, desole !");
-		} 
+		}
+		if (strcmp(buffer, "halt") == 0) {
+			printf("\nHalt !");
+			asm("cli");
+			asm("hlt");
+		}
 	}
 }
 
