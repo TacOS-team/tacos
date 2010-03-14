@@ -172,7 +172,7 @@ char keyboardConvertToChar(uint8_t scancode) {
 	unsigned int i;
    for (i=0 ; i < sizeof(letters_azerty) / 3; i++) {
 		if (scancode == letters_azerty[i].scancode) {
-			if ((shift == 1 && capslock == 0) || (shift == 0 && capslock == 1)) {
+			if ((shift && !capslock) || (!shift && capslock)) {
 				return letters_azerty[i].uppercase;
 			} else {
 				return letters_azerty[i].lowercase;
