@@ -22,35 +22,26 @@
 #define A_SMALLER  1
 #define B_SMALLER -1
 
-#define MAX_EVENTS 256
-
 static date_t date = {0, 0, 0, 0, 0, 0};
 
-static heap_t events;
-static date_t events_buffer[MAX_EVENTS];
-
 static uint64_t systime;
-static uint32_t increaseSec;
 
-static void clock_tick(int interrupt_id)
+void clock_tick()
 {
   systime++;
-  increaseSec--;
 
-  if(increaseSec <= 0)
-  {
-    date.sec++;
-    increaseSec = 1000;
+  date.sec++;
     
-    if(date.sec == 60)
+  if(date.sec == 60)
+  {
+    date.sec = 0;
+    date.minute++;
+    if(date.minute == 60)
     {
       date.minute = 0;
       date.hour++;
     }
   }
-  
-  systime = 0;
-  i8254_init(I8254_MAX_FREQ/1000);
 }
 
 // nombres à 2 chiffres donc :
@@ -77,11 +68,7 @@ void clock_init()
   outb(RTC_SECOND, RTC_REQUEST);
   date.sec = bcd2binary(inb(RTC_ANSWER));
 
-  increaseSec = 1000;
-  i8254_init(I8254_MAX_FREQ/1000);
-  interrupt_set_routine(IRQ_TIMER, clock_tick);
-  
-  initHeap(&events, (cmp_func_type)compare_times, (void*)events_buffer, sizeof(date_t),MAX_EVENTS);
+  systime = 0;
 }
 
 date_t get_date()
@@ -136,3 +123,4 @@ int compare_times(date_t a, date_t b)
 	
 	return 0;
 }
+

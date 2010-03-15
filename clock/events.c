@@ -6,11 +6,14 @@
 #include <events.h>
 #include <stdio.h>
 
-static const int TIMER_FREQ = I8254_MAX_FREQ/1000;
+#define MAX_EVENTS 256
+
+static const int TIMER_FREQ = I8254_MAX_FREQ / 1000;
 static int ticks;
 static heap_t events;
+static struct event_t events_buffer[MAX_EVENTS];
 
-int compare_times_heap(void* a, void* b)
+int compare_events(void* a, void* b)
 {
   struct event_t *event_a = (struct event_t *) a;
   struct event_t *event_b = (struct event_t *) b;
@@ -25,7 +28,7 @@ static void events_interrupt(int interrupt_id)
 
   if(ticks < 0)
   {
-    //clock_tick();
+    clock_tick();
   
     event = (struct event_t *) getTop(events);
     while(event != NULL && compare_times(event->date, get_date()) < 0)
@@ -43,7 +46,8 @@ static void events_interrupt(int interrupt_id)
 void events_init()
 {
   clock_init();
-  //initHeap(&events, (cmp_func_type)compare_times_heap);
+  initHeap(&events, (cmp_func_type)compare_events, (void*)events_buffer,
+           sizeof(struct event_t), MAX_EVENTS);
 
   interrupt_set_routine(IRQ_TIMER, events_interrupt);
   ticks = TIMER_FREQ;
