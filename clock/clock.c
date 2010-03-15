@@ -2,6 +2,7 @@
 #include <ioports.h>
 #include <i8254.h>
 #include <clock.h>
+#include <interrupts.h>
 #include "heap.h"
 
 #define RTC_REQUEST 0x70

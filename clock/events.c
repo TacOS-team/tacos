@@ -25,7 +25,7 @@ static void events_interrupt(int interrupt_id)
 
   if(ticks < 0)
   {
-    clock_tick();
+    //clock_tick();
   
     event = (struct event_t *) getTop(events);
     while(event != NULL && compare_times(event->date, get_date()) < 0)
@@ -43,7 +43,7 @@ static void events_interrupt(int interrupt_id)
 void events_init()
 {
   clock_init();
-  initHeap(&events, (cmp_func_type)compare_times_heap);
+  //initHeap(&events, (cmp_func_type)compare_times_heap);
 
   interrupt_set_routine(IRQ_TIMER, events_interrupt);
   ticks = TIMER_FREQ;
