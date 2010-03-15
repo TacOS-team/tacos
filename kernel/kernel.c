@@ -160,8 +160,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 		i = 0;
 
 		if (strcmp(buffer, "reboot") == 0) {
-			// ça marche, merci floppy
-			floppy_read_sector(0xFFFF,0,0,0,MBR);
 			printf("\nReboot non implemente, desole !");
 		}
 		if (strcmp(buffer, "halt") == 0) {
@@ -173,7 +171,15 @@ void cmain (unsigned long magic, unsigned long addr) {
 			cls();
 		if( strcmp(buffer, "lspci") == 0)
 			pci_list();
-			
+		if( strcmp(buffer, "erase_mbr") == 0)
+		{
+			set_attribute(0, 4);
+			cls();
+			printf("\n/!\\ ERASING MBR MOUHAHA /!\\\n");
+			char zeros[512];
+			floppy_write_sector(0,0,0,zeros);
+			reset_attribute();
+		}					
 	}
 }
 
