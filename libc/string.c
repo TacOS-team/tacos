@@ -16,7 +16,7 @@ void* memcpy(void* dest, const void* src, size_t size)
 size_t strlen(const char* s)
 {
 	int len=0;
-	while(s[len++] != '\0');
+	while(s[len++]);
 	return len-1;
 }
 		
