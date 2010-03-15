@@ -2,6 +2,27 @@
 #include <exception.h>
 #include <kpanic.h>
 
+void printStackTrace(uint32_t depth)
+{
+	// Joli petit hack:
+	// on récupère ebp à partir de l'adresse de l'argument:
+	uint32_t* ebp = &depth - 2;
+	uint32_t i;
+	printf("Stack Tace:\n");
+	
+	for(i=0; i<depth; ++i)
+	{
+		uint32_t eip = ebp[1];
+		
+		if(eip == 0x0010001f) // Si on arrive au multiboot_entry
+		{
+			break;
+		}
+		ebp = ebp[0];
+		printf("->0x%x\n",eip);
+	}
+}
+	
 void kpanic_handler(int error_id)
 {
   //cls();
@@ -33,6 +54,7 @@ void kpanic_handler(int error_id)
 		default:
 			printf("Unknown exception.\n");
   }
+  printStackTrace(10);
   asm("cli");
   asm("hlt");
 }

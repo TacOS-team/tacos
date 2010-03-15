@@ -140,9 +140,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 		
 	char MBR[FLOPPY_SECTOR_SIZE];
 	//printf("%d", FLOPPY_SECTOR_SIZE/0);
+	floppy_read_sector(0,0,0,MBR);
 	printf("MBR Signature:0x%x%x.\n",0xFF&MBR[0x01FE], 0xFF&MBR[0x01FF]);
 	
-	memcpy(0xFFFFFF, "lkoooooooo", 10);
 	char buffer[80];
 	int i = 0;
 	for(;;)
@@ -214,6 +214,7 @@ static void defaultOptions(kernel_options *options)
 
 static char get_opt(char **cmdLine)
 {
+	
 	while(**cmdLine != '-' && **cmdLine != '\0') 
 		(*cmdLine)++;
 
