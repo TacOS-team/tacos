@@ -102,7 +102,7 @@
 
 					/* Call the handler with exception number as
 					 * argument */
-					pushl $0
+					pushl $\id
 					leal  exception_handler_array,%edi
 					call  *\id*4(%edi)
 					addl  $4, %esp
