@@ -169,6 +169,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 			asm("cli");
 			asm("hlt");
 		}
+		if( strcmp(buffer, "clear") == 0)
+			cls();
 	}
 }
 
