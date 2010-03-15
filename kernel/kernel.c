@@ -139,7 +139,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	if(init_floppy() != 0)
 		printf("Initialisation du lecteur a echoue.\n");
 		
-	char MBR[512];
+	char MBR[FLOPPY_SECTOR_SIZE];
 	floppy_read_sector(0,0,0,MBR);
 	printf("MBR Signature:0x%x%x.\n",0xFF&MBR[0x01FE], 0xFF&MBR[0x01FF]);
 
@@ -173,10 +173,10 @@ void cmain (unsigned long magic, unsigned long addr) {
 			pci_list();
 		if( strcmp(buffer, "erase_mbr") == 0)
 		{
+			char zeros[FLOPPY_SECTOR_SIZE];
 			set_attribute(0, 4);
 			cls();
 			printf("\n/!\\ ERASING MBR MOUHAHA /!\\\n");
-			char zeros[512];
 			floppy_write_sector(0,0,0,zeros);
 			reset_attribute();
 		}					
