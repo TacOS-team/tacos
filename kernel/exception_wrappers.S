@@ -52,31 +52,31 @@
         .p2align 2, 0x90
         exception_wrapper_\id:
         .type exception_wrapper_\id,@function
+					/* Fake error code */
+					pushl $0
+
 					pusha
-					
-					mov %ds, %ax
-					push %eax
-					
-					mov $0x10, %ax					
-					mov %ax, %ds
-					mov %ax, %es
-					mov %ax, %fs
-					mov %ax, %gs
+					push %gs
+					push %fs
+					push %ds
+					push %es
 
 					/* Call the handler with exception number as
 					 * argument */
-					pushl $0
+					pushl $\id
 					leal  exception_handler_array,%edi
 					call  *\id*4(%edi)
 					addl  $4, %esp
-
-					pop %ebx
-					mov %bx, %ds
-					mov %bx, %es
-					mov %bx, %fs
-					mov %bx, %gs
+					
+					pop %es
+					pop %ds
+					pop %fs
+					pop %gs
 					popa
-					add $8, %esp
+
+					/* Remove fake error code */
+					addl $4, %esp
+
 					sti
 					iret
 .endr 
@@ -94,55 +94,30 @@
         .p2align 2, 0x90
         exception_wrapper_\id:
         .type exception_wrapper_\id,@function
- 
-                /* ret eflags */
-                /* ret cs */
-                /* ret eip */
-                /* Error code */
- 
-                /* Backup the context */
-                pushl %ebp
-                movl %esp, %ebp
- 
-                pushl %edi
-                pushl %esi
-                pushl %edx
-                pushl %ecx
-                pushl %ebx
-                pushl %eax
-                subl  $2,%esp
-                pushw %ss
-                pushw %ds
-                pushw %es
-                pushw %fs
-                pushw %gs
+ 					pusha
+					push %gs
+					push %fs
+					push %ds
+					push %es
 
-                /* Call the handler with exception number as
-                 * argument */
-                pushl $\id
-                leal  exception_handler_array,%edi
-                call  *\id*4(%edi)
-                addl  $4, %esp
+					/* Call the handler with exception number as
+					 * argument */
+					pushl $0
+					leal  exception_handler_array,%edi
+					call  *\id*4(%edi)
+					addl  $4, %esp
+					
+					pop %es
+					pop %ds
+					pop %fs
+					pop %gs
+					popa
 
-                /* Restore the context */
-                popw  %gs
-                popw  %fs
-                popw  %es
-                popw  %ds
-                popw  %ss
-                addl  $2,%esp
-                popl  %eax
-                popl  %ebx
-                popl  %ecx
-                popl  %edx
-                popl  %esi
-                popl  %edi
-                popl  %ebp
- 
-                /* Error code isn't compatible with iretd */
-                addl $4, %esp
- 
-                iret
+					/* Error code isn't compatible with iretd */
+					addl $4, %esp
+
+					sti
+					iret
 .endr
 
 
