@@ -4,6 +4,7 @@ void* memcpy(void* dest, const void* src, size_t size)
 {
 	size_t i;
 	
+	// Si on peut diviser les données à déplacer par paquet de 4 bytes, on les transfert en uint32, sinon on reste sur du uint8
 	if(!(size%4))
 	{
 		uint32_t* d = dest;
