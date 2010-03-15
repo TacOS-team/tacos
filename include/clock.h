@@ -16,7 +16,6 @@ typedef struct
 
 int compare_times(date_t a, date_t b);
 void clock_init();
-void clock_tick();
 date_t get_date();
 
 #endif

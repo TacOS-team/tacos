@@ -2,6 +2,7 @@
 #include <ioports.h>
 #include <i8254.h>
 #include <clock.h>
+#include "heap.h"
 
 #define RTC_REQUEST 0x70
 #define RTC_ANSWER  0x71
@@ -17,21 +18,38 @@
 #define RTC_MONTH         0x08
 #define RTC_YEAR          0x09
 
+#define A_SMALLER  1
+#define B_SMALLER -1
+
+#define MAX_EVENTS 256
+
 static date_t date = {0, 0, 0, 0, 0, 0};
 
-void clock_tick()
+static heap_t events;
+static date_t events_buffer[MAX_EVENTS];
+
+static uint64_t systime;
+static uint32_t increaseSec;
+
+static void clock_tick(int interrupt_id)
 {
-  date.sec++;
-  if(date.sec == 60)
+  systime++;
+  increaseSec--;
+
+  if(increaseSec <= 0)
   {
-    date.sec = 0;
-    date.minute++;
-    if(date.minute == 60)
+    date.sec++;
+    increaseSec = 1000;
+    
+    if(date.sec == 60)
     {
       date.minute = 0;
       date.hour++;
     }
   }
+  
+  systime = 0;
+  i8254_init(I8254_MAX_FREQ/1000);
 }
 
 // nombres à 2 chiffres donc :
@@ -57,11 +75,12 @@ void clock_init()
   date.minute = bcd2binary(inb(RTC_ANSWER));
   outb(RTC_SECOND, RTC_REQUEST);
   date.sec = bcd2binary(inb(RTC_ANSWER));
-}
 
-int compare_times(date_t a, date_t b)
-{
-	return 1; // XXX : not implemented
+  increaseSec = 1000;
+  i8254_init(I8254_MAX_FREQ/1000);
+  interrupt_set_routine(IRQ_TIMER, clock_tick);
+  
+  initHeap(&events, (cmp_func_type)compare_times, (void*)events_buffer, sizeof(date_t),MAX_EVENTS);
 }
 
 date_t get_date()
@@ -69,3 +88,50 @@ date_t get_date()
 	return date;
 }
 
+int compare_times(date_t a, date_t b)
+{
+	if(a.year != b.year)
+	{
+		if(a.year < b.year)
+			return A_SMALLER;
+		else
+			return B_SMALLER;
+	}
+	if(a.month != b.month)
+	{
+		if(a.month < b.month)
+			return A_SMALLER;
+		else
+			return B_SMALLER;
+	}
+	if(a.day != b.day)
+	{
+		if(a.day < b.day)
+			return A_SMALLER;
+		else
+			return B_SMALLER;
+	}
+	if(a.hour != b.hour)
+	{
+		if(a.hour < b.hour)
+			return A_SMALLER;
+		else
+			return B_SMALLER;
+	}
+	if(a.minute != b.minute)
+	{
+		if(a.minute < b.minute)
+			return A_SMALLER;
+		else
+			return B_SMALLER;
+	}
+	if(a.sec != b.sec)
+	{
+		if(a.sec < b.sec)
+			return A_SMALLER;
+		else
+			return B_SMALLER;
+	}
+	
+	return 0;
+}

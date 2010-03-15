@@ -19,12 +19,14 @@ typedef int (*cmp_func_type) (void*, void*);
 
 typedef struct {
 	cmp_func_type comparator;
-	void* heap[HEAP_MAX_SIZE];
+	void* heap;
 	int nb_elements;
+	int elements_size;
+	int max_elements;
 } heap_t;
 
 // Initialise le tas à vide et regle la fonction de comparaison
-void initHeap(heap_t* h, cmp_func_type cmp);
+void initHeap(heap_t* h, cmp_func_type cmp, void* heap, int elements_size,int max_elements);
 
 // Recupere le pointeur du sommet, NULL sinon
 void* getTop(heap_t h);

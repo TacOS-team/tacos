@@ -2,10 +2,18 @@
 #include "types.h"
 
 // initialise le tas
-void initHeap(heap_t* h, cmp_func_type cmp)
+void initHeap(heap_t* h, cmp_func_type cmp, void* heap, int elements_size,int max_elements)
 {
 	h->nb_elements = 0;
+	h->max_elements = max_elements;
 	h->comparator = cmp;
+	h->heap = heap;
+	h->elements_size = elements_size;
+}
+
+void* getIn(heap_t* h,int index)
+{
+	return h->heap+index*h->elements_size;
 }
 
 // retourne le sommet
@@ -14,38 +22,50 @@ void* getTop(heap_t h)
 	void* top = NULL;
 	
 	if(h.nb_elements>0)
-		top = h.heap[0];
+		top = h.heap;
 		
 	return top;
 }
 
 // alterne deux elements d'indice a,b de tab
-void swap(int a, int b, void** tab)
+void swap(int a, int b, void* tab, int size)
 {
-	void* tmp;
-	tmp = tab[a];
-	tab[a] = tab[b];
-	tab[b] = tmp;
+	uint8_t tmp;
+	int i;
+	
+	for(i=0 ; i< size ; i++)
+	{
+		tmp = ((char*)tab)[(a*size)+i];
+		((char*)tab)[(a*size)+i] = ((char*)tab)[(b*size)+i];
+		((char*)tab)[(b*size)+i] = tmp;
+	}
+}
+
+void writeAt(heap_t* h,int index,void* element)
+{
+	int i;
+	
+	for(i=0 ; i<h->elements_size ; i++)
+		*((char*)getIn(h,index)) = *((char*)(element+i));
 }
 
 // ajoute une element
 int addElement(heap_t* h, void* element)
 {
 	// On verifie que le tas n'est pas plein
-	if(h->nb_elements < HEAP_MAX_SIZE)
+	if(h->nb_elements < h->max_elements)
 	{
 		int index = h->nb_elements;
-		void* tmp;
 		
 		// On insere l'element en fin de tableau
 		h->nb_elements++;
-		h->heap[index] = element;
+		writeAt(h,index,element);
 		
 		// On remonte l'element si necessaire
-		while(h->comparator(h->heap[index],h->heap[(index-1)/2]) > 0)
+		while(h->comparator(getIn(h,index),getIn(h,(index-1)/2)) > 0)
 		{
 			// tant que l'element est plus grand que son pere on le remonte
-			swap(index, (index-1)/2, h->heap);
+			swap(index, (index-1)/2, h->heap, h->elements_size);
 
 			index = (index-1)/2;			
 			if(index == 0)
@@ -73,7 +93,7 @@ int removetop(heap_t* h)
 			void* tmp;
 			
 			// On place le dernier element au sommet
-			h->heap[0] = h->heap[index];
+			writeAt(h,0,getIn(h,index));
 			
 			// On le redescend
 			index = 0;
@@ -89,28 +109,28 @@ int removetop(heap_t* h)
 					if(son2 < h->nb_elements)
 					{
 						// On a deux fils
-						if(h->comparator(h->heap[son1],h->heap[index]) > 0)
+						if(h->comparator(getIn(h,son1),getIn(h,index)) > 0)
 						{
-							if(h->comparator(h->heap[son2],h->heap[son1]) > 0)
+							if(h->comparator(getIn(h,son2),getIn(h,index)) > 0)
 							{
 								// moi < fils1 < fils2
 								// on alterne moi et fils2
-								swap(index, son2, h->heap);
+								swap(index, son2, h->heap, h->elements_size);
 								index = son2;
 							}
 							else
 							{
 								// moi < fils2 < fils1
 								// on alterne moi et fils1
-								swap(index, son1, h->heap);
+								swap(index, son1, h->heap, h->elements_size);
 								index = son1;
 							}
 						}
-						else if(h->comparator(h->heap[son2],h->heap[index]) > 0)
+						else if(h->comparator(getIn(h,son2),getIn(h,index)) > 0)
 						{
 							// fils1 < moi < fils2
 							// on alterne moi et fils2
-							swap(index, son2, h->heap);
+							swap(index, son2, h->heap, h->elements_size);
 							index = son2;
 						}
 						else
@@ -123,11 +143,11 @@ int removetop(heap_t* h)
 					else
 					{
 						// On a un seul fils
-						if(h->comparator(h->heap[son1],h->heap[index]) > 0)
+						if(h->comparator(getIn(h,son1),getIn(h,index)) > 0)
 						{
 							// fils > moi
 							// On alterne
-							swap(index, son1, h->heap);
+							swap(index, son1, h->heap, h->elements_size);
 							index = son1;
 						}
 						else

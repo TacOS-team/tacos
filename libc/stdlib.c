@@ -6,7 +6,7 @@
 #include <heap.h>
 
 heap_t *heap = NULL;
-void initHeap(heap_t* h, cmp_func_type cmp);
+//void initHeap(heap_t* h, cmp_func_type cmp);
 
 int init_malloc()
 {
