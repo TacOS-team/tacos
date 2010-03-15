@@ -171,6 +171,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 		}
 		if( strcmp(buffer, "clear") == 0)
 			cls();
+		if( strcmp(buffer, "lspci") == 0)
+			pci_list();
+			
 	}
 }
 
