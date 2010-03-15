@@ -1,8 +1,8 @@
 #include "heap.h"
-#include "types.h"
+#include "string.h"
 
 // initialise le tas
-void initHeap(heap_t* h, cmp_func_type cmp, void* heap, int elements_size,int max_elements)
+void initHeap(heap_t* h, cmp_func_type cmp, void* heap, size_t elements_size,int max_elements)
 {
 	h->nb_elements = 0;
 	h->max_elements = max_elements;
@@ -41,14 +41,6 @@ void swap(int a, int b, void* tab, int size)
 	}
 }
 
-void writeAt(heap_t* h,int index,void* element)
-{
-	int i;
-	
-	for(i=0 ; i<h->elements_size ; i++)
-		*((char*)getIn(h,index)) = *((char*)(element+i));
-}
-
 // ajoute une element
 int addElement(heap_t* h, void* element)
 {
@@ -59,7 +51,7 @@ int addElement(heap_t* h, void* element)
 		
 		// On insere l'element en fin de tableau
 		h->nb_elements++;
-		writeAt(h,index,element);
+		memcpy(getIn(h,index), element, h->elements_size);
 		
 		// On remonte l'element si necessaire
 		while(h->comparator(getIn(h,index),getIn(h,(index-1)/2)) > 0)
@@ -93,7 +85,7 @@ int removetop(heap_t* h)
 			void* tmp;
 			
 			// On place le dernier element au sommet
-			writeAt(h,0,getIn(h,index));
+			memcpy(h->heap, getIn(h,index), h->elements_size);
 			
 			// On le redescend
 			index = 0;

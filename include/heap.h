@@ -1,6 +1,8 @@
 #ifndef _HEAP_H_
 #define _HEAP_H_
 
+#include <types.h>
+
 #define HEAP_MAX_SIZE 256
 
 /*
@@ -21,12 +23,12 @@ typedef struct {
 	cmp_func_type comparator;
 	void* heap;
 	int nb_elements;
-	int elements_size;
+	size_t elements_size;
 	int max_elements;
 } heap_t;
 
 // Initialise le tas à vide et regle la fonction de comparaison
-void initHeap(heap_t* h, cmp_func_type cmp, void* heap, int elements_size,int max_elements);
+void initHeap(heap_t* h, cmp_func_type cmp, void* heap, size_t elements_size,int max_elements);
 
 // Recupere le pointeur du sommet, NULL sinon
 void* getTop(heap_t h);
