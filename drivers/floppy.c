@@ -8,13 +8,13 @@
 
 
 // Repositionne la tête de lecture sur le cylindre 0
-int floppy_calibrate(int base)
+int floppy_calibrate()
 {
 	int i, st0, cy1 = -1;
 	int drive = floppy_get_current_drive();
 	
 	// Allumer le moteur
-	floppy_motor(base, ON);
+	floppy_motor(ON);
 	
 	// On essaye 5 fois (oui c'est totalement arbitraire)
 	for(i=0; i<5; i++)
@@ -25,14 +25,14 @@ int floppy_calibrate(int base)
 		// Procedure de calibrage:
 		// On envoi dans un premier temps la commande RECALIBRATE,
 		// puis on envoi le numero du lecteur que l'on veut recalibrer
-		floppy_write_command(base, RECALIBRATE);
-		floppy_write_command(base, drive);
+		floppy_write_command(RECALIBRATE);
+		floppy_write_command(drive);
 		
 		// On attend la réponse
 		floppy_wait_irq();
 		
 		// une fois l'IRQ arrivée, on peut récuperer les données de retour via SENSE_INTERRUPT
-		floppy_sense_interrupt(base, &st0, &cy1);
+		floppy_sense_interrupt(&st0, &cy1);
 		
 		if(st0 & 0xC0)
 		{
@@ -45,13 +45,13 @@ int floppy_calibrate(int base)
 		
 		if(!cy1) // si cy1=0, on a bien atteint le cylindre 0 et on peut arreter la calibration
 		{
-			floppy_motor(base, OFF);
+			floppy_motor(OFF);
 			return 0;
 		}
 	}
 	printf("floppy_recalibrate: failure.\n");
 	
-	floppy_motor(base, OFF);
+	floppy_motor(OFF);
 	
 	return -1;
 }
@@ -73,7 +73,7 @@ int init_floppy()
 	outb(0x0C, FLOPPY_BASE + FLOPPY_DOR);
 	
 	floppy_wait_irq();
-	floppy_sense_interrupt(FLOPPY_BASE, NULL,NULL);
+	floppy_sense_interrupt(NULL,NULL);
 	
 	// On regle la vitesse de transfert en fonction du type de disquette
 	drive_type = floppy_get_type(drive);
@@ -101,12 +101,12 @@ int init_floppy()
 	
 	
 /* Totalement hardcodé et moche à fortiori*/
-	floppy_write_command(FLOPPY_BASE, SPECIFY);
-    floppy_write_command(FLOPPY_BASE, 0xdf); /* steprate = 3ms, unload time = 240ms */
-    floppy_write_command(FLOPPY_BASE, 0x02); /* load time = 16ms, no-DMA = 0 */
+	floppy_write_command(SPECIFY);
+    floppy_write_command(0xdf); /* steprate = 3ms, unload time = 240ms */
+    floppy_write_command(0x02); /* load time = 16ms, no-DMA = 0 */
 /* *************************************** */
 	
 	// On calibre le lecteur
-	if(floppy_calibrate(FLOPPY_BASE)) return -1;
+	if(floppy_calibrate()) return -1;
 	return 0;
 }

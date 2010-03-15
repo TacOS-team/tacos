@@ -6,33 +6,33 @@
 
 static volatile uint8_t current_drive = 0;
 
-bool floppy_ready(int base)
+bool floppy_ready()
 {
-	return ((0x80 & inb(base + FLOPPY_MSR))!=0);
+	return ((0x80 & inb(FLOPPY_BASE + FLOPPY_MSR))!=0);
 }
 
-int floppy_write_command(int base, char cmd)
+int floppy_write_command(char cmd)
 {
 	int ret = -1;
 	
 	/*TODO: Ajouter un timeout plutot que d'abandonner si la FIFO n'est pas prête */
 	
-	if(floppy_ready(base)) // On envoi la commande que si la FIFO est prête
+	if(floppy_ready()) // On envoi la commande que si la FIFO est prête
 	{
-		outb(cmd, base + FLOPPY_FIFO);
+		outb(cmd, FLOPPY_BASE + FLOPPY_FIFO);
 		ret = 0;
 	}
 	
 	return ret;
 }
 
-uint8_t floppy_read_data(int base)
+uint8_t floppy_read_data()
 {
 	uint8_t ret = 0;
 	
-	if(floppy_ready(base)) // On ne lis que si la FIFO est prête
+	if(floppy_ready()) // On ne lis que si la FIFO est prête
 	{
-		ret = inb(base + FLOPPY_FIFO);
+		ret = inb(FLOPPY_BASE + FLOPPY_FIFO);
 	}
 	
 	return ret;
@@ -49,7 +49,7 @@ void floppy_set_current_drive(uint8_t drive)
 	current_drive = drive;
 }
 
-int floppy_seek(int base, int cylindre, int head)
+int floppy_seek(int cylindre, int head)
 {
 	// Fonction similaire à floppy_calibrate, mais au lieu de chercher le cylindre 0 on cherche le cylindre cyl
 	int i, drive, st0, cyl = -1;
@@ -57,7 +57,7 @@ int floppy_seek(int base, int cylindre, int head)
 	drive = floppy_get_current_drive();
 	
 	// Allumage du moteur
-	floppy_motor(base, ON);
+	floppy_motor(ON);
 	
 	// On fait 5 tentative à titre arbitraire
 	for(i=0; i<5; i++)
@@ -66,15 +66,15 @@ int floppy_seek(int base, int cylindre, int head)
 		// Premier parametre: (head <<2)|drive
 		// Deuxieme parametre: cylindre
 		// Attente IRQ
-		floppy_write_command(base, SEEK);
-		floppy_write_command(base, (head<<2)|drive);
-		floppy_write_command(base, cylindre);
+		floppy_write_command(SEEK);
+		floppy_write_command((head<<2)|drive);
+		floppy_write_command(cylindre);
 		
 		//Attente de l'IRQ
 		floppy_wait_irq();
 		
 		//Récuperation des status
-		floppy_sense_interrupt(base, &st0, &cyl);
+		floppy_sense_interrupt(&st0, &cyl);
 		
 		if(st0 & 0xC0)
 		{
@@ -87,13 +87,13 @@ int floppy_seek(int base, int cylindre, int head)
 		
 		if(cyl == cylindre) // si cyl=cylindre, on a bien atteint le cylindre voulu et on peut arreter le seek
 		{
-			floppy_motor(base, OFF);
+			floppy_motor(OFF);
 			return 0;
 		}
 	}
 	printf("floppy_seek: failure\n.");
 	
-	floppy_motor(base, OFF);
+	floppy_motor(OFF);
 	
 	return -1;
 }
@@ -129,7 +129,7 @@ void floppy_detect_drives() {
 
 uint8_t floppy_get_version()
 {
-	floppy_write_command(FLOPPY_BASE, VERSION);
+	floppy_write_command(VERSION);
 	
-	return floppy_read_data(FLOPPY_BASE);
+	return floppy_read_data();
 }

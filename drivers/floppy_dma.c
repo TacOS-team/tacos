@@ -1,5 +1,6 @@
 #include <types.h>
 #include <stdio.h>
+#include <string.h>
 #include <ioports.h>
 #include "floppy_motor.h"
 #include "floppy_utils.h"
@@ -7,6 +8,8 @@
 
 
 #define floppy_dmalen 0x4800
+
+#define floppy_head2_start floppy_dmalen/2
 
 // Déclaration du buffer qui servira aux transfert via l'ISA DMA
 static const char floppy_dma_buffer[floppy_dmalen] __attribute__((aligned(0x8000)));
@@ -66,12 +69,16 @@ void floppy_dma_init(floppy_io io_dir)
 	
 }
 
-int floppy_cylinder(int base, int cylinder, floppy_io io_dir)
+int floppy_cylinder(int cylinder, floppy_io io_dir)
 {
 	uint8_t command = 0;
 	uint8_t drive = floppy_get_current_drive();
-	int i;
+	int i; 
 	const uint8_t flags = 0xC0; // Multitrack et MFM activés
+	
+	// Variables recevant les valeurs de retour de la lecture
+	uint8_t st0, st1, st2, rcy, rhe, rse, bps;
+	int error = 0;
 	
 	switch(io_dir)
 	{
@@ -88,14 +95,14 @@ int floppy_cylinder(int base, int cylinder, floppy_io io_dir)
 	}
 	
 	// On lit avec les deux têtes, on les met donc toutes en position
-	if(floppy_seek(base, cylinder, 0)) return -1;
-	if(floppy_seek(base, cylinder, 1)) return -1;
+	if(floppy_seek(cylinder, 0)) return -1;
+	if(floppy_seek(cylinder, 1)) return -1;
 	
 	// On s'accord 5 essais, totalement arbitraire, à calibrer donc.
-//	for(i=0; i<5; i++)
-//	{
+	for(i=0; i<5; i++)
+	{
 		// Allumage moteur
-		floppy_motor(base, ON);
+		floppy_motor(ON);
 		
 		// Initialisation DMA
 		floppy_dma_init(io_dir);
@@ -113,53 +120,132 @@ int floppy_cylinder(int base, int cylinder, floppy_io io_dir)
 		//7) Nombre de secteurs à lire
 		//8) 0x1b (taille par défaut de GAP1)
 		//9) 0xff (??)
-		floppy_write_command(base, command);
-		floppy_write_command(base,drive&0x03); // head = 0 dans le cas du MT, et drive&0x03 au cas ou drive > 3
-		floppy_write_command(base, cylinder);
-		floppy_write_command(base, 0); // voir plus haut
-		floppy_write_command(base, 1); // On compte les secteurs a partir de 1
-		floppy_write_command(base, 2);
-		floppy_write_command(base, 18); // 18 secteurs par piste
-		floppy_write_command(base, 0x1b);
-		floppy_write_command(base, 0xff);
+		floppy_write_command(command);
+		floppy_write_command(drive&0x03); // head = 0 dans le cas du MT, et drive&0x03 au cas ou drive > 3
+		floppy_write_command(cylinder);
+		floppy_write_command(0); // voir plus haut
+		floppy_write_command(1); // On compte les secteurs a partir de 1
+		floppy_write_command(2);
+		floppy_write_command(18); // 18 secteurs par piste
+		floppy_write_command(0x1b);
+		floppy_write_command(0xff);
 		
-		floppy_wait_irq();
+		floppy_wait_irq(); 
 		
-		printf("READ/WRITE succeed \\o/ \n");
+		// On verifie que la lecture c'est correctement déroulée
 		
-		printf("MBR Signature: 0x%x%x.\n",(uint8_t)floppy_dma_buffer[0x01FE],(uint8_t)floppy_dma_buffer[0x01FF]);
-		
-		
-//	}
+		// Informations de statut
+		st0 = floppy_read_data();
+        st1 = floppy_read_data();
+        st2 = floppy_read_data();
+        
+        // Informations sur les CHS
+        rcy = floppy_read_data(); // Cylindre
+        rhe = floppy_read_data(); // Head
+        rse = floppy_read_data(); // Secteur
+        bps = floppy_read_data(); // Nomber de byte par secteur
+        
+        /* Traitement des erreurs repompée */
+        if(st0 & 0xC0) {
+            static const char * status[] =
+            { 0, "error", "invalid command", "drive not ready" };
+            printf("floppy_do_sector: status = %s\n", status[st0 >> 6]);
+            error = 1;
+        }
+        if(st1 & 0x80) {
+            printf("floppy_cylinder: end of cylinder\n");
+            error = 1;
+        }
+        if(st0 & 0x08) {
+            printf("floppy_cylinder: drive not ready \n");
+            error = 1;
+        }
+        if(st1 & 0x20) {
+            printf("floppy_cylinder: CRC error\n");
+            error = 1;
+        }
+        if(st1 & 0x10) {
+            printf("floppy_cylinder: controller timeout\n");
+            error = 1;
+        }
+        if(st1 & 0x04) {
+            printf("floppy_cylinder: no data found\n");
+            error = 1;
+        }
+        if((st1|st2) & 0x01) {
+            printf("floppy_cylinder: no address mark found\n");
+            error = 1;
+        }
+        if(st2 & 0x40) {
+            printf("floppy_cylinder: deleted address mark\n");
+            error = 1;
+        }
+        if(st2 & 0x20) {
+            printf("floppy_cylinder: CRC error in data\n");
+            error = 1;
+        }
+        if(st2 & 0x10) {
+            printf("floppy_cylinder: wrong cylinder\n");
+            error = 1;
+        }
+        if(st2 & 0x04) {
+            printf("floppy_cylinder: uPD765 sector not found\n");
+            error = 1;
+        }
+        if(st2 & 0x02) {
+            printf("floppy_cylinderr: bad cylinder\n");
+            error = 1;
+        }
+        if(bps != 0x2) {
+            printf("floppy_cylinder: wanted 512B/sector, got %d", (1<<(bps+7)));
+            error = 1;
+        }
+        if(st1 & 0x02) {
+            printf("floppy_cylinder: not writable\n");
+            error = 2;
+        }
+
+        if(!error) {
+            floppy_motor(OFF);
+            return 0;
+        }
+        if(error > 1) {
+            printf("floppy_do_sector: not retrying..\n");
+            floppy_motor(OFF);
+            return -2;
+        }
+	
+	}
 	
 	return 0;
 }
 
-void floppy_read_sector(int base, int cylinder, int head, int sector, char* buffer)
+void floppy_read_sector(int cylinder, int head, int sector, char* buffer)
 {
 	if(cylinder != current_cylinder)
 	{
 		// Si le cylindre que l'on a en mémoire n'est pas le bon, on charge le bon
-		floppy_cylinder(base, cylinder, floppy_read);
+		floppy_cylinder(cylinder, floppy_read);
 		current_cylinder = cylinder;
 	}		
 	
 	// copier le secteur dans buffer
+	memcpy(buffer, floppy_dma_buffer+(head*floppy_head2_start)+512*sector, 512);
 }	
 
-void floppy_write_sector(int base, int cylinder, int head, int sector, char* buffer)
+void floppy_write_sector(int cylinder, int head, int sector, char* buffer)
 {
 	if(cylinder != current_cylinder)
 	{
 		// Si le cylindre que l'on a en mémoire n'est pas le bon, on charge le bon
-		floppy_cylinder(base, cylinder, floppy_read);
+		floppy_cylinder(cylinder, floppy_read);
 		current_cylinder = cylinder;
 	}
 	
 	// copier le buffer à l'offset de floppy_dma_buffer
 	
 	// Ecrit la nouvelle version du cylindre
-	floppy_cylinder(base, cylinder, floppy_write);
+	floppy_cylinder(cylinder, floppy_write);
 }
 		
 	

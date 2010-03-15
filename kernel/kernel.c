@@ -139,7 +139,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 	if(init_floppy() != 0)
 		printf("Initialisation du lecteur a echoue.\n");
 		
-	floppy_cylinder(0x03F0, 0, 2);
+	char MBR[512];
+	floppy_read_sector(0,0,0,MBR);
+	printf("MBR Signature:0x%x%x.\n",0xFF&MBR[0x01FE], 0xFF&MBR[0x01FF]);
 
 	char buffer[80];
 	int i = 0;
@@ -158,6 +160,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 		i = 0;
 
 		if (strcmp(buffer, "reboot") == 0) {
+			// ça marche, merci floppy
+			floppy_read_sector(0xFFFF,0,0,0,MBR);
 			printf("\nReboot non implemente, desole !");
 		}
 		if (strcmp(buffer, "halt") == 0) {

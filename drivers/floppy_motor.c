@@ -9,10 +9,10 @@ static volatile floppy_motor_state motor_state[] = {0, 0, 0, 0};
 // Amélioration possible: au lieu d'éteindre le moteur quand on lui 
 // passe OFF, attendre un peu avec un thread parallele, au cas ou on 
 // soit amené à le rallumer peu après. 
-void floppy_motor(int base, floppy_motor_state new_state)
+void floppy_motor(floppy_motor_state new_state)
 {
 	uint8_t drive = floppy_get_current_drive();
-	uint8_t DOR = inb(base + FLOPPY_DOR);
+	uint8_t DOR = inb(FLOPPY_BASE + FLOPPY_DOR);
 	
 	if(new_state == ON)
 	{
@@ -20,7 +20,7 @@ void floppy_motor(int base, floppy_motor_state new_state)
 		if( motor_state[drive] == OFF) 
 		{
 			DOR |= (0x01 << (4+drive));
-			outb(DOR, base + FLOPPY_DOR);
+			outb(DOR, FLOPPY_BASE + FLOPPY_DOR);
 			//TODO: Sleep (+- 500ms) 
 		}
 		motor_state[drive] = ON;
@@ -28,7 +28,7 @@ void floppy_motor(int base, floppy_motor_state new_state)
 	else
 	{
 		DOR &= ~(0x01 << (4+drive));
-		outb(DOR, base + FLOPPY_DOR);
+		outb(DOR, FLOPPY_BASE + FLOPPY_DOR);
 		motor_state[drive] = OFF;
 	}
 }
