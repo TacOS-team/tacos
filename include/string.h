@@ -3,7 +3,7 @@
 
 #include <types.h>
 
-void* memcpy(void* dest, const void* src, int size);
+void* memcpy(void* dest, const void* src, size_t size);
 
 int strcmp(const char *s1, const char *s2);
 

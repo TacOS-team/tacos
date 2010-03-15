@@ -1,8 +1,8 @@
 #include <string.h>
 
-void* memcpy(void* dest, const void* src, int size)
+void* memcpy(void* dest, const void* src, size_t size)
 {
-	int i = 0;
+	size_t i = 0;
 	char* d = dest;
 	char* s = src;
 	
@@ -12,6 +12,14 @@ void* memcpy(void* dest, const void* src, int size)
 	}
 	return d;
 }
+
+size_t strlen(const char* s)
+{
+	int len=0;
+	while(s[len++] != '\0');
+	return len-1;
+}
+		
 
 int strcmp(const char *s1, const char *s2) {
 	int i = 0;
