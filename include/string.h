@@ -5,7 +5,7 @@
 
 void* memcpy(void* dest, const void* src, size_t size);
 
-size_t strlen(const char* s)
+size_t strlen(const char* s);
 
 int strcmp(const char *s1, const char *s2);
 

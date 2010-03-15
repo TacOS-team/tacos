@@ -2,15 +2,31 @@
 
 void* memcpy(void* dest, const void* src, size_t size)
 {
-	size_t i = 0;
-	char* d = dest;
-	char* s = src;
+	size_t i;
 	
-	while(i<size)
+	if(!(size%4))
 	{
-		d[i] = s[i++];
+		uint32_t* d = dest;
+		uint32_t* s = src;
+		
+		i = 0;
+		while(i<(size/4))
+		{
+			d[i] = s[i++];
+		}	
 	}
-	return d;
+	else
+	{ 
+		uint8_t* d = dest;
+		uint8_t* s = src;
+		
+		i = 0;
+		while(i<size)
+		{
+			d[i] = s[i++];
+		}
+	}
+	return dest;
 }
 
 size_t strlen(const char* s)

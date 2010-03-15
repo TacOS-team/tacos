@@ -100,7 +100,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 //	printf("Div 0 : %d.\n", 3/0);
 	pci_scan();
 //	pci_list();
-	printf("taille de \"lol\": %d.\n", strlen("lol"));
 	/* PLANTE !!!!
 
 	//----------- TEST CONTEXT SWICHING ------------------------- //
