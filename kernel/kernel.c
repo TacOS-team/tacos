@@ -139,10 +139,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 		printf("Initialisation du lecteur a echoue.\n");
 		
 	char MBR[FLOPPY_SECTOR_SIZE];
-	//printf("%d", FLOPPY_SECTOR_SIZE/0);
 	floppy_read_sector(0,0,0,MBR);
 	printf("MBR Signature:0x%x%x.\n",0xFF&MBR[0x01FE], 0xFF&MBR[0x01FF]);
-	
+
 	char buffer[80];
 	int i = 0;
 	for(;;)
