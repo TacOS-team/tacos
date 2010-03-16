@@ -2,59 +2,7 @@
 #include "memory.h"
 #include "gdt.h"
 
-
-/*
- * Segment Descriptor (cf doc intel v3. 3.4.3)
- */
-struct x86_segment_descriptor
-{
-	/* Double mot de poids faible */
-	uint16_t segment_limit_15_0; /* Segment Limit 15:00. Spécifie la taille du segment. 
-											  Le proc concatene les 2 champs segment limit pour 
-											  former une valeur de 20 bits. */
-	uint16_t base_address_15_0;  /* Défini la position de l'octet 0 du segment 
-										 	  dans les 4Gio de l'espace adressable linéaire */
-
-	/* Double mot de poids fort */
-	uint8_t base_address_23_16; /* Suite de la base address. */
-	uint8_t segment_type:4; /* Cf 3.4.3.1 de la doc intel ! */
-	uint8_t descriptor_type:1; /* 0 = system segment, 1 = code ou data segment */
-	uint8_t dpl:2; /* Descriptor Privilege Level. 0 à 3. 0 pour le kernel et 3 pour les applis */
-	uint8_t present:1; /* Indique si le segment est présent en mémoire (1) ou non (0) */
-	uint8_t segment_limit_19_16:4; /* Suite du segment limit. */
-	uint8_t available:1; /* Un bit disponible pour nous... */
-	uint8_t zero:1; /* Bit réservé qui doit prendre la valeur 0. */
-	uint8_t operation_size:1; /* 0 = 16bits, 1 = 32bits */
-	uint8_t granularity:1; /* Granularité : Détermine l'échele du segment limit. 0 : c'est des bytes, 1 : c'est par 4kio */
-	uint8_t base_address_31_24; /* Fin de la base address. Soit 32 bits ce qui correspond aux 4Gio adressables. */
-
-} __attribute__ ((packed, aligned (8)));
-
-
-
-typedef struct tss {
-    uint16_t    previous_task, __previous_task_unused;
-    uint32_t    esp0;
-    uint16_t    ss0, __ss0_unused;
-    uint32_t    esp1;
-    uint16_t    ss1, __ss1_unused;
-    uint32_t    esp2;
-    uint16_t    ss2, __ss2_unused;
-    uint32_t    cr3;
-    uint32_t    eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;
-    uint16_t    es, __es_unused;
-    uint16_t    cs, __cs_unused;
-    uint16_t    ss, __ss_unused;
-    uint16_t    ds, __ds_unused;
-    uint16_t    fs, __fs_unused;
-    uint16_t    gs, __gs_unused;
-    uint16_t    ldt_selector, __ldt_sel_unused;
-    uint16_t    debug_flag, io_map;
-} __attribute__ ((packed)) tss_t;
-
-
 tss_t default_tss;
-
 
 /*
  * Registre gdt
