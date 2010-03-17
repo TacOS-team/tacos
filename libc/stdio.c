@@ -20,10 +20,6 @@
 static int finnouMode = 0; //disable par défaut, quand même 
 /* Attribute of a character */
 static uint8_t attribute = DEFAULT_ATTRIBUTE_VALUE;
-/* Save the X position. */
-static int xpos;
-/* Save the Y position. */
-static int ypos;
 /* Point to the video memory. */
 
 typedef struct {
@@ -34,6 +30,10 @@ typedef struct {
 typedef struct {
 	x86_video_mem buffer;
 	int bottom_buffer;
+	/* Save the X position. */
+	int xpos;
+	/* Save the Y position. */
+	int ypos;
 } buffer_video_t;
 
 /** The base pointer for the video memory */
@@ -75,8 +75,8 @@ void cls (void) {
 
 	refresh();
 
-	xpos = 0;
-	ypos = 0;
+	buffer_video->xpos = 0;
+	buffer_video->ypos = 0;
 }
 
 void switchDebugBuffer() {
@@ -148,7 +148,7 @@ static void scrollup() {
 
 static void updateCursorPosition()
 {
-  int pos = xpos + ypos*COLUMNS;
+  int pos = buffer_video->xpos + buffer_video->ypos*COLUMNS;
 
   outb(CURSOR_POS_LSB, CRT_REG_INDEX);
   outb((uint8_t) pos, CRT_REG_DATA);
@@ -158,11 +158,11 @@ static void updateCursorPosition()
 
 void newline()
 {
-	xpos = 0;
-	ypos++;
-	if (ypos >= LINES) {
+	buffer_video->xpos = 0;
+	buffer_video->ypos++;
+	if (buffer_video->ypos >= LINES) {
 		scrollup();
-		ypos = LINES - 1;
+		buffer_video->ypos = LINES - 1;
 	}
 }
 
@@ -178,9 +178,9 @@ void putchar (char c) {
 	if (c == '\n' || c == '\r') {
 		newline();
 	} else {
-		putchar_position(c, xpos, ypos);
-	  	xpos++;
-		if (xpos >= COLUMNS)
+		putchar_position(c, buffer_video->xpos, buffer_video->ypos);
+	  	buffer_video->xpos++;
+		if (buffer_video->xpos >= COLUMNS)
 			newline();
 	}
   
