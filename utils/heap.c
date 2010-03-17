@@ -1,5 +1,5 @@
 #include "heap.h"
-#include "string.h"
+#include <string.h>
 
 // initialise le tas
 void initHeap(heap_t* h, cmp_func_type cmp, void* heap, size_t elements_size,int max_elements)

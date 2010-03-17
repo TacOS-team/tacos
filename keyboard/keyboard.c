@@ -208,6 +208,12 @@ void keyboardInterrupt(int id)
   case KEY_SPACE:
     keyBufferPush(' ');
 	 break;
+  case KEY_F1:
+	 switchStandardBuffer();
+	 break;
+  case KEY_F2:
+	 switchDebugBuffer();
+	 break;
   default: {
     char c = keyboardConvertToChar(scancode);
     if (c != 0) {

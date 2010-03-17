@@ -17,7 +17,9 @@ unsigned int usleep(unsigned int milliseconds)
 {
 	volatile int sleeping = 1;
 	add_event(sleep_event, &sleeping, milliseconds);
-	while(sleeping);
+	while(sleeping) {
+		asm("hlt");
+	}
 	
 	return 0;
 }

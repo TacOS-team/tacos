@@ -34,6 +34,7 @@ typedef struct {
 	int xpos;
 	/* Save the Y position. */
 	int ypos;
+	bool disable_cursor;
 } buffer_video_t;
 
 /** The base pointer for the video memory */
@@ -82,11 +83,21 @@ void cls (void) {
 void switchDebugBuffer() {
 	buffer_video = &buffer_debug;
 	refresh();
+	if (buffer_video->disable_cursor) {
+		disableCursor();
+	} else {
+		updateCursorPosition();
+	}
 }
 
 void switchStandardBuffer() {
 	buffer_video = &buffer_standard;
 	refresh();
+	if (buffer_video->disable_cursor) {
+		disableCursor();
+	} else {
+		updateCursorPosition();
+	}
 }
 
 /* Convert the integer D to a string and save the string in BUF. If
