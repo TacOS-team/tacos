@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <dummy_process.h>
-
+/*
 void sleep()
 {
 	int i,j,k;
@@ -17,7 +17,7 @@ void sleep()
 		}
 	}
 }
-
+*/
 int dummy_process_main(int argc, char* argv[])
 {	
 

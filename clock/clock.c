@@ -22,7 +22,7 @@
 #define A_SMALLER  1
 #define B_SMALLER -1
 
-static date_t date = {0, 0, 0, 0, 0, 0};
+static date_t date = {0, 0, 0, 0, 0, 0, 0};
 
 static uint64_t systime;
 
@@ -30,17 +30,21 @@ void clock_tick()
 {
   systime++;
 
-  date.sec++;
-    
-  if(date.sec == 60)
+  date.msec++;
+  if(date.msec == 1000)
   {
-    date.sec = 0;
-    date.minute++;
-    if(date.minute == 60)
-    {
-      date.minute = 0;
-      date.hour++;
-    }
+	  date.msec = 0;
+	  date.sec++;
+	  if(date.sec == 60)
+	  {
+		 date.sec = 0;
+		 date.minute++;
+		 if(date.minute == 60)
+		 {
+			date.minute = 0;
+			date.hour++;
+		 }
+	  }
   }
 }
 
@@ -67,7 +71,9 @@ void clock_init()
   date.minute = bcd2binary(inb(RTC_ANSWER));
   outb(RTC_SECOND, RTC_REQUEST);
   date.sec = bcd2binary(inb(RTC_ANSWER));
-
+  
+  date.msec = 0;
+  
   systime = 0;
 }
 
@@ -120,7 +126,70 @@ int compare_times(date_t a, date_t b)
 		else
 			return B_SMALLER;
 	}
+	if(a.msec != b.msec)
+	{
+		if(a.msec < b.msec)
+			return A_SMALLER;
+		else
+			return B_SMALLER;
+	}
 	
 	return 0;
 }
 
+void add_msec(date_t* d, uint32_t dt)
+{
+	uint32_t tmp_unit;
+	
+	// On ignore les durées plus longues qu'une journée
+	if(dt >= 1000*60*60*24)
+	{
+		dt = dt - dt/(1000*60*60*24);
+	}
+	// On ajoute les heures
+	if(dt >= 1000*60*60)
+	{
+		tmp_unit = dt/(1000*60*60);
+		d->hour += tmp_unit;
+		dt = dt - 60*tmp_unit;
+	}
+	// On ajoute les minutes
+	if(dt >= 1000*60)
+	{
+		tmp_unit = dt/(1000*60);
+		d->minute += tmp_unit;
+		dt = dt - 60*tmp_unit;
+	}
+	// On ajoute les secondes
+	if(dt >= 1000)
+	{
+		tmp_unit = dt/(1000);
+		d->sec += tmp_unit;
+		dt = dt - 1000*tmp_unit;
+	}
+	// On ajoute les millisecondes
+	d->msec += dt;
+	
+	
+	// On corrige la structure
+	while(d->msec > 999)
+	{
+		d->msec -= 1000;
+		d->sec++;
+	}
+	while(d->sec > 59)
+	{
+		d->sec -= 60;
+		d->minute++;
+	}
+	while(d->minute > 59)
+	{
+		d->minute -= 60;
+		d->hour++;
+	}
+	while(d->hour > 23)
+	{
+		d->hour -= 24;
+		d->day++;
+	}
+}

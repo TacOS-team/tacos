@@ -28,7 +28,7 @@ typedef struct
 void cmain (unsigned long magic, unsigned long addr);
 static void testPageReservation();
 static void initKernelOptions(const char *cmdLine, kernel_options *options);
-
+/*
 static void processA (paddr_t* pStackA, paddr_t* pStackB) {
 	int i;
 	for (i=0;i<5;i++) {
@@ -44,6 +44,20 @@ static void processB (paddr_t* pStackA, paddr_t* pStackB, paddr_t* pStackMain) {
 		cpu_ctxt_switch(pStackB, pStackA);
 	}
 	cpu_ctxt_switch(pStackB, pStackMain);
+}
+*/
+
+void* sleep_event(void* data)
+{
+	*((int*)data) = 0;
+	return NULL;
+}
+
+void sleep(int duration)
+{
+	int sleeping = 1;
+	add_event(sleep_event, &sleeping, 1000*duration);
+	while(sleeping);
 }
 
 void cmain (unsigned long magic, unsigned long addr) {
@@ -168,6 +182,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 		}
 		if( strcmp(buffer, "clear") == 0)
 			cls();
+		if( strcmp(buffer, "sleep") == 0)
+			sleep(1);
 		if( strcmp(buffer, "lspci") == 0)
 			pci_list();
 		if( strcmp(buffer, "erase_mbr") == 0)

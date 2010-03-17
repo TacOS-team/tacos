@@ -13,7 +13,7 @@ struct event_t
 };
 
 void events_init();
-void add_event(void* call, int time);
+void add_event(callback_t call, void* data, uint32_t time);
 
 #endif
 
