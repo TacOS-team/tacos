@@ -36,6 +36,7 @@ static date_t date = {0, 0, 0, 0, 0, 0, 0};
 
 static uint64_t systime;
 
+// retourne le nombre de jours d'un mois donné
 static unsigned int month_length(date_t* d)
 {
 	unsigned int ret = 31;
@@ -45,6 +46,7 @@ static unsigned int month_length(date_t* d)
 		if(d->month <= 7)
 		{
 			if(d->month == 2)
+				// année bissextile si année divisible par 4 mais pas par 100 ou année divisible par 400
 				ret = (d->year%4==0 && d->year%100!=0) || (d->year%400==0) ? 29:28;
 			else
 				ret = d->month%2 ? 30:31;
@@ -58,8 +60,11 @@ static unsigned int month_length(date_t* d)
 	return ret;
 }
 
+// Met à jour les unités (optimisé pour des petites variations de date)
+// exemple passe de 31 decembre 2010 23h59m59s1000ms à 1 janvier 2011 0h0m0s0ms
 static void sanitize_date(date_t* d)
 {
+	// incremente les secondes 
 	while(d->msec >= MILLISECONDS_PER_SECOND)
 	{
 		d->msec -= MILLISECONDS_PER_SECOND;
