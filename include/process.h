@@ -37,7 +37,7 @@ struct process {
 
 int init_process(paddr_t prog, uint32_t argc, uint8_t** argv, struct process* new_proc);
 
-int cup_ctxt_init (paddr_t* pStack, paddr_t* pFunct);
+int cpu_ctxt_init (paddr_t* pStack, paddr_t* pFunct);
 void cpu_ctxt_switch(paddr_t* pOldStack, paddr_t* pNewSatck);
 
 #endif

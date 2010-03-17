@@ -28,6 +28,7 @@ typedef struct
 
 /* Forward declarations. */
 void cmain (unsigned long magic, unsigned long addr);
+int shell(int argc, char* argv[]);
 static void testPageReservation();
 static void initKernelOptions(const char *cmdLine, kernel_options *options);
 /*
@@ -145,7 +146,13 @@ void cmain (unsigned long magic, unsigned long addr) {
 	floppy_read_sector(0,0,0,MBR);
 	printf("MBR Signature:0x%x%x.\n",0xFF&MBR[0x01FE], 0xFF&MBR[0x01FF]);
 	
-	
+	// Là normalement on lance le scheduler avec le process d'initialisation ou un shell
+	//init_scheduler(10, shell, 0, NULL);
+	shell(0,NULL);
+}
+
+int shell(int argc, char* argv[])
+{
 	char buffer[80];
 	int i = 0;
 	for(;;)
@@ -192,6 +199,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 			reset_attribute();
 		}					
 	}
+	
+	return 0;
 }
 
 void waitReturn()

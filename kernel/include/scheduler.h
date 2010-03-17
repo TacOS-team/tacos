@@ -1,9 +1,7 @@
 #ifndef SCHEDULER_H
 #define SCHEDULER_H
 
-void switch_process();
-
-void init_scheduler();
+void init_scheduler(int qt, paddr_t init, uint32_t argc, uint8_t** argv);
 
 int add_process(paddr_t prog, uint32_t argc, uint8_t** argv);
 

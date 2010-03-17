@@ -22,6 +22,9 @@ int init_process(paddr_t prog, uint32_t argc, uint8_t** argv, struct process* ne
 	 * remplir le struct process
 	 */
 	
+	//new_proc->state = PROCSTATE_IDLE;
+	new_proc->state = PROCSTATE_WAITING;
+	
 	return 1;
 }
 
