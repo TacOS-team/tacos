@@ -29,5 +29,7 @@ void printf (const char *format, ...);
 void enableFinnouMode(int enable);
 void set_attribute(uint8_t background, uint8_t foreground);
 void reset_attribute();
+void switchDebugBuffer();
+void switchStandardBuffer();
 
 #endif

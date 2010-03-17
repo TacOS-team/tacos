@@ -31,11 +31,17 @@ typedef struct {
 	unsigned char attribute;
 } __attribute__ ((packed)) x86_video_mem[LINES*COLUMNS];
 
+typedef struct {
+	x86_video_mem buffer;
+	int bottom_buffer;
+} buffer_video_t;
+
 /** The base pointer for the video memory */
 /* volatile pour éviter des problèmes d'optimisation de gcc. */
 static volatile x86_video_mem *video = (volatile x86_video_mem*)VIDEO;
-static x86_video_mem buffer_video;
-static int bottom_buffer = 0;
+static buffer_video_t buffer_standard;
+static buffer_video_t buffer_debug;
+static buffer_video_t *buffer_video = &buffer_standard;
 
 static void scrollup();
 static void updateCursorPosition();
@@ -53,8 +59,8 @@ void disableCursor()
 void refresh (void) {
 	int i;
 	for (i = 0; i < COLUMNS * LINES; i++) {
-	  (*video)[i].character = buffer_video[(i + bottom_buffer*80)%(25*80)].character;
-	  (*video)[i].attribute = buffer_video[(i + bottom_buffer*80)%(25*80)].attribute;
+	  (*video)[i].character = buffer_video->buffer[(i + buffer_video->bottom_buffer*80)%(25*80)].character;
+	  (*video)[i].attribute = buffer_video->buffer[(i + buffer_video->bottom_buffer*80)%(25*80)].attribute;
 	}
 }
 
@@ -63,8 +69,8 @@ void cls (void) {
 	int i;
  
 	for (i = 0; i < COLUMNS * LINES; i++) {
-	  buffer_video[i].character = 0;
-	  buffer_video[i].attribute = attribute;
+	  buffer_video->buffer[i].character = 0;
+	  buffer_video->buffer[i].attribute = attribute;
 	}
 
 	refresh();
@@ -73,7 +79,15 @@ void cls (void) {
 	ypos = 0;
 }
 
+void switchDebugBuffer() {
+	buffer_video = &buffer_debug;
+	refresh();
+}
 
+void switchStandardBuffer() {
+	buffer_video = &buffer_standard;
+	refresh();
+}
 
 /* Convert the integer D to a string and save the string in BUF. If
 	 BASE is equal to 'd', interpret that D is decimal, and if BASE is
@@ -119,14 +133,14 @@ void itoa (char *buf, int base, int d) {
 static void scrollup() {
 	int c;
 
-	bottom_buffer++;
+	buffer_video->bottom_buffer++;
 
 	/*
 	 * On met des espaces sur la dernière ligne
 	 */
 	for (c = 0; c < COLUMNS; c++) {
-		buffer_video[((bottom_buffer+LINES-1) * COLUMNS + c)%(25*80)].character = ' ';
-		buffer_video[((bottom_buffer+LINES-1) * COLUMNS + c)%(25*80)].attribute = attribute;
+		buffer_video->buffer[((buffer_video->bottom_buffer+LINES-1) * COLUMNS + c)%(25*80)].character = ' ';
+		buffer_video->buffer[((buffer_video->bottom_buffer+LINES-1) * COLUMNS + c)%(25*80)].attribute = attribute;
 	}
 
 	refresh();
@@ -153,8 +167,8 @@ void newline()
 }
 
 void putchar_position(char c, int x, int y) {
-	buffer_video[x + ((y+bottom_buffer)%25) * COLUMNS].character = c & 0xFF;
-	buffer_video[x + ((y+bottom_buffer)%25) * COLUMNS].attribute = attribute;
+	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%25) * COLUMNS].character = c & 0xFF;
+	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%25) * COLUMNS].attribute = attribute;
 	(*video)[x + y * COLUMNS].character = c & 0xFF;
 	(*video)[x + y * COLUMNS].attribute = attribute;
 }

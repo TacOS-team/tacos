@@ -174,6 +174,12 @@ void cmain (unsigned long magic, unsigned long addr) {
 			sleep(1);
 		if( strcmp(buffer, "lspci") == 0)
 			pci_list();
+		if (strcmp(buffer, "switchdebug") == 0) {
+			switchDebugBuffer();
+		}
+		if (strcmp(buffer, "switchstd") == 0) {
+			switchStandardBuffer();
+		}
 		if( strcmp(buffer, "erase_mbr") == 0)
 		{
 			char zeros[FLOPPY_SECTOR_SIZE];
