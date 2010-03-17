@@ -59,11 +59,10 @@ void add_event(callback_t call, void* data, uint32_t time)
 {
 	struct event_t event;
 	
-	
 	event.date = get_date();
 	add_msec(&event.date, time);
 	event.callback = call;
-	event.data = data;
+	event.data = data;											
 	addElement(&events, &event);
 }
 

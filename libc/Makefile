@@ -2,7 +2,7 @@ INCLUDES=-I../include/
 
 all: libc
 
-libc: stdio.o stdlib.o string.o
+libc: stdio.o stdlib.o string.o unistd.o
 	  ar rv ../lib/$@.a $^
 
 %.o: %.c
@@ -13,6 +13,8 @@ stdio.o: ../include/stdio.h ../include/ioports.h ../include/types.h
 stdlib.o: ../include/stdlib.h ../include/types.h
 
 string.o: ../include/string.h ../include/types.h
+
+unistd.o: ../include/unistd.h ../include/types.h
 
 clean:
 	rm -f *.o

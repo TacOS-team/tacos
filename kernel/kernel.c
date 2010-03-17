@@ -3,6 +3,7 @@
 #include <i8259.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
 #include <memory.h>
 #include <pagination.h>
@@ -46,19 +47,6 @@ static void processB (paddr_t* pStackA, paddr_t* pStackB, paddr_t* pStackMain) {
 	cpu_ctxt_switch(pStackB, pStackMain);
 }
 */
-
-void* sleep_event(void* data)
-{
-	*((int*)data) = 0;
-	return NULL;
-}
-
-void sleep(int duration)
-{
-	int sleeping = 1;
-	add_event(sleep_event, &sleeping, 1000*duration);
-	while(sleeping);
-}
 
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
