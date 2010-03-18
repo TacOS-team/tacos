@@ -55,9 +55,43 @@ static struct x86_segment_descriptor gdt[] = {
 		.granularity = 1
 	},
 	
+	/* Segment pour le code Utilisateur (privilege = 3)*/
+	[3] = (struct x86_segment_descriptor){
+		.segment_limit_15_0 = 0xFFFF,
+		.segment_limit_19_16 = 0xF,
+		.base_address_15_0 = 0,
+		.base_address_23_16 = 0,
+		.base_address_31_24 = 0,
+		.segment_type = 0xB,
+		.descriptor_type = 1,
+		.dpl = 3,
+		.present = 1,
+		.available = 0,
+		.zero = 0,
+		.operation_size = 1,
+		.granularity = 1
+	},
+
+	/* Segment pour les data Utilisateur (privilege = 0) */
+	[4] = (struct x86_segment_descriptor){
+		.segment_limit_15_0 = 0xFFFF,
+		.segment_limit_19_16 = 0xF,
+		.base_address_15_0 = 0,
+		.base_address_23_16 = 0,
+		.base_address_31_24 = 0,
+		.segment_type = 0x3,
+		.descriptor_type = 1,
+		.dpl = 3,
+		.present = 1,
+		.available = 0,
+		.zero = 0,
+		.operation_size = 1,
+		.granularity = 1
+	},
+	
 	
 	/* Descripteur de la TSS (Cf doc Intel v3 6.2.2) */
-	[3] = (struct x86_segment_descriptor){
+	[5] = (struct x86_segment_descriptor){
 		.segment_limit_15_0 = (sizeof(default_tss) & 0xffff),
 		.segment_limit_19_16 = ((sizeof(default_tss) >> 16) & 0xf),
 		.base_address_15_0 = 0,
@@ -97,11 +131,16 @@ void gdt_setup(size_t ram_size) {
 	gdt[1].segment_limit_19_16 = ((ram_size / PAGE_SIZE + 1) >> 16) & 0xf;
 	gdt[2].segment_limit_15_0 = (ram_size / PAGE_SIZE + 1) & 0xffff;
 	gdt[2].segment_limit_19_16 = ((ram_size / PAGE_SIZE + 1) >> 16) & 0xf;
+	
+	gdt[3].segment_limit_15_0 = (ram_size / PAGE_SIZE + 1) & 0xffff;
+	gdt[3].segment_limit_19_16 = ((ram_size / PAGE_SIZE + 1) >> 16) & 0xf;
+	gdt[4].segment_limit_15_0 = (ram_size / PAGE_SIZE + 1) & 0xffff;
+	gdt[4].segment_limit_19_16 = ((ram_size / PAGE_SIZE + 1) >> 16) & 0xf;
 
 	/* Initialisation du descripteur de TSS dans la GDT */
-	gdt[3].base_address_15_0 = ((uint32_t)(&default_tss) & 0xffff);
-	gdt[3].base_address_23_16 = (((uint32_t)(&default_tss) >> 16) & 0xff);
-	gdt[3].base_address_31_24 = (((uint32_t)(&default_tss) >> 24) & 0xff);
+	gdt[5].base_address_15_0 = ((uint32_t)(&default_tss) & 0xffff);
+	gdt[5].base_address_23_16 = (((uint32_t)(&default_tss) >> 16) & 0xff);
+	gdt[5].base_address_31_24 = (((uint32_t)(&default_tss) >> 24) & 0xff);
 
 	/* On commit la gdt avec lgdt. Puis on fait un saut long dans le segment code où on va ensuite reloader les registres avec le segment data.  */
 	asm volatile ("lgdt %0          \n\
