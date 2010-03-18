@@ -73,5 +73,7 @@ static inline void jmp_to_tss(uint16_t tss_sel)
 
 
 void gdt_setup(size_t ram_size);
+void init_tss(uint32_t stack_address);
+tss_t* get_default_tss();
 
 #endif

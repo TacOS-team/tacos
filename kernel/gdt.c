@@ -2,7 +2,7 @@
 #include "memory.h"
 #include "gdt.h"
 
-tss_t default_tss;
+static tss_t default_tss;
 
 /*
  * Registre gdt
@@ -137,6 +137,7 @@ void gdt_setup(size_t ram_size) {
 	gdt[5].base_address_15_0 = ((uint32_t)(&default_tss) & 0xffff);
 	gdt[5].base_address_23_16 = (((uint32_t)(&default_tss) >> 16) & 0xff);
 	gdt[5].base_address_31_24 = (((uint32_t)(&default_tss) >> 24) & 0xff);
+	
 
 	/* On commit la gdt avec lgdt. Puis on fait un saut long dans le segment code où on va ensuite reloader les registres avec le segment data.  */
 	asm volatile ("lgdt %0          \n\
@@ -152,3 +153,22 @@ void gdt_setup(size_t ram_size) {
 			:"m"(gdtr)
 			:"memory","eax"); // memory pour lui dire d'appliquer direct les modifs sur eax.
 }
+
+void init_tss(uint32_t stack_address)
+{
+	default_tss.debug_flag = 0x00;
+	default_tss.io_map = 0x00;
+	default_tss.esp0 = stack_address;
+	default_tss.ss0 = 0x08;
+	
+	asm volatile(
+		"mov $0x28, %ax\n\t"
+		"ltr %ax");
+}
+
+tss_t* get_default_tss()
+{
+	return &default_tss;
+}
+
+

@@ -6,6 +6,7 @@
 
 typedef int (*main_func_type) (uint32_t, uint8_t**);
 
+
 int init_process(paddr_t prog, uint32_t argc, uint8_t** argv, struct process* new_proc)
 {
 	/* VIEUX CODE DE DEBUG
