@@ -9,47 +9,59 @@
 
 struct page
 {
-  void *start; // debut d'une _page_
+  uint32_t start; // debut d'une _page_
   size_t nb_pages;
 } free_pages[VMM_FREE_PAGES_MAX_SIZE];
-static int free_pages_it = 0;
 
+static int empty_cell(int it)
+{
+  return free_pages[it].nb_pages == 0;
+}
+
+// Retourne l'entrée de répertoire de page correspondant à dir
 static struct page_directory_entry *get_pde(int dir)
 {
-  return ((PTE_MAGIC)->page_table_addr +
-          dir*sizeof(struct page_directory_entry));
+  return ((struct page_directory_entry *) 
+          (((struct page_directory_entry *) PTE_MAGIC)->page_table_addr)) + dir;
 }
 
+// Retourne l'entrée de table de page correspondant à dir, table
 static struct page_table_entry *get_pte(int dir, int table)
 {
-  return get_pde(dir)->page_table_entry + table*sizeof(struct page_table_entry);
+  return ((struct page_table_entry *) get_pde(dir)->page_table_addr) + table;
 }
 
-static void *get_linear_address(int dir, int table, int offset)
+// Retourne une adresse lineaire en fonction de sa position dans le rep de page
+static uint32_t get_linear_address(int dir, int table, int offset)
 {
-  return (void *) ((dir&0x3FF) << 22) | ((table&0x3FF) << 12) | (offset&0xFFF);
+  return (((dir&0x3FF) << 22) | ((table&0x3FF) << 12) | (offset&0xFFF));
 }
 
-static int free_pages_it_next()
-{
-  free_pages_it = (free_pages_it + 1) % VMM_FREE_PAGES_MAX_SIZE;
-}
-
+// Ajoute un bloc de page dans la liste des free_pages
 static int insert(uint32_t start, uint32_t end)
 {
-  while(free_pages[free_pages_it].start != -1)
-    free_page_it_next();
-  free_pages[free_pages_it] = {start, (start-end)/PAGE_SIZE};
+  int it = 0;
+  while(it < VMM_FREE_PAGES_MAX_SIZE && !empty_cell(it))
+    it++;
+
+  if(it == VMM_FREE_PAGES_MAX_SIZE)
+    return -1; // full table
+
+  free_pages[it].start = start;
+  free_pages[it].nb_pages = (start-end)/PAGE_SIZE;
+  return 0;
 }
 
-static void create_page_entry(page_table_entry *pte, paddr_t page_addr)
+// créer une entrée de page
+static void create_page_entry(struct page_table_entry *pte, paddr_t page_addr)
 {
   pte->present = 1;
 	pte->page_addr = page_addr >> 12;
 	pte->r_w = 1;
 }
 
-static void create_page_dir(page_directory_entry *pde)
+// créer une entrée de répertoire
+static void create_page_dir(struct page_directory_entry *pde)
 {
 	paddr_t page_addr = memory_reserve_page_frame();
 
@@ -61,7 +73,7 @@ static void create_page_dir(page_directory_entry *pde)
 }
 
 // Map dans le répertoire des pages une nouvelle page
-static void map(paddr_t phys_page_addr, void *virt_page_addr)
+static void map(paddr_t phys_page_addr, uint32_t virt_page_addr)
 {
   int dir = virt_page_addr >> 22;
 	int table = (virt_page_addr & 0x003FF000) >> 12;
@@ -83,14 +95,14 @@ static int init_free_pages_iterate_pte(int dir, uint32_t start)
 
   for(table=0 ; table<1023 ; table++)
   {
-    struct page_directory_entry *page_table = get_pte(i, table);
+    struct page_table_entry *pte = get_pte(dir, table);
 
-    if(start == -1 && !(pte->present))
-      start = get_linear_address(i, table, 0); 
-    if(start != -1 && pte->present)
+    if(start == 0 && !(pte->present))
+      start = get_linear_address(dir, table, 0); 
+    if(start != 0 && pte->present)
     {
-      insert(start, get_linear_address(i, table, 0));
-      start = -1;
+      insert(start, get_linear_address(dir, table, 0));
+      start = 0;
     }
   }
 
@@ -100,20 +112,26 @@ static int init_free_pages_iterate_pte(int dir, uint32_t start)
 // initialise la liste des pages libres en parcourant le répertoire des pages
 static void init_free_pages()
 {
-  int dir;
-  uint32_t start = -1;
-  
+  int it, dir;
+  uint32_t start = 0;
+ 
+  for(it=0 ; it<VMM_FREE_PAGES_MAX_SIZE ; it++)
+  {
+    free_pages[it].start = 0;
+    free_pages[it].nb_pages = 0;
+  }
+
   for(dir=0 ; dir<1023 ; dir++)
   {
-    struct page_directory_entry *page_dir = get_pde(dir);
-    if(page_dir.present)
+    struct page_directory_entry *pde = get_pde(dir);
+    if(pde->present)
       init_free_pages_iterate_pte(dir, start);
     else
     {
-      if(start = -1)
+      if(start != 0)
       {
         insert(start, get_linear_address(dir, 0, 0));
-        start = -1;
+        start = 0;
       }
     }
   }
@@ -126,39 +144,56 @@ void init_vmm()
 
 void *allocate_new_page()
 {
-  paddr_t page_addr = memory_reserve_page_frame();
-
-  while(free_pages[free_pages_it].start != -1)
-      free_page_it_next();
-
-  free_pages[free_pages_it].start += PAGE_SIZE;
-  free_pages[free_pages_it].nb_pages--;
-  if(free_pages[free_pages_it].nb_pages == 0)
-    free_pages[free_pages_it] = {-1, -1};
+  return allocate_new_pages(1);
 }
 
-void *allocate_new_page()
+// Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle 
+void *allocate_new_pages(unsigned int nb_pages)
 {
-  allocate_new_pages(1);
-}
+  uint32_t virt_addr = 0;
+  unsigned int i, it;
+  while(it < VMM_FREE_PAGES_MAX_SIZE && !empty_cell(it) &&
+        free_pages[it].nb_pages < nb_pages)
+    it++;
 
-void *allocate_new_pages(int nb_pages)
-{
-  int i;
-  while(free_pages[free_pages_it].start != -1 && 
-        free_page_it[free_page_it].nb_pages < nb_pages)
-    free_page_it_next();
-
+  virt_addr = free_pages[it].start;
   for(i=0 ; i<nb_pages ; i++)
   {
     paddr_t new_page = memory_reserve_page_frame();
-    map(new_page, free_pages[free_pages_it].start);
-    free_pages[free_pages_it].start =
-      ((uint32_t) (free_pages[free_pages_it].start)) + PAGE_SIZE;
+    map(new_page, free_pages[it].start);
+    free_pages[it].start = free_pages[it].start + PAGE_SIZE;
   }
 
-  free_pages[free_pages_it].nb_pages -= nb_pages;
-  if(free_pages[free_pages_it].nb_pages == 0)
-    free_pages[free_pages_it] = {-1, -1};
+  free_pages[it].nb_pages -= nb_pages;
+  if(free_pages[it].nb_pages == 0)
+    free_pages[it].start = 0;
+
+  return (void *) virt_addr;
+}
+
+// Unallocate a page
+int unallocate_page(void *page)
+{
+  int it=0;
+  while(it < VMM_FREE_PAGES_MAX_SIZE)
+  {
+    if(empty_cell(it))
+      continue;
+
+    if(free_pages[it].start + PAGE_SIZE == (uint32_t) page)
+    {
+      free_pages[it].start = (uint32_t) page;
+      free_pages[it].nb_pages++;
+      return 0;
+    }
+    
+    if(free_pages[it].start + free_pages[it].nb_pages*PAGE_SIZE == (uint32_t) page)
+    {
+      free_pages[it].nb_pages++;
+      return 0;
+    }
+  }
+
+  return -1;
 }
 
