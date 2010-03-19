@@ -32,5 +32,7 @@ struct page_table_entry {
 
 
 void pagination_setup();
+void pagination_init_page_directory(struct page_directory_entry * pd);
+void pagination_load_page_directory(struct page_directory_entry * pd);
 
 #endif
