@@ -1,11 +1,34 @@
 #include <types.h>
 #include <stdlib.h>
-#include <stdio.h>
+#include <stdio.h> 
 
+#include "gdt.h"
 #include "process.h"
 
 typedef int (*main_func_type) (uint32_t, uint8_t**);
 
+void exec_task(main_func_type func, uint32_t argc, uint8_t** argv)
+{
+		asm(
+		"cli\n\t"
+		"push %2\n\t"
+		"push %3\n\t"
+		"push $0x23\n\t"	//SS
+		"push 0x1FFF0\n\t"		//ESP
+		"pushfl\n\t"
+		"popl %%eax\n\t"
+		"orl $0x200, %%eax\n\t"
+		"and $0xffffbfff, %%eax\n\t"
+		"push %%eax\n\t"	// Flags
+		"push $0x1B\n\t"	//CS
+		"push %0\n\t"	//EIP
+		"movl $0x1FFF0, %1\n\t"
+		"movw $0x20, %%ax\n\t"
+		"movw %%ax, %%ds\n\t"
+		"iret"
+		:"=m"(func), "=m"(get_default_tss()->esp), "=m"(argc), "=m"(argv)
+		);
+}
 
 int init_process(paddr_t prog, uint32_t argc, uint8_t** argv, struct process* new_proc)
 {

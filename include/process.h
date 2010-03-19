@@ -35,6 +35,8 @@ struct process {
 	struct cpu_ctxt ctxt;
 };
 
+tss_t* get_default_tss();
+
 int init_process(paddr_t prog, uint32_t argc, uint8_t** argv, struct process* new_proc);
 
 int cpu_ctxt_init (paddr_t* pStack, paddr_t* pFunct);

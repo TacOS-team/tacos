@@ -50,6 +50,12 @@ static void processB (paddr_t* pStackA, paddr_t* pStackB, paddr_t* pStackMain) {
 }
 */
 
+void kikoo()
+{
+	printf("I am in da process \\O/\n");
+	while(1);
+}
+
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
 	kernel_options options;
@@ -99,8 +105,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	/* Configuration de la pagination */
 	memory_setup((mbi->mem_upper << 10) + (1 << 20));
-	pagination_setup();
-
+	//
 	//memory_print_free_pages();
 	//memory_print_used_pages();
 
@@ -151,7 +156,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	// Là normalement on lance le scheduler avec le process d'initialisation ou un shell
 	//init_scheduler(10, shell, 0, NULL);
-	shell(0,NULL);
+	exec_task(shell, 0, NULL);
+
 }
 
 int shell(int argc, char* argv[])

@@ -99,7 +99,7 @@ static struct x86_segment_descriptor gdt[] = {
 		.base_address_31_24 = 0,
 		.segment_type = 0x9,  // Pas sûr pour le busy flag 
 		.descriptor_type = 0,
-		.dpl = 0,
+		.dpl = 3,
 		.present = 1,
 		.available = 1, 
 		.zero = 0,
@@ -162,8 +162,10 @@ void init_tss(uint32_t stack_address)
 	default_tss.ss0 = 0x08;
 	
 	asm volatile(
-		"mov $0x28, %ax\n\t"
-		"ltr %ax");
+		"mov $0x28, %%ax\n\t"
+		"ltr %%ax\n\t"
+		"movw %%ss, %0 \n\t"
+		"movl %%esp, %1" : "=m"(default_tss.ss0), "=m"(default_tss.esp0) :);
 }
 
 tss_t* get_default_tss()
