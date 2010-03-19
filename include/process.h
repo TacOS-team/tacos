@@ -2,6 +2,7 @@
 #define _PROCESS_H_
 
 #include <types.h>
+#include <gdt.h>
 
 #define PROCSTATE_IDLE 1
 #define PROCSTATE_RUNNING 2
