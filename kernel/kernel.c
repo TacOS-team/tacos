@@ -12,13 +12,14 @@
 #include <interrupts.h>
 #include <pci.h>
 #include <pci_config.h>
-#include <scheduler.h>
+//#include <scheduler.h>
 #include <dummy_process.h>
 #include <keyboard.h>
 #include <clock.h>
 #include <events.h>
 #include <floppy.h>
 #include <kpanic.h>
+#include <process.h>
 #include "msr.h"
 
 typedef struct
@@ -50,12 +51,68 @@ static void processB (paddr_t* pStackA, paddr_t* pStackB, paddr_t* pStackMain) {
 }
 */
 
-void kikoo()
+int test_task(int argc, char** argv)
 {
-	printf("I am in da process \\O/\n");
-	while(1);
+	int i = 0;
+	printf("---- Test Task ----\n");
+	
+	while(1)
+	{
+		printf("i=%d\n",i);
+		i++;
+	}
 }
 
+
+static void* sched(void* data)
+{
+	uint32_t* stack_ptr;
+	process_t current;
+	/* On récupere un pointeur de pile pour acceder aux registres empilés */
+	asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
+	
+	/* On met le context dans la structure "process" */
+	current.regs.ss = stack_ptr[19];
+	current.regs.esp = stack_ptr[18];
+	current.regs.eflags = stack_ptr[17];
+	current.regs.cs  = stack_ptr[16];
+	current.regs.eip = stack_ptr[15];
+	current.regs.eax = stack_ptr[14];
+	current.regs.ecx = stack_ptr[13];
+	current.regs.edx = stack_ptr[12];
+	current.regs.ebx = stack_ptr[11];
+	//->esp kernel, on saute
+	current.regs.ebp = stack_ptr[9];
+	current.regs.esi = stack_ptr[8];
+	current.regs.edi = stack_ptr[7];
+	current.regs.fs = stack_ptr[6];
+	current.regs.gs = stack_ptr[5];
+	current.regs.ds = stack_ptr[4];
+	current.regs.es = stack_ptr[3];
+/*	
+	printf("ss: 0x%x\n", current.regs.ss);
+	printf("ss: 0x%x\n", current.regs.ss);		
+	printf("esp: 0x%x\n", current.regs.esp); 
+	printf("flags: 0x%x\n", current.regs.eflags);
+	printf("cs: 0x%x\n", current.regs.cs); 
+	printf("eip: 0x%x\n", current.regs.eip); 
+	printf("eax: 0x%x\n", current.regs.eax); 
+	printf("ecx: 0x%x\n", current.regs.ecx); 
+	printf("edx: 0x%x\n", current.regs.edx); 
+	printf("ebx: 0x%x\n", current.regs.ebx); 
+	printf("ebp: 0x%x\n", current.regs.ebp); 
+	printf("esi: 0x%x\n", current.regs.esi); 
+	printf("edi: 0x%x\n", current.regs.edi); 
+	printf("fs: 0x%x\n", current.regs.fs); 
+	printf("gs: 0x%x\n", current.regs.gs);  
+	printf("ds: 0x%x\n", current.regs.ds); 
+	printf("es: 0x%x\n", current.regs.es); 
+*/
+	add_event(sched,NULL,10);
+	printf("SCHED!\n");
+}
+
+	
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
 	kernel_options options;
@@ -96,7 +153,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	kpanic_init();
   
-  interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt);
+	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt);
 	floppy_init_interrupt();
 	
 	events_init(); 
@@ -112,37 +169,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 //	printf("Div 0 : %d.\n", 3/0);
 	pci_scan();
 //	pci_list();
-	/* PLANTE !!!!
-
-	//----------- TEST CONTEXT SWICHING ------------------------- //
-	//Creation des piles pour les Processus A et B
-	paddr_t pPage, pStackA, pStackB, pCurrentStack;
-	pPage = memory_reserve_page_frame();
-	pStackA = pPage + PAGE_SIZE -1;
-	pPage = memory_reserve_page_frame();
-	pStackB = pPage + PAGE_SIZE -1;
-	
-	asm volatile (" movl %%esp, %0;" :: "m"(pCurrentStack) );
- 
-	cpu_ctxt_init(processA);
-	cpu_ctxt_init(processB);
-
-	//cpu_ctxt_switch(&pCurrentStack, &pStackA);
-
-	//recopie de dummy process plus loin en memoire
-	int i;
-	paddr_t rec = (mbi->mem_upper+mbi->mem_lower)/2;
-	for(i=0 ; i<mbi->mem_upper/10 ; i++) 
-	{
-		*((uint32_t*)(rec+i)) = *((uint32_t*)(dummy_process_main+i));
-	}
-	
-	// execution de dummy process	
-	printf("\nExecuting process dummy 1\n");
-	char* args[] = {"dummy","1"};
-	add_process(rec,2,(uint8_t**)args);
-	
-	*/
 
 	floppy_detect_drives();
 	printf("Floppy controller version: 0x%x.\n", floppy_get_version());
@@ -156,8 +182,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	// Là normalement on lance le scheduler avec le process d'initialisation ou un shell
 	//init_scheduler(10, shell, 0, NULL);
-	exec_task(shell, 0, NULL);
-
+	//add_event(sched,NULL,10);
+	//exec_task(test_task, 2, NULL);
+	exec_task(shell, 2, NULL);
 }
 
 int shell(int argc, char* argv[])

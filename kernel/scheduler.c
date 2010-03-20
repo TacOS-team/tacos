@@ -5,6 +5,7 @@
 #include <events.h>
 
 #define MAX_PROC 255
+#if 0
 
 struct process process_list[MAX_PROC];	// Tableau des processus en cours
 //struct process idle;
@@ -123,3 +124,4 @@ int add_process(paddr_t prog, uint32_t argc, uint8_t** argv)
 	
 	return 1;
 }
+#endif
