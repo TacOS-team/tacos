@@ -22,6 +22,44 @@ void printStackTrace(uint32_t depth)
 		printf("->0x%x\n",eip);
 	}
 }
+
+void page_fault_report(int error_code)
+{
+	uint32_t address;
+			
+	/* On récupère le registre cr2 qui contient l'addresse virtuelle à l'origine de l'exception */
+	asm("mov %%cr2, %%eax":"=a"(address));
+	printf("Virtual address: 0x%x\n",address);
+
+	if(error_code & 0x01) // Bit P
+		printf("Page-protection violation.\n");
+	else
+		printf("Non-present page.\n");
+
+	printf("Read/Write: ");
+	if(error_code & 0x02) // Bit W
+		printf("reading\n");
+	else
+		printf("write\n");
+
+	printf("Privilege=");
+	if(error_code & 0x04) // Bit U
+		printf("3\n");
+	else
+		printf("0\n");
+		
+	printf("Reserved write: ");
+	if(error_code & 0x08) // Bit R
+		printf("yes\n");
+	else
+		printf("no\n");
+		
+	printf("Instruction fetch: ");
+	if(error_code & 0x10) // Bit I
+		printf("yes\n");
+	else
+		printf("no\n");
+}
 	
 void kpanic_handler(int error_id, int error_code)
 {
@@ -47,6 +85,7 @@ void kpanic_handler(int error_id, int error_code)
 			break;
 		case EXCEPTION_PAGE_FAULT:
 			printf("Page fault (error code : %d).\n", error_code);
+			page_fault_report(error_code);
 			break;
 		case EXCEPTION_DOUBLE_FAULT:
 			printf("Double fault (error code : %d).\n", error_code);
