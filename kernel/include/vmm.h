@@ -4,7 +4,7 @@
 
 void *allocate_new_page();
 void *allocate_new_pages(unsigned int nb_pages);
-int unallocate_page(void *page);
+void unallocate_page(void *page);
 
 #endif
 
