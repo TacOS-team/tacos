@@ -1,4 +1,4 @@
-/* Code repris de SOS...
+/* 
 	Copyright (C) 2004  The KOS Team
    Copyright (C) 1999  Free Software Foundation, Inc.
 */
@@ -52,9 +52,6 @@
         .p2align 2, 0x90
         exception_wrapper_\id:
         .type exception_wrapper_\id,@function
-					/* Fake error code */
-					pushl $0
-
 					pusha
 					push %gs
 					push %fs
@@ -63,19 +60,17 @@
 
 					/* Call the handler with exception number as
 					 * argument */
+					pushl $0
 					pushl $\id
 					leal  exception_handler_array,%edi
 					call  *\id*4(%edi)
-					addl  $4, %esp
+					addl  $8, %esp
 					
 					pop %es
 					pop %ds
 					pop %fs
 					pop %gs
 					popa
-
-					/* Remove fake error code */
-					addl $4, %esp
 
 					sti
 					iret
@@ -102,10 +97,14 @@
 
 					/* Call the handler with exception number as
 					 * argument */
+					addl $48, %esp /* J'en suis pas fier. C'est pour recuperer le code d'erreur */
+					popl %edi
+					subl $44, %esp
+					pushl %edi
 					pushl $\id
 					leal  exception_handler_array,%edi
 					call  *\id*4(%edi)
-					addl  $4, %esp
+					addl  $8, %esp
 					
 					pop %es
 					pop %ds

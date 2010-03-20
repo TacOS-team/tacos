@@ -8,7 +8,7 @@ void printStackTrace(uint32_t depth)
 	// on récupère ebp à partir de l'adresse de l'argument:
 	uint32_t* ebp = &depth - 2;
 	uint32_t i;
-	printf("Stack Tace:\n");
+	printf("Stack Trace:\n");
 	
 	for(i=0; i<depth; ++i)
 	{
@@ -23,7 +23,7 @@ void printStackTrace(uint32_t depth)
 	}
 }
 	
-void kpanic_handler(int error_id)
+void kpanic_handler(int error_id, int error_code)
 {
   //cls();
   set_attribute(WHITE, BLACK);
@@ -34,7 +34,7 @@ void kpanic_handler(int error_id)
   switch(error_id)
   {
 		case EXCEPTION_SEGMENT_NOT_PRESENT:
-			printf("Segment not present.\n");
+			printf("Segment not present (error code : %d).\n", error_code);
 			break;
 		case EXCEPTION_DIVIDE_ERROR:
 			printf("Division by zero.\n");
@@ -43,13 +43,13 @@ void kpanic_handler(int error_id)
 			printf("Invalid OpCode.\n");
 			break;
 		case EXCEPTION_INVALID_TSS:
-			printf("Invalid TSS.\n");
+			printf("Invalid TSS (error code : %d).\n", error_code);
 			break;
 		case EXCEPTION_PAGE_FAULT:
-			printf("Page fault.\n");
+			printf("Page fault (error code : %d).\n", error_code);
 			break;
 		case EXCEPTION_DOUBLE_FAULT:
-			printf("Double fault.\n");
+			printf("Double fault (error code : %d).\n", error_code);
 			break;
 		default:
 			printf("Unknown exception.\n");
