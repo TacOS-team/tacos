@@ -11,6 +11,7 @@ void pagination_identity_map_addr(struct page_directory_entry * pagination_kerne
 	struct page_directory_entry * pde = &pagination_kernel[index_pd];
 	if (!pde->present) {
 		pde->r_w = 1;
+		pde->u_s = 1;
 		pde->present = 1;
 		paddr_t pt_addr = memory_reserve_page_frame();
 		pde->page_table_addr = pt_addr >> 12;
@@ -23,6 +24,7 @@ void pagination_identity_map_addr(struct page_directory_entry * pagination_kerne
 	pte->present = 1;
 	pte->page_addr = page_addr >> 12;
 	pte->r_w = 1;
+	pte->u_s = 1;
 }
 
 /*
