@@ -92,7 +92,7 @@ static struct page_table_entry *get_pte(int dir, int table)
 {
   struct page_table_entry *page_table =
     ((struct page_table_entry *) (get_pde(dir)->page_table_addr << 12));
-  return page_table + table;
+  return &page_table[table];
 }
 
 // Retourne une adresse lineaire en fonction de sa position dans le rep de page
