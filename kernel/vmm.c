@@ -4,7 +4,7 @@
 
 // Page Table Entry Magic
 #define PTE_MAGIC 0xFFC00000
-
+#define PDE_MAGIC 0xFFFFF000
 
 // a slab of pages
 // chaque slab commence par un entête (struct slab) et est suivi par les données utiles.
@@ -83,9 +83,8 @@ static void add(struct slabs_list *list, struct slab *s)
 static struct page_directory_entry *get_pde(int dir)
 {
   struct page_directory_entry *page_directory = 
-    ((struct page_directory_entry *) 
-     ((((struct page_directory_entry *) PTE_MAGIC)->page_table_addr) << 12));
-  return page_directory + dir;
+	  (struct page_directory_entry *) PDE_MAGIC;
+  return page_directory[dir];
 }
 
 // Retourne l'entrée de table de page correspondant à dir, table
