@@ -169,7 +169,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	//memory_print_used_pages();
 
   /* Initialisation de la vmm */
- // init_vmm();
+  init_vmm();
   init_kmalloc();
 
 //	printf("Div 0 : %d.\n", 3/0);

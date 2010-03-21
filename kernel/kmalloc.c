@@ -98,7 +98,7 @@ void *kmalloc(size_t size)
     size_t real_alloc_size = allocate_new_pages(calculate_min_pages(real_size), 
                                                 &alloc);
     new_mem = (struct mem *) alloc;
-    mem->size = real_alloc_size;
+    new_mem->size = real_alloc_size;
     add(&free_mem, new_mem); // XXX : push_back
     mem = free_mem.end;
   }
