@@ -30,8 +30,8 @@
 					
 					/* On repasse le bon segment de data au kernel */
 					push %ebx
-					mov %bx,0x10
-					mov %ds,%bx
+					mov $0x10, %bx
+					mov %bx, %ds
 					pop %ebx
 
 					/* Call the handler with exception number as

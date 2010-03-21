@@ -164,12 +164,12 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	/* Configuration de la pagination */
 	memory_setup((mbi->mem_upper << 10) + (1 << 20));
-	//
+	pagination_setup();
 	//memory_print_free_pages();
 	//memory_print_used_pages();
 
   /* Initialisation de la vmm */
-  init_vmm();
+ // init_vmm();
   init_kmalloc();
 
 //	printf("Div 0 : %d.\n", 3/0);
@@ -190,7 +190,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	//init_scheduler(10, shell, 0, NULL);
 	//add_event(sched,NULL,10);
 	//exec_task(test_task, 2, NULL);
-	exec_task(shell, 2, NULL);
+	//exec_task(shell, 2, NULL);
+	shell(0, NULL);
 }
 
 int shell(int argc, char* argv[])
