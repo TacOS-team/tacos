@@ -123,6 +123,7 @@ void gdt_setup(size_t ram_size) {
 	
 	/* On utilise des segments dont la limite correspond à la mémoire physique ! */
 
+	/*
 	gdt[1].segment_limit_15_0 = (ram_size / PAGE_SIZE + 1) & 0xffff;
 	gdt[1].segment_limit_19_16 = ((ram_size / PAGE_SIZE + 1) >> 16) & 0xf;
 	gdt[2].segment_limit_15_0 = (ram_size / PAGE_SIZE + 1) & 0xffff;
@@ -132,6 +133,7 @@ void gdt_setup(size_t ram_size) {
 	gdt[3].segment_limit_19_16 = ((ram_size / PAGE_SIZE + 1) >> 16) & 0xf;
 	gdt[4].segment_limit_15_0 = (ram_size / PAGE_SIZE + 1) & 0xffff;
 	gdt[4].segment_limit_19_16 = ((ram_size / PAGE_SIZE + 1) >> 16) & 0xf;
+	*/
 
 	/* Initialisation du descripteur de TSS dans la GDT */
 	gdt[5].base_address_15_0 = ((uint32_t)(&default_tss) & 0xffff);
