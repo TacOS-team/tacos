@@ -2,9 +2,11 @@
 #define _VMM_H_
 
 
-void *allocate_new_page();
-void *allocate_new_pages(unsigned int nb_pages);
+void init_vmm();
+unsigned int allocate_new_page(void **alloc);
+unsigned int allocate_new_pages(unsigned int nb_pages, void **alloc);
 void unallocate_page(void *page);
+unsigned int calculate_min_pages(size_t size);
 
 #endif
 

@@ -3,9 +3,8 @@
 #include <vmm.h>
 
 // Page Table Entry Magic
-#define PTE_MAGIC 0x3FF
+#define PTE_MAGIC 0xFFC00000
 
-#define VMM_FREE_PAGES_MAX_SIZE 256
 
 // a slab of pages
 // chaque slab commence par un entête (struct slab) et est suivi par les données utiles.
@@ -147,9 +146,10 @@ static void unmap(uint32_t virt_page_addr)
   // XXX : UNMAP DIR ENTRY IF TABLE IS EMPTY
 }
 
-void init_vmm(uint32_t end_kernel)
+void init_vmm()
 {
-  map(memory_reserve_page_frame(), end_kernel);
+  paddr_t end_kernel = memory_reserve_page_frame();
+  map(end_kernel, end_kernel);
 
   free_slabs.begin = (struct slab *) end_kernel;
   free_slabs.begin->prev = NULL;
@@ -183,13 +183,13 @@ static int is_stuck(struct slab *s1, struct slab *s2)
   return (uint32_t) s1 + s1->nb_pages*sizeof(struct slab) == (uint32_t) s2;
 }
 
-void *allocate_new_page()
+unsigned int allocate_new_page(void **alloc)
 {
-  return allocate_new_pages(1);
+  return allocate_new_pages(1, alloc);
 }
 
 // Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle 
-void *allocate_new_pages(unsigned int nb_pages)
+unsigned int allocate_new_pages(unsigned int nb_pages, void **alloc)
 {
   uint32_t virt_addr = 0;
   struct slab *slab = free_slabs.begin;
@@ -205,10 +205,12 @@ void *allocate_new_pages(unsigned int nb_pages)
 
   virt_addr = (uint32_t) slab + sizeof(struct slab);
 
+  // XXX : CUT SLAB
   remove(&free_slabs, slab);
   add(&used_slabs, slab);
 
-  return (void *) virt_addr;
+  *(alloc) = (void *) virt_addr;
+  return nb_pages*PAGE_SIZE - sizeof(struct slab); 
 }
 
 // Unallocate a page
@@ -243,5 +245,14 @@ void unallocate_page(void *page)
       unmap(vmm_top);
     }
   }
+}
+
+// taille demandée / taille page + (taille demandee - (taille demandée / taille page) > 0
+// retourne le nombre de pages minimal à allouer pour une zone mémoire
+// de taille size : entier_sup(size + overhead)
+unsigned int calculate_min_pages(size_t size)
+{
+  double nb_pages = ((double) size) / PAGE_SIZE;
+  return (unsigned int) (nb_pages + ((nb_pages - (int) nb_pages > 0) ? 1 : 0));
 }
 
