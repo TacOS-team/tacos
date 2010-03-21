@@ -23,7 +23,7 @@ struct slabs_list
 
 struct slabs_list free_slabs;
 struct slabs_list used_slabs;
-uint32_t vmm_top;
+vaddr_t vmm_top;
 
 static int is_empty(struct slabs_list *list)
 {
@@ -82,18 +82,22 @@ static void add(struct slabs_list *list, struct slab *s)
 // Retourne l'entrée de répertoire de page correspondant à dir
 static struct page_directory_entry *get_pde(int dir)
 {
-  return ((struct page_directory_entry *) 
-          (((struct page_directory_entry *) PTE_MAGIC)->page_table_addr)) + dir;
+  struct page_directory_entry *page_directory = 
+    ((struct page_directory_entry *) 
+     ((((struct page_directory_entry *) PTE_MAGIC)->page_table_addr) << 12));
+  return page_directory + dir;
 }
 
 // Retourne l'entrée de table de page correspondant à dir, table
 static struct page_table_entry *get_pte(int dir, int table)
 {
-  return ((struct page_table_entry *) get_pde(dir)->page_table_addr) + table;
+  struct page_table_entry *page_table =
+    ((struct page_table_entry *) (get_pde(dir)->page_table_addr << 12));
+  return page_table + table;
 }
 
 // Retourne une adresse lineaire en fonction de sa position dans le rep de page
-static uint32_t get_linear_address(int dir, int table, int offset)
+static vaddr_t get_linear_address(int dir, int table, int offset)
 {
   return (((dir&0x3FF) << 22) | ((table&0x3FF) << 12) | (offset&0xFFF));
 }
@@ -102,46 +106,46 @@ static uint32_t get_linear_address(int dir, int table, int offset)
 static void create_page_entry(struct page_table_entry *pte, paddr_t page_addr)
 {
   pte->present = 1;
-	pte->page_addr = page_addr >> 12;
-	pte->r_w = 1;
+  pte->page_addr = page_addr >> 12;
+  pte->r_w = 1;
 }
 
 // créer une entrée de répertoire
 static void create_page_dir(struct page_directory_entry *pde)
 {
-	paddr_t page_addr = memory_reserve_page_frame();
+  paddr_t page_addr = memory_reserve_page_frame();
 
   pde->present = 1;
-	pde->page_table_addr = page_addr >> 12;
-	pde->present = 1;
+  pde->page_table_addr = page_addr >> 12;
+  pde->r_w = 1;
 
   // XXX : MAP NEW PAGE TO A PTE
 }
 
 // Map dans le répertoire des pages une nouvelle page
-static void map(paddr_t phys_page_addr, uint32_t virt_page_addr)
+static void map(paddr_t phys_page_addr, vaddr_t virt_page_addr)
 {
   int dir = virt_page_addr >> 22;
-	int table = (virt_page_addr & 0x003FF000) >> 12;
+  int table = (virt_page_addr & 0x003FF000) >> 12;
   struct page_directory_entry * pde = get_pde(dir);
-	struct page_table_entry * pte;
+  struct page_table_entry * pte;
 
-	if (!pde->present)
+  if (!pde->present)
     create_page_dir(pde);
 
   pte = get_pte(dir, table);
   create_page_entry(get_pte(dir, table), phys_page_addr);
 }
 
-static void unmap(uint32_t virt_page_addr)
+static void unmap(vaddr_t virt_page_addr)
 {
   int dir = virt_page_addr >> 22;
-	int table = (virt_page_addr & 0x003FF000) >> 12;
-	struct page_table_entry *pte = get_pte(dir, table);
+  int table = (virt_page_addr & 0x003FF000) >> 12;
+  struct page_table_entry *pte = get_pte(dir, table);
 
   pte->present = 0;
-	pte->page_addr = 0;
-	pte->r_w = 0;
+  pte->page_addr = 0;
+  pte->r_w = 0;
 
   // XXX : UNMAP DIR ENTRY IF TABLE IS EMPTY
 }
@@ -180,7 +184,7 @@ static int increase_heap(unsigned int nb_pages)
 
 static int is_stuck(struct slab *s1, struct slab *s2)
 {
-  return (uint32_t) s1 + s1->nb_pages*sizeof(struct slab) == (uint32_t) s2;
+  return (vaddr_t) s1 + s1->nb_pages*sizeof(struct slab) == (vaddr_t) s2;
 }
 
 unsigned int allocate_new_page(void **alloc)
@@ -191,7 +195,7 @@ unsigned int allocate_new_page(void **alloc)
 // Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle 
 unsigned int allocate_new_pages(unsigned int nb_pages, void **alloc)
 {
-  uint32_t virt_addr = 0;
+  vaddr_t virt_addr = 0;
   struct slab *slab = free_slabs.begin;
 
   while(slab != NULL && slab->nb_pages < nb_pages)
@@ -203,7 +207,7 @@ unsigned int allocate_new_pages(unsigned int nb_pages, void **alloc)
     slab = free_slabs.end;
   }
 
-  virt_addr = (uint32_t) slab + sizeof(struct slab);
+  virt_addr = (vaddr_t) slab + sizeof(struct slab);
 
   // XXX : CUT SLAB
   remove(&free_slabs, slab);
@@ -218,7 +222,7 @@ void unallocate_page(void *page)
 {
   struct slab *slab = used_slabs.begin;
 
-  while(slab != NULL && (uint32_t) slab + sizeof(struct slab) < (uint32_t) page)
+  while(slab != NULL && (vaddr_t) slab + sizeof(struct slab) < (vaddr_t) page)
     slab = slab->next;
 
   remove(&used_slabs, slab);
@@ -252,7 +256,7 @@ void unallocate_page(void *page)
 // de taille size : entier_sup(size + overhead)
 unsigned int calculate_min_pages(size_t size)
 {
-  double nb_pages = ((double) size) / PAGE_SIZE;
+  double nb_pages = ((double) size + sizeof(struct slab)) / PAGE_SIZE;
   return (unsigned int) (nb_pages + ((nb_pages - (int) nb_pages > 0) ? 1 : 0));
 }
 
