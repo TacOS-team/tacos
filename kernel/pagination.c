@@ -40,7 +40,9 @@ void pagination_setup() {
 	paddr_t current_page;
 	while (memory_has_next_page(iterator)) {
 		current_page = memory_next_page(&iterator);
-		pagination_identity_map_addr(pagination_kernel, current_page);
+		if (pagination_kernel != current_page) {
+			pagination_identity_map_addr(pagination_kernel, current_page);
+		}
 	}
 	
 	pagination_load_page_directory(pagination_kernel);
@@ -63,10 +65,23 @@ void pagination_init_page_directory(struct page_directory_entry * pd) {
 		pd[i].present = 0;
 	}
 
-	// L'adresse linéaire 0xFFC00000 correspond au repertoire de tables de page.
-	pd[1023].page_table_addr = ((paddr_t)pd) >> 12;
-	pd[1023].r_w = 1;
-	pd[1023].present = 1;
+	// L'adresse linéaire 0xFFC0000 correspond à l'entrée qui pointe vers la table qui contient la page qui est le repertoire.
+	struct page_directory_entry * pde = &pd[1023];
+	pde->r_w = 1;
+	pde->u_s = 1;
+	pde->present = 1;
+	paddr_t pt_addr = memory_reserve_page_frame();
+	pde->page_table_addr = pt_addr >> 12;
+
+	// L'adresse linéaire 0xFFFFF00 correspond au repertoire de tables de page.
+	struct page_table_entry * page_table = (struct page_table_entry *) (pt_addr);
+	struct page_table_entry * pte = &page_table[1023];
+
+	pte->present = 1;
+	pte->page_addr = ((paddr_t)pd) >> 12;
+	pte->r_w = 1;
+	pte->u_s = 1;
+
 }
 
 /*
