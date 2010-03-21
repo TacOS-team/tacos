@@ -84,7 +84,7 @@ static struct page_directory_entry *get_pde(int dir)
 {
   struct page_directory_entry *page_directory = 
 	  (struct page_directory_entry *) PDE_MAGIC;
-  return page_directory[dir];
+  return &page_directory[dir];
 }
 
 // Retourne l'entrée de table de page correspondant à dir, table
