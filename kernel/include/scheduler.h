@@ -1,8 +1,8 @@
 #ifndef SCHEDULER_H
 #define SCHEDULER_H
 
-void init_scheduler(int qt, paddr_t init, uint32_t argc, uint8_t** argv);
-
-int add_process(paddr_t prog, uint32_t argc, uint8_t** argv);
+void init_scheduler(int Quantum);
+void start_scheduler();
+int add_process(process_t new_proc);
 
 #endif //SCHEDULER_H

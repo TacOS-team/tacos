@@ -22,6 +22,7 @@
 #include <process.h>
 #include <kmalloc.h>
 #include <vmm.h>
+#include <ioports.h>
 #include "msr.h"
 
 typedef struct
@@ -34,84 +35,44 @@ void cmain (unsigned long magic, unsigned long addr);
 int shell(int argc, char* argv[]);
 static void testPageReservation();
 static void initKernelOptions(const char *cmdLine, kernel_options *options);
-/*
-static void processA (paddr_t* pStackA, paddr_t* pStackB) {
-	int i;
-	for (i=0;i<5;i++) {
-		printf(" PA(%d) ",i);
-		cpu_ctxt_switch(pStackA, pStackB);
-	}
-	cpu_ctxt_switch(pStackA, pStackB);
-}
-static void processB (paddr_t* pStackA, paddr_t* pStackB, paddr_t* pStackMain) {
-	int i;
-	for (i=0;i<5;i++) {
-		printf(" PB(%d) ",i);
-		cpu_ctxt_switch(pStackB, pStackA);
-	}
-	cpu_ctxt_switch(pStackB, pStackMain);
-}
-*/
 
-int test_task(int argc, char** argv)
+/* pour le test des processus */
+process_t task[2];
+uint32_t sys_stack[2][1024];
+uint32_t user_stack[2][1024];
+
+int test_task1(int argc, char** argv)
 {
 	int i = 0;
-	printf("---- Test Task ----\n");
+	//printf("---- Test Task1 ----\n");
 	
 	while(1)
 	{
-		printf("i=%d\n",i);
+		if(i%50000000 == 0)
+		{
+			printf("\ntask1 dit:\"Je tourne!!!\"\n");
+		}
 		i++;
 	}
 }
 
-
-static void* sched(void* data)
+int test_task2(int argc, char** argv)
 {
-	uint32_t* stack_ptr;
-	process_t current;
-	/* On récupere un pointeur de pile pour acceder aux registres empilés */
-	asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
+	int i = 0;
+	int b = 100;
+	//printf("---- Test Task1 ----\n");
 	
-	/* On met le context dans la structure "process" */
-	current.regs.ss = stack_ptr[19];
-	current.regs.esp = stack_ptr[18];
-	current.regs.eflags = stack_ptr[17];
-	current.regs.cs  = stack_ptr[16];
-	current.regs.eip = stack_ptr[15];
-	current.regs.eax = stack_ptr[14];
-	current.regs.ecx = stack_ptr[13];
-	current.regs.edx = stack_ptr[12];
-	current.regs.ebx = stack_ptr[11];
-	//->esp kernel, on saute
-	current.regs.ebp = stack_ptr[9];
-	current.regs.esi = stack_ptr[8];
-	current.regs.edi = stack_ptr[7];
-	current.regs.fs = stack_ptr[6];
-	current.regs.gs = stack_ptr[5];
-	current.regs.ds = stack_ptr[4];
-	current.regs.es = stack_ptr[3];
-/*	
-	printf("ss: 0x%x\n", current.regs.ss);
-	printf("ss: 0x%x\n", current.regs.ss);		
-	printf("esp: 0x%x\n", current.regs.esp); 
-	printf("flags: 0x%x\n", current.regs.eflags);
-	printf("cs: 0x%x\n", current.regs.cs); 
-	printf("eip: 0x%x\n", current.regs.eip); 
-	printf("eax: 0x%x\n", current.regs.eax); 
-	printf("ecx: 0x%x\n", current.regs.ecx); 
-	printf("edx: 0x%x\n", current.regs.edx); 
-	printf("ebx: 0x%x\n", current.regs.ebx); 
-	printf("ebp: 0x%x\n", current.regs.ebp); 
-	printf("esi: 0x%x\n", current.regs.esi); 
-	printf("edi: 0x%x\n", current.regs.edi); 
-	printf("fs: 0x%x\n", current.regs.fs); 
-	printf("gs: 0x%x\n", current.regs.gs);  
-	printf("ds: 0x%x\n", current.regs.ds); 
-	printf("es: 0x%x\n", current.regs.es); 
-*/
-	add_event(sched,NULL,10);
-	printf("SCHED!\n");
+	while(1)
+	{
+		if(i%50000000 == 0)
+		{
+			printf("task2:%d\n",b);
+			b--;
+		}
+		if(b==0)
+		 b=100;
+		i++;
+	}
 }
 
 	
@@ -143,7 +104,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	printf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
 
 	gdt_setup((mbi->mem_upper << 10) + (1 << 20));
-	init_tss(0x1FFF0);
+	init_tss(sys_stack+1023);
 	
 	init_syscall();
 
@@ -163,17 +124,21 @@ void cmain (unsigned long magic, unsigned long addr) {
 	asm volatile ("sti\n");
 
 	/* Configuration de la pagination */
+			//asm("hlt");
 	memory_setup((mbi->mem_upper << 10) + (1 << 20));
+
 	pagination_setup();
+
 	//memory_print_free_pages();
 	//memory_print_used_pages();
+
 
   /* Initialisation de la vmm */
   init_vmm();
   init_kmalloc();
 
 //	printf("Div 0 : %d.\n", 3/0);
-	pci_scan();
+//	pci_scan();
 //	pci_list();
 
 	floppy_detect_drives();
@@ -186,12 +151,45 @@ void cmain (unsigned long magic, unsigned long addr) {
 	floppy_read_sector(0,0,0,MBR);
 	printf("MBR Signature:0x%x%x.\n",0xFF&MBR[0x01FE], 0xFF&MBR[0x01FF]);
 	
-	// Là normalement on lance le scheduler avec le process d'initialisation ou un shell
-	//init_scheduler(10, shell, 0, NULL);
-	//add_event(sched,NULL,10);
-	//exec_task(test_task, 2, NULL);
+	/* Test du scheduler */
+	init_scheduler(10);
+	
+	task[1].pid = 1;
+	task[1].regs.eax = 0;
+	task[1].regs.ebx = 0;
+	task[1].regs.ecx = 0;
+	task[1].regs.edx = 0;
+	task[1].regs.cs = 0x1B;
+	task[1].regs.ds = 0x23;
+	task[1].regs.ss = 0x23;
+	task[1].regs.eflags = 0;
+	task[1].regs.eip = test_task1;
+	task[1].regs.esp = (user_stack[1])+1024;
+	task[1].state = PROCSTATE_IDLE;
+	task[1].sys_stack = (sys_stack[1])+1024;
+	
+	task[0].pid = 2;
+	task[0].regs.eax = 0;
+	task[0].regs.ebx = 0;
+	task[0].regs.ecx = 0;
+	task[0].regs.edx = 0;
+	task[0].regs.cs = 0x1B;
+	task[0].regs.ds = 0x23;
+	task[0].regs.ss = 0x23;
+	task[0].regs.eflags = 0;
+	task[0].regs.eip = shell;
+	task[0].regs.esp = (user_stack[2])+1024;
+	task[0].state = PROCSTATE_IDLE;
+	task[0].sys_stack = (sys_stack[0])+1024;
+	
+	add_process(task[0]);
+	add_process(task[1]);
+	
+	start_scheduler();
+	//add_event(sched,NULL,10);	
 	//exec_task(shell, 2, NULL);
-	shell(0, NULL);
+	//shell(0, NULL);
+	while(1){}
 }
 
 int shell(int argc, char* argv[])
@@ -240,7 +238,7 @@ int shell(int argc, char* argv[])
 			printf("\n/!\\ ERASING MBR MOUHAHA /!\\\n");
 			floppy_write_sector(0,0,0,zeros);
 			reset_attribute();
-		}					
+		}			
 	}
 	
 	return 0;

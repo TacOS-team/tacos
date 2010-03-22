@@ -20,11 +20,12 @@ typedef struct
 
 
 typedef struct{
-	uint16_t pid;
-	uint8_t  state;
-	uint8_t  priority;
+	uint16_t	pid;
+	uint8_t	state;
+	uint8_t	priority;
+	paddr_t		sys_stack;	
 	regs_t regs;
-} process_t __attribute__ ((packed));
+} process_t;
 
 tss_t* get_default_tss();
 
