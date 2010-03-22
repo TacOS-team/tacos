@@ -221,6 +221,9 @@ int shell(int argc, char* argv[])
 		buffer[i%80] = '\0';
 		i = 0;
 
+		if (strcmp(buffer, "help") == 0) {
+			printf("\nCommandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task\n");
+		}
 		if (strcmp(buffer, "reboot") == 0) {
 			printf("\nReboot non implemente, desole !");
 		}
