@@ -37,9 +37,9 @@ static void testPageReservation();
 static void initKernelOptions(const char *cmdLine, kernel_options *options);
 
 /* pour le test des processus */
-process_t task[2];
-uint32_t sys_stack[2][1024];
-uint32_t user_stack[2][1024];
+process_t task[3];
+uint32_t sys_stack[3][1024];
+uint32_t user_stack[3][1024];
 
 int test_task1(int argc, char** argv)
 {
@@ -48,7 +48,7 @@ int test_task1(int argc, char** argv)
 	
 	while(1)
 	{
-		if(i%50000000 == 0)
+		if(i%5000000 == 0)
 		{
 			printf("\ntask1 dit:\"Je tourne!!!\"\n");
 		}
@@ -59,18 +59,14 @@ int test_task1(int argc, char** argv)
 int test_task2(int argc, char** argv)
 {
 	int i = 0;
-	int b = 100;
 	//printf("---- Test Task1 ----\n");
 	
 	while(1)
 	{
-		if(i%50000000 == 0)
+		if(i%5000000 == 0)
 		{
-			printf("task2:%d\n",b);
-			b--;
+			printf("\ntask2 dit:\"Je tourne!!!\"\n");
 		}
-		if(b==0)
-		 b=100;
 		i++;
 	}
 }
@@ -152,7 +148,21 @@ void cmain (unsigned long magic, unsigned long addr) {
 	printf("MBR Signature:0x%x%x.\n",0xFF&MBR[0x01FE], 0xFF&MBR[0x01FF]);
 	
 	/* Test du scheduler */
-	init_scheduler(10);
+	init_scheduler(5);
+	
+	task[0].pid = 0; // shell
+	task[0].regs.eax = 0;
+	task[0].regs.ebx = 0;
+	task[0].regs.ecx = 0;
+	task[0].regs.edx = 0;
+	task[0].regs.cs = 0x1B;
+	task[0].regs.ds = 0x23;
+	task[0].regs.ss = 0x23;
+	task[0].regs.eflags = 0;
+	task[0].regs.eip = shell;
+	task[0].regs.esp = (user_stack[0])+1024;
+	task[0].state = PROCSTATE_IDLE;
+	task[0].sys_stack = (sys_stack[0])+1024;
 	
 	task[1].pid = 1;
 	task[1].regs.eax = 0;
@@ -168,22 +178,23 @@ void cmain (unsigned long magic, unsigned long addr) {
 	task[1].state = PROCSTATE_IDLE;
 	task[1].sys_stack = (sys_stack[1])+1024;
 	
-	task[0].pid = 2;
-	task[0].regs.eax = 0;
-	task[0].regs.ebx = 0;
-	task[0].regs.ecx = 0;
-	task[0].regs.edx = 0;
-	task[0].regs.cs = 0x1B;
-	task[0].regs.ds = 0x23;
-	task[0].regs.ss = 0x23;
-	task[0].regs.eflags = 0;
-	task[0].regs.eip = shell;
-	task[0].regs.esp = (user_stack[2])+1024;
-	task[0].state = PROCSTATE_IDLE;
-	task[0].sys_stack = (sys_stack[0])+1024;
+	task[2].pid = 2;
+	task[2].regs.eax = 0;
+	task[2].regs.ebx = 0;
+	task[2].regs.ecx = 0;
+	task[2].regs.edx = 0;
+	task[2].regs.cs = 0x1B;
+	task[2].regs.ds = 0x23;
+	task[2].regs.ss = 0x23;
+	task[2].regs.eflags = 0;
+	task[2].regs.eip = test_task2;
+	task[2].regs.esp = (user_stack[2])+1024;
+	task[2].state = PROCSTATE_IDLE;
+	task[2].sys_stack = (sys_stack[2])+1024;
 	
 	add_process(task[0]);
-	add_process(task[1]);
+	//add_process(task[1]);
+	//add_process(task[2]);
 	
 	start_scheduler();
 	//add_event(sched,NULL,10);	
@@ -238,7 +249,9 @@ int shell(int argc, char* argv[])
 			printf("\n/!\\ ERASING MBR MOUHAHA /!\\\n");
 			floppy_write_sector(0,0,0,zeros);
 			reset_attribute();
-		}			
+		}		
+		if(strcmp(buffer,"test_task") == 0)
+				add_process(task[1]);
 	}
 	
 	return 0;
