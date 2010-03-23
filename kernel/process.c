@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <stdio.h> 
 
-#include "gdt.h"
+
+#include <gdt.h>
 #include "process.h"
+#include <kmalloc.h>
 
 typedef int (*main_func_type) (uint32_t, uint8_t**);
 
@@ -11,6 +13,8 @@ uint32_t sys_stack[1024];
 uint32_t user_stack[1024];
 paddr_t ss_addr = sys_stack+1023;
 paddr_t us_addr = user_stack+1023;
+
+uint32_t proc_count = 0;
 
 void exec_task(main_func_type func, uint32_t argc, uint8_t** argv)
 {
@@ -36,26 +40,59 @@ void exec_task(main_func_type func, uint32_t argc, uint8_t** argv)
 }
 
 
-int init_process(paddr_t prog, uint32_t argc, uint8_t** argv,process_t* new_proc)
+int init_process(paddr_t prog, uint32_t argc, uint8_t** argv,process_t* new_proc, uint32_t stack_size, uint8_t ring)
 {
-	/* VIEUX CODE DE DEBUG
-	int (*p)(uint32_t, uint8_t**) = (main_func_type)prog;
-	p(argc,argv);
-	*/
+	uint32_t *sys_stack, *user_stack;
 	
-	/*
-	 * non implemente
-	 * TODO :
-	 * mettre en place une stack
-	 * mettre en place un segment data
-	 * initialiser la stack (empiler les arguments...)
-	 * remplir le struct process
-	 */
+	sys_stack = kmalloc(stack_size*sizeof(uint32_t));
+	user_stack = kmalloc(stack_size*sizeof(uint32_t));
+
+	new_proc->pid = proc_count;
+	new_proc->regs.eax = 0;
+	new_proc->regs.ebx = 0;
+	new_proc->regs.ecx = 0;
+	new_proc->regs.edx = 0;
+	if( ring == 0)
+	{
+		printf("Ring 0 process not implemented\n");
+	}
+	else
+	{
+		new_proc->regs.cs = 0x1B;
+		new_proc->regs.ds = 0x23;
+		new_proc->regs.ss = 0x23;
+	}
 	
-	//new_proc->state = PROCSTATE_IDLE;
-	new_proc->state = PROCSTATE_WAITING;
+	new_proc->regs.eflags = 0;
+	new_proc->regs.eip = prog;
+	new_proc->regs.esp = (user_stack)+1024;
+	new_proc->state = PROCSTATE_IDLE;
+	new_proc->sys_stack = (sys_stack)+1024;
 	
 	return 1;
+}
+
+void process_print_regs(process_t* current)
+{
+	printf("ss: 0x%x\n", current->regs.ss);
+	printf("ss: 0x%x\n", current->regs.ss);		
+	printf("esp: 0x%x\n", current->regs.esp); 
+	printf("flags: 0x%x\n", current->regs.eflags);
+	printf("cs: 0x%x\n", current->regs.cs); 
+	printf("eip: 0x%x\n", current->regs.eip); 
+	printf("eax: 0x%x\n", current->regs.eax); 
+	printf("ecx: 0x%x\n", current->regs.ecx); 
+	printf("edx: 0x%x\n", current->regs.edx); 
+	printf("ebx: 0x%x\n", current->regs.ebx); 
+	printf("ebp: 0x%x\n", current->regs.ebp); 
+	printf("esi: 0x%x\n", current->regs.esi); 
+	printf("edi: 0x%x\n", current->regs.edi); 
+	printf("fs: 0x%x\n", current->regs.fs); 
+	printf("gs: 0x%x\n", current->regs.gs);  
+	printf("ds: 0x%x\n", current->regs.ds); 
+	printf("es: 0x%x\n", current->regs.es); 
+	
+	printf("0x%x\n",get_default_tss()->esp0);
 }
 
 

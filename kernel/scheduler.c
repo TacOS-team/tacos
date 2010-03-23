@@ -74,10 +74,7 @@ static void* switch_process(void* data)
 		current->regs.ds = stack_ptr[4];
 		current->regs.es = stack_ptr[3];
 	}
-	else if(current->state == PROCSTATE_IDLE)// Sinon on signale que le processus est désormais actif
-	{
-		current->state = PROCSTATE_RUNNING;
-	}
+
 	// On recupere le prochain processus à executer	
 	next_proc_id = get_next_process();
 	
@@ -89,28 +86,11 @@ static void* switch_process(void* data)
 	}
 	running_proc = next_proc_id;
 	current = &(process_list[running_proc]);
-	/*
-		printf("ss: 0x%x\n", current->regs.ss);
-	printf("ss: 0x%x\n", current->regs.ss);		
-	printf("esp: 0x%x\n", current->regs.esp); 
-	printf("flags: 0x%x\n", current->regs.eflags);
-	printf("cs: 0x%x\n", current->regs.cs); 
-	printf("eip: 0x%x\n", current->regs.eip); 
-	printf("eax: 0x%x\n", current->regs.eax); 
-	printf("ecx: 0x%x\n", current->regs.ecx); 
-	printf("edx: 0x%x\n", current->regs.edx); 
-	printf("ebx: 0x%x\n", current->regs.ebx); 
-	printf("ebp: 0x%x\n", current->regs.ebp); 
-	printf("esi: 0x%x\n", current->regs.esi); 
-	printf("edi: 0x%x\n", current->regs.edi); 
-	printf("fs: 0x%x\n", current->regs.fs); 
-	printf("gs: 0x%x\n", current->regs.gs);  
-	printf("ds: 0x%x\n", current->regs.ds); 
-	printf("es: 0x%x\n", current->regs.es); 
-
-	
-	printf("0x%x\n",get_default_tss()->esp0);
-	*/
+	if(current->state == PROCSTATE_IDLE)// Sinon on signale que le processus est désormais actif
+	{
+		current->state = PROCSTATE_RUNNING;
+	}
+	get_default_tss()->esp0 = current->sys_stack;
 	
 	// Mise en place de l'interruption sur le quantum de temps
 	add_event(switch_process,NULL,quantum);
@@ -119,10 +99,8 @@ static void* switch_process(void* data)
 	// Changer le contexte:
 	ss = current->regs.ss;
 	cs = current->regs.cs;
-	eflags = (current->regs.eflags | 0x200) & 0xFFFFBFFF; // Flags permettant le changemement de contexte
 	esp0 = current->regs.esp;
-	
-	get_default_tss()->esp0 = current->sys_stack;
+	eflags = (current->regs.eflags | 0x200) & 0xFFFFBFFF; // Flags permettant le changemement de contexte
 	
 	asm(
 			"mov %0, %%esp\n\t"
@@ -214,7 +192,7 @@ void start_scheduler()
 
 int add_process(process_t new_proc)
 {
-	if(nb_proc < MAX_PROC)
+	if(nb_proc < MAX_PROC )
 	{
 		
 		process_list[nb_proc] = new_proc;

@@ -45,7 +45,7 @@ uint32_t user_stack[3][1024];
 int test_task1(int argc, char** argv)
 {
 	int i = 0;
-	//printf("---- Test Task1 ----\n");
+	printf("---- Test Task1 ----\n");
 	
 	while(1)
 	{
@@ -60,7 +60,7 @@ int test_task1(int argc, char** argv)
 int test_task2(int argc, char** argv)
 {
 	int i = 0;
-	//printf("---- Test Task1 ----\n");
+	printf("---- Test Task2 ----\n");
 	
 	while(1)
 	{
@@ -71,7 +71,6 @@ int test_task2(int argc, char** argv)
 		i++;
 	}
 }
-
 	
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
@@ -199,8 +198,10 @@ void cmain (unsigned long magic, unsigned long addr) {
 	task[2].state = PROCSTATE_IDLE;
 	task[2].sys_stack = (sys_stack[2])+1024;
 	
+	//init_process(shell,0,NULL,&(task[0]),64,3);
+	
+	//add_process(task[0]);
 	add_process(task[0]);
-	//add_process(task[1]);
 	//add_process(task[2]);
 	
 	start_scheduler();

@@ -2,7 +2,6 @@
 #define _PROCESS_H_
 
 #include <types.h>
-#include <gdt.h>
 #include <pagination.h>
 
 #define PROCSTATE_IDLE 1
@@ -27,11 +26,8 @@ typedef struct{
 	regs_t regs;
 } process_t;
 
-tss_t* get_default_tss();
 
-int init_process(paddr_t prog, uint32_t argc, uint8_t** argv,process_t* new_proc);
-
-int cpu_ctxt_init (paddr_t* pStack, paddr_t* pFunct);
-void cpu_ctxt_switch(paddr_t* pOldStack, paddr_t* pNewSatck);
+int init_process(paddr_t prog, uint32_t argc, uint8_t** argv,process_t* new_proc, uint32_t stack_size, uint8_t ring);
+void process_print_regs(process_t* current);
 
 #endif
