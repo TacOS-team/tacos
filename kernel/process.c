@@ -40,10 +40,13 @@ void exec_task(main_func_type func, uint32_t argc, uint8_t** argv)
 }
 
 
-int init_process(paddr_t prog, uint32_t argc, uint8_t** argv,process_t* new_proc, uint32_t stack_size, uint8_t ring)
+process_t* create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_size, uint8_t ring)
 {
 	uint32_t *sys_stack, *user_stack;
+	process_t* new_proc;
 	
+	//asm("xchg %bx, %bx");
+	new_proc = kmalloc(sizeof(process_t));
 	sys_stack = kmalloc(stack_size*sizeof(uint32_t));
 	user_stack = kmalloc(stack_size*sizeof(uint32_t));
 
@@ -52,6 +55,7 @@ int init_process(paddr_t prog, uint32_t argc, uint8_t** argv,process_t* new_proc
 	new_proc->regs.ebx = 0;
 	new_proc->regs.ecx = 0;
 	new_proc->regs.edx = 0;
+	
 	if( ring == 0)
 	{
 		printf("Ring 0 process not implemented\n");
@@ -65,18 +69,20 @@ int init_process(paddr_t prog, uint32_t argc, uint8_t** argv,process_t* new_proc
 	
 	new_proc->regs.eflags = 0;
 	new_proc->regs.eip = prog;
-	new_proc->regs.esp = (user_stack)+1024;
+	new_proc->regs.esp = (user_stack)+stack_size;
+	new_proc->sys_stack = (sys_stack)+stack_size;
 	new_proc->state = PROCSTATE_IDLE;
-	new_proc->sys_stack = (sys_stack)+1024;
 	
-	return 1;
+	proc_count++;
+	
+	return new_proc;
 }
 
 void process_print_regs(process_t* current)
 {
 	printf("ss: 0x%x\n", current->regs.ss);
 	printf("ss: 0x%x\n", current->regs.ss);		
-	printf("esp: 0x%x\n", current->regs.esp); 
+	printf("esp: 0x%x\n", current->regs.esp);
 	printf("flags: 0x%x\n", current->regs.eflags);
 	printf("cs: 0x%x\n", current->regs.cs); 
 	printf("eip: 0x%x\n", current->regs.eip); 

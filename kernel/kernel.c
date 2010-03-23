@@ -151,63 +151,20 @@ void cmain (unsigned long magic, unsigned long addr) {
 	mbr_print_signature ();
 	mbr_print_part_table ();
 	
-	
-	
 	/* Test du scheduler */
 	init_scheduler(5);
-	
-	task[0].pid = 0; // shell
-	task[0].regs.eax = 0;
-	task[0].regs.ebx = 0;
-	task[0].regs.ecx = 0;
-	task[0].regs.edx = 0;
-	task[0].regs.cs = 0x1B;
-	task[0].regs.ds = 0x23;
-	task[0].regs.ss = 0x23;
-	task[0].regs.eflags = 0;
-	task[0].regs.eip = shell;
-	task[0].regs.esp = (user_stack[0])+1024;
-	task[0].state = PROCSTATE_IDLE;
-	task[0].sys_stack = (sys_stack[0])+1024;
-	
-	task[1].pid = 1;
-	task[1].regs.eax = 0;
-	task[1].regs.ebx = 0;
-	task[1].regs.ecx = 0;
-	task[1].regs.edx = 0;
-	task[1].regs.cs = 0x1B;
-	task[1].regs.ds = 0x23;
-	task[1].regs.ss = 0x23;
-	task[1].regs.eflags = 0;
-	task[1].regs.eip = test_task1;
-	task[1].regs.esp = (user_stack[1])+1024;
-	task[1].state = PROCSTATE_IDLE;
-	task[1].sys_stack = (sys_stack[1])+1024;
-	
-	task[2].pid = 2;
-	task[2].regs.eax = 0;
-	task[2].regs.ebx = 0;
-	task[2].regs.ecx = 0;
-	task[2].regs.edx = 0;
-	task[2].regs.cs = 0x1B;
-	task[2].regs.ds = 0x23;
-	task[2].regs.ss = 0x23;
-	task[2].regs.eflags = 0;
-	task[2].regs.eip = test_task2;
-	task[2].regs.esp = (user_stack[2])+1024;
-	task[2].state = PROCSTATE_IDLE;
-	task[2].sys_stack = (sys_stack[2])+1024;
-	
-	//init_process(shell,0,NULL,&(task[0]),64,3);
-	
-	//add_process(task[0]);
-	add_process(task[0]);
-	//add_process(task[2]);
-	
+
+	paddr_t _addr = shell;
+	process_t* shell = create_process(_addr,0,NULL,64,3);
+
+	/*_addr = test_task1;
+	process_t* test = create_process(_addr, 0, NULL, 64, 3);
+		while(1);
+*/
+	add_process(*shell);
+
 	start_scheduler();
-	//add_event(sched,NULL,10);	
-	//exec_task(shell, 2, NULL);
-	//shell(0, NULL);
+
 	while(1){}
 }
 
@@ -265,7 +222,11 @@ int shell(int argc, char* argv[])
 			reset_attribute();
 		}		
 		if(strcmp(buffer,"test_task") == 0)
-				add_process(task[1]);
+		{
+				paddr_t proc_addr = test_task1;
+				process_t* proc = create_process(proc_addr,0,NULL,64,3);
+				add_process(*proc);
+		}
 	}
 	
 	return 0;

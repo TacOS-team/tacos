@@ -35,6 +35,11 @@ static int get_next_process()
 	return ret;
 }
 
+void bp()
+{
+	asm("nop");
+}
+
 static void* switch_process(void* data)
 {
 	uint32_t* stack_ptr;
@@ -86,6 +91,7 @@ static void* switch_process(void* data)
 	}
 	running_proc = next_proc_id;
 	current = &(process_list[running_proc]);
+	
 	if(current->state == PROCSTATE_IDLE)// Sinon on signale que le processus est désormais actif
 	{
 		current->state = PROCSTATE_RUNNING;
@@ -101,7 +107,6 @@ static void* switch_process(void* data)
 	cs = current->regs.cs;
 	esp0 = current->regs.esp;
 	eflags = (current->regs.eflags | 0x200) & 0xFFFFBFFF; // Flags permettant le changemement de contexte
-	
 	asm(
 			"mov %0, %%esp\n\t"
 			/* On push les registres necessaires au changement de contexte */

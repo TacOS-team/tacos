@@ -27,7 +27,7 @@ typedef struct{
 } process_t;
 
 
-int init_process(paddr_t prog, uint32_t argc, uint8_t** argv,process_t* new_proc, uint32_t stack_size, uint8_t ring);
+process_t* create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_size, uint8_t ring);
 void process_print_regs(process_t* current);
 
 #endif
