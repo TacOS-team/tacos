@@ -86,7 +86,7 @@ void *kmalloc(size_t size)
   struct mem *mem = free_mem.begin;
   size_t real_size = size + sizeof(struct mem);
 
-  asm("cli"); // sinon on risque d'avoir des trucs bizarre
+  //asm("cli"); // sinon on risque d'avoir des trucs bizarre
 
   while(mem != NULL && mem->size < real_size)
     mem = mem->next;

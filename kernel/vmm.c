@@ -1,6 +1,7 @@
 #include <memory.h>
 #include <pagination.h>
 #include <vmm.h>
+#include <stdio.h>
 
 // Page Table Entry Magic
 #define PTE_MAGIC 0xFFC00000
@@ -24,6 +25,9 @@ struct slabs_list
 struct slabs_list free_slabs;
 struct slabs_list used_slabs;
 vaddr_t vmm_top;
+
+// Prototypes
+static void map(paddr_t phys_page_addr, vaddr_t virt_page_addr);
 
 static int is_empty(struct slabs_list *list)
 {
@@ -111,29 +115,34 @@ static void create_page_entry(struct page_table_entry *pte, paddr_t page_addr)
   pte->r_w = 1;
 }
 
+extern vaddr_t last_page_table;
+
 // créer une entrée de répertoire
 static void create_page_dir(struct page_directory_entry *pde)
 {
   paddr_t page_addr = memory_reserve_page_frame();
 
   pde->present = 1;
-  pde->page_table_addr = page_addr >> 12;
+  pde->page_table_addr = last_page_table >> 12; // check phys or virtual
   pde->r_w = 1;
-  // XXX : MAP NEW PAGE TO A PTE
+
+  // map new PTE
+  //get_last_page_table();
+  last_page_table_next();
+  map(page_addr, last_page_table);
 }
 
 // Map dans le répertoire des pages une nouvelle page
 static void map(paddr_t phys_page_addr, vaddr_t virt_page_addr)
 {
   int dir = virt_page_addr >> 22;
-  int table = (virt_page_addr & 0x003FF000) >> 12;
+  int table = (virt_page_addr >> 12) & 0x3FF;
   struct page_directory_entry * pde = get_pde(dir);
   struct page_table_entry * pte;
-
+  
   if (!pde->present)
     create_page_dir(pde);
-
-  pte = get_pte(dir, table);
+  
   create_page_entry(get_pte(dir, table), phys_page_addr);
 }
 
@@ -152,10 +161,9 @@ static void unmap(vaddr_t virt_page_addr)
 
 void init_vmm()
 {
-  paddr_t end_kernel = memory_reserve_page_frame();
-  map(end_kernel, end_kernel);
+  map(memory_reserve_page_frame(), get_end_page_directory());
 
-  free_slabs.begin = (struct slab *) end_kernel;
+  free_slabs.begin = (struct slab *) get_end_page_directory();
   free_slabs.begin->prev = NULL;
   free_slabs.begin->nb_pages = 1;
   free_slabs.begin->next = NULL;
@@ -164,14 +172,12 @@ void init_vmm()
   used_slabs.begin = NULL;
   used_slabs.end = NULL;
 
-  vmm_top = end_kernel + PAGE_SIZE;
+  vmm_top = get_end_page_directory() + PAGE_SIZE;
 }
 
 static int increase_heap(unsigned int nb_pages)
 {
   struct slab *slab = (struct slab *) vmm_top;
-  slab->nb_pages = nb_pages;
-  add(&free_slabs, slab); // FIXME : implement push_back
 
   for(; nb_pages > 0 ; nb_pages--)
   {
@@ -179,6 +185,8 @@ static int increase_heap(unsigned int nb_pages)
     vmm_top += PAGE_SIZE;
   }
 
+  slab->nb_pages = nb_pages;
+  add(&free_slabs, slab); // FIXME : implement push_back
   return 0; // FIXME : erreur en cas de mem full
 }
 

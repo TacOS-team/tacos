@@ -1,5 +1,9 @@
+#include <types.h>
 #include <memory.h>
 #include <pagination.h>
+
+vaddr_t last_page_table = 0;
+vaddr_t end_page_directory;
 
 /*
  * Cette fonction sert à mapper une adresse par identity mapping. Cela ne peut être fait qu'avant l'activation de la pagination !
@@ -14,6 +18,8 @@ void pagination_identity_map_addr(struct page_directory_entry * pagination_kerne
 		pde->u_s = 1;
 		pde->present = 1;
 		paddr_t pt_addr = memory_reserve_page_frame();
+    if(last_page_table <= (vaddr_t) pt_addr)
+      last_page_table = (vaddr_t) pt_addr;
 		pde->page_table_addr = pt_addr >> 12;
 		pagination_identity_map_addr(pagination_kernel, pt_addr); // J'ai peur que si on ne map pas on se prenne un page fault (à voir...)
 	}
@@ -33,6 +39,9 @@ void pagination_identity_map_addr(struct page_directory_entry * pagination_kerne
 void pagination_setup() {
 	struct physical_page_descr * iterator = memory_get_first_used_page();
 	struct page_directory_entry * pagination_kernel = (struct page_directory_entry*) memory_reserve_page_frame();
+
+  // marque la fin du bloc regroupant le rep. de page et les tables de pages
+  end_page_directory = ((vaddr_t) pagination_kernel) + 1024*PAGE_SIZE;
 
 	pagination_init_page_directory(pagination_kernel);
 
@@ -81,3 +90,29 @@ void pagination_load_page_directory(struct page_directory_entry * pd) {
 	// On place le rep dans le registre cr3
 	asm volatile("mov %0, %%cr3":: "b"(pd));
 }
+
+/*
+ * Retourne la fin du bloc regroupant le rep. de page et les tables de pages
+ */
+vaddr_t get_end_page_directory()
+{
+  return end_page_directory;
+}
+
+/*
+ * Retourne l'addresse de la dernière table de pages
+ */
+vaddr_t get_last_page_table()
+{
+  return last_page_table;
+}
+
+int last_page_table_next()
+{
+  if(last_page_table >= end_page_directory)
+    return -1;
+
+  last_page_table += PAGE_SIZE;
+  return 0;
+}
+
