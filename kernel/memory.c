@@ -62,6 +62,28 @@ void memory_print_free_pages() {
 	printf("\n");
 }
 
+void memory_print() {
+	struct physical_page_descr *p_f, *p_u;
+
+
+	p_f = free_pages;
+	p_u = used_pages;
+	while (p_f != NULL || p_u != NULL) {
+		while ((p_f != NULL && p_u == NULL) || (p_f != NULL && p_f->addr > p_u->addr)) {
+			set_attribute(0, 2);
+			printf("F");
+			p_f = p_f->next;
+		}
+		while ((p_u != NULL && p_f == NULL) || (p_u != NULL && p_u->addr > p_f->addr)) {
+			set_attribute(0, 5);
+			printf("U");
+			p_u = p_u->next;
+		}
+	}
+	printf("\n");
+
+}
+
 /**
  * Donne une copie du pointeur du haut de la pile des pages utilisées
  */

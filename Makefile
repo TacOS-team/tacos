@@ -41,7 +41,7 @@ img:
 	rm mtoolsrc
 
 runqemu:
-	qemu -fda core.img -m 32
+	qemu -fda core.img -m 8
 
 runbochs:
 	BOCHSRC=bochsrc bochs

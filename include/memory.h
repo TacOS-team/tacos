@@ -16,6 +16,7 @@ struct physical_page_descr {
 	struct physical_page_descr *prev;
 };
 
+void memory_print();
 void memory_print_used_pages();
 void memory_print_free_pages();
 void memory_setup(size_t ram_size);

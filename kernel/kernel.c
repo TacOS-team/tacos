@@ -230,7 +230,7 @@ int shell(int argc, char* argv[])
 		i = 0;
 
 		if (strcmp(buffer, "help") == 0) {
-			printf("\nCommandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task\n");
+			printf("\nCommandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task, print_memory\n");
 		}
 		if (strcmp(buffer, "reboot") == 0) {
 			printf("\nReboot non implemente, desole !");
@@ -251,6 +251,9 @@ int shell(int argc, char* argv[])
 		}
 		if (strcmp(buffer, "switchstd") == 0) {
 			switchStandardBuffer();
+		}
+		if (strcmp(buffer, "print_memory") == 0) {
+			memory_print();
 		}
 		if( strcmp(buffer, "erase_mbr") == 0)
 		{
