@@ -24,6 +24,7 @@
 #include <vmm.h>
 #include <ioports.h>
 #include "msr.h"
+#include <mbr.h>
 
 typedef struct
 {
@@ -143,9 +144,15 @@ void cmain (unsigned long magic, unsigned long addr) {
 	if(init_floppy() != 0)
 		printf("Initialisation du lecteur a echoue.\n");
 		
-	char MBR[FLOPPY_SECTOR_SIZE];
+	/*char MBR[FLOPPY_SECTOR_SIZE];
 	floppy_read_sector(0,0,0,MBR);
-	printf("MBR Signature:0x%x%x.\n",0xFF&MBR[0x01FE], 0xFF&MBR[0x01FF]);
+	printf("MBR Signature:0x%x%x.\n",0xFF&MBR[0x01FE], 0xFF&MBR[0x01FF]);*/
+	
+	mbr_read ();
+	mbr_print_signature ();
+	mbr_print_part_table ();
+	
+	
 	
 	/* Test du scheduler */
 	init_scheduler(5);
