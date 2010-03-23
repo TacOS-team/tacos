@@ -92,6 +92,8 @@ static struct page_table_entry *get_pte(int dir, int table)
 {
   struct page_table_entry *page_table =
     ((struct page_table_entry *) (get_pde(dir)->page_table_addr << 12));
+//  struct page_table_entry *page_table =
+//      (struct page_table_entry *) (PTE_MAGIC + (1024 * dir));
   return &page_table[table];
 }
 
@@ -117,7 +119,6 @@ static void create_page_dir(struct page_directory_entry *pde)
   pde->present = 1;
   pde->page_table_addr = page_addr >> 12;
   pde->r_w = 1;
-
   // XXX : MAP NEW PAGE TO A PTE
 }
 
@@ -158,7 +159,7 @@ void init_vmm()
   free_slabs.begin->prev = NULL;
   free_slabs.begin->nb_pages = 1;
   free_slabs.begin->next = NULL;
-  free_slabs.end = free_slabs.end;
+  free_slabs.end = free_slabs.begin;
 
   used_slabs.begin = NULL;
   used_slabs.end = NULL;
