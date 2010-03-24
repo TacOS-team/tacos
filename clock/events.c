@@ -61,8 +61,8 @@ void add_event(callback_t call, void* data, clock_t dtime)
 	struct event_t event;
 	int overflow=0;
 	
-	event.date.tv_sec = time(NULL);
-	event.date.tv_usec = clock()+(dtime*USEC_PER_SEC/CLOCKS_PER_SEC);
+	event.date.tv_sec = get_date();
+	event.date.tv_usec = get_clock()+(dtime*USEC_PER_SEC/CLOCKS_PER_SEC);
 	
 	if(event.date.tv_usec > USEC_PER_SEC)
 	{

@@ -23,4 +23,3 @@ clean:
 
 mrproper: clean
 	rm ../lib/libc.a
-

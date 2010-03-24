@@ -14,6 +14,7 @@ void clock_tick();
 clock_t get_clock();
 time_t get_date();
 struct timeval get_tv();
+time_t clock_mktime(struct tm *timep);
 
 #endif
 
