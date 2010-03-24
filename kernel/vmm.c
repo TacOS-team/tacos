@@ -113,6 +113,7 @@ static void create_page_entry(struct page_table_entry *pte, paddr_t page_addr)
   pte->present = 1;
   pte->page_addr = page_addr >> 12;
   pte->r_w = 1;
+	pte->u_s = 1;
 }
 
 extern vaddr_t last_page_table;
@@ -125,6 +126,7 @@ static void create_page_dir(struct page_directory_entry *pde)
   pde->present = 1;
   pde->page_table_addr = last_page_table >> 12; // check phys or virtual
   pde->r_w = 1;
+	pde->u_s = 1;
 
   // map new PTE
   //get_last_page_table();

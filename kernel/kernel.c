@@ -158,16 +158,16 @@ void cmain (unsigned long magic, unsigned long addr) {
 	init_scheduler(5);
 
 	paddr_t _addr = shell;
-	//process_t* shell = create_process(_addr,0,NULL,64,3);
+	process_t* shell = create_process(_addr,0,NULL,64,3);
 
 	/*_addr = test_task1;
 	process_t* test = create_process(_addr, 0, NULL, 64, 3);
 		while(1);
 */
-	//add_process(*shell);
+	add_process(*shell);
 
-	//start_scheduler();
-  shell(1, NULL);
+	start_scheduler();
+  //shell(1, NULL);
 
 	while(1){}
 }
