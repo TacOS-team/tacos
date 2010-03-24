@@ -74,8 +74,11 @@ void clock_init()
   date.tm_mday = bcd2binary(inb(RTC_ANSWER));
   outb(RTC_MONTH, RTC_REQUEST);
   date.tm_mon = bcd2binary(inb(RTC_ANSWER));
+  /* DEBUG
   outb(RTC_YEAR, RTC_REQUEST);
   date.tm_year = bcd2binary(inb(RTC_ANSWER));
+  */
+  date.tm_year = 110;
   outb(RTC_HOUR, RTC_REQUEST);
   date.tm_hour = bcd2binary(inb(RTC_ANSWER));
   outb(RTC_MINUTE, RTC_REQUEST);
@@ -181,7 +184,6 @@ time_t clock_mktime(struct tm *timep)
 	seconds = 0;
 	day = 0;                        /* means days since day 0 now */
 	overflow = 0;
-
 	/* Assume that when day becomes negative, there will certainly
 	 * be overflow on seconds.
 	 * The check for overflow needs not to be done for leapyears
@@ -225,4 +227,36 @@ time_t clock_mktime(struct tm *timep)
 		return (time_t)-1;
 		
 	return (time_t)seconds;
+}
+
+struct tm * clock_gmtime(register const time_t *timer)
+{
+	static struct tm br_time;
+	register struct tm *timep = &br_time;
+	time_t time = *timer;
+	register unsigned long dayclock, dayno;
+	int year = EPOCH_YR;
+
+	dayclock = (unsigned long)time % SECS_DAY;
+	dayno = (unsigned long)time / SECS_DAY;
+
+	timep->tm_sec = dayclock % 60;
+	timep->tm_min = (dayclock % 3600) / 60;
+	timep->tm_hour = dayclock / 3600;
+	timep->tm_wday = (dayno + 4) % 7;       /* day 0 was a thursday */
+	while (dayno >= YEARSIZE(year)) {
+		dayno -= YEARSIZE(year);
+		year++;
+	}
+	timep->tm_year = year - YEAR0;
+	timep->tm_yday = dayno;
+	timep->tm_mon = 0;
+	while (dayno >= _ytab[LEAPYEAR(year)][timep->tm_mon]) {
+		dayno -= _ytab[LEAPYEAR(year)][timep->tm_mon];
+		timep->tm_mon++;
+	}
+	timep->tm_mday = dayno + 1;
+	timep->tm_isdst = 0;
+
+	return timep;
 }

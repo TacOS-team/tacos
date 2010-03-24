@@ -176,8 +176,9 @@ int shell(int argc, char* argv[])
 	for(;;)
 	{
 		char c;
-		//printf("%s > ", ctime(time(NULL)));
-		printf("> ");
+		
+		printf("\n %d > ",time(NULL));
+			
 		while((c = getchar()) != '\n') {
 			buffer[i%80] = c;
 			putchar(c);
