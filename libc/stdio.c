@@ -241,6 +241,48 @@ void printf (const char *format, ...) {
 	}
 }
 
+void sprintf (char* string, const char *format, ...) {
+	char **arg = (char **) &format;
+	int c;
+	char buf[20];
+	int i=0;
+	
+	arg++;
+
+	while ((c = *format++) != 0) {
+		if (c != '%') {
+			string[i] = c;
+			i++;
+		} else {
+			char *p;
+
+			c = *format++;
+			switch (c) {
+				case 'd':
+				case 'u':
+				case 'x':
+					itoa (buf, c, *((int *) arg++));
+					p = buf;
+					goto string;
+					break;
+				case 's':
+					p = *arg++;
+					if (! p)
+						p = "(null)";
+				string:
+					while (*p)
+						string[i] = *p++;
+						i++;
+					break;
+				default:
+					string[i] = (*((int *) arg++));
+						i++;
+					break;
+			}
+		}
+	}
+}
+
 void enableFinnouMode(int enable)
 {
   finnouMode = enable;

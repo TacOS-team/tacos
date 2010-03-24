@@ -26,6 +26,7 @@ void itoa (char *buf, int base, int d);
 void newline();
 void putchar (int c);
 void printf (const char *format, ...);
+void sprintf (char* string, const char *format, ...);
 void enableFinnouMode(int enable);
 void set_attribute(uint8_t background, uint8_t foreground);
 void reset_attribute();

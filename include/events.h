@@ -1,19 +1,19 @@
 #ifndef _EVENTS_H_
 #define _EVENTS_H_
 
-#include <clock.h>
+#include <time.h>
 
 typedef void *(*callback_t) (void *);
 
 struct event_t
 {
-  date_t date;
+  struct timeval date;
   callback_t callback;
   void *data;
 };
 
 void events_init();
-void add_event(callback_t call, void* data, uint32_t time);
+void add_event(callback_t call, void* data, clock_t time);
 
 #endif
 

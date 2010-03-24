@@ -13,9 +13,9 @@
 #include <pci.h>
 #include <pci_config.h>
 //#include <scheduler.h>
+#include <time.h>
 #include <dummy_process.h>
 #include <keyboard.h>
-#include <clock.h>
 #include <events.h>
 #include <floppy.h>
 #include <kpanic.h>
@@ -176,9 +176,7 @@ int shell(int argc, char* argv[])
 	for(;;)
 	{
 		char c;
-		date_t date = get_date();
-		printf("\n%d\\%d\\%d : %s%dh%s%dm%s%ds > ", date.day, date.month, date.year,
-												date.hour < 10 ? "0" : "", date.hour, date.minute < 10 ? "0" : "", date.minute, date.sec < 10 ? "0" : "", date.sec);
+		printf("%s > ", ctime(NULL));
 		while((c = getchar()) != '\n') {
 			buffer[i%80] = c;
 			putchar(c);

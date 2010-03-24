@@ -32,78 +32,18 @@
 #define MILLISECONDS_PER_HOUR MILLISECONDS_PER_MINUTE*MINUTES_PER_HOUR
 #define MILLISECONDS_PER_DAY MILLISECONDS_PER_HOUR*HOURS_PER_DAY
 
-static date_t date = {0, 0, 0, 0, 0, 0, 0};
-
-static uint64_t systime;
-
-// retourne le nombre de jours d'un mois donné
-static unsigned int month_length(date_t* d)
-{
-	unsigned int ret = 31;
-	
-	if(d->month > 0)
-	{
-		if(d->month <= 7)
-		{
-			if(d->month == 2)
-				// année bissextile si année divisible par 4 mais pas par 100 ou année divisible par 400
-				ret = (d->year%4==0 && d->year%100!=0) || (d->year%400==0) ? 29:28;
-			else
-				ret = d->month%2 ? 30:31;
-		}
-		else
-		{
-				ret = d->month%2 ? 31:30;
-		}
-	}
-	
-	return ret;
-}
-
-// Met à jour les unités (optimisé pour des petites variations de date)
-// exemple passe de 31 decembre 2010 23h59m59s1000ms à 1 janvier 2011 0h0m0s0ms
-static void sanitize_date(date_t* d)
-{
-	// incremente les secondes 
-	while(d->msec >= MILLISECONDS_PER_SECOND)
-	{
-		d->msec -= MILLISECONDS_PER_SECOND;
-		d->sec++;
-	}
-	while(d->sec >= SECONDS_PER_MINUTE)
-	{
-		d->sec -= SECONDS_PER_MINUTE;
-		d->minute++;
-	}
-	while(d->minute >= MINUTES_PER_HOUR)
-	{
-		d->minute -= MINUTES_PER_HOUR;
-		d->hour++;
-	}
-	while(d->hour >= HOURS_PER_DAY)
-	{
-		d->hour -= HOURS_PER_DAY;
-		d->day++;
-	}
-	while(d->day > month_length(d))
-	{
-		d->day -= month_length(d);
-		d->month++;
-		
-		while(d->month >= MONTH_PER_YEAR)
-		{
-			d->month -= MONTH_PER_YEAR;
-			d->year++;		
-		}
-	}
-}
+static clock_t sysclock;
+static time_t systime;
 
 void clock_tick()
 {
-  systime++;
-
-  date.msec++;
-  sanitize_date(&date);
+	sysclock++;
+		
+	if(sysclock>= CLOCKS_PER_SEC)
+	{
+		sysclock -= CLOCKS_PER_SEC;
+		systime++;
+	}
 }
 
 // nombres à 2 chiffres donc :
@@ -116,118 +56,59 @@ uint8_t bcd2binary(uint8_t n)
 // http://www-ivs.cs.uni-magdeburg.de/~zbrog/asm/cmos.html
 void clock_init()
 {
-  outb(RTC_DATE_OF_MONTH, RTC_REQUEST);
-  date.day = bcd2binary(inb(RTC_ANSWER));
-  outb(RTC_MONTH, RTC_REQUEST);
-  date.month = bcd2binary(inb(RTC_ANSWER));
-  outb(RTC_YEAR, RTC_REQUEST);
-  date.year = bcd2binary(inb(RTC_ANSWER));
-
-  outb(RTC_HOUR, RTC_REQUEST);
-  date.hour = bcd2binary(inb(RTC_ANSWER));
-  outb(RTC_MINUTE, RTC_REQUEST);
-  date.minute = bcd2binary(inb(RTC_ANSWER));
-  outb(RTC_SECOND, RTC_REQUEST);
-  date.sec = bcd2binary(inb(RTC_ANSWER));
-  
-  date.msec = 0;
-  
+  struct tm date;
   systime = 0;
+
+  outb(RTC_DATE_OF_MONTH, RTC_REQUEST);
+  date.tm_mday = bcd2binary(inb(RTC_ANSWER));
+  outb(RTC_MONTH, RTC_REQUEST);
+  date.tm_mon = bcd2binary(inb(RTC_ANSWER));
+  outb(RTC_YEAR, RTC_REQUEST);
+  date.tm_year = bcd2binary(inb(RTC_ANSWER));
+  outb(RTC_HOUR, RTC_REQUEST);
+  date.tm_hour = bcd2binary(inb(RTC_ANSWER));
+  outb(RTC_MINUTE, RTC_REQUEST);
+  date.tm_min = bcd2binary(inb(RTC_ANSWER));
+  outb(RTC_SECOND, RTC_REQUEST);
+  date.tm_sec = bcd2binary(inb(RTC_ANSWER));
+  
+  systime = mktime(&date);
 }
 
-date_t get_date()
+clock_t get_clock()
 {
-	return date;
+	return sysclock;
 }
 
-int compare_times(date_t a, date_t b)
+time_t get_date()
 {
-	if(a.year != b.year)
+	return systime;
+}
+
+struct timeval get_tv()
+{
+	struct timeval ret;
+	ret.tv_sec = get_date();
+	ret.tv_usec = get_clock()*USEC_PER_SEC/CLOCKS_PER_SEC;
+	return ret;
+}
+
+int compare_times(struct timeval a, struct timeval b)
+{
+	if(a.tv_sec != b.tv_sec)
 	{
-		if(a.year < b.year)
+		if(a.tv_sec < b.tv_sec)
 			return A_SMALLER;
 		else
 			return B_SMALLER;
 	}
-	if(a.month != b.month)
+	if(a.tv_usec != b.tv_usec)
 	{
-		if(a.month < b.month)
-			return A_SMALLER;
-		else
-			return B_SMALLER;
-	}
-	if(a.day != b.day)
-	{
-		if(a.day < b.day)
-			return A_SMALLER;
-		else
-			return B_SMALLER;
-	}
-	if(a.hour != b.hour)
-	{
-		if(a.hour < b.hour)
-			return A_SMALLER;
-		else
-			return B_SMALLER;
-	}
-	if(a.minute != b.minute)
-	{
-		if(a.minute < b.minute)
-			return A_SMALLER;
-		else
-			return B_SMALLER;
-	}
-	if(a.sec != b.sec)
-	{
-		if(a.sec < b.sec)
-			return A_SMALLER;
-		else
-			return B_SMALLER;
-	}
-	if(a.msec != b.msec)
-	{
-		if(a.msec < b.msec)
+		if(a.tv_usec < b.tv_usec)
 			return A_SMALLER;
 		else
 			return B_SMALLER;
 	}
 	
 	return 0;
-}
-
-void add_msec(date_t* d, uint32_t dt)
-{
-	uint32_t tmp_unit;
-	
-	// On ignore les durées plus longues qu'une journée
-	if(dt >= MILLISECONDS_PER_DAY)
-	{
-		dt = dt - dt/(MILLISECONDS_PER_DAY);
-	}
-	// On ajoute les heures
-	if(dt >= MILLISECONDS_PER_HOUR)
-	{
-		tmp_unit = dt/(MILLISECONDS_PER_HOUR);
-		d->hour += tmp_unit;
-		dt = dt - MILLISECONDS_PER_HOUR*tmp_unit;
-	}
-	// On ajoute les minutes
-	if(dt >= MILLISECONDS_PER_MINUTE)
-	{
-		tmp_unit = dt/(MILLISECONDS_PER_MINUTE);
-		d->minute += tmp_unit;
-		dt = dt - MILLISECONDS_PER_MINUTE*tmp_unit;
-	}
-	// On ajoute les secondes
-	if(dt >= MILLISECONDS_PER_SECOND)
-	{
-		tmp_unit = dt/(MILLISECONDS_PER_SECOND);
-		d->sec += tmp_unit;
-		dt = dt - MILLISECONDS_PER_SECOND*tmp_unit;
-	}
-	// On ajoute les millisecondes
-	d->msec += dt;
-	
-	// On corrige la structure
-	sanitize_date(d);
 }

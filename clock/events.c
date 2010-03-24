@@ -1,6 +1,7 @@
 #include <types.h>
 #include <i8254.h>
 #include <interrupts.h>
+#include <time.h>
 #include <clock.h>
 #include <heap.h>
 #include <events.h>
@@ -31,7 +32,7 @@ static void events_interrupt(int interrupt_id)
     clock_tick();
   
     event = (struct event_t *) getTop(events);
-    while(event != NULL && compare_times(event->date, get_date()) > 0)
+    while(event != NULL && compare_times(event->date, get_tv()) > 0)
     {
       removetop(&events);
       event->callback(event->data);
@@ -55,12 +56,21 @@ void events_init()
   i8254_init(1000/*TIMER_FREQ*/);
 }
 
-void add_event(callback_t call, void* data, uint32_t time)
+void add_event(callback_t call, void* data, clock_t dtime)
 {
 	struct event_t event;
+	int overflow=0;
 	
-	event.date = get_date();
-	add_msec(&event.date, time);
+	event.date.tv_sec = time(NULL);
+	event.date.tv_usec = clock()+(dtime*USEC_PER_SEC/CLOCKS_PER_SEC);
+	
+	if(event.date.tv_usec > USEC_PER_SEC)
+	{
+		overflow = event.date.tv_usec/USEC_PER_SEC;
+		event.date.tv_usec = event.date.tv_usec%USEC_PER_SEC;
+		event.date.tv_sec += overflow;
+	}
+	
 	event.callback = call;
 	event.data = data;											
 	addElement(&events, &event);
