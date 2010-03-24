@@ -259,12 +259,11 @@ void unallocate_page(void *page)
   }
 }
 
-// taille demandée / taille page + (taille demandee - (taille demandée / taille page) > 0
 // retourne le nombre de pages minimal à allouer pour une zone mémoire
 // de taille size : entier_sup(size + overhead)
 unsigned int calculate_min_pages(size_t size)
 {
-  double nb_pages = ((double) size + sizeof(struct slab)) / PAGE_SIZE;
+  double nb_pages = (((double) size) + ((double)sizeof(struct slab))) / PAGE_SIZE;
   return (unsigned int) (nb_pages + ((nb_pages - (int) nb_pages > 0) ? 1 : 0));
 }
 

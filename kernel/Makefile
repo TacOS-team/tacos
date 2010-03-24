@@ -3,7 +3,7 @@ LDFLAGS=-L../lib/
 LDLIBS=-lc
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
   
-all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o dummy_process.o process.o pagination.o kpanic.o syscall.o vmm.o kmalloc.o mbr.o
+all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o dummy_process.o process.o pagination.o kpanic.o syscall.o vmm.o kmalloc.o mbr.o fpu.o
 
 boot.o: boot.S
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDE) -fno-stack-protector
@@ -44,6 +44,8 @@ kmalloc.o : ../include/types.h ../include/heap.h include/vmm.h
 vmm.o : ../include/memory.h ../include/pagination.h include/vmm.h 
 
 mbr.o : ../include/types.h include/mbr.h
+
+fpu.o : include/fpu.h ../include/stdio.h ../include/interrupts.h
 
 clean:
 	rm -f *.o

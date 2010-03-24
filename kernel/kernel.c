@@ -25,6 +25,7 @@
 #include <ioports.h>
 #include "msr.h"
 #include <mbr.h>
+#include <fpu.h>
 
 typedef struct
 {
@@ -71,7 +72,7 @@ int test_task2(int argc, char** argv)
 		i++;
 	}
 }
-	
+
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
 	kernel_options options;
@@ -101,7 +102,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	gdt_setup((mbi->mem_upper << 10) + (1 << 20));
 	init_tss(sys_stack+1023);
-	
+
 	init_syscall();
 
 	/* Mise en place de la table qui contient les descripteurs d'interruption (idt) */
@@ -114,7 +115,9 @@ void cmain (unsigned long magic, unsigned long addr) {
   
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt);
 	floppy_init_interrupt();
-	
+
+  init_fpu();
+
 	events_init(); 
 	
 	asm volatile ("sti\n");
