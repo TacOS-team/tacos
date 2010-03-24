@@ -29,6 +29,7 @@
 #define KEY_LSHIFT  0x2A
 #define KEY_RSHIFT  0x36
 #define KEY_CAPSLOCK 0x3A
+#define KEY_NUMLOCK 0x45
 #define KEY_RETURN  0x1C
 #define KEY_SPACE   0x39
 #define KEY_F1      0x3b
@@ -139,22 +140,23 @@ static letter letters_azerty[] = {
   {0x34, ':', '/'},
   {0x35, '!', '§'},
   {0x56, '<', '>'},
-  {0x52, '0', '0'},
-  {0x4F, '1', '1'},
-  {0x50, '2', '2'},
-  {0x51, '3', '3'},
-  {0x4B, '4', '4'},
-  {0x4C, '5', '5'},
-  {0x4D, '6', '6'},
-  {0x47, '7', '7'},
-  {0x48, '8', '8'},
-  {0x49,'9', '9'}
+  {0x52, 0, '0'},
+  {0x4F, 0, '1'},
+  {0x50, 0, '2'},
+  {0x51, 0, '3'},
+  {0x4B, 0, '4'},
+  {0x4C, 0, '5'},
+  {0x4D, 0, '6'},
+  {0x47, 0, '7'},
+  {0x48, 0, '8'},
+  {0x49, 0, '9'}
 };
 
 static char buffer[BUFFER_SIZE];
 static int begin = 0, end = 0;
 static int shift = 0;
 static int capslock = 0;
+static int numlock = 0;
 
 void keyBufferPush(char c)
 {
@@ -182,7 +184,7 @@ char keyboardConvertToChar(uint8_t scancode) {
 	unsigned int i;
    for (i=0 ; i < sizeof(letters_azerty) / sizeof(letter); i++) {
 		if (scancode == letters_azerty[i].scancode) {
-			if ((shift && !capslock) || (!shift && capslock)) {
+			if ((shift && !capslock) || (!shift && capslock) || (numlock && scancode >= 0x47 && scancode <= 0x52)) {
 				return letters_azerty[i].uppercase;
 			} else {
 				return letters_azerty[i].lowercase;
@@ -211,6 +213,9 @@ void keyboardInterrupt(int id)
     break;
   case KEY_CAPSLOCK:
 	 capslock = !capslock;
+	 break;
+  case KEY_NUMLOCK:
+	 numlock = !numlock;
 	 break;
   case KEY_RETURN:
     keyBufferPush('\n');
