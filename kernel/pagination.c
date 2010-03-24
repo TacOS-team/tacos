@@ -2,8 +2,8 @@
 #include <memory.h>
 #include <pagination.h>
 
-vaddr_t last_page_table = 0;
-vaddr_t end_page_directory;
+static vaddr_t last_page_table = 0;
+static vaddr_t end_page_directory;
 
 /*
  * Cette fonction sert à mapper une adresse par identity mapping. Cela ne peut être fait qu'avant l'activation de la pagination !
