@@ -101,7 +101,7 @@ static void* switch_process(void* data)
 	// Mise en place de l'interruption sur le quantum de temps
 	add_event(switch_process,NULL,quantum);
 	i8254_init(1000/*TIMER_FREQ*/);
-	
+	asm("xchg %bx, %bx");
 	// Changer le contexte:
 	ss = current->regs.ss;
 	cs = current->regs.cs;

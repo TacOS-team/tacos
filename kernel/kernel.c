@@ -230,6 +230,7 @@ int shell(int argc, char* argv[])
 				paddr_t proc_addr = test_task1;
 				process_t* proc = create_process(proc_addr,0,NULL,64,3);
 				add_process(*proc);
+				while(1);
 		}
 	}
 	

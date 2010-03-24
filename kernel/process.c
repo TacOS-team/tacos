@@ -9,13 +9,9 @@
 
 typedef int (*main_func_type) (uint32_t, uint8_t**);
 
-uint32_t sys_stack[1024];
-uint32_t user_stack[1024];
-paddr_t ss_addr = sys_stack+1023;
-paddr_t us_addr = user_stack+1023;
-
 uint32_t proc_count = 0;
 
+/*
 void exec_task(main_func_type func, uint32_t argc, uint8_t** argv)
 {
 		asm(
@@ -38,12 +34,18 @@ void exec_task(main_func_type func, uint32_t argc, uint8_t** argv)
 		:"=m"(func), "=m"(get_default_tss()->esp): "m"(argc), "m"(argv), "a"(ss_addr), "b"(us_addr)
 		);
 }
-
+*/
+process_t proc;
+uint32_t sys[1024];
+uint32_t user[1024];
 
 process_t* create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_size, uint8_t ring)
 {
 	uint32_t *sys_stack, *user_stack;
 	process_t* new_proc;
+	
+	//sys_stack = sys;
+	//user_stack = user;
 	
 	//asm("xchg %bx, %bx");
 	new_proc = kmalloc(sizeof(process_t));
@@ -59,6 +61,9 @@ process_t* create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t 
 	if( ring == 0)
 	{
 		printf("Ring 0 process not implemented\n");
+		new_proc->regs.cs = 0x8;
+		new_proc->regs.ds = 0x10;
+		new_proc->regs.ss = 0x10;
 	}
 	else
 	{
@@ -69,8 +74,8 @@ process_t* create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t 
 	
 	new_proc->regs.eflags = 0;
 	new_proc->regs.eip = prog;
-	new_proc->regs.esp = (user_stack)+stack_size;
-	new_proc->sys_stack = (sys_stack)+stack_size;
+	new_proc->regs.esp = (user_stack)+stack_size-1;
+	new_proc->sys_stack = (sys_stack)+stack_size-1;
 	new_proc->state = PROCSTATE_IDLE;
 	
 	proc_count++;
