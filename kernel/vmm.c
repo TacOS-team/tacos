@@ -49,6 +49,28 @@ static void remove(struct slabs_list *list, struct slab *s)
     list->end = s->prev;
 }
 
+static void first_element(struct slabs_list *list, struct slab *s)
+{
+  list->begin = s;
+  s->prev = NULL;
+  s->next = NULL;
+  list->end = s;
+}
+
+static void push_back(struct slabs_list *list, struct slab *s)
+{
+  if(is_empty(list))
+    first_element(list, s);
+  else
+  {
+    list->end->next = s;
+    s->prev = list->end;
+    s->next = NULL;
+    list->end = s;
+  }
+}
+
+
 // Ajoute un slab à une slabs_list
 // l'ordre de la liste est celui de la mémoire virtuelle
 static void add(struct slabs_list *list, struct slab *s)
@@ -57,10 +79,7 @@ static void add(struct slabs_list *list, struct slab *s)
 
   if(is_empty(list))
   {
-    list->begin = s;
-    s->prev = NULL;
-    s->next = NULL;
-    list->end = s;
+    first_element(list, s);
     return;
   }
 
@@ -70,10 +89,7 @@ static void add(struct slabs_list *list, struct slab *s)
   // add at the end of the list
   if(it->next == NULL)
   {
-    list->end->next = s;
-    s->prev = list->end;
-    s->next = NULL;
-    list->end = s;
+    push_back(list, s);
     return;
   }
 
@@ -137,7 +153,6 @@ static void map(paddr_t phys_page_addr, vaddr_t virt_page_addr)
   int dir = virt_page_addr >> 22;
   int table = (virt_page_addr >> 12) & 0x3FF;
   struct page_directory_entry * pde = get_pde(dir);
-  struct page_table_entry * pte;
   
   if (!pde->present)
     create_page_dir(pde);
@@ -174,26 +189,55 @@ void init_vmm()
   vmm_top = get_end_page_directory() + PAGE_SIZE;
 }
 
+// Agrandit le heap de nb_pages pages et ajoute le nouveau slab à la fin de free_pages
 static int increase_heap(unsigned int nb_pages)
 {
+  int i;
   struct slab *slab = (struct slab *) vmm_top;
 
-  for(; nb_pages > 0 ; nb_pages--)
+  for(i=0 ; i<nb_pages ; i++)
   {
     map(memory_reserve_page_frame(), vmm_top);
     vmm_top += PAGE_SIZE;
   }
 
-  slab->nb_pages = nb_pages;
-  add(&free_slabs, slab); // FIXME : implement push_back
+  if(!is_empty(&free_slabs) &&
+     (vaddr_t) free_slabs.end + free_slabs.end->nb_pages*PAGE_SIZE == vmm_top)
+    free_slabs.end->nb_pages += nb_pages; // agrandit juste le dernier free slab
+  else
+  {
+    slab->nb_pages = nb_pages;
+    push_back(&free_slabs, slab);
+  }
+
   return 0; // FIXME : erreur en cas de mem full
 }
 
 static int is_stuck(struct slab *s1, struct slab *s2)
 {
-  return (vaddr_t) s1 + s1->nb_pages*sizeof(struct slab) == (vaddr_t) s2;
+  return s1 != NULL &&
+         (vaddr_t) s1 + s1->nb_pages*sizeof(struct slab) == (vaddr_t) s2;
 }
 
+// Sépare un slab en deux quand il est trop grand et déplace le slab de free_pages vers used_pages
+static void cut_slab(struct slab *s, unsigned int nb_pages)
+{
+  if(s->nb_pages > nb_pages) // cut slab
+  {
+    struct slab *new_slab =
+      (struct slab*) ((vaddr_t) s + nb_pages*PAGE_SIZE);
+    new_slab->nb_pages = s->nb_pages - nb_pages;
+    new_slab->prev = s->prev;
+    new_slab->next = s->next;
+
+    s->nb_pages = nb_pages;
+  } 
+
+  remove(&free_slabs, s);
+  add(&used_slabs, s);
+}
+
+// Alloue une page
 unsigned int allocate_new_page(void **alloc)
 {
   return allocate_new_pages(1, alloc);
@@ -202,7 +246,6 @@ unsigned int allocate_new_page(void **alloc)
 // Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle 
 unsigned int allocate_new_pages(unsigned int nb_pages, void **alloc)
 {
-  vaddr_t virt_addr = 0;
   struct slab *slab = free_slabs.begin;
 
   while(slab != NULL && slab->nb_pages < nb_pages)
@@ -214,33 +257,36 @@ unsigned int allocate_new_pages(unsigned int nb_pages, void **alloc)
     slab = free_slabs.end;
   }
 
-  virt_addr = (vaddr_t) slab + sizeof(struct slab);
+  cut_slab(slab, nb_pages);
 
-  // XXX : CUT SLAB
-  remove(&free_slabs, slab);
-  add(&used_slabs, slab);
-
-  *(alloc) = (void *) virt_addr;
+  *(alloc) = (void *) ((vaddr_t) slab + sizeof(struct slab));
   return nb_pages*PAGE_SIZE - sizeof(struct slab); 
 }
 
 // Unallocate a page
-void unallocate_page(void *page)
+int unallocate_page(void *page)
 {
   struct slab *slab = used_slabs.begin;
 
   while(slab != NULL && (vaddr_t) slab + sizeof(struct slab) < (vaddr_t) page)
     slab = slab->next;
 
+  if(slab == NULL)
+    return -1;
+
   remove(&used_slabs, slab);
   add(&free_slabs, slab);
  
   // Fusionne 2 free_slab qui sont collé
-  if(slab->prev != NULL && is_stuck(slab->prev, slab))
+  if(is_stuck(slab->prev, slab))
   {
     slab->prev->nb_pages += slab->nb_pages;
     remove(&free_slabs, slab);
-  }else if(is_stuck(slab, slab->next))
+
+    slab = slab->prev;
+  }
+  
+  if(is_stuck(slab, slab->next))
   {
     slab->nb_pages += slab->next->nb_pages;
     remove(&free_slabs, slab->next);
@@ -256,6 +302,8 @@ void unallocate_page(void *page)
       unmap(vmm_top);
     }
   }
+
+  return 0;
 }
 
 // retourne le nombre de pages minimal à allouer pour une zone mémoire

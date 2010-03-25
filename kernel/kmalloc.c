@@ -6,7 +6,7 @@
 struct mem
 {
   struct mem *prev;
-  size_t size; // possible data
+  size_t size; // (struct mem) + data
   struct mem *next;
 };
 
@@ -39,6 +39,27 @@ static void remove(struct mem_list *list, struct mem *m)
     list->end = m->prev;
 }
 
+static void add_first_element(struct mem_list *list, struct mem *m)
+{
+  list->begin = m;
+  m->prev = NULL;
+  m->next = NULL;
+  list->end = m;
+}
+
+static void push_back(struct mem_list *list, struct mem *m)
+{
+  if(is_empty(list))
+    add_first_element(list, m);
+  else
+  {
+    list->end->next = m;
+    m->prev = list->end;
+    m->next = NULL;
+    list->end = m;
+  }
+}
+
 // Ajoute une mem à une mem_list
 // l'ordre de la liste est celui de la mémoire virtuelle
 static void add(struct mem_list *list, struct mem *m)
@@ -47,10 +68,7 @@ static void add(struct mem_list *list, struct mem *m)
 
   if(is_empty(list))
   {
-    list->begin = m;
-    m->prev = NULL;
-    m->next = NULL;
-    list->end = m;
+    add_first_element(list, m);
     return;
   }
 
@@ -60,10 +78,7 @@ static void add(struct mem_list *list, struct mem *m)
   // add at the end of the list
   if(it->next == NULL)
   {
-    list->end->next = m;
-    m->prev = list->end;
-    m->next = NULL;
-    list->end = m;
+    push_back(list, m);
     return;
   }
 
@@ -71,6 +86,28 @@ static void add(struct mem_list *list, struct mem *m)
   m->next = it->next;
   it->next->prev = m;
   it->next = m;
+}
+
+// Sépare un bloc mem en deux quand il est trop grand et déplace le bloc de free_mem vers used_mem
+static void cut_mem(struct mem* m, size_t size)
+{
+  if(m->size > size) // cut mem
+  {
+    struct mem *new_mem = (struct mem*) ((vaddr_t) m + size);
+    new_mem->size = m->size - size;
+    new_mem->prev = m->prev;
+    new_mem->next = m->next;
+
+    m->size = size;
+  } 
+
+  remove(&free_mem, m);
+  add(&allocated_mem, m);
+}
+
+static is_stuck(struct mem *m1, struct mem *m2)
+{
+  return m1 != NULL && (vaddr_t) m1 + m1->size == (vaddr_t) m2;
 }
 
 void init_kmalloc()
@@ -83,6 +120,7 @@ void init_kmalloc()
 
 void *kmalloc(size_t size)
 { 
+  int i;
   struct mem *mem = free_mem.begin;
   size_t real_size = size + sizeof(struct mem);
 
@@ -99,22 +137,46 @@ void *kmalloc(size_t size)
                                                 &alloc);
     new_mem = (struct mem *) alloc;
     new_mem->size = real_alloc_size;
-    add(&free_mem, new_mem); // XXX : push_back
+    push_back(&free_mem, new_mem);
     mem = free_mem.end;
   }
 
-  // XXX : CUT MEM
-  remove(&free_mem, mem);
-  add(&allocated_mem, mem);
+  cut_mem(mem, real_size);
   
-  asm("sti");
-
+  //asm("sti");
   return (void *) (((uint32_t) mem) + sizeof(struct mem));
 }
 
-void kfree(void *p)
+int kfree(void *p)
 {
-  asm("cli"); 
-  asm("sti");
+  struct unallocate_size;
+  struct mem *m = allocated_mem.begin;
+
+  //asm("cli");
+
+  while(m != NULL && (vaddr_t) m + sizeof(struct mem) < (vaddr_t) p)
+    m = m->next;
+
+  if(m == NULL)
+    return -1;
+
+  remove(&allocated_mem, m);
+  add(&free_mem, m);
+ 
+  if(is_stuck(m->prev, m))
+  {
+    m->prev->size +=  m->size;
+    remove(&free_mem, m);
+    m = m->prev;
+  }
+  
+  if(is_stuck(m, m->next))
+  {
+    m->size +=  m->next->size;
+    remove(&free_mem, m->next);
+  }
+
+  //asm("sti");
+  return 0;
 }
 
