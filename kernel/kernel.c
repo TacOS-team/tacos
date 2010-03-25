@@ -181,7 +181,7 @@ int shell(int argc, char* argv[])
 		char c;
 		
 		time_t curr_time = time(NULL);
-		printf("\n %s > ",ctime(&curr_time));
+		printf("\n > ");
 			
 		while((c = getchar()) != '\n') {
 			buffer[i%80] = c;
@@ -192,7 +192,7 @@ int shell(int argc, char* argv[])
 		i = 0;
 
 		if (strcmp(buffer, "help") == 0) {
-			printf("\nCommandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task, print_memory\n");
+			printf("\nCommandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task, print_memory, date\n");
 		}
 		if (strcmp(buffer, "reboot") == 0) {
 			printf("\nReboot non implemente, desole !");
@@ -201,6 +201,11 @@ int shell(int argc, char* argv[])
 			printf("\nHalt !");
 			asm("cli");
 			asm("hlt");
+		}
+		if( strcmp(buffer, "date") == 0)
+		{
+			time_t curr_time = time(NULL);
+			printf("\n%s",ctime(&curr_time));
 		}
 		if( strcmp(buffer, "clear") == 0)
 			cls();
