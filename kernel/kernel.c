@@ -180,7 +180,8 @@ int shell(int argc, char* argv[])
 	{
 		char c;
 		
-		printf("\n %d > ",time(NULL));
+		time_t curr_time = time(NULL);
+		printf("\n %s > ",ctime(&curr_time));
 			
 		while((c = getchar()) != '\n') {
 			buffer[i%80] = c;

@@ -141,6 +141,32 @@ void itoa (char *buf, int base, int d) {
 	}
 }
 
+int atoi(const char* __nptr)
+{
+	int ret = 0;
+	int sig = 1;
+	
+	if(*__nptr == '-')
+	{
+		__nptr++;
+		sig = -1;
+	}
+	else if(*__nptr == '+')
+		__nptr++;
+	
+	while(*__nptr)
+	{
+		if(*__nptr >= '0' && *__nptr<='9')
+			ret = 10*ret+(*__nptr-'0');
+		else
+			return -1;
+		
+		__nptr++;
+	}
+	
+	return ret;
+}
+
 static void scrollup() {
 	int c;
 
@@ -244,6 +270,7 @@ void printf (const char *format, ...) {
 void sprintf (char* string, const char *format, ...) {
 	char **arg = (char **) &format;
 	int c;
+	int size;
 	char buf[20];
 	int i=0;
 	
@@ -255,8 +282,23 @@ void sprintf (char* string, const char *format, ...) {
 			i++;
 		} else {
 			char *p;
-
+			size = -1;
 			c = *format++;
+			
+			if(c == '.')
+			{
+				char c2;
+				size = 0;
+				
+				for(c2 = *format++; c2>='0' && c2<='9' ;c2 = *format++)
+					buf[size++] = c2;
+				
+				buf[size] = '\0';
+				size = atoi(buf);
+				
+				c = *(format-1);
+			}	
+			
 			switch (c) {
 				case 'd':
 				case 'u':
@@ -270,13 +312,13 @@ void sprintf (char* string, const char *format, ...) {
 					if (! p)
 						p = "(null)";
 				string:
-					while (*p)
-						string[i] = *p++;
-						i++;
+					while (*p && size--)
+					{
+						string[i++] = *p++;
+					}
 					break;
 				default:
-					string[i] = (*((int *) arg++));
-						i++;
+					string[i++] = (*((int *) arg++));
 					break;
 			}
 		}

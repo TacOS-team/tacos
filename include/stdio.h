@@ -23,6 +23,7 @@
 void disableCursor();
 void cls (void);
 void itoa (char *buf, int base, int d);
+int atoi(const char* __nptr);
 void newline();
 void putchar (int c);
 void printf (const char *format, ...);

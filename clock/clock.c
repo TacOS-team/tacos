@@ -73,12 +73,10 @@ void clock_init()
   outb(RTC_DATE_OF_MONTH, RTC_REQUEST);
   date.tm_mday = bcd2binary(inb(RTC_ANSWER));
   outb(RTC_MONTH, RTC_REQUEST);
-  date.tm_mon = bcd2binary(inb(RTC_ANSWER));
-  /* DEBUG
+  date.tm_mon = bcd2binary(inb(RTC_ANSWER))-1;
   outb(RTC_YEAR, RTC_REQUEST);
   date.tm_year = bcd2binary(inb(RTC_ANSWER));
-  */
-  date.tm_year = 110;
+  date.tm_year += 100;
   outb(RTC_HOUR, RTC_REQUEST);
   date.tm_hour = bcd2binary(inb(RTC_ANSWER));
   outb(RTC_MINUTE, RTC_REQUEST);
@@ -225,7 +223,27 @@ time_t clock_mktime(struct tm *timep)
 
 	if ((time_t)seconds != seconds)
 		return (time_t)-1;
-		
+	
+	/* affichage de debug
+	printf("mktime for\n\
+				year : %d\n\
+				mon : %d\n\
+				day : %d\n\
+				hour : %d\n\
+				min : %d\n\
+				sec : %d\n\
+				unix => %d\n\
+				",
+				timep->tm_year,
+				timep->tm_mon,
+				timep->tm_mday,
+				timep->tm_hour,
+				timep->tm_min,
+				timep->tm_sec,
+				seconds
+			);
+	*/
+	
 	return (time_t)seconds;
 }
 
@@ -258,5 +276,25 @@ struct tm * clock_gmtime(register const time_t *timer)
 	timep->tm_mday = dayno + 1;
 	timep->tm_isdst = 0;
 
+	/* affichage de debug
+	printf("gm for\n\
+				unix => %d\n\
+				year : %d\n\
+				mon : %d\n\
+				day : %d\n\
+				hour : %d\n\
+				min : %d\n\
+				sec : %d\n\
+				",
+				*timer,
+				timep->tm_year,
+				timep->tm_mon,
+				timep->tm_mday,
+				timep->tm_hour,
+				timep->tm_min,
+				timep->tm_sec
+			);
+	*/
+	
 	return timep;
 }
