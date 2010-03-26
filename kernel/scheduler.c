@@ -6,34 +6,10 @@
 #include <ioports.h>
 #include <gdt.h>
 #include <i8259.h>
+#include <syscall.h>
 
-#define MAX_PROC 255
-
-static process_t process_list[MAX_PROC];	// Tableau des processus en cours
 //struct process idle;
-static uint8_t nb_proc;						// Nombre de processus en cours
-static uint8_t running_proc;					// Indice du processus tournant actuellement
 static uint32_t quantum;						// Quantum de temps alloué aux process
-
-static int get_next_process()
-{
-	//
-	// Tourniquet sans priorite
-	//
-	int ret = running_proc;
-			
-	//do
-	//{
-		ret = (ret+1)%nb_proc;	
-	//}while(ret!=running_proc && process_list[ret].state == PROCSTATE_WAITING);
-	
-	/*if(ret == running_proc && process_list[ret].state == PROCSTATE_WAITING)
-	{
-		// tout les process sont en attente on fait idle
-		ret = -1;
-	}*/
-	return ret;
-}
 
 void bp()
 {
@@ -45,10 +21,8 @@ static void* switch_process(void* data)
 	uint32_t* stack_ptr;
 	uint32_t esp0, eflags;
     uint16_t ss, cs;
-    
-    int next_proc_id;
-    
-    process_t* current = &(process_list[running_proc]);
+
+    process_t* current = get_current_process();
 	
 	// On récupère le contexte du processus actuel uniquement si il a déja été lancé
 	if(current->state == PROCSTATE_RUNNING)
@@ -81,27 +55,27 @@ static void* switch_process(void* data)
 	}
 
 	// On recupere le prochain processus à executer	
-	next_proc_id = get_next_process();
-	
-	if(next_proc_id == -1)
+	current = get_next_process();
+	//printf("0x%x\n",current);
+	if(current == NULL)
 	{
-		// On passe en idle
-		running_proc = -1;
 		asm("hlt");
 	}
-	running_proc = next_proc_id;
-	current = &(process_list[running_proc]);
-	
+
 	if(current->state == PROCSTATE_IDLE)// Sinon on signale que le processus est désormais actif
 	{
 		current->state = PROCSTATE_RUNNING;
 	}
+	
+	syscall_update_esp(current->sys_stack);
 	get_default_tss()->esp0 = current->sys_stack;
 	
 	// Mise en place de l'interruption sur le quantum de temps
 	add_event(switch_process,NULL,quantum);
+	
 	i8254_init(1000/*TIMER_FREQ*/);
-	asm("xchg %bx, %bx");
+	//oasm("xchg %bx, %bx");
+	
 	// Changer le contexte:
 	ss = current->regs.ss;
 	cs = current->regs.cs;
@@ -173,6 +147,7 @@ static void* switch_process(void* data)
 		/* Et on switch! (enfin! >_<) */
 		"iret\n\t"
 	);
+	return NULL;
 }
 /*
 int idle_func(int argc, char* argv[])
@@ -183,29 +158,12 @@ int idle_func(int argc, char* argv[])
 
 
 
-void init_scheduler(int Quantum)
+void init_scheduler(int Q)
 {
-	nb_proc = 0;
-	running_proc = 0;
-	quantum = Quantum;
+	quantum = Q;
 }
 
 void start_scheduler()
 {
 	add_event(switch_process,NULL,quantum);
 }
-
-int add_process(process_t new_proc)
-{
-	if(nb_proc < MAX_PROC )
-	{
-		
-		process_list[nb_proc] = new_proc;
-		process_list[nb_proc].state = PROCSTATE_IDLE;
-		nb_proc++;	
-		return 0;
-	}
-	
-	return 1;
-}
-

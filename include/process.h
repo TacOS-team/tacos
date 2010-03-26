@@ -26,8 +26,17 @@ typedef struct{
 	regs_t regs;
 } process_t;
 
+typedef struct _proclist_cell{
+	process_t* process;
+	struct _proclist_cell* next;
+	struct _proclist_cell* prev;
+}*proc_list, proclist_cell;
 
-process_t* create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_size, uint8_t ring);
-void process_print_regs(process_t* current);
+int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_size, uint8_t ring);
+int delete_process(int pid);
+process_t* find_process(int pid);
+process_t* get_current_process();
+process_t* get_next_process();
+void process_print_regs();
 
 #endif

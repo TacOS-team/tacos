@@ -50,7 +50,7 @@ int test_task1(int argc, char** argv)
 	
 	while(1)
 	{
-		if(i%5000000 == 0)
+		if(i%1000000 == 0)
 		{
 			printf("\ntask1 dit:\"Je tourne!!!\"\n");
 		}
@@ -155,19 +155,22 @@ void cmain (unsigned long magic, unsigned long addr) {
 	mbr_print_part_table ();
 	
 	/* Test du scheduler */
-	init_scheduler(5);
+	
+	init_scheduler(10);
 
 	paddr_t _addr = shell;
-	process_t* shell = create_process(_addr,0,NULL,64,3);
+	create_process(_addr,0,NULL,64,3);
+	//process_print_regs();
 
-	/*_addr = test_task1;
-	process_t* test = create_process(_addr, 0, NULL, 64, 3);
-		while(1);
-*/
-	add_process(*shell);
+	_addr = test_task1;
+	//create_process(_addr, 0, NULL, 64, 3);
+
+	print_process_list();
+	
+	//add_process(*shell);
 
 	start_scheduler();
-  //shell(1, NULL);
+	//shell(1, NULL);
 
 	while(1){}
 }
@@ -175,7 +178,12 @@ void cmain (unsigned long magic, unsigned long addr) {
 int shell(int argc, char* argv[])
 {
 	char buffer[80];
+	//kmalloc(10);
+	//asm("xchg %bx, %bx");
 	int i = 0;
+	
+	
+	
 	for(;;)
 	{
 		char c;
@@ -233,10 +241,19 @@ int shell(int argc, char* argv[])
 		}		
 		if(strcmp(buffer,"test_task") == 0)
 		{
-				paddr_t proc_addr = test_task1;
-				process_t* proc = create_process(proc_addr,0,NULL,64,3);
-				add_process(*proc);
-				while(1);
+			paddr_t proc_addr = test_task1;
+			process_t* proc = create_process(proc_addr,0,NULL,1024,3);
+			//add_process(*proc);
+			//while(1);
+		}
+		if(strcmp(buffer,"syscall") == 0)
+		{
+			asm("sysenter\n\t");
+		}
+		if(strcmp(buffer,"ps")==0)
+		{
+			printf("\n");
+			print_process_list();
 		}
 	}
 	
