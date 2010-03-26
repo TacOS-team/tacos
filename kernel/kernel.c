@@ -43,6 +43,18 @@ process_t task[3];
 uint32_t sys_stack[3][1024];
 uint32_t user_stack[3][1024];
 
+void exit(uint32_t value)
+{
+	syscall(0,42,value,0);
+}
+
+uint32_t get_pid()
+{
+	int pid;
+	syscall(1,&pid, 0, 0);
+	return pid;
+}
+
 int test_task1(int argc, char** argv)
 {
 	int i = 0;
@@ -52,26 +64,25 @@ int test_task1(int argc, char** argv)
 	{
 		if(i%1000000 == 0)
 		{
-			printf("\ntask1 dit:\"Je tourne!!!\"\n");
+			printf("\ntask%d dit:\"Je tourne!!!\"\n",get_pid());
 		}
 		i++;
 	}
 }
 
-int test_task2(int argc, char** argv)
+
+void* sys_exit(uint32_t pid, uint32_t ret_value, uint32_t zero)
 {
-	int i = 0;
-	printf("---- Test Task2 ----\n");
-	
-	while(1)
-	{
-		if(i%5000000 == 0)
-		{
-			printf("\ntask2 dit:\"Je tourne!!!\"\n");
-		}
-		i++;
-	}
+	printf("Exit(process %d returned %d)", pid, ret_value);
 }
+
+void* sys_getpid(uint32_t* pid, uint32_t zero1, uint32_t zero2)
+{
+	process_t* process = get_current_process();
+	*pid = process->pid;
+}
+
+
 
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
@@ -155,7 +166,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	/* Test du scheduler */
 	
-	init_scheduler(10);
+	init_scheduler(1000);
 
 	paddr_t _addr = shell;
 	create_process(_addr,0,NULL,64,3);
@@ -166,10 +177,13 @@ void cmain (unsigned long magic, unsigned long addr) {
 	create_process(_addr, 0, NULL, 64, 3);
 	//while(1);
 */
+	syscall_set_handler(0,sys_exit);
+	syscall_set_handler(1,sys_getpid);
 	start_scheduler();
 
 	while(1){}
 }
+
 
 int shell(int argc, char* argv[])
 {
@@ -194,22 +208,22 @@ int shell(int argc, char* argv[])
 		}
 		buffer[i%80] = '\0';
 		i = 0;
-
+		printf("\n");
 		if (strcmp(buffer, "help") == 0) {
-			printf("\nCommandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task, print_memory, date\n");
+			printf("Commandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task, print_memory, date\n");
 		}
 		if (strcmp(buffer, "reboot") == 0) {
-			printf("\nReboot non implemente, desole !");
+			printf("Reboot non implemente, desole !");
 		}
 		if (strcmp(buffer, "halt") == 0) {
-			printf("\nHalt !");
+			printf("Halt !");
 			asm("cli");
 			asm("hlt");
 		}
 		if( strcmp(buffer, "date") == 0)
 		{
 			time_t curr_time = time(NULL);
-			printf("\n%s",ctime(&curr_time));
+			printf("%s",ctime(&curr_time));
 		}
 		if( strcmp(buffer, "clear") == 0)
 			cls();
@@ -231,28 +245,27 @@ int shell(int argc, char* argv[])
 			char zeros[FLOPPY_SECTOR_SIZE];
 			set_attribute(0, 4);
 			cls();
-			printf("\n/!\\ ERASING MBR MOUHAHA /!\\\n");
+			printf("/!\\ ERASING MBR MOUHAHA /!\\\n");
 			floppy_write_sector(0,0,0,zeros);
 			reset_attribute();
 		}		
 		if(strcmp(buffer,"test_task") == 0)
 		{
-			paddr_t proc_addr = test_task1;
+			paddr_t proc_addr =  test_task1;
 			process_t* proc = create_process(proc_addr,0,NULL,1024,3);
 			//add_process(*proc);
 			//while(1);
 		}
 		if(strcmp(buffer,"syscall") == 0)
 		{
-			syscall(0x42,0,1,2);
+			//syscall(0x42,0,1,2);
+			exit(-1);
 		}
 		if(strcmp(buffer,"ps")==0)
 		{
-			printf("\n");
 			print_process_list();
 		}
 		if (strcmp(buffer, "test_sscanf") == 0) {
-			printf("\n");
 			char * str = "Hello 42 bla";
 			char s[10];
 			char s2[10];
