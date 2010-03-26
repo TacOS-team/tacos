@@ -32,7 +32,9 @@ utils: force_look
 force_look:
 	@true
 
-img:
+core.img: img
+
+img: all
 	echo "drive v: file=\"`pwd`/core.img\" 1.44M filter" > mtoolsrc
 	gzip -dc < grub.img.gz > core.img
 	MTOOLSRC=mtoolsrc mcopy menu.txt v:/boot/grub/
@@ -40,10 +42,10 @@ img:
 	MTOOLSRC=mtoolsrc mcopy kernel.bin v:/system/
 	rm mtoolsrc
 
-runqemu:
+runqemu: core.img
 	qemu -fda core.img -m 8
 
-runbochs:
+runbochs: core.img
 	BOCHSRC=bochsrc bochs
 
 clean:
