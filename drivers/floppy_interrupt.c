@@ -19,7 +19,7 @@ void floppy_wait_irq()
 
 void floppy_init_interrupt()
 {
-	interrupt_set_routine(IRQ_FLOPPY, floppy_handler);
+	interrupt_set_routine(IRQ_FLOPPY, floppy_handler, 0);
 }
 
 void floppy_reset_irq()

@@ -51,7 +51,7 @@ void events_init()
   initHeap(&events, (cmp_func_type)compare_events, (void*)events_buffer,
            sizeof(struct event_t), MAX_EVENTS);
 
-  interrupt_set_routine(IRQ_TIMER, events_interrupt);
+  interrupt_set_routine(IRQ_TIMER, events_interrupt, 0);
   //ticks = TIMER_FREQ;
   i8254_init(1000/*TIMER_FREQ*/);
 }

@@ -6,7 +6,7 @@
 #include "interrupts.h"
 
 /* Nombre d'irq : */
-#define INTERRUPT_NUM 16
+#define INTERRUPT_NUM 32
 /* On va définir une constante pour dire où on va mapper (pour l'idt) */
 #define INTERRUPT_BASE 32 /* Juste après les exceptions */
 
@@ -17,7 +17,7 @@ extern paddr_t interrupts_wrapper_array[INTERRUPT_NUM];
 /* Tableau qui contient les handlers de toutes les interruptions. */
 interrupt_handler_t interrupts_handler_array[INTERRUPT_NUM];
 
-int interrupt_set_routine(uint8_t interrupt_id, interrupt_handler_t routine)
+int interrupt_set_routine(uint8_t interrupt_id, interrupt_handler_t routine, uint8_t privilege)
 {
 	uint32_t flags;
 
@@ -32,7 +32,7 @@ int interrupt_set_routine(uint8_t interrupt_id, interrupt_handler_t routine)
 	interrupts_handler_array[interrupt_id] = routine;
 
 	idt_set_handler(INTERRUPT_BASE + interrupt_id,
-                  (paddr_t)interrupts_wrapper_array[interrupt_id], 0);
+                  (paddr_t)interrupts_wrapper_array[interrupt_id], privilege);
 
 	i8259_enable_irq_line(interrupt_id);
 

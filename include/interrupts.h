@@ -17,10 +17,11 @@
 #define IRQ_COPROCESSOR     13
 #define IRQ_HARDDISK        14
 #define IRQ_RESERVED_4      15
+#define IRQ_SYSCALL			16
 
 typedef void (*interrupt_handler_t)(int interrupt_id);
 
-int interrupt_set_routine(uint8_t interrupt_id, interrupt_handler_t routine);
+int interrupt_set_routine(uint8_t interrupt_id, interrupt_handler_t routine, uint8_t privilege);
 int interrupt_disable(uint8_t interrupt_id);
 
 #endif

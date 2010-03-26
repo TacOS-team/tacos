@@ -67,7 +67,7 @@ static void* switch_process(void* data)
 		current->state = PROCSTATE_RUNNING;
 	}
 	
-	syscall_update_esp(current->sys_stack);
+	//syscall_update_esp(current->sys_stack);
 	get_default_tss()->esp0 = current->sys_stack;
 	
 	// Mise en place de l'interruption sur le quantum de temps

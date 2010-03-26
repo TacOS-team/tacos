@@ -113,7 +113,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	kpanic_init();
   
-	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt);
+	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
 	floppy_init_interrupt();
 
   init_fpu();
@@ -245,7 +245,7 @@ int shell(int argc, char* argv[])
 		}
 		if(strcmp(buffer,"syscall") == 0)
 		{
-			asm("sysenter\n\t");
+			syscall(0x42);
 		}
 		if(strcmp(buffer,"ps")==0)
 		{
