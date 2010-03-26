@@ -138,6 +138,6 @@ tous les wrappers qu'on vient de construire. */
 .section ".rodata"
 .p2align 5, 0x0
 interrupts_wrapper_array:
-	.irp id, 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+	.irp id, 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
 	  .long (interrupt_wrapper_\id)
 	.endr
