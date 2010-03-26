@@ -26,6 +26,7 @@
 #include "msr.h"
 #include <mbr.h>
 #include <fpu.h>
+#include <vm86.h>
 
 typedef struct
 {
@@ -177,6 +178,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	create_process(_addr, 0, NULL, 64, 3);
 	//while(1);
 */
+	printf("vm86:%d\n",check_vm86);
 	syscall_set_handler(0,sys_exit);
 	syscall_set_handler(1,sys_getpid);
 	start_scheduler();
