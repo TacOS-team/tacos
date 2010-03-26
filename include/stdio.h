@@ -2,6 +2,7 @@
 #define _STDIO_H_
 
 #include <types.h>
+#include <stdarg.h>
 
 #define BLACK         0x0
 #define BLUE          0x1
