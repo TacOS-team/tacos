@@ -21,11 +21,15 @@ char *strncpy(char * s1, const char * s2, size_t n);
 
 char *strcat(char * s1, const char * s2);
 
-/* NOT IMPLEMENTED YET
-
 char *strncat(char * s1, const char * s2, size_t n);
 
-void *memmove(void *s1, const void *s2, size_t n);
+void *memmove(void *dest, const void *src, size_t n);
+
+char *strstr(const char *haystack, const char *needle);
+
+char *strcasestr(const char *haystack, const char *needle);
+
+/* NOT IMPLEMENTED YET
 
 int strcoll(const char *s1, const char *s2);
 
@@ -42,8 +46,6 @@ char *strpbrk(const char *s1, const char *s2);
 char *strrchr(const char *s, int c);
 
 size_t strspn(const char *s1, const char *s2);
-
-char *strstr(const char *s1, const char *s2);
 
 char *strtok(char * s1, const char * s2);
 

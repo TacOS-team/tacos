@@ -85,6 +85,8 @@ unsigned long int strtoul(const char *nptr, char **endptr, int base)
 		ret = digit+base*ret;
 	}
 	
+	*endptr = nptr-1;
+	
 	return ret;
 }
 
