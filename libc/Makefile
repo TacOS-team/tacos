@@ -18,9 +18,7 @@ unistd.o: ../include/unistd.h ../include/types.h
 
 time.o :  ../include/time.h ../include/types.h
 
-ctype.o : ../include/ctype.h
-
-sscanf.o : ../include/stdio.h ../include/ctype.h ../include/types.h ../include/stdarg.h
+errno.o :  ../include/errno.h
 
 clean:
 	rm -f *.o

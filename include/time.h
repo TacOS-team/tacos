@@ -47,11 +47,12 @@ struct tm *gmtime(const time_t *timer);
 
 struct tm *localtime(const time_t *timer);
 
+/* NOT IMPLEMENTED
 size_t strftime(char * s,
      size_t maxsize,
      const char * format,
      const struct tm * timeptr);
-
+*/
 
 
 #endif //TIME_H

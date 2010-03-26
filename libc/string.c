@@ -59,3 +59,58 @@ int strncmp(const char *s1, const char *s2, size_t n) {
 	}
 	return s1[i] - s2[i];
 }
+
+void *memset(void *s, int c, size_t n)
+{
+	size_t i;
+	
+	for(i=0 ; i<n ; i++)
+		((char*)s)[i] = (unsigned char)c;
+		
+	return s;
+}
+
+int memcmp(const void *s1, const void *s2, size_t n)
+{
+	int i = 0;
+	while (((char*)s1)[i] == ((char*)s2)[i]) {
+		if (i >= n) {
+			return 0;
+		}
+		i++;
+	}
+	return ((char*)s1)[i] - ((char*)s2)[i];
+}
+
+char *strcpy(char * s1, const char * s2)
+{
+	int i;
+	for(i=0 ; s2[i] != '\0' ; i++)
+	{
+		s1[i] = s2[i];
+	}
+	s1[i] = '\0';
+	
+	return s1;
+}
+
+char *strncpy(char * s1, const char * s2, size_t n)
+{
+	size_t i;
+	for(i=0 ; s2[i] != '\0' && i<n ; i++)
+	{
+		s1[i] = s2[i];
+	}
+	for(; i<n ; i++)
+	{
+		s1[i] = '\0';
+	}
+	
+	return s1;
+}
+
+char *strcat(char * s1, const char * s2)
+{
+	strcpy(s1+strlen(s1), s2);
+	return s1;
+}
