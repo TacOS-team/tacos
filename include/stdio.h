@@ -39,4 +39,7 @@ void reset_attribute();
 void switchDebugBuffer();
 void switchStandardBuffer();
 
+int vsscanf(const char *s, const char *format, va_list ap);
+int sscanf(const char *s, const char *format, ...);
+
 #endif
