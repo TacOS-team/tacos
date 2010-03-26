@@ -103,8 +103,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	gdt_setup((mbi->mem_upper << 10) + (1 << 20));
 	init_tss(sys_stack+1023);
 
-	init_syscall();
-
 	/* Mise en place de la table qui contient les descripteurs d'interruption (idt) */
 	idt_setup();
 
@@ -114,6 +112,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	kpanic_init();
   
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
+	init_syscall();
 	floppy_init_interrupt();
 
   init_fpu();
@@ -245,7 +244,7 @@ int shell(int argc, char* argv[])
 		}
 		if(strcmp(buffer,"syscall") == 0)
 		{
-			syscall(0x42);
+			syscall(0x42,0,1,2);
 		}
 		if(strcmp(buffer,"ps")==0)
 		{

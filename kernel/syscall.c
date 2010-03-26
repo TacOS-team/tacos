@@ -3,36 +3,36 @@
 
 #include <msr.h>
 #include <stdio.h>
+#include <interrupts.h>
+#include <types.h>
+
+
+#define GET_SYSCALL_IRQ(x) # x
 
 uint32_t syscall_stack[1024];
 
 void SysCallHandler(int interrupt_id)
 {	
-	printf("\nsyscall!\n");
-	/*
-	asm("xchg %bx, %bx");
-	asm("mov $0xffff, %edx");
-	asm("mov $0xffff, %ecx");
-	asm ("sysexit\n\t");
-	*/
+	uint32_t function, param1, param2, param3;
+	// On récupère les parametres
+	asm("":"=a"(function),"=b"(param1),"=c"(param2),"=d"(param3));
+	printf("\nsyscall n=0x%x(%d, %d, %d)\n", function, param1, param2, param3);
+
+	// Ici on devrait executer la fonctions correspondante
 }
-/*
-void syscall_update_esp(paddr_t esp)
-{
-	write_msr(IA32_SYSENTER_ESP, esp , 0);
-}*/
+
 
 void init_syscall()
 {
-	interrupt_set_routine(0xAA, SysCallHandler, 3);
-	/*write_msr(IA32_SYSENTER_CS,	8,	0);		// Selecteur du segment code kernel
-	//write_msr(IA32_SYSENTER_ESP, syscall_stack+1023 , 0);		// Pointeur de pile kernel
-	write_msr(IA32_SYSENTER_EIP, SysCallHandler , 0); 	// Pointeur d'instruction du handler*/
+	interrupt_set_routine(IRQ_SYSCALL,SysCallHandler, 3);
 }
 
-void syscall(int func)
+void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3)
 {
-	asm(""::"a"(func));
-	asm("int $0x42");
+	// On met la fonction et les parametres dans les bon registres
+	asm(""::"a"(func),"b"(param1),"c"(param2),"d"(param3));
+	
+	// et on lance l'interruption
+	asm("int $0x30");
 }
 	
