@@ -96,6 +96,42 @@
                iret
 .endr
 
+.irp id, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+ 
+        .p2align 2, 0x90
+        interrupt_wrapper_\id:
+        .type interrupt_wrapper_\id,@function
+ 
+					pusha
+					push %gs
+					push %fs
+					push %ds
+					push %es
+					
+					/* On repasse le bon segment de data au kernel */
+					push %ebx
+					mov $0x10,%bx
+					mov %bx,%ds
+					pop %ebx
+
+					/* Call the handler with exception number as
+					 * argument */
+					pushl $\id
+					leal  interrupts_handler_array,%edi
+					call  *\id*4(%edi)
+
+					addl  $4, %esp
+
+					pop %es
+					pop %ds
+					pop %fs
+					pop %gs
+					popa
+
+               iret
+.endr
+
+
 
 /* On construit la table des wrappers en y inserant 
 tous les wrappers qu'on vient de construire. */

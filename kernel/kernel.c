@@ -252,6 +252,17 @@ int shell(int argc, char* argv[])
 			printf("\n");
 			print_process_list();
 		}
+		if (strcmp(buffer, "test_sscanf") == 0) {
+			printf("\n");
+			char * str = "Hello 42 bla";
+			char s[10];
+			char s2[10];
+			int d;
+
+		//	sscanf(str, "%s %d %s", s, &d, s2);
+
+			printf("%s %d %s\n", s2, d, s);
+		}
 	}
 	
 	return 0;

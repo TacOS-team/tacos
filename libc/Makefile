@@ -2,7 +2,7 @@ INCLUDES=-I../include/
 
 all: libc
 
-libc: stdio.o stdlib.o string.o unistd.o time.o ctype.o sscanf.o
+libc: stdio.o stdlib.o string.o unistd.o time.o ctype.o 
 	  ar rv ../lib/$@.a $^
 
 %.o: %.c

@@ -20,6 +20,11 @@
 #define YELLOW        0xE
 #define WHITE         0xF
 
+/* End Of File character. */
+#ifndef EOF
+# define EOF (-1)
+#endif
+
 void disableCursor();
 void cls (void);
 void itoa (char *buf, int base, int d);
