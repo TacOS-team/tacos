@@ -20,7 +20,7 @@ time.o :  ../include/time.h ../include/types.h
 
 errno.o :  ../include/errno.h
 
-sscanf.o : ../include/stdio.h ../include/ctype.h ../include/types.h ../stdarg.h
+sscanf.o : ../include/stdio.h ../include/ctype.h ../include/types.h ../include/stdarg.h
 
 clean:
 	rm -f *.o
