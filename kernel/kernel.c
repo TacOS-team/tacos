@@ -259,7 +259,7 @@ int shell(int argc, char* argv[])
 			char s2[10];
 			int d;
 
-		//	sscanf(str, "%s %d %s", s, &d, s2);
+			sscanf(str, "%s %d %s", s, &d, s2);
 
 			printf("%s %d %s\n", s2, d, s);
 		}
