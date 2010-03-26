@@ -9,7 +9,8 @@ uint32_t syscall_stack[1024];
 void SysCallHandler()
 {	
 	printf("\nsyscall!\n");
-	//while(1);
+	asm("xchg %bx, %bx");
+	asm("mov $0xffff, %edx");
 	asm ("sysexit\n\t");
 }
 
@@ -20,7 +21,7 @@ void syscall_update_esp(paddr_t esp)
 
 void init_syscall()
 {
-	write_msr(IA32_SYSENTER_CS,	1,	0);		// Selecteur du segment code kernel
+	write_msr(IA32_SYSENTER_CS,	8,	0);		// Selecteur du segment code kernel
 	//write_msr(IA32_SYSENTER_ESP, syscall_stack+1023 , 0);		// Pointeur de pile kernel
 	write_msr(IA32_SYSENTER_EIP, SysCallHandler , 0); 	// Pointeur d'instruction du handler
 }

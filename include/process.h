@@ -22,7 +22,7 @@ typedef struct{
 	uint16_t	pid;
 	uint8_t	state;
 	uint8_t	priority;
-	paddr_t		sys_stack;	
+	paddr_t		sys_stack;
 	regs_t regs;
 } process_t;
 

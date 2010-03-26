@@ -26,11 +26,13 @@ process_t* get_next_process()
 	if(current_proclist_cell == NULL)
 		current_proclist_cell = process_list;
 		
+		
 	return current_proclist_cell->process;
 }
 
 void add_process(process_t* process)
 {
+
 	if(process_list == NULL)
 	{
 		process_list = kmalloc(sizeof(proclist_cell));
@@ -40,10 +42,10 @@ void add_process(process_t* process)
 	else
 	{
 		process_list->prev = kmalloc(sizeof(proclist_cell));
+
 		process_list->prev->next= process_list;
 		process_list = process_list->prev;
 	}
-	
 	process_list->process = process;
 	process_list->prev = NULL;
 }
@@ -86,6 +88,7 @@ int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_s
 {
 	uint32_t *sys_stack, *user_stack;
 	process_t* new_proc;
+
 	
 	//sys_stack = sys;
 	//user_stack = user;
@@ -120,6 +123,8 @@ int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_s
 	new_proc->regs.esp = (user_stack)+stack_size-1;
 	new_proc->sys_stack = (sys_stack)+stack_size-1;
 	new_proc->state = PROCSTATE_IDLE;
+	
+
 	
 	proc_count++;
 	
