@@ -3,15 +3,18 @@ export CC=gcc
 export LD=ld
 export CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LDFLAGS=-Llib/
-LDLIBS=-lc -lpci -lkeyboard -lclock -ldrivers -lutils
+LDLIBS=-lc -lpci -lkeyboard -lclock -ldrivers -lutils -lmouse
 
-all: libc  utils drivers pci keyboard clock kernel.bin
+all: libc  utils drivers pci keyboard mouse clock kernel.bin
 
 kernel.bin: force_look 
 	$(MAKE) -C kernel
 	$(LD) -T linker.ld -o kernel.bin kernel/boot.o kernel/kernel.o kernel/i8259.o kernel/idt.o kernel/pagination.o kernel/memory.o kernel/exception_wrappers.o kernel/exception.o kernel/gdt.o kernel/interrupts.o kernel/interrupts_wrappers.o kernel/scheduler.o kernel/dummy_process.o kernel/process.o kernel/kpanic.o kernel/syscall.o kernel/vmm.o kernel/kmalloc.o kernel/mbr.o kernel/fpu.o kernel/vm86.o -melf_i386 $(LDFLAGS) $(LDLIBS)
 
 keyboard: force_look 
+	$(MAKE) -C $@ 
+
+mouse: force_look 
 	$(MAKE) -C $@ 
 
 libc: force_look 
@@ -55,6 +58,7 @@ clean:
 	$(MAKE) -C clock clean
 	$(MAKE) -C drivers clean
 	$(MAKE) -C keyboard clean
+	$(MAKE) -C mouse clean
 	$(MAKE) -C utils clean
 	rm -f *.o *.bin *.img
 

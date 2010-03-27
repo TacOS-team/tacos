@@ -197,6 +197,7 @@ char keyboardConvertToChar(uint8_t scancode) {
 void keyboardInterrupt(int id)
 {
   uint8_t scancode = inb(0x60);
+  
   switch(scancode)
   {
   case KEY_LSHIFT:

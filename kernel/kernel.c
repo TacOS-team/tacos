@@ -16,6 +16,7 @@
 #include <time.h>
 #include <dummy_process.h>
 #include <keyboard.h>
+#include <mouse.h>
 #include <events.h>
 #include <floppy.h>
 #include <kpanic.h>
@@ -54,6 +55,24 @@ uint32_t get_pid()
 	int pid;
 	syscall(1,&pid, 0, 0);
 	return pid;
+}
+
+int test_mouse(int argc, char** argv)
+{
+	int i = 0;
+	int x;
+	int y;
+	printf("---- Test Mouse ----\n");
+	
+	while(1)
+	{
+		if(i%100000 == 0)
+		{
+			getMouseCoord(&x,&y);
+			printf("\nmouse: %d %d [%d;%d;%d]\n",x,y,getMouseBtn(0),getMouseBtn(1),getMouseBtn(2));
+		}
+		i++;
+	}
 }
 
 int test_task1(int argc, char** argv)
@@ -124,6 +143,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	kpanic_init();
   
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
+	mouseInit();
 	init_syscall();
 	floppy_init_interrupt();
 
@@ -212,7 +232,7 @@ int shell(int argc, char* argv[])
 		i = 0;
 		printf("\n");
 		if (strcmp(buffer, "help") == 0) {
-			printf("Commandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task, print_memory, date\n");
+			printf("Commandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task, print_memory, date, test_mouse\n");
 		}
 		if (strcmp(buffer, "reboot") == 0) {
 			printf("Reboot non implemente, desole !");
@@ -257,6 +277,10 @@ int shell(int argc, char* argv[])
 			process_t* proc = create_process(proc_addr,0,NULL,1024,3);
 			//add_process(*proc);
 			//while(1);
+		}
+		if(strcmp(buffer,"test_mouse") == 0)
+		{
+			test_mouse(0,NULL);
 		}
 		if(strcmp(buffer,"syscall") == 0)
 		{
