@@ -98,7 +98,8 @@ static void cut_mem(struct mem* m, size_t size)
     new_mem->size = m->size - size;
     new_mem->prev = m->prev;
     new_mem->next = m->next;
-    add(&free_mem, new_mem);
+    //add(&free_mem, new_mem);
+    // XXX :Problème ici
 
     m->size = size;
   } 
