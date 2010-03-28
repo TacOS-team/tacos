@@ -135,6 +135,11 @@ static void create_page_entry(struct page_table_entry *pte, paddr_t page_addr)
 // créer une entrée de répertoire
 static void create_page_dir(struct page_directory_entry *pde)
 {
+  if(memory_get_first_free_page() == NULL)
+  {
+    printf("zOMG out of memory !");
+    while(1);
+  }
   paddr_t page_addr = memory_reserve_page_frame();
 
   pde->present = 1;
@@ -192,11 +197,13 @@ void init_vmm()
 // Agrandit le heap de nb_pages pages et ajoute le nouveau slab à la fin de free_pages
 static int increase_heap(unsigned int nb_pages)
 {
-  int i;
+  unsigned int i;
   struct slab *slab = (struct slab *) vmm_top;
 
   for(i=0 ; i<nb_pages ; i++)
   {
+    if(memory_get_first_free_page() == NULL)
+      return -1;
     map(memory_reserve_page_frame(), vmm_top);
     vmm_top += PAGE_SIZE;
   }
@@ -210,7 +217,7 @@ static int increase_heap(unsigned int nb_pages)
     push_back(&free_slabs, slab);
   }
 
-  return 0; // FIXME : erreur en cas de mem full
+  return 0;
 }
 
 static int is_stuck(struct slab *s1, struct slab *s2)
@@ -253,7 +260,12 @@ unsigned int allocate_new_pages(unsigned int nb_pages, void **alloc)
 
   if(slab == NULL)
   {
-    increase_heap(nb_pages);
+    if(increase_heap(nb_pages) == -1)
+    {
+      printf("zOMG ! Plus de mémoire !\n");
+      while(1);;
+    }
+
     slab = free_slabs.end;
   }
 
@@ -310,7 +322,7 @@ int unallocate_page(void *page)
 // de taille size : entier_sup(size + overhead)
 unsigned int calculate_min_pages(size_t size)
 {
-  double nb_pages = (((double) size) + ((double)sizeof(struct slab))) / PAGE_SIZE;
+  double nb_pages = (double) (size + sizeof(struct slab)) / PAGE_SIZE;
   return (unsigned int) (nb_pages + ((nb_pages - (int) nb_pages > 0) ? 1 : 0));
 }
 

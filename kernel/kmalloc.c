@@ -1,4 +1,5 @@
 #include <types.h>
+#include <stdio.h>
 #include <heap.h>
 #include <vmm.h>
 #include <kmalloc.h>
@@ -97,6 +98,7 @@ static void cut_mem(struct mem* m, size_t size)
     new_mem->size = m->size - size;
     new_mem->prev = m->prev;
     new_mem->next = m->next;
+    add(&free_mem, new_mem);
 
     m->size = size;
   } 
@@ -105,7 +107,7 @@ static void cut_mem(struct mem* m, size_t size)
   add(&allocated_mem, m);
 }
 
-static is_stuck(struct mem *m1, struct mem *m2)
+static int is_stuck(struct mem *m1, struct mem *m2)
 {
   return m1 != NULL && (vaddr_t) m1 + m1->size == (vaddr_t) m2;
 }
@@ -120,7 +122,6 @@ void init_kmalloc()
 
 void *kmalloc(size_t size)
 { 
-  int i;
   struct mem *mem = free_mem.begin;
   size_t real_size = size + sizeof(struct mem);
 
@@ -128,6 +129,7 @@ void *kmalloc(size_t size)
 
   while(mem != NULL && mem->size < real_size)
     mem = mem->next;
+
 
   if(mem == NULL)
   {
@@ -178,5 +180,47 @@ int kfree(void *p)
 
   //asm("sti");
   return 0;
+}
+
+static void print_mem(struct mem* m, bool free)
+{
+  set_attribute(BLACK, free ? GREEN : RED);
+  printf("[%x ; %d ; %x] ", m, m->size, (vaddr_t) m + m->size);
+  reset_attribute();
+}
+
+void kmalloc_print_mem()
+{
+  struct mem *free_it = free_mem.begin;
+  struct mem *allocated_it = allocated_mem.begin;
+
+  printf("\n-- kmalloc : printing heap --\n");
+
+  while(free_it != NULL && allocated_it != NULL)
+  {
+    if(free_it < allocated_it)
+    {
+      print_mem(free_it, TRUE);
+      free_it = free_it->next;
+    } else
+    {
+      print_mem(allocated_it, FALSE);
+      allocated_it = allocated_it->next;
+    }
+  }
+
+  while(free_it != NULL)
+  {
+    print_mem(free_it, TRUE);
+    free_it = free_it->next;
+  }
+
+  while(allocated_it != NULL)
+  {
+    print_mem(allocated_it, FALSE);
+    allocated_it = allocated_it->next;
+  }
+  
+  printf("\n-- kmalloc : end --\n");
 }
 
