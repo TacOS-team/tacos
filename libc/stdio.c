@@ -203,7 +203,7 @@ void newline()
 	}
 }
 
-void putchar_position(char c, int x, int y) {
+void kputchar_position(char c, int x, int y) {
 	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%25) * COLUMNS].character = c & 0xFF;
 	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%25) * COLUMNS].attribute = attribute;
 	(*video)[x + y * COLUMNS].character = c & 0xFF;
@@ -211,11 +211,11 @@ void putchar_position(char c, int x, int y) {
 }
 
 /* Put the character C on the screen. */
-void putchar (char c) {
+void kputchar (char c) {
 	if (c == '\n' || c == '\r') {
 		newline();
 	} else {
-		putchar_position(c, buffer_video->xpos, buffer_video->ypos);
+		kputchar_position(c, buffer_video->xpos, buffer_video->ypos);
 	  	buffer_video->xpos++;
 		if (buffer_video->xpos >= COLUMNS)
 			newline();
@@ -227,44 +227,18 @@ void putchar (char c) {
 	updateCursorPosition();
 }
 
-/* Format a string and print it on the screen, just like the libc
-	 function printf. */
-void printf (const char *format, ...) {
-	char **arg = (char **) &format;
-	int c;
-	char buf[20];
-
-	arg++;
-
-	while ((c = *format++) != 0) {
-		if (c != '%') {
-			putchar (c);
-		} else {
-			char *p;
-
-			c = *format++;
-			switch (c) {
-				case 'd':
-				case 'u':
-				case 'x':
-					itoa (buf, c, *((int *) arg++));
-					p = buf;
-					goto string;
-					break;
-				case 's':
-					p = *arg++;
-					if (! p)
-						p = "(null)";
-				string:
-					while (*p)
-						putchar (*p++);
-					break;
-				default:
-					putchar (*((int *) arg++));
-					break;
-			}
-		}
+/* Fonction temporaire !!!! */
+size_t write(int fd, const void *buf, size_t count) {
+	if (fd != 1 && fd != 2) {
+		return -1;
 	}
+
+	size_t i;
+	for (i = 0; i < count && *(char *)buf != '\0'; i++) {
+		kputchar(*(char *)buf);
+		buf++;
+	}
+	return count;
 }
 
 void sprintf (char* string, const char *format, ...) {

@@ -5,6 +5,7 @@
 #include <pagination.h>
 #include <heap.h>
 #include <errno.h>
+#include <ctype.h>
 
 heap_t *heap = NULL;
 //void initHeap(heap_t* h, cmp_func_type cmp);

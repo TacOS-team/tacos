@@ -8,7 +8,7 @@
 #define        input_error()  return (done == 0 ? EOF : done)
 
 int vsscanf(const char *s, const char *format, va_list ap) {
-  char *f = format;
+  const char *f = format;
   char fc;                /* Current character of the format.  */
   size_t done = 0;        /* Assignments done.  */
   int c;                /* Last char read.  */

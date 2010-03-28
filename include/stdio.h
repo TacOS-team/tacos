@@ -1,6 +1,7 @@
 #ifndef _STDIO_H_
 #define _STDIO_H_
 
+#include <libio.h>
 #include <types.h>
 #include <stdarg.h>
 
@@ -26,14 +27,35 @@
 # define EOF (-1)
 #endif
 
+#define _IOFBF 0 /* Fully buffered. */
+#define _IOLBF 1 /* Line buffered. */
+#define _IONBF 2 /* No buffering. */
+
+size_t write(int fd, const void *buf, size_t count);
+
+int printf(const char *format, ...);
+int fprintf(FILE *stream, const char *format, ...);
+int sprintf(char *str, const char *format, ...);
+int snprintf(char *str, size_t size, const char *format, ...);
+
+int vprintf(const char *format, va_list ap);
+int vfprintf(FILE *stream, const char *format, va_list ap);
+int vsprintf(char *str, const char *format, va_list ap);
+int vsnprintf(char *str, size_t size, const char *format, va_list ap);
+
+int fputc(int c, FILE *stream);
+int fputs(const char *s, FILE *stream);
+int putc(int c, FILE *stream);
+int putchar(int c);
+int puts(const char *s);
+
+int fflush(FILE *stream);
+
 void disableCursor();
 void cls (void);
 void itoa (char *buf, int base, int d);
 int atoi(const char* __nptr);
 void newline();
-void putchar (int c);
-void printf (const char *format, ...);
-void sprintf (char* string, const char *format, ...);
 void enableFinnouMode(int enable);
 void set_attribute(uint8_t background, uint8_t foreground);
 void reset_attribute();

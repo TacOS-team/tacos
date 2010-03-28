@@ -219,10 +219,12 @@ int shell(int argc, char* argv[])
 		
 		time_t curr_time = time(NULL);
 		printf("\n > ");
+		fflush(stdout);
 			
 		while((c = getchar()) != '\n') {
 			buffer[i%80] = c;
 			putchar(c);
+			fflush(stdout);
 			i++;
 		}
 		buffer[i%80] = '\0';
