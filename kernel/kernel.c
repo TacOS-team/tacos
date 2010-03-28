@@ -177,13 +177,11 @@ void cmain (unsigned long magic, unsigned long addr) {
 	if(init_floppy() != 0)
 		printf("Initialisation du lecteur a echoue.\n");
 		
-	/*char MBR[FLOPPY_SECTOR_SIZE];
-	floppy_read_sector(0,0,0,MBR);
-	printf("MBR Signature:0x%x%x.\n",0xFF&MBR[0x01FE], 0xFF&MBR[0x01FF]);*/
 	
-	mbr_read ();
-	mbr_print_signature ();
-	mbr_print_part_table ();
+	/*   Test FAT    */
+	mount_fat_fs ();
+	//read_fat_BS ();
+	
 	
 	/* Test du scheduler */
 	
@@ -300,6 +298,14 @@ int shell(int argc, char* argv[])
 
 			printf("%s %d %s\n", s2, d, s);
 		}
+		if (strcmp(buffer, "ls") == 0) {
+			//printf("root directory:\n");
+			list_dir_entries ();
+		}
+		if (strcmp(buffer, "mount") == 0) {
+			read_fat_BS ();
+		}
+		
 	}
 	
 	return 0;

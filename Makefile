@@ -9,7 +9,7 @@ all: libc  utils drivers pci keyboard mouse clock kernel.bin
 
 kernel.bin: force_look 
 	$(MAKE) -C kernel
-	$(LD) -T linker.ld -o kernel.bin kernel/boot.o kernel/kernel.o kernel/i8259.o kernel/idt.o kernel/pagination.o kernel/memory.o kernel/exception_wrappers.o kernel/exception.o kernel/gdt.o kernel/interrupts.o kernel/interrupts_wrappers.o kernel/scheduler.o kernel/dummy_process.o kernel/process.o kernel/kpanic.o kernel/syscall.o kernel/vmm.o kernel/kmalloc.o kernel/mbr.o kernel/fpu.o kernel/vm86.o -melf_i386 $(LDFLAGS) $(LDLIBS)
+	$(LD) -T linker.ld -o kernel.bin kernel/boot.o kernel/kernel.o kernel/i8259.o kernel/idt.o kernel/pagination.o kernel/memory.o kernel/exception_wrappers.o kernel/exception.o kernel/gdt.o kernel/interrupts.o kernel/interrupts_wrappers.o kernel/scheduler.o kernel/dummy_process.o kernel/process.o kernel/kpanic.o kernel/syscall.o kernel/vmm.o kernel/kmalloc.o kernel/fat.o kernel/fpu.o kernel/vm86.o -melf_i386 $(LDFLAGS) $(LDLIBS)
 
 keyboard: force_look 
 	$(MAKE) -C $@ 
