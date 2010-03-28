@@ -39,6 +39,12 @@ void cmain (unsigned long magic, unsigned long addr);
 int shell(int argc, char* argv[]);
 static void testPageReservation();
 static void initKernelOptions(const char *cmdLine, kernel_options *options);
+static void test_kmalloc();
+
+void LPT1_routine(int id)
+{
+  // XXX : avoid segment_not_present
+}
 
 void exit(uint32_t value)
 {
@@ -130,7 +136,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	gdt_setup((mbi->mem_upper << 10) + (1 << 20));
 	
-	
 	asm("":"=a"(esp_tss));
 	init_tss(esp_tss);
 
@@ -143,6 +148,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	kpanic_init();
   
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
+	interrupt_set_routine(IRQ_LPT1, LPT1_routine, 0);
 	mouseInit();
 	init_syscall();
 	floppy_init_interrupt();
@@ -161,7 +167,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	//memory_print_free_pages();
 	//memory_print_used_pages();
-
 
   /* Initialisation de la vmm */
   init_vmm();
@@ -201,6 +206,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(0,sys_exit);
 	syscall_set_handler(1,sys_getpid);
 	start_scheduler();
+  //shell(0, NULL);
 
 	while(1){}
 }
@@ -300,6 +306,8 @@ int shell(int argc, char* argv[])
 
 			printf("%s %d %s\n", s2, d, s);
 		}
+    if(strcmp(buffer, "test_kmalloc") == 0)
+      test_kmalloc();
 		if (strcmp(buffer, "ls") == 0) {
 			//printf("root directory:\n");
 			list_dir_entries ();
@@ -374,5 +382,44 @@ static void initKernelOptions(const char *cmdLine, kernel_options *options)
 		default: printf("Unknown option %c\n", opt);
 		}
 	}
+}
+
+static void test_kmalloc()
+{
+  kmalloc_print_mem();
+  getchar();
+  int *a = kmalloc(300*sizeof(int));
+  a[0] = 100;
+  kmalloc_print_mem();
+  getchar();
+  a = kmalloc(300*sizeof(int));
+  a[0] = 100;
+  kmalloc_print_mem();
+  getchar();
+  a = kmalloc(300*sizeof(int));
+  a[0] = 100;
+  kmalloc_print_mem();
+  getchar();
+  a = kmalloc(300*sizeof(int));
+  a[0] = 100;
+  kmalloc_print_mem();
+  getchar();
+  a = kmalloc(300*sizeof(int));
+  a[0] = 100;
+  kmalloc_print_mem();
+  getchar();
+  a = kmalloc(300*sizeof(int));
+  a[0] = 100;
+  kmalloc_print_mem();
+  getchar();
+  a = kmalloc(300*sizeof(int));
+  a[0] = 100;
+  kmalloc_print_mem();
+  getchar();
+  printf("LAST\n");
+  a = kmalloc(300*sizeof(int));
+  a[0] = 100;
+  kmalloc_print_mem();
+  getchar();
 }
 
