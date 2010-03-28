@@ -40,14 +40,10 @@ int shell(int argc, char* argv[]);
 static void testPageReservation();
 static void initKernelOptions(const char *cmdLine, kernel_options *options);
 
-/* pour le test des processus */
-process_t task[3];
-uint32_t sys_stack[3][1024];
-uint32_t user_stack[3][1024];
-
 void exit(uint32_t value)
 {
-	syscall(0,42,value,0);
+	syscall(0,value,0,0);
+	while(1); // Pour ne pas continuer à executer n'importe quoi alors que le processus est sensé être arrété
 }
 
 uint32_t get_pid()
@@ -77,23 +73,23 @@ int test_mouse(int argc, char** argv)
 
 int test_task1(int argc, char** argv)
 {
-	int i = 0;
-	printf("---- Test Task1 ----\n");
+	int pid = get_pid();
+	printf("\nTache n%d\n",pid);
 	
-	while(1)
-	{
-		if(i%1000000 == 0)
-		{
-			printf("\ntask%d dit:\"Je tourne!!!\"\n",get_pid());
-		}
-		i++;
-	}
+	exit(0);
 }
 
 
-void* sys_exit(uint32_t pid, uint32_t ret_value, uint32_t zero)
+void* sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2)
 {
-	printf("Exit(process %d returned %d)", pid, ret_value);
+	process_t* current;
+	// On cherche le processus courant:
+	current = get_current_process();
+	
+	// On a pas forcement envie de supprimer le processus immédiatement
+	current->state = PROCSTATE_TERMINATED; 
+	
+	printf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
 }
 
 void* sys_getpid(uint32_t* pid, uint32_t zero1, uint32_t zero2)
@@ -107,6 +103,7 @@ void* sys_getpid(uint32_t* pid, uint32_t zero1, uint32_t zero2)
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
 	kernel_options options;
+	uint32_t esp_tss;
 
 	/* Clear the screen. */
 	cls ();
@@ -132,7 +129,10 @@ void cmain (unsigned long magic, unsigned long addr) {
 	printf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
 
 	gdt_setup((mbi->mem_upper << 10) + (1 << 20));
-	init_tss(sys_stack+1023);
+	
+	
+	asm("":"=a"(esp_tss));
+	init_tss(esp_tss);
 
 	/* Mise en place de la table qui contient les descripteurs d'interruption (idt) */
 	idt_setup();
@@ -187,7 +187,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	/* Test du scheduler */
 	
-	init_scheduler(1000);
+	init_scheduler(10);
 
 	paddr_t _addr = shell;
 	create_process(_addr,0,NULL,64,3);
@@ -198,7 +198,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	create_process(_addr, 0, NULL, 64, 3);
 	//while(1);
 */
-	printf("vm86:%d\n",check_vm86);
+	printf("vm86:%d\n",check_vm86());
+	
 	syscall_set_handler(0,sys_exit);
 	syscall_set_handler(1,sys_getpid);
 	start_scheduler();
@@ -213,8 +214,6 @@ int shell(int argc, char* argv[])
 	//kmalloc(10);
 	//asm("xchg %bx, %bx");
 	int i = 0;
-	
-	
 	
 	for(;;)
 	{

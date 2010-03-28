@@ -7,6 +7,7 @@
 #define PROCSTATE_IDLE 1
 #define PROCSTATE_RUNNING 2
 #define PROCSTATE_WAITING 3
+#define PROCSTATE_TERMINATED 4
 
 typedef struct
 {

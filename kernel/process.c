@@ -89,11 +89,6 @@ int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_s
 	uint32_t *sys_stack, *user_stack;
 	process_t* new_proc;
 
-	
-	//sys_stack = sys;
-	//user_stack = user;
-	
-	//asm("xchg %bx, %bx");
 	new_proc = kmalloc(sizeof(process_t));
 	sys_stack = kmalloc(stack_size*sizeof(uint32_t));
 	user_stack = kmalloc(stack_size*sizeof(uint32_t));
@@ -106,7 +101,6 @@ int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_s
 
 	if( ring == 0)
 	{
-		printf("Ring 0 process not implemented\n");
 		new_proc->regs.cs = 0x8;
 		new_proc->regs.ds = 0x10;
 		new_proc->regs.ss = 0x10;
@@ -123,9 +117,7 @@ int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_s
 	new_proc->regs.esp = (user_stack)+stack_size-1;
 	new_proc->sys_stack = (sys_stack)+stack_size-1;
 	new_proc->state = PROCSTATE_IDLE;
-	
 
-	
 	proc_count++;
 	
 	add_process(new_proc);
@@ -174,6 +166,9 @@ void print_process_list()
 				break;
 			case PROCSTATE_WAITING:
 				printf("WAITING\n");
+				break;
+			case PROCSTATE_TERMINATED:
+				printf("TERMINATED\n");
 				break;
 			default:
 				break;

@@ -55,9 +55,14 @@ static void* switch_process(void* data)
 	}
 
 	// On recupere le prochain processus à executer	
-	current = get_next_process();
-	//printf("0x%x\n",current);
-	if(current == NULL)
+	do
+	{
+		current = get_next_process();
+	}while(current->state == PROCSTATE_TERMINATED);
+	
+	// Si on a aucun processus en IDLE/WAITING/RUNNING, il n'y a aucune chance pour qu'un processus arrive spontanement
+	// Donc on arrete le scheduler
+	if(current == NULL) 
 	{
 		asm("hlt");
 	}
@@ -71,10 +76,9 @@ static void* switch_process(void* data)
 	get_default_tss()->esp0 = current->sys_stack;
 	
 	// Mise en place de l'interruption sur le quantum de temps
-	add_event(switch_process,NULL,quantum);
-	
+	add_event(switch_process,NULL,quantum);	
 	i8254_init(1000/*TIMER_FREQ*/);
-	//oasm("xchg %bx, %bx");
+
 	
 	// Changer le contexte:
 	ss = current->regs.ss;
@@ -149,14 +153,6 @@ static void* switch_process(void* data)
 	);
 	return NULL;
 }
-/*
-int idle_func(int argc, char* argv[])
-{
-	asm("hlt");
-}
-*/
-
-
 
 void init_scheduler(int Q)
 {

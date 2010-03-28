@@ -1,3 +1,4 @@
+#include <debug.h>
 
 int check_vm86()
 {
