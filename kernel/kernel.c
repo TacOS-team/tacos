@@ -25,7 +25,7 @@
 #include <vmm.h>
 #include <ioports.h>
 #include "msr.h"
-#include <mbr.h>
+#include "fat.h"
 #include <fpu.h>
 #include <vm86.h>
 
@@ -184,7 +184,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 		
 	
 	/*   Test FAT    */
-	mount_fat_fs ();
+	//mount_fat_fs ();
 	//read_fat_BS ();
 	
 	
