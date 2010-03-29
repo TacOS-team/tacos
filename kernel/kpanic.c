@@ -38,9 +38,9 @@ void page_fault_report(int error_code)
 
 	printf("Read/Write: ");
 	if(error_code & 0x02) // Bit W
-		printf("reading\n");
-	else
 		printf("write\n");
+	else
+		printf("reading\n");
 
 	printf("Privilege=");
 	if(error_code & 0x04) // Bit U

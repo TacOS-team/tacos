@@ -225,7 +225,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	init_scheduler(10);
 
 	paddr_t _addr = shell;
-	create_process(_addr,0,NULL,64,3);
+	create_process(_addr,0,NULL,256,3);
 	//process_print_regs();
 /*
 	_addr = test_task1;
@@ -338,6 +338,8 @@ int shell(int argc, char* argv[])
 
 			printf("%s %d %s\n", s2, d, s);
 		}
+    if(strcmp(buffer, "kmalloc_print_mem") == 0)
+      kmalloc_print_mem();
     if(strcmp(buffer, "test_kmalloc") == 0)
       test_kmalloc();
 		if (strcmp(buffer, "ls") == 0) {

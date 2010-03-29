@@ -326,3 +326,49 @@ unsigned int calculate_min_pages(size_t size)
   return (unsigned int) (nb_pages + ((nb_pages - (int) nb_pages > 0) ? 1 : 0));
 }
 
+static void print_slab(struct slab* s, bool free)
+{
+  set_attribute(BLACK, free ? GREEN : RED);
+  printf("[%x ; %x ; %x] ", s, s->prev, s->next);
+  fflush(stdout);
+  reset_attribute();
+}
+
+void vmm_print_heap()
+{
+  struct slab *free_it = free_slabs.begin;
+  struct slab *used_it = used_slabs.begin;
+
+  printf("\n-- VMM : printing heap --\n");
+
+  getchar();
+  while(free_it != NULL && used_it != NULL)
+  {
+    if(free_it < used_it)
+    {
+      print_slab(free_it, TRUE);
+      free_it = free_it->next;
+    } else
+    {
+      print_slab(used_it, FALSE);
+      used_it = used_it->next;
+    }
+  }
+
+  while(free_it != NULL)
+  {
+    print_slab(free_it, TRUE);
+    free_it = free_it->next;
+  }
+
+  while(used_it != NULL)
+  {
+    print_slab(used_it, FALSE);
+    used_it = used_it->next;
+  }
+ 
+  printf("\nVMM TOP : %x\n", vmm_top);
+
+  printf("-- VMM : end --\n");
+}
+
