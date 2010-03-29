@@ -7,16 +7,25 @@
 #define NB_HEADS 2
 #define NB_SECTORS 18
 
-typedef struct addr_CHS {
-	
-	uint32_t	Cylinder;
-	uint32_t	Head;
-	uint32_t	Sector;
-	
-}__attribute__((packed)) addr_CHS_t;
 
-typedef struct fat_BS
-{
+typedef uint32_t cluster_t;
+typedef uint32_t addr_LBA_t;
+typedef struct addr_CHS { uint32_t Cylinder; uint32_t Head; uint32_t Sector; } addr_CHS_t;
+
+
+typedef struct _path {
+	cluster_t list[100];
+	int current;
+	uint8_t working_dir[14];
+} path_t;
+
+typedef struct _fat_info {
+	addr_LBA_t	root_dir_LBA;
+	addr_LBA_t	data_segment_LBA;
+	cluster_t	root_dir_cluster;
+} fat_info_t;
+
+typedef struct _fat_BS {
 											//Offset
 	uint8_t		bootjmp[3];					//0x00
 	uint8_t		oem_name[8];				//0x03
@@ -43,7 +52,8 @@ typedef struct fat_BS
 	
 }__attribute__((packed)) fat_BS_t;
 
-typedef struct fat_dir_entry {
+typedef struct _fat_dir_entry {
+	
 	uint8_t		long_file_name[32];
 	uint8_t		utf8_short_name[8];
 	uint8_t		file_extension[3];
@@ -62,22 +72,17 @@ typedef struct fat_dir_entry {
 }__attribute__((packed)) fat_dir_entry_t;
 
 
-typedef struct virtual_FS_dir {
-
-	uint8_t		name[14];
-	uint32_t	entries_count;
-	uint16_t	cluster_pointer;
-	struct virtual_FS_dir * sub_directories[8];
-	
-	struct virtual_FS_dir * root_dir;
-	
-}__attribute__((packed)) virtual_FS_dir_t;
 
 
-void update_virtual_FS (virtual_FS_dir_t * vFS_dir, fat_dir_entry_t * fat_dir);
-void read_fat_BS ();
-void mount_fat_fs ();
-void list_dir_entries ();
-void present_dir ();
+
+void mount_FAT12 ();
+void open_working_dir ();
+
+void print_Boot_Sector ();
+
+void list_segments ();
+void print_working_dir ();
+
+void print_path ();
 
 #endif

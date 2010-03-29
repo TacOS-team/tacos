@@ -217,7 +217,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	/*   Test FAT    */
 	//mount_fat_fs ();
-	//read_fat_BS ();
+	mount_FAT12 ();
 	
 	
 	/* Test du scheduler */
@@ -342,13 +342,16 @@ int shell(int argc, char* argv[])
       test_kmalloc();
 		if (strcmp(buffer, "ls") == 0) {
 			//printf("root directory:\n");
-			list_dir_entries ();
+			list_segments ();
 		}
 		if (strcmp(buffer, "mount") == 0) {
-			read_fat_BS ();
+			print_Boot_Sector ();
 		}
 		if (strcmp(buffer, "pwd") == 0) {
-			present_dir ();
+			print_working_dir ();
+		}
+		if (strcmp(buffer, "debugfat") == 0) {
+			print_path ();
 		}
 		if (strcmp(buffer, "cd") == 0) {
 			while((c = getchar()) != '\n') {
