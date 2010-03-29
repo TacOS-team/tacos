@@ -315,6 +315,21 @@ int shell(int argc, char* argv[])
 		if (strcmp(buffer, "mount") == 0) {
 			read_fat_BS ();
 		}
+		if (strcmp(buffer, "pwd") == 0) {
+			present_dir ();
+		}
+		if (strcmp(buffer, "cd") == 0) {
+			while((c = getchar()) != '\n') {
+				buffer[i%80] = c;
+				putchar(c);
+				i++;
+			}
+			buffer[i%80] = '\0';
+			i = 0;
+			change_dir(buffer);
+		}
+		
+		
 		
 	}
 	
