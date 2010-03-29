@@ -19,9 +19,22 @@ int vfprintf(FILE *stream, const char *format, va_list ap) {
 		if (c != '%') {
 			fputc(c, stream);
 		} else {
+			int size = -1;
 			char *p;
 
 			c = *format++;
+
+			if(c == '.')
+			{
+			  char c2;
+			  size = 0;
+			 
+			  for(c2 = *format++; c2>='0' && c2<='9' ;c2 = *format++)
+						 size = size * 10 + (c2 - '0');
+			 
+			  c = *(format-1);
+			}
+
 			switch (c) {
 				case 'd':
 				case 'u':
@@ -30,11 +43,17 @@ int vfprintf(FILE *stream, const char *format, va_list ap) {
 					p = buf;
 					goto string;
 					break;
+				case 'c':
+					fputc(va_arg(ap, char), stream);
+					break;
 				case 's':
 					p = va_arg(ap, char *);
 					if (p == NULL)
 						p = "(null)";
 				string:
+					if (size >= 0) {
+						p[size] = '\0';
+					}
 					fputs(p, stream);
 					break;
 				default:

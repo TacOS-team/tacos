@@ -1,6 +1,6 @@
 INCLUDES=-I../../include/
 
-stdio: stdio.o sscanf.o stdfiles.o fprintf.o printf.o put.o
+stdio: stdio.o sscanf.o stdfiles.o fprintf.o printf.o put.o sprintf.o
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
@@ -14,6 +14,8 @@ stdfiles.o : ../../include/types.h ../../include/libio.h
 fprintf.o: ../../include/stdio.h
 
 printf.o: ../../include/stdio.h
+
+sprintf.o: ../../include/stdio.h
 
 put.o: ../../include/stdio.h
 

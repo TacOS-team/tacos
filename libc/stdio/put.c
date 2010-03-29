@@ -2,8 +2,10 @@
 #include <stdlib.h>
 
 int fflush(FILE *stream) {
-	write(stream->_fileno, stream->_IO_write_base, stream->_IO_write_ptr - stream->_IO_write_base);
-	stream->_IO_write_ptr = stream->_IO_write_base;
+	if (stream->_fileno > 0) {
+		write(stream->_fileno, stream->_IO_write_base, stream->_IO_write_ptr - stream->_IO_write_base);
+		stream->_IO_write_ptr = stream->_IO_write_base;
+	}
 }
 
 static char buf[1000];
@@ -38,10 +40,17 @@ int fputc(int c, FILE *stream) {
 			fflush(stream);
 		}
 	} else {
-		// Non bufferisé.
-		fflush(stream);
+		if (stream->_fileno == -1) {
+			if (stream->_IO_write_ptr >= stream->_IO_buf_end) {
+				return EOF;
+			}
+		} else {
+			// Non bufferisé.
+			fflush(stream);
+		}
 	}
-
+	
+	return c;
 }
 
 int fputs(const char *s, FILE *stream) {

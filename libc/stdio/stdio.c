@@ -241,64 +241,6 @@ size_t write(int fd, const void *buf, size_t count) {
 	return count;
 }
 
-void sprintf (char* string, const char *format, ...) {
-	char **arg = (char **) &format;
-	int c;
-	int size;
-	char buf[20];
-	int i=0;
-	
-	arg++;
-
-	while ((c = *format++) != 0) {
-		if (c != '%') {
-			string[i] = c;
-			i++;
-		} else {
-			char *p;
-			size = -1;
-			c = *format++;
-			
-			if(c == '.')
-			{
-				char c2;
-				size = 0;
-				
-				for(c2 = *format++; c2>='0' && c2<='9' ;c2 = *format++)
-					buf[size++] = c2;
-				
-				buf[size] = '\0';
-				size = atoi(buf);
-				
-				c = *(format-1);
-			}	
-			
-			switch (c) {
-				case 'd':
-				case 'u':
-				case 'x':
-					itoa (buf, c, *((int *) arg++));
-					p = buf;
-					goto string;
-					break;
-				case 's':
-					p = *arg++;
-					if (! p)
-						p = "(null)";
-				string:
-					while (*p && size--)
-					{
-						string[i++] = *p++;
-					}
-					break;
-				default:
-					string[i++] = (*((int *) arg++));
-					break;
-			}
-		}
-	}
-}
-
 void enableFinnouMode(int enable)
 {
   finnouMode = enable;
