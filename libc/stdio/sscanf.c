@@ -1,13 +1,32 @@
 #include <ctype.h>
 #include <stdarg.h>
 #include <stdio.h>
-#include <types.h>
+#include <libio.h>
 
-#define        inchar()       ((c = *s++) == EOF ? EOF : c)
 #define        conv_error()   return -1
 #define        input_error()  return (done == 0 ? EOF : done)
 
 int vsscanf(const char *s, const char *format, va_list ap) {
+	FILE stream;
+   stream._fileno = -1;
+   stream._IO_buf_base = s;
+   stream._IO_buf_end = s + strlen(s);
+   stream._IO_read_base = s;
+   stream._IO_read_ptr = stream._IO_buf_end;
+   stream._IO_read_end = s;
+   stream._flags = _IO_MAGIC + _IO_UNBUFFERED;
+	return vfscanf(&stream, format, ap);
+}
+
+int sscanf(const char *s, const char *format, ...) {
+	va_list ap;
+
+	va_start(ap, format);
+	vsscanf(s, format, ap);
+	va_end(ap);
+}
+
+int vfscanf(FILE *stream, const char *format, va_list ap) {
   const char *f = format;
   char fc;                /* Current character of the format.  */
   size_t done = 0;        /* Assignments done.  */
@@ -26,11 +45,12 @@ int vsscanf(const char *s, const char *format, va_list ap) {
   char work[200];
   char *w;
 
-  c = inchar();
+  c = fgetc(stream);
 
   /* Run through the format string.  */
   while (*f != '\0')
     {
+
       fc = *f++;
       if (fc != '%')
         {
@@ -41,11 +61,11 @@ int vsscanf(const char *s, const char *format, va_list ap) {
             {
               /* Whitespace characters match any amount of whitespace.  */
               while (isspace (c))
-                inchar ();
+                c = fgetc(stream);
               continue;
             }
           else if (c == fc)
-            (void) inchar();
+            c = fgetc(stream);
           else
             conv_error();
           continue;
@@ -88,7 +108,7 @@ int vsscanf(const char *s, const char *format, va_list ap) {
               if (isspace (c))
                 break;
                *str++ = c; 
-            } while (inchar () != EOF);
+            } while ((c = fgetc(stream)) != EOF);
 
           *str = '\0';
 			 ++done;
@@ -127,7 +147,7 @@ int vsscanf(const char *s, const char *format, va_list ap) {
           if (c == '-' || c == '+')
             {
               *w++ = c;
-              (void) inchar();
+              c = fgetc(stream);
             }
 
           /* Look for a leading indication of base.  */
@@ -135,7 +155,7 @@ int vsscanf(const char *s, const char *format, va_list ap) {
             {
               *w++ = '0';
 
-              (void) inchar();
+              c = fgetc(stream);
 
               if (tolower(c) == 'x')
                 {
@@ -143,7 +163,7 @@ int vsscanf(const char *s, const char *format, va_list ap) {
                     base = 16;
                   if (base == 16)
                     {
-                      (void) inchar();
+                      c = fgetc(stream);
                     }
                 }
               else if (base == 0)
@@ -160,7 +180,7 @@ int vsscanf(const char *s, const char *format, va_list ap) {
                   (!isdigit(c) || c - '0' >= base))
                 break;
               *w++ = c;
-            } while (inchar() != EOF);
+            } while ((c = fgetc(stream)) != EOF);
 
           if (w == work ||
               (w - work == 1 && (work[0] == '+' || work[0] == '-')))
@@ -195,13 +215,13 @@ int vsscanf(const char *s, const char *format, va_list ap) {
 
   conv_error();
 
+
 }
 
-int sscanf(const char *s, const char *format, ...) {
+int fscanf(FILE *stream, const char *format, ...) {
 	va_list ap;
 
 	va_start(ap, format);
-	vsscanf(s, format, ap);
+	vfscanf(stream, format, ap);
 	va_end(ap);
 }
-

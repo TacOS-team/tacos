@@ -44,7 +44,7 @@ int vfprintf(FILE *stream, const char *format, va_list ap) {
 					goto string;
 					break;
 				case 'c':
-					fputc(va_arg(ap, char), stream);
+					fputc(va_arg(ap, int), stream);
 					break;
 				case 's':
 					p = va_arg(ap, char *);

@@ -1,6 +1,6 @@
 INCLUDES=-I../../include/
 
-stdio: stdio.o sscanf.o stdfiles.o fprintf.o printf.o put.o sprintf.o
+stdio: stdio.o sscanf.o stdfiles.o fprintf.o printf.o put.o sprintf.o get.o
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
@@ -18,6 +18,8 @@ printf.o: ../../include/stdio.h
 sprintf.o: ../../include/stdio.h
 
 put.o: ../../include/stdio.h
+
+get.o: ../../include/stdio.h
 
 clean:
 	rm -f *.o

@@ -49,6 +49,8 @@ int putc(int c, FILE *stream);
 int putchar(int c);
 int puts(const char *s);
 
+int fgetc(FILE *stream);
+
 int fflush(FILE *stream);
 
 void disableCursor();
