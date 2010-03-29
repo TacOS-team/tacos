@@ -309,6 +309,12 @@ void set_attribute(uint8_t background, uint8_t foreground)
   attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
 }
 
+void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y)
+{
+	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%25) * COLUMNS].attribute = attribute;
+	(*video)[x + y * COLUMNS].attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
+}
+
 void reset_attribute()
 {
   attribute = DEFAULT_ATTRIBUTE_VALUE;

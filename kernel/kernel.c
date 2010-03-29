@@ -64,6 +64,12 @@ int test_mouse(int argc, char** argv)
 	int i = 0;
 	int x;
 	int y;
+	int old_x = 0;
+	int old_y = 0;
+	int col1 = 2;
+	int col2 = 5;
+	int btn1_frz = 0;
+	int btn2_frz = 0;
 	printf("---- Test Mouse ----\n");
 	
 	while(1)
@@ -71,7 +77,33 @@ int test_mouse(int argc, char** argv)
 		if(i%100000 == 0)
 		{
 			getMouseCoord(&x,&y);
-			printf("\nmouse: %d %d [%d;%d;%d]\n",x,y,getMouseBtn(0),getMouseBtn(1),getMouseBtn(2));
+			
+			if(getMouseBtn(0))
+			{
+				if(!btn1_frz) col1 = (col1+1)%0xF;
+				btn1_frz = 1;
+			}
+			else
+			{
+				btn1_frz = 0;
+			}
+			
+			if(getMouseBtn(1))
+			{
+				if(!btn2_frz) col2 = (col2+1)%0xF;
+				btn2_frz = 1;
+			}
+			else
+			{
+				btn2_frz = 0;
+			}
+			
+			x = x*80/640;
+			y = 25 - (y*25/480);
+			set_attribute_position(0, col2, old_x, old_y);
+			set_attribute_position(col1, col2, x, y);
+			old_x = x;
+			old_y = y;
 		}
 		i++;
 	}

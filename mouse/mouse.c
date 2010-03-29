@@ -12,7 +12,7 @@ static int packet_x_sign;
 static int packet_y_sign;
 
 #define SCREEN_HEIGHT 480
-#define SCREEN_WIDTH 600
+#define SCREEN_WIDTH 640
 
 static void mouse_wait(unsigned char type)
 {
