@@ -65,7 +65,7 @@ void mount_FAT12 () {
 	
 	path.current = 0;
 	path.list[path.current] = fat_info.root_dir_cluster;
-	strcpy(path.working_dir,"root");
+	strcpy(path.name[path.current],"root");
 	
 	open_working_dir ();
 }
@@ -89,15 +89,20 @@ void change_dir (char * target_name) {
 	char name[14];
 	
 	if (strcmp(target_name, "..") == 0) {
-		path.current = path.current -1;
-		open_working_dir ();
+		if (path.current == 0 ) {
+			printf("cd: impossible d'acceder a repertoire .. depuis root/\n");
+		}
+		else {
+			path.current = path.current -1;
+			open_working_dir ();
+		}
 	}
 	else {
 		for (i=0;i<8;i++) {
 			if (strcmp(target_name, decode_long_file_name (name, current_dir[i].long_file_name)) == 0) {
 				path.current = path.current + 1;
 				path.list[path.current] = current_dir[i].cluster_pointer;
-				strcpy(path.working_dir,name);
+				strcpy(path.name[path.current],name);
 				open_working_dir ();
 			}
 		}
@@ -118,7 +123,10 @@ void list_segments () {
 }
 
 void print_working_dir () {
-	printf("%s\n",path.working_dir);
+	int i;
+	
+	for (i=0;i<=path.current;i++)
+		printf("%s/",path.name[i]);
 }
 
 void print_Boot_Sector () {

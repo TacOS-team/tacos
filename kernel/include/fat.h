@@ -15,8 +15,8 @@ typedef struct addr_CHS { uint32_t Cylinder; uint32_t Head; uint32_t Sector; } a
 
 typedef struct _path {
 	cluster_t list[100];
+	char name[100][14];
 	int current;
-	uint8_t working_dir[14];
 } path_t;
 
 typedef struct _fat_info {
