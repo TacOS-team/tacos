@@ -1,10 +1,18 @@
 #ifndef _LIBIO_H_
 #define _LIBIO_H_
 
+#define FOPEN_MAX 500
+
 #define _IO_MAGIC 0xFBAD0000 /* Magic number (je le garde par compatibilité) */
 #define _IO_MAGIC_MASK 0xFFFF0000 /* Pour filter le magic number */
 #define _IO_UNBUFFERED 2 
 #define _IO_LINE_BUF 0x200 
+// TODO : définir d'autres flags (cf libc)
+
+typedef struct {
+	//open_file_descriptor *ofd;
+	// droits ?
+} file_descriptor;
 
 struct _IO_FILE {
 	int _flags;		/* High-order word is _IO_MAGIC; rest is flags. */

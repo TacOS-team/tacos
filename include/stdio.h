@@ -43,6 +43,9 @@ int vfprintf(FILE *stream, const char *format, va_list ap);
 int vsprintf(char *str, const char *format, va_list ap);
 int vsnprintf(char *str, size_t size, const char *format, va_list ap);
 
+int vsscanf(const char *s, const char *format, va_list ap);
+int sscanf(const char *s, const char *format, ...);
+
 int fputc(int c, FILE *stream);
 int fputs(const char *s, FILE *stream);
 int putc(int c, FILE *stream);
@@ -53,6 +56,11 @@ int fgetc(FILE *stream);
 
 int fflush(FILE *stream);
 
+FILE *fopen(const char *path, const char *mode);
+FILE *fdopen(int fd, const char *mode);
+FILE *freopen(const char *path, const char *mode, FILE *stream);
+
+// Vieux code pour affichage en 80x25...
 void disableCursor();
 void cls (void);
 void itoa (char *buf, int base, int d);
@@ -64,8 +72,5 @@ void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y
 void reset_attribute();
 void switchDebugBuffer();
 void switchStandardBuffer();
-
-int vsscanf(const char *s, const char *format, va_list ap);
-int sscanf(const char *s, const char *format, ...);
 
 #endif

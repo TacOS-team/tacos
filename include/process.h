@@ -3,6 +3,7 @@
 
 #include <types.h>
 #include <pagination.h>
+#include <libio.h>
 
 #define PROCSTATE_IDLE 1
 #define PROCSTATE_RUNNING 2
@@ -25,6 +26,8 @@ typedef struct{
 	uint8_t	priority;
 	paddr_t		sys_stack;
 	regs_t regs;
+	file_descriptor fd[FOPEN_MAX];
+	FILE* file_list;
 } process_t;
 
 typedef struct _proclist_cell{
