@@ -42,6 +42,9 @@ img: all
 runqemu: core.img
 	qemu -fda core.img -m 8
 
+runqemugdb: core.img
+	qemu -fda core.img -m 8 -s -S
+
 runbochs: core.img
 	BOCHSRC=bochsrc bochs
 

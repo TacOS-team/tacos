@@ -181,7 +181,7 @@ int kfree(void *p)
 static void print_mem(struct mem* m, bool free)
 {
   set_attribute(BLACK, free ? GREEN : RED);
-  printf("[%x ; %x ; %x] ", m, m->prev, m->next);
+  printf("[%x ; %x ; %x] ", m, m->size,  m->prev, m->next);
   fflush(stdout);
   reset_attribute();
 }

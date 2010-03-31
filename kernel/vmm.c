@@ -100,7 +100,7 @@ static void add(struct slabs_list *list, struct slab *s)
 }
 
 // Retourne l'entrée de répertoire de page correspondant à dir
-static struct page_directory_entry *get_pde(int dir)
+struct page_directory_entry *get_pde(int dir)
 {
   struct page_directory_entry *page_directory = 
 	  (struct page_directory_entry *) PDE_MAGIC;
@@ -108,12 +108,12 @@ static struct page_directory_entry *get_pde(int dir)
 }
 
 // Retourne l'entrée de table de page correspondant à dir, table
-static struct page_table_entry *get_pte(int dir, int table)
+struct page_table_entry *get_pte(int dir, int table)
 {
-  struct page_table_entry *page_table =
-    ((struct page_table_entry *) (get_pde(dir)->page_table_addr << 12));
 //  struct page_table_entry *page_table =
-//      (struct page_table_entry *) (PTE_MAGIC + (1024 * dir));
+//    ((struct page_table_entry *) (get_pde(dir)->page_table_addr << 12));
+  struct page_table_entry *page_table =
+     ((struct page_table_entry *) PTE_MAGIC) + (1024 * dir);
   return &page_table[table];
 }
 
@@ -341,7 +341,6 @@ void vmm_print_heap()
 
   printf("\n-- VMM : printing heap --\n");
 
-  getchar();
   while(free_it != NULL && used_it != NULL)
   {
     if(free_it < used_it)

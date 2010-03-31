@@ -203,7 +203,6 @@ void cmain (unsigned long magic, unsigned long addr) {
   /* Initialisation de la vmm */
   init_vmm();
   init_kmalloc();
-
 //	printf("Div 0 : %d.\n", 3/0);
 //	pci_scan();
 //	pci_list();
@@ -225,7 +224,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	init_scheduler(10);
 
 	paddr_t _addr = shell;
-	create_process(_addr,0,NULL,256,3);
+	create_process(_addr,0,NULL,1024,3);
 	//process_print_regs();
 /*
 	_addr = test_task1;
