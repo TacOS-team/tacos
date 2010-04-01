@@ -28,6 +28,7 @@
 #include "fat.h"
 #include <fpu.h>
 #include <vm86.h>
+#include <beeper.h>
 
 typedef struct
 {
@@ -163,6 +164,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	printf("    _|    _|    _|  _|        _|    _|        _|\n");
 	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
 	printf("(codename:fajitas)\n\n\n");
+
+	//beep();
 
 	printf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
 
