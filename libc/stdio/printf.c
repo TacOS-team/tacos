@@ -18,5 +18,5 @@ int printf(const char *format, ...) {
 }
 
 int vprintf(const char *format, va_list ap) {
-	vfprintf(stdout, format, ap);
+	return vfprintf(stdout, format, ap);
 }

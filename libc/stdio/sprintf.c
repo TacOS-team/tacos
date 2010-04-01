@@ -11,7 +11,7 @@ int sprintf(char *str, const char *format, ...) {
     int result;
  
     va_start(arg, format);
-    result = vfprintf(stdout, format, arg);
+    result = vsprintf(str, format, arg);
     va_end(arg);
  
     return result;
@@ -22,7 +22,7 @@ int snprintf(char *str, size_t size, const char *format, ...) {
     int result;
  
     va_start(arg, format);
-    result = vfprintf(stdout, format, arg);
+    result = vsnprintf(str, size, format, arg);
     va_end(arg);
  
     return result;

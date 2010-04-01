@@ -5,15 +5,16 @@ int fflush(FILE *stream) {
 	if (stream->_fileno > 0) {
 		write(stream->_fileno, stream->_IO_write_base, stream->_IO_write_ptr - stream->_IO_write_base);
 		stream->_IO_write_ptr = stream->_IO_write_base;
+		return 0;
 	}
+	return EOF;
 }
 
 static char buf[1000];
 
 int fputc(int c, FILE *stream) {
-	char *ptr = stream->_IO_write_ptr;
 	// Ajoute dans le buffer.
-	//
+	
 	if (stream->_IO_write_ptr == NULL) {
 	//	char * buf = malloc(1000);
 		stream->_IO_buf_base = buf;
@@ -31,7 +32,7 @@ int fputc(int c, FILE *stream) {
 		if (stream->_IO_write_ptr >= stream->_IO_buf_end) {
 			fflush(stream);
 		}
-	} else if (stream->_flags & _IO_LINE_BUF ) {
+	} else if (stream->_flags & _IO_LINE_BUF) {
 		// Line buffered : on flush si on prend un \n ou si on arrive à la 
 		// fin du buffer.
 
@@ -55,14 +56,17 @@ int fputc(int c, FILE *stream) {
 
 int fputs(const char *s, FILE *stream) {
 	while(*s != '\0') {
-		fputc(*s++, stream);
+		if(fputc(*s++, stream) == EOF) {
+			return EOF;	
+		}
 	}
+	return -2;
 }
 
 int putchar(int c) {
-	fputc(c, stdout);
+	return fputc(c, stdout);
 }
 
 int puts(const char *s) {
-	fputs(s, stdout);
+	return fputs(s, stdout);
 }

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int fprintf(FILE *stream, const char *format, ...) {
     va_list arg;
@@ -14,10 +15,14 @@ int fprintf(FILE *stream, const char *format, ...) {
 int vfprintf(FILE *stream, const char *format, va_list ap) {
 	int c;
 	char buf[20];
+	int n = 0;
 
 	while ((c = *format++) != 0) {
 		if (c != '%') {
-			fputc(c, stream);
+			if (fputc(c, stream) == EOF) {
+				return -1;
+			}
+			n++;
 		} else {
 			int size = -1;
 			char *p;
@@ -44,7 +49,10 @@ int vfprintf(FILE *stream, const char *format, va_list ap) {
 					goto string;
 					break;
 				case 'c':
-					fputc(va_arg(ap, int), stream);
+					if (fputc(va_arg(ap, int), stream) == EOF) {
+						return -1;
+					}
+					n++;
 					break;
 				case 's':
 					p = va_arg(ap, char *);
@@ -53,14 +61,22 @@ int vfprintf(FILE *stream, const char *format, va_list ap) {
 				string:
 					if (size >= 0) {
 						p[size] = '\0';
+						n += size;
+					} else {
+						n += strlen(p);
 					}
-					fputs(p, stream);
+					if (fputs(p, stream) == EOF) {
+						return -1;
+					}
 					break;
 				default:
-					fputc('%', stream);
-					fputc(c, stream);
+					if (fputc('%', stream) == EOF || fputc(c, stream) == EOF) {
+						return -1;
+					}
+					n += 2;
 					break;
 			}
 		}
 	}
+	return n;
 }

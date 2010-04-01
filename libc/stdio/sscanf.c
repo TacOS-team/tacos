@@ -1,7 +1,9 @@
 #include <ctype.h>
 #include <stdarg.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <libio.h>
+#include <string.h>
 
 #define        conv_error()   return -1
 #define        input_error()  return (done == 0 ? EOF : done)
@@ -19,11 +21,13 @@ int vsscanf(const char *s, const char *format, va_list ap) {
 }
 
 int sscanf(const char *s, const char *format, ...) {
+	int result;
 	va_list ap;
 
 	va_start(ap, format);
-	vsscanf(s, format, ap);
+	result = vsscanf(s, format, ap);
 	va_end(ap);
+	return result;
 }
 
 int vfscanf(FILE *stream, const char *format, va_list ap) {
@@ -219,9 +223,12 @@ int vfscanf(FILE *stream, const char *format, va_list ap) {
 }
 
 int fscanf(FILE *stream, const char *format, ...) {
+	int result;
 	va_list ap;
 
 	va_start(ap, format);
-	vfscanf(stream, format, ap);
+	result = vfscanf(stream, format, ap);
 	va_end(ap);
+
+	return result;
 }
