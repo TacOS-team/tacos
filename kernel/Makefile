@@ -33,7 +33,7 @@ interrupts.o: ../include/interrupts.h ../include/types.h include/idt.h
 
 scheduler.o: ../include/stdio.h ../include/types.h include/scheduler.h
 
-process.o : ../include/stdio.h ../include/stdlib.h ../include/process.h ../include/types.h
+process.o : ../include/stdio.h ../include/stdlib.h ../include/process.h ../include/types.h ../include/libio.h
 
 dummy_process.o: ../include/stdio.h ../include/types.h include/dummy_process.h
 

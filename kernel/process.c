@@ -1,7 +1,7 @@
 #include <types.h>
 #include <stdlib.h>
 #include <stdio.h> 
-
+#include <libio.h> 
 
 #include <gdt.h>
 #include <process.h>
@@ -90,6 +90,7 @@ int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_s
 {
 	uint32_t *sys_stack, *user_stack;
 	process_t* new_proc;
+	int i;
 
 	new_proc = kmalloc(sizeof(process_t));
 	sys_stack = kmalloc(stack_size*sizeof(uint32_t));
@@ -120,7 +121,9 @@ int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_s
 	new_proc->sys_stack = (sys_stack)+stack_size-1;
 	new_proc->state = PROCSTATE_IDLE;
 
-
+	for(i=0;i<FOPEN_MAX;i++) 
+		new_proc->fd[i].used = FALSE;
+		
 	init_stdfiles(&new_proc->stdin, &new_proc->stdout, &new_proc->stderr);
 	// Temporaire :
 	stdin = new_proc->stdin;

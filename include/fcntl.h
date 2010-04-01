@@ -1,6 +1,8 @@
 #ifndef _FCNTL_H_
 #define _FCNTL_H_
 
+#include <types.h>
+
 // Define pour open.
 
 #define O_ACCMODE 00000003
@@ -53,9 +55,23 @@
 #define O_NDELAY  O_NONBLOCK
 #endif
 
-int open(const char *pathname, int flags);
-int open(const char *pathname, int flags, mode_t mode);
+typedef struct _open_file_descriptor {
+	char * path;
+	int flags;
+	uint32_t first_cluster;
+	uint32_t current_cluster;
+	uint8_t buffer[512];
+	uint32_t current_octet;
+	uint32_t size_of_file;
+} open_file_descriptor;
 
-int creat(const char *pathname, mode_t mode);
+
+
+int open(const char *pathname, int flags);
+//int open(const char *pathname, int flags, mode_t mode);
+
+//int creat(const char *pathname, mode_t mode);
+
+void* sys_open(uint32_t p_ofd, uint32_t zero1, uint32_t zero2);
 
 #endif

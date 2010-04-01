@@ -1,6 +1,8 @@
 #ifndef _LIBIO_H_
 #define _LIBIO_H_
 
+#include <fcntl.h>
+
 #define FOPEN_MAX 500
 
 #define _IO_MAGIC 0xFBAD0000 /* Magic number (je le garde par compatibilité) */
@@ -9,9 +11,11 @@
 #define _IO_LINE_BUF 0x200 
 // TODO : définir d'autres flags (cf libc)
 
-typedef struct {
-	//open_file_descriptor *ofd;
-	// droits ?
+
+
+typedef struct _file_descriptor {
+	open_file_descriptor *ofd;
+	bool used;
 } file_descriptor;
 
 struct _IO_FILE {
