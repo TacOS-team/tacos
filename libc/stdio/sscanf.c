@@ -13,6 +13,7 @@ int vsscanf(const char *s, const char *format, va_list ap) {
    stream._fileno = -1;
    stream._IO_buf_base = s;
    stream._IO_buf_end = s + strlen(s);
+	*stream._IO_buf_end++ = EOF;
    stream._IO_read_base = s;
    stream._IO_read_ptr = stream._IO_buf_end;
    stream._IO_read_end = s;
@@ -109,7 +110,7 @@ int vfscanf(FILE *stream, const char *format, va_list ap) {
 
           do
             {
-              if (isspace (c))
+              if (isspace (c) || c == '\n')
                 break;
                *str++ = c; 
             } while ((c = fgetc(stream)) != EOF);
@@ -231,4 +232,8 @@ int fscanf(FILE *stream, const char *format, ...) {
 	va_end(ap);
 
 	return result;
+}
+
+int scanf(const char *format, ...) {
+	return fscanf(stdin, format);
 }

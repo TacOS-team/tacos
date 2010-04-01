@@ -14,6 +14,8 @@ uint32_t proc_count = 0;
 static proc_list process_list = NULL;
 static proclist_cell* current_proclist_cell = NULL;
 
+static process_t * active_process = NULL;
+
 process_t* get_current_process()
 {
 	return current_proclist_cell->process;
@@ -99,7 +101,7 @@ int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_s
 	new_proc->regs.ecx = 0;
 	new_proc->regs.edx = 0;
 
-	if( ring == 0)
+	if(ring == 0)
 	{
 		new_proc->regs.cs = 0x8;
 		new_proc->regs.ds = 0x10;
@@ -118,10 +120,20 @@ int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_s
 	new_proc->sys_stack = (sys_stack)+stack_size-1;
 	new_proc->state = PROCSTATE_IDLE;
 
+
+	init_stdfiles(&new_proc->stdin, &new_proc->stdout, &new_proc->stderr);
+	// Temporaire :
+	stdin = new_proc->stdin;
+	stdout = new_proc->stdout;
+	stderr = new_proc->stderr;
+
 	proc_count++;
 	
 	add_process(new_proc);
 	
+	//FIXME: Si je décommente cette ligne je me prend une double faute !
+	//active_process = new_proc;
+
 	return new_proc->pid;
 }
 
@@ -177,4 +189,6 @@ void print_process_list()
 	}
 }
 
-
+process_t * get_active_process() {
+	return active_process;
+}

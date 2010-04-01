@@ -26,8 +26,14 @@ typedef struct{
 	uint8_t	priority;
 	paddr_t		sys_stack;
 	regs_t regs;
+
 	file_descriptor fd[FOPEN_MAX];
 	FILE* file_list;
+	// Temporairement je rajoute stdin, stdout et stderr. 
+	// Ça sera supprimé lorsqu'on aura un changement de la pagination lors du changement de contexte.
+	FILE * stdin;
+	FILE * stdout;
+	FILE * stderr;
 } process_t;
 
 typedef struct _proclist_cell{
@@ -42,5 +48,6 @@ process_t* find_process(int pid);
 process_t* get_current_process();
 process_t* get_next_process();
 void process_print_regs();
+process_t* get_active_process();
 
 #endif

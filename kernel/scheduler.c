@@ -79,7 +79,11 @@ static void* switch_process(void* data)
 	add_event(switch_process,NULL,quantum);	
 	i8254_init(1000/*TIMER_FREQ*/);
 
-	
+	// On réaffecte à la main stdin, stdout et stderr. TEMPORAIRE !
+	stdin = current->stdin;
+	stdout = current->stdout;
+	stderr = current->stderr;
+
 	// Changer le contexte:
 	ss = current->regs.ss;
 	cs = current->regs.cs;

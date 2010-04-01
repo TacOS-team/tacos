@@ -58,12 +58,15 @@ int putchar(int c);
 int puts(const char *s);
 
 int fgetc(FILE *stream);
+int getchar(void);
 
 int fflush(FILE *stream);
 
 FILE *fopen(const char *path, const char *mode);
 FILE *fdopen(int fd, const char *mode);
 FILE *freopen(const char *path, const char *mode, FILE *stream);
+
+void init_stdfiles(FILE ** _stdin, FILE ** _stdout, FILE ** _stderr);
 
 // Vieux code pour affichage en 80x25...
 void disableCursor();

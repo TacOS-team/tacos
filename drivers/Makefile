@@ -23,7 +23,7 @@ beeper: force_look
 	$(MAKE) -C $@
 	
 clean:
-	rm -f *.o
+	rm -f */*.o
 
 force_look:
 	@true

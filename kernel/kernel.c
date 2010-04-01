@@ -266,8 +266,6 @@ int shell(int argc, char* argv[])
 			
 		while((c = getchar()) != '\n') {
 			buffer[i%80] = c;
-			putchar(c);
-			fflush(stdout);
 			i++;
 		}
 		buffer[i%80] = '\0';
@@ -329,6 +327,12 @@ int shell(int argc, char* argv[])
 			//syscall(0x42,0,1,2);
 			exit(-1);
 		}
+		if (strcmp(buffer, "scanf") == 0) {
+			printf("Entre un mot : \n");
+			char b[100];
+			scanf("%s", b);
+			printf("Tu as tape le mot : %s\n", b);
+		}
 		if(strcmp(buffer,"ps")==0)
 		{
 			print_process_list();
@@ -363,7 +367,6 @@ int shell(int argc, char* argv[])
 		if (strcmp(buffer, "cd") == 0) {
 			while((c = getchar()) != '\n') {
 				buffer[i%80] = c;
-				putchar(c);
 				i++;
 			}
 			buffer[i%80] = '\0';

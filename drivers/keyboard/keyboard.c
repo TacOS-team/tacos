@@ -152,7 +152,6 @@ static letter letters_azerty[] = {
   {0x49, 0, '9'}
 };
 
-static char buffer[BUFFER_SIZE];
 static int begin = 0, end = 0;
 static int shift = 0;
 static int capslock = 0;
@@ -160,24 +159,15 @@ static int numlock = 0;
 
 void keyBufferPush(char c)
 {
-  if((end+1 % BUFFER_SIZE) != begin)
-  {
-    buffer[end++] = c;
-    if(end >= BUFFER_SIZE)
-      end = 0;
-  }
-}
-
-char keyBufferPop()
-{
-  char c = -1;
-  if(begin != end)
-  {
-    c = buffer[begin++];
-    if(begin >= BUFFER_SIZE)
-      begin = 0;
-  }
-  return c;
+	if (stdin->_IO_write_ptr == NULL) {
+		char * buf = malloc(1000);
+		stdin->_IO_buf_base = buf;
+		stdin->_IO_buf_end = buf + 1000;
+		stdin->_IO_read_base = stdin->_IO_buf_base;
+		stdin->_IO_read_end = stdin->_IO_buf_base;
+		stdin->_IO_read_ptr = stdin->_IO_buf_base;
+	}
+	*(stdin->_IO_read_ptr++) = c;
 }
 
 char keyboardConvertToChar(uint8_t scancode) {
@@ -237,20 +227,5 @@ void keyboardInterrupt(int id)
 	 }
 			  }
   }
-}
-
-char getchar()
-{
-  char c;
-  int i;
-  
-  while((c = keyBufferPop()) == -1)
-  {
-    // XXX : Mais pourquoi y a besoin de cette fucking tempo ?
-//  for(i = 0 ; i<100000 ; i++)
-      ;
-	// Ca marche sans la tempo en +... ?
-  }
-  return c;
 }
 
