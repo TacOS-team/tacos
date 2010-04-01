@@ -263,12 +263,9 @@ int shell(int argc, char* argv[])
 		time_t curr_time = time(NULL);
 		printf("\n > ");
 		fflush(stdout);
-			
-		while((c = getchar()) != '\n') {
-			buffer[i%80] = c;
-			i++;
-		}
-		buffer[i%80] = '\0';
+		
+		scanf("%s", buffer);	
+
 		i = 0;
 		if (strcmp(buffer, "help") == 0) {
 			printf("Commandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task, print_memory, date, test_mouse\n");
