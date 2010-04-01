@@ -9,12 +9,27 @@
 
 void *malloc(size_t size)
 {
-  return NULL;
+  return kmalloc(size);
+}
+
+void *calloc(size_t nmemb, size_t size)
+{
+  int i;
+  uint8_t *p;
+  
+  if(nmemb == 0 || size == 0)
+    return NULL;
+
+  p = (uint8_t *) kmalloc(nmemb * size);
+  for(i=0 ; i<nmemb*size ; i++)
+    *(p+i) = 0;
+
+  return p;
 }
 
 void free(void *addr)
 {
-
+  return kfree(addr);
 }
 
 static int digitvalue(char c)
