@@ -218,8 +218,11 @@ int vfscanf(FILE *stream, const char *format, va_list ap) {
         }
     }
 
-  conv_error();
+	while (c != EOF && c != '\n') {
+		c = fgetc(stream);
+	};
 
+  return done;
 
 }
 
