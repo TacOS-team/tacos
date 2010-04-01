@@ -56,7 +56,7 @@
 #endif
 
 typedef struct _open_file_descriptor {
-	char * path;
+	char path[100];
 	int flags;
 	uint32_t first_cluster;
 	uint32_t current_cluster;

@@ -29,6 +29,7 @@
 #include <fpu.h>
 #include <vm86.h>
 #include <beeper.h>
+#include <fcntl.h>
 
 typedef struct
 {
@@ -242,6 +243,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	syscall_set_handler(0,sys_exit);
 	syscall_set_handler(1,sys_getpid);
+	syscall_set_handler(3,sys_open);
 	start_scheduler();
   //shell(0, NULL);
 
@@ -343,12 +345,11 @@ int shell(int argc, char* argv[])
 
 			printf("%s %d %s\n", s2, d, s);
 		}
-    if(strcmp(buffer, "kmalloc_print_mem") == 0)
-      kmalloc_print_mem();
-    if(strcmp(buffer, "test_kmalloc") == 0)
-      test_kmalloc();
+		if(strcmp(buffer, "kmalloc_print_mem") == 0)
+			kmalloc_print_mem();
+		if(strcmp(buffer, "test_kmalloc") == 0)
+			test_kmalloc();
 		if (strcmp(buffer, "ls") == 0) {
-			//printf("root directory:\n");
 			list_segments ();
 		}
 		if (strcmp(buffer, "mount") == 0) {
@@ -358,7 +359,8 @@ int shell(int argc, char* argv[])
 			print_working_dir ();
 		}
 		if (strcmp(buffer, "debugfat") == 0) {
-			print_path ();
+			//print_path();
+			open("lklk",21);
 		}
 		if (strcmp(buffer, "cd") == 0) {
 			while((c = getchar()) != '\n') {
