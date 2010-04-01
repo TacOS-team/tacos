@@ -159,7 +159,8 @@ static int numlock = 0;
 
 void keyBufferPush(char c)
 {
-	if (stdin->_IO_write_ptr == NULL) {
+	// Normalement on ne met pas dans stdin mais dans le stdin du active_process.
+	if (stdin->_IO_read_ptr == NULL) {
 		char * buf = malloc(1000);
 		stdin->_IO_buf_base = buf;
 		stdin->_IO_buf_end = buf + 1000;

@@ -270,7 +270,6 @@ int shell(int argc, char* argv[])
 		}
 		buffer[i%80] = '\0';
 		i = 0;
-		printf("\n");
 		if (strcmp(buffer, "help") == 0) {
 			printf("Commandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task, print_memory, date, test_mouse\n");
 		}
@@ -332,6 +331,7 @@ int shell(int argc, char* argv[])
 			char b[100];
 			scanf("%s", b);
 			printf("Tu as tape le mot : %s\n", b);
+			print_file(stdin);
 		}
 		if(strcmp(buffer,"ps")==0)
 		{

@@ -101,7 +101,7 @@ int vfscanf(FILE *stream, const char *format, va_list ap) {
           break;
 
         case 's':                /* Read a string.  */
-          str = va_arg (ap, char *);                                
+          str = va_arg (ap, char *);
           if (str == NULL)
             conv_error ();
 
