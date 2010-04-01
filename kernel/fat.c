@@ -4,16 +4,52 @@
 #include <string.h>
 #include "fat.h"
 
+#define TOTAL_CLUSTERS 3072 //(9fat*512otect*8bits)/12bits   pour FAT12
+
 
 fat_BS_t Boot_Sector;
 fat_dir_entry_t current_dir[112];
 path_t path;
 fat_info_t fat_info;
+uint8_t buffer[512*9];
+cluster_t FAT[TOTAL_CLUSTERS];
+
+void load_FAT (cluster_t * fat) {
+	int i;
+	int p=0;
+	uint32_t tmp = 0;
+	uint8_t * buffer_p = buffer;
+	
+	for (i=0;i<9;i++) {
+		floppy_read_sector(0, 0, i+1, (char*) buffer_p);
+		buffer_p+=512;
+	}
+	
+	// decodage FAT12
+	for (i=0;i<TOTAL_CLUSTERS;i+=2) {
+		
+		 // on interprete les 3 octets comme un little endian (24bits) number
+		tmp = buffer[p] + ((buffer[p+1]<<8)&0xFF00) + ((buffer[p+2]<<16)&0xFF0000); 
+		
+		// on extrait les 2 clusters de 12bits
+		FAT[i] = (tmp&0xFFF); // 12 least significant bits
+		FAT[i+1] = (((tmp&0xFFF000)>>12)&0xFFF); // 12 most significant bits
+		
+		p+=3;
+	}
+	
+}
 
 void print_path () {
-	int i;
-	for (i=0;i<=path.current;i++)
-		printf(" %d ", path.list[i]);
+		int i=205;
+		int c=1;
+		while (FAT[i]!= 0xFFF) {
+			printf("%d ",FAT[i]);
+			c++;
+			i=FAT[i];
+		}
+		printf("%d\n",FAT[i]);
+		printf("count sector: %d\n",c);
 }
 
 addr_CHS_t get_CHS_from_LBA (addr_LBA_t sector_LBA) {
@@ -67,7 +103,10 @@ void mount_FAT12 () {
 	path.list[path.current] = fat_info.root_dir_cluster;
 	strcpy(path.name[path.current],"root");
 	
+	load_FAT(FAT);
 	open_working_dir ();
+	
+	
 }
 
 void open_working_dir () {
@@ -117,7 +156,7 @@ void list_segments () {
 	for (i=0;i<8;i++) {
 		if ( current_dir[i].long_file_name[0] == 0x41 ){
 			decode_long_file_name (name, current_dir[i].long_file_name);
-			printf("%s ",name);
+			printf("%s:%d (size:%d) ",name,current_dir[i].cluster_pointer, current_dir[i].file_size);
 		}
 	}
 }
