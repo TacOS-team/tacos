@@ -12,7 +12,7 @@
 #include <interrupts.h>
 #include <pci.h>
 #include <pci_config.h>
-//#include <scheduler.h>
+#include <scheduler.h>
 #include <time.h>
 #include <dummy_process.h>
 #include <keyboard.h>
@@ -116,6 +116,7 @@ int test_task1(int argc, char** argv)
 	printf("\nTache n%d\n",pid);
 	
 	exit(0);
+  return 0;
 }
 
 
@@ -128,16 +129,18 @@ void* sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2)
 	// On a pas forcement envie de supprimer le processus immédiatement
 	current->state = PROCSTATE_TERMINATED; 
 	
-	printf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
+	printf("DEBUG: exit(process %d ralut !turned %d)\n", current->pid, ret_value);
+
+  return NULL;
 }
 
 void* sys_getpid(uint32_t* pid, uint32_t zero1, uint32_t zero2)
 {
 	process_t* process = get_current_process();
 	*pid = process->pid;
+  
+  return NULL;
 }
-
-
 
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
@@ -367,9 +370,6 @@ int shell(int argc, char* argv[])
 			i = 0;
 			change_dir(buffer);
 		}
-		
-		
-		
 	}
 	
 	return 0;

@@ -3,7 +3,7 @@ export CC=gcc
 export LD=ld
 export CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LDFLAGS=-Llib/
-LDLIBS=-lc -lpci -lclock -lutils -ldrivers 
+LDLIBS=-lc -lpci -lclock -lutils -ldrivers -z nodefaultlib
 
 all: libc  utils drivers pci clock kernel.bin
 
