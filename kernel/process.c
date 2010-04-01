@@ -4,7 +4,7 @@
 
 
 #include <gdt.h>
-#include "process.h"
+#include <process.h>
 #include <kmalloc.h>
 
 typedef int (*main_func_type) (uint32_t, uint8_t**);

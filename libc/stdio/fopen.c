@@ -32,10 +32,16 @@ FILE *fopen(const char *path, const char *mode) {
 		return NULL;
 	}
 
-	// Va chercher dans le process le file_list pour chainer comme il faut.
 	int fileno = open(path, flags); // open doit faire un appel systeme et s'occuper aussi de modifier la fd_table !
 
+	// Va chercher dans le process le file_list pour chainer comme il faut.
+	process_t *current_process = get_current_process();
 	FILE *stream = malloc(sizeof(FILE));
+	stream->_chain = current_process->file_list;
+	current_process->file_list = stream;
+
+	stream->_fileno = fileno;
+	// TODO : allouer buffer, en tenant compte des droits !
 
 	return stream;
 }
