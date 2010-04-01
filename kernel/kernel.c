@@ -331,7 +331,6 @@ int shell(int argc, char* argv[])
 			char b[100];
 			scanf("%s", b);
 			printf("Tu as tape le mot : %s\n", b);
-			print_file(stdin);
 		}
 		if(strcmp(buffer,"ps")==0)
 		{

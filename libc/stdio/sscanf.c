@@ -235,5 +235,12 @@ int fscanf(FILE *stream, const char *format, ...) {
 }
 
 int scanf(const char *format, ...) {
-	return fscanf(stdin, format);
+	int result;
+	va_list ap;
+
+	va_start(ap, format);
+	result = vfscanf(stdin, format, ap);
+	va_end(ap);
+
+	return result;
 }
