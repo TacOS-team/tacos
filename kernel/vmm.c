@@ -27,7 +27,7 @@ struct slabs_list used_slabs;
 vaddr_t vmm_top;
 
 // Prototypes
-static void map(paddr_t phys_page_addr, vaddr_t virt_page_addr);
+static int map(paddr_t phys_page_addr, vaddr_t virt_page_addr);
 
 static int is_empty(struct slabs_list *list)
 {
@@ -133,13 +133,10 @@ static void create_page_entry(struct page_table_entry *pte, paddr_t page_addr)
 }
 
 // créer une entrée de répertoire
-static void create_page_dir(struct page_directory_entry *pde)
+static int create_page_dir(struct page_directory_entry *pde)
 {
   if(memory_get_first_free_page() == NULL)
-  {
-    printf("zOMG out of memory !");
-    while(1);
-  }
+    return -1;
   paddr_t page_addr = memory_reserve_page_frame();
 
   pde->present = 1;
@@ -150,19 +147,23 @@ static void create_page_dir(struct page_directory_entry *pde)
   // map new PTE
   last_page_table_next();
   map(page_addr, get_last_page_table());
+
+  return 0;
 }
 
 // Map dans le répertoire des pages une nouvelle page
-static void map(paddr_t phys_page_addr, vaddr_t virt_page_addr)
+static int map(paddr_t phys_page_addr, vaddr_t virt_page_addr)
 {
   int dir = virt_page_addr >> 22;
   int table = (virt_page_addr >> 12) & 0x3FF;
   struct page_directory_entry * pde = get_pde(dir);
   
-  if (!pde->present)
-    create_page_dir(pde);
+  if (!pde->present && create_page_dir(pde) == -1)
+    return -1;
   
   create_page_entry(get_pte(dir, table), phys_page_addr);
+
+  return 0;
 }
 
 static void unmap(vaddr_t virt_page_addr)
@@ -204,7 +205,8 @@ static int increase_heap(unsigned int nb_pages)
   {
     if(memory_get_first_free_page() == NULL)
       return -1;
-    map(memory_reserve_page_frame(), vmm_top);
+    if(map(memory_reserve_page_frame(), vmm_top) == -1)
+      return -1;
     vmm_top += PAGE_SIZE;
   }
 
@@ -261,10 +263,7 @@ unsigned int allocate_new_pages(unsigned int nb_pages, void **alloc)
   if(slab == NULL)
   {
     if(increase_heap(nb_pages) == -1)
-    {
-      printf("zOMG ! Plus de mémoire !\n");
-      while(1);;
-    }
+      return 0;
 
     slab = free_slabs.end;
   }

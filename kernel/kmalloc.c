@@ -134,6 +134,10 @@ void *kmalloc(size_t size)
     void *alloc;
     size_t real_alloc_size = allocate_new_pages(calculate_min_pages(real_size), 
                                                 &alloc);
+    
+    if(real_alloc_size <= 0)
+      return NULL;
+    
     new_mem = (struct mem *) alloc;
     new_mem->size = real_alloc_size;
     push_back(&free_mem, new_mem);
@@ -147,13 +151,16 @@ void *kmalloc(size_t size)
 
 int kfree(void *p)
 {
-  struct unallocate_size;
-  struct mem *m = allocated_mem.begin;
+  struct mem *m = allocated_mem.end;
 
   //asm("cli");
   
-  while(m != NULL && (vaddr_t) m + sizeof(struct mem) < (vaddr_t) p)
-    m = m->next;
+  while(m != NULL) {
+    if((vaddr_t) m + sizeof(struct mem) < (vaddr_t) p &&
+       (vaddr_t) p < (vaddr_t) m + m->size)
+      break;
+    m = m->prev;
+  }
 
   if(m == NULL)
     return -1;
@@ -163,7 +170,7 @@ int kfree(void *p)
  
   if(is_stuck(m->prev, m))
   {
-    m->prev->size +=  m->size;
+    m->prev->size += m->size;
     remove(&free_mem, m);
     m = m->prev;
   }
@@ -181,7 +188,7 @@ int kfree(void *p)
 static void print_mem(struct mem* m, bool free)
 {
   set_attribute(BLACK, free ? GREEN : RED);
-  printf("[%x ; %x ; %x] ", m, m->size,  m->prev, m->next);
+  printf("[%x ; %d ; %x ; %x] ", m, m->size,  m->prev, m->next);
   fflush(stdout);
   reset_attribute();
 }
