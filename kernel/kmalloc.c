@@ -156,7 +156,7 @@ int kfree(void *p)
   //asm("cli");
   
   while(m != NULL) {
-    if((vaddr_t) m + sizeof(struct mem) < (vaddr_t) p &&
+    if((vaddr_t) m + sizeof(struct mem) <= (vaddr_t) p &&
        (vaddr_t) p < (vaddr_t) m + m->size)
       break;
     m = m->prev;
@@ -167,7 +167,7 @@ int kfree(void *p)
 
   remove(&allocated_mem, m);
   add(&free_mem, m);
- 
+
   if(is_stuck(m->prev, m))
   {
     m->prev->size += m->size;
