@@ -210,10 +210,22 @@ void kputchar_position(char c, int x, int y) {
 	(*video)[x + y * COLUMNS].attribute = attribute;
 }
 
+void backspace() {
+	if (buffer_video->xpos > 0) {
+		buffer_video->xpos--;
+	} else if (buffer_video->ypos > 0) {
+		buffer_video->ypos--;
+		buffer_video->xpos = COLUMNS - 1;
+	}
+	kputchar_position(' ', buffer_video->xpos, buffer_video->ypos); 
+}
+
 /* Put the character C on the screen. */
 void kputchar (char c) {
 	if (c == '\n' || c == '\r') {
 		newline();
+	} else if (c == '\b') {
+		backspace();
 	} else {
 		kputchar_position(c, buffer_video->xpos, buffer_video->ypos);
 	  	buffer_video->xpos++;

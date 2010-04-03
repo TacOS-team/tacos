@@ -24,7 +24,12 @@ int fgetc(FILE *stream) {
 			c = *(stream->_IO_read_ptr-1);
 
 			if (c == '\b') {
-				stream->_IO_read_ptr -= 2;
+				if (stream->_IO_read_ptr - 1 > stream->_IO_read_base) {
+					stream->_IO_read_ptr -= 2;
+				} else {
+					stream->_IO_read_ptr -= 1;
+					continue;
+				}
 			}
 
 			if (stream->_fileno == 0) {
