@@ -340,6 +340,12 @@ int shell(int argc, char* argv[])
 			print_path();
 			//open("lklk",21);
 		}
+		if (strcmp(buffer, "clean_proclist") == 0)
+		{
+			printf("cleaning proclist...\n");
+			clean_process_list();
+		}
+		
 		if (strcmp(buffer, "cd") == 0) {
 			while((c = getchar()) != '\n') {
 				buffer[i%80] = c;

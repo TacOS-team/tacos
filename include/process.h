@@ -48,6 +48,7 @@ process_t* find_process(int pid);
 process_t* get_current_process();
 process_t* get_next_process();
 void process_print_regs();
+void clean_process_list();
 process_t* get_active_process();
 
 void* sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2);

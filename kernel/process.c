@@ -8,6 +8,8 @@
 #include <kmalloc.h>
 #include <syscall.h>
 
+#include <debug.h>
+
 typedef int (*main_func_type) (uint32_t, uint8_t**);
 
 uint32_t proc_count = 0;
@@ -70,6 +72,7 @@ process_t* find_process(int pid)
 
 int delete_process(int pid)
 {
+	
 	proclist_cell* aux = process_list;
 	while(aux!=NULL && aux->process->pid!=pid)
 	{
@@ -78,8 +81,14 @@ int delete_process(int pid)
 	if(aux==NULL) // Si aux==NULL, c'est qu'on a pas trouvé le process, on retourne -1
 		return -1;
 	
-	aux->prev->next = aux->next;
-	aux->next->prev = aux->prev;
+	if(aux->prev == NULL) // On est à la tete de la liste, alors on change directement "process_list"
+		process_list = aux->next;
+	else
+		aux->prev->next = aux->next;
+	
+	if(aux->next != NULL) // On ne change ça que si on n'est pas en fin de liste
+		aux->next->prev = aux->prev;
+	
 	kfree(aux);
 	
 	proc_count--;
@@ -87,22 +96,34 @@ int delete_process(int pid)
 	return 0;
 }
 
-int ret_func()
-{
-	printf("lulz\n");
-	while(1);
-}
 
 int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_size, uint8_t ring)
 {
 	uint32_t *sys_stack, *user_stack;
 	process_t* new_proc;
 	int i;
-
+	
 	new_proc = kmalloc(sizeof(process_t));
+	if( new_proc == NULL )
+	{
+		printf("create_process: impossible de reserver la memoire pour le nouveau processus.\n");
+		return -1;
+	}
+	
 	sys_stack = kmalloc(stack_size*sizeof(uint32_t));
+	if( new_proc == NULL )
+	{
+		printf("create_process: impossible de reserver la memoire pour la pile systeme.\n");
+		return -1;
+	}
+	
 	user_stack = kmalloc(stack_size*sizeof(uint32_t));
-
+	if( new_proc == NULL )
+	{
+		printf("create_process: impossible de reserver la memoire pour la pile utilisateur.\n");
+		return -1;
+	}
+	
 	new_proc->pid = proc_count;
 	new_proc->regs.eax = 0;
 	new_proc->regs.ebx = 0;
@@ -208,6 +229,25 @@ void print_process_list()
 				break;
 		}
 		aux = aux->next;
+	}
+}
+
+void clean_process_list()
+{
+	proc_list temp = process_list;
+	uint32_t pid;
+	while(temp!=NULL)
+	{
+		if(temp->process->state == PROCSTATE_TERMINATED)
+		{
+			pid = temp->process->pid;
+			if(current_proclist_cell->process->pid == temp->process->pid)
+				get_next_process();
+			temp = temp->next;
+			delete_process(pid);
+		}
+		else
+			temp = temp->next;
 	}
 }
 
