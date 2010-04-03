@@ -6,6 +6,7 @@
 #include <gdt.h>
 #include <process.h>
 #include <kmalloc.h>
+#include <syscall.h>
 
 typedef int (*main_func_type) (uint32_t, uint8_t**);
 
@@ -123,16 +124,16 @@ int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_s
 	
 	new_proc->regs.eflags = 0;
 	new_proc->regs.eip = prog;
-	new_proc->regs.esp = (user_stack)+stack_size-4;
+	new_proc->regs.esp = (user_stack)+stack_size-3;
 	new_proc->regs.ebp = new_proc->regs.esp;
 	printf("esp:0x%x\n", new_proc->regs.esp);
 	new_proc->sys_stack = (sys_stack)+stack_size-1;
 	new_proc->state = PROCSTATE_IDLE;
 	
 	/* Initialisation de la pile du processus */
-	user_stack[stack_size-1]=(paddr_t)ret_func;
-	user_stack[stack_size-2]=argv;
-	user_stack[stack_size-3]=argc;
+	user_stack[stack_size-1]=argv;
+	user_stack[stack_size-2]=argc;
+	user_stack[stack_size-3]=(paddr_t)exit;
 	
 
 	/**(new_proc->regs.esp) = (uint32_t)1;
@@ -213,3 +214,25 @@ void print_process_list()
 process_t * get_active_process() {
 	return active_process;
 }
+
+void* sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2)
+{
+	process_t* current;
+	// On cherche le processus courant:
+	current = get_current_process();
+	
+	// On a pas forcement envie de supprimer le processus immédiatement
+	current->state = PROCSTATE_TERMINATED; 
+	
+	printf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
+
+  return NULL;
+}
+
+/* A mettre en user space */
+void exit(uint32_t value)
+{
+	syscall(0,value,0,0);
+	while(1); // Pour ne pas continuer à executer n'importe quoi alors que le processus est sensé être arrété
+}
+
