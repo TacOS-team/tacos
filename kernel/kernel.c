@@ -359,8 +359,8 @@ int shell(int argc, char* argv[])
 			print_working_dir ();
 		}
 		if (strcmp(buffer, "debugfat") == 0) {
-			//print_path();
-			open("lklk",21);
+			print_path();
+			//open("lklk",21);
 		}
 		if (strcmp(buffer, "cd") == 0) {
 			while((c = getchar()) != '\n') {

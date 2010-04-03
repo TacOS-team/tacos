@@ -5,24 +5,49 @@
 
 #define NB_CYLINDERS 80
 #define NB_HEADS 2
-#define NB_SECTORS 18
+#define NB_SECTORS 18 // NB Sector by Track
+
+#define SIZEOF_DIR_ENTRY 32 //octet
 
 
 typedef uint32_t cluster_t;
 typedef uint32_t addr_LBA_t;
 typedef struct addr_CHS { uint32_t Cylinder; uint32_t Head; uint32_t Sector; } addr_CHS_t;
 
+typedef struct _directory {
+	uint8_t entry_name[100][14];
+	cluster_t entry_cluster[100];
+	int total_entries;
+} directory_t;
 
 typedef struct _path {
-	cluster_t list[100];
+	directory_t content[100];
 	char name[100][14];
 	int current;
 } path_t;
 
 typedef struct _fat_info {
-	addr_LBA_t	root_dir_LBA;
-	addr_LBA_t	data_segment_LBA;
-	cluster_t	root_dir_cluster;
+	
+	// Storage Information
+	uint32_t	bytes_per_sector;		// Usually 512 bytes
+	uint32_t	head_side_count;		// 2 for floppy
+	uint32_t	sectors_per_track;		// 18 for floppy
+	uint32_t	total_sectors;
+	// File System Information
+	uint32_t	sectors_per_cluster;
+	uint32_t	reserved_sector_count;	// Usually 1 (Boot Sector)
+	uint32_t	hidden_sector_count;
+	uint32_t	fat_size;
+	uint32_t	fat_count; 				// NB of File Allocation tables (usually 2)
+	uint32_t	root_entry_count;		// NB max entries in Root Directory
+	uint32_t	total_clusters;
+	uint32_t	cluster0_sector_count;	// Cluster used by the File Allocation Tables 
+	uint32_t	cluster1_sector_count;	// Cluster used by the Root directory
+	// Computed LBAs
+	addr_LBA_t	fat_LBA;					// LBA of First sector of cluster 0
+	addr_LBA_t	root_dir_LBA;			// LBA of First sector of cluster 1
+	addr_LBA_t	data_area_LBA;			// LBA of First sector of cluster 2 (first cluster of the data area)
+	
 } fat_info_t;
 
 typedef struct _fat_BS {
@@ -74,9 +99,8 @@ typedef struct _fat_dir_entry {
 
 
 
-
 void mount_FAT12 ();
-void open_working_dir ();
+//void open_working_dir ();
 
 void print_Boot_Sector ();
 
