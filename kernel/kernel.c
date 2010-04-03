@@ -246,6 +246,7 @@ int shell(int argc, char* argv[])
 		fflush(stdout);
 		
 		scanf("%s", buffer);	
+		printf("\n");
 
 		i = 0;
 		if (strcmp(buffer, "help") == 0) {
