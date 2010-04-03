@@ -58,7 +58,7 @@ static void* switch_process(void* data)
 	do
 	{
 		current = get_next_process();
-	}while(current->state == PROCSTATE_TERMINATED);
+	}while(current->state == PROCSTATE_TERMINATED || current->state == PROCSTATE_WAITING);
 	
 	// Si on a aucun processus en IDLE/WAITING/RUNNING, il n'y a aucune chance pour qu'un processus arrive spontanement
 	// Donc on arrete le scheduler

@@ -86,6 +86,12 @@ int delete_process(int pid)
 	return 0;
 }
 
+int ret_func()
+{
+	printf("lulz\n");
+	while(1);
+}
+
 int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_size, uint8_t ring)
 {
 	uint32_t *sys_stack, *user_stack;
@@ -117,9 +123,21 @@ int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_s
 	
 	new_proc->regs.eflags = 0;
 	new_proc->regs.eip = prog;
-	new_proc->regs.esp = (user_stack)+stack_size-1;
+	new_proc->regs.esp = (user_stack)+stack_size-4;
+	new_proc->regs.ebp = new_proc->regs.esp;
+	printf("esp:0x%x\n", new_proc->regs.esp);
 	new_proc->sys_stack = (sys_stack)+stack_size-1;
 	new_proc->state = PROCSTATE_IDLE;
+	
+	/* Initialisation de la pile du processus */
+	user_stack[stack_size-1]=(paddr_t)ret_func;
+	user_stack[stack_size-2]=argv;
+	user_stack[stack_size-3]=argc;
+	
+
+	/**(new_proc->regs.esp) = (uint32_t)1;
+	*(new_proc->regs.esp) = (uint32_t)1;
+	*(new_proc->regs.esp) = (uint32_t)1; */
 
 	for(i=0;i<FOPEN_MAX;i++) 
 		new_proc->fd[i].used = FALSE;

@@ -72,7 +72,7 @@ void kpanic_handler(int error_id, int error_code)
   switch(error_id)
   {
 		case EXCEPTION_SEGMENT_NOT_PRESENT:
-			printf("Segment not present (error code : %d).\n", error_code);
+			printf("Segment not present (error code : 0x%x).\n", error_code);
 			break;
 		case EXCEPTION_DIVIDE_ERROR:
 			printf("Division by zero.\n");
@@ -90,6 +90,9 @@ void kpanic_handler(int error_id, int error_code)
 		case EXCEPTION_DOUBLE_FAULT:
 			printf("Double fault (error code : %d).\n", error_code);
 			break;
+		case EXCEPTION_GENERAL_PROTECTION :
+			printf("General Proctection fault (error code : %d).\n", error_code);
+			break;
 		default:
 			printf("Unknown exception.\n");
   }
@@ -106,5 +109,6 @@ void kpanic_init()
   exception_set_routine(EXCEPTION_INVALID_TSS, kpanic_handler);
   exception_set_routine(EXCEPTION_PAGE_FAULT, kpanic_handler);
   exception_set_routine(EXCEPTION_DOUBLE_FAULT, kpanic_handler);
+  exception_set_routine(EXCEPTION_GENERAL_PROTECTION, kpanic_handler);
 }
 

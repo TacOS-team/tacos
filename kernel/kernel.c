@@ -30,6 +30,7 @@
 #include <vm86.h>
 #include <beeper.h>
 #include <fcntl.h>
+#include <debug.h>
 
 typedef struct
 {
@@ -115,9 +116,10 @@ int test_task1(int argc, char** argv)
 {
 	int pid = get_pid();
 	printf("\nTache n%d\n",pid);
-	
+	printf("Parameters:\nargc=%d\nargv=0x%x\n",argc, argv);
+	//BOCHS_BREAKPOINT;
 	exit(0);
-  return 0;
+	return 0;
 }
 
 
@@ -130,7 +132,7 @@ void* sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2)
 	// On a pas forcement envie de supprimer le processus immédiatement
 	current->state = PROCSTATE_TERMINATED; 
 	
-	printf("DEBUG: exit(process %d ralut !turned %d)\n", current->pid, ret_value);
+	printf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
 
   return NULL;
 }
@@ -312,9 +314,7 @@ int shell(int argc, char* argv[])
 		if(strcmp(buffer,"test_task") == 0)
 		{
 			paddr_t proc_addr =  test_task1;
-			process_t* proc = create_process(proc_addr,0,NULL,1024,3);
-			//add_process(*proc);
-			//while(1);
+			process_t* proc = create_process(proc_addr,42,NULL,1024,3);
 		}
 		if(strcmp(buffer,"test_mouse") == 0)
 		{
