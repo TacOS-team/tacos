@@ -40,7 +40,6 @@ int fgetc(FILE *stream) {
 					for (i = pointeur; i < stream->_IO_read_ptr; i++) {
 						*i = *(i+1);
 					}
-					pointeur -= 1;
 					stream->_IO_read_ptr -= 1;
 					continue;
 				}
