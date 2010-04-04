@@ -56,9 +56,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	kernel_options options;
 	uint32_t esp_tss;
 
-	/* Clear the screen. */
-	cls ();
-
 	/* Am I booted by a Multiboot-compliant boot loader? */
 	if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
 	{
@@ -69,17 +66,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	/* Set MBI to the address of the Multiboot information structure. */
 	mbi = (multiboot_info_t *) addr;
 	initKernelOptions((char *)mbi->cmdline, &options);
-
-	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
-	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");
-	printf("    _|    _|    _|  _|        _|    _|    _|_|  \n");
-	printf("    _|    _|    _|  _|        _|    _|        _|\n");
-	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
-	printf("(codename:fajitas)\n\n\n");
-
-	//beep();
-
-	printf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
 
 	gdt_setup((mbi->mem_upper << 10) + (1 << 20));
 	
@@ -121,6 +107,20 @@ void cmain (unsigned long magic, unsigned long addr) {
 //	printf("Div 0 : %d.\n", 3/0);
 //	pci_scan();
 //	pci_list();
+
+	/* Clear the screen. */
+	cls ();
+
+  printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
+	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");
+	printf("    _|    _|    _|  _|        _|    _|    _|_|  \n");
+	printf("    _|    _|    _|  _|        _|    _|        _|\n");
+	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
+	printf("(codename:fajitas)\n\n\n");
+
+	//beep();
+
+	//printf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
 
 	floppy_detect_drives();
 	printf("Floppy controller version: 0x%x.\n", floppy_get_version());
@@ -207,7 +207,7 @@ static void initKernelOptions(const char *cmdLine, kernel_options *options)
 	char *cmd = cmdLine;
 	char opt;
 
-	printf("Command line : %s\n", cmdLine);
+	//printf("Command line : %s\n", cmdLine);
 
 	defaultOptions(options);
 	while((opt = get_opt(&cmd)) != -1)
@@ -218,7 +218,7 @@ static void initKernelOptions(const char *cmdLine, kernel_options *options)
 				options->lol = 1;
 				enableFinnouMode(1);
 				break;
-		default: printf("Unknown option %c\n", opt);
+		//default: printf("Unknown option %c\n", opt);
 		}
 	}
 }
