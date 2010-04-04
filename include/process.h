@@ -48,12 +48,15 @@ process_t* find_process(int pid);
 process_t* get_current_process();
 process_t* get_next_process();
 void process_print_regs();
+void print_process_list();
 void clean_process_list();
 process_t* get_active_process();
 
 void* sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2);
+void* sys_getpid(uint32_t* pid, uint32_t zero1, uint32_t zero2);
 
 // A mettre en user-space
 void exit(uint32_t value);
+uint32_t get_pid();
 
 #endif

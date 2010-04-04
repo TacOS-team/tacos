@@ -255,6 +255,10 @@ process_t * get_active_process() {
 	return active_process;
 }
 
+/*
+ * SYSCALL
+ */
+
 void* sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2)
 {
 	process_t* current;
@@ -269,10 +273,26 @@ void* sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2)
   return NULL;
 }
 
+void* sys_getpid(uint32_t* pid, uint32_t zero1, uint32_t zero2)
+{
+	process_t* process = get_current_process();
+	*pid = process->pid;
+  
+  return NULL;
+}
+
 /* A mettre en user space */
 void exit(uint32_t value)
 {
 	syscall(0,value,0,0);
 	while(1); // Pour ne pas continuer à executer n'importe quoi alors que le processus est sensé être arrété
 }
+
+uint32_t get_pid()
+{
+	int pid;
+	syscall(1,&pid, 0, 0);
+	return pid;
+}
+
 
