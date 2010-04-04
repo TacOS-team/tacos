@@ -1,4 +1,4 @@
-INCLUDES=-I../include/
+INCLUDES=-I../include/ -I../kernel/include/
 
 all: libc
 
@@ -22,7 +22,7 @@ ctype.o: ../include/ctype.h
 
 libio.o: ../include/libio.h
 
-fcntl.o: ../include/types.h ../include/fcntl.h ../include/process.h ../include/stdio.h
+fcntl.o: ../include/types.h ../include/fcntl.h ../include/process.h ../include/stdio.h ../kernel/include/fat.h
 
 stdio: force_look
 	$(MAKE) -C $@ 

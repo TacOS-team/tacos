@@ -21,11 +21,11 @@ void* sys_open(uint32_t p_process, uint32_t p_path, uint32_t flags) {
 	
 	// on cree un open_file_descriptor
 	process->fd[i].ofd = &ofd; // Au malloc quand il marchera......
-	
+	/*
 	strcpy(process->fd[i].ofd->path, path);
 	process->fd[i].ofd->flags = flags;
 	
-	/*
+	
 	strcpy(process->fd[i].ofdf>irst_cluster;
 	strcpy(process->fd[i].ofd->current_cluster;
 	strcpy(process->fd[i].ofd->buffer;

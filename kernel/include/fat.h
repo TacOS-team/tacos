@@ -18,11 +18,12 @@ typedef struct _directory {
 	uint8_t entry_name[100][14];
 	cluster_t entry_cluster[100];
 	int total_entries;
+	char name[14];
+	uint32_t cluster;
 } directory_t;
 
 typedef struct _path {
-	directory_t content[100];
-	char name[100][14];
+	directory_t dir_list[100];
 	int current;
 } path_t;
 
@@ -104,6 +105,7 @@ void mount_FAT12 ();
 
 void print_Boot_Sector ();
 
+void change_dir (char * name);
 void list_segments ();
 void print_working_dir ();
 

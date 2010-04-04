@@ -43,7 +43,7 @@ kmalloc.o : ../include/types.h ../include/heap.h include/vmm.h
 
 vmm.o : ../include/memory.h ../include/pagination.h include/vmm.h 
 
-fat.o : ../include/types.h include/fat.h
+fat.o : ../include/types.h include/fat.h ../include/fcntl.h
 
 fpu.o : include/fpu.h ../include/stdio.h ../include/interrupts.h
 

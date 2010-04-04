@@ -3,6 +3,7 @@
 #include <types.h>
 #include <string.h>
 #include "fat.h"
+#include <fcntl.h>
 
 // ceci sera calculé avec les donnée du Boot secteur qd on alloura 
 // le tableau pour charger la file_alloc_table au malloc
@@ -10,13 +11,10 @@
 #define TOTAL_CLUSTERS 3072 //(9fat*512otect*8bits)/12bits   pour FAT12
 
 
-fat_BS_t boot_sector;
-fat_dir_entry_t root_dir[224];
-fat_dir_entry_t sub_dir[224];
+
+
 path_t path;
 fat_info_t fat_info;
-uint8_t buffer[512*9];
-
 cluster_t file_alloc_table[TOTAL_CLUSTERS];
 
 
@@ -40,7 +38,7 @@ addr_CHS_t get_CHS_from_cluster (cluster_t cluster) {
 }
 
 void read_fat (cluster_t *fat) {
-	
+	uint8_t buffer[512*9];
 	addr_CHS_t sector_addr;
 	int i,c;
 	int p=0;
@@ -118,53 +116,135 @@ char * decode_long_file_name (char * name, uint8_t * long_file_name ) {
 	return name;
 }
 
-void open_root_dir () {
+void open_root_dir (directory_t * dir) {
+	fat_dir_entry_t root_dir[224];
 	int i;
-	int itermax = fat_info.root_entry_count;
+	int itermax = fat_info.root_entry_count/2;
 	char str[14];
-	char name[14] = "root";
+	char name[14] = "fd0:";
 	read_root_dir(root_dir);
-	path.current = 0;
-	strcpy(path.name[path.current],name);
-	path.content[path.current].total_entries = 0;
+	strcpy(dir->name,name);
+	dir->total_entries = 0;
 	for(i=0;i<itermax;i++) {
 		if ( root_dir[i].long_file_name[0] == 0x41 ){
 			decode_long_file_name (str, root_dir[i].long_file_name);
-			strcpy(path.content[path.current].entry_name[path.content[path.current].total_entries],str);
-			path.content[path.current].entry_cluster[path.content[path.current].total_entries] = root_dir[i].cluster_pointer;
-			path.content[path.current].total_entries++;
+			strcpy(dir->entry_name[dir->total_entries],str);
+			dir->entry_cluster[dir->total_entries] = root_dir[i].cluster_pointer;
+			dir->total_entries++;
 		}
 	}
 }
 
-void open_next_dir(char * name) {
-	cluster_t next;
+int open_next_dir(directory_t * prev_dir,directory_t * next_dir, char * name) {
+	fat_dir_entry_t sub_dir[224];
+	cluster_t next = 0;
 	char str[14];
-	int i,k;
-	for(i=0;i<path.content[path.current].total_entries;i++) {
-		if(strcmp(path.content[path.current].entry_name[i],name)==0) {
-			next = path.content[path.current].entry_cluster[i];
+	int i;
+	int ret;
+	
+	for(i=0;i<(prev_dir->total_entries);i++) {
+		if(strcmp(prev_dir->entry_name[i],name)==0) {
+			next = prev_dir->entry_cluster[i];
 			break;
 		}
 	}
-	read_cluster (sub_dir, next);
-	path.current++;
-	strcpy(path.name[path.current],name);
-	path.content[path.current].total_entries = 0;
-	for(i=0;i<8;i++) {
-		if ( sub_dir[i].long_file_name[0] == 0x41 ){
-			decode_long_file_name (str, sub_dir[i].long_file_name);
-			strcpy(path.content[path.current].entry_name[path.content[path.current].total_entries],str);
-			path.content[path.current].entry_cluster[path.content[path.current].total_entries] = sub_dir[i].cluster_pointer;
-			path.content[path.current].total_entries++;
+	
+	if (next!=0) {
+		read_cluster (sub_dir, next);
+		strcpy(next_dir->name,name);
+		next_dir->cluster = next;
+		next_dir->total_entries = 0;
+		for(i=0;i<8;i++) {
+			if ( sub_dir[i].long_file_name[0] == 0x41 ){
+				decode_long_file_name (str, sub_dir[i].long_file_name);
+				strcpy(next_dir->entry_name[next_dir->total_entries],str);
+				next_dir->entry_cluster[next_dir->total_entries] = sub_dir[i].cluster_pointer;
+				next_dir->total_entries++;
+			}
+		}
+		ret=1;
+	}
+	else
+		ret = 0;
+
+	return ret;
+}
+
+int get_dir_from_path (char * path, char* name,int pos) {
+
+	int i=0,j=0,k=0;
+	int ret;
+	
+	while ( (path[i]!='\0') && (k<pos) ) {
+		j=0;
+		while ( (path[i]!='/') && (path[i]!='\0') ) {
+			name[j]=path[i];
+			i++;
+			j++;
+		}
+		if (path[i]=='/')
+			i++;
+		name[j]='\0';
+		k++;
+	}
+	
+	if (k==pos) 
+		ret=k;
+	else
+		ret=0;
+	return ret;
+}
+
+int get_path_lenth (char *path) {
+	int i=0,k=0;
+	while ( path[i]!='\0') {
+		if (path[i]=='/')
+			k++;
+		i++;
+	}
+	return k;
+}
+
+
+
+void open_file (char * path, open_file_descriptor * ofd) {
+	int i,itermax, path_lenth;
+	char dir_name[14];
+	char file_name[14];
+	directory_t dir;
+	path_lenth = get_path_lenth(path);
+	itermax = path_lenth - 1;
+	for(i=1;i<=itermax;i++) {
+		get_dir_from_path(path,dir_name,i);
+		if (strcmp(dir_name,"fd0:")==0)
+			open_root_dir(&dir);
+		else
+			open_next_dir(&dir,&dir,dir_name);
+		i++;
+	}
+	if (itermax==0) {
+		open_root_dir(&(ofd->dir));
+	}
+	else {
+		get_dir_from_path(path,dir_name,path_lenth);
+		open_next_dir(&dir,&(ofd->dir),dir_name);
+	}
+	
+	get_dir_from_path(path,file_name,path_lenth+1);
+	for(i=0;i<(ofd->dir.total_entries);i++) {
+		if(strcmp(ofd->dir.entry_name[i],file_name)==0) {
+			break;
 		}
 	}
 }
-void open_prev_dir() {
-	path.current--;
+
+void init_path () {
+	path.current = 0;
+	open_root_dir(&(path.dir_list[path.current]));
 }
 
 void mount_FAT12 () {
+	fat_BS_t boot_sector;
 	
 	floppy_read_sector(0, 0, 0, (char*) &boot_sector);
 	
@@ -186,89 +266,41 @@ void mount_FAT12 () {
 	fat_info.root_dir_LBA = fat_info.fat_LBA + fat_info.cluster0_sector_count;
 	fat_info.data_area_LBA = fat_info.root_dir_LBA + fat_info.cluster1_sector_count;
 	
-	//path.current = 0;
-	//path.list[path.current] = fat_info.root_dir_cluster;
-	//strcpy(path.name[path.current],"root");
-	
 	read_fat(file_alloc_table);
-	//read_root_dir(root_dir);
-	open_root_dir();
+	init_path();
 	
 }
 
 
 
-/*
-void open_working_dir () {
-	addr_CHS_t sector_addr;
-	if (path.list[path.current] == fat_info.root_dir_cluster) {
-		sector_addr = get_CHS_from_LBA(fat_info.root_dir_LBA);
-	}
-	else {
-		sector_addr = get_CHS_from_cluster(path.list[path.current]);
-		//printf("CHS:%d %d %d\n",sector_addr.Cylinder, sector_addr.Head, sector_addr.Sector);
-	}
-	floppy_read_sector(sector_addr.Cylinder, sector_addr.Head, sector_addr.Sector, (char*) current_dir);
+void change_dir (char * name) {
+		if (open_next_dir(&(path.dir_list[path.current]),&(path.dir_list[path.current+1]),name) != 0 ) {
+			path.current++;
+		}
+		else
+			printf("\ncd: %s aucun fichier ou dossier de ce type\n",name);
 }
-
-*/
-void change_dir (char * target_name) {
-	//printf("\nstill working, come back later please..\n");
-	int i;
-	int itermax = path.content[path.current].total_entries;
-	for(i=0;i<itermax;i++) {
-		if ( strcmp(path.content[path.current].entry_name[i],target_name) == 0){
-			open_next_dir(path.content[path.current].entry_name[i]);
-			break;
-		}
-	}
-/*
-	int i;
-	char name[14];
-	
-	if (strcmp(target_name, "..") == 0) {
-		if (path.current == 0 ) {
-			printf("cd: impossible d'acceder a repertoire .. depuis root/\n");
-		}
-		else {
-			path.current = path.current -1;
-			open_working_dir ();
-		}
-	}
-	else {
-		for (i=0;i<8;i++) {
-			if (strcmp(target_name, decode_long_file_name (name, current_dir[i].long_file_name)) == 0) {
-				path.current = path.current + 1;
-				path.list[path.current] = current_dir[i].cluster_pointer;
-				strcpy(path.name[path.current],name);
-				open_working_dir ();
-			}
-		}
-	}
-	*/
-}
-
 
 void list_segments () {
 	int i;
 	char name[14];
-	for (i=0;i<path.content[path.current].total_entries;i++) {
+	printf("\n");
+	for (i=0;i<path.dir_list[path.current].total_entries;i++) {
 		
-			printf("%s(%d) ",path.content[path.current].entry_name[i], path.content[path.current].entry_cluster[i]);
+			printf("%s(%d) ",path.dir_list[path.current].entry_name[i], path.dir_list[path.current].entry_cluster[i]);
 		
 	}
 }
 
 void print_working_dir () {
-	//int i;
-	
-	//for (i=0;i<=path.current;i++)
-	//	printf("%s/",path.name[i]);
-	//printf("\nstill working, come back later please..\n");
+	int i;
+	for (i=0;i<path.current+1;i++) {
+			printf("%s/",path.dir_list[i].name);
+	}
 }
 
 void print_Boot_Sector () {
-	boot_sector.oem_name[7] = '\0';
+/*	boot_sector.oem_name[7] = '\0';
 	boot_sector.volume_label[10] = '\0';
 	boot_sector.fat_type_label[8] = '\0';
 	printf("\
@@ -299,7 +331,7 @@ Partiton Boot Sector info :\n\
 	boot_sector.fat_type_label,
 	boot_sector.hidden_sector_count,
 	boot_sector.boot_signature);
-	
+	*/
 	printf("\
 	fat_info.head_side_count %d\n\
 	fat_info.sectors_per_track %d\n\
@@ -337,7 +369,7 @@ Partiton Boot Sector info :\n\
 
 
 void print_path () {
-		int i=206;
+		/*int i=206;
 		int c=1;
 		while (file_alloc_table[i]!= 0xFFF) {
 			printf("%d ",file_alloc_table[i]);
@@ -345,9 +377,15 @@ void print_path () {
 			i=file_alloc_table[i];
 		}
 		printf("%d\n",file_alloc_table[i]);
-		printf("count sector: %d\n",c);
-		
-		printf("\nstill working, come back later please..\n");
+		printf("count sector: %d\n",c);*/
+		char name[14];
+		int i, max;
+		max = get_dir_from_path ("root/dir",name,1);
+		printf("%s(%d)",name,max);
+		max = get_dir_from_path ("root/dir",name,2);
+		printf("%s(%d)",name,max);
+		max = get_path_lenth ("root/dir/tftff.uh");
+		printf(" %d\n",max);
 }
 
 
