@@ -41,6 +41,29 @@ static void test_kmalloc()
 }
 
 
+int pi(int argc, char** argv)
+{
+	const double prec = 0.001;
+	double x = 0.0, y = 0.0;
+	double res;
+	int p_in = 0, p_tot = 0;
+	for(x=0; x<1.0; x+=prec)
+	{
+		for(y=0; y<1.0; y+=prec)
+		{
+			if(x*x+y*y<1.0)
+				p_in++;
+			
+			p_tot++;
+		}
+	}
+	res = 4.0*(double)p_in/(double)p_tot;
+	
+	printf("Tesultat tache: P_in=%d, P_tot=%d, res=%d\n", p_in, p_tot,(int)(res*1000.0));
+	
+	return 0;
+}
+
 int test_task1(int argc, char** argv)
 {
 	int pid = get_pid();
@@ -163,7 +186,7 @@ int shell(int argc, char* argv[])
 		}		
 		if(strcmp(buffer,"test_task") == 0)
 		{
-			paddr_t proc_addr =  test_task1;
+			paddr_t proc_addr =  pi;
 			process_t* proc = create_process(proc_addr,42,NULL,1024,3);
 		}
 		if(strcmp(buffer,"test_mouse") == 0)

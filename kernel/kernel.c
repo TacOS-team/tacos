@@ -136,7 +136,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	/* Test du scheduler */
 	
-	init_scheduler(10);
+	init_scheduler(5);
 
 	paddr_t _addr = shell;
 	create_process(_addr,0,NULL,1024,3);

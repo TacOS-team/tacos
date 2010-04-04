@@ -147,7 +147,6 @@ int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_s
 	new_proc->regs.eip = prog;
 	new_proc->regs.esp = (user_stack)+stack_size-3;
 	new_proc->regs.ebp = new_proc->regs.esp;
-	printf("esp:0x%x\n", new_proc->regs.esp);
 	new_proc->sys_stack = (sys_stack)+stack_size-1;
 	new_proc->state = PROCSTATE_IDLE;
 	
