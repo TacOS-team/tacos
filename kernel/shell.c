@@ -13,39 +13,29 @@
 
 static void test_kmalloc()
 {
+  int *a, *b, *c;
   kmalloc_print_mem();
   getchar();
-  int *a = kmalloc(300*sizeof(int));
-  a[0] = 100;
+
+  a = (int *) kmalloc(300*sizeof(int));
+  b = (int *) kmalloc(2048*sizeof(int));
+  c = (int *) kmalloc(300*sizeof(int));
+  printf("A : %x\nB : %x\nC : %x\n", a, b, c);
   kmalloc_print_mem();
   getchar();
-  a = kmalloc(300*sizeof(int));
-  a[0] = 100;
+
+  printf("REMOVING %x\n", b);
+  kfree(b);
   kmalloc_print_mem();
   getchar();
-  a = kmalloc(300*sizeof(int));
-  a[0] = 100;
+
+  b = (int *) kmalloc(300*sizeof(int));
   kmalloc_print_mem();
   getchar();
-  a = kmalloc(300*sizeof(int));
-  a[0] = 100;
-  kmalloc_print_mem();
-  getchar();
-  a = kmalloc(300*sizeof(int));
-  a[0] = 100;
-  kmalloc_print_mem();
-  getchar();
-  a = kmalloc(300*sizeof(int));
-  a[0] = 100;
-  kmalloc_print_mem();
-  getchar();
-  a = kmalloc(300*sizeof(int));
-  a[0] = 100;
-  kmalloc_print_mem();
-  getchar();
-  printf("LAST\n");
-  a = kmalloc(300*sizeof(int));
-  a[0] = 100;
+
+  kfree(a);
+  kfree(b);
+  kfree(c);
   kmalloc_print_mem();
   getchar();
 }
