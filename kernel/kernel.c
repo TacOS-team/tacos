@@ -152,6 +152,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(0,sys_exit);
 	syscall_set_handler(1,sys_getpid);
 	syscall_set_handler(3,sys_open);
+	syscall_set_handler(4,sys_kill);
 	start_scheduler();
   //shell(0, NULL);
 

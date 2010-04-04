@@ -240,6 +240,13 @@ int shell(int argc, char* argv[])
 			printf("cleaning proclist...\n");
 			clean_process_list();
 		}
+		if (strcmp(buffer, "kill") == 0)
+		{
+			int pid;
+			scanf("%d",&pid);
+			kill(pid);
+		}
+		
 		
 		if (strcmp(buffer, "cd") == 0) {
 			while((c = getchar()) != '\n') {

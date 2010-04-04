@@ -19,6 +19,11 @@ static proclist_cell* current_proclist_cell = NULL;
 
 static process_t * active_process = NULL;
 
+uint32_t get_proc_count()
+{
+	return proc_count;
+}
+
 process_t* get_current_process()
 {
 	return current_proclist_cell->process;
@@ -280,6 +285,14 @@ void* sys_getpid(uint32_t* pid, uint32_t zero1, uint32_t zero2)
   return NULL;
 }
 
+void* sys_kill(uint32_t pid, uint32_t zero1, uint32_t zero2)
+{
+	process_t* process = find_process(pid);
+	
+	// Violent? OUI!
+	process->state = PROCSTATE_TERMINATED;
+}
+
 /* A mettre en user space */
 void exit(uint32_t value)
 {
@@ -290,8 +303,11 @@ void exit(uint32_t value)
 uint32_t get_pid()
 {
 	int pid;
-	syscall(1,&pid, 0, 0);
+	syscall(1,(uint32_t)&pid, 0, 0);
 	return pid;
 }
 
-
+void kill(uint32_t pid)
+{
+	syscall(4,pid,0,0);
+}

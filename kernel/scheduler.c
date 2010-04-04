@@ -21,6 +21,7 @@ static void* switch_process(void* data)
 	uint32_t* stack_ptr;
 	uint32_t esp0, eflags;
     uint16_t ss, cs;
+    uint32_t compteur;
 
     process_t* current = get_current_process();
 	
@@ -55,15 +56,18 @@ static void* switch_process(void* data)
 	}
 
 	// On recupere le prochain processus à executer	
+	compteur = 0;
 	do
 	{
+		compteur++;
 		current = get_next_process();
-	}while(current->state == PROCSTATE_TERMINATED || current->state == PROCSTATE_WAITING);
+	}while((current->state == PROCSTATE_TERMINATED || current->state == PROCSTATE_WAITING) && compteur < get_proc_count());
 	
 	// Si on a aucun processus en IDLE/WAITING/RUNNING, il n'y a aucune chance pour qu'un processus arrive spontanement
 	// Donc on arrete le scheduler
-	if(current == NULL) 
+	if(current == NULL || current->state == PROCSTATE_TERMINATED) 
 	{
+		printf("Scheduler is down...\n");
 		asm("hlt");
 	}
 
