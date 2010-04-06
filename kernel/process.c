@@ -17,7 +17,7 @@ uint32_t proc_count = 0;
 static proc_list process_list = NULL;
 static proclist_cell* current_proclist_cell = NULL;
 
-static process_t * active_process = NULL;
+static process_t * active_process = 5242880;
 
 uint32_t get_proc_count()
 {
@@ -179,7 +179,7 @@ int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_s
 	add_process(new_proc);
 	
 	//FIXME: Si je décommente cette ligne je me prend une double faute !
-	//active_process = new_proc;
+	active_process = new_proc;
 
 	return new_proc->pid;
 }

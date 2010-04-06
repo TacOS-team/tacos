@@ -6,6 +6,9 @@ int fflush(FILE *stream) {
 		write(stream->_fileno, stream->_IO_write_base, stream->_IO_write_ptr - stream->_IO_write_base);
 		stream->_IO_write_ptr = stream->_IO_write_base;
 		return 0;
+	} else {
+		stream->_IO_read_ptr = stream->_IO_read_base;
+		return 0;
 	}
 	return EOF;
 }

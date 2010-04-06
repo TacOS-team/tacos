@@ -140,6 +140,7 @@ int shell(int argc, char* argv[])
 		printf("\n > ");
 		fflush(stdout);
 		
+		fflush(stdin);
 		scanf("%s", buffer);	
 		printf("\n");
 
