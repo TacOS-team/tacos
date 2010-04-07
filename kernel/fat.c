@@ -295,7 +295,8 @@ void mount_FAT12 () {
 void change_dir (char * name) {
 	
 		if ( strcmp(name,"..") == 0 ) {
-			path.current--;
+			if ( path.current!=0 )
+				path.current--;
 		}
 		else {
 			if (open_next_dir(&(path.dir_list[path.current]),&(path.dir_list[path.current+1]),name) != 0 ) {
