@@ -18,10 +18,6 @@ fat_info_t fat_info;
 cluster_t file_alloc_table[TOTAL_CLUSTERS];
 
 
-void sleep () {
-	int c=0;
-	while (c<1000000) c++;
-}
 
 addr_CHS_t get_CHS_from_LBA (addr_LBA_t sector_LBA) {
 	addr_CHS_t ret;
@@ -78,17 +74,32 @@ void read_root_dir (fat_dir_entry_t * rdir) {
 	}
 }
 
-uint8_t * read_cluster (uint8_t * buf, cluster_t cluster) {
+int read_cluster (uint8_t * buf, cluster_t cluster) {
 	addr_CHS_t sector_addr;
 	if ( (cluster!=0) && (cluster!=1) ) {
 		sector_addr = get_CHS_from_cluster(cluster);
 		floppy_read_sector(sector_addr.Cylinder, sector_addr.Head, sector_addr.Sector, (char*) buf);
 		//printf("\n%d %d %d\n",sector_addr.Cylinder, sector_addr.Head, sector_addr.Sector);
+		return 0;
 	}
 	else {
 		printf("ERROR: tentative de lecture d un secteur reserve\n");
+		return 1;
 	}
-	return buf;
+}
+
+int write_cluster (uint8_t * buf, cluster_t cluster) {
+	addr_CHS_t sector_addr;
+	if ( (cluster!=0) && (cluster!=1) ) {
+		sector_addr = get_CHS_from_cluster(cluster);
+		floppy_write_sector(sector_addr.Cylinder, sector_addr.Head, sector_addr.Sector, (char*) buf);
+		//printf("\n%d %d %d\n",sector_addr.Cylinder, sector_addr.Head, sector_addr.Sector);
+		return 0;
+	}
+	else {
+		printf("ERROR: tentative de lecture d un secteur reserve\n");
+		return 1;
+	}
 }
 
 char * decode_long_file_name (char * name, uint8_t * long_file_name ) {
@@ -254,7 +265,45 @@ void open_file (char * path, open_file_descriptor * ofd) {
 	}
 	ofd->current_cluster = ofd->first_cluster;
 	ofd->current_octet = 0;
+	ofd->current_octet_buf = 0;
 	read_cluster(ofd->buffer,ofd->current_cluster);
+}
+
+void write_file (open_file_descriptor * ofd, uint32_t * buf, int nb_octet) {
+	int i;
+	for (i=0;i<nb_octet;i++) {
+		ofd->buffer[ofd->current_octet_buf]=buf[i];
+		ofd->current_octet_buf++;
+		ofd->current_octet++;
+		if (ofd->current_octet_buf>=512) {
+			write_cluster(ofd->buffer, ofd->current_cluster);
+			ofd->current_cluster = file_alloc_table[ofd->current_cluster]; 
+			// Gerer le fait qu'on doit allouer un nouveau cluster si c'est le dernier
+			// i.e. si ofd->current_cluster=0xFFF
+			ofd->current_octet_buf=0;
+		}
+		
+	}
+}
+
+uint8_t read_file (open_file_descriptor * ofd) {
+	int i;
+	uint8_t ret;
+	
+	if (ofd->current_octet==ofd->file_size) {
+			return -1;
+	}
+	else {
+		ret = ofd->buffer[ofd->current_octet_buf];
+		ofd->current_octet_buf++;
+		ofd->current_octet++;
+		if (ofd->current_octet_buf>=512) {
+			ofd->current_cluster = file_alloc_table[ofd->current_cluster];
+			read_cluster(ofd->buffer, ofd->current_cluster);
+			ofd->current_octet_buf=0;
+		}
+		return ret;
+	}
 }
 
 void init_path () {

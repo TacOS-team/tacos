@@ -2,6 +2,7 @@
 #define _FAT_H_
 
 #include <types.h>
+#include <fcntl.h>
 
 #define NB_CYLINDERS 80
 #define NB_HEADS 2
@@ -100,16 +101,20 @@ typedef struct _fat_dir_entry {
 
 
 
-
+// Init FAT (a faire dans le main)
 void mount_FAT12 ();
-//void open_working_dir ();
 
-void print_Boot_Sector ();
-
+// Fontions pour le Shell
+void print_Boot_Sector ();		// fonction de debug
+void print_path ();				// fonction de debug
 void change_dir (char * name);
-void list_segments ();
-void print_working_dir ();
+void list_segments ();			
+void print_working_dir ();		
 
-void print_path ();
+
+// Lecture/Ecriture Fichier
+void open_file (char * path, open_file_descriptor * ofd);
+uint8_t read_file (open_file_descriptor * ofd);
+void write_file (open_file_descriptor * ofd, uint32_t * buf, int nb_octet);
 
 #endif
