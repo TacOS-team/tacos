@@ -59,11 +59,13 @@
 typedef struct _open_file_descriptor {
 	uint32_t flags;
 	uint8_t buffer[512];
+	uint8_t current_cluster;
 	uint32_t current_octet;
+	uint32_t first_cluster;
 	uint32_t file_size;
-	uint32_t no_entry;
-	directory_t dir;
-	path_t path;
+	//uint32_t no_entry;
+	//directory_t dir;
+	//path_t path;
 } open_file_descriptor;
 
 

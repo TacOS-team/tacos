@@ -130,6 +130,7 @@ void open_root_dir (directory_t * dir) {
 			decode_long_file_name (str, root_dir[i].long_file_name);
 			strcpy(dir->entry_name[dir->total_entries],str);
 			dir->entry_cluster[dir->total_entries] = root_dir[i].cluster_pointer;
+			dir->entry_size[dir->total_entries] = root_dir[i].file_size;
 			dir->total_entries++;
 		}
 	}
@@ -159,6 +160,7 @@ int open_next_dir(directory_t * prev_dir,directory_t * next_dir, char * name) {
 				decode_long_file_name (str, sub_dir[i].long_file_name);
 				strcpy(next_dir->entry_name[next_dir->total_entries],str);
 				next_dir->entry_cluster[next_dir->total_entries] = sub_dir[i].cluster_pointer;
+				next_dir->entry_size[next_dir->total_entries] = sub_dir[i].file_size;
 				next_dir->total_entries++;
 			}
 		}
@@ -170,7 +172,7 @@ int open_next_dir(directory_t * prev_dir,directory_t * next_dir, char * name) {
 	return ret;
 }
 
-int get_dir_from_path (char * path, char* name,int pos) {
+int get_dirname_from_path (char * path, char* name,int pos) {
 
 	int i=0,j=0,k=0;
 	int ret;
@@ -195,7 +197,9 @@ int get_dir_from_path (char * path, char* name,int pos) {
 	return ret;
 }
 
-int get_path_lenth (char *path) {
+
+
+int get_path_length (char *path) {
 	int i=0,k=0;
 	while ( path[i]!='\0') {
 		if (path[i]=='/')
@@ -205,37 +209,52 @@ int get_path_lenth (char *path) {
 	return k;
 }
 
+int get_filename_from_path (char * path, char * filename) {
+	int path_length;
+	path_length = get_path_length(path);
+	get_dirname_from_path(path,filename,path_length+1);
+	printf("%s\n",filename);
+	return 0;
+}
 
-
+//directory_t dir;
 void open_file (char * path, open_file_descriptor * ofd) {
-	int i,itermax, path_lenth;
+	int i, path_length;
 	char dir_name[14];
 	char file_name[14];
 	directory_t dir;
-	path_lenth = get_path_lenth(path);
-	itermax = path_lenth - 1;
-	for(i=1;i<=itermax;i++) {
-		get_dir_from_path(path,dir_name,i);
-		if (strcmp(dir_name,"fd0:")==0)
-			open_root_dir(&dir);
-		else
-			open_next_dir(&dir,&dir,dir_name);
-		i++;
-	}
-	if (itermax==0) {
-		open_root_dir(&(ofd->dir));
+	
+	path_length = get_path_length(path);
+	printf("path_length: %d\n",path_length);
+	
+	if (path_length==1) {
+		open_root_dir(&dir);
 	}
 	else {
-		get_dir_from_path(path,dir_name,path_lenth);
-		open_next_dir(&dir,&(ofd->dir),dir_name);
+		for(i=1;i<=path_length;i++) {
+			get_dirname_from_path(path,dir_name,i);
+			if (strcmp(dir_name,"fd0:")==0) {
+				open_root_dir(&dir);
+				printf("open_root_dir\n");
+			}
+			else {
+				open_next_dir(&dir,&dir,dir_name);
+				printf("open_dir\n");
+			}
+		}
 	}
 	
-	get_dir_from_path(path,file_name,path_lenth+1);
-	for(i=0;i<(ofd->dir.total_entries);i++) {
-		if(strcmp(ofd->dir.entry_name[i],file_name)==0) {
+	get_filename_from_path(path,file_name);
+	for(i=0;i<(dir.total_entries);i++) {
+		if(strcmp(dir.entry_name[i],file_name)==0) {
+			ofd->first_cluster = dir.entry_cluster[i];
+			ofd->file_size = dir.entry_size[i];
 			break;
 		}
 	}
+	ofd->current_cluster = ofd->first_cluster;
+	ofd->current_octet = 0;
+	read_cluster(ofd->buffer,ofd->current_cluster);
 }
 
 void init_path () {
@@ -274,11 +293,18 @@ void mount_FAT12 () {
 
 
 void change_dir (char * name) {
-		if (open_next_dir(&(path.dir_list[path.current]),&(path.dir_list[path.current+1]),name) != 0 ) {
-			path.current++;
+	
+		if ( strcmp(name,"..") == 0 ) {
+			path.current--;
 		}
-		else
-			printf("\ncd: %s aucun fichier ou dossier de ce type\n",name);
+		else {
+			if (open_next_dir(&(path.dir_list[path.current]),&(path.dir_list[path.current+1]),name) != 0 ) {
+				path.current++;
+			}
+			else
+				printf("\ncd: %s aucun fichier ou dossier de ce type\n",name);
+		}
+		
 }
 
 void list_segments () {
@@ -377,7 +403,7 @@ void print_path () {
 			i=file_alloc_table[i];
 		}
 		printf("%d\n",file_alloc_table[i]);
-		printf("count sector: %d\n",c);*/
+		printf("count sector: %d\n",c);
 		char name[14];
 		int i, max;
 		max = get_dir_from_path ("root/dir",name,1);
@@ -385,7 +411,10 @@ void print_path () {
 		max = get_dir_from_path ("root/dir",name,2);
 		printf("%s(%d)",name,max);
 		max = get_path_lenth ("root/dir/tftff.uh");
-		printf(" %d\n",max);
+		printf(" %d\n",max);*/
+		open_file_descriptor ofd;
+		open_file("fd0:/boot/grub/menu.txt",&ofd);
+		printf("size: %d cluster: %d\n",ofd.file_size, ofd.current_cluster);
 }
 
 
