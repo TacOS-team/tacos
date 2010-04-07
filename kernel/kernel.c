@@ -32,6 +32,8 @@
 #include <fcntl.h>
 #include <debug.h>
 #include <shell.h>
+#include <ksyscall.h>
+#include <syscall.h>
 
 typedef struct
 {
@@ -40,7 +42,6 @@ typedef struct
 
 /* Forward declarations. */
 void cmain (unsigned long magic, unsigned long addr);
-int shell(int argc, char* argv[]);
 static void testPageReservation();
 static void initKernelOptions(const char *cmdLine, kernel_options *options);
 static void test_kmalloc();
@@ -149,10 +150,10 @@ void cmain (unsigned long magic, unsigned long addr) {
 */
 	printf("vm86:%d\n",check_vm86());
 	
-	syscall_set_handler(0,sys_exit);
-	syscall_set_handler(1,sys_getpid);
-	syscall_set_handler(3,sys_open);
-	syscall_set_handler(4,sys_kill);
+	syscall_set_handler(SYS_EXIT,sys_exit);
+	syscall_set_handler(SYS_GETPID,sys_getpid);
+	syscall_set_handler(SYS_OPEN,sys_open);
+	syscall_set_handler(SYS_KILL,sys_kill);
 	start_scheduler();
   //shell(0, NULL);
 

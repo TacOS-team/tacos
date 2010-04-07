@@ -4,7 +4,8 @@
 #include <msr.h>
 #include <stdio.h>
 #include <interrupts.h>
-#include "syscall.h"
+#include "ksyscall.h"
+#include <syscall.h>
 
 syscall_handler_t syscall_handler_table[MAX_SYSCALL_NB];
 
@@ -45,13 +46,3 @@ void init_syscall()
 	// Mise à zero de la table des handler
 	memset(syscall_handler_table, NULL, MAX_SYSCALL_NB*sizeof(syscall_handler_t));
 }
-
-void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3)
-{
-	// On met la fonction et les parametres dans les bon registres
-	asm(""::"a"(func),"b"(param1),"c"(param2),"d"(param3));
-	
-	// et on lance l'interruption
-	asm("int $0x30");
-}
-	

@@ -3,7 +3,7 @@ LDFLAGS=-L../lib/
 LDLIBS=-lc
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
   
-all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o dummy_process.o process.o pagination.o kpanic.o syscall.o vmm.o kmalloc.o fat.o fpu.o vm86.o shell.o
+all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o dummy_process.o process.o pagination.o kpanic.o ksyscall.o vmm.o kmalloc.o fat.o fpu.o vm86.o shell.o
 
 boot.o: boot.S
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDE) -fno-stack-protector
@@ -17,7 +17,7 @@ interrupts_wrappers.o: interrupts_wrappers.S ../include/interrupts.h
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDE) 
 
-kernel.o: include/fat.h include/multiboot.h ../include/types.h ../include/memory.h ../include/stdio.h ../include/string.h include/gdt.h include/idt.h include/scheduler.h include/dummy_process.h ../include/clock.h include/msr.h include/syscall.h ../include/kmalloc.h
+kernel.o: include/fat.h include/multiboot.h ../include/types.h ../include/memory.h ../include/stdio.h ../include/string.h include/gdt.h include/idt.h include/scheduler.h include/dummy_process.h ../include/clock.h include/msr.h include/ksyscall.h ../include/kmalloc.h ../include/syscall.h
 
 i8259.o: include/i8259.h ../include/types.h
 
