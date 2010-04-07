@@ -7,6 +7,7 @@
 #define SYS_GETPID 1
 #define SYS_OPEN 3
 #define SYS_KILL 4
+#define SYS_WRITE 5
 
 void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3);
 

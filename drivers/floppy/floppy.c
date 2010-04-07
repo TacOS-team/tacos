@@ -38,8 +38,8 @@ int floppy_calibrate()
 		{
 			static const char * status[] =
 			{ 0, "error", "invalid", "drive" };
-			printf("floppy_recalibrate: status = %s.\n", status[st0 >> 6]);
-			printf("ST0:0x%x.\nCY1:0x%x.\n", st0, cy1);
+			kprintf("floppy_recalibrate: status = %s.\n", status[st0 >> 6]);
+			kprintf("ST0:0x%x.\nCY1:0x%x.\n", st0, cy1);
 			continue;
 		}
 		
@@ -49,7 +49,7 @@ int floppy_calibrate()
 			return 0;
 		}
 	}
-	printf("floppy_recalibrate: failure.\n");
+	kprintf("floppy_recalibrate: failure.\n");
 	
 	floppy_motor(OFF);
 	
@@ -64,7 +64,7 @@ int init_floppy()
 	
 	/* On vérifie qu'on a bien un controleur standard, sinon on affiche un warning */
 	if(floppy_get_version() != 0x90)
-		printf("WARNING: Floppy driver may not work with 0x%x controler.\n", floppy_get_version());
+		kprintf("WARNING: Floppy driver may not work with 0x%x controler.\n", floppy_get_version());
 
 	floppy_reset_irq();
 	

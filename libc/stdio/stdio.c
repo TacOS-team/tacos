@@ -204,8 +204,8 @@ void newline()
 }
 
 void kputchar_position(char c, int x, int y) {
-	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%25) * COLUMNS].character = c & 0xFF;
-	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%25) * COLUMNS].attribute = attribute;
+	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].character = c & 0xFF;
+	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].attribute = attribute;
 	(*video)[x + y * COLUMNS].character = c & 0xFF;
 	(*video)[x + y * COLUMNS].attribute = attribute;
 }
@@ -239,12 +239,52 @@ void kputchar (char c) {
 	updateCursorPosition();
 }
 
-/* Fonction temporaire !!!! */
-size_t write(int fd, const void *buf, size_t count) {
-	if (fd != 1 && fd != 2) {
-		return -1;
-	}
+void kprintf(const char *format, ...) {
+  char **arg = (char **) &format;
+  int c;
+  char buf[20];
 
+  arg++;
+
+  while ((c = *format++) != 0)
+    {
+      if (c != '%')
+        kputchar (c);
+      else
+        {
+          char *p;
+
+          c = *format++;
+          switch (c)
+            {
+            case 'd':
+            case 'u':
+            case 'x':
+              itoa (buf, c, *((int *) arg++));
+              p = buf;
+              goto string;
+              break;
+
+            case 's':
+              p = *arg++;
+              if (! p)
+                p = "(null)";
+
+            string:
+              while (*p)
+                kputchar (*p++);
+              break;
+
+            default:
+              kputchar (*((int *) arg++));
+              break;
+            }
+        }
+    }
+}
+
+/* Fonction temporaire !!!! */
+size_t write_screen(const void *buf, size_t count) {
 	size_t i;
 	for (i = 0; i < count && *(char *)buf != '\0'; i++) {
 		kputchar(*(char *)buf);
@@ -265,7 +305,7 @@ void set_attribute(uint8_t background, uint8_t foreground)
 
 void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y)
 {
-	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%25) * COLUMNS].attribute = attribute;
+	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].attribute = attribute;
 	(*video)[x + y * COLUMNS].attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
 }
 

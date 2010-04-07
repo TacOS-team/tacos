@@ -17,8 +17,6 @@ path_t path;
 fat_info_t fat_info;
 cluster_t file_alloc_table[TOTAL_CLUSTERS];
 
-
-
 addr_CHS_t get_CHS_from_LBA (addr_LBA_t sector_LBA) {
 	addr_CHS_t ret;
 	ret.Cylinder = sector_LBA / (fat_info.sectors_per_track*fat_info.head_side_count);

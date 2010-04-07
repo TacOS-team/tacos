@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-open_file_descriptor ofd;
+// static open_file_descriptor ofd;
 
 
 void* sys_open(uint32_t p_process, uint32_t p_path, uint32_t flags) {
@@ -20,7 +20,7 @@ void* sys_open(uint32_t p_process, uint32_t p_path, uint32_t flags) {
 		i++;
 	
 	// on cree un open_file_descriptor
-	process->fd[i].ofd = &ofd; // Au malloc quand il marchera......
+	process->fd[i].ofd = malloc(sizeof(open_file_descriptor));// &ofd; // Au malloc quand il marchera......
 	/*
 	strcpy(process->fd[i].ofd->path, path);
 	process->fd[i].ofd->flags = flags;

@@ -3,6 +3,13 @@
 #include <vmm.h>
 #include <stdio.h>
 
+/**
+ * vmm est l'allocateur qui s'occupe de gérer les pages virtuelles du noyau.
+ * Il se base sur l'algorithme first fit (premier emplacement de taille suffisante)
+ *
+ * Maintien la liste des espaces libres et des espaces occupés (slabs).
+ */
+
 // Page Table Entry Magic
 #define PTE_MAGIC 0xFFC00000
 #define PDE_MAGIC 0xFFFFF000

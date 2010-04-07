@@ -1,6 +1,10 @@
 #include <unistd.h>
 #include <types.h>
 #include <events.h>
+#include <process.h>
+#include <stdio.h>
+#include <libio.h>
+#include <syscall.h>
 
 void* sleep_event(void* data)
 {
@@ -21,5 +25,28 @@ unsigned int usleep(unsigned int milliseconds)
 		asm("hlt");
 	}
 	
+	return 0;
+}
+
+void* sys_write(uint32_t fd, uint32_t p_buf, uint32_t count) {
+	// FIXME : Fait planter !
+	process_t * process = get_current_process();
+	const void *buf = (const void*)p_buf;
+
+	open_file_descriptor *ofd;
+
+	ofd = process->fd[fd].ofd;
+
+//	ofd->write(buf, count);
+
+	// Temporaire :
+	write_screen(buf, count);
+
+	return NULL;
+}
+
+size_t write(int fd, const void *buf, size_t count) {
+	syscall(SYS_WRITE, fd, buf, count);
+
 	return 0;
 }

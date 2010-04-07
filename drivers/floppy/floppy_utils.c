@@ -80,8 +80,8 @@ int floppy_seek(int cylindre, int head)
 		{
 			static const char * status[] =
 			{ 0, "error", "invalid", "drive" };
-			printf("floppy_seek: status = %s.\n", status[st0 >> 6]);
-			printf("ST0:0x%x.\nCYL:0x%x.\n", st0, cyl);
+			kprintf("floppy_seek: status = %s.\n", status[st0 >> 6]);
+			kprintf("ST0:0x%x.\nCYL:0x%x.\n", st0, cyl);
 			continue;
 		}
 		
@@ -91,7 +91,7 @@ int floppy_seek(int cylindre, int head)
 			return 0;
 		}
 	}
-	printf("floppy_seek: failure\n.");
+	kprintf("floppy_seek: failure\n.");
 	
 	floppy_motor(OFF);
 	
@@ -122,8 +122,8 @@ void floppy_detect_drives() {
 	outb(0x10, 0x70); // Selection du registre 0x10 du CMOS
 	drives = inb(0x71);
 
-	printf("Floppy drive 0: %s\n", drive_types[floppy_get_type(0)]);
-	printf("Floppy drive 1: %s\n", drive_types[floppy_get_type(1)]);
+	kprintf("Floppy drive 0: %s\n", drive_types[floppy_get_type(0)]);
+	kprintf("Floppy drive 1: %s\n", drive_types[floppy_get_type(1)]);
 }
 
 

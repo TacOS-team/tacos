@@ -34,6 +34,7 @@
 #include <shell.h>
 #include <ksyscall.h>
 #include <syscall.h>
+#include <unistd.h>
 
 typedef struct
 {
@@ -60,7 +61,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	/* Am I booted by a Multiboot-compliant boot loader? */
 	if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
 	{
-		printf ("Invalid magic number: 0x%x\n", (unsigned) magic);
+		kprintf ("Invalid magic number: 0x%x\n", (unsigned) magic);
 		return;
 	}
 
@@ -84,7 +85,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
 	interrupt_set_routine(IRQ_LPT1, LPT1_routine, 0);
 	mouseInit();
-	init_syscall();
+
+
 	floppy_init_interrupt();
 
   init_fpu();
@@ -112,22 +114,22 @@ void cmain (unsigned long magic, unsigned long addr) {
 	/* Clear the screen. */
 	cls ();
 
-  printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
-	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");
-	printf("    _|    _|    _|  _|        _|    _|    _|_|  \n");
-	printf("    _|    _|    _|  _|        _|    _|        _|\n");
-	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
-	printf("(codename:fajitas)\n\n\n");
+  kprintf("_|_|_|_|_|                      _|_|      _|_|_|\n");
+	kprintf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");
+	kprintf("    _|    _|    _|  _|        _|    _|    _|_|  \n");
+	kprintf("    _|    _|    _|  _|        _|    _|        _|\n");
+	kprintf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
+	kprintf("(codename:fajitas)\n\n\n");
 
 	//beep();
 
-	//printf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
+	//kprintf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
 
 	floppy_detect_drives();
-	printf("Floppy controller version: 0x%x.\n", floppy_get_version());
+	kprintf("Floppy controller version: 0x%x.\n", floppy_get_version());
 	
 	if(init_floppy() != 0)
-		printf("Initialisation du lecteur a echoue.\n");
+		kprintf("Initialisation du lecteur a echoue.\n");
 		
 	
 	/*   Test FAT    */
@@ -148,12 +150,16 @@ void cmain (unsigned long magic, unsigned long addr) {
 	create_process(_addr, 0, NULL, 64, 3);
 	//while(1);
 */
-	printf("vm86:%d\n",check_vm86());
+	kprintf("vm86:%d\n",check_vm86());
 	
+	init_syscall();
+
 	syscall_set_handler(SYS_EXIT,sys_exit);
 	syscall_set_handler(SYS_GETPID,sys_getpid);
 	syscall_set_handler(SYS_OPEN,sys_open);
 	syscall_set_handler(SYS_KILL,sys_kill);
+	syscall_set_handler(SYS_WRITE,sys_write);
+	
 	start_scheduler();
   //shell(0, NULL);
 
