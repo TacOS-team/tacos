@@ -2,8 +2,15 @@
 #include <stdio.h>
 #include <ioports.h>
 #include <keyboard.h>
+#include <process.h>
 
 #define BUFFER_SIZE 256
+
+/**
+ * Scancode SET 1 : (IBM XT)
+ * http://www.computer-engineering.org/ps2keyboard/scancodes1.html
+ */
+
 
 /** SCAN CODES **/
 
@@ -93,83 +100,85 @@ static letter letters_qwerty[] = {
 };
 
 
-static letter letters_azerty[] = {
-  {0x02, '&', '1'},
-  {0x03, 130, '2'},
-  {0x04, '"', '3'},
-  {0x05, '\'', '4'},
-  {0x06, '(', '5'},
-  {0x07, '-', '6'},
-  {0x08, 138, '7'},
-  {0x09, '_', '8'},
-  {0x0a, 135, '9'},
-  {0x0b, 133, '0'},
-  {0x0c, ')', 167},
-  {0x0d, '=', '+'},
-  {0x0e, '\b', '\b'},
-  {0x10, 'a', 'A'},
-  {0x11, 'z', 'Z'},
-  {0x12, 'e', 'E'},
-  {0x13, 'r', 'R'},
-  {0x14, 't', 'T'},
-  {0x15, 'y', 'Y'},
-  {0x16, 'u', 'U'},
-  {0x17, 'i', 'I'},
-  {0x18, 'o', 'O'},
-  {0x19, 'p', 'P'},
-  {0x1B, '$', 156}, 
-  {0x1E, 'q', 'Q'}, 
-  {0x1F, 's', 'S'}, 
-  {0x20, 'd', 'D'}, 
-  {0x21, 'f', 'F'}, 
-  {0x22, 'g', 'G'}, 
-  {0x23, 'h', 'H'}, 
-  {0x24, 'j', 'J'}, 
-  {0x25, 'k', 'K'}, 
-  {0x26, 'l', 'L'}, 
-  {0x27, 'm', 'M'},
-  {0x28, 151, '%'}, 
-  {0x2B, '*', 230}, 
-  {0x2C, 'w', 'W'}, 
-  {0x2D, 'x', 'X'}, 
-  {0x2E, 'c', 'C'}, 
-  {0x2F, 'v', 'V'}, 
-  {0x30, 'b', 'B'}, 
-  {0x31, 'n', 'N'}, 
-  {0x32, ',', '?'},
-  {0x33, ';', '.'},
-  {0x34, ':', '/'},
-  {0x35, '!', '§'},
-  {0x56, '<', '>'},
-  {0x52, 0, '0'},
-  {0x4F, 0, '1'},
-  {0x50, 0, '2'},
-  {0x51, 0, '3'},
-  {0x4B, 0, '4'},
-  {0x4C, 0, '5'},
-  {0x4D, 0, '6'},
-  {0x47, 0, '7'},
-  {0x48, 0, '8'},
-  {0x49, 0, '9'}
+static letter letters_azerty[] = { // TODO : remplacer le scancode par un keycode.
+ 	{0x02, '&', '1'},
+	{0x03, 130, '2'},
+	{0x04, '"', '3'},
+	{0x05, '\'', '4'},
+	{0x06, '(', '5'},
+	{0x07, '-', '6'},
+	{0x08, 138, '7'},
+	{0x09, '_', '8'},
+	{0x0a, 135, '9'},
+	{0x0b, 133, '0'},
+	{0x0c, ')', 167},
+	{0x0d, '=', '+'},
+	{0x0e, '\b', '\b'},
+	{0x10, 'a', 'A'},
+	{0x11, 'z', 'Z'},
+	{0x12, 'e', 'E'},
+	{0x13, 'r', 'R'},
+	{0x14, 't', 'T'},
+	{0x15, 'y', 'Y'},
+	{0x16, 'u', 'U'},
+	{0x17, 'i', 'I'},
+	{0x18, 'o', 'O'},
+	{0x19, 'p', 'P'},
+	{0x1B, '$', 156}, 
+	{0x1E, 'q', 'Q'}, 
+	{0x1F, 's', 'S'}, 
+	{0x20, 'd', 'D'}, 
+	{0x21, 'f', 'F'}, 
+	{0x22, 'g', 'G'}, 
+	{0x23, 'h', 'H'}, 
+	{0x24, 'j', 'J'}, 
+	{0x25, 'k', 'K'}, 
+	{0x26, 'l', 'L'}, 
+	{0x27, 'm', 'M'},
+	{0x28, 151, '%'}, 
+	{0x2B, '*', 230}, 
+	{0x2C, 'w', 'W'}, 
+	{0x2D, 'x', 'X'}, 
+	{0x2E, 'c', 'C'}, 
+	{0x2F, 'v', 'V'}, 
+	{0x30, 'b', 'B'}, 
+	{0x31, 'n', 'N'}, 
+	{0x32, ',', '?'},
+	{0x33, ';', '.'},
+	{0x34, ':', '/'},
+	{0x35, '!', '§'},
+	{0x56, '<', '>'},
+	{0x52, '0', '0'},
+	{0x4F, '1', '1'},
+	{0x50, '2', '2'},
+	{0x51, '3', '3'},
+	{0x4B, '4', '4'},
+	{0x4C, '5', '5'},
+	{0x4D, '6', '6'},
+	{0x47, '7', '7'},
+	{0x48, '8', '8'},
+	{0x49, '9', '9'}
 };
 
 static int begin = 0, end = 0;
 static int shift = 0;
 static int capslock = 0;
 static int numlock = 0;
+static uint8_t scancode_m1 = 0;
+static uint8_t scancode_m2 = 0;
 
 void keyBufferPush(char c)
 {
-	// Normalement on ne met pas dans stdin mais dans le stdin du active_process.
-	if (stdin->_IO_read_ptr == NULL) {
+	process_t *process = get_active_process();
+	if (process->stdin->_IO_read_ptr == NULL) {
 		char * buf = malloc(1000);
-		stdin->_IO_buf_base = buf;
-		stdin->_IO_buf_end = buf + 1000;
-		stdin->_IO_read_base = stdin->_IO_buf_base;
-		stdin->_IO_read_end = stdin->_IO_buf_base;
-		stdin->_IO_read_ptr = stdin->_IO_buf_base;
+		process->stdin->_IO_buf_base = buf;
+		process->stdin->_IO_buf_end = buf + 1000;
+		process->stdin->_IO_read_base = process->stdin->_IO_buf_base;
+		process->stdin->_IO_read_end = process->stdin->_IO_buf_base;
+		process->stdin->_IO_read_ptr = process->stdin->_IO_buf_base;
 	}
-	*(stdin->_IO_read_ptr++) = c;
+	*(process->stdin->_IO_read_ptr++) = c;
 }
 
 char keyboardConvertToChar(uint8_t scancode) {
@@ -188,46 +197,51 @@ char keyboardConvertToChar(uint8_t scancode) {
 
 void keyboardInterrupt(int id)
 {
-  uint8_t scancode = inb(0x60);
-  
-  switch(scancode)
-  {
-  case KEY_LSHIFT:
-    shift = 1;
-    break;
-  case KEY_LSHIFT | KEY_RELEASE:
-    shift = 0;
-    break;
-  case KEY_RSHIFT:
-    shift = 1;
-    break;
-  case KEY_RSHIFT | KEY_RELEASE:
-    shift = 0;
-    break;
-  case KEY_CAPSLOCK:
-	 capslock = !capslock;
-	 break;
-  case KEY_NUMLOCK:
-	 numlock = !numlock;
-	 break;
-  case KEY_RETURN:
-    keyBufferPush('\n');
-    break;
-  case KEY_SPACE:
-    keyBufferPush(' ');
-	 break;
-  case KEY_F1:
-	 switchStandardBuffer();
-	 break;
-  case KEY_F2:
-	 switchDebugBuffer();
-	 break;
-  default: {
-    char c = keyboardConvertToChar(scancode);
-    if (c != 0) {
-		 keyBufferPush(c);
-	 }
+	uint8_t scancode = inb(0x60);
+	
+	switch(scancode)
+	{
+	case KEY_LSHIFT:
+	  shift = 1;
+	  break;
+	case KEY_LSHIFT | KEY_RELEASE:
+	  shift = 0;
+	  break;
+	case KEY_RSHIFT:
+	  shift = 1;
+	  break;
+	case KEY_RSHIFT | KEY_RELEASE:
+	  shift = 0;
+	  break;
+	case KEY_CAPSLOCK:
+	  capslock = !capslock;
+	  break;
+	case KEY_NUMLOCK:
+	  numlock = !numlock;
+	  break;
+	case KEY_RETURN:
+	  keyBufferPush('\n');
+	  break;
+	case KEY_SPACE:
+	  keyBufferPush(' ');
+	  break;
+	case KEY_F1:
+	  switchStandardBuffer();
+	  break;
+	case KEY_F2:
+	  switchDebugBuffer();
+	  break;
+	default: {
+		if (scancode_m1 != 0xe0 && scancode_m2 != 0xe1) {
+			char c = keyboardConvertToChar(scancode);
+			if (c != 0) {
+				keyBufferPush(c);
+			}
+		}
 			  }
-  }
+	}
+
+	scancode_m2 = scancode_m1;
+	scancode_m1 = scancode;
 }
 

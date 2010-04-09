@@ -131,7 +131,6 @@ int shell(int argc, char* argv[])
 	//kmalloc(10);
 	//asm("xchg %bx, %bx");
 	int i = 0;
-	
 	for(;;)
 	{
 		char c;
@@ -142,11 +141,10 @@ int shell(int argc, char* argv[])
 		
 		fflush(stdin);
 		scanf("%s", buffer);	
-		printf("\n");
 
 		i = 0;
 		if (strcmp(buffer, "help") == 0) {
-			printf("Commandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task, print_memory, date, test_mouse\n");
+			printf("Commandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task, print_memory, date, test_mouse, scanf, test_ansi\n");
 		}
 		if (strcmp(buffer, "reboot") == 0) {
 			printf("Reboot non implemente, desole !");
@@ -247,15 +245,19 @@ int shell(int argc, char* argv[])
 			scanf("%d",&pid);
 			kill(pid);
 		}
-		
+		if (strcmp(buffer, "test_ansi") == 0) {
+			printf("\033[2J");
+			fflush(stdout);
+			printf("\033[8;20H\033[33m=====");
+			printf("\033[8;60H\033[33m=====");
+
+			printf("\033[14;41H\033[35m===");
+			printf("\033[20;33H\033[37m===================\n");
+
+		}
 		
 		if (strcmp(buffer, "cd") == 0) {
-			while((c = getchar()) != '\n') {
-				buffer[i%80] = c;
-				i++;
-			}
-			buffer[i%80] = '\0';
-			i = 0;
+			scanf("%s", buffer);
 			change_dir(buffer);
 		}
 	}

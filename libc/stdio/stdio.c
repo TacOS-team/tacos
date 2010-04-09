@@ -1,5 +1,6 @@
 #include <types.h>
 #include <ioports.h>
+#include <ctype.h>
 
 /* Some screen stuff. */
 /* The number of columns. */
@@ -18,9 +19,6 @@
 
 /* Variables. */
 static int finnouMode = 0; //disable par défaut, quand même 
-/* Attribute of a character */
-static uint8_t attribute = DEFAULT_ATTRIBUTE_VALUE;
-/* Point to the video memory. */
 
 typedef struct {
 	unsigned char character;
@@ -35,6 +33,7 @@ typedef struct {
 	/* Save the Y position. */
 	int ypos;
 	bool disable_cursor;
+	uint8_t attribute;
 } buffer_video_t;
 
 /** The base pointer for the video memory */
@@ -69,9 +68,11 @@ void refresh (void) {
 void cls (void) {
 	int i;
  
+	buffer_video->attribute = DEFAULT_ATTRIBUTE_VALUE;
+
 	for (i = 0; i < COLUMNS * LINES; i++) {
 	  buffer_video->buffer[i].character = 0;
-	  buffer_video->buffer[i].attribute = attribute;
+	  buffer_video->buffer[i].attribute = buffer_video->attribute;
 	}
 
 	refresh();
@@ -177,7 +178,7 @@ static void scrollup() {
 	 */
 	for (c = 0; c < COLUMNS; c++) {
 		buffer_video->buffer[((buffer_video->bottom_buffer+LINES-1) * COLUMNS + c)%(25*80)].character = ' ';
-		buffer_video->buffer[((buffer_video->bottom_buffer+LINES-1) * COLUMNS + c)%(25*80)].attribute = attribute;
+		buffer_video->buffer[((buffer_video->bottom_buffer+LINES-1) * COLUMNS + c)%(25*80)].attribute = buffer_video->attribute;
 	}
 
 	refresh();
@@ -201,13 +202,58 @@ void newline()
 		scrollup();
 		buffer_video->ypos = LINES - 1;
 	}
+	updateCursorPosition();
 }
 
 void kputchar_position(char c, int x, int y) {
 	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].character = c & 0xFF;
-	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].attribute = attribute;
+	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].attribute = buffer_video->attribute;
 	(*video)[x + y * COLUMNS].character = c & 0xFF;
-	(*video)[x + y * COLUMNS].attribute = attribute;
+	(*video)[x + y * COLUMNS].attribute = buffer_video->attribute;
+}
+
+void cursor_up() {
+	if (buffer_video->ypos > 0)
+		buffer_video->ypos--;
+	updateCursorPosition();
+}
+
+void cursor_down() {
+	if (buffer_video->ypos < LINES - 1)
+		buffer_video->ypos++;
+	updateCursorPosition();
+}
+
+void cursor_back() {
+	if (buffer_video->xpos > 0)
+		buffer_video->ypos--;
+	updateCursorPosition();
+}
+
+void cursor_forward() {
+	if (buffer_video->xpos < COLUMNS -1)
+		buffer_video->xpos++;
+	updateCursorPosition();
+}
+
+void lineup() {
+	cursor_up();
+	buffer_video->xpos = 0;
+	updateCursorPosition();
+}
+
+void cursor_move_col(int n) {
+	buffer_video->xpos = n-1;
+	updateCursorPosition();
+}
+
+void cursor_move(int n, int m) {
+	if (n > 0 && n <= LINES) {
+		buffer_video->ypos = n-1;
+	}
+	if (m > 0 && m <= COLUMNS) {
+		buffer_video->xpos = m-1;
+	}
 }
 
 void backspace() {
@@ -217,12 +263,94 @@ void backspace() {
 		buffer_video->ypos--;
 		buffer_video->xpos = COLUMNS - 1;
 	}
+
 	kputchar_position(' ', buffer_video->xpos, buffer_video->ypos); 
 }
 
 /* Put the character C on the screen. */
 void kputchar (char c) {
-	if (c == '\n' || c == '\r') {
+	static bool escape_char = FALSE;
+	static bool ansi_escape_code = FALSE;
+	static bool ansi_second_val = FALSE;
+	static int val = 0, val2 = 0;
+
+	if (escape_char) {
+		if (ansi_escape_code) {
+			if (isdigit(c)) {
+				if (ansi_second_val) {
+					val2 = val2 * 10 + c - '0';
+				} else {
+					val = val * 10 + c - '0';
+				}
+			} else {
+				escape_char = FALSE;
+				ansi_second_val = FALSE;
+				ansi_escape_code = FALSE;
+				if (val == 0 && c != 'J') val = 1;
+				if (val2 == 0) val2 = 1;
+				switch(c) {
+					case 'A':
+						while (val--) cursor_up();
+						break;
+					case 'B':
+						while (val--) cursor_down();
+						break;
+					case 'C':
+						while (val--) cursor_forward();
+						break;
+					case 'D': 
+						while (val--) cursor_back();
+						break;
+					case 'E':
+						while (val--) newline();
+						break;
+					case 'F':
+						while (val--) lineup();
+						break;
+					case 'G':
+						cursor_move_col(val);
+						break;
+					case 'f':
+					case 'H':
+						cursor_move(val, val2);
+						break;
+					case ';':
+						escape_char = TRUE;
+						ansi_second_val = TRUE;
+						ansi_escape_code = TRUE;
+						val2 = 0;
+						break;
+					case 'm':
+						if (val == 0) {
+							reset_attribute();
+						} else if (val >= 30 && val <= 37) {
+							set_foreground(val - 30); // FIXME : faire un switch pour gérer les 8 couleurs possibles.
+						} else if (val >= 40 && val <= 47) {
+							set_background(val - 40);
+						}
+						break;
+					case 'J':
+						if (val == 0) {
+							
+						} else if (val == 1) {
+
+						} else if (val == 2) {
+							cls();
+						}
+						break;
+				}
+			}
+		} else {
+			if (c == '[') {
+				ansi_escape_code = TRUE;
+				val = 0;
+			} else {
+				escape_char = FALSE;
+			}
+		}
+	} else if (c == '\033') {
+		escape_char = TRUE;
+	} else if (c == '\n' || c == '\r') {
 		newline();
 	} else if (c == '\b') {
 		backspace();
@@ -234,7 +362,7 @@ void kputchar (char c) {
 	}
   
 	if(finnouMode)
-		attribute = 0x0F & (attribute + 13 % 8);
+		buffer_video->attribute = 0x0F & (buffer_video->attribute + 13 % 8);
 
 	updateCursorPosition();
 }
@@ -298,19 +426,27 @@ void enableFinnouMode(int enable)
   finnouMode = enable;
 }
 
+void set_foreground(uint8_t foreground) {
+  buffer_video->attribute = buffer_video->attribute & 0xF0 | (foreground & 0xF); 
+}
+
+void set_background(uint8_t background) {
+  buffer_video->attribute = ((background & 0xF) << 4) | buffer_video->attribute & 0x0F;
+}
+
 void set_attribute(uint8_t background, uint8_t foreground)
 {
-  attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
+  buffer_video->attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
 }
 
 void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y)
 {
-	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].attribute = attribute;
+	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].attribute = buffer_video->attribute;
 	(*video)[x + y * COLUMNS].attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
 }
 
 void reset_attribute()
 {
-  attribute = DEFAULT_ATTRIBUTE_VALUE;
+  buffer_video->attribute = DEFAULT_ATTRIBUTE_VALUE;
 }
 
