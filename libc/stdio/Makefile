@@ -1,13 +1,13 @@
 INCLUDES=-I../../include/
 
-stdio: stdio.o sscanf.o stdfiles.o fprintf.o printf.o put.o sprintf.o get.o
+stdio: stdio.o scanf.o stdfiles.o fprintf.o printf.o put.o sprintf.o get.o
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
 stdio.o: ../../include/stdio.h ../../include/ioports.h ../../include/types.h ../../include/libio.h
 
-sscanf.o : ../../include/stdio.h ../../include/ctype.h ../../include/types.h ../../include/stdarg.h
+scanf.o : ../../include/stdio.h ../../include/ctype.h ../../include/types.h ../../include/stdarg.h
 
 stdfiles.o : ../../include/types.h ../../include/libio.h
 

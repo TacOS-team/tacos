@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+/**
+ * Cette fonction recherche un retour chariot dans un buffer en partant de la fin. 
+ * C'est un peu plus efficace que de faire appel à des fonctions classiques.
+ */
 static char * search_endl(char * buf, char * endbuf) {
 	endbuf--;
 	int i = 0;
@@ -12,11 +16,31 @@ static char * search_endl(char * buf, char * endbuf) {
 	return NULL;
 }
 
+/**
+ * Fonction de la libc :
+ * fgets lit au plus size-1 caractères depuis le sream passé en argument. 
+ * La lecture s'arrête par EOF ou retour chariot.
+ */
 char *fgets(char *s, int size, FILE *stream) {
-	// TODO : Modifier fgetc pour le transformer et fgets puis changer fgetc en un appel à fgets. (juste une idée pour éviter de la redondance...)
+	int i = 0;
+	int c = 0;
+	while (i < size - 1 && c != '\n') {
+		c = fgetc(stream);
+		if (c == EOF) { // Je pars du principe que le \n on le stock dans le buffer mais pas EOF.
+			break;
+		}
+		s[i] = (char)c;
+		i++;
+	}
+	s[i] = '\0'; // Termine la chaine par un \0.
 	return s;
 }
 
+/**
+ * Fonction de la libc.
+ * fgetc lit le caractère suivant depuis le flux stream.
+ * @return le caractère lu ou EOF en cas d'erreur ou fin de flux.
+ */
 int fgetc(FILE *stream) {
 	int c = EOF;
 	char *i;
@@ -45,6 +69,8 @@ int fgetc(FILE *stream) {
 				}
 			}
 
+			// Ugly hack for now :P.
+			// Normalement il faut faire appel à la fonction read qui s'occupe de faire ce qu'il faut.
 			if (stream->_fileno == 0) {
 				printf("%c", c);
 				fflush(stdout);
@@ -65,7 +91,10 @@ int fgetc(FILE *stream) {
 	stream->_IO_read_ptr--;
 	return c;
 }
-
+/**
+ * Fonction de la libc.
+ * getchar est équivalent à fgetc(stdin).
+ */
 int getchar(void) {
 	return fgetc(stdin);
 }

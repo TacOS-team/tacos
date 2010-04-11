@@ -144,7 +144,7 @@ int shell(int argc, char* argv[])
 
 		i = 0;
 		if (strcmp(buffer, "help") == 0) {
-			printf("Commandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task, print_memory, date, test_mouse, scanf, test_ansi\n");
+			printf("Commandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task, print_memory, date, test_mouse, test_scanf, test_fgets, test_ansi\n");
 		}
 		if (strcmp(buffer, "reboot") == 0) {
 			printf("Reboot non implemente, desole !");
@@ -197,11 +197,17 @@ int shell(int argc, char* argv[])
 			//syscall(0x42,0,1,2);
 			exit(-1);
 		}
-		if (strcmp(buffer, "scanf") == 0) {
+		if (strcmp(buffer, "test_scanf") == 0) {
 			printf("Entre un mot : \n");
 			char b[100];
 			scanf("%s", b);
 			printf("Tu as tape le mot : %s\n", b);
+		}
+		if (strcmp(buffer, "test_fgets") == 0) {
+			printf("Entre une phrase : \n");
+			char b[100];
+			fgets(b, sizeof(b), stdin);
+			printf("Tu as tape la phrase : %s", b);
 		}
 		if(strcmp(buffer,"ps")==0)
 		{
