@@ -2,7 +2,7 @@ INCLUDES=-I../include/ -I../kernel/include/
 
 all: libc
 
-libc: stdio/stdio.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/sscanf.o stdio/stdfiles.o stdio/fprintf.o stdio/printf.o stdio/put.o stdio/sprintf.o stdio/get.o libio.o fcntl.o
+libc: stdio/stdio.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scanf.o stdio/stdfiles.o stdio/fprintf.o stdio/printf.o stdio/put.o stdio/sprintf.o stdio/get.o libio.o fcntl.o
 	  ar rv ../lib/$@.a $^
 
 %.o: %.c

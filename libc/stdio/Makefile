@@ -17,6 +17,8 @@ printf.o: ../../include/stdio.h
 
 sprintf.o: ../../include/stdio.h
 
+scanf.o: ../../include/stdio.h
+
 put.o: ../../include/stdio.h
 
 get.o: ../../include/stdio.h

@@ -3,44 +3,36 @@
 #include <process.h>
 #include <stdio.h>
 #include <string.h>
-
-// static open_file_descriptor ofd;
-
+#include <fat.h>
+open_file_descriptor ofd;
 
 void* sys_open(uint32_t p_process, uint32_t p_path, uint32_t flags) {
-	int i;
+	int i=0;
 	
-	process_t * process = (process_t*) p_process;
+	//process_t * process = (process_t*) p_process;
 	char * path = (char*) p_path;
 	
 	printf("sys_open\n");
 	
-	// on cherche une place dans la file descriptor table du process
+	process_t* process = get_current_process();
+	printf("current process ring0: %d\n",(uint32_t)process);
+	
+	// recherche d une place dans la file descriptor table du process
 	while(process->fd[i].used==TRUE) 
 		i++;
 	
-	// on cree un open_file_descriptor
-	process->fd[i].ofd = malloc(sizeof(open_file_descriptor));// &ofd; // Au malloc quand il marchera......
-	/*
-	strcpy(process->fd[i].ofd->path, path);
-	process->fd[i].ofd->flags = flags;
+	// creation d un open_file_descriptor
+	process->fd[i].ofd = &ofd; //malloc(sizeof(open_file_descriptor));
 	
+	//ouverture du fichier (sur fd0 pour le momentt)
+	fat_open_file(path, process->fd[i].ofd);
 	
-	strcpy(process->fd[i].ofdf>irst_cluster;
-	strcpy(process->fd[i].ofd->current_cluster;
-	strcpy(process->fd[i].ofd->buffer;
-	strcpy(process->fd[i].ofd->current_octet;
-	strcpy(process->fd[i].ofd->size_of_file;
-	*/
   return NULL;
 }
 
 int open(const char *pathname, int flags) {
 	
+	syscall(3,0,pathname,flags);
 	
-	process_t* process = get_current_process();
-	
-	
-	
-	syscall(3,process,pathname,flags);
+	return 0;
 }

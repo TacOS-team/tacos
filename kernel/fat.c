@@ -128,7 +128,7 @@ char * decode_long_file_name (char * name, uint8_t * long_file_name ) {
 void open_root_dir (directory_t * dir) {
 	fat_dir_entry_t root_dir[224];
 	int i;
-	int itermax = fat_info.root_entry_count/2;
+	int itermax = 8;//fat_info.root_entry_count/2;
 	char str[14];
 	char name[14] = "fd0:";
 	read_root_dir(root_dir);
@@ -192,13 +192,15 @@ int get_dirname_from_path (char * path, char* name,int pos) {
 			name[j]=path[i];
 			i++;
 			j++;
+			//printf("test in while\n");
 		}
 		if (path[i]=='/')
 			i++;
 		name[j]='\0';
 		k++;
+		//printf("test\n");
 	}
-	
+	//printf("end while\n");
 	if (k==pos) 
 		ret=k;
 	else
@@ -227,7 +229,7 @@ int get_filename_from_path (char * path, char * filename) {
 }
 
 //directory_t dir;
-void open_file (char * path, open_file_descriptor * ofd) {
+void fat_open_file (char * path, open_file_descriptor * ofd) {
 	int i, path_length;
 	char dir_name[14];
 	char file_name[14];
@@ -242,6 +244,7 @@ void open_file (char * path, open_file_descriptor * ofd) {
 	else {
 		for(i=1;i<=path_length;i++) {
 			get_dirname_from_path(path,dir_name,i);
+			printf("%s",dir_name);
 			if (strcmp(dir_name,"fd0:")==0) {
 				open_root_dir(&dir);
 				printf("open_root_dir\n");
@@ -460,9 +463,11 @@ void print_path () {
 		printf("%s(%d)",name,max);
 		max = get_path_lenth ("root/dir/tftff.uh");
 		printf(" %d\n",max);*/
-		open_file_descriptor ofd;
-		open_file("fd0:/boot/grub/menu.txt",&ofd);
-		printf("size: %d cluster: %d\n",ofd.file_size, ofd.current_cluster);
+	/*	open_file_descriptor ofd;
+		fat_open_file("fd0:/boot/grub/menu.txt",&ofd);
+		printf("size: %d cluster: %d\n",ofd.file_size, ofd.current_cluster);*/
+		open("fd0:/boot/grub/menu.txt",21);
+		
 }
 
 
