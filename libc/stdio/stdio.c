@@ -68,7 +68,7 @@ void refresh (void) {
 void cls (void) {
 	int i;
  
-	buffer_video->attribute = DEFAULT_ATTRIBUTE_VALUE;
+	reset_attribute();
 
 	for (i = 0; i < COLUMNS * LINES; i++) {
 	  buffer_video->buffer[i].character = 0;
@@ -267,7 +267,10 @@ void backspace() {
 	kputchar_position(' ', buffer_video->xpos, buffer_video->ypos); 
 }
 
-/* Put the character C on the screen. */
+/*
+ *  Affiche le caractère c sur l'écran.
+ *  Supporte les caractères ANSI.
+ */
 void kputchar (char c) {
 	static bool escape_char = FALSE;
 	static bool ansi_escape_code = FALSE;
@@ -286,7 +289,7 @@ void kputchar (char c) {
 				escape_char = FALSE;
 				ansi_second_val = FALSE;
 				ansi_escape_code = FALSE;
-				if (val == 0 && c != 'J') val = 1;
+				if (val == 0 && c != 'J' && c != 'm') val = 1;
 				if (val2 == 0) val2 = 1;
 				switch(c) {
 					case 'A':

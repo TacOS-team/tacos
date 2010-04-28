@@ -13,14 +13,12 @@ int fflush(FILE *stream) {
 	return EOF;
 }
 
-//static char buf[1000];
-
 int fputc(int c, FILE *stream) {
 	// Ajoute dans le buffer.
 	
 	if (stream->_IO_write_ptr == NULL) {
 		char * buf = malloc(1000);
-    stream->_IO_buf_base = buf;
+		stream->_IO_buf_base = buf;
 		stream->_IO_buf_end = buf + 1000;
 		stream->_IO_write_base = stream->_IO_buf_base;
 		stream->_IO_write_end = stream->_IO_buf_base;
