@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <shell_utils.h>
 
 #include <debug.h>
 
@@ -74,7 +75,7 @@ int test_task1(int argc, char** argv)
 }
 
 
-int test_mouse(int argc, char** argv)
+int test_mouse()
 {
 	int i = 0;
 	int x;
@@ -122,17 +123,20 @@ int test_mouse(int argc, char** argv)
 		}
 		i++;
 	}
+	return 0;
 }
 
 int help_cmd()
 {
 	show_builtin_cmd();
+	return 0;
 }
 
 int date_cmd()
 {
 	time_t curr_time = time(NULL);
 	printf("%s",ctime(&curr_time));	
+	return 0;
 }
 
 int test_scanf()
@@ -141,6 +145,7 @@ int test_scanf()
 	char b[100];
 	scanf("%s", b);
 	printf("Tu as tape le mot : %s\n", b);
+	return 0;
 }
 
 int test_fgets()
@@ -149,6 +154,7 @@ int test_fgets()
 	char b[100];
 	fgets(b, sizeof(b), stdin);
 	printf("Tu as tape la phrase : %s", b);
+	return 0;
 }
 
 int test_sscanf()
@@ -161,12 +167,14 @@ int test_sscanf()
 	sscanf(str, "%s %d %s", s, &d, s2);
 
 	printf("%s %d %s\n", s2, d, s);
+	return 0;
 }	
 
 int debug_fat()
 {
 	print_path();
 	//open("lklk",21);
+	return 0;
 }
 
 int kill_cmd()
@@ -174,7 +182,9 @@ int kill_cmd()
 	int pid;
 	scanf("%d",&pid);
 	kill(pid);
+	return 0;
 }
+
 
 int test_ansi()
 {
@@ -185,12 +195,14 @@ int test_ansi()
 
 	printf("\033[14;41H\033[35m===");
 	printf("\033[20;33H\033[37m===================\033[0m\n");
+	return 0;
 }
 int cd_cmd()
 {
 	char buffer[80];
 	scanf("%s", buffer);
 	change_dir(buffer);
+	return 0;
 }
 int shell(int argc, char** argv)
 {

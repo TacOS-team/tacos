@@ -1,7 +1,7 @@
 #include <types.h>
 #include <stdio.h>
-
-typedef int (*func_ptr)();
+#include <string.h>
+#include "shell_utils.h"
 
 typedef struct
 {
@@ -38,12 +38,12 @@ void add_builtin_cmd(func_ptr func, char* name)
 	{
 		if(cmd_list == NULL)
 		{
-			cmd_list = malloc(sizeof(cmd_list_cell));
+			cmd_list = (cmd_list_cell*) malloc(sizeof(cmd_list_cell));
 			cmd_list->next = NULL;
 		}
 		else
 		{
-			cmd_list->prev = malloc(sizeof(cmd_list_cell));
+			cmd_list->prev = (cmd_list_cell*)malloc(sizeof(cmd_list_cell));
 			cmd_list->prev->next = cmd_list;
 			cmd_list = cmd_list->prev;
 		}
