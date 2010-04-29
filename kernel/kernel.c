@@ -134,7 +134,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	/* Initialisation des syscall */
 	init_syscall();
-
+	
 	syscall_set_handler(SYS_EXIT,sys_exit);
 	syscall_set_handler(SYS_GETPID,sys_getpid);
 	syscall_set_handler(SYS_OPEN,sys_open);

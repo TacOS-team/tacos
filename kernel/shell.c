@@ -231,6 +231,7 @@ int shell(int argc, char** argv)
 	add_builtin_cmd(test_ansi, "test_ansi");
 	add_builtin_cmd(cd_cmd, "cd");
 	
+		
 	for(;;)
 	{
 		char c;
