@@ -124,8 +124,120 @@ int test_mouse(int argc, char** argv)
 	}
 }
 
+int help_cmd()
+{
+	show_builtin_cmd();
+}
 
+int date_cmd()
+{
+	time_t curr_time = time(NULL);
+	printf("%s",ctime(&curr_time));	
+}
 
+int test_scanf()
+{
+	printf("Entre un mot : \n");
+	char b[100];
+	scanf("%s", b);
+	printf("Tu as tape le mot : %s\n", b);
+}
+
+int test_fgets()
+{
+	printf("Entre une phrase : \n");
+	char b[100];
+	fgets(b, sizeof(b), stdin);
+	printf("Tu as tape la phrase : %s", b);
+}
+
+int test_sscanf()
+{
+	char * str = "Hello 42 bla";
+	char s[10];
+	char s2[10];
+	int d;
+
+	sscanf(str, "%s %d %s", s, &d, s2);
+
+	printf("%s %d %s\n", s2, d, s);
+}	
+
+int debug_fat()
+{
+	print_path();
+	//open("lklk",21);
+}
+
+int kill_cmd()
+{
+	int pid;
+	scanf("%d",&pid);
+	kill(pid);
+}
+
+int test_ansi()
+{
+	printf("\033[2J");
+	fflush(stdout);
+	printf("\033[8;20H\033[33m=====");
+	printf("\033[8;60H\033[33m=====");
+
+	printf("\033[14;41H\033[35m===");
+	printf("\033[20;33H\033[37m===================\033[0m\n");
+}
+int cd_cmd()
+{
+	char buffer[80];
+	scanf("%s", buffer);
+	change_dir(buffer);
+}
+int shell(int argc, char** argv)
+{
+	char buffer[80];
+	
+	add_builtin_cmd(help_cmd, "help");
+	add_builtin_cmd(date_cmd, "date");
+	add_builtin_cmd(cls, "clear");
+	add_builtin_cmd(pci_list, "lspci");
+	add_builtin_cmd(switchDebugBuffer, "switchdebug");
+	add_builtin_cmd(switchStandardBuffer, "switchstd");
+	add_builtin_cmd(memory_print, "print_memory");
+	add_builtin_cmd(test_mouse, "test_mouse");
+	add_builtin_cmd(test_scanf, "test_scanf");
+	add_builtin_cmd(test_fgets, "test_fgets");
+	add_builtin_cmd(print_process_list, "ps");
+	add_builtin_cmd(test_sscanf, "test_sscanf");
+	//add_builtin_cmd(kmalloc_print_mem, "kmalloc_print_mem");
+	add_builtin_cmd(test_kmalloc, "test_kmalloc");
+	add_builtin_cmd(list_segments, "ls");
+	add_builtin_cmd(print_Boot_Sector, "mount");
+	add_builtin_cmd(print_working_dir, "pwd");
+	add_builtin_cmd(debug_fat, "debugfat");
+	add_builtin_cmd(clean_process_list, "clean_proclist");
+	add_builtin_cmd(kill_cmd, "kill");
+	add_builtin_cmd(test_ansi, "test_ansi");
+	add_builtin_cmd(cd_cmd, "cd");
+	
+	for(;;)
+	{
+		char c;
+		
+		//time_t curr_time = time(NULL);
+		printf("\n > ");
+		
+		fflush(stdout);
+		fflush(stdin);
+		
+		scanf("%s", buffer);	
+		if(exec_builtin_cmd(buffer) != 0)
+			printf("Commande introuvable.\n");
+	}
+	
+	while(1);
+}
+
+/*
 int shell(int argc, char* argv[])
 {
 	char buffer[80];
@@ -145,130 +257,9 @@ int shell(int argc, char* argv[])
 		scanf("%s", buffer);	
 		BOCHS_BREAKPOINT;
 		i = 0;
-		if (strcmp(buffer, "help") == 0) {
-			printf("Commandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task, print_memory, date, test_mouse, test_scanf, test_fgets, test_ansi\n");
-		}
-		if (strcmp(buffer, "reboot") == 0) {
-			printf("Reboot non implemente, desole !");
-		}
-		if (strcmp(buffer, "halt") == 0) {
-			printf("Halt !");
-			asm("cli");
-			asm("hlt");
-		}
-		if( strcmp(buffer, "date") == 0)
-		{
-			time_t curr_time = time(NULL);
-			printf("%s",ctime(&curr_time));
-		}
-		if( strcmp(buffer, "clear") == 0)
-			cls();
-		if( strcmp(buffer, "sleep") == 0)
-			sleep(1);
-		if( strcmp(buffer, "lspci") == 0)
-			pci_list();
-		if (strcmp(buffer, "switchdebug") == 0) {
-			switchDebugBuffer();
-		}
-		if (strcmp(buffer, "switchstd") == 0) {
-			switchStandardBuffer();
-		}
-		if (strcmp(buffer, "print_memory") == 0) {
-			memory_print();
-		}
-		if( strcmp(buffer, "erase_mbr") == 0)
-		{
-			char zeros[FLOPPY_SECTOR_SIZE];
-			set_attribute(0, 4);
-			cls();
-			printf("/!\\ ERASING MBR MOUHAHA /!\\\n");
-			floppy_write_sector(0,0,0,zeros);
-			reset_attribute();
-		}		
-		if(strcmp(buffer,"test_task") == 0)
-		{
-			paddr_t proc_addr =  pi;
-			process_t* proc = create_process("tache de test" ,proc_addr,42,NULL,1024,3);
-		}
-		if(strcmp(buffer,"test_mouse") == 0)
-		{
-			test_mouse(0,NULL);
-		}
-		if(strcmp(buffer,"syscall") == 0)
-		{
-			//syscall(0x42,0,1,2);
-			exit(-1);
-		}
-		if (strcmp(buffer, "test_scanf") == 0) {
-			printf("Entre un mot : \n");
-			char b[100];
-			scanf("%s", b);
-			printf("Tu as tape le mot : %s\n", b);
-		}
-		if (strcmp(buffer, "test_fgets") == 0) {
-			printf("Entre une phrase : \n");
-			char b[100];
-			fgets(b, sizeof(b), stdin);
-			printf("Tu as tape la phrase : %s", b);
-		}
-		if(strcmp(buffer,"ps")==0)
-		{
-			print_process_list();
-		}
-		if (strcmp(buffer, "test_sscanf") == 0) {
-			char * str = "Hello 42 bla";
-			char s[10];
-			char s2[10];
-			int d;
-
-			sscanf(str, "%s %d %s", s, &d, s2);
-
-			printf("%s %d %s\n", s2, d, s);
-		}
-		if(strcmp(buffer, "kmalloc_print_mem") == 0)
-			kmalloc_print_mem();
-		if(strcmp(buffer, "test_kmalloc") == 0)
-			test_kmalloc();
-		if (strcmp(buffer, "ls") == 0) {
-			list_segments ();
-		}
-		if (strcmp(buffer, "mount") == 0) {
-			print_Boot_Sector ();
-		}
-		if (strcmp(buffer, "pwd") == 0) {
-			print_working_dir();
-		}
-		if (strcmp(buffer, "debugfat") == 0) {
-			print_path();
-			//open("lklk",21);
-		}
-		if (strcmp(buffer, "clean_proclist") == 0)
-		{
-			printf("cleaning proclist...\n");
-			clean_process_list();
-		}
-		if (strcmp(buffer, "kill") == 0)
-		{
-			int pid;
-			scanf("%d",&pid);
-			kill(pid);
-		}
-		if (strcmp(buffer, "test_ansi") == 0) {
-			printf("\033[2J");
-			fflush(stdout);
-			printf("\033[8;20H\033[33m=====");
-			printf("\033[8;60H\033[33m=====");
-
-			printf("\033[14;41H\033[35m===");
-			printf("\033[20;33H\033[37m===================\033[0m\n");
-
-		}
-		
-		if (strcmp(buffer, "cd") == 0) {
-			scanf("%s", buffer);
-			change_dir(buffer);
-		}
+	
 	}
 	
 	return 0;
 }
+*/
