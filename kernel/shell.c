@@ -128,6 +128,7 @@ int test_mouse(int argc, char** argv)
 int shell(int argc, char* argv[])
 {
 	char buffer[80];
+	
 	//kmalloc(10);
 	//asm("xchg %bx, %bx");
 	int i = 0;

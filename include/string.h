@@ -29,6 +29,8 @@ char *strstr(const char *haystack, const char *needle);
 
 char *strcasestr(const char *haystack, const char *needle);
 
+char *strdup (const char *s);
+
 /* NOT IMPLEMENTED YET
 
 int strcoll(const char *s1, const char *s2);

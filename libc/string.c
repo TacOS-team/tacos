@@ -249,3 +249,12 @@ char *strcasestr(const char *haystack, const char *needle)
 	
 	return NULL;
 }
+
+char *strdup (const char *s)
+{
+	int len = strlen(s);
+	char* new_string = malloc(len+1); // len + 1 pour le '\0'
+	
+	return strcpy(new_string, s);;
+}
+	

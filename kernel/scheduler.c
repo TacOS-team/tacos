@@ -7,6 +7,7 @@
 #include <gdt.h>
 #include <i8259.h>
 #include <syscall.h>
+#include <debug.h>
 
 //struct process idle;
 static uint32_t quantum;						// Quantum de temps alloué aux process
@@ -22,6 +23,7 @@ static void* switch_process(void* data)
 	uint32_t esp0, eflags;
     uint16_t ss, cs;
     uint32_t compteur;
+    //BOCHS_BREAKPOINT;
 
     process_t* current = get_current_process();
 	
@@ -94,6 +96,7 @@ static void* switch_process(void* data)
 	cs = current->regs.cs;
 	esp0 = current->regs.esp;
 	eflags = (current->regs.eflags | 0x200) & 0xFFFFBFFF; // Flags permettant le changemement de contexte
+		
 	asm(
 			"mov %0, %%esp\n\t"
 			/* On push les registres necessaires au changement de contexte */

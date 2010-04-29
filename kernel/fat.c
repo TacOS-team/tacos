@@ -4,6 +4,7 @@
 #include <string.h>
 #include "fat.h"
 #include <fcntl.h>
+#include <debug.h>
 
 // ceci sera calculé avec les donnée du Boot secteur qd on alloura 
 // le tableau pour charger la file_alloc_table au malloc
@@ -267,7 +268,9 @@ void fat_open_file (char * path, open_file_descriptor * ofd) {
 	ofd->current_cluster = ofd->first_cluster;
 	ofd->current_octet = 0;
 	ofd->current_octet_buf = 0;
+	BOCHS_BREAKPOINT;
 	read_cluster(ofd->buffer,ofd->current_cluster);
+	BOCHS_BREAKPOINT;
 }
 
 void write_file (open_file_descriptor * ofd, uint32_t * buf, int nb_octet) {

@@ -55,13 +55,16 @@ int floppy_seek(int cylindre, int head)
 	int i, drive, st0, cyl = -1;
 	
 	drive = floppy_get_current_drive();
-	
+	kprintf("\nSEEKING( %d, %d ):", cylindre, head);
+	kprintf("Motor...");
 	// Allumage du moteur
 	floppy_motor(ON);
+	kprintf("Trying...");
 	
 	// On fait 5 tentative à titre arbitraire
 	for(i=0; i<5; i++)
 	{
+		kprintf("%d",i);
 		// Protocole de la commande SEEK:
 		// Premier parametre: (head <<2)|drive
 		// Deuxieme parametre: cylindre
@@ -69,10 +72,10 @@ int floppy_seek(int cylindre, int head)
 		floppy_write_command(SEEK);
 		floppy_write_command((head<<2)|drive);
 		floppy_write_command(cylindre);
-		
+		kprintf("wirq...");
 		//Attente de l'IRQ
 		floppy_wait_irq();
-		
+		kprintf("IRQ!");
 		//Récuperation des status
 		floppy_sense_interrupt(&st0, &cyl);
 		

@@ -42,12 +42,13 @@ int floppy_calibrate()
 			kprintf("ST0:0x%x.\nCY1:0x%x.\n", st0, cy1);
 			continue;
 		}
-		
+	
 		if(!cy1) // si cy1=0, on a bien atteint le cylindre 0 et on peut arreter la calibration
 		{
 			floppy_motor(OFF);
 			return 0;
 		}
+		
 	}
 	kprintf("floppy_recalibrate: failure.\n");
 	
