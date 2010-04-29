@@ -245,8 +245,6 @@ int shell(int argc, char** argv)
 		if(exec_builtin_cmd(buffer) != 0)
 			printf("Commande introuvable.\n");
 	}
-	
-	while(1);
 }
 
 /*
