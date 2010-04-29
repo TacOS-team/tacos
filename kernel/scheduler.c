@@ -23,7 +23,6 @@ static void* switch_process(void* data)
 	uint32_t esp0, eflags;
     uint16_t ss, cs;
     uint32_t compteur;
-    //BOCHS_BREAKPOINT;
 
     process_t* current = get_current_process();
 	
@@ -141,7 +140,7 @@ static void* switch_process(void* data)
 			"m" (current->regs.fs),		
 			"m" (current->regs.gs)		
 	);
-
+	
 	outb(0x20, 0x20);
 	
 	asm(

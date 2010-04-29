@@ -102,7 +102,7 @@ int delete_process(int pid)
 }
 
 
-int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_size, uint8_t ring)
+int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_size, uint8_t ring)
 {
 	uint32_t *sys_stack, *user_stack;
 	process_t* new_proc;
@@ -114,6 +114,7 @@ int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_s
 		printf("create_process: impossible de reserver la memoire pour le nouveau processus.\n");
 		return -1;
 	}
+	new_proc->name = strdup(name);
 	
 	sys_stack = kmalloc(stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
@@ -212,9 +213,10 @@ void process_print_regs()
 void print_process_list()
 {
 	proclist_cell* aux = process_list;
+	printf("L\tO\tL\n");
 	while(aux!=NULL)
 	{
-		printf("pid:%d  state:",aux->process->pid);
+		printf("pid:%d  name:%s state:",aux->process->pid, aux->process->name);
 		switch(aux->process->state)
 		{
 			case PROCSTATE_IDLE:

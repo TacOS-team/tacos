@@ -22,6 +22,7 @@ typedef struct
 
 typedef struct{
 	uint16_t	pid;
+	char* name;
 	uint8_t	state;
 	uint8_t	priority;
 	paddr_t		sys_stack;
@@ -42,7 +43,7 @@ typedef struct _proclist_cell{
 	struct _proclist_cell* prev;
 }*proc_list, proclist_cell;
 
-int create_process(paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_size, uint8_t ring);
+int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_size, uint8_t ring);
 int delete_process(int pid);
 process_t* find_process(int pid);
 process_t* get_current_process();

@@ -10,6 +10,7 @@
 #include <string.h>
 #include <time.h>
 
+#include <debug.h>
 
 static void test_kmalloc()
 {
@@ -142,7 +143,7 @@ int shell(int argc, char* argv[])
 		
 		fflush(stdin);
 		scanf("%s", buffer);	
-
+		BOCHS_BREAKPOINT;
 		i = 0;
 		if (strcmp(buffer, "help") == 0) {
 			printf("Commandes dispos : reboot, halt, clear, sleep, lspci, switchdebug, switchstd, erase_mbr, test_task, print_memory, date, test_mouse, test_scanf, test_fgets, test_ansi\n");
@@ -187,7 +188,7 @@ int shell(int argc, char* argv[])
 		if(strcmp(buffer,"test_task") == 0)
 		{
 			paddr_t proc_addr =  pi;
-			process_t* proc = create_process(proc_addr,42,NULL,1024,3);
+			process_t* proc = create_process("tache de test" ,proc_addr,42,NULL,1024,3);
 		}
 		if(strcmp(buffer,"test_mouse") == 0)
 		{

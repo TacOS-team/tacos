@@ -89,32 +89,25 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	floppy_init_interrupt();
 
-  init_fpu();
+	init_fpu();
 
 	events_init(); 
 	
 	asm volatile ("sti\n");
 
 	/* Configuration de la pagination */
-			//asm("hlt");
 	memory_setup((mbi->mem_upper << 10) + (1 << 20));
 
 	pagination_setup();
 
-	//memory_print_free_pages();
-	//memory_print_used_pages();
-
-  /* Initialisation de la vmm */
-  init_vmm();
-  init_kmalloc();
-//	printf("Div 0 : %d.\n", 3/0);
-//	pci_scan();
-//	pci_list();
+	/* Initialisation de la vmm */
+	init_vmm();
+	init_kmalloc();
 
 	/* Clear the screen. */
 	cls ();
 
-  kprintf("_|_|_|_|_|                      _|_|      _|_|_|\n");
+	kprintf("_|_|_|_|_|                      _|_|      _|_|_|\n");
 	kprintf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");
 	kprintf("    _|    _|    _|  _|        _|    _|    _|_|  \n");
 	kprintf("    _|    _|    _|  _|        _|    _|        _|\n");
@@ -136,22 +129,10 @@ void cmain (unsigned long magic, unsigned long addr) {
 	//mount_fat_fs ();
 	mount_FAT12 ();
 	
-	
-	/* Test du scheduler */
-	
-	init_scheduler(5);
 
-	paddr_t _addr = shell;
-	create_process(_addr,0,NULL,1024,3);
-	//process_print_regs();
-/*
-	_addr = test_task1;
-	kmalloc(64);
-	create_process(_addr, 0, NULL, 64, 3);
-	//while(1);
-*/
 	kprintf("vm86:%d\n",check_vm86());
 	
+	/* Initialisation des syscall */
 	init_syscall();
 
 	syscall_set_handler(SYS_EXIT,sys_exit);
@@ -160,9 +141,15 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_KILL,sys_kill);
 	syscall_set_handler(SYS_WRITE,sys_write);
 	
+	
+	// Création du processus par défaut: notre shell
+	create_process("Mishell", shell,0,NULL,1024,3);
+	
+	/* Lancement du scheduler */
+	init_scheduler(10);
 	start_scheduler();
-  //shell(0, NULL);
-
+	
+	// Never goes here	
 	while(1){}
 }
 
