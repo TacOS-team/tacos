@@ -39,16 +39,6 @@ enum floppy_commands
 	SCAN_HIGH_OR_EQUAL =	29
 };
 
-static const char * drive_types[8] = {
-	"none",
-	"360kB 5.25\"",
-	"1,2MB 5.25\"",
-	"720kB 5.25\"",
-	"1.44MB 3.5\"",
-	"2.88MB 3.5\"",
-	"none",
-	"none"
-};
 
 bool floppy_ready();
 int floppy_write_command(char cmd);

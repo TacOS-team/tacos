@@ -135,7 +135,6 @@ time_t clock_mktime(struct tm *timep)
 	int yday, month;
 	unsigned long seconds;
 	int overflow;
-	unsigned dst;
 
 	timep->tm_min += timep->tm_sec / 60;
 	timep->tm_sec %= 60;
@@ -215,15 +214,15 @@ time_t clock_mktime(struct tm *timep)
 
 	seconds = ((timep->tm_hour * 60L) + timep->tm_min) * 60L + timep->tm_sec;
 
-	if ((TIME_MAX - seconds) / SECS_DAY < day) overflow++;
+	if ((TIME_MAX - seconds) / SECS_DAY < (unsigned long int)day) overflow++;
 	seconds += day * SECS_DAY;
 
 	if (overflow)
 		return (time_t)-1;
 
-	if ((time_t)seconds != seconds)
+	/*if ((time_t)seconds != seconds)
 		return (time_t)-1;
-	
+	*/
 	/* affichage de debug
 	printf("mktime for\n\
 				year : %d\n\
@@ -269,7 +268,7 @@ struct tm * clock_gmtime(register const time_t *timer)
 	timep->tm_year = year - YEAR0;
 	timep->tm_yday = dayno;
 	timep->tm_mon = 0;
-	while (dayno >= _ytab[LEAPYEAR(year)][timep->tm_mon]) {
+	while (dayno >= (unsigned long) _ytab[LEAPYEAR(year)][timep->tm_mon]) {
 		dayno -= _ytab[LEAPYEAR(year)][timep->tm_mon];
 		timep->tm_mon++;
 	}

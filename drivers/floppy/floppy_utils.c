@@ -1,8 +1,20 @@
 #include <ioports.h>
 #include <stdio.h>
 #include <types.h>
+#include "floppy_interrupt.h"
 #include "floppy_utils.h"
 #include "floppy_motor.h"
+
+static const char * drive_types[8]  = {
+	"none",
+	"360kB 5.25\"",
+	"1,2MB 5.25\"",
+	"720kB 5.25\"",
+	"1.44MB 3.5\"",
+	"2.88MB 3.5\"",
+	"none",
+	"none"
+};
 
 static volatile uint8_t current_drive = 0;
 

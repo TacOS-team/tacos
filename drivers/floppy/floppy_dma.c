@@ -4,6 +4,7 @@
 #include <ioports.h>
 #include "floppy_motor.h"
 #include "floppy_utils.h"
+#include "floppy_interrupt.h"
 #include "floppy_dma.h"
 
 
@@ -243,7 +244,7 @@ void floppy_write_sector(int cylinder, int head, int sector, char* buffer)
 	}
 	
 	// copier le buffer à l'offset de floppy_dma_buffer
-	memcpy(floppy_dma_buffer+(head*floppy_head2_start)+512*sector, buffer,  512);
+	memcpy((void*)floppy_dma_buffer+(head*floppy_head2_start)+512*sector, buffer,  512);
 	
 	// Ecrit la nouvelle version du cylindre
 	floppy_cylinder(cylinder, floppy_write);

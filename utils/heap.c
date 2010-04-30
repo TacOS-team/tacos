@@ -83,7 +83,6 @@ int removetop(heap_t* h)
 		{
 			int finished = 0;
 			int index = h->nb_elements;
-			void* tmp;
 			
 			// On place le dernier element au sommet
 			memcpy(h->heap, getIn(h,index), h->elements_size);

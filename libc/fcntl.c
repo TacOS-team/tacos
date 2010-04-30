@@ -3,10 +3,12 @@
 #include <process.h>
 #include <stdio.h>
 #include <string.h>
+#include <syscall.h>
 #include <fat.h>
 open_file_descriptor ofd;
 
-void* sys_open(uint32_t p_process, uint32_t p_path, uint32_t flags) {
+/* TODO: enlever les  attribute quand les paramètre serviront à quelque chose */
+void* sys_open(uint32_t p_process __attribute__ ((unused)), uint32_t p_path , uint32_t flags __attribute__ ((unused))) {
 	int i=0;
 	
 	//process_t * process = (process_t*) p_process;
@@ -32,7 +34,7 @@ void* sys_open(uint32_t p_process, uint32_t p_path, uint32_t flags) {
 
 int open(const char *pathname, int flags) {
 	
-	syscall(3,0,pathname,flags);
+	syscall(3,0,(paddr_t) pathname,flags);
 	
 	return 0;
 }

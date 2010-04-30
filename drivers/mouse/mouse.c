@@ -94,7 +94,7 @@ void mouseInit()
 	interrupt_set_routine(IRQ_PS2_MOUSE, mouseInterrupt, 0);
 }
 
-void mouseInterrupt(int id)
+void mouseInterrupt(int id __attribute__ ((unused)))
 { 
   static bool first = TRUE;
   uint8_t packet;

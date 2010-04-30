@@ -45,7 +45,7 @@ typedef struct
 void cmain (unsigned long magic, unsigned long addr);
 static void initKernelOptions(const char *cmdLine, kernel_options *options);
 
-void LPT1_routine(int id)
+void LPT1_routine(int id __attribute__ ((unused)))
 {
   // XXX : avoid segment_not_present
 }
@@ -83,7 +83,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
 	interrupt_set_routine(IRQ_LPT1, LPT1_routine, 0);
 	mouseInit();
-
 
 	floppy_init_interrupt();
 
@@ -133,15 +132,15 @@ void cmain (unsigned long magic, unsigned long addr) {
 	/* Initialisation des syscall */
 	init_syscall();
 	
-	syscall_set_handler(SYS_EXIT,sys_exit);
-	syscall_set_handler(SYS_GETPID,sys_getpid);
-	syscall_set_handler(SYS_OPEN,sys_open);
-	syscall_set_handler(SYS_KILL,sys_kill);
-	syscall_set_handler(SYS_WRITE,sys_write);
+	syscall_set_handler(SYS_EXIT,(syscall_handler_t)sys_exit);
+	syscall_set_handler(SYS_GETPID,(syscall_handler_t)sys_getpid);
+	syscall_set_handler(SYS_OPEN,(syscall_handler_t)sys_open);
+	syscall_set_handler(SYS_KILL,(syscall_handler_t)sys_kill);
+	syscall_set_handler(SYS_WRITE,(syscall_handler_t)sys_write);
 	
 	
 	// Création du processus par défaut: notre shell
-	create_process("Mishell", shell,0,NULL,1024,3);
+	create_process("Mishell", (paddr_t)shell,0,NULL,1024,3);
 	
 	/* Lancement du scheduler */
 	init_scheduler(10);
@@ -155,24 +154,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 void waitReturn()
 {
 	while(getchar() != '\n');
-}
-
-void testPageReservation()
-{
-	paddr_t addr;
-	memory_print_free_pages();
-	memory_print_used_pages();
-	waitReturn();
-
-	addr = memory_reserve_page_frame();
-	memory_print_free_pages();
-	memory_print_used_pages();
-	waitReturn();
-
-	memory_free_page_frame(addr);
-	memory_print_free_pages();
-	memory_print_used_pages();
-	waitReturn();
 }
 
 static void defaultOptions(kernel_options *options)

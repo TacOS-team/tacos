@@ -23,7 +23,7 @@ int compare_events(void* a, void* b)
   return compare_times(event_a->date, event_b->date);
 }
 
-static void events_interrupt(int interrupt_id)
+static void events_interrupt(int interrupt_id __attribute__ ((unused)))
 {
   struct event_t *event;
   //ticks--;

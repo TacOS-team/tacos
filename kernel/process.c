@@ -275,7 +275,8 @@ void* sys_exit(uint32_t ret_value, uint32_t zero1 __attribute__ ((unused)), uint
 	// On a pas forcement envie de supprimer le processus immédiatement
 	current->state = PROCSTATE_TERMINATED; 
 	
-	printf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
+	asm(""::"a"(ret_value));
+	//printf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
 
   return NULL;
 }
@@ -284,8 +285,7 @@ void* sys_getpid(uint32_t* pid, uint32_t zero1 __attribute__ ((unused)), uint32_
 {
 	process_t* process = get_current_process();
 	*pid = process->pid;
-  
-  return NULL;
+	return NULL;
 }
 
 void* sys_kill(uint32_t pid, uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))

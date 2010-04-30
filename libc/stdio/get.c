@@ -6,7 +6,6 @@
  */
 static char * search_endl(char * buf, char * endbuf) {
 	endbuf--;
-	int i = 0;
 	while (endbuf >= buf) {
 		if (*endbuf == '\n') {
 			return endbuf;

@@ -1,5 +1,6 @@
 #include <types.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <ioports.h>
 #include <keyboard.h>
 #include <process.h>
@@ -58,7 +59,7 @@ typedef struct {
   char uppercase;
 } letter;
 
-static letter letters_qwerty[] = {
+static letter letters_qwerty[] __attribute__ ((unused))= {
   {0x02, '1', '!'},
   {0x03, '2', '@'},
   {0x04, '3', '#'},
@@ -146,7 +147,7 @@ static letter letters_azerty[] = { // TODO : remplacer le scancode par un keycod
 	{0x32, ',', '?'},
 	{0x33, ';', '.'},
 	{0x34, ':', '/'},
-	{0x35, '!', '§'},
+	{0x35, '!', ' '},
 	{0x56, '<', '>'},
 	{0x52, '0', '0'},
 	{0x4F, '1', '1'},
@@ -160,7 +161,6 @@ static letter letters_azerty[] = { // TODO : remplacer le scancode par un keycod
 	{0x49, '9', '9'}
 };
 
-static int begin = 0, end = 0;
 static int shift = 0;
 static int capslock = 0;
 static int numlock = 0;
@@ -171,7 +171,7 @@ void keyBufferPush(char c)
 {
 	process_t *process = get_active_process();
 	if (process->stdin->_IO_read_ptr == NULL) {
-		char * buf = malloc(1000);
+		char * buf = (char*) malloc(1000);
 		process->stdin->_IO_buf_base = buf;
 		process->stdin->_IO_buf_end = buf + 1000;
 		process->stdin->_IO_read_base = process->stdin->_IO_buf_base;
@@ -195,7 +195,7 @@ char keyboardConvertToChar(uint8_t scancode) {
 	return 0;
 }
 
-void keyboardInterrupt(int id)
+void keyboardInterrupt(int id __attribute__ ((unused)))
 {
 	uint8_t scancode = inb(0x60);
 	

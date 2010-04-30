@@ -66,17 +66,18 @@ int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 	return 0;
 }
 
-int test_task1(int argc, char** argv)
+int test_task1(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	int pid = get_pid();
 	//printf("\nTache n%d\n",pid);
 	//printf("Parameters:\nargc=%d\nargv=0x%x\n",argc, argv);
-	while(1);//return 0;
+	return pid;
 }
 
 int test_task()
 {
-	create_process("tache test", test_task1, 0, 0, 64, 3);
+	create_process("tache test", (paddr_t) test_task1, 0, 0, 64, 3);
+	return 0;
 }
 
 

@@ -5,7 +5,7 @@
 
 volatile bool irq_received = FALSE;
 
-void floppy_handler(int interrupt_id)
+void floppy_handler(int interrupt_id __attribute__ ((unused)))
 {
 	irq_received = TRUE;
 }
