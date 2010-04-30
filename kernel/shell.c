@@ -216,6 +216,8 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 {
 	char buffer[80];
 	
+	print_process_list();
+	
 	add_builtin_cmd(help_cmd, "help");
 	add_builtin_cmd(date_cmd, "date");
 	add_builtin_cmd((func_ptr)cls, "clear");
@@ -248,7 +250,8 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 		fflush(stdout);
 		fflush(stdin);
 		
-		scanf("%s", buffer);	
+		scanf("%s", buffer);
+		printf("\n");
 		if(exec_builtin_cmd(buffer) != 0)
 			printf("Commande introuvable.\n"); 
 		// Si on ne trouve pas la commande en builtin, on devrait alors chercher si y'a un executable qui correspond, dans un futur proche j'espere :p

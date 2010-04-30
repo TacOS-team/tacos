@@ -8,6 +8,7 @@
 #include <process.h>
 #include <kmalloc.h>
 #include <syscall.h>
+#include <time.h>
 
 #include <debug.h>
 
@@ -131,6 +132,9 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 		return -1;
 	}
 	
+	new_proc->user_time = 0;
+	new_proc->sys_time = 0;
+	
 	new_proc->pid = proc_count;
 	new_proc->regs.eax = 0;
 	new_proc->regs.ebx = 0;
@@ -214,10 +218,25 @@ void process_print_regs()
 void print_process_list()
 {
 	proclist_cell* aux = process_list;
-	printf("L\tO\tL\n");
+	
+	const int clk_per_ms = CLOCKS_PER_SEC / 1000;
+	long int ms;
+	int s;
+	int m;
+	int h;
+	int reste;
+	
 	while(aux!=NULL)
 	{
-		printf("pid:%d  name:%s state:",aux->process->pid, aux->process->name);
+		ms = aux->process->user_time / clk_per_ms;
+		s = ms / 1000;
+		
+		m = s / 60;
+		s = s % 60;
+		h = m / 60;
+		m = m % 60;
+		
+		printf("pid:%d  name:%s time:%dh %dm %ds state:",aux->process->pid, aux->process->name, h, m ,s );
 		switch(aux->process->state)
 		{
 			case PROCSTATE_IDLE:
@@ -235,6 +254,7 @@ void print_process_list()
 			default:
 				break;
 		}
+		
 		aux = aux->next;
 	}
 }

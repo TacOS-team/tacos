@@ -22,12 +22,18 @@ typedef struct
 
 typedef struct{
 	uint16_t	pid;
-	char* name;
+	char* 		name;
 	uint8_t	state;
 	uint8_t	priority;
+	
+	long int	user_time;
+	long int	sys_time;
+	
+	/* Données propres au contexte du processus */
 	paddr_t		sys_stack;
 	regs_t regs;
-
+	
+	/* Données utilisées pour les IO */
 	file_descriptor fd[FOPEN_MAX];
 	FILE* file_list;
 	// Temporairement je rajoute stdin, stdout et stderr. 

@@ -55,6 +55,8 @@ static void* switch_process(void* data __attribute__ ((unused)))
 		current->regs.gs = stack_ptr[5];
 		current->regs.ds = stack_ptr[4];
 		current->regs.es = stack_ptr[3];
+		
+		current->user_time += quantum;
 	}
 	
 	// On recupere le prochain processus à executer	
