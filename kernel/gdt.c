@@ -112,7 +112,7 @@ static struct x86_segment_descriptor gdt[] = {
 /*
  * Configuration de la gdt.
  */
-void gdt_setup(size_t ram_size) {
+void gdt_setup(size_t ram_size __attribute__ ((unused))) {
 	struct x86_gdt_register gdtr;
 
 	/* Adresse de la GDT */

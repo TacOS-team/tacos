@@ -49,7 +49,7 @@ void pagination_setup() {
 	paddr_t current_page;
 	while (memory_has_next_page(iterator)) {
 		current_page = memory_next_page(&iterator);
-		if (pagination_kernel != current_page) {
+		if (pagination_kernel != (struct page_directory_entry*) current_page) {
 			pagination_identity_map_addr(pagination_kernel, current_page);
 		}
 	}

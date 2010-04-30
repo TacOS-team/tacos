@@ -3,6 +3,7 @@
 
 #include <msr.h>
 #include <stdio.h>
+#include <string.h>
 #include <interrupts.h>
 #include "ksyscall.h"
 #include <syscall.h>
@@ -10,7 +11,7 @@
 syscall_handler_t syscall_handler_table[MAX_SYSCALL_NB];
 
 
-void syscall_entry(int interrupt_id)
+void syscall_entry(int interrupt_id __attribute__ ((unused)))
 {	
 	uint32_t function, param1, param2, param3;
 	syscall_handler_t handler;
@@ -44,5 +45,5 @@ void init_syscall()
 	interrupt_set_routine(IRQ_SYSCALL, syscall_entry, 3);
 	
 	// Mise à zero de la table des handler
-	memset(syscall_handler_table, NULL, MAX_SYSCALL_NB*sizeof(syscall_handler_t));
+	memset(syscall_handler_table, 0, MAX_SYSCALL_NB*sizeof(syscall_handler_t));
 }

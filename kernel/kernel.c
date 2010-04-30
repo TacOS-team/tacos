@@ -43,9 +43,7 @@ typedef struct
 
 /* Forward declarations. */
 void cmain (unsigned long magic, unsigned long addr);
-static void testPageReservation();
 static void initKernelOptions(const char *cmdLine, kernel_options *options);
-static void test_kmalloc();
 
 void LPT1_routine(int id)
 {
@@ -156,8 +154,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 void waitReturn()
 {
-	while(getchar() != '\n')
-		;
+	while(getchar() != '\n');
 }
 
 void testPageReservation()
@@ -198,7 +195,7 @@ static char get_opt(char **cmdLine)
 
 static void initKernelOptions(const char *cmdLine, kernel_options *options)
 {
-	char *cmd = cmdLine;
+	char *cmd = (char*)cmdLine;
 	char opt;
 
 	//printf("Command line : %s\n", cmdLine);

@@ -69,10 +69,17 @@ int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 int test_task1(int argc, char** argv)
 {
 	int pid = get_pid();
-	printf("\nTache n%d\n",pid);
-	printf("Parameters:\nargc=%d\nargv=0x%x\n",argc, argv);
-	return 0;
+	//printf("\nTache n%d\n",pid);
+	//printf("Parameters:\nargc=%d\nargv=0x%x\n",argc, argv);
+	while(1);//return 0;
 }
+
+int test_task()
+{
+	create_process("tache test", test_task1, 0, 0, 64, 3);
+}
+
+
 
 
 int test_mouse()
@@ -230,7 +237,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(kill_cmd, "kill");
 	add_builtin_cmd(test_ansi, "test_ansi");
 	add_builtin_cmd(cd_cmd, "cd");
-	
+	add_builtin_cmd(test_task, "test_task");
 		
 	for(;;)
 	{

@@ -17,7 +17,7 @@ void bp()
 	asm("nop");
 }
 
-static void* switch_process(void* data)
+static void* switch_process(void* data __attribute__ ((unused)))
 {
 	uint32_t* stack_ptr;
 	uint32_t esp0, eflags;

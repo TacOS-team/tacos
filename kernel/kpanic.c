@@ -18,7 +18,7 @@ void printStackTrace(uint32_t depth)
 		{
 			break;
 		}
-		ebp = ebp[0];
+		ebp = (uint32_t*) ebp[0];
 		kprintf("->0x%x\n",eip);
 	}
 }

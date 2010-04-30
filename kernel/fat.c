@@ -35,7 +35,7 @@ addr_CHS_t get_CHS_from_cluster (cluster_t cluster) {
 void read_fat (cluster_t *fat) {
 	uint8_t buffer[512*9];
 	addr_CHS_t sector_addr;
-	int i,c;
+	uint32_t i;
 	int p=0;
 	uint32_t tmp = 0;
 	char * p_buffer = (char*) buffer;
@@ -65,7 +65,7 @@ void read_fat (cluster_t *fat) {
 void read_root_dir (fat_dir_entry_t * rdir) {
 	addr_CHS_t sector_addr;
 	char * p_root_dir = (char*) rdir;
-	int i,c;
+	uint32_t i;
 	for (i=0;i<fat_info.cluster1_sector_count;i++) {
 		sector_addr = get_CHS_from_LBA(fat_info.root_dir_LBA+i);
 		floppy_read_sector(sector_addr.Cylinder, sector_addr.Head, sector_addr.Sector, p_root_dir);
@@ -269,7 +269,7 @@ void fat_open_file (char * path, open_file_descriptor * ofd) {
 	ofd->current_octet = 0;
 	ofd->current_octet_buf = 0;
 	BOCHS_BREAKPOINT;
-	read_cluster(ofd->buffer,ofd->current_cluster);
+	read_cluster((char*)ofd->buffer,ofd->current_cluster);
 	BOCHS_BREAKPOINT;
 }
 
@@ -302,7 +302,7 @@ uint8_t read_file (open_file_descriptor * ofd) {
 		ofd->current_octet++;
 		if (ofd->current_octet_buf>=512) {
 			ofd->current_cluster = file_alloc_table[ofd->current_cluster];
-			read_cluster(ofd->buffer, ofd->current_cluster);
+			read_cluster((char*)ofd->buffer, ofd->current_cluster);
 			ofd->current_octet_buf=0;
 		}
 		return ret;

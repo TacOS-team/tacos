@@ -1,6 +1,7 @@
 #include <types.h>
 #include <stdlib.h>
 #include <stdio.h> 
+#include <string.h>
 #include <libio.h> 
 
 #include <gdt.h>
@@ -17,7 +18,7 @@ uint32_t proc_count = 0;
 static proc_list process_list = NULL;
 static proclist_cell* current_proclist_cell = NULL;
 
-static process_t * active_process = 5242880;
+static process_t * active_process = (process_t*) 5242880;
 
 uint32_t get_proc_count()
 {
@@ -151,13 +152,13 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 	
 	new_proc->regs.eflags = 0;
 	new_proc->regs.eip = prog;
-	new_proc->regs.esp = (user_stack)+stack_size-3;
+	new_proc->regs.esp =(paddr_t) (user_stack)+stack_size-3;
 	new_proc->regs.ebp = new_proc->regs.esp;
-	new_proc->sys_stack = (sys_stack)+stack_size-1;
+	new_proc->sys_stack =(paddr_t) (sys_stack)+stack_size-1;
 	new_proc->state = PROCSTATE_IDLE;
 	
 	/* Initialisation de la pile du processus */
-	user_stack[stack_size-1]=argv;
+	user_stack[stack_size-1]=(paddr_t)argv;
 	user_stack[stack_size-2]=argc;
 	user_stack[stack_size-3]=(paddr_t)exit;
 	
@@ -265,7 +266,7 @@ process_t * get_active_process() {
  * SYSCALL
  */
 
-void* sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2)
+void* sys_exit(uint32_t ret_value, uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))
 {
 	process_t* current;
 	// On cherche le processus courant:
@@ -279,7 +280,7 @@ void* sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2)
   return NULL;
 }
 
-void* sys_getpid(uint32_t* pid, uint32_t zero1, uint32_t zero2)
+void* sys_getpid(uint32_t* pid, uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))
 {
 	process_t* process = get_current_process();
 	*pid = process->pid;
@@ -287,12 +288,14 @@ void* sys_getpid(uint32_t* pid, uint32_t zero1, uint32_t zero2)
   return NULL;
 }
 
-void* sys_kill(uint32_t pid, uint32_t zero1, uint32_t zero2)
+void* sys_kill(uint32_t pid, uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))
 {
 	process_t* process = find_process(pid);
 	
 	// Violent? OUI!
 	process->state = PROCSTATE_TERMINATED;
+	
+	return NULL;
 }
 
 /* A mettre en user space */
