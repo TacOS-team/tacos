@@ -1,4 +1,6 @@
+#include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 void* memcpy(void* dest, const void* src, size_t size)
 {
@@ -7,24 +9,26 @@ void* memcpy(void* dest, const void* src, size_t size)
 	// Si on peut diviser les données à déplacer par paquet de 4 bytes, on les transfert en uint32, sinon on reste sur du uint8
 	if(!(size%4))
 	{
-		uint32_t* d = dest;
-		uint32_t* s = src;
+		uint32_t* d = (uint32_t*) dest;
+		uint32_t* s = (uint32_t*) src;
 		
 		i = 0;
 		while(i<(size/4))
 		{
-			d[i] = s[i++];
+			d[i] = s[i];
+			i++;
 		}	
 	}
 	else
 	{ 
-		uint8_t* d = dest;
-		uint8_t* s = src;
+		uint8_t* d = (uint8_t*) dest;
+		uint8_t* s = (uint8_t*) src;
 		
 		i = 0;
 		while(i<size)
 		{
-			d[i] = s[i++];
+			d[i] = s[i];
+			i++;
 		}
 	}
 	
@@ -51,7 +55,7 @@ int strcmp(const char *s1, const char *s2) {
 }
 
 int strncmp(const char *s1, const char *s2, size_t n) {
-	int i = 0;
+	unsigned int i = 0;
 	while (s1[i] == s2[i]) {
 		if (s1[i] == '\0' || i >= n) {
 			return 0;
@@ -73,7 +77,7 @@ void *memset(void *s, int c, size_t n)
 
 int memcmp(const void *s1, const void *s2, size_t n)
 {
-	int i = 0;
+	unsigned int i = 0;
 	while (((char*)s1)[i] == ((char*)s2)[i]) {
 		if (i >= n) {
 			return 0;
@@ -130,29 +134,31 @@ void *memmove(void *dest, const void *src, size_t n)
 {
 	if(dest > src)
 	{
-		size_t i;
+		int i;
 		
 		// Si on peut diviser les données à déplacer par paquet de 4 bytes, on les transfert en uint32, sinon on reste sur du uint8
 		if(!(n%4))
 		{
 			uint32_t* d = dest;
-			uint32_t* s = src;
+			uint32_t* s = (uint32_t*) src;
 			
-			i = (n/4)-1;
+			i =(int) (n/4)-1;
 			while(i>=0)
 			{
-				d[i] = s[i--];
+				d[i] = s[i];
+				i--;
 			}	
 		}
 		else
 		{ 
 			uint8_t* d = dest;
-			uint8_t* s = src;
+			uint8_t* s = (uint8_t*) src;
 			
 			i = n-1;
 			while(i>=0)
 			{
-				d[i] = s[i++];
+				d[i] = s[i];
+				i--;
 			}
 		}
 	}
@@ -164,23 +170,25 @@ void *memmove(void *dest, const void *src, size_t n)
 		if(!(n%4))
 		{
 			uint32_t* d = dest;
-			uint32_t* s = src;
+			uint32_t* s = (uint32_t*) src;
 			
 			i = 0;
 			while(i<(n/4))
 			{
-				d[i] = s[i++];
+				d[i] = s[i];
+				i++;
 			}	
 		}
 		else
 		{ 
 			uint8_t* d = dest;
-			uint8_t* s = src;
+			uint8_t* s = (uint8_t*) src;
 			
 			i = 0;
 			while(i<n)
 			{
-				d[i] = s[i++];
+				d[i] = s[i];
+				i++;
 			}
 		}	
 	}
@@ -213,7 +221,7 @@ char *strstr(const char *haystack, const char *needle)
 	}
 	
 	if (found) {
-		return haystack;
+		return (char*)haystack;
 	}
 	
 	return NULL;
@@ -244,7 +252,7 @@ char *strcasestr(const char *haystack, const char *needle)
 	}
 	
 	if (found) {
-		return haystack;
+		return (char*)haystack;
 	}
 	
 	return NULL;
@@ -253,7 +261,7 @@ char *strcasestr(const char *haystack, const char *needle)
 char *strdup (const char *s)
 {
 	int len = strlen(s);
-	char* new_string = malloc(len+1); // len + 1 pour le '\0'
+	char* new_string = (char*) malloc(len+1); // len + 1 pour le '\0'
 	
 	return strcpy(new_string, s);;
 }

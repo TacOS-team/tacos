@@ -20,7 +20,7 @@ unsigned int sleep(unsigned int seconds)
 unsigned int usleep(unsigned int milliseconds)
 {
 	volatile int sleeping = 1;
-	add_event(sleep_event, &sleeping, milliseconds);
+	add_event(sleep_event,(void*) &sleeping, milliseconds);
 	while(sleeping) {
 		asm("hlt");
 	}
@@ -46,7 +46,7 @@ void* sys_write(uint32_t fd, uint32_t p_buf, uint32_t count) {
 }
 
 size_t write(int fd, const void *buf, size_t count) {
-	syscall(SYS_WRITE, fd, buf, count);
+	syscall(SYS_WRITE, fd, (uint32_t) buf, count);
 
 	return 0;
 }

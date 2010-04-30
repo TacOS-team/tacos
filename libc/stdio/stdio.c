@@ -45,6 +45,9 @@ static buffer_video_t *buffer_video = &buffer_standard;
 
 static void scrollup();
 static void updateCursorPosition();
+void set_foreground(uint8_t foreground);
+void set_background(uint8_t background);
+void reset_attribute();
 
 void disableCursor()
 {
@@ -430,11 +433,11 @@ void enableFinnouMode(int enable)
 }
 
 void set_foreground(uint8_t foreground) {
-  buffer_video->attribute = buffer_video->attribute & 0xF0 | (foreground & 0xF); 
+  buffer_video->attribute = (buffer_video->attribute & 0xF0) | (foreground & 0xF); 
 }
 
 void set_background(uint8_t background) {
-  buffer_video->attribute = ((background & 0xF) << 4) | buffer_video->attribute & 0x0F;
+  buffer_video->attribute = ((background & 0xF) << 4) | (buffer_video->attribute & 0x0F);
 }
 
 void set_attribute(uint8_t background, uint8_t foreground)

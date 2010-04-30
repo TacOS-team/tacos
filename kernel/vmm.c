@@ -125,7 +125,7 @@ struct page_table_entry *get_pte(int dir, int table)
 }
 
 // Retourne une adresse lineaire en fonction de sa position dans le rep de page
-static vaddr_t get_linear_address(int dir, int table, int offset)
+vaddr_t get_linear_address(int dir, int table, int offset)
 {
   return (((dir&0x3FF) << 22) | ((table&0x3FF) << 12) | (offset&0xFFF));
 }

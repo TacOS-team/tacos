@@ -6,6 +6,8 @@
 #include <heap.h>
 #include <errno.h>
 #include <ctype.h>
+#include <string.h>
+#include <kmalloc.h>
 
 void *malloc(size_t size)
 {
@@ -14,7 +16,7 @@ void *malloc(size_t size)
 
 void *calloc(size_t nmemb, size_t size)
 {
-  int i;
+  unsigned int i;
   uint8_t *p;
   
   if(nmemb == 0 || size == 0)
@@ -27,7 +29,7 @@ void *calloc(size_t nmemb, size_t size)
   return p;
 }
 
-void free(void *addr)
+int free(void *addr)
 {
   return kfree(addr);
 }
@@ -46,7 +48,6 @@ static int digitvalue(char c)
 unsigned long int strtoul(const char *nptr, char **endptr, int base)
 {
 	unsigned long int ret = 0;
-	int signe = 1;
 	
 	//on ignore les espaces
 	while(isspace(*(nptr))) nptr++;
@@ -88,7 +89,7 @@ unsigned long int strtoul(const char *nptr, char **endptr, int base)
 		ret = digit+base*ret;
 	}
 	
-	*endptr = nptr-1;
+	*endptr =(char*) nptr-1;
 	
 	return ret;
 }

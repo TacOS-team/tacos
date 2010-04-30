@@ -71,8 +71,9 @@ struct tm *localtime(const time_t *timer)
 {
 	return gmtime(timer);
 }
-
+/*
 size_t strftime(char * s, size_t maxsize, const char * format, const struct tm * timeptr)
 {
 	return 0;
 }
+*/ 

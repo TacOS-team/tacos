@@ -3,6 +3,7 @@
 #include <process.h>
 #include <scheduler.h>
 #include <events.h>
+#include <clock.h>
 #include <ioports.h>
 #include <gdt.h>
 #include <i8259.h>

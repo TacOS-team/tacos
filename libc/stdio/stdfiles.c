@@ -1,5 +1,7 @@
 #include <types.h>
 #include <libio.h>
+#include <string.h>
+#include <kmalloc.h>
 
 #undef stdin
 #undef stdout
@@ -14,9 +16,9 @@ FILE *stdout = & _IO_stdout;
 FILE *stderr = & _IO_stderr;
 
 void init_stdfiles(FILE ** _stdin, FILE ** _stdout, FILE ** _stderr) {
-	FILE * __stdin = kmalloc(sizeof(FILE));
-	FILE * __stdout = kmalloc(sizeof(FILE));
-	FILE * __stderr = kmalloc(sizeof(FILE));
+	FILE * __stdin = (FILE*) kmalloc(sizeof(FILE));
+	FILE * __stdout = (FILE*) kmalloc(sizeof(FILE));
+	FILE * __stderr = (FILE*) kmalloc(sizeof(FILE));
 
 	memcpy(__stdin, &_IO_stdin, sizeof(FILE));
 	memcpy(__stdout, &_IO_stdout, sizeof(FILE));

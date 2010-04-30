@@ -6,17 +6,17 @@
 #include <string.h>
 
 #define        conv_error()   return -1
-#define        input_error()  return (done == 0 ? EOF : done)
+#define        input_error()  return (done == (0) ? EOF : done)
 
 int vsscanf(const char *s, const char *format, va_list ap) {
 	FILE stream;
    stream._fileno = -1;
-   stream._IO_buf_base = s;
-   stream._IO_buf_end = s + strlen(s);
+   stream._IO_buf_base = (char*) s;
+   stream._IO_buf_end =(char*) (s + strlen(s));
 	*stream._IO_buf_end++ = EOF;
-   stream._IO_read_base = s;
+   stream._IO_read_base =(char*) s;
    stream._IO_read_ptr = stream._IO_buf_end;
-   stream._IO_read_end = s;
+   stream._IO_read_end = (char*) s;
    stream._flags = _IO_MAGIC + _IO_UNBUFFERED;
 	return vfscanf(&stream, format, ap);
 }
@@ -35,7 +35,7 @@ int vfscanf(FILE *stream, const char *format, va_list ap) {
   const char *f = format;
   char fc;                /* Current character of the format.  */
   size_t done = 0;        /* Assignments done.  */
-  int c;                /* Last char read.  */
+  char c;                /* Last char read.  */
 
   /* Base for integral numbers.  */
   int base;

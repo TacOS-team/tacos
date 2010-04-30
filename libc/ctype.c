@@ -26,6 +26,7 @@ int islower(int c) {
 
 int isprint(int c) {
 	// TODO
+	c=c+1;
 	return 0;
 }
 
@@ -43,6 +44,7 @@ int isupper(int c) {
 
 int isxdigit(int c) {
 	// TODO
+	c=c+1;
 	return 0;
 }
 
