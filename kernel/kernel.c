@@ -147,8 +147,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	/* Lancement du scheduler */
 	init_scheduler(10);
-	start_scheduler();
 	
+	start_scheduler();
 	// Never goes here	
 	while(1){}
 }

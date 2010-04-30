@@ -16,7 +16,7 @@ typedef uint32_t addr_LBA_t;
 typedef struct addr_CHS { uint32_t Cylinder; uint32_t Head; uint32_t Sector; } addr_CHS_t;
 
 typedef struct _directory {
-	uint8_t entry_name[10][14];
+	char entry_name[10][14];
 	cluster_t entry_cluster[10];
 	uint32_t entry_size[10];
 	int total_entries;

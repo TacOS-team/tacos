@@ -1,5 +1,6 @@
 #include "heap.h"
 #include <string.h>
+#include <debug.h>
 
 // initialise le tas
 void initHeap(heap_t* h, cmp_func_type cmp, void* heap, size_t elements_size,int max_elements)
@@ -44,6 +45,7 @@ void swap(int a, int b, void* tab, int size)
 // ajoute une element
 int addElement(heap_t* h, void* element)
 {
+	
 	// On verifie que le tas n'est pas plein
 	if(h->nb_elements < h->max_elements)
 	{
@@ -57,8 +59,7 @@ int addElement(heap_t* h, void* element)
 		while(h->comparator(getIn(h,index),getIn(h,(index-1)/2)) > 0)
 		{
 			// tant que l'element est plus grand que son pere on le remonte
-			swap(index, (index-1)/2, h->heap, h->elements_size);
-
+			swap(index, (index-1)/2, h->heap, h->elements_size);	
 			index = (index-1)/2;			
 			if(index == 0)
 				break;

@@ -6,6 +6,7 @@
 #include <heap.h>
 #include <events.h>
 #include <stdio.h>
+#include <debug.h>
 
 #define MAX_EVENTS 256
 
@@ -30,15 +31,18 @@ static void events_interrupt(int interrupt_id)
   //if(ticks < 0)
   //{
     clock_tick();
-  
+	
     event = (struct event_t *) getTop(events);
     while(event != NULL && compare_times(event->date, get_tv()) > 0)
     {
+	
       removetop(&events);
       event->callback(event->data);
+      BOCHS_BREAKPOINT;
       event = (struct event_t *) getTop(events);
+      
     }
-  
+	
   //  ticks = TIMER_FREQ;
   //}
   

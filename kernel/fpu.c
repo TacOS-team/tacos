@@ -2,7 +2,7 @@
 #include <fpu.h>
 #include <interrupts.h>
 
-static void FPU_handler(int id)
+static void FPU_handler(int id __attribute__ ((unused)))
 {
   printf("FPU Exception\n");
 }

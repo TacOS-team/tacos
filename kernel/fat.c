@@ -73,11 +73,11 @@ void read_root_dir (fat_dir_entry_t * rdir) {
 	}
 }
 
-int read_cluster (uint8_t * buf, cluster_t cluster) {
+int read_cluster (char * buf, cluster_t cluster) {
 	addr_CHS_t sector_addr;
 	if ( (cluster!=0) && (cluster!=1) ) {
 		sector_addr = get_CHS_from_cluster(cluster);
-		floppy_read_sector(sector_addr.Cylinder, sector_addr.Head, sector_addr.Sector, (char*) buf);
+		floppy_read_sector(sector_addr.Cylinder, sector_addr.Head, sector_addr.Sector, buf);
 		//printf("\n%d %d %d\n",sector_addr.Cylinder, sector_addr.Head, sector_addr.Sector);
 		return 0;
 	}
@@ -121,7 +121,7 @@ char * decode_long_file_name (char * name, uint8_t * long_file_name ) {
 			name[11] =  long_file_name[28];
 			name[12] =  long_file_name[30];
 			
-			name[13] = "\0";
+			name[13] = '\0';
 
 	return name;
 }
@@ -161,7 +161,7 @@ int open_next_dir(directory_t * prev_dir,directory_t * next_dir, char * name) {
 	}
 	
 	if (next!=0) {
-		read_cluster (sub_dir, next);
+		read_cluster ((char*)sub_dir, next);
 		strcpy(next_dir->name,name);
 		next_dir->cluster = next;
 		next_dir->total_entries = 0;
@@ -291,7 +291,6 @@ void write_file (open_file_descriptor * ofd, uint32_t * buf, int nb_octet) {
 }
 
 uint8_t read_file (open_file_descriptor * ofd) {
-	int i;
 	uint8_t ret;
 	
 	if (ofd->current_octet==ofd->file_size) {
@@ -363,7 +362,7 @@ void change_dir (char * name) {
 
 void list_segments () {
 	int i;
-	char name[14];
+	//char name[14]; Inutilisé
 	printf("\n");
 	for (i=0;i<path.dir_list[path.current].total_entries;i++) {
 		

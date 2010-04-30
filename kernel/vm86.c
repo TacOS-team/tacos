@@ -26,8 +26,8 @@ int check_vm86()
 	
 uint16_t ustack[64];
 uint16_t sstack[64];
-paddr_t ss_addr = sstack + 63;
-paddr_t us_addr = ustack + 63;
+paddr_t ss_addr = (paddr_t)(sstack + 63);
+paddr_t us_addr = (paddr_t)(ustack + 63);
 					
 void exec_vm86_task(paddr_t task)
 {

@@ -55,7 +55,7 @@ static void* switch_process(void* data)
 		current->regs.ds = stack_ptr[4];
 		current->regs.es = stack_ptr[3];
 	}
-
+	
 	// On recupere le prochain processus à executer	
 	compteur = 0;
 	do
@@ -113,6 +113,7 @@ static void* switch_process(void* data)
 			"m" (current->regs.eip) 	
        );
 	/* On push ensuite les registres de la tache à lancer */
+	
 	asm(
 			"push %0\n\t"
 			"push %1\n\t"
@@ -173,4 +174,5 @@ void init_scheduler(int Q)
 void start_scheduler()
 {
 	add_event(switch_process,NULL,quantum);
+	BOCHS_BREAKPOINT;
 }

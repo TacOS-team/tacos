@@ -29,10 +29,10 @@
 #define BINARY_COUNT  0x0
 #define DECIMAL_COUNT 0x1
 
-int i8254_init(uint16_t freq)
+int i8254_init(uint32_t freq)
 {
   uint8_t controlByte;
-  uint16_t nb_tick;
+  uint32_t nb_tick;
   
   if(freq > I8254_MAX_FREQ)
     return -1;

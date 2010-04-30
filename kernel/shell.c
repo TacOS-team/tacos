@@ -43,7 +43,7 @@ static void test_kmalloc()
 }
 
 
-int pi(int argc, char** argv)
+int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	const double prec = 0.001;
 	double x = 0.0, y = 0.0;
@@ -204,29 +204,29 @@ int cd_cmd()
 	change_dir(buffer);
 	return 0;
 }
-int shell(int argc, char** argv)
+int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	char buffer[80];
 	
 	add_builtin_cmd(help_cmd, "help");
 	add_builtin_cmd(date_cmd, "date");
-	add_builtin_cmd(cls, "clear");
-	add_builtin_cmd(pci_list, "lspci");
-	add_builtin_cmd(switchDebugBuffer, "switchdebug");
-	add_builtin_cmd(switchStandardBuffer, "switchstd");
-	add_builtin_cmd(memory_print, "print_memory");
+	add_builtin_cmd((func_ptr)cls, "clear");
+	add_builtin_cmd((func_ptr)pci_list, "lspci");
+	add_builtin_cmd((func_ptr)switchDebugBuffer, "switchdebug");
+	add_builtin_cmd((func_ptr)switchStandardBuffer, "switchstd");
+	add_builtin_cmd((func_ptr)memory_print, "print_memory");
 	add_builtin_cmd(test_mouse, "test_mouse");
 	add_builtin_cmd(test_scanf, "test_scanf");
 	add_builtin_cmd(test_fgets, "test_fgets");
-	add_builtin_cmd(print_process_list, "ps");
+	add_builtin_cmd((func_ptr)print_process_list, "ps");
 	add_builtin_cmd(test_sscanf, "test_sscanf");
 	//add_builtin_cmd(kmalloc_print_mem, "kmalloc_print_mem");
-	add_builtin_cmd(test_kmalloc, "test_kmalloc");
-	add_builtin_cmd(list_segments, "ls");
-	add_builtin_cmd(print_Boot_Sector, "mount");
-	add_builtin_cmd(print_working_dir, "pwd");
+	add_builtin_cmd((func_ptr)test_kmalloc, "test_kmalloc");
+	add_builtin_cmd((func_ptr)list_segments, "ls");
+	add_builtin_cmd((func_ptr)print_Boot_Sector, "mount");
+	add_builtin_cmd((func_ptr)print_working_dir, "pwd");
 	add_builtin_cmd(debug_fat, "debugfat");
-	add_builtin_cmd(clean_process_list, "clean_proclist");
+	add_builtin_cmd((func_ptr)clean_process_list, "clean_proclist");
 	add_builtin_cmd(kill_cmd, "kill");
 	add_builtin_cmd(test_ansi, "test_ansi");
 	add_builtin_cmd(cd_cmd, "cd");
@@ -234,8 +234,6 @@ int shell(int argc, char** argv)
 		
 	for(;;)
 	{
-		char c;
-		
 		//time_t curr_time = time(NULL);
 		printf("\n > ");
 		
@@ -244,33 +242,7 @@ int shell(int argc, char** argv)
 		
 		scanf("%s", buffer);	
 		if(exec_builtin_cmd(buffer) != 0)
-			printf("Commande introuvable.\n");
+			printf("Commande introuvable.\n"); 
+		// Si on ne trouve pas la commande en builtin, on devrait alors chercher si y'a un executable qui correspond, dans un futur proche j'espere :p
 	}
 }
-
-/*
-int shell(int argc, char* argv[])
-{
-	char buffer[80];
-	
-	//kmalloc(10);
-	//asm("xchg %bx, %bx");
-	int i = 0;
-	for(;;)
-	{
-		char c;
-		
-		time_t curr_time = time(NULL);
-		printf("\n > ");
-		fflush(stdout);
-		
-		fflush(stdin);
-		scanf("%s", buffer);	
-		BOCHS_BREAKPOINT;
-		i = 0;
-	
-	}
-	
-	return 0;
-}
-*/
