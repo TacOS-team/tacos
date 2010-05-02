@@ -15,15 +15,21 @@ FILE *stdin = & _IO_stdin;
 FILE *stdout = & _IO_stdout;
 FILE *stderr = & _IO_stderr;
 
+/**
+ * Initialise de nouveaux stdin, stdout et stderr.
+ */
 void init_stdfiles(FILE ** _stdin, FILE ** _stdout, FILE ** _stderr) {
+	/* Allocation memoire. */
 	FILE * __stdin = (FILE*) kmalloc(sizeof(FILE));
 	FILE * __stdout = (FILE*) kmalloc(sizeof(FILE));
 	FILE * __stderr = (FILE*) kmalloc(sizeof(FILE));
 
+	/* On y copie les valeurs par défaut */
 	memcpy(__stdin, &_IO_stdin, sizeof(FILE));
 	memcpy(__stdout, &_IO_stdout, sizeof(FILE));
 	memcpy(__stderr, &_IO_stderr, sizeof(FILE));
 
+	/* On fait l'affectation aux arguments. */
 	*_stdin = __stdin;
 	*_stdout = __stdout;
 	*_stderr = __stderr;

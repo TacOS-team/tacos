@@ -113,7 +113,7 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 	new_proc = kmalloc(sizeof(process_t));
 	if( new_proc == NULL )
 	{
-		printf("create_process: impossible de reserver la memoire pour le nouveau processus.\n");
+		kprintf("create_process: impossible de reserver la memoire pour le nouveau processus.\n");
 		return -1;
 	}
 	new_proc->name = strdup(name);
@@ -121,14 +121,14 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 	sys_stack = kmalloc(stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
 	{
-		printf("create_process: impossible de reserver la memoire pour la pile systeme.\n");
+		kprintf("create_process: impossible de reserver la memoire pour la pile systeme.\n");
 		return -1;
 	}
 	
 	user_stack = kmalloc(stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
 	{
-		printf("create_process: impossible de reserver la memoire pour la pile utilisateur.\n");
+		kprintf("create_process: impossible de reserver la memoire pour la pile utilisateur.\n");
 		return -1;
 	}
 	
