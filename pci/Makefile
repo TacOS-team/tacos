@@ -2,6 +2,8 @@ INCLUDES=-I. -I../include/
 LDFLAGS=-L../lib/
 LDLIBS=-lc
 
+SRCS = pci.c pci_config.c
+
 all: libpci
 
 libpci: pci.o pci_config.o
@@ -10,10 +12,17 @@ libpci: pci.o pci_config.o
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
-pci.o: ../include/pci.h ../include/pci_config.h ../include/pci_types.h ../include/types.h
-
-pci_config.o: ../include/pci_config.h ../include/pci_types.h pci_vendor.h
-
 clean:
 	rm -f *.o
 
+depend: $(SRCS)
+		makedepend -Y $(INCLUDES) -- $(CFLAGS) -- $^
+
+# DO NOT DELETE THIS LINE -- make depend needs it
+
+pci.o: ../include/pci.h ../include/types.h ../include/pci_config.h
+pci.o: ../include/pci_types.h ../include/stdio.h ../include/libio.h
+pci.o: ../include/fcntl.h ../include/stdarg.h
+pci_config.o: ../include/ioports.h ../include/types.h ../include/pci_config.h
+pci_config.o: ../include/pci_types.h ./pci_vendor.h ../include/stdio.h
+pci_config.o: ../include/libio.h ../include/fcntl.h ../include/stdarg.h

@@ -1,4 +1,5 @@
-INCLUDES=-I../include/ -I../kernel/include/
+INCLUDES = -I../include/ -I../kernel/include/
+SRCS = ctype.c  errno.c  fcntl.c  libio.c  stdlib.c  string.c  time.c  unistd.c
 
 all: libc
 
@@ -7,22 +8,6 @@ libc: stdio/stdio.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scan
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
-
-stdlib.o: ../include/stdlib.h ../include/types.h ../include/ctype.h
-
-string.o: ../include/string.h ../include/types.h
-
-unistd.o: ../include/unistd.h ../include/types.h
-
-time.o :  ../include/time.h ../include/types.h
-
-errno.o :  ../include/errno.h
-
-ctype.o: ../include/ctype.h
-
-libio.o: ../include/libio.h
-
-fcntl.o: ../include/types.h ../include/fcntl.h ../include/process.h ../include/stdio.h ../kernel/include/fat.h
 
 stdio: force_look
 	$(MAKE) -C $@ 
@@ -37,3 +22,30 @@ mrproper: clean
 force_look:
 	@true
 
+depend: $(SRCS)
+	$(MAKE) -C stdio depend
+	makedepend -Y $(INCLUDES) -- $(CFLAGS) -- $^
+
+# DO NOT DELETE THIS LINE -- make depend needs it
+
+ctype.o: ../include/ctype.h
+fcntl.o: ../include/types.h ../include/fcntl.h ../include/process.h
+fcntl.o: ../include/pagination.h ../include/libio.h ../include/stdio.h
+fcntl.o: ../include/stdarg.h ../include/string.h ../include/syscall.h
+fcntl.o: ../kernel/include/fat.h
+libio.o: ../include/libio.h ../include/fcntl.h ../include/types.h
+libio.o: ../include/stdio.h ../include/stdarg.h
+stdlib.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
+stdlib.o: ../include/types.h ../include/stdarg.h ../include/stdlib.h
+stdlib.o: ../include/memory.h ../include/pagination.h ../include/heap.h
+stdlib.o: ../include/errno.h ../include/ctype.h ../include/string.h
+stdlib.o: ../include/kmalloc.h
+string.o: ../include/stdlib.h ../include/types.h ../include/string.h
+string.o: ../include/ctype.h
+time.o: ../include/time.h ../include/types.h ../include/stdio.h
+time.o: ../include/libio.h ../include/fcntl.h ../include/stdarg.h
+time.o: ../include/clock.h
+unistd.o: ../include/unistd.h ../include/types.h ../include/events.h
+unistd.o: ../include/time.h ../include/process.h ../include/pagination.h
+unistd.o: ../include/libio.h ../include/fcntl.h ../include/stdio.h
+unistd.o: ../include/stdarg.h ../include/syscall.h

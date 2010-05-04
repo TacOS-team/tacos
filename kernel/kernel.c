@@ -34,7 +34,6 @@
 #include <shell.h>
 #include <ksyscall.h>
 #include <syscall.h>
-#include <unistd.h>
 
 typedef struct
 {
