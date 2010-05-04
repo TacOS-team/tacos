@@ -4,7 +4,7 @@ SRCS = ctype.c  errno.c  fcntl.c  libio.c  stdlib.c  string.c  time.c  unistd.c
 all: libc
 
 libc: stdio/stdio.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scanf.o stdio/stdfiles.o stdio/fprintf.o stdio/printf.o stdio/put.o stdio/sprintf.o stdio/get.o libio.o fcntl.o
-	  ar rv ../lib/$@.a $^
+	$(AR) r ../lib/$@.a $^
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
@@ -14,10 +14,10 @@ stdio: force_look
 
 clean:
 	$(MAKE) -C stdio clean
-	rm -f *.o
+	@rm -f *.o
 
 mrproper: clean
-	rm ../lib/libc.a
+	@rm ../lib/libc.a
 
 force_look:
 	@true

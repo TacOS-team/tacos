@@ -1,15 +1,15 @@
 export MAKE=make
-export CC=gcc
-export LD=ld
+export CC=@echo "   CC   $$@" && gcc
+export LD=@echo "   LD   $$@" && ld
+export AR=@echo "   AR   $$@" && ar
 export CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LDFLAGS=-Llib/
 LDLIBS=-lc -lpci -lclock -lutils -ldrivers -z nodefaultlib -lsystem
 
-SUBDIRS = libc utils drivers pci clock system
+SUBDIRS = kernel libc utils drivers pci clock system
 
 all: kernel.bin
 	@for i in $(SUBDIRS); do \
-		$(ECHO) "make in $$i..."; \
 		$(MAKE) -C $$i; \
 	done
 
@@ -23,12 +23,12 @@ force_look:
 core.img: img
 
 img: all
-	echo "drive v: file=\"`pwd`/core.img\" 1.44M filter" > mtoolsrc
-	gzip -dc < grub.img.gz > core.img
+	@echo "drive v: file=\"`pwd`/core.img\" 1.44M filter" > mtoolsrc
+	@gzip -dc < grub.img.gz > core.img
 	MTOOLSRC=mtoolsrc mcopy menu.txt v:/boot/grub/
 	MTOOLSRC=mtoolsrc mmd v:/system
 	MTOOLSRC=mtoolsrc mcopy kernel.bin v:/system/
-	rm mtoolsrc
+	@rm mtoolsrc
 
 runqemu: core.img
 	qemu -fda core.img -m 8
@@ -41,13 +41,11 @@ runbochs: core.img
 
 clean:
 	@for i in $(SUBDIRS); do \
-	 	$(ECHO) "make clean in $$i..."; \
 		$(MAKE) -C $$i clean; \
 	done
-	rm -f *.o *.bin *.img
+	@rm -f *.o *.bin *.img
 
 depend:
 	@for i in $(SUBDIRS); do \
-		$(ECHO) "make depend in $$i..."; \
 		$(MAKE) -C $$i depend; \
 	done

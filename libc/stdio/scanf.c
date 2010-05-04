@@ -34,7 +34,7 @@ int sscanf(const char *s, const char *format, ...) {
 int vfscanf(FILE *stream, const char *format, va_list ap) {
   const char *f = format;
   char fc;                /* Current character of the format.  */
-  size_t done = 0;        /* Assignments done.  */
+  int done = 0;        /* Assignments done.  */
   char c;                /* Last char read.  */
 
   /* Base for integral numbers.  */

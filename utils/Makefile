@@ -8,16 +8,16 @@ SRCS=heap.c
 all: libutils
 
 libutils: heap.o
-	  ar rv ../lib/$@.a $^
+	$(AR) r ../lib/$@.a $^
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
 clean:
-	rm -f *.o
+	@rm -f *.o
 
 depend: $(SRCS)
-		makedepend -Y $(INCLUDES) -- $(CFLAGS) -- $^
+	makedepend -Y $(INCLUDES) -- $(CFLAGS) -- $^
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 

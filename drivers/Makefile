@@ -7,7 +7,7 @@ SUBDIRS=floppy mouse keyboard beeper
 all: libdrivers
 
 libdrivers: mouse/mouse.o keyboard/keyboard.o floppy/floppy.o floppy/floppy_interrupt.o floppy/floppy_utils.o floppy/floppy_motor.o floppy/floppy_dma.o beeper/beeper.o
-	  ar rv ../lib/$@.a $^
+	  $(AR) r ../lib/$@.a $^
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
@@ -20,7 +20,6 @@ force_look:
 
 depend:
 	@for i in $(SUBDIRS); do \
-		$(ECHO) "make depend in $$i..."; \
 		$(MAKE) -C $$i depend; \
 	done
 
