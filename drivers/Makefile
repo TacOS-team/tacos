@@ -14,9 +14,6 @@ libdrivers: mouse/mouse.o keyboard/keyboard.o floppy/floppy.o floppy/floppy_inte
 clean:
 	rm -f */*.o
 
-force_look:
-	@true
-
 depend: $(SRCS)
 	makedepend -Y $(INCLUDES) -- $(CFLAGS) -- $^
 
