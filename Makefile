@@ -12,6 +12,7 @@ all: kernel.bin
 	@for i in $(SUBDIRS); do \
 		$(MAKE) -C $$i; \
 	done
+	readelf --syms kernel.bin | awk '{print $2 " " $8}' > symbols
 
 kernel.bin: force_look 
 	$(MAKE) -C kernel

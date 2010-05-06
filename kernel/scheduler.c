@@ -13,11 +13,6 @@
 //struct process idle;
 static uint32_t quantum;						// Quantum de temps alloué aux process
 
-void bp()
-{
-	asm("nop");
-}
-
 static void* switch_process(void* data __attribute__ ((unused)))
 {
 	uint32_t* stack_ptr;
@@ -178,4 +173,15 @@ void start_scheduler()
 {
 	add_event(switch_process,NULL,quantum);
 	BOCHS_BREAKPOINT;
+}
+
+void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)))
+{
+	create_process(name, prog, 0xbeef, 0xabba, 512, 3);
+	return NULL;
+}
+
+void exec(paddr_t prog, char* name)
+{
+	syscall(SYS_EXEC, (uint32_t)prog, (uint32_t)name, (uint32_t)NULL);
 }

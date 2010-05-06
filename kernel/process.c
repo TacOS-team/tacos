@@ -162,11 +162,13 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 	new_proc->state = PROCSTATE_IDLE;
 	
 	/* Initialisation de la pile du processus */
-	user_stack[stack_size-1]=(paddr_t)argv;
-	user_stack[stack_size-2]=argc;
-	user_stack[stack_size-3]=(paddr_t)exit;
+	sys_stack[stack_size-1]=(paddr_t)argv;
+	sys_stack[stack_size-2]=argc;
+	sys_stack[stack_size-3]=(paddr_t)exit;
 	
-
+	/*BOCHS_BREAKPOINT;*/
+	kprintf("0x%x\n0x%x\n0x%x\n",user_stack[stack_size-1],user_stack[stack_size-2],user_stack[stack_size-3]);
+	/*BOCHS_BREAKPOINT;*/ 
 	/**(new_proc->regs.esp) = (uint32_t)1;
 	*(new_proc->regs.esp) = (uint32_t)1;
 	*(new_proc->regs.esp) = (uint32_t)1; */
@@ -186,7 +188,7 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 	
 	//FIXME: Si je décommente cette ligne je me prend une double faute !
 	active_process = new_proc;
-
+	
 	return new_proc->pid;
 }
 
@@ -228,6 +230,8 @@ void print_process_list()
 	
 	while(aux!=NULL)
 	{
+		
+		/* Calcul du temps d'execution du processus */
 		ms = aux->process->user_time / clk_per_ms;
 		s = ms / 1000;
 		
@@ -237,6 +241,7 @@ void print_process_list()
 		m = m % 60;
 		
 		printf("pid:%d  name:%s time:%dh %dm %ds state:",aux->process->pid, aux->process->name, h, m ,s );
+		
 		switch(aux->process->state)
 		{
 			case PROCSTATE_IDLE:
@@ -295,7 +300,7 @@ void* sys_exit(uint32_t ret_value, uint32_t zero1 __attribute__ ((unused)), uint
 	// On a pas forcement envie de supprimer le processus immédiatement
 	current->state = PROCSTATE_TERMINATED; 
 	
-	asm(""::"a"(ret_value));
+	//asm(""::"a"(ret_value));
 	//printf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
 
   return NULL;

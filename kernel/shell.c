@@ -66,17 +66,19 @@ int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 	return 0;
 }
 
-int test_task1(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
+int test_task1(int argc, char** argv)
 {
 	int pid = get_pid();
-	//printf("\nTache n%d\n",pid);
-	//printf("Parameters:\nargc=%d\nargv=0x%x\n",argc, argv);
+	char buff[80];
+	printf("\nTache n%d\n",pid);
+	printf("Parameters:\nargc=%d\nargv=0x%x\n",argc, argv);
+	while(1);
 	return pid;
 }
 
 int test_task()
 {
-	create_process("tache test", (paddr_t) test_task1, 0, 0, 64, 3);
+	exec(test_task1, "test");
 	return 0;
 }
 
@@ -215,8 +217,6 @@ int cd_cmd()
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	char buffer[80];
-	
-	print_process_list();
 	
 	add_builtin_cmd(help_cmd, "help");
 	add_builtin_cmd(date_cmd, "date");
