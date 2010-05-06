@@ -1,8 +1,7 @@
 INCLUDES=-I../include/ -Iinclude/
-LDFLAGS=-L../lib/
-LDLIBS=-lc
+CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 
-SRCS = clock.c events.c i8254.c
+SRCS = *.c
 
 all: libclock
 

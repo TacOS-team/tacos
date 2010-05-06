@@ -1,6 +1,5 @@
 INCLUDES=-I. -I../include/
-LDFLAGS=-L../lib/
-LDLIBS=-lc
+CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 
 SRCS=*/*.c
 

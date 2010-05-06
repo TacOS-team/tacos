@@ -1,8 +1,7 @@
 INCLUDES=-I. -I../include/
-LDFLAGS=-L../lib/
-LDLIBS=-lc
+CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 
-SRCS = pci.c pci_config.c
+SRCS = *.c
 
 all: libpci
 
