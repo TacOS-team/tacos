@@ -1,5 +1,12 @@
 export MAKE=make
-export CC=@printf "\033[34m   CC   $$@\033[0m\n" && gcc
+
+HASCOLOR = $(shell if test `which colorgcc`; then echo true; else echo false; fi)
+ifneq ($(HASCOLOR),true)
+	export CC=@printf "\033[34m   CC   $$@\033[0m\n" && gcc
+else
+	export CC=@printf "\033[34m   CC   $$@\033[0m\n" && colorgcc
+endif
+
 export LD=@printf "\033[31m   LD   $$@\033[0m\n" && ld
 export AR=@printf "\033[32m   AR   $$@\033[0m\n" && ar
 export CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
