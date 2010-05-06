@@ -1,7 +1,7 @@
 export MAKE=make
-export CC=@echo "\033[34m   CC   $$@\033[0m" && gcc
-export LD=@echo "\033[31m   LD   $$@\033[0m" && ld
-export AR=@echo "\033[32m   AR   $$@\033[0m" && ar
+export CC=@printf "\033[34m   CC   $$@\033[0m\n" && gcc
+export LD=@printf "\033[31m   LD   $$@\033[0m\n" && ld
+export AR=@printf "\033[32m   AR   $$@\033[0m\n" && ar
 export CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LDFLAGS=-Llib/
 LDLIBS=-lc -lpci -lclock -lutils -ldrivers -z nodefaultlib -lsystem
@@ -13,9 +13,9 @@ all: kernel.bin
 
 kernel.bin: force_look
 	@for i in $(SUBDIRS); do \
-		echo "\033[1m>>> [$$i]\033[0m"; \
+		printf "\033[1m>>> [$$i]\033[0m\n"; \
 		$(MAKE) -s -C $$i; \
-		echo "\033[1m<<< [$$i]\033[0m"; \
+		printf "\033[1m<<< [$$i]\033[0m\n"; \
 	done
 	$(LD) -T linker.ld -o kernel.bin kernel/*.o -melf_i386 $(LDFLAGS) $(LDLIBS)
 
