@@ -42,8 +42,6 @@ typedef struct{
 	FILE * stdout;
 	FILE * stderr;
 } process_t;
-/* Fait planter :
- * } __attribute__((packed)) process_t;*/
 
 typedef struct _proclist_cell{
 	process_t* process;
