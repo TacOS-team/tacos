@@ -1,5 +1,5 @@
 INCLUDES = -I../include/ -I../kernel/include/
-SRCS = ctype.c  errno.c  fcntl.c  libio.c  stdlib.c  string.c  time.c  unistd.c
+SRCS = *.c */*.c
 
 all: libc
 
@@ -9,21 +9,13 @@ libc: stdio/stdio.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scan
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
-stdio: force_look
-	$(MAKE) -C $@ 
-
 clean:
-	$(MAKE) -C stdio clean
-	@rm -f *.o
+	rm -f *.o */*.o
 
 mrproper: clean
 	@rm ../lib/libc.a
 
-force_look:
-	@true
-
 depend: $(SRCS)
-	$(MAKE) -C stdio depend
 	makedepend -Y $(INCLUDES) -- $(CFLAGS) -- $^
 
 # DO NOT DELETE THIS LINE -- make depend needs it
@@ -49,3 +41,22 @@ unistd.o: ../include/unistd.h ../include/types.h ../include/events.h
 unistd.o: ../include/time.h ../include/process.h ../include/pagination.h
 unistd.o: ../include/libio.h ../include/fcntl.h ../include/stdio.h
 unistd.o: ../include/stdarg.h ../include/syscall.h
+stdio/fopen.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
+stdio/fopen.o: ../include/types.h ../include/stdarg.h ../include/string.h
+stdio/fprintf.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
+stdio/fprintf.o: ../include/types.h ../include/stdarg.h ../include/string.h
+stdio/get.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
+stdio/get.o: ../include/types.h ../include/stdarg.h
+stdio/printf.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
+stdio/printf.o: ../include/types.h ../include/stdarg.h
+stdio/put.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
+stdio/put.o: ../include/types.h ../include/stdarg.h ../include/stdlib.h
+stdio/put.o: ../include/unistd.h
+stdio/scanf.o: ../include/ctype.h ../include/stdarg.h ../include/stdlib.h
+stdio/scanf.o: ../include/types.h ../include/stdio.h ../include/libio.h
+stdio/scanf.o: ../include/fcntl.h ../include/string.h
+stdio/sprintf.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
+stdio/sprintf.o: ../include/types.h ../include/stdarg.h
+stdio/stdfiles.o: ../include/types.h ../include/libio.h ../include/fcntl.h
+stdio/stdfiles.o: ../include/string.h ../include/kmalloc.h
+stdio/stdio.o: ../include/types.h ../include/ioports.h ../include/ctype.h

@@ -1,7 +1,7 @@
 export MAKE=make
-export CC=@echo "   CC   $$@" && gcc
-export LD=@echo "   LD   $$@" && ld
-export AR=@echo "   AR   $$@" && ar
+export CC=@echo "\033[34m   CC   $$@\033[0m" && gcc
+export LD=@echo "\033[31m   LD   $$@\033[0m" && ld
+export AR=@echo "\033[32m   AR   $$@\033[0m" && ar
 export CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LDFLAGS=-Llib/
 LDLIBS=-lc -lpci -lclock -lutils -ldrivers -z nodefaultlib -lsystem
@@ -9,14 +9,15 @@ LDLIBS=-lc -lpci -lclock -lutils -ldrivers -z nodefaultlib -lsystem
 SUBDIRS = kernel libc utils drivers pci clock system
 
 all: kernel.bin
-	@for i in $(SUBDIRS); do \
-		$(MAKE) -C $$i; \
-	done
-	readelf --syms kernel.bin | awk '{print $2 " " $8}' > symbols
+	@readelf --syms kernel.bin | awk '{print $2 " " $8}' > symbols
 
-kernel.bin: force_look 
-	$(MAKE) -C kernel
-	$(LD) -T linker.ld -o kernel.bin kernel/boot.o kernel/kernel.o kernel/i8259.o kernel/idt.o kernel/pagination.o kernel/memory.o kernel/exception_wrappers.o kernel/exception.o kernel/gdt.o kernel/interrupts.o kernel/interrupts_wrappers.o kernel/scheduler.o kernel/dummy_process.o kernel/process.o kernel/kpanic.o kernel/ksyscall.o kernel/vmm.o kernel/kmalloc.o kernel/fat.o kernel/fpu.o kernel/vm86.o kernel/shell.o kernel/shell_utils.o -melf_i386 $(LDFLAGS) $(LDLIBS)
+kernel.bin: force_look
+	@for i in $(SUBDIRS); do \
+		echo "\033[1m>>> [$$i]\033[0m"; \
+		$(MAKE) -s -C $$i; \
+		echo "\033[1m<<< [$$i]\033[0m"; \
+	done
+	$(LD) -T linker.ld -o kernel.bin kernel/*.o -melf_i386 $(LDFLAGS) $(LDLIBS)
 
 force_look:
 	@true
@@ -40,13 +41,19 @@ runqemugdb: core.img
 runbochs: core.img
 	BOCHSRC=bochsrc bochs
 
+.PHONY: clean depend
+
 clean:
 	@for i in $(SUBDIRS); do \
-		$(MAKE) -C $$i clean; \
+		echo "\033[1m>>> [$$i]\033[0m"; \
+		$(MAKE) -s -C $$i clean; \
+		echo "\033[1m<<< [$$i]\033[0m"; \
 	done
 	@rm -f *.o *.bin *.img
 
 depend:
 	@for i in $(SUBDIRS); do \
-		$(MAKE) -C $$i depend; \
+		echo "\033[1m>>> [$$i]\033[0m"; \
+		$(MAKE) -s -C $$i depend; \
+		echo "\033[1m<<< [$$i]\033[0m"; \
 	done
