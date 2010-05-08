@@ -7,7 +7,7 @@
 static char * search_endl(char * buf, char * endbuf) {
 	endbuf--;
 	while (endbuf >= buf) {
-		if (*endbuf == '\n') {
+		if (*endbuf == '\n' || *endbuf == EOF) {
 			return endbuf;
 		}
 		endbuf--;
