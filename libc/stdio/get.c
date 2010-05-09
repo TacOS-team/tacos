@@ -70,6 +70,7 @@ int fgetc(FILE *stream) {
 
 			// Ugly hack for now :P.
 			// Normalement il faut faire appel à la fonction read qui s'occupe de faire ce qu'il faut.
+			// C'est à dire appeler la fonction de lecture/affichage associé au stream qui va bien !
 			if (stream->_fileno == 0) {
 				printf("%c", c);
 				fflush(stdout);

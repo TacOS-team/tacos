@@ -70,6 +70,8 @@ FILE *fopen(const char *path, const char *mode);
 FILE *fdopen(int fd, const char *mode);
 FILE *freopen(const char *path, const char *mode, FILE *stream);
 
+FILE *fmemopen(void *buf, size_t size, const char *mode);
+
 void init_stdfiles(FILE ** _stdin, FILE ** _stdout, FILE ** _stderr);
 
 // Vieux code pour affichage en 80x25...
@@ -84,5 +86,6 @@ void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y
 void reset_attribute();
 void switchDebugBuffer();
 void switchStandardBuffer();
+
 
 #endif

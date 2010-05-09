@@ -2,7 +2,7 @@
 #include <string.h>
 #include <fcntl.h>
 
-FILE *fopen(const char *path, const char *mode) {
+int convert_flags(const char *mode) {
 	int flags = 0;
 	if (strcmp(mode, "r") == 0) {
 		flags = O_RDONLY;
@@ -29,9 +29,12 @@ FILE *fopen(const char *path, const char *mode) {
 	} else if (strcmp(mode, "a+b") == 0 || strcmp(mode, "ab+")) {
 
 	} else { // "Otherwise, the behavior is undefined." cf iso libc
-		return NULL;
+		return -1;
 	}
-
+}
+	
+FILE *fopen(const char *path, const char *mode) {
+	int flags = convert_flags(mode);
 	int fileno = open(path, flags); // open doit faire un appel systeme et s'occuper aussi de modifier la fd_table !
 
 	// Va chercher dans le process le file_list pour chainer comme il faut.

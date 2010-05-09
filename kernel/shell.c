@@ -179,6 +179,13 @@ int test_fwrite()
 	fwrite(chaine, 2, sizeof(chaine)/2, stdout);
 }
 
+int test_sprintf()
+{
+	char buffer[80];
+	sprintf(buffer, "Test : %d\n", 42);
+	printf("%s\n", buffer);
+}
+
 int test_sscanf()
 {
 	char * str = "Hello 42 bla";
@@ -242,6 +249,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_fgets, "test_fgets");
 	add_builtin_cmd(test_fputs, "test_fputs");
 	add_builtin_cmd(test_fwrite, "test_fwrite");
+	add_builtin_cmd(test_sprintf, "test_sprintf");
 	add_builtin_cmd((func_ptr)print_process_list, "ps");
 	add_builtin_cmd(test_sscanf, "test_sscanf");
 	//add_builtin_cmd(kmalloc_print_mem, "kmalloc_print_mem");
