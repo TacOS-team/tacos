@@ -58,6 +58,8 @@ int putc(int c, FILE *stream);
 int putchar(int c);
 int puts(const char *s);
 
+size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
+
 char *fgets(char *s, int size, FILE *stream);
 int fgetc(FILE *stream);
 int getchar(void);

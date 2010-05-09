@@ -29,6 +29,8 @@ int snprintf(char *str, size_t size, const char *format, ...) {
 }
 
 int vsprintf(char *str, const char *format, va_list ap) {
+
+	// TODO : à voir s'il ne faudrait pas utiliser fmemopen pour faire ça clean.
 	FILE stream;
 	stream._fileno = -1;
 	stream._IO_buf_base = str;
