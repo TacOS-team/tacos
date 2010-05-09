@@ -17,10 +17,10 @@ static void* switch_process(void* data __attribute__ ((unused)))
 {
 	uint32_t* stack_ptr;
 	uint32_t esp0, eflags;
-    uint16_t ss, cs;
-    uint32_t compteur;
+   uint16_t ss, cs;
+   uint32_t compteur;
 
-    process_t* current = get_current_process();
+   process_t* current = get_current_process();
 	
 	// On récupère le contexte du processus actuel uniquement si il a déja été lancé
 	if(current->state == PROCSTATE_RUNNING)
@@ -84,9 +84,9 @@ static void* switch_process(void* data __attribute__ ((unused)))
 	i8254_init(1000/*TIMER_FREQ*/);
 
 	// On réaffecte à la main stdin, stdout et stderr. TEMPORAIRE !
-	stdin = current->stdin;
+	/*stdin = current->stdin;
 	stdout = current->stdout;
-	stderr = current->stderr;
+	stderr = current->stderr;*/
 
 	// Changer le contexte:
 	ss = current->regs.ss;
