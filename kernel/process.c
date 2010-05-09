@@ -156,19 +156,16 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 	
 	new_proc->regs.eflags = 0;
 	new_proc->regs.eip = prog;
-	new_proc->regs.esp =(paddr_t) (user_stack)+stack_size-3;
+	new_proc->regs.esp = (user_stack)+stack_size-3;
 	new_proc->regs.ebp = new_proc->regs.esp;
-	new_proc->sys_stack =(paddr_t) (sys_stack)+stack_size-1;
+	new_proc->sys_stack = (sys_stack)+stack_size-1;
 	new_proc->state = PROCSTATE_IDLE;
 	
 	/* Initialisation de la pile du processus */
-	sys_stack[stack_size-1]=(paddr_t)argv;
-	sys_stack[stack_size-2]=argc;
-	sys_stack[stack_size-3]=(paddr_t)exit;
-	
-	/*BOCHS_BREAKPOINT;*/
-	kprintf("0x%x\n0x%x\n0x%x\n",user_stack[stack_size-1],user_stack[stack_size-2],user_stack[stack_size-3]);
-	/*BOCHS_BREAKPOINT;*/ 
+	user_stack[stack_size-1]=(paddr_t)argv;
+    user_stack[stack_size-2]=argc;
+    user_stack[stack_size-3]=(paddr_t)exit;
+	 
 	/**(new_proc->regs.esp) = (uint32_t)1;
 	*(new_proc->regs.esp) = (uint32_t)1;
 	*(new_proc->regs.esp) = (uint32_t)1; */
@@ -300,8 +297,7 @@ void* sys_exit(uint32_t ret_value, uint32_t zero1 __attribute__ ((unused)), uint
 	// On a pas forcement envie de supprimer le processus immédiatement
 	current->state = PROCSTATE_TERMINATED; 
 	
-	//asm(""::"a"(ret_value));
-	//printf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
+	printf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
 
   return NULL;
 }

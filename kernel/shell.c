@@ -69,7 +69,6 @@ int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 int test_task1(int argc, char** argv)
 {
 	int pid = get_pid();
-	char buff[80];
 	printf("\nTache n%d\n",pid);
 	printf("Parameters:\nargc=%d\nargv=0x%x\n",argc, argv);
 	while(1);
@@ -78,7 +77,8 @@ int test_task1(int argc, char** argv)
 
 int test_task()
 {
-	exec(test_task1, "test");
+	create_process("tache test", test_task1, 42, 0xba, 512, 3);
+	//exec(test_task1, "test");
 	return 0;
 }
 

@@ -177,7 +177,7 @@ void start_scheduler()
 
 void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)))
 {
-	create_process(name, prog, 0xbeef, 0xabba, 512, 3);
+	create_process(name, prog, 42, 0xba, 512, 3);
 	return NULL;
 }
 

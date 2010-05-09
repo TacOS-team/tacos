@@ -131,7 +131,7 @@ void open_root_dir (directory_t * dir) {
 	int i;
 	int itermax = 8;//fat_info.root_entry_count/2;
 	char str[14];
-	char name[14] = "fd0:";
+	char name[14];// = "fd0:";
 	read_root_dir(root_dir);
 	strcpy(dir->name,name);
 	dir->total_entries = 0;
@@ -268,9 +268,7 @@ void fat_open_file (char * path, open_file_descriptor * ofd) {
 	ofd->current_cluster = ofd->first_cluster;
 	ofd->current_octet = 0;
 	ofd->current_octet_buf = 0;
-	BOCHS_BREAKPOINT;
 	read_cluster((char*)ofd->buffer,ofd->current_cluster);
-	BOCHS_BREAKPOINT;
 }
 
 void write_file (open_file_descriptor * ofd, uint32_t * buf, int nb_octet) {

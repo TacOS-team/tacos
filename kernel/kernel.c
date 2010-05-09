@@ -142,7 +142,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	create_process("Mishell", (paddr_t)shell,0,NULL,1024,3);
 	
 	/* Lancement du scheduler */
-	init_scheduler(10);
+	init_scheduler(20);
 	
 	start_scheduler();
 	// Never goes here	
