@@ -42,10 +42,15 @@ unistd.o: ../include/unistd.h ../include/types.h ../include/events.h
 unistd.o: ../include/time.h ../include/process.h ../include/pagination.h
 unistd.o: ../include/libio.h ../include/fcntl.h ../include/stdio.h
 unistd.o: ../include/stdarg.h ../include/syscall.h
+stdio/fmemopen.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
+stdio/fmemopen.o: ../include/types.h ../include/stdarg.h ../include/stdlib.h
+stdio/fmemopen.o: stdio/fopen.h
 stdio/fopen.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
 stdio/fopen.o: ../include/types.h ../include/stdarg.h ../include/string.h
 stdio/fprintf.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
 stdio/fprintf.o: ../include/types.h ../include/stdarg.h ../include/string.h
+stdio/fwrite.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
+stdio/fwrite.o: ../include/types.h ../include/stdarg.h
 stdio/get.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
 stdio/get.o: ../include/types.h ../include/stdarg.h
 stdio/printf.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h

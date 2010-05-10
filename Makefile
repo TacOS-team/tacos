@@ -22,7 +22,7 @@ kernel.bin: force_look
 	@for i in $(SUBDIRS); do \
 		printf "\033[1m>>> [$$i]\033[0m\n"; \
 		$(MAKE) -s -C $$i; \
-		if [ $$? = 0 ]; then echo "\033[1m<<< [$$i] [OK]\033[0m\n"; else echo "\033[31m\033[1m<<< [$$i] [FAIL]\033[0m "; exit 1; fi; \
+		if [ $$? = 0 ]; then printf "\033[1m<<< [$$i] [OK]\033[0m\n"; else printf "\033[31m\033[1m<<< [$$i] [FAIL]\033[0m\n"; exit 1; fi; \
 	done
 	$(LD) -T linker.ld -o kernel.bin kernel/*.o -melf_i386 $(LDFLAGS) $(LDLIBS)
 
@@ -52,15 +52,15 @@ runbochs: core.img
 
 clean:
 	@for i in $(SUBDIRS); do \
-		echo "\033[1m>>> [$$i]\033[0m"; \
+		printf "\033[1m>>> [$$i]\033[0m\n"; \
 		$(MAKE) -s -C $$i clean; \
-		echo "\033[1m<<< [$$i]\033[0m"; \
+		printf "\033[1m<<< [$$i]\033[0m\n"; \
 	done
 	@rm -f *.o *.bin *.img
 
 depend:
 	@for i in $(SUBDIRS); do \
-		echo "\033[1m>>> [$$i]\033[0m"; \
+		printf "\033[1m>>> [$$i]\033[0m\n"; \
 		$(MAKE) -s -C $$i depend; \
-		echo "\033[1m<<< [$$i]\033[0m"; \
+		printf "\033[1m<<< [$$i]\033[0m\n"; \
 	done
