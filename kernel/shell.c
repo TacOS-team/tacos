@@ -15,35 +15,35 @@
 
 static void test_kmalloc()
 {
-  int *a, *b, *c;
-  kmalloc_print_mem();
-  getchar();
+	int *a, *b, *c;
+	kmalloc_print_mem();
+	getchar();
 
-  a = (int *) kmalloc(300*sizeof(int));
-  b = (int *) kmalloc(2048*sizeof(int));
-  c = (int *) kmalloc(300*sizeof(int));
-  printf("A : %x\nB : %x\nC : %x\n", a, b, c);
-  kmalloc_print_mem();
-  getchar();
+	a = (int *) kmalloc(300*sizeof(int));
+	b = (int *) kmalloc(2048*sizeof(int));
+	c = (int *) kmalloc(300*sizeof(int));
+	printf("A : %x\nB : %x\nC : %x\n", a, b, c);
+	kmalloc_print_mem();
+	getchar();
 
-  printf("REMOVING %x\n", b);
-  kfree(b);
-  kmalloc_print_mem();
-  getchar();
+	printf("REMOVING %x\n", b);
+	kfree(b);
+	kmalloc_print_mem();
+	getchar();
 
-  b = (int *) kmalloc(300*sizeof(int));
-  kmalloc_print_mem();
-  getchar();
+	b = (int *) kmalloc(300*sizeof(int));
+	kmalloc_print_mem();
+	getchar();
 
-  kfree(a);
-  kfree(b);
-  kfree(c);
-  kmalloc_print_mem();
-  getchar();
+	kfree(a);
+	kfree(b);
+	kfree(c);
+	kmalloc_print_mem();
+	getchar();
 }
 
 
-int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
+static int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	const double prec = 0.001;
 	double x = 0.0, y = 0.0;
@@ -66,7 +66,7 @@ int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 	return 0;
 }
 
-int test_task1(int argc, char** argv)
+static int test_task1(int argc, char** argv)
 {
 	int pid = get_pid();
 	printf("\nTache n%d\n",pid);
@@ -75,7 +75,7 @@ int test_task1(int argc, char** argv)
 	return pid;
 }
 
-int test_task()
+static int test_task()
 {
 	create_process("tache test", test_task1, 42, 0xba, 512, 3);
 	//exec(test_task1, "test");
@@ -83,7 +83,7 @@ int test_task()
 }
 
 
-int test_mouse_task()
+static int test_mouse_task()
 {
 	int i = 0;
 	int x;
@@ -134,26 +134,26 @@ int test_mouse_task()
 	return 0;
 }
 
-int test_mouse()
+static int test_mouse()
 {
 	create_process("tache mouse", test_mouse_task, 42, 0xba, 512,3);
+	return 0;
 }
 
-
-int help_cmd()
+static int help_cmd()
 {
 	show_builtin_cmd();
 	return 0;
 }
 
-int date_cmd()
+static int date_cmd()
 {
 	time_t curr_time = time(NULL);
 	printf("%s",ctime(&curr_time));	
 	return 0;
 }
 
-int test_scanf()
+static int test_scanf()
 {
 	printf("Entre un mot : \n");
 	char b[100];
@@ -162,7 +162,7 @@ int test_scanf()
 	return 0;
 }
 
-int test_fgets()
+static int test_fgets()
 {
 	printf("Entre une phrase : \n");
 	char b[100];
@@ -171,26 +171,28 @@ int test_fgets()
 	return 0;
 }
 
-int test_fputs()
+static int test_fputs()
 {
 	fputs("Hello world!\n", stdout);
 	return 0;
 }
 
-int test_fwrite() 
+static int test_fwrite() 
 {
 	char chaine[] = "Hello world (fwrite)!\n";
 	fwrite(chaine, 2, sizeof(chaine)/2, stdout);
+	return 0;
 }
 
-int test_sprintf()
+static int test_sprintf()
 {
 	char buffer[80];
 	sprintf(buffer, "Test : %d\n", 42);
 	printf("%s\n", buffer);
+	return 0;
 }
 
-int test_sscanf()
+static int test_sscanf()
 {
 	char * str = "Hello 42 bla";
 	char s[10];
@@ -203,14 +205,14 @@ int test_sscanf()
 	return 0;
 }	
 
-int debug_fat()
+static int debug_fat()
 {
 	print_path();
 	//open("lklk",21);
 	return 0;
 }
 
-int kill_cmd()
+static int kill_cmd()
 {
 	int pid;
 	scanf("%d",&pid);
@@ -219,7 +221,7 @@ int kill_cmd()
 }
 
 
-int test_ansi()
+static int test_ansi()
 {
 	printf("\033[2J");
 	fflush(stdout);
@@ -230,23 +232,29 @@ int test_ansi()
 	printf("\033[20;33H\033[37m===================\033[0m\n");
 	return 0;
 }
-int cd_cmd()
+
+static int cd_cmd()
 {
 	char buffer[80];
 	scanf("%s", buffer);
 	change_dir(buffer);
 	return 0;
 }
+
+static int cls() {
+	printf("\033[2J");
+	fflush(stdout);
+	return 0;
+}
+
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	char buffer[80];
 	
 	add_builtin_cmd(help_cmd, "help");
 	add_builtin_cmd(date_cmd, "date");
-	add_builtin_cmd((func_ptr)cls, "clear");
+	add_builtin_cmd(cls, "clear");
 	add_builtin_cmd((func_ptr)pci_list, "lspci");
-	add_builtin_cmd((func_ptr)switchDebugBuffer, "switchdebug");
-	add_builtin_cmd((func_ptr)switchStandardBuffer, "switchstd");
 	add_builtin_cmd((func_ptr)memory_print, "print_memory");
 	add_builtin_cmd(test_mouse, "test_mouse");
 	add_builtin_cmd(test_scanf, "test_scanf");

@@ -46,7 +46,7 @@ keyboard/keyboard.o: ../include/types.h ../include/stdio.h ../include/libio.h
 keyboard/keyboard.o: ../include/fcntl.h ../include/stdarg.h
 keyboard/keyboard.o: ../include/stdlib.h ../include/ioports.h
 keyboard/keyboard.o: ../include/keyboard.h ../include/process.h
-keyboard/keyboard.o: ../include/pagination.h
+keyboard/keyboard.o: ../include/pagination.h ../include/video.h
 mouse/mouse.o: ../include/types.h ../include/stdio.h ../include/libio.h
 mouse/mouse.o: ../include/fcntl.h ../include/stdarg.h ../include/ioports.h
 mouse/mouse.o: ../include/mouse.h ../include/interrupts.h

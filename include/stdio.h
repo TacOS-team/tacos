@@ -74,18 +74,7 @@ FILE *fmemopen(void *buf, size_t size, const char *mode);
 
 void init_stdfiles(FILE ** _stdin, FILE ** _stdout, FILE ** _stderr);
 
-// Vieux code pour affichage en 80x25...
-void disableCursor();
-void cls (void);
 void itoa (char *buf, int base, int d);
-int atoi(const char* __nptr);
-void newline();
-void enableFinnouMode(int enable);
-void set_attribute(uint8_t background, uint8_t foreground);
-void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y);
-void reset_attribute();
-void switchDebugBuffer();
-void switchStandardBuffer();
 
 
 #endif

@@ -4,7 +4,7 @@ SRCS = *.c */*.c
 
 all: libc
 
-libc: stdio/stdio.o stdio/fwrite.o stdio/fmemopen.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scanf.o stdio/stdfiles.o stdio/fprintf.o stdio/printf.o stdio/put.o stdio/sprintf.o stdio/get.o libio.o fcntl.o
+libc: stdio/stdio.o stdio/video.o stdio/fwrite.o stdio/fmemopen.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scanf.o stdio/stdfiles.o stdio/fprintf.o stdio/printf.o stdio/put.o stdio/sprintf.o stdio/get.o libio.o fcntl.o
 	$(AR) r ../lib/$@.a $^
 
 %.o: %.c
@@ -65,4 +65,5 @@ stdio/sprintf.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
 stdio/sprintf.o: ../include/types.h ../include/stdarg.h
 stdio/stdfiles.o: ../include/types.h ../include/libio.h ../include/fcntl.h
 stdio/stdfiles.o: ../include/string.h ../include/kmalloc.h
-stdio/stdio.o: ../include/types.h ../include/ioports.h ../include/ctype.h
+stdio/stdio.o: ../include/video.h ../include/types.h
+stdio/video.o: ../include/types.h ../include/ioports.h ../include/ctype.h

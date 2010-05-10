@@ -4,6 +4,7 @@
 #include <ioports.h>
 #include <keyboard.h>
 #include <process.h>
+#include <video.h>
 
 #define BUFFER_SIZE 256
 

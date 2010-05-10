@@ -119,3 +119,29 @@ long int strtol(const char* nptr, char** endptr, int base)
 	ret = signe*(long int)uret;
 	return ret;
 }
+
+int atoi(const char* __nptr)
+{
+	int ret = 0;
+	int sig = 1;
+	
+	if(*__nptr == '-')
+	{
+		__nptr++;
+		sig = -1;
+	}
+	else if(*__nptr == '+')
+		__nptr++;
+	
+	while(*__nptr)
+	{
+		if(*__nptr >= '0' && *__nptr<='9')
+			ret = 10*ret+(*__nptr-'0');
+		else
+			return -1;
+		
+		__nptr++;
+	}
+	
+	return ret;
+}

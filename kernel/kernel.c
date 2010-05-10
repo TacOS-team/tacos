@@ -34,6 +34,7 @@
 #include <shell.h>
 #include <ksyscall.h>
 #include <syscall.h>
+#include <video.h>
 
 typedef struct
 {

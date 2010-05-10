@@ -53,6 +53,7 @@ kernel.o: ../include/process.h ../include/kmalloc.h include/vmm.h
 kernel.o: ../include/ioports.h include/msr.h include/fat.h include/fpu.h
 kernel.o: include/vm86.h ../include/beeper.h ../include/debug.h
 kernel.o: include/shell.h include/ksyscall.h ../include/syscall.h
+kernel.o: ../include/video.h
 kmalloc.o: ../include/types.h ../include/stdio.h ../include/libio.h
 kmalloc.o: ../include/fcntl.h ../include/stdarg.h ../include/heap.h
 kmalloc.o: include/vmm.h ../include/kmalloc.h
