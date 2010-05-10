@@ -13,6 +13,8 @@
 
 #include <debug.h>
 
+int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
+
 static void test_kmalloc()
 {
 	int *a, *b, *c;
@@ -251,6 +253,13 @@ static int cls() {
 	return 0;
 }
 
+int exec_shell()
+{
+	cls();
+	exec(shell, "Mishell");
+	return 0;
+}
+
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	char buffer[80];
@@ -280,6 +289,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(cd_cmd, "cd");
 	add_builtin_cmd(test_task, "test_task");
 	add_builtin_cmd(calc_pi, "pi");
+	add_builtin_cmd(exec_shell, "Mishell");
 		
 	for(;;)
 	{
