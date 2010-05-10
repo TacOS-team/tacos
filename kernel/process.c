@@ -235,7 +235,7 @@ void print_process_list()
 			printf("*");
 		}
 
-		printf("pid:%d  name:%s time:%dh %dm %ds (stdin=%x) state:",aux->process->pid, aux->process->name, h, m ,s, aux->process->stdin);
+		printf("pid:%d \tname:%s \ttime:%dh %dm %ds \tstate:",aux->process->pid, aux->process->name, h, m ,s, aux->process->stdin);
 		
 		switch(aux->process->state)
 		{

@@ -215,6 +215,17 @@ void kputchar_position(char c, int x, int y) {
 	(*video)[x + y * COLUMNS].attribute = buffer_video->attribute;
 }
 
+void kputchar_tab() {
+	int x = buffer_video->xpos;
+	
+	x = ((x / 8) + 1) * 8;
+	if (x > COLUMNS - 1) {
+		newline();
+	} else {
+		buffer_video->xpos = x;
+	}
+}
+
 void cursor_up() {
 	if (buffer_video->ypos > 0)
 		buffer_video->ypos--;
@@ -358,6 +369,8 @@ void kputchar (char c) {
 		escape_char = TRUE;
 	} else if (c == '\n' || c == '\r') {
 		newline();
+	} else if (c == '\t') {
+		kputchar_tab();
 	} else if (c == '\b') {
 		backspace();
 	} else {
