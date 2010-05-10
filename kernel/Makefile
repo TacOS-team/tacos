@@ -60,6 +60,7 @@ kmalloc.o: include/vmm.h ../include/kmalloc.h
 kpanic.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
 kpanic.o: ../include/types.h ../include/stdarg.h ../include/exception.h
 kpanic.o: include/kpanic.h
+ksem.o: include/ksem.h ../include/types.h include/ksyscall.h
 ksyscall.o: include/msr.h ../include/stdio.h ../include/libio.h
 ksyscall.o: ../include/fcntl.h ../include/types.h ../include/stdarg.h
 ksyscall.o: ../include/string.h ../include/interrupts.h include/ksyscall.h
@@ -93,4 +94,4 @@ shell_utils.o: ../include/string.h include/shell_utils.h
 vm86.o: ../include/debug.h include/gdt.h ../include/types.h
 vmm.o: ../include/memory.h ../include/types.h ../include/pagination.h
 vmm.o: include/vmm.h ../include/stdio.h ../include/libio.h ../include/fcntl.h
-vmm.o: ../include/stdarg.h
+vmm.o: ../include/stdarg.h ../include/video.h

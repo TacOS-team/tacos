@@ -1,6 +1,7 @@
 #include <types.h>
 #include <ioports.h>
 #include <ctype.h>
+#include <video.h>
 
 /* Some screen stuff. */
 /* The number of columns. */
@@ -47,7 +48,11 @@ static void scrollup();
 static void updateCursorPosition();
 void set_foreground(uint8_t foreground);
 void set_background(uint8_t background);
-void reset_attribute();
+
+void init_video() {
+	reset_attribute();
+	cls();
+}
 
 void disableCursor()
 {
@@ -71,8 +76,6 @@ void refresh (void) {
 void cls (void) {
 	int i;
  
-	reset_attribute();
-
 	for (i = 0; i < COLUMNS * LINES; i++) {
 	  buffer_video->buffer[i].character = 0;
 	  buffer_video->buffer[i].attribute = buffer_video->attribute;
@@ -274,9 +277,46 @@ void kputchar (char c) {
 						if (val == 0) {
 							reset_attribute();
 						} else if (val >= 30 && val <= 37) {
-							set_foreground(val - 30); // FIXME : faire un switch pour gérer les 8 couleurs possibles.
+							switch(val - 30) {
+								// si low intensity (normal) :
+								case 0: set_foreground(BLACK);
+										  break;
+								case 1: set_foreground(RED);
+										  break;
+								case 2: set_foreground(GREEN);
+										  break;
+								case 3: set_foreground(YELLOW);
+										  break;
+								case 4: set_foreground(BLUE);
+										  break;
+								case 5: set_foreground(MAGENTA);
+										  break;
+								case 6: set_foreground(CYAN);
+										  break;
+								case 7: set_foreground(WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
+										  break;
+							}
 						} else if (val >= 40 && val <= 47) {
-							set_background(val - 40);
+							switch(val - 40) {
+								// si low intensity (normal) :
+								case 0: set_background(BLACK);
+										  break;
+								case 1: set_background(RED);
+										  break;
+								case 2: set_background(GREEN);
+										  break;
+								case 3: set_background(YELLOW);
+										  break;
+								case 4: set_background(BLUE);
+										  break;
+								case 5: set_background(MAGENTA);
+										  break;
+								case 6: set_background(CYAN);
+										  break;
+								case 7: set_background(WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
+										  break;
+							}
+
 						}
 						break;
 					case 'J':

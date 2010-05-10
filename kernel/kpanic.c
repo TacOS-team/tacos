@@ -63,14 +63,19 @@ void page_fault_report(int error_code)
 	
 void kpanic_handler(int error_id, int error_code)
 {
-  //cls();
-  set_attribute(WHITE, BLACK);
-  cls();
-  kprintf("                              /!\\ KERNEL PANIC /!\\\n");
-  kprintf("--------------------------------------------------------------------------------\n");
-  kprintf("Exception handled : ");
-  switch(error_id)
-  {
+	// background white
+	kprintf("\033[47m");
+	// Foreground black
+	kprintf("\033[30m");
+	// cls :
+	kprintf("\033[2J");
+
+	fflush(stdout);
+	kprintf("                              /!\\ KERNEL PANIC /!\\\n");
+	kprintf("--------------------------------------------------------------------------------\n");
+	kprintf("Exception handled : ");
+	switch(error_id)
+	{
 		case EXCEPTION_SEGMENT_NOT_PRESENT:
 			kprintf("Segment not present (error code : 0x%x).\n", error_code);
 			break;
@@ -95,10 +100,10 @@ void kpanic_handler(int error_id, int error_code)
 			break;
 		default:
 			kprintf("Unknown exception.\n");
-  }
-  printStackTrace(10);
-  asm("cli");
-  asm("hlt");
+	}
+	printStackTrace(10);
+	asm("cli");
+	asm("hlt");
 }
 
 void kpanic_init()

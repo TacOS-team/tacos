@@ -3,6 +3,8 @@
 #include <heap.h>
 #include <vmm.h>
 #include <kmalloc.h>
+// TODO : dégager cette dépendance.
+#include <video.h>
 
 struct mem
 {

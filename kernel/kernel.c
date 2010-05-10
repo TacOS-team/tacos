@@ -78,6 +78,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	/* Configuration du i8259 qui s'occupe des interruptions. */
 	i8259_setup();
 
+	init_video();
+
 	kpanic_init();
   
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
