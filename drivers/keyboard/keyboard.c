@@ -34,6 +34,7 @@
 #define KEYBOARD_LOGITECH 0xE2
 
 #define KEY_ESCAPE  0x01
+#define KEY_ALT  0x38
 #define KEY_LSHIFT  0x2A
 #define KEY_RSHIFT  0x36
 #define KEY_CAPSLOCK 0x3A
@@ -115,6 +116,7 @@ static letter letters_azerty[] = { // TODO : remplacer le scancode par un keycod
 	{0x0c, ')', 167},
 	{0x0d, '=', '+'},
 	{0x0e, '\b', '\b'},
+	{0x0f, '\t', '\t'},
 	{0x10, 'a', 'A'},
 	{0x11, 'z', 'Z'},
 	{0x12, 'e', 'E'},
@@ -161,6 +163,7 @@ static letter letters_azerty[] = { // TODO : remplacer le scancode par un keycod
 	{0x49, '9', '9'}
 };
 
+static int alt = 0;
 static int shift = 0;
 static int capslock = 0;
 static int numlock = 0;
@@ -201,44 +204,54 @@ void keyboardInterrupt(int id __attribute__ ((unused)))
 	
 	switch(scancode)
 	{
+	case KEY_ALT:
+		alt = 1;
+		break;
+	case KEY_ALT | KEY_RELEASE:
+		alt = 0;
+		break;
 	case KEY_LSHIFT:
-	  shift = 1;
-	  break;
+		shift = 1;
+		break;
 	case KEY_LSHIFT | KEY_RELEASE:
-	  shift = 0;
-	  break;
+		shift = 0;
+		break;
 	case KEY_RSHIFT:
-	  shift = 1;
-	  break;
+		shift = 1;
+		break;
 	case KEY_RSHIFT | KEY_RELEASE:
-	  shift = 0;
-	  break;
+		shift = 0;
+		break;
 	case KEY_CAPSLOCK:
-	  capslock = !capslock;
-	  break;
+		capslock = !capslock;
+		break;
 	case KEY_NUMLOCK:
-	  numlock = !numlock;
-	  break;
+		numlock = !numlock;
+		break;
 	case KEY_RETURN:
-	  keyBufferPush('\n');
-	  break;
+		keyBufferPush('\n');
+		break;
 	case KEY_SPACE:
-	  keyBufferPush(' ');
-	  break;
+		keyBufferPush(' ');
+		break;
 	case KEY_F1:
-	  switchStandardBuffer();
-	  break;
+		switchStandardBuffer();
+		break;
 	case KEY_F2:
-	  switchDebugBuffer();
-	  break;
-	default: {
-		if (scancode_m1 != 0xe0 && scancode_m2 != 0xe1) {
+		switchDebugBuffer();
+		break;
+	default: 
+		if (alt) {
+			if (scancode == 0xf) {
+				change_active_process();
+			}
+		} else if (scancode_m1 != 0xe0 && scancode_m2 != 0xe1) {
 			char c = keyboardConvertToChar(scancode);
 			if (c != 0) {
 				keyBufferPush(c);
 			}
 		}
-			  }
+			  
 	}
 
 	scancode_m2 = scancode_m1;

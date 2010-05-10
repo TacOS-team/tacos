@@ -174,16 +174,10 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 		new_proc->fd[i].used = FALSE;
 		
 	init_stdfiles(&new_proc->stdin, &new_proc->stdout, &new_proc->stderr);
-	// Temporaire :
-	stdin = new_proc->stdin;
-	stdout = new_proc->stdout;
-	stderr = new_proc->stderr;
-
 	proc_count++;
 	
 	add_process(new_proc);
 	
-	//FIXME: Si je décommente cette ligne je me prend une double faute !
 	active_process = new_proc;
 	
 	return new_proc->pid;
@@ -237,7 +231,11 @@ void print_process_list()
 		h = m / 60;
 		m = m % 60;
 		
-		printf("pid:%d  name:%s time:%dh %dm %ds state:",aux->process->pid, aux->process->name, h, m ,s );
+		if (aux->process == active_process) {
+			printf("*");
+		}
+
+		printf("pid:%d  name:%s time:%dh %dm %ds (stdin=%x) state:",aux->process->pid, aux->process->name, h, m ,s, aux->process->stdin);
 		
 		switch(aux->process->state)
 		{
@@ -285,6 +283,44 @@ process_t * get_active_process() {
 }
 
 /*
+ * met en active le prochain process qui n'est pas terminé.
+ */
+void change_active_process() {
+	proclist_cell* aux = process_list;
+
+	/* On cherche le aux qui pointe vers l'active_process */
+	while (aux != NULL && aux->process != active_process) {
+		aux = aux->next;
+	}
+
+	if (aux == NULL) {
+		return;
+	}
+
+	/* On se place sur le suivant */
+	aux = aux->next;
+
+	/* On prend le premier qui n'est pas à l'état terminé */
+	while (aux != NULL && aux->process->state == PROCSTATE_TERMINATED) {
+		aux = aux->next;
+	}
+
+	if (aux == NULL) {
+		aux = process_list;
+		/* On cherche le aux qui pointe vers un terminé */
+		while (aux != NULL 
+				&& aux->process->state == PROCSTATE_TERMINATED 
+				&& aux->process != active_process) {
+			aux = aux->next;
+		}
+	}
+
+	/* On change l'active process */
+	active_process = aux->process;
+	kprintf("active_process : %s\n", active_process->name);
+}
+
+/*
  * SYSCALL
  */
 
@@ -298,6 +334,10 @@ void* sys_exit(uint32_t ret_value, uint32_t zero1 __attribute__ ((unused)), uint
 	current->state = PROCSTATE_TERMINATED; 
 	
 	printf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
+
+	if (current == active_process) {
+		change_active_process();
+	}
 
   return NULL;
 }

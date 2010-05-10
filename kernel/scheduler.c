@@ -84,9 +84,9 @@ static void* switch_process(void* data __attribute__ ((unused)))
 	i8254_init(1000/*TIMER_FREQ*/);
 
 	// On réaffecte à la main stdin, stdout et stderr. TEMPORAIRE !
-	/*stdin = current->stdin;
+	stdin = current->stdin;
 	stdout = current->stdout;
-	stderr = current->stderr;*/
+	stderr = current->stderr;
 
 	// Changer le contexte:
 	ss = current->regs.ss;

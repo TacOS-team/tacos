@@ -57,6 +57,7 @@ uint32_t get_proc_count();
 void process_print_regs();
 void print_process_list();
 void clean_process_list();
+void change_active_process();
 process_t* get_active_process();
 
 void* sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2);
