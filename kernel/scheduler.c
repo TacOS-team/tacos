@@ -50,6 +50,11 @@ static void* switch_process(void* data __attribute__ ((unused)))
 		current->regs.gs = stack_ptr[5];
 		current->regs.ds = stack_ptr[4];
 		current->regs.es = stack_ptr[3];
+		if(current->regs.cs == 0x8)
+		{
+			kprintf("Scheduling kernel-task\n");
+			//while(1);
+		}
 		
 		current->user_time += quantum;
 	}
@@ -66,8 +71,14 @@ static void* switch_process(void* data __attribute__ ((unused)))
 	// Donc on arrete le scheduler
 	if(current == NULL || current->state == PROCSTATE_TERMINATED) 
 	{
-		printf("Scheduler is down...\n");
-		asm("hlt");
+		// Mise en place de l'interruption sur le quantum de temps
+	    
+	    add_event(switch_process,NULL,quantum);	
+	    i8254_init(1000/*TIMER_FREQ*/);
+		kprintf("Scheduler is down...\n");
+		outb(0x20, 0x20);
+		while(1);
+		//asm("hlt");
 	}
 
 	if(current->state == PROCSTATE_IDLE)// Sinon on signale que le processus est désormais actif
@@ -181,7 +192,19 @@ void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)
 	return NULL;
 }
 
+void* sys_idle( uint32_t unused1 __attribute__ ((unused)),uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
+{
+	while(1);
+	//asm("hlt\n\t");
+	return NULL;
+}
+
 void exec(paddr_t prog, char* name)
 {
 	syscall(SYS_EXEC, (uint32_t)prog, (uint32_t)name, (uint32_t)NULL);
+}
+
+void idle()
+{
+	syscall(SYS_IDLE, NULL, NULL, NULL);
 }

@@ -9,7 +9,8 @@
 #define SYS_KILL 4
 #define SYS_WRITE 5
 #define SYS_EXEC 6
-#define SYS_SEMCTL 7
+#define SYS_IDLE 7
+#define SYS_SEMCTL 8
 
 void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3);
 

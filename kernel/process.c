@@ -166,10 +166,6 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
     user_stack[stack_size-2]=argc;
     user_stack[stack_size-3]=(paddr_t)exit;
 	 
-	/**(new_proc->regs.esp) = (uint32_t)1;
-	*(new_proc->regs.esp) = (uint32_t)1;
-	*(new_proc->regs.esp) = (uint32_t)1; */
-
 	for(i=0;i<FOPEN_MAX;i++) 
 		new_proc->fd[i].used = FALSE;
 		
@@ -183,31 +179,6 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 	return new_proc->pid;
 }
 
-void process_print_regs()
-{
-	process_t* current = get_current_process();
-	
-	printf("ss: 0x%x\n", current->regs.ss);
-	printf("ss: 0x%x\n", current->regs.ss);		
-	printf("esp: 0x%x\n", current->regs.esp);
-	printf("flags: 0x%x\n", current->regs.eflags);
-	printf("cs: 0x%x\n", current->regs.cs); 
-	printf("eip: 0x%x\n", current->regs.eip); 
-	printf("eax: 0x%x\n", current->regs.eax); 
-	printf("ecx: 0x%x\n", current->regs.ecx); 
-	printf("edx: 0x%x\n", current->regs.edx); 
-	printf("ebx: 0x%x\n", current->regs.ebx); 
-	printf("ebp: 0x%x\n", current->regs.ebp); 
-	printf("esi: 0x%x\n", current->regs.esi); 
-	printf("edi: 0x%x\n", current->regs.edi); 
-	printf("fs: 0x%x\n", current->regs.fs); 
-	printf("gs: 0x%x\n", current->regs.gs);  
-	printf("ds: 0x%x\n", current->regs.ds); 
-	printf("es: 0x%x\n", current->regs.es); 
-	
-	printf("0x%x\n",get_default_tss()->esp0);
-}
-
 void print_process_list()
 {
 	proclist_cell* aux = process_list;
@@ -218,7 +189,7 @@ void print_process_list()
 	int m;
 	int h;
 	int reste;
-	
+	printf("pid\tname\t\ttime\t\tstate\n");
 	while(aux!=NULL)
 	{
 		
@@ -235,7 +206,7 @@ void print_process_list()
 			printf("*");
 		}
 
-		printf("pid:%d \tname:%s \ttime:%dh %dm %ds \tstate:",aux->process->pid, aux->process->name, h, m ,s, aux->process->stdin);
+		printf("%d\t%s\t\t%dh %dm %ds\tstate:",aux->process->pid, aux->process->name, h, m ,s, aux->process->stdin);
 		
 		switch(aux->process->state)
 		{
@@ -333,7 +304,7 @@ void* sys_exit(uint32_t ret_value, uint32_t zero1 __attribute__ ((unused)), uint
 	// On a pas forcement envie de supprimer le processus immédiatement
 	current->state = PROCSTATE_TERMINATED; 
 	
-	printf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
+	//kprintf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
 
 	if (current == active_process) {
 		change_active_process();
@@ -362,18 +333,18 @@ void* sys_kill(uint32_t pid, uint32_t zero1 __attribute__ ((unused)), uint32_t z
 /* A mettre en user space */
 void exit(uint32_t value)
 {
-	syscall(0,value,0,0);
+	syscall(SYS_EXIT,value,0,0);
 	while(1); // Pour ne pas continuer à executer n'importe quoi alors que le processus est sensé être arrété
 }
 
 uint32_t get_pid()
 {
 	int pid;
-	syscall(1,(uint32_t)&pid, 0, 0);
+	syscall(SYS_GETPID,(uint32_t)&pid, 0, 0);
 	return pid;
 }
 
 void kill(uint32_t pid)
 {
-	syscall(4,pid,0,0);
+	syscall(SYS_KILL,pid,0,0);
 }

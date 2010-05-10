@@ -96,3 +96,12 @@ int idt_set_handler(uint8_t index, paddr_t handler_address, uint8_t priority)
 	return 0;
 }
 
+void idt_set_handler_type(uint8_t index, uint8_t trap_type)
+{
+	struct x86_idt_entry *idt_entry;
+
+	idt_entry = &idt[index];	
+	
+	idt_entry->type = trap_type;
+}
+

@@ -23,5 +23,6 @@ typedef void (*interrupt_handler_t)(int interrupt_id);
 
 int interrupt_set_routine(uint8_t interrupt_id, interrupt_handler_t routine, uint8_t privilege);
 int interrupt_disable(uint8_t interrupt_id);
+void make_trapgate_from_int(uint8_t interrupt_id);
 
 #endif

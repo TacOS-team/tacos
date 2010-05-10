@@ -26,8 +26,8 @@ int interrupt_set_routine(uint8_t interrupt_id, interrupt_handler_t routine, uin
 	}
 
 	// arrêter les autres interruptions et exceptions et sauvegarde les flags
-  asm volatile("pushfl ; popl %0":"=g"(flags)::"memory");
-  asm("cli\n");
+	asm volatile("pushfl ; popl %0":"=g"(flags)::"memory");
+	asm("cli\n");
 
 	interrupts_handler_array[interrupt_id] = routine;
 
@@ -37,7 +37,7 @@ int interrupt_set_routine(uint8_t interrupt_id, interrupt_handler_t routine, uin
 	i8259_enable_irq_line(interrupt_id);
 
   // reenable irqs (restore flags) 
-  asm volatile("push %0; popfl"::"g"(flags):"memory");
+	asm volatile("push %0; popfl"::"g"(flags):"memory");
 
 	return 0;
 }
@@ -56,3 +56,8 @@ int interrupt_disable(uint8_t interrupt_id)
 
 	return 0;
 }
+void make_trapgate_from_int(uint8_t interrupt_id)
+{
+	idt_set_handler_type(interrupt_id + INTERRUPT_BASE, IDT_TRAPGATE);
+}
+

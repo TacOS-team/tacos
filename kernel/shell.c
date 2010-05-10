@@ -69,19 +69,23 @@ static int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unu
 static int test_task1(int argc, char** argv)
 {
 	int pid = get_pid();
-	printf("\nTache n%d\n",pid);
-	printf("Parameters:\nargc=%d\nargv=0x%x\n",argc, argv);
-	while(1);
+	//printf("\nTache n%d\n",pid);
+	//printf("Parameters:\nargc=%d\nargv=0x%x\n",argc, argv);
+	idle();
 	return pid;
 }
 
 static int test_task()
 {
-	create_process("tache test", test_task1, 42, 0xba, 512, 3);
-	//exec(test_task1, "test");
+	exec(test_task1, "test");
 	return 0;
 }
 
+int calc_pi()
+{
+	exec(pi, "pi");
+	return 0;
+}
 
 static int test_mouse_task()
 {
@@ -94,7 +98,7 @@ static int test_mouse_task()
 	int col2 = 5;
 	int btn1_frz = 0;
 	int btn2_frz = 0;
-	printf("---- Test Mouse ----\n");
+	printf("\n---- Test Mouse ----\n");
 	
 	while(1)
 	{
@@ -136,7 +140,7 @@ static int test_mouse_task()
 
 static int test_mouse()
 {
-	create_process("tache mouse", test_mouse_task, 42, 0xba, 512,3);
+	create_process("mouse", test_mouse_task, 42, 0xba, 512,3);
 	return 0;
 }
 
@@ -275,6 +279,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_ansi, "test_ansi");
 	add_builtin_cmd(cd_cmd, "cd");
 	add_builtin_cmd(test_task, "test_task");
+	add_builtin_cmd(calc_pi, "pi");
 		
 	for(;;)
 	{

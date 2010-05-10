@@ -7,4 +7,7 @@ void start_scheduler();
 void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)));
 void exec(paddr_t prog, char* name);
 
+void* sys_idle( uint32_t unused1 __attribute__ ((unused)),uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)));
+void idle();
+
 #endif //SCHEDULER_H
