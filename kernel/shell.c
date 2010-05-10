@@ -83,9 +83,7 @@ int test_task()
 }
 
 
-
-
-int test_mouse()
+int test_mouse_task()
 {
 	int i = 0;
 	int x;
@@ -135,6 +133,12 @@ int test_mouse()
 	}
 	return 0;
 }
+
+int test_mouse()
+{
+	create_process("tache mouse", test_mouse_task, 42, 0xba, 512,3);
+}
+
 
 int help_cmd()
 {
