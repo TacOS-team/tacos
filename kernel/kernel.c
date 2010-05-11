@@ -34,6 +34,7 @@
 #include <shell.h>
 #include <ksyscall.h>
 #include <syscall.h>
+#include <ksem.h>
 #include <video.h>
 
 typedef struct
@@ -147,6 +148,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	/* Lancement du scheduler */
 	init_scheduler(20);
+
+	/* Initialisation des semaphores */
+	init_semaphores();
 	
 	start_scheduler();
 	// Never goes here	

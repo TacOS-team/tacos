@@ -1,5 +1,6 @@
 #include <sem.h>
 #include <syscall.h>
+#include <process.h>
 
 #define MAX_SEM 256
 #define KSEM_GET 1
@@ -10,26 +11,42 @@
 
 int semget(uint8_t key)
 {
-	syscall(SYS_SEMCTL, KSEM_GET, 0, 0);
+	int ret;
+	int data[2];
+	data[0] = key;
+	data[1] = get_pid();
+	syscall(SYS_SEMCTL, KSEM_GET, (uint32_t)data, (uint32_t)&ret);
+	return ret;
 }
 
 int semcreate(uint8_t key)
 {
-	syscall(SYS_SEMCTL, KSEM_CREATE, 0, 0);
+	int ret;
+	int data[2];
+	data[0] = key;
+	data[1] = get_pid();
+	syscall(SYS_SEMCTL, KSEM_CREATE, (uint32_t)data, (uint32_t)&ret);
+	return ret;
 }
 
-int semdel(uint8_t semid)
+int semdel(uint32_t semid)
 {
-	syscall(SYS_SEMCTL, KSEM_DEL, 0, 0);
+	int ret;
+	syscall(SYS_SEMCTL, KSEM_DEL, semid, (uint32_t)&ret);
+	return ret;
 }
 
-int semP(uint8_t semid)
+int semP(uint32_t semid)
 {
-	syscall(SYS_SEMCTL, KSEM_P, 0, 0);
+	int ret;
+	syscall(SYS_SEMCTL, KSEM_P, semid, (uint32_t)&ret);
+	return ret;
 }
 
-int semV(uint8_t semid)
+int semV(uint32_t semid)
 {
-	syscall(SYS_SEMCTL, KSEM_V, 0, 0);
+	int ret;
+	syscall(SYS_SEMCTL, KSEM_V, semid, (uint32_t)&ret);
+	return ret;
 }
 
