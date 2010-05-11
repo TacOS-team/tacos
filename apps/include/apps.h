@@ -1,0 +1,24 @@
+#ifndef APPS_H
+#define APPS_H
+
+int main_fiinou(int argc, char* argv[] );
+
+int semaphore_task(int argc, char** argv );
+int test_semaphores();
+void test_kmalloc();
+int calc_pi();
+int pi(int argc , char** argv );
+int test_task1(int argc, char** argv);
+int test_task();
+int test_mouse_task();
+int test_mouse();
+int test_scanf();
+int test_fgets();
+int test_fputs();
+int test_fwrite();
+int test_sprintf();
+int test_sscanf();
+int debug_fat();
+int test_ansi();
+
+#endif //APPS_H

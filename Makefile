@@ -11,9 +11,8 @@ export LD=@printf "\033[31m   LD   $$@\033[0m\n" && ld
 export AR=@printf "\033[32m   AR   $$@\033[0m\n" && ar
 export CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LDFLAGS=-Llib/
-LDLIBS=-lc -lpci -lclock -lutils -ldrivers -z nodefaultlib -lsystem
-
-SUBDIRS = kernel libc utils drivers pci clock system
+LDLIBS=-lc -lpci -lclock -lutils -ldrivers -lapps -z nodefaultlib -lsystem
+SUBDIRS = kernel libc utils drivers pci clock apps system 
 
 all: kernel.bin
 	@readelf --syms kernel.bin | awk '{print $2 " " $8}' > symbols
@@ -24,7 +23,7 @@ kernel.bin: force_look
 		$(MAKE) -s -C $$i; \
 		if [ $$? = 0 ]; then printf "\033[1m<<< [$$i] [OK]\033[0m\n"; else printf "\033[31m\033[1m<<< [$$i] [FAIL]\033[0m\n"; exit 1; fi; \
 	done
-	$(LD) -T linker.ld -o kernel.bin kernel/*.o -melf_i386 $(LDFLAGS) $(LDLIBS)
+	$(LD) -T linker.ld -o kernel.bin kernel/*.o apps/*.o -melf_i386 $(LDFLAGS) $(LDLIBS)
 
 force_look:
 	@true

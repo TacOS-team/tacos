@@ -1,5 +1,7 @@
 #include <ksem.h>
 #include <ksyscall.h>
+#include <stdio.h>
+#include <kmalloc.h>
 
 #define MAX_SEM 256
 #define KSEM_GET 1
@@ -43,6 +45,7 @@ int init_semaphores()
 	}
 
 	syscall_set_handler(SYS_SEMCTL, ksem_syscallhandle);
+	return 0;
 }
 
 static int ksemget(uint8_t key, uint32_t pid)
@@ -51,7 +54,7 @@ static int ksemget(uint8_t key, uint32_t pid)
 	struct semid_t* sem;
 	struct semid_t* ptr;
 
-	printf("semget key %d pid %d \n",key,pid);
+	kprintf("semget key %d pid %d \n",key,pid);
 	if(semaphores[key].allocated)
 	{
 		ret = next_semid | key<<24;
@@ -69,7 +72,7 @@ static int ksemget(uint8_t key, uint32_t pid)
 		ptr->next = sem;
 	}
 
-	printf("returning semid %d\n",ret);
+	kprintf("returning semid %d\n",ret);
 	return ret;
 }
 
@@ -78,7 +81,7 @@ static int ksemcreate(uint8_t key, uint32_t pid)
 	int ret = -1;
 	struct semid_t* sem;
 
-	printf("semcreate key %d pid %d \n",key,pid);
+	kprintf("semcreate key %d pid %d \n",key,pid);
 	if(!semaphores[key].allocated)
 	{
 		ret = next_semid | key<<24;
@@ -94,21 +97,38 @@ static int ksemcreate(uint8_t key, uint32_t pid)
 		semaphores[key].idle = sem;
 	}
 
-	printf("returning semid %d\n",ret);
+	kprintf("returning semid %d\n",ret);
 	return ret;
 }
 
 static int ksemdel(uint32_t semid)
 {
+	struct semid_t* to_delete;
+	struct semid_t* next;
 	int key = (semid & 0xFF000000) >> 24;
-	printf("semdel semid %d \n",semid);
+	kprintf("semdel semid %d \n",semid);
 	if(semaphores[key].allocated)
 	{
 		semaphores[key].allocated = 0;
-		semaphores[key].waiting = NULL;
-		semaphores[key].idle = NULL;
 
-		// Normalement on devrait liberer la memoire mais avec le free qu'on a ...
+		// /!\ il faudrait relancer les processus en attente
+		to_delete = semaphores[key].waiting;
+		while(to_delete != NULL)
+		{
+			next = to_delete->next;
+			kfree(to_delete);
+			to_delete = next;
+		}
+		semaphores[key].waiting = NULL;
+
+		to_delete = semaphores[key].idle;
+		while(to_delete != NULL)
+		{
+			next = to_delete->next;
+			kfree(to_delete);
+			to_delete = next;
+		}
+		semaphores[key].idle = NULL;
 		return 0;
 	}
 
@@ -117,12 +137,32 @@ static int ksemdel(uint32_t semid)
 
 static int ksemP(uint32_t semid)
 {
-	// Normalement on verifie que le semid existe
-	// Normalement on stop le process gentiment avec le scheduler
+	int pid;
 	int key = (semid & 0xFF000000) >> 24;
-	printf("semP semid %d \n",semid);
+	struct semid_t* ptr;
+
 	if(semaphores[key].allocated)
-	{
+	{	
+		// On cherche le pid correspondant 
+		ptr = semaphores[key].idle;
+		while(ptr != NULL)
+		{
+			if(ptr->id == semid)
+				break;
+			else
+				ptr = ptr->next;
+		}
+		if(ptr != NULL)
+		{
+			pid = ptr->pid;
+		}
+		else
+		{
+			kprintf("semP semid %d for key %d no corresponding pid %d\n",semid,key);
+			return -1;
+		}
+		kprintf("semP semid %d for key %d from pid %d\n",semid, key,pid);
+		// Normalement on stop le process gentiment avec le scheduler
 		while(semaphores[key].value < 1);
 		semaphores[key].value--;
 
@@ -133,11 +173,32 @@ static int ksemP(uint32_t semid)
 
 static int ksemV(uint32_t semid)
 {
-	// Normalement on verifie que le semid existe
+	int pid;
 	int key = (semid & 0xFF000000) >> 24;
-	printf("semV semid %d \n",semid);
+	struct semid_t* ptr;
+
 	if(semaphores[key].allocated)
 	{
+		// On cherche le pid correspondant 
+		ptr = semaphores[key].idle;
+		while(ptr != NULL)
+		{
+			if(ptr->id == semid)
+				break;
+			else
+				ptr = ptr->next;
+		}
+		if(ptr != NULL)
+		{
+			pid = ptr->pid;
+		}
+		else
+		{
+			kprintf("semV semid %d for key %d no corresponding pid %d\n",semid,key);
+			return -1;
+		}
+		kprintf("semV semid %d for key %d from pid %d\n",semid, key,pid);
+		// On incremente le semaphore
 		semaphores[key].value++;
 		return 0;
 	}
