@@ -163,13 +163,22 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 	
 	/* Initialisation de la pile du processus */
 	user_stack[stack_size-1]=(paddr_t)argv;
-    user_stack[stack_size-2]=argc;
-    user_stack[stack_size-3]=(paddr_t)exit;
+	user_stack[stack_size-2]=argc;
+	user_stack[stack_size-3]=(paddr_t)exit;
 	 
 	for(i=0;i<FOPEN_MAX;i++) 
 		new_proc->fd[i].used = FALSE;
 		
+	/* Initialisation des entrées/sorties standards */
 	init_stdfiles(&new_proc->stdin, &new_proc->stdout, &new_proc->stderr);
+	new_proc->fd[0].used = TRUE; /* stdin */
+	new_proc->fd[1].used = TRUE; /* stdout */
+	new_proc->fd[1].ofd = malloc(sizeof(open_file_descriptor*));
+	new_proc->fd[1].ofd->write = write_screen; // BUGFIX : visiblement à la sortie de la fonction cette write pointe vers une adresse étrange...
+	new_proc->fd[2].used = TRUE; /* stderr */
+	new_proc->fd[2].ofd = malloc(sizeof(open_file_descriptor*));
+	new_proc->fd[2].ofd->write = write_screen;
+
 	proc_count++;
 	
 	add_process(new_proc);

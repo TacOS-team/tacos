@@ -29,7 +29,6 @@ unsigned int usleep(unsigned int milliseconds)
 }
 
 void* sys_write(uint32_t fd, uint32_t p_buf, uint32_t count) {
-	// FIXME : Fait planter !
 	process_t * process = get_current_process();
 	const void *buf = (const void*)p_buf;
 
@@ -37,10 +36,10 @@ void* sys_write(uint32_t fd, uint32_t p_buf, uint32_t count) {
 
 	ofd = process->fd[fd].ofd;
 
-//	ofd->write(buf, count);
+	//ofd->write(ofd, buf, count);
 
 	// Temporaire :
-	write_screen(buf, count);
+	write_screen(ofd, buf, count);
 
 	return NULL;
 }

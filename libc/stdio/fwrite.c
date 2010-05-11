@@ -10,7 +10,7 @@ size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream) {
 	size_t i,j;
 
 	for(i = 0; i < nmemb; i++) {
-		unsigned char * element = &(ptr[i*size]);
+		const unsigned char * element = &(((unsigned char *)ptr)[i*size]);
 		for(j = 0; j < size; j++) {
 			int ret = fputc(element[j], stream);
 			if (ret < 0) {

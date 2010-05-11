@@ -1,4 +1,5 @@
 #include <video.h>
+#include <fcntl.h>
 
 /* Convert the integer D to a string and save the string in BUF. If
 	 BASE is equal to 'd', interpret that D is decimal, and if BASE is
@@ -51,7 +52,7 @@ void kprintf(const char *format, ...) {
   while ((c = *format++) != 0)
     {
       if (c != '%')
-        kputchar (c);
+        kputchar (NULL, c);
       else
         {
           char *p;
@@ -74,22 +75,21 @@ void kprintf(const char *format, ...) {
 
             string:
               while (*p)
-                kputchar (*p++);
+                kputchar (NULL, *p++);
               break;
 
             default:
-              kputchar (*((int *) arg++));
+              kputchar (NULL, *((int *) arg++));
               break;
             }
         }
     }
 }
 
-/* Fonction temporaire !!!! */
-size_t write_screen(const void *buf, size_t count) {
+size_t write_screen(open_file_descriptor *ofd, const void *buf, size_t count) {
 	size_t i;
 	for (i = 0; i < count && *(char *)buf != '\0'; i++) {
-		kputchar(*(char *)buf);
+		kputchar((text_window *)(ofd->extra_data), *(char *)buf);
 		buf++;
 	}
 	return count;

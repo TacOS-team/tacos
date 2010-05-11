@@ -221,7 +221,7 @@ void backspace() {
  *  Affiche le caractère c sur l'écran.
  *  Supporte les caractères ANSI.
  */
-void kputchar (char c) {
+void kputchar (text_window * tw, char c) {
 	static bool escape_char = FALSE;
 	static bool ansi_escape_code = FALSE;
 	static bool ansi_second_val = FALSE;

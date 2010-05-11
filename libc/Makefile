@@ -65,6 +65,6 @@ stdio/sprintf.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
 stdio/sprintf.o: ../include/types.h ../include/stdarg.h
 stdio/stdfiles.o: ../include/types.h ../include/libio.h ../include/fcntl.h
 stdio/stdfiles.o: ../include/string.h ../include/kmalloc.h
-stdio/stdio.o: ../include/video.h ../include/types.h
+stdio/stdio.o: ../include/video.h ../include/types.h ../include/fcntl.h
 stdio/video.o: ../include/types.h ../include/ioports.h ../include/ctype.h
 stdio/video.o: ../include/video.h

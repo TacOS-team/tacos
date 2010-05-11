@@ -14,7 +14,7 @@
 #define _IOLBF 1 /* Line buffered. */
 #define _IONBF 2 /* No buffering. */
 
-size_t write_screen(const void *buf, size_t count);
+size_t write_screen(open_file_descriptor *ofd, const void *buf, size_t count);
 
 void kprintf(const char *format, ...);
 int printf(const char *format, ...);

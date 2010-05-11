@@ -63,8 +63,9 @@ typedef struct _open_file_descriptor {
 	uint32_t current_octet;
 	uint32_t first_cluster;
 	uint32_t file_size;
-	void* (*write)(const void*, size_t);
-	void* (*read)(void*, size_t);
+	void * extra_data;
+	void* (*write)(struct _open_file_descriptor *, const void*, size_t);
+	void* (*read)(struct _open_file_descriptor *,void*, size_t);
 } open_file_descriptor;
 
 

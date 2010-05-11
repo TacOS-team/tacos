@@ -27,7 +27,6 @@ int fputc(int c, FILE *stream) {
 		stream->_IO_write_ptr = stream->_IO_buf_base;
 	}
 
-	// XXX: Devrait probablement faire appel à la fonction liée au stream.
 	*(stream->_IO_write_ptr++) = c;
 
 	// Consulte le comportement du buffer pour savoir s'il faut flusher :

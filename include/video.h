@@ -17,6 +17,12 @@
 #define YELLOW        0xE
 #define WHITE         0xF
 
+/* Défini un  */
+typedef struct {
+	int x, y;
+	int cols, lines;
+} text_window;
+
 void disableCursor();
 void cls (void);
 void newline();
@@ -26,5 +32,5 @@ void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y
 void reset_attribute();
 void switchDebugBuffer();
 void switchStandardBuffer();
-void kputchar (char c);
+void kputchar (text_window *tw, char c);
 void init_video();
