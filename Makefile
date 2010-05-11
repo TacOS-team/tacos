@@ -11,7 +11,7 @@ export LD=@printf "\033[31m   LD   $$@\033[0m\n" && ld
 export AR=@printf "\033[32m   AR   $$@\033[0m\n" && ar
 export CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LDFLAGS=-Llib/
-LDLIBS=-lc -lpci -lclock -lutils -ldrivers -lapps -z nodefaultlib -lsystem
+LDLIBS=-lc -lpci -lclock -lutils -ldrivers -z nodefaultlib -lsystem
 SUBDIRS = kernel libc utils drivers pci clock apps system 
 
 all: kernel.bin
