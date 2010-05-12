@@ -11,10 +11,10 @@
 #define _IO_LINE_BUF 0x200 
 // TODO : définir d'autres flags (cf libc)
 
-
+struct _open_file_descriptor;
 
 typedef struct _file_descriptor {
-	open_file_descriptor *ofd;
+	struct _open_file_descriptor *ofd;
 	bool used;
 } file_descriptor;
 

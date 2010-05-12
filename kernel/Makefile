@@ -25,15 +25,15 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-dummy_process.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
-dummy_process.o: ../include/types.h ../include/stdarg.h
+dummy_process.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
+dummy_process.o: ../include/libio.h ../include/stdarg.h
 dummy_process.o: include/dummy_process.h
 exception.o: ../include/types.h include/idt.h ../include/exception.h
-fat.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
-fat.o: ../include/types.h ../include/stdarg.h ../include/floppy.h
+fat.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
+fat.o: ../include/libio.h ../include/stdarg.h ../include/floppy.h
 fat.o: ../include/string.h include/fat.h ../include/debug.h
-fpu.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
-fpu.o: ../include/types.h ../include/stdarg.h include/fpu.h
+fpu.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
+fpu.o: ../include/libio.h ../include/stdarg.h include/fpu.h
 fpu.o: ../include/interrupts.h
 gdt.o: ../include/types.h ../include/memory.h include/gdt.h
 i8259.o: ../include/types.h ../include/ioports.h
@@ -41,8 +41,8 @@ idt.o: ../include/types.h include/idt.h
 interrupts.o: ../include/types.h include/idt.h include/i8259.h
 interrupts.o: ../include/interrupts.h
 kernel.o: include/multiboot.h include/idt.h ../include/types.h
-kernel.o: include/i8259.h ../include/stdio.h ../include/libio.h
-kernel.o: ../include/fcntl.h ../include/stdarg.h ../include/stdlib.h
+kernel.o: include/i8259.h ../include/stdio.h ../include/fcntl.h
+kernel.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
 kernel.o: ../include/unistd.h ../include/string.h ../include/memory.h
 kernel.o: ../include/pagination.h include/gdt.h ../include/exception.h
 kernel.o: ../include/interrupts.h ../include/pci.h ../include/pci_config.h
@@ -54,37 +54,37 @@ kernel.o: ../include/ioports.h include/msr.h include/fat.h include/fpu.h
 kernel.o: include/vm86.h ../include/beeper.h ../include/debug.h
 kernel.o: ../include/shell.h include/ksyscall.h ../include/syscall.h
 kernel.o: include/ksem.h ../include/video.h
-kmalloc.o: ../include/types.h ../include/stdio.h ../include/libio.h
-kmalloc.o: ../include/fcntl.h ../include/stdarg.h ../include/heap.h
+kmalloc.o: ../include/types.h ../include/stdio.h ../include/fcntl.h
+kmalloc.o: ../include/libio.h ../include/stdarg.h ../include/heap.h
 kmalloc.o: include/vmm.h ../include/kmalloc.h ../include/video.h
-kpanic.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
-kpanic.o: ../include/types.h ../include/stdarg.h ../include/exception.h
+kpanic.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
+kpanic.o: ../include/libio.h ../include/stdarg.h ../include/exception.h
 kpanic.o: include/kpanic.h
 ksem.o: include/ksem.h ../include/types.h include/ksyscall.h
-ksem.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
+ksem.o: ../include/stdio.h ../include/fcntl.h ../include/libio.h
 ksem.o: ../include/stdarg.h ../include/kmalloc.h
-ksyscall.o: include/msr.h ../include/stdio.h ../include/libio.h
-ksyscall.o: ../include/fcntl.h ../include/types.h ../include/stdarg.h
+ksyscall.o: include/msr.h ../include/stdio.h ../include/fcntl.h
+ksyscall.o: ../include/types.h ../include/libio.h ../include/stdarg.h
 ksyscall.o: ../include/string.h ../include/interrupts.h include/ksyscall.h
 ksyscall.o: ../include/syscall.h
-mbr.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
-mbr.o: ../include/types.h ../include/stdarg.h ../include/floppy.h
+mbr.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
+mbr.o: ../include/libio.h ../include/stdarg.h ../include/floppy.h
 mbr.o: include/mbr.h
-memory.o: ../include/types.h ../include/stdio.h ../include/libio.h
-memory.o: ../include/fcntl.h ../include/stdarg.h ../include/memory.h
+memory.o: ../include/types.h ../include/stdio.h ../include/fcntl.h
+memory.o: ../include/libio.h ../include/stdarg.h ../include/memory.h
 pagination.o: ../include/types.h ../include/memory.h ../include/pagination.h
 process.o: ../include/types.h ../include/stdlib.h ../include/stdio.h
-process.o: ../include/libio.h ../include/fcntl.h ../include/stdarg.h
+process.o: ../include/fcntl.h ../include/libio.h ../include/stdarg.h
 process.o: ../include/string.h include/gdt.h ../include/process.h
 process.o: ../include/pagination.h ../include/kmalloc.h ../include/syscall.h
 process.o: ../include/time.h ../include/debug.h
-scheduler.o: ../include/stdio.h ../include/libio.h ../include/fcntl.h
-scheduler.o: ../include/types.h ../include/stdarg.h ../include/process.h
+scheduler.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
+scheduler.o: ../include/libio.h ../include/stdarg.h ../include/process.h
 scheduler.o: ../include/pagination.h include/scheduler.h ../include/events.h
 scheduler.o: ../include/time.h ../include/clock.h ../include/ioports.h
 scheduler.o: include/gdt.h include/i8259.h ../include/syscall.h
 scheduler.o: ../include/debug.h
 vm86.o: ../include/debug.h include/gdt.h ../include/types.h
 vmm.o: ../include/memory.h ../include/types.h ../include/pagination.h
-vmm.o: include/vmm.h ../include/stdio.h ../include/libio.h ../include/fcntl.h
+vmm.o: include/vmm.h ../include/stdio.h ../include/fcntl.h ../include/libio.h
 vmm.o: ../include/stdarg.h ../include/video.h

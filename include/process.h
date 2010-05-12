@@ -48,6 +48,7 @@ typedef struct _proclist_cell{
 	struct _proclist_cell* next;
 	struct _proclist_cell* prev;
 }*proc_list, proclist_cell;
+
 int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_size, uint8_t ring);
 int delete_process(int pid);
 process_t* find_process(int pid);

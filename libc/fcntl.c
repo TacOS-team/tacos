@@ -5,7 +5,18 @@
 #include <string.h>
 #include <syscall.h>
 #include <fat.h>
-open_file_descriptor ofd;
+
+
+void init_stdfd(struct _file_descriptor *fd0, struct _file_descriptor *fd1, struct _file_descriptor *fd2) {
+	fd0->used = TRUE; /* stdin */
+	fd1->used = TRUE; /* stdout */
+	fd1->ofd = malloc(sizeof(open_file_descriptor));
+	fd1->ofd->write = write_screen; 
+	fd2->used = TRUE; /* stderr */
+	fd2->ofd = malloc(sizeof(open_file_descriptor));
+	fd2->ofd->write = write_screen;
+}
+
 
 /* TODO: enlever les  attribute quand les paramètre serviront à quelque chose */
 void* sys_open(uint32_t p_process __attribute__ ((unused)), uint32_t p_path , uint32_t flags __attribute__ ((unused))) {
@@ -24,7 +35,7 @@ void* sys_open(uint32_t p_process __attribute__ ((unused)), uint32_t p_path , ui
 		i++;
 	
 	// creation d un open_file_descriptor
-	process->fd[i].ofd = &ofd; //malloc(sizeof(open_file_descriptor));
+	process->fd[i].ofd = malloc(sizeof(open_file_descriptor));
 	
 	//ouverture du fichier (sur fd0 pour le momentt)
 	fat_open_file(path, process->fd[i].ofd);

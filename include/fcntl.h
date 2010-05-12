@@ -2,6 +2,7 @@
 #define _FCNTL_H_
 
 #include <types.h>
+#include <libio.h>
 
 // Define pour open.
 
@@ -55,6 +56,8 @@
 #define O_NDELAY  O_NONBLOCK
 #endif
 
+struct _file_descriptor;
+
 typedef struct _open_file_descriptor {
 	uint32_t flags;
 	uint8_t buffer[512];
@@ -68,7 +71,7 @@ typedef struct _open_file_descriptor {
 	void* (*read)(struct _open_file_descriptor *,void*, size_t);
 } open_file_descriptor;
 
-
+void init_stdfd(struct _file_descriptor *fd0, struct _file_descriptor *fd1, struct _file_descriptor *fd2);
 
 int open(const char *pathname, int flags);
 //int open(const char *pathname, int flags, mode_t mode);

@@ -20,8 +20,8 @@ depend: $(SRCS)
 # DO NOT DELETE THIS LINE -- make depend needs it
 
 pci.o: ../include/pci.h ../include/types.h ../include/pci_config.h
-pci.o: ../include/pci_types.h ../include/stdio.h ../include/libio.h
-pci.o: ../include/fcntl.h ../include/stdarg.h
+pci.o: ../include/pci_types.h ../include/stdio.h ../include/fcntl.h
+pci.o: ../include/libio.h ../include/stdarg.h
 pci_config.o: ../include/ioports.h ../include/types.h ../include/pci_config.h
 pci_config.o: ../include/pci_types.h ./pci_vendor.h ../include/stdio.h
-pci_config.o: ../include/libio.h ../include/fcntl.h ../include/stdarg.h
+pci_config.o: ../include/fcntl.h ../include/libio.h ../include/stdarg.h
