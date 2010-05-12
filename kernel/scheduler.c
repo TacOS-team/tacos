@@ -33,8 +33,6 @@ static void* switch_process(void* data __attribute__ ((unused)))
 		 * faudrait calculer l'offset résultant dans la pile, donc c'est 
 		 * hardcodé, et c'est bien comme ça.)  
 		 */
-		current->regs.ss = stack_ptr[19];
-		current->regs.esp = stack_ptr[18];
 		current->regs.eflags = stack_ptr[17];
 		current->regs.cs  = stack_ptr[16];
 		current->regs.eip = stack_ptr[15];
@@ -50,10 +48,17 @@ static void* switch_process(void* data __attribute__ ((unused)))
 		current->regs.gs = stack_ptr[5];
 		current->regs.ds = stack_ptr[4];
 		current->regs.es = stack_ptr[3];
+		
+		// Si on ordonnance une tache en cours d'appel systeme..
 		if(current->regs.cs == 0x8)
 		{
-			kprintf("Scheduling kernel-task\n");
-			//while(1);
+			current->regs.ss = get_default_tss()->ss0;
+			current->regs.esp = stack_ptr[10] + 20;
+		}
+		else
+		{
+			current->regs.ss = stack_ptr[19];
+			current->regs.esp = stack_ptr[18];
 		}
 		
 		current->user_time += quantum;
@@ -88,7 +93,7 @@ static void* switch_process(void* data __attribute__ ((unused)))
 	
 	
 	//syscall_update_esp(current->sys_stack);
-	get_default_tss()->esp0 = current->sys_stack;
+	get_default_tss()->esp0 = current->kstack.esp0;
 	
 	// Mise en place de l'interruption sur le quantum de temps
 	add_event(switch_process,NULL,quantum);	
@@ -194,6 +199,9 @@ void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)
 
 void* sys_idle( uint32_t unused1 __attribute__ ((unused)),uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
 {
+	unsigned int i = 0;
+	kprintf("Idling...\n");
+	//for(i = 0; i<100000; i++);
 	while(1);
 	//asm("hlt\n\t");
 	return NULL;

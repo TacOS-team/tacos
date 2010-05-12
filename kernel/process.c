@@ -141,24 +141,18 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 	new_proc->regs.ecx = 0;
 	new_proc->regs.edx = 0;
 
-	if(ring == 0)
-	{
-		new_proc->regs.cs = 0x8;
-		new_proc->regs.ds = 0x10;
-		new_proc->regs.ss = 0x10;
-	}
-	else
-	{
-		new_proc->regs.cs = 0x1B;
-		new_proc->regs.ds = 0x23;
-		new_proc->regs.ss = 0x23;
-	}
+	new_proc->regs.cs = 0x1B;
+	new_proc->regs.ds = 0x23;
+	new_proc->regs.ss = 0x23;
 	
 	new_proc->regs.eflags = 0;
 	new_proc->regs.eip = prog;
 	new_proc->regs.esp = (user_stack)+stack_size-3;
 	new_proc->regs.ebp = new_proc->regs.esp;
-	new_proc->sys_stack = (sys_stack)+stack_size-1;
+	
+	new_proc->kstack.ss0 = 0x10;
+	new_proc->kstack.esp0 = (sys_stack)+stack_size-1;
+	
 	new_proc->state = PROCSTATE_IDLE;
 	
 	/* Initialisation de la pile du processus */

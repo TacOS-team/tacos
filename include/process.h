@@ -30,9 +30,11 @@ typedef struct{
 	long int	sys_time;
 	
 	/* Données propres au contexte du processus */
-	paddr_t		sys_stack;
 	regs_t regs;
-	
+	struct {
+		uint32_t esp0;
+		uint16_t ss0;
+	} kstack __attribute__ ((packed));
 	/* Données utilisées pour les IO */
 	file_descriptor fd[FOPEN_MAX];
 	FILE* file_list;
