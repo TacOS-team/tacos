@@ -33,4 +33,5 @@ void reset_attribute();
 void switchDebugBuffer();
 void switchStandardBuffer();
 void kputchar (text_window *tw, char c);
+void backspace(text_window *tw, char c);
 void init_video();

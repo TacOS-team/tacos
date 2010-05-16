@@ -11,6 +11,8 @@
 /* The video memory address. */
 #define VIDEO                   0xB8000
 
+#define LARGEUR_TAB 8
+
 #define CRT_REG_INDEX 0x3d4
 #define CRT_REG_DATA  0x3d5
 #define CURSOR_POS_MSB 0x0E
@@ -151,14 +153,16 @@ void kputchar_position(char c, int x, int y) {
 	(*video)[x + y * COLUMNS].attribute = buffer_video->attribute;
 }
 
-void kputchar_tab() {
+void kputchar_tab(text_window * tw) {
 	int x = buffer_video->xpos;
 	
-	x = ((x / 8) + 1) * 8;
+	x = ((x / LARGEUR_TAB) + 1) * LARGEUR_TAB;
 	if (x > COLUMNS - 1) {
 		newline();
 	} else {
-		buffer_video->xpos = x;
+		while(buffer_video->xpos < x) {
+			kputchar(tw, ' ');
+		}
 	}
 }
 
@@ -206,15 +210,25 @@ void cursor_move(int n, int m) {
 	}
 }
 
-void backspace() {
-	if (buffer_video->xpos > 0) {
-		buffer_video->xpos--;
-	} else if (buffer_video->ypos > 0) {
-		buffer_video->ypos--;
-		buffer_video->xpos = COLUMNS - 1;
-	}
+void backspace(text_window *tw, char c) {
+	if (c == '\t') {
+		int x = buffer_video->xpos - LARGEUR_TAB;
+		int y = buffer_video->ypos;
+		if (x < 0) x += COLUMNS;
+		while (buffer_video->xpos > x && buffer_video->buffer[buffer_video->xpos + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].character == ' ') {
+			buffer_video->xpos--;
+		}
+	} else {
+		if (buffer_video->xpos > 0) {
+			buffer_video->xpos--;
+		} else if (buffer_video->ypos > 0) {
+			buffer_video->ypos--;
+			buffer_video->xpos = COLUMNS - 1;
+		}
 
-	kputchar_position(' ', buffer_video->xpos, buffer_video->ypos); 
+		kputchar_position(' ', buffer_video->xpos, buffer_video->ypos); 
+	}
+	updateCursorPosition();
 }
 
 /*
@@ -343,9 +357,7 @@ void kputchar (text_window * tw, char c) {
 	} else if (c == '\n' || c == '\r') {
 		newline();
 	} else if (c == '\t') {
-		kputchar_tab();
-	} else if (c == '\b') {
-		backspace();
+		kputchar_tab(tw);
 	} else {
 		kputchar_position(c, buffer_video->xpos, buffer_video->ypos);
 	  	buffer_video->xpos++;

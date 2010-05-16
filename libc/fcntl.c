@@ -5,7 +5,7 @@
 #include <string.h>
 #include <syscall.h>
 #include <fat.h>
-
+#include <video.h>
 
 void init_stdfd(struct _file_descriptor *fd0, struct _file_descriptor *fd1, struct _file_descriptor *fd2) {
 	fd0->used = TRUE; /* stdin */
