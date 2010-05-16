@@ -210,6 +210,9 @@ void cursor_move(int n, int m) {
 	}
 }
 
+/**
+ *	Suppression en arrière d'un caractère.
+ */
 void backspace(text_window *tw, char c) {
 	if (c == '\t') {
 		int x = buffer_video->xpos - LARGEUR_TAB;

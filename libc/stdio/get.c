@@ -72,7 +72,7 @@ int fgetc(FILE *stream) {
 			// Normalement il faut faire appel à la fonction read qui s'occupe de faire ce qu'il faut.
 			// C'est à dire appeler la fonction de lecture/affichage associé au stream qui va bien !
 			if (stream->_fileno == 0) {
-				printf("%c", c);
+				printf("%c", c); // TODO : C'est peut être là que je devrais gérer proprement le backspace, non ?
 				fflush(stdout);
 			}
 			pointeur++;
