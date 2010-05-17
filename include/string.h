@@ -3,6 +3,21 @@
 
 #include <types.h>
 
+/** 
+ * @brief Copie une zone mémoire.
+ *
+ * La fonction memcpy() copie une zone mémoire de size octets depuis src vers
+ * la zone mémoire dest. Les deux zones ne doivent pas se chevaucher sinon il 
+ * faut utiliser memmove.
+ * 
+ *	@see memmove
+ *
+ * @param dest adresse mémoire où il faut copier
+ * @param src adresse mémoire source
+ * @param size taille de la zone à copier
+ * 
+ * @return pointeur sur dest.
+ */
 void* memcpy(void* dest, const void* src, size_t size);
 
 size_t strlen(const char* s);
