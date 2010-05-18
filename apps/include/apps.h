@@ -2,6 +2,8 @@
 #define APPS_H
 
 int main_fiinou(int argc, char* argv[] );
+int launch_pres();
+int test_gui();
 
 int semaphore_task(int argc, char** argv );
 int test_semaphores();

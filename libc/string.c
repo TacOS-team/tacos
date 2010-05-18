@@ -266,4 +266,20 @@ char *strdup (const char *s)
 	
 	return strcpy(new_string, s);;
 }
+
+char *strchr(const char* s, int c)
+{
+	int index=0;
+	while(1)
+	{
+		if(s[index] == c)
+			return &(s[index]);
+
+		if(s[index] == '\0')
+			return NULL;
+
+		index++;
+	}
+	return NULL;
+}
 	

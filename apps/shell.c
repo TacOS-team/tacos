@@ -91,6 +91,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(calc_pi, "pi");
 	add_builtin_cmd(exec_shell, "Mishell");
 	add_builtin_cmd(main_fiinou, "Fiinou");
+	add_builtin_cmd(launch_pres, "presentation");
 		
 	for(;;)
 	{

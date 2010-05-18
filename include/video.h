@@ -29,6 +29,8 @@ void newline();
 void enableFinnouMode(int enable);
 void set_attribute(uint8_t background, uint8_t foreground);
 void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y);
+uint8_t get_bg_position(int x, int y);
+uint8_t get_fg_position(int x, int y);
 void reset_attribute();
 void switchDebugBuffer();
 void switchStandardBuffer();

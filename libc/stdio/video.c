@@ -392,6 +392,16 @@ void set_attribute(uint8_t background, uint8_t foreground)
   buffer_video->attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
 }
 
+uint8_t get_bg_position(int x, int y)
+{
+	return ((*video)[x + y * COLUMNS].attribute & 0xF0) >> 4;
+}
+
+uint8_t get_fg_position(int x, int y)
+{
+	return (*video)[x + y * COLUMNS].attribute & 0x0F;
+}
+
 void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y)
 {
 	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].attribute = buffer_video->attribute;

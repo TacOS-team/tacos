@@ -46,6 +46,8 @@ char *strcasestr(const char *haystack, const char *needle);
 
 char *strdup (const char *s);
 
+char *strchr(const char *s, int c);
+
 /* NOT IMPLEMENTED YET
 
 int strcoll(const char *s1, const char *s2);
@@ -53,8 +55,6 @@ int strcoll(const char *s1, const char *s2);
 size_t strxfrm(char * s1, const char * s2, size_t n);
 
 void *memchr(const void *s, int c, size_t n);
-
-char *strchr(const char *s, int c);
 
 size_t strcspn(const char *s1, const char *s2);
 

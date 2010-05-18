@@ -5,7 +5,7 @@ SRCS=*.c
 
 all: libutils
 
-libutils: heap.o
+libutils: heap.o widget.o
 	$(AR) r ../lib/$@.a $^
 
 %.o: %.c

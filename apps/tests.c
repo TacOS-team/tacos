@@ -11,8 +11,38 @@
 #include <time.h>
 #include <apps.h>
 #include <sem.h>
+#include <gui.h>
 
 #include <debug.h>
+
+static int color;
+
+static void handleClick(struct widget_t* wdg, int x, int y)
+{
+	color = (color+1)%8;
+	setWidgetProperties(wdg, 2, 2, 5, 10+color, color, 6);
+}
+
+int gui_task(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unused)))
+{
+	color = 0;
+	struct window_t* win;
+	static struct widget_t* wdg;
+	win = createWindow(4, 7);
+	wdg = addButton(win, "123");
+	setWidgetProperties(wdg, 5, 5, 5, 5, 1, 6);
+	setOnClick(wdg, handleClick);
+
+	runWindow(win);
+
+	return 0;
+}
+
+int test_gui()
+{
+	create_process("tache_gui", gui_task, 2, NULL, 512, 3);
+	return 0;
+}
 
 int semaphore_task(int argc, char** argv __attribute__ ((unused)))
 {
