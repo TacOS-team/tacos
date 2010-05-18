@@ -46,7 +46,9 @@ static void displayWidget(struct widget_t* wdg)
 				if(strlen(&(wdg->adv[indice]))<(wdg->w-2))
 				{
 					strncpy(ligne, &(wdg->adv[indice]), wdg->w-2);
-					fini = 1;
+
+					if(strchr(ligne, '\n') == NULL)
+						fini = 1;
 				}
 				else
 				{
