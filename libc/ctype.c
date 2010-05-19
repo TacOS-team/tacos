@@ -9,7 +9,7 @@ int isalpha(int c) {
 }
 
 int isblank(int c) {
-	return isspace(c) || c == '\t';
+	return c == ' ' || c == '\t';
 }
 
 int iscntrl(int c) {
@@ -26,8 +26,7 @@ int islower(int c) {
 
 int isprint(int c) {
 	// TODO
-	c=c+1;
-	return 0;
+	return !isalnum(c) && !isspace(c); // Attention, simple approximation !
 }
 
 int ispunct(int c) {
@@ -35,7 +34,7 @@ int ispunct(int c) {
 }
 
 int isspace(int c) {
-	return c == ' ';
+	return c == ' ' || c == '\t' || c == '\f' || c == '\n' || c == '\r' || c == '\v';
 }
 
 int isupper(int c) {
@@ -43,9 +42,7 @@ int isupper(int c) {
 }
 
 int isxdigit(int c) {
-	// TODO
-	c=c+1;
-	return 0;
+	return isdigit(c) || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
 }
 
 int tolower(int c) {
