@@ -2,7 +2,7 @@
  * @file printf.c
  */
 
-#include "stdio.h"
+#include <stdio.h>
 
 int printf(const char *format, ...) {
     va_list arg;

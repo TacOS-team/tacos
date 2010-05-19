@@ -25,10 +25,26 @@ void kprintf(const char *format, ...);
 /**
  * @brief Affiche un message sur la sortie standard stdout.
  *
+ * @param format chaîne de format précisant le format de conversion pour la
+ * sortie.
+ * @param ... liste variable d'arguments.
+ *
  * @return En cas de succès, renvoit le nombre de caractères affichés.
  * Négatif en cas d'erreur.
  */
 int printf(const char *format, ...);
+
+/** 
+ * @brief Affiche un message dans le stream passé en argument.
+ * 
+ * @param stream un pointeur sur un stream.
+ * @param format chaîne de format précisant le format de conversion pour la
+ * sortie.
+ * @param ... liste variable d'arguments.
+ * 
+ * @return En cas de succès, renvoit le nombre de caractères affichés.
+ * Négatif en cas d'erreur.
+ */
 int fprintf(FILE *stream, const char *format, ...);
 int sprintf(char *str, const char *format, ...);
 int snprintf(char *str, size_t size, const char *format, ...);
