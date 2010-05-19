@@ -52,7 +52,6 @@ size_t strlen(const char* s);
 */
 int strcmp(const char *s1, const char *s2);
 
-
 /** 
  * @brief Compare deux chaînes jusqu'à n caractères.
  * 
@@ -70,7 +69,6 @@ int strcmp(const char *s1, const char *s2);
  * sont supérieurs et nul s'ils sont identiques.
  */
 int strncmp(const char *s1, const char *s2, size_t n);
-
 
 /** 
  * @brief Rempli une zone mémoire avec un octet donné.
@@ -126,7 +124,8 @@ char *strcpy(char * s1, const char * s2);
  * Copie la chaine s2 vers la zone mémoire pointée par s1 en s'arrêtant aux 
  * n premiers caractères de s1.
  * La copie s'arrête au bout de n caractères ou dès que le caractère '\0' 
- * est lu dans la chaine source s2.
+ * est lu dans la chaine source s2. Attention, la chaîne s1 ne contient pas 
+ * forcément le caractère '\0' si la limite des n caractères est atteinte.
  *
  * @param s1 zone mémoire de destination.
  * @param s2 chaine source.
@@ -136,18 +135,107 @@ char *strcpy(char * s1, const char * s2);
  */
 char *strncpy(char * s1, const char * s2, size_t n);
 
+
+/** 
+ * @brief Concaténation de deux chaînes.
+ * 
+ * Ajoute à la fin de s1 le contenu de s2 en s'arrêtant au premier caractère 
+ * '\0' rencontré.
+ *
+ * @param s1 chaine destination.
+ * @param s2 chaine source qui sera ajoutée à la fin de s1.
+ * 
+ * @return un pointeur vers la chaine de destination s1.
+ */
 char *strcat(char * s1, const char * s2);
 
+/** 
+ * @brief Concaténation de deux chaînes avec une limite aux n premiers 
+ * caractères.
+ * 
+ * Ajoute à la fin de s1 le contenu de s2 en s'arrêtant à n caractères ou 
+ * au premier caractère '\0' rencontré.
+ *
+ * @param s1 chaine destination.
+ * @param s2 chaine source qui sera ajoutée à la fin de s1.
+ * @param n nombre de caractères à copier.
+ * 
+ * @return un pointeur vers la chaine de destination s1.
+ */
 char *strncat(char * s1, const char * s2, size_t n);
 
+
+/** 
+ * @brief Copie une zone mémoire.
+ * 
+ * La fonction memmove() copie n octets depuis la zone mémoire src vers la 
+ * zone mémoire dest. La différence avec memcpy c'est que les zones peuvent
+ * se chevaucher.
+ *
+ * @see memcpy
+ *
+ * @param dest zone mémoire de destination.
+ * @param src chaine source.
+ * @param n nombre de caractères à copier au maximum.
+ * 
+ * @return un pointeur sur dest.
+ */
 void *memmove(void *dest, const void *src, size_t n);
 
+
+/** 
+ * @brief Recherche une sous-chaîne.
+ *
+ * Recherche needle (aiguille) dans la chaine heystack (meule de foin).
+ * Les caractères « \0 » ne sont pas comparés.
+ * 
+ * @param haystack chaine dans laquelle on va effectuer la recherche.
+ * @param needle sous-chaîne à rechercher.
+ * 
+ * @return un pointeur vers le début de la sous-chaîne ou NULL si non 
+ * trouvée.
+ */
 char *strstr(const char *haystack, const char *needle);
 
+
+/** 
+ * @brief Recherche une sous-chaîne en ignorant la casse.
+ * 
+ * Recherche needle (aiguille) dans la chaine heystack (meule de foin).
+ * Les caractères « \0 » ne sont pas comparés. La casse des arguments 
+ * est ignorée.
+ *
+ * @param haystack chaîne dans laquelle on va effectuer la recherche.
+ * @param needle sous-chaîne à rechercher.
+ * 
+ * @return un pointeur vers le début de la sous-chaîne ou NULL si non 
+ * trouvée. 
+ */
 char *strcasestr(const char *haystack, const char *needle);
 
+/** 
+ * @brief Duplique une chaine.
+ * 
+ * strdup va faire un malloc de taille suffisante pour y copier la chaîne 
+ * en paramètre.
+ *
+ * @param s la chaîne à dupliquer.
+ * 
+ * @return un pointeur vers la nouvelle zone mémoire contenant une copie de la chaîne.
+ */
 char *strdup (const char *s);
 
+/** 
+ * @brief Recherche un caractère dans une sous-chaîne.
+ *
+ * La fonction strchr() recherche le caractère c dans la chaine s et retourne 
+ * un pointeur vers la première occurrence trouvée.
+ * 
+ * @param s la chaîne dans laquelle on va effectuer la recherche.
+ * @param c le caractère à rechercher.
+ * 
+ * @return l'adresse de la première occurrence trouvée.
+ */
 char *strchr(const char *s, int c);
 
 /* NOT IMPLEMENTED YET
