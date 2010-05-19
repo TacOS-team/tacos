@@ -1,3 +1,7 @@
+/**
+ * @file pagination.c
+ */
+
 #include <types.h>
 #include <memory.h>
 #include <pagination.h>
@@ -5,8 +9,14 @@
 static vaddr_t last_page_table = 0;
 static vaddr_t end_page_directory;
 
-/*
- * Cette fonction sert à mapper une adresse par identity mapping. Cela ne peut être fait qu'avant l'activation de la pagination !
+/** 
+ * @brief Mappe une adresse en identity mapping.
+ * 
+ * Cette fonction sert à mapper une adresse par identity mapping. Cela ne peut
+ * être fait qu'avant l'activation de la pagination !
+ *
+ * @param pagination_kernel
+ * @param page_addr
  */
 void pagination_identity_map_addr(struct page_directory_entry * pagination_kernel, paddr_t page_addr) {
 	int index_pd = page_addr >> 22;
@@ -33,9 +43,6 @@ void pagination_identity_map_addr(struct page_directory_entry * pagination_kerne
 	pte->u_s = 1;
 }
 
-/*
- * Cette fonction s'occupe d'activer la pagination. (identity mapping entre autre qui permet de pas briser le lien @phys et @lineaire au début)
- */
 void pagination_setup() {
 	struct physical_page_descr * iterator = memory_get_first_used_page();
 	struct page_directory_entry * pagination_kernel = (struct page_directory_entry*) memory_reserve_page_frame();
@@ -63,10 +70,6 @@ void pagination_setup() {
 	asm volatile("mov %0, %%cr0":: "b"(cr0));
 }
 
-/*
- * Repertoire vide !
- * @arg pd un repertoire de page non initialisé (4kio)
- */
 void pagination_init_page_directory(struct page_directory_entry * pd) {
 	int i;
 
