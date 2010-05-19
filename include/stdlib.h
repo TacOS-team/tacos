@@ -1,5 +1,9 @@
-#ifndef _MALLOC_H_
-#define _MALLOC_H_
+#ifndef _STDLIB_H_
+#define _STDLIB_H_
+
+/**
+ * @file stdlib.h
+ */
 
 #include <types.h>
 

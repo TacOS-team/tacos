@@ -1,6 +1,11 @@
 #ifndef _STRING_H_
 #define _STRING_H_
 
+/**
+ * @file string.h
+ *
+ */
+
 #include <types.h>
 
 /** 
@@ -10,18 +15,41 @@
  * la zone mémoire dest. Les deux zones ne doivent pas se chevaucher sinon il 
  * faut utiliser memmove.
  * 
- *	@see memmove
+ * @see memmove
  *
  * @param dest adresse mémoire où il faut copier
  * @param src adresse mémoire source
  * @param size taille de la zone à copier
  * 
- * @return pointeur sur dest.
+ * @return un pointeur sur dest.
  */
 void* memcpy(void* dest, const void* src, size_t size);
 
+/** 
+* @brief Calcule la longueur d'une chaîne de caractères.
+*
+* La fonction strlen() calcule la longueur de la chaîne de caractères s sans
+* compter le caractère nul « \0 »
+* 
+* @param s la chaîne dont on veut calculer la longueur
+* 
+* @return le nombre de caractères dans la chaîne s.
+*/
 size_t strlen(const char* s);
 
+/** 
+* @brief Compare deux chaînes.
+* 
+* La fonction strlen() compare deux chaînes de caractère et retourne en 
+* résultat un nombre négatif, positif ou nul si s1 est respectivement
+* inférieur, supérieur ou identique à s2.
+* 
+* @param s1 première chaîne
+* @param s2 seconde chaîne
+* 
+* @return un entier strictement négatif si s1 est inférieur à s2, strictement
+* 	 positif si s1 est supérieur à s2 et nul si s1 est identique à s2.
+*/
 int strcmp(const char *s1, const char *s2);
 
 int strncmp(const char *s1, const char *s2, size_t n);

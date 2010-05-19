@@ -47,7 +47,10 @@ runqemugdb: core.img
 runbochs: core.img
 	BOCHSRC=bochsrc bochs
 
-.PHONY: clean depend
+.PHONY: clean depend doc
+
+doc:
+	doxygen doxygen.conf && $(MAKE) -C doc/latex
 
 clean:
 	@for i in $(SUBDIRS); do \

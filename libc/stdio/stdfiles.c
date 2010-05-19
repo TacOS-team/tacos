@@ -1,3 +1,7 @@
+/**
+ * @file stdfiles.c
+ */
+
 #include <types.h>
 #include <libio.h>
 #include <string.h>
@@ -15,9 +19,6 @@ FILE *stdin = & _IO_stdin;
 FILE *stdout = & _IO_stdout;
 FILE *stderr = & _IO_stderr;
 
-/**
- * Initialise de nouveaux stdin, stdout et stderr.
- */
 void init_stdfiles(FILE ** _stdin, FILE ** _stdout, FILE ** _stderr) {
 	/* Allocation memoire. */
 	FILE * __stdin = (FILE*) kmalloc(sizeof(FILE));

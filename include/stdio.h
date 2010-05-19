@@ -1,6 +1,10 @@
 #ifndef _STDIO_H_
 #define _STDIO_H_
 
+/**
+ * @file stdio.h
+ */
+
 #include <fcntl.h>
 #include <types.h>
 #include <stdarg.h>
@@ -17,6 +21,13 @@
 size_t write_screen(open_file_descriptor *ofd, const void *buf, size_t count);
 
 void kprintf(const char *format, ...);
+
+/**
+ * @brief Affiche un message sur la sortie standard stdout.
+ *
+ * @return En cas de succès, renvoit le nombre de caractères affichés.
+ * Négatif en cas d'erreur.
+ */
 int printf(const char *format, ...);
 int fprintf(FILE *stream, const char *format, ...);
 int sprintf(char *str, const char *format, ...);
@@ -55,8 +66,30 @@ FILE *freopen(const char *path, const char *mode, FILE *stream);
 
 FILE *fmemopen(void *buf, size_t size, const char *mode);
 
+/** 
+* @brief Initialise de nouveaux stdin, stdout et stderr.
+* 
+* @param _stdin pointeur sur un stdin à initialiser.
+* @param _stdout pointeur sur un stdout à initialiser.
+* @param _stderr pointeur sur un stderr à initialiser.
+*/
 void init_stdfiles(FILE ** _stdin, FILE ** _stdout, FILE ** _stderr);
 
+
+/** 
+* @brief Converti l'entier d en une chaîne de caractère et le stock dans buf.
+*	 L'entier base permet de spécifier la base à utiliser (decimal ou 
+*	 hexadécimal).
+*
+* Converti l'entier d en une chaîne de caractère et le stock dans buf. Si 
+* base est égal à 'd', alors il interprète d comme étant en décimal et si 
+* base est égal à 'x', alors il interprète d comme étant en hexadécimal.
+* 
+* @param buf une chaîne de taille suffisament grande pour y stocker le 
+*	 résultat de la transformation.
+* @param base la base à utiliser pour la conversion ('d' ou 'x').
+* @param d le nombre à convertir.
+*/
 void itoa (char *buf, int base, int d);
 
 
