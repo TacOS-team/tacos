@@ -40,7 +40,7 @@ size_t strlen(const char* s);
 /** 
 * @brief Compare deux chaînes.
 * 
-* La fonction strlen() compare deux chaînes de caractère et retourne en 
+* La fonction strcmp() compare deux chaînes de caractères et retourne en 
 * résultat un nombre négatif, positif ou nul si s1 est respectivement
 * inférieur, supérieur ou identique à s2.
 * 
@@ -52,14 +52,88 @@ size_t strlen(const char* s);
 */
 int strcmp(const char *s1, const char *s2);
 
+
+/** 
+ * @brief Compare deux chaînes jusqu'à n caractères.
+ * 
+ * La fonction strncmp compare deux chaînes de caractères et retourne en 
+ * résultat un nombre négatif, positif ou nul si les n premiers caractères
+ * de s1 sont inférieurs, supérieurs ou identiques aux n premiers caractères
+ * de s2.
+ *
+ * @param s1 première chaîne
+ * @param s2 seconde chaîne
+ * @param n nombre de caractères à comparer
+ * 
+ * @return un entier strictement négatif si les n premiers caractères de s1 
+ * sont inférieurs aux n premiers caractères de s2, strictement positif s'ils
+ * sont supérieurs et nul s'ils sont identiques.
+ */
 int strncmp(const char *s1, const char *s2, size_t n);
 
+
+/** 
+ * @brief Rempli une zone mémoire avec un octet donné.
+ * 
+ * Rempli la zone mémoire pointée par s et de n octets par l'octet c.
+ *
+ * @param s zone mémoire à remplir
+ * @param c octet qui sert pour le remplissage
+ * @param n nombre d'octets à copier
+ * 
+ * @return un pointeur vers la zone mémoire s.
+ */
 void *memset(void *s, int c, size_t n);
 
+/** 
+ * @brief Compare deux zones mémoire.
+ * 
+ *	Compare les n premiers octets des zones mémoires s1 et s2.
+ *	Elle retourne un entier négatif, positif ou nul si les n premiers octets de
+ *	s1 sont respectivement plus petits, plus grands ou identiques aux n premiers 
+ *	octets de s2.
+ *
+ * @see strcmp
+ * @see strncmp
+ *
+ * @param s1 pointeur vers la première zone mémoire.
+ * @param s2 pointeur vers la seconde zone mémoire.
+ * @param n le nombre d'octets à comparer.
+ * 
+ * @return un entier négatif, positif ou nul si les n premiers octets de
+ *	s1 sont respectivement plus petits, plus grands ou identiques aux n premiers 
+ *	octets de s2.
+ */
 int memcmp(const void *s1, const void *s2, size_t n);
 
+/** 
+ * @brief Copie une chaine.
+ *
+ * Copie la chaine s2 vers la zone mémoire pointée par s1.
+ * La copie s'arrête dès que le caractère '\0' est rencontré dans s2.
+ * 
+ * @param s1 zone mémoire de destination.
+ * @param s2 chaine source.
+ * 
+ * @return un pointeur vers la chaîne de destination s1.
+ */
 char *strcpy(char * s1, const char * s2);
 
+
+/** 
+ * @brief Copie une chaine en se limitant aux n premiers caractères.
+ * 
+ * Copie la chaine s2 vers la zone mémoire pointée par s1 en s'arrêtant aux 
+ * n premiers caractères de s1.
+ * La copie s'arrête au bout de n caractères ou dès que le caractère '\0' 
+ * est lu dans la chaine source s2.
+ *
+ * @param s1 zone mémoire de destination.
+ * @param s2 chaine source.
+ * @param n nombre de caractères à copier au maximum.
+ * 
+ * @return un pointeur vers la chaîne de destination s1.
+ */
 char *strncpy(char * s1, const char * s2, size_t n);
 
 char *strcat(char * s1, const char * s2);

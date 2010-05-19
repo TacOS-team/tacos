@@ -18,6 +18,9 @@ depend: $(SRCS)
 
 fiinou.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 fiinou.o: ../include/libio.h ../include/stdarg.h
+pres.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
+pres.o: ../include/libio.h ../include/stdarg.h ../include/gui.h
+pres.o: ../include/process.h ../include/pagination.h
 shell.o: include/fat_test.h ../include/types.h ../include/fcntl.h
 shell.o: ../include/libio.h ../include/floppy.h ../include/kmalloc.h
 shell.o: ../include/memory.h ../include/mouse.h ../include/pci.h
@@ -33,4 +36,5 @@ tests.o: ../include/libio.h ../include/floppy.h ../include/kmalloc.h
 tests.o: ../include/memory.h ../include/mouse.h ../include/pci.h
 tests.o: ../include/process.h ../include/pagination.h ../include/stdio.h
 tests.o: ../include/stdarg.h ../include/stdlib.h ../include/string.h
-tests.o: ../include/time.h include/apps.h ../include/sem.h ../include/debug.h
+tests.o: ../include/time.h include/apps.h ../include/sem.h ../include/gui.h
+tests.o: ../include/debug.h

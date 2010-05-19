@@ -44,7 +44,7 @@ unistd.o: ../include/libio.h ../include/fcntl.h ../include/stdio.h
 unistd.o: ../include/stdarg.h ../include/syscall.h
 stdio/fmemopen.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 stdio/fmemopen.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
-stdio/fmemopen.o: stdio/fopen.h
+stdio/fmemopen.o: ../include/fopen.h
 stdio/fopen.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 stdio/fopen.o: ../include/libio.h ../include/stdarg.h ../include/string.h
 stdio/fprintf.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
