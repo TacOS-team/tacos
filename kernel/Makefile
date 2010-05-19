@@ -44,7 +44,7 @@ kernel.o: include/multiboot.h include/idt.h ../include/types.h
 kernel.o: include/i8259.h ../include/stdio.h ../include/fcntl.h
 kernel.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
 kernel.o: ../include/unistd.h ../include/string.h ../include/memory.h
-kernel.o: ../include/pagination.h include/gdt.h ../include/exception.h
+kernel.o: include/pagination.h include/gdt.h ../include/exception.h
 kernel.o: ../include/interrupts.h ../include/pci.h ../include/pci_config.h
 kernel.o: ../include/pci_types.h include/scheduler.h ../include/time.h
 kernel.o: include/dummy_process.h ../include/keyboard.h ../include/mouse.h
@@ -72,19 +72,18 @@ mbr.o: ../include/libio.h ../include/stdarg.h ../include/floppy.h
 mbr.o: include/mbr.h
 memory.o: ../include/types.h ../include/stdio.h ../include/fcntl.h
 memory.o: ../include/libio.h ../include/stdarg.h ../include/memory.h
-pagination.o: ../include/types.h ../include/memory.h ../include/pagination.h
+pagination.o: ../include/types.h ../include/memory.h include/pagination.h
 process.o: ../include/types.h ../include/stdlib.h ../include/stdio.h
 process.o: ../include/fcntl.h ../include/libio.h ../include/stdarg.h
 process.o: ../include/string.h include/gdt.h ../include/process.h
-process.o: ../include/pagination.h ../include/kmalloc.h ../include/syscall.h
-process.o: ../include/time.h ../include/debug.h
+process.o: ../include/kmalloc.h ../include/syscall.h ../include/time.h
+process.o: ../include/debug.h
 scheduler.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 scheduler.o: ../include/libio.h ../include/stdarg.h ../include/process.h
-scheduler.o: ../include/pagination.h include/scheduler.h ../include/events.h
-scheduler.o: ../include/time.h ../include/clock.h ../include/ioports.h
-scheduler.o: include/gdt.h include/i8259.h ../include/syscall.h
-scheduler.o: ../include/debug.h
+scheduler.o: include/scheduler.h ../include/events.h ../include/time.h
+scheduler.o: ../include/clock.h ../include/ioports.h include/gdt.h
+scheduler.o: include/i8259.h ../include/syscall.h ../include/debug.h
 vm86.o: ../include/debug.h include/gdt.h ../include/types.h
-vmm.o: ../include/memory.h ../include/types.h ../include/pagination.h
+vmm.o: ../include/memory.h ../include/types.h include/pagination.h
 vmm.o: include/vmm.h ../include/stdio.h ../include/fcntl.h ../include/libio.h
 vmm.o: ../include/stdarg.h ../include/video.h

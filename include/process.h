@@ -2,7 +2,6 @@
 #define _PROCESS_H_
 
 #include <types.h>
-#include <pagination.h>
 #include <libio.h>
 
 #define PROCSTATE_IDLE 1
