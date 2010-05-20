@@ -1,6 +1,10 @@
 #ifndef _FCNTL_H_
 #define _FCNTL_H_
 
+/**
+ * @file fcntl.h
+ */
+
 #include <types.h>
 #include <libio.h>
 
@@ -71,6 +75,15 @@ typedef struct _open_file_descriptor {
 	void* (*read)(struct _open_file_descriptor *,void*, size_t);
 } open_file_descriptor;
 
+/** 
+ * @brief Initialise les descripteurs de fichiers standards.
+ * 
+ *	Initialise les descripteurs de fichiers standards.
+ *
+ * @param fd0 stdin
+ * @param fd1 stdout
+ * @param fd2 stderr
+ */
 void init_stdfd(struct _file_descriptor *fd0, struct _file_descriptor *fd1, struct _file_descriptor *fd2);
 
 int open(const char *pathname, int flags);
