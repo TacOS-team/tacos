@@ -100,7 +100,7 @@ void mouseInterrupt(int id __attribute__ ((unused)))
   uint8_t packet;
   int delta;
   
-  if(first) // On ignore la prmeiere interruption
+  if(first) // On ignore la premiere interruption
   {
 	  first = FALSE;
 	  return;
