@@ -1,24 +1,42 @@
+/**
+ * @file memory.c
+ */
+
 #include <types.h>
 #include <stdio.h>
-#include "memory.h"
+#include <memory.h>
 
-static struct physical_page_descr *used_pages = NULL;
-static struct physical_page_descr *free_pages = NULL;
+static struct physical_page_descr *used_frame_pages = NULL;
+static struct physical_page_descr *free_frame_pages = NULL;
 
-/* C'est les marqueurs qui me disent où commence le kernel et où il se fini en mémoire. */
+/* C'est les marqueurs qui indiquent où commence le kernel et où il se fini en mémoire. */
 extern char _start, __e_kernel;
 
 static struct physical_page_descr * phys_page_descr_array;
 
-/**
- * Retourne l'adresse de la page en arrondissant à l'inférieur.
+/** 
+ * @brief Adresse du cadre de page en arrondissant à l'inférieur.
+ * 
+ * Prend en argument une adresse physique et donne l'adresse du cadre 
+ * correspondant en arrondissant à l'inférieur.
+ *
+ * @param value l'adresse physique à arrondir.
+ * 
+ * @return l'adresse physique arrondie.
  */
 static paddr_t memory_align_page_inf(paddr_t value) {
 	return value - value%PAGE_SIZE;
 };
 
-/**
- * Retourne l'adresse de la page en arrondissant au supérieur.
+/** 
+ * @brief Adresse du cadre de page en arrondissant au supérieur.
+ *
+ * Prend en argument une adresse physique et donne l'adresse du cadre 
+ * correspondant en arrondissant au supérieur.
+ * 
+ * @param value l'adresse physique à arrondir.
+ * 
+ * @return l'adresse physique arrondie.
  */
 static paddr_t memory_align_page_sup(paddr_t value) {
 	if (value % PAGE_SIZE == 0) {
@@ -28,16 +46,13 @@ static paddr_t memory_align_page_sup(paddr_t value) {
 	return value - value%PAGE_SIZE;
 };
 	
-/**
- * Affiche les pages utilisées.
- */
-void memory_print_used_pages() {
+void memory_print_used_frame_pages() {
 	struct physical_page_descr *p;
 	int c = 0;
 
 	printf("Used pages : ");
 
-	p = used_pages;
+	p = used_frame_pages;
 	while (p != NULL) {
 		printf("%x ", p->addr);
 		p = p->next;
@@ -46,15 +61,12 @@ void memory_print_used_pages() {
 	printf(" (%d pages) \n", c);
 }
 
-/**
- * Affiche les pages disponibles.
- */
-void memory_print_free_pages() {
+void memory_print_free_frame_pages() {
 	struct physical_page_descr *p;
 
 	printf("Free pages : ");
 
-	p = free_pages;
+	p = free_frame_pages;
 	while (p != NULL) {
 		printf("%x ", p->addr);
 		p = p->next;
@@ -66,8 +78,8 @@ void memory_print() {
 	struct physical_page_descr *p_f, *p_u;
 
 
-	p_f = free_pages;
-	p_u = used_pages;
+	p_f = free_frame_pages;
+	p_u = used_frame_pages;
 	while (p_f != NULL || p_u != NULL) {
 		while ((p_f != NULL && p_u == NULL) || (p_f != NULL && p_f->addr > p_u->addr)) {
 			set_attribute(0, 2);
@@ -84,30 +96,18 @@ void memory_print() {
 
 }
 
-/**
- * Donne une copie du pointeur du haut de la pile des pages utilisées
- */
 struct physical_page_descr * memory_get_first_used_page() {
-	return used_pages;
+	return used_frame_pages;
 }
 
-/**
- * Donne une copie du pointeur du haut de la pile des pages libres
- */
 struct physical_page_descr * memory_get_first_free_page() {
-	return free_pages;
+	return free_frame_pages;
 }
 
-/**
- * Retourne vrai s'il y a encore une page.
- */
 bool memory_has_next_page(struct physical_page_descr * iterator) {
 	return (iterator != NULL && iterator->next != NULL);
 }
 
-/**
- * Retourne la prochaine page occupée.
- */
 paddr_t memory_next_page(struct physical_page_descr ** iterator) {
 	if (iterator != NULL) {
 		paddr_t r = (*iterator)->addr;
@@ -118,11 +118,10 @@ paddr_t memory_next_page(struct physical_page_descr ** iterator) {
 	}
 }
 
-/**
+/*
  * Découpage de la mémoire physique en taille fixe. Pour l'instant il n'y a pas de mémoire 
  * virtuelle, c'est donc juste une association linéaire avec autant de pages
  * que de cadres.
- * ram_size en octets.
  */
 void memory_setup(size_t ram_size) {
 
@@ -152,19 +151,19 @@ void memory_setup(size_t ram_size) {
 		if ((phys_page_addr >= BIOS_RESERVED_BASE && phys_page_addr < BIOS_RESERVED_TOP)
 				|| (phys_page_addr >= kernel_base && phys_page_addr < kernel_top)) {
 			/* TODO : Ajouter des méthodes de gestion d'une liste doublement chainée... */
-			phys_page_descr->next = used_pages;
+			phys_page_descr->next = used_frame_pages;
 			phys_page_descr->prev = NULL;
-			if (used_pages != NULL) {
-				used_pages->prev = phys_page_descr;
+			if (used_frame_pages != NULL) {
+				used_frame_pages->prev = phys_page_descr;
 			}
-			used_pages = phys_page_descr;
+			used_frame_pages = phys_page_descr;
 		} else {
-			phys_page_descr->next = free_pages;
+			phys_page_descr->next = free_frame_pages;
 			phys_page_descr->prev = NULL;
-			if (free_pages != NULL) {
-				free_pages->prev = phys_page_descr;
+			if (free_frame_pages != NULL) {
+				free_frame_pages->prev = phys_page_descr;
 			}
-			free_pages = phys_page_descr;
+			free_frame_pages = phys_page_descr;
 		}
 
 		/* On passe à la page suivante ! */
@@ -175,17 +174,17 @@ void memory_setup(size_t ram_size) {
 
 paddr_t memory_reserve_page_frame()
 {
-	struct physical_page_descr *p = free_pages;
+	struct physical_page_descr *p = free_frame_pages;
  
 	// pop it from free page stack
-	free_pages = free_pages->next;
-	if(free_pages != NULL)
-		free_pages->prev = NULL;
+	free_frame_pages = free_frame_pages->next;
+	if(free_frame_pages != NULL)
+		free_frame_pages->prev = NULL;
  
 	// put the new reserved on used page stack
-	used_pages->prev = p;
-	p->next = used_pages;
-	used_pages = p;
+	used_frame_pages->prev = p;
+	p->next = used_frame_pages;
+	used_frame_pages = p;
 	p->prev = NULL;
 
 	return p->addr;
@@ -196,7 +195,7 @@ int memory_free_page_frame(paddr_t addr)
 	int found = 0;
 	struct physical_page_descr *p;
 
-	p = used_pages;
+	p = used_frame_pages;
 	while (p != NULL)
 	{
 		if(p->addr == addr)
@@ -214,13 +213,13 @@ int memory_free_page_frame(paddr_t addr)
 	if(!found)
 		return -1;
 
-	used_pages = used_pages->next;
+	used_frame_pages = used_frame_pages->next;
 
-	if(free_pages != NULL) 
-		free_pages->prev = p;
+	if(free_frame_pages != NULL) 
+		free_frame_pages->prev = p;
 	p->prev = NULL;
-	p->next = free_pages;
-	free_pages = p;
+	p->next = free_frame_pages;
+	free_frame_pages = p;
 
 	return 0;
 }

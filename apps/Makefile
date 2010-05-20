@@ -33,7 +33,7 @@ shell_utils.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
 shell_utils.o: ../include/string.h include/shell_utils.h
 tests.o: include/fat_test.h ../include/types.h ../include/fcntl.h
 tests.o: ../include/libio.h ../include/floppy.h ../include/kmalloc.h
-tests.o: ../include/memory.h ../include/mouse.h ../include/pci.h
-tests.o: ../include/process.h ../include/stdio.h ../include/stdarg.h
-tests.o: ../include/stdlib.h ../include/string.h ../include/time.h
-tests.o: include/apps.h ../include/sem.h ../include/gui.h ../include/debug.h
+tests.o: ../include/mouse.h ../include/pci.h ../include/process.h
+tests.o: ../include/stdio.h ../include/stdarg.h ../include/stdlib.h
+tests.o: ../include/string.h ../include/time.h include/apps.h
+tests.o: ../include/sem.h ../include/gui.h ../include/debug.h

@@ -1,7 +1,6 @@
 #include <fat_test.h>
 #include <floppy.h>
 #include <kmalloc.h>
-#include <memory.h>
 #include <mouse.h>
 #include <pci.h>
 #include <process.h>
