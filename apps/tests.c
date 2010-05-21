@@ -115,7 +115,7 @@ void test_kmalloc()
 
 int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
-	const double prec = 0.001;
+	const double prec = 0.0001;
 	double x = 0.0, y = 0.0;
 	double res;
 	int p_in = 0, p_tot = 0;

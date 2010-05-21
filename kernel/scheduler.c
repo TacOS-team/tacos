@@ -10,8 +10,10 @@
 #include <syscall.h>
 #include <debug.h>
 
-//struct process idle;
+process_t* idle_process;
 static uint32_t quantum;						// Quantum de temps alloué aux process
+
+
 
 static void* switch_process(void* data __attribute__ ((unused)))
 {
@@ -200,10 +202,11 @@ void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)
 void* sys_idle( uint32_t unused1 __attribute__ ((unused)),uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
 {
 	unsigned int i = 0;
-	kprintf("Idling...\n");
+	kprintf("Idling...");
 	//for(i = 0; i<100000; i++);
-	while(1);
-	//asm("hlt\n\t");
+	//while(1);
+	asm("hlt\n\t");
+	kprintf("Not idling anymore.\n");
 	return NULL;
 }
 
