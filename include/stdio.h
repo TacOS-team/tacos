@@ -20,14 +20,43 @@
 
 size_t write_screen(open_file_descriptor *ofd, const void *buf, size_t count);
 
+/** 
+ * @brief Affiche un message sur l'écran.
+ *
+ * Affiche un message sur l'écran. Attention, il n'y a pas d'appel système de
+ * fait !
+ *
+ * @see printf
+ *	@see fprintf
+ *	@see sprintf
+ *	@see snprintf
+ *	@see vprintf
+ *	@see vfprintf
+ *	@see vsprintf
+ *	@see vsnprintf
+ * 
+ * @param format chaîne de format précisant le format de conversion pour la
+ * sortie.
+ * @param ... liste variable d'arguments à afficher.
+ */
 void kprintf(const char *format, ...);
 
 /**
  * @brief Affiche un message sur la sortie standard stdout.
  *
+ * Affiche un message sur la sortie standard stdout (peut donc être buffurisé et ce n'est pas nécessairement l'écran).
+ *
+ *	@see fprintf
+ *	@see sprintf
+ *	@see snprintf
+ *	@see vprintf
+ *	@see vfprintf
+ *	@see vsprintf
+ *	@see vsnprintf
+ *
  * @param format chaîne de format précisant le format de conversion pour la
  * sortie.
- * @param ... liste variable d'arguments.
+ * @param ... liste variable d'arguments à afficher.
  *
  * @return En cas de succès, renvoit le nombre de caractères affichés.
  * Négatif en cas d'erreur.
@@ -37,16 +66,77 @@ int printf(const char *format, ...);
 /** 
  * @brief Affiche un message dans le stream passé en argument.
  * 
+ * Affiche un message dans le stream passé en argument. En effectuant les conversions.
+ *
+ *	@see fprintf
+ *	@see sprintf
+ *	@see snprintf
+ *	@see vprintf
+ *	@see vfprintf
+ *	@see vsprintf
+ *	@see vsnprintf
+ *
  * @param stream un pointeur sur un stream.
  * @param format chaîne de format précisant le format de conversion pour la
  * sortie.
- * @param ... liste variable d'arguments.
+ * @param ... liste variable d'arguments à afficher.
  * 
  * @return En cas de succès, renvoit le nombre de caractères affichés.
  * Négatif en cas d'erreur.
  */
 int fprintf(FILE *stream, const char *format, ...);
+
+/** 
+ * @brief Écrit un message dans le buffer passé en argument.
+ *
+ * Écrit un message (en utilisant la syntaxe printf habituelle) dans le buffer
+ * passé en argument. Attention, aucune allocation mémoire n'est faite.
+ *
+ *	@see fprintf
+ *	@see sprintf
+ *	@see snprintf
+ *	@see vprintf
+ *	@see vfprintf
+ *	@see vsprintf
+ *	@see vsnprintf
+ * 
+ * @param str le buffer dans lequel on écrit.
+ * @param format chaîne de format précisant le format de conversion pour la 
+ * sortie.
+ * @param ... liste variable d'arguments à afficher.
+ * 
+ * @return En cas de succès, renvoit le nombre de caractères affichés.
+ * Négatif en cas d'erreur.
+ */
 int sprintf(char *str, const char *format, ...);
+
+/** 
+ * @brief Écrit un message dans le buffer passé en argument avec une limite 
+ * sur le nombre de caractères à écrire.
+ *
+ * Écrit un message (en utilisant la syntaxe printf habituelle) dans le buffer
+ * passé en argument. Le nombre de caractères est limité. Attention, aucune 
+ * allocation mémoire n'est faite.
+ * Attention !!! Cette limitation n'est pas encore implémentée ! Seul un 
+ * caractère nul sera correctement placé au n-ième caractère.
+ *
+ *	@see printf
+ *	@see fprintf
+ *	@see snprintf
+ *	@see vprintf
+ *	@see vfprintf
+ *	@see vsprintf
+ *	@see vsnprintf
+ * 
+ * @param str le buffer dans lequel on écrit.
+ * @param size le nombre maximum de caractères à écrire dans le buffer.
+ * @param format chaîne de format précisant le format de conversion pour
+ * la sortie.
+ * @param ... liste variable d'arguments à afficher.
+ * 
+ * @return En cas de succès, renvoit le nombre de caractères affichés.
+ * Négatif en cas d'erreur.
+ */
 int snprintf(char *str, size_t size, const char *format, ...);
 
 int vprintf(const char *format, va_list ap);

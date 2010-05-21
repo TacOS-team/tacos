@@ -47,8 +47,8 @@ void pagination_setup() {
 	struct physical_page_descr * iterator = memory_get_first_used_page();
 	struct page_directory_entry * pagination_kernel = (struct page_directory_entry*) memory_reserve_page_frame();
 
-  // marque la fin du bloc regroupant le rep. de page et les tables de pages
-  end_page_directory = ((vaddr_t) pagination_kernel) + 1025*PAGE_SIZE;
+	// marque la fin du bloc regroupant le rep. de page et les tables de pages
+	end_page_directory = ((vaddr_t) pagination_kernel) + 1025*PAGE_SIZE;
 
 	pagination_init_page_directory(pagination_kernel);
 

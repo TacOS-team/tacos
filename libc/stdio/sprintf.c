@@ -1,11 +1,9 @@
+/**
+ * @file sprintf.c
+ */
+
 #include "stdio.h"
 
-/**
- * Affiche un message dans la chaine str.
- *
- * @return En cas de succès, cette fonction renvoie le nombre de caractères
- * affichés. Négatif en cas d'erreur.
- */
 int sprintf(char *str, const char *format, ...) {
     va_list arg;
     int result;
@@ -17,12 +15,6 @@ int sprintf(char *str, const char *format, ...) {
     return result;
 }
 
-/**
- * Affiche un message dans la chaine str sans dépasser size caractères.
- *
- * @return En cas de succès, cette fonction renvoie le nombre de caractères 
- * affichés. Négatif en cas d'erreur.
- */
 int snprintf(char *str, size_t size, const char *format, ...) {
     va_list arg;
     int result;
@@ -47,5 +39,3 @@ int vsnprintf(char *str, size_t size, const char *format, va_list ap) {
 	}
 	return 0;
 }
-
-
