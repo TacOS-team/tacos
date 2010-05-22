@@ -160,8 +160,41 @@ int puts(const char *s);
 
 size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
 
+/** 
+  * @brief Lit au plus size-1 caractères depuis le stream passé en argument.
+  *
+  * Lit au plus size-1 caractères depuis le stream passé en argument. La 
+  * lecture s'arrête par EOF, retour chariot ou si size-1 caractères ont 
+  * été lus.
+  * Attention, il n'y a pas d'allocation mémoire pour le buffer où on écrit.
+  * Le caractère nul est placé à la fin de la chaîne.
+  *
+  * @param s buffer où on va écrire ce qu'on lit sur stream.
+  * @param size la taille du buffer.
+  * @param stream le stream depuis lequel on lit les caractères.
+  * 
+  * @return un pointeur sur s en cas de succès. NULL en cas d'erreur.
+  */
 char *fgets(char *s, int size, FILE *stream);
+
+/**
+ * @brief Lit un caractère depuis le flux stream.
+ *
+ * Fgetc lit le caractère suivant depuis le flux stream.
+ *
+ * @parame stream le stream depuis lequel on lit le caractère.
+ *
+ * @return le caractère lu ou EOF en cas d'erreur ou fin de flux.
+ */
 int fgetc(FILE *stream);
+
+/** 
+ * @brief lit un caractère depuis stdin.
+ *
+ * Lit un caractère depuis stdin. Strictement équivalent à fgetc(stdin).
+ * 
+ * @return le caractère lu ou EOF en cas d'erreur ou fin de flux.
+ */
 int getchar(void);
 
 int fflush(FILE *stream);

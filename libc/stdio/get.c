@@ -1,8 +1,19 @@
 #include <stdio.h>
 
 /**
+ * @file get.c
+ */
+
+/** 
+ * @brief Recherche un retour chariot ou une fin de buffer.
+ * 
  * Cette fonction recherche un retour chariot dans un buffer en partant de la fin. 
  * C'est un peu plus efficace que de faire appel à des fonctions classiques.
+ *
+ * @param buf La chaine de caractère à analyser.
+ * @param endbuf L'adresse de la fin du buffer.
+ * 
+ * @return l'adresse du retour chariot ou de la fin de fichier en cas de succès. NULL sinon.
  */
 static char * search_endl(char * buf, char * endbuf) {
 	endbuf--;
@@ -15,11 +26,6 @@ static char * search_endl(char * buf, char * endbuf) {
 	return NULL;
 }
 
-/**
- * Fonction de la libc :
- * fgets lit au plus size-1 caractères depuis le sream passé en argument. 
- * La lecture s'arrête par EOF ou retour chariot.
- */
 char *fgets(char *s, int size, FILE *stream) {
 	int i = 0;
 	int c = 0;
@@ -35,11 +41,7 @@ char *fgets(char *s, int size, FILE *stream) {
 	return s;
 }
 
-/**
- * Fonction de la libc.
- * fgetc lit le caractère suivant depuis le flux stream.
- * @return le caractère lu ou EOF en cas d'erreur ou fin de flux.
- */
+
 int fgetc(FILE *stream) {
 	int c = EOF;
 	char *i;

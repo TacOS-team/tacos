@@ -20,9 +20,6 @@
 
 #define DEFAULT_ATTRIBUTE_VALUE 0x09
 
-/* Variables. */
-static int finnouMode = 0; //disable par défaut, quand même 
-
 typedef struct {
 	unsigned char character;
 	unsigned char attribute;
@@ -146,7 +143,8 @@ void newline()
 	updateCursorPosition();
 }
 
-void kputchar_position(char c, int x, int y) {
+void kputchar_position(text_window * tw, char c, int x, int y) {
+	// TODO : prendre en compte tw !
 	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].character = c & 0xFF;
 	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].attribute = buffer_video->attribute;
 	(*video)[x + y * COLUMNS].character = c & 0xFF;
@@ -229,7 +227,7 @@ void backspace(text_window *tw, char c) {
 			buffer_video->xpos = COLUMNS - 1;
 		}
 
-		kputchar_position(' ', buffer_video->xpos, buffer_video->ypos); 
+		kputchar_position(tw, ' ', buffer_video->xpos, buffer_video->ypos); 
 	}
 	updateCursorPosition();
 }
@@ -362,21 +360,13 @@ void kputchar (text_window * tw, char c) {
 	} else if (c == '\t') {
 		kputchar_tab(tw);
 	} else {
-		kputchar_position(c, buffer_video->xpos, buffer_video->ypos);
+		kputchar_position(tw, c, buffer_video->xpos, buffer_video->ypos);
 	  	buffer_video->xpos++;
 		if (buffer_video->xpos >= COLUMNS)
 			newline();
 	}
   
-	if(finnouMode)
-		buffer_video->attribute = 0x0F & (buffer_video->attribute + 13 % 8);
-
 	updateCursorPosition();
-}
-
-void enableFinnouMode(int enable)
-{
-  finnouMode = enable;
 }
 
 void set_foreground(uint8_t foreground) {

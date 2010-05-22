@@ -82,13 +82,11 @@ void memory_print() {
 	p_u = used_frame_pages;
 	while (p_f != NULL || p_u != NULL) {
 		while ((p_f != NULL && p_u == NULL) || (p_f != NULL && p_f->addr > p_u->addr)) {
-			set_attribute(0, 2);
-			printf("F");
+			printf("\033[34mF\033[0m");
 			p_f = p_f->next;
 		}
 		while ((p_u != NULL && p_f == NULL) || (p_u != NULL && p_u->addr > p_f->addr)) {
-			set_attribute(0, 5);
-			printf("U");
+			printf("\033[31mU\033[0m");
 			p_u = p_u->next;
 		}
 	}

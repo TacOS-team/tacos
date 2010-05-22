@@ -23,6 +23,6 @@ int main_fiinou(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((
 	printf("\033[35mZ8DDNNNNNNNNNNNNNNNNNNNNNNNNNNDD+~:,,,,.........,,,,~OZZO8DNDNNNNDDNDNNNNNNNNDN\n");
 	printf("\033[36mDDDNDNDDNNNNDD8NDNNNNNDNNNNNNDDDO+~:::,............,~IZZ$$$$$ZODDDNND8DNNNNNNND\n");
 	printf("\033[35mDDDDNNN8DNDNNDN8DDNNNNNNNNNDDDDDD$+:,,,,...........,:~+I777$ZZ7IIIONN$DDNDDDDNN\n");
-	printf("\033[36mDDDDDDND8NDDNND8DDDDNNDNDNNNNNNNDDD7~,,.,.....,,,.,,::~=+?I77$7I+++ONNDDNNDNNDD\n");
+	printf("\033[36mDDDDDDND8NDDNND8DDDDNNDNDNNNNNNNDDD7~,,.,.....,,,.,,::~=+?I77$7I+++ONNDDNNDNNDD\033[0m\n");
 	return 0;
 }

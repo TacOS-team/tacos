@@ -195,7 +195,6 @@ static void initKernelOptions(const char *cmdLine, kernel_options *options)
 		{
 		case 'l':
 				options->lol = 1;
-				enableFinnouMode(1);
 				break;
 		//default: printf("Unknown option %c\n", opt);
 		}
