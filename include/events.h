@@ -10,7 +10,7 @@
 typedef void *(*callback_t) (void *);
 
 /** 
-* @brief structure stockant un evennement à declencher
+* @brief structure stockant un évènement à declencher
 */
 struct event_t
 {

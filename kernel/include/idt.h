@@ -1,7 +1,13 @@
 #ifndef _IDT_H_
 #define _IDT_H_
 
-#define IDT_TRAPGATE	0x7
+/**
+ * @file idt.h
+ * @brief Initialisation de la table des descripteurs d'interruption et 
+ * association aux handlers.
+ */
+
+#define IDT_TRAPGATE		0x7
 #define IDT_INTGATE		0x6
 #define IDT_TASKGATE 	0x5
 

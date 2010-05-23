@@ -1,17 +1,25 @@
-/* Dans ce fichier on va juste gérer les irq */
+/**
+ * @file interrupts.c
+ */
 
 #include <types.h>
 #include <idt.h>
 #include <i8259.h>
-#include "interrupts.h"
+#include <interrupts.h>
 
-/* Nombre d'irq : */
+/**
+ *  Nombre d'irq : 
+ */
 #define INTERRUPT_NUM 32
-/* On va définir une constante pour dire où on va mapper (pour l'idt) */
+
+/**
+ *  Définition de là où on mappe les interruptions. 
+ */
 #define INTERRUPT_BASE 32 /* Juste après les exceptions */
 
-/* Le wrapper_array on le défini dans le interrupts_wrappers.S */
-/* Le wrapper contient le code assembleur qui backup le contexte puis execute le handler. */
+/**
+ * Le wrapper_array on le défini dans le interrupts_wrappers.S 
+ * Le wrapper contient le code assembleur qui backup le contexte puis execute le handler. */
 extern paddr_t interrupts_wrapper_array[INTERRUPT_NUM];
 
 /* Tableau qui contient les handlers de toutes les interruptions. */
@@ -36,7 +44,7 @@ int interrupt_set_routine(uint8_t interrupt_id, interrupt_handler_t routine, uin
 
 	i8259_enable_irq_line(interrupt_id);
 
-  // reenable irqs (restore flags) 
+	// Réactive les IRQs (restore flags) 
 	asm volatile("push %0; popfl"::"g"(flags):"memory");
 
 	return 0;
@@ -56,6 +64,7 @@ int interrupt_disable(uint8_t interrupt_id)
 
 	return 0;
 }
+
 void make_trapgate_from_int(uint8_t interrupt_id)
 {
 	idt_set_handler_type(interrupt_id + INTERRUPT_BASE, IDT_TRAPGATE);

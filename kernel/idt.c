@@ -1,3 +1,7 @@
+/**
+ * @file idt.c
+ */
+
 #include <types.h>
 #include <idt.h>
 
@@ -8,21 +12,25 @@
 /* Il y a 256 interruptions possibles sur archi x86 (cf doc d'intel) */
 #define IDT_ENTRIES_NUM 256
 
+/**
+ * @brief Entrée de l'IDT.
+ * @struct x86_idt_entry
+ */
 struct x86_idt_entry
 {
 	/* Low dword */
-	uint16_t offset_low;  /* 15..0, offset of the routine in the segment */
-	uint16_t seg_sel;     /* 31..16, the ID of the segment */
+	uint16_t offset_low;  /**< 15..0, offset of the routine in the segment */
+	uint16_t seg_sel;     /**< 31..16, the ID of the segment */
 
 	/* High dword */
-	uint8_t reserved:5;   /* 4..0 (unused) */
-	uint8_t flags:3;      /* 7..5 (unused) */
-	uint8_t type:3;       /* 10..8 (task gate 101, interrupt gate 110, trap gate 111...) */
-	uint8_t op_size:1;    /* 11 (0=16bits instructions, 1=32bits instr.) */
-	uint8_t zero:1;       /* 12 : Segment système */
-	uint8_t dpl:2;        /* 14..13 (niveau de privilège, 0 = superviseur, 3 = applicatif */
-	uint8_t present:1;    /* 15 (0 => Pas configuré) */
-	uint16_t offset_high; /* 31..16 */
+	uint8_t reserved:5;   /**< 4..0 (unused) */
+	uint8_t flags:3;      /**< 7..5 (unused) */
+	uint8_t type:3;       /**< 10..8 (task gate 101, interrupt gate 110, trap gate 111...) */
+	uint8_t op_size:1;    /**< 11 (0=16bits instructions, 1=32bits instr.) */
+	uint8_t zero:1;       /**< 12 : Segment système */
+	uint8_t dpl:2;        /**< 14..13 (niveau de privilège, 0 = superviseur, 3 = applicatif */
+	uint8_t present:1;    /**< 15 (0 => Pas configuré) */
+	uint16_t offset_high; /**< 31..16 */
 } __attribute__((packed));
 
 struct x86_idt_register

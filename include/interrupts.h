@@ -1,6 +1,14 @@
 #ifndef _INTERRUPTS_H_
 #define _INTERRUPTS_H_
 
+/**
+ * @file interrupts.h
+ * @brief Gestion des interruptions..
+ */
+
+/**
+ * Définition des IRQ :
+ */
 #define IRQ_TIMER           0
 #define IRQ_KEYBOARD        1
 #define IRQ_SLAVE_PIC       2
@@ -21,8 +29,29 @@
 
 typedef void (*interrupt_handler_t)(int interrupt_id);
 
+/** 
+ * @brief Ajoute une nouvelle interruption.
+ *
+ * Ajoute une nouvelle interruption en mappant le numéro de l'interruption à 
+ * la routine d'exécution.
+ * 
+ * @param interrupt_id Le numéro d'interruption.
+ * @param routine La routine qui sera exécutée lors de cette interruption.
+ * @param privilege Le niveau de privilège/priorité (0 ou 3).
+ * 
+ * @return 0 en cas de succès. Autre chose sinon.
+ */
 int interrupt_set_routine(uint8_t interrupt_id, interrupt_handler_t routine, uint8_t privilege);
+
+/** 
+ * @brief Désactive une interruption.
+ * 
+ * @param interrupt_id Le numéro de l'interruption à désactiver.
+ * 
+ * @return 0 en cas de succès. Autre chose sinon.
+ */
 int interrupt_disable(uint8_t interrupt_id);
+
 void make_trapgate_from_int(uint8_t interrupt_id);
 
 #endif
