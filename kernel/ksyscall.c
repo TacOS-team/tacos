@@ -43,7 +43,7 @@ int syscall_set_handler(uint32_t syscall_id, syscall_handler_t handler)
 void init_syscall()
 {
 	interrupt_set_routine(IRQ_SYSCALL, syscall_entry, 3);
-	make_trapgate_from_int(IRQ_SYSCALL);
+	//make_trapgate_from_int(IRQ_SYSCALL);
 	// Mise à zero de la table des handler
 	memset(syscall_handler_table, 0, MAX_SYSCALL_NB*sizeof(syscall_handler_t));
 }
