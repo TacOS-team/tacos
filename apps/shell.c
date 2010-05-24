@@ -55,7 +55,7 @@ static int cls() {
 static int exec_shell()
 {
 	cls();
-	exec(shell, "Mishell");
+	exec(shell, "Mishell"); // XXX: exec est défini dans le kernel...
 	return 0;
 }
 

@@ -43,7 +43,7 @@ static void displayWidget(struct widget_t* wdg)
 			while(!fini)
 			{
 				// On recupere une ligne de la largeur du widget
-				if(strlen(&(wdg->adv[indice]))<(wdg->w-2))
+	/*			if(strlen(&(wdg->adv[indice]))<(wdg->w-2))
 				{
 					strncpy(ligne, &(wdg->adv[indice]), wdg->w-2);
 
@@ -54,7 +54,7 @@ static void displayWidget(struct widget_t* wdg)
 				{
 					strncpy(ligne, &(wdg->adv[indice]), wdg->w-2);
 					ligne[wdg->w-2] = '\0';
-				}
+				} */
 				// On coupe la ligne si elle contient un retour à la ligne
 				char* ret = strchr(ligne, '\n');
 				if(ret != NULL)
