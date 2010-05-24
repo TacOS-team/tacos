@@ -3,7 +3,6 @@
 #include <ctype.h>
 #include <video.h>
 
-/* Some screen stuff. */
 /* The number of columns. */
 #define COLUMNS                 80
 /* The number of lines. */
@@ -18,7 +17,6 @@
 #define CURSOR_POS_MSB 0x0E
 #define CURSOR_POS_LSB 0x0F
 
-#define DEFAULT_ATTRIBUTE_VALUE 0x09
 
 typedef struct {
 	unsigned char character;
@@ -27,30 +25,41 @@ typedef struct {
 
 typedef struct {
 	x86_video_mem buffer;
-	int bottom_buffer;
-	/* Save the X position. */
-	int xpos;
-	/* Save the Y position. */
-	int ypos;
-	bool disable_cursor;
-	uint8_t attribute;
 } buffer_video_t;
 
 /** The base pointer for the video memory */
 /* volatile pour éviter des problèmes d'optimisation de gcc. */
 static volatile x86_video_mem *video = (volatile x86_video_mem*)VIDEO;
-static buffer_video_t buffer_standard;
-static buffer_video_t buffer_debug;
-static buffer_video_t *buffer_video = &buffer_standard;
+static buffer_video_t buffer[2];
+static buffer_video_t *buffer_video = &buffer[0];
 
-static void scrollup();
 static void updateCursorPosition();
-void set_foreground(uint8_t foreground);
-void set_background(uint8_t background);
+void set_foreground(text_window * tw, uint8_t foreground);
+void set_background(text_window * tw, uint8_t background);
+
+static void refresh (void) {
+	int i;
+	for (i = 0; i < COLUMNS * LINES; i++) {
+	  (*video)[i].character = buffer_video->buffer[i].character;
+	  (*video)[i].attribute = buffer_video->buffer[i].attribute;
+	}
+}
+
+/* Clear the screen and initialize VIDEO, XPOS and YPOS. */
+static void clear (void) {
+	int i;
+ 
+	for (i = 0; i < COLUMNS * LINES; i++) {
+	  buffer_video->buffer[i].character = 0;
+	  buffer_video->buffer[i].attribute = DEFAULT_ATTRIBUTE_VALUE;
+	}
+
+	refresh();
+}
 
 void init_video() {
 	reset_attribute();
-	cls();
+	clear();
 }
 
 void disableCursor()
@@ -63,68 +72,59 @@ void disableCursor()
 	outb(1 << 5, CRT_REG_DATA);
 }
 
-void refresh (void) {
-	int i;
-	for (i = 0; i < COLUMNS * LINES; i++) {
-	  (*video)[i].character = buffer_video->buffer[(i + buffer_video->bottom_buffer*80)%(25*80)].character;
-	  (*video)[i].attribute = buffer_video->buffer[(i + buffer_video->bottom_buffer*80)%(25*80)].attribute;
+void kputchar_position(char c, int x, int y, int attribute) {
+	if (x < COLUMNS && y < LINES) {
+		buffer_video->buffer[x + y * COLUMNS].character = c & 0xFF;
+		buffer_video->buffer[x + y * COLUMNS].attribute = attribute;
+		(*video)[x + y * COLUMNS].character = c & 0xFF;
+		(*video)[x + y * COLUMNS].attribute = attribute;
 	}
 }
 
-/* Clear the screen and initialize VIDEO, XPOS and YPOS. */
-void cls (void) {
-	int i;
+void cls(text_window *tw) {
+	int x,y;
  
-	for (i = 0; i < COLUMNS * LINES; i++) {
-	  buffer_video->buffer[i].character = 0;
-	  buffer_video->buffer[i].attribute = buffer_video->attribute;
+	for (y = tw->y; y < tw->y + tw->lines; y++) {
+		for (x = tw->x; x < tw->x + tw->cols; x++) {
+			kputchar_position(' ', x, y, tw->attribute);
+		}
 	}
 
-	refresh();
-
-	buffer_video->xpos = 0;
-	buffer_video->ypos = 0;
+	tw->cursor_x = 0;
+	tw->cursor_y = 0;
+	updateCursorPosition(tw);
 }
 
-void switchDebugBuffer() {
-	buffer_video = &buffer_debug;
+void switchBuffer(int i) { // TODO : refresh que si besoin !
+	buffer_video = &buffer[i];
 	refresh();
-	if (buffer_video->disable_cursor) {
-		disableCursor();
-	} else {
-		updateCursorPosition();
+	disableCursor();
+}
+
+static void scrollup(text_window *tw) {
+	int l, c;
+
+	for (l = tw->y; l < tw->y + tw->lines - 1; l++) {
+		for (c = tw->x; c < tw->x + tw->cols; c++) {
+			buffer_video->buffer[c + l*COLUMNS].character = buffer_video->buffer[c + (l + 1)*COLUMNS].character;
+			buffer_video->buffer[c + l*COLUMNS].attribute = buffer_video->buffer[c + (l + 1)*COLUMNS].attribute;
+		}
 	}
-}
-
-void switchStandardBuffer() {
-	buffer_video = &buffer_standard;
-	refresh();
-	if (buffer_video->disable_cursor) {
-		disableCursor();
-	} else {
-		updateCursorPosition();
-	}
-}
-
-static void scrollup() {
-	int c;
-
-	buffer_video->bottom_buffer++;
 
 	/*
 	 * On met des espaces sur la dernière ligne
 	 */
-	for (c = 0; c < COLUMNS; c++) {
-		buffer_video->buffer[((buffer_video->bottom_buffer+LINES-1) * COLUMNS + c)%(25*80)].character = ' ';
-		buffer_video->buffer[((buffer_video->bottom_buffer+LINES-1) * COLUMNS + c)%(25*80)].attribute = buffer_video->attribute;
+	for (c = tw->x; c < tw->x + tw->cols; c++) {
+		buffer_video->buffer[c + (tw->y + tw->lines - 1) * COLUMNS].character = ' ';
+		buffer_video->buffer[c + (tw->y + tw->lines - 1) * COLUMNS].attribute = tw->attribute;
 	}
 
 	refresh();
 }
 
-static void updateCursorPosition()
+static void updateCursorPosition(text_window * tw)
 {
-  int pos = buffer_video->xpos + buffer_video->ypos*COLUMNS;
+  int pos = tw->x + tw->cursor_x + (tw->y + tw->cursor_y)*COLUMNS;
 
   outb(CURSOR_POS_LSB, CRT_REG_INDEX);
   outb((uint8_t) pos, CRT_REG_DATA);
@@ -132,79 +132,73 @@ static void updateCursorPosition()
   outb((uint8_t) (pos >> 8), CRT_REG_DATA);
 }
 
-void newline()
+void newline(text_window * tw)
 {
-	buffer_video->xpos = 0;
-	buffer_video->ypos++;
-	if (buffer_video->ypos >= LINES) {
-		scrollup();
-		buffer_video->ypos = LINES - 1;
+	tw->cursor_x = 0;
+	tw->cursor_y++;
+	if (tw->cursor_y >= tw->lines) {
+		scrollup(tw);
+		tw->cursor_y--;
 	}
-	updateCursorPosition();
-}
-
-void kputchar_position(text_window * tw, char c, int x, int y) {
-	// TODO : prendre en compte tw !
-	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].character = c & 0xFF;
-	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].attribute = buffer_video->attribute;
-	(*video)[x + y * COLUMNS].character = c & 0xFF;
-	(*video)[x + y * COLUMNS].attribute = buffer_video->attribute;
+	updateCursorPosition(tw);
 }
 
 void kputchar_tab(text_window * tw) {
-	int x = buffer_video->xpos;
+	int x = tw->cursor_x;
 	
 	x = ((x / LARGEUR_TAB) + 1) * LARGEUR_TAB;
-	if (x > COLUMNS - 1) {
-		newline();
+	if (x >= tw->cols) {
+		newline(tw);
 	} else {
-		while(buffer_video->xpos < x) {
+		while(tw->cursor_x < x) {
 			kputchar(tw, ' ');
 		}
 	}
 }
 
-void cursor_up() {
-	if (buffer_video->ypos > 0)
-		buffer_video->ypos--;
-	updateCursorPosition();
+void cursor_up(text_window * tw) {
+	if (tw->cursor_y > 0)
+		tw->cursor_y--;
+	updateCursorPosition(tw);
 }
 
-void cursor_down() {
-	if (buffer_video->ypos < LINES - 1)
-		buffer_video->ypos++;
-	updateCursorPosition();
+void cursor_down(text_window * tw) {
+	if (tw->cursor_y < tw->lines - 1)
+		tw->cursor_y++;
+	updateCursorPosition(tw);
 }
 
-void cursor_back() {
-	if (buffer_video->xpos > 0)
-		buffer_video->ypos--;
-	updateCursorPosition();
+void cursor_back(text_window * tw) {
+	if (tw->cursor_x > 0)
+		tw->cursor_x--;
+	updateCursorPosition(tw);
 }
 
-void cursor_forward() {
-	if (buffer_video->xpos < COLUMNS -1)
-		buffer_video->xpos++;
-	updateCursorPosition();
+void cursor_forward(text_window * tw) {
+	if (tw->cursor_x < tw->cols -1)
+		tw->cursor_x++;
+	updateCursorPosition(tw);
 }
 
-void lineup() {
-	cursor_up();
-	buffer_video->xpos = 0;
-	updateCursorPosition();
+void lineup(text_window * tw) {
+	cursor_up(tw);
+	tw->cursor_x = 0;
+	updateCursorPosition(tw);
 }
 
-void cursor_move_col(int n) {
-	buffer_video->xpos = n-1;
-	updateCursorPosition();
-}
-
-void cursor_move(int n, int m) {
-	if (n > 0 && n <= LINES) {
-		buffer_video->ypos = n-1;
+void cursor_move_col(text_window * tw, int n) {
+	if (n <= tw->cols) {
+		tw->cursor_x = n-1;
+		updateCursorPosition(tw);
 	}
-	if (m > 0 && m <= COLUMNS) {
-		buffer_video->xpos = m-1;
+}
+
+void cursor_move(text_window * tw, int n, int m) {
+	if (n > 0 && n <= tw->lines) {
+		tw->cursor_y = n-1;
+	}
+	if (m > 0 && m <= tw->cols) {
+		tw->cursor_x = m-1;
 	}
 }
 
@@ -213,23 +207,26 @@ void cursor_move(int n, int m) {
  */
 void backspace(text_window *tw, char c) {
 	if (c == '\t') {
-		int x = buffer_video->xpos - LARGEUR_TAB;
+/*		int x = buffer_video->xpos - LARGEUR_TAB;
 		int y = buffer_video->ypos;
 		if (x < 0) x += COLUMNS;
 		while (buffer_video->xpos > x && buffer_video->buffer[buffer_video->xpos + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].character == ' ') {
 			buffer_video->xpos--;
-		}
+		}*/
 	} else {
-		if (buffer_video->xpos > 0) {
-			buffer_video->xpos--;
-		} else if (buffer_video->ypos > 0) {
-			buffer_video->ypos--;
-			buffer_video->xpos = COLUMNS - 1;
+		if (tw->cursor_x > 0) {
+			tw->cursor_x--;
+		} else if (tw->cursor_y > 0) {
+			tw->cursor_y--;
+			tw->cursor_x = tw->cols - 1;
 		}
 
-		kputchar_position(tw, ' ', buffer_video->xpos, buffer_video->ypos); 
+		int x = tw->cursor_x + tw->x;
+		int y = tw->cursor_y + tw->y;
+
+		kputchar_position(' ', x, y, tw->attribute); 
 	}
-	updateCursorPosition();
+	updateCursorPosition(tw);
 }
 
 /*
@@ -237,6 +234,7 @@ void backspace(text_window *tw, char c) {
  *  Supporte les caractères ANSI.
  */
 void kputchar (text_window * tw, char c) {
+	switchBuffer(tw->buffer);
 	static bool escape_char = FALSE;
 	static bool ansi_escape_code = FALSE;
 	static bool ansi_second_val = FALSE;
@@ -258,29 +256,29 @@ void kputchar (text_window * tw, char c) {
 				if (val2 == 0) val2 = 1;
 				switch(c) {
 					case 'A':
-						while (val--) cursor_up();
+						while (val--) cursor_up(tw);
 						break;
 					case 'B':
-						while (val--) cursor_down();
+						while (val--) cursor_down(tw);
 						break;
 					case 'C':
-						while (val--) cursor_forward();
+						while (val--) cursor_forward(tw);
 						break;
 					case 'D': 
-						while (val--) cursor_back();
+						while (val--) cursor_back(tw);
 						break;
 					case 'E':
-						while (val--) newline();
+						while (val--) newline(tw);
 						break;
 					case 'F':
-						while (val--) lineup();
+						while (val--) lineup(tw);
 						break;
 					case 'G':
-						cursor_move_col(val);
+						cursor_move_col(tw, val);
 						break;
 					case 'f':
 					case 'H':
-						cursor_move(val, val2);
+						cursor_move(tw, val, val2);
 						break;
 					case ';':
 						escape_char = TRUE;
@@ -290,45 +288,45 @@ void kputchar (text_window * tw, char c) {
 						break;
 					case 'm':
 						if (val == 0) {
-							reset_attribute();
+							reset_attribute(tw);
 						} else if (val >= 30 && val <= 37) {
 							switch(val - 30) {
 								// si low intensity (normal) :
-								case 0: set_foreground(BLACK);
+								case 0: set_foreground(tw, BLACK);
 										  break;
-								case 1: set_foreground(RED);
+								case 1: set_foreground(tw, RED);
 										  break;
-								case 2: set_foreground(GREEN);
+								case 2: set_foreground(tw, GREEN);
 										  break;
-								case 3: set_foreground(YELLOW);
+								case 3: set_foreground(tw, YELLOW);
 										  break;
-								case 4: set_foreground(BLUE);
+								case 4: set_foreground(tw, BLUE);
 										  break;
-								case 5: set_foreground(MAGENTA);
+								case 5: set_foreground(tw, MAGENTA);
 										  break;
-								case 6: set_foreground(CYAN);
+								case 6: set_foreground(tw, CYAN);
 										  break;
-								case 7: set_foreground(WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
+								case 7: set_foreground(tw, WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
 										  break;
 							}
 						} else if (val >= 40 && val <= 47) {
 							switch(val - 40) {
 								// si low intensity (normal) :
-								case 0: set_background(BLACK);
+								case 0: set_background(tw, BLACK);
 										  break;
-								case 1: set_background(RED);
+								case 1: set_background(tw, RED);
 										  break;
-								case 2: set_background(GREEN);
+								case 2: set_background(tw, GREEN);
 										  break;
-								case 3: set_background(YELLOW);
+								case 3: set_background(tw, YELLOW);
 										  break;
-								case 4: set_background(BLUE);
+								case 4: set_background(tw, BLUE);
 										  break;
-								case 5: set_background(MAGENTA);
+								case 5: set_background(tw, MAGENTA);
 										  break;
-								case 6: set_background(CYAN);
+								case 6: set_background(tw, CYAN);
 										  break;
-								case 7: set_background(WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
+								case 7: set_background(tw, WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
 										  break;
 							}
 
@@ -340,7 +338,7 @@ void kputchar (text_window * tw, char c) {
 						} else if (val == 1) {
 
 						} else if (val == 2) {
-							cls();
+							cls(tw);
 						}
 						break;
 				}
@@ -356,30 +354,32 @@ void kputchar (text_window * tw, char c) {
 	} else if (c == '\033') {
 		escape_char = TRUE;
 	} else if (c == '\n' || c == '\r') {
-		newline();
+		newline(tw);
 	} else if (c == '\t') {
 		kputchar_tab(tw);
 	} else {
-		kputchar_position(tw, c, buffer_video->xpos, buffer_video->ypos);
-	  	buffer_video->xpos++;
-		if (buffer_video->xpos >= COLUMNS)
-			newline();
+		int x = tw->cursor_x + tw->x;
+		int y = tw->cursor_y + tw->y;
+		kputchar_position(c, x, y, tw->attribute);
+	  	tw->cursor_x++;
+		if (tw->cursor_x >= tw->cols)
+			newline(tw);
 	}
   
-	updateCursorPosition();
+	updateCursorPosition(tw);
 }
 
-void set_foreground(uint8_t foreground) {
-  buffer_video->attribute = (buffer_video->attribute & 0xF0) | (foreground & 0xF); 
+void set_foreground(text_window * tw, uint8_t foreground) {
+	tw->attribute = (tw->attribute & 0xF0) | (foreground & 0xF); 
 }
 
-void set_background(uint8_t background) {
-  buffer_video->attribute = ((background & 0xF) << 4) | (buffer_video->attribute & 0x0F);
+void set_background(text_window * tw, uint8_t background) {	
+	tw->attribute = ((background & 0xF) << 4) | (tw->attribute & 0x0F);
 }
 
-void set_attribute(uint8_t background, uint8_t foreground)
+void set_attribute(text_window * tw, uint8_t background, uint8_t foreground)
 {
-  buffer_video->attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
+	tw->attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
 }
 
 uint8_t get_bg_position(int x, int y)
@@ -392,13 +392,13 @@ uint8_t get_fg_position(int x, int y)
 	return (*video)[x + y * COLUMNS].attribute & 0x0F;
 }
 
-void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y)
+void set_attribute_position(text_window *tw, uint8_t background, uint8_t foreground, int x, int y)
 {
-	buffer_video->buffer[x + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].attribute = buffer_video->attribute;
+	buffer_video->buffer[x + y * COLUMNS].attribute = tw->attribute;
 	(*video)[x + y * COLUMNS].attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
 }
 
-void reset_attribute()
+void reset_attribute(text_window *tw)
 {
-  buffer_video->attribute = DEFAULT_ATTRIBUTE_VALUE;
+  tw->attribute = DEFAULT_ATTRIBUTE_VALUE;
 }

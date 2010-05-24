@@ -104,16 +104,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	init_vmm();
 	init_kmalloc();
 
-	/* Clear the screen. */
-	cls ();
-
-	kprintf("_|_|_|_|_|                      _|_|      _|_|_|\n");
-	kprintf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");
-	kprintf("    _|    _|    _|  _|        _|    _|    _|_|  \n");
-	kprintf("    _|    _|    _|  _|        _|    _|        _|\n");
-	kprintf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
-	kprintf("(codename:fajitas)\n\n\n");
-
 	//beep();
 
 	//kprintf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/

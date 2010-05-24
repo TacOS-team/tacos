@@ -5,6 +5,8 @@
 #include <video.h>
 #include <fcntl.h>
 
+static text_window ktw = {0, 0, 80, 25, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 1};
+
 void itoa (char *buf, int base, int d) {
 	char *p = buf;
 	char *p1, *p2;
@@ -44,6 +46,7 @@ void itoa (char *buf, int base, int d) {
 }
 
 void kprintf(const char *format, ...) {
+	switchBuffer(1);
   char **arg = (char **) &format;
   int c;
   char buf[20];
@@ -53,7 +56,7 @@ void kprintf(const char *format, ...) {
   while ((c = *format++) != 0)
     {
       if (c != '%')
-        kputchar (NULL, c);
+        kputchar (&ktw, c);
       else
         {
           char *p;
@@ -76,11 +79,11 @@ void kprintf(const char *format, ...) {
 
             string:
               while (*p)
-                kputchar (NULL, *p++);
+                kputchar (&ktw, *p++);
               break;
 
             default:
-              kputchar (NULL, *((int *) arg++));
+              kputchar (&ktw, *((int *) arg++));
               break;
             }
         }

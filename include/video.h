@@ -1,5 +1,7 @@
 #include <types.h>
 
+#define DEFAULT_ATTRIBUTE_VALUE 0x09
+
 #define BLACK         0x0
 #define BLUE          0x1
 #define GREEN         0x2
@@ -17,22 +19,25 @@
 #define YELLOW        0xE
 #define WHITE         0xF
 
-/* Défini un  */
+/* Défini une fenetre texte */
 typedef struct {
 	int x, y;
 	int cols, lines;
+	int cursor_x, cursor_y;
+	bool disable_cursor;
+	uint8_t attribute;
+	int buffer;
 } text_window;
 
 void disableCursor();
-void cls (void);
+void cls (text_window *tw);
 void newline();
-void set_attribute(uint8_t background, uint8_t foreground);
-void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y);
+void set_attribute(text_window *tw, uint8_t background, uint8_t foreground);
+void set_attribute_position(text_window *tw, uint8_t background, uint8_t foreground, int x, int y);
 uint8_t get_bg_position(int x, int y);
 uint8_t get_fg_position(int x, int y);
 void reset_attribute();
-void switchDebugBuffer();
-void switchStandardBuffer();
+void switchBuffer(int i);
 void kputchar (text_window *tw, char c);
 void backspace(text_window *tw, char c);
 void init_video();

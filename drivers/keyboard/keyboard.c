@@ -236,10 +236,10 @@ void keyboardInterrupt(int id __attribute__ ((unused)))
 		keyBufferPush(' ');
 		break;
 	case KEY_F1:
-		switchStandardBuffer();
+		switchBuffer(1);
 		break;
 	case KEY_F2:
-		switchDebugBuffer();
+		switchBuffer(2);
 		break;
 	default: 
 		if (alt) {

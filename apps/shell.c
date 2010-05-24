@@ -92,7 +92,14 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(exec_shell, "Mishell");
 	add_builtin_cmd(main_fiinou, "Fiinou");
 	add_builtin_cmd(launch_pres, "presentation");
-		
+	
+	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
+	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");
+	printf("    _|    _|    _|  _|        _|    _|    _|_|  \n");
+	printf("    _|    _|    _|  _|        _|    _|        _|\n");
+	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
+	printf("(codename:fajitas)\n\n\n");
+
 	for(;;)
 	{
 		//time_t curr_time = time(NULL);

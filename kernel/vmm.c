@@ -336,10 +336,10 @@ unsigned int calculate_min_pages(size_t size)
 
 static void print_slab(struct slab* s, bool free)
 {
-  set_attribute(BLACK, free ? GREEN : RED);
+ // set_attribute(BLACK, free ? GREEN : RED);
   printf("[%x ; %x ; %x] ", s, s->prev, s->next);
   fflush(stdout);
-  reset_attribute();
+ // reset_attribute();
 }
 
 void vmm_print_heap()

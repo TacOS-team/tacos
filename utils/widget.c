@@ -120,7 +120,7 @@ void runWindow(struct window_t* win)
 			x = x*80/640;
 			y = 25 - (y*25/480);
 
-			if(!frst_time)
+			/*if(!frst_time)
 				set_attribute_position(colbg, colfg, old_x, old_y);
 			else
 				frst_time = 0;
@@ -129,7 +129,7 @@ void runWindow(struct window_t* win)
 			set_attribute_position(win->cursor, BLACK, x, y);
 			old_x = x;
 			old_y = y;
-	
+	*/
 			if(getMouseBtn(0))
 			{
 				if(!btn_frz)
