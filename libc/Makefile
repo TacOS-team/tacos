@@ -25,7 +25,7 @@ ctype.o: ../include/ctype.h
 fcntl.o: ../include/types.h ../include/fcntl.h ../include/libio.h
 fcntl.o: ../include/process.h ../include/stdio.h ../include/stdarg.h
 fcntl.o: ../include/string.h ../include/syscall.h ../kernel/include/fat.h
-fcntl.o: ../include/video.h
+fcntl.o: ../include/video.h ../include/stdlib.h
 libio.o: ../include/libio.h ../include/fcntl.h ../include/types.h
 libio.o: ../include/stdio.h ../include/stdarg.h
 stdlib.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
