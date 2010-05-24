@@ -9,7 +9,8 @@
 
 /**
  * Le wrapper_array on le défini dans le interrupts_wrappers.S 
- * Le wrapper contient le code assembleur qui backup le contexte puis execute le handler.
+ * Le wrapper contient le code assembleur qui backup le contexte puis execute 
+ * le handler.
  */
 extern paddr_t interrupts_wrapper_array[INTERRUPT_NUM];
 

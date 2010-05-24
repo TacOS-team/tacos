@@ -121,8 +121,7 @@
 					mov %bx,%ds
 					pop %ebx
 
-					/* Call the handler with exception number as
-					 * argument */
+					/* Appelle le handler */
 					pushl $\id
 					leal  interrupts_handler_array,%edi
 					call  *\id*4(%edi)

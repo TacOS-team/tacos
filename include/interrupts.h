@@ -52,6 +52,12 @@ int interrupt_set_routine(uint8_t interrupt_id, interrupt_handler_t routine, uin
  */
 int interrupt_disable(uint8_t interrupt_id);
 
+/** 
+ * @brief Change le type d'une interruption en une trapgate.
+ * 
+ * @param interrupt_id Le numéro de l'interruption dont on veut changer le 
+ * type pour en faire une trapgate.
+ */
 void make_trapgate_from_int(uint8_t interrupt_id);
 
 #endif
