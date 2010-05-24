@@ -8,18 +8,9 @@
 #include <interrupts.h>
 
 /**
- *  Nombre d'irq : 
- */
-#define INTERRUPT_NUM 32
-
-/**
- *  Définition de là où on mappe les interruptions. 
- */
-#define INTERRUPT_BASE 32 /* Juste après les exceptions */
-
-/**
  * Le wrapper_array on le défini dans le interrupts_wrappers.S 
- * Le wrapper contient le code assembleur qui backup le contexte puis execute le handler. */
+ * Le wrapper contient le code assembleur qui backup le contexte puis execute le handler.
+ */
 extern paddr_t interrupts_wrapper_array[INTERRUPT_NUM];
 
 /* Tableau qui contient les handlers de toutes les interruptions. */
@@ -42,6 +33,7 @@ int interrupt_set_routine(uint8_t interrupt_id, interrupt_handler_t routine, uin
 	idt_set_handler(INTERRUPT_BASE + interrupt_id,
                   (paddr_t)interrupts_wrapper_array[interrupt_id], privilege);
 
+	// XXX: Est-ce utile pour les interruptions logicielles ??
 	i8259_enable_irq_line(interrupt_id);
 
 	// Réactive les IRQs (restore flags) 

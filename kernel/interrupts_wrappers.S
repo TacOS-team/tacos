@@ -1,6 +1,10 @@
-/* Code repris de SOS...
-	Copyright (C) 2004  The KOS Team
-   Copyright (C) 1999  Free Software Foundation, Inc.
+/**
+ * @file interrupts_wrappers.S
+ * @brief Wrapper pour l'execution des interruptions.
+ *
+ * Code assembleur qui encapsule le lancement de la routine associée. 
+ * Structure inspirée de SOS (Copyright (C) 2004  The KOS Team, 
+ * Copyright (C) 1999  Free Software Foundation, Inc.)
 */
          
 .file "interrupts_wrappers.S"
@@ -14,7 +18,7 @@
 .globl interrupts_wrapper_array
 
 	
-/* On a 2 cases a gerer : lorsque l'irq est sur le master ou sur le slave. */
+/* On a 2 cas à gerer : lorsque l'irq est sur le master ou sur le slave. */
 /* irp permet d'iterer sur la liste qui suit */
 .irp id, 0,1,2,3,4,5,6,7 /* Des ID ca serait cool. */
  
@@ -34,8 +38,9 @@
 					mov %bx, %ds
 					pop %ebx
 
-					/* Call the handler with exception number as
-					 * argument */
+					/**
+					 * Appelle le handler qui a été enregistré dans le tableau interrupts_handler_array.
+					 */
 					pushl $\id
 					leal  interrupts_handler_array,%edi
 					call  *\id*4(%edi)
@@ -74,8 +79,9 @@
 					mov %bx,%ds
 					pop %ebx
 
-					/* Call the handler with exception number as
-					 * argument */
+					/**
+					 * Appelle le handler qui a été enregistré dans le tableau interrupts_handler_array.
+					 */
 					pushl $\id
 					leal  interrupts_handler_array,%edi
 					call  *\id*4(%edi)
@@ -96,6 +102,7 @@
                iret
 .endr
 
+/* Interruptions logicielles : */
 .irp id, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
  
         .p2align 2, 0x90

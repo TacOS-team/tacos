@@ -2,12 +2,7 @@
 
 #include <types.h>
 #include <idt.h>
-#include "exception.h"
-
-/* Nombre d'exceptions : */
-#define EXCEPTION_NUM 32
-/* On va définir une constante pour dire où on va mapper (pour l'idt) */
-#define EXCEPTION_BASE 0
+#include <exception.h>
 
 /* Le wrapper_array on le défini dans le exception_wrappers.S */
 /* Le wrapper contient le code assembleur qui backup le contexte puis execute le handler. 
