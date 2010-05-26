@@ -43,7 +43,7 @@ static void displayWidget(struct widget_t* wdg)
 			while(!fini)
 			{
 				// On recupere une ligne de la largeur du widget
-	/*			if(strlen(&(wdg->adv[indice]))<(wdg->w-2))
+				if(strlen(&(wdg->adv[indice]))<(wdg->w-2))
 				{
 					strncpy(ligne, &(wdg->adv[indice]), wdg->w-2);
 
@@ -54,7 +54,7 @@ static void displayWidget(struct widget_t* wdg)
 				{
 					strncpy(ligne, &(wdg->adv[indice]), wdg->w-2);
 					ligne[wdg->w-2] = '\0';
-				} */
+				} 
 				// On coupe la ligne si elle contient un retour à la ligne
 				char* ret = strchr(ligne, '\n');
 				if(ret != NULL)
@@ -120,7 +120,7 @@ void runWindow(struct window_t* win)
 			x = x*80/640;
 			y = 25 - (y*25/480);
 
-			/*if(!frst_time)
+			if(!frst_time)
 				set_attribute_position(colbg, colfg, old_x, old_y);
 			else
 				frst_time = 0;
@@ -129,7 +129,7 @@ void runWindow(struct window_t* win)
 			set_attribute_position(win->cursor, BLACK, x, y);
 			old_x = x;
 			old_y = y;
-	*/
+	
 			if(getMouseBtn(0))
 			{
 				if(!btn_frz)

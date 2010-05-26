@@ -2,6 +2,7 @@
 #include <ioports.h>
 #include <ctype.h>
 #include <video.h>
+#include <stdlib.h>
 
 /* The number of columns. */
 #define COLUMNS                 80
@@ -396,7 +397,7 @@ void set_background(text_window * tw, uint8_t background) {
 	tw->attribute = ((background & 0xF) << 4) | (tw->attribute & 0x0F);
 }
 
-void set_attribute(text_window * tw, uint8_t background, uint8_t foreground)
+void sys_set_attribute(text_window * tw, uint8_t background, uint8_t foreground)
 {
 	tw->attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
 }
@@ -411,10 +412,10 @@ uint8_t get_fg_position(int x, int y)
 	return (*video)[x + y * COLUMNS].attribute & 0x0F;
 }
 
-void set_attribute_position(text_window *tw, uint8_t background, uint8_t foreground, int x, int y)
+void sys_set_attribute_position(text_window *tw, uint8_t background, uint8_t foreground, int x, int y)
 {
-	buffer_video->buffer[x + y * COLUMNS].attribute = tw->attribute;
-	(*video)[x + y * COLUMNS].attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
+	buffer_video->buffer[x+tw->x + (tw->y+y) * COLUMNS].attribute = tw->attribute;
+	(*video)[tw->x + x + (tw->y + y) * COLUMNS].attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
 }
 
 void reset_attribute(text_window *tw)
@@ -437,4 +438,15 @@ text_window * creation_text_window(int x, int y, int cols, int lines, int cursor
 	tw->buffer = buffer;
 
 	return tw;
+}
+
+void set_attribute(uint8_t background, uint8_t foreground) 
+{
+	// TODO : syscall !
+}
+
+
+void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y) 
+{
+	// TODO : syscall !
 }

@@ -55,7 +55,7 @@ void* sys_open(uint32_t p_process __attribute__ ((unused)), uint32_t p_path , ui
 
 int open(const char *pathname, int flags) {
 	
-	syscall(3,0,(paddr_t) pathname,flags);
+	syscall(SYS_OPEN,0,(paddr_t) pathname,flags);
 	
 	return 0;
 }
