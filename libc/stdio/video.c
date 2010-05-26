@@ -418,6 +418,7 @@ uint8_t get_fg_position(int x, int y)
 
 void sys_set_attribute_position(text_window *tw, uint8_t background, uint8_t foreground, int x, int y)
 {
+	switchBuffer(tw->buffer);
 	buffer_video->buffer[x+tw->x + (tw->y+y) * COLUMNS].attribute = tw->attribute;
 	(*video)[tw->x + x + (tw->y + y) * COLUMNS].attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
 }
