@@ -3,7 +3,7 @@
 #include <stdio.h> 
 #include <string.h>
 #include <libio.h> 
-
+#include <video.h>
 #include <gdt.h>
 #include <process.h>
 #include <kmalloc.h>
@@ -285,6 +285,9 @@ void change_active_process() {
 	/* On change l'active process */
 	active_process = aux->process;
 	kprintf("active_process : %s\n", active_process->name);
+	if (active_process->fd[1].used) {
+		focus((text_window *)(active_process->fd[1].ofd->extra_data));
+	}
 }
 
 /*

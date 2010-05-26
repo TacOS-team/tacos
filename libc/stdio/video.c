@@ -62,6 +62,15 @@ void init_video() {
 	clear();
 }
 
+void focus(text_window *tw) {
+	switchBuffer(tw->buffer);
+	if (tw->disable_cursor) {
+		disableCursor();
+	} else {
+		updateCursorPosition(tw);
+	}
+}
+
 void disableCursor()
 {
   /* CRT index port => ask for access to register 0xa ("cursor
@@ -95,9 +104,11 @@ void cls(text_window *tw) {
 	updateCursorPosition(tw);
 }
 
-void switchBuffer(int i) { // TODO : refresh que si besoin !
-	buffer_video = &buffer[i];
-	refresh();
+void switchBuffer(int i) { 	
+	if (buffer_video != &buffer[i]) {
+		buffer_video = &buffer[i];
+		refresh();
+	}
 	disableCursor();
 }
 
@@ -130,6 +141,8 @@ static void updateCursorPosition(text_window * tw)
   outb((uint8_t) pos, CRT_REG_DATA);
   outb(CURSOR_POS_MSB, CRT_REG_INDEX);
   outb((uint8_t) (pos >> 8), CRT_REG_DATA);
+
+  tw->disable_cursor = 0;
 }
 
 void newline(text_window * tw)
@@ -234,11 +247,12 @@ void backspace(text_window *tw, char c) {
  *  Supporte les caractères ANSI.
  */
 void kputchar (text_window * tw, char c) {
-	switchBuffer(tw->buffer);
 	static bool escape_char = FALSE;
 	static bool ansi_escape_code = FALSE;
 	static bool ansi_second_val = FALSE;
 	static int val = 0, val2 = 0;
+
+	switchBuffer(tw->buffer);
 
 	if (escape_char) {
 		if (ansi_escape_code) {
@@ -401,4 +415,21 @@ void set_attribute_position(text_window *tw, uint8_t background, uint8_t foregro
 void reset_attribute(text_window *tw)
 {
   tw->attribute = DEFAULT_ATTRIBUTE_VALUE;
+}
+
+text_window * creation_text_window(int x, int y, int cols, int lines, int cursor_x, int cursor_y, bool disable_cursor, uint8_t attribute, int buffer)
+{
+	text_window *tw = malloc(sizeof(text_window));
+
+	tw->x = x;
+	tw->y = y;
+	tw->cols = cols;
+	tw->lines = lines;
+	tw->cursor_x = cursor_x;
+	tw->cursor_y = cursor_y;
+	tw->disable_cursor = disable_cursor;
+	tw->attribute = attribute;
+	tw->buffer = buffer;
+
+	return tw;
 }

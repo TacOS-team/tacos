@@ -75,9 +75,9 @@ memory.o: ../include/libio.h ../include/stdarg.h ../include/memory.h
 pagination.o: ../include/types.h ../include/memory.h include/pagination.h
 process.o: ../include/types.h ../include/stdlib.h ../include/stdio.h
 process.o: ../include/fcntl.h ../include/libio.h ../include/stdarg.h
-process.o: ../include/string.h include/gdt.h ../include/process.h
-process.o: ../include/kmalloc.h ../include/syscall.h ../include/time.h
-process.o: ../include/debug.h
+process.o: ../include/string.h ../include/video.h include/gdt.h
+process.o: ../include/process.h ../include/kmalloc.h ../include/syscall.h
+process.o: ../include/time.h ../include/debug.h
 scheduler.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 scheduler.o: ../include/libio.h ../include/stdarg.h ../include/process.h
 scheduler.o: include/scheduler.h ../include/events.h ../include/time.h

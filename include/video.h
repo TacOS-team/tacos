@@ -1,3 +1,10 @@
+#ifndef _VIDEO_H_
+#define _VIDEO_H_
+
+/**
+ * @file video.h
+ */
+
 #include <types.h>
 
 #define DEFAULT_ATTRIBUTE_VALUE 0x09
@@ -41,3 +48,7 @@ void switchBuffer(int i);
 void kputchar (text_window *tw, char c);
 void backspace(text_window *tw, char c);
 void init_video();
+void focus(text_window *tw);
+text_window * creation_text_window(int x, int y, int cols, int lines, int cursor_x, int cursor_y, bool disable_cursor, uint8_t attribute, int buffer);
+
+#endif

@@ -12,19 +12,19 @@
 #include <video.h>
 #include <stdlib.h>
 
-static text_window tw1 = {0, 0, 80, 24, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 0};
-static text_window tw2 = {0, 0, 80, 24, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 1};
+//static text_window tw1 = {0, 0, 80, 24, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 0};
+//static text_window tw2 = {0, 0, 80, 24, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 1};
 
 void init_stdfd(struct _file_descriptor *fd0, struct _file_descriptor *fd1, struct _file_descriptor *fd2) {
 	fd0->used = TRUE; /* stdin */
 	fd1->used = TRUE; /* stdout */
 	fd1->ofd = malloc(sizeof(open_file_descriptor));
 	fd1->ofd->write = write_screen;
-	fd1->ofd->extra_data = &tw1;
+	fd1->ofd->extra_data = creation_text_window(0, 0, 80, 24, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 0);
 	fd2->used = TRUE; /* stderr */
 	fd2->ofd = malloc(sizeof(open_file_descriptor));
 	fd2->ofd->write = write_screen;
-	fd2->ofd->extra_data = &tw2;
+	fd2->ofd->extra_data = creation_text_window(0, 0, 80, 24, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 1);
 }
 
 

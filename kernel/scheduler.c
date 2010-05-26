@@ -1,3 +1,7 @@
+/**
+ * @file scheduler.c
+ */
+
 #include <stdio.h>
 #include <types.h>
 #include <process.h>
@@ -12,8 +16,6 @@
 
 process_t* idle_process;
 static uint32_t quantum;						// Quantum de temps alloué aux process
-
-
 
 static void* switch_process(void* data __attribute__ ((unused)))
 {
@@ -101,7 +103,7 @@ static void* switch_process(void* data __attribute__ ((unused)))
 	add_event(switch_process,NULL,quantum);	
 	i8254_init(1000/*TIMER_FREQ*/);
 
-	// On réaffecte à la main stdin, stdout et stderr. TEMPORAIRE !
+	// On réaffecte à la main stdin, stdout et stderr. TEMPORAIRE ! Il faudrait que stdin, stdout et stderr soient tjs à la même adresse pour chaque processus...
 	stdin = current->stdin;
 	stdout = current->stdout;
 	stderr = current->stderr;
