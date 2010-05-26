@@ -12,8 +12,8 @@
 #include <video.h>
 #include <stdlib.h>
 
-static text_window tw1 = {10, 0, 60, 20, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 0};
-static text_window tw2 = {0, 0, 40, 24, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 1};
+static text_window tw1 = {0, 0, 80, 24, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 0};
+static text_window tw2 = {0, 0, 80, 24, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 1};
 
 void init_stdfd(struct _file_descriptor *fd0, struct _file_descriptor *fd1, struct _file_descriptor *fd2) {
 	fd0->used = TRUE; /* stdin */
