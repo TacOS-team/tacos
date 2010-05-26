@@ -65,20 +65,10 @@ void init_video() {
 void focus(text_window *tw) {
 	switchBuffer(tw->buffer);
 	if (tw->disable_cursor) {
-		disableCursor();
+		disableCursor(tw);
 	} else {
 		updateCursorPosition(tw);
 	}
-}
-
-void disableCursor()
-{
-  /* CRT index port => ask for access to register 0xa ("cursor
-	   start") */
-	outb(0x0a, CRT_REG_INDEX);
-
-	/* (RBIL Tables 708 & 654) CRT Register 0xa => bit 5 = cursor OFF */
-	outb(1 << 5, CRT_REG_DATA);
 }
 
 void kputchar_position(char c, int x, int y, int attribute) {
@@ -109,7 +99,6 @@ void switchBuffer(int i) {
 		buffer_video = &buffer[i];
 		refresh();
 	}
-	disableCursor();
 }
 
 static void scrollup(text_window *tw) {
@@ -141,8 +130,24 @@ static void updateCursorPosition(text_window * tw)
   outb((uint8_t) pos, CRT_REG_DATA);
   outb(CURSOR_POS_MSB, CRT_REG_INDEX);
   outb((uint8_t) (pos >> 8), CRT_REG_DATA);
+}
 
-  tw->disable_cursor = 0;
+void disableCursor(text_window * tw)
+{
+  /* CRT index port => ask for access to register 0xa ("cursor
+	   start") */
+	outb(0x0a, CRT_REG_INDEX);
+
+	/* (RBIL Tables 708 & 654) CRT Register 0xa => bit 5 = cursor OFF */
+	outb(1 << 5, CRT_REG_DATA);
+
+	tw->disable_cursor = 1;
+}
+
+void enableCursor(text_window * tw)
+{
+	tw->disable_cursor = 0;
+	updateCursorPosition(tw);
 }
 
 void newline(text_window * tw)
