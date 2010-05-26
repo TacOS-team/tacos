@@ -11,6 +11,7 @@
 #define SYS_EXEC 6
 #define SYS_IDLE 7
 #define SYS_SEMCTL 8
+#define SYS_VIDEO_CTL 9
 
 void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3);
 

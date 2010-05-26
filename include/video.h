@@ -53,5 +53,7 @@ text_window * creation_text_window(int x, int y, int cols, int lines, int cursor
 
 /* Avec le syscall qui va bien : */
 void set_attribute(uint8_t background, uint8_t foreground);
+void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y);
+void* sys_video_ctl( uint32_t ctl_code ,uint32_t color , uint32_t pos );
 
 #endif

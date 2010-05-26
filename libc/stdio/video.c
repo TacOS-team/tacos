@@ -3,6 +3,8 @@
 #include <ctype.h>
 #include <video.h>
 #include <stdlib.h>
+#include <syscall.h>
+#include <process.h>
 
 /* The number of columns. */
 #define COLUMNS                 80
@@ -18,6 +20,8 @@
 #define CURSOR_POS_MSB 0x0E
 #define CURSOR_POS_LSB 0x0F
 
+#define CTL_COL 0
+#define CTL_COL_POS 1
 
 typedef struct {
 	unsigned char character;
@@ -442,11 +446,40 @@ text_window * creation_text_window(int x, int y, int cols, int lines, int cursor
 
 void set_attribute(uint8_t background, uint8_t foreground) 
 {
-	// TODO : syscall !
+	text_window * tw = get_current_process()->fd[1].ofd->extra_data;
+	uint32_t args[2];
+	args[0] = background;
+	args[1] = foreground;
+	syscall(SYS_VIDEO_CTL,CTL_COL,(uint32_t)tw, (uint32_t)args);
 }
 
 
 void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y) 
 {
-	// TODO : syscall !
+	text_window * tw = get_current_process()->fd[1].ofd->extra_data;
+	uint32_t args[4];
+	args[0] = background;
+	args[1] = foreground;
+	args[2] = x;
+	args[3] = y;
+	syscall(SYS_VIDEO_CTL,CTL_COL_POS,(uint32_t)tw, (uint32_t)args);
+}
+
+void* sys_video_ctl( uint32_t ctl_code ,uint32_t tw , uint32_t args )
+{
+	switch(ctl_code)
+	{
+		case CTL_COL :
+			sys_set_attribute((text_window*)tw, *((uint32_t*)args), *((uint32_t*)args+1));
+			break;
+		case CTL_COL_POS :
+			sys_set_attribute_position((text_window*)tw,
+												*((uint32_t*)args), *((uint32_t*)args+1),
+												*((uint32_t*)args+2), *((uint32_t*)args+3));
+			break;
+		default :
+			break;
+	}
+
+	return 0;
 }

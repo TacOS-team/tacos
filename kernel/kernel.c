@@ -132,6 +132,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_WRITE,(syscall_handler_t)sys_write);
 	syscall_set_handler(SYS_EXEC, (syscall_handler_t)sys_exec);
 	syscall_set_handler(SYS_IDLE, (syscall_handler_t)sys_idle);
+	syscall_set_handler(SYS_VIDEO_CTL, (syscall_handler_t)sys_video_ctl);
 	
 	// Création du processus par défaut: notre shell
 	create_process("Mishell", (paddr_t)shell,0,NULL,1024,3);
