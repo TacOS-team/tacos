@@ -171,7 +171,10 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 	add_process(new_proc);
 	
 	active_process = new_proc;
-	
+	if (active_process->fd[1].used) {
+		focus((text_window *)(active_process->fd[1].ofd->extra_data));
+	}
+
 	return new_proc->pid;
 }
 

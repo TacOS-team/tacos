@@ -6,10 +6,6 @@
 #include <syscall.h>
 #include <process.h>
 
-/* The number of columns. */
-#define COLUMNS                 80
-/* The number of lines. */
-#define LINES                   25
 /* The video memory address. */
 #define VIDEO                   0xB8000
 
@@ -23,15 +19,6 @@
 #define CTL_COL 0
 #define CTL_COL_POS 1
 
-typedef struct {
-	unsigned char character;
-	unsigned char attribute;
-} __attribute__ ((packed)) x86_video_mem[LINES*COLUMNS];
-
-typedef struct {
-	x86_video_mem buffer;
-} buffer_video_t;
-
 /** The base pointer for the video memory */
 /* volatile pour éviter des problèmes d'optimisation de gcc. */
 static volatile x86_video_mem *video = (volatile x86_video_mem*)VIDEO;
@@ -42,11 +29,39 @@ static void updateCursorPosition();
 void set_foreground(text_window * tw, uint8_t foreground);
 void set_background(text_window * tw, uint8_t background);
 
-static void refresh (void) {
-	int i;
-	for (i = 0; i < COLUMNS * LINES; i++) {
-	  (*video)[i].character = buffer_video->buffer[i].character;
-	  (*video)[i].attribute = buffer_video->buffer[i].attribute;
+
+static void kputchar_position(int n, char c, int x, int y, int attribute) {
+	if (x < COLUMNS && y < LINES) {
+		buffer[n].buffer[x + y * COLUMNS].character = c & 0xFF;
+		buffer[n].buffer[x + y * COLUMNS].attribute = attribute;
+		if (buffer_video == &buffer[n]) {
+			(*video)[x + y * COLUMNS].character = c & 0xFF;
+			(*video)[x + y * COLUMNS].attribute = attribute;
+		}
+	}
+}
+
+static void kputchar_position_tw(text_window *tw, char c, int x, int y, int attribute) {
+	kputchar_position(tw->n_buffer, c, tw->x + x, tw->y + y, attribute);
+	tw->buffer[x + y * tw->cols].character = c;
+	tw->buffer[x + y * tw->cols].attribute = attribute;
+}
+
+
+static void refresh(text_window *tw) {
+	int i,x,y;
+
+	if (tw == NULL) {
+		for (i = 0; i < COLUMNS * LINES; i++) {
+		  (*video)[i].character = buffer_video->buffer[i].character;
+		  (*video)[i].attribute = buffer_video->buffer[i].attribute;
+		}
+	} else {
+		for (y = 0; y < tw->lines; y++) {
+			for (x = 0; x < tw->cols; x++) {
+				kputchar_position(tw->n_buffer, tw->buffer[y * tw->cols + x].character, tw->x + x, tw->y + y, tw->buffer[y * tw->cols + x].attribute);
+			}
+		}
 	}
 }
 
@@ -59,7 +74,7 @@ static void clear (void) {
 	  buffer_video->buffer[i].attribute = DEFAULT_ATTRIBUTE_VALUE;
 	}
 
-	refresh();
+	refresh(NULL);
 }
 
 void init_video() {
@@ -68,7 +83,8 @@ void init_video() {
 }
 
 void focus(text_window *tw) {
-	switchBuffer(tw->buffer);
+	switchBuffer(tw->n_buffer);
+	refresh(tw);
 	if (tw->disable_cursor) {
 		disableCursor(tw);
 	} else {
@@ -76,21 +92,12 @@ void focus(text_window *tw) {
 	}
 }
 
-void kputchar_position(char c, int x, int y, int attribute) {
-	if (x < COLUMNS && y < LINES) {
-		buffer_video->buffer[x + y * COLUMNS].character = c & 0xFF;
-		buffer_video->buffer[x + y * COLUMNS].attribute = attribute;
-		(*video)[x + y * COLUMNS].character = c & 0xFF;
-		(*video)[x + y * COLUMNS].attribute = attribute;
-	}
-}
-
 void cls(text_window *tw) {
 	int x,y;
  
-	for (y = tw->y; y < tw->y + tw->lines; y++) {
-		for (x = tw->x; x < tw->x + tw->cols; x++) {
-			kputchar_position(' ', x, y, tw->attribute);
+	for (y = 0; y < tw->lines; y++) {
+		for (x = 0; x < tw->cols; x++) {
+			kputchar_position_tw(tw, ' ', x, y, tw->attribute);
 		}
 	}
 
@@ -102,29 +109,27 @@ void cls(text_window *tw) {
 void switchBuffer(int i) { 	
 	if (buffer_video != &buffer[i]) {
 		buffer_video = &buffer[i];
-		refresh();
+		refresh(NULL);
 	}
 }
 
 static void scrollup(text_window *tw) {
 	int l, c;
 
-	for (l = tw->y; l < tw->y + tw->lines - 1; l++) {
-		for (c = tw->x; c < tw->x + tw->cols; c++) {
-			buffer_video->buffer[c + l*COLUMNS].character = buffer_video->buffer[c + (l + 1)*COLUMNS].character;
-			buffer_video->buffer[c + l*COLUMNS].attribute = buffer_video->buffer[c + (l + 1)*COLUMNS].attribute;
+	for (l = 0; l < tw->lines - 1; l++) {
+		for (c = tw->x; c < tw->cols; c++) {
+			kputchar_position_tw(tw, tw->buffer[c + (l + 1) * tw->cols].character, c, l, tw->buffer[c + (l + 1) * tw->cols].attribute);
 		}
 	}
 
 	/*
 	 * On met des espaces sur la dernière ligne
 	 */
-	for (c = tw->x; c < tw->x + tw->cols; c++) {
-		buffer_video->buffer[c + (tw->y + tw->lines - 1) * COLUMNS].character = ' ';
-		buffer_video->buffer[c + (tw->y + tw->lines - 1) * COLUMNS].attribute = tw->attribute;
+	for (c = 0; c < tw->cols; c++) {
+		kputchar_position_tw(tw, ' ', c, tw->lines - 1, tw->attribute);
 	}
 
-	refresh();
+	//refresh(tw);
 }
 
 static void updateCursorPosition(text_window * tw)
@@ -244,10 +249,10 @@ void backspace(text_window *tw, char c) {
 			tw->cursor_x = tw->cols - 1;
 		}
 
-		int x = tw->cursor_x + tw->x;
-		int y = tw->cursor_y + tw->y;
+		int x = tw->cursor_x;
+		int y = tw->cursor_y;
 
-		kputchar_position(' ', x, y, tw->attribute); 
+		kputchar_position_tw(tw, ' ', x, y, tw->attribute); 
 	}
 	updateCursorPosition(tw);
 }
@@ -261,8 +266,6 @@ void kputchar (text_window * tw, char c) {
 	static bool ansi_escape_code = FALSE;
 	static bool ansi_second_val = FALSE;
 	static int val = 0, val2 = 0;
-
-	switchBuffer(tw->buffer);
 
 	if (escape_char) {
 		if (ansi_escape_code) {
@@ -382,9 +385,7 @@ void kputchar (text_window * tw, char c) {
 	} else if (c == '\t') {
 		kputchar_tab(tw);
 	} else {
-		int x = tw->cursor_x + tw->x;
-		int y = tw->cursor_y + tw->y;
-		kputchar_position(c, x, y, tw->attribute);
+		kputchar_position_tw(tw, c, tw->cursor_x, tw->cursor_y, tw->attribute);
 	  	tw->cursor_x++;
 		if (tw->cursor_x >= tw->cols)
 			newline(tw);
@@ -418,7 +419,7 @@ uint8_t get_fg_position(int x, int y)
 
 void sys_set_attribute_position(text_window *tw, uint8_t background, uint8_t foreground, int x, int y)
 {
-	switchBuffer(tw->buffer);
+	switchBuffer(tw->n_buffer);
 	buffer_video->buffer[x+tw->x + (tw->y+y) * COLUMNS].attribute = tw->attribute;
 	(*video)[tw->x + x + (tw->y + y) * COLUMNS].attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
 }
@@ -440,7 +441,10 @@ text_window * creation_text_window(int x, int y, int cols, int lines, int cursor
 	tw->cursor_y = cursor_y;
 	tw->disable_cursor = disable_cursor;
 	tw->attribute = attribute;
-	tw->buffer = buffer;
+	tw->n_buffer = buffer;
+	tw->buffer = malloc(cols * lines * sizeof(struct x86_video_char));
+
+	cls(tw);
 
 	return tw;
 }

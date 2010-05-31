@@ -5,7 +5,7 @@
 #include <video.h>
 #include <fcntl.h>
 
-static text_window ktw = {0, 0, 80, 25, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 1};
+static text_window *ktw = NULL;
 
 void itoa (char *buf, int base, int d) {
 	char *p = buf;
@@ -46,6 +46,10 @@ void itoa (char *buf, int base, int d) {
 }
 
 void kprintf(const char *format, ...) {
+	if (ktw == NULL) {
+		ktw = creation_text_window(0, 0, 80, 25, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 1);
+	}
+
 	switchBuffer(1);
   char **arg = (char **) &format;
   int c;
@@ -56,7 +60,7 @@ void kprintf(const char *format, ...) {
   while ((c = *format++) != 0)
     {
       if (c != '%')
-        kputchar (&ktw, c);
+        kputchar (ktw, c);
       else
         {
           char *p;
@@ -79,11 +83,11 @@ void kprintf(const char *format, ...) {
 
             string:
               while (*p)
-                kputchar (&ktw, *p++);
+                kputchar (ktw, *p++);
               break;
 
             default:
-              kputchar (&ktw, *((int *) arg++));
+              kputchar (ktw, *((int *) arg++));
               break;
             }
         }

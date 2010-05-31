@@ -26,6 +26,22 @@
 #define YELLOW        0xE
 #define WHITE         0xF
 
+/* The number of columns. */
+#define COLUMNS                 80
+/* The number of lines. */
+#define LINES                   25
+
+typedef struct x86_video_char {
+	unsigned char character;
+	unsigned char attribute;
+} __attribute__ ((packed)) x86_video_mem[LINES*COLUMNS];
+
+typedef struct {
+	x86_video_mem buffer;
+} buffer_video_t;
+
+
+
 /* Défini une fenetre texte */
 typedef struct {
 	int x, y;
@@ -33,7 +49,8 @@ typedef struct {
 	int cursor_x, cursor_y;
 	bool disable_cursor;
 	uint8_t attribute;
-	int buffer;
+	int n_buffer;
+	struct x86_video_char *buffer;
 } text_window;
 
 void disableCursor();
