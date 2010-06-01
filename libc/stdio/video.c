@@ -41,13 +41,6 @@ static void kputchar_position(int n, char c, int x, int y, int attribute) {
 	}
 }
 
-static void kputchar_position_tw(text_window *tw, char c, int x, int y, int attribute) {
-	kputchar_position(tw->n_buffer, c, tw->x + x, tw->y + y, attribute);
-	tw->buffer[x + y * tw->cols].character = c;
-	tw->buffer[x + y * tw->cols].attribute = attribute;
-}
-
-
 static void refresh(text_window *tw) {
 	int i,x,y;
 
@@ -64,6 +57,14 @@ static void refresh(text_window *tw) {
 		}
 	}
 }
+
+static void kputchar_position_tw(text_window *tw, char c, int x, int y, int attribute) {
+	kputchar_position(tw->n_buffer, c, tw->x + x, tw->y + y, attribute);
+	tw->buffer[x + y * tw->cols].character = c;
+	tw->buffer[x + y * tw->cols].attribute = attribute;
+}
+
+
 
 /* Clear the screen and initialize VIDEO, XPOS and YPOS. */
 static void clear (void) {
