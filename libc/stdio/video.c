@@ -25,6 +25,8 @@ static volatile x86_video_mem *video = (volatile x86_video_mem*)VIDEO;
 static buffer_video_t buffer[2];
 static buffer_video_t *buffer_video = &buffer[0];
 
+static text_window *tw_focus = NULL;
+
 static void updateCursorPosition();
 void set_foreground(text_window * tw, uint8_t foreground);
 void set_background(text_window * tw, uint8_t background);
@@ -59,7 +61,8 @@ static void refresh(text_window *tw) {
 }
 
 static void kputchar_position_tw(text_window *tw, char c, int x, int y, int attribute) {
-	kputchar_position(tw->n_buffer, c, tw->x + x, tw->y + y, attribute);
+	if (tw_focus == NULL || tw == tw_focus || tw->x + x < tw_focus->x || tw->x + x >=  tw_focus->x + tw_focus->cols || tw->y + y < tw_focus->y || tw->y + y >= tw_focus->y + tw_focus->lines || tw->n_buffer == 1)
+		kputchar_position(tw->n_buffer, c, tw->x + x, tw->y + y, attribute);
 	tw->buffer[x + y * tw->cols].character = c;
 	tw->buffer[x + y * tw->cols].attribute = attribute;
 }
@@ -84,6 +87,11 @@ void init_video() {
 }
 
 void focus(text_window *tw) {
+	if (tw == tw_focus) {
+		return;
+	}
+	tw_focus = tw;
+
 	switchBuffer(tw->n_buffer);
 	refresh(tw);
 	if (tw->disable_cursor) {
@@ -130,7 +138,7 @@ static void scrollup(text_window *tw) {
 		kputchar_position_tw(tw, ' ', c, tw->lines - 1, tw->attribute);
 	}
 
-	//refresh(tw);
+	refresh(tw);
 }
 
 static void updateCursorPosition(text_window * tw)
