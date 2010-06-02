@@ -25,7 +25,9 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 
 int launch_pres()
 {
-	create_process("tache_presentation", (paddr_t)main_pres, 2, NULL, 512, 3);
+	// FIXME : Fait planter oO
+//	create_process("tache_presentation", (paddr_t)main_pres, 2, NULL, 512, 3);
+	main_pres(0, "");
 	return 0;
 }
 
