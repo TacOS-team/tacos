@@ -20,10 +20,11 @@
 #define _IOPORTS_H_
 
 /**
- * @ioports.h
+ * @file ioports.h
  *
  * Intel-specific I/O space access routines.
  */
+
 /* This macro allows to write to an I/O port */
 #define outb(value, port)                                       \
   __asm__ volatile (                                            \
