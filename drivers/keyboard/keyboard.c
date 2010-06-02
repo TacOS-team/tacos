@@ -236,6 +236,7 @@ void keyboardInterrupt(int id __attribute__ ((unused)))
 		keyBufferPush(' ');
 		break;
 	case KEY_F1:
+		// XXX : switchBuffer ne devrait plus être ici je pense... Car il faudrait aussi changer le buffer au premier plan.
 		switchBuffer(0);
 		break;
 	case KEY_F2:
