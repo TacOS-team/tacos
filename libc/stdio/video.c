@@ -61,8 +61,12 @@ static void refresh(text_window *tw) {
 }
 
 static void kputchar_position_tw(text_window *tw, char c, int x, int y, int attribute) {
-	if (tw_focus == NULL || tw == tw_focus || tw->x + x < tw_focus->x || tw->x + x >=  tw_focus->x + tw_focus->cols || tw->y + y < tw_focus->y || tw->y + y >= tw_focus->y + tw_focus->lines || tw->n_buffer == 1)
-		kputchar_position(tw->n_buffer, c, tw->x + x, tw->y + y, attribute);
+//	process_t *active_process = get_active_process();
+//	if (active_process) {
+//		text_window *tw_focus = (text_window *)(active_process->fd[1].ofd->extra_data);
+		if (tw_focus == NULL || tw == tw_focus || tw->x + x < tw_focus->x || tw->x + x >=  tw_focus->x + tw_focus->cols || tw->y + y < tw_focus->y || tw->y + y >= tw_focus->y + tw_focus->lines || tw->n_buffer == 1)
+			kputchar_position(tw->n_buffer, c, tw->x + x, tw->y + y, attribute);
+//	}
 	tw->buffer[x + y * tw->cols].character = c;
 	tw->buffer[x + y * tw->cols].attribute = attribute;
 }
@@ -87,11 +91,8 @@ void init_video() {
 }
 
 void focus(text_window *tw) {
-	if (tw == tw_focus) {
-		return;
-	}
 	tw_focus = tw;
-
+	
 	switchBuffer(tw->n_buffer);
 	refresh(tw);
 	if (tw->disable_cursor) {
