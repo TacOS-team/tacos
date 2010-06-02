@@ -26,7 +26,7 @@ void init_stdfd(struct _file_descriptor *fd0, struct _file_descriptor *fd1, stru
 
 
 /* TODO: enlever les  attribute quand les paramètre serviront à quelque chose */
-void* sys_open(uint32_t p_process __attribute__ ((unused)), uint32_t p_path , uint32_t flags __attribute__ ((unused))) {
+void* sys_open(uint32_t fd_id, uint32_t p_path , uint32_t flags __attribute__ ((unused))) {
 	int i=0;
 	
 	//process_t * process = (process_t*) p_process;
@@ -47,12 +47,15 @@ void* sys_open(uint32_t p_process __attribute__ ((unused)), uint32_t p_path , ui
 	//ouverture du fichier (sur fd0 pour le momentt)
 	fat_open_file(path, process->fd[i].ofd);
 	
+
+	*((int *)fd_id) = i;
+
   return NULL;
 }
 
 int open(const char *pathname, int flags) {
+	int id;
+	syscall(SYS_OPEN,&id,(paddr_t) pathname,flags);
 	
-	syscall(SYS_OPEN,0,(paddr_t) pathname,flags);
-	
-	return 0;
+	return id;
 }
