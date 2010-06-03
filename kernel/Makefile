@@ -8,7 +8,7 @@ all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gd
 boot.o: boot.S
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) -fno-stack-protector
 
-exception_wrappers.o: exception_wrappers.S ../include/exception.h
+exception_wrappers.o: exception_wrappers.S include/exception.h
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) -DASM_SOURCE=1 -fno-stack-protector
 
 interrupts_wrappers.o: interrupts_wrappers.S ../include/interrupts.h
@@ -28,7 +28,7 @@ depend: $(SRCS)
 dummy_process.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 dummy_process.o: ../include/libio.h ../include/stdarg.h
 dummy_process.o: include/dummy_process.h
-exception.o: ../include/types.h include/idt.h ../include/exception.h
+exception.o: ../include/types.h include/idt.h include/exception.h
 fat.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 fat.o: ../include/libio.h ../include/stdarg.h ../include/floppy.h
 fat.o: ../include/string.h include/fat.h ../include/debug.h
@@ -44,7 +44,7 @@ kernel.o: include/multiboot.h include/idt.h ../include/types.h
 kernel.o: include/i8259.h ../include/stdio.h ../include/fcntl.h
 kernel.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
 kernel.o: ../include/unistd.h ../include/string.h ../include/memory.h
-kernel.o: include/pagination.h include/gdt.h ../include/exception.h
+kernel.o: include/pagination.h include/gdt.h include/exception.h
 kernel.o: ../include/interrupts.h ../include/pci.h ../include/pci_config.h
 kernel.o: ../include/pci_types.h include/scheduler.h ../include/time.h
 kernel.o: include/dummy_process.h ../include/keyboard.h ../include/mouse.h
@@ -58,7 +58,7 @@ kmalloc.o: ../include/types.h ../include/stdio.h ../include/fcntl.h
 kmalloc.o: ../include/libio.h ../include/stdarg.h ../include/heap.h
 kmalloc.o: include/vmm.h ../include/kmalloc.h ../include/video.h
 kpanic.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
-kpanic.o: ../include/libio.h ../include/stdarg.h ../include/exception.h
+kpanic.o: ../include/libio.h ../include/stdarg.h include/exception.h
 kpanic.o: include/kpanic.h
 ksem.o: include/ksem.h ../include/types.h include/ksyscall.h
 ksem.o: ../include/stdio.h ../include/fcntl.h ../include/libio.h

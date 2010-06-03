@@ -68,4 +68,5 @@ stdio/stdfiles.o: ../include/string.h ../include/kmalloc.h
 stdio/stdio.o: ../include/video.h ../include/types.h ../include/fcntl.h
 stdio/stdio.o: ../include/libio.h
 stdio/video.o: ../include/types.h ../include/ioports.h ../include/ctype.h
-stdio/video.o: ../include/video.h ../include/stdlib.h
+stdio/video.o: ../include/video.h ../include/stdlib.h ../include/syscall.h
+stdio/video.o: ../include/process.h ../include/libio.h ../include/fcntl.h
