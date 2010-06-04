@@ -192,7 +192,6 @@ void init_scheduler(int Q)
 void start_scheduler()
 {
 	add_event(switch_process,NULL,quantum);
-	BOCHS_BREAKPOINT;
 }
 
 void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)))
