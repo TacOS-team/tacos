@@ -67,6 +67,7 @@ void backspace(text_window *tw, char c);
 void init_video();
 void focus(text_window *tw);
 text_window * creation_text_window(int x, int y, int cols, int lines, int cursor_x, int cursor_y, bool disable_cursor, uint8_t attribute, int buffer);
+void resize_text_window(text_window *tw, int x, int y);
 
 /* Avec le syscall qui va bien : */
 void set_attribute(uint8_t background, uint8_t foreground);

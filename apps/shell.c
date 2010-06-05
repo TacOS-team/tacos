@@ -12,7 +12,7 @@
 #include <shell_utils.h>
 #include <apps.h>
 #include <sem.h>
-
+#include <video.h>
 #include <debug.h>
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
@@ -46,7 +46,14 @@ static int cd_cmd()
 	return 0;
 }
 
-static int cls() {
+static int resize_cmd()
+{
+	int x, y;
+	scanf("%d %d", &x, &y);
+	resize_text_window(get_current_process()->fd[1].ofd->extra_data, x, y);
+}
+
+static int cls_cmd() {
 	printf("\033[2J");
 	fflush(stdout);
 	return 0;
@@ -64,7 +71,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 
 	add_builtin_cmd(help_cmd, "help");
 	add_builtin_cmd(date_cmd, "date");
-	add_builtin_cmd(cls, "clear");
+	add_builtin_cmd(cls_cmd, "clear");
 	add_builtin_cmd((func_ptr)pci_list, "lspci");
 	add_builtin_cmd((func_ptr)memory_print, "print_memory");
 	add_builtin_cmd(test_mouse, "test_mouse");
@@ -91,6 +98,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(exec_shell, "Mishell");
 	add_builtin_cmd(main_fiinou, "Fiinou");
 	add_builtin_cmd(launch_pres, "presentation");
+	add_builtin_cmd(resize_cmd, "resize");
 	
 	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
 	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");

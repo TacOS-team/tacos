@@ -23,9 +23,9 @@ depend: $(SRCS)
 
 ctype.o: ../include/ctype.h
 fcntl.o: ../include/types.h ../include/fcntl.h ../include/libio.h
-fcntl.o: ../include/process.h ../include/stdio.h ../include/stdarg.h
-fcntl.o: ../include/string.h ../include/syscall.h ../kernel/include/fat.h
-fcntl.o: ../include/video.h ../include/stdlib.h
+fcntl.o: ../include/process.h ../include/pagination.h ../include/stdio.h
+fcntl.o: ../include/stdarg.h ../include/string.h ../include/syscall.h
+fcntl.o: ../kernel/include/fat.h ../include/video.h ../include/stdlib.h
 libio.o: ../include/libio.h ../include/fcntl.h ../include/types.h
 libio.o: ../include/stdio.h ../include/stdarg.h
 stdlib.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
@@ -40,8 +40,8 @@ time.o: ../include/fcntl.h ../include/libio.h ../include/stdarg.h
 time.o: ../include/clock.h
 unistd.o: ../include/unistd.h ../include/types.h ../include/events.h
 unistd.o: ../include/time.h ../include/process.h ../include/libio.h
-unistd.o: ../include/fcntl.h ../include/stdio.h ../include/stdarg.h
-unistd.o: ../include/syscall.h
+unistd.o: ../include/fcntl.h ../include/pagination.h ../include/stdio.h
+unistd.o: ../include/stdarg.h ../include/syscall.h
 stdio/fmemopen.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 stdio/fmemopen.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
 stdio/fmemopen.o: ../include/fopen.h
@@ -70,3 +70,4 @@ stdio/stdio.o: ../include/libio.h
 stdio/video.o: ../include/types.h ../include/ioports.h ../include/ctype.h
 stdio/video.o: ../include/video.h ../include/stdlib.h ../include/syscall.h
 stdio/video.o: ../include/process.h ../include/libio.h ../include/fcntl.h
+stdio/video.o: ../include/pagination.h

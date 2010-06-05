@@ -461,6 +461,48 @@ text_window * creation_text_window(int x, int y, int cols, int lines, int cursor
 	return tw;
 }
 
+void move_text_window(text_window *tw, int x, int y) {
+	tw->x = x;
+	tw->y = y;
+
+	refresh(tw);
+}
+
+void resize_text_window(text_window *tw, int x, int y) {
+	int i;
+	int posx, posy;
+
+	kprintf("Resize window : %d %d\n", x, y);
+
+	while (tw->cursor_y > 0 && tw->cursor_x + tw->cursor_y * tw->cols > x * y) {
+		scrollup(tw);
+		tw->cursor_y--;
+	}
+	kprintf("%d %d\n", tw->cursor_x, tw->cursor_y);
+	
+	struct x86_video_char * new_buffer = malloc(x * y * sizeof(struct x86_video_char));
+
+	for (i = 0; i < x * y; i++) {
+		new_buffer[i] = tw->buffer[i];
+	}
+
+	posx = tw->cursor_x;
+	posy = tw->cursor_y;
+	cls(tw);
+
+	free(tw->buffer);
+
+	tw->buffer = new_buffer;
+	tw->cursor_x %= x;
+	tw->cols = x;
+	tw->lines = y;
+	tw->cursor_x = posx;
+	tw->cursor_y = posy;
+
+	refresh(tw);
+}
+
+
 void set_attribute(uint8_t background, uint8_t foreground) 
 {
 	text_window * tw = get_current_process()->fd[1].ofd->extra_data;
