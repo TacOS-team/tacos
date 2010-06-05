@@ -98,6 +98,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(exec_shell, "Mishell");
 	add_builtin_cmd(main_fiinou, "Fiinou");
 	add_builtin_cmd(launch_pres, "presentation");
+	add_builtin_cmd(launch_matrix, "matrix");
 	add_builtin_cmd(resize_cmd, "resize");
 	
 	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");

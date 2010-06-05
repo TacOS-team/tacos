@@ -3,7 +3,7 @@ CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin
 
 SRCS = *.c
 
-all: fiinou.o shell.o shell_utils.o tests.o pres.o
+all: shell.o fiinou.o matrix.o tests.o shell_utils.o pres.o
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
@@ -18,6 +18,9 @@ depend: $(SRCS)
 
 fiinou.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 fiinou.o: ../include/libio.h ../include/stdarg.h
+matrix.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
+matrix.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
+matrix.o: ../include/unistd.h
 pres.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 pres.o: ../include/libio.h ../include/stdarg.h ../include/gui.h
 pres.o: ../include/process.h ../include/pagination.h

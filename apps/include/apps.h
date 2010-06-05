@@ -3,6 +3,7 @@
 
 int main_fiinou(int argc, char* argv[] );
 int launch_pres();
+int launch_matrix();
 int test_gui();
 
 int semaphore_task(int argc, char** argv );

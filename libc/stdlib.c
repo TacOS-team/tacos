@@ -145,3 +145,16 @@ int atoi(const char* __nptr)
 	
 	return ret;
 }
+
+// Choisi avec un dé équilibré.
+// Garanti d'être aléatoire.
+static unsigned long random_number = 4;
+
+int rand(void) {
+	random_number = 16807 * random_number;
+	return random_number % RAND_MAX;
+}
+
+void srand(unsigned int seed) {
+	random_number = seed;
+}
