@@ -61,6 +61,7 @@ void pagination_setup();
  * @param pd le repertoire de page à initialiser.
  */
 void pagination_init_page_directory(struct page_directory_entry * pd);
+void pagination_init_page_directory_from_current(struct page_directory_entry * pd);
 void pagination_load_page_directory(struct page_directory_entry * pd);
 
 vaddr_t get_end_page_directory();

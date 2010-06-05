@@ -160,6 +160,14 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 	user_stack[stack_size-2]=argc;
 	user_stack[stack_size-3]=(paddr_t)exit;
 	 
+	// Ne devrait pas utiliser kmalloc. Cf remarque suivante.
+	//new_proc->pd = kmalloc(sizeof(struct page_directory_entry));
+	//pagination_init_page_directory_from_current(new_proc->pd);
+
+	// Passer l'adresse physique et non virtuelle ! Attention, il faut que ça 
+	// soit contigü en mémoire physique et aligné dans un cadre...
+	//pagination_load_page_directory(new_proc->pd);
+
 	for(i=0;i<FOPEN_MAX;i++) 
 		new_proc->fd[i].used = FALSE;
 		
