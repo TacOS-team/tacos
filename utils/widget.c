@@ -114,7 +114,7 @@ void runWindow(struct window_t* win)
 	displayWindow(win);
 	while(1)
 	{
-		if(divider%100000 == 0)
+		if(divider%100000 == 0 && get_current_process() == get_active_process())
 		{
 			getMouseCoord(&x,&y);
 			x = x*80/640;

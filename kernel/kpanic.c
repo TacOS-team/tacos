@@ -70,7 +70,6 @@ void kpanic_handler(int error_id, int error_code)
 	// cls :
 	kprintf("\033[2J");
 
-	fflush(stdout);
 	kprintf("                              /!\\ KERNEL PANIC /!\\\n");
 	kprintf("--------------------------------------------------------------------------------\n");
 	kprintf("Exception handled : ");
