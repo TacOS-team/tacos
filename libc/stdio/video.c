@@ -48,6 +48,7 @@ static void refresh(text_window *tw) {
 
 	if (tw == NULL) {
 		for (i = 0; i < COLUMNS * LINES; i++) {
+			// C'est cette partie qui fait planter bochs. J'ai pas compris.
 		  (*video)[i].character = buffer_video->buffer[i].character;
 		  (*video)[i].attribute = buffer_video->buffer[i].attribute;
 		}
@@ -61,7 +62,7 @@ static void refresh(text_window *tw) {
 }
 
 static void kputchar_position_tw(text_window *tw, char c, int x, int y, int attribute) {
-	//if (tw == tw_focus) switchBuffer(tw->n_buffer);
+	 switchBuffer(tw->n_buffer);
 //	process_t *active_process = get_active_process();
 //	if (active_process) {
 //		text_window *tw_focus = (text_window *)(active_process->fd[1].ofd->extra_data);
