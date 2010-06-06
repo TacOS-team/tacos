@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <syscall.h>
 #include <process.h>
+#include <stdio.h>
 
 /* The video memory address. */
 #define VIDEO                   0xB8000
@@ -451,14 +452,16 @@ uint8_t get_fg_position(int x, int y)
 
 void sys_set_attribute_position(text_window *tw, uint8_t background, uint8_t foreground, int x, int y)
 {
-	switchBuffer(tw->n_buffer);
 	buffer_video->buffer[x+tw->x + (tw->y+y) * COLUMNS].attribute = tw->attribute;
-	(*video)[tw->x + x + (tw->y + y) * COLUMNS].attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
+	if (tw == tw_focus) {
+		switchBuffer(tw->n_buffer);
+		(*video)[tw->x + x + (tw->y + y) * COLUMNS].attribute = ((background & 0xF) << 4) | (foreground & 0xF); 
+	}
 }
 
 void reset_attribute(text_window *tw)
 {
-  tw->attribute = DEFAULT_ATTRIBUTE_VALUE;
+	tw->attribute = DEFAULT_ATTRIBUTE_VALUE;
 }
 
 text_window * creation_text_window(int x, int y, int cols, int lines, int cursor_x, int cursor_y, bool disable_cursor, uint8_t attribute, int buffer)
@@ -523,9 +526,8 @@ void resize_text_window(text_window *tw, int x, int y) {
 }
 
 
-void set_attribute(uint8_t background, uint8_t foreground) 
+void set_attribute(text_window * tw, uint8_t background, uint8_t foreground) 
 {
-	text_window * tw = get_current_process()->fd[1].ofd->extra_data;
 	uint32_t args[2];
 	args[0] = background;
 	args[1] = foreground;
@@ -533,9 +535,8 @@ void set_attribute(uint8_t background, uint8_t foreground)
 }
 
 
-void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y) 
+void set_attribute_position(text_window * tw, uint8_t background, uint8_t foreground, int x, int y) 
 {
-	text_window * tw = get_current_process()->fd[1].ofd->extra_data;
 	uint32_t args[4];
 	args[0] = background;
 	args[1] = foreground;

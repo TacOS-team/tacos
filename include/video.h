@@ -70,8 +70,8 @@ text_window * creation_text_window(int x, int y, int cols, int lines, int cursor
 void resize_text_window(text_window *tw, int x, int y);
 
 /* Avec le syscall qui va bien : */
-void set_attribute(uint8_t background, uint8_t foreground);
-void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y);
+void set_attribute(text_window *tw, uint8_t background, uint8_t foreground);
+void set_attribute_position(text_window *tw, uint8_t background, uint8_t foreground, int x, int y);
 void* sys_video_ctl( uint32_t ctl_code ,uint32_t tw , uint32_t args );
 
 #endif

@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <video.h>
 
 int main_matrix(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unused)))
 {
 	int i;
-	set_attribute(BLACK, GREEN);
+	printf("\033[40m\033[32m\033[0j");
 	while(1) {
 		int c1 = (int)(78.0*(float)rand()/(RAND_MAX+1.0));
 		int c2 = (int)(78.0*(float)rand()/(RAND_MAX+1.0));

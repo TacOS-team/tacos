@@ -20,7 +20,7 @@ fiinou.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 fiinou.o: ../include/libio.h ../include/stdarg.h
 matrix.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 matrix.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
-matrix.o: ../include/unistd.h ../include/video.h
+matrix.o: ../include/unistd.h
 pres.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 pres.o: ../include/libio.h ../include/stdarg.h ../include/gui.h
 pres.o: ../include/process.h ../include/pagination.h

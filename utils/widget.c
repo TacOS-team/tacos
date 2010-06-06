@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <mouse.h>
 #include <video.h>
+#include <process.h>
 
 static void displayWidget(struct widget_t* wdg)
 { // TODO : Bugfix : strlen compte les caractères \033[xxm
@@ -121,12 +122,12 @@ void runWindow(struct window_t* win)
 			y = 25 - (y*25/480);
 
 			if(!frst_time)
-				set_attribute_position(colbg, colfg, old_x, old_y);
+				set_attribute_position(get_current_process()->fd[1].ofd->extra_data, colbg, colfg, old_x, old_y);
 			else
 				frst_time = 0;
 			colfg = get_fg_position(x,y);
 			colbg = get_bg_position(x,y);
-			set_attribute_position(win->cursor, BLACK, x, y);
+			set_attribute_position(get_current_process()->fd[1].ofd->extra_data, win->cursor, BLACK, x, y);
 			old_x = x;
 			old_y = y;
 	
