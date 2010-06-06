@@ -34,9 +34,11 @@ void* sys_write(uint32_t fd, uint32_t p_buf, uint32_t count) {
 
 	open_file_descriptor *ofd;
 
-	ofd = process->fd[fd].ofd;
+	if (process->fd[fd].used) {
+		ofd = process->fd[fd].ofd;
 
-	ofd->write(ofd, buf, count);
+		ofd->write(ofd, buf, count);
+	}
 
 	return NULL;
 }

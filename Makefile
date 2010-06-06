@@ -39,10 +39,10 @@ img: all
 	@rm mtoolsrc
 
 runqemu: core.img
-	qemu -fda core.img -m 8
+	qemu -fda core.img -m 4
 
 runqemugdb: core.img
-	qemu -fda core.img -m 8 -s -S
+	qemu -fda core.img -m 4 -s -S
 
 runbochs: core.img
 	BOCHSRC=bochsrc bochs

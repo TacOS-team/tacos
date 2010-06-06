@@ -6,6 +6,16 @@
 #include <syscall.h>
 #include <process.h>
 
+/**
+ * Attention ! Ce code a été développé dans l'optique de fournir rapidement
+ * quelque chose de montrable pour la démonstration.
+ * Cette partie devrait être totalement réécrite en tenant compte de 
+ * http://www.osdever.net/FreeVGA/vga/vgafx.htm pour la gestion VGA
+ * et en déplaçant toute la partie gestion de fenêtre à un niveau supérieur
+ * car cela n'a pas sa place dans le kernel (surtout si on vise un micro-kernel).
+ */
+
+
 /* The video memory address. */
 #define VIDEO                   0xB8000
 

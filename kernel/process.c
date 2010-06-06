@@ -19,7 +19,7 @@ uint32_t proc_count = 0;
 static proc_list process_list = NULL;
 static proclist_cell* current_proclist_cell = NULL;
 
-static process_t * active_process = (process_t*) 5242880;
+static process_t * active_process = NULL; //à un moment il fallait faire ça pour que ça ne plante pas : (process_t*) 5242880;
 
 uint32_t get_proc_count()
 {
@@ -174,8 +174,10 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 	/* Initialisation des entrées/sorties standards */
 	init_stdfiles(&new_proc->stdin, &new_proc->stdout, &new_proc->stderr);
 	init_stdfd(&(new_proc->fd[0]), &(new_proc->fd[1]), &(new_proc->fd[2]));
+	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
 	proc_count++;
 	
+
 	add_process(new_proc);
 	
 	active_process = new_proc;
@@ -335,7 +337,8 @@ void* sys_kill(uint32_t pid, uint32_t zero1 __attribute__ ((unused)), uint32_t z
 	process_t* process = find_process(pid);
 	
 	// Violent? OUI!
-	process->state = PROCSTATE_TERMINATED;
+	if (process != NULL)
+		process->state = PROCSTATE_TERMINATED;
 	
 	return NULL;
 }
