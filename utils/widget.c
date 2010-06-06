@@ -7,7 +7,7 @@
 #include <video.h>
 
 static void displayWidget(struct widget_t* wdg)
-{
+{ // TODO : Bugfix : strlen compte les caractères \033[xxm
 	int x, y;
 	char ligne[80];
 	ligne[0] = '\0';

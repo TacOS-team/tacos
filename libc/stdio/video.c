@@ -20,7 +20,7 @@
 #define CTL_COL_POS 1
 
 /** The base pointer for the video memory */
-/* volatile pour Ã©viter des problÃ¨mes d'optimisation de gcc. */
+/* volatile pour éviter des problèmes d'optimisation de gcc. */
 static volatile x86_video_mem *video = (volatile x86_video_mem*)VIDEO;
 static buffer_video_t buffer[2];
 static buffer_video_t *buffer_video = &buffer[0];
@@ -31,8 +31,28 @@ static void updateCursorPosition();
 void set_foreground(text_window * tw, uint8_t foreground);
 void set_background(text_window * tw, uint8_t background);
 
+/**
+ * Conversion entre latin1 et la table ASCII utilisée.
+ */
+static char convert_ascii(char c) {
+	if (c == 'é') {
+		c = 0x82;
+	} else if (c == 'â') {
+		c = 0x83;
+	} else if (c == 'ä') {
+		c = 0x84;
+	} else if (c == 'à') {
+		c = 0x85;
+	} else if (c == 'ç') {
+		c = 0x87;
+	} else if (c == 'è') {
+		c = 0x8a;
+	}
+	return c;
+}
 
 static void kputchar_position(int n, char c, int x, int y, int attribute) {
+	c = convert_ascii(c);
 	if (x < COLUMNS && y < LINES) {
 		buffer[n].buffer[x + y * COLUMNS].character = c & 0xFF;
 		buffer[n].buffer[x + y * COLUMNS].attribute = attribute;
@@ -135,7 +155,7 @@ static void scrollup(text_window *tw) {
 	}
 
 	/*
-	 * On met des espaces sur la derniÃ¨re ligne
+	 * On met des espaces sur la dernière ligne
 	 */
 	for (c = 0; c < tw->cols; c++) {
 		kputchar_position_tw(tw, ' ', c, tw->lines - 1, tw->attribute);
@@ -243,7 +263,7 @@ void cursor_move(text_window * tw, int n, int m) {
 }
 
 /**
- *	Suppression en arriÃ¨re d'un caractÃ¨re.
+ *	Suppression en arrière d'un caractère.
  */
 void backspace(text_window *tw, char c) {
 	if (c == '\t') {
@@ -270,8 +290,8 @@ void backspace(text_window *tw, char c) {
 }
 
 /*
- *  Affiche le caractÃ¨re c sur l'Ã©cran.
- *  Supporte les caractÃ¨res ANSI.
+ *  Affiche le caractère c sur l'écran.
+ *  Supporte les caractères ANSI.
  */
 void kputchar (text_window * tw, char c) {
 	static bool escape_char = FALSE;
@@ -345,7 +365,7 @@ void kputchar (text_window * tw, char c) {
 										  break;
 								case 6: set_foreground(tw, CYAN);
 										  break;
-								case 7: set_foreground(tw, WHITE); // Devrait Ãªtre LIGHT_GRAY. Le White c'est pour le high intensity.
+								case 7: set_foreground(tw, WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
 										  break;
 							}
 						} else if (val >= 40 && val <= 47) {
@@ -365,7 +385,7 @@ void kputchar (text_window * tw, char c) {
 										  break;
 								case 6: set_background(tw, CYAN);
 										  break;
-								case 7: set_background(tw, WHITE); // Devrait Ãªtre LIGHT_GRAY. Le White c'est pour le high intensity.
+								case 7: set_background(tw, WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
 										  break;
 							}
 
