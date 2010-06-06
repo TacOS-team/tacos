@@ -68,21 +68,23 @@ static void refresh(text_window *tw) {
 
 	if (tw == NULL) {
 		for (i = 0; i < COLUMNS * LINES; i++) {
-			// C'est cette partie qui fait planter bochs. J'ai pas compris.
 		  (*video)[i].character = buffer_video->buffer[i].character;
 		  (*video)[i].attribute = buffer_video->buffer[i].attribute;
 		}
 	} else {
 		for (y = 0; y < tw->lines; y++) {
 			for (x = 0; x < tw->cols; x++) {
-				kputchar_position(tw->n_buffer, tw->buffer[y * tw->cols + x].character, tw->x + x, tw->y + y, tw->buffer[y * tw->cols + x].attribute);
+				if (tw == tw_focus || x < tw_focus->x || y < tw_focus->y || x >= tw_focus->x + tw_focus->cols || y >= tw_focus->y + tw_focus->lines) {
+					kputchar_position(tw->n_buffer, tw->buffer[y * tw->cols + x].character, tw->x + x, tw->y + y, tw->buffer[y * tw->cols + x].attribute);
+				}
 			}
 		}
 	}
 }
 
 static void kputchar_position_tw(text_window *tw, char c, int x, int y, int attribute) {
-	 switchBuffer(tw->n_buffer);
+	if (tw == tw_focus)
+		switchBuffer(tw->n_buffer);
 //	process_t *active_process = get_active_process();
 //	if (active_process) {
 //		text_window *tw_focus = (text_window *)(active_process->fd[1].ofd->extra_data);
@@ -166,6 +168,9 @@ static void scrollup(text_window *tw) {
 
 static void updateCursorPosition(text_window * tw)
 {
+	if (tw != tw_focus)
+		return;
+
   int pos = tw->x + tw->cursor_x + (tw->y + tw->cursor_y)*COLUMNS;
 
   outb(CURSOR_POS_LSB, CRT_REG_INDEX);
@@ -176,6 +181,9 @@ static void updateCursorPosition(text_window * tw)
 
 void disableCursor(text_window * tw)
 {
+	if (tw != tw_focus)
+		return;
+
   /* CRT index port => ask for access to register 0xa ("cursor
 	   start") */
 	outb(0x0a, CRT_REG_INDEX);
