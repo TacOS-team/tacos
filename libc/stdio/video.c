@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <syscall.h>
 #include <process.h>
-#include <stdio.h>
 
 /* The video memory address. */
 #define VIDEO                   0xB8000
@@ -461,7 +460,7 @@ void sys_set_attribute_position(text_window *tw, uint8_t background, uint8_t for
 
 void reset_attribute(text_window *tw)
 {
-	tw->attribute = DEFAULT_ATTRIBUTE_VALUE;
+  tw->attribute = DEFAULT_ATTRIBUTE_VALUE;
 }
 
 text_window * creation_text_window(int x, int y, int cols, int lines, int cursor_x, int cursor_y, bool disable_cursor, uint8_t attribute, int buffer)
@@ -526,8 +525,9 @@ void resize_text_window(text_window *tw, int x, int y) {
 }
 
 
-void set_attribute(text_window * tw, uint8_t background, uint8_t foreground) 
+void set_attribute(uint8_t background, uint8_t foreground) 
 {
+	text_window * tw = get_current_process()->fd[1].ofd->extra_data;
 	uint32_t args[2];
 	args[0] = background;
 	args[1] = foreground;
@@ -535,8 +535,9 @@ void set_attribute(text_window * tw, uint8_t background, uint8_t foreground)
 }
 
 
-void set_attribute_position(text_window * tw, uint8_t background, uint8_t foreground, int x, int y) 
+void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y) 
 {
+	text_window * tw = get_current_process()->fd[1].ofd->extra_data;
 	uint32_t args[4];
 	args[0] = background;
 	args[1] = foreground;

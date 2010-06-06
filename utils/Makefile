@@ -24,5 +24,4 @@ heap.o: ../include/debug.h
 widget.o: ../include/gui.h ../include/types.h include/widget.h
 widget.o: ../include/kmalloc.h ../include/string.h ../include/stdio.h
 widget.o: ../include/fcntl.h ../include/libio.h ../include/stdarg.h
-widget.o: ../include/mouse.h ../include/video.h ../include/process.h
-widget.o: ../include/pagination.h
+widget.o: ../include/mouse.h ../include/video.h
