@@ -147,14 +147,13 @@ void open_root_dir (directory_t * dir) {
 	}
 }
 
-static fat_dir_entry_t sub_dir[224];
+static fat_dir_entry_t sub_dir[8];
 
 int open_next_dir(directory_t * prev_dir,directory_t * next_dir, char * name) {
 	
 	cluster_t next = 0;
 	char str[14];
 	int i;
-	int ret;
 	
 	for(i=0;i<(prev_dir->total_entries);i++) {
 		if(strcmp(prev_dir->entry_name[i],name)==0) {
@@ -187,6 +186,68 @@ int open_next_dir(directory_t * prev_dir,directory_t * next_dir, char * name) {
 	}
 	else
 		return 1;
+}
+
+
+uint8_t file_buffer[512];
+
+int cat_file (directory_t * dir, char * name, int mode) {
+	
+	cluster_t file = 0;
+	int i,c=1;
+	int read_count = 0;
+	int file_size;
+	
+	for(i=0;i<(dir->total_entries);i++) {
+		if(strcmp(dir->entry_name[i],name)==0) {
+				if ( (dir->entry_attributes[i] & 0x10) == 0x00) {  //c'est bien un fichier
+					file = dir->entry_cluster[i];
+					file_size = dir->entry_size[i];
+					//printf("size = %d\n",file_size);
+					break;
+				}
+				else {
+						return 2;
+				}
+		}
+	}
+	
+	if (file!=0) {
+		
+		while (file_alloc_table[file] != 0xFFF) {
+			if (mode == 0)
+		  	printf("\n\nCluster No %d  Next : %d\n",file,file_alloc_table[file]);
+			read_cluster( (char*) file_buffer, file);
+			for(i=0;i<512;i++) {
+				if ( read_count < file_size ) {
+					printf("%c",file_buffer[i]);
+					read_count++;
+				}
+				else
+					break;
+			}
+			c++;
+			file=file_alloc_table[file];
+		}
+		if (mode == 0)
+	 		printf("\n\nCluster No %d  Next : %d\n",file,file_alloc_table[file]);
+		read_cluster( (char*) file_buffer, file);
+		for(i=0;i<512;i++) {
+			if ( read_count < file_size ) {
+				printf("%c",file_buffer[i]);
+				read_count++;
+			}
+			else
+				break;
+		}
+		if (mode == 0)
+			printf("\ntotal sector read: %d, total octet read: %d",c,read_count);
+
+		return 0;
+	}
+	else
+		return 1;
+
 }
 
 int get_dirname_from_path (char * path, char* name,int pos) {
@@ -371,13 +432,36 @@ void change_dir (char * name) {
 		
 }
 
+void catenate (char * name) {
+		
+		int errorcode;
+
+		errorcode = cat_file( &(path.dir_list[path.current]), name, 1);
+		if (errorcode == 1) 
+			printf("\ncd: %s aucun fichier ou dossier de ce type\n", name, 1);
+		else if (errorcode == 2) 
+			printf("\ncd: %s n'est pas un fichier\n",name);		
+}
+
+void catenate_demo (char * name) {
+		
+		int errorcode;
+
+		errorcode = cat_file( &(path.dir_list[path.current]), name, 0);
+		if (errorcode == 1) 
+			printf("\ncd: %s aucun fichier ou dossier de ce type\n", name, 0);
+		else if (errorcode == 2) 
+			printf("\ncd: %s n'est pas un fichier\n",name);		
+}
+
 void list_segments () {
 	int i;
 	//char name[14]; Inutilisé
 	printf("\n");
 	for (i=0;i<path.dir_list[path.current].total_entries;i++) {
 		
-			printf("%s(%d) ",path.dir_list[path.current].entry_name[i], path.dir_list[path.current].entry_cluster[i]);
+			//printf("%s(%d) ",path.dir_list[path.current].entry_name[i], path.dir_list[path.current].entry_cluster[i]);
+			printf("%s ",path.dir_list[path.current].entry_name[i]);
 		
 	}
 }
@@ -459,15 +543,17 @@ Partiton Boot Sector info :\n\
 
 
 void print_path () {
-		/*int i=206;
+		int i=206;
 		int c=1;
-		while (file_alloc_table[i]!= 0xFFF) {
+		while (file_alloc_table[i] != 0xFFF) {
 			printf("%d ",file_alloc_table[i]);
 			c++;
 			i=file_alloc_table[i];
 		}
 		printf("%d\n",file_alloc_table[i]);
 		printf("count sector: %d\n",c);
+
+		/*
 		char name[14];
 		int i, max;
 		max = get_dir_from_path ("root/dir",name,1);
@@ -476,10 +562,12 @@ void print_path () {
 		printf("%s(%d)",name,max);
 		max = get_path_lenth ("root/dir/tftff.uh");
 		printf(" %d\n",max);*/
-	/*	open_file_descriptor ofd;
+
+	  /*open_file_descriptor ofd;
 		fat_open_file("fd0:/boot/grub/menu.txt",&ofd);
 		printf("size: %d cluster: %d\n",ofd.file_size, ofd.current_cluster);*/
-		open("fd0:/boot/grub/menu.txt",21);
+
+		/*open("fd0:/boot/grub/menu.txt",21);*/
 		
 }
 

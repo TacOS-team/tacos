@@ -47,6 +47,24 @@ static int cd_cmd()
 	return 0;
 }
 
+static int cat_cmd()
+{
+	char buffer[80];
+	scanf("%s", buffer);
+	//printf("%sEND\n",buffer);
+	catenate(buffer);
+	return 0;
+}
+
+static int cat_demo_cmd()
+{
+	char buffer[80];
+	scanf("%s", buffer);
+	//printf("%sEND\n",buffer);
+	catenate_demo(buffer);
+	return 0;
+}
+
 static int resize_cmd()
 {
 	int x, y;
@@ -94,6 +112,8 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(kill_cmd, "kill");
 	add_builtin_cmd(test_ansi, "test_ansi");
 	add_builtin_cmd(cd_cmd, "cd");
+	add_builtin_cmd(cat_cmd, "cat");
+	add_builtin_cmd(cat_demo_cmd, "catdemo");
 	add_builtin_cmd(test_task, "test_task");
 	add_builtin_cmd(test_semaphores, "test_semaphores");
 	add_builtin_cmd(calc_pi, "pi");
