@@ -31,7 +31,7 @@ dummy_process.o: include/dummy_process.h
 exception.o: ../include/types.h include/idt.h include/exception.h
 fat.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 fat.o: ../include/libio.h ../include/stdarg.h ../include/floppy.h
-fat.o: ../include/string.h include/fat.h ../include/debug.h
+fat.o: ../include/string.h ../include/fat.h ../include/debug.h
 fpu.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 fpu.o: ../include/libio.h ../include/stdarg.h include/fpu.h
 fpu.o: ../include/interrupts.h
@@ -50,7 +50,7 @@ kernel.o: ../include/pci_types.h include/scheduler.h ../include/time.h
 kernel.o: include/dummy_process.h ../include/keyboard.h ../include/mouse.h
 kernel.o: ../include/events.h ../include/floppy.h include/kpanic.h
 kernel.o: ../include/process.h ../include/kmalloc.h include/vmm.h
-kernel.o: ../include/ioports.h include/msr.h include/fat.h include/fpu.h
+kernel.o: ../include/ioports.h include/msr.h ../include/fat.h include/fpu.h
 kernel.o: include/vm86.h ../include/beeper.h ../include/debug.h
 kernel.o: ../include/shell.h include/ksyscall.h ../include/syscall.h
 kernel.o: include/ksem.h ../include/video.h

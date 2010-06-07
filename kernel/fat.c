@@ -2,7 +2,7 @@
 #include <floppy.h>
 #include <types.h>
 #include <string.h>
-#include "fat.h"
+#include <fat.h>
 #include <fcntl.h>
 #include <debug.h>
 
@@ -14,9 +14,9 @@
 
 
 
-path_t path;
-fat_info_t fat_info;
-cluster_t file_alloc_table[TOTAL_CLUSTERS];
+static path_t path;
+static fat_info_t fat_info;
+static cluster_t file_alloc_table[TOTAL_CLUSTERS];
 
 addr_CHS_t get_CHS_from_LBA (addr_LBA_t sector_LBA) {
 	addr_CHS_t ret;
@@ -141,13 +141,16 @@ void open_root_dir (directory_t * dir) {
 			strcpy(dir->entry_name[dir->total_entries],str);
 			dir->entry_cluster[dir->total_entries] = root_dir[i].cluster_pointer;
 			dir->entry_size[dir->total_entries] = root_dir[i].file_size;
+			dir->entry_attributes[dir->total_entries] = root_dir[i].file_attributes;
 			dir->total_entries++;
 		}
 	}
 }
 
+static fat_dir_entry_t sub_dir[224];
+
 int open_next_dir(directory_t * prev_dir,directory_t * next_dir, char * name) {
-	fat_dir_entry_t sub_dir[224];
+	
 	cluster_t next = 0;
 	char str[14];
 	int i;
@@ -155,8 +158,13 @@ int open_next_dir(directory_t * prev_dir,directory_t * next_dir, char * name) {
 	
 	for(i=0;i<(prev_dir->total_entries);i++) {
 		if(strcmp(prev_dir->entry_name[i],name)==0) {
-			next = prev_dir->entry_cluster[i];
-			break;
+				if ( (prev_dir->entry_attributes[i] & 0x10) == 0x10) {  //c'est bien un repertoire
+					next = prev_dir->entry_cluster[i];
+					break;
+				}
+				else {
+						return 2;
+				}
 		}
 	}
 	
@@ -171,15 +179,14 @@ int open_next_dir(directory_t * prev_dir,directory_t * next_dir, char * name) {
 				strcpy(next_dir->entry_name[next_dir->total_entries],str);
 				next_dir->entry_cluster[next_dir->total_entries] = sub_dir[i].cluster_pointer;
 				next_dir->entry_size[next_dir->total_entries] = sub_dir[i].file_size;
+				next_dir->entry_attributes[next_dir->total_entries] = sub_dir[i].file_attributes;
 				next_dir->total_entries++;
 			}
 		}
-		ret=1;
+		return 0;
 	}
 	else
-		ret = 0;
-
-	return ret;
+		return 1;
 }
 
 int get_dirname_from_path (char * path, char* name,int pos) {
@@ -343,17 +350,23 @@ void mount_FAT12 () {
 
 
 void change_dir (char * name) {
-	
+		
+		int errorcode;
+
 		if ( strcmp(name,"..") == 0 ) {
 			if ( path.current!=0 )
 				path.current--;
 		}
 		else {
-			if (open_next_dir(&(path.dir_list[path.current]),&(path.dir_list[path.current+1]),name) != 0 ) {
+			errorcode = open_next_dir(&(path.dir_list[path.current]),&(path.dir_list[path.current+1]),name);
+			if ( errorcode == 0 )
 				path.current++;
-			}
-			else
+			else if (errorcode == 1) 
 				printf("\ncd: %s aucun fichier ou dossier de ce type\n",name);
+			else if (errorcode == 2) 
+				printf("\ncd: %s n'est pas un dossier\n",name);
+			else 
+				printf("\ncd: erreur inconnue..\n");
 		}
 		
 }

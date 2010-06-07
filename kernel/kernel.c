@@ -25,7 +25,7 @@
 #include <vmm.h>
 #include <ioports.h>
 #include "msr.h"
-#include "fat.h"
+#include <fat.h>
 #include <fpu.h>
 #include <vm86.h>
 #include <beeper.h>

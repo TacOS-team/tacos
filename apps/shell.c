@@ -1,4 +1,4 @@
-#include <fat_test.h>
+#include <fat.h>
 #include <floppy.h>
 #include <kmalloc.h>
 #include <memory.h>
@@ -42,6 +42,7 @@ static int cd_cmd()
 {
 	char buffer[80];
 	scanf("%s", buffer);
+	//printf("%sEND\n",buffer);
 	change_dir(buffer);
 	return 0;
 }

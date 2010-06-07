@@ -24,7 +24,7 @@ matrix.o: ../include/unistd.h
 pres.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 pres.o: ../include/libio.h ../include/stdarg.h ../include/gui.h
 pres.o: ../include/process.h ../include/pagination.h
-shell.o: include/fat_test.h ../include/types.h ../include/fcntl.h
+shell.o: ../include/fat.h ../include/types.h ../include/fcntl.h
 shell.o: ../include/libio.h ../include/floppy.h ../include/kmalloc.h
 shell.o: ../include/memory.h ../include/mouse.h ../include/pci.h
 shell.o: ../include/process.h ../include/pagination.h ../include/stdio.h
@@ -34,7 +34,7 @@ shell.o: ../include/sem.h ../include/video.h ../include/debug.h
 shell_utils.o: ../include/types.h ../include/stdio.h ../include/fcntl.h
 shell_utils.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
 shell_utils.o: ../include/string.h include/shell_utils.h
-tests.o: include/fat_test.h ../include/types.h ../include/fcntl.h
+tests.o: ../include/fat.h ../include/types.h ../include/fcntl.h
 tests.o: ../include/libio.h ../include/floppy.h ../include/kmalloc.h
 tests.o: ../include/mouse.h ../include/pci.h ../include/process.h
 tests.o: ../include/pagination.h ../include/stdio.h ../include/stdarg.h
