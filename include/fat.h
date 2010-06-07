@@ -110,6 +110,7 @@ void print_Boot_Sector ();		// fonction de debug
 void print_path ();				// fonction de debug
 void change_dir (char * name);
 void catenate (char * name);
+void catenate_demo (char * name);
 void list_segments ();			
 void print_working_dir ();		
 
