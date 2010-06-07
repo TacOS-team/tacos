@@ -28,8 +28,8 @@ void pagination_identity_map_addr(struct page_directory_entry * pagination_kerne
 		pde->u_s = 1;
 		pde->present = 1;
 		paddr_t pt_addr = memory_reserve_page_frame();
-    if(last_page_table <= (vaddr_t) pt_addr)
-      last_page_table = (vaddr_t) pt_addr;
+		if(last_page_table <= (vaddr_t) pt_addr)
+			last_page_table = (vaddr_t) pt_addr;
 		pde->page_table_addr = pt_addr >> 12;
 		pagination_identity_map_addr(pagination_kernel, pt_addr); // J'ai peur que si on ne map pas on se prenne un page fault (à voir...)
 	}
@@ -59,6 +59,7 @@ void pagination_setup() {
 		if (pagination_kernel != (struct page_directory_entry*) current_page) {
 			pagination_identity_map_addr(pagination_kernel, current_page);
 		}
+		// Test... //if (end_page_directory < current_page) end_page_directory = current_page; 
 	}
 	
 	pagination_load_page_directory(pagination_kernel);

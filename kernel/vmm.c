@@ -135,10 +135,14 @@ vaddr_t get_linear_address(int dir, int table, int offset)
 // créer une entrée de page
 static void create_page_entry(struct page_table_entry *pte, paddr_t page_addr)
 {
-  pte->present = 1;
-  pte->page_addr = page_addr >> 12;
-  pte->r_w = 1;
-	pte->u_s = 1;
+	if (pte->present == 1) {
+		kprintf("wtf????\n");
+	} else {
+		pte->present = 1;
+		pte->page_addr = page_addr >> 12;
+		pte->r_w = 1;
+		pte->u_s = 1;
+	}
 }
 
 // créer une entrée de répertoire
@@ -148,13 +152,14 @@ static int create_page_dir(struct page_directory_entry *pde)
     return -1;
   paddr_t page_addr = memory_reserve_page_frame();
 
+  last_page_table_next();
+  
   pde->present = 1;
-  pde->page_table_addr = get_last_page_table() >> 12; // check phys or virtual
+  pde->page_table_addr = page_addr >> 12; // check phys or virtual
   pde->r_w = 1;
 	pde->u_s = 1;
 
   // map new PTE
-  last_page_table_next();
   map(page_addr, get_last_page_table());
 
   return 0;

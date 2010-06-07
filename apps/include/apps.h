@@ -9,6 +9,7 @@ int test_gui();
 int semaphore_task(int argc, char** argv );
 int test_semaphores();
 void test_kmalloc();
+void test_memory_reserve_page_frame();
 int calc_pi();
 int pi(int argc , char** argv );
 int test_task1(int argc, char** argv);

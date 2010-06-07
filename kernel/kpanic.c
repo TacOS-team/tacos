@@ -95,7 +95,7 @@ void kpanic_handler(int error_id, int error_code)
 			kprintf("Double fault (error code : %d).\n", error_code);
 			break;
 		case EXCEPTION_GENERAL_PROTECTION :
-			kprintf("General Proctection fault (error code : %d).\n", error_code);
+			kprintf("General Protection fault (error code : %d).\n", error_code);
 			break;
 		default:
 			kprintf("Unknown exception.\n");

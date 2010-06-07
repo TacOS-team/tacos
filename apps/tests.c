@@ -11,6 +11,7 @@
 #include <apps.h>
 #include <sem.h>
 #include <gui.h>
+#include <memory.h>
 
 #include <debug.h>
 
@@ -81,6 +82,13 @@ int test_semaphores()
 	semdel(semid3);
 
 	return 0;
+}
+
+void test_memory_reserve_page_frame() {
+	int i;
+	scanf("%d", &i);
+	while(i--)
+		printf("Cadre de page réservé : %d\n", memory_reserve_page_frame());
 }
 
 void test_kmalloc()

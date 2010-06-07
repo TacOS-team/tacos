@@ -44,7 +44,7 @@ static paddr_t memory_align_page_sup(paddr_t value) {
 	}
 	value += PAGE_SIZE;
 	return value - value%PAGE_SIZE;
-};
+}
 	
 void memory_print_used_frame_pages() {
 	struct physical_page_descr *p;
