@@ -147,7 +147,8 @@ int test_task1(int argc, char** argv)
 
 int test_task()
 {
-	exec(test_task1, "test");
+	//exec(test_task1, "test");
+	while(1);
 	return 0;
 }
 
