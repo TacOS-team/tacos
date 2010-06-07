@@ -91,7 +91,7 @@ void test_kmalloc()
 
 	a = (int *) kmalloc(300*sizeof(int));
 	b = (int *) kmalloc(2048*sizeof(int));
-	c = (int *) kmalloc(300*sizeof(int));
+	c = (int *) kmalloc(30000*sizeof(int));
 	printf("A : %x\nB : %x\nC : %x\n", a, b, c);
 	kmalloc_print_mem();
 	getchar();
