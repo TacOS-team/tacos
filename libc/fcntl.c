@@ -21,7 +21,8 @@ void init_stdfd(struct _file_descriptor *fd0, struct _file_descriptor *fd1, stru
 	fd2->used = TRUE; /* stderr */
 	fd2->ofd = malloc(sizeof(open_file_descriptor));
 	fd2->ofd->write = write_screen;
-	fd2->ofd->extra_data = creation_text_window(0, 0, 80, 24, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 1);
+//	fd2->ofd->extra_data = creation_text_window(0, 0, 80, 24, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 1);
+	fd2->ofd->extra_data = fd1->ofd->extra_data;
 }
 
 
