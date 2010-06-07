@@ -43,6 +43,7 @@ void setWidgetProperties(struct widget_t* wdg,
 									uint8_t h, uint8_t w,
 									uint8_t bg, uint8_t fg);
 void setOnClick(struct widget_t* wdg, void (*onClick)(struct widget_t*,int,int));
+void setVisible(struct widget_t* wdg, char visible);
 
 #endif //GUI_H
 

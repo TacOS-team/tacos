@@ -1,7 +1,7 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
-#define MAX_WIDGETS 10
+#define MAX_WIDGETS 40
 
 enum widget_type
 {
@@ -13,6 +13,7 @@ struct window_t;
 
 struct widget_t
 {
+	char visible;
 	void* adv;
 	enum widget_type type;
 	uint8_t x;

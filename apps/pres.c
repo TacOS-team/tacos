@@ -2,8 +2,14 @@
 #include <gui.h>
 #include <process.h>
 
-struct widget_t* schema_vmm(struct window_t *win) {
-return addTxt(win, "                    ^                                   ^\n"
+#define NB_SLIDES 2
+
+int current = 0;
+struct widget_t* title[NB_SLIDES];
+struct widget_t* txt[NB_SLIDES];
+
+struct widget_t* schema_vmm(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, "                    ^                                   ^\n"
 "                    |                                   |\n"
 "  Fin de la zone    |                                   |\n"
 "  gérée par     --->|-----------------------------------| -\n"
@@ -22,10 +28,11 @@ return addTxt(win, "                    ^                                   ^\n"
 "    zone gérée  --->|-----------------------------------| -\n"
 "    par vmm.c       |       Noyau - Identity Mapped     |\n"
 "                    |___________________________________|\n");
+	*title = addButton(win,"VMM");
 }
 
-struct widget_t* schema_pagination(struct window_t *win) {
-return addTxt(win, "Adresse : \033[32m########## \033[31m########## \033[34m############\033[0m\n"
+void schema_pagination(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, "Adresse : \033[32m########## \033[31m########## \033[34m############\033[0m\n"
 "          <--------> <--------> <---------->\n"
 "            |             |________    |_______________\n"
 "            |            Indice de |        Offset dans|\n"
@@ -42,6 +49,29 @@ return addTxt(win, "Adresse : \033[32m########## \033[31m########## \033[34m####
 "          CR3-->|________|  |--------->|________|   |----->|________|\n"
 "               Repertoire de         Table de pages       Page (4 kio)\n"
 "              tables de pages        (1024 entrees)\n");
+	*title = addButton(win,"Pagination");
+}
+
+void goBack(struct widget_t* wdg, int x, int y)
+{
+	setVisible(title[current],0);
+	setVisible(txt[current],0);
+
+	current = (current-1)%NB_SLIDES;
+
+	setVisible(title[current],1);
+	setVisible(txt[current],1);
+}
+
+void goForward(struct widget_t* wdg, int x, int y)
+{
+	setVisible(title[current],0);
+	setVisible(txt[current],0);
+
+	current = (current+1)%NB_SLIDES;
+
+	setVisible(title[current],1);
+	setVisible(txt[current],1);
 }
 
 int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unused)))
@@ -49,18 +79,31 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 	struct window_t* win;
 	struct widget_t* bck;
 	struct widget_t* nxt;
-	struct widget_t* txt;
+
+	int i;
 		
 	win = createWindow(0, 7);
 
+	schema_pagination(win,&txt[0],&title[0]);
+	schema_vmm(win,&txt[1],&title[1]);
+
+	for(i=0 ; i<NB_SLIDES ; i++)
+	{
+		setVisible(txt[i],0);
+		setVisible(title[i],0);
+		setWidgetProperties(txt[i], 1 , 4, 20, 78, 7, 0);
+		setWidgetProperties(title[i], 7, 1, 3, 66, 7, 0);
+	}
+
+	setVisible(title[current],1);
+	setVisible(txt[current],1);
+
 	bck = addButton(win,"Prec");
+	setWidgetProperties(bck,  1 , 1, 3, 6, 5, 0);
+	setOnClick(bck,goBack);
 	nxt = addButton(win,"Suiv");
-	//txt = addTxt(win, "Bonjour, voici blabla nininninininininininininininininfefjkrjlknvfnflbngfklbjgkbjklgbjgkbjgklb\nEt nana, et sisi ...\nEt vlan et bim !!!!");
-	txt = schema_pagination(win);
-	//txt = schema_vmm(win);
-	setWidgetProperties(bck,  1 , 22, 3, 6, 5, 0);
-	setWidgetProperties(nxt, 73, 22, 3, 6, 5, 0);
-	setWidgetProperties(txt, 1 , 1, 20, 78, 7, 0);
+	setWidgetProperties(nxt, 73, 1, 3, 6, 5, 0);
+	setOnClick(nxt,goForward);
 
 	runWindow(win);
 	

@@ -92,7 +92,10 @@ void displayWindow(struct window_t* win)
 	printf("\033[4%dm\033[2J",win->bg);
 
 	for(i=0 ; i<win->nb_widgets ; i++)
-		displayWidget(win->widgets[i]);
+	{
+		if(win->widgets[i]->visible)
+			displayWidget(win->widgets[i]);
+	}
 
 	fflush(stdout);
 	disableCursor();
@@ -183,6 +186,7 @@ struct widget_t* addButton(struct window_t* win, const char* title)
 	ret->bg = win->bg;
 	ret->father = win;
 	ret->onClick = NULL;
+	ret->visible = 1;
 
 	// On ajoute le widget a la window
 	win->widgets[win->nb_widgets] = ret;
@@ -219,3 +223,9 @@ void setOnClick(struct widget_t* wdg, void (*onClick)(struct widget_t*, int, int
 {
 	wdg->onClick = onClick;
 }
+
+void setVisible(struct widget_t* wdg, char visible)
+{
+	wdg->visible = visible;
+}
+
