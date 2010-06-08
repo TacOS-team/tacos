@@ -2,7 +2,7 @@
 #include <gui.h>
 #include <process.h>
 
-#define NB_SLIDES 13
+#define NB_SLIDES 19
 
 int current = 0;
 struct widget_t* title[NB_SLIDES];
@@ -23,7 +23,7 @@ void intro(struct window_t *win, struct widget_t** txt, struct widget_t** title)
 "\n"
 "\n"
 "\n"
-" Maxime Cheramy\n"
+" Maxime Chéramy\n"
 " Nicolas Floquet\n"
 " Benjamin Hautbois                                              9 juin 2010\n"
 " Ludovic Rigal                                4ème Année Génie Informatique\n"
@@ -164,27 +164,26 @@ void plan5(struct window_t *win, struct widget_t** txt, struct widget_t** title)
 	*title = addButton(win,"Sommaire");
 }
 
-void schema_vmm(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
-	*txt = addTxt(win, "                    ^                                   ^\n"
-"                    |                                   |\n"
-"  Fin de la zone    |                                   |\n"
-"  gérée par     --->|-----------------------------------| -\n"
-"  vmm.c (vmm_top)   |\033[43m         (zone utilisée)           \033[47m| | Bloc de\n"
-"                    |\033[44m\033[34m-----------------------------------\033[47m\033[030m| | 2 pages\n"
-"                    |-----------------------------------| -\n"
-"                    | Zone pages virtuelles non mappées | | \n"
-"                    |      à des pages physiques.       | | Bloc de\n"
-"                    |           (zone libre)            | | 4 pages\n"
-"                    |\033[44m\033[34m-----------------------------------\033[47m\033[030m| |\n"
-"                    |-----------------------------------| -\n"
-"                    |\033[43mZone pages virtuelles mappées à des\033[47m| | Bloc de    \n"
-"                    |\033[43m pages physiques. (zone utilisée)  \033[47m| | 3 pages \n"
-"                    |-----------------------------------| | (= 12 kio)\n"
-"    Début de la     |\033[44m\033[37mStructure décrivant le bloc (16 o) \033[47m\033[030m| |\n"
-"    zone gérée  --->|-----------------------------------| -\n"
-"    par vmm.c       |       Noyau - Identity Mapped     |\n"
-"                    |___________________________________|\n");
-	*title = addButton(win,"VMM");
+/*
+ * Slides gestion mémoire :
+ */
+
+void intro_pagination(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, "Pourquoi la pagination ?\n"
+" \n"
+"     - Sécurité (cloisement de la mémoire par processus, droits)\n"
+" \n"
+"     - Mémoire virtuelle : Possibilité d'utiliser plusieurs supports (swap)\n"
+"                            Zones mémoires contigües virtuellement\n"
+" \n"
+"     - Concept important et très répandu : Intérêt pédagogique\n"
+" \n"
+"Rôle de la MMU (Memory Management Unit) :\n"
+" \n"
+"     - Traduction des adresses virtuelles en adresses physiques\n"
+" \n"
+"     - Levée d'une exception lorsqu'une adresse n'est pas mappée\n");
+	*title = addButton(win, "Pagination");
 }
 
 void schema_pagination(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
@@ -205,6 +204,93 @@ void schema_pagination(struct window_t *win, struct widget_t** txt, struct widge
 "          CR3-->|________|  |--------->|________|   |----->|________|\n"
 "               Repertoire de         Table de pages       Page (4 kio)\n"
 "              tables de pages        (1024 entrees)\n");
+	*title = addButton(win,"Pagination");
+}
+
+void pagination1(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, "1ère étape : Découpage de la mémoire en cadres de page\n"
+" \n"
+"   Objectif : Fournir des zones mémoires où l'on peut mapper des pages.\n"
+" \n"
+" \n"
+"   Maintien de 2 listes : Cadres utilisés et Cadres libres.\n"
+" \n"
+"   Fonctions de reservation et de libération de cadres.\n");
+	*title = addButton(win, "Pagination");
+}
+
+void pagination2(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"2ème étape : Pagination en Identity Mapping\n"
+"\n"
+"	Passage des adresses physiques aux adresses virtuelles délicate\n"
+"\n"
+"	Idée : Mapper les pages de façon à ce que :\n"
+"             adresse virtuelle == adresse physique\n"
+"\n"
+"\n"
+"	On ajoute une entrée dans le répertoire de tables de page pour pointer \n"
+"	vers lui-même. => Pouvoir modifier les tables de page\n"
+"\n"
+"	On peut ainsi accéder à une table par l'adresse virtuelle :\n"
+"					0xFFC00000 + 1024*index_page_table\n"
+"\n"
+"	Et au répertoire de tables de page par :\n"
+"					0xFFFFF000\n");
+	*title = addButton(win, "Pagination");
+}
+
+
+void pagination3(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"3ème étape : Mise en place du VMM (Virtual Memory Manager)\n"
+"\n"
+"   Rôle : S'occuper de gérer des blocs de pages contigües en \n"
+"          mémoire virtuelle.\n"
+"\n"
+"   Maintien de 2 listes : Blocs libres et Blocs utilisés.\n"
+"\n"
+"\n"
+"\n"
+"4ème étape : Mise en place du kmalloc\n"
+"\n"
+"	Très similaire au VMM mais avec une gestion à l'octet.\n");
+	*title = addButton(win, "Pagination");
+}
+
+
+void schema_vmm(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, "                    ^                                   ^\n"
+"                    |                                   |\n"
+"  Fin de la zone    |                                   |\n"
+"  gérée par     --->|-----------------------------------| -\n"
+"  vmm.c (vmm_top)   |\033[43m         (zone utilisée)           \033[47m| | Bloc de\n"
+"                    |\033[44m\033[34m-----------------------------------\033[47m\033[030m| | 2 pages\n"
+"                    |-----------------------------------| -\n"
+"                    | Zone pages virtuelles non mappées | | \n"
+"                    |      à des pages physiques.       | | Bloc de\n"
+"                    |           (zone libre)            | | 4 pages\n"
+"                    |\033[44m\033[34m-----------------------------------\033[47m\033[030m| |\n"
+"                    |-----------------------------------| -\n"
+"                    |\033[43mZone pages virtuelles mappées à des\033[47m| | Bloc de    \n"
+"                    |\033[43m pages physiques. (zone utilisée)  \033[47m| | 3 pages \n"
+"                    |-----------------------------------| | (= 12 kio)\n"
+"    Début de la     |\033[44m\033[37mStructure décrivant le bloc (16 o) \033[47m\033[030m| |\n"
+"    zone gérée  --->|-----------------------------------| -\n"
+"    par vmm.c       |       Noyau - Identity Mapped     |\n"
+"                    |___________________________________|\n");
+	*title = addButton(win,"Pagination");
+}
+
+void pagination_prob(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"Système très complexe et avec beaucoup d'interdépendances.\n"
+"\n"
+"Conséquences lourdes sur le reste du système d'exploitation.\n"
+"\n"
+"Bugs difficiles à détecter et à corriger ! \n"
+"	=> Seul la MMU nous signale un problème.\n"
+"   => Parfois un bug n'a de conséquences que plus tard.\n");
 	*title = addButton(win,"Pagination");
 }
 
@@ -297,6 +383,29 @@ void diapo_fat(struct window_t *win, struct widget_t** txt, struct widget_t** ti
 	*title = addButton(win,"Système de fichiers FAT");
 }
 
+
+void diapo_io(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"                            +-----------------+           \n"
+"                            |     Process     |          \n"
+"  +-----------+             |  +-----------+  |           +-----------+\n"
+"  |Flags      |             |  |     |     |  |           |Flags      |\n"
+"  |-----------|             |  |-----------|  |           |-----------|\n"
+"  |read_ptr   |         ----|->|used | ofd |--|---        |buffer     |\n"
+"  |-----------|  Indice |   |  |-----------|  |  |        |-----------|\n"
+"  |buffer_base|   dans  |   |  |     |     |  |  |Adresse |           |\n"
+"  |-----------| la table|   |  |-----------|  |  |        |    ...    |\n"
+"  |buffer_end |         |   |  |     |     |  |  |        |           |\n"
+"  |-----------|         |   |  |-----------|  |  |        |-----------|\n"
+"  |chain      |         |   |  |     |     |  |  |        |write()    |\n"
+"  |-----------|         |   |  |-----------|  |  |        |-----------|\n"
+"  |file_no    |----------   |  |     |     |  |  |        |read()     |  \n"
+"  +-----------+             +  +-----------+  |  -------->+-----------+\n"
+"      FILE                  +-----------------+        open_file_descriptor\n");
+	*title = addButton(win,"Entrées / Sorties");
+}
+
+
 void goBack(struct widget_t* wdg, int x, int y)
 {
   if(current <= 0)
@@ -316,7 +425,7 @@ void goForward(struct widget_t* wdg, int x, int y)
   if(current >= NB_SLIDES-1)
     return;
 
-  setVisible(title[current],0);
+	setVisible(title[current],0);
 	setVisible(txt[current],0);
 
 	current = (current+1);
@@ -342,25 +451,37 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 	i++;
 	plan1(win,&txt[i],&title[i]);
 	i++;
-	schema_pagination(win,&txt[i],&title[i]);
-	i++;
-	schema_vmm(win,&txt[i],&title[i]);
-	i++;
 	plan2(win,&txt[i],&title[i]);
 	i++;
 	plan3(win,&txt[i],&title[i]);
 	i++;
-	schema_ordonnanceur(win,&txt[i],&title[i]);
-	i++;
 	plan4(win,&txt[i],&title[i]);
 	i++;
-	slide_disquette(win,&txt[i],&title[i]);
-	i++;
 	plan5(win,&txt[i],&title[i]);
+	i++;
+	intro_pagination(win, &txt[i],&title[i]);
+	i++;
+	schema_pagination(win,&txt[i],&title[i]);
+	i++;
+	pagination1(win,&txt[i], &title[i]);
+	i++;
+	pagination2(win,&txt[i], &title[i]);
+	i++;
+	pagination3(win,&txt[i], &title[i]);
+	i++;
+	schema_vmm(win,&txt[i],&title[i]);
+	i++;
+	pagination_prob(win,&txt[i],&title[i]);
+	i++;
+	schema_ordonnanceur(win,&txt[i],&title[i]);
+	i++;
+	slide_disquette(win,&txt[i],&title[i]);
 	i++;
 	schema_fat(win,&txt[i],&title[i]);
 	i++;
 	diapo_fat(win,&txt[i],&title[i]);
+	i++;
+	diapo_io(win,&txt[i],&title[i]);
 
 	for(i=0 ; i<NB_SLIDES ; i++)
 	{

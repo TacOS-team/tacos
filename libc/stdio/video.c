@@ -61,6 +61,14 @@ static char convert_ascii(char c) {
 		c = 0x87;
 	} else if (c == 'è') {
 		c = 0x8a;
+	} else if (c == 'ô') {
+		c = 0x93;
+	} else if (c == 'ü') {
+		c = 0x81;
+	} else if (c == 'ê') {
+		c = 0x88;
+	} else if (c == 'ù') {
+		c = 0x97;
 	}
 	return c;
 }
