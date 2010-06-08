@@ -59,7 +59,6 @@ void pagination_setup() {
 		if (pagination_kernel != (struct page_directory_entry*) current_page) {
 			pagination_identity_map_addr(pagination_kernel, current_page);
 		}
-		// Test... //if (end_page_directory < current_page) end_page_directory = current_page; 
 	}
 	
 	pagination_load_page_directory(pagination_kernel);
