@@ -56,9 +56,9 @@ void plan(struct window_t *win, struct widget_t** txt, struct widget_t** title) 
 void plan1(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
 "\n"
-"\033[32m      I) Mémoire\n"
-"\033[32m         a. Pagination\n"
-"\033[32m         b. Allocation mémoire\n"
+"\033[31m    | I) Mémoire\n"
+"\033[31m    |    a. Pagination\n"
+"\033[31m    |    b. Allocation mémoire\n"
 "\033[30m      II) Interruptions\n"
 "\033[30m         a. IDT \n"
 "\033[30m         b. Wrapper\n"
@@ -81,10 +81,10 @@ void plan2(struct window_t *win, struct widget_t** txt, struct widget_t** title)
 "\033[30m      I) Mémoire\n"
 "\033[30m         a. Pagination\n"
 "\033[30m         b. Allocation mémoire\n"
-"\033[32m      II) Interruptions\n"
-"\033[32m         a. IDT \n"
-"\033[32m         b. Wrapper\n"
-"\033[32m         c. Gestion du temps\n"
+"\033[31m    | II) Interruptions\n"
+"\033[31m    |    a. IDT \n"
+"\033[31m    |    b. Wrapper\n"
+"\033[31m    |    c. Gestion du temps\n"
 "\033[30m      III) Gestion des processus\n"
 "\033[30m         a. Changement de contexte\n"
 "\033[30m         b. Appels système\n"
@@ -107,10 +107,10 @@ void plan3(struct window_t *win, struct widget_t** txt, struct widget_t** title)
 "\033[30m         a. IDT \n"
 "\033[30m         b. Wrapper\n"
 "\033[30m         c. Gestion du temps\n"
-"\033[32m      III) Gestion des processus\n"
-"\033[32m         a. Changement de contexte\n"
-"\033[32m         b. Appels système\n"
-"\033[32m         c. Ordonnancement\n"
+"\033[31m    | III) Gestion des processus\n"
+"\033[31m    |    a. Changement de contexte\n"
+"\033[31m    |    b. Appels système\n"
+"\033[31m    |    c. Ordonnancement\n"
 "\033[30m      IV) Pilotes\n"
 "\033[30m         a. Clavier/Souris\n"
 "\033[30m         b. Disquette\n"
@@ -133,9 +133,9 @@ void plan4(struct window_t *win, struct widget_t** txt, struct widget_t** title)
 "\033[30m         a. Changement de contexte\n"
 "\033[30m         b. Appels système\n"
 "\033[30m         c. Ordonnancement\n"
-"\033[32m      IV) Pilotes\n"
-"\033[32m         a. Clavier/Souris\n"
-"\033[32m         b. Disquette\n"
+"\033[31m    | IV) Pilotes\n"
+"\033[31m    |    a. Clavier/Souris\n"
+"\033[31m    |    b. Disquette\n"
 "\033[30m      V) Entrées/sorties\n"
 "\033[30m         a. Système de fichier FAT\n"
 "\033[30m         b. Stdin/Stdout\n");
@@ -158,9 +158,9 @@ void plan5(struct window_t *win, struct widget_t** txt, struct widget_t** title)
 "\033[30m      IV) Pilotes\n"
 "\033[30m         a. Clavier/Souris\n"
 "\033[30m         b. Disquette\n"
-"\033[32m      V) Entrées/sorties\n"
-"\033[32m         a. Système de fichier FAT\n"
-"\033[32m         b. Stdin/Stdout\n");
+"\033[31m    | V) Entrées/sorties\n"
+"\033[31m    |    a. Système de fichier FAT\n"
+"\033[31m    |    b. Stdin/Stdout\n");
 	*title = addButton(win,"V) Entrées/sorties");
 }
 
