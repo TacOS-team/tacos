@@ -44,7 +44,6 @@ void process_switch(int mode, process_t* current)
 		kss = current->regs.ss;
 		esp = current->regs.esp;
 	}
-	
 	asm(
 			"mov %0, %%ss;"
 			"mov %1, %%esp;"
@@ -160,7 +159,7 @@ static void* schedule(void* data __attribute__ ((unused)))
 		if(current->regs.cs == 0x8)
 		{
 			current->regs.ss = get_default_tss()->ss0;
-			current->regs.esp = stack_ptr[10] + 20;
+			current->regs.esp = stack_ptr[10] + 12;
 		}
 		else
 		{
@@ -248,8 +247,8 @@ void* sys_idle( uint32_t unused1 __attribute__ ((unused)),uint32_t unused2 __att
 	unsigned int i = 0;
 	kprintf("Idling...");
 	//for(i = 0; i<100000; i++);
-	//while(1);
-	asm("hlt\n\t");
+	while(1);
+	//asm("hlt\n\t");
 	kprintf("Not idling anymore.\n");
 	return NULL;
 }

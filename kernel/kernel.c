@@ -51,6 +51,12 @@ void LPT1_routine(int id __attribute__ ((unused)))
   // XXX : avoid segment_not_present
 }
 
+int test_proc(int argc, char** argv)
+{
+	while(1);
+	idle();
+}
+
 
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
@@ -136,7 +142,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	// Création du processus par défaut: notre shell
 	create_process("Mishell", (paddr_t)shell,0,NULL,1024,3);
-	
+	//create_process("Mishell", (paddr_t)test_proc,0,NULL,1024,3);
 	/* Lancement du scheduler */
 	init_scheduler(10);
 
