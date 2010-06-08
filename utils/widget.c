@@ -6,10 +6,53 @@
 #include <mouse.h>
 #include <video.h>
 
+size_t ansi_strlen(const char* s)
+{
+	int len=0;
+	int i=0;
+	while(s[i])	{
+		if(s[i] == '\033') {
+			len--;
+			i++;
+			while(isdigit(s[i]) || s[i] == ';' || s[i] == '[')
+				i++;
+		}
+		i++;
+		len++;
+	}
+	return len;
+}
+
+char *ansi_strncpy(char * s1, const char * s2, size_t n)
+{
+	size_t i,j;
+	char escaped = 0;
+	for(i=0 ; s2[i] != '\0' && n>0 ; i++)
+	{
+		s1[i] = s2[i];
+		if(escaped) {
+			escaped = (isdigit(s2[i]) || s2[i] == ';' || s2[i] == '[');
+		}
+		else {
+			if(s2[i] == '\033')
+				escaped = 1;
+			else
+				n--;
+		}
+	}
+	for(j=0 ; n>0 ; j++)
+	{
+		n--;
+		s1[i+j] = '\0';
+	}
+	
+	return s1;
+}
+
 static void displayWidget(struct widget_t* wdg)
-{ // TODO : Bugfix : strlen compte les caractères \033[xxm
+{
 	int x, y;
-	char ligne[80];
+	char ligne[512]; // buffer tres long car il peut stocker des caracteres ANSI étendus
 	ligne[0] = '\0';
 	int i=0;
 	switch(wdg->type)
@@ -23,7 +66,7 @@ static void displayWidget(struct widget_t* wdg)
 			}
 			for(y=wdg->y ; y<(wdg->y+wdg->h) ; y++)
 				printf("\033[%d;%dH\033[3%dm\033[4%dm%s",y+1,wdg->x+1,wdg->fg,wdg->bg,ligne);
-			x = wdg->x + (wdg->w - strlen(wdg->adv))/2;
+			x = wdg->x + (wdg->w - ansi_strlen(wdg->adv))/2;
 			y = wdg->y + (wdg->h)/2;
 			printf("\033[%d;%dH\033[3%dm\033[4%dm%s",y+1,x+1,wdg->fg,wdg->bg,wdg->adv);
 			break;
@@ -43,17 +86,17 @@ static void displayWidget(struct widget_t* wdg)
 			while(!fini)
 			{
 				// On recupere une ligne de la largeur du widget
-				if(strlen(&(wdg->adv[indice]))<(wdg->w-2))
+				if(ansi_strlen(&(wdg->adv[indice]))<(wdg->w-2))
 				{
-					strncpy(ligne, &(wdg->adv[indice]), wdg->w-2);
+					ansi_strncpy(ligne, &(wdg->adv[indice]), wdg->w-2);
 
 					if(strchr(ligne, '\n') == NULL)
 						fini = 1;
 				}
 				else
 				{
-					strncpy(ligne, &(wdg->adv[indice]), wdg->w-2);
-					ligne[wdg->w-2] = '\0';
+					ansi_strncpy(ligne, &(wdg->adv[indice]), wdg->w-2);
+	//				ligne[wdg->w-2] = '\0'; //Mettre le caractere en vrai fin de string, est-ce necessaire ?
 				} 
 				// On coupe la ligne si elle contient un retour à la ligne
 				char* ret = strchr(ligne, '\n');
