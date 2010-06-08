@@ -188,9 +188,10 @@ void runWindow(struct window_t* win)
 							x < win->widgets[i]->x + win->widgets[i]->w &&
 							y >= win->widgets[i]->y &&
 							y < win->widgets[i]->y + win->widgets[i]->h
-							)
+							) {
 							win->widgets[i]->onClick(win->widgets[i],x,y);
 							displayWindow(win);
+						}
 					}
 				}
 				btn_frz = 1;
