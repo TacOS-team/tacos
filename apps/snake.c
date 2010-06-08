@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <process.h>
+#include <video.h>
 
 #define LIGNES 10
 #define COLONNES 20
@@ -62,7 +63,7 @@ void gauche() {
 	}
 }
 
-void * thread_input(void * arg) {
+int thread_input() {
 	char c;
   setvbuf(stdin, NULL, _IO_MAGIC | _IONBF, 0);
 	resize_text_window(get_current_process()->fd[1].ofd->extra_data, 1, 1);
@@ -80,6 +81,8 @@ void * thread_input(void * arg) {
 			case 'q': gauche(); break;
 		}
 	}
+
+  return 0;
 }
 
 void clear_screen() {
