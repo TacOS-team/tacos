@@ -181,6 +181,9 @@ static void updateCursorPosition(text_window * tw)
 	if (tw != tw_focus)
 		return;
 
+	if (tw->disable_cursor)
+		return;
+
   int pos = tw->x + tw->cursor_x + (tw->y + tw->cursor_y)*COLUMNS;
 
   outb(CURSOR_POS_LSB, CRT_REG_INDEX);
@@ -195,13 +198,26 @@ void sys_disable_cursor(text_window * tw, int disable)
 		if (tw != tw_focus)
 			return;
 
-	  /* CRT index port => ask for access to register 0xa ("cursor
-			start") */
+	  /* CRT index port => demande l'accès au registre 0xa ("cursor start") */
 		outb(0x0a, CRT_REG_INDEX);
 
-		/* (RBIL Tables 708 & 654) CRT Register 0xa => bit 5 = cursor OFF */
+		/* CRT Register 0xa => bit 5 = cursor OFF */
 		outb(1 << 5, CRT_REG_DATA);
 	} else {
+
+		/* CRT index port => demande l'accès au registre 0xa ("cursor start") */
+		outb(0x0a, CRT_REG_INDEX);
+
+		/* scan line start */
+		outb(0x0e, CRT_REG_DATA);
+
+		/* CRT index port => demande l'accès au registre 0xa ("cursor end") */
+		outb(0x0b, CRT_REG_INDEX);
+
+		/* scan line end */
+		outb(0x0f, CRT_REG_DATA);
+
+
 		updateCursorPosition(tw);
 	}
 
@@ -581,6 +597,7 @@ void* sys_video_ctl( uint32_t ctl_code ,uint32_t tw , uint32_t args )
 			sys_set_attribute_position((text_window*)tw,
 												*((uint32_t*)args), *((uint32_t*)args+1),
 												*((uint32_t*)args+2), *((uint32_t*)args+3));
+			break;
 		case CTL_CURSOR :
 			sys_disable_cursor((text_window*)tw, *((uint32_t*)args));
 			break;

@@ -130,6 +130,8 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
 	printf("(codename:fajitas)\n\n\n");
 
+	disable_cursor(0);
+
 	for(;;)
 	{
 		//time_t curr_time = time(NULL);
