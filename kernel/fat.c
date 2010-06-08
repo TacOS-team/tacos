@@ -438,9 +438,9 @@ void catenate (char * name) {
 
 		errorcode = cat_file( &(path.dir_list[path.current]), name, 1);
 		if (errorcode == 1) 
-			printf("\ncd: %s aucun fichier ou dossier de ce type\n", name, 1);
+			printf("\ncat: %s aucun fichier ou dossier de ce type\n", name, 1);
 		else if (errorcode == 2) 
-			printf("\ncd: %s n'est pas un fichier\n",name);		
+			printf("\ncat: %s n'est pas un fichier\n",name);		
 }
 
 void catenate_demo (char * name) {

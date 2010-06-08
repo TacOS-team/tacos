@@ -165,7 +165,9 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	for(;;)
 	{
 		//time_t curr_time = time(NULL);
-		printf("\n > ");
+		printf("\n");
+		print_working_dir();
+		printf(">");
 		
 		fflush(stdout);
 		fflush(stdin);
