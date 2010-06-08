@@ -156,9 +156,9 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 	new_proc->state = PROCSTATE_IDLE;
 	
 	/* Initialisation de la pile du processus */
-	user_stack[stack_size-1]=(paddr_t)argv;
+	user_stack[stack_size-1]=(vaddr_t)argv;
 	user_stack[stack_size-2]=argc;
-	user_stack[stack_size-3]=(paddr_t)exit;
+	user_stack[stack_size-3]=(vaddr_t)exit;
 	 
 	// Ne devrait pas utiliser kmalloc. Cf remarque suivante.
 	//new_proc->pd = kmalloc(sizeof(struct page_directory_entry));

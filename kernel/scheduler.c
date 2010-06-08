@@ -196,7 +196,9 @@ void start_scheduler()
 
 void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)))
 {
-	create_process(name, prog, 42, 0xba, 512, 3);
+	char ** argv = (char **) kmalloc(sizeof(char*));
+	argv[0] = strdup(name);
+	create_process(name, prog, 1, argv, 1024, 3);
 	return NULL;
 }
 
