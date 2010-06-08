@@ -2,7 +2,7 @@
 #include <gui.h>
 #include <process.h>
 
-#define NB_SLIDES 4
+#define NB_SLIDES 6
 
 int current = 0;
 struct widget_t* title[NB_SLIDES];
@@ -73,6 +73,28 @@ struct widget_t* schema_ordonnanceur(struct window_t *win, struct widget_t** txt
 }
 
 
+struct widget_t* slide_disquette(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win,
+"                               \033[31mRegistres\033[30m\n"
+"\n"
+"\033[34mData FIFO\033[30m: envoi des commandes au controleur\n"
+"\033[34mMain status register\033[30m: informations sur le status du controleur\n"
+"\033[34mDigital output register\033[30m: controle du moteur, activation du DMA et de l'IRQ\n"
+"\033[34mConfiguration control register\033[30m: spécification du débit de transfert\n"
+"\n"
+"                               \033[31mCommandes\033[30m\n"
+"\n"
+"\033[32mSpecify\033[30m         : donne au controleur des informations sur le lecteur\n"
+"\033[32mWrite/Read data\033[30m : écrit/Lit un ou plusieurs secteurs sur la disquette\n"
+"\033[32mRecalibrate\033[30m     : positionne les tetes en butée sur le cylindre 0\n"
+"\033[32mSense interrupt\033[30m : récupère des informations sur une interruption\n"
+"\033[32mSeek\033[30m            : déplace la tete de lecture/écriture à un cylindre donné\n"
+"\033[32mVersion\033[30m         : détermine la version du controleur\n");
+	*title = addButton(win,"Driver disquette");
+}
+
+
+
 struct widget_t* schema_fat(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
 "                       Partition FAT       \n"
@@ -93,6 +115,29 @@ struct widget_t* schema_fat(struct window_t *win, struct widget_t** txt, struct 
 "                \033[32m|                        |\033[30m    |\n"
 "                \033[32m|                        |\033[30m    |\n"
 "                \033[32m|________________________|\033[30m<---*\n");
+	*title = addButton(win,"Système de fichiers FAT");
+}
+
+struct widget_t* diapo_fat(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"                     \033[31mInterprétation des valeurs de la FAT\033[30m\n"
+"\n"
+"\n"
+"          \033[32m0x000\033[30m          Cluster vide\n"
+"          \033[32m0x001\033[30m          Cluster réservé\n"
+"          \033[32m0x002 - 0xFEF\033[30m  Pointeur vers le cluster suivant du fichier\n"
+"          \033[32m0xFF0 - 0xFF6\033[30m  Valeurs réservées\n"
+"          \033[32m0xFF7\033[30m          Cluster défectueux\n"
+"          \033[32m0xFF8 - 0xFFF\033[30m  Dernier cluster d'un fichier\n"
+"\n"
+"\n"
+"                        \033[31mEntrée répertoire - 32 octets\033[30m\n"
+"\n"
+"                          Nom | Extension | \033[34mAttributs\033[30m\n"
+"                   Date/Heure création | Date dernier accès\n"
+"                       Date/Heure dernières modifications\n"
+"                    \033[34mNo du premier cluster\033[30m | \033[34mTaille en octet\033[30m\n");
+
 	*title = addButton(win,"Système de fichiers FAT");
 }
 
@@ -137,7 +182,9 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 	schema_pagination(win,&txt[0],&title[0]);
 	schema_vmm(win,&txt[1],&title[1]);
 	schema_ordonnanceur(win,&txt[2],&title[2]);
-	schema_fat(win,&txt[3],&title[3]);
+	slide_disquette(win,&txt[3],&title[3]);
+	schema_fat(win,&txt[4],&title[4]);
+	diapo_fat(win,&txt[5],&title[5]);
 
 	for(i=0 ; i<NB_SLIDES ; i++)
 	{
