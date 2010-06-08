@@ -53,11 +53,8 @@ typedef struct {
 	struct x86_video_char *buffer;
 } text_window;
 
-void disableCursor();
 void cls (text_window *tw);
 void newline();
-void sys_set_attribute(text_window *tw, uint8_t background, uint8_t foreground);
-void sys_set_attribute_position(text_window *tw, uint8_t background, uint8_t foreground, int x, int y);
 uint8_t get_bg_position(int x, int y);
 uint8_t get_fg_position(int x, int y);
 void reset_attribute();
@@ -68,6 +65,7 @@ void init_video();
 void focus(text_window *tw);
 text_window * creation_text_window(int x, int y, int cols, int lines, int cursor_x, int cursor_y, bool disable_cursor, uint8_t attribute, int buffer);
 void resize_text_window(text_window *tw, int x, int y);
+void disable_cursor(int disable);
 
 /* Avec le syscall qui va bien : */
 void set_attribute(uint8_t background, uint8_t foreground);

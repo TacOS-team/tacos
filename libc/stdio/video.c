@@ -28,6 +28,7 @@
 
 #define CTL_COL 0
 #define CTL_COL_POS 1
+#define CTL_CURSOR 2
 
 /** The base pointer for the video memory */
 /* volatile pour éviter des problèmes d'optimisation de gcc. */
@@ -40,6 +41,9 @@ static text_window *tw_focus = NULL;
 static void updateCursorPosition();
 void set_foreground(text_window * tw, uint8_t foreground);
 void set_background(text_window * tw, uint8_t background);
+void sys_disable_cursor();
+void sys_set_attribute(text_window *tw, uint8_t background, uint8_t foreground);
+void sys_set_attribute_position(text_window *tw, uint8_t background, uint8_t foreground, int x, int y);
 
 /**
  * Conversion entre latin1 et la table ASCII utilisée.
@@ -129,11 +133,7 @@ void focus(text_window *tw) {
 	
 	switchBuffer(tw->n_buffer);
 	refresh(tw);
-	if (tw->disable_cursor) {
-		disableCursor(tw);
-	} else {
-		updateCursorPosition(tw);
-	}
+	sys_disable_cursor(tw, tw->disable_cursor);
 }
 
 void cls(text_window *tw) {
@@ -189,25 +189,23 @@ static void updateCursorPosition(text_window * tw)
   outb((uint8_t) (pos >> 8), CRT_REG_DATA);
 }
 
-void disableCursor(text_window * tw)
+void sys_disable_cursor(text_window * tw, int disable)
 {
-	if (tw != tw_focus)
-		return;
+	if (disable) {
+		if (tw != tw_focus)
+			return;
 
-  /* CRT index port => ask for access to register 0xa ("cursor
-	   start") */
-	outb(0x0a, CRT_REG_INDEX);
+	  /* CRT index port => ask for access to register 0xa ("cursor
+			start") */
+		outb(0x0a, CRT_REG_INDEX);
 
-	/* (RBIL Tables 708 & 654) CRT Register 0xa => bit 5 = cursor OFF */
-	outb(1 << 5, CRT_REG_DATA);
+		/* (RBIL Tables 708 & 654) CRT Register 0xa => bit 5 = cursor OFF */
+		outb(1 << 5, CRT_REG_DATA);
+	} else {
+		updateCursorPosition(tw);
+	}
 
-	tw->disable_cursor = 1;
-}
-
-void enableCursor(text_window * tw)
-{
-	tw->disable_cursor = 0;
-	updateCursorPosition(tw);
+	tw->disable_cursor = disable;
 }
 
 void newline(text_window * tw)
@@ -564,6 +562,14 @@ void set_attribute_position(uint8_t background, uint8_t foreground, int x, int y
 	syscall(SYS_VIDEO_CTL,CTL_COL_POS,(uint32_t)tw, (uint32_t)args);
 }
 
+void disable_cursor(int disable)
+{
+	text_window * tw = get_current_process()->fd[1].ofd->extra_data;
+	uint32_t args[1];
+	args[0] = disable;
+	syscall(SYS_VIDEO_CTL, CTL_CURSOR, (uint32_t)tw, (uint32_t)args);
+}
+
 void* sys_video_ctl( uint32_t ctl_code ,uint32_t tw , uint32_t args )
 {
 	switch(ctl_code)
@@ -575,6 +581,8 @@ void* sys_video_ctl( uint32_t ctl_code ,uint32_t tw , uint32_t args )
 			sys_set_attribute_position((text_window*)tw,
 												*((uint32_t*)args), *((uint32_t*)args+1),
 												*((uint32_t*)args+2), *((uint32_t*)args+3));
+		case CTL_CURSOR :
+			sys_disable_cursor((text_window*)tw, *((uint32_t*)args));
 			break;
 		default :
 			break;

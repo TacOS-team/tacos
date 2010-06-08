@@ -98,7 +98,7 @@ void displayWindow(struct window_t* win)
 	}
 
 	fflush(stdout);
-	disableCursor();
+	disable_cursor(1);
 }
 
 void runWindow(struct window_t* win)
