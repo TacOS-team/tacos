@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <mouse.h>
 #include <video.h>
+#include <ctype.h>
 
 size_t ansi_strlen(const char* s)
 {
