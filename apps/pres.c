@@ -73,7 +73,7 @@ void plan1(struct window_t *win, struct widget_t** txt, struct widget_t** title)
 "\033[30m      V) Entrées/sorties\n"
 "\033[30m         a. Système de fichier FAT\n"
 "\033[30m         b. Stdin/Stdout\n");
-	*title = addButton(win,"Sommaire");
+	*title = addButton(win,"I) Mémoire");
 }
 void plan2(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
@@ -95,7 +95,7 @@ void plan2(struct window_t *win, struct widget_t** txt, struct widget_t** title)
 "\033[30m      V) Entrées/sorties\n"
 "\033[30m         a. Système de fichier FAT\n"
 "\033[30m         b. Stdin/Stdout\n");
-	*title = addButton(win,"Sommaire");
+	*title = addButton(win,"II) Interruptions");
 }
 void plan3(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
@@ -117,7 +117,7 @@ void plan3(struct window_t *win, struct widget_t** txt, struct widget_t** title)
 "\033[30m      V) Entrées/sorties\n"
 "\033[30m         a. Système de fichier FAT\n"
 "\033[30m         b. Stdin/Stdout\n");
-	*title = addButton(win,"Sommaire");
+	*title = addButton(win,"III) Gestion des processus");
 }
 void plan4(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
@@ -139,7 +139,7 @@ void plan4(struct window_t *win, struct widget_t** txt, struct widget_t** title)
 "\033[30m      V) Entrées/sorties\n"
 "\033[30m         a. Système de fichier FAT\n"
 "\033[30m         b. Stdin/Stdout\n");
-	*title = addButton(win,"Sommaire");
+	*title = addButton(win,"IV) Pilotes");
 }
 void plan5(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
@@ -161,7 +161,7 @@ void plan5(struct window_t *win, struct widget_t** txt, struct widget_t** title)
 "\033[32m      V) Entrées/sorties\n"
 "\033[32m         a. Système de fichier FAT\n"
 "\033[32m         b. Stdin/Stdout\n");
-	*title = addButton(win,"Sommaire");
+	*title = addButton(win,"V) Entrées/sorties");
 }
 
 /*
