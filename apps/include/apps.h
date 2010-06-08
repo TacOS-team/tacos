@@ -25,5 +25,7 @@ int test_sscanf();
 int debug_fat();
 int test_ansi();
 int snake_main();
+int noxeyes(); 
+int noxeyes_zboing(); 
 
 #endif //APPS_H

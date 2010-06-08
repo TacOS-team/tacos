@@ -3,7 +3,7 @@ CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin
 
 SRCS = *.c
 
-all: shell.o fiinou.o matrix.o tests.o shell_utils.o pres.o snake.o
+all: shell.o fiinou.o matrix.o tests.o shell_utils.o pres.o snake.o noxeyes.o
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 

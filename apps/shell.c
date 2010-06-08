@@ -72,6 +72,18 @@ static int resize_cmd()
 	resize_text_window(get_current_process()->fd[1].ofd->extra_data, x, y);
 }
 
+static int resize_cmd_pid() {
+	int pid, x, y;
+	scanf("%d %d %d", &pid, &x, &y);
+	resize_text_window(find_process(pid)->fd[1].ofd->extra_data, x, y);
+}
+
+static int move_pid() {
+	int pid, x, y;
+	scanf("%d %d %d", &pid, &x, &y);
+	move_text_window(find_process(pid)->fd[1].ofd->extra_data, x, y);
+}
+
 static int cls_cmd() {
 	printf("\033[2J");
 	fflush(stdout);
@@ -122,7 +134,11 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(launch_pres, "presentation");
 	add_builtin_cmd(launch_matrix, "matrix");
 	add_builtin_cmd(resize_cmd, "resize");
+	add_builtin_cmd(resize_cmd_pid, "resize_pid");
+	add_builtin_cmd(move_pid, "move_pid");
 	add_builtin_cmd(snake_main, "snake");
+	add_builtin_cmd(noxeyes, "noxeyes");
+	add_builtin_cmd(noxeyes_zboing, "noxeyes_zboing");
 	
 	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
 	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");

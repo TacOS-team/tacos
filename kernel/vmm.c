@@ -250,17 +250,19 @@ static void cut_slab(struct slab *s, unsigned int nb_pages)
     struct slab *new_slab =
       (struct slab*) ((vaddr_t) s + nb_pages*PAGE_SIZE);
     new_slab->nb_pages = s->nb_pages - nb_pages;
-    new_slab->prev = s;
+    new_slab->prev = s->prev;
     new_slab->next = s->next;
 
     if(s->next != NULL)
       s->next->prev = new_slab;
-    s->next = new_slab;
+    if(s->prev != NULL)
+      s->prev->next = new_slab;
 
     s->nb_pages = nb_pages;
-  } 
+  } else {
+    remove(&free_slabs, s);
+  }
 
-  remove(&free_slabs, s);
   add(&used_slabs, s);
 }
 
