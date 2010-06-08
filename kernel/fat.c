@@ -125,9 +125,9 @@ char * decode_long_file_name (char * name, uint8_t * long_file_name ) {
 
 	return name;
 }
+static fat_dir_entry_t root_dir[224];
 
 void open_root_dir (directory_t * dir) {
-	fat_dir_entry_t root_dir[224];
 	int i;
 	int itermax = 8;//fat_info.root_entry_count/2;
 	char str[14];
@@ -556,7 +556,7 @@ Partiton Boot Sector info :\n\
 
 
 void print_path () {
-		int i=206;
+		/*int i=206;
 		int c=1;
 		while (file_alloc_table[i] != 0xFFF) {
 			printf("%d ",file_alloc_table[i]);
@@ -565,7 +565,7 @@ void print_path () {
 		}
 		printf("%d\n",file_alloc_table[i]);
 		printf("count sector: %d\n",c);
-
+    */
 		/*
 		char name[14];
 		int i, max;
@@ -580,7 +580,7 @@ void print_path () {
 		fat_open_file("fd0:/boot/grub/menu.txt",&ofd);
 		printf("size: %d cluster: %d\n",ofd.file_size, ofd.current_cluster);*/
 
-		/*open("fd0:/boot/grub/menu.txt",21);*/
+		open("fd0:/boot/grub/menu.txt",21);
 		
 }
 
