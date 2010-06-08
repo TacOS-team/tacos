@@ -39,14 +39,26 @@ void displayEyes() {
   printf("  ###########    ###########\n");
 }
 
+static int min(int a, int b) {
+  return a < b ? a : b;
+}
+
+static int max(int a, int b) {
+  return a > b ? a : b;
+}
+
 coord getVect(coord mouse, coord eye) {
   coord result;
-  result.x = eye.x + ((mouse.x - eye.x) / 11);
-  result.y = eye.y + ((mouse.y - eye.y) / 6);
-
-  //printf("NYU : %d %d - %d %d - %d %d", eye.x, eye.y, mouse.x, mouse.x, result.x, result.y);
-  //getchar();
-
+  if(mouse.x > eye.x)
+    result.x = min(mouse.x, eye.x + OFFSET_EYE_1_X - 3);
+  else
+    result.x = max(mouse.x, eye.x - OFFSET_EYE_1_X + 3);
+  
+  if(mouse.y > eye.y)
+    result.y = min(mouse.y, eye.y + OFFSET_EYE_1_Y - 3);
+  else
+    result.y = max(mouse.y, eye.y - OFFSET_EYE_1_Y + 3);
+ 
   return result;
 }
 
@@ -57,9 +69,18 @@ static void print_locate(coord c, char car) {
 
 void updateMouseCoord(coord *mouse)
 {
-  getMouseCoord(&(mouse->x),&(mouse->y));
-	mouse->x = mouse->x*80/640;
-  mouse->y = 25 - (mouse->y*25/480);
+  coord tmp;
+
+  getMouseCoord(&(tmp.x),&(tmp.y));
+	tmp.x = tmp.x*80/640;
+  tmp.y = 25 - (tmp.y*25/480);
+
+  if(mouse->x != tmp.x || mouse->y != tmp.y) {
+    if(mouse->x != -1)
+  		set_attribute_position(BLACK, LIGHT_BLUE, mouse->x, mouse->y);
+    *mouse = tmp;
+	  set_attribute_position(LIGHT_BLUE, BLACK, mouse->x, mouse->y);
+  }
 }
 
 void updateIris(eye *e1, eye *e2, coord ir1, coord ir2) {
@@ -79,7 +100,7 @@ int noxeyes_main(int zboing) {
   int wait = 0;
   int isz_l = 1;
   int isz_c = 1;
-  coord mouse;
+  coord mouse = { -1, -1 };
   eye eye1, eye2;
   text_window *tw = get_current_process()->fd[1].ofd->extra_data;
 
@@ -107,6 +128,7 @@ int noxeyes_main(int zboing) {
     eye2.center.y = tw->y + OFFSET_EYE_2_Y; 
   
     updateMouseCoord(&mouse);
+
     newIris1 = getVect(mouse, eye1.center);
     newIris2 = getVect(mouse, eye2.center);
 
