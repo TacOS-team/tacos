@@ -54,10 +54,13 @@ void schema_pagination(struct window_t *win, struct widget_t** txt, struct widge
 
 void goBack(struct widget_t* wdg, int x, int y)
 {
+  if(current <= 0)
+    return;
+
 	setVisible(title[current],0);
 	setVisible(txt[current],0);
 
-	current = (current-1)%NB_SLIDES;
+  current = (current-1);
 
 	setVisible(title[current],1);
 	setVisible(txt[current],1);
@@ -65,10 +68,13 @@ void goBack(struct widget_t* wdg, int x, int y)
 
 void goForward(struct widget_t* wdg, int x, int y)
 {
-	setVisible(title[current],0);
+  if(current >= NB_SLIDES-1)
+    return;
+
+  setVisible(title[current],0);
 	setVisible(txt[current],0);
 
-	current = (current+1)%NB_SLIDES;
+	current = (current+1);
 
 	setVisible(title[current],1);
 	setVisible(txt[current],1);
