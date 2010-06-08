@@ -14,121 +14,58 @@
 #include <syscall.h>
 #include <debug.h>
 
+#define USER_PROCESS 0
+#define KERNEL_PROCESS 1
+
 process_t* idle_process;
 static uint32_t quantum;						// Quantum de temps alloué aux process
 
-static void* switch_process(void* data __attribute__ ((unused)))
+
+void process_switch(int mode, process_t* current)
 {
-	uint32_t* stack_ptr;
-	uint32_t esp0, eflags;
-   uint16_t ss, cs;
-   uint32_t compteur;
-
-   process_t* current = get_current_process();
+	uint32_t esp, eflags;
+	uint16_t kss, ss, cs;
 	
-	// On récupère le contexte du processus actuel uniquement si il a déja été lancé
-	if(current->state == PROCSTATE_RUNNING)
-	{	
-		/* On récupere un pointeur de pile pour acceder aux registres empilés */
-		asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
-		
-		/* On met le contexte dans la structure "process"
-		 * (on peut difficilement faire ça dans une autre fonction, sinon il 
-		 * faudrait calculer l'offset résultant dans la pile, donc c'est 
-		 * hardcodé, et c'est bien comme ça.)  
-		 */
-		current->regs.eflags = stack_ptr[17];
-		current->regs.cs  = stack_ptr[16];
-		current->regs.eip = stack_ptr[15];
-		current->regs.eax = stack_ptr[14];
-		current->regs.ecx = stack_ptr[13];
-		current->regs.edx = stack_ptr[12];
-		current->regs.ebx = stack_ptr[11];
-		//->esp kernel, on saute
-		current->regs.ebp = stack_ptr[9];
-		current->regs.esi = stack_ptr[8];
-		current->regs.edi = stack_ptr[7];
-		current->regs.fs = stack_ptr[6];
-		current->regs.gs = stack_ptr[5];
-		current->regs.ds = stack_ptr[4];
-		current->regs.es = stack_ptr[3];
-		
-		// Si on ordonnance une tache en cours d'appel systeme..
-		if(current->regs.cs == 0x8)
-		{
-			current->regs.ss = get_default_tss()->ss0;
-			current->regs.esp = stack_ptr[10] + 20;
-		}
-		else
-		{
-			current->regs.ss = stack_ptr[19];
-			current->regs.esp = stack_ptr[18];
-		}
-		
-		current->user_time += quantum;
-	}
+	get_default_tss()->esp0	=	current->kstack.esp0;
+	get_default_tss()->ss0	=	current->kstack.ss0;
 	
-	// On recupere le prochain processus à executer	
-	compteur = 0;
-	do
-	{
-		compteur++;
-		current = get_next_process();
-	}while((current->state == PROCSTATE_TERMINATED || current->state == PROCSTATE_WAITING) && compteur < get_proc_count());
-	
-	// Si on a aucun processus en IDLE/WAITING/RUNNING, il n'y a aucune chance pour qu'un processus arrive spontanement
-	// Donc on arrete le scheduler
-	if(current == NULL || current->state == PROCSTATE_TERMINATED) 
-	{
-		// Mise en place de l'interruption sur le quantum de temps
-	    
-	    add_event(switch_process,NULL,quantum);	
-	    i8254_init(1000/*TIMER_FREQ*/);
-		kprintf("Scheduler is down...\n");
-		outb(0x20, 0x20);
-		while(1);
-		//asm("hlt");
-	}
-
-	if(current->state == PROCSTATE_IDLE)// Sinon on signale que le processus est désormais actif
-	{
-		current->state = PROCSTATE_RUNNING;
-	}
-	
-	
-	//syscall_update_esp(current->sys_stack);
-	get_default_tss()->esp0 = current->kstack.esp0;
-	
-	// Mise en place de l'interruption sur le quantum de temps
-	add_event(switch_process,NULL,quantum);	
-	i8254_init(1000/*TIMER_FREQ*/);
-
-	// On réaffecte à la main stdin, stdout et stderr. TEMPORAIRE ! Il faudrait que stdin, stdout et stderr soient tjs à la même adresse pour chaque processus...
-	stdin = current->stdin;
-	stdout = current->stdout;
-	stderr = current->stderr;
-
-	// Changer le contexte:
 	ss = current->regs.ss;
 	cs = current->regs.cs;
-	esp0 = current->regs.esp;
+	//esp0 = current-e>regs.esp;
 	eflags = (current->regs.eflags | 0x200) & 0xFFFFBFFF; // Flags permettant le changemement de contexte
 		
+	if(mode == USER_PROCESS)
+	{
+		kss = current->kstack.ss0;
+		esp = current->kstack.esp0;
+	}
+	else
+	{
+		kss = current->regs.ss;
+		esp = current->regs.esp;
+	}
+	
 	asm(
-			"mov %0, %%esp\n\t"
-			/* On push les registres necessaires au changement de contexte */
-			"push %1\n\t"
-			"push %2\n\t"
-			"push %3\n\t"
-			"push %4\n\t"
-			"push %5\n\t"
+			"mov %0, %%ss;"
+			"mov %1, %%esp;"
+			"cmp %[KPROC], %[mode];" // if(mode != KERNEL_PROC)
+			"je else;"
+			"push %2;"
+			"push %3;"
+			"else:"
+			"push %4;"
+			"push %5;"
+			"push %6;"
 			::        
-			"m" (esp0), 		
+			"m" (kss), 		
+			"m" (esp),
 			"m" (ss), 					
 			"m" (current->regs.esp), 	
 			"m" (eflags), 				
 			"m" (cs), 					
-			"m" (current->regs.eip) 	
+			"m" (current->regs.eip),
+			[KPROC] "i"(KERNEL_PROCESS),
+			[mode]	"g"(mode) 	
        );
 	/* On push ensuite les registres de la tache à lancer */
 	
@@ -180,7 +117,111 @@ static void* switch_process(void* data __attribute__ ((unused)))
 		
 		/* Et on switch! (enfin! >_<) */
 		"iret\n\t"
-	);
+	);	
+}
+
+static void* schedule(void* data __attribute__ ((unused)))
+{
+	uint32_t* stack_ptr;
+	uint32_t esp0, eflags;
+   uint16_t ss, cs;
+   uint32_t compteur;
+
+   process_t* current = get_current_process();
+	
+	// On récupère le contexte du processus actuel uniquement si il a déja été lancé
+	if(current->state == PROCSTATE_RUNNING)
+	{	
+		/* On récupere un pointeur de pile pour acceder aux registres empilés */
+		asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
+		
+		/* On met le contexte dans la structure "process"
+		 * (on peut difficilement faire ça dans une autre fonction, sinon il 
+		 * faudrait calculer l'offset résultant dans la pile, donc c'est 
+		 * hardcodé, et c'est bien comme ça.)  
+		 */
+		current->regs.eflags = stack_ptr[17];
+		current->regs.cs  = stack_ptr[16];
+		current->regs.eip = stack_ptr[15];
+		current->regs.eax = stack_ptr[14];
+		current->regs.ecx = stack_ptr[13];
+		current->regs.edx = stack_ptr[12];
+		current->regs.ebx = stack_ptr[11];
+		//->esp kernel, on saute
+		current->regs.ebp = stack_ptr[9];
+		current->regs.esi = stack_ptr[8];
+		current->regs.edi = stack_ptr[7];
+		current->regs.fs = stack_ptr[6];
+		current->regs.gs = stack_ptr[5];
+		current->regs.ds = stack_ptr[4];
+		current->regs.es = stack_ptr[3];
+		
+		// Si on ordonnance une tache en cours d'appel systeme..
+		if(current->regs.cs == 0x8)
+		{
+			current->regs.ss = get_default_tss()->ss0;
+			current->regs.esp = stack_ptr[10] + 20;
+		}
+		else
+		{
+			current->regs.ss = stack_ptr[19];
+			current->regs.esp = stack_ptr[18];
+		}
+		
+		// Sauver la TSS
+		current->kstack.esp0 = get_default_tss()->esp0;
+		current->kstack.ss0  = get_default_tss()->ss0;
+		
+		current->user_time += quantum;
+	}
+	
+	// On recupere le prochain processus à executer	
+	compteur = 0;
+	do
+	{
+		compteur++;
+		current = get_next_process();
+	}while((current->state == PROCSTATE_TERMINATED || current->state == PROCSTATE_WAITING) && compteur < get_proc_count());
+	
+	// Si on a aucun processus en IDLE/WAITING/RUNNING, il n'y a aucune chance pour qu'un processus arrive spontanement
+	// Donc on arrete le scheduler
+	if(current == NULL || current->state == PROCSTATE_TERMINATED) 
+	{
+		// Mise en place de l'interruption sur le quantum de temps
+	    
+	    add_event(schedule,NULL,quantum);	
+	    i8254_init(1000/*TIMER_FREQ*/);
+		kprintf("Scheduler is down...\n");
+		outb(0x20, 0x20);
+		while(1);
+		//asm("hlt");
+	}
+
+	if(current->state == PROCSTATE_IDLE)// Sinon on signale que le processus est désormais actif
+	{
+		current->state = PROCSTATE_RUNNING;
+	}
+	
+	
+	//syscall_update_esp(current->sys_stack);
+	
+	
+	// Mise en place de l'interruption sur le quantum de temps
+	add_event(schedule,NULL,quantum);	
+	i8254_init(1000/*TIMER_FREQ*/);
+
+	// On réaffecte à la main stdin, stdout et stderr. TEMPORAIRE ! Il faudrait que stdin, stdout et stderr soient tjs à la même adresse pour chaque processus...
+	stdin = current->stdin;
+	stdout = current->stdout;
+	stderr = current->stderr;
+
+	// Changer le contexte:
+	if(current->regs.cs == 0x8)
+		process_switch(KERNEL_PROCESS, current);
+	else
+		process_switch(USER_PROCESS, current);
+		
+
 	return NULL;
 }
 
@@ -191,7 +232,7 @@ void init_scheduler(int Q)
 
 void start_scheduler()
 {
-	add_event(switch_process,NULL,quantum);
+	add_event(schedule,NULL,quantum);
 }
 
 void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)))

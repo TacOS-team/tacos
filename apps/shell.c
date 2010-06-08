@@ -137,6 +137,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(resize_cmd_pid, "resize_pid");
 	add_builtin_cmd(move_pid, "move_pid");
 	add_builtin_cmd(snake_main, "snake");
+	add_builtin_cmd(cube_launcher, "cube");
 	add_builtin_cmd(noxeyes, "noxeyes");
 	add_builtin_cmd(noxeyes_zboing, "noxeyes_zboing");
 	

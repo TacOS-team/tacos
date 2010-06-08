@@ -149,14 +149,14 @@ int test_task1(int argc, char** argv)
 	int pid = get_pid();
 	//printf("\nTache n%d\n",pid);
 	//printf("Parameters:\nargc=%d\nargv=0x%x\n",argc, argv);
-	idle();
+	//idle();
+	while(1);
 	return pid;
 }
 
 int test_task()
 {
-	//exec(test_task1, "test");
-	while(1);
+	exec(test_task1, "test");
 	return 0;
 }
 

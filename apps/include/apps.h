@@ -25,6 +25,7 @@ int test_sscanf();
 int debug_fat();
 int test_ansi();
 int snake_main();
+int cube_launcher();
 int noxeyes(); 
 int noxeyes_zboing(); 
 
