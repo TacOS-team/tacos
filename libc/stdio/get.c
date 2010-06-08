@@ -78,6 +78,10 @@ int fgetc(FILE *stream) {
 				fflush(stdout);
 			}
 			pointeur++;
+
+      // Unbuffered => on flush direct
+      if((stream->_flags & _IONBF) == _IONBF)
+        break;
 		}
 	} 
 

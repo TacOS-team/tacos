@@ -64,9 +64,12 @@ void gauche() {
 
 void * thread_input(void * arg) {
 	char c;
-	resize_text_window(get_current_process()->fd[1].ofd->extra_data, 1, 1);
   setvbuf(stdin, NULL, _IO_MAGIC | _IONBF, 0);
+	resize_text_window(get_current_process()->fd[1].ofd->extra_data, 1, 1);
   pid_keyboard = get_pid();
+  
+  disable_cursor(1);
+  printf("#");
 
 	while(1) {
 		c = getche();
@@ -174,19 +177,14 @@ void game() {
   init_snake();
 
 	while(avance_snake() != -1) {
-    int wait;
-    if(score < 10)
-      wait = (10 - score) * 1000000;
-    else
-      wait = 100000;
-    for( ; wait >= 0 ; wait--);
+    int i;
+    for(i=0 ; i < 5000000 ; i++);
 	}
 }
 
 int snake_main()
 {
-	//pthread_t tid;
-	//pthread_create(&tid, NULL, thread_input, NULL);
+  pid_keyboard = -1;
   exec(thread_input, "Snake_keyboard_input");
 
 	srand(time(NULL));
