@@ -111,7 +111,7 @@ void print_path ();				// fonction de debug
 void change_dir (char * name);
 void catenate (char * name);
 void catenate_demo (char * name);
-void list_segments ();			
+void list_segments (int mode);			
 void print_working_dir ();		
 
 

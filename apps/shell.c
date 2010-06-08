@@ -38,6 +38,18 @@ static int kill_cmd()
 	return 0;
 }
 
+static int ls_cmd()
+{
+	list_segments(0);
+	return 0;
+}
+
+static int ll_cmd()
+{
+	list_segments(1);
+	return 0;
+}
+
 static int cd_cmd()
 {
 	char buffer[80];
@@ -116,7 +128,8 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	//add_builtin_cmd(kmalloc_print_mem, "kmalloc_print_mem");
 	add_builtin_cmd((func_ptr)test_kmalloc, "test_kmalloc");
 	add_builtin_cmd((func_ptr)test_memory_reserve_page_frame, "test_reserve_frame");
-	add_builtin_cmd((func_ptr)list_segments, "ls");
+	add_builtin_cmd(ls_cmd, "ls");
+	add_builtin_cmd(ll_cmd, "ll");
 	add_builtin_cmd((func_ptr)print_Boot_Sector, "mount");
 	add_builtin_cmd((func_ptr)print_working_dir, "pwd");
 	add_builtin_cmd(debug_fat, "debugfat");

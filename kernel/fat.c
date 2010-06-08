@@ -454,16 +454,29 @@ void catenate_demo (char * name) {
 			printf("\ncd: %s n'est pas un fichier\n",name);		
 }
 
-void list_segments () {
+void list_segments (int mode) {
 	int i;
 	//char name[14]; Inutilisé
-	printf("\n");
+	if (mode == 1) 	
+		printf("TYPE\tNAME\t\tSIZE\tCLUSTER\n");
 	for (i=0;i<path.dir_list[path.current].total_entries;i++) {
-		
-			//printf("%s(%d) ",path.dir_list[path.current].entry_name[i], path.dir_list[path.current].entry_cluster[i]);
-			printf("%s ",path.dir_list[path.current].entry_name[i]);
-		
+			if (mode == 1 ) {
+				if ( (path.dir_list[path.current].entry_attributes[i] & 0x10) == 0x10)
+					printf("dir\t%s\t\t%d\t%d\n",
+								path.dir_list[path.current].entry_name[i],
+								path.dir_list[path.current].entry_size[i],
+								path.dir_list[path.current].entry_cluster[i]);
+				else
+					printf("file\t%s\t\t%d\t%d\n",
+								path.dir_list[path.current].entry_name[i],
+								path.dir_list[path.current].entry_size[i],
+								path.dir_list[path.current].entry_cluster[i]);
+		  }
+			else
+				printf("%s ",path.dir_list[path.current].entry_name[i]);
 	}
+	if (mode == 1)
+		printf("total: %d\n",path.dir_list[path.current].total_entries);
 }
 
 void print_working_dir () {
