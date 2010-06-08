@@ -139,7 +139,6 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(snake_main, "snake");
 	add_builtin_cmd(cube_launcher, "cube");
 	add_builtin_cmd(noxeyes, "noxeyes");
-	add_builtin_cmd(noxeyes_zboing, "noxeyes_zboing");
 	
 	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
 	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");

@@ -185,8 +185,7 @@ void game() {
 	}
 }
 
-int snake_main()
-{
+int snake_proc() {
   pid_keyboard = -1;
   exec(thread_input, "Snake_keyboard_input");
 
@@ -202,3 +201,7 @@ int snake_main()
 	return 0;
 }
 
+int snake_main() {
+  exec(snake_proc, "snake");
+  return 0;
+}

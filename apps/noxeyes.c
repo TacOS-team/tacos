@@ -134,6 +134,7 @@ int noxeyes_main(int zboing) {
 
     updateIris(&eye1, &eye2, newIris1, newIris2);
 
+    // XXX : marche bof
     if(zboing) {
       wait++;
 
@@ -156,11 +157,12 @@ int noxeyes_main(int zboing) {
   return 0;
 }
 
-int noxeyes() {
+int noxeyes_proc() {
   return noxeyes_main(0);
 }
 
-int noxeyes_zboing() {
-  return noxeyes_main(1);
+int noxeyes() {
+	exec(noxeyes_proc, "noxeyes");
+	return 0;
 }
 
