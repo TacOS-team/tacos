@@ -1,7 +1,7 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
-#define MAX_WIDGETS 40
+#define MAX_WIDGETS 100
 
 enum widget_type
 {

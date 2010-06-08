@@ -2,7 +2,7 @@
 #include <gui.h>
 #include <process.h>
 
-#define NB_SLIDES 19
+#define NB_SLIDES 21
 
 int current = 0;
 struct widget_t* title[NB_SLIDES];
@@ -406,6 +406,52 @@ void diapo_io(struct window_t *win, struct widget_t** txt, struct widget_t** tit
 	*title = addButton(win,"Entrées / Sorties");
 }
 
+void souris(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"           \n"
+"         Fonctionnement PS/2 :\n"
+"           \n"
+"           \n"
+"            +---+   <Port[0x60]   +----+         +---------------+\n"
+"            |CPU|<--------------->|PS/2|<------->|    premier    |\n"
+"            +---+   Port[0x64]>   |KBC |<---+    |connecteur PS/2|\n"
+"              ^                   +----+    |    +---------------+\n"
+"              |                    |  |     |\n"
+"           +----+     IRQ1         |  |     |\n"
+"           |PIC1|<-----------------+  |     |\n"
+"           +----+                     |     |    +---------------+\n"
+"              ^                       |     +--->|    second     |\n"
+"              |                       |          |connecteur PS/2|\n"
+"           +----+     IRQ12           |          +---------------+\n"
+"           |PIC2|<--------------------+\n"
+"           +----+\n"
+" \n");
+	*title = addButton(win,"Clavier/Souris");
+}
+
+void slide_time(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"    \033[31m  Récupération de la date :\033[30m\n"
+"          communication avec la Real Time Clock (RTC)\n"
+"          sur les ports 0x70 et 0x71\n"
+"      \n"
+"  \033[31m    Fonctionnement du PIT I8254 (Programmable Interval Timer) :\033[30m\n"
+"      \n"
+"                     _   _    +----------+\n"
+"                   _| |_|  -> | Compteur | -> IRQ0\n"
+"                              +----------+\n"
+"                                   ^\n"
+"                                   |\n"
+"                               port 0x40\n"
+"      \n"
+"   \033[31m   Echelles de temps :\033[30m\n"
+"         ticks -> secondes -> dates\n"
+"      \n"
+"  \033[31m    Planification d'évènements :\033[30m\n"
+"         sleep, ordonnancement ...\n"
+" \n");
+	*title = addButton(win,"Gestion du temps");
+}
 
 void goBack(struct widget_t* wdg, int x, int y)
 {
@@ -468,11 +514,15 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 	i++;
 	plan2(win,&txt[i],&title[i]);
 	i++;
+	slide_time(win,&txt[i],&title[i]);
+	i++;
 	plan3(win,&txt[i],&title[i]);
 	i++;
 	schema_ordonnanceur(win,&txt[i],&title[i]);
 	i++;
 	plan4(win,&txt[i],&title[i]);
+	i++;
+	souris(win,&txt[i],&title[i]);
 	i++;
 	slide_disquette(win,&txt[i],&title[i]);
 	i++;
