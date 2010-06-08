@@ -2,11 +2,57 @@
 #include <gui.h>
 #include <process.h>
 
-#define NB_SLIDES 6
+#define NB_SLIDES 8
 
 int current = 0;
 struct widget_t* title[NB_SLIDES];
 struct widget_t* txt[NB_SLIDES];
+
+struct widget_t* intro(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"           \033[32m    +---------------------------------------------+  \033[30m\n"
+"           \033[32m    |\033[30m Réalisation d'un système d'exploitation x86 \033[32m|  \033[30m\n"
+"           \033[32m    +---------------------------------------------+  \033[30m\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+" Maxime Cheramy\n"
+" Nicolas Floquet\n"
+" Benjamin Hautbois                                              9 juin 2010\n"
+" Ludovic Rigal                                4ème Année Génie Informatique\n"
+" Simon Vernhes                                                INSA Toulouse\n");
+	*title = addButton(win,"Présentation de projet tutoré");
+}
+
+struct widget_t* plan(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"\n"
+"\033[31m      I) Mémoire\n"
+"\033[34m         a. Pagination\n"
+"\033[34m         b. Allocation mémoire\n"
+"\033[31m      II) Interruptions\n"
+"\033[34m         a. IDT \n"
+"\033[34m         b. Wrapper\n"
+"\033[34m         c. Gestion du temps\n"
+"\033[31m      III) Gestion des processus\n"
+"\033[34m         a. Changement de contexte\n"
+"\033[34m         b. Appels système\n"
+"\033[34m         c. Ordonnancement\n"
+"\033[31m      IV) Pilotes\n"
+"\033[34m         a. Clavier/Souris\n"
+"\033[34m         b. Disquette\n"
+"\033[31m      V) Entrées/sorties\n"
+"\033[34m         a. Système de fichier FAT\n"
+"\033[34m         b. Stdin/Stdout\n");
+	*title = addButton(win,"Sommaire");
+}
 
 struct widget_t* schema_vmm(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, "                    ^                                   ^\n"
@@ -179,12 +225,22 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 		
 	win = createWindow(0, 7);
 
-	schema_pagination(win,&txt[0],&title[0]);
-	schema_vmm(win,&txt[1],&title[1]);
-	schema_ordonnanceur(win,&txt[2],&title[2]);
-	slide_disquette(win,&txt[3],&title[3]);
-	schema_fat(win,&txt[4],&title[4]);
-	diapo_fat(win,&txt[5],&title[5]);
+	i=0;
+	intro(win,&txt[i],&title[i]);
+	i++;
+	plan(win,&txt[i],&title[i]);
+	i++;
+	schema_pagination(win,&txt[i],&title[i]);
+	i++;
+	schema_vmm(win,&txt[i],&title[i]);
+	i++;
+	schema_ordonnanceur(win,&txt[i],&title[i]);
+	i++;
+	slide_disquette(win,&txt[i],&title[i]);
+	i++;
+	schema_fat(win,&txt[i],&title[i]);
+	i++;
+	diapo_fat(win,&txt[i],&title[i]);
 
 	for(i=0 ; i<NB_SLIDES ; i++)
 	{
