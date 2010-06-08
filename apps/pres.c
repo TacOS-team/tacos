@@ -2,7 +2,7 @@
 #include <gui.h>
 #include <process.h>
 
-#define NB_SLIDES 3
+#define NB_SLIDES 4
 
 int current = 0;
 struct widget_t* title[NB_SLIDES];
@@ -72,6 +72,30 @@ struct widget_t* schema_ordonnanceur(struct window_t *win, struct widget_t** txt
 	*title = addButton(win,"Ordonnanceur");
 }
 
+
+struct widget_t* schema_fat(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"                       Partition FAT       \n"
+"                \033[34m ________________________ \033[30m \n"
+"                \033[34m|      Secteur de boot   |\033[30m<---*\n"
+"                \033[34m|________________________|\033[30m    |\n"
+"                \033[34m| File Allocation Tables |\033[30m    |\n"
+"                \033[34m|________________________|\033[30m    |-- \033[34mZone réservée\n"
+"                \033[34m|                        |\033[30m    |\n"
+"                \033[34m|    Répertoire Racine   |\033[30m    |\n"
+"                \033[34m|________________________|\033[30m<---*\n"
+"                \033[32m|                        |\033[30m<---*\n"
+"                \033[32m|                        |\033[30m    |\n"
+"                \033[32m|       Fichiers et      |\033[30m    |\n"
+"                \033[32m|    sous répertoires    |\033[30m    |\n"
+"                \033[32m|                        |\033[30m    |-- \033[32mZone des données\n" 
+"                \033[32m|                        |\033[30m    |\n"
+"                \033[32m|                        |\033[30m    |\n"
+"                \033[32m|                        |\033[30m    |\n"
+"                \033[32m|________________________|\033[30m<---*\n");
+	*title = addButton(win,"Système de fichiers FAT");
+}
+
 void goBack(struct widget_t* wdg, int x, int y)
 {
   if(current <= 0)
@@ -113,6 +137,7 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 	schema_pagination(win,&txt[0],&title[0]);
 	schema_vmm(win,&txt[1],&title[1]);
 	schema_ordonnanceur(win,&txt[2],&title[2]);
+	schema_fat(win,&txt[3],&title[3]);
 
 	for(i=0 ; i<NB_SLIDES ; i++)
 	{
