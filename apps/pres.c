@@ -2,13 +2,13 @@
 #include <gui.h>
 #include <process.h>
 
-#define NB_SLIDES 8
+#define NB_SLIDES 13
 
 int current = 0;
 struct widget_t* title[NB_SLIDES];
 struct widget_t* txt[NB_SLIDES];
 
-struct widget_t* intro(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+void intro(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
 "\n"
 "\n"
@@ -31,7 +31,7 @@ struct widget_t* intro(struct window_t *win, struct widget_t** txt, struct widge
 	*title = addButton(win,"Présentation de projet tutoré");
 }
 
-struct widget_t* plan(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+void plan(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
 "\n"
 "\033[31m      I) Mémoire\n"
@@ -53,8 +53,118 @@ struct widget_t* plan(struct window_t *win, struct widget_t** txt, struct widget
 "\033[34m         b. Stdin/Stdout\n");
 	*title = addButton(win,"Sommaire");
 }
+void plan1(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"\n"
+"\033[32m      I) Mémoire\n"
+"\033[32m         a. Pagination\n"
+"\033[32m         b. Allocation mémoire\n"
+"\033[30m      II) Interruptions\n"
+"\033[30m         a. IDT \n"
+"\033[30m         b. Wrapper\n"
+"\033[30m         c. Gestion du temps\n"
+"\033[30m      III) Gestion des processus\n"
+"\033[30m         a. Changement de contexte\n"
+"\033[30m         b. Appels système\n"
+"\033[30m         c. Ordonnancement\n"
+"\033[30m      IV) Pilotes\n"
+"\033[30m         a. Clavier/Souris\n"
+"\033[30m         b. Disquette\n"
+"\033[30m      V) Entrées/sorties\n"
+"\033[30m         a. Système de fichier FAT\n"
+"\033[30m         b. Stdin/Stdout\n");
+	*title = addButton(win,"Sommaire");
+}
+void plan2(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"\n"
+"\033[30m      I) Mémoire\n"
+"\033[30m         a. Pagination\n"
+"\033[30m         b. Allocation mémoire\n"
+"\033[32m      II) Interruptions\n"
+"\033[32m         a. IDT \n"
+"\033[32m         b. Wrapper\n"
+"\033[32m         c. Gestion du temps\n"
+"\033[30m      III) Gestion des processus\n"
+"\033[30m         a. Changement de contexte\n"
+"\033[30m         b. Appels système\n"
+"\033[30m         c. Ordonnancement\n"
+"\033[30m      IV) Pilotes\n"
+"\033[30m         a. Clavier/Souris\n"
+"\033[30m         b. Disquette\n"
+"\033[30m      V) Entrées/sorties\n"
+"\033[30m         a. Système de fichier FAT\n"
+"\033[30m         b. Stdin/Stdout\n");
+	*title = addButton(win,"Sommaire");
+}
+void plan3(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"\n"
+"\033[30m      I) Mémoire\n"
+"\033[30m         a. Pagination\n"
+"\033[30m         b. Allocation mémoire\n"
+"\033[30m      II) Interruptions\n"
+"\033[30m         a. IDT \n"
+"\033[30m         b. Wrapper\n"
+"\033[30m         c. Gestion du temps\n"
+"\033[32m      III) Gestion des processus\n"
+"\033[32m         a. Changement de contexte\n"
+"\033[32m         b. Appels système\n"
+"\033[32m         c. Ordonnancement\n"
+"\033[30m      IV) Pilotes\n"
+"\033[30m         a. Clavier/Souris\n"
+"\033[30m         b. Disquette\n"
+"\033[30m      V) Entrées/sorties\n"
+"\033[30m         a. Système de fichier FAT\n"
+"\033[30m         b. Stdin/Stdout\n");
+	*title = addButton(win,"Sommaire");
+}
+void plan4(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"\n"
+"\033[30m      I) Mémoire\n"
+"\033[30m         a. Pagination\n"
+"\033[30m         b. Allocation mémoire\n"
+"\033[30m      II) Interruptions\n"
+"\033[30m         a. IDT \n"
+"\033[30m         b. Wrapper\n"
+"\033[30m         c. Gestion du temps\n"
+"\033[30m      III) Gestion des processus\n"
+"\033[30m         a. Changement de contexte\n"
+"\033[30m         b. Appels système\n"
+"\033[30m         c. Ordonnancement\n"
+"\033[32m      IV) Pilotes\n"
+"\033[32m         a. Clavier/Souris\n"
+"\033[32m         b. Disquette\n"
+"\033[30m      V) Entrées/sorties\n"
+"\033[30m         a. Système de fichier FAT\n"
+"\033[30m         b. Stdin/Stdout\n");
+	*title = addButton(win,"Sommaire");
+}
+void plan5(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"\n"
+"\033[30m      I) Mémoire\n"
+"\033[30m         a. Pagination\n"
+"\033[30m         b. Allocation mémoire\n"
+"\033[30m      II) Interruptions\n"
+"\033[30m         a. IDT \n"
+"\033[30m         b. Wrapper\n"
+"\033[30m         c. Gestion du temps\n"
+"\033[30m      III) Gestion des processus\n"
+"\033[30m         a. Changement de contexte\n"
+"\033[30m         b. Appels système\n"
+"\033[30m         c. Ordonnancement\n"
+"\033[30m      IV) Pilotes\n"
+"\033[30m         a. Clavier/Souris\n"
+"\033[30m         b. Disquette\n"
+"\033[32m      V) Entrées/sorties\n"
+"\033[32m         a. Système de fichier FAT\n"
+"\033[32m         b. Stdin/Stdout\n");
+	*title = addButton(win,"Sommaire");
+}
 
-struct widget_t* schema_vmm(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+void schema_vmm(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, "                    ^                                   ^\n"
 "                    |                                   |\n"
 "  Fin de la zone    |                                   |\n"
@@ -77,7 +187,7 @@ struct widget_t* schema_vmm(struct window_t *win, struct widget_t** txt, struct 
 	*title = addButton(win,"VMM");
 }
 
-struct widget_t* schema_pagination(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+void schema_pagination(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, "Adresse : \033[32m########## \033[31m########## \033[34m############\033[0m\n"
 "          <--------> <--------> <---------->\n"
 "            |             |________    |_______________\n"
@@ -98,7 +208,7 @@ struct widget_t* schema_pagination(struct window_t *win, struct widget_t** txt, 
 	*title = addButton(win,"Pagination");
 }
 
-struct widget_t* schema_ordonnanceur(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+void schema_ordonnanceur(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
 "\n"
 "      \033[30m               \033[30m                                    \033[30mEBP___\033[30m  \n"
@@ -119,7 +229,7 @@ struct widget_t* schema_ordonnanceur(struct window_t *win, struct widget_t** txt
 }
 
 
-struct widget_t* slide_disquette(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+void slide_disquette(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win,
 "                               \033[31mRegistres\033[30m\n"
 "\n"
@@ -141,7 +251,7 @@ struct widget_t* slide_disquette(struct window_t *win, struct widget_t** txt, st
 
 
 
-struct widget_t* schema_fat(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+void schema_fat(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
 "                       Partition FAT       \n"
 "                \033[34m ________________________ \033[30m \n"
@@ -164,7 +274,7 @@ struct widget_t* schema_fat(struct window_t *win, struct widget_t** txt, struct 
 	*title = addButton(win,"Système de fichiers FAT");
 }
 
-struct widget_t* diapo_fat(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+void diapo_fat(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
 "                     \033[31mInterprétation des valeurs de la FAT\033[30m\n"
 "\n"
@@ -230,13 +340,23 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 	i++;
 	plan(win,&txt[i],&title[i]);
 	i++;
+	plan1(win,&txt[i],&title[i]);
+	i++;
 	schema_pagination(win,&txt[i],&title[i]);
 	i++;
 	schema_vmm(win,&txt[i],&title[i]);
 	i++;
+	plan2(win,&txt[i],&title[i]);
+	i++;
+	plan3(win,&txt[i],&title[i]);
+	i++;
 	schema_ordonnanceur(win,&txt[i],&title[i]);
 	i++;
+	plan4(win,&txt[i],&title[i]);
+	i++;
 	slide_disquette(win,&txt[i],&title[i]);
+	i++;
+	plan5(win,&txt[i],&title[i]);
 	i++;
 	schema_fat(win,&txt[i],&title[i]);
 	i++;
