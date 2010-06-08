@@ -176,7 +176,6 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 	init_stdfd(&(new_proc->fd[0]), &(new_proc->fd[1]), &(new_proc->fd[2]));
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
 	proc_count++;
-	
 
 	add_process(new_proc);
 	

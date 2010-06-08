@@ -231,5 +231,17 @@ void init_stdfiles(FILE ** _stdin, FILE ** _stdout, FILE ** _stderr);
 */
 void itoa (char *buf, int base, int d);
 
+/**
+ * @brief Modifie le buffer et les flags d'un stream
+ * 
+ * Modifie le buffer et les flags d'un stream
+ * 
+ * @param stream le stream a modifier
+ * @param buf le nouveau buffer (peut être défini à NULL et sera alloué
+ *  automatiquement.
+ * @param mode les nouveaux flags
+ * @param size taille du nouveau buffer
+ */
+int setvbuf(FILE *stream, char *buf, int mode, size_t size);
 
 #endif

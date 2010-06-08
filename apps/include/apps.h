@@ -24,5 +24,6 @@ int test_sprintf();
 int test_sscanf();
 int debug_fat();
 int test_ansi();
+int snake_main();
 
 #endif //APPS_H
