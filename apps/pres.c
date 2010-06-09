@@ -2,7 +2,7 @@
 #include <gui.h>
 #include <process.h>
 
-#define NB_SLIDES 23
+#define NB_SLIDES 24
 
 int current = 0;
 struct widget_t* title[NB_SLIDES];
@@ -295,6 +295,23 @@ void pagination_prob(struct window_t *win, struct widget_t** txt, struct widget_
 	*title = addButton(win,"Pagination");
 }
 
+void interruptions_conf(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win,
+"\n     Utilisations des interruptions:\n"
+"          => Communication avec les périphériques\n"
+"          => Ordonnancement, timers...\n"
+"          => Gestion des exceptions\n"
+"\n\n"
+"     Pour cela,\n"
+"\n\n" 
+"     Deux éléments à configurer:\n"
+"          => IDT\n"
+"            (Interrupt Descriptor Table)\n"
+"          => PIC\n"
+"            (Programmable Interrupt Controler)\n");
+*title = addButton(win,"Interruptions - Configuration");
+}
+
 void schema_ordonnanceur(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
 "\n"
@@ -545,6 +562,8 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 	pagination_prob(win,&txt[i],&title[i]);
 	i++;
 	plan2(win,&txt[i],&title[i]);
+	i++;
+	interruptions_conf(win,&txt[i],&title[i]);
 	i++;
 	slide_time(win,&txt[i],&title[i]);
 	i++;
