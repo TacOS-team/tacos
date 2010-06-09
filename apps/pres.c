@@ -7,6 +7,7 @@
 int current = 0;
 struct widget_t* title[NB_SLIDES];
 struct widget_t* txt[NB_SLIDES];
+struct widget_t* page;
 
 void intro(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
@@ -478,6 +479,7 @@ void fin(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 
 void goBack(struct widget_t* wdg, int x, int y)
 {
+  char buf[20];
   if(current <= 0)
     return;
 
@@ -488,10 +490,14 @@ void goBack(struct widget_t* wdg, int x, int y)
 
 	setVisible(title[current],1);
 	setVisible(txt[current],1);
+
+  sprintf(buf, "Page %d/%d", current+1, NB_SLIDES);
+  setText(page, buf);
 }
 
 void goForward(struct widget_t* wdg, int x, int y)
 {
+  char buf[20];
   if(current >= NB_SLIDES-1)
     return;
 
@@ -502,6 +508,9 @@ void goForward(struct widget_t* wdg, int x, int y)
 
 	setVisible(title[current],1);
 	setVisible(txt[current],1);
+  
+  sprintf(buf, "Page %d/%d", current+1, NB_SLIDES);
+  setText(page, buf);
 }
 
 int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unused)))
@@ -509,6 +518,7 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 	struct window_t* win;
 	struct widget_t* bck;
 	struct widget_t* nxt;
+  char buf[20];
 
 	int i;
 		
@@ -579,6 +589,11 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 	nxt = addButton(win,"Suiv");
 	setWidgetProperties(nxt, 73, 1, 3, 6, 5, 0);
 	setOnClick(nxt,goForward);
+
+  sprintf(buf, "Page 1/%d", NB_SLIDES);
+	page = addButton(win, buf);
+	setWidgetProperties(page, 60, 1, 3, 12, 3, 0);
+	setOnClick(page, NULL);
 
 	runWindow(win);
 	

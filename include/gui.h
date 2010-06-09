@@ -37,6 +37,7 @@ void runWindow(struct window_t* win);
 int freeWindow(struct window_t* win);
 
 struct widget_t* addButton(struct window_t* win, const char* title);
+void setText(struct widget_t* wdg, const char* text);
 struct widget_t* addTxt(struct window_t* win, const char* txt);
 void setWidgetProperties(struct widget_t* wdg, 
 									uint8_t x, uint8_t y,

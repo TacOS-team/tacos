@@ -82,18 +82,37 @@ static int resize_cmd()
 	int x, y;
 	scanf("%d %d", &x, &y);
 	resize_text_window(get_current_process()->fd[1].ofd->extra_data, x, y);
+  return 0;
 }
 
 static int resize_cmd_pid() {
 	int pid, x, y;
-	scanf("%d %d %d", &pid, &x, &y);
-	resize_text_window(find_process(pid)->fd[1].ofd->extra_data, x, y);
+  process_t *p;
+	
+  scanf("%d %d %d", &pid, &x, &y);
+  p = find_process(pid);
+
+  if(p != NULL) {
+  	resize_text_window(p->fd[1].ofd->extra_data, x, y);
+    return 0;
+  }
+
+  return 1;
 }
 
 static int move_pid() {
 	int pid, x, y;
+  process_t *p;
+
 	scanf("%d %d %d", &pid, &x, &y);
-	move_text_window(find_process(pid)->fd[1].ofd->extra_data, x, y);
+  p = find_process(pid);
+
+  if(p != NULL) {
+  	move_text_window(p->fd[1].ofd->extra_data, x, y);
+    return 0;
+  }
+
+  return 1;
 }
 
 static int cls_cmd() {

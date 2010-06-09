@@ -274,3 +274,9 @@ void setVisible(struct widget_t* wdg, char visible)
 	wdg->visible = visible;
 }
 
+void setText(struct widget_t* wdg, const char* text) {
+  kfree(wdg->adv);
+	wdg->adv = kmalloc(sizeof(char)*strlen(text)+1);
+  strcpy(wdg->adv, text);
+}
+
