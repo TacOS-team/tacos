@@ -472,8 +472,7 @@ void fin(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 "\n"
 "\n"
 "\n"
-"                          Avez-vous des questions ?\n"
-" \n");
+"                          Avez-vous des questions ?\033[0m\n");
 	*title = addButton(win,"");
 }
 
