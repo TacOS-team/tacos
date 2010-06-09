@@ -458,19 +458,19 @@ void souris(struct window_t *win, struct widget_t** txt, struct widget_t** title
 "         Fonctionnement PS/2 :\n"
 "           \n"
 "           \n"
-"            +---+   <Port[0x60]   +----+         +---------------+\n"
-"            |CPU|<--------------->|PS/2|<------->|    premier    |\n"
-"            +---+   Port[0x64]>   |KBC |<---+    |connecteur PS/2|\n"
-"              ^                   +----+    |    +---------------+\n"
-"              |                    |  |     |\n"
-"           +----+     IRQ1         |  |     |\n"
-"           |PIC1|<-----------------+  |     |\n"
-"           +----+                     |     |    +---------------+\n"
-"              ^                       |     +--->|    second     |\n"
-"              |                       |          |connecteur PS/2|\n"
-"           +----+     IRQ12           |          +---------------+\n"
-"           |PIC2|<--------------------+\n"
-"           +----+\n"
+"            \033[40m\033[37m --- \033[30m\033[47m   <Port[0x60]   \033[40m\033[37m ---- \033[30m\033[47m         \033[37m\033[44m --------------- \033[47m\033[30m\n"
+"            \033[40m\033[37m|CPU|\033[30m\033[47m<--------------->\033[40m\033[37m|PS/2|\033[30m\033[47m\033[34m<------->\033[37m\033[44m|    premier    |\033[47m\033[30m\n"
+"            \033[40m\033[37m --- \033[30m\033[47m   Port[0x64]>   \033[40m\033[37m|KBC |\033[30m\033[47m\033[31m<---+    \033[37m\033[44m|connecteur PS/2|\033[47m\033[30m\n"
+"              ^                   \033[40m\033[37m ---- \033[31m\033[47m    |    \033[37m\033[44m --------------- \033[47m\033[30m\n"
+"              |                   \033[34m | \033[31m |     |\n"
+"           \033[44m\033[37m ---- \033[47m\033[34m     IRQ1         | \033[31m |     |\n"
+"           \033[44m\033[37m|PIC1|\033[47m\033[34m<-----------------+ \033[31m |     |\n"
+"           \033[44m\033[37m ---- \033[47m                    \033[31m |     |    \033[37m\033[41m --------------- \033[47m\033[30m\n"
+"              ^                      \033[31m |     +--->\033[37m\033[41m|    second     |\033[47m\033[30m\n"
+"              |                      \033[31m |          \033[37m\033[41m|connecteur PS/2|\033[47m\033[30m\n"
+"           \033[41m\033[37m ---- \033[47m\033[31m     IRQ12           |          \033[37m\033[41m --------------- \033[47m\033[30m\n"
+"           \033[41m\033[37m|PIC2|\033[47m\033[31m<--------------------+\n"
+"           \033[41m\033[37m ---- \033[47m\033[30m\n"
 " \n");
 	*title = addButton(win,"Clavier/Souris");
 }
@@ -502,8 +502,25 @@ void slide_time(struct window_t *win, struct widget_t** txt, struct widget_t** t
 void conclusion(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
 "\n"
-" \n");
-	*title = addButton(win,"");
+"\033[31m             Passage à une architecture micro-kernel\n"
+"\033[30m                   => refonte profonde de l'architecture\n"
+"\n"
+"\n"
+"\033[31m             Affichage graphique\n"
+"\033[30m                   => utilisation du mode vm86\n"
+"\n"
+"\n"
+"\033[31m             Communication entre les processus\n"
+"\033[30m                   => sémaphores\n"
+"\033[30m                   => mémoire partagée\n"
+"\033[30m                   => pipes\n"
+"\n"
+"\n"
+"\033[31m             Support du reseau\n"
+"\033[30m                   => driver carte réseau\n"
+"\033[30m                   => support des différentes couches réseau\n"
+"\n");
+	*title = addButton(win,"Perspectives pour la suite");
 }
 
 void fin(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
