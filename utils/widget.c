@@ -164,8 +164,8 @@ void runWindow(struct window_t* win)
 		if(divider%100000 == 0 && get_current_process() == get_active_process())
 		{
 			getMouseCoord(&x,&y);
-			x = x*80/640;
-			y = 25 - (y*25/480);
+			x = x*79/640;
+			y = 24 - (y*24/480);
 
 			if(!frst_time)
 				set_attribute_position(colbg, colfg, old_x, old_y);

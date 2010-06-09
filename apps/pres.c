@@ -2,7 +2,7 @@
 #include <gui.h>
 #include <process.h>
 
-#define NB_SLIDES 21
+#define NB_SLIDES 23
 
 int current = 0;
 struct widget_t* title[NB_SLIDES];
@@ -453,6 +453,29 @@ void slide_time(struct window_t *win, struct widget_t** txt, struct widget_t** t
 	*title = addButton(win,"Gestion du temps");
 }
 
+void conclusion(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"\n"
+" \n");
+	*title = addButton(win,"");
+}
+
+void fin(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win, 
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"                          Merci pour votre attention\n"
+"\n"
+"\n"
+"\n"
+"                          Avez-vous des questions ?\n"
+" \n");
+	*title = addButton(win,"");
+}
+
 void goBack(struct widget_t* wdg, int x, int y)
 {
   if(current <= 0)
@@ -533,6 +556,11 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 	diapo_fat(win,&txt[i],&title[i]);
 	i++;
 	diapo_io(win,&txt[i],&title[i]);
+	i++;
+	conclusion(win,&txt[i],&title[i]);
+	i++;
+	fin(win,&txt[i],&title[i]);
+
 
 	for(i=0 ; i<NB_SLIDES ; i++)
 	{
