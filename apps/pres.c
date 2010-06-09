@@ -238,7 +238,7 @@ void pagination2(struct window_t *win, struct widget_t** txt, struct widget_t** 
 "\n"
 "	Et au répertoire de tables de page par :\n"
 "					0xFFFFF000\n");
-	*title = addButton(win, "Mémoire - Action de la pagination");
+	*title = addButton(win, "Mémoire - Activation de la pagination");
 }
 
 
