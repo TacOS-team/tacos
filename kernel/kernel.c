@@ -141,7 +141,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_VIDEO_CTL, (syscall_handler_t)sys_video_ctl);
 	
 	// Création du processus par défaut: notre shell
-	create_process("Mishell", (paddr_t)shell,0,NULL,1024,3);
+	create_process("Mishell", (paddr_t)shell,0,NULL,0x10000,3);
 	//create_process("Mishell", (paddr_t)test_proc,0,NULL,1024,3);
 	/* Lancement du scheduler */
 	init_scheduler(10);
