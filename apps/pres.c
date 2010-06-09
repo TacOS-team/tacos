@@ -2,7 +2,7 @@
 #include <gui.h>
 #include <process.h>
 
-#define NB_SLIDES 28
+#define NB_SLIDES 30
 
 int current = 0;
 struct widget_t* title[NB_SLIDES];
@@ -303,7 +303,7 @@ void interruptions_conf(struct window_t *win, struct widget_t** txt, struct widg
 	*txt = addTxt(win,
 "\n\n     \033[31mUtilisations des interruptions:\033[30m\n"
 "          => Communication avec les périphériques\n"
-"          => Ordonnancement, timers...\n"
+"          => Ordonnancement, timers, appels systèmes...\n"
 "          => Gestion des exceptions\n"
 "\n\n"
 "     \033[31mPour cela,\n" 
@@ -379,6 +379,33 @@ void ctxt_switch_iret(struct window_t *win, struct widget_t** txt, struct widget
 *title = addButton(win,"Changement de contexte logiciel");
 }
 
+void diapo_syscall(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win,
+"\n\n"
+"     \033[31mBut des appels systèmes:\033[30m\n"
+"          => Exécuter du code noyau depuis un processus utilisateur\n\n\n"
+"     \033[31mMécanisme utilisé:\033[30m\n"
+"          => Interruptions logicielles\n"
+"          => Une seul ISR pour tous les appels systèmes\n"
+"          => Numero de fonction appelé passé par eax\n"
+"          => Passage d'arguments via ebx, ecx et edx\n");
+*title = addButton(win,"Appels systèmes");
+}
+
+void pb_syscall(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win,
+"\n\n"
+"     \033[31mProblème rencontré:\033[30m\n"
+"          => Impossible d'interrompre une interruption\n"
+"          => L'ordonnanceur est lancé par interruption\n"
+"     \033[31mConclusion\033[30m: Les appels systèmes ne sont pas préemptibles.\n\n"
+"     \033[31mSolution:\033[30m\n"
+"          => Interruption remplacée par une Trap Gate\n\n"
+"     \033[31mTrap Gate:\033[30m même mécanisme que les interruptions,\n"
+"                                mais ne touche pas au flag IF, et donc\n"
+"                                ne masque pas les interruptions.\n");
+*title = addButton(win,"Appels systèmes");
+}
 
 
 void schema_ordonnanceur(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
@@ -662,6 +689,10 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 	ctxt_switch_intro(win,&txt[i],&title[i]);
 	i++;
 	ctxt_switch_iret(win,&txt[i],&title[i]);
+	i++;
+	diapo_syscall(win,&txt[i],&title[i]);
+	i++;
+	pb_syscall(win,&txt[i],&title[i]);
 	i++;
 	schema_ordonnanceur(win,&txt[i],&title[i]);
 	i++;
