@@ -2,7 +2,7 @@
 #include <gui.h>
 #include <process.h>
 
-#define NB_SLIDES 24
+#define NB_SLIDES 25
 
 int current = 0;
 struct widget_t* title[NB_SLIDES];
