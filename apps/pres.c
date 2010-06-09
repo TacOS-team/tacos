@@ -2,7 +2,7 @@
 #include <gui.h>
 #include <process.h>
 
-#define NB_SLIDES 25
+#define NB_SLIDES 26
 
 int current = 0;
 struct widget_t* title[NB_SLIDES];
@@ -297,13 +297,13 @@ void pagination_prob(struct window_t *win, struct widget_t** txt, struct widget_
 
 void interruptions_conf(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win,
-"\n\n     Utilisations des interruptions:\n"
+"\n\n     \033[31mUtilisations des interruptions:\033[30m\n"
 "          => Communication avec les périphériques\n"
 "          => Ordonnancement, timers...\n"
 "          => Gestion des exceptions\n"
 "\n\n"
-"     Pour cela,\n" 
-"     deux éléments à configurer:\n"
+"     \033[31mPour cela,\n" 
+"     deux éléments à configurer:\033[30m\n"
 "          => IDT\n"
 "            (Interrupt Descriptor Table)\n"
 "          => PIC\n"
@@ -313,16 +313,30 @@ void interruptions_conf(struct window_t *win, struct widget_t** txt, struct widg
 
 void interruptions_idtpic(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win,
-"\n\n     Role de l'IDT:\n" 
+"\n\n     \033[31mRole de l'IDT:\033[30m\n" 
 "          => Déterminer le type de gate pour chaque vecteur\n"
 "            (interruption, exception, trap)\n"
-"          => Contenir les ISR\n"      
+"          => Contenir les ISR\n"
+"             (Interrupt Service Routine)\n"      
 "\n\n"
-"     Role du PIC:\n"
+"     \033[31mRole du PIC:\033[30m\n"
 "          => Permet de gérer les interruptions matérielles\n"
 "          => Mapper ces interruption\n"
 "          => Masquer ou non certaines interruptions\n");
 *title = addButton(win,"IDT/PIC");
+}
+
+void interruptions_wrapper(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win,
+"\n\n     \033[31mProblème:\033[30m\n"
+"          Comment s'assurer que les ISR ne perturbent pas l'exécution\n"
+"          du programme?\n\n"
+"     \033[31mSolution:\033[30m\n"
+"          Empiler les données importantes à chaque interruptions\n"
+"          (registres et flags) et les dépiler ensuite\n\n"
+"       => Utilisation de wrappers pour dispenser le programmeur à réaliser\n"
+"          cette opération dans chaque ISR\n");
+*title = addButton(win,"Wrapper");
 }
 
 
@@ -580,6 +594,8 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 	interruptions_conf(win,&txt[i],&title[i]);
 	i++;
 	interruptions_idtpic(win,&txt[i],&title[i]);
+	i++;
+	interruptions_wrapper(win,&txt[i],&title[i]);
 	i++;
 	slide_time(win,&txt[i],&title[i]);
 	i++;
