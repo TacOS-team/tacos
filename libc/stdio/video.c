@@ -38,6 +38,8 @@ static buffer_video_t *buffer_video = &buffer[0];
 
 static text_window *tw_focus = NULL;
 
+static int bright = 0;
+
 static void updateCursorPosition();
 void set_foreground(text_window * tw, uint8_t foreground);
 void set_background(text_window * tw, uint8_t background);
@@ -132,6 +134,14 @@ static void clear (void) {
 }
 
 void init_video() {
+	// Initialisation à 0 du Attribute Mode Control Register pour éviter les surprises...
+	inb(0x3DA);
+	outb(0x10, 0x3C0);
+	outb(0, 0x3C0);
+	outb(0x20, 0x3C0);
+	inb(0x3DA);
+
+
 	reset_attribute();
 	clear();
 }
@@ -204,16 +214,23 @@ void set_blink_bit(int blink_bit)
 {
 	int val;
 
+/* FIXME: Cassé... La lecture renvoie toujours 255... 
 	inb(0x3DA);
 	outb(0x10 , 0x3C0);
 	val = inb(0x4C1);
 	outb(0x20, 0x3C1);
-
 	if (blink_bit) {
 		val |= 0x08;
 	} else {
 		val &= ~0x08;
+	}*/
+
+	if (blink_bit) {
+		val = 0x08;
+	} else {
+		val &= ~0x08;
 	}
+
 
 	inb(0x3DA);
 	outb(0x10, 0x3C0);
@@ -410,45 +427,95 @@ void kputchar (text_window * tw, char c) {
 					case 'm':
 						if (val == 0) {
 							reset_attribute(tw);
-						} else if (val >= 30 && val <= 37) {
-							switch(val - 30) {
+						} else if (val == 1) {
+							bright = 1;
+						} else if (val == 2) {
+							bright = 0;
+						} else if (val == 5 || val == 6) {
+							set_blink_bit(1);
+						} else if (val == 25) {
+							set_blink_bit(0);
+						}	else if (val >= 30 && val <= 37) {
 								// si low intensity (normal) :
-								case 0: set_foreground(tw, BLACK);
-										  break;
-								case 1: set_foreground(tw, RED);
-										  break;
-								case 2: set_foreground(tw, GREEN);
-										  break;
-								case 3: set_foreground(tw, YELLOW);
-										  break;
-								case 4: set_foreground(tw, BLUE);
-										  break;
-								case 5: set_foreground(tw, MAGENTA);
-										  break;
-								case 6: set_foreground(tw, CYAN);
-										  break;
-								case 7: set_foreground(tw, WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
-										  break;
+							if (bright == 0) {
+								switch(val - 30) {
+									case 0: set_foreground(tw, BLACK);
+											  break;
+									case 1: set_foreground(tw, RED);
+											  break;
+									case 2: set_foreground(tw, GREEN);
+											  break;
+									case 3: set_foreground(tw, YELLOW); // Devrait être BROWN
+											  break;
+									case 4: set_foreground(tw, BLUE);
+											  break;
+									case 5: set_foreground(tw, MAGENTA);
+											  break;
+									case 6: set_foreground(tw, CYAN);
+											  break;
+									case 7: set_foreground(tw, WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
+											  break;
+								}
+							} else {
+								switch(val - 30) {
+									case 0: set_foreground(tw, DARK_GRAY);
+											  break;
+									case 1: set_foreground(tw, LIGHT_RED);
+											  break;
+									case 2: set_foreground(tw, LIGHT_GREEN);
+											  break;
+									case 3: set_foreground(tw, YELLOW);
+											  break;
+									case 4: set_foreground(tw, LIGHT_BLUE);
+											  break;
+									case 5: set_foreground(tw, LIGHT_MAGENTA);
+											  break;
+									case 6: set_foreground(tw, LIGHT_CYAN);
+											  break;
+									case 7: set_foreground(tw, WHITE);
+											  break;
+								}
 							}
 						} else if (val >= 40 && val <= 47) {
-							switch(val - 40) {
 								// si low intensity (normal) :
-								case 0: set_background(tw, BLACK);
-										  break;
-								case 1: set_background(tw, RED);
-										  break;
-								case 2: set_background(tw, GREEN);
-										  break;
-								case 3: set_background(tw, YELLOW);
-										  break;
-								case 4: set_background(tw, BLUE);
-										  break;
-								case 5: set_background(tw, MAGENTA);
-										  break;
-								case 6: set_background(tw, CYAN);
-										  break;
-								case 7: set_background(tw, WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
-										  break;
+							if (bright == 0) {
+								switch(val - 40) {
+									case 0: set_background(tw, BLACK);
+											  break;
+									case 1: set_background(tw, RED);
+											  break;
+									case 2: set_background(tw, GREEN);
+											  break;
+									case 3: set_background(tw, YELLOW); // Devrait être BROWN
+											  break;
+									case 4: set_background(tw, BLUE);
+											  break;
+									case 5: set_background(tw, MAGENTA);
+											  break;
+									case 6: set_background(tw, CYAN);
+											  break;
+									case 7: set_background(tw, WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
+											  break;
+								}
+							} else {
+								switch(val - 40) {
+									case 0: set_background(tw, DARK_GRAY);
+											  break;
+									case 1: set_background(tw, LIGHT_RED);
+											  break;
+									case 2: set_background(tw, LIGHT_GREEN);
+											  break;
+									case 3: set_background(tw, YELLOW);
+											  break;
+									case 4: set_background(tw, LIGHT_BLUE);
+											  break;
+									case 5: set_background(tw, LIGHT_MAGENTA);
+											  break;
+									case 6: set_background(tw, LIGHT_CYAN);
+											  break;
+									case 7: set_background(tw, WHITE);
+											  break;
+								}
 							}
 
 						}

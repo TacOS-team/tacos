@@ -2,7 +2,7 @@
 
 int main_fiinou(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unused)))
 {
-	printf("\033[35m...,.,,,,:~::~~,:,::~=?7ZDNNDNNNNNNNNNNNNNNNNNNNNNNDDDDO+:,.......  ..... .....\n");
+	printf("\033[1m\033[5m\033[35m...,.,,,,:~::~~,:,::~=?7ZDNNDNNNNNNNNNNNNNNNNNNNNNNDDDDO+:,.......  ..... .....\n");
 	printf("\033[36m......,,:~~~,:=~~+$DNNNNNNNNNNDNNNNNNNNNNNNNNNNNNNNNNNNNNO?:......   .. .......\n");
 	printf("\033[35m.......,,:,..:+DDDNNNNNNNDDNDDNDNNNNNNNNNNNNNNNNNNNNNDNNNNND$,....   ..........\n");
 	printf("\033[36m.......,,.,~8DNNNNNNNNNDNNNNNDNNNNNDNNNDNNNNNNDD88$$7$$ODDDDDD+......   .......\n");
