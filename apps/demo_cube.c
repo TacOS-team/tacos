@@ -52,7 +52,7 @@ void put_char(char c, int x, int y, char* buffer)
 		buffer[x+y*LARGEUR] = c;
 }
 
-void draw_line(char car, int x1, int y1, int x2, int y2, char* buffer)
+void draw_line(int x1, int y1, int x2, int y2, char* buffer)
 {
 	int yLonger = 0;
 	int incrementVal;
@@ -80,10 +80,10 @@ void draw_line(char car, int x1, int y1, int x2, int y2, char* buffer)
 	
 	if(yLonger)
 	{
-		if( x1 == x2)
+		if( a_longLen <= 2)
 			c = '|';
-		else if( y1 == y2 )
-			c = 196;
+		else if( a_shortLen <= 2)
+			c = '-';
 		else
 			c = '/';
 			
@@ -92,10 +92,10 @@ void draw_line(char car, int x1, int y1, int x2, int y2, char* buffer)
 	}
 	else
 	{
-		if( x1 == x2)
+		if( a_longLen <= 2)
 			c = '|';
-		else if( y1 == y2 )
-			c = 196;
+		else if( a_shortLen <= 2)
+			c = '-';
 		else
 			c = '\\';
 			
@@ -134,8 +134,7 @@ void draw_cube(buffer)
 	
 	for(ligne = 0; ligne < 12; ligne++)
 	{
-		draw_line('.',
-		          (int)(cube[lignes[ligne][0]][0]*8+40),
+		draw_line((int)(cube[lignes[ligne][0]][0]*8+40),
 		          (int)(cube[lignes[ligne][0]][1]*8+12),
 		          (int)(cube[lignes[ligne][1]][0]*8+40),
 		          (int)(cube[lignes[ligne][1]][1]*8+12),
