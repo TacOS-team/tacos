@@ -170,20 +170,20 @@ void plan5(struct window_t *win, struct widget_t** txt, struct widget_t** title)
  */
 
 void intro_pagination(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
-	*txt = addTxt(win, "\033[31mPourquoi la pagination ?\033[30m\n"
+	*txt = addTxt(win, "\n\033[31mPourquoi la pagination ?\033[30m\n"
 " \n"
-"     \033[34m- Sécurité (cloisonnement de la mémoire par processus, privilèges)\n"
+"     - Sécurité (cloisonnement de la mémoire par processus, privilèges)\n"
 " \n"
-"     \033[34m- Mémoire virtuelle : Possibilité d'utiliser plusieurs supports (swap)\n"
-"     \033[34m                       Zones mémoires contigües virtuellement\n"
+"     - Mémoire virtuelle : Possibilité d'utiliser plusieurs supports (swap)\n"
+"                           Zones mémoires contigües virtuellement\n"
 " \n"
-"     \033[34m- Concept important et très répandu : Intérêt pédagogique\n"
+"     - Concept important et très répandu : Intérêt pédagogique\n"
 " \n"
 "\033[31mRôle de la MMU (Memory Management Unit) :\n"
 " \n"
-"     \033[34m- Traduction des adresses virtuelles en adresses physiques\n"
+"     - Traduction des adresses virtuelles en adresses physiques\n"
 " \n"
-"     \033[34m- Levée d'une exception lorsqu'une adresse n'est pas mappée\n");
+"     - Levée d'une exception lorsqu'une adresse n'est pas mappée\n");
 	*title = addButton(win, "Pagination : Son rôle");
 }
 
@@ -209,53 +209,53 @@ void schema_pagination(struct window_t *win, struct widget_t** txt, struct widge
 }
 
 void pagination1(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
-	*txt = addTxt(win, "\033[31m1ère étape : Découpage de la mémoire en cadres de page\n"
+	*txt = addTxt(win, "\n\033[31m1ère étape : Découpage de la mémoire en cadres de page\n"
 " \n"
-" \033[34m  Objectif : Fournir des zones mémoires où l'on peut mapper des pages.\n"
+"   Objectif : Fournir des zones mémoires où l'on peut mapper des pages.\n"
 " \n"
 " \n"
-"  \033[34m Maintien de 2 listes : Cadres utilisés et Cadres libres.\n"
+"   Maintien de 2 listes : Cadres utilisés et Cadres libres.\n"
 " \n"
-"  \033[34m Fonctions de reservation et de libération de cadres.\n");
+"   Fonctions de reservation et de libération de cadres.\n");
 	*title = addButton(win, "Pagination : Découpage de la mémoire physique");
 }
 
 void pagination2(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
-"\033[31m2ème étape : Pagination en Identity Mapping\n"
+"\n\033[31m2ème étape : Pagination en Identity Mapping\n"
 "\n"
-"\033[34m	Passage des adresses physiques aux adresses virtuelles délicate\n"
+"	Passage des adresses physiques aux adresses virtuelles délicate\n"
 "\n"
-"\033[34m	Idée : Mapper les pages de façon à ce que :\n"
-"\033[34m             adresse virtuelle == adresse physique\n"
+"	Idée : Mapper les pages de façon à ce que :\n"
+"             adresse virtuelle == adresse physique\n"
 "\n"
 "\n"
-"\033[34m	On ajoute une entrée dans le répertoire de tables de page pour pointer \n"
-"\033[34m	vers lui-même. => Pouvoir modifier les tables de page\n"
+"	On ajoute une entrée dans le répertoire de tables de page pour pointer \n"
+"	vers lui-même. => Pouvoir modifier les tables de page\n"
 "\n"
-"\033[34m	On peut ainsi accéder à une table par l'adresse virtuelle :\n"
+"	On peut ainsi accéder à une table par l'adresse virtuelle :\n"
 "					0xFFC00000 + 1024*index_page_table\n"
 "\n"
-"\033[34m	Et au répertoire de tables de page par :\n"
-"\033[34m					0xFFFFF000\n");
+"	Et au répertoire de tables de page par :\n"
+"					0xFFFFF000\n");
 	*title = addButton(win, "Pagination : Activation");
 }
 
 
 void pagination3(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
-"\033[31m3ème étape : Mise en place du VMM (Virtual Memory Manager)\n"
+"\n\033[31m3ème étape : Mise en place du VMM (Virtual Memory Manager)\n"
 "\n"
-"\033[34m      Rôle : S'occuper de gérer des blocs de pages contigües en \n"
-"\033[34m          mémoire virtuelle.\n"
+"      Rôle : S'occuper de gérer des blocs de pages contigües en \n"
+"          mémoire virtuelle.\n"
 "\n"
-"\033[34m      Maintien de 2 listes : Blocs libres et Blocs utilisés.\n"
+"      Maintien de 2 listes : Blocs libres et Blocs utilisés.\n"
 "\n"
 "\n"
 "\n"
 "\033[31m4ème étape : Mise en place du kmalloc\n"
 "\n"
-"\033[34m      Très similaire au VMM mais avec une gestion à l'octet.\n");
+"      Très similaire au VMM mais avec une gestion à l'octet.\n");
 	*title = addButton(win, "Pagination");
 }
 
@@ -285,13 +285,17 @@ void schema_vmm(struct window_t *win, struct widget_t** txt, struct widget_t** t
 
 void pagination_prob(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
-"\033[34mSystème très complexe et avec beaucoup d'interdépendances.\n"
+"\nSystème très complexe et avec beaucoup d'interdépendances :\n"
+"                    Cadres de pages, VMM et kmalloc sont liés.\n"
 "\n"
-"\033[34mConséquences lourdes sur le reste du système d'exploitation.\n"
+"Conséquences lourdes sur le reste du système d'exploitation :\n"
+"                    kmalloc est nécessaire dans de très très nombreux cas.\n"
 "\n"
-"\033[34mBugs difficiles à détecter et à corriger ! \n"
-"\033[34m   => Seul la MMU nous signale un problème.\n"
-"\033[34m   => Parfois un bug n'a de conséquences que plus tard.\n");
+"\n"
+"Bugs difficiles à détecter et à corriger ! \n"
+"   => Seul la MMU nous signale un problème.\n"
+"   => Parfois un bug ne crée pas de plantage tout de suite.\n"
+"   => Parfois un bug n'est pas mis en évidence avant longtemps.\n");
 	*title = addButton(win,"Pagination : Difficultés");
 }
 
