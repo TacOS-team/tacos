@@ -172,7 +172,7 @@ void plan5(struct window_t *win, struct widget_t** txt, struct widget_t** title)
 void intro_pagination(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, "Pourquoi la pagination ?\n"
 " \n"
-"     - Sécurité (cloisement de la mémoire par processus, droits)\n"
+"     - Sécurité (cloisonnement de la mémoire par processus, privilèges)\n"
 " \n"
 "     - Mémoire virtuelle : Possibilité d'utiliser plusieurs supports (swap)\n"
 "                            Zones mémoires contigües virtuellement\n"

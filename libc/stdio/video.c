@@ -200,6 +200,28 @@ static void updateCursorPosition(text_window * tw)
   outb((uint8_t) (pos >> 8), CRT_REG_DATA);
 }
 
+void set_blink_bit(int blink_bit)
+{
+	int val;
+
+	inb(0x3DA);
+	outb(0x10 , 0x3C0);
+	val = inb(0x4C1);
+	outb(0x20, 0x3C1);
+
+	if (blink_bit) {
+		val |= 0x08;
+	} else {
+		val &= ~0x08;
+	}
+
+	inb(0x3DA);
+	outb(0x10, 0x3C0);
+	outb(val, 0x3C0);
+	outb(0x20, 0x3C0);
+	inb(0x3DA);
+}
+
 void sys_disable_cursor(text_window * tw, int disable)
 {
 	if (disable) {
@@ -500,7 +522,8 @@ void sys_set_attribute_position(text_window *tw, uint8_t background, uint8_t for
 
 void reset_attribute(text_window *tw)
 {
-  tw->attribute = DEFAULT_ATTRIBUTE_VALUE;
+	set_blink_bit(0);
+	tw->attribute = DEFAULT_ATTRIBUTE_VALUE;
 }
 
 text_window * creation_text_window(int x, int y, int cols, int lines, int cursor_x, int cursor_y, bool disable_cursor, uint8_t attribute, int buffer)
