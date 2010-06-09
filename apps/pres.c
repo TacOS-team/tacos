@@ -347,7 +347,7 @@ void ctxt_switch_intro(struct window_t *win, struct widget_t** txt, struct widge
 	*txt = addTxt(win,
 "\n\n     \033[31mProblématique:\033[30m\n"
 "          => Reprendre l'exécution d'une tache\n"
-"          => Changer de privilère noyau vers utilisateur\n\n"
+"          => Changer de privilège noyau vers utilisateur\n\n"
 "     \033[31mChangement de contexte matériel, la solution Intel x86:\033[30m\n"
 "          Solution se basant sur des entrées dans la GDT\n"
 "          => Problème de scalabilité, et mécanisme trop complexe\n"
@@ -401,9 +401,9 @@ void pb_syscall(struct window_t *win, struct widget_t** txt, struct widget_t** t
 "     \033[31mConclusion\033[30m: Les appels systèmes ne sont pas préemptibles.\n\n"
 "     \033[31mSolution:\033[30m\n"
 "          => Interruption remplacée par une Trap Gate\n\n"
-"     \033[31mTrap Gate:\033[30m même mécanisme que les interruptions,\n"
-"                                mais ne touche pas au flag IF, et donc\n"
-"                                ne masque pas les interruptions.\n");
+"     \033[31mTrap Gate:\033[30m Même mécanisme que les interruptions,\n"
+"                mais ne touche pas au flag IF, et donc\n"
+"                ne masque pas les interruptions.\n");
 *title = addButton(win,"Appels systèmes");
 }
 
