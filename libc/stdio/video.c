@@ -231,12 +231,12 @@ void set_blink_bit(int blink_bit)
 		val &= ~0x08;
 	}
 
-
+/* En fait, même ça c'est cassé :D 
 	inb(0x3DA);
 	outb(0x10, 0x3C0);
 	outb(val, 0x3C0);
 	outb(0x20, 0x3C0);
-	inb(0x3DA);
+	inb(0x3DA); */
 }
 
 void sys_disable_cursor(text_window * tw, int disable)
