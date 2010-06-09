@@ -297,14 +297,13 @@ void pagination_prob(struct window_t *win, struct widget_t** txt, struct widget_
 
 void interruptions_conf(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win,
-"\n     Utilisations des interruptions:\n"
+"\n\n     Utilisations des interruptions:\n"
 "          => Communication avec les périphériques\n"
 "          => Ordonnancement, timers...\n"
 "          => Gestion des exceptions\n"
 "\n\n"
-"     Pour cela,\n"
-"\n\n" 
-"     Deux éléments à configurer:\n"
+"     Pour cela,\n" 
+"     deux éléments à configurer:\n"
 "          => IDT\n"
 "            (Interrupt Descriptor Table)\n"
 "          => PIC\n"
@@ -312,13 +311,28 @@ void interruptions_conf(struct window_t *win, struct widget_t** txt, struct widg
 *title = addButton(win,"Interruptions - Configuration");
 }
 
+void interruptions_idtpic(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win,
+"\n\n     Role de l'IDT:\n" 
+"          => Déterminer le type de gate pour chaque vecteur\n"
+"            (interruption, exception, trap)\n"
+"          => Contenir les ISR\n"      
+"\n\n"
+"     Role du PIC:\n"
+"          => Permet de gérer les interruptions matérielles\n"
+"          => Mapper ces interruption\n"
+"          => Masquer ou non certaines interruptions\n");
+*title = addButton(win,"IDT/PIC");
+}
+
+
 void schema_ordonnanceur(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
 "\n"
 "      \033[30m               \033[30m                                    \033[30mEBP___\033[30m  \n"
 "    pi\033[30mle kernel -----\033[30m->                                  \033[30m      \033[30m|  \n"
 "  ____\033[32m __ __ __ __ __\033[34m __ __ __ __ __ __ __ __ __ __ __ __\033[31m __ __\033[30mV__\n"
-"      \033[32m|  |  |  |  |  \033[34m|  |  |  |  |k |  |  |  |  |  |  |  \033[31m|k |k \033[30m|  \n"
+"      \033[32m|  |  |  |  |  \033[34m|  |  |  |  |k |  |  |  |  |  |  |  \033[t31m|k |k \033[30m|  \n"
 "      \033[32m|s |e |e |c |e \033[34m|e |e |e |e |e |e |e |e |d |e |f |g \033[31m|e |e \033[30m|  \n" 
 "    ..\033[32m|s |s |f |s |i \033[34m|a |c |d |b |s |b |s |d |s |s |s |s \033[31m|i |b \033[30m|..\n"
 "      \033[32m|  |p |l |  |p \033[34m|x |x |x |x |p |p |i |i |  |  |  |  \033[31m|p |p \033[30m|  \n"
@@ -564,6 +578,8 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 	plan2(win,&txt[i],&title[i]);
 	i++;
 	interruptions_conf(win,&txt[i],&title[i]);
+	i++;
+	interruptions_idtpic(win,&txt[i],&title[i]);
 	i++;
 	slide_time(win,&txt[i],&title[i]);
 	i++;
