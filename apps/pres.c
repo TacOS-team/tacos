@@ -184,7 +184,7 @@ void intro_pagination(struct window_t *win, struct widget_t** txt, struct widget
 "     - Traduction des adresses virtuelles en adresses physiques\n"
 " \n"
 "     - Levée d'une exception lorsqu'une adresse n'est pas mappée\n");
-	*title = addButton(win, "Pagination : Son rôle");
+	*title = addButton(win, "Mémoire - Pagination");
 }
 
 void schema_pagination(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
@@ -205,7 +205,7 @@ void schema_pagination(struct window_t *win, struct widget_t** txt, struct widge
 "          CR3-->|________|  |--------->|________|   |----->|________|\n"
 "               Repertoire de         Table de pages       Page (4 kio)\n"
 "              tables de pages        (1024 entrees)\n");
-	*title = addButton(win,"Pagination : Fonctionnement sur x86");
+	*title = addButton(win,"Mémoire - Pagination sur x86");
 }
 
 void pagination1(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
@@ -217,7 +217,7 @@ void pagination1(struct window_t *win, struct widget_t** txt, struct widget_t** 
 "   Maintien de 2 listes : Cadres utilisés et Cadres libres.\n"
 " \n"
 "   Fonctions de reservation et de libération de cadres.\n");
-	*title = addButton(win, "Pagination : Découpage de la mémoire physique");
+	*title = addButton(win, "Mémoire - Découpage en cadres");
 }
 
 void pagination2(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
@@ -238,7 +238,7 @@ void pagination2(struct window_t *win, struct widget_t** txt, struct widget_t** 
 "\n"
 "	Et au répertoire de tables de page par :\n"
 "					0xFFFFF000\n");
-	*title = addButton(win, "Pagination : Activation");
+	*title = addButton(win, "Mémoire - Action de la pagination");
 }
 
 
@@ -256,7 +256,7 @@ void pagination3(struct window_t *win, struct widget_t** txt, struct widget_t** 
 "\033[31m4ème étape : Mise en place du kmalloc\n"
 "\n"
 "      Très similaire au VMM mais avec une gestion à l'octet.\n");
-	*title = addButton(win, "Pagination");
+	*title = addButton(win, "Mémoire - Allocation mémoire");
 }
 
 
@@ -280,7 +280,7 @@ void schema_vmm(struct window_t *win, struct widget_t** txt, struct widget_t** t
 "    zone gérée  --->|-----------------------------------| -\n"
 "    par vmm.c       |       Noyau - Identity Mapped     |\n"
 "                    |___________________________________|\n");
-	*title = addButton(win,"Pagination : VMM");
+	*title = addButton(win,"Mémoire - VMM");
 }
 
 void pagination_prob(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
@@ -296,7 +296,7 @@ void pagination_prob(struct window_t *win, struct widget_t** txt, struct widget_
 "   => Seul la MMU nous signale un problème.\n"
 "   => Parfois un bug ne crée pas de plantage tout de suite.\n"
 "   => Parfois un bug n'est pas mis en évidence avant longtemps.\n");
-	*title = addButton(win,"Pagination : Difficultés");
+	*title = addButton(win,"Mémoire - Difficultés");
 }
 
 void interruptions_conf(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
@@ -467,7 +467,7 @@ void diapo_fat(struct window_t *win, struct widget_t** txt, struct widget_t** ti
 "                       Date/Heure dernières modifications\n"
 "                    \033[34mNo du premier cluster\033[30m | \033[34mTaille en octet\033[30m\n");
 
-	*title = addButton(win,"Système de fichiers FAT");
+	*title = addButton(win,"Entrées/Sorties - Système de fichiers FAT");
 }
 
 
@@ -490,7 +490,7 @@ void diapo_io(struct window_t *win, struct widget_t** txt, struct widget_t** tit
 "  \033[34m+-----------+\033[30m             \033[32m+\033[30m  +-----------+  \033[32m|\033[30m  \033[31m-------->\033[30m\033[34m+-----------+\033[30m\n"
 "      \033[34mFILE\033[30m                  \033[32m|\033[30m      fd[]       \033[32m|\033[30m        \033[34mopen_file_descriptor\033[30m\n"
 "                            \033[32m+-----------------+\033[30m");
-	*title = addButton(win,"Entrées / Sorties");
+	*title = addButton(win,"Entrées/Sorties - Flux standards");
 }
 
 void souris(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
