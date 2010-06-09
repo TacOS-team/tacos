@@ -52,7 +52,7 @@ void put_char(char c, int x, int y, char* buffer)
 		buffer[x+y*LARGEUR] = c;
 }
 
-void draw_line(char c, int x1, int y1, int x2, int y2, char* buffer)
+void draw_line(char car, int x1, int y1, int x2, int y2, char* buffer)
 {
 	int yLonger = 0;
 	int incrementVal;
@@ -62,6 +62,8 @@ void draw_line(char c, int x1, int y1, int x2, int y2, char* buffer)
 	int a_shortLen = (shortLen>=0?shortLen:shortLen*-1);
 	int longLen= x2-x1;
 	int a_longLen = (longLen>=0?longLen:longLen*-1);
+	
+	char c;
 	
 	float divDiff;
 	
@@ -78,11 +80,25 @@ void draw_line(char c, int x1, int y1, int x2, int y2, char* buffer)
 	
 	if(yLonger)
 	{
+		if( x1 == x2)
+			c = '|';
+		else if( y1 == y2 )
+			c = 196;
+		else
+			c = '/';
+			
 		for(i=0; i!=longLen; i+=incrementVal)
 			put_char(c, x1+(int)((float)i/divDiff), y1+i, buffer);
 	}
 	else
 	{
+		if( x1 == x2)
+			c = '|';
+		else if( y1 == y2 )
+			c = 196;
+		else
+			c = '\\';
+			
 		for(i=0; i!=longLen; i+=incrementVal)
 			put_char(c, x1+i,y1+(int)((float)i/divDiff), buffer);
 	}
@@ -92,11 +108,13 @@ void draw_line(char c, int x1, int y1, int x2, int y2, char* buffer)
 int rotate_point(float point[3])
 {
 	float temp[3];
-	float cos_theta = 	0.99994516f;
-	float sin_theta = 	0.01047178f;
+	// theta = 4°
+	float cos_theta = 	0.99984769f;
+	float sin_theta = 	0.01745240f;
 	
-	float cos_phi = 	0.99939082f;
-	float sin_phi = 	0.03489949f;
+	// phi = 1°
+	float cos_phi = 	0.99756405f;
+	float sin_phi = 	0.06975647f;
 	
 	temp[0] = point[0];
 	temp[1] = point[1]*cos_theta - point[2]*sin_theta;
