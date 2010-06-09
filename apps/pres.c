@@ -2,7 +2,7 @@
 #include <gui.h>
 #include <process.h>
 
-#define NB_SLIDES 26
+#define NB_SLIDES 28
 
 int current = 0;
 struct widget_t* title[NB_SLIDES];
@@ -343,6 +343,43 @@ void interruptions_wrapper(struct window_t *win, struct widget_t** txt, struct w
 *title = addButton(win,"Wrapper");
 }
 
+void ctxt_switch_intro(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win,
+"\n\n     \033[31mProblématique:\033[30m\n"
+"          => Reprendre l'exécution d'une tache\n"
+"          => Changer de privilère noyau vers utilisateur\n\n"
+"     \033[31mChangement de contexte matériel, la solution Intel x86:\033[30m\n"
+"          Solution se basant sur des entrées dans la GDT\n"
+"          => Problème de scalabilité, et mécanisme trop complexe\n"
+"             à mettre en oeuvre.\n\n\n"
+"     \033[31mSolution retenue: Changement de contexte logiciel\033[30m\n"
+"          => Utilisation détournée de IRET\n");
+*title = addButton(win,"Changement de contexte");
+}
+
+void ctxt_switch_iret(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
+	*txt = addTxt(win,
+"\n\n     \033[31mFonctionnement de IRET\033[30m\n"
+" ________\n"
+"|   SS   |      \033[31mInterruption:\033[30m\n"
+"|________|       =>Empile SS, ESP, EFLAGS, CS et EIP\n"
+"|   ESP  |\n"
+"|________|\n"
+"| EFLAGS |      \033[31mIRET:\033[30m\n"
+"|________|       =>Dépile EIP, CS\n"
+"|   CS   |       =>Vérifie un éventuel changement de privilèges\n"
+"|________|       =>Dépile EFLAGS\n"
+"|   EIP  |       => En cas de changemen de privilèges,\n"
+"|________|<- ESP    dépile ESP et SS\n"
+""
+"\n"
+"                \033[31mChangement de contexte logiciel:\033[30m\n"
+"                     => Simuler une interruption\n"
+"                     => Lancer IRET\n");
+*title = addButton(win,"Changement de contexte logiciel");
+}
+
+
 
 void schema_ordonnanceur(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*txt = addTxt(win, 
@@ -621,6 +658,10 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 	slide_time(win,&txt[i],&title[i]);
 	i++;
 	plan3(win,&txt[i],&title[i]);
+	i++;
+	ctxt_switch_intro(win,&txt[i],&title[i]);
+	i++;
+	ctxt_switch_iret(win,&txt[i],&title[i]);
 	i++;
 	schema_ordonnanceur(win,&txt[i],&title[i]);
 	i++;
