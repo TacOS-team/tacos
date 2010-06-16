@@ -17,8 +17,6 @@
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
 
-static int first_shell = 1;
-
 static int help_cmd()
 {
 	show_builtin_cmd();
@@ -180,12 +178,6 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	printf("    _|    _|    _|  _|        _|    _|        _|\n");
 	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
 	printf("(codename:fajitas)\n\n\n");
-
-	if (first_shell) {
-		// Evite des plantages en mappant plein de pages !!!
-		test_kmalloc();
-		first_shell = 0;
-	}
 
 	disable_cursor(0);
 
