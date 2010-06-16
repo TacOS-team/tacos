@@ -2,8 +2,6 @@
 #include <pagination.h>
 #include <vmm.h>
 #include <stdio.h>
-// TODO : dégager cette dépendance.
-#include <video.h>
 
 /**
  * vmm est l'allocateur qui s'occupe de gérer les pages virtuelles du noyau.

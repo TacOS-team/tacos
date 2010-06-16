@@ -56,7 +56,7 @@ kernel.o: ../include/shell.h include/ksyscall.h ../include/syscall.h
 kernel.o: include/ksem.h ../include/video.h
 kmalloc.o: ../include/types.h ../include/stdio.h ../include/fcntl.h
 kmalloc.o: ../include/libio.h ../include/stdarg.h ../include/heap.h
-kmalloc.o: include/vmm.h ../include/kmalloc.h ../include/video.h
+kmalloc.o: include/vmm.h ../include/kmalloc.h
 kpanic.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 kpanic.o: ../include/libio.h ../include/stdarg.h include/exception.h
 kpanic.o: include/kpanic.h
@@ -87,4 +87,4 @@ scheduler.o: ../include/debug.h
 vm86.o: ../include/debug.h include/gdt.h ../include/types.h
 vmm.o: ../include/memory.h ../include/types.h ../include/pagination.h
 vmm.o: include/vmm.h ../include/stdio.h ../include/fcntl.h ../include/libio.h
-vmm.o: ../include/stdarg.h ../include/video.h
+vmm.o: ../include/stdarg.h

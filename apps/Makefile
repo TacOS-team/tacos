@@ -16,6 +16,9 @@ depend: $(SRCS)
 
 # DO NOT DELETE
 
+demo_cube.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
+demo_cube.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
+demo_cube.o: ../include/time.h ../include/process.h ../include/pagination.h
 fiinou.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 fiinou.o: ../include/libio.h ../include/stdarg.h
 matrix.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
