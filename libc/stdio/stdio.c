@@ -6,7 +6,13 @@
 #include <video.h>
 #include <fcntl.h>
 
-static text_window *ktw = NULL;
+#define __KTW_COLUMNS 80
+#define __KTW_LINES 25
+
+static struct x86_video_char __ktw_buffer[__KTW_COLUMNS*__KTW_LINES];
+static text_window __ktw = {0, 0, __KTW_COLUMNS, __KTW_LINES, 0, 0, 0,
+                            DEFAULT_ATTRIBUTE_VALUE, 1, __ktw_buffer};
+static text_window *ktw = &__ktw;
 
 void itoa (char *buf, int base, int d) {
 	char *p = buf;
@@ -47,10 +53,6 @@ void itoa (char *buf, int base, int d) {
 }
 
 void kprintf(const char *format, ...) {
-	if (ktw == NULL) {
-		ktw = creation_text_window(0, 0, 80, 25, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 1);
-	}
-
 	switchBuffer(1);
   char **arg = (char **) &format;
   int c;
