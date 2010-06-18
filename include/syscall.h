@@ -8,10 +8,11 @@
 #define SYS_OPEN 3
 #define SYS_KILL 4
 #define SYS_WRITE 5
-#define SYS_EXEC 6
-#define SYS_IDLE 7
-#define SYS_SEMCTL 8
-#define SYS_VIDEO_CTL 9
+#define SYS_READ 6
+#define SYS_EXEC 7
+#define SYS_IDLE 8
+#define SYS_SEMCTL 9
+#define SYS_VIDEO_CTL 10
 
 void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3);
 

@@ -97,6 +97,10 @@ void kprintf(const char *format, ...) {
     }
 }
 
+size_t read_screen(open_file_descriptor *ofd, void *buf, size_t count) {
+	// TODO...
+}
+
 size_t write_screen(open_file_descriptor *ofd, const void *buf, size_t count) {
 	size_t i;
 	for (i = 0; i < count && *(char *)buf != '\0'; i++) {
