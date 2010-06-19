@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <fcntl.h>
+#include <process.h>
 
 int convert_flags(const char *mode) {
 	int flags = 0;

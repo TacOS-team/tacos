@@ -65,6 +65,14 @@ int semaphore_task(int argc, char** argv __attribute__ ((unused)))
 	return 0;
 }
 
+int test_fwrite() {
+	FILE *file = fopen("/toto.txt", "w");
+
+	fwrite("Hello World !", sizeof(char), 13, file);
+	fflush(file);
+	return 0;
+}
+
 int test_semaphores()
 {
 	int semid1 = semcreate(1); // semaphore alternant les taches
@@ -247,13 +255,14 @@ int test_fputs()
 	return 0;
 }
 
+/*
 int test_fwrite() 
 {
 	char chaine[] = "Hello world (fwrite)!\n";
 	fwrite(chaine, 2, sizeof(chaine)/2, stdout);
 	return 0;
 }
-
+*/
 int test_sprintf()
 {
 	char buffer[80];

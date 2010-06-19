@@ -336,6 +336,8 @@ void fat_open_file (char * path, open_file_descriptor * ofd) {
 	ofd->current_cluster = ofd->first_cluster;
 	ofd->current_octet = 0;
 	ofd->current_octet_buf = 0;
+	ofd->write = write_file;
+//	ofd->read = read_file;
 	read_cluster((char*)ofd->buffer,ofd->current_cluster);
 }
 
@@ -355,7 +357,7 @@ void write_file (open_file_descriptor * ofd, uint32_t * buf, int nb_octet) {
 		
 	}
 }
-
+/*
 uint8_t read_file (open_file_descriptor * ofd) {
 	uint8_t ret;
 	
@@ -374,6 +376,7 @@ uint8_t read_file (open_file_descriptor * ofd) {
 		return ret;
 	}
 }
+*/
 
 void init_path () {
 	path.current = 0;

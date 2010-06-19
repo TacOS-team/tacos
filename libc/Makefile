@@ -4,7 +4,7 @@ SRCS = *.c */*.c
 
 all: libc
 
-libc: stdio/stdio.o stdio/video.o stdio/fwrite.o stdio/fmemopen.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scanf.o stdio/stdfiles.o stdio/fprintf.o stdio/printf.o stdio/put.o stdio/sprintf.o stdio/get.o libio.o fcntl.o
+libc: stdio/stdio.o stdio/video.o stdio/fopen.o stdio/fwrite.o stdio/fmemopen.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scanf.o stdio/stdfiles.o stdio/fprintf.o stdio/printf.o stdio/put.o stdio/sprintf.o stdio/get.o libio.o fcntl.o
 	$(AR) r ../lib/$@.a $^
 
 %.o: %.c
@@ -47,6 +47,7 @@ stdio/fmemopen.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
 stdio/fmemopen.o: ../include/fopen.h
 stdio/fopen.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 stdio/fopen.o: ../include/libio.h ../include/stdarg.h ../include/string.h
+stdio/fopen.o: ../include/process.h ../include/pagination.h
 stdio/fprintf.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 stdio/fprintf.o: ../include/libio.h ../include/stdarg.h ../include/string.h
 stdio/fwrite.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
