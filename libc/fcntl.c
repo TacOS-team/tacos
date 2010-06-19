@@ -15,7 +15,9 @@
 void init_stdfd(struct _file_descriptor *fd0, struct _file_descriptor *fd1, struct _file_descriptor *fd2) {
 	fd0->used = TRUE; /* stdin */
 	fd0->ofd = malloc(sizeof(open_file_descriptor));
+	fd0->ofd->write = write_keyboard;
 	fd0->ofd->read = read_screen;
+	fd0->ofd->current_octet_buf = 0;
 	fd1->used = TRUE; /* stdout */
 	fd1->ofd = malloc(sizeof(open_file_descriptor));
 	fd1->ofd->write = write_screen;

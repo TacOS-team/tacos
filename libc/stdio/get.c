@@ -49,7 +49,19 @@ int fgetc(FILE *stream) {
 	char * pointeur;
 	pointeur = stream->_IO_read_base;
 
-	while(stream->_IO_read_base == NULL || (stream->_IO_read_ptr <= stream->_IO_buf_end && search_endl(stream->_IO_buf_base, stream->_IO_read_ptr) == NULL)) {
+	if (stream->_IO_read_ptr == NULL) {
+      char * buf = (char*) malloc(1000);
+      stream->_IO_buf_base = buf;
+      stream->_IO_buf_end = buf + 1000;
+      stream->_IO_read_base = buf;
+      stream->_IO_read_end = buf;
+      stream->_IO_read_ptr = buf;
+	}
+
+	read(stream->_fileno, stream->_IO_read_ptr, 1);
+	stream->_IO_read_ptr++;
+
+	while (stream->_IO_read_base == NULL || (stream->_IO_read_ptr <= stream->_IO_buf_end && search_endl(stream->_IO_buf_base, stream->_IO_read_ptr) == NULL)) {
 		if (stream->_IO_read_base != NULL && stream->_IO_read_ptr > pointeur && stream->_IO_read_ptr > stream->_IO_read_base) {
 			if (pointeur == NULL) pointeur = stream->_IO_read_base;
 			c = *pointeur;
@@ -70,19 +82,17 @@ int fgetc(FILE *stream) {
 				}
 			}
 
-			// Ugly hack for now :P.
 			// Normalement il faut faire appel à la fonction read qui s'occupe de faire ce qu'il faut.
 			// C'est à dire appeler la fonction de lecture/affichage associé au stream qui va bien !
-			if (stream->_fileno == 0) {
-				printf("%c", c); // TODO : C'est peut être là que je devrais gérer proprement le backspace, non ?
-				fflush(stdout);
-			}
 			pointeur++;
 
-      // Unbuffered => on flush direct
-      if((stream->_flags & _IONBF) == _IONBF)
-        break;
+			// Unbuffered => on flush direct
+			if((stream->_flags & _IONBF) == _IONBF)
+				break;
 		}
+
+		read(stream->_fileno, stream->_IO_read_ptr, 1);
+		stream->_IO_read_ptr++;
 	} 
 
 	if (stream->_IO_read_base == stream->_IO_read_ptr) {
