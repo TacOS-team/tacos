@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <types.h>
 #include <ioports.h>
 #include <ctype.h>
@@ -212,7 +213,7 @@ static void updateCursorPosition(text_window * tw)
 
 void set_blink_bit(int blink_bit)
 {
-	int val;
+	int val = 0;
 
 /* FIXME: Cassé... La lecture renvoie toujours 255... 
 	inb(0x3DA);

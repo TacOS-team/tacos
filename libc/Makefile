@@ -54,7 +54,7 @@ stdio/fprintf.o: ../include/libio.h ../include/stdarg.h ../include/string.h
 stdio/fwrite.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 stdio/fwrite.o: ../include/libio.h ../include/stdarg.h
 stdio/get.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
-stdio/get.o: ../include/libio.h ../include/stdarg.h
+stdio/get.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
 stdio/printf.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 stdio/printf.o: ../include/libio.h ../include/stdarg.h
 stdio/put.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
@@ -68,7 +68,8 @@ stdio/sprintf.o: ../include/libio.h ../include/stdarg.h
 stdio/stdfiles.o: ../include/types.h ../include/libio.h ../include/fcntl.h
 stdio/stdfiles.o: ../include/string.h ../include/kmalloc.h
 stdio/stdio.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
-stdio/stdio.o: ../include/libio.h ../include/stdarg.h ../include/video.h
+stdio/stdio.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
+stdio/stdio.o: ../include/video.h
 stdio/video.o: ../include/types.h ../include/ioports.h ../include/ctype.h
 stdio/video.o: ../include/video.h ../include/stdlib.h ../include/syscall.h
 stdio/video.o: ../include/process.h ../include/libio.h ../include/fcntl.h

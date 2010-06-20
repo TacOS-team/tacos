@@ -13,6 +13,8 @@
 #include <i8259.h>
 #include <syscall.h>
 #include <debug.h>
+#include <kmalloc.h>
+#include <string.h>
 
 #define USER_PROCESS 0
 #define KERNEL_PROCESS 1
@@ -122,8 +124,6 @@ void process_switch(int mode, process_t* current)
 static void* schedule(void* data __attribute__ ((unused)))
 {
 	uint32_t* stack_ptr;
-	uint32_t esp0, eflags;
-   uint16_t ss, cs;
    uint32_t compteur;
 
    process_t* current = get_current_process();
@@ -244,7 +244,7 @@ void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)
 
 void* sys_idle( uint32_t unused1 __attribute__ ((unused)),uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
 {
-	unsigned int i = 0;
+	//unsigned int i = 0;
 	kprintf("Idling...");
 	//for(i = 0; i<100000; i++);
 	while(1);
@@ -260,5 +260,5 @@ void exec(paddr_t prog, char* name)
 
 void idle()
 {
-	syscall(SYS_IDLE, NULL, NULL, NULL);
+	syscall(SYS_IDLE, 0, 0, 0);
 }

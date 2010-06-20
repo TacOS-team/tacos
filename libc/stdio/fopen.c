@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
 #include <process.h>
@@ -32,6 +33,8 @@ int convert_flags(const char *mode) {
 	} else { // "Otherwise, the behavior is undefined." cf iso libc
 		return -1;
 	}
+
+	return flags;
 }
 	
 FILE *fopen(const char *path, const char *mode) {
@@ -51,9 +54,9 @@ FILE *fopen(const char *path, const char *mode) {
 }
 
 FILE *fdopen(int fd, const char *mode) {
-	
+	return NULL;
 }
 
 FILE *freopen(const char *path, const char *mode, FILE *stream) {
-
+	return NULL;
 }

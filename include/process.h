@@ -71,7 +71,7 @@ typedef struct _proclist_cell{
 * 
 * @return Pid du processus créé.
 */
-int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_size, uint8_t ring);
+int create_process(char* name, paddr_t prog, uint32_t argc, char** argv, uint32_t stack_size, uint8_t ring);
 
 /** 
 * @brief Retire un processus de la liste.

@@ -3,6 +3,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <video.h>
 #include <fcntl.h>
 
@@ -99,7 +100,7 @@ void kprintf(const char *format, ...) {
 
 size_t read_screen(open_file_descriptor *ofd, void *buf, size_t count) {
 	char c;
-	int i;
+	unsigned int i;
 	int j = 0;
 
 	while(count--) {
@@ -135,23 +136,23 @@ size_t write_screen(open_file_descriptor *ofd, const void *buf, size_t count) {
 
 int setvbuf(FILE *stream, char *buf, int mode, size_t size) {
   //kfree(stream->buffer);
-  if(buf == NULL) {
-    size = (mode == _IONBF) ? 1 : 512;
-    stream->_IO_buf_base = kmalloc(size);
-  } else {
-    stream->_IO_buf_base = buf;
-  }
-  stream->_IO_buf_end = stream->_IO_buf_base + size;
+	if(buf == NULL) {
+		size = (mode == _IONBF) ? 1 : 512;
+		stream->_IO_buf_base = malloc(size);
+	} else {
+		stream->_IO_buf_base = buf;
+	}
+	stream->_IO_buf_end = stream->_IO_buf_base + size;
 
-  stream->_IO_read_base = stream->_IO_buf_base;
+	stream->_IO_read_base = stream->_IO_buf_base;
 	stream->_IO_read_end = stream->_IO_buf_base;
-  stream->_IO_read_ptr = stream->_IO_buf_base;
-  stream->_IO_write_base = stream->_IO_buf_base;
+	stream->_IO_read_ptr = stream->_IO_buf_base;
+	stream->_IO_write_base = stream->_IO_buf_base;
 	stream->_IO_write_end = stream->_IO_buf_base;
-  stream->_IO_write_ptr = stream->_IO_buf_base;
+	stream->_IO_write_ptr = stream->_IO_buf_base;
 
-  stream->_flags = mode;
+	stream->_flags = mode;
 
-  return 0;
+	return 0;
 }
 

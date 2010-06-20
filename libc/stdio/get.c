@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * @file get.c
@@ -57,9 +58,6 @@ int fgetc(FILE *stream) {
       stream->_IO_read_end = buf;
       stream->_IO_read_ptr = buf;
 	}
-
-	read(stream->_fileno, stream->_IO_read_ptr, 1);
-	stream->_IO_read_ptr++;
 
 	while (stream->_IO_read_ptr <= stream->_IO_buf_end && search_endl(stream->_IO_buf_base, stream->_IO_read_ptr) == NULL) {
 		if (stream->_IO_read_ptr > pointeur && stream->_IO_read_ptr > stream->_IO_read_base) {

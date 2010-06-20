@@ -14,7 +14,7 @@ int main_matrix(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((
 		if (c2 < c1) {
 			int b = c1;
 			c1 = c2;
-			c2 = c1 - c2;
+			c2 = b - c2;
 		} else {
 			c2 -= c1;
 		}

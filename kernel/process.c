@@ -104,7 +104,7 @@ int delete_process(int pid)
 }
 
 
-int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint32_t stack_size, uint8_t ring)
+int create_process(char* name, paddr_t prog, uint32_t argc, char** argv, uint32_t stack_size, uint8_t ring __attribute__ ((unused)))
 {
 	uint32_t *sys_stack, *user_stack;
 	process_t* new_proc;
@@ -147,11 +147,11 @@ int create_process(char* name, paddr_t prog, uint32_t argc, uint8_t** argv, uint
 	
 	new_proc->regs.eflags = 0;
 	new_proc->regs.eip = prog;
-	new_proc->regs.esp = (user_stack)+stack_size-3;
+	new_proc->regs.esp = (vaddr_t)(user_stack)+stack_size-3;
 	new_proc->regs.ebp = new_proc->regs.esp;
 	
 	new_proc->kstack.ss0 = 0x10;
-	new_proc->kstack.esp0 = (sys_stack)+stack_size-1;
+	new_proc->kstack.esp0 = (vaddr_t)(sys_stack)+stack_size-1;
 	
 	new_proc->state = PROCSTATE_IDLE;
 	
@@ -196,7 +196,7 @@ void print_process_list()
 	int s;
 	int m;
 	int h;
-	int reste;
+
 	printf("pid\tname\t\ttime\t\tstate\n");
 	while(aux!=NULL)
 	{
@@ -306,7 +306,7 @@ void change_active_process() {
  * SYSCALL
  */
 
-void* sys_exit(uint32_t ret_value, uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))
+void* sys_exit(uint32_t ret_value __attribute__ ((unused)), uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))
 {
 	process_t* current;
 	// On cherche le processus courant:
