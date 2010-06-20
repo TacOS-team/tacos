@@ -190,7 +190,7 @@ void keyBufferPush(char c)
 
 size_t write_keyboard(open_file_descriptor *ofd, const void *buf, size_t count) {
 	if (ofd != NULL) {
-		ofd->buffer[ofd->current_octet_buf++] = c;
+		ofd->buffer[ofd->current_octet_buf++] = ((char*)buf)[0];
 	}
 }
 

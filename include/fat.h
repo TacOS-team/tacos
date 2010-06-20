@@ -117,7 +117,7 @@ void print_working_dir ();
 
 // Lecture/Ecriture Fichier
 void fat_open_file (char * path, open_file_descriptor * ofd);
-uint8_t read_file (open_file_descriptor * ofd);
+int read_file (open_file_descriptor * ofd, void * buf, size_t count);
 void write_file (open_file_descriptor * ofd, uint32_t * buf, int nb_octet);
 
 #endif

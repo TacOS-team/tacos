@@ -99,6 +99,8 @@ void kprintf(const char *format, ...) {
 
 size_t read_screen(open_file_descriptor *ofd, void *buf, size_t count) {
 	char c;
+	int i;
+	int j = 0;
 
 	while(count--) {
 		while(ofd->current_octet_buf == 0);
@@ -108,10 +110,13 @@ size_t read_screen(open_file_descriptor *ofd, void *buf, size_t count) {
 		for(i = 0; i < ofd->current_octet_buf; i++) {
 			ofd->buffer[i] = ofd->buffer[i+1];
 		}
+		((char*)buf)[j++] = c;
+		printf("%c", c); 
 	}
 
-	printf("%c", c); 
 	fflush(stdout);
+
+	return j-1;
 }
 
 size_t write_screen(open_file_descriptor *ofd, const void *buf, size_t count) {
