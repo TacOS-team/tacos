@@ -62,7 +62,7 @@ int fgetc(FILE *stream) {
 	stream->_IO_read_ptr++;
 
 	while (stream->_IO_read_ptr <= stream->_IO_buf_end && search_endl(stream->_IO_buf_base, stream->_IO_read_ptr) == NULL) {
-		if (stream->_IO_read_base != NULL && stream->_IO_read_ptr > pointeur && stream->_IO_read_ptr > stream->_IO_read_base) {
+		if (stream->_IO_read_ptr > pointeur && stream->_IO_read_ptr > stream->_IO_read_base) {
 			if (pointeur == NULL) pointeur = stream->_IO_read_base;
 			c = *pointeur;
 
