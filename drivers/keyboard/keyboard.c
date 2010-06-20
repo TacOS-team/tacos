@@ -173,19 +173,15 @@ static uint8_t scancode_m2 = 0;
 
 void keyBufferPush(char c)
 {
-	//process_t *process = get_active_process();
-/*	if (process->stdin->_IO_read_ptr == NULL) {
-		char * buf = (char*) malloc(1000);
-		process->stdin->_IO_buf_base = buf;
-		process->stdin->_IO_buf_end = buf + 1000;
-		process->stdin->_IO_read_base = process->stdin->_IO_buf_base;
-		process->stdin->_IO_read_end = process->stdin->_IO_buf_base;
-		process->stdin->_IO_read_ptr = process->stdin->_IO_buf_base;
-	}
-	*(process->stdin->_IO_read_ptr++) = c;
-*/
-	sys_write(0, &c, 1);
+	process_t *process = get_active_process();
 
+	open_file_descriptor *ofd;
+
+	if (process->fd[0].used) {
+		ofd = process->fd[0].ofd;
+
+		ofd->write(ofd, (const void*)(&c), 1);
+	}
 }
 
 size_t write_keyboard(open_file_descriptor *ofd, const void *buf, size_t count) {
