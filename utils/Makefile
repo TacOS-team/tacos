@@ -22,6 +22,7 @@ depend: $(SRCS)
 heap.o: ../include/heap.h ../include/types.h ../include/string.h
 heap.o: ../include/debug.h
 widget.o: ../include/gui.h ../include/types.h include/widget.h
-widget.o: ../include/kmalloc.h ../include/string.h ../include/stdio.h
+widget.o: ../include/stdlib.h ../include/string.h ../include/stdio.h
 widget.o: ../include/fcntl.h ../include/libio.h ../include/stdarg.h
 widget.o: ../include/mouse.h ../include/video.h ../include/ctype.h
+widget.o: ../include/process.h ../include/pagination.h

@@ -112,7 +112,7 @@ size_t read_screen(open_file_descriptor *ofd, void *buf, size_t count) {
 			ofd->buffer[i] = ofd->buffer[i+1];
 		}
 		((char*)buf)[j++] = c;
-		printf("%c", c); 
+		printf("%c", c); // FIXME: S'il prend un caractère de retour, il va supprimer, peut être même trop !
 	}
 
 	fflush(stdout);

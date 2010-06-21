@@ -60,7 +60,7 @@ void* sys_open(uint32_t fd_id, uint32_t p_path , uint32_t flags __attribute__ ((
 
 int open(const char *pathname, int flags) {
 	int id;
-	syscall(SYS_OPEN,&id,(paddr_t) pathname,flags);
+	syscall(SYS_OPEN,(uint32_t)&id,(paddr_t) pathname,flags);
 	
 	return id;
 }

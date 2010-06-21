@@ -1,11 +1,12 @@
 #include <gui.h>
 #include <widget.h>
-#include <kmalloc.h>
+#include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include <mouse.h>
 #include <video.h>
 #include <ctype.h>
+#include <process.h>
 
 size_t ansi_strlen(const char* s)
 {
@@ -121,7 +122,7 @@ struct window_t* createWindow(uint8_t bg, uint8_t cursor)
 {
 	struct window_t* ret;
 	int i;
-	ret = kmalloc(sizeof(struct window_t));
+	ret = malloc(sizeof(struct window_t));
 	ret->bg = bg;
 	ret->cursor = cursor;
 	ret->nb_widgets = 0;
@@ -208,7 +209,7 @@ void runWindow(struct window_t* win)
 int freeWindow(struct window_t* win)
 {
 	// TODO : free correct (actuellement on ne libere pas les widgets)
-	return kfree(win);
+	return free(win);
 };
 
 struct widget_t* addButton(struct window_t* win, const char* title)
@@ -219,8 +220,8 @@ struct widget_t* addButton(struct window_t* win, const char* title)
 		return NULL;
 
 	// On initialise le widget
-	ret  = kmalloc(sizeof(struct widget_t));
-	ret->adv = kmalloc(sizeof(char)*strlen(title)+1);
+	ret  = malloc(sizeof(struct widget_t));
+	ret->adv = malloc(sizeof(char)*strlen(title)+1);
 	strcpy(ret->adv, title);
 	ret->type = BUTTON;
 	ret->x = 0;
@@ -275,8 +276,8 @@ void setVisible(struct widget_t* wdg, char visible)
 }
 
 void setText(struct widget_t* wdg, const char* text) {
-  kfree(wdg->adv);
-	wdg->adv = kmalloc(sizeof(char)*strlen(text)+1);
+  free(wdg->adv);
+	wdg->adv = malloc(sizeof(char)*strlen(text)+1);
   strcpy(wdg->adv, text);
 }
 

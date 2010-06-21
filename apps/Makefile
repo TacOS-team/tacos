@@ -19,6 +19,7 @@ depend: $(SRCS)
 demo_cube.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 demo_cube.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
 demo_cube.o: ../include/time.h ../include/process.h ../include/pagination.h
+demo_cube.o: ../include/string.h ../include/video.h
 fiinou.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 fiinou.o: ../include/libio.h ../include/stdarg.h
 matrix.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
@@ -51,4 +52,4 @@ tests.o: ../include/mouse.h ../include/pci.h ../include/process.h
 tests.o: ../include/pagination.h ../include/stdio.h ../include/stdarg.h
 tests.o: ../include/stdlib.h ../include/string.h ../include/time.h
 tests.o: include/apps.h ../include/sem.h ../include/gui.h ../include/memory.h
-tests.o: ../include/debug.h
+tests.o: ../include/video.h ../include/debug.h
