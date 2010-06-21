@@ -66,7 +66,7 @@ int semaphore_task(int argc, char** argv __attribute__ ((unused)))
 }
 
 int test_fwrite() {
-	FILE *file = fopen("/toto.txt", "w");
+	FILE *file = fopen("fd0:/toto.txt", "w+");
 
 	fwrite("Hello World !", sizeof(char), 13, file);
 	fflush(file);
