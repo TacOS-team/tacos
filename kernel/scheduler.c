@@ -244,12 +244,9 @@ void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)
 
 void* sys_idle( uint32_t unused1 __attribute__ ((unused)),uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
 {
-	//unsigned int i = 0;
-	kprintf("Idling...");
-	//for(i = 0; i<100000; i++);
-	while(1);
-	//asm("hlt\n\t");
-	kprintf("Not idling anymore.\n");
+	process_t* process = get_current_process();
+	process->state = PROCSTATE_WAITING;
+	asm("hlt\n\t");
 	return NULL;
 }
 

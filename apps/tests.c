@@ -155,11 +155,12 @@ int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 int test_task1(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	int pid = get_pid();
-	//printf("\nTache n%d\n",pid);
+	printf("\nTache n%d\n",pid);
 	//printf("Parameters:\nargc=%d\nargv=0x%x\n",argc, argv);
-	//idle();
+	idle();
+	printf("LOL!!\n");
 	while(1);
-	return pid;
+	return 0;
 }
 
 int test_task()
