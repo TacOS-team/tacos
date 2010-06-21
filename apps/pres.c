@@ -606,7 +606,7 @@ void fin(struct window_t *win, struct widget_t** txt, struct widget_t** title) {
 	*title = addButton(win,"");
 }
 
-void goBack(struct widget_t* wdg, int x, int y)
+void goBack(struct widget_t* wdg __attribute__ ((unused)), int x __attribute__ ((unused)), int y __attribute__ ((unused)))
 {
   char buf[20];
   if(current <= 0)
@@ -624,7 +624,7 @@ void goBack(struct widget_t* wdg, int x, int y)
   setText(page, buf);
 }
 
-void goForward(struct widget_t* wdg, int x, int y)
+void goForward(struct widget_t* wdg __attribute__ ((unused)), int x __attribute__ ((unused)), int y __attribute__ ((unused)))
 {
   char buf[20];
   if(current >= NB_SLIDES-1)

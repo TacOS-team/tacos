@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <process.h>
+#include <string.h>
+#include <video.h>
 
 #define LARGEUR 80
 #define HAUTEUR 24
@@ -105,7 +107,7 @@ void draw_line(int x1, int y1, int x2, int y2, char* buffer)
 	
 }
 
-int rotate_point(float point[3])
+void rotate_point(float point[3])
 {
 	float temp[3];
 	// theta = 4°
@@ -128,7 +130,7 @@ int rotate_point(float point[3])
 	point[2] = temp[2];*/
 }
 
-void draw_cube(buffer)
+void draw_cube(char *buffer)
 {
 	int ligne;
 	

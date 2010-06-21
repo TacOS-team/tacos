@@ -12,12 +12,12 @@
 #include <sem.h>
 #include <gui.h>
 #include <memory.h>
-
+#include <video.h>
 #include <debug.h>
 
 static int color;
 
-static void handleClick(struct widget_t* wdg, int x, int y)
+static void handleClick(struct widget_t* wdg, int x __attribute__ ((unused)), int y __attribute__ ((unused)))
 {
 	color = (color+1)%8;
 	setWidgetProperties(wdg, 2, 2, 5, 10+color, color, 6);
@@ -40,7 +40,7 @@ int gui_task(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unu
 
 int test_gui()
 {
-	create_process("tache_gui", gui_task, 2, NULL, 512, 3);
+	exec(gui_task,"tache_gui" );
 	return 0;
 }
 
@@ -80,8 +80,8 @@ int test_semaphores()
 	int semid3 = semcreate(3); // semaphore assurant la fin de la tache 2
 	semP(semid2);
 	semP(semid3);
-	create_process("tache_semaphore1", semaphore_task, 2, NULL, 512, 3);
-	create_process("tache_semaphore2", semaphore_task, 3, NULL, 512, 3);
+	create_process("tache_semaphore1", (paddr_t) semaphore_task, 2, NULL, 512, 3);
+	create_process("tache_semaphore2", (paddr_t) semaphore_task, 3, NULL, 512, 3);
 	while(1);// DEBUG
 	semP(semid2);
 	semP(semid3);
@@ -152,7 +152,7 @@ int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 	return 0;
 }
 
-int test_task1(int argc, char** argv)
+int test_task1(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	int pid = get_pid();
 	//printf("\nTache n%d\n",pid);
@@ -227,7 +227,7 @@ int test_mouse_task()
 
 int test_mouse()
 {
-	create_process("mouse", test_mouse_task, 42, 0xba, 512,3);
+	exec(test_mouse_task,"mouse");
 	return 0;
 }
 
