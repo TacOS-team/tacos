@@ -58,6 +58,7 @@ stdio/fwrite.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 stdio/fwrite.o: ../include/libio.h ../include/stdarg.h
 stdio/get.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 stdio/get.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
+stdio/get.o: ../include/unistd.h
 stdio/printf.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 stdio/printf.o: ../include/libio.h ../include/stdarg.h
 stdio/put.o: ../include/stdio.h ../include/fcntl.h ../include/types.h

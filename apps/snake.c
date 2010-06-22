@@ -39,25 +39,25 @@ int getche() {
 	return ch;
 }
 
-void haut() {
+static void haut() {
 	if (dir_ != 1) {
 		dir = 0;
 	}
 }
 
-void bas() {
+static void bas() {
 	if (dir_ != 0) {
 		dir = 1;
 	}
 }
 
-void droite() {
+static void droite() {
 	if (dir_ != 3) {
 		dir = 2;
 	}
 }
 
-void gauche() {
+static void gauche() {
 	if (dir_ != 2) {
 		dir = 3;
 	}
@@ -95,7 +95,7 @@ void print_locate(int l, int c, char car) {
 	fflush(stdout);
 }
 
-int collision(int l, int c, int n){
+static int collision(int l, int c, int n){
 	int i;
 	for (i = 0; i < snake.longueur - n; i++) {
 		if (l == snake.coords[(snake.indice_deb + i) % (LIGNES * COLONNES)].l && c == snake.coords[(snake.indice_deb + i) % (LIGNES * COLONNES)].c) {
@@ -105,7 +105,7 @@ int collision(int l, int c, int n){
 	return 0;
 }
 
-void genere_bonus() {
+static void genere_bonus() {
 	do {
 		bonus.l = (rand() % (LIGNES-2)) + 2;
 		bonus.c = (rand() % (COLONNES-2)) + 2;
@@ -125,7 +125,7 @@ void init_snake() {
 	genere_bonus();
 }
 
-inline int dans_aire_jeu(int l, int c) {
+static inline int dans_aire_jeu(int l, int c) {
 	return l > 1 && l < LIGNES && c > 1 && c < COLONNES;
 }
 
