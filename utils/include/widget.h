@@ -14,7 +14,7 @@ struct window_t;
 struct widget_t
 {
 	char visible;
-	void* adv;
+	char* adv;
 	enum widget_type type;
 	uint8_t x;
 	uint8_t y;

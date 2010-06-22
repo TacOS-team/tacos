@@ -221,8 +221,7 @@ struct widget_t* addButton(struct window_t* win, const char* title)
 
 	// On initialise le widget
 	ret  = malloc(sizeof(struct widget_t));
-	ret->adv = malloc(sizeof(char)*strlen(title)+1);
-	strcpy(ret->adv, title);
+	ret->adv = strdup(title);
 	ret->type = BUTTON;
 	ret->x = 0;
 	ret->y = 0;
@@ -277,7 +276,6 @@ void setVisible(struct widget_t* wdg, char visible)
 
 void setText(struct widget_t* wdg, const char* text) {
   free(wdg->adv);
-	wdg->adv = malloc(sizeof(char)*strlen(text)+1);
-  strcpy(wdg->adv, text);
+  wdg->adv = strdup(text);
 }
 
