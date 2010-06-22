@@ -141,6 +141,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_fgets, "test_fgets");
 	add_builtin_cmd(test_fputs, "test_fputs");
 	add_builtin_cmd(test_fwrite, "test_fwrite");
+	add_builtin_cmd(test_fread, "test_fread");
 	add_builtin_cmd(test_sprintf, "test_sprintf");
 	add_builtin_cmd((func_ptr)print_process_list, "ps");
 	add_builtin_cmd(test_sscanf, "test_sscanf");
@@ -171,7 +172,6 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(snake_main, "snake");
 	add_builtin_cmd(cube_launcher, "cube");
 	add_builtin_cmd(noxeyes, "noxeyes");
-	add_builtin_cmd(test_fwrite, "test_fwrite");
 	
 	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
 	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");

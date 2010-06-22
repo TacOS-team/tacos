@@ -20,6 +20,7 @@ int test_scanf();
 int test_fgets();
 int test_fputs();
 int test_fwrite();
+int test_fread();
 int test_sprintf();
 int test_sscanf();
 int debug_fat();

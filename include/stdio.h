@@ -160,6 +160,7 @@ int putchar(int c);
 int puts(const char *s);
 
 size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
+size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
 
 /** 
   * @brief Lit au plus size-1 caractères depuis le stream passé en argument.

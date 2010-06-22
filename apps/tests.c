@@ -73,6 +73,19 @@ int test_fwrite() {
 	return 0;
 }
 
+int test_fread() {
+	FILE *file = fopen("fd0:/doc.txt", "r");
+
+	char buffer[100];
+	fread(buffer, sizeof(buffer), sizeof(char), file);
+
+	buffer[99] = '\0';
+	printf("%s", buffer);
+
+	fflush(file);
+	return 0;
+}
+
 int test_semaphores()
 {
 	int semid1 = semcreate(1); // semaphore alternant les taches
