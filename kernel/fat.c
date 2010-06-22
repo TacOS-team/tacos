@@ -341,10 +341,10 @@ void fat_open_file (char * path, open_file_descriptor * ofd) {
 	read_cluster((char*)ofd->buffer,ofd->current_cluster);
 }
 
-void write_file (open_file_descriptor * ofd, uint32_t * buf, int nb_octet) {
-	int i;
+size_t write_file (open_file_descriptor * ofd, const void * buf, size_t nb_octet) {
+	size_t i;
 	for (i=0;i<nb_octet;i++) {
-		ofd->buffer[ofd->current_octet_buf]=buf[i];
+		ofd->buffer[ofd->current_octet_buf]=((char*)buf)[i];
 		ofd->current_octet_buf++;
 		ofd->current_octet++;
 		if (ofd->current_octet_buf>=512) {
@@ -354,20 +354,22 @@ void write_file (open_file_descriptor * ofd, uint32_t * buf, int nb_octet) {
 			// i.e. si ofd->current_cluster=0xFFF
 			ofd->current_octet_buf=0;
 		}
-		
 	}
+	return i;
 }
 
-int read_file (open_file_descriptor * ofd, void * buf, size_t count) {
+size_t read_file (open_file_descriptor * ofd, void * buf, size_t count) {
 	int ret = count;
+	int j = 0;
 	
 	while(count--) { 
 		if (ofd->current_octet==ofd->file_size) {
 			return 0;
 		} else {
-			ret = ofd->buffer[ofd->current_octet_buf];
+			char c = ofd->buffer[ofd->current_octet_buf];
 			ofd->current_octet_buf++;
 			ofd->current_octet++;
+			((char*)buf)[j] = c;
 			if (ofd->current_octet_buf>=512) {
 				ofd->current_cluster = file_alloc_table[ofd->current_cluster];
 				read_cluster((char*)ofd->buffer, ofd->current_cluster);
