@@ -273,17 +273,15 @@ char *strdup (const char *s)
 
 char *strchr(const char* s, int c)
 {
-	int index=0;
-	while(1)
+	/* On parcourt la chaine */
+	while(*s != '\0' || *s == c) /* le *s == c permet de considérer le cas où c est le caractère null */
 	{
-		if(s[index] == c)
-			return &(s[index]);
-
-		if(s[index] == '\0')
-			return NULL;
-
-		index++;
+		if(*s == c) { /* Si le caractère est détecté, on renvoie le pointeur. */
+			return (char *)s;
+		}
+		s++;
 	}
+
 	return NULL;
 }
 	

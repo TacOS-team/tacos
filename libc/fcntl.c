@@ -48,6 +48,7 @@ void* sys_open(uint32_t fd_id, uint32_t p_path , uint32_t flags __attribute__ ((
 	
 	// creation d un open_file_descriptor
 	process->fd[i].ofd = malloc(sizeof(open_file_descriptor));
+	process->fd[i].used = TRUE;
 	
 	// TODO : devrait tenir compte des flags pour savoir s'il faut créer le fichier... !
 	//ouverture du fichier (sur fd0 pour le momentt)

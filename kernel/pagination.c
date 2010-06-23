@@ -88,7 +88,7 @@ void pagination_init_page_directory(struct page_directory_entry * pd) {
 
 void pagination_init_page_directory_from_current(struct page_directory_entry * pd) {
 	int i;
-	struct page_directory_entry * current = 0xFFFFF000;
+	struct page_directory_entry * current = (struct page_directory_entry *)0xFFFFF000;
 
 	for (i = 0; i < 1023; i++) {
 		pd[i].present = current[i].present;
