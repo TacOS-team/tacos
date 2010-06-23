@@ -57,5 +57,7 @@ FILE *fdopen(int fd, const char *mode) {
 }
 
 FILE *freopen(const char *path, const char *mode, FILE *stream) {
-	return NULL;
+	fflush(stream);
+	// fclose(stream);
+	return fopen(path, mode);
 }
