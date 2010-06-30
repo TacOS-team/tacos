@@ -6,12 +6,6 @@
 #include <libio.h>
 #include <syscall.h>
 
-void* sleep_event(void* data)
-{
-	*((int*)data) = 0;
-	return NULL;
-}
-
 unsigned int sleep(unsigned int seconds)
 {
 	return usleep(1000*seconds);
@@ -19,12 +13,7 @@ unsigned int sleep(unsigned int seconds)
 
 unsigned int usleep(unsigned int milliseconds)
 {
-	volatile int sleeping = 1;
-	add_event(sleep_event,(void*) &sleeping, milliseconds);
-	while(sleeping) {
-		asm("hlt");
-	}
-	
+	syscall(SYS_SLEEP, milliseconds, 0, 0);
 	return 0;
 }
 

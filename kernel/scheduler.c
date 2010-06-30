@@ -201,7 +201,6 @@ static void* schedule(void* data __attribute__ ((unused)))
 		current->state = PROCSTATE_RUNNING;
 	}
 	
-	
 	//syscall_update_esp(current->sys_stack);
 	
 	
@@ -242,20 +241,26 @@ void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)
 	return NULL;
 }
 
-void* sys_idle( uint32_t unused1 __attribute__ ((unused)),uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
+void* sleep_callback( void* data )
+{
+	process_t* proc = (process_t*) data;
+	proc->state = PROCSTATE_RUNNING;
+	return NULL;
+}
+
+void* sys_sleep( uint32_t delay,uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
 {
 	process_t* process = get_current_process();
 	process->state = PROCSTATE_WAITING;
-	asm("hlt\n\t");
+	add_event(sleep_callback,(void*)process,delay);
+	
+	while(process->state == PROCSTATE_WAITING);
+		//printf("process:%x\n",process);
+		
 	return NULL;
 }
 
 void exec(paddr_t prog, char* name)
 {
 	syscall(SYS_EXEC, (uint32_t)prog, (uint32_t)name, (uint32_t)NULL);
-}
-
-void idle()
-{
-	syscall(SYS_IDLE, 0, 0, 0);
 }

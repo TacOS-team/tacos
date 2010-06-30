@@ -25,28 +25,22 @@ int compare_events(void* a, void* b)
 
 static void events_interrupt(int interrupt_id __attribute__ ((unused)))
 {
-  struct event_t *event;
-  //ticks--;
+	struct event_t *event;
 
-  //if(ticks < 0)
-  //{
-    clock_tick();
-	
-    event = (struct event_t *) getTop(events);
-    while(event != NULL && compare_times(event->date, get_tv()) > 0)
-    {
-	
-      removetop(&events);
-      event->callback(event->data);
-      BOCHS_BREAKPOINT;
-      event = (struct event_t *) getTop(events);
-      
-    }
-	
-  //  ticks = TIMER_FREQ;
-  //}
-  
-  i8254_init(1000/*TIMER_FREQ*/);
+
+	clock_tick();
+
+	event = (struct event_t *) getTop(events);
+	while(event != NULL && compare_times(event->date, get_tv()) > 0)
+	{
+
+		  removetop(&events);
+		  event->callback(event->data);
+		  event = (struct event_t *) getTop(events);
+	  
+	}
+
+	i8254_init(1000/*TIMER_FREQ*/);
 }
 
 void events_init()

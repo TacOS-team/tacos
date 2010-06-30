@@ -53,8 +53,10 @@ void LPT1_routine(int id __attribute__ ((unused)))
 
 int test_proc(int argc, char** argv)
 {
-	while(1);
-	idle();
+	while(1){
+	sleep(1000);
+	printf("Plop!\n");
+	}
 }
 
 
@@ -138,7 +140,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_WRITE,(syscall_handler_t)sys_write);
 	syscall_set_handler(SYS_READ,(syscall_handler_t)sys_read);
 	syscall_set_handler(SYS_EXEC, (syscall_handler_t)sys_exec);
-	syscall_set_handler(SYS_IDLE, (syscall_handler_t)sys_idle);
+	syscall_set_handler(SYS_SLEEP, (syscall_handler_t)sys_sleep);
 	syscall_set_handler(SYS_VIDEO_CTL, (syscall_handler_t)sys_video_ctl);
 	
 	// Création du processus par défaut: notre shell

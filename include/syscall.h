@@ -10,7 +10,7 @@
 #define SYS_WRITE 5
 #define SYS_READ 6
 #define SYS_EXEC 7
-#define SYS_IDLE 8
+#define SYS_SLEEP 8
 #define SYS_SEMCTL 9
 #define SYS_VIDEO_CTL 10
 

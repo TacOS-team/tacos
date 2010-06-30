@@ -344,7 +344,7 @@ void* sys_kill(uint32_t pid, uint32_t zero1 __attribute__ ((unused)), uint32_t z
 
 /* A mettre en user space */
 void exit(uint32_t value)
-{
+{ 
 	syscall(SYS_EXIT,value,0,0);
 	while(1); // Pour ne pas continuer à executer n'importe quoi alors que le processus est sensé être arrété
 }

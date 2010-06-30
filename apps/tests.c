@@ -14,6 +14,7 @@
 #include <memory.h>
 #include <video.h>
 #include <debug.h>
+#include <unistd.h>
 
 static int color;
 
@@ -169,16 +170,17 @@ int test_task1(int argc __attribute__ ((unused)), char** argv __attribute__ ((un
 {
 	int pid = get_pid();
 	printf("\nTache n%d\n",pid);
-	//printf("Parameters:\nargc=%d\nargv=0x%x\n",argc, argv);
-	idle();
-	printf("LOL!!\n");
-	while(1);
+	while(1) {
+		usleep(100);
+		printf("Plop");
+	}
 	return 0;
 }
 
 int test_task()
 {
-	exec(test_task1, "test");
+	exec(test_task1, "test1");
+	exec(test_task1, "test2");
 	return 0;
 }
 
