@@ -3,6 +3,7 @@
 
 /** 
 * @file sem.h 
+* @brief l'interface de manipulation des semaphores
 */
 
 #include <types.h>

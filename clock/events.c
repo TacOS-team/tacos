@@ -54,8 +54,9 @@ void events_init()
   i8254_init(1000/*TIMER_FREQ*/);
 }
 
-void add_event(callback_t call, void* data, clock_t dtime)
+int add_event(callback_t call, void* data, clock_t dtime)
 {
+	static int id = 0;
 	struct event_t event;
 	int overflow=0;
 	
@@ -71,6 +72,22 @@ void add_event(callback_t call, void* data, clock_t dtime)
 	
 	event.callback = call;
 	event.data = data;											
+	event.id = id;
 	addElement(&events, &event);
+
+	id++;
+
+	return id-1;
+}
+
+static int identifier(int id, void* element)
+{
+  struct event_t *event_element = (struct event_t *) element;
+  return event_element->id == id;
+}
+
+int del_event(int id)
+{
+	return delElement(&events, id, identifier);
 }
 

@@ -14,6 +14,7 @@ typedef void *(*callback_t) (void *);
 */
 struct event_t
 {
+  int id;
   struct timeval date;
   callback_t callback;
   void *data;
@@ -31,7 +32,9 @@ void events_init();
 * @param data un pointeur qui sera passé à la fonction
 * @param time la fonction sera lancée dans "time" msec
 */
-void add_event(callback_t call, void* data, clock_t time);
+int add_event(callback_t call, void* data, clock_t time);
+
+int del_event(int id);
 
 #endif
 

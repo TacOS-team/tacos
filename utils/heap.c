@@ -163,3 +163,23 @@ int removetop(heap_t* h)
 	
 	return 1;
 }
+
+int delElement(heap_t* heap, int id, id_func_type func)
+{
+	int i;
+	for(i=0 ; i< heap->nb_elements ; i++)
+	{
+		if(func(id,getIn(heap,i)))
+		{
+			// On a trouvé, on reevalue et on supprime
+			while(i>0)
+			{
+				swap(i, (i-1)/2, heap->heap, heap->elements_size);	
+				i = (i-1)/2;
+			}
+			removetop(heap);
+			break;	
+		}
+	}
+}
+

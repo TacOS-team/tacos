@@ -18,6 +18,7 @@
 // maxheap : la fonction doit retourner >0 si a>b, 0 si a=b, <0 si a<b
 // minheap : la fonction doit retourner <0 si a>b, 0 si a=b, >0 si a<b
 typedef int (*cmp_func_type) (void*, void*);
+typedef int (*id_func_type) (int, void*);
 
 typedef struct {
 	cmp_func_type comparator;
@@ -38,5 +39,7 @@ int addElement(heap_t* h, void* element);
 
 // Retire le sommet, retourne 0 en cas de succes
 int removetop(heap_t* h);
+
+int delElement(heap_t* heap, int id, id_func_type func);
 
 #endif
