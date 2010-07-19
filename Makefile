@@ -5,7 +5,7 @@ USECLANG=0
 ifneq ($(USECLANG), 1)
 	HASCOLOR = $(shell if test `which colorgcc`; then echo true; else echo false; fi)
 	ifneq ($(HASCOLOR),true)
-		export CC=@printf "\033[34m   CC   $$@\033[0m\n" && gcc
+		export CC=@printf "\033[34m   CC   $$@\033[0m\n" && gcc-4.3
 	else
 		export CC=@printf "\033[34m   CC   $$@\033[0m\n" && colorgcc
 	endif
@@ -13,11 +13,12 @@ else
 	export CC=@printf "\033[34m   CC   $$@\033[0m\n" && clang
 endif
 
-export LD=@printf "\033[31m   LD   $$@\033[0m\n" && ld
 export AR=@printf "\033[32m   AR   $$@\033[0m\n" && ar
+
+export LD=@printf "\033[31m   LD   $$@\033[0m\n" && ld
 export CFLAGS=-native -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
-LDFLAGS=-Llib/
 LDLIBS=-lc -lpci -lclock -lutils -ldrivers -z nodefaultlib -lsystem
+LDFLAGS=-Llib/
 SUBDIRS = kernel libc utils drivers pci clock apps system 
 
 all: kernel.bin
@@ -46,10 +47,10 @@ img: all
 	@rm mtoolsrc
 
 runqemu: core.img
-	qemu -fda core.img -m 4
+	/home/nowis/cours/4I/projetTut/projet_tut_OS/trunk/tacos/qemu-0.11.1/i386-softmmu/qemu -fda core.img -m 4 
 
 runqemugdb: core.img
-	qemu -fda core.img -m 4 -s -S
+	/home/nowis/cours/4I/projetTut/projet_tut_OS/trunk/tacos/qemu-0.11.1/i386-softmmu/qemu -fda core.img -m 4 -s -S
 
 runbochs: core.img
 	BOCHSRC=bochsrc bochs

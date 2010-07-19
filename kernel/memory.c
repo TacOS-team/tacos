@@ -13,32 +13,13 @@ static struct physical_page_descr *free_frame_pages = NULL;
 extern char _start, __e_kernel;
 
 static struct physical_page_descr * phys_page_descr_array;
+static paddr_t kernel_top;
 
-/** 
- * @brief Adresse du cadre de page en arrondissant à l'inférieur.
- * 
- * Prend en argument une adresse physique et donne l'adresse du cadre 
- * correspondant en arrondissant à l'inférieur.
- *
- * @param value l'adresse physique à arrondir.
- * 
- * @return l'adresse physique arrondie.
- */
-static paddr_t memory_align_page_inf(paddr_t value) {
+paddr_t memory_align_page_inf(paddr_t value) {
 	return value - value%PAGE_SIZE;
-};
+}
 
-/** 
- * @brief Adresse du cadre de page en arrondissant au supérieur.
- *
- * Prend en argument une adresse physique et donne l'adresse du cadre 
- * correspondant en arrondissant au supérieur.
- * 
- * @param value l'adresse physique à arrondir.
- * 
- * @return l'adresse physique arrondie.
- */
-static paddr_t memory_align_page_sup(paddr_t value) {
+paddr_t memory_align_page_sup(paddr_t value) {
 	if (value % PAGE_SIZE == 0) {
 		return value;
 	}
@@ -77,7 +58,6 @@ void memory_print_free_frame_pages() {
 void memory_print() {
 	struct physical_page_descr *p_f, *p_u;
 
-
 	p_f = free_frame_pages;
 	p_u = used_frame_pages;
 	while (p_f != NULL || p_u != NULL) {
@@ -91,7 +71,6 @@ void memory_print() {
 		}
 	}
 	printf("\n");
-
 }
 
 struct physical_page_descr * memory_get_first_used_page() {
@@ -122,7 +101,6 @@ paddr_t memory_next_page(struct physical_page_descr ** iterator) {
  * que de cadres.
  */
 void memory_setup(size_t ram_size) {
-
 	ram_size = memory_align_page_inf(ram_size); /* On abandonne un petit bout de mémoire pour avoir que des pages completes */
 
 	/* On place le tableau de pages juste après la fin du kernel. */
@@ -135,7 +113,7 @@ void memory_setup(size_t ram_size) {
 	 * kernel ainsi que la table qui contient les pages. On va les marquer utilisées. */
 	paddr_t kernel_base = memory_align_page_inf((paddr_t)(& _start));
 	uint32_t n_pages = ram_size / PAGE_SIZE; /* ram_size est un multiple de PAGE_SIZE ! */
-	paddr_t kernel_top = (paddr_t)phys_page_descr_array + memory_align_page_sup(n_pages * sizeof(struct physical_page_descr));
+	kernel_top = (paddr_t)phys_page_descr_array + memory_align_page_sup(n_pages * sizeof(struct physical_page_descr));
 
 	struct physical_page_descr *phys_page_descr = (struct physical_page_descr*) phys_page_descr_array;
 	paddr_t phys_page_addr = phys_mem_base; /* Adresse d'une page */
@@ -220,5 +198,9 @@ int memory_free_page_frame(paddr_t addr)
 	free_frame_pages = p;
 
 	return 0;
+}
+
+paddr_t memory_get_kernel_top() {
+	return kernel_top + PAGE_SIZE;
 }
 

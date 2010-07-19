@@ -73,6 +73,8 @@ mbr.o: include/mbr.h
 memory.o: ../include/types.h ../include/stdio.h ../include/fcntl.h
 memory.o: ../include/libio.h ../include/stdarg.h ../include/memory.h
 pagination.o: ../include/types.h ../include/memory.h ../include/pagination.h
+pagination.o: ../include/stdio.h ../include/fcntl.h ../include/libio.h
+pagination.o: ../include/stdarg.h
 process.o: ../include/types.h ../include/stdlib.h ../include/stdio.h
 process.o: ../include/fcntl.h ../include/libio.h ../include/stdarg.h
 process.o: ../include/string.h ../include/video.h include/gdt.h

@@ -127,4 +127,37 @@ bool memory_has_next_page(struct physical_page_descr * iterator);
  */
 paddr_t memory_next_page(struct physical_page_descr ** iterator);
 
+/** 
+ * @brief Adresse du cadre de page en arrondissant à l'inférieur.
+ * 
+ * Prend en argument une adresse physique et donne l'adresse du cadre 
+ * correspondant en arrondissant à l'inférieur.
+ *
+ * @param value l'adresse physique à arrondir.
+ * 
+ * @return l'adresse physique arrondie.
+ */
+paddr_t memory_align_page_inf(paddr_t value);
+
+/** 
+ * @brief Adresse du cadre de page en arrondissant au supérieur.
+ *
+ * Prend en argument une adresse physique et donne l'adresse du cadre 
+ * correspondant en arrondissant au supérieur.
+ * 
+ * @param value l'adresse physique à arrondir.
+ * 
+ * @return l'adresse physique arrondie.
+ */
+paddr_t memory_align_page_sup(paddr_t value); 
+
+/**
+ * @ Premier cadre de page libre au dessus du kernel
+ *
+ * Premier cadre de page libre au dessus du kernel
+ *
+ * @return l'adresse de la page.
+ */
+paddr_t memory_get_kernel_top();
+
 #endif

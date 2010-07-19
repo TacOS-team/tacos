@@ -134,7 +134,7 @@ vaddr_t get_linear_address(int dir, int table, int offset)
 static void create_page_entry(struct page_table_entry *pte, paddr_t page_addr)
 {
 	if (pte->present == 1) {
-		kprintf("wtf????\n");
+		kprintf("wtf???? %x\n", page_addr);
 	} else {
 		pte->present = 1;
 		pte->page_addr = page_addr >> 12;
@@ -149,8 +149,6 @@ static int create_page_dir(struct page_directory_entry *pde)
   if(memory_get_first_free_page() == NULL)
     return -1;
   paddr_t page_addr = memory_reserve_page_frame();
-
-  last_page_table_next();
   
   pde->present = 1;
   pde->page_table_addr = page_addr >> 12; // check phys or virtual
@@ -158,7 +156,14 @@ static int create_page_dir(struct page_directory_entry *pde)
 	pde->u_s = 1;
 
   // map new PTE
-  map(page_addr, get_last_page_table());
+  vaddr_t v_page_addr = get_last_page_table();
+  last_page_table_next();
+  map(page_addr, v_page_addr);
+
+  int i;
+  struct page_table_entry *pte = (struct page_table_entry *) v_page_addr;
+  for(i=0 ; i < 1024 ; i++)
+    (pte + i)->present = 0;
 
   return 0;
 }
@@ -169,7 +174,7 @@ static int map(paddr_t phys_page_addr, vaddr_t virt_page_addr)
   int dir = virt_page_addr >> 22;
   int table = (virt_page_addr >> 12) & 0x3FF;
   struct page_directory_entry * pde = get_pde(dir);
-  
+
   if (!pde->present && create_page_dir(pde) == -1)
     return -1;
   
@@ -193,9 +198,12 @@ static void unmap(vaddr_t virt_page_addr)
 
 void init_vmm()
 {
-  map(memory_reserve_page_frame(), get_end_page_directory());
+  int i;
+  vaddr_t page_sup_end_kernel = memory_get_kernel_top();
 
-  free_slabs.begin = (struct slab *) get_end_page_directory();
+  map(memory_reserve_page_frame(), page_sup_end_kernel);
+
+  free_slabs.begin = (struct slab *) page_sup_end_kernel; 
   free_slabs.begin->prev = NULL;
   free_slabs.begin->nb_pages = 1;
   free_slabs.begin->next = NULL;
@@ -204,7 +212,7 @@ void init_vmm()
   used_slabs.begin = NULL;
   used_slabs.end = NULL;
 
-  vmm_top = get_end_page_directory() + PAGE_SIZE;
+  vmm_top = page_sup_end_kernel + PAGE_SIZE;
 }
 
 // Agrandit le heap de nb_pages pages et ajoute le nouveau slab à la fin de free_pages

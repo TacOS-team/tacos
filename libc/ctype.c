@@ -21,7 +21,7 @@ int isdigit(int c) {
 }
 
 int islower(int c) {
-	return (c >= 'a' && c <= 'z') || iscntrl(c) || isdigit(c) || ispunct(c) || isspace(c);
+	return (c >= 'a' && c <= 'z'); // XXX || iscntrl(c) || isdigit(c) || ispunct(c) || isspace(c);
 }
 
 int isprint(int c) {
@@ -38,7 +38,7 @@ int isspace(int c) {
 }
 
 int isupper(int c) {
-	return (c >= 'A' && c <= 'Z') || iscntrl(c) || isdigit(c) || ispunct(c) || isspace(c);
+	return (c >= 'A' && c <= 'Z');/* XXX || iscntrl(c) || isdigit(c) || ispunct(c) || isspace(c);*/
 }
 
 int isxdigit(int c) {

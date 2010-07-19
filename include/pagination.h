@@ -64,7 +64,6 @@ void pagination_init_page_directory(struct page_directory_entry * pd);
 void pagination_init_page_directory_from_current(struct page_directory_entry * pd);
 void pagination_load_page_directory(struct page_directory_entry * pd);
 
-vaddr_t get_end_page_directory();
 vaddr_t get_last_page_table();
 int last_page_table_next();
 

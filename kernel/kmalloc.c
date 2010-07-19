@@ -92,7 +92,7 @@ static void add(struct mem_list *list, struct mem *m)
 // Sépare un bloc mem en deux quand il est trop grand et déplace le bloc de free_mem vers used_mem
 static void cut_mem(struct mem* m, size_t size)
 {
-  if(m->size > size) // cut mem
+  if(m->size - size > sizeof(struct mem)) // cut mem
   {
     struct mem *new_mem = (struct mem*) ((vaddr_t) m + size);
     new_mem->size = m->size - size;
@@ -202,6 +202,7 @@ void kmalloc_print_mem()
 
   printf("\n-- kmalloc : printing heap --\n");
 
+	int i = 0;
   while(free_it != NULL && allocated_it != NULL)
   {
     if(free_it < allocated_it)

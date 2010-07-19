@@ -5,33 +5,30 @@
 #include <types.h>
 #include <memory.h>
 #include <pagination.h>
+#include <stdio.h>
 
-static vaddr_t last_page_table = 0;
-static vaddr_t end_page_directory;
+static vaddr_t last_page_table;
 
-/** 
- * @brief Mappe une adresse en identity mapping.
- * 
- * Cette fonction sert à mapper une adresse par identity mapping. Cela ne peut
- * être fait qu'avant l'activation de la pagination !
- *
- * @param pagination_kernel
- * @param page_addr
- */
-void pagination_identity_map_addr(struct page_directory_entry * pagination_kernel, paddr_t page_addr) {
-	int index_pd = page_addr >> 22;
-	int index_pt = (page_addr & 0x003FF000) >> 12;
+void pagination_map(struct page_directory_entry * pagination_kernel, paddr_t page_addr, vaddr_t v_page_addr) {
+	int index_pd = v_page_addr >> 22;
+	int index_pt = (v_page_addr & 0x003FF000) >> 12;
 
 	struct page_directory_entry * pde = &pagination_kernel[index_pd];
 	if (!pde->present) {
+		int i;
+		paddr_t pt_addr = memory_reserve_page_frame();
 		pde->r_w = 1;
 		pde->u_s = 1;
 		pde->present = 1;
-		paddr_t pt_addr = memory_reserve_page_frame();
-		if(last_page_table <= (vaddr_t) pt_addr)
-			last_page_table = (vaddr_t) pt_addr;
 		pde->page_table_addr = pt_addr >> 12;
-		pagination_identity_map_addr(pagination_kernel, pt_addr); // J'ai peur que si on ne map pas on se prenne un page fault (à voir...)
+
+		struct page_table_entry *pt = (struct page_table_entry *) pt_addr;
+		for (i = 0; i < 1024; i++)
+			pt[i].present = 0;
+
+		// On map la table de page
+		pagination_map(pagination_kernel, pt_addr, get_last_page_table());
+		last_page_table_next();
 	}
 
 	struct page_table_entry * page_table = (struct page_table_entry *) (pde->page_table_addr << 12);
@@ -43,14 +40,32 @@ void pagination_identity_map_addr(struct page_directory_entry * pagination_kerne
 	pte->u_s = 1;
 }
 
+/** 
+ * @brief Mappe une adresse en identity mapping.
+ * 
+ * Cette fonction sert à mapper une adresse par identity mapping. Cela ne peut
+ * être fait qu'avant l'activation de la pagination !
+ *
+ * @param pagination_kernel
+ * @param page_addr
+ */
+void pagination_identity_map_addr(struct page_directory_entry * pagination_kernel, paddr_t page_addr) {
+	pagination_map(pagination_kernel, page_addr, page_addr);
+}
+
 void pagination_setup() {
 	struct physical_page_descr * iterator = memory_get_first_used_page();
 	struct page_directory_entry * pagination_kernel = (struct page_directory_entry*) memory_reserve_page_frame();
 
-	// marque la fin du bloc regroupant le rep. de page et les tables de pages
-	end_page_directory = ((vaddr_t) pagination_kernel) + 1025*PAGE_SIZE;
+	// Pile de mémoire virtuelle libre pour les tables de pages.
+	// Placé en haut de la mémoire virtuelle (les 1024 premières sont
+	// utilisé par le rep de page pour pointer vers lui-même.
+	last_page_table = -1025*PAGE_SIZE;
 
 	pagination_init_page_directory(pagination_kernel);
+	pagination_map(pagination_kernel, (paddr_t) pagination_kernel, 
+								 get_last_page_table());
+	last_page_table_next();
 
 	// identity mapping :
 	paddr_t current_page;
@@ -60,7 +75,7 @@ void pagination_setup() {
 			pagination_identity_map_addr(pagination_kernel, current_page);
 		}
 	}
-	
+ 
 	pagination_load_page_directory(pagination_kernel);
 
 	//reads cr0, switches the "paging enable" bit, and writes it back.
@@ -122,27 +137,16 @@ void pagination_load_page_directory(struct page_directory_entry * pd) {
 }
 
 /*
- * Retourne la fin du bloc regroupant le rep. de page et les tables de pages
- */
-vaddr_t get_end_page_directory()
-{
-  return end_page_directory;
-}
-
-/*
  * Retourne l'addresse de la dernière table de pages
  */
 vaddr_t get_last_page_table()
 {
-  return last_page_table;
+	return last_page_table;
 }
 
 int last_page_table_next()
 {
-  if(last_page_table >= end_page_directory)
-    return -1;
-
-  last_page_table += PAGE_SIZE;
-  return 0;
+	last_page_table -= PAGE_SIZE;
+	return 0;
 }
 
