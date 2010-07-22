@@ -47,10 +47,10 @@ img: all
 	@rm mtoolsrc
 
 runqemu: core.img
-	/home/nowis/cours/4I/projetTut/projet_tut_OS/trunk/tacos/qemu-0.11.1/i386-softmmu/qemu -fda core.img -m 4 
+	qemu -fda core.img -m 4 
 
 runqemugdb: core.img
-	/home/nowis/cours/4I/projetTut/projet_tut_OS/trunk/tacos/qemu-0.11.1/i386-softmmu/qemu -fda core.img -m 4 -s -S
+	qemu -fda core.img -m 4 -s -S
 
 runbochs: core.img
 	BOCHSRC=bochsrc bochs

@@ -158,11 +158,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 }
 
 
-void waitReturn()
-{
-	while(getchar() != '\n');
-}
-
 static void defaultOptions(kernel_options *options)
 {
 	options->lol = 0;
