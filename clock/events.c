@@ -3,7 +3,7 @@
 #include <interrupts.h>
 #include <time.h>
 #include <clock.h>
-#include <heap.h>
+#include <list.h>
 #include <events.h>
 #include <stdio.h>
 #include <debug.h>
@@ -12,7 +12,7 @@
 
 //static const int TIMER_FREQ = I8254_MAX_FREQ / 1000;
 //static int ticks;
-static heap_t events;
+static list_t events;
 static struct event_t events_buffer[MAX_EVENTS];
 
 int compare_events(void* a, void* b)
@@ -20,7 +20,7 @@ int compare_events(void* a, void* b)
   struct event_t *event_a = (struct event_t *) a;
   struct event_t *event_b = (struct event_t *) b;
 
-  return compare_times(event_a->date, event_b->date);
+  return compare_times( event_b->date,event_a->date);
 }
 
 static void events_interrupt(int interrupt_id __attribute__ ((unused)))
@@ -30,13 +30,13 @@ static void events_interrupt(int interrupt_id __attribute__ ((unused)))
 
 	clock_tick();
 
-	event = (struct event_t *) getTop(events);
+	event = (struct event_t *) listGetTop(events);
 	while(event != NULL && compare_times(event->date, get_tv()) > 0)
 	{
 
-		  removetop(&events);
+		  listRemoveTop(&events);
 		  event->callback(event->data);
-		  event = (struct event_t *) getTop(events);
+		  event = (struct event_t *) listGetTop(events);
 	  
 	}
 
@@ -46,8 +46,10 @@ static void events_interrupt(int interrupt_id __attribute__ ((unused)))
 void events_init()
 {
   clock_init();
-  initHeap(&events, (cmp_func_type)compare_events, (void*)events_buffer,
-           sizeof(struct event_t), MAX_EVENTS);
+  initList(	&events, 
+			(cmp_func_type)compare_events, 
+			sizeof(struct event_t), 
+			MAX_EVENTS);
 
   interrupt_set_routine(IRQ_TIMER, events_interrupt, 0);
   //ticks = TIMER_FREQ;
@@ -73,7 +75,7 @@ int add_event(callback_t call, void* data, clock_t dtime)
 	event.callback = call;
 	event.data = data;											
 	event.id = id;
-	addElement(&events, &event);
+	listAddElement(&events, &event);
 
 	id++;
 
@@ -88,6 +90,6 @@ static int identifier(int id, void* element)
 
 int del_event(int id)
 {
-	return delElement(&events, id, identifier);
+	return listDelElement(&events, id, identifier);
 }
 

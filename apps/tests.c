@@ -15,6 +15,7 @@
 #include <video.h>
 #include <debug.h>
 #include <unistd.h>
+#include <list.h>
 
 static int color;
 
@@ -166,13 +167,38 @@ int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 	return 0;
 }
 
+void* callback( void* data )
+{
+	kprintf("test!\n");
+	return NULL;
+}
+
+int comparator(void* a, void* b)
+{
+	int* temp1 = (int*) a;
+	int* temp2 = (int*) b;
+	
+	return *temp1 - *temp2;
+}
+int func(int id, void * el)
+{
+	int* element = (int*) el;
+	if(id == *element)
+		return 1;
+	else 
+		return 0;
+}
+
 int test_task1(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	int pid = get_pid();
-	printf("\nTache n%d\n",pid);
+	list_t ma_liste;
+	int a = 0;
+	printf("Task %d\n",pid);
+	
+	add_event(callback,NULL, 10);
 	while(1) {
-		usleep(100);
-		printf("Plop");
+
 	}
 	return 0;
 }
@@ -180,7 +206,6 @@ int test_task1(int argc __attribute__ ((unused)), char** argv __attribute__ ((un
 int test_task()
 {
 	exec(test_task1, "test1");
-	exec(test_task1, "test2");
 	return 0;
 }
 

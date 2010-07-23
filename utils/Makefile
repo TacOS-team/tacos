@@ -5,7 +5,7 @@ SRCS=*.c
 
 all: libutils
 
-libutils: heap.o widget.o
+libutils: heap.o list.o widget.o
 	$(AR) r ../lib/$@.a $^
 
 %.o: %.c
@@ -21,6 +21,7 @@ depend: $(SRCS)
 
 heap.o: ../include/heap.h ../include/types.h ../include/string.h
 heap.o: ../include/debug.h
+list.o: ../include/list.h ../include/types.h ../include/string.h
 widget.o: ../include/gui.h ../include/types.h include/widget.h
 widget.o: ../include/stdlib.h ../include/string.h ../include/stdio.h
 widget.o: ../include/fcntl.h ../include/libio.h ../include/stdarg.h

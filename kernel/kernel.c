@@ -99,7 +99,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	init_fpu();
 
-	events_init(); 
+	 
 	
 	asm volatile ("sti\n");
 
@@ -146,6 +146,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 	// Création du processus par défaut: notre shell
 	create_process("Mishell", (paddr_t)shell,0,NULL,0x10000,3);
 	//create_process("Mishell", (paddr_t)test_proc,0,NULL,1024,3);
+	
+	events_init();
+	
 	/* Lancement du scheduler */
 	init_scheduler(10);
 

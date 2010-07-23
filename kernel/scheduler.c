@@ -21,6 +21,7 @@
 
 process_t* idle_process;
 static uint32_t quantum;						// Quantum de temps alloué aux process
+static int event_id = 0;
 
 
 void process_switch(int mode, process_t* current)
@@ -205,7 +206,7 @@ static void* schedule(void* data __attribute__ ((unused)))
 	
 	
 	// Mise en place de l'interruption sur le quantum de temps
-	add_event(schedule,NULL,quantum);	
+	event_id = add_event(schedule,NULL,quantum);	
 	i8254_init(1000/*TIMER_FREQ*/);
 
 	// On réaffecte à la main stdin, stdout et stderr. TEMPORAIRE ! Il faudrait que stdin, stdout et stderr soient tjs à la même adresse pour chaque processus...
@@ -228,9 +229,14 @@ void init_scheduler(int Q)
 	quantum = Q;
 }
 
+void stop_scheduler()
+{
+	del_event(event_id);
+}
+
 void start_scheduler()
 {
-	add_event(schedule,NULL,quantum);
+	event_id = add_event(schedule,NULL,quantum);
 }
 
 void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)))
@@ -245,17 +251,29 @@ void* sleep_callback( void* data )
 {
 	process_t* proc = (process_t*) data;
 	proc->state = PROCSTATE_RUNNING;
+	//kprintf("A");
 	return NULL;
 }
 
 void* sys_sleep( uint32_t delay,uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
 {
+	/* Désactivation de l'ordonnanceur */
+	stop_scheduler();
+	
 	process_t* process = get_current_process();
+
+	/* Passage du processus en waiting */
 	process->state = PROCSTATE_WAITING;
+	
+	/* Adjout de l'évènement de fin de sleep */
 	add_event(sleep_callback,(void*)process,delay);
 	
+	/* Scheduling immédiat */
+	start_scheduler();
+	
+	
 	while(process->state == PROCSTATE_WAITING);
-		//printf("process:%x\n",process);
+	
 		
 	return NULL;
 }
