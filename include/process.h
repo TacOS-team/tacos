@@ -11,7 +11,9 @@
 #define PROCSTATE_IDLE 1
 #define PROCSTATE_RUNNING 2
 #define PROCSTATE_WAITING 3
-#define PROCSTATE_TERMINATED 4
+#define PROCSTATE_TERMINATED 4 
+
+#define CPU_USAGE_SAMPLE_RATE 500
 
 typedef struct
 {
@@ -22,7 +24,6 @@ typedef struct
 	uint32_t cr3;
 }regs_t;
 
-
 /** 
 * @brief 
 */
@@ -31,9 +32,11 @@ typedef struct{
 	char* 		name;
 	uint8_t	state;
 	uint8_t	priority;
-	
+	/* Données dédiées au évaluation de perf */
 	long int	user_time;
 	long int	sys_time;
+	int current_sample;
+	int last_sample;
 	
 	/* Données propres au contexte du processus */
 	regs_t regs;
@@ -122,6 +125,8 @@ void print_process_list();
 * Retire de la liste tous les processus en état PROCSTATE_TERMINATED.
 */
 void clean_process_list();
+
+void sample_CPU_usage();
 
 /** 
 * @brief Donne le focus au prochain processus actif dans la liste.

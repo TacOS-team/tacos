@@ -22,6 +22,7 @@
 process_t* idle_process;
 static uint32_t quantum;						// Quantum de temps alloué aux process
 static int event_id = 0;
+static int sample_counter;
 
 
 void process_switch(int mode, process_t* current)
@@ -122,7 +123,7 @@ void process_switch(int mode, process_t* current)
 	);	
 }
 
-static void* schedule(void* data __attribute__ ((unused)))
+void* schedule(void* data __attribute__ ((unused)))
 {
 	uint32_t* stack_ptr;
    uint32_t compteur;
@@ -130,7 +131,7 @@ static void* schedule(void* data __attribute__ ((unused)))
    process_t* current = get_current_process();
 	
 	// On récupère le contexte du processus actuel uniquement si il a déja été lancé
-	if(current->state == PROCSTATE_RUNNING)
+	if(current->state == PROCSTATE_RUNNING || current->state == PROCSTATE_WAITING)
 	{	
 		/* On récupere un pointeur de pile pour acceder aux registres empilés */
 		asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
@@ -183,6 +184,15 @@ static void* schedule(void* data __attribute__ ((unused)))
 		current = get_next_process();
 	}while((current->state == PROCSTATE_TERMINATED || current->state == PROCSTATE_WAITING) && compteur < get_proc_count());
 	
+	/* Evaluation de l'usage du CPU */
+	current->current_sample++;
+	sample_counter++;
+	if(sample_counter >= CPU_USAGE_SAMPLE_RATE)
+	{
+		sample_CPU_usage();
+		sample_counter = 0;
+	}
+	
 	// Si on a aucun processus en IDLE/WAITING/RUNNING, il n'y a aucune chance pour qu'un processus arrive spontanement
 	// Donc on arrete le scheduler
 	if(current == NULL || current->state == PROCSTATE_TERMINATED) 
@@ -201,10 +211,7 @@ static void* schedule(void* data __attribute__ ((unused)))
 	{
 		current->state = PROCSTATE_RUNNING;
 	}
-	
-	//syscall_update_esp(current->sys_stack);
-	
-	
+
 	// Mise en place de l'interruption sur le quantum de temps
 	event_id = add_event(schedule,NULL,quantum);	
 	i8254_init(1000/*TIMER_FREQ*/);
@@ -251,10 +258,13 @@ void* sleep_callback( void* data )
 {
 	process_t* proc = (process_t*) data;
 	proc->state = PROCSTATE_RUNNING;
-	//kprintf("A");
 	return NULL;
 }
-
+void dummy1()
+{
+	int a = 1;
+	a *= a;
+}
 void* sys_sleep( uint32_t delay,uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
 {
 	/* Désactivation de l'ordonnanceur */
@@ -273,7 +283,7 @@ void* sys_sleep( uint32_t delay,uint32_t unused2 __attribute__ ((unused)), uint3
 	
 	
 	while(process->state == PROCSTATE_WAITING);
-	
+	//dummy1();
 		
 	return NULL;
 }

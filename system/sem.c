@@ -12,9 +12,7 @@
 int semget(uint8_t key)
 {
 	int ret;
-	int data[2];
-	data[0] = key;
-	data[1] = get_pid();
+	int data = key;
 	syscall(SYS_SEMCTL, KSEM_GET, (uint32_t)data, (uint32_t)&ret);
 	return ret;
 }
@@ -22,9 +20,7 @@ int semget(uint8_t key)
 int semcreate(uint8_t key)
 {
 	int ret;
-	int data[2];
-	data[0] = key;
-	data[1] = get_pid();
+	int data = key;
 	syscall(SYS_SEMCTL, KSEM_CREATE, (uint32_t)data, (uint32_t)&ret);
 	return ret;
 }

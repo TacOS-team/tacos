@@ -96,7 +96,7 @@ int write_cluster (uint8_t * buf, cluster_t cluster) {
 		return 0;
 	}
 	else {
-		printf("ERROR: tentative de lecture d un secteur reserve\n");
+		printf("ERROR: tentative d'écriture d un secteur reserve\n");
 		return 1;
 	}
 }

@@ -35,10 +35,10 @@ void pci_scan()
 	uint16_t tmp_vendor;
 	//uint16_t tmp_slot;	
 
-	printf("Scanning pci bus...");
+	kprintf("Scanning pci bus...");
 	
 	/* On scan les 256 bus possibles */
-	for(bus = 0; bus<256; bus++)
+	for(bus = 0; bus<10; bus++)
 	{
 		/* les 32 périphériques maximum par bus */
 		for(slot = 0; slot<32; slot++)
@@ -66,7 +66,7 @@ void pci_scan()
 			}
 		}
 	}
-	pci_table_len>0?printf("%d device(s) found.\n",pci_table_len):printf("no device found.\n");;
+	pci_table_len>0?kprintf("%d device(s) found.\n",pci_table_len):kprintf("no device found.\n");
 }
 
 
@@ -76,8 +76,8 @@ void pci_list()
 
 	for(i=0; i<pci_table_len; i++)
 	{
-		//pci_print_detailed_info(pci_get_function(i));
-		pci_print_info(pci_get_function(2));
+		pci_print_detailed_info(pci_get_function(i));
+		//pci_print_info(pci_get_function(i));
 	}
 }
 

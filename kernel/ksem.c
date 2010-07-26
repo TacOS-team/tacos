@@ -1,8 +1,11 @@
+/* TODO: Séparer le code de la fifo dans un autre fichier, voir le faire générique pour que ce soit réutilisable pour d'autres types d'IPC */
+
 #include <ksem.h>
-#include <ksyscall.h>
+#include <process.h>
 #include <stdio.h>
 #include <kmalloc.h>
 
+#define FIFO_MAX_SIZE 32
 #define MAX_SEM 256
 #define KSEM_GET 1
 #define KSEM_CREATE 2
@@ -11,23 +14,100 @@
 #define KSEM_V 5
 #define SYS_SEMCTL 8
 
-struct semid_t
-{
-	uint32_t pid;
-	uint32_t id;
-	struct semid_t* next;
-};
+/***********************************
+ * 
+ * STRUCT DECLARATIONS
+ * 
+ ***********************************/
 
-struct sem_t
+typedef struct _sem_fifo_cell{
+	int pid;
+	struct _sem_fifo_cell* prev;
+	struct _sem_fifo_cell* next;
+} sem_fifo_cell;
+
+typedef struct {
+	int size;
+	sem_fifo_cell* head;
+	sem_fifo_cell* tail;
+}sem_fifo;
+
+typedef struct
 {
 	int value;
 	uint8_t allocated;
-	struct semid_t* waiting;
-	struct semid_t* idle;
-};
+	sem_fifo fifo;
+}sem_t;
 
-static struct sem_t semaphores[MAX_SEM];
+/************************************
+ * 
+ * GLOBAL DECLARATIONS
+ * 
+ ************************************/
+
+static sem_t semaphores[MAX_SEM];
 static int  next_semid = 1;
+
+/*************************************
+ * 
+ * CODE
+ * 
+ *************************************/
+
+void sem_fifo_init(sem_fifo* fifo)
+{
+	fifo->size = 0;
+	fifo->head = NULL;
+	fifo->tail = NULL;
+}
+
+int sem_fifo_put(sem_fifo* fifo, int pid)
+{
+	int ret = -1;
+	sem_fifo_cell* new_cell;
+	if(fifo->size < FIFO_MAX_SIZE)
+	{
+		new_cell = (sem_fifo_cell*) kmalloc(sizeof(sem_fifo_cell));
+		new_cell->pid = pid;
+		new_cell->prev = NULL;
+		
+		if(fifo->size == 0)
+		{
+			new_cell->next = NULL;
+			fifo->tail = new_cell;
+		}
+		else
+		{
+			new_cell->next = fifo->head;
+			fifo->head->prev = new_cell;
+		}
+
+		fifo->head = new_cell;
+		
+		fifo->size ++;
+		ret = 0;
+	}
+	return ret;
+}
+
+int sem_fifo_get(sem_fifo* fifo)
+{
+	int pid = -1;
+	sem_fifo_cell* temp = fifo->tail;
+	if(fifo->size > 0)
+	{
+		fifo->tail = temp->prev;
+		pid = temp->pid;
+		free(temp);
+		fifo->size--;
+	}
+	return pid;
+}
+
+int sem_fifo_size(sem_fifo* fifo)
+{
+	return fifo->size;
+}
 
 // Note sur les semid
 // 8 most significant bits = key
@@ -40,95 +120,53 @@ int init_semaphores()
 	{
 		semaphores[i].value = 0;
 		semaphores[i].allocated = 0;
-		semaphores[i].waiting = NULL;
-		semaphores[i].idle = NULL;
+		sem_fifo_init(&(semaphores[i].fifo));
 	}
-
-	syscall_set_handler(SYS_SEMCTL, ksem_syscallhandle);
 	return 0;
 }
 
-static int ksemget(uint8_t key, uint32_t pid)
+static int ksemget(uint8_t key)
 {
 	int ret = -1;
-	struct semid_t* sem;
-	struct semid_t* ptr;
 
-	kprintf("semget key %d pid %d \n",key,pid);
+	/*kprintf("semget key %d pid %d \n",key);*/
 	if(semaphores[key].allocated)
 	{
 		ret = next_semid | key<<24;
 		next_semid++;
-
-		sem = (struct semid_t*) kmalloc(sizeof(struct semid_t));
-		sem->pid = pid;
-		sem->id = ret;
-		sem->next = NULL;
-
-		// On enfile le nouveau processus 
-		ptr = semaphores[key].idle;
-		while(ptr->next != NULL)
-			ptr = ptr->next;
-		ptr->next = sem;
 	}
 
-	kprintf("returning semid %d\n",ret);
+	/* kprintf("returning semid %d\n",ret);*/
 	return ret;
 }
 
-static int ksemcreate(uint8_t key, uint32_t pid)
+static int ksemcreate(uint8_t key)
 {
 	int ret = -1;
 	struct semid_t* sem;
 
-	kprintf("semcreate key %d pid %d \n",key,pid);
+	//kprintf("semcreate key %d pid %d \n",key);
 	if(!semaphores[key].allocated)
 	{
 		ret = next_semid | key<<24;
 		next_semid++;
 		semaphores[key].allocated = 1;
 		semaphores[key].value = 1;
-
-		sem = (struct semid_t*) kmalloc(sizeof(struct semid_t));
-		sem->pid = pid;
-		sem->id = ret;
-		sem->next = NULL;
-
-		semaphores[key].idle = sem;
 	}
 
-	kprintf("returning semid %d\n",ret);
+	//kprintf("returning semid %d\n",ret);
 	return ret;
 }
 
 static int ksemdel(uint32_t semid)
 {
-	struct semid_t* to_delete;
-	struct semid_t* next;
 	int key = (semid & 0xFF000000) >> 24;
-	kprintf("semdel semid %d \n",semid);
+	//kprintf("semdel semid %d \n",semid);
 	if(semaphores[key].allocated)
 	{
 		semaphores[key].allocated = 0;
-
-		// /!\ il faudrait relancer les processus en attente
-		to_delete = semaphores[key].waiting;
-		while(to_delete != NULL)
-		{
-			next = to_delete->next;
-			kfree(to_delete);
-			to_delete = next;
-		}
-		semaphores[key].waiting = NULL;
-
-		to_delete = semaphores[key].idle;
-		while(to_delete != NULL)
-		{
-			next = to_delete->next;
-			kfree(to_delete);
-			to_delete = next;
-		}
-		semaphores[key].idle = NULL;
+		
+		/* TODO : Liberer tous les processus en attente */
 		return 0;
 	}
 
@@ -137,84 +175,62 @@ static int ksemdel(uint32_t semid)
 
 static int ksemP(uint32_t semid)
 {
-	int pid;
+	int ret = -1;
 	int key = (semid & 0xFF000000) >> 24;
-	struct semid_t* ptr;
-
-	if(semaphores[key].allocated)
+	process_t* proc = get_current_process();
+	sem_t* sem = &semaphores[key];
+	
+	if(sem->allocated)
 	{	
-		// On cherche le pid correspondant 
-		ptr = semaphores[key].idle;
-		while(ptr != NULL)
-		{
-			if(ptr->id == semid)
-				break;
-			else
-				ptr = ptr->next;
+		/* Si le sémaphore est libre, on le prend, sinon, on attend */
+		if(sem->value >= 1) {
+			sem->value--;
 		}
-		if(ptr != NULL)
-		{
-			pid = ptr->pid;
+		else {
+			/* Si on attend, on met le pid dans la file d'attente pour pouvoir traiter le processus quand le semaphore sera libre */
+			sem_fifo_put(&(sem->fifo), proc->pid);
+			proc->state = PROCSTATE_WAITING;
+			while(proc->state == PROCSTATE_WAITING);
 		}
-		else
-		{
-			kprintf("semP semid %d for key %d no corresponding pid %d\n",semid,key);
-			return -1;
-		}
-		kprintf("semP semid %d for key %d from pid %d\n",semid, key,pid);
-		// Normalement on stop le process gentiment avec le scheduler
-		while(semaphores[key].value < 1);
-		semaphores[key].value--;
 
-		return 0;
+		ret = 0;
 	}
-	return -1;
+	
+	return ret;
 }
 
 static int ksemV(uint32_t semid)
 {
-	int pid;
+	int ret = -1;
 	int key = (semid & 0xFF000000) >> 24;
-	struct semid_t* ptr;
-
-	if(semaphores[key].allocated)
+	process_t* proc;
+	sem_t* sem = &semaphores[key];
+	
+	if(sem->allocated)
 	{
-		// On cherche le pid correspondant 
-		ptr = semaphores[key].idle;
-		while(ptr != NULL)
-		{
-			if(ptr->id == semid)
-				break;
-			else
-				ptr = ptr->next;
+		/* Si la file est vide, on incrémente la valeur, sinon, on débloque le premier processus en attente */
+		if(sem_fifo_size(&(sem->fifo)) == 0) {
+			sem->value++;
 		}
-		if(ptr != NULL)
-		{
-			pid = ptr->pid;
+		else {
+			proc = find_process(sem_fifo_get(&(sem->fifo)));
+			proc->state = PROCSTATE_RUNNING;
 		}
-		else
-		{
-			kprintf("semV semid %d for key %d no corresponding pid %d\n",semid,key);
-			return -1;
-		}
-		kprintf("semV semid %d for key %d from pid %d\n",semid, key,pid);
-		// On incremente le semaphore
-		semaphores[key].value++;
-		return 0;
+		ret = 0;
 	}
-	return -1;
+	return ret;
 }
 
 
-void ksem_syscallhandle(uint32_t param1, uint32_t param2, uint32_t param3)
+void sys_ksem(uint32_t param1, uint32_t param2, uint32_t param3)
 {
 	switch(param1)
 	{
 		case KSEM_GET:
-			*((int*)param3) = ksemget(((uint32_t*)param2)[0],((uint32_t*)param2)[1]);
+			*((int*)param3) = ksemget((uint32_t*)param2);
 			break;
 		case KSEM_CREATE:
-			*((int*)param3) = ksemcreate(((uint32_t*)param2)[0],((uint32_t*)param2)[1]);
+			*((int*)param3) = ksemcreate((uint32_t*)param2);
 			break;
 		case KSEM_DEL:
 			*((int*)param3) = ksemdel(param2);

@@ -35,6 +35,8 @@ uint32_t pci_read_register(uint8_t bus, uint8_t device, uint8_t func, uint8_t re
 
 uint32_t pci_read_value(pci_function_p func, uint8_t reg, uint8_t offset, uint32_t mask);
 
+uint32_t pci_write_register(uint8_t bus, uint8_t slot, uint8_t func, uint8_t reg, uint32_t value);
+
 void pci_print_info( pci_function_p function);
 
 

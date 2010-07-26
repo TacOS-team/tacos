@@ -20,7 +20,7 @@ int compare_events(void* a, void* b)
   struct event_t *event_a = (struct event_t *) a;
   struct event_t *event_b = (struct event_t *) b;
 
-  return compare_times( event_b->date,event_a->date);
+  return compare_times(event_a->date, event_b->date);
 }
 
 static void events_interrupt(int interrupt_id __attribute__ ((unused)))

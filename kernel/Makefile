@@ -46,10 +46,10 @@ kernel.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
 kernel.o: ../include/unistd.h ../include/string.h ../include/memory.h
 kernel.o: ../include/pagination.h include/gdt.h include/exception.h
 kernel.o: ../include/interrupts.h ../include/pci.h ../include/pci_config.h
-kernel.o: ../include/pci_types.h include/scheduler.h ../include/time.h
-kernel.o: include/dummy_process.h ../include/keyboard.h ../include/mouse.h
-kernel.o: ../include/events.h ../include/floppy.h include/kpanic.h
-kernel.o: ../include/process.h ../include/kmalloc.h include/vmm.h
+kernel.o: ../include/pci_types.h include/scheduler.h ../include/process.h
+kernel.o: ../include/time.h include/dummy_process.h ../include/keyboard.h
+kernel.o: ../include/mouse.h ../include/events.h ../include/floppy.h
+kernel.o: include/kpanic.h ../include/kmalloc.h include/vmm.h
 kernel.o: ../include/ioports.h include/msr.h ../include/fat.h include/fpu.h
 kernel.o: include/vm86.h ../include/beeper.h ../include/debug.h
 kernel.o: ../include/shell.h include/ksyscall.h ../include/syscall.h
@@ -59,10 +59,11 @@ kmalloc.o: ../include/libio.h ../include/stdarg.h ../include/heap.h
 kmalloc.o: include/vmm.h ../include/kmalloc.h
 kpanic.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 kpanic.o: ../include/libio.h ../include/stdarg.h include/exception.h
-kpanic.o: include/kpanic.h
-ksem.o: include/ksem.h ../include/types.h include/ksyscall.h
-ksem.o: ../include/stdio.h ../include/fcntl.h ../include/libio.h
-ksem.o: ../include/stdarg.h ../include/kmalloc.h
+kpanic.o: include/kpanic.h ../include/process.h ../include/pagination.h
+kpanic.o: include/scheduler.h
+ksem.o: include/ksem.h ../include/types.h ../include/process.h
+ksem.o: ../include/libio.h ../include/fcntl.h ../include/pagination.h
+ksem.o: ../include/stdio.h ../include/stdarg.h ../include/kmalloc.h
 ksyscall.o: include/msr.h ../include/stdio.h ../include/fcntl.h
 ksyscall.o: ../include/types.h ../include/libio.h ../include/stdarg.h
 ksyscall.o: ../include/string.h ../include/interrupts.h include/ksyscall.h
@@ -80,6 +81,9 @@ process.o: ../include/fcntl.h ../include/libio.h ../include/stdarg.h
 process.o: ../include/string.h ../include/video.h include/gdt.h
 process.o: ../include/process.h ../include/pagination.h ../include/kmalloc.h
 process.o: ../include/syscall.h ../include/time.h ../include/debug.h
+round_robin.o: ../include/process.h ../include/types.h ../include/libio.h
+round_robin.o: ../include/fcntl.h ../include/pagination.h include/scheduler.h
+round_robin.o: ../include/kmalloc.h ../include/video.h
 scheduler.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 scheduler.o: ../include/libio.h ../include/stdarg.h ../include/process.h
 scheduler.o: ../include/pagination.h include/scheduler.h ../include/events.h

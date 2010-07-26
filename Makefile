@@ -50,7 +50,7 @@ runqemu: core.img
 	qemu -fda core.img -m 4 
 
 runqemugdb: core.img
-	qemu -fda core.img -m 4 -s -S
+	qemu -fda core.img -soundhw gus -parallel none -m 4 -s -S
 
 runbochs: core.img
 	BOCHSRC=bochsrc bochs

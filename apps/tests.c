@@ -46,27 +46,6 @@ int test_gui()
 	return 0;
 }
 
-int semaphore_task(int argc, char** argv __attribute__ ((unused)))
-{
-	int semid1;
-	int semid2;
-	int i=0;
-	semid1 = semget(1);
-	semid2 = semget(argc);
-	for(i=0 ; i<5 ; i++)
-	{
-		semP(semid1);
-		printf("ping %d\n",get_pid());
-		semV(semid1);
-		//getchar();
-		int j;
-		for(j=0 ; j<10000000 ; j++);
-	}
-
-	semV(semid2);
-	return 0;
-}
-
 int test_fwrite() {
 	FILE *file = fopen("fd0:/toto.txt", "w+");
 
@@ -88,22 +67,52 @@ int test_fread() {
 	return 0;
 }
 
+
+int sem_t2(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
+{
+	int semid1 = semget(4);
+	int semid2 = semget(42);
+	int i;
+	while(1) {
+			semP(semid1);
+			for(i=0; i<0x005FFFFE; i++){}
+			printf("T2:Pong!\n");
+			semV(semid2);
+			
+	}
+
+	return 0;
+}
+
+int sem_t1(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
+{
+	int semid1 = semget(4);
+	int semid2 = semget(42);
+	unsigned int i = 0;
+
+	while(1){
+		semP(semid2);
+		for(i=0; i<0x005FFFFE; i++){}
+		printf("T1:Ping?\n");
+		semV(semid1);
+	}
+	return 0;
+}
+
 int test_semaphores()
 {
-	int semid1 = semcreate(1); // semaphore alternant les taches
-	int semid2 = semcreate(2); // semaphore assurant la fin de la tache 1
-	int semid3 = semcreate(3); // semaphore assurant la fin de la tache 2
-	semP(semid2);
-	semP(semid3);
-	create_process("tache_semaphore1", (paddr_t) semaphore_task, 2, NULL, 512, 3);
-	create_process("tache_semaphore2", (paddr_t) semaphore_task, 3, NULL, 512, 3);
-	while(1);// DEBUG
-	semP(semid2);
-	semP(semid3);
-	semdel(semid1);
-	semdel(semid2);
-	semdel(semid3);
+	/* Test des sémaphores: Deux taches effectuant un calcul (ici un boucle) s'alterne
+	 * Pour se convaincre de l'efficacité, on peut utilise la commande "ps" pour constater
+	 * que les deux tachent deviennent bien inactives (et donc ne consomment pas de CPU) l'une 
+	 * après l'autre
+	 */
+	int semid1 = semcreate(4); 
+	int semid2 = semcreate(42); 
+	semP(semid1);
 
+	exec(sem_t1,"sem1");
+	exec(sem_t2,"sem2");
+	
 	return 0;
 }
 
@@ -167,38 +176,15 @@ int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 	return 0;
 }
 
-void* callback( void* data )
-{
-	kprintf("test!\n");
-	return NULL;
-}
-
-int comparator(void* a, void* b)
-{
-	int* temp1 = (int*) a;
-	int* temp2 = (int*) b;
-	
-	return *temp1 - *temp2;
-}
-int func(int id, void * el)
-{
-	int* element = (int*) el;
-	if(id == *element)
-		return 1;
-	else 
-		return 0;
-}
-
 int test_task1(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	int pid = get_pid();
-	list_t ma_liste;
-	int a = 0;
+
 	printf("Task %d\n",pid);
 	
-	add_event(callback,NULL, 10);
 	while(1) {
-
+	usleep(333);
+	printf("LOL\n");
 	}
 	return 0;
 }

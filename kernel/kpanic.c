@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <exception.h>
 #include <kpanic.h>
+#include <process.h>
+#include <scheduler.h>
+
+#define GAME_OVER() asm("cli\n\thlt");
 
 void printStackTrace(uint32_t depth)
 {
@@ -26,42 +30,19 @@ void printStackTrace(uint32_t depth)
 void page_fault_report(int error_code)
 {
 	uint32_t address;
-			
 	/* On récupère le registre cr2 qui contient l'addresse virtuelle à l'origine de l'exception */
 	asm("mov %%cr2, %%eax":"=a"(address));
 	kprintf("Virtual address: 0x%x\n",address);
-
+	kprintf("Cause: ");
 	if(error_code & 0x01) // Bit P
 		kprintf("Page-protection violation.\n");
 	else
 		kprintf("Non-present page.\n");
-
-	kprintf("Read/Write: ");
-	if(error_code & 0x02) // Bit W
-		kprintf("write\n");
-	else
-		kprintf("reading\n");
-
-	kprintf("Privilege=");
-	if(error_code & 0x04) // Bit U
-		kprintf("3\n");
-	else
-		kprintf("0\n");
 		
-	kprintf("Reserved write: ");
-	if(error_code & 0x08) // Bit R
-		kprintf("yes\n");
-	else
-		kprintf("no\n");
-		
-	kprintf("Instruction fetch: ");
-	if(error_code & 0x10) // Bit I
-		kprintf("yes\n");
-	else
-		kprintf("no\n");
+	kprintf("\n\n\n\tPlease press Atl-tab to continue...");
 }
-	
-void kpanic_handler(int error_id, int error_code)
+
+void kpanic_main_report(int error_id, int error_code, process_t* badboy)
 {
 	// background white
 	kprintf("\033[47m");
@@ -72,20 +53,25 @@ void kpanic_handler(int error_id, int error_code)
 
 	kprintf("                              /!\\ KERNEL PANIC /!\\\n");
 	kprintf("--------------------------------------------------------------------------------\n");
+	/* On affiche le nom du bad boy */
+	kprintf("In \033[31m%s (pid:%d)\033[47m\033[30m\n\n", badboy->name, badboy->pid);
 	kprintf("Exception handled : ");
 	switch(error_id)
 	{
 		case EXCEPTION_SEGMENT_NOT_PRESENT:
 			kprintf("Segment not present (error code : 0x%x).\n", error_code);
+			GAME_OVER();
 			break;
 		case EXCEPTION_DIVIDE_ERROR:
 			kprintf("Division by zero.\n");
 			break;
 		case EXCEPTION_INVALID_OPCODE:
 			kprintf("Invalid OpCode.\n");
+			GAME_OVER();
 			break;
 		case EXCEPTION_INVALID_TSS:
 			kprintf("Invalid TSS (error code : %d).\n", error_code);
+			GAME_OVER();
 			break;
 		case EXCEPTION_PAGE_FAULT:
 			kprintf("Page fault (error code : %d).\n", error_code);
@@ -93,16 +79,37 @@ void kpanic_handler(int error_id, int error_code)
 			break;
 		case EXCEPTION_DOUBLE_FAULT:
 			kprintf("Double fault (error code : %d).\n", error_code);
+			GAME_OVER();
 			break;
 		case EXCEPTION_GENERAL_PROTECTION :
 			kprintf("General Protection fault (error code : %d).\n", error_code);
+			GAME_OVER();
 			break;
 		default:
 			kprintf("Unknown exception.\n");
+			GAME_OVER();
 	}
-	printStackTrace(10);
-	asm("cli");
-	asm("hlt");
+}
+	
+	
+void kpanic_handler(int error_id, int error_code)
+{
+	process_t* badboy;
+	
+	stop_scheduler();	/* On arrête le déroulement des taches durant la gestion du kernel panic */
+	badboy = get_current_process();	/* On récupère le bad boy */
+	
+	kpanic_main_report(error_id, error_code, badboy);	/* Affichage des information plus ou moins utiles */
+	
+	/* 
+	 * Si on arrive ici, c'est que ce n'étais pas si grave que ça, du coup, on règle le problème et on relance le scheduler
+	 */
+	 
+	badboy->state = PROCSTATE_TERMINATED; /* ouais ouais, bourrin */
+	asm("sti");			/* Et on tente de revenir au choses normales */
+	start_scheduler();
+	
+	while(1);
 }
 
 void kpanic_init()

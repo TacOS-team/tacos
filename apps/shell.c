@@ -127,6 +127,32 @@ static int exec_shell()
 	return 0;
 }
 
+static int sleep_shell()
+{
+	int time = 0;
+	scanf("%d", &time);
+	printf("Asleep for %d ms...\n", time);
+	usleep(time);
+	return 0;
+}
+
+int top(int argc, char** argv)
+{
+	disable_cursor(1);
+	while(1)
+	{
+		printf("\033[1;1H");
+		print_process_list();
+		sleep(1);
+	}
+}
+static int exec_top()
+{
+		exec(top,"top");
+		
+}
+
+
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	char buffer[80];
@@ -135,7 +161,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(date_cmd, "date");
 	add_builtin_cmd(cls_cmd, "clear");
 	add_builtin_cmd((func_ptr)pci_list, "lspci");
-	add_builtin_cmd((func_ptr)memory_print, "print_memory");
+	//add_builtin_cmd((func_ptr)memory_print, "print_memory");
 	add_builtin_cmd(test_mouse, "test_mouse");
 	add_builtin_cmd(test_scanf, "test_scanf");
 	add_builtin_cmd(test_fgets, "test_fgets");
@@ -144,23 +170,23 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_fread, "test_fread");
 	add_builtin_cmd(test_sprintf, "test_sprintf");
 	add_builtin_cmd((func_ptr)print_process_list, "ps");
-	add_builtin_cmd(test_sscanf, "test_sscanf");
+	/*add_builtin_cmd(test_sscanf, "test_sscanf");*/
 	//add_builtin_cmd(kmalloc_print_mem, "kmalloc_print_mem");
-	add_builtin_cmd((func_ptr)test_kmalloc, "test_kmalloc");
-	add_builtin_cmd((func_ptr)test_memory_reserve_page_frame, "test_reserve_frame");
+	/*add_builtin_cmd((func_ptr)test_kmalloc, "test_kmalloc");*/
+	/*add_builtin_cmd((func_ptr)test_memory_reserve_page_frame, "test_reserve_frame");*/
 	add_builtin_cmd(ls_cmd, "ls");
 	add_builtin_cmd(ll_cmd, "ll");
 	add_builtin_cmd((func_ptr)print_Boot_Sector, "mount");
 	add_builtin_cmd((func_ptr)print_working_dir, "pwd");
-	add_builtin_cmd(debug_fat, "debugfat");
-	add_builtin_cmd((func_ptr)clean_process_list, "clean_proclist");
+	/*add_builtin_cmd(debug_fat, "debugfat");*/
+	//add_builtin_cmd((func_ptr)clean_process_list, "clean_proclist");
 	add_builtin_cmd(kill_cmd, "kill");
-	add_builtin_cmd(test_ansi, "test_ansi");
+	/*add_builtin_cmd(test_ansi, "test_ansi");*/
 	add_builtin_cmd(cd_cmd, "cd");
 	add_builtin_cmd(cat_cmd, "cat");
-	add_builtin_cmd(cat_demo_cmd, "catdemo");
+	//add_builtin_cmd(cat_demo_cmd, "catdemo");
 	add_builtin_cmd(test_task, "test_task");
-	add_builtin_cmd(test_semaphores, "test_semaphores");
+	add_builtin_cmd(test_semaphores, "test_sem");
 	add_builtin_cmd(calc_pi, "pi");
 	add_builtin_cmd(exec_shell, "Mishell");
 	add_builtin_cmd(main_fiinou, "Fiinou");
@@ -172,6 +198,8 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(snake_main, "snake");
 	add_builtin_cmd(cube_launcher, "cube");
 	add_builtin_cmd(noxeyes, "noxeyes");
+	add_builtin_cmd(sleep_shell, "sleep");
+	add_builtin_cmd(exec_top, "top");
 	
 	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
 	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");
@@ -195,7 +223,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 		scanf("%s", buffer);
 		printf("\n");
 		if(exec_builtin_cmd(buffer) != 0)
-			printf("Commande introuvable.\n"); 
+			printf("commande introuvable.\n"); 
 		// Si on ne trouve pas la commande en builtin, on devrait alors chercher si y'a un executable qui correspond, dans un futur proche j'espere :p
 	}
 }

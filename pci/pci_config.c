@@ -33,6 +33,29 @@ uint32_t pci_read_register(uint8_t bus,
 	return reg_data;
 }
 
+uint32_t pci_write_register(uint8_t bus,
+			   uint8_t slot,
+			   uint8_t func,
+			   uint8_t reg,
+			   uint32_t value)
+{
+	uint32_t address;
+
+	uint32_t dw_bus = (uint32_t) bus;
+	uint32_t dw_slot = (uint32_t) slot;
+	uint32_t dw_func = (uint32_t) func;
+	uint32_t dw_reg = (uint32_t) reg; 
+
+	address = (uint32_t)((dw_bus << 16)	| 
+                             (dw_slot << 11)	|
+              		     (dw_func << 8)	| 
+                             (dw_reg & 0xfc)	|
+                             ((uint32_t)0x80000000));
+
+	outl(address, CONFIG_ADDRESS);
+	outl(value, CONFIG_DATA);
+}
+
 uint32_t pci_read_value(pci_function_p func, uint8_t reg, uint8_t offset, uint32_t mask)
 {
 	uint32_t tmp_reg;
@@ -136,11 +159,15 @@ void pci_print_info(pci_function_p func)
 void pci_print_detailed_info(pci_function_p func)
 {
 	uint32_t bar = 0;
+	int irq;
 	printf("Bus %x, Slot %x, Func %x:\n",func->bus, func->slot, func->function);
-	printf("      Device: %s (%s)\n",pci_get_device(func->bus,func->slot,func->function)->ChipDesc, 
-                                           pci_get_device(func->bus,func->slot,func->function)->Chip);
+	printf("      Device: %s: %s (%s)\n",		pci_get_vendor(func->bus,func->slot,func->function)->VenFull,
+											pci_get_device(func->bus,func->slot,func->function)->ChipDesc, 
+											pci_get_device(func->bus,func->slot,func->function)->Chip);
 
-	printf("      Vendor: %s\n",pci_get_vendor(func->bus,func->slot,func->function)->VenFull);
+	irq = pci_read_value(func, PCI_INTERRUPT_LINE);
+	if(irq!=0)
+		printf("      IRQ:%d\n", irq);
 	
 /*	printf("      Class: 0x%x 0x%x (0x%x)\n",pci_get_classcode(func->bus,func->slot,func->function)->SubClass,
    					       pci_get_classcode(func->bus,func->slot,func->function)->BaseClass,

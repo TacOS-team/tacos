@@ -1,3 +1,4 @@
+
 #include <types.h>
 #include <stdlib.h>
 #include <stdio.h> 
@@ -134,6 +135,8 @@ int create_process(char* name, paddr_t prog, uint32_t argc, char** argv, uint32_
 	
 	new_proc->user_time = 0;
 	new_proc->sys_time = 0;
+	new_proc->current_sample = 0;
+	new_proc->last_sample = 0;
 	
 	new_proc->pid = proc_count;
 	new_proc->regs.eax = 0;
@@ -197,7 +200,7 @@ void print_process_list()
 	int m;
 	int h;
 
-	printf("pid\tname\t\ttime\t\tstate\n");
+	printf("pid\tname\t\ttime\t\t%CPU\t\tstate\n");
 	while(aux!=NULL)
 	{
 		
@@ -214,7 +217,7 @@ void print_process_list()
 			printf("*");
 		}
 
-		printf("%d\t%s\t\t%dh %dm %ds\tstate:",aux->process->pid, aux->process->name, h, m ,s, aux->process->stdin);
+		printf("%d\t%s\t\t%dh %dm %ds\t%d\%\t",aux->process->pid, aux->process->name, h, m ,s, (int)(((float)aux->process->last_sample/(float)CPU_USAGE_SAMPLE_RATE)*100.f));
 		
 		switch(aux->process->state)
 		{
@@ -254,6 +257,17 @@ void clean_process_list()
 		}
 		else
 			temp = temp->next;
+	}
+}
+
+void sample_CPU_usage()
+{
+	proclist_cell* aux = process_list;
+	while(aux!=NULL)
+	{
+		aux->process->last_sample = aux->process->current_sample;
+		aux->process->current_sample = 0;
+		aux = aux->next;
 	}
 }
 
@@ -338,6 +352,8 @@ void* sys_kill(uint32_t pid, uint32_t zero1 __attribute__ ((unused)), uint32_t z
 	// Violent? OUI!
 	if (process != NULL)
 		process->state = PROCSTATE_TERMINATED;
+		
+	delete_process(process->pid);
 	
 	return NULL;
 }

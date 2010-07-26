@@ -51,15 +51,6 @@ void LPT1_routine(int id __attribute__ ((unused)))
   // XXX : avoid segment_not_present
 }
 
-int test_proc(int argc, char** argv)
-{
-	while(1){
-	sleep(1000);
-	printf("Plop!\n");
-	}
-}
-
-
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
 	kernel_options options;
@@ -93,6 +84,7 @@ void cmain (unsigned long magic, unsigned long addr) {
   
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
 	interrupt_set_routine(IRQ_LPT1, LPT1_routine, 0);
+
 	mouseInit();
 
 	floppy_init_interrupt();
@@ -127,6 +119,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	//mount_fat_fs ();
 	mount_FAT12 ();
 	
+	pci_scan();
 
 	kprintf("vm86:%d\n",check_vm86());
 	
@@ -142,6 +135,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_EXEC, (syscall_handler_t)sys_exec);
 	syscall_set_handler(SYS_SLEEP, (syscall_handler_t)sys_sleep);
 	syscall_set_handler(SYS_VIDEO_CTL, (syscall_handler_t)sys_video_ctl);
+	syscall_set_handler(SYS_SEMCTL, (syscall_handler_t)sys_ksem);
 	
 	// Création du processus par défaut: notre shell
 	create_process("Mishell", (paddr_t)shell,0,NULL,0x10000,3);
@@ -150,12 +144,13 @@ void cmain (unsigned long magic, unsigned long addr) {
 	events_init();
 	
 	/* Lancement du scheduler */
-	init_scheduler(10);
+	init_scheduler(5);
 
 	/* Initialisation des semaphores */
 	init_semaphores();
 	
 	start_scheduler();
+
 	// Never goes here	
 	while(1){}
 }
