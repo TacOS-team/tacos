@@ -1,4 +1,4 @@
-//      serial.c
+//      TACOS: serial.c
 //      
 //      Copyright 2010 Nicolas Floquet <nicolasfloquet@gmail.com>
 //      
@@ -18,7 +18,8 @@
 //      MA 02110-1301, USA.
 
 #include <ioports.h>
-#include "serial.h"
+#include <serial.h>
+#include "serial_masks.h"
 
 #define UART_CLOCK_FREQ	115200
 
@@ -61,7 +62,7 @@ static int set_baud_rate(serial_port port, unsigned int rate)
 		real_rate = UART_CLOCK_FREQ / divisor;
 		
 		lcr = read_register(port, LINE_CTRL);
-		write_register(port, LINE_CTRL, lcr | 0x80); /* Set DLAB */
+		write_register(port, LINE_CTRL, lcr | DLAB); /* Set DLAB */
 		
 		write_register(port, DL_LSB, (char)(divisor & 0x0F)); /* LSB */
 		write_register(port, DL_MSB, (char)((divisor & 0xF)>>8)); /* MSB */
@@ -129,16 +130,16 @@ static int set_protocol(serial_port port, char* protocol)
 			case 'N':
 				break; /* 000, autant ne rien faire */
 			case 'E':
-				reg_value |= (1 << 3); /* 001 = 1 */
+				reg_value |= EVEN_PARITY;
 				break;
 			case 'O':
-				reg_value |= (3 << 3); /* 011 = 3 */
+				reg_value |= ODD_PARITY; /* 011 = 3 */
 				break;
 			case 'M':
-				reg_value |= (5 << 3); /* 101 = 5 */
+				reg_value |= MARK_PARITY; /* 101 = 5 */
 				break;
 			case 'S':
-				reg_value |= (7 << 3); /* 111 = 7 */
+				reg_value |= SPACE_PARITY; /* 111 = 7 */
 				break;
 			default:
 				ret = -2;
@@ -152,7 +153,7 @@ static int set_protocol(serial_port port, char* protocol)
 			case '1': /* 0, autant ne rien faire */
 				break;
 			case '2':
-				reg_value |= (1<<2);
+				reg_value |= STOP_BIT;
 				break;
 			default:
 				ret = -3;
@@ -178,20 +179,23 @@ int serial_init(serial_port port, char* protocol, unsigned int bauds)
 	if(set_protocol(port, protocol) != 0)
 		ret = -1;
 	
-	write_register(port, FIFO_CTRL, 0xC7);
-	write_register(port, MODEM_CTRL, 0x0B);
+	/* Active la FIFO */
+	write_register(port, FIFO_CTRL, FIFO_ENABLE | 
+									RCVR_FIFO_RESET | 
+									XMIT_FIFO_RESET |
+									RCVR_TRIGGER_14);
 		
 	return ret;
 }
 
 
-static void write_char(serial_port port, char c)
+static void put_char(serial_port port, char c)
 {
-	while( !(read_register(port,LINE_STATUS) & 0x20));
+	while( !(read_register(port,LINE_STATUS) & THR_EMPTY));
 	
 	/* Le protocol série impose que le \n soit précédé d'un \r */
 	if(c == '\n')
-		write_char(port, '\r');
+		put_char(port, '\r');
 	
 	write_register(port, DATA, c);
 }
@@ -201,7 +205,7 @@ void debug_puts(serial_port port, char* string)
 	char* ptr = string;
 	while(*ptr!=0)
 	{
-		write_char(port, *ptr);
+		put_char(port, *ptr);
 		ptr++;
 	}
 }

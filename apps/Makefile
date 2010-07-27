@@ -53,4 +53,4 @@ tests.o: ../include/pagination.h ../include/stdio.h ../include/stdarg.h
 tests.o: ../include/stdlib.h ../include/string.h ../include/time.h
 tests.o: include/apps.h ../include/sem.h ../include/gui.h ../include/memory.h
 tests.o: ../include/video.h ../include/debug.h ../include/unistd.h
-tests.o: ../include/list.h
+tests.o: ../include/list.h ../include/serial.h
