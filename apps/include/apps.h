@@ -23,6 +23,7 @@ int test_fwrite();
 int test_fread();
 int test_sprintf();
 int test_sscanf();
+int test_write_serial();
 int debug_fat();
 int test_ansi();
 int snake_main();

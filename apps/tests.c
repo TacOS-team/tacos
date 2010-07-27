@@ -16,6 +16,7 @@
 #include <debug.h>
 #include <unistd.h>
 #include <list.h>
+#include <serial.h>
 
 static int color;
 
@@ -328,5 +329,17 @@ int test_ansi()
 	printf("\033[14;41H\033[35m===");
 	printf("\033[20;33H\033[37m===================\033[0m\n");
 	return 0;
+}
+
+int test_write_serial()
+{
+	char buffer[80];
+	printf("\nEntrez le message a envoyer vers COM1:");
+	fflush(stdout);
+	scanf("%s", buffer);
+	printf("(ctrl-alt-3 pour voir la console)\n");
+	
+	debug_puts(COM1, buffer);
+	debug_puts(COM1, "\n");
 }
 

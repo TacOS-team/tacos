@@ -5,7 +5,7 @@ SRCS=*/*.c
 
 all: libdrivers
 
-libdrivers: mouse/mouse.o keyboard/keyboard.o floppy/floppy.o floppy/floppy_interrupt.o floppy/floppy_utils.o floppy/floppy_motor.o floppy/floppy_dma.o beeper/beeper.o
+libdrivers: mouse/mouse.o keyboard/keyboard.o floppy/floppy.o floppy/floppy_interrupt.o floppy/floppy_utils.o floppy/floppy_motor.o floppy/floppy_dma.o beeper/beeper.o serial/serial.o
 	  $(AR) r ../lib/$@.a $^
 
 %.o: %.c
@@ -50,3 +50,4 @@ keyboard/keyboard.o: ../include/pagination.h ../include/video.h
 mouse/mouse.o: ../include/types.h ../include/stdio.h ../include/fcntl.h
 mouse/mouse.o: ../include/libio.h ../include/stdarg.h ../include/ioports.h
 mouse/mouse.o: ../include/mouse.h ../include/interrupts.h
+serial/serial.o: ../include/ioports.h ../include/serial.h ../include/types.h

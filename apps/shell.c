@@ -200,6 +200,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(noxeyes, "noxeyes");
 	add_builtin_cmd(sleep_shell, "sleep");
 	add_builtin_cmd(exec_top, "top");
+	add_builtin_cmd(test_write_serial, "write_serial");
 	
 	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
 	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");

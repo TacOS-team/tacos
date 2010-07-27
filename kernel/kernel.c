@@ -36,6 +36,7 @@
 #include <syscall.h>
 #include <ksem.h>
 #include <video.h>
+#include <serial.h>
 
 typedef struct
 {
@@ -122,6 +123,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 	pci_scan();
 
 	kprintf("vm86:%d\n",check_vm86());
+	
+	if(serial_init(COM1, "8N1", 38400) != 0)
+		kprintf("Erreur d'initialisation de COM1 \n");
 	
 	/* Initialisation des syscall */
 	init_syscall();
