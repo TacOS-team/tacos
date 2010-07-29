@@ -27,6 +27,8 @@
 #define IRQ_RESERVED_4      15
 #define IRQ_SYSCALL			16
 
+#include <types.h>
+
 typedef void (*interrupt_handler_t)(int interrupt_id);
 
 /** 

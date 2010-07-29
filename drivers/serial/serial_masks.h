@@ -29,8 +29,15 @@
 
 /* Interrupt identification register */
 #define INTERRUPT_PENDING		0x01
-#define INTERRUPT_ID(reg)		(reg&0x0E)>>1
+#define INTERRUPT_ID(reg)		(reg&0x0F)
 /* #define	FIFO_ENABLED(reg)		(reg&0xC0)>>6 */
+
+#define INT_NONE	0x1
+#define INT_RX_LINE_STATUS	0x6
+#define	INT_DATA_AVAILABLE	0x4
+#define	INT_CHAR_TIMEOUT	0xC
+#define	INT_THR_EMPTY		0x2
+#define	INT_MODEM_STATUS	0x0
 
 /* FIFO Control Register */
 #define FIFO_ENABLE		0x01

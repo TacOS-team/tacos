@@ -50,5 +50,7 @@ keyboard/keyboard.o: ../include/pagination.h ../include/video.h
 mouse/mouse.o: ../include/types.h ../include/stdio.h ../include/fcntl.h
 mouse/mouse.o: ../include/libio.h ../include/stdarg.h ../include/ioports.h
 mouse/mouse.o: ../include/mouse.h ../include/interrupts.h
-serial/serial.o: ../include/ioports.h ../include/serial.h ../include/types.h
+serial/serial.o: ../include/interrupts.h ../include/types.h
+serial/serial.o: ../include/ioports.h ../include/serial.h ../include/stdio.h
+serial/serial.o: ../include/fcntl.h ../include/libio.h ../include/stdarg.h
 serial/serial.o: serial/serial_masks.h

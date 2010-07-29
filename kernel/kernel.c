@@ -124,9 +124,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	kprintf("vm86:%d\n",check_vm86());
 	
-	if(serial_init(COM1, "8N1", 38400) != 0)
+	if(serial_init(COM1, "8N1", 38400, ECHO_ENABLED) != 0)
 		kprintf("Erreur d'initialisation de COM1 \n");
-	
+		
 	/* Initialisation des syscall */
 	init_syscall();
 	

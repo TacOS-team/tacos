@@ -17,9 +17,23 @@
 //      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 //      MA 02110-1301, USA.
 
+/* Suggestions de modifications:
+ * 1) Changer le comportement de serial_puts: là si le buffer est plein on arrete d'envoyer, c'est peu être pas idéal...
+ * 2) Ajuster la taille des buffer : Arrive-t-il qu'ils soient plein? trop souvent? jamais?
+ * 3) Améliorer la manière d'avoir toujours assez de place pour inserer le \r avant le \n (cf. macro TX_BUFFER_FULL)
+ */
+
+#include <interrupts.h>
 #include <ioports.h>
 #include <serial.h>
+#include <stdio.h>	
 #include "serial_masks.h"
+
+//#define _DEBUG_
+
+#define RX_BUFFER_SIZE	256
+#define TX_BUFFER_SIZE	256
+#define TX_FIFO_SIZE	16 /* D'après la datasheet du PC1550D, pas évident que ce soit le bon model */
 
 #define UART_CLOCK_FREQ	115200
 
@@ -28,7 +42,7 @@
 #define DL_LSB 				0
 #define INTERRUPT_ENABLE	1
 #define DL_MSB				1
-#define	INTERRUPT_ID		2
+#define	INTERRUPT_ID_REG	2
 #define FIFO_CTRL			2
 #define	LINE_CTRL			3
 #define MODEM_CTRL			4
@@ -39,11 +53,286 @@
 #define write_register(PORT,REG,DATA) outb(DATA,base_addr[PORT]+REG)
 #define read_register(PORT,REG) inb(base_addr[PORT]+REG)
 
+#define PRINT_ERROR(source) kprintf("SERIAL_DRIVER Error:%s.\n",source)
+
+#ifdef _DEBUG_
+	#define DEBUG_MESSAGE(message) kprintf("SERIAL_DEBUG:%s.\n", message)
+#else
+	#define DEBUG_MESSAGE(message)
+#endif
+
+
+/***************************************
+ * 
+ * PROTOTYPES
+ *
+ **************************************/
+ 
+void serial_isr(int id);
+static int set_baud_rate(serial_port port, unsigned int rate);
+static int set_protocol(serial_port port, char* protocol);
+
+/**************************************
+ * 
+ * DECLARATIONS GLOBALES
+ * 
+ **************************************/
+
 /* Adresses de base pour chaque port COM 
  * NOTE: Les ports COM3 et COM4 sont rares, et leurs adresses de base ne sont pas standards 
  */
 static const uint32_t base_addr[] = {0x03F8, 0x02F8, 0x03E8, 0x02E8};
+static uint8_t	flags_array[] = { 0, 0, 0, 0 };
 
+/* Buffers de communication:
+ * On va s'en servir comme buffer circulaire, il faut donc un pointeur de début et de fin pour chacun
+ */
+static char rx_buffer[4][RX_BUFFER_SIZE];
+static int rx_start[4];
+static int rx_end[4];
+static int rx_size[4];
+#define RX_BUFFER_FULL(port) ((rx_size[port] == RX_BUFFER_SIZE)?1:0)
+
+static char tx_buffer[4][TX_BUFFER_SIZE];
+static int tx_start[4];
+static int tx_end[4];
+static int tx_size[4];
+
+/* Petit hack pour permettre d'avoir toujours la place pour inserer un \r avant le \n */
+#define TX_BUFFER_FULL(port) ((tx_size[port] == TX_BUFFER_SIZE-1)?1:0)
+
+
+
+/**************************************
+ * 
+ * FONCTIONS
+ * 
+ **************************************/
+
+
+int serial_init(serial_port port, char* protocol, unsigned int bauds, int flags)
+{
+	int ret = 0;
+	
+	DEBUG_MESSAGE("serial_puts");
+	
+	/* Désactive les interruptions */
+	write_register(port, INTERRUPT_ENABLE, 0x00);
+		
+	/* Configuration du controleur */
+	if(set_baud_rate(port, bauds) == 0)
+		ret = -1;
+		
+	if(set_protocol(port, protocol) != 0)
+		ret = -1;
+	
+	/* Active la FIFO */
+	write_register(port, FIFO_CTRL, FIFO_ENABLE 	| 
+									RCVR_FIFO_RESET | 
+									XMIT_FIFO_RESET |
+									RCVR_TRIGGER_14);
+									
+	/* On note quelque part qu'on a bien initialisé le controleur */
+	flags_array[port] = ret?0:1;
+	flags_array[port] |= flags;
+	
+	/* On initialise les buffers du port */
+	rx_start[port] = 0;
+	tx_start[port] = 0;
+	rx_end[port] = 0;
+	tx_end[port] = 0;
+	rx_size[port] = 0; 
+	tx_size[port] = 0;
+	
+	/* On initialise l'ISR */
+	interrupt_set_routine(IRQ_COM1, serial_isr, 0);
+	
+	/* Active les interruption (DEBUG) 
+	 * Note: A l'initialisation on n'active que l'interruption de 
+	 * réception, celle de transmission sera activée quand on voudra
+	 * envoyer des données.
+	 */
+	write_register(port, INTERRUPT_ENABLE,	ERBFI); /* Cf. serial_mask.h */
+		
+	return ret;
+}
+
+static void put_char(serial_port port, char c)
+{
+	while( !(read_register(port,LINE_STATUS) & THR_EMPTY));
+	write_register(port, DATA, c);
+}
+
+int serial_putc(serial_port port, char c)
+{
+	int ret = 0;
+	char ier = read_register(port, INTERRUPT_ENABLE);
+	if(!TX_BUFFER_FULL(port))
+	{
+		if(c == '\n')
+		{
+			tx_buffer[port][tx_end[port]] = '\r';
+			
+			tx_size[port]++;
+			tx_end[port] = (tx_end[port]+1)%TX_BUFFER_SIZE;
+		}
+				
+		tx_buffer[port][tx_end[port]] = c;
+
+		tx_size[port]++;
+		tx_end[port] = (tx_end[port]+1)%TX_BUFFER_SIZE;	
+		ret = 1;
+	}
+	
+	/* On active l'interruption de transmission si c'est pas déja le cas */
+	if(!(ier & ETBEI))
+	{
+		ier |= ETBEI;
+		write_register(port, INTERRUPT_ENABLE, ier);
+	}
+	
+	return ret;
+}
+	
+
+int serial_puts(serial_port port, char* string)
+{
+	int i = 0;
+	char* ptr = string;
+
+	
+	DEBUG_MESSAGE("serial_puts");
+	
+	/* On va dire que si le buffer est plein on arrête, on pourrait très bien faire autrement */
+	while(*ptr!=0)
+	{
+		i += serial_putc(port, *ptr);
+		ptr++;
+	}
+		return i;
+}
+
+int serial_gets(serial_port port, char* buffer, unsigned int size)
+{
+	char* ptr = buffer;
+	int i = 0;
+	
+	/* Disons qu'on sera bloquant en lecture */
+	while(rx_size[port]==0){}
+	
+	while(i<size-1 && rx_size[port] > 0)
+	{
+		*ptr = rx_buffer[port][rx_start[port]];
+		
+		rx_size[i]--;
+		rx_start[i] = (rx_start[i]+1)%RX_BUFFER_SIZE;	
+		
+		ptr++;
+	}
+	return i;
+}
+void serial_echo(serial_port port, char c)
+{
+	switch(c)
+	{
+		case 0xd:
+			serial_putc(port, '\n');
+			break;
+		case 0x7f: /* Backspace ??? */
+			//serial_putc(port, ???);
+			break;
+		default:
+			serial_putc(port, c);
+	}
+}
+
+void serial_isr(int id)
+{
+	int interrupt_identifier = 0;
+	int i_id;
+	char temp_read;
+	int i;
+	int counter;
+	
+	/* On traite l'interruption pour chaque port com initialisé */
+	for(i = 0; i<4; i++)
+	{
+		if(flags_array[i]& 0x1)
+		{
+				interrupt_identifier = read_register(i, INTERRUPT_ID_REG);
+
+				
+				/* Si une interruption a été levée sur ce port, on la traite */
+				if(interrupt_identifier & INTERRUPT_PENDING || 1)
+				{
+					i_id = INTERRUPT_ID(interrupt_identifier);
+					switch(i_id)
+					{	
+							case INT_NONE:
+								PRINT_ERROR("None interrupt");
+								break;
+							case INT_RX_LINE_STATUS:
+								temp_read = read_register(i, LINE_STATUS);
+								PRINT_ERROR("Line status interrupt");
+								break;
+							case INT_DATA_AVAILABLE:			/* Que ce soit en data available ou en timeout, il faut récupérer les données dans le buffer si possible */
+								DEBUG_MESSAGE("Data received.");
+							case INT_CHAR_TIMEOUT:
+								DEBUG_MESSAGE("Char timeout");
+								while(read_register(i, LINE_STATUS) & DATA_READY)
+								{
+									/* Si il reste de la place dans le buffer, on écrit dedans */
+									if(!RX_BUFFER_FULL(i))
+									{
+										temp_read = read_register(i, DATA);
+										rx_buffer[i][rx_end[i]] = temp_read;
+										
+										rx_size[i]++;
+										rx_end[i] = (rx_end[i]+1)%RX_BUFFER_SIZE; /* Tampon circulaire */
+										
+										if(flags_array[i] & ECHO_ENABLED)
+											serial_echo(i, temp_read);
+									}
+									else
+										PRINT_ERROR("Rx buffer full");
+								}
+								break;
+							case INT_THR_EMPTY:
+								
+								/* Si on a des choses à envoyer, on les envoit */
+								if(tx_size[i]>0)
+								{
+									DEBUG_MESSAGE("TX=>send");
+									counter = 0;
+									while(counter < TX_FIFO_SIZE && tx_size[i]>0)
+									{
+										
+										put_char(i, tx_buffer[i][tx_start[i]]);	
+										tx_size[i]--;
+										tx_start[i] = (tx_start[i]+1)%TX_BUFFER_SIZE;
+										counter++;
+									}
+								}
+								else /* Sinon on désactive l'interruption de transmission */
+								{
+									DEBUG_MESSAGE("TX=>closing");
+									temp_read = read_register(i, INTERRUPT_ENABLE);
+									temp_read &= (~ETBEI);
+									write_register(i, INTERRUPT_ENABLE, temp_read);
+								}
+								break;
+							case INT_MODEM_STATUS:
+								PRINT_ERROR("Modem status");
+								break;
+							default:
+								PRINT_ERROR("Unknown interrupt");
+								break;
+								
+						}
+					}
+			}
+	}
+}
 
 /* Initialise le diviseur de fréquence de l'UART pour avoir le bon baud
  * Retourne la fréquence effective (après arrondis)
@@ -55,6 +344,7 @@ static int set_baud_rate(serial_port port, unsigned int rate)
 	uint32_t divisor = 0;
 	uint32_t real_rate = 0;
 	
+	DEBUG_MESSAGE("set_baud_rate");
 	/* On vérifie que la fréquence demandée est réalisable */
 	if(rate != 0 && rate <= UART_CLOCK_FREQ)
 	{
@@ -117,6 +407,8 @@ static int set_protocol(serial_port port, char* protocol)
 	
 	char reg_value = 0;
 	
+	DEBUG_MESSAGE("set_set_protocol");
+	
 	if(nb_bits >= '5' && nb_bits <= '8')
 	{
 		reg_value = nb_bits - '5';
@@ -159,54 +451,10 @@ static int set_protocol(serial_port port, char* protocol)
 				ret = -3;
 		}
 	}
-	kprintf("LCR = 0x%x\n",reg_value);
+	
 	if(ret == 0)
 		write_register(port, LINE_CTRL, reg_value);
 		
 	return ret;
-}
-
-int serial_init(serial_port port, char* protocol, unsigned int bauds)
-{
-	int ret = 0;
-	
-	/* Désactive les interruptions */
-	write_register(port, INTERRUPT_ENABLE, 0x00);
-		
-	if(set_baud_rate(port, bauds) == 0)
-		ret = -1;
-		
-	if(set_protocol(port, protocol) != 0)
-		ret = -1;
-	
-	/* Active la FIFO */
-	write_register(port, FIFO_CTRL, FIFO_ENABLE | 
-									RCVR_FIFO_RESET | 
-									XMIT_FIFO_RESET |
-									RCVR_TRIGGER_14);
-		
-	return ret;
-}
-
-
-static void put_char(serial_port port, char c)
-{
-	while( !(read_register(port,LINE_STATUS) & THR_EMPTY));
-	
-	/* Le protocol série impose que le \n soit précédé d'un \r */
-	if(c == '\n')
-		put_char(port, '\r');
-	
-	write_register(port, DATA, c);
-}
-
-void debug_puts(serial_port port, char* string)
-{
-	char* ptr = string;
-	while(*ptr!=0)
-	{
-		put_char(port, *ptr);
-		ptr++;
-	}
 }
 	

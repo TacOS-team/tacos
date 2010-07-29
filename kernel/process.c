@@ -200,7 +200,7 @@ void print_process_list()
 	int m;
 	int h;
 
-	printf("pid\tname\t\ttime\t\t%CPU\t\tstate\n");
+	printf("pid\tname\t\ttime\t\t%CPU\tstate\n");	
 	while(aux!=NULL)
 	{
 		
@@ -216,7 +216,7 @@ void print_process_list()
 		if (aux->process == active_process) {
 			printf("*");
 		}
-
+		
 		printf("%d\t%s\t\t%dh %dm %ds\t%d\%\t",aux->process->pid, aux->process->name, h, m ,s, (int)(((float)aux->process->last_sample/(float)CPU_USAGE_SAMPLE_RATE)*100.f));
 		
 		switch(aux->process->state)

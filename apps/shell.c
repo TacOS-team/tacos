@@ -14,6 +14,7 @@
 #include <sem.h>
 #include <video.h>
 #include <debug.h>
+#include <serial.h>
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
 
@@ -152,6 +153,25 @@ static int exec_top()
 		
 }
 
+void print_logo()
+{
+	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
+	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");
+	printf("    _|    _|    _|  _|        _|    _|    _|_|  \n");
+	printf("    _|    _|    _|  _|        _|    _|        _|\n");
+	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
+	printf("(codename:fajitas)\n\n\n");
+}
+
+void print_logo_serial()
+{
+	serial_puts(COM1, "_|_|_|_|_|                      _|_|      _|_|_|\n");
+	serial_puts(COM1, "    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");
+	serial_puts(COM1, "    _|    _|    _|  _|        _|    _|    _|_|  \n");
+	serial_puts(COM1, "    _|    _|    _|  _|        _|    _|        _|\n");
+	serial_puts(COM1, "    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
+	serial_puts(COM1, "(codename:fajitas)\n\n\n");
+}
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
@@ -201,15 +221,12 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(sleep_shell, "sleep");
 	add_builtin_cmd(exec_top, "top");
 	add_builtin_cmd(test_write_serial, "write_serial");
-	
-	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
-	printf("    _|      _|_|_|    _|_|_|  _|    _|  _|      \n");
-	printf("    _|    _|    _|  _|        _|    _|    _|_|  \n");
-	printf("    _|    _|    _|  _|        _|    _|        _|\n");
-	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
-	printf("(codename:fajitas)\n\n\n");
+	add_builtin_cmd(test_read_serial, "read_serial");
 
 	disable_cursor(0);
+	
+	print_logo();
+	print_logo_serial();
 
 	for(;;)
 	{

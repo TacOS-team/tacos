@@ -70,11 +70,22 @@ int exec_builtin_cmd(char* name)
 void show_builtin_cmd()
 {
 	cmd_list_cell* aux = cmd_list;
-	printf("Liste des commandes du shell:\n");
-	while(aux->next != NULL)
+	printf("Liste des commandes du shell:\n\n");
+	int i= 1;
+	while(aux != NULL)
 	{
-		printf("%s, ",aux->cmd.name);
+		if(i==0)
+		{
+			i = 1;
+			printf("%s\n",aux->cmd.name);
+		}
+		else
+		{
+			i = (i+1)%3;
+			printf(" %s\t",aux->cmd.name);
+			if(strlen(aux->cmd.name) < 7)
+				printf("\t");
+		}
 		aux = aux->next;	
 	}
-	printf(" %s.\n",aux->cmd.name);
 }

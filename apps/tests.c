@@ -111,8 +111,8 @@ int test_semaphores()
 	int semid2 = semcreate(42); 
 	semP(semid1);
 
-	exec(sem_t1,"sem1");
-	exec(sem_t2,"sem2");
+	exec(sem_t1,"ping");
+	exec(sem_t2,"pong");
 	
 	return 0;
 }
@@ -331,15 +331,39 @@ int test_ansi()
 	return 0;
 }
 
-int test_write_serial()
+int proc_write_serial(int argc, char** argv)
 {
 	char buffer[80];
-	printf("\nEntrez le message a envoyer vers COM1:");
-	fflush(stdout);
-	scanf("%s", buffer);
-	printf("(ctrl-alt-3 pour voir la console)\n");
+	printf(">");
+	while(1)
+	{
+		
+		fflush(stdout);
+		scanf("%s",buffer);
 	
-	debug_puts(COM1, buffer);
-	debug_puts(COM1, "\n");
+		serial_puts(COM1, buffer);
+		serial_putc(COM1, ' ');
+	}
 }
 
+int test_write_serial(int argc, char** argv)
+{
+	exec(proc_write_serial, "wserial");
+}
+
+int proc_read_serial(int argc, char** argv)
+{
+	char buffer[64];
+	
+	while(1)
+	{
+		serial_gets(COM1, buffer, 64);
+		printf("%s",buffer);
+		fflush(stdout);
+	}
+}
+
+int test_read_serial(int argc, char** argv)
+{
+	exec(proc_read_serial, "rserial");
+}
