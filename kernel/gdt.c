@@ -106,7 +106,6 @@ static struct x86_segment_descriptor gdt[] = {
 		.operation_size = 1,
 		.granularity = 1
 	}
-	/* Peut être aussi pour la stack ? à voir... */
 };
 
 /*

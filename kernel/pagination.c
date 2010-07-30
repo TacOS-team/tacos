@@ -83,6 +83,7 @@ void pagination_setup() {
 	asm volatile("mov %%cr0, %0": "=b"(cr0));
 	cr0 |= 0x80000000;
 	asm volatile("mov %0, %%cr0":: "b"(cr0));
+	
 }
 
 void pagination_init_page_directory(struct page_directory_entry * pd) {

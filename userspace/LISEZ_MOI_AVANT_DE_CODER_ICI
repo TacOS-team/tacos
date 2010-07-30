@@ -1,0 +1,7 @@
+/!\ ATTENTION /!\
+-----------------
+
+Avant d'ajouter quoi que ce soit ici, vérifier qu'AUCUN programme ne 
+fait appel à une fonction du kernel, et qu'aucun header provenant
+d'en dehors de ce répertoire ne soit inclu ici.
+La seule interface utilisable avec le kernel sont les syscall.

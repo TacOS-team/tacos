@@ -179,20 +179,25 @@ int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 
 int test_task1(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
+	//while(1);
 	int pid = get_pid();
-
-	printf("Task %d\n",pid);
 	
-	while(1) {
-	usleep(333);
-	printf("LOL\n");
-	}
+	while(1)
+		printf("Task 1\n",pid);
+	
 	return 0;
 }
 
+uint32_t program[20];
+
 int test_task()
 {
-	exec(test_task1, "test1");
+	//create_process_test("test",(paddr_t)test_task1, 0, NULL, 0x100,0x100,3);
+	/*create_process("test",(paddr_t)test_task1, 0, NULL,0x100,3);*/
+	memcpy(program, test_task, 10*sizeof(uint32_t));
+	int (*pp)(int argc, char** argv);
+	pp = program;
+	pp(0, NULL);
 	return 0;
 }
 

@@ -260,11 +260,7 @@ void* sleep_callback( void* data )
 	proc->state = PROCSTATE_RUNNING;
 	return NULL;
 }
-void dummy1()
-{
-	int a = 1;
-	a *= a;
-}
+
 void* sys_sleep( uint32_t delay,uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
 {
 	/* Désactivation de l'ordonnanceur */

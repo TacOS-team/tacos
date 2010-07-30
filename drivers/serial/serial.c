@@ -1,27 +1,29 @@
-//      TACOS: serial.c
-//      
-//      Copyright 2010 Nicolas Floquet <nicolasfloquet@gmail.com>
-//      
-//      This program is free software; you can redistribute it and/or modify
-//      it under the terms of the GNU General Public License as published by
-//      the Free Software Foundation; either version 2 of the License, or
-//      (at your option) any later version.
-//      
-//      This program is distributed in the hope that it will be useful,
-//      but WITHOUT ANY WARRANTY; without even the implied warranty of
-//      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//      GNU General Public License for more details.
-//      
-//      You should have received a copy of the GNU General Public License
-//      along with this program; if not, write to the Free Software
-//      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-//      MA 02110-1301, USA.
+/*      TACOS: serial.c
+ *      
+ *		Copyright 2010 Nicolas Floquet <nicolasfloquet@gmail.com>
+ *      
+ *      This program is free software; you can redistribute it and/or modify
+ *      it under the terms of the GNU General Public License as published by
+ *      the Free Software Foundation; either version 2 of the License, or
+ *      (at your option) any later version.
+ *      
+ *      This program is distributed in the hope that it will be useful,
+ *      but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *      GNU General Public License for more details.
+ *      
+ *      You should have received a copy of the GNU General Public License
+ *      along with this program; if not, write to the Free Software
+ *      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ *      MA 02110-1301, USA.
+ */
 
-/* Suggestions de modifications:
+/* TODO: Suggestions de modifications:
  * 1) Changer le comportement de serial_puts: là si le buffer est plein on arrete d'envoyer, c'est peu être pas idéal...
  * 2) Ajuster la taille des buffer : Arrive-t-il qu'ils soient plein? trop souvent? jamais?
  * 3) Améliorer la manière d'avoir toujours assez de place pour inserer le \r avant le \n (cf. macro TX_BUFFER_FULL)
- */
+ * 4) Remplacer l'attente active par une attente passive avec sémaphores donc 
+ * */
 
 #include <interrupts.h>
 #include <ioports.h>
@@ -138,11 +140,13 @@ int serial_init(serial_port port, char* protocol, unsigned int bauds, int flags)
 	
 	/* On initialise les buffers du port */
 	rx_start[port] = 0;
-	tx_start[port] = 0;
 	rx_end[port] = 0;
-	tx_end[port] = 0;
-	rx_size[port] = 0; 
+	rx_size[port] = 0;
+	
+	tx_start[port] = 0;
+	tx_end[port] = 0; 
 	tx_size[port] = 0;
+	
 	
 	/* On initialise l'ISR */
 	interrupt_set_routine(IRQ_COM1, serial_isr, 0);
@@ -209,7 +213,7 @@ int serial_puts(serial_port port, char* string)
 		i += serial_putc(port, *ptr);
 		ptr++;
 	}
-		return i;
+	return i;
 }
 
 int serial_gets(serial_port port, char* buffer, unsigned int size)
@@ -231,6 +235,8 @@ int serial_gets(serial_port port, char* buffer, unsigned int size)
 	}
 	return i;
 }
+
+/* TODO: Finir ça */
 void serial_echo(serial_port port, char c)
 {
 	switch(c)
@@ -239,7 +245,7 @@ void serial_echo(serial_port port, char c)
 			serial_putc(port, '\n');
 			break;
 		case 0x7f: /* Backspace ??? */
-			//serial_putc(port, ???);
+			serial_putc(port, 0x8);
 			break;
 		default:
 			serial_putc(port, c);

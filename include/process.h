@@ -62,6 +62,9 @@ typedef struct _proclist_cell{
 	struct _proclist_cell* prev;
 }*proc_list, proclist_cell;
 
+/* Temporaire */
+int create_process_test(char* name, paddr_t prog, uint32_t argc, char** argv, uint32_t prog_size, uint32_t stack_size, uint8_t ring __attribute__ ((unused)));
+
 /** 
 * @brief Crée un nouveau processus.
 * Crée un nouveau processus et l'ajoute à la liste des processus avec un état d'exécution PROCSTATE_IDLE.

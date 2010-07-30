@@ -104,6 +104,98 @@ int delete_process(int pid)
 	return 0;
 }
 
+/* Procédure pour créer un processus, mais cette fois ci en copiant le programme dans une zone mémoire bien définie: tout le monde dit wahou */
+int create_process_test(char* name, paddr_t prog, uint32_t argc, char** argv, uint32_t prog_size, uint32_t stack_size, uint8_t ring __attribute__ ((unused)))
+{
+	uint32_t *prog_memory;
+	uint32_t *sys_stack, *user_stack;
+	process_t* new_proc;
+	int i;
+	
+	new_proc = kmalloc(sizeof(process_t));
+	if( new_proc == NULL )
+	{
+		kprintf("create_process: impossible de reserver la memoire pour le nouveau processus.\n");
+		return -1;
+	}
+	new_proc->name = strdup(name);
+	
+	/* Au lieu de faire plein de mallocs, on va en faire un pour allouer la mémoire nécessaire au programme (code + piles) 
+	 * Pour le moment on fait PROGRAMME | PILE UTILISATEUR | PILE_SYSTEME
+	 * J'ai aucune idée de là ou doit se trouver la pile système en réalité (enfin, est-ce que ça pose un problème de la mettre la?)
+	 * Note: Je pense que quand on voudra charger des exécutables (ELF par exemple), il faudra alouer ici les differents section(BSS,TEXT,CODE etc...)
+	 */
+
+	prog_memory = kmalloc( (prog_size + 2*stack_size) * sizeof(uint32_t));
+	if( new_proc == NULL )
+	{
+		kprintf("create_process: impossible de reserver la memoire pour exécuter %s\n",new_proc->name);
+		return -1;
+	}
+	
+	/* On copie les instruction là où on a réservé la mémoire */
+	memcpy(prog_memory,(const void*) prog, prog_size * sizeof(uint32_t));
+	
+	/* Par simplicité on note quelque part les positions des piles: */
+	sys_stack = prog_memory + prog_size;
+	user_stack = sys_stack + stack_size;
+	
+	new_proc->user_time = 0;
+	new_proc->sys_time = 0;
+	new_proc->current_sample = 0;
+	new_proc->last_sample = 0;
+	
+	new_proc->pid = proc_count;
+	new_proc->regs.eax = 0;
+	new_proc->regs.ebx = 0;
+	new_proc->regs.ecx = 0;
+	new_proc->regs.edx = 0;
+
+	new_proc->regs.cs = 0x1B;
+	new_proc->regs.ds = 0x23;
+	new_proc->regs.ss = 0x23;
+	
+	new_proc->regs.eflags = 0;
+	new_proc->regs.eip = prog_memory;
+	new_proc->regs.esp = (vaddr_t)(user_stack)+stack_size-3;
+	new_proc->regs.ebp = new_proc->regs.esp;
+	
+	new_proc->kstack.ss0 = 0x10;
+	new_proc->kstack.esp0 = (vaddr_t)(sys_stack)+stack_size-1;
+	
+	new_proc->state = PROCSTATE_IDLE;
+	
+	/* Initialisation de la pile du processus */
+	user_stack[stack_size-1]=(vaddr_t)argv;
+	user_stack[stack_size-2]=argc;
+	user_stack[stack_size-3]=(vaddr_t)exit;
+	 
+	// Ne devrait pas utiliser kmalloc. Cf remarque suivante.
+	//new_proc->pd = kmalloc(sizeof(struct page_directory_entry));
+	//pagination_init_page_directory_from_current(new_proc->pd);
+
+	// Passer l'adresse physique et non virtuelle ! Attention, il faut que ça 
+	// soit contigü en mémoire physique et aligné dans un cadre...
+	//pagination_load_page_directory(new_proc->pd);
+
+	for(i=0;i<FOPEN_MAX;i++) 
+		new_proc->fd[i].used = FALSE;
+		
+	/* Initialisation des entrées/sorties standards */
+	init_stdfiles(&new_proc->stdin, &new_proc->stdout, &new_proc->stderr);
+	init_stdfd(&(new_proc->fd[0]), &(new_proc->fd[1]), &(new_proc->fd[2]));
+	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
+	proc_count++;
+
+	add_process(new_proc);
+	
+	active_process = new_proc;
+	if (active_process->fd[1].used) {
+		focus((text_window *)(active_process->fd[1].ofd->extra_data));
+	}
+
+	return new_proc->pid;
+}
 
 int create_process(char* name, paddr_t prog, uint32_t argc, char** argv, uint32_t stack_size, uint8_t ring __attribute__ ((unused)))
 {
