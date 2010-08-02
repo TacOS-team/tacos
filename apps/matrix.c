@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <process.h>
 
 int main_matrix(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unused)))
 {
@@ -27,13 +28,13 @@ int main_matrix(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((
 
 		// usleep plante, mais en même temps, il n'utilise même pas de syscall...
 		//usleep(1000);
-		for(i = 0; i < 1000000; i++);
+		for(i = 0; i < 100000; i++);
 	}
 }
 
 
 int launch_matrix()
 {
-	exec(main_matrix, "matrix");
+	exec((paddr_t)main_matrix, "matrix");
 	return 0;
 }

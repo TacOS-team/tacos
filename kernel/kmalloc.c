@@ -185,7 +185,7 @@ int kfree(void *p)
   return 0;
 }
 
-static void print_mem(struct mem* m, bool free)
+static void print_mem(struct mem* m, bool free __attribute__ ((unused)))
 {
  // set_attribute(BLACK, free ? GREEN : RED);
   printf("[%x ; %d ; %x ; %x] ", m, m->size,  m->prev, m->next);
@@ -202,7 +202,7 @@ void kmalloc_print_mem()
 
   printf("\n-- kmalloc : printing heap --\n");
 
-	int i = 0;
+	/*int i = 0;*/
   while(free_it != NULL && allocated_it != NULL)
   {
     if(free_it < allocated_it)

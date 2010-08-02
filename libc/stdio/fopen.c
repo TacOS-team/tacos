@@ -52,7 +52,8 @@ FILE *fopen(const char *path, const char *mode) {
 	return stream;
 }
 
-FILE *fdopen(int fd, const char *mode) {
+/* TODO Enlever les attributes quand la fonction sera codée... */
+FILE *fdopen(int fd __attribute__ ((unused)), const char *mode __attribute__ ((unused))) {
 	return NULL;
 }
 

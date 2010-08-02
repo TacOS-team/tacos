@@ -24,11 +24,12 @@ int test_fread();
 int test_sprintf();
 int test_sscanf();
 int test_write_serial();
-int test_read_serial(int argc, char** argv);
+int test_read_serial();
 int debug_fat();
 int test_ansi();
 int snake_main();
 int cube_launcher();
 int noxeyes(); 
+int test_elf();
 
 #endif //APPS_H

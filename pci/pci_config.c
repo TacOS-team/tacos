@@ -54,6 +54,7 @@ uint32_t pci_write_register(uint8_t bus,
 
 	outl(address, CONFIG_ADDRESS);
 	outl(value, CONFIG_DATA);
+	return 0; /* TODO bonne valeur de retour */
 }
 
 uint32_t pci_read_value(pci_function_p func, uint8_t reg, uint8_t offset, uint32_t mask)

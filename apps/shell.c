@@ -15,6 +15,7 @@
 #include <video.h>
 #include <debug.h>
 #include <serial.h>
+#include <unistd.h>
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
 
@@ -124,7 +125,7 @@ static int cls_cmd() {
 
 static int exec_shell()
 {
-	exec(shell, "Mishell"); // XXX: exec est défini dans le kernel...
+	exec((paddr_t)shell, "Mishell"); // XXX: exec est défini dans le kernel...
 	return 0;
 }
 
@@ -137,7 +138,7 @@ static int sleep_shell()
 	return 0;
 }
 
-int top(int argc, char** argv)
+int top(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	disable_cursor(1);
 	while(1)
@@ -149,8 +150,8 @@ int top(int argc, char** argv)
 }
 static int exec_top()
 {
-		exec(top,"top");
-		
+		exec((paddr_t)top,"top");
+		return 0;
 }
 
 void print_logo()
@@ -198,13 +199,13 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(ll_cmd, "ll");
 	add_builtin_cmd((func_ptr)print_Boot_Sector, "mount");
 	add_builtin_cmd((func_ptr)print_working_dir, "pwd");
-	/*add_builtin_cmd(debug_fat, "debugfat");*/
-	//add_builtin_cmd((func_ptr)clean_process_list, "clean_proclist");
+	add_builtin_cmd(debug_fat, "debugfat");
+	add_builtin_cmd((func_ptr)clean_process_list, "clean_proclist");
 	add_builtin_cmd(kill_cmd, "kill");
-	/*add_builtin_cmd(test_ansi, "test_ansi");*/
+	add_builtin_cmd(test_ansi, "test_ansi");
 	add_builtin_cmd(cd_cmd, "cd");
 	add_builtin_cmd(cat_cmd, "cat");
-	//add_builtin_cmd(cat_demo_cmd, "catdemo");
+	add_builtin_cmd(cat_demo_cmd, "catdemo");
 	add_builtin_cmd(test_task, "test_task");
 	add_builtin_cmd(test_semaphores, "test_sem");
 	add_builtin_cmd(calc_pi, "pi");
@@ -222,6 +223,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(exec_top, "top");
 	add_builtin_cmd(test_write_serial, "write_serial");
 	add_builtin_cmd(test_read_serial, "read_serial");
+	add_builtin_cmd(test_elf, "test_elf");
 
 	disable_cursor(0);
 	

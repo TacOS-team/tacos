@@ -745,7 +745,7 @@ int main_pres(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((un
 
 int launch_pres()
 {
-	exec(main_pres, "PPT");
+	exec((paddr_t)main_pres, "PPT");
 	return 0;
 }
 

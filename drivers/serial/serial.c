@@ -219,7 +219,7 @@ int serial_puts(serial_port port, char* string)
 int serial_gets(serial_port port, char* buffer, unsigned int size)
 {
 	char* ptr = buffer;
-	int i = 0;
+	uint32_t i = 0;
 	
 	/* Disons qu'on sera bloquant en lecture */
 	while(rx_size[port]==0){}
@@ -252,7 +252,7 @@ void serial_echo(serial_port port, char c)
 	}
 }
 
-void serial_isr(int id)
+void serial_isr(int id __attribute__ ((unused)))
 {
 	int interrupt_identifier = 0;
 	int i_id;

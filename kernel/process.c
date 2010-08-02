@@ -156,7 +156,7 @@ int create_process_test(char* name, paddr_t prog, uint32_t argc, char** argv, ui
 	new_proc->regs.ss = 0x23;
 	
 	new_proc->regs.eflags = 0;
-	new_proc->regs.eip = prog_memory;
+	new_proc->regs.eip = (uint32_t) prog_memory;
 	new_proc->regs.esp = (vaddr_t)(user_stack)+stack_size-3;
 	new_proc->regs.ebp = new_proc->regs.esp;
 	
@@ -421,7 +421,7 @@ void* sys_exit(uint32_t ret_value __attribute__ ((unused)), uint32_t zero1 __att
 	// On a pas forcement envie de supprimer le processus immédiatement
 	current->state = PROCSTATE_TERMINATED; 
 	
-	//kprintf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
+	kprintf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
 
 	if (current == active_process) {
 		change_active_process();
@@ -450,6 +450,14 @@ void* sys_kill(uint32_t pid, uint32_t zero1 __attribute__ ((unused)), uint32_t z
 	return NULL;
 }
 
+void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)))
+{
+	char ** argv = (char **) kmalloc(sizeof(char*));
+	argv[0] = strdup(name);
+	create_process(name, prog, 1, argv, 0x1000, 3);
+	return NULL;
+}
+
 /* A mettre en user space */
 void exit(uint32_t value)
 { 
@@ -468,3 +476,9 @@ void kill(uint32_t pid)
 {
 	syscall(SYS_KILL,pid,0,0);
 }
+
+void exec(paddr_t prog, char* name)
+{
+	syscall(SYS_EXEC, (uint32_t)prog, (uint32_t)name, (uint32_t)NULL);
+}
+

@@ -17,6 +17,7 @@
 #include <unistd.h>
 #include <list.h>
 #include <serial.h>
+#include <elf.h>
 
 static int color;
 
@@ -43,12 +44,12 @@ int gui_task(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unu
 
 int test_gui()
 {
-	exec(gui_task,"tache_gui" );
+	exec((paddr_t)gui_task,"tache_gui" );
 	return 0;
 }
 
 int test_fwrite() {
-	FILE *file = fopen("fd0:/toto.txt", "w+");
+	FILE *file = fopen("fd0:/system/toto.txt", "w+");
 
 	fwrite("Hello World !", sizeof(char), 13, file);
 	fflush(file);
@@ -108,11 +109,13 @@ int test_semaphores()
 	 * après l'autre
 	 */
 	int semid1 = semcreate(4); 
-	int semid2 = semcreate(42); 
+	int semid2;
+	
+	semid2 = semcreate(42);
 	semP(semid1);
 
-	exec(sem_t1,"ping");
-	exec(sem_t2,"pong");
+	exec((paddr_t)sem_t1,"ping");
+	exec((paddr_t)sem_t2,"pong");
 	
 	return 0;
 }
@@ -194,16 +197,16 @@ int test_task()
 {
 	//create_process_test("test",(paddr_t)test_task1, 0, NULL, 0x100,0x100,3);
 	/*create_process("test",(paddr_t)test_task1, 0, NULL,0x100,3);*/
-	memcpy(program, test_task, 10*sizeof(uint32_t));
+	/*memcpy(program, test_task, 10*sizeof(uint32_t));
 	int (*pp)(int argc, char** argv);
 	pp = program;
-	pp(0, NULL);
+	pp(0, NULL);*/
 	return 0;
 }
 
 int calc_pi()
 {
-	exec(pi, "pi");
+	exec((paddr_t)pi, "pi");
 	return 0;
 }
 
@@ -260,7 +263,7 @@ int test_mouse_task()
 
 int test_mouse()
 {
-	exec(test_mouse_task,"mouse");
+	exec((paddr_t)test_mouse_task,"mouse");
 	return 0;
 }
 
@@ -336,7 +339,7 @@ int test_ansi()
 	return 0;
 }
 
-int proc_write_serial(int argc, char** argv)
+int proc_write_serial(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	char buffer[80];
 	printf(">");
@@ -349,14 +352,16 @@ int proc_write_serial(int argc, char** argv)
 		serial_puts(COM1, buffer);
 		serial_putc(COM1, ' ');
 	}
+	return 0;
 }
 
-int test_write_serial(int argc, char** argv)
+int test_write_serial()
 {
-	exec(proc_write_serial, "wserial");
+	exec((paddr_t)proc_write_serial, "wserial");
+	return 0;
 }
 
-int proc_read_serial(int argc, char** argv)
+int proc_read_serial(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	char buffer[64];
 	
@@ -368,7 +373,45 @@ int proc_read_serial(int argc, char** argv)
 	}
 }
 
-int test_read_serial(int argc, char** argv)
+int test_read_serial()
 {
-	exec(proc_read_serial, "rserial");
+	exec((paddr_t)proc_read_serial, "rserial");
+	return 0;
+}
+
+char programme[0x3000];
+
+//#define TEST_EXEC
+int test_elf()
+{
+	FILE* fd = NULL;
+
+#ifdef TEST_EXEC
+	int (*pp)(int argc, char** argv);
+	int entry;
+	int resultat;
+#endif
+
+	printf("Openning %s...\n");
+	//fd = fopen("fd0:/system/kernel.bin", "r");
+	fd = fopen("fd0:/a.out", "r");
+
+	if(fd == NULL)
+	{
+		printf("failed.\n");
+	}
+	else
+	{
+		printf("Ok!\n");
+		elf_info(fd);
+		
+#ifdef	TEST_EXEC
+		entry = load_elf(fd, programme);
+		pp = &(programme[entry]);
+		resultat = pp(0,NULL);
+		printf("resultat = %d\n",resultat);
+#endif
+	}
+	/*close(fd);*/
+	return 0;	
 }

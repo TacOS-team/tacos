@@ -54,14 +54,14 @@ static int  next_semid = 1;
  * 
  *************************************/
 
-void sem_fifo_init(sem_fifo* fifo)
+static void sem_fifo_init(sem_fifo* fifo)
 {
 	fifo->size = 0;
 	fifo->head = NULL;
 	fifo->tail = NULL;
 }
 
-int sem_fifo_put(sem_fifo* fifo, int pid)
+static int sem_fifo_put(sem_fifo* fifo, int pid)
 {
 	int ret = -1;
 	sem_fifo_cell* new_cell;
@@ -89,8 +89,8 @@ int sem_fifo_put(sem_fifo* fifo, int pid)
 	}
 	return ret;
 }
-
-int sem_fifo_get(sem_fifo* fifo)
+ 
+static int sem_fifo_get(sem_fifo* fifo)
 {
 	int pid = -1;
 	sem_fifo_cell* temp = fifo->tail;
@@ -98,13 +98,13 @@ int sem_fifo_get(sem_fifo* fifo)
 	{
 		fifo->tail = temp->prev;
 		pid = temp->pid;
-		free(temp);
+		kfree(temp);
 		fifo->size--;
 	}
 	return pid;
 }
 
-int sem_fifo_size(sem_fifo* fifo)
+static int sem_fifo_size(sem_fifo* fifo)
 {
 	return fifo->size;
 }
@@ -125,7 +125,7 @@ int init_semaphores()
 	return 0;
 }
 
-static int ksemget(uint8_t key)
+int ksemget(uint8_t key)
 {
 	int ret = -1;
 
@@ -140,10 +140,9 @@ static int ksemget(uint8_t key)
 	return ret;
 }
 
-static int ksemcreate(uint8_t key)
+int ksemcreate(uint8_t key)
 {
 	int ret = -1;
-	struct semid_t* sem;
 
 	//kprintf("semcreate key %d pid %d \n",key);
 	if(!semaphores[key].allocated)
@@ -158,7 +157,7 @@ static int ksemcreate(uint8_t key)
 	return ret;
 }
 
-static int ksemdel(uint32_t semid)
+int ksemdel(uint32_t semid)
 {
 	int key = (semid & 0xFF000000) >> 24;
 	//kprintf("semdel semid %d \n",semid);
@@ -173,7 +172,7 @@ static int ksemdel(uint32_t semid)
 	return -1;
 }
 
-static int ksemP(uint32_t semid)
+int ksemP(uint32_t semid)
 {
 	int ret = -1;
 	int key = (semid & 0xFF000000) >> 24;
@@ -199,7 +198,7 @@ static int ksemP(uint32_t semid)
 	return ret;
 }
 
-static int ksemV(uint32_t semid)
+int ksemV(uint32_t semid)
 {
 	int ret = -1;
 	int key = (semid & 0xFF000000) >> 24;
@@ -227,10 +226,10 @@ void sys_ksem(uint32_t param1, uint32_t param2, uint32_t param3)
 	switch(param1)
 	{
 		case KSEM_GET:
-			*((int*)param3) = ksemget((uint32_t*)param2);
+			*((int*)param3) = ksemget(param2);
 			break;
 		case KSEM_CREATE:
-			*((int*)param3) = ksemcreate((uint32_t*)param2);
+			*((int*)param3) = ksemcreate(param2);
 			break;
 		case KSEM_DEL:
 			*((int*)param3) = ksemdel(param2);

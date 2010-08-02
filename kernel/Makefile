@@ -3,7 +3,7 @@ CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin
 
 SRCS = *.c
 
-all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o dummy_process.o process.o pagination.o kpanic.o ksyscall.o vmm.o kmalloc.o fat.o fpu.o vm86.o ksem.o
+all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o process.o pagination.o kpanic.o ksyscall.o vmm.o kmalloc.o fat.o fpu.o vm86.o ksem.o elf.o
 
 boot.o: boot.S
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) -fno-stack-protector
@@ -25,9 +25,8 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-dummy_process.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
-dummy_process.o: ../include/libio.h ../include/stdarg.h
-dummy_process.o: include/dummy_process.h
+elf.o: ../include/elf.h ../include/stdio.h ../include/fcntl.h
+elf.o: ../include/types.h ../include/libio.h ../include/stdarg.h
 exception.o: ../include/types.h include/idt.h include/exception.h
 fat.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 fat.o: ../include/libio.h ../include/stdarg.h ../include/floppy.h
@@ -47,16 +46,17 @@ kernel.o: ../include/unistd.h ../include/string.h ../include/memory.h
 kernel.o: ../include/pagination.h include/gdt.h include/exception.h
 kernel.o: ../include/interrupts.h ../include/pci.h ../include/pci_config.h
 kernel.o: ../include/pci_types.h include/scheduler.h ../include/process.h
-kernel.o: ../include/time.h include/dummy_process.h ../include/keyboard.h
-kernel.o: ../include/mouse.h ../include/events.h ../include/floppy.h
-kernel.o: include/kpanic.h ../include/kmalloc.h include/vmm.h
-kernel.o: ../include/ioports.h include/msr.h ../include/fat.h include/fpu.h
-kernel.o: include/vm86.h ../include/beeper.h ../include/debug.h
-kernel.o: ../include/shell.h include/ksyscall.h ../include/syscall.h
-kernel.o: include/ksem.h ../include/video.h ../include/serial.h
+kernel.o: ../include/time.h ../include/keyboard.h ../include/mouse.h
+kernel.o: ../include/events.h ../include/floppy.h include/kpanic.h
+kernel.o: ../include/kmalloc.h include/vmm.h ../include/ioports.h
+kernel.o: include/msr.h ../include/fat.h include/fpu.h include/vm86.h
+kernel.o: ../include/beeper.h ../include/debug.h ../include/shell.h
+kernel.o: include/ksyscall.h ../include/syscall.h include/ksem.h
+kernel.o: ../include/video.h ../include/serial.h
 kmalloc.o: ../include/types.h ../include/stdio.h ../include/fcntl.h
 kmalloc.o: ../include/libio.h ../include/stdarg.h ../include/heap.h
 kmalloc.o: include/vmm.h ../include/kmalloc.h
+kmsg_queue.o: include/kmsg_queue.h include/ksem.h ../include/types.h
 kpanic.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 kpanic.o: ../include/libio.h ../include/stdarg.h include/exception.h
 kpanic.o: include/kpanic.h ../include/process.h ../include/pagination.h

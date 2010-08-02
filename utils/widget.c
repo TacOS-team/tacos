@@ -88,7 +88,7 @@ static void displayWidget(struct widget_t* wdg)
 			while(!fini)
 			{
 				// On recupere une ligne de la largeur du widget
-				if(ansi_strlen(&(wdg->adv[indice]))<(wdg->w-2))
+				if((uint8_t)ansi_strlen(&(wdg->adv[indice]))<(wdg->w-2))
 				{
 					ansi_strncpy(ligne, &(wdg->adv[indice]), wdg->w-2);
 

@@ -14,7 +14,6 @@
 #include <pci_config.h>
 #include <scheduler.h>
 #include <time.h>
-#include <dummy_process.h>
 #include <keyboard.h>
 #include <mouse.h>
 #include <events.h>

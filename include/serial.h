@@ -14,6 +14,7 @@ typedef enum {
 int serial_init(serial_port port, char* protocol, unsigned int bauds, int flags);
 
 int serial_puts(serial_port port, char* string);
+int serial_putc(serial_port port, char c);
 int serial_gets(serial_port port, char* buffer, unsigned int size);
 
 #endif /* _SERIAL_H_ */

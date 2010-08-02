@@ -198,7 +198,7 @@ static void unmap(vaddr_t virt_page_addr)
 
 void init_vmm()
 {
-  int i;
+  /*int i;*/
   vaddr_t page_sup_end_kernel = memory_get_kernel_top();
 
   map(memory_reserve_page_frame(), page_sup_end_kernel);
@@ -351,7 +351,7 @@ unsigned int calculate_min_pages(size_t size)
   return (unsigned int) (nb_pages + ((nb_pages - (int) nb_pages > 0) ? 1 : 0));
 }
 
-static void print_slab(struct slab* s, bool free)
+static void print_slab(struct slab* s, bool free __attribute__ ((unused)))
 {
  // set_attribute(BLACK, free ? GREEN : RED);
   printf("[%x ; %x ; %x] ", s, s->prev, s->next);

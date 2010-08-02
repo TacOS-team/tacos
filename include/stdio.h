@@ -18,6 +18,10 @@
 #define _IOLBF 1 /* Line buffered. */
 #define _IONBF 2 /* No buffering. */
 
+#define SEEK_SET 0
+#define SEEK_CUR 1
+#define SEEK_END 2
+
 size_t read_screen(open_file_descriptor *ofd, void *buf, size_t count);
 size_t write_screen(open_file_descriptor *ofd, const void *buf, size_t count);
 
@@ -245,5 +249,12 @@ void itoa (char *buf, int base, int d);
  * @param size taille du nouveau buffer
  */
 int setvbuf(FILE *stream, char *buf, int mode, size_t size);
+
+int fseek(FILE *stream, long offset, int whence);
+
+int ftell(FILE *stream);
+
+void rewind(FILE *stream);
+
 
 #endif

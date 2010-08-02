@@ -154,5 +154,6 @@ void* sys_kill(uint32_t pid, uint32_t zero1, uint32_t zero2);
 void exit(uint32_t value);
 uint32_t get_pid();
 void kill(uint32_t pid);
+void exec(paddr_t prog, char* name);
 
 #endif

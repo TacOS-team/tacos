@@ -170,6 +170,6 @@ int main_cube()
 
 int cube_launcher()
 {
-	exec(main_cube, "CUBE");
+	exec((paddr_t)main_cube, "CUBE");
 	return 0;
 }

@@ -246,14 +246,6 @@ void start_scheduler()
 	event_id = add_event(schedule,NULL,quantum);
 }
 
-void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)))
-{
-	char ** argv = (char **) kmalloc(sizeof(char*));
-	argv[0] = strdup(name);
-	create_process(name, prog, 1, argv, 0x1000, 3);
-	return NULL;
-}
-
 void* sleep_callback( void* data )
 {
 	process_t* proc = (process_t*) data;
@@ -282,9 +274,4 @@ void* sys_sleep( uint32_t delay,uint32_t unused2 __attribute__ ((unused)), uint3
 	//dummy1();
 		
 	return NULL;
-}
-
-void exec(paddr_t prog, char* name)
-{
-	syscall(SYS_EXEC, (uint32_t)prog, (uint32_t)name, (uint32_t)NULL);
 }

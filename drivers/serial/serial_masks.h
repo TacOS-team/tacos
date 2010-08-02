@@ -92,4 +92,4 @@
 #define RI		0x40
 #define DCD		0x80
 
-#endif _SERIAL_MASKS_H_
+#endif /* _SERIAL_MASKS_H_ */

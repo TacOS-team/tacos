@@ -181,5 +181,6 @@ int delElement(heap_t* heap, int id, id_func_type func)
 			break;	
 		}
 	}
+	return 0; /* TODO: bonne valeur de retour */
 }
 

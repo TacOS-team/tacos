@@ -49,7 +49,7 @@ int listAddElement(list_t* l, void* element)
 {
 	
 	int ret = 1;
-	int i=0, j=0 ,k=0;	
+	int i=0, j=0;	
 
 	if(l->nb_elements < l->max_elements)
 	{	
@@ -134,5 +134,7 @@ int listDelElement(list_t* list, int id, id_func_type func)
 	list->link_array[el_index] = EMPTY_SLOT;
 	
 	list->nb_elements--;
+	
+	return 0; /* TODO: bonne valeur de retour */
 }
 

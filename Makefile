@@ -42,6 +42,7 @@ img: all
 	@gzip -dc < grub.img.gz > core.img
 	MTOOLSRC=mtoolsrc mcopy menu.txt v:/boot/grub/
 	MTOOLSRC=mtoolsrc mcopy doc.txt v:/
+	MTOOLSRC=mtoolsrc mcopy a.out v:/
 	MTOOLSRC=mtoolsrc mmd v:/system
 	MTOOLSRC=mtoolsrc mcopy kernel.bin v:/system/
 	@rm mtoolsrc

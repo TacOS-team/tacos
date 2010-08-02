@@ -13,7 +13,6 @@
 //static const int TIMER_FREQ = I8254_MAX_FREQ / 1000;
 //static int ticks;
 static list_t events;
-static struct event_t events_buffer[MAX_EVENTS];
 
 int compare_events(void* a, void* b)
 {
