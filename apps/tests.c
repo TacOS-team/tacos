@@ -403,7 +403,9 @@ int test_elf()
 	else
 	{
 		printf("Ok!\n");
+#ifndef TEST_EXEC
 		elf_info(fd);
+#endif
 		
 #ifdef	TEST_EXEC
 		entry = load_elf(fd, programme);

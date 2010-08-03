@@ -412,7 +412,7 @@ void change_active_process() {
  * SYSCALL
  */
 
-void* sys_exit(uint32_t ret_value __attribute__ ((unused)), uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))
+void sys_exit(uint32_t ret_value __attribute__ ((unused)), uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))
 {
 	process_t* current;
 	// On cherche le processus courant:
@@ -427,17 +427,15 @@ void* sys_exit(uint32_t ret_value __attribute__ ((unused)), uint32_t zero1 __att
 		change_active_process();
 	}
 
-  return NULL;
 }
 
-void* sys_getpid(uint32_t* pid, uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))
+void sys_getpid(uint32_t* pid, uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))
 {
 	process_t* process = get_current_process();
 	*pid = process->pid;
-	return NULL;
 }
 
-void* sys_kill(uint32_t pid, uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))
+void sys_kill(uint32_t pid, uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))
 {
 	process_t* process = find_process(pid);
 	
@@ -446,16 +444,13 @@ void* sys_kill(uint32_t pid, uint32_t zero1 __attribute__ ((unused)), uint32_t z
 		process->state = PROCSTATE_TERMINATED;
 		
 	delete_process(process->pid);
-	
-	return NULL;
 }
 
-void* sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)))
+void sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)))
 {
 	char ** argv = (char **) kmalloc(sizeof(char*));
 	argv[0] = strdup(name);
 	create_process(name, prog, 1, argv, 0x1000, 3);
-	return NULL;
 }
 
 /* A mettre en user space */
