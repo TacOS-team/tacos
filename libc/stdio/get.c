@@ -43,7 +43,7 @@ int fgetc(FILE *stream) {
 	}
 
 	if (stream->_IO_read_base == stream->_IO_read_ptr) {
-		if (read(stream->_fileno, stream->_IO_read_ptr, 1) >= 0) {
+		if (read(stream->_fileno, stream->_IO_read_ptr, 1) > 0) {
 			stream->_IO_read_ptr++;
 		} else {
 			return EOF;
