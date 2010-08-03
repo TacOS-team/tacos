@@ -6,28 +6,6 @@
  * @file get.c
  */
 
-/** 
- * @brief Recherche un retour chariot ou une fin de buffer.
- * 
- * Cette fonction recherche un retour chariot dans un buffer en partant de la fin. 
- * C'est un peu plus efficace que de faire appel à des fonctions classiques.
- *
- * @param buf La chaine de caractère à analyser.
- * @param endbuf L'adresse de la fin du buffer.
- * 
- * @return l'adresse du retour chariot ou de la fin de fichier en cas de succès. NULL sinon.
- */
-static char * search_endl(char * buf, char * endbuf) {
-	endbuf--;
-	while (endbuf >= buf) {
-		if (*endbuf == '\n' || *endbuf == EOF) {
-			return endbuf;
-		}
-		endbuf--;
-	}
-	return NULL;
-}
-
 char *fgets(char *s, int size, FILE *stream) {
 	int i = 0;
 	int c = 0;

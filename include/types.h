@@ -10,6 +10,8 @@ typedef uint32_t size_t;
 typedef uint32_t paddr_t;
 typedef uint32_t vaddr_t;
 
+typedef int ssize_t;
+
 typedef enum {FALSE=0, TRUE} bool;
 
 /* Pointeur null */

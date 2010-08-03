@@ -17,7 +17,7 @@ unsigned int usleep(unsigned int milliseconds)
 	return 0;
 }
 
-void* sys_write(uint32_t fd, uint32_t p_buf, uint32_t count) {
+void sys_write(uint32_t fd, uint32_t p_buf, uint32_t count) {
 	process_t * process = get_current_process();
 	const void *buf = (const void*)p_buf;
 
@@ -28,16 +28,16 @@ void* sys_write(uint32_t fd, uint32_t p_buf, uint32_t count) {
 
 		ofd->write(ofd, buf, count);
 	}
-
-	return NULL;
 }
 
-size_t write(int fd, const void *buf, size_t count) {
+ssize_t write(int fd, const void *buf, size_t count) {
 	syscall(SYS_WRITE, fd, (uint32_t) buf, count);
 
+    // FIXME
 	return 0;
 }
-void* sys_read(uint32_t fd, uint32_t p_buf, uint32_t count) {
+
+void sys_read(uint32_t fd, uint32_t p_buf, uint32_t count) {
 	process_t * process = get_current_process();
 	void *buf = (void*)p_buf;
 
@@ -46,13 +46,11 @@ void* sys_read(uint32_t fd, uint32_t p_buf, uint32_t count) {
 	if (process->fd[fd].used) {
 		ofd = process->fd[fd].ofd;
 
-		return ofd->read(ofd, buf, count);
+		ofd->read(ofd, buf, count);
 	}
-
-	return NULL;
 }
 
-size_t read(int fd, void *buf, size_t count) {
+ssize_t read(int fd, void *buf, size_t count) {
 	syscall(SYS_READ, fd, (uint32_t) buf, count);
 
 	// FIXME: Ok, ça risque de poser problème... :D. Read doit retourner le nombre d'octets lus !!!
