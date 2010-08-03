@@ -21,17 +21,17 @@ int load_efl_header(Elf32_Ehdr* elf_header, FILE* fd)
 	
 	/* Puis on lis tout simplement */
 	
-	int i = fread(elf_header, 1, 100, fd);
+	/*int i = fread(elf_header, 1, 100, fd);*/
 	
 	/* Remplace temporairement un fread boiteux */
-	/*char* pointeur = elf_header;
+	char* pointeur = elf_header;
 	int i;
 	for(i=0; i<sizeof(Elf32_Ehdr)-2; i++)
 	{
 		*pointeur = fgetc(fd);
 		pointeur++;
 	}
-	printf("%x bytes read.\n",i);*/
+	printf("%x bytes read.\n",i);
 	return is_elf(elf_header);
 }
 
