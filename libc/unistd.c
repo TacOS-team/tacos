@@ -46,7 +46,7 @@ void* sys_read(uint32_t fd, uint32_t p_buf, uint32_t count) {
 	if (process->fd[fd].used) {
 		ofd = process->fd[fd].ofd;
 
-		ofd->read(ofd, buf, count);
+		return ofd->read(ofd, buf, count);
 	}
 
 	return NULL;
@@ -55,5 +55,6 @@ void* sys_read(uint32_t fd, uint32_t p_buf, uint32_t count) {
 size_t read(int fd, void *buf, size_t count) {
 	syscall(SYS_READ, fd, (uint32_t) buf, count);
 
+	// FIXME: Ok, ça risque de poser problème... :D. Read doit retourner le nombre d'octets lus !!!
 	return 0;
 }

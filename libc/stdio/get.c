@@ -45,6 +45,10 @@ char *fgets(char *s, int size, FILE *stream) {
 
 
 int fgetc(FILE *stream) {
+// TODO : Réécriture complète de la fonction.
+// La gestion du backspace doit se faire au niveau supérieur (il n'y a que dans une "console" qu'on se sert du backspace). À voir comment gérer correctement la chose lors d'un scanf...
+// Je ne suis pas sûr que ça soit normal d'avoir un flush ici...
+
 	int c = EOF;
 	char *i;
 	
@@ -60,42 +64,12 @@ int fgetc(FILE *stream) {
       stream->_IO_read_ptr = buf;
 	}
 
-	while (stream->_IO_read_ptr <= stream->_IO_buf_end && search_endl(stream->_IO_buf_base, stream->_IO_read_ptr) == NULL) {
-		if (stream->_IO_read_ptr > pointeur && stream->_IO_read_ptr > stream->_IO_read_base) {
-			if (pointeur == NULL) pointeur = stream->_IO_read_base;
-			c = *pointeur;
-
-			if (c == '\b') {
-				if (pointeur > stream->_IO_read_base) {
-					for (i = pointeur - 1; i < stream->_IO_read_ptr - 1; i++) {
-						*i = *(i+2);
-					}
-					pointeur -= 2;
-					stream->_IO_read_ptr -= 2;
-				} else {
-					for (i = pointeur; i < stream->_IO_read_ptr; i++) {
-						*i = *(i+1);
-					}
-					stream->_IO_read_ptr -= 1;
-					continue;
-				}
-			}
-
-			// Normalement il faut faire appel à la fonction read qui s'occupe de faire ce qu'il faut.
-			// C'est à dire appeler la fonction de lecture/affichage associé au stream qui va bien !
-			pointeur++;
-
-			// Unbuffered => on flush direct
-			if((stream->_flags & _IONBF) == _IONBF)
-				break;
-		}
-
-		read(stream->_fileno, stream->_IO_read_ptr, 1);
-		stream->_IO_read_ptr++;
-	} 
-
 	if (stream->_IO_read_base == stream->_IO_read_ptr) {
-		return EOF;
+		if (read(stream->_fileno, stream->_IO_read_ptr, 1) >= 0) {
+			stream->_IO_read_ptr++;
+		} else {
+			return EOF;
+		}
 	}
 
 	c = *stream->_IO_read_base;

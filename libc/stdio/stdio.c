@@ -116,8 +116,7 @@ size_t read_screen(open_file_descriptor *ofd, void *buf, size_t count) {
 	}
 
 	fflush(stdout);
-
-	return j-1;
+	return j;
 }
 
 size_t write_screen(open_file_descriptor *ofd, const void *buf, size_t count) {
