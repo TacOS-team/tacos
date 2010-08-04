@@ -385,10 +385,19 @@ void tu_ctype(const char * nom_test, int (*p)(), const char * resultat_attendu) 
     }
     buf[len] = '\0';
     if (strcmp(buf, resultat_attendu) == 0) {
-        printf("%s [OK]\n", nom_test);
+			printf("%s [OK]\n", nom_test);
     } else {
-        printf("%s [failed] :(\n", nom_test);
-        printf("Attendu : %s\n Obtenu : %s\n", resultat_attendu, buf);
+			printf("%s [failed] :(\n", nom_test);
+			printf("Attendu : %s\n Obtenu : %s\n", resultat_attendu, buf);
+			printf("Ou encore : ");
+			for (c = 0; c < len; c++) {
+				printf("(%d)", buf[c]);
+			}
+			printf("\n Attendu : ");
+			for (c = 0; c < strlen(resultat_attendu); c++) {
+				printf("(%d)", resultat_attendu[c]);
+			}
+			printf("\n");
     }
 }
 
@@ -396,9 +405,13 @@ int test_ctype()
 {
     tu_ctype("isupper", isupper, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");    
     tu_ctype("islower", islower, "abcdefghijklmnopqrstuvwxyz");    
-    tu_ctype("isdigit", isdigit, "0123456789");    
-    //tu_ctype(isspace);    
-    //tu_ctype(isalpha);    
+    tu_ctype("isalpha", isalpha, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");    
+    tu_ctype("isdigit", isdigit, "0123456789");
+    tu_ctype("isalnum", isalnum, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");    
+    tu_ctype("ispunct", ispunct, "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~");
+    tu_ctype("isspace", isspace, "\t\n\v\f\r ");
+	 tu_ctype("isprint", isprint, " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
+	 
 
     // TODO : compléter.
 

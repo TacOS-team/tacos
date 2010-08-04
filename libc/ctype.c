@@ -25,12 +25,17 @@ int islower(int c) {
 }
 
 int isprint(int c) {
-	// TODO
-	return !isalnum(c) && !isspace(c); // Attention, simple approximation !
+	return ispunct(c) || isalnum(c) || c == ' ';
 }
 
 int ispunct(int c) {
-	return !isalnum(c) && !isspace(c);
+	return (c >= '!' && c <= '\'') 
+		|| (c >= '(' && c <= '/') 
+		|| (c >= ':' && c <= '?')
+		|| c == '@'
+		|| (c >= '[' && c <= '_')
+		|| c == '`'
+		|| (c >= '{' && c <= '~');
 }
 
 int isspace(int c) {
