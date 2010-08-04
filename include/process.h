@@ -63,10 +63,10 @@ typedef struct _proclist_cell{
 }*proc_list, proclist_cell;
 
 /* Temporaire */
-int create_process_test(char* name, paddr_t prog, uint32_t argc, char** argv, uint32_t prog_size, uint32_t stack_size, uint8_t ring __attribute__ ((unused)));
+int create_process_test(char* name, uint32_t argc, char** argv, uint32_t prog_size, uint32_t stack_size, uint8_t ring __attribute__ ((unused)));
 
 /** 
-* @brief Crée un nouveau processus.
+* @brief (OUTDATED)Crée un nouveau processus.
 * Crée un nouveau processus et l'ajoute à la liste des processus avec un état d'exécution PROCSTATE_IDLE.
 * @param name Nom du processus.
 * @param prog Pointeur vers le point d'entrée du processus.
@@ -77,7 +77,7 @@ int create_process_test(char* name, paddr_t prog, uint32_t argc, char** argv, ui
 * 
 * @return Pid du processus créé.
 */
-int create_process(char* name, paddr_t prog, uint32_t argc, char** argv, uint32_t stack_size, uint8_t ring);
+int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, uint8_t ring __attribute__ ((unused)));
 
 /** 
 * @brief Retire un processus de la liste.

@@ -180,27 +180,24 @@ int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 	return 0;
 }
 
-int test_task1(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
+int test_task1(int argc , char** argv __attribute__ ((unused)))
 {
 	//while(1);
 	int pid = get_pid();
-	
-	while(1)
-		printf("Task 1\n",pid);
-	
+	int i;
+	printf("pid %d received %d args:\n", pid, argc);	
+	for(i=0; i<argc; i++)
+	{
+		printf("#%d - %s\n",i, argv[i]);
+	}
 	return 0;
 }
 
-uint32_t program[20];
-
 int test_task()
 {
-	//create_process_test("test",(paddr_t)test_task1, 0, NULL, 0x100,0x100,3);
-	/*create_process("test",(paddr_t)test_task1, 0, NULL,0x100,3);*/
-	/*memcpy(program, test_task, 10*sizeof(uint32_t));
-	int (*pp)(int argc, char** argv);
-	pp = program;
-	pp(0, NULL);*/
+
+	create_process("test",(paddr_t)test_task1,"il est plus d'une heure du matin et je suis fatigué",0x1000,3);
+
 	return 0;
 }
 
@@ -258,6 +255,7 @@ int test_mouse_task()
 		}
 		i++;
 	}
+	while(1);
 	return 0;
 }
 

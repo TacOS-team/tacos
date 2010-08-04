@@ -70,7 +70,7 @@ int load_elf(FILE* fd, void* dest)
 		load_program_header(&p_header[1],&elf_header, 1, fd);
 		
 		current_offset = elf_header.e_ehsize + (2*elf_header.e_phentsize);
-		printf("\n%x - %x\n",current_offset, p_header[0].p_offset);
+		/*printf("\n%x - %x\n",current_offset, p_header[0].p_offset);*/
 		while(current_offset < p_header[0].p_offset)
 		{
 			fgetc(fd);
@@ -81,12 +81,12 @@ int load_elf(FILE* fd, void* dest)
 		while(i<p_header[0].p_filesz)
 		{
 			pointeur[p_header[0].p_vaddr + i] = fgetc(fd);
-			printf("%x ",pointeur[p_header[0].p_vaddr + i]);
+			/*printf("%x ",pointeur[p_header[0].p_vaddr + i]);*/
 			i++;
 			current_offset++;
 		}
 		
-		printf("\n%x - %x\n",current_offset, p_header[1].p_offset);
+		/*printf("\n%x - %x\n",current_offset, p_header[1].p_offset);*/
 		while(current_offset < p_header[1].p_offset)
 		{
 			fgetc(fd);

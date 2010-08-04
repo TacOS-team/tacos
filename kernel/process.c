@@ -10,6 +10,7 @@
 #include <kmalloc.h>
 #include <syscall.h>
 #include <time.h>
+#include <elf.h>
 
 #include <debug.h>
 
@@ -104,12 +105,72 @@ int delete_process(int pid)
 	return 0;
 }
 
+/* Procédure permettant de construire le char** argv */
+/* TODO: un schéma */
+/* Valeur retournée: argc */
+int arg_build(char* string, vaddr_t base, char*** argv_ptr)
+{
+	int argc = 1;
+	int len = 0;
+	int i;
+	
+	char* ptr = string;
+	char** argv;
+	char* str_copy_base;
+	
+	kprintf("Analyse de %s...\n", ptr);
+	/* Première passe: on compte argc et le nombre total de caractères de la chaine, et on remplace les espaces par des 0*/
+	while(*ptr != '\0')
+	{
+		/* Si on a un espace on a une sous-chaine, et on incrément argc */
+		if(*ptr == ' ')
+		{
+			*ptr = '\0';
+			argc++;
+		}
+		
+		ptr++;
+		len++;
+	}
+	
+	argv = (char**) (base-(argc*sizeof(char*))); /* Base moins les argc cases pour les argv[x] */ 
+	str_copy_base = argv - 1; /* Pareil, mais on va l'utiliser en descendant dans la mémoire, et non en montant comme avec un tableau */
+	i = argc-1;
+	
+	*str_copy_base = '\0';
+	ptr--;
+	len--;
+	
+	while(len>=0)
+	{
+		/* Si on trouve '\0', c'est qu'on a fini de parcourir un mot, et on fait donc pointer l'argv comme il faut */
+		if(*ptr=='\0')
+		{
+			argv[i] = str_copy_base+1;
+			i--;
+		}
+
+			
+		*str_copy_base = *ptr;
+		str_copy_base--;
+		ptr--;
+		len--;
+	}
+	
+	//*str_copy_base = *ptr;
+	argv[0] = str_copy_base+1;
+	*argv_ptr = argv;
+	return argc;
+}
+
 /* Procédure pour créer un processus, mais cette fois ci en copiant le programme dans une zone mémoire bien définie: tout le monde dit wahou */
-int create_process_test(char* name, paddr_t prog, uint32_t argc, char** argv, uint32_t prog_size, uint32_t stack_size, uint8_t ring __attribute__ ((unused)))
+int create_process_test(char* name, uint32_t argc, char** argv, uint32_t prog_size, uint32_t stack_size, uint8_t ring __attribute__ ((unused)))
 {
 	uint32_t *prog_memory;
 	uint32_t *sys_stack, *user_stack;
 	process_t* new_proc;
+	uint32_t entry_point;
+	FILE* fd = NULL;
 	int i;
 	
 	new_proc = kmalloc(sizeof(process_t));
@@ -133,8 +194,12 @@ int create_process_test(char* name, paddr_t prog, uint32_t argc, char** argv, ui
 		return -1;
 	}
 	
+	fd = fopen(name, "r");
+	
+	entry_point = load_elf(fd, prog_memory);
+	
 	/* On copie les instruction là où on a réservé la mémoire */
-	memcpy(prog_memory,(const void*) prog, prog_size * sizeof(uint32_t));
+	/*memcpy(prog_memory,(const void*) prog, prog_size * sizeof(uint32_t));*/
 	
 	/* Par simplicité on note quelque part les positions des piles: */
 	sys_stack = prog_memory + prog_size;
@@ -156,7 +221,7 @@ int create_process_test(char* name, paddr_t prog, uint32_t argc, char** argv, ui
 	new_proc->regs.ss = 0x23;
 	
 	new_proc->regs.eflags = 0;
-	new_proc->regs.eip = (uint32_t) prog_memory;
+	new_proc->regs.eip = (uint32_t) prog_memory + entry_point;
 	new_proc->regs.esp = (vaddr_t)(user_stack)+stack_size-3;
 	new_proc->regs.ebp = new_proc->regs.esp;
 	
@@ -166,6 +231,7 @@ int create_process_test(char* name, paddr_t prog, uint32_t argc, char** argv, ui
 	new_proc->state = PROCSTATE_IDLE;
 	
 	/* Initialisation de la pile du processus */
+	
 	user_stack[stack_size-1]=(vaddr_t)argv;
 	user_stack[stack_size-2]=argc;
 	user_stack[stack_size-3]=(vaddr_t)exit;
@@ -197,10 +263,15 @@ int create_process_test(char* name, paddr_t prog, uint32_t argc, char** argv, ui
 	return new_proc->pid;
 }
 
-int create_process(char* name, paddr_t prog, uint32_t argc, char** argv, uint32_t stack_size, uint8_t ring __attribute__ ((unused)))
+int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, uint8_t ring __attribute__ ((unused)))
 {
 	uint32_t *sys_stack, *user_stack;
 	process_t* new_proc;
+	
+	char** argv;
+	int argc;
+	uint32_t* stack_ptr;
+	
 	int i;
 	
 	new_proc = kmalloc(sizeof(process_t));
@@ -225,6 +296,14 @@ int create_process(char* name, paddr_t prog, uint32_t argc, char** argv, uint32_
 		return -1;
 	}
 	
+	/* Initialisation de la pile du processus */
+	argc = arg_build(param, &(user_stack[stack_size-1]), &argv);
+	stack_ptr = argv[0];
+	
+	*(stack_ptr-1) = argv;
+	*(stack_ptr-2) = argc;
+	*(stack_ptr-3) = (vaddr_t) exit;
+	
 	new_proc->user_time = 0;
 	new_proc->sys_time = 0;
 	new_proc->current_sample = 0;
@@ -242,19 +321,18 @@ int create_process(char* name, paddr_t prog, uint32_t argc, char** argv, uint32_
 	
 	new_proc->regs.eflags = 0;
 	new_proc->regs.eip = prog;
-	new_proc->regs.esp = (vaddr_t)(user_stack)+stack_size-3;
+	//new_proc->regs.esp = (vaddr_t)(user_stack)+stack_size-3;
+	new_proc->regs.esp = (vaddr_t)(stack_ptr-3);
 	new_proc->regs.ebp = new_proc->regs.esp;
 	
 	new_proc->kstack.ss0 = 0x10;
-	new_proc->kstack.esp0 = (vaddr_t)(sys_stack)+stack_size-1;
+	//new_proc->kstack.esp0 = (vaddr_t)(sys_stack)+stack_size-1;
+	new_proc->kstack.esp0 = (vaddr_t)(&sys_stack[stack_size-1]);
 	
 	new_proc->state = PROCSTATE_IDLE;
 	
-	/* Initialisation de la pile du processus */
-	user_stack[stack_size-1]=(vaddr_t)argv;
-	user_stack[stack_size-2]=argc;
-	user_stack[stack_size-3]=(vaddr_t)exit;
-	 
+
+
 	// Ne devrait pas utiliser kmalloc. Cf remarque suivante.
 	//new_proc->pd = kmalloc(sizeof(struct page_directory_entry));
 	//pagination_init_page_directory_from_current(new_proc->pd);
@@ -421,10 +499,10 @@ void sys_exit(uint32_t ret_value __attribute__ ((unused)), uint32_t zero1 __attr
 	// On a pas forcement envie de supprimer le processus immédiatement
 	current->state = PROCSTATE_TERMINATED; 
 	
-	kprintf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
+	//kprintf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
 
 	if (current == active_process) {
-		change_active_process();
+		//change_active_process();
 	}
 
 }
@@ -450,7 +528,7 @@ void sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused))
 {
 	char ** argv = (char **) kmalloc(sizeof(char*));
 	argv[0] = strdup(name);
-	create_process(name, prog, 1, argv, 0x1000, 3);
+	create_process(name, prog, argv, 0x1000, 3);
 }
 
 /* A mettre en user space */
