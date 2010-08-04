@@ -1,4 +1,3 @@
-
 #include <types.h>
 #include <stdlib.h>
 #include <stdio.h> 
@@ -134,7 +133,7 @@ int arg_build(char* string, vaddr_t base, char*** argv_ptr)
 	}
 	
 	argv = (char**) (base-(argc*sizeof(char*))); /* Base moins les argc cases pour les argv[x] */ 
-	str_copy_base = argv - 1; /* Pareil, mais on va l'utiliser en descendant dans la mémoire, et non en montant comme avec un tableau */
+	str_copy_base =(char*)(base-(argc*sizeof(char*)) - 1); /* Pareil, mais on va l'utiliser en descendant dans la mémoire, et non en montant comme avec un tableau */
 	i = argc-1;
 	
 	*str_copy_base = '\0';
@@ -297,10 +296,10 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 	}
 	
 	/* Initialisation de la pile du processus */
-	argc = arg_build(param, &(user_stack[stack_size-1]), &argv);
-	stack_ptr = argv[0];
+	argc = arg_build(param,(vaddr_t) &(user_stack[stack_size-1]), &argv);
+	stack_ptr = (uint32_t*) argv[0];
 	
-	*(stack_ptr-1) = argv;
+	*(stack_ptr-1) = (vaddr_t) argv;
 	*(stack_ptr-2) = argc;
 	*(stack_ptr-3) = (vaddr_t) exit;
 	
@@ -526,9 +525,8 @@ void sys_kill(uint32_t pid, uint32_t zero1 __attribute__ ((unused)), uint32_t ze
 
 void sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)))
 {
-	char ** argv = (char **) kmalloc(sizeof(char*));
-	argv[0] = strdup(name);
-	create_process(name, prog, argv, 0x1000, 3);
+	char * args = strdup(name);
+	create_process(name, prog, args , 0x1000, 3);
 }
 
 /* A mettre en user space */

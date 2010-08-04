@@ -24,8 +24,8 @@ int load_efl_header(Elf32_Ehdr* elf_header, FILE* fd)
 	/*int i = fread(elf_header, 1, 100, fd);*/
 	
 	/* Remplace temporairement un fread boiteux */
-	char* pointeur = elf_header;
-	int i;
+	char* pointeur = (char*) elf_header;
+	unsigned int i;
 	for(i=0; i<sizeof(Elf32_Ehdr)-2; i++)
 	{
 		*pointeur = fgetc(fd);
