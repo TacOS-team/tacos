@@ -104,7 +104,7 @@ size_t read_screen(open_file_descriptor *ofd, void *buf, size_t count) {
 	int j = 0;
 
 	while(count--) {
-		while(ofd->current_octet_buf == 0);
+		while(ofd->current_octet_buf == 0 || ofd->buffer[ofd->current_octet_buf-1] != '\n'); // Serait plus sympa avec une sémaphore :P
 		c = ofd->buffer[0];
 		ofd->current_octet_buf--;
 
@@ -112,7 +112,6 @@ size_t read_screen(open_file_descriptor *ofd, void *buf, size_t count) {
 			ofd->buffer[i] = ofd->buffer[i+1];
 		}
 		((char*)buf)[j++] = c;
-		printf("%c", c); // FIXME: S'il prend un caractère de retour, il va supprimer, peut être même trop !
 	}
 
 	fflush(stdout);

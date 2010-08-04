@@ -186,7 +186,17 @@ void keyBufferPush(char c)
 
 size_t write_keyboard(open_file_descriptor *ofd, const void *buf, size_t count) {
 	if (ofd != NULL) {
-		ofd->buffer[ofd->current_octet_buf++] = ((char*)buf)[0];
+        if (((char*)buf)[0] == '\b') {
+            if (ofd->current_octet_buf) {
+        		ofd->current_octet_buf--;
+                printf("\b");
+                fflush(stdout);
+            }
+        } else {
+    		ofd->buffer[ofd->current_octet_buf++] = ((char*)buf)[0];
+            printf("%c", ((char*)buf)[0]);
+            fflush(stdout);
+        }
 	}
 	return count;
 }
