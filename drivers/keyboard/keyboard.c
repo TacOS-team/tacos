@@ -189,6 +189,7 @@ size_t write_keyboard(open_file_descriptor *ofd, const void *buf, size_t count) 
         if (((char*)buf)[0] == '\b') {
             if (ofd->current_octet_buf) {
         		ofd->current_octet_buf--;
+                // TODO : Regarder si on supprime une tabulation car dans ce cas il faut repartir bien plus en arrière.
                 printf("\b");
                 fflush(stdout);
             }

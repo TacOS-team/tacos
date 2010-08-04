@@ -31,5 +31,6 @@ int snake_main();
 int cube_launcher();
 int noxeyes(); 
 int test_elf();
+int test_ctype();
 
 #endif //APPS_H

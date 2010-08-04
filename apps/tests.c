@@ -18,6 +18,7 @@
 #include <list.h>
 #include <serial.h>
 #include <elf.h>
+#include <ctype.h>
 
 static int color;
 
@@ -300,7 +301,8 @@ int test_fwrite()
 int test_sprintf()
 {
 	char buffer[80];
-	sprintf(buffer, "Test : %d\n", 42);
+	sprintf(buffer, "Test : %d", 42);
+    //sprintf(buffer, "%s", buffer); // Déconne ;)
 	printf("%s\n", buffer);
 	return 0;
 }
@@ -369,6 +371,38 @@ int proc_read_serial(int argc __attribute__ ((unused)), char** argv __attribute_
 		printf("%s",buffer);
 		fflush(stdout);
 	}
+}
+
+void tu_ctype(const char * nom_test, int (*p)(), const char * resultat_attendu) {
+    char buf[256];
+    buf[0] = '\0';
+    int len = 0;
+    unsigned char c;
+    for (c = 0; c < 255; c++) {
+        if (p(c)) {
+            buf[len++] = c;
+        }
+    }
+    buf[len] = '\0';
+    if (strcmp(buf, resultat_attendu) == 0) {
+        printf("%s [OK]\n", nom_test);
+    } else {
+        printf("%s [failed] :(\n", nom_test);
+        printf("Attendu : %s\n Obtenu : %s\n", resultat_attendu, buf);
+    }
+}
+
+int test_ctype()
+{
+    tu_ctype("isupper", isupper, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");    
+    tu_ctype("islower", islower, "abcdefghijklmnopqrstuvwxyz");    
+    tu_ctype("isdigit", isdigit, "0123456789");    
+    //tu_ctype(isspace);    
+    //tu_ctype(isalpha);    
+
+    // TODO : compléter.
+
+    return 0;
 }
 
 int test_read_serial()

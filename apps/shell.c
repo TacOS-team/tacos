@@ -224,6 +224,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_write_serial, "write_serial");
 	add_builtin_cmd(test_read_serial, "read_serial");
 	add_builtin_cmd(test_elf, "test_elf");
+    add_builtin_cmd(test_ctype, "test_ctype");
 
 	disable_cursor(0);
 	
