@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <exception.h>
 #include <kpanic.h>
-#include <process.h>
+#include <kprocess.h>
 #include <scheduler.h>
 
 #define GAME_OVER() asm("cli\n\thlt");

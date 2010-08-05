@@ -19,7 +19,7 @@
 #include <events.h>
 #include <floppy.h>
 #include <kpanic.h>
-#include <process.h>
+#include <kprocess.h>
 #include <kmalloc.h>
 #include <vmm.h>
 #include <ioports.h>

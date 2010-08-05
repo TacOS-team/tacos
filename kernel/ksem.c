@@ -1,7 +1,7 @@
 /* TODO: Séparer le code de la fifo dans un autre fichier, voir le faire générique pour que ce soit réutilisable pour d'autres types d'IPC */
 
 #include <ksem.h>
-#include <process.h>
+#include <kprocess.h>
 #include <stdio.h>
 #include <kmalloc.h>
 

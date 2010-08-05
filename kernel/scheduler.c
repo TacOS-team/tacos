@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include <types.h>
-#include <process.h>
+#include <kprocess.h>
 #include <scheduler.h>
 #include <events.h>
 #include <clock.h>

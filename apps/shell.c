@@ -82,7 +82,7 @@ static int resize_cmd()
 {
 	int x, y;
 	scanf("%d %d", &x, &y);
-	resize_text_window(get_current_process()->fd[1].ofd->extra_data, x, y);
+	resize_text_window(get_process(CURRENT_PROCESS)->fd[1].ofd->extra_data, x, y);
   return 0;
 }
 
@@ -124,7 +124,7 @@ static int cls_cmd() {
 
 static int exec_shell()
 {
-	exec((paddr_t)shell, "Mishell"); // XXX: exec est défini dans le kernel...
+	exec((paddr_t)shell, "Mishell");
 	return 0;
 }
 
@@ -140,12 +140,13 @@ static int sleep_shell()
 int top(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	disable_cursor(1);
-	while(1)
+	printf("TODO: recoder ps proprement...");
+	/*while(1)
 	{
 		printf("\033[1;1H");
-		print_process_list();
+		//print_process_list();
 		sleep(1);
-	}
+	}*/
 }
 static int exec_top()
 {
@@ -189,7 +190,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_fwrite, "test_fwrite");
 	add_builtin_cmd(test_fread, "test_fread");
 	add_builtin_cmd(test_sprintf, "test_sprintf");
-	add_builtin_cmd((func_ptr)print_process_list, "ps");
+	add_builtin_cmd((func_ptr)exec_top, "ps"); /*TODO: Fournir les interfaces avec kprocess pour pouvoir faire ça */
 	/*add_builtin_cmd(test_sscanf, "test_sscanf");*/
 	//add_builtin_cmd(kmalloc_print_mem, "kmalloc_print_mem");
 	/*add_builtin_cmd((func_ptr)test_kmalloc, "test_kmalloc");*/
@@ -199,7 +200,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd((func_ptr)print_Boot_Sector, "mount");
 	add_builtin_cmd((func_ptr)print_working_dir, "pwd");
 	add_builtin_cmd(debug_fat, "debugfat");
-	add_builtin_cmd((func_ptr)clean_process_list, "clean_proclist");
+	/*add_builtin_cmd((func_ptr)clean_process_list, "clean_proclist");*/
 	add_builtin_cmd(kill_cmd, "kill");
 	add_builtin_cmd(test_ansi, "test_ansi");
 	add_builtin_cmd(cd_cmd, "cd");
