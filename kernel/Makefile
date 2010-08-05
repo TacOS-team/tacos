@@ -3,7 +3,7 @@ CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin
 
 SRCS = *.c
 
-all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o process.o pagination.o kpanic.o ksyscall.o vmm.o kmalloc.o fat.o fpu.o vm86.o ksem.o elf.o kfcntl.o kunistd.o video.o
+all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o process.o pagination.o kpanic.o ksyscall.o vmm.o kmalloc.o fat.o fpu.o vm86.o ksem.o elf.o kfcntl.o kunistd.o video.o stdfiles.o
 
 boot.o: boot.S
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) -fno-stack-protector
@@ -99,6 +99,8 @@ scheduler.o: ../include/events.h ../include/time.h ../include/clock.h
 scheduler.o: ../include/ioports.h include/gdt.h include/i8259.h
 scheduler.o: ../include/syscall.h ../include/debug.h ../include/kmalloc.h
 scheduler.o: ../include/string.h
+stdfiles.o: ../include/types.h ../include/libio.h ../include/fcntl.h
+stdfiles.o: ../include/string.h ../include/kmalloc.h
 video.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 video.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
 video.o: ../include/ioports.h ../include/ctype.h include/video.h
