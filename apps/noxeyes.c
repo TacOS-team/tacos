@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <video.h>
 #include <process.h>
 #include <mouse.h>
 
@@ -74,13 +73,14 @@ void updateMouseCoord(coord *mouse)
   getMouseCoord(&(tmp.x),&(tmp.y));
 	tmp.x = tmp.x*80/640;
   tmp.y = 25 - (tmp.y*25/480);
-
+/*
   if(mouse->x != tmp.x || mouse->y != tmp.y) {
     if(mouse->x != -1)
   		set_attribute_position(BLACK, LIGHT_BLUE, mouse->x, mouse->y);
     *mouse = tmp;
 	  set_attribute_position(LIGHT_BLUE, BLACK, mouse->x, mouse->y);
   }
+*/
 }
 
 void updateIris(eye *e1, eye *e2, coord ir1, coord ir2) {
@@ -102,18 +102,18 @@ int noxeyes_main(int zboing) {
   int isz_c = 1;
   coord mouse = { -1, -1 };
   eye eye1, eye2;
-  text_window *tw = get_current_process()->fd[1].ofd->extra_data;
+//  text_window *tw = get_current_process()->fd[1].ofd->extra_data;
 
-  resize_text_window(tw, NB_COLUMNS, NB_LINES);
-  disable_cursor(1);
+//  resize_text_window(tw, NB_COLUMNS, NB_LINES);
+//  disable_cursor(1);
 
   displayEyes();
 
   // init
-  eye1.center.x = tw->x + OFFSET_EYE_1_X; 
-  eye1.center.y = tw->y + OFFSET_EYE_1_Y; 
-  eye2.center.x = tw->x + OFFSET_EYE_2_X; 
-  eye2.center.y = tw->y + OFFSET_EYE_2_Y; 
+  eye1.center.x = /*tw->x +*/ OFFSET_EYE_1_X; 
+  eye1.center.y = /*tw->y +*/ OFFSET_EYE_1_Y; 
+  eye2.center.x = /*tw->x +*/ OFFSET_EYE_2_X; 
+  eye2.center.y = /*tw->y +*/ OFFSET_EYE_2_Y; 
   eye1.iris = eye1.center;
   eye2.iris = eye2.center;
 	print_locate(eye1.iris, 'o');
@@ -122,10 +122,10 @@ int noxeyes_main(int zboing) {
   while(1) {
     coord newIris1, newIris2;
 
-    eye1.center.x = tw->x + OFFSET_EYE_1_X; 
-    eye1.center.y = tw->y + OFFSET_EYE_1_Y; 
-    eye2.center.x = tw->x + OFFSET_EYE_2_X; 
-    eye2.center.y = tw->y + OFFSET_EYE_2_Y; 
+    eye1.center.x = /*tw->x +*/ OFFSET_EYE_1_X; 
+    eye1.center.y = /*tw->y +*/ OFFSET_EYE_1_Y; 
+    eye2.center.x = /*tw->x +*/ OFFSET_EYE_2_X; 
+    eye2.center.y = /*tw->y +*/ OFFSET_EYE_2_Y; 
   
     updateMouseCoord(&mouse);
 
@@ -139,7 +139,7 @@ int noxeyes_main(int zboing) {
       wait++;
 
       if(wait >= 1000000) {
-        if(tw->x == 0)
+        /*if(tw->x == 0)
           isz_c = 1;
         if(tw->y == 0)
           isz_l = 1;
@@ -148,7 +148,7 @@ int noxeyes_main(int zboing) {
         if(tw->y + tw->lines > 24)
           isz_l = -1;
       
-        move_text_window(tw, tw->x + isz_c, tw->y + isz_l);
+        move_text_window(tw, tw->x + isz_c, tw->y + isz_l);*/
         wait = 0;
       }
     }

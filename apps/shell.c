@@ -12,7 +12,6 @@
 #include <shell_utils.h>
 #include <apps.h>
 #include <sem.h>
-#include <video.h>
 #include <debug.h>
 #include <serial.h>
 #include <unistd.h>

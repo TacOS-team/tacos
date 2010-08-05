@@ -3,7 +3,7 @@
 #include <time.h>
 #include <process.h>
 #include <string.h>
-#include <video.h>
+//#include <video.h>
 
 #define LARGEUR 80
 #define HAUTEUR 24

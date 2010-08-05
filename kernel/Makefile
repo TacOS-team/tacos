@@ -3,7 +3,7 @@ CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin
 
 SRCS = *.c
 
-all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o process.o pagination.o kpanic.o ksyscall.o vmm.o kmalloc.o fat.o fpu.o vm86.o ksem.o elf.o kfcntl.o kunistd.o
+all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o process.o pagination.o kpanic.o ksyscall.o vmm.o kmalloc.o fat.o fpu.o vm86.o ksem.o elf.o kfcntl.o kunistd.o video.o
 
 boot.o: boot.S
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) -fno-stack-protector
@@ -54,12 +54,12 @@ kernel.o: include/kpanic.h ../include/kmalloc.h include/vmm.h
 kernel.o: ../include/ioports.h include/msr.h ../include/fat.h include/fpu.h
 kernel.o: include/vm86.h ../include/beeper.h ../include/debug.h
 kernel.o: ../include/shell.h include/ksyscall.h ../include/syscall.h
-kernel.o: include/ksem.h ../include/video.h ../include/serial.h
+kernel.o: include/ksem.h include/video.h ../include/serial.h
 kfcntl.o: ../include/process.h ../include/types.h ../include/libio.h
 kfcntl.o: ../include/fcntl.h ../include/pagination.h ../include/stdio.h
 kfcntl.o: ../include/kfcntl.h ../include/stdarg.h ../include/fat.h
 kfcntl.o: ../include/string.h ../include/stdlib.h ../include/keyboard.h
-kfcntl.o: ../include/video.h
+kfcntl.o: include/video.h
 kmalloc.o: ../include/types.h ../include/stdio.h ../include/fcntl.h
 kmalloc.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
 kmalloc.o: ../include/heap.h include/vmm.h ../include/kmalloc.h
@@ -88,7 +88,7 @@ pagination.o: ../include/stdio.h ../include/fcntl.h ../include/libio.h
 pagination.o: ../include/kfcntl.h ../include/stdarg.h
 process.o: ../include/types.h ../include/stdlib.h ../include/stdio.h
 process.o: ../include/fcntl.h ../include/libio.h ../include/kfcntl.h
-process.o: ../include/stdarg.h ../include/string.h ../include/video.h
+process.o: ../include/stdarg.h ../include/string.h include/video.h
 process.o: include/gdt.h ../include/process.h ../include/pagination.h
 process.o: ../include/kmalloc.h ../include/syscall.h ../include/time.h
 process.o: ../include/elf.h ../include/debug.h
@@ -99,6 +99,11 @@ scheduler.o: ../include/events.h ../include/time.h ../include/clock.h
 scheduler.o: ../include/ioports.h include/gdt.h include/i8259.h
 scheduler.o: ../include/syscall.h ../include/debug.h ../include/kmalloc.h
 scheduler.o: ../include/string.h
+video.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
+video.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
+video.o: ../include/ioports.h ../include/ctype.h include/video.h
+video.o: ../include/stdlib.h ../include/syscall.h ../include/process.h
+video.o: ../include/pagination.h
 vm86.o: ../include/debug.h include/gdt.h ../include/types.h
 vmm.o: ../include/memory.h ../include/types.h ../include/pagination.h
 vmm.o: include/vmm.h ../include/stdio.h ../include/fcntl.h ../include/libio.h

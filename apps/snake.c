@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <process.h>
-#include <video.h>
 
 #define LIGNES 10
 #define COLONNES 20

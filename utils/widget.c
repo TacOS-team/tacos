@@ -4,7 +4,6 @@
 #include <string.h>
 #include <stdio.h>
 #include <mouse.h>
-#include <video.h>
 #include <ctype.h>
 #include <process.h>
 
@@ -143,7 +142,9 @@ void displayWindow(struct window_t* win)
 	}
 
 	fflush(stdout);
-	disable_cursor(1);
+	
+    // Cette fonction n'est pas exposée en userspace.
+    disable_cursor(1);
 }
 
 void runWindow(struct window_t* win)
@@ -168,13 +169,13 @@ void runWindow(struct window_t* win)
 			x = x*79/640;
 			y = 24 - (y*24/480);
 
-			if(!frst_time)
-				set_attribute_position(colbg, colfg, old_x, old_y);
+	/*		if(!frst_time)
+				set_attribute_position(colbg, colfg, old_x, old_y); // non exposé en userspace...
 			else
 				frst_time = 0;
 			colfg = get_fg_position(x,y);
 			colbg = get_bg_position(x,y);
-			set_attribute_position(win->cursor, BLACK, x, y);
+			set_attribute_position(win->cursor, BLACK, x, y);*/
 			old_x = x;
 			old_y = y;
 	

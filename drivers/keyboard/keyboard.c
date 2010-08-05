@@ -4,7 +4,6 @@
 #include <ioports.h>
 #include <keyboard.h>
 #include <process.h>
-#include <video.h>
 
 #define BUFFER_SIZE 256
 
@@ -254,10 +253,10 @@ void keyboardInterrupt(int id __attribute__ ((unused)))
 		break;
 	case KEY_F1:
 		// XXX : switchBuffer ne devrait plus être ici je pense... Car il faudrait aussi changer le buffer au premier plan.
-		switchBuffer(0);
+		//switchBuffer(0);
 		break;
 	case KEY_F2:
-		switchBuffer(1);
+		//switchBuffer(1);
 		break;
 	default: 
 		if (alt) {

@@ -12,7 +12,6 @@
 #include <sem.h>
 #include <gui.h>
 #include <memory.h>
-#include <video.h>
 #include <debug.h>
 #include <unistd.h>
 #include <list.h>
