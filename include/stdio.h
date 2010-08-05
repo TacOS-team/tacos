@@ -6,6 +6,7 @@
  */
 
 #include <fcntl.h>
+#include <kfcntl.h>
 #include <types.h>
 #include <stdarg.h>
 

@@ -28,7 +28,7 @@
 #include <fpu.h>
 #include <vm86.h>
 #include <beeper.h>
-#include <fcntl.h>
+#include <kfcntl.h>
 #include <debug.h>
 #include <shell.h>
 #include <ksyscall.h>

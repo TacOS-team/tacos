@@ -17,41 +17,43 @@ depend: $(SRCS)
 # DO NOT DELETE
 
 demo_cube.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
-demo_cube.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
-demo_cube.o: ../include/time.h ../include/process.h ../include/pagination.h
-demo_cube.o: ../include/string.h ../include/video.h
+demo_cube.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
+demo_cube.o: ../include/stdlib.h ../include/time.h ../include/process.h
+demo_cube.o: ../include/pagination.h ../include/string.h ../include/video.h
 fiinou.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
-fiinou.o: ../include/libio.h ../include/stdarg.h
+fiinou.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
 matrix.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
-matrix.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
-matrix.o: ../include/unistd.h
+matrix.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
+matrix.o: ../include/stdlib.h ../include/unistd.h ../include/process.h
+matrix.o: ../include/pagination.h
 noxeyes.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
-noxeyes.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
-noxeyes.o: ../include/video.h ../include/process.h ../include/pagination.h
-noxeyes.o: ../include/mouse.h
+noxeyes.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
+noxeyes.o: ../include/stdlib.h ../include/video.h ../include/process.h
+noxeyes.o: ../include/pagination.h ../include/mouse.h
 pres.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
-pres.o: ../include/libio.h ../include/stdarg.h ../include/gui.h
-pres.o: ../include/process.h ../include/pagination.h
+pres.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
+pres.o: ../include/gui.h ../include/process.h ../include/pagination.h
 shell.o: ../include/fat.h ../include/types.h ../include/fcntl.h
-shell.o: ../include/libio.h ../include/floppy.h ../include/kmalloc.h
-shell.o: ../include/memory.h ../include/mouse.h ../include/pci.h
-shell.o: ../include/process.h ../include/pagination.h ../include/stdio.h
-shell.o: ../include/stdarg.h ../include/stdlib.h ../include/string.h
-shell.o: ../include/time.h include/shell_utils.h include/apps.h
-shell.o: ../include/sem.h ../include/video.h ../include/debug.h
-shell.o: ../include/serial.h
+shell.o: ../include/libio.h ../include/kfcntl.h ../include/floppy.h
+shell.o: ../include/kmalloc.h ../include/memory.h ../include/mouse.h
+shell.o: ../include/pci.h ../include/process.h ../include/pagination.h
+shell.o: ../include/stdio.h ../include/stdarg.h ../include/stdlib.h
+shell.o: ../include/string.h ../include/time.h include/shell_utils.h
+shell.o: include/apps.h ../include/sem.h ../include/video.h
+shell.o: ../include/debug.h ../include/serial.h ../include/unistd.h
 shell_utils.o: ../include/types.h ../include/stdio.h ../include/fcntl.h
-shell_utils.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
-shell_utils.o: ../include/string.h include/shell_utils.h
+shell_utils.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
+shell_utils.o: ../include/stdlib.h ../include/string.h include/shell_utils.h
 snake.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
-snake.o: ../include/libio.h ../include/stdarg.h ../include/stdlib.h
-snake.o: ../include/time.h ../include/process.h ../include/pagination.h
-snake.o: ../include/video.h
+snake.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
+snake.o: ../include/stdlib.h ../include/time.h ../include/process.h
+snake.o: ../include/pagination.h ../include/video.h
 tests.o: ../include/fat.h ../include/types.h ../include/fcntl.h
-tests.o: ../include/libio.h ../include/floppy.h ../include/kmalloc.h
-tests.o: ../include/mouse.h ../include/pci.h ../include/process.h
-tests.o: ../include/pagination.h ../include/stdio.h ../include/stdarg.h
-tests.o: ../include/stdlib.h ../include/string.h ../include/time.h
-tests.o: include/apps.h ../include/sem.h ../include/gui.h ../include/memory.h
-tests.o: ../include/video.h ../include/debug.h ../include/unistd.h
-tests.o: ../include/list.h ../include/serial.h ../include/elf.h
+tests.o: ../include/libio.h ../include/kfcntl.h ../include/floppy.h
+tests.o: ../include/kmalloc.h ../include/mouse.h ../include/pci.h
+tests.o: ../include/process.h ../include/pagination.h ../include/stdio.h
+tests.o: ../include/stdarg.h ../include/stdlib.h ../include/string.h
+tests.o: ../include/time.h include/apps.h ../include/sem.h ../include/gui.h
+tests.o: ../include/memory.h ../include/video.h ../include/debug.h
+tests.o: ../include/unistd.h ../include/list.h ../include/serial.h
+tests.o: ../include/elf.h ../include/ctype.h
