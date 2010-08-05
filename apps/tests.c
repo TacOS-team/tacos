@@ -185,12 +185,15 @@ int test_task1(int argc , char** argv __attribute__ ((unused)))
 {
 	//while(1);
 	int pid = get_pid();
+	process_t* proc;
 	int i;
-	printf("pid %d received %d args:\n", pid, argc);	
+	printf("pid %d received %d args:\n", pid, argc);
+	
 	for(i=0; i<argc; i++)
 	{
 		printf("#%d - %s\n",i, argv[i]);
 	}
+	
 	return 0;
 }
 

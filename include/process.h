@@ -149,11 +149,15 @@ process_t* get_active_process();
 void sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2);
 void sys_getpid(uint32_t* pid, uint32_t zero1, uint32_t zero2);
 void sys_kill(uint32_t pid, uint32_t zero1, uint32_t zero2);
+void sys_proc(uint32_t sub_func, uint32_t param1, uint32_t param2);
 
-// A mettre en user-space
+/* A mettre en user-space */
+#define CURRENT_PROCESS -1
+
 void exit(uint32_t value);
 uint32_t get_pid();
 void kill(uint32_t pid);
 void exec(paddr_t prog, char* name);
+process_t* get_process(int pid);
 
 #endif

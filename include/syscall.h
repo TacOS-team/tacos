@@ -13,6 +13,7 @@
 #define SYS_SLEEP 8
 #define SYS_SEMCTL 9
 #define SYS_VIDEO_CTL 10
+#define SYS_PROC 11
 
 void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3);
 

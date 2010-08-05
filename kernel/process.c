@@ -13,6 +13,8 @@
 
 #include <debug.h>
 
+#define GET_PROCESS 0
+
 typedef int (*main_func_type) (uint32_t, uint8_t**);
 
 uint32_t proc_count = 0;
@@ -529,6 +531,21 @@ void sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused))
 	create_process(name, prog, args , 0x1000, 3);
 }
 
+void sys_proc(uint32_t sub_func, uint32_t param1, uint32_t param2)
+{
+	switch(sub_func)
+	{
+		case GET_PROCESS:
+			if((int)param1 == CURRENT_PROCESS)
+				*((process_t**) param2) = get_current_process();
+			else
+				*((process_t**) param2) = find_process(param1);
+			break;
+		default:
+			kprintf("sys_proc: invalid syscall.\n");
+	}
+}
+
 /* A mettre en user space */
 void exit(uint32_t value)
 { 
@@ -551,5 +568,12 @@ void kill(uint32_t pid)
 void exec(paddr_t prog, char* name)
 {
 	syscall(SYS_EXEC, (uint32_t)prog, (uint32_t)name, (uint32_t)NULL);
+}
+
+process_t* get_process(int pid)
+{
+	process_t* temp;
+	syscall(SYS_PROC,(uint32_t)GET_PROCESS, (uint32_t)pid, (uint32_t) &temp);
+	return temp;
 }
 

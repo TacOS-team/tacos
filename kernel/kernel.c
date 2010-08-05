@@ -139,6 +139,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_SLEEP, (syscall_handler_t)sys_sleep);
 	syscall_set_handler(SYS_VIDEO_CTL, (syscall_handler_t)sys_video_ctl);
 	syscall_set_handler(SYS_SEMCTL, (syscall_handler_t)sys_ksem);
+	syscall_set_handler(SYS_PROC, (syscall_handler_t)sys_proc);
 	
 	// Création du processus par défaut: notre shell
 	create_process("Mishell", (paddr_t)shell,"coucou les petits clous",0x10000,3);
