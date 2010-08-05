@@ -3,7 +3,7 @@ CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin
 
 SRCS = *.c
 
-all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o process.o pagination.o kpanic.o ksyscall.o vmm.o kmalloc.o fat.o fpu.o vm86.o ksem.o elf.o kfcntl.o
+all: boot.o exception_wrappers.o interrupts_wrappers.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o process.o pagination.o kpanic.o ksyscall.o vmm.o kmalloc.o fat.o fpu.o vm86.o ksem.o elf.o kfcntl.o kunistd.o
 
 boot.o: boot.S
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) -fno-stack-protector
@@ -44,7 +44,7 @@ interrupts.o: ../include/interrupts.h
 kernel.o: include/multiboot.h include/idt.h ../include/types.h
 kernel.o: include/i8259.h ../include/stdio.h ../include/fcntl.h
 kernel.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
-kernel.o: ../include/stdlib.h ../include/unistd.h ../include/string.h
+kernel.o: ../include/stdlib.h ../include/kunistd.h ../include/string.h
 kernel.o: ../include/memory.h ../include/pagination.h include/gdt.h
 kernel.o: include/exception.h ../include/interrupts.h ../include/pci.h
 kernel.o: ../include/pci_config.h ../include/pci_types.h include/scheduler.h
@@ -75,6 +75,8 @@ ksyscall.o: include/msr.h ../include/stdio.h ../include/fcntl.h
 ksyscall.o: ../include/types.h ../include/libio.h ../include/kfcntl.h
 ksyscall.o: ../include/stdarg.h ../include/string.h ../include/interrupts.h
 ksyscall.o: include/ksyscall.h ../include/syscall.h
+kunistd.o: ../include/process.h ../include/types.h ../include/libio.h
+kunistd.o: ../include/fcntl.h ../include/pagination.h ../include/kfcntl.h
 mbr.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 mbr.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
 mbr.o: ../include/floppy.h include/mbr.h

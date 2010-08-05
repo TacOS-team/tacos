@@ -37,9 +37,9 @@ time.o: ../include/time.h ../include/types.h ../include/stdio.h
 time.o: ../include/fcntl.h ../include/libio.h ../include/kfcntl.h
 time.o: ../include/stdarg.h ../include/clock.h
 unistd.o: ../include/unistd.h ../include/types.h ../include/events.h
-unistd.o: ../include/time.h ../include/process.h ../include/libio.h
-unistd.o: ../include/fcntl.h ../include/pagination.h ../include/stdio.h
-unistd.o: ../include/kfcntl.h ../include/stdarg.h ../include/syscall.h
+unistd.o: ../include/time.h ../include/stdio.h ../include/fcntl.h
+unistd.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
+unistd.o: ../include/syscall.h
 stdio/fmemopen.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 stdio/fmemopen.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
 stdio/fmemopen.o: ../include/stdlib.h ../include/fopen.h
