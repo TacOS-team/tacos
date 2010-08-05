@@ -182,7 +182,7 @@ int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 }
 
 int test_task1(int argc , char** argv __attribute__ ((unused)))
-{
+{	
 	//while(1);
 	int pid = get_pid();
 	process_t* proc;

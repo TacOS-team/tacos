@@ -92,7 +92,7 @@ static int resize_cmd_pid() {
   process_t *p;
 	
   scanf("%d %d %d", &pid, &x, &y);
-  p = find_process(pid);
+  p = get_process(pid);
 
   if(p != NULL) {
   	resize_text_window(p->fd[1].ofd->extra_data, x, y);
@@ -107,7 +107,7 @@ static int move_pid() {
   process_t *p;
 
 	scanf("%d %d %d", &pid, &x, &y);
-  p = find_process(pid);
+  p = get_process(pid);
 
   if(p != NULL) {
   	move_text_window(p->fd[1].ofd->extra_data, x, y);
