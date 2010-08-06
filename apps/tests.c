@@ -300,27 +300,7 @@ int test_fwrite()
 	return 0;
 }
 */
-int test_sprintf()
-{
-	char buffer[80];
-	sprintf(buffer, "Test : %d", 42);
-    //sprintf(buffer, "%s", buffer); // Déconne ;)
-	printf("%s\n", buffer);
-	return 0;
-}
-
-int test_sscanf()
-{
-	char * str = "Hello 42 bla";
-	char s[10];
-	char s2[10];
-	int d;
-
-	sscanf(str, "%s %d %s", s, &d, s2);
-
-	printf("%s %d %s\n", s2, d, s);
-	return 0;
-}	
+	
 
 int debug_fat()
 {
@@ -376,48 +356,83 @@ int proc_read_serial(int argc __attribute__ ((unused)), char** argv __attribute_
 }
 
 void tu_ctype(const char * nom_test, int (*p)(), const char * resultat_attendu) {
-    char buf[256];
-    buf[0] = '\0';
-    int len = 0;
-    unsigned char c;
-    for (c = 0; c < 255; c++) {
-        if (p(c)) {
-            buf[len++] = c;
-        }
-    }
-    buf[len] = '\0';
-    if (strcmp(buf, resultat_attendu) == 0) {
-			printf("%s [OK]\n", nom_test);
-    } else {
-			printf("%s [failed] :(\n", nom_test);
-			printf("Attendu : %s\n Obtenu : %s\n", resultat_attendu, buf);
-			printf("Ou encore : ");
-			for (c = 0; c < len; c++) {
-				printf("(%d)", buf[c]);
-			}
-			printf("\n Attendu : ");
-			for (c = 0; c < strlen(resultat_attendu); c++) {
-				printf("(%d)", resultat_attendu[c]);
-			}
-			printf("\n");
-    }
+	char buf[256];
+	buf[0] = '\0';
+	int len = 0;
+	unsigned char c;
+	for (c = 0; c < 255; c++) {
+		if (p(c)) {
+			buf[len++] = c;
+		}
+	}
+	buf[len] = '\0';
+	if (strcmp(buf, resultat_attendu) == 0) {
+		printf("%s [OK]\n", nom_test);
+	} else {
+		printf("%s [failed] :(\n", nom_test);
+		printf("Attendu : %s\n Obtenu : %s\n", resultat_attendu, buf);
+		printf("Ou encore : ");
+		for (c = 0; c < len; c++) {
+			printf("(%d)", buf[c]);
+		}
+		printf("\n Attendu : ");
+		for (c = 0; c < strlen(resultat_attendu); c++) {
+			printf("(%d)", resultat_attendu[c]);
+		}
+		printf("\n");
+	}
+}
+
+
+int test_sscanf()
+{
+	char * str = "Hello 42 bla";
+	char s[10];
+	char s2[10];
+	int d;
+
+	sscanf(str, "%s %d %s", s, &d, s2);
+
+	printf("%s %d %s\n", s2, d, s);
+	return 0;
+}
+
+void tu_sprintf() {
+	char *t = "Hello";
+	char *t2 = "World";
+	int d = 42;
+	char *resultat_attendu = "TU : Hello (42) World";
+	char buf[80];
+	sprintf(buf, "TU : %s (%d) %s", t, d, t2);
+
+	if (strcmp(buf, resultat_attendu) == 0) {
+		printf("%s [OK]\n", "sprintf");
+	} else {
+		printf("%s [failed] :(\n", "sprintf");
+		printf("Attendu : %s\n Obtenu : %s\n", resultat_attendu, buf);
+	}
 }
 
 int test_ctype()
 {
-    tu_ctype("isupper", isupper, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");    
-    tu_ctype("islower", islower, "abcdefghijklmnopqrstuvwxyz");    
-    tu_ctype("isalpha", isalpha, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");    
-    tu_ctype("isdigit", isdigit, "0123456789");
-    tu_ctype("isalnum", isalnum, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");    
-    tu_ctype("ispunct", ispunct, "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~");
-    tu_ctype("isspace", isspace, "\t\n\v\f\r ");
-	 tu_ctype("isprint", isprint, " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
-	 
+	tu_ctype("isupper", isupper, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+	tu_ctype("islower", islower, "abcdefghijklmnopqrstuvwxyz");
+	tu_ctype("isalpha", isalpha, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+	tu_ctype("isdigit", isdigit, "0123456789");
+	tu_ctype("isalnum", isalnum, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+	tu_ctype("ispunct", ispunct, "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~");
+	tu_ctype("isspace", isspace, "\t\n\v\f\r ");
+	tu_ctype("isprint", isprint, " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
 
-    // TODO : compléter.
 
-    return 0;
+	// TODO : compléter.
+
+	return 0;
+}
+
+int test_stdio()
+{
+	tu_sprintf();
 }
 
 int test_read_serial()

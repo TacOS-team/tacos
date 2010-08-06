@@ -189,7 +189,6 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_fputs, "test_fputs");
 	add_builtin_cmd(test_fwrite, "test_fwrite");
 	add_builtin_cmd(test_fread, "test_fread");
-	add_builtin_cmd(test_sprintf, "test_sprintf");
 	add_builtin_cmd((func_ptr)exec_top, "ps"); /*TODO: Fournir les interfaces avec kprocess pour pouvoir faire ça */
 	/*add_builtin_cmd(test_sscanf, "test_sscanf");*/
 	//add_builtin_cmd(kmalloc_print_mem, "kmalloc_print_mem");
@@ -224,7 +223,8 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_write_serial, "write_serial");
 	add_builtin_cmd(test_read_serial, "read_serial");
 	add_builtin_cmd(test_elf, "test_elf");
-    add_builtin_cmd(test_ctype, "test_ctype");
+	add_builtin_cmd(test_ctype, "test_ctype");
+	add_builtin_cmd(test_stdio, "test_stdio");
 
 	disable_cursor(0);
 	

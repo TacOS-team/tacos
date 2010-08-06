@@ -21,7 +21,6 @@ int test_fgets();
 int test_fputs();
 int test_fwrite();
 int test_fread();
-int test_sprintf();
 int test_sscanf();
 int test_write_serial();
 int test_read_serial();
@@ -32,5 +31,6 @@ int cube_launcher();
 int noxeyes(); 
 int test_elf();
 int test_ctype();
+int test_stdio();
 
 #endif //APPS_H
