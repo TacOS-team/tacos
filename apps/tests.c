@@ -156,6 +156,40 @@ void test_kmalloc()
 	getchar();
 }
 
+int tu_rand()
+{
+    int tab[100];
+    int i;
+    int n_tirages = 1000000;
+    int n;
+    char *nom_test = "rand";
+
+    // init
+    for (i = 0; i < 100; i++) {
+        tab[i] = 0;
+    }
+
+    // tirages
+    for (n = 0; n < n_tirages; n++) {
+        i = (double)rand() / ((double)(RAND_MAX) + 1.0) * 100.0;
+        tab[i]++;
+    }
+
+    double Q = 0;
+    for (i = 0; i < 100; i++) {
+        Q += (double)((tab[i] - 10000) * (tab[i] - 10000)) / 10000.0;
+    }
+
+    if (Q < 123.23) { // 5% d'erreur (http://www.apprendre-en-ligne.net/random/tablekhi2.html)
+		printf("%s [OK] (%d.%d)\n", nom_test, (int)Q, (int)((Q - (int)Q)*100));
+        return 1;
+    } else {
+		printf("%s [failed] :(\n", nom_test);
+		printf("Attendu : < 123.23\n Obtenu : %d.%d\n", (int)Q, (int)((Q - (int)Q)*100));
+		printf("Ou encore : ");
+        return 0;
+    }
+}
 
 int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
@@ -444,6 +478,8 @@ int test_ctype()
 
 int test_stdio()
 {
+    tu_rand(); // TODO : le bouger ailleurs.
+
 	tu_sprintf()
     && tu_sscanf();
 }
