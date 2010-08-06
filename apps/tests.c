@@ -429,7 +429,7 @@ int tu_sscanf()
 
 	sscanf(str, "%s %d %s", s, &d, s2);
 
-	sprintf(buf, "TU : %s (%d) %s\n", s2, d, s);
+	sprintf(buf, "TU : %s (%d) %s", s2, d, s);
 
     if (strcmp(buf, resultat_attendu) == 0) {
         printf("%s [OK]\n", "sscanf");
