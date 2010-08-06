@@ -3,9 +3,6 @@
 
 #include <process.h>
 
-/* Temporaire */
-int create_process_test(char* name, uint32_t argc, char** argv, uint32_t prog_size, uint32_t stack_size, uint8_t ring __attribute__ ((unused)));
-
 /** 
 * @brief (OUTDATED)Crée un nouveau processus.
 * Crée un nouveau processus et l'ajoute à la liste des processus avec un état d'exécution PROCSTATE_IDLE.
@@ -58,11 +55,6 @@ process_t* get_next_process();
 * @return nombre de processus dans la liste.
 */
 uint32_t get_proc_count();
-
-/** 
-* @brief Affiche la liste des processus.
-*/
-void print_process_list();
 
 /** 
 * @brief Nettoie la liste des processus.

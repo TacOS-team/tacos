@@ -5,6 +5,8 @@
 #include <process.h>
 
 #define GET_PROCESS 0
+#define GET_PROCESS_LIST 1
+
 
 void exit(uint32_t value)
 { 
@@ -36,3 +38,9 @@ process_t* get_process(int pid)
 	return temp;
 }
 
+process_t* get_process_list(uint32_t action)
+{
+	process_t* temp;
+	syscall(SYS_PROC,(uint32_t)GET_PROCESS_LIST, (uint32_t)action, (uint32_t) &temp);
+	return temp;
+}

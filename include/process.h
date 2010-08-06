@@ -13,6 +13,10 @@
 #define PROCSTATE_WAITING 3
 #define PROCSTATE_TERMINATED 4 
 
+#define FIRST_PROCESS 0
+#define NEXT_PROCESS 1
+#define PREV_PROCESS 2
+
 #define CPU_USAGE_SAMPLE_RATE 500
 
 typedef struct
@@ -69,5 +73,6 @@ uint32_t get_pid();
 void kill(uint32_t pid);
 void exec(paddr_t prog, char* name);
 process_t* get_process(int pid);
+process_t* get_process_list(uint32_t action);
 
 #endif

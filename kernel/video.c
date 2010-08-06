@@ -655,7 +655,10 @@ void resize_text_window(text_window *tw, int x, int y) {
 	refresh(tw);
 }
 
-
+/* XXX : on peut pas et utiliser get_current_process (qui est kernel) et syscall (qui est user), 
+ * a voir de quel coté le mettre, et le sortir du dossier kernel si necessaire 
+ * (idem pour les fonctions d'en dessous) 
+ */
 void set_attribute(uint8_t background, uint8_t foreground) 
 {
 	text_window * tw = get_current_process()->fd[1].ofd->extra_data;
