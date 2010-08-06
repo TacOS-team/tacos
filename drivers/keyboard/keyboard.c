@@ -184,18 +184,24 @@ void keyBufferPush(char c)
 }
 
 size_t write_keyboard(open_file_descriptor *ofd, const void *buf, size_t count) {
+    open_file_descriptor *ofd2;
 	if (ofd != NULL) {
+        process_t *process = get_active_process();
+
         if (((char*)buf)[0] == '\b') {
             if (ofd->current_octet_buf) {
         		ofd->current_octet_buf--;
-                // TODO : Regarder si on supprime une tabulation car dans ce cas il faut repartir bien plus en arrière.
-                printf("\b");
-                fflush(stdout);
+                if (process->fd[1].used) {
+                    ofd2 = process->fd[1].ofd;
+                    ofd2->write(ofd2, "\b", 1);
+                }
             }
         } else {
     		ofd->buffer[ofd->current_octet_buf++] = ((char*)buf)[0];
-            printf("%c", ((char*)buf)[0]);
-            fflush(stdout);
+            if (process->fd[1].used) {
+                ofd2 = process->fd[1].ofd;
+                ofd2->write(ofd2, &((char*)buf)[0], 1);
+            }
         }
 	}
 	return count;
