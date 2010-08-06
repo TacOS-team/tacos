@@ -432,10 +432,10 @@ int tu_sscanf()
 	sprintf(buf, "TU : %s (%d) %s\n", s2, d, s);
 
     if (strcmp(buf, resultat_attendu) == 0) {
-        printf("%s [OK]\n", "sprintf");
+        printf("%s [OK]\n", "sscanf");
         return 1;
     } else {
-        printf("%s [failed] :(\n", "sprintf");
+        printf("%s [failed] :(\n", "sscanf");
         printf("Attendu : %s\n Obtenu : %s\n", resultat_attendu, buf);
         return 0;
     }
@@ -447,14 +447,16 @@ int tu_sprintf() {
 	int d = 42;
 	char *resultat_attendu = "TU : Hello (42) World";
 	char buf[80];
-	sprintf(buf, "TU : %s (%d) %s", t, d, t2);
+	int r = sprintf(buf, "TU : %s (%d) %s", t, d, t2);
 
-	if (strcmp(buf, resultat_attendu) == 0) {
+	if (strcmp(buf, resultat_attendu) == 0 && r == strlen(resultat_attendu)) {
 		printf("%s [OK]\n", "sprintf");
         return 1;
 	} else {
 		printf("%s [failed] :(\n", "sprintf");
 		printf("Attendu : %s\n Obtenu : %s\n", resultat_attendu, buf);
+        printf("Code retour : %d\n", r);
+        printf("Code retour attendu : %d\n", strlen(resultat_attendu));
         return 0;
 	}
 }

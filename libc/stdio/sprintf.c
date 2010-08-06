@@ -28,7 +28,9 @@ int snprintf(char *str, size_t size, const char *format, ...) {
 
 int vsprintf(char *str, const char *format, va_list ap) {
 	FILE * stream = fmemopen(str, 10000, "r");
-	return vfprintf(stream, format, ap);
+	int r = vfprintf(stream, format, ap);
+    str[r] = '\0';
+    return r;
 }
 
 int vsnprintf(char *str, size_t size, const char *format, va_list ap) {
