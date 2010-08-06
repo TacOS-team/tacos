@@ -63,7 +63,6 @@ kfcntl.o: ../include/keyboard.h include/video.h
 kmalloc.o: ../include/types.h ../include/stdio.h ../include/fcntl.h
 kmalloc.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
 kmalloc.o: ../include/heap.h include/vmm.h ../include/kmalloc.h
-kmsg_queue.o: include/kmsg_queue.h include/ksem.h ../include/types.h
 kpanic.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 kpanic.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
 kpanic.o: include/exception.h include/kpanic.h include/kprocess.h
@@ -94,9 +93,6 @@ memory.o: ../include/memory.h
 pagination.o: ../include/types.h ../include/memory.h ../include/pagination.h
 pagination.o: ../include/stdio.h ../include/fcntl.h ../include/libio.h
 pagination.o: ../include/kfcntl.h ../include/stdarg.h
-round_robin.o: include/kprocess.h ../include/process.h ../include/types.h
-round_robin.o: ../include/libio.h ../include/fcntl.h ../include/pagination.h
-round_robin.o: include/scheduler.h ../include/kmalloc.h include/video.h
 scheduler.o: ../include/stdio.h ../include/fcntl.h ../include/types.h
 scheduler.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
 scheduler.o: include/kprocess.h ../include/process.h ../include/pagination.h

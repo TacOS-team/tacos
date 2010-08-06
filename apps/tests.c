@@ -384,20 +384,30 @@ void tu_ctype(const char * nom_test, int (*p)(), const char * resultat_attendu) 
 }
 
 
-int test_sscanf()
+int tu_sscanf()
 {
-	char * str = "Hello 42 bla";
+	char * str = "World 42 Hello";
 	char s[10];
 	char s2[10];
 	int d;
+    char *resultat_attendu = "TU : Hello (42) World";
+	char buf[80];
 
 	sscanf(str, "%s %d %s", s, &d, s2);
 
-	printf("%s %d %s\n", s2, d, s);
-	return 0;
+	sprintf(buf, "TU : %s (%d) %s\n", s2, d, s);
+
+    if (strcmp(buf, resultat_attendu) == 0) {
+        printf("%s [OK]\n", "sprintf");
+        return 1;
+    } else {
+        printf("%s [failed] :(\n", "sprintf");
+        printf("Attendu : %s\n Obtenu : %s\n", resultat_attendu, buf);
+        return 0;
+    }
 }
 
-void tu_sprintf() {
+int tu_sprintf() {
 	char *t = "Hello";
 	char *t2 = "World";
 	int d = 42;
@@ -407,9 +417,11 @@ void tu_sprintf() {
 
 	if (strcmp(buf, resultat_attendu) == 0) {
 		printf("%s [OK]\n", "sprintf");
+        return 1;
 	} else {
 		printf("%s [failed] :(\n", "sprintf");
 		printf("Attendu : %s\n Obtenu : %s\n", resultat_attendu, buf);
+        return 0;
 	}
 }
 
@@ -432,7 +444,8 @@ int test_ctype()
 
 int test_stdio()
 {
-	tu_sprintf();
+	tu_sprintf()
+    && tu_sscanf();
 }
 
 int test_read_serial()
