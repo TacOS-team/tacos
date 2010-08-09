@@ -127,35 +127,6 @@ void test_memory_reserve_page_frame() {
 		printf("Cadre de page réservé : %d\n", memory_reserve_page_frame());
 }
 
-void test_kmalloc()
-{
-	int *a, *b, *c;
-	kmalloc_print_mem();
-	getchar();
-
-	a = (int *) kmalloc(300*sizeof(int));
-	b = (int *) kmalloc(2048*sizeof(int));
-	c = (int *) kmalloc(300000*sizeof(int));
-	printf("A : %x\nB : %x\nC : %x\n", a, b, c);
-	kmalloc_print_mem();
-	getchar();
-
-	printf("REMOVING %x\n", b);
-	kfree(b);
-	kmalloc_print_mem();
-	getchar();
-
-	b = (int *) kmalloc(300*sizeof(int));
-	kmalloc_print_mem();
-	getchar();
-
-	kfree(a);
-	kfree(b);
-	kfree(c);
-	kmalloc_print_mem();
-	getchar();
-}
-
 int tu_rand()
 {
     int tab[100];

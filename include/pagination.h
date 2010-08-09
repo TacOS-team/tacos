@@ -6,6 +6,11 @@
  */
 
 /**
+ * Emplacement de mémoire virtuelle réservé au kernel : 0 -> 1gio
+ */
+#define _PAGINATION_KERNEL_TOP 0x40000000
+
+/**
  * @struct page_directory_entry
  * @brief Page Directory Entry
  *
@@ -62,9 +67,9 @@ void pagination_setup();
  */
 void pagination_init_page_directory(struct page_directory_entry * pd);
 void pagination_init_page_directory_from_current(struct page_directory_entry * pd);
+void pagination_init_page_directory_copy_kernel_only(struct page_directory_entry *pd); 
 void pagination_load_page_directory(struct page_directory_entry * pd);
 
-vaddr_t get_last_page_table();
-int last_page_table_next();
+vaddr_t get_page_table_vaddr(int index_page); 
 
 #endif

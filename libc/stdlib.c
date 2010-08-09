@@ -7,12 +7,7 @@
 #include <errno.h>
 #include <ctype.h>
 #include <string.h>
-#include <kmalloc.h>
-
-void *malloc(size_t size)
-{
-  return kmalloc(size);
-}
+#include <malloc.h>
 
 void *calloc(size_t nmemb, size_t size)
 {
@@ -22,16 +17,11 @@ void *calloc(size_t nmemb, size_t size)
   if(nmemb == 0 || size == 0)
     return NULL;
 
-  p = (uint8_t *) kmalloc(nmemb * size);
+  p = (uint8_t *) malloc(nmemb * size);
   for(i=0 ; i<nmemb*size ; i++)
     *(p+i) = 0;
 
   return p;
-}
-
-int free(void *addr)
-{
-  return kfree(addr);
 }
 
 static int digitvalue(char c)

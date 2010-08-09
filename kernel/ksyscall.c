@@ -47,3 +47,4 @@ void init_syscall()
 	// Mise à zero de la table des handler
 	memset(syscall_handler_table, 0, MAX_SYSCALL_NB*sizeof(syscall_handler_t));
 }
+

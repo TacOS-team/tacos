@@ -26,7 +26,7 @@ uint32_t proc_count = 0;
 static proc_list process_list = NULL;
 static proclist_cell* current_proclist_cell = NULL;
 
-static process_t * active_process = NULL; //à un moment il fallait faire ça pour que ça ne plante pas : (process_t*) 5242880;
+static process_t * active_process = NULL; //à un moment il fallait faire ça pour que ça ne plante pas : (process_t*) 5242880; // Tant qu'il y a 42 dans l'adresse, ça me va.
 
 uint32_t get_proc_count()
 {
@@ -235,17 +235,20 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 	new_proc->kstack.esp0 = (vaddr_t)(&sys_stack[stack_size-1]);
 	
 	new_proc->state = PROCSTATE_IDLE;
-	
-
+/* XXX
+	// Initialisation des données pour la vmm
+	new_proc->vm = (struct virtual_mem *) malloc(sizeof(struct virtual_mem));
 
 	// Ne devrait pas utiliser kmalloc. Cf remarque suivante.
-	//new_proc->pd = kmalloc(sizeof(struct page_directory_entry));
-	//pagination_init_page_directory_from_current(new_proc->pd);
+	new_proc->pd = kmalloc_one_aligned_page();
+	pagination_init_page_directory_copy_kernel_only(new_proc->pd);
 
 	// Passer l'adresse physique et non virtuelle ! Attention, il faut que ça 
 	// soit contigü en mémoire physique et aligné dans un cadre...
-	//pagination_load_page_directory(new_proc->pd);
-
+	pagination_load_page_directory(vmm_get_page_paddr((vaddr_t) new_proc->pd));
+	
+	init_process_vm(new_proc->vm);
+*/
 	for(i=0;i<FOPEN_MAX;i++) 
 		new_proc->fd[i].used = FALSE;
 		

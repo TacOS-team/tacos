@@ -101,7 +101,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	pagination_setup();
 
 	/* Initialisation de la vmm */
-	init_vmm();
 	init_kmalloc();
 
 	//beep();
@@ -140,6 +139,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_VIDEO_CTL, (syscall_handler_t)sys_video_ctl);
 	syscall_set_handler(SYS_SEMCTL, (syscall_handler_t)sys_ksem);
 	syscall_set_handler(SYS_PROC, (syscall_handler_t)sys_proc);
+	syscall_set_handler(SYS_VMM, (syscall_handler_t) sys_vmm);
 	
 	// Création du processus par défaut: notre shell
 	create_process("Mishell", (paddr_t)shell,"coucou les petits clous",0x10000,3);

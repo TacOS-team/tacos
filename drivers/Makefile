@@ -50,6 +50,7 @@ keyboard/keyboard.o: ../include/libio.h ../include/kfcntl.h
 keyboard/keyboard.o: ../include/stdarg.h ../include/stdlib.h
 keyboard/keyboard.o: ../include/ioports.h ../include/keyboard.h
 keyboard/keyboard.o: ../include/process.h ../include/pagination.h
+keyboard/keyboard.o: ../include/vmm.h
 mouse/mouse.o: ../include/types.h ../include/stdio.h ../include/fcntl.h
 mouse/mouse.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
 mouse/mouse.o: ../include/ioports.h ../include/mouse.h

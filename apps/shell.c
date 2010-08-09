@@ -243,7 +243,6 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_fread, "test_fread");
 	add_builtin_cmd(ps, "ps");
 	//add_builtin_cmd(kmalloc_print_mem, "kmalloc_print_mem");
-	/*add_builtin_cmd((func_ptr)test_kmalloc, "test_kmalloc");*/
 	/*add_builtin_cmd((func_ptr)test_memory_reserve_page_frame, "test_reserve_frame");*/
 	add_builtin_cmd(ls_cmd, "ls");
 	add_builtin_cmd(ll_cmd, "ll");

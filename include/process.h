@@ -7,6 +7,7 @@
 #include <types.h>
 #include <libio.h>
 #include <pagination.h>
+#include <vmm.h>
 
 #define PROCSTATE_IDLE 1
 #define PROCSTATE_RUNNING 2
@@ -58,6 +59,7 @@ typedef struct{
 	FILE * stderr;
 
 	struct page_directory_entry * pd;
+	struct virtual_mem *vm;
 } process_t;
 
 typedef struct _proclist_cell{
