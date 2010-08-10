@@ -122,33 +122,7 @@ void pagination_init_page_directory(struct page_directory_entry * pd) {
 	pd[1023].u_s = 1;
 }
 
-void pagination_init_page_directory_from_current(struct page_directory_entry * pd) {
-	int i;
-	struct page_directory_entry * current = (struct page_directory_entry *)0xFFFFF000;
-
-	for (i = 0; i < 1023; i++) {
-		pd[i].present = current[i].present;
-		pd[i].r_w = current[i].r_w;
-		pd[i].u_s = current[i].u_s;
-		pd[i].pwt = current[i].pwt;
-		pd[i].pcd = current[i].pcd;
-		pd[i].a = current[i].a;
-		pd[i].ign1 = current[i].ign1;		
-		pd[i].ps = current[i].ps;
-		pd[i].ign2 = current[i].ign2;	
-		pd[i].page_table_addr = current[i].page_table_addr;
-	}
-
-	// La dernière entrée pointe vers lui même ce qui fait que :
-	// 0xFFFFF000 est traduit par la MMU en l'adresse du page directory
-	// 0xFFC + 1024 * index_page_table permet d'accéder à une pde
-	pd[1023].page_table_addr = ((paddr_t)pd) >> 12;
-	pd[1023].r_w = 1;
-	pd[1023].present = 1;
-	pd[1023].u_s = 1;
-}
-
-void pagination_init_page_directory_copy_kernel_only(struct page_directory_entry *pd) {
+void pagination_init_page_directory_copy_kernel_only(struct page_directory_entry *pd, paddr_t pd_paddr) {
 	int i;
 	struct page_directory_entry * current = 
 		(struct page_directory_entry *)0xFFFFF000;
@@ -174,7 +148,7 @@ void pagination_init_page_directory_copy_kernel_only(struct page_directory_entry
 	// La dernière entrée pointe vers lui même ce qui fait que :
 	// 0xFFFFF000 est traduit par la MMU en l'adresse du page directory
 	// 0xFFC + 1024 * index_page_table permet d'accéder à une pde
-	pd[1023].page_table_addr = ((paddr_t)pd) >> 12;
+	pd[1023].page_table_addr = pd_paddr >> 12;
 	pd[1023].r_w = 1;
 	pd[1023].present = 1;
 	pd[1023].u_s = 1;
