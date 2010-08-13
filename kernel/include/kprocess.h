@@ -1,7 +1,8 @@
-#ifndef _KPROCESS_H
-#define _KPROCESS_H
+#ifndef _KPROCESS_H_
+#define _KPROCESS_H_
 
-#include <process.h>
+#include <process.h> // TODO: Dans process.h ya pleins de trucs qui devraient probablement migrer dans kprocess.h...
+#include <types.h>
 
 /** 
 * @brief (OUTDATED)Crée un nouveau processus.
@@ -85,4 +86,4 @@ void sys_kill(uint32_t pid, uint32_t zero1, uint32_t zero2);
 void sys_proc(uint32_t sub_func, uint32_t param1, uint32_t param2);
 
 
-#endif /* _K_PROCESS_H */
+#endif /* _K_PROCESS_H_ */

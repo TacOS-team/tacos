@@ -2,9 +2,7 @@
 #define _FAT_H_
 
 #include <types.h>
-#include <fcntl.h>
 #include <kfcntl.h>
-
 
 #define NB_CYLINDERS 80
 #define NB_HEADS 2

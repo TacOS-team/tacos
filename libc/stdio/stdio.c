@@ -53,6 +53,7 @@ void itoa (char *buf, int base, int d) {
 	}
 }
 
+// TODO: Migrer kprintf ailleurs !!!
 void kprintf(const char *format, ...) {
 	switchBuffer(1);
   char **arg = (char **) &format;

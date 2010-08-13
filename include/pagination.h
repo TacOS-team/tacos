@@ -1,6 +1,8 @@
 #ifndef _PAGINATION_H_
 #define _PAGINATION_H_
 
+#include <types.h>
+
 /**
  * @file pagination.h
  */

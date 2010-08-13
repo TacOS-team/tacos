@@ -1,4 +1,3 @@
-#include <types.h>
 #include <stdio.h>
 #include <process.h>
 #include <syscall.h>

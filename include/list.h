@@ -25,6 +25,6 @@ int listAddElement(list_t* l, void* element);
 int listRemoveTop(list_t* l);
 int listDelElement(list_t* list, int id, id_func_type func);
 
-
 void print_list(list_t ma_liste);
-#endif
+
+#endif //_LIST_H_

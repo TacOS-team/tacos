@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory.h>
-#include <types.h>
 #include <pagination.h>
 #include <heap.h>
 #include <errno.h>

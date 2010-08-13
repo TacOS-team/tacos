@@ -25,6 +25,6 @@ clock.o: ../include/heap.h
 events.o: ../include/types.h include/i8254.h ../include/interrupts.h
 events.o: ../include/time.h ../include/clock.h ../include/list.h
 events.o: ../include/events.h ../include/stdio.h ../include/fcntl.h
-events.o: ../include/libio.h ../include/kfcntl.h ../include/stdarg.h
+events.o: ../include/kfcntl.h ../include/libio.h ../include/stdarg.h
 events.o: ../include/debug.h
 i8254.o: include/i8254.h ../include/types.h ../include/ioports.h

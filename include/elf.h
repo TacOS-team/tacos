@@ -20,7 +20,7 @@
 #ifndef _ELF_H_
 #define _ELF_H_
 
-#include <stdio.h>
+#include <libio.h>
 
 typedef unsigned long int 	Elf32_Addr;
 typedef unsigned short int 	Elf32_Half;

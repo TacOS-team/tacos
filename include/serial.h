@@ -1,8 +1,6 @@
 #ifndef _SERIAL_H
 #define _SERIAL_H
 
-#include <types.h>
-
 /* Masques pour les flags */
 #define ECHO_ENABLED 0x2
 

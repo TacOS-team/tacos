@@ -1,5 +1,6 @@
 #ifndef SCHEDULER_H
 #define SCHEDULER_H
+
 #include <process.h>
 
 /* Cette structure doit contenir les differents pointeurs de fonctions pour manipuler le scheduler */

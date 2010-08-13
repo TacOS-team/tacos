@@ -1,5 +1,6 @@
 #ifndef _PCI_H_
 #define _PCI_H_
+
 #include <types.h>
 
 typedef unsigned short int pci_device_t;

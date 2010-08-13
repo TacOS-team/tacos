@@ -10,7 +10,4 @@ void floppy_read_sector(int cylinder, int head, int sector, char* buffer);
 void floppy_write_sector(int cylinder, int head, int sector, char* buffer);
 void floppy_init_interrupt();
 
-
-
-
 #endif

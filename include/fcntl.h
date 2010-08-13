@@ -5,9 +5,6 @@
  * @file fcntl.h
  */
 
-#include <types.h>
-#include <libio.h>
-
 // Define pour open.
 
 #define O_ACCMODE 00000003

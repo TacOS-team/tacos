@@ -7,6 +7,7 @@
 
 #include <fcntl.h>
 #include <kfcntl.h>
+#include <libio.h>
 #include <types.h>
 #include <stdarg.h>
 

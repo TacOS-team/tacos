@@ -4,9 +4,9 @@
 #ifndef _PROCESS_H_
 #define _PROCESS_H_
 
-#include <types.h>
 #include <libio.h>
 #include <pagination.h>
+#include <types.h>
 #include <vmm.h>
 
 #define PROCSTATE_IDLE 1
