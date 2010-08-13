@@ -13,6 +13,7 @@
 #include <i8259.h>
 #include <syscall.h>
 #include <debug.h>
+#include <vmm.h>
 #include <kmalloc.h>
 #include <string.h>
 
@@ -29,6 +30,7 @@ void process_switch(int mode, process_t* current)
 {
 	uint32_t esp, eflags;
 	uint16_t kss, ss, cs;
+  paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) current->pd);
 	
 	get_default_tss()->esp0	=	current->kstack.esp0;
 	get_default_tss()->ss0	=	current->kstack.ss0;
@@ -101,10 +103,11 @@ void process_switch(int mode, process_t* current)
 	);
 	
 	outb(0x20, 0x20);
-	
+
+//	pagination_load_page_directory(pd_paddr);
+	asm volatile("mov %0, %%cr3":: "b"(pd_paddr));
+
 	asm(
-        /* La il faudrait changer le répertoire de page */
-        
 		/*On dépile les registres pour les mettre en place */
 		"pop %gs\n\t"
 		"pop %fs\n\t"
@@ -120,7 +123,7 @@ void process_switch(int mode, process_t* current)
 		
 		/* Et on switch! (enfin! >_<) */
 		"iret\n\t"
-	);	
+	);
 }
 
 void* schedule(void* data __attribute__ ((unused)))

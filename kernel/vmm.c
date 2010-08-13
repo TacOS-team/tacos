@@ -206,14 +206,14 @@ void init_process_vm(struct virtual_mem *vm)
 
 	vm->free_slabs.begin = (struct slab *) vm_begin; 
 	vm->free_slabs.begin->prev = NULL;
-	vm->free_slabs.begin->nb_pages = 0;
+	vm->free_slabs.begin->nb_pages = 1;
 	vm->free_slabs.begin->next = NULL;
 	vm->free_slabs.end = vm->free_slabs.begin;
 
 	vm->used_slabs.begin = NULL;
 	vm->used_slabs.end = NULL;
 
-	vm->vmm_top = vm_begin;
+	vm->vmm_top = vm_begin + PAGE_SIZE;
 }
 
 // Agrandit le heap de nb_pages pages et ajoute le nouveau slab à la fin de free_pages

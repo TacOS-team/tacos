@@ -5,7 +5,7 @@ USECLANG=0
 ifneq ($(USECLANG), 1)
 	HASCOLOR = $(shell if test `which colorgcc`; then echo true; else echo false; fi)
 	ifneq ($(HASCOLOR),true)
-		export CC=@printf "\033[34m   CC   $$@\033[0m\n" && gcc
+		export CC=@printf "\033[34m   CC   $$@\033[0m\n" && gcc-4.3
 	else
 		export CC=@printf "\033[34m   CC   $$@\033[0m\n" && colorgcc
 	endif
@@ -48,10 +48,10 @@ img: all
 	@rm mtoolsrc
 
 runqemu: core.img
-	qemu -fda core.img -soundhw pcspk -m 4 
+	qemu-0.11.1 -fda core.img -soundhw pcspk -m 4 
 
 runqemugdb: core.img
-	qemu -fda core.img -soundhw pcspk -parallel none -m 4 -s -S
+	qemu-0.11.1 -fda core.img -soundhw pcspk -parallel none -m 4 -s -S
 
 runbochs: core.img
 	BOCHSRC=bochsrc bochs
