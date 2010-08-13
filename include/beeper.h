@@ -1,6 +1,6 @@
-#ifndef BEEPER_H
-#define BEEPER_H
+#ifndef _BEEPER_H_
+#define _BEEPER_H_
 
 void beep();
 
-#endif //BEEPER_H
+#endif //_BEEPER_H_

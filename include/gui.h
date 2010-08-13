@@ -1,5 +1,5 @@
-#ifndef GUI_H
-#define GUI_H
+#ifndef _GUI_H_
+#define _GUI_H_
 
 /**
  * @file gui.h
@@ -93,5 +93,5 @@ void setWidgetProperties(struct widget_t* wdg,
 void setOnClick(struct widget_t* wdg, void (*onClick)(struct widget_t*,int,int));
 void setVisible(struct widget_t* wdg, char visible);
 
-#endif //GUI_H
+#endif //_GUI_H_
 

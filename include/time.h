@@ -1,5 +1,5 @@
-#ifndef TIME_H
-#define TIME_H
+#ifndef _TIME_H_
+#define _TIME_H_
 
 #include <types.h>
 
@@ -55,4 +55,4 @@ size_t strftime(char * s,
 */
 
 
-#endif //TIME_H
+#endif //_TIME_H_

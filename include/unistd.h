@@ -1,5 +1,5 @@
-#ifndef UNISTD_H
-#define UNISTD_H
+#ifndef _UNISTD_H_
+#define _UNISTD_H_
 
 /**
  * @file unistd.h
@@ -38,4 +38,4 @@ ssize_t write(int fd, const void *buf, size_t count);
 
 ssize_t read(int fd, void *buf, size_t count);
 
-#endif //UNISTD_H
+#endif //_UNISTD_H_

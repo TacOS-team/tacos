@@ -1,5 +1,5 @@
-#ifndef SEM_H
-#define SEM_H
+#ifndef _SEM_H_
+#define _SEM_H_
 
 /** 
 * @file sem.h 
@@ -37,5 +37,5 @@ int semdel(uint32_t semid);
 int semP(uint32_t semid);
 int semV(uint32_t semid);
 
-#endif //SEM_H
+#endif //_SEM_H_
 

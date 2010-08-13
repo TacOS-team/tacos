@@ -1,5 +1,5 @@
-#ifndef _PCI_H
-#define _PCI_H
+#ifndef _PCI_H_
+#define _PCI_H_
 #include <types.h>
 
 typedef unsigned short int pci_device_t;
@@ -11,4 +11,4 @@ uint8_t pci_get_device_function_nb( pci_device_t device );
 void pci_scan();
 void pci_list();
 
-#endif
+#endif // _PCI_H_
