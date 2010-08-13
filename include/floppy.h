@@ -1,6 +1,8 @@
 #ifndef _FLOPPY_H_
 #define _FLOPPY_H_
 
+#include <types.h>
+
 #define FLOPPY_SECTOR_SIZE 512
 
 void floppy_detect_drives();
