@@ -45,7 +45,8 @@ kernel.o: include/multiboot.h include/idt.h ../include/types.h
 kernel.o: include/i8259.h ../libc/include/stdio.h ../libc/include/fcntl.h
 kernel.o: ../include/kfcntl.h ../libc/include/libio.h
 kernel.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
-kernel.o: ../include/kunistd.h ../libc/include/string.h ../include/memory.h
+kernel.o: ../libc/include/malloc.h ../include/kunistd.h
+kernel.o: ../libc/include/string.h ../include/memory.h
 kernel.o: ../include/pagination.h include/gdt.h include/exception.h
 kernel.o: ../include/interrupts.h ../include/pci.h ../include/pci_config.h
 kernel.o: ../include/pci_types.h include/scheduler.h ../include/process.h
@@ -61,7 +62,7 @@ kfcntl.o: ../libc/include/fcntl.h ../include/types.h ../include/pagination.h
 kfcntl.o: ../include/vmm.h ../libc/include/stdio.h ../include/kfcntl.h
 kfcntl.o: ../libc/include/stdarg.h ../include/fat.h ../libc/include/string.h
 kfcntl.o: ../include/kmalloc.h ../include/keyboard.h include/video.h
-kmalloc.o: ../include/types.h ../include/malloc.h ../include/memory.h
+kmalloc.o: ../include/types.h ../libc/include/malloc.h ../include/memory.h
 kmalloc.o: ../include/vmm.h ../include/kmalloc.h
 kpanic.o: ../libc/include/stdio.h ../libc/include/fcntl.h ../include/kfcntl.h
 kpanic.o: ../include/types.h ../libc/include/libio.h ../libc/include/stdarg.h
@@ -69,13 +70,13 @@ kpanic.o: include/exception.h include/kpanic.h include/kprocess.h
 kpanic.o: ../include/process.h ../include/pagination.h ../include/vmm.h
 kpanic.o: include/scheduler.h
 kprocess.o: ../include/types.h ../libc/include/stdlib.h
-kprocess.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-kprocess.o: ../include/kfcntl.h ../libc/include/libio.h
-kprocess.o: ../libc/include/stdarg.h ../libc/include/string.h include/video.h
-kprocess.o: include/gdt.h include/kprocess.h ../include/process.h
-kprocess.o: ../include/pagination.h ../include/vmm.h ../include/kmalloc.h
-kprocess.o: ../include/syscall.h ../libc/include/time.h ../include/elf.h
-kprocess.o: ../include/debug.h
+kprocess.o: ../libc/include/malloc.h ../libc/include/stdio.h
+kprocess.o: ../libc/include/fcntl.h ../include/kfcntl.h
+kprocess.o: ../libc/include/libio.h ../libc/include/stdarg.h
+kprocess.o: ../libc/include/string.h include/video.h include/gdt.h
+kprocess.o: include/kprocess.h ../include/process.h ../include/pagination.h
+kprocess.o: ../include/vmm.h ../include/kmalloc.h ../include/syscall.h
+kprocess.o: ../libc/include/time.h ../include/elf.h ../include/debug.h
 ksem.o: include/ksem.h ../include/types.h include/kprocess.h
 ksem.o: ../include/process.h ../libc/include/libio.h ../libc/include/fcntl.h
 ksem.o: ../include/pagination.h ../include/vmm.h ../libc/include/stdio.h
@@ -113,8 +114,9 @@ stdfiles.o: ../include/kmalloc.h
 video.o: ../libc/include/stdio.h ../libc/include/fcntl.h ../include/kfcntl.h
 video.o: ../include/types.h ../libc/include/libio.h ../libc/include/stdarg.h
 video.o: ../include/ioports.h ../libc/include/ctype.h include/video.h
-video.o: ../libc/include/stdlib.h ../include/syscall.h include/kprocess.h
-video.o: ../include/process.h ../include/pagination.h ../include/vmm.h
+video.o: ../libc/include/stdlib.h ../libc/include/malloc.h
+video.o: ../include/syscall.h include/kprocess.h ../include/process.h
+video.o: ../include/pagination.h ../include/vmm.h
 vm86.o: ../include/debug.h include/gdt.h ../include/types.h
 vmm.o: ../include/memory.h ../include/types.h ../include/pagination.h
 vmm.o: ../include/vmm.h ../include/process.h ../libc/include/libio.h
