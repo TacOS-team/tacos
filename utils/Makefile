@@ -1,4 +1,4 @@
-INCLUDES=-I../include/ -Iinclude/
+INCLUDES=-I../include/ -Iinclude/ -I../libc/include/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
  
 SRCS=*.c
@@ -19,13 +19,15 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-heap.o: ../include/heap.h ../include/types.h ../include/string.h
+heap.o: ../include/heap.h ../include/types.h ../libc/include/string.h
 heap.o: ../include/debug.h
-list.o: ../include/list.h ../include/types.h ../include/string.h
-list.o: ../include/stdlib.h ../include/stdio.h ../include/fcntl.h
-list.o: ../include/kfcntl.h ../include/libio.h ../include/stdarg.h
+list.o: ../include/list.h ../include/types.h ../libc/include/string.h
+list.o: ../libc/include/stdlib.h ../libc/include/stdio.h
+list.o: ../libc/include/fcntl.h ../include/kfcntl.h ../libc/include/libio.h
+list.o: ../libc/include/stdarg.h
 widget.o: ../include/gui.h ../include/types.h include/widget.h
-widget.o: ../include/stdlib.h ../include/string.h ../include/stdio.h
-widget.o: ../include/fcntl.h ../include/kfcntl.h ../include/libio.h
-widget.o: ../include/stdarg.h ../include/mouse.h ../include/ctype.h
-widget.o: ../include/process.h ../include/pagination.h ../include/vmm.h
+widget.o: ../libc/include/stdlib.h ../libc/include/string.h
+widget.o: ../libc/include/stdio.h ../libc/include/fcntl.h ../include/kfcntl.h
+widget.o: ../libc/include/libio.h ../libc/include/stdarg.h ../include/mouse.h
+widget.o: ../libc/include/ctype.h ../include/process.h
+widget.o: ../include/pagination.h ../include/vmm.h

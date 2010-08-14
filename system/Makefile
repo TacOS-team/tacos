@@ -1,4 +1,4 @@
-INCLUDES=-I../include/ -Iinclude/
+INCLUDES=-I../include/ -Iinclude/ -I../libc/include/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 
 SRCS=*.c
@@ -19,11 +19,12 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-process.o: ../include/types.h ../include/stdlib.h ../include/stdio.h
-process.o: ../include/fcntl.h ../include/kfcntl.h ../include/libio.h
-process.o: ../include/stdarg.h ../include/syscall.h ../include/process.h
+process.o: ../include/types.h ../libc/include/stdlib.h
+process.o: ../libc/include/stdio.h ../libc/include/fcntl.h
+process.o: ../include/kfcntl.h ../libc/include/libio.h
+process.o: ../libc/include/stdarg.h ../include/syscall.h ../include/process.h
 process.o: ../include/pagination.h ../include/vmm.h
 sem.o: ../include/sem.h ../include/types.h ../include/syscall.h
-sem.o: ../include/process.h ../include/libio.h ../include/fcntl.h
+sem.o: ../include/process.h ../libc/include/libio.h ../libc/include/fcntl.h
 sem.o: ../include/pagination.h ../include/vmm.h
 syscall.o: ../include/syscall.h ../include/types.h

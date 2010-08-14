@@ -1,4 +1,4 @@
-INCLUDES=-I../include/ -Iinclude/
+INCLUDES=-I../include/ -Iinclude/ -I../libc/include/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 
 SRCS = *.c
@@ -20,11 +20,11 @@ depend: $(SRCS)
 # DO NOT DELETE THIS LINE -- make depend needs it
 
 clock.o: ../include/types.h ../include/ioports.h include/i8254.h
-clock.o: ../include/clock.h ../include/time.h ../include/interrupts.h
+clock.o: ../include/clock.h ../libc/include/time.h ../include/interrupts.h
 clock.o: ../include/heap.h
 events.o: ../include/types.h include/i8254.h ../include/interrupts.h
-events.o: ../include/time.h ../include/clock.h ../include/list.h
-events.o: ../include/events.h ../include/stdio.h ../include/fcntl.h
-events.o: ../include/kfcntl.h ../include/libio.h ../include/stdarg.h
-events.o: ../include/debug.h
+events.o: ../libc/include/time.h ../include/clock.h ../include/list.h
+events.o: ../include/events.h ../libc/include/stdio.h ../libc/include/fcntl.h
+events.o: ../include/kfcntl.h ../libc/include/libio.h
+events.o: ../libc/include/stdarg.h ../include/debug.h
 i8254.o: include/i8254.h ../include/types.h ../include/ioports.h
