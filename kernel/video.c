@@ -596,7 +596,7 @@ void reset_attribute(text_window *tw)
 
 text_window * creation_text_window(int x, int y, int cols, int lines, int cursor_x, int cursor_y, bool disable_cursor, uint8_t attribute, int buffer)
 {
-	text_window *tw = malloc(sizeof(text_window));
+	text_window *tw = kmalloc(sizeof(text_window));
 
 	tw->x = x;
 	tw->y = y;
@@ -607,7 +607,7 @@ text_window * creation_text_window(int x, int y, int cols, int lines, int cursor
 	tw->disable_cursor = disable_cursor;
 	tw->attribute = attribute;
 	tw->n_buffer = buffer;
-	tw->buffer = malloc(cols * lines * sizeof(struct x86_video_char));
+	tw->buffer = kmalloc(cols * lines * sizeof(struct x86_video_char));
 
 	cls(tw);
 
@@ -633,7 +633,7 @@ void resize_text_window(text_window *tw, int x, int y) {
 	}
 	kprintf("%d %d\n", tw->cursor_x, tw->cursor_y);
 	
-	struct x86_video_char * new_buffer = malloc(x * y * sizeof(struct x86_video_char));
+	struct x86_video_char * new_buffer = kmalloc(x * y * sizeof(struct x86_video_char));
 
 	for (i = 0; i < x * y; i++) {
 		new_buffer[i] = tw->buffer[i];

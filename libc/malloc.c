@@ -2,7 +2,6 @@
 #include <process.h>
 #include <syscall.h>
 #include <malloc.h>
-#include <kmalloc.h> /** XXX à virer... **/
 
 struct mem
 {
@@ -11,14 +10,8 @@ struct mem
   struct mem *next;
 };
 
-struct mem_list
-{
-  struct mem *begin;
-  struct mem *end;
-};
-
-struct mem_list free_mem;
-struct mem_list allocated_mem;
+static struct mem_list process_free_mem;
+static struct mem_list process_allocated_mem;
 
 static int is_empty(struct mem_list *list)
 {
@@ -90,19 +83,20 @@ static void add(struct mem_list *list, struct mem *m)
 }
 
 // Sépare un bloc mem en deux quand il est trop grand et déplace le bloc de free_mem vers used_mem
-static void cut_mem(struct mem* m, size_t size)
+static void cut_mem(struct mem* m, size_t size, 
+										struct mem_list *free_mem, struct mem_list *allocated_mem)
 {
   if(m->size - size > sizeof(struct mem)) // cut mem
   {
     struct mem *new_mem = (struct mem*) ((vaddr_t) m + size);
     new_mem->size = m->size - size;
-    add(&free_mem, new_mem);
+    add(free_mem, new_mem);
 
     m->size = size;
   } 
 
-  remove(&free_mem, m);
-  add(&allocated_mem, m);
+  remove(free_mem, m);
+  add(allocated_mem, m);
 }
 
 static int is_stuck(struct mem *m1, struct mem *m2)
@@ -110,21 +104,22 @@ static int is_stuck(struct mem *m1, struct mem *m2)
   return m1 != NULL && (vaddr_t) m1 + m1->size == (vaddr_t) m2;
 }
 
-void init_malloc()
+void init_malloc(struct mem_list *free_mem, struct mem_list *allocated_mem)
 {
-  free_mem.begin = NULL;
-  free_mem.end = NULL;
-  allocated_mem.begin = NULL;
-  allocated_mem.end = NULL;
+  free_mem->begin = NULL;
+  free_mem->end = NULL;
+  allocated_mem->begin = NULL;
+  allocated_mem->end = NULL;
 }
 
 void *malloc(size_t size) {
-	return __malloc(NULL, size);
+	return __malloc(NULL, &process_free_mem, &process_allocated_mem, size);
 }
 
-void *__malloc(struct virtual_mem *vm, size_t size)
+void *__malloc(struct virtual_mem *vm, struct mem_list *free_mem, 
+							 struct mem_list *allocated_mem, size_t size)
 { 
-  struct mem *mem = free_mem.begin;
+  struct mem *mem = free_mem->begin;
   size_t real_size = size + sizeof(struct mem);
 
   //asm("cli"); // sinon on risque d'avoir des trucs bizarre
@@ -141,8 +136,6 @@ void *__malloc(struct virtual_mem *vm, size_t size)
 
 		if(vm == NULL) {
 			vm = get_process(get_pid())->vm;
-			if(vm == NULL)
-				vm = get_kvm(); /** XXX : très moche, à modifier dès que possible */
 		}
 
 		syscall(SYS_VMM, 
@@ -154,18 +147,22 @@ void *__malloc(struct virtual_mem *vm, size_t size)
     
     new_mem = (struct mem *) alloc;
     new_mem->size = real_alloc_size;
-    push_back(&free_mem, new_mem);
-    mem = free_mem.end;
+    push_back(free_mem, new_mem);
+    mem = free_mem->end;
   }
 
-  cut_mem(mem, real_size);
+  cut_mem(mem, real_size, free_mem, allocated_mem);
   //asm("sti");
   return (void *) (((uint32_t) mem) + sizeof(struct mem));
 }
 
-int free(void *p)
+int free(void *p) {
+	return __free(p, &process_free_mem, &process_allocated_mem);
+}
+
+int __free(void *p, struct mem_list *free_mem, struct mem_list *allocated_mem)
 {
-  struct mem *m = allocated_mem.end;
+  struct mem *m = allocated_mem->end;
 
   //asm("cli");
   
@@ -179,20 +176,20 @@ int free(void *p)
   if(m == NULL)
     return -1;
 
-  remove(&allocated_mem, m);
-  add(&free_mem, m);
+  remove(allocated_mem, m);
+  add(free_mem, m);
 
   if(is_stuck(m->prev, m))
   {
     m->prev->size += m->size;
-    remove(&free_mem, m);
+    remove(free_mem, m);
     m = m->prev;
   }
   
   if(is_stuck(m, m->next))
   {
     m->size +=  m->next->size;
-    remove(&free_mem, m->next);
+    remove(free_mem, m->next);
   }
 
   //asm("sti");
@@ -207,10 +204,11 @@ static void print_mem(struct mem* m, bool free __attribute__ ((unused)))
 //  reset_attribute();
 }
 
-void malloc_print_mem()
+void malloc_print_mem(struct mem_list *free_mem, 
+											struct mem_list *allocated_mem)
 {
-  struct mem *free_it = free_mem.begin;
-  struct mem *allocated_it = allocated_mem.begin;
+  struct mem *free_it = free_mem->begin;
+  struct mem *allocated_it = allocated_mem->begin;
 
   printf("\n-- malloc : printing heap --\n");
 

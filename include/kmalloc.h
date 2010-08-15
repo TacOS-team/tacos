@@ -8,7 +8,6 @@ void *kmalloc(size_t size);
 int kfree(void *p);
 
 void *kmalloc_one_aligned_page();
-struct virtual_mem *get_kvm(); 
 
 #endif
 

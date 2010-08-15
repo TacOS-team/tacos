@@ -178,6 +178,7 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 	uint32_t* stack_ptr;
 	
 	int i;
+	int len;
 	
 	new_proc = kmalloc(sizeof(process_t));
 	if( new_proc == NULL )
@@ -185,7 +186,9 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 		kprintf("create_process: impossible de reserver la memoire pour le nouveau processus.\n");
 		return -1;
 	}
-	new_proc->name = strdup(name);
+	len = strlen(name);
+	new_proc->name = (char *) kmalloc((len+1)*sizeof(char));
+	strcpy(new_proc->name, name);
 	
 	sys_stack = kmalloc(stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
@@ -246,7 +249,7 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 
 	// Passer l'adresse physique et non virtuelle ! Attention, il faut que ça 
 	// soit contigü en mémoire physique et aligné dans un cadre...
-	pagination_load_page_directory(pd_paddr);
+	pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
 	
 	init_process_vm(new_proc->vm);
 
@@ -385,7 +388,10 @@ void sys_kill(uint32_t pid, uint32_t zero1 __attribute__ ((unused)), uint32_t ze
 
 void sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused)))
 {
-	char * args = strdup(name);
+	int len = strlen(name);
+	char * args = (char *) kmalloc((len+1)*sizeof(char));
+	strcpy(args, name);;
+
 	create_process(name, prog, args , 0x1000, 3);
 }
 
