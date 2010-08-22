@@ -189,7 +189,6 @@ int test_task1(int argc , char** argv __attribute__ ((unused)))
 {	
 	//while(1);
 	int pid = get_pid();
-	process_t* proc;
 	int i;
 	printf("pid %d received %d args:\n", pid, argc);
 	
@@ -256,8 +255,9 @@ int test_mouse_task()
 			
 			x = x*80/640;
 			y = 25 - (y*25/480);
-			set_attribute_position(0, col2, old_x, old_y);
-			set_attribute_position(col1, col2, x, y);
+			// XXX: 
+			//set_attribute_position(0, col2, old_x, old_y);
+			//set_attribute_position(col1, col2, x, y);
 			old_x = x;
 			old_y = y;
 		}
@@ -420,15 +420,15 @@ int tu_sprintf() {
 	char buf[80];
 	int r = sprintf(buf, "TU : %s (%d) %s", t, d, t2);
 
-	if (strcmp(buf, resultat_attendu) == 0 && r == strlen(resultat_attendu)) {
+	if (strcmp(buf, resultat_attendu) == 0 && r == (int)strlen(resultat_attendu)) {
 		printf("%s [OK]\n", "sprintf");
-        return 1;
+		return 1;
 	} else {
 		printf("%s [failed] :(\n", "sprintf");
 		printf("Attendu : %s\n Obtenu : %s\n", resultat_attendu, buf);
-        printf("Code retour : %d\n", r);
-        printf("Code retour attendu : %d\n", strlen(resultat_attendu));
-        return 0;
+		printf("Code retour : %d\n", r);
+		printf("Code retour attendu : %d\n", strlen(resultat_attendu));
+		return 0;
 	}
 }
 
@@ -443,7 +443,6 @@ int test_ctype()
 	tu_ctype("isspace", isspace, "\t\n\v\f\r ");
 	tu_ctype("isprint", isprint, " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
 
-
 	// TODO : compléter.
 
 	return 0;
@@ -451,7 +450,7 @@ int test_ctype()
 
 int test_stdio()
 {
-    tu_rand(); // TODO : le bouger ailleurs.
+	tu_rand(); // TODO : le bouger ailleurs.
 
 	tu_sprintf()
     && tu_sscanf();

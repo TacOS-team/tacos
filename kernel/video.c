@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <syscall.h>
 #include <kprocess.h>
+#include <kmalloc.h>
 
 /**
  * Attention ! Ce code a été développé dans l'optique de fournir rapidement

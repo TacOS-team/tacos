@@ -116,7 +116,7 @@ video.o: ../include/types.h ../libc/include/libio.h ../libc/include/stdarg.h
 video.o: ../include/ioports.h ../libc/include/ctype.h include/video.h
 video.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 video.o: ../include/syscall.h include/kprocess.h ../include/process.h
-video.o: ../include/pagination.h ../include/vmm.h
+video.o: ../include/pagination.h ../include/vmm.h ../include/kmalloc.h
 vm86.o: ../include/debug.h include/gdt.h ../include/types.h
 vmm.o: ../include/memory.h ../include/types.h ../include/pagination.h
 vmm.o: ../include/vmm.h ../include/process.h ../libc/include/libio.h

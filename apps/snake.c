@@ -65,7 +65,8 @@ static void gauche() {
 int thread_input() {
 	char c;
   setvbuf(stdin, NULL, _IO_MAGIC | _IONBF, 0);
-	resize_text_window(get_process(CURRENT_PROCESS)->fd[1].ofd->extra_data, 1, 1);
+//XXX: Ce n'est plus possible...
+//  resize_text_window(get_process(CURRENT_PROCESS)->fd[1].ofd->extra_data, 1, 1);
   pid_keyboard = get_pid();
   
   disable_cursor(1);

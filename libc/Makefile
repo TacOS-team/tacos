@@ -28,7 +28,7 @@ libio.o: ../include/kfcntl.h include/stdarg.h
 malloc.o: include/stdio.h include/fcntl.h ../include/kfcntl.h
 malloc.o: ../include/types.h include/libio.h include/stdarg.h
 malloc.o: ../include/process.h ../include/pagination.h ../include/vmm.h
-malloc.o: ../include/syscall.h include/malloc.h ../include/kmalloc.h
+malloc.o: ../include/syscall.h include/malloc.h
 stdlib.o: include/stdio.h include/fcntl.h ../include/kfcntl.h
 stdlib.o: ../include/types.h include/libio.h include/stdarg.h
 stdlib.o: include/stdlib.h include/malloc.h ../include/memory.h

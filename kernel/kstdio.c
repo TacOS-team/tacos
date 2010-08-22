@@ -123,7 +123,6 @@ size_t read_screen(open_file_descriptor *ofd, void *buf, size_t count) {
 		((char*)buf)[j++] = c;
 	}
 
-	fflush(stdout);
 	return j;
 }
 
