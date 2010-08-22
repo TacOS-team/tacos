@@ -82,7 +82,7 @@ static int resize_cmd()
 {
 	int x, y;
 	scanf("%d %d", &x, &y);
-	resize_text_window(get_process(CURRENT_PROCESS)->fd[1].ofd->extra_data, x, y);
+	// XXX: resize_text_window(get_process(CURRENT_PROCESS)->fd[1].ofd->extra_data, x, y);
   return 0;
 }
 
@@ -94,7 +94,7 @@ static int resize_cmd_pid() {
   p = get_process(pid);
 
   if(p != NULL) {
-  	resize_text_window(p->fd[1].ofd->extra_data, x, y);
+  	// XXX:resize_text_window(p->fd[1].ofd->extra_data, x, y);
     return 0;
   }
 
@@ -109,7 +109,7 @@ static int move_pid() {
   p = get_process(pid);
 
   if(p != NULL) {
-  	move_text_window(p->fd[1].ofd->extra_data, x, y);
+	//XXX : move_text_window(p->fd[1].ofd->extra_data, x, y);
     return 0;
   }
 
@@ -191,7 +191,7 @@ int ps()
 
 int top(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
-	disable_cursor(1);
+	// XXX: disable_cursor(1);
 	
 	while(1)
 	{

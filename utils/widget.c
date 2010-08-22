@@ -143,13 +143,13 @@ void displayWindow(struct window_t* win)
 
 	fflush(stdout);
 	
-    // Cette fonction n'est pas exposée en userspace.
-    disable_cursor(1);
+   // XXX: Cette fonction n'est pas exposée en userspace.
+   // disable_cursor(1);
 }
 
 void runWindow(struct window_t* win)
 {
-	int frst_time = 1;
+	//int frst_time = 1;
 	int x;
 	int y;
 	int btn_frz = 0;
@@ -157,13 +157,13 @@ void runWindow(struct window_t* win)
 	int i;
 	int old_x = 0;
 	int old_y = 0;
-	int colfg = 2;
-	int colbg = 5;
+	//int colfg = 2;
+	//int colbg = 5;
 
 	displayWindow(win);
 	while(1)
 	{
-		if(divider%100000 == 0 && get_current_process() == get_active_process())
+		if(divider%100000 == 0) //XXX: Non exposé ! && get_process(get_pid()) == get_active_process())
 		{
 			getMouseCoord(&x,&y);
 			x = x*79/640;

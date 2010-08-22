@@ -44,7 +44,7 @@ void clear_buffer(char* buffer)
 void init()
 {
 		clear_buffer(buffer);
-		disable_cursor(1);
+		//XXX: disable_cursor(1);
 }
 
 

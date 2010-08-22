@@ -172,7 +172,7 @@ static uint8_t scancode_m2 = 0;
 
 void keyBufferPush(char c)
 {
-	process_t *process = get_active_process();
+	process_t *process = get_active_process(); //XXX: Pas l'include car il est planqué dans le kernel.
 
 	open_file_descriptor *ofd;
 
@@ -186,7 +186,7 @@ void keyBufferPush(char c)
 size_t write_keyboard(open_file_descriptor *ofd, const void *buf, size_t count) {
     open_file_descriptor *ofd2;
 	if (ofd != NULL) {
-        process_t *process = get_active_process();
+        process_t *process = get_active_process(); //XXX
 
         if (((char*)buf)[0] == '\b') {
             if (ofd->current_octet_buf) {
@@ -267,7 +267,7 @@ void keyboardInterrupt(int id __attribute__ ((unused)))
 	default: 
 		if (alt) {
 			if (scancode == 0xf) {
-				change_active_process();
+				change_active_process(); // XXX
 			}
 		} else if (scancode_m1 != 0xe0 && scancode_m2 != 0xe1) {
 			char c = keyboardConvertToChar(scancode);
