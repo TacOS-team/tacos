@@ -251,7 +251,7 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 	// soit contigü en mémoire physique et aligné dans un cadre...
 	pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
 	
-	init_process_vm(new_proc->vm);
+	init_process_vm(new_proc->vm, 1);
 
 	for(i=0;i<FOPEN_MAX;i++) 
 		new_proc->fd[i].used = FALSE;

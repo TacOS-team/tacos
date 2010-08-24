@@ -197,23 +197,29 @@ void init_vmm(struct virtual_mem *kvm)
 	kvm->vmm_top = page_sup_end_kernel + PAGE_SIZE;
 }
 
-void init_process_vm(struct virtual_mem *vm) 
+vaddr_t init_process_vm(struct virtual_mem *vm, int init_nb_pages) 
 {
+  int i;
+
 	/* laissez une page libre, pour détecter page fault avec un pointeur à null */
 	vaddr_t vm_begin = _PAGINATION_KERNEL_TOP;
 	
-	map(memory_reserve_page_frame(), vm_begin);
+  for(i = 0; i < (init_nb_pages+1); i++)
+    map(memory_reserve_page_frame(), vm_begin + i*PAGE_SIZE);
 
-	vm->free_slabs.begin = (struct slab *) vm_begin; 
+	vm->used_slabs.begin = (struct slab *) vm_begin; 
+	vm->used_slabs.begin->prev = NULL;
+	vm->used_slabs.begin->nb_pages = init_nb_pages;
+	vm->used_slabs.begin->next = NULL;
+	vm->used_slabs.end = vm->used_slabs.begin;
+
+  vm->free_slabs.begin = (struct slab *) (vm_begin + init_nb_pages*PAGE_SIZE);
 	vm->free_slabs.begin->prev = NULL;
 	vm->free_slabs.begin->nb_pages = 1;
 	vm->free_slabs.begin->next = NULL;
 	vm->free_slabs.end = vm->free_slabs.begin;
 
-	vm->used_slabs.begin = NULL;
-	vm->used_slabs.end = NULL;
-
-	vm->vmm_top = vm_begin + PAGE_SIZE;
+	vm->vmm_top = vm_begin + (init_nb_pages+1)*PAGE_SIZE;
 }
 
 // Agrandit le heap de nb_pages pages et ajoute le nouveau slab à la fin de free_pages
