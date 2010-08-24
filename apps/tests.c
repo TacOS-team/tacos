@@ -187,7 +187,8 @@ int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 
 int test_task1(int argc , char** argv __attribute__ ((unused)))
 {	
-	//while(1);
+	while(1);
+	
 	int pid = get_pid();
 	int i;
 	printf("pid %d received %d args:\n", pid, argc);
@@ -202,8 +203,9 @@ int test_task1(int argc , char** argv __attribute__ ((unused)))
 
 int test_task()
 {
-
-	create_process("test",(paddr_t)test_task1,"il est plus d'une heure du matin et je suis fatigué",0x1000,3);
+	exec(test_task1, "test");
+	//create_process("test",(paddr_t)test_task1,"il est plus d'une heure du matin et je suis fatigué",0x1000,3);
+	//create_process_test("test", (paddr_t)test_task1, 0x100 , "1 2", 0x1000, 3);
 
 	return 0;
 }

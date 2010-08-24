@@ -14,11 +14,7 @@
 #define PROCSTATE_WAITING 3
 #define PROCSTATE_TERMINATED 4 
 
-#define FIRST_PROCESS 0
-#define NEXT_PROCESS 1
-#define PREV_PROCESS 2
-
-#define CPU_USAGE_SAMPLE_RATE 500
+#define CPU_USAGE_SAMPLE_RATE 1000
 
 typedef struct
 {
@@ -71,10 +67,23 @@ typedef struct _proclist_cell{
 #define CURRENT_PROCESS -1
 
 void exit(uint32_t value);
+
 uint32_t get_pid();
+
 void kill(uint32_t pid);
+
 void exec(paddr_t prog, char* name);
+
 process_t* get_process(int pid);
+
+/* Actions possibles pour get_process_list */
+#define FIRST_PROCESS 0
+#define NEXT_PROCESS 1
+#define PREV_PROCESS 2
+
 process_t* get_process_list(uint32_t action);
+
+/* Temporairement exposé */
+int create_process_test(char* name, paddr_t* prog_addr, uint32_t prog_size, char* param, uint32_t stack_size, uint8_t ring __attribute__ ((unused)));
 
 #endif

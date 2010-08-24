@@ -8,7 +8,6 @@
 #include <kprocess.h>
 #include <kmalloc.h>
 #include <syscall.h>
-#include <time.h>
 #include <elf.h>
 
 #include <debug.h>
@@ -168,6 +167,106 @@ int arg_build(char* string, vaddr_t base, char*** argv_ptr)
 	return argc;
 }
 
+int create_process_test(char* name, paddr_t* prog_addr, uint32_t prog_size, char* param, uint32_t stack_size, uint8_t ring __attribute__ ((unused)))
+{
+	uint32_t *sys_stack, *user_stack;
+	process_t* new_proc;
+	
+	char** argv;
+	int argc;
+	uint32_t* stack_ptr ;
+	
+	int i;
+	int len;
+	
+	new_proc = kmalloc(sizeof(process_t));
+	if( new_proc == NULL )
+	{
+		kprintf("create_process: impossible de reserver la memoire pour le nouveau processus.\n");
+		return -1;
+	}
+	
+	user_stack = _PAGINATION_KERNEL_TOP + prog_size;
+	sys_stack = user_stack + stack_size;
+	
+	len = strlen(name);
+	new_proc->name = (char *) kmalloc((len+1)*sizeof(char));
+	strcpy(new_proc->name, name);
+	
+	
+	
+	/* Initialisation de la pile du processus */
+	/*argc = arg_build(param,(vaddr_t) &(user_stack[stack_size-1]), &argv);
+	stack_ptr = (uint32_t*) argv[0];
+	
+	*(stack_ptr-1) = (vaddr_t) argv;
+	*(stack_ptr-2) = argc;
+	*(stack_ptr-3) = (vaddr_t) exit;*/
+	
+	new_proc->user_time = 0;
+	new_proc->sys_time = 0;
+	new_proc->current_sample = 0;
+	new_proc->last_sample = 0;
+	
+	new_proc->pid = proc_count;
+	new_proc->regs.eax = 0;
+	new_proc->regs.ebx = 0;
+	new_proc->regs.ecx = 0;
+	new_proc->regs.edx = 0;
+
+	new_proc->regs.cs = 0x1B;
+	new_proc->regs.ds = 0x23;
+	new_proc->regs.ss = 0x23;
+	
+	new_proc->regs.eflags = 0;
+	new_proc->regs.eip = _PAGINATION_KERNEL_TOP;
+	//new_proc->regs.esp = (vaddr_t)(user_stack)+stack_size-3;
+	//new_proc->regs.esp = (vaddr_t)(stack_ptr-3);
+	new_proc->kstack.esp0 = (vaddr_t)(&user_stack[stack_size-1]);
+	new_proc->regs.ebp = new_proc->regs.esp;
+	
+	new_proc->kstack.ss0 = 0x10;
+	//new_proc->kstack.esp0 = (vaddr_t)(sys_stack)+stack_size-1;
+	new_proc->kstack.esp0 = (vaddr_t)(&sys_stack[stack_size-1]);
+	
+	new_proc->state = PROCSTATE_IDLE;
+	
+  // Initialisation des données pour la vmm
+	new_proc->vm = (struct virtual_mem *) kmalloc(sizeof(struct virtual_mem));
+
+	// Ne devrait pas utiliser kmalloc. Cf remarque suivante.
+	new_proc->pd = kmalloc_one_aligned_page();
+	paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) new_proc->pd);
+	pagination_init_page_directory_copy_kernel_only(new_proc->pd, pd_paddr);
+
+	// Passer l'adresse physique et non virtuelle ! Attention, il faut que ça 
+	// soit contigü en mémoire physique et aligné dans un cadre...
+	pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
+	
+	init_process_vm(new_proc->vm, calculate_min_pages(prog_size + 2*stack_size));
+	
+	/* On copie le programme au bon endroit */
+	memcpy(_PAGINATION_KERNEL_TOP, prog_addr, prog_size);
+
+	for(i=0;i<FOPEN_MAX;i++) 
+		new_proc->fd[i].used = FALSE;
+		
+	/* Initialisation des entrées/sorties standards */
+	init_stdfiles(&new_proc->stdin, &new_proc->stdout, &new_proc->stderr);
+	init_stdfd(&(new_proc->fd[0]), &(new_proc->fd[1]), &(new_proc->fd[2]));
+	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
+	proc_count++;
+
+	add_process(new_proc);
+	
+	active_process = new_proc;
+	if (active_process->fd[1].used) {
+		focus((text_window *)(active_process->fd[1].ofd->extra_data));
+	}
+
+	return new_proc->pid;
+}
+
 int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, uint8_t ring __attribute__ ((unused)))
 {
 	uint32_t *sys_stack, *user_stack;
@@ -244,7 +343,7 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 
 	// Ne devrait pas utiliser kmalloc. Cf remarque suivante.
 	new_proc->pd = kmalloc_one_aligned_page();
-  paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) new_proc->pd);
+	paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) new_proc->pd);
 	pagination_init_page_directory_copy_kernel_only(new_proc->pd, pd_paddr);
 
 	// Passer l'adresse physique et non virtuelle ! Attention, il faut que ça 
@@ -252,6 +351,13 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 	pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
 	
 	init_process_vm(new_proc->vm, 1);
+	
+	if(current_proclist_cell != NULL)
+	{
+		pd_paddr = vmm_get_page_paddr((vaddr_t) get_current_process()->pd);
+		pagination_load_page_directory(get_current_process()->pd);
+	}
+	
 
 	for(i=0;i<FOPEN_MAX;i++) 
 		new_proc->fd[i].used = FALSE;
@@ -268,6 +374,7 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 	if (active_process->fd[1].used) {
 		focus((text_window *)(active_process->fd[1].ofd->extra_data));
 	}
+	
 
 	return new_proc->pid;
 }
