@@ -239,6 +239,9 @@ int create_process_test(char* name, paddr_t* prog_addr, uint32_t prog_size, char
 	paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) new_proc->pd);
 	pagination_init_page_directory_copy_kernel_only(new_proc->pd, pd_paddr);
 
+	/* ZONE CRITIQUE */
+	asm("cli");
+
 	// Passer l'adresse physique et non virtuelle ! Attention, il faut que ça 
 	// soit contigü en mémoire physique et aligné dans un cadre...
 	pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
@@ -247,6 +250,15 @@ int create_process_test(char* name, paddr_t* prog_addr, uint32_t prog_size, char
 	
 	/* On copie le programme au bon endroit */
 	memcpy(_PAGINATION_KERNEL_TOP, prog_addr, prog_size);
+
+	if(current_proclist_cell != NULL)
+	{
+		pd_paddr = vmm_get_page_paddr((vaddr_t) get_current_process()->pd);
+		pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
+	}
+	
+	/* FIN ZONE CRITIQUE */
+	asm("sti");	
 
 	for(i=0;i<FOPEN_MAX;i++) 
 		new_proc->fd[i].used = FALSE;
@@ -346,6 +358,9 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 	paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) new_proc->pd);
 	pagination_init_page_directory_copy_kernel_only(new_proc->pd, pd_paddr);
 
+	/* ZONE CRITIQUE */
+	asm("cli");
+
 	// Passer l'adresse physique et non virtuelle ! Attention, il faut que ça 
 	// soit contigü en mémoire physique et aligné dans un cadre...
 	pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
@@ -355,9 +370,12 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 	if(current_proclist_cell != NULL)
 	{
 		pd_paddr = vmm_get_page_paddr((vaddr_t) get_current_process()->pd);
-		pagination_load_page_directory(get_current_process()->pd);
+		pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
 	}
 	
+
+	/* FIN ZONE CRITIQUE */
+	asm("sti");	
 
 	for(i=0;i<FOPEN_MAX;i++) 
 		new_proc->fd[i].used = FALSE;
@@ -372,7 +390,7 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 	
 	active_process = new_proc;
 	if (active_process->fd[1].used) {
-		focus((text_window *)(active_process->fd[1].ofd->extra_data));
+		//focus((text_window *)(active_process->fd[1].ofd->extra_data));
 	}
 	
 
@@ -500,6 +518,7 @@ void sys_exec(paddr_t prog, char* name, uint32_t unused __attribute__ ((unused))
 	strcpy(args, name);;
 
 	create_process(name, prog, args , 0x1000, 3);
+	//create_process_test(name, prog,0x100, args , 0x1000, 3);
 }
 
 process_t* sys_proc_list(uint32_t action)
