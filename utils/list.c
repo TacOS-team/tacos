@@ -20,8 +20,8 @@ void initList(list_t* l, cmp_func_type cmp, size_t elements_size,int max_element
 	l->comparator = cmp;
 	l->nb_elements = 0;
 	l->max_elements = max_elements;
-	l->elements_array = malloc(max_elements * elements_size);
-	l->link_array = malloc(max_elements * sizeof(int) );
+	l->elements_array = kmalloc(max_elements * elements_size);
+	l->link_array = kmalloc(max_elements * sizeof(int) );
 	
 	for(i=0; i<max_elements; i++)
 		l->link_array[i] = EMPTY_SLOT;

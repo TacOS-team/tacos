@@ -374,8 +374,7 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 	}
 	
 
-	/* FIN ZONE CRITIQUE */
-	asm("sti");	
+
 
 	for(i=0;i<FOPEN_MAX;i++) 
 		new_proc->fd[i].used = FALSE;
@@ -390,10 +389,12 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 	
 	active_process = new_proc;
 	if (active_process->fd[1].used) {
-		//focus((text_window *)(active_process->fd[1].ofd->extra_data));
+		focus((text_window *)(active_process->fd[1].ofd->extra_data));
 	}
 	
-
+	/* FIN ZONE CRITIQUE */
+	asm("sti");	
+	
 	return new_proc->pid;
 }
 

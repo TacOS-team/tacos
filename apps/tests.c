@@ -187,16 +187,8 @@ int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 
 int test_task1(int argc , char** argv __attribute__ ((unused)))
 {	
-	while(1);
-	
-	int pid = get_pid();
-	int i;
-	printf("pid %d received %d args:\n", pid, argc);
-	
-	for(i=0; i<argc; i++)
-	{
-		printf("#%d - %s\n",i, argv[i]);
-	}
+	/*while(1)
+		printf("Coucou task1\n");*/
 	
 	return 0;
 }

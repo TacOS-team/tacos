@@ -30,7 +30,8 @@ void process_switch(int mode, process_t* current)
 {
 	uint32_t esp, eflags;
 	uint16_t kss, ss, cs;
-  paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) current->pd);
+	
+	paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) current->pd);
 	
 	get_default_tss()->esp0	=	current->kstack.esp0;
 	get_default_tss()->ss0	=	current->kstack.ss0;
