@@ -191,65 +191,6 @@ int open_next_dir(directory_t * prev_dir,directory_t * next_dir, char * name) {
 
 uint8_t file_buffer[512];
 
-int cat_file (directory_t * dir, char * name, int mode) {
-	
-	cluster_t file = 0;
-	int i,c=1;
-	int read_count = 0;
-	int file_size;
-	
-	for(i=0;i<(dir->total_entries);i++) {
-		if(strcmp(dir->entry_name[i],name)==0) {
-				if ( (dir->entry_attributes[i] & 0x10) == 0x00) {  //c'est bien un fichier
-					file = dir->entry_cluster[i];
-					file_size = dir->entry_size[i];
-					//printf("size = %d\n",file_size);
-					break;
-				}
-				else {
-						return 2;
-				}
-		}
-	}
-	
-	if (file!=0) {
-		
-		while (file_alloc_table[file] != 0xFFF) {
-			if (mode == 0)
-		  	printf("\n\nCluster No %d  Next : %d\n",file,file_alloc_table[file]);
-			read_cluster( (char*) file_buffer, file);
-			for(i=0;i<512;i++) {
-				if ( read_count < file_size ) {
-					printf("%c",file_buffer[i]);
-					read_count++;
-				}
-				else
-					break;
-			}
-			c++;
-			file=file_alloc_table[file];
-		}
-		if (mode == 0)
-	 		printf("\n\nCluster No %d  Next : %d\n",file,file_alloc_table[file]);
-		read_cluster( (char*) file_buffer, file);
-		for(i=0;i<512;i++) {
-			if ( read_count < file_size ) {
-				printf("%c",file_buffer[i]);
-				read_count++;
-			}
-			else
-				break;
-		}
-		if (mode == 0)
-			printf("\ntotal sector read: %d, total octet read: %d",c,read_count);
-
-		return 0;
-	}
-	else
-		return 1;
-
-}
-
 int get_dirname_from_path (char * path, char* name,int pos) {
 
 	int i=0,j=0,k=0;
@@ -437,28 +378,6 @@ void change_dir (char * name) {
 				printf("\ncd: erreur inconnue..\n");
 		}
 		
-}
-
-void catenate (char * name) {
-		
-		int errorcode;
-
-		errorcode = cat_file( &(path.dir_list[path.current]), name, 1);
-		if (errorcode == 1) 
-			printf("\ncat: %s aucun fichier ou dossier de ce type\n", name, 1);
-		else if (errorcode == 2) 
-			printf("\ncat: %s n'est pas un fichier\n",name);		
-}
-
-void catenate_demo (char * name) {
-		
-		int errorcode;
-
-		errorcode = cat_file( &(path.dir_list[path.current]), name, 0);
-		if (errorcode == 1) 
-			printf("\ncd: %s aucun fichier ou dossier de ce type\n", name, 0);
-		else if (errorcode == 2) 
-			printf("\ncd: %s n'est pas un fichier\n",name);		
 }
 
 void list_segments (int mode) {

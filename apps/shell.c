@@ -62,19 +62,23 @@ static int cd_cmd()
 
 static int cat_cmd()
 {
-	char buffer[80];
-	scanf("%s", buffer);
-	//printf("%sEND\n",buffer);
-	catenate(buffer);
-	return 0;
-}
+// NON TESTÉ !
+	char buf[80];
+    char chemin[80];
+    strcpy(chemin, "fd0:/");
+	scanf("%s", buf);
+    strcat(chemin, buf);
 
-static int cat_demo_cmd()
-{
-	char buffer[80];
-	scanf("%s", buffer);
-	//printf("%sEND\n",buffer);
-	catenate_demo(buffer);
+	FILE *file = fopen(chemin, "r");
+
+	char buffer[100];
+	while (fread(buffer, sizeof(buffer), sizeof(char), file) == 100) {
+        buffer[99] = '\0';
+        printf("%s", buffer);
+    }
+
+	fflush(file);
+
 	return 0;
 }
 
@@ -254,7 +258,6 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_ansi, "test_ansi");
 	add_builtin_cmd(cd_cmd, "cd");
 	add_builtin_cmd(cat_cmd, "cat");
-	add_builtin_cmd(cat_demo_cmd, "catdemo");
 	add_builtin_cmd(test_task, "test_task");
 	add_builtin_cmd(test_semaphores, "test_sem");
 	add_builtin_cmd(calc_pi, "pi");
