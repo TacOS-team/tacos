@@ -11,10 +11,7 @@
 // en attendant il est defini "en dur" donc on lui file comme taille cette valuer pres calcule
 #define TOTAL_CLUSTERS 3072 //(9fat*512otect*8bits)/12bits   pour FAT12
 
-
-
-
-static path_t path;
+static path_t path; //TODO: Dégager vers le shell !
 static fat_info_t fat_info;
 static cluster_t file_alloc_table[TOTAL_CLUSTERS];
 
@@ -78,11 +75,10 @@ int read_cluster (char * buf, cluster_t cluster) {
 	if ( (cluster!=0) && (cluster!=1) ) {
 		sector_addr = get_CHS_from_cluster(cluster);
 		floppy_read_sector(sector_addr.Cylinder, sector_addr.Head, sector_addr.Sector, buf);
-		//printf("\n%d %d %d\n",sector_addr.Cylinder, sector_addr.Head, sector_addr.Sector);
 		return 0;
 	}
 	else {
-		printf("ERROR: tentative de lecture d un secteur reserve\n");
+		kprintf("ERROR: tentative de lecture d un secteur reserve\n");
 		return 1;
 	}
 }
@@ -92,11 +88,10 @@ int write_cluster (uint8_t * buf, cluster_t cluster) {
 	if ( (cluster!=0) && (cluster!=1) ) {
 		sector_addr = get_CHS_from_cluster(cluster);
 		floppy_write_sector(sector_addr.Cylinder, sector_addr.Head, sector_addr.Sector, (char*) buf);
-		//printf("\n%d %d %d\n",sector_addr.Cylinder, sector_addr.Head, sector_addr.Sector);
 		return 0;
 	}
 	else {
-		printf("ERROR: tentative d'écriture d un secteur reserve\n");
+		kprintf("ERROR: tentative d'écriture d un secteur reserve\n");
 		return 1;
 	}
 }
@@ -202,23 +197,18 @@ int get_dirname_from_path (char * path, char* name,int pos) {
 			name[j]=path[i];
 			i++;
 			j++;
-			//printf("test in while\n");
 		}
 		if (path[i]=='/')
 			i++;
 		name[j]='\0';
 		k++;
-		//printf("test\n");
 	}
-	//printf("end while\n");
 	if (k==pos) 
 		ret=k;
 	else
 		ret=0;
 	return ret;
 }
-
-
 
 int get_path_length (char *path) {
 	int i=0,k=0;
@@ -234,7 +224,7 @@ int get_filename_from_path (char * path, char * filename) {
 	int path_length;
 	path_length = get_path_length(path);
 	get_dirname_from_path(path,filename,path_length+1);
-	printf("%s\n",filename);
+	kprintf("%s\n",filename);
 	return 0;
 }
 
@@ -246,7 +236,6 @@ void fat_open_file (char * path, open_file_descriptor * ofd) {
 	directory_t dir;
 	
 	path_length = get_path_length(path);
-	printf("path_length: %d\n",path_length);
 	
 	if (path_length==1) {
 		open_root_dir(&dir);
@@ -257,11 +246,9 @@ void fat_open_file (char * path, open_file_descriptor * ofd) {
 			printf("%s",dir_name);
 			if (strcmp(dir_name,"fd0:")==0) {
 				open_root_dir(&dir);
-				printf("open_root_dir\n");
 			}
 			else {
 				open_next_dir(&dir,&dir,dir_name);
-				printf("open_dir\n");
 			}
 		}
 	}
@@ -279,7 +266,7 @@ void fat_open_file (char * path, open_file_descriptor * ofd) {
 	ofd->current_octet_buf = 0;
 	ofd->write = write_file;
 	ofd->read = read_file;
-    ofd->seek = seek_file;
+	ofd->seek = seek_file;
 	read_cluster((char*)ofd->buffer,ofd->current_cluster);
 }
 
@@ -375,8 +362,7 @@ void mount_FAT12 () {
 	
 }
 
-
-
+//TODO: move vers le shell...
 void change_dir (char * name) {
 		
 		int errorcode;
@@ -498,35 +484,3 @@ Partiton Boot Sector info :\n\
 	fat_info.root_dir_LBA, 
 	fat_info.data_area_LBA); 
 }
-
-
-void print_path () {
-		/*int i=206;
-		int c=1;
-		while (file_alloc_table[i] != 0xFFF) {
-			printf("%d ",file_alloc_table[i]);
-			c++;
-			i=file_alloc_table[i];
-		}
-		printf("%d\n",file_alloc_table[i]);
-		printf("count sector: %d\n",c);
-    */
-		/*
-		char name[14];
-		int i, max;
-		max = get_dir_from_path ("root/dir",name,1);
-		printf("%s(%d)",name,max);
-		max = get_dir_from_path ("root/dir",name,2);
-		printf("%s(%d)",name,max);
-		max = get_path_lenth ("root/dir/tftff.uh");
-		printf(" %d\n",max);*/
-
-	  /*open_file_descriptor ofd;
-		fat_open_file("fd0:/boot/grub/menu.txt",&ofd);
-		printf("size: %d cluster: %d\n",ofd.file_size, ofd.current_cluster);*/
-
-		open("fd0:/boot/grub/menu.txt",21);
-		
-}
-
-

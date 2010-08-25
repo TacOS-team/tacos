@@ -24,7 +24,6 @@ int test_fread();
 int test_fseek();
 int test_write_serial();
 int test_read_serial();
-int debug_fat();
 int test_ansi();
 int snake_main();
 int cube_launcher();

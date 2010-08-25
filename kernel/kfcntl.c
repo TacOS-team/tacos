@@ -30,11 +30,7 @@ void* sys_open(uint32_t fd_id, uint32_t p_path , uint32_t flags __attribute__ ((
 	
 	//process_t * process = (process_t*) p_process;
 	char * path = (char*) p_path;
-	
-	printf("sys_open\n");
-	
 	process_t* process = get_current_process();
-	printf("current process ring0: %d\n",(uint32_t)process);
 	
 	// recherche d une place dans la file descriptor table du process
 	while(process->fd[i].used==TRUE) 

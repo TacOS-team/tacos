@@ -253,7 +253,6 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(ll_cmd, "ll");
 	add_builtin_cmd((func_ptr)print_Boot_Sector, "mount");
 	add_builtin_cmd((func_ptr)print_working_dir, "pwd");
-	add_builtin_cmd(debug_fat, "debugfat");
 	/*add_builtin_cmd((func_ptr)clean_process_list, "clean_proclist");*/
 	add_builtin_cmd(kill_cmd, "kill");
 	add_builtin_cmd(test_ansi, "test_ansi");

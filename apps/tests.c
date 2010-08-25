@@ -60,7 +60,7 @@ int test_fread() {
 	FILE *file = fopen("fd0:/doc.txt", "r");
 
 	char buffer[100];
-	fread(buffer, sizeof(buffer), sizeof(char), file);
+	fread(buffer, sizeof(char),sizeof(buffer),  file);
 
 	buffer[99] = '\0';
 	printf("%s", buffer);
@@ -318,13 +318,6 @@ int test_fwrite()
 }
 */
 	
-
-int debug_fat()
-{
-	print_path();
-	//open("lklk",21);
-	return 0;
-}
 
 int test_ansi()
 {
