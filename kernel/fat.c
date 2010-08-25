@@ -274,16 +274,35 @@ int seek_file (open_file_descriptor * ofd, long offset, int whence) {
 //TODO: ajouter détection d'erreurs.
 	switch (whence) {
 		case SEEK_SET: // depuis le debut du fichier
-			ofd->current_octet = offset;
+			// On se met au début :
+			ofd->current_cluster = ofd->first_cluster;
+			ofd->current_octet = 0;
+			ofd->current_octet_buf = 0;
+
+			// On avance de cluster en cluster.
+			while (offset >= 512) {
+				offset -= 512;
+				ofd->current_octet += 512;
+				ofd->current_cluster = file_alloc_table[ofd->current_cluster];
+			}
+
+			ofd->current_octet_buf = offset;
+			ofd->current_octet += offset;
+			read_cluster((char*)ofd->buffer, ofd->current_cluster);
 			break;
 		case SEEK_CUR:
 			ofd->current_octet += offset;
+			ofd->current_octet_buf = offset;
+			while (ofd->current_octet_buf >= 512) {
+				ofd->current_octet_buf -= 512;
+				ofd->current_cluster = file_alloc_table[ofd->current_cluster];
+			}
+			read_cluster((char*)ofd->buffer, ofd->current_cluster);
 			break;
-		case SEEK_END:
-//			ofd->current_octet =  // TODO !
-			break;
+		/*case SEEK_END:
+			ofd->current_octet =  // TODO !
+			break;*/
 	}
-	ofd->current_octet_buf = 0;
 
 	return 0;
 }
