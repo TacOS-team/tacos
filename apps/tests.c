@@ -458,7 +458,7 @@ int test_read_serial()
 
 char programme[0x3000];
 
-#define TEST_EXEC
+//#define TEST_EXEC
 int test_elf()
 {
 	FILE* fd = NULL;

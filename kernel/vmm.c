@@ -238,9 +238,11 @@ static int increase_heap(struct virtual_mem *vm, unsigned int nb_pages)
 		vm->vmm_top += PAGE_SIZE;
 	}
 	
-	top_last_slab = (vaddr_t) vm->free_slabs.end + 
-													  vm->free_slabs.end->nb_pages*PAGE_SIZE;
-	if(!is_empty(&(vm->free_slabs)) && top_last_slab == vm->vmm_top)
+	/* Il semble que si on calcul cette ligne à cet endroit, et que on a !is_empty(&(vm->free_slabs)), ça plante, alors
+	 * je commente et j'insert directement la ligne dans le if 
+	 * top_last_slab = (vaddr_t) vm->free_slabs.end + vm->free_slabs.end->nb_pages*PAGE_SIZE;*/
+	
+	if(!is_empty(&(vm->free_slabs)) && ((vaddr_t) vm->free_slabs.end + vm->free_slabs.end->nb_pages*PAGE_SIZE) == vm->vmm_top)
 	{
 	 	// agrandit juste le dernier free slab
 		vm->free_slabs.end->nb_pages += nb_pages;
@@ -417,8 +419,10 @@ void sys_vmm(uint32_t vm, uint32_t nb_pages, uint32_t args) {
 	void **alloc = (void *) (((uint32_t *) args)[0]);
 	size_t *real_alloc_size = (size_t *) (((uint32_t *) args)[1]);
 
+	asm("cli");
 	*real_alloc_size = allocate_new_pages((struct virtual_mem *) vm, nb_pages, 
 																				alloc); 
+	asm("sti");
 }
 
 paddr_t vmm_get_page_paddr(vaddr_t vaddr) {
