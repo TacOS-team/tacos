@@ -17,6 +17,7 @@ typedef struct _open_file_descriptor {
 	void * extra_data;
 	size_t (*write)(struct _open_file_descriptor *, const void*, size_t);
 	size_t (*read)(struct _open_file_descriptor *,void*, size_t);
+    int (*seek)(struct _open_file_descriptor *, long, int);
 } open_file_descriptor;
 
 /** 

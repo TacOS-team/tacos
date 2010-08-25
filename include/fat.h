@@ -8,6 +8,10 @@
 #define NB_HEADS 2
 #define NB_SECTORS 18 // NB Sector by Track
 
+#define SEEK_SET 0
+#define SEEK_CUR 1
+#define SEEK_END 2
+
 #define SIZEOF_DIR_ENTRY 32 //octet
 
 
@@ -117,5 +121,6 @@ void print_working_dir ();
 void fat_open_file (char * path, open_file_descriptor * ofd);
 size_t read_file (open_file_descriptor * ofd, void * buf, size_t count);
 size_t write_file (open_file_descriptor * ofd, const void * buf, size_t nb_octet);
+int seek_file (open_file_descriptor * ofd, long offset, int whence);
 
 #endif

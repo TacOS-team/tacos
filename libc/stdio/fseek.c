@@ -21,19 +21,17 @@
 #include <stdio.h>
 
 /* TODO Enlever les attributes quand la fonction sera codée... */
-int fseek(FILE *stream __attribute__ ((unused)), long offset __attribute__ ((unused)), int whence __attribute__ ((unused)))
+int fseek(FILE *stream, long offset, int whence)
 {
-	int ret = -1;
-	return ret;
+	return seek(stream->_fileno, offset, whence);
 }
 
 int ftell(FILE *stream)
 {
+// Est-ce que ça marche ?
 	return (int)(stream->_IO_read_ptr - stream->_IO_read_end);
 }
 
-
-/* Pas très posix, mais fait à l'arrache */
 void rewind(FILE *stream)
 {
 	fseek(stream, 0L, SEEK_SET);

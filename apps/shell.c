@@ -26,7 +26,9 @@ static int help_cmd()
 
 static int date_cmd()
 {
-	time_t curr_time = time(NULL);
+//	time_t curr_time = time(NULL);
+//  FIXME: la fonction time fait planter !
+    time_t curr_time = 42;
 	printf("%s",ctime(&curr_time));	
 	return 0;
 }

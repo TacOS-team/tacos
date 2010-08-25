@@ -279,7 +279,26 @@ void fat_open_file (char * path, open_file_descriptor * ofd) {
 	ofd->current_octet_buf = 0;
 	ofd->write = write_file;
 	ofd->read = read_file;
+    ofd->seek = seek_file;
 	read_cluster((char*)ofd->buffer,ofd->current_cluster);
+}
+
+int seek_file (open_file_descriptor * ofd, long offset, int whence) {
+//TODO: ajouter détection d'erreurs.
+	switch (whence) {
+		case SEEK_SET: // depuis le debut du fichier
+			ofd->current_octet = offset;
+			break;
+		case SEEK_CUR:
+			ofd->current_octet += offset;
+			break;
+		case SEEK_END:
+//			ofd->current_octet =  // TODO !
+			break;
+	}
+	ofd->current_octet_buf = 0;
+
+	return 0;
 }
 
 size_t write_file (open_file_descriptor * ofd, const void * buf, size_t nb_octet) {

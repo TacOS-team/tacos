@@ -33,4 +33,16 @@ void sys_read(uint32_t fd, uint32_t p_buf, uint32_t count) {
 	}
 }
 
+void sys_seek(uint32_t fd, uint32_t p_offset, uint32_t p_whence) {
+	process_t * process = get_current_process();
+    long *offset = (long*)p_offset;
+    int *whence = (int*)p_whence;
 
+	open_file_descriptor *ofd;
+
+	if (process->fd[fd].used) {
+		ofd = process->fd[fd].ofd;
+
+		*whence = ofd->seek(ofd, *offset, *whence);
+	}
+}
