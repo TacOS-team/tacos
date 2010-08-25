@@ -21,6 +21,7 @@ int test_fgets();
 int test_fputs();
 int test_fwrite();
 int test_fread();
+int test_fseek();
 int test_write_serial();
 int test_read_serial();
 int debug_fat();

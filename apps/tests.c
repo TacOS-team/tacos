@@ -69,6 +69,24 @@ int test_fread() {
 	return 0;
 }
 
+int test_fseek() {
+	FILE *file = fopen("fd0:/doc.txt", "r");
+
+	char buffer[50];
+	fread(buffer, sizeof(buffer), sizeof(char), file);
+
+	buffer[49] = '\0';
+	printf("50 premiers caractères : %s\n", buffer);
+
+	fseek(file, 10, SEEK_SET);
+	fread(buffer, sizeof(buffer), sizeof(char), file);
+
+	buffer[49] = '\0';
+	printf("50 caractères après fseek de 10 (depuis 0). : %s\n", buffer);
+
+	//fclose(file);
+	return 0;
+}
 
 int sem_t2(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {

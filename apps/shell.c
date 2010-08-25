@@ -26,9 +26,7 @@ static int help_cmd()
 
 static int date_cmd()
 {
-//	time_t curr_time = time(NULL);
-//  FIXME: la fonction time fait planter !
-    time_t curr_time = 42;
+	time_t curr_time = time(NULL);
 	printf("%s",ctime(&curr_time));	
 	return 0;
 }
@@ -247,6 +245,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_fputs, "test_fputs");
 	add_builtin_cmd(test_fwrite, "test_fwrite");
 	add_builtin_cmd(test_fread, "test_fread");
+	add_builtin_cmd(test_fseek, "test_fseek");
 	add_builtin_cmd(ps, "ps");
 	//add_builtin_cmd(kmalloc_print_mem, "kmalloc_print_mem");
 	/*add_builtin_cmd((func_ptr)test_memory_reserve_page_frame, "test_reserve_frame");*/
