@@ -73,6 +73,7 @@ uint32_t get_pid();
 void kill(uint32_t pid);
 
 void exec(paddr_t prog, char* name);
+void exec_elf(char* name);
 
 process_t* get_process(int pid);
 
@@ -82,8 +83,5 @@ process_t* get_process(int pid);
 #define PREV_PROCESS 2
 
 process_t* get_process_list(uint32_t action);
-
-/* Temporairement exposé */
-int create_process_test(char* name, paddr_t* prog_addr, uint32_t prog_size, char* param, uint32_t stack_size, uint8_t ring __attribute__ ((unused)));
 
 #endif

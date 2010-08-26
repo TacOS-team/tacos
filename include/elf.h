@@ -132,6 +132,9 @@ typedef struct{
 
 int load_efl_header(Elf32_Ehdr* elf_header, FILE* fd);
 int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int index, FILE* fd);
+
+size_t elf_size(FILE* fd);
+
 int load_elf(FILE* fd, void* dest);
 
 void elf_info(FILE* fd);

@@ -48,10 +48,10 @@ img: all
 	@rm mtoolsrc
 
 runqemu: core.img
-	qemu -fda core.img -soundhw pcspk -m 4 
+	qemu -fda core.img -soundhw pcspk -m 20 
 
 runqemugdb: core.img
-	qemu -fda core.img -soundhw pcspk -parallel none -m 4 -s -S
+	qemu -fda core.img -soundhw pcspk -parallel none -m 20 -s -S
 
 runbochs: core.img
 	BOCHSRC=bochsrc bochs

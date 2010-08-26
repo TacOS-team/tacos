@@ -28,7 +28,12 @@ void kill(uint32_t pid)
 
 void exec(paddr_t prog, char* name)
 {
-	syscall(SYS_EXEC, (uint32_t)prog, (uint32_t)name, (uint32_t)NULL);
+	syscall(SYS_EXEC, (uint32_t)prog, (uint32_t)name, 0);
+}
+
+void exec_elf(char* name)
+{	
+	syscall(SYS_EXEC, (uint32_t)NULL, (uint32_t)name, 1);
 }
 
 process_t* get_process(int pid)

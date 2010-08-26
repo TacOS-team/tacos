@@ -210,6 +210,13 @@ static int exec_top()
 		return 0;
 }
 
+static int shell_exec_elf()
+{
+	char filename[80];
+	scanf("%s",filename);
+	exec_elf(filename);
+}
+
 void print_logo()
 {
 	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
@@ -275,9 +282,10 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(exec_top, "top");
 	add_builtin_cmd(test_write_serial, "write_serial");
 	add_builtin_cmd(test_read_serial, "read_serial");
-	add_builtin_cmd(test_elf, "test_elf");
+	add_builtin_cmd(test_elf, "elf_info");
 	add_builtin_cmd(test_ctype, "test_ctype");
 	add_builtin_cmd(test_stdio, "test_stdio");
+	add_builtin_cmd(shell_exec_elf, "exec");
 
 	disable_cursor(0);
 	

@@ -16,22 +16,16 @@ int is_elf(Elf32_Ehdr* elf_header)
 
 int load_efl_header(Elf32_Ehdr* elf_header, FILE* fd)
 {
-	/* On reset le header */
-	memset(elf_header, 0, sizeof(Elf32_Ehdr));
-	
-	/* Puis on lis tout simplement */
-	
-	/*int i = fread(elf_header, 1, 100, fd);*/
-	
+	fseek(fd, 0, SEEK_SET);	
+
 	/* Remplace temporairement un fread boiteux */
 	char* pointeur = (char*) elf_header;
 	unsigned int i;
-	for(i=0; i<sizeof(Elf32_Ehdr)-2; i++)
+	for(i=0; i<sizeof(Elf32_Ehdr); i++)
 	{
 		*pointeur = fgetc(fd);
 		pointeur++;
 	}
-	printf("%x bytes read.\n",i);
 	return is_elf(elf_header);
 }
 
@@ -40,7 +34,10 @@ int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int 
 	/* Normalement, on fait un fseek ici pour accéder à l'offset du program header.
 	 * En attendant, on va concidérer qu'on les lis les un après les autres
 	 */
-		/* Remplace temporairement un fread boiteux */
+	
+	fseek(fd, elf_header->e_phoff + index*elf_header->e_phentsize, SEEK_SET);
+	
+	/* Remplace temporairement un fread boiteux */
 	char* pointeur = (char*)program_header;
 	int i;
 	for(i=0; i<elf_header->e_phentsize; i++)
@@ -51,54 +48,53 @@ int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int 
 	return 0;
 }
 
+size_t elf_size(FILE* fd)
+{
+	Elf32_Ehdr elf_header;
+	Elf32_Phdr p_header;
+	int i;
+	size_t size = 0;
+	
+	if(load_efl_header(&elf_header, fd))
+	{
+		for(i=0; i<elf_header.e_phnum; i++)
+		{
+			load_program_header(&p_header, &elf_header, i, fd);
+			size += p_header.p_memsz;
+		}
+	}
+	
+	return size;
+}
+
 int load_elf(FILE* fd, void* dest)
 {
 	Elf32_Ehdr elf_header;
-	Elf32_Phdr p_header[2];
-	uint32_t current_offset = 0;
-	char c;
+	Elf32_Phdr p_header;
+
 	uint32_t i;
-	char* pointeur = dest;
+	uint32_t j;
 	
-	/*int prog_offset[2];*/
+	char* pointeur = dest;
 
 	if(load_efl_header(&elf_header, fd))
 	{
-			fgetc(fd);
-	fgetc(fd);
-		load_program_header(&p_header[0],&elf_header, 0, fd);
-		load_program_header(&p_header[1],&elf_header, 1, fd);
-		
-		current_offset = elf_header.e_ehsize + (2*elf_header.e_phentsize);
-		/*printf("\n%x - %x\n",current_offset, p_header[0].p_offset);*/
-		while(current_offset < p_header[0].p_offset)
+		for(i=0; i< elf_header.e_phnum; i++)
 		{
-			fgetc(fd);
-			current_offset++;
-		}
-		i = 0;
-		
-		while(i<p_header[0].p_filesz)
-		{
-			pointeur[p_header[0].p_vaddr + i] = fgetc(fd);
-			/*printf("%x ",pointeur[p_header[0].p_vaddr + i]);*/
-			i++;
-			current_offset++;
-		}
-		
-		/*printf("\n%x - %x\n",current_offset, p_header[1].p_offset);*/
-		while(current_offset < p_header[1].p_offset)
-		{
-			fgetc(fd);
-			current_offset++;
-		}
-		i = 0;
-		while(i<p_header[1].p_filesz)
-		{
-			c = fgetc(fd);
-			if(c!=0)
-				printf("%c",c);
-			i++;
+			load_program_header(&p_header, &elf_header, i, fd);
+			
+			/* Si le header correspondond à un segment à charger, on le charge! */
+			if( p_header.p_type == PT_LOAD )
+			{
+				fseek(fd, p_header.p_offset, SEEK_SET);
+				j = 0;
+				while(j<p_header.p_filesz)
+				{
+					pointeur[(p_header.p_vaddr - 0x40000000) + j] = fgetc(fd);
+					/*printf("%x ",pointeur[p_header[0].p_vaddr + i]);*/
+					j++;
+				}
+			}
 		}
 	}
 	return elf_header.e_entry;
@@ -234,7 +230,11 @@ void print_program_header_info(Elf32_Phdr* p_header)
 		default:
 				printf("UNDEF\t",p_header->p_type);
 	}
-	printf("%x\t%x\t%x\t%x\t",p_header->p_offset,p_header->p_vaddr,p_header->p_filesz,p_header->p_memsz);
+	if(p_header->p_vaddr < 0x10000000)
+		printf("%x\t%x\t\t%x\t%x\t",p_header->p_offset,p_header->p_vaddr,p_header->p_filesz,p_header->p_memsz);
+	else
+		printf("%x\t%x\t%x\t%x\t",p_header->p_offset,p_header->p_vaddr,p_header->p_filesz,p_header->p_memsz);
+		
 	if( p_header->p_flags & PF_X )
 		flags[0] = 'X';
 	else
@@ -287,11 +287,11 @@ void elf_info(FILE* fd)
 		fgetc(fd);
 		
 		printf("\n----PROGRAM HEADER INFO----\n");
-		printf("INDEX\tTYPE\tOFF\tVADDR\tFSIZE\tMSIZE\tFLAGS\n");
+		printf("INDEX\tTYPE\tOFF\tVADDR\t\tFSIZE\tMSIZE\tFLAGS\n");
 		for(i=0; i<elf_header.e_phnum ; i++)
 		{
 		
-			load_program_header(&p_header, &elf_header, 0, fd);
+			load_program_header(&p_header, &elf_header, i, fd);
 			if(p_header.p_type != PT_NULL)
 			{
 				printf("#%d\t",i);

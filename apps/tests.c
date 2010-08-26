@@ -221,13 +221,15 @@ int pi(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))) 
 
 int test_task1(int argc, char** argv __attribute__ ((unused))) {
 	/*while(1)
-	 printf("Coucou task1\n");*/
+		printf("Coucou task1\n");*/
+	malloc(10);
+	/*printf("Test task!\n");*/
 
 	return 0;
 }
 
 int test_task() {
-	exec(test_task1, "test");
+	exec_elf("fd0:/a.out");
 	//create_process("test",(paddr_t)test_task1,"il est plus d'une heure du matin et je suis fatigué",0x1000,3);
 	//create_process_test("test", (paddr_t)test_task1, 0x100 , "1 2", 0x1000, 3);
 
@@ -454,36 +456,19 @@ int test_read_serial() {
 	return 0;
 }
 
-char programme[0x3000];
 
-//#define TEST_EXEC
 int test_elf() {
 	FILE* fd = NULL;
-
-#ifdef TEST_EXEC
-	int (*pp)(int argc, char** argv);
-	int entry;
-	int resultat;
-#endif
-
-	printf("Openning %s...\n");
+	char filename[80];
+	scanf("%s", filename);
+	printf("Openning %s...\n", filename);
 	//fd = fopen("fd0:/system/kernel.bin", "r");
-	fd = fopen("fd0:/a.out", "r");
+	fd = fopen(filename, "r");
 
 	if (fd == NULL) {
 		printf("failed.\n");
 	} else {
-		printf("Ok!\n");
-#ifndef TEST_EXEC
 		elf_info(fd);
-#endif
-
-#ifdef	TEST_EXEC
-		entry = load_elf(fd, programme);
-		pp = &(programme[entry]);
-		resultat = pp(0,NULL);
-		printf("resultat = %d\n",resultat);
-#endif
 	}
 	/*close(fd);*/
 	return 0;
