@@ -84,7 +84,7 @@ int load_elf(FILE* fd, void* dest)
 			load_program_header(&p_header, &elf_header, i, fd);
 			
 			/* Si le header correspondond à un segment à charger, on le charge! */
-			if( p_header.p_type == PT_LOAD )
+			if( p_header.p_type == PT_LOAD && p_header.p_vaddr >= 0x40000000)
 			{
 				fseek(fd, p_header.p_offset, SEEK_SET);
 				j = 0;
