@@ -14,6 +14,7 @@ void *calloc(size_t nmemb, size_t size);
 long int strtol(const char* nptr, char** endptr, int base);
 unsigned long int strtoul(const char *nptr, char **endptr, int base);
 int atoi(const char* __nptr);
+void itoa (char *buf, int base, int d);
 
 
 int rand(void);
