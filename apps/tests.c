@@ -46,7 +46,7 @@ int test_gui() {
 }
 
 int test_fwrite() {
-	FILE *file = fopen("fd0:/system/toto.txt", "w+");
+	FILE *file = fopen("fd0:/doc.txt", "w+");
 
 	fwrite("Hello World !", sizeof(char), 13, file);
 	fflush(file);
@@ -62,7 +62,7 @@ int test_fread() {
 	buffer[99] = '\0';
 	printf("%s", buffer);
 
-	fflush(file);
+	/*fflush(file);*/
 	return 0;
 }
 

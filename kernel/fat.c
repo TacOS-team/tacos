@@ -236,7 +236,7 @@ void fat_open_file (char * path, open_file_descriptor * ofd) {
 	directory_t dir;
 	
 	path_length = get_path_length(path);
-	
+	/* TODO: Creer le fichier si il n'existe pas.. */
 	if (path_length==1) {
 		open_root_dir(&dir);
 	}
@@ -309,18 +309,36 @@ int seek_file (open_file_descriptor * ofd, long offset, int whence) {
 
 size_t write_file (open_file_descriptor * ofd, const void * buf, size_t nb_octet) {
 	size_t i;
+	int j;
+	char tmp_buf[512];
+	/* printf("\ncall write_file() from fat.c\n");
+	for (j=0;j<nb_octet;j++) {
+	 	printf("%c",((char*)buf)[j]);
+	}
+	printf("\nEnd of buffer, current octet %d, current octet buffer %d\n",ofd->current_octet++,ofd->current_octet_buf);
+    */
+    read_cluster(tmp_buf,ofd->current_cluster);
+    /*for (j=0;j<512;j++)
+    	printf("%c",((char*)tmp_buf)[j]);
+    printf("\n");*/
 	for (i=0;i<nb_octet;i++) {
-		ofd->buffer[ofd->current_octet_buf]=((char*)buf)[i];
+		tmp_buf[ofd->current_octet_buf]=((char*)buf)[i];
 		ofd->current_octet_buf++;
 		ofd->current_octet++;
-		if (ofd->current_octet_buf>=512) {
+		/*if (ofd->current_octet_buf>=512) {
 			write_cluster(ofd->buffer, ofd->current_cluster);
 			ofd->current_cluster = file_alloc_table[ofd->current_cluster]; 
 			// Gerer le fait qu'on doit allouer un nouveau cluster si c'est le dernier
 			// i.e. si ofd->current_cluster=0xFFF
 			ofd->current_octet_buf=0;
-		}
+		}*/
+		/*printf("%d %c",ofd->current_octet_buf,((char*)buf)[i]);*/
 	}
+	/*for (j=0;j<512;j++)
+	    	printf("%c",((char*)tmp_buf)[j]);
+	printf("\n");*/
+	write_cluster(tmp_buf, ofd->current_cluster);
+
 	return i;
 }
 
