@@ -76,13 +76,14 @@ kprocess.o: ../libc/include/libio.h ../libc/include/stdarg.h
 kprocess.o: ../libc/include/string.h include/video.h include/gdt.h
 kprocess.o: include/kprocess.h ../include/process.h ../include/pagination.h
 kprocess.o: ../include/vmm.h ../include/kmalloc.h ../include/syscall.h
-kprocess.o: ../libc/include/time.h ../include/elf.h ../include/debug.h
+kprocess.o: ../include/elf.h ../include/debug.h
 ksem.o: include/ksem.h ../include/types.h include/kprocess.h
 ksem.o: ../include/process.h ../libc/include/libio.h ../libc/include/fcntl.h
 ksem.o: ../include/pagination.h ../include/vmm.h ../libc/include/stdio.h
 ksem.o: ../include/kfcntl.h ../libc/include/stdarg.h ../include/kmalloc.h
 kstdio.o: include/video.h ../include/types.h ../libc/include/fcntl.h
 kstdio.o: ../include/kfcntl.h ../libc/include/libio.h
+kstdio.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 ksyscall.o: include/msr.h ../libc/include/stdio.h ../libc/include/fcntl.h
 ksyscall.o: ../include/kfcntl.h ../include/types.h ../libc/include/libio.h
 ksyscall.o: ../libc/include/stdarg.h ../libc/include/string.h

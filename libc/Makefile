@@ -4,7 +4,7 @@ SRCS = *.c */*.c
 
 all: libc
 
-libc: stdio/stdio.o stdio/fopen.o stdio/fwrite.o stdio/fmemopen.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scanf.o stdio/fprintf.o stdio/printf.o stdio/put.o stdio/sprintf.o stdio/get.o libio.o fcntl.o stdio/fread.o stdio/fseek.o malloc.o
+libc: stdio/stdio.o stdio/fopen.o stdio/fwrite.o stdio/fmemopen.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scanf.o stdio/fprintf.o stdio/printf.o stdio/put.o stdio/sprintf.o stdio/get.o libio.o fcntl.o stdio/fread.o stdio/fseek.o malloc.o start.o
 	$(AR) r ../lib/$@.a $^
 
 %.o: %.c
@@ -23,12 +23,16 @@ depend: $(SRCS)
 
 ctype.o: include/ctype.h
 fcntl.o: ../include/types.h include/fcntl.h ../include/syscall.h
+libc_init.o: ../include/process.h include/libio.h include/fcntl.h
+libc_init.o: ../include/types.h ../include/pagination.h ../include/vmm.h
 libio.o: include/libio.h include/fcntl.h ../include/types.h include/stdio.h
 libio.o: ../include/kfcntl.h include/stdarg.h
 malloc.o: include/stdio.h include/fcntl.h ../include/kfcntl.h
 malloc.o: ../include/types.h include/libio.h include/stdarg.h
 malloc.o: ../include/process.h ../include/pagination.h ../include/vmm.h
 malloc.o: ../include/syscall.h include/malloc.h
+start.o: ../include/process.h include/libio.h include/fcntl.h
+start.o: ../include/types.h ../include/pagination.h ../include/vmm.h
 stdlib.o: include/stdio.h include/fcntl.h ../include/kfcntl.h
 stdlib.o: ../include/types.h include/libio.h include/stdarg.h
 stdlib.o: include/stdlib.h include/malloc.h ../include/memory.h

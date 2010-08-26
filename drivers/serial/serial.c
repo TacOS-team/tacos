@@ -59,8 +59,10 @@
 
 #ifdef _DEBUG_
 	#define DEBUG_MESSAGE(message) kprintf("SERIAL_DEBUG:%s.\n", message)
+	#define PRINT_ERROR(source) kprintf("SERIAL_DRIVER Error:%s.\n",source)
 #else
 	#define DEBUG_MESSAGE(message)
+	#define PRINT_ERROR(source)
 #endif
 
 
@@ -146,10 +148,6 @@ int serial_init(serial_port port, char* protocol, unsigned int bauds, int flags)
 	tx_start[port] = 0;
 	tx_end[port] = 0; 
 	tx_size[port] = 0;
-	
-	
-	/* On initialise l'ISR */
-	interrupt_set_routine(IRQ_COM1, serial_isr, 0);
 	
 	/* Active les interruption (DEBUG) 
 	 * Note: A l'initialisation on n'active que l'interruption de 
