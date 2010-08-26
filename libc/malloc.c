@@ -3,6 +3,8 @@
 #include <syscall.h>
 #include <malloc.h>
 
+#define PAGE_SIZE 4096
+
 struct mem
 {
   struct mem *prev;
@@ -102,6 +104,14 @@ static void cut_mem(struct mem* m, size_t size,
 static int is_stuck(struct mem *m1, struct mem *m2)
 {
   return m1 != NULL && (vaddr_t) m1 + m1->size == (vaddr_t) m2;
+}
+
+// retourne le nombre de pages minimal à allouer pour une zone mémoire
+// de taille size : entier_sup(size + overhead)
+unsigned int calculate_min_pages(size_t size)
+{
+	double nb_pages = (double) (size + sizeof(struct slab)) / PAGE_SIZE;
+	return (unsigned int) (nb_pages + ((nb_pages - (int) nb_pages > 0) ? 1 : 0));
 }
 
 void init_malloc(struct mem_list *free_mem, struct mem_list *allocated_mem)

@@ -358,14 +358,6 @@ int unallocate_page(struct virtual_mem *vm, void *page)
 	return 0;
 }
 
-// retourne le nombre de pages minimal à allouer pour une zone mémoire
-// de taille size : entier_sup(size + overhead)
-unsigned int calculate_min_pages(size_t size)
-{
-	double nb_pages = (double) (size + sizeof(struct slab)) / PAGE_SIZE;
-	return (unsigned int) (nb_pages + ((nb_pages - (int) nb_pages > 0) ? 1 : 0));
-}
-
 static void print_slab(struct slab* s, bool free)
 {
 	// set_attribute(BLACK, free ? GREEN : RED);
