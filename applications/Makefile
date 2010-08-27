@@ -3,7 +3,7 @@ LIBS=../lib/libc.a ../lib/libsystem.a
 INCLUDES=-I../include/ -I../libc/include/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 CC=gcc $(INCLUDES) 
-LD=ld -Ttext=40000000 --entry=start_main
+LD=ld -Ttext=40000000 --entry=start_main -melf_i386
 BIN=../bin/
 SRCS=*.c
 

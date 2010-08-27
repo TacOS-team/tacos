@@ -3,7 +3,7 @@ LIBS=../../lib/libc.a ../../lib/libsystem.a  ../../lib/libclock.a
 INCLUDES=-I../../include/ -I../../libc/include/ -Iinclude/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 CC=gcc $(INCLUDES) 
-LD=ld -Ttext=40000000 --entry=start_main
+LD=ld -melf_i386 -Ttext=40000000 --entry=start_main
 BIN=../../bin/
 SRCS=*.c
 
