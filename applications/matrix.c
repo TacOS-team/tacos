@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <process.h>
 
-int main_matrix(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unused)))
+int main(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unused)))
 {
 	int i;
 	printf("\033[40m\033[32m\033[0j");
@@ -32,9 +32,3 @@ int main_matrix(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((
 	}
 }
 
-
-int launch_matrix()
-{
-	exec((paddr_t)main_matrix, "matrix");
-	return 0;
-}

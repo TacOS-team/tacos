@@ -3,7 +3,7 @@ CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin
 
 SRCS = *.c
 
-all: shell.o fiinou.o matrix.o tests.o shell_utils.o pres.o snake.o demo_cube.o noxeyes.o
+all: shell.o fiinou.o tests.o shell_utils.o pres.o snake.o noxeyes.o
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
@@ -16,19 +16,8 @@ depend: $(SRCS)
 
 # DO NOT DELETE
 
-demo_cube.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-demo_cube.o: ../include/kfcntl.h ../include/types.h ../libc/include/libio.h
-demo_cube.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
-demo_cube.o: ../libc/include/malloc.h ../libc/include/time.h
-demo_cube.o: ../include/process.h ../include/pagination.h ../include/vmm.h
-demo_cube.o: ../libc/include/string.h
 fiinou.o: ../libc/include/stdio.h ../libc/include/fcntl.h ../include/kfcntl.h
 fiinou.o: ../include/types.h ../libc/include/libio.h ../libc/include/stdarg.h
-matrix.o: ../libc/include/stdio.h ../libc/include/fcntl.h ../include/kfcntl.h
-matrix.o: ../include/types.h ../libc/include/libio.h ../libc/include/stdarg.h
-matrix.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-matrix.o: ../libc/include/unistd.h ../include/process.h
-matrix.o: ../include/pagination.h ../include/vmm.h
 noxeyes.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 noxeyes.o: ../include/kfcntl.h ../include/types.h ../libc/include/libio.h
 noxeyes.o: ../libc/include/stdarg.h ../libc/include/stdlib.h

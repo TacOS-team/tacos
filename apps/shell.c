@@ -193,22 +193,6 @@ int ps()
 	return 0;
 }
 
-int top(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
-{
-	// XXX: disable_cursor(1);
-	
-	while(1)
-	{
-		printf("\033[1;1H");
-		ps();
-		sleep(1);
-	}
-}
-static int exec_top()
-{
-		exec((paddr_t)top,"top");
-		return 0;
-}
 
 static int shell_exec_elf()
 {
@@ -275,15 +259,12 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(exec_shell, "Mishell");
 	add_builtin_cmd(main_fiinou, "Fiinou");
 	add_builtin_cmd(launch_pres, "presentation");
-	add_builtin_cmd(launch_matrix, "matrix");
 	add_builtin_cmd(resize_cmd, "resize");
 	add_builtin_cmd(resize_cmd_pid, "resize_pid");
 	add_builtin_cmd(move_pid, "move_pid");
 	add_builtin_cmd(snake_main, "snake");
-	add_builtin_cmd(cube_launcher, "cube");
 	add_builtin_cmd(noxeyes, "noxeyes");
 	add_builtin_cmd(sleep_shell, "sleep");
-	add_builtin_cmd(exec_top, "top");
 	add_builtin_cmd(test_write_serial, "write_serial");
 	add_builtin_cmd(test_read_serial, "read_serial");
 	add_builtin_cmd(test_elf, "elf_info");
