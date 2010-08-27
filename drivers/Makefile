@@ -58,6 +58,15 @@ mouse/mouse.o: ../libc/include/fcntl.h ../include/kfcntl.h
 mouse/mouse.o: ../libc/include/libio.h ../libc/include/stdarg.h
 mouse/mouse.o: ../include/ioports.h ../include/mouse.h
 mouse/mouse.o: ../include/interrupts.h
+pci/pci.o: ../include/pci.h ../include/types.h ../include/pci_config.h
+pci/pci.o: ../include/pci_types.h ../libc/include/stdio.h
+pci/pci.o: ../libc/include/fcntl.h ../include/kfcntl.h
+pci/pci.o: ../libc/include/libio.h ../libc/include/stdarg.h
+pci/pci_config.o: ../include/ioports.h ../include/types.h
+pci/pci_config.o: ../include/pci_config.h ../include/pci_types.h
+pci/pci_config.o: pci/pci_vendor.h ../libc/include/stdio.h
+pci/pci_config.o: ../libc/include/fcntl.h ../include/kfcntl.h
+pci/pci_config.o: ../libc/include/libio.h ../libc/include/stdarg.h
 serial/serial.o: ../include/interrupts.h ../include/types.h
 serial/serial.o: ../include/ioports.h ../include/serial.h
 serial/serial.o: ../libc/include/stdio.h ../libc/include/fcntl.h

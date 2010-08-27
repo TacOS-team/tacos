@@ -50,18 +50,25 @@ size_t elf_size(FILE* fd)
 	Elf32_Ehdr elf_header;
 	Elf32_Phdr p_header;
 	int i;
-	size_t size = 0;
+
+	vaddr_t start = 0xFFFFFFFF;
+	vaddr_t end = 0;
 	
 	if(load_efl_header(&elf_header, fd))
 	{
 		for(i=0; i<elf_header.e_phnum; i++)
 		{
 			load_program_header(&p_header, &elf_header, i, fd);
-			size += p_header.p_memsz;
+			if(p_header.p_type == PT_LOAD)
+			{	
+				if(p_header.p_vaddr < start)
+					start = p_header.p_vaddr;
+				if(p_header.p_vaddr + p_header.p_memsz > end)
+					end = p_header.p_vaddr + p_header.p_memsz;
+			}
 		}
 	}
-	
-	return size;
+	return (end - start);
 }
 
 int load_elf(FILE* fd, void* dest)

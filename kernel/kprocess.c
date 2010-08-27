@@ -266,7 +266,7 @@ int create_process_elf(char* name, char* param, uint32_t stack_size, uint8_t rin
 	// soit contigü en mémoire physique et aligné dans un cadre...
 	pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
 	
-	init_process_vm(new_proc->vm, calculate_min_pages(0x4000));
+	init_process_vm(new_proc->vm, calculate_min_pages(program_size));
 	
 	/* Copie du programme au bon endroit */
 	memcpy(0x40000000, temp_prog, program_size);

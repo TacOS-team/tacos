@@ -469,7 +469,9 @@ int test_elf() {
 		printf("failed.\n");
 	} else {
 		elf_info(fd);
+		printf("MEMSIZE: 0x%x\n", elf_size(fd));
 	}
+	
 	/*close(fd);*/
 	return 0;
 }
