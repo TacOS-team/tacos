@@ -21,9 +21,9 @@ FILE *stderr = & _IO_stderr;
 
 void init_stdfiles(FILE ** _stdin, FILE ** _stdout, FILE ** _stderr) {
 	/* Allocation memoire. */
-	FILE * __stdin = (FILE*) malloc(sizeof(FILE));
-	FILE * __stdout = (FILE*) malloc(sizeof(FILE));
-	FILE * __stderr = (FILE*) malloc(sizeof(FILE));
+	FILE * __stdin = (FILE*) kmalloc(sizeof(FILE));
+	FILE * __stdout = (FILE*) kmalloc(sizeof(FILE));
+	FILE * __stderr = (FILE*) kmalloc(sizeof(FILE));
 
 	/* On y copie les valeurs par défaut */
 	memcpy(__stdin, &_IO_stdin, sizeof(FILE));
