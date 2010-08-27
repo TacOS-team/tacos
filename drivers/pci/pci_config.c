@@ -1,7 +1,7 @@
 #include <ioports.h>
 #include <types.h>
 #include <pci_config.h>
-#include <pci_vendor.h>
+#include "pci_vendor.h"
 #include <stdio.h>
 
 #define CONFIG_ADDRESS	0xCF8

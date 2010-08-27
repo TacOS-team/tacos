@@ -19,7 +19,7 @@ export LD=@printf "\033[31m   LD   $$@\033[0m\n" && ld
 export CFLAGS=-native -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LDLIBS=-lc -lpci -lclock -lutils -ldrivers -z nodefaultlib -lsystem
 LDFLAGS=-Llib/
-SUBDIRS = kernel libc utils drivers pci clock apps system 
+SUBDIRS = kernel libc utils drivers clock apps system 
 
 all: kernel.bin
 	@readelf --syms kernel.bin | awk '{print $2 " " $8}' > symbols

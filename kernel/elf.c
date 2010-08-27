@@ -31,10 +31,7 @@ int load_efl_header(Elf32_Ehdr* elf_header, FILE* fd)
 
 int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int index __attribute__ ((unused)), FILE* fd)
 {
-	/* Normalement, on fait un fseek ici pour accéder à l'offset du program header.
-	 * En attendant, on va concidérer qu'on les lis les un après les autres
-	 */
-	
+	/* On se déplace au bon endroit dans le fichier (offset du premier header + index*taille d'un header) */
 	fseek(fd, elf_header->e_phoff + index*elf_header->e_phentsize, SEEK_SET);
 	
 	/* Remplace temporairement un fread boiteux */
@@ -276,8 +273,6 @@ void elf_info(FILE* fd)
 	load_efl_header(&elf_header, fd);
 	if(is_elf(&elf_header))
 	{
-		printf("Ok!\n");
-	
 		printf("\033[2J");
 		fflush(stdout);
 
