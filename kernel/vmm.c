@@ -207,7 +207,8 @@ vaddr_t init_process_vm(struct virtual_mem *vm, int init_nb_pages)
   for(i = 0; i < (init_nb_pages+1); i++)
     map(memory_reserve_page_frame(), vm_begin + i*PAGE_SIZE);
 
-	vm->used_slabs.begin = (struct slab *) vm_begin; 
+	//vm->used_slabs.begin = (struct slab *) vm_begin;
+	vm->used_slabs.begin = (struct slab *) (vm_begin + init_nb_pages*PAGE_SIZE - sizeof(struct slab));
 	vm->used_slabs.begin->prev = NULL;
 	vm->used_slabs.begin->nb_pages = init_nb_pages;
 	vm->used_slabs.begin->next = NULL;
