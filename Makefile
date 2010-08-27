@@ -19,10 +19,9 @@ export LD=@printf "\033[31m   LD   $$@\033[0m\n" && ld
 export CFLAGS=-native -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LDLIBS=-lc -lclock -lutils -ldrivers -z nodefaultlib -lsystem
 LDFLAGS=-Llib/
-SUBDIRS = kernel libc utils drivers clock apps system 
+SUBDIRS = kernel libc utils drivers clock apps system applications
 
 all: kernel.bin
-	@readelf --syms kernel.bin | awk '{print $2 " " $8}' > symbols
 
 kernel.bin: force_look
 	@for i in $(SUBDIRS); do \
@@ -43,6 +42,7 @@ img: all
 	MTOOLSRC=mtoolsrc mcopy menu.txt v:/boot/grub/
 	MTOOLSRC=mtoolsrc mcopy doc.txt v:/
 	MTOOLSRC=mtoolsrc mcopy a.out v:/
+	MTOOLSRC=mtoolsrc mcopy bin v:/
 	MTOOLSRC=mtoolsrc mmd v:/system
 	MTOOLSRC=mtoolsrc mcopy kernel.bin v:/system/
 	@rm mtoolsrc
