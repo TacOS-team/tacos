@@ -243,7 +243,7 @@ void fat_open_file (char * path, open_file_descriptor * ofd) {
 	else {
 		for(i=1;i<=path_length;i++) {
 			get_dirname_from_path(path,dir_name,i);
-			printf("%s",dir_name);
+			kprintf("%s",dir_name);
 			if (strcmp(dir_name,"fd0:")==0) {
 				open_root_dir(&dir);
 			}

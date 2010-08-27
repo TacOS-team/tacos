@@ -47,7 +47,7 @@ int test_gui() {
 
 int test_fwrite() {
 	FILE *file = fopen("fd0:/doc.txt", "w+");
-
+	char* buffer[100];
 	fwrite("Hello World !", sizeof(char), 13, file);
 	fflush(file);
 	return 0;
@@ -228,13 +228,6 @@ int test_task1(int argc, char** argv __attribute__ ((unused))) {
 	return 0;
 }
 
-int test_task() {
-	exec_elf("fd0:/a.out");
-	//create_process("test",(paddr_t)test_task1,"il est plus d'une heure du matin et je suis fatigué",0x1000,3);
-	//create_process_test("test", (paddr_t)test_task1, 0x100 , "1 2", 0x1000, 3);
-
-	return 0;
-}
 
 int calc_pi() {
 	exec((paddr_t) pi, "pi");

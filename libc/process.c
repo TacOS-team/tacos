@@ -31,9 +31,16 @@ void exec(paddr_t prog, char* name)
 	syscall(SYS_EXEC, (uint32_t)prog, (uint32_t)name, 0);
 }
 
-void exec_elf(char* name)
+int exec_elf(char* name)
 {	
-	syscall(SYS_EXEC, (uint32_t)NULL, (uint32_t)name, 1);
+	int ret = -1;
+	FILE* fd = fopen(name, "r");
+	if(fd != NULL)
+	{
+		ret = 0;
+		syscall(SYS_EXEC, (uint32_t)NULL, (uint32_t)name, 1);
+	}
+	return ret;
 }
 
 process_t* get_process(int pid)

@@ -73,7 +73,7 @@ uint32_t get_pid();
 void kill(uint32_t pid);
 
 void exec(paddr_t prog, char* name);
-void exec_elf(char* name);
+int exec_elf(char* name);
 
 process_t* get_process(int pid);
 

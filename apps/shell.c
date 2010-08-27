@@ -65,14 +65,12 @@ static int cat_cmd()
 // NON TESTÉ !
 	char buf[80];
     char chemin[80];
-    strcpy(chemin, "fd0:/");
-	scanf("%s", buf);
-    strcat(chemin, buf);
+	scanf("%s", chemin);
 
 	FILE *file = fopen(chemin, "r");
 
 	char buffer[100];
-	while (fread(buffer, sizeof(buffer), sizeof(char), file) == 100) {
+	while (fread(buffer, sizeof(buffer), sizeof(char), file) > 0) {
         buffer[99] = '\0';
         printf("%s", buffer);
     }
@@ -253,7 +251,6 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_ansi, "test_ansi");
 	add_builtin_cmd(cd_cmd, "cd");
 	add_builtin_cmd(cat_cmd, "cat");
-	add_builtin_cmd(test_task, "test_task");
 	add_builtin_cmd(test_semaphores, "test_sem");
 	add_builtin_cmd(calc_pi, "pi");
 	add_builtin_cmd(exec_shell, "Mishell");
@@ -293,8 +290,8 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 		{
 			char temp[100];
 			sprintf(temp, "fd0:/bin/%s",buffer);
-			exec_elf(temp);
-			//printf("commande introuvable.\n"); 
+			if(!exec_elf(temp));
+				printf("commande introuvable.\n"); 
 		// Si on ne trouve pas la commande en builtin, on devrait alors chercher si y'a un executable qui correspond, dans un futur proche j'espere :p
 		}
 	}

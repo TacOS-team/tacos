@@ -1,4 +1,4 @@
-OBJ=cube top matrix
+OBJ=cube top matrix test
 LIBS=../lib/libc.a ../lib/libsystem.a 
 INCLUDES=-I../include/ -I../libc/include/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
@@ -19,8 +19,11 @@ top: top.o
 matrix: matrix.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
+test: test.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
-.o: .c 
+
+.o: .c
 	$(CC) c $^ $(CFLAGS)
 
 depend: $(SRCS)
