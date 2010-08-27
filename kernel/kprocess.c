@@ -281,7 +281,6 @@ int create_process_elf(char* name, char* param, uint32_t stack_size, uint8_t rin
 		new_proc->fd[i].used = FALSE;
 		
 	/* Initialisation des entrées/sorties standards */
-	init_stdfiles(&new_proc->stdin, &new_proc->stdout, &new_proc->stderr);
 	init_stdfd(&(new_proc->fd[0]), &(new_proc->fd[1]), &(new_proc->fd[2]));
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
 	proc_count++;
@@ -400,7 +399,7 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 		new_proc->fd[i].used = FALSE;
 		
 	/* Initialisation des entrées/sorties standards */
-	init_stdfiles(&new_proc->stdin, &new_proc->stdout, &new_proc->stderr);
+	//init_stdfiles(&new_proc->stdin, &new_proc->stdout, &new_proc->stderr);
 	init_stdfd(&(new_proc->fd[0]), &(new_proc->fd[1]), &(new_proc->fd[2]));
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
 	proc_count++;
