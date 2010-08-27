@@ -7,7 +7,8 @@ LD=ld -Ttext=40000000 --entry=start_main
 BIN=../bin/
 SRCS=*.c
 
-all: $(OBJ) 
+all: $(OBJ)
+	make -C mishell
 
 cube: cube.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
