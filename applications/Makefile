@@ -2,7 +2,7 @@ OBJ=cube top matrix #test
 LIBS=../lib/libc.a ../lib/libsystem.a 
 INCLUDES=-I../include/ -I../libc/include/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
-CC=gcc $(INCLUDES) 
+CC=gcc $(INCLUDES)
 LD=ld -Ttext=40000000 --entry=start_main -melf_i386
 BIN=../bin/
 SRCS=*.c
@@ -22,9 +22,8 @@ matrix: matrix.o
 test: test.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
-
-.o: .c
-	$(CC) c $^ $(CFLAGS)
+.o: .c 
+	$(CC) -c $^ $(CFLAGS)
 
 depend: $(SRCS)
 	makedepend -Y $(INCLUDES) -- $(CFLAGS) -- $^
