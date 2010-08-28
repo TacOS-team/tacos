@@ -12,9 +12,9 @@ void printStackTrace(uint32_t depth)
 	// on récupère ebp à partir de l'adresse de l'argument:
 	uint32_t* ebp = &depth - 2;
 	uint32_t i;
-	kprintf("Stack Trace:\n");
+	kprintf("\nStack Trace:\n");
 	
-	for(i=0; i<depth; ++i)
+	for(i=0; i<depth+3; ++i)
 	{
 		uint32_t eip = ebp[1];
 		
@@ -23,7 +23,8 @@ void printStackTrace(uint32_t depth)
 			break;
 		}
 		ebp = (uint32_t*) ebp[0];
-		kprintf("->0x%x\n",eip);
+		if(i>=2)
+			kprintf("->0x%x\n",eip);
 	}
 }
 
