@@ -300,7 +300,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 		{
 			char temp[100];
 			sprintf(temp, "fd0:/bin/%s",buffer);
-			if(!exec_elf(temp));
+			if(exec_elf(temp) != 0)
 				printf("commande introuvable.\n"); 
 		// Si on ne trouve pas la commande en builtin, on devrait alors chercher si y'a un executable qui correspond, dans un futur proche j'espere :p
 		}
