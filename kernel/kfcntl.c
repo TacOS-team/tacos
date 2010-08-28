@@ -24,8 +24,7 @@ void init_stdfd(struct _file_descriptor *fd0, struct _file_descriptor *fd1, stru
 }
 
 
-/* TODO: enlever les  attribute quand les paramètre serviront à quelque chose */
-void* sys_open(uint32_t fd_id, uint32_t p_path , uint32_t flags __attribute__ ((unused))) {
+void* sys_open(uint32_t fd_id, uint32_t p_path , uint32_t flags) {
 	int i=0;
 	
 	//process_t * process = (process_t*) p_process;
@@ -40,12 +39,17 @@ void* sys_open(uint32_t fd_id, uint32_t p_path , uint32_t flags __attribute__ ((
 	process->fd[i].ofd = kmalloc(sizeof(open_file_descriptor));
 	process->fd[i].used = TRUE;
 	
-	// TODO : devrait tenir compte des flags pour savoir s'il faut créer le fichier... !
-	//ouverture du fichier (sur fd0 pour le momentt)
-	fat_open_file(path, process->fd[i].ofd);
-	
-
-	*((int *)fd_id) = i;
+	// ouverture du fichier (sur fd0 pour le moment)
+	if (fat_open_file(path, process->fd[i].ofd, flags) == 0) {
+		// C'est ici qu'on devrait vérifier si le fichier ouvert est spécial 
+		// pour savoir si on doit binder au file system ou à un driver.
+		process->fd[i].ofd->write = write_file;
+		process->fd[i].ofd->read = read_file;
+		process->fd[i].ofd->seek = seek_file;
+		*((int *)fd_id) = i;
+	} else {
+		*((int *)fd_id) = -1;
+	}
 
   return NULL;
 }

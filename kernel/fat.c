@@ -210,6 +210,11 @@ int get_dirname_from_path (char * path, char* name,int pos) {
 	return ret;
 }
 
+/**
+ * Donne le nombre de '/' dans un chemin.
+ *
+ * @param path Le chemin à analyser.
+ */
 int get_path_length (char *path) {
 	int i=0,k=0;
 	while ( path[i]!='\0') {
@@ -229,14 +234,14 @@ int get_filename_from_path (char * path, char * filename) {
 }
 
 //directory_t dir;
-void fat_open_file (char * path, open_file_descriptor * ofd) {
+int fat_open_file (char * path, open_file_descriptor * ofd, uint32_t flags) {
 	int i, path_length;
+	int fichier_present;
 	char dir_name[14];
 	char file_name[14];
 	directory_t dir;
 	
 	path_length = get_path_length(path);
-	/* TODO: Creer le fichier si il n'existe pas.. */
 	if (path_length==1) {
 		open_root_dir(&dir);
 	}
@@ -248,26 +253,37 @@ void fat_open_file (char * path, open_file_descriptor * ofd) {
 				open_root_dir(&dir);
 			}
 			else {
-				open_next_dir(&dir,&dir,dir_name);
+				if (open_next_dir(&dir,&dir,dir_name) != 0) {
+					return -1;
+				}
 			}
 		}
 	}
 	
 	get_filename_from_path(path,file_name);
+	fichier_present = 0;
 	for(i=0;i<(dir.total_entries);i++) {
 		if(strcmp(dir.entry_name[i],file_name)==0) {
 			ofd->first_cluster = dir.entry_cluster[i];
 			ofd->file_size = dir.entry_size[i];
+			fichier_present = 1;
 			break;
 		}
 	}
+
+	if (fichier_present == 0) {
+		if (flags & O_CREAT) {
+			// TODO create file !
+		} else {
+			return -1;
+		}
+	}
+
 	ofd->current_cluster = ofd->first_cluster;
 	ofd->current_octet = 0;
 	ofd->current_octet_buf = 0;
-	ofd->write = write_file;
-	ofd->read = read_file;
-	ofd->seek = seek_file;
 	read_cluster((char*)ofd->buffer,ofd->current_cluster);
+	return 0;
 }
 
 int seek_file (open_file_descriptor * ofd, long offset, int whence) {

@@ -39,7 +39,10 @@ int convert_flags(const char *mode) {
 	
 FILE *fopen(const char *path, const char *mode) {
 	int flags = convert_flags(mode);
-	int fileno = open(path, flags); // open doit faire un appel systeme et s'occuper aussi de modifier la fd_table !
+	int fileno = open(path, flags);
+
+	if (fileno < 0) return NULL;
+
 	// Va chercher dans le process le file_list pour chainer comme il faut.
 	process_t *current_process = get_process(get_pid());
 	FILE *stream = malloc(sizeof(FILE));
