@@ -15,6 +15,7 @@
 #include <debug.h>
 #include <serial.h>
 #include <unistd.h>
+#include <clock.h>
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
 
@@ -134,7 +135,7 @@ static int sleep_shell()
 {
 	int time = 0;
 	scanf("%d", &time);
-	printf("Asleep for %d ms...\n", time);
+	printf("Asleep for %d us...\n", time);
 	usleep(time);
 	return 0;
 }
@@ -191,6 +192,14 @@ int ps()
 	return 0;
 }
 
+static int watch_clock() {
+	struct timeval clock;
+
+	while(1) {
+		clock = get_tv();
+		printf("CLOCK : %ds %dus\n", clock.tv_sec, clock.tv_usec);
+	}
+}
 
 static int shell_exec_elf()
 {
@@ -268,6 +277,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_ctype, "test_ctype");
 	add_builtin_cmd(test_stdio, "test_stdio");
 	add_builtin_cmd(shell_exec_elf, "exec");
+	add_builtin_cmd(watch_clock, "clock");
 
 	disable_cursor(0);
 	
@@ -296,3 +306,4 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 		}
 	}
 }
+

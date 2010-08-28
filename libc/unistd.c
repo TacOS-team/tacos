@@ -5,12 +5,12 @@
 
 unsigned int sleep(unsigned int seconds)
 {
-	return usleep(1000*seconds);
+	return usleep(1000000*seconds);
 }
 
-unsigned int usleep(unsigned int milliseconds)
+unsigned int usleep(unsigned int microseconds)
 {
-	syscall(SYS_SLEEP, milliseconds, 0, 0);
+	syscall(SYS_SLEEP, microseconds, 0, 0);
 	return 0;
 }
 

@@ -65,7 +65,7 @@ int listAddElement(list_t* l, void* element)
 			l->head = i;
 		}
 		/* Si l'élément se place en tête */
-		else if(l->comparator(element,getElement(l,l->head))>= 0 )  { 
+		else if(l->comparator(element,getElement(l,l->head)) <= 0 )  { 
 			l->link_array[i] = l->head;
 			l->head = i;
 		}
@@ -73,7 +73,7 @@ int listAddElement(list_t* l, void* element)
 			j = l->head;
 			/* On cherche la position du nouvel élément */
 			
-			while(l->link_array[j]!=END_SLOT && l->comparator(element, getElement(l,l->link_array[j])) <0 )
+			while(l->link_array[j]!=END_SLOT && l->comparator(element, getElement(l,l->link_array[j])) > 0 )
 			{
 				j = l->link_array[j];
 			}	

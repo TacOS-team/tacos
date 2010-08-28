@@ -19,8 +19,8 @@
 #define RTC_MONTH         0x08
 #define RTC_YEAR          0x09
 
-#define A_SMALLER  1
-#define B_SMALLER -1
+#define A_SMALLER -1
+#define B_SMALLER 1
 
 #define MILLISECONDS_PER_SECOND 1000
 #define SECONDS_PER_MINUTE 60
@@ -49,7 +49,6 @@ static time_t systime;
 void clock_tick()
 {
 	sysclock++;
-		
 	if(sysclock>= CLOCKS_PER_SEC)
 	{
 		sysclock -= CLOCKS_PER_SEC;

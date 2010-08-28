@@ -41,7 +41,7 @@ int i8254_init(uint32_t freq)
 
   controlByte = (SELECT_COUNTER_0 << 6) |
                 (RW_ALL           << 4) |
-                (MODE_0           << 1) |
+                (MODE_2           << 1) |
                 (BINARY_COUNT);
   outb(controlByte, CONTROL_REG);
   outb(nb_tick & 0xFF, COUNTER_0);

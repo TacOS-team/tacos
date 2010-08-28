@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <time.h>
 #include <process.h>
+#include <unistd.h>
 
 void ps()
 {
 	process_t* aux = get_process_list(FIRST_PROCESS);
 
-	const int clk_per_ms = CLOCKS_PER_SEC / 1000;
 	long int ms;
 	int s;
 	int m;
@@ -17,7 +17,7 @@ void ps()
 	{
 			
 			/* Calcul du temps d'execution du processus */
-			ms = aux->user_time / clk_per_ms;
+			ms = aux->user_time;
 			s = ms / 1000;
 			
 			m = s / 60;
@@ -51,7 +51,6 @@ void ps()
 			
 			aux = get_process_list(NEXT_PROCESS);
 	}
-	return 0;
 }
 
 int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
@@ -61,6 +60,6 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	{
 		printf("\033[1;1H");
 		ps();
-		//sleep(1);
+		sleep(1);
 	}
 }

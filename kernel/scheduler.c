@@ -130,7 +130,7 @@ void process_switch(int mode, process_t* current)
 void* schedule(void* data __attribute__ ((unused)))
 {
 	uint32_t* stack_ptr;
-   uint32_t compteur;
+	uint32_t compteur;
 
    process_t* current = get_current_process();
 	
@@ -203,8 +203,7 @@ void* schedule(void* data __attribute__ ((unused)))
 	{
 		// Mise en place de l'interruption sur le quantum de temps
 	    
-	    add_event(schedule,NULL,quantum);	
-	    i8254_init(1000/*TIMER_FREQ*/);
+	  add_event(schedule,NULL,quantum*1000);	
 		kprintf("Scheduler is down...\n");
 		outb(0x20, 0x20);
 		while(1);
@@ -217,8 +216,7 @@ void* schedule(void* data __attribute__ ((unused)))
 	}
 
 	// Mise en place de l'interruption sur le quantum de temps
-	event_id = add_event(schedule,NULL,quantum);	
-	i8254_init(1000/*TIMER_FREQ*/);
+	event_id = add_event(schedule,NULL,quantum*1000);	
 
 	// On réaffecte à la main stdin, stdout et stderr. TEMPORAIRE ! Il faudrait que stdin, stdout et stderr soient tjs à la même adresse pour chaque processus...
 	stdin = current->stdin;
@@ -247,7 +245,7 @@ void stop_scheduler()
 
 void start_scheduler()
 {
-	event_id = add_event(schedule,NULL,quantum);
+	event_id = add_event(schedule,NULL,quantum*1000);
 }
 
 void* sleep_callback( void* data )
@@ -266,7 +264,7 @@ void* sys_sleep( uint32_t delay,uint32_t unused2 __attribute__ ((unused)), uint3
 
 	/* Passage du processus en waiting */
 	process->state = PROCSTATE_WAITING;
-	
+
 	/* Adjout de l'évènement de fin de sleep */
 	add_event(sleep_callback,(void*)process,delay);
 	

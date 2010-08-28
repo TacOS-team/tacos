@@ -32,7 +32,7 @@ unsigned int sleep(unsigned int seconds);
  * 
  * @return 0 en cas de succès, -1 en cas d'erreur.
  */
-unsigned int usleep(unsigned int milliseconds);
+unsigned int usleep(unsigned int microseconds);
 
 ssize_t write(int fd, const void *buf, size_t count);
 

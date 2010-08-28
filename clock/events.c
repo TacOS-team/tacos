@@ -26,20 +26,15 @@ static void events_interrupt(int interrupt_id __attribute__ ((unused)))
 {
 	struct event_t *event;
 
-
 	clock_tick();
 
 	event = (struct event_t *) listGetTop(events);
-	while(event != NULL && compare_times(event->date, get_tv()) > 0)
+	while(event != NULL && compare_times(event->date, get_tv()) <= 0)
 	{
-
-		  listRemoveTop(&events);
-		  event->callback(event->data);
-		  event = (struct event_t *) listGetTop(events);
-	  
+		listRemoveTop(&events);
+		event->callback(event->data);
+		event = (struct event_t *) listGetTop(events);
 	}
-
-	i8254_init(1000/*TIMER_FREQ*/);
 }
 
 void events_init()
@@ -55,26 +50,30 @@ void events_init()
   i8254_init(1000/*TIMER_FREQ*/);
 }
 
-int add_event(callback_t call, void* data, clock_t dtime)
+int add_event(callback_t call, void* data, time_t dtime_usec)
 {
 	static int id = 0;
 	struct event_t event;
 	int overflow=0;
+	struct timeval clock = get_tv();
 	
-	event.date.tv_sec = get_date();
-	event.date.tv_usec = get_clock()+(dtime*USEC_PER_SEC/CLOCKS_PER_SEC);
-	
+	event.date.tv_sec = clock.tv_sec;
+	event.date.tv_usec = clock.tv_usec + dtime_usec;
+
 	if(event.date.tv_usec > USEC_PER_SEC)
 	{
 		overflow = event.date.tv_usec/USEC_PER_SEC;
 		event.date.tv_usec = event.date.tv_usec%USEC_PER_SEC;
 		event.date.tv_sec += overflow;
 	}
-	
+
 	event.callback = call;
 	event.data = data;											
 	event.id = id;
+//		kprintf("TIME : %d %d\n", clock.tv_sec, clock.tv_usec);
+//		kprintf("NYU ## %d %d %d\n", events.nb_elements, event.date.tv_sec, event.date.tv_usec);
 	listAddElement(&events, &event);
+//		kprintf("BZZ ## %d %d %d\n", events.nb_elements, ((struct event_t *) (events.elements_array))[events.head].date.tv_sec, ((struct event_t *) (events.elements_array))[events.head].date.tv_usec);
 
 	id++;
 
