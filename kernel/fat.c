@@ -287,37 +287,50 @@ int fat_open_file (char * path, open_file_descriptor * ofd, uint32_t flags) {
 }
 
 int seek_file (open_file_descriptor * ofd, long offset, int whence) {
-//TODO: ajouter détection d'erreurs.
 	switch (whence) {
 		case SEEK_SET: // depuis le debut du fichier
-			// On se met au début :
-			ofd->current_cluster = ofd->first_cluster;
-			ofd->current_octet = 0;
-			ofd->current_octet_buf = 0;
+			if (offset < ofd->file_size) {
+				// On se met au début :
+				ofd->current_cluster = ofd->first_cluster;
+				ofd->current_octet = 0;
+				ofd->current_octet_buf = 0;
 
-			// On avance de cluster en cluster.
-			while (offset >= 512) {
-				offset -= 512;
-				ofd->current_octet += 512;
-				ofd->current_cluster = file_alloc_table[ofd->current_cluster];
+				// On avance de cluster en cluster.
+				while (offset >= 512) {
+					offset -= 512;
+					ofd->current_octet += 512;
+					ofd->current_cluster = file_alloc_table[ofd->current_cluster];
+				}
+
+				ofd->current_octet_buf = offset;
+				ofd->current_octet += offset;
+				read_cluster((char*)ofd->buffer, ofd->current_cluster);
+			} else {
+				return -1;
 			}
-
-			ofd->current_octet_buf = offset;
-			ofd->current_octet += offset;
-			read_cluster((char*)ofd->buffer, ofd->current_cluster);
 			break;
 		case SEEK_CUR:
-			ofd->current_octet += offset;
-			ofd->current_octet_buf = offset;
-			while (ofd->current_octet_buf >= 512) {
-				ofd->current_octet_buf -= 512;
-				ofd->current_cluster = file_alloc_table[ofd->current_cluster];
+			if (ofd->current_octet + offset < ofd->file_size) {
+				ofd->current_octet += offset;
+				ofd->current_octet_buf = offset;
+				while (ofd->current_octet_buf >= 512) {
+					ofd->current_octet_buf -= 512;
+					ofd->current_cluster = file_alloc_table[ofd->current_cluster];
+				}
+				read_cluster((char*)ofd->buffer, ofd->current_cluster);
+			} else {
+				return -1;
 			}
-			read_cluster((char*)ofd->buffer, ofd->current_cluster);
 			break;
-		/*case SEEK_END:
-			ofd->current_octet =  // TODO !
-			break;*/
+		case SEEK_END:
+			if (offset <= ofd->file_size) {
+				return seek_file (ofd, ofd->file_size - offset, SEEK_SET);
+			} else {
+				return -1;
+			}
+			break;
+		defaut:
+			return -1;
 	}
 
 	return 0;
