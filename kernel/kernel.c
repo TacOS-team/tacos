@@ -149,7 +149,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	events_init();
 	
 	/* Lancement du scheduler */
-	init_scheduler(2);
+	init_scheduler(10);
 
 	/* Initialisation des semaphores */
 	init_semaphores();

@@ -38,8 +38,9 @@ void page_fault_report(int error_code)
 		kprintf("Page-protection violation.\n");
 	else
 		kprintf("Non-present page.\n");
+	
 		
-	kprintf("\n\n\n\tPlease press Atl-tab to continue...");
+	kprintf("\n\n\tPlease press Atl-tab to continue...");
 }
 
 void kpanic_main_report(int error_id, int error_code, process_t* badboy)
@@ -55,7 +56,16 @@ void kpanic_main_report(int error_id, int error_code, process_t* badboy)
 	kprintf("--------------------------------------------------------------------------------\n");
 	/* On affiche le nom du bad boy */
 	kprintf("In \033[31m%s (pid:%d)\033[47m\033[30m\n\n", badboy->name, badboy->pid);
-	kprintf("Exception handled : ");
+	
+	kprintf("Current process information (last scheduling):\n");
+	kprintf("eip = 0x%x\n", badboy->regs.eip);
+	kprintf("esp = 0x%x\n",badboy->regs.esp);
+	kprintf("cs = 0x%x\n",badboy->regs.cs);
+	kprintf("ds = 0x%x\n",badboy->regs.ds);
+	
+	printStackTrace(5);
+	
+	kprintf("\nException handled : ");
 	switch(error_id)
 	{
 		case EXCEPTION_SEGMENT_NOT_PRESENT:
