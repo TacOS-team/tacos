@@ -5,7 +5,8 @@
 int is_elf(Elf32_Ehdr* elf_header)
 {
 	int ret = 0;
-
+	/* Pour vérifier qu'on a bien affaire à un fichier elf, il suffit de
+	 * vérifier qu'on a les 4 bon magic bytes */
 	if(	elf_header->e_ident[EI_MAG0] == 0x7f &&
 		elf_header->e_ident[EI_MAG1] == 'E' &&
 		elf_header->e_ident[EI_MAG2] == 'L' &&
@@ -42,6 +43,7 @@ int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int 
 		*pointeur = fgetc(fd);
 		pointeur++;
 	}
+	/* TODO: vérifier que ce header existe bien, et retourner un code d'erreur sinon... */
 	return 0;
 }
 

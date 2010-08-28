@@ -1,3 +1,4 @@
+
 /**
  * @file scheduler.c
  */
@@ -20,19 +21,21 @@
 #define USER_PROCESS 0
 #define KERNEL_PROCESS 1
 
-process_t* idle_process;
-static uint32_t quantum;						// Quantum de temps alloué aux process
-static int event_id = 0;
-static int sample_counter;
+static uint32_t quantum;	/* Quantum de temps alloué aux process */
+static int event_id = 0;	/* Identifiant de l'évenement schedule */
+static int sample_counter;	/* Compteur du nombre d'échantillonnage pour l'évaluation de l'usage CPU */
 
 
+/* Effectue le changement de contexte proprement dit */
 void process_switch(int mode, process_t* current)
 {
 	uint32_t esp, eflags;
 	uint16_t kss, ss, cs;
 	
+	/* Récupère l'adresse physique de répertoire de page du processus */
 	paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) current->pd);
 	
+	/* Mise à jour des piles de la TSS */
 	get_default_tss()->esp0	=	current->kstack.esp0;
 	get_default_tss()->ss0	=	current->kstack.ss0;
 	
@@ -40,7 +43,7 @@ void process_switch(int mode, process_t* current)
 	cs = current->regs.cs;
 	//esp0 = current-e>regs.esp;
 	eflags = (current->regs.eflags | 0x200) & 0xFFFFBFFF; // Flags permettant le changemement de contexte
-		
+	
 	if(mode == USER_PROCESS)
 	{
 		kss = current->kstack.ss0;
@@ -105,7 +108,7 @@ void process_switch(int mode, process_t* current)
 	
 	outb(0x20, 0x20);
 
-//	pagination_load_page_directory(pd_paddr);
+	/*	pagination_load_page_directory(pd_paddr); */
 	asm volatile("mov %0, %%cr3":: "b"(pd_paddr));
 
 	asm(
@@ -132,9 +135,9 @@ void* schedule(void* data __attribute__ ((unused)))
 	uint32_t* stack_ptr;
 	uint32_t compteur;
 
-   process_t* current = get_current_process();
+	process_t* current = get_current_process();
 	
-	// On récupère le contexte du processus actuel uniquement si il a déja été lancé
+	/* On récupère le contexte du processus actuel uniquement si il a déja été lancé */
 	if(current->state == PROCSTATE_RUNNING || current->state == PROCSTATE_WAITING)
 	{	
 		/* On récupere un pointeur de pile pour acceder aux registres empilés */
@@ -152,7 +155,7 @@ void* schedule(void* data __attribute__ ((unused)))
 		current->regs.ecx = stack_ptr[13];
 		current->regs.edx = stack_ptr[12];
 		current->regs.ebx = stack_ptr[11];
-		//->esp kernel, on saute
+		/* ->esp kernel, on saute */
 		current->regs.ebp = stack_ptr[9];
 		current->regs.esi = stack_ptr[8];
 		current->regs.edi = stack_ptr[7];
@@ -161,11 +164,11 @@ void* schedule(void* data __attribute__ ((unused)))
 		current->regs.ds = stack_ptr[4];
 		current->regs.es = stack_ptr[3];
 		
-		// Si on ordonnance une tache en cours d'appel systeme..
+		/* Si on ordonnance une tache en cours d'appel systeme.. */
 		if(current->regs.cs == 0x8)
 		{
 			current->regs.ss = get_default_tss()->ss0;
-			current->regs.esp = stack_ptr[10] + 12;
+			current->regs.esp = stack_ptr[10] + 12;	/* Valeur hardcodée, je cherche encore un moyen d'éviter ça... */
 		}
 		else
 		{
@@ -173,14 +176,16 @@ void* schedule(void* data __attribute__ ((unused)))
 			current->regs.esp = stack_ptr[18];
 		}
 		
-		// Sauver la TSS
+		/* Sauver la TSS */
 		current->kstack.esp0 = get_default_tss()->esp0;
 		current->kstack.ss0  = get_default_tss()->ss0;
 		
 		current->user_time += quantum;
 	}
 	
-	// On recupere le prochain processus à executer	
+	/* On recupere le prochain processus à executer.
+	 * TODO: Dans l'idéal, on devrait ici faire appel à un scheduler, 
+	 * qui aurait pour rôle de choisir le processus celon une politique spécifique */
 	compteur = 0;
 	do
 	{
@@ -197,33 +202,34 @@ void* schedule(void* data __attribute__ ((unused)))
 		sample_counter = 0;
 	}
 	
-	// Si on a aucun processus en IDLE/WAITING/RUNNING, il n'y a aucune chance pour qu'un processus arrive spontanement
-	// Donc on arrete le scheduler
+	/* Si on a aucun processus en IDLE/WAITING/RUNNING, il n'y a aucune chance pour qu'un processus arrive spontanement
+	   Donc on arrete le scheduler 
+	  NOTE: c'est pas totalement exacte en fait, si tous les processus sont endormis... */
 	if(current == NULL || current->state == PROCSTATE_TERMINATED) 
 	{
-		// Mise en place de l'interruption sur le quantum de temps
+		/* Mise en place de l'interruption sur le quantum de temps */
 	    
 	  add_event(schedule,NULL,quantum*1000);	
 		kprintf("Scheduler is down...\n");
 		outb(0x20, 0x20);
 		while(1);
-		//asm("hlt");
 	}
 
-	if(current->state == PROCSTATE_IDLE)// Sinon on signale que le processus est désormais actif
+	/* Si le processus courant n'a pas encore commencé son exécution, on le lance */
+	if(current->state == PROCSTATE_IDLE)
 	{
 		current->state = PROCSTATE_RUNNING;
 	}
 
-	// Mise en place de l'interruption sur le quantum de temps
+	/* Mise en place de l'interruption sur le quantum de temps */
 	event_id = add_event(schedule,NULL,quantum*1000);	
 
-	// On réaffecte à la main stdin, stdout et stderr. TEMPORAIRE ! Il faudrait que stdin, stdout et stderr soient tjs à la même adresse pour chaque processus...
+	/* On réaffecte à la main stdin, stdout et stderr. TEMPORAIRE ! Il faudrait que stdin, stdout et stderr soient tjs à la même adresse pour chaque processus... */
 	stdin = current->stdin;
 	stdout = current->stdout;
 	stderr = current->stderr;
 
-	// Changer le contexte:
+	/* Changer le contexte:*/
 	if(current->regs.cs == 0x8)
 		process_switch(KERNEL_PROCESS, current);
 	else

@@ -10,16 +10,24 @@
 
 syscall_handler_t syscall_handler_table[MAX_SYSCALL_NB];
 
-
+/**
+ * @brief Point d'entrée des appels systèmes
+ * C'est cet fonction qui est lancée à la réception de l'IRQ_SYSCALL
+ * Sont rôle est de récupérer l'identifiant de l'appel système, et
+ * d'exécuter en conséquence le handler correspondant
+ * 
+ * @param unused
+ * 
+ */
 void syscall_entry(int interrupt_id __attribute__ ((unused)))
 {	
 	uint32_t function, param1, param2, param3;
 	syscall_handler_t handler;
 	
-	// On récupère les parametres
+	/* On récupère les parametres */
 	asm("":"=a"(function),"=b"(param1),"=c"(param2),"=d"(param3));
 
-	// On execute le handler correspondant
+	/* On execute le handler correspondant, si il est bien présent dans la table */
 	if(function < MAX_SYSCALL_NB && syscall_handler_table[function] != NULL)
 	{
 		handler = syscall_handler_table[function];
@@ -32,6 +40,8 @@ void syscall_entry(int interrupt_id __attribute__ ((unused)))
 int syscall_set_handler(uint32_t syscall_id, syscall_handler_t handler)
 {
 	int ret = -1;
+	
+	/* Vérifie si l'identifiant de l'appel système n'est pas déja utilisé */
 	if(syscall_id < MAX_SYSCALL_NB && syscall_handler_table[syscall_id] == NULL)
 	{
 		syscall_handler_table[syscall_id] = handler;
@@ -42,8 +52,12 @@ int syscall_set_handler(uint32_t syscall_id, syscall_handler_t handler)
 
 void init_syscall()
 {
+	/* On associe le syscall entry à l'IRQ dédiée aux appels systèmes */
 	interrupt_set_routine(IRQ_SYSCALL, syscall_entry, 3);
+	
+	/* Configuration de l'interruption en trap gate (pour la rendre interruptible) */
 	make_trapgate_from_int(IRQ_SYSCALL);
+	
 	// Mise à zero de la table des handler
 	memset(syscall_handler_table, 0, MAX_SYSCALL_NB*sizeof(syscall_handler_t));
 }

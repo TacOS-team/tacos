@@ -54,6 +54,7 @@ static int  next_semid = 1;
  * 
  *************************************/
 
+/* Initialisation de la fifo */
 static void sem_fifo_init(sem_fifo* fifo)
 {
 	fifo->size = 0;
@@ -61,6 +62,7 @@ static void sem_fifo_init(sem_fifo* fifo)
 	fifo->tail = NULL;
 }
 
+/* Met un élément dans la file */
 static int sem_fifo_put(sem_fifo* fifo, int pid)
 {
 	int ret = -1;
@@ -90,6 +92,7 @@ static int sem_fifo_put(sem_fifo* fifo, int pid)
 	return ret;
 }
  
+/* Prend le prochain élément dans la file */
 static int sem_fifo_get(sem_fifo* fifo)
 {
 	int pid = -1;
@@ -104,6 +107,7 @@ static int sem_fifo_get(sem_fifo* fifo)
 	return pid;
 }
 
+/* Retourne la taille actuelle de la fifo */
 static int sem_fifo_size(sem_fifo* fifo)
 {
 	return fifo->size;

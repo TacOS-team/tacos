@@ -20,6 +20,11 @@
 #ifndef _ELF_H_
 #define _ELF_H_
 
+/**
+ * @file elf.h
+ * 
+ */
+
 #include <libio.h>
 
 typedef unsigned long int 	Elf32_Addr;
@@ -129,17 +134,54 @@ typedef struct{
 #define PF_W	0x2
 #define PF_R	0x4
 	
-
+/**
+ * @brief charge le header principal d'un fichier elf
+ * 
+ * @param elf_header adresse où l'on veut charger le header
+ * @param fd descripteur du fichier à charger
+ * 
+ * @return 1 si le fichier est bien un fichier elf valide, 0 sinon
+ */
 int load_efl_header(Elf32_Ehdr* elf_header, FILE* fd);
+
+/**
+ * @brief charge un program header depuis un fichier elf
+ * Charge le program header n°index depuis le fichier
+ * 
+ * @param program_header adresse où l'on veut charger le header
+ * @param elf_header header principal du fichier
+ * @param index numero du program header à charger
+ * @param fd descripteur du fichier à charger
+ * 
+ * @return 0 si succès, -1 sinon
+ */
 int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int index, FILE* fd);
 
+/**
+ * @brief Calcul la taille que prendra l'exécutable dans la mémoire
+ * La fonction évalue l'adresse de départ en mémoire, et l'adresse de fin, et retourne la différence
+ * (il n'est pas suffisant d'additionner les tailles des différentes sections)
+ * 
+ * @param fd descripteur du fichier elf
+ * 
+ * @return taille prise initialement par l'exécutable en mémoire
+ */
 size_t elf_size(FILE* fd);
 
+/**
+ * @brief charge un fichier elf
+ * Charge les données utiles de l'exécutable en mémoire, de façon à ce que ce soit pret à exécuter
+ * 
+ * @param fd descripteur du fichier à charger
+ * @param dest adresse à laquelle il faut charger l'exécutable
+ * 
+ * @return adresse du point d'entrée de l'exécutable
+ */
 int load_elf(FILE* fd, void* dest);
 
+/**
+ * @brief Affiche des information sur le fichier elf
+ */
 void elf_info(FILE* fd);
-void print_elf_header_info(Elf32_Ehdr* elf_header);
-void print_program_header_info(Elf32_Phdr* p_header);
-
 
 #endif /* _ELF_H_ */
