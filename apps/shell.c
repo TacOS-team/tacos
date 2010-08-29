@@ -197,6 +197,7 @@ static int watch_clock() {
 
 	while(1) {
 		clock = get_tv();
+		sleep(1);
 		printf("CLOCK : %ds %dus\n", clock.tv_sec, clock.tv_usec);
 	}
 }

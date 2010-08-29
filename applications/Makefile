@@ -1,4 +1,4 @@
-OBJ=cube top matrix test
+OBJ=cube top matrix test sem_ping sem_pong
 LIBS=../lib/libc.a ../lib/libsystem.a 
 INCLUDES=-I../include/ -I../libc/include/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
@@ -21,6 +21,13 @@ matrix: matrix.o
 
 test: test.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
+	
+sem_ping: sem_ping.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
+
+sem_pong: sem_pong.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
+
 
 .o: .c 
 	$(CC) -c $^ $(CFLAGS)

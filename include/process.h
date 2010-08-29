@@ -16,6 +16,21 @@
 
 #define CPU_USAGE_SAMPLE_RATE 1000
 
+/* Structure à passer au noyau pour créer un nouveau processus */
+typedef struct
+{
+	FILE* fd;
+	char* name;
+	char* args;
+	
+	void* data;
+	int mem_size;
+	vaddr_t entry_point;
+	
+	int stack_size;
+	int priority;
+}process_init_data_t;
+
 typedef struct
 {
 	uint32_t eax, ecx, edx, ebx;

@@ -81,7 +81,7 @@ process_t* get_active_process();
 * @return 
 */
 
-void sys_exec(paddr_t prog, char* name, uint32_t type);
+void sys_exec(paddr_t prog, void* param, uint32_t type);
 void sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2);
 void sys_getpid(uint32_t* pid, uint32_t zero1, uint32_t zero2);
 void sys_kill(uint32_t pid, uint32_t zero1, uint32_t zero2);

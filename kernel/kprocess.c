@@ -167,18 +167,17 @@ int arg_build(char* string, vaddr_t base, char*** argv_ptr)
 	return argc;
 }
 
-int create_process_elf(char* name, char* param, uint32_t stack_size, uint8_t ring __attribute__ ((unused)))
+int create_process_elf(process_init_data_t* init_data)
 {
 	uint32_t *sys_stack, *user_stack;
 	process_t* new_proc;
 	
-	FILE* fd;
-	size_t program_size;
-	vaddr_t entry_point;
-	
 	char** argv;
 	int argc;
 	uint32_t* stack_ptr;
+	
+	vaddr_t temp_buffer;
+	size_t program_size = init_data->mem_size;
 	
 	int i;
 	int len;
@@ -189,35 +188,29 @@ int create_process_elf(char* name, char* param, uint32_t stack_size, uint8_t rin
 		kprintf("create_process: impossible de reserver la memoire pour le nouveau processus.\n");
 		return -1;
 	}
-	len = strlen(name);
+	len = strlen(init_data->name);
 	new_proc->name = (char *) kmalloc((len+1)*sizeof(char));
-	strcpy(new_proc->name, name);
+	strcpy(new_proc->name, init_data->name);
 	
-	sys_stack = kmalloc(stack_size*sizeof(uint32_t));
+	sys_stack = kmalloc(init_data->stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
 	{
 		kprintf("create_process: impossible de reserver la memoire pour la pile systeme.\n");
 		return -1;
 	}
 	
-	user_stack = kmalloc(stack_size*sizeof(uint32_t));
+	user_stack = kmalloc(init_data->stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
 	{
 		kprintf("create_process: impossible de reserver la memoire pour la pile utilisateur.\n");
 		return -1;
 	}
-	/************************************
-	 * 									*
-	 * CHARGEMENT DU FICHIER ELF		*
-	 * 									*
-	 ************************************/
-	fd = fopen(name, "r");
-	program_size = elf_size(fd);
-	vaddr_t temp_prog = kmalloc(program_size);
-	entry_point = load_elf(fd, temp_prog);
 	
 	/* Initialisation de la pile du processus */
-	argc = arg_build(param,(vaddr_t) &(user_stack[stack_size-1]), &argv);
+	argc = arg_build(init_data->args,
+	                (vaddr_t) &(user_stack[init_data->stack_size-1]), 
+	                &argv);
+	                
 	stack_ptr = (uint32_t*) argv[0];
 	
 	*(stack_ptr-1) = (vaddr_t) argv;
@@ -237,17 +230,20 @@ int create_process_elf(char* name, char* param, uint32_t stack_size, uint8_t rin
 
 	new_proc->regs.cs = 0x1B;
 	new_proc->regs.ds = 0x23;
+	new_proc->regs.es = 0x0;
+	new_proc->regs.fs = 0x0;
+	new_proc->regs.gs = 0x0;
 	new_proc->regs.ss = 0x23;
 	
 	new_proc->regs.eflags = 0;
-	new_proc->regs.eip = entry_point;
+	new_proc->regs.eip = init_data->entry_point;
 	//new_proc->regs.esp = (vaddr_t)(user_stack)+stack_size-3;
 	new_proc->regs.esp = (vaddr_t)(stack_ptr-3);
 	new_proc->regs.ebp = new_proc->regs.esp;
 	
 	new_proc->kstack.ss0 = 0x10;
 	//new_proc->kstack.esp0 = (vaddr_t)(sys_stack)+stack_size-1;
-	new_proc->kstack.esp0 = (vaddr_t)(&sys_stack[stack_size-1]);
+	new_proc->kstack.esp0 = (vaddr_t)(&sys_stack[init_data->stack_size-1]);
 	
 	new_proc->state = PROCSTATE_IDLE;
 	
@@ -259,6 +255,10 @@ int create_process_elf(char* name, char* param, uint32_t stack_size, uint8_t rin
 	paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) new_proc->pd);
 	pagination_init_page_directory_copy_kernel_only(new_proc->pd, pd_paddr);
 
+	/* On récupère l'exécutable temporairement dans le kernel (moche) */
+	temp_buffer = kmalloc(program_size);
+	memcpy(temp_buffer, init_data->data, program_size);
+	
 	/* ZONE CRITIQUE */
 	asm("cli");
 
@@ -269,7 +269,7 @@ int create_process_elf(char* name, char* param, uint32_t stack_size, uint8_t rin
 	init_process_vm(new_proc->vm, calculate_min_pages(program_size));
 	
 	/* Copie du programme au bon endroit */
-	memcpy(0x40000000, temp_prog, program_size);
+	memcpy(0x40000000, temp_buffer, program_size);
 	
 	if(current_proclist_cell != NULL)
 	{
@@ -531,16 +531,16 @@ void sys_kill(uint32_t pid, uint32_t zero1 __attribute__ ((unused)), uint32_t ze
 	delete_process(process->pid);
 }
 
-void sys_exec(paddr_t prog, char* name, uint32_t type)
+void sys_exec(paddr_t prog, void* param, uint32_t type)
 {
-	int len = strlen(name);
+	int len = strlen((char*)param);
 	char * args = (char *) kmalloc((len+1)*sizeof(char));
-	strcpy(args, name);;
+	strcpy(args, (char*)param);
 	
 	if(type == 0)
-		create_process(name, prog, args , 0x1000, 3);
+		create_process((char*)param, prog, args , 0x1000, 3);
 	else;
-		create_process_elf(name, args , 0x1000, 3);
+		create_process_elf((process_init_data_t*) param);
 }
 
 process_t* sys_proc_list(uint32_t action)

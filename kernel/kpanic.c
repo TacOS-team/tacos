@@ -58,13 +58,7 @@ void kpanic_main_report(int error_id, int error_code, process_t* badboy)
 	/* On affiche le nom du bad boy */
 	kprintf("In \033[31m%s (pid:%d)\033[47m\033[30m\n\n", badboy->name, badboy->pid);
 	
-	kprintf("Current process information (last scheduling):\n");
-	kprintf("eip = 0x%x\n", badboy->regs.eip);
-	kprintf("esp = 0x%x\n",badboy->regs.esp);
-	kprintf("cs = 0x%x\n",badboy->regs.cs);
-	kprintf("ds = 0x%x\n",badboy->regs.ds);
-	
-	printStackTrace(5);
+	printStackTrace(10);
 	
 	kprintf("\nException handled : ");
 	switch(error_id)
@@ -93,7 +87,7 @@ void kpanic_main_report(int error_id, int error_code, process_t* badboy)
 			GAME_OVER();
 			break;
 		case EXCEPTION_GENERAL_PROTECTION :
-			kprintf("General Protection fault (error code : %d).\n", error_code);
+			kprintf("General Protection fault (error code : %x).\n", error_code);
 			GAME_OVER();
 			break;
 		default:
