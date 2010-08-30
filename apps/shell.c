@@ -143,7 +143,6 @@ static int sleep_shell()
 int ps()
 {
 	process_t* aux = get_process_list(FIRST_PROCESS);
-
 	const int clk_per_ms = CLOCKS_PER_SEC / 1000;
 	long int ms;
 	int s;
@@ -234,6 +233,9 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	process_t *self = get_process(get_pid());
 	
 	init_stdfiles(&self->stdin, &self->stdout, &self->stderr);
+	/*uint32_t sem = semcreate(10);
+	semP(sem);
+	semP(sem);*/
 	
 	char buffer[80];
 

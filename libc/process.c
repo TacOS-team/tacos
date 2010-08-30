@@ -53,6 +53,8 @@ int exec_elf(char* name)
 		init_data.entry_point = load_elf(fd, init_data.data);
 
 		syscall(SYS_EXEC, (uint32_t)NULL, (uint32_t)&init_data, 1);
+		
+		free(init_data.data);
 	}
 	return ret;
 }

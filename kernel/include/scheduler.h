@@ -42,6 +42,7 @@ void stop_scheduler();
  * @brief Handler de l'appel système sleep
  * Endors un processus, et crée un évenement pour le réveiller
  */
-void* sys_sleep( uint32_t delay,uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)));
+void sys_sleep( uint32_t delay,uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)));
 
+void sys_hlt(uint32_t unused1 __attribute__ ((unused)), uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)));
 #endif //SCHEDULER_H

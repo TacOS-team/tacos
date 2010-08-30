@@ -27,6 +27,17 @@ static proclist_cell* current_proclist_cell = NULL;
 
 static process_t * active_process = NULL; //à un moment il fallait faire ça pour que ça ne plante pas : (process_t*) 5242880; // Tant qu'il y a 42 dans l'adresse, ça me va.
 
+
+proclist_cell* get_current_proclist_cell()
+{
+	return current_proclist_cell;
+}
+void set_current_proclist_cell(proclist_cell* cell)
+{
+	current_proclist_cell = cell;
+}
+
+
 uint32_t get_proc_count()
 {
 	return proc_count;
@@ -293,6 +304,8 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	/* FIN ZONE CRITIQUE */
 	asm("sti");	
 	
+	kfree(temp_buffer);
+	
 	return new_proc;
 }
 
@@ -389,9 +402,6 @@ process_t* create_process(char* name, paddr_t prog, char* param, uint32_t stack_
 		pd_paddr = vmm_get_page_paddr((vaddr_t) get_current_process()->pd);
 		pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
 	}
-	
-
-
 
 	for(i=0;i<FOPEN_MAX;i++) 
 		new_proc->fd[i].used = FALSE;

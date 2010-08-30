@@ -25,11 +25,13 @@ static uint32_t quantum;	/* Quantum de temps alloué aux process */
 static int event_id = 0;	/* Identifiant de l'évenement schedule */
 static int sample_counter;	/* Compteur du nombre d'échantillonnage pour l'évaluation de l'usage CPU */
 
-process_t* idle_process;
+static process_t* idle_process = NULL;
+static proclist_cell idle_proclist_cell;
 
 void idle()
 {
-		while(1);
+	while(1)
+		halt();
 }
 
 
@@ -213,7 +215,10 @@ void* schedule(void* data __attribute__ ((unused)))
 	if(current == NULL || current->state == PROCSTATE_WAITING || current->state == PROCSTATE_TERMINATED) 
 	{
 		/* Si on a rien à faire, on passe dans le processus idle */
-		current = idle_process;
+		proclist_cell* cell = get_current_proclist_cell();
+		idle_proclist_cell.next = cell;
+		set_current_proclist_cell(&idle_proclist_cell);	
+		current = idle_proclist_cell.process;
 	}
 
 	/* Si le processus courant n'a pas encore commencé son exécution, on le lance */
@@ -245,6 +250,11 @@ void init_scheduler(int Q)
 	quantum = Q;
 	
 	idle_process = create_process("idle", idle, "idle", 0x100, 3);
+	idle_process->state = PROCSTATE_IDLE;
+	
+	idle_proclist_cell.process = idle_process;
+	idle_proclist_cell.prev = NULL;
+	idle_proclist_cell.next = NULL;
 }
 
 void stop_scheduler()
@@ -264,7 +274,17 @@ void* sleep_callback( void* data )
 	return NULL;
 }
 
-void* sys_sleep( uint32_t delay,uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
+void halt()
+{
+	syscall(SYS_HLT, NULL, NULL, NULL);
+}
+
+void sys_hlt(uint32_t unused1 __attribute__ ((unused)), uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
+{
+	asm("hlt");
+}
+
+void sys_sleep( uint32_t delay,uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
 {
 	/* Désactivation de l'ordonnanceur */
 	stop_scheduler();
