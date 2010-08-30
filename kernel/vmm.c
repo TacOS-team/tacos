@@ -214,7 +214,7 @@ vaddr_t init_process_vm(struct virtual_mem *vm, int init_nb_pages)
 	vm->used_slabs.begin->next = NULL;
 	vm->used_slabs.end = vm->used_slabs.begin;
 
-  vm->free_slabs.begin = (struct slab *) (vm_begin + init_nb_pages*PAGE_SIZE);
+	vm->free_slabs.begin = (struct slab *) (vm_begin + init_nb_pages*PAGE_SIZE);
 	vm->free_slabs.begin->prev = NULL;
 	vm->free_slabs.begin->nb_pages = 1;
 	vm->free_slabs.begin->next = NULL;

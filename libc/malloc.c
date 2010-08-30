@@ -122,6 +122,14 @@ void init_malloc(struct mem_list *free_mem, struct mem_list *allocated_mem)
   allocated_mem->end = NULL;
 }
 
+void init_process_malloc()
+{
+	process_free_mem.begin = NULL;
+	process_free_mem.end = NULL;
+	process_allocated_mem.begin = NULL;
+	process_allocated_mem.end = NULL;
+}
+
 void *malloc(size_t size) {
 	return __malloc(NULL, &process_free_mem, &process_allocated_mem, size);
 }

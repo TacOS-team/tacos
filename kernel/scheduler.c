@@ -25,6 +25,13 @@ static uint32_t quantum;	/* Quantum de temps alloué aux process */
 static int event_id = 0;	/* Identifiant de l'évenement schedule */
 static int sample_counter;	/* Compteur du nombre d'échantillonnage pour l'évaluation de l'usage CPU */
 
+process_t* idle_process;
+
+void idle()
+{
+		while(1);
+}
+
 
 /* Effectue le changement de contexte proprement dit */
 void process_switch(int mode, process_t* current)
@@ -202,17 +209,11 @@ void* schedule(void* data __attribute__ ((unused)))
 		sample_counter = 0;
 	}
 	
-	/* Si on a aucun processus en IDLE/WAITING/RUNNING, il n'y a aucune chance pour qu'un processus arrive spontanement
-	   Donc on arrete le scheduler 
-	  NOTE: c'est pas totalement exacte en fait, si tous les processus sont endormis... */
-	if(current == NULL || current->state == PROCSTATE_TERMINATED) 
+	
+	if(current == NULL || current->state == PROCSTATE_WAITING || current->state == PROCSTATE_TERMINATED) 
 	{
-		/* Mise en place de l'interruption sur le quantum de temps */
-	    
-	  add_event(schedule,NULL,quantum*1000);	
-		kprintf("Scheduler is down...\n");
-		outb(0x20, 0x20);
-		while(1);
+		/* Si on a rien à faire, on passe dans le processus idle */
+		current = idle_process;
 	}
 
 	/* Si le processus courant n'a pas encore commencé son exécution, on le lance */
@@ -242,6 +243,8 @@ void* schedule(void* data __attribute__ ((unused)))
 void init_scheduler(int Q)
 {
 	quantum = Q;
+	
+	idle_process = create_process("idle", idle, "idle", 0x100, 3);
 }
 
 void stop_scheduler()

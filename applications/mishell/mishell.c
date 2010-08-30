@@ -1,18 +1,9 @@
-#include <fat.h>
-#include <floppy.h>
-#include <kmalloc.h>
-#include <memory.h>
-#include <mouse.h>
-#include <pci.h>
 #include <process.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include <shell_utils.h>
-#include <sem.h>
-#include <debug.h>
-#include <serial.h>
 #include <unistd.h>
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
@@ -79,44 +70,6 @@ static int cat_cmd()
 	fflush(file);
 
 	return 0;
-}
-
-static int resize_cmd()
-{
-	int x, y;
-	scanf("%d %d", &x, &y);
-	// XXX: resize_text_window(get_process(CURRENT_PROCESS)->fd[1].ofd->extra_data, x, y);
-  return 0;
-}
-
-static int resize_cmd_pid() {
-	int pid, x, y;
-  process_t *p;
-	
-  scanf("%d %d %d", &pid, &x, &y);
-  p = get_process(pid);
-
-  if(p != NULL) {
-  	// XXX:resize_text_window(p->fd[1].ofd->extra_data, x, y);
-    return 0;
-  }
-
-  return 1;
-}
-
-static int move_pid() {
-	int pid, x, y;
-  process_t *p;
-
-	scanf("%d %d %d", &pid, &x, &y);
-  p = get_process(pid);
-
-  if(p != NULL) {
-	//XXX : move_text_window(p->fd[1].ofd->extra_data, x, y);
-    return 0;
-  }
-
-  return 1;
 }
 
 static int cls_cmd() {

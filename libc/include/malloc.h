@@ -12,6 +12,7 @@ struct mem_list
 struct virtual_mem;
 
 void init_malloc(struct mem_list *free_mem, struct mem_list *allocated_mem);
+void init_process_malloc();
 void *malloc(size_t size);
 void *__malloc(struct virtual_mem *vm, struct mem_list *free_mem, 
 							 struct mem_list *allocated_mem, size_t size);

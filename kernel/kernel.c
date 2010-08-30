@@ -142,14 +142,14 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_VMM, 	(syscall_handler_t) sys_vmm);
 	syscall_set_handler(SYS_SEEK, 	(syscall_handler_t) sys_seek);
 	
+	/* Lancement du scheduler */
+	init_scheduler(2);
+	
 	// Création du processus par défaut: notre shell
-	create_process("Mishell", (paddr_t)shell,"coucou les petits clous",0x10000,3);
+	add_process(create_process("Mishell", (paddr_t)shell,"coucou les petits clous",0x10000,3));
 	//create_process("Mishell", (paddr_t)test_proc,0,NULL,1024,3);
 	
 	events_init();
-	
-	/* Lancement du scheduler */
-	init_scheduler(2);
 
 	/* Initialisation des semaphores */
 	init_semaphores();

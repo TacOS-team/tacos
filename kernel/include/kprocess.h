@@ -16,7 +16,7 @@
 * 
 * @return Pid du processus créé.
 */
-int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, uint8_t ring __attribute__ ((unused)));
+process_t* create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, uint8_t ring __attribute__ ((unused)));
 
 /** 
 * @brief Retire un processus de la liste.
@@ -26,6 +26,8 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 * @return 0 la plupart du temps.
 */
 int delete_process(int pid);
+
+
 
 /** 
 * @brief Cherche le process_t* en correspondant à un pid donné.
@@ -80,12 +82,12 @@ process_t* get_active_process();
 * 
 * @return 
 */
+void sys_kill(uint32_t pid, uint32_t zero1, uint32_t zero2);
 
 void sys_exec(paddr_t prog, void* param, uint32_t type);
 void sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2);
 void sys_getpid(uint32_t* pid, uint32_t zero1, uint32_t zero2);
-void sys_kill(uint32_t pid, uint32_t zero1, uint32_t zero2);
 void sys_proc(uint32_t sub_func, uint32_t param1, uint32_t param2);
-
+void add_process(process_t* process);
 
 #endif /* _K_PROCESS_H_ */

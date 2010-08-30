@@ -167,7 +167,7 @@ int arg_build(char* string, vaddr_t base, char*** argv_ptr)
 	return argc;
 }
 
-int create_process_elf(process_init_data_t* init_data)
+process_t* create_process_elf(process_init_data_t* init_data)
 {
 	uint32_t *sys_stack, *user_stack;
 	process_t* new_proc;
@@ -284,8 +284,6 @@ int create_process_elf(process_init_data_t* init_data)
 	init_stdfd(&(new_proc->fd[0]), &(new_proc->fd[1]), &(new_proc->fd[2]));
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
 	proc_count++;
-
-	add_process(new_proc);
 	
 	active_process = new_proc;
 	if (active_process->fd[1].used) {
@@ -295,10 +293,10 @@ int create_process_elf(process_init_data_t* init_data)
 	/* FIN ZONE CRITIQUE */
 	asm("sti");	
 	
-	return new_proc->pid;
+	return new_proc;
 }
 
-int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, uint8_t ring __attribute__ ((unused)))
+process_t* create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, uint8_t ring __attribute__ ((unused)))
 {
 	uint32_t *sys_stack, *user_stack;
 	process_t* new_proc;
@@ -403,8 +401,6 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 	init_stdfd(&(new_proc->fd[0]), &(new_proc->fd[1]), &(new_proc->fd[2]));
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
 	proc_count++;
-
-	add_process(new_proc);
 	
 	active_process = new_proc;
 	if (active_process->fd[1].used) {
@@ -414,7 +410,7 @@ int create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, u
 	/* FIN ZONE CRITIQUE */
 	asm("sti");	
 	
-	return new_proc->pid;
+	return new_proc;
 }
 
 
@@ -526,9 +522,10 @@ void sys_kill(uint32_t pid, uint32_t zero1 __attribute__ ((unused)), uint32_t ze
 	
 	// Violent? OUI!
 	if (process != NULL)
+	{
 		process->state = PROCSTATE_TERMINATED;
-		
-	delete_process(process->pid);
+		delete_process(process->pid);
+	}
 }
 
 void sys_exec(paddr_t prog, void* param, uint32_t type)
@@ -538,9 +535,9 @@ void sys_exec(paddr_t prog, void* param, uint32_t type)
 	strcpy(args, (char*)param);
 	
 	if(type == 0)
-		create_process((char*)param, prog, args , 0x1000, 3);
+		add_process(create_process((char*)param, prog, args , 0x1000, 3));
 	else;
-		create_process_elf((process_init_data_t*) param);
+		add_process(create_process_elf((process_init_data_t*) param));
 }
 
 process_t* sys_proc_list(uint32_t action)
