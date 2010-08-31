@@ -1,6 +1,10 @@
 #ifndef _K_MALLOC_H_
 #define _K_MALLOC_H_
 
+/**
+ * @file kmalloc.h
+ */
+
 #include <types.h>
 
 void init_kmalloc();

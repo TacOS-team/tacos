@@ -1,6 +1,10 @@
 #ifndef _KFCNTL_H
 #define _KFCNTL_H
 
+/**
+ * @file kfcntl.h
+ */
+
 #include <types.h>
 #include <libio.h>
 
