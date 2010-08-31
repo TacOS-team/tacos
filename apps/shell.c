@@ -230,9 +230,13 @@ void print_logo_serial()
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
+	
 	process_t *self = get_process(get_pid());
 	
 	init_stdfiles(&self->stdin, &self->stdout, &self->stderr);
+	stdin = self->stdin;
+	stdout = self->stdout;
+	stderr = self->stderr;
 	/*uint32_t sem = semcreate(10);
 	semP(sem);
 	semP(sem);*/

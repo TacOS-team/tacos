@@ -147,7 +147,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_KILL, (syscall_handler_t) sys_kill);
 	
 	/* Lancement du scheduler */
-	init_scheduler(4);
+	init_scheduler(20);
 	
 	// Création du processus par défaut: notre shell
 	add_process(create_process("Mishell", (paddr_t)shell,"coucou les petits clous",0x10000,3));
