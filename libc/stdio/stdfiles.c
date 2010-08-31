@@ -5,7 +5,7 @@
 #include <types.h>
 #include <libio.h>
 #include <string.h>
-#include <kmalloc.h>
+#include <stdlib.h>
 
 #undef stdin
 #undef stdout
