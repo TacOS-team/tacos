@@ -49,6 +49,15 @@ int ksemget(uint8_t key);
 int ksemcreate(uint8_t key);
 
 /**
+ * @brief Créer un sémaphore sans définir la clef.
+ * Crée le sémaphore associé à la clé key, et retourne un semid à la manière de ksemget
+ * 
+ * @return semid associé au sémaphore identifié par key
+ * -1 en cas d'erreur
+ */
+int ksemcreate_without_key();
+
+/**
  * @brief Supprime un sémaphore
  * Supprime le sémaphore associé à semid (TODO: et libère les processus en attente)
  * 

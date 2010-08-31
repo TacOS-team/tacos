@@ -25,7 +25,7 @@ static int kill_cmd()
 {
 	int pid;
 	scanf("%d",&pid);
-	kill(pid);
+//	kill(pid);
 	return 0;
 }
 /*

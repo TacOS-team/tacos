@@ -149,7 +149,7 @@ int ksemcreate(uint8_t key)
 	int ret = -1;
 
 	//kprintf("semcreate key %d pid %d \n",key);
-	if(!semaphores[key].allocated)
+	if(key < MAX_SEM && !semaphores[key].allocated)
 	{
 		ret = next_semid | key<<24;
 		next_semid++;
@@ -159,6 +159,18 @@ int ksemcreate(uint8_t key)
 
 	//kprintf("returning semid %d\n",ret);
 	return ret;
+}
+
+int ksemcreate_without_key()
+{
+    int ret = -1;
+    int key = 0;
+
+    while (key < MAX_SEM && semaphores[key].allocated) {
+        key++;
+    }
+
+    return ksemcreate(key);
 }
 
 int ksemdel(uint32_t semid)
