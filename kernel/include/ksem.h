@@ -55,7 +55,7 @@ int ksemcreate(uint8_t key);
  * @return semid associé au sémaphore identifié par key
  * -1 en cas d'erreur
  */
-int ksemcreate_without_key();
+int ksemcreate_without_key(uint8_t *key);
 
 /**
  * @brief Supprime un sémaphore

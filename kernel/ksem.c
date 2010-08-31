@@ -161,16 +161,16 @@ int ksemcreate(uint8_t key)
 	return ret;
 }
 
-int ksemcreate_without_key()
+int ksemcreate_without_key(uint8_t *key)
 {
     int ret = -1;
-    int key = 0;
+    *key = 0;
 
-    while (key < MAX_SEM && semaphores[key].allocated) {
-        key++;
+    while (*key < MAX_SEM && semaphores[*key].allocated) {
+        (*key)++;
     }
 
-    return ksemcreate(key);
+    return ksemcreate(*key);
 }
 
 int ksemdel(uint32_t semid)
