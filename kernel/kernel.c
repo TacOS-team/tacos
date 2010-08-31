@@ -36,6 +36,7 @@
 #include <ksem.h>
 #include <video.h>
 #include <serial.h>
+#include <ksignal.h>
 
 typedef struct
 {
@@ -131,7 +132,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_EXIT,	(syscall_handler_t)sys_exit);
 	syscall_set_handler(SYS_GETPID,	(syscall_handler_t)sys_getpid);
 	syscall_set_handler(SYS_OPEN,	(syscall_handler_t)sys_open);
-	syscall_set_handler(SYS_KILL,	(syscall_handler_t)sys_kill);
 	syscall_set_handler(SYS_WRITE,	(syscall_handler_t)sys_write);
 	syscall_set_handler(SYS_READ,	(syscall_handler_t)sys_read);
 	syscall_set_handler(SYS_EXEC, 	(syscall_handler_t)sys_exec);
@@ -142,9 +142,12 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_VMM, 	(syscall_handler_t) sys_vmm);
 	syscall_set_handler(SYS_SEEK, 	(syscall_handler_t) sys_seek);
 	syscall_set_handler(SYS_HLT, 	(syscall_handler_t) sys_hlt);
+	syscall_set_handler(SYS_SIGNAL, 	(syscall_handler_t) sys_signal);
+	syscall_set_handler(SYS_SIGPROCMASK, 	(syscall_handler_t) sys_sigprocmask);
+	syscall_set_handler(SYS_KILL, (syscall_handler_t) sys_kill);
 	
 	/* Lancement du scheduler */
-	init_scheduler(2);
+	init_scheduler(4);
 	
 	// Création du processus par défaut: notre shell
 	add_process(create_process("Mishell", (paddr_t)shell,"coucou les petits clous",0x10000,3));

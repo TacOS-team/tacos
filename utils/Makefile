@@ -31,3 +31,4 @@ widget.o: ../libc/include/string.h ../libc/include/stdio.h
 widget.o: ../libc/include/fcntl.h ../include/kfcntl.h ../libc/include/libio.h
 widget.o: ../libc/include/stdarg.h ../include/mouse.h ../libc/include/ctype.h
 widget.o: ../include/process.h ../include/pagination.h ../include/vmm.h
+widget.o: ../include/signal.h

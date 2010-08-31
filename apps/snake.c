@@ -194,7 +194,7 @@ int snake_proc() {
   while(pid_keyboard == -1);
 	game();
 
-  kill(pid_keyboard);
+  kill(pid_keyboard, SIGKILL);
 
 	printf("\033[0m\nScore : %d\n", score);
 

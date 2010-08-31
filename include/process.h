@@ -8,6 +8,7 @@
 #include <pagination.h>
 #include <types.h>
 #include <vmm.h>
+#include <signal.h>
 
 #define PROCSTATE_IDLE 1
 #define PROCSTATE_RUNNING 2
@@ -71,6 +72,8 @@ typedef struct{
 
 	struct page_directory_entry * pd;
 	struct virtual_mem *vm;
+	
+	signal_process_data_t signal_data;
 } process_t;
 
 typedef struct _proclist_cell{
@@ -84,8 +87,6 @@ typedef struct _proclist_cell{
 void exit(uint32_t value);
 
 uint32_t get_pid();
-
-void kill(uint32_t pid);
 
 void exec(paddr_t prog, char* name);
 int exec_elf(char* name);

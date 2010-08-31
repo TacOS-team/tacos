@@ -73,17 +73,6 @@ void sample_CPU_usage();
 void change_active_process();
 process_t* get_active_process();
 
-/** 
-* @brief Coté kernel de l'appel système kill.
-* Change le statut du processus appelant à PROCSTATE_TERMINATED.
-* @param ret_value ???
-* @param zero1 Inutilisé
-* @param zero2 Inutilisé
-* 
-* @return 
-*/
-void sys_kill(uint32_t pid, uint32_t zero1, uint32_t zero2);
-
 void sys_exec(paddr_t prog, void* param, uint32_t type);
 void sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2);
 void sys_getpid(uint32_t* pid, uint32_t zero1, uint32_t zero2);

@@ -52,7 +52,7 @@ void process_switch(int mode, process_t* current)
 	cs = current->regs.cs;
 	//esp0 = current-e>regs.esp;
 	eflags = (current->regs.eflags | 0x200) & 0xFFFFBFFF; // Flags permettant le changemement de contexte
-	
+	exec_sighandler(current);
 	if(mode == USER_PROCESS)
 	{
 		kss = current->kstack.ss0;

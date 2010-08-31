@@ -52,7 +52,7 @@ keyboard/keyboard.o: ../libc/include/libio.h ../libc/include/stdarg.h
 keyboard/keyboard.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 keyboard/keyboard.o: ../include/ioports.h ../include/keyboard.h
 keyboard/keyboard.o: ../include/process.h ../include/pagination.h
-keyboard/keyboard.o: ../include/vmm.h
+keyboard/keyboard.o: ../include/vmm.h ../include/signal.h
 mouse/mouse.o: ../include/types.h ../libc/include/stdio.h
 mouse/mouse.o: ../libc/include/fcntl.h ../include/kfcntl.h
 mouse/mouse.o: ../libc/include/libio.h ../libc/include/stdarg.h

@@ -22,11 +22,6 @@ uint32_t get_pid()
 	return pid;
 }
 
-void kill(uint32_t pid)
-{
-	syscall(SYS_KILL,pid,0,0);
-}
-
 void exec(paddr_t prog, char* name)
 {
 	syscall(SYS_EXEC, (uint32_t)prog, (uint32_t)name, 0);

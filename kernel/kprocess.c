@@ -32,11 +32,11 @@ proclist_cell* get_current_proclist_cell()
 {
 	return current_proclist_cell;
 }
+
 void set_current_proclist_cell(proclist_cell* cell)
 {
 	current_proclist_cell = cell;
 }
-
 
 uint32_t get_proc_count()
 {
@@ -258,6 +258,11 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	
 	new_proc->state = PROCSTATE_IDLE;
 	
+	new_proc->signal_data.mask = 0;
+	new_proc->signal_data.pending_set = 0;
+	new_proc->signal_data.stack.ss_size = 0x100;
+	new_proc->signal_data.stack.ss_sp = kmalloc(0x100);
+	
   // Initialisation des données pour la vmm
 	new_proc->vm = (struct virtual_mem *) kmalloc(sizeof(struct virtual_mem));
 
@@ -379,6 +384,15 @@ process_t* create_process(char* name, paddr_t prog, char* param, uint32_t stack_
 	new_proc->kstack.esp0 = (vaddr_t)(&sys_stack[stack_size-1]);
 	
 	new_proc->state = PROCSTATE_IDLE;
+	
+	/* Initialisation des signaux */
+	for(i=0; i<NSIG; i++)
+		new_proc->signal_data.handlers[i] = NULL;
+	
+	new_proc->signal_data.mask = 0;
+	new_proc->signal_data.pending_set = 0;
+	new_proc->signal_data.stack.ss_size = 0x100;
+	new_proc->signal_data.stack.ss_sp = kmalloc(0x100);
 	
   // Initialisation des données pour la vmm
 	new_proc->vm = (struct virtual_mem *) kmalloc(sizeof(struct virtual_mem));
@@ -524,18 +538,6 @@ void sys_getpid(uint32_t* pid, uint32_t zero1 __attribute__ ((unused)), uint32_t
 {
 	process_t* process = get_current_process();
 	*pid = process->pid;
-}
-
-void sys_kill(uint32_t pid, uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))
-{
-	process_t* process = find_process(pid);
-	
-	// Violent? OUI!
-	if (process != NULL)
-	{
-		process->state = PROCSTATE_TERMINATED;
-		delete_process(process->pid);
-	}
 }
 
 void sys_exec(paddr_t prog, void* param, uint32_t type)
