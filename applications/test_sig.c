@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <process.h>
 
-void kill_handler(int signum)
+void int_handler(int signum)
 {
-	printf("SIGKILL recu.\n");
+	printf("SIGINT recu.\n");
 	return;
 }
 void usr_handler(int signum)
@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 {
 	int pid = get_pid();
 	
-	signal(SIGKILL, kill_handler);
+	signal(SIGKINT, int_handler);
 	signal(SIGUSR1, usr_handler);
 	
 	kill(pid, SIGUSR1);
