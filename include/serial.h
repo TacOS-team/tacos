@@ -15,4 +15,5 @@ int serial_puts(serial_port port, char* string);
 int serial_putc(serial_port port, char c);
 int serial_gets(serial_port port, char* buffer, unsigned int size);
 
+void serial_isr(int id __attribute__ ((unused)));
 #endif /* _SERIAL_H_ */

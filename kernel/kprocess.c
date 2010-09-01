@@ -7,7 +7,7 @@
 #include <gdt.h>
 #include <kprocess.h>
 #include <kmalloc.h>
-#include <syscall.h>
+#include <ksyscall.h>
 #include <elf.h>
 #include <kfcntl.h>
 #include <debug.h>
@@ -194,7 +194,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	if( new_proc == NULL )
 	{
 		kprintf("create_process: impossible de reserver la memoire pour le nouveau processus.\n");
-		return -1;
+		return NULL;
 	}
 	len = strlen(init_data->name);
 	new_proc->name = (char *) kmalloc((len+1)*sizeof(char));
@@ -204,14 +204,14 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	if( new_proc == NULL )
 	{
 		kprintf("create_process: impossible de reserver la memoire pour la pile systeme.\n");
-		return -1;
+		return NULL;
 	}
 	
 	user_stack = kmalloc(init_data->stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
 	{
 		kprintf("create_process: impossible de reserver la memoire pour la pile utilisateur.\n");
-		return -1;
+		return NULL;
 	}
 	
 	/* Initialisation de la pile du processus */
@@ -271,8 +271,8 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	pagination_init_page_directory_copy_kernel_only(new_proc->pd, pd_paddr);
 
 	/* On récupère l'exécutable temporairement dans le kernel (moche) */
-	temp_buffer = kmalloc(program_size);
-	memcpy(temp_buffer, init_data->data, program_size);
+	temp_buffer = (vaddr_t) kmalloc(program_size);
+	memcpy((void*)temp_buffer,(void*)init_data->data, program_size);
 	
 	/* ZONE CRITIQUE */
 	asm("cli");
@@ -284,7 +284,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	init_process_vm(new_proc->vm, calculate_min_pages(program_size));
 	
 	/* Copie du programme au bon endroit */
-	memcpy(0x40000000, temp_buffer, program_size);
+	memcpy((void*)0x40000000, (void*)temp_buffer, program_size);
 	
 	if(current_proclist_cell != NULL)
 	{
@@ -303,7 +303,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	/* FIN ZONE CRITIQUE */
 	asm("sti");	
 	
-	kfree(temp_buffer);
+	kfree((void*)temp_buffer);
 	
 	return new_proc;
 }
@@ -311,7 +311,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 process_t* create_process(process_init_data_t* init_data)
 {
 	char* name = init_data->name;
-	paddr_t prog = init_data->data;
+	paddr_t prog = (paddr_t) init_data->data;
 	char* param = init_data->args;
 	uint32_t stack_size = init_data->stack_size;
 
@@ -329,7 +329,7 @@ process_t* create_process(process_init_data_t* init_data)
 	if( new_proc == NULL )
 	{
 		kprintf("create_process: impossible de reserver la memoire pour le nouveau processus.\n");
-		return -1;
+		return NULL;
 	}
 	len = strlen(name);
 	new_proc->name = (char *) kmalloc((len+1)*sizeof(char));
@@ -339,14 +339,14 @@ process_t* create_process(process_init_data_t* init_data)
 	if( new_proc == NULL )
 	{
 		kprintf("create_process: impossible de reserver la memoire pour la pile systeme.\n");
-		return -1;
+		return NULL;
 	}
 	
 	user_stack = kmalloc(stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
 	{
 		kprintf("create_process: impossible de reserver la memoire pour la pile utilisateur.\n");
-		return -1;
+		return NULL;
 	}
 	
 	/* Initialisation de la pile du processus */
@@ -467,7 +467,7 @@ void sample_CPU_usage()
  * SYSCALL
  */
 
-void sys_exit(uint32_t ret_value __attribute__ ((unused)), uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))
+SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 {
 	process_t* current;
 	// On cherche le processus courant:
@@ -479,17 +479,17 @@ void sys_exit(uint32_t ret_value __attribute__ ((unused)), uint32_t zero1 __attr
 	//kprintf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
 }
 
-void sys_getpid(uint32_t* pid, uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))
+SYSCALL_HANDLER1(sys_getpid, uint32_t* pid)
 {
 	process_t* process = get_current_process();
 	*pid = process->pid;
 }
 
-void sys_exec(process_init_data_t* init_data, uint32_t param1, uint32_t param2)
+SYSCALL_HANDLER1(sys_exec, process_init_data_t* init_data)
 {
 	if(init_data->exec_type == EXEC_KERNEL)
 		add_process(create_process(init_data));
-	else;
+	else
 		add_process(create_process_elf(init_data));
 }
 
@@ -524,7 +524,7 @@ process_t* sys_proc_list(uint32_t action)
 	return ret;
 }
 
-void sys_proc(uint32_t sub_func, uint32_t param1, uint32_t param2)
+SYSCALL_HANDLER3(sys_proc, uint32_t sub_func, uint32_t param1, uint32_t param2)
 {
 	switch(sub_func)
 	{

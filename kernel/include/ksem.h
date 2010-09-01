@@ -6,7 +6,7 @@
  * Coté noyau de la gestion des sémaphores
  * 
  */
-
+#include <ksyscall.h>
 #include <types.h>
 
 /**
@@ -24,7 +24,7 @@ int init_semaphores();
  * @param param	Dépend du type d'opération
  * @param ret	Adresse pour la valeur de retour
  */
-void sys_ksem(uint32_t op, uint32_t param, uint32_t ret);
+SYSCALL_HANDLER3(sys_ksem, uint32_t op, uint32_t param, uint32_t ret);
 
 /**
  * @brief Obtenir un semid

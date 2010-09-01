@@ -237,7 +237,7 @@ int ksemV(uint32_t semid)
 }
 
 
-void sys_ksem(uint32_t param1, uint32_t param2, uint32_t param3)
+SYSCALL_HANDLER3(sys_ksem, uint32_t param1, uint32_t param2, uint32_t param3)
 {
 	switch(param1)
 	{

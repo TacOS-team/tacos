@@ -1,9 +1,10 @@
 #ifndef _KPROCESS_H_
 #define _KPROCESS_H_
 
+
 #include <process.h> // TODO: Dans process.h ya pleins de trucs qui devraient probablement migrer dans kprocess.h...
 #include <types.h>
-
+#include <ksyscall.h>
 /** 
 * @brief (OUTDATED)Crée un nouveau processus.
 * Crée un nouveau processus et l'ajoute à la liste des processus avec un état d'exécution PROCSTATE_IDLE.
@@ -62,10 +63,11 @@ void clean_process_list();
 
 void sample_CPU_usage();
 
-void sys_exec(process_init_data_t* init_data, uint32_t param1, uint32_t param2);
-void sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2);
-void sys_getpid(uint32_t* pid, uint32_t zero1, uint32_t zero2);
-void sys_proc(uint32_t sub_func, uint32_t param1, uint32_t param2);
+SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)));
+SYSCALL_HANDLER1(sys_getpid, uint32_t* pid);
+SYSCALL_HANDLER1(sys_exec, process_init_data_t* init_data);
+SYSCALL_HANDLER3(sys_proc, uint32_t sub_func, uint32_t param1, uint32_t param2);
+
 void add_process(process_t* process);
 
 proclist_cell* get_current_proclist_cell();

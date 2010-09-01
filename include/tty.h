@@ -1,9 +1,9 @@
 #ifndef _TTY_H
 #define _TTY_H
 
-#include "types.h"
-#include "kfcntl.h"
-#include "kprocess.h"
+#include <types.h>
+#include <kfcntl.h>
+#include <kprocess.h>
 
 #define MAX_INPUT 255
 

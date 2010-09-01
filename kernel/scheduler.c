@@ -17,6 +17,7 @@
 #include <vmm.h>
 #include <kmalloc.h>
 #include <string.h>
+#include <ksignal.h>
 
 #define USER_PROCESS 0
 #define KERNEL_PROCESS 1
@@ -283,15 +284,17 @@ void* sleep_callback( void* data )
 
 void halt()
 {
-	syscall(SYS_HLT, NULL, NULL, NULL);
+	syscall(SYS_HLT, (uint32_t)NULL, (uint32_t)NULL,(uint32_t) NULL);
 }
-
+/*
 void sys_hlt(uint32_t unused1 __attribute__ ((unused)), uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
+*/
+SYSCALL_HANDLER0(sys_hlt)
 {
 	asm("hlt");
 }
 
-void sys_sleep( uint32_t delay,uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
+SYSCALL_HANDLER1(sys_sleep, uint32_t delay)
 {
 	/* Désactivation de l'ordonnanceur */
 	stop_scheduler();
@@ -311,5 +314,5 @@ void sys_sleep( uint32_t delay,uint32_t unused2 __attribute__ ((unused)), uint32
 	while(process->state == PROCSTATE_WAITING);
 	//dummy1();
 		
-	return NULL;
+	return;
 }

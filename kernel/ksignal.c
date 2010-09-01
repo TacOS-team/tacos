@@ -5,7 +5,7 @@
 /*
  * TODO: gérer SIG_IGN et SIG_DFL 
  */
-void sys_signal(uint32_t param1, uint32_t param2, uint32_t param3)
+SYSCALL_HANDLER3(sys_signal, uint32_t param1, uint32_t param2, uint32_t param3)
 {
 	uint32_t signum = param1;
 	sighandler_t handler = (sighandler_t) param2;
@@ -20,7 +20,7 @@ void sys_signal(uint32_t param1, uint32_t param2, uint32_t param3)
 	}
 }
 
-void sys_sigprocmask(uint32_t param1, uint32_t param2, uint32_t param3)
+SYSCALL_HANDLER3(sys_sigprocmask, uint32_t param1, uint32_t param2, uint32_t param3)
 {
 	uint32_t how	= param1;
 	sigset_t* set	= (sigset_t*) param2;
@@ -50,7 +50,7 @@ void sys_sigprocmask(uint32_t param1, uint32_t param2, uint32_t param3)
 } 
 
 /* TODO: d'après POSIX, kill(-1, sig) doit envoyer le signal à tous les processus possibles... */
-void sys_kill(int pid, int signum, int* ret)
+SYSCALL_HANDLER3(sys_kill, int pid, int signum, int* ret)
 {	
 	process_t* process = find_process(pid);
 	int retour = -1;
