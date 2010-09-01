@@ -23,12 +23,12 @@ heap.o: ../include/heap.h ../include/types.h ../libc/include/string.h
 heap.o: ../include/debug.h
 list.o: ../include/list.h ../include/types.h ../libc/include/string.h
 list.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-list.o: ../libc/include/stdio.h ../libc/include/fcntl.h ../include/kfcntl.h
+list.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 list.o: ../libc/include/libio.h ../libc/include/stdarg.h
 widget.o: ../include/gui.h ../include/types.h include/widget.h
 widget.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 widget.o: ../libc/include/string.h ../libc/include/stdio.h
-widget.o: ../libc/include/fcntl.h ../include/kfcntl.h ../libc/include/libio.h
+widget.o: ../libc/include/fcntl.h ../libc/include/libio.h
 widget.o: ../libc/include/stdarg.h ../include/mouse.h ../libc/include/ctype.h
 widget.o: ../include/process.h ../include/pagination.h ../include/vmm.h
 widget.o: ../include/signal.h

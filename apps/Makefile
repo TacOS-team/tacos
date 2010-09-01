@@ -16,16 +16,16 @@ depend: $(SRCS)
 
 # DO NOT DELETE
 
-fiinou.o: ../libc/include/stdio.h ../libc/include/fcntl.h ../include/kfcntl.h
-fiinou.o: ../include/types.h ../libc/include/libio.h ../libc/include/stdarg.h
+fiinou.o: ../libc/include/stdio.h ../libc/include/fcntl.h
+fiinou.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 noxeyes.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-noxeyes.o: ../include/kfcntl.h ../include/types.h ../libc/include/libio.h
+noxeyes.o: ../libc/include/libio.h ../include/types.h
 noxeyes.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
 noxeyes.o: ../libc/include/malloc.h ../include/process.h
 noxeyes.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
 noxeyes.o: ../include/mouse.h
-pres.o: ../libc/include/stdio.h ../libc/include/fcntl.h ../include/kfcntl.h
-pres.o: ../include/types.h ../libc/include/libio.h ../libc/include/stdarg.h
+pres.o: ../libc/include/stdio.h ../libc/include/fcntl.h
+pres.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 pres.o: ../include/gui.h ../include/process.h ../include/pagination.h
 pres.o: ../include/vmm.h ../include/signal.h
 shell.o: ../include/fat.h ../include/types.h ../include/kfcntl.h
@@ -39,12 +39,12 @@ shell.o: ../libc/include/time.h include/shell_utils.h include/apps.h
 shell.o: ../include/sem.h ../include/debug.h ../include/serial.h
 shell.o: ../libc/include/unistd.h ../include/clock.h
 shell_utils.o: ../include/types.h ../libc/include/stdio.h
-shell_utils.o: ../libc/include/fcntl.h ../include/kfcntl.h
-shell_utils.o: ../libc/include/libio.h ../libc/include/stdarg.h
-shell_utils.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-shell_utils.o: ../libc/include/string.h include/shell_utils.h
-snake.o: ../libc/include/stdio.h ../libc/include/fcntl.h ../include/kfcntl.h
-snake.o: ../include/types.h ../libc/include/libio.h ../libc/include/stdarg.h
+shell_utils.o: ../libc/include/fcntl.h ../libc/include/libio.h
+shell_utils.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
+shell_utils.o: ../libc/include/malloc.h ../libc/include/string.h
+shell_utils.o: include/shell_utils.h
+snake.o: ../libc/include/stdio.h ../libc/include/fcntl.h
+snake.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 snake.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 snake.o: ../libc/include/time.h ../include/process.h ../include/pagination.h
 snake.o: ../include/vmm.h ../include/signal.h

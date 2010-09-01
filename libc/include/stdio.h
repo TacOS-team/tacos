@@ -6,7 +6,6 @@
  */
 
 #include <fcntl.h>
-#include <kfcntl.h>
 #include <libio.h>
 #include <types.h>
 #include <stdarg.h>
@@ -23,9 +22,6 @@
 #define SEEK_SET 0
 #define SEEK_CUR 1
 #define SEEK_END 2
-
-size_t read_screen(open_file_descriptor *ofd, void *buf, size_t count);
-size_t write_screen(open_file_descriptor *ofd, const void *buf, size_t count);
 
 /** 
  * @brief Affiche un message sur l'écran.

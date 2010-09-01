@@ -53,33 +53,33 @@ clean:
 
 # DO NOT DELETE
 
-cube.o: ../libc/include/stdio.h ../libc/include/fcntl.h ../include/kfcntl.h
-cube.o: ../include/types.h ../libc/include/libio.h ../libc/include/stdarg.h
+cube.o: ../libc/include/stdio.h ../libc/include/fcntl.h
+cube.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 cube.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 cube.o: ../libc/include/time.h ../include/process.h ../include/pagination.h
 cube.o: ../include/vmm.h ../include/signal.h ../libc/include/string.h
-matrix.o: ../libc/include/stdio.h ../libc/include/fcntl.h ../include/kfcntl.h
-matrix.o: ../include/types.h ../libc/include/libio.h ../libc/include/stdarg.h
+matrix.o: ../libc/include/stdio.h ../libc/include/fcntl.h
+matrix.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 matrix.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 matrix.o: ../libc/include/unistd.h ../include/process.h
 matrix.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
 sem_ping.o: ../include/sem.h ../include/types.h ../libc/include/stdio.h
-sem_ping.o: ../libc/include/fcntl.h ../include/kfcntl.h
-sem_ping.o: ../libc/include/libio.h ../libc/include/stdarg.h
+sem_ping.o: ../libc/include/fcntl.h ../libc/include/libio.h
+sem_ping.o: ../libc/include/stdarg.h
 sem_pong.o: ../include/sem.h ../include/types.h ../libc/include/stdio.h
-sem_pong.o: ../libc/include/fcntl.h ../include/kfcntl.h
-sem_pong.o: ../libc/include/libio.h ../libc/include/stdarg.h
-test.o: ../libc/include/stdio.h ../libc/include/fcntl.h ../include/kfcntl.h
-test.o: ../include/types.h ../libc/include/libio.h ../libc/include/stdarg.h
+sem_pong.o: ../libc/include/fcntl.h ../libc/include/libio.h
+sem_pong.o: ../libc/include/stdarg.h
+test.o: ../libc/include/stdio.h ../libc/include/fcntl.h
+test.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 test.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 test.o: ../include/process.h ../include/pagination.h ../include/vmm.h
 test.o: ../include/signal.h
 test_sig.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-test_sig.o: ../include/kfcntl.h ../include/types.h ../libc/include/libio.h
+test_sig.o: ../libc/include/libio.h ../include/types.h
 test_sig.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
 test_sig.o: ../libc/include/malloc.h ../include/process.h
 test_sig.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
-top.o: ../libc/include/stdio.h ../libc/include/fcntl.h ../include/kfcntl.h
-top.o: ../include/types.h ../libc/include/libio.h ../libc/include/stdarg.h
+top.o: ../libc/include/stdio.h ../libc/include/fcntl.h
+top.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 top.o: ../libc/include/time.h ../include/process.h ../include/pagination.h
 top.o: ../include/vmm.h ../include/signal.h ../libc/include/unistd.h
