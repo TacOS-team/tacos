@@ -52,13 +52,15 @@ void sys_sigprocmask(uint32_t param1, uint32_t param2, uint32_t param3)
 void sys_kill(int pid, int signum, int* ret)
 {	
 	process_t* process = find_process(pid);
-	
-	*ret = -1;
+	int retour = -1;
 	
 	if(process != NULL)
 	{
-		*ret = sigaddset( &(process->signal_data.pending_set), signum );
+		
+		retour = sigaddset( &(process->signal_data.pending_set), signum );
 	}
+	if(ret!=NULL)
+		*ret = retour;
 }
 
 static int get_first_signal(sigset_t* set)

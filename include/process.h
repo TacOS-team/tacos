@@ -15,7 +15,7 @@
 #define PROCSTATE_WAITING 3
 #define PROCSTATE_TERMINATED 4 
 
-#define CPU_USAGE_SAMPLE_RATE 1000
+#define CPU_USAGE_SAMPLE_RATE 100
 
 /* Type d'exécution */
 #define EXEC_ELF 0
