@@ -11,6 +11,8 @@
 #include "ksignal.h"
 #include "kstdio.h"
 
+static terminal_t *active_tty = NULL;
+
 void tty_init(terminal_t *t, process_t *process, void * extra_data, void(*put_char)(void*, char)) {
 	t->echo = TRUE;
 	t->canon = TRUE;
@@ -52,6 +54,14 @@ void tty_add_char(terminal_t *t, char c) {
 			//}
 		}
 	}
+}
+
+terminal_t * get_active_tty() {
+    return active_tty;
+}
+
+void set_active_tty(terminal_t *tty) {
+    active_tty = tty;
 }
 
 size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {

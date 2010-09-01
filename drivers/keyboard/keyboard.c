@@ -106,15 +106,8 @@ static uint8_t scancode_m1 = 0;
 static uint8_t scancode_m2 = 0;
 
 void keyBufferPush(char c) {
-	process_t *process = get_active_process(); //XXX: Pas l'include car il est planqué dans le kernel.
-	// XXX: Remplacer par un get_active_terminal.
-	open_file_descriptor *ofd;
-
-	if (process->fd[0].used) {
-		ofd = process->fd[0].ofd;
-
-		tty_add_char(ofd->extra_data, c); // Non, le tty je devrais le prendre du terminal en foreground c'est tout.
-	}
+    terminal_t *tty = get_active_tty();
+    tty_add_char(tty, c);
 }
 
 char keyboardConvertToChar(uint8_t scancode) {

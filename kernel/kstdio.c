@@ -10,7 +10,7 @@
 void kprintf(const char *format, ...) {
 	static int n = -1;
 	if (n == -1) {
-		n = get_available_console();
+		n = get_available_console(NULL);
 	}
 
 	char **arg = (char **) &format;

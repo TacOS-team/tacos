@@ -2,6 +2,7 @@
 #define _CONSOLE_H_
 
 #include "types.h"
+#include "tty.h"
 
 struct console_t {
 	bool used;
@@ -12,6 +13,7 @@ struct console_t {
 	char attr;
 	unsigned int lines;
 	unsigned int cols;
+    terminal_t *tty;
 };
 
 /**
@@ -36,7 +38,7 @@ void init_console();
 /**
  * @brief Trouve une console libre.
  */
-int get_available_console();
+int get_available_console(terminal_t *tty);
 
 /**
  * @brief Affiche un caractère. Supporte les caractères ANSI.

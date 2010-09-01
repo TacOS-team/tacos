@@ -56,7 +56,7 @@ kernel.o: include/msr.h include/kfat.h ../include/fat.h include/fpu.h
 kernel.o: include/vm86.h ../include/beeper.h ../include/debug.h
 kernel.o: ../include/shell.h include/ksyscall.h ../include/syscall.h
 kernel.o: include/ksem.h ../include/video.h ../include/serial.h
-kernel.o: ../include/console.h include/ksignal.h
+kernel.o: ../include/console.h ../include/tty.h include/ksignal.h
 kfcntl.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 kfcntl.o: ../libc/include/fcntl.h ../include/types.h ../include/pagination.h
 kfcntl.o: ../include/vmm.h ../include/signal.h ../libc/include/stdio.h
@@ -89,7 +89,7 @@ kstdio.o: ../include/video.h ../include/types.h ../libc/include/fcntl.h
 kstdio.o: include/kfcntl.h ../libc/include/libio.h include/kprocess.h
 kstdio.o: ../include/process.h ../include/pagination.h ../include/vmm.h
 kstdio.o: ../include/signal.h ../libc/include/stdlib.h
-kstdio.o: ../libc/include/malloc.h ../include/console.h
+kstdio.o: ../libc/include/malloc.h ../include/console.h ../include/tty.h
 ksyscall.o: include/msr.h ../libc/include/stdio.h ../libc/include/fcntl.h
 ksyscall.o: ../libc/include/libio.h ../include/types.h
 ksyscall.o: ../libc/include/stdarg.h ../libc/include/string.h

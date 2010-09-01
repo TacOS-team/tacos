@@ -14,7 +14,7 @@ void init_stdfd(process_t *new_proc) {
     struct _file_descriptor *fd2 = &(new_proc->fd[2]);
 
 	terminal_t *t = kmalloc(sizeof(terminal_t));
-	int console = get_available_console();
+	int console = get_available_console(t);
 	focus_console(console);
 	tty_init(t, new_proc, console, kputchar);
 	fd0->used = TRUE; /* stdin */

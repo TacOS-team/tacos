@@ -52,6 +52,7 @@ keyboard/keyboard.o: ../include/keyboard.h ../kernel/include/kfcntl.h
 keyboard/keyboard.o: ../kernel/include/kprocess.h ../include/process.h
 keyboard/keyboard.o: ../include/pagination.h ../include/vmm.h
 keyboard/keyboard.o: ../include/signal.h ../include/console.h
+keyboard/keyboard.o: ../include/tty.h
 mouse/mouse.o: ../include/types.h ../libc/include/stdio.h
 mouse/mouse.o: ../libc/include/fcntl.h ../libc/include/libio.h
 mouse/mouse.o: ../libc/include/stdarg.h ../include/ioports.h
@@ -76,7 +77,11 @@ tty/tty.o: ../kernel/include/kprocess.h ../include/process.h
 tty/tty.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
 tty/tty.o: ../kernel/include/ksem.h ../kernel/include/ksignal.h
 tty/tty.o: ../kernel/include/kstdio.h
-video/console.o: ../include/console.h ../include/types.h ../include/video.h
+video/console.o: ../include/console.h ../include/types.h ../include/tty.h
+video/console.o: ../kernel/include/kfcntl.h ../libc/include/libio.h
+video/console.o: ../libc/include/fcntl.h ../kernel/include/kprocess.h
+video/console.o: ../include/process.h ../include/pagination.h
+video/console.o: ../include/vmm.h ../include/signal.h ../include/video.h
 video/video.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 video/video.o: ../libc/include/libio.h ../include/types.h
 video/video.o: ../libc/include/stdarg.h ../include/ioports.h

@@ -24,6 +24,9 @@ void tty_init(terminal_t *term, process_t *process, void *extra_data, void (*put
 
 void tty_add_char(terminal_t *term, char c); // Fonction appelée par le driver clavier ou série pour ajouter un caractère.
 
+terminal_t * get_active_tty();
+void set_active_tty(terminal_t *tty);
+
 size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count);
 size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count);
 
