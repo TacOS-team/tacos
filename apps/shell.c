@@ -286,7 +286,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(shell_exec_elf, "exec");
 	add_builtin_cmd(watch_clock, "clock");
 
-	//disable_cursor(0);
+	disable_cursor(0);
 	
 	print_logo();
 	print_logo_serial();
