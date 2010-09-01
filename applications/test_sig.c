@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 {
 	int pid = get_pid();
 	
-	signal(SIGKINT, int_handler);
+	signal(SIGINT, int_handler);
 	signal(SIGUSR1, usr_handler);
 	
 	kill(pid, SIGUSR1);
