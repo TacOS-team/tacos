@@ -71,10 +71,10 @@ void ps()
 
 int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
-
+	signal(SIGKILL, kill_handler);
 	while(1)
 	{
-		signal(SIGKILL, kill_handler);
+		
 		printf("\033[1;1H");
 		ps();
 		sleep(1);
