@@ -1,4 +1,4 @@
-OBJ=cube top matrix test sem_ping sem_pong test_sig
+OBJ=cube top matrix test test_sig
 SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a 
 INCLUDES=-I../include/ -I../libc/include/

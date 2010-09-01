@@ -31,6 +31,8 @@ void tty_add_char(terminal_t *t, char c) {
 		kprintf("Break!\n");
 		//sys_kill(t->fg_process->pid, SIGINT, NULL);
 		sys_kill(get_active_process()->pid, SIGINT, NULL); // temp!
+	} else if (c == ('z' & 0x1F)) {
+		sys_kill(get_active_process()->pid, SIGTSTP, NULL); // temp!
 	} else if (c == '\b') {
 		if (t->p_end != t->p_begin) {
 			t->p_end--;
