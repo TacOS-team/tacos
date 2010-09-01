@@ -8,11 +8,15 @@
 #include <console.h>
 #include <tty.h>
 
-void init_stdfd(struct _file_descriptor *fd0, struct _file_descriptor *fd1, struct _file_descriptor *fd2) {
+void init_stdfd(process_t *new_proc) {
+    struct _file_descriptor *fd0 = &(new_proc->fd[0]);
+    struct _file_descriptor *fd1 = &(new_proc->fd[1]);
+    struct _file_descriptor *fd2 = &(new_proc->fd[2]);
+
 	terminal_t *t = kmalloc(sizeof(terminal_t));
 	int console = get_available_console();
 	focus_console(console);
-	tty_init(t, console, kputchar);
+	tty_init(t, NULL, console, kputchar);
 	fd0->used = TRUE; /* stdin */
 	fd0->ofd = kmalloc(sizeof(open_file_descriptor));
 	fd0->ofd->read = tty_read;

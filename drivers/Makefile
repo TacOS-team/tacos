@@ -49,9 +49,9 @@ keyboard/keyboard.o: ../libc/include/fcntl.h ../libc/include/libio.h
 keyboard/keyboard.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
 keyboard/keyboard.o: ../libc/include/malloc.h ../include/ioports.h
 keyboard/keyboard.o: ../include/keyboard.h ../kernel/include/kfcntl.h
-keyboard/keyboard.o: ../include/process.h ../include/pagination.h
-keyboard/keyboard.o: ../include/vmm.h ../include/signal.h
-keyboard/keyboard.o: ../include/console.h
+keyboard/keyboard.o: ../kernel/include/kprocess.h ../include/process.h
+keyboard/keyboard.o: ../include/pagination.h ../include/vmm.h
+keyboard/keyboard.o: ../include/signal.h ../include/console.h
 mouse/mouse.o: ../include/types.h ../libc/include/stdio.h
 mouse/mouse.o: ../libc/include/fcntl.h ../libc/include/libio.h
 mouse/mouse.o: ../libc/include/stdarg.h ../include/ioports.h

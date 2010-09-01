@@ -9,7 +9,7 @@
 #include <kmalloc.h>
 #include <syscall.h>
 #include <elf.h>
-
+#include <kfcntl.h>
 #include <debug.h>
 
 #define GET_PROCESS 0
@@ -298,7 +298,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 		new_proc->fd[i].used = FALSE;
 
 	/* Initialisation des entrées/sorties standards */
-	init_stdfd(&(new_proc->fd[0]), &(new_proc->fd[1]), &(new_proc->fd[2]));
+	init_stdfd(new_proc);
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
 	proc_count++;
 	
@@ -430,7 +430,7 @@ process_t* create_process(process_init_data_t* init_data)
 
 	/* Initialisation des entrées/sorties standards */
 	//init_stdfiles(&new_proc->stdin, &new_proc->stdout, &new_proc->stderr);
-	init_stdfd(&(new_proc->fd[0]), &(new_proc->fd[1]), &(new_proc->fd[2]));
+	init_stdfd(new_proc);
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
 	proc_count++;
 

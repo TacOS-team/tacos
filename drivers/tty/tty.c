@@ -11,13 +11,14 @@
 #include "ksignal.h"
 #include "kstdio.h"
 
-void tty_init(terminal_t *t, void * extra_data, void(*put_char)(void*, char)) {
+void tty_init(terminal_t *t, process_t *process, void * extra_data, void(*put_char)(void*, char)) {
 	t->echo = TRUE;
 	t->canon = TRUE;
 	t->p_begin = 0;
 	t->p_end = 0;
 	t->extra_data = extra_data;
 	t->put_char = put_char;
+    t->fg_process = process;
 	uint8_t key;
 	t->sem = ksemcreate_without_key(&key);
 	ksemP(t->sem);
@@ -29,10 +30,11 @@ void tty_init(terminal_t *t, void * extra_data, void(*put_char)(void*, char)) {
 void tty_add_char(terminal_t *t, char c) {
 	if (c == ('c' & 0x1F)) {
 		kprintf("Break!\n");
-		//sys_kill(t->fg_process->pid, SIGINT, NULL);
 		sys_kill(get_active_process()->pid, SIGINT, NULL); // temp!
+		//sys_kill(t->fg_process->pid, SIGINT, NULL);
 	} else if (c == ('z' & 0x1F)) {
 		sys_kill(get_active_process()->pid, SIGTSTP, NULL); // temp!
+		//sys_kill(t->fg_process->pid, SIGTSTP, NULL);
 	} else if (c == '\b') {
 		if (t->p_end != t->p_begin) {
 			t->p_end--;

@@ -7,6 +7,7 @@
 
 #include <types.h>
 #include <libio.h>
+#include <kprocess.h>
 
 struct _file_descriptor;
 
@@ -33,7 +34,7 @@ typedef struct _open_file_descriptor {
  * @param fd1 stdout
  * @param fd2 stderr
  */
-void init_stdfd(struct _file_descriptor *fd0, struct _file_descriptor *fd1, struct _file_descriptor *fd2);
+void init_stdfd(process_t *new_proc);
 
 void* sys_open(uint32_t p_ofd, uint32_t zero1, uint32_t zero2);
 
