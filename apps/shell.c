@@ -127,7 +127,7 @@ static int cls_cmd() {
 
 static int exec_shell()
 {
-	exec((paddr_t)shell, "Mishell");
+	exec((paddr_t)shell, "Mishell", 0);
 	return 0;
 }
 
@@ -149,7 +149,7 @@ int ps()
 	int m;
 	int h;
 
-	printf("pid\tname\t\ttime\t\t%CPU\tstate\n");   
+	printf("pid\tppid\tname\t\ttime\t\t%CPU\tstate\n");   
 	while(aux!=NULL)
 	{
 			
@@ -166,7 +166,7 @@ int ps()
 					printf("*");
 			}*/
 			
-			printf("%d\t%s\t\t%dh %dm %ds\t%d\%\t",aux->pid, aux->name, h, m ,s, (int)(((float)aux->last_sample/(float)CPU_USAGE_SAMPLE_RATE)*100.f));
+			printf("%d\t%d\t%s\t\t%dh %dm %ds\t%d\%\t",aux->pid, aux->ppid, aux->name, h, m ,s, (int)(((float)aux->last_sample/(float)CPU_USAGE_SAMPLE_RATE)*100.f));
 			
 			switch(aux->state)
 			{
@@ -205,7 +205,7 @@ static int shell_exec_elf()
 {
 	char filename[80];
 	scanf("%s",filename);
-	exec_elf(filename);
+	exec_elf(filename, 0);
 }
 
 void print_logo()
@@ -307,7 +307,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 		{
 			char temp[100];
 			sprintf(temp, "fd0:/bin/%s",buffer);
-			if(exec_elf(temp) != 0)
+			if(exec_elf(temp, 0) != 0)
 				printf("commande introuvable.\n"); 
 		// Si on ne trouve pas la commande en builtin, on devrait alors chercher si y'a un executable qui correspond, dans un futur proche j'espere :p
 		}

@@ -22,12 +22,30 @@ uint32_t get_pid()
 	return pid;
 }
 
-void exec(paddr_t prog, char* name)
+void exec(paddr_t prog, char* name, int orphan)
 {
-	syscall(SYS_EXEC, (uint32_t)prog, (uint32_t)name, 0);
+	int ret = -1;
+
+	process_init_data_t init_data;
+	
+	init_data.name	= name;
+	init_data.stack_size = 0x1000;
+	init_data.priority = 0;
+	init_data.args = "fajitas bonitas";
+
+	init_data.data = prog;
+
+	init_data.mem_size = 0;
+	init_data.entry_point = 0;
+	
+	init_data.ppid = orphan?0:get_pid();
+	
+	syscall(SYS_EXEC, (uint32_t)NULL, (uint32_t)&init_data, 1);
+
+
 }
 
-int exec_elf(char* name)
+int exec_elf(char* name, int orphan)
 {	
 	int ret = -1;
 	FILE *fd	= fopen(name, "r");
@@ -47,7 +65,9 @@ int exec_elf(char* name)
 		init_data.data = malloc(init_data.mem_size);
 		init_data.entry_point = load_elf(fd, init_data.data);
 
-		syscall(SYS_EXEC, (uint32_t)NULL, (uint32_t)&init_data, 1);
+		init_data.ppid = orphan?0:get_pid();
+
+		syscall(SYS_EXEC, (uint32_t)&init_data, (uint32_t)NULL, (uint32_t)NULL);
 		
 		free(init_data.data);
 	}

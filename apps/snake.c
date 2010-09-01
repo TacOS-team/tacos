@@ -187,7 +187,7 @@ void game() {
 
 int snake_proc() {
   pid_keyboard = -1;
-  exec((paddr_t)thread_input, "Snake_keyboard_input");
+  exec((paddr_t)thread_input, "Snake_keyboard_input",0);
 
 	srand(time(NULL));
 
@@ -202,6 +202,6 @@ int snake_proc() {
 }
 
 int snake_main() {
-  exec((paddr_t)snake_proc, "snake");
+  exec((paddr_t)snake_proc, "snake",0);
   return 0;
 }

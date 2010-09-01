@@ -136,7 +136,7 @@ static int shell_exec_elf()
 {
 	char filename[80];
 	scanf("%s",filename);
-	exec_elf(filename);
+	exec_elf(filename, 0);
 }
 
 void print_logo()
@@ -218,7 +218,7 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 		{
 			char temp[100];
 			sprintf(temp, "fd0:/bin/%s",buffer);
-			exec_elf(temp);
+			exec_elf(temp, 0);
 			//printf("commande introuvable.\n"); 
 		// Si on ne trouve pas la commande en builtin, on devrait alors chercher si y'a un executable qui correspond, dans un futur proche j'espere :p
 		}

@@ -249,7 +249,19 @@ void init_scheduler(int Q)
 {
 	quantum = Q;
 	
-	idle_process = create_process("idle", idle, "idle", 0x100, 3);
+	process_init_data_t idle_init;
+	
+	idle_init.name = "idle";
+	idle_init.args = "idle";
+	idle_init.exec_type = EXEC_KERNEL;
+	idle_init.data = (void*)idle;
+	idle_init.mem_size = 0;
+	idle_init.entry_point = 0;
+	idle_init.stack_size = 0x1000;
+	idle_init.priority = 0;
+	idle_init.ppid = 0;
+	
+	idle_process = create_process(&idle_init);
 	idle_process->state = PROCSTATE_IDLE;
 	
 	idle_proclist_cell.process = idle_process;

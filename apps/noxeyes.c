@@ -162,7 +162,7 @@ int noxeyes_proc() {
 }
 
 int noxeyes() {
-	exec((paddr_t)noxeyes_proc, "noxeyes");
+	exec((paddr_t)noxeyes_proc, "noxeyes",0);
 	return 0;
 }
 

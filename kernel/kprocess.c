@@ -228,6 +228,8 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	*(stack_ptr-2) = argc;
 	*(stack_ptr-3) = (vaddr_t) exit;
 	
+	new_proc->ppid = init_data->ppid;
+	
 	new_proc->user_time = 0;
 	new_proc->sys_time = 0;
 	new_proc->current_sample = 0;
@@ -314,8 +316,13 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	return new_proc;
 }
 
-process_t* create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, uint8_t ring __attribute__ ((unused)))
+process_t* create_process(process_init_data_t* init_data)
 {
+	char* name = init_data->name;
+	paddr_t prog = init_data->data;
+	char* param = init_data->args;
+	uint32_t stack_size = init_data->stack_size;
+
 	uint32_t *sys_stack, *user_stack;
 	process_t* new_proc;
 	
@@ -357,6 +364,8 @@ process_t* create_process(char* name, paddr_t prog, char* param, uint32_t stack_
 	*(stack_ptr-1) = (vaddr_t) argv;
 	*(stack_ptr-2) = argc;
 	*(stack_ptr-3) = (vaddr_t) exit;
+	
+	new_proc->ppid = init_data->ppid;
 	
 	new_proc->user_time = 0;
 	new_proc->sys_time = 0;
@@ -540,16 +549,12 @@ void sys_getpid(uint32_t* pid, uint32_t zero1 __attribute__ ((unused)), uint32_t
 	*pid = process->pid;
 }
 
-void sys_exec(paddr_t prog, void* param, uint32_t type)
+void sys_exec(process_init_data_t* init_data, uint32_t param1, uint32_t param2)
 {
-	int len = strlen((char*)param);
-	char * args = (char *) kmalloc((len+1)*sizeof(char));
-	strcpy(args, (char*)param);
-	
-	if(type == 0)
-		add_process(create_process((char*)param, prog, args , 0x1000, 3));
+	if(init_data->exec_type == EXEC_KERNEL)
+		add_process(create_process(init_data));
 	else;
-		add_process(create_process_elf((process_init_data_t*) param));
+		add_process(create_process_elf(init_data));
 }
 
 process_t* sys_proc_list(uint32_t action)

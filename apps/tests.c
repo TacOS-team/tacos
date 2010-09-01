@@ -41,7 +41,7 @@ int gui_task(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unu
 }
 
 int test_gui() {
-	exec((paddr_t) gui_task, "tache_gui");
+	exec((paddr_t) gui_task, "tache_gui",0);
 	return 0;
 }
 
@@ -149,8 +149,8 @@ int test_semaphores() {
 	semid2 = semcreate(42);
 	semP(semid1);
 
-	exec((paddr_t) sem_t1, "ping");
-	exec((paddr_t) sem_t2, "pong");
+	exec((paddr_t) sem_t1, "ping",0);
+	exec((paddr_t) sem_t2, "pong",0);
 
 	return 0;
 }
@@ -230,7 +230,7 @@ int test_task1(int argc, char** argv __attribute__ ((unused))) {
 
 
 int calc_pi() {
-	exec((paddr_t) pi, "pi");
+	exec((paddr_t) pi, "pi",0);
 	return 0;
 }
 
@@ -282,7 +282,7 @@ int test_mouse_task() {
 }
 
 int test_mouse() {
-	exec((paddr_t) test_mouse_task, "mouse");
+	exec((paddr_t) test_mouse_task, "mouse",0);
 	return 0;
 }
 
@@ -333,7 +333,7 @@ int proc_write_serial(int argc __attribute__ ((unused)), char** argv __attribute
 }
 
 int test_write_serial() {
-	exec((paddr_t) proc_write_serial, "wserial");
+	exec((paddr_t) proc_write_serial, "wserial",0);
 	return 0;
 }
 
@@ -445,7 +445,7 @@ int test_stdio() {
 }
 
 int test_read_serial() {
-	exec((paddr_t) proc_read_serial, "rserial");
+	exec((paddr_t) proc_read_serial, "rserial",0);
 	return 0;
 }
 

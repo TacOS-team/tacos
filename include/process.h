@@ -17,19 +17,29 @@
 
 #define CPU_USAGE_SAMPLE_RATE 1000
 
+/* Type d'exécution */
+#define EXEC_ELF 0
+#define EXEC_KERNEL 1
+
 /* Structure à passer au noyau pour créer un nouveau processus */
 typedef struct
 {
-	FILE* fd;
 	char* name;
 	char* args;
 	
-	void* data;
+	int exec_type; /* Type d'exécution */
+	
+	void* data; /* Usage variable */
+	
+	/* Données pour le chargement de l'elf */
 	int mem_size;
 	vaddr_t entry_point;
 	
-	int stack_size;
+	uint32_t stack_size;
 	int priority;
+	
+	uint16_t ppid;
+	
 }process_init_data_t;
 
 typedef struct
@@ -46,6 +56,7 @@ typedef struct
 */
 typedef struct{
 	uint16_t	pid;
+	uint16_t	ppid;
 	char* 		name;
 	uint8_t	state;
 	uint8_t	priority;
@@ -88,8 +99,8 @@ void exit(uint32_t value);
 
 uint32_t get_pid();
 
-void exec(paddr_t prog, char* name);
-int exec_elf(char* name);
+void exec(paddr_t prog, char* name, int orphan);
+int exec_elf(char* name, int orphan);
 
 process_t* get_process(int pid);
 

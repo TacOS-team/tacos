@@ -150,8 +150,20 @@ void cmain (unsigned long magic, unsigned long addr) {
 	init_scheduler(20);
 	
 	// Création du processus par défaut: notre shell
-	add_process(create_process("Mishell", (paddr_t)shell,"coucou les petits clous",0x10000,3));
-	//create_process("Mishell", (paddr_t)test_proc,0,NULL,1024,3);
+	
+	process_init_data_t mishell_init;
+	
+	mishell_init.name = "mishell";
+	mishell_init.args = "mishell";
+	mishell_init.exec_type = EXEC_KERNEL;
+	mishell_init.data = (void*)shell;
+	mishell_init.mem_size = 0;
+	mishell_init.entry_point = 0;
+	mishell_init.stack_size = 0x1000;
+	mishell_init.priority = 0;
+	mishell_init.ppid = 0;
+	
+	add_process(create_process(&mishell_init));
 	
 	events_init();
 

@@ -7,16 +7,12 @@
 /** 
 * @brief (OUTDATED)Crée un nouveau processus.
 * Crée un nouveau processus et l'ajoute à la liste des processus avec un état d'exécution PROCSTATE_IDLE.
-* @param name Nom du processus.
-* @param prog Pointeur vers le point d'entrée du processus.
-* @param argc Nombre d'arguments passés au processus.
-* @param argv Tableau contenant les arguments à passer au processus.
-* @param stack_size Taille de la pile utilisateur du processus.
-* @param ring Niveau d'exécution du processus, toujours à 3.
+* @param init_data informations sur le processus à créer
+* @see process_init_data_t
 * 
 * @return Pid du processus créé.
 */
-process_t* create_process(char* name, paddr_t prog, char* param, uint32_t stack_size, uint8_t ring __attribute__ ((unused)));
+process_t* create_process(process_init_data_t* init_data);
 
 /** 
 * @brief Retire un processus de la liste.
@@ -73,7 +69,7 @@ void sample_CPU_usage();
 void change_active_process();
 process_t* get_active_process();
 
-void sys_exec(paddr_t prog, void* param, uint32_t type);
+void sys_exec(process_init_data_t* init_data, uint32_t param1, uint32_t param2);
 void sys_exit(uint32_t ret_value, uint32_t zero1, uint32_t zero2);
 void sys_getpid(uint32_t* pid, uint32_t zero1, uint32_t zero2);
 void sys_proc(uint32_t sub_func, uint32_t param1, uint32_t param2);
