@@ -3,15 +3,31 @@
 #include <process.h>
 #include <unistd.h>
 
+void kill_handler()
+{
+	static int try = 1;
+	int pid;
+	if(try>0)
+	{
+		printf("essaye encore...\n");
+		try--;
+	}
+	else
+	{
+		exit(0);
+	}
+}
+		
+	
+
 void ps()
 {
 	process_t* aux = get_process_list(FIRST_PROCESS);
-
+	
 	long int ms;
 	int s;
 	int m;
 	int h;
-
 	printf("pid\tname\t\ttime\t\t%CPU\tstate\n");   
 	while(aux!=NULL)
 	{
@@ -58,6 +74,7 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 
 	while(1)
 	{
+		signal(SIGKILL, kill_handler);
 		printf("\033[1;1H");
 		ps();
 		sleep(1);
