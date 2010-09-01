@@ -36,6 +36,7 @@
 #include <ksem.h>
 #include <video.h>
 #include <serial.h>
+#include <console.h>
 #include <ksignal.h>
 
 typedef struct
@@ -81,6 +82,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	init_video();
 
+	init_console();
+
 	kpanic_init();
   
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
@@ -125,7 +128,10 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	if(serial_init(COM1, "8N1", 38400, ECHO_ENABLED) != 0)
 		kprintf("Erreur d'initialisation de COM1 \n");
-		
+
+	/* Initialisation des semaphores */
+	init_semaphores();
+
 	/* Initialisation des syscall */
 	init_syscall();
 	
@@ -136,7 +142,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_READ,	(syscall_handler_t)sys_read);
 	syscall_set_handler(SYS_EXEC, 	(syscall_handler_t)sys_exec);
 	syscall_set_handler(SYS_SLEEP, 	(syscall_handler_t)sys_sleep);
-	syscall_set_handler(SYS_VIDEO_CTL, (syscall_handler_t)sys_video_ctl);
+	//syscall_set_handler(SYS_VIDEO_CTL, (syscall_handler_t)sys_video_ctl);
 	syscall_set_handler(SYS_SEMCTL, (syscall_handler_t)sys_ksem);
 	syscall_set_handler(SYS_PROC, 	(syscall_handler_t)sys_proc);
 	syscall_set_handler(SYS_VMM, 	(syscall_handler_t) sys_vmm);
@@ -166,9 +172,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	add_process(create_process(&mishell_init));
 	
 	events_init();
-
-	/* Initialisation des semaphores */
-	init_semaphores();
 	
 	start_scheduler();
 

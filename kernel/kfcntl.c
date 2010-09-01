@@ -5,22 +5,26 @@
 #include <kmalloc.h>
 
 #include <keyboard.h>
-#include <video.h>
+#include <console.h>
+#include <tty.h>
 
 void init_stdfd(struct _file_descriptor *fd0, struct _file_descriptor *fd1, struct _file_descriptor *fd2) {
+	terminal_t *t = kmalloc(sizeof(terminal_t));
+	int console = get_available_console();
+	focus_console(console);
+	tty_init(t, console, kputchar);
 	fd0->used = TRUE; /* stdin */
 	fd0->ofd = kmalloc(sizeof(open_file_descriptor));
-	fd0->ofd->write = write_keyboard;
-	fd0->ofd->read = read_screen;
-	fd0->ofd->current_octet_buf = 0;
+	fd0->ofd->read = tty_read;
+	fd0->ofd->extra_data = t;
 	fd1->used = TRUE; /* stdout */
 	fd1->ofd = kmalloc(sizeof(open_file_descriptor));
-	fd1->ofd->write = write_screen;
-	fd1->ofd->extra_data = creation_text_window(0, 0, 80, 24, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 0);
+	fd1->ofd->write = tty_write;
+	fd1->ofd->extra_data = t;
 	fd2->used = TRUE; /* stderr */
 	fd2->ofd = kmalloc(sizeof(open_file_descriptor));
-	fd2->ofd->write = write_screen;
-	fd2->ofd->extra_data = creation_text_window(0, 0, 80, 24, 0, 0, 0, DEFAULT_ATTRIBUTE_VALUE, 1);
+	fd2->ofd->write = tty_write;
+	fd2->ofd->extra_data = t;
 }
 
 

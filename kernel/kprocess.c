@@ -25,7 +25,7 @@ uint32_t proc_count = 0;
 static proc_list process_list = NULL;
 static proclist_cell* current_proclist_cell = NULL;
 
-static process_t * active_process = NULL; //à un moment il fallait faire ça pour que ça ne plante pas : (process_t*) 5242880; // Tant qu'il y a 42 dans l'adresse, ça me va.
+static process_t * active_process = NULL;
 
 
 proclist_cell* get_current_proclist_cell()
@@ -297,7 +297,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	
 	for(i=0;i<FOPEN_MAX;i++) 
 		new_proc->fd[i].used = FALSE;
-		
+
 	/* Initialisation des entrées/sorties standards */
 	init_stdfd(&(new_proc->fd[0]), &(new_proc->fd[1]), &(new_proc->fd[2]));
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
@@ -305,7 +305,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	
 	active_process = new_proc;
 	if (active_process->fd[1].used) {
-		focus((text_window *)(active_process->fd[1].ofd->extra_data));
+		//focus((text_window *)(active_process->fd[1].ofd->extra_data));
 	}
 	
 	/* FIN ZONE CRITIQUE */
@@ -428,16 +428,16 @@ process_t* create_process(process_init_data_t* init_data)
 
 	for(i=0;i<FOPEN_MAX;i++) 
 		new_proc->fd[i].used = FALSE;
-		
+
 	/* Initialisation des entrées/sorties standards */
 	//init_stdfiles(&new_proc->stdin, &new_proc->stdout, &new_proc->stderr);
 	init_stdfd(&(new_proc->fd[0]), &(new_proc->fd[1]), &(new_proc->fd[2]));
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
 	proc_count++;
-	
+
 	active_process = new_proc;
 	if (active_process->fd[1].used) {
-		focus((text_window *)(active_process->fd[1].ofd->extra_data));
+//		focus((text_window *)(active_process->fd[1].ofd->extra_data));
 	}
 	
 	/* FIN ZONE CRITIQUE */
@@ -518,7 +518,7 @@ void change_active_process() {
 	active_process = aux->process;
 	kprintf("active_process : %s\n", active_process->name);
 	if (active_process->fd[1].used) {
-		focus((text_window *)(active_process->fd[1].ofd->extra_data));
+		//focus((text_window *)(active_process->fd[1].ofd->extra_data));
 	}
 }
 

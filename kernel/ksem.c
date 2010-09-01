@@ -192,7 +192,6 @@ int ksemP(uint32_t semid)
 {
 	int ret = -1;
 	int key = (semid & 0xFF000000) >> 24;
-	process_t* proc = get_current_process();
 	sem_t* sem = &semaphores[key];
 	
 	if(sem->allocated)
@@ -202,10 +201,11 @@ int ksemP(uint32_t semid)
 			sem->value--;
 		}
 		else {
+			process_t* proc = get_current_process();
 			/* Si on attend, on met le pid dans la file d'attente pour pouvoir traiter le processus quand le semaphore sera libre */
 			sem_fifo_put(&(sem->fifo), proc->pid);
 			proc->state = PROCSTATE_WAITING;
-			while(proc->state == PROCSTATE_WAITING);
+			while(proc->state == PROCSTATE_WAITING) asm("hlt");
 		}
 
 		ret = 0;
