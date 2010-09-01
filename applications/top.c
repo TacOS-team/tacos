@@ -71,7 +71,7 @@ void ps()
 
 int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
-	signal(SIGKILL, kill_handler);
+	signal(SIGINT, kill_handler);
 	while(1)
 	{
 		
