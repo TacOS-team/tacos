@@ -3,6 +3,7 @@
 #include <time.h>
 #include <process.h>
 #include <string.h>
+#include <unistd.h>
 //#include <video.h>
 
 #define LARGEUR 80

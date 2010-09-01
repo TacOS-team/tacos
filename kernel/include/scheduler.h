@@ -11,13 +11,15 @@
 /* Structure à usage ultérieur, don't mind */
 /* Cette structure doit contenir les differents pointeurs de fonctions pour manipuler le scheduler */
 typedef struct {
+	char* name;
 	int (*initialize)(int);				/* Initialisation du scheduler */
 	process_t* (*get_process)(int);		/* Trouver un process en fonction de son pid */
 	process_t* (*get_next_process)();	/* Trouver le prochain processus selon le scheduler */
 	process_t* (*get_current_process)();	/* Trouver le processus actuel */
 	int (*add_process)(process_t*);		/* Ajouter un processus */
-	int (*delete_process)();			/* Supprimer un processus */
-}scheduler_descriptor;
+	int (*delete_process)(int);			/* Supprimer un processus */
+	void (*inject_idle)(process_t*);
+}scheduler_descriptor_t;
 
 /**
  * @brief Initialisation du scheduler

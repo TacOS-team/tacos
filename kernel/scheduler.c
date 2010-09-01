@@ -28,11 +28,17 @@ static int sample_counter;	/* Compteur du nombre d'échantillonnage pour l'éval
 
 static process_t* idle_process = NULL;
 static proclist_cell idle_proclist_cell;
+static scheduler_descriptor_t* scheduler = NULL;
 
 void idle()
 {
 	while(1)
 		halt();
+}
+
+void set_scheduler(scheduler_descriptor_t* sched)
+{
+	scheduler = sched;
 }
 
 

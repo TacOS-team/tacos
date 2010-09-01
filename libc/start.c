@@ -11,5 +11,7 @@ void start_main()
 	
 	init_stdfiles(&stdin, &stdout, &stderr);
 
+	signal(SIGINT, exit);
+
 	exit(main(0, NULL));
 }
