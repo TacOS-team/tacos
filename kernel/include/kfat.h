@@ -1,5 +1,7 @@
-#ifndef _FAT_H_
-#define _FAT_H_
+#ifndef _KFAT_H_
+#define _KFAT_H_
+
+#include <fat.h>
 
 #include <types.h>
 #include <kfcntl.h>
@@ -104,17 +106,6 @@ typedef struct _fat_dir_entry {
 	
 }__attribute__((packed)) fat_dir_entry_t;
 
-
-
-// Init FAT (a faire dans le main)
-void mount_FAT12 ();
-
-// Fonctions pour le Shell
-void print_Boot_Sector ();		// fonction de debug
-void print_path ();				// fonction de debug
-void change_dir (char * name);
-void list_segments (int mode);			
-void print_working_dir ();		
 
 
 // Lecture/Ecriture Fichier

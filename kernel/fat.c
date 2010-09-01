@@ -2,7 +2,7 @@
 #include <floppy.h>
 #include <types.h>
 #include <string.h>
-#include <fat.h>
+#include <kfat.h>
 #include <fcntl.h>
 #include <debug.h>
 

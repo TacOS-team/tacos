@@ -28,8 +28,8 @@ depend: $(SRCS)
 exception.o: ../include/types.h include/idt.h include/exception.h
 fat.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 fat.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
-fat.o: ../include/floppy.h ../libc/include/string.h ../include/fat.h
-fat.o: ../include/kfcntl.h ../include/debug.h
+fat.o: ../include/floppy.h ../libc/include/string.h include/kfat.h
+fat.o: ../include/fat.h include/kfcntl.h ../include/debug.h
 fpu.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 fpu.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 fpu.o: include/fpu.h ../include/interrupts.h
@@ -47,20 +47,20 @@ kernel.o: ../include/pagination.h include/gdt.h include/exception.h
 kernel.o: ../include/interrupts.h ../include/pci.h ../include/pci_config.h
 kernel.o: ../include/pci_types.h include/scheduler.h ../include/process.h
 kernel.o: ../include/vmm.h ../include/signal.h ../libc/include/time.h
-kernel.o: ../include/keyboard.h ../include/kfcntl.h ../include/mouse.h
+kernel.o: ../include/keyboard.h include/kfcntl.h ../include/mouse.h
 kernel.o: ../include/events.h ../include/floppy.h include/kpanic.h
 kernel.o: include/kprocess.h ../include/kmalloc.h ../include/ioports.h
-kernel.o: include/msr.h ../include/fat.h include/fpu.h include/vm86.h
-kernel.o: ../include/beeper.h ../include/debug.h ../include/shell.h
-kernel.o: include/ksyscall.h ../include/syscall.h include/ksem.h
-kernel.o: ../include/video.h ../include/serial.h ../include/console.h
-kernel.o: include/ksignal.h
+kernel.o: include/msr.h include/kfat.h ../include/fat.h include/fpu.h
+kernel.o: include/vm86.h ../include/beeper.h ../include/debug.h
+kernel.o: ../include/shell.h include/ksyscall.h ../include/syscall.h
+kernel.o: include/ksem.h ../include/video.h ../include/serial.h
+kernel.o: ../include/console.h include/ksignal.h
 kfcntl.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 kfcntl.o: ../libc/include/fcntl.h ../include/types.h ../include/pagination.h
 kfcntl.o: ../include/vmm.h ../include/signal.h ../libc/include/stdio.h
-kfcntl.o: ../libc/include/stdarg.h ../include/fat.h ../include/kfcntl.h
-kfcntl.o: ../libc/include/string.h ../include/kmalloc.h ../include/keyboard.h
-kfcntl.o: ../include/console.h ../include/tty.h
+kfcntl.o: ../libc/include/stdarg.h include/kfat.h ../include/fat.h
+kfcntl.o: include/kfcntl.h ../libc/include/string.h ../include/kmalloc.h
+kfcntl.o: ../include/keyboard.h ../include/console.h ../include/tty.h
 kmalloc.o: ../include/types.h ../libc/include/malloc.h ../include/memory.h
 kmalloc.o: ../include/vmm.h ../include/kmalloc.h
 kpanic.o: ../libc/include/stdio.h ../libc/include/fcntl.h
@@ -84,16 +84,15 @@ ksignal.o: include/ksignal.h ../include/signal.h ../include/types.h
 ksignal.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 ksignal.o: ../libc/include/fcntl.h ../include/pagination.h ../include/vmm.h
 kstdio.o: ../include/video.h ../include/types.h ../libc/include/fcntl.h
-kstdio.o: ../include/kfcntl.h ../libc/include/libio.h
-kstdio.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-kstdio.o: ../include/console.h
+kstdio.o: include/kfcntl.h ../libc/include/libio.h ../libc/include/stdlib.h
+kstdio.o: ../libc/include/malloc.h ../include/console.h
 ksyscall.o: include/msr.h ../libc/include/stdio.h ../libc/include/fcntl.h
 ksyscall.o: ../libc/include/libio.h ../include/types.h
 ksyscall.o: ../libc/include/stdarg.h ../libc/include/string.h
 ksyscall.o: ../include/interrupts.h include/ksyscall.h ../include/syscall.h
 kunistd.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 kunistd.o: ../libc/include/fcntl.h ../include/types.h ../include/pagination.h
-kunistd.o: ../include/vmm.h ../include/signal.h ../include/kfcntl.h
+kunistd.o: ../include/vmm.h ../include/signal.h include/kfcntl.h
 mbr.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 mbr.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 mbr.o: ../include/floppy.h include/mbr.h
