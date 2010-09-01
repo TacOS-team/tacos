@@ -1,5 +1,6 @@
 #include <ksignal.h>
 #include <kprocess.h>
+#include <kstdio.h>
 
 /*
  * TODO: gérer SIG_IGN et SIG_DFL 

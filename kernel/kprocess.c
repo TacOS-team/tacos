@@ -25,8 +25,6 @@ uint32_t proc_count = 0;
 static proc_list process_list = NULL;
 static proclist_cell* current_proclist_cell = NULL;
 
-static process_t * active_process = NULL;
-
 
 proclist_cell* get_current_proclist_cell()
 {
@@ -302,11 +300,6 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
 	proc_count++;
 	
-	active_process = new_proc;
-	if (active_process->fd[1].used) {
-		//focus((text_window *)(active_process->fd[1].ofd->extra_data));
-	}
-	
 	/* FIN ZONE CRITIQUE */
 	asm("sti");	
 	
@@ -434,11 +427,6 @@ process_t* create_process(process_init_data_t* init_data)
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
 	proc_count++;
 
-	active_process = new_proc;
-	if (active_process->fd[1].used) {
-//		focus((text_window *)(active_process->fd[1].ofd->extra_data));
-	}
-	
 	/* FIN ZONE CRITIQUE */
 	asm("sti");	
 	
@@ -476,51 +464,6 @@ void sample_CPU_usage()
 	}
 }
 
-process_t * get_active_process() {
-	return active_process;
-}
-
-/*
- * met en active le prochain process qui n'est pas terminé.
- */
-void change_active_process() {
-	proclist_cell* aux = process_list;
-
-	/* On cherche le aux qui pointe vers l'active_process */
-	while (aux != NULL && aux->process != active_process) {
-		aux = aux->next;
-	}
-
-	if (aux == NULL) {
-		return;
-	}
-
-	/* On se place sur le suivant */
-	aux = aux->next;
-
-	/* On prend le premier qui n'est pas à l'état terminé */
-	while (aux != NULL && aux->process->state == PROCSTATE_TERMINATED) {
-		aux = aux->next;
-	}
-
-	if (aux == NULL) {
-		aux = process_list;
-		/* On cherche le aux qui pointe vers un terminé */
-		while (aux != NULL 
-				&& aux->process->state == PROCSTATE_TERMINATED 
-				&& aux->process != active_process) {
-			aux = aux->next;
-		}
-	}
-
-	/* On change l'active process */
-	active_process = aux->process;
-	kprintf("active_process : %s\n", active_process->name);
-	if (active_process->fd[1].used) {
-		//focus((text_window *)(active_process->fd[1].ofd->extra_data));
-	}
-}
-
 /*
  * SYSCALL
  */
@@ -535,11 +478,6 @@ void sys_exit(uint32_t ret_value __attribute__ ((unused)), uint32_t zero1 __attr
 	current->state = PROCSTATE_TERMINATED; 
 	
 	//kprintf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
-
-	if (current == active_process) {
-		//change_active_process();
-	}
-
 }
 
 void sys_getpid(uint32_t* pid, uint32_t zero1 __attribute__ ((unused)), uint32_t zero2 __attribute__ ((unused)))

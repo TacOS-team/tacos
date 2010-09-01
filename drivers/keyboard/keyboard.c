@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <ioports.h>
 #include <keyboard.h>
-#include <process.h>
 #include <console.h>
 
 #define BUFFER_SIZE 256
@@ -178,11 +177,7 @@ void keyboardInterrupt(int id __attribute__ ((unused))) {
 		focus_console(3);
 		break;
 	default:
-		if (alt) {
-			if (scancode == 0xf) {
-				change_active_process(); // XXX
-			}
-		} else if (ctrl) {
+		if (ctrl) {
 			char c = keyboardConvertToChar(scancode);
 			if (c != 0) {
 				keyBufferPush(c & 0x1F);
