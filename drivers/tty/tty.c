@@ -8,6 +8,8 @@
 #include "tty.h"
 #include "ksem.h"
 #include "kprocess.h"
+#include "ksignal.h"
+#include "kstdio.h"
 
 void tty_init(terminal_t *t, void * extra_data, void(*put_char)(void*, char)) {
 	t->echo = TRUE;
@@ -27,7 +29,8 @@ void tty_init(terminal_t *t, void * extra_data, void(*put_char)(void*, char)) {
 void tty_add_char(terminal_t *t, char c) {
 	if (c == ('c' & 0x1F)) {
 		kprintf("Break!\n");
-		sys_kill(t->fg_process->pid, SIGINT, NULL);
+		//sys_kill(t->fg_process->pid, SIGINT, NULL);
+		sys_kill(get_active_process()->pid, SIGINT, NULL); // temp!
 	} else if (c == '\b') {
 		if (t->p_end != t->p_begin) {
 			t->p_end--;

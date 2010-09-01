@@ -51,18 +51,3 @@ void kprintf(const char *format, ...) {
 		}
 	}
 }
-/*
- size_t write_screen(open_file_descriptor *ofd, const void *buf, size_t count) {
- size_t i;
- for (i = 0; i < count && *(char *)buf != '\0'; i++) {
- if (*(char *)buf == '\b') {
- backspace((text_window *)(((terminal_t*)(ofd->extra_data))->extra_data), *((char *)(buf))); // Devrait tenir compte de la diff entre \t et les autres caractères.
- } else {
- kputchar((text_window *)(ofd->extra_data), *(char *)buf);
- }
-
- buf++;
- }
- return count;
- }
- */
