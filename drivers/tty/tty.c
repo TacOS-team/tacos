@@ -30,6 +30,8 @@ void tty_init(terminal_t *t, process_t *process, void * extra_data, void(*put_ch
  * @brief Fonction appelée par le driver clavier ou série pour ajouter un caractère.
  */
 void tty_add_char(terminal_t *t, char c) {
+    if (t == NULL) return;
+
 	if (c == ('c' & 0x1F)) {
 		kprintf("Break!\n");
 		sys_kill(t->fg_process->pid, SIGINT, NULL);
