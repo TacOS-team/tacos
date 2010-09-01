@@ -422,7 +422,6 @@ process_t* create_process(process_init_data_t* init_data)
 		new_proc->fd[i].used = FALSE;
 
 	/* Initialisation des entrées/sorties standards */
-	//init_stdfiles(&new_proc->stdin, &new_proc->stdout, &new_proc->stderr);
 	init_stdfd(new_proc);
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
 	proc_count++;

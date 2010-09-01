@@ -9,6 +9,7 @@
 #include <types.h>
 #include <vmm.h>
 #include <signal.h>
+//#include <tty.h>
 
 #define PROCSTATE_IDLE 1
 #define PROCSTATE_RUNNING 2
@@ -75,16 +76,13 @@ typedef struct{
 	/* Données utilisées pour les IO */
 	file_descriptor fd[FOPEN_MAX];
 	FILE* file_list;
-	// Temporairement je rajoute stdin, stdout et stderr. 
-	// Ça sera supprimé lorsqu'on aura un changement de la pagination lors du changement de contexte.
-	FILE * stdin;
-	FILE * stdout;
-	FILE * stderr;
-
-	struct page_directory_entry * pd;
+	
+    struct page_directory_entry * pd;
 	struct virtual_mem *vm;
 	
 	signal_process_data_t signal_data;
+
+    //XXX: terminal_t *ctrl_tty;
 } process_t;
 
 typedef struct _proclist_cell{

@@ -85,6 +85,7 @@ ksem.o: ../libc/include/stdio.h ../libc/include/stdarg.h ../include/kmalloc.h
 ksignal.o: include/ksignal.h ../include/signal.h ../include/types.h
 ksignal.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 ksignal.o: ../libc/include/fcntl.h ../include/pagination.h ../include/vmm.h
+ksignal.o: include/kstdio.h
 kstdio.o: ../include/video.h ../include/types.h ../libc/include/fcntl.h
 kstdio.o: include/kfcntl.h ../libc/include/libio.h include/kprocess.h
 kstdio.o: ../include/process.h ../include/pagination.h ../include/vmm.h

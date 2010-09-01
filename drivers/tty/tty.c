@@ -66,6 +66,10 @@ void set_active_tty(terminal_t *tty) {
     active_tty = tty;
 }
 
+void tty_set_fg_process(terminal_t *tty, process_t *process) { //TODO : remplacer par un groupe.
+    tty->fg_process = process;
+}
+
 size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {
 	/*
 	 * Permet d'écrire sur le terminal (écran ?)

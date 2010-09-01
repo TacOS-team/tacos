@@ -24,7 +24,6 @@ process_t* create_process(process_init_data_t* init_data);
 int delete_process(int pid);
 
 
-
 /** 
 * @brief Cherche le process_t* en correspondant à un pid donné.
 *

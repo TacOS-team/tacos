@@ -230,11 +230,6 @@ void* schedule(void* data __attribute__ ((unused)))
 	/* Mise en place de l'interruption sur le quantum de temps */
 	event_id = add_event(schedule,NULL,quantum*1000);	
 
-	/* On réaffecte à la main stdin, stdout et stderr. TEMPORAIRE ! Il faudrait que stdin, stdout et stderr soient tjs à la même adresse pour chaque processus... */
-	stdin = current->stdin;
-	stdout = current->stdout;
-	stderr = current->stderr;
-
 	/* Changer le contexte:*/
 	if(current->regs.cs == 0x8)
 		process_switch(KERNEL_PROCESS, current);
