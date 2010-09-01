@@ -46,6 +46,7 @@ void page_fault_report(int error_code)
 
 void kpanic_main_report(int error_id, int error_code, process_t* badboy)
 {
+    focus_console(0);
 	// background white
 	kprintf("\033[47m");
 	// Foreground black
