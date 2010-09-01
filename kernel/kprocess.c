@@ -133,7 +133,6 @@ int arg_build(char* string, vaddr_t base, char*** argv_ptr)
 	char** argv;
 	char* str_copy_base;
 	
-	kprintf("Analyse de %s...\n", ptr);
 	/* Première passe: on compte argc et le nombre total de caractères de la chaine, et on remplace les espaces par des 0*/
 	while(*ptr != '\0')
 	{

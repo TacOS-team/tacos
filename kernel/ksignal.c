@@ -56,9 +56,9 @@ void sys_kill(int pid, int signum, int* ret)
 	
 	if(process != NULL)
 	{
-		
 		retour = sigaddset( &(process->signal_data.pending_set), signum );
 	}
+	
 	if(ret!=NULL)
 		*ret = retour;
 }
