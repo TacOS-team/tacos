@@ -1,11 +1,11 @@
-INCLUDES=-I. -I../include/ -I../libc/include/
+INCLUDES=-I. -I../include/ -I../libc/include/ -I../kernel/include/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 
 SRCS=*/*.c
 
 all: libdrivers
 
-libdrivers: mouse/mouse.o keyboard/keyboard.o floppy/floppy.o floppy/floppy_interrupt.o floppy/floppy_utils.o floppy/floppy_motor.o floppy/floppy_dma.o beeper/beeper.o serial/serial.o pci/pci.o pci/pci_config.o
+libdrivers: mouse/mouse.o keyboard/keyboard.o floppy/floppy.o floppy/floppy_interrupt.o floppy/floppy_utils.o floppy/floppy_motor.o floppy/floppy_dma.o beeper/beeper.o serial/serial.o pci/pci.o pci/pci_config.o tty/tty.o video/video.o video/console.o
 	  $(AR) r ../lib/$@.a $^
 
 %.o: %.c
@@ -53,6 +53,7 @@ keyboard/keyboard.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 keyboard/keyboard.o: ../include/ioports.h ../include/keyboard.h
 keyboard/keyboard.o: ../include/process.h ../include/pagination.h
 keyboard/keyboard.o: ../include/vmm.h ../include/signal.h
+keyboard/keyboard.o: ../include/console.h
 mouse/mouse.o: ../include/types.h ../libc/include/stdio.h
 mouse/mouse.o: ../libc/include/fcntl.h ../include/kfcntl.h
 mouse/mouse.o: ../libc/include/libio.h ../libc/include/stdarg.h
@@ -72,3 +73,12 @@ serial/serial.o: ../include/ioports.h ../include/serial.h
 serial/serial.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 serial/serial.o: ../include/kfcntl.h ../libc/include/libio.h
 serial/serial.o: ../libc/include/stdarg.h serial/serial_masks.h
+tty/tty.o: ../include/tty.h ../include/types.h ../include/kfcntl.h
+tty/tty.o: ../libc/include/libio.h ../libc/include/fcntl.h ../include/sem.h
+video/console.o: ../include/console.h ../include/types.h ../include/video.h
+video/video.o: ../libc/include/stdio.h ../libc/include/fcntl.h
+video/video.o: ../include/kfcntl.h ../include/types.h ../libc/include/libio.h
+video/video.o: ../libc/include/stdarg.h ../include/ioports.h
+video/video.o: ../libc/include/ctype.h ../include/video.h
+video/video.o: ../libc/include/stdlib.h ../libc/include/malloc.h
+video/video.o: ../include/syscall.h ../include/kmalloc.h
