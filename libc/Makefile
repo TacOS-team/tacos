@@ -85,7 +85,7 @@ stdio/scanf.o: include/string.h
 stdio/sprintf.o: include/stdio.h include/fcntl.h ../include/kfcntl.h
 stdio/sprintf.o: ../include/types.h include/libio.h include/stdarg.h
 stdio/stdfiles.o: ../include/types.h include/libio.h include/fcntl.h
-stdio/stdfiles.o: include/string.h ../include/kmalloc.h
+stdio/stdfiles.o: include/string.h include/stdlib.h include/malloc.h
 stdio/stdio.o: include/stdio.h include/fcntl.h ../include/kfcntl.h
 stdio/stdio.o: ../include/types.h include/libio.h include/stdarg.h
 stdio/stdio.o: include/stdlib.h include/malloc.h

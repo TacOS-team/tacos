@@ -74,7 +74,10 @@ serial/serial.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 serial/serial.o: ../include/kfcntl.h ../libc/include/libio.h
 serial/serial.o: ../libc/include/stdarg.h serial/serial_masks.h
 tty/tty.o: ../include/tty.h ../include/types.h ../include/kfcntl.h
-tty/tty.o: ../libc/include/libio.h ../libc/include/fcntl.h ../include/sem.h
+tty/tty.o: ../libc/include/libio.h ../libc/include/fcntl.h
+tty/tty.o: ../kernel/include/kprocess.h ../include/process.h
+tty/tty.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
+tty/tty.o: ../kernel/include/ksem.h
 video/console.o: ../include/console.h ../include/types.h ../include/video.h
 video/video.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 video/video.o: ../include/kfcntl.h ../include/types.h ../libc/include/libio.h
