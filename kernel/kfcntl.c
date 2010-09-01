@@ -16,7 +16,7 @@ void init_stdfd(process_t *new_proc) {
 	terminal_t *t = kmalloc(sizeof(terminal_t));
 	int console = get_available_console();
 	focus_console(console);
-	tty_init(t, NULL, console, kputchar);
+	tty_init(t, new_proc, console, kputchar);
 	fd0->used = TRUE; /* stdin */
 	fd0->ofd = kmalloc(sizeof(open_file_descriptor));
 	fd0->ofd->read = tty_read;
