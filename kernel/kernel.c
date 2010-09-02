@@ -153,6 +153,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_SIGPROCMASK, 	(syscall_handler_t) sys_sigprocmask);
 	syscall_set_handler(SYS_KILL, (syscall_handler_t) sys_kill);
 	
+	
+	init_process_array();
+	
 	/* Lancement du scheduler */
 	init_scheduler(20);
 	

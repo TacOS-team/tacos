@@ -11,6 +11,8 @@
 #include <signal.h>
 //#include <tty.h>
 
+#define MAX_PROC 512
+
 #define PROCSTATE_IDLE 1
 #define PROCSTATE_RUNNING 2
 #define PROCSTATE_WAITING 3

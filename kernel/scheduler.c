@@ -27,7 +27,6 @@ static int event_id = 0;	/* Identifiant de l'évenement schedule */
 static int sample_counter;	/* Compteur du nombre d'échantillonnage pour l'évaluation de l'usage CPU */
 
 static process_t* idle_process = NULL;
-static proclist_cell idle_proclist_cell;
 static scheduler_descriptor_t* scheduler = NULL;
 
 void idle()
@@ -222,10 +221,8 @@ void* schedule(void* data __attribute__ ((unused)))
 	if(current == NULL || current->state == PROCSTATE_WAITING || current->state == PROCSTATE_TERMINATED) 
 	{
 		/* Si on a rien à faire, on passe dans le processus idle */
-		proclist_cell* cell = get_current_proclist_cell();
-		idle_proclist_cell.next = cell;
-		set_current_proclist_cell(&idle_proclist_cell);	
-		current = idle_proclist_cell.process;
+		inject_idle(idle_process);	
+		current = idle_process;
 	}
 
 	/* Si le processus courant n'a pas encore commencé son exécution, on le lance */
@@ -265,10 +262,7 @@ void init_scheduler(int Q)
 	
 	idle_process = create_process(&idle_init);
 	idle_process->state = PROCSTATE_IDLE;
-	
-	idle_proclist_cell.process = idle_process;
-	idle_proclist_cell.prev = NULL;
-	idle_proclist_cell.next = NULL;
+
 }
 
 void stop_scheduler()

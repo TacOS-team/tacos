@@ -20,20 +20,26 @@
 
 typedef int (*main_func_type) (uint32_t, uint8_t**);
 
-uint32_t proc_count = 0;
+static uint32_t proc_count = 0;
+static uint32_t next_pid = 0;	/* pid à donner au prochain processus créé */
 
-static proc_list process_list = NULL;
-static proclist_cell* current_proclist_cell = NULL;
+static int current_process = -1;
+static process_t* process_array[MAX_PROC];
+static process_t* idle_process = NULL;
 
-
-proclist_cell* get_current_proclist_cell()
+void init_process_array()
 {
-	return current_proclist_cell;
+	int i;
+	
+	for(i=0; i<MAX_PROC; i++)
+	{
+		process_array[i] = NULL;
+	}
 }
 
-void set_current_proclist_cell(proclist_cell* cell)
+void inject_idle(process_t* proc)
 {
-	current_proclist_cell = cell;
+	idle_process = proc;
 }
 
 uint32_t get_proc_count()
@@ -43,78 +49,84 @@ uint32_t get_proc_count()
 
 process_t* get_current_process()
 {
-	return current_proclist_cell->process;
+	process_t* ret = NULL;
+	
+	if(idle_process != NULL)
+		ret = idle_process;
+	else if(current_process >= 0 && current_process < MAX_PROC)
+		ret = process_array[current_process];
+	
+	idle_process = NULL;
+	
+	return ret;
 }
 
 process_t* get_next_process()
 {
-	current_proclist_cell = current_proclist_cell->next;
+	int compteur = 0;
+	process_t* current = NULL;
+	do
+	{
+		current_process++;
+		compteur++;
+		if(current_process == MAX_PROC)
+			current_process = 0;
+		current = process_array[current_process];
+	}while(current == NULL && compteur < MAX_PROC);
 	
-	if(current_proclist_cell == NULL)
-		current_proclist_cell = process_list;
-		
-		
-	return current_proclist_cell->process;
+	return current;
 }
 
 void add_process(process_t* process)
 {
-
-	if(process_list == NULL)
+	int i = 0;
+	if(proc_count == 0)
+		current_process = 0;
+		
+	if(proc_count < MAX_PROC)
 	{
-		process_list = kmalloc(sizeof(proclist_cell));
-		process_list->prev = NULL;
-		current_proclist_cell = process_list;
+		while(i<MAX_PROC && process_array[i] != NULL)
+			i++;
+		
+		process_array[i] = process;
+		proc_count++;
 	}
-	else
-	{
-		process_list->prev = kmalloc(sizeof(proclist_cell));
-
-		process_list->prev->next= process_list;
-		process_list = process_list->prev;
-	}
-	process_list->process = process;
-	process_list->prev = NULL;
 }
 
 process_t* find_process(int pid)
 {
-	proclist_cell* aux = process_list;
 	process_t* proc = NULL;
+	int i = 0;
 	
-	while(proc==NULL && aux!=NULL)
+	while(proc==NULL && i<MAX_PROC)
 	{
-		if(aux->process->pid == pid)
-			proc = aux->process;
+		if(process_array[i]->pid == pid)
+			proc = process_array[i];
 		else
-			aux = aux->next;
+			i++;
 	} 
 	return proc;
 }
 
 int delete_process(int pid)
 {
+	process_t* proc = NULL;
+	int i = 0;
 	
-	proclist_cell* aux = process_list;
-	while(aux!=NULL && aux->process->pid!=pid)
+	while(proc==NULL && i<MAX_PROC)
 	{
-		aux = aux->next;
+		if(process_array[i]->pid == pid)
+			proc = process_array[i];
+		else
+			i++;
 	} 
-	if(aux==NULL) // Si aux==NULL, c'est qu'on a pas trouvé le process, on retourne -1
-		return -1;
-	
-	if(aux->prev == NULL) // On est à la tete de la liste, alors on change directement "process_list"
-		process_list = aux->next;
-	else
-		aux->prev->next = aux->next;
-	
-	if(aux->next != NULL) // On ne change ça que si on n'est pas en fin de liste
-		aux->next->prev = aux->prev;
-	
-	kfree(aux);
-	
-	proc_count--;
-	
+	if(proc != NULL)
+	{
+		kfree(proc);
+		process_array[i] = NULL;
+		
+		proc_count--;
+	}
 	return 0;
 }
 
@@ -232,7 +244,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->current_sample = 0;
 	new_proc->last_sample = 0;
 	
-	new_proc->pid = proc_count;
+	new_proc->pid = next_pid;
 	new_proc->regs.eax = 0;
 	new_proc->regs.ebx = 0;
 	new_proc->regs.ecx = 0;
@@ -286,7 +298,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	/* Copie du programme au bon endroit */
 	memcpy((void*)0x40000000, (void*)temp_buffer, program_size);
 	
-	if(current_proclist_cell != NULL)
+	if(current_process >= 0)
 	{
 		pd_paddr = vmm_get_page_paddr((vaddr_t) get_current_process()->pd);
 		pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
@@ -298,7 +310,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	/* Initialisation des entrées/sorties standards */
 	init_stdfd(new_proc);
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
-	proc_count++;
+	next_pid++;
 	
 	/* FIN ZONE CRITIQUE */
 	asm("sti");	
@@ -364,7 +376,7 @@ process_t* create_process(process_init_data_t* init_data)
 	new_proc->current_sample = 0;
 	new_proc->last_sample = 0;
 	
-	new_proc->pid = proc_count;
+	new_proc->pid = next_pid;
 	new_proc->regs.eax = 0;
 	new_proc->regs.ebx = 0;
 	new_proc->regs.ecx = 0;
@@ -412,7 +424,7 @@ process_t* create_process(process_init_data_t* init_data)
 	
 	init_process_vm(new_proc->vm, 1);
 	
-	if(current_proclist_cell != NULL)
+	if(current_process >= 0)
 	{
 		pd_paddr = vmm_get_page_paddr((vaddr_t) get_current_process()->pd);
 		pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
@@ -424,7 +436,7 @@ process_t* create_process(process_init_data_t* init_data)
 	/* Initialisation des entrées/sorties standards */
 	init_stdfd(new_proc);
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
-	proc_count++;
+	next_pid++;
 
 	/* FIN ZONE CRITIQUE */
 	asm("sti");	
@@ -432,7 +444,7 @@ process_t* create_process(process_init_data_t* init_data)
 	return new_proc;
 }
 
-
+/*
 void clean_process_list()
 {
 	proc_list temp = process_list;
@@ -450,16 +462,18 @@ void clean_process_list()
 		else
 			temp = temp->next;
 	}
-}
+}*/
 
 void sample_CPU_usage()
 {
-	proclist_cell* aux = process_list;
-	while(aux!=NULL)
+	int i = 0;
+	for(i=0; i<MAX_PROC; i++)
 	{
-		aux->process->last_sample = aux->process->current_sample;
-		aux->process->current_sample = 0;
-		aux = aux->next;
+		if(process_array[i] != NULL)
+		{
+			process_array[i]->last_sample = process_array[i]->current_sample;
+			process_array[i]->current_sample = 0;
+		}
 	}
 }
 
@@ -495,31 +509,35 @@ SYSCALL_HANDLER1(sys_exec, process_init_data_t* init_data)
 
 process_t* sys_proc_list(uint32_t action)
 {
-	static proclist_cell* aux = NULL;
+	static int index = -1;
 	process_t* ret = NULL;
 	switch(action)
 	{
 		case FIRST_PROCESS:
-			aux = process_list;	
+			index = 0;	
 			break;
 		case NEXT_PROCESS:
-			if(aux != NULL)
+			if(index<MAX_PROC-1)
 			{
-				aux = aux->next;
+				do {
+					index++;
+				}while(index<(MAX_PROC-1) && process_array[index] == NULL);
 			}
 			break;
 		case PREV_PROCESS:
-			if(aux != NULL)
+			if(index>0)
 			{
-				aux = aux->next;
+				do {
+					index--;
+				}while(index>0 && process_array[index] == NULL);
 			}
 			break;
 		default:
 			kprintf("sys_proc_list: invalid action.\n");
 	}
 	
-	if( aux != NULL )
-		ret = aux->process;
+	if( index >= 0 )
+		ret = process_array[index];
 		
 	return ret;
 }

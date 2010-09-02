@@ -70,7 +70,5 @@ SYSCALL_HANDLER3(sys_proc, uint32_t sub_func, uint32_t param1, uint32_t param2);
 
 void add_process(process_t* process);
 
-proclist_cell* get_current_proclist_cell();
-void set_current_proclist_cell(proclist_cell* cell);
-
+void inject_idle(process_t* proc);
 #endif /* _K_PROCESS_H_ */
