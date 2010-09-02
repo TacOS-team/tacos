@@ -13,6 +13,7 @@
 //static const int TIMER_FREQ = I8254_MAX_FREQ / 1000;
 //static int ticks;
 static list_t events;
+static struct event_t scheduler_event;
 
 int compare_events(void* a, void* b)
 {
@@ -35,10 +36,16 @@ static void events_interrupt(int interrupt_id __attribute__ ((unused)))
 		event->callback(event->data);
 		event = (struct event_t *) listGetTop(events);
 	}
+
+  if(scheduler_event.callback != NULL 
+     && compare_times(scheduler_event.date, get_tv()) <= 0)
+     scheduler_event.callback(scheduler_event.data);
 }
 
 void events_init()
 {
+  unset_scheduler_event();
+
   clock_init();
   initList(	&events, 
 			(cmp_func_type)compare_events, 
@@ -50,30 +57,31 @@ void events_init()
   i8254_init(1000/*TIMER_FREQ*/);
 }
 
+void set_scheduler_event(callback_t call, void *data, time_t dtime_usec) {
+  scheduler_event.date = get_tv();
+  timeval_add_usec(&(scheduler_event.date), dtime_usec);
+
+  scheduler_event.callback = call;
+  scheduler_event.data = data;
+}
+
+void unset_scheduler_event() {
+  scheduler_event.callback = NULL;
+}
+
 int add_event(callback_t call, void* data, time_t dtime_usec)
 {
 	static int id = 0;
 	struct event_t event;
-	int overflow=0;
-	struct timeval clock = get_tv();
 	
-	event.date.tv_sec = clock.tv_sec;
-	event.date.tv_usec = clock.tv_usec + dtime_usec;
+	event.date = get_tv();
 
-	if(event.date.tv_usec > USEC_PER_SEC)
-	{
-		overflow = event.date.tv_usec/USEC_PER_SEC;
-		event.date.tv_usec = event.date.tv_usec%USEC_PER_SEC;
-		event.date.tv_sec += overflow;
-	}
+  timeval_add_usec(&(event.date), dtime_usec);
 
 	event.callback = call;
 	event.data = data;											
 	event.id = id;
-//		kprintf("TIME : %d %d\n", clock.tv_sec, clock.tv_usec);
-//		kprintf("NYU ## %d %d %d\n", events.nb_elements, event.date.tv_sec, event.date.tv_usec);
 	listAddElement(&events, &event);
-//		kprintf("BZZ ## %d %d %d\n", events.nb_elements, ((struct event_t *) (events.elements_array))[events.head].date.tv_sec, ((struct event_t *) (events.elements_array))[events.head].date.tv_usec);
 
 	id++;
 

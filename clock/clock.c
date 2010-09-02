@@ -124,6 +124,19 @@ int compare_times(struct timeval a, struct timeval b)
 	return 0;
 }
 
+void timeval_add_usec(struct timeval *t, time_t usec) {
+	int overflow=0;
+	
+	t->tv_usec += usec;
+
+	if(t->tv_usec > USEC_PER_SEC)
+	{
+		overflow = t->tv_usec/USEC_PER_SEC;
+		t->tv_usec = t->tv_usec%USEC_PER_SEC;
+		t->tv_sec += overflow;
+	}
+}
+
 /*
  * adapté de : http://www.raspberryginger.com/jbailey/minix/html/mktime_8c-source.html
  */

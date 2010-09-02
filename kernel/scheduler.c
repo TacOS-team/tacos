@@ -23,7 +23,6 @@
 #define KERNEL_PROCESS 1
 
 static uint32_t quantum;	/* Quantum de temps alloué aux process */
-static int event_id = 0;	/* Identifiant de l'évenement schedule */
 static int sample_counter;	/* Compteur du nombre d'échantillonnage pour l'évaluation de l'usage CPU */
 
 static process_t* idle_process = NULL;
@@ -227,7 +226,7 @@ void* schedule(void* data __attribute__ ((unused)))
 	}
 
 	/* Mise en place de l'interruption sur le quantum de temps */
-	event_id = add_event(schedule,NULL,quantum*1000);	
+	set_scheduler_event(schedule,NULL,quantum*1000);	
 
 	/* Changer le contexte:*/
 	if(current->regs.cs == 0x8)
@@ -262,12 +261,12 @@ void init_scheduler(int Q)
 
 void stop_scheduler()
 {
-	del_event(event_id);
+	unset_scheduler_event();
 }
 
 void start_scheduler()
 {
-	event_id = add_event(schedule,NULL,quantum*1000);
+	set_scheduler_event(schedule,NULL,quantum*1000);
 }
 
 int scheduler_add_process(process_t* proc)
@@ -316,7 +315,7 @@ SYSCALL_HANDLER1(sys_sleep, uint32_t delay)
 	process->state = PROCSTATE_WAITING;
 
 	/* Adjout de l'évènement de fin de sleep */
-	add_event(sleep_callback,(void*)process,delay);
+	set_scheduler_event(sleep_callback,(void*)process,delay);
 	
 	/* Scheduling immédiat */
 	start_scheduler();
