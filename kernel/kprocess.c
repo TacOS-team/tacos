@@ -11,6 +11,7 @@
 #include <elf.h>
 #include <kfcntl.h>
 #include <debug.h>
+#include <scheduler.h>
 
 #define GET_PROCESS 0
 #define GET_PROCESS_LIST 1
@@ -20,12 +21,10 @@
 
 typedef int (*main_func_type) (uint32_t, uint8_t**);
 
-static uint32_t proc_count = 0;
+static int proc_count = -1;
 static uint32_t next_pid = 0;	/* pid à donner au prochain processus créé */
 
-static int current_process = -1;
 static process_t* process_array[MAX_PROC];
-static process_t* idle_process = NULL;
 
 void init_process_array()
 {
@@ -37,52 +36,15 @@ void init_process_array()
 	}
 }
 
-void inject_idle(process_t* proc)
-{
-	idle_process = proc;
-}
-
 uint32_t get_proc_count()
 {
 	return proc_count;
 }
 
-process_t* get_current_process()
-{
-	process_t* ret = NULL;
-	
-	if(idle_process != NULL)
-		ret = idle_process;
-	else if(current_process >= 0 && current_process < MAX_PROC)
-		ret = process_array[current_process];
-	
-	idle_process = NULL;
-	
-	return ret;
-}
-
-process_t* get_next_process()
-{
-	int compteur = 0;
-	process_t* current = NULL;
-	do
-	{
-		current_process++;
-		compteur++;
-		if(current_process == MAX_PROC)
-			current_process = 0;
-		current = process_array[current_process];
-	}while(current == NULL && compteur < MAX_PROC);
-	
-	return current;
-}
-
 void add_process(process_t* process)
 {
 	int i = 0;
-	if(proc_count == 0)
-		current_process = 0;
-		
+
 	if(proc_count < MAX_PROC)
 	{
 		while(i<MAX_PROC && process_array[i] != NULL)
@@ -298,7 +260,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	/* Copie du programme au bon endroit */
 	memcpy((void*)0x40000000, (void*)temp_buffer, program_size);
 	
-	if(current_process >= 0)
+	if(proc_count > 0)
 	{
 		pd_paddr = vmm_get_page_paddr((vaddr_t) get_current_process()->pd);
 		pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
@@ -311,6 +273,8 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	init_stdfd(new_proc);
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
 	next_pid++;
+	
+	add_process(new_proc);
 	
 	/* FIN ZONE CRITIQUE */
 	asm("sti");	
@@ -424,7 +388,7 @@ process_t* create_process(process_init_data_t* init_data)
 	
 	init_process_vm(new_proc->vm, 1);
 	
-	if(current_process >= 0)
+	if(proc_count > 0)
 	{
 		pd_paddr = vmm_get_page_paddr((vaddr_t) get_current_process()->pd);
 		pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
@@ -437,32 +401,15 @@ process_t* create_process(process_init_data_t* init_data)
 	init_stdfd(new_proc);
 	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
 	next_pid++;
-
+	
+	add_process(new_proc);
+	
 	/* FIN ZONE CRITIQUE */
 	asm("sti");	
 	
+	
 	return new_proc;
 }
-
-/*
-void clean_process_list()
-{
-	proc_list temp = process_list;
-	uint32_t pid;
-	while(temp!=NULL)
-	{
-		if(temp->process->state == PROCSTATE_TERMINATED)
-		{
-			pid = temp->process->pid;
-			if(current_proclist_cell->process->pid == temp->process->pid)
-				get_next_process();
-			temp = temp->next;
-			delete_process(pid);
-		}
-		else
-			temp = temp->next;
-	}
-}*/
 
 void sample_CPU_usage()
 {
@@ -495,16 +442,16 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 
 SYSCALL_HANDLER1(sys_getpid, uint32_t* pid)
 {
-	process_t* process = get_current_process();
+	process_t* process =get_current_process();
 	*pid = process->pid;
 }
 
 SYSCALL_HANDLER1(sys_exec, process_init_data_t* init_data)
 {
 	if(init_data->exec_type == EXEC_KERNEL)
-		add_process(create_process(init_data));
+		scheduler_add_process(create_process(init_data));
 	else
-		add_process(create_process_elf(init_data));
+		scheduler_add_process(create_process_elf(init_data));
 }
 
 process_t* sys_proc_list(uint32_t action)

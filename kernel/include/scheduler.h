@@ -8,12 +8,10 @@
 #include <process.h>
 #include <ksyscall.h>
 
-/* Structure à usage ultérieur, don't mind */
 /* Cette structure doit contenir les differents pointeurs de fonctions pour manipuler le scheduler */
 typedef struct {
 	char* name;
 	int (*initialize)(int);				/* Initialisation du scheduler */
-	process_t* (*get_process)(int);		/* Trouver un process en fonction de son pid */
 	process_t* (*get_next_process)();	/* Trouver le prochain processus selon le scheduler */
 	process_t* (*get_current_process)();	/* Trouver le processus actuel */
 	int (*add_process)(process_t*);		/* Ajouter un processus */
@@ -28,6 +26,17 @@ typedef struct {
  * @param Q Quantum du scheduler
  */ 
 void init_scheduler(int Q);
+void set_scheduler(scheduler_descriptor_t* sched);
+int scheduler_add_process(process_t* proc);
+int scheduler_delete_process(int pid);
+
+/** 
+* @brief Retourne le processus en cours d'utilisation
+* 
+* @return processus en cours d'utilisation.
+*/
+process_t* get_current_process();
+
 
 /**
  * @brief Mise en route du scheduler

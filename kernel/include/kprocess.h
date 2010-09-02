@@ -5,6 +5,9 @@
 #include <process.h> // TODO: Dans process.h ya pleins de trucs qui devraient probablement migrer dans kprocess.h...
 #include <types.h>
 #include <ksyscall.h>
+
+void init_process_array();
+
 /** 
 * @brief (OUTDATED)Crée un nouveau processus.
 * Crée un nouveau processus et l'ajoute à la liste des processus avec un état d'exécution PROCSTATE_IDLE.
@@ -33,13 +36,6 @@ int delete_process(int pid);
 * @return process_t* correspondant au pid.
 */
 process_t* find_process(int pid);
-
-/** 
-* @brief Retourne le processus en cours d'utilisation
-* 
-* @return processus en cours d'utilisation.
-*/
-process_t* get_current_process();
 
 /** 
 * @brief Retourne le processus suivant le processus courant dans la liste

@@ -148,9 +148,8 @@ void process_switch(int mode, process_t* current)
 void* schedule(void* data __attribute__ ((unused)))
 {
 	uint32_t* stack_ptr;
-	uint32_t compteur;
 
-	process_t* current = get_current_process();
+	process_t* current = scheduler->get_current_process();
 	
 	/* On récupère le contexte du processus actuel uniquement si il a déja été lancé */
 	if(current->state == PROCSTATE_RUNNING || current->state == PROCSTATE_WAITING)
@@ -201,28 +200,24 @@ void* schedule(void* data __attribute__ ((unused)))
 	/* On recupere le prochain processus à executer.
 	 * TODO: Dans l'idéal, on devrait ici faire appel à un scheduler, 
 	 * qui aurait pour rôle de choisir le processus celon une politique spécifique */
-	compteur = 0;
-	do
-	{
-		compteur++;
-		current = get_next_process();
-	}while((current->state == PROCSTATE_TERMINATED || current->state == PROCSTATE_WAITING) && compteur < get_proc_count());
-	
-	/* Evaluation de l'usage du CPU */
-	current->current_sample++;
-	sample_counter++;
-	if(sample_counter >= CPU_USAGE_SAMPLE_RATE)
-	{
-		sample_CPU_usage();
-		sample_counter = 0;
-	}
-	
+	current = scheduler->get_next_process();
 	
 	if(current == NULL || current->state == PROCSTATE_WAITING || current->state == PROCSTATE_TERMINATED) 
 	{
 		/* Si on a rien à faire, on passe dans le processus idle */
-		inject_idle(idle_process);	
+		scheduler->inject_idle(idle_process);	
 		current = idle_process;
+	}
+	else
+	{
+		/* Evaluation de l'usage du CPU */
+		current->current_sample++;
+		sample_counter++;
+		if(sample_counter >= CPU_USAGE_SAMPLE_RATE)
+		{
+			sample_CPU_usage();
+			sample_counter = 0;
+		}
 	}
 
 	/* Si le processus courant n'a pas encore commencé son exécution, on le lance */
@@ -274,6 +269,22 @@ void start_scheduler()
 {
 	event_id = add_event(schedule,NULL,quantum*1000);
 }
+
+int scheduler_add_process(process_t* proc)
+{
+	return scheduler->add_process(proc);
+}
+
+int scheduler_delete_process(int pid)
+{
+	return scheduler->delete_process(pid);
+}
+
+process_t* get_current_process()
+{
+	return scheduler->get_current_process();
+}
+
 
 void* sleep_callback( void* data )
 {

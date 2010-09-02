@@ -38,6 +38,7 @@
 #include <serial.h>
 #include <console.h>
 #include <ksignal.h>
+#include <round_robin.h>
 
 typedef struct
 {
@@ -158,6 +159,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	/* Lancement du scheduler */
 	init_scheduler(20);
+	set_scheduler(&round_robin);
 	
 	// Création du processus par défaut: notre shell
 	
@@ -173,7 +175,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	mishell_init.priority = 0;
 	mishell_init.ppid = 0;
 	
-	add_process(create_process(&mishell_init));
+	scheduler_add_process(create_process(&mishell_init));
 	
 	events_init();
 	
@@ -191,7 +193,6 @@ static void defaultOptions(kernel_options *options)
 
 static char get_opt(char **cmdLine)
 {
-	
 	while(**cmdLine != '-' && **cmdLine != '\0') 
 		(*cmdLine)++;
 
