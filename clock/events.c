@@ -26,6 +26,7 @@ int compare_events(void* a, void* b)
 static void events_interrupt(int interrupt_id __attribute__ ((unused)))
 {
 	struct event_t *event;
+  callback_t callback;
 
 	clock_tick();
 
@@ -38,8 +39,11 @@ static void events_interrupt(int interrupt_id __attribute__ ((unused)))
 	}
 
   if(scheduler_event.callback != NULL 
-     && compare_times(scheduler_event.date, get_tv()) <= 0)
-     scheduler_event.callback(scheduler_event.data);
+     && compare_times(scheduler_event.date, get_tv()) <= 0) {
+     callback = scheduler_event.callback;
+     unset_scheduler_event();
+     callback(scheduler_event.data);
+  }
 }
 
 void events_init()

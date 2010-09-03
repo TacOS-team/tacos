@@ -315,7 +315,7 @@ SYSCALL_HANDLER1(sys_sleep, uint32_t delay)
 	process->state = PROCSTATE_WAITING;
 
 	/* Adjout de l'évènement de fin de sleep */
-	set_scheduler_event(sleep_callback,(void*)process,delay);
+	add_event(sleep_callback,(void*)process,delay);
 	
 	/* Scheduling immédiat */
 	start_scheduler();
