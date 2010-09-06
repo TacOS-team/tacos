@@ -47,10 +47,10 @@ img: all
 	@rm mtoolsrc
 
 runqemu: core.img
-	qemu -fda core.img -soundhw pcspk -m 20 
+	qemu -fda core.img -soundhw pcspk -net nic,model=rtl8139 -m 20 
 
 runqemugdb: core.img
-	qemu -fda core.img -soundhw pcspk -parallel none -m 20 -s -S
+	qemu -fda core.img -soundhw pcspk -net nic,model=rtl8139 -parallel none -m 20 -s -S
 
 runbochs: core.img
 	BOCHSRC=bochsrc bochs

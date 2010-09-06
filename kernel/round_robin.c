@@ -16,6 +16,7 @@ static process_t* rr_get_current_process();
 static int rr_add_process(process_t* proc);
 static int rr_delete_process(int pid);
 static void rr_inject_idle(process_t* proc);
+
 /*
  * Structure à exporter pour utiliser le code en tant que module scheduler
  */
