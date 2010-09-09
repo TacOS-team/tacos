@@ -548,7 +548,7 @@ int rtl8139_driver_init()
 		{
 			io_base = bar & 0xfff0;
 			
-			PRINT_LOG("Reseting chip... ");
+			PRINT_DEBUG("Reseting chip... ");
 			reset_chip();
 			
 			/* ça c'est juste pour tester le port I/O... et puis c'est class */
@@ -563,7 +563,7 @@ int rtl8139_driver_init()
 			
 		}
 		else
-			PRINT_LOG("No I/O base address found.");
+			PRINT_ERROR("No I/O base address found.");
 	}
 	else
 	{
@@ -573,7 +573,7 @@ int rtl8139_driver_init()
 	if(ret > 0)
 		PRINT_LOG("RTL8139 driver initialized.");
 	else
-		PRINT_ERROR("RTL8139 driver not initialized.");
+		PRINT_LOG("RTL8139 driver not initialized.");
 	
 	
 	return ret;
