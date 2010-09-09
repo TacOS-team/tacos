@@ -26,6 +26,13 @@
 #define PRINT_LOG(message, ...) kprintf("eth:\t"message"\n", ##__VA_ARGS__)
 #define PRINT_ERROR(message, ...) kprintf("eth:\t\033[031m"message"\033[0m\n", ##__VA_ARGS__)
 
+#define DEBUG
+#ifdef DEBUG
+	#define PRINT_DEBUG(message, ...) kprintf("eth<debug>:\t"message"\n", ##__VA_ARGS__)
+#else
+	#define PRINT_DEBUG(message, ...)
+#endif
+
 #define RTL8139_VENDOR_ID	0x10EC	/* Realtek Semiconductor’s PCI Vendor ID */
 #define RTL8139_DEVICE_ID	0x8139	/* RTL8139 PCI Device ID */
 
@@ -346,7 +353,7 @@ void rx_interrupt_handler(uint16_t isr)
 		
 		if(packet_ok(pheader))
 		{
-			PRINT_LOG("Packet received (size=%d):", packet_length);
+			PRINT_DEBUG("Packet received (size=%d):", packet_length);
 			/* 
 			 * TODO: Récupérer le paquet et le mettre quelque part
 			 * En attendant, pourquoi ne pas l'afficher :D
@@ -456,6 +463,8 @@ void rtl8139_isr(int id)
 	uint16_t temp_isr = READ_WORD(ISR);
 	
 	asm volatile( "cli" );
+	
+	PRINT_DEBUG("interrupt: isr=0x%x", temp_isr);
 
 	if(temp_isr & (INT_TOK | INT_TER))
 	{
@@ -543,7 +552,7 @@ int rtl8139_driver_init()
 			reset_chip();
 			
 			/* ça c'est juste pour tester le port I/O... et puis c'est class */
-			PRINT_LOG("MAC Address: %x:%x:%x:%x:%x:%x", READ_BYTE(IDR0)
+			PRINT_DEBUG("MAC Address: %x:%x:%x:%x:%x:%x", READ_BYTE(IDR0)
 														, READ_BYTE(IDR1)
 														, READ_BYTE(IDR2)
 														, READ_BYTE(IDR3)
