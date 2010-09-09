@@ -31,5 +31,6 @@ int noxeyes();
 int test_elf();
 int test_ctype();
 int test_stdio();
+void test_send_packet();
 
 #endif //APPS_H

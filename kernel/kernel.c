@@ -39,6 +39,7 @@
 #include <console.h>
 #include <ksignal.h>
 #include <round_robin.h>
+#include <rtl8139.h>
 
 typedef struct
 {
@@ -90,7 +91,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
 	interrupt_set_routine(IRQ_LPT1, LPT1_routine, 0);
 	interrupt_set_routine(IRQ_COM1, serial_isr, 0);
-
 	mouseInit();
 
 	floppy_init_interrupt();
@@ -126,11 +126,12 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	pci_scan();
 
-	kprintf("vm86:%d\n",check_vm86());
-	
 	if(serial_init(COM1, "8N1", 38400, ECHO_ENABLED) != 0)
 		kprintf("Erreur d'initialisation de COM1 \n");
-
+		
+	int irq = rtl8139_driver_init();
+	interrupt_set_routine(irq,  rtl8139_isr, 0);
+	
 	/* Initialisation des semaphores */
 	init_semaphores();
 

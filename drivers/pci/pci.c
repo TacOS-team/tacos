@@ -23,6 +23,23 @@ pci_function_p pci_get_function( pci_desc_t desc )
 		return &(pci_table[desc]);
 }
 
+pci_function_p pci_find_device( uint16_t vendor_id, uint16_t device_id )
+{
+	pci_function_p func = NULL;
+	int i;
+	int vendor, device;
+	
+	for(i=0; (i<pci_table_len) && (func == NULL); i++)
+	{	
+		vendor = pci_read_value(&pci_table[i], PCI_VENDOR_ID);
+		device = pci_read_value(&pci_table[i], PCI_DEVICE_ID);
+		if(vendor == vendor_id && device == device_id)
+			func = &pci_table[i];
+	}
+	
+	return func;
+}
+
 /* Scan le bus pci et ajoute les périphériques trouvés à pci_table */
 void pci_scan()
 {

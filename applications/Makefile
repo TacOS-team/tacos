@@ -58,6 +58,7 @@ cube.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 cube.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 cube.o: ../libc/include/time.h ../include/process.h ../include/pagination.h
 cube.o: ../include/vmm.h ../include/signal.h ../libc/include/string.h
+cube.o: ../libc/include/unistd.h
 matrix.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 matrix.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 matrix.o: ../libc/include/stdlib.h ../libc/include/malloc.h

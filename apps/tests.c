@@ -468,3 +468,76 @@ int test_elf() {
 	/*close(fd);*/
 	return 0;
 }
+
+void test_send_packet()
+{
+	#if 1
+	char packet[1500];
+	
+	/* Dest MAC addr */
+	packet[0] = 0xff;
+	packet[1] = 0xff;
+	packet[2] = 0xff;
+	packet[3] = 0xff;
+	packet[4] = 0xff;
+	packet[5] = 0xff;
+	
+	/* Source address */
+	packet[6] = 0x11;
+	packet[7] = 0x22;
+	packet[8] = 0x33;
+	packet[9] = 0x44;
+	packet[10] = 0x55;
+	packet[11] = 0x66;
+	
+	/* Ethertype */
+	packet[12] = 0x08;
+	packet[13] = 0x06;
+	
+	/* Payload */
+	packet[14] = 0x00;
+	packet[15] = 0x01;
+	packet[16] = 0x08;
+	packet[17] = 0x00;
+	packet[18] = 0x06;
+	packet[19] = 0x04;
+	packet[20] = 0x00;
+	packet[21] = 0x01;
+	
+	packet[22] = 0x11; /* Mac origine */
+	packet[23] = 0x22;
+	packet[24] = 0x33;
+	packet[25] = 0x44;
+	packet[26] = 0x55;
+	packet[27] = 0x66;
+	
+	packet[28] = 0xc0;/* IP origine */
+	packet[29] = 0xa8;
+	packet[30] = 0x00;
+	packet[31] = 0x02;
+	
+	packet[32] = 0x00;
+	packet[33] = 0x00;
+	packet[34] = 0x00;
+	packet[35] = 0x00;
+	packet[36] = 0x00;
+	packet[37] = 0x00;
+	
+	packet[38] = 0xc0;
+	packet[39] = 0xa8;
+	packet[40] = 0x00;
+	packet[41] = 0x01;
+	
+	send_packet(packet, 42);
+	#endif
+	/*
+	uint32_t i = 0;
+	while(1)
+	{
+		printf("\033[2J");
+		fflush(stdout);
+		rtl8139_debug_info();
+		for(i=0; i<0x00ffffff; i++);
+	}*/
+	
+}

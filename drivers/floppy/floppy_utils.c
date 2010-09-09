@@ -74,7 +74,6 @@ int floppy_seek(int cylindre, int head)
 	// On fait 5 tentative à titre arbitraire
 	for(i=0; i<5; i++)
 	{
-		kprintf("%d",i);
 		// Protocole de la commande SEEK:
 		// Premier parametre: (head <<2)|drive
 		// Deuxieme parametre: cylindre

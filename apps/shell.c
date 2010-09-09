@@ -282,6 +282,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_stdio, "test_stdio");
 	add_builtin_cmd(shell_exec_elf, "exec");
 	add_builtin_cmd(watch_clock, "clock");
+	add_builtin_cmd(test_send_packet, "sendpacket");
 
 	//disable_cursor(0);
 	

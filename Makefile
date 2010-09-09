@@ -39,18 +39,21 @@ core.img: img
 img: all
 	@echo "drive v: file=\"`pwd`/core.img\" 1.44M filter" > mtoolsrc
 	@gzip -dc < grub.img.gz > core.img
-	MTOOLSRC=mtoolsrc mcopy menu.txt v:/boot/grub/
-	MTOOLSRC=mtoolsrc mcopy doc.txt v:/
-	MTOOLSRC=mtoolsrc mcopy bin v:/
-	MTOOLSRC=mtoolsrc mmd v:/system
-	MTOOLSRC=mtoolsrc mcopy kernel.bin v:/system/
+	@MTOOLSRC=mtoolsrc mcopy menu.txt v:/boot/grub/
+	@MTOOLSRC=mtoolsrc mcopy doc.txt v:/
+	@MTOOLSRC=mtoolsrc mcopy bin v:/
+	@MTOOLSRC=mtoolsrc mmd v:/system
+	@MTOOLSRC=mtoolsrc mcopy kernel.bin v:/system/
 	@rm mtoolsrc
 
+runqemunet: core.img
+	qemu -fda core.img -soundhw pcspk -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -net tap,ifname=tap0,script=no -net dump,file=eth.log -m 20 
+
 runqemu: core.img
-	qemu -fda core.img -soundhw pcspk -net nic,model=rtl8139 -m 20 
+	qemu -fda core.img -soundhw pcspk -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -net dump,file=eth.log -m 20 
 
 runqemugdb: core.img
-	qemu -fda core.img -soundhw pcspk -net nic,model=rtl8139 -parallel none -m 20 -s -S
+	qemu -fda core.img -soundhw pcspk -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -parallel none -m 20 -s -S
 
 runbochs: core.img
 	BOCHSRC=bochsrc bochs
