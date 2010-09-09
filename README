@@ -11,7 +11,7 @@ machine à une autre.
 Voici les étapes à suivre pour pouvoir utiliser cette règle (pour linux BTW):
 1) Installer l'outil tunctl:
 	-Sous Archlinux, on le trouve dans le paquet "uml_utilities" du dépot Extra
-	-TODO: J'invite les utilisateur de debian a ajouter le nom du paquet sur aptitude
+	-Sous Debian/Ubuntu, on le trouve dans le paquet uml-utilities
 	
 2) Créer l'interface tap :
 	> sudo tunctl -u user_name -t tap0 (remplacer user_name par votre nom d'utilisateur)
