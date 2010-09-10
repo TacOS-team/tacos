@@ -20,6 +20,9 @@ depend: $(SRCS)
 # DO NOT DELETE THIS LINE -- make depend needs it
 
 beeper/beeper.o: ../include/beeper.h ../include/types.h ../include/ioports.h
+ethernet/rtl8139.o: ../include/pci.h ../include/types.h
+ethernet/rtl8139.o: ../include/pci_types.h ../include/pci_config.h
+ethernet/rtl8139.o: ../include/ioports.h ../libc/include/string.h
 floppy/floppy.o: ../include/ioports.h ../libc/include/stdio.h
 floppy/floppy.o: ../libc/include/fcntl.h ../libc/include/libio.h
 floppy/floppy.o: ../include/types.h ../libc/include/stdarg.h
@@ -57,8 +60,8 @@ mouse/mouse.o: ../include/types.h ../libc/include/stdio.h
 mouse/mouse.o: ../libc/include/fcntl.h ../libc/include/libio.h
 mouse/mouse.o: ../libc/include/stdarg.h ../include/ioports.h
 mouse/mouse.o: ../include/mouse.h ../include/interrupts.h
-pci/pci.o: ../include/pci.h ../include/types.h ../include/pci_config.h
-pci/pci.o: ../include/pci_types.h ../libc/include/stdio.h
+pci/pci.o: ../include/pci.h ../include/types.h ../include/pci_types.h
+pci/pci.o: ../include/pci_config.h ../libc/include/stdio.h
 pci/pci.o: ../libc/include/fcntl.h ../libc/include/libio.h
 pci/pci.o: ../libc/include/stdarg.h
 pci/pci_config.o: ../include/ioports.h ../include/types.h

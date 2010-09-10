@@ -46,8 +46,7 @@ int test_gui() {
 }
 
 int test_fwrite() {
-	FILE *file = fopen("fd0:/doc.txt", "w+");
-	char* buffer[100];
+	FILE *file = fopen("fd0:/test.txt", "w+");
 	fwrite("Hello World !", sizeof(char), 13, file);
 	fflush(file);
 	return 0;

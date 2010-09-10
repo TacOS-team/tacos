@@ -32,6 +32,7 @@ fat.o: ../include/floppy.h ../libc/include/string.h include/kfat.h
 fat.o: ../include/fat.h include/kfcntl.h include/kprocess.h
 fat.o: ../include/process.h ../include/pagination.h ../include/vmm.h
 fat.o: ../include/signal.h include/ksyscall.h ../include/debug.h
+fat.o: ../include/kmalloc.h
 fpu.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 fpu.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 fpu.o: include/fpu.h ../include/interrupts.h
@@ -46,8 +47,8 @@ kernel.o: ../libc/include/libio.h ../libc/include/stdarg.h
 kernel.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 kernel.o: ../include/kunistd.h ../libc/include/string.h ../include/memory.h
 kernel.o: ../include/pagination.h include/gdt.h include/exception.h
-kernel.o: ../include/interrupts.h ../include/pci.h ../include/pci_config.h
-kernel.o: ../include/pci_types.h include/scheduler.h ../include/process.h
+kernel.o: ../include/interrupts.h ../include/pci.h ../include/pci_types.h
+kernel.o: ../include/pci_config.h include/scheduler.h ../include/process.h
 kernel.o: ../include/vmm.h ../include/signal.h include/ksyscall.h
 kernel.o: ../libc/include/time.h ../include/keyboard.h include/kfcntl.h
 kernel.o: include/kprocess.h ../include/mouse.h ../include/events.h
@@ -57,6 +58,7 @@ kernel.o: include/fpu.h include/vm86.h ../include/beeper.h ../include/debug.h
 kernel.o: ../include/shell.h ../include/syscall.h include/ksem.h
 kernel.o: ../include/video.h ../include/serial.h ../include/console.h
 kernel.o: ../include/tty.h include/ksignal.h include/round_robin.h
+kernel.o: ../include/rtl8139.h
 kfcntl.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 kfcntl.o: ../libc/include/fcntl.h ../include/types.h ../include/pagination.h
 kfcntl.o: ../include/vmm.h ../include/signal.h include/ksyscall.h
