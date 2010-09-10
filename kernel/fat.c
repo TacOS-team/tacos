@@ -50,6 +50,10 @@ static fat_info_t fat_info;
 static cluster_t *file_alloc_table; //en dur tant que le kmalloc fait planter...
 // TODO: Il y a des "512" en dur un peu partout dans le code. Il faudrait utiliser les infos de fat_info pour être portable.
 // TODO: Gérer FAT16 et FAT32.
+// TODO: Virer certaines limitations mises là juste pour simplifier...
+// TODO: Répertoires qui s'étallent sur plusieurs clusters.
+// TODO: Écriture d'un fichier qui utilise plusieurs clusters.
+// TODO: Création d'un nouveau répertoire.
 
 addr_CHS_t get_CHS_from_LBA(addr_LBA_t sector_LBA) {
 	addr_CHS_t ret;
@@ -196,6 +200,27 @@ void open_root_dir(directory_t * dir) {
 	}
 }
 
+int write_dir(directory_t * dir) {
+	fat_dir_entry_t sub_dir[8];
+	fat_dir_entry_t dir2[8];
+	int i;
+	read_cluster((char*)dir2, dir->cluster); // debug only...
+
+	// FIXME: marche pas... Je gère pas correctement les noms longs, je gère pas les noms courts.
+	// Ça pète un peu tout le dossier...
+	// Me manque la partie ".." et "." aussi d'où l'impossibilité de les remettre...
+	for (i = 0; i < dir->total_entries; i++) {
+		sub_dir[i].long_file_name[0] = 0x41;
+		strcpy((char*)(sub_dir [i].long_file_name + 1), dir->entry_name[i]);
+		sub_dir[i].cluster_pointer = dir->entry_cluster[i];
+		sub_dir[i].file_size = dir->entry_size[i];
+		sub_dir[i].file_attributes = dir->entry_attributes[i];
+	}
+	write_cluster((char*)sub_dir, dir->cluster);
+
+	return 0;
+}
+
 int open_next_dir(directory_t * prev_dir, directory_t * next_dir, char * name) {
 	fat_dir_entry_t sub_dir[8];
 	cluster_t next = 0;
@@ -329,7 +354,7 @@ int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
 			dir.entry_attributes[dir.total_entries] = 0; // XXX: valeur bidon.
 			dir.entry_size[dir.total_entries] = 0;
 			dir.total_entries++;
-			//TODO: write dir ! Bah oui, on met à jour dir qui n'est rien d'autre qu'une variable temporaire...
+			write_dir(&dir);
 		} else {
 			return -1;
 		}
@@ -339,10 +364,10 @@ int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
 	ofd->current_octet = 0;
 	ofd->current_octet_buf = 0;
 	read_cluster((char*) ofd->buffer, ofd->current_cluster);
-  
-  if(flags & O_APPEND) {
-    seek_file(ofd, 0, SEEK_END);
-  }
+
+	if (flags & O_APPEND) {
+		seek_file(ofd, 0, SEEK_END);
+	}
 
 	return 0;
 }
@@ -351,7 +376,7 @@ int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
 int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 	switch (whence) {
 	case SEEK_SET: // depuis le debut du fichier
-		if ((unsigned long)offset < ofd->file_size) {
+		if ((unsigned long) offset < ofd->file_size) {
 			// On se met au début :
 			ofd->current_cluster = ofd->first_cluster;
 			ofd->current_octet = 0;
@@ -385,7 +410,7 @@ int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 		}
 		break;
 	case SEEK_END:
-		if ((unsigned long)offset <= ofd->file_size) {
+		if ((unsigned long) offset <= ofd->file_size) {
 			return seek_file(ofd, ofd->file_size - offset, SEEK_SET);
 		} else {
 			return -1;
@@ -401,10 +426,10 @@ size_t write_file(open_file_descriptor * ofd, const void * buf, size_t nb_octet)
 	/*int j;*/
 	char tmp_buf[512];
 
-  if((ofd->flags & O_ACCMODE) == O_RDONLY) {
-    errno = EBADF;
-    return EOF;
-  }
+	if ((ofd->flags & O_ACCMODE) == O_RDONLY) {
+		errno = EBADF;
+		return EOF;
+	}
 
 	/* printf("\ncall write_file() from fat.c\n");
 	 for (j=0;j<nb_octet;j++) {
@@ -440,16 +465,16 @@ size_t write_file(open_file_descriptor * ofd, const void * buf, size_t nb_octet)
 size_t read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 	int ret = count;
 	int j = 0;
-	
-  if((ofd->flags & O_ACCMODE) == O_WRONLY) {
-    errno = EBADF;
-    return EOF;
-  }
 
-  if(ofd->flags & O_DIRECT) {
-    errno = EINVAL;
-    return EOF;
-  }
+	if ((ofd->flags & O_ACCMODE) == O_WRONLY) {
+		errno = EBADF;
+		return EOF;
+	}
+
+	if (ofd->flags & O_DIRECT) {
+		errno = EINVAL;
+		return EOF;
+	}
 
 	while (count--) {
 		if (ofd->current_octet == ofd->file_size) {
@@ -502,7 +527,8 @@ void mount_FAT12() {
 			+ fat_info.cluster1_sector_count;
 
 	// XXX: Ce kmalloc fait tout planter ! youpi
-	file_alloc_table = (cluster_t*)kmalloc(fat_info.total_clusters * sizeof(cluster_t));
+	file_alloc_table = (cluster_t*) kmalloc(fat_info.total_clusters
+			* sizeof(cluster_t));
 	read_fat(file_alloc_table);
 	init_path();
 
@@ -513,7 +539,7 @@ void change_dir(char * name) {
 
 	int errorcode;
 
-	if (strcmp(name, "..") == 0) {
+	if (strcmp(name, "..") == 0) { //XXX: Beurk. Normalement ".." est un dossier disponible...
 		if (path.current != 0)
 			path.current--;
 	} else {
