@@ -53,6 +53,7 @@
 #include <elf.h>
 #include <ctype.h>
 #include <errno.h>
+#include <rtl8139.h>
 
 static int color;
 
@@ -107,6 +108,8 @@ int test_ofd_flags_rdonly() {
   printf("EOF : %c\n", res == -1 ? 'y' : 'n');
   printf("errno : %d\n", errno);
   /*close(ofd)*/
+
+	return 0;
 }
 
 int test_ofd_flags_wronly() {
@@ -119,6 +122,8 @@ int test_ofd_flags_wronly() {
   printf("errno : %d\n", errno);
   printf("buffer : %s\n", buf);
   /*close(ofd)*/
+
+	return 0;
 }
 
 void tu_seek0(const char * nom_test, const char * resultat_attendu, long offset) {
@@ -497,6 +502,8 @@ int test_stdio() {
 	tu_rand(); // TODO : le bouger ailleurs.
 
 	tu_sprintf() && tu_sscanf();
+
+	return 0;
 }
 
 int test_read_serial() {
@@ -524,7 +531,7 @@ int test_elf() {
 	return 0;
 }
 
-void test_send_packet()
+int test_send_packet()
 {
 	#if 1
 	char packet[1500];
@@ -595,4 +602,5 @@ void test_send_packet()
 		for(i=0; i<0x00ffffff; i++);
 	}*/
 	
+	return 0;
 }

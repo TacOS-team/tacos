@@ -178,10 +178,11 @@ void cursor_position_video(int x, int y) {
 }
 
 /**
- * Conversion entre latin1 et la table ASCII utilis�e.
+ * Conversion entre latin1 et la table ASCII utilisée.
  */
 static char convert_ascii(char c) {
 	// TODO : refaire cette table :/.
+/*
 	if (c == '�') {
 		c = 0x82;
 	} else if (c == '�') {
@@ -203,6 +204,7 @@ static char convert_ascii(char c) {
 	} else if (c == '�') {
 		c = 0x97;
 	}
+*/
 	return c;
 }
 

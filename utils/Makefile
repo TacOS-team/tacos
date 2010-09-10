@@ -1,4 +1,4 @@
-INCLUDES=-I../include/ -Iinclude/ -I../libc/include/
+INCLUDES=-I../include/ -Iinclude/ -I../libc/include/ -I../kernel/include/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
  
 SRCS=*.c

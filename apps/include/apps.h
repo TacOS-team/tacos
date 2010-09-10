@@ -67,6 +67,6 @@ int test_ctype();
 int test_stdio();
 int test_ofd_flags_rdonly();
 int test_ofd_flags_wronly();
-void test_send_packet();
+int test_send_packet();
 
 #endif //APPS_H

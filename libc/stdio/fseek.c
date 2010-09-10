@@ -33,6 +33,7 @@
  */
 
 #include <stdio.h>
+#include <unistd.h>
 
 /* TODO Enlever les attributes quand la fonction sera codée... */
 int fseek(FILE *stream, long offset, int whence)

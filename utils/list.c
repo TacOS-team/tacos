@@ -39,8 +39,8 @@
 
 #include <list.h>
 #include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include <kmalloc.h>
+#include <kstdio.h>
 
 #define EMPTY_SLOT -1
 #define END_SLOT -2
@@ -147,7 +147,7 @@ void print_list(list_t ma_liste)
 	while(a != END_SLOT)
 	{
 		i = getElement(&ma_liste, a);
-		printf("%d ", *i );
+		kprintf("%d ", *i );
 		a = ma_liste.link_array[a];
 	}
 }

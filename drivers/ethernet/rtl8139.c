@@ -56,6 +56,7 @@
 #include <pci_config.h>
 #include <ioports.h>
 #include <string.h>
+#include <kstdio.h>
 
 #define PRINT_LOG(message, ...) kprintf("eth:\t"message"\n", ##__VA_ARGS__)
 #define PRINT_ERROR(message, ...) kprintf("eth:\t\033[031m"message"\033[0m\n", ##__VA_ARGS__)
@@ -428,7 +429,7 @@ void rx_interrupt_handler(uint16_t isr)
 static void reset_receiver()
 {
 	uint32_t rcr = 0;
-	paddr_t buffer_address = rx_buffer;
+	paddr_t buffer_address = (paddr_t) rx_buffer;
 	
 	rx_read_offset = 0;
 	rx_good_packets = 0;
@@ -537,7 +538,7 @@ void rtl8139_debug_info()
 	printf("BMSR:\t0x%x\n",READ_BYTE(BMSR));
 	printf("rx_read_offset:\t0x%x\n",rx_read_offset);
 	int i = 0;
-	uint32_t* pheader = &(rx_buffer[READ_DWORD(CBR)]);
+	uint32_t* pheader = (uint32_t *) &(rx_buffer[READ_DWORD(CBR)]);
 	printf("0x%x", *pheader);
 	/*for(i=0; i<4; i++)
 	{

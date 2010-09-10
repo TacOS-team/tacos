@@ -98,17 +98,16 @@ static int cd_cmd()
 static int cat_cmd()
 {
 // NON TESTÉ !
-	char buf[80];
-    char chemin[80];
+	char chemin[80];
 	scanf("%s", chemin);
 
 	FILE *file = fopen(chemin, "r");
 
 	char buffer[100];
 	while (fread(buffer, sizeof(buffer), sizeof(char), file) > 0) {
-        buffer[99] = '\0';
-        printf("%s", buffer);
-    }
+		buffer[99] = '\0';
+		printf("%s", buffer);
+	}
 
 	fflush(file);
 
@@ -239,7 +238,7 @@ static int shell_exec_elf()
 {
 	char filename[80];
 	scanf("%s",filename);
-	exec_elf(filename, 0);
+	return exec_elf(filename, 0);
 }
 
 void print_logo()

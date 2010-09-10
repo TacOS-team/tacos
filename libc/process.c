@@ -58,8 +58,6 @@ uint32_t get_pid()
 
 void exec(paddr_t prog, char* name, int orphan)
 {
-	int ret = -1;
-
 	process_init_data_t init_data;
 	
 	init_data.name	= name;
@@ -67,7 +65,7 @@ void exec(paddr_t prog, char* name, int orphan)
 	init_data.priority = 0;
 	init_data.args = "fajitas bonitas";
 
-	init_data.data = prog;
+	init_data.data = (void *) prog;
 
 	init_data.mem_size = 0;
 	init_data.entry_point = 0;
@@ -75,8 +73,6 @@ void exec(paddr_t prog, char* name, int orphan)
 	init_data.ppid = orphan?0:get_pid();
 	
 	syscall(SYS_EXEC, (uint32_t)NULL, (uint32_t)&init_data, 1);
-
-
 }
 
 int exec_elf(char* name, int orphan)

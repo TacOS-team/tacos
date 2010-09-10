@@ -170,7 +170,7 @@ static int shell_exec_elf()
 {
 	char filename[80];
 	scanf("%s",filename);
-	exec_elf(filename, 0);
+	return exec_elf(filename, 0);
 }
 
 void print_logo()

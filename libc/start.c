@@ -34,6 +34,8 @@
 
 #include <process.h>
 #include <libio.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 typedef int main_type(int, char**);
 
@@ -45,7 +47,8 @@ void start_main()
 	
 	init_stdfiles(&stdin, &stdout, &stderr);
 
-	signal(SIGINT, exit);
+	signal(SIGINT, (sighandler_t) exit);
 
 	exit(main(0, NULL));
 }
+

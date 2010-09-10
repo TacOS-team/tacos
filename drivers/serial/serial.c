@@ -89,8 +89,6 @@
 #define write_register(PORT,REG,DATA) outb(DATA,base_addr[PORT]+REG)
 #define read_register(PORT,REG) inb(base_addr[PORT]+REG)
 
-#define PRINT_ERROR(source) kprintf("SERIAL_DRIVER Error:%s.\n",source)
-
 #ifdef _DEBUG_
 	#define DEBUG_MESSAGE(message) kprintf("SERIAL_DEBUG:%s.\n", message)
 	#define PRINT_ERROR(source) kprintf("SERIAL_DRIVER Error:%s.\n",source)
@@ -332,7 +330,9 @@ void serial_isr(int id __attribute__ ((unused)))
 											serial_echo(i, temp_read);
 									}
 									else
+									{
 										PRINT_ERROR("Rx buffer full");
+									}
 								}
 								break;
 							case INT_THR_EMPTY:
