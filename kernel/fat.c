@@ -39,6 +39,7 @@
 #include <kfat.h>
 #include <fcntl.h>
 #include <debug.h>
+#include <errno.h>
 #include <kmalloc.h>
 
 // ceci sera calculé avec les donnée du Boot secteur qd on alloura 
@@ -236,7 +237,6 @@ int open_next_dir(directory_t * prev_dir, directory_t * next_dir, char * name) {
 }
 
 int get_dirname_from_path(char * path, char* name, int pos) {
-
 	int i = 0, j = 0, k = 0;
 	int ret;
 
@@ -339,6 +339,11 @@ int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
 	ofd->current_octet = 0;
 	ofd->current_octet_buf = 0;
 	read_cluster((char*) ofd->buffer, ofd->current_cluster);
+  
+  if(flags & O_APPEND) {
+    seek_file(ofd, 0, SEEK_END);
+  }
+
 	return 0;
 }
 
@@ -395,6 +400,12 @@ size_t write_file(open_file_descriptor * ofd, const void * buf, size_t nb_octet)
 	size_t i;
 	/*int j;*/
 	char tmp_buf[512];
+
+  if((ofd->flags & O_ACCMODE) == O_RDONLY) {
+    errno = EBADF;
+    return EOF;
+  }
+
 	/* printf("\ncall write_file() from fat.c\n");
 	 for (j=0;j<nb_octet;j++) {
 	 printf("%c",((char*)buf)[j]);
@@ -429,6 +440,16 @@ size_t write_file(open_file_descriptor * ofd, const void * buf, size_t nb_octet)
 size_t read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 	int ret = count;
 	int j = 0;
+	
+  if((ofd->flags & O_ACCMODE) == O_WRONLY) {
+    errno = EBADF;
+    return EOF;
+  }
+
+  if(ofd->flags & O_DIRECT) {
+    errno = EINVAL;
+    return EOF;
+  }
 
 	while (count--) {
 		if (ofd->current_octet == ofd->file_size) {

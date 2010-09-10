@@ -44,6 +44,7 @@
 #include "kprocess.h"
 #include "ksignal.h"
 #include "kstdio.h"
+#include <errno.h>
 
 static terminal_t *active_tty = NULL;
 
@@ -110,6 +111,12 @@ size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {
 	 * TODO: Si un processus essaye d'écrire dans un tty alors qu'il n'est pas en foreground : SIGTTOU
 	 */
 	unsigned int i;
+
+  if((ofd->flags & O_ACCMODE) == O_RDONLY) {
+    errno = EBADF;
+    return -1;
+  }
+
 	terminal_t *t = (terminal_t *) ofd->extra_data;
 	for (i = 0; i < count; i++) {
 		t->put_char(t->extra_data, ((char*) buf)[i]);
@@ -123,10 +130,19 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 	 * On bloque tant qu'il n'y a rien à lire (semaphore).
 	 * TODO: Si un process essaye de lire sans être au premier plan => on lui envoie un signal SIGTTIN
 	 */
-
 	char c;
 	unsigned int j = 0;
 	terminal_t *t = (terminal_t *) ofd->extra_data;
+
+  if((ofd->flags & O_ACCMODE) == O_WRONLY) {
+    errno = EBADF;
+    return -1;
+  }
+
+  if(ofd->flags & O_DIRECT) {
+    errno = EINVAL;
+    return -1;
+  }
 
 	do {
 		if (t->p_begin == t->p_end)

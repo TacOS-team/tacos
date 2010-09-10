@@ -52,6 +52,7 @@
 #include <serial.h>
 #include <elf.h>
 #include <ctype.h>
+#include <errno.h>
 
 static int color;
 
@@ -97,6 +98,27 @@ int test_fread() {
 
 	/*fflush(file);*/
 	return 0;
+}
+
+int test_ofd_flags_rdonly() {
+	int ofd = open("fd0:/doc.txt", O_RDONLY);
+  int res = write(ofd, "42", 2);
+
+  printf("EOF : %c\n", res == -1 ? 'y' : 'n');
+  printf("errno : %d\n", errno);
+  /*close(ofd)*/
+}
+
+int test_ofd_flags_wronly() {
+  char buf[16] = "123456789012345";
+	int ofd = open("fd0:/doc.txt", O_WRONLY);
+  int res = read(ofd, &buf, 15);
+  buf[16] = '\0';
+
+  printf("EOF : %c\n", res == -1 ? 'y' : 'n');
+  printf("errno : %d\n", errno);
+  printf("buffer : %s\n", buf);
+  /*close(ofd)*/
 }
 
 void tu_seek0(const char * nom_test, const char * resultat_attendu, long offset) {

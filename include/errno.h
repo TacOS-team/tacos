@@ -35,6 +35,18 @@
 #ifndef _ERRNO_H_
 #define _ERRNO_H_
 
+/* man 2 write - à éventuellement reclasser dans un ordre moins bourrin
+ * ou copier /usr/include/asm-generic/errno-base.h */
+#define EAGAIN    1 
+#define EBADF     2
+#define EFAULT    3
+#define EFBIG     4
+#define EINTR     5
+#define EINVAL    6
+#define EIO       7
+#define ENOSPC    8
+#define EPIPE     9
+
 extern int errno;
 
 #endif //_ERRNO_H_
