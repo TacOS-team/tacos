@@ -33,15 +33,14 @@
  */
 
 #include <kprocess.h>
+#include <scheduler.h>
 #include <types.h>
 #include <libio.h>
 #include <kfcntl.h>
 
-void sys_write(uint32_t fd, uint32_t p_buf, uint32_t count) {
+SYSCALL_HANDLER3(sys_write, uint32_t fd, const void *buf, size_t *c) {
 	process_t * process = get_current_process();
-	const void *buf = (const void*)p_buf;
-	size_t *c = (size_t*)count;
-	ssize_t *t = (ssize_t*)count;
+	ssize_t *t = (ssize_t*)c;
 
 	open_file_descriptor *ofd;
 
@@ -52,25 +51,21 @@ void sys_write(uint32_t fd, uint32_t p_buf, uint32_t count) {
 	}
 }
 
-void sys_read(uint32_t fd, uint32_t p_buf, uint32_t count) {
+SYSCALL_HANDLER3(sys_read, uint32_t fd, const void *buf, size_t *c) {
 	process_t * process = get_current_process();
-	void *buf = (void*)p_buf;
-	size_t *c = (size_t*)count;
-	ssize_t *t = (ssize_t*)count;
+	ssize_t *t = (ssize_t*)c;
 
 	open_file_descriptor *ofd;
 
 	if (process->fd[fd].used) {
 		ofd = process->fd[fd].ofd;
 
-		*t = ofd->read(ofd, buf, *c);
+		*t = ofd->read(ofd, (void*) buf, *c);
 	}
 }
 
-void sys_seek(uint32_t fd, uint32_t p_offset, uint32_t p_whence) {
+SYSCALL_HANDLER3(sys_seek, uint32_t fd, long *offset, int *whence) {
 	process_t * process = get_current_process();
-    long *offset = (long*)p_offset;
-    int *whence = (int*)p_whence;
 
 	open_file_descriptor *ofd;
 

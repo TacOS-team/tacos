@@ -38,6 +38,7 @@
 #include <kprocess.h>
 #include <stdio.h>
 #include <kmalloc.h>
+#include <scheduler.h>
 
 #define FIFO_MAX_SIZE 32
 #define MAX_SEM 256
@@ -183,7 +184,8 @@ int ksemcreate(uint8_t key)
 	int ret = -1;
 
 	//kprintf("semcreate key %d pid %d \n",key);
-	if(key < MAX_SEM && !semaphores[key].allocated)
+	/* key est toujours inferieur à MAX_SEM...*/
+	if(/*key < MAX_SEM && */!semaphores[key].allocated)
 	{
 		ret = next_semid | key<<24;
 		next_semid++;
@@ -197,10 +199,9 @@ int ksemcreate(uint8_t key)
 
 int ksemcreate_without_key(uint8_t *key)
 {
-    int ret = -1;
     *key = 0;
 
-    while (*key < MAX_SEM && semaphores[*key].allocated) {
+    while (/* *key < MAX_SEM && */semaphores[*key].allocated) {
         (*key)++;
     }
 

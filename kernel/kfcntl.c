@@ -33,6 +33,8 @@
  */
 
 #include <kprocess.h>
+#include <ksyscall.h>
+#include <scheduler.h>
 #include <stdio.h>
 #include <kfat.h>
 #include <string.h>
@@ -52,7 +54,7 @@ void init_stdfd(process_t *new_proc) {
         t = kmalloc(sizeof(terminal_t));
         int console = get_available_console(t);
         focus_console(console);
-        tty_init(t, new_proc, console, kputchar);
+        tty_init(t, new_proc, (void *)console,(void (*)(void *, char)) kputchar);
         //new_proc->ctrl_tty = t;
     } else {
         /*
@@ -76,11 +78,11 @@ void init_stdfd(process_t *new_proc) {
 }
 
 
-void* sys_open(uint32_t fd_id, uint32_t p_path , uint32_t flags) {
+SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags) {
 	int i=0;
 	
 	//process_t * process = (process_t*) p_process;
-	char * path = (char*) p_path;
+	char* path = (char*) p_path;
 	process_t* process = get_current_process();
 	
 	// recherche d une place dans la file descriptor table du process
@@ -102,7 +104,5 @@ void* sys_open(uint32_t fd_id, uint32_t p_path , uint32_t flags) {
 	} else {
 		*((int *)fd_id) = -1;
 	}
-
-  return NULL;
 }
 

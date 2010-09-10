@@ -38,10 +38,10 @@
 #include <ksyscall.h>
 #include <signal.h>
 #include <types.h>
-#include <process.h>
+#include <kprocess.h>
 
-SYSCALL_HANDLER3(sys_signal, uint32_t param1, uint32_t param2, uint32_t param3);
-SYSCALL_HANDLER3(sys_sigprocmask, uint32_t param1, uint32_t param2, uint32_t param3);
+SYSCALL_HANDLER3(sys_signal, uint32_t signum, sighandler_t handler, sighandler_t* ret);
+SYSCALL_HANDLER3(sys_sigprocmask, uint32_t how, sigset_t* set, sigset_t* oldset);
 SYSCALL_HANDLER3(sys_kill, int pid, int signum, int* ret);
 
 int exec_sighandler(process_t* process);

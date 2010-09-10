@@ -42,6 +42,7 @@
 #include <types.h>
 #include <libio.h>
 #include <kprocess.h>
+#include <ksyscall.h>
 
 struct _file_descriptor;
 
@@ -70,6 +71,6 @@ typedef struct _open_file_descriptor {
  */
 void init_stdfd(process_t *new_proc);
 
-void* sys_open(uint32_t p_ofd, uint32_t zero1, uint32_t zero2);
+SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags);
 
 #endif

@@ -37,6 +37,7 @@
 #include <kpanic.h>
 #include <kprocess.h>
 #include <scheduler.h>
+#include <console.h>
 
 #define GAME_OVER() asm("cli\n\thlt");
 

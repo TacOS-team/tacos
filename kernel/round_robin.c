@@ -74,7 +74,7 @@ typedef struct _list_cell
 
 static list_cell* process_list = NULL;
 static list_cell* current_cell = NULL;
-static max_process = 0;
+static int max_process = 0;
 
 static process_t* idle_process = NULL;
 

@@ -346,7 +346,7 @@ int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
 int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 	switch (whence) {
 	case SEEK_SET: // depuis le debut du fichier
-		if (offset < ofd->file_size) {
+		if ((unsigned long)offset < ofd->file_size) {
 			// On se met au début :
 			ofd->current_cluster = ofd->first_cluster;
 			ofd->current_octet = 0;
@@ -380,7 +380,7 @@ int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 		}
 		break;
 	case SEEK_END:
-		if (offset <= ofd->file_size) {
+		if ((unsigned long)offset <= ofd->file_size) {
 			return seek_file(ofd, ofd->file_size - offset, SEEK_SET);
 		} else {
 			return -1;
@@ -393,7 +393,7 @@ int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 
 size_t write_file(open_file_descriptor * ofd, const void * buf, size_t nb_octet) {
 	size_t i;
-	int j;
+	/*int j;*/
 	char tmp_buf[512];
 	/* printf("\ncall write_file() from fat.c\n");
 	 for (j=0;j<nb_octet;j++) {

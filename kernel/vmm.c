@@ -231,15 +231,15 @@ void init_vmm(struct virtual_mem *kvm)
 	kvm->vmm_top = page_sup_end_kernel + PAGE_SIZE;
 }
 
-vaddr_t init_process_vm(struct virtual_mem *vm, int init_nb_pages) 
+void init_process_vm(struct virtual_mem *vm, int init_nb_pages) 
 {
   int i;
 
 	/* laissez une page libre, pour détecter page fault avec un pointeur à null */
 	vaddr_t vm_begin = _PAGINATION_KERNEL_TOP;
 	
-  for(i = 0; i < (init_nb_pages+1); i++)
-    map(memory_reserve_page_frame(), vm_begin + i*PAGE_SIZE);
+	for(i = 0; i < (init_nb_pages+1); i++)
+		map(memory_reserve_page_frame(), vm_begin + i*PAGE_SIZE);
 
 	//vm->used_slabs.begin = (struct slab *) vm_begin;
 	vm->used_slabs.begin = (struct slab *) (vm_begin + init_nb_pages*PAGE_SIZE - sizeof(struct slab));
@@ -261,7 +261,7 @@ vaddr_t init_process_vm(struct virtual_mem *vm, int init_nb_pages)
 static int increase_heap(struct virtual_mem *vm, unsigned int nb_pages)
 {
 	unsigned int i;
-	vaddr_t top_last_slab;
+	/* vaddr_t top_last_slab; unused */
 	struct slab *slab = (struct slab *) vm->vmm_top;
 
 	for(i=0 ; i<nb_pages ; i++)

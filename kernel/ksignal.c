@@ -35,16 +35,13 @@
 #include <ksignal.h>
 #include <kprocess.h>
 #include <kstdio.h>
+#include <scheduler.h>
 
 /*
  * TODO: gérer SIG_IGN et SIG_DFL 
  */
-SYSCALL_HANDLER3(sys_signal, uint32_t param1, uint32_t param2, uint32_t param3)
+SYSCALL_HANDLER3(sys_signal, uint32_t signum, sighandler_t handler, sighandler_t* ret)
 {
-	uint32_t signum = param1;
-	sighandler_t handler = (sighandler_t) param2;
-	sighandler_t* ret = param3;
-	
 	process_t* current = get_current_process();
 
 	if(signum <= NSIG)
@@ -54,12 +51,8 @@ SYSCALL_HANDLER3(sys_signal, uint32_t param1, uint32_t param2, uint32_t param3)
 	}
 }
 
-SYSCALL_HANDLER3(sys_sigprocmask, uint32_t param1, uint32_t param2, uint32_t param3)
+SYSCALL_HANDLER3(sys_sigprocmask, uint32_t how, sigset_t* set, sigset_t* oldset)
 {
-	uint32_t how	= param1;
-	sigset_t* set	= (sigset_t*) param2;
-	sigset_t* oldset	= (sigset_t*) param3;
-	
 	process_t* current = get_current_process();
 	
 	/* On récupère l'ancien set */
@@ -118,7 +111,7 @@ int exec_sighandler(process_t* process)
 		if(process->signal_data.handlers[signum] != NULL)
 		{
 			ret = 1;
-			ptr = process->regs.esp;
+			ptr = (uint32_t*)process->regs.esp;
 			
 			/* Empiler l'argument */
 			/*ptr--;
@@ -129,12 +122,14 @@ int exec_sighandler(process_t* process)
 			*ptr = process->regs.eip;
 			
 			/* Mettre à jour esp */
-			process->regs.esp = ptr;
+			process->regs.esp = (uint32_t) ptr;
 			
 			/* Mettre à jour eip */
-			process->regs.eip = process->signal_data.handlers[signum];
+			process->regs.eip = (uint32_t) process->signal_data.handlers[signum];
 		}
 		
 		sigdelset(&(process->signal_data.pending_set), signum);
 	}
+	
+	return ret;
 }
