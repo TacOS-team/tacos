@@ -1,5 +1,7 @@
-/**
- * @file kunistd.h
+for file in `ls -1 *.c *.h`; do 
+echo $file
+echo -e "/**
+ * @file ${file}
  *
  * @author TacOS developers 
  *
@@ -30,19 +32,8 @@
  * @section DESCRIPTION
  *
  * Description de ce que fait le fichier
- */
-
-#ifndef _KUNISTD_H
-#define _KUNISTD_H
-
-/**
- * @file kunistd.h
- */
-
-#include <types.h>
-
-void sys_write(uint32_t fd, uint32_t p_buf, uint32_t count);
-void sys_read(uint32_t fd, uint32_t p_buf, uint32_t count);
-void sys_seek(uint32_t fd, uint32_t p_offset, uint32_t p_whence);
-
-#endif
+ */\n" > /tmp/gplheader
+ cat /tmp/gplheader ${file} > /tmp/${file}.gpl
+ cp /tmp/${file}.gpl ./${file}
+ rm /tmp/${file}.gpl
+done
