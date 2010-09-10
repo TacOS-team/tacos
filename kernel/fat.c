@@ -47,7 +47,7 @@
 // en attendant il est defini "en dur" donc on lui file comme taille cette valuer pres calcule
 static path_t path; //TODO: Dégager vers le shell !
 static fat_info_t fat_info;
-static cluster_t file_alloc_table[3072]; //en dur tant que le kmalloc fait planter...
+static cluster_t *file_alloc_table; //en dur tant que le kmalloc fait planter...
 // TODO: Il y a des "512" en dur un peu partout dans le code. Il faudrait utiliser les infos de fat_info pour être portable.
 // TODO: Gérer FAT16 et FAT32.
 
@@ -502,7 +502,7 @@ void mount_FAT12() {
 			+ fat_info.cluster1_sector_count;
 
 	// XXX: Ce kmalloc fait tout planter ! youpi
-	//file_alloc_table = (cluster_t*)kmalloc(fat_info.total_clusters * sizeof(cluster_t));
+	file_alloc_table = (cluster_t*)kmalloc(fat_info.total_clusters * sizeof(cluster_t));
 	read_fat(file_alloc_table);
 	init_path();
 

@@ -147,17 +147,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	//kprintf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
 
-	floppy_detect_drives();
-	kprintf("Floppy controller version: 0x%x.\n", floppy_get_version());
-	
-	if(init_floppy() != 0)
-		kprintf("Initialisation du lecteur a echoue.\n");
-		
-	
-	/*   Test FAT    */
-	//mount_fat_fs ();
-	mount_FAT12 ();
-	
 	pci_scan();
 
 	if(serial_init(COM1, "8N1", 38400, ECHO_ENABLED) != 0)
@@ -189,6 +178,15 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_SIGPROCMASK, 	(syscall_handler_t) sys_sigprocmask);
 	syscall_set_handler(SYS_KILL, (syscall_handler_t) sys_kill);
 	
+	floppy_detect_drives();
+	kprintf("Floppy controller version: 0x%x.\n", floppy_get_version());
+	
+	if(init_floppy() != 0)
+		kprintf("Initialisation du lecteur a echoue.\n");
+	
+	/*   Test FAT    */
+	//mount_fat_fs ();
+	mount_FAT12 ();
 	
 	init_process_array();
 	
