@@ -54,6 +54,7 @@ static cluster_t *file_alloc_table; //en dur tant que le kmalloc fait planter...
 // TODO: Répertoires qui s'étallent sur plusieurs clusters.
 // TODO: Écriture d'un fichier qui utilise plusieurs clusters.
 // TODO: Création d'un nouveau répertoire.
+// TODO: Le FAT ne devrait probablement pas faire des appels directs au driver disquette.
 
 addr_CHS_t get_CHS_from_LBA(addr_LBA_t sector_LBA) {
 	addr_CHS_t ret;
@@ -152,25 +153,23 @@ int write_cluster(char * buf, cluster_t cluster) {
 	}
 }
 
-char * decode_long_file_name(char * name, uint8_t * long_file_name) {
+char * decode_long_file_name(char * name, lfn_entry_t * long_file_name) {
 
-	// Reconstitution du nom et conversion UTF16 vers UTF8
-	// dont le mecanisme a ete obtenu par une methode comunement appellee "reverse engineering"
-	name[0] = long_file_name[1];
-	name[1] = long_file_name[3];
-	name[2] = long_file_name[5];
-	name[3] = long_file_name[7];
-	name[4] = long_file_name[9];
+	name[0] = long_file_name->filename1[0];
+	name[1] = long_file_name->filename1[2];
+	name[2] = long_file_name->filename1[4];
+	name[3] = long_file_name->filename1[6];
+	name[4] = long_file_name->filename1[8];
 
-	name[5] = long_file_name[14];
-	name[6] = long_file_name[16];
-	name[7] = long_file_name[18];
-	name[8] = long_file_name[20];
-	name[9] = long_file_name[22];
-	name[10] = long_file_name[24];
+	name[5] = long_file_name->filename2[0];
+	name[6] = long_file_name->filename2[2];
+	name[7] = long_file_name->filename2[4];
+	name[8] = long_file_name->filename2[6];
+	name[9] = long_file_name->filename2[8];
+	name[10] = long_file_name->filename2[10];
 
-	name[11] = long_file_name[28];
-	name[12] = long_file_name[30];
+	name[11] = long_file_name->filename3[0];
+	name[12] = long_file_name->filename3[2];
 
 	name[13] = '\0';
 
@@ -180,22 +179,33 @@ char * decode_long_file_name(char * name, uint8_t * long_file_name) {
 void open_root_dir(directory_t * dir) {
 	fat_dir_entry_t root_dir[224];
 	int i;
-	int itermax = 8;//fat_info.root_entry_count/2;
-	char str[14];
+	int itermax = fat_info.root_entry_count;
 	char name[14];// = "fd0:";
 	read_root_dir(root_dir);
 	strcpy(dir->name, name);
 	dir->total_entries = 0;
 	for (i = 0; i < itermax; i++) {
-		if (root_dir[i].long_file_name[0] == 0x41) {
-			decode_long_file_name(str, root_dir[i].long_file_name);
-			strcpy(dir->entry_name[dir->total_entries], str);
-			dir->entry_cluster[dir->total_entries]
-					= root_dir[i].cluster_pointer;
-			dir->entry_size[dir->total_entries] = root_dir[i].file_size;
-			dir->entry_attributes[dir->total_entries]
-					= root_dir[i].file_attributes;
-			dir->total_entries++;
+		char filename[256];
+		uint8_t i_filename = 0;
+		if (root_dir[i].file_attributes == 0x0F) {
+			if (((lfn_entry_t*) &root_dir[i])->seq_number & 0x40) {
+				int j;
+				uint8_t seq = ((lfn_entry_t*) &root_dir[i])->seq_number - 0x40;
+				i += seq;
+				for (j = 1; j <= seq; j++) {
+					decode_long_file_name(filename + i_filename,
+							((lfn_entry_t*) &root_dir[i - j]));
+					i_filename += 13;
+				}
+
+				strcpy(dir->entry_name[dir->total_entries], filename);
+				dir->entry_cluster[dir->total_entries]
+						= root_dir[i].cluster_pointer;
+				dir->entry_size[dir->total_entries] = root_dir[i].file_size;
+				dir->entry_attributes[dir->total_entries]
+						= root_dir[i].file_attributes;
+				dir->total_entries++;
+			}
 		}
 	}
 }
@@ -204,27 +214,27 @@ int write_dir(directory_t * dir) {
 	fat_dir_entry_t sub_dir[8];
 	fat_dir_entry_t dir2[8];
 	int i;
-	read_cluster((char*)dir2, dir->cluster); // debug only...
+	read_cluster((char*) dir2, dir->cluster); // debug only...
 
 	// FIXME: marche pas... Je gère pas correctement les noms longs, je gère pas les noms courts.
 	// Ça pète un peu tout le dossier...
 	// Me manque la partie ".." et "." aussi d'où l'impossibilité de les remettre...
 	for (i = 0; i < dir->total_entries; i++) {
-		sub_dir[i].long_file_name[0] = 0x41;
-		strcpy((char*)(sub_dir [i].long_file_name + 1), dir->entry_name[i]);
+		//sub_dir[i].long_file_name[0] = 0x41;
+		//strcpy((char*) (sub_dir[i].long_file_name + 1), dir->entry_name[i]);
 		sub_dir[i].cluster_pointer = dir->entry_cluster[i];
 		sub_dir[i].file_size = dir->entry_size[i];
 		sub_dir[i].file_attributes = dir->entry_attributes[i];
 	}
-	write_cluster((char*)sub_dir, dir->cluster);
+	write_cluster((char*) sub_dir, dir->cluster);
 
 	return 0;
 }
 
+// TODO : gérer répertoire sur plusieurs clusters.
 int open_next_dir(directory_t * prev_dir, directory_t * next_dir, char * name) {
-	fat_dir_entry_t sub_dir[8];
+	fat_dir_entry_t sub_dir[16];
 	cluster_t next = 0;
-	char str[14];
 	int i;
 
 	for (i = 0; i < (prev_dir->total_entries); i++) {
@@ -243,18 +253,44 @@ int open_next_dir(directory_t * prev_dir, directory_t * next_dir, char * name) {
 		strcpy(next_dir->name, name);
 		next_dir->cluster = next;
 		next_dir->total_entries = 0;
-		for (i = 0; i < 8; i++) {
-			if (sub_dir[i].long_file_name[0] == 0x41) {
-				decode_long_file_name(str, sub_dir[i].long_file_name);
-				strcpy(next_dir->entry_name[next_dir->total_entries], str);
-				next_dir->entry_cluster[next_dir->total_entries]
-						= sub_dir[i].cluster_pointer;
-				next_dir->entry_size[next_dir->total_entries]
-						= sub_dir[i].file_size;
-				next_dir->entry_attributes[next_dir->total_entries]
-						= sub_dir[i].file_attributes;
-				next_dir->total_entries++;
+		for (i = 0; i < 16; i++) {
+			char filename[256];
+			uint8_t i_filename = 0;
+			if (sub_dir[i].file_attributes == 0x0F) {
+				if (((lfn_entry_t*) &sub_dir[i])->seq_number & 0x40) {
+					int j;
+					uint8_t seq = ((lfn_entry_t*) &sub_dir[i])->seq_number
+							- 0x40;
+					i += seq;
+					for (j = 1; j <= seq; j++) {
+						decode_long_file_name(filename + i_filename,
+								((lfn_entry_t*) &sub_dir[i - j]));
+						i_filename += 13;
+					}
+
+					strcpy(next_dir->entry_name[next_dir->total_entries],
+							filename);
+					next_dir->entry_cluster[next_dir->total_entries]
+							= sub_dir[i].cluster_pointer;
+					next_dir->entry_size[next_dir->total_entries]
+							= sub_dir[i].file_size;
+					next_dir->entry_attributes[next_dir->total_entries]
+							= sub_dir[i].file_attributes;
+					next_dir->total_entries++;
+				}
 			}
+
+			/*XXX: if (sub_dir[i].long_file_name[0] == 0x41) {
+			 decode_long_file_name(str, sub_dir[i].long_file_name);
+			 strcpy(next_dir->entry_name[next_dir->total_entries], str);
+			 next_dir->entry_cluster[next_dir->total_entries]
+			 = sub_dir[i].cluster_pointer;
+			 next_dir->entry_size[next_dir->total_entries]
+			 = sub_dir[i].file_size;
+			 next_dir->entry_attributes[next_dir->total_entries]
+			 = sub_dir[i].file_attributes;
+			 next_dir->total_entries++;
+			 }*/
 		}
 		return 0;
 	} else
@@ -501,6 +537,7 @@ void init_path() {
 }
 
 void mount_FAT12() {
+	// TODO: Tenir compte du media_type pour pouvoir choisir la fonction à appeler : floppy ou disk.
 	fat_BS_t boot_sector;
 
 	floppy_read_sector(0, 0, 0, (char*) &boot_sector);
@@ -526,7 +563,6 @@ void mount_FAT12() {
 	fat_info.data_area_LBA = fat_info.root_dir_LBA
 			+ fat_info.cluster1_sector_count;
 
-	// XXX: Ce kmalloc fait tout planter ! youpi
 	file_alloc_table = (cluster_t*) kmalloc(fat_info.total_clusters
 			* sizeof(cluster_t));
 	read_fat(file_alloc_table);

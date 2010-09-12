@@ -56,12 +56,12 @@ typedef uint32_t addr_LBA_t;
 typedef struct addr_CHS { uint32_t Cylinder; uint32_t Head; uint32_t Sector; } addr_CHS_t;
 
 typedef struct _directory {
-	char entry_name[10][14];
+	char entry_name[10][256];
 	cluster_t entry_cluster[10];
 	uint32_t entry_size[10];
 	uint8_t entry_attributes[10];
 	int total_entries;
-	char name[14];
+	char name[256];
 	uint32_t cluster;
 } directory_t;
 
@@ -123,7 +123,6 @@ typedef struct _fat_BS {
 
 typedef struct _fat_dir_entry {
 	
-	uint8_t		long_file_name[32];
 	uint8_t		utf8_short_name[8];
 	uint8_t		file_extension[3];
 	uint8_t		file_attributes;
@@ -140,6 +139,16 @@ typedef struct _fat_dir_entry {
 	
 }__attribute__((packed)) fat_dir_entry_t;
 
+typedef struct {
+	uint8_t 	seq_number;
+	uint8_t		filename1[10];
+	uint8_t		attributes;
+	uint8_t		reserved; // always 0x0
+	uint8_t		checksum;
+	uint8_t		filename2[12];
+	uint16_t	cluster_pointer; // always 0x000
+	uint8_t		filename3[4];
+}__attribute__((packed)) lfn_entry_t;
 
 
 // Lecture/Ecriture Fichier
