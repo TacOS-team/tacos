@@ -32,26 +32,6 @@
  * Description de ce que fait le fichier
  */
 
-/*      rtl8139.c
-      
-      Copyright 2010 Nicolas Floquet <nicolasfloquet@gmail.com>
-      
-      This program is free software; you can redistribute it and/or modify
-      it under the terms of the GNU General Public License as published by
-      the Free Software Foundation; either version 2 of the License, or
-      (at your option) any later version.
-      
-      This program is distributed in the hope that it will be useful,
-      but WITHOUT ANY WARRANTY; without even the implied warranty of
-      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-      GNU General Public License for more details.
-      
-      You should have received a copy of the GNU General Public License
-      along with this program; if not, write to the Free Software
-      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-      MA 02110-1301, USA.
-*/
-
 #include <pci.h>
 #include <pci_config.h>
 #include <ioports.h>
@@ -486,6 +466,7 @@ static void enable_interrupt(int interrupts)
 	WRITE_WORD(IMR, current_mask);
 }
 
+
 static void disable_interrupt(int interrupts)
 {
 	uint16_t current_mask = READ_WORD(IMR);
@@ -493,7 +474,8 @@ static void disable_interrupt(int interrupts)
 	WRITE_WORD(IMR, current_mask);
 }
 
-void rtl8139_isr(int id)
+
+void rtl8139_isr(int id __attribute__ ((unused)))
 {
 	uint16_t temp_isr = READ_WORD(ISR);
 	
@@ -520,9 +502,10 @@ void rtl8139_isr(int id)
  * 			Global Initialization
  * 
  *==========================================*/
- 
+
 void rtl8139_debug_info()
 {
+	/*
 	printf("----RLT8139 DEBUG INFO----\n");
 	printf("IMR:\t0x%x\n", READ_WORD(IMR));
 	printf("ISR:\t0x%x\n", READ_WORD(ISR));
@@ -540,11 +523,14 @@ void rtl8139_debug_info()
 	int i = 0;
 	uint32_t* pheader = (uint32_t *) &(rx_buffer[READ_DWORD(CBR)]);
 	printf("0x%x", *pheader);
+	*/
 	/*for(i=0; i<4; i++)
 	{
 		printf("%x.",(rx_buffer[READ_WORD(CBR)])& 0x000000FF);
 	}*/
+	/*
 	printf("\n");
+	*/
 	
 }
 
@@ -558,6 +544,9 @@ static void reset_chip()
 	 */
 	WRITE_BYTE(CR, CR_RST);
 	while( (READ_BYTE(CR) & CR_RST) >> 4 ); /* On attend que le reset ai bien eu lieu (~2ms en réel) */
+	
+	/* Totalement con et inutile */
+	disable_interrupt(INT_ROK | INT_TOK);
 	
 	reset_transmitter();
 	reset_receiver();
@@ -585,6 +574,12 @@ int rtl8139_driver_init()
 			
 			PRINT_DEBUG("Reseting chip... ");
 			reset_chip();
+			mac_addr[0] = READ_BYTE(IDR0);
+			mac_addr[1] = READ_BYTE(IDR1);
+			mac_addr[2] = READ_BYTE(IDR2);
+			mac_addr[3] = READ_BYTE(IDR3);
+			mac_addr[4] = READ_BYTE(IDR4);
+			mac_addr[5] = READ_BYTE(IDR5);
 			
 			/* ça c'est juste pour tester le port I/O... et puis c'est class */
 			PRINT_DEBUG("MAC Address: %x:%x:%x:%x:%x:%x", READ_BYTE(IDR0)

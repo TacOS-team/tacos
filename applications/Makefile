@@ -1,4 +1,4 @@
-OBJ=cube top matrix test test_sig
+OBJ=cube top matrix test test_sig fiinou
 SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a 
 INCLUDES=-I../include/ -I../libc/include/
@@ -14,6 +14,9 @@ all: $(OBJ)
 		$(MAKE) -s -C $$i; \
 		if [ $$? = 0 ]; then printf "\033[1m<<< [$$i] [OK]\033[0m\n"; else printf "\033[31m\033[1m<<< [$$i] [FAIL]\033[0m\n"; exit 1; fi; \
 		done
+
+fiinou: fiinou.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
 cube: cube.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)

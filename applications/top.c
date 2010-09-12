@@ -40,7 +40,6 @@
 void kill_handler()
 {
 	static int try = 1;
-	int pid;
 	if(try>0)
 	{
 		printf("essaye encore...\n");
@@ -103,7 +102,7 @@ void ps()
 	}
 }
 
-int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
+int main()
 {
 	signal(SIGINT, kill_handler);
 	while(1)

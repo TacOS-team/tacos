@@ -157,7 +157,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	/* Initialisation des semaphores */
 	init_semaphores();
-
+	
 	/* Initialisation des syscall */
 	init_syscall();
 	

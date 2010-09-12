@@ -114,53 +114,9 @@ static int cat_cmd()
 	return 0;
 }
 
-static int resize_cmd()
-{
-	int x, y;
-	scanf("%d %d", &x, &y);
-	// XXX: resize_text_window(get_process(CURRENT_PROCESS)->fd[1].ofd->extra_data, x, y);
-  return 0;
-}
-
-static int resize_cmd_pid() {
-	int pid, x, y;
-  process_t *p;
-	
-  scanf("%d %d %d", &pid, &x, &y);
-  p = get_process(pid);
-
-  if(p != NULL) {
-  	// XXX:resize_text_window(p->fd[1].ofd->extra_data, x, y);
-    return 0;
-  }
-
-  return 1;
-}
-
-static int move_pid() {
-	int pid, x, y;
-  process_t *p;
-
-	scanf("%d %d %d", &pid, &x, &y);
-  p = get_process(pid);
-
-  if(p != NULL) {
-	//XXX : move_text_window(p->fd[1].ofd->extra_data, x, y);
-    return 0;
-  }
-
-  return 1;
-}
-
 static int cls_cmd() {
 	printf("\033[2J");
 	fflush(stdout);
-	return 0;
-}
-
-static int exec_shell()
-{
-	exec((paddr_t)shell, "Mishell", 0);
 	return 0;
 }
 
@@ -232,6 +188,8 @@ static int watch_clock() {
 		printf("CLOCK : %ds %dus\n", clock.tv_sec, clock.tv_usec);
 		sleep(1);
 	}
+	
+	return 0;
 }
 
 static int shell_exec_elf()
@@ -264,62 +222,44 @@ void print_logo_serial()
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	
-	process_t *self = get_process(get_pid());
-	
-	init_stdfiles(&stdin, &stdout, &stderr);
-	/*uint32_t sem = semcreate(10);
-	semP(sem);
-	semP(sem);*/
+	 init_stdfiles(&stdin, &stdout, &stderr);
 	
 	char buffer[80];
-
+	
+	/* Shell misc. */
+	add_builtin_cmd(sleep_shell, "sleep");
 	add_builtin_cmd(help_cmd, "help");
 	add_builtin_cmd(date_cmd, "date");
-	add_builtin_cmd(cls_cmd, "clear");
+	add_builtin_cmd(cls_cmd, "clear");	
 	add_builtin_cmd((func_ptr)pci_list, "lspci");
-	//add_builtin_cmd((func_ptr)memory_print, "print_memory");
-	add_builtin_cmd(test_mouse, "test_mouse");
-	add_builtin_cmd(test_scanf, "test_scanf");
-	add_builtin_cmd(test_fgets, "test_fgets");
-	add_builtin_cmd(test_fputs, "test_fputs");
-	add_builtin_cmd(test_fwrite, "test_fwrite");
-	add_builtin_cmd(test_fread, "test_fread");
-	add_builtin_cmd(test_fseek, "test_fseek");
+	
+	/* Gestion processus */
+	add_builtin_cmd(kill_cmd, "kill");
+	add_builtin_cmd(shell_exec_elf, "exec");
 	add_builtin_cmd(ps, "ps");
-	//add_builtin_cmd(kmalloc_print_mem, "kmalloc_print_mem");
-	/*add_builtin_cmd((func_ptr)test_memory_reserve_page_frame, "test_reserve_frame");*/
+	add_builtin_cmd(test_elf, "elf_info");
+	
+	/* Accès disque */
+	add_builtin_cmd(cat_cmd, "cat");
 	add_builtin_cmd(ls_cmd, "ls");
 	add_builtin_cmd(ll_cmd, "ll");
 	add_builtin_cmd((func_ptr)print_Boot_Sector, "mount");
 	add_builtin_cmd((func_ptr)print_working_dir, "pwd");
-	/*add_builtin_cmd((func_ptr)clean_process_list, "clean_proclist");*/
-	add_builtin_cmd(kill_cmd, "kill");
-	add_builtin_cmd(test_ansi, "test_ansi");
 	add_builtin_cmd(cd_cmd, "cd");
-	add_builtin_cmd(cat_cmd, "cat");
-	add_builtin_cmd(test_semaphores, "test_sem");
-	add_builtin_cmd(calc_pi, "pi");
-	add_builtin_cmd(exec_shell, "Mishell");
-	add_builtin_cmd(main_fiinou, "Fiinou");
-	add_builtin_cmd(launch_pres, "presentation");
-	add_builtin_cmd(resize_cmd, "resize");
-	add_builtin_cmd(resize_cmd_pid, "resize_pid");
-	add_builtin_cmd(move_pid, "move_pid");
-	add_builtin_cmd(snake_main, "snake");
-	add_builtin_cmd(noxeyes, "noxeyes");
-	add_builtin_cmd(sleep_shell, "sleep");
-	add_builtin_cmd(test_write_serial, "write_serial");
-	add_builtin_cmd(test_read_serial, "read_serial");
-	add_builtin_cmd(test_elf, "elf_info");
+	
+	/* Tests unitaires */
+	add_builtin_cmd(watch_clock, "clock");
+	add_builtin_cmd(test_ansi, "test_ansi");
 	add_builtin_cmd(test_ctype, "test_ctype");
 	add_builtin_cmd(test_stdio, "test_stdio");
-	add_builtin_cmd(shell_exec_elf, "exec");
-	add_builtin_cmd(watch_clock, "clock");
 	add_builtin_cmd(test_ofd_flags_rdonly, "test_ofd_flags_rdonly");
 	add_builtin_cmd(test_ofd_flags_wronly, "test_ofd_flags_wronly");
+	add_builtin_cmd(test_fwrite, "test_fwrite");
+	add_builtin_cmd(test_fread, "test_fread");
+	add_builtin_cmd(test_fseek, "test_fseek");
+	
+	/* Debug temporaire */
 	add_builtin_cmd(test_send_packet, "sendpacket");
-
-	//disable_cursor(0);
 	
 	print_logo();
 	print_logo_serial();

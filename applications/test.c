@@ -29,32 +29,13 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Programme de test à usage variable
  */
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <process.h>
 
-void kill_handler(int signum)
+int main()
 {
-	printf("SIGKILL recu.\n");
-	return;
-}
-void usr_handler(int signum)
-{
-	printf("SIGUSR1 recu.\n");
-	return;
-}
-
-int main(int argc, char** argv)
-{
-	int pid = get_pid();
-	
-	signal(SIGKILL, kill_handler);
-	signal(SIGUSR1, usr_handler);
-	
-	kill(pid, SIGUSR1);
-	while(1);
+	printf("Hello world\n");
 	return 0;
 }

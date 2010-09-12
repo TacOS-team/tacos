@@ -3,7 +3,7 @@ CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin
 
 SRCS = *.c
 
-all: shell.o fiinou.o tests.o shell_utils.o pres.o snake.o noxeyes.o
+all: shell.o tests.o shell_utils.o
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
@@ -16,8 +16,6 @@ depend: $(SRCS)
 
 # DO NOT DELETE
 
-fiinou.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-fiinou.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 noxeyes.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 noxeyes.o: ../libc/include/libio.h ../include/types.h
 noxeyes.o: ../libc/include/stdarg.h ../libc/include/stdlib.h

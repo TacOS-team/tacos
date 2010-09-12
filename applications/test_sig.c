@@ -29,25 +29,25 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Programme de test pour les signaux
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <process.h>
 
-void int_handler(int signum)
+void int_handler()
 {
 	printf("SIGINT recu.\n");
 	return;
 }
-void usr_handler(int signum)
+void usr_handler()
 {
 	printf("SIGUSR1 recu.\n");
 	return;
 }
 
-int main(int argc, char** argv)
+int main()
 {
 	int pid = get_pid();
 	

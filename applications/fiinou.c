@@ -29,12 +29,12 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * The finest Fiin0u style, simply colorful.
  */
 
 #include <stdio.h>
 
-int main_fiinou(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unused)))
+int main(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unused)))
 {
 	printf("\033[1m\033[5m\033[35m...,.,,,,:~::~~,:,::~=?7ZDNNDNNNNNNNNNNNNNNNNNNNNNNDDDDO+:,.......  ..... .....\n");
 	printf("\033[36m......,,:~~~,:=~~+$DNNNNNNNNNNDNNNNNNNNNNNNNNNNNNNNNNNNNNO?:......   .. .......\n");

@@ -186,7 +186,7 @@ void refresh()
 }
 
 
-int main(int argc, char** argv)
+int main()
 {
 	int i = 0;
 	init();
