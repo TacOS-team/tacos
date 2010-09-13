@@ -29,7 +29,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Bibliotèque destinée à manipuler les fichiers exécutables ELF
  */
 
 #include <elf.h>

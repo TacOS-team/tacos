@@ -29,7 +29,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Bibliotèque destinée à manipuler les fichiers exécutables ELF
  */
 
 #ifndef _ELF_H_
@@ -121,6 +121,15 @@ typedef struct{
  * PROGRAM HEADER
  * 
  *******************************/
+ 
+/* Indices des sections spéciales */
+#define	SHN_UNDEF		0
+#define	SHN_LORESERVE	0xff00
+#define	SHN_LOPROC		0xff00
+#define	SHN_HIPROC		0xff1f
+#define	SHN_ABS			0xfff1
+#define	SHN_COMMON		0xfff2
+#define	SHN_HIRESERVE	0xffff
 
 typedef struct{
 	Elf32_Word	p_type;		/* Type de segment */
@@ -148,7 +157,101 @@ typedef struct{
 #define PF_X	0x1
 #define PF_W	0x2
 #define PF_R	0x4
-	
+
+/********************************
+ * 
+ * SECTION HEADER
+ * 
+ ********************************/
+ 
+typedef struct {
+	Elf32_Word	sh_name;		/* Indice du nom de la section dans la string table */
+	Elf32_Word	sh_type;		/* Type de section (voir définitions)*/
+	Elf32_Word	sh_flags;		/* Attributs */
+	Elf32_Addr	sh_addr;		/* Adresse en mémoire de la section si elle y a une image, 0 sinon */
+	Elf32_Off	sh_offset;		/* Offset de la section dans le fichier */
+	Elf32_Word	sh_size;		/* Taille de la section (sauf cas SHT_NOBITS) */
+	Elf32_Word	sh_link;		/* Lien vers un autre indice de la table */
+	Elf32_Word	sh_info;		/* Informations supplémentaires (Dépend du type) */
+	Elf32_Word	sh_addralign;	/* Contrainte d'alignement de la section */
+	Elf32_Word	sh_entsize;		/* Taille des entrées d'une table, si la section contiens une table */
+}Elf32_Shdr;
+
+/* Valeurs pour sh_type */
+#define	SHT_NULL		0
+#define	SHT_PROGBITS	1
+#define	SHT_SYMTAB		2
+#define	SHT_STRTAB		3
+#define	SHT_RELA		4
+#define	SHT_HASH		5
+#define	SHT_DYNAMIC		6
+#define	SHT_NOTE		7
+#define	SHT_NOBITS		8
+#define	SHT_REL			9
+#define	SHT_SHLIB		10
+#define	SHT_DYNSYM		11
+#define	SHT_LOPROC		0x70000000
+#define	SHT_HIPROC		0x7fffffff
+#define	SHT_LOUSER		0x80000000
+#define	SHT_HIUSER		0x8fffffff
+
+/* Masques pour sh_flag */
+#define	SHF_WRITE		1
+#define	SHF_ALLOC		2
+#define	SHF_EXECINSTR	4
+#define	SHF_MASKPROC	0xf0000000
+
+/***************************
+ * 
+ * SYMBOL TABLE
+ * 
+ ***************************/
+ 
+typedef struct {
+	Elf32_Word		st_name;	/* Indice du nom du symbol dans la string table des symbols */
+	Elf32_Addr		st_value;	/* Valeur dépendant du contexte */
+	Elf32_Word		st_size;	
+	unsigned char	st_info;	/* Attributs sur le type et le binding du symbol */
+	unsigned char	st_other;	/* Toujours 0, inutilisé */
+	Elf32_Half		st_shndx;	/* Indice de la section contenant le symbol */
+}Elf32_Sym;
+
+/* Macros pour st_info */
+#define	ELF32_ST_BIND(i)	((i)>>4)
+#define	ELF32_ST_TYPE(i)	((i)&0xf)
+#define	ELF32_ST_INFO(b,t)	(((b)<<4)+((t)&0xf))
+
+/* Valeurs pour ELF32_ST_BIND */
+#define	STB_LOCAL	0		/* Invisible hors du fichier objet contenant sa définition */
+#define	STB_GLOBAL	1		/* Visible par tous les objet combinés à celui ci */
+#define	STB_WEAK	2		/* Pareil que global, grosso modo, voir la doc pour avoir les nuances */
+#define	STB_LOPROC	13
+#define	STB_HIPROC	15
+
+/* valeurs pour ELF32_ST_TYPE */
+#define	STT_NOTYPE	0	/* Pas de type */
+#define	STT_OBJECT	1	/* Données: variables, tableau, etc. */
+#define	STT_FUNC	2	/* Fonction ou code */
+#define	STT_SECTION	3	/* Le symbol est une fonction */
+#define	STT_FILE	4	
+#define	STT_LOPROC	13
+#define	STT_HIPROC	15
+
+
+
+
+
+/***************************
+ * 
+ * ELF FILE
+ * 
+ ***************************/
+ 
+typedef struct {
+	Elf32_Ehdr* elf_header;
+	Elf32_Phdr* pheaders;
+	Elf32_Shdr* sheaders;
+}Elf32_File;
 /**
  * @brief charge le header principal d'un fichier elf
  * 

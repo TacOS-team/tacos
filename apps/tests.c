@@ -59,14 +59,40 @@ int test_fwrite() {
 }
 
 int test_fread() {
-	FILE *file = fopen("fd0:/doc.txt", "r");
-
-	char buffer[100];
-	fread(buffer, sizeof(char), sizeof(buffer), file);
-
-	buffer[99] = '\0';
-	printf("%s", buffer);
-
+	FILE *fd = fopen("fd0:/bin/cube", "r");
+	uint32_t i;
+	char* ptr1;
+	char* ptr2;
+	Elf32_Ehdr header1;
+	Elf32_Ehdr header2;
+	
+	/* Charge le header avec fread */
+	fseek(fd, 0, SEEK_SET);
+	fread(&header1, sizeof(Elf32_Ehdr), 1, fd);
+	
+	/* Charge le header avec une boucle de fgetc */
+	fseek(fd, 0, SEEK_SET);	
+	char* pointeur = (char*) &header2;
+	for(i=0; i<sizeof(Elf32_Ehdr); i++)
+	{
+		*pointeur = fgetc(fd);
+		pointeur++;
+	}
+	
+	/* Comparaison des résultats */
+	ptr1 = (char*)&header1;
+	ptr2 = (char*)&header2;
+	
+	for(i=0; i<sizeof(Elf32_Ehdr); i++)
+	{
+		if(ptr1[i] != ptr2[i])
+		{
+			printf("[Echec] A l'offset 0x%x: fgetc donne 0x%x, fread donne 0x%x.\n",i,ptr2[i], ptr1[i]);	
+			break;
+		}
+	}
+	
+	printf("\n");
 	/*fflush(file);*/
 	return 0;
 }
