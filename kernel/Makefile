@@ -1,5 +1,5 @@
 INCLUDES=-I../include/ -Iinclude/ -I../libc/include/
-CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
+CFLAGS=-W -Wall -g -ffreestanding -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 
 SRCS = *.c
 

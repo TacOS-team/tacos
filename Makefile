@@ -33,7 +33,6 @@ kernel.bin: force_look
 
 force_look:
 	@true
-
 core.img: img
 
 img: all

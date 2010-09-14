@@ -241,17 +241,16 @@ void* schedule(void* data __attribute__ ((unused)))
 		scheduler->inject_idle(idle_process);	
 		current = idle_process;
 	}
-	else
+
+	/* Evaluation de l'usage du CPU */
+	current->current_sample++;
+	sample_counter++;
+	if(sample_counter >= CPU_USAGE_SAMPLE_RATE)
 	{
-		/* Evaluation de l'usage du CPU */
-		current->current_sample++;
-		sample_counter++;
-		if(sample_counter >= CPU_USAGE_SAMPLE_RATE)
-		{
-			sample_CPU_usage();
-			sample_counter = 0;
-		}
+		sample_CPU_usage();
+		sample_counter = 0;
 	}
+
 
 	/* Si le processus courant n'a pas encore commencé son exécution, on le lance */
 	if(current->state == PROCSTATE_IDLE)
