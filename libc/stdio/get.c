@@ -83,8 +83,8 @@ int fgetc(FILE *stream) {
 			return EOF;
 		}
 	}
-	
-	c = *stream->_IO_read_base & 0xFF;
+	c = (unsigned char) *stream->_IO_read_base;
+
 	for (i = stream->_IO_read_base; i < stream->_IO_read_ptr; i++) {
 		*i = *(i+1);
 	}
