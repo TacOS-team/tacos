@@ -53,14 +53,8 @@ int load_efl_header(Elf32_Ehdr* elf_header, FILE* fd)
 {
 	fseek(fd, 0, SEEK_SET);	
 
-	/* Remplace temporairement un fread boiteux */
-	char* pointeur = (char*) elf_header;
-	unsigned int i;
-	for(i=0; i<sizeof(Elf32_Ehdr); i++)
-	{
-		*pointeur = fgetc(fd);
-		pointeur++;
-	}
+	fread(elf_header, sizeof(Elf32_Ehdr), 1, fd);
+	
 	return is_elf(elf_header);
 }
 
@@ -69,14 +63,8 @@ int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int 
 	/* On se déplace au bon endroit dans le fichier (offset du premier header + index*taille d'un header) */
 	fseek(fd, elf_header->e_phoff + index*elf_header->e_phentsize, SEEK_SET);
 	
-	/* Remplace temporairement un fread boiteux */
-	char* pointeur = (char*)program_header;
-	int i;
-	for(i=0; i<elf_header->e_phentsize; i++)
-	{
-		*pointeur = fgetc(fd);
-		pointeur++;
-	}
+	fread(program_header, elf_header->e_phentsize, 1, fd);
+
 	/* TODO: vérifier que ce header existe bien, et retourner un code d'erreur sinon... */
 	return 0;
 }
@@ -320,9 +308,6 @@ void elf_info(FILE* fd)
 		fflush(stdout);
 
 		print_elf_header_info(&elf_header);
-		
-		fgetc(fd);
-		fgetc(fd);
 		
 		printf("\n----PROGRAM HEADER INFO----\n");
 		printf("INDEX\tTYPE\tOFF\tVADDR\t\tFSIZE\tMSIZE\tFLAGS\n");

@@ -46,14 +46,19 @@
 
 size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream)
 {
-	size_t i = 0;
 	uint32_t to_read = size * nmemb;
 	
 	char* buff = (char*) ptr;
+	int character;
 	
 	while(to_read>0)
 	{
-		*buff = fgetc(stream);
+		character = fgetc(stream);
+		
+		if(character < 0)
+			break;
+		
+		*buff = (char) character;
 		to_read--;
 		buff++;
 	}
