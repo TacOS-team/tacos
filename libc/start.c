@@ -41,7 +41,7 @@ typedef int main_type(int, char**);
 
 extern main_type main;
 
-void start_main()
+void start_main(int argc, char** argv)
 {
 	init_process_malloc();
 	
@@ -49,6 +49,6 @@ void start_main()
 
 	signal(SIGINT, (sighandler_t) exit);
 
-	exit(main(0, NULL));
+	exit(main(argc, argv));
 }
 

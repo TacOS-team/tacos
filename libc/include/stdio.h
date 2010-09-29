@@ -194,6 +194,8 @@ int fputs(const char *s, FILE *stream);
 int putc(int c, FILE *stream);
 int putchar(int c);
 int puts(const char *s);
+int fgetline(FILE *fp, char s[], int lim);
+int getline(char *s, int lim);
 
 size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
 size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);

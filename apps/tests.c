@@ -321,16 +321,7 @@ int test_elf() {
 	char filename[80];
 	scanf("%s", filename);
 	printf("Openning %s...\n", filename);
-	//fd = fopen("fd0:/system/kernel.bin", "r");
-	fd = fopen(filename, "r");
-
-	if (fd == NULL) {
-		printf("failed.\n");
-	} else {
-		elf_info(fd);
-		printf("MEMSIZE: 0x%x\n", elf_size(fd));
-	}
-	
+	elf_info(filename);
 	/*close(fd);*/
 	return 0;
 }

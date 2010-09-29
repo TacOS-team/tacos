@@ -238,9 +238,6 @@ typedef struct {
 #define	STT_HIPROC	15
 
 
-
-
-
 /***************************
  * 
  * ELF FILE
@@ -248,9 +245,15 @@ typedef struct {
  ***************************/
  
 typedef struct {
+	char* name;
+	
 	Elf32_Ehdr* elf_header;
+	
 	Elf32_Phdr* pheaders;
+	
+	char** snames;
 	Elf32_Shdr* sheaders;
+	
 }Elf32_File;
 /**
  * @brief charge le header principal d'un fichier elf
@@ -276,6 +279,19 @@ int load_efl_header(Elf32_Ehdr* elf_header, FILE* fd);
 int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int index, FILE* fd);
 
 /**
+ * @brief charge un section header depuis un fichier elf
+ * Charge le section header n°index depuis le fichier
+ * 
+ * @param section_header adresse où l'on veut charger le header
+ * @param elf_header header principal du fichier
+ * @param index numero du section header à charger
+ * @param fd descripteur du fichier à charger
+ * 
+ * @return 0 si succès, -1 sinon
+ */
+int load_section_header(Elf32_Shdr* section_header, Elf32_Ehdr* elf_header, int index __attribute__ ((unused)), FILE* fd);
+
+/**
  * @brief Calcul la taille que prendra l'exécutable dans la mémoire
  * La fonction évalue l'adresse de départ en mémoire, et l'adresse de fin, et retourne la différence
  * (il n'est pas suffisant d'additionner les tailles des différentes sections)
@@ -298,8 +314,17 @@ size_t elf_size(FILE* fd);
 int load_elf(FILE* fd, void* dest);
 
 /**
+ * @brief charge un fichier elf dans la structure Elf32_File
+ * 
+ * @param filename Nom du fichier à charger
+ * 
+ * @return pointeur vers une structure Elf32_file chargée, NULL en cas d'échec
+ */
+Elf32_File* load_elf_file(char* filename);
+
+/**
  * @brief Affiche des information sur le fichier elf
  */
-void elf_info(FILE* fd);
+void elf_info(char* name);
 
 #endif /* _ELF_H_ */

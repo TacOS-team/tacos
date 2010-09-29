@@ -35,6 +35,7 @@
 #include <elf.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int is_elf(Elf32_Ehdr* elf_header)
 {
@@ -64,6 +65,17 @@ int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int 
 	fseek(fd, elf_header->e_phoff + index*elf_header->e_phentsize, SEEK_SET);
 	
 	fread(program_header, elf_header->e_phentsize, 1, fd);
+
+	/* TODO: vérifier que ce header existe bien, et retourner un code d'erreur sinon... */
+	return 0;
+}
+
+int load_section_header(Elf32_Shdr* section_header, Elf32_Ehdr* elf_header, int index __attribute__ ((unused)), FILE* fd)
+{
+	/* On se déplace au bon endroit dans le fichier (offset du premier header + index*taille d'un header) */
+	fseek(fd, elf_header->e_shoff + index*elf_header->e_shentsize, SEEK_SET);
+	
+	fread(section_header, elf_header->e_shentsize, 1, fd);
 
 	/* TODO: vérifier que ce header existe bien, et retourner un code d'erreur sinon... */
 	return 0;
@@ -126,6 +138,41 @@ int load_elf(FILE* fd, void* dest)
 		}
 	}
 	return elf_header.e_entry;
+}
+
+Elf32_File* load_elf_file(char* filename)
+{
+	int i;
+	Elf32_File* file = NULL;
+	FILE* fd = fopen(filename, "r");
+	
+	if(fd != NULL) 
+	{
+		file = malloc(sizeof(Elf32_File));
+		load_efl_header(file->elf_header, fd);
+		if(is_elf(file->elf_header)) 
+		{
+			file->name = strdup(filename);
+			
+			/* Allouer la mémoire pour les différents headers */
+			file->pheaders = malloc(file->elf_header->e_phnum * sizeof(Elf32_Phdr));
+			file->sheaders = malloc(file->elf_header->e_shnum * sizeof(Elf32_Shdr));
+			file->snames = malloc(file->elf_header->e_shnum * sizeof(char*));
+			
+			/* Charge les program headers */
+			for(i=0; i<file->elf_header->e_phnum; i++)
+				load_program_header(&(file->pheaders[i]), file->elf_header, i, fd);
+				
+			/* Charge les segment headers */
+			for(i=0; i<file->elf_header->e_shnum; i++)
+				load_section_header(&(file->sheaders[i]), file->elf_header, i, fd);
+			
+		}
+		else {
+			file = NULL;
+		}
+	}
+	return file;
 }
 
 
@@ -279,46 +326,35 @@ void print_program_header_info(Elf32_Phdr* p_header)
 		flags[2] = '-';
 		
 	printf("%s\n",flags);
-	/*char* pointeur = p_header;
-	int i = 0;
-	int j = 0;
-	for(i=0; i<4; i++)
-	{
-		for(j=0; j<16; j++)
-		{
-			printf("%.2x ",*pointeur);
-			pointeur++;
-		}
-		printf("\n");
-	}*/
+
 
 }
 
-void elf_info(FILE* fd)
+void elf_info(char* name)
 {
-	Elf32_Ehdr elf_header;
-	Elf32_Phdr p_header;
+	
 	int i;
+	Elf32_File* efile;
 	
 	printf("Reading ELF header...");
-	load_efl_header(&elf_header, fd);
-	if(is_elf(&elf_header))
+	efile = load_elf_file(name);
+	
+	if(efile != NULL)
 	{
 		printf("\033[2J");
 		fflush(stdout);
 
-		print_elf_header_info(&elf_header);
+		print_elf_header_info(efile->elf_header);
 		
 		printf("\n----PROGRAM HEADER INFO----\n");
 		printf("INDEX\tTYPE\tOFF\tVADDR\t\tFSIZE\tMSIZE\tFLAGS\n");
-		for(i=0; i<elf_header.e_phnum ; i++)
+		for(i=0; i<efile->elf_header->e_phnum ; i++)
 		{
 		
-			load_program_header(&p_header, &elf_header, i, fd);
-			if(p_header.p_type != PT_NULL)
+			if(efile->pheaders[i].p_type != PT_NULL)
 			{
 				printf("#%d\t",i);
-				print_program_header_info(&p_header);
+				print_program_header_info(&(efile->pheaders[i]));
 			}
 		}
 	}

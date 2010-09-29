@@ -1,5 +1,5 @@
 /**
- * @file test.c
+ * @file getline.c
  *
  * @author TacOS developers 
  *
@@ -29,17 +29,28 @@
  *
  * @section DESCRIPTION
  *
- * Programme de test à usage variable
+ * Description de ce que fait le fichier
  */
-
 #include <stdio.h>
 
-int main(int argc, char** argv)
-{
-	int i = 0;
-	printf("ARGC=%d\n",argc);
-	for(i = 0; i<argc; i++)
-		printf("arg%d:%s\n", i, argv[i]);
-		
-	return 0;
+int fgetline(FILE *fp, char s[], int lim) {
+    char *t;
+    int c;
+
+    t = s;
+    while (--lim>1 && (c=fgetc(fp)) != EOF && c != '\n')
+        *s++ = c;
+    if (c == '\n')
+        *s++ = c;
+    else if (lim == 1) {
+	*s++ = '\n';
+	fprintf(stderr, "WARNING. fgetline: Line too long, splitted.\n");
+    }
+    *s = '\0';
+    return s - t;
+}
+
+
+int getline(char *s, int lim) {
+    return fgetline(stdin, s, lim);
 }
