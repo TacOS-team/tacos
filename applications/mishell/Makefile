@@ -1,5 +1,5 @@
 OBJ=mishell
-LIBS=../../lib/libc.a ../../lib/libsystem.a  ../../lib/libclock.a
+LIBS=../../lib/libc.a ../../lib/libsystem.a
 INCLUDES=-I../../include/ -I../../libc/include/ -Iinclude/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 CC=gcc $(INCLUDES) 

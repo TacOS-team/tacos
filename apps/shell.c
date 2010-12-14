@@ -49,7 +49,7 @@
 #include <debug.h>
 #include <serial.h>
 #include <unistd.h>
-#include <clock.h>
+//#include <clock.h>
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
 
@@ -184,8 +184,9 @@ static int watch_clock() {
 	struct timeval clock;
 
 	while(1) {
-		clock = get_tv();
-		printf("CLOCK : %ds %dus\n", clock.tv_sec, clock.tv_usec);
+//		clock = get_tv();
+	//	printf("CLOCK : %ds %dus\n", clock.tv_sec, clock.tv_usec);
+		printf("Tick.\n");
 		sleep(1);
 	}
 	
@@ -263,6 +264,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	
 	print_logo();
 	print_logo_serial();
+	disable_cursor(0) ;
 
 	for(;;)
 	{

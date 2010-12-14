@@ -33,7 +33,6 @@
  */
 
 #include <unistd.h>
-#include <events.h>
 #include <stdio.h>
 #include <syscall.h>
 

@@ -34,7 +34,9 @@
 
 #include <time.h>
 #include <stdio.h>
-#include <clock.h>
+//#include <clock.h>
+
+//TODO: Adapter quand les accès à la clock seront faisable en user space
 
 char *asctime(const struct tm *timeptr)
 {
@@ -71,16 +73,20 @@ inline char *ctime(const time_t *timer)
 
 clock_t clock(void)
 {
-	return get_clock();
+	//return get_clock();
+	//XXX
+	return 0;
 }
 
 time_t time(time_t *timer)
 {
-	time_t date = get_date();
+	/*time_t date = get_date();
 	
 	if(timer != NULL)
 		*timer = date;
-	return date;
+	return date;*/
+	//XXX
+	return 0;
 }
 
 double difftime(time_t time1, time_t time0)
@@ -93,17 +99,23 @@ double difftime(time_t time1, time_t time0)
  */
 time_t mktime(struct tm *timep)
 {
-	return clock_mktime(timep);
+	//return clock_mktime(timep);*/
+	//XXX
+	return 0;
 }
 
 struct tm *gmtime(const time_t *timer)
 {
-	return clock_gmtime(timer);
+	//return clock_gmtime(timer);
+	//XXX
+	return 0;
 }
 
 struct tm *localtime(const time_t *timer)
 {
-	return gmtime(timer);
+	//return gmtime(timer);
+	//XXX
+	return 0;
 }
 /*
 size_t strftime(char * s, size_t maxsize, const char * format, const struct tm * timeptr)

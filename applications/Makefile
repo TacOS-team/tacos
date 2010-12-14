@@ -59,12 +59,16 @@ clean:
 
 # DO NOT DELETE
 
+cat.o: ../libc/include/stdio.h ../libc/include/fcntl.h
+cat.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 cube.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 cube.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 cube.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 cube.o: ../libc/include/time.h ../include/process.h ../include/pagination.h
 cube.o: ../include/vmm.h ../include/signal.h ../libc/include/string.h
 cube.o: ../libc/include/unistd.h
+fiinou.o: ../libc/include/stdio.h ../libc/include/fcntl.h
+fiinou.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 matrix.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 matrix.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 matrix.o: ../libc/include/stdlib.h ../libc/include/malloc.h
@@ -78,9 +82,6 @@ sem_pong.o: ../libc/include/fcntl.h ../libc/include/libio.h
 sem_pong.o: ../libc/include/stdarg.h
 test.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 test.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
-test.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-test.o: ../include/process.h ../include/pagination.h ../include/vmm.h
-test.o: ../include/signal.h
 test_sig.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 test_sig.o: ../libc/include/libio.h ../include/types.h
 test_sig.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
