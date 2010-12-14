@@ -152,9 +152,8 @@ int arg_build(char* string, vaddr_t base, char*** argv_ptr)
 		ptr++;
 		len++;
 	}
-	
 	argv = (char**) (base-(argc*sizeof(char*))); /* Base moins les argc cases pour les argv[x] */ 
-	str_copy_base =(char*)(base-(argc*sizeof(char*)) - 1); /* Pareil, mais on va l'utiliser en descendant dans la mémoire, et non en montant comme avec un tableau */
+	str_copy_base =(char*)(base-(argc*sizeof(char*)) - 2); /* Pareil, mais on va l'utiliser en descendant dans la mémoire, et non en montant comme avec un tableau */
 	i = argc-1;
 	
 	*str_copy_base = '\0';
@@ -167,6 +166,7 @@ int arg_build(char* string, vaddr_t base, char*** argv_ptr)
 		if(*ptr=='\0')
 		{
 			argv[i] = str_copy_base+1;
+			//kprintf("%i:%s\n", ptr+1);
 			i--;
 		}
 
@@ -197,6 +197,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	
 	int i;
 	int len;
+	kprintf("Creating process from cmd line: %s \n", init_data->args);
 	
 	new_proc = kmalloc(sizeof(process_t));
 	if( new_proc == NULL )

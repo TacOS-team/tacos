@@ -75,10 +75,18 @@ void exec(paddr_t prog, char* name, int orphan)
 	syscall(SYS_EXEC, (uint32_t)NULL, (uint32_t)&init_data, 1);
 }
 
-int exec_elf(char* name, int orphan)
+int exec_elf(char* cmdline, int orphan)
 {	
+	char* execpath = strdup(cmdline);
 	int ret = -1;
-	FILE *fd	= fopen(name, "r");
+	int offset = 0;
+	
+	while(execpath[offset] != ' ' && execpath[offset] != '\0')
+		offset++;
+	
+	execpath[offset] = '\0';
+	
+	FILE *fd = fopen(execpath, "r");
 	
 	process_init_data_t init_data;
 	
@@ -86,16 +94,18 @@ int exec_elf(char* name, int orphan)
 	{
 		ret = 0;
 			
-		init_data.name	= name;
+		init_data.name	= execpath;
 		init_data.stack_size = 0x1000;
 		init_data.priority = 0;
-		init_data.args = "fajitas bonitas";
+		
+		init_data.args = cmdline;
 		
 		init_data.mem_size = elf_size(fd);
 		init_data.data = malloc(init_data.mem_size);
 		init_data.entry_point = load_elf(fd, init_data.data);
 
 		init_data.ppid = orphan?0:get_pid();
+		init_data.exec_type = EXEC_ELF;
 
 		syscall(SYS_EXEC, (uint32_t)&init_data, (uint32_t)NULL, (uint32_t)NULL);
 		

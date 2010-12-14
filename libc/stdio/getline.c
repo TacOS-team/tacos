@@ -40,9 +40,9 @@ int fgetline(FILE *fp, char s[], int lim) {
     t = s;
     while (--lim>1 && (c=fgetc(fp)) != EOF && c != '\n')
         *s++ = c;
-    if (c == '\n')
+    /*if (c == '\n')
         *s++ = c;
-    else if (lim == 1) {
+    else */if (lim == 1) {
 	*s++ = '\n';
 	fprintf(stderr, "WARNING. fgetline: Line too long, splitted.\n");
     }

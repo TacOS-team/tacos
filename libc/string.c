@@ -302,7 +302,7 @@ char *strdup (const char *s)
 	int len = strlen(s);
 	char* new_string = (char*) malloc((len+1)*sizeof(char)); // len + 1 pour le '\0'
 	
-	return strcpy(new_string, s);;
+	return strcpy(new_string, s);
 }
 
 char *strchr(const char* s, int c)

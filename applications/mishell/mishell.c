@@ -186,49 +186,14 @@ void print_logo()
 int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	
-	char buffer[80];
+	char buffer[256];
 
 	add_builtin_cmd(help_cmd, "help");
 	add_builtin_cmd(date_cmd, "date");
 	add_builtin_cmd(cls_cmd, "clear");
-	//add_builtin_cmd((func_ptr)pci_list, "lspci");
-	//add_builtin_cmd((func_ptr)memory_print, "print_memory");
-	/*add_builtin_cmd(test_mouse, "test_mouse");
-	add_builtin_cmd(test_scanf, "test_scanf");
-	add_builtin_cmd(test_fgets, "test_fgets");
-	add_builtin_cmd(test_fputs, "test_fputs");
-	add_builtin_cmd(test_fwrite, "test_fwrite");
-	add_builtin_cmd(test_fread, "test_fread");
-	add_builtin_cmd(test_fseek, "test_fseek");*/
 	add_builtin_cmd(ps, "ps");
-	//add_builtin_cmd(kmalloc_print_mem, "kmalloc_print_mem");
-	/*add_builtin_cmd((func_ptr)test_memory_reserve_page_frame, "test_reserve_frame");*/
-	//add_builtin_cmd(ls_cmd, "ls");
-	//add_builtin_cmd(ll_cmd, "ll");
-	//add_builtin_cmd((func_ptr)print_Boot_Sector, "mount");
-	//add_builtin_cmd((func_ptr)print_working_dir, "pwd");
-	/*add_builtin_cmd((func_ptr)clean_process_list, "clean_proclist");*/
 	add_builtin_cmd(kill_cmd, "kill");
-	/*add_builtin_cmd(test_ansi, "test_ansi");*/
-	//add_builtin_cmd(cd_cmd, "cd");
 	add_builtin_cmd(cat_cmd, "cat");
-	/*add_builtin_cmd(test_task, "test_task");
-	add_builtin_cmd(test_semaphores, "test_sem");
-	add_builtin_cmd(calc_pi, "pi");
-	add_builtin_cmd(exec_shell, "Mishell");
-	add_builtin_cmd(main_fiinou, "Fiinou");
-	add_builtin_cmd(launch_pres, "presentation");
-	add_builtin_cmd(resize_cmd, "resize");
-	add_builtin_cmd(resize_cmd_pid, "resize_pid");
-	add_builtin_cmd(move_pid, "move_pid");
-	add_builtin_cmd(snake_main, "snake");
-	add_builtin_cmd(noxeyes, "noxeyes");
-	add_builtin_cmd(sleep_shell, "sleep");
-	add_builtin_cmd(test_write_serial, "write_serial");
-	add_builtin_cmd(test_read_serial, "read_serial");
-	add_builtin_cmd(test_elf, "elf_info");
-	add_builtin_cmd(test_ctype, "test_ctype");
-	add_builtin_cmd(test_stdio, "test_stdio");*/
 	add_builtin_cmd(shell_exec_elf, "exec");
 
 	//disable_cursor(0);
@@ -246,15 +211,14 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 		fflush(stdout);
 		fflush(stdin);
 		
-		scanf("%s", buffer);
+		//scanf("%s", buffer);
+		getline(buffer, 256);
 		//printf("\n");
 		if(exec_builtin_cmd(buffer) != 0)
 		{
-			char temp[100];
+			char temp[278];
 			sprintf(temp, "fd0:/bin/%s",buffer);
 			exec_elf(temp, 0);
-			//printf("commande introuvable.\n"); 
-		// Si on ne trouve pas la commande en builtin, on devrait alors chercher si y'a un executable qui correspond, dans un futur proche j'espere :p
 		}
 	}
 }

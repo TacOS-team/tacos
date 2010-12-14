@@ -37,9 +37,18 @@
 int main(int argc, char** argv)
 {
 	int i = 0;
+	char line[256];
+	
 	printf("ARGC=%d\n",argc);
 	for(i = 0; i<argc; i++)
 		printf("arg%d:%s\n", i, argv[i]);
+	i = 0;
+	while(1)
+	{
+		printf("Hello world: %d\n", i++);
+		sleep(1);
 		
+	}
+	
 	return 0;
-}
+}	

@@ -160,9 +160,7 @@ void rotate_point(float point[3])
 	point[0] = temp[0]*cos_phi - temp[2]*sin_phi;
 	point[1] = temp[1];
 	point[2] = temp[0]*sin_phi + temp[2]*cos_phi;
-	/*point[0] = temp[0];
-	point[1] = temp[1];
-	point[2] = temp[2];*/
+
 }
 
 void draw_cube(char *buffer)
@@ -198,6 +196,7 @@ int main()
 		for(i=0; i<8; i++)
 				rotate_point(cube[i]);
 		draw_cube(buffer);
+		usleep(10000);
 		
 	}
 	return 0;
