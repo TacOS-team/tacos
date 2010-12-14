@@ -1,4 +1,4 @@
-OBJ=cube top matrix test test_sig fiinou
+OBJ=cube top matrix test test_sig fiinou cat
 SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a 
 INCLUDES=-I../include/ -I../libc/include/
@@ -37,6 +37,9 @@ sem_pong: sem_pong.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
 test_sig: test_sig.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
+	
+cat: cat.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
 .o: .c 

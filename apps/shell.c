@@ -240,7 +240,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_elf, "elf_info");
 	
 	/* Accès disque */
-	add_builtin_cmd(cat_cmd, "cat");
+	//add_builtin_cmd(cat_cmd, "cat");
 	add_builtin_cmd(ls_cmd, "ls");
 	add_builtin_cmd(ll_cmd, "ll");
 	add_builtin_cmd((func_ptr)print_Boot_Sector, "mount");
