@@ -41,6 +41,7 @@
 #include <debug.h>
 #include <errno.h>
 #include <kmalloc.h>
+#include <klog.h>
 
 // ceci sera calculé avec les donnée du Boot secteur qd on alloura 
 // le tableau pour charger la file_alloc_table au malloc
@@ -48,13 +49,14 @@
 static path_t path; //TODO: Dégager vers le shell !
 static fat_info_t fat_info;
 static cluster_t *file_alloc_table; //en dur tant que le kmalloc fait planter...
+
 // DONE: Il y a des "512" en dur un peu partout dans le code. Il faudrait utiliser les infos de fat_info pour être portable.
 // TODO: Gérer FAT16 et FAT32.
 // TODO: Virer certaines limitations mises là juste pour simplifier...
 // TODO: Répertoires qui s'étallent sur plusieurs clusters.
 // TODO: Écriture d'un fichier qui utilise plusieurs clusters.
 // TODO: Création d'un nouveau répertoire.
-// TODO: Le FAT ne devrait probablement pas faire des appels directs au driver disquette.
+// TODO: Le FAT ne devrait probablement pas faire des appels directs au driver disquette. => Problème de la modularité
 
 addr_CHS_t get_CHS_from_LBA(addr_LBA_t sector_LBA) {
 	addr_CHS_t ret;
@@ -137,7 +139,7 @@ int read_cluster(char * buf, cluster_t cluster) {
 				sector_addr.Sector, buf);
 		return 0;
 	} else {
-		kprintf("ERROR: tentative de lecture d un secteur reserve\n");
+		kerr("tentative de lecture d un secteur reserve");
 		return 1;
 	}
 }
@@ -150,7 +152,7 @@ int write_cluster(char * buf, cluster_t cluster) {
 				sector_addr.Sector, (char*) buf);
 		return 0;
 	} else {
-		kprintf("ERROR: tentative d'écriture d un secteur reserve\n");
+		kerr("tentative d'ecriture d un secteur reserve");
 		return 1;
 	}
 }
@@ -341,7 +343,7 @@ int get_filename_from_path(char * path, char * filename) {
 	int path_length;
 	path_length = get_path_length(path);
 	get_dirname_from_path(path, filename, path_length + 1);
-	kprintf("%s\n", filename);
+	kdebug("%s\n", filename);
 	return 0;
 }
 
@@ -359,7 +361,7 @@ int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
 	} else {
 		for (i = 1; i <= path_length; i++) {
 			get_dirname_from_path(path, dir_name, i);
-			kprintf("%s", dir_name);
+			kdebug("%s", dir_name);
 			if (strcmp(dir_name, "fd0:") == 0) {
 				open_root_dir(&dir);
 			} else {

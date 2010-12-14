@@ -37,6 +37,7 @@
 #include <pci_types.h>
 #include <stdio.h>
 #include <types.h>
+#include <klog.h>
 
 #define PCI_MAX_DEVICES 256
 
@@ -86,7 +87,7 @@ void pci_scan()
 	uint16_t tmp_vendor;
 	//uint16_t tmp_slot;	
 
-	kprintf("Scanning pci bus...");
+	klog("Scanning pci bus...");
 	
 	/* On scan les 256 bus possibles */
 	for(bus = 0; bus<10; bus++)
@@ -117,7 +118,7 @@ void pci_scan()
 			}
 		}
 	}
-	pci_table_len>0?kprintf("%d device(s) found.\n",pci_table_len):kprintf("no device found.\n");
+	pci_table_len>0?klog("%d device(s) found.",pci_table_len):klog("no device found.\n");
 }
 
 

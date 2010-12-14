@@ -37,16 +37,7 @@
 #include <ioports.h>
 #include <string.h>
 #include <kstdio.h>
-
-#define PRINT_LOG(message, ...) kprintf("eth:\t"message"\n", ##__VA_ARGS__)
-#define PRINT_ERROR(message, ...) kprintf("eth:\t\033[031m"message"\033[0m\n", ##__VA_ARGS__)
-
-#define DEBUG
-#ifdef DEBUG
-	#define PRINT_DEBUG(message, ...) kprintf("eth<debug>:\t"message"\n", ##__VA_ARGS__)
-#else
-	#define PRINT_DEBUG(message, ...)
-#endif
+#include <klog.h>
 
 #define RTL8139_VENDOR_ID	0x10EC	/* Realtek Semiconductor’s PCI Vendor ID */
 #define RTL8139_DEVICE_ID	0x8139	/* RTL8139 PCI Device ID */
@@ -259,13 +250,13 @@ int send_packet(char* packet, uint32_t length)
 		ret = 0;
 	}
 	else
-		PRINT_ERROR("No free descriptor.");
+		kerr("No free descriptor.");
 	return ret;
 }
 
 void tx_interrupt_handler(uint16_t isr)
 {
-	PRINT_LOG("Tx Interrupt(0x%x)", isr);
+	klog("Tx Interrupt(0x%x)", isr);
 	if(isr & INT_TOK)
 	{
 		while(tsd_status(first_desc) == TSD_STATUS_BOTH && free_desc < TX_DESC_NUM)
@@ -275,7 +266,7 @@ void tx_interrupt_handler(uint16_t isr)
 		} 
 	}
 	else
-			PRINT_ERROR("Packet transmission error.");
+			kerr("Packet transmission error.");
 }
 
 static void reset_transmitter()
@@ -368,7 +359,7 @@ void rx_interrupt_handler(uint16_t isr)
 		
 		if(packet_ok(pheader))
 		{
-			PRINT_DEBUG("Packet received (size=%d):", packet_length);
+			kdebug("Packet received (size=%d):", packet_length);
 			/* 
 			 * TODO: Récupérer le paquet et le mettre quelque part
 			 * En attendant, pourquoi ne pas l'afficher :D
@@ -397,7 +388,7 @@ void rx_interrupt_handler(uint16_t isr)
 		}
 		else
 		{
-			PRINT_ERROR("Bad packet(header=0x%x, isr=0x%x).\n", *((uint32_t*)pheader), isr);
+			kerr("Bad packet(header=0x%x, isr=0x%x).\n", *((uint32_t*)pheader), isr);
 			break;
 		}
 		
@@ -481,7 +472,7 @@ void rtl8139_isr(int id __attribute__ ((unused)))
 	
 	asm volatile( "cli" );
 	
-	PRINT_DEBUG("interrupt: isr=0x%x", temp_isr);
+	kdebug("interrupt: isr=0x%x", temp_isr);
 
 	if(temp_isr & (INT_TOK | INT_TER))
 	{
@@ -565,14 +556,14 @@ int rtl8139_driver_init()
 	pci_function = pci_find_device(RTL8139_VENDOR_ID, RTL8139_DEVICE_ID);
 	if(pci_function != NULL)
 	{
-		PRINT_LOG("RTL8139 found at (%d:%d:%d)...", pci_function->bus, pci_function->slot, pci_function->function);
+		klog("RTL8139 found at (%d:%d:%d)...", pci_function->bus, pci_function->slot, pci_function->function);
 		/* L'adresse I/O est sensée se trouver dans le BAR0 */
 		bar = pci_read_value(pci_function, PCI_BAR0);
 		if( (bar & 1) ) /* C'est bien une adresse I/O, on peut initialiser */
 		{
 			io_base = bar & 0xfff0;
 			
-			PRINT_DEBUG("Reseting chip... ");
+			kdebug("Reseting chip... ");
 			reset_chip();
 			mac_addr[0] = READ_BYTE(IDR0);
 			mac_addr[1] = READ_BYTE(IDR1);
@@ -582,7 +573,7 @@ int rtl8139_driver_init()
 			mac_addr[5] = READ_BYTE(IDR5);
 			
 			/* ça c'est juste pour tester le port I/O... et puis c'est class */
-			PRINT_DEBUG("MAC Address: %x:%x:%x:%x:%x:%x", READ_BYTE(IDR0)
+			kdebug("MAC Address: %x:%x:%x:%x:%x:%x", READ_BYTE(IDR0)
 														, READ_BYTE(IDR1)
 														, READ_BYTE(IDR2)
 														, READ_BYTE(IDR3)
@@ -593,17 +584,17 @@ int rtl8139_driver_init()
 			
 		}
 		else
-			PRINT_ERROR("No I/O base address found.");
+			kerr("No I/O base address found.");
 	}
 	else
 	{
-		PRINT_ERROR("RTL8139 introuvable.");
+		kerr("RTL8139 introuvable.");
 	}
 	
 	if(ret > 0)
-		PRINT_LOG("RTL8139 driver initialized.");
+		klog("RTL8139 driver initialized.");
 	else
-		PRINT_LOG("RTL8139 driver not initialized.");
+		klog("RTL8139 driver not initialized.");
 	
 	
 	return ret;

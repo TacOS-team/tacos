@@ -84,7 +84,7 @@ void mbr_read () {
 
 void mbr_print_signature () {
 	
-	printf("MBR signature : Ox%x%x\n",0xFF&MasterBootRecord[0x1FF],0xFF&MasterBootRecord[0x1FE]);
+	klog("MBR signature : Ox%x%x",0xFF&MasterBootRecord[0x1FF],0xFF&MasterBootRecord[0x1FE]);
 	
 }
 
@@ -93,7 +93,7 @@ void mbr_print_part_table () {
 	int i ;
 	
 	for(i=1;i<2;i++)
-	printf("\
+	klog("\
 	Partition Table :\n\
 	Partition %d\n\
 	Active: %d\n\
@@ -101,7 +101,7 @@ void mbr_print_part_table () {
 	start: %d %d %d Cylinder-Head-Sector\n\
 	end  : %d %d %d Cylinder-Head-Sector\n\
 	LBA: %d\n\
-	Size: %d blocks\n",
+	Size: %d blocks",
 	i+1,
 	PartitionTable[i].active,
 	PartitionTable[i].type,

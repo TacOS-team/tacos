@@ -45,6 +45,7 @@
 #include "ksignal.h"
 #include "kstdio.h"
 #include <errno.h>
+#include <klog.h>
 
 static terminal_t *active_tty = NULL;
 
@@ -68,7 +69,7 @@ void tty_add_char(terminal_t *t, char c) {
     if (t == NULL) return;
 
 	if (c == ('c' & 0x1F)) {
-		kprintf("Break!\n");
+		kdebug("Break!");
 		sys_kill(t->fg_process->pid, SIGINT, NULL);
 	} else if (c == ('z' & 0x1F)) {
 		sys_kill(t->fg_process->pid, SIGTSTP, NULL);

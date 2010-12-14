@@ -35,6 +35,8 @@
 /**
  * @file memory.c
  */
+ 
+/* XXX Caca les printf */
 
 #include <types.h>
 #include <stdio.h>

@@ -36,6 +36,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ioports.h>
+#include <klog.h>
 #include "floppy_motor.h"
 #include "floppy_utils.h"
 #include "floppy_interrupt.h"
@@ -69,7 +70,7 @@ void floppy_dma_init(floppy_io io_dir)
 	// On vérifie donc tout ça avant d'aller plus loin
 	if((count.l >> 16)|(address.l >> 24)|(((address.l & 0xffff)+ count.l) >> 16))
 	{
-		kprintf("floppy_dma_init: Static buffer error.\n");
+		kerr("Static buffer error.\n");
 		return;
 	}
 	
@@ -82,7 +83,7 @@ void floppy_dma_init(floppy_io io_dir)
 			dma_mode = 0x4A;
 			break;
 		default:
-			kprintf("floppy_dma_init: Invalid io_dir.\n");
+			kerr("Invalid io_dir (0x%x).", io_dir);
 			return;
 	}
 	
@@ -124,7 +125,7 @@ int floppy_cylinder(int cylinder, floppy_io io_dir)
 			command = READ_DATA | flags;
 			break;
 		default:
-			kprintf("floppy_cylinder: Invalid io_dir.\n");
+			kerr("Invalid io_dir (0x%x).", io_dir);
 			return -1;
 
 	}
@@ -184,59 +185,59 @@ int floppy_cylinder(int cylinder, floppy_io io_dir)
         if(st0 & 0xC0) {
             static const char * status[] =
             { 0, "error", "invalid command", "drive not ready" };
-            kprintf("floppy_do_sector: status = %s\n", status[st0 >> 6]);
+            klog("floppy_do_sector: status = %s", status[st0 >> 6]);
             error = 1;
         }
         if(st1 & 0x80) {
-            kprintf("floppy_cylinder: end of cylinder\n");
+            kerr("end of cylinder");
             error = 1;
         }
         if(st0 & 0x08) {
-            kprintf("floppy_cylinder: drive not ready \n");
+            kerr("drive not ready ");
             error = 1;
         }
         if(st1 & 0x20) {
-            kprintf("floppy_cylinder: CRC error\n");
+            kerr("CRC error");
             error = 1;
         }
         if(st1 & 0x10) {
-            kprintf("floppy_cylinder: controller timeout\n");
+            kerr("controller timeout");
             error = 1;
         }
         if(st1 & 0x04) {
-            kprintf("floppy_cylinder: no data found\n");
+            kerr("no data found\n");
             error = 1;
         }
         if((st1|st2) & 0x01) {
-            kprintf("floppy_cylinder: no address mark found\n");
+            kerr("no address mark found");
             error = 1;
         }
         if(st2 & 0x40) {
-            kprintf("floppy_cylinder: deleted address mark\n");
+            kerr("deleted address mark");
             error = 1;
         }
         if(st2 & 0x20) {
-            kprintf("floppy_cylinder: CRC error in data\n");
+            kerr("CRC error in data");
             error = 1;
         }
         if(st2 & 0x10) {
-            kprintf("floppy_cylinder: wrong cylinder\n");
+            kerr("wrong cylinder");
             error = 1;
         }
         if(st2 & 0x04) {
-            kprintf("floppy_cylinder: uPD765 sector not found\n");
+            kerr("uPD765 sector not found");
             error = 1;
         }
         if(st2 & 0x02) {
-            kprintf("floppy_cylinderr: bad cylinder\n");
+            kerr("bad cylinder");
             error = 1;
         }
         if(bps != 0x2) {
-            kprintf("floppy_cylinder: wanted 512B/sector, got %d", (1<<(bps+7)));
+            kerr("wanted 512B/sector, got %d", (1<<(bps+7)));
             error = 1;
         }
         if(st1 & 0x02) {
-            kprintf("floppy_cylinder: not writable\n");
+            kerr("not writable");
             error = 2;
         }
 
@@ -245,7 +246,7 @@ int floppy_cylinder(int cylinder, floppy_io io_dir)
             return 0;
         }
         if(error > 1) {
-            kprintf("floppy_do_sector: not retrying..\n");
+            kerr("not retrying...");
             floppy_motor(OFF);
             return -2;
         }

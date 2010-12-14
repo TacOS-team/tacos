@@ -62,7 +62,8 @@
 #include <interrupts.h>
 #include <ioports.h>
 #include <serial.h>
-#include <stdio.h>	
+#include <stdio.h>
+#include <klog.h>
 #include "serial_masks.h"
 
 //#define _DEBUG_
@@ -150,12 +151,12 @@ int serial_init(serial_port port, char* protocol, unsigned int bauds, int flags)
 {
 	int ret = 0;
 	
-	DEBUG_MESSAGE("serial_puts");
+	klog("Initialisation du port série...");
 	
 	/* Désactive les interruptions */
 	write_register(port, INTERRUPT_ENABLE, 0x00);
 		
-	/* Configuration du controleur */
+	/* Configuration du controleur */ 
 	if(set_baud_rate(port, bauds) == 0)
 		ret = -1;
 		
@@ -235,7 +236,7 @@ int serial_puts(serial_port port, char* string)
 	char* ptr = string;
 
 	
-	DEBUG_MESSAGE("serial_puts");
+	kdebug("serial_puts");
 	
 	/* On va dire que si le buffer est plein on arrête, on pourrait très bien faire autrement */
 	while(*ptr!=0)
@@ -305,16 +306,16 @@ void serial_isr(int id __attribute__ ((unused)))
 					switch(i_id)
 					{	
 							case INT_NONE:
-								PRINT_ERROR("None interrupt");
+								kerr("None interrupt");
 								break;
 							case INT_RX_LINE_STATUS:
 								temp_read = read_register(i, LINE_STATUS);
-								PRINT_ERROR("Line status interrupt");
+								kerr("Line status interrupt");
 								break;
 							case INT_DATA_AVAILABLE:			/* Que ce soit en data available ou en timeout, il faut récupérer les données dans le buffer si possible */
-								DEBUG_MESSAGE("Data received.");
+								kerr("Data received.");
 							case INT_CHAR_TIMEOUT:
-								DEBUG_MESSAGE("Char timeout");
+								kerr("Char timeout");
 								while(read_register(i, LINE_STATUS) & DATA_READY)
 								{
 									/* Si il reste de la place dans le buffer, on écrit dedans */
@@ -331,7 +332,7 @@ void serial_isr(int id __attribute__ ((unused)))
 									}
 									else
 									{
-										PRINT_ERROR("Rx buffer full");
+										kerr("Rx buffer full");
 									}
 								}
 								break;
@@ -340,7 +341,7 @@ void serial_isr(int id __attribute__ ((unused)))
 								/* Si on a des choses à envoyer, on les envoit */
 								if(tx_size[i]>0)
 								{
-									DEBUG_MESSAGE("TX=>send");
+									kdebug("TX=>send");
 									counter = 0;
 									while(counter < TX_FIFO_SIZE && tx_size[i]>0)
 									{
@@ -353,17 +354,17 @@ void serial_isr(int id __attribute__ ((unused)))
 								}
 								else /* Sinon on désactive l'interruption de transmission */
 								{
-									DEBUG_MESSAGE("TX=>closing");
+									kdebug("TX=>closing");
 									temp_read = read_register(i, INTERRUPT_ENABLE);
 									temp_read &= (~ETBEI);
 									write_register(i, INTERRUPT_ENABLE, temp_read);
 								}
 								break;
 							case INT_MODEM_STATUS:
-								PRINT_ERROR("Modem status");
+								kerr("Modem status");
 								break;
 							default:
-								PRINT_ERROR("Unknown interrupt");
+								kerr("Unknown interrupt");
 								break;
 								
 						}
@@ -382,7 +383,7 @@ static int set_baud_rate(serial_port port, unsigned int rate)
 	uint32_t divisor = 0;
 	uint32_t real_rate = 0;
 	
-	DEBUG_MESSAGE("set_baud_rate");
+	kdebug("set_baud_rate");
 	/* On vérifie que la fréquence demandée est réalisable */
 	if(rate != 0 && rate <= UART_CLOCK_FREQ)
 	{
@@ -445,7 +446,7 @@ static int set_protocol(serial_port port, char* protocol)
 	
 	char reg_value = 0;
 	
-	DEBUG_MESSAGE("set_set_protocol");
+	kdebug("set_set_protocol");
 	
 	if(nb_bits >= '5' && nb_bits <= '8')
 	{

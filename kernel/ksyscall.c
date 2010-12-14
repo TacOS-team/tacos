@@ -41,6 +41,7 @@
 #include <interrupts.h>
 #include "ksyscall.h"
 #include <syscall.h>
+#include <klog.h>
 
 syscall_handler_t syscall_handler_table[MAX_SYSCALL_NB];
 
@@ -68,7 +69,7 @@ void syscall_entry(int interrupt_id __attribute__ ((unused)))
 		handler(param1, param2, param3);
 	}
 	else
-		kprintf("ERROR: Unknown syscall handler.\n");
+		kerr("Unknown syscall handler (0x%x).\n", function);
 }
 
 int syscall_set_handler(uint32_t syscall_id, syscall_handler_t handler)

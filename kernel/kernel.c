@@ -74,6 +74,7 @@
 #include <ksignal.h>
 #include <round_robin.h>
 #include <rtl8139.h>
+#include <klog.h>
 
 typedef struct
 {
@@ -97,7 +98,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	/* Am I booted by a Multiboot-compliant boot loader? */
 	if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
 	{
-		kprintf ("Invalid magic number: 0x%x\n", (unsigned) magic);
+		kerr("Invalid magic number: 0x%x", (unsigned) magic);
 		return;
 	}
 
@@ -150,7 +151,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	pci_scan();
 
 	if(serial_init(COM1, "8N1", 38400, ECHO_ENABLED) != 0)
-		kprintf("Erreur d'initialisation de COM1 \n");
+		kerr("Erreur d'initialisation de COM1 \n");
 		
 	int irq = rtl8139_driver_init();
 	interrupt_set_routine(irq,  rtl8139_isr, 0);
@@ -161,6 +162,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	/* Initialisation des syscall */
 	init_syscall();
 	
+	klog("loading syscalls...");
+	//kerr("Error loading syscalls....");
 	syscall_set_handler(SYS_EXIT,	(syscall_handler_t)sys_exit);
 	syscall_set_handler(SYS_GETPID,	(syscall_handler_t)sys_getpid);
 	syscall_set_handler(SYS_OPEN,	(syscall_handler_t)sys_open);
@@ -179,10 +182,10 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_KILL, (syscall_handler_t) sys_kill);
 	
 	floppy_detect_drives();
-	kprintf("Floppy controller version: 0x%x.\n", floppy_get_version());
+	klog("Floppy controller version: 0x%x.", floppy_get_version());
 	
 	if(init_floppy() != 0)
-		kprintf("Initialisation du lecteur a echoue.\n");
+		kerr("Initialisation du lecteur a echoue.");
 	
 	/*   Test FAT    */
 	//mount_fat_fs ();
@@ -191,6 +194,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	init_process_array();
 	
 	/* Lancement du scheduler */
+	klog("Init scheduler...");
 	init_scheduler(20);
 	set_scheduler(&round_robin);
 	

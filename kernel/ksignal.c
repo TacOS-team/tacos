@@ -1,4 +1,5 @@
 /**
+/**
  * @file ksignal.c
  *
  * @author TacOS developers 
@@ -36,6 +37,7 @@
 #include <kprocess.h>
 #include <kstdio.h>
 #include <scheduler.h>
+#include <klog.h>
 
 /*
  * TODO: gérer SIG_IGN et SIG_DFL 
@@ -72,7 +74,7 @@ SYSCALL_HANDLER3(sys_sigprocmask, uint32_t how, sigset_t* set, sigset_t* oldset)
 			current->signal_data.mask &= ~(*set);
 			break;
 		default:
-			kprintf("Invalid sigprocmask commande.\n");
+			kerr("Invalid sigprocmask command (0x%x).", how);
 	}
 } 
 

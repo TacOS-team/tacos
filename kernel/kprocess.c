@@ -46,6 +46,7 @@
 #include <kfcntl.h>
 #include <debug.h>
 #include <scheduler.h>
+#include <klog.h>
 
 #define GET_PROCESS 0
 #define GET_PROCESS_LIST 1
@@ -197,12 +198,12 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	
 	int i;
 	int len;
-	kprintf("Creating process from cmd line: %s \n", init_data->args);
+	kdebug("Creating process from cmd line: %s", init_data->args);
 	
 	new_proc = kmalloc(sizeof(process_t));
 	if( new_proc == NULL )
 	{
-		kprintf("create_process: impossible de reserver la memoire pour le nouveau processus.\n");
+		kerr("impossible de reserver la memoire pour le nouveau processus.");
 		return NULL;
 	}
 	len = strlen(init_data->name);
@@ -212,14 +213,14 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	sys_stack = kmalloc(init_data->stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
 	{
-		kprintf("create_process: impossible de reserver la memoire pour la pile systeme.\n");
+		kerr("impossible de reserver la memoire pour la pile systeme.");
 		return NULL;
 	}
 	
 	user_stack = kmalloc(init_data->stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
 	{
-		kprintf("create_process: impossible de reserver la memoire pour la pile utilisateur.\n");
+		kerr("impossible de reserver la memoire pour la pile utilisateur.");
 		return NULL;
 	}
 	
@@ -339,7 +340,7 @@ process_t* create_process(process_init_data_t* init_data)
 	new_proc = kmalloc(sizeof(process_t));
 	if( new_proc == NULL )
 	{
-		kprintf("create_process: impossible de reserver la memoire pour le nouveau processus.\n");
+		kerr("impossible de reserver la memoire pour le nouveau processus.");
 		return NULL;
 	}
 	len = strlen(name);
@@ -349,14 +350,14 @@ process_t* create_process(process_init_data_t* init_data)
 	sys_stack = kmalloc(stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
 	{
-		kprintf("create_process: impossible de reserver la memoire pour la pile systeme.\n");
+		kerr("impossible de reserver la memoire pour la pile systeme.");
 		return NULL;
 	}
 	
 	user_stack = kmalloc(stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
 	{
-		kprintf("create_process: impossible de reserver la memoire pour la pile utilisateur.\n");
+		kerr("impossible de reserver la memoire pour la pile utilisateur.");
 		return NULL;
 	}
 	
@@ -515,7 +516,7 @@ process_t* sys_proc_list(uint32_t action)
 			}
 			break;
 		default:
-			kprintf("sys_proc_list: invalid action.\n");
+			kerr("invalid action (0x%x).", action);
 	}
 	
 	if( index >= 0 )
@@ -540,6 +541,6 @@ SYSCALL_HANDLER3(sys_proc, uint32_t sub_func, uint32_t param1, uint32_t param2)
 			break;
 			
 		default:
-			kprintf("sys_proc: invalid syscall.\n");
+			kerr("invalid syscall (0x%x).\n", sub_func);
 	}
 }

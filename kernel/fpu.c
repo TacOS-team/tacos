@@ -35,10 +35,11 @@
 #include <stdio.h>
 #include <fpu.h>
 #include <interrupts.h>
+#include <klog.h>
 
 static void FPU_handler(int id __attribute__ ((unused)))
 {
-  printf("FPU Exception\n");
+  kdebug("FPU Exception");
 }
 
 void init_fpu()

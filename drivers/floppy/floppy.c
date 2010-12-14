@@ -35,6 +35,7 @@
 #include <ioports.h>
 #include <stdio.h>
 #include <types.h>
+#include <klog.h>
 #include "floppy_interrupt.h"
 #include "floppy_utils.h"
 #include "floppy_motor.h"
@@ -72,8 +73,8 @@ int floppy_calibrate()
 		{
 			static const char * status[] =
 			{ 0, "error", "invalid", "drive" };
-			kprintf("floppy_recalibrate: status = %s.\n", status[st0 >> 6]);
-			kprintf("ST0:0x%x.\nCY1:0x%x.\n", st0, cy1);
+			klog("floppy_recalibrate: status = %s.", status[st0 >> 6]);
+			klog("\tST0:0x%x.\nCY1:0x%x.", st0, cy1);
 			continue;
 		}
 	
@@ -84,7 +85,7 @@ int floppy_calibrate()
 		}
 		
 	}
-	kprintf("floppy_recalibrate: failure.\n");
+	kerr("floppy_recalibrate: failure.");
 	
 	floppy_motor(OFF);
 	
@@ -99,7 +100,7 @@ int init_floppy()
 	
 	/* On vérifie qu'on a bien un controleur standard, sinon on affiche un warning */
 	if(floppy_get_version() != 0x90)
-		kprintf("WARNING: Floppy driver may not work with 0x%x controler.\n", floppy_get_version());
+		kerr("WARNING: Floppy driver may not work with 0x%x controler.", floppy_get_version());
 
 	floppy_reset_irq();
 	
