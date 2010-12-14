@@ -48,7 +48,7 @@
 static path_t path; //TODO: Dégager vers le shell !
 static fat_info_t fat_info;
 static cluster_t *file_alloc_table; //en dur tant que le kmalloc fait planter...
-// TODO: Il y a des "512" en dur un peu partout dans le code. Il faudrait utiliser les infos de fat_info pour être portable.
+// DONE: Il y a des "512" en dur un peu partout dans le code. Il faudrait utiliser les infos de fat_info pour être portable.
 // TODO: Gérer FAT16 et FAT32.
 // TODO: Virer certaines limitations mises là juste pour simplifier...
 // TODO: Répertoires qui s'étallent sur plusieurs clusters.
@@ -74,7 +74,9 @@ addr_CHS_t get_CHS_from_cluster(cluster_t cluster) {
 }
 
 void read_fat(cluster_t *fat) {
-	uint8_t buffer[512 * 9];
+	
+	uint8_t buffer[fat_info.bytes_per_sector * fat_info.fat_size];
+	
 	addr_CHS_t sector_addr;
 	uint32_t i;
 	int p = 0;
@@ -419,9 +421,9 @@ int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 			ofd->current_octet_buf = 0;
 
 			// On avance de cluster en cluster.
-			while (offset >= 512) {
-				offset -= 512;
-				ofd->current_octet += 512;
+			while (offset >= fat_info.bytes_per_sector) {
+				offset -= fat_info.bytes_per_sector;
+				ofd->current_octet += fat_info.bytes_per_sector;
 				ofd->current_cluster = file_alloc_table[ofd->current_cluster];
 			}
 
@@ -436,8 +438,8 @@ int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 		if (ofd->current_octet + offset < ofd->file_size) {
 			ofd->current_octet += offset;
 			ofd->current_octet_buf = offset;
-			while (ofd->current_octet_buf >= 512) {
-				ofd->current_octet_buf -= 512;
+			while (ofd->current_octet_buf >= fat_info.bytes_per_sector) {
+				ofd->current_octet_buf -= fat_info.bytes_per_sector;
 				ofd->current_cluster = file_alloc_table[ofd->current_cluster];
 			}
 			read_cluster((char*) ofd->buffer, ofd->current_cluster);
@@ -460,7 +462,7 @@ int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 size_t write_file(open_file_descriptor * ofd, const void * buf, size_t nb_octet) {
 	size_t i;
 	/*int j;*/
-	char tmp_buf[512];
+	char tmp_buf[fat_info.bytes_per_sector];
 
 	if ((ofd->flags & O_ACCMODE) == O_RDONLY) {
 		errno = EBADF;
@@ -474,14 +476,14 @@ size_t write_file(open_file_descriptor * ofd, const void * buf, size_t nb_octet)
 	 printf("\nEnd of buffer, current octet %d, current octet buffer %d\n",ofd->current_octet++,ofd->current_octet_buf);
 	 */
 	read_cluster(tmp_buf, ofd->current_cluster);
-	/*for (j=0;j<512;j++)
+	/*for (j=0;j<fat_info.bytes_per_sector;j++)
 	 printf("%c",((char*)tmp_buf)[j]);
 	 printf("\n");*/
 	for (i = 0; i < nb_octet; i++) {
 		tmp_buf[ofd->current_octet_buf] = ((char*) buf)[i];
 		ofd->current_octet_buf++;
 		ofd->current_octet++;
-		/*if (ofd->current_octet_buf>=512) {
+		/*if (ofd->current_octet_buf>=fat_info.bytes_per_sector) {
 		 write_cluster(ofd->buffer, ofd->current_cluster);
 		 ofd->current_cluster = file_alloc_table[ofd->current_cluster];
 		 // Gerer le fait qu'on doit allouer un nouveau cluster si c'est le dernier
@@ -490,7 +492,7 @@ size_t write_file(open_file_descriptor * ofd, const void * buf, size_t nb_octet)
 		 }*/
 		/*printf("%d %c",ofd->current_octet_buf,((char*)buf)[i]);*/
 	}
-	/*for (j=0;j<512;j++)
+	/*for (j=0;j<fat_info.bytes_per_sector;j++)
 	 printf("%c",((char*)tmp_buf)[j]);
 	 printf("\n");*/
 	write_cluster(tmp_buf, ofd->current_cluster);
@@ -520,7 +522,7 @@ size_t read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 			ofd->current_octet_buf++;
 			ofd->current_octet++;
 			((char*) buf)[j] = c;
-			if (ofd->current_octet_buf >= 512) {
+			if (ofd->current_octet_buf >= fat_info.bytes_per_sector) {
 				ofd->current_cluster = file_alloc_table[ofd->current_cluster];
 				read_cluster((char*) ofd->buffer, ofd->current_cluster);
 				ofd->current_octet_buf = 0;
