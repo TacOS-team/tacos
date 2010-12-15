@@ -86,7 +86,12 @@ SYSCALL_HANDLER3(sys_kill, int pid, int signum, int* ret)
 	
 	if(process != NULL)
 	{
+		klog("Sending signal %d to pid %d.", signum, pid);
 		retour = sigaddset( &(process->signal_data.pending_set), signum );
+	}
+	else
+	{
+		kerr("Process found.");
 	}
 	
 	if(ret!=NULL)
@@ -105,13 +110,14 @@ int exec_sighandler(process_t* process)
 {
 	int signum;
 	uint32_t* ptr;
-	int ret = 0;
+	int ret = 0;		
 	if(process->signal_data.pending_set != 0)
 	{
 		/* On cherche le handler à exécuter */
 		signum = get_first_signal(&(process->signal_data.pending_set));
 		if(process->signal_data.handlers[signum] != NULL)
 		{
+			klog("Pid %d received signal %d.", process->pid, signum);
 			ret = 1;
 			ptr = (uint32_t*)process->regs.esp;
 			

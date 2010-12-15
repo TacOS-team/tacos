@@ -299,7 +299,7 @@ void stop_scheduler()
 
 void start_scheduler()
 {
-	set_scheduler_event(schedule,NULL,quantum*1000);
+	set_scheduler_event(schedule,NULL,quantum);
 }
 
 int scheduler_add_process(process_t* proc)

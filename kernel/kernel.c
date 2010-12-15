@@ -127,9 +127,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	interrupt_set_routine(IRQ_LPT1, LPT1_routine, 0);
 	interrupt_set_routine(IRQ_COM1, serial_isr, 0);
 	mouseInit();
-
 	floppy_init_interrupt();
-
 	init_fpu();
 
 	 

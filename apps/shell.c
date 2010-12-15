@@ -95,25 +95,6 @@ static int cd_cmd()
 	return 0;
 }
 
-static int cat_cmd()
-{
-// NON TESTÉ !
-	char chemin[80];
-	scanf("%s", chemin);
-
-	FILE *file = fopen(chemin, "r");
-
-	char buffer[100];
-	while (fread(buffer, sizeof(buffer), sizeof(char), file) > 0) {
-		buffer[99] = '\0';
-		printf("%s", buffer);
-	}
-
-	fflush(file);
-
-	return 0;
-}
-
 static int cls_cmd() {
 	printf("\033[2J");
 	fflush(stdout);
@@ -283,7 +264,8 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 		{
 			char temp[278];
 			sprintf(temp, "fd0:/bin/%s",buffer);
-			exec_elf(temp, 0);
+			if(exec_elf(temp, 0) != 0)
+				printf("commande introuvable.\n");
 		}
 	}
 }
