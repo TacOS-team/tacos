@@ -75,6 +75,7 @@
 #include <round_robin.h>
 #include <rtl8139.h>
 #include <klog.h>
+#include <drivers/dummy_driver.h>
 
 typedef struct
 {
@@ -179,6 +180,15 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_SIGPROCMASK, 	(syscall_handler_t) sys_sigprocmask);
 	syscall_set_handler(SYS_KILL, (syscall_handler_t) sys_kill);
 	
+	/* Initialisation des drivers */
+	klog("loading drivers...");
+	init_driver_list();
+	init_dummy();
+	
+	
+	
+	
+	/* ************************** */
 	floppy_detect_drives();
 	klog("Floppy controller version: 0x%x.", floppy_get_version());
 	

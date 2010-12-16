@@ -196,7 +196,7 @@ int main()
 		for(i=0; i<8; i++)
 				rotate_point(cube[i]);
 		draw_cube(buffer);
-		usleep(100000);
+		usleep(10000);
 		
 	}
 	return 0;

@@ -40,6 +40,7 @@
 #include <string.h>
 #include <kmalloc.h>
 
+#include <kdriver.h>
 #include <keyboard.h>
 #include <console.h>
 #include <tty.h>
@@ -83,6 +84,7 @@ void init_stdfd(process_t *new_proc) {
 
 SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags) {
 	int i=0;
+	driver_interfaces* di = NULL;
 	
 	//process_t * process = (process_t*) p_process;
 	char* path = (char*) p_path;
@@ -95,10 +97,23 @@ SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags) {
 	// creation d un open_file_descriptor
 	process->fd[i].ofd = kmalloc(sizeof(open_file_descriptor));
 	process->fd[i].used = TRUE;
-  process->fd[i].ofd->flags = flags;
+	process->fd[i].ofd->flags = flags;
 	
 	// ouverture du fichier (sur fd0 pour le moment)
-	if (fat_open_file(path, process->fd[i].ofd, flags) == 0) {
+	if(path[0] == '$')
+	{
+		di = find_driver(path+1);
+		if(di != NULL)
+		{
+			process->fd[i].ofd->write = di->write;
+			process->fd[i].ofd->read = di->read;
+			process->fd[i].ofd->seek = di->seek;
+			*((int *)fd_id) = i;
+		}
+		else
+			*((int *)fd_id) = -1;
+	}
+	else if (fat_open_file(path, process->fd[i].ofd, flags) == 0) {
 		// C'est ici qu'on devrait vérifier si le fichier ouvert est spécial 
 		// pour savoir si on doit binder au file system ou à un driver.
 		process->fd[i].ofd->write = write_file;

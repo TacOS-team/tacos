@@ -82,6 +82,7 @@ sem_pong.o: ../libc/include/fcntl.h ../libc/include/libio.h
 sem_pong.o: ../libc/include/stdarg.h
 test.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 test.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
+test.o: ../libc/include/unistd.h
 test_sig.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 test_sig.o: ../libc/include/libio.h ../include/types.h
 test_sig.o: ../libc/include/stdarg.h ../libc/include/stdlib.h

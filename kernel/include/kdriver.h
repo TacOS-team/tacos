@@ -1,5 +1,5 @@
 /**
- * @file test.c
+ * @file kdriver.h
  *
  * @author TacOS developers 
  *
@@ -29,25 +29,26 @@
  *
  * @section DESCRIPTION
  *
- * Programme de test à usage variable
+ * Description de ce que fait le fichier
  */
 
-#include <stdio.h>
-#include <unistd.h>
+#ifndef _KDRIVER_H
+#define _KDRIVER_H
 
-int main(int argc, char** argv)
-{
-	int i = 0;
-	
-	FILE* fd = NULL;
-	fd = fopen("$dummy", "rw");
-	if(fd == NULL)
-		printf("fail\n");
-	else
-	{
-		printf("good\n");
-		fprintf(fd, "Hello dummy device...\n");
-		fflush(fd);
-	}
-	return 0;
-}	
+#include <types.h>
+#include <kfcntl.h>
+
+typedef struct {
+	size_t (*read)(open_file_descriptor*, char*, size_t);
+	size_t (*write)(open_file_descriptor*, const char*, size_t);
+	int (*seek) (open_file_descriptor *, long, int);
+	int (*ioctl) (open_file_descriptor*, unsigned int, unsigned long);
+	int (*open) (open_file_descriptor);
+	int (*close) (open_file_descriptor*);
+	int (*flush) (open_file_descriptor*);
+}driver_interfaces;
+
+void init_driver_list();
+int register_driver(const char* name, driver_interfaces* di);
+
+#endif /* _KDRIVER_H */
