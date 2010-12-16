@@ -47,7 +47,7 @@
 #include <apps.h>
 #include <sem.h>
 #include <debug.h>
-#include <serial.h>
+//#include <serial.h>
 #include <unistd.h>
 //#include <clock.h>
 
@@ -191,7 +191,7 @@ void print_logo()
 	printf("    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
 	printf("(codename:fajitas)\n\n\n");
 }
-
+/*
 void print_logo_serial()
 {
 	serial_puts(COM1, "_|_|_|_|_|                      _|_|      _|_|_|\n");
@@ -200,7 +200,7 @@ void print_logo_serial()
 	serial_puts(COM1, "    _|    _|    _|  _|        _|    _|        _|\n");
 	serial_puts(COM1, "    _|      _|_|_|    _|_|_|    _|_|    _|_|_|    ");
 	serial_puts(COM1, "(codename:fajitas)\n\n\n");
-}
+}*/
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
@@ -245,7 +245,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_send_packet, "sendpacket");
 	
 	print_logo();
-	print_logo_serial();
+	//print_logo_serial();
 	disable_cursor(0) ;
 
 	for(;;)

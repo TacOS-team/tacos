@@ -15,7 +15,7 @@ size_t dummy_write(open_file_descriptor* odf, const char* buf, size_t count)
 	return count;
 }
 
-static driver_interfaces di {
+static driver_interfaces di = {
 	.read = dummy_read,
 	.write = dummy_write,
 	.seek = NULL,
@@ -27,6 +27,8 @@ static driver_interfaces di {
 void init_dummy()
 {
 	klog("initializating dummy...");
+	if(register_driver("dummy", &di) != 0)
+		kerr("error registering dummy driver.");
 }
 
 /*

@@ -38,15 +38,16 @@
 int main(int argc, char** argv)
 {
 	int i = 0;
+	char buff;
 	
 	FILE* fd = NULL;
-	fd = fopen("$dummy", "rw");
+	fd = fopen("$serial", "rw");
 	if(fd == NULL)
 		printf("fail\n");
-	else
+	while(1)
 	{
-		printf("good\n");
-		fprintf(fd, "Hello dummy device...\n");
+		buff = getchar();
+		fprintf(fd,"%c", buff);
 		fflush(fd);
 	}
 	return 0;

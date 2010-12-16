@@ -69,13 +69,14 @@
 #include <syscall.h>
 #include <ksem.h>
 #include <video.h>
-#include <serial.h>
 #include <console.h>
 #include <ksignal.h>
 #include <round_robin.h>
 #include <rtl8139.h>
 #include <klog.h>
+
 #include <drivers/dummy_driver.h>
+#include <drivers/serial.h>
 
 typedef struct
 {
@@ -149,8 +150,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	pci_scan();
 
-	if(serial_init(COM1, "8N1", 38400, ECHO_ENABLED) != 0)
-		kerr("Erreur d'initialisation de COM1 \n");
+
 		
 	int irq = rtl8139_driver_init();
 	interrupt_set_routine(irq,  rtl8139_isr, 0);
@@ -184,6 +184,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	klog("loading drivers...");
 	init_driver_list();
 	init_dummy();
+	if(serial_init(COM1, "8N1", 38400, ECHO_ENABLED) != 0)
+		kerr("Erreur d'initialisation de COM1 \n");
 	
 	
 	

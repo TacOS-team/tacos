@@ -61,8 +61,8 @@
 
 #include <interrupts.h>
 #include <ioports.h>
-#include <serial.h>
-#include <stdio.h>
+#include <drivers/serial.h>
+#include <kdriver.h>
 #include <klog.h>
 #include "serial_masks.h"
 
@@ -147,50 +147,6 @@ static int tx_size[4];
  **************************************/
 
 
-int serial_init(serial_port port, char* protocol, unsigned int bauds, int flags)
-{
-	int ret = 0;
-	
-	klog("Initialisation du port série...");
-	
-	/* Désactive les interruptions */
-	write_register(port, INTERRUPT_ENABLE, 0x00);
-		
-	/* Configuration du controleur */ 
-	if(set_baud_rate(port, bauds) == 0)
-		ret = -1;
-		
-	if(set_protocol(port, protocol) != 0)
-		ret = -1;
-	
-	/* Active la FIFO */
-	write_register(port, FIFO_CTRL, FIFO_ENABLE 	| 
-									RCVR_FIFO_RESET | 
-									XMIT_FIFO_RESET |
-									RCVR_TRIGGER_14);
-									
-	/* On note quelque part qu'on a bien initialisé le controleur */
-	flags_array[port] = ret?0:1;
-	flags_array[port] |= flags;
-	
-	/* On initialise les buffers du port */
-	rx_start[port] = 0;
-	rx_end[port] = 0;
-	rx_size[port] = 0;
-	
-	tx_start[port] = 0;
-	tx_end[port] = 0; 
-	tx_size[port] = 0;
-	
-	/* Active les interruption (DEBUG) 
-	 * Note: A l'initialisation on n'active que l'interruption de 
-	 * réception, celle de transmission sera activée quand on voudra
-	 * envoyer des données.
-	 */
-	write_register(port, INTERRUPT_ENABLE,	ERBFI); /* Cf. serial_mask.h */
-		
-	return ret;
-}
 
 static void put_char(serial_port port, char c)
 {
@@ -229,11 +185,10 @@ int serial_putc(serial_port port, char c)
 	return ret;
 }
 	
-
-int serial_puts(serial_port port, char* string)
+size_t serial_write(open_file_descriptor* odf, const char* buf, size_t count)
 {
 	int i = 0;
-	char* ptr = string;
+	char* ptr = buf;
 
 	
 	kdebug("serial_puts");
@@ -241,23 +196,25 @@ int serial_puts(serial_port port, char* string)
 	/* On va dire que si le buffer est plein on arrête, on pourrait très bien faire autrement */
 	while(*ptr!=0)
 	{
-		i += serial_putc(port, *ptr);
+		/* TODO choisir le port en fonction du file */
+		i += serial_putc(0, *ptr);
 		ptr++;
 	}
 	return i;
 }
 
-int serial_gets(serial_port port, char* buffer, unsigned int size)
+size_t serial_read(open_file_descriptor* odf, char* buffer, size_t size) 
 {
 	char* ptr = buffer;
 	uint32_t i = 0;
-	
+	klog("serial_read");
 	/* Disons qu'on sera bloquant en lecture */
-	while(rx_size[port]==0){}
+	while(rx_size[0]==0){}
 	
-	while(i<size-1 && rx_size[port] > 0)
+	while(i<size-1 && rx_size[0] > 0)
 	{
-		*ptr = rx_buffer[port][rx_start[port]];
+		/* TODO choisir le port en fonction du file */
+		*ptr = rx_buffer[0][rx_start[0]];
 		
 		rx_size[i]--;
 		rx_start[i] = (rx_start[i]+1)%RX_BUFFER_SIZE;	
@@ -315,7 +272,6 @@ void serial_isr(int id __attribute__ ((unused)))
 							case INT_DATA_AVAILABLE:			/* Que ce soit en data available ou en timeout, il faut récupérer les données dans le buffer si possible */
 								kerr("Data received.");
 							case INT_CHAR_TIMEOUT:
-								kerr("Char timeout");
 								while(read_register(i, LINE_STATUS) & DATA_READY)
 								{
 									/* Si il reste de la place dans le buffer, on écrit dedans */
@@ -494,6 +450,65 @@ static int set_protocol(serial_port port, char* protocol)
 	if(ret == 0)
 		write_register(port, LINE_CTRL, reg_value);
 		
+	return ret;
+}
+
+static driver_interfaces di = {
+	.read = serial_read,
+	.write = serial_write,
+	.seek = NULL,
+	.open = NULL,
+	.close = NULL,
+	.flush = NULL
+};
+
+int serial_init(serial_port port, char* protocol, unsigned int bauds, int flags)
+{
+	int ret = 0;
+	
+	klog("Initialisation du port série...");
+	
+	/* Désactive les interruptions */
+	write_register(port, INTERRUPT_ENABLE, 0x00);
+		
+	/* Configuration du controleur */ 
+	if(set_baud_rate(port, bauds) == 0)
+		ret = -1;
+		
+	if(set_protocol(port, protocol) != 0)
+		ret = -1;
+	
+	/* Active la FIFO */
+	write_register(port, FIFO_CTRL, FIFO_ENABLE 	| 
+									RCVR_FIFO_RESET | 
+									XMIT_FIFO_RESET |
+									RCVR_TRIGGER_14);
+									
+	/* On note quelque part qu'on a bien initialisé le controleur */
+	flags_array[port] = ret?0:1;
+	flags_array[port] |= flags;
+	
+	/* On initialise les buffers du port */
+	rx_start[port] = 0;
+	rx_end[port] = 0;
+	rx_size[port] = 0;
+	
+	tx_start[port] = 0;
+	tx_end[port] = 0; 
+	tx_size[port] = 0;
+	
+	/* Active les interruption (DEBUG) 
+	 * Note: A l'initialisation on n'active que l'interruption de 
+	 * réception, celle de transmission sera activée quand on voudra
+	 * envoyer des données.
+	 */
+	write_register(port, INTERRUPT_ENABLE,	ERBFI); /* Cf. serial_mask.h */
+	
+	
+	/* Enregistre le driver */
+	if(register_driver("serial", &di) != 0)
+		kerr("driver registering failed");
+	
 	return ret;
 }
 	

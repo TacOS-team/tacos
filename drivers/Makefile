@@ -5,7 +5,7 @@ SRCS=*/*.c
 
 all: libdrivers
 
-libdrivers: mouse/mouse.o keyboard/keyboard.o floppy/floppy.o floppy/floppy_interrupt.o floppy/floppy_utils.o floppy/floppy_motor.o floppy/floppy_dma.o beeper/beeper.o serial/serial.o pci/pci.o pci/pci_config.o tty/tty.o video/video.o video/console.o ethernet/rtl8139.o
+libdrivers: mouse/mouse.o keyboard/keyboard.o floppy/floppy.o floppy/floppy_interrupt.o floppy/floppy_utils.o floppy/floppy_motor.o floppy/floppy_dma.o beeper/beeper.o pci/pci.o pci/pci_config.o tty/tty.o video/video.o video/console.o ethernet/rtl8139.o
 	  $(AR) r ../lib/$@.a $^
 
 %.o: %.c
@@ -71,11 +71,6 @@ pci/pci_config.o: ../include/pci_config.h ../include/pci_types.h
 pci/pci_config.o: pci/pci_vendor.h ../libc/include/stdio.h
 pci/pci_config.o: ../libc/include/fcntl.h ../libc/include/libio.h
 pci/pci_config.o: ../libc/include/stdarg.h
-serial/serial.o: ../include/interrupts.h ../include/types.h
-serial/serial.o: ../include/ioports.h ../include/serial.h
-serial/serial.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-serial/serial.o: ../libc/include/libio.h ../libc/include/stdarg.h
-serial/serial.o: ../include/klog.h serial/serial_masks.h
 tty/tty.o: ../include/tty.h ../include/types.h ../kernel/include/kfcntl.h
 tty/tty.o: ../libc/include/libio.h ../libc/include/fcntl.h
 tty/tty.o: ../kernel/include/kprocess.h ../include/process.h

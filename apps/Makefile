@@ -35,7 +35,7 @@ shell.o: ../libc/include/stdio.h ../libc/include/stdarg.h
 shell.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 shell.o: ../libc/include/string.h ../libc/include/time.h
 shell.o: include/shell_utils.h include/apps.h ../include/sem.h
-shell.o: ../include/debug.h ../include/serial.h ../libc/include/unistd.h
+shell.o: ../include/debug.h ../libc/include/unistd.h
 shell_utils.o: ../include/types.h ../libc/include/stdio.h
 shell_utils.o: ../libc/include/fcntl.h ../libc/include/libio.h
 shell_utils.o: ../libc/include/stdarg.h ../libc/include/stdlib.h

@@ -3,7 +3,7 @@ CFLAGS=-W -Wall -g -ffreestanding -nostdlib -nostdinc -nostartfiles -nodefaultli
 
 SRCS = *.c
 
-all: boot.o exception_wrappers.o interrupts_wrappers.o kstdio.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o kprocess.o pagination.o kpanic.o ksyscall.o vmm.o kmalloc.o fat.o fpu.o vm86.o ksem.o kfcntl.o kunistd.o ksignal.o round_robin.o events.o clock.o i8254.o kdriver.o dummy_driver.o
+all: boot.o exception_wrappers.o interrupts_wrappers.o kstdio.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o kprocess.o pagination.o kpanic.o ksyscall.o vmm.o kmalloc.o fat.o fpu.o vm86.o ksem.o kfcntl.o kunistd.o ksignal.o round_robin.o events.o clock.o i8254.o kdriver.o drivers/dummy_driver.o drivers/serial.o
 
 boot.o: boot.S
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) -fno-stack-protector
@@ -68,10 +68,10 @@ kernel.o: ../include/floppy.h include/kpanic.h ../include/kmalloc.h
 kernel.o: ../include/ioports.h include/msr.h include/kfat.h ../include/fat.h
 kernel.o: include/fpu.h include/vm86.h ../include/beeper.h ../include/debug.h
 kernel.o: ../include/shell.h ../include/syscall.h include/ksem.h
-kernel.o: ../include/video.h ../include/serial.h ../include/console.h
-kernel.o: ../include/tty.h include/ksignal.h include/round_robin.h
-kernel.o: ../include/rtl8139.h ../include/klog.h
-kernel.o: include/drivers/dummy_driver.h
+kernel.o: ../include/video.h ../include/console.h ../include/tty.h
+kernel.o: include/ksignal.h include/round_robin.h ../include/rtl8139.h
+kernel.o: ../include/klog.h include/drivers/dummy_driver.h
+kernel.o: include/drivers/serial.h
 kfcntl.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 kfcntl.o: ../libc/include/fcntl.h ../include/types.h ../include/pagination.h
 kfcntl.o: ../include/vmm.h ../include/signal.h include/ksyscall.h
