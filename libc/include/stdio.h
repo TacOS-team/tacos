@@ -239,6 +239,8 @@ int getchar(void);
 
 int fflush(FILE *stream);
 
+int fclose(FILE* fd);
+
 FILE *fopen(const char *path, const char *mode);
 FILE *fdopen(int fd, const char *mode);
 FILE *freopen(const char *path, const char *mode, FILE *stream);

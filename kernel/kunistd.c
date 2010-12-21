@@ -37,30 +37,42 @@
 #include <types.h>
 #include <libio.h>
 #include <kfcntl.h>
+#include <klog.h>
 
 SYSCALL_HANDLER3(sys_write, uint32_t fd, const void *buf, size_t *c) {
 	process_t * process = get_current_process();
 	ssize_t *t = (ssize_t*)c;
-
 	open_file_descriptor *ofd;
 
 	if (process->fd[fd].used) {
 		ofd = process->fd[fd].ofd;
-
-		*t = ofd->write(ofd, buf, *c);
+		
+		if(ofd->write == NULL)
+		{
+			kerr("No \"write\" method for this device.");
+			*t = -1;
+		}
+		else
+			*t = ofd->write(ofd, buf, *c);
 	}
 }
 
 SYSCALL_HANDLER3(sys_read, uint32_t fd, const void *buf, size_t *c) {
 	process_t * process = get_current_process();
 	ssize_t *t = (ssize_t*)c;
-
+	
 	open_file_descriptor *ofd;
 
 	if (process->fd[fd].used) {
 		ofd = process->fd[fd].ofd;
-
-		*t = ofd->read(ofd, (void*) buf, *c);
+		
+		if(ofd->read == NULL)
+		{
+			kerr("No \"read\" method for this device.");
+			*t = -1;
+		}
+		else
+			*t = ofd->read(ofd, (void*) buf, *c);
 	}
 }
 
@@ -71,7 +83,10 @@ SYSCALL_HANDLER3(sys_seek, uint32_t fd, long *offset, int *whence) {
 
 	if (process->fd[fd].used) {
 		ofd = process->fd[fd].ofd;
-
-		*whence = ofd->seek(ofd, *offset, *whence);
+		
+		if(ofd->seek == NULL)
+			kerr("No \"seek\" method for this device.");
+		else
+			*whence = ofd->seek(ofd, *offset, *whence);
 	}
 }

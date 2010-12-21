@@ -64,6 +64,7 @@
 #include <drivers/serial.h>
 #include <kdriver.h>
 #include <klog.h>
+#include <kfcntl.h>
 #include "serial_masks.h"
 
 //#define _DEBUG_
@@ -207,7 +208,7 @@ size_t serial_read(open_file_descriptor* odf, char* buffer, size_t size)
 {
 	char* ptr = buffer;
 	uint32_t i = 0;
-	klog("serial_read");
+	
 	/* Disons qu'on sera bloquant en lecture */
 	while(rx_size[0]==0){}
 	
@@ -221,6 +222,7 @@ size_t serial_read(open_file_descriptor* odf, char* buffer, size_t size)
 		
 		ptr++;
 	}
+	klog("serial_read %s bytes.", i);
 	return i;
 }
 

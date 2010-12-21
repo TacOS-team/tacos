@@ -56,8 +56,8 @@ kdriver.o: ../include/signal.h include/ksyscall.h ../libc/include/string.h
 kernel.o: include/multiboot.h include/idt.h ../include/types.h
 kernel.o: include/i8259.h ../libc/include/stdio.h ../libc/include/fcntl.h
 kernel.o: ../libc/include/libio.h ../libc/include/stdarg.h
-kernel.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-kernel.o: ../include/kunistd.h ../libc/include/string.h ../include/memory.h
+kernel.o: ../libc/include/stdlib.h ../libc/include/malloc.h include/kunistd.h
+kernel.o: ../libc/include/string.h ../include/memory.h
 kernel.o: ../include/pagination.h include/gdt.h include/exception.h
 kernel.o: ../include/interrupts.h ../include/pci.h ../include/pci_types.h
 kernel.o: ../include/pci_config.h include/scheduler.h ../include/process.h
@@ -79,7 +79,7 @@ kfcntl.o: include/scheduler.h ../libc/include/stdio.h
 kfcntl.o: ../libc/include/stdarg.h include/kfat.h ../include/fat.h
 kfcntl.o: include/kfcntl.h ../libc/include/string.h ../include/kmalloc.h
 kfcntl.o: include/kdriver.h ../include/keyboard.h ../include/console.h
-kfcntl.o: ../include/tty.h
+kfcntl.o: ../include/tty.h ../include/klog.h
 kmalloc.o: ../include/types.h ../libc/include/malloc.h ../include/memory.h
 kmalloc.o: ../include/vmm.h ../include/kmalloc.h
 kpanic.o: ../libc/include/stdio.h ../libc/include/fcntl.h
@@ -120,7 +120,7 @@ ksyscall.o: ../include/klog.h
 kunistd.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 kunistd.o: ../libc/include/fcntl.h ../include/types.h ../include/pagination.h
 kunistd.o: ../include/vmm.h ../include/signal.h include/ksyscall.h
-kunistd.o: include/scheduler.h include/kfcntl.h
+kunistd.o: include/scheduler.h include/kfcntl.h ../include/klog.h
 mbr.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 mbr.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 mbr.o: ../include/floppy.h include/mbr.h

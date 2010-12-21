@@ -46,3 +46,9 @@ int open(const char *pathname, int flags) {
 	
 	return id;
 }
+
+int close(int id) {
+	int ret;
+	syscall(SYS_CLOSE,id, &ret, NULL);
+	return ret;
+}

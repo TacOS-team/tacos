@@ -78,8 +78,10 @@ FILE *fopen(const char *path, const char *mode) {
 	if (fileno < 0) return NULL;
 
 	// Va chercher dans le process le file_list pour chainer comme il faut.
+	
 	process_t *current_process = get_process(get_pid());
 	FILE *stream = malloc(sizeof(FILE));
+	/* XXX: Userspace écrit dans kernel space ici, moche moche moche */
 	stream->_chain = current_process->file_list;
 	current_process->file_list = stream;
 

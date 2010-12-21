@@ -44,11 +44,11 @@ int main(int argc, char** argv)
 	fd = fopen("$serial", "rw");
 	if(fd == NULL)
 		printf("fail\n");
-	while(1)
+	while(i<5)
 	{
-		buff = getchar();
-		fprintf(fd,"%c", buff);
-		fflush(fd);
+		fprintf(fd, "abc\n");
+		i++;
 	}
+	fclose(fd);
 	return 0;
 }	

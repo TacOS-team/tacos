@@ -53,6 +53,7 @@
 #define SYS_HLT 14
 #define SYS_SIGNAL 15
 #define SYS_SIGPROCMASK 16
+#define SYS_CLOSE 17
 
 void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3);
 

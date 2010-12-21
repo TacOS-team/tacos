@@ -1,5 +1,4 @@
 /**
-/**
  * @file ksignal.c
  *
  * @author TacOS developers 

@@ -1,5 +1,5 @@
 /**
- * @file kdriver.h
+ * @file fopen.c
  *
  * @author TacOS developers 
  *
@@ -29,27 +29,14 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Define "fclose" method
  */
 
-#ifndef _KDRIVER_H
-#define _KDRIVER_H
 
-#include <types.h>
-#include <kfcntl.h>
+#include <fcntl.h>
+#include <process.h>
 
-typedef struct {
-	size_t (*read)(open_file_descriptor *,void*, size_t);
-	size_t (*write)(open_file_descriptor *, const void*, size_t);
-	int (*seek) (open_file_descriptor *, long, int);
-	int (*ioctl) (open_file_descriptor*, unsigned int, unsigned long);
-	int (*open) (open_file_descriptor*);
-	int (*close) (open_file_descriptor*);
-	int (*flush) (open_file_descriptor*);
-}driver_interfaces;
-
-void init_driver_list();
-driver_interfaces* find_driver(char* name);
-int register_driver(const char* name, driver_interfaces* di);
-
-#endif /* _KDRIVER_H */
+int fclose(FILE* stream)
+{
+	close(stream->_fileno);
+}

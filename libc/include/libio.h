@@ -45,7 +45,7 @@
 #define FOPEN_MAX 500
 
 #define _IO_MAGIC 0xFBAD0000 /* Magic number (je le garde par compatibilité) */
-#define _IO_MAGIC_MASK 0xFFFF0000 /* Pour filter le magic number */
+#define _IO_MAGIC_MASK 0xFFFF0000 /* Pour filtrer le magic number */
 #define _IO_UNBUFFERED 2 
 #define _IO_LINE_BUF 0x200 
 // TODO : définir d'autres flags (cf libc)

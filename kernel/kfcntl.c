@@ -44,6 +44,7 @@
 #include <keyboard.h>
 #include <console.h>
 #include <tty.h>
+#include <klog.h>
 
 void init_stdfd(process_t *new_proc) {
     struct _file_descriptor *fd0 = &(new_proc->fd[0]);
@@ -105,9 +106,19 @@ SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags) {
 		di = find_driver(path+1);
 		if(di != NULL)
 		{
+			if( di->open == NULL )
+				kerr("No \"open\" method for device %s.", path+1);
+			else
+				di->open(process->fd[i].ofd);
+				
 			process->fd[i].ofd->write = di->write;
 			process->fd[i].ofd->read = di->read;
 			process->fd[i].ofd->seek = di->seek;
+			process->fd[i].ofd->ioctl = di->ioctl;
+			process->fd[i].ofd->open = di->open;
+			process->fd[i].ofd->close = di->close;
+			process->fd[i].ofd->flush = di->flush;
+			
 			*((int *)fd_id) = i;
 		}
 		else
@@ -125,3 +136,18 @@ SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags) {
 	}
 }
 
+SYSCALL_HANDLER2(sys_close, uint32_t fd_id, uint32_t* ret)
+{
+	process_t * process = get_current_process();
+	*ret = -1;
+	open_file_descriptor *ofd;
+
+	if (process->fd[fd_id].used) {
+		ofd = process->fd[fd_id].ofd;
+
+		if(ofd->seek == NULL)
+			kerr("No \"close\" method for this device.");
+		else
+			*ret = ofd->close(ofd);
+	}
+}

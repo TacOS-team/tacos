@@ -40,9 +40,10 @@
  */
 
 #include <types.h>
+#include <ksyscall.h>
 
-void sys_write(uint32_t fd, uint32_t p_buf, uint32_t count);
-void sys_read(uint32_t fd, uint32_t p_buf, uint32_t count);
-void sys_seek(uint32_t fd, uint32_t p_offset, uint32_t p_whence);
+SYSCALL_HANDLER3(sys_write, uint32_t fd, const void *buf, size_t *c);
+SYSCALL_HANDLER3(sys_read, uint32_t fd, const void *buf, size_t *c);
+SYSCALL_HANDLER3(sys_seek, uint32_t fd, long *offset, int *whence);
 
 #endif

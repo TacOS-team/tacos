@@ -112,7 +112,7 @@ int register_driver(const char* name, driver_interfaces* di)
 			/* Pas de strdup dans le kernel, try again
 			driver_list[i].name = strdup(name);
 			*/
-			driver_list[i].name = name;
+			driver_list[i].name = (char*)name;
 			driver_list[i].di = di;
 			done = 1;
 		}

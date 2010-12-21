@@ -74,7 +74,9 @@
 #include <round_robin.h>
 #include <rtl8139.h>
 #include <klog.h>
+#include <kdriver.h>
 
+/* Includes des drivers */
 #include <drivers/dummy_driver.h>
 #include <drivers/serial.h>
 
@@ -179,6 +181,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_SIGNAL, 	(syscall_handler_t) sys_signal);
 	syscall_set_handler(SYS_SIGPROCMASK, 	(syscall_handler_t) sys_sigprocmask);
 	syscall_set_handler(SYS_KILL, (syscall_handler_t) sys_kill);
+	syscall_set_handler(SYS_CLOSE, (syscall_handler_t) sys_close);
 	
 	/* Initialisation des drivers */
 	klog("loading drivers...");
