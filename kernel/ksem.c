@@ -199,12 +199,16 @@ int ksemcreate(uint8_t key)
 
 int ksemcreate_without_key(uint8_t *key)
 {
-    *key = 0;
+	
+    uint8_t new_key = 0;
 
-    while (/* *key < MAX_SEM && */semaphores[*key].allocated) {
-        (*key)++;
+    while (/* *key < MAX_SEM && */semaphores[new_key].allocated) {
+        new_key++;
     }
-
+    
+	if(key != NULL)
+		*key = new_key;
+	
     return ksemcreate(*key);
 }
 

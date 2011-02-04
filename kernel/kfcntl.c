@@ -107,7 +107,7 @@ SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags) {
 		if(di != NULL)
 		{
 			if( di->open == NULL )
-				kerr("No \"open\" method for device %s.", path+1);
+				kerr("No \"open\" method for device \"%s\".", path+1);
 			else
 				di->open(process->fd[i].ofd);
 				
@@ -144,7 +144,7 @@ SYSCALL_HANDLER2(sys_close, uint32_t fd_id, uint32_t* ret)
 
 	if (process->fd[fd_id].used) {
 		ofd = process->fd[fd_id].ofd;
-
+	
 		if(ofd->seek == NULL)
 			kerr("No \"close\" method for this device.");
 		else

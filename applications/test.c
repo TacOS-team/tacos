@@ -39,14 +39,22 @@ int main(int argc, char** argv)
 {
 	int i = 0;
 	char buff;
-	
+	int age;
 	FILE* fd = NULL;
 	fd = fopen("$serial", "rw");
 	if(fd == NULL)
 		printf("fail\n");
-	while(i<5)
+	while(i<100)
 	{
-		fprintf(fd, "abc\n");
+		fprintf(fd,"Veuillez entrer votre age:");
+		fflush(fd);
+		fscanf(fd,"%d", &age);
+		printf("%d\n", age);
+		fprintf(fd,"\nVous avez %d ans!\n", age);
+		fflush(fd);
+		fflush(fd);
+		fflush(fd);
+		fflush(fd);
 		i++;
 	}
 	fclose(fd);

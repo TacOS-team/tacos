@@ -32,31 +32,10 @@
  * Description de ce que fait le fichier
  */
 
-/*      TACOS: serial.c
- *      
- *		Copyright 2010 Nicolas Floquet <nicolasfloquet@gmail.com>
- *      
- *      This program is free software; you can redistribute it and/or modify
- *      it under the terms of the GNU General Public License as published by
- *      the Free Software Foundation; either version 2 of the License, or
- *      (at your option) any later version.
- *      
- *      This program is distributed in the hope that it will be useful,
- *      but WITHOUT ANY WARRANTY; without even the implied warranty of
- *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *      GNU General Public License for more details.
- *      
- *      You should have received a copy of the GNU General Public License
- *      along with this program; if not, write to the Free Software
- *      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- *      MA 02110-1301, USA.
- */
-
 /* TODO: Suggestions de modifications:
- * 1) Changer le comportement de serial_puts: là si le buffer est plein on arrete d'envoyer, c'est peu être pas idéal...
+ * 1) Changer le comportement de serial_puts: là si le buffer est plein on arrete d'envoyer, ce n'est peu être pas idéal...
  * 2) Ajuster la taille des buffer : Arrive-t-il qu'ils soient plein? trop souvent? jamais?
  * 3) Améliorer la manière d'avoir toujours assez de place pour inserer le \r avant le \n (cf. macro TX_BUFFER_FULL)
- * 4) Remplacer l'attente active par une attente passive avec sémaphores donc 
  * */
 
 #include <interrupts.h>
@@ -64,6 +43,7 @@
 #include <drivers/serial.h>
 #include <kdriver.h>
 #include <klog.h>
+#include <ksem.h>
 #include <kfcntl.h>
 #include "serial_masks.h"
 
@@ -139,6 +119,7 @@ static int tx_size[4];
 /* Petit hack pour permettre d'avoir toujours la place pour inserer un \r avant le \n */
 #define TX_BUFFER_FULL(port) ((tx_size[port] == TX_BUFFER_SIZE-1)?1:0)
 
+static int semid;
 
 
 /**************************************
@@ -209,20 +190,23 @@ size_t serial_read(open_file_descriptor* odf, char* buffer, size_t size)
 	char* ptr = buffer;
 	uint32_t i = 0;
 	
+	/* On bloque tant qu'il n'y a rien à lire */
+	ksemP(semid);
+	
 	/* Disons qu'on sera bloquant en lecture */
 	while(rx_size[0]==0){}
 	
-	while(i<size-1 && rx_size[0] > 0)
+	while(i<size && rx_size[0] > 0)
 	{
 		/* TODO choisir le port en fonction du file */
 		*ptr = rx_buffer[0][rx_start[0]];
+		rx_size[0]--;
+		rx_start[0] = (rx_start[0]+1)%RX_BUFFER_SIZE;	
 		
-		rx_size[i]--;
-		rx_start[i] = (rx_start[i]+1)%RX_BUFFER_SIZE;	
-		
+		i++;
 		ptr++;
 	}
-	klog("serial_read %s bytes.", i);
+	klog("serial_read %d bytes.", i);
 	return i;
 }
 
@@ -293,6 +277,7 @@ void serial_isr(int id __attribute__ ((unused)))
 										kerr("Rx buffer full");
 									}
 								}
+								ksemV(semid);
 								break;
 							case INT_THR_EMPTY:
 								
@@ -461,7 +446,8 @@ static driver_interfaces di = {
 	.seek = NULL,
 	.open = NULL,
 	.close = NULL,
-	.flush = NULL
+	.flush = NULL,
+	.ioctl = NULL
 };
 
 int serial_init(serial_port port, char* protocol, unsigned int bauds, int flags)
@@ -510,6 +496,8 @@ int serial_init(serial_port port, char* protocol, unsigned int bauds, int flags)
 	/* Enregistre le driver */
 	if(register_driver("serial", &di) != 0)
 		kerr("driver registering failed");
+	
+	semid = ksemcreate(4);
 	
 	return ret;
 }
