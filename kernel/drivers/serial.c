@@ -173,10 +173,9 @@ size_t serial_write(open_file_descriptor* odf, const char* buf, size_t count)
 	char* ptr = buf;
 
 	
-	kdebug("serial_puts");
+	klog("serial_puts: %d characters", count);
 	
-	/* On va dire que si le buffer est plein on arrête, on pourrait très bien faire autrement */
-	while(*ptr!=0)
+	while(*ptr!=0 && i<count)
 	{
 		/* TODO choisir le port en fonction du file */
 		i += serial_putc(0, *ptr);

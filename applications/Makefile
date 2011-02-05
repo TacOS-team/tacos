@@ -1,4 +1,4 @@
-OBJ=cube top matrix test test_sig fiinou cat
+OBJ=cube top matrix test test_sig demo cat
 SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a 
 INCLUDES=-I../include/ -I../libc/include/
@@ -16,6 +16,9 @@ all: $(OBJ)
 		done
 
 fiinou: fiinou.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
+
+demo: demo.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
 cube: cube.o

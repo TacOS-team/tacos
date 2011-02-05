@@ -44,19 +44,10 @@ int main(int argc, char** argv)
 	fd = fopen("$serial", "rw");
 	if(fd == NULL)
 		printf("fail\n");
-	while(i<100)
-	{
-		fprintf(fd,"Veuillez entrer votre age:");
+	else {
+		fprintf(fd,"Hello RS232\n");
 		fflush(fd);
-		fscanf(fd,"%d", &age);
-		printf("%d\n", age);
-		fprintf(fd,"\nVous avez %d ans!\n", age);
-		fflush(fd);
-		fflush(fd);
-		fflush(fd);
-		fflush(fd);
-		i++;
+		fclose(fd);
 	}
-	fclose(fd);
 	return 0;
 }	

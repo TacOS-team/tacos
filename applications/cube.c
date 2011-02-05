@@ -191,11 +191,12 @@ int main()
 	rotate_point(cube[i]);
 	while(1)	
 	{
-		refresh();
+		
 		clear_buffer(buffer);
 		for(i=0; i<8; i++)
 				rotate_point(cube[i]);
 		draw_cube(buffer);
+		refresh();
 		usleep(10000);
 		
 	}

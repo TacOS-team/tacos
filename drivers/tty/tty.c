@@ -32,13 +32,6 @@
  * Description de ce que fait le fichier
  */
 
-/*
- * @file tty.c
- *
- *  Created on: 28 août 2010
- *      Author: Max
- */
-
 #include "tty.h"
 #include "ksem.h"
 #include "kprocess.h"
