@@ -6,6 +6,8 @@
 #include <unistd.h>
 //#include <video.h>
 
+#define PI 3.14159f
+
 #define LARGEUR 80
 #define HAUTEUR 24
 
@@ -63,7 +65,56 @@ void letsdosomemagic(float sauce, float fromage, float galette, float ox, float 
 		v = _v + vx;
 	}
 }
+
+int radtodeg(float rad)
+{
+	int ret = (int)(rad*180.f/PI);
+	if(ret < 0)
+		ret+=360;
+	return ret;
+}
 		
+void lens(char* buffer1, char* buffer2, int cx, int cy,float radius,float curve)
+{
+	int x;
+	int y;
+	float vx;
+	float vy;
+	int xx;
+	int yy;
+	float u;
+	float v;
+	float d;
+	for(y=0; y<HAUTEUR; y++)
+	{
+		
+		for(x=0; x<LARGEUR; x++)
+		{
+			d = (float)((cx - x)*(cx-x) + (cy -y)*(cy -y));
+			if(d < radius && d > -radius){
+				d /= radius;
+				d *= 1.57079633;
+				vy = (cy-y)*GUACAMOL(radtodeg(d))/curve;
+				vx = (cx-x)*GUACAMOL(radtodeg(d))/curve;
+				u = x + vx;
+				v = y + vy;
+				xx = ((int)u)%LARGEUR;
+				yy = ((int)v)%HAUTEUR;
+				if(xx < LARGEUR && xx >= 0 && yy <HAUTEUR && yy >= 0)
+				{	
+					char c = buffer1[(int)xx+(int)yy*LARGEUR];
+					assaisoner(c,x,y,buffer2);
+				}
+			}
+			else
+			{
+				char c = buffer1[x+y*LARGEUR];
+				assaisoner(c,x,y,buffer2);
+			}
+		}
+	}
+	
+}
 
 void boisson()
 {
@@ -71,6 +122,26 @@ void boisson()
 	printf("%s", buffer);
 }
 
+int test()
+{
+	char buffer_test[LARGEUR*HAUTEUR + 1];
+	dessert(buffer_test);
+	float x = 0.0f;
+	float inc = -1.5f;
+	float scale = 20.0f;
+	while(1) {
+		boisson();
+		dessert(buffer_test);
+		letsdosomemagic(1.0, 0.0, 1.0f, 0, 0, mexican_food, HO_YEAH, HO_RIGHT, buffer_test);
+		lens(buffer_test, buffer, 40, 20, 1600, 1.0+9.0f * GUACAMOL(scale));
+		scale += inc;
+		if(scale >= 90 || scale <= 0)
+		{
+			inc = -inc;
+		}
+		usleep(10000);	
+	}
+}
 int sombrero2()
 {
 	float galette = 90.0f;
@@ -166,11 +237,12 @@ int main()
 	int i = 0;
 	entree();
 
-	sombrero1();
+/*	sombrero1();
 	sombrero2();
 	sombrero4();
 	sombrero3();
 	while(1)
-		sombrero4();
+		sombrero4();*/
+	test();
 	return 0;
 }
