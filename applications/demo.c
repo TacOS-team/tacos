@@ -122,26 +122,6 @@ void boisson()
 	printf("%s", buffer);
 }
 
-int test()
-{
-	char buffer_test[LARGEUR*HAUTEUR + 1];
-	dessert(buffer_test);
-	float x = 0.0f;
-	float inc = -1.5f;
-	float scale = 20.0f;
-	while(1) {
-		boisson();
-		dessert(buffer_test);
-		letsdosomemagic(1.0, 0.0, 1.0f, 0, 0, mexican_food, HO_YEAH, HO_RIGHT, buffer_test);
-		lens(buffer_test, buffer, 40, 20, 1600, 1.0+9.0f * GUACAMOL(scale));
-		scale += inc;
-		if(scale >= 90 || scale <= 0)
-		{
-			inc = -inc;
-		}
-		usleep(10000);	
-	}
-}
 int sombrero2()
 {
 	float galette = 90.0f;
@@ -192,21 +172,38 @@ int sombrero3()
 {
 	float salsa = 0;	
 	float salsa2 = 359;
-	
-	while(salsa<350)	
+	float curve = 0.0f;
+	float inc = 0.0f;
+	int count = 0;
+	char buffer_test[LARGEUR*HAUTEUR + 1];
+	dessert(buffer_test);
+	while(count<=8)	
 	{
 		boisson();
 		dessert(buffer);
 		//printf("%x\n", sauce_table[(int)galette]);
-		letsdosomemagic(GUACAMOL(salsa), CHEDDAR(salsa) ,0.9f, HO_YEAH+10*GUACAMOL(salsa2), 50+10*CHEDDAR(salsa2), mexican_food, HO_YEAH, HO_RIGHT, buffer);
-			
-		salsa += .1f;
+		letsdosomemagic(GUACAMOL(salsa), CHEDDAR(salsa) ,0.9f, HO_YEAH+10*GUACAMOL(salsa2), 50+10*CHEDDAR(salsa2), mexican_food, HO_YEAH, HO_RIGHT, buffer_test);
+		lens(buffer_test, buffer, 40, 20, 1600, 3.0+2.0f * GUACAMOL(curve));	
+		salsa += .2f;
 		if(salsa > EPICEE)
 			salsa = 0;
 		
-		salsa2 -= .9f;
+		salsa2 -= 1.9f;
 		if(salsa2 < 0)
+		{
 			salsa2 = 359;
+			
+			count++;
+		}
+		if(count == 3)
+			inc = 2.0f;
+			
+		curve += inc;
+		if(curve >= 90 || curve <= 0)
+		{
+			inc = -inc;
+		}
+
 		
 	}
 }
@@ -237,12 +234,12 @@ int main()
 	int i = 0;
 	entree();
 
-/*	sombrero1();
+	sombrero1();
 	sombrero2();
 	sombrero4();
 	sombrero3();
 	while(1)
-		sombrero4();*/
+		sombrero4();
 	test();
 	return 0;
 }
