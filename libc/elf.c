@@ -50,7 +50,7 @@ int is_elf(Elf32_Ehdr* elf_header)
 	return ret;
 }
 
-int load_efl_header(Elf32_Ehdr* elf_header, FILE* fd)
+int load_elf_header(Elf32_Ehdr* elf_header, FILE* fd)
 {
 	fseek(fd, 0, SEEK_SET);	
 
@@ -90,7 +90,7 @@ size_t elf_size(FILE* fd)
 	vaddr_t start = 0xFFFFFFFF;
 	vaddr_t end = 0;
 	
-	if(load_efl_header(&elf_header, fd))
+	if(load_elf_header(&elf_header, fd))
 	{
 		for(i=0; i<elf_header.e_phnum; i++)
 		{
@@ -117,7 +117,7 @@ int load_elf(FILE* fd, void* dest)
 	
 	char* pointeur = dest;
 
-	if(load_efl_header(&elf_header, fd))
+	if(load_elf_header(&elf_header, fd))
 	{
 		for(i=0; i< elf_header.e_phnum; i++)
 		{
@@ -145,11 +145,17 @@ Elf32_File* load_elf_file(char* filename)
 	int i;
 	Elf32_File* file = NULL;
 	FILE* fd = fopen(filename, "r");
+	int strtab_index = -1;
+	int symtab_index = -1;
 	
 	if(fd != NULL) 
 	{
+		/* Allocation de la mémoire pour la structure principale et le header du fichier */
 		file = malloc(sizeof(Elf32_File));
-		load_efl_header(file->elf_header, fd);
+		file->elf_header = malloc(sizeof(Elf32_Ehdr));
+		
+		load_elf_header(file->elf_header, fd);
+		
 		if(is_elf(file->elf_header)) 
 		{
 			file->name = strdup(filename);
@@ -157,15 +163,41 @@ Elf32_File* load_elf_file(char* filename)
 			/* Allouer la mémoire pour les différents headers */
 			file->pheaders = malloc(file->elf_header->e_phnum * sizeof(Elf32_Phdr));
 			file->sheaders = malloc(file->elf_header->e_shnum * sizeof(Elf32_Shdr));
-			file->snames = malloc(file->elf_header->e_shnum * sizeof(char*));
 			
 			/* Charge les program headers */
 			for(i=0; i<file->elf_header->e_phnum; i++)
 				load_program_header(&(file->pheaders[i]), file->elf_header, i, fd);
 				
-			/* Charge les segment headers */
+			/* Charge les section headers */
 			for(i=0; i<file->elf_header->e_shnum; i++)
+			{
 				load_section_header(&(file->sheaders[i]), file->elf_header, i, fd);
+				if(file->sheaders[i].sh_type == SHT_SYMTAB)
+					symtab_index = i;
+			}
+			
+			strtab_index = 17 /*file->elf_header->e_shstrndx*/;
+			
+			/* Si on a trouvé une table de string, on la charge */
+			if(strtab_index != SHN_UNDEF)
+			{
+				
+				printf("Loading strtab...\n");
+				file->string_table = malloc(file->sheaders[strtab_index].sh_size);
+				fseek(fd, file->sheaders[strtab_index].sh_offset, SEEK_SET);
+				fread(file->string_table, file->sheaders[strtab_index].sh_size, 1, fd);
+			}
+			
+			/* Si on a trouvé une table des symboles, on la charge */
+			if(symtab_index != -1)
+			{
+				printf("Loading symbol table...\n");
+				file->sym_table = malloc(file->sheaders[symtab_index].sh_size);
+				fseek(fd, file->sheaders[symtab_index].sh_offset, SEEK_SET);
+				fread(file->sym_table, file->sheaders[symtab_index].sh_size, 1, fd);
+				file->nb_symbols = file->sheaders[symtab_index].sh_size / file->sheaders[symtab_index].sh_entsize;
+				printf("%d %d\n", file->sheaders[symtab_index].sh_size , file->sheaders[symtab_index].sh_entsize);
+			}
 			
 		}
 		else {
@@ -268,7 +300,7 @@ void print_elf_header_info(Elf32_Ehdr* elf_header)
 	printf("                       OFFSET\t SIZE\n");
 	printf("Program header table : 0x%x\t%d*0x%x\n", elf_header->e_phoff, elf_header->e_phnum , elf_header->e_phentsize);
 	printf("Section header table : 0x%x\t%d*0x%x\n", elf_header->e_shoff, elf_header->e_shnum , elf_header->e_shentsize); 
-
+	printf("String tab index: %d\n",elf_header->e_shstrndx);
 }
 
 void print_program_header_info(Elf32_Phdr* p_header)
@@ -326,8 +358,29 @@ void print_program_header_info(Elf32_Phdr* p_header)
 		flags[2] = '-';
 		
 	printf("%s\n",flags);
+}
 
 
+
+
+void print_section_header_info(Elf32_File* e_file,int index)
+{
+	printf("%s\t%d\t%d\n", &(e_file->string_table[e_file->sheaders[index].sh_name]),
+								e_file->sheaders[index].sh_size,
+								e_file->sheaders[index].sh_entsize);
+}
+
+void print_symbols(Elf32_File* e_file)
+{
+	int i = 0;
+	printf("---- SYMBOL TABLE ----\n");
+	printf("%d symbol(s) found\n", e_file->nb_symbols);
+	for(i = 0; i < e_file->nb_symbols; i++)
+	{
+		if(e_file->string_table[e_file->sym_table[i].st_name] != 0)
+			printf("%s : 0x%x\n", &(e_file->string_table[e_file->sym_table[i].st_name]),
+								e_file->sym_table[i].st_value);
+	}							
 }
 
 void elf_info(char* name)
@@ -336,12 +389,12 @@ void elf_info(char* name)
 	int i;
 	Elf32_File* efile;
 	
-	printf("Reading ELF header...");
+	printf("Reading ELF header...\n");
 	efile = load_elf_file(name);
 	
 	if(efile != NULL)
 	{
-		printf("\033[2J");
+		//printf("\033[2J");
 		fflush(stdout);
 
 		print_elf_header_info(efile->elf_header);
@@ -357,9 +410,26 @@ void elf_info(char* name)
 				print_program_header_info(&(efile->pheaders[i]));
 			}
 		}
+#if 1	
+		printf("\n\nN\tName\t\tType\n");
+		for(i=0; i<efile->elf_header->e_shnum ; i++)
+		{
+		
+			if(efile->sheaders[i].sh_type != SHT_NULL)
+			{
+				printf("#%d\t",i);
+				print_section_header_info(efile, i);
+			}
+		}
+#endif
+		//print_symbols(efile);
 	}
 	else
 	{
 		printf("not a valid ELF file!\n");
 	}
 }
+
+/* TODO
+Utiliser la bonne string table selon l'utilisation (.debug_str pour les section, .debug_pubtypes pour les symboles visiblement)
+*/

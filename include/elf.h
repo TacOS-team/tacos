@@ -216,6 +216,8 @@ typedef struct {
 	Elf32_Half		st_shndx;	/* Indice de la section contenant le symbol */
 }Elf32_Sym;
 
+
+
 /* Macros pour st_info */
 #define	ELF32_ST_BIND(i)	((i)>>4)
 #define	ELF32_ST_TYPE(i)	((i)&0xf)
@@ -250,9 +252,12 @@ typedef struct {
 	Elf32_Ehdr* elf_header;
 	
 	Elf32_Phdr* pheaders;
-	
-	char** snames;
 	Elf32_Shdr* sheaders;
+	
+	int nb_symbols;
+	Elf32_Sym* sym_table;
+	
+	char* string_table;
 	
 }Elf32_File;
 /**
