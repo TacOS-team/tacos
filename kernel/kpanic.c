@@ -60,7 +60,7 @@ void printStackTrace(uint32_t depth)
 		}
 		ebp = (uint32_t*) ebp[0];
 		if(i>=2)
-			kprintf("->0x%x : %s\n",eip, addr_to_sym(eip));
+			kprintf("->0x%x\t[%s]\n",eip, addr_to_sym(eip));
 	}
 }
 

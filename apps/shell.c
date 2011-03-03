@@ -214,6 +214,8 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	
 	 init_stdfiles(&stdin, &stdout, &stderr);
 	load_symtable();
+	printf("shell: 0x%x\n", sym_to_addr("shell"));
+	printf("exit: 0x%x\n", sym_to_addr("exit"));
 	char buffer[80];
 	
 	/* Shell misc. */

@@ -38,6 +38,7 @@
 int main(int argc, char** argv)
 {
 	int i = 0;
+	int a = 1/i;
 	char buff;
 	int age;
 	FILE* fd = NULL;

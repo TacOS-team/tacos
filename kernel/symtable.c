@@ -13,6 +13,7 @@ typedef struct
 static symbol_t* symtable = NULL;
 static int nb_symbols = 0;
 const char undef[]="???";
+const char userland[]= "@userland";
 
 static void swap_elements(int i, int j)
 {
@@ -87,14 +88,23 @@ int load_symtable()
 		//file->sym_table[i].st_value;
 	}
 	sort_array();
-	for(i=0; i<nb_symbols; i++)
-		klog("%s : 0x%x", symtable[i].name,symtable[i].addr);
-	
 }
 
 paddr_t sym_to_addr(char* symbol)
 {
-	
+	int found = 0;
+	int i = 0;
+	paddr_t res = 0;
+	while(!found & i < nb_symbols)
+	{
+		if(strcmp(symbol, symtable[i]) == 0)
+		{
+			found = 1;
+			res = symtable[i].addr;
+		}
+		i++;
+	}
+	return res;
 }
 
 char* addr_to_sym(paddr_t addr)
@@ -104,15 +114,16 @@ char* addr_to_sym(paddr_t addr)
 	char* res = NULL;
 	while(!found & i < nb_symbols-1)
 	{
-		if(addr > symtable[i].addr && addr < symtable[i+1].addr)
+		if(addr >= symtable[i].addr && addr < symtable[i+1].addr)
 		{
 			found = 1;
 			res = symtable[i].name;
 		}
 		i++;
 	}
-	
-	if(!found)
+	if(addr > 0x4000000)
+		res = userland;
+	else if(!found)
 		res = undef;
 	
 	return res;
