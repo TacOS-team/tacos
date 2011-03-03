@@ -176,27 +176,23 @@ Elf32_File* load_elf_file(char* filename)
 					symtab_index = i;
 			}
 			
-			strtab_index = 17 /*file->elf_header->e_shstrndx*/;
-			
+			strtab_index = 18 /*file->elf_header->e_shstrndx*/;
 			/* Si on a trouvé une table de string, on la charge */
 			if(strtab_index != SHN_UNDEF)
 			{
-				
-				printf("Loading strtab...\n");
 				file->string_table = malloc(file->sheaders[strtab_index].sh_size);
 				fseek(fd, file->sheaders[strtab_index].sh_offset, SEEK_SET);
 				fread(file->string_table, file->sheaders[strtab_index].sh_size, 1, fd);
 			}
 			
 			/* Si on a trouvé une table des symboles, on la charge */
+			
 			if(symtab_index != -1)
 			{
-				printf("Loading symbol table...\n");
 				file->sym_table = malloc(file->sheaders[symtab_index].sh_size);
 				fseek(fd, file->sheaders[symtab_index].sh_offset, SEEK_SET);
 				fread(file->sym_table, file->sheaders[symtab_index].sh_size, 1, fd);
 				file->nb_symbols = file->sheaders[symtab_index].sh_size / file->sheaders[symtab_index].sh_entsize;
-				printf("%d %d\n", file->sheaders[symtab_index].sh_size , file->sheaders[symtab_index].sh_entsize);
 			}
 			
 		}
@@ -422,7 +418,7 @@ void elf_info(char* name)
 			}
 		}
 #endif
-		//print_symbols(efile);
+		print_symbols(efile);
 	}
 	else
 	{

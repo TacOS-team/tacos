@@ -182,6 +182,13 @@ static int shell_exec_elf()
 	return exec_elf(filename, 0);
 }
 
+static int PaNiC()
+{
+	int i = 1;
+	int j = 0;
+	return i/j;
+}
+
 void print_logo()
 {
 	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
@@ -206,7 +213,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 {
 	
 	 init_stdfiles(&stdin, &stdout, &stderr);
-	
+	load_symtable();
 	char buffer[80];
 	
 	/* Shell misc. */
@@ -240,6 +247,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_fwrite, "test_fwrite");
 	add_builtin_cmd(test_fread, "test_fread");
 	add_builtin_cmd(test_fseek, "test_fseek");
+	add_builtin_cmd(PaNiC, "kpanic");
 	
 	/* Debug temporaire */
 	add_builtin_cmd(test_send_packet, "sendpacket");

@@ -126,6 +126,13 @@ void cmain (unsigned long magic, unsigned long addr) {
 	init_console();
 
 	kpanic_init();
+	
+	if(mbi->flags & MULTIBOOT_INFO_ELF_SHDR) 
+	{
+		
+	}
+	else
+		kerr("ELF section headers unavailable");
   
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
 	interrupt_set_routine(IRQ_LPT1, LPT1_routine, 0);

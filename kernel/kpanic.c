@@ -37,6 +37,7 @@
 #include <kpanic.h>
 #include <kprocess.h>
 #include <scheduler.h>
+#include <symtable.h>
 #include <console.h>
 
 #define GAME_OVER() asm("cli\n\thlt");
@@ -59,7 +60,7 @@ void printStackTrace(uint32_t depth)
 		}
 		ebp = (uint32_t*) ebp[0];
 		if(i>=2)
-			kprintf("->0x%x\n",eip);
+			kprintf("->0x%x : %s\n",eip, addr_to_sym(eip));
 	}
 }
 
