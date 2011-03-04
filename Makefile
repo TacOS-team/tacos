@@ -50,6 +50,9 @@ runqemunet: core.img
 
 runqemu: core.img
 	qemu -fda core.img -soundhw pcspk -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -net dump,file=eth.log -m 20 
+	
+runqemucurses: core.img
+	qemu -fda core.img -curses -soundhw pcspk -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -net dump,file=eth.log -m 20 
 
 runqemugdb: core.img
 	qemu -fda core.img -soundhw pcspk -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -parallel none -m 20 -s -S

@@ -127,8 +127,8 @@ void kpanic_main_report(int error_id, int error_code, process_t* badboy)
 	kprintf("In \033[31m%s (pid:%d)\033[47m\033[30m\n\n", badboy->name, badboy->pid);
 
 	kprintf("Register dump:\n");
-	kprintf("eax:0x%x\tesx:0x%x\n",eax,esp);
-	kprintf("ecx:0x%x\tebx:0x%x\n",ecx,ebp);
+	kprintf("eax:0x%x\tesp:0x%x\n",eax,esp);
+	kprintf("ecx:0x%x\tebp:0x%x\n",ecx,ebp);
 	kprintf("edx:0x%x\tesi:0x%x\n",edx,esi);
 	kprintf("ebx:0x%x\tedi:0x%x\n",ebx,edi);
 
