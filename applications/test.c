@@ -37,18 +37,7 @@
 
 int main(int argc, char** argv)
 {
-	int i = 0;
-	int a = 1/i;
-	char buff;
-	int age;
-	FILE* fd = NULL;
-	fd = fopen("$serial", "rw");
-	if(fd == NULL)
-		printf("fail\n");
-	else {
-		fprintf(fd,"Hello RS232\n");
-		fflush(fd);
-		fclose(fd);
-	}
+	char* lol = 0x10000;
+	printf(lol);
 	return 0;
 }	

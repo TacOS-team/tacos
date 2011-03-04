@@ -41,6 +41,21 @@
 #include <stdlib.h>
 #include <console.h>
 
+/* Affichage des hexa en longueur fixe, c'est plus commode */
+void itox(char *buf, int d)
+{
+	int i;
+	int tmp = d;
+	int digit;
+	for(i=0; i<8; i++)
+	{
+		digit = (char)(tmp&0x0000000f);
+		buf[7-i] = digit>9?'a'+(digit-10):'0'+(digit);
+		tmp >>= 4;
+	}
+	buf[8] = '\0';
+}
+
 void kprintf(const char *format, ...) {
 	static int n = -1;
 	if (n == -1) {
@@ -63,12 +78,15 @@ void kprintf(const char *format, ...) {
 			switch (c) {
 			case 'd':
 			case 'u':
-			case 'x':
 				itoa(buf, c, *((int *) arg++));
 				p = buf;
 				goto string;
 				break;
-
+			case 'x':
+				itox(buf,*((int *) arg++));
+				p = buf;
+				goto string;
+				break;
 			case 's':
 				p = *arg++;
 				if (!p)

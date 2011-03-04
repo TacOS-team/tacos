@@ -58,10 +58,30 @@ void printStackTrace(uint32_t depth)
 		{
 			break;
 		}
+		if(eip == 0x1)
+			break;
 		ebp = (uint32_t*) ebp[0];
-		if(i>=2)
-			kprintf("->0x%x\t[%s]\n",eip, addr_to_sym(eip));
+		if(i>=3)
+			kprintf("\x10 0x%x\t[%s]\n",eip, addr_to_sym(eip));
 	}
+}
+
+void register_dump(uint32_t* stack_ptr)
+{
+	uint32_t eax = *(stack_ptr-25);
+	uint32_t ecx = *(stack_ptr-24);
+	uint32_t edx = *(stack_ptr-23);
+	uint32_t ebx = *(stack_ptr-22);
+	uint32_t esp = *(stack_ptr-21);
+	uint32_t ebp = *(stack_ptr-20);
+	uint32_t esi = *(stack_ptr-19);
+	uint32_t edi = *(stack_ptr-18);
+	
+	kprintf("Register dump:\n");
+	kprintf("eax:0x%x\tesx:0x%x\n",eax,esp);
+	kprintf("ecx:0x%x\tebx:0x%x\n",ecx,ebp);
+	kprintf("edx:0x%x\tesi:0x%x\n",edx,esi);
+	kprintf("ebx:0x%x\tedi:0x%x\n",ebx,edi);
 }
 
 void page_fault_report(int error_code)
@@ -76,12 +96,23 @@ void page_fault_report(int error_code)
 	else
 		kprintf("Non-present page.\n");
 	
-		
-	kprintf("\n\n\tPlease press Atl-tab to continue...");
 }
+
 
 void kpanic_main_report(int error_id, int error_code, process_t* badboy)
 {
+	/* Register dump */
+	uint32_t* stack_ptr = &error_id;
+	uint32_t eax = *(stack_ptr-25);
+	uint32_t ecx = *(stack_ptr-24);
+	uint32_t edx = *(stack_ptr-23);
+	uint32_t ebx = *(stack_ptr-22);
+	uint32_t esp = *(stack_ptr-21);
+	uint32_t ebp = *(stack_ptr-20);
+	uint32_t esi = *(stack_ptr-19);
+	uint32_t edi = *(stack_ptr-18);
+	
+
     focus_console(0);
 	// background white
 	kprintf("\033[47m");
@@ -90,11 +121,17 @@ void kpanic_main_report(int error_id, int error_code, process_t* badboy)
 	// cls :
 	kprintf("\033[2J");
 
-	kprintf("                              /!\\ KERNEL PANIC /!\\\n");
+	kprintf("                              \033[31m/!\\ KERNEL PANIC /!\ \033[47m\033[30m\ \n");
 	kprintf("--------------------------------------------------------------------------------\n");
 	/* On affiche le nom du bad boy */
 	kprintf("In \033[31m%s (pid:%d)\033[47m\033[30m\n\n", badboy->name, badboy->pid);
-	
+
+	kprintf("Register dump:\n");
+	kprintf("eax:0x%x\tesx:0x%x\n",eax,esp);
+	kprintf("ecx:0x%x\tebx:0x%x\n",ecx,ebp);
+	kprintf("edx:0x%x\tesi:0x%x\n",edx,esi);
+	kprintf("ebx:0x%x\tedi:0x%x\n",ebx,edi);
+
 	printStackTrace(10);
 	
 	kprintf("\nException handled : ");
