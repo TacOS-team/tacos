@@ -37,6 +37,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+const char debug_string_sname[] = ".strtab";
+
 int is_elf(Elf32_Ehdr* elf_header)
 {
 	int ret = 0;
@@ -140,6 +142,16 @@ int load_elf(FILE* fd, void* dest)
 	return elf_header.e_entry;
 }
 
+static inline char* get_string(Elf32_File* file, int n)
+{
+	return file->string_table + n;
+}
+
+static inline char* get_debug_string(Elf32_File* file, int n)
+{
+	return file->debug_string_table + n;
+}
+
 Elf32_File* load_elf_file(char* filename)
 {
 	int i;
@@ -147,6 +159,7 @@ Elf32_File* load_elf_file(char* filename)
 	FILE* fd = fopen(filename, "r");
 	int strtab_index = -1;
 	int symtab_index = -1;
+	int found = 0;
 	
 	if(fd != NULL) 
 	{
@@ -176,7 +189,7 @@ Elf32_File* load_elf_file(char* filename)
 					symtab_index = i;
 			}
 			
-			strtab_index = 18 /*file->elf_header->e_shstrndx*/;
+			strtab_index = file->elf_header->e_shstrndx;
 			/* Si on a trouvé une table de string, on la charge */
 			if(strtab_index != SHN_UNDEF)
 			{
@@ -193,6 +206,23 @@ Elf32_File* load_elf_file(char* filename)
 				fseek(fd, file->sheaders[symtab_index].sh_offset, SEEK_SET);
 				fread(file->sym_table, file->sheaders[symtab_index].sh_size, 1, fd);
 				file->nb_symbols = file->sheaders[symtab_index].sh_size / file->sheaders[symtab_index].sh_entsize;
+				
+				/* Si on a une table des symboles, on devrait avoir aussi une table de string associés, on la charge ici */
+				i = 0;
+				while(!found && i < file->elf_header->e_shnum)
+				{
+					if(strcmp(debug_string_sname, get_string(file, file->sheaders[i].sh_name)) == 0)
+						found = 1;
+					i++;
+				}
+				if(found)
+				{
+					i--;
+					file->debug_string_table = malloc(file->sheaders[i].sh_size);
+					fseek(fd, file->sheaders[i].sh_offset, SEEK_SET);
+					fread(file->debug_string_table, file->sheaders[i].sh_size, 1, fd);
+				}
+				
 			}
 			
 		}

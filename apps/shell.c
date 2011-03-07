@@ -213,7 +213,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 {
 	
 	 init_stdfiles(&stdin, &stdout, &stderr);
-	//load_symtable();
+	load_symtable();
 	char buffer[80];
 	
 	/* Shell misc. */

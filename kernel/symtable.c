@@ -73,7 +73,7 @@ int load_symtable()
 		/* Si le symbole est une fonction... */
 		if(ELF32_ST_TYPE(file->sym_table[i].st_info) == STT_FUNC)
 		{
-			string = file->string_table + file->sym_table[i].st_name;
+			string = file->debug_string_table + file->sym_table[i].st_name;
 			len = strlen(string);
 			
 			/* Pas de strdup dans le kernel, on alloue et copie "à la main" */
@@ -81,7 +81,6 @@ int load_symtable()
 			memcpy(symtable[j].name, string , len+1); 
 			
 			symtable[j].addr = file->sym_table[i].st_value;
-			
 			
 			j++;
 		}

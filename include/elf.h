@@ -258,6 +258,7 @@ typedef struct {
 	Elf32_Sym* sym_table;
 	
 	char* string_table;
+	char* debug_string_table;
 	
 }Elf32_File;
 /**
