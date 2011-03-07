@@ -418,7 +418,7 @@ void elf_info(char* name)
 			}
 		}
 #endif
-		print_symbols(efile);
+		//print_symbols(efile);
 	}
 	else
 	{

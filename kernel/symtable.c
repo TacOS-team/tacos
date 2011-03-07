@@ -14,6 +14,7 @@ static symbol_t* symtable = NULL;
 static int nb_symbols = 0;
 const char undef[]="???";
 const char userland[]= "@userland";
+static int loaded = 0;
 
 static void swap_elements(int i, int j)
 {
@@ -88,6 +89,7 @@ int load_symtable()
 		//file->sym_table[i].st_value;
 	}
 	sort_array();
+	loaded = 1;
 }
 
 paddr_t sym_to_addr(char* symbol)
@@ -127,4 +129,9 @@ char* addr_to_sym(paddr_t addr)
 		res = undef;
 	
 	return res;
+}
+
+int is_symtable_loaded()
+{
+	return loaded;
 }

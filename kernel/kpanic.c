@@ -132,7 +132,8 @@ void kpanic_main_report(int error_id, int error_code, process_t* badboy)
 	kprintf("edx:0x%x\tesi:0x%x\n",edx,esi);
 	kprintf("ebx:0x%x\tedi:0x%x\n",ebx,edi);
 
-	printStackTrace(10);
+	if(is_symtable_loaded())
+		printStackTrace(10);
 	
 	kprintf("\nException handled : ");
 	switch(error_id)
