@@ -239,6 +239,40 @@ typedef struct {
 #define	STT_LOPROC	13
 #define	STT_HIPROC	15
 
+/***************************
+ * 
+ * RELOCATIONS
+ * 
+ ***************************/
+
+typedef struct {
+	Elf32_Addr	r_offset;
+	Elf32_Word	r_info;
+} Elf32_Rel;
+
+typedef struct {
+	Elf32_Addr	r_offset;
+	Elf32_Word	r_info;
+	Elf32_Word	r_addend;
+} Elf32_Rela;
+
+/* Macros pour r_info */
+#define ELF32_R_SYM(i)		((i)>>8)
+#define ELF32_R_TYPE(i)		((unsigned char)(i))
+#define ELF32_R_INFO(s,t)	(((s)<<8)+(unsigned char)(t))
+
+/* Valeurs pour le type contenu dans r_info */
+#define R_386_NONE		0
+#define R_386_32		1
+#define R_386_PC32		2
+#define R_386_GOT32		3
+#define R_386_PLT32		4
+#define R_386_COPY		5
+#define R_386_GLOB_DAT	6
+#define R_386_JMP_SLOT	7
+#define R_386_RELATIVE	8
+#define R_386_GOTOFF	9
+#define R_386_GOTPC		10
 
 /***************************
  * 
@@ -258,7 +292,7 @@ typedef struct {
 	Elf32_Sym* sym_table;
 	
 	char* string_table;
-	char* debug_string_table;
+	char* symbol_string_table;
 	
 }Elf32_File;
 /**
@@ -326,7 +360,18 @@ int load_elf(FILE* fd, void* dest);
  * 
  * @return pointeur vers une structure Elf32_file chargée, NULL en cas d'échec
  */
-Elf32_File* load_elf_file(char* filename);
+Elf32_File* load_elf_file(FILE* fd);
+
+
+/**
+ * @brief Trouve un symbole dans un fichier
+ * 
+ * @param Fichier dans lequel on recherche le symbole
+ * @param Symbole cherché
+ * 
+ * @return symbole recherché
+ */
+Elf32_Sym* find_symbol(Elf32_File* file, const char* symbol);
 
 /**
  * @brief Affiche des information sur le fichier elf

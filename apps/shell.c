@@ -50,6 +50,7 @@
 //#include <serial.h>
 #include <unistd.h>
 //#include <clock.h>
+#include <../kernel/include/module.h>
 
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
@@ -189,6 +190,12 @@ static int PaNiC()
 	return i/j;
 }
 
+static int modload()
+{
+	load_module("fd0:/modules/mod_test.o");
+}
+
+
 void print_logo()
 {
 	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
@@ -248,6 +255,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(test_fread, "test_fread");
 	add_builtin_cmd(test_fseek, "test_fseek");
 	add_builtin_cmd(PaNiC, "kpanic");
+	add_builtin_cmd(modload, "modload");
 	
 	/* Debug temporaire */
 	add_builtin_cmd(test_send_packet, "sendpacket");

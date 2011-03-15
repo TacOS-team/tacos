@@ -149,14 +149,13 @@ static inline char* get_string(Elf32_File* file, int n)
 
 static inline char* get_debug_string(Elf32_File* file, int n)
 {
-	return file->debug_string_table + n;
+	return file->symbol_string_table + n;
 }
 
-Elf32_File* load_elf_file(char* filename)
+Elf32_File* load_elf_file(FILE* fd)
 {
 	int i;
 	Elf32_File* file = NULL;
-	FILE* fd = fopen(filename, "r");
 	int strtab_index = -1;
 	int symtab_index = -1;
 	int found = 0;
@@ -171,7 +170,7 @@ Elf32_File* load_elf_file(char* filename)
 		
 		if(is_elf(file->elf_header)) 
 		{
-			file->name = strdup(filename);
+			/*file->name = strdup(filename);*/
 			
 			/* Allouer la mémoire pour les différents headers */
 			file->pheaders = malloc(file->elf_header->e_phnum * sizeof(Elf32_Phdr));
@@ -218,9 +217,9 @@ Elf32_File* load_elf_file(char* filename)
 				if(found)
 				{
 					i--;
-					file->debug_string_table = malloc(file->sheaders[i].sh_size);
+					file->symbol_string_table = malloc(file->sheaders[i].sh_size);
 					fseek(fd, file->sheaders[i].sh_offset, SEEK_SET);
-					fread(file->debug_string_table, file->sheaders[i].sh_size, 1, fd);
+					fread(file->symbol_string_table, file->sheaders[i].sh_size, 1, fd);
 				}
 				
 			}
@@ -231,6 +230,20 @@ Elf32_File* load_elf_file(char* filename)
 		}
 	}
 	return file;
+}
+
+Elf32_Sym* find_symbol(Elf32_File* file, const char* symbol)
+{
+	Elf32_Sym* ret = NULL;
+	int i;
+	
+	for(i = 0; i<file->nb_symbols && ret != NULL ; i++)
+	{
+		if(strcmp(file->symbol_string_table + file->sym_table[i].st_name, symbol) == 0)
+			ret = &(file->sym_table[i]);
+	}
+			
+	return ret;
 }
 
 
@@ -414,9 +427,9 @@ void elf_info(char* name)
 	
 	int i;
 	Elf32_File* efile;
-	
+	FILE* fd = fopen(name, "r");
 	printf("Reading ELF header...\n");
-	efile = load_elf_file(name);
+	efile = load_elf_file(fd);
 	
 	if(efile != NULL)
 	{

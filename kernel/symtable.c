@@ -54,9 +54,9 @@ int load_symtable()
 	int i,j, len;
 	int nb_func = 0;
 	char* string;
-	
+	FILE* fd = fopen("fd0:/system/kernel.bin", "r");
 	/* Chargement des headers de kernel.bin */
-	file = load_elf_file("fd0:/system/kernel.bin");
+	file = load_elf_file(fd);
 	
 	/* Compte le nombre de symboles de fonctions, optimisé en espace précompilation*/
 	for(i=0; i<file->nb_symbols; nb_func+=(ELF32_ST_TYPE(file->sym_table[i++].st_info) == STT_FUNC));
