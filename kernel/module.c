@@ -141,7 +141,6 @@ module_info_t* load_module(char* filename)
 						/* Si on est ici, l'entrée de relocation désigne une section, ce qui veut dire que le symbole est dans une section différente de là où se trouve la relocation */
 						/* Offset = offset section + offset symbole */
 						offset = elf_file->sheaders[elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_shndx].sh_addr + *((char*)ptr+rel[j].r_offset);
-						offset -= 4;
 					}
 					else
 					{
@@ -162,7 +161,7 @@ module_info_t* load_module(char* filename)
 							*((uint32_t*)ptr) = offset;
 							break;
 						case R_386_PC32:
-							*((uint32_t*)ptr) = offset-ptr;
+							*((uint32_t*)ptr) = offset-ptr-4; /* XXX Je ne comprend pas pourquoi on a besoin de ce -4, mais l'expérience m'a montré qu'il le fallait, à réfléchir */
 							break;
 						default:
 							kerr("ELF32_R_TYPE=%d: Not implemented yet.",ELF32_R_TYPE(rel[i].r_info));

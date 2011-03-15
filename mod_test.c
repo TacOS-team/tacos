@@ -9,27 +9,25 @@ static int a = 1;
 static char c = 'a';
 static char string[]="test";
 
-int func1(int c)
+int fibo(int depth)
 {
-	return c+func2();
-}
-
-int func2()
-{
-	a++;
-	c++;
-	kprintf("%c %s\n",c,string);
-	return a;
+	int i;
+	int a,b,c;
+	c=0;
+	b=1;
+	for(i=0; i<depth; i++)
+	{
+		a=b+c;
+		c=b;
+		b=a;
+		kprintf("fibo(%d)=%d\n",i,a);
+	}
 }
 
 
 void module_load()  
 {
-	int a = 0;
-	int b;
-	kprintf("Hello world");
-	b = func1(a);
-	b = a;
+	fibo(10);
 }
 
 
