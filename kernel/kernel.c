@@ -194,11 +194,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	klog("loading drivers...");
 	init_driver_list();
 	init_dummy();
-	if(serial_init(COM1, "8N1", 38400, ECHO_ENABLED) != 0)
-		kerr("Erreur d'initialisation de COM1 \n");
-	
-	
-	
 	
 	/* ************************** */
 	floppy_detect_drives();

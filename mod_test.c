@@ -1,42 +1,30 @@
 #include "kernel/include/module.h"
-#include "kernel/include/kstdio.h"
+#include "include/klog.h"
 
 MODULE_NAME("Module de test");
 MODULE_VERSION("0.1");
 
-
-static int a = 1;
-static char c = 'a';
-static char string[]="test";
-
-int fibo(int depth)
+int test_func()
 {
-	int i;
-	int a,b,c;
-	c=0;
-	b=1;
-	for(i=0; i<depth; i++)
-	{
-		a=b+c;
-		c=b;
-		b=a;
-		kprintf("fibo(%d)=%d\n",i,a);
-	}
+	klog("Test1");
+}
+int test_func2()
+{
+	klog("Test2");
+}
+
+int module_load()  
+{
+	klog("Loading module!!!1!");
+	test_func();
+	test_func2();
+	return 0;
 }
 
 
-void module_load()  
+int module_unload()
 {
-	fibo(10);
-}
-
-
-void module_unload()
-{
-	int a = 0;
-	int b;
-	a = a+1;
-	b = a;
+	return 0;
 }
 
 MODULE_LOAD(module_load);

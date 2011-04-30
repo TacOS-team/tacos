@@ -39,8 +39,8 @@
 
 #define MODULE_NAME(X) char __modname[] __attribute__ ((section(".modname"))) = X
 #define MODULE_VERSION(X) char __modversion[] __attribute__ ((section(".modversion"))) = X
-#define MODULE_LOAD(X) void X(void) __attribute__ ((section(".modload")))
-#define MODULE_UNLOAD(X) void X(void) __attribute__ ((section(".modunload")))
+#define MODULE_LOAD(X) int X(void) __attribute__ ((section(".modload")))
+#define MODULE_UNLOAD(X) int X(void) __attribute__ ((section(".modunload")))
 
 typedef struct {
 	

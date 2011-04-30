@@ -72,7 +72,7 @@ module_info_t* load_module(char* filename)
 		/* On compte le nombre de section à charger en mémoire, ainsi que la taille totale du module en mémoire */
 		for(i=0; i<elf_file->elf_header->e_shnum; i++)
 		{
-			if(elf_file->sheaders[i].sh_type == SHT_PROGBITS)
+			if(elf_file->sheaders[i].sh_type == SHT_PROGBITS || elf_file->sheaders[i].sh_type == SHT_NOBITS )
 			{
 				nb_progbit++;
 				total_size += elf_file->sheaders[i].sh_size;
@@ -92,6 +92,10 @@ module_info_t* load_module(char* filename)
 				fseek(fd, elf_file->sheaders[i].sh_offset, SEEK_SET);
 				fread((void*)ptr, elf_file->sheaders[i].sh_size, 1 , fd);
 				
+				if(elf_file->sheaders[i].sh_addralign > 1)
+					klog("aligned section %d -> %d", elf_file->sheaders[i].sh_addralign,ptr % elf_file->sheaders[i].sh_addralign);
+						
+				
 				/* On met l'adresse à laquelle la section a été chargée dans le header de la section, on va s'en resservir plus tard */
 				elf_file->sheaders[i].sh_addr = ptr;
 				
@@ -104,11 +108,19 @@ module_info_t* load_module(char* filename)
 					result->load_handler = ptr;
 				if(strcmp(elf_file->string_table + elf_file->sheaders[i].sh_name, ".modunload") == 0)
 					result->unload_handler = ptr;
-				if(strcmp(elf_file->string_table + elf_file->sheaders[i].sh_name, ".text") == 0)
-					klog("TEXT: %x:0x%x", i,ptr);
 
 				ptr += elf_file->sheaders[i].sh_size;
 			}
+			else if(elf_file->sheaders[i].sh_type == SHT_PROGBITS && elf_file->sheaders[i].sh_size > 0)
+			{
+				/* Les section NOBITS doivent être allouées mais on ne met rien dedans (.bss la plupart du temps)*/
+				
+				/* On met l'adresse à laquelle la section a été chargée dans le header de la section, on va s'en resservir plus tard */
+				elf_file->sheaders[i].sh_addr = ptr;
+				
+				ptr += elf_file->sheaders[i].sh_size;
+			}
+				
 		}
 		
 		/* Maintenant, on recherche les relocations */
@@ -126,30 +138,32 @@ module_info_t* load_module(char* filename)
 				
 				fseek(fd, elf_file->sheaders[i].sh_offset, SEEK_SET);
 				fread((void*)rel, elf_file->sheaders[i].sh_size, 1 , fd);
-				
-				klog("->%d",i);
+
 				for(j=0; j< elf_file->sheaders[i].sh_size/elf_file->sheaders[i].sh_entsize; j++)
 				{
 					ptr = elf_file->sheaders[i-1].sh_addr;		/* XXX NOT SAFE AT ALL */
 					if(elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_shndx == 0) /* OK */
 					{
 						/* Si on est ici, c'est que l'entrée de relocation désigne un symbole du kernel et non du module, on va le chercher la où il est */
-						offset = sym_to_addr(elf_file->symbol_string_table + elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_name);
+						offset = sym_to_addr(elf_file->symbol_string_table + elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_name) - 4;
+						//klog("Binding external symbol: %s", elf_file->symbol_string_table + elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_name);
 					}
 					else if(ELF32_ST_TYPE(elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_info)  == STT_SECTION)
 					{
 						/* Si on est ici, l'entrée de relocation désigne une section, ce qui veut dire que le symbole est dans une section différente de là où se trouve la relocation */
 						/* Offset = offset section + offset symbole */
 						offset = elf_file->sheaders[elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_shndx].sh_addr + *((char*)ptr+rel[j].r_offset);
+						/*klog("Binding symbol in %s @ 0x%x [0x%x]", 
+						     elf_file->string_table + elf_file->sheaders[elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_shndx].sh_name,
+						     elf_file->sheaders[elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_shndx].sh_addr,
+						     offset);*/
+						
 					}
 					else
 					{
 						/* Cas le plus simple, le symbole est dans la meme section que la relocation  => faux*/
-						offset = elf_file->sheaders[elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_shndx].sh_addr + elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_value;
-						klog("0x%x 0x%x",elf_file->sheaders[elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_shndx].sh_addr, rel[j].r_offset);
-						klog("rel sym 0x%x => %s (0x%x, 0x%x)", rel[j].r_info, 
-														elf_file->symbol_string_table + elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_name,
-														elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_value, offset);
+						offset = elf_file->sheaders[elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_shndx].sh_addr + elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_value - 4;
+						/*klog("Binding internal symbol: %s [0x%x]", elf_file->symbol_string_table + elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_name, offset);*/
 					}
 					
 					ptr = rel[j].r_offset + elf_file->sheaders[i-1].sh_addr;		/* XXX NOT SAFE AT ALL */
@@ -161,21 +175,21 @@ module_info_t* load_module(char* filename)
 							*((uint32_t*)ptr) = offset;
 							break;
 						case R_386_PC32:
-							*((uint32_t*)ptr) = offset-ptr-4; /* XXX Je ne comprend pas pourquoi on a besoin de ce -4, mais l'expérience m'a montré qu'il le fallait, à réfléchir */
+							*((uint32_t*)ptr) = offset-ptr; /* XXX Je ne comprend pas pourquoi on a besoin de ce -4, mais l'expérience m'a montré qu'il le fallait, à réfléchir */
 							break;
 						default:
 							kerr("ELF32_R_TYPE=%d: Not implemented yet.",ELF32_R_TYPE(rel[i].r_info));
 					}
+					
 				}
 				 
 				 free(rel);
 			}
 			
 		}
-		klog("modload addr = 0x%x", result->load_handler);
-		
+	
 		/* Execute modload, surement pas le bon endroit */
-		((void(*)())result->load_handler)();
+		/*((void(*)())result->load_handler)();*/
 		
 	}
 	else
