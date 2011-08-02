@@ -64,8 +64,10 @@ int fgetc(FILE *stream) {
 	int c = EOF;
 	char *i;
 	
+/* XXX Unused? 
 	char * pointeur;
 	pointeur = stream->_IO_read_base;
+*/
 
 	if (stream->_IO_read_ptr == NULL) {
       char * buf = (char*) malloc(1000);

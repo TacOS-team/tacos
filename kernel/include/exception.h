@@ -74,7 +74,7 @@
 
 #include <types.h>
 
-typedef void (*exception_handler_t)(int error_id, int error_code);
+typedef void (*exception_handler_t)(uint32_t error_id, uint32_t error_code);
 
 int exception_set_routine(uint8_t exception_id, exception_handler_t routine);
 int exception_disable(uint8_t exception_id);

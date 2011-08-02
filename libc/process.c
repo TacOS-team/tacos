@@ -38,6 +38,7 @@
 #include <syscall.h>
 #include <process.h>
 #include <elf.h>
+#include <string.h>
 
 #define GET_PROCESS 0
 #define GET_PROCESS_LIST 1

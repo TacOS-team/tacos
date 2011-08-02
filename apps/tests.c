@@ -317,7 +317,6 @@ int test_stdio() {
 }
 
 int test_elf() {
-	FILE* fd = NULL;
 	char filename[80];
 	scanf("%s", filename);
 	printf("Openning %s...\n", filename);

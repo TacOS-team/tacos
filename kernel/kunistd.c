@@ -38,6 +38,7 @@
 #include <libio.h>
 #include <kfcntl.h>
 #include <klog.h>
+#include <stdio.h>
 
 SYSCALL_HANDLER3(sys_write, uint32_t fd, const void *buf, size_t *c) {
 	process_t * process = get_current_process();

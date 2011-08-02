@@ -163,12 +163,6 @@ uint8_t floppy_get_type(int drive)
 
 // Récupère les lecteurs floppy disponibles en interrogeant le CMOS
 void floppy_detect_drives() {
-	uint8_t drives;
-	
-	// Lecture du registre CMOS contenant les types de lecteur disquette
-	outb(0x10, 0x70); // Selection du registre 0x10 du CMOS
-	drives = inb(0x71);
-
 	klog("Floppy drive 0: %s", drive_types[floppy_get_type(0)]);
 	klog("Floppy drive 1: %s", drive_types[floppy_get_type(1)]);
 }

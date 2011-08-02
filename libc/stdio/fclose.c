@@ -39,4 +39,12 @@
 int fclose(FILE* stream)
 {
 	close(stream->_fileno);
+	
+	/* TODO:
+	 * Upon  successful  completion  0  is  returned.  Otherwise, EOF is
+     * returned and errno is set to indicate the error.  In either  case
+     * any  further  access  (including another call to fclose()) to the
+     * stream results in undefined behavior
+     */
+	return 0;
 }

@@ -85,7 +85,9 @@ time_t time(time_t *timer)
 	if(timer != NULL)
 		*timer = date;
 	return date;*/
+	
 	//XXX
+	*timer = 0; /* To avoid unused parameter */
 	return 0;
 }
 
@@ -97,21 +99,21 @@ double difftime(time_t time1, time_t time0)
 /*
  * adapté de : http://www.raspberryginger.com/jbailey/minix/html/mktime_8c-source.html
  */
-time_t mktime(struct tm *timep)
+time_t mktime(struct tm *timep __attribute__((unused)))
 {
 	//return clock_mktime(timep);*/
 	//XXX
 	return 0;
 }
 
-struct tm *gmtime(const time_t *timer)
+struct tm *gmtime(const time_t *timer __attribute__((unused)))
 {
 	//return clock_gmtime(timer);
 	//XXX
 	return 0;
 }
 
-struct tm *localtime(const time_t *timer)
+struct tm *localtime(const time_t *timer __attribute__((unused)))
 {
 	//return gmtime(timer);
 	//XXX

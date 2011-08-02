@@ -246,8 +246,8 @@ int floppy_cylinder(int cylinder, floppy_io io_dir)
             return 0;
         }
         if(error > 1) {
-            kerr("not retrying...");
-            floppy_motor(OFF);
+            kerr("not retrying...(rcy = %0x%x, rhe = %0x%x, rse = %0x%x)", rcy, rhe, rse);
+            floppy_motor(OFF); 
             return -2;
         }
 	

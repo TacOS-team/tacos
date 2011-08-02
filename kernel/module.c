@@ -37,10 +37,13 @@
 #include <klog.h>
 #include <module.h>
 #include <kmalloc.h>
+#include <symtable.h>
 
 /* LibC */
 #include <elf.h>
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 module_info_t* load_module(char* filename)
 {
@@ -49,7 +52,8 @@ module_info_t* load_module(char* filename)
 	Elf32_File* elf_file = NULL;
 	Elf32_Rel* rel = NULL;
 	int nb_progbit = 0;
-	int i = 0, j = 0;
+	int i = 0;
+	unsigned int j = 0;
 	uint32_t offset;
 	size_t total_size = 0;
 	paddr_t ptr = (paddr_t) NULL;
@@ -101,9 +105,9 @@ module_info_t* load_module(char* filename)
 				
 				/* On en profite pour récupérer les info du module */
 				if(strcmp(elf_file->string_table + elf_file->sheaders[i].sh_name, ".modname") == 0)
-					result->name = ptr;
+					result->name = (char*) ptr;
 				if(strcmp(elf_file->string_table + elf_file->sheaders[i].sh_name, ".modversion") == 0)
-					result->version = ptr;
+					result->version = (char*) ptr;
 				if(strcmp(elf_file->string_table + elf_file->sheaders[i].sh_name, ".modload") == 0)
 					result->load_handler = ptr;
 				if(strcmp(elf_file->string_table + elf_file->sheaders[i].sh_name, ".modunload") == 0)

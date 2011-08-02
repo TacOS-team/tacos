@@ -42,13 +42,13 @@
 
 int open(const char *pathname, int flags) {
 	int id;
-	syscall(SYS_OPEN,(uint32_t)&id,(paddr_t) pathname,flags);
+	syscall(SYS_OPEN,(uint32_t) &id,(uint32_t) pathname,(uint32_t) flags);
 	
 	return id;
 }
 
 int close(int id) {
 	int ret;
-	syscall(SYS_CLOSE,id, &ret, NULL);
+	syscall(SYS_CLOSE,(uint32_t) id,(uint32_t) &ret,(uint32_t) NULL);
 	return ret;
 }

@@ -37,7 +37,6 @@
 
 int main(int argc, char** argv)
 {
-	char* lol = 0x10000;
-	printf(lol);
+	printf("%s: %d arguments\n", argv[0], argc);
 	return 0;
 }	

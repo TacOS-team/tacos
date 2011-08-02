@@ -99,7 +99,7 @@ void page_fault_report(int error_code)
 }
 
 
-void kpanic_main_report(int error_id, int error_code, process_t* badboy)
+void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t* badboy)
 {
 	/* Register dump */
 	uint32_t* stack_ptr = &error_id;
@@ -121,7 +121,7 @@ void kpanic_main_report(int error_id, int error_code, process_t* badboy)
 	// cls :
 	kprintf("\033[2J");
 
-	kprintf("                              \033[31m/!\\ KERNEL PANIC /!\ \033[47m\033[30m\ \n");
+	kprintf("                              \033[31m/!\\ KERNEL PANIC /!\\ \033[47m\033[30m \n");
 	kprintf("--------------------------------------------------------------------------------\n");
 	/* On affiche le nom du bad boy */
 	kprintf("In \033[31m%s (pid:%d)\033[47m\033[30m\n\n", badboy->name, badboy->pid);
@@ -172,7 +172,7 @@ void kpanic_main_report(int error_id, int error_code, process_t* badboy)
 }
 	
 	
-void kpanic_handler(int error_id, int error_code)
+void kpanic_handler(uint32_t error_id, uint32_t error_code)
 {
 	process_t* badboy;
 	

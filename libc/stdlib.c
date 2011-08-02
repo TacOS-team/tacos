@@ -166,7 +166,7 @@ int atoi(const char* __nptr)
 		__nptr++;
 	}
 	
-	return ret;
+	return ret*sig;
 }
 
 void itoa (char *buf, int base, int d) {

@@ -122,7 +122,7 @@ void boisson()
 	printf("%s", buffer);
 }
 
-int sombrero2()
+void sombrero2()
 {
 	float galette = 90.0f;
 	float inc = -0.5f;
@@ -145,7 +145,7 @@ int sombrero2()
 	}
 }
 
-int sombrero1()
+void sombrero1()
 {
 	float x = 0.0;
 	float galette = 0.35;
@@ -168,7 +168,7 @@ int sombrero1()
 	}
 }
 
-int sombrero3()
+void sombrero3()
 {
 	float salsa = 0;	
 	float salsa2 = 359;
@@ -208,7 +208,7 @@ int sombrero3()
 	}
 }
 
-int sombrero4()
+void sombrero4()
 {
 	float galette = 90.0f;
 	float inc = -0.5f;
@@ -231,15 +231,12 @@ int sombrero4()
 
 int main()
 {
-	int i = 0;
 	entree();
-
 	sombrero1();
 	sombrero2();
 	sombrero4();
 	sombrero3();
 	while(1)
 		sombrero4();
-	test();
 	return 0;
 }

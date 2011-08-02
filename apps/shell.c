@@ -51,6 +51,7 @@
 #include <unistd.h>
 //#include <clock.h>
 #include <../kernel/include/module.h>
+#include <symtable.h>
 
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
@@ -164,7 +165,7 @@ int ps()
 }
 
 static int watch_clock() {
-	struct timeval clock;
+	//struct timeval clock;
 
 	while(1) {
 //		clock = get_tv();
@@ -193,6 +194,7 @@ static int PaNiC()
 static int modload()
 {
 	load_module("fd0:/modules/mod_test.o");
+	return 0;
 }
 
 
@@ -262,7 +264,6 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	
 	print_logo();
 	//print_logo_serial();
-	disable_cursor(0) ;
 
 	for(;;)
 	{

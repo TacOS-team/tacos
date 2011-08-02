@@ -1,3 +1,7 @@
+#include <string.h>
+#include <stdio.h>
+
+#include <kmalloc.h>
 #include <elf.h>
 #include <symtable.h>
 #include <klog.h>
@@ -102,9 +106,9 @@ paddr_t sym_to_addr(char* symbol)
 	int found = 0;
 	int i = 0;
 	paddr_t res = 0;
-	while(!found & i < nb_symbols)
+	while((!found) && (i < nb_symbols))
 	{
-		if(strcmp(symbol, symtable[i]) == 0)
+		if(strcmp(symbol, symtable[i].name) == 0)
 		{
 			found = 1;
 			res = symtable[i].addr;
@@ -119,7 +123,7 @@ char* addr_to_sym(paddr_t addr)
 	int found = 0;
 	int i = 0;
 	char* res = NULL;
-	while(!found & i < nb_symbols-1)
+	while(!found && (i < nb_symbols-1))
 	{
 		if(addr >= symtable[i].addr && addr < symtable[i+1].addr)
 		{
@@ -129,9 +133,9 @@ char* addr_to_sym(paddr_t addr)
 		i++;
 	}
 	if(addr > 0x4000000)
-		res = userland;
+		res = (char*) userland;
 	else if(!found)
-		res = undef;
+		res = (char*) undef;
 	
 	return res;
 }
