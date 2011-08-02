@@ -5,7 +5,7 @@ USECLANG=0
 ifneq ($(USECLANG), 1)
 	HASCOLOR = $(shell if test `which colorgcc`; then echo true; else echo false; fi)
 	ifneq ($(HASCOLOR),true)
-		export CC=@printf "\033[34m   CC   $$@\033[0m\n" && gcc-4.3
+		export CC=@printf "\033[34m   CC   $$@\033[0m\n" && gcc
 	else
 		export CC=@printf "\033[34m   CC   $$@\033[0m\n" && colorgcc
 	endif
