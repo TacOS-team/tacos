@@ -1,0 +1,25 @@
+Notes sur la règle "runqemunet" du makefile:
+
+Le but de cette règle est de lancer qemu avec une configuration lui 
+permettant de connecter virtuellement la machine hôte à la machine
+virtuelle via une interface ethernet.
+L'intérêt d'utiliser un règle à part pour cela se justifie par le fait
+qu'il faut, pour que la configuration fonctionne, que la machine hôte
+dispose d'une interface TAP dont la configuration peut varier d'une
+machine à une autre.
+
+Voici les étapes à suivre pour pouvoir utiliser cette règle (pour linux BTW):
+1) Installer l'outil tunctl:
+	-Sous Archlinux, on le trouve dans le paquet "uml_utilities" du dépot Extra
+	-Sous Debian/Ubuntu, on le trouve dans le paquet uml-utilities
+	
+2) Créer l'interface tap :
+	> sudo tunctl -u user_name -t tap0 (remplacer user_name par votre nom d'utilisateur)
+	
+3) Configurer l'interface:
+	> sudo ifconfig tap0 XX.XX.XX.XX netmask XX.XX.XX.XX up
+	C'est à cette étape ou il faut voir en fonction de ce que vous avez déja sur votre PC
+	
+4) ...
+
+5) Profit! ( Optionnellement: make runqemunet et have fun! )
