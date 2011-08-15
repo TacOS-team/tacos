@@ -38,7 +38,6 @@
 #include <string.h>
 #include <kfat.h>
 #include <fcntl.h>
-#include <debug.h>
 #include <errno.h>
 #include <kmalloc.h>
 #include <klog.h>
@@ -104,6 +103,7 @@ static void read_fat() {
  * Init the FAT driver for a specific devide.
  */
 void mount_FAT() {
+	klog("mount_FAT !");
 	uint8_t sector[512];
 	floppy_read_sector(0, 0, 0, (char*) sector);
 	memcpy(&fat_info.BS, sector, sizeof(fat_BS_t));
@@ -123,11 +123,11 @@ void mount_FAT() {
 
 		fat_info.table_size = fat_info.BS.table_size_16;
 	}
-/*
-		fprintf(stderr, "table size : %d\n", fat_info.table_size);
-		fprintf(stderr, "%d bytes per logical sector\n", fat_info.BS.bytes_per_sector);
-		fprintf(stderr, "%d bytes per clusters\n", fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster);
- */
+
+
+	klog("table size : %d", fat_info.table_size);
+	klog("%d bytes per logical sector", fat_info.BS.bytes_per_sector);
+	klog("%d bytes per clusters", fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster);
 	fat_info.addr_fat = (unsigned int*) kmalloc(sizeof(unsigned int) * fat_info.BS.table_count);
 	
 	int i;
@@ -143,20 +143,20 @@ void mount_FAT() {
 
 	if (fat_info.total_data_clusters < 4086) {
 		fat_info.fat_type = FAT12;
-//			fprintf(stderr, "FAT Type : FAT12\n");
+		klog("FAT Type : FAT12\n");
 	} else if (fat_info.total_data_clusters < 65526) {
 		fat_info.fat_type = FAT16;
-//			fprintf(stderr, "FAT Type : FAT16\n");
+		klog("FAT Type : FAT16\n");
 	} else {
 		fat_info.fat_type = FAT32;
-//			fprintf(stderr, "FAT Type : FAT32\n");
+		klog("FAT Type : FAT32\n");
 	}
 
-/*		fprintf(stderr, "First FAT starts at byte %u (sector %u)\n", fat_info.addr_fat[0], fat_info.addr_fat[0] / fat_info.BS.bytes_per_sector);
-		fprintf(stderr, "Root directory starts at byte %u (sector %u)\n", fat_info.addr_root_dir, fat_info.addr_root_dir / fat_info.BS.bytes_per_sector);
-		fprintf(stderr, "Data area starts at byte %u (sector %u)\n", fat_info.addr_data, fat_info.addr_data / fat_info.BS.bytes_per_sector);
-		fprintf(stderr, "Total clusters : %d\n", fat_info.total_data_clusters);
-*/
+	klog("First FAT starts at byte %u (sector %u)", fat_info.addr_fat[0], fat_info.addr_fat[0] / fat_info.BS.bytes_per_sector);
+	klog("Root directory starts at byte %u (sector %u)", fat_info.addr_root_dir, fat_info.addr_root_dir / fat_info.BS.bytes_per_sector);
+	klog("Data area starts at byte %u (sector %u)", fat_info.addr_data, fat_info.addr_data / fat_info.BS.bytes_per_sector);
+	klog("Total clusters : %d", fat_info.total_data_clusters);
+
 
 	fat_info.file_alloc_table = (unsigned int*) kmalloc(sizeof(unsigned int) * fat_info.total_data_clusters);
 
@@ -583,10 +583,6 @@ size_t read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 //
 
 void change_dir(char * name) {
-
-}
-
-void print_working_dir() {
 
 }
 

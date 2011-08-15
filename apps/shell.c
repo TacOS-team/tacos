@@ -53,8 +53,15 @@
 #include <../kernel/include/module.h>
 #include <symtable.h>
 
+static char *path = "/";
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
+
+static int pwd_cmd()
+{
+	printf("%s", path);
+	return 0;
+}
 
 static int help_cmd()
 {
@@ -243,7 +250,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(ls_cmd, "ls");
 	add_builtin_cmd(ll_cmd, "ll");
 	add_builtin_cmd((func_ptr)print_Boot_Sector, "mount");
-	add_builtin_cmd((func_ptr)print_working_dir, "pwd");
+	add_builtin_cmd(pwd_cmd, "pwd");
 	add_builtin_cmd(cd_cmd, "cd");
 	
 	/* Tests unitaires */
@@ -269,7 +276,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	{
 		//time_t curr_time = time(NULL);
 		printf("\n");
-		print_working_dir();
+		pwd_cmd();
 		printf(">");
 		
 		fflush(stdout);
