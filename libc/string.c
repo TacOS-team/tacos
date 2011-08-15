@@ -81,7 +81,6 @@ size_t strlen(const char* s)
 	return len-1;
 }
 		
-
 int strcmp(const char *s1, const char *s2) {
 	int i = 0;
 	while (s1[i] == s2[i]) {
@@ -317,5 +316,20 @@ char *strchr(const char* s, int c)
 	}
 
 	return NULL;
+}
+
+char *strrchr(const char* s, int c)
+{
+	char * ret = NULL;
+	/* On parcourt la chaine */
+	while(*s != '\0' || *s == c) /* le *s == c permet de considérer le cas où c est le caractère null */
+	{
+		if(*s == c) { /* Si le caractère est détecté, on renvoie le pointeur. */
+			ret = (char *)s;
+		}
+		s++;
+	}
+
+	return ret;
 }
 	

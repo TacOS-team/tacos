@@ -71,6 +71,32 @@ void* memcpy(void* dest, const void* src, size_t size);
 */
 size_t strlen(const char* s);
 
+/**
+ * @brief Rechercher un caractère dans une chaîne.
+ *
+ * La fonction strchr() renvoie un pointeur sur la première occurrence du
+ * caractère c dans la chaîne s.
+ *
+ * @param s la chaîne dans laquelle on veut chercher le caractère.
+ * @param c le caractère que l'on recherche dans la chaine.
+ *
+ * @return un pointeur sur la première occurence trouvée ou NULL si absent.
+ */
+char *strchr(const char *s, int c);
+
+/**
+ * @brief Rechercher un caractère dans une chaîne.
+ *
+ * La fonction strchr() renvoie un pointeur sur la dernière occurrence du
+ * caractère c dans la chaîne s.
+ *
+ * @param s la chaîne dans laquelle on veut chercher le caractère.
+ * @param c le caractère que l'on recherche dans la chaine.
+ *
+ * @return un pointeur sur la dernière occurence trouvée ou NULL si absent.
+ */
+char *strrchr(const char *s, int c);
+
 /** 
 * @brief Compare deux chaînes.
 * 
@@ -258,19 +284,6 @@ char *strcasestr(const char *haystack, const char *needle);
  * @return un pointeur vers la nouvelle zone mémoire contenant une copie de la chaîne.
  */
 char *strdup (const char *s);
-
-/** 
- * @brief Recherche un caractère dans une sous-chaîne.
- *
- * La fonction strchr() recherche le caractère c dans la chaine s et retourne 
- * un pointeur vers la première occurrence trouvée.
- * 
- * @param s la chaîne dans laquelle on va effectuer la recherche.
- * @param c le caractère à rechercher.
- * 
- * @return l'adresse de la première occurrence trouvée.
- */
-char *strchr(const char *s, int c);
 
 /* NOT IMPLEMENTED YET
 
