@@ -204,7 +204,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	/*   Test FAT    */
 	//mount_fat_fs ();
-	mount_FAT12 ();
+	mount_FAT ();
 	
 	init_process_array();
 	

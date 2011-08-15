@@ -36,7 +36,7 @@
 #define _FAT_H_
 
 // Init FAT (a faire dans le main)
-void mount_FAT12 ();
+void mount_FAT ();
 
 // Fonctions pour le Shell
 void print_Boot_Sector ();		// fonction de debug
