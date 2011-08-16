@@ -41,13 +41,11 @@
 #include <kfcntl.h>
 #include <time.h>
 
-#define NB_CYLINDERS 80
-#define NB_HEADS 2
-#define NB_SECTORS 18 // NB Sector by Track
-
 #define SEEK_SET 0
 #define SEEK_CUR 1
 #define SEEK_END 2
+
+#define ENOENT 2
 
 // Floppy stuff.
 
