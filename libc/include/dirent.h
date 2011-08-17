@@ -1,5 +1,5 @@
 /**
- * @file syscall.h
+ * @file dirent.h
  *
  * @author TacOS developers 
  *
@@ -29,34 +29,27 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Définition de DIR et struct dirent.
  */
 
-#ifndef _SYSCALL_H_
-#define _SYSCALL_H_
+#ifndef _DIRENT_H_
+#define _DIRENT_H_
 
-#include <types.h>
+#define NAME_MAX 256
 
-#define SYS_EXIT 0
-#define SYS_GETPID 1
-#define SYS_OPEN 3
-#define SYS_KILL 4
-#define SYS_WRITE 5
-#define SYS_READ 6
-#define SYS_EXEC 7
-#define SYS_SLEEP 8
-#define SYS_SEMCTL 9
-#define SYS_VIDEO_CTL 10
-#define SYS_PROC 11
-#define SYS_VMM 12
-#define SYS_SEEK 13
-#define SYS_HLT 14
-#define SYS_SIGNAL 15
-#define SYS_SIGPROCMASK 16
-#define SYS_CLOSE 17
-#define SYS_OPENDIR 18
-#define SYS_READDIR 19
+typedef struct _DIR {
+	int iter;
+	char *path;
+} DIR;
 
-void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3);
+struct dirent {
+	char d_name[NAME_MAX];
+};
+
+DIR* opendir(const char* dirname);
+struct dirent* readdir(DIR* dirp);
+int closedir(DIR* dirp);
+
+
 
 #endif

@@ -1,5 +1,5 @@
 /**
- * @file syscall.h
+ * @file kdirent.c
  *
  * @author TacOS developers 
  *
@@ -32,31 +32,21 @@
  * Description de ce que fait le fichier
  */
 
-#ifndef _SYSCALL_H_
-#define _SYSCALL_H_
+#include <kdirent.h>
+#include <dirent.h>
+#include <kfat.h>
+#include <kmalloc.h>
+#include <string.h>
 
-#include <types.h>
+SYSCALL_HANDLER2(sys_opendir, uint32_t p_dir, uint32_t p_name) {
+	DIR** dir = (DIR**)p_dir;
+	char *name = (char*)p_name;
 
-#define SYS_EXIT 0
-#define SYS_GETPID 1
-#define SYS_OPEN 3
-#define SYS_KILL 4
-#define SYS_WRITE 5
-#define SYS_READ 6
-#define SYS_EXEC 7
-#define SYS_SLEEP 8
-#define SYS_SEMCTL 9
-#define SYS_VIDEO_CTL 10
-#define SYS_PROC 11
-#define SYS_VMM 12
-#define SYS_SEEK 13
-#define SYS_HLT 14
-#define SYS_SIGNAL 15
-#define SYS_SIGPROCMASK 16
-#define SYS_CLOSE 17
-#define SYS_OPENDIR 18
-#define SYS_READDIR 19
-
-void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3);
-
-#endif
+	if (fat_opendir(name) == 0) {
+		*dir = kmalloc(sizeof(DIR));
+		(*dir)->path = strdup(name);
+		(*dir)->iter = 0; 
+	} else {
+		*dir = NULL;				
+	}
+}

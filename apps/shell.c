@@ -32,7 +32,7 @@
  * Description de ce que fait le fichier
  */
 
-#include <fat.h>
+#include <dirent.h>
 #include <floppy.h>
 #include <kmalloc.h>
 #include <memory.h>
@@ -249,7 +249,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	//add_builtin_cmd(cat_cmd, "cat");
 	add_builtin_cmd(ls_cmd, "ls");
 	add_builtin_cmd(ll_cmd, "ll");
-	add_builtin_cmd((func_ptr)print_Boot_Sector, "mount");
+	//add_builtin_cmd((func_ptr)print_Boot_Sector, "mount");
 	add_builtin_cmd(pwd_cmd, "pwd");
 	add_builtin_cmd(cd_cmd, "cd");
 	

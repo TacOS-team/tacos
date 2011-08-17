@@ -75,6 +75,7 @@
 #include <rtl8139.h>
 #include <klog.h>
 #include <kdriver.h>
+#include <kdirent.h>
 
 /* Includes des drivers */
 #include <drivers/dummy_driver.h>
@@ -189,6 +190,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_SIGPROCMASK, 	(syscall_handler_t) sys_sigprocmask);
 	syscall_set_handler(SYS_KILL, (syscall_handler_t) sys_kill);
 	syscall_set_handler(SYS_CLOSE, (syscall_handler_t) sys_close);
+	syscall_set_handler(SYS_OPENDIR, (syscall_handler_t) sys_opendir);
 	
 	/* Initialisation des drivers */
 	klog("loading drivers...");

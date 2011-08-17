@@ -492,8 +492,16 @@ static directory_entry_t * open_file_from_path(const char *path) {
 
 
 
+int fat_opendir(char * path) {
+  directory_entry_t *f;
 
+  if ((f = open_dir_from_path(path)) == NULL)
+    return -ENOENT;
 
+  kfree(f);
+
+	return 0;
+}
 
 int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
 /*  directory_entry_t *f;

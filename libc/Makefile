@@ -22,25 +22,14 @@ depend: $(SRCS)
 # DO NOT DELETE THIS LINE -- make depend needs it
 
 ctype.o: include/ctype.h
-libio.o: include/libio.h include/fcntl.h ../include/types.h include/stdio.h
-libio.o: include/stdarg.h
+dirent.o: include/dirent.h include/stdlib.h ../include/types.h
+dirent.o: include/malloc.h
 elf.o: ../include/elf.h include/libio.h include/fcntl.h ../include/types.h
 elf.o: include/stdio.h include/stdarg.h include/string.h include/stdlib.h
 elf.o: include/malloc.h
-time.o: include/time.h ../include/types.h include/stdio.h include/fcntl.h
-time.o: include/libio.h include/stdarg.h
-stdlib.o: include/stdio.h include/fcntl.h include/libio.h ../include/types.h
-stdlib.o: include/stdarg.h include/stdlib.h include/malloc.h
-stdlib.o: ../include/memory.h ../include/pagination.h ../include/heap.h
-stdlib.o: ../include/errno.h include/ctype.h include/string.h
 fcntl.o: ../include/types.h include/fcntl.h ../include/syscall.h
-string.o: include/stdlib.h ../include/types.h include/malloc.h
-string.o: include/string.h include/ctype.h
-signal.o: ../include/signal.h ../include/types.h ../include/syscall.h
-start.o: ../include/process.h include/libio.h include/fcntl.h
-start.o: ../include/types.h ../include/pagination.h ../include/vmm.h
-start.o: ../include/signal.h include/stdlib.h include/malloc.h
-start.o: include/stdio.h include/stdarg.h
+libio.o: include/libio.h include/fcntl.h ../include/types.h include/stdio.h
+libio.o: include/stdarg.h
 malloc.o: include/stdio.h include/fcntl.h include/libio.h ../include/types.h
 malloc.o: include/stdarg.h ../include/process.h ../include/pagination.h
 malloc.o: ../include/vmm.h ../include/signal.h ../include/syscall.h
@@ -50,43 +39,56 @@ process.o: include/stdio.h include/fcntl.h include/libio.h include/stdarg.h
 process.o: ../include/syscall.h ../include/process.h ../include/pagination.h
 process.o: ../include/vmm.h ../include/signal.h ../include/elf.h
 process.o: include/string.h
+signal.o: ../include/signal.h ../include/types.h ../include/syscall.h
+start.o: ../include/process.h include/libio.h include/fcntl.h
+start.o: ../include/types.h ../include/pagination.h ../include/vmm.h
+start.o: ../include/signal.h include/stdlib.h include/malloc.h
+start.o: include/stdio.h include/stdarg.h
+stdlib.o: include/stdio.h include/fcntl.h include/libio.h ../include/types.h
+stdlib.o: include/stdarg.h include/stdlib.h include/malloc.h
+stdlib.o: ../include/memory.h ../include/pagination.h ../include/heap.h
+stdlib.o: ../include/errno.h include/ctype.h include/string.h
+string.o: include/stdlib.h ../include/types.h include/malloc.h
+string.o: include/string.h include/ctype.h
+time.o: include/time.h ../include/types.h include/stdio.h include/fcntl.h
+time.o: include/libio.h include/stdarg.h
 unistd.o: include/unistd.h ../include/types.h include/stdio.h include/fcntl.h
 unistd.o: include/libio.h include/stdarg.h ../include/syscall.h
-stdio/printf.o: include/stdio.h include/fcntl.h include/libio.h
-stdio/printf.o: ../include/types.h include/stdarg.h
-stdio/stdfiles.o: ../include/types.h include/libio.h include/fcntl.h
-stdio/stdfiles.o: include/string.h include/stdlib.h include/malloc.h
-stdio/sprintf.o: include/stdio.h include/fcntl.h include/libio.h
-stdio/sprintf.o: ../include/types.h include/stdarg.h
-stdio/fmemopen.o: include/stdio.h include/fcntl.h include/libio.h
-stdio/fmemopen.o: ../include/types.h include/stdarg.h include/stdlib.h
-stdio/fmemopen.o: include/malloc.h include/fopen.h
 stdio/fclose.o: include/fcntl.h ../include/process.h include/libio.h
 stdio/fclose.o: ../include/types.h ../include/pagination.h ../include/vmm.h
 stdio/fclose.o: ../include/signal.h
-stdio/fprintf.o: include/stdio.h include/fcntl.h include/libio.h
-stdio/fprintf.o: ../include/types.h include/stdarg.h include/string.h
-stdio/getline.o: include/stdio.h include/fcntl.h include/libio.h
-stdio/getline.o: ../include/types.h include/stdarg.h
+stdio/fmemopen.o: include/stdio.h include/fcntl.h include/libio.h
+stdio/fmemopen.o: ../include/types.h include/stdarg.h include/stdlib.h
+stdio/fmemopen.o: include/malloc.h include/fopen.h
 stdio/fopen.o: include/stdio.h include/fcntl.h include/libio.h
 stdio/fopen.o: ../include/types.h include/stdarg.h include/stdlib.h
 stdio/fopen.o: include/malloc.h include/string.h ../include/process.h
 stdio/fopen.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
-stdio/fwrite.o: include/stdio.h include/fcntl.h include/libio.h
-stdio/fwrite.o: ../include/types.h include/stdarg.h
-stdio/scanf.o: include/ctype.h include/stdarg.h include/stdlib.h
-stdio/scanf.o: ../include/types.h include/malloc.h include/stdio.h
-stdio/scanf.o: include/fcntl.h include/libio.h include/string.h
-stdio/put.o: include/stdio.h include/fcntl.h include/libio.h
-stdio/put.o: ../include/types.h include/stdarg.h include/stdlib.h
-stdio/put.o: include/malloc.h include/unistd.h
-stdio/stdio.o: include/stdio.h include/fcntl.h include/libio.h
-stdio/stdio.o: ../include/types.h include/stdarg.h include/stdlib.h
-stdio/stdio.o: include/malloc.h
-stdio/get.o: include/stdio.h include/fcntl.h include/libio.h
-stdio/get.o: ../include/types.h include/stdarg.h include/stdlib.h
-stdio/get.o: include/malloc.h include/unistd.h
+stdio/fprintf.o: include/stdio.h include/fcntl.h include/libio.h
+stdio/fprintf.o: ../include/types.h include/stdarg.h include/string.h
 stdio/fread.o: include/stdio.h include/fcntl.h include/libio.h
 stdio/fread.o: ../include/types.h include/stdarg.h
 stdio/fseek.o: include/stdio.h include/fcntl.h include/libio.h
 stdio/fseek.o: ../include/types.h include/stdarg.h include/unistd.h
+stdio/fwrite.o: include/stdio.h include/fcntl.h include/libio.h
+stdio/fwrite.o: ../include/types.h include/stdarg.h
+stdio/get.o: include/stdio.h include/fcntl.h include/libio.h
+stdio/get.o: ../include/types.h include/stdarg.h include/stdlib.h
+stdio/get.o: include/malloc.h include/unistd.h
+stdio/getline.o: include/stdio.h include/fcntl.h include/libio.h
+stdio/getline.o: ../include/types.h include/stdarg.h
+stdio/printf.o: include/stdio.h include/fcntl.h include/libio.h
+stdio/printf.o: ../include/types.h include/stdarg.h
+stdio/put.o: include/stdio.h include/fcntl.h include/libio.h
+stdio/put.o: ../include/types.h include/stdarg.h include/stdlib.h
+stdio/put.o: include/malloc.h include/unistd.h
+stdio/scanf.o: include/ctype.h include/stdarg.h include/stdlib.h
+stdio/scanf.o: ../include/types.h include/malloc.h include/stdio.h
+stdio/scanf.o: include/fcntl.h include/libio.h include/string.h
+stdio/sprintf.o: include/stdio.h include/fcntl.h include/libio.h
+stdio/sprintf.o: ../include/types.h include/stdarg.h
+stdio/stdfiles.o: ../include/types.h include/libio.h include/fcntl.h
+stdio/stdfiles.o: include/string.h include/stdlib.h include/malloc.h
+stdio/stdio.o: include/stdio.h include/fcntl.h include/libio.h
+stdio/stdio.o: ../include/types.h include/stdarg.h include/stdlib.h
+stdio/stdio.o: include/malloc.h
