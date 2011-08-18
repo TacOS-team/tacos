@@ -223,6 +223,7 @@ char * decode_long_file_name(char * name, lfn_entry_t * long_file_name) {
 }
 
 static time_t convert_datetime_fat_to_time_t(fat_date_t *date, fat_time_t *time) {
+	return 0; //XXX
 	int seconds, minutes, hours;
 
 	if (time) {
