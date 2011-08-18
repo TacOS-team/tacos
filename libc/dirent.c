@@ -34,16 +34,17 @@
 
 #include <dirent.h>
 #include <stdlib.h>
+#include <syscall.h>
 
 DIR* opendir(const char* dirname) {
 	DIR* dir = malloc(sizeof(DIR));
-	syscall(SYS_OPENDIR, (uint32_t) &dir, (uint32_t) dirname);
+	syscall(SYS_OPENDIR, (uint32_t) &dir, (uint32_t) dirname, 0);
 
 	return dir;
 }
 
 struct dirent* readdir(DIR* dirp) {
-
+	return NULL;
 }
 
 int closedir(DIR* dirp) {

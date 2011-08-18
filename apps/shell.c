@@ -86,13 +86,13 @@ static int kill_cmd()
 
 static int ls_cmd()
 {
-	list_segments(0);
+	DIR* dir = opendir(path);
+	printf("%d\n", dir);
 	return 0;
 }
 
 static int ll_cmd()
 {
-	list_segments(1);
 	return 0;
 }
 

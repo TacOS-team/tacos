@@ -433,7 +433,6 @@ static void split_dir_filename(const char * path, char * dir, char * filename) {
 }
 
 static directory_t * open_dir_from_path(const char *path) {
-
 	if (path[0] == '\0' || strcmp(path, "/") == 0)
 		return open_root_dir();
 
@@ -593,10 +592,6 @@ size_t read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 //
 
 void change_dir(char * name) {
-
-}
-
-void list_segments(int mode) {
 
 }
 

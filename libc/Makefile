@@ -4,7 +4,7 @@ SRCS = *.c */*.c
 
 all: libc
 
-libc: stdio/stdio.o stdio/fopen.o stdio/fwrite.o stdio/fmemopen.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scanf.o stdio/fprintf.o stdio/printf.o stdio/put.o stdio/sprintf.o stdio/get.o libio.o fcntl.o stdio/fread.o stdio/fseek.o malloc.o start.o stdio/stdfiles.o process.o elf.o signal.o stdio/getline.o stdio/fclose.o
+libc: stdio/stdio.o stdio/fopen.o stdio/fwrite.o stdio/fmemopen.o dirent.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scanf.o stdio/fprintf.o stdio/printf.o stdio/put.o stdio/sprintf.o stdio/get.o libio.o fcntl.o stdio/fread.o stdio/fseek.o malloc.o start.o stdio/stdfiles.o process.o elf.o signal.o stdio/getline.o stdio/fclose.o
 	$(AR) r ../lib/$@.a $^
 
 %.o: %.c
