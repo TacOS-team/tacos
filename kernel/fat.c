@@ -259,12 +259,12 @@ static void fat_dir_entry_to_directory_entry(char *filename, fat_dir_entry_t *di
 			convert_datetime_fat_to_time_t(&dir->create_date, &dir->create_time);
 }
 
-static void read_data(void * buf, size_t count, int offset) {
+static void read_data(uint8_t * buf, size_t count, int offset) {
 	int offset_sector = offset / fat_info.BS.bytes_per_sector;
 	int offset_in_sector = offset % fat_info.BS.bytes_per_sector;
 	addr_CHS_t sector_addr;
 	size_t c;
-	char * sector = kmalloc(sizeof(fat_info.BS.bytes_per_sector));
+	char * sector = kmalloc(fat_info.BS.bytes_per_sector);
 
 	while (count) {
 		sector_addr = get_CHS_from_LBA(offset_sector);
@@ -278,6 +278,8 @@ static void read_data(void * buf, size_t count, int offset) {
 			memcpy(buf, sector + offset_in_sector, c);
 			count -= c;
 			buf += c;
+			offset_in_sector = 0;
+			offset_sector++;
 		}
 	}
 }
@@ -365,7 +367,7 @@ static void open_dir(int cluster, directory_t *dir) {
 	int c = 0;
 	next = cluster;
 	while (!is_last_cluster(next)) {
-		read_data(sub_dir + c * n_dir_entries, n_dir_entries * sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+		read_data((uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
 		next = fat_info.file_alloc_table[next];
 		c++;
 	}
@@ -385,7 +387,7 @@ static directory_t * open_root_dir() {
 	} else {
 		fat_dir_entry_t *root_dir = kmalloc(sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count);
 	
-		read_data(root_dir, sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count, fat_info.addr_root_dir);
+		read_data((uint8_t*)root_dir, sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count, fat_info.addr_root_dir);
 	
 		dir->cluster = -1;
 		dir->total_entries = 0;
