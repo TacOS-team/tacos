@@ -201,7 +201,7 @@ static int PaNiC()
 
 static int modload()
 {
-	load_module("fd0:/modules/mod_test.o");
+	load_module("/modules/mod_test.o");
 	return 0;
 }
 
@@ -289,7 +289,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 		if(exec_builtin_cmd(buffer) != 0)
 		{
 			char temp[278];
-			sprintf(temp, "fd0:/bin/%s",buffer);
+			sprintf(temp, "/bin/%s", buffer);
 			if(exec_elf(temp, 0) != 0)
 				printf("commande introuvable.\n");
 		}

@@ -58,7 +58,7 @@ int load_symtable()
 	int i,j, len;
 	int nb_func = 0;
 	char* string;
-	FILE* fd = fopen("fd0:/system/kernel.bin", "r");
+	FILE* fd = fopen("/system/kernel.bin", "r");
 	
 	/* Chargement des headers de kernel.bin */
 	file = load_elf_file(fd);

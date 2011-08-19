@@ -493,24 +493,24 @@ static directory_entry_t * open_file_from_path(const char *path) {
 }
 
 int fat_opendir(char * path) {
-  directory_t *f;
+	directory_t *f;
 
-  if ((f = open_dir_from_path(path)) == NULL)
-    return -ENOENT;
+	if ((f = open_dir_from_path(path)) == NULL)
+		return -ENOENT;
 
-  kfree(f);
+	kfree(f);
 
 	return 0;
 }
 
 int fat_readdir(const char * path, int iter, char * filename) {
-  directory_t *dir;
+	directory_t *dir;
 
-  if ((dir = open_dir_from_path(path)) == NULL)
+	if ((dir = open_dir_from_path(path)) == NULL)
 		return -ENOENT;
 
-  directory_entry_t *dir_entry = dir->entries;
-  while (dir_entry) {
+	directory_entry_t *dir_entry = dir->entries;
+	while (dir_entry) {
 		if (!iter) {
 			strcpy(filename, dir_entry->name);
 			
@@ -521,98 +521,124 @@ int fat_readdir(const char * path, int iter, char * filename) {
 		dir_entry = dir_entry->next;
 	}
 
-  kfree(dir); // TODO: libérer liste chainée.
+	kfree(dir); // TODO: libérer liste chainée.
 	return 1;
 }
 
 int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
-/*  directory_entry_t *f;
+	directory_entry_t *f;
 
-  if ((f = open_file_from_path(path)) == NULL)
-    return -ENOENT;
+	if ((f = open_file_from_path(path)) == NULL) {
+		if (flags & O_CREAT) {
+			// create file.
+		} else {
+			return -1;
+		}
+	}
 
-  kfree(f);
-*/
+	ofd->first_cluster = f->cluster;
+	ofd->file_size = f->size;
+	ofd->current_cluster = ofd->first_cluster;
+	ofd->current_octet = 0;
+	ofd->current_octet_buf = 0;
+
+
+	read_data(ofd->buffer, 512, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+
+	kfree(f);
+
 	return 0;
 }
 
 // TODO: Est-ce que offset peut être négatif ? Si oui, le gérer.
 int seek_file(open_file_descriptor * ofd, long offset, int whence) {
+	switch (whence) {
+	case SEEK_SET: // depuis le debut du fichier
+		if ((unsigned long) offset < ofd->file_size) {
+			// On se met au début :
+			ofd->current_cluster = ofd->first_cluster;
+			ofd->current_octet = 0;
+			ofd->current_octet_buf = 0;
+
+			// On avance de cluster en cluster.
+			while (offset >= fat_info.BS.bytes_per_sector) {
+				offset -= fat_info.BS.bytes_per_sector;
+				ofd->current_octet += fat_info.BS.bytes_per_sector;
+				ofd->current_cluster = fat_info.file_alloc_table[ofd->current_cluster];
+			}
+
+			ofd->current_octet_buf = offset;
+			ofd->current_octet += offset;
+			read_data(ofd->buffer, 512, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+		} else {
+			return -1;
+		}
+		break;
+	case SEEK_CUR:
+		if (ofd->current_octet + offset < ofd->file_size) {
+			ofd->current_octet += offset;
+			ofd->current_octet_buf = offset;
+			while (ofd->current_octet_buf >= fat_info.BS.bytes_per_sector) {
+				ofd->current_octet_buf -= fat_info.BS.bytes_per_sector;
+				ofd->current_cluster = fat_info.file_alloc_table[ofd->current_cluster];
+			}
+			read_data(ofd->buffer, 512, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+		} else {
+			return -1;
+		}
+		break;
+	case SEEK_END:
+		if ((unsigned long) offset <= ofd->file_size) {
+			return seek_file(ofd, ofd->file_size - offset, SEEK_SET);
+		} else {
+			return -1;
+		}
+		break;
+	}
+
 	return 0;
+
 }
+
+
 
 size_t write_file(open_file_descriptor * ofd, const void * buf, size_t nb_octet) {
 	return 0;
 }
 
 size_t read_file(open_file_descriptor * ofd, void * buf, size_t count) {
-	return 0;
+	int ret = 0;
+	int j = 0;
+	
+	if ((ofd->flags & O_ACCMODE) == O_WRONLY) {
+		errno = EBADF;
+		return EOF;
+	}
+	
+	if (ofd->flags & O_DIRECT) {
+		errno = EINVAL;
+		return EOF;
+	}
+	
+	while (count--) {
+		if (ofd->current_octet == ofd->file_size) {
+			break;
+		} else {
+			char c = ofd->buffer[ofd->current_octet_buf];
+			ret++;
+			ofd->current_octet_buf++;
+			ofd->current_octet++;
+			((char*) buf)[j++] = c;
+			if (ofd->current_octet_buf >= fat_info.BS.bytes_per_sector) {
+				ofd->current_cluster = fat_info.file_alloc_table[ofd->current_cluster];
+				read_data(ofd->buffer, 512, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+				ofd->current_octet_buf = 0;
+			}
+		}
+	}
+	
+	return ret;
 }
-
-//
-// TODO: move vers le shell...
-//
-
-// void init_path() {
-// 	path.current = 0;
-// 	open_root_dir(&(path.dir_list[path.current]));
-// }
-// 
-// 
-// void change_dir(char * name) {
-// 
-// 	int errorcode;
-// 
-// 	if (strcmp(name, "..") == 0) { //XXX: Beurk. Normalement ".." est un dossier disponible...
-// 		if (path.current != 0)
-// 			path.current--;
-// 	} else {
-// 		errorcode = open_next_dir(&(path.dir_list[path.current]),
-// 				&(path.dir_list[path.current + 1]), name);
-// 		if (errorcode == 0)
-// 			path.current++;
-// 		else if (errorcode == 1)
-// 			printf("\ncd: %s aucun fichier ou dossier de ce type\n", name);
-// 		else if (errorcode == 2)
-// 			printf("\ncd: %s n'est pas un dossier\n", name);
-// 		else
-// 			printf("\ncd: erreur inconnue..\n");
-// 	}
-// 
-// }
-// 
-// void list_segments(int mode) {
-// 	int i;
-// 	//char name[14]; Inutilisé
-// 	if (mode == 1)
-// 		printf("TYPE\tNAME\t\tSIZE\tCLUSTER\n");
-// 	for (i = 0; i < path.dir_list[path.current].total_entries; i++) {
-// 		if (mode == 1) {
-// 			if ((path.dir_list[path.current].entry_attributes[i] & 0x10)
-// 					== 0x10)
-// 				printf("dir\t%s\t\t%d\t%d\n",
-// 						path.dir_list[path.current].entry_name[i],
-// 						path.dir_list[path.current].entry_size[i],
-// 						path.dir_list[path.current].entry_cluster[i]);
-// 			else
-// 				printf("file\t%s\t\t%d\t%d\n",
-// 						path.dir_list[path.current].entry_name[i],
-// 						path.dir_list[path.current].entry_size[i],
-// 						path.dir_list[path.current].entry_cluster[i]);
-// 		} else
-// 			printf("%s ", path.dir_list[path.current].entry_name[i]);
-// 	}
-// 	if (mode == 1)
-// 		printf("total: %d\n", path.dir_list[path.current].total_entries);
-// }
-// 
-// void print_working_dir() {
-// 	int i;
-// 	for (i = 0; i < path.current + 1; i++) {
-// 		printf("%s/", path.dir_list[i].name);
-// 	}
-// }
-//
 
 void change_dir(char * name) {
 
