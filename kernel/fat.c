@@ -492,10 +492,8 @@ static directory_entry_t * open_file_from_path(const char *path) {
 	return NULL;
 }
 
-
-
 int fat_opendir(char * path) {
-  directory_entry_t *f;
+  directory_t *f;
 
   if ((f = open_dir_from_path(path)) == NULL)
     return -ENOENT;
@@ -503,6 +501,28 @@ int fat_opendir(char * path) {
   kfree(f);
 
 	return 0;
+}
+
+int fat_readdir(const char * path, int iter, char * filename) {
+  directory_t *dir;
+
+  if ((dir = open_dir_from_path(path)) == NULL)
+		return -ENOENT;
+
+  directory_entry_t *dir_entry = dir->entries;
+  while (dir_entry) {
+		if (!iter) {
+			strcpy(filename, dir_entry->name);
+			
+			kfree(dir); // TODO: libérer liste chainée.
+			return 0;
+		}
+		iter--;
+		dir_entry = dir_entry->next;
+	}
+
+  kfree(dir); // TODO: libérer liste chainée.
+	return 1;
 }
 
 int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {

@@ -38,6 +38,7 @@
 #include <ksyscall.h>
 #include <types.h>
 
-SYSCALL_HANDLER2(sys_opendir, uint32_t p_dir, uint32_t p_name);
+SYSCALL_HANDLER3(sys_opendir, uint32_t p_dir, uint32_t p_name, uint32_t p_ret);
+SYSCALL_HANDLER3(sys_readdir, uint32_t p_dir, uint32_t p_entry, uint32_t p_ret);
 
 #endif

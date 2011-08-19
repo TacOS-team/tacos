@@ -186,6 +186,7 @@ typedef struct _fat_info {
 
 
 // Lecture/Ecriture Fichier
+int fat_readdir(const char * path, int iter, char * filename);
 int fat_opendir(char * path);
 int fat_open_file (char * path, open_file_descriptor * ofd, uint32_t flags);
 size_t read_file (open_file_descriptor * ofd, void * buf, size_t count);

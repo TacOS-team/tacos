@@ -38,15 +38,24 @@
 #include <kmalloc.h>
 #include <string.h>
 
-SYSCALL_HANDLER2(sys_opendir, uint32_t p_dir, uint32_t p_name) {
-	DIR** dir = (DIR**)p_dir;
+SYSCALL_HANDLER3(sys_opendir, uint32_t p_dir, uint32_t p_name, uint32_t p_ret) {
+	DIR* dir = (DIR*)p_dir;
 	char *name = (char*)p_name;
+	int *ret = (int*) p_ret;
 
 	if (fat_opendir(name) == 0) {
-		*dir = kmalloc(sizeof(DIR));
-		(*dir)->path = strdup(name);
-		(*dir)->iter = 0; 
+		dir->path = strdup(name);
+		dir->iter = 0;
+		*ret = 0;
 	} else {
-		*dir = NULL;				
+		*ret = 1;
 	}
+}
+
+SYSCALL_HANDLER3(sys_readdir, uint32_t p_dir, uint32_t p_entry, uint32_t p_ret) {
+	DIR* dir = (DIR*) p_dir;
+	struct dirent *entry = (struct dirent*) p_entry;
+	int *ret = p_ret;
+
+	*ret = fat_readdir(dir->path, dir->iter, entry->d_name);
 }

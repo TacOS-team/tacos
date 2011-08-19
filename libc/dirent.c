@@ -38,13 +38,25 @@
 
 DIR* opendir(const char* dirname) {
 	DIR* dir = malloc(sizeof(DIR));
-	syscall(SYS_OPENDIR, (uint32_t) &dir, (uint32_t) dirname, 0);
-
-	return dir;
+	int ret;
+	syscall(SYS_OPENDIR, (uint32_t) dir, (uint32_t) dirname, (uint32_t) &ret);
+	if (ret == 0) {
+		return dir;
+	}
+	return NULL;
 }
 
 struct dirent* readdir(DIR* dirp) {
-	return NULL;
+	int ret;
+	struct dirent *entry = malloc(sizeof(struct dirent));
+	syscall(SYS_READDIR, (uint32_t) dirp, (uint32_t) entry, (uint32_t) &ret);
+	if (ret == 0) {
+		dirp->iter++;
+		return entry;
+	} else {
+		free(entry);
+		return NULL;
+	}
 }
 
 int closedir(DIR* dirp) {

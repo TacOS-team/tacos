@@ -86,8 +86,11 @@ static int kill_cmd()
 
 static int ls_cmd()
 {
+	struct dirent* entry;
 	DIR* dir = opendir(path);
-	printf("%d\n", dir);
+	while((entry = readdir(dir)))
+		printf("%s ", entry->d_name);
+	closedir(dir);
 	return 0;
 }
 
@@ -100,8 +103,6 @@ static int cd_cmd()
 {
 	char buffer[80];
 	scanf("%s", buffer);
-	//printf("%sEND\n",buffer);
-	change_dir(buffer);
 	return 0;
 }
 
