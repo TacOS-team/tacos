@@ -32,7 +32,6 @@
  * Description de ce que fait le fichier
  */
 
-#include <fat.h>
 #include <floppy.h>
 #include <kmalloc.h>
 #include <process.h>

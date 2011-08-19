@@ -23,7 +23,7 @@ depend: $(SRCS)
 
 ctype.o: include/ctype.h
 dirent.o: include/dirent.h include/stdlib.h ../include/types.h
-dirent.o: include/malloc.h
+dirent.o: include/malloc.h ../include/syscall.h
 elf.o: ../include/elf.h include/libio.h include/fcntl.h ../include/types.h
 elf.o: include/stdio.h include/stdarg.h include/string.h include/stdlib.h
 elf.o: include/malloc.h

@@ -35,8 +35,6 @@
 #ifndef _KFAT_H_
 #define _KFAT_H_
 
-#include <fat.h>
-
 #include <types.h>
 #include <kfcntl.h>
 #include <time.h>
@@ -184,6 +182,8 @@ typedef struct _fat_info {
 	fat_t fat_type;
 } fat_info_t;
 
+
+void mount_FAT();
 
 // Lecture/Ecriture Fichier
 int fat_readdir(const char * path, int iter, char * filename);

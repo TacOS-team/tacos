@@ -36,10 +36,10 @@ exception.o: ../include/types.h include/idt.h include/exception.h
 fat.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 fat.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 fat.o: ../include/floppy.h ../libc/include/string.h include/kfat.h
-fat.o: ../include/fat.h include/kfcntl.h include/kprocess.h
-fat.o: ../include/process.h ../include/pagination.h ../include/vmm.h
-fat.o: ../include/signal.h include/ksyscall.h ../libc/include/time.h
-fat.o: ../include/errno.h ../include/kmalloc.h ../include/klog.h
+fat.o: include/kfcntl.h include/kprocess.h ../include/process.h
+fat.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
+fat.o: include/ksyscall.h ../libc/include/time.h ../include/errno.h
+fat.o: ../include/kmalloc.h ../include/klog.h
 fpu.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 fpu.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 fpu.o: include/fpu.h ../include/interrupts.h ../include/klog.h
@@ -50,6 +50,11 @@ idt.o: ../include/types.h include/idt.h
 interrupts.o: ../include/types.h include/idt.h include/i8259.h
 interrupts.o: ../include/interrupts.h
 kdirent.o: include/kdirent.h include/ksyscall.h ../include/types.h
+kdirent.o: ../libc/include/dirent.h include/kfat.h include/kfcntl.h
+kdirent.o: ../libc/include/libio.h ../libc/include/fcntl.h include/kprocess.h
+kdirent.o: ../include/process.h ../include/pagination.h ../include/vmm.h
+kdirent.o: ../include/signal.h ../libc/include/time.h ../include/kmalloc.h
+kdirent.o: ../libc/include/string.h
 kdriver.o: include/kdriver.h ../include/types.h include/kfcntl.h
 kdriver.o: ../libc/include/libio.h ../libc/include/fcntl.h include/kprocess.h
 kdriver.o: ../include/process.h ../include/pagination.h ../include/vmm.h
@@ -66,19 +71,19 @@ kernel.o: ../include/vmm.h ../include/signal.h ../libc/include/time.h
 kernel.o: ../include/keyboard.h include/kfcntl.h include/kprocess.h
 kernel.o: ../include/mouse.h include/events.h ../include/floppy.h
 kernel.o: include/kpanic.h ../include/kmalloc.h ../include/ioports.h
-kernel.o: include/msr.h include/kfat.h ../include/fat.h include/fpu.h
-kernel.o: include/vm86.h ../include/beeper.h ../include/debug.h
-kernel.o: ../include/shell.h ../include/syscall.h include/ksem.h
-kernel.o: ../include/video.h ../include/console.h ../include/tty.h
-kernel.o: include/ksignal.h include/round_robin.h ../include/rtl8139.h
-kernel.o: ../include/klog.h include/kdriver.h include/kdirent.h
-kernel.o: include/drivers/dummy_driver.h include/drivers/serial.h
+kernel.o: include/msr.h include/kfat.h include/fpu.h include/vm86.h
+kernel.o: ../include/beeper.h ../include/debug.h ../include/shell.h
+kernel.o: ../include/syscall.h include/ksem.h ../include/video.h
+kernel.o: ../include/console.h ../include/tty.h include/ksignal.h
+kernel.o: include/round_robin.h ../include/rtl8139.h ../include/klog.h
+kernel.o: include/kdriver.h include/kdirent.h include/drivers/dummy_driver.h
+kernel.o: include/drivers/serial.h
 kfcntl.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 kfcntl.o: ../libc/include/fcntl.h ../include/types.h ../include/pagination.h
 kfcntl.o: ../include/vmm.h ../include/signal.h include/ksyscall.h
 kfcntl.o: include/scheduler.h ../libc/include/stdio.h
-kfcntl.o: ../libc/include/stdarg.h include/kfat.h ../include/fat.h
-kfcntl.o: include/kfcntl.h ../libc/include/time.h ../libc/include/string.h
+kfcntl.o: ../libc/include/stdarg.h include/kfat.h include/kfcntl.h
+kfcntl.o: ../libc/include/time.h ../libc/include/string.h
 kfcntl.o: ../include/kmalloc.h include/kdriver.h ../include/keyboard.h
 kfcntl.o: ../include/console.h ../include/tty.h ../include/klog.h
 kmalloc.o: ../include/types.h ../libc/include/malloc.h ../include/memory.h
