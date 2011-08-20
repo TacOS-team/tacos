@@ -35,6 +35,8 @@
 #ifndef _DIRENT_H_
 #define _DIRENT_H_
 
+#include <types.h>
+
 #define NAME_MAX 256
 
 typedef struct _DIR {
@@ -46,6 +48,7 @@ struct dirent {
 	char d_name[NAME_MAX];
 };
 
+int mkdir(const char *pathname, mode_t mode);
 DIR* opendir(const char* dirname);
 struct dirent* readdir(DIR* dirp);
 int closedir(DIR* dirp);

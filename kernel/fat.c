@@ -57,6 +57,59 @@ addr_CHS_t get_CHS_from_LBA(addr_LBA_t sector_LBA) {
 	return ret;
 }
 
+static void read_data(uint8_t * buf, size_t count, int offset) {
+	int offset_sector = offset / fat_info.BS.bytes_per_sector;
+	int offset_in_sector = offset % fat_info.BS.bytes_per_sector;
+	addr_CHS_t sector_addr;
+	size_t c;
+	char * sector = kmalloc(fat_info.BS.bytes_per_sector);
+
+	while (count) {
+		sector_addr = get_CHS_from_LBA(offset_sector);
+		floppy_read_sector(sector_addr.Cylinder, sector_addr.Head,
+				sector_addr.Sector, sector);
+		c = fat_info.BS.bytes_per_sector - offset_in_sector;
+		if (count <= c) {
+			memcpy(buf, sector + offset_in_sector, count);
+			count = 0;
+		} else {
+			memcpy(buf, sector + offset_in_sector, c);
+			count -= c;
+			buf += c;
+			offset_in_sector = 0;
+			offset_sector++;
+		}
+	}
+}
+
+static void write_data(uint8_t * buf, size_t count, int offset) {
+	int offset_sector = offset / fat_info.BS.bytes_per_sector;
+	int offset_in_sector = offset % fat_info.BS.bytes_per_sector;
+	addr_CHS_t sector_addr;
+	size_t c;
+	char * sector = kmalloc(fat_info.BS.bytes_per_sector);
+
+	while (count) {
+		sector_addr = get_CHS_from_LBA(offset_sector);
+		floppy_read_sector(sector_addr.Cylinder, sector_addr.Head,
+				sector_addr.Sector, sector);
+		c = fat_info.BS.bytes_per_sector - offset_in_sector;
+		if (count <= c) {
+			memcpy(sector + offset_in_sector, buf, count);
+			count = 0;
+		} else {
+			memcpy(sector + offset_in_sector, buf, c);
+			count -= c;
+			buf += c;
+			offset_in_sector = 0;
+			offset_sector++;
+		}
+		floppy_write_sector(sector_addr.Cylinder, sector_addr.Head,
+				sector_addr.Sector, sector);
+	}
+}
+
+
 /*
  * Read the File Allocation Table.
  */
@@ -67,15 +120,7 @@ static void read_fat() {
 	int p = 0;
 	uint32_t tmp = 0;
 
-// XXX: floppy.
-	addr_CHS_t sector_addr;
-	char * p_buffer = (char*) buffer;
-	for (i = 0; i < fat_info.table_size; i++) {
-		sector_addr = get_CHS_from_LBA((fat_info.addr_fat[0] / fat_info.BS.bytes_per_sector) + i);
-		floppy_read_sector(sector_addr.Cylinder, sector_addr.Head,
-				sector_addr.Sector, p_buffer);
-		p_buffer += fat_info.BS.bytes_per_sector;
-	}
+  read_data(buffer, sizeof(buffer), fat_info.addr_fat[0]);
 
 	if (fat_info.fat_type == FAT12) {
 		// decodage FAT12
@@ -98,6 +143,40 @@ static void read_fat() {
 		}
 	}
 }
+
+static void write_fat() {
+  uint8_t buffer[fat_info.BS.bytes_per_sector * fat_info.table_size];
+  
+  uint32_t i;
+  int p = 0;
+  uint32_t tmp = 0;
+
+  if (fat_info.fat_type == FAT12) {
+    for (i = 0; i < fat_info.total_data_clusters; i += 2) {
+      tmp = (fat_info.file_alloc_table[i + 1] << 12) + (fat_info.file_alloc_table[i] & 0xFFF);
+      buffer[p++] = tmp & 0x0000FF;
+      buffer[p++] = tmp & 0x00FF00;
+      buffer[p++] = tmp & 0xFF0000;
+    }
+  } else if (fat_info.fat_type == FAT16) {
+    for (i = 0; i < fat_info.total_data_clusters; i++) {
+      buffer[i*4] = fat_info.file_alloc_table[i] & 0x00FF;
+      buffer[i*4 + 1] = fat_info.file_alloc_table[i] & 0xFF00;
+    }
+  } else if (fat_info.fat_type == FAT32) {
+    for (i = 0; i < fat_info.total_data_clusters; i++) {
+      buffer[i*4]     = fat_info.file_alloc_table[i] & 0x000000FF;
+      buffer[i*4 + 1] = fat_info.file_alloc_table[i] & 0x0000FF00;
+      buffer[i*4 + 2] = fat_info.file_alloc_table[i] & 0x00FF0000;
+      buffer[i*4 + 3] = fat_info.file_alloc_table[i] & 0xFF000000;
+    }
+  }
+ 
+  for (i = 0; i < fat_info.BS.table_count; i++) {
+    write_data(buffer, sizeof(buffer), fat_info.addr_fat[i]);
+  }
+}
+
 
 /*
  * Init the FAT driver for a specific devide.
@@ -161,6 +240,68 @@ void mount_FAT() {
 	fat_info.file_alloc_table = (unsigned int*) kmalloc(sizeof(unsigned int) * fat_info.total_data_clusters);
 
 	read_fat();
+}
+
+static void encode_long_file_name(char * name, lfn_entry_t * long_file_name, int n_entries) {
+ // TODO: Checksum.
+  long_file_name[0].seq_number = 0x40 + n_entries;
+  int i, j;
+  int last = 0;
+  for (i = n_entries - 1; i >= 0; i--) {
+    long_file_name[i].attributes = 0x0f;
+    if (i != n_entries - 1)
+      long_file_name[i].seq_number = i + 1;
+    for (j = 0; j < 5; j++) {
+      if (last) {
+        long_file_name[i].filename1[j * 2] = 0xFF;
+        long_file_name[i].filename1[j * 2 + 1] = 0xFF;
+      } else if (name[j] != '\0') {
+        long_file_name[i].filename1[j * 2] = name[i * 13 + j];
+        long_file_name[i].filename1[j * 2 + 1] = 0;
+      } else {
+        long_file_name[i].filename1[j * 2] = 0;
+        long_file_name[i].filename1[j * 2 + 1] = 0;
+        last = 1;
+      } 
+    }
+    for (j = 5; j < 11; j++) {
+      if (last) {
+        long_file_name[i].filename2[(j - 5) * 2] = 0xFF;
+        long_file_name[i].filename2[(j - 5) * 2 + 1] = 0xFF;
+      } else if (name[j] != '\0') {
+        long_file_name[i].filename2[(j - 5) * 2] = name[i * 13 + j];
+        long_file_name[i].filename2[(j - 5) * 2 + 1] = 0;
+      } else {
+        long_file_name[i].filename2[(j - 5) * 2] = 0;
+        long_file_name[i].filename2[(j - 5) * 2 + 1] = 0;
+        last = 1;
+      }
+    }
+
+    if (last) {
+      long_file_name[i].filename3[0] = 0xFF;
+      long_file_name[i].filename3[1] = 0xFF;
+    } else if (name[11] != '\0') {
+      long_file_name[i].filename3[0] = name[i * 13 + 11];
+      long_file_name[i].filename3[1] = 0;
+    } else {
+      long_file_name[i].filename3[0] = 0;
+      long_file_name[i].filename3[1] = 0;
+      last = 1;
+    }
+
+    if (last) {
+      long_file_name[i].filename3[0] = 0xFF;
+      long_file_name[i].filename3[1] = 0xFF;
+    } else if (name[12] != '\0') {
+      long_file_name[i].filename3[0] = name[i * 13 + 12];
+      long_file_name[i].filename3[1] = 0;
+    } else {
+      long_file_name[i].filename3[0] = 0;
+      long_file_name[i].filename3[1] = 0;
+      last = 1;
+    }
+  }
 }
 
 static int last_cluster() {
@@ -246,6 +387,64 @@ static time_t convert_datetime_fat_to_time_t(fat_date_t *date, fat_time_t *time)
 	return mktime(&t);
 }
 
+static void convert_time_t_to_datetime_fat(time_t time, fat_time_t *timefat, fat_date_t *datefat) {
+  #define MINUTES 60
+  #define HOURS 3600
+  #define DAYS 86400
+
+  int days_per_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+  int days_per_month_leap[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+  int year = 1970;
+  int month = 0;
+  int day = 0;
+  int hours = 0;
+  int min = 0;
+  int sec = 0;
+
+  int secs_year = DAYS * 365;
+  int *dpm = days_per_month;
+
+  while (time) {
+    if (time >= secs_year) {
+      year++;
+      time -= secs_year;
+
+      if (!(year % 400 && (year % 100 == 0 || (year & 3)))) {
+        secs_year = DAYS * 366;
+        dpm = days_per_month_leap;
+      } else {
+        secs_year = DAYS * 365;
+        dpm = days_per_month;
+      }
+    } else {
+      if (time >= dpm[month] * DAYS) {
+        time -= dpm[month] * DAYS;
+        month++;
+      } else {
+        day = time / DAYS;
+        time -= day * DAYS;
+        hours = time / HOURS;
+        time -= hours * HOURS;
+        min = time / MINUTES;
+        time -= min * MINUTES;
+        sec = time;
+        time = 0;
+      }
+    }
+  }
+
+  datefat->year = year - 1980;
+  datefat->month = month + 1;
+  datefat->day = day + 1;
+  if (timefat) {
+    timefat->hours = hours;
+    timefat->minutes = min;
+    timefat->seconds2 = sec / 2;
+  }
+}
+
+
 static void fat_dir_entry_to_directory_entry(char *filename, fat_dir_entry_t *dir, directory_entry_t *entry) {
 	strcpy(entry->name, filename);
 	entry->cluster = dir->cluster_pointer;
@@ -259,29 +458,76 @@ static void fat_dir_entry_to_directory_entry(char *filename, fat_dir_entry_t *di
 			convert_datetime_fat_to_time_t(&dir->create_date, &dir->create_time);
 }
 
-static void read_data(uint8_t * buf, size_t count, int offset) {
-	int offset_sector = offset / fat_info.BS.bytes_per_sector;
-	int offset_in_sector = offset % fat_info.BS.bytes_per_sector;
-	addr_CHS_t sector_addr;
-	size_t c;
-	char * sector = kmalloc(fat_info.BS.bytes_per_sector);
+static char * lfn_to_sfn(char * filename) {
+  char * lfn = strdup(filename);
+  char * sfn = malloc(12);
 
-	while (count) {
-		sector_addr = get_CHS_from_LBA(offset_sector);
-		floppy_read_sector(sector_addr.Cylinder, sector_addr.Head,
-				sector_addr.Sector, sector);
-		c = fat_info.BS.bytes_per_sector - offset_in_sector;
-		if (count <= c) {
-			memcpy(buf, sector + offset_in_sector, count);
-			count = 0;
-		} else {
-			memcpy(buf, sector + offset_in_sector, c);
-			count -= c;
-			buf += c;
-			offset_in_sector = 0;
-			offset_sector++;
-		}
-	}
+  // To upper case.
+  int i = 0;
+  while (lfn[i] != '\0') {
+    lfn[i] = toupper(lfn[i]);
+    i++;
+  }
+
+  // TODO: Convert to OEM (=> '_').
+
+  // Strip all leading and embedded spaces
+  int j = 0;
+  i = 0;
+  while (lfn[i] != '\0') {
+    if (lfn[i] != ' ') {
+      lfn[j] = lfn[i];
+      j++;
+    }
+    i++;
+  }
+  lfn[j] = '\0';
+
+  char * ext = strrchr(lfn, '.');
+  int has_ext = (ext != NULL) && (lfn + j - ext - 1 <= 3);
+
+  if (has_ext) {
+    // Copy first 8 caracters.
+    i = 0;
+    j = 0;
+    while (&lfn[i] <= ext) {
+      if (lfn[i] != '.' && j < 8) {
+        sfn[j] = lfn[i];
+        j++;
+      }
+      i++;
+    }
+  
+    // padding
+    while (j < 8)
+      sfn[j++] = ' ';
+
+    // Copy extension.
+    sfn[j++] = '.';
+    while (lfn[i] != '\0') {
+      sfn[j++] = lfn[i];
+      i++;
+    }
+
+    while (j < 12)
+      sfn[j++] = ' ';
+  } else {
+    i = 0;
+    j = 0;
+    while (lfn[i] != '\0' && j < 8) {
+      if (lfn[i] != '.') {
+        sfn[j] = lfn[i];
+        j++;
+      }
+      i++;
+    }
+    while (j < 12)
+      sfn[j++] = ' ';
+  }
+
+  // TODO: numeric-tail generation.
+
+  return sfn;
 }
 
 static directory_entry_t * decode_lfn_entry(lfn_entry_t* fdir) {
@@ -492,6 +738,115 @@ static directory_entry_t * open_file_from_path(const char *path) {
 	return NULL;
 }
 
+
+static int alloc_cluster(int n) {
+  if (n <= 0) {
+    return last_cluster();
+  }
+  int next = alloc_cluster(n - 1);
+  int i;
+  for (i = 0; i < fat_info.total_data_clusters; i++) {
+    if (fat_info.file_alloc_table[i] == 0) {
+      fat_info.file_alloc_table[i] = next;
+      return i;
+    }
+  }
+  return -1;
+}
+
+static void init_dir_cluster(int cluster) {
+  int n_dir_entries = fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster / sizeof(fat_dir_entry_t);
+  fat_dir_entry_t * dir_entries = calloc(n_dir_entries, sizeof(fat_dir_entry_t));
+ 
+  write_data(dir_entries, sizeof(fat_dir_entry_t) * n_dir_entries, fat_info.addr_data + (cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+}
+
+static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
+  directory_t *dir = open_dir_from_path(path);
+  int next = dir->cluster;
+  if (next > 0) {
+    int n_clusters = 0;
+    while (!is_last_cluster(next)) {
+      next = fat_info.file_alloc_table[next];
+      n_clusters++;
+    }
+  
+    int n_dir_entries = fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster / sizeof(fat_dir_entry_t);
+    fat_dir_entry_t * dir_entries = malloc(n_dir_entries * sizeof(fat_dir_entry_t) * n_clusters);
+  
+    int c = 0;
+    next = dir->cluster;
+    while (!is_last_cluster(next)) {
+      read_data(dir_entries + c * n_dir_entries, n_dir_entries * sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+      next = fat_info.file_alloc_table[next];
+      c++;
+    }
+  
+    int i;
+    int consecutif = 0;
+    for (i = 0; i < n_dir_entries * n_clusters; i++) {
+      if (dir_entries[i].utf8_short_name[0] == 0 || dir_entries[i].utf8_short_name[0] == 0xe5) {
+        consecutif++;
+        if (consecutif == n) {
+          next = dir->cluster;
+          int j;
+          for (j = 0; j < (i - n + 1) / n_dir_entries; j++)
+            next = fat_info.file_alloc_table[next];
+          for (j = 0; j < n; j++) {
+            int off = (i - n + j + 1) % n_dir_entries; // offset dans le cluster.
+            write_data(&fentry[j], sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
+            if (off == n_dir_entries - 1) {
+              next = fat_info.file_alloc_table[next];
+            }
+          }
+          return 0;
+        }
+      } else {
+        consecutif = 0;
+      }
+    }
+    if (consecutif < n) {
+      int j;
+      int newcluster = alloc_cluster(1);
+      init_dir_cluster(newcluster);
+      next = dir->cluster;
+      while (!is_last_cluster(fat_info.file_alloc_table[next])) {
+        next = fat_info.file_alloc_table[next];
+      }
+      fat_info.file_alloc_table[next] = newcluster;
+  
+      for (j = 0; j < consecutif; j++) {
+        int off = n_dir_entries - consecutif + j;
+        write_data(&fentry[j], sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
+      }
+      for (j = consecutif; j < n; j++) {
+        int off = n_dir_entries - consecutif + j;
+        write_data(&fentry[j], sizeof(fat_dir_entry_t), fat_info.addr_data + (newcluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
+      }
+      write_fat();
+      return 0;
+    }
+  } else if (fat_info.fat_type != FAT32) {
+    int i;
+    int consecutif = 0;
+    fat_dir_entry_t *root_dir = malloc(sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count);
+    read_data(root_dir, sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count, fat_info.addr_root_dir);
+
+    for (i = 0; i < fat_info.BS.root_entry_count; i++) {
+      if (root_dir[i].utf8_short_name[0] == 0 || root_dir[i].utf8_short_name[0] == 0xe5) {
+        consecutif++;
+        if (consecutif == n) {
+          write_data(fentry, sizeof(fat_dir_entry_t) * n, fat_info.addr_root_dir + i * sizeof(fat_dir_entry_t));
+          return 0;
+        }
+      }
+    }
+  }
+  return 1;
+}
+
+
+
 int fat_opendir(char * path) {
 	directory_t *f;
 
@@ -642,10 +997,36 @@ size_t read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 	return ret;
 }
 
-void change_dir(char * name) {
+int fat_mkdir (const char * path, mode_t mode) {
+  char * dir = malloc(strlen(path));
+  char filename[256];
+  split_dir_filename(path, dir, filename);
 
-}
+  char * sfn = lfn_to_sfn(filename);
+  
+  int n_entries = 1 + ((strlen(filename) - 1) / 13);
+  lfn_entry_t * long_file_name = malloc(sizeof(lfn_entry_t) * (n_entries + 1));
+  fat_dir_entry_t *fentry = (fat_dir_entry_t*) &long_file_name[n_entries];
 
-void print_Boot_Sector() {
+  encode_long_file_name(filename, long_file_name, n_entries);
 
+  strncpy(fentry->utf8_short_name, sfn, 8);
+  strncpy(fentry->file_extension, sfn + 8, 3);
+  fentry->file_attributes = 0x10; //TODO: Utiliser variable mode et des defines.
+  fentry->reserved = 0;
+  fentry->create_time_ms = 0;
+  time_t t = time(NULL);
+  convert_time_t_to_datetime_fat(t, &(fentry->create_time), &(fentry->create_date));
+  convert_time_t_to_datetime_fat(t, NULL, &(fentry->last_access_date));
+  fentry->ea_index = 0; //XXX
+  convert_time_t_to_datetime_fat(t, &(fentry->last_modif_time), &(fentry->last_modif_date));
+  fentry->file_size = 0;
+  fentry->cluster_pointer = alloc_cluster(1);
+  init_dir_cluster(fentry->cluster_pointer);
+
+  add_fat_dir_entry(dir, (fat_dir_entry_t*)long_file_name, n_entries + 1);
+
+  write_fat();
+
+  return 0;
 }

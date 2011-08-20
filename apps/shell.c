@@ -92,8 +92,15 @@ static int ls_cmd()
 	return 0;
 }
 
-static int ll_cmd()
+static int mkdir_cmd()
 {
+	char buffer[256];
+	scanf("%s", buffer);
+
+	if (mkdir(buffer, 755)) {
+		printf("Erreur à la création du dossier: %s", buffer);
+		return 1;
+	}
 	return 0;
 }
 
@@ -103,6 +110,7 @@ static int cd_cmd()
 	scanf("%s", buffer);
 	if (chdir(buffer)) {
 		printf("cd: aucun fichier ou dossier de ce type: %s", buffer);
+		return 1;
 	}
 	return 0;
 }
@@ -250,7 +258,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	/* Accès disque */
 	//add_builtin_cmd(cat_cmd, "cat");
 	add_builtin_cmd(ls_cmd, "ls");
-	add_builtin_cmd(ll_cmd, "ll");
+	add_builtin_cmd(mkdir_cmd, "mkdir");
 	//add_builtin_cmd((func_ptr)print_Boot_Sector, "mount");
 	add_builtin_cmd(pwd_cmd, "pwd");
 	add_builtin_cmd(cd_cmd, "cd");

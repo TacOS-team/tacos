@@ -59,3 +59,8 @@ SYSCALL_HANDLER3(sys_readdir, uint32_t p_dir, uint32_t p_entry, uint32_t p_ret) 
 
 	*ret = fat_readdir(dir->path, dir->iter, entry->d_name);
 }
+
+SYSCALL_HANDLER3(sys_mkdir, uint32_t pathname, uint32_t mode, uint32_t p_ret) {
+	int *ret = p_ret;
+	*ret = fat_mkdir((char*)pathname, (mode_t)mode);
+}

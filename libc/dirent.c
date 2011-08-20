@@ -37,6 +37,18 @@
 #include <syscall.h>
 #include <unistd.h>
 
+int mkdir(const char *pathname, mode_t mode) {
+	int ret;
+	if (pathname[0] != '/') {
+		char * absolutepath = get_absolute_path(pathname);
+		syscall(SYS_MKDIR, (uint32_t) absolutepath, (uint32_t) mode, (uint32_t) &ret);
+		free(absolutepath);
+	} else {
+		syscall(SYS_MKDIR, (uint32_t) pathname, (uint32_t) mode, (uint32_t) &ret);
+	}
+	return ret;
+}
+
 DIR* opendir(const char* dirname) {
 	DIR* dir = malloc(sizeof(DIR));
 	int ret;
