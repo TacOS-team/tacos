@@ -35,11 +35,18 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include <syscall.h>
+#include <unistd.h>
 
 DIR* opendir(const char* dirname) {
 	DIR* dir = malloc(sizeof(DIR));
 	int ret;
-	syscall(SYS_OPENDIR, (uint32_t) dir, (uint32_t) dirname, (uint32_t) &ret);
+	if (dirname[0] != '/') {
+		char * absolutepath = get_absolute_path(dirname);
+		syscall(SYS_OPENDIR, (uint32_t) dir, (uint32_t) absolutepath, (uint32_t) &ret);
+		free(absolutepath);
+	} else {
+		syscall(SYS_OPENDIR, (uint32_t) dir, (uint32_t) dirname, (uint32_t) &ret);
+	}
 	if (ret == 0) {
 		return dir;
 	}

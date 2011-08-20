@@ -53,13 +53,11 @@
 #include <../kernel/include/module.h>
 #include <symtable.h>
 
-static char *path = "/";
-
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
 
 static int pwd_cmd()
 {
-	printf("%s", path);
+	printf("%s", getcwd(NULL, 0));
 	return 0;
 }
 
@@ -87,7 +85,7 @@ static int kill_cmd()
 static int ls_cmd()
 {
 	struct dirent* entry;
-	DIR* dir = opendir(path);
+	DIR* dir = opendir(getcwd(NULL, 0));
 	while((entry = readdir(dir)))
 		printf("%s ", entry->d_name);
 	closedir(dir);
@@ -101,8 +99,11 @@ static int ll_cmd()
 
 static int cd_cmd()
 {
-	char buffer[80];
+	char buffer[256];
 	scanf("%s", buffer);
+	if (chdir(buffer)) {
+		printf("cd: aucun fichier ou dossier de ce type: %s", buffer);
+	}
 	return 0;
 }
 

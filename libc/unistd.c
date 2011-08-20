@@ -32,9 +32,76 @@
  * Description de ce que fait le fichier
  */
 
-#include <unistd.h>
+#include <dirent.h>
+#include <errno.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <syscall.h>
+#include <unistd.h>
+
+static char * cwd = "/";
+
+const char * get_absolute_path(const char *dirname) {
+	int lencwd = strlen(cwd);
+	if (lencwd <= 1) {
+		lencwd = 0;
+	}
+	char *abs = malloc(lencwd + strlen(dirname) + 2);
+	strcpy(abs, cwd);
+	abs[lencwd] = '/';
+	strcpy(abs + lencwd + 1, dirname);
+	return abs;
+}
+
+int chdir(const char *path) {
+	DIR *dir;
+	//XXX: Je l'ai mis ici mais vu que ".." est dispo dans le fs, je devrais 
+	//     pouvoir le mettre dans le if du opendir.
+	if (strcmp(path, "..") == 0 && strcmp(cwd, "/") != 0) {
+		char *r = strrchr(cwd, '/');
+		if (r == cwd) {
+			r[1] = '\0';
+		} else {
+			*r = '\0';
+		}
+		return 0;
+	}
+
+	if ((dir = opendir(path)) != NULL) {
+		if (path[0] == '/') {
+			cwd = strdup(path);
+		} else {
+			cwd = get_absolute_path(path);
+		}
+		return 0;
+	}
+	return 1;
+}
+
+const char * getcwd(char * buf, size_t size) {
+	if (buf == NULL) {
+		if (size == 0) {
+			return strdup(cwd);
+		} else {
+			buf = malloc(size);		
+		}
+	}
+
+	int i = 0;
+	while (cwd[i] != '\0') {
+		size--;
+		if (size <= 0) {
+			errno = ERANGE;
+			return NULL;
+		}
+		buf[i] = cwd[i];
+		i++;
+	}
+	buf[i] = '\0';
+
+	return buf;
+}
 
 unsigned int sleep(unsigned int seconds)
 {

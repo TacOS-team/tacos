@@ -46,6 +46,7 @@
 #define EIO       7
 #define ENOSPC    8
 #define EPIPE     9
+#define ERANGE    10
 
 extern int errno;
 
