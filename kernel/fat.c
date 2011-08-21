@@ -675,6 +675,10 @@ static int open_next_dir(directory_t * prev_dir, directory_t * next_dir, char * 
 static void split_dir_filename(const char * path, char * dir, char * filename) {
 	char *p = strrchr(path, '/');
 	strcpy(filename, p+1);
+	if (p == path) {
+		*dir = '/';
+		dir++;
+	}
 	for (; path < p; path++, dir++) {
 		*dir = *path;
 	} 
@@ -998,7 +1002,7 @@ size_t read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 }
 
 int fat_mkdir (const char * path, mode_t mode) {
-  char * dir = malloc(strlen(path));
+  char * dir = kmalloc(strlen(path));
   char filename[256];
   split_dir_filename(path, dir, filename);
 
@@ -1015,17 +1019,17 @@ int fat_mkdir (const char * path, mode_t mode) {
   fentry->file_attributes = 0x10; //TODO: Utiliser variable mode et des defines.
   fentry->reserved = 0;
   fentry->create_time_ms = 0;
-  time_t t = time(NULL);
-  convert_time_t_to_datetime_fat(t, &(fentry->create_time), &(fentry->create_date));
-  convert_time_t_to_datetime_fat(t, NULL, &(fentry->last_access_date));
+//  time_t t = time(NULL);
+//  convert_time_t_to_datetime_fat(t, &(fentry->create_time), &(fentry->create_date));
+//  convert_time_t_to_datetime_fat(t, NULL, &(fentry->last_access_date));
   fentry->ea_index = 0; //XXX
-  convert_time_t_to_datetime_fat(t, &(fentry->last_modif_time), &(fentry->last_modif_date));
+//  convert_time_t_to_datetime_fat(t, &(fentry->last_modif_time), &(fentry->last_modif_date));
   fentry->file_size = 0;
   fentry->cluster_pointer = alloc_cluster(1);
   init_dir_cluster(fentry->cluster_pointer);
 
   add_fat_dir_entry(dir, (fat_dir_entry_t*)long_file_name, n_entries + 1);
-
+	kfree(dir);
   write_fat();
 
   return 0;
