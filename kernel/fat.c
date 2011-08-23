@@ -840,7 +840,7 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
       if (root_dir[i].utf8_short_name[0] == 0 || root_dir[i].utf8_short_name[0] == 0xe5) {
         consecutif++;
         if (consecutif == n) {
-          write_data(fentry, sizeof(fat_dir_entry_t) * n, fat_info.addr_root_dir + i * sizeof(fat_dir_entry_t));
+          write_data(fentry, sizeof(fat_dir_entry_t) * n, fat_info.addr_root_dir + (i - n + 1) * sizeof(fat_dir_entry_t));
           return 0;
         }
       }
@@ -902,7 +902,7 @@ int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
 	ofd->current_octet_buf = 0;
 
 
-	read_data(ofd->buffer, 512, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+	read_data(ofd->buffer, sizeof(ofd->buffer), fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
 
 	kfree(f);
 
