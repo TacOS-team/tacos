@@ -42,8 +42,13 @@
 void floppy_detect_drives();
 int init_floppy();
 uint8_t floppy_get_version();
+
+/* à retirer */
 void floppy_read_sector(int cylinder, int head, int sector, char* buffer);
+
+/* à retirer */
 void floppy_write_sector(int cylinder, int head, int sector, char* buffer);
+
 void floppy_init_interrupt();
 
 #endif
