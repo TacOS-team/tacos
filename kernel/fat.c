@@ -215,7 +215,7 @@ void mount_FAT() {
 		fat_info.addr_fat[i] = (fat_info.BS.reserved_sector_count + i * fat_info.table_size) * fat_info.BS.bytes_per_sector;
 	}
 	fat_info.addr_root_dir = (fat_info.BS.reserved_sector_count + fat_info.BS.table_count * fat_info.table_size) * fat_info.BS.bytes_per_sector;
-	fat_info.addr_data = fat_info.addr_root_dir + (fat_info.BS.root_entry_count * 32);
+	fat_info.addr_data = fat_info.addr_root_dir + (fat_info.BS.root_entry_count * sizeof(fat_dir_entry_t));
 	if (fat_info.BS.total_sectors_16 > 0)
 		fat_info.total_data_clusters = fat_info.BS.total_sectors_16 / fat_info.BS.sectors_per_cluster - fat_info.addr_data / (fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster);
 	else
