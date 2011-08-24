@@ -42,6 +42,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <types.h>
+#include <clock.h>
 
 static fat_info_t fat_info;
 
@@ -161,8 +162,8 @@ static void write_fat() {
     }
   } else if (fat_info.fat_type == FAT16) {
     for (i = 0; i < fat_info.total_data_clusters; i++) {
-      buffer[i*4] = fat_info.file_alloc_table[i] & 0x00FF;
-      buffer[i*4 + 1] = fat_info.file_alloc_table[i] & 0xFF00;
+      buffer[i*2] = fat_info.file_alloc_table[i] & 0x00FF;
+      buffer[i*2 + 1] = fat_info.file_alloc_table[i] & 0xFF00;
     }
   } else if (fat_info.fat_type == FAT32) {
     for (i = 0; i < fat_info.total_data_clusters; i++) {
@@ -178,6 +179,41 @@ static void write_fat() {
   }
 }
 
+static void write_fat_entry(int index) {
+	int i;
+	if (fat_info.fat_type == FAT12) {
+		uint32_t tmp;
+		char buffer[3]; // 24 bits : 2 entries
+		if (index % 2 == 0) {
+      tmp = (fat_info.file_alloc_table[index + 1] << 12) + (fat_info.file_alloc_table[index] & 0xFFF);
+		} else {
+      tmp = (fat_info.file_alloc_table[index] << 12) + (fat_info.file_alloc_table[index - 1] & 0xFFF);
+		}
+    buffer[0] = tmp & 0x0000FF;
+    buffer[1] = tmp & 0x00FF00;
+    buffer[2] = tmp & 0xFF0000;
+
+		for (i = 0; i < fat_info.BS.table_count; i++) {
+			write_data(buffer, sizeof(buffer), fat_info.addr_fat[i] + index * 12);
+		}
+  } else if (fat_info.fat_type == FAT16) {
+		char buffer[2];
+    buffer[0] = fat_info.file_alloc_table[index] & 0x00FF;
+    buffer[1] = fat_info.file_alloc_table[index] & 0xFF00;
+		for (i = 0; i < fat_info.BS.table_count; i++) {
+			write_data(buffer, sizeof(buffer), fat_info.addr_fat[i] + index * 16);
+		}
+  } else if (fat_info.fat_type == FAT32) {
+		char buffer[4];
+    buffer[0] = fat_info.file_alloc_table[index] & 0x000000FF;
+    buffer[1] = fat_info.file_alloc_table[index] & 0x0000FF00;
+    buffer[2] = fat_info.file_alloc_table[index] & 0x00FF0000;
+    buffer[3] = fat_info.file_alloc_table[index] & 0xFF000000;
+		for (i = 0; i < fat_info.BS.table_count; i++) {
+			write_data(buffer, sizeof(buffer), fat_info.addr_fat[i] + index * 32);
+		}
+  }
+}
 
 /*
  * Init the FAT driver for a specific devide.
@@ -365,7 +401,8 @@ char * decode_long_file_name(char * name, lfn_entry_t * long_file_name) {
 }
 
 static time_t convert_datetime_fat_to_time_t(fat_date_t *date, fat_time_t *time) {
-	return 0; //XXX
+	//XXX
+	return 0;
 	int seconds, minutes, hours;
 
 	if (time) {
@@ -385,7 +422,7 @@ static time_t convert_datetime_fat_to_time_t(fat_date_t *date, fat_time_t *time)
 		.tm_year = date->year + 80,
 	};
 
-	return mktime(&t);
+	return clock_mktime(&t);
 }
 
 static void convert_time_t_to_datetime_fat(time_t time, fat_time_t *timefat, fat_date_t *datefat) {
@@ -767,8 +804,9 @@ static int alloc_cluster(int n) {
   int next = alloc_cluster(n - 1);
   unsigned int i;
   for (i = 0; i < fat_info.total_data_clusters; i++) {
-    if (fat_info.file_alloc_table[i] == 0) {
+    if (is_free_cluster(fat_info.file_alloc_table[i])) {
       fat_info.file_alloc_table[i] = next;
+			write_fat_entry(i);
       return i;
     }
   }
@@ -777,7 +815,6 @@ static int alloc_cluster(int n) {
 
 static void init_dir_cluster(int cluster) {
   int n_dir_entries = fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster / sizeof(fat_dir_entry_t);
-//  fat_dir_entry_t * dir_entries = calloc(n_dir_entries, sizeof(fat_dir_entry_t));
   fat_dir_entry_t * dir_entries = kmalloc(n_dir_entries * sizeof(fat_dir_entry_t));
 	memset(dir_entries, 0, n_dir_entries * sizeof(fat_dir_entry_t));
  
@@ -846,7 +883,6 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
         int off = n_dir_entries - consecutif + j;
         write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), fat_info.addr_data + (newcluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
       }
-      write_fat();
       return 0;
     }
   } else if (fat_info.fat_type != FAT32) {
@@ -1026,7 +1062,6 @@ int fat_mkdir (const char * path, mode_t mode) {
 
   add_fat_dir_entry(dir, (fat_dir_entry_t*)long_file_name, n_entries + 1);
 	kfree(dir);
-  write_fat();
 
   return 0;
 }
@@ -1060,7 +1095,6 @@ int fat_createfile (const char * path, mode_t mode) {
 
   add_fat_dir_entry(dir, (fat_dir_entry_t*)long_file_name, n_entries + 1);
 	kfree(dir);
-  write_fat();
 
   return 0;
 }
