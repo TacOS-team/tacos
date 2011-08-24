@@ -183,7 +183,7 @@ static void write_fat_entry(int index) {
 	int i;
 	if (fat_info.fat_type == FAT12) {
 		uint32_t tmp;
-		char buffer[3]; // 24 bits : 2 entries
+		uint8_t buffer[3]; // 24 bits : 2 entries
 		if (index % 2 == 0) {
       tmp = (fat_info.file_alloc_table[index + 1] << 12) + (fat_info.file_alloc_table[index] & 0xFFF);
 		} else {
@@ -197,14 +197,14 @@ static void write_fat_entry(int index) {
 			write_data(buffer, sizeof(buffer), fat_info.addr_fat[i] + index * 12);
 		}
   } else if (fat_info.fat_type == FAT16) {
-		char buffer[2];
+		uint8_t buffer[2];
     buffer[0] = fat_info.file_alloc_table[index] & 0x00FF;
     buffer[1] = fat_info.file_alloc_table[index] & 0xFF00;
 		for (i = 0; i < fat_info.BS.table_count; i++) {
 			write_data(buffer, sizeof(buffer), fat_info.addr_fat[i] + index * 16);
 		}
   } else if (fat_info.fat_type == FAT32) {
-		char buffer[4];
+		uint8_t buffer[4];
     buffer[0] = fat_info.file_alloc_table[index] & 0x000000FF;
     buffer[1] = fat_info.file_alloc_table[index] & 0x0000FF00;
     buffer[2] = fat_info.file_alloc_table[index] & 0x00FF0000;
