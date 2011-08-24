@@ -32,15 +32,16 @@
  * Description de ce que fait le fichier
  */
 
-#include <stdio.h>
-#include <floppy.h>
-#include <types.h>
-#include <string.h>
-#include <kfat.h>
-#include <fcntl.h>
+#include <ctype.h>
 #include <errno.h>
-#include <kmalloc.h>
+#include <fcntl.h>
+#include <floppy.h>
+#include <kfat.h>
 #include <klog.h>
+#include <kmalloc.h>
+#include <stdio.h>
+#include <string.h>
+#include <types.h>
 
 static fat_info_t fat_info;
 
@@ -588,7 +589,7 @@ static void read_dir_entries(fat_dir_entry_t *fdir, directory_t *dir, int n) {
 	for (i = 0; i < n && fdir[i].utf8_short_name[0]; i++) {
 		directory_entry_t * dir_entry;
 
-		if (fdir[i].utf8_short_name[0] != 0xE5) {
+		if ((unsigned char)fdir[i].utf8_short_name[0] != 0xE5) {
 			if (fdir[i].file_attributes == 0x0F && ((lfn_entry_t*) &fdir[i])->seq_number & 0x40) {
 				dir_entry = decode_lfn_entry((lfn_entry_t*) &fdir[i]);
 				uint8_t seq = ((lfn_entry_t*) &fdir[i])->seq_number - 0x40;
@@ -752,7 +753,7 @@ static int alloc_cluster(int n) {
     return last_cluster();
   }
   int next = alloc_cluster(n - 1);
-  int i;
+  unsigned int i;
   for (i = 0; i < fat_info.total_data_clusters; i++) {
     if (fat_info.file_alloc_table[i] == 0) {
       fat_info.file_alloc_table[i] = next;
@@ -768,7 +769,7 @@ static void init_dir_cluster(int cluster) {
   fat_dir_entry_t * dir_entries = kmalloc(n_dir_entries * sizeof(fat_dir_entry_t));
 	memset(dir_entries, 0, n_dir_entries * sizeof(fat_dir_entry_t));
  
-  write_data(dir_entries, sizeof(fat_dir_entry_t) * n_dir_entries, fat_info.addr_data + (cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+  write_data((uint8_t*) dir_entries, sizeof(fat_dir_entry_t) * n_dir_entries, fat_info.addr_data + (cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
 }
 
 static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
@@ -787,7 +788,7 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
     int c = 0;
     next = dir->cluster;
     while (!is_last_cluster(next)) {
-      read_data(dir_entries + c * n_dir_entries, n_dir_entries * sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+      read_data((uint8_t*)(dir_entries + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
       next = fat_info.file_alloc_table[next];
       c++;
     }
@@ -795,7 +796,7 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
     int i;
     int consecutif = 0;
     for (i = 0; i < n_dir_entries * n_clusters; i++) {
-      if (dir_entries[i].utf8_short_name[0] == 0 || dir_entries[i].utf8_short_name[0] == 0xe5) {
+      if (dir_entries[i].utf8_short_name[0] == 0 || (unsigned char)dir_entries[i].utf8_short_name[0] == 0xe5) {
         consecutif++;
         if (consecutif == n) {
           next = dir->cluster;
@@ -804,7 +805,7 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
             next = fat_info.file_alloc_table[next];
           for (j = 0; j < n; j++) {
             int off = (i - n + j + 1) % n_dir_entries; // offset dans le cluster.
-            write_data(&fentry[j], sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
+            write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
             if (off == n_dir_entries - 1) {
               next = fat_info.file_alloc_table[next];
             }
@@ -827,11 +828,11 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
   
       for (j = 0; j < consecutif; j++) {
         int off = n_dir_entries - consecutif + j;
-        write_data(&fentry[j], sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
+        write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
       }
       for (j = consecutif; j < n; j++) {
         int off = n_dir_entries - consecutif + j;
-        write_data(&fentry[j], sizeof(fat_dir_entry_t), fat_info.addr_data + (newcluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
+        write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), fat_info.addr_data + (newcluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
       }
       write_fat();
       return 0;
@@ -840,13 +841,13 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
     int i;
     int consecutif = 0;
     fat_dir_entry_t *root_dir = kmalloc(sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count);
-    read_data(root_dir, sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count, fat_info.addr_root_dir);
+    read_data((uint8_t*)root_dir, sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count, fat_info.addr_root_dir);
 
     for (i = 0; i < fat_info.BS.root_entry_count; i++) {
-      if (root_dir[i].utf8_short_name[0] == 0 || root_dir[i].utf8_short_name[0] == 0xe5) {
+      if (root_dir[i].utf8_short_name[0] == 0 || (unsigned char)root_dir[i].utf8_short_name[0] == 0xe5) {
         consecutif++;
         if (consecutif == n) {
-          write_data(fentry, sizeof(fat_dir_entry_t) * n, fat_info.addr_root_dir + (i - n + 1) * sizeof(fat_dir_entry_t));
+          write_data((uint8_t*)fentry, sizeof(fat_dir_entry_t) * n, fat_info.addr_root_dir + (i - n + 1) * sizeof(fat_dir_entry_t));
           return 0;
         }
       }
@@ -890,30 +891,7 @@ int fat_readdir(const char * path, int iter, char * filename) {
 	return 1;
 }
 
-int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
-	directory_entry_t *f;
 
-	if ((f = open_file_from_path(path)) == NULL) {
-		if (flags & O_CREAT) {
-			fat_createfile(path, 0); // XXX: set du vrai mode.
-		} else {
-			return -1;
-		}
-	}
-
-	ofd->first_cluster = f->cluster;
-	ofd->file_size = f->size;
-	ofd->current_cluster = ofd->first_cluster;
-	ofd->current_octet = 0;
-	ofd->current_octet_buf = 0;
-
-
-	read_data(ofd->buffer, sizeof(ofd->buffer), fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
-
-	kfree(f);
-
-	return 0;
-}
 
 // TODO: Est-ce que offset peut être négatif ? Si oui, le gérer.
 int seek_file(open_file_descriptor * ofd, long offset, int whence) {
@@ -1073,4 +1051,29 @@ int fat_createfile (const char * path, mode_t mode) {
   write_fat();
 
   return 0;
+}
+
+int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
+	directory_entry_t *f;
+
+	if ((f = open_file_from_path(path)) == NULL) {
+		if (flags & O_CREAT) {
+			fat_createfile(path, 0); // XXX: set du vrai mode.
+		} else {
+			return -1;
+		}
+	}
+
+	ofd->first_cluster = f->cluster;
+	ofd->file_size = f->size;
+	ofd->current_cluster = ofd->first_cluster;
+	ofd->current_octet = 0;
+	ofd->current_octet_buf = 0;
+
+
+	read_data(ofd->buffer, sizeof(ofd->buffer), fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+
+	kfree(f);
+
+	return 0;
 }
