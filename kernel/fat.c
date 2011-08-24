@@ -459,8 +459,12 @@ static void fat_dir_entry_to_directory_entry(char *filename, fat_dir_entry_t *di
 }
 
 static char * lfn_to_sfn(char * filename) {
-  char * lfn = strdup(filename);
-  char * sfn = malloc(12);
+//  char * lfn = strdup(filename);
+	int len = strlen(filename);
+	char* lfn = (char*) kmalloc((len+1)*sizeof(char)); // len + 1 pour le '\0'
+	strcpy(lfn, filename);
+
+  char * sfn = kmalloc(12);
 
   // To upper case.
   int i = 0;
@@ -760,7 +764,9 @@ static int alloc_cluster(int n) {
 
 static void init_dir_cluster(int cluster) {
   int n_dir_entries = fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster / sizeof(fat_dir_entry_t);
-  fat_dir_entry_t * dir_entries = calloc(n_dir_entries, sizeof(fat_dir_entry_t));
+//  fat_dir_entry_t * dir_entries = calloc(n_dir_entries, sizeof(fat_dir_entry_t));
+  fat_dir_entry_t * dir_entries = kmalloc(n_dir_entries * sizeof(fat_dir_entry_t));
+	memset(dir_entries, 0, n_dir_entries * sizeof(fat_dir_entry_t));
  
   write_data(dir_entries, sizeof(fat_dir_entry_t) * n_dir_entries, fat_info.addr_data + (cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
 }
@@ -776,7 +782,7 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
     }
   
     int n_dir_entries = fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster / sizeof(fat_dir_entry_t);
-    fat_dir_entry_t * dir_entries = malloc(n_dir_entries * sizeof(fat_dir_entry_t) * n_clusters);
+    fat_dir_entry_t * dir_entries = kmalloc(n_dir_entries * sizeof(fat_dir_entry_t) * n_clusters);
   
     int c = 0;
     next = dir->cluster;
@@ -833,7 +839,7 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
   } else if (fat_info.fat_type != FAT32) {
     int i;
     int consecutif = 0;
-    fat_dir_entry_t *root_dir = malloc(sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count);
+    fat_dir_entry_t *root_dir = kmalloc(sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count);
     read_data(root_dir, sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count, fat_info.addr_root_dir);
 
     for (i = 0; i < fat_info.BS.root_entry_count; i++) {
@@ -889,7 +895,7 @@ int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
 
 	if ((f = open_file_from_path(path)) == NULL) {
 		if (flags & O_CREAT) {
-			// create file.
+			fat_createfile(path, 0); // XXX: set du vrai mode.
 		} else {
 			return -1;
 		}
@@ -1009,7 +1015,7 @@ int fat_mkdir (const char * path, mode_t mode) {
   char * sfn = lfn_to_sfn(filename);
   
   int n_entries = 1 + ((strlen(filename) - 1) / 13);
-  lfn_entry_t * long_file_name = malloc(sizeof(lfn_entry_t) * (n_entries + 1));
+  lfn_entry_t * long_file_name = kmalloc(sizeof(lfn_entry_t) * (n_entries + 1));
   fat_dir_entry_t *fentry = (fat_dir_entry_t*) &long_file_name[n_entries];
 
   encode_long_file_name(filename, long_file_name, n_entries);
@@ -1017,6 +1023,40 @@ int fat_mkdir (const char * path, mode_t mode) {
   strncpy(fentry->utf8_short_name, sfn, 8);
   strncpy(fentry->file_extension, sfn + 8, 3);
   fentry->file_attributes = 0x10; //TODO: Utiliser variable mode et des defines.
+  fentry->reserved = 0;
+  fentry->create_time_ms = 0;
+//  time_t t = time(NULL);
+//  convert_time_t_to_datetime_fat(t, &(fentry->create_time), &(fentry->create_date));
+//  convert_time_t_to_datetime_fat(t, NULL, &(fentry->last_access_date));
+  fentry->ea_index = 0; //XXX
+//  convert_time_t_to_datetime_fat(t, &(fentry->last_modif_time), &(fentry->last_modif_date));
+  fentry->file_size = 0;
+  fentry->cluster_pointer = alloc_cluster(1);
+  init_dir_cluster(fentry->cluster_pointer);
+
+  add_fat_dir_entry(dir, (fat_dir_entry_t*)long_file_name, n_entries + 1);
+	kfree(dir);
+  write_fat();
+
+  return 0;
+}
+
+int fat_createfile (const char * path, mode_t mode) {
+  char * dir = kmalloc(strlen(path));
+  char filename[256];
+  split_dir_filename(path, dir, filename);
+
+  char * sfn = lfn_to_sfn(filename);
+  
+  int n_entries = 1 + ((strlen(filename) - 1) / 13);
+  lfn_entry_t * long_file_name = kmalloc(sizeof(lfn_entry_t) * (n_entries + 1));
+  fat_dir_entry_t *fentry = (fat_dir_entry_t*) &long_file_name[n_entries];
+
+  encode_long_file_name(filename, long_file_name, n_entries);
+
+  strncpy(fentry->utf8_short_name, sfn, 8);
+  strncpy(fentry->file_extension, sfn + 8, 3);
+  fentry->file_attributes = 0x0; //TODO: Utiliser variable mode et des defines.
   fentry->reserved = 0;
   fentry->create_time_ms = 0;
 //  time_t t = time(NULL);
