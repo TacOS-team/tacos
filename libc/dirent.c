@@ -34,6 +34,7 @@
 
 #include <dirent.h>
 #include <stdlib.h>
+#include <string.h>
 #include <syscall.h>
 #include <unistd.h>
 
@@ -54,12 +55,14 @@ DIR* opendir(const char* dirname) {
 	int ret;
 	if (dirname[0] != '/') {
 		char * absolutepath = get_absolute_path(dirname);
-		syscall(SYS_OPENDIR, (uint32_t) dir, (uint32_t) absolutepath, (uint32_t) &ret);
+		syscall(SYS_OPENDIR, (uint32_t) absolutepath, (uint32_t) &ret, 0);
 		free(absolutepath);
 	} else {
-		syscall(SYS_OPENDIR, (uint32_t) dir, (uint32_t) dirname, (uint32_t) &ret);
+		syscall(SYS_OPENDIR, (uint32_t) dirname, (uint32_t) &ret, 0);
 	}
 	if (ret == 0) {
+		dir->path = strdup(dirname);
+		dir->iter = 0;
 		return dir;
 	}
 	return NULL;

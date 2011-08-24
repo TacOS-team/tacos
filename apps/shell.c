@@ -82,6 +82,7 @@ static int kill_cmd()
 	return 0;
 }
 
+// Tant que /bin/ls fait planter.
 static int ls_cmd()
 {
 	struct dirent* entry;

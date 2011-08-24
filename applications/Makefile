@@ -1,4 +1,5 @@
-OBJ=cube top matrix test test_sig demo cat fopen
+#OBJ=cube top matrix test test_sig demo cat ls fopen
+OBJ=top test_sig demo cat ls
 SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a 
 INCLUDES=-I../include/ -I../libc/include/
@@ -42,6 +43,9 @@ test_sig: test_sig.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 	
 cat: cat.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
+
+ls: ls.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
 fopen: fopen.o

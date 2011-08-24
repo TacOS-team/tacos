@@ -1,5 +1,5 @@
 /**
- * @file kdirent.c
+ * @file ls.c
  *
  * @author TacOS developers 
  *
@@ -29,35 +29,38 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * List files
  */
 
-#include <kdirent.h>
 #include <dirent.h>
-#include <kfat.h>
-#include <kmalloc.h>
-#include <string.h>
+#include <stdio.h>
+#include <unistd.h>
 
-SYSCALL_HANDLER2(sys_opendir, uint32_t p_name, uint32_t p_ret) {
-	char *name = (char*)p_name;
-	int *ret = (int*) p_ret;
-
-	if (fat_opendir(name) == 0) {
-		*ret = 0;
+int main(int argc, char** argv)
+{
+	int i;
+	DIR* dir;
+	struct dirent* entry;
+	
+	if (argc == 1) {
+		dir = opendir(getcwd(NULL, 0));
+		if (dir != NULL) {
+			while((entry = readdir(dir)))
+				printf("%s ", entry->d_name);
+			closedir(dir);
+		}
 	} else {
-		*ret = 1;
+		for(i = 1; i < argc; i++) {
+			dir = opendir(argv[i]);
+			if (dir != NULL) {
+				while((entry = readdir(dir)))
+					printf("%s ", entry->d_name);
+				closedir(dir);
+			} else {
+				fprintf(stderr, "%s not found.\n", argv[i]);
+			}
+		}
 	}
+	return 0;
 }
 
-SYSCALL_HANDLER3(sys_readdir, uint32_t p_dir, uint32_t p_entry, uint32_t p_ret) {
-	DIR* dir = (DIR*) p_dir;
-	struct dirent *entry = (struct dirent*) p_entry;
-	int *ret = (int*) p_ret;
-
-	*ret = fat_readdir(dir->path, dir->iter, entry->d_name);
-}
-
-SYSCALL_HANDLER3(sys_mkdir, uint32_t pathname, uint32_t mode, uint32_t p_ret) {
-	int *ret = (int*) p_ret;
-	*ret = fat_mkdir((char*)pathname, (mode_t)mode);
-}
