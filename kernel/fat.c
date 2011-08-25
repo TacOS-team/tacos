@@ -780,18 +780,20 @@ static directory_entry_t * open_file_from_path(const char *path) {
 	directory_t * directory = open_dir_from_path(dir);
 	kfree(dir);
 
-	directory_entry_t *dir_entry = directory->entries;
-	while (dir_entry) {
-		if (strcmp(dir_entry->name, filename) == 0) {
-			kfree(directory);
-			// TODO: free de la liste chainée.
-			return dir_entry;
+	if (directory) {
+		directory_entry_t *dir_entry = directory->entries;
+		while (dir_entry) {
+			if (strcmp(dir_entry->name, filename) == 0) {
+				kfree(directory);
+				// TODO: free de la liste chainée.
+				return dir_entry;
+			}
+			dir_entry = dir_entry->next;
 		}
-		dir_entry = dir_entry->next;
-	}
 
-	kfree(directory);
-	// TODO: free de la liste chainée.
+		kfree(directory);
+		// TODO: free de la liste chainée.
+	}
 	
 	return NULL;
 }
