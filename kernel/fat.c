@@ -1107,6 +1107,9 @@ int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
 	if ((f = open_file_from_path(path)) == NULL) {
 		if (flags & O_CREAT) {
 			fat_createfile(path, 0); // XXX: set du vrai mode.
+			if ((f = open_file_from_path(path)) == NULL) {
+				return -1;				
+			}
 		} else {
 			return -1;
 		}
