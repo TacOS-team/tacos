@@ -945,6 +945,8 @@ int fat_readdir(const char * path, int iter, char * filename) {
 
 // TODO: Est-ce que offset peut être négatif ? Si oui, le gérer.
 int seek_file(open_file_descriptor * ofd, long offset, int whence) {
+	size_t size_buffer = sizeof(ofd->buffer) < fat_info.BS.bytes_per_sector ? 
+			sizeof(ofd->buffer) : fat_info.BS.bytes_per_sector;
 	switch (whence) {
 	case SEEK_SET: // depuis le debut du fichier
 		if ((unsigned long) offset < ofd->file_size) {
@@ -962,7 +964,7 @@ int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 
 			ofd->current_octet_buf = offset;
 			ofd->current_octet += offset;
-			read_data(ofd->buffer, 512, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+			read_data(ofd->buffer, size_buffer, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
 		} else {
 			return -1;
 		}
@@ -975,7 +977,7 @@ int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 				ofd->current_octet_buf -= fat_info.BS.bytes_per_sector;
 				ofd->current_cluster = fat_info.file_alloc_table[ofd->current_cluster];
 			}
-			read_data(ofd->buffer, 512, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+			read_data(ofd->buffer, size_buffer, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
 		} else {
 			return -1;
 		}
@@ -1000,6 +1002,8 @@ size_t write_file(open_file_descriptor * ofd, const void * buf, size_t nb_octet)
 }
 
 size_t read_file(open_file_descriptor * ofd, void * buf, size_t count) {
+	size_t size_buffer = sizeof(ofd->buffer) < fat_info.BS.bytes_per_sector ? 
+			sizeof(ofd->buffer) : fat_info.BS.bytes_per_sector;
 	int ret = 0;
 	int j = 0;
 	
@@ -1022,11 +1026,20 @@ size_t read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 			ofd->current_octet_buf++;
 			ofd->current_octet++;
 			((char*) buf)[j++] = c;
-			if (ofd->current_octet_buf >= sizeof(ofd->buffer)) {
-				//FIXME: Faire le changement de cluster que lorsqu'on arrive à la fin du cluster. Ici ça marche car sizeof(ofd->buffer) == bytes_per_sector.
-				//2 solutions : buffer est alloué dynamiquement et on le met à la taille bytes_per_sector, ou on ajoute un current_octet_cluster.
-				ofd->current_cluster = fat_info.file_alloc_table[ofd->current_cluster];
-				read_data(ofd->buffer, sizeof(ofd->buffer), fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+			int current_octet_cluster = ofd->current_octet % fat_info.BS.bytes_per_sector;
+			if (ofd->current_octet_buf >= size_buffer) {
+				int r = (fat_info.BS.bytes_per_sector - current_octet_cluster) % fat_info.BS.bytes_per_sector;
+
+				if (r <= size_buffer) {
+					if (r > 0)
+						read_data(ofd->buffer, r, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+					ofd->current_cluster = fat_info.file_alloc_table[ofd->current_cluster];
+					if (r < size_buffer) {
+						read_data(ofd->buffer + r, size_buffer - r, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+					}
+				} else {
+					read_data(ofd->buffer, size_buffer, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+				}
 				ofd->current_octet_buf = 0;
 			}
 		}
@@ -1103,6 +1116,8 @@ int fat_createfile (const char * path, mode_t mode) {
 
 int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
 	directory_entry_t *f;
+	size_t size_buffer = sizeof(ofd->buffer) < fat_info.BS.bytes_per_sector ? 
+			sizeof(ofd->buffer) : fat_info.BS.bytes_per_sector;
 
 	if ((f = open_file_from_path(path)) == NULL) {
 		if (flags & O_CREAT) {
@@ -1122,7 +1137,7 @@ int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
 	ofd->current_octet_buf = 0;
 
 
-	read_data(ofd->buffer, sizeof(ofd->buffer), fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+	read_data(ofd->buffer, size_buffer, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
 
 	kfree(f);
 
