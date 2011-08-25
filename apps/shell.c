@@ -298,10 +298,15 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 		//printf("\n");
 		if(exec_builtin_cmd(buffer) != 0)
 		{
-			char temp[278];
-			sprintf(temp, "/bin/%s", buffer);
-			if(exec_elf(temp, 0) != 0)
-				printf("commande introuvable.\n");
+			if (buffer[0] == '/') {
+				if(exec_elf(buffer, 0) != 0)
+					printf("commande introuvable.\n");
+			} else {
+				char temp[278];
+				sprintf(temp, "/bin/%s", buffer);
+				if(exec_elf(temp, 0) != 0)
+					printf("commande introuvable.\n");
+			}
 		}
 	}
 }
