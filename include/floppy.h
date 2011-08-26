@@ -37,17 +37,12 @@
 
 #include <types.h>
 
-#define FLOPPY_SECTOR_SIZE 512
-
 void floppy_detect_drives();
 int init_floppy();
 uint8_t floppy_get_version();
 
-/* à retirer */
-void floppy_read_sector(int cylinder, int head, int sector, char* buffer);
-
-/* à retirer */
-void floppy_write_sector(int cylinder, int head, int sector, char* buffer);
+void floppy_write(uint8_t * buf, size_t count, int offset);
+void floppy_read(uint8_t * buf, size_t count, int offset);
 
 void floppy_init_interrupt();
 
