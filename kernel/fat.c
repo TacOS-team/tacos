@@ -180,6 +180,7 @@ void mount_FAT() {
 		fat_info.table_size = fat_info.BS.table_size_16;
 	}
 
+	fat_info.bytes_per_cluster = fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster;
 
 	klog("table size : %d", fat_info.table_size);
 	klog("%d bytes per logical sector", fat_info.BS.bytes_per_sector);
@@ -882,24 +883,22 @@ int fat_readdir(const char * path, int iter, char * filename) {
 }
 
 void load_buffer(open_file_descriptor *ofd) {
-	int bytes_per_cluster = fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster;
 	size_t size_buffer = sizeof(ofd->buffer) < fat_info.BS.bytes_per_sector ? 
 			sizeof(ofd->buffer) : fat_info.BS.bytes_per_sector;
-	int current_octet_cluster = ofd->current_octet % bytes_per_cluster;
-	size_t r = bytes_per_cluster - current_octet_cluster;
+	int current_octet_cluster = ofd->current_octet % fat_info.bytes_per_cluster;
+	size_t r = fat_info.bytes_per_cluster - current_octet_cluster;
 
 	if (r < size_buffer) {
 		if (r > 0)
-			read_data(ofd->buffer, r, fat_info.addr_data + (ofd->current_cluster - 2) * bytes_per_cluster + current_octet_cluster);
+			read_data(ofd->buffer, r, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.bytes_per_cluster + current_octet_cluster);
 	} else {
-		read_data(ofd->buffer, size_buffer, fat_info.addr_data + (ofd->current_cluster - 2) * bytes_per_cluster + current_octet_cluster);
+		read_data(ofd->buffer, size_buffer, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.bytes_per_cluster + current_octet_cluster);
 	}
 	ofd->current_octet_buf = 0;
 }
 
 // TODO: Est-ce que offset peut être négatif ? Si oui, le gérer.
 int seek_file(open_file_descriptor * ofd, long offset, int whence) {
-	int bytes_per_cluster = fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster;
 	size_t size_buffer = sizeof(ofd->buffer) < fat_info.BS.bytes_per_sector ? 
 			sizeof(ofd->buffer) : fat_info.BS.bytes_per_sector;
 	switch (whence) {
@@ -910,9 +909,9 @@ int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 			ofd->current_octet = 0;
 
 			// On avance de cluster en cluster.
-			while (offset >= bytes_per_cluster) {
-				offset -= bytes_per_cluster;
-				ofd->current_octet += bytes_per_cluster;
+			while (offset >= fat_info.bytes_per_cluster) {
+				offset -= fat_info.bytes_per_cluster;
+				ofd->current_octet += fat_info.bytes_per_cluster;
 				ofd->current_cluster = fat_info.file_alloc_table[ofd->current_cluster];
 			}
 
@@ -926,10 +925,10 @@ int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 		if (ofd->current_octet + offset < ofd->file_size) {
 			ofd->current_octet += offset;
 
-			int current_octet_cluster = ofd->current_octet % bytes_per_cluster;
+			int current_octet_cluster = ofd->current_octet % fat_info.bytes_per_cluster;
 
-			while (offset + current_octet_cluster >= bytes_per_cluster) {
-				offset -= bytes_per_cluster;
+			while (offset + current_octet_cluster >= fat_info.bytes_per_cluster) {
+				offset -= fat_info.bytes_per_cluster;
 				ofd->current_cluster = fat_info.file_alloc_table[ofd->current_cluster];
 			}
 			load_buffer(ofd);
@@ -957,7 +956,6 @@ size_t write_file(open_file_descriptor * ofd, const void * buf, size_t nb_octet)
 }
 
 size_t read_file(open_file_descriptor * ofd, void * buf, size_t count) {
-	int bytes_per_cluster = fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster;
 	size_t size_buffer = sizeof(ofd->buffer) < fat_info.BS.bytes_per_sector ? 
 			sizeof(ofd->buffer) : fat_info.BS.bytes_per_sector;
 	int ret = 0;
@@ -982,7 +980,7 @@ size_t read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 			ofd->current_octet_buf++;
 			ofd->current_octet++;
 			((char*) buf)[j++] = c;
-			int current_octet_cluster = ofd->current_octet % bytes_per_cluster;
+			int current_octet_cluster = ofd->current_octet % fat_info.bytes_per_cluster;
 			if (current_octet_cluster == 0) {
 				ofd->current_cluster = fat_info.file_alloc_table[ofd->current_cluster];
 				load_buffer(ofd);

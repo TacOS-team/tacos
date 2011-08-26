@@ -180,6 +180,7 @@ typedef struct _fat_info {
 	unsigned int total_data_clusters;
 	unsigned int table_size;
 	fat_t fat_type;
+	unsigned int bytes_per_cluster;
 } fat_info_t;
 
 
