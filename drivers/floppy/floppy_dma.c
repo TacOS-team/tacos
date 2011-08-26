@@ -76,10 +76,10 @@ void floppy_dma_init(floppy_io io_dir)
 	
 	switch(io_dir)
 	{
-		case floppy_read: // READ = single/inc/no-auto/to-mem/chan2 = 01-0-0-01-10
+		case FLOPPY_READ: // READ = single/inc/no-auto/to-mem/chan2 = 01-0-0-01-10
 			dma_mode = 0x46;
 			break;
-		case floppy_write: // WRITE = single/inc/no-auto/from-mem/chan2 = 01-0-0-10-10
+		case FLOPPY_WRITE: // WRITE = single/inc/no-auto/from-mem/chan2 = 01-0-0-10-10
 			dma_mode = 0x4A;
 			break;
 		default:
@@ -118,10 +118,10 @@ int floppy_cylinder(int cylinder, floppy_io io_dir)
 	
 	switch(io_dir)
 	{
-		case floppy_write:
+		case FLOPPY_WRITE:
 			command = WRITE_DATA | flags;
 			break;
-		case floppy_read:
+		case FLOPPY_READ:
 			command = READ_DATA | flags;
 			break;
 		default:
@@ -261,7 +261,7 @@ void floppy_read_sector(int cylinder, int head, int sector, char* buffer)
 	if(cylinder != current_cylinder)
 	{
 		// Si le cylindre que l'on a en mémoire n'est pas le bon, on charge le bon
-		floppy_cylinder(cylinder, floppy_read);
+		floppy_cylinder(cylinder, FLOPPY_READ);
 		current_cylinder = cylinder;
 	}		
 	
@@ -274,7 +274,7 @@ void floppy_write_sector(int cylinder, int head, int sector, char* buffer)
 	if(cylinder != current_cylinder)
 	{
 		// Si le cylindre que l'on a en mémoire n'est pas le bon, on charge le bon
-		floppy_cylinder(cylinder, floppy_read);
+		floppy_cylinder(cylinder, FLOPPY_READ);
 		current_cylinder = cylinder;
 	}
 	
@@ -282,7 +282,7 @@ void floppy_write_sector(int cylinder, int head, int sector, char* buffer)
 	memcpy((void*)floppy_dma_buffer+(head*floppy_head2_start)+512*sector, buffer,  512);
 	
 	// Ecrit la nouvelle version du cylindre
-	floppy_cylinder(cylinder, floppy_write);
+	floppy_cylinder(cylinder, FLOPPY_WRITE);
 }
 		
 	

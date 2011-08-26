@@ -45,71 +45,11 @@
 
 static fat_info_t fat_info;
 
+typedef void(*read_handler)(uint8_t * buf, size_t count, int offset);
+typedef void(*write_handler)(uint8_t * buf, size_t count, int offset);
 
-// Floppy...
-addr_CHS_t get_CHS_from_LBA(addr_LBA_t sector_LBA) {
-	addr_CHS_t ret;
-	ret.Cylinder = sector_LBA / (fat_info.BS.sectors_per_track
-			* fat_info.BS.head_side_count);
-	ret.Head = (sector_LBA % (fat_info.BS.sectors_per_track
-			* fat_info.BS.head_side_count)) / (fat_info.BS.sectors_per_track);
-	ret.Sector = (sector_LBA % (fat_info.BS.sectors_per_track
-			* fat_info.BS.head_side_count)) % (fat_info.BS.sectors_per_track);
-	return ret;
-}
-
-static void read_data(uint8_t * buf, size_t count, int offset) {
-	int offset_sector = offset / fat_info.BS.bytes_per_sector;
-	int offset_in_sector = offset % fat_info.BS.bytes_per_sector;
-	addr_CHS_t sector_addr;
-	size_t c;
-	char * sector = kmalloc(fat_info.BS.bytes_per_sector);
-
-	while (count) {
-		sector_addr = get_CHS_from_LBA(offset_sector);
-		floppy_read_sector(sector_addr.Cylinder, sector_addr.Head,
-				sector_addr.Sector, sector);
-		c = fat_info.BS.bytes_per_sector - offset_in_sector;
-		if (count <= c) {
-			memcpy(buf, sector + offset_in_sector, count);
-			count = 0;
-		} else {
-			memcpy(buf, sector + offset_in_sector, c);
-			count -= c;
-			buf += c;
-			offset_in_sector = 0;
-			offset_sector++;
-		}
-	}
-}
-
-static void write_data(uint8_t * buf, size_t count, int offset) {
-	int offset_sector = offset / fat_info.BS.bytes_per_sector;
-	int offset_in_sector = offset % fat_info.BS.bytes_per_sector;
-	addr_CHS_t sector_addr;
-	size_t c;
-	char * sector = kmalloc(fat_info.BS.bytes_per_sector);
-
-	while (count) {
-		sector_addr = get_CHS_from_LBA(offset_sector);
-		floppy_read_sector(sector_addr.Cylinder, sector_addr.Head,
-				sector_addr.Sector, sector);
-		c = fat_info.BS.bytes_per_sector - offset_in_sector;
-		if (count <= c) {
-			memcpy(sector + offset_in_sector, buf, count);
-			count = 0;
-		} else {
-			memcpy(sector + offset_in_sector, buf, c);
-			count -= c;
-			buf += c;
-			offset_in_sector = 0;
-			offset_sector++;
-		}
-		floppy_write_sector(sector_addr.Cylinder, sector_addr.Head,
-				sector_addr.Sector, sector);
-	}
-}
-
+static read_handler read_data = floppy_read;
+static write_handler write_data = floppy_write;
 
 /*
  * Read the File Allocation Table.
@@ -185,7 +125,7 @@ static void write_fat() {
 void mount_FAT() {
 	klog("mount_FAT !");
 	uint8_t sector[512];
-	floppy_read_sector(0, 0, 0, (char*) sector);
+	read_data(sector, 512, 0);
 	memcpy(&fat_info.BS, sector, sizeof(fat_BS_t));
 
 	if (fat_info.BS.table_size_16 == 0) { // Si 0 alors on considère qu'on est en FAT32.

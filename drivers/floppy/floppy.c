@@ -34,6 +34,7 @@
 
 #include <ioports.h>
 #include <stdio.h>
+#include <string.h>
 #include <types.h>
 #include <klog.h>
 #include "floppy_interrupt.h"
@@ -41,6 +42,9 @@
 #include "floppy_motor.h"
 #include "floppy_dma.h"
 
+#define FLOPPY_SECTOR_SIZE 512
+#define FLOPPY_NB_HEADS 2
+#define FLOPPY_SECTORS_PER_TRACK 18
 
 // Repositionne la tête de lecture sur le cylindre 0
 int floppy_calibrate()
@@ -145,4 +149,65 @@ int init_floppy()
 	// On calibre le lecteur
 	if(floppy_calibrate()) return -1;
 	return 0;
+}
+
+void floppy_read(uint8_t * buf, size_t count, int offset) {
+	int offset_sector = offset / FLOPPY_SECTOR_SIZE;
+	int offset_in_sector = offset % FLOPPY_SECTOR_SIZE;
+	uint32_t cylinder;
+	uint32_t head;
+	uint32_t sector;
+	size_t c;
+	char buffer[FLOPPY_SECTOR_SIZE];
+
+	while (count) {
+		
+		cylinder = offset_sector / (FLOPPY_SECTORS_PER_TRACK * FLOPPY_NB_HEADS);
+		head    = (offset_sector % (FLOPPY_SECTORS_PER_TRACK * FLOPPY_NB_HEADS)) / (FLOPPY_SECTORS_PER_TRACK);
+		sector  = (offset_sector % (FLOPPY_SECTORS_PER_TRACK * FLOPPY_NB_HEADS)) % (FLOPPY_SECTORS_PER_TRACK);
+		
+		floppy_read_sector(cylinder, head, sector, buffer);
+		c = FLOPPY_SECTOR_SIZE - offset_in_sector;
+		if (count <= c) {
+			memcpy(buf, buffer + offset_in_sector, count);
+			count = 0;
+		} else {
+			memcpy(buf, buffer + offset_in_sector, c);
+			count -= c;
+			buf += c;
+			offset_in_sector = 0;
+			offset_sector++;
+		}
+	}
+}
+
+void floppy_write(uint8_t * buf, size_t count, int offset) {
+	int offset_sector = offset / FLOPPY_SECTOR_SIZE;
+	int offset_in_sector = offset % FLOPPY_SECTOR_SIZE;
+	uint32_t cylinder;
+	uint32_t head;
+	uint32_t sector;
+	size_t c;
+	char buffer[FLOPPY_SECTOR_SIZE];
+
+	while (count) {
+
+		cylinder = offset_sector / (FLOPPY_SECTORS_PER_TRACK * FLOPPY_NB_HEADS);
+		head    = (offset_sector % (FLOPPY_SECTORS_PER_TRACK * FLOPPY_NB_HEADS)) / (FLOPPY_SECTORS_PER_TRACK);
+		sector  = (offset_sector % (FLOPPY_SECTORS_PER_TRACK * FLOPPY_NB_HEADS)) % (FLOPPY_SECTORS_PER_TRACK);
+
+		floppy_read_sector(cylinder, head, sector, buffer);
+		c = FLOPPY_SECTOR_SIZE - offset_in_sector;
+		if (count <= c) {
+			memcpy(buffer + offset_in_sector, buf, count);
+			count = 0;
+		} else {
+			memcpy(buffer + offset_in_sector, buf, c);
+			count -= c;
+			buf += c;
+			offset_in_sector = 0;
+			offset_sector++;
+		}
+		floppy_write_sector(cylinder, head, sector, buffer);
+	}
 }
