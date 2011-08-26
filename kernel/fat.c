@@ -46,12 +46,6 @@
 
 static fat_info_t fat_info;
 
-typedef void(*read_handler)(uint8_t * buf, size_t count, int offset);
-typedef void(*write_handler)(uint8_t * buf, size_t count, int offset);
-
-static read_handler read_data = floppy_read;
-static write_handler write_data = floppy_write;
-
 /*
  * Read the File Allocation Table.
  */
@@ -62,7 +56,7 @@ static void read_fat() {
 	int p = 0;
 	uint32_t tmp = 0;
 
-  read_data(buffer, sizeof(buffer), fat_info.addr_fat[0]);
+  fat_info.read_data(buffer, sizeof(buffer), fat_info.addr_fat[0]);
 
 	if (fat_info.fat_type == FAT12) {
 		// decodage FAT12
@@ -115,7 +109,7 @@ static void write_fat() {
   }
  
   for (i = 0; i < fat_info.BS.table_count; i++) {
-    write_data(buffer, sizeof(buffer), fat_info.addr_fat[i]);
+    fat_info.write_data(buffer, sizeof(buffer), fat_info.addr_fat[i]);
   }
 }
 
@@ -134,14 +128,14 @@ static void write_fat_entry(int index) {
     buffer[2] = tmp & 0xFF0000;
 
 		for (i = 0; i < fat_info.BS.table_count; i++) {
-			write_data(buffer, sizeof(buffer), fat_info.addr_fat[i] + index * 12);
+			fat_info.write_data(buffer, sizeof(buffer), fat_info.addr_fat[i] + index * 12);
 		}
   } else if (fat_info.fat_type == FAT16) {
 		uint8_t buffer[2];
     buffer[0] = fat_info.file_alloc_table[index] & 0x00FF;
     buffer[1] = fat_info.file_alloc_table[index] & 0xFF00;
 		for (i = 0; i < fat_info.BS.table_count; i++) {
-			write_data(buffer, sizeof(buffer), fat_info.addr_fat[i] + index * 16);
+			fat_info.write_data(buffer, sizeof(buffer), fat_info.addr_fat[i] + index * 16);
 		}
   } else if (fat_info.fat_type == FAT32) {
 		uint8_t buffer[4];
@@ -150,7 +144,7 @@ static void write_fat_entry(int index) {
     buffer[2] = fat_info.file_alloc_table[index] & 0x00FF0000;
     buffer[3] = fat_info.file_alloc_table[index] & 0xFF000000;
 		for (i = 0; i < fat_info.BS.table_count; i++) {
-			write_data(buffer, sizeof(buffer), fat_info.addr_fat[i] + index * 32);
+			fat_info.write_data(buffer, sizeof(buffer), fat_info.addr_fat[i] + index * 32);
 		}
   }
 }
@@ -158,10 +152,14 @@ static void write_fat_entry(int index) {
 /*
  * Init the FAT driver for a specific devide.
  */
-void mount_FAT() {
+void mount_FAT(read_handler rh, write_handler wh) {
 	klog("mount_FAT !");
+
+	fat_info.read_data = rh;
+	fat_info.write_data = wh;
+
 	uint8_t sector[512];
-	read_data(sector, 512, 0);
+	fat_info.read_data(sector, 512, 0);
 	memcpy(&fat_info.BS, sector, sizeof(fat_BS_t));
 
 	if (fat_info.BS.table_size_16 == 0) { // Si 0 alors on considère qu'on est en FAT32.
@@ -608,7 +606,7 @@ static void open_dir(int cluster, directory_t *dir) {
 	int c = 0;
 	next = cluster;
 	while (!is_last_cluster(next)) {
-		read_data((uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+		fat_info.read_data((uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
 		next = fat_info.file_alloc_table[next];
 		c++;
 	}
@@ -628,7 +626,7 @@ static directory_t * open_root_dir() {
 	} else {
 		fat_dir_entry_t *root_dir = kmalloc(sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count);
 	
-		read_data((uint8_t*)root_dir, sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count, fat_info.addr_root_dir);
+		fat_info.read_data((uint8_t*)root_dir, sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count, fat_info.addr_root_dir);
 	
 		dir->cluster = -1;
 		dir->total_entries = 0;
@@ -761,7 +759,7 @@ static void init_dir_cluster(int cluster) {
   fat_dir_entry_t * dir_entries = kmalloc(n_dir_entries * sizeof(fat_dir_entry_t));
 	memset(dir_entries, 0, n_dir_entries * sizeof(fat_dir_entry_t));
  
-  write_data((uint8_t*) dir_entries, sizeof(fat_dir_entry_t) * n_dir_entries, fat_info.addr_data + (cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+  fat_info.write_data((uint8_t*) dir_entries, sizeof(fat_dir_entry_t) * n_dir_entries, fat_info.addr_data + (cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
 }
 
 static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
@@ -780,7 +778,7 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
     int c = 0;
     next = dir->cluster;
     while (!is_last_cluster(next)) {
-      read_data((uint8_t*)(dir_entries + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+      fat_info.read_data((uint8_t*)(dir_entries + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
       next = fat_info.file_alloc_table[next];
       c++;
     }
@@ -797,7 +795,7 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
             next = fat_info.file_alloc_table[next];
           for (j = 0; j < n; j++) {
             int off = (i - n + j + 1) % n_dir_entries; // offset dans le cluster.
-            write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
+            fat_info.write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
             if (off == n_dir_entries - 1) {
               next = fat_info.file_alloc_table[next];
             }
@@ -820,11 +818,11 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
   
       for (j = 0; j < consecutif; j++) {
         int off = n_dir_entries - consecutif + j;
-        write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
+        fat_info.write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
       }
       for (j = consecutif; j < n; j++) {
         int off = n_dir_entries - consecutif + j;
-        write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), fat_info.addr_data + (newcluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
+        fat_info.write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), fat_info.addr_data + (newcluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
       }
       return 0;
     }
@@ -832,13 +830,13 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
     int i;
     int consecutif = 0;
     fat_dir_entry_t *root_dir = kmalloc(sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count);
-    read_data((uint8_t*)root_dir, sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count, fat_info.addr_root_dir);
+    fat_info.read_data((uint8_t*)root_dir, sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count, fat_info.addr_root_dir);
 
     for (i = 0; i < fat_info.BS.root_entry_count; i++) {
       if (root_dir[i].utf8_short_name[0] == 0 || (unsigned char)root_dir[i].utf8_short_name[0] == 0xe5) {
         consecutif++;
         if (consecutif == n) {
-          write_data((uint8_t*)fentry, sizeof(fat_dir_entry_t) * n, fat_info.addr_root_dir + (i - n + 1) * sizeof(fat_dir_entry_t));
+          fat_info.write_data((uint8_t*)fentry, sizeof(fat_dir_entry_t) * n, fat_info.addr_root_dir + (i - n + 1) * sizeof(fat_dir_entry_t));
           return 0;
         }
       }
@@ -890,17 +888,15 @@ void load_buffer(open_file_descriptor *ofd) {
 
 	if (r < size_buffer) {
 		if (r > 0)
-			read_data(ofd->buffer, r, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.bytes_per_cluster + current_octet_cluster);
+			fat_info.read_data(ofd->buffer, r, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.bytes_per_cluster + current_octet_cluster);
 	} else {
-		read_data(ofd->buffer, size_buffer, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.bytes_per_cluster + current_octet_cluster);
+		fat_info.read_data(ofd->buffer, size_buffer, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.bytes_per_cluster + current_octet_cluster);
 	}
 	ofd->current_octet_buf = 0;
 }
 
 // TODO: Est-ce que offset peut être négatif ? Si oui, le gérer.
 int seek_file(open_file_descriptor * ofd, long offset, int whence) {
-	size_t size_buffer = sizeof(ofd->buffer) < fat_info.BS.bytes_per_sector ? 
-			sizeof(ofd->buffer) : fat_info.BS.bytes_per_sector;
 	switch (whence) {
 	case SEEK_SET: // depuis le debut du fichier
 		if ((unsigned long) offset < ofd->file_size) {
@@ -909,7 +905,7 @@ int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 			ofd->current_octet = 0;
 
 			// On avance de cluster en cluster.
-			while (offset >= fat_info.bytes_per_cluster) {
+			while (offset >= (long)fat_info.bytes_per_cluster) {
 				offset -= fat_info.bytes_per_cluster;
 				ofd->current_octet += fat_info.bytes_per_cluster;
 				ofd->current_cluster = fat_info.file_alloc_table[ofd->current_cluster];
@@ -927,7 +923,7 @@ int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 
 			int current_octet_cluster = ofd->current_octet % fat_info.bytes_per_cluster;
 
-			while (offset + current_octet_cluster >= fat_info.bytes_per_cluster) {
+			while (offset + current_octet_cluster >= (long)fat_info.bytes_per_cluster) {
 				offset -= fat_info.bytes_per_cluster;
 				ofd->current_cluster = fat_info.file_alloc_table[ofd->current_cluster];
 			}
@@ -1082,7 +1078,7 @@ int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
 	ofd->current_octet_buf = 0;
 
 
-	read_data(ofd->buffer, size_buffer, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+	fat_info.read_data(ofd->buffer, size_buffer, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
 
 	kfree(f);
 

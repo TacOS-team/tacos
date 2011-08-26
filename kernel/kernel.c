@@ -96,8 +96,6 @@ void LPT1_routine(int id __attribute__ ((unused)))
 }
 
 void cmain (unsigned long magic, unsigned long addr) {
-				int b = 0;
-	//			while(!b);
 	multiboot_info_t *mbi;
 	kernel_options options;
 	uint32_t esp_tss;
@@ -208,9 +206,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	if(init_floppy() != 0)
 		kerr("Initialisation du lecteur a echoue.");
 	
-	/*   Test FAT    */
-	//mount_fat_fs ();
-	mount_FAT ();
+	// Mount FAT avec le lecteur de disquette.
+	mount_FAT(floppy_read, floppy_write);
 	
 	init_process_array();
 	
