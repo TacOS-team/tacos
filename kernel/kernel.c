@@ -96,6 +96,8 @@ void LPT1_routine(int id __attribute__ ((unused)))
 }
 
 void cmain (unsigned long magic, unsigned long addr) {
+				int b = 0;
+	//			while(!b);
 	multiboot_info_t *mbi;
 	kernel_options options;
 	uint32_t esp_tss;
