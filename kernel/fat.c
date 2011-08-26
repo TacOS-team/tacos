@@ -199,13 +199,13 @@ void mount_FAT() {
 
 	if (fat_info.total_data_clusters < 4086) {
 		fat_info.fat_type = FAT12;
-		klog("FAT Type : FAT12\n");
+		klog("FAT Type : FAT12");
 	} else if (fat_info.total_data_clusters < 65526) {
 		fat_info.fat_type = FAT16;
-		klog("FAT Type : FAT16\n");
+		klog("FAT Type : FAT16");
 	} else {
 		fat_info.fat_type = FAT32;
-		klog("FAT Type : FAT32\n");
+		klog("FAT Type : FAT32");
 	}
 
 	klog("First FAT starts at byte %u (sector %u)", fat_info.addr_fat[0], fat_info.addr_fat[0] / fat_info.BS.bytes_per_sector);
