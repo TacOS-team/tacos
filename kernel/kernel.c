@@ -171,10 +171,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 	init_semaphores();
 	
 	/* Initialisation des syscall */
+	klog("syscall initialization...");
 	init_syscall();
 	
-	klog("loading syscalls...");
-	//kerr("Error loading syscalls....");
 	syscall_set_handler(SYS_EXIT,	(syscall_handler_t)sys_exit);
 	syscall_set_handler(SYS_GETPID,	(syscall_handler_t)sys_getpid);
 	syscall_set_handler(SYS_OPEN,	(syscall_handler_t)sys_open);
@@ -182,19 +181,18 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_READ,	(syscall_handler_t)sys_read);
 	syscall_set_handler(SYS_EXEC, 	(syscall_handler_t)sys_exec);
 	syscall_set_handler(SYS_SLEEP, 	(syscall_handler_t)sys_sleep);
-	//syscall_set_handler(SYS_VIDEO_CTL, (syscall_handler_t)sys_video_ctl);
 	syscall_set_handler(SYS_SEMCTL, (syscall_handler_t)sys_ksem);
 	syscall_set_handler(SYS_PROC, 	(syscall_handler_t)sys_proc);
 	syscall_set_handler(SYS_VMM, 	(syscall_handler_t) sys_vmm);
 	syscall_set_handler(SYS_SEEK, 	(syscall_handler_t) sys_seek);
 	syscall_set_handler(SYS_HLT, 	(syscall_handler_t) sys_hlt);
-	syscall_set_handler(SYS_SIGNAL, 	(syscall_handler_t) sys_signal);
+	syscall_set_handler(SYS_SIGNAL,	(syscall_handler_t) sys_signal);
 	syscall_set_handler(SYS_SIGPROCMASK, 	(syscall_handler_t) sys_sigprocmask);
-	syscall_set_handler(SYS_KILL, (syscall_handler_t) sys_kill);
-	syscall_set_handler(SYS_CLOSE, (syscall_handler_t) sys_close);
-	syscall_set_handler(SYS_OPENDIR, (syscall_handler_t) sys_opendir);
-	syscall_set_handler(SYS_READDIR, (syscall_handler_t) sys_readdir);
-	syscall_set_handler(SYS_MKDIR, (syscall_handler_t) sys_mkdir);
+	syscall_set_handler(SYS_KILL,	(syscall_handler_t) sys_kill);
+	syscall_set_handler(SYS_CLOSE,	(syscall_handler_t) sys_close);
+	syscall_set_handler(SYS_OPENDIR,	(syscall_handler_t) sys_opendir);
+	syscall_set_handler(SYS_READDIR,	(syscall_handler_t) sys_readdir);
+	syscall_set_handler(SYS_MKDIR,	(syscall_handler_t) sys_mkdir);
 	
 	/* Initialisation des drivers */
 	klog("loading drivers...");

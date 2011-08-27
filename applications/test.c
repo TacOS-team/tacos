@@ -37,6 +37,10 @@
 
 int main(int argc, char** argv)
 {
-	printf("%s: %d arguments\n", argv[0], argc);
+	while(1) {
+		printf(".");
+		fflush(stdout);
+		sleep(1);
+	}
 	return 0;
 }	

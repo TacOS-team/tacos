@@ -1,5 +1,5 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen
-OBJ=top test_sig demo cat ls
+OBJ=top test demo cat ls
 SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a 
 INCLUDES=-I../include/ -I../libc/include/
