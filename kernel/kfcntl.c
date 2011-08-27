@@ -50,20 +50,21 @@ void init_stdfd(process_t *new_proc) {
     struct _file_descriptor *fd0 = &(new_proc->fd[0]);
     struct _file_descriptor *fd1 = &(new_proc->fd[1]);
     struct _file_descriptor *fd2 = &(new_proc->fd[2]);
-    terminal_t *t;
+    terminal_t * t;
 
-    if (TRUE || new_proc->ppid == 0) { // pas de père, on peut pas récupérer son tty.
-        t = kmalloc(sizeof(terminal_t));
+    if (new_proc->ppid == 0) { // pas de père, on peut pas récupérer son tty.
+				int t_i = tty_alloc();
+				t = tty_get(t_i);
         int console = get_available_console(t);
         focus_console(console);
         tty_init(t, new_proc, (void *)console,(void (*)(void *, char)) kputchar);
-        //new_proc->ctrl_tty = t;
+        new_proc->ctrl_tty = t_i;
     } else {
-        /*
         process_t *pprocess = get_process(new_proc->ppid);
-        terminal_t *t = pprocess->ctrl_tty;
+        int t_i = pprocess->ctrl_tty;
+				t = tty_get(t_i);
+				new_proc->ctrl_tty = t_i;
         //focus_console
-        */
     }
 	fd0->used = TRUE; /* stdin */
 	fd0->ofd = kmalloc(sizeof(open_file_descriptor));

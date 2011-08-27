@@ -26,7 +26,7 @@ pres.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 pres.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 pres.o: ../include/gui.h ../include/process.h ../include/pagination.h
 pres.o: ../include/vmm.h ../include/signal.h
-shell.o: ../libc/include/dirent.h ../include/floppy.h ../include/types.h
+shell.o: ../libc/include/dirent.h ../include/types.h ../include/floppy.h
 shell.o: ../include/kmalloc.h ../include/memory.h ../include/mouse.h
 shell.o: ../include/pci.h ../include/pci_types.h ../include/process.h
 shell.o: ../libc/include/libio.h ../libc/include/fcntl.h

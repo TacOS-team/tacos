@@ -57,7 +57,7 @@ void init_console() {
 		consoles[i].disp_cur = TRUE;
 		consoles[i].cur_x = 0;
 		consoles[i].cur_y = 0;
-        consoles[i].tty = NULL;
+		consoles[i].tty = NULL;
 		init_disp_inactive_console(i);
 	}
 }
@@ -78,7 +78,7 @@ void focus_console(int n) {
 	if (consoles[n].disp_cur) {
 		cursor_position_video(consoles[n].cur_x, consoles[n].cur_y);
 	}
-    set_active_tty(consoles[n].tty);
+	set_active_tty(consoles[n].tty);
 }
 
 int get_available_console(terminal_t *tty) {
@@ -86,7 +86,7 @@ int get_available_console(terminal_t *tty) {
 	for (i = 0; i < NB_CONSOLES; i++) {
 		if (consoles[i].used == FALSE) {
 			consoles[i].used = TRUE;
-            consoles[i].tty = tty;
+			consoles[i].tty = tty;
 			clear_console(i);
 			return i;
 		}

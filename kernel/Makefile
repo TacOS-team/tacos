@@ -33,13 +33,13 @@ events.o: ../libc/include/time.h include/clock.h ../include/list.h
 events.o: include/events.h ../libc/include/stdio.h ../libc/include/fcntl.h
 events.o: ../libc/include/libio.h ../libc/include/stdarg.h ../include/debug.h
 exception.o: ../include/types.h include/idt.h include/exception.h
-fat.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-fat.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
-fat.o: ../include/floppy.h ../libc/include/string.h include/kfat.h
-fat.o: include/kfcntl.h include/kprocess.h ../include/process.h
+fat.o: ../libc/include/ctype.h ../include/errno.h ../libc/include/fcntl.h
+fat.o: ../include/floppy.h ../include/types.h include/kfat.h include/kfcntl.h
+fat.o: ../libc/include/libio.h include/kprocess.h ../include/process.h
 fat.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
-fat.o: include/ksyscall.h ../libc/include/time.h ../include/errno.h
-fat.o: ../include/kmalloc.h ../include/klog.h
+fat.o: include/ksyscall.h ../libc/include/time.h ../include/klog.h
+fat.o: ../include/kmalloc.h ../libc/include/stdio.h ../libc/include/stdarg.h
+fat.o: ../libc/include/string.h include/clock.h
 fpu.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 fpu.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 fpu.o: include/fpu.h ../include/interrupts.h ../include/klog.h

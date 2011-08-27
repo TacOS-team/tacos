@@ -84,6 +84,11 @@ demo.o: ../include/vmm.h ../include/signal.h ../libc/include/string.h
 demo.o: ../libc/include/unistd.h
 fiinou.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 fiinou.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
+fopen.o: ../libc/include/stdio.h ../libc/include/fcntl.h
+fopen.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
+ls.o: ../libc/include/dirent.h ../include/types.h ../libc/include/stdio.h
+ls.o: ../libc/include/fcntl.h ../libc/include/libio.h
+ls.o: ../libc/include/stdarg.h ../libc/include/unistd.h
 matrix.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 matrix.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 matrix.o: ../libc/include/stdlib.h ../libc/include/malloc.h

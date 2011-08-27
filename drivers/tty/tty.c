@@ -39,8 +39,23 @@
 #include "kstdio.h"
 #include <errno.h>
 #include <klog.h>
+#include <kmalloc.h>
 
+static terminal_t *terminals[10]; // "Temporaire"
 static terminal_t *active_tty = NULL;
+
+int tty_alloc() {
+	int i = 0;
+	while (terminals[i] && i < 10) {
+		i++;
+	}
+  terminals[i] = kmalloc(sizeof(terminal_t));
+	return i;
+}
+
+terminal_t * tty_get(int i) {
+	return terminals[i];
+}
 
 void tty_init(terminal_t *t, process_t *process, void * extra_data, void(*put_char)(void*, char)) {
 	t->echo = TRUE;
@@ -49,7 +64,7 @@ void tty_init(terminal_t *t, process_t *process, void * extra_data, void(*put_ch
 	t->p_end = 0;
 	t->extra_data = extra_data;
 	t->put_char = put_char;
-    t->fg_process = process;
+	t->fg_process = process;
 	uint8_t key;
 	t->sem = ksemcreate_without_key(&key);
 	ksemP(t->sem);
@@ -59,7 +74,7 @@ void tty_init(terminal_t *t, process_t *process, void * extra_data, void(*put_ch
  * @brief Fonction appelée par le driver clavier ou série pour ajouter un caractère.
  */
 void tty_add_char(terminal_t *t, char c) {
-    if (t == NULL) return;
+	if (t == NULL) return;
 
 	if (c == ('c' & 0x1F)) {
 		kdebug("Break!");
@@ -80,6 +95,9 @@ void tty_add_char(terminal_t *t, char c) {
 			if (t->echo) {
 				t->put_char(t->extra_data, c);
 			}
+			// Comment: Quelqu'un sait pourquoi ce bout de code est commenté ? 
+			// S'il ne doit pas être là on supprime, sinon un petit commentaire 
+			// pour expliquer ce qui déconne serait pas mal.
 			//if (!t->canon || c == '\n') {
 			ksemV(t->sem);
 			//}

@@ -54,6 +54,9 @@ typedef struct _terminal_t {
 	int sem;
 } terminal_t;
 
+int tty_alloc();
+terminal_t * tty_get(int i);
+
 void tty_init(terminal_t *term, process_t *process, void *extra_data, void (*put_char)(void*, char));
 
 void tty_add_char(terminal_t *term, char c); // Fonction appelée par le driver clavier ou série pour ajouter un caractère.

@@ -118,7 +118,8 @@ typedef struct{
 	
 	signal_process_data_t signal_data;
 
-    //XXX: terminal_t *ctrl_tty;
+  //terminal_t *ctrl_tty;
+	int ctrl_tty; // Indice pour l'instant, path dans le futur ? (lorsque fichiers spéciaux)
 } process_t;
 
 typedef struct _proclist_cell{

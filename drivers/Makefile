@@ -27,9 +27,9 @@ ethernet/rtl8139.o: ../kernel/include/kstdio.h ../include/klog.h
 floppy/floppy.o: ../include/ioports.h ../libc/include/stdio.h
 floppy/floppy.o: ../libc/include/fcntl.h ../libc/include/libio.h
 floppy/floppy.o: ../include/types.h ../libc/include/stdarg.h
-floppy/floppy.o: ../include/klog.h floppy/floppy_interrupt.h
-floppy/floppy.o: floppy/floppy_utils.h floppy/floppy_motor.h
-floppy/floppy.o: floppy/floppy_dma.h
+floppy/floppy.o: ../libc/include/string.h ../include/klog.h
+floppy/floppy.o: floppy/floppy_interrupt.h floppy/floppy_utils.h
+floppy/floppy.o: floppy/floppy_motor.h floppy/floppy_dma.h
 floppy/floppy_dma.o: ../include/types.h ../libc/include/stdio.h
 floppy/floppy_dma.o: ../libc/include/fcntl.h ../libc/include/libio.h
 floppy/floppy_dma.o: ../libc/include/stdarg.h ../libc/include/string.h
