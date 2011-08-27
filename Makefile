@@ -21,7 +21,7 @@ LDLIBS=-lc -lutils -ldrivers -z nodefaultlib -lsystem
 LDFLAGS=-Llib/
 SUBDIRS = kernel libc utils drivers apps system applications
 
-all: kernel.bin
+all: directories kernel.bin
 
 kernel.bin: force_look
 	@for i in $(SUBDIRS); do \
@@ -61,7 +61,12 @@ runqemugdb: core.img
 runbochs: core.img
 	BOCHSRC=bochsrc bochs
 
-.PHONY: clean depend doc
+.PHONY: clean depend doc directories
+
+directories: force_look
+	@mkdir -p lib
+	@mkdir -p bin
+	@mkdir -p modules
 
 doc:
 	doxygen doxygen.conf && $(MAKE) -C doc/latex
