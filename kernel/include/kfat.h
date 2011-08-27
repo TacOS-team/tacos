@@ -45,12 +45,8 @@
 
 #define ENOENT 2
 
-// Floppy stuff.
-
-typedef uint32_t addr_LBA_t;
-typedef struct addr_CHS { uint32_t Cylinder; uint32_t Head; uint32_t Sector; } addr_CHS_t;
-
-
+typedef void(*read_handler)(uint8_t * buf, size_t count, int offset);
+typedef void(*write_handler)(uint8_t * buf, size_t count, int offset);
 
 // FAT low level.
 
@@ -169,6 +165,7 @@ typedef enum {
 	FAT32
 } fat_t;
 
+// Structure qui contient tout ce qui est utilisé par le driver FAT.
 typedef struct _fat_info {
 	fat_BS_t BS;
 	fat_extended_BIOS_16_t *ext_BIOS_16;
@@ -180,8 +177,10 @@ typedef struct _fat_info {
 	unsigned int total_data_clusters;
 	unsigned int table_size;
 	fat_t fat_type;
+	unsigned int bytes_per_cluster;
+	read_handler read_data;
+	write_handler write_data;
 } fat_info_t;
-
 
 void mount_FAT();
 
