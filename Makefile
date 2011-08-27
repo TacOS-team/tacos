@@ -63,7 +63,7 @@ runbochs: core.img
 
 .PHONY: clean depend doc directories
 
-directories: force_look
+directories:
 	@mkdir -p lib
 	@mkdir -p bin
 	@mkdir -p modules
