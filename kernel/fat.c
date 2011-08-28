@@ -536,7 +536,7 @@ static directory_entry_t * decode_sfn_entry(fat_dir_entry_t *fdir) {
 			if (!notspace) {
 				notspace = j;
 			}
-			if (fdir->reserved && 0x08) {
+			if (fdir->reserved & 0x08) {
 				filename[j] = tolower(fdir->utf8_short_name[j]);
 			} else {
 				filename[j] = fdir->utf8_short_name[j];
@@ -554,7 +554,7 @@ static directory_entry_t * decode_sfn_entry(fat_dir_entry_t *fdir) {
 			if (notspaceext <= 0) {
 				notspaceext = k;
 			}
-			if (fdir->reserved && 0x10) {
+			if (fdir->reserved & 0x10) {
 				filename[notspace + k] = tolower(fdir->file_extension[k]);
 			} else {
 				filename[notspace + k] = fdir->file_extension[k];
