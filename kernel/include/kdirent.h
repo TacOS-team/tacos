@@ -37,9 +37,10 @@
 
 #include <ksyscall.h>
 #include <types.h>
+#include <dirent.h>
 
-SYSCALL_HANDLER2(sys_opendir, uint32_t p_name, uint32_t p_ret);
-SYSCALL_HANDLER3(sys_readdir, uint32_t p_dir, uint32_t p_entry, uint32_t p_ret);
-SYSCALL_HANDLER3(sys_mkdir, uint32_t pathname, uint32_t mode, uint32_t p_ret);
+SYSCALL_HANDLER2(sys_opendir, char *name, int *ret);
+SYSCALL_HANDLER3(sys_readdir, DIR *dir, struct dirent *entry, int *ret);
+SYSCALL_HANDLER3(sys_mkdir, char *pathname, mode_t mode, int *ret);
 
 #endif

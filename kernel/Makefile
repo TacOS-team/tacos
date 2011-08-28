@@ -76,8 +76,8 @@ kernel.o: ../include/beeper.h ../include/debug.h ../include/shell.h
 kernel.o: ../include/syscall.h include/ksem.h ../include/video.h
 kernel.o: ../include/console.h ../include/tty.h include/ksignal.h
 kernel.o: include/round_robin.h ../include/rtl8139.h ../include/klog.h
-kernel.o: include/kdriver.h include/kdirent.h include/drivers/dummy_driver.h
-kernel.o: include/drivers/serial.h
+kernel.o: include/kdriver.h include/kdirent.h ../libc/include/dirent.h
+kernel.o: include/drivers/dummy_driver.h include/drivers/serial.h
 kfcntl.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 kfcntl.o: ../libc/include/fcntl.h ../include/types.h ../include/pagination.h
 kfcntl.o: ../include/vmm.h ../include/signal.h include/ksyscall.h
@@ -95,15 +95,15 @@ kpanic.o: ../include/process.h ../include/pagination.h ../include/vmm.h
 kpanic.o: ../include/signal.h include/ksyscall.h include/scheduler.h
 kpanic.o: ../include/symtable.h ../include/console.h ../include/tty.h
 kpanic.o: include/kfcntl.h
-kprocess.o: ../include/types.h ../libc/include/stdlib.h
-kprocess.o: ../libc/include/malloc.h ../libc/include/stdio.h
-kprocess.o: ../libc/include/fcntl.h ../libc/include/libio.h
-kprocess.o: ../libc/include/stdarg.h ../libc/include/string.h
-kprocess.o: ../include/video.h include/gdt.h include/kprocess.h
-kprocess.o: ../include/process.h ../include/pagination.h ../include/vmm.h
-kprocess.o: ../include/signal.h include/ksyscall.h ../include/kmalloc.h
-kprocess.o: ../include/elf.h include/kfcntl.h ../include/debug.h
-kprocess.o: include/scheduler.h ../include/klog.h
+kprocess.o: ../include/debug.h ../include/elf.h ../libc/include/libio.h
+kprocess.o: ../libc/include/fcntl.h ../include/types.h include/gdt.h
+kprocess.o: include/kfcntl.h include/kprocess.h ../include/process.h
+kprocess.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
+kprocess.o: include/ksyscall.h ../include/klog.h ../include/kmalloc.h
+kprocess.o: include/scheduler.h ../libc/include/stdio.h
+kprocess.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
+kprocess.o: ../libc/include/malloc.h ../libc/include/string.h
+kprocess.o: ../include/tty.h ../include/video.h
 ksem.o: include/ksem.h include/ksyscall.h ../include/types.h
 ksem.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 ksem.o: ../libc/include/fcntl.h ../include/pagination.h ../include/vmm.h

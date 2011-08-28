@@ -33,15 +33,11 @@
  */
 
 #include <kdirent.h>
-#include <dirent.h>
 #include <kfat.h>
 #include <kmalloc.h>
 #include <string.h>
 
-SYSCALL_HANDLER2(sys_opendir, uint32_t p_name, uint32_t p_ret) {
-	char *name = (char*)p_name;
-	int *ret = (int*) p_ret;
-
+SYSCALL_HANDLER2(sys_opendir, char *name, int *ret) {
 	if (fat_opendir(name) == 0) {
 		*ret = 0;
 	} else {
@@ -49,15 +45,10 @@ SYSCALL_HANDLER2(sys_opendir, uint32_t p_name, uint32_t p_ret) {
 	}
 }
 
-SYSCALL_HANDLER3(sys_readdir, uint32_t p_dir, uint32_t p_entry, uint32_t p_ret) {
-	DIR* dir = (DIR*) p_dir;
-	struct dirent *entry = (struct dirent*) p_entry;
-	int *ret = (int*) p_ret;
-
+SYSCALL_HANDLER3(sys_readdir, DIR *dir, struct dirent *entry, int *ret) {
 	*ret = fat_readdir(dir->path, dir->iter, entry->d_name);
 }
 
-SYSCALL_HANDLER3(sys_mkdir, uint32_t pathname, uint32_t mode, uint32_t p_ret) {
-	int *ret = (int*) p_ret;
+SYSCALL_HANDLER3(sys_mkdir, char *pathname, mode_t mode, int *ret) {
 	*ret = fat_mkdir((char*)pathname, (mode_t)mode);
 }

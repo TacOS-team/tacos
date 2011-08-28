@@ -77,7 +77,7 @@ tty/tty.o: ../kernel/include/kprocess.h ../include/process.h
 tty/tty.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
 tty/tty.o: ../kernel/include/ksyscall.h ../kernel/include/ksem.h
 tty/tty.o: ../kernel/include/ksignal.h ../kernel/include/kstdio.h
-tty/tty.o: ../include/errno.h ../include/klog.h
+tty/tty.o: ../include/errno.h ../include/klog.h ../include/kmalloc.h
 video/console.o: ../include/console.h ../include/types.h ../include/tty.h
 video/console.o: ../kernel/include/kfcntl.h ../libc/include/libio.h
 video/console.o: ../libc/include/fcntl.h ../kernel/include/kprocess.h

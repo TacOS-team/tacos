@@ -44,7 +44,7 @@
 //TODO(max) Commenter ces fonctions.
 int chdir(const char *path);
 const char * getcwd(char * buf, size_t size);
-const char * get_absolute_path(const char *dirname);
+char * get_absolute_path(const char *dirname);
 
 /** 
  * @brief Endort le processus pour une durée déterminée (en secondes).

@@ -42,7 +42,7 @@
 
 static char * cwd = "/";
 
-const char * get_absolute_path(const char *dirname) {
+char * get_absolute_path(const char *dirname) {
 	int lencwd = strlen(cwd);
 	if (lencwd <= 1) {
 		lencwd = 0;
