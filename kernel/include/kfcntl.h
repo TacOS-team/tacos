@@ -57,7 +57,7 @@ typedef struct _open_file_descriptor {
 	void * extra_data;
 	size_t (*write)(struct _open_file_descriptor *, const void*, size_t);
 	size_t (*read)(struct _open_file_descriptor *,void*, size_t);
-    int (*seek)(struct _open_file_descriptor *, long, int);
+	int (*seek)(struct _open_file_descriptor *, long, int);
 	int (*ioctl)(struct _open_file_descriptor*, unsigned int, unsigned long);
 	int (*open) (struct _open_file_descriptor*);
 	int (*close) (struct _open_file_descriptor*);
@@ -74,6 +74,11 @@ typedef struct _open_file_descriptor {
  * @param fd2 stderr
  */
 void init_stdfd(process_t *new_proc);
+
+/**
+ *	@brief Ferme tous les file descriptors ouverts.
+ */
+void close_all_fd();
 
 SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags);
 SYSCALL_HANDLER2(sys_close, uint32_t fd_id, uint32_t* ret);

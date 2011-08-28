@@ -63,6 +63,7 @@ void tty_add_char(terminal_t *term, char c); // Fonction appelée par le driver 
 
 terminal_t * get_active_tty();
 void set_active_tty(terminal_t *tty);
+void tty_set_fg_process(terminal_t *tty, process_t *process);
 
 size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count);
 size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count);

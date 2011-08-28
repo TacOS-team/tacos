@@ -64,6 +64,7 @@ void init_stdfd(process_t *new_proc) {
         int t_i = pprocess->ctrl_tty;
 				t = tty_get(t_i);
 				new_proc->ctrl_tty = t_i;
+				tty_set_fg_process(t, new_proc);
         //focus_console
     }
 	fd0->used = TRUE; /* stdin */
@@ -81,6 +82,21 @@ void init_stdfd(process_t *new_proc) {
   fd2->ofd->flags = O_WRONLY;
 	fd2->ofd->write = tty_write;
 	fd2->ofd->extra_data = t;
+}
+
+void close_all_fd() {
+	int fd_id;
+	process_t * process = get_current_process();
+	open_file_descriptor *ofd;
+
+	for (fd_id = 0; fd_id < FOPEN_MAX; fd_id++) {
+		if (process->fd[fd_id].used) {
+			ofd = process->fd[fd_id].ofd;
+
+			if(ofd->close != NULL)
+				ofd->close(ofd);
+		}
+	}
 }
 
 
@@ -146,7 +162,7 @@ SYSCALL_HANDLER2(sys_close, uint32_t fd_id, uint32_t* ret)
 	if (process->fd[fd_id].used) {
 		ofd = process->fd[fd_id].ofd;
 	
-		if(ofd->seek == NULL)
+		if(ofd->close == NULL)
 			kerr("No \"close\" method for this device.");
 		else
 			*ret = ofd->close(ofd);

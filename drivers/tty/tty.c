@@ -123,13 +123,18 @@ size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {
 	 * TODO: Si un processus essaye d'écrire dans un tty alors qu'il n'est pas en foreground : SIGTTOU
 	 */
 	unsigned int i;
-
   if((ofd->flags & O_ACCMODE) == O_RDONLY) {
     errno = EBADF;
     return -1;
   }
 
+	int pid = get_pid();
 	terminal_t *t = (terminal_t *) ofd->extra_data;
+
+	if (get_process(pid) != t->fg_process) {
+		sys_kill(pid, SIGTTOU, NULL);
+	}
+
 	for (i = 0; i < count; i++) {
 		t->put_char(t->extra_data, ((char*) buf)[i]);
 	}
@@ -145,6 +150,11 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 	char c;
 	unsigned int j = 0;
 	terminal_t *t = (terminal_t *) ofd->extra_data;
+	int pid = get_pid();
+
+	if (get_process(pid) != t->fg_process) {
+		sys_kill(pid, SIGTTIN, NULL);
+	}
 
   if((ofd->flags & O_ACCMODE) == O_WRONLY) {
     errno = EBADF;
