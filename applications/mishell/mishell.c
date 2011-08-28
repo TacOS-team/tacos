@@ -42,6 +42,12 @@
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
 
+static int pwd_cmd()
+{
+	printf("%s", getcwd(NULL, 0));
+	return 0;
+}
+
 static int help_cmd()
 {
 	show_builtin_cmd();
@@ -62,49 +68,6 @@ static int kill_cmd()
 	kill(pid, SIGKILL);
 	return 0;
 }
-/*
-static int ls_cmd()
-{
-	list_segments(0);
-	return 0;
-}*/
-/*
-static int ll_cmd()
-{
-	list_segments(1);
-	return 0;
-}*/
-/*
-static int cd_cmd()
-{
-	char buffer[80];
-	scanf("%s", buffer);
-	//printf("%sEND\n",buffer);
-	change_dir(buffer);
-	return 0;
-}*/
-
-static int cat_cmd()
-{
-// NON TESTÉ !
-	char buf[80];
-    char chemin[80];
-    strcpy(chemin, "fd0:/");
-	scanf("%s", buf);
-    strcat(chemin, buf);
-
-	FILE *file = fopen(chemin, "r");
-
-	char buffer[100];
-	while (fread(buffer, sizeof(buffer), sizeof(char), file) == 100) {
-        buffer[99] = '\0';
-        printf("%s", buffer);
-    }
-
-	fflush(file);
-
-	return 0;
-}
 
 static int cls_cmd() {
 	printf("\033[2J");
@@ -112,18 +75,27 @@ static int cls_cmd() {
 	return 0;
 }
 
+static int cd_cmd()
+{
+	char buffer[256];
+	scanf("%s", buffer);
+	if (chdir(buffer)) {
+		printf("cd: aucun fichier ou dossier de ce type: %s", buffer);
+		return 1;
+	}
+	return 0;
+}
 
 int ps()
 {
 	process_t* aux = get_process_list(FIRST_PROCESS);
-
 	const int clk_per_ms = CLOCKS_PER_SEC / 1000;
 	long int ms;
 	int s;
 	int m;
 	int h;
 
-	printf("pid\tname\t\ttime\t\t%CPU\tstate\n");   
+	printf("pid\tppid\tname\t\ttime\t\t%CPU\tstate\n");   
 	while(aux!=NULL)
 	{
 			
@@ -140,7 +112,7 @@ int ps()
 					printf("*");
 			}*/
 			
-			printf("%d\t%s\t\t%dh %dm %ds\t%d\%\t",aux->pid, aux->name, h, m ,s, (int)(((float)aux->last_sample/(float)CPU_USAGE_SAMPLE_RATE)*100.f));
+			printf("%d\t%d\t%s\t\t%dh %dm %ds\t%d\%\t",aux->pid, aux->ppid, aux->name, h, m ,s, (int)(((float)aux->last_sample/(float)CPU_USAGE_SAMPLE_RATE)*100.f));
 			
 			switch(aux->state)
 			{
@@ -164,7 +136,6 @@ int ps()
 	}
 	return 0;
 }
-
 
 static int shell_exec_elf()
 {
@@ -191,10 +162,11 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	add_builtin_cmd(help_cmd, "help");
 	add_builtin_cmd(date_cmd, "date");
 	add_builtin_cmd(cls_cmd, "clear");
+	add_builtin_cmd(shell_exec_elf, "exec");
 	add_builtin_cmd(ps, "ps");
 	add_builtin_cmd(kill_cmd, "kill");
-	add_builtin_cmd(cat_cmd, "cat");
-	add_builtin_cmd(shell_exec_elf, "exec");
+	add_builtin_cmd(pwd_cmd, "pwd");
+	add_builtin_cmd(cd_cmd, "cd");
 
 	//disable_cursor(0);
 	
@@ -205,7 +177,7 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	{
 		//time_t curr_time = time(NULL);
 		printf("\n");
-		//print_working_dir();
+		pwd_cmd();
 		printf(">");
 		
 		fflush(stdout);
@@ -216,9 +188,16 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 		//printf("\n");
 		if(exec_builtin_cmd(buffer) != 0)
 		{
-			char temp[278];
-			sprintf(temp, "fd0:/bin/%s",buffer);
-			exec_elf(temp, 0);
+			if (buffer[0] == '/') {
+				if(exec_elf(buffer, 0) != 0)
+					printf("commande introuvable.\n");
+			} else {
+				char temp[278];
+				sprintf(temp, "/bin/%s", buffer);
+				if(exec_elf(temp, 0) != 0)
+					printf("commande introuvable.\n");
+			}
 		}
+
 	}
 }

@@ -47,6 +47,7 @@ int main(int argc, char** argv)
 		if (dir != NULL) {
 			while((entry = readdir(dir)))
 				printf("%s ", entry->d_name);
+			printf("\n");
 			closedir(dir);
 		}
 	} else {
