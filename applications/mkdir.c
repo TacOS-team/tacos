@@ -46,9 +46,9 @@ int main(int argc, char** argv)
 		for(i = 1; i < argc; i++) {
 			dir = opendir(argv[i]);
 			if (dir == NULL) {
-				printf("\n");
+				mkdir(argv[i], 0);
 			} else {
-				fprintf(stderr, "Le dossier %s existe déjà.\n", argv[1]);
+				fprintf(stderr, "Le dossier %s existe déjà.\n", argv[i]);
 				closedir(dir);
 			}
 		}
