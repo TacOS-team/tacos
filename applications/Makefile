@@ -1,5 +1,5 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen
-OBJ=top test demo cat ls mkdir
+OBJ=top test zen cat ls mkdir
 SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a 
 INCLUDES=-I../include/ -I../libc/include/
@@ -53,6 +53,10 @@ fopen: fopen.o
 
 mkdir: mkdir.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
+
+zen: zen.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
+
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
