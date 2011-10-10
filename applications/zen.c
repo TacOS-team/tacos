@@ -87,7 +87,6 @@ void update() {
 
 int main()
 {
-	int i = 0;
 	init();
 	put_char('Z',0,0,buffer);
 	put_char('E',1,0,buffer);
