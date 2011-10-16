@@ -103,6 +103,12 @@ const char * getcwd(char * buf, size_t size) {
 	return buf;
 }
 
+uint32_t getpid(void) {
+	uint32_t pid;
+	syscall(SYS_GETPID, (uint32_t)&pid, 0, 0);
+	return pid;
+}
+
 unsigned int sleep(unsigned int seconds)
 {
 	return usleep(1000000*seconds);
