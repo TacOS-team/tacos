@@ -80,6 +80,7 @@ static void read_fat() {
 	}
 }
 
+/*
 static void write_fat() {
   uint8_t buffer[fat_info.BS.bytes_per_sector * fat_info.table_size];
   
@@ -112,6 +113,7 @@ static void write_fat() {
     fat_info.write_data(buffer, sizeof(buffer), fat_info.addr_fat[i]);
   }
 }
+*/
 
 static void write_fat_entry(int index) {
 	int i;
@@ -304,6 +306,7 @@ static int is_last_cluster(int cluster) {
 	}
 }
 
+/*
 static int is_used_cluster(int cluster) {
 	if (fat_info.fat_type == FAT12) {
 		return cluster >= 0x002 && cluster <= 0xFEF;
@@ -313,7 +316,7 @@ static int is_used_cluster(int cluster) {
 		return cluster >= 0x00000002 && cluster <= 0x0FFFFFEF;
 	}
 }
-
+*/
 
 
 char * decode_long_file_name(char * name, lfn_entry_t * long_file_name) {
@@ -364,6 +367,7 @@ static time_t convert_datetime_fat_to_time_t(fat_date_t *date, fat_time_t *time)
 	return clock_mktime(&t);
 }
 
+/*
 static void convert_time_t_to_datetime_fat(time_t time, fat_time_t *timefat, fat_date_t *datefat) {
   #define MINUTES 60
   #define HOURS 3600
@@ -420,7 +424,7 @@ static void convert_time_t_to_datetime_fat(time_t time, fat_time_t *timefat, fat
     timefat->seconds2 = sec / 2;
   }
 }
-
+*/
 
 static void fat_dir_entry_to_directory_entry(char *filename, fat_dir_entry_t *dir, directory_entry_t *entry) {
 	strcpy(entry->name, filename);
@@ -947,7 +951,7 @@ int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 
 
 
-size_t write_file(open_file_descriptor * ofd, const void * buf, size_t nb_octet) {
+size_t write_file(open_file_descriptor *ofd __attribute__((__unused__)), const void * buf __attribute__((__unused__)), size_t nb_octet __attribute__((__unused__))) {
 	return 0;
 }
 
@@ -989,7 +993,7 @@ size_t read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 	return ret;
 }
 
-int fat_mkdir (const char * path, mode_t mode) {
+int fat_mkdir (const char * path, mode_t mode __attribute__((__unused__))) {
   char * dir = kmalloc(strlen(path));
   char filename[256];
   split_dir_filename(path, dir, filename);
@@ -1022,7 +1026,7 @@ int fat_mkdir (const char * path, mode_t mode) {
   return 0;
 }
 
-int fat_createfile (const char * path, mode_t mode) {
+int fat_createfile (const char * path, mode_t mode __attribute__((__unused__))) {
   char * dir = kmalloc(strlen(path));
   char filename[256];
   split_dir_filename(path, dir, filename);
