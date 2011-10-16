@@ -42,11 +42,6 @@ shell_utils.o: ../libc/include/fcntl.h ../libc/include/libio.h
 shell_utils.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
 shell_utils.o: ../libc/include/malloc.h ../libc/include/string.h
 shell_utils.o: include/shell_utils.h
-snake.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-snake.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
-snake.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-snake.o: ../libc/include/time.h ../include/process.h ../include/pagination.h
-snake.o: ../include/vmm.h ../include/signal.h
 tests.o: ../include/floppy.h ../include/types.h ../include/kmalloc.h
 tests.o: ../include/process.h ../libc/include/libio.h ../libc/include/fcntl.h
 tests.o: ../include/pagination.h ../include/vmm.h ../include/signal.h

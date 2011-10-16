@@ -1,5 +1,5 @@
-#OBJ=cube top matrix test test_sig demo cat ls fopen
-OBJ=top test zen cat ls mkdir
+#OBJ=cube top matrix test test_sig demo cat ls fopen snake
+OBJ=top test zen cat ls mkdir 
 SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a 
 INCLUDES=-I../include/ -I../libc/include/
@@ -57,6 +57,8 @@ mkdir: mkdir.o
 zen: zen.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
+snake: snake.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
@@ -101,12 +103,19 @@ matrix.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 matrix.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 matrix.o: ../libc/include/unistd.h ../include/process.h
 matrix.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
+mkdir.o: ../libc/include/dirent.h ../include/types.h ../libc/include/stdio.h
+mkdir.o: ../libc/include/fcntl.h ../libc/include/libio.h
+mkdir.o: ../libc/include/stdarg.h
 sem_ping.o: ../include/sem.h ../include/types.h ../libc/include/stdio.h
 sem_ping.o: ../libc/include/fcntl.h ../libc/include/libio.h
 sem_ping.o: ../libc/include/stdarg.h
 sem_pong.o: ../include/sem.h ../include/types.h ../libc/include/stdio.h
 sem_pong.o: ../libc/include/fcntl.h ../libc/include/libio.h
 sem_pong.o: ../libc/include/stdarg.h
+snake.o: ../libc/include/stdio.h ../libc/include/fcntl.h
+snake.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
+snake.o: ../libc/include/stdlib.h ../libc/include/malloc.h
+snake.o: ../libc/include/time.h
 test.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 test.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 test.o: ../libc/include/unistd.h
@@ -119,3 +128,8 @@ top.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 top.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 top.o: ../libc/include/time.h ../include/process.h ../include/pagination.h
 top.o: ../include/vmm.h ../include/signal.h ../libc/include/unistd.h
+zen.o: ../libc/include/stdio.h ../libc/include/fcntl.h
+zen.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
+zen.o: ../libc/include/stdlib.h ../libc/include/malloc.h
+zen.o: ../libc/include/time.h ../libc/include/string.h
+zen.o: ../libc/include/unistd.h

@@ -32,10 +32,11 @@
  * Description de ce que fait le fichier
  */
 
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <process.h>
+#include <unistd.h>
 
 #define LIGNES 10
 #define COLONNES 20
@@ -99,11 +100,8 @@ static void gauche() {
 int thread_input() {
 	char c;
   setvbuf(stdin, NULL, _IO_MAGIC | _IONBF, 0);
-//XXX: Ce n'est plus possible...
-//  resize_text_window(get_process(CURRENT_PROCESS)->fd[1].ofd->extra_data, 1, 1);
-  pid_keyboard = get_pid();
+  pid_keyboard = getpid();
   
-  //XXX: disable_cursor(1);
   printf("#");
 
 	while(1) {
@@ -219,9 +217,10 @@ void game() {
 	}
 }
 
-int snake_proc() {
+int main() {
   pid_keyboard = -1;
-  exec((paddr_t)thread_input, "Snake_keyboard_input",0);
+	//XXX
+  //exec((paddr_t)thread_input, "Snake_keyboard_input",0);
 
 	srand(time(NULL));
 
@@ -233,9 +232,4 @@ int snake_proc() {
 	printf("\033[0m\nScore : %d\n", score);
 
 	return 0;
-}
-
-int snake_main() {
-  exec((paddr_t)snake_proc, "snake",0);
-  return 0;
 }
