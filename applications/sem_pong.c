@@ -34,12 +34,14 @@
 
 #include <sem.h>
 #include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
 
 int main()
 {
 	int semid1 = semget(4);
 	int semid2 = semget(42);
-	int pid = get_pid();
+	pid_t pid = getpid();
 	
 	int i;
 	while (1) {

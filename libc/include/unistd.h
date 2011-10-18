@@ -40,12 +40,13 @@
  */
 
 #include <types.h>
+#include <sys/types.h>
 
 //TODO(max) Commenter ces fonctions.
 int chdir(const char *path);
 const char * getcwd(char * buf, size_t size);
 char * get_absolute_path(const char *dirname);
-uint32_t getpid(void);
+pid_t getpid(void);
 
 /** 
  * @brief Endort le processus pour une durée déterminée (en secondes).

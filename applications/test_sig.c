@@ -35,6 +35,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <process.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 void int_handler()
 {
@@ -49,7 +51,7 @@ void usr_handler()
 
 int main()
 {
-	int pid = get_pid();
+	pid_t pid = getpid();
 	
 	signal(SIGINT, int_handler);
 	signal(SIGUSR1, usr_handler);
