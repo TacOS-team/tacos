@@ -24,7 +24,7 @@ depend: $(SRCS)
 ctype.o: include/ctype.h
 dirent.o: include/dirent.h ../include/types.h include/stdlib.h
 dirent.o: include/malloc.h include/string.h ../include/syscall.h
-dirent.o: include/unistd.h
+dirent.o: include/unistd.h include/sys/types.h
 elf.o: ../include/elf.h include/libio.h include/fcntl.h ../include/types.h
 elf.o: include/stdio.h include/stdarg.h include/string.h include/stdlib.h
 elf.o: include/malloc.h
@@ -56,7 +56,7 @@ time.o: include/libio.h include/stdarg.h
 unistd.o: include/dirent.h ../include/types.h ../include/errno.h
 unistd.o: include/stdio.h include/fcntl.h include/libio.h include/stdarg.h
 unistd.o: include/stdlib.h include/malloc.h include/string.h
-unistd.o: ../include/syscall.h include/unistd.h
+unistd.o: ../include/syscall.h include/unistd.h include/sys/types.h
 stdio/fclose.o: include/fcntl.h ../include/process.h include/libio.h
 stdio/fclose.o: ../include/types.h ../include/pagination.h ../include/vmm.h
 stdio/fclose.o: ../include/signal.h
@@ -67,25 +67,26 @@ stdio/fopen.o: include/stdio.h include/fcntl.h include/libio.h
 stdio/fopen.o: ../include/types.h include/stdarg.h include/stdlib.h
 stdio/fopen.o: include/malloc.h include/string.h ../include/process.h
 stdio/fopen.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
-stdio/fopen.o: include/unistd.h
+stdio/fopen.o: include/unistd.h include/sys/types.h
 stdio/fprintf.o: include/stdio.h include/fcntl.h include/libio.h
 stdio/fprintf.o: ../include/types.h include/stdarg.h include/string.h
 stdio/fread.o: include/stdio.h include/fcntl.h include/libio.h
 stdio/fread.o: ../include/types.h include/stdarg.h
 stdio/fseek.o: include/stdio.h include/fcntl.h include/libio.h
 stdio/fseek.o: ../include/types.h include/stdarg.h include/unistd.h
+stdio/fseek.o: include/sys/types.h
 stdio/fwrite.o: include/stdio.h include/fcntl.h include/libio.h
 stdio/fwrite.o: ../include/types.h include/stdarg.h
 stdio/get.o: include/stdio.h include/fcntl.h include/libio.h
 stdio/get.o: ../include/types.h include/stdarg.h include/stdlib.h
-stdio/get.o: include/malloc.h include/unistd.h
+stdio/get.o: include/malloc.h include/unistd.h include/sys/types.h
 stdio/getline.o: include/stdio.h include/fcntl.h include/libio.h
 stdio/getline.o: ../include/types.h include/stdarg.h
 stdio/printf.o: include/stdio.h include/fcntl.h include/libio.h
 stdio/printf.o: ../include/types.h include/stdarg.h
 stdio/put.o: include/stdio.h include/fcntl.h include/libio.h
 stdio/put.o: ../include/types.h include/stdarg.h include/stdlib.h
-stdio/put.o: include/malloc.h include/unistd.h
+stdio/put.o: include/malloc.h include/unistd.h include/sys/types.h
 stdio/scanf.o: include/ctype.h include/stdarg.h include/stdlib.h
 stdio/scanf.o: ../include/types.h include/malloc.h include/stdio.h
 stdio/scanf.o: include/fcntl.h include/libio.h include/string.h

@@ -36,7 +36,8 @@ shell.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 shell.o: ../libc/include/string.h ../libc/include/time.h
 shell.o: include/shell_utils.h include/apps.h ../include/sem.h
 shell.o: ../include/debug.h ../libc/include/unistd.h
-shell.o: ../kernel/include/module.h ../include/symtable.h
+shell.o: ../libc/include/sys/types.h ../kernel/include/module.h
+shell.o: ../include/symtable.h
 shell_utils.o: ../include/types.h ../libc/include/stdio.h
 shell_utils.o: ../libc/include/fcntl.h ../libc/include/libio.h
 shell_utils.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
@@ -49,5 +50,6 @@ tests.o: ../libc/include/stdio.h ../libc/include/stdarg.h
 tests.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 tests.o: ../libc/include/string.h ../libc/include/time.h include/apps.h
 tests.o: ../include/sem.h ../include/memory.h ../include/debug.h
-tests.o: ../libc/include/unistd.h ../include/elf.h ../libc/include/ctype.h
-tests.o: ../include/errno.h ../include/rtl8139.h
+tests.o: ../libc/include/unistd.h ../libc/include/sys/types.h
+tests.o: ../include/elf.h ../libc/include/ctype.h ../include/errno.h
+tests.o: ../include/rtl8139.h
