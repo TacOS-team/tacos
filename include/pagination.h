@@ -103,6 +103,17 @@ void pagination_setup();
  */
 void pagination_init_page_directory(struct page_directory_entry * pd);
 void pagination_init_page_directory_copy_kernel_only(struct page_directory_entry *pd, paddr_t pd_paddr); 
+
+static inline void pagination_load_page_directory(struct page_directory_entry * pd) __attribute__((always_inline));
+
+/*
+ * Chargement d'un page directory
+ */
+static inline void pagination_load_page_directory(struct page_directory_entry * pd) {
+	// On place le rep dans le registre cr3
+	asm volatile("mov %0, %%cr3":: "b"(pd));
+}
+
 void pagination_load_page_directory(struct page_directory_entry * pd);
 
 vaddr_t get_page_table_vaddr(int index_page); 
