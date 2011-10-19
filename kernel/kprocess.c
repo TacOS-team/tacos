@@ -211,6 +211,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->name = (char *) kmalloc((len+1)*sizeof(char));
 	strcpy(new_proc->name, init_data->name);
 	
+	/* Initialisation de la kernel stack */
 	sys_stack = kmalloc(init_data->stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
 	{
@@ -218,13 +219,14 @@ process_t* create_process_elf(process_init_data_t* init_data)
 		return NULL;
 	}
 	
+	/* Initialisation de l'user stack */
 	user_stack = kmalloc(init_data->stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
 	{
 		kerr("impossible de reserver la memoire pour la pile utilisateur.");
 		return NULL;
 	}
-	
+		
 	/* Initialisation de la pile du processus */
 	argc = arg_build(init_data->args,
 	                (vaddr_t) &(user_stack[init_data->stack_size-1]), 

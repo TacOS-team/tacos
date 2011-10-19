@@ -40,10 +40,21 @@
 #include <types.h>
 #include <kprocess.h>
 
+typedef struct {
+	void (*ret_addr)(void);
+	/*
+	int sig;
+	char retcode[8];
+	*/
+} sigframe;
+
 SYSCALL_HANDLER3(sys_signal, uint32_t signum, sighandler_t handler, sighandler_t* ret);
 SYSCALL_HANDLER3(sys_sigprocmask, uint32_t how, sigset_t* set, sigset_t* oldset);
 SYSCALL_HANDLER3(sys_kill, int pid, int signum, int* ret);
 
+void sys_sigret(int id);
 int exec_sighandler(process_t* process);
+
+
 
 #endif /* _KSIGNAL_H */

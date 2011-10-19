@@ -76,7 +76,7 @@ void set_scheduler(scheduler_descriptor_t* sched)
 
 
 /* Effectue le changement de contexte proprement dit */
-void process_switch(int mode, process_t* current)
+void context_switch(int mode, process_t* current)
 {
 	uint32_t esp, eflags;
 	uint16_t kss, ss, cs;
@@ -218,13 +218,14 @@ void* schedule(void* data __attribute__ ((unused)))
 	}
 
 	/* Mise en place de l'interruption sur le quantum de temps */
+	/* XXX en lisant ça, je me demande si on pourrait pas le faire un peu plus tard, genre juste avant de changer de contexte */
 	set_scheduler_event(schedule,NULL,quantum*1000);	
 
 	/* Changer le contexte:*/
 	if(current->regs.cs == 0x8)
-		process_switch(KERNEL_PROCESS, current);
+		context_switch(KERNEL_PROCESS, current);
 	else
-		process_switch(USER_PROCESS, current);
+		context_switch(USER_PROCESS, current);
 		
 
 	return NULL;

@@ -38,14 +38,18 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-void int_handler()
+void int_handler(int sig)
 {
-	printf("SIGINT recu.\n");
+	static int i = 0;
+	printf("SIGINT recu(0x%x): i = %d.\n", sig,i);
+	i++;
+	if(i == 3)
+		exit(0);
 	return;
 }
-void usr_handler()
+void usr_handler(int sig)
 {
-	printf("SIGUSR1 recu.\n");
+	printf("SIGUSR1 recu.(0x%x)\n", sig);
 	return;
 }
 
@@ -55,7 +59,6 @@ int main()
 	
 	signal(SIGINT, int_handler);
 	signal(SIGUSR1, usr_handler);
-	
 	kill(pid, SIGUSR1);
 	while(1);
 	return 0;

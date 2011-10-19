@@ -108,8 +108,9 @@ static int get_first_signal(sigset_t* set)
 int exec_sighandler(process_t* process)
 {
 	int signum;
-	uint32_t* ptr;
-	int ret = 0;		
+	int ret = 0;	
+	sigframe* frame;
+		
 	if(process->signal_data.pending_set != 0)
 	{
 		/* On cherche le handler à exécuter */
@@ -118,18 +119,17 @@ int exec_sighandler(process_t* process)
 		{
 			klog("Pid %d received signal %d.", process->pid, signum);
 			ret = 1;
-			ptr = (uint32_t*)process->regs.esp;
 			
-			/* Empiler l'argument */
-			/*ptr--;
-			ptr = signum;*/
+			/* On alloue sur la pile la stack frame du signal */
+			frame = (sigframe*)process->regs.esp;
+			frame--;
 			
-			/* Empiler l'adresse de retour */
-			ptr--;
-			*ptr = process->regs.eip;
+			/* Et on remplis la frame avec ce qu'on veut */
+			frame->ret_addr = process->regs.eip;
+			/* TODO: ajouter à la frame ce qu'il faut */
 			
 			/* Mettre à jour esp */
-			process->regs.esp = (uint32_t) ptr;
+			process->regs.esp = (uint32_t) frame;
 			
 			/* Mettre à jour eip */
 			process->regs.eip = (uint32_t) process->signal_data.handlers[signum];
@@ -139,4 +139,10 @@ int exec_sighandler(process_t* process)
 	}
 	
 	return ret;
+}
+
+
+void sys_sigret(int id __attribute__ ((unused)))
+{
+  kerr("sys_sigret todo.");
 }
