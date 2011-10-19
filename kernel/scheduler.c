@@ -131,8 +131,8 @@ void context_switch(int mode, process_t* current)
 	
 	outb(0x20, 0x20);
 
-	/*	pagination_load_page_directory(pd_paddr); */
-	asm volatile("mov %0, %%cr3":: "b"(pd_paddr));
+	/* On lui remet sa page directory */
+	pagination_load_page_directory((struct page_directory_entry *)pd_paddr);
 
 	RESTORE_CONTEXT();
 }
