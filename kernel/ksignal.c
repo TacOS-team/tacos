@@ -69,10 +69,10 @@ SYSCALL_HANDLER3(sys_sigprocmask, uint32_t how, sigset_t* set, sigset_t* oldset)
 			current->signal_data.mask = *set;
 			break;
 		case SIG_UNBLOCK:
-			current->signal_data.mask |= (*set);
+			current->signal_data.mask &= ~(*set);
 			break;
 		case SIG_BLOCK:
-			current->signal_data.mask &= ~(*set);
+			current->signal_data.mask |= (*set);
 			break;
 		default:
 			kerr("Invalid sigprocmask command (0x%x).", how);
@@ -148,7 +148,6 @@ SYSCALL_HANDLER0(sys_sigret)
 
 }
 
-
 static int get_first_signal(sigset_t* set)
 {
 	int i = 0;
@@ -157,13 +156,17 @@ static int get_first_signal(sigset_t* set)
 	return i;
 }
 
+int signal_pending(process_t* process){
+	return (process->signal_data.pending_set & (~process->signal_data.mask)) != 0;
+}
+
 int exec_sighandler(process_t* process)
 {
 	int signum;
 	int ret = 0;	
 	sigframe* frame;
 		
-	if(process->signal_data.pending_set != 0)
+	if(signal_pending(process))
 	{
 		/* On cherche le handler à exécuter */
 		signum = get_first_signal(&(process->signal_data.pending_set));

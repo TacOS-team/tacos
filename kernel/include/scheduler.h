@@ -92,5 +92,7 @@ SYSCALL_HANDLER1(sys_sleep, uint32_t delay);
 
 SYSCALL_HANDLER0(sys_hlt);
 
+int is_schedulable(process_t* process);
+
 void halt();
 #endif //SCHEDULER_H
