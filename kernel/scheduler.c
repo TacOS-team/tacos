@@ -37,22 +37,23 @@
  * @file scheduler.c
  */
 
-#include <stdio.h>
-#include <types.h>
-#include <kprocess.h>
-#include <scheduler.h>
-#include <events.h>
 #include <clock.h>
-#include <ioports.h>
+#include <context.h>
+#include <debug.h>
+#include <events.h>
 #include <gdt.h>
 #include <i8259.h>
-#include <syscall.h>
-#include <debug.h>
-#include <vmm.h>
 #include <kmalloc.h>
-#include <string.h>
+#include <kprocess.h>
 #include <ksignal.h>
-#include <context.h>
+#include <interrupts.h>
+#include <ioports.h>
+#include <stdio.h>
+#include <string.h>
+#include <scheduler.h>
+#include <syscall.h>
+#include <types.h>
+#include <vmm.h>
 
 #define USER_PROCESS 0
 #define KERNEL_PROCESS 1
@@ -140,46 +141,48 @@ void context_switch(int mode, process_t* current)
 void* schedule(void* data __attribute__ ((unused)))
 {
 	uint32_t* stack_ptr;
+	/* On récupere un pointeur de pile pour acceder aux registres empilés */
+	asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
+	
+	intframe* frame = stack_ptr + 4;
 
 	process_t* current = scheduler->get_current_process();
 	
 	/* On récupère le contexte du processus actuel uniquement si il a déja été lancé */
 	if(current->state == PROCSTATE_RUNNING || current->state == PROCSTATE_WAITING)
 	{	
-		/* On récupere un pointeur de pile pour acceder aux registres empilés */
-		asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
-		
+
 		/* On met le contexte dans la structure "process"
 		 * (on peut difficilement faire ça dans une autre fonction, sinon il 
 		 * faudrait calculer l'offset résultant dans la pile, donc c'est 
 		 * hardcodé, et c'est bien comme ça.)  
 		 */
-		current->regs.eflags = stack_ptr[17];
-		current->regs.cs  = stack_ptr[16];
-		current->regs.eip = stack_ptr[15];
-		current->regs.eax = stack_ptr[14];
-		current->regs.ecx = stack_ptr[13];
-		current->regs.edx = stack_ptr[12];
-		current->regs.ebx = stack_ptr[11];
+		current->regs.eflags = frame->eflags;
+		current->regs.cs  = frame->cs;
+		current->regs.eip = frame->eip;
+		current->regs.eax = frame->eax;
+		current->regs.ecx = frame->ecx;
+		current->regs.edx = frame->edx;
+		current->regs.ebx = frame->ebx;
 		/* ->esp kernel, on saute */
-		current->regs.ebp = stack_ptr[9];
-		current->regs.esi = stack_ptr[8];
-		current->regs.edi = stack_ptr[7];
-		current->regs.fs = stack_ptr[6];
-		current->regs.gs = stack_ptr[5];
-		current->regs.ds = stack_ptr[4];
-		current->regs.es = stack_ptr[3];
+		current->regs.ebp = frame->ebp;
+		current->regs.esi = frame->esi;
+		current->regs.edi = frame->edi;
+		current->regs.fs = frame->fs;
+		current->regs.gs = frame->gs;
+		current->regs.ds = frame->ds;
+		current->regs.es = frame->es;
 		
 		/* Si on ordonnance une tache en cours d'appel systeme.. */
 		if(current->regs.cs == 0x8)
 		{
 			current->regs.ss = get_default_tss()->ss0;
-			current->regs.esp = stack_ptr[10] + 12;	/* Valeur hardcodée, je cherche encore un moyen d'éviter ça... */
+			current->regs.esp = frame->kesp + 12;	/* Valeur hardcodée, je cherche encore un moyen d'éviter ça... */
 		}
 		else
 		{
-			current->regs.ss = stack_ptr[19];
-			current->regs.esp = stack_ptr[18];
+			current->regs.ss = frame->ss;
+			current->regs.esp = frame->esp;
 		}
 		
 		/* Sauver la TSS */
