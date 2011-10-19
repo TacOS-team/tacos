@@ -31,7 +31,7 @@
  *
  * Programme de test pour les signaux
  */
-
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <process.h>
@@ -63,3 +63,33 @@ int main()
 	while(1);
 	return 0;
 }
+*/
+#include <stdio.h>
+#include <sys/types.h>
+#include <signal.h>
+
+void handler1(int signal) {
+    printf("[handler1] Activation du handler1 avec signal = %d\n", signal);
+    printf("[handler1] => SIGUSR2\n");
+    kill(getpid(), SIGUSR2);
+    printf("[handler1] Fin exécution handler1.\n");
+}
+
+void handler2(int signal) {
+    printf("[handler2] Activation du handler2 avec signal = %d\n", signal);
+    printf("[handler2] => SIGUSR1\n");
+	kill(getpid(), SIGUSR1);
+    printf("[handler2] Fin exécution handler2.\n");
+}
+
+int main() {
+    signal(SIGUSR1, handler1);
+    signal(SIGUSR2, handler2);
+
+    printf("[main] => SIGUSR1.\n");
+    kill(getpid(), SIGUSR1);
+    while(1);
+    printf("[main] Fin du programme.\n");
+    return 0;
+}
+

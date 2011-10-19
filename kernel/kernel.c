@@ -165,9 +165,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	int irq = rtl8139_driver_init();
 	interrupt_set_routine(irq,  rtl8139_isr, 0);
 	
-	interrupt_set_routine(17, sys_sigret, 3);
-	make_trapgate_from_int(17);
-	
 	/* Initialisation des semaphores */
 	init_semaphores();
 	
@@ -194,6 +191,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_OPENDIR,	(syscall_handler_t) sys_opendir);
 	syscall_set_handler(SYS_READDIR,	(syscall_handler_t) sys_readdir);
 	syscall_set_handler(SYS_MKDIR,	(syscall_handler_t) sys_mkdir);
+	syscall_set_handler(SYS_SIGRET,	(syscall_handler_t) sys_sigret);
 	
 	/* Initialisation des drivers */
 	klog("loading drivers...");

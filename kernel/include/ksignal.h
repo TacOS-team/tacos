@@ -42,17 +42,16 @@
 
 typedef struct {
 	void (*ret_addr)(void);
-	/*
 	int sig;
+	regs_t context;
 	char retcode[8];
-	*/
 } sigframe;
 
 SYSCALL_HANDLER3(sys_signal, uint32_t signum, sighandler_t handler, sighandler_t* ret);
 SYSCALL_HANDLER3(sys_sigprocmask, uint32_t how, sigset_t* set, sigset_t* oldset);
 SYSCALL_HANDLER3(sys_kill, int pid, int signum, int* ret);
+SYSCALL_HANDLER0(sys_sigret);
 
-void sys_sigret(int id);
 int exec_sighandler(process_t* process);
 
 

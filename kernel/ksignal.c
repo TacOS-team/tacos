@@ -37,6 +37,8 @@
 #include <kstdio.h>
 #include <scheduler.h>
 #include <klog.h>
+#include <syscall.h>
+#include <interrupts.h>
 
 /*
  * TODO: gérer SIG_IGN et SIG_DFL 
@@ -97,6 +99,56 @@ SYSCALL_HANDLER3(sys_kill, int pid, int signum, int* ret)
 		*ret = retour;
 }
 
+
+SYSCALL_HANDLER0(sys_sigret)
+{
+	/* 
+	 * Je met un petit trophée ici, ce code a marche du premier coup
+	 */
+	uint32_t* stack_ptr;
+	
+	/* On récupere un pointeur de pile pour acceder aux registres empilés */
+	asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
+	
+	klog("sys_sigret: pid=%d", get_current_process()->pid);
+	
+	sigframe* sframe;
+	intframe* iframe;
+
+	/* On récupère les données empilées avant le signal. */
+	/* A la fin du handler, on pop l'adresse de retour, puis on pop eax, 
+	 * esp se retrouve donc à +8 par rapport à la stack frame du signal, 
+	 * on va donc chercher cette frame à esp-8
+	 */
+	sframe = stack_ptr[18]-8;
+
+	/* On récupère les données empilées par l'interruption */
+	/* Le but ici est de remplacer ces valeurs par celles stockées dans la sigframe, 
+	 * de cette manière l'iret à la fin de l'interruption restaurera le contexte du processus */
+	iframe = stack_ptr+4; /* XXX le "+4" a été déduis, pas très safe, faudrait chercher pourquoi */
+	
+	iframe->eax = sframe->context.eax;
+	iframe->ecx = sframe->context.ecx;
+	iframe->edx = sframe->context.edx;
+	iframe->ebx = sframe->context.ebx;
+	iframe->esp = sframe->context.esp;
+	iframe->ebp = sframe->context.ebp;
+	iframe->esi = sframe->context.esi;
+	iframe->edi = sframe->context.edi;
+	iframe->eip = sframe->context.eip;
+	iframe->eflags = sframe->context.eflags;
+	iframe->cs = sframe->context.cs;
+	iframe->ss = sframe->context.ss;
+	iframe->ds = sframe->context.ds;
+	iframe->es = sframe->context.es;
+	iframe->fs = sframe->context.fs;
+	iframe->gs = sframe->context.gs;
+
+	/*XXX Ici on devrait aussi changer le sigprocmask pour réautoriser le signal, à voir plus tard */
+
+}
+
+
 static int get_first_signal(sigset_t* set)
 {
 	int i = 0;
@@ -125,13 +177,40 @@ int exec_sighandler(process_t* process)
 			frame--;
 			
 			/* Et on remplis la frame avec ce qu'on veut */
-			frame->ret_addr = process->regs.eip;
-			/* TODO: ajouter à la frame ce qu'il faut */
+			//frame->ret_addr = process->regs.eip;
+			frame->ret_addr = frame->retcode;
+			
+			/* Le signal reçoit en argument le numero de signal */
+			frame->sig = signum;
+			
+			/* Sauvegarde du contexte */
+			frame->context.eax = process->regs.eax;
+			frame->context.ecx = process->regs.ecx;
+			frame->context.edx = process->regs.edx;
+			frame->context.ebx = process->regs.ebx;
+			frame->context.esp = process->regs.esp;
+			frame->context.ebp = process->regs.ebp;
+			frame->context.esi = process->regs.esi;
+			frame->context.edi = process->regs.edi;
+			frame->context.eip = process->regs.eip;
+			frame->context.eflags = process->regs.eflags;
+			frame->context.cs = process->regs.cs;
+			frame->context.ss = process->regs.ss;
+			frame->context.ds = process->regs.ds;
+			frame->context.es = process->regs.es;
+			frame->context.fs = process->regs.fs;
+			frame->context.gs = process->regs.gs;
+			frame->context.cr3 = process->regs.cr3;
+			
+			/* So called "least-understood piece of the Linux kernel*/
+			*((uint16_t*)(frame->retcode+0)) = 0xb858;
+			*((uint32_t*)(frame->retcode+2)) = SYS_SIGRET;
+			*((uint16_t*)(frame->retcode+6)) = 0x30cd;
 			
 			/* Mettre à jour esp */
 			process->regs.esp = (uint32_t) frame;
 			
-			/* Mettre à jour eip */
+			/* On fait pointer eip vers le handler du signal */
 			process->regs.eip = (uint32_t) process->signal_data.handlers[signum];
 		}
 		
@@ -141,8 +220,3 @@ int exec_sighandler(process_t* process)
 	return ret;
 }
 
-
-void sys_sigret(int id __attribute__ ((unused)))
-{
-  kerr("sys_sigret todo.");
-}

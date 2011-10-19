@@ -57,6 +57,7 @@
 #define SYS_OPENDIR 18
 #define SYS_READDIR 19
 #define SYS_MKDIR 20
+#define SYS_SIGRET 21
 
 void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3);
 
