@@ -41,18 +41,11 @@
 typedef unsigned long sigset_t;
 typedef void (*sighandler_t)(int);
 
-typedef struct {
-	void *ss_sp;
-	int ss_flag;
-	size_t ss_size;
-} sstack_t;
-
 typedef struct
 {
 	sigset_t mask;
 	sigset_t pending_set;
 	sighandler_t handlers[NSIG];
-	sstack_t stack;
 }signal_process_data_t;
 
 /* Définition des signaux */

@@ -152,11 +152,7 @@ void* schedule(void* data __attribute__ ((unused)))
 	if(current->state == PROCSTATE_RUNNING || current->state == PROCSTATE_WAITING)
 	{	
 
-		/* On met le contexte dans la structure "process"
-		 * (on peut difficilement faire ça dans une autre fonction, sinon il 
-		 * faudrait calculer l'offset résultant dans la pile, donc c'est 
-		 * hardcodé, et c'est bien comme ça.)  
-		 */
+		/* On met le contexte dans la structure "process"*/
 		current->regs.eflags = frame->eflags;
 		current->regs.cs  = frame->cs;
 		current->regs.eip = frame->eip;
@@ -164,7 +160,6 @@ void* schedule(void* data __attribute__ ((unused)))
 		current->regs.ecx = frame->ecx;
 		current->regs.edx = frame->edx;
 		current->regs.ebx = frame->ebx;
-		/* ->esp kernel, on saute */
 		current->regs.ebp = frame->ebp;
 		current->regs.esi = frame->esi;
 		current->regs.edi = frame->edi;
