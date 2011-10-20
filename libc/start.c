@@ -32,10 +32,11 @@
  * Description de ce que fait le fichier
  */
 
-#include <process.h>
 #include <libio.h>
-#include <stdlib.h>
+#include <process.h>
+#include <signal.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef int main_type(int, char**);
 
@@ -47,7 +48,7 @@ void start_main(int argc, char** argv)
 	
 	init_stdfiles(&stdin, &stdout, &stderr);
 
-	signal(SIGINT, (sighandler_t) exit);
+	init_signals();
 
 	exit(main(argc, argv));
 }

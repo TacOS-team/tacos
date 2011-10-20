@@ -56,6 +56,7 @@ typedef struct
 }signal_process_data_t;
 
 /* Définition des signaux */
+//XXX: Est-ce qu'on ne devrait pas se caller sur les numéros POSIX ?
 #define SIGHUP		 0
 #define SIGINT		 1
 #define SIGQUIT		 2

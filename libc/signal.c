@@ -34,6 +34,7 @@
 
 #include <signal.h>
 #include <syscall.h>
+#include <process.h>
 
 int kill(unsigned int pid, int sig)
 {
@@ -119,4 +120,19 @@ int sigismember(const sigset_t *set, int signum)
 	return ret;
 }
 	
-
+void init_signals(void)
+{
+	signal(SIGHUP, (sighandler_t) exit);
+	signal(SIGINT, (sighandler_t) exit);
+	signal(SIGKILL, (sighandler_t) exit);
+	signal(SIGPIPE, (sighandler_t) exit);
+	signal(SIGALRM, (sighandler_t) exit);
+	signal(SIGTERM, (sighandler_t) exit);
+	signal(SIGUSR1, (sighandler_t) exit);
+	signal(SIGUSR2, (sighandler_t) exit);
+	signal(SIGPOLL, (sighandler_t) exit);
+	signal(SIGVTALRM, (sighandler_t) exit);
+	signal(SIGPROF, (sighandler_t) exit);
+	signal(SIGRTMIN, (sighandler_t) exit);
+	signal(SIGRTMAX, (sighandler_t) exit);
+}
