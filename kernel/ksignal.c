@@ -87,12 +87,12 @@ SYSCALL_HANDLER3(sys_kill, int pid, int signum, int* ret)
 	
 	if(process != NULL)
 	{
-		klog("Sending signal %d to pid %d.", signum, pid);
+		klog("%d sending signal %d to pid %d.", get_current_process()->pid, signum, pid);
 		retour = sigaddset( &(process->signal_data.pending_set), signum );
 	}
 	else
 	{
-		kerr("Process found.");
+		kerr("Process not found.");
 	}
 	
 	if(ret!=NULL)
@@ -112,6 +112,7 @@ SYSCALL_HANDLER0(sys_sigret)
 
 	sigframe* sframe;
 	intframe* iframe;
+	process_t* current = get_current_process();
 
 	/* On récupère les données empilées avant le signal. */
 	/* A la fin du handler, on pop l'adresse de retour, puis on pop eax, 
@@ -142,8 +143,36 @@ SYSCALL_HANDLER0(sys_sigret)
 	iframe->fs = sframe->context.fs;
 	iframe->gs = sframe->context.gs;
 	
-	get_current_process()->signal_data.mask = sframe->mask;
+	current->signal_data.mask = sframe->mask;
+	
+	if(sframe->state == PROCSTATE_SUSPENDED)
+		current->state = PROCSTATE_RUNNING;
+	else
+		current->state = sframe->state;
 
+}
+
+SYSCALL_HANDLER1(sys_sigsuspend, sigset_t* mask) {
+	process_t* current = get_current_process();
+	
+	/* Sauvegarde du mask et de l'état du process */
+	sigset_t old_mask = current->signal_data.mask;
+	uint8_t	old_state = current->state;
+	
+	/* Utilisation du nouveau mask */
+	current->signal_data.mask = *mask;
+	
+	/* Passage du processus en suspended */
+	current->state = PROCSTATE_SUSPENDED;
+	
+	/* Scheduling immédiat */
+	start_scheduler();
+	
+	while(current->state == PROCSTATE_SUSPENDED);
+	
+	/* Restauration de l'état et du mask */
+	current->state = old_state;
+	current->signal_data.mask = old_mask;
 }
 
 static int get_first_signal(sigset_t* set)
@@ -205,6 +234,8 @@ int exec_sighandler(process_t* process)
 			
 			frame->mask = process->signal_data.mask;
 			
+			frame->state = process->state;
+			
 			/* So called "least-understood piece of the Linux kernel*/
 			*((uint16_t*)(frame->retcode+0)) = 0xb858;
 			*((uint32_t*)(frame->retcode+2)) = SYS_SIGRET;
@@ -215,9 +246,12 @@ int exec_sighandler(process_t* process)
 			
 			/* On fait pointer eip vers le handler du signal */
 			process->regs.eip = (uint32_t) process->signal_data.handlers[signum];
+			
+			process->state = PROCSTATE_RUNNING;
+			
+			sigaddset(&(process->signal_data.mask),signum);
 		}
 		
-		sigaddset(&(process->signal_data.mask),signum);
 		sigdelset(&(process->signal_data.pending_set), signum);
 	}
 	

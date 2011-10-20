@@ -170,6 +170,9 @@ int ps()
 					case PROCSTATE_WAITING:
 							printf("WAITING\n");
 							break;
+					case PROCSTATE_SUSPENDED:
+							printf("SUSPENDED\n");
+							break;
 					case PROCSTATE_TERMINATED:
 							printf("TERMINATED\n");
 							break;

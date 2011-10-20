@@ -43,6 +43,7 @@
 #include <events.h>
 #include <gdt.h>
 #include <i8259.h>
+#include <klog.h>
 #include <kmalloc.h>
 #include <kprocess.h>
 #include <ksignal.h>
@@ -81,6 +82,7 @@ int is_schedulable(process_t* process) {
 		return 0;
 	}
 	if( process->state == PROCSTATE_WAITING ||
+		process->state == PROCSTATE_SUSPENDED ||
 		process->state == PROCSTATE_TERMINATED) {
 			return signal_pending(process) != 0;
 	} else {
@@ -162,7 +164,7 @@ void* schedule(void* data __attribute__ ((unused)))
 	process_t* current = scheduler->get_current_process();
 	
 	/* On récupère le contexte du processus actuel uniquement si il a déja été lancé */
-	if(current->state == PROCSTATE_RUNNING || current->state == PROCSTATE_WAITING)
+	if(current->state == PROCSTATE_RUNNING || current->state == PROCSTATE_WAITING || current->state == PROCSTATE_SUSPENDED)
 	{	
 
 		/* On met le contexte dans la structure "process"*/
@@ -204,6 +206,8 @@ void* schedule(void* data __attribute__ ((unused)))
 	 * TODO: Dans l'idéal, on devrait ici faire appel à un scheduler, 
 	 * qui aurait pour rôle de choisir le processus celon une politique spécifique */
 	current = scheduler->get_next_process();
+	//if(current->pid == 2)
+		//kerr("Here 1");
 	
 	if(!is_schedulable(current)) 
 	{

@@ -192,6 +192,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_READDIR,	(syscall_handler_t) sys_readdir);
 	syscall_set_handler(SYS_MKDIR,	(syscall_handler_t) sys_mkdir);
 	syscall_set_handler(SYS_SIGRET,	(syscall_handler_t) sys_sigret);
+	syscall_set_handler(SYS_SIGSUSPEND,	(syscall_handler_t) sys_sigsuspend);
 	
 	/* Initialisation des drivers */
 	klog("loading drivers...");
