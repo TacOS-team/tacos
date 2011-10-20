@@ -69,10 +69,10 @@ SYSCALL_HANDLER3(sys_sigprocmask, uint32_t how, sigset_t* set, sigset_t* oldset)
 			current->signal_data.mask = *set;
 			break;
 		case SIG_UNBLOCK:
-			current->signal_data.mask |= (*set);
+			current->signal_data.mask &= ~(*set);
 			break;
 		case SIG_BLOCK:
-			current->signal_data.mask &= ~(*set);
+			current->signal_data.mask |= (*set);
 			break;
 		default:
 			kerr("Invalid sigprocmask command (0x%x).", how);
@@ -109,9 +109,7 @@ SYSCALL_HANDLER0(sys_sigret)
 	
 	/* On récupere un pointeur de pile pour acceder aux registres empilés */
 	asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
-	
-	klog("sys_sigret: pid=%d", get_current_process()->pid);
-	
+
 	sigframe* sframe;
 	intframe* iframe;
 
@@ -143,11 +141,10 @@ SYSCALL_HANDLER0(sys_sigret)
 	iframe->es = sframe->context.es;
 	iframe->fs = sframe->context.fs;
 	iframe->gs = sframe->context.gs;
-
-	/*XXX Ici on devrait aussi changer le sigprocmask pour réautoriser le signal, à voir plus tard */
+	
+	get_current_process()->signal_data.mask = sframe->mask;
 
 }
-
 
 static int get_first_signal(sigset_t* set)
 {
@@ -157,13 +154,17 @@ static int get_first_signal(sigset_t* set)
 	return i;
 }
 
+int signal_pending(process_t* process){
+	return (process->signal_data.pending_set & (~process->signal_data.mask)) != 0;
+}
+
 int exec_sighandler(process_t* process)
 {
 	int signum;
 	int ret = 0;	
 	sigframe* frame;
 		
-	if(process->signal_data.pending_set != 0)
+	if(signal_pending(process))
 	{
 		/* On cherche le handler à exécuter */
 		signum = get_first_signal(&(process->signal_data.pending_set));
@@ -202,6 +203,8 @@ int exec_sighandler(process_t* process)
 			frame->context.gs = process->regs.gs;
 			frame->context.cr3 = process->regs.cr3;
 			
+			frame->mask = process->signal_data.mask;
+			
 			/* So called "least-understood piece of the Linux kernel*/
 			*((uint16_t*)(frame->retcode+0)) = 0xb858;
 			*((uint32_t*)(frame->retcode+2)) = SYS_SIGRET;
@@ -214,6 +217,7 @@ int exec_sighandler(process_t* process)
 			process->regs.eip = (uint32_t) process->signal_data.handlers[signum];
 		}
 		
+		sigaddset(&(process->signal_data.mask),signum);
 		sigdelset(&(process->signal_data.pending_set), signum);
 	}
 	

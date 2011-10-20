@@ -94,7 +94,7 @@ static process_t* rr_get_next_process()
 		if(aux == NULL)
 			aux = process_list;
 		
-		if(aux->proc->state != PROCSTATE_WAITING && aux->proc->state != PROCSTATE_WAITING)
+		if(is_schedulable(aux->proc))
 			ret = aux->proc;
 		
 	}while(aux != current_cell && ret == NULL);

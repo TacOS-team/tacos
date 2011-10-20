@@ -272,8 +272,6 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	
 	new_proc->signal_data.mask = 0;
 	new_proc->signal_data.pending_set = 0;
-	new_proc->signal_data.stack.ss_size = 0x100;
-	new_proc->signal_data.stack.ss_sp = kmalloc(0x100);
 	
   // Initialisation des données pour la vmm
 	new_proc->vm = (struct virtual_mem *) kmalloc(sizeof(struct virtual_mem));
@@ -407,8 +405,6 @@ process_t* create_process(process_init_data_t* init_data)
 	
 	new_proc->signal_data.mask = 0;
 	new_proc->signal_data.pending_set = 0;
-	new_proc->signal_data.stack.ss_size = 0x100;
-	new_proc->signal_data.stack.ss_sp = kmalloc(0x100);
 	
   // Initialisation des données pour la vmm
 	new_proc->vm = (struct virtual_mem *) kmalloc(sizeof(struct virtual_mem));

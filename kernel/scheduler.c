@@ -76,6 +76,19 @@ void set_scheduler(scheduler_descriptor_t* sched)
 }
 
 
+int is_schedulable(process_t* process) {
+	if(	process == NULL  ) {
+		return 0;
+	}
+	if( process->state == PROCSTATE_WAITING ||
+		process->state == PROCSTATE_TERMINATED) {
+			return signal_pending(process) != 0;
+	} else {
+		return 1;
+	}
+}
+
+
 /* Effectue le changement de contexte proprement dit */
 void context_switch(int mode, process_t* current)
 {
@@ -152,11 +165,7 @@ void* schedule(void* data __attribute__ ((unused)))
 	if(current->state == PROCSTATE_RUNNING || current->state == PROCSTATE_WAITING)
 	{	
 
-		/* On met le contexte dans la structure "process"
-		 * (on peut difficilement faire ça dans une autre fonction, sinon il 
-		 * faudrait calculer l'offset résultant dans la pile, donc c'est 
-		 * hardcodé, et c'est bien comme ça.)  
-		 */
+		/* On met le contexte dans la structure "process"*/
 		current->regs.eflags = frame->eflags;
 		current->regs.cs  = frame->cs;
 		current->regs.eip = frame->eip;
@@ -164,7 +173,6 @@ void* schedule(void* data __attribute__ ((unused)))
 		current->regs.ecx = frame->ecx;
 		current->regs.edx = frame->edx;
 		current->regs.ebx = frame->ebx;
-		/* ->esp kernel, on saute */
 		current->regs.ebp = frame->ebp;
 		current->regs.esi = frame->esi;
 		current->regs.edi = frame->edi;
@@ -197,7 +205,7 @@ void* schedule(void* data __attribute__ ((unused)))
 	 * qui aurait pour rôle de choisir le processus celon une politique spécifique */
 	current = scheduler->get_next_process();
 	
-	if(current == NULL || current->state == PROCSTATE_WAITING || current->state == PROCSTATE_TERMINATED) 
+	if(!is_schedulable(current)) 
 	{
 		/* Si on a rien à faire, on passe dans le processus idle */
 		scheduler->inject_idle(idle_process);	

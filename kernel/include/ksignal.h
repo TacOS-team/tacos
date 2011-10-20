@@ -44,6 +44,7 @@ typedef struct {
 	void (*ret_addr)(void);
 	int sig;
 	regs_t context;
+	sigset_t mask;
 	char retcode[8];
 } sigframe;
 

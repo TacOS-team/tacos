@@ -79,7 +79,7 @@ void handler1(int signal) {
 void handler2(int signal) {
     printf("[handler2] Activation du handler2 avec signal = %d\n", signal);
     printf("[handler2] => SIGUSR1\n");
-	kill(getpid(), SIGUSR1);
+		kill(getpid(), SIGUSR1);
     printf("[handler2] Fin exécution handler2.\n");
 }
 
