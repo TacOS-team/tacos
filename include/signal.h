@@ -108,5 +108,6 @@ int sigdelset(sigset_t *set, int signum);
 
 int sigismember(const sigset_t *set, int signum);
 
+void init_signals(void);
 
 #endif /* _SIGNAL_H */
