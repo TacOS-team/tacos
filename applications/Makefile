@@ -1,5 +1,5 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=top test_sig zen cat ls mkdir
+OBJ=top test_sig zen cat ls mkdir kill
 SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a 
 INCLUDES=-I../include/ -I../libc/include/
@@ -58,6 +58,9 @@ zen: zen.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
 snake: snake.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
+
+kill: kill.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
 %.o: %.c
