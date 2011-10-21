@@ -61,14 +61,6 @@ static int date_cmd()
 	return 0;
 }
 
-static int kill_cmd()
-{
-	int pid;
-	scanf("%d",&pid);
-	kill(pid, SIGKILL);
-	return 0;
-}
-
 static int cls_cmd() {
 	printf("\033[2J");
 	fflush(stdout);
@@ -164,7 +156,6 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	add_builtin_cmd(cls_cmd, "clear");
 	add_builtin_cmd(shell_exec_elf, "exec");
 	add_builtin_cmd(ps, "ps");
-	add_builtin_cmd(kill_cmd, "kill");
 	add_builtin_cmd(pwd_cmd, "pwd");
 	add_builtin_cmd(cd_cmd, "cd");
 

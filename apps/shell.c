@@ -74,14 +74,6 @@ static int date_cmd()
 	return 0;
 }
 
-static int kill_cmd()
-{
-	int pid;
-	scanf("%d",&pid);
-	kill(pid, SIGKILL);
-	return 0;
-}
-
 // Tant que /bin/ls fait planter.
 static int ls_cmd()
 {
@@ -251,7 +243,6 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd((func_ptr)pci_list, "lspci");
 	
 	/* Gestion processus */
-	add_builtin_cmd(kill_cmd, "kill");
 	add_builtin_cmd(shell_exec_elf, "exec");
 	add_builtin_cmd(ps, "ps");
 	add_builtin_cmd(test_elf, "elf_info");
