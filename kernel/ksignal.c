@@ -114,17 +114,20 @@ SYSCALL_HANDLER0(sys_sigret)
 	intframe* iframe;
 	process_t* current = get_current_process();
 
-	/* On récupère les données empilées avant le signal. */
-	/* A la fin du handler, on pop l'adresse de retour, puis on pop eax, 
-	 * esp se retrouve donc à +8 par rapport à la stack frame du signal, 
-	 * on va donc chercher cette frame à esp-8
-	 */
-	sframe = stack_ptr[18]-8;
-
+	
 	/* On récupère les données empilées par l'interruption */
 	/* Le but ici est de remplacer ces valeurs par celles stockées dans la sigframe, 
 	 * de cette manière l'iret à la fin de l'interruption restaurera le contexte du processus */
 	iframe = stack_ptr+4; /* XXX le "+4" a été déduis, pas très safe, faudrait chercher pourquoi */
+	
+	/* On récupère les données empilées avant le signal. */
+	
+	/* A la fin du handler, on pop l'adresse de retour, puis on pop eax, 
+	 * esp se retrouve donc à +8 par rapport à la stack frame du signal, 
+	 * on va donc chercher cette frame à esp-8
+	 */	
+	sframe = iframe->esp-8;
+
 	
 	iframe->eax = sframe->context.eax;
 	iframe->ecx = sframe->context.ecx;
@@ -149,7 +152,6 @@ SYSCALL_HANDLER0(sys_sigret)
 		current->state = PROCSTATE_RUNNING;
 	else
 		current->state = sframe->state;
-
 }
 
 SYSCALL_HANDLER1(sys_sigsuspend, sigset_t* mask) {
@@ -158,6 +160,9 @@ SYSCALL_HANDLER1(sys_sigsuspend, sigset_t* mask) {
 	/* Sauvegarde du mask et de l'état du process */
 	sigset_t old_mask = current->signal_data.mask;
 	uint8_t	old_state = current->state;
+	
+	/* Désactivation de l'ordonnanceur */
+	stop_scheduler();
 	
 	/* Utilisation du nouveau mask */
 	current->signal_data.mask = *mask;
@@ -219,6 +224,7 @@ int exec_sighandler(process_t* process)
 			frame->context.edx = process->regs.edx;
 			frame->context.ebx = process->regs.ebx;
 			frame->context.esp = process->regs.esp;
+			frame->context.kesp = process->regs.kesp;
 			frame->context.ebp = process->regs.ebp;
 			frame->context.esi = process->regs.esi;
 			frame->context.edi = process->regs.edi;
@@ -226,6 +232,7 @@ int exec_sighandler(process_t* process)
 			frame->context.eflags = process->regs.eflags;
 			frame->context.cs = process->regs.cs;
 			frame->context.ss = process->regs.ss;
+			frame->context.kss = process->regs.kss;
 			frame->context.ds = process->regs.ds;
 			frame->context.es = process->regs.es;
 			frame->context.fs = process->regs.fs;
@@ -246,6 +253,10 @@ int exec_sighandler(process_t* process)
 			
 			/* On fait pointer eip vers le handler du signal */
 			process->regs.eip = (uint32_t) process->signal_data.handlers[signum];
+			
+			/* Et enfin, le gros piège: on doit absolument exécuter le handler en user space, donc on change cs: */
+			process->regs.cs = 0x1b; /* XXX Tant que j'y pense, ça serait bien d'utiliser des macro pour les numero de segment code */
+			process->regs.ds = 0x23;
 			
 			process->state = PROCSTATE_RUNNING;
 			

@@ -37,7 +37,7 @@
 #include <signal.h>
 
 void handler(int signal) {
-	printf("handler!");
+	printf("handler!\n");
 }
 
 void f1() {
@@ -46,11 +46,12 @@ void f1() {
 	sigset_t set;
     sigfillset(&set);
     sigdelset(&set, SIGUSR1);
-    //sigsuspend(&set);
-    while(1);
+    sigsuspend(&set);
     printf("F1 réveillée!\n");
+    while(1);
+    
 }
-
+/* 0x4000269d */
 void f2(pid_t pid) {
 	printf("F2 tente de réveiller pid=%d...\n",pid);
 	kill(pid, SIGUSR1);
@@ -73,7 +74,7 @@ int main(int argc, char** argv) {
 	} else {
 		printf("Mauvais paramètres\n");
 	}
-
+	while(1);
     return 0;
 }
 

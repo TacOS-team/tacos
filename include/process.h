@@ -83,9 +83,9 @@ typedef struct
 typedef struct
 {
 	uint32_t eax, ecx, edx, ebx;
-	uint32_t esp, ebp, esi, edi;
+	uint32_t esp, kesp, ebp, esi, edi;
 	uint32_t eip, eflags;
-	uint16_t cs, ss, ds, es, fs, gs;
+	uint16_t cs, ss, kss, ds, es, fs, gs;
 	uint32_t cr3;
 }regs_t;
 
@@ -106,10 +106,6 @@ typedef struct{
 	
 	/* Données propres au contexte du processus */
 	regs_t regs;
-	struct {
-		uint32_t esp0;
-		uint16_t ss0;
-	} kstack __attribute__ ((packed));
 	/* Données utilisées pour les IO */
 	file_descriptor fd[FOPEN_MAX];
 	FILE* file_list;

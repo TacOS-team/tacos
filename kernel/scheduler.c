@@ -101,23 +101,22 @@ void context_switch(int mode, process_t* current)
 	paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) current->pd);
 	
 	/* Mise à jour des piles de la TSS */
-	get_default_tss()->esp0	=	current->kstack.esp0;
-	get_default_tss()->ss0	=	current->kstack.ss0;
+	get_default_tss()->esp0	=	current->regs.kesp;
+	get_default_tss()->ss0	=	current->regs.kss;
 	
 	ss = current->regs.ss;
 	cs = current->regs.cs;
-	//esp0 = current-e>regs.esp;
+	
 	eflags = (current->regs.eflags | 0x200) & 0xFFFFBFFF; // Flags permettant le changemement de contexte
-	exec_sighandler(current);
 	if(mode == USER_PROCESS)
-	{
-		kss = current->kstack.ss0;
-		esp = current->kstack.esp0;
-	}
-	else
 	{
 		kss = current->regs.ss;
 		esp = current->regs.esp;
+	}
+	else
+	{
+		kss = current->regs.kss;
+		esp = current->regs.kesp;
 	}
 	asm(
 			"mov %0, %%ss;"
@@ -196,8 +195,8 @@ void* schedule(void* data __attribute__ ((unused)))
 		}
 		
 		/* Sauver la TSS */
-		current->kstack.esp0 = get_default_tss()->esp0;
-		current->kstack.ss0  = get_default_tss()->ss0;
+		current->regs.kesp = get_default_tss()->esp0;
+		current->regs.kss  = get_default_tss()->ss0;
 		
 		current->user_time += quantum;
 	}
@@ -206,16 +205,17 @@ void* schedule(void* data __attribute__ ((unused)))
 	 * TODO: Dans l'idéal, on devrait ici faire appel à un scheduler, 
 	 * qui aurait pour rôle de choisir le processus celon une politique spécifique */
 	current = scheduler->get_next_process();
-	//if(current->pid == 2)
-		//kerr("Here 1");
 	
-	if(!is_schedulable(current)) 
-	{
+	if(!is_schedulable(current)) {
 		/* Si on a rien à faire, on passe dans le processus idle */
 		scheduler->inject_idle(idle_process);	
 		current = idle_process;
 	}
-
+	else {
+		/* Sinon on regarde si le process a des signaux en attente */
+		exec_sighandler(current);
+	}
+	
 	/* Evaluation de l'usage du CPU */
 	current->current_sample++;
 	sample_counter++;
