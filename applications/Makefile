@@ -98,6 +98,10 @@ fiinou.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 fiinou.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 fopen.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 fopen.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
+kill.o: ../libc/include/sys/types.h ../include/signal.h ../include/types.h
+kill.o: ../libc/include/stdio.h ../libc/include/fcntl.h
+kill.o: ../libc/include/libio.h ../libc/include/stdarg.h
+kill.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 ls.o: ../libc/include/dirent.h ../include/types.h ../libc/include/stdio.h
 ls.o: ../libc/include/fcntl.h ../libc/include/libio.h
 ls.o: ../libc/include/stdarg.h ../libc/include/unistd.h
@@ -129,10 +133,8 @@ test.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 test.o: ../libc/include/unistd.h ../libc/include/sys/types.h
 test_sig.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 test_sig.o: ../libc/include/libio.h ../include/types.h
-test_sig.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
-test_sig.o: ../libc/include/malloc.h ../include/process.h
-test_sig.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
-test_sig.o: ../libc/include/sys/types.h ../libc/include/unistd.h
+test_sig.o: ../libc/include/stdarg.h ../libc/include/sys/types.h
+test_sig.o: ../include/signal.h
 top.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 top.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 top.o: ../libc/include/time.h ../include/process.h ../include/pagination.h

@@ -4,7 +4,7 @@ SRCS = *.c */*.c
 
 all: libc
 
-libc: stdio/stdio.o stdio/fopen.o stdio/fwrite.o stdio/fmemopen.o dirent.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scanf.o stdio/fprintf.o stdio/printf.o stdio/put.o stdio/sprintf.o stdio/get.o libio.o fcntl.o stdio/fread.o stdio/fseek.o malloc.o start.o stdio/stdfiles.o process.o elf.o signal.o stdio/getline.o stdio/fclose.o
+libc: stdio/stdio.o stdio/fopen.o stdio/fwrite.o stdio/fmemopen.o termios.o dirent.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scanf.o stdio/fprintf.o stdio/printf.o stdio/put.o stdio/sprintf.o stdio/get.o libio.o fcntl.o stdio/fread.o stdio/fseek.o malloc.o start.o stdio/stdfiles.o process.o elf.o signal.o stdio/getline.o stdio/fclose.o
 	$(AR) r ../lib/$@.a $^
 
 %.o: %.c
@@ -41,16 +41,19 @@ process.o: ../include/syscall.h ../include/process.h ../include/pagination.h
 process.o: ../include/vmm.h ../include/signal.h ../include/elf.h
 process.o: include/string.h
 signal.o: ../include/signal.h ../include/types.h ../include/syscall.h
-start.o: ../include/process.h include/libio.h include/fcntl.h
-start.o: ../include/types.h ../include/pagination.h ../include/vmm.h
-start.o: ../include/signal.h include/stdlib.h include/malloc.h
-start.o: include/stdio.h include/stdarg.h
+signal.o: ../include/process.h include/libio.h include/fcntl.h
+signal.o: ../include/pagination.h ../include/vmm.h
+start.o: include/libio.h include/fcntl.h ../include/types.h
+start.o: ../include/process.h ../include/pagination.h ../include/vmm.h
+start.o: ../include/signal.h include/stdio.h include/stdarg.h
+start.o: include/stdlib.h include/malloc.h
 stdlib.o: include/stdio.h include/fcntl.h include/libio.h ../include/types.h
 stdlib.o: include/stdarg.h include/stdlib.h include/malloc.h
 stdlib.o: ../include/memory.h ../include/pagination.h ../include/heap.h
 stdlib.o: ../include/errno.h include/ctype.h include/string.h
 string.o: include/stdlib.h ../include/types.h include/malloc.h
 string.o: include/string.h include/ctype.h
+termios.o: include/termios.h
 time.o: include/time.h ../include/types.h include/stdio.h include/fcntl.h
 time.o: include/libio.h include/stdarg.h
 unistd.o: include/dirent.h ../include/types.h ../include/errno.h

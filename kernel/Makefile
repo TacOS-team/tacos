@@ -113,7 +113,8 @@ ksignal.o: include/ksignal.h include/ksyscall.h ../include/types.h
 ksignal.o: ../include/signal.h include/kprocess.h ../include/process.h
 ksignal.o: ../libc/include/libio.h ../libc/include/fcntl.h
 ksignal.o: ../include/pagination.h ../include/vmm.h include/kstdio.h
-ksignal.o: include/scheduler.h ../include/klog.h
+ksignal.o: include/scheduler.h ../include/klog.h ../include/syscall.h
+ksignal.o: ../include/interrupts.h
 kstdio.o: ../include/video.h ../include/types.h ../libc/include/fcntl.h
 kstdio.o: include/kfcntl.h ../libc/include/libio.h include/kprocess.h
 kstdio.o: ../include/process.h ../include/pagination.h ../include/vmm.h
@@ -150,15 +151,16 @@ round_robin.o: ../include/process.h ../libc/include/libio.h
 round_robin.o: ../libc/include/fcntl.h ../include/pagination.h
 round_robin.o: ../include/vmm.h ../include/signal.h include/ksyscall.h
 round_robin.o: include/scheduler.h
-scheduler.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-scheduler.o: ../libc/include/libio.h ../include/types.h
-scheduler.o: ../libc/include/stdarg.h include/kprocess.h ../include/process.h
-scheduler.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
-scheduler.o: include/ksyscall.h include/scheduler.h include/events.h
-scheduler.o: ../libc/include/time.h include/clock.h ../include/ioports.h
-scheduler.o: include/gdt.h include/i8259.h ../include/syscall.h
-scheduler.o: ../include/debug.h ../include/kmalloc.h ../libc/include/string.h
-scheduler.o: include/ksignal.h
+scheduler.o: include/clock.h ../include/types.h ../libc/include/time.h
+scheduler.o: include/context.h ../include/process.h ../libc/include/libio.h
+scheduler.o: ../libc/include/fcntl.h ../include/pagination.h ../include/vmm.h
+scheduler.o: ../include/signal.h ../include/debug.h include/events.h
+scheduler.o: include/gdt.h include/i8259.h ../include/kmalloc.h
+scheduler.o: include/kprocess.h include/ksyscall.h include/ksignal.h
+scheduler.o: ../include/interrupts.h ../include/ioports.h
+scheduler.o: ../libc/include/stdio.h ../libc/include/stdarg.h
+scheduler.o: ../libc/include/string.h include/scheduler.h
+scheduler.o: ../include/syscall.h
 symtable.o: ../libc/include/string.h ../include/types.h
 symtable.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 symtable.o: ../libc/include/libio.h ../libc/include/stdarg.h

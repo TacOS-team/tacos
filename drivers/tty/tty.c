@@ -120,7 +120,6 @@ void tty_set_fg_process(terminal_t *tty, process_t *process) { //TODO : remplace
 size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {
 	/*
 	 * Permet d'écrire sur le terminal (écran ?)
-	 * TODO: Si un processus essaye d'écrire dans un tty alors qu'il n'est pas en foreground : SIGTTOU
 	 */
 	unsigned int i;
   if((ofd->flags & O_ACCMODE) == O_RDONLY) {
@@ -145,7 +144,6 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 	/*
 	 * La lecture sur le tty correspond à essayer de lire des caractères.
 	 * On bloque tant qu'il n'y a rien à lire (semaphore).
-	 * TODO: Si un process essaye de lire sans être au premier plan => on lui envoie un signal SIGTTIN
 	 */
 	char c;
 	unsigned int j = 0;
