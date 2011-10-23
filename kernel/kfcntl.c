@@ -72,15 +72,18 @@ void init_stdfd(process_t *new_proc) {
   fd0->ofd->flags = O_RDONLY;
 	fd0->ofd->read = tty_read;
 	fd0->ofd->extra_data = t;
+	fd0->ofd->ioctl = tty_ioctl;
 	fd1->used = TRUE; /* stdout */
 	fd1->ofd = kmalloc(sizeof(open_file_descriptor));
   fd1->ofd->flags = O_WRONLY;
 	fd1->ofd->write = tty_write;
+	fd1->ofd->ioctl = tty_ioctl;
 	fd1->ofd->extra_data = t;
 	fd2->used = TRUE; /* stderr */
 	fd2->ofd = kmalloc(sizeof(open_file_descriptor));
   fd2->ofd->flags = O_WRONLY;
 	fd2->ofd->write = tty_write;
+	fd2->ofd->ioctl = tty_ioctl;
 	fd2->ofd->extra_data = t;
 }
 

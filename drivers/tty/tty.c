@@ -185,3 +185,7 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 
 	return j;
 }
+
+int tty_ioctl (unsigned int request, void * data) {
+	klog("tty_ioctl %d\n", request);
+}

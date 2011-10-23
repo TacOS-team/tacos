@@ -4,7 +4,7 @@ SRCS = *.c */*.c
 
 all: libc
 
-libc: stdio/stdio.o stdio/fopen.o stdio/fwrite.o stdio/fmemopen.o termios.o dirent.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scanf.o stdio/fprintf.o stdio/printf.o stdio/put.o stdio/sprintf.o stdio/get.o libio.o fcntl.o stdio/fread.o stdio/fseek.o malloc.o start.o stdio/stdfiles.o process.o elf.o signal.o stdio/getline.o stdio/fclose.o
+libc: stdio/stdio.o stdio/fopen.o stdio/fwrite.o stdio/fmemopen.o termios.o dirent.o stdlib.o string.o unistd.o time.o ctype.o errno.o stdio/scanf.o stdio/fprintf.o stdio/printf.o stdio/put.o stdio/sprintf.o stdio/get.o libio.o fcntl.o stdio/fread.o stdio/fseek.o malloc.o start.o stdio/stdfiles.o process.o elf.o signal.o stdio/getline.o stdio/fclose.o ioctl.o
 	$(AR) r ../lib/$@.a $^
 
 %.o: %.c
@@ -29,6 +29,7 @@ elf.o: ../include/elf.h include/libio.h include/fcntl.h ../include/types.h
 elf.o: include/stdio.h include/stdarg.h include/string.h include/stdlib.h
 elf.o: include/malloc.h
 fcntl.o: ../include/types.h include/fcntl.h ../include/syscall.h
+ioctl.o: include/sys/ioctl.h ../include/syscall.h ../include/types.h
 libio.o: include/libio.h include/fcntl.h ../include/types.h include/stdio.h
 libio.o: include/stdarg.h
 malloc.o: include/stdio.h include/fcntl.h include/libio.h ../include/types.h
@@ -53,7 +54,7 @@ stdlib.o: ../include/memory.h ../include/pagination.h ../include/heap.h
 stdlib.o: ../include/errno.h include/ctype.h include/string.h
 string.o: include/stdlib.h ../include/types.h include/malloc.h
 string.o: include/string.h include/ctype.h
-termios.o: include/termios.h
+termios.o: include/termios.h include/sys/ioctl.h
 time.o: include/time.h ../include/types.h include/stdio.h include/fcntl.h
 time.o: include/libio.h include/stdarg.h
 unistd.o: include/dirent.h ../include/types.h ../include/errno.h

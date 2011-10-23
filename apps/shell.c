@@ -52,6 +52,7 @@
 //#include <clock.h>
 #include <../kernel/include/module.h>
 #include <symtable.h>
+#include <termios.h>
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
 
@@ -120,6 +121,15 @@ static int sleep_shell()
 	scanf("%d", &time);
 	printf("Asleep for %d us...\n", time);
 	usleep(time);
+	return 0;
+}
+
+static int test_tty()
+{
+	struct termios oldt, newt;
+	int ch;
+	tcgetattr( STDIN_FILENO, &oldt );
+
 	return 0;
 }
 
@@ -241,6 +251,7 @@ int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)
 	add_builtin_cmd(date_cmd, "date");
 	add_builtin_cmd(cls_cmd, "clear");	
 	add_builtin_cmd((func_ptr)pci_list, "lspci");
+	add_builtin_cmd(test_tty, "test_tty");
 	
 	/* Gestion processus */
 	add_builtin_cmd(shell_exec_elf, "exec");

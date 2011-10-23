@@ -3,13 +3,13 @@
 #include <klog.h>
 
 
-size_t dummy_read(open_file_descriptor* odf, char* buf, size_t count) 
+size_t dummy_read(open_file_descriptor* ofd, char* buf, size_t count) 
 {
 	klog("reading %d bytes on dummy_device.",count);
 	return 0;
 }
 
-size_t dummy_write(open_file_descriptor* odf, const char* buf, size_t count)
+size_t dummy_write(open_file_descriptor* ofd, const char* buf, size_t count)
 {
 	klog("writing \"%s\" on dummy device.", buf);
 	return count;
@@ -21,7 +21,8 @@ static driver_interfaces di = {
 	.seek = NULL,
 	.open = NULL,
 	.close = NULL,
-	.flush = NULL
+	.flush = NULL,
+	.ioctl = NULL
 };
 
 void init_dummy()

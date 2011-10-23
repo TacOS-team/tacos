@@ -42,6 +42,10 @@
 #include <types.h>
 #include <sys/types.h>
 
+#define STDIN_FILENO  0
+#define STDOUT_FILENO 1
+#define STDERR_FILENO 1
+
 //TODO(max) Commenter ces fonctions.
 int chdir(const char *path);
 const char * getcwd(char * buf, size_t size);

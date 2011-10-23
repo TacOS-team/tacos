@@ -177,6 +177,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_OPEN,	(syscall_handler_t)sys_open);
 	syscall_set_handler(SYS_WRITE,	(syscall_handler_t)sys_write);
 	syscall_set_handler(SYS_READ,	(syscall_handler_t)sys_read);
+	syscall_set_handler(SYS_IOCTL,	(syscall_handler_t)sys_ioctl);
 	syscall_set_handler(SYS_EXEC, 	(syscall_handler_t)sys_exec);
 	syscall_set_handler(SYS_SLEEP, 	(syscall_handler_t)sys_sleep);
 	syscall_set_handler(SYS_SEMCTL, (syscall_handler_t)sys_ksem);

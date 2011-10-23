@@ -1,6 +1,8 @@
 #include <termios.h>
+#include <sys/ioctl.h>
 
 int tcgetattr(int fd, struct termios *termios_p) {
+	ioctl(fd, 0, 0);
 	// TODO.
 	return 0;
 }
