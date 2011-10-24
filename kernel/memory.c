@@ -118,7 +118,7 @@ struct physical_page_descr * memory_get_first_free_page() {
 }
 
 bool memory_has_next_page(struct physical_page_descr * iterator) {
-	return (iterator != NULL && iterator->next != NULL);
+	return (iterator != NULL);
 }
 
 paddr_t memory_next_page(struct physical_page_descr ** iterator) {
