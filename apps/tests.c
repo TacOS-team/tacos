@@ -41,7 +41,6 @@
 #include <time.h>
 #include <apps.h>
 #include <sem.h>
-#include <memory.h>
 #include <debug.h>
 #include <unistd.h>
 #include <elf.h>
@@ -159,13 +158,6 @@ int test_fseek() {
 
 	//fclose(file);
 	return 0;
-}
-
-void test_memory_reserve_page_frame() {
-	int i;
-	scanf("%d", &i);
-	while (i--)
-		printf("Cadre de page réservé : %d\n", memory_reserve_page_frame());
 }
 
 int tu_rand() {

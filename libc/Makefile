@@ -47,8 +47,8 @@ start.o: ../include/process.h ../include/vmm.h ../include/signal.h
 start.o: include/stdio.h include/stdarg.h include/stdlib.h include/malloc.h
 stdlib.o: include/stdio.h include/fcntl.h include/libio.h ../include/types.h
 stdlib.o: include/stdarg.h include/stdlib.h include/malloc.h
-stdlib.o: ../include/memory.h ../include/heap.h ../include/errno.h
-stdlib.o: include/ctype.h include/string.h
+stdlib.o: ../include/heap.h ../include/errno.h include/ctype.h
+stdlib.o: include/string.h
 string.o: include/stdlib.h ../include/types.h include/malloc.h
 string.o: include/string.h include/ctype.h
 termios.o: include/termios.h include/sys/ioctl.h

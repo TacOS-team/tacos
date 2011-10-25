@@ -43,7 +43,7 @@ fat.o: ../libc/include/string.h include/clock.h
 fpu.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 fpu.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 fpu.o: include/fpu.h ../include/interrupts.h ../include/klog.h
-gdt.o: ../include/types.h ../include/memory.h include/gdt.h
+gdt.o: ../include/types.h include/memory.h include/gdt.h
 i8254.o: include/i8254.h ../include/types.h ../include/ioports.h
 i8259.o: ../include/types.h ../include/ioports.h
 idt.o: ../include/types.h include/idt.h
@@ -63,7 +63,7 @@ kernel.o: include/multiboot.h include/idt.h ../include/types.h
 kernel.o: include/i8259.h ../libc/include/stdio.h ../libc/include/fcntl.h
 kernel.o: ../libc/include/libio.h ../libc/include/stdarg.h
 kernel.o: ../libc/include/stdlib.h ../libc/include/malloc.h include/kunistd.h
-kernel.o: include/ksyscall.h ../libc/include/string.h ../include/memory.h
+kernel.o: include/ksyscall.h ../libc/include/string.h include/memory.h
 kernel.o: include/pagination.h include/gdt.h include/exception.h
 kernel.o: ../include/interrupts.h ../include/pci.h ../include/pci_types.h
 kernel.o: ../include/pci_config.h include/scheduler.h ../include/process.h
@@ -85,7 +85,7 @@ kfcntl.o: ../libc/include/stdio.h ../libc/include/stdarg.h include/kfat.h
 kfcntl.o: include/kfcntl.h ../libc/include/time.h ../libc/include/string.h
 kfcntl.o: ../include/kmalloc.h include/kdriver.h ../include/keyboard.h
 kfcntl.o: ../include/console.h ../include/tty.h ../include/klog.h
-kmalloc.o: ../include/types.h ../libc/include/malloc.h ../include/memory.h
+kmalloc.o: ../include/types.h ../libc/include/malloc.h include/memory.h
 kmalloc.o: ../include/vmm.h ../include/kmalloc.h
 kpanic.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 kpanic.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
@@ -131,15 +131,14 @@ mbr.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 mbr.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 mbr.o: ../include/floppy.h include/mbr.h
 memory.o: ../include/types.h ../libc/include/stdio.h ../libc/include/fcntl.h
-memory.o: ../libc/include/libio.h ../libc/include/stdarg.h
-memory.o: ../include/memory.h
+memory.o: ../libc/include/libio.h ../libc/include/stdarg.h include/memory.h
 module.o: ../include/klog.h include/module.h ../include/types.h
 module.o: ../include/kmalloc.h ../include/symtable.h ../include/elf.h
 module.o: ../libc/include/libio.h ../libc/include/fcntl.h
 module.o: ../libc/include/stdio.h ../libc/include/stdarg.h
 module.o: ../libc/include/string.h ../libc/include/stdlib.h
 module.o: ../libc/include/malloc.h
-pagination.o: ../include/types.h ../include/memory.h include/pagination.h
+pagination.o: ../include/types.h include/memory.h include/pagination.h
 pagination.o: ../include/vmm.h ../libc/include/stdio.h
 pagination.o: ../libc/include/fcntl.h ../libc/include/libio.h
 pagination.o: ../libc/include/stdarg.h
@@ -162,7 +161,7 @@ symtable.o: ../libc/include/libio.h ../libc/include/stdarg.h
 symtable.o: ../include/kmalloc.h ../include/elf.h ../include/symtable.h
 symtable.o: ../include/klog.h
 vm86.o: ../include/debug.h include/gdt.h ../include/types.h
-vmm.o: ../include/memory.h ../include/types.h include/pagination.h
+vmm.o: include/memory.h ../include/types.h include/pagination.h
 vmm.o: ../include/vmm.h ../include/process.h ../libc/include/libio.h
 vmm.o: ../libc/include/fcntl.h ../include/signal.h ../libc/include/stdio.h
 vmm.o: ../libc/include/stdarg.h include/ksyscall.h ../include/syscall.h
