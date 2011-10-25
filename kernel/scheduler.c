@@ -110,13 +110,13 @@ void context_switch(int mode, process_t* current)
 	eflags = (current->regs.eflags | 0x200) & 0xFFFFBFFF; // Flags permettant le changemement de contexte
 	if(mode == USER_PROCESS)
 	{
-		kss = current->regs.ss;
-		esp = current->regs.esp;
+		kss = current->regs.kss;
+		esp = current->regs.kesp;
 	}
 	else
 	{
-		kss = current->regs.kss;
-		esp = current->regs.kesp;
+		kss = current->regs.ss;
+		esp = current->regs.esp;
 	}
 	asm(
 			"mov %0, %%ss;"
@@ -195,8 +195,8 @@ void* schedule(void* data __attribute__ ((unused)))
 		}
 		
 		/* Sauver la TSS */
-		current->regs.kesp = get_default_tss()->esp0;
-		current->regs.kss  = get_default_tss()->ss0;
+		/*current->regs.kesp = get_default_tss()->esp0;
+		current->regs.kss  = get_default_tss()->ss0;*/
 		
 		current->user_time += quantum;
 	}

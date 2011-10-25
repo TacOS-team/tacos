@@ -194,12 +194,23 @@ void kpanic_handler(uint32_t error_id, uint32_t error_code)
 
 void kpanic_init()
 {
-  exception_set_routine(EXCEPTION_SEGMENT_NOT_PRESENT , kpanic_handler);
-  exception_set_routine(EXCEPTION_DIVIDE_ERROR, kpanic_handler);
-  exception_set_routine(EXCEPTION_INVALID_OPCODE, kpanic_handler);
-  exception_set_routine(EXCEPTION_INVALID_TSS, kpanic_handler);
-  exception_set_routine(EXCEPTION_PAGE_FAULT, kpanic_handler);
-  exception_set_routine(EXCEPTION_DOUBLE_FAULT, kpanic_handler);
-  exception_set_routine(EXCEPTION_GENERAL_PROTECTION, kpanic_handler);
+	exception_set_routine(EXCEPTION_DIVIDE_ERROR , kpanic_handler); 
+	exception_set_routine(EXCEPTION_DEBUG , kpanic_handler);
+	exception_set_routine(EXCEPTION_NMI_INTERRUPT , kpanic_handler);
+	exception_set_routine(EXCEPTION_BREAKPOINT , kpanic_handler);  
+	exception_set_routine(EXCEPTION_OVERFLOW , kpanic_handler);
+	exception_set_routine(EXCEPTION_BOUND_RANGE_EXCEDEED , kpanic_handler);
+	exception_set_routine(EXCEPTION_INVALID_OPCODE , kpanic_handler);
+	exception_set_routine(EXCEPTION_DEVICE_NOT_AVAILABLE , kpanic_handler);
+	exception_set_routine(EXCEPTION_DOUBLE_FAULT , kpanic_handler);
+	exception_set_routine(EXCEPTION_COPROCESSOR_SEGMENT_OVERRUN , kpanic_handler);
+	exception_set_routine(EXCEPTION_INVALID_TSS , kpanic_handler);
+	exception_set_routine(EXCEPTION_SEGMENT_NOT_PRESENT , kpanic_handler);
+	exception_set_routine(EXCEPTION_STACK_SEGMENT_FAULT , kpanic_handler);
+	exception_set_routine(EXCEPTION_GENERAL_PROTECTION , kpanic_handler);
+	exception_set_routine(EXCEPTION_PAGE_FAULT , kpanic_handler);
+	exception_set_routine(EXCEPTION_FLOATING_POINT_ERROR , kpanic_handler);
+	exception_set_routine(EXCEPTION_ALIGNEMENT_CHECK , kpanic_handler);
+	exception_set_routine(EXCEPTION_MACHINE_CHECK , kpanic_handler);
 }
 
