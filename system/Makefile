@@ -21,5 +21,5 @@ depend: $(SRCS)
 
 sem.o: ../include/sem.h ../include/types.h ../include/syscall.h
 sem.o: ../include/process.h ../libc/include/libio.h ../libc/include/fcntl.h
-sem.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
+sem.o: ../include/vmm.h ../include/signal.h
 syscall.o: ../include/syscall.h ../include/types.h

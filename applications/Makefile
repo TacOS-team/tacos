@@ -85,15 +85,15 @@ cat.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 cube.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 cube.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 cube.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-cube.o: ../libc/include/time.h ../include/process.h ../include/pagination.h
-cube.o: ../include/vmm.h ../include/signal.h ../libc/include/string.h
-cube.o: ../libc/include/unistd.h ../libc/include/sys/types.h
+cube.o: ../libc/include/time.h ../include/process.h ../include/vmm.h
+cube.o: ../include/signal.h ../libc/include/string.h ../libc/include/unistd.h
+cube.o: ../libc/include/sys/types.h
 demo.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 demo.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 demo.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-demo.o: ../libc/include/time.h ../include/process.h ../include/pagination.h
-demo.o: ../include/vmm.h ../include/signal.h ../libc/include/string.h
-demo.o: ../libc/include/unistd.h ../libc/include/sys/types.h
+demo.o: ../libc/include/time.h ../include/process.h ../include/vmm.h
+demo.o: ../include/signal.h ../libc/include/string.h ../libc/include/unistd.h
+demo.o: ../libc/include/sys/types.h
 fiinou.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 fiinou.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 fopen.o: ../libc/include/stdio.h ../libc/include/fcntl.h
@@ -110,8 +110,7 @@ matrix.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 matrix.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
 matrix.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 matrix.o: ../libc/include/unistd.h ../libc/include/sys/types.h
-matrix.o: ../include/process.h ../include/pagination.h ../include/vmm.h
-matrix.o: ../include/signal.h
+matrix.o: ../include/process.h ../include/vmm.h ../include/signal.h
 mkdir.o: ../libc/include/dirent.h ../include/types.h ../libc/include/stdio.h
 mkdir.o: ../libc/include/fcntl.h ../libc/include/libio.h
 mkdir.o: ../libc/include/stdarg.h
@@ -137,8 +136,8 @@ test_sig.o: ../libc/include/stdarg.h ../libc/include/sys/types.h
 test_sig.o: ../include/signal.h
 top.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 top.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
-top.o: ../libc/include/time.h ../include/process.h ../include/pagination.h
-top.o: ../include/vmm.h ../include/signal.h ../libc/include/unistd.h
+top.o: ../libc/include/time.h ../include/process.h ../include/vmm.h
+top.o: ../include/signal.h ../libc/include/unistd.h
 top.o: ../libc/include/sys/types.h
 zen.o: ../libc/include/stdio.h ../libc/include/fcntl.h
 zen.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h

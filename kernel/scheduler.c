@@ -54,6 +54,7 @@
 #include <syscall.h>
 #include <types.h>
 #include <vmm.h>
+#include <pagination.h>
 
 #define USER_PROCESS 0
 #define KERNEL_PROCESS 1

@@ -48,6 +48,7 @@
 #include <tty.h>
 #include <types.h>
 #include <video.h>
+#include <pagination.h>
 
 #define GET_PROCESS 0
 #define GET_PROCESS_LIST 1

@@ -33,25 +33,22 @@ ioctl.o: include/sys/ioctl.h ../include/syscall.h ../include/types.h
 libio.o: include/libio.h include/fcntl.h ../include/types.h include/stdio.h
 libio.o: include/stdarg.h
 malloc.o: include/stdio.h include/fcntl.h include/libio.h ../include/types.h
-malloc.o: include/stdarg.h ../include/process.h ../include/pagination.h
-malloc.o: ../include/vmm.h ../include/signal.h ../include/syscall.h
-malloc.o: include/malloc.h
+malloc.o: include/stdarg.h ../include/process.h ../include/vmm.h
+malloc.o: ../include/signal.h ../include/syscall.h include/malloc.h
 process.o: ../include/types.h include/stdlib.h include/malloc.h
 process.o: include/stdio.h include/fcntl.h include/libio.h include/stdarg.h
-process.o: ../include/syscall.h ../include/process.h ../include/pagination.h
-process.o: ../include/vmm.h ../include/signal.h ../include/elf.h
-process.o: include/string.h
+process.o: ../include/syscall.h ../include/process.h ../include/vmm.h
+process.o: ../include/signal.h ../include/elf.h include/string.h
 signal.o: ../include/signal.h ../include/types.h ../include/syscall.h
 signal.o: ../include/process.h include/libio.h include/fcntl.h
-signal.o: ../include/pagination.h ../include/vmm.h
+signal.o: ../include/vmm.h
 start.o: include/libio.h include/fcntl.h ../include/types.h
-start.o: ../include/process.h ../include/pagination.h ../include/vmm.h
-start.o: ../include/signal.h include/stdio.h include/stdarg.h
-start.o: include/stdlib.h include/malloc.h
+start.o: ../include/process.h ../include/vmm.h ../include/signal.h
+start.o: include/stdio.h include/stdarg.h include/stdlib.h include/malloc.h
 stdlib.o: include/stdio.h include/fcntl.h include/libio.h ../include/types.h
 stdlib.o: include/stdarg.h include/stdlib.h include/malloc.h
-stdlib.o: ../include/memory.h ../include/pagination.h ../include/heap.h
-stdlib.o: ../include/errno.h include/ctype.h include/string.h
+stdlib.o: ../include/memory.h ../include/heap.h ../include/errno.h
+stdlib.o: include/ctype.h include/string.h
 string.o: include/stdlib.h ../include/types.h include/malloc.h
 string.o: include/string.h include/ctype.h
 termios.o: include/termios.h include/sys/ioctl.h
@@ -62,16 +59,15 @@ unistd.o: include/stdio.h include/fcntl.h include/libio.h include/stdarg.h
 unistd.o: include/stdlib.h include/malloc.h include/string.h
 unistd.o: ../include/syscall.h include/unistd.h include/sys/types.h
 stdio/fclose.o: include/fcntl.h ../include/process.h include/libio.h
-stdio/fclose.o: ../include/types.h ../include/pagination.h ../include/vmm.h
-stdio/fclose.o: ../include/signal.h
+stdio/fclose.o: ../include/types.h ../include/vmm.h ../include/signal.h
 stdio/fmemopen.o: include/stdio.h include/fcntl.h include/libio.h
 stdio/fmemopen.o: ../include/types.h include/stdarg.h include/stdlib.h
 stdio/fmemopen.o: include/malloc.h include/fopen.h
 stdio/fopen.o: include/stdio.h include/fcntl.h include/libio.h
 stdio/fopen.o: ../include/types.h include/stdarg.h include/stdlib.h
 stdio/fopen.o: include/malloc.h include/string.h ../include/process.h
-stdio/fopen.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
-stdio/fopen.o: include/unistd.h include/sys/types.h
+stdio/fopen.o: ../include/vmm.h ../include/signal.h include/unistd.h
+stdio/fopen.o: include/sys/types.h
 stdio/fprintf.o: include/stdio.h include/fcntl.h include/libio.h
 stdio/fprintf.o: ../include/types.h include/stdarg.h include/string.h
 stdio/fread.o: include/stdio.h include/fcntl.h include/libio.h
