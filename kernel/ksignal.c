@@ -87,12 +87,12 @@ SYSCALL_HANDLER3(sys_kill, int pid, int signum, int* ret)
 	
 	if(process != NULL)
 	{
-		klog("Sending signal %d to pid %d.", signum, pid);
+		klog("%d sending signal %d to pid %d.", get_current_process()->pid, signum, pid);
 		retour = sigaddset( &(process->signal_data.pending_set), signum );
 	}
 	else
 	{
-		kerr("Process found.");
+		kerr("Process not found.");
 	}
 	
 	if(ret!=NULL)
@@ -112,18 +112,22 @@ SYSCALL_HANDLER0(sys_sigret)
 
 	sigframe* sframe;
 	intframe* iframe;
+	process_t* current = get_current_process();
 
-	/* On récupère les données empilées avant le signal. */
-	/* A la fin du handler, on pop l'adresse de retour, puis on pop eax, 
-	 * esp se retrouve donc à +8 par rapport à la stack frame du signal, 
-	 * on va donc chercher cette frame à esp-8
-	 */
-	sframe = stack_ptr[18]-8;
-
+	
 	/* On récupère les données empilées par l'interruption */
 	/* Le but ici est de remplacer ces valeurs par celles stockées dans la sigframe, 
 	 * de cette manière l'iret à la fin de l'interruption restaurera le contexte du processus */
 	iframe = stack_ptr+4; /* XXX le "+4" a été déduis, pas très safe, faudrait chercher pourquoi */
+	
+	/* On récupère les données empilées avant le signal. */
+	
+	/* A la fin du handler, on pop l'adresse de retour, puis on pop eax, 
+	 * esp se retrouve donc à +8 par rapport à la stack frame du signal, 
+	 * on va donc chercher cette frame à esp-8
+	 */	
+	sframe = iframe->esp-8;
+
 	
 	iframe->eax = sframe->context.eax;
 	iframe->ecx = sframe->context.ecx;
@@ -142,8 +146,38 @@ SYSCALL_HANDLER0(sys_sigret)
 	iframe->fs = sframe->context.fs;
 	iframe->gs = sframe->context.gs;
 	
-	get_current_process()->signal_data.mask = sframe->mask;
+	current->signal_data.mask = sframe->mask;
+	
+	if(sframe->state == PROCSTATE_SUSPENDED)
+		current->state = PROCSTATE_RUNNING;
+	else
+		current->state = sframe->state;
+}
 
+SYSCALL_HANDLER1(sys_sigsuspend, sigset_t* mask) {
+	process_t* current = get_current_process();
+	
+	/* Sauvegarde du mask et de l'état du process */
+	sigset_t old_mask = current->signal_data.mask;
+	uint8_t	old_state = current->state;
+	
+	/* Désactivation de l'ordonnanceur */
+	stop_scheduler();
+	
+	/* Utilisation du nouveau mask */
+	current->signal_data.mask = *mask;
+	
+	/* Passage du processus en suspended */
+	current->state = PROCSTATE_SUSPENDED;
+	
+	/* Scheduling immédiat */
+	start_scheduler();
+	
+	while(current->state == PROCSTATE_SUSPENDED);
+	
+	/* Restauration de l'état et du mask */
+	current->state = old_state;
+	current->signal_data.mask = old_mask;
 }
 
 static int get_first_signal(sigset_t* set)
@@ -190,6 +224,7 @@ int exec_sighandler(process_t* process)
 			frame->context.edx = process->regs.edx;
 			frame->context.ebx = process->regs.ebx;
 			frame->context.esp = process->regs.esp;
+			frame->context.kesp = process->regs.kesp;
 			frame->context.ebp = process->regs.ebp;
 			frame->context.esi = process->regs.esi;
 			frame->context.edi = process->regs.edi;
@@ -197,6 +232,7 @@ int exec_sighandler(process_t* process)
 			frame->context.eflags = process->regs.eflags;
 			frame->context.cs = process->regs.cs;
 			frame->context.ss = process->regs.ss;
+			frame->context.kss = process->regs.kss;
 			frame->context.ds = process->regs.ds;
 			frame->context.es = process->regs.es;
 			frame->context.fs = process->regs.fs;
@@ -204,6 +240,8 @@ int exec_sighandler(process_t* process)
 			frame->context.cr3 = process->regs.cr3;
 			
 			frame->mask = process->signal_data.mask;
+			
+			frame->state = process->state;
 			
 			/* So called "least-understood piece of the Linux kernel*/
 			*((uint16_t*)(frame->retcode+0)) = 0xb858;
@@ -215,9 +253,28 @@ int exec_sighandler(process_t* process)
 			
 			/* On fait pointer eip vers le handler du signal */
 			process->regs.eip = (uint32_t) process->signal_data.handlers[signum];
+			
+			/* Et enfin, le gros piège: on doit absolument exécuter le handler en user space, donc on change cs: */
+			process->regs.cs = 0x1b; /* XXX Tant que j'y pense, ça serait bien d'utiliser des macro pour les numero de segment code */
+			//process->regs.ds = 0x23;
+			process->regs.ss = 0x23;
+			process->state = PROCSTATE_RUNNING;
+			
+			sigaddset(&(process->signal_data.mask),signum);
 		}
+		/*
+		 {eax = 4, ecx = 1781508, edx = 544020, ebx = 1802140, esp = 1781476, 
+  kesp = 1781780, ebp = 1781588, esi = 0, edi = 0, eip = 1073741824, 
+  eflags = 582, cs = 27, ss = 35, kss = 16, ds = 0, es = 0, fs = 0, gs = 0, 
+  cr3 = 13451094}
+
+{eax = 16, ecx = 1073766640, edx = 1073766640, ebx = 0, esp = 1802024, 
+  kesp = 1781780, ebp = 1802152, esi = 143474, edi = 0, eip = 1073741824, 
+  eflags = 582, cs = 27, ss = 35, kss = 16, ds = 0, es = 0, fs = 0, gs = 0, 
+  cr3 = 13451094}
+
+	*/
 		
-		sigaddset(&(process->signal_data.mask),signum);
 		sigdelset(&(process->signal_data.pending_set), signum);
 	}
 	

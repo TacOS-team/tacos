@@ -55,6 +55,13 @@ sighandler_t signal(int sig, sighandler_t func)
 	return ret;
 }
 
+int sigsuspend(const sigset_t *sigmask) {
+	syscall(SYS_SIGSUSPEND, (uint32_t)sigmask, NULL, NULL);
+	//XXX TODO errno
+	return -1;
+}
+
+
 int sigprocmask(int how, const sigset_t *set, sigset_t *oldset)
 {
 	int ret = -1;

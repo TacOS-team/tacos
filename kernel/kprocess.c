@@ -260,13 +260,11 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	
 	new_proc->regs.eflags = 0;
 	new_proc->regs.eip = init_data->entry_point;
-	//new_proc->regs.esp = (vaddr_t)(user_stack)+stack_size-3;
 	new_proc->regs.esp = (vaddr_t)(stack_ptr-3);
 	new_proc->regs.ebp = new_proc->regs.esp;
 	
-	new_proc->kstack.ss0 = 0x10;
-	//new_proc->kstack.esp0 = (vaddr_t)(sys_stack)+stack_size-1;
-	new_proc->kstack.esp0 = (vaddr_t)(&sys_stack[init_data->stack_size-1]);
+	new_proc->regs.kss = 0x10;
+	new_proc->regs.kesp = (vaddr_t)(&sys_stack[init_data->stack_size-1]);
 	
 	new_proc->state = PROCSTATE_IDLE;
 	
@@ -389,13 +387,11 @@ process_t* create_process(process_init_data_t* init_data)
 	
 	new_proc->regs.eflags = 0;
 	new_proc->regs.eip = prog;
-	//new_proc->regs.esp = (vaddr_t)(user_stack)+stack_size-3;
 	new_proc->regs.esp = (vaddr_t)(stack_ptr-3);
 	new_proc->regs.ebp = new_proc->regs.esp;
 	
-	new_proc->kstack.ss0 = 0x10;
-	//new_proc->kstack.esp0 = (vaddr_t)(sys_stack)+stack_size-1;
-	new_proc->kstack.esp0 = (vaddr_t)(&sys_stack[stack_size-1]);
+	new_proc->regs.kss = 0x10;
+	new_proc->regs.kesp = (vaddr_t)(&sys_stack[stack_size-1]);
 	
 	new_proc->state = PROCSTATE_IDLE;
 	

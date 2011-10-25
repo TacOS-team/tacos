@@ -31,66 +31,52 @@
  *
  * Programme de test pour les signaux
  */
-/*
-#include <stdio.h>
-#include <stdlib.h>
-#include <process.h>
-#include <sys/types.h>
-#include <unistd.h>
 
-void int_handler(int sig)
-{
-	static int i = 0;
-	printf("SIGINT recu(0x%x): i = %d.\n", sig,i);
-	i++;
-	if(i == 3)
-		exit(0);
-	return;
-}
-void usr_handler(int sig)
-{
-	printf("SIGUSR1 recu.(0x%x)\n", sig);
-	return;
-}
-
-int main()
-{
-	pid_t pid = getpid();
-	
-	signal(SIGINT, int_handler);
-	signal(SIGUSR1, usr_handler);
-	kill(pid, SIGUSR1);
-	while(1);
-	return 0;
-}
-*/
 #include <stdio.h>
 #include <sys/types.h>
 #include <signal.h>
 
-void handler1(int signal) {
-    printf("[handler1] Activation du handler1 avec signal = %d\n", signal);
-    printf("[handler1] => SIGUSR2\n");
-    kill(getpid(), SIGUSR2);
-		while(1);
-    printf("[handler1] Fin exécution handler1.\n");
+
+void handler(int signal) {
+	printf("handler!\n");
 }
 
-void handler2(int signal) {
-    printf("[handler2] Activation du handler2 avec signal = %d\n", signal);
-    printf("[handler2] => SIGUSR1\n");
-		kill(getpid(), SIGUSR1);
-    printf("[handler2] Fin exécution handler2.\n");
-}
-
-int main() {
-    signal(SIGUSR1, handler1);
-    signal(SIGUSR2, handler2);
-
-    printf("[main] => SIGUSR1.\n");
-    kill(getpid(), SIGUSR1);
+void f1() {
+	printf("F1 suspendu...\n");
+	signal(SIGUSR1, handler);
+	sigset_t set;
+    sigfillset(&set);
+    sigdelset(&set, SIGUSR1);
+    sigsuspend(&set);
+    printf("F1 réveillée!\n");
     while(1);
-    printf("[main] Fin du programme.\n");
+    
+}
+/* 0x4000269d */
+void f2(pid_t pid) {
+	printf("F2 tente de réveiller pid=%d...\n",pid);
+	kill(pid, SIGUSR1);
+}
+
+int main(int argc, char** argv) {
+	
+	if(argc <= 1) {
+		printf("Pas assez d'arguments\n\n");
+		printf("Usage:\n");
+		printf("\"test_sig 1\"\tprocess en attente de SIGUSR1\n");
+		printf("\"test_sig 2 Pid\"\tEnvois un SIGUSR1 au process correpondant au PID\n");
+		exit(0);
+	}
+	
+	if(strcmp(argv[1],"1") == 0) {
+		f1();
+	} else if(strcmp(argv[1],"2") == 0) {
+		f2(atoi(argv[2]));
+	} else {
+		printf("Mauvais paramètres\n");
+	}
+	while(1);
     return 0;
 }
+
 

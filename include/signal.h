@@ -96,6 +96,8 @@ int kill(unsigned int pid, int sig);
 
 sighandler_t signal(int sig, sighandler_t func);
 
+int sigsuspend(const sigset_t *sigmask);
+
 int sigprocmask(int how, const sigset_t *set, sigset_t *oldset);
 
 int sigemptyset(sigset_t *set);
