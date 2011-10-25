@@ -154,18 +154,18 @@ void context_switch(int mode, process_t* current)
 void* schedule(void* data __attribute__ ((unused)))
 {
 	uint32_t* stack_ptr;
-	/* On récupere un pointeur de pile pour acceder aux registres empilés */
-	asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
-	
-	intframe* frame = stack_ptr + 4;
 
+	/* On met le contexte dans la structure "process"*/
 	process_t* current = scheduler->get_current_process();
 	
 	/* On récupère le contexte du processus actuel uniquement si il a déja été lancé */
 	if(current->state == PROCSTATE_RUNNING || current->state == PROCSTATE_WAITING)
 	{	
+		/* On récupere un pointeur de pile pour acceder aux registres empilés */
+		asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
+		
+		intframe* frame = stack_ptr + 2;
 
-		/* On met le contexte dans la structure "process"*/
 		current->regs.eflags = frame->eflags;
 		current->regs.cs  = frame->cs;
 		current->regs.eip = frame->eip;
