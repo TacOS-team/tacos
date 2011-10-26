@@ -43,17 +43,17 @@ start.o: include/libio.h ../include/types.h ../include/process.h
 start.o: ../include/vmm.h ../include/signal.h include/stdio.h
 start.o: include/stdarg.h include/stdlib.h include/malloc.h
 stdlib.o: include/stdio.h include/libio.h ../include/types.h include/stdarg.h
-stdlib.o: include/stdlib.h include/malloc.h ../include/heap.h
-stdlib.o: ../include/errno.h include/ctype.h include/string.h
+stdlib.o: include/stdlib.h include/malloc.h ../include/heap.h include/errno.h
+stdlib.o: include/ctype.h include/string.h
 string.o: include/stdlib.h ../include/types.h include/malloc.h
 string.o: include/string.h include/ctype.h
 termios.o: include/termios.h include/sys/ioctl.h
 time.o: include/time.h ../include/types.h include/stdio.h include/libio.h
 time.o: include/stdarg.h
-unistd.o: include/dirent.h ../include/types.h ../include/errno.h
-unistd.o: include/stdio.h include/libio.h include/stdarg.h include/stdlib.h
-unistd.o: include/malloc.h include/string.h ../include/syscall.h
-unistd.o: include/unistd.h include/sys/types.h
+unistd.o: include/dirent.h ../include/types.h include/errno.h include/stdio.h
+unistd.o: include/libio.h include/stdarg.h include/stdlib.h include/malloc.h
+unistd.o: include/string.h ../include/syscall.h include/unistd.h
+unistd.o: include/sys/types.h
 stdio/fclose.o: include/fcntl.h ../include/process.h include/libio.h
 stdio/fclose.o: ../include/types.h ../include/vmm.h ../include/signal.h
 stdio/fmemopen.o: include/stdio.h include/libio.h ../include/types.h

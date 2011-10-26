@@ -44,4 +44,4 @@ tests.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 tests.o: ../libc/include/string.h ../libc/include/time.h include/apps.h
 tests.o: ../include/sem.h ../include/debug.h ../libc/include/unistd.h
 tests.o: ../libc/include/sys/types.h ../include/elf.h ../libc/include/ctype.h
-tests.o: ../include/errno.h ../include/rtl8139.h ../libc/include/fcntl.h
+tests.o: ../libc/include/errno.h ../include/rtl8139.h ../libc/include/fcntl.h

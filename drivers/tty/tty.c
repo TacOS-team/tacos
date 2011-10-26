@@ -37,7 +37,7 @@
 #include "kprocess.h"
 #include "ksignal.h"
 #include "kstdio.h"
-#include <errno.h>
+//#include <errno.h>
 #include <klog.h>
 #include <kmalloc.h>
 #include <fcntl.h>
@@ -124,7 +124,7 @@ size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {
 	 */
 	unsigned int i;
   if((ofd->flags & O_ACCMODE) == O_RDONLY) {
-    errno = EBADF;
+    //errno = EBADF;
     return -1;
   }
 
@@ -156,12 +156,12 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 	}
 
   if((ofd->flags & O_ACCMODE) == O_WRONLY) {
-    errno = EBADF;
+    //errno = EBADF;
     return -1;
   }
 
   if(ofd->flags & O_DIRECT) {
-    errno = EINVAL;
+    //errno = EINVAL;
     return -1;
   }
 

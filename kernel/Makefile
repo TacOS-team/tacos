@@ -33,8 +33,8 @@ events.o: ../libc/include/time.h include/clock.h ../include/list.h
 events.o: include/events.h ../libc/include/stdio.h ../libc/include/libio.h
 events.o: ../libc/include/stdarg.h ../include/debug.h
 exception.o: ../include/types.h include/idt.h include/exception.h
-fat.o: ../libc/include/ctype.h ../include/errno.h ../libc/include/fcntl.h
-fat.o: ../include/floppy.h ../include/types.h include/kfat.h include/kfcntl.h
+fat.o: ../libc/include/ctype.h ../libc/include/fcntl.h ../include/floppy.h
+fat.o: ../include/types.h include/kfat.h include/kfcntl.h
 fat.o: ../libc/include/libio.h include/kprocess.h ../include/process.h
 fat.o: ../include/vmm.h ../include/signal.h include/ksyscall.h
 fat.o: ../libc/include/time.h ../include/klog.h ../include/kmalloc.h
