@@ -46,6 +46,8 @@
 #include <tty.h>
 #include <klog.h>
 
+#include <fcntl.h>
+
 void init_stdfd(process_t *new_proc) {
     struct _file_descriptor *fd0 = &(new_proc->fd[0]);
     struct _file_descriptor *fd1 = &(new_proc->fd[1]);

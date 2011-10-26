@@ -26,6 +26,6 @@ list.o: ../include/kmalloc.h ../kernel/include/kstdio.h
 widget.o: ../include/gui.h ../include/types.h include/widget.h
 widget.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 widget.o: ../libc/include/string.h ../libc/include/stdio.h
-widget.o: ../libc/include/fcntl.h ../libc/include/libio.h
-widget.o: ../libc/include/stdarg.h ../include/mouse.h ../libc/include/ctype.h
-widget.o: ../include/process.h ../include/vmm.h ../include/signal.h
+widget.o: ../libc/include/libio.h ../libc/include/stdarg.h ../include/mouse.h
+widget.o: ../libc/include/ctype.h ../include/process.h ../include/vmm.h
+widget.o: ../include/signal.h

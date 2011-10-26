@@ -47,7 +47,7 @@
 #include <ctype.h>
 #include <errno.h>
 #include <rtl8139.h>
-
+#include <fcntl.h>
 
 int test_fwrite() {
 	FILE *file = fopen("fd0:/test.txt", "w+");

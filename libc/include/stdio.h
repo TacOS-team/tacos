@@ -39,7 +39,6 @@
  * @file stdio.h
  */
 
-#include <fcntl.h>
 #include <libio.h>
 #include <types.h>
 #include <stdarg.h>

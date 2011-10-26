@@ -40,6 +40,7 @@
 #include <errno.h>
 #include <klog.h>
 #include <kmalloc.h>
+#include <fcntl.h>
 
 static terminal_t *terminals[10]; // "Temporaire"
 static terminal_t *active_tty = NULL;

@@ -80,67 +80,59 @@ clean:
 
 # DO NOT DELETE
 
-cat.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-cat.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
-cube.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-cube.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
-cube.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-cube.o: ../libc/include/time.h ../include/process.h ../include/vmm.h
-cube.o: ../include/signal.h ../libc/include/string.h ../libc/include/unistd.h
-cube.o: ../libc/include/sys/types.h
-demo.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-demo.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
-demo.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-demo.o: ../libc/include/time.h ../include/process.h ../include/vmm.h
-demo.o: ../include/signal.h ../libc/include/string.h ../libc/include/unistd.h
-demo.o: ../libc/include/sys/types.h
-fiinou.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-fiinou.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
-fopen.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-fopen.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
+cat.o: ../libc/include/stdio.h ../libc/include/libio.h ../include/types.h
+cat.o: ../libc/include/stdarg.h
+cube.o: ../libc/include/stdio.h ../libc/include/libio.h ../include/types.h
+cube.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
+cube.o: ../libc/include/malloc.h ../libc/include/time.h ../include/process.h
+cube.o: ../include/vmm.h ../include/signal.h ../libc/include/string.h
+cube.o: ../libc/include/unistd.h ../libc/include/sys/types.h
+demo.o: ../libc/include/stdio.h ../libc/include/libio.h ../include/types.h
+demo.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
+demo.o: ../libc/include/malloc.h ../libc/include/time.h ../include/process.h
+demo.o: ../include/vmm.h ../include/signal.h ../libc/include/string.h
+demo.o: ../libc/include/unistd.h ../libc/include/sys/types.h
+fiinou.o: ../libc/include/stdio.h ../libc/include/libio.h ../include/types.h
+fiinou.o: ../libc/include/stdarg.h
+fopen.o: ../libc/include/stdio.h ../libc/include/libio.h ../include/types.h
+fopen.o: ../libc/include/stdarg.h
 kill.o: ../libc/include/sys/types.h ../include/signal.h ../include/types.h
-kill.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-kill.o: ../libc/include/libio.h ../libc/include/stdarg.h
-kill.o: ../libc/include/stdlib.h ../libc/include/malloc.h
+kill.o: ../libc/include/stdio.h ../libc/include/libio.h
+kill.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
+kill.o: ../libc/include/malloc.h
 ls.o: ../libc/include/dirent.h ../include/types.h ../libc/include/stdio.h
-ls.o: ../libc/include/fcntl.h ../libc/include/libio.h
-ls.o: ../libc/include/stdarg.h ../libc/include/unistd.h
-ls.o: ../libc/include/sys/types.h
-matrix.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-matrix.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
-matrix.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-matrix.o: ../libc/include/unistd.h ../libc/include/sys/types.h
-matrix.o: ../include/process.h ../include/vmm.h ../include/signal.h
+ls.o: ../libc/include/libio.h ../libc/include/stdarg.h
+ls.o: ../libc/include/unistd.h ../libc/include/sys/types.h
+matrix.o: ../libc/include/stdio.h ../libc/include/libio.h ../include/types.h
+matrix.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
+matrix.o: ../libc/include/malloc.h ../libc/include/unistd.h
+matrix.o: ../libc/include/sys/types.h ../include/process.h ../include/vmm.h
+matrix.o: ../include/signal.h
 mkdir.o: ../libc/include/dirent.h ../include/types.h ../libc/include/stdio.h
-mkdir.o: ../libc/include/fcntl.h ../libc/include/libio.h
-mkdir.o: ../libc/include/stdarg.h
+mkdir.o: ../libc/include/libio.h ../libc/include/stdarg.h
 sem_ping.o: ../include/sem.h ../include/types.h ../libc/include/stdio.h
-sem_ping.o: ../libc/include/fcntl.h ../libc/include/libio.h
-sem_ping.o: ../libc/include/stdarg.h ../libc/include/unistd.h
-sem_ping.o: ../libc/include/sys/types.h
+sem_ping.o: ../libc/include/libio.h ../libc/include/stdarg.h
+sem_ping.o: ../libc/include/unistd.h ../libc/include/sys/types.h
 sem_pong.o: ../include/sem.h ../include/types.h ../libc/include/stdio.h
-sem_pong.o: ../libc/include/fcntl.h ../libc/include/libio.h
-sem_pong.o: ../libc/include/stdarg.h ../libc/include/unistd.h
-sem_pong.o: ../libc/include/sys/types.h
+sem_pong.o: ../libc/include/libio.h ../libc/include/stdarg.h
+sem_pong.o: ../libc/include/unistd.h ../libc/include/sys/types.h
 snake.o: ../include/signal.h ../include/types.h ../libc/include/stdio.h
-snake.o: ../libc/include/fcntl.h ../libc/include/libio.h
-snake.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
-snake.o: ../libc/include/malloc.h ../libc/include/time.h
-snake.o: ../libc/include/unistd.h ../libc/include/sys/types.h
-test.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-test.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
-test.o: ../libc/include/unistd.h ../libc/include/sys/types.h
-test_sig.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-test_sig.o: ../libc/include/libio.h ../include/types.h
-test_sig.o: ../libc/include/stdarg.h ../libc/include/sys/types.h
-test_sig.o: ../include/signal.h
-top.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-top.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
-top.o: ../libc/include/time.h ../include/process.h ../include/vmm.h
-top.o: ../include/signal.h ../libc/include/unistd.h
+snake.o: ../libc/include/libio.h ../libc/include/stdarg.h
+snake.o: ../libc/include/stdlib.h ../libc/include/malloc.h
+snake.o: ../libc/include/time.h ../libc/include/unistd.h
+snake.o: ../libc/include/sys/types.h
+test.o: ../libc/include/stdio.h ../libc/include/libio.h ../include/types.h
+test.o: ../libc/include/stdarg.h ../libc/include/unistd.h
+test.o: ../libc/include/sys/types.h
+test_sig.o: ../libc/include/stdio.h ../libc/include/libio.h
+test_sig.o: ../include/types.h ../libc/include/stdarg.h
+test_sig.o: ../libc/include/sys/types.h ../include/signal.h
+top.o: ../libc/include/stdio.h ../libc/include/libio.h ../include/types.h
+top.o: ../libc/include/stdarg.h ../libc/include/time.h ../include/process.h
+top.o: ../include/vmm.h ../include/signal.h ../libc/include/unistd.h
 top.o: ../libc/include/sys/types.h
-zen.o: ../libc/include/stdio.h ../libc/include/fcntl.h
-zen.o: ../libc/include/libio.h ../include/types.h ../libc/include/stdarg.h
-zen.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-zen.o: ../libc/include/time.h ../libc/include/string.h
-zen.o: ../libc/include/unistd.h ../libc/include/sys/types.h
+zen.o: ../libc/include/stdio.h ../libc/include/libio.h ../include/types.h
+zen.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
+zen.o: ../libc/include/malloc.h ../libc/include/time.h
+zen.o: ../libc/include/string.h ../libc/include/unistd.h
+zen.o: ../libc/include/sys/types.h
