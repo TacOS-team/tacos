@@ -35,7 +35,8 @@
 #include <types.h>
 #include <stdlib.h>
 #include <stdio.h> 
-#include <syscall.h>
+#include <unistd.h>
+#include <sys/syscall.h>
 #include <process.h>
 #include <elf.h>
 #include <string.h>

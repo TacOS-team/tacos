@@ -33,7 +33,8 @@
  */
 
 #include <sem.h>
-#include <syscall.h>
+#include <unistd.h>
+#include <sys/syscall.h>
 #include <process.h>
 
 #define MAX_SEM 256

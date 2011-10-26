@@ -82,5 +82,5 @@ video/video.o: ../libc/include/stdio.h ../libc/include/libio.h
 video/video.o: ../include/types.h ../libc/include/stdarg.h
 video/video.o: ../include/ioports.h ../libc/include/ctype.h
 video/video.o: ../include/video.h ../libc/include/stdlib.h
-video/video.o: ../libc/include/malloc.h ../include/syscall.h
+video/video.o: ../libc/include/malloc.h ../libc/include/sys/syscall.h
 video/video.o: ../include/kmalloc.h

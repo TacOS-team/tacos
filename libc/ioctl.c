@@ -1,5 +1,6 @@
+#include <unistd.h>
 #include <sys/ioctl.h>
-#include <syscall.h>
+#include <sys/syscall.h>
 
 int ioctl(int d, unsigned int request, void* data)
 {

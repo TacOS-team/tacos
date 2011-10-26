@@ -29,7 +29,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Liste des SYSCALL de TacOS.
  */
 
 #ifndef _SYSCALL_H_
@@ -59,7 +59,5 @@
 #define SYS_MKDIR 20
 #define SYS_SIGRET 21
 #define SYS_IOCTL 22
-
-void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3);
 
 #endif

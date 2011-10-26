@@ -38,7 +38,8 @@
 
 #include <types.h>
 #include <fcntl.h>
-#include <syscall.h>
+#include <unistd.h>
+#include <sys/syscall.h>
 
 int open(const char *pathname, int flags) {
 	int id;

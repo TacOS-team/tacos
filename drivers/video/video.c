@@ -38,7 +38,7 @@
 #include <ctype.h>
 #include <video.h>
 #include <stdlib.h>
-#include <syscall.h>
+#include <sys/syscall.h>
 #include <kmalloc.h>
 
 /* The video memory address. */

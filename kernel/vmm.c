@@ -38,7 +38,6 @@
 #include <process.h>
 #include <stdio.h>
 #include <ksyscall.h>
-#include <syscall.h>
 
 /**
  * vmm est l'allocateur qui s'occupe de gérer les pages virtuelles du noyau.

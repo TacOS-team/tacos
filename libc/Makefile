@@ -23,22 +23,27 @@ depend: $(SRCS)
 
 ctype.o: include/ctype.h
 dirent.o: include/dirent.h ../include/types.h include/stdlib.h
-dirent.o: include/malloc.h include/string.h ../include/syscall.h
+dirent.o: include/malloc.h include/string.h include/sys/syscall.h
 dirent.o: include/unistd.h include/sys/types.h
 elf.o: ../include/elf.h include/libio.h ../include/types.h include/stdio.h
 elf.o: include/stdarg.h include/string.h include/stdlib.h include/malloc.h
-fcntl.o: ../include/types.h include/fcntl.h ../include/syscall.h
-ioctl.o: include/sys/ioctl.h ../include/syscall.h ../include/types.h
+fcntl.o: ../include/types.h include/fcntl.h include/unistd.h
+fcntl.o: include/sys/types.h include/sys/syscall.h
+ioctl.o: include/unistd.h ../include/types.h include/sys/types.h
+ioctl.o: include/sys/ioctl.h include/sys/syscall.h
 libio.o: include/libio.h ../include/types.h include/stdio.h include/stdarg.h
 malloc.o: include/stdio.h include/libio.h ../include/types.h include/stdarg.h
 malloc.o: ../include/process.h ../include/vmm.h ../include/signal.h
-malloc.o: ../include/syscall.h include/malloc.h
+malloc.o: include/unistd.h include/sys/types.h include/sys/syscall.h
+malloc.o: include/malloc.h
 process.o: ../include/types.h include/stdlib.h include/malloc.h
-process.o: include/stdio.h include/libio.h include/stdarg.h
-process.o: ../include/syscall.h ../include/process.h ../include/vmm.h
-process.o: ../include/signal.h ../include/elf.h include/string.h
-signal.o: ../include/signal.h ../include/types.h ../include/syscall.h
-signal.o: ../include/process.h include/libio.h ../include/vmm.h
+process.o: include/stdio.h include/libio.h include/stdarg.h include/unistd.h
+process.o: include/sys/types.h include/sys/syscall.h ../include/process.h
+process.o: ../include/vmm.h ../include/signal.h ../include/elf.h
+process.o: include/string.h
+signal.o: ../include/signal.h ../include/types.h include/unistd.h
+signal.o: include/sys/types.h include/sys/syscall.h ../include/process.h
+signal.o: include/libio.h ../include/vmm.h
 start.o: include/libio.h ../include/types.h ../include/process.h
 start.o: ../include/vmm.h ../include/signal.h include/stdio.h
 start.o: include/stdarg.h include/stdlib.h include/malloc.h
@@ -52,7 +57,7 @@ time.o: include/time.h ../include/types.h include/stdio.h include/libio.h
 time.o: include/stdarg.h
 unistd.o: include/dirent.h ../include/types.h include/errno.h include/stdio.h
 unistd.o: include/libio.h include/stdarg.h include/stdlib.h include/malloc.h
-unistd.o: include/string.h ../include/syscall.h include/unistd.h
+unistd.o: include/string.h include/sys/syscall.h include/unistd.h
 unistd.o: include/sys/types.h
 stdio/fclose.o: include/fcntl.h ../include/process.h include/libio.h
 stdio/fclose.o: ../include/types.h ../include/vmm.h ../include/signal.h

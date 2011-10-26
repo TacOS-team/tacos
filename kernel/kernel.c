@@ -66,7 +66,7 @@
 #include <debug.h>
 #include <shell.h>
 #include <ksyscall.h>
-#include <syscall.h>
+#include <sys/syscall.h>
 #include <ksem.h>
 #include <video.h>
 #include <console.h>

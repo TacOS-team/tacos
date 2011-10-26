@@ -32,7 +32,7 @@
  * Description de ce que fait le fichier
  */
 
-#include <syscall.h>
+#include <sys/syscall.h>
 
 void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3)
 {

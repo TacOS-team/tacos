@@ -52,6 +52,8 @@ const char * getcwd(char * buf, size_t size);
 char * get_absolute_path(const char *dirname);
 pid_t getpid(void);
 
+void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3);
+
 /** 
  * @brief Endort le processus pour une durée déterminée (en secondes).
  *
