@@ -47,7 +47,7 @@ char *asctime(const struct tm *timeptr)
           "Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
      };
-     static char result[26];
+     char *result = malloc(26);
      /*
      sprintf(result, "%.3s %.3s%3d %.2d:%.2d:%.2d %d\n",
           wday_name[timeptr->tm_wday],
@@ -56,12 +56,16 @@ char *asctime(const struct tm *timeptr)
           timeptr->tm_min, timeptr->tm_sec,
           1900 + timeptr->tm_year);
 	*/
-		sprintf(result, "%.3s %.3s %d %d:%d:%d %d\n",
+		if (timeptr) {
+			sprintf(result, "%.3s %.3s %d %d:%d:%d %d\n",
           wday_name[timeptr->tm_wday],
           mon_name[timeptr->tm_mon],
           timeptr->tm_mday, timeptr->tm_hour,
           timeptr->tm_min, timeptr->tm_sec,
           1900 + timeptr->tm_year);
+		} else {
+			sprintf(result, "Erreur date.");
+		}
           
      return result;
 }
@@ -87,7 +91,6 @@ time_t time(time_t *timer)
 	return date;*/
 	
 	//XXX
-	*timer = 0; /* To avoid unused parameter */
 	return 0;
 }
 
