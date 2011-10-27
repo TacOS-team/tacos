@@ -37,6 +37,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
+#include <termios.h>
 
 #define LIGNES 10
 #define COLONNES 20
@@ -62,14 +63,16 @@ static struct coord_t directions[4] = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
 static struct coord_t bonus;
 
 int getche() {
-//	struct termios oldt, newt;
+	struct termios oldt, newt;
 	int ch;
-//	tcgetattr( STDIN_FILENO, &oldt );
-//	newt = oldt;
-//	newt.c_lflag &= ~( ICANON | ECHO );
-//	tcsetattr( STDIN_FILENO, TCSANOW, &newt );
+	tcgetattr( STDIN_FILENO, &oldt );
+
+	newt = oldt;
+	newt.c_lflag &= ~( ICANON | ECHO );
+
+	tcsetattr( STDIN_FILENO, /*TCSANOW*/0, &newt );
 	ch = getchar();
-//	tcsetattr( STDIN_FILENO, TCSANOW, &oldt );
+	tcsetattr( STDIN_FILENO, 0, &oldt );
 	return ch;
 }
 
@@ -218,6 +221,9 @@ void game() {
 }
 
 int main() {
+	getche();
+	return 0;
+
   pid_keyboard = -1;
 	//XXX
   //exec((paddr_t)thread_input, "Snake_keyboard_input",0);

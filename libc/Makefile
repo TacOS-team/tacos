@@ -29,7 +29,7 @@ elf.o: ../include/elf.h include/libio.h ../include/types.h include/stdio.h
 elf.o: include/stdarg.h include/string.h include/stdlib.h include/malloc.h
 fcntl.o: ../include/types.h include/fcntl.h include/unistd.h
 fcntl.o: include/sys/types.h include/sys/syscall.h
-ioctl.o: include/unistd.h ../include/types.h include/sys/types.h
+ioctl.o: ../include/types.h include/unistd.h include/sys/types.h
 ioctl.o: include/sys/ioctl.h include/sys/syscall.h
 libio.o: include/libio.h ../include/types.h include/stdio.h include/stdarg.h
 malloc.o: include/stdio.h include/libio.h ../include/types.h include/stdarg.h

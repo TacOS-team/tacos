@@ -6,6 +6,12 @@ typedef unsigned int cc_t;
 
 #define NCCS 15
 
+#define TCGETS 1
+#define TCSETS 2
+
+#define ICANON 2
+#define ECHO   8
+
 struct termios {
 	tcflag_t c_iflag;
 	tcflag_t c_oflag;

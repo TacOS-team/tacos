@@ -120,7 +120,7 @@ snake.o: ../include/signal.h ../include/types.h ../libc/include/stdio.h
 snake.o: ../libc/include/libio.h ../libc/include/stdarg.h
 snake.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 snake.o: ../libc/include/time.h ../libc/include/unistd.h
-snake.o: ../libc/include/sys/types.h
+snake.o: ../libc/include/sys/types.h ../libc/include/termios.h
 test.o: ../libc/include/stdio.h ../libc/include/libio.h ../include/types.h
 test.o: ../libc/include/stdarg.h ../libc/include/unistd.h
 test.o: ../libc/include/sys/types.h
