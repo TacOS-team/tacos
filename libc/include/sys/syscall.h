@@ -59,5 +59,7 @@
 #define SYS_MKDIR 20
 #define SYS_SIGRET 21
 #define SYS_IOCTL 22
+#define SYS_GETCLOCK 23
+#define SYS_GETDATE 24
 
 #endif

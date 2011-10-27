@@ -35,6 +35,8 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <sys/syscall.h>
 
 #define MILLISECONDS_PER_SECOND 1000
 #define SECONDS_PER_MINUTE 60
@@ -101,21 +103,24 @@ inline char *ctime(const time_t *timer)
 
 clock_t clock(void)
 {
-	//return get_clock();
-	//XXX
-	return 0;
+	clock_t sysclock;
+
+	syscall(SYS_GETCLOCK, (uint32_t)&sysclock, 0, 0);
+
+	return sysclock;
 }
 
 time_t time(time_t *timer)
 {
-	/*time_t date = get_date();
+	time_t date;
+
+	syscall(SYS_GETDATE, (uint32_t)&date, 0, 0);
 	
-	if(timer != NULL)
+	if (timer != NULL) {
 		*timer = date;
-	return date;*/
-	
-	//XXX
-	return 0;
+	}
+
+	return date;
 }
 
 double difftime(time_t time1, time_t time0)

@@ -54,7 +54,8 @@ string.o: include/stdlib.h ../include/types.h include/malloc.h
 string.o: include/string.h include/ctype.h
 termios.o: include/termios.h include/sys/ioctl.h
 time.o: include/time.h ../include/types.h include/stdio.h include/libio.h
-time.o: include/stdarg.h include/stdlib.h include/malloc.h
+time.o: include/stdarg.h include/stdlib.h include/malloc.h include/unistd.h
+time.o: include/sys/types.h include/sys/syscall.h
 unistd.o: include/dirent.h ../include/types.h include/errno.h include/stdio.h
 unistd.o: include/libio.h include/stdarg.h include/stdlib.h include/malloc.h
 unistd.o: include/string.h include/sys/syscall.h include/unistd.h

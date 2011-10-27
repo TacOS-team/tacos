@@ -26,12 +26,12 @@ depend: $(SRCS)
 # DO NOT DELETE THIS LINE -- make depend needs it
 
 clock.o: ../include/types.h ../include/ioports.h include/i8254.h
-clock.o: include/clock.h ../libc/include/time.h ../include/interrupts.h
-clock.o: ../include/heap.h
+clock.o: include/clock.h ../libc/include/time.h include/ksyscall.h
+clock.o: ../include/interrupts.h ../include/heap.h
 events.o: ../include/types.h include/i8254.h ../include/interrupts.h
-events.o: ../libc/include/time.h include/clock.h ../include/list.h
-events.o: include/events.h ../libc/include/stdio.h ../libc/include/libio.h
-events.o: ../libc/include/stdarg.h ../include/debug.h
+events.o: ../libc/include/time.h include/clock.h include/ksyscall.h
+events.o: ../include/list.h include/events.h ../libc/include/stdio.h
+events.o: ../libc/include/libio.h ../libc/include/stdarg.h ../include/debug.h
 exception.o: ../include/types.h include/idt.h include/exception.h
 fat.o: ../libc/include/ctype.h ../libc/include/fcntl.h ../include/floppy.h
 fat.o: ../include/types.h include/kfat.h include/kfcntl.h
@@ -66,16 +66,16 @@ kernel.o: ../libc/include/string.h include/memory.h include/pagination.h
 kernel.o: include/gdt.h include/exception.h ../include/interrupts.h
 kernel.o: ../include/pci.h ../include/pci_types.h ../include/pci_config.h
 kernel.o: include/scheduler.h ../include/process.h ../include/vmm.h
-kernel.o: ../include/signal.h ../libc/include/time.h ../include/keyboard.h
-kernel.o: include/kfcntl.h include/kprocess.h ../include/mouse.h
-kernel.o: include/events.h ../include/floppy.h include/kpanic.h
-kernel.o: ../include/kmalloc.h ../include/ioports.h include/msr.h
-kernel.o: include/kfat.h include/fpu.h include/vm86.h ../include/beeper.h
-kernel.o: ../include/debug.h ../include/shell.h ../libc/include/sys/syscall.h
-kernel.o: include/ksem.h ../include/video.h ../include/console.h
-kernel.o: ../include/tty.h include/ksignal.h include/round_robin.h
-kernel.o: ../include/rtl8139.h ../include/klog.h include/kdriver.h
-kernel.o: include/kdirent.h ../libc/include/dirent.h
+kernel.o: ../include/signal.h include/clock.h ../libc/include/time.h
+kernel.o: ../include/keyboard.h include/kfcntl.h include/kprocess.h
+kernel.o: ../include/mouse.h include/events.h ../include/floppy.h
+kernel.o: include/kpanic.h ../include/kmalloc.h ../include/ioports.h
+kernel.o: include/msr.h include/kfat.h include/fpu.h include/vm86.h
+kernel.o: ../include/beeper.h ../include/debug.h ../include/shell.h
+kernel.o: ../libc/include/sys/syscall.h include/ksem.h ../include/video.h
+kernel.o: ../include/console.h ../include/tty.h include/ksignal.h
+kernel.o: include/round_robin.h ../include/rtl8139.h ../include/klog.h
+kernel.o: include/kdriver.h include/kdirent.h ../libc/include/dirent.h
 kernel.o: include/drivers/dummy_driver.h include/drivers/serial.h
 kfcntl.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 kfcntl.o: ../include/types.h ../include/vmm.h ../include/signal.h
@@ -139,10 +139,10 @@ round_robin.o: ../include/kmalloc.h ../include/types.h include/kprocess.h
 round_robin.o: ../include/process.h ../libc/include/libio.h ../include/vmm.h
 round_robin.o: ../include/signal.h include/ksyscall.h include/scheduler.h
 scheduler.o: include/clock.h ../include/types.h ../libc/include/time.h
-scheduler.o: include/context.h ../include/process.h ../libc/include/libio.h
-scheduler.o: ../include/vmm.h ../include/signal.h ../include/debug.h
-scheduler.o: include/events.h include/gdt.h include/i8259.h
-scheduler.o: ../include/kmalloc.h include/kprocess.h include/ksyscall.h
+scheduler.o: include/ksyscall.h include/context.h ../include/process.h
+scheduler.o: ../libc/include/libio.h ../include/vmm.h ../include/signal.h
+scheduler.o: ../include/debug.h include/events.h include/gdt.h
+scheduler.o: include/i8259.h ../include/kmalloc.h include/kprocess.h
 scheduler.o: include/ksignal.h ../include/interrupts.h ../include/ioports.h
 scheduler.o: include/scheduler.h include/pagination.h ../libc/include/stdio.h
 scheduler.o: ../libc/include/stdarg.h ../libc/include/string.h

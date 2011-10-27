@@ -104,9 +104,19 @@ clock_t get_clock()
 	return sysclock;
 }
 
+SYSCALL_HANDLER1(sys_getclock, clock_t* clock)
+{
+	*clock = get_clock();
+}
+
 time_t get_date()
 {
 	return systime;
+}
+
+SYSCALL_HANDLER1(sys_getdate, time_t* date)
+{
+	*date = get_date();
 }
 
 struct timeval get_tv()
