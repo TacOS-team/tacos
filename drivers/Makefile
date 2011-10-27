@@ -50,23 +50,18 @@ floppy/floppy_utils.o: ../libc/include/libio.h ../libc/include/sys/types.h
 floppy/floppy_utils.o: ../libc/include/stdarg.h ../include/types.h
 floppy/floppy_utils.o: ../include/klog.h floppy/floppy_interrupt.h
 floppy/floppy_utils.o: floppy/floppy_utils.h floppy/floppy_motor.h
-keyboard/keyboard.o: ../include/types.h ../libc/include/stdio.h
-keyboard/keyboard.o: ../libc/include/libio.h ../libc/include/sys/types.h
-keyboard/keyboard.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
-keyboard/keyboard.o: ../libc/include/malloc.h ../include/ioports.h
-keyboard/keyboard.o: ../include/keyboard.h ../kernel/include/kfcntl.h
+keyboard/keyboard.o: ../include/types.h ../libc/include/stdlib.h
+keyboard/keyboard.o: ../libc/include/sys/types.h ../libc/include/malloc.h
+keyboard/keyboard.o: ../include/ioports.h ../include/keyboard.h
+keyboard/keyboard.o: ../kernel/include/kfcntl.h ../libc/include/libio.h
 keyboard/keyboard.o: ../kernel/include/kprocess.h ../include/process.h
 keyboard/keyboard.o: ../include/vmm.h ../include/signal.h
 keyboard/keyboard.o: ../kernel/include/ksyscall.h ../include/console.h
 keyboard/keyboard.o: ../include/tty.h
-mouse/mouse.o: ../include/types.h ../libc/include/stdio.h
-mouse/mouse.o: ../libc/include/libio.h ../libc/include/sys/types.h
-mouse/mouse.o: ../libc/include/stdarg.h ../include/ioports.h
-mouse/mouse.o: ../include/mouse.h ../include/interrupts.h
+mouse/mouse.o: ../include/types.h ../include/ioports.h ../include/mouse.h
+mouse/mouse.o: ../include/interrupts.h
 pci/pci.o: ../include/pci.h ../include/types.h ../include/pci_types.h
-pci/pci.o: ../include/pci_config.h ../libc/include/stdio.h
-pci/pci.o: ../libc/include/libio.h ../libc/include/sys/types.h
-pci/pci.o: ../libc/include/stdarg.h ../include/klog.h
+pci/pci.o: ../include/pci_config.h ../include/klog.h
 pci/pci_config.o: ../include/ioports.h ../include/types.h
 pci/pci_config.o: ../include/pci_config.h ../include/pci_types.h
 pci/pci_config.o: pci/pci_vendor.h ../libc/include/stdio.h
@@ -84,9 +79,7 @@ video/console.o: ../kernel/include/kfcntl.h ../libc/include/libio.h
 video/console.o: ../libc/include/sys/types.h ../kernel/include/kprocess.h
 video/console.o: ../include/process.h ../include/vmm.h ../include/signal.h
 video/console.o: ../kernel/include/ksyscall.h ../include/video.h
-video/video.o: ../libc/include/stdio.h ../libc/include/libio.h
-video/video.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 video/video.o: ../include/types.h ../include/ioports.h
 video/video.o: ../libc/include/ctype.h ../include/video.h
-video/video.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-video/video.o: ../libc/include/sys/syscall.h ../include/kmalloc.h
+video/video.o: ../libc/include/stdlib.h ../libc/include/sys/types.h
+video/video.o: ../libc/include/malloc.h ../include/kmalloc.h

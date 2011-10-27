@@ -39,7 +39,6 @@
 #include <clock.h>
 #include <list.h>
 #include <events.h>
-#include <stdio.h>
 #include <debug.h>
 
 #define MAX_EVENTS 256

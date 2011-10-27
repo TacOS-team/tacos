@@ -33,7 +33,6 @@
  */
 
 #include <types.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <ioports.h>
 #include <keyboard.h>

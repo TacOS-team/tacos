@@ -31,8 +31,7 @@ clock.o: include/ksyscall.h ../include/interrupts.h ../include/heap.h
 events.o: ../include/types.h include/i8254.h ../include/interrupts.h
 events.o: ../libc/include/time.h ../libc/include/sys/types.h include/clock.h
 events.o: include/ksyscall.h ../include/list.h include/events.h
-events.o: ../libc/include/stdio.h ../libc/include/libio.h
-events.o: ../libc/include/stdarg.h ../include/debug.h
+events.o: ../include/debug.h
 exception.o: ../include/types.h include/idt.h include/exception.h
 fat.o: ../libc/include/ctype.h ../libc/include/fcntl.h ../include/floppy.h
 fat.o: ../include/types.h include/kfat.h include/kfcntl.h
@@ -41,9 +40,8 @@ fat.o: ../include/process.h ../include/vmm.h ../include/signal.h
 fat.o: include/ksyscall.h ../libc/include/time.h ../libc/include/sys/stat.h
 fat.o: ../include/klog.h ../include/kmalloc.h ../libc/include/stdio.h
 fat.o: ../libc/include/stdarg.h ../libc/include/string.h include/clock.h
-fpu.o: ../libc/include/stdio.h ../libc/include/libio.h
-fpu.o: ../libc/include/sys/types.h ../libc/include/stdarg.h include/fpu.h
-fpu.o: ../include/interrupts.h ../include/types.h ../include/klog.h
+fpu.o: include/fpu.h ../include/interrupts.h ../include/types.h
+fpu.o: ../include/klog.h
 gdt.o: ../include/types.h include/memory.h include/gdt.h
 i8254.o: include/i8254.h ../include/types.h ../include/ioports.h
 i8259.o: ../include/types.h ../include/ioports.h

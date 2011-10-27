@@ -32,7 +32,6 @@
  * Description de ce que fait le fichier
  */
 
-#include <stdio.h>
 #include <fpu.h>
 #include <interrupts.h>
 #include <klog.h>

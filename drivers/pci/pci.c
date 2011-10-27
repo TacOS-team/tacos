@@ -35,7 +35,6 @@
 #include <pci.h>
 #include <pci_config.h>
 #include <pci_types.h>
-#include <stdio.h>
 #include <types.h>
 #include <klog.h>
 
