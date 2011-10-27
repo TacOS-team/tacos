@@ -32,7 +32,6 @@
  * Description de ce que fait le fichier
  */
 
-#include <stdio.h>
 #include <floppy.h>
 #include <types.h>
 #include "mbr.h"

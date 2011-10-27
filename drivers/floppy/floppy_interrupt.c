@@ -34,7 +34,6 @@
 
 #include <types.h>
 #include <interrupts.h>
-#include <stdio.h>
 #include "floppy_utils.h"
 
 volatile bool irq_received = FALSE;

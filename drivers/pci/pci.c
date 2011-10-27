@@ -37,6 +37,7 @@
 #include <pci_types.h>
 #include <types.h>
 #include <klog.h>
+#include <kstdio.h>
 
 #define PCI_MAX_DEVICES 256
 

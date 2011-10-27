@@ -33,7 +33,6 @@
  */
 
 #include <ioports.h>
-#include <stdio.h>
 #include <types.h>
 #include <klog.h>
 #include "floppy_interrupt.h"
