@@ -39,7 +39,6 @@
  * @file unistd.h
  */
 
-#include <types.h>
 #include <sys/types.h>
 
 #define STDIN_FILENO  0

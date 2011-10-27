@@ -32,7 +32,7 @@
  * Description de ce que fait le fichier
  */
 
-#include <types.h>
+#include <sys/types.h>
 #include <stdlib.h>
 #include <stdio.h> 
 #include <unistd.h>

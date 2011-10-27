@@ -35,7 +35,7 @@
 #ifndef _SYSCALL_H_
 #define _SYSCALL_H_
 
-#include <types.h>
+#include <sys/types.h>
 
 #define SYS_EXIT 0
 #define SYS_GETPID 1

@@ -39,7 +39,7 @@
  * @file libio.h
  */
 
-#include <types.h>
+#include <sys/types.h>
 
 #define FOPEN_MAX 500
 

@@ -35,7 +35,8 @@
 #ifndef _DIRENT_H_
 #define _DIRENT_H_
 
-#include <types.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 #define NAME_MAX 256
 

@@ -16,14 +16,17 @@ depend: $(SRCS)
 
 # DO NOT DELETE
 
-noxeyes.o: ../libc/include/stdio.h ../libc/include/libio.h ../include/types.h
-noxeyes.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
-noxeyes.o: ../libc/include/malloc.h ../include/process.h ../include/vmm.h
+noxeyes.o: ../libc/include/stdio.h ../libc/include/libio.h
+noxeyes.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
+noxeyes.o: ../libc/include/stdlib.h ../libc/include/malloc.h
+noxeyes.o: ../include/process.h ../include/types.h ../include/vmm.h
 noxeyes.o: ../include/signal.h ../include/mouse.h
-pres.o: ../libc/include/stdio.h ../libc/include/libio.h ../include/types.h
-pres.o: ../libc/include/stdarg.h ../include/gui.h ../include/process.h
-pres.o: ../include/vmm.h ../include/signal.h
-shell.o: ../libc/include/dirent.h ../include/types.h ../include/floppy.h
+pres.o: ../libc/include/stdio.h ../libc/include/libio.h
+pres.o: ../libc/include/sys/types.h ../libc/include/stdarg.h ../include/gui.h
+pres.o: ../include/types.h ../include/process.h ../include/vmm.h
+pres.o: ../include/signal.h
+shell.o: ../libc/include/dirent.h ../libc/include/sys/types.h
+shell.o: ../libc/include/sys/stat.h ../include/floppy.h ../include/types.h
 shell.o: ../include/kmalloc.h ../include/mouse.h ../include/pci.h
 shell.o: ../include/pci_types.h ../include/process.h ../libc/include/libio.h
 shell.o: ../include/vmm.h ../include/signal.h ../libc/include/stdio.h
@@ -31,17 +34,19 @@ shell.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
 shell.o: ../libc/include/malloc.h ../libc/include/string.h
 shell.o: ../libc/include/time.h include/shell_utils.h include/apps.h
 shell.o: ../include/sem.h ../include/debug.h ../libc/include/unistd.h
-shell.o: ../libc/include/sys/types.h ../kernel/include/module.h
-shell.o: ../include/symtable.h ../libc/include/termios.h
+shell.o: ../kernel/include/module.h ../include/symtable.h
+shell.o: ../libc/include/termios.h
 shell_utils.o: ../include/types.h ../libc/include/stdio.h
-shell_utils.o: ../libc/include/libio.h ../libc/include/stdarg.h
-shell_utils.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-shell_utils.o: ../libc/include/string.h include/shell_utils.h
+shell_utils.o: ../libc/include/libio.h ../libc/include/sys/types.h
+shell_utils.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
+shell_utils.o: ../libc/include/malloc.h ../libc/include/string.h
+shell_utils.o: include/shell_utils.h
 tests.o: ../include/floppy.h ../include/types.h ../include/kmalloc.h
-tests.o: ../include/process.h ../libc/include/libio.h ../include/vmm.h
-tests.o: ../include/signal.h ../libc/include/stdio.h ../libc/include/stdarg.h
+tests.o: ../include/process.h ../libc/include/libio.h
+tests.o: ../libc/include/sys/types.h ../include/vmm.h ../include/signal.h
+tests.o: ../libc/include/stdio.h ../libc/include/stdarg.h
 tests.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 tests.o: ../libc/include/string.h ../libc/include/time.h include/apps.h
 tests.o: ../include/sem.h ../include/debug.h ../libc/include/unistd.h
-tests.o: ../libc/include/sys/types.h ../include/elf.h ../libc/include/ctype.h
-tests.o: ../libc/include/errno.h ../include/rtl8139.h ../libc/include/fcntl.h
+tests.o: ../include/elf.h ../libc/include/ctype.h ../libc/include/errno.h
+tests.o: ../include/rtl8139.h ../libc/include/fcntl.h

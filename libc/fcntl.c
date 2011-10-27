@@ -36,7 +36,6 @@
  * @file fcntl.c
  */
 
-#include <types.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/syscall.h>

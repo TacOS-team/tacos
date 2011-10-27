@@ -40,7 +40,7 @@
  */
 
 #include <libio.h>
-#include <types.h>
+#include <sys/types.h>
 #include <stdarg.h>
 
 /* End Of File character. */

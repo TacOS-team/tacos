@@ -38,6 +38,7 @@
 #include <types.h>
 #include <kfcntl.h>
 #include <time.h>
+#include <sys/stat.h>
 
 #define SEEK_SET 0
 #define SEEK_CUR 1
