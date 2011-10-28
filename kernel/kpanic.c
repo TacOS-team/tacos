@@ -90,11 +90,25 @@ void page_fault_report(int error_code)
 	/* On récupère le registre cr2 qui contient l'addresse virtuelle à l'origine de l'exception */
 	asm("mov %%cr2, %%eax":"=a"(address));
 	kprintf("Virtual address: 0x%x\n",address);
+
 	kprintf("Cause: ");
-	if(error_code & 0x01) // Bit P
-		kprintf("Page-protection violation.\n");
+	if(error_code & 0x2) // Bit W
+		kprintf("Writing on ");
 	else
-		kprintf("Non-present page.\n");
+		kprintf("Read from ");
+	
+	if(error_code & 0x01) // Bit P
+		kprintf("a protected page ");
+	else
+		kprintf("a non-present page ");
+		
+	if(error_code & 0x04) // Bit U
+		kprintf("with CPL=3.\n");
+	else
+		kprintf("with CPL=0.\n");
+		
+	if(error_code & 0x10)
+		kprintf("Exception caused by an instruction fetch\n");
 	
 }
 
