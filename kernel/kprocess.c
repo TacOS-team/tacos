@@ -192,6 +192,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	process_t* new_proc;
 	
 	char** argv;
+	char* args;
 	int argc;
 	uint32_t* stack_ptr;
 	
@@ -220,25 +221,6 @@ process_t* create_process_elf(process_init_data_t* init_data)
 		return NULL;
 	}
 	
-	/* Initialisation de l'user stack */
-	user_stack = kmalloc(init_data->stack_size*sizeof(uint32_t));
-	if( new_proc == NULL )
-	{
-		kerr("impossible de reserver la memoire pour la pile utilisateur.");
-		return NULL;
-	}
-		
-	/* Initialisation de la pile du processus */
-	argc = arg_build(init_data->args,
-	                (vaddr_t) &(user_stack[init_data->stack_size-1]), 
-	                &argv);
-	                
-	stack_ptr = (uint32_t*) argv[0];
-	
-	*(stack_ptr-1) = (vaddr_t) argv;
-	*(stack_ptr-2) = argc;
-	*(stack_ptr-3) = (vaddr_t) exit;
-	
 	new_proc->ppid = init_data->ppid;
 	
 	new_proc->user_time = 0;
@@ -261,8 +243,6 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	
 	new_proc->regs.eflags = 0;
 	new_proc->regs.eip = init_data->entry_point;
-	new_proc->regs.esp = (vaddr_t)(stack_ptr-3);
-	new_proc->regs.ebp = new_proc->regs.esp;
 	
 	new_proc->regs.kss = 0x10;
 	new_proc->regs.kesp = (vaddr_t)(&sys_stack[init_data->stack_size-1]);
@@ -272,7 +252,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->signal_data.mask = 0;
 	new_proc->signal_data.pending_set = 0;
 	
-  // Initialisation des données pour la vmm
+	// Initialisation des données pour la vmm
 	new_proc->vm = (struct virtual_mem *) kmalloc(sizeof(struct virtual_mem));
 
 	// Ne devrait pas utiliser kmalloc. Cf remarque suivante.
@@ -284,38 +264,58 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	temp_buffer = (vaddr_t) kmalloc(program_size);
 	memcpy((void*)temp_buffer,(void*)init_data->data, program_size);
 	
+	/* On récupère également le string qui contiens les arguments, sinon on pourra plus y accéder quand on changera de page directory */
+	args = kmalloc(strlen(init_data->args));
+	strcpy(args, init_data->args);
+	
 	/* ZONE CRITIQUE */
 	asm("cli");
 
-	// Passer l'adresse physique et non virtuelle ! Attention, il faut que ça 
-	// soit contigü en mémoire physique et aligné dans un cadre...
-	pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
-	
-	init_process_vm(new_proc->vm, calculate_min_pages(program_size));
-	
-	/* Copie du programme au bon endroit */
-	memcpy((void*)0x40000000, (void*)temp_buffer, program_size);
-	
-	if(proc_count > 0)
-	{
-		pd_paddr = vmm_get_page_paddr((vaddr_t) get_current_process()->pd);
+		// Passer l'adresse physique et non virtuelle ! Attention, il faut que ça 
+		// soit contigü en mémoire physique et aligné dans un cadre...
 		pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
-	}
-	
-	for(i=0;i<FOPEN_MAX;i++) 
-		new_proc->fd[i].used = FALSE;
+		
+		init_process_vm(new_proc->vm, calculate_min_pages(program_size + (init_data->stack_size)*sizeof(uint32_t)));
+		
+		/* Copie du programme au bon endroit */
+		memcpy((void*)0x40000000, (void*)temp_buffer, program_size);
+		
+		/* Initialisation de la pile utilisateur */
+		user_stack = 0x40000000 + program_size;
+		argc = arg_build(args, (vaddr_t) &(user_stack[init_data->stack_size-1]), &argv);
+		
+		stack_ptr = (uint32_t*) argv[0];
+		*(stack_ptr-1) = (vaddr_t) argv;
+		*(stack_ptr-2) = argc;
+		*(stack_ptr-3) = (vaddr_t) exit;
+		
+		new_proc->regs.esp = (vaddr_t)(stack_ptr-3);
+		new_proc->regs.ebp = new_proc->regs.esp;
+		
+		
+		if(proc_count > 0)
+		{
+			pd_paddr = vmm_get_page_paddr((vaddr_t) get_current_process()->pd);
+			pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
+		}
+		
+		for(i=0;i<FOPEN_MAX;i++) 
+			new_proc->fd[i].used = FALSE;
 
-	/* Initialisation des entrées/sorties standards */
-	init_stdfd(new_proc);
-	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
-	next_pid++;
-	
-	add_process(new_proc);
+		/* Initialisation des entrées/sorties standards */
+		init_stdfd(new_proc);
+		// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
+		next_pid++;
+		
+		add_process(new_proc);
 	
 	/* FIN ZONE CRITIQUE */
 	asm("sti");	
 	
-	kfree((void*)temp_buffer);
+	kfree((void*) temp_buffer);
+	
+	/* XXX Ce kfree plante, parfois */
+	//kfree((void*) args);
 	
 	return new_proc;
 }
@@ -403,7 +403,7 @@ process_t* create_process(process_init_data_t* init_data)
 	new_proc->signal_data.mask = 0;
 	new_proc->signal_data.pending_set = 0;
 	
-  // Initialisation des données pour la vmm
+	// Initialisation des données pour la vmm
 	new_proc->vm = (struct virtual_mem *) kmalloc(sizeof(struct virtual_mem));
 
 	// Ne devrait pas utiliser kmalloc. Cf remarque suivante.
