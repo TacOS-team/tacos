@@ -256,9 +256,9 @@ int exec_sighandler(process_t* process)
 			
 			/* Et enfin, le gros piège: on doit absolument exécuter le handler en user space, donc on change cs: */
 			process->regs.cs = 0x1b; /* XXX Tant que j'y pense, ça serait bien d'utiliser des macro pour les numero de segment code */
-			//process->regs.ds = 0x23;
+			process->regs.ds = 0x23;
 			process->regs.ss = 0x23;
-			process->state = PROCSTATE_RUNNING;
+		//	process->state = PROCSTATE_RUNNING;
 			
 			sigaddset(&(process->signal_data.mask),signum);
 		}
