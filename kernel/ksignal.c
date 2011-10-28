@@ -32,6 +32,7 @@
  * Description de ce que fait le fichier
  */
 
+#include <gdt.h>
 #include <ksignal.h>
 #include <kprocess.h>
 #include <kstdio.h>
