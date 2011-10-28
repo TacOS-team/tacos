@@ -258,22 +258,11 @@ int exec_sighandler(process_t* process)
 			process->regs.cs = 0x1b; /* XXX Tant que j'y pense, ça serait bien d'utiliser des macro pour les numero de segment code */
 			process->regs.ds = 0x23;
 			process->regs.ss = 0x23;
-		//	process->state = PROCSTATE_RUNNING;
+			
+			process->state = PROCSTATE_RUNNING;
 			
 			sigaddset(&(process->signal_data.mask),signum);
 		}
-		/*
-		 {eax = 4, ecx = 1781508, edx = 544020, ebx = 1802140, esp = 1781476, 
-  kesp = 1781780, ebp = 1781588, esi = 0, edi = 0, eip = 1073741824, 
-  eflags = 582, cs = 27, ss = 35, kss = 16, ds = 0, es = 0, fs = 0, gs = 0, 
-  cr3 = 13451094}
-
-{eax = 16, ecx = 1073766640, edx = 1073766640, ebx = 0, esp = 1802024, 
-  kesp = 1781780, ebp = 1802152, esi = 143474, edi = 0, eip = 1073741824, 
-  eflags = 582, cs = 27, ss = 35, kss = 16, ds = 0, es = 0, fs = 0, gs = 0, 
-  cr3 = 13451094}
-
-	*/
 		
 		sigdelset(&(process->signal_data.pending_set), signum);
 	}
