@@ -36,7 +36,7 @@
  * @file stdfiles.c
  */
 
-#include <types.h>
+#include <sys/types.h>
 #include <libio.h>
 #include <string.h>
 #include <stdlib.h>

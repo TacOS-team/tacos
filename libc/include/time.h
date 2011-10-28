@@ -35,7 +35,7 @@
 #ifndef _TIME_H_
 #define _TIME_H_
 
-#include <types.h>
+#include <sys/types.h>
 
 #define CLOCKS_PER_SEC 1000
 #define USEC_PER_SEC 1000000

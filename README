@@ -1,3 +1,26 @@
 Bienvenue dans l'OS de l'Avenir
 
 100% Mexicain
+
+
+-----------------------------------
+
+Compiler :
+make
+
+Compiler et exécuter avec qemu :
+make runqemu
+
+Compiler, exécuter avec qemu et debugguer avec gdb :
+Dans une console : make runqemugdb
+Dans une autre : gdb puis "c" pour exécuter.
+
+Compiler et exécuter avec bochs :
+make runbochs
+
+Générer la documentation :
+make doc
+(dépendance : doxygen et optionnellement graphviz et latex)
+
+Regénérer les dépendances (après ajout d'un include) :
+make depend

@@ -35,7 +35,7 @@
 #ifndef _MALLOC_H
 #define _MALLOC_H
 
-#include <types.h>
+#include <sys/types.h>
 
 struct mem_list
 {

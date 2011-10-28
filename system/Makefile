@@ -19,7 +19,8 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-sem.o: ../include/sem.h ../include/types.h ../include/syscall.h
-sem.o: ../include/process.h ../libc/include/libio.h ../libc/include/fcntl.h
-sem.o: ../include/pagination.h ../include/vmm.h ../include/signal.h
-syscall.o: ../include/syscall.h ../include/types.h
+sem.o: ../include/sem.h ../include/types.h ../libc/include/unistd.h
+sem.o: ../libc/include/sys/types.h ../libc/include/sys/syscall.h
+sem.o: ../include/process.h ../libc/include/libio.h ../include/vmm.h
+sem.o: ../include/signal.h
+syscall.o: ../libc/include/sys/syscall.h ../libc/include/sys/types.h

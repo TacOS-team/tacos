@@ -33,7 +33,6 @@
  */
 
 #include <types.h>
-#include <stdio.h>
 #include <ioports.h>
 #include <mouse.h>
 #include <interrupts.h>
@@ -151,7 +150,6 @@ void mouseInterrupt(int id __attribute__ ((unused)))
 	  packet_x_sign = packet & (0x01 << 4) ? 0xFFFFFF00 : 0 ; // bit de signe pour dx
 	  packet_y_sign = packet & (0x01 << 5) ? 0xFFFFFF00 : 0 ; // bit de signe pour dy
       mouse_cycle++;
-      //printf("cycle 0 : %x\n",packet);
       break;
     case 1:	// delta X
       packet = inb(0x60);
@@ -162,7 +160,6 @@ void mouseInterrupt(int id __attribute__ ((unused)))
 	  if(mouse_x < 0)
 		mouse_x = 0;
       mouse_cycle++;
-      //printf("cycle 1 : %x\n",packet);
       break;
     case 2: // delta Y
       packet = inb(0x60);
@@ -173,7 +170,6 @@ void mouseInterrupt(int id __attribute__ ((unused)))
 	  if(mouse_y < 0)
 		mouse_y = 0;
       mouse_cycle=0;
-      //printf("cycle 2 : %x\n",packet);
       break;
   }
 }

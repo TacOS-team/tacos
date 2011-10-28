@@ -33,7 +33,7 @@
  */
 
 #include <ctype.h>
-#include <errno.h>
+//#include <errno.h>
 #include <fcntl.h>
 #include <floppy.h>
 #include <kfat.h>
@@ -962,12 +962,12 @@ size_t read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 	int j = 0;
 	
 	if ((ofd->flags & O_ACCMODE) == O_WRONLY) {
-		errno = EBADF;
+		//errno = EBADF;
 		return EOF;
 	}
 	
 	if (ofd->flags & O_DIRECT) {
-		errno = EINVAL;
+		//errno = EINVAL;
 		return EOF;
 	}
 	

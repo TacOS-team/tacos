@@ -40,8 +40,8 @@
 #include <symtable.h>
 
 /* LibC */
-#include <elf.h>
 #include <stdio.h>
+#include <elf.h>
 #include <string.h>
 #include <stdlib.h>
 

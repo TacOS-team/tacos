@@ -40,7 +40,7 @@
  *
  */
 
-#include <types.h>
+#include <sys/types.h>
 
 /** 
  * @brief Copie une zone mémoire.

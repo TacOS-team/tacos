@@ -40,7 +40,6 @@
 #include <memory.h>
 #include <pagination.h>
 #include <vmm.h>
-#include <stdio.h>
 
 void pagination_map(struct page_directory_entry * pagination_kernel, paddr_t page_addr, vaddr_t v_page_addr);
 

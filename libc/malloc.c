@@ -34,7 +34,8 @@
 
 #include <stdio.h>
 #include <process.h>
-#include <syscall.h>
+#include <unistd.h>
+#include <sys/syscall.h>
 #include <malloc.h>
 
 #define PAGE_SIZE 4096

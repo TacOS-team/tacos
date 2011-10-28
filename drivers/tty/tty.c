@@ -37,9 +37,10 @@
 #include "kprocess.h"
 #include "ksignal.h"
 #include "kstdio.h"
-#include <errno.h>
 #include <klog.h>
 #include <kmalloc.h>
+#include <fcntl.h>
+#include <termios.h>
 
 static terminal_t *terminals[10]; // "Temporaire"
 static terminal_t *active_tty = NULL;
@@ -123,7 +124,7 @@ size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {
 	 */
 	unsigned int i;
   if((ofd->flags & O_ACCMODE) == O_RDONLY) {
-    errno = EBADF;
+    //errno = EBADF;
     return -1;
   }
 
@@ -155,12 +156,12 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 	}
 
   if((ofd->flags & O_ACCMODE) == O_WRONLY) {
-    errno = EBADF;
+    //errno = EBADF;
     return -1;
   }
 
   if(ofd->flags & O_DIRECT) {
-    errno = EINVAL;
+    //errno = EINVAL;
     return -1;
   }
 
@@ -186,6 +187,18 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 	return j;
 }
 
-int tty_ioctl (unsigned int request, void * data) {
-	klog("tty_ioctl %d\n", request);
+int tty_ioctl (open_file_descriptor *ofd, unsigned int request, void * data) {
+	terminal_t *t = (terminal_t*) ofd->extra_data;
+
+	if (request == TCGETS) {
+		struct termios *c = data;
+		c->c_lflag = 0;
+		c->c_lflag |= t->echo ? ECHO : 0;
+		c->c_lflag |= t->canon ? ICANON : 0;
+	} else if (request == TCSETS) {
+		struct termios *c = data;
+		t->echo = c->c_lflag & ECHO;
+		t->canon = c->c_lflag & ICANON;
+	} 
+	return 0;
 }

@@ -39,18 +39,67 @@
  * @file unistd.h
  */
 
-#include <types.h>
 #include <sys/types.h>
 
 #define STDIN_FILENO  0
 #define STDOUT_FILENO 1
 #define STDERR_FILENO 1
 
-//TODO(max) Commenter ces fonctions.
+/**
+ * @brief Change le current working directory.
+ *
+ * Change le current working directory.
+ *
+ * @param path Le chemin où on veut aller.
+ *
+ * @return 0 en cas de succès, -1 sinon.
+ */
 int chdir(const char *path);
+
+
+/**
+ * @brief Retourne l'actuel working directory.
+ *
+ * Retourne l'actuel working directory.
+ *
+ * @param buf Table qui prend le chemin actuel. Si NULL, alors un malloc 
+ * est fait.
+ * @param size Taille du buffer. Si le buffer est trop petit, une erreur 
+ * sera renvoyée.
+ *
+ * @return Le chemin actuel. NULL en cas d'erreur.
+ */
 const char * getcwd(char * buf, size_t size);
+
+/**
+ * @brief Retourne le chemin absolu d'un path en fonction du cwd.
+ *
+ * Retourne le chemin absolue d'un path en fonction du cwd à partir 
+ * d'un chemin relatif.
+ *
+ * @param dirname Chemin relatif.
+ *
+ * @return Chemin absolu.
+ */
 char * get_absolute_path(const char *dirname);
+
+/**
+ * @brief Obtenir l'identifiant du processus.
+ *
+ * Obtenir l'identifiant du processus.
+ *
+ * @return L'identifiant du processus.
+ */
 pid_t getpid(void);
+
+/**
+ * @brief Réalise l'appel-système indiqué par son identifiant.
+ *
+ * Réalise l'appel-système indiqué par son identifiant.
+ *
+ * @param func L'identifiant du syscall.
+ */
+void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3);
 
 /** 
  * @brief Endort le processus pour une durée déterminée (en secondes).

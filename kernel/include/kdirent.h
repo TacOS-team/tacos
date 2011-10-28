@@ -38,6 +38,7 @@
 #include <ksyscall.h>
 #include <types.h>
 #include <dirent.h>
+#include <sys/stat.h>
 
 SYSCALL_HANDLER2(sys_opendir, char *name, int *ret);
 SYSCALL_HANDLER3(sys_readdir, DIR *dir, struct dirent *entry, int *ret);

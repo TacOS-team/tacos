@@ -39,7 +39,7 @@
  * @file stdlib.h
  */
 
-#include <types.h>
+#include <sys/types.h>
 #include <malloc.h>
 
 #define RAND_MAX 2147483647

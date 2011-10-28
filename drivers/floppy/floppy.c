@@ -33,7 +33,7 @@
  */
 
 #include <ioports.h>
-#include <stdio.h>
+#include <kstdio.h>
 #include <string.h>
 #include <types.h>
 #include <klog.h>

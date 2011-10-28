@@ -40,7 +40,6 @@
 #include <string.h>
 #include <interrupts.h>
 #include "ksyscall.h"
-#include <syscall.h>
 #include <klog.h>
 
 syscall_handler_t syscall_handler_table[MAX_SYSCALL_NB];

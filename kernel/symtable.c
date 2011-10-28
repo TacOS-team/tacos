@@ -1,6 +1,5 @@
 #include <string.h>
 #include <stdio.h>
-
 #include <kmalloc.h>
 #include <elf.h>
 #include <symtable.h>

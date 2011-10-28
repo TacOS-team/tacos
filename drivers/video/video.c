@@ -32,13 +32,11 @@
  * Description de ce que fait le fichier
  */
 
-#include <stdio.h>
 #include <types.h>
 #include <ioports.h>
 #include <ctype.h>
 #include <video.h>
 #include <stdlib.h>
-#include <syscall.h>
 #include <kmalloc.h>
 
 /* The video memory address. */

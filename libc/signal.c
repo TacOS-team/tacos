@@ -33,7 +33,8 @@
  */
 
 #include <signal.h>
-#include <syscall.h>
+#include <unistd.h>
+#include <sys/syscall.h>
 #include <process.h>
 
 int kill(unsigned int pid, int sig)

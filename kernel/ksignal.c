@@ -37,7 +37,7 @@
 #include <kstdio.h>
 #include <scheduler.h>
 #include <klog.h>
-#include <syscall.h>
+#include <sys/syscall.h>
 #include <interrupts.h>
 
 /*

@@ -49,12 +49,14 @@
 #include <ksignal.h>
 #include <interrupts.h>
 #include <ioports.h>
-#include <stdio.h>
-#include <string.h>
 #include <scheduler.h>
-#include <syscall.h>
 #include <types.h>
 #include <vmm.h>
+#include <pagination.h>
+
+#include <string.h>
+#include <unistd.h>
+#include <sys/syscall.h>
 
 #define USER_PROCESS 0
 #define KERNEL_PROCESS 1

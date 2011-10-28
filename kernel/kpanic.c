@@ -32,7 +32,7 @@
  * Description de ce que fait le fichier
  */
 
-#include <stdio.h>
+#include <kstdio.h>
 #include <exception.h>
 #include <kpanic.h>
 #include <kprocess.h>

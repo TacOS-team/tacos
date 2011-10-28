@@ -36,9 +36,8 @@
 #include <pagination.h>
 #include <vmm.h>
 #include <process.h>
-#include <stdio.h>
 #include <ksyscall.h>
-#include <syscall.h>
+#include <kstdio.h>
 
 /**
  * vmm est l'allocateur qui s'occupe de gérer les pages virtuelles du noyau.
@@ -397,12 +396,12 @@ static void print_slab(struct slab* s, bool free)
 {
 	// set_attribute(BLACK, free ? GREEN : RED);
 	if(free)
-		printf("\033[31m");
+		kprintf("\033[31m");
 	else
-		printf("\033[34m");
+		kprintf("\033[34m");
 
-	printf("[%x ; %x ; %x] ", s, s->prev, s->next);
-	printf("\033[0m");
+	kprintf("[%x ; %x ; %x] ", s, s->prev, s->next);
+	kprintf("\033[0m");
 }
 
 void vmm_print_heap(struct virtual_mem *vm)
@@ -410,7 +409,7 @@ void vmm_print_heap(struct virtual_mem *vm)
 	struct slab *free_it = vm->free_slabs.begin;
 	struct slab *used_it = vm->used_slabs.begin;
 
-	printf("\n-- VMM : printing heap --\n");
+	kprintf("\n-- VMM : printing heap --\n");
 
 	while(free_it != NULL && used_it != NULL)
 	{
@@ -437,9 +436,9 @@ void vmm_print_heap(struct virtual_mem *vm)
 		used_it = used_it->next;
 	}
 
-	printf("\nVMM TOP : %x\n", vm->vmm_top);
+	kprintf("\nVMM TOP : %x\n", vm->vmm_top);
 
-	printf("-- VMM : end --\n");
+	kprintf("-- VMM : end --\n");
 }
 
 void sys_vmm(uint32_t vm, uint32_t nb_pages, uint32_t args) {

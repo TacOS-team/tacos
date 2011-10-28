@@ -37,6 +37,7 @@
 
 #include <types.h>
 #include <time.h>
+#include <ksyscall.h>
 
 int compare_times(struct timeval a, struct timeval b);
 void clock_init();
@@ -46,7 +47,9 @@ void clock_init();
  */
 void clock_tick();
 clock_t get_clock();
+SYSCALL_HANDLER1(sys_getclock, clock_t* clock);
 time_t get_date();
+SYSCALL_HANDLER1(sys_getdate, time_t* date);
 void timeval_add_usec(struct timeval *t, time_t usec); 
 struct timeval get_tv();
 time_t clock_mktime(struct tm *timep);

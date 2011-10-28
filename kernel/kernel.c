@@ -47,6 +47,7 @@
 #include <pci.h>
 #include <pci_config.h>
 #include <scheduler.h>
+#include <clock.h>
 #include <time.h>
 #include <keyboard.h>
 #include <mouse.h>
@@ -66,7 +67,7 @@
 #include <debug.h>
 #include <shell.h>
 #include <ksyscall.h>
-#include <syscall.h>
+#include <sys/syscall.h>
 #include <ksem.h>
 #include <video.h>
 #include <console.h>
@@ -194,6 +195,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_MKDIR,	(syscall_handler_t) sys_mkdir);
 	syscall_set_handler(SYS_SIGRET,	(syscall_handler_t) sys_sigret);
 	syscall_set_handler(SYS_SIGSUSPEND,	(syscall_handler_t) sys_sigsuspend);
+	syscall_set_handler(SYS_GETCLOCK,	(syscall_handler_t) sys_getclock);
+	syscall_set_handler(SYS_GETDATE,	(syscall_handler_t) sys_getdate);
 	
 	/* Initialisation des drivers */
 	klog("loading drivers...");

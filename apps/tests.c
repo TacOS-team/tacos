@@ -41,14 +41,13 @@
 #include <time.h>
 #include <apps.h>
 #include <sem.h>
-#include <memory.h>
 #include <debug.h>
 #include <unistd.h>
 #include <elf.h>
 #include <ctype.h>
 #include <errno.h>
 #include <rtl8139.h>
-
+#include <fcntl.h>
 
 int test_fwrite() {
 	FILE *file = fopen("fd0:/test.txt", "w+");
@@ -159,13 +158,6 @@ int test_fseek() {
 
 	//fclose(file);
 	return 0;
-}
-
-void test_memory_reserve_page_frame() {
-	int i;
-	scanf("%d", &i);
-	while (i--)
-		printf("Cadre de page réservé : %d\n", memory_reserve_page_frame());
 }
 
 int tu_rand() {

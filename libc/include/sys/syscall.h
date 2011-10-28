@@ -1,5 +1,5 @@
 /**
- * @file kstdio.h
+ * @file syscall.h
  *
  * @author TacOS developers 
  *
@@ -29,12 +29,38 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Liste des SYSCALL de TacOS.
  */
 
-#ifndef _KSTDIO_H_
-#define _KSTDIO_H_
+#ifndef _SYSCALL_H_
+#define _SYSCALL_H_
 
-void kprintf(const char *format, ...);
+#include <sys/types.h>
+
+#define SYS_EXIT 0
+#define SYS_GETPID 1
+#define SYS_OPEN 3
+#define SYS_KILL 4
+#define SYS_WRITE 5
+#define SYS_READ 6
+#define SYS_EXEC 7
+#define SYS_SLEEP 8
+#define SYS_SEMCTL 9
+#define SYS_VIDEO_CTL 10
+#define SYS_PROC 11
+#define SYS_VMM 12
+#define SYS_SEEK 13
+#define SYS_HLT 14
+#define SYS_SIGNAL 15
+#define SYS_SIGPROCMASK 16
+#define SYS_CLOSE 17
+#define SYS_OPENDIR 18
+#define SYS_READDIR 19
+#define SYS_MKDIR 20
+#define SYS_SIGRET 21
+#define SYS_SIGSUSPEND 22
+#define SYS_IOCTL 23
+#define SYS_GETCLOCK 24
+#define SYS_GETDATE 25
 
 #endif

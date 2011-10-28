@@ -36,10 +36,7 @@
  * @file memory.c
  */
  
-/* XXX Caca les printf */
-
 #include <types.h>
-#include <stdio.h>
 #include <memory.h>
 
 static struct physical_page_descr *used_frame_pages = NULL;
@@ -62,7 +59,8 @@ paddr_t memory_align_page_sup(paddr_t value) {
 	value += PAGE_SIZE;
 	return value - value%PAGE_SIZE;
 }
-	
+
+/*
 void memory_print_used_frame_pages() {
 	struct physical_page_descr *p;
 	int c = 0;
@@ -108,6 +106,7 @@ void memory_print() {
 	}
 	printf("\n");
 }
+*/
 
 struct physical_page_descr * memory_get_first_used_page() {
 	return used_frame_pages;
