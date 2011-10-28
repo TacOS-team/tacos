@@ -186,6 +186,45 @@ int arg_build(char* string, vaddr_t base, char*** argv_ptr)
 	return argc;
 }
 
+vaddr_t init_stack(uint32_t* base, char* args, paddr_t return_func) {
+		int argc;
+		char** argv;
+		uint32_t* stack_ptr;
+		
+		argc = arg_build(args, base, &argv);
+		
+		stack_ptr = (uint32_t*) argv[0];
+		*(stack_ptr-1) = (vaddr_t) argv;
+		*(stack_ptr-2) = argc;
+		*(stack_ptr-3) = (vaddr_t) exit;
+		
+		stack_ptr = stack_ptr - 3;
+		
+		return (vaddr_t) stack_ptr;
+}
+
+void init_regs(regs_t* regs, vaddr_t esp, vaddr_t kesp, vaddr_t eip) {
+	regs->eax = 0;
+	regs->ebx = 0;
+	regs->ecx = 0;
+	regs->edx = 0;
+	regs->esp = esp;
+	regs->ebp = regs->esp;
+	
+	regs->cs = 0x1B;
+	regs->ds = 0x23;
+	regs->es = 0x0;
+	regs->fs = 0x0;
+	regs->gs = 0x0;
+	regs->ss = 0x23;
+	
+	regs->eflags = 0;
+	regs->eip = eip;
+	
+	regs->kss = 0x10;
+	regs->kesp = kesp;
+}
+
 process_t* create_process_elf(process_init_data_t* init_data)
 {
 	uint32_t *sys_stack, *user_stack;
@@ -201,7 +240,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	
 	int i;
 	int len;
-	kdebug("Creating process from cmd line: %s", init_data->args);
+	klog("Creating process from cmd line: %s", init_data->args);
 	
 	new_proc = kmalloc(sizeof(process_t));
 	if( new_proc == NULL )
@@ -222,35 +261,6 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	}
 	
 	new_proc->ppid = init_data->ppid;
-	
-	new_proc->user_time = 0;
-	new_proc->sys_time = 0;
-	new_proc->current_sample = 0;
-	new_proc->last_sample = 0;
-	
-	new_proc->pid = next_pid;
-	new_proc->regs.eax = 0;
-	new_proc->regs.ebx = 0;
-	new_proc->regs.ecx = 0;
-	new_proc->regs.edx = 0;
-
-	new_proc->regs.cs = 0x1B;
-	new_proc->regs.ds = 0x23;
-	new_proc->regs.es = 0x0;
-	new_proc->regs.fs = 0x0;
-	new_proc->regs.gs = 0x0;
-	new_proc->regs.ss = 0x23;
-	
-	new_proc->regs.eflags = 0;
-	new_proc->regs.eip = init_data->entry_point;
-	
-	new_proc->regs.kss = 0x10;
-	new_proc->regs.kesp = (vaddr_t)(&sys_stack[init_data->stack_size-1]);
-	
-	new_proc->state = PROCSTATE_IDLE;
-	
-	new_proc->signal_data.mask = 0;
-	new_proc->signal_data.pending_set = 0;
 	
 	// Initialisation des données pour la vmm
 	new_proc->vm = (struct virtual_mem *) kmalloc(sizeof(struct virtual_mem));
@@ -281,17 +291,8 @@ process_t* create_process_elf(process_init_data_t* init_data)
 		memcpy((void*)0x40000000, (void*)temp_buffer, program_size);
 		
 		/* Initialisation de la pile utilisateur */
-		user_stack = 0x40000000 + program_size;
-		argc = arg_build(args, (vaddr_t) &(user_stack[init_data->stack_size-1]), &argv);
-		
-		stack_ptr = (uint32_t*) argv[0];
-		*(stack_ptr-1) = (vaddr_t) argv;
-		*(stack_ptr-2) = argc;
-		*(stack_ptr-3) = (vaddr_t) exit;
-		
-		new_proc->regs.esp = (vaddr_t)(stack_ptr-3);
-		new_proc->regs.ebp = new_proc->regs.esp;
-		
+		user_stack = 0x40000000 + program_size + init_data->stack_size-1;
+		stack_ptr = init_stack(user_stack, args, exit);
 		
 		if(proc_count > 0)
 		{
@@ -307,15 +308,30 @@ process_t* create_process_elf(process_init_data_t* init_data)
 		// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
 		next_pid++;
 		
-		add_process(new_proc);
-	
 	/* FIN ZONE CRITIQUE */
-	asm("sti");	
+	asm("sti");
+	
+	/* Initialisation des registres */
+	init_regs(&(new_proc->regs), stack_ptr, (&sys_stack[init_data->stack_size-1]), init_data->entry_point);
+	
+	/* Initialisation des compteurs de temps CPU */
+	new_proc->user_time = 0;
+	new_proc->sys_time = 0;
+	new_proc->current_sample = 0;
+	new_proc->last_sample = 0;
+	
+	new_proc->pid = next_pid;
+	
+	new_proc->state = PROCSTATE_IDLE;
+	
+	new_proc->signal_data.mask = 0;
+	new_proc->signal_data.pending_set = 0;
+	
 	
 	kfree((void*) temp_buffer);
+	//kfree((void*) args); /* XXX Ce kfree plante, parfois */
 	
-	/* XXX Ce kfree plante, parfois */
-	//kfree((void*) args);
+	add_process(new_proc);
 	
 	return new_proc;
 }
