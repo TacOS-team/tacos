@@ -52,7 +52,7 @@ keyboard/keyboard.o: ../libc/include/sys/types.h ../libc/include/malloc.h
 keyboard/keyboard.o: ../include/ioports.h ../include/keyboard.h
 keyboard/keyboard.o: ../kernel/include/kfcntl.h ../libc/include/libio.h
 keyboard/keyboard.o: ../kernel/include/kprocess.h ../include/process.h
-keyboard/keyboard.o: ../include/vmm.h ../include/signal.h
+keyboard/keyboard.o: ../include/vmm.h ../libc/include/signal.h
 keyboard/keyboard.o: ../kernel/include/ksyscall.h ../include/console.h
 keyboard/keyboard.o: ../include/tty.h
 mouse/mouse.o: ../include/types.h ../include/ioports.h ../include/mouse.h
@@ -67,15 +67,16 @@ pci/pci_config.o: ../libc/include/stdarg.h
 tty/tty.o: ../include/tty.h ../include/types.h ../kernel/include/kfcntl.h
 tty/tty.o: ../libc/include/libio.h ../libc/include/sys/types.h
 tty/tty.o: ../kernel/include/kprocess.h ../include/process.h ../include/vmm.h
-tty/tty.o: ../include/signal.h ../kernel/include/ksyscall.h
+tty/tty.o: ../libc/include/signal.h ../kernel/include/ksyscall.h
 tty/tty.o: ../kernel/include/ksem.h ../kernel/include/ksignal.h
 tty/tty.o: ../include/kstdio.h ../include/klog.h ../include/kmalloc.h
 tty/tty.o: ../libc/include/fcntl.h ../libc/include/termios.h
 video/console.o: ../include/console.h ../include/types.h ../include/tty.h
 video/console.o: ../kernel/include/kfcntl.h ../libc/include/libio.h
 video/console.o: ../libc/include/sys/types.h ../kernel/include/kprocess.h
-video/console.o: ../include/process.h ../include/vmm.h ../include/signal.h
-video/console.o: ../kernel/include/ksyscall.h ../include/video.h
+video/console.o: ../include/process.h ../include/vmm.h
+video/console.o: ../libc/include/signal.h ../kernel/include/ksyscall.h
+video/console.o: ../include/video.h
 video/video.o: ../include/types.h ../include/ioports.h
 video/video.o: ../libc/include/ctype.h ../include/video.h
 video/video.o: ../libc/include/stdlib.h ../libc/include/sys/types.h

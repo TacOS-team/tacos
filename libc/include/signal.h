@@ -35,7 +35,7 @@
 #ifndef _SIGNAL_H
 #define _SIGNAL_H
 
-#include <types.h>	
+#include <sys/types.h>	
 
 #define NSIG		32
 typedef unsigned long sigset_t;
