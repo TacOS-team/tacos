@@ -1,4 +1,5 @@
 #include <string.h>
+#include <kprocess.h>
 #include <stdio.h>
 #include <kmalloc.h>
 #include <elf.h>
@@ -131,7 +132,7 @@ char* addr_to_sym(paddr_t addr)
 		}
 		i++;
 	}
-	if(addr > 0x4000000)
+	if(addr > USER_PROCESS_BASE)
 		res = (char*) userland;
 	else if(!found)
 		res = (char*) undef;

@@ -35,6 +35,8 @@
 #ifndef _KPROCESS_H_
 #define _KPROCESS_H_
 
+#define USER_PROCESS_BASE 0x40000000
+
 
 #include <process.h> // TODO: Dans process.h ya pleins de trucs qui devraient probablement migrer dans kprocess.h...
 #include <types.h>

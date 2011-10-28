@@ -288,10 +288,10 @@ process_t* create_process_elf(process_init_data_t* init_data)
 		init_process_vm(new_proc->vm, calculate_min_pages(program_size + (init_data->stack_size)*sizeof(uint32_t)));
 		
 		/* Copie du programme au bon endroit */
-		memcpy((void*)0x40000000, (void*)temp_buffer, program_size);
+		memcpy((void*)USER_PROCESS_BASE, (void*)temp_buffer, program_size);
 		
 		/* Initialisation de la pile utilisateur */
-		user_stack = 0x40000000 + program_size + init_data->stack_size-1;
+		user_stack = USER_PROCESS_BASE + program_size + init_data->stack_size-1;
 		stack_ptr = init_stack(user_stack, args, exit);
 		
 		if(proc_count > 0)
