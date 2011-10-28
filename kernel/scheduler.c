@@ -185,7 +185,7 @@ void* schedule(void* data __attribute__ ((unused)))
 		current->regs.es = frame->es;
 		
 		/* Si on ordonnance une tache en cours d'appel systeme.. */
-		if(current->regs.cs == 0x8)
+		if(current->regs.cs == KERNEL_CODE_SEGMENT)
 		{
 			current->regs.ss = get_default_tss()->ss0;
 			current->regs.esp = frame->kesp + 12;	/* Valeur hardcodée, je cherche encore un moyen d'éviter ça... */
@@ -239,7 +239,7 @@ void* schedule(void* data __attribute__ ((unused)))
 	set_scheduler_event(schedule,NULL,quantum*1000);	
 
 	/* Changer le contexte:*/
-	if(current->regs.cs == 0x8)
+	if(current->regs.cs == KERNEL_CODE_SEGMENT)
 		context_switch(KERNEL_PROCESS, current);
 	else
 		context_switch(USER_PROCESS, current);

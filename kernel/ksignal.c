@@ -255,9 +255,9 @@ int exec_sighandler(process_t* process)
 			process->regs.eip = (uint32_t) process->signal_data.handlers[signum];
 			
 			/* Et enfin, le gros piège: on doit absolument exécuter le handler en user space, donc on change cs: */
-			process->regs.cs = 0x1b; /* XXX Tant que j'y pense, ça serait bien d'utiliser des macro pour les numero de segment code */
-			process->regs.ds = 0x23;
-			process->regs.ss = 0x23;
+			process->regs.cs = USER_CODE_SEGMENT; /* XXX Tant que j'y pense, ça serait bien d'utiliser des macro pour les numero de segment code */
+			process->regs.ds = USER_DATA_SEGMENT;
+			process->regs.ss = USER_STACK_SEGMENT;
 			
 			process->state = PROCSTATE_RUNNING;
 			

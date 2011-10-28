@@ -211,17 +211,17 @@ void init_regs(regs_t* regs, vaddr_t esp, vaddr_t kesp, vaddr_t eip) {
 	regs->esp = esp;
 	regs->ebp = regs->esp;
 	
-	regs->cs = 0x1B;
-	regs->ds = 0x23;
+	regs->cs = USER_CODE_SEGMENT;
+	regs->ss = USER_STACK_SEGMENT;
+	regs->ds = USER_DATA_SEGMENT;
 	regs->es = 0x0;
 	regs->fs = 0x0;
 	regs->gs = 0x0;
-	regs->ss = 0x23;
 	
 	regs->eflags = 0;
 	regs->eip = eip;
 	
-	regs->kss = 0x10;
+	regs->kss = KERNEL_STACK_SEGMENT;
 	regs->kesp = kesp;
 }
 
@@ -305,8 +305,6 @@ process_t* create_process_elf(process_init_data_t* init_data)
 
 		/* Initialisation des entrées/sorties standards */
 		init_stdfd(new_proc);
-		// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
-		next_pid++;
 		
 	/* FIN ZONE CRITIQUE */
 	asm("sti");
@@ -320,14 +318,19 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->current_sample = 0;
 	new_proc->last_sample = 0;
 	
+	/* Sélection du pid du process */
 	new_proc->pid = next_pid;
+	next_pid++;
 	
+	/* On attend son premier ordonnancement pour le passer en RUNNING, donc pour le moment on le laisse IDLE */
 	new_proc->state = PROCSTATE_IDLE;
 	
+	/* Initilisation des masques de signal */
 	new_proc->signal_data.mask = 0;
 	new_proc->signal_data.pending_set = 0;
 	
 	
+	/* Libération des buffers alloués */
 	kfree((void*) temp_buffer);
 	//kfree((void*) args); /* XXX Ce kfree plante, parfois */
 	
