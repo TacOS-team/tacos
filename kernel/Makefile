@@ -112,12 +112,12 @@ ksem.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 ksem.o: ../libc/include/sys/types.h ../include/vmm.h ../libc/include/signal.h
 ksem.o: ../libc/include/stdio.h ../libc/include/stdarg.h ../include/kmalloc.h
 ksem.o: include/scheduler.h
-ksignal.o: include/ksignal.h include/ksyscall.h ../include/types.h
-ksignal.o: ../libc/include/signal.h ../libc/include/sys/types.h
-ksignal.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
-ksignal.o: ../include/vmm.h ../include/kstdio.h include/scheduler.h
-ksignal.o: ../include/klog.h ../libc/include/sys/syscall.h
-ksignal.o: ../include/interrupts.h
+ksignal.o: include/gdt.h ../include/types.h include/ksignal.h
+ksignal.o: include/ksyscall.h ../libc/include/signal.h
+ksignal.o: ../libc/include/sys/types.h include/kprocess.h
+ksignal.o: ../include/process.h ../libc/include/libio.h ../include/vmm.h
+ksignal.o: ../include/kstdio.h include/scheduler.h ../include/klog.h
+ksignal.o: ../libc/include/sys/syscall.h ../include/interrupts.h
 kstdio.o: ../include/video.h ../include/types.h ../libc/include/fcntl.h
 kstdio.o: include/kfcntl.h ../libc/include/libio.h
 kstdio.o: ../libc/include/sys/types.h include/kprocess.h ../include/process.h
@@ -160,10 +160,11 @@ scheduler.o: include/scheduler.h include/pagination.h
 scheduler.o: ../libc/include/string.h ../libc/include/unistd.h
 scheduler.o: ../libc/include/sys/syscall.h
 symtable.o: ../libc/include/string.h ../libc/include/sys/types.h
-symtable.o: ../libc/include/stdio.h ../libc/include/libio.h
-symtable.o: ../libc/include/stdarg.h ../include/kmalloc.h ../include/types.h
-symtable.o: ../include/elf.h ../include/symtable.h ../include/klog.h
-symtable.o: ../include/kstdio.h
+symtable.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
+symtable.o: ../include/types.h ../include/vmm.h ../libc/include/signal.h
+symtable.o: include/ksyscall.h ../libc/include/stdio.h
+symtable.o: ../libc/include/stdarg.h ../include/kmalloc.h ../include/elf.h
+symtable.o: ../include/symtable.h ../include/klog.h ../include/kstdio.h
 vm86.o: ../include/debug.h include/gdt.h ../include/types.h
 vmm.o: include/memory.h ../include/types.h include/pagination.h
 vmm.o: ../include/vmm.h ../include/process.h ../libc/include/libio.h
