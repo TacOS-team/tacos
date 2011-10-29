@@ -83,12 +83,14 @@ int is_schedulable(process_t* process) {
 	if(	process == NULL  ) {
 		return 0;
 	}
-	if( process->state == PROCSTATE_WAITING ||
-		process->state == PROCSTATE_SUSPENDED ||
-		process->state == PROCSTATE_TERMINATED) {
+	switch (process->state) {
+		case PROCSTATE_TERMINATED:
+			return 0;
+		case PROCSTATE_SUSPENDED:
+		case PROCSTATE_WAITING:
 			return signal_pending(process) != 0;
-	} else {
-		return 1;
+		default:
+			return 1;
 	}
 }
 

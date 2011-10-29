@@ -483,10 +483,7 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 {
 	process_t* current;
 	// On cherche le processus courant:
-	current = get_current_process();
-	
-	// On a pas forcement envie de supprimer le processus immédiatement
-	current->state = PROCSTATE_TERMINATED; 
+	current = get_current_process(); 
 	
 	close_all_fd();
 
@@ -496,6 +493,9 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	tty_set_fg_process(t, pp);
 	klog("tty %d %d\n", current->ctrl_tty, pp->pid);
 	//kprintf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
+	
+	// On a pas forcement envie de supprimer le processus immédiatement
+	current->state = PROCSTATE_TERMINATED;
 }
 
 SYSCALL_HANDLER1(sys_getpid, uint32_t* pid)
