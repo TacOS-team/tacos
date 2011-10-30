@@ -56,12 +56,11 @@ char *fgets(char *s, int size, FILE *stream) {
 }
 
 int fgetc(FILE *stream) {
-	// TODO(max) : Relecture attentive de ce code et commenter.
-
 	int c = EOF;
 	char *i;
 	ssize_t s;
 	
+	// Première utilisation du stream, on alloue un buffer.
 	if (stream->_IO_read_ptr == NULL) {
       char * buf = (char*) malloc(1000);
       stream->_IO_buf_base = buf;
@@ -73,10 +72,7 @@ int fgetc(FILE *stream) {
 
 	// Si on a plus d'octet dans le buffer de lecture, on rerempli le buffer.
 	if (stream->_IO_read_base == stream->_IO_read_ptr) {
-		// XXX: On ne lit qu'un seul caractère car si on en lit 2 à la fois par 
-		// exemple, pour une lecture sur stdin, il voudra un nombre pair de frappes 
-		// au clavier :D.
-		if ((s = read(stream->_fileno, stream->_IO_read_ptr, 1)) > 0) {
+		if ((s = read(stream->_fileno, stream->_IO_read_ptr, 1000)) > 0) {
 			stream->_IO_read_ptr += s;
 		} else {
 			return EOF;
