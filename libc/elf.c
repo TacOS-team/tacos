@@ -166,9 +166,7 @@ Elf32_File* load_elf_file(FILE* fd)
 		file = malloc(sizeof(Elf32_File));
 		file->elf_header = malloc(sizeof(Elf32_Ehdr));
 		
-		load_elf_header(file->elf_header, fd);
-		
-		if(is_elf(file->elf_header)) 
+		if (load_elf_header(file->elf_header, fd)) 
 		{
 			/*file->name = strdup(filename);*/
 			
