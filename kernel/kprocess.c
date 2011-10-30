@@ -224,26 +224,6 @@ void init_regs(regs_t* regs, vaddr_t esp, vaddr_t kesp, vaddr_t eip) {
 	regs->kss = KERNEL_STACK_SEGMENT;
 	regs->kesp = kesp;
 }
-/*
- typedef struct
-{
-	char* name;
-	char* args;
-	
-	int exec_type;
-	
-	void* data; 
-
-	int mem_size;
-	vaddr_t entry_point;
-	
-	uint32_t stack_size;
-	int priority;
-	
-	uint16_t ppid;
-	
-}process_init_data_t;
-*/
 
 process_init_data_t* dup_init_data(process_init_data_t* init_data) {
 	
@@ -375,8 +355,6 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->signal_data.mask = 0;
 	new_proc->signal_data.pending_set = 0;
 	
-	//kfree((void*) args); /* XXX Ce kfree plante, parfois */
-	
 	add_process(new_proc);
 	
 	/* Plante... */
@@ -403,7 +381,7 @@ process_t* create_process(process_init_data_t* init_data)
 	int len;
 	
 	new_proc = kmalloc(sizeof(process_t));
-	if( new_proc == NULL )
+	if (new_proc == NULL)
 	{
 		kerr("impossible de reserver la memoire pour le nouveau processus.");
 		return NULL;
@@ -413,14 +391,14 @@ process_t* create_process(process_init_data_t* init_data)
 	strcpy(new_proc->name, name);
 	
 	sys_stack = kmalloc(stack_size*sizeof(uint32_t));
-	if( new_proc == NULL )
+	if (sys_stack == NULL)
 	{
 		kerr("impossible de reserver la memoire pour la pile systeme.");
 		return NULL;
 	}
 	
 	user_stack = kmalloc(stack_size*sizeof(uint32_t));
-	if( new_proc == NULL )
+	if (user_stack == NULL)
 	{
 		kerr("impossible de reserver la memoire pour la pile utilisateur.");
 		return NULL;
