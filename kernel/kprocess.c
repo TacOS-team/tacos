@@ -320,6 +320,9 @@ process_t* create_process_elf(process_init_data_t* init_data)
 		user_stack = USER_PROCESS_BASE + init_data_dup->mem_size + init_data_dup->stack_size-1;
 		stack_ptr = init_stack(user_stack, init_data_dup->args, exit);
 		
+		/* TODO : Ajouter (ici ?) le passage de l'environnement utilisateur */
+
+		/* Remet le repertoire de page du process courant (le père donc) */
 		if(proc_count > 0)
 		{
 			pd_paddr = vmm_get_page_paddr((vaddr_t) get_current_process()->pd);
