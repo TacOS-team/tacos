@@ -224,10 +224,62 @@ void init_regs(regs_t* regs, vaddr_t esp, vaddr_t kesp, vaddr_t eip) {
 	regs->kss = KERNEL_STACK_SEGMENT;
 	regs->kesp = kesp;
 }
+/*
+ typedef struct
+{
+	char* name;
+	char* args;
+	
+	int exec_type;
+	
+	void* data; 
+
+	int mem_size;
+	vaddr_t entry_point;
+	
+	uint32_t stack_size;
+	int priority;
+	
+	uint16_t ppid;
+	
+}process_init_data_t;
+*/
+
+process_init_data_t* dup_init_data(process_init_data_t* init_data) {
+	
+	process_init_data_t* dup = kmalloc(sizeof(process_init_data_t));
+	
+	dup->name = kmalloc(strlen(init_data->name) + 1);
+	strcpy(dup->name, init_data->name);
+	
+	dup->args = kmalloc(strlen(init_data->args) + 1);
+	strcpy(dup->args, init_data->args);
+	
+	dup->exec_type = init_data->exec_type;
+	
+	dup->data = kmalloc(init_data->mem_size);
+	memcpy(dup->data, init_data->data, init_data->mem_size);
+	
+	dup->mem_size = init_data->mem_size;
+	dup->entry_point = init_data->entry_point;	
+	dup->stack_size = init_data->stack_size;
+	dup->priority = init_data->priority;
+	dup->ppid = init_data->ppid;
+	
+	return dup;
+}
+
+void free_init_data(process_init_data_t* init_data) {
+	kfree(init_data->name);
+	kfree(init_data->args);
+	kfree(init_data->data);
+	kfree(init_data);
+}
 
 process_t* create_process_elf(process_init_data_t* init_data)
 {
 	uint32_t *sys_stack, *user_stack;
+	process_init_data_t* init_data_dup;
 	process_t* new_proc;
 	
 	char** argv;
@@ -236,11 +288,13 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	uint32_t* stack_ptr;
 	
 	vaddr_t temp_buffer;
-	size_t program_size = init_data->mem_size;
 	
+		
 	int i;
 	int len;
 	klog("Creating process from cmd line: %s", init_data->args);
+	
+	init_data_dup = dup_init_data(init_data);
 	
 	new_proc = kmalloc(sizeof(process_t));
 	if( new_proc == NULL )
@@ -248,19 +302,19 @@ process_t* create_process_elf(process_init_data_t* init_data)
 		kerr("impossible de reserver la memoire pour le nouveau processus.");
 		return NULL;
 	}
-	len = strlen(init_data->name);
+	len = strlen(init_data_dup->name);
 	new_proc->name = (char *) kmalloc((len+1)*sizeof(char));
-	strcpy(new_proc->name, init_data->name);
+	strcpy(new_proc->name, init_data_dup->name);
 	
 	/* Initialisation de la kernel stack */
-	sys_stack = kmalloc(init_data->stack_size*sizeof(uint32_t));
+	sys_stack = kmalloc(init_data_dup->stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
 	{
 		kerr("impossible de reserver la memoire pour la pile systeme.");
 		return NULL;
 	}
 	
-	new_proc->ppid = init_data->ppid;
+	new_proc->ppid = init_data_dup->ppid;
 	
 	// Initialisation des données pour la vmm
 	new_proc->vm = (struct virtual_mem *) kmalloc(sizeof(struct virtual_mem));
@@ -269,14 +323,6 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->pd = kmalloc_one_aligned_page();
 	paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) new_proc->pd);
 	pagination_init_page_directory_copy_kernel_only(new_proc->pd, pd_paddr);
-
-	/* On récupère l'exécutable temporairement dans le kernel (moche) */
-	temp_buffer = (vaddr_t) kmalloc(program_size);
-	memcpy((void*)temp_buffer,(void*)init_data->data, program_size);
-	
-	/* On récupère également le string qui contiens les arguments, sinon on pourra plus y accéder quand on changera de page directory */
-	args = kmalloc(strlen(init_data->args));
-	strcpy(args, init_data->args);
 	
 	/* ZONE CRITIQUE */
 	asm("cli");
@@ -285,14 +331,14 @@ process_t* create_process_elf(process_init_data_t* init_data)
 		// soit contigü en mémoire physique et aligné dans un cadre...
 		pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
 		
-		init_process_vm(new_proc->vm, calculate_min_pages(program_size + (init_data->stack_size)*sizeof(uint32_t)));
+		init_process_vm(new_proc->vm, calculate_min_pages(init_data_dup->mem_size + (init_data_dup->stack_size)*sizeof(uint32_t)));
 		
 		/* Copie du programme au bon endroit */
-		memcpy((void*)USER_PROCESS_BASE, (void*)temp_buffer, program_size);
+		memcpy((void*)USER_PROCESS_BASE, (void*)init_data_dup->data, init_data_dup->mem_size);
 		
 		/* Initialisation de la pile utilisateur */
-		user_stack = USER_PROCESS_BASE + program_size + init_data->stack_size-1;
-		stack_ptr = init_stack(user_stack, args, exit);
+		user_stack = USER_PROCESS_BASE + init_data_dup->mem_size + init_data_dup->stack_size-1;
+		stack_ptr = init_stack(user_stack, init_data_dup->args, exit);
 		
 		if(proc_count > 0)
 		{
@@ -310,7 +356,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	asm("sti");
 	
 	/* Initialisation des registres */
-	init_regs(&(new_proc->regs), stack_ptr, (&sys_stack[init_data->stack_size-1]), init_data->entry_point);
+	init_regs(&(new_proc->regs), stack_ptr, (&sys_stack[init_data_dup->stack_size-1]), init_data_dup->entry_point);
 	
 	/* Initialisation des compteurs de temps CPU */
 	new_proc->user_time = 0;
@@ -329,12 +375,12 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->signal_data.mask = 0;
 	new_proc->signal_data.pending_set = 0;
 	
-	
-	/* Libération des buffers alloués */
-	kfree((void*) temp_buffer);
 	//kfree((void*) args); /* XXX Ce kfree plante, parfois */
 	
 	add_process(new_proc);
+	
+	/* Plante... */
+	//free_init_data(init_data_dup);
 	
 	return new_proc;
 }

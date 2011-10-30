@@ -80,7 +80,7 @@ void set_scheduler(scheduler_descriptor_t* sched)
 
 
 int is_schedulable(process_t* process) {
-	if(	process == NULL  ) {
+	if(	process == NULL ) {
 		return 0;
 	}
 	switch (process->state) {
