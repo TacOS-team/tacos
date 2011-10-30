@@ -55,20 +55,13 @@ char *fgets(char *s, int size, FILE *stream) {
 	return s;
 }
 
-
 int fgetc(FILE *stream) {
-// TODO : Réécriture complète de la fonction.
-// La gestion du backspace doit se faire au niveau supérieur (il n'y a que dans une "console" qu'on se sert du backspace). À voir comment gérer correctement la chose lors d'un scanf...
-// Je ne suis pas sûr que ça soit normal d'avoir un flush ici...
+	// TODO(max) : Relecture attentive de ce code et commenter.
 
 	int c = EOF;
 	char *i;
+	ssize_t s;
 	
-/* XXX Unused? 
-	char * pointeur;
-	pointeur = stream->_IO_read_base;
-*/
-
 	if (stream->_IO_read_ptr == NULL) {
       char * buf = (char*) malloc(1000);
       stream->_IO_buf_base = buf;
@@ -78,22 +71,32 @@ int fgetc(FILE *stream) {
       stream->_IO_read_ptr = buf;
 	}
 
+	// Si on a plus d'octet dans le buffer de lecture, on rerempli le buffer.
 	if (stream->_IO_read_base == stream->_IO_read_ptr) {
-		if (read(stream->_fileno, stream->_IO_read_ptr, 1) > 0) {
-			stream->_IO_read_ptr++;
+		// XXX: On ne lit qu'un seul caractère car si on en lit 2 à la fois par 
+		// exemple, pour une lecture sur stdin, il voudra un nombre pair de frappes 
+		// au clavier :D.
+		if ((s = read(stream->_fileno, stream->_IO_read_ptr, 1)) > 0) {
+			stream->_IO_read_ptr += s;
 		} else {
 			return EOF;
 		}
 	}
+
+	// On prend l'octet le plus ancien dans le buffer.
 	c = (unsigned char) *stream->_IO_read_base;
 
+	// On décale tout le buffer d'un octet.
 	for (i = stream->_IO_read_base; i < stream->_IO_read_ptr; i++) {
 		*i = *(i+1);
 	}
 
+	// Il y a un élément en moins dans le buffer.
 	stream->_IO_read_ptr--;
+
 	return c;
 }
+
 /**
  * Fonction de la libc.
  * getchar est équivalent à fgetc(stdin).
