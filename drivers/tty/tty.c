@@ -177,8 +177,7 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 				t->p_begin = (t->p_begin + 1) % MAX_INPUT;
 				j++;
 			}
-			if (j == count)
-				break;
+			break;
 		} else {
 			ksemP(t->sem);
 		}
