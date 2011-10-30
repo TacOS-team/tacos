@@ -33,11 +33,13 @@
  */
 
 
+#include <stdio.h>
 #include <fcntl.h>
 #include <process.h>
 
 int fclose(FILE* stream)
 {
+	fflush(stream);
 	close(stream->_fileno);
 	
 	/* TODO:
