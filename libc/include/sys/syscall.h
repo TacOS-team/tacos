@@ -62,5 +62,7 @@
 #define SYS_IOCTL 23
 #define SYS_GETCLOCK 24
 #define SYS_GETDATE 25
+#define SYS_VGASETMODE 26
+#define SYS_VGAWRITEBUF 27
 
 #endif
