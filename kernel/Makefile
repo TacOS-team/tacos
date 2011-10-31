@@ -79,8 +79,8 @@ kernel.o: ../libc/include/sys/syscall.h include/ksem.h ../include/video.h
 kernel.o: ../include/console.h ../include/tty.h include/ksignal.h
 kernel.o: include/round_robin.h ../include/rtl8139.h ../include/klog.h
 kernel.o: ../include/kstdio.h include/kdriver.h include/kdirent.h
-kernel.o: ../libc/include/dirent.h include/drivers/dummy_driver.h
-kernel.o: include/drivers/serial.h
+kernel.o: ../libc/include/dirent.h ../include/vga.h ../include/vga_types.h
+kernel.o: include/drivers/dummy_driver.h include/drivers/serial.h
 kfcntl.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 kfcntl.o: ../libc/include/sys/types.h ../include/types.h ../include/vmm.h
 kfcntl.o: ../libc/include/signal.h include/ksyscall.h include/scheduler.h
