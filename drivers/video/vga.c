@@ -1,4 +1,4 @@
-/*
+/**
  * @see http://wiki.osdev.org/VGA_Hardware
  * @see http://www.osdever.net/FreeVGA/vga/vga.htm
  * @see http://files.osdev.org/mirrors/geezer/osd/graphics/modes.c
@@ -7,34 +7,57 @@
  * @TODO: currently only supports mode 320*200*256 colors 
  * @TODO: video memory base address is hardcoded
  */
-
 #include <ioports.h>
 #include <klog.h>
 #include <string.h>
 #include <vga.h>
 
+/**
+ * Defines the number of registers and the ports corresponding to the address
+ * registers (addr_w_registers) and the data read/write registers
+ * (data_r/w_registers) for the 5 groups of VGA registers.
+ * @see http://www.osdever.net/FreeVGA/vga/vga.htm
+ *   | GC: Graphics Registers
+ *   -- control the way the CPU accesses video RAM.
+ *   | SEQ: Sequencer Registers
+ *   -- control how video data is sent to the DAC.
+ *   | AC:  Attribute Controller Registers
+ *   -- selects the 16 color and 64 color palettes used for EGA/CGA compatibility.
+ *   | CRTC: CRT Controller Registers
+ *   -- control how the video is output to the display.
+ *   | MISC: External Registers
+ *   -- miscellaneous registers used to control video operation.
+ */
 #define NB_REGISTER_GROUPS 5
-
 enum reg_groups_names             {      GC,     SEQ,      AC,    CRTC,    MISC   };
 static short addr_w_registers[] = {   0x3CE,   0x3C4,   0x3C0,   0x3D4,   0x000   };
 static short data_w_registers[] = {   0x3CF,   0x3C5,   0x3C0,   0x3D5,   0x3C2   };
 static short data_r_registers[] = {   0x3CF,   0x3C5,   0x3C1,   0x3D5,   0x3CC   }; 
 static int nb_registers[] =       {       9,       5,      21,      25,       1   };
 
+/**
+ * Defines the ports corresponding to other registers used.
+ *    | INSTAT_1_READ: Input Status #1 Register
+ *    -- Used to initialize the Attribute controllers registers flipflop
+ *       (@see reset_ac_controllers_flipflop)
+ */
 enum other_regs_names             {   INSTAT_1_READ   };
 static short other_registers[] =  {           0x3DA   };
 
-static unsigned int VGA_width, VGA_height, VGA_bpp;
-static unsigned char *VGA_memory;
-static unsigned char font[8192];
-static bool font_saved = FALSE;
+static unsigned int VGA_width, VGA_height, VGA_bpp; // Screen width, screen height, bytes per pixel
+static unsigned char *VGA_memory; // Base address of VGA memory
+static unsigned char font[8192]; // Used to backup the font data when switching to graphic modes
+static bool font_saved = FALSE; // Indicates whether the font data can be restored
 
+/**
+ * Describes a VGA mode
+ */
 struct mode {
-	int width;
-	int height;
-	int bpp;
-	bool graphic;
-	unsigned char *reg_values;
+	int width; // Screen width
+	int height; // Screen height
+	int bpp; // Bytes per pixel (in memory)
+	bool graphic; // Text mode (false) or graphic mode (true)
+	unsigned char *reg_values; // Values to be written in the registers
 };
 
 static unsigned char mode_320x200x256[] = {
@@ -103,8 +126,8 @@ static struct mode VGA_modes[] = {
 	{ 320, 200, 1, 1, mode_320x200x256_modex },
 };
 
-void unlock_crtc_registers() {
-	/*
+static void unlock_crtc_registers() {
+	/**
 	 * @see http://www.osdever.net/FreeVGA/vga/vgareg.htm 
 	 * Note that certain CRTC registers can be protected from read or write access
 	 * for compatibility with programs written prior to the VGA's existence.
@@ -117,8 +140,8 @@ void unlock_crtc_registers() {
 	outb(inb(data_r_registers[CRTC]) & ~(1 << 7), data_w_registers[CRTC]);
 }
 
-void reset_ac_registers_flipflop() {
-	/*
+static void reset_ac_registers_flipflop() {
+	/**
 	 * @see http://www.osdever.net/FreeVGA/vga/vgareg.htm
 	 * The attribute registers are also accessed in an indexed fashion [...].
 	 * The index and the data are written to the same port, one after another.
@@ -131,62 +154,69 @@ void reset_ac_registers_flipflop() {
 	inb(other_registers[INSTAT_1_READ]);
 }
 
-void enable_display() {
+static void enable_display() {
+	/**
+	 * @see http://www.osdever.net/FreeVGA/vga/attrreg.htm
+	 * PAS -- Palette Address Source (Attribute address register (0x3C0), bit 5)
+	 * This bit is set to 0 to load color values to the registers in the internal
+	 * palette. It is set to 1 for normal operation of the attribute controller.
+	 */
 	inb(other_registers[INSTAT_1_READ]);
-	outb(0x20, addr_w_registers[AC]);
+	outb(1 << 5, addr_w_registers[AC]);
 }
 
-void write_register_values(unsigned char *values) {
+static void write_register_values(unsigned char *values) {
+	// CRTC register might be locked, unlock them
 	unlock_crtc_registers();
+	// Set the initial value of the Attribute Controller registers flipflop
 	reset_ac_registers_flipflop();
 
-	// Write all registers (GC, SEQ, AC, CRTC, MISC)
 	int group, index;
+	// For each group of registers (GC, SEQ, AC, CRTC, MISC)...
 	for (group = 0; group < NB_REGISTER_GROUPS; group++) {
+		// For each register in this group
 		for (index = 0; index < nb_registers[group]; index++, values++) {
+			// Select the register to write by writing its index to the address register, if needed
 			if (addr_w_registers[group] > 0) {
 				outb(index, addr_w_registers[group]);
 			}
+			// Set the value by writing to the data register
 			outb(*values, data_w_registers[group]);
 		}
 	}
 
+	// Finally, enable the display by locking the palette
 	enable_display();
 }
 
-void backup_font() {
-	// XXX: Set planar mode
-	write_register_values(mode_320x200x256_modex);
+static void backup_font() {
+	// The font data is located in plane 2, so we need to set a planar mode
+	write_register_values(mode_320x200x256_modex); // XXX
 	
-	// Read plane 2
+	// Tell the Graphics Controller we want to read plane 2
 	outb(4, addr_w_registers[GC]);
 	outb(2, data_w_registers[GC]);
 
 	// Dump font
-	int i;
-	for (i = 0; i < 8192; i++) {
-		font[i] = VGA_memory[i];
-	}
-
+	memcpy(font, VGA_memory, 8192);
+	
+	// Raise a flag indicating that the font has been saved.
 	font_saved = TRUE;
 }
 
-void restore_font() {
-	// XXX: Set planar mode
-	write_register_values(mode_320x200x256_modex);
+static void restore_font() {
+	// The font data is located in plane 2, so we need to set a planar mode
+	write_register_values(mode_320x200x256_modex); // XXX
 
-	// Write plane 2
+	// Tell the Graphics Controller we want to write to plane 2
 	outb(2, addr_w_registers[SEQ]);
-	outb(4, data_w_registers[SEQ]);
+	outb((1 << 2), data_w_registers[SEQ]);
 
 	// Write font
-	int i;
-	for (i = 0; i < 8192; i++) {
-		VGA_memory[i] = font[i];
-	}
+	mempcy(VGA_memory, font, 8192);
 }
 
-void clear_screen() {
+static void clear_screen() {
 	memset(VGA_memory, 0, VGA_width * VGA_height * VGA_bpp);
 }
 
