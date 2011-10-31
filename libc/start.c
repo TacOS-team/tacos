@@ -45,6 +45,8 @@ extern main_type main;
 void start_main(int argc, char** argv)
 {
 	init_process_malloc();
+
+	init_stdfiles();
 	
 	init_signals();
 

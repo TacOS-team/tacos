@@ -260,6 +260,8 @@ void itoa (char *buf, int base, int d);
  */
 int setvbuf(FILE *stream, char *buf, int mode, size_t size);
 
+void init_stdfiles(void);
+
 int fseek(FILE *stream, long offset, int whence);
 
 int ftell(FILE *stream);
