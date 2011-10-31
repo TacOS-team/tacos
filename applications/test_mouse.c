@@ -49,7 +49,7 @@ int main() {
 
 	while (1) {
 		read(fd, &data, sizeof(data));
-		data.y = 200 - data.y;
+		data.y = 199 - data.y;
 		if (data.buttons[0]) {
 			buffer[data.y][data.x] = 1;
 		} else if (data.buttons[1]) {

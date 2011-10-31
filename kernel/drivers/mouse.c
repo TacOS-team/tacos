@@ -89,8 +89,8 @@ void mouse_interrupt_handler() {
 		case 1:	// delta X
 			packet = inb(0x60);
 			mouse_x += (packet_x_sign | packet);
-			if (mouse_x > SCREEN_WIDTH) {
-				mouse_x = SCREEN_WIDTH;
+			if (mouse_x >= SCREEN_WIDTH) {
+				mouse_x = SCREEN_WIDTH - 1;
 			}
 			if (mouse_x < 0) {
 				mouse_x = 0;
@@ -100,8 +100,8 @@ void mouse_interrupt_handler() {
 		case 2: // delta Y
 			packet = inb(0x60);
 			mouse_y += (packet_y_sign | packet);
-			if (mouse_y > SCREEN_HEIGHT) {
-				mouse_y = SCREEN_HEIGHT;
+			if (mouse_y >= SCREEN_HEIGHT) {
+				mouse_y = SCREEN_HEIGHT - 1;
 			}
 			if (mouse_y < 0) {
 				mouse_y = 0;
