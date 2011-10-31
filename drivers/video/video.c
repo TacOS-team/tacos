@@ -52,7 +52,7 @@ static struct vga_page_t pages[NB_VGA_PAGES];
 static int current_page;
 
 void init_video() {
-	// Initialisation � 0 du Attribute Mode Control Register pour �viter les surprises...
+	// Initialisation à 0 du Attribute Mode Control Register pour éviter les surprises...
 	inb(0x3DA);
 	outb(0x10, 0x3C0);
 	outb(0, 0x3C0);
@@ -71,13 +71,13 @@ void init_video() {
 }
 
 void offset_video(int offset) {
-	/* CRT index port => demande l'acc�s au registre 0xa ("addr start") */
+	/* CRT index port => demande l'accès au registre 0xa ("addr start") */
 	outb(0x0C, CRT_REG_INDEX);
 
 	/* scan line start */
 	outb(offset >> 8, CRT_REG_DATA);
 
-	/* CRT index port => demande l'acc�s au registre 0xa ("addr end") */
+	/* CRT index port => demande l'accès au registre 0xa ("addr end") */
 	outb(0x0D, CRT_REG_INDEX);
 
 	/* scan line end */
@@ -113,7 +113,7 @@ static volatile x86_video_mem* get_page(int i, bool front) {
 void set_blink_bit(int blink_bit) {
 	int val = 0;
 
-	/* FIXME: Cass�... La lecture renvoie toujours 255...
+	/* FIXME: Cassé... La lecture renvoie toujours 255...
 	 inb(0x3DA);
 	 outb(0x10 , 0x3C0);
 	 val = inb(0x4C1);
@@ -130,7 +130,7 @@ void set_blink_bit(int blink_bit) {
 		val &= ~0x08;
 	}
 
-	/* En fait, m�me �a c'est cass� :D
+	/* En fait, même ça c'est cassé :D
 	 inb(0x3DA);
 	 outb(0x10, 0x3C0);
 	 outb(val, 0x3C0);
@@ -140,20 +140,20 @@ void set_blink_bit(int blink_bit) {
 
 void disable_cursor(int disable) {
 	if (disable) {
-		/* CRT index port => demande l'acc�s au registre 0xa ("cursor start") */
+		/* CRT index port => demande l'accès au registre 0xa ("cursor start") */
 		outb(0x0a, CRT_REG_INDEX);
 
 		/* CRT Register 0xa => bit 5 = cursor OFF */
 		outb(1 << 5, CRT_REG_DATA);
 	} else {
 
-		/* CRT index port => demande l'acc�s au registre 0xa ("cursor start") */
+		/* CRT index port => demande l'accès au registre 0xa ("cursor start") */
 		outb(0x0a, CRT_REG_INDEX);
 
 		/* scan line start */
 		outb(CURSOR_POS_MSB, CRT_REG_DATA);
 
-		/* CRT index port => demande l'acc�s au registre 0xa ("cursor end") */
+		/* CRT index port => demande l'accès au registre 0xa ("cursor end") */
 		outb(0x0b, CRT_REG_INDEX);
 
 		/* scan line end */
@@ -173,32 +173,30 @@ void cursor_position_video(int x, int y) {
 /**
  * Conversion entre latin1 et la table ASCII utilisée.
  */
-static char convert_ascii(char c) {
-	// TODO : refaire cette table :/.
-/*
-	if (c == '�') {
-		c = 0x82;
-	} else if (c == '�') {
-		c = 0x83;
-	} else if (c == '�') {
-		c = 0x84;
-	} else if (c == '�') {
-		c = 0x85;
-	} else if (c == '�') {
-		c = 0x87;
-	} else if (c == '�') {
-		c = 0x8a;
-	} else if (c == '�') {
-		c = 0x93;
-	} else if (c == '�') {
-		c = 0x81;
-	} else if (c == '�') {
-		c = 0x88;
-	} else if (c == '�') {
-		c = 0x97;
-	}
-*/
-	return c;
+static char convert_ascii(unsigned char c) {
+        if (c == 0xE9) { // é
+                c = 0x82;
+        } else if (c == 0xE2) { // â
+                c = 0x83;
+        } else if (c == 0xE4) { // ä
+                c = 0x84;
+        } else if (c == 0xE0) { // à
+                c = 0x85;
+        } else if (c == 0xE7) { // ç
+                c = 0x87;
+        } else if (c == 0xE8) { // è
+                c = 0x8a;
+        } else if (c == 0xF4) { // ô
+                c = 0x93;
+        } else if (c == 0xFC) { // ü
+                c = 0x81;
+        } else if (c == 0xEA) { // ê
+                c = 0x88;
+        } else if (c == 0xF9) { // ù
+                c = 0x97;
+        }
+
+        return c;
 }
 
 void kputchar_video(int n, bool front, char c, int x, int y, char attr) {
