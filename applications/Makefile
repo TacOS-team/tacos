@@ -1,5 +1,5 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=top test_sig zen cat ls mkdir kill clock_graph
+OBJ=top test_sig zen cat ls mkdir kill clock_graph cube_graph
 SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a 
 INCLUDES=-I../include/ -I../libc/include/
@@ -66,6 +66,9 @@ kill: kill.o
 clock_graph: clock_graph.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
+cube_graph: cube_graph.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
+
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
@@ -94,6 +97,9 @@ cube.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 cube.o: ../libc/include/time.h ../include/process.h ../include/types.h
 cube.o: ../include/vmm.h ../libc/include/signal.h ../libc/include/string.h
 cube.o: ../libc/include/unistd.h
+cube_graph.o: ../libc/include/string.h ../libc/include/sys/types.h
+cube_graph.o: ../libc/include/sys/syscall.h ../libc/include/unistd.h
+cube_graph.o: ../include/vga_types.h
 demo.o: ../libc/include/stdio.h ../libc/include/libio.h
 demo.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 demo.o: ../libc/include/stdlib.h ../libc/include/malloc.h
