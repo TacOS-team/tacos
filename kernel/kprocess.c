@@ -282,6 +282,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 		kerr("impossible de reserver la memoire pour le nouveau processus.");
 		return NULL;
 	}
+	
 	len = strlen(init_data_dup->name);
 	new_proc->name = (char *) kmalloc((len+1)*sizeof(char));
 	strcpy(new_proc->name, init_data_dup->name);
@@ -359,9 +360,9 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->signal_data.pending_set = 0;
 	
 	add_process(new_proc);
-	
+	int* ptr = kmalloc(sizeof(int));
 	/* Plante... */
-	//free_init_data(init_data_dup);
+	free_init_data(init_data_dup);
 	
 	return new_proc;
 }
