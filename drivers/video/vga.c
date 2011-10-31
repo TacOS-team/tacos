@@ -79,11 +79,11 @@ static bool font_saved = FALSE; // Indicates whether the font data can be restor
  * Describes a VGA mode
  */
 struct mode {
-	int width; // Screen width
-	int height; // Screen height
-	int bpp; // Bytes per pixel (in memory)
-	bool graphic; // Text mode (false) or graphic mode (true)
-	unsigned char *reg_values; // Values to be written in the registers
+	int width; /**< Screen width */
+	int height; /**< Screen height */
+	int bpp; /**< Bytes per pixel (in memory) */
+	bool graphic; /**< Text mode (false) or graphic mode (true) */
+	unsigned char *reg_values; /**< Values to be written in the registers */
 };
 
 static unsigned char mode_320x200x256[] = {
@@ -239,7 +239,7 @@ static void restore_font() {
 	outb((1 << 2), data_w_registers[SEQ]);
 
 	// Write font
-	mempcy(VGA_memory, font, 8192);
+	memcpy(VGA_memory, font, 8192);
 }
 
 static void clear_screen() {
