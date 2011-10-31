@@ -61,9 +61,9 @@ unistd.o: include/dirent.h include/sys/types.h include/sys/stat.h
 unistd.o: include/errno.h include/stdio.h include/libio.h include/stdarg.h
 unistd.o: include/stdlib.h include/malloc.h include/string.h
 unistd.o: include/sys/syscall.h include/unistd.h
-stdio/fclose.o: include/fcntl.h ../include/process.h include/libio.h
-stdio/fclose.o: include/sys/types.h ../include/types.h ../include/vmm.h
-stdio/fclose.o: include/signal.h
+stdio/fclose.o: include/stdio.h include/libio.h include/sys/types.h
+stdio/fclose.o: include/stdarg.h include/fcntl.h ../include/process.h
+stdio/fclose.o: ../include/types.h ../include/vmm.h include/signal.h
 stdio/fmemopen.o: include/stdio.h include/libio.h include/sys/types.h
 stdio/fmemopen.o: include/stdarg.h include/stdlib.h include/malloc.h
 stdio/fmemopen.o: include/fopen.h
