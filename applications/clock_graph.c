@@ -18,20 +18,14 @@ static float aiguille_s[][2] = { {0, 0}, {0, -80} };
 float cos(float angle) {
 	float angle_radians = angle*(2*PI)/360;
 	float result;
-	asm(	"fld %1;"
-		"fcos;"
-		"fstp %0;" : "=g" (result) : "g" (angle_radians)
-	);
+	asm("fcos" : "=t" (result) : "0" (angle_radians));
 	return result;
 }
 
 float sin(float angle) {
 	float angle_radians = angle*(2*PI)/360;
 	float result;
-	asm(	"fld %1;"
-		"fsin;"
-		"fstp %0;" : "=g" (result) : "g" (angle_radians)
-	);
+	asm("fsin" : "=t" (result) : "0" (angle_radians));
 	return result;
 }
 
