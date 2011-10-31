@@ -35,12 +35,31 @@
 
 #include <stdio.h>
 #include <fcntl.h>
-#include <process.h>
+#include <stdlib.h>
 
 int fclose(FILE* stream)
 {
 	fflush(stream);
+	if (stream->_IO_write_base != NULL) {
+		free(stream->_IO_write_base);
+	}
 	close(stream->_fileno);
+	
+	if (__file_list == stream) {
+		__file_list = stream->_chain;
+	} else {
+		FILE* aux = __file_list;
+		while (aux != NULL && aux->_chain != stream) {
+			aux = aux->_chain;
+		}
+		if (aux == NULL) {
+			return -1;
+		} else {
+			aux->_chain = stream->_chain;
+		}
+	}
+
+	free(stream);
 	
 	/* TODO:
 	 * Upon  successful  completion  0  is  returned.  Otherwise, EOF is
@@ -48,5 +67,12 @@ int fclose(FILE* stream)
      * any  further  access  (including another call to fclose()) to the
      * stream results in undefined behavior
      */
+	return 0;
+}
+
+int fcloseall(void) {
+	while (__file_list != NULL) {
+		fclose(__file_list);
+	}
 	return 0;
 }

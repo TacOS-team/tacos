@@ -46,8 +46,6 @@ void start_main(int argc, char** argv)
 {
 	init_process_malloc();
 	
-	init_stdfiles(&stdin, &stdout, &stderr);
-
 	init_signals();
 
 	exit(main(argc, argv));

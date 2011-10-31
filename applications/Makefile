@@ -1,5 +1,5 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=top test_sig zen cat ls mkdir kill
+OBJ=top test_sig zen cat ls mkdir kill hello
 SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a 
 INCLUDES=-I../include/ -I../libc/include/
@@ -63,6 +63,9 @@ snake: snake.o
 kill: kill.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
+hello: hello.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
+
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
@@ -98,6 +101,8 @@ fiinou.o: ../libc/include/stdio.h ../libc/include/libio.h
 fiinou.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 fopen.o: ../libc/include/stdio.h ../libc/include/libio.h
 fopen.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
+hello.o: ../libc/include/stdio.h ../libc/include/libio.h
+hello.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 kill.o: ../libc/include/sys/types.h ../libc/include/signal.h
 kill.o: ../libc/include/stdio.h ../libc/include/libio.h
 kill.o: ../libc/include/stdarg.h ../libc/include/stdlib.h

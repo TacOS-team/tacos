@@ -57,6 +57,11 @@
 #define SEEK_END 2
 
 /**
+ * Liste chainée qui contient les streams. 
+ */
+extern FILE* __file_list; 
+
+/**
  * @brief Affiche un message sur la sortie standard stdout.
  *
  * Affiche un message sur la sortie standard stdout (peut donc être buffurisé et ce n'est pas nécessairement l'écran).
@@ -218,22 +223,13 @@ int getchar(void);
 int fflush(FILE *stream);
 
 int fclose(FILE* fd);
+int fcloseall(void);
 
 FILE *fopen(const char *path, const char *mode);
 FILE *fdopen(int fd, const char *mode);
 FILE *freopen(const char *path, const char *mode, FILE *stream);
 
 FILE *fmemopen(void *buf, size_t size, const char *mode);
-
-/** 
-* @brief Initialise de nouveaux stdin, stdout et stderr.
-* 
-* @param _stdin pointeur sur un stdin à initialiser.
-* @param _stdout pointeur sur un stdout à initialiser.
-* @param _stderr pointeur sur un stderr à initialiser.
-*/
-void init_stdfiles(FILE ** _stdin, FILE ** _stdout, FILE ** _stderr);
-
 
 /** 
 * @brief Converti l'entier d en une chaîne de caractère et le stock dans buf.

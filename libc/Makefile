@@ -61,17 +61,15 @@ unistd.o: include/dirent.h include/sys/types.h include/sys/stat.h
 unistd.o: include/errno.h include/stdio.h include/libio.h include/stdarg.h
 unistd.o: include/stdlib.h include/malloc.h include/string.h
 unistd.o: include/sys/syscall.h include/unistd.h
-stdio/fclose.o: include/fcntl.h ../include/process.h include/libio.h
-stdio/fclose.o: include/sys/types.h ../include/types.h ../include/vmm.h
-stdio/fclose.o: include/signal.h
+stdio/fclose.o: include/stdio.h include/libio.h include/sys/types.h
+stdio/fclose.o: include/stdarg.h include/fcntl.h include/stdlib.h
+stdio/fclose.o: include/malloc.h
 stdio/fmemopen.o: include/stdio.h include/libio.h include/sys/types.h
 stdio/fmemopen.o: include/stdarg.h include/stdlib.h include/malloc.h
 stdio/fmemopen.o: include/fopen.h
 stdio/fopen.o: include/stdio.h include/libio.h include/sys/types.h
 stdio/fopen.o: include/stdarg.h include/stdlib.h include/malloc.h
-stdio/fopen.o: include/string.h include/fcntl.h ../include/process.h
-stdio/fopen.o: ../include/types.h ../include/vmm.h include/signal.h
-stdio/fopen.o: include/unistd.h
+stdio/fopen.o: include/string.h include/fcntl.h include/unistd.h
 stdio/fprintf.o: include/stdio.h include/libio.h include/sys/types.h
 stdio/fprintf.o: include/stdarg.h include/string.h
 stdio/fread.o: include/stdio.h include/libio.h include/sys/types.h
@@ -96,6 +94,7 @@ stdio/scanf.o: include/libio.h include/string.h
 stdio/sprintf.o: include/stdio.h include/libio.h include/sys/types.h
 stdio/sprintf.o: include/stdarg.h
 stdio/stdfiles.o: include/sys/types.h include/libio.h include/string.h
-stdio/stdfiles.o: include/stdlib.h include/malloc.h
+stdio/stdfiles.o: include/stdio.h include/stdarg.h include/stdlib.h
+stdio/stdfiles.o: include/malloc.h
 stdio/stdio.o: include/stdio.h include/libio.h include/sys/types.h
 stdio/stdio.o: include/stdarg.h include/stdlib.h include/malloc.h

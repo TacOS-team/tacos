@@ -36,7 +36,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
-#include <process.h>
 #include <unistd.h>
 
 int convert_flags(const char *mode) {
@@ -85,13 +84,9 @@ FILE *fopen(const char *path, const char *mode) {
 
 	if (fileno < 0) return NULL;
 
-	// Va chercher dans le process le file_list pour chainer comme il faut.
-	
-	process_t *current_process = get_process(getpid());
 	FILE *stream = malloc(sizeof(FILE));
-	/* XXX: Userspace écrit dans kernel space ici, moche moche moche */
-	stream->_chain = current_process->file_list;
-	current_process->file_list = stream;
+	stream->_chain = __file_list;
+	__file_list = stream;
 
 	stream->_fileno = fileno;
 	// TODO : allouer buffer, en tenant compte des droits !
@@ -105,7 +100,6 @@ FILE *fdopen(int fd __attribute__ ((unused)), const char *mode __attribute__ ((u
 }
 
 FILE *freopen(const char *path, const char *mode, FILE *stream) {
-	fflush(stream);
-	// fclose(stream);
+	fclose(stream);
 	return fopen(path, mode);
 }
