@@ -107,6 +107,7 @@ kprocess.o: include/scheduler.h ../libc/include/stdio.h
 kprocess.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
 kprocess.o: ../libc/include/malloc.h ../libc/include/string.h
 kprocess.o: ../include/tty.h ../include/video.h include/pagination.h
+kprocess.o: ../include/console.h ../include/vga.h ../include/vga_types.h
 ksem.o: include/ksem.h include/ksyscall.h ../include/types.h
 ksem.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 ksem.o: ../libc/include/sys/types.h ../include/vmm.h ../libc/include/signal.h
