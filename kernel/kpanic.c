@@ -117,6 +117,8 @@ void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t* badbo
 {
 	/* Register dump */
 	uint32_t* stack_ptr = &error_id;
+	
+	uint32_t eip = *(stack_ptr-26);
 	uint32_t eax = *(stack_ptr-25);
 	uint32_t ecx = *(stack_ptr-24);
 	uint32_t edx = *(stack_ptr-23);
