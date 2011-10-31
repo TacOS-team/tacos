@@ -5,7 +5,7 @@ SRCS=*/*.c
 
 all: libdrivers
 
-libdrivers: mouse/mouse.o keyboard/keyboard.o floppy/floppy.o floppy/floppy_interrupt.o floppy/floppy_utils.o floppy/floppy_motor.o floppy/floppy_dma.o beeper/beeper.o pci/pci.o pci/pci_config.o tty/tty.o video/video.o video/console.o ethernet/rtl8139.o
+libdrivers: keyboard/keyboard.o floppy/floppy.o floppy/floppy_interrupt.o floppy/floppy_utils.o floppy/floppy_motor.o floppy/floppy_dma.o beeper/beeper.o pci/pci.o pci/pci_config.o tty/tty.o video/video.o video/console.o video/vga.o ethernet/rtl8139.o
 	  $(AR) r ../lib/$@.a $^
 
 %.o: %.c
@@ -55,8 +55,6 @@ keyboard/keyboard.o: ../kernel/include/kprocess.h ../include/process.h
 keyboard/keyboard.o: ../include/vmm.h ../libc/include/signal.h
 keyboard/keyboard.o: ../kernel/include/ksyscall.h ../include/console.h
 keyboard/keyboard.o: ../include/tty.h
-mouse/mouse.o: ../include/types.h ../include/ioports.h ../include/mouse.h
-mouse/mouse.o: ../include/interrupts.h
 pci/pci.o: ../include/pci.h ../include/types.h ../include/pci_types.h
 pci/pci.o: ../include/pci_config.h ../include/klog.h ../include/kstdio.h
 pci/pci_config.o: ../include/ioports.h ../include/types.h
@@ -77,6 +75,10 @@ video/console.o: ../libc/include/sys/types.h ../kernel/include/kprocess.h
 video/console.o: ../include/process.h ../include/vmm.h
 video/console.o: ../libc/include/signal.h ../kernel/include/ksyscall.h
 video/console.o: ../include/video.h
+video/vga.o: ../include/ioports.h ../include/klog.h ../include/kstdio.h
+video/vga.o: ../libc/include/string.h ../libc/include/sys/types.h
+video/vga.o: ../include/vga.h ../kernel/include/ksyscall.h ../include/types.h
+video/vga.o: ../include/vga_types.h
 video/video.o: ../include/types.h ../include/ioports.h
 video/video.o: ../libc/include/ctype.h ../include/video.h
 video/video.o: ../libc/include/stdlib.h ../libc/include/sys/types.h

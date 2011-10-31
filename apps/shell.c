@@ -35,7 +35,6 @@
 #include <dirent.h>
 #include <floppy.h>
 #include <kmalloc.h>
-#include <mouse.h>
 #include <pci.h>
 #include <process.h>
 #include <stdio.h>

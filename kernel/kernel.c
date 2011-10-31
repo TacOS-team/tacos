@@ -50,7 +50,6 @@
 #include <clock.h>
 #include <time.h>
 #include <keyboard.h>
-#include <mouse.h>
 #include <events.h>
 #include <floppy.h>
 #include <kpanic.h>
@@ -77,10 +76,12 @@
 #include <klog.h>
 #include <kdriver.h>
 #include <kdirent.h>
+#include <vga.h>
 
 /* Includes des drivers */
 #include <drivers/dummy_driver.h>
 #include <drivers/serial.h>
+#include <drivers/mouse.h>
 
 typedef struct
 {
@@ -139,7 +140,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
 	interrupt_set_routine(IRQ_LPT1, LPT1_routine, 0);
 	interrupt_set_routine(IRQ_COM1, serial_isr, 0);
-	mouseInit();
 	floppy_init_interrupt();
 	init_fpu();
 
@@ -197,11 +197,14 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_SIGSUSPEND,	(syscall_handler_t) sys_sigsuspend);
 	syscall_set_handler(SYS_GETCLOCK,	(syscall_handler_t) sys_getclock);
 	syscall_set_handler(SYS_GETDATE,	(syscall_handler_t) sys_getdate);
+	syscall_set_handler(SYS_VGASETMODE,	(syscall_handler_t) sys_vgasetmode);
+	syscall_set_handler(SYS_VGAWRITEBUF,	(syscall_handler_t) sys_vgawritebuf);
 	
 	/* Initialisation des drivers */
 	klog("loading drivers...");
 	init_driver_list();
 	init_dummy();
+	init_mouse();
 	
 	/* ************************** */
 	floppy_detect_drives();

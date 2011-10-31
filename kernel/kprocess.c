@@ -49,6 +49,8 @@
 #include <types.h>
 #include <video.h>
 #include <pagination.h>
+#include <console.h>
+#include <vga.h>
 
 #define GET_PROCESS 0
 #define GET_PROCESS_LIST 1
@@ -514,6 +516,10 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	current = get_current_process(); 
 	
 	close_all_fd();
+
+	// On repasse en mode texte
+	VGA_set_mode(vga_mode_80x25_text);
+	focus_console(2); // XXX
 
 	terminal_t *t = tty_get(current->ctrl_tty);
 	process_t* pp = get_process(current->ppid);
