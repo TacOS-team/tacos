@@ -27,6 +27,7 @@ static short other_registers[] =  {           0x3DA   };
 static unsigned int VGA_width, VGA_height, VGA_bpp;
 static unsigned char *VGA_memory;
 static unsigned char font[8192];
+static bool font_saved = FALSE;
 
 struct mode {
 	int width;
@@ -166,6 +167,8 @@ void backup_font() {
 	for (i = 0; i < 8192; i++) {
 		font[i] = VGA_memory[i];
 	}
+
+	font_saved = TRUE;
 }
 
 void restore_font() {
@@ -203,8 +206,7 @@ void VGA_set_mode(enum VGA_mode mode) {
 	// later, because it will be overwritten
 	if (VGA_modes[mode].graphic) {
 		backup_font();
-	} else {
-		// TODO: don't restore font the first time!
+	} else if (font_saved) {
 		restore_font();
 	}
 
