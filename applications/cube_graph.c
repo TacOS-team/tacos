@@ -3,15 +3,9 @@
  *
  * @author TacOS developers 
  *
- * Maxime Cheramy <maxime81@gmail.com>
- * Nicolas Floquet <nicolasfloquet@gmail.com>
- * Benjamin Hautbois <bhautboi@gmail.com>
- * Ludovic Rigal <ludovic.rigal@gmail.com>
- * Simon Vernhes <simon@vernhes.eu>
- *
  * @section LICENSE
  *
- * Copyright (C) 2010 - TacOS developers.
+ * Copyright (C) 2011 - TacOS developers.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -29,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Displays a rotating cube.
  */
 
 #include <string.h>
