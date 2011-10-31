@@ -1,5 +1,5 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=top test_sig zen cat ls mkdir kill
+OBJ=top test_sig cat ls mkdir kill clock_graph cube_graph test_mouse
 SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a 
 INCLUDES=-I../include/ -I../libc/include/
@@ -63,6 +63,15 @@ snake: snake.o
 kill: kill.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
+clock_graph: clock_graph.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
+
+cube_graph: cube_graph.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
+
+test_mouse: test_mouse.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
+
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
@@ -82,12 +91,18 @@ clean:
 
 cat.o: ../libc/include/stdio.h ../libc/include/libio.h
 cat.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
+clock_graph.o: ../libc/include/string.h ../libc/include/sys/types.h
+clock_graph.o: ../libc/include/sys/syscall.h ../libc/include/time.h
+clock_graph.o: ../libc/include/unistd.h ../include/vga_types.h
 cube.o: ../libc/include/stdio.h ../libc/include/libio.h
 cube.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 cube.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 cube.o: ../libc/include/time.h ../include/process.h ../include/types.h
 cube.o: ../include/vmm.h ../libc/include/signal.h ../libc/include/string.h
 cube.o: ../libc/include/unistd.h
+cube_graph.o: ../libc/include/string.h ../libc/include/sys/types.h
+cube_graph.o: ../libc/include/sys/syscall.h ../libc/include/unistd.h
+cube_graph.o: ../include/vga_types.h
 demo.o: ../libc/include/stdio.h ../libc/include/libio.h
 demo.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 demo.o: ../libc/include/stdlib.h ../libc/include/malloc.h
@@ -128,6 +143,10 @@ snake.o: ../libc/include/unistd.h ../libc/include/termios.h
 test.o: ../libc/include/stdio.h ../libc/include/libio.h
 test.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 test.o: ../libc/include/unistd.h
+test_mouse.o: ../libc/include/fcntl.h ../libc/include/stdio.h
+test_mouse.o: ../libc/include/libio.h ../libc/include/sys/types.h
+test_mouse.o: ../libc/include/stdarg.h ../libc/include/sys/syscall.h
+test_mouse.o: ../libc/include/unistd.h ../include/vga_types.h
 test_sig.o: ../libc/include/stdio.h ../libc/include/libio.h
 test_sig.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 test_sig.o: ../libc/include/signal.h

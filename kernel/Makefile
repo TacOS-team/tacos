@@ -3,7 +3,7 @@ CFLAGS=-W -Wall -g -ffreestanding -nostdlib -nostdinc -nostartfiles -nodefaultli
 
 SRCS = *.c
 
-all: boot.o exception_wrappers.o interrupts_wrappers.o kdirent.o kstdio.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o kprocess.o pagination.o kpanic.o ksyscall.o vmm.o kmalloc.o fat.o fpu.o vm86.o ksem.o kfcntl.o kunistd.o ksignal.o round_robin.o events.o clock.o i8254.o kdriver.o drivers/dummy_driver.o drivers/serial.o symtable.o module.o
+all: boot.o exception_wrappers.o interrupts_wrappers.o kdirent.o kstdio.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o kprocess.o pagination.o kpanic.o ksyscall.o vmm.o kmalloc.o fat.o fpu.o vm86.o ksem.o kfcntl.o kunistd.o ksignal.o round_robin.o events.o clock.o i8254.o kdriver.o drivers/dummy_driver.o drivers/serial.o drivers/mouse.o symtable.o module.o
 
 boot.o: boot.S
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) -fno-stack-protector
@@ -70,17 +70,17 @@ kernel.o: ../include/interrupts.h ../include/pci.h ../include/pci_types.h
 kernel.o: ../include/pci_config.h include/scheduler.h ../include/process.h
 kernel.o: ../include/vmm.h ../libc/include/signal.h include/clock.h
 kernel.o: ../libc/include/time.h ../include/keyboard.h include/kfcntl.h
-kernel.o: include/kprocess.h ../include/mouse.h include/events.h
-kernel.o: ../include/floppy.h include/kpanic.h ../include/kmalloc.h
-kernel.o: ../include/ioports.h include/msr.h include/kfat.h
-kernel.o: ../libc/include/sys/stat.h include/fpu.h include/vm86.h
-kernel.o: ../include/beeper.h ../include/debug.h ../include/shell.h
-kernel.o: ../libc/include/sys/syscall.h include/ksem.h ../include/video.h
-kernel.o: ../include/console.h ../include/tty.h include/ksignal.h
-kernel.o: include/round_robin.h ../include/rtl8139.h ../include/klog.h
-kernel.o: ../include/kstdio.h include/kdriver.h include/kdirent.h
-kernel.o: ../libc/include/dirent.h include/drivers/dummy_driver.h
-kernel.o: include/drivers/serial.h
+kernel.o: include/kprocess.h include/events.h ../include/floppy.h
+kernel.o: include/kpanic.h ../include/kmalloc.h ../include/ioports.h
+kernel.o: include/msr.h include/kfat.h ../libc/include/sys/stat.h
+kernel.o: include/fpu.h include/vm86.h ../include/beeper.h ../include/debug.h
+kernel.o: ../include/shell.h ../libc/include/sys/syscall.h include/ksem.h
+kernel.o: ../include/video.h ../include/console.h ../include/tty.h
+kernel.o: include/ksignal.h include/round_robin.h ../include/rtl8139.h
+kernel.o: ../include/klog.h ../include/kstdio.h include/kdriver.h
+kernel.o: include/kdirent.h ../libc/include/dirent.h ../include/vga.h
+kernel.o: ../include/vga_types.h include/drivers/dummy_driver.h
+kernel.o: include/drivers/serial.h include/drivers/mouse.h
 kfcntl.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 kfcntl.o: ../libc/include/sys/types.h ../include/types.h ../include/vmm.h
 kfcntl.o: ../libc/include/signal.h include/ksyscall.h include/scheduler.h
@@ -107,6 +107,7 @@ kprocess.o: include/scheduler.h ../libc/include/stdio.h
 kprocess.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
 kprocess.o: ../libc/include/malloc.h ../libc/include/string.h
 kprocess.o: ../include/tty.h ../include/video.h include/pagination.h
+kprocess.o: ../include/console.h ../include/vga.h ../include/vga_types.h
 ksem.o: include/ksem.h include/ksyscall.h ../include/types.h
 ksem.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 ksem.o: ../libc/include/sys/types.h ../include/vmm.h ../libc/include/signal.h
