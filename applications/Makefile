@@ -100,8 +100,7 @@ clock_graph.o: ../libc/include/unistd.h ../include/vga_types.h
 cube.o: ../libc/include/stdio.h ../libc/include/libio.h
 cube.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 cube.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-cube.o: ../libc/include/time.h ../include/process.h ../include/types.h
-cube.o: ../include/vmm.h ../libc/include/signal.h ../libc/include/string.h
+cube.o: ../libc/include/time.h ../libc/include/string.h
 cube.o: ../libc/include/unistd.h
 cube_graph.o: ../libc/include/string.h ../libc/include/sys/types.h
 cube_graph.o: ../libc/include/sys/syscall.h ../libc/include/unistd.h
