@@ -89,8 +89,7 @@ kfcntl.o: include/kfcntl.h ../libc/include/time.h ../libc/include/sys/stat.h
 kfcntl.o: ../libc/include/string.h ../include/kmalloc.h include/kdriver.h
 kfcntl.o: ../include/keyboard.h ../include/console.h ../include/tty.h
 kfcntl.o: ../include/klog.h ../include/kstdio.h ../libc/include/fcntl.h
-kmalloc.o: ../include/types.h ../libc/include/malloc.h
-kmalloc.o: ../libc/include/sys/types.h include/memory.h ../include/vmm.h
+kmalloc.o: ../include/types.h include/memory.h ../include/vmm.h
 kmalloc.o: ../include/kmalloc.h
 kpanic.o: ../include/kstdio.h include/exception.h ../include/types.h
 kpanic.o: include/kpanic.h include/kprocess.h ../include/process.h

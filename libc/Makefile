@@ -33,9 +33,8 @@ ioctl.o: include/sys/ioctl.h include/sys/syscall.h include/sys/types.h
 ioctl.o: include/unistd.h
 libio.o: include/libio.h include/sys/types.h include/stdio.h include/stdarg.h
 malloc.o: include/stdio.h include/libio.h include/sys/types.h
-malloc.o: include/stdarg.h ../include/process.h ../include/types.h
-malloc.o: ../include/vmm.h include/signal.h include/unistd.h
-malloc.o: include/sys/syscall.h include/malloc.h
+malloc.o: include/stdarg.h include/unistd.h include/sys/syscall.h
+malloc.o: include/malloc.h
 process.o: include/sys/types.h include/stdlib.h include/malloc.h
 process.o: include/stdio.h include/libio.h include/stdarg.h include/unistd.h
 process.o: include/sys/syscall.h ../include/process.h ../include/types.h
