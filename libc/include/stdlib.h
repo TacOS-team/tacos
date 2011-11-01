@@ -65,5 +65,10 @@ void srand(unsigned int seed);
 
 void exit(int value);
 
+
+char *getenv(const char *name);
+
+int clearenv(void);
+
 #endif
 

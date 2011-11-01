@@ -37,6 +37,8 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 
+char **environ = NULL;
+
 void *calloc(size_t nmemb, size_t size)
 {
   unsigned int i;
@@ -222,3 +224,27 @@ void exit(int value)
 	while(1); // Pour ne pas continuer à executer n'importe quoi alors que le processus est sensé être arrété
 }
 
+char *getenv(const char *name) {
+  int i = 0;
+  while (environ[i] != NULL) {
+    int len = strlen(name);
+    if (strncmp(environ[i], name, len) == 0) {
+      if (environ[i][len] == '=') {
+        return environ[i] + len + 1;
+      }
+    }
+    i++;
+  } 
+  return NULL;
+}
+
+int clearenv(void) {
+	int i = 0;
+	while (environ[i] != NULL) {
+		free(environ[i]);
+		i++;
+	}
+	free(environ);
+	environ = NULL;
+	return 0;
+}
