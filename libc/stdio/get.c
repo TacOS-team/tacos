@@ -61,35 +61,30 @@ int fgetc(FILE *stream) {
 	ssize_t s;
 	
 	// Première utilisation du stream, on alloue un buffer.
-	if (stream->_IO_read_ptr == NULL) {
-      char * buf = (char*) malloc(1000);
+	if (stream->_IO_buf_base == NULL) {
+      char * buf = (char*) malloc(1024);
       stream->_IO_buf_base = buf;
-      stream->_IO_buf_end = buf + 1000;
+      stream->_IO_buf_end = buf + 1024;
       stream->_IO_read_base = buf;
       stream->_IO_read_end = buf;
       stream->_IO_read_ptr = buf;
 	}
 
 	// Si on a plus d'octet dans le buffer de lecture, on rerempli le buffer.
-	if (stream->_IO_read_base == stream->_IO_read_ptr) {
-		if ((s = read(stream->_fileno, stream->_IO_read_ptr, 10)) > 0) {
-			stream->_IO_read_ptr += s;
+	if (stream->_IO_read_ptr == stream->_IO_read_end) {
+		if ((s = read(stream->_fileno, stream->_IO_read_base, 1024)) > 0) {
+			stream->_IO_read_end = stream->_IO_read_base + s;
+			stream->_IO_read_ptr = stream->_IO_read_base;
 		} else {
 			return EOF;
 		}
 	}
 
 	// On prend l'octet le plus ancien dans le buffer.
-	c = (unsigned char) *stream->_IO_read_base;
-
-	// On décale tout le buffer d'un octet.
-	// XXX: (trop) lent ?
-	for (i = stream->_IO_read_base; i < stream->_IO_read_ptr; i++) {
-		*i = *(i+1);
-	}
+	c = (unsigned char) *stream->_IO_read_ptr;
 
 	// Il y a un élément en moins dans le buffer.
-	stream->_IO_read_ptr--;
+	stream->_IO_read_ptr++;
 
 	return c;
 }
