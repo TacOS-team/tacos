@@ -70,7 +70,8 @@ stdio/fopen.o: include/stdio.h include/libio.h include/sys/types.h
 stdio/fopen.o: include/stdarg.h include/stdlib.h include/malloc.h
 stdio/fopen.o: include/string.h include/fcntl.h include/unistd.h
 stdio/fprintf.o: include/stdio.h include/libio.h include/sys/types.h
-stdio/fprintf.o: include/stdarg.h include/string.h
+stdio/fprintf.o: include/stdarg.h include/string.h include/stdlib.h
+stdio/fprintf.o: include/malloc.h
 stdio/fread.o: include/stdio.h include/libio.h include/sys/types.h
 stdio/fread.o: include/stdarg.h
 stdio/fseek.o: include/stdio.h include/libio.h include/sys/types.h

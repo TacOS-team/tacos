@@ -33,6 +33,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int fprintf(FILE *stream, const char *format, ...) {
     va_list arg;
