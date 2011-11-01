@@ -57,7 +57,6 @@ char *fgets(char *s, int size, FILE *stream) {
 
 int fgetc(FILE *stream) {
 	int c = EOF;
-	char *i;
 	ssize_t s;
 	
 	// Première utilisation du stream, on alloue un buffer.

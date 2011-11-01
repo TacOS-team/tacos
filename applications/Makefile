@@ -164,3 +164,9 @@ zen.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 zen.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 zen.o: ../libc/include/time.h ../libc/include/string.h
 zen.o: ../libc/include/unistd.h
+zen_graph.o: ../libc/include/stdio.h ../libc/include/libio.h
+zen_graph.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
+zen_graph.o: ../libc/include/stdlib.h ../libc/include/malloc.h
+zen_graph.o: ../libc/include/time.h ../libc/include/string.h
+zen_graph.o: ../libc/include/unistd.h ../include/vga_types.h
+zen_graph.o: ../libc/include/sys/syscall.h
