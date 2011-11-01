@@ -441,13 +441,14 @@ void vmm_print_heap(struct virtual_mem *vm)
 	kprintf("-- VMM : end --\n");
 }
 
-void sys_vmm(uint32_t vm, uint32_t nb_pages, uint32_t args) {
-	void **alloc = (void *) (((uint32_t *) args)[0]);
-	size_t *real_alloc_size = (size_t *) (((uint32_t *) args)[1]);
+void sys_vmm(uint32_t min_size, uint32_t alloc_ptr, uint32_t size_ptr) {
+	void **alloc = (void **) alloc_ptr;
+	size_t *real_alloc_size = (size_t *) size_ptr;
+  struct virtual_mem* vm = get_process(get_pid())->vm;
 
 	asm("cli");
-	*real_alloc_size = allocate_new_pages((struct virtual_mem *) vm, nb_pages, 
-																				alloc); 
+	*real_alloc_size = allocate_new_pages(vm, calculate_min_pages(min_size),
+                                        alloc); 
 	asm("sti");
 }
 
@@ -457,5 +458,11 @@ paddr_t vmm_get_page_paddr(vaddr_t vaddr) {
 	struct page_table_entry *pte = get_pte(dir, table);
 
 	return pte->page_addr << 12;
+}
+
+unsigned int calculate_min_pages(size_t size)
+{
+	double nb_pages = (double) (size + sizeof(struct slab)) / PAGE_SIZE;
+	return (unsigned int) (nb_pages + ((nb_pages - (int) nb_pages > 0) ? 1 : 0));
 }
 

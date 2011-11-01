@@ -33,12 +33,15 @@
  */
 
 #include <stdio.h>
-#include <process.h>
 #include <unistd.h>
 #include <sys/syscall.h>
 #include <malloc.h>
 
-#define PAGE_SIZE 4096
+struct mem_list
+{
+  struct mem *begin;
+  struct mem *end;
+};
 
 struct mem
 {
@@ -49,6 +52,11 @@ struct mem
 
 static struct mem_list process_free_mem;
 static struct mem_list process_allocated_mem;
+
+static void *__malloc(struct mem_list *free_mem, struct mem_list *allocated_mem,
+                      size_t size);
+static int __free(void *p, struct mem_list *free_mem,
+                  struct mem_list *allocated_mem);
 
 static int is_empty(struct mem_list *list)
 {
@@ -141,22 +149,6 @@ static int is_stuck(struct mem *m1, struct mem *m2)
   return m1 != NULL && (vaddr_t) m1 + m1->size == (vaddr_t) m2;
 }
 
-// retourne le nombre de pages minimal à allouer pour une zone mémoire
-// de taille size : entier_sup(size + overhead)
-unsigned int calculate_min_pages(size_t size)
-{
-	double nb_pages = (double) (size + sizeof(struct slab)) / PAGE_SIZE;
-	return (unsigned int) (nb_pages + ((nb_pages - (int) nb_pages > 0) ? 1 : 0));
-}
-
-void init_malloc(struct mem_list *free_mem, struct mem_list *allocated_mem)
-{
-  free_mem->begin = NULL;
-  free_mem->end = NULL;
-  allocated_mem->begin = NULL;
-  allocated_mem->end = NULL;
-}
-
 void init_process_malloc()
 {
 	process_free_mem.begin = NULL;
@@ -166,16 +158,14 @@ void init_process_malloc()
 }
 
 void *malloc(size_t size) {
-	return __malloc(NULL, &process_free_mem, &process_allocated_mem, size);
+	return __malloc(&process_free_mem, &process_allocated_mem, size);
 }
 
-void *__malloc(struct virtual_mem *vm, struct mem_list *free_mem, 
-							 struct mem_list *allocated_mem, size_t size)
+void *__malloc(struct mem_list *free_mem, struct mem_list *allocated_mem,
+               size_t size)
 { 
   struct mem *mem = free_mem->begin;
   size_t real_size = size + sizeof(struct mem);
-
-  //asm("cli"); // sinon on risque d'avoir des trucs bizarre
 
   while(mem != NULL && mem->size < real_size)
     mem = mem->next;
@@ -185,15 +175,9 @@ void *__malloc(struct virtual_mem *vm, struct mem_list *free_mem,
     struct mem *new_mem;
     struct mem *alloc;
     size_t real_alloc_size;
-		uint32_t args[2] = {(uint32_t) &alloc, (uint32_t) &real_alloc_size};
 
-		if(vm == NULL) {
-			vm = get_process(get_pid())->vm;
-		}
-
-		syscall(SYS_VMM, 
-						(uint32_t) vm, (uint32_t) calculate_min_pages(real_size), 
-						(uint32_t) args);
+		syscall(SYS_VMM, (uint32_t) real_size, (uint32_t) &alloc,
+                     (uint32_t) &real_alloc_size);
     
     if(real_alloc_size <= 0)
       return NULL;
@@ -205,7 +189,6 @@ void *__malloc(struct virtual_mem *vm, struct mem_list *free_mem,
   }
 
   cut_mem(mem, real_size, free_mem, allocated_mem);
-  //asm("sti");
   return (void *) (((uint32_t) mem) + sizeof(struct mem));
 }
 
@@ -217,8 +200,6 @@ int __free(void *p, struct mem_list *free_mem, struct mem_list *allocated_mem)
 {
   struct mem *m = allocated_mem->end;
 
-  //asm("cli");
-  
   while(m != NULL) {
     if((vaddr_t) m + sizeof(struct mem) <= (vaddr_t) p &&
        (vaddr_t) p < (vaddr_t) m + m->size)
@@ -241,11 +222,10 @@ int __free(void *p, struct mem_list *free_mem, struct mem_list *allocated_mem)
   
   if(is_stuck(m, m->next))
   {
-    m->size +=  m->next->size;
+    m->size += m->next->size;
     remove(free_mem, m->next);
   }
 
-  //asm("sti");
   return 0;
 }
 
@@ -257,11 +237,10 @@ static void print_mem(struct mem* m, bool free __attribute__ ((unused)))
 //  reset_attribute();
 }
 
-void malloc_print_mem(struct mem_list *free_mem, 
-											struct mem_list *allocated_mem)
+void malloc_print_mem()
 {
-  struct mem *free_it = free_mem->begin;
-  struct mem *allocated_it = allocated_mem->begin;
+  struct mem *free_it = process_free_mem.begin;
+  struct mem *allocated_it = process_allocated_mem.begin;
 
   printf("\n-- malloc : printing heap --\n");
 

@@ -18,7 +18,7 @@ interrupts_wrappers.o: interrupts_wrappers.S ../include/interrupts.h
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
 clean:
-	rm -f *.o
+	rm -f *.o drivers/*.o
 
 depend: $(SRCS)
 	makedepend -Y $(INCLUDES) -- $(CFLAGS) -- $^
