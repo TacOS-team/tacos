@@ -3,11 +3,6 @@
  *
  * @author TacOS developers 
  *
- * Maxime Cheramy <maxime81@gmail.com>
- * Nicolas Floquet <nicolasfloquet@gmail.com>
- * Benjamin Hautbois <bhautboi@gmail.com>
- * Ludovic Rigal <ludovic.rigal@gmail.com>
- * Simon Vernhes <simon@vernhes.eu>
  *
  * @section LICENSE
  *
@@ -43,11 +38,28 @@
 #include <stdlib.h>
 
 static FILE _IO_stdin = {_IO_MAGIC + _IO_LINE_BUF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 0, 0};
-static FILE _IO_stdout = {_IO_MAGIC + _IO_LINE_BUF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, &_IO_stdin, 1, 0};
-static FILE _IO_stderr = {_IO_MAGIC + _IO_UNBUFFERED, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, &_IO_stdout, 2, 0};
+static FILE _IO_stdout = {_IO_MAGIC + _IO_LINE_BUF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 1, 0};
+static FILE _IO_stderr = {_IO_MAGIC + _IO_UNBUFFERED, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 2, 0};
 
-FILE *stdin = & _IO_stdin;
-FILE *stdout = & _IO_stdout;
-FILE *stderr = & _IO_stderr;
+FILE *stdin;
+FILE *stdout;
+FILE *stderr;
 
-FILE *__file_list = & _IO_stderr;
+FILE *__file_list = NULL;
+
+void init_stdfiles(void) {
+	/* Allocation memoire. */
+	stdin = (FILE*) malloc(sizeof(FILE));
+	stdout = (FILE*) malloc(sizeof(FILE));
+	stderr = (FILE*) malloc(sizeof(FILE));
+	
+	/* On y copie les valeurs par défaut */
+	memcpy(stdin, &_IO_stdin, sizeof(FILE));
+	memcpy(stdout, &_IO_stdout, sizeof(FILE));
+	memcpy(stderr, &_IO_stderr, sizeof(FILE));
+
+	stderr->_chain = stdout;
+	stdout->_chain = stdin;
+	stdin->_chain = NULL;
+	__file_list = stderr;
+}

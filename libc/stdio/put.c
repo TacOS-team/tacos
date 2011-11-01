@@ -3,11 +3,6 @@
  *
  * @author TacOS developers 
  *
- * Maxime Cheramy <maxime81@gmail.com>
- * Nicolas Floquet <nicolasfloquet@gmail.com>
- * Benjamin Hautbois <bhautboi@gmail.com>
- * Ludovic Rigal <ludovic.rigal@gmail.com>
- * Simon Vernhes <simon@vernhes.eu>
  *
  * @section LICENSE
  *
@@ -40,9 +35,12 @@ int fflush(FILE *stream) {
 	if (stream->_fileno > 0) {
 		write(stream->_fileno, stream->_IO_write_base, stream->_IO_write_ptr - stream->_IO_write_base);
 		stream->_IO_write_ptr = stream->_IO_write_base;
+		stream->_IO_read_ptr = stream->_IO_read_base;
+		stream->_IO_read_end = stream->_IO_read_base;
 		return 0;
 	} else {
 		stream->_IO_read_ptr = stream->_IO_read_base;
+		stream->_IO_read_end = stream->_IO_read_base;
 		return 0;
 	}
 	return EOF;
@@ -51,11 +49,11 @@ int fflush(FILE *stream) {
 int fputc(int c, FILE *stream) {
 	// Ajoute dans le buffer.
 	
-	if (stream->_IO_write_ptr == NULL) {
+	if (stream->_IO_buf_base == NULL) {
 		// Si aucun buffer alors on en crée un nouveau.
-		char * buf = malloc(1000);
+		char * buf = malloc(1024);
 		stream->_IO_buf_base = buf;
-		stream->_IO_buf_end = buf + 1000;
+		stream->_IO_buf_end = buf + 1024;
 		stream->_IO_write_base = stream->_IO_buf_base;
 		stream->_IO_write_end = stream->_IO_buf_base;
 		stream->_IO_write_ptr = stream->_IO_buf_base;

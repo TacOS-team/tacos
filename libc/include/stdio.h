@@ -3,11 +3,6 @@
  *
  * @author TacOS developers 
  *
- * Maxime Cheramy <maxime81@gmail.com>
- * Nicolas Floquet <nicolasfloquet@gmail.com>
- * Benjamin Hautbois <bhautboi@gmail.com>
- * Ludovic Rigal <ludovic.rigal@gmail.com>
- * Simon Vernhes <simon@vernhes.eu>
  *
  * @section LICENSE
  *
@@ -231,21 +226,6 @@ FILE *freopen(const char *path, const char *mode, FILE *stream);
 
 FILE *fmemopen(void *buf, size_t size, const char *mode);
 
-/** 
-* @brief Converti l'entier d en une chaîne de caractère et le stock dans buf.
-*	 L'entier base permet de spécifier la base à utiliser (decimal ou 
-*	 hexadécimal).
-*
-* Converti l'entier d en une chaîne de caractère et le stock dans buf. Si 
-* base est égal à 'd', alors il interprète d comme étant en décimal et si 
-* base est égal à 'x', alors il interprète d comme étant en hexadécimal.
-* 
-* @param buf une chaîne de taille suffisament grande pour y stocker le 
-*	 résultat de la transformation.
-* @param base la base à utiliser pour la conversion ('d' ou 'x').
-* @param d le nombre à convertir.
-*/
-void itoa (char *buf, int base, int d);
 
 /**
  * @brief Modifie le buffer et les flags d'un stream
@@ -259,6 +239,8 @@ void itoa (char *buf, int base, int d);
  * @param size taille du nouveau buffer
  */
 int setvbuf(FILE *stream, char *buf, int mode, size_t size);
+
+void init_stdfiles(void);
 
 int fseek(FILE *stream, long offset, int whence);
 

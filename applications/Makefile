@@ -100,8 +100,7 @@ clock_graph.o: ../libc/include/unistd.h ../include/vga_types.h
 cube.o: ../libc/include/stdio.h ../libc/include/libio.h
 cube.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 cube.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-cube.o: ../libc/include/time.h ../include/process.h ../include/types.h
-cube.o: ../include/vmm.h ../libc/include/signal.h ../libc/include/string.h
+cube.o: ../libc/include/time.h ../libc/include/string.h
 cube.o: ../libc/include/unistd.h
 cube_graph.o: ../libc/include/string.h ../libc/include/sys/types.h
 cube_graph.o: ../libc/include/sys/syscall.h ../libc/include/unistd.h
@@ -129,8 +128,7 @@ ls.o: ../libc/include/unistd.h
 matrix.o: ../libc/include/stdio.h ../libc/include/libio.h
 matrix.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 matrix.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-matrix.o: ../libc/include/unistd.h ../include/process.h ../include/types.h
-matrix.o: ../include/vmm.h ../libc/include/signal.h
+matrix.o: ../libc/include/unistd.h
 mkdir.o: ../libc/include/dirent.h ../libc/include/sys/types.h
 mkdir.o: ../libc/include/sys/stat.h ../libc/include/stdio.h
 mkdir.o: ../libc/include/libio.h ../libc/include/stdarg.h
@@ -164,3 +162,9 @@ zen.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 zen.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 zen.o: ../libc/include/time.h ../libc/include/string.h
 zen.o: ../libc/include/unistd.h
+zen_graph.o: ../libc/include/stdio.h ../libc/include/libio.h
+zen_graph.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
+zen_graph.o: ../libc/include/stdlib.h ../libc/include/malloc.h
+zen_graph.o: ../libc/include/time.h ../libc/include/string.h
+zen_graph.o: ../libc/include/unistd.h ../include/vga_types.h
+zen_graph.o: ../libc/include/sys/syscall.h

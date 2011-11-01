@@ -3,11 +3,6 @@
  *
  * @author TacOS developers 
  *
- * Maxime Cheramy <maxime81@gmail.com>
- * Nicolas Floquet <nicolasfloquet@gmail.com>
- * Benjamin Hautbois <bhautboi@gmail.com>
- * Ludovic Rigal <ludovic.rigal@gmail.com>
- * Simon Vernhes <simon@vernhes.eu>
  *
  * @section LICENSE
  *
@@ -35,7 +30,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <process.h>
 
 int main(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unused)))
 {
