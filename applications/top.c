@@ -27,9 +27,10 @@
  * Description de ce que fait le fichier
  */
 
-#include <stdio.h>
-#include <time.h>
 #include <process.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include <unistd.h>
 
 void kill_handler()

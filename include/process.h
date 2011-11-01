@@ -121,8 +121,6 @@ typedef struct _proclist_cell{
 
 #define CURRENT_PROCESS -1
 
-void exit(uint32_t value);
-
 uint32_t get_pid();
 
 void exec(paddr_t prog, char* name, int orphan);

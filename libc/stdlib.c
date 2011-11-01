@@ -27,13 +27,15 @@
  * Description de ce que fait le fichier
  */
 
+#include <ctype.h>
+#include <errno.h>
+#include <heap.h>
+#include <malloc.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <heap.h>
-#include <errno.h>
-#include <ctype.h>
 #include <string.h>
-#include <malloc.h>
+#include <sys/syscall.h>
+#include <unistd.h>
 
 void *calloc(size_t nmemb, size_t size)
 {
@@ -212,3 +214,11 @@ int rand(void) {
 void srand(unsigned int seed) {
 	random_number = seed;
 }
+
+void exit(int value)
+{
+	fcloseall();	
+	syscall(SYS_EXIT, (uint32_t)value, 0, 0);
+	while(1); // Pour ne pas continuer à executer n'importe quoi alors que le processus est sensé être arrété
+}
+

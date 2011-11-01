@@ -28,9 +28,9 @@
  */
 
 #include <signal.h>
-#include <unistd.h>
+#include <stdlib.h>
 #include <sys/syscall.h>
-#include <process.h>
+#include <unistd.h>
 
 int kill(unsigned int pid, int sig)
 {

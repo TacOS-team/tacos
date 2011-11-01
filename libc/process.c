@@ -40,13 +40,6 @@
 #define GET_PROCESS_LIST 1
 
 
-void exit(uint32_t value)
-{
-	fcloseall();	
-	syscall(SYS_EXIT,value,0,0);
-	while(1); // Pour ne pas continuer à executer n'importe quoi alors que le processus est sensé être arrété
-}
-
 uint32_t get_pid()
 {
 	int pid;

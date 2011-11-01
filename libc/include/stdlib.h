@@ -63,5 +63,7 @@ void itoa (char *buf, int base, int d);
 int rand(void);
 void srand(unsigned int seed);
 
+void exit(int value);
+
 #endif
 
