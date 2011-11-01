@@ -128,8 +128,7 @@ ls.o: ../libc/include/unistd.h
 matrix.o: ../libc/include/stdio.h ../libc/include/libio.h
 matrix.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 matrix.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-matrix.o: ../libc/include/unistd.h ../include/process.h ../include/types.h
-matrix.o: ../include/vmm.h ../libc/include/signal.h
+matrix.o: ../libc/include/unistd.h
 mkdir.o: ../libc/include/dirent.h ../libc/include/sys/types.h
 mkdir.o: ../libc/include/sys/stat.h ../libc/include/stdio.h
 mkdir.o: ../libc/include/libio.h ../libc/include/stdarg.h
