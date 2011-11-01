@@ -72,7 +72,7 @@ int fgetc(FILE *stream) {
 
 	// Si on a plus d'octet dans le buffer de lecture, on rerempli le buffer.
 	if (stream->_IO_read_base == stream->_IO_read_ptr) {
-		if ((s = read(stream->_fileno, stream->_IO_read_ptr, 1000)) > 0) {
+		if ((s = read(stream->_fileno, stream->_IO_read_ptr, 10)) > 0) {
 			stream->_IO_read_ptr += s;
 		} else {
 			return EOF;
@@ -83,6 +83,7 @@ int fgetc(FILE *stream) {
 	c = (unsigned char) *stream->_IO_read_base;
 
 	// On décale tout le buffer d'un octet.
+	// XXX: (trop) lent ?
 	for (i = stream->_IO_read_base; i < stream->_IO_read_ptr; i++) {
 		*i = *(i+1);
 	}
