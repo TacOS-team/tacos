@@ -43,8 +43,22 @@ void *calloc(size_t nmemb, size_t size);
 long int strtol(const char* nptr, char** endptr, int base);
 unsigned long int strtoul(const char *nptr, char **endptr, int base);
 int atoi(const char* __nptr);
-void itoa (char *buf, int base, int d);
 
+/** 
+* @brief Converti l'entier d en une chaîne de caractère et le stock dans buf.
+*	 L'entier base permet de spécifier la base à utiliser (decimal ou 
+*	 hexadécimal).
+*
+* Converti l'entier d en une chaîne de caractère et le stock dans buf. Si 
+* base est égal à 'd', alors il interprète d comme étant en décimal et si 
+* base est égal à 'x', alors il interprète d comme étant en hexadécimal.
+* 
+* @param buf une chaîne de taille suffisament grande pour y stocker le 
+*	 résultat de la transformation.
+* @param base la base à utiliser pour la conversion ('d' ou 'x').
+* @param d le nombre à convertir.
+*/
+void itoa (char *buf, int base, int d);
 
 int rand(void);
 void srand(unsigned int seed);
