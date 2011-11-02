@@ -27,12 +27,13 @@
  * Description de ce que fait le fichier
  */
 
+#include <fcntl.h>
+#include <unistd.h>
 #include <gui.h>
 #include <widget.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <mouse.h>
 #include <ctype.h>
 #include <process.h>
 
@@ -178,62 +179,62 @@ void displayWindow(struct window_t* win)
 
 void runWindow(struct window_t* win)
 {
-	//int frst_time = 1;
 	int x;
 	int y;
 	int btn_frz = 0;
-	int divider=0;
 	int i;
 	int old_x = 0;
 	int old_y = 0;
-	//int colfg = 2;
-	//int colbg = 5;
+
+	int fd = open("$mouse", O_RDONLY);
+	struct {
+		int x;
+		int y;
+		bool buttons[3];
+	} mousedata;
 
 	displayWindow(win);
 	while(1)
 	{
-		if(divider%100000 == 0) //XXX: Non exposé ! && get_process(get_pid()) == get_active_process())
-		{
-			getMouseCoord(&x,&y);
-			x = x*79/640;
-			y = 24 - (y*24/480);
-
-	/*		if(!frst_time)
-				set_attribute_position(colbg, colfg, old_x, old_y); // non exposé en userspace...
-			else
-				frst_time = 0;
-			colfg = get_fg_position(x,y);
-			colbg = get_bg_position(x,y);
-			set_attribute_position(win->cursor, BLACK, x, y);*/
+		read(fd, &mousedata, sizeof(mousedata));
+		x = (mousedata.x * 79) / 319;
+		y = 24 - (mousedata.y * 24) /199;
+		if ((x != old_x || y != old_y) && !(x == 79 && y == 24)) {
+			// Dernière condition car si on est tout en bas à gauche, une nouvelle ligne apparaît :/
+			displayWindow(win);
+			printf("\033[%d;%dH\033[4%dm ", y + 1, x + 1, 6);
+			fflush(stdout);
 			old_x = x;
 			old_y = y;
-	
-			if(getMouseBtn(0))
+		}
+
+		if(mousedata.buttons[0])
+		{
+			if(!btn_frz)
 			{
-				if(!btn_frz)
+				for(i=0 ; i<win->nb_widgets ; i++)
 				{
-					for(i=0 ; i<win->nb_widgets ; i++)
-					{
-						if(win->widgets[i]->onClick != NULL &&
+					if(win->widgets[i]->onClick != NULL &&
 							x >= win->widgets[i]->x &&
 							x < win->widgets[i]->x + win->widgets[i]->w &&
 							y >= win->widgets[i]->y &&
 							y < win->widgets[i]->y + win->widgets[i]->h
-							) {
-							win->widgets[i]->onClick(win->widgets[i],x,y);
-							displayWindow(win);
-						}
+					  ) {
+						win->widgets[i]->onClick(win->widgets[i],x,y);
+						displayWindow(win);
 					}
 				}
-				btn_frz = 1;
 			}
-			else
-			{
-				btn_frz = 0;
-			}
+			btn_frz = 1;
 		}
-	divider++;
+		else
+		{
+			btn_frz = 0;
+		}
+		usleep(10000);
 	}
+	
+	close(fd);
 }
 
 int freeWindow(struct window_t* win)

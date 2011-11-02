@@ -1,7 +1,7 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=top test_sig cat ls mkdir kill clock_graph zen_graph
+OBJ=test_sig cat ls kill clock_graph test_mouse pres zen_graph
 SUBDIRS=mishell
-LIBS=../lib/libc.a ../lib/libsystem.a 
+LIBS=../lib/libc.a ../lib/libsystem.a ../lib/libutils.a 
 INCLUDES=-I../include/ -I../libc/include/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LD=ld -Ttext=40000000 --entry=start_main -melf_i386
@@ -75,6 +75,9 @@ test_mouse: test_mouse.o
 zen_graph: zen_graph.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)	
 
+pres: pres.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
+
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
@@ -132,6 +135,10 @@ matrix.o: ../libc/include/unistd.h
 mkdir.o: ../libc/include/dirent.h ../libc/include/sys/types.h
 mkdir.o: ../libc/include/sys/stat.h ../libc/include/stdio.h
 mkdir.o: ../libc/include/libio.h ../libc/include/stdarg.h
+pres.o: ../libc/include/stdio.h ../libc/include/libio.h
+pres.o: ../libc/include/sys/types.h ../libc/include/stdarg.h ../include/gui.h
+pres.o: ../include/types.h ../include/process.h ../include/vmm.h
+pres.o: ../libc/include/signal.h
 sem_ping.o: ../include/sem.h ../include/types.h ../libc/include/stdio.h
 sem_ping.o: ../libc/include/libio.h ../libc/include/sys/types.h
 sem_ping.o: ../libc/include/stdarg.h ../libc/include/unistd.h

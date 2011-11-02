@@ -21,10 +21,6 @@ noxeyes.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 noxeyes.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 noxeyes.o: ../include/process.h ../include/types.h ../include/vmm.h
 noxeyes.o: ../libc/include/signal.h
-pres.o: ../libc/include/stdio.h ../libc/include/libio.h
-pres.o: ../libc/include/sys/types.h ../libc/include/stdarg.h ../include/gui.h
-pres.o: ../include/types.h ../include/process.h ../include/vmm.h
-pres.o: ../libc/include/signal.h
 shell.o: ../libc/include/dirent.h ../libc/include/sys/types.h
 shell.o: ../libc/include/sys/stat.h ../include/floppy.h ../include/types.h
 shell.o: ../include/kmalloc.h ../include/pci.h ../include/pci_types.h
