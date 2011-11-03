@@ -74,65 +74,9 @@ typedef struct
 	
 }process_init_data_t;
 
-typedef struct
-{
-	uint32_t eax, ecx, edx, ebx;
-	uint32_t esp, kesp, ebp, esi, edi;
-	uint32_t eip, eflags;
-	uint16_t cs, ss, kss, ds, es, fs, gs;
-	uint32_t cr3;
-}regs_t;
-
-/** 
-* @brief 
-*/
-typedef struct{
-	uint16_t	pid;
-	uint16_t	ppid;
-	char* 		name;
-	uint8_t	state;
-	uint8_t	priority;
-	/* Données dédiées au évaluation de perf */
-	long int	user_time;
-	long int	sys_time;
-	int current_sample;
-	int last_sample;
-	
-	/* Données propres au contexte du processus */
-	regs_t regs;
-	/* Données utilisées pour les IO */
-	file_descriptor fd[FOPEN_MAX];
-	FILE* file_list;
-	
-    struct page_directory_entry * pd;
-	struct virtual_mem *vm;
-	
-	signal_process_data_t signal_data;
-
-  //terminal_t *ctrl_tty;
-	int ctrl_tty; // Indice pour l'instant, path dans le futur ? (lorsque fichiers spéciaux)
-} process_t;
-
-typedef struct _proclist_cell{
-	process_t* process;
-	struct _proclist_cell* next;
-	struct _proclist_cell* prev;
-}*proc_list, proclist_cell;
-
 #define CURRENT_PROCESS -1
-
-uint32_t get_pid();
 
 void exec(paddr_t prog, char* name, int orphan);
 int exec_elf(char* name, int orphan);
-
-process_t* get_process(int pid);
-
-/* Actions possibles pour get_process_list */
-#define FIRST_PROCESS 0
-#define NEXT_PROCESS 1
-#define PREV_PROCESS 2
-
-process_t* get_process_list(uint32_t action);
 
 #endif

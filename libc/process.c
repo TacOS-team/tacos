@@ -97,19 +97,3 @@ int exec_elf(char* cmdline, int orphan)
 	}
 	return ret;
 }
-
-/*
-process_t* get_process(int pid)
-{
-	process_t* temp;
-	syscall(SYS_PROC,(uint32_t)GET_PROCESS, (uint32_t)pid, (uint32_t) &temp);
-	return temp;
-}
-
-process_t* get_process_list(uint32_t action)
-{
-	process_t* temp;
-	syscall(SYS_PROC,(uint32_t)GET_PROCESS_LIST, (uint32_t)action, (uint32_t) &temp);
-	return temp;
-}
-*/

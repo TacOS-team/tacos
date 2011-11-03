@@ -1,7 +1,7 @@
 #ifndef _CONTEXT_H
 #define _CONTEXT_H
 
-#include <process.h>
+#include <kprocess.h>
 
 static inline void RESTORE_CONTEXT() __attribute__((always_inline));
 static inline void PUSH_CONTEXT() __attribute__((always_inline));
