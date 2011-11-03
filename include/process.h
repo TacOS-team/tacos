@@ -37,6 +37,7 @@
 #include <types.h>
 #include <vmm.h>
 #include <signal.h>
+#include <elf.h>
 //#include <tty.h>
 
 #define MAX_PROC 512
@@ -62,6 +63,8 @@ typedef struct
 	int exec_type; /* Type d'exécution */
 	
 	void* data; /* Usage variable */
+	
+	Elf32_File* file;
 	
 	/* Données pour le chargement de l'elf */
 	int mem_size;

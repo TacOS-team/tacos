@@ -35,6 +35,7 @@
 #include <process.h>
 #include <elf.h>
 #include <string.h>
+#include <fcntl.h>
 
 #define GET_PROCESS 0
 #define GET_PROCESS_LIST 1
@@ -70,7 +71,7 @@ int exec_elf(char* cmdline, int orphan)
 	
 	execpath[offset] = '\0';
 	
-	FILE *fd = fopen(execpath, "r");
+	int fd = open(execpath, O_RDONLY);
 	
 	process_init_data_t init_data;
 	
@@ -87,6 +88,8 @@ int exec_elf(char* cmdline, int orphan)
 		init_data.mem_size = elf_size(fd);
 		init_data.data = malloc(init_data.mem_size);
 		init_data.entry_point = load_elf(fd, init_data.data);
+		
+		init_data.file = load_elf_file(fd);
 
 		init_data.ppid = orphan?0:getpid();
 		init_data.exec_type = EXEC_ELF;

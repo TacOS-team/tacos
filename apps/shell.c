@@ -237,7 +237,7 @@ void print_logo_serial()
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	init_stdfiles();
-	load_symtable();
+	load_kernel_symtable();
 	char buffer[80];
 	
 	/* Shell misc. */
