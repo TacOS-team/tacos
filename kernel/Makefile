@@ -60,9 +60,8 @@ kdriver.o: include/kprocess.h ../include/process.h ../include/vmm.h
 kdriver.o: ../libc/include/signal.h include/ksyscall.h
 kdriver.o: ../libc/include/string.h
 kernel.o: include/multiboot.h include/idt.h ../include/types.h
-kernel.o: include/i8259.h ../libc/include/stdlib.h
-kernel.o: ../libc/include/sys/types.h ../libc/include/malloc.h
-kernel.o: include/kunistd.h include/ksyscall.h ../libc/include/string.h
+kernel.o: include/i8259.h include/kunistd.h include/ksyscall.h
+kernel.o: ../libc/include/string.h ../libc/include/sys/types.h
 kernel.o: include/memory.h include/pagination.h include/gdt.h
 kernel.o: include/exception.h ../include/interrupts.h ../include/pci.h
 kernel.o: ../include/pci_types.h ../include/pci_config.h include/scheduler.h
@@ -119,7 +118,6 @@ kstdio.o: ../include/video.h ../include/types.h ../libc/include/fcntl.h
 kstdio.o: include/kfcntl.h ../libc/include/libio.h
 kstdio.o: ../libc/include/sys/types.h include/kprocess.h ../include/process.h
 kstdio.o: ../include/vmm.h ../libc/include/signal.h include/ksyscall.h
-kstdio.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 kstdio.o: ../include/console.h ../include/tty.h
 ksyscall.o: include/msr.h ../libc/include/string.h
 ksyscall.o: ../libc/include/sys/types.h ../include/interrupts.h

@@ -30,7 +30,6 @@
 #include <multiboot.h>
 #include <idt.h>
 #include <i8259.h>
-#include <stdlib.h>
 #include <kunistd.h>
 #include <string.h>
 #include <memory.h>
