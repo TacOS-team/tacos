@@ -32,7 +32,7 @@ static void sort_symbols(symbol_table_t* table) {
 	do
 	{
 		no_swap = 1;
-		for(i = 0; i<table->count; i++)
+		for(i = 0; i<table->count-1; i++)
 		{
 			if(table->symbols[i].addr > table->symbols[i+1].addr)
 			{
@@ -83,6 +83,7 @@ symbol_table_t* load_symtable(Elf32_File* file)
 			j++;
 		}
 	}
+	//print_symbols(table);
 	sort_symbols(table);
 	return table;
 }

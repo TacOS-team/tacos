@@ -126,12 +126,7 @@ int load_elf(int fd, void* dest)
 			{
 				seek(fd, p_header.p_offset, SEEK_SET);
 				j = 0;
-				while(j<p_header.p_filesz)
-				{
-					pointeur[(p_header.p_vaddr - 0x40000000) + j] = fgetc(fd);
-					/*printf("%x ",pointeur[p_header[0].p_vaddr + i]);*/
-					j++;
-				}
+				read(fd, &(pointeur[p_header.p_vaddr - 0x40000000]),p_header.p_filesz); 
 			}
 		}
 	}

@@ -355,8 +355,10 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->signal_data.mask = 0;
 	new_proc->signal_data.pending_set = 0;
 	
+	/* Création de la table des symboles */
+	new_proc->symtable = load_symtable(init_data->file);
+	
 	add_process(new_proc);
-	int* ptr = kmalloc(sizeof(int));
 	/* Plante... */
 	free_init_data(init_data_dup);
 	

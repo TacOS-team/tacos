@@ -32,7 +32,6 @@
 
 #include <types.h>
 
-void printStackTrace(uint32_t depth);
 void kpanic_init();
 
 #endif

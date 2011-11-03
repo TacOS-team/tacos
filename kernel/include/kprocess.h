@@ -35,6 +35,7 @@
 #include <types.h>
 #include <ksyscall.h>
 #include <process.h>
+#include <symtable.h>
 
 typedef struct
 {
@@ -54,6 +55,7 @@ typedef struct{
 	char* 		name;
 	uint8_t	state;
 	uint8_t	priority;
+	
 	/* Données dédiées au évaluation de perf */
 	long int	user_time;
 	long int	sys_time;
@@ -62,6 +64,7 @@ typedef struct{
 	
 	/* Données propres au contexte du processus */
 	regs_t regs;
+	
 	/* Données utilisées pour les IO */
 	file_descriptor fd[FOPEN_MAX];
 	FILE* file_list;
@@ -73,6 +76,10 @@ typedef struct{
 
   //terminal_t *ctrl_tty;
 	int ctrl_tty; // Indice pour l'instant, path dans le futur ? (lorsque fichiers spéciaux)
+	
+	/* Données liées au debug run-time du process */
+	symbol_table_t* symtable;
+	
 } process_t;
 
 

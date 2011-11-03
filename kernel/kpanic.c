@@ -40,7 +40,7 @@
 
 extern symbol_table_t* ksymtable;
 
-void printStackTrace(uint32_t depth)
+void printStackTrace(uint32_t depth,process_t* badboy)
 {
 	// Joli petit hack:
 	// on récupère ebp à partir de l'adresse de l'argument:
@@ -59,8 +59,14 @@ void printStackTrace(uint32_t depth)
 		if(eip == 0x1)
 			break;
 		ebp = (uint32_t*) ebp[0];
-		if(i>=3)
-			kprintf("\x10 0x%x\t[%s]\n",eip, addr_to_sym(ksymtable,eip));
+		if(i>=3) {
+			if(eip > USER_PROCESS_BASE) {
+				kprintf("\x10 0x%x\t[%s*]\n",eip, addr_to_sym(badboy->symtable,eip));
+			}
+			else {
+				kprintf("\x10 0x%x\t[%s]\n",eip, addr_to_sym(ksymtable,eip));
+			}
+		}
 	}
 }
 
@@ -115,7 +121,7 @@ void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t* badbo
 	kprintf("ebx:0x%x\tedi:0x%x\n",frame->ebx,frame->edi);
 
 	if(ksymtable != NULL)
-		printStackTrace(10);
+		printStackTrace(10, badboy);
 	
 	kprintf("\nException handled : ");
 	switch(error_id)
