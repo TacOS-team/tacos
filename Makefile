@@ -1,7 +1,7 @@
 export MAKE=make
 
 USECLANG=0
-WERROR=1
+WERROR=0
 
 ifneq ($(USECLANG), 1)
 	HASCOLOR = $(shell if test `which colorgcc`; then echo true; else echo false; fi)
