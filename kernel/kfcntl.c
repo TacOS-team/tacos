@@ -56,7 +56,7 @@ void init_stdfd(process_t *new_proc) {
         tty_init(t, new_proc, (void *)console,(void (*)(void *, char)) kputchar);
         new_proc->ctrl_tty = t_i;
     } else {
-        process_t *pprocess = get_process(new_proc->ppid);
+        process_t *pprocess = find_process(new_proc->ppid);
         int t_i = pprocess->ctrl_tty;
 				t = tty_get(t_i);
 				new_proc->ctrl_tty = t_i;

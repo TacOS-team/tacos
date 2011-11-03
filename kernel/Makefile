@@ -162,4 +162,4 @@ vm86.o: ../include/debug.h include/gdt.h ../include/types.h
 vmm.o: include/memory.h ../include/types.h include/pagination.h
 vmm.o: ../include/vmm.h ../include/process.h ../libc/include/libio.h
 vmm.o: ../libc/include/sys/types.h ../libc/include/signal.h
-vmm.o: include/ksyscall.h ../include/kstdio.h
+vmm.o: include/ksyscall.h ../include/kstdio.h include/scheduler.h

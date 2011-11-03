@@ -40,13 +40,6 @@
 #define GET_PROCESS_LIST 1
 
 
-uint32_t get_pid()
-{
-	int pid;
-	syscall(SYS_GETPID,(uint32_t)&pid, 0, 0);
-	return pid;
-}
-
 void exec(paddr_t prog, char* name, int orphan)
 {
 	process_init_data_t init_data;
@@ -61,7 +54,7 @@ void exec(paddr_t prog, char* name, int orphan)
 	init_data.mem_size = 0;
 	init_data.entry_point = 0;
 	
-	init_data.ppid = orphan?0:get_pid();
+	init_data.ppid = orphan?0:getpid();
 	
 	syscall(SYS_EXEC, (uint32_t)NULL, (uint32_t)&init_data, 1);
 }
@@ -95,7 +88,7 @@ int exec_elf(char* cmdline, int orphan)
 		init_data.data = malloc(init_data.mem_size);
 		init_data.entry_point = load_elf(fd, init_data.data);
 
-		init_data.ppid = orphan?0:get_pid();
+		init_data.ppid = orphan?0:getpid();
 		init_data.exec_type = EXEC_ELF;
 
 		syscall(SYS_EXEC, (uint32_t)&init_data, (uint32_t)NULL, (uint32_t)NULL);
@@ -105,6 +98,7 @@ int exec_elf(char* cmdline, int orphan)
 	return ret;
 }
 
+/*
 process_t* get_process(int pid)
 {
 	process_t* temp;
@@ -118,3 +112,4 @@ process_t* get_process_list(uint32_t action)
 	syscall(SYS_PROC,(uint32_t)GET_PROCESS_LIST, (uint32_t)action, (uint32_t) &temp);
 	return temp;
 }
+*/

@@ -33,6 +33,7 @@
 #include <process.h>
 #include <ksyscall.h>
 #include <kstdio.h>
+#include <scheduler.h>
 
 /**
  * vmm est l'allocateur qui s'occupe de gérer les pages virtuelles du noyau.
@@ -439,7 +440,7 @@ void vmm_print_heap(struct virtual_mem *vm)
 void sys_vmm(uint32_t min_size, uint32_t alloc_ptr, uint32_t size_ptr) {
 	void **alloc = (void **) alloc_ptr;
 	size_t *real_alloc_size = (size_t *) size_ptr;
-  struct virtual_mem* vm = get_process(get_pid())->vm;
+  struct virtual_mem* vm = get_current_process()->vm;
 
 	asm("cli");
 	*real_alloc_size = allocate_new_pages(vm, calculate_min_pages(min_size),

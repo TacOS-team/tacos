@@ -516,7 +516,7 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	focus_console(2); // XXX
 
 	terminal_t *t = tty_get(current->ctrl_tty);
-	process_t* pp = get_process(current->ppid);
+	process_t* pp = find_process(current->ppid);
 
 	tty_set_fg_process(t, pp);
 	klog("tty %d %d\n", current->ctrl_tty, pp->pid);
