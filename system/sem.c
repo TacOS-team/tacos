@@ -30,7 +30,6 @@
 #include <sem.h>
 #include <unistd.h>
 #include <sys/syscall.h>
-#include <process.h>
 
 #define MAX_SEM 256
 #define KSEM_GET 1

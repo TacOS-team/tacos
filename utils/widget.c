@@ -35,7 +35,6 @@
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
-#include <process.h>
 
 size_t ansi_strlen(const char* s)
 {

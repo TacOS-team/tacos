@@ -111,8 +111,7 @@ cube_graph.o: ../include/vga_types.h
 demo.o: ../libc/include/stdio.h ../libc/include/libio.h
 demo.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 demo.o: ../libc/include/stdlib.h ../libc/include/malloc.h
-demo.o: ../libc/include/time.h ../include/process.h ../include/types.h
-demo.o: ../include/vmm.h ../libc/include/signal.h ../libc/include/string.h
+demo.o: ../libc/include/time.h ../libc/include/string.h
 demo.o: ../libc/include/unistd.h
 fiinou.o: ../libc/include/stdio.h ../libc/include/libio.h
 fiinou.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
@@ -137,8 +136,7 @@ mkdir.o: ../libc/include/sys/stat.h ../libc/include/stdio.h
 mkdir.o: ../libc/include/libio.h ../libc/include/stdarg.h
 pres.o: ../libc/include/stdio.h ../libc/include/libio.h
 pres.o: ../libc/include/sys/types.h ../libc/include/stdarg.h ../include/gui.h
-pres.o: ../include/types.h ../include/process.h ../include/vmm.h
-pres.o: ../libc/include/signal.h
+pres.o: ../include/types.h
 sem_ping.o: ../include/sem.h ../include/types.h ../libc/include/stdio.h
 sem_ping.o: ../libc/include/libio.h ../libc/include/sys/types.h
 sem_ping.o: ../libc/include/stdarg.h ../libc/include/unistd.h

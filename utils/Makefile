@@ -28,5 +28,4 @@ widget.o: ../libc/include/sys/types.h ../include/gui.h ../include/types.h
 widget.o: include/widget.h ../libc/include/stdlib.h ../libc/include/malloc.h
 widget.o: ../libc/include/string.h ../libc/include/stdio.h
 widget.o: ../libc/include/libio.h ../libc/include/stdarg.h
-widget.o: ../libc/include/ctype.h ../include/process.h ../include/vmm.h
-widget.o: ../libc/include/signal.h
+widget.o: ../libc/include/ctype.h

@@ -21,6 +21,4 @@ depend: $(SRCS)
 
 sem.o: ../include/sem.h ../include/types.h ../libc/include/unistd.h
 sem.o: ../libc/include/sys/types.h ../libc/include/sys/syscall.h
-sem.o: ../include/process.h ../libc/include/libio.h ../include/vmm.h
-sem.o: ../libc/include/signal.h
 syscall.o: ../libc/include/sys/syscall.h ../libc/include/sys/types.h
