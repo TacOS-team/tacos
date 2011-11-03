@@ -39,7 +39,6 @@ fat.o: ../libc/include/libio.h ../libc/include/sys/types.h include/kprocess.h
 fat.o: ../include/process.h ../include/vmm.h ../libc/include/signal.h
 fat.o: include/ksyscall.h ../libc/include/time.h ../libc/include/sys/stat.h
 fat.o: ../include/klog.h ../include/kstdio.h ../include/kmalloc.h
-fat.o: ../libc/include/stdio.h ../libc/include/stdarg.h
 fat.o: ../libc/include/string.h include/clock.h
 fpu.o: include/fpu.h ../include/interrupts.h ../include/types.h
 fpu.o: ../include/klog.h ../include/kstdio.h
@@ -61,19 +60,19 @@ kdriver.o: include/kprocess.h ../include/process.h ../include/vmm.h
 kdriver.o: ../libc/include/signal.h include/ksyscall.h
 kdriver.o: ../libc/include/string.h
 kernel.o: include/multiboot.h include/idt.h ../include/types.h
-kernel.o: include/i8259.h ../libc/include/stdio.h ../libc/include/libio.h
-kernel.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
-kernel.o: ../libc/include/stdlib.h ../libc/include/malloc.h include/kunistd.h
-kernel.o: include/ksyscall.h ../libc/include/string.h include/memory.h
-kernel.o: include/pagination.h include/gdt.h include/exception.h
-kernel.o: ../include/interrupts.h ../include/pci.h ../include/pci_types.h
-kernel.o: ../include/pci_config.h include/scheduler.h ../include/process.h
-kernel.o: ../include/vmm.h ../libc/include/signal.h include/clock.h
-kernel.o: ../libc/include/time.h ../include/keyboard.h include/kfcntl.h
-kernel.o: include/kprocess.h include/events.h ../include/floppy.h
-kernel.o: include/kpanic.h ../include/kmalloc.h ../include/ioports.h
-kernel.o: include/msr.h include/kfat.h ../libc/include/sys/stat.h
-kernel.o: include/fpu.h include/vm86.h ../include/beeper.h ../include/debug.h
+kernel.o: include/i8259.h ../libc/include/stdlib.h
+kernel.o: ../libc/include/sys/types.h ../libc/include/malloc.h
+kernel.o: include/kunistd.h include/ksyscall.h ../libc/include/string.h
+kernel.o: include/memory.h include/pagination.h include/gdt.h
+kernel.o: include/exception.h ../include/interrupts.h ../include/pci.h
+kernel.o: ../include/pci_types.h ../include/pci_config.h include/scheduler.h
+kernel.o: ../include/process.h ../libc/include/libio.h ../include/vmm.h
+kernel.o: ../libc/include/signal.h include/clock.h ../libc/include/time.h
+kernel.o: ../include/keyboard.h include/kfcntl.h include/kprocess.h
+kernel.o: include/events.h ../include/floppy.h include/kpanic.h
+kernel.o: ../include/kmalloc.h ../include/ioports.h include/msr.h
+kernel.o: include/kfat.h ../libc/include/sys/stat.h include/fpu.h
+kernel.o: include/vm86.h ../include/beeper.h ../include/debug.h
 kernel.o: ../include/shell.h ../libc/include/sys/syscall.h include/ksem.h
 kernel.o: ../include/video.h ../include/console.h ../include/tty.h
 kernel.o: include/ksignal.h include/round_robin.h ../include/rtl8139.h
@@ -84,11 +83,11 @@ kernel.o: include/drivers/serial.h include/drivers/mouse.h
 kfcntl.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 kfcntl.o: ../libc/include/sys/types.h ../include/types.h ../include/vmm.h
 kfcntl.o: ../libc/include/signal.h include/ksyscall.h include/scheduler.h
-kfcntl.o: ../libc/include/stdio.h ../libc/include/stdarg.h include/kfat.h
-kfcntl.o: include/kfcntl.h ../libc/include/time.h ../libc/include/sys/stat.h
-kfcntl.o: ../libc/include/string.h ../include/kmalloc.h include/kdriver.h
-kfcntl.o: ../include/keyboard.h ../include/console.h ../include/tty.h
-kfcntl.o: ../include/klog.h ../include/kstdio.h ../libc/include/fcntl.h
+kfcntl.o: include/kfat.h include/kfcntl.h ../libc/include/time.h
+kfcntl.o: ../libc/include/sys/stat.h ../libc/include/string.h
+kfcntl.o: ../include/kmalloc.h include/kdriver.h ../include/keyboard.h
+kfcntl.o: ../include/console.h ../include/tty.h ../include/klog.h
+kfcntl.o: ../include/kstdio.h ../libc/include/fcntl.h
 kmalloc.o: ../include/types.h include/memory.h ../include/vmm.h
 kmalloc.o: ../include/kmalloc.h
 kpanic.o: ../include/kstdio.h include/exception.h ../include/types.h
@@ -102,16 +101,14 @@ kprocess.o: ../libc/include/sys/types.h include/gdt.h ../include/types.h
 kprocess.o: include/kfcntl.h include/kprocess.h ../include/process.h
 kprocess.o: ../include/vmm.h ../libc/include/signal.h include/ksyscall.h
 kprocess.o: ../include/klog.h ../include/kstdio.h ../include/kmalloc.h
-kprocess.o: include/scheduler.h ../libc/include/stdio.h
-kprocess.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
+kprocess.o: include/scheduler.h ../libc/include/stdlib.h
 kprocess.o: ../libc/include/malloc.h ../libc/include/string.h
 kprocess.o: ../include/tty.h ../include/video.h include/pagination.h
 kprocess.o: ../include/console.h ../include/vga.h ../include/vga_types.h
 ksem.o: include/ksem.h include/ksyscall.h ../include/types.h
 ksem.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 ksem.o: ../libc/include/sys/types.h ../include/vmm.h ../libc/include/signal.h
-ksem.o: ../libc/include/stdio.h ../libc/include/stdarg.h ../include/kmalloc.h
-ksem.o: include/scheduler.h
+ksem.o: ../include/kmalloc.h include/scheduler.h
 ksignal.o: include/gdt.h ../include/types.h include/ksignal.h
 ksignal.o: include/ksyscall.h ../libc/include/signal.h
 ksignal.o: ../libc/include/sys/types.h include/kprocess.h
@@ -124,16 +121,14 @@ kstdio.o: ../libc/include/sys/types.h include/kprocess.h ../include/process.h
 kstdio.o: ../include/vmm.h ../libc/include/signal.h include/ksyscall.h
 kstdio.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 kstdio.o: ../include/console.h ../include/tty.h
-ksyscall.o: include/msr.h ../libc/include/stdio.h ../libc/include/libio.h
-ksyscall.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
-ksyscall.o: ../libc/include/string.h ../include/interrupts.h
+ksyscall.o: include/msr.h ../libc/include/string.h
+ksyscall.o: ../libc/include/sys/types.h ../include/interrupts.h
 ksyscall.o: ../include/types.h include/ksyscall.h ../include/klog.h
 ksyscall.o: ../include/kstdio.h
 kunistd.o: include/kprocess.h ../include/process.h ../libc/include/libio.h
 kunistd.o: ../libc/include/sys/types.h ../include/types.h ../include/vmm.h
 kunistd.o: ../libc/include/signal.h include/ksyscall.h include/scheduler.h
 kunistd.o: include/kfcntl.h ../include/klog.h ../include/kstdio.h
-kunistd.o: ../libc/include/stdio.h ../libc/include/stdarg.h
 mbr.o: ../include/floppy.h ../include/types.h include/mbr.h
 memory.o: ../include/types.h include/memory.h
 module.o: ../include/klog.h ../include/kstdio.h include/module.h

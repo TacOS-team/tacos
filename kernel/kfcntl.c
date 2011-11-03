@@ -30,7 +30,6 @@
 #include <kprocess.h>
 #include <ksyscall.h>
 #include <scheduler.h>
-#include <stdio.h>
 #include <kfat.h>
 #include <string.h>
 #include <kmalloc.h>

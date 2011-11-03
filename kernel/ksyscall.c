@@ -31,7 +31,6 @@
 //Pour plus d'infos sur sysenter: Doc Intel 2B 4-483
 
 #include <msr.h>
-#include <stdio.h>
 #include <string.h>
 #include <interrupts.h>
 #include "ksyscall.h"

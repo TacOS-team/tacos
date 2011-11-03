@@ -31,7 +31,6 @@
 
 #include <ksem.h>
 #include <kprocess.h>
-#include <stdio.h>
 #include <kmalloc.h>
 #include <scheduler.h>
 

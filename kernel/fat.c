@@ -34,10 +34,13 @@
 #include <kfat.h>
 #include <klog.h>
 #include <kmalloc.h>
-#include <stdio.h>
 #include <string.h>
 #include <types.h>
 #include <clock.h>
+
+#ifndef EOF
+# define EOF (-1)
+#endif
 
 static fat_info_t fat_info;
 
