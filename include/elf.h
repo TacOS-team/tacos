@@ -298,7 +298,7 @@ typedef struct {
  * 
  * @return 1 si le fichier est bien un fichier elf valide, 0 sinon
  */
-int load_efl_header(Elf32_Ehdr* elf_header, FILE* fd);
+int load_efl_header(Elf32_Ehdr* elf_header, int fd);
 
 /**
  * @brief charge un program header depuis un fichier elf
@@ -311,7 +311,7 @@ int load_efl_header(Elf32_Ehdr* elf_header, FILE* fd);
  * 
  * @return 0 si succès, -1 sinon
  */
-int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int index, FILE* fd);
+int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int index, int fd);
 
 /**
  * @brief charge un section header depuis un fichier elf
@@ -324,7 +324,7 @@ int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int 
  * 
  * @return 0 si succès, -1 sinon
  */
-int load_section_header(Elf32_Shdr* section_header, Elf32_Ehdr* elf_header, int index __attribute__ ((unused)), FILE* fd);
+int load_section_header(Elf32_Shdr* section_header, Elf32_Ehdr* elf_header, int index __attribute__ ((unused)), int fd);
 
 /**
  * @brief Calcul la taille que prendra l'exécutable dans la mémoire
@@ -335,7 +335,7 @@ int load_section_header(Elf32_Shdr* section_header, Elf32_Ehdr* elf_header, int 
  * 
  * @return taille prise initialement par l'exécutable en mémoire
  */
-size_t elf_size(FILE* fd);
+size_t elf_size(int fd);
 
 /**
  * @brief charge un fichier elf
@@ -346,7 +346,7 @@ size_t elf_size(FILE* fd);
  * 
  * @return adresse du point d'entrée de l'exécutable
  */
-int load_elf(FILE* fd, void* dest);
+int load_elf(int fd, void* dest);
 
 /**
  * @brief charge un fichier elf dans la structure Elf32_File
@@ -355,7 +355,7 @@ int load_elf(FILE* fd, void* dest);
  * 
  * @return pointeur vers une structure Elf32_file chargée, NULL en cas d'échec
  */
-Elf32_File* load_elf_file(FILE* fd);
+Elf32_File* load_elf_file(int fd);
 
 
 /**
