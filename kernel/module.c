@@ -40,6 +40,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+extern symbol_table_t* ksymtable;
+
 module_info_t* load_module(char* filename)
 {
 	module_info_t* result = NULL;
@@ -144,7 +146,7 @@ module_info_t* load_module(char* filename)
 					if(elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_shndx == 0) /* OK */
 					{
 						/* Si on est ici, c'est que l'entrée de relocation désigne un symbole du kernel et non du module, on va le chercher la où il est */
-						offset = sym_to_addr(elf_file->symbol_string_table + elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_name) - 4;
+						offset = sym_to_addr(ksymtable, elf_file->symbol_string_table + elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_name) - 4;
 						//klog("Binding external symbol: %s", elf_file->symbol_string_table + elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_name);
 					}
 					else if(ELF32_ST_TYPE(elf_file->sym_table[ELF32_R_SYM(rel[j].r_info)].st_info)  == STT_SECTION)

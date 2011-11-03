@@ -2,77 +2,67 @@
 #include <kprocess.h>
 #include <stdio.h>
 #include <kmalloc.h>
-#include <elf.h>
 #include <symtable.h>
 #include <klog.h>
+#include <fcntl.h>
 
 /**TODO Le tri du tableau c'est pas du tout optimal, il vaudrait mieux utiliser une liste chainée */
 
-typedef struct
-{
-	char* name;
-	paddr_t addr;
-}symbol_t;
-
-static symbol_t* symtable = NULL;
-static int nb_symbols = 0;
 const char undef[]="???";
-const char userland[]= "@userland";
-static int loaded = 0;
 
-static void swap_elements(int i, int j)
+symbol_table_t* ksymtable = NULL;
+
+static void swap_elements(symbol_table_t* table, int i, int j)
 {
 	symbol_t temp;
-	temp.name = symtable[i].name;
-	temp.addr = symtable[i].addr;
+	temp.name = table->symbols[i].name;
+	temp.addr = table->symbols[i].addr;
 	
-	symtable[i].name = symtable[j].name;
-	symtable[i].addr = symtable[j].addr;
+	table->symbols[i].name = table->symbols[j].name;
+	table->symbols[i].addr = table->symbols[j].addr;
 	
-	symtable[j].name = temp.name;
-	symtable[j].addr = temp.addr;
+	table->symbols[j].name = temp.name;
+	table->symbols[j].addr = temp.addr;
 }
 
-static void sort_array()
-{
+static void sort_symbols(symbol_table_t* table) {
 	int no_swap = 1;
 	int i;
 	
 	do
 	{
 		no_swap = 1;
-		for(i = 0; i<nb_symbols-1; i++)
+		for(i = 0; i<table->count; i++)
 		{
-			if(symtable[i].addr > symtable[i+1].addr)
+			if(table->symbols[i].addr > table->symbols[i+1].addr)
 			{
-				swap_elements(i, i+1);
+				swap_elements(table, i, i+1);
 				no_swap = 0;
 			}
 		}
 	}while(!no_swap);
 }
 
-int load_symtable()
+symbol_table_t* load_symtable(Elf32_File* file)
 {
-	Elf32_File* file;
 	int i,j, len;
 	int nb_func = 0;
 	char* string;
-	FILE* fd = fopen("/system/kernel.bin", "r");
-	
-	/* Chargement des headers de kernel.bin */
-	file = load_elf_file(fd);
+	symbol_table_t* table;
 	
 	if(file == NULL)
-		return -1;
+		return NULL;
+	
+	table = kmalloc(sizeof(symbol_table_t));
 	
 	/* Compte le nombre de symboles de fonctions, optimisé en espace précompilation*/
 	for(i=0; i<file->nb_symbols; nb_func+=(ELF32_ST_TYPE(file->sym_table[i++].st_info) == STT_FUNC));
-	nb_symbols = nb_func;
+	
+	table->count = nb_func;
 	klog("%d func symbols found", nb_func);
 	
 	/* Allocation de la table des symboles dans le kernel */
-	symtable = kmalloc(nb_func * sizeof(symbol_t));
+	table->symbols = kmalloc(nb_func * sizeof(symbol_t));
 	
 	/* On ne récupère que les symboles de fonction, osef du reste pour le moment
 	 * Sinon, on pourrait ajouter un champ à symbol_t pour identifier le type de symbol */
@@ -85,62 +75,64 @@ int load_symtable()
 			len = strlen(string);
 			
 			/* Pas de strdup dans le kernel, on alloue et copie "à la main" */
-			symtable[j].name = kmalloc(len+1);
-			memcpy(symtable[j].name, string , len+1); 
+			table->symbols[j].name = kmalloc(len+1);
+			memcpy(table->symbols[j].name, string , len+1); 
 			
-			symtable[j].addr = file->sym_table[i].st_value;
+			table->symbols[j].addr = file->sym_table[i].st_value;
 			
 			j++;
 		}
-		//file->sym_table[i].st_name;
-		//file->sym_table[i].st_value;
 	}
-	sort_array();
-	loaded = 1;
-	
-	return 0;
+	sort_symbols(table);
+	return table;
 }
 
-paddr_t sym_to_addr(char* symbol)
+void load_kernel_symtable() {
+	Elf32_File* file;
+	int fd = open("/system/kernel.bin",O_RDONLY);
+	
+	file = load_elf_file(fd);
+	
+	ksymtable = load_symtable(file);
+	
+	close(fd);
+}
+
+paddr_t sym_to_addr(symbol_table_t* table, char* symbol)
 {
 	int found = 0;
 	int i = 0;
 	paddr_t res = 0;
-	while((!found) && (i < nb_symbols))
+	while((!found) && (i < table->count))
 	{
-		if(strcmp(symbol, symtable[i].name) == 0)
+		if(strcmp(symbol, table->symbols[i].name) == 0)
 		{
 			found = 1;
-			res = symtable[i].addr;
+			res = table->symbols[i].addr;
 		}
 		i++;
 	}
 	return res;
 }
 
-char* addr_to_sym(paddr_t addr)
+char* addr_to_sym(symbol_table_t* table, paddr_t addr)
 {
 	int found = 0;
 	int i = 0;
 	char* res = NULL;
-	while(!found && (i < nb_symbols-1))
+	while(!found && (i < table->count-1))
 	{
-		if(addr >= symtable[i].addr && addr < symtable[i+1].addr)
+		if(addr >= table->symbols[i].addr && addr < table->symbols[i+1].addr)
 		{
 			found = 1;
-			res = symtable[i].name;
+			res = table->symbols[i].name;
 		}
 		i++;
 	}
-	if(addr > USER_PROCESS_BASE)
-		res = (char*) userland;
-	else if(!found)
+	/*if(addr > USER_PROCESS_BASE)
+		res = (char*) userland;*/
+	if(!found)
 		res = (char*) undef;
 	
 	return res;
-}
-
-int is_symtable_loaded()
-{
-	return loaded;
 }
