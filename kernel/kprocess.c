@@ -192,7 +192,7 @@ vaddr_t init_stack(uint32_t* base, char* args, char** envp, paddr_t return_func)
 		*(stack_ptr-1) = (vaddr_t) envp;
 		*(stack_ptr-2) = (vaddr_t) argv;
 		*(stack_ptr-3) = argc;
-		*(stack_ptr-4) = (vaddr_t) exit;
+		*(stack_ptr-4) = (vaddr_t) return_func;
 		
 		stack_ptr = stack_ptr - 4;
 		
@@ -331,7 +331,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 		
 		/* Initialisation de la pile utilisateur */
 		user_stack = USER_PROCESS_BASE + init_data_dup->mem_size + init_data_dup->stack_size-1;
-		stack_ptr = init_stack(user_stack, init_data_dup->args, init_data_dup->envp, exit);
+		stack_ptr = init_stack(user_stack, init_data_dup->args, init_data_dup->envp, sys_exit);
 		
 		/* TODO : Ajouter (ici ?) le passage de l'environnement utilisateur */
 
@@ -429,7 +429,7 @@ process_t* create_process(process_init_data_t* init_data)
 	*(stack_ptr-1) = (vaddr_t) NULL;
 	*(stack_ptr-2) = (vaddr_t) argv;
 	*(stack_ptr-3) = argc;
-	*(stack_ptr-4) = (vaddr_t) exit;
+	*(stack_ptr-4) = (vaddr_t) sys_exit;
 	
 	new_proc->ppid = init_data->ppid;
 	
