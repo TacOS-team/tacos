@@ -28,6 +28,9 @@ patch -p1 < current_change.patch
 make WERROR=1
 
 rc=$?
+
+rm -rf $TMPDIR
+
 if [ $rc -ne 0 ]; then
 		echo "Erreur !"
 		exit $rc
