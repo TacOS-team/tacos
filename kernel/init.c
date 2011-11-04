@@ -51,6 +51,8 @@ int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	klog("Starting user process...");
 	exec_elf("/bin/mishell", 0);
 	
-	while(1);
+	while(1) {
+		asm("hlt");
+	}
 	return 0;
 }
