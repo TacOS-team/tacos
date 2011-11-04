@@ -1,6 +1,5 @@
 #include <string.h>
 #include <kprocess.h>
-#include <stdio.h>
 #include <kmalloc.h>
 #include <symtable.h>
 #include <klog.h>

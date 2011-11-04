@@ -170,7 +170,6 @@ symtable.o: ../libc/include/string.h ../libc/include/sys/types.h
 symtable.o: include/kprocess.h include/ksyscall.h ../include/types.h
 symtable.o: ../libc/include/libio.h ../include/process.h ../include/elf.h
 symtable.o: ../libc/include/signal.h ../include/symtable.h ../include/vmm.h
-symtable.o: ../libc/include/stdio.h ../libc/include/stdarg.h
 symtable.o: ../include/kmalloc.h ../include/klog.h ../include/kstdio.h
 symtable.o: ../libc/include/fcntl.h
 vm86.o: ../include/debug.h include/gdt.h ../include/types.h
