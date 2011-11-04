@@ -523,10 +523,6 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	
 	close_all_fd();
 
-	// On repasse en mode texte
-	VGA_set_mode(vga_mode_80x25_text);
-	focus_console(2); // XXX
-
 	terminal_t *t = tty_get(current->ctrl_tty);
 	process_t* pp = find_process(current->ppid);
 
