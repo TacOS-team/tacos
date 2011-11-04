@@ -25,9 +25,9 @@ ctype.o: include/ctype.h
 dirent.o: include/dirent.h include/sys/types.h include/sys/stat.h
 dirent.o: include/stdlib.h include/malloc.h include/string.h
 dirent.o: include/sys/syscall.h include/unistd.h
-elf.o: ../include/elf.h include/libio.h include/sys/types.h include/stdio.h
-elf.o: include/stdarg.h include/string.h include/stdlib.h include/malloc.h
-elf.o: include/fcntl.h
+elf.o: ../include/elf.h ../include/types.h include/stdio.h include/libio.h
+elf.o: include/sys/types.h include/stdarg.h include/string.h include/stdlib.h
+elf.o: include/malloc.h include/fcntl.h
 fcntl.o: include/fcntl.h include/unistd.h include/sys/types.h
 fcntl.o: include/sys/syscall.h
 ioctl.o: include/sys/ioctl.h include/sys/syscall.h include/sys/types.h

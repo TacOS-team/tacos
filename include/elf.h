@@ -35,7 +35,7 @@
  * 
  */
 
-#include <libio.h>
+#include <types.h>
 
 typedef unsigned long int 	Elf32_Addr;
 typedef unsigned short int 	Elf32_Half;
