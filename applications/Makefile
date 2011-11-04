@@ -1,5 +1,5 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=test_sig cat ls kill clock_graph test_mouse pres zen_graph
+OBJ=test_sig cat ls kill clock_graph test_mouse pres zen_graph printenv
 SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a ../lib/libutils.a 
 INCLUDES=-I../include/ -I../libc/include/
@@ -33,6 +33,9 @@ matrix: matrix.o
 test: test.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 	
+printenv: printenv.o
+	$(LD) -o $(BIN)$@ $^ $(LIBS)
+
 sem_ping: sem_ping.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
@@ -137,6 +140,8 @@ mkdir.o: ../libc/include/libio.h ../libc/include/stdarg.h
 pres.o: ../libc/include/stdio.h ../libc/include/libio.h
 pres.o: ../libc/include/sys/types.h ../libc/include/stdarg.h ../include/gui.h
 pres.o: ../include/types.h
+printenv.o: ../libc/include/stdio.h ../libc/include/libio.h
+printenv.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 sem_ping.o: ../include/sem.h ../include/types.h ../libc/include/stdio.h
 sem_ping.o: ../libc/include/libio.h ../libc/include/sys/types.h
 sem_ping.o: ../libc/include/stdarg.h ../libc/include/unistd.h
