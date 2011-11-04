@@ -138,7 +138,7 @@ void mouse_init() {
 	interrupt_set_routine(IRQ_PS2_MOUSE, mouse_interrupt_handler, 0);
 }
 
-size_t mouse_read_state(open_file_descriptor* ofd, char* buf, size_t count) {
+size_t mouse_read_state(open_file_descriptor* ofd __attribute__((unused)), void* buf, size_t count __attribute__((unused))) {
 	memcpy(buf, &mouse_x, sizeof(mouse_x));
 	memcpy(buf + sizeof(mouse_x), &mouse_y, sizeof(mouse_y));
 	memcpy(buf + sizeof(mouse_x) + sizeof(mouse_y), mouse_buttons, sizeof(mouse_buttons)); 

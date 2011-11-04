@@ -27,10 +27,18 @@
  * Description de ce que fait le fichier
  */
 
-
-#include <symtable.h>
-#include <stdio.h>
+/* Kernel */
+#include <kdriver.h>
 #include <klog.h>
+#include <symtable.h>
+#include <drivers/dummy_driver.h>
+#include <drivers/mouse.h>
+
+/* LibC */
+#include <stdio.h>
+#include <stdlib.h>
+
+
 
 int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {

@@ -162,10 +162,10 @@ int serial_putc(serial_port port, char c)
 	return ret;
 }
 	
-size_t serial_write(open_file_descriptor* odf, const char* buf, size_t count)
+size_t serial_write(open_file_descriptor* odf __attribute__((unused)), const void* buf, size_t count)
 {
-	int i = 0;
-	char* ptr = buf;
+	unsigned int i = 0;
+	char* ptr = (char*) buf;
 
 	
 	klog("serial_puts: %d characters", count);
@@ -179,9 +179,9 @@ size_t serial_write(open_file_descriptor* odf, const char* buf, size_t count)
 	return i;
 }
 
-size_t serial_read(open_file_descriptor* odf, char* buffer, size_t size) 
+size_t serial_read(open_file_descriptor* odf __attribute__((unused)), void* buffer, size_t size) 
 {
-	char* ptr = buffer;
+	char* ptr = (char*) buffer;
 	uint32_t i = 0;
 	
 	/* On bloque tant qu'il n'y a rien à lire */

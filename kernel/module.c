@@ -36,6 +36,8 @@
 
 /* LibC */
 #include <stdio.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include <elf.h>
 #include <string.h>
 #include <stdlib.h>
@@ -45,7 +47,7 @@ extern symbol_table_t* ksymtable;
 module_info_t* load_module(char* filename)
 {
 	module_info_t* result = NULL;
-	FILE* fd = NULL;
+	int fd;
 	Elf32_File* elf_file = NULL;
 	Elf32_Rel* rel = NULL;
 	int nb_progbit = 0;
@@ -57,9 +59,9 @@ module_info_t* load_module(char* filename)
 	
 	
 	klog("Loading module %s", filename);
-	fd = fopen(filename, "r");
+	fd = open(filename, O_RDONLY);
 	
-	if(fd != NULL)
+	if(fd != -1)
 	{
 		/* Chargement des headers du fichier elf */
 		elf_file = load_elf_file(fd);
@@ -90,8 +92,8 @@ module_info_t* load_module(char* filename)
 			/* On ne charche que les sections PROGBITS, de plus parfois certaines ont une taille nulle (.note.GNU-stack, wtf au passage), on les évite) */
 			if(elf_file->sheaders[i].sh_type == SHT_PROGBITS && elf_file->sheaders[i].sh_size > 0)
 			{
-				fseek(fd, elf_file->sheaders[i].sh_offset, SEEK_SET);
-				fread((void*)ptr, elf_file->sheaders[i].sh_size, 1 , fd);
+				seek(fd, elf_file->sheaders[i].sh_offset, SEEK_SET);
+				read(fd, (void*)ptr, elf_file->sheaders[i].sh_size);
 				
 				if(elf_file->sheaders[i].sh_addralign > 1)
 					klog("aligned section %d -> %d", elf_file->sheaders[i].sh_addralign,ptr % elf_file->sheaders[i].sh_addralign);
@@ -137,8 +139,8 @@ module_info_t* load_module(char* filename)
 				 */
 				rel = malloc( elf_file->sheaders[i].sh_size );
 				
-				fseek(fd, elf_file->sheaders[i].sh_offset, SEEK_SET);
-				fread((void*)rel, elf_file->sheaders[i].sh_size, 1 , fd);
+				seek(fd, elf_file->sheaders[i].sh_offset, SEEK_SET);
+				read(fd, (void*)rel, elf_file->sheaders[i].sh_size);
 
 				for(j=0; j< elf_file->sheaders[i].sh_size/elf_file->sheaders[i].sh_entsize; j++)
 				{

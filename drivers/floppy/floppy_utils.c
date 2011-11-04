@@ -34,7 +34,7 @@
 #include "floppy_utils.h"
 #include "floppy_motor.h"
 
-static const char * drive_types[8]  = {
+static const char * drive_types[8] __attribute__((unused))  = {
 	"none",
 	"360kB 5.25\"",
 	"1,2MB 5.25\"",
@@ -121,8 +121,8 @@ int floppy_seek(int cylindre, int head)
 		{
 			static const char * status[] =
 			{ 0, "error", "invalid", "drive" };
-			kdebug("status = %s.", status[st0 >> 6]);
-			kdebug("\tST0:0x%x.\nCYL:0x%x.\n", st0, cyl);
+			kerr("status = %s.", status[st0 >> 6]);
+			kerr("\tST0:0x%x.\nCYL:0x%x.\n", st0, cyl);
 			continue;
 		}
 		

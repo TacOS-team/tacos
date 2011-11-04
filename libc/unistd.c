@@ -77,7 +77,7 @@ int chdir(const char *path) {
 
 	if ((dir = opendir(path)) != NULL) {
 		if (path[0] == '/') {
-			cwd = path;
+			cwd = (char*)path;
 		} else {
 			cwd = get_absolute_path(path);
 		}

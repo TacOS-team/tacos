@@ -52,7 +52,7 @@ sighandler_t signal(int sig, sighandler_t func)
 }
 
 int sigsuspend(const sigset_t *sigmask) {
-	syscall(SYS_SIGSUSPEND, (uint32_t)sigmask, NULL, NULL);
+	syscall(SYS_SIGSUSPEND, (uint32_t)sigmask, (uint32_t)NULL, (uint32_t)NULL);
 	//XXX TODO errno
 	return -1;
 }

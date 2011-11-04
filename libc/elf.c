@@ -32,6 +32,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <unistd.h>
 
 const char debug_string_sname[] = ".strtab";
 
@@ -111,7 +112,6 @@ int load_elf(int fd, void* dest)
 	Elf32_Phdr p_header;
 
 	uint32_t i;
-	uint32_t j;
 	
 	char* pointeur = dest;
 
@@ -125,7 +125,6 @@ int load_elf(int fd, void* dest)
 			if( p_header.p_type == PT_LOAD && p_header.p_vaddr >= 0x40000000)
 			{
 				seek(fd, p_header.p_offset, SEEK_SET);
-				j = 0;
 				read(fd, &(pointeur[p_header.p_vaddr - 0x40000000]),p_header.p_filesz); 
 			}
 		}
@@ -151,7 +150,7 @@ Elf32_File* load_elf_file(int fd)
 	int symtab_index = -1;
 	int found = 0;
 	
-	if(fd != NULL) 
+	if(fd != -1) 
 	{
 		/* Allocation de la mémoire pour la structure principale et le header du fichier */
 		file = malloc(sizeof(Elf32_File));

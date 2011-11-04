@@ -6,7 +6,7 @@ int tcgetattr(int fd, struct termios *termios_p) {
 	return 0;
 }
 
-int tcsetattr(int fd, int optional_actions, const struct termios *termios_p) {
+int tcsetattr(int fd, int optional_actions __attribute__((unused)), const struct termios *termios_p) {
 	ioctl(fd, TCSETS, (void*)termios_p);
 	return 0;
 }

@@ -114,8 +114,8 @@ void tty_set_fg_process(terminal_t *tty, process_t *process) { //TODO : remplace
     tty->fg_process = process;
 }
 
-int tty_close(open_file_descriptor *ofd) {
-
+int tty_close(open_file_descriptor *ofd __attribute__((unused))) {
+	return 0;
 }
 
 size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {

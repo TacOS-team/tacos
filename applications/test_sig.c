@@ -28,12 +28,14 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
 #include <signal.h>
 
 
 void handler(int signal) {
-	printf("handler!\n");
+	printf("handler (%d)!\n", signal);
 }
 
 void f1() {

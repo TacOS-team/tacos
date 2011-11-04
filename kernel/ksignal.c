@@ -114,7 +114,7 @@ SYSCALL_HANDLER0(sys_sigret)
 	/* On récupère les données empilées par l'interruption */
 	/* Le but ici est de remplacer ces valeurs par celles stockées dans la sigframe, 
 	 * de cette manière l'iret à la fin de l'interruption restaurera le contexte du processus */
-	iframe = stack_ptr+4; /* XXX le "+4" a été déduis, pas très safe, faudrait chercher pourquoi */
+	iframe = (intframe*) (stack_ptr+4); /* XXX le "+4" a été déduis, pas très safe, faudrait chercher pourquoi */
 	
 	/* On récupère les données empilées avant le signal. */
 	
@@ -122,7 +122,7 @@ SYSCALL_HANDLER0(sys_sigret)
 	 * esp se retrouve donc à +8 par rapport à la stack frame du signal, 
 	 * on va donc chercher cette frame à esp-8
 	 */	
-	sframe = iframe->esp-8;
+	sframe = (sigframe*) (iframe->esp-8);
 
 	
 	iframe->eax = sframe->context.eax;
@@ -209,7 +209,7 @@ int exec_sighandler(process_t* process)
 			
 			/* Et on remplis la frame avec ce qu'on veut */
 			//frame->ret_addr = process->regs.eip;
-			frame->ret_addr = frame->retcode;
+			frame->ret_addr = (vaddr_t) frame->retcode;
 			
 			/* Le signal reçoit en argument le numero de signal */
 			frame->sig = signum;

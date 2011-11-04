@@ -25,7 +25,7 @@ export LD=@printf "\033[31m   LD   $$@\033[0m\n" && ld
 export CFLAGS=-native $(WE) -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LDLIBS=-lc -lutils -ldrivers -z nodefaultlib -lsystem
 LDFLAGS=-Llib/
-SUBDIRS = kernel libc utils drivers apps system applications
+SUBDIRS = kernel libc utils drivers system applications
 
 all: directories kernel.bin
 

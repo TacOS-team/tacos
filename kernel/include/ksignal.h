@@ -36,7 +36,7 @@
 #include <kprocess.h>
 
 typedef struct {
-	void (*ret_addr)(void);
+	vaddr_t ret_addr;
 	int sig;
 	regs_t context;
 	uint32_t state;
@@ -52,6 +52,7 @@ SYSCALL_HANDLER1(sys_sigsuspend, sigset_t* mask);
 
 int exec_sighandler(process_t* process);
 
+int signal_pending(process_t* process);
 
 
 #endif /* _KSIGNAL_H */
