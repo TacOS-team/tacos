@@ -110,7 +110,6 @@ kprocess.o: ../libc/include/sys/types.h include/kprocess.h include/ksyscall.h
 kprocess.o: ../include/process.h ../libc/include/signal.h
 kprocess.o: ../include/symtable.h ../include/vmm.h ../include/klog.h
 kprocess.o: ../include/kstdio.h ../include/kmalloc.h include/scheduler.h
-kprocess.o: ../libc/include/stdlib.h ../libc/include/malloc.h
 kprocess.o: ../libc/include/string.h ../include/tty.h include/pagination.h
 kprocess.o: ../include/console.h ../include/vga.h ../include/vga_types.h
 ksem.o: include/ksem.h include/ksyscall.h ../include/types.h

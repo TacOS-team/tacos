@@ -37,7 +37,6 @@
 #include <ksyscall.h>
 #include <libio.h> 
 #include <scheduler.h>
-#include <stdlib.h>
 #include <string.h>
 #include <tty.h>
 #include <types.h>
