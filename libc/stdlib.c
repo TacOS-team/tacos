@@ -280,7 +280,7 @@ int putenv(char *string) {
 		}
 		environ2[i-1] = string;
 		environ2[i] = NULL;
-		// XXX:memory leak.
+		free(environ);
 		environ = environ2; 
 	}	 
 	return 0;
