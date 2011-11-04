@@ -1,6 +1,7 @@
 export MAKE=make
 
 USECLANG=0
+WERROR=0
 
 ifneq ($(USECLANG), 1)
 	HASCOLOR = $(shell if test `which colorgcc`; then echo true; else echo false; fi)
@@ -13,10 +14,15 @@ else
 	export CC=@printf "\033[34m   CC   $$@\033[0m\n" && clang
 endif
 
+ifeq ($(WERROR), 1)
+	export WE="-Werror"
+endif
+
+
 export AR=@printf "\033[32m   AR   $$@\033[0m\n" && ar
 
 export LD=@printf "\033[31m   LD   $$@\033[0m\n" && ld
-export CFLAGS=-native -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
+export CFLAGS=-native $(WE) -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LDLIBS=-lc -lutils -ldrivers -z nodefaultlib -lsystem
 LDFLAGS=-Llib/
 SUBDIRS = kernel libc utils drivers apps system applications
