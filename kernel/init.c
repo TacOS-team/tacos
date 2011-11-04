@@ -30,6 +30,7 @@
 /* Kernel */
 #include <kdriver.h>
 #include <klog.h>
+#include <scheduler.h>
 #include <symtable.h>
 #include <drivers/dummy_driver.h>
 #include <drivers/mouse.h>
@@ -61,8 +62,8 @@ int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	klog("Starting user process...");
 	exec_elf("/bin/mishell", 0);
 	
-	while(1) {
-		asm("hlt");
-	}
+	
+	get_current_process()->state = PROCSTATE_WAITING;
+	while(1);
 	return 0;
 }
