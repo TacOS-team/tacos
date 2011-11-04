@@ -69,17 +69,20 @@ void init_stdfd(process_t *new_proc) {
 	fd0->ofd->read = tty_read;
 	fd0->ofd->extra_data = t;
 	fd0->ofd->ioctl = tty_ioctl;
+	fd0->ofd->close = tty_close;
 	fd1->used = TRUE; /* stdout */
 	fd1->ofd = kmalloc(sizeof(open_file_descriptor));
   fd1->ofd->flags = O_WRONLY;
 	fd1->ofd->write = tty_write;
 	fd1->ofd->ioctl = tty_ioctl;
+	fd1->ofd->close = tty_close;
 	fd1->ofd->extra_data = t;
 	fd2->used = TRUE; /* stderr */
 	fd2->ofd = kmalloc(sizeof(open_file_descriptor));
   fd2->ofd->flags = O_WRONLY;
 	fd2->ofd->write = tty_write;
 	fd2->ofd->ioctl = tty_ioctl;
+	fd2->ofd->close = tty_close;
 	fd2->ofd->extra_data = t;
 }
 
@@ -165,5 +168,6 @@ SYSCALL_HANDLER2(sys_close, uint32_t fd_id, uint32_t* ret)
 			kerr("No \"close\" method for this device.");
 		else
 			*ret = ofd->close(ofd);
+		process->fd[fd_id].used = 0;
 	}
 }

@@ -63,5 +63,6 @@ void tty_set_fg_process(terminal_t *tty, process_t *process);
 size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count);
 size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count);
 int tty_ioctl (open_file_descriptor *ofd, unsigned int request, void *data);
+int tty_close (open_file_descriptor *ofd);
 
 #endif
