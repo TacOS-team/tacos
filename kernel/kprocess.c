@@ -233,7 +233,7 @@ process_init_data_t* dup_init_data(process_init_data_t* init_data) {
 	
 	dup->exec_type = init_data->exec_type;
 	
-	dup->data = kmalloc(init_data->mem_size);
+	dup->data = kmalloc(init_data->mem_size +1);
 	memcpy(dup->data, init_data->data, init_data->mem_size);
 	
 	dup->mem_size = init_data->mem_size;
@@ -246,10 +246,12 @@ process_init_data_t* dup_init_data(process_init_data_t* init_data) {
 }
 
 void free_init_data(process_init_data_t* init_data) {
+	
 	kfree(init_data->name);
 	kfree(init_data->args);
 	kfree(init_data->data);
 	kfree(init_data);
+	
 }
 
 process_t* create_process_elf(process_init_data_t* init_data)
@@ -268,7 +270,6 @@ process_t* create_process_elf(process_init_data_t* init_data)
 		
 	int i;
 	int len;
-	klog("Creating process from cmd line: %s", init_data->args);
 	
 	init_data_dup = dup_init_data(init_data);
 	
@@ -360,7 +361,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	
 	add_process(new_proc);
 	/* Plante... */
-	free_init_data(init_data_dup);
+	//free_init_data(init_data_dup);
 	
 	return new_proc;
 }
@@ -427,9 +428,9 @@ process_t* create_process(process_init_data_t* init_data)
 	new_proc->regs.ecx = 0;
 	new_proc->regs.edx = 0;
 
-	new_proc->regs.cs = 0x1B;
-	new_proc->regs.ds = 0x23;
-	new_proc->regs.ss = 0x23;
+	new_proc->regs.cs = 0x8;
+	new_proc->regs.ds = 0x10;
+	new_proc->regs.ss = 0x10;
 	
 	new_proc->regs.eflags = 0;
 	new_proc->regs.eip = prog;
@@ -521,7 +522,7 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	process_t* pp = find_process(current->ppid);
 
 	tty_set_fg_process(t, pp);
-	klog("tty %d %d\n", current->ctrl_tty, pp->pid);
+	//klog("tty %d %d\n", current->ctrl_tty, pp->pid);
 	//kprintf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
 	
 	// On a pas forcement envie de supprimer le processus immédiatement

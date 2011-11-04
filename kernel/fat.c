@@ -153,7 +153,7 @@ static void write_fat_entry(int index) {
  * Init the FAT driver for a specific devide.
  */
 void mount_FAT(read_handler rh, write_handler wh) {
-	klog("mount_FAT !");
+	kdebug("mount_FAT !");
 
 	fat_info.read_data = rh;
 	fat_info.write_data = wh;
@@ -180,9 +180,9 @@ void mount_FAT(read_handler rh, write_handler wh) {
 
 	fat_info.bytes_per_cluster = fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster;
 
-	klog("table size : %d", fat_info.table_size);
-	klog("%d bytes per logical sector", fat_info.BS.bytes_per_sector);
-	klog("%d bytes per clusters", fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster);
+	kdebug("table size : %d", fat_info.table_size);
+	kdebug("%d bytes per logical sector", fat_info.BS.bytes_per_sector);
+	kdebug("%d bytes per clusters", fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster);
 	fat_info.addr_fat = (unsigned int*) kmalloc(sizeof(unsigned int) * fat_info.BS.table_count);
 	
 	int i;
@@ -198,19 +198,19 @@ void mount_FAT(read_handler rh, write_handler wh) {
 
 	if (fat_info.total_data_clusters < 4086) {
 		fat_info.fat_type = FAT12;
-		klog("FAT Type : FAT12");
+		kdebug("FAT Type : FAT12");
 	} else if (fat_info.total_data_clusters < 65526) {
 		fat_info.fat_type = FAT16;
-		klog("FAT Type : FAT16");
+		kdebug("FAT Type : FAT16");
 	} else {
 		fat_info.fat_type = FAT32;
-		klog("FAT Type : FAT32");
+		kdebug("FAT Type : FAT32");
 	}
 
-	klog("First FAT starts at byte %u (sector %u)", fat_info.addr_fat[0], fat_info.addr_fat[0] / fat_info.BS.bytes_per_sector);
-	klog("Root directory starts at byte %u (sector %u)", fat_info.addr_root_dir, fat_info.addr_root_dir / fat_info.BS.bytes_per_sector);
-	klog("Data area starts at byte %u (sector %u)", fat_info.addr_data, fat_info.addr_data / fat_info.BS.bytes_per_sector);
-	klog("Total clusters : %d", fat_info.total_data_clusters);
+	kdebug("First FAT starts at byte %u (sector %u)", fat_info.addr_fat[0], fat_info.addr_fat[0] / fat_info.BS.bytes_per_sector);
+	kdebug("Root directory starts at byte %u (sector %u)", fat_info.addr_root_dir, fat_info.addr_root_dir / fat_info.BS.bytes_per_sector);
+	kdebug("Data area starts at byte %u (sector %u)", fat_info.addr_data, fat_info.addr_data / fat_info.BS.bytes_per_sector);
+	kdebug("Total clusters : %d", fat_info.total_data_clusters);
 
 
 	fat_info.file_alloc_table = (unsigned int*) kmalloc(sizeof(unsigned int) * fat_info.total_data_clusters);

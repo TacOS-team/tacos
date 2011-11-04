@@ -112,8 +112,6 @@ void mouse_interrupt_handler() {
 }
 
 void mouse_init() {
-	klog("Init mouse !\n");
-
 	mouse_x = SCREEN_WIDTH/2;
 	mouse_y = SCREEN_HEIGHT/2;
 	mouse_buttons[0] = mouse_buttons[1] = mouse_buttons[2] = FALSE;

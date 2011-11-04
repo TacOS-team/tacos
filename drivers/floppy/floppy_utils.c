@@ -121,8 +121,8 @@ int floppy_seek(int cylindre, int head)
 		{
 			static const char * status[] =
 			{ 0, "error", "invalid", "drive" };
-			klog("status = %s.", status[st0 >> 6]);
-			klog("\tST0:0x%x.\nCYL:0x%x.\n", st0, cyl);
+			kdebug("status = %s.", status[st0 >> 6]);
+			kdebug("\tST0:0x%x.\nCYL:0x%x.\n", st0, cyl);
 			continue;
 		}
 		
@@ -157,8 +157,8 @@ uint8_t floppy_get_type(int drive)
 
 // Récupère les lecteurs floppy disponibles en interrogeant le CMOS
 void floppy_detect_drives() {
-	klog("Floppy drive 0: %s", drive_types[floppy_get_type(0)]);
-	klog("Floppy drive 1: %s", drive_types[floppy_get_type(1)]);
+	kdebug("Floppy drive 0: %s", drive_types[floppy_get_type(0)]);
+	kdebug("Floppy drive 1: %s", drive_types[floppy_get_type(1)]);
 }
 
 

@@ -70,6 +70,7 @@
 #include <kdriver.h>
 #include <kdirent.h>
 #include <vga.h>
+#include <init.h>
 
 /* Includes des drivers */
 #include <drivers/dummy_driver.h>
@@ -193,15 +194,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_VGASETMODE,	(syscall_handler_t) sys_vgasetmode);
 	syscall_set_handler(SYS_VGAWRITEBUF,	(syscall_handler_t) sys_vgawritebuf);
 	
-	/* Initialisation des drivers */
-	klog("loading drivers...");
-	init_driver_list();
-	init_dummy();
-	init_mouse();
-	
-	/* ************************** */
 	floppy_detect_drives();
-	klog("Floppy controller version: 0x%x.", floppy_get_version());
+	kdebug("Floppy controller version: 0x%x.", floppy_get_version());
 	
 	if(init_floppy() != 0)
 		kerr("Initialisation du lecteur a echoue.");
@@ -218,19 +212,19 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	// Création du processus par défaut: notre shell
 	
-	process_init_data_t mishell_init;
+	process_init_data_t init_process;
 	
-	mishell_init.name = "mishell";
-	mishell_init.args = "mishell";
-	mishell_init.exec_type = EXEC_KERNEL;
-	mishell_init.data = (void*)shell;
-	mishell_init.mem_size = 0;
-	mishell_init.entry_point = 0;
-	mishell_init.stack_size = 0x1000;
-	mishell_init.priority = 0;
-	mishell_init.ppid = 0;
+	init_process.name = "init";
+	init_process.args = "init";
+	init_process.exec_type = EXEC_KERNEL;
+	init_process.data = (void*)init;
+	init_process.mem_size = 0;
+	init_process.entry_point = 0;
+	init_process.stack_size = 0x1000;
+	init_process.priority = 0;
+	init_process.ppid = 0;
 	
-	scheduler_add_process(create_process(&mishell_init));
+	scheduler_add_process(create_process(&init_process));
 	
 	events_init();
 	

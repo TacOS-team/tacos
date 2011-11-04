@@ -59,7 +59,6 @@ symbol_table_t* load_symtable(Elf32_File* file)
 	for(i=0; i<file->nb_symbols; nb_func+=(ELF32_ST_TYPE(file->sym_table[i++].st_info) == STT_FUNC));
 	
 	table->count = nb_func;
-	klog("%d func symbols found", nb_func);
 	
 	/* Allocation de la table des symboles dans le kernel */
 	table->symbols = kmalloc(nb_func * sizeof(symbol_t));
