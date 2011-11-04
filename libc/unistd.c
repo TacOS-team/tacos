@@ -35,9 +35,12 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 
-static char * cwd = "/";
-
 char * get_absolute_path(const char *dirname) {
+	char * cwd = getenv("PWD");
+	if (cwd == NULL) {
+		cwd = "/";
+	}
+
 	int lencwd = strlen(cwd);
 	if (lencwd <= 1) {
 		lencwd = 0;
@@ -50,6 +53,12 @@ char * get_absolute_path(const char *dirname) {
 }
 
 int chdir(const char *path) {
+	char * cwd = getenv("PWD");
+	if (cwd == NULL) {
+		putenv("PWD=/");
+		cwd = "/";
+	}
+
 	DIR *dir;
 	//XXX: Je l'ai mis ici mais vu que ".." est dispo dans le fs, je devrais 
 	//     pouvoir le mettre dans le if du opendir.
@@ -59,22 +68,33 @@ int chdir(const char *path) {
 			r[1] = '\0';
 		} else {
 			*r = '\0';
-		}
+		}		
+		char *dest = malloc(5 + strlen(cwd));
+		sprintf(dest, "PWD=%s", cwd);
+		putenv(dest);
 		return 0;
 	}
 
 	if ((dir = opendir(path)) != NULL) {
 		if (path[0] == '/') {
-			cwd = strdup(path);
+			cwd = path;
 		} else {
 			cwd = get_absolute_path(path);
 		}
+		char *dest = malloc(5 + strlen(cwd));
+		sprintf(dest, "PWD=%s", cwd);
+		putenv(dest);
 		return 0;
 	}
 	return 1;
 }
 
 const char * getcwd(char * buf, size_t size) {
+	char * cwd = getenv("PWD");
+	if (cwd == NULL) {
+		cwd = "/";
+	}
+
 	if (buf == NULL) {
 		if (size == 0) {
 			return strdup(cwd);

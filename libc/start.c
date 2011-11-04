@@ -36,13 +36,15 @@ typedef int main_type(int, char**);
 
 extern main_type main;
 
-void start_main(int argc, char** argv)
+void start_main(int argc, char** argv, char** envp)
 {
 	init_process_malloc();
 
 	init_stdfiles();
 	
 	init_signals();
+
+	init_environ(envp);
 
 	exit(main(argc, argv));
 }

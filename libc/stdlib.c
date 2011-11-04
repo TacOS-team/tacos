@@ -39,19 +39,35 @@
 
 char **environ = NULL;
 
+void init_environ(char **envp) {
+	if (envp) {
+		int i;
+		int taille_env = 0;
+		while (envp[taille_env++]);
+		environ = malloc(taille_env * sizeof(char*));
+		for (i = 0; i < taille_env - 1; i++) {
+			environ[i] = strdup(envp[i]);
+		}
+		environ[taille_env - 1] = NULL;
+	} else {
+		environ = malloc(sizeof(char*));
+		environ[0] = NULL;
+	}
+}
+
 void *calloc(size_t nmemb, size_t size)
 {
-  unsigned int i;
-  uint8_t *p;
-  
-  if(nmemb == 0 || size == 0)
-    return NULL;
+	unsigned int i;
+	uint8_t *p;
+	
+	if(nmemb == 0 || size == 0)
+		return NULL;
 
-  p = (uint8_t *) malloc(nmemb * size);
-  for(i=0 ; i<nmemb*size ; i++)
-    *(p+i) = 0;
+	p = (uint8_t *) malloc(nmemb * size);
+	for(i=0 ; i<nmemb*size ; i++)
+		*(p+i) = 0;
 
-  return p;
+	return p;
 }
 
 static int digitvalue(char c)
@@ -225,18 +241,50 @@ void exit(int value)
 }
 
 char *getenv(const char *name) {
-  int i = 0;
-  while (environ[i] != NULL) {
-    int len = strlen(name);
-    if (strncmp(environ[i], name, len) == 0) {
-      if (environ[i][len] == '=') {
-        return environ[i] + len + 1;
-      }
-    }
-    i++;
-  } 
-  return NULL;
+	if (environ != NULL) {
+		int i = 0;
+		int len = strlen(name);
+		while (environ[i] != NULL) {
+			if (strncmp(environ[i], name, len) == 0) {
+				if (environ[i][len] == '=') {
+					return environ[i] + len + 1;
+				}
+			}
+			i++;
+		}
+	}
+	return NULL;
 }
+
+int putenv(char *string) {
+	if (environ == NULL) {
+		environ = malloc(sizeof(char*) * 2);
+		environ[0] = string;
+		environ[1] = NULL;
+	} else {
+		int i = 0;
+		char *pos = strstr(string, "="); 
+		while (environ[i] != NULL) {
+			if (strncmp(environ[i], string, pos - string + 1) == 0) {
+				environ[i] = string;
+				return 0;
+			}
+			i++;
+		} 
+				
+		// Realloc !
+		char **environ2 = malloc(sizeof(char*) * (i+1));
+		int j;
+		for (j = 0; j < i - 1; j++) {
+			environ2[j] = environ[j];
+		}
+		environ2[i-1] = string;
+		environ2[i] = NULL;
+		// XXX:memory leak.
+		environ = environ2; 
+	}	 
+	return 0;
+}	 
 
 int clearenv(void) {
 	int i = 0;

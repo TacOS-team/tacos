@@ -181,7 +181,7 @@ int arg_build(char* string, vaddr_t base, char*** argv_ptr)
 	return argc;
 }
 
-vaddr_t init_stack(uint32_t* base, char* args, paddr_t return_func) {
+vaddr_t init_stack(uint32_t* base, char* args, char** envp, paddr_t return_func) {
 		int argc;
 		char** argv;
 		uint32_t* stack_ptr;
@@ -189,11 +189,12 @@ vaddr_t init_stack(uint32_t* base, char* args, paddr_t return_func) {
 		argc = arg_build(args, base, &argv);
 		
 		stack_ptr = (uint32_t*) argv[0];
-		*(stack_ptr-1) = (vaddr_t) argv;
-		*(stack_ptr-2) = argc;
-		*(stack_ptr-3) = (vaddr_t) exit;
+		*(stack_ptr-1) = (vaddr_t) envp;
+		*(stack_ptr-2) = (vaddr_t) argv;
+		*(stack_ptr-3) = argc;
+		*(stack_ptr-4) = (vaddr_t) exit;
 		
-		stack_ptr = stack_ptr - 3;
+		stack_ptr = stack_ptr - 4;
 		
 		return (vaddr_t) stack_ptr;
 }
@@ -230,6 +231,21 @@ process_init_data_t* dup_init_data(process_init_data_t* init_data) {
 	dup->args = kmalloc(strlen(init_data->args) + 1);
 	strcpy(dup->args, init_data->args);
 	
+	if (init_data->envp) {
+		int i;
+		int taille_env = 0;
+		while (init_data->envp[taille_env++]);
+		dup->envp = kmalloc(taille_env * sizeof(char*));
+		for (i = 0; i < taille_env - 1; i++) {
+			klog("%s", init_data->envp[i]);
+			dup->envp[i] = kmalloc(strlen(init_data->envp[i]) + 1);
+			strcpy(dup->envp[i], init_data->envp[i]);
+		}
+		dup->envp[taille_env - 1] = NULL;
+	} else {
+		dup->envp = NULL;
+	}
+
 	dup->exec_type = init_data->exec_type;
 	
 	dup->data = kmalloc(init_data->mem_size +1);
@@ -315,7 +331,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 		
 		/* Initialisation de la pile utilisateur */
 		user_stack = USER_PROCESS_BASE + init_data_dup->mem_size + init_data_dup->stack_size-1;
-		stack_ptr = init_stack(user_stack, init_data_dup->args, exit);
+		stack_ptr = init_stack(user_stack, init_data_dup->args, init_data_dup->envp, exit);
 		
 		/* TODO : Ajouter (ici ?) le passage de l'environnement utilisateur */
 
@@ -410,9 +426,10 @@ process_t* create_process(process_init_data_t* init_data)
 	argc = arg_build(param,(vaddr_t) &(user_stack[stack_size-1]), &argv);
 	stack_ptr = (uint32_t*) argv[0];
 	
-	*(stack_ptr-1) = (vaddr_t) argv;
-	*(stack_ptr-2) = argc;
-	*(stack_ptr-3) = (vaddr_t) exit;
+	*(stack_ptr-1) = (vaddr_t) NULL;
+	*(stack_ptr-2) = (vaddr_t) argv;
+	*(stack_ptr-3) = argc;
+	*(stack_ptr-4) = (vaddr_t) exit;
 	
 	new_proc->ppid = init_data->ppid;
 	
@@ -433,7 +450,7 @@ process_t* create_process(process_init_data_t* init_data)
 	
 	new_proc->regs.eflags = 0;
 	new_proc->regs.eip = prog;
-	new_proc->regs.esp = (vaddr_t)(stack_ptr-3);
+	new_proc->regs.esp = (vaddr_t)(stack_ptr-4);
 	new_proc->regs.ebp = new_proc->regs.esp;
 	
 	new_proc->regs.kss = 0x10;

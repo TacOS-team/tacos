@@ -40,6 +40,7 @@
 #define GET_PROCESS 0
 #define GET_PROCESS_LIST 1
 
+extern char **environ;
 
 void exec(paddr_t prog, char* name, int orphan)
 {
@@ -49,6 +50,7 @@ void exec(paddr_t prog, char* name, int orphan)
 	init_data.stack_size = 0x1000;
 	init_data.priority = 0;
 	init_data.args = "fajitas bonitas";
+	init_data.envp = environ;
 
 	init_data.data = (void *) prog;
 
@@ -84,6 +86,7 @@ int exec_elf(char* cmdline, int orphan)
 		init_data.priority = 0;
 		
 		init_data.args = cmdline;
+		init_data.envp = environ;
 		
 		init_data.mem_size = elf_size(fd);
 		init_data.data = malloc(init_data.mem_size);

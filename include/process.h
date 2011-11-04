@@ -55,6 +55,7 @@ typedef struct
 {
 	char* name;
 	char* args;
+	char** envp;
 	
 	int exec_type; /* Type d'exécution */
 	
