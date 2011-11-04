@@ -75,7 +75,7 @@ int exec_elf(char* cmdline, int orphan)
 	
 	process_init_data_t init_data;
 	
-	if(fd != NULL)
+	if(fd != -1)
 	{
 		ret = 0;
 			

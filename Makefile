@@ -91,3 +91,6 @@ depend:
 		$(MAKE) -s -C $$i depend; \
 		printf "\033[1m<<< [$$i]\033[0m\n"; \
 	done
+
+installhooks:
+	cp -f git/hooks/* .git/hooks/

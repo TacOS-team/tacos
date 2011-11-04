@@ -33,12 +33,8 @@
 #ifndef _PROCESS_H_
 #define _PROCESS_H_
 
-#include <libio.h>
 #include <types.h>
-#include <vmm.h>
-#include <signal.h>
 #include <elf.h>
-//#include <tty.h>
 
 #define MAX_PROC 512
 

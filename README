@@ -24,3 +24,6 @@ make doc
 
 Regénérer les dépendances (après ajout d'un include) :
 make depend
+
+Installtion des hooks pour git:
+make installhooks

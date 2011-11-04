@@ -41,7 +41,6 @@
 #include <string.h>
 #include <tty.h>
 #include <types.h>
-#include <video.h>
 #include <pagination.h>
 #include <console.h>
 #include <vga.h>
