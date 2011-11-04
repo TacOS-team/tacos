@@ -30,7 +30,6 @@
 #define __KTW_COLUMNS 80
 #define __KTW_LINES 25
 
-#include <video.h>
 #include <fcntl.h>
 #include <kfcntl.h>
 #include <console.h>
