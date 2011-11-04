@@ -32,10 +32,14 @@
 
 #define USER_PROCESS_BASE 0x40000000
 
-#include <types.h>
 #include <ksyscall.h>
+#include <libio.h>
 #include <process.h>
+#include <signal.h>
 #include <symtable.h>
+#include <types.h>
+#include <vmm.h>
+
 
 typedef struct
 {

@@ -158,12 +158,11 @@ test_mouse.o: ../libc/include/unistd.h ../include/vga_types.h
 test_sig.o: ../libc/include/stdio.h ../libc/include/libio.h
 test_sig.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 test_sig.o: ../libc/include/signal.h
-top.o: ../include/process.h ../libc/include/libio.h
-top.o: ../libc/include/sys/types.h ../include/types.h ../include/vmm.h
-top.o: ../libc/include/signal.h ../libc/include/stdio.h
-top.o: ../libc/include/stdarg.h ../libc/include/stdlib.h
-top.o: ../libc/include/malloc.h ../libc/include/time.h
-top.o: ../libc/include/unistd.h
+top.o: ../include/process.h ../include/types.h ../include/elf.h
+top.o: ../libc/include/libio.h ../libc/include/sys/types.h
+top.o: ../libc/include/stdio.h ../libc/include/stdarg.h
+top.o: ../libc/include/stdlib.h ../libc/include/malloc.h
+top.o: ../libc/include/time.h ../libc/include/unistd.h
 zen.o: ../libc/include/stdio.h ../libc/include/libio.h
 zen.o: ../libc/include/sys/types.h ../libc/include/stdarg.h
 zen.o: ../libc/include/stdlib.h ../libc/include/malloc.h
