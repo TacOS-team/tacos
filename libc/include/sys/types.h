@@ -39,9 +39,11 @@ typedef unsigned long long int uint64_t;  /* 64 bits non signé */
 typedef uint32_t vaddr_t;
 #endif
 
+#ifndef __cplusplus
 #ifndef _TYPES_BOOL_
 #define _TYPES_BOOL_
 typedef enum {FALSE=0, TRUE} bool;
+#endif
 #endif
 
 #ifndef _TYPES_SIZE_T_

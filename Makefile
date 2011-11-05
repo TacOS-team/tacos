@@ -14,6 +14,8 @@ else
 	export CC=@printf "\033[34m   CC   $$@\033[0m\n" && clang
 endif
 
+export CPPC=@printf "\033[34m   CPPC   $$@\033[0m\n" && g++
+
 ifeq ($(WERROR), 1)
 	export WE="-Werror"
 endif
