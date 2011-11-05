@@ -1,16 +1,11 @@
 #include <cstdio>
 
-class Test {
-public:
-	void hello() {
-		printf("Hello from C++!\n");
-		return;
-	}
-};
+#include <vector>
+
 
 int main() {
-	Test t;
-	t.hello();
+  std::vector v;
+  v.cool();
 
 	return 0;
 }
