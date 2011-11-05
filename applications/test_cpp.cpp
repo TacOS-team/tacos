@@ -3,9 +3,9 @@
 #include <vector>
 
 
+
 int main() {
-  std::vector v;
-  v.cool();
+  std::vector<char> v (10);
 
 	return 0;
 }

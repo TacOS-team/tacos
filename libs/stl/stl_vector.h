@@ -1,15 +1,24 @@
-#ifndef __VECTOR_H__
-#define __VECTOR_H__
+#ifndef __STL_VECTOR_H__
+#define __STL_VECTOR_H__
+
+#include <types.h>
 
 namespace std
 {
+  template <typename T>
   class vector
   {
+   protected:
+    T *       data;
+    uint16_t  size;
+
    public:
-    void cool();
+    vector(uint16_t size);
 
   };// class vector
   
 }// namespace std
 
-#endif// __VECTOR_H__
+#include <stl_vector.hxx>
+
+#endif// __STL_VECTOR_H__

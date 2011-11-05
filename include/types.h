@@ -47,10 +47,12 @@ typedef int ssize_t;
 
 typedef uint32_t paddr_t;
 
+#ifndef __cplusplus
 #ifndef _TYPES_BOOL_
 #define _TYPES_BOOL_
 typedef enum {FALSE=0, TRUE} bool;
 #endif
+#endif// __cplusplus
 
 /* Pointeur null */
 #define NULL ((void*)0)

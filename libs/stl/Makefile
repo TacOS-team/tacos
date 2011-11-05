@@ -5,7 +5,7 @@ SRCS=*.cpp
 
 all: libstl
 
-libstl: stl_vector.o
+libstl: string.o
 	$(AR) r ../../lib/$@.a $^
 
 %.o: %.cpp
@@ -20,6 +20,6 @@ depend: $(SRCS)
 # DO NOT DELETE THIS LINE -- make depend needs it
 
 stl_vector.o: /home/barbug/Sources/INSA/tacos/libs/stl/stl_vector.h
-stl_vector.o: ../../libc/include/cstdio ../../libc/include/stdio.h
-stl_vector.o: ../../libc/include/libio.h ../../libc/include/sys/types.h
-stl_vector.o: ../../libc/include/stdarg.h
+stl_vector.o: ../../include/types.h ../../libc/include/cstdio
+stl_vector.o: ../../libc/include/stdio.h ../../libc/include/libio.h
+stl_vector.o: ../../libc/include/sys/types.h ../../libc/include/stdarg.h
