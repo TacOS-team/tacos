@@ -114,7 +114,7 @@ SYSCALL_HANDLER0(sys_sigret)
 	/* On récupère les données empilées par l'interruption */
 	/* Le but ici est de remplacer ces valeurs par celles stockées dans la sigframe, 
 	 * de cette manière l'iret à la fin de l'interruption restaurera le contexte du processus */
-	iframe = (intframe*) (stack_ptr+4); /* XXX le "+4" a été déduis, pas très safe, faudrait chercher pourquoi */
+	iframe = (intframe*) (stack_ptr+2); /* XXX le "+4" a été déduis, pas très safe, faudrait chercher pourquoi */
 	
 	/* On récupère les données empilées avant le signal. */
 	

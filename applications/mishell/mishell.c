@@ -33,7 +33,11 @@
 #include <string.h>
 #include <time.h>
 #include <shell_utils.h>
+#include <signal.h>
 #include <unistd.h>
+
+void sigint_handler(int signal __attribute__((unused))) {
+}
 
 int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
 
@@ -145,6 +149,8 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 {
 	
 	char buffer[256];
+	
+	//signal(SIGINT, sigint_handler);
 
 	add_builtin_cmd(help_cmd, "help");
 	add_builtin_cmd(date_cmd, "date");
