@@ -1,0 +1,6 @@
+#ifndef __STDLIB__
+#define __STDLIB__
+
+#include <stl_stdlib.h>
+
+#endif // __STDLIB__

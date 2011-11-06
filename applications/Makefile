@@ -189,7 +189,11 @@ zen_graph.o: ../libc/include/unistd.h ../include/vga_types.h
 zen_graph.o: ../libc/include/sys/syscall.h
 test_cpp.o: ../libc/include/cstdio ../libc/include/stdio.h
 test_cpp.o: ../libc/include/libio.h ../libc/include/sys/types.h
-test_cpp.o: ../libc/include/stdarg.h ../libs/stl/vector
+test_cpp.o: ../libc/include/stdarg.h ../libc/include/cunistd
+test_cpp.o: ../libc/include/unistd.h ../libs/stl/vector
 test_cpp.o: ../libs/stl/stl_vector.h ../include/types.h
-test_cpp.o: ../libs/stl/stl_vector.hxx ../libc/include/stdlib
-test_cpp.o: ../libc/include/malloc.h ../libs/stl/string
+test_cpp.o: ../libs/stl/stl_vector.hxx ../libc/include/cstring
+test_cpp.o: ../libc/include/string.h ../libs/stl/stdlib
+test_cpp.o: ../libs/stl/stl_stdlib.h ../libc/include/malloc.h
+test_cpp.o: ../libs/stl/algorithm ../libs/stl/stl_algobase.h
+test_cpp.o: ../libs/stl/string ../libs/stl/stl_string.h

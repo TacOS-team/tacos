@@ -1,0 +1,14 @@
+tacos.config
+tacos.creator*
+tacos.files
+tacos.includes
+*.o
+*.a
+*.log
+*.bak
+*.img
+*.bin
+*.sw*
+bin/*
+.gitignore
+ne2k-txdump.txt

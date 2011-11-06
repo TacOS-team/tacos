@@ -1,6 +1,6 @@
-#ifndef __VECTOR__
-#define __VECTOR__
+#ifndef __VECTOR_H__
+#define __VECTOR_H__
 
 #include <stl_vector.h>
 
-#endif// __VECTOR__
+#endif// __VECTOR_H__

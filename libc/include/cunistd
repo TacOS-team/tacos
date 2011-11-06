@@ -1,0 +1,11 @@
+#ifndef __CUNISTD_H__
+#define __CUNISTD_H__
+
+
+extern "C" {
+	#include <unistd.h>
+}
+
+
+#endif// __CUNISTD_H__
+

@@ -1,0 +1,8 @@
+#ifndef __ALGORITHM_H__
+#define __ALGORITHM_H__
+
+#include <stl_algobase.h>
+
+#endif// __ALGORITHM_H__
+
+

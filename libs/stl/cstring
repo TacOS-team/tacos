@@ -1,0 +1,10 @@
+#ifndef __CSTRING_H__
+#define __CSTRING_H__
+
+extern "C" {
+  #include <string.h>
+}
+
+
+#endif// __CSTRING_H__
+
