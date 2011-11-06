@@ -191,3 +191,5 @@ test_cpp.o: ../libc/include/cstdio ../libc/include/stdio.h
 test_cpp.o: ../libc/include/libio.h ../libc/include/sys/types.h
 test_cpp.o: ../libc/include/stdarg.h ../libs/stl/vector
 test_cpp.o: ../libs/stl/stl_vector.h ../include/types.h
+test_cpp.o: ../libs/stl/stl_vector.hxx ../libc/include/stdlib
+test_cpp.o: ../libc/include/malloc.h ../libs/stl/string

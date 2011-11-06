@@ -9,11 +9,19 @@ namespace std
   class vector
   {
    protected:
-    T *       data;
-    uint16_t  size;
+    T *     m_data;
+    size_t  m_size;
+    size_t  m_reserve;
 
    public:
-    vector(uint16_t size);
+    vector(size_t reserve = 8);
+
+    void push_back ( const T & x );
+
+    const T & operator [] (size_t index) const;
+          T & operator [] (size_t index);
+
+    size_t size() const;
 
   };// class vector
   
