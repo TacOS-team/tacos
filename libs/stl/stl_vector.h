@@ -17,6 +17,7 @@ namespace std
     vector(size_t reserve = 8);
 
     void push_back ( const T & x );
+    void pop_back();
 
     const T & operator [] (size_t index) const;
           T & operator [] (size_t index);

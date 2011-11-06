@@ -24,5 +24,18 @@ int main() {
   }
   printf("\n");
 
+  for (int i = 0; i < 10; ++i)
+  {
+    v.pop_back();
+    printf("taille vector : %d\n", v.size());
+  }
+
+  for (size_t i = 0; i < v.size(); ++i)
+  {
+    printf("%c", v[i]);
+  }
+  printf("\n");
+
 	return 0;
-}
+
+}// main()

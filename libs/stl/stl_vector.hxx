@@ -39,6 +39,17 @@ void VECTOR::push_back ( const T & x )
 
 
 TEMPLATE
+void VECTOR::pop_back ()
+{
+  if (m_size > 0)
+  {
+    --m_size;
+  }
+
+}// VECTOR::push_back()
+
+
+TEMPLATE
 T & VECTOR::operator [] (size_t index)
 {
   return m_data[index];
