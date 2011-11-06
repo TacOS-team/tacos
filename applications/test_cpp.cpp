@@ -114,7 +114,51 @@ void testVector() {
 void testString() {
   std::string str ("Test string...");
 
-  printf("Taille : %d\nContenu : %s\n", str.length(), str.c_str());
+  printf("Taille : %d\nCapacity : %d\nContenu : %s\n", str.length(), str.capacity(), str.c_str());
+
+  str.append("Append");
+
+  printf("Taille : %d\nCapacity : %d\nContenu : %s\n", str.length(), str.capacity(), str.c_str());
+
+  str.append(std::string(" haha"));
+
+  printf("Taille : %d\nCapacity : %d\nContenu : %s\n", str.length(), str.capacity(), str.c_str());
+
+  str.erase(14);
+
+  printf("Taille : %d\nCapacity : %d\nContenu : %s\n", str.length(), str.capacity(), str.c_str());
+
+  str.erase(20);
+
+  printf("Taille : %d\nCapacity : %d\nContenu : %s\n", str.length(), str.capacity(), str.c_str());
+
+  str.erase(100);
+
+  printf("Taille : %d\nCapacity : %d\nContenu : %s\n", str.length(), str.capacity(), str.c_str());
+
+  str.erase(2, 2);
+
+  printf("Taille : %d\nCapacity : %d\nContenu : %s\n", str.length(), str.capacity(), str.c_str());
+
+  str.append(" hoho");
+
+  printf("Taille : %d\nCapacity : %d\nContenu : %s\n", str.length(), str.capacity(), str.c_str());
+
+  str.append("lalalalalalalalalalalalalalalalalalalalalalalalalala");
+
+  printf("Taille : %d\nCapacity : %d\nContenu : %s\n", str.length(), str.capacity(), str.c_str());
+
+  str.reserve(200);
+
+  printf("Taille : %d\nCapacity : %d\nContenu : %s\n", str.length(), str.capacity(), str.c_str());
+
+  str.reserve(16);
+
+  printf("Taille : %d\nCapacity : %d\nContenu : %s\n", str.length(), str.capacity(), str.c_str());
+
+  str.reserve(0);
+
+  printf("Taille : %d\nCapacity : %d\nContenu : %s\n", str.length(), str.capacity(), str.c_str());
 
 }// testString()
 
