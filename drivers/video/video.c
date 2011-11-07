@@ -29,10 +29,7 @@
 
 #include <types.h>
 #include <ioports.h>
-#include <ctype.h>
 #include <video.h>
-#include <stdlib.h>
-#include <kmalloc.h>
 
 /* The video memory address. */
 #define BASE_VGA_VIDEO                   0xB8000

@@ -82,7 +82,4 @@ video/vga.o: ../include/ioports.h ../include/klog.h ../include/kstdio.h
 video/vga.o: ../libc/include/string.h ../libc/include/sys/types.h
 video/vga.o: ../include/vga.h ../kernel/include/ksyscall.h ../include/types.h
 video/vga.o: ../include/vga_types.h
-video/video.o: ../include/types.h ../include/ioports.h
-video/video.o: ../libc/include/ctype.h ../include/video.h
-video/video.o: ../libc/include/stdlib.h ../libc/include/sys/types.h
-video/video.o: ../libc/include/malloc.h ../include/kmalloc.h
+video/video.o: ../include/types.h ../include/ioports.h ../include/video.h
