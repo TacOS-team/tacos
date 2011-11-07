@@ -1,9 +1,9 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=test_sig cat ls kill clock_graph test_mouse pres zen_graph printenv
+OBJ=test_sig cat ls kill clock_graph zen_graph 
 SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a ../lib/libutils.a 
 INCLUDES=-I../include/ -I../libc/include/
-CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
+CFLAGS=-W -O3 -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LD=ld -Ttext=40000000 --entry=start_main -melf_i386
 BIN=../bin/
 SRCS=*.c
