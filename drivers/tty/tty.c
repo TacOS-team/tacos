@@ -114,7 +114,14 @@ void tty_set_fg_process(terminal_t *tty, process_t *process) { //TODO : remplace
     tty->fg_process = process;
 }
 
-int tty_close(open_file_descriptor *ofd __attribute__((unused))) {
+int tty_close(open_file_descriptor *ofd) {
+	terminal_t *t = (terminal_t *) ofd->extra_data;
+	
+	if (t->fg_process) {
+		tty_set_fg_process(t, find_process(t->fg_process->ppid));
+		//klog("tty %d %d\n", current->ctrl_tty, pp->pid);
+	}
+
 	return 0;
 }
 
