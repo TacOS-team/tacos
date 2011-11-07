@@ -28,7 +28,6 @@
  */
 
 #include <types.h>
-#include <stdlib.h>
 #include <ioports.h>
 #include <keyboard.h>
 #include <console.h>

@@ -47,10 +47,9 @@ floppy/floppy_utils.o: ../include/ioports.h ../include/types.h
 floppy/floppy_utils.o: ../include/klog.h ../include/kstdio.h
 floppy/floppy_utils.o: floppy/floppy_interrupt.h floppy/floppy_utils.h
 floppy/floppy_utils.o: floppy/floppy_motor.h
-keyboard/keyboard.o: ../include/types.h ../libc/include/stdlib.h
-keyboard/keyboard.o: ../libc/include/sys/types.h ../libc/include/malloc.h
-keyboard/keyboard.o: ../include/ioports.h ../include/keyboard.h
-keyboard/keyboard.o: ../kernel/include/kfcntl.h ../libc/include/libio.h
+keyboard/keyboard.o: ../include/types.h ../include/ioports.h
+keyboard/keyboard.o: ../include/keyboard.h ../kernel/include/kfcntl.h
+keyboard/keyboard.o: ../libc/include/libio.h ../libc/include/sys/types.h
 keyboard/keyboard.o: ../kernel/include/kprocess.h
 keyboard/keyboard.o: ../kernel/include/ksyscall.h ../include/process.h
 keyboard/keyboard.o: ../include/elf.h ../libc/include/signal.h
