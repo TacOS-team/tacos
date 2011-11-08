@@ -30,17 +30,22 @@
 
 //Pour plus d'infos sur sysenter: Doc Intel 2B 4-483
 
-#include <msr.h>
-#include <string.h>
+/* Kernel */
+
+#include <gdt.h>
 #include <interrupts.h>
-#include "ksyscall.h"
+#include <ksyscall.h>
 #include <klog.h>
+#include <msr.h>
+
+/* LibC */
+#include <string.h>
 
 syscall_handler_t syscall_handler_table[MAX_SYSCALL_NB];
 
 /**
  * @brief Point d'entrée des appels systèmes
- * C'est cet fonction qui est lancée à la réception de l'IRQ_SYSCALL
+ * C'est cette fonction qui est lancée à la réception de l'IRQ_SYSCALL
  * Sont rôle est de récupérer l'identifiant de l'appel système, et
  * d'exécuter en conséquence le handler correspondant
  * 
@@ -51,10 +56,19 @@ void syscall_entry(int interrupt_id __attribute__ ((unused)))
 {	
 	uint32_t function, param1, param2, param3;
 	syscall_handler_t handler;
+	intframe* frame;
 	
 	/* On récupère les parametres */
 	asm("":"=a"(function),"=b"(param1),"=c"(param2),"=d"(param3));
-
+	
+	/* Récupération des données empilées par l'interruption*/
+	frame = &interrupt_id;
+	
+	/* Si on fait le syscall depuis l'user-mode, on sauvegarde l'esp user dans la tss */
+	if(frame->cs == USER_CODE_SEGMENT) {
+		get_default_tss()->esp1 = frame->esp;
+	}
+	
 	/* On execute le handler correspondant, si il est bien présent dans la table */
 	if(function < MAX_SYSCALL_NB && syscall_handler_table[function] != NULL)
 	{

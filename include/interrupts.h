@@ -65,13 +65,13 @@ typedef struct {
 	
 	/* Registres */
 	uint16_t es;
-	uint16_t es2;
+	uint16_t __es_unused;
 	uint16_t ds;
-	uint16_t ds2;
+	uint16_t __ds_unused;
 	uint16_t gs;
-	uint16_t gs2;
+	uint16_t __gs_unused;
 	uint16_t fs;
-	uint16_t fs2;
+	uint16_t __fs_unused;
 	uint32_t edi;
 	uint32_t esi;
 	uint32_t ebp;
@@ -85,6 +85,7 @@ typedef struct {
 	uint32_t eflags;
 	uint32_t esp;
 	uint16_t ss;
+	uint16_t __ss_unused;
 	
 }intframe;
 

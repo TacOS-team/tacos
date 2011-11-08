@@ -61,11 +61,12 @@ static int sample_counter;	/* Compteur du nombre d'échantillonnage pour l'éval
 
 static process_t* idle_process = NULL;
 static scheduler_descriptor_t* scheduler = NULL;
+static int idle_injected = 0;
 
 void idle()
 {
 	while(1)
-		halt();
+		asm("hlt");
 }
 
 void set_scheduler(scheduler_descriptor_t* sched)
@@ -144,7 +145,7 @@ void context_switch(int mode, process_t* current)
 	PUSH_CONTEXT(current);
 	
 	outb(0x20, 0x20);
-
+	
 	/* On lui remet sa page directory */
 	pagination_load_page_directory((struct page_directory_entry *)pd_paddr);
 
@@ -158,9 +159,15 @@ void* schedule(void* data __attribute__ ((unused)))
 	/* On met le contexte dans la structure "process"*/
 	process_t* current = scheduler->get_current_process();
 	
+	if(current->pid == 2 && idle_injected == 1) {
+		asm("nop");
+		
+	}
+	
 	/* On récupère le contexte du processus actuel uniquement si il a déja été lancé */
-	if(current->state == PROCSTATE_RUNNING || current->state == PROCSTATE_WAITING || current->state == PROCSTATE_SUSPENDED)
+	if(idle_injected!=1 && current->state != PROCSTATE_TERMINATED && current->state != PROCSTATE_IDLE)
 	{	
+		
 		/* On récupere un pointeur de pile pour acceder aux registres empilés */
 		asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
 		
@@ -186,19 +193,19 @@ void* schedule(void* data __attribute__ ((unused)))
 		{
 			current->regs.ss = get_default_tss()->ss0;
 			current->regs.esp = frame->kesp + 12;	/* Valeur hardcodée, je cherche encore un moyen d'éviter ça... */
+			current->regs.kesp = current->regs.esp;
 		}
 		else
 		{
 			current->regs.ss = frame->ss;
 			current->regs.esp = frame->esp;
 		}
-		
-		/* Sauver la TSS */
-		/*current->regs.kesp = get_default_tss()->esp0;
-		current->regs.kss  = get_default_tss()->ss0;*/
+
 		
 		current->user_time += quantum;
 	}
+	
+	idle_injected = 0;
 	
 	/* On recupere le prochain processus à executer.
 	 * TODO: Dans l'idéal, on devrait ici faire appel à un scheduler, 
@@ -209,12 +216,12 @@ void* schedule(void* data __attribute__ ((unused)))
 		/* Si on a rien à faire, on passe dans le processus idle */
 		scheduler->inject_idle(idle_process);	
 		current = idle_process;
+		idle_injected = 1;
 	}
 	else {
 		/* Sinon on regarde si le process a des signaux en attente */
 		exec_sighandler(current);
 	}
-	
 	/* Evaluation de l'usage du CPU */
 	current->current_sample++;
 	sample_counter++;
@@ -299,17 +306,6 @@ void* sleep_callback( void* data )
 	return NULL;
 }
 
-void halt()
-{
-	syscall(SYS_HLT, (uint32_t)NULL, (uint32_t)NULL,(uint32_t) NULL);
-}
-/*
-void sys_hlt(uint32_t unused1 __attribute__ ((unused)), uint32_t unused2 __attribute__ ((unused)), uint32_t unused3 __attribute__ ((unused)))
-*/
-SYSCALL_HANDLER0(sys_hlt)
-{
-	asm("hlt");
-}
 
 SYSCALL_HANDLER1(sys_sleep, uint32_t delay)
 {
