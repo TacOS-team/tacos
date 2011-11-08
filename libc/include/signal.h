@@ -36,13 +36,6 @@
 typedef unsigned long sigset_t;
 typedef void (*sighandler_t)(int);
 
-typedef struct
-{
-	sigset_t mask;
-	sigset_t pending_set;
-	sighandler_t handlers[NSIG];
-}signal_process_data_t;
-
 /* Définition des signaux */
 //XXX: Est-ce qu'on ne devrait pas se caller sur les numéros POSIX ?
 #define SIGHUP		 0

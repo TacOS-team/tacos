@@ -37,8 +37,14 @@
 #include <klog.h>
 #include <interrupts.h>
 
-/* LibC */
-#include <sys/syscall.h>
+typedef struct {
+	vaddr_t ret_addr;
+	int sig;
+	regs_t context;
+	uint32_t state;
+	sigset_t mask;
+	char retcode[8];
+} sigframe;
 
 /*
  * TODO: gérer SIG_IGN et SIG_DFL 

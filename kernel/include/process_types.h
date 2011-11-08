@@ -1,5 +1,5 @@
 /**
- * @file ksignal.h
+ * @file kprocess.h
  *
  * @author TacOS developers 
  *
@@ -27,23 +27,16 @@
  * Description de ce que fait le fichier
  */
 
-#ifndef _KSIGNAL_H
-#define _KSIGNAL_H
+#ifndef _PROCESS_TYPES_H_
+#define _PROCESS_TYPES_H_
 
-#include <ksyscall.h>
-#include <signal_types.h>
-#include <signal.h>
-#include <types.h>
-#include <kprocess.h>
+typedef struct
+{
+	uint32_t eax, ecx, edx, ebx;
+	uint32_t esp, kesp, ebp, esi, edi;
+	uint32_t eip, eflags;
+	uint16_t cs, ss, kss, ds, es, fs, gs;
+	uint32_t cr3;
+} regs_t;
 
-SYSCALL_HANDLER3(sys_signal, uint32_t signum, sighandler_t handler, sighandler_t* ret);
-SYSCALL_HANDLER3(sys_sigprocmask, uint32_t how, sigset_t* set, sigset_t* oldset);
-SYSCALL_HANDLER3(sys_kill, int pid, int signum, int* ret);
-SYSCALL_HANDLER0(sys_sigret);
-SYSCALL_HANDLER1(sys_sigsuspend, sigset_t* mask);
-
-int exec_sighandler(process_t* process);
-
-int signal_pending(process_t* process);
-
-#endif /* _KSIGNAL_H */
+#endif

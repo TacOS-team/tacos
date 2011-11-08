@@ -1,5 +1,5 @@
 timeout 0
-default 0
+default 1
 
 # 0 - Tacos default
 title Tacos(fajitas)

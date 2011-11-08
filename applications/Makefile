@@ -17,73 +17,7 @@ all: $(OBJ)
 		if [ $$? = 0 ]; then printf "\033[1m<<< [$$i] [OK]\033[0m\n"; else printf "\033[31m\033[1m<<< [$$i] [FAIL]\033[0m\n"; exit 1; fi; \
 		done
 
-fiinou: fiinou.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-demo: demo.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-cube: cube.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-	
-top: top.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-	
-matrix: matrix.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-test: test.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-	
-printenv: printenv.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-sem_ping: sem_ping.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-sem_pong: sem_pong.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-test_sig: test_sig.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-	
-cat: cat.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-ls: ls.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-fopen: fopen.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-mkdir: mkdir.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-zen: zen.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-snake: snake.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-kill: kill.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-clock_graph: clock_graph.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-cube_graph: cube_graph.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-test_mouse: test_mouse.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-zen_graph: zen_graph.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)	
-
-pres: pres.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
-
-test_cpp: test_cpp.o
+%: %.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
 %.o: %.c
