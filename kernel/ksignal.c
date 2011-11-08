@@ -27,14 +27,18 @@
  * Description de ce que fait le fichier
  */
 
+/* Kernel */
 #include <gdt.h>
 #include <ksignal.h>
 #include <kprocess.h>
 #include <kstdio.h>
+#include <pagination.h>
 #include <scheduler.h>
 #include <klog.h>
-#include <sys/syscall.h>
 #include <interrupts.h>
+
+/* LibC */
+#include <sys/syscall.h>
 
 /*
  * TODO: gérer SIG_IGN et SIG_DFL 
@@ -130,6 +134,7 @@ SYSCALL_HANDLER0(sys_sigret)
 	iframe->edx = sframe->context.edx;
 	iframe->ebx = sframe->context.ebx;
 	iframe->esp = sframe->context.esp;
+	iframe->kesp = sframe->context.esp;
 	iframe->ebp = sframe->context.ebp;
 	iframe->esi = sframe->context.esi;
 	iframe->edi = sframe->context.edi;
@@ -203,10 +208,21 @@ int exec_sighandler(process_t* process)
 			klog("Pid %d received signal %d.", process->pid, signum);
 			ret = 1;
 			
-			/* On alloue sur la pile la stack frame du signal */
-			frame = (sigframe*)process->regs.esp;
-			frame--;
+			/* On alloue sur la pile USER la stack frame du signal */
+			if(process->regs.cs == USER_CODE_SEGMENT) {
+				frame = (sigframe*)process->regs.esp;
+				frame--;
+			} else {
+				frame = (sigframe*)(get_default_tss()->esp1);
+				frame--;
+
+			}
 			
+			/* Récupère l'adresse physique de répertoire de page du processus */
+			paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) process->pd);
+			/* On lui remet sa page directory */
+			pagination_load_page_directory((struct page_directory_entry *)pd_paddr);
+
 			/* Et on remplis la frame avec ce qu'on veut */
 			//frame->ret_addr = process->regs.eip;
 			frame->ret_addr = (vaddr_t) frame->retcode;
@@ -251,7 +267,7 @@ int exec_sighandler(process_t* process)
 			process->regs.eip = (uint32_t) process->signal_data.handlers[signum];
 			
 			/* Et enfin, le gros piège: on doit absolument exécuter le handler en user space, donc on change cs: */
-			process->regs.cs = USER_CODE_SEGMENT; /* XXX Tant que j'y pense, ça serait bien d'utiliser des macro pour les numero de segment code */
+			process->regs.cs = USER_CODE_SEGMENT;
 			process->regs.ds = USER_DATA_SEGMENT;
 			process->regs.ss = USER_STACK_SEGMENT;
 			

@@ -179,7 +179,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_PROC, 	(syscall_handler_t)sys_proc);
 	syscall_set_handler(SYS_VMM, 	(syscall_handler_t) sys_vmm);
 	syscall_set_handler(SYS_SEEK, 	(syscall_handler_t) sys_seek);
-	syscall_set_handler(SYS_HLT, 	(syscall_handler_t) sys_hlt);
 	syscall_set_handler(SYS_SIGNAL,	(syscall_handler_t) sys_signal);
 	syscall_set_handler(SYS_SIGPROCMASK, 	(syscall_handler_t) sys_sigprocmask);
 	syscall_set_handler(SYS_KILL,	(syscall_handler_t) sys_kill);

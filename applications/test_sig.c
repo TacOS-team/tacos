@@ -35,44 +35,16 @@
 
 
 void handler(int signal) {
-	printf("handler (%d)!\n", signal);
-}
-
-void f1() {
-	printf("F1 suspendu...\n");
-	signal(SIGUSR1, handler);
-	sigset_t set;
-    sigfillset(&set);
-    sigdelset(&set, SIGUSR1);
-    sigsuspend(&set);
-    printf("F1 réveillée!\n");
-    while(1);
-    
-}
-/* 0x4000269d */
-void f2(pid_t pid) {
-	printf("F2 tente de réveiller pid=%d...\n",pid);
-	kill(pid, SIGUSR1);
+	printf("Me revoila!\n", signal);
 }
 
 int main(int argc, char** argv) {
-	
-	if(argc <= 1) {
-		printf("Pas assez d'arguments\n\n");
-		printf("Usage:\n");
-		printf("\"test_sig 1\"\tprocess en attente de SIGUSR1\n");
-		printf("\"test_sig 2 Pid\"\tEnvois un SIGUSR1 au process correpondant au PID\n");
-		exit(0);
-	}
-	
-	if(strcmp(argv[1],"1") == 0) {
-		f1();
-	} else if(strcmp(argv[1],"2") == 0) {
-		f2(atoi(argv[2]));
-	} else {
-		printf("Mauvais paramètres\n");
-	}
-	while(1);
+	signal(SIGINT,handler);
+	sigset_t set;
+	printf("endormissement en attente de SIGINT...\n");
+	sigemptyset(&set);
+	sigsuspend(&set);
+
     return 0;
 }
 
