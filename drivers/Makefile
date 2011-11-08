@@ -49,7 +49,7 @@ floppy/floppy_utils.o: floppy/floppy_interrupt.h floppy/floppy_utils.h
 floppy/floppy_utils.o: floppy/floppy_motor.h
 keyboard/keyboard.o: ../include/types.h ../include/ioports.h
 keyboard/keyboard.o: ../include/keyboard.h ../kernel/include/kfcntl.h
-keyboard/keyboard.o: ../libc/include/libio.h ../libc/include/sys/types.h
+keyboard/keyboard.o: ../kernel/include/fd_types.h
 keyboard/keyboard.o: ../kernel/include/kprocess.h
 keyboard/keyboard.o: ../kernel/include/ksyscall.h ../include/process.h
 keyboard/keyboard.o: ../include/elf.h ../kernel/include/signal_types.h
@@ -63,20 +63,20 @@ pci/pci_config.o: pci/pci_vendor.h ../libc/include/stdio.h
 pci/pci_config.o: ../libc/include/libio.h ../libc/include/sys/types.h
 pci/pci_config.o: ../libc/include/stdarg.h
 tty/tty.o: ../include/tty.h ../include/types.h ../kernel/include/kfcntl.h
-tty/tty.o: ../libc/include/libio.h ../libc/include/sys/types.h
-tty/tty.o: ../kernel/include/kprocess.h ../kernel/include/ksyscall.h
-tty/tty.o: ../include/process.h ../include/elf.h
+tty/tty.o: ../kernel/include/fd_types.h ../kernel/include/kprocess.h
+tty/tty.o: ../kernel/include/ksyscall.h ../include/process.h ../include/elf.h
 tty/tty.o: ../kernel/include/signal_types.h ../kernel/include/process_types.h
 tty/tty.o: ../include/symtable.h ../include/vmm.h ../kernel/include/ksem.h
 tty/tty.o: ../kernel/include/ksignal.h ../libc/include/signal.h
-tty/tty.o: ../include/kstdio.h ../kernel/include/scheduler.h
-tty/tty.o: ../include/klog.h ../include/kmalloc.h ../libc/include/fcntl.h
+tty/tty.o: ../libc/include/sys/types.h ../include/kstdio.h
+tty/tty.o: ../kernel/include/scheduler.h ../include/klog.h
+tty/tty.o: ../include/kmalloc.h ../libc/include/fcntl.h
 tty/tty.o: ../libc/include/termios.h
 video/console.o: ../include/console.h ../include/types.h ../include/tty.h
-video/console.o: ../kernel/include/kfcntl.h ../libc/include/libio.h
-video/console.o: ../libc/include/sys/types.h ../kernel/include/kprocess.h
-video/console.o: ../kernel/include/ksyscall.h ../include/process.h
-video/console.o: ../include/elf.h ../kernel/include/signal_types.h
+video/console.o: ../kernel/include/kfcntl.h ../kernel/include/fd_types.h
+video/console.o: ../kernel/include/kprocess.h ../kernel/include/ksyscall.h
+video/console.o: ../include/process.h ../include/elf.h
+video/console.o: ../kernel/include/signal_types.h
 video/console.o: ../kernel/include/process_types.h ../include/symtable.h
 video/console.o: ../include/vmm.h ../include/video.h
 video/vga.o: ../include/ioports.h ../include/klog.h ../include/kstdio.h

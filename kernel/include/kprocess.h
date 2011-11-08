@@ -33,7 +33,7 @@
 #define USER_PROCESS_BASE 0x40000000
 
 #include <ksyscall.h>
-#include <libio.h>
+#include <fd_types.h>
 #include <process.h>
 #include <signal_types.h>
 #include <process_types.h>
