@@ -62,7 +62,7 @@ void syscall_entry(int interrupt_id __attribute__ ((unused)))
 	asm("":"=a"(function),"=b"(param1),"=c"(param2),"=d"(param3));
 	
 	/* Récupération des données empilées par l'interruption*/
-	frame = &interrupt_id;
+	frame = (intframe*) &interrupt_id;
 	
 	/* Si on fait le syscall depuis l'user-mode, on sauvegarde l'esp user dans la tss */
 	if(frame->cs == USER_CODE_SEGMENT) {

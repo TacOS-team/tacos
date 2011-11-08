@@ -69,7 +69,7 @@ int vfscanf(FILE *stream, const char *format, va_list ap) {
   /* Base for integral numbers.  */
   int base;
   /* Signedness for integral numbers.  */
-  int number_signed;
+  int number_signed = 0;
   /* Integral holding variables.  */
   long int num;
   unsigned long int unum;

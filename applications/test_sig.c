@@ -38,7 +38,7 @@ void handler(int signal) {
 	printf("Me revoila!\n", signal);
 }
 
-int main(int argc, char** argv) {
+int main() {
 	signal(SIGINT,handler);
 	sigset_t set;
 	printf("endormissement en attente de SIGINT...\n");
