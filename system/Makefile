@@ -19,6 +19,6 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
+syscall.o: ../libc/include/sys/syscall.h ../libc/include/sys/types.h
 sem.o: ../include/sem.h ../include/types.h ../libc/include/unistd.h
 sem.o: ../libc/include/sys/types.h ../libc/include/sys/syscall.h
-syscall.o: ../libc/include/sys/syscall.h ../libc/include/sys/types.h

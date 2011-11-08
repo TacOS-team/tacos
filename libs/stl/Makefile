@@ -24,3 +24,6 @@ stl_stdlib.o: ../../libc/include/sys/types.h ../../include/types.h
 stl_string.o: ./stl_string.h ../../include/types.h ./stdlib ./stl_stdlib.h
 stl_string.o: ../../libc/include/malloc.h ../../libc/include/sys/types.h
 stl_string.o: ../../libc/include/cstring ../../libc/include/string.h
+stl_string.o: ./algorithm ./stl_algobase.h ../../libc/include/cstdio
+stl_string.o: ../../libc/include/stdio.h ../../libc/include/libio.h
+stl_string.o: ../../libc/include/stdarg.h
