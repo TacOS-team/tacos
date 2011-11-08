@@ -7,23 +7,17 @@
 #
 # To enable this hook, rename this file to "pre-commit".
 
-if git rev-parse --verify HEAD >/dev/null 2>&1
-then
-	against=HEAD
-else
-	# Initial commit: diff against an empty tree object
-	against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
-fi
+against=`git rev-parse --verify HEAD`
 
 # Creation d'un dossier temporaire.
 TMPDIR=`mktemp -d`
 # On copie le diff dans un fichier patch.
-git diff > $TMPDIR/current_change.patch
+git diff $against > $TMPDIR/current_change.patch
 # On copie le HEAD.
 git archive $against | tar -x -C $TMPDIR
 # on va dans le dossier temporaire pour appliquer le patch.
 cd $TMPDIR
-patch -p1 < current_change.patch
+git apply current_change.patch
 # on compile avec -Werror.
 make WERROR=1
 
