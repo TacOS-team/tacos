@@ -37,6 +37,9 @@
 #include <klog.h>
 #include <interrupts.h>
 
+/* LibC */
+#include <sys/syscall.h>
+
 typedef struct {
 	vaddr_t ret_addr;
 	int sig;
