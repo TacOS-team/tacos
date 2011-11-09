@@ -411,24 +411,24 @@ void vmm_print_heap(struct virtual_mem *vm)
 	{
 		if(free_it < used_it)
 		{
-			print_slab(free_it, TRUE);
+			print_slab(free_it, true);
 			free_it = free_it->next;
 		} else
 		{
-			print_slab(used_it, FALSE);
+			print_slab(used_it, false);
 			used_it = used_it->next;
 		}
 	}
 
 	while(free_it != NULL)
 	{
-		print_slab(free_it, TRUE);
+		print_slab(free_it, true);
 		free_it = free_it->next;
 	}
 
 	while(used_it != NULL)
 	{
-		print_slab(used_it, FALSE);
+		print_slab(used_it, false);
 		used_it = used_it->next;
 	}
 

@@ -37,7 +37,7 @@
 #define SCREEN_HEIGHT 200
 
 static int mouse_x = 0, mouse_y = 0;
-static bool mouse_buttons[3] = { FALSE };
+static bool mouse_buttons[3] = { false };
 
 inline void mouse_wait(int rw) { 
 	int timeout = 100000;
@@ -66,13 +66,13 @@ inline void mouse_write_command(unsigned char cmd) {
 }
 
 void mouse_interrupt_handler() {
-	static bool first = TRUE;
+	static bool first = true;
 	static int packet_num = 0;
 	static int packet_x_sign, packet_y_sign;
 	unsigned char packet;
 
 	if (first) {
-		first = FALSE;
+		first = false;
 		return;
 	}
 
@@ -114,7 +114,7 @@ void mouse_interrupt_handler() {
 void mouse_init() {
 	mouse_x = SCREEN_WIDTH/2;
 	mouse_y = SCREEN_HEIGHT/2;
-	mouse_buttons[0] = mouse_buttons[1] = mouse_buttons[2] = FALSE;
+	mouse_buttons[0] = mouse_buttons[1] = mouse_buttons[2] = false;
 
 	// Get "compaq status" byte
 	unsigned char status;

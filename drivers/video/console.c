@@ -45,11 +45,11 @@ void init_console() {
 	int i;
 	for (i = 0; i < NB_CONSOLES; i++) {
 		consoles[i].n_page = i;
-		consoles[i].used = FALSE;
+		consoles[i].used = false;
 		consoles[i].lines = 25;
 		consoles[i].cols = 80;
 		consoles[i].attr = DEFAULT_ATTRIBUTE_VALUE;
-		consoles[i].disp_cur = TRUE;
+		consoles[i].disp_cur = true;
 		consoles[i].cur_x = 0;
 		consoles[i].cur_y = 0;
 		consoles[i].tty = NULL;
@@ -79,8 +79,8 @@ void focus_console(int n) {
 int get_available_console(terminal_t *tty) {
 	int i;
 	for (i = 0; i < NB_CONSOLES; i++) {
-		if (consoles[i].used == FALSE) {
-			consoles[i].used = TRUE;
+		if (consoles[i].used == false) {
+			consoles[i].used = true;
 			consoles[i].tty = tty;
 			clear_console(i);
 			return i;
@@ -90,9 +90,9 @@ int get_available_console(terminal_t *tty) {
 }
 
 void free_console(int n) {
-	consoles[n].used = FALSE;
+	consoles[n].used = false;
 	consoles[n].attr = DEFAULT_ATTRIBUTE_VALUE;
-	consoles[n].disp_cur = TRUE;
+	consoles[n].disp_cur = true;
 	consoles[n].cur_x = 0;
 	consoles[n].cur_y = 0;
 	consoles[n].tty = NULL;
@@ -151,7 +151,7 @@ static void clear_console(int n) {
 
 	for (y = 0; y < consoles[n].lines; y++) {
 		for (x = 0; x < consoles[n].cols; x++) {
-			kputchar_video(consoles[n].n_page, FALSE, ' ', x, y,
+			kputchar_video(consoles[n].n_page, false, ' ', x, y,
 					consoles[n].attr);
 		}
 	}
@@ -168,12 +168,12 @@ static void scrollup(int n) {
 	for (l = 0; l < consoles[n].lines - 1; l++) {
 		for (c = 0; c < consoles[n].cols; c++) {
 			char car, attr;
-			get_char_video(consoles[n].n_page, TRUE, &car, c, l + 1, &attr);
-			kputchar_video(consoles[n].n_page, FALSE, car, c, l, attr);
+			get_char_video(consoles[n].n_page, true, &car, c, l + 1, &attr);
+			kputchar_video(consoles[n].n_page, false, car, c, l, attr);
 		}
 	}
 	for (c = 0; c < consoles[n].cols; c++) {
-		kputchar_video(consoles[n].n_page, FALSE, ' ', c,
+		kputchar_video(consoles[n].n_page, false, ' ', c,
 				consoles[n].lines - 1, consoles[n].attr);
 	}
 
@@ -213,9 +213,9 @@ void reset_attribute(int n) {
  */
 void kputchar(int n, char c) {
 	// TODO : dégager ça vers la structure de la fenetre ! Risques de conflits sinon.
-	static bool escape_char = FALSE;
-	static bool ansi_escape_code = FALSE;
-	static bool ansi_second_val = FALSE;
+	static bool escape_char = false;
+	static bool ansi_escape_code = false;
+	static bool ansi_second_val = false;
 	static int val = 0, val2 = 0;
 	static int bright;
 
@@ -228,9 +228,9 @@ void kputchar(int n, char c) {
 					val = val * 10 + c - '0';
 				}
 			} else {
-				escape_char = FALSE;
-				ansi_second_val = FALSE;
-				ansi_escape_code = FALSE;
+				escape_char = false;
+				ansi_second_val = false;
+				ansi_escape_code = false;
 				if (val == 0 && c != 'J' && c != 'm')
 					val = 1;
 				if (val2 == 0)
@@ -268,9 +268,9 @@ void kputchar(int n, char c) {
 					cursor_move(n, val, val2);
 					break;
 				case ';':
-					escape_char = TRUE;
-					ansi_second_val = TRUE;
-					ansi_escape_code = TRUE;
+					escape_char = true;
+					ansi_second_val = true;
+					ansi_escape_code = true;
 					val2 = 0;
 					break;
 				case 'm':
@@ -414,14 +414,14 @@ void kputchar(int n, char c) {
 			}
 		} else {
 			if (c == '[') {
-				ansi_escape_code = TRUE;
+				ansi_escape_code = true;
 				val = 0;
 			} else {
-				escape_char = FALSE;
+				escape_char = false;
 			}
 		}
 	} else if (c == '\033') {
-		escape_char = TRUE;
+		escape_char = true;
 	} else if (c == '\n' || c == '\r') {
 		newline(n);
 	} else if (c == '\t') {
@@ -429,7 +429,7 @@ void kputchar(int n, char c) {
 	} else if (c == '\b') {
 		backspace(n, ' ');
 	} else {
-		kputchar_video(consoles[n].n_page, TRUE, c, consoles[n].cur_x,
+		kputchar_video(consoles[n].n_page, true, c, consoles[n].cur_x,
 				consoles[n].cur_y, consoles[n].attr);
 		consoles[n].cur_x++;
 		if (consoles[n].cur_x >= consoles[n].cols)
@@ -475,7 +475,7 @@ static void backspace(int n, char c) {
 		int x = consoles[n].cur_x;
 		int y = consoles[n].cur_y;
 
-		kputchar_video(consoles[n].n_page, TRUE, ' ', x, y, consoles[n].attr);
+		kputchar_video(consoles[n].n_page, true, ' ', x, y, consoles[n].attr);
 	}
 	cursor_position_video(consoles[n].cur_x, consoles[n].cur_y);
 }

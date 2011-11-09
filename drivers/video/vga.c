@@ -73,7 +73,7 @@ static short other_registers[] =  {           0x3DA   };
 static unsigned int VGA_width, VGA_height, VGA_bpp; // Screen width, screen height, bytes per pixel
 static unsigned char *VGA_memory; // Base address of VGA memory
 static unsigned char font[8192]; // Used to backup the font data when switching to graphic modes
-static bool font_saved = FALSE; // Indicates whether the font data can be restored
+static bool font_saved = false; // Indicates whether the font data can be restored
 
 /**
  * Describes a VGA mode
@@ -227,7 +227,7 @@ static void backup_font() {
 	memcpy(font, VGA_memory, 8192);
 	
 	// Raise a flag indicating that the font has been saved.
-	font_saved = TRUE;
+	font_saved = true;
 }
 
 static void restore_font() {

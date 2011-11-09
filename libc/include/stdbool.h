@@ -1,5 +1,5 @@
 /**
- * @file sys/types.h
+ * @file stdbool.h
  *
  * @author TacOS developers 
  *
@@ -25,29 +25,17 @@
  * 
  */
 
-#ifndef _SYS_TYPES_H_
-#define _SYS_TYPES_H_
+#ifndef _STDBOOL_H_
+#define _STDBOOL_H_
 
-#include <stdbool.h>
+#ifndef __cplusplus
 
-typedef int pid_t;
+#define bool _Bool
+#define true 1
+#define false 0
 
-#ifndef _TYPES_UINTX_T_
-#define _TYPES_UINTX_T_
-typedef unsigned char uint8_t;  /* 8 bits non signé */
-typedef unsigned short int uint16_t;  /* 16 bits non signé */
-typedef unsigned long int uint32_t;  /* 32 bits non signé */
-typedef unsigned long long int uint64_t;  /* 64 bits non signé */
-typedef uint32_t vaddr_t;
 #endif
 
-#ifndef _TYPES_SIZE_T_
-#define _TYPES_SIZE_T_
-typedef uint32_t size_t;
-typedef int ssize_t;
-#endif
-
-
-#define NULL ((void*)0)
+#define __bool_true_false_are_defined	1
 
 #endif

@@ -55,8 +55,8 @@ terminal_t * tty_get(int i) {
 }
 
 void tty_init(terminal_t *t, process_t *process, void * extra_data, void(*put_char)(void*, char)) {
-	t->echo = TRUE;
-	t->canon = TRUE;
+	t->echo = true;
+	t->canon = true;
 	t->p_begin = 0;
 	t->p_end = 0;
 	t->extra_data = extra_data;

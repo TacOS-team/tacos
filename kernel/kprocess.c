@@ -332,7 +332,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 		}
 		
 		for(i=0;i<FOPEN_MAX;i++) 
-			new_proc->fd[i].used = FALSE;
+			new_proc->fd[i].used = false;
 
 		/* Initialisation des entrées/sorties standards */
 		init_stdfd(new_proc);
@@ -478,7 +478,7 @@ process_t* create_process(process_init_data_t* init_data)
 	}
 
 	for(i=0;i<FOPEN_MAX;i++) 
-		new_proc->fd[i].used = FALSE;
+		new_proc->fd[i].used = false;
 
 	/* Initialisation des entrées/sorties standards */
 	init_stdfd(new_proc);

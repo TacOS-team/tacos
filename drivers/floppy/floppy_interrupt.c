@@ -31,18 +31,18 @@
 #include <interrupts.h>
 #include "floppy_utils.h"
 
-volatile bool irq_received = FALSE;
+volatile bool irq_received = false;
 
 void floppy_handler(int interrupt_id __attribute__ ((unused)))
 {
-	irq_received = TRUE;
+	irq_received = true;
 }
 
 void floppy_wait_irq()
 {
 	while(!irq_received);
 	
-	irq_received = FALSE;
+	irq_received = false;
 }
 
 void floppy_init_interrupt()
@@ -52,7 +52,7 @@ void floppy_init_interrupt()
 
 void floppy_reset_irq()
 {
-	irq_received = FALSE;
+	irq_received = false;
 }
 
 void floppy_sense_interrupt(int* st0, int* cy1)

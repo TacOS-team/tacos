@@ -231,23 +231,23 @@ void *memmove(void *dest, const void *src, size_t n)
 
 char *strstr(const char *haystack, const char *needle)
 {
-	bool found = FALSE;
+	bool found = false;
 	int i;
 	
 	// tant qu'on a pas trouvé et que c'est pas fini
 	while(*haystack != '\0' && !found)
 	{
-		found = TRUE;
+		found = true;
 		for(i=0 ; haystack[i]!='\0' && needle[i]!='\0' ; i++)
 		{
 			if(haystack[i] != needle[i])
 			{
-				found = FALSE;
+				found = false;
 				break;
 			}
 		}
 		if (needle[i] != '\0' && haystack[i] == '\0') {
-			found = FALSE;
+			found = false;
 		}
 		
 		haystack++;
@@ -262,23 +262,23 @@ char *strstr(const char *haystack, const char *needle)
 
 char *strcasestr(const char *haystack, const char *needle)
 {
-	bool found = FALSE;
+	bool found = false;
 	int i;
 	
 	// tant qu'on a pas trouvé et que c'est pas fini
 	while(*haystack != '\0' && !found)
 	{
-		found = TRUE;
+		found = true;
 		for(i=0 ; haystack[i]!='\0' && needle[i]!='\0' ; i++)
 		{
 			if(tolower(haystack[i]) != tolower(needle[i]))
 			{
-				found = FALSE;
+				found = false;
 				break;
 			}
 		}
 		if (needle[i] != '\0' && haystack[i] == '\0') {
-			found = FALSE;
+			found = false;
 		}
 		
 		haystack++;

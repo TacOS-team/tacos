@@ -244,24 +244,24 @@ void malloc_print_mem()
   {
     if(free_it < allocated_it)
     {
-      print_mem(free_it, TRUE);
+      print_mem(free_it, true);
       free_it = free_it->next;
     } else
     {
-      print_mem(allocated_it, FALSE);
+      print_mem(allocated_it, false);
       allocated_it = allocated_it->next;
     }
   }
 
   while(free_it != NULL)
   {
-    print_mem(free_it, TRUE);
+    print_mem(free_it, true);
     free_it = free_it->next;
   }
 
   while(allocated_it != NULL)
   {
-    print_mem(allocated_it, FALSE);
+    print_mem(allocated_it, false);
     allocated_it = allocated_it->next;
   }
   

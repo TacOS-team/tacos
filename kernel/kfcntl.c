@@ -63,21 +63,21 @@ void init_stdfd(process_t *new_proc) {
 				tty_set_fg_process(t, new_proc);
         //focus_console
     }
-	fd0->used = TRUE; /* stdin */
+	fd0->used = true; /* stdin */
 	fd0->ofd = kmalloc(sizeof(open_file_descriptor));
   fd0->ofd->flags = O_RDONLY;
 	fd0->ofd->read = tty_read;
 	fd0->ofd->extra_data = t;
 	fd0->ofd->ioctl = tty_ioctl;
 	fd0->ofd->close = tty_close;
-	fd1->used = TRUE; /* stdout */
+	fd1->used = true; /* stdout */
 	fd1->ofd = kmalloc(sizeof(open_file_descriptor));
   fd1->ofd->flags = O_WRONLY;
 	fd1->ofd->write = tty_write;
 	fd1->ofd->ioctl = tty_ioctl;
 	fd1->ofd->close = tty_close;
 	fd1->ofd->extra_data = t;
-	fd2->used = TRUE; /* stderr */
+	fd2->used = true; /* stderr */
 	fd2->ofd = kmalloc(sizeof(open_file_descriptor));
   fd2->ofd->flags = O_WRONLY;
 	fd2->ofd->write = tty_write;
@@ -111,12 +111,12 @@ SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags) {
 	process_t* process = get_current_process();
 	
 	// recherche d une place dans la file descriptor table du process
-	while(process->fd[i].used==TRUE) 
+	while(process->fd[i].used==true) 
 		i++;
 	
 	// creation d un open_file_descriptor
 	process->fd[i].ofd = kmalloc(sizeof(open_file_descriptor));
-	process->fd[i].used = TRUE;
+	process->fd[i].used = true;
 	process->fd[i].ofd->flags = flags;
 	
 	// ouverture du fichier (sur fd0 pour le moment)
