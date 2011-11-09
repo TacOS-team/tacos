@@ -128,6 +128,16 @@ void sig_ignore_handler(int signal __attribute__ ((unused)))
 	// Do nothing.
 }
 
+void sig_stop_handler(int signal __attribute__ ((unused)))
+{
+	sigset_t set;
+	sigfillset(&set);
+	sigaddset(&set, SIGCONT);
+	sigaddset(&set, SIGINT);
+	sigaddset(&set, SIGKILL);
+	sigsuspend(&set);
+}
+
 void init_signals(void)
 {
 	signal(SIGHUP, (sighandler_t) exit);
@@ -143,7 +153,11 @@ void init_signals(void)
 	signal(SIGWINCH, sig_ignore_handler);
 	signal(SIGURG, sig_ignore_handler);
 	signal(SIGPOLL, (sighandler_t) exit);
+	signal(SIGSTOP, (sighandler_t) sig_stop_handler);
+	signal(SIGTSTP, (sighandler_t) sig_stop_handler);
 	signal(SIGCONT, sig_ignore_handler);
+	signal(SIGTTIN, (sighandler_t) sig_stop_handler);
+	signal(SIGTTOU, (sighandler_t) sig_stop_handler);
 	signal(SIGVTALRM, (sighandler_t) exit);
 	signal(SIGPROF, (sighandler_t) exit);
 	signal(SIGRTMIN, (sighandler_t) exit);
