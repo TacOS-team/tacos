@@ -169,6 +169,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	syscall_set_handler(SYS_EXIT,	(syscall_handler_t)sys_exit);
 	syscall_set_handler(SYS_GETPID,	(syscall_handler_t)sys_getpid);
+	syscall_set_handler(SYS_GETPPID,	(syscall_handler_t)sys_getppid);
 	syscall_set_handler(SYS_OPEN,	(syscall_handler_t)sys_open);
 	syscall_set_handler(SYS_WRITE,	(syscall_handler_t)sys_write);
 	syscall_set_handler(SYS_READ,	(syscall_handler_t)sys_read);

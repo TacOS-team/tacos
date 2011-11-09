@@ -88,6 +88,15 @@ char * get_absolute_path(const char *dirname);
 pid_t getpid(void);
 
 /**
+ * @brief Obtenir l'identifiant du processus père.
+ *
+ * Obtenir l'identifiant du processus père.
+ *
+ * @return L'identifiant du processus père.
+ */
+pid_t getppid(void);
+
+/**
  * @brief Réalise l'appel-système indiqué par son identifiant.
  *
  * Réalise l'appel-système indiqué par son identifiant.

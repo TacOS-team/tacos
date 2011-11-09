@@ -124,6 +124,12 @@ pid_t getpid(void) {
 	return pid;
 }
 
+pid_t getppid(void) {
+	pid_t ppid;
+	syscall(SYS_GETPPID, (uint32_t)&ppid, 0, 0);
+	return ppid;
+}
+
 unsigned int sleep(unsigned int seconds)
 {
 	return usleep(1000000*seconds);

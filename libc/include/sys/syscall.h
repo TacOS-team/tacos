@@ -34,6 +34,7 @@
 
 #define SYS_EXIT 0
 #define SYS_GETPID 1
+#define SYS_GETPPID 2
 #define SYS_OPEN 3
 #define SYS_KILL 4
 #define SYS_WRITE 5

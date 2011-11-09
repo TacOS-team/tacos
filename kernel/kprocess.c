@@ -531,6 +531,12 @@ SYSCALL_HANDLER1(sys_getpid, uint32_t* pid)
 	*pid = process->pid;
 }
 
+SYSCALL_HANDLER1(sys_getppid, uint32_t* ppid)
+{
+	process_t* process =get_current_process();
+	*ppid = process->ppid;
+}
+
 SYSCALL_HANDLER1(sys_exec, process_init_data_t* init_data)
 {
 	if(init_data->exec_type == EXEC_KERNEL)
