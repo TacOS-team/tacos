@@ -12,13 +12,10 @@ libsystem: syscall.o sem.o
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
 clean:
-	@rm -f *.o
+	@rm -f *.o .depend
+
+-include .depend
 
 depend: $(SRCS)
-	makedepend -Y $(INCLUDES) -- $(CFLAGS) -- $^
+	$(CC) -MM $(CFLAGS) $(INCLUDES) $^ > .depend
 
-# DO NOT DELETE THIS LINE -- make depend needs it
-
-sem.o: ../include/sem.h ../include/types.h ../libc/include/unistd.h
-sem.o: ../libc/include/sys/types.h ../libc/include/sys/syscall.h
-syscall.o: ../libc/include/sys/syscall.h ../libc/include/sys/types.h

@@ -11,88 +11,10 @@ libc: stdio/stdio.o stdio/fopen.o stdio/fwrite.o stdio/fmemopen.o termios.o dire
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
 clean:
-	rm -f *.o */*.o
+	rm -f *.o */*.o .depend
 
 mrproper: clean
 	@rm ../lib/libc.a
 
 depend: $(SRCS)
-	makedepend -Y $(INCLUDES) -- $(CFLAGS) -- $^
-
-# DO NOT DELETE THIS LINE -- make depend needs it
-
-ctype.o: include/ctype.h
-dirent.o: include/dirent.h include/sys/types.h include/sys/stat.h
-dirent.o: include/stdlib.h include/malloc.h include/string.h
-dirent.o: include/sys/syscall.h include/unistd.h
-elf.o: ../include/elf.h ../include/types.h include/stdio.h include/libio.h
-elf.o: include/sys/types.h include/stdarg.h include/string.h include/stdlib.h
-elf.o: include/malloc.h include/fcntl.h include/unistd.h
-fcntl.o: include/fcntl.h include/unistd.h include/sys/types.h
-fcntl.o: include/sys/syscall.h
-ioctl.o: include/sys/ioctl.h include/sys/syscall.h include/sys/types.h
-ioctl.o: include/unistd.h
-libio.o: include/libio.h include/sys/types.h include/stdio.h include/stdarg.h
-malloc.o: include/stdio.h include/libio.h include/sys/types.h
-malloc.o: include/stdarg.h include/unistd.h include/sys/syscall.h
-malloc.o: include/malloc.h
-process.o: include/sys/types.h include/stdlib.h include/malloc.h
-process.o: include/stdio.h include/libio.h include/stdarg.h include/unistd.h
-process.o: include/sys/syscall.h ../include/process.h ../include/types.h
-process.o: ../include/elf.h include/string.h include/fcntl.h
-signal.o: include/signal.h include/sys/types.h include/stdlib.h
-signal.o: include/malloc.h include/sys/syscall.h include/unistd.h
-start.o: include/libio.h include/sys/types.h include/signal.h include/stdio.h
-start.o: include/stdarg.h include/stdlib.h include/malloc.h
-stdlib.o: include/ctype.h include/errno.h ../include/heap.h
-stdlib.o: ../include/types.h include/malloc.h include/sys/types.h
-stdlib.o: include/stdio.h include/libio.h include/stdarg.h include/stdlib.h
-stdlib.o: include/string.h include/sys/syscall.h include/unistd.h
-string.o: include/stdlib.h include/sys/types.h include/malloc.h
-string.o: include/string.h include/ctype.h
-termios.o: include/termios.h include/sys/ioctl.h
-time.o: include/time.h include/sys/types.h include/stdio.h include/libio.h
-time.o: include/stdarg.h include/stdlib.h include/malloc.h include/unistd.h
-time.o: include/sys/syscall.h
-unistd.o: include/dirent.h include/sys/types.h include/sys/stat.h
-unistd.o: include/errno.h include/stdio.h include/libio.h include/stdarg.h
-unistd.o: include/stdlib.h include/malloc.h include/string.h
-unistd.o: include/sys/syscall.h include/unistd.h
-stdio/fclose.o: include/stdio.h include/libio.h include/sys/types.h
-stdio/fclose.o: include/stdarg.h include/fcntl.h include/stdlib.h
-stdio/fclose.o: include/malloc.h
-stdio/fmemopen.o: include/stdio.h include/libio.h include/sys/types.h
-stdio/fmemopen.o: include/stdarg.h include/stdlib.h include/malloc.h
-stdio/fmemopen.o: include/fopen.h
-stdio/fopen.o: include/stdio.h include/libio.h include/sys/types.h
-stdio/fopen.o: include/stdarg.h include/stdlib.h include/malloc.h
-stdio/fopen.o: include/string.h include/fcntl.h include/unistd.h
-stdio/fprintf.o: include/stdio.h include/libio.h include/sys/types.h
-stdio/fprintf.o: include/stdarg.h include/string.h include/stdlib.h
-stdio/fprintf.o: include/malloc.h
-stdio/fread.o: include/stdio.h include/libio.h include/sys/types.h
-stdio/fread.o: include/stdarg.h
-stdio/fseek.o: include/stdio.h include/libio.h include/sys/types.h
-stdio/fseek.o: include/stdarg.h include/unistd.h
-stdio/fwrite.o: include/stdio.h include/libio.h include/sys/types.h
-stdio/fwrite.o: include/stdarg.h
-stdio/get.o: include/stdio.h include/libio.h include/sys/types.h
-stdio/get.o: include/stdarg.h include/stdlib.h include/malloc.h
-stdio/get.o: include/unistd.h
-stdio/getline.o: include/stdio.h include/libio.h include/sys/types.h
-stdio/getline.o: include/stdarg.h
-stdio/printf.o: include/stdio.h include/libio.h include/sys/types.h
-stdio/printf.o: include/stdarg.h
-stdio/put.o: include/stdio.h include/libio.h include/sys/types.h
-stdio/put.o: include/stdarg.h include/stdlib.h include/malloc.h
-stdio/put.o: include/unistd.h
-stdio/scanf.o: include/ctype.h include/stdarg.h include/stdlib.h
-stdio/scanf.o: include/sys/types.h include/malloc.h include/stdio.h
-stdio/scanf.o: include/libio.h include/string.h
-stdio/sprintf.o: include/stdio.h include/libio.h include/sys/types.h
-stdio/sprintf.o: include/stdarg.h
-stdio/stdfiles.o: include/sys/types.h include/libio.h include/string.h
-stdio/stdfiles.o: include/stdio.h include/stdarg.h include/stdlib.h
-stdio/stdfiles.o: include/malloc.h
-stdio/stdio.o: include/stdio.h include/libio.h include/sys/types.h
-stdio/stdio.o: include/stdarg.h include/stdlib.h include/malloc.h
+	  $(CC) -MM $(CFLAGS) $(INCLUDES) $^ > .depend
