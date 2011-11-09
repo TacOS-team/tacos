@@ -132,9 +132,9 @@ void sig_stop_handler(int signal __attribute__ ((unused)))
 {
 	sigset_t set;
 	sigfillset(&set);
-	sigaddset(&set, SIGCONT);
-	sigaddset(&set, SIGINT);
-	sigaddset(&set, SIGKILL);
+	sigdelset(&set, SIGCONT);
+	sigdelset(&set, SIGINT);
+	sigdelset(&set, SIGKILL);
 	sigsuspend(&set);
 }
 
