@@ -344,6 +344,7 @@ char *strtok(char *str, const char *delim) {
 		if (current_str[0] == delim[j]) {
 			j = 0;
 			current_str++;
+			continue;
 		}
 		j++;
 	}
