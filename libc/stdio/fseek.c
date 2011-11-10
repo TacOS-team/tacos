@@ -35,7 +35,7 @@ int fseek(FILE *stream, long offset, int whence)
 {
 	stream->_IO_read_end = stream->_IO_read_base;
 	stream->_IO_read_ptr = stream->_IO_read_base;
-	return seek(stream->_fileno, offset, whence);
+	return lseek(stream->_fileno, offset, whence);
 }
 
 int ftell(FILE *stream)

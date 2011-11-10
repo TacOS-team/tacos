@@ -92,7 +92,7 @@ module_info_t* load_module(char* filename)
 			/* On ne charche que les sections PROGBITS, de plus parfois certaines ont une taille nulle (.note.GNU-stack, wtf au passage), on les évite) */
 			if(elf_file->sheaders[i].sh_type == SHT_PROGBITS && elf_file->sheaders[i].sh_size > 0)
 			{
-				seek(fd, elf_file->sheaders[i].sh_offset, SEEK_SET);
+				lseek(fd, elf_file->sheaders[i].sh_offset, SEEK_SET);
 				read(fd, (void*)ptr, elf_file->sheaders[i].sh_size);
 				
 				if(elf_file->sheaders[i].sh_addralign > 1)
@@ -139,7 +139,7 @@ module_info_t* load_module(char* filename)
 				 */
 				rel = malloc( elf_file->sheaders[i].sh_size );
 				
-				seek(fd, elf_file->sheaders[i].sh_offset, SEEK_SET);
+				lseek(fd, elf_file->sheaders[i].sh_offset, SEEK_SET);
 				read(fd, (void*)rel, elf_file->sheaders[i].sh_size);
 
 				for(j=0; j< elf_file->sheaders[i].sh_size/elf_file->sheaders[i].sh_entsize; j++)
