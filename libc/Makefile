@@ -16,5 +16,7 @@ clean:
 mrproper: clean
 	@rm ../lib/libc.a
 
+-include .depend
+
 depend: $(SRCS)
 	  $(CC) -MM $(CFLAGS) $(INCLUDES) $^ > .depend
