@@ -34,6 +34,7 @@
 #include <klog.h>
 #include <kmalloc.h>
 #include <kprocess.h>
+#include <ksignal.h>
 #include <ksyscall.h>
 #include <scheduler.h>
 #include <string.h>
@@ -523,6 +524,7 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	
 	// On a pas forcement envie de supprimer le processus immédiatement
 	current->state = PROCSTATE_TERMINATED;
+	sys_kill(current->ppid, SIGCHLD, NULL);
 }
 
 SYSCALL_HANDLER1(sys_getpid, uint32_t* pid)
