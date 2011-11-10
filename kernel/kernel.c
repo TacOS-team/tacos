@@ -193,6 +193,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_GETDATE,	(syscall_handler_t) sys_getdate);
 	syscall_set_handler(SYS_VGASETMODE,	(syscall_handler_t) sys_vgasetmode);
 	syscall_set_handler(SYS_VGAWRITEBUF,	(syscall_handler_t) sys_vgawritebuf);
+	syscall_set_handler(SYS_FCNTL,	(syscall_handler_t) sys_fcntl);
 	
 	floppy_detect_drives();
 	kdebug("Floppy controller version: 0x%x.", floppy_get_version());

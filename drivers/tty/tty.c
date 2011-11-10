@@ -173,7 +173,7 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
   }
 
 	do {
-		if (t->p_begin == t->p_end)
+		if (t->p_begin == t->p_end && !(ofd->flags & O_NONBLOCK))
 			ksemP(t->sem);
 
 		c = t->buffer[(t->p_end + MAX_INPUT - 1) % MAX_INPUT];
@@ -186,6 +186,9 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 			}
 			break;
 		} else {
+			if (ofd->flags & O_NONBLOCK) {
+				return -1;
+			}
 			ksemP(t->sem);
 		}
 	} while (1);
@@ -193,7 +196,7 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 	return j;
 }
 
-int tty_ioctl (open_file_descriptor *ofd, unsigned int request, void * data) {
+int tty_ioctl(open_file_descriptor *ofd, unsigned int request, void * data) {
 	terminal_t *t = (terminal_t*) ofd->extra_data;
 
 	if (request == TCGETS) {
@@ -205,6 +208,6 @@ int tty_ioctl (open_file_descriptor *ofd, unsigned int request, void * data) {
 		struct termios *c = data;
 		t->echo = c->c_lflag & ECHO;
 		t->canon = c->c_lflag & ICANON;
-	} 
+	}
 	return 0;
 }

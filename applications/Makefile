@@ -1,5 +1,5 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=test_sig cat ls kill clock_graph zen_graph test_cpp
+OBJ=test_sig cat ls kill snake zen_graph test_cpp
 SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a ../lib/libutils.a  ../lib/libstl.a
 INCLUDES=-I../include/ -I../libc/include/

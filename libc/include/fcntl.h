@@ -86,8 +86,11 @@
 #define O_NDELAY  O_NONBLOCK
 #endif
 
+#define F_SETFL	4
+
 int open(const char *pathname, int flags);
 int close(int id);
+int fcntl(int fd, unsigned int request, void * data);
 //int open(const char *pathname, int flags, mode_t mode);
 
 //int creat(const char *pathname, mode_t mode);

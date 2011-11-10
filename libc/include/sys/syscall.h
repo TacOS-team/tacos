@@ -60,5 +60,6 @@
 #define SYS_GETDATE 25
 #define SYS_VGASETMODE 26
 #define SYS_VGAWRITEBUF 27
+#define SYS_FCNTL 28
 
 #endif

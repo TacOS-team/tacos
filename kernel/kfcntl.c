@@ -171,3 +171,20 @@ SYSCALL_HANDLER2(sys_close, uint32_t fd_id, uint32_t* ret)
 		process->fd[fd_id].used = 0;
 	}
 }
+
+SYSCALL_HANDLER3(sys_fcntl, int *fd_id, unsigned int request, void * data) {
+	process_t * process = get_current_process();
+	open_file_descriptor *ofd;
+	if (process->fd[*fd_id].used) {
+		ofd = process->fd[*fd_id].ofd;
+
+		if (request == F_SETFL) {
+			ofd->flags = (int)data;
+			*fd_id = 0;
+			return;
+		}
+	}
+	*fd_id = -1;
+}
+
+

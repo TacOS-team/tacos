@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010 - TacOS developers.
@@ -33,11 +32,10 @@
 #include <time.h>
 #include <unistd.h>
 #include <termios.h>
+#include <fcntl.h>
 
 #define LIGNES 10
 #define COLONNES 20
-
-static int pid_keyboard = -1;
 
 static int dir = 2, dir_ = 2;
 static int score = 0;
@@ -56,20 +54,6 @@ static struct snake_t snake;
 static struct coord_t directions[4] = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
 
 static struct coord_t bonus;
-
-int getche() {
-	struct termios oldt, newt;
-	int ch;
-	tcgetattr( STDIN_FILENO, &oldt );
-
-	newt = oldt;
-	newt.c_lflag &= ~( ICANON | ECHO );
-
-	tcsetattr( STDIN_FILENO, /*TCSANOW*/0, &newt );
-	ch = getchar();
-	tcsetattr( STDIN_FILENO, 0, &oldt );
-	return ch;
-}
 
 static void haut() {
 	if (dir_ != 1) {
@@ -95,24 +79,15 @@ static void gauche() {
 	}
 }
 
-int thread_input() {
+void thread_input() {
 	char c;
-  setvbuf(stdin, NULL, _IO_MAGIC | _IONBF, 0);
-  pid_keyboard = getpid();
-  
-  printf("#");
-
-	while(1) {
-		c = getche();
-		switch(c) {
-			case 'z': haut(); break;
-			case 's': bas(); break;
-			case 'd': droite(); break;
-			case 'q': gauche(); break;
-		}
+	c = getchar();
+	switch(c) {
+		case 'z': haut(); break;
+		case 's': bas(); break;
+		case 'd': droite(); break;
+		case 'q': gauche(); break;
 	}
-
-  return 0;
 }
 
 void clear_screen() {
@@ -207,28 +182,30 @@ void game() {
 		printf("#\n");
 	}
 
+  setvbuf(stdin, NULL, _IO_MAGIC | _IONBF, 0);
+
+	struct termios oldt, newt;
+	tcgetattr( STDIN_FILENO, &oldt );
+	newt = oldt;
+	newt.c_lflag &= ~( ICANON | ECHO );
+	tcsetattr( STDIN_FILENO, TCSETS, &newt );
+	fcntl(STDIN_FILENO, F_SETFL, (void*)O_NONBLOCK);
+
   init_snake();
 
 	while(avance_snake() != -1) {
-    int i;
-    for(i=0 ; i < 5000000 ; i++);
+		usleep(100000);
+		thread_input();
 	}
+
+	tcsetattr( STDIN_FILENO, TCSETS, &oldt );
+
 }
 
 int main() {
-	getche();
-	return 0;
-
-  pid_keyboard = -1;
-	//XXX
-  //exec((paddr_t)thread_input, "Snake_keyboard_input",0);
-
 	srand(time(NULL));
-
-  while(pid_keyboard == -1);
+ 
 	game();
-
-  kill(pid_keyboard, SIGKILL);
 
 	printf("\033[0m\nScore : %d\n", score);
 
