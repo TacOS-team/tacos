@@ -328,3 +328,43 @@ char *strrchr(const char* s, int c)
 	return ret;
 }
 	
+char *strtok(char *str, const char *delim) {
+	static char *current_str;
+	char *ret;
+	if (str != NULL) {
+		current_str = str;
+	}
+
+	if (current_str == NULL) {
+		return NULL;
+	}
+
+	int j = 0;
+	while (delim[j] != '\0') {
+		if (current_str[0] == delim[j]) {
+			j = 0;
+			current_str++;
+		}
+		j++;
+	}
+
+	int i = 0;
+	while (current_str[i] != '\0') {
+		int j = 0;
+		while (delim[j] != '\0') {
+			if (current_str[i] == delim[j]) {
+				current_str[i] = '\0';
+				ret = current_str;
+				current_str = &(current_str[i+1]);
+				return ret;
+			}
+			j++;
+		}
+		i++;
+	}
+
+	ret = current_str;
+	current_str = NULL;
+
+	return ret;
+}

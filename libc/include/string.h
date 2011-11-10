@@ -280,6 +280,7 @@ char *strcasestr(const char *haystack, const char *needle);
  */
 char *strdup (const char *s);
 
+char *strtok(char *str, const char *delim);
 /* NOT IMPLEMENTED YET
 
 int strcoll(const char *s1, const char *s2);
@@ -296,7 +297,6 @@ char *strrchr(const char *s, int c);
 
 size_t strspn(const char *s1, const char *s2);
 
-char *strtok(char * s1, const char * s2);
 
 char *strerror(int errnum);
 
