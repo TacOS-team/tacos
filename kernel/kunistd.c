@@ -70,7 +70,7 @@ SYSCALL_HANDLER3(sys_read, uint32_t fd, const void *buf, size_t *c) {
 	}
 }
 
-SYSCALL_HANDLER3(sys_seek, uint32_t fd, long *offset, int *whence) {
+SYSCALL_HANDLER3(sys_seek, uint32_t fd, long *offset, int whence) {
 	process_t * process = get_current_process();
 
 	open_file_descriptor *ofd;
@@ -78,10 +78,13 @@ SYSCALL_HANDLER3(sys_seek, uint32_t fd, long *offset, int *whence) {
 	if (process->fd[fd].used) {
 		ofd = process->fd[fd].ofd;
 		
-		if(ofd->seek == NULL)
+		if(ofd->seek == NULL) {
 			kerr("No \"seek\" method for this device.");
-		else
-			*whence = ofd->seek(ofd, *offset, *whence);
+			*offset = -1;
+		} else {
+			ofd->seek(ofd, *offset, whence);
+			*offset = ofd->current_octet;
+		}
 	}
 }
 
