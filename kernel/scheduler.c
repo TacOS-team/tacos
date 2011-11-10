@@ -50,7 +50,6 @@
 #include <pagination.h>
 
 #include <string.h>
-#include <unistd.h>
 #include <sys/syscall.h>
 
 #define USER_PROCESS 0
