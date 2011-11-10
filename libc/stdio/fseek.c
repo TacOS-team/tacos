@@ -47,7 +47,7 @@ long ftell(FILE *stream)
 		// On retire ce qu'on a bufferisé mais pas encore lu.
 		b = (stream->_IO_read_end - stream->_IO_read_ptr);
 	}
-	return lseek(stream->_fileno, 0, SEEK_CUR) + b;
+	return lseek(stream->_fileno, 0, SEEK_CUR) - b;
 }
 
 void rewind(FILE *stream)
