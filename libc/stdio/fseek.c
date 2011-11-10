@@ -35,13 +35,19 @@ int fseek(FILE *stream, long offset, int whence)
 {
 	stream->_IO_read_end = stream->_IO_read_base;
 	stream->_IO_read_ptr = stream->_IO_read_base;
-	return lseek(stream->_fileno, offset, whence);
+	if (lseek(stream->_fileno, offset, whence) >= 0)
+		return 0;
+	return -1;
 }
 
-int ftell(FILE *stream)
+long ftell(FILE *stream)
 {
-// Est-ce que ça marche ?
-	return (int)(stream->_IO_read_ptr - stream->_IO_read_end);
+	int b = 0;
+	if (stream->_IO_read_base != NULL) {
+		// On retire ce qu'on a bufferisé mais pas encore lu.
+		b = (stream->_IO_read_end - stream->_IO_read_ptr);
+	}
+	return lseek(stream->_fileno, 0, SEEK_CUR) + b;
 }
 
 void rewind(FILE *stream)
