@@ -30,7 +30,6 @@
 #include <ctype.h>
 //#include <errno.h>
 #include <fcntl.h>
-#include <floppy.h>
 #include <kfat.h>
 #include <klog.h>
 #include <kmalloc.h>

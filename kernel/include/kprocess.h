@@ -41,6 +41,18 @@
 #include <types.h>
 #include <vmm.h>
 
+#define MAX_PROC 512
+
+#define CPU_USAGE_SAMPLE_RATE 100
+
+#define PROCSTATE_IDLE 1
+#define PROCSTATE_RUNNING 2
+#define PROCSTATE_WAITING 3
+#define PROCSTATE_SUSPENDED 4
+#define PROCSTATE_TERMINATED 5 
+
+#define CURRENT_PROCESS -1
+
 /** 
 * @brief 
 */

@@ -27,24 +27,11 @@
  * Description de ce que fait le fichier
  */
 
-/**
-* @file process.h
-*/
 #ifndef _PROCESS_H_
 #define _PROCESS_H_
 
 #include <types.h>
 #include <elf.h>
-
-#define MAX_PROC 512
-
-#define PROCSTATE_IDLE 1
-#define PROCSTATE_RUNNING 2
-#define PROCSTATE_WAITING 3
-#define PROCSTATE_SUSPENDED 4
-#define PROCSTATE_TERMINATED 5 
-
-#define CPU_USAGE_SAMPLE_RATE 100
 
 /* Type d'exécution */
 #define EXEC_ELF 0
@@ -73,8 +60,6 @@ typedef struct
 	uint16_t ppid;
 	
 }process_init_data_t;
-
-#define CURRENT_PROCESS -1
 
 void exec(paddr_t prog, char* name, int orphan);
 int exec_elf(char* name, int orphan);
