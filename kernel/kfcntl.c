@@ -146,9 +146,10 @@ SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags) {
 	else if (fat_open_file(path, process->fd[i].ofd, flags) == 0) {
 		// C'est ici qu'on devrait vérifier si le fichier ouvert est spécial 
 		// pour savoir si on doit binder au file system ou à un driver.
-		process->fd[i].ofd->write = write_file;
-		process->fd[i].ofd->read = read_file;
-		process->fd[i].ofd->seek = seek_file;
+		process->fd[i].ofd->write = fat_write_file;
+		process->fd[i].ofd->read = fat_read_file;
+		process->fd[i].ofd->seek = fat_seek_file;
+		process->fd[i].ofd->close = fat_close;
 		*((int *)fd_id) = i;
 	} else {
 		*((int *)fd_id) = -1;

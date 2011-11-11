@@ -184,9 +184,10 @@ void mount_FAT();
 int fat_readdir(const char * path, int iter, char * filename);
 int fat_opendir(char * path);
 int fat_open_file (char * path, open_file_descriptor * ofd, uint32_t flags);
-size_t read_file (open_file_descriptor * ofd, void * buf, size_t count);
-size_t write_file (open_file_descriptor * ofd, const void * buf, size_t nb_octet);
-int seek_file (open_file_descriptor * ofd, long offset, int whence);
+size_t fat_read_file (open_file_descriptor * ofd, void * buf, size_t count);
+size_t fat_write_file (open_file_descriptor * ofd, const void * buf, size_t nb_octet);
+int fat_seek_file (open_file_descriptor * ofd, long offset, int whence);
 int fat_mkdir (const char * path, mode_t mode);
+int fat_close(open_file_descriptor *ofd);
 
 #endif

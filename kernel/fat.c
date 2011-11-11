@@ -898,7 +898,7 @@ void load_buffer(open_file_descriptor *ofd) {
 }
 
 // TODO: Est-ce que offset peut être négatif ? Si oui, le gérer.
-int seek_file(open_file_descriptor * ofd, long offset, int whence) {
+int fat_seek_file(open_file_descriptor * ofd, long offset, int whence) {
 	switch (whence) {
 	case SEEK_SET: // depuis le debut du fichier
 		if ((unsigned long) offset < ofd->file_size) {
@@ -936,7 +936,7 @@ int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 		break;
 	case SEEK_END:
 		if ((unsigned long) offset <= ofd->file_size) {
-			return seek_file(ofd, ofd->file_size - offset, SEEK_SET);
+			return fat_seek_file(ofd, ofd->file_size - offset, SEEK_SET);
 		} else {
 			return -1;
 		}
@@ -949,11 +949,11 @@ int seek_file(open_file_descriptor * ofd, long offset, int whence) {
 
 
 
-size_t write_file(open_file_descriptor *ofd __attribute__((__unused__)), const void * buf __attribute__((__unused__)), size_t nb_octet __attribute__((__unused__))) {
+size_t fat_write_file(open_file_descriptor *ofd __attribute__((__unused__)), const void * buf __attribute__((__unused__)), size_t nb_octet __attribute__((__unused__))) {
 	return 0;
 }
 
-size_t read_file(open_file_descriptor * ofd, void * buf, size_t count) {
+size_t fat_read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 	size_t size_buffer = sizeof(ofd->buffer) < fat_info.BS.bytes_per_sector ? 
 			sizeof(ofd->buffer) : fat_info.BS.bytes_per_sector;
 	int ret = 0;
@@ -1084,5 +1084,9 @@ int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
 
 	kfree(f);
 
+	return 0;
+}
+
+int fat_close(open_file_descriptor *ofd __attribute__ ((unused))) {
 	return 0;
 }
