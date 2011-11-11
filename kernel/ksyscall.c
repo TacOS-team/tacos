@@ -31,12 +31,12 @@
 //Pour plus d'infos sur sysenter: Doc Intel 2B 4-483
 
 /* Kernel */
-
 #include <gdt.h>
 #include <interrupts.h>
 #include <ksyscall.h>
 #include <klog.h>
 #include <msr.h>
+#include <scheduler.h>
 
 /* LibC */
 #include <string.h>
@@ -57,13 +57,18 @@ void syscall_entry(int interrupt_id __attribute__ ((unused)))
 	uint32_t function, param1, param2, param3;
 	syscall_handler_t handler;
 	intframe* frame;
-	
+	static uint32_t* ptr = 0;
 	/* On récupère les parametres */
 	asm("":"=a"(function),"=b"(param1),"=c"(param2),"=d"(param3));
 	
 	/* Récupération des données empilées par l'interruption*/
 	frame = (intframe*) &interrupt_id;
+	klog("esp = 0x%x", frame+1);
 	
+	if(ptr - (uint32_t*)(frame) != 0) 
+		klog("DELTA");
+	
+	ptr = (uint32_t*)frame;
 	/* Si on fait le syscall depuis l'user-mode, on sauvegarde l'esp user dans la tss */
 	if(frame->cs == USER_CODE_SEGMENT) {
 		get_default_tss()->esp1 = frame->esp;
@@ -77,6 +82,13 @@ void syscall_entry(int interrupt_id __attribute__ ((unused)))
 	}
 	else
 		kerr("Unknown syscall handler (0x%x).\n", function);
+		if(get_current_process()->regs.kesp != frame+1) {
+			klog("Correcting...");
+			get_current_process()->regs.kesp = frame+1;
+		}
+	klog("new esp = 0x%x\n", get_current_process()->regs.kesp);
+	
+
 }
 
 int syscall_set_handler(uint32_t syscall_id, syscall_handler_t handler)
@@ -104,3 +116,6 @@ void init_syscall()
 	memset(syscall_handler_table, 0, MAX_SYSCALL_NB*sizeof(syscall_handler_t));
 }
 
+SYSCALL_HANDLER3(sys_dummy, uint32_t a,uint32_t b,uint32_t c) {
+	klog("dummy! %d %d %d\n",a,b,c);
+}

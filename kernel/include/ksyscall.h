@@ -66,4 +66,6 @@ void init_syscall();
  */
 int syscall_set_handler(uint32_t syscall_id, syscall_handler_t handler);
 
+SYSCALL_HANDLER3(sys_dummy, uint32_t a,uint32_t b,uint32_t c);
+
 #endif

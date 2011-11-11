@@ -167,6 +167,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	klog("syscall initialization...");
 	init_syscall();
 	
+	syscall_set_handler(SYS_DUMMY,	(syscall_handler_t) sys_dummy);
 	syscall_set_handler(SYS_EXIT,	(syscall_handler_t)sys_exit);
 	syscall_set_handler(SYS_GETPID,	(syscall_handler_t)sys_getpid);
 	syscall_set_handler(SYS_GETPPID,	(syscall_handler_t)sys_getppid);

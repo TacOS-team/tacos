@@ -31,6 +31,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
+#include <sys/syscall.h>
 #include <signal.h>
 
 
@@ -39,11 +40,10 @@ void handler(int signal) {
 }
 
 int main() {
-	signal(SIGINT,handler);
-	sigset_t set;
-	printf("endormissement en attente de SIGINT...\n");
-	sigemptyset(&set);
-	sigsuspend(&set);
+	int i;
+	for(i=0; i<4; i++) {
+		syscall(SYS_DUMMY,0,1,2);
+	}
 
     return 0;
 }
