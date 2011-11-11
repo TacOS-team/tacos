@@ -29,9 +29,7 @@
 
 #include "tty.h"
 #include "ksem.h"
-#include "kprocess.h"
 #include "ksignal.h"
-#include "kstdio.h"
 #include <scheduler.h>
 #include <klog.h>
 #include <kmalloc.h>
