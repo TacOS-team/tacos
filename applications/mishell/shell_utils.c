@@ -101,7 +101,7 @@ int exec_builtin_cmd(char* name)
 	{
 		char *buf = malloc(10);
 		sprintf(buf, "?=%d", func(argc, argv));
-		//putenv(buf);
+		putenv(buf);
 		ret = 0;
 	}
 	return ret;

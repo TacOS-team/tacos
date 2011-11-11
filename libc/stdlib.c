@@ -235,7 +235,7 @@ void srand(unsigned int seed) {
 
 void exit(int value)
 {
-	fcloseall();	
+	fcloseall();
 	syscall(SYS_EXIT, (uint32_t)value, 0, 0);
 	while(1); // Pour ne pas continuer à executer n'importe quoi alors que le processus est sensé être arrété
 }
@@ -273,13 +273,13 @@ int putenv(char *string) {
 		} 
 				
 		// Realloc !
-		char **environ2 = malloc(sizeof(char*) * (i+1));
+		char **environ2 = malloc(sizeof(char*) * (i+2));
 		int j;
-		for (j = 0; j < i - 1; j++) {
+		for (j = 0; j < i; j++) {
 			environ2[j] = environ[j];
 		}
-		environ2[i-1] = string;
-		environ2[i] = NULL;
+		environ2[i] = string;
+		environ2[i+1] = NULL;
 		free(environ);
 		environ = environ2; 
 	}	 
