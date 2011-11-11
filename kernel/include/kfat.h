@@ -31,7 +31,7 @@
 #define _KFAT_H_
 
 #include <types.h>
-#include <kfcntl.h>
+#include <fd_types.h>
 #include <time.h>
 #include <sys/stat.h>
 
