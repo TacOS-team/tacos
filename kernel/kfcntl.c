@@ -169,6 +169,7 @@ SYSCALL_HANDLER2(sys_close, uint32_t fd_id, uint32_t* ret)
 			kerr("No \"close\" method for this device.");
 		else
 			*ret = ofd->close(ofd);
+		kfree(ofd);
 		process->fd[fd_id].used = 0;
 	}
 }
