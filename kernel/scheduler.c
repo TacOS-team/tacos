@@ -193,17 +193,17 @@ void* schedule(void* data __attribute__ ((unused)))
 		{
 			current->regs.ss = get_default_tss()->ss0;
 			current->regs.esp = frame->kesp + 12;	/* Valeur hardcodée, je cherche encore un moyen d'éviter ça... */
-			//current->regs.kesp = current->regs.esp;
+			current->regs.kesp = current->regs.esp;
 		}
 		else
 		{
 			current->regs.ss = frame->ss;
 			current->regs.esp = frame->esp;
 		}
-
+/*
 		current->regs.kss = get_default_tss()->ss0;
 		current->regs.kesp = get_default_tss()->esp0;
-		
+	*/	
 		current->user_time += quantum;
 	}
 	
