@@ -61,7 +61,6 @@ void syscall_entry(int interrupt_id __attribute__ ((unused)))
 	
 	/* On récupère les parametres */
 	asm("":"=a"(function),"=b"(param1),"=c"(param2),"=d"(param3));
-	
 	/* Récupération des données empilées par l'interruption*/
 	frame = (intframe*) &interrupt_id;
 
@@ -82,6 +81,7 @@ void syscall_entry(int interrupt_id __attribute__ ((unused)))
 	asm("cli");
 	get_default_tss()->esp0 = (uint32_t)(frame+1);
 	asm("sti");
+	
 }
 
 int syscall_set_handler(uint32_t syscall_id, syscall_handler_t handler)
