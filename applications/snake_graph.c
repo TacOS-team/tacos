@@ -182,8 +182,6 @@ int avance_snake() {
 }
 
 void game() {
-	int l, c;
-
   setvbuf(stdin, NULL, _IO_MAGIC | _IONBF, 0);
 
 	struct termios oldt, newt;
