@@ -61,5 +61,6 @@
 #define SYS_VGASETMODE 26
 #define SYS_VGAWRITEBUF 27
 #define SYS_FCNTL 28
+#define SYS_DUMMY 29
 
 #endif

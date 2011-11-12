@@ -48,6 +48,7 @@
 #include <types.h>
 #include <vmm.h>
 #include <pagination.h>
+#include <cpu.h>
 
 #include <string.h>
 #include <sys/syscall.h>
@@ -93,7 +94,7 @@ int is_schedulable(process_t* process) {
 /* Effectue le changement de contexte proprement dit */
 void context_switch(int mode, process_t* current)
 {
-	uint32_t esp, eflags;
+	uint32_t kesp, eflags;
 	uint16_t kss, ss, cs;
 	
 	/* Récupère l'adresse physique de répertoire de page du processus */
@@ -106,16 +107,16 @@ void context_switch(int mode, process_t* current)
 	ss = current->regs.ss;
 	cs = current->regs.cs;
 	
-	eflags = (current->regs.eflags | 0x200) & 0xFFFFBFFF; // Flags permettant le changemement de contexte
+	eflags = (current->regs.eflags | FLAGS_IF) & ~(FLAGS_NT); // Flags permettant le changemement de contexte
 	if(mode == USER_PROCESS)
 	{
 		kss = current->regs.kss;
-		esp = current->regs.kesp;
+		kesp = current->regs.kesp;
 	}
 	else
 	{
 		kss = current->regs.ss;
-		esp = current->regs.esp;
+		kesp = current->regs.esp;
 	}
 	asm(
 			"mov %0, %%ss;"
@@ -130,7 +131,7 @@ void context_switch(int mode, process_t* current)
 			"push %6;"
 			::        
 			"m" (kss), 		
-			"m" (esp),
+			"m" (kesp),
 			"m" (ss), 					
 			"m" (current->regs.esp), 	
 			"m" (eflags), 				
@@ -158,7 +159,7 @@ void* schedule(void* data __attribute__ ((unused)))
 	/* On met le contexte dans la structure "process"*/
 	process_t* current = scheduler->get_current_process();
 	
-	if(current->pid == 2 && idle_injected == 1) {
+	if(current->pid == 2) {
 		asm("nop");
 		
 	}
@@ -192,7 +193,7 @@ void* schedule(void* data __attribute__ ((unused)))
 		{
 			current->regs.ss = get_default_tss()->ss0;
 			current->regs.esp = frame->kesp + 12;	/* Valeur hardcodée, je cherche encore un moyen d'éviter ça... */
-			current->regs.kesp = current->regs.esp;
+			//current->regs.kesp = current->regs.esp;
 		}
 		else
 		{
@@ -200,6 +201,8 @@ void* schedule(void* data __attribute__ ((unused)))
 			current->regs.esp = frame->esp;
 		}
 
+		current->regs.kss = get_default_tss()->ss0;
+		current->regs.kesp = get_default_tss()->esp0;
 		
 		current->user_time += quantum;
 	}
@@ -229,8 +232,7 @@ void* schedule(void* data __attribute__ ((unused)))
 		sample_CPU_usage();
 		sample_counter = 0;
 	}
-
-
+	
 	/* Si le processus courant n'a pas encore commencé son exécution, on le lance */
 	if(current->state == PROCSTATE_IDLE)
 	{

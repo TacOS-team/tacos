@@ -1,5 +1,5 @@
 /**
- * @file test_sig.c
+ * @file cpu.h
  *
  * @author TacOS developers 
  *
@@ -24,28 +24,29 @@
  *
  * @section DESCRIPTION
  *
- * Programme de test pour les signaux
+ * Définitions liées au fonctionnement interne du processeur
  */
+#ifndef _CPU_H
+#define _CPU_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/syscall.h>
-#include <signal.h>
+/* Définitions des masques pour les flags */
+#define FLAGS_CF	0x00000001
+#define FLAGS_PF	0x00000004
+#define FLAGS_AF	0x00000010
+#define FLAGS_ZF	0x00000040
+#define FLAGS_SF	0x00000080
+#define FLAGS_TF	0x00000100
+#define FLAGS_IF	0x00000200
+#define FLAGS_DF	0x00000400
+#define FLAGS_OF	0x00000800
+#define FLAGS_IOPL1	0x00001000
+#define FLAGS_IOPL2	0x00002000
+#define FLAGS_NT	0x00004000
+#define FLAGS_RF	0x00010000
+#define FLAGS_VM	0x00020000
+#define FLAGS_AC	0x00040000
+#define FLAGS_VIF	0x00080000
+#define FLAGS_VIP	0x00100000
+#define FLAGS_ID	0x00200000
 
-
-void handler(int signal) {
-	printf("Me revoila!\n", signal);
-}
-
-int main() {
-	int i;
-	for(i=0; i<4; i++) {
-		syscall(SYS_DUMMY,0,1,2);
-	}
-
-    return 0;
-}
-
-
+#endif /* _CPU_H */

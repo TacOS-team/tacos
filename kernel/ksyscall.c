@@ -31,12 +31,13 @@
 //Pour plus d'infos sur sysenter: Doc Intel 2B 4-483
 
 /* Kernel */
-
+#include <cpu.h>
 #include <gdt.h>
 #include <interrupts.h>
 #include <ksyscall.h>
 #include <klog.h>
 #include <msr.h>
+#include <scheduler.h>
 
 /* LibC */
 #include <string.h>
@@ -63,7 +64,7 @@ void syscall_entry(int interrupt_id __attribute__ ((unused)))
 	
 	/* Récupération des données empilées par l'interruption*/
 	frame = (intframe*) &interrupt_id;
-	
+
 	/* Si on fait le syscall depuis l'user-mode, on sauvegarde l'esp user dans la tss */
 	if(frame->cs == USER_CODE_SEGMENT) {
 		get_default_tss()->esp1 = frame->esp;
@@ -77,6 +78,10 @@ void syscall_entry(int interrupt_id __attribute__ ((unused)))
 	}
 	else
 		kerr("Unknown syscall handler (0x%x).\n", function);
+	
+	asm("cli");
+	get_default_tss()->esp0 = (uint32_t)(frame+1);
+	asm("sti");
 }
 
 int syscall_set_handler(uint32_t syscall_id, syscall_handler_t handler)
@@ -104,3 +109,6 @@ void init_syscall()
 	memset(syscall_handler_table, 0, MAX_SYSCALL_NB*sizeof(syscall_handler_t));
 }
 
+SYSCALL_HANDLER3(sys_dummy, uint32_t a,uint32_t b,uint32_t c) {
+	klog("dummy! %d %d %d\n",a,b,c);
+}
