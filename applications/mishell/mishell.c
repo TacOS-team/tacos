@@ -52,6 +52,7 @@ static int pwd_cmd()
 	return 0;
 }
 
+/*
 static int help_cmd()
 {
 	show_builtin_cmd();
@@ -69,12 +70,18 @@ static int cls_cmd() {
 	printf("\033[2J");
 	fflush(stdout);
 	return 0;
-}
+}*/
 
-static int cd_cmd()
+static int cd_cmd(int argc, char **argv)
 {
-	char buffer[256];
-	scanf("%s", buffer);
+	char *buffer;
+	if (argc == 1) {
+		buffer = "/";
+	} else if (argc == 2) {
+		buffer = argv[1];
+	} else {
+		return 2;
+	}
 	if (chdir(buffer)) {
 		printf("cd: aucun fichier ou dossier de ce type: %s", buffer);
 		return 1;
@@ -133,13 +140,6 @@ static int cd_cmd()
 // 	return 0;
 // }
 
-static int shell_exec_elf()
-{
-	char filename[80];
-	scanf("%s",filename);
-	return exec_elf(filename, 0);
-}
-
 void print_logo()
 {
 	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
@@ -160,12 +160,11 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	signal(SIGTTOU, sigstp_handler);
 	signal(SIGTTIN, sigstp_handler);
 
-	add_builtin_cmd(help_cmd, "help");
-	add_builtin_cmd(date_cmd, "date");
-	add_builtin_cmd(cls_cmd, "clear");
-	add_builtin_cmd(shell_exec_elf, "exec");
+	//add_builtin_cmd(help_cmd, "help");
+	//add_builtin_cmd(date_cmd, "date");
+	//add_builtin_cmd(cls_cmd, "clear");
 	//add_builtin_cmd(ps, "ps");
-	add_builtin_cmd(pwd_cmd, "pwd");
+	//add_builtin_cmd(pwd_cmd, "pwd");
 	add_builtin_cmd(cd_cmd, "cd");
 
 	//disable_cursor(0);

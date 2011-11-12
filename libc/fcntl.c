@@ -31,13 +31,20 @@
  * @file fcntl.c
  */
 
+#include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/syscall.h>
 
 int open(const char *pathname, int flags) {
 	int id;
-	syscall(SYS_OPEN,(uint32_t) &id,(uint32_t) pathname,(uint32_t) flags);
+	if (pathname[0] != '/' && pathname[0] != '$') {
+		char * absolutepath = get_absolute_path(pathname);
+		syscall(SYS_OPEN,(uint32_t) &id,(uint32_t) absolutepath,(uint32_t) flags);
+		free(absolutepath);
+	} else {
+		syscall(SYS_OPEN,(uint32_t) &id,(uint32_t) pathname,(uint32_t) flags);
+	}
 	
 	return id;
 }

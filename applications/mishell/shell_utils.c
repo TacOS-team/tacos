@@ -84,14 +84,26 @@ void add_builtin_cmd(func_ptr func, char* name)
 	}
 }
 
-int exec_builtin_cmd(char* name)
+int exec_builtin_cmd(char* cmd)
 {
-	func_ptr func = find_builtin_cmd(name);
+	char * name = strdup(cmd);
+	int argc = 0;
+	char **argv = malloc(100 * sizeof(char*));
+	char *s;
+	s = strtok(name, " ");
+	while (s != NULL) {
+		argv[argc++] = s;
+		s = strtok(NULL, " ");
+	}
+
+	func_ptr func = find_builtin_cmd(argv[0]);
 	int ret = -1;
 	if(func != NULL)
 	{
+		char *buf = malloc(10);
+		sprintf(buf, "?=%d", func(argc, argv));
+		putenv(buf);
 		ret = 0;
-		func();
 	}
 	return ret;
 }

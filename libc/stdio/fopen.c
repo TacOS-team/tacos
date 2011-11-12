@@ -69,13 +69,7 @@ int convert_flags(const char *mode) {
 FILE *fopen(const char *path, const char *mode) {
 	int flags = convert_flags(mode);
 	int fileno;
-	if (path[0] != '/') {
-		char * absolutepath = get_absolute_path(path);
-		fileno = open(absolutepath, flags);
-		free(absolutepath);
-	} else {
-		fileno = open(path, flags);
-	}
+	fileno = open(path, flags);
 
 	if (fileno < 0) return NULL;
 
