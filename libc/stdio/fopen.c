@@ -74,6 +74,7 @@ FILE *fopen(const char *path, const char *mode) {
 	if (fileno < 0) return NULL;
 
 	FILE *stream = malloc(sizeof(FILE));
+	memset(stream, 0, sizeof(FILE));
 	stream->_chain = __file_list;
 	__file_list = stream;
 
