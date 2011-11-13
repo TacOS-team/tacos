@@ -159,7 +159,7 @@ void disable_cursor(int disable) {
 }
 
 void cursor_position_video(int x, int y) {
-	int pos = x + y * COLUMNS;
+	int pos = x + y * COLUMNS + current_page * 4096;
 
 	outb(CURSOR_POS_LSB, CRT_REG_INDEX);
 	outb((uint8_t) pos, CRT_REG_DATA);
