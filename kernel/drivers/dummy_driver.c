@@ -21,7 +21,6 @@ static driver_interfaces di = {
 	.seek = NULL,
 	.open = NULL,
 	.close = NULL,
-	.flush = NULL,
 	.ioctl = NULL
 };
 
@@ -39,5 +38,4 @@ int (*seek) (open_file_descriptor *, long, int);
 int (*ioctl) (open_file_descriptor*, unsigned int, unsigned long);
 int (*open) (open_file_descriptor);
 int (*close) (open_file_descriptor*);
-int (*flush) (open_file_descriptor*);
 */

@@ -151,7 +151,6 @@ static driver_interfaces di = {
 	.seek = NULL,
 	.open = NULL,
 	.close = NULL,
-	.flush = NULL,
 	.ioctl = NULL
 };
 

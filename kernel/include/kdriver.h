@@ -40,7 +40,6 @@ typedef struct {
 	int (*ioctl) (open_file_descriptor*, unsigned int, void*);
 	int (*open) (open_file_descriptor*);
 	int (*close) (open_file_descriptor*);
-	int (*flush) (open_file_descriptor*);
 }driver_interfaces;
 
 void init_driver_list();

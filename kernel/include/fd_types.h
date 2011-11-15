@@ -47,7 +47,6 @@ typedef struct _open_file_descriptor {
 	int (*ioctl)(struct _open_file_descriptor*, unsigned int, void *);
 	int (*open) (struct _open_file_descriptor*);
 	int (*close) (struct _open_file_descriptor*);
-	int (*flush) (struct _open_file_descriptor*);
 } open_file_descriptor;
 
 typedef struct _file_descriptor {

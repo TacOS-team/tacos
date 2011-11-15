@@ -32,7 +32,7 @@
 
 #define LARGEUR_TAB 8
 
-#define NB_CONSOLES 8
+#define NB_CONSOLES 4
 static struct console_t consoles[NB_CONSOLES];
 // TODO : On pourrait changer ça par une liste de consoles pour avoir un nombre illimité.
 

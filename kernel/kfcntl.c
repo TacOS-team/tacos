@@ -136,7 +136,6 @@ SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags) {
 			process->fd[i].ofd->ioctl = di->ioctl;
 			process->fd[i].ofd->open = di->open;
 			process->fd[i].ofd->close = di->close;
-			process->fd[i].ofd->flush = di->flush;
 			
 			*((int *)fd_id) = i;
 		}
