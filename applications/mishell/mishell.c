@@ -194,7 +194,7 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 					wait(NULL);
 			} else {
 				char temp[278];
-				sprintf(temp, "/bin/%s", buffer);
+				sprintf(temp, "/tacos/bin/%s", buffer);
 				if(exec_elf(temp, 0) != 0)
 					printf("commande introuvable.\n");
 				else

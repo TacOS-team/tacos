@@ -27,18 +27,17 @@
  * Description de ce que fait le fichier
  */
 
+#include <console.h>
+#include <kdriver.h>
+#include <keyboard.h>
+#include <klog.h>
+#include <kmalloc.h>
 #include <kprocess.h>
 #include <ksyscall.h>
 #include <scheduler.h>
-#include <kfat.h>
 #include <string.h>
-#include <kmalloc.h>
-
-#include <kdriver.h>
-#include <keyboard.h>
-#include <console.h>
 #include <tty.h>
-#include <klog.h>
+#include <vfs.h>
 
 #include <fcntl.h>
 
@@ -142,13 +141,7 @@ SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags) {
 		else
 			*((int *)fd_id) = -1;
 	}
-	else if (fat_open_file(path, process->fd[i].ofd, flags) == 0) {
-		// C'est ici qu'on devrait vérifier si le fichier ouvert est spécial 
-		// pour savoir si on doit binder au file system ou à un driver.
-		process->fd[i].ofd->write = fat_write_file;
-		process->fd[i].ofd->read = fat_read_file;
-		process->fd[i].ofd->seek = fat_seek_file;
-		process->fd[i].ofd->close = fat_close;
+	else if (vfs_open(path, process->fd[i].ofd, flags) == 0) {
 		*((int *)fd_id) = i;
 	} else {
 		*((int *)fd_id) = -1;

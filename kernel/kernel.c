@@ -137,8 +137,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	floppy_init_interrupt();
 	init_fpu();
 
-	 
-	
 	asm volatile ("sti\n");
 
 	/* Configuration de la pagination */
@@ -202,9 +200,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 	if(init_floppy() != 0)
 		kerr("Initialisation du lecteur a echoue.");
 	
-	// Mount FAT avec le lecteur de disquette.
-	mount_FAT(floppy_read, floppy_write);
-	
+	vfs_init();
+	vfs_mount("/dev/floppy", "tacos", "FAT");
+
 	init_process_array();
 	
 	/* Lancement du scheduler */

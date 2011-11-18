@@ -27,13 +27,13 @@
  * Description de ce que fait le fichier
  */
 
+#include <vfs.h>
 #include <kdirent.h>
-#include <kfat.h>
 #include <kmalloc.h>
 #include <string.h>
 
 SYSCALL_HANDLER2(sys_opendir, char *name, int *ret) {
-	if (fat_opendir(name) == 0) {
+	if (vfs_opendir(name) == 0) {
 		*ret = 0;
 	} else {
 		*ret = 1;
@@ -41,9 +41,9 @@ SYSCALL_HANDLER2(sys_opendir, char *name, int *ret) {
 }
 
 SYSCALL_HANDLER3(sys_readdir, DIR *dir, struct dirent *entry, int *ret) {
-	*ret = fat_readdir(dir->path, dir->iter, entry->d_name);
+	*ret = vfs_readdir(dir->path, dir->iter, entry->d_name);
 }
 
 SYSCALL_HANDLER3(sys_mkdir, char *pathname, mode_t mode, int *ret) {
-	*ret = fat_mkdir((char*)pathname, (mode_t)mode);
+	*ret = vfs_mkdir((char*)pathname, (mode_t)mode);
 }

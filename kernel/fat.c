@@ -36,11 +36,19 @@
 #include <string.h>
 #include <types.h>
 #include <clock.h>
+//XXX: supprimer ce include !
+#include <floppy.h>
 
 #ifndef EOF
 # define EOF (-1)
 #endif
 
+typedef struct _fat_fs_instance_t {
+	fs_instance_t super;
+	fat_info_t fat_info;
+} fat_fs_instance_t;
+
+//XXX: passer partout dans le code pour retirer cette variable et utiliser celle de fat_fs_instance_t.
 static fat_info_t fat_info;
 
 /*
@@ -151,11 +159,18 @@ static void write_fat_entry(int index) {
 /*
  * Init the FAT driver for a specific devide.
  */
-void mount_FAT(read_handler rh, write_handler wh) {
+fs_instance_t* mount_FAT() {
 	kdebug("mount_FAT !");
 
-	fat_info.read_data = rh;
-	fat_info.write_data = wh;
+	fs_instance_t *instance = kmalloc(sizeof(fat_fs_instance_t));
+	instance->open = fat_open_file;
+	instance->mkdir = fat_mkdir;
+	instance->readdir = fat_readdir;
+	instance->opendir = fat_opendir;
+
+	//XXX: passer floppy en device et le passer en arg.
+	fat_info.read_data = floppy_read;
+	fat_info.write_data = floppy_write;
 
 	uint8_t sector[512];
 	fat_info.read_data(sector, 512, 0);
@@ -215,6 +230,12 @@ void mount_FAT(read_handler rh, write_handler wh) {
 	fat_info.file_alloc_table = (unsigned int*) kmalloc(sizeof(unsigned int) * fat_info.total_data_clusters);
 
 	read_fat();
+
+	return instance;
+}
+
+void umount_FAT(fs_instance_t *instance) {
+	kfree(instance);
 }
 
 static void encode_long_file_name(char * name, lfn_entry_t * long_file_name, int n_entries) {
@@ -848,7 +869,7 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
 
 
 
-int fat_opendir(char * path) {
+int fat_opendir(fs_instance_t *instance, const char * path) {
 	directory_t *f;
 
 	if ((f = open_dir_from_path(path)) == NULL)
@@ -859,7 +880,7 @@ int fat_opendir(char * path) {
 	return 0;
 }
 
-int fat_readdir(const char * path, int iter, char * filename) {
+int fat_readdir(fs_instance_t *instance, const char * path, int iter, char * filename) {
 	directory_t *dir;
 
 	if ((dir = open_dir_from_path(path)) == NULL)
@@ -990,7 +1011,7 @@ size_t fat_read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 	return ret;
 }
 
-int fat_mkdir (const char * path, mode_t mode __attribute__((__unused__))) {
+int fat_mkdir (fs_instance_t *instance, const char * path, mode_t mode __attribute__((__unused__))) {
   char * dir = kmalloc(strlen(path));
   char filename[256];
   split_dir_filename(path, dir, filename);
@@ -1056,7 +1077,7 @@ int fat_createfile (const char * path, mode_t mode __attribute__((__unused__))) 
   return 0;
 }
 
-int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
+int fat_open_file(fs_instance_t *instance, const char * path, open_file_descriptor * ofd, uint32_t flags) {
 	directory_entry_t *f;
 	size_t size_buffer = sizeof(ofd->buffer) < fat_info.BS.bytes_per_sector ? 
 			sizeof(ofd->buffer) : fat_info.BS.bytes_per_sector;
@@ -1072,12 +1093,17 @@ int fat_open_file(char * path, open_file_descriptor * ofd, uint32_t flags) {
 		}
 	}
 
+	ofd->fs_instance = instance;
 	ofd->first_cluster = f->cluster;
 	ofd->file_size = f->size;
 	ofd->current_cluster = ofd->first_cluster;
 	ofd->current_octet = 0;
 	ofd->current_octet_buf = 0;
 
+	ofd->write = fat_write_file;
+	ofd->read = fat_read_file;
+	ofd->seek = fat_seek_file;
+	ofd->close = fat_close;
 
 	fat_info.read_data(ofd->buffer, size_buffer, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
 

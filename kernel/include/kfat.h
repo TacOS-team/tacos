@@ -34,6 +34,7 @@
 #include <fd_types.h>
 #include <time.h>
 #include <sys/stat.h>
+#include <vfs.h>
 
 #define SEEK_SET 0
 #define SEEK_CUR 1
@@ -178,16 +179,19 @@ typedef struct _fat_info {
 	write_handler write_data;
 } fat_info_t;
 
-void mount_FAT();
+fs_instance_t* mount_FAT();
+void umount_FAT(fs_instance_t *instance);
 
 // Lecture/Ecriture Fichier
-int fat_readdir(const char * path, int iter, char * filename);
-int fat_opendir(char * path);
-int fat_open_file (char * path, open_file_descriptor * ofd, uint32_t flags);
+int fat_readdir(fs_instance_t *instance, const char * path, int iter, char * filename);
+int fat_opendir(fs_instance_t *instance, const char * path);
+
+int fat_open_file (fs_instance_t *instance, const char * path, open_file_descriptor * ofd, uint32_t flags);
+int fat_mkdir(fs_instance_t *instance, const char * path, mode_t mode);
+
 size_t fat_read_file (open_file_descriptor * ofd, void * buf, size_t count);
 size_t fat_write_file (open_file_descriptor * ofd, const void * buf, size_t nb_octet);
 int fat_seek_file (open_file_descriptor * ofd, long offset, int whence);
-int fat_mkdir (const char * path, mode_t mode);
 int fat_close(open_file_descriptor *ofd);
 
 #endif

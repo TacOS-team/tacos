@@ -32,6 +32,8 @@
 
 #define FOPEN_MAX 500
 
+struct _fs_instance_t;
+
 typedef struct _open_file_descriptor {
 	uint32_t flags;
 	uint8_t buffer[512];
@@ -40,6 +42,7 @@ typedef struct _open_file_descriptor {
 	uint32_t current_octet;
 	uint32_t first_cluster;
 	uint32_t file_size;
+	struct _fs_instance_t *fs_instance;
 	void * extra_data;
 	size_t (*write)(struct _open_file_descriptor *, const void*, size_t);
 	size_t (*read)(struct _open_file_descriptor *,void*, size_t);
