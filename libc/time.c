@@ -51,7 +51,7 @@
 #define LONG_MAX   2147483647L
 #define TIME_MAX   0xFFFFFFFFL
 
-const int _ytab[2][12] = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 },
+static const int _ytab[2][12] = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 },
                            { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }};
 
 
@@ -126,7 +126,7 @@ double difftime(time_t time1, time_t time0)
 /*
  * adapté de : http://www.raspberryginger.com/jbailey/minix/html/mktime_8c-source.html
  */
-time_t mktime(struct tm *timep __attribute__((unused)))
+time_t mktime(struct tm *timep)
 {
 	long day, year;
 	int tm_year;
