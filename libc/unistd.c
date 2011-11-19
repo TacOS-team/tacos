@@ -81,7 +81,12 @@ int chdir(const char *path) {
 		} else {
 			cwd = get_absolute_path(path);
 		}
-		char *dest = malloc(5 + strlen(cwd));
+		int len = strlen(cwd);
+		if (len > 1 && cwd[len-1] == '/') {
+			cwd[len-1] = '\0';
+			len--;
+		}
+		char *dest = malloc(5 + len);
 		sprintf(dest, "PWD=%s", cwd);
 		putenv(dest);
 		return 0;
