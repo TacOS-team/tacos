@@ -40,8 +40,6 @@
 #define SEEK_CUR 1
 #define SEEK_END 2
 
-#define ENOENT 2
-
 typedef void(*read_handler)(uint8_t * buf, size_t count, int offset);
 typedef void(*write_handler)(uint8_t * buf, size_t count, int offset);
 

@@ -63,6 +63,10 @@ void syscall_entry(int interrupt_id __attribute__ ((unused)))
 	asm("":"=a"(function),"=b"(param1),"=c"(param2),"=d"(param3));
 	/* Récupération des données empilées par l'interruption*/
 	frame = (intframe*) &interrupt_id;
+	if(get_current_process()->pid == 2) {
+		klog("ESP = 0x%x", frame+1);
+	}
+	
 
 	/* Si on fait le syscall depuis l'user-mode, on sauvegarde l'esp user dans la tss */
 	if(frame->cs == USER_CODE_SEGMENT) {

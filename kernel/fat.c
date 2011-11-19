@@ -38,6 +38,7 @@
 #include <clock.h>
 //XXX: supprimer ce include !
 #include <floppy.h>
+#include <kdirent.h>
 
 #ifndef EOF
 # define EOF (-1)
