@@ -32,17 +32,13 @@
 #include <gdt.h>
 #include <kfcntl.h>
 #include <klog.h>
-#include <kmalloc.h>
-#include <kprocess.h>
 #include <ksignal.h>
 #include <ksyscall.h>
 #include <scheduler.h>
-#include <string.h>
+#include <kmalloc.h>
 #include <types.h>
+#include <string.h>
 #include <pagination.h>
-
-#include <vfs.h>
-#include <kdirent.h>
 
 #define GET_PROCESS 0
 #define GET_PROCESS_LIST 1
@@ -72,6 +68,10 @@ uint32_t get_proc_count()
 	return proc_count;
 }
 
+process_t* get_process_array(int i) {
+	return process_array[i];
+}
+
 void add_process(process_t* process)
 {
 	int i = 0;
@@ -93,7 +93,7 @@ process_t* find_process(int pid)
 	
 	while(proc==NULL && i<MAX_PROC)
 	{
-		if(process_array[i]->pid == pid)
+		if(process_array[i] != NULL && process_array[i]->pid == pid)
 			proc = process_array[i];
 		else
 			i++;
@@ -603,83 +603,4 @@ SYSCALL_HANDLER3(sys_proc, uint32_t sub_func, uint32_t param1, uint32_t param2)
 		default:
 			kerr("invalid syscall (0x%x).\n", sub_func);
 	}
-}
-
-
-/***** PROCFS ******/
-int procfs_open_file(fs_instance_t *instance, const char * path, open_file_descriptor * ofd, uint32_t flags) {
-	
-	
-	ofd->fs_instance = instance;
-	ofd->first_cluster = 0;
-	ofd->file_size = 512; /* TODO */
-	ofd->current_cluster = ofd->first_cluster;
-	ofd->current_octet = 0;
-	ofd->current_octet_buf = 0;
-
-	ofd->write = NULL;/* procfs_write_file;*/
-	ofd->read = NULL; /*procfs_read_file; */
-	ofd->seek = NULL; /*procfs_seek_file; */
-	ofd->close = NULL; /*procfs_close;*/
-}
-
-int procfs_opendir(fs_instance_t *instance __attribute__((unused)), const char * path) {
-	int i,j;
-	int pid;
-	char buf[64]; /* Beaucoup trop */
-	
-	if (path[0] == '\0')
-		return 0;
-	if (path[0] != '/')
-		return -ENOENT;
-		
-	i=0;
-	while (path[i] == '/') 
-		i++;
-	
-	if(path[i] != '\0') { /* Dans ce cas on cherche un pid */
-		j=0;
-		while(path[i] != '\0' && path[i] != '/') {
-			buf[j] = path[i];
-			i++;
-			j++;
-		}
-		buf[j] = '\0';
-		pid = atoi(buf);
-		if(find_process(pid) != NULL) {
-			return 0;
-		} else {
-			return -ENOENT;
-		}
-	}
-	
-	return 0;
-}
-
-int procfs_readdir(fs_instance_t *instance __attribute__((unused)), const char * path, int iter, char * filename) {
-	
-}
-
-fs_instance_t* mount_ProcFS() {
-	klog("mounting ProcFS");
-
-	fs_instance_t *instance = kmalloc(sizeof(fs_instance_t));
-	instance->open = procfs_open_file;
-	instance->mkdir = NULL;
-	instance->readdir = procfs_readdir;
-	instance->opendir = procfs_opendir;
-	
-	return instance;
-}
-
-void umount_ProcFS(fs_instance_t *instance) {
-	kfree(instance);
-}
-
-void init_procfs() {
-	file_system_t *fs = kmalloc(sizeof(file_system_t));
-	fs->name = "ProcFS";
-	fs->mount = mount_ProcFS;
-	fs->umount = umount_ProcFS;
-	vfs_register_fs(fs);
 }

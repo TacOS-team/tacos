@@ -71,6 +71,7 @@
 #include <kdirent.h>
 #include <vga.h>
 #include <init.h>
+#include <fs/procfs.h>
 
 /* Includes des drivers */
 #include <drivers/dummy_driver.h>
@@ -152,8 +153,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	//kprintf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
 
 	pci_scan();
-
-
 		
 	int irq = rtl8139_driver_init();
 	interrupt_set_routine(irq,  rtl8139_isr, 0);
@@ -201,7 +200,10 @@ void cmain (unsigned long magic, unsigned long addr) {
 		kerr("Initialisation du lecteur a echoue.");
 	
 	fat_init();
+	procfs_init();
+	
 	vfs_mount("/dev/floppy", "tacos", "FAT");
+	vfs_mount("", "proc", "ProcFS");
 
 	init_process_array();
 	
