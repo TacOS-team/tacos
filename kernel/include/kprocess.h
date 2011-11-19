@@ -45,11 +45,11 @@
 
 #define CPU_USAGE_SAMPLE_RATE 100
 
-#define PROCSTATE_IDLE 1
-#define PROCSTATE_RUNNING 2
-#define PROCSTATE_WAITING 3
-#define PROCSTATE_SUSPENDED 4
-#define PROCSTATE_TERMINATED 5 
+#define PROCSTATE_IDLE 0
+#define PROCSTATE_RUNNING 1
+#define PROCSTATE_WAITING 2
+#define PROCSTATE_SUSPENDED 3
+#define PROCSTATE_TERMINATED 4
 
 #define CURRENT_PROCESS -1
 
@@ -158,4 +158,8 @@ SYSCALL_HANDLER3(sys_proc, uint32_t sub_func, uint32_t param1, uint32_t param2);
 void add_process(process_t* process);
 
 void inject_idle(process_t* proc);
+
+void procfs_init();
+
+process_t* get_process_array(int i);
 #endif /* _K_PROCESS_H_ */

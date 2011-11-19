@@ -324,9 +324,7 @@ SYSCALL_HANDLER1(sys_sleep, uint32_t delay)
 	/* Scheduling immédiat */
 	start_scheduler();
 	
-	
 	while(process->state == PROCSTATE_WAITING);
-	//dummy1();
 		
 	return;
 }

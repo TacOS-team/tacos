@@ -32,13 +32,12 @@
 #include <gdt.h>
 #include <kfcntl.h>
 #include <klog.h>
-#include <kmalloc.h>
-#include <kprocess.h>
 #include <ksignal.h>
 #include <ksyscall.h>
 #include <scheduler.h>
-#include <string.h>
+#include <kmalloc.h>
 #include <types.h>
+#include <string.h>
 #include <pagination.h>
 
 #define GET_PROCESS 0
@@ -69,6 +68,10 @@ uint32_t get_proc_count()
 	return proc_count;
 }
 
+process_t* get_process_array(int i) {
+	return process_array[i];
+}
+
 void add_process(process_t* process)
 {
 	int i = 0;
@@ -90,7 +93,7 @@ process_t* find_process(int pid)
 	
 	while(proc==NULL && i<MAX_PROC)
 	{
-		if(process_array[i]->pid == pid)
+		if(process_array[i] != NULL && process_array[i]->pid == pid)
 			proc = process_array[i];
 		else
 			i++;

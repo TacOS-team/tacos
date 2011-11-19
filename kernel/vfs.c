@@ -32,6 +32,7 @@
 #include <kfat.h>
 #include <kmalloc.h>
 #include <vfs.h>
+#include <kdirent.h>
 //XXX: libc
 #include <string.h>
 
@@ -128,7 +129,7 @@ void vfs_mount(const char *device __attribute__((unused)), const char *mountpoin
 			int i;
 			for (i = 0; i <= len; i++)
 				element->name[i] = mountpoint[i];
-			element->instance = mount_FAT(); //XXX: device en argument.
+			element->instance = aux->fs->mount(); //XXX: device en argument.
 			element->next = mount_list;
 			mount_list = element;
 		}

@@ -38,6 +38,7 @@
 #include <clock.h>
 //XXX: supprimer ce include !
 #include <floppy.h>
+#include <kdirent.h>
 
 #ifndef EOF
 # define EOF (-1)
@@ -160,7 +161,7 @@ static void write_fat_entry(int index) {
  * Init the FAT driver for a specific devide.
  */
 fs_instance_t* mount_FAT() {
-	kdebug("mount_FAT !");
+	klog("mounting FAT");
 
 	fs_instance_t *instance = kmalloc(sizeof(fat_fs_instance_t));
 	instance->open = fat_open_file;
