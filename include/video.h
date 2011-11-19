@@ -85,7 +85,7 @@ void init_video();
 /**
  * @brief Change la position du curseur.
  */
-void cursor_position_video(int x, int y);
+void cursor_position_video(int n, int x, int y);
 
 /**
  * @brief Désactive l'affichage du curseur.
