@@ -1115,3 +1115,14 @@ int fat_open_file(fs_instance_t *instance __attribute__((unused)), const char * 
 int fat_close(open_file_descriptor *ofd __attribute__ ((unused))) {
 	return 0;
 }
+
+
+void fat_init() {
+	file_system_t *fs = kmalloc(sizeof(file_system_t));
+	fs->name = "FAT";
+	fs->mount = mount_FAT;
+	fs->umount = umount_FAT;
+	vfs_register_fs(fs);
+}
+
+

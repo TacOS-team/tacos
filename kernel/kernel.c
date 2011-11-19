@@ -200,7 +200,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	if(init_floppy() != 0)
 		kerr("Initialisation du lecteur a echoue.");
 	
-	vfs_init();
+	fat_init();
 	vfs_mount("/dev/floppy", "tacos", "FAT");
 
 	init_process_array();

@@ -53,8 +53,8 @@ typedef struct _fs_instance_t {
 	int (*mkdir) (struct _fs_instance_t *, const char * , mode_t);
 } fs_instance_t;
 
+void vfs_register_fs(file_system_t *fs);
 
-void vfs_init();
 int vfs_open(const char * pathname, open_file_descriptor *ofd, uint32_t modes);
 void vfs_mount(const char *device, const char *mountpoint, const char *type);
 int vfs_umount(const char *mountpoint);

@@ -1,3 +1,32 @@
+/**
+ * @file vfs.c
+ *
+ * @author TacOS developers 
+ *
+ *
+ * @section LICENSE
+ *
+ * Copyright (C) 2010 - TacOS developers.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 3 of
+ * the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * General Public License for more details at
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * You should have received a copy of the GNU General Public License 
+ * along with this program; if not, see <http://www.gnu.org/licenses>.
+ *
+ * @section DESCRIPTION
+ *
+ * Virtual File System. Gestion des points de montage.
+ */
+
 #include <klog.h>
 #include <kdriver.h>
 #include <kfat.h>
@@ -21,19 +50,11 @@ typedef struct _mounted_fs_t {
 
 static mounted_fs_t *mount_list;
 
-static void vfs_register_fs(file_system_t *fs) {
+void vfs_register_fs(file_system_t *fs) {
 	available_fs_t *element = kmalloc(sizeof(available_fs_t));
 	element->fs = fs;
 	element->next = fs_list;
 	fs_list = element;
-}
-
-void vfs_init() {
-	file_system_t *fs = kmalloc(sizeof(file_system_t));
-	fs->name = "FAT";
-	fs->mount = mount_FAT;
-	fs->umount = umount_FAT;
-	vfs_register_fs(fs);
 }
 
 static fs_instance_t* get_instance_from_path(const char * pathname, int *len) {

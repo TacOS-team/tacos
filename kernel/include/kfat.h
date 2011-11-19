@@ -194,4 +194,6 @@ size_t fat_write_file (open_file_descriptor * ofd, const void * buf, size_t nb_o
 int fat_seek_file (open_file_descriptor * ofd, long offset, int whence);
 int fat_close(open_file_descriptor *ofd);
 
+void fat_init();
+
 #endif
