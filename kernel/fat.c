@@ -869,7 +869,7 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
 
 
 
-int fat_opendir(fs_instance_t *instance, const char * path) {
+int fat_opendir(fs_instance_t *instance __attribute__((unused)), const char * path) {
 	directory_t *f;
 
 	if ((f = open_dir_from_path(path)) == NULL)
@@ -880,7 +880,7 @@ int fat_opendir(fs_instance_t *instance, const char * path) {
 	return 0;
 }
 
-int fat_readdir(fs_instance_t *instance, const char * path, int iter, char * filename) {
+int fat_readdir(fs_instance_t *instance __attribute__((unused)), const char * path, int iter, char * filename) {
 	directory_t *dir;
 
 	if ((dir = open_dir_from_path(path)) == NULL)
@@ -1011,7 +1011,7 @@ size_t fat_read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 	return ret;
 }
 
-int fat_mkdir (fs_instance_t *instance, const char * path, mode_t mode __attribute__((__unused__))) {
+int fat_mkdir (fs_instance_t *instance __attribute__((unused)), const char * path, mode_t mode __attribute__((__unused__))) {
   char * dir = kmalloc(strlen(path));
   char filename[256];
   split_dir_filename(path, dir, filename);
@@ -1077,7 +1077,7 @@ int fat_createfile (const char * path, mode_t mode __attribute__((__unused__))) 
   return 0;
 }
 
-int fat_open_file(fs_instance_t *instance, const char * path, open_file_descriptor * ofd, uint32_t flags) {
+int fat_open_file(fs_instance_t *instance __attribute__((unused)), const char * path, open_file_descriptor * ofd, uint32_t flags) {
 	directory_entry_t *f;
 	size_t size_buffer = sizeof(ofd->buffer) < fat_info.BS.bytes_per_sector ? 
 			sizeof(ofd->buffer) : fat_info.BS.bytes_per_sector;

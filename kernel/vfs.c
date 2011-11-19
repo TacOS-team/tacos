@@ -1,6 +1,8 @@
-#include <vfs.h>
+#include <klog.h>
+#include <kdriver.h>
 #include <kfat.h>
 #include <kmalloc.h>
+#include <vfs.h>
 //XXX: libc
 #include <string.h>
 
@@ -64,6 +66,29 @@ static fs_instance_t* get_instance_from_path(const char * pathname, int *len) {
 }
 
 int vfs_open(const char * pathname, open_file_descriptor *ofd, uint32_t modes) {
+	//XXX: Ceci devrait être dans un dev_fs !
+	if(pathname[0] == '$')
+	{
+		driver_interfaces* di = find_driver(pathname+1);
+		if(di != NULL) {
+			if( di->open == NULL )
+				kerr("No \"open\" method for device \"%s\".", pathname+1);
+			else
+				di->open(ofd);
+				
+			ofd->write = di->write;
+			ofd->read = di->read;
+			ofd->seek = di->seek;
+			ofd->ioctl = di->ioctl;
+			ofd->open = di->open;
+			ofd->close = di->close;
+			
+			return 0;
+		} else {
+			return -1;
+		}
+	}
+
 	int len;
 	fs_instance_t *instance = get_instance_from_path(pathname, &len);
 	if (instance->open != NULL) {

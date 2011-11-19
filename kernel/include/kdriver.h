@@ -43,7 +43,7 @@ typedef struct {
 }driver_interfaces;
 
 void init_driver_list();
-driver_interfaces* find_driver(char* name);
+driver_interfaces* find_driver(const char* name);
 int register_driver(const char* name, driver_interfaces* di);
 
 #endif /* _KDRIVER_H */

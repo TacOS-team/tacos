@@ -66,7 +66,7 @@ void init_driver_list()
  * 
  * @return interfaces du driver trouvé
  */
-driver_interfaces* find_driver(char* name)
+driver_interfaces* find_driver(const char* name)
 {
 	int i = 0;
 	driver_interfaces* ret = NULL;

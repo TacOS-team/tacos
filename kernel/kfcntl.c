@@ -28,7 +28,6 @@
  */
 
 #include <console.h>
-#include <kdriver.h>
 #include <keyboard.h>
 #include <klog.h>
 #include <kmalloc.h>
@@ -103,7 +102,6 @@ void close_all_fd() {
 
 SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags) {
 	int i=0;
-	driver_interfaces* di = NULL;
 	
 	//process_t * process = (process_t*) p_process;
 	char* path = (char*) p_path;
@@ -118,30 +116,8 @@ SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags) {
 	process->fd[i].used = true;
 	process->fd[i].ofd->flags = flags;
 	
-	// ouverture du fichier (sur fd0 pour le moment)
-	if(path[0] == '$')
-	{
-		di = find_driver(path+1);
-		if(di != NULL)
-		{
-			if( di->open == NULL )
-				kerr("No \"open\" method for device \"%s\".", path+1);
-			else
-				di->open(process->fd[i].ofd);
-				
-			process->fd[i].ofd->write = di->write;
-			process->fd[i].ofd->read = di->read;
-			process->fd[i].ofd->seek = di->seek;
-			process->fd[i].ofd->ioctl = di->ioctl;
-			process->fd[i].ofd->open = di->open;
-			process->fd[i].ofd->close = di->close;
-			
-			*((int *)fd_id) = i;
-		}
-		else
-			*((int *)fd_id) = -1;
-	}
-	else if (vfs_open(path, process->fd[i].ofd, flags) == 0) {
+	// ouverture du fichier
+	if (vfs_open(path, process->fd[i].ofd, flags) == 0) {
 		*((int *)fd_id) = i;
 	} else {
 		*((int *)fd_id) = -1;
