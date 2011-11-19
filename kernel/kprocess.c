@@ -661,7 +661,7 @@ int procfs_readdir(fs_instance_t *instance __attribute__((unused)), const char *
 }
 
 fs_instance_t* mount_ProcFS() {
-	kdebug("mount_FAT !");
+	klog("mounting ProcFS");
 
 	fs_instance_t *instance = kmalloc(sizeof(fs_instance_t));
 	instance->open = procfs_open_file;
