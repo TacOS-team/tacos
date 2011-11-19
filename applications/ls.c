@@ -30,33 +30,54 @@
 #include <dirent.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <sys/stat.h>
+
+void listdir(const char *path) {
+	struct stat buf;
+	DIR* dir = opendir(path);
+	struct dirent* entry;
+	if (dir != NULL) {
+		char c;
+		while((entry = readdir(dir))) {
+			stat(entry->d_name, &buf);
+			if (S_ISDIR(buf.st_mode)) {
+				c = '/';
+			} else {
+				c = ' ';
+			}
+			printf("%s%c ", entry->d_name, c);
+		}
+		closedir(dir);
+	} else {
+		fprintf(stderr, "%s not found.\n", path);
+	}
+}
+
+void list(const char *path) {
+	struct stat buf;
+	if (stat(path, &buf) == 0) {
+		if (S_ISDIR(buf.st_mode)) {
+			listdir(path);
+		} else {
+			printf("%s ", path);
+		}
+	} else {
+		fprintf(stderr, "%s not found.\n", path);
+	}
+}
 
 int main(int argc, char** argv)
 {
-	int i;
-	DIR* dir;
-	struct dirent* entry;
 	
 	if (argc == 1) {
-		dir = opendir(getcwd(NULL, 0));
-		if (dir != NULL) {
-			while((entry = readdir(dir)))
-				printf("%s ", entry->d_name);
-			printf("\n");
-			closedir(dir);
-		}
+		list(getcwd(NULL, 0));
 	} else {
+		int i;
 		for(i = 1; i < argc; i++) {
-			dir = opendir(argv[i]);
-			if (dir != NULL) {
-				while((entry = readdir(dir)))
-					printf("%s ", entry->d_name);
-				closedir(dir);
-			} else {
-				fprintf(stderr, "%s not found.\n", argv[i]);
-			}
+			list(argv[i]);
 		}
 	}
+	printf("\n");
 	return 0;
 }
 

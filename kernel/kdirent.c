@@ -32,7 +32,7 @@
 #include <kmalloc.h>
 #include <string.h>
 
-SYSCALL_HANDLER2(sys_opendir, char *name, int *ret) {
+SYSCALL_HANDLER2(sys_opendir, const char *name, int *ret) {
 	if (vfs_opendir(name) == 0) {
 		*ret = 0;
 	} else {
@@ -44,6 +44,6 @@ SYSCALL_HANDLER3(sys_readdir, DIR *dir, struct dirent *entry, int *ret) {
 	*ret = vfs_readdir(dir->path, dir->iter, entry->d_name);
 }
 
-SYSCALL_HANDLER3(sys_mkdir, char *pathname, mode_t mode, int *ret) {
-	*ret = vfs_mkdir((char*)pathname, (mode_t)mode);
+SYSCALL_HANDLER3(sys_mkdir, const char *pathname, mode_t mode, int *ret) {
+	*ret = vfs_mkdir(pathname, mode);
 }

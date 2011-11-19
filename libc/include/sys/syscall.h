@@ -62,5 +62,6 @@
 #define SYS_VGAWRITEBUF 27
 #define SYS_FCNTL 28
 #define SYS_DUMMY 29
+#define SYS_STAT 30
 
 #endif

@@ -182,6 +182,8 @@ typedef struct _fat_info {
 fs_instance_t* mount_FAT();
 void umount_FAT(fs_instance_t *instance);
 
+int fat_stat(fs_instance_t *instance, const char *path, struct stat *stbuf);
+
 // Lecture/Ecriture Fichier
 int fat_readdir(fs_instance_t *instance, const char * path, int iter, char * filename);
 int fat_opendir(fs_instance_t *instance, const char * path);

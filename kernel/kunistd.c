@@ -27,11 +27,12 @@
  * Description de ce que fait le fichier
  */
 
+#include <kfcntl.h>
+#include <klog.h>
 #include <kprocess.h>
 #include <scheduler.h>
 #include <types.h>
-#include <kfcntl.h>
-#include <klog.h>
+#include <vfs.h>
 
 SYSCALL_HANDLER3(sys_write, uint32_t fd, const void *buf, size_t *c) {
 	process_t * process = get_current_process();
@@ -103,3 +104,6 @@ SYSCALL_HANDLER3(sys_ioctl, uint32_t fd, unsigned int request, void *data) {
 	}
 }
 
+SYSCALL_HANDLER3(sys_stat, const char *path, struct stat *buf, int *ret) {
+	*ret = vfs_stat(path, buf);
+}

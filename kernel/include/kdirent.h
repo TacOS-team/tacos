@@ -35,8 +35,8 @@
 #include <dirent.h>
 #include <sys/stat.h>
 
-SYSCALL_HANDLER2(sys_opendir, char *name, int *ret);
+SYSCALL_HANDLER2(sys_opendir, const char *name, int *ret);
 SYSCALL_HANDLER3(sys_readdir, DIR *dir, struct dirent *entry, int *ret);
-SYSCALL_HANDLER3(sys_mkdir, char *pathname, mode_t mode, int *ret);
+SYSCALL_HANDLER3(sys_mkdir, const char *pathname, mode_t mode, int *ret);
 
 #endif

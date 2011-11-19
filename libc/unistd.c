@@ -158,3 +158,15 @@ int lseek(int fd, long offset, int whence) {
 
 	return offset;
 }
+
+int stat(const char *path, struct stat *buf) {
+	int ret;
+	if (path[0] != '/') {
+		char * absolutepath = get_absolute_path(path);
+		syscall(SYS_STAT, (uint32_t)absolutepath, (uint32_t)buf, (uint32_t)&ret);
+		free(absolutepath);
+	} else {
+		syscall(SYS_STAT, (uint32_t)path, (uint32_t)buf, (uint32_t)&ret);
+	}
+	return ret;
+}

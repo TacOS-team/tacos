@@ -150,13 +150,32 @@ int vfs_umount(const char *mountpoint) {
 	return 1;
 }
 
+int vfs_stat(const char *pathname, struct stat *buf) {
+	int len;
+	fs_instance_t *instance = get_instance_from_path(pathname, &len);
+	if (instance) {
+		if (instance->stat != NULL) {
+			if (pathname[len] == '\0') {
+				return instance->stat(instance, "/", buf);
+			} else {
+				return instance->stat(instance, pathname + len, buf);
+			}
+		}
+	} else {
+		if (len == 0) {
+			buf->st_mode = S_IFDIR;
+			buf->st_size = 0;
+			return 0;
+		}
+	}
+	return -ENOENT;
+}
 
 int vfs_mkdir(const char * pathname, mode_t mode) {
 	int len;
 	fs_instance_t *instance = get_instance_from_path(pathname, &len);
 	if (instance && instance->mkdir != NULL) {
-		instance->mkdir(instance, pathname + len, mode);
-		return 0;
+		return instance->mkdir(instance, pathname + len, mode);
 	}
 	return -1;
 }
@@ -177,7 +196,7 @@ int vfs_opendir(const char *pathname) {
 			return 0;
 		}
 	}
-	return -1;
+	return -ENOENT;
 }
 
 int vfs_readdir(const char * pathname, int iter, char * filename) {

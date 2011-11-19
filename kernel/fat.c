@@ -167,6 +167,7 @@ fs_instance_t* mount_FAT() {
 	instance->mkdir = fat_mkdir;
 	instance->readdir = fat_readdir;
 	instance->opendir = fat_opendir;
+	instance->stat = fat_stat;
 
 	//XXX: passer floppy en device et le passer en arg.
 	fat_info.read_data = floppy_read;
@@ -1113,6 +1114,55 @@ int fat_open_file(fs_instance_t *instance __attribute__((unused)), const char * 
 int fat_close(open_file_descriptor *ofd __attribute__ ((unused))) {
 	return 0;
 }
+
+int fat_stat(fs_instance_t *instance __attribute__ ((unused)), const char *path, struct stat *stbuf) {
+  int res = 0;
+
+  memset(stbuf, 0, sizeof(struct stat));
+  stbuf->st_mode = 0755;
+
+  if(strcmp(path, "/") == 0) {
+    stbuf->st_mode |= S_IFDIR;
+  } else {
+    directory_t *dir;
+    char filename[256];
+    char * pathdir = kmalloc(strlen(path) + 1);
+    split_dir_filename(path, pathdir, filename);
+    if ((dir = open_dir_from_path(pathdir)) == NULL)
+      return -ENOENT;
+    kfree(pathdir);
+
+    directory_entry_t *dir_entry = dir->entries;
+    while (dir_entry) {
+      if (strcmp(dir_entry->name, filename) == 0) {
+          break;
+      }
+      dir_entry = dir_entry->next;
+    }
+    if (!dir_entry) {
+      kfree(dir); // TODO: liberer memoire liste chainee.
+      return -ENOENT;
+    } else {
+      if (dir_entry->attributes & 0x01) { // Read Only
+        stbuf->st_mode &= ~0111;
+      }
+      if (dir_entry->attributes & 0x10) { // Dir.
+        stbuf->st_mode |= S_IFDIR;
+      } else {
+        stbuf->st_mode |= S_IFREG;
+      }
+      stbuf->st_atime = dir_entry->access_time;
+      stbuf->st_mtime = dir_entry->modification_time;
+      stbuf->st_ctime = dir_entry->creation_time;
+      stbuf->st_size = dir_entry->size;
+    }
+    kfree(dir); // TODO: liberer memoire liste chainee.
+  }
+
+  return res;
+}
+
+
 
 
 void fat_init() {

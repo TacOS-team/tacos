@@ -56,6 +56,7 @@ typedef struct _fs_instance_t {
 	int (*opendir) (struct _fs_instance_t *, const char *);
 	int (*readdir) (struct _fs_instance_t *, const char *, int, char *);
 	int (*mkdir) (struct _fs_instance_t *, const char * , mode_t);
+	int (*stat) (struct _fs_instance_t *, const char *, struct stat *);
 } fs_instance_t;
 
 /**
@@ -69,5 +70,6 @@ int vfs_umount(const char *mountpoint);
 int vfs_mkdir(const char * pathname, mode_t mode);
 int vfs_opendir(const char *path);
 int vfs_readdir(const char * pathname, int iter, char * filename);
+int vfs_stat(const char *pathname, struct stat *);
 
 #endif
