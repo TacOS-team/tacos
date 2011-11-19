@@ -36,23 +36,31 @@
 
 struct _fs_instance_t;
 
+/**
+ * @brief Structure qui représente un FS.
+ */
 typedef struct {
-	char *name;
-	// pointeur fonction mount
-	// pointeur fonction umount
-	struct _fs_instance_t * (*mount) (); //XXX: ajouter device en argument.
-	void (*umount) (struct _fs_instance_t *);
+	char *name;	/**< Nom du FS, c'est aussi son "type" utilisé lors du mount. */
+	//XXX: ajouter device en argument de mount.
+	struct _fs_instance_t * (*mount) (); /**< Pointeur vers la fonction mount du FS. */
+	void (*umount) (struct _fs_instance_t *); /**< Pointeur vers la fonction umount du FS. */
 } file_system_t;
 
+/**
+ * @brief Instance d'un couple FS/Device monté.
+ */
 typedef struct _fs_instance_t {
-	file_system_t *fs;
-	// device
+	file_system_t *fs; /**< Pointeur vers le FS utilisé. */ //XXX: Est-ce utile ?
+	// XXX: enregistrer @device ?
 	int (*open) (struct _fs_instance_t *, const char * , open_file_descriptor *, uint32_t);
 	int (*opendir) (struct _fs_instance_t *, const char *);
 	int (*readdir) (struct _fs_instance_t *, const char *, int, char *);
 	int (*mkdir) (struct _fs_instance_t *, const char * , mode_t);
 } fs_instance_t;
 
+/**
+ * @brief Enregistrer un FS dans le VFS pour le rendre disponible.
+ */
 void vfs_register_fs(file_system_t *fs);
 
 int vfs_open(const char * pathname, open_file_descriptor *ofd, uint32_t modes);
