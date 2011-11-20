@@ -49,39 +49,36 @@ typedef struct _fat_fs_instance_t {
 	fat_info_t fat_info;
 } fat_fs_instance_t;
 
-//XXX: passer partout dans le code pour retirer cette variable et utiliser celle de fat_fs_instance_t.
-static fat_info_t fat_info;
-
 /*
  * Read the File Allocation Table.
  */
-static void read_fat() {
-	uint8_t buffer[fat_info.BS.bytes_per_sector * fat_info.table_size];
+static void read_fat(fat_fs_instance_t *instance) {
+	uint8_t buffer[instance->fat_info.BS.bytes_per_sector * instance->fat_info.table_size];
 	
 	uint32_t i;
 	int p = 0;
 	uint32_t tmp = 0;
 
-  fat_info.read_data(buffer, sizeof(buffer), fat_info.addr_fat[0]);
+  instance->fat_info.read_data(buffer, sizeof(buffer), instance->fat_info.addr_fat[0]);
 
-	if (fat_info.fat_type == FAT12) {
+	if (instance->fat_info.fat_type == FAT12) {
 		// decodage FAT12
-		for (i = 0; i < fat_info.total_data_clusters; i += 2) {
+		for (i = 0; i < instance->fat_info.total_data_clusters; i += 2) {
 			tmp = buffer[p] + (buffer[p + 1] << 8) + (buffer[p + 2] << 16);
 
 			// on extrait les 2 clusters de 12bits
-			fat_info.file_alloc_table[i] = (tmp & 0xFFF); // 12 least significant bits
-			fat_info.file_alloc_table[i + 1] = (tmp >> 12); // 12 most significant bits
+			instance->fat_info.file_alloc_table[i] = (tmp & 0xFFF); // 12 least significant bits
+			instance->fat_info.file_alloc_table[i + 1] = (tmp >> 12); // 12 most significant bits
 
 			p += 3;
 		}
-	} else if (fat_info.fat_type == FAT16) {
-		for (i = 0; i < fat_info.total_data_clusters; i++) {
-			fat_info.file_alloc_table[i] = buffer[i * 2] + (buffer[i * 2 + 1] << 8);
+	} else if (instance->fat_info.fat_type == FAT16) {
+		for (i = 0; i < instance->fat_info.total_data_clusters; i++) {
+			instance->fat_info.file_alloc_table[i] = buffer[i * 2] + (buffer[i * 2 + 1] << 8);
 		}
-	} else if (fat_info.fat_type == FAT32) {
-		for (i = 0; i < fat_info.total_data_clusters; i++) {
-			fat_info.file_alloc_table[i] = buffer[i * 4] + (buffer[i * 4 + 1] << 8) + (buffer[i * 4 + 2] << 16) + (buffer[i * 4 + 3] << 24);
+	} else if (instance->fat_info.fat_type == FAT32) {
+		for (i = 0; i < instance->fat_info.total_data_clusters; i++) {
+			instance->fat_info.file_alloc_table[i] = buffer[i * 4] + (buffer[i * 4 + 1] << 8) + (buffer[i * 4 + 2] << 16) + (buffer[i * 4 + 3] << 24);
 		}
 	}
 }
@@ -121,38 +118,38 @@ static void write_fat() {
 }
 */
 
-static void write_fat_entry(int index) {
+static void write_fat_entry(fat_fs_instance_t *instance, int index) {
 	int i;
-	if (fat_info.fat_type == FAT12) {
+	if (instance->fat_info.fat_type == FAT12) {
 		uint32_t tmp;
 		uint8_t buffer[3]; // 24 bits : 2 entries
 		if (index % 2 == 0) {
-      tmp = (fat_info.file_alloc_table[index + 1] << 12) + (fat_info.file_alloc_table[index] & 0xFFF);
+      tmp = (instance->fat_info.file_alloc_table[index + 1] << 12) + (instance->fat_info.file_alloc_table[index] & 0xFFF);
 		} else {
-      tmp = (fat_info.file_alloc_table[index] << 12) + (fat_info.file_alloc_table[index - 1] & 0xFFF);
+      tmp = (instance->fat_info.file_alloc_table[index] << 12) + (instance->fat_info.file_alloc_table[index - 1] & 0xFFF);
 		}
     buffer[0] = tmp & 0x0000FF;
     buffer[1] = tmp & 0x00FF00;
     buffer[2] = tmp & 0xFF0000;
 
-		for (i = 0; i < fat_info.BS.table_count; i++) {
-			fat_info.write_data(buffer, sizeof(buffer), fat_info.addr_fat[i] + index * 12);
+		for (i = 0; i < instance->fat_info.BS.table_count; i++) {
+			instance->fat_info.write_data(buffer, sizeof(buffer), instance->fat_info.addr_fat[i] + index * 12);
 		}
-  } else if (fat_info.fat_type == FAT16) {
+  } else if (instance->fat_info.fat_type == FAT16) {
 		uint8_t buffer[2];
-    buffer[0] = fat_info.file_alloc_table[index] & 0x00FF;
-    buffer[1] = fat_info.file_alloc_table[index] & 0xFF00;
-		for (i = 0; i < fat_info.BS.table_count; i++) {
-			fat_info.write_data(buffer, sizeof(buffer), fat_info.addr_fat[i] + index * 16);
+    buffer[0] = instance->fat_info.file_alloc_table[index] & 0x00FF;
+    buffer[1] = instance->fat_info.file_alloc_table[index] & 0xFF00;
+		for (i = 0; i < instance->fat_info.BS.table_count; i++) {
+			instance->fat_info.write_data(buffer, sizeof(buffer), instance->fat_info.addr_fat[i] + index * 16);
 		}
-  } else if (fat_info.fat_type == FAT32) {
+  } else if (instance->fat_info.fat_type == FAT32) {
 		uint8_t buffer[4];
-    buffer[0] = fat_info.file_alloc_table[index] & 0x000000FF;
-    buffer[1] = fat_info.file_alloc_table[index] & 0x0000FF00;
-    buffer[2] = fat_info.file_alloc_table[index] & 0x00FF0000;
-    buffer[3] = fat_info.file_alloc_table[index] & 0xFF000000;
-		for (i = 0; i < fat_info.BS.table_count; i++) {
-			fat_info.write_data(buffer, sizeof(buffer), fat_info.addr_fat[i] + index * 32);
+    buffer[0] = instance->fat_info.file_alloc_table[index] & 0x000000FF;
+    buffer[1] = instance->fat_info.file_alloc_table[index] & 0x0000FF00;
+    buffer[2] = instance->fat_info.file_alloc_table[index] & 0x00FF0000;
+    buffer[3] = instance->fat_info.file_alloc_table[index] & 0xFF000000;
+		for (i = 0;  i < instance->fat_info.BS.table_count; i++) {
+			instance->fat_info.write_data(buffer, sizeof(buffer), instance->fat_info.addr_fat[i] + index * 32);
 		}
   }
 }
@@ -163,77 +160,77 @@ static void write_fat_entry(int index) {
 fs_instance_t* mount_FAT() {
 	klog("mounting FAT");
 
-	fs_instance_t *instance = kmalloc(sizeof(fat_fs_instance_t));
-	instance->open = fat_open_file;
-	instance->mkdir = fat_mkdir;
-	instance->readdir = fat_readdir;
-	instance->opendir = fat_opendir;
-	instance->stat = fat_stat;
+	fat_fs_instance_t *instance = kmalloc(sizeof(fat_fs_instance_t));
+	instance->super.open = fat_open_file;
+	instance->super.mkdir = fat_mkdir;
+	instance->super.readdir = fat_readdir;
+	instance->super.opendir = fat_opendir;
+	instance->super.stat = fat_stat;
 
 	//XXX: passer floppy en device et le passer en arg.
-	fat_info.read_data = floppy_read;
-	fat_info.write_data = floppy_write;
+	instance->fat_info.read_data = floppy_read;
+	instance->fat_info.write_data = floppy_write;
 
 	uint8_t sector[512];
-	fat_info.read_data(sector, 512, 0);
-	memcpy(&fat_info.BS, sector, sizeof(fat_BS_t));
+	instance->fat_info.read_data(sector, 512, 0);
+	memcpy(&(instance->fat_info.BS), sector, sizeof(fat_BS_t));
 
-	if (fat_info.BS.table_size_16 == 0) { // Si 0 alors on considère qu'on est en FAT32.
-		fat_info.ext_BIOS_16 = NULL;
-		fat_info.ext_BIOS_32 = kmalloc(sizeof(fat_extended_BIOS_32_t));
+	if (instance->fat_info.BS.table_size_16 == 0) { // Si 0 alors on considère qu'on est en FAT32.
+		instance->fat_info.ext_BIOS_16 = NULL;
+		instance->fat_info.ext_BIOS_32 = kmalloc(sizeof(fat_extended_BIOS_32_t));
 
-		memcpy(fat_info.ext_BIOS_32, sector + sizeof(fat_BS_t), sizeof(fat_extended_BIOS_32_t));
+		memcpy(instance->fat_info.ext_BIOS_32, sector + sizeof(fat_BS_t), sizeof(fat_extended_BIOS_32_t));
 		
-		fat_info.table_size = fat_info.ext_BIOS_32->table_size_32;
+		instance->fat_info.table_size = instance->fat_info.ext_BIOS_32->table_size_32;
 	} else {
-		fat_info.ext_BIOS_32 = NULL;
-		fat_info.ext_BIOS_16 = kmalloc(sizeof(fat_extended_BIOS_16_t));
+		instance->fat_info.ext_BIOS_32 = NULL;
+		instance->fat_info.ext_BIOS_16 = kmalloc(sizeof(fat_extended_BIOS_16_t));
 
-		memcpy(fat_info.ext_BIOS_16, sector + sizeof(fat_BS_t), sizeof(fat_extended_BIOS_16_t));
+		memcpy(instance->fat_info.ext_BIOS_16, sector + sizeof(fat_BS_t), sizeof(fat_extended_BIOS_16_t));
 
-		fat_info.table_size = fat_info.BS.table_size_16;
+		instance->fat_info.table_size = instance->fat_info.BS.table_size_16;
 	}
 
-	fat_info.bytes_per_cluster = fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster;
+	instance->fat_info.bytes_per_cluster = instance->fat_info.BS.bytes_per_sector * instance->fat_info.BS.sectors_per_cluster;
 
-	kdebug("table size : %d", fat_info.table_size);
-	kdebug("%d bytes per logical sector", fat_info.BS.bytes_per_sector);
-	kdebug("%d bytes per clusters", fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster);
-	fat_info.addr_fat = (unsigned int*) kmalloc(sizeof(unsigned int) * fat_info.BS.table_count);
+	kdebug("table size : %d", instance->fat_info.table_size);
+	kdebug("%d bytes per logical sector", instance->fat_info.BS.bytes_per_sector);
+	kdebug("%d bytes per clusters", instance->fat_info.BS.bytes_per_sector * instance->fat_info.BS.sectors_per_cluster);
+	instance->fat_info.addr_fat = (unsigned int*) kmalloc(sizeof(unsigned int) * instance->fat_info.BS.table_count);
 	
 	int i;
-	for (i = 0; i < fat_info.BS.table_count; i++) {
-		fat_info.addr_fat[i] = (fat_info.BS.reserved_sector_count + i * fat_info.table_size) * fat_info.BS.bytes_per_sector;
+	for (i = 0; i < instance->fat_info.BS.table_count; i++) {
+		instance->fat_info.addr_fat[i] = (instance->fat_info.BS.reserved_sector_count + i * instance->fat_info.table_size) * instance->fat_info.BS.bytes_per_sector;
 	}
-	fat_info.addr_root_dir = (fat_info.BS.reserved_sector_count + fat_info.BS.table_count * fat_info.table_size) * fat_info.BS.bytes_per_sector;
-	fat_info.addr_data = fat_info.addr_root_dir + (fat_info.BS.root_entry_count * sizeof(fat_dir_entry_t));
-	if (fat_info.BS.total_sectors_16 > 0)
-		fat_info.total_data_clusters = fat_info.BS.total_sectors_16 / fat_info.BS.sectors_per_cluster - fat_info.addr_data / (fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster);
+	instance->fat_info.addr_root_dir = (instance->fat_info.BS.reserved_sector_count + instance->fat_info.BS.table_count * instance->fat_info.table_size) * instance->fat_info.BS.bytes_per_sector;
+	instance->fat_info.addr_data = instance->fat_info.addr_root_dir + (instance->fat_info.BS.root_entry_count * sizeof(fat_dir_entry_t));
+	if (instance->fat_info.BS.total_sectors_16 > 0)
+		instance->fat_info.total_data_clusters = instance->fat_info.BS.total_sectors_16 / instance->fat_info.BS.sectors_per_cluster - instance->fat_info.addr_data / (instance->fat_info.BS.bytes_per_sector * instance->fat_info.BS.sectors_per_cluster);
 	else
-		fat_info.total_data_clusters = fat_info.BS.total_sectors_32 / fat_info.BS.sectors_per_cluster - fat_info.addr_data / (fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster);
+		instance->fat_info.total_data_clusters = instance->fat_info.BS.total_sectors_32 / instance->fat_info.BS.sectors_per_cluster - instance->fat_info.addr_data / (instance->fat_info.BS.bytes_per_sector * instance->fat_info.BS.sectors_per_cluster);
 
-	if (fat_info.total_data_clusters < 4086) {
-		fat_info.fat_type = FAT12;
+	if (instance->fat_info.total_data_clusters < 4086) {
+		instance->fat_info.fat_type = FAT12;
 		kdebug("FAT Type : FAT12");
-	} else if (fat_info.total_data_clusters < 65526) {
-		fat_info.fat_type = FAT16;
+	} else if (instance->fat_info.total_data_clusters < 65526) {
+		instance->fat_info.fat_type = FAT16;
 		kdebug("FAT Type : FAT16");
 	} else {
-		fat_info.fat_type = FAT32;
+		instance->fat_info.fat_type = FAT32;
 		kdebug("FAT Type : FAT32");
 	}
 
-	kdebug("First FAT starts at byte %u (sector %u)", fat_info.addr_fat[0], fat_info.addr_fat[0] / fat_info.BS.bytes_per_sector);
-	kdebug("Root directory starts at byte %u (sector %u)", fat_info.addr_root_dir, fat_info.addr_root_dir / fat_info.BS.bytes_per_sector);
-	kdebug("Data area starts at byte %u (sector %u)", fat_info.addr_data, fat_info.addr_data / fat_info.BS.bytes_per_sector);
-	kdebug("Total clusters : %d", fat_info.total_data_clusters);
+	kdebug("First FAT starts at byte %u (sector %u)", instance->fat_info.addr_fat[0], instance->fat_info.addr_fat[0] / instance->fat_info.BS.bytes_per_sector);
+	kdebug("Root directory starts at byte %u (sector %u)", instance->fat_info.addr_root_dir, instance->fat_info.addr_root_dir / instance->fat_info.BS.bytes_per_sector);
+	kdebug("Data area starts at byte %u (sector %u)", instance->fat_info.addr_data, instance->fat_info.addr_data / instance->fat_info.BS.bytes_per_sector);
+	kdebug("Total clusters : %d", instance->fat_info.total_data_clusters);
 
 
-	fat_info.file_alloc_table = (unsigned int*) kmalloc(sizeof(unsigned int) * fat_info.total_data_clusters);
+	instance->fat_info.file_alloc_table = (unsigned int*) kmalloc(sizeof(unsigned int) * instance->fat_info.total_data_clusters);
 
-	read_fat();
+	read_fat(instance);
 
-	return instance;
+	return (fs_instance_t*)instance;
 }
 
 void umount_FAT(fs_instance_t *instance) {
@@ -302,10 +299,10 @@ static void encode_long_file_name(char * name, lfn_entry_t * long_file_name, int
   }
 }
 
-static int last_cluster() {
-	if (fat_info.fat_type == FAT12) {
+static int last_cluster(fat_fs_instance_t *instance) {
+	if (instance->fat_info.fat_type == FAT12) {
 		return 0xFFF;
-	} else if (fat_info.fat_type == FAT16) {
+	} else if (instance->fat_info.fat_type == FAT16) {
 		return 0xFFFF;
 	} else {
 		return 0x0FFFFFFF;
@@ -316,10 +313,10 @@ static int is_free_cluster(int cluster) {
 	return cluster == 0;
 }
 
-static int is_last_cluster(int cluster) {
-	if (fat_info.fat_type == FAT12) {
+static int is_last_cluster(fat_fs_instance_t *instance, int cluster) {
+	if (instance->fat_info.fat_type == FAT12) {
 		return cluster >= 0xFF8 && cluster <= 0xFFF;
-	} else if (fat_info.fat_type == FAT16) {
+	} else if (instance->fat_info.fat_type == FAT16) {
 		return cluster >= 0xFFF8 && cluster <= 0xFFFF;
 	} else {
 		return cluster >= 0x0FFFFFF8 && cluster <= 0x0FFFFFFF;
@@ -328,9 +325,9 @@ static int is_last_cluster(int cluster) {
 
 /*
 static int is_used_cluster(int cluster) {
-	if (fat_info.fat_type == FAT12) {
+	if (instance->fat_info.fat_type == FAT12) {
 		return cluster >= 0x002 && cluster <= 0xFEF;
-	} else if (fat_info.fat_type == FAT16) {
+	} else if (instance->fat_info.fat_type == FAT16) {
 		return cluster >= 0x0002 && cluster <= 0xFFEF;
 	} else {
 		return cluster >= 0x00000002 && cluster <= 0x0FFFFFEF;
@@ -614,22 +611,22 @@ static void read_dir_entries(fat_dir_entry_t *fdir, directory_t *dir, int n) {
 	}
 }
 
-static void open_dir(int cluster, directory_t *dir) {
+static void open_dir(fat_fs_instance_t *instance, int cluster, directory_t *dir) {
 	int n_clusters = 0;
 	int next = cluster;
-	while (!is_last_cluster(next)) {
-		next = fat_info.file_alloc_table[next];
+	while (!is_last_cluster(instance, next)) {
+		next = instance->fat_info.file_alloc_table[next];
 		n_clusters++;
 	}
 
-	int n_dir_entries = fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster / sizeof(fat_dir_entry_t);
+	int n_dir_entries = instance->fat_info.BS.bytes_per_sector * instance->fat_info.BS.sectors_per_cluster / sizeof(fat_dir_entry_t);
 	fat_dir_entry_t * sub_dir = kmalloc(n_dir_entries * sizeof(fat_dir_entry_t) * n_clusters);
 
 	int c = 0;
 	next = cluster;
-	while (!is_last_cluster(next)) {
-		fat_info.read_data((uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
-		next = fat_info.file_alloc_table[next];
+	while (!is_last_cluster(instance, next)) {
+		instance->fat_info.read_data((uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
+		next = instance->fat_info.file_alloc_table[next];
 		c++;
 	}
 
@@ -640,21 +637,21 @@ static void open_dir(int cluster, directory_t *dir) {
 	read_dir_entries(sub_dir, dir, n_dir_entries * n_clusters);
 }
 
-static directory_t * open_root_dir() {
+static directory_t * open_root_dir(fat_fs_instance_t *instance) {
 	directory_t *dir = kmalloc(sizeof(directory_t));
 
-	if (fat_info.fat_type == FAT32) {
-		open_dir(fat_info.ext_BIOS_32->cluster_root_dir, dir);
+	if (instance->fat_info.fat_type == FAT32) {
+		open_dir(instance, instance->fat_info.ext_BIOS_32->cluster_root_dir, dir);
 	} else {
-		fat_dir_entry_t *root_dir = kmalloc(sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count);
+		fat_dir_entry_t *root_dir = kmalloc(sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count);
 	
-		fat_info.read_data((uint8_t*)root_dir, sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count, fat_info.addr_root_dir);
+		instance->fat_info.read_data((uint8_t*)root_dir, sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count, instance->fat_info.addr_root_dir);
 	
 		dir->cluster = -1;
 		dir->total_entries = 0;
 		dir->entries = NULL;
 	
-		read_dir_entries(root_dir, dir, fat_info.BS.root_entry_count);
+		read_dir_entries(root_dir, dir, instance->fat_info.BS.root_entry_count);
 	
 		kfree(root_dir);
 	}
@@ -662,7 +659,7 @@ static directory_t * open_root_dir() {
 	return dir;
 }
 
-static int open_next_dir(directory_t * prev_dir, directory_t * next_dir, char * name) {
+static int open_next_dir(fat_fs_instance_t *instance, directory_t * prev_dir, directory_t * next_dir, char * name) {
 	int next = 0;
 
 	directory_entry_t *dentry = prev_dir->entries;
@@ -682,7 +679,7 @@ static int open_next_dir(directory_t * prev_dir, directory_t * next_dir, char * 
 		return 1;
 	}
  
-	open_dir(next, next_dir);
+	open_dir(instance, next, next_dir);
 
 	return 0;
 }
@@ -700,9 +697,9 @@ static void split_dir_filename(const char * path, char * dir, char * filename) {
 	*dir = '\0';
 }
 
-static directory_t * open_dir_from_path(const char *path) {
+static directory_t * open_dir_from_path(fat_fs_instance_t *instance, const char *path) {
 	if (path[0] == '\0' || strcmp(path, "/") == 0)
-		return open_root_dir();
+		return open_root_dir(instance);
 
 	// Only absolute paths.
 	if (path[0] != '/')
@@ -713,14 +710,14 @@ static directory_t * open_dir_from_path(const char *path) {
 	while (path[i] == '/')
 		i++;
 
-	directory_t * dir = open_root_dir();
+	directory_t * dir = open_root_dir(instance);
 
 	int j = 0;
 	do {
 		if (path[i] == '/' || path[i] == '\0') {
 			buf[j] = '\0';
 
-			if (j > 0 && open_next_dir(dir, dir, buf) != 0)
+			if (j > 0 && open_next_dir(instance, dir, dir, buf) != 0)
 				return NULL;
 
 			j = 0;
@@ -733,12 +730,12 @@ static directory_t * open_dir_from_path(const char *path) {
 	return dir;
 }
 
-static directory_entry_t * open_file_from_path(const char *path) {
+static directory_entry_t * open_file_from_path(fat_fs_instance_t *instance, const char *path) {
 	char * dir = kmalloc(strlen(path));
 	char filename[256];
 	split_dir_filename(path, dir, filename);
 
-	directory_t * directory = open_dir_from_path(dir);
+	directory_t * directory = open_dir_from_path(instance, dir);
 	kfree(dir);
 
 	if (directory) {
@@ -760,48 +757,48 @@ static directory_entry_t * open_file_from_path(const char *path) {
 }
 
 
-static int alloc_cluster(int n) {
+static int alloc_cluster(fat_fs_instance_t *instance, int n) {
   if (n <= 0) {
-    return last_cluster();
+    return last_cluster(instance);
   }
-  int next = alloc_cluster(n - 1);
+  int next = alloc_cluster(instance, n - 1);
   unsigned int i;
-  for (i = 0; i < fat_info.total_data_clusters; i++) {
-    if (is_free_cluster(fat_info.file_alloc_table[i])) {
-      fat_info.file_alloc_table[i] = next;
-			write_fat_entry(i);
+  for (i = 0; i < instance->fat_info.total_data_clusters; i++) {
+    if (is_free_cluster(instance->fat_info.file_alloc_table[i])) {
+      instance->fat_info.file_alloc_table[i] = next;
+			write_fat_entry(instance, i);
       return i;
     }
   }
   return -1;
 }
 
-static void init_dir_cluster(int cluster) {
-  int n_dir_entries = fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster / sizeof(fat_dir_entry_t);
+static void init_dir_cluster(fat_fs_instance_t *instance, int cluster) {
+  int n_dir_entries = instance->fat_info.BS.bytes_per_sector * instance->fat_info.BS.sectors_per_cluster / sizeof(fat_dir_entry_t);
   fat_dir_entry_t * dir_entries = kmalloc(n_dir_entries * sizeof(fat_dir_entry_t));
 	memset(dir_entries, 0, n_dir_entries * sizeof(fat_dir_entry_t));
  
-  fat_info.write_data((uint8_t*) dir_entries, sizeof(fat_dir_entry_t) * n_dir_entries, fat_info.addr_data + (cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+  instance->fat_info.write_data((uint8_t*) dir_entries, sizeof(fat_dir_entry_t) * n_dir_entries, instance->fat_info.addr_data + (cluster - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
 }
 
-static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
-  directory_t *dir = open_dir_from_path(path);
+static int add_fat_dir_entry(fat_fs_instance_t *instance, char * path, fat_dir_entry_t *fentry, int n) {
+  directory_t *dir = open_dir_from_path(instance, path);
   int next = dir->cluster;
   if (next > 0) {
     int n_clusters = 0;
-    while (!is_last_cluster(next)) {
-      next = fat_info.file_alloc_table[next];
+    while (!is_last_cluster(instance, next)) {
+      next = instance->fat_info.file_alloc_table[next];
       n_clusters++;
     }
   
-    int n_dir_entries = fat_info.BS.bytes_per_sector * fat_info.BS.sectors_per_cluster / sizeof(fat_dir_entry_t);
+    int n_dir_entries = instance->fat_info.BS.bytes_per_sector * instance->fat_info.BS.sectors_per_cluster / sizeof(fat_dir_entry_t);
     fat_dir_entry_t * dir_entries = kmalloc(n_dir_entries * sizeof(fat_dir_entry_t) * n_clusters);
   
     int c = 0;
     next = dir->cluster;
-    while (!is_last_cluster(next)) {
-      fat_info.read_data((uint8_t*)(dir_entries + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
-      next = fat_info.file_alloc_table[next];
+    while (!is_last_cluster(instance, next)) {
+      instance->fat_info.read_data((uint8_t*)(dir_entries + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
+      next = instance->fat_info.file_alloc_table[next];
       c++;
     }
   
@@ -814,12 +811,12 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
           next = dir->cluster;
           int j;
           for (j = 0; j < (i - n + 1) / n_dir_entries; j++)
-            next = fat_info.file_alloc_table[next];
+            next = instance->fat_info.file_alloc_table[next];
           for (j = 0; j < n; j++) {
             int off = (i - n + j + 1) % n_dir_entries; // offset dans le cluster.
-            fat_info.write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
+            instance->fat_info.write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
             if (off == n_dir_entries - 1) {
-              next = fat_info.file_alloc_table[next];
+              next = instance->fat_info.file_alloc_table[next];
             }
           }
           return 0;
@@ -830,35 +827,35 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
     }
     if (consecutif < n) {
       int j;
-      int newcluster = alloc_cluster(1);
-      init_dir_cluster(newcluster);
+      int newcluster = alloc_cluster(instance, 1);
+      init_dir_cluster(instance, newcluster);
       next = dir->cluster;
-      while (!is_last_cluster(fat_info.file_alloc_table[next])) {
-        next = fat_info.file_alloc_table[next];
+      while (!is_last_cluster(instance, instance->fat_info.file_alloc_table[next])) {
+        next = instance->fat_info.file_alloc_table[next];
       }
-      fat_info.file_alloc_table[next] = newcluster;
+      instance->fat_info.file_alloc_table[next] = newcluster;
   
       for (j = 0; j < consecutif; j++) {
         int off = n_dir_entries - consecutif + j;
-        fat_info.write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), fat_info.addr_data + (next - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
+        instance->fat_info.write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
       }
       for (j = consecutif; j < n; j++) {
         int off = n_dir_entries - consecutif + j;
-        fat_info.write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), fat_info.addr_data + (newcluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
+        instance->fat_info.write_data((uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (newcluster - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
       }
       return 0;
     }
-  } else if (fat_info.fat_type != FAT32) {
+  } else if (instance->fat_info.fat_type != FAT32) {
     int i;
     int consecutif = 0;
-    fat_dir_entry_t *root_dir = kmalloc(sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count);
-    fat_info.read_data((uint8_t*)root_dir, sizeof(fat_dir_entry_t) * fat_info.BS.root_entry_count, fat_info.addr_root_dir);
+    fat_dir_entry_t *root_dir = kmalloc(sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count);
+    instance->fat_info.read_data((uint8_t*)root_dir, sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count, instance->fat_info.addr_root_dir);
 
-    for (i = 0; i < fat_info.BS.root_entry_count; i++) {
+    for (i = 0; i < instance->fat_info.BS.root_entry_count; i++) {
       if (root_dir[i].utf8_short_name[0] == 0 || (unsigned char)root_dir[i].utf8_short_name[0] == 0xe5) {
         consecutif++;
         if (consecutif == n) {
-          fat_info.write_data((uint8_t*)fentry, sizeof(fat_dir_entry_t) * n, fat_info.addr_root_dir + (i - n + 1) * sizeof(fat_dir_entry_t));
+          instance->fat_info.write_data((uint8_t*)fentry, sizeof(fat_dir_entry_t) * n, instance->fat_info.addr_root_dir + (i - n + 1) * sizeof(fat_dir_entry_t));
           return 0;
         }
       }
@@ -869,10 +866,10 @@ static int add_fat_dir_entry(char * path, fat_dir_entry_t *fentry, int n) {
 
 
 
-int fat_opendir(fs_instance_t *instance __attribute__((unused)), const char * path) {
+int fat_opendir(fs_instance_t *instance, const char * path) {
 	directory_t *f;
 
-	if ((f = open_dir_from_path(path)) == NULL)
+	if ((f = open_dir_from_path((fat_fs_instance_t*)instance, path)) == NULL)
 		return -ENOENT;
 
 	kfree(f);
@@ -880,10 +877,10 @@ int fat_opendir(fs_instance_t *instance __attribute__((unused)), const char * pa
 	return 0;
 }
 
-int fat_readdir(fs_instance_t *instance __attribute__((unused)), const char * path, int iter, char * filename) {
+int fat_readdir(fs_instance_t *instance, const char * path, int iter, char * filename) {
 	directory_t *dir;
 
-	if ((dir = open_dir_from_path(path)) == NULL)
+	if ((dir = open_dir_from_path((fat_fs_instance_t*)instance, path)) == NULL)
 		return -ENOENT;
 
 	directory_entry_t *dir_entry = dir->entries;
@@ -903,22 +900,24 @@ int fat_readdir(fs_instance_t *instance __attribute__((unused)), const char * pa
 }
 
 void load_buffer(open_file_descriptor *ofd) {
-	size_t size_buffer = sizeof(ofd->buffer) < fat_info.BS.bytes_per_sector ? 
-			sizeof(ofd->buffer) : fat_info.BS.bytes_per_sector;
-	int current_octet_cluster = ofd->current_octet % fat_info.bytes_per_cluster;
-	size_t r = fat_info.bytes_per_cluster - current_octet_cluster;
+	fat_fs_instance_t *instance = (fat_fs_instance_t*) ofd->fs_instance;
+	size_t size_buffer = sizeof(ofd->buffer) < instance->fat_info.BS.bytes_per_sector ? 
+			sizeof(ofd->buffer) : instance->fat_info.BS.bytes_per_sector;
+	int current_octet_cluster = ofd->current_octet % instance->fat_info.bytes_per_cluster;
+	size_t r = instance->fat_info.bytes_per_cluster - current_octet_cluster;
 
 	if (r < size_buffer) {
 		if (r > 0)
-			fat_info.read_data(ofd->buffer, r, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.bytes_per_cluster + current_octet_cluster);
+			instance->fat_info.read_data(ofd->buffer, r, instance->fat_info.addr_data + (ofd->current_cluster - 2) * instance->fat_info.bytes_per_cluster + current_octet_cluster);
 	} else {
-		fat_info.read_data(ofd->buffer, size_buffer, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.bytes_per_cluster + current_octet_cluster);
+		instance->fat_info.read_data(ofd->buffer, size_buffer, instance->fat_info.addr_data + (ofd->current_cluster - 2) * instance->fat_info.bytes_per_cluster + current_octet_cluster);
 	}
 	ofd->current_octet_buf = 0;
 }
 
 // TODO: Est-ce que offset peut être négatif ? Si oui, le gérer.
 int fat_seek_file(open_file_descriptor * ofd, long offset, int whence) {
+	fat_fs_instance_t *instance = (fat_fs_instance_t*) ofd->fs_instance;
 	switch (whence) {
 	case SEEK_SET: // depuis le debut du fichier
 		if ((unsigned long) offset < ofd->file_size) {
@@ -927,10 +926,10 @@ int fat_seek_file(open_file_descriptor * ofd, long offset, int whence) {
 			ofd->current_octet = 0;
 
 			// On avance de cluster en cluster.
-			while (offset >= (long)fat_info.bytes_per_cluster) {
-				offset -= fat_info.bytes_per_cluster;
-				ofd->current_octet += fat_info.bytes_per_cluster;
-				ofd->current_cluster = fat_info.file_alloc_table[ofd->current_cluster];
+			while (offset >= (long)instance->fat_info.bytes_per_cluster) {
+				offset -= instance->fat_info.bytes_per_cluster;
+				ofd->current_octet += instance->fat_info.bytes_per_cluster;
+				ofd->current_cluster = instance->fat_info.file_alloc_table[ofd->current_cluster];
 			}
 
 			ofd->current_octet += offset;
@@ -943,11 +942,11 @@ int fat_seek_file(open_file_descriptor * ofd, long offset, int whence) {
 		if (ofd->current_octet + offset < ofd->file_size) {
 			ofd->current_octet += offset;
 
-			int current_octet_cluster = ofd->current_octet % fat_info.bytes_per_cluster;
+			int current_octet_cluster = ofd->current_octet % instance->fat_info.bytes_per_cluster;
 
-			while (offset + current_octet_cluster >= (long)fat_info.bytes_per_cluster) {
-				offset -= fat_info.bytes_per_cluster;
-				ofd->current_cluster = fat_info.file_alloc_table[ofd->current_cluster];
+			while (offset + current_octet_cluster >= (long)instance->fat_info.bytes_per_cluster) {
+				offset -= instance->fat_info.bytes_per_cluster;
+				ofd->current_cluster = instance->fat_info.file_alloc_table[ofd->current_cluster];
 			}
 			load_buffer(ofd);
 		} else {
@@ -974,8 +973,9 @@ size_t fat_write_file(open_file_descriptor *ofd __attribute__((__unused__)), con
 }
 
 size_t fat_read_file(open_file_descriptor * ofd, void * buf, size_t count) {
-	size_t size_buffer = sizeof(ofd->buffer) < fat_info.BS.bytes_per_sector ? 
-			sizeof(ofd->buffer) : fat_info.BS.bytes_per_sector;
+	fat_fs_instance_t *instance = (fat_fs_instance_t*) ofd->fs_instance;
+	size_t size_buffer = sizeof(ofd->buffer) < instance->fat_info.BS.bytes_per_sector ? 
+			sizeof(ofd->buffer) : instance->fat_info.BS.bytes_per_sector;
 	int ret = 0;
 	int j = 0;
 	
@@ -998,9 +998,9 @@ size_t fat_read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 			ofd->current_octet_buf++;
 			ofd->current_octet++;
 			((char*) buf)[j++] = c;
-			int current_octet_cluster = ofd->current_octet % fat_info.bytes_per_cluster;
+			int current_octet_cluster = ofd->current_octet % instance->fat_info.bytes_per_cluster;
 			if (current_octet_cluster == 0) {
-				ofd->current_cluster = fat_info.file_alloc_table[ofd->current_cluster];
+				ofd->current_cluster = instance->fat_info.file_alloc_table[ofd->current_cluster];
 				load_buffer(ofd);
 			} else if (ofd->current_octet_buf >= size_buffer) {
 				load_buffer(ofd); 
@@ -1011,7 +1011,7 @@ size_t fat_read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 	return ret;
 }
 
-int fat_mkdir (fs_instance_t *instance __attribute__((unused)), const char * path, mode_t mode __attribute__((__unused__))) {
+int fat_mkdir (fs_instance_t *instance, const char * path, mode_t mode __attribute__((__unused__))) {
   char * dir = kmalloc(strlen(path));
   char filename[256];
   split_dir_filename(path, dir, filename);
@@ -1035,16 +1035,16 @@ int fat_mkdir (fs_instance_t *instance __attribute__((unused)), const char * pat
   fentry->ea_index = 0; //XXX
 //  convert_time_t_to_datetime_fat(t, &(fentry->last_modif_time), &(fentry->last_modif_date));
   fentry->file_size = 0;
-  fentry->cluster_pointer = alloc_cluster(1);
-  init_dir_cluster(fentry->cluster_pointer);
+  fentry->cluster_pointer = alloc_cluster((fat_fs_instance_t*)instance, 1);
+  init_dir_cluster((fat_fs_instance_t*)instance, fentry->cluster_pointer);
 
-  add_fat_dir_entry(dir, (fat_dir_entry_t*)long_file_name, n_entries + 1);
+  add_fat_dir_entry((fat_fs_instance_t*)instance, dir, (fat_dir_entry_t*)long_file_name, n_entries + 1);
 	kfree(dir);
 
   return 0;
 }
 
-int fat_createfile (const char * path, mode_t mode __attribute__((__unused__))) {
+int fat_createfile (fat_fs_instance_t* instance, const char * path, mode_t mode __attribute__((__unused__))) {
   char * dir = kmalloc(strlen(path));
   char filename[256];
   split_dir_filename(path, dir, filename);
@@ -1068,21 +1068,21 @@ int fat_createfile (const char * path, mode_t mode __attribute__((__unused__))) 
   fentry->ea_index = 0; //XXX
 //  convert_time_t_to_datetime_fat(t, &(fentry->last_modif_time), &(fentry->last_modif_date));
   fentry->file_size = 0;
-  fentry->cluster_pointer = alloc_cluster(1);
-  init_dir_cluster(fentry->cluster_pointer);
+  fentry->cluster_pointer = alloc_cluster(instance, 1);
+  init_dir_cluster(instance, fentry->cluster_pointer);
 
-  add_fat_dir_entry(dir, (fat_dir_entry_t*)long_file_name, n_entries + 1);
+  add_fat_dir_entry(instance, dir, (fat_dir_entry_t*)long_file_name, n_entries + 1);
 	kfree(dir);
 
   return 0;
 }
 
-open_file_descriptor * fat_open_file(fs_instance_t *instance __attribute__((unused)), const char * path, uint32_t flags) {
+open_file_descriptor * fat_open_file(fs_instance_t *instance, const char * path, uint32_t flags) {
 	directory_entry_t *f;
-	if ((f = open_file_from_path(path)) == NULL) {
+	if ((f = open_file_from_path((fat_fs_instance_t*)instance, path)) == NULL) {
 		if (flags & O_CREAT) {
-			fat_createfile(path, 0); // XXX: set du vrai mode.
-			if ((f = open_file_from_path(path)) == NULL) {
+			fat_createfile((fat_fs_instance_t*)instance, path, 0); // XXX: set du vrai mode.
+			if ((f = open_file_from_path((fat_fs_instance_t*)instance, path)) == NULL) {
 				return NULL;
 			}
 		} else {
@@ -1090,8 +1090,8 @@ open_file_descriptor * fat_open_file(fs_instance_t *instance __attribute__((unus
 		}
 	}
 	open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
-	size_t size_buffer = sizeof(ofd->buffer) < fat_info.BS.bytes_per_sector ? 
-			sizeof(ofd->buffer) : fat_info.BS.bytes_per_sector;
+	size_t size_buffer = sizeof(ofd->buffer) < ((fat_fs_instance_t*)instance)->fat_info.BS.bytes_per_sector ? 
+			sizeof(ofd->buffer) : ((fat_fs_instance_t*)instance)->fat_info.BS.bytes_per_sector;
 
 	ofd->fs_instance = instance;
 	ofd->first_cluster = f->cluster;
@@ -1105,7 +1105,7 @@ open_file_descriptor * fat_open_file(fs_instance_t *instance __attribute__((unus
 	ofd->seek = fat_seek_file;
 	ofd->close = fat_close;
 
-	fat_info.read_data(ofd->buffer, size_buffer, fat_info.addr_data + (ofd->current_cluster - 2) * fat_info.BS.sectors_per_cluster * fat_info.BS.bytes_per_sector);
+	((fat_fs_instance_t*)instance)->fat_info.read_data(ofd->buffer, size_buffer, ((fat_fs_instance_t*)instance)->fat_info.addr_data + (ofd->current_cluster - 2) * ((fat_fs_instance_t*)instance)->fat_info.BS.sectors_per_cluster * ((fat_fs_instance_t*)instance)->fat_info.BS.bytes_per_sector);
 
 	kfree(f);
 
@@ -1120,7 +1120,7 @@ int fat_close(open_file_descriptor *ofd) {
 	return 0;
 }
 
-int fat_stat(fs_instance_t *instance __attribute__ ((unused)), const char *path, struct stat *stbuf) {
+int fat_stat(fs_instance_t *instance, const char *path, struct stat *stbuf) {
 	int res = 0;
 
 	memset(stbuf, 0, sizeof(struct stat));
@@ -1133,7 +1133,7 @@ int fat_stat(fs_instance_t *instance __attribute__ ((unused)), const char *path,
 		char filename[256];
 		char * pathdir = kmalloc(strlen(path) + 1);
 		split_dir_filename(path, pathdir, filename);
-		if ((dir = open_dir_from_path(pathdir)) == NULL)
+		if ((dir = open_dir_from_path((fat_fs_instance_t*)instance, pathdir)) == NULL)
 			return -ENOENT;
 		kfree(pathdir);
 
