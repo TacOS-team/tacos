@@ -28,7 +28,7 @@
  */
 
 #include <klog.h>
-#include <kdriver.h>
+#include <fs/devfs.h>
 #include <fs/fat.h>
 #include <kmalloc.h>
 #include <vfs.h>
@@ -89,7 +89,7 @@ static fs_instance_t* get_instance_from_path(const char * pathname, int *len) {
 
 open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 	//XXX: Ceci devrait être dans un dev_fs !
-	if(pathname[0] == '$')
+	/*if(pathname[0] == '$')
 	{
 		// creation d un open_file_descriptor (XXX: passer dans le open du driver !)
 		open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
@@ -113,7 +113,7 @@ open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 		} else {
 			return NULL;
 		}
-	}
+	}*/
 
 	int len;
 	fs_instance_t *instance = get_instance_from_path(pathname, &len);

@@ -166,7 +166,6 @@ int procfs_readdir(fs_instance_t *instance __attribute__((unused)), const char *
 	int i,j;
 	int pid;
 	char buf[64];
-	klog("Path = %s %d", path, iter);
 	
 	if (path[0] != '/')
 		return -ENOENT;

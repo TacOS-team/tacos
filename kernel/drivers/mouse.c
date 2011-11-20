@@ -26,7 +26,7 @@
  * Mouse driver.
  */
 
-#include <kdriver.h>
+#include <fs/devfs.h>
 #include <types.h>
 #include <klog.h>
 #include <ioports.h>

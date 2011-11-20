@@ -66,12 +66,12 @@
 #include <round_robin.h>
 #include <rtl8139.h>
 #include <klog.h>
-#include <kdriver.h>
 #include <kdirent.h>
 #include <vga.h>
 #include <init.h>
 #include <fs/fat.h>
 #include <fs/procfs.h>
+#include <fs/devfs.h>
 
 /* Includes des drivers */
 #include <drivers/dummy_driver.h>
@@ -202,9 +202,11 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	fat_init();
 	procfs_init();
+	devfs_init();
 	
 	vfs_mount("/dev/floppy", "tacos", "FAT");
 	vfs_mount("", "proc", "ProcFS");
+	vfs_mount("", "dev", "DevFS");
 
 	init_process_array();
 	

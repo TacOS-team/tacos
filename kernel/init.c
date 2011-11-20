@@ -28,7 +28,7 @@
  */
 
 /* Kernel */
-#include <kdriver.h>
+#include <fs/devfs.h>
 #include <klog.h>
 #include <scheduler.h>
 #include <symtable.h>
@@ -52,7 +52,6 @@ int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	
 	/* Initialisation des drivers */
 	klog("Initializing drivers...");
-	init_driver_list();
 	init_dummy();
 	init_mouse();
 	/* ************************** */

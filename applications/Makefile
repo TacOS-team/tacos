@@ -4,7 +4,7 @@ SUBDIRS=mishell
 LIBS=../lib/libc.a ../lib/libsystem.a ../lib/libutils.a  ../lib/libstl.a
 INCLUDES=-I../include/ -I../libc/include/
 CPPINCLUDES=-I../libs/stl/
-CFLAGS=-W -O3 -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
+CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 CPPFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32 -fno-rtti -fno-exceptions
 LD=ld -Ttext=40000000 --entry=start_main -melf_i386
 BIN=../bin/
