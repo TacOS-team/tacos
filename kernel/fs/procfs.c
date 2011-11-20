@@ -210,6 +210,64 @@ int procfs_readdir(fs_instance_t *instance __attribute__((unused)), const char *
 	return 1;
 }
 
+int procfs_stat(fs_instance_t *instance __attribute__ ((unused)), const char *path, struct stat *stbuf) {
+	int res = 0;
+	unsigned int i,j;
+	int pid;
+	char buf[64];
+
+	memset(stbuf, 0, sizeof(struct stat));
+	stbuf->st_mode = 0755;
+	stbuf->st_size = 10;
+	stbuf->st_atime = 0;
+	stbuf->st_mtime = 0;
+	stbuf->st_ctime = 0;
+
+	if(strcmp(path, "/") == 0) {
+		stbuf->st_mode |= S_IFDIR;
+		return 0;
+	} else {
+		i=0;
+		while (path[i] == '/') 
+			i++;
+		j=0;
+		while(path[i] != '\0' && path[i] != '/') {
+			buf[j] = path[i];
+			i++;
+			j++;
+		}
+		buf[j] = '\0';
+		pid = atoi(buf);
+		if(find_process(pid) != NULL) {
+			if(path[i] == '\0') {
+				stbuf->st_mode |= S_IFDIR;
+				return 0;
+			}
+			else {
+				j=0;
+				while(path[i] != '\0' && path[i] != '/') {
+					buf[j] = path[i];
+					i++;
+					j++;
+				}
+				buf[j] = '\0';
+				i=0;
+				while(i<sizeof(procfs_file_list)/sizeof(procfs_file_t)) {
+					if(strcmp(buf, procfs_file_list[i].filename) == 0) {
+						stbuf->st_mode |= S_IFREG;
+						return 0;
+					}
+					i++;
+				}
+				return -ENOENT;
+			}
+		}
+	}
+	
+
+	return res;
+}
+
 fs_instance_t* mount_ProcFS() {
 	klog("mounting ProcFS");
 
@@ -218,6 +276,7 @@ fs_instance_t* mount_ProcFS() {
 	instance->mkdir = NULL;
 	instance->readdir = procfs_readdir;
 	instance->opendir = procfs_opendir;
+	instance->stat = procfs_stat;
 	
 	return instance;
 }
