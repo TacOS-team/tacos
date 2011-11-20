@@ -87,10 +87,14 @@ static fs_instance_t* get_instance_from_path(const char * pathname, int *len) {
 	return NULL;
 }
 
-int vfs_open(const char * pathname, open_file_descriptor *ofd, uint32_t modes) {
+open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 	//XXX: Ceci devrait être dans un dev_fs !
 	if(pathname[0] == '$')
 	{
+		// creation d un open_file_descriptor (XXX: passer dans le open du driver !)
+		open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
+		ofd->flags = flags;
+	
 		driver_interfaces* di = find_driver(pathname+1);
 		if(di != NULL) {
 			if( di->open == NULL )
@@ -105,18 +109,18 @@ int vfs_open(const char * pathname, open_file_descriptor *ofd, uint32_t modes) {
 			ofd->open = di->open;
 			ofd->close = di->close;
 			
-			return 0;
+			return ofd;
 		} else {
-			return -1;
+			return NULL;
 		}
 	}
 
 	int len;
 	fs_instance_t *instance = get_instance_from_path(pathname, &len);
 	if (instance->open != NULL) {
-		return instance->open(instance, pathname + len, ofd, modes);
+		return instance->open(instance, pathname + len, flags);
 	}
-	return -1;
+	return NULL;
 }
 
 void vfs_mount(const char *device __attribute__((unused)), const char *mountpoint, const char *type) {

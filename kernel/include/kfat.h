@@ -186,7 +186,7 @@ int fat_stat(fs_instance_t *instance, const char *path, struct stat *stbuf);
 int fat_readdir(fs_instance_t *instance, const char * path, int iter, char * filename);
 int fat_opendir(fs_instance_t *instance, const char * path);
 
-int fat_open_file (fs_instance_t *instance, const char * path, open_file_descriptor * ofd, uint32_t flags);
+open_file_descriptor * fat_open_file(fs_instance_t *instance, const char * path, uint32_t flags);
 int fat_mkdir(fs_instance_t *instance, const char * path, mode_t mode);
 
 size_t fat_read_file (open_file_descriptor * ofd, void * buf, size_t count);

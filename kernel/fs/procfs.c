@@ -61,14 +61,14 @@ int procfs_close(open_file_descriptor *ofd) {
 	return kfree(ofd);
 }
 
-int procfs_open_file(fs_instance_t *instance, const char * path, open_file_descriptor * ofd, uint32_t flags __attribute__((unused))) {
+open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * path, uint32_t flags __attribute__((unused))) {
 	unsigned int i,j;
 	int pid;
 	char buf[64];
 	process_t* process = NULL;
 	
 	if (path[0] != '/')
-		return -1;
+		return NULL;
 	else {
 		i=0;
 		while (path[i] == '/') 
@@ -76,7 +76,7 @@ int procfs_open_file(fs_instance_t *instance, const char * path, open_file_descr
 			
 		if(path[i] == '\0') {
 			/* Les fichier son sous un dossier pid, donc ici y'a rien à ouvrir */
-			return -1;
+			return NULL;
 		}	
 		else {
 			j=0;
@@ -101,7 +101,8 @@ int procfs_open_file(fs_instance_t *instance, const char * path, open_file_descr
 				i=0;
 				while(i<sizeof(procfs_file_list)/sizeof(procfs_file_t)) {
 					if(strcmp(buf, procfs_file_list[i].filename) == 0) {
-						
+						open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
+
 						ofd->fs_instance = instance;
 						ofd->first_cluster = 0;
 						ofd->file_size = 512; /* TODO */
@@ -115,13 +116,13 @@ int procfs_open_file(fs_instance_t *instance, const char * path, open_file_descr
 						ofd->seek = NULL; /*procfs_seek_file; */
 						ofd->close = procfs_close; /*procfs_close;*/
 						
-						return 0;
+						return ofd;
 					}
 					i++;
 				}
-				return -1;
+				return NULL;
 			} else {
-				return -1;
+				return NULL;
 			}
 		}
 	}

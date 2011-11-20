@@ -52,7 +52,7 @@ typedef struct {
 typedef struct _fs_instance_t {
 	file_system_t *fs; /**< Pointeur vers le FS utilisé. */ //XXX: Est-ce utile ?
 	// XXX: enregistrer @device ?
-	int (*open) (struct _fs_instance_t *, const char * , open_file_descriptor *, uint32_t);
+	open_file_descriptor * (*open) (struct _fs_instance_t *, const char * , uint32_t);
 	int (*opendir) (struct _fs_instance_t *, const char *);
 	int (*readdir) (struct _fs_instance_t *, const char *, int, char *);
 	int (*mkdir) (struct _fs_instance_t *, const char * , mode_t);
@@ -64,7 +64,7 @@ typedef struct _fs_instance_t {
  */
 void vfs_register_fs(file_system_t *fs);
 
-int vfs_open(const char * pathname, open_file_descriptor *ofd, uint32_t modes);
+open_file_descriptor* vfs_open(const char * pathname, uint32_t flags);
 void vfs_mount(const char *device, const char *mountpoint, const char *type);
 int vfs_umount(const char *mountpoint);
 int vfs_mkdir(const char * pathname, mode_t mode);

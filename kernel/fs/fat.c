@@ -1077,21 +1077,21 @@ int fat_createfile (const char * path, mode_t mode __attribute__((__unused__))) 
   return 0;
 }
 
-int fat_open_file(fs_instance_t *instance __attribute__((unused)), const char * path, open_file_descriptor * ofd, uint32_t flags) {
+open_file_descriptor * fat_open_file(fs_instance_t *instance __attribute__((unused)), const char * path, uint32_t flags) {
 	directory_entry_t *f;
-	size_t size_buffer = sizeof(ofd->buffer) < fat_info.BS.bytes_per_sector ? 
-			sizeof(ofd->buffer) : fat_info.BS.bytes_per_sector;
-
 	if ((f = open_file_from_path(path)) == NULL) {
 		if (flags & O_CREAT) {
 			fat_createfile(path, 0); // XXX: set du vrai mode.
 			if ((f = open_file_from_path(path)) == NULL) {
-				return -1;				
+				return NULL;
 			}
 		} else {
-			return -1;
+			return NULL;
 		}
 	}
+	open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
+	size_t size_buffer = sizeof(ofd->buffer) < fat_info.BS.bytes_per_sector ? 
+			sizeof(ofd->buffer) : fat_info.BS.bytes_per_sector;
 
 	ofd->fs_instance = instance;
 	ofd->first_cluster = f->cluster;
@@ -1109,10 +1109,14 @@ int fat_open_file(fs_instance_t *instance __attribute__((unused)), const char * 
 
 	kfree(f);
 
-	return 0;
+	return ofd;
 }
 
-int fat_close(open_file_descriptor *ofd __attribute__ ((unused))) {
+int fat_close(open_file_descriptor *ofd) {
+	if (ofd == NULL) {
+		return -1;
+	}
+	kfree(ofd);
 	return 0;
 }
 

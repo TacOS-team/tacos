@@ -110,15 +110,11 @@ SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags) {
 	// recherche d une place dans la file descriptor table du process
 	while(process->fd[i].used==true) 
 		i++;
-	
-	// creation d un open_file_descriptor
-	process->fd[i].ofd = kmalloc(sizeof(open_file_descriptor));
-	process->fd[i].used = true;
-	process->fd[i].ofd->flags = flags;
-	
+
 	// ouverture du fichier
-	if (vfs_open(path, process->fd[i].ofd, flags) == 0) {
+	if ((process->fd[i].ofd = vfs_open(path, flags)) != NULL) {
 		*((int *)fd_id) = i;
+		process->fd[i].used = true;
 	} else {
 		*((int *)fd_id) = -1;
 	}
