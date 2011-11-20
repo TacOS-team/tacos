@@ -29,7 +29,7 @@
 
 #include <klog.h>
 #include <kdriver.h>
-#include <kfat.h>
+#include <fs/fat.h>
 #include <kmalloc.h>
 #include <vfs.h>
 #include <kdirent.h>

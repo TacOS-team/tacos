@@ -51,7 +51,6 @@
 #include <vmm.h>
 #include <ioports.h>
 #include "msr.h"
-#include <kfat.h>
 #include <fpu.h>
 #include <vm86.h>
 #include <beeper.h>
@@ -71,6 +70,7 @@
 #include <kdirent.h>
 #include <vga.h>
 #include <init.h>
+#include <fs/fat.h>
 #include <fs/procfs.h>
 
 /* Includes des drivers */
