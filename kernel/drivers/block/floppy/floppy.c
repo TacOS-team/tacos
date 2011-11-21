@@ -167,17 +167,17 @@ int init_floppy()
 	return 0;
 }
 
-int floppy_open(open_file_descriptor *ofd) {
+int floppy_open(open_file_descriptor *ofd __attribute__((unused))) {
 	/* TODO */
 	return 0;
 }
 
-int floppy_close(open_file_descriptor *ofd) {
+int floppy_close(open_file_descriptor *ofd __attribute__((unused))) {
 	/* TODO */
 	return 0;
 }
 
-size_t floppy_read(open_file_descriptor *ofd, void* buf, size_t count, uint32_t offset) {
+size_t floppy_read(open_file_descriptor *ofd __attribute__((unused)), void* buf, size_t count, uint32_t offset) {
 	int offset_sector = offset / FLOPPY_SECTOR_SIZE;
 	int offset_in_sector = offset % FLOPPY_SECTOR_SIZE;
 	uint32_t cylinder;
@@ -185,7 +185,7 @@ size_t floppy_read(open_file_descriptor *ofd, void* buf, size_t count, uint32_t 
 	uint32_t sector;
 	size_t c;
 	char buffer[FLOPPY_SECTOR_SIZE];
-
+	size_t size = count;
 	while (count) {
 		
 		cylinder = offset_sector / (FLOPPY_SECTORS_PER_TRACK * FLOPPY_NB_HEADS);
@@ -205,15 +205,17 @@ size_t floppy_read(open_file_descriptor *ofd, void* buf, size_t count, uint32_t 
 			offset_sector++;
 		}
 	}
+	return size;
 }
 
-size_t floppy_write(open_file_descriptor *ofd, const void* buf, size_t count, uint32_t offset) {
+size_t floppy_write(open_file_descriptor *ofd __attribute__((unused)), const void* buf, size_t count, uint32_t offset) {
 	int offset_sector = offset / FLOPPY_SECTOR_SIZE;
 	int offset_in_sector = offset % FLOPPY_SECTOR_SIZE;
 	uint32_t cylinder;
 	uint32_t head;
 	uint32_t sector;
 	size_t c;
+	size_t size = count;
 	char buffer[FLOPPY_SECTOR_SIZE];
 
 	while (count) {
@@ -236,4 +238,5 @@ size_t floppy_write(open_file_descriptor *ofd, const void* buf, size_t count, ui
 		}
 		floppy_write_sector(cylinder, head, sector, buffer);
 	}
+	return size;
 }
