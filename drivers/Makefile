@@ -5,7 +5,7 @@ SRCS=*/*.c
 
 all: libbaddrivers
 
-libbaddrivers: keyboard/keyboard.o floppy/floppy.o floppy/floppy_interrupt.o floppy/floppy_utils.o floppy/floppy_motor.o floppy/floppy_dma.o beeper/beeper.o pci/pci.o pci/pci_config.o tty/tty.o video/video.o video/console.o video/vga.o ethernet/rtl8139.o
+libbaddrivers: keyboard/keyboard.o floppy/floppy.o floppy/floppy_interrupt.o floppy/floppy_utils.o floppy/floppy_motor.o floppy/floppy_dma.o beeper/beeper.o tty/tty.o video/video.o video/console.o video/vga.o ethernet/rtl8139.o
 	  $(AR) r ../lib/$@.a $^
 
 %.o: %.c

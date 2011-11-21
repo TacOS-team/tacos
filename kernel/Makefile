@@ -3,7 +3,7 @@ CFLAGS=-W -Wall $(WE) -g -ffreestanding -nostdlib -nostdinc -nostartfiles -nodef
 
 SRCS = *.c
 
-all: boot.o exception_wrappers.o interrupts_wrappers.o kdirent.o kstdio.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o kprocess.o pagination.o kpanic.o ksyscall.o vmm.o kmalloc.o fs/fat.o fpu.o vm86.o ksem.o kfcntl.o kunistd.o ksignal.o round_robin.o events.o clock.o i8254.o symtable.o module.o init.o vfs.o fs/procfs.o fs/devfs.o
+all: boot.o exception_wrappers.o interrupts_wrappers.o kdirent.o kstdio.o kernel.o i8259.o idt.o gdt.o memory.o exception.o interrupts.o scheduler.o kprocess.o pagination.o kpanic.o ksyscall.o vmm.o kmalloc.o fs/fat.o fpu.o vm86.o ksem.o kfcntl.o kunistd.o ksignal.o round_robin.o events.o clock.o i8254.o symtable.o module.o init.o vfs.o fs/procfs.o fs/devfs.o pci/pci.o pci/pci_config.o
 
 boot.o: boot.S
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) -fno-stack-protector
@@ -18,7 +18,7 @@ interrupts_wrappers.o: interrupts_wrappers.S ../include/interrupts.h
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
 clean:
-	rm -f *.o drivers/char/*.o drivers/block/*.o fs/*.o .depend
+	rm -f *.o drivers/char/*.o drivers/block/*.o fs/*.o pci/*.o .depend
 
 -include .depend
 
