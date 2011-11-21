@@ -5,7 +5,7 @@ SRCS=*/*.c
 
 all: libdrivers
 
-libdrivers: char/dummy_driver.o char/serial.o char/mouse.o
+libdrivers: char/dummy_driver.o char/serial.o char/mouse.o block/floppy/floppy.o block/floppy/floppy_interrupt.o block/floppy/floppy_utils.o block/floppy/floppy_motor.o block/floppy/floppy_dma.o
 	  $(AR) r ../../lib/$@.a $^
 
 %.o: %.c

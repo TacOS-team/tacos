@@ -72,17 +72,17 @@ void init_driver_list()
  * 
  * @return interfaces du driver trouvé
  */
-void* find_driver(const char* name)
+driver_entry* find_driver(const char* name)
 {
 	int i = 0;
-	void* ret = NULL;
+	driver_entry* ret = NULL;
 	
 	while(i<MAX_DRIVERS && ret == NULL)
 	{
 		if(driver_list[i].used)
 		{
 			if(strcmp(driver_list[i].name, name) == 0)
-				ret = driver_list[i].di;
+				ret = &driver_list[i];
 		}
 		i++;
 	}
@@ -157,7 +157,7 @@ int devfs_readdir(fs_instance_t *instance __attribute__((unused)), const char * 
 open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path, uint32_t flags __attribute__((unused))) {
 	unsigned int i,j;
 	char buf[64];
-	chardev_interfaces* di;
+	driver_entry* drentry;
 	
 	if (path[0] != '/')
 		return NULL;
@@ -172,8 +172,9 @@ open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path
 			j++;
 		}
 		buf[j] = '\0';
-		di = find_driver(buf);
-		if(di != NULL) {
+		drentry = find_driver(buf);
+		if(drentry != NULL) {
+			
 			open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
 			
 			ofd->fs_instance = instance;
@@ -182,12 +183,23 @@ open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path
 			ofd->current_cluster = 0;
 			ofd->current_octet = 0;
 			ofd->current_octet_buf = 0;
-
-			ofd->write = di->write;
-			ofd->read = di->read; 
-			ofd->seek = NULL; /* à implémenter */
-			ofd->close = di->close; /*procfs_close;*/
 			
+			switch(drentry->type) {
+				case CHARDEV:
+					ofd->write = ((chardev_interfaces*)(drentry->di))->write;
+					ofd->read = ((chardev_interfaces*)(drentry->di))->read; 
+					ofd->seek = NULL; /* à implémenter */
+					ofd->close = ((chardev_interfaces*)(drentry->di))->close;
+					break;
+				case BLKDEV:
+					ofd->write = NULL; /* à implémenter */
+					ofd->read = NULL; /* à implémenter */
+					ofd->seek = NULL; /* à implémenter */
+					ofd->close = ((blkdev_interfaces*)(drentry->di))->close;
+					ofd->extra_data = drentry->di; /* XXX Un peu laid mais ça fera la blague pour le moment */
+				default:
+					ofd = NULL;
+			}
 			return ofd;
 		}
 	}

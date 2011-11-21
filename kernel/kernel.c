@@ -44,7 +44,7 @@
 #include <time.h>
 #include <keyboard.h>
 #include <events.h>
-#include <floppy.h>
+#include <drivers/floppy.h>
 #include <kpanic.h>
 #include <kprocess.h>
 #include <kmalloc.h>

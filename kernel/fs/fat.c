@@ -37,7 +37,7 @@
 #include <types.h>
 #include <clock.h>
 //XXX: supprimer ce include !
-#include <floppy.h>
+#include <drivers/floppy.h>
 #include <kdirent.h>
 
 #ifndef EOF
