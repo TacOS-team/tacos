@@ -52,7 +52,7 @@ typedef struct {
  */
 typedef struct _fs_instance_t {
 	file_system_t *fs; /**< Pointeur vers le FS utilisé. */ //XXX: Est-ce utile ?
-	// XXX: enregistrer @device ?
+	open_file_descriptor * device;
 	open_file_descriptor * (*open) (struct _fs_instance_t *, const char * , uint32_t);
 	int (*opendir) (struct _fs_instance_t *, const char *);
 	int (*readdir) (struct _fs_instance_t *, const char *, int, char *);

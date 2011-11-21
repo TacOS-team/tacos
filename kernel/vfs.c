@@ -112,7 +112,8 @@ void vfs_mount(const char *device, const char *mountpoint, const char *type) {
 				/* Open the mounted device */
 				ofd = vfs_open(device, O_RDWR);
 			}
-			element->instance = aux->fs->mount(ofd); //XXX: device en argument.
+			element->instance = aux->fs->mount(ofd);
+			element->instance->device = ofd;
 			element->next = mount_list;
 			mount_list = element;
 		}
@@ -126,6 +127,10 @@ int vfs_umount(const char *mountpoint) {
 		if (strcmp(aux->name, mountpoint) == 0) {
 			if (aux->instance->fs->umount != NULL) {
 				aux->instance->fs->umount(aux->instance);
+				/* Close the device ofd. */
+				if (aux->instance->device != NULL && aux->instance->device->close) {
+					aux->instance->device->close(aux->instance->device);
+				}
 			}
 			return 0;
 		}
