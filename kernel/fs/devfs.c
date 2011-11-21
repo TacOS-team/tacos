@@ -185,7 +185,7 @@ open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path
 
 			ofd->write = di->write;
 			ofd->read = di->read; 
-			ofd->seek = di->seek;
+			ofd->seek = NULL; /* à implémenter */
 			ofd->close = di->close; /*procfs_close;*/
 			
 			return ofd;

@@ -148,7 +148,6 @@ size_t mouse_read_state(open_file_descriptor* ofd __attribute__((unused)), void*
 static chardev_interfaces di = {
 	.read = mouse_read_state,
 	.write = NULL,
-	.seek = NULL,
 	.open = NULL,
 	.close = NULL,
 	.ioctl = NULL

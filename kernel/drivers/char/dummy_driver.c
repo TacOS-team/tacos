@@ -18,7 +18,6 @@ size_t dummy_write(open_file_descriptor* ofd __attribute__((unused)), const void
 static chardev_interfaces di = {
 	.read = dummy_read,
 	.write = dummy_write,
-	.seek = NULL,
 	.open = NULL,
 	.close = NULL,
 	.ioctl = NULL

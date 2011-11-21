@@ -43,11 +43,18 @@ typedef enum _device_type_t device_type_t ;
 typedef struct {
 	size_t (*read)(open_file_descriptor *,void*, size_t);
 	size_t (*write)(open_file_descriptor *, const void*, size_t);
-	int (*seek) (open_file_descriptor *, long, int);
 	int (*ioctl) (open_file_descriptor*, unsigned int, void*);
 	int (*open) (open_file_descriptor*);
 	int (*close) (open_file_descriptor*);
 }chardev_interfaces;
+
+typedef struct {
+	size_t (*read)(open_file_descriptor *,void*, unsigned int, size_t);
+	size_t (*write)(open_file_descriptor *, const void*, unsigned int, size_t);
+	int (*ioctl) (open_file_descriptor*, unsigned int, void*);
+	int (*open) (open_file_descriptor*);
+	int (*close) (open_file_descriptor*);
+}blkdev_interfaces;
 
 void devfs_init();
 int register_chardev(const char* name, chardev_interfaces* di);

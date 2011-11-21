@@ -437,7 +437,6 @@ static int set_protocol(serial_port port, char* protocol)
 static chardev_interfaces di = {
 	.read = serial_read,
 	.write = serial_write,
-	.seek = NULL,
 	.open = NULL,
 	.close = NULL,
 	.ioctl = NULL
