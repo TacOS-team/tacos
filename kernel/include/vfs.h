@@ -33,6 +33,7 @@
 #include <fd_types.h>
 //XXX: libc
 #include <sys/stat.h>
+#include <fcntl.h>
 
 struct _fs_instance_t;
 
@@ -42,7 +43,7 @@ struct _fs_instance_t;
 typedef struct {
 	char *name;	/**< Nom du FS, c'est aussi son "type" utilisé lors du mount. */
 	//XXX: ajouter device en argument de mount.
-	struct _fs_instance_t * (*mount) (); /**< Pointeur vers la fonction mount du FS. */
+	struct _fs_instance_t * (*mount) (open_file_descriptor*); /**< Pointeur vers la fonction mount du FS. */
 	void (*umount) (struct _fs_instance_t *); /**< Pointeur vers la fonction umount du FS. */
 } file_system_t;
 

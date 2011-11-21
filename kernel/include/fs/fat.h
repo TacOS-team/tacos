@@ -35,13 +35,11 @@
 #include <time.h>
 #include <sys/stat.h>
 #include <vfs.h>
+#include <fs/devfs.h>
 
 #define SEEK_SET 0
 #define SEEK_CUR 1
 #define SEEK_END 2
-
-typedef void(*read_handler)(uint8_t * buf, size_t count, int offset);
-typedef void(*write_handler)(uint8_t * buf, size_t count, int offset);
 
 // FAT low level.
 
@@ -173,11 +171,11 @@ typedef struct _fat_info {
 	unsigned int table_size;
 	fat_t fat_type;
 	unsigned int bytes_per_cluster;
-	read_handler read_data;
-	write_handler write_data;
+	blkdev_read_t read_data;
+	blkdev_write_t write_data;
 } fat_info_t;
 
-fs_instance_t* mount_FAT();
+fs_instance_t* mount_FAT(open_file_descriptor* ofd);
 void umount_FAT(fs_instance_t *instance);
 
 // Lecture/Ecriture Fichier

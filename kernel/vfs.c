@@ -88,33 +88,6 @@ static fs_instance_t* get_instance_from_path(const char * pathname, int *len) {
 }
 
 open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
-	//XXX: Ceci devrait être dans un dev_fs !
-	/*if(pathname[0] == '$')
-	{
-		// creation d un open_file_descriptor (XXX: passer dans le open du driver !)
-		open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
-		ofd->flags = flags;
-	
-		driver_interfaces* di = find_driver(pathname+1);
-		if(di != NULL) {
-			if( di->open == NULL )
-				kerr("No \"open\" method for device \"%s\".", pathname+1);
-			else
-				di->open(ofd);
-				
-			ofd->write = di->write;
-			ofd->read = di->read;
-			ofd->seek = di->seek;
-			ofd->ioctl = di->ioctl;
-			ofd->open = di->open;
-			ofd->close = di->close;
-			
-			return ofd;
-		} else {
-			return NULL;
-		}
-	}*/
-
 	int len;
 	fs_instance_t *instance = get_instance_from_path(pathname, &len);
 	if (instance->open != NULL) {
@@ -123,8 +96,9 @@ open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 	return NULL;
 }
 
-void vfs_mount(const char *device __attribute__((unused)), const char *mountpoint, const char *type) {
+void vfs_mount(const char *device, const char *mountpoint, const char *type) {
 	available_fs_t *aux = fs_list;
+	open_file_descriptor* ofd = NULL;
 	while (aux != NULL) {
 		if (strcmp(aux->fs->name, type) == 0) {
 			mounted_fs_t *element = kmalloc(sizeof(mounted_fs_t));
@@ -133,7 +107,12 @@ void vfs_mount(const char *device __attribute__((unused)), const char *mountpoin
 			int i;
 			for (i = 0; i <= len; i++)
 				element->name[i] = mountpoint[i];
-			element->instance = aux->fs->mount(); //XXX: device en argument.
+				
+			if(device != NULL) {
+				/* Open the mounted device */
+				ofd = vfs_open(device, O_RDWR);
+			}
+			element->instance = aux->fs->mount(ofd); //XXX: device en argument.
 			element->next = mount_list;
 			mount_list = element;
 		}

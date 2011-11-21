@@ -135,7 +135,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
 	interrupt_set_routine(IRQ_LPT1, LPT1_routine, 0);
 	interrupt_set_routine(IRQ_COM1, serial_isr, 0);
-	floppy_init_interrupt();
 	init_fpu();
 
 	asm volatile ("sti\n");
@@ -147,10 +146,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	/* Initialisation de la vmm */
 	init_kmalloc();
-
-	//beep();
-
-	//kprintf("Memoire disponible : %dMio\n", (mbi->mem_upper>>10) + 1); /* Grub balance la mémoire dispo -1 Mio... Soit.*/
 
 	pci_scan();
 		
@@ -195,6 +190,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_STAT,	(syscall_handler_t) sys_stat);
 	syscall_set_handler(SYS_UNLINK,	(syscall_handler_t) sys_unlink);
 	
+	devfs_init();
+	
 	floppy_detect_drives();
 	kdebug("Floppy controller version: 0x%x.", floppy_get_version());
 	
@@ -203,12 +200,12 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	fat_init();
 	procfs_init();
-	devfs_init();
-	
-	vfs_mount("/dev/floppy", "tacos", "FAT");
-	vfs_mount("", "proc", "ProcFS");
-	vfs_mount("", "dev", "DevFS");
 
+	vfs_mount(NULL, "dev", "DevFS");
+	vfs_mount(NULL, "proc", "ProcFS");
+	
+	vfs_mount("/dev/fd0", "tacos", "FAT");
+	
 	init_process_array();
 	
 	/* Lancement du scheduler */

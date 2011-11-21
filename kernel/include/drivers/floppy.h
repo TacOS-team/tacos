@@ -33,12 +33,9 @@
 #include <types.h>
 
 void floppy_detect_drives();
-int init_floppy();
 uint8_t floppy_get_version();
 
-void floppy_write(uint8_t * buf, size_t count, int offset);
-void floppy_read(uint8_t * buf, size_t count, int offset);
+int init_floppy();
 
-void floppy_init_interrupt();
 
 #endif

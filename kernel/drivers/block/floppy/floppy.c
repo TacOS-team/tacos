@@ -27,6 +27,7 @@
  * Description de ce que fait le fichier
  */
 
+#include <fs/devfs.h>
 #include <ioports.h>
 #include <kstdio.h>
 #include <string.h>
@@ -40,6 +41,19 @@
 #define FLOPPY_SECTOR_SIZE 512
 #define FLOPPY_NB_HEADS 2
 #define FLOPPY_SECTORS_PER_TRACK 18
+
+int floppy_open(open_file_descriptor *ofd);
+int floppy_close(open_file_descriptor *ofd);
+size_t floppy_read(open_file_descriptor *ofd, void* buf, size_t count, uint32_t offset);
+size_t floppy_write(open_file_descriptor *ofd, const void* buf, size_t count, uint32_t offset);
+
+blkdev_interfaces di = { 
+	.read = floppy_read,
+	.write = floppy_write,
+	.ioctl = NULL,
+	.open = floppy_open,
+	.close = floppy_close
+};
 
 // Repositionne la tête de lecture sur le cylindre 0
 int floppy_calibrate()
@@ -97,9 +111,13 @@ int init_floppy()
 	uint8_t drive_type = 0;
 	uint8_t CCR;
 	
+	
+	
 	/* On vérifie qu'on a bien un controleur standard, sinon on affiche un warning */
 	if(floppy_get_version() != 0x90)
 		kerr("WARNING: Floppy driver may not work with 0x%x controler.", floppy_get_version());
+
+	floppy_init_interrupt();
 
 	floppy_reset_irq();
 	
@@ -143,10 +161,23 @@ int init_floppy()
 	
 	// On calibre le lecteur
 	if(floppy_calibrate()) return -1;
+	
+	register_blkdev("fd0", &di);
+	
 	return 0;
 }
 
-void floppy_read(uint8_t * buf, size_t count, int offset) {
+int floppy_open(open_file_descriptor *ofd) {
+	/* TODO */
+	return 0;
+}
+
+int floppy_close(open_file_descriptor *ofd) {
+	/* TODO */
+	return 0;
+}
+
+size_t floppy_read(open_file_descriptor *ofd, void* buf, size_t count, uint32_t offset) {
 	int offset_sector = offset / FLOPPY_SECTOR_SIZE;
 	int offset_in_sector = offset % FLOPPY_SECTOR_SIZE;
 	uint32_t cylinder;
@@ -176,7 +207,7 @@ void floppy_read(uint8_t * buf, size_t count, int offset) {
 	}
 }
 
-void floppy_write(uint8_t * buf, size_t count, int offset) {
+size_t floppy_write(open_file_descriptor *ofd, const void* buf, size_t count, uint32_t offset) {
 	int offset_sector = offset / FLOPPY_SECTOR_SIZE;
 	int offset_in_sector = offset % FLOPPY_SECTOR_SIZE;
 	uint32_t cylinder;

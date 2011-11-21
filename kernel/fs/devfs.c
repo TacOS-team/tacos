@@ -120,6 +120,36 @@ int register_chardev(const char* name, chardev_interfaces* di)
 	return done-1; /* Retourne -1 en cas d'erreur, 0 sinon */
 }
 
+/** 
+ * @brief Enregistre le blkdev dans la liste.
+ * 
+ *	Enregistre le driver dans la liste.
+ *
+ * @param name chaine identifiant le driver
+ * @param di structure contenant les interfaces du driver
+ * 
+ * @return -1 en cas d'erreur, 0 sinon
+ */
+int register_blkdev(const char* name, blkdev_interfaces* di)
+{
+	int i = 0;
+	int done = 0;
+	while(i<MAX_DRIVERS && !done)
+	{
+		if(!driver_list[i].used)
+		{
+			driver_list[i].used = 1;
+			driver_list[i].name = (char*)name;
+			driver_list[i].di = di;
+			driver_list[i].type = BLKDEV;
+			done = 1;
+		}
+		
+		i++;
+	}
+	return done-1; /* Retourne -1 en cas d'erreur, 0 sinon */
+}
+
 int devfs_opendir(fs_instance_t *instance __attribute__((unused)), const char * path) {
 	if(strcmp(path,"/") != 0) {
 		return -ENOENT;
@@ -190,6 +220,14 @@ open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path
 					ofd->read = ((chardev_interfaces*)(drentry->di))->read; 
 					ofd->seek = NULL; /* à implémenter */
 					ofd->close = ((chardev_interfaces*)(drentry->di))->close;
+					
+					if(((chardev_interfaces*)(drentry->di))->open != NULL) {
+						((chardev_interfaces*)(drentry->di))->open(ofd);
+					}
+					else {
+						kerr("No \"open\" method for %s.", drentry->name);
+					}
+					
 					break;
 				case BLKDEV:
 					ofd->write = NULL; /* à implémenter */
@@ -197,6 +235,14 @@ open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path
 					ofd->seek = NULL; /* à implémenter */
 					ofd->close = ((blkdev_interfaces*)(drentry->di))->close;
 					ofd->extra_data = drentry->di; /* XXX Un peu laid mais ça fera la blague pour le moment */
+					
+					if(((blkdev_interfaces*)(drentry->di))->open != NULL) {
+						((blkdev_interfaces*)(drentry->di))->open(ofd);
+					}
+					else {
+						kerr("No \"open\" method for %s.", drentry->name);
+					}
+					break;
 				default:
 					ofd = NULL;
 			}

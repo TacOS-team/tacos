@@ -40,23 +40,37 @@ enum _device_type_t{
 
 typedef enum _device_type_t device_type_t ;
 
-typedef struct {
-	size_t (*read)(open_file_descriptor *,void*, size_t);
-	size_t (*write)(open_file_descriptor *, const void*, size_t);
-	int (*ioctl) (open_file_descriptor*, unsigned int, void*);
-	int (*open) (open_file_descriptor*);
-	int (*close) (open_file_descriptor*);
-}chardev_interfaces;
+typedef size_t (*chardev_read_t)(open_file_descriptor *,void*, size_t);
+typedef size_t (*chardev_write_t)(open_file_descriptor *, const void*, size_t);
+typedef int (*chardev_ioctl_t) (open_file_descriptor*, unsigned int, void*);
+typedef int (*chardev_open_t) (open_file_descriptor*);
+typedef int (*chardev_close_t) (open_file_descriptor*);
 
 typedef struct {
-	size_t (*read)(open_file_descriptor *,void*, size_t, unsigned int);
-	size_t (*write)(open_file_descriptor *, const void*, size_t, unsigned int);
-	int (*ioctl) (open_file_descriptor*, unsigned int, void*);
-	int (*open) (open_file_descriptor*);
-	int (*close) (open_file_descriptor*);
+	chardev_read_t read;
+	chardev_write_t write;
+	chardev_ioctl_t ioctl;
+	chardev_open_t open;
+	chardev_close_t close;
+}chardev_interfaces;
+
+
+typedef size_t (*blkdev_read_t)(open_file_descriptor *,void*, size_t, uint32_t);
+typedef size_t (*blkdev_write_t)(open_file_descriptor *, const void*, size_t, uint32_t);
+typedef int (*blkdev_ioctl_t) (open_file_descriptor*, unsigned int, void*);
+typedef int (*blkdev_open_t) (open_file_descriptor*);
+typedef int (*blkdev_close_t) (open_file_descriptor*);
+
+typedef struct {
+	blkdev_read_t read;
+	blkdev_write_t write;
+	blkdev_ioctl_t ioctl;
+	blkdev_open_t open;
+	blkdev_close_t close;
 }blkdev_interfaces;
 
 void devfs_init();
 int register_chardev(const char* name, chardev_interfaces* di);
+int register_blkdev(const char* name, blkdev_interfaces* di);
 
 #endif /* _DEVFS_H */
