@@ -43,5 +43,6 @@ SYSCALL_HANDLER3(sys_read, uint32_t fd, const void *buf, size_t *c);
 SYSCALL_HANDLER3(sys_seek, uint32_t fd, long *offset, int whence);
 SYSCALL_HANDLER3(sys_ioctl, uint32_t fd, unsigned int request, void *data);
 SYSCALL_HANDLER3(sys_stat, const char *path, struct stat *buf, int *ret);
+SYSCALL_HANDLER2(sys_unlink, const char *path, int *ret);
 
 #endif

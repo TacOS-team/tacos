@@ -175,3 +175,15 @@ int stat(const char *path, struct stat *buf) {
 	}
 	return ret;
 }
+
+int unlink(const char *path) {
+	int ret;
+	if (path[0] != '/') {
+		char * absolutepath = get_absolute_path(path);
+		syscall(SYS_UNLINK, (uint32_t)absolutepath, (uint32_t)&ret, 0);
+		free(absolutepath);
+	} else {
+		syscall(SYS_UNLINK, (uint32_t)path, (uint32_t)&ret, 0);
+	}
+	return ret;
+}

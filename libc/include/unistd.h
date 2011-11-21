@@ -141,4 +141,6 @@ int lseek(int fd, long offset, int whence);
 
 int stat(const char *path, struct stat *buf);
 
+int unlink(const char *pathname);
+
 #endif //_UNISTD_H_

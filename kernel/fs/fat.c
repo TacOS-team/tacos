@@ -166,6 +166,7 @@ fs_instance_t* mount_FAT() {
 	instance->super.readdir = fat_readdir;
 	instance->super.opendir = fat_opendir;
 	instance->super.stat = fat_stat;
+	instance->super.unlink = fat_unlink;
 
 	//XXX: passer floppy en device et le passer en arg.
 	instance->fat_info.read_data = floppy_read;
@@ -530,23 +531,8 @@ static char * lfn_to_sfn(char * filename) {
   return sfn;
 }
 
-static directory_entry_t * decode_lfn_entry(lfn_entry_t* fdir) {
-	int j;
-	char filename[256];
-	uint8_t i_filename = 0;
-	uint8_t seq = fdir->seq_number - 0x40;
-	for (j = seq-1; j >= 0; j--) {
-		decode_long_file_name(filename + i_filename, &fdir[j]);
-		i_filename += 13;
-	}
-	directory_entry_t *dir_entry = kmalloc(sizeof(directory_entry_t));
-	fat_dir_entry_to_directory_entry(filename, (fat_dir_entry_t*)&fdir[seq], dir_entry);
-	return dir_entry;
-}
-
-static directory_entry_t * decode_sfn_entry(fat_dir_entry_t *fdir) {
+static void decode_short_file_name(char *filename, fat_dir_entry_t *fdir) {
   int j, k;
-  char filename[256];
 	int notspace = 0;
 
   // Copy basis name.
@@ -555,7 +541,7 @@ static directory_entry_t * decode_sfn_entry(fat_dir_entry_t *fdir) {
 			if (!notspace) {
 				notspace = j;
 			}
-			if (fdir->reserved & 0x08) {
+			if (fdir->reserved && 0x08) {
 				filename[j] = tolower(fdir->utf8_short_name[j]);
 			} else {
 				filename[j] = fdir->utf8_short_name[j];
@@ -573,7 +559,7 @@ static directory_entry_t * decode_sfn_entry(fat_dir_entry_t *fdir) {
 			if (notspaceext <= 0) {
 				notspaceext = k;
 			}
-			if (fdir->reserved & 0x10) {
+			if (fdir->reserved && 0x10) {
 				filename[notspace + k] = tolower(fdir->file_extension[k]);
 			} else {
 				filename[notspace + k] = fdir->file_extension[k];
@@ -584,11 +570,33 @@ static directory_entry_t * decode_sfn_entry(fat_dir_entry_t *fdir) {
 	filename[notspace + notspaceext + 1] = '\0';
 
 
+}
 
+
+
+static directory_entry_t * decode_lfn_entry(lfn_entry_t* fdir) {
+	int j;
+	char filename[256];
+	uint8_t i_filename = 0;
+	uint8_t seq = fdir->seq_number - 0x40;
+	for (j = seq-1; j >= 0; j--) {
+		decode_long_file_name(filename + i_filename, &fdir[j]);
+		i_filename += 13;
+	}
+	directory_entry_t *dir_entry = kmalloc(sizeof(directory_entry_t));
+	fat_dir_entry_to_directory_entry(filename, (fat_dir_entry_t*)&fdir[seq], dir_entry);
+	return dir_entry;
+}
+
+static directory_entry_t * decode_sfn_entry(fat_dir_entry_t *fdir) {
+  char filename[256];
+	decode_short_file_name(filename, fdir);
 	directory_entry_t *dir_entry = kmalloc(sizeof(directory_entry_t));
 	fat_dir_entry_to_directory_entry(filename, fdir, dir_entry);
 	return dir_entry;
 }
+
+
 
 
 static void read_dir_entries(fat_dir_entry_t *fdir, directory_t *dir, int n) {
@@ -1167,6 +1175,122 @@ int fat_stat(fs_instance_t *instance, const char *path, struct stat *stbuf) {
 	return res;
 }
 
+static int delete_dir_entry(fat_dir_entry_t *fdir, const char *name, int n) {
+  char filename[256];
+  int i;
+
+  for (i = 0; i < n && fdir[i].utf8_short_name[0]; i++) {
+    if ((unsigned char)fdir[i].utf8_short_name[0] != 0xE5) {
+      if (fdir[i].file_attributes == 0x0F && ((lfn_entry_t*) &fdir[i])->seq_number & 0x40) {
+			  int j;
+			  uint8_t i_filename = 0;
+			  uint8_t seq = ((lfn_entry_t*) &fdir[i])->seq_number - 0x40;
+			  for (j = seq-1; j >= 0; j--) {
+			    decode_long_file_name(filename + i_filename, (lfn_entry_t*) &fdir[i+j]);
+			    i_filename += 13;
+			  }
+
+				if (strcmp(filename, name) == 0) {
+					for (j = seq; j >= 0; j--) {
+						fdir[i+j].utf8_short_name[0] = 0xE5;
+					}
+					return 0;
+				}
+        i += seq;
+      } else {
+        decode_short_file_name(filename, &fdir[i]);
+				if (strcmp(filename, name) == 0) {
+					fdir[i].utf8_short_name[0] = 0xE5;
+					return 0;
+				}
+      }
+    }
+  }
+	return 1;
+}
+
+
+static int delete_file_dir(fat_fs_instance_t *instance, int cluster, const char * name) {
+  int n_dir_entries = instance->fat_info.BS.bytes_per_sector * instance->fat_info.BS.sectors_per_cluster / sizeof(fat_dir_entry_t);
+	if (cluster >= 0) {
+
+	  int n_clusters = 0;
+	  int next = cluster;
+	  while (!is_last_cluster(instance, next)) {
+	    next = instance->fat_info.file_alloc_table[next];
+	    n_clusters++;
+	  }
+	
+	  fat_dir_entry_t * sub_dir = kmalloc(n_dir_entries * sizeof(fat_dir_entry_t) * n_clusters);
+	
+	  int c = 0;
+	  next = cluster;
+	  while (!is_last_cluster(instance, next)) {
+	    instance->fat_info.read_data((uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
+	    next = instance->fat_info.file_alloc_table[next];
+	    c++;
+	  }
+	
+		if (delete_dir_entry(sub_dir, name, n_dir_entries * n_clusters) == 0) {
+			c = 0;
+			next = cluster;
+		  while (!is_last_cluster(instance, next)) {
+				instance->fat_info.write_data((uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
+		    next = instance->fat_info.file_alloc_table[next];
+		    c++;
+			}
+			kfree(sub_dir);
+			return 0;
+		}
+		kfree(sub_dir);
+	} else {
+    fat_dir_entry_t *root_dir = kmalloc(sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count);
+    instance->fat_info.read_data((uint8_t*)(root_dir), sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count, instance->fat_info.addr_root_dir);
+		if (delete_dir_entry(root_dir, name, n_dir_entries) == 0) {
+			instance->fat_info.write_data((uint8_t*)(root_dir), sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count, instance->fat_info.addr_root_dir);
+			kfree(root_dir);
+			return 0;
+		}
+		kfree(root_dir);
+	}
+	return 1;
+}
+
+
+int fat_unlink(fs_instance_t *instance, const char * path) {
+  if (path[0] == '\0' || strcmp(path, "/") == 0)
+    return -1;
+
+  // Only absolute paths.
+  if (path[0] != '/')
+    return -1;
+
+  char buf[256];
+  int i = 1;
+  while (path[i] == '/')
+    i++;
+
+  directory_t * dir = open_root_dir((fat_fs_instance_t*)instance);
+
+  int j = 0;
+  do {
+    if (path[i] == '/' || path[i] == '\0') {
+      buf[j] = '\0';
+
+			int cluster = dir->cluster;
+      if (j > 0 && open_next_dir((fat_fs_instance_t*)instance, dir, dir, buf) == 2) {
+					return delete_file_dir((fat_fs_instance_t*)instance, cluster, buf);
+			}
+
+      j = 0;
+    } else {
+      buf[j] = path[i];
+      j++;
+    }
+  } while (path[i++] != '\0');
+
+	return 1;
+}
 
 
 

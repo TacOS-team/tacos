@@ -176,6 +176,25 @@ int vfs_stat(const char *pathname, struct stat *buf) {
 	return -ENOENT;
 }
 
+int vfs_unlink(const char *pathname) {
+	int len;
+	fs_instance_t *instance = get_instance_from_path(pathname, &len);
+	if (instance) {
+		if (instance->unlink != NULL) {
+			if (pathname[len] == '\0') {
+				return instance->unlink(instance, "/");
+			} else {
+				return instance->unlink(instance, pathname + len);
+			}
+		}
+	} else {
+		if (len == 0) {
+			return 1;
+		}
+	}
+	return -ENOENT;
+}
+
 int vfs_mkdir(const char * pathname, mode_t mode) {
 	int len;
 	fs_instance_t *instance = get_instance_from_path(pathname, &len);
