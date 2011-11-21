@@ -434,7 +434,7 @@ static int set_protocol(serial_port port, char* protocol)
 	return ret;
 }
 
-static driver_interfaces di = {
+static chardev_interfaces di = {
 	.read = serial_read,
 	.write = serial_write,
 	.seek = NULL,
@@ -487,7 +487,7 @@ int serial_init(serial_port port, char* protocol, unsigned int bauds, int flags)
 	
 	
 	/* Enregistre le driver */
-	if(register_driver("serial", &di) != 0)
+	if(register_chardev("serial", &di) != 0)
 		kerr("driver registering failed");
 	
 	semid = ksemcreate(4);

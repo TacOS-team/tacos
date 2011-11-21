@@ -40,7 +40,8 @@
 typedef struct {
 	char used;
 	char* name;
-	driver_interfaces* di;
+	device_type_t type;
+	void* di;
 }driver_entry;
 
 static driver_entry driver_list[MAX_DRIVERS];
@@ -57,6 +58,7 @@ void init_driver_list()
 	{
 			driver_list[i].used = 0;
 			driver_list[i].name = NULL;
+			driver_list[i].type = CHARDEV;
 			driver_list[i].di = NULL;
 	}
 }
@@ -70,10 +72,10 @@ void init_driver_list()
  * 
  * @return interfaces du driver trouvé
  */
-driver_interfaces* find_driver(const char* name)
+void* find_driver(const char* name)
 {
 	int i = 0;
-	driver_interfaces* ret = NULL;
+	void* ret = NULL;
 	
 	while(i<MAX_DRIVERS && ret == NULL)
 	{
@@ -89,7 +91,7 @@ driver_interfaces* find_driver(const char* name)
 }
 
 /** 
- * @brief Enregistre le driver dans la liste.
+ * @brief Enregistre le chardev dans la liste.
  * 
  *	Enregistre le driver dans la liste.
  *
@@ -98,7 +100,7 @@ driver_interfaces* find_driver(const char* name)
  * 
  * @return -1 en cas d'erreur, 0 sinon
  */
-int register_driver(const char* name, driver_interfaces* di)
+int register_chardev(const char* name, chardev_interfaces* di)
 {
 	int i = 0;
 	int done = 0;
@@ -107,12 +109,9 @@ int register_driver(const char* name, driver_interfaces* di)
 		if(!driver_list[i].used)
 		{
 			driver_list[i].used = 1;
-			
-			/* Pas de strdup dans le kernel, try again
-			driver_list[i].name = strdup(name);
-			*/
 			driver_list[i].name = (char*)name;
 			driver_list[i].di = di;
+			driver_list[i].type = CHARDEV;
 			done = 1;
 		}
 		
@@ -158,7 +157,7 @@ int devfs_readdir(fs_instance_t *instance __attribute__((unused)), const char * 
 open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path, uint32_t flags __attribute__((unused))) {
 	unsigned int i,j;
 	char buf[64];
-	driver_interfaces* di;
+	chardev_interfaces* di;
 	
 	if (path[0] != '/')
 		return NULL;

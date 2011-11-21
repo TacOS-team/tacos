@@ -145,7 +145,7 @@ size_t mouse_read_state(open_file_descriptor* ofd __attribute__((unused)), void*
 	return sizeof(mouse_x) + sizeof(mouse_y) + sizeof(mouse_buttons);
 }
 
-static driver_interfaces di = {
+static chardev_interfaces di = {
 	.read = mouse_read_state,
 	.write = NULL,
 	.seek = NULL,
@@ -157,7 +157,7 @@ static driver_interfaces di = {
 void init_mouse() {
 	klog("initializing mouse driver...");
 	mouse_init();
-	if (register_driver("mouse", &di) != 0) {
+	if (register_chardev("mouse", &di) != 0) {
 		kerr("error registering mouse driver.");
 	}
 }
