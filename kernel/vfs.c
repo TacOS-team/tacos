@@ -88,33 +88,6 @@ static fs_instance_t* get_instance_from_path(const char * pathname, int *len) {
 }
 
 open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
-	//XXX: Ceci devrait être dans un dev_fs !
-	/*if(pathname[0] == '$')
-	{
-		// creation d un open_file_descriptor (XXX: passer dans le open du driver !)
-		open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
-		ofd->flags = flags;
-	
-		driver_interfaces* di = find_driver(pathname+1);
-		if(di != NULL) {
-			if( di->open == NULL )
-				kerr("No \"open\" method for device \"%s\".", pathname+1);
-			else
-				di->open(ofd);
-				
-			ofd->write = di->write;
-			ofd->read = di->read;
-			ofd->seek = di->seek;
-			ofd->ioctl = di->ioctl;
-			ofd->open = di->open;
-			ofd->close = di->close;
-			
-			return ofd;
-		} else {
-			return NULL;
-		}
-	}*/
-
 	int len;
 	fs_instance_t *instance = get_instance_from_path(pathname, &len);
 	if (instance->open != NULL) {
