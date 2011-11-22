@@ -11,7 +11,7 @@ ifneq ($(USECLANG), 1)
 		export CC=@printf "\033[34m   CC   $$@\033[0m\n" && colorgcc
 	endif
 else
-	export CC=@printf "\033[34m   CC   $$@\033[0m\n" && clang
+	export CC=@printf "\033[34m   CC   $$@\033[0m\n" && clang --analyze
 endif
 
 export CPPC=@printf "\033[34m   CPPC   $$@\033[0m\n" && g++

@@ -33,8 +33,11 @@
 #include <sys/types.h>	
 
 #define NSIG		32
+#ifndef SIGTYPES
+#define SIGTYPES
 typedef unsigned long sigset_t;
 typedef void (*sighandler_t)(int);
+#endif
 
 /* Définition des signaux */
 //XXX: Est-ce qu'on ne devrait pas se caller sur les numéros POSIX ?
