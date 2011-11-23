@@ -45,12 +45,12 @@ struct widget_t
 	char visible;
 	char* adv;
 	enum widget_type type;
-	uint8_t x;
-	uint8_t y;
-	uint8_t w;
-	uint8_t h;
-	uint8_t bg;
-	uint8_t fg;
+	unsigned char x;
+	unsigned char y;
+	unsigned char w;
+	unsigned char h;
+	unsigned char bg;
+	unsigned char fg;
 	struct window_t* father;
 	void (*onClick)(struct widget_t*, int, int);
 };
@@ -58,8 +58,8 @@ struct widget_t
 struct window_t
 {
 	int nb_widgets;
-	uint8_t bg;
-	uint8_t cursor;
+	unsigned char bg;
+	unsigned char cursor;
 	struct widget_t* widgets[MAX_WIDGETS];
 };
 

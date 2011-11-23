@@ -35,7 +35,7 @@
  * @brief API minimaliste pour faire des interfaces graphiques en mode texte
  */
 
-#include <types.h>
+#include <sys/types.h>
 
 /** 
 * @brief défini une "fenêtre", il s'agit d'une instance de gui pour l'application
@@ -58,7 +58,7 @@ struct widget_t;
 * 
 * @return un pointeur vers la fenêtre
 */
-struct window_t* createWindow(uint8_t bg, uint8_t cursor);
+struct window_t* createWindow(unsigned char bg, unsigned char cursor);
 /** 
 * @brief lance la boucle principale de la fenêtre (mise à jour de la souris, gestion des clics ...)
 * 
@@ -72,7 +72,7 @@ void runWindow(struct window_t* win);
 * 
 * @return 0 en cas de succès
 */
-int freeWindow(struct window_t* win);
+void freeWindow(struct window_t* win);
 
 /**
 *** Manipulation des widgets
@@ -110,9 +110,9 @@ struct widget_t* addTxt(struct window_t* win, const char* txt);
 * @param fg la couleur de police du widget
 */
 void setWidgetProperties(struct widget_t* wdg, 
-									uint8_t x, uint8_t y,
-									uint8_t h, uint8_t w,
-									uint8_t bg, uint8_t fg);
+									unsigned char x, unsigned char y,
+									unsigned char h, unsigned char w,
+									unsigned char bg, unsigned char fg);
 /** 
 * @brief permet de mettre un handler qui sera déclenché des que l'on clique sur le widget
 * 

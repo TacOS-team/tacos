@@ -116,7 +116,7 @@ static void displayWidget(struct widget_t* wdg)
 			while(!fini)
 			{
 				// On recupere une ligne de la largeur du widget
-				if((uint8_t)ansi_strlen(&(wdg->adv[indice]))<(wdg->w-2))
+				if((unsigned char)ansi_strlen(&(wdg->adv[indice]))<(wdg->w-2))
 				{
 					ansi_strncpy(ligne, &(wdg->adv[indice]), wdg->w-2);
 
@@ -146,7 +146,7 @@ static void displayWidget(struct widget_t* wdg)
 	}
 }
 
-struct window_t* createWindow(uint8_t bg, uint8_t cursor)
+struct window_t* createWindow(unsigned char bg, unsigned char cursor)
 {
 	struct window_t* ret;
 	int i;
@@ -185,7 +185,7 @@ void runWindow(struct window_t* win)
 	int old_x = 0;
 	int old_y = 0;
 
-	int fd = open("$mouse", O_RDONLY);
+	int fd = open("/dev/mouse", O_RDONLY);
 	struct {
 		int x;
 		int y;
@@ -236,10 +236,10 @@ void runWindow(struct window_t* win)
 	close(fd);
 }
 
-int freeWindow(struct window_t* win)
+void freeWindow(struct window_t* win)
 {
 	// TODO : free correct (actuellement on ne libere pas les widgets)
-	return free(win);
+	free(win);
 };
 
 struct widget_t* addButton(struct window_t* win, const char* title)
@@ -282,9 +282,9 @@ struct widget_t* addTxt(struct window_t* win, const char* txt)
 }
 
 void setWidgetProperties(struct widget_t* wdg, 
-									uint8_t x, uint8_t y,
-									uint8_t h, uint8_t w,
-									uint8_t bg, uint8_t fg)
+									unsigned char x, unsigned char y,
+									unsigned char h, unsigned char w,
+									unsigned char bg, unsigned char fg)
 {
 	wdg->x = x;
 	wdg->y = y;
