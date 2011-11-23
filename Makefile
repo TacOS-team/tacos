@@ -45,7 +45,8 @@ core.img: img
 
 img: all
 	@echo "drive v: file=\"`pwd`/core.img\" 1.44M filter" > mtoolsrc
-	@gzip -dc < grub.img.gz > core.img
+	@echo "drive v: file=\"`pwd`/core.img\" cylinders=80 heads=2 sectors=36 filter" > mtoolsrc
+	@gzip -dc < grub288.img.gz > core.img
 	@MTOOLSRC=mtoolsrc mcopy menu.txt v:/boot/grub/
 	@MTOOLSRC=mtoolsrc mcopy doc.txt v:/
 	@MTOOLSRC=mtoolsrc mcopy bin v:/
