@@ -1,12 +1,12 @@
-INCLUDES=-I../include/ -Iinclude/ -I../libc/include/ -I../kernel/include/
+INCLUDES=-Iinclude/ -I../../libc/include/
 CFLAGS=-W -Wall $(WE) -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
- 
+
 SRCS=*.c
 
 all: libutils
 
-libutils: heap.o list.o widget.o
-	$(AR) r ../lib/$@.a $^
+libutils: widget.o
+	$(AR) r ../$@.a $^
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 

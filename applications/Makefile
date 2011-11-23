@@ -1,7 +1,8 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
 OBJ=ps cat ls kill mkdir rm pres
-SUBDIRS=mishell
-LIBS=../lib/libc.a ../lib/libsystem.a ../lib/libutils.a  ../lib/libstl.a
+SUBDIRS=mishell utils
+LIBS=../lib/libc.a ../lib/libsystem.a ../lib/libstl.a libutils.a
+LDFLAGS=-L./
 INCLUDES=-I../include/ -I../libc/include/
 CPPINCLUDES=-I../libs/stl/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
@@ -10,7 +11,9 @@ LD=ld -Ttext=40000000 --entry=start_main -melf_i386
 BIN=../bin/
 SRCS=*.c *.cpp
 
-all: $(OBJ)
+all: subdirs $(OBJ)
+
+subdirs:
 	@for i in $(SUBDIRS); do \
 		printf "\033[1m>>> [$$i]\033[0m\n"; \
 		$(MAKE) -s -C $$i; \

@@ -28,7 +28,7 @@
  */
 
 #include <stdio.h>
-#include <gui.h>
+#include "utils/include/gui.h"
 
 #define NB_SLIDES 30
 

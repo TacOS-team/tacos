@@ -29,7 +29,6 @@
 
 #include <ctype.h>
 #include <errno.h>
-#include <heap.h>
 #include <malloc.h>
 #include <stdio.h>
 #include <stdlib.h>

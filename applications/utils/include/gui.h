@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010 - TacOS developers.
@@ -24,16 +23,11 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * API minimaliste pour faire des interfaces graphiques en mode texte
  */
 
 #ifndef _GUI_H_
 #define _GUI_H_
-
-/**
- * @file gui.h
- * @brief API minimaliste pour faire des interfaces graphiques en mode texte
- */
 
 #include <sys/types.h>
 

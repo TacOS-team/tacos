@@ -25,9 +25,9 @@ export AR=@printf "\033[32m   AR   $$@\033[0m\n" && ar
 
 export LD=@printf "\033[31m   LD   $$@\033[0m\n" && ld
 export CFLAGS=-native $(WE) -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
-LDLIBS=-lc -lutils -ldrivers -lbaddrivers -z nodefaultlib -lsystem -lstl
+LDLIBS=-lc -ldrivers -lbaddrivers -z nodefaultlib -lsystem -lstl
 LDFLAGS=-Llib/
-SUBDIRS = kernel kernel/drivers libc utils drivers system libs/stl applications
+SUBDIRS = kernel kernel/drivers libc drivers system libs/stl applications
 
 all: directories kernel.bin
 
@@ -37,7 +37,7 @@ kernel.bin: force_look
 		$(MAKE) -s -C $$i; \
 		if [ $$? = 0 ]; then printf "\033[1m<<< [$$i] [OK]\033[0m\n"; else printf "\033[31m\033[1m<<< [$$i] [FAIL]\033[0m\n"; exit 1; fi; \
 	done
-	$(LD) -T linker.ld -o kernel.bin kernel/*.o kernel/fs/*.o kernel/fs/fat/*.o kernel/pci/*.o libs/stl/*.o -melf_i386 $(LDFLAGS) $(LDLIBS)
+	$(LD) -T linker.ld -o kernel.bin kernel/*.o kernel/fs/*.o kernel/fs/fat/*.o kernel/pci/*.o kernel/utils/*.o libs/stl/*.o -melf_i386 $(LDFLAGS) $(LDLIBS)
 
 force_look:
 	@true
