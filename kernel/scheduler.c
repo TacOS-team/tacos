@@ -92,10 +92,11 @@ int is_schedulable(process_t* process) {
 
 
 /* Effectue le changement de contexte proprement dit */
-void context_switch(int mode, process_t* current)
+static void context_switch(int mode, process_t* current)
 {
-	uint32_t kesp, eflags;
-	uint16_t kss, ss, cs;
+	uint32_t eflags;
+	uint32_t kesp;
+	uint16_t kss;
 	
 	/* Récupère l'adresse physique de répertoire de page du processus */
 	paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) current->pd);
@@ -103,43 +104,47 @@ void context_switch(int mode, process_t* current)
 	/* Mise à jour des piles de la TSS */
 	get_default_tss()->esp0	=	current->regs.kesp;
 	get_default_tss()->ss0	=	current->regs.kss;
+
+	eflags = (current->regs.eflags | FLAGS_IF) & ~(FLAGS_NT); // Flags permettant le changemement de contexte (Réactivation des interruption, et désactivation de nested task)
 	
-	ss = current->regs.ss;
-	cs = current->regs.cs;
-	
-	eflags = (current->regs.eflags | FLAGS_IF) & ~(FLAGS_NT); // Flags permettant le changemement de contexte
-	if(mode == USER_PROCESS)
+	if(mode == USER_PROCESS) /* Si on est en user space, l'esp kernel sera celui de la tss */
 	{
 		kss = current->regs.kss;
 		kesp = current->regs.kesp;
 	}
-	else
+	else /* En kernel space, on revien à l'esp récupéré par le scheduler */
 	{
 		kss = current->regs.ss;
 		kesp = current->regs.esp;
 	}
-	asm(
-			"mov %0, %%ss;"
-			"mov %1, %%esp;"
-			"cmp %[KPROC], %[mode];" // if(mode != KERNEL_PROC)
-			"je else;"
-			"push %2;"
-			"push %3;"
-			"else:"
-			"push %4;"
-			"push %5;"
-			"push %6;"
-			::        
-			"m" (kss), 		
-			"m" (kesp),
-			"m" (ss), 					
-			"m" (current->regs.esp), 	
-			"m" (eflags), 				
-			"m" (cs), 					
-			"m" (current->regs.eip),
-			[KPROC] "i"(KERNEL_PROCESS),
-			[mode]	"g"(mode) 	
+	
+	/* On s'assure que SS est bien celui du kernel */
+	asm("mov %0, %%ss;"::"m" (kss));
+	
+	/* On remet esp à son origine */
+	asm("mov %0, %%esp;"::"m" (kesp));
+	
+	/* On empile dans tous les cas eflags, cs et eip.
+	 * Dans le cas où on retourne en userspace, on empile ss et esp avant
+	 */
+	if(mode != KERNEL_PROCESS) {
+		asm(
+			"push %0;"
+			"push %1;"::	        
+			"m" (current->regs.ss), 					
+			"m" (current->regs.esp)
        );
+	}
+	
+	asm(		
+			"push %0;"
+			"push %1;"
+			"push %2;"
+			::        
+			"m" (eflags), 				
+			"m" (current->regs.cs), 					
+			"m" (current->regs.eip)
+    );
        
 	/* On push ensuite les registres de la tache à lancer */
 	PUSH_CONTEXT(current);
@@ -149,6 +154,7 @@ void context_switch(int mode, process_t* current)
 	/* On lui remet sa page directory */
 	pagination_load_page_directory((struct page_directory_entry *)pd_paddr);
 
+	/* Pop les registres généraux puis iret */
 	RESTORE_CONTEXT();
 }
 
