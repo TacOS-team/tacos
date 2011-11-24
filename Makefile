@@ -87,6 +87,7 @@ clean:
 	done
 	@rm -f *.o *.bin *.img
 	@rm -f lib/*
+	@find . -name "*.o" -exec rm {} \;
 
 depend:
 	@for i in $(SUBDIRS); do \
