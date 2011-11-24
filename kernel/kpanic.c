@@ -38,6 +38,15 @@
 
 #define GAME_OVER() asm("cli\n\thlt");
 
+#define SELECTOR_EXTERNAL(S) (S & 0x00000001)
+#define SELECTOR_TABLE(S) ((S & 0x00000006)>>1)
+#define SELECTOR_INDEX(S) ((S & 0x0000fff8)>>3)
+
+#define SELECTOR_GDT	0
+#define SELECTOR_IDT	1
+#define SELECTOR_LDT	2
+#define SELECTOR_IDT2	3
+
 extern symbol_table_t* ksymtable;
 
 void printStackTrace(uint32_t depth,process_t* badboy)
@@ -150,7 +159,29 @@ void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t* badbo
 			GAME_OVER();
 			break;
 		case EXCEPTION_GENERAL_PROTECTION :
-			kprintf("General Protection fault (error code : %x).\n", error_code);
+			kprintf("General Protection fault ");
+			
+			if(SELECTOR_EXTERNAL(error_code)) {
+				kprintf(" outside to the processor\n");
+			}
+			else {
+				switch(SELECTOR_TABLE(error_code)) {
+					case SELECTOR_GDT:
+						kprintf("(GDT:0x%x)",SELECTOR_INDEX(error_code));
+						break;
+					case SELECTOR_IDT:
+						kprintf("(IDT:0x%x)",SELECTOR_INDEX(error_code));
+						break;
+					case SELECTOR_LDT:
+						kprintf("(LDT:0x%x)",SELECTOR_INDEX(error_code));
+						break;
+					case SELECTOR_IDT2:
+						kprintf("(IDT:0x%x)",SELECTOR_INDEX(error_code));
+						break;
+					default:
+						break;
+				}
+			}
 			GAME_OVER();
 			break;
 		default:
