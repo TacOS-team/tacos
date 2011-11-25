@@ -174,7 +174,7 @@ void draw_cube(char *buffer) {
 }
 
 void draw_mouse(int x,int y) {
-	draw_line(x, y, x+5, y+5, 3, buffer);
+	draw_line(x-1, y-1, x+5, y+5, 3, buffer);
 	draw_line(x, y, x+3, y, 3, buffer);
 	draw_line(x, y, x, y+3, 3, buffer);
 	
