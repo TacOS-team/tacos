@@ -92,7 +92,7 @@ void itox(char *buf, int d)
 void kprintf(const char *format, ...) {
 	static tty_struct_t *tty = NULL;
 	if (tty == NULL) {
-		open_file_descriptor* ofd = vfs_open("/dev/tty3", 0); //XXX:flags
+		open_file_descriptor* ofd = vfs_open("/dev/ttyS0", 0); //XXX:flags
 		if (ofd)
 			tty = ((chardev_interfaces*)ofd->extra_data)->custom_data;
 	}

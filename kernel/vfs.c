@@ -27,7 +27,6 @@
  * Virtual File System. Gestion des points de montage.
  */
 
-#include <klog.h>
 #include <fs/devfs.h>
 #include <fs/fat.h>
 #include <kmalloc.h>

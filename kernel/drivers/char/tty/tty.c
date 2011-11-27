@@ -49,8 +49,12 @@ struct termios tty_std_termios = {
 	.c_ospeed = 38400
 };
 
-#define IS_ECHO(tty) (tty->termios.c_lflag & ECHO)
-#define IS_CANON(tty) (tty->termios.c_lflag & ICANON)
+#define I_ECHO(tty) (tty->termios.c_lflag & ECHO)
+#define I_CANON(tty) (tty->termios.c_lflag & ICANON)
+
+#define I_IGNCR(tty) (tty->termios.c_iflag & IGNCR)
+#define I_ICRNL(tty) (tty->termios.c_iflag & ICRNL)
+#define I_INLCR(tty) (tty->termios.c_iflag & INLCR)
 
 void tty_init() {
 
@@ -62,7 +66,7 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 	if (c == '\b') {
 		if (tty->p_end != tty->p_begin) {
 			tty->p_end--;
-			if (IS_ECHO(tty)) {
+			if (I_ECHO(tty)) {
 				if (tty->driver->ops->put_char != NULL) {
 					tty->driver->ops->put_char(tty, c);
 				} else {
@@ -78,7 +82,7 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 			tty->buffer[tty->p_end] = c;
 			tty->p_end = (tty->p_end + 1) % MAX_INPUT;
 
-			if (IS_ECHO(tty)) {
+			if (I_ECHO(tty)) {
 				if (tty->driver->ops->put_char != NULL) {
 					tty->driver->ops->put_char(tty, c);
 				} else {
@@ -201,7 +205,18 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 
 		c = t->buffer[(t->p_end + MAX_INPUT - 1) % MAX_INPUT];
 
-		if (!IS_CANON(t) || c == '\n' || c == '\r') {
+		if (c == '\r') {
+			if (I_IGNCR(t)) {
+				continue;
+			}
+			if (I_ICRNL(t)) {
+				c = '\n';
+			}
+		} else if (c == '\n' && I_INLCR(t)) {
+			c = '\r';
+		}
+
+		if (!I_CANON(t) || c == '\n' || c == '\r') {
 			while (j < count && t->p_begin < t->p_end) {
 				((char*) buf)[j] = t->buffer[t->p_begin];
 				t->p_begin = (t->p_begin + 1) % MAX_INPUT;

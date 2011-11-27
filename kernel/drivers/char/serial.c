@@ -203,7 +203,6 @@ void serial_isr(int id __attribute__ ((unused)))
 								/* Si on a des choses à envoyer, on les envoit */
 								if(tx_size[i]>0)
 								{
-									kdebug("TX=>send");
 									counter = 0;
 									while(counter < TX_FIFO_SIZE && tx_size[i]>0)
 									{
@@ -216,7 +215,6 @@ void serial_isr(int id __attribute__ ((unused)))
 								}
 								else /* Sinon on désactive l'interruption de transmission */
 								{
-									kdebug("TX=>closing");
 									temp_read = read_register(i, INTERRUPT_ENABLE);
 									temp_read &= (~ETBEI);
 									write_register(i, INTERRUPT_ENABLE, temp_read);
@@ -226,7 +224,7 @@ void serial_isr(int id __attribute__ ((unused)))
 								kerr("Modem status");
 								break;
 							default:
-								kerr("Unknown interrupt");
+								//kerr("Unknown interrupt");
 								break;
 								
 						}
@@ -245,7 +243,6 @@ static int set_baud_rate(serial_port port, unsigned int rate)
 	uint32_t divisor = 0;
 	uint32_t real_rate = 0;
 	
-	kdebug("set_baud_rate");
 	/* On vérifie que la fréquence demandée est réalisable */
 	if(rate != 0 && rate <= UART_CLOCK_FREQ)
 	{
@@ -308,7 +305,6 @@ static int set_protocol(serial_port port, char* protocol)
 	
 	char reg_value = 0;
 	
-	kdebug("set_set_protocol");
 	
 	if(nb_bits >= '5' && nb_bits <= '8')
 	{
