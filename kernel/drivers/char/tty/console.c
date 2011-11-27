@@ -27,8 +27,8 @@
  * Description de ce que fait le fichier
  */
 
+#include <drivers/console.h>
 #include <kmalloc.h>
-#include <console.h>
 #include <video.h>
 
 #define LARGEUR_TAB 8

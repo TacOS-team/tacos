@@ -27,55 +27,57 @@
  * Description de ce que fait le fichier
  */
 
-#include <multiboot.h>
-#include <idt.h>
-#include <i8259.h>
-#include <kunistd.h>
-#include <string.h>
-#include <memory.h>
-#include <pagination.h>
-#include <gdt.h>
-#include <exception.h>
-#include <interrupts.h>
-#include <pci.h>
-#include <pci_config.h>
-#include <scheduler.h>
+#include "msr.h"
+#include <beeper.h>
 #include <clock.h>
-#include <time.h>
-#include <keyboard.h>
+#include <debug.h>
 #include <events.h>
-#include <drivers/floppy.h>
+#include <exception.h>
+#include <fpu.h>
+#include <gdt.h>
+#include <i8259.h>
+#include <idt.h>
+#include <init.h>
+#include <interrupts.h>
+#include <ioports.h>
+#include <kdirent.h>
+#include <kfcntl.h>
+#include <klog.h>
+#include <kmalloc.h>
 #include <kpanic.h>
 #include <kprocess.h>
-#include <kmalloc.h>
-#include <vmm.h>
-#include <ioports.h>
-#include "msr.h"
-#include <fpu.h>
-#include <vm86.h>
-#include <beeper.h>
-#include <kfcntl.h>
-#include <debug.h>
-#include <ksyscall.h>
-#include <sys/syscall.h>
 #include <ksem.h>
-#include <video.h>
-#include <console.h>
 #include <ksignal.h>
+#include <ksyscall.h>
+#include <kunistd.h>
+#include <memory.h>
+#include <multiboot.h>
+#include <pagination.h>
+#include <pci.h>
+#include <pci_config.h>
 #include <round_robin.h>
 #include <rtl8139.h>
-#include <klog.h>
-#include <kdirent.h>
+#include <scheduler.h>
+#include <string.h>
+#include <sys/syscall.h>
+#include <time.h>
 #include <vga.h>
-#include <init.h>
+#include <video.h>
+#include <vm86.h>
+#include <vmm.h>
+
+/* Includes des fs */
+#include <fs/devfs.h>
 #include <fs/fat.h>
 #include <fs/procfs.h>
-#include <fs/devfs.h>
 
 /* Includes des drivers */
+#include <drivers/console.h>
 #include <drivers/dummy_driver.h>
-#include <drivers/serial.h>
+#include <drivers/floppy.h>
+#include <drivers/keyboard.h>
 #include <drivers/mouse.h>
+#include <drivers/serial.h>
 
 typedef struct
 {

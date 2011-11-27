@@ -34,7 +34,6 @@
 #include <kprocess.h>
 #include <scheduler.h>
 #include <symtable.h>
-#include <console.h>
 
 #define GAME_OVER() asm("cli\n\thlt");
 
@@ -110,7 +109,7 @@ void page_fault_report(int error_code)
 
 void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t* badboy, intframe* frame)
 {
-    focus_console(0);
+//XXX:    focus_console(0);
 	// background white
 	kprintf("\033[47m");
 	// Foreground black

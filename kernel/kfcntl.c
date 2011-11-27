@@ -27,8 +27,6 @@
  * Description de ce que fait le fichier
  */
 
-#include <console.h>
-#include <keyboard.h>
 #include <klog.h>
 #include <kmalloc.h>
 #include <kprocess.h>

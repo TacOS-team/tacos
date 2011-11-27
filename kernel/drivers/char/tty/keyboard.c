@@ -29,8 +29,8 @@
 
 #include <types.h>
 #include <ioports.h>
-#include <keyboard.h>
-#include <console.h>
+#include <drivers/keyboard.h>
+#include <drivers/console.h>
 
 #define BUFFER_SIZE 256
 
