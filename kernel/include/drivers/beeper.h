@@ -30,6 +30,6 @@
 #ifndef _BEEPER_H_
 #define _BEEPER_H_
 
-void beep();
+void beeper_init();
 
 #endif //_BEEPER_H_

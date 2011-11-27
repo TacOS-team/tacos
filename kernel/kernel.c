@@ -28,7 +28,6 @@
  */
 
 #include "msr.h"
-#include <beeper.h>
 #include <clock.h>
 #include <debug.h>
 #include <events.h>
@@ -78,6 +77,7 @@
 #include <drivers/mouse.h>
 #include <drivers/serial.h>
 #include <drivers/vga.h>
+#include <drivers/beeper.h>
 
 typedef struct
 {
@@ -183,13 +183,13 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_STAT,	(syscall_handler_t) sys_stat);
 	syscall_set_handler(SYS_UNLINK,	(syscall_handler_t) sys_unlink);
 	
-	//beep();
 
 	devfs_init();
 	vfs_mount(NULL, "dev", "DevFS");
 
 	console_init();
 	serial_init();
+	beeper_init();
 
 	pci_scan();
 		

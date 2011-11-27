@@ -1,5 +1,5 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=ps ls test_ttyS cube_graph zen_graph test_mouse
+OBJ=ps ls test_ttyS cube_graph zen_graph test_mouse lune
 SUBDIRS=mishell utils
 LIBS=../lib/libc.a ../lib/libsystem.a ../lib/libstl.a libutils.a
 LDFLAGS=-L./
