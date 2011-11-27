@@ -38,6 +38,20 @@
 
 #include <fcntl.h>
 
+struct termios tty_std_termios = {
+	.c_iflag = ICRNL | IXON,
+	.c_oflag = OPOST | ONLCR,
+	.c_cflag = B38400 | CS8 | CREAD | HUPCL,
+	.c_lflag = ISIG | ICANON | ECHO | ECHOE | ECHOK |
+	     ECHOCTL | ECHOKE | IEXTEN,
+	.c_cc = INIT_C_CC,
+	.c_ispeed = 38400,
+	.c_ospeed = 38400
+};
+
+#define IS_ECHO(tty) (tty->termios.c_lflag & ECHO)
+#define IS_CANON(tty) (tty->termios.c_lflag & ICANON)
+
 void tty_init() {
 
 }
@@ -48,7 +62,7 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 	if (c == '\b') {
 		if (tty->p_end != tty->p_begin) {
 			tty->p_end--;
-//		if (tty->echo) {
+			if (IS_ECHO(tty)) {
 				if (tty->driver->ops->put_char != NULL) {
 					tty->driver->ops->put_char(tty, c);
 				} else {
@@ -57,14 +71,14 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 					ch[1] = '\0';
 					tty->driver->ops->write(tty, NULL, ch, 1);
 				}
-//		}
+			}
 		}
 	} else {
 		if ((tty->p_end + 1) % MAX_INPUT != tty->p_begin) {
 			tty->buffer[tty->p_end] = c;
 			tty->p_end = (tty->p_end + 1) % MAX_INPUT;
 
-//		if (tty->echo) {
+			if (IS_ECHO(tty)) {
 				if (tty->driver->ops->put_char != NULL) {
 					tty->driver->ops->put_char(tty, c);
 				} else {
@@ -73,7 +87,7 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 					ch[1] = '\0';
 					tty->driver->ops->write(tty, NULL, ch, 1);
 				}
-//		}
+			}
 		}
 	}
 	ksemV(tty->sem);
@@ -187,7 +201,7 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 
 		c = t->buffer[(t->p_end + MAX_INPUT - 1) % MAX_INPUT];
 
-		if (/*!t->canon ||*/ c == '\n' || c == '\r') {
+		if (!IS_CANON(t) || c == '\n' || c == '\r') {
 			while (j < count && t->p_begin < t->p_end) {
 				((char*) buf)[j] = t->buffer[t->p_begin];
 				t->p_begin = (t->p_begin + 1) % MAX_INPUT;
@@ -205,7 +219,26 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 	return j;
 }
 
-int tty_ioctl (open_file_descriptor *ofd __attribute__ ((unused)), unsigned int request __attribute__ ((unused)), void *data __attribute__ ((unused))) {
+int tty_ioctl (open_file_descriptor *ofd,  unsigned int request, void *data) {
+
+	chardev_interfaces *di = ofd->extra_data;
+	tty_struct_t *t = (tty_struct_t *) di->custom_data;
+
+	struct termios kterm;
+
+	switch	(request) {
+		case TCGETS:
+			memcpy(&kterm, &t->termios, sizeof(struct termios));
+			return 0;
+		case TCSETS:
+			if (t->driver->ops->set_termios) {
+				t->driver->ops->set_termios(data, &t->termios);
+			} else {
+				memcpy(&kterm, &t->termios, sizeof(struct termios));
+			}
+			return 0;
+	}
+
 	return 0;
 }
 

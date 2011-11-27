@@ -4,13 +4,64 @@
 typedef unsigned int tcflag_t;
 typedef unsigned int cc_t;
 
-#define NCCS 15
+#define NCCS 19
 
 #define TCGETS 1
 #define TCSETS 2
 
-#define ICANON 2
-#define ECHO   8
+/* c_iflag bits */
+#define IGNCR 0000200
+#define ICRNL 0000400
+#define IUCLC 0001000
+#define IXON  0002000
+#define IXANY 0004000
+#define IXOFF 0010000
+
+/* c_oflag bits */
+#define OPOST 0000001
+#define OLCUC 0000002
+#define ONLCR 0000004
+#define OCRNL 0000010
+#define ONOCR 0000020
+#define ONLRET  0000040
+
+/* c_lflag bits */
+#define ISIG  0000001
+#define ICANON  0000002
+#define ECHO  0000010
+#define ECHOE 0000020
+#define ECHOK 0000040
+#define ECHOCTL 0001000
+#define ECHOKE  0004000
+#define IEXTEN  0100000
+
+/* c_cflag bit meaning */
+#define CBAUD 0010017
+#define  B0 0000000   /* hang up */
+#define  B50  0000001
+#define  B75  0000002
+#define  B110 0000003
+#define  B134 0000004
+#define  B150 0000005
+#define  B200 0000006
+#define  B300 0000007
+#define  B600 0000010
+#define  B1200  0000011
+#define  B1800  0000012
+#define  B2400  0000013
+#define  B4800  0000014
+#define  B9600  0000015
+#define  B19200 0000016
+#define  B38400 0000017
+#define CSIZE 0000060
+#define   CS5 0000000
+#define   CS6 0000020
+#define   CS7 0000040
+#define   CS8 0000060
+#define CSTOPB  0000100
+#define CREAD 0000200
+#define HUPCL 0002000
+
 
 struct termios {
 	tcflag_t c_iflag;
@@ -18,6 +69,8 @@ struct termios {
 	tcflag_t c_cflag;
 	tcflag_t c_lflag;
 	cc_t c_cc[NCCS];
+	unsigned int c_ispeed;
+	unsigned int c_ospeed;
 };
 
 int tcgetattr(int fd, struct termios *termios_p);

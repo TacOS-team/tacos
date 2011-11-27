@@ -43,7 +43,15 @@
 
 struct _tty_driver_t;
 
-struct termios tty_std_termios;
+/*  intr=^C   quit=^\   erase=del kill=^U
+  eof=^D    vtime=\0  vmin=\1   sxtc=\0
+  start=^Q  stop=^S   susp=^Z   eol=\0
+  reprint=^R  discard=^U  werase=^W lnext=^V
+  eol2=\0
+*/
+#define INIT_C_CC {3, 34, 177, 25, 4, 0, 1, 0, 21, 23, 32, 0, 22, 17, 27, 26, 0}
+
+extern struct termios tty_std_termios;
 
 /**
  * Structure qui est passée à chaque appel de fonction (open, close, write...) au tty driver.
