@@ -32,14 +32,16 @@
 #include <ioports.h>
 #include <interrupts.h>
 #include <string.h>
+#include <drivers/mouse.h>
 
-#define SCREEN_WIDTH 320
-#define SCREEN_HEIGHT 200
+#define DEFAULT_RES_WIDTH 320
+#define DEFAULT_RES_HEIGHT 200
 
-static int mouse_x = 0, mouse_y = 0;
-static bool mouse_buttons[3] = { false };
+static mousestate_t mouse_state;
+static int res_width, res_height;
+static int mouse_x, mouse_y;
 
-inline void mouse_wait(int rw) { 
+static inline void mouse_wait(int rw) { 
 	int timeout = 100000;
 	while ((timeout--) > 0) {
 		// All output to port 0x60 or 0x64 must be preceded by waiting for bit 1 (value=2) of port 0x64 to become clear.
@@ -50,22 +52,22 @@ inline void mouse_wait(int rw) {
 	}
 }
 
-inline unsigned char mouse_read() {
+static inline unsigned char mouse_read() {
 	mouse_wait(0);
 	return inb(0x60);
 }
 
-inline void mouse_write(unsigned char val, unsigned int port) {
+static inline void mouse_write(unsigned char val, unsigned int port) {
 	mouse_wait(1);
 	outb(val, port);
 }
 
-inline void mouse_write_command(unsigned char cmd) {
+static inline void mouse_write_command(unsigned char cmd) {
 	mouse_write(0xD4, 0x64);
 	mouse_write(cmd, 0x60);
 }
 
-void mouse_interrupt_handler() {
+static void mouse_interrupt_handler() {
 	static bool first = true;
 	static int packet_num = 0;
 	static int packet_x_sign, packet_y_sign;
@@ -79,9 +81,9 @@ void mouse_interrupt_handler() {
 	switch (packet_num) {
 		case 0: // first packet: flags
 			packet = inb(0x60);
-			mouse_buttons[0] = packet & (0x01 << 0);
-			mouse_buttons[1] = (packet & (0x01 << 1)) >> 1;
-			mouse_buttons[2] = (packet & (0x01 << 2)) >> 2;
+			mouse_state.b1 = packet & (0x01 << 0);
+			mouse_state.b2 = (packet & (0x01 << 1)) >> 1;
+			mouse_state.b3 = (packet & (0x01 << 2)) >> 2;
 			packet_x_sign = packet & (0x01 << 4) ? 0xFFFFFF00 : 0 ; // sign extension for dx
 			packet_y_sign = packet & (0x01 << 5) ? 0xFFFFFF00 : 0 ; // sign extension for dy
 			packet_num++;
@@ -89,32 +91,74 @@ void mouse_interrupt_handler() {
 		case 1:	// delta X
 			packet = inb(0x60);
 			mouse_x += (packet_x_sign | packet);
-			if (mouse_x >= SCREEN_WIDTH) {
-				mouse_x = SCREEN_WIDTH - 1;
+			if (mouse_x >= res_width) {
+				mouse_x = res_width - 1;
 			}
 			if (mouse_x < 0) {
 				mouse_x = 0;
 			}
+			mouse_state.x = mouse_x;
 			packet_num++;
 			break;
 		case 2: // delta Y
 			packet = inb(0x60);
 			mouse_y += (packet_y_sign | packet);
-			if (mouse_y >= SCREEN_HEIGHT) {
-				mouse_y = SCREEN_HEIGHT - 1;
+			if (mouse_y >= res_height) {
+				mouse_y = res_height - 1;
 			}
 			if (mouse_y < 0) {
 				mouse_y = 0;
 			}
+			mouse_state.y = mouse_y;
 			packet_num = 0;
 			break;
 	}
 }
 
-void mouse_init() {
-	mouse_x = SCREEN_WIDTH/2;
-	mouse_y = SCREEN_HEIGHT/2;
-	mouse_buttons[0] = mouse_buttons[1] = mouse_buttons[2] = false;
+void mouse_read_state(mousestate_t* state) {
+	memcpy(state, &mouse_state, sizeof(mouse_state));
+}
+
+static size_t mouse_read_state_ofd(open_file_descriptor* ofd __attribute__((unused)), void* buf, size_t count __attribute__((unused))) {
+	mouse_read_state((mousestate_t*)buf);
+	return sizeof(mouse_state);
+}
+
+void mouse_setres(int width, int height) {
+	res_width = width;
+	res_height = height;
+	mouse_state.x = mouse_x = res_width/2;
+	mouse_state.y = mouse_y = res_height/2;
+}
+
+static int mouse_ioctl(open_file_descriptor* ofd __attribute__ ((unused)), unsigned int request, void* data) {
+	switch (request) {
+		case SETRES: {
+			struct mouse_setres_req* req = (struct mouse_setres_req*)data;
+			mouse_setres(req->width, req->height);
+			return 0;
+		}
+		default:
+			return -1;
+	}
+} 
+
+static chardev_interfaces di = {
+	.read = mouse_read_state_ofd,
+	.write = NULL,
+	.open = NULL,
+	.close = NULL,
+	.ioctl = mouse_ioctl
+};
+
+static void mouse_init() {
+	mouse_setres(DEFAULT_RES_WIDTH, DEFAULT_RES_HEIGHT);
+	mouse_state.b1 = 0;
+	mouse_state.b2 = 0;
+	mouse_state.b3 = 0;
+	mouse_state.b4 = 0;
+	mouse_state.b5 = 0;
+	mouse_state.b6 = 0;
 
 	// Get "compaq status" byte
 	unsigned char status;
@@ -137,21 +181,6 @@ void mouse_init() {
 	// Setup interrupt handler
 	interrupt_set_routine(IRQ_PS2_MOUSE, mouse_interrupt_handler, 0);
 }
-
-size_t mouse_read_state(open_file_descriptor* ofd __attribute__((unused)), void* buf, size_t count __attribute__((unused))) {
-	memcpy(buf, &mouse_x, sizeof(mouse_x));
-	memcpy(buf + sizeof(mouse_x), &mouse_y, sizeof(mouse_y));
-	memcpy(buf + sizeof(mouse_x) + sizeof(mouse_y), mouse_buttons, sizeof(mouse_buttons)); 
-	return sizeof(mouse_x) + sizeof(mouse_y) + sizeof(mouse_buttons);
-}
-
-static chardev_interfaces di = {
-	.read = mouse_read_state,
-	.write = NULL,
-	.open = NULL,
-	.close = NULL,
-	.ioctl = NULL
-};
 
 void init_mouse() {
 	klog("initializing mouse driver...");

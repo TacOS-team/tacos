@@ -1,5 +1,5 @@
 /**
- * @file mouse.h
+ * @file mouse_types.h
  *
  * @author TacOS developers 
  *
@@ -23,14 +23,28 @@
  *
  * @section DESCRIPTION
  *
- * Header file for the mouse driver.
+ * Defines types used by the mouse driver.
  */
 
-#ifndef _MOUSE_H_
-#define _MOUSE_H_
+#ifndef _MOUSE_TYPES_H_
+#define _MOUSE_TYPES_H_
 
-#include <mouse_types.h>
+typedef struct mousestate {
+	unsigned int x : 13;
+	unsigned int y : 13;
+	unsigned int b1 : 1;
+	unsigned int b2 : 1;
+	unsigned int b3 : 1;
+	unsigned int b4 : 1;
+	unsigned int b5 : 1;
+	unsigned int b6 : 1;
+} mousestate_t;
 
-void init_mouse();
+enum mouse_req_codes { SETRES };
+
+struct mouse_setres_req {
+	int width;
+	int height;
+};
 
 #endif

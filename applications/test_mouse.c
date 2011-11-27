@@ -33,27 +33,22 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include <vga_types.h>
+#include <mouse_types.h>
 
 char buffer[200][320];
-
-struct mousedata {
-	int x;
-	int y;
-	bool buttons[3];
-};
 
 int main() {
 	int vga_fd = open("/dev/vga", O_RDONLY);
 	ioctl(vga_fd, SETMODE, (void*)vga_mode_320x200x256);
 	int mouse_fd = open("/dev/mouse", O_RDONLY);
-	struct mousedata data;
+	mousestate_t data;
 
 	while (1) {
 		read(mouse_fd, &data, sizeof(data));
 		data.y = 199 - data.y;
-		if (data.buttons[0]) {
+		if (data.b1) {
 			buffer[data.y][data.x] = 1;
-		} else if (data.buttons[1]) {
+		} else if (data.b2) {
 			buffer[data.y][data.x] = 0;
 		}
 		char old = buffer[data.y][data.x];
