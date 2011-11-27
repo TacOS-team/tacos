@@ -54,6 +54,7 @@ void init_stdfd(process_t *new_proc) {
 				new_proc->ctrl_tty = t;
 				//tty_set_fg_process(t, new_proc);
     }
+		t->fg_process = new_proc->pid;
 		//XXX:Beurk.
 	fd0->used = true; /* stdin */
 	fd0->ofd = kmalloc(sizeof(open_file_descriptor));

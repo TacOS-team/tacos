@@ -32,6 +32,9 @@
 #include <fs/devfs.h>
 #include <string.h>
 #include <ksem.h>
+#include <kprocess.h>
+#include <scheduler.h>
+#include <ksignal.h>
 
 #include <fcntl.h>
 
@@ -143,12 +146,11 @@ size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {
 
 	chardev_interfaces *di = ofd->extra_data;
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;
-	//process_t *current_process = get_current_process();
+	process_t *current_process = get_current_process();
 
-/*	if (current_process != t->fg_process) {
+	if (current_process->pid != t->fg_process) {
 		sys_kill(current_process->pid, SIGTTOU, NULL);
 	}
-	*/
 
 	return t->driver->ops->write(t, ofd, buf, count);
 }
@@ -163,13 +165,11 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 	chardev_interfaces *di = ofd->extra_data;
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;
 
-	/*
 	process_t *current_process = get_current_process();
 
-	if (current_process != t->fg_process) {
+	if (current_process->pid != t->fg_process) {
 		sys_kill(current_process->pid, SIGTTIN, NULL);
 	}
-	*/
 
   if((ofd->flags & O_ACCMODE) == O_WRONLY) {
     //errno = EBADF;
