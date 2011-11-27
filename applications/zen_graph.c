@@ -1,10 +1,11 @@
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <string.h>
+#include <sys/ioctl.h>
+#include <time.h>
 #include <unistd.h>
 #include <vga_types.h>
-#include <sys/syscall.h>
 
 #define LARGEUR 320
 #define HAUTEUR 200
@@ -215,8 +216,8 @@ void zen(char* buffer, char color, int x,int y) {
 
 int main()
 {
-	
-	syscall(SYS_VGASETMODE, vga_mode_320x200x256, 0, 0);
+	int vga_fd = open("/dev/vga", O_RDONLY);
+	ioctl(vga_fd, SETMODE, (void*)vga_mode_320x200x256);
 	init();
 
 	draw_line(LARGEUR/2 - 20, 100, LARGEUR/2 + 20, 100, 15, buffer);	
@@ -234,8 +235,11 @@ int main()
 		put_pixel(1, LARGEUR/2+ rand()%10 - 5, 1, buffer);
 		
 		update();
-		syscall(SYS_VGAWRITEBUF, (uint32_t)buffer, 0, 0);
+		ioctl(vga_fd, FLUSH, buffer);
 	}
+
+	close(vga_fd);
+
 	return 0;
 }
 

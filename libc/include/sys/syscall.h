@@ -58,11 +58,9 @@
 #define SYS_IOCTL 23
 #define SYS_GETCLOCK 24
 #define SYS_GETDATE 25
-#define SYS_VGASETMODE 26
-#define SYS_VGAWRITEBUF 27
-#define SYS_FCNTL 28
-#define SYS_DUMMY 29
-#define SYS_STAT 30
-#define SYS_UNLINK 31
+#define SYS_FCNTL 26
+#define SYS_DUMMY 27
+#define SYS_STAT 28
+#define SYS_UNLINK 29
 
 #endif

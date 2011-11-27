@@ -61,7 +61,6 @@
 #include <string.h>
 #include <sys/syscall.h>
 #include <time.h>
-#include <vga.h>
 #include <video.h>
 #include <vm86.h>
 #include <vmm.h>
@@ -78,6 +77,7 @@
 #include <drivers/keyboard.h>
 #include <drivers/mouse.h>
 #include <drivers/serial.h>
+#include <drivers/vga.h>
 
 typedef struct
 {
@@ -179,8 +179,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_SIGSUSPEND,	(syscall_handler_t) sys_sigsuspend);
 	syscall_set_handler(SYS_GETCLOCK,	(syscall_handler_t) sys_getclock);
 	syscall_set_handler(SYS_GETDATE,	(syscall_handler_t) sys_getdate);
-	syscall_set_handler(SYS_VGASETMODE,	(syscall_handler_t) sys_vgasetmode);
-	syscall_set_handler(SYS_VGAWRITEBUF,	(syscall_handler_t) sys_vgawritebuf);
 	syscall_set_handler(SYS_FCNTL,	(syscall_handler_t) sys_fcntl);
 	syscall_set_handler(SYS_STAT,	(syscall_handler_t) sys_stat);
 	syscall_set_handler(SYS_UNLINK,	(syscall_handler_t) sys_unlink);

@@ -30,7 +30,7 @@
 
 #include <fcntl.h>
 #include <stdio.h>
-#include <sys/syscall.h>
+#include <sys/ioctl.h>
 #include <unistd.h>
 #include <vga_types.h>
 
@@ -43,12 +43,13 @@ struct mousedata {
 };
 
 int main() {
-	int fd = open("$mouse", O_RDONLY);
+	int vga_fd = open("/dev/vga", O_RDONLY);
+	ioctl(vga_fd, SETMODE, (void*)vga_mode_320x200x256);
+	int mouse_fd = open("/dev/mouse", O_RDONLY);
 	struct mousedata data;
-	syscall(SYS_VGASETMODE, vga_mode_320x200x256, 0, 0);
 
 	while (1) {
-		read(fd, &data, sizeof(data));
+		read(mouse_fd, &data, sizeof(data));
 		data.y = 199 - data.y;
 		if (data.buttons[0]) {
 			buffer[data.y][data.x] = 1;
@@ -57,10 +58,13 @@ int main() {
 		}
 		char old = buffer[data.y][data.x];
 		buffer[data.y][data.x] = 2;
-		syscall(SYS_VGAWRITEBUF, (uint32_t)buffer, 0, 0);
+		ioctl(vga_fd, FLUSH, buffer);
 		buffer[data.y][data.x] = old;
 		usleep(10000);
 	}
-	close(fd);
+
+	close(mouse_fd);
+	close(vga_fd);
+
 	return 0;
 }

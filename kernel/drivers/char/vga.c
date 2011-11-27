@@ -33,10 +33,12 @@
  * @TODO: currently only supports mode 320*200*256 colors 
  * @TODO: video memory base address is hardcoded
  */
+#include <fs/devfs.h>
 #include <ioports.h>
 #include <klog.h>
 #include <string.h>
-#include <vga.h>
+#include <drivers/vga.h>
+#include <drivers/vga_modes.h>
 
 /**
  * Defines the number of registers and the ports corresponding to the address
@@ -70,87 +72,13 @@ static int nb_registers[] =       {       9,       5,      21,      25,       1 
 enum other_regs_names             {   INSTAT_1_READ   };
 static short other_registers[] =  {           0x3DA   };
 
-static unsigned int VGA_width, VGA_height, VGA_bpp; // Screen width, screen height, bytes per pixel
-static unsigned char *VGA_memory; // Base address of VGA memory
+static unsigned int vga_width, vga_height, vga_bpp; // Screen width, screen height, bytes per pixel
+static bool graphic_mode = false;
+static unsigned char *vga_memory; // Base address of VGA memory
 static unsigned char font[8192]; // Used to backup the font data when switching to graphic modes
+static unsigned char backup_text_regs[64];
+//static unsigned char text_ram[0x02000];
 static bool font_saved = false; // Indicates whether the font data can be restored
-
-/**
- * Describes a VGA mode
- */
-struct mode {
-	int width; /**< Screen width */
-	int height; /**< Screen height */
-	int bpp; /**< Bytes per pixel (in memory) */
-	bool graphic; /**< Text mode (false) or graphic mode (true) */
-	unsigned char *reg_values; /**< Values to be written in the registers */
-};
-
-static unsigned char mode_320x200x256[] = {
-	/* GC */
-	0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x05, 0x0F,
-	0xFF,
-	/* SEQ */
-	0x03, 0x01, 0x0F, 0x00, 0x0E,
-	/* AC */
-	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
-	0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
-	0x41, 0x00, 0x0F, 0x00,	0x00,
-	/* CRTC */
-	0x5F, 0x4F, 0x50, 0x82, 0x54, 0x80, 0xBF, 0x1F,
-	0x00, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-	0x9C, 0x0E, 0x8F, 0x28,	0x40, 0x96, 0xB9, 0xA3,
-	0xFF,
-	/* MISC */
-	0x63,
-};
-
-static unsigned char mode_320x200x256_modex[] = {
-	/* GC */
-	0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x05, 0x0F,
-	0xFF,
-	/* SEQ */
-	0x03, 0x01, 0x0F, 0x00, 0x06,
-	/* AC */
-	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
-	0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
-	0x41, 0x00, 0x0F, 0x00, 0x00,
-	/* CRTC */
-	0x5F, 0x4F, 0x50, 0x82, 0x54, 0x80, 0xBF, 0x1F,
-	0x00, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-	0x9C, 0x0E, 0x8F, 0x28, 0x00, 0x96, 0xB9, 0xE3,
-	0xFF,
-	/* MISC */
-	0x63,
-};
-
-static unsigned char mode_80x25_text[] = {
-	/* GC */
-	0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x0E, 0x00,
-	0xFF,
-	/* SEQ */
-	0x03, 0x00, 0x03, 0x00, 0x02,
-	/* AC */
-	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x14, 0x07,
-	0x38, 0x39, 0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F,
-	0x0C, 0x00, 0x0F, 0x08, 0x00,
-	/* CRTC */
-	0x5F, 0x4F, 0x50, 0x82, 0x55, 0x81, 0xBF, 0x1F,
-	0x00, 0x4F, 0x0D, 0x0E, 0x00, 0x00, 0x00, 0x50,
-	0x9C, 0x0E, 0x8F, 0x28, 0x1F, 0x96, 0xB9, 0xA3,
-	0xFF,
-	/* MISC */
-	0x67,
-};
-
-static struct mode VGA_modes[] = {
-	// Text: 80x25
-	{ 80, 25, 1, 0, mode_80x25_text },
-	// Graphic: 320x200x256 colors
-	{ 320, 200, 1, 1, mode_320x200x256 },
-	// Graphic: 320x200x256 colors, mode X
-	{ 320, 200, 1, 1, mode_320x200x256_modex },
-};
 
 static void unlock_crtc_registers() {
 	/**
@@ -215,7 +143,28 @@ static void write_register_values(unsigned char *values) {
 	enable_display();
 }
 
-static void backup_font() {
+static void read_register_values(unsigned char *values) {
+	int group, index;
+	// For each group of registers (GC, SEQ, AC, CRTC, MISC)...
+	for (group = 0; group < NB_REGISTER_GROUPS; group++) {
+		// For each register in this group
+		for (index = 0; index < nb_registers[group]; index++, values++) {
+			// Select the register to read by writing its index to the address register, if needed
+			if (addr_w_registers[group] > 0) {
+				if (group == AC) {
+					reset_ac_registers_flipflop();
+				}
+				outb(index, addr_w_registers[group]);
+			}
+			// Read the data register
+			*values = inb(data_r_registers[group]);
+		}
+	}
+
+	enable_display();
+}
+
+static void backup_font_data() {
 	// The font data is located in plane 2, so we need to set a planar mode
 	write_register_values(mode_320x200x256_modex); // XXX
 	
@@ -224,13 +173,13 @@ static void backup_font() {
 	outb(2, data_w_registers[GC]);
 
 	// Dump font
-	memcpy(font, VGA_memory, 8192);
+	memcpy(font, vga_memory, 8192);
 	
 	// Raise a flag indicating that the font has been saved.
 	font_saved = true;
 }
 
-static void restore_font() {
+static void restore_font_data() {
 	// The font data is located in plane 2, so we need to set a planar mode
 	write_register_values(mode_320x200x256_modex); // XXX
 
@@ -239,42 +188,76 @@ static void restore_font() {
 	outb((1 << 2), data_w_registers[SEQ]);
 
 	// Write font
-	memcpy(VGA_memory, font, 8192);
+	memcpy(vga_memory, font, 8192);
 }
 
 static void clear_screen() {
-	memset(VGA_memory, 0, VGA_width * VGA_height * VGA_bpp);
+	memset(vga_memory, 0, vga_width * vga_height * vga_bpp);
 }
 
-void VGA_write_buf(char *buffer) {
-	memcpy(VGA_memory, buffer, VGA_width * VGA_height * VGA_bpp);
+void vga_write_buf(char *buffer) {
+	memcpy(vga_memory, buffer, vga_width * vga_height * vga_bpp);
 }
 
-void VGA_set_mode(enum VGA_mode mode) {
-	VGA_width = VGA_modes[mode].width;
-	VGA_height = VGA_modes[mode].height;
-	VGA_bpp = VGA_modes[mode].bpp;
-	VGA_memory = (void*)0xA0000; // TODO: auto-detect
+void vga_set_mode(enum vga_mode mode) {
+	vga_width = vga_modes[mode].width;
+	vga_height = vga_modes[mode].height;
+	vga_bpp = vga_modes[mode].bpp;
+	vga_memory = (void*)0xA0000; // TODO: auto-detect
 	
-	klog("Initializing VGA (%d*%d*%d), base address %x", VGA_width, VGA_height, VGA_bpp, VGA_memory);
+	klog("Initializing vga (%d*%d*%d), base address %x", vga_width, vga_height, vga_bpp, vga_memory);
 
 	// We need to backup the font data to be able to switch back to text mode
 	// later, because it will be overwritten
-	if (VGA_modes[mode].graphic) {
-		backup_font();
-	} else if (font_saved) {
-		restore_font();
+	if (!graphic_mode && vga_modes[mode].graphic) {
+		read_register_values(backup_text_regs);
+		backup_font_data();
 	}
 
-	write_register_values(VGA_modes[mode].reg_values);
+	write_register_values(vga_modes[mode].reg_values);
 
 	clear_screen();
 }
 
-SYSCALL_HANDLER1(sys_vgasetmode, enum VGA_mode mode) {
-	VGA_set_mode(mode);
+void vga_back_to_text_mode() {
+	restore_font_data();
+	write_register_values(backup_text_regs);
 }
 
-SYSCALL_HANDLER1(sys_vgawritebuf, char *buffer) {
-	VGA_write_buf(buffer);
+static int vga_ioctl(open_file_descriptor* ofd __attribute__ ((unused)), unsigned int request, void* data) {
+	switch (request) {
+		case SETMODE: {
+			enum vga_mode mode = (enum vga_mode)data;
+			// TODO: check mode
+			vga_set_mode(mode);
+			return 0;
+		}
+		case FLUSH: {
+			char *user_buffer = (char*)data;
+			vga_write_buf(user_buffer);				
+			return 0;
+		}
+		case BACKTOTEXTMODE: {
+			vga_back_to_text_mode();
+			return 0;
+		}
+		default:
+			return -1;
+	}
+} 
+
+static chardev_interfaces di = {
+	.read = NULL,
+	.write = NULL,
+	.open = NULL,
+	.close = NULL,
+	.ioctl = vga_ioctl,
+};
+
+void init_vga() {
+	klog("initializating vga driver...");
+
+	if (register_chardev("vga", &di) != 0) {
+		kerr("error registering vga driver.");
+	}
 }
