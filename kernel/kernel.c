@@ -56,7 +56,6 @@
 #include <beeper.h>
 #include <kfcntl.h>
 #include <debug.h>
-#include <shell.h>
 #include <ksyscall.h>
 #include <sys/syscall.h>
 #include <ksem.h>
@@ -215,7 +214,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	init_scheduler(20);
 	set_scheduler(&round_robin);
 	
-	// Création du processus par défaut: notre shell
+	// Création du processus par défaut.
 	
 	process_init_data_t init_process;
 	
