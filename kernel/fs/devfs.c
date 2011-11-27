@@ -222,6 +222,7 @@ open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path
 					ofd->read = ((chardev_interfaces*)(drentry->di))->read; 
 					ofd->seek = NULL; /* à implémenter */
 					ofd->close = ((chardev_interfaces*)(drentry->di))->close;
+					ofd->ioctl = ((chardev_interfaces*)(drentry->di))->ioctl;
 					
 					if(((chardev_interfaces*)(drentry->di))->open != NULL) {
 						((chardev_interfaces*)(drentry->di))->open(ofd);
@@ -236,6 +237,7 @@ open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path
 					ofd->read = NULL; /* à implémenter */
 					ofd->seek = NULL; /* à implémenter */
 					ofd->close = ((blkdev_interfaces*)(drentry->di))->close;
+					ofd->ioctl = NULL; /* à implémenter */
 					
 					if(((blkdev_interfaces*)(drentry->di))->open != NULL) {
 						((blkdev_interfaces*)(drentry->di))->open(ofd);
