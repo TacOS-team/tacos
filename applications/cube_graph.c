@@ -33,6 +33,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include <vga_types.h>
+#include <mouse_types.h>
 
 #define PI 3.14159f
 
@@ -40,12 +41,6 @@
 #define HAUTEUR 200
 
 #define FRICTION 0.9f
-
-typedef struct {
-	int x;
-	int y;
-	bool buttons[3];
-}mousedata;
 
 static char buffer[LARGEUR*HAUTEUR];
 
@@ -183,11 +178,11 @@ void draw_mouse(int x,int y) {
 
 int mouse_fd = 0;
 
-void read_mouse(mousedata* data) {
+void read_mouse(mousestate_t* data) {
 	if(mouse_fd == 0) {
 		mouse_fd = open("/dev/mouse", O_RDONLY);
 	}
-	read(mouse_fd, data, sizeof(mousedata));
+	read(mouse_fd, data, sizeof(mousestate_t));
 	data->y = 199 - data->y;
 }
 
@@ -199,7 +194,7 @@ int main() {
 	int vga_fd = open("/dev/vga", O_RDONLY);
 	ioctl(vga_fd, SETMODE, (void*)vga_mode_320x200x256); 
 	init();
-	mousedata data;
+	mousestate_t data;
 	int prevx,prevy;
 	
 	float theta = 0.0f;
@@ -209,7 +204,7 @@ int main() {
 		clear_buffer(buffer);	
 		read_mouse(&data);
 		
-		if(data.buttons[0] == 1) {
+		if(data.b1) {
 			phi = (float)(data.x-prevx) * FRICTION;
 			theta = (float)(data.y-prevy) * FRICTION;
 		}
