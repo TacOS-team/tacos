@@ -30,6 +30,7 @@
 #include <beeper.h>
 #include <types.h>
 #include <ioports.h>
+#include <scheduler.h>
 
 static void set_PIT_2(uint32_t frequency)
 {
@@ -46,29 +47,128 @@ static void play_sound(uint32_t nFrequence)
 {
  	uint8_t tmp;
  
-    set_PIT_2(nFrequence);
+	set_PIT_2(nFrequence);
+
+	//And play the sound using the PC speaker
+	tmp = inb(0x61);
+	if (tmp != (tmp | 3)) {
+		outb(tmp | 3, 0x61);
+	}
+}
  
-    //And play the sound using the PC speaker
- 	tmp = inb(0x61);
-  	if (tmp != (tmp | 3)) {
- 		outb(0x61, tmp | 3);
- 	}
- }
- 
- //make it shutup
- static void nosound()
- {
- 	uint8_t tmp = (inb(0x61) & 0xFC);
- 
- 	outb(0x61, tmp);
- }
- 
- //Make a beep
- void beep()
- {
-	 int i;
- 	 play_sound(1000);
- 	 for(i=0 ; i<10000000 ; i++);
- 	 nosound();
-     //set_PIT_2(old_frequency);
- }
+//make it shutup
+static void nosound()
+{
+	uint8_t tmp = (inb(0x61) & 0xFC);
+
+	outb(tmp, 0x61);
+}
+
+static int frequences[2][7] = {{131, 147, 165, 175, 196, 220, 247},
+														 {262, 294, 330, 349, 392, 440, 446}};
+
+static void note_DO(int octave, int duree) {
+	int j;
+	play_sound(frequences[octave][0]);
+	for (j=1; j < 20000000 * duree; j++);
+	nosound();
+}
+
+static void note_RE(int octave, int duree) {
+	int j;
+	play_sound(frequences[octave][1]);
+	for (j=1; j < 20000000 * duree; j++);
+	nosound();
+}
+
+static void note_MI(int octave, int duree) {
+	int j;
+	play_sound(frequences[octave][2]);
+	for (j=1; j < 20000000 * duree; j++);
+	nosound();
+}
+
+static void  __attribute__ ((unused))	note_FA(int octave, int duree) { 
+	int j;
+	play_sound(frequences[octave][3]);
+	for (j=1; j < 20000000 * duree; j++);
+	nosound();
+}
+
+static void note_SOL(int octave, int duree) {
+	int j;
+	play_sound(frequences[octave][4]);
+	for (j=1; j < 20000000 * duree; j++);
+	nosound();
+}
+
+static void note_LA(int octave, int duree) {
+	int j;
+	play_sound(frequences[octave][5]);
+	for (j=1; j < 20000000 * duree; j++);
+	nosound();
+}
+
+static void note_SI(int octave, int duree) {
+	int j;
+	play_sound(frequences[octave][6]);
+	for (j=1; j < 20000000 * duree; j++);
+	nosound();
+}
+
+//Make a beep
+void beep()
+{
+	// Play Au clair de la lune.
+	note_DO(1, 1);
+	note_DO(1, 1);
+	note_DO(1, 1);
+	note_RE(1, 1);
+	note_MI(1, 2);
+	note_RE(1, 2);
+
+	note_DO(1, 1);
+	note_MI(1, 1);
+	note_RE(1, 1);
+	note_RE(1, 1);
+	note_DO(1, 4);
+
+	note_DO(1, 1);
+	note_DO(1, 1);
+	note_DO(1, 1);
+	note_RE(1, 1);
+	note_MI(1, 2);
+	note_RE(1, 2);
+
+	note_DO(1, 1);
+	note_MI(1, 1);
+	note_RE(1, 1);
+	note_RE(1, 1);
+	note_DO(1, 4);
+
+	note_RE(1, 1);
+	note_RE(1, 1);
+	note_RE(1, 1);
+	note_RE(1, 1);
+	note_LA(0, 2);
+	note_LA(0, 2);
+
+	note_RE(1, 1);
+	note_DO(1, 1);
+	note_SI(0, 1);
+	note_LA(0, 1);
+	note_SOL(0, 4);
+
+	note_DO(1, 1);
+	note_DO(1, 1);
+	note_DO(1, 1);
+	note_RE(1, 1);
+	note_MI(1, 2);
+	note_RE(1, 2);
+
+	note_DO(1, 1);
+	note_MI(1, 1);
+	note_RE(1, 1);
+	note_RE(1, 1);
+	note_DO(1, 4);
+}

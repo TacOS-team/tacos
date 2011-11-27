@@ -185,6 +185,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_STAT,	(syscall_handler_t) sys_stat);
 	syscall_set_handler(SYS_UNLINK,	(syscall_handler_t) sys_unlink);
 	
+	//beep();
+
 	devfs_init();
 	vfs_mount(NULL, "dev", "DevFS");
 
