@@ -5,7 +5,7 @@ SRCS=*/*.c
 
 all: libbaddrivers
 
-libbaddrivers: keyboard/keyboard.o beeper/beeper.o tty/tty.o video/video.o video/console.o video/vga.o ethernet/rtl8139.o
+libbaddrivers: beeper/beeper.o video/video.o video/vga.o ethernet/rtl8139.o
 	  $(AR) r ../lib/$@.a $^
 
 %.o: %.c

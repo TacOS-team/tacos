@@ -53,6 +53,8 @@
 
 #define CURRENT_PROCESS -1
 
+struct _tty_struct_t;
+
 /** 
 * @brief 
 */
@@ -80,8 +82,7 @@ typedef struct{
 	
 	signal_process_data_t signal_data;
 
-  //terminal_t *ctrl_tty;
-	int ctrl_tty; // Indice pour l'instant, path dans le futur ? (lorsque fichiers spéciaux)
+	struct _tty_struct_t *ctrl_tty;
 	
 	/* Données liées au debug run-time du process */
 	symbol_table_t* symtable;

@@ -132,8 +132,8 @@ static uint8_t scancode_m1 = 0;
 static uint8_t scancode_m2 = 0;
 
 void keyBufferPush(char c) {
-    terminal_t *tty = get_active_tty();
-    tty_add_char(tty, c);
+    tty_struct_t *tty = get_active_terminal();
+		tty_insert_flip_char(tty, c);
 }
 
 char keyboardConvertToChar(uint8_t scancode) {

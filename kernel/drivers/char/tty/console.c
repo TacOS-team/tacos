@@ -27,21 +27,27 @@
  * Description de ce que fait le fichier
  */
 
-#include "console.h"
-#include "video.h"
+#include <kmalloc.h>
+#include <console.h>
+#include <video.h>
 
 #define LARGEUR_TAB 8
 
 #define NB_CONSOLES 4
-static struct console_t consoles[NB_CONSOLES];
-// TODO : On pourrait changer ça par une liste de consoles pour avoir un nombre illimité.
 
+static tty_driver_t *tty_driver;
+
+static struct console_t consoles[NB_CONSOLES];
+
+static size_t console_write (tty_struct_t* tty, open_file_descriptor* ofd, const unsigned char* buf, size_t count);
+static void console_putchar(tty_struct_t *tty, unsigned char c);
 static void clear_console(int n);
 static void backspace(int n, char c);
-static void init_disp_inactive_console(int n);
-static void kputchar_tab(int n);
+static void kputchar_tab(tty_struct_t *tty);
 
-void init_console() {
+static int active_console = 0;
+
+void console_init() {
 	int i;
 	for (i = 0; i < NB_CONSOLES; i++) {
 		consoles[i].n_page = i;
@@ -52,51 +58,36 @@ void init_console() {
 		consoles[i].disp_cur = true;
 		consoles[i].cur_x = 0;
 		consoles[i].cur_y = 0;
-		consoles[i].tty = NULL;
-		init_disp_inactive_console(i);
+		clear_console(i);
 	}
+
+	/* Enregistre le driver */
+	tty_driver = alloc_tty_driver(NB_CONSOLES);
+	tty_driver->driver_name = "console";
+	tty_driver->devfs_name = "tty";
+	tty_driver->type = TTY_DRIVER_TYPE_CONSOLE;
+	tty_driver->init_termios = tty_std_termios;
+	tty_driver->ops = kmalloc(sizeof(tty_operations_t));
+	tty_driver->ops->open = NULL;
+	tty_driver->ops->close = NULL;
+	tty_driver->ops->write = console_write;
+	tty_driver->ops->put_char = console_putchar;
+	tty_driver->ops->set_termios = NULL;
+	tty_driver->ops->ioctl = NULL;
+	tty_register_driver(tty_driver);
 }
 
-static void init_disp_inactive_console(int n) {
-	char *message = "Console inactive. Utilisable pour un nouveau tty !";
-	int i = 0;
-	clear_console(n);
-	while (message[i] != '\0') {
-		kputchar(n, message[i]);
-		i++;
-	}
+tty_struct_t* get_active_terminal() {
+	return tty_driver->ttys[active_console];
 }
 
 void focus_console(int n) {
+	active_console = n;
 	switch_page(consoles[n].n_page);
 	disable_cursor(!consoles[n].disp_cur);
 	if (consoles[n].disp_cur) {
 		cursor_position_video(consoles[n].n_page, consoles[n].cur_x, consoles[n].cur_y);
 	}
-	set_active_tty(consoles[n].tty);
-}
-
-int get_available_console(terminal_t *tty) {
-	int i;
-	for (i = 0; i < NB_CONSOLES; i++) {
-		if (consoles[i].used == false) {
-			consoles[i].used = true;
-			consoles[i].tty = tty;
-			clear_console(i);
-			return i;
-		}
-	}
-	return -1;
-}
-
-void free_console(int n) {
-	consoles[n].used = false;
-	consoles[n].attr = DEFAULT_ATTRIBUTE_VALUE;
-	consoles[n].disp_cur = true;
-	consoles[n].cur_x = 0;
-	consoles[n].cur_y = 0;
-	consoles[n].tty = NULL;
-	init_disp_inactive_console(n);
 }
 
 static void cursor_up(int n) {
@@ -207,12 +198,21 @@ void reset_attribute(int n) {
 	consoles[n].attr = DEFAULT_ATTRIBUTE_VALUE;
 }
 
+static size_t console_write (tty_struct_t* tty, open_file_descriptor* ofd __attribute__ ((unused)), const unsigned char* buf, size_t count) {
+	size_t i;
+	for (i = 0; (i < count && buf[i] != '\0'); i++) {
+		console_putchar(tty, buf[i]);
+	}
+	return i;
+}
+
 /*
  *  Affiche le caractère c sur l'écran.
  *  Supporte les caractères ANSI.
  */
-void kputchar(int n, char c) {
-	// TODO : dégager ça vers la structure de la fenetre ! Risques de conflits sinon.
+static void console_putchar(tty_struct_t *tty, unsigned char c) {
+	int n = tty->index;
+	//XXX: par console !
 	static bool escape_char = false;
 	static bool ansi_escape_code = false;
 	static bool ansi_second_val = false;
@@ -425,7 +425,7 @@ void kputchar(int n, char c) {
 	} else if (c == '\n' || c == '\r') {
 		newline(n);
 	} else if (c == '\t') {
-		kputchar_tab(n);
+		kputchar_tab(tty);
 	} else if (c == '\b') {
 		backspace(n, ' ');
 	} else {
@@ -439,15 +439,16 @@ void kputchar(int n, char c) {
 	cursor_position_video(consoles[n].n_page, consoles[n].cur_x, consoles[n].cur_y);
 }
 
-static void kputchar_tab(int n) {
+static void kputchar_tab(tty_struct_t *tty) {
+	int n = tty->index;
 	unsigned int x = consoles[n].cur_x;
 
 	x = ((x / LARGEUR_TAB) + 1) * LARGEUR_TAB;
 	if (x >= consoles[n].cols) {
-		newline(n);
+		newline(tty->index);
 	} else {
 		while (consoles[n].cur_x < x) {
-			kputchar(n, ' ');
+			console_putchar(tty, ' ');
 		}
 	}
 }

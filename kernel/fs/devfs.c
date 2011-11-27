@@ -184,7 +184,7 @@ int devfs_readdir(fs_instance_t *instance __attribute__((unused)), const char * 
 	return 1;
 }
 
-open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path, uint32_t flags __attribute__((unused))) {
+open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path, uint32_t flags) {
 	unsigned int i,j;
 	char buf[64];
 	driver_entry* drentry;
@@ -194,7 +194,7 @@ open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path
 	else {
 		i=0;
 		while (path[i] == '/') 
-			i++;			
+			i++;
 		j=0;
 		while(path[i] != '\0' && path[i] != '/') {
 			buf[j] = path[i];
@@ -207,12 +207,14 @@ open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path
 			
 			open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
 			
+			ofd->flags = flags;
 			ofd->fs_instance = instance;
 			ofd->first_cluster = 0;
 			ofd->file_size = 512; /* TODO */
 			ofd->current_cluster = 0;
 			ofd->current_octet = 0;
 			ofd->current_octet_buf = 0;
+			ofd->extra_data = drentry->di; /* XXX Un peu laid mais ça fera la blague pour le moment */
 			
 			switch(drentry->type) {
 				case CHARDEV:
@@ -234,7 +236,6 @@ open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path
 					ofd->read = NULL; /* à implémenter */
 					ofd->seek = NULL; /* à implémenter */
 					ofd->close = ((blkdev_interfaces*)(drentry->di))->close;
-					ofd->extra_data = drentry->di; /* XXX Un peu laid mais ça fera la blague pour le moment */
 					
 					if(((blkdev_interfaces*)(drentry->di))->open != NULL) {
 						((blkdev_interfaces*)(drentry->di))->open(ofd);
@@ -289,7 +290,7 @@ int devfs_stat(fs_instance_t *instance __attribute__ ((unused)), const char *pat
 }
 
 fs_instance_t* mount_devfs() {
-	klog("mounting DevFS");
+//	klog("mounting DevFS");
 
 	fs_instance_t *instance = kmalloc(sizeof(fs_instance_t));
 	instance->open = devfs_open_file;

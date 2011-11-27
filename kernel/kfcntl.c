@@ -44,23 +44,19 @@ void init_stdfd(process_t *new_proc) {
     struct _file_descriptor *fd0 = &(new_proc->fd[0]);
     struct _file_descriptor *fd1 = &(new_proc->fd[1]);
     struct _file_descriptor *fd2 = &(new_proc->fd[2]);
-    terminal_t * t;
+    tty_struct_t * t;
 
     if (new_proc->ppid == 0) { // pas de père, on peut pas récupérer son tty.
-				int t_i = tty_alloc();
-				t = tty_get(t_i);
-        int console = get_available_console(t);
-        focus_console(console);
-        tty_init(t, new_proc, (void *)console,(void (*)(void *, char)) kputchar);
-        new_proc->ctrl_tty = t_i;
+				open_file_descriptor *t_i = vfs_open("/dev/tty0", 0); //XXX: flags.
+				t =  t_i->extra_data;
+        new_proc->ctrl_tty = t;
     } else {
         process_t *pprocess = find_process(new_proc->ppid);
-        int t_i = pprocess->ctrl_tty;
-				t = tty_get(t_i);
-				new_proc->ctrl_tty = t_i;
-				tty_set_fg_process(t, new_proc);
-        //focus_console
+        t = pprocess->ctrl_tty;
+				new_proc->ctrl_tty = t;
+				//tty_set_fg_process(t, new_proc);
     }
+		//XXX:Beurk.
 	fd0->used = true; /* stdin */
 	fd0->ofd = kmalloc(sizeof(open_file_descriptor));
   fd0->ofd->flags = O_RDONLY;

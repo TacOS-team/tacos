@@ -1,5 +1,5 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=ps cat ls kill mkdir rm cube_graph
+OBJ=ps cat ls kill mkdir rm test_ttyS
 SUBDIRS=mishell utils
 LIBS=../lib/libc.a ../lib/libsystem.a ../lib/libstl.a libutils.a
 LDFLAGS=-L./

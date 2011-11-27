@@ -121,8 +121,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	init_video();
 
-	init_console();
-
 	kpanic_init();
 	
 	if(mbi->flags & MULTIBOOT_INFO_ELF_SHDR) 
@@ -147,16 +145,12 @@ void cmain (unsigned long magic, unsigned long addr) {
 	/* Initialisation de la vmm */
 	init_kmalloc();
 
-	pci_scan();
-		
-	int irq = rtl8139_driver_init();
-	interrupt_set_routine(irq,  rtl8139_isr, 0);
-	
+
 	/* Initialisation des semaphores */
 	init_semaphores();
 	
 	/* Initialisation des syscall */
-	klog("syscall initialization...");
+	//klog("syscall initialization...");
 	init_syscall();
 	
 	syscall_set_handler(SYS_DUMMY,	(syscall_handler_t) sys_dummy);
@@ -191,6 +185,15 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_UNLINK,	(syscall_handler_t) sys_unlink);
 	
 	devfs_init();
+	vfs_mount(NULL, "dev", "DevFS");
+
+	console_init();
+	serial_init();
+
+	pci_scan();
+		
+	int irq = rtl8139_driver_init();
+	interrupt_set_routine(irq,  rtl8139_isr, 0);
 	
 	floppy_detect_drives();
 	kdebug("Floppy controller version: 0x%x.", floppy_get_version());
@@ -201,7 +204,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	fat_init();
 	procfs_init();
 
-	vfs_mount(NULL, "dev", "DevFS");
 	vfs_mount(NULL, "proc", "ProcFS");
 	
 	vfs_mount("/dev/fd0", "tacos", "FAT");

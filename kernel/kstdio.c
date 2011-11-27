@@ -32,7 +32,9 @@
 
 #include <fcntl.h>
 #include <kfcntl.h>
-#include <console.h>
+#include <tty.h>
+#include <vfs.h>
+#include <fs/devfs.h>
 
 static void itoa (char *buf, int base, int d) {
 	char *p = buf;
@@ -88,9 +90,11 @@ void itox(char *buf, int d)
 }
 
 void kprintf(const char *format, ...) {
-	static int n = -1;
-	if (n == -1) {
-		n = get_available_console(NULL);
+	static tty_struct_t *tty = NULL;
+	if (tty == NULL) {
+		open_file_descriptor* ofd = vfs_open("/dev/tty3", 0); //XXX:flags
+		if (ofd)
+			tty = ((chardev_interfaces*)ofd->extra_data)->custom_data;
 	}
 
 	char **arg = (char **) &format;
@@ -100,9 +104,9 @@ void kprintf(const char *format, ...) {
 	arg++;
 
 	while ((c = *format++) != 0) {
-		if (c != '%')
-			kputchar(n, c);
-		else {
+		if (c != '%') {
+			tty->driver->ops->put_char(tty, c);
+		} else {
 			char *p;
 
 			c = *format++;
@@ -123,12 +127,12 @@ void kprintf(const char *format, ...) {
 				if (!p)
 					p = "(null)";
 
-				string: while (*p)
-					kputchar(n, *p++);
-				break;
+				string: 
+					tty->driver->ops->write(tty, NULL, (unsigned char*) p, 1024);
+					break;
 
 			default:
-				kputchar(n, *((int *) arg++));
+				tty->driver->ops->put_char(tty, *((int *) arg++));
 				break;
 			}
 		}

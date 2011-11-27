@@ -1,5 +1,5 @@
 /**
- * @file keyboard.h
+ * @file console.h
  *
  * @author TacOS developers 
  *
@@ -27,17 +27,38 @@
  * Description de ce que fait le fichier
  */
 
-#ifndef _KEYBOARD_H_
-#define _KEYBOARD_H_
+#ifndef _CONSOLE_H_
+#define _CONSOLE_H_
+
+#include <types.h>
+#include <tty.h>
+
+struct console_t {
+	bool used;
+	unsigned int n_page;
+	unsigned int cur_x;
+	unsigned int cur_y;
+	bool disp_cur;
+	char attr;
+	unsigned int lines;
+	unsigned int cols;
+};
 
 /**
- * @file keyboard.h
+ * @brief Passe une console au premier plan.
+ *
+ * @param n Numero de la console.
  */
+void focus_console(int n);
 
-#include <kfcntl.h>
-#include <types.h>
+/**
+ * @brief Initialise les consoles à "inutilisée".
+ */
+void console_init();
 
-void keyboardInterrupt(int id);
-size_t write_keyboard(open_file_descriptor *ofd, const void *buf, size_t count);
+/**
+ * @brief Retourne le tty_struct_t qui correspond à la console au premier plan.
+ */
+tty_struct_t* get_active_terminal();
 
 #endif

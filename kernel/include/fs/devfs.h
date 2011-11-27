@@ -52,6 +52,7 @@ typedef struct {
 	chardev_ioctl_t ioctl;
 	chardev_open_t open;
 	chardev_close_t close;
+	void * custom_data;
 }chardev_interfaces;
 
 
@@ -67,6 +68,7 @@ typedef struct {
 	blkdev_ioctl_t ioctl;
 	blkdev_open_t open;
 	blkdev_close_t close;
+	void * custom_data;
 }blkdev_interfaces;
 
 void devfs_init();

@@ -90,7 +90,7 @@ static fs_instance_t* get_instance_from_path(const char * pathname, int *len) {
 open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 	int len;
 	fs_instance_t *instance = get_instance_from_path(pathname, &len);
-	if (instance->open != NULL) {
+	if (instance && instance->open != NULL) {
 		return instance->open(instance, pathname + len, flags);
 	}
 	return NULL;
