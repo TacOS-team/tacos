@@ -66,6 +66,7 @@ typedef struct _tty_struct_t {
 	struct _tty_driver_t *driver;
 	int sem;
 	int fg_process;
+	int n_open;
 } tty_struct_t;
 
 /**

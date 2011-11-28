@@ -212,9 +212,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 	init_process_array();
 	
 	/* Lancement du scheduler */
-	klog("Init scheduler...");
 	init_scheduler(20);
 	set_scheduler(&round_robin);
+	klog("Init scheduler done.");
 	
 	// Création du processus par défaut.
 	

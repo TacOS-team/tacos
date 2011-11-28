@@ -302,7 +302,7 @@ int scheduler_delete_process(int pid)
 
 process_t* get_current_process()
 {
-	return scheduler->get_current_process();
+	return scheduler ? scheduler->get_current_process() : NULL;
 }
 
 

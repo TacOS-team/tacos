@@ -181,15 +181,16 @@ int tty_register_driver(tty_driver_t *driver) {
 		driver->ttys[n]->sem = ksemcreate_without_key(NULL);
 		driver->ttys[n]->index = n;
 		driver->ttys[n]->fg_process = 0;
+		driver->ttys[n]->n_open = 0;
 		register_chardev(name, tty_get_driver_interface(driver->ttys[n]));
 	}
 	return 0;
 }
 
 size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {
-	/*
-	 * Copié de l'ancien tty.
-	 */
+	if (count <= 0) {
+		return -2;
+	}
 
   if((ofd->flags & O_ACCMODE) == O_RDONLY) {
     //errno = EBADF;
@@ -208,10 +209,10 @@ size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {
 }
 
 size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
+	if (count <= 0) {
+		return -2;
+	}
 
-	/*
-	 * Copié de l'ancien driver !
-	 */
 	char c;
 	unsigned int j = 0;
 	chardev_interfaces *di = ofd->extra_data;
@@ -284,7 +285,11 @@ int tty_close (open_file_descriptor *ofd) {
 	chardev_interfaces *di = ofd->extra_data;
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;
 
-	//XXX :/
+	if (t->n_open == 0) {
+		return 1;
+	}
+	t->n_open--;
+	//XXX :/ C'est vraiment n'imp en l'état.
 	process_t *current_process = get_current_process();
 	if (current_process->pid == t->fg_process) {
 		t->fg_process = current_process->ppid;
@@ -292,7 +297,17 @@ int tty_close (open_file_descriptor *ofd) {
 	return 0;
 }
 
-int tty_open (open_file_descriptor *ofd __attribute__ ((unused))) {
+int tty_open (open_file_descriptor *ofd) {
+	chardev_interfaces *di = ofd->extra_data;
+	tty_struct_t *t = (tty_struct_t *) di->custom_data;
+
+	if (t->n_open == 0) {
+		process_t *current_process = get_current_process();
+		if (current_process)
+			t->fg_process = current_process->pid;
+	}
+
+	t->n_open++;
 	return 0;
 }
 
