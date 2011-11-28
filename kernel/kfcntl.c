@@ -64,11 +64,11 @@ void init_stdfd(process_t *new_proc) {
 	t->fg_process = new_proc->pid;
 
 	fd0->used = true; /* stdin */
-	fd0->ofd = vfs_open(new_proc->ctrl_tty, O_RDONLY); //XXX: flags.
+	fd0->ofd = vfs_open(new_proc->ctrl_tty, O_RDONLY);
 	fd1->used = true; /* stdout */
-	fd1->ofd = vfs_open(new_proc->ctrl_tty, O_WRONLY); //XXX: flags.
+	fd1->ofd = vfs_open(new_proc->ctrl_tty, O_WRONLY);
 	fd2->used = true; /* stderr */
-	fd2->ofd = vfs_open(new_proc->ctrl_tty, O_WRONLY); //XXX: flags.
+	fd2->ofd = vfs_open(new_proc->ctrl_tty, O_WRONLY);
 }
 
 void close_all_fd() {

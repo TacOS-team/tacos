@@ -151,7 +151,7 @@ size_t serial_write(tty_struct_t *tty, open_file_descriptor* odf __attribute__((
 	unsigned int i = 0;
 	char* ptr = (char*) buf;
 
-	while(*ptr!=0 && i<count)
+	while(i<count && *ptr!=0)
 	{
 		serial_putc(tty, *ptr);
 		i++;
