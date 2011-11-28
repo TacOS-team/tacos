@@ -101,7 +101,7 @@ SYSCALL_HANDLER3(sys_kill, int pid, int signum, int* ret)
 	}
 	else
 	{
-		kerr("Process not found.");
+		kerr("Process not found (%d).", pid);
 	}
 	
 	if(ret!=NULL)

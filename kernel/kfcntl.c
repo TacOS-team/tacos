@@ -35,48 +35,40 @@
 #include <string.h>
 #include <tty.h>
 #include <vfs.h>
+#include <fs/devfs.h>
 
 #include <fcntl.h>
 
 void init_stdfd(process_t *new_proc) {
-    struct _file_descriptor *fd0 = &(new_proc->fd[0]);
-    struct _file_descriptor *fd1 = &(new_proc->fd[1]);
-    struct _file_descriptor *fd2 = &(new_proc->fd[2]);
-    tty_struct_t * t;
+	if (new_proc->pid == 0)
+		return;
 
-    if (new_proc->ppid == 0) { // pas de père, on peut pas récupérer son tty.
-				open_file_descriptor *t_i = vfs_open("/dev/tty0", 0); //XXX: flags.
-				t =  t_i->extra_data;
-        new_proc->ctrl_tty = t;
-    } else {
-        process_t *pprocess = find_process(new_proc->ppid);
-        t = pprocess->ctrl_tty;
-				new_proc->ctrl_tty = t;
-				//tty_set_fg_process(t, new_proc);
-    }
-		t->fg_process = new_proc->pid;
-		//XXX:Beurk.
+  struct _file_descriptor *fd0 = &(new_proc->fd[0]);
+  struct _file_descriptor *fd1 = &(new_proc->fd[1]);
+  struct _file_descriptor *fd2 = &(new_proc->fd[2]);
+	chardev_interfaces *di;
+
+	if (new_proc->ppid > 0) {
+		process_t *pprocess = find_process(new_proc->ppid);
+		if (pprocess)
+			new_proc->ctrl_tty = pprocess->ctrl_tty;
+		else
+			new_proc->ctrl_tty = "/dev/tty0";
+	} else {
+		new_proc->ctrl_tty = "/dev/tty0";
+	}
+
+	open_file_descriptor *t_i = vfs_open(new_proc->ctrl_tty, 0); //XXX: flags.
+	di = t_i->extra_data;
+	tty_struct_t *t = di->custom_data;
+	t->fg_process = new_proc->pid;
+
 	fd0->used = true; /* stdin */
-	fd0->ofd = kmalloc(sizeof(open_file_descriptor));
-  fd0->ofd->flags = O_RDONLY;
-	fd0->ofd->read = tty_read;
-	fd0->ofd->extra_data = t;
-	fd0->ofd->ioctl = tty_ioctl;
-	fd0->ofd->close = tty_close;
+	fd0->ofd = vfs_open(new_proc->ctrl_tty, O_RDONLY); //XXX: flags.
 	fd1->used = true; /* stdout */
-	fd1->ofd = kmalloc(sizeof(open_file_descriptor));
-  fd1->ofd->flags = O_WRONLY;
-	fd1->ofd->write = tty_write;
-	fd1->ofd->ioctl = tty_ioctl;
-	fd1->ofd->close = tty_close;
-	fd1->ofd->extra_data = t;
+	fd1->ofd = vfs_open(new_proc->ctrl_tty, O_WRONLY); //XXX: flags.
 	fd2->used = true; /* stderr */
-	fd2->ofd = kmalloc(sizeof(open_file_descriptor));
-  fd2->ofd->flags = O_WRONLY;
-	fd2->ofd->write = tty_write;
-	fd2->ofd->ioctl = tty_ioctl;
-	fd2->ofd->close = tty_close;
-	fd2->ofd->extra_data = t;
+	fd2->ofd = vfs_open(new_proc->ctrl_tty, O_WRONLY); //XXX: flags.
 }
 
 void close_all_fd() {

@@ -180,6 +180,7 @@ int tty_register_driver(tty_driver_t *driver) {
 		driver->ttys[n]->p_end = 0;
 		driver->ttys[n]->sem = ksemcreate_without_key(NULL);
 		driver->ttys[n]->index = n;
+		driver->ttys[n]->fg_process = 0;
 		register_chardev(name, tty_get_driver_interface(driver->ttys[n]));
 	}
 	return 0;
@@ -279,7 +280,15 @@ int tty_ioctl (open_file_descriptor *ofd,  unsigned int request, void *data) {
 	return 0;
 }
 
-int tty_close (open_file_descriptor *ofd __attribute__ ((unused))) {
+int tty_close (open_file_descriptor *ofd) {
+	chardev_interfaces *di = ofd->extra_data;
+	tty_struct_t *t = (tty_struct_t *) di->custom_data;
+
+	//XXX :/
+	process_t *current_process = get_current_process();
+	if (current_process->pid == t->fg_process) {
+		t->fg_process = current_process->ppid;
+	}
 	return 0;
 }
 

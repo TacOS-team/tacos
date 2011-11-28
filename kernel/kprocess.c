@@ -310,6 +310,10 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) new_proc->pd);
 	pagination_init_page_directory_copy_kernel_only(new_proc->pd, pd_paddr);
 	
+	/* Sélection du pid du process */
+	new_proc->pid = next_pid;
+	next_pid++;
+
 	/* ZONE CRITIQUE */
 	asm("cli");
 
@@ -353,10 +357,7 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->current_sample = 0;
 	new_proc->last_sample = 0;
 	
-	/* Sélection du pid du process */
-	new_proc->pid = next_pid;
-	next_pid++;
-	
+
 	/* On attend son premier ordonnancement pour le passer en RUNNING, donc pour le moment on le laisse IDLE */
 	new_proc->state = PROCSTATE_IDLE;
 	

@@ -82,7 +82,7 @@ typedef struct{
 	
 	signal_process_data_t signal_data;
 
-	struct _tty_struct_t *ctrl_tty;
+	const char *ctrl_tty;
 	
 	/* Données liées au debug run-time du process */
 	symbol_table_t* symtable;
