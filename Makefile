@@ -58,9 +58,9 @@ runqemunet: core.img
 	qemu -fda core.img -soundhw pcspk -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -net tap,ifname=tap0,script=no -net dump,file=eth.log -m 20 
 
 runqemu: core.img
-	qemu -fda core.img -soundhw pcspk -parallel none -m 20 
+	qemu -fda core.img -soundhw pcspk -parallel none -m 20 -serial stdio
 runqemugdb: core.img
-	qemu -fda core.img -soundhw pcspk -parallel none -m 20 -s -S
+	qemu -fda core.img -soundhw pcspk -parallel none -m 20 -s -S -serial stdio
 	
 runqemucurses: core.img
 	qemu -fda core.img -curses -soundhw pcspk -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -net dump,file=eth.log -m 20 

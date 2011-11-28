@@ -35,6 +35,7 @@
 #include <kprocess.h>
 #include <scheduler.h>
 #include <ksignal.h>
+#include <klog.h>
 
 #include <fcntl.h>
 
@@ -56,6 +57,13 @@ struct termios tty_std_termios = {
 #define I_ICRNL(tty) (tty->termios.c_iflag & ICRNL)
 #define I_INLCR(tty) (tty->termios.c_iflag & INLCR)
 
+#define L_ISIG(tty) (tty->termios.c_lflag & ISIG)
+
+#define QUIT_CHAR(tty) ((tty)->termios.c_cc[VQUIT])
+#define INTR_CHAR(tty) ((tty)->termios.c_cc[VINTR])
+#define SUSP_CHAR(tty) ((tty)->termios.c_cc[VSUSP])
+#define ERASE_CHAR(tty) ((tty)->termios.c_cc[VERASE])
+
 void tty_init() {
 
 }
@@ -63,7 +71,32 @@ void tty_init() {
 void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 	if (tty == NULL) return;
 
-	if (c == '\b') {
+	if (c == '\r') {
+		if (I_IGNCR(tty)) {
+			return;
+		}
+		if (I_ICRNL(tty)) {
+			c = '\n';
+		}
+	} else if (c == '\n' && I_INLCR(tty)) {
+		c = '\r';
+	}
+	if (L_ISIG(tty)) {
+		if (c == QUIT_CHAR(tty)) {
+			sys_kill(tty->fg_process, SIGQUIT, NULL);
+			return;
+		}
+		if (c == INTR_CHAR(tty)) {
+			sys_kill(tty->fg_process, SIGINT, NULL);
+			return;
+		}
+		if (c == SUSP_CHAR(tty)) {
+			sys_kill(tty->fg_process, SIGTSTP, NULL);
+			return;
+		}
+	}
+
+	if (c == ERASE_CHAR(tty)) {
 		if (tty->p_end != tty->p_begin) {
 			tty->p_end--;
 			if (I_ECHO(tty)) {
@@ -204,17 +237,6 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 			ksemP(t->sem);
 
 		c = t->buffer[(t->p_end + MAX_INPUT - 1) % MAX_INPUT];
-
-		if (c == '\r') {
-			if (I_IGNCR(t)) {
-				continue;
-			}
-			if (I_ICRNL(t)) {
-				c = '\n';
-			}
-		} else if (c == '\n' && I_INLCR(t)) {
-			c = '\r';
-		}
 
 		if (!I_CANON(t) || c == '\n' || c == '\r') {
 			while (j < count && t->p_begin < t->p_end) {

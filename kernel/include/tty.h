@@ -43,13 +43,13 @@
 
 struct _tty_driver_t;
 
-/*  intr=^C   quit=^\   erase=del kill=^U
+/*  intr=^C   quit=^\   erase=bs kill=^U
   eof=^D    vtime=\0  vmin=\1   sxtc=\0
   start=^Q  stop=^S   susp=^Z   eol=\0
   reprint=^R  discard=^U  werase=^W lnext=^V
   eol2=\0
 */
-#define INIT_C_CC {3, 34, 177, 25, 4, 0, 1, 0, 21, 23, 32, 0, 22, 17, 27, 26, 0}
+#define INIT_C_CC {3, 28, 8, 21, 4, 0, 1, 0, 17, 19, 26, 0, 18, 21, 23, 22, 0}
 
 extern struct termios tty_std_termios;
 
