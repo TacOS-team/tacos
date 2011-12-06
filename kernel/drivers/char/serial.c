@@ -358,11 +358,26 @@ static int set_protocol(serial_port port, char* protocol)
 int serial_init()
 {
 	char* protocol = "8N1";
-	unsigned int bauds = 9600;
 	int ret = 0;
 	
 	//klog("Initialisation du port série...");
 	
+	/* Enregistre le driver */
+	tty_driver = alloc_tty_driver(4);
+	tty_driver->driver_name = "serial";
+	tty_driver->devfs_name = "ttyS";
+	tty_driver->type = TTY_DRIVER_TYPE_SERIAL;
+	tty_driver->init_termios = tty_std_termios;
+	tty_driver->ops = kmalloc(sizeof(tty_operations_t));
+	tty_driver->ops->open = NULL;
+	tty_driver->ops->close = NULL;
+	tty_driver->ops->write = serial_write;
+	tty_driver->ops->put_char = serial_putc;
+	tty_driver->ops->set_termios = NULL;
+	tty_driver->ops->ioctl = NULL;
+	tty_register_driver(tty_driver);
+	
+	unsigned int bauds = tty_driver->init_termios.c_ospeed;
 	int port;
 	for (port = 0; port < 4; port++) {
 		/* Désactive les interruptions */
@@ -396,21 +411,6 @@ int serial_init()
 		 */
 		write_register(port, INTERRUPT_ENABLE,	ERBFI); /* Cf. serial_mask.h */
 	}
-	
-	/* Enregistre le driver */
-	tty_driver = alloc_tty_driver(4);
-	tty_driver->driver_name = "serial";
-	tty_driver->devfs_name = "ttyS";
-	tty_driver->type = TTY_DRIVER_TYPE_SERIAL;
-	tty_driver->init_termios = tty_std_termios;
-	tty_driver->ops = kmalloc(sizeof(tty_operations_t));
-	tty_driver->ops->open = NULL;
-	tty_driver->ops->close = NULL;
-	tty_driver->ops->write = serial_write;
-	tty_driver->ops->put_char = serial_putc;
-	tty_driver->ops->set_termios = NULL;
-	tty_driver->ops->ioctl = NULL;
-	tty_register_driver(tty_driver);
 	
 	return ret;
 }

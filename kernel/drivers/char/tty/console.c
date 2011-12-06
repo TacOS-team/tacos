@@ -42,7 +42,7 @@ static struct console_t consoles[NB_CONSOLES];
 static size_t console_write (tty_struct_t* tty, open_file_descriptor* ofd, const unsigned char* buf, size_t count);
 static void console_putchar(tty_struct_t *tty, unsigned char c);
 static void clear_console(int n);
-static void backspace(int n, char c);
+static void backspace(int n);
 static void kputchar_tab(tty_struct_t *tty);
 
 static int active_console = 0;
@@ -427,7 +427,7 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 	} else if (c == '\t') {
 		kputchar_tab(tty);
 	} else if (c == '\b') {
-		backspace(n, ' ');
+		backspace(n);
 	} else {
 		kputchar_video(consoles[n].n_page, true, c, consoles[n].cur_x,
 				consoles[n].cur_y, consoles[n].attr);
@@ -455,28 +455,19 @@ static void kputchar_tab(tty_struct_t *tty) {
 
 /**
  *	Suppression en arrière d'un caractère.
+ *	XXX: Pas sûr de vouloir aussi afficher un espace.
  */
-static void backspace(int n, char c) {
-
-	if (c == '\t') {
-		/*		int x = buffer_video->xpos - LARGEUR_TAB;
-		 int y = buffer_video->ypos;
-		 if (x < 0) x += COLUMNS;
-		 while (buffer_video->xpos > x && buffer_video->buffer[buffer_video->xpos + ((y+buffer_video->bottom_buffer)%LINES) * COLUMNS].character == ' ') {
-		 buffer_video->xpos--;
-		 }*/
-	} else {
-		if (consoles[n].cur_x > 0) {
-			consoles[n].cur_x--;
-		} else if (consoles[n].cur_y > 0) {
-			consoles[n].cur_y--;
-			consoles[n].cur_x = consoles[n].cols - 1;
-		}
-
-		int x = consoles[n].cur_x;
-		int y = consoles[n].cur_y;
-
-		kputchar_video(consoles[n].n_page, true, ' ', x, y, consoles[n].attr);
+static void backspace(int n) {
+	if (consoles[n].cur_x > 0) {
+		consoles[n].cur_x--;
+	} else if (consoles[n].cur_y > 0) {
+		consoles[n].cur_y--;
+		consoles[n].cur_x = consoles[n].cols - 1;
 	}
+
+	int x = consoles[n].cur_x;
+	int y = consoles[n].cur_y;
+
+	kputchar_video(consoles[n].n_page, true, ' ', x, y, consoles[n].attr);
 	cursor_position_video(consoles[n].n_page, consoles[n].cur_x, consoles[n].cur_y);
 }

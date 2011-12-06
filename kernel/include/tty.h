@@ -49,7 +49,7 @@ struct _tty_driver_t;
   reprint=^R  discard=^U  werase=^W lnext=^V
   eol2=\0
 */
-#define INIT_C_CC {3, 28, 8, 21, 4, 0, 1, 0, 17, 19, 26, 0, 18, 21, 23, 22, 0}
+#define INIT_C_CC {3, 28, 127, 21, 4, 0, 1, 0, 17, 19, 26, 0, 18, 21, 23, 22, 0}
 
 extern struct termios tty_std_termios;
 

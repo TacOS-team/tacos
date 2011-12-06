@@ -58,6 +58,7 @@ struct termios tty_std_termios = {
 #define I_INLCR(tty) (tty->termios.c_iflag & INLCR)
 
 #define L_ISIG(tty) (tty->termios.c_lflag & ISIG)
+#define L_ECHOE(tty) (tty->termios.c_lflag & ECHOE)
 
 #define QUIT_CHAR(tty) ((tty)->termios.c_cc[VQUIT])
 #define INTR_CHAR(tty) ((tty)->termios.c_cc[VINTR])
@@ -101,7 +102,13 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 			tty->p_end--;
 			if (I_ECHO(tty)) {
 				if (tty->driver->ops->put_char != NULL) {
-					tty->driver->ops->put_char(tty, c);
+					if (L_ECHOE(tty)) {
+						tty->driver->ops->put_char(tty, '\b');
+						tty->driver->ops->put_char(tty, ' ');
+						tty->driver->ops->put_char(tty, '\b');
+					} else {
+						tty->driver->ops->put_char(tty, c);
+					}
 				} else {
 					unsigned char ch[2];
 					ch[0] = c;
