@@ -186,10 +186,16 @@ void runWindow(struct window_t* win)
 	int old_y = 0;
 
 	int fd = open("/dev/mouse", O_RDONLY);
-	struct {
-		int x;
-		int y;
-		bool buttons[3];
+
+	struct mousestate {
+		unsigned int x : 13;
+		unsigned int y : 13;
+		unsigned int b1 : 1;
+		unsigned int b2 : 1;
+		unsigned int b3 : 1;
+		unsigned int b4 : 1;
+		unsigned int b5 : 1;
+		unsigned int b6 : 1;
 	} mousedata;
 
 	displayWindow(win);
@@ -207,7 +213,7 @@ void runWindow(struct window_t* win)
 			old_y = y;
 		}
 
-		if(mousedata.buttons[0])
+		if(mousedata.b1)
 		{
 			if(!btn_frz)
 			{
