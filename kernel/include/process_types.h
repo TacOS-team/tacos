@@ -1,5 +1,5 @@
 /**
- * @file kprocess.h
+ * @file process_types.h
  *
  * @author TacOS developers 
  *
@@ -24,7 +24,8 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Types pour les process (header à part pour éviter trop de dépendances 
+ * inutiles).
  */
 
 #ifndef _PROCESS_TYPES_H_

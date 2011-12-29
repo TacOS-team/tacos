@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Gestion d'évènements datés.
  */
 
 #include <types.h>

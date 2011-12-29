@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Gestion de l'horloge et du temps en général.
  */
 
 #ifndef _CLOCK_H_

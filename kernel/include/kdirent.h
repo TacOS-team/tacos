@@ -1,5 +1,5 @@
 /**
- * @file kdirent.c
+ * @file kdirent.h
  *
  * @author TacOS developers 
  *

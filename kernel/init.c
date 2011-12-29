@@ -28,7 +28,6 @@
  */
 
 /* Kernel */
-#include <fs/devfs.h>
 #include <klog.h>
 #include <scheduler.h>
 #include <symtable.h>

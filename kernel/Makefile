@@ -12,7 +12,7 @@ boot.o: boot.S
 exception_wrappers.o: exception_wrappers.S include/exception.h
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) -DASM_SOURCE=1 -fno-stack-protector
 
-interrupts_wrappers.o: interrupts_wrappers.S ../include/interrupts.h
+interrupts_wrappers.o: interrupts_wrappers.S include/interrupts.h
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) -DASM_SOURCE=1 -fno-stack-protector
 
 %.o: %.c

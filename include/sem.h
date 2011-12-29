@@ -3,6 +3,7 @@
  *
  * @author TacOS developers 
  *
+ * @brief l'interface de manipulation des semaphores
  *
  * @section LICENSE
  *
@@ -29,11 +30,6 @@
 
 #ifndef _SEM_H_
 #define _SEM_H_
-
-/** 
-* @file sem.h 
-* @brief l'interface de manipulation des semaphores
-*/
 
 #include <types.h>
 

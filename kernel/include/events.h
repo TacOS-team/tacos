@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Gestion d'évènements datés.
  */
 
 #ifndef _EVENTS_H_

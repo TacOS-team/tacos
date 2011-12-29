@@ -31,13 +31,11 @@
 //Pour plus d'infos sur sysenter: Doc Intel 2B 4-483
 
 /* Kernel */
-#include <cpu.h>
 #include <gdt.h>
 #include <interrupts.h>
 #include <ksyscall.h>
 #include <klog.h>
 #include <msr.h>
-#include <scheduler.h>
 
 /* LibC */
 #include <string.h>

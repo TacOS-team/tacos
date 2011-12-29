@@ -1,5 +1,5 @@
 /**
- * @file wait.c
+ * @file wait.h
  *
  * @author TacOS developers 
  *

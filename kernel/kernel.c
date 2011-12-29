@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Point d'entrée du kernel. Initialisation du système.
  */
 
 #include "msr.h"
@@ -61,7 +61,7 @@
 #include <sys/syscall.h>
 #include <time.h>
 #include <video.h>
-#include <vm86.h>
+//#include <vm86.h>
 #include <vmm.h>
 
 /* Includes des fs */
