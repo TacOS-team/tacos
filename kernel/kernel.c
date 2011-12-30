@@ -60,8 +60,6 @@
 #include <string.h>
 #include <sys/syscall.h>
 #include <time.h>
-#include <video.h>
-//#include <vm86.h>
 #include <vmm.h>
 
 /* Includes des fs */
@@ -70,6 +68,7 @@
 #include <fs/procfs.h>
 
 /* Includes des drivers */
+#include <drivers/beeper.h>
 #include <drivers/console.h>
 #include <drivers/dummy_driver.h>
 #include <drivers/floppy.h>
@@ -77,7 +76,7 @@
 #include <drivers/mouse.h>
 #include <drivers/serial.h>
 #include <drivers/vga.h>
-#include <drivers/beeper.h>
+#include <drivers/video.h>
 
 typedef struct
 {

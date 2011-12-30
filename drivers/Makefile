@@ -5,7 +5,7 @@ SRCS=*/*.c
 
 all: libbaddrivers
 
-libbaddrivers: video/video.o ethernet/rtl8139.o
+libbaddrivers: ethernet/rtl8139.o
 	  $(AR) r ../lib/$@.a $^
 
 %.o: %.c

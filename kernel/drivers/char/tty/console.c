@@ -28,8 +28,8 @@
  */
 
 #include <drivers/console.h>
+#include <drivers/video.h>
 #include <kmalloc.h>
-#include <video.h>
 
 #define LARGEUR_TAB 8
 
