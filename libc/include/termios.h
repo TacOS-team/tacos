@@ -97,16 +97,21 @@ typedef unsigned int cc_t;
 #define VLNEXT 15
 #define VEOL2 16
 
+typedef unsigned int speed_t;
+
 struct termios {
 	tcflag_t c_iflag;
 	tcflag_t c_oflag;
 	tcflag_t c_cflag;
 	tcflag_t c_lflag;
 	cc_t c_cc[NCCS];
-	unsigned int c_ispeed;
+	speed_t c_ispeed;
 };
 
 int tcgetattr(int fd, struct termios *termios_p);
 int tcsetattr(int fd, int optional_actions, const struct termios *termios_p);
+
+speed_t cfgetispeed(const struct termios *termios_p);
+int cfsetispeed(struct termios *termios_p, speed_t speed);
 
 #endif
