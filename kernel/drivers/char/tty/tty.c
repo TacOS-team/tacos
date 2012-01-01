@@ -269,17 +269,15 @@ int tty_ioctl (open_file_descriptor *ofd,  unsigned int request, void *data) {
 	chardev_interfaces *di = ofd->extra_data;
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;
 
-	struct termios kterm;
-
 	switch	(request) {
 		case TCGETS:
-			memcpy(&kterm, &t->termios, sizeof(struct termios));
+			memcpy(data, &t->termios, sizeof(struct termios));
 			return 0;
 		case TCSETS:
 			if (t->driver->ops->set_termios) {
 				t->driver->ops->set_termios(data, &t->termios);
 			} else {
-				memcpy(&kterm, &t->termios, sizeof(struct termios));
+				memcpy(&t->termios, data, sizeof(struct termios));
 			}
 			return 0;
 	}
