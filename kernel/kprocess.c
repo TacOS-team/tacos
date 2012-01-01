@@ -236,7 +236,6 @@ process_init_data_t* dup_init_data(process_init_data_t* init_data) {
 		while (init_data->envp[taille_env++]);
 		dup->envp = kmalloc(taille_env * sizeof(char*));
 		for (i = 0; i < taille_env - 1; i++) {
-			klog("%s", init_data->envp[i]);
 			dup->envp[i] = kmalloc(strlen(init_data->envp[i]) + 1);
 			strcpy(dup->envp[i], init_data->envp[i]);
 		}

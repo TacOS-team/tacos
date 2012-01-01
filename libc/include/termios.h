@@ -91,6 +91,8 @@ typedef unsigned int cc_t;
 #define   CS8 0000060
 #define CSTOPB  0000100
 #define CREAD 0000200
+#define PARENB  0000400
+#define PARODD  0001000
 #define HUPCL 0002000
 
 /* c_cc characters */

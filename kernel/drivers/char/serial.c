@@ -74,7 +74,7 @@
  **************************************/
  
 static int set_baud_rate(serial_port port, unsigned int rate);
-static int set_protocol(serial_port port, char* protocol);
+static void set_protocol(serial_port port, struct termios *term);
 
 /**************************************
  * 
@@ -260,104 +260,76 @@ static int set_baud_rate(serial_port port, unsigned int rate)
 	return real_rate;
 }
 
-static int set_protocol(serial_port port, char* protocol)
-{
-	/*****************************************************
-	 * Explications sur le registre LINE_CTRL:
-	 * Il contrôle le protocol de transfert, c'est à dire le nombre de 
-	 * bits par paquet, la présence d'un bit de parité, et le nombre de
-	 * bits d'arret.
-	 * 
-	 * Bits			Rôle
-	 * ----------------------------------------- 
-	 *	0-1		|	Nombre de bits de données
-	 * 			|	0 => 5 bits
-	 * 			|	1 => 6 bits
-	 * 			|	2 => 7 bits
-	 * 			|	3 => 8 bits
-	 * -----------------------------------------
-	 * 	2		| 	Nombre de bits d'arret
-	 * 			|	0 => 1 bit
-	 * 			|	1 => 2 bits
-	 * ----------------------------------------
-	 *	3-5		|	Configure le bit de parité
-	 * 			|	XX0 => Aucun		(N)
-	 *  		|	001 => Impair		(E)
-	 * 			|	011 => Pair			(O)
-	 * 			|	101 => Forcé à 1	(M)
-	 * 			|	111 => Forcé à 0	(S)
-	 * 
-	 * Le bit 6 est réservé, et le 7 est le DLAB
-	 *
-	 * Pour simplifier l'usage, on utilise la syntaxe
-	 * standard, et on exprime donc le protocol sous la 
-	 * forme "NPS" avec N le nombre de bits de données,
-	 * P le type de parité, et S le nombre de bits stop
-	 * par exemple:
-	 * "8N1" Réfère à 8 bits de données, pas de parité,
-	 * et 1 bit stop
-	 ******************************************************/
-	int ret = -1;
-	
-	char nb_bits = protocol[0];
-	char parity = protocol[1];
-	char stop_bit = protocol[2];
-	
+/**
+ * Explications sur le registre LINE_CTRL:
+ * Il contrôle le protocol de transfert, c'est à dire le nombre de 
+ * bits par paquet, la présence d'un bit de parité, et le nombre de
+ * bits d'arret.
+ * 
+ * Bits			Rôle
+ * ----------------------------------------- 
+ *	0-1		|	Nombre de bits de données
+ * 			|	0 => 5 bits
+ * 			|	1 => 6 bits
+ * 			|	2 => 7 bits
+ * 			|	3 => 8 bits
+ * -----------------------------------------
+ * 	2		| 	Nombre de bits d'arret
+ * 			|	0 => 1 bit
+ * 			|	1 => 2 bits
+ * ----------------------------------------
+ *	3-5		|	Configure le bit de parité
+ * 			|	XX0 => Aucun		(N)
+ *  		|	001 => Impair		(E)
+ * 			|	011 => Pair			(O)
+ * 			|	101 => Forcé à 1	(M)
+ * 			|	111 => Forcé à 0	(S)
+ * 
+ * Le bit 6 est réservé, et le 7 est le DLAB
+ *
+ * Pour simplifier l'usage, on utilise la syntaxe
+ * standard, et on exprime donc le protocol sous la 
+ * forme "NPS" avec N le nombre de bits de données,
+ * P le type de parité, et S le nombre de bits stop
+ * par exemple:
+ * "8N1" Réfère à 8 bits de données, pas de parité,
+ * et 1 bit stop
+ */
+static void set_protocol(serial_port port, struct termios *term) {
 	char reg_value = 0;
-	
-	
-	if(nb_bits >= '5' && nb_bits <= '8')
-	{
-		reg_value = nb_bits - '5';
-		ret = 0;
+
+	// Nombre de bits de données
+	switch (term->c_cflag & CSIZE) {
+		case CS5:
+			reg_value = 0;
+			break;
+		case CS6:
+			reg_value = 1;
+			break;
+		case CS7:
+			reg_value = 2;
+			break;
+		case CS8:
+			reg_value = 3;
+			break;
 	}
-	
-	if(ret == 0)
-	{
-		switch(parity)
-		{
-			case 'N':
-				break; /* 000, autant ne rien faire */
-			case 'E':
-				reg_value |= EVEN_PARITY;
-				break;
-			case 'O':
-				reg_value |= ODD_PARITY; /* 011 = 3 */
-				break;
-			case 'M':
-				reg_value |= MARK_PARITY; /* 101 = 5 */
-				break;
-			case 'S':
-				reg_value |= SPACE_PARITY; /* 111 = 7 */
-				break;
-			default:
-				ret = -2;
-		}
+
+	// Nombre de bits d'arret
+	if (term->c_cflag & CSTOPB) {
+		reg_value |= STOP_BIT;
 	}
-	
-	if(ret == 0)
-	{
-		switch(stop_bit)
-		{
-			case '1': /* 0, autant ne rien faire */
-				break;
-			case '2':
-				reg_value |= STOP_BIT;
-				break;
-			default:
-				ret = -3;
-		}
+
+	if (term->c_cflag & PARODD) {
+		reg_value |= ODD_PARITY;
+	} else {
+		reg_value |= EVEN_PARITY;
 	}
-	
-	if(ret == 0)
-		write_register(port, LINE_CTRL, reg_value);
-		
-	return ret;
+
+	write_register(port, LINE_CTRL, reg_value);
 }
 
 int serial_init()
 {
-	char* protocol = "8N1";
 	int ret = 0;
 	
 	//klog("Initialisation du port série...");
@@ -386,9 +358,8 @@ int serial_init()
 		/* Configuration du controleur */ 
 		if(set_baud_rate(port, bauds) == 0)
 			ret = -1;
-			
-		if(set_protocol(port, protocol) != 0)
-			ret = -1;
+		
+		set_protocol(port, &tty_driver->init_termios);	
 		
 		/* Active la FIFO */
 		write_register(port, FIFO_CTRL, FIFO_ENABLE 	| 
