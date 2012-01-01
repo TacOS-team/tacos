@@ -33,6 +33,7 @@
 
 typedef unsigned int tcflag_t;
 typedef unsigned int cc_t;
+typedef unsigned int speed_t;
 
 #define NCCS 17
 
@@ -96,8 +97,6 @@ typedef unsigned int cc_t;
 #define VWERASE 14
 #define VLNEXT 15
 #define VEOL2 16
-
-typedef unsigned int speed_t;
 
 struct termios {
 	tcflag_t c_iflag;

@@ -43,6 +43,8 @@
 #include <kmalloc.h>
 #include <tty.h>
 
+#include <string.h>
+
 #include "serial_masks.h"
 
 #define RX_BUFFER_SIZE	256
@@ -328,6 +330,19 @@ static void set_protocol(serial_port port, struct termios *term) {
 	write_register(port, LINE_CTRL, reg_value);
 }
 
+size_t serial_set_termios(struct termios* term_new, struct termios* term_old) {
+	//XXX: trouver un moyen de préciser le port en question...
+	int port = 0;
+	unsigned int bauds = term_new->c_ispeed;
+	if(set_baud_rate(port, bauds) == 0)
+		return -1;
+
+	memcpy(term_old, term_new, sizeof(struct termios));
+
+	set_protocol(port, term_new);	
+	return 0;
+}
+
 int serial_init()
 {
 	int ret = 0;
@@ -345,7 +360,7 @@ int serial_init()
 	tty_driver->ops->close = NULL;
 	tty_driver->ops->write = serial_write;
 	tty_driver->ops->put_char = serial_putc;
-	tty_driver->ops->set_termios = NULL;
+	tty_driver->ops->set_termios = serial_set_termios;
 	tty_driver->ops->ioctl = NULL;
 	tty_register_driver(tty_driver);
 	
@@ -386,3 +401,5 @@ int serial_init()
 	return ret;
 }
 	
+
+
