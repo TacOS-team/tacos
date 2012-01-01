@@ -349,7 +349,7 @@ int serial_init()
 	tty_driver->ops->ioctl = NULL;
 	tty_register_driver(tty_driver);
 	
-	unsigned int bauds = tty_driver->init_termios.c_ospeed;
+	unsigned int bauds = tty_driver->init_termios.c_ispeed;
 	int port;
 	for (port = 0; port < 4; port++) {
 		/* Désactive les interruptions */
