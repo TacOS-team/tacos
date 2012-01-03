@@ -136,8 +136,6 @@ time_t clock_mktime(struct tm *timep)
 	timep->tm_mday = day + 1;
 	year = EPOCH_YR;
 	if (timep->tm_year < year - YEAR0) return (time_t)-1;
-	seconds = 0;
-	day = 0;                        /* means days since day 0 now */
 	overflow = 0;
 	/* Assume that when day becomes negative, there will certainly
 	 * be overflow on seconds.
