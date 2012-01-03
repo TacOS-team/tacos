@@ -63,7 +63,9 @@ FILE *fmemopen(void *buf, size_t size, const char *mode) {
 		/* La position dans le buffer est initialisée un octet après la fin du buffer si aucun octet null a été trouvé. */
 		else if (mode[0] == 'a') {
 			size_t pos = 0;
-			while(pos < size && ((char*)buf)[pos] != '\0');
+			while (pos < size && ((char*)buf)[pos] != '\0') {
+				pos++;
+			}
 			pos_buf = pos;
 		}
 
