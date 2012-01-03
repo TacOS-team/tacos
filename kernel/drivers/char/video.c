@@ -110,16 +110,16 @@ static volatile x86_video_mem* get_page(int i, bool front) {
 void set_blink_bit(int blink_bit) {
 	int val = 0;
 
-	/* FIXME: Cassé... La lecture renvoie toujours 255...
-	 inb(0x3DA);
-	 outb(0x10 , 0x3C0);
-	 val = inb(0x4C1);
-	 outb(0x20, 0x3C1);
-	 if (blink_bit) {
-	 val |= 0x08;
-	 } else {
-	 val &= ~0x08;
-	 }*/
+	/* FIXME: Cassé... La lecture renvoie toujours 255...*/
+	inb(0x3DA);
+	outb(0x10 , 0x3C0);
+	val = inb(0x4C1);
+	outb(0x20, 0x3C1);
+	if (blink_bit) {
+		val |= 0x08;
+	} else {
+		val &= ~0x08;
+	}
 
 	if (blink_bit) {
 		val = 0x08;
@@ -127,12 +127,12 @@ void set_blink_bit(int blink_bit) {
 		val &= ~0x08;
 	}
 
-	/* En fait, même ça c'est cassé :D
-	 inb(0x3DA);
-	 outb(0x10, 0x3C0);
-	 outb(val, 0x3C0);
-	 outb(0x20, 0x3C0);
-	 inb(0x3DA); */
+	/* FIXME: En fait, même ça c'est cassé :D*/
+	inb(0x3DA);
+	outb(0x10, 0x3C0);
+	outb(val, 0x3C0);
+	outb(0x20, 0x3C0);
+	inb(0x3DA);
 }
 
 void disable_cursor(int disable) {
