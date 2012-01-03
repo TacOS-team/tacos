@@ -95,6 +95,8 @@ void kprintf(const char *format, ...) {
 		open_file_descriptor* ofd = vfs_open("/dev/ttyS0", 0); //XXX:flags
 		if (ofd)
 			tty = ((chardev_interfaces*)ofd->extra_data)->custom_data;
+		else
+			return;
 	}
 
 	char **arg = (char **) &format;
