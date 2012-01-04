@@ -50,11 +50,12 @@ static int current_page;
 
 void init_video() {
 	// Initialisation à 0 du Attribute Mode Control Register pour éviter les surprises...
-	inb(0x3DA);
+	// XXX: Pourquoi 0 et pas 0xC0 comme ils en parlent sur osdev ?
+	(void) inb(0x3DA);
 	outb(0x10, 0x3C0);
 	outb(0, 0x3C0);
 	outb(0x20, 0x3C0);
-	inb(0x3DA);
+	(void) inb(0x3DA);
 
 	/* Initialisation des pages vidéos. */
 	int i;
@@ -111,9 +112,9 @@ void set_blink_bit(int blink_bit) {
 	int val = 0;
 
 	/* FIXME: Cassé... La lecture renvoie toujours 255...*/
-	inb(0x3DA);
+	(void) inb(0x3DA);
 	outb(0x10 , 0x3C0);
-	val = inb(0x4C1);
+	val = inb(0x3C1);
 	outb(0x20, 0x3C1);
 	if (blink_bit) {
 		val |= 0x08;
@@ -128,11 +129,11 @@ void set_blink_bit(int blink_bit) {
 	}
 
 	/* FIXME: En fait, même ça c'est cassé :D*/
-	inb(0x3DA);
+	(void) inb(0x3DA);
 	outb(0x10, 0x3C0);
 	outb(val, 0x3C0);
 	outb(0x20, 0x3C0);
-	inb(0x3DA);
+	(void) inb(0x3DA);
 }
 
 void disable_cursor(int disable) {

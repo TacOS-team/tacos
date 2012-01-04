@@ -105,7 +105,7 @@ static void reset_ac_registers_flipflop() {
 	 * such that the next write will be handled as an index is provided.
 	 * This is accomplished by reading the Input Status #1 Register [...].
 	 */
-	inb(other_registers[INSTAT_1_READ]);
+	(void) inb(other_registers[INSTAT_1_READ]);
 }
 
 static void enable_display() {
@@ -115,7 +115,7 @@ static void enable_display() {
 	 * This bit is set to 0 to load color values to the registers in the internal
 	 * palette. It is set to 1 for normal operation of the attribute controller.
 	 */
-	inb(other_registers[INSTAT_1_READ]);
+	(void) inb(other_registers[INSTAT_1_READ]);
 	outb(1 << 5, addr_w_registers[AC]);
 }
 

@@ -331,7 +331,7 @@ void fat_decode_short_file_name(char *filename, fat_dir_entry_t *fdir) {
 			if (!notspace) {
 				notspace = j;
 			}
-			if (fdir->reserved && 0x08) {
+			if (fdir->reserved & 0x08) {
 				filename[j] = tolower(fdir->utf8_short_name[j]);
 			} else {
 				filename[j] = fdir->utf8_short_name[j];
@@ -349,7 +349,7 @@ void fat_decode_short_file_name(char *filename, fat_dir_entry_t *fdir) {
 			if (notspaceext <= 0) {
 				notspaceext = k;
 			}
-			if (fdir->reserved && 0x10) {
+			if (fdir->reserved & 0x10) {
 				filename[notspace + k] = tolower(fdir->file_extension[k]);
 			} else {
 				filename[notspace + k] = fdir->file_extension[k];
@@ -358,7 +358,6 @@ void fat_decode_short_file_name(char *filename, fat_dir_entry_t *fdir) {
   }
 
 	filename[notspace + notspaceext + 1] = '\0';
-
 
 }
 

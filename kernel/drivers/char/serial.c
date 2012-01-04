@@ -188,7 +188,7 @@ void serial_isr(int id __attribute__ ((unused)))
 								kerr("None interrupt");
 								break;
 							case INT_RX_LINE_STATUS:
-								read_register(i, LINE_STATUS);
+								(void) read_register(i, LINE_STATUS);
 								kerr("Line status interrupt");
 								break;
 							case INT_DATA_AVAILABLE:			/* Que ce soit en data available ou en timeout, il faut récupérer les données dans le buffer si possible */
