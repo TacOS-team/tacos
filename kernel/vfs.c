@@ -29,9 +29,10 @@
 
 #include <fs/devfs.h>
 #include <fs/fat.h>
+#include <kdirent.h>
+#include <kfcntl.h>
 #include <kmalloc.h>
 #include <vfs.h>
-#include <kdirent.h>
 //XXX: libc
 #include <string.h>
 

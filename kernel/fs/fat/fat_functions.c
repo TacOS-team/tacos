@@ -28,13 +28,14 @@
  */
 
 #include <fs/fat.h>
-#include <ctype.h>
-#include <fcntl.h>
+#include <kfcntl.h>
 #include <kdirent.h>
 #include <klog.h>
 #include <kmalloc.h>
-#include <string.h>
 #include <types.h>
+
+#include <ctype.h>
+#include <string.h>
 
 #include "fat_outils.h"
 

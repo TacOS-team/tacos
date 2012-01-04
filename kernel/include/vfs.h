@@ -33,7 +33,6 @@
 #include <fd_types.h>
 //XXX: libc
 #include <sys/stat.h>
-#include <fcntl.h>
 
 struct _fs_instance_t;
 

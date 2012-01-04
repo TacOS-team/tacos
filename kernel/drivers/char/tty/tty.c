@@ -27,17 +27,17 @@
  * Description de ce que fait le fichier
  */
 
-#include <tty.h>
-#include <kmalloc.h>
 #include <fs/devfs.h>
-#include <string.h>
-#include <ksem.h>
-#include <kprocess.h>
-#include <scheduler.h>
-#include <ksignal.h>
+#include <kfcntl.h>
 #include <klog.h>
+#include <kmalloc.h>
+#include <kprocess.h>
+#include <ksem.h>
+#include <ksignal.h>
+#include <scheduler.h>
+#include <tty.h>
 
-#include <fcntl.h>
+#include <string.h>
 
 struct termios tty_std_termios = {
 	.c_iflag = ICRNL | IXON,

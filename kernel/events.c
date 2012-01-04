@@ -30,8 +30,6 @@
 #include <types.h>
 #include <i8254.h>
 #include <interrupts.h>
-#include <time.h>
-#include <clock.h>
 #include <list.h>
 #include <events.h>
 #include <debug.h>

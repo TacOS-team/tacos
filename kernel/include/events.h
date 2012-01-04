@@ -30,11 +30,7 @@
 #ifndef _EVENTS_H_
 #define _EVENTS_H_
 
-/**
-* @file events.h
-*/
-
-#include <time.h>
+#include <clock.h>
 
 typedef void *(*callback_t) (void *);
 

@@ -27,6 +27,7 @@
  * Description de ce que fait le fichier
  */
 
+#include <kfcntl.h>
 #include <klog.h>
 #include <kmalloc.h>
 #include <kprocess.h>
@@ -36,8 +37,6 @@
 #include <tty.h>
 #include <vfs.h>
 #include <fs/devfs.h>
-
-#include <fcntl.h>
 
 void init_stdfd(process_t *new_proc) {
 	if (new_proc->pid == 0)
