@@ -27,18 +27,14 @@
  * Point d'entrée du kernel. Initialisation du système.
  */
 
-#include "msr.h"
 #include <clock.h>
-#include <debug.h>
 #include <events.h>
-#include <exception.h>
 #include <fpu.h>
 #include <gdt.h>
 #include <i8259.h>
 #include <idt.h>
 #include <init.h>
 #include <interrupts.h>
-#include <ioports.h>
 #include <kdirent.h>
 #include <kfcntl.h>
 #include <klog.h>
@@ -53,12 +49,9 @@
 #include <multiboot.h>
 #include <pagination.h>
 #include <pci.h>
-#include <pci_config.h>
 #include <round_robin.h>
 #include <scheduler.h>
-#include <string.h>
 #include <sys/syscall.h>
-#include <time.h>
 #include <vmm.h>
 
 /* Includes des fs */
@@ -69,12 +62,9 @@
 /* Includes des drivers */
 #include <drivers/beeper.h>
 #include <drivers/console.h>
-#include <drivers/dummy_driver.h>
 #include <drivers/floppy.h>
 #include <drivers/keyboard.h>
-#include <drivers/mouse.h>
 #include <drivers/serial.h>
-#include <drivers/vga.h>
 #include <drivers/video.h>
 
 typedef struct

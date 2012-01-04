@@ -32,8 +32,18 @@
 
 #include <ksyscall.h>
 #include <types.h>
-#include <dirent.h>
 #include <sys/stat.h>
+
+#define NAME_MAX 256
+
+typedef struct _DIR {
+	int iter;
+	char *path;
+} DIR;
+
+struct dirent {
+	char d_name[NAME_MAX];
+};
 
 SYSCALL_HANDLER2(sys_opendir, const char *name, int *ret);
 

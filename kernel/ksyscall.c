@@ -35,7 +35,6 @@
 #include <interrupts.h>
 #include <ksyscall.h>
 #include <klog.h>
-#include <msr.h>
 
 /* LibC */
 #include <string.h>
