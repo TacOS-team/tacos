@@ -28,12 +28,13 @@
  */
 
 #include <fs/devfs.h>
-#include <vfs.h>
 #include <kdirent.h>
 #include <klog.h>
 #include <kmalloc.h>
-#include <string.h>
 #include <types.h>
+#include <vfs.h>
+
+#include <string.h>
 
 #define MAX_DRIVERS 64
 

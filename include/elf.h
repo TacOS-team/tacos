@@ -30,13 +30,6 @@
 #ifndef _ELF_H_
 #define _ELF_H_
 
-/**
- * @file elf.h
- * 
- */
-
-#include <sys/types.h>
-
 typedef unsigned long int 	Elf32_Addr;
 typedef unsigned short int 	Elf32_Half;
 typedef unsigned long int 	Elf32_Off;
@@ -335,7 +328,7 @@ int load_section_header(Elf32_Shdr* section_header, Elf32_Ehdr* elf_header, int 
  * 
  * @return taille prise initialement par l'exécutable en mémoire
  */
-size_t elf_size(int fd);
+unsigned long int elf_size(int fd);
 
 /**
  * @brief charge un fichier elf

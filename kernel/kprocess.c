@@ -28,7 +28,6 @@
  */
 
 #include <debug.h>
-#include <elf.h>
 #include <gdt.h>
 #include <kfcntl.h>
 #include <klog.h>

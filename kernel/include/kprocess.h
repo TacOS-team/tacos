@@ -34,13 +34,11 @@
 
 #include <ksyscall.h>
 #include <fd_types.h>
-//#include <process.h>
 #include <signal_types.h>
 #include <process_types.h>
 #include <symtable.h>
 #include <types.h>
 #include <vmm.h>
-#include <elf.h>
 
 #define MAX_PROC 512
 

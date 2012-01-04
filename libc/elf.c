@@ -80,7 +80,7 @@ int load_section_header(Elf32_Shdr* section_header, Elf32_Ehdr* elf_header, int 
 	return 0;
 }
 
-size_t elf_size(int fd)
+unsigned long int elf_size(int fd)
 {
 	Elf32_Ehdr elf_header;
 	Elf32_Phdr p_header;
