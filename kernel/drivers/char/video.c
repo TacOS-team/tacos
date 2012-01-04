@@ -49,11 +49,10 @@ static struct vga_page_t pages[NB_VGA_PAGES];
 static int current_page;
 
 void init_video() {
-	// Initialisation à 0 du Attribute Mode Control Register pour éviter les surprises...
-	// XXX: Pourquoi 0 et pas 0xC0 comme ils en parlent sur osdev ?
+	// Initialisation à 0xC0 du Attribute Mode Control Register.
 	(void) inb(0x3DA);
 	outb(0x10, 0x3C0);
-	outb(0, 0x3C0);
+	outb(0xC0, 0x3C0);
 	outb(0x20, 0x3C0);
 	(void) inb(0x3DA);
 
@@ -109,26 +108,20 @@ static volatile x86_video_mem* get_page(int i, bool front) {
 }
 
 void set_blink_bit(int blink_bit) {
+	// XXX: ne marche pas ?
 	int val = 0;
 
-	/* FIXME: Cassé... La lecture renvoie toujours 255...*/
 	(void) inb(0x3DA);
 	outb(0x10 , 0x3C0);
 	val = inb(0x3C1);
-	outb(0x20, 0x3C1);
+	outb(0x20 , 0x3C0);
+
 	if (blink_bit) {
 		val |= 0x08;
 	} else {
 		val &= ~0x08;
 	}
 
-	if (blink_bit) {
-		val = 0x08;
-	} else {
-		val &= ~0x08;
-	}
-
-	/* FIXME: En fait, même ça c'est cassé :D*/
 	(void) inb(0x3DA);
 	outb(0x10, 0x3C0);
 	outb(val, 0x3C0);
