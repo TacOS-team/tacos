@@ -83,11 +83,10 @@ void offset_video(int offset) {
 
 void switch_page(int i) {
 	current_page = i;
-	paddr_t offset = ((paddr_t) ((paddr_t) pages[i].front_buffer
-			- BASE_VGA_VIDEO));
+	// offset = (@buffer - @base) / nombre d'octets par caractère
+	int offset = (((int)pages[i].front_buffer) - BASE_VGA_VIDEO) / sizeof(x86_video_mem);
 
-	// Divise par 2 car double buffering.
-	offset_video(offset / 2);
+	offset_video(offset);
 }
 
 void flip_page(int n) {
