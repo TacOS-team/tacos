@@ -36,7 +36,6 @@
 #include <interrupts.h>
 #include <ioports.h>
 #include <drivers/serial.h>
-#include <fs/devfs.h>
 #include <klog.h>
 #include <ksem.h>
 #include <kfcntl.h>
