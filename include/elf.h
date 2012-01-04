@@ -35,7 +35,7 @@
  * 
  */
 
-#include <types.h>
+#include <sys/types.h>
 
 typedef unsigned long int 	Elf32_Addr;
 typedef unsigned short int 	Elf32_Half;
@@ -372,5 +372,9 @@ Elf32_Sym* find_symbol(Elf32_File* file, const char* symbol);
  * @brief Affiche des information sur le fichier elf
  */
 void elf_info(char* name);
+
+
+// XXX: pas sa place...
+int exec_elf(char* name, int orphan);
 
 #endif /* _ELF_H_ */

@@ -42,7 +42,7 @@
 
 extern char **environ;
 
-void exec(paddr_t prog, char* name, int orphan)
+void exec(void* prog, char* name, int orphan)
 {
 	process_init_data_t init_data;
 	
@@ -52,7 +52,7 @@ void exec(paddr_t prog, char* name, int orphan)
 	init_data.args = "fajitas bonitas";
 	init_data.envp = environ;
 
-	init_data.data = (void *) prog;
+	init_data.data = prog;
 
 	init_data.mem_size = 0;
 	init_data.entry_point = 0;

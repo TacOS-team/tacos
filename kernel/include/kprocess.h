@@ -34,12 +34,13 @@
 
 #include <ksyscall.h>
 #include <fd_types.h>
-#include <process.h>
+//#include <process.h>
 #include <signal_types.h>
 #include <process_types.h>
 #include <symtable.h>
 #include <types.h>
 #include <vmm.h>
+#include <elf.h>
 
 #define MAX_PROC 512
 
@@ -52,6 +53,34 @@
 #define PROCSTATE_TERMINATED 4
 
 #define CURRENT_PROCESS -1
+
+/* Type d'exécution */
+#define EXEC_ELF 0
+#define EXEC_KERNEL 1
+
+/* Structure à passer au noyau pour créer un nouveau processus */
+typedef struct
+{
+	char* name;
+	char* args;
+	char** envp;
+	
+	int exec_type; /* Type d'exécution */
+	
+	void* data; /* Usage variable */
+	
+	Elf32_File* file;
+	
+	/* Données pour le chargement de l'elf */
+	int mem_size;
+	vaddr_t entry_point;
+	
+	uint32_t stack_size;
+	int priority;
+	
+	uint16_t ppid;
+	
+} process_init_data_t;
 
 struct _tty_struct_t;
 

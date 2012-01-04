@@ -35,6 +35,8 @@
 #include <drivers/mouse.h>
 #include <drivers/vga.h>
 
+#include <elf.h>
+
 /* LibC */
 #include <stdio.h>
 #include <stdlib.h>

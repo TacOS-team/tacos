@@ -1,7 +1,7 @@
 #ifndef __STL_STRING_H__
 #define __STL_STRING_H__
 
-#include <types.h>
+#include <sys/types.h>
 
 
 namespace std

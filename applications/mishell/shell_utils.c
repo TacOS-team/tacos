@@ -27,7 +27,7 @@
  * Description de ce que fait le fichier
  */
 
-#include <types.h>
+#include <sys/types.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

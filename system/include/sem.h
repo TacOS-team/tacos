@@ -31,7 +31,7 @@
 #ifndef _SEM_H_
 #define _SEM_H_
 
-#include <types.h>
+#include <sys/types.h>
 
 /** 
 * @brief donne l'identifiant (semid) d'un sémaphore déjà existant

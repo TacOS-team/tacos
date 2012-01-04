@@ -30,7 +30,7 @@
 #ifndef _PROCESS_H_
 #define _PROCESS_H_
 
-#include <types.h>
+#include <sys/types.h>
 #include <elf.h>
 
 /* Type d'exécution */
@@ -59,9 +59,8 @@ typedef struct
 	
 	uint16_t ppid;
 	
-}process_init_data_t;
+} process_init_data_t;
 
-void exec(paddr_t prog, char* name, int orphan);
-int exec_elf(char* name, int orphan);
+void exec(void *prog, char* name, int orphan);
 
 #endif

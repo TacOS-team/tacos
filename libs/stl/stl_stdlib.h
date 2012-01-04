@@ -3,7 +3,7 @@
 
 extern "C" {
   #include <malloc.h>
-  #include <types.h>
+  #include <sys/types.h>
 }
 
 void * operator new(unsigned int size);
