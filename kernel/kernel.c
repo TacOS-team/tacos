@@ -55,7 +55,6 @@
 #include <pci.h>
 #include <pci_config.h>
 #include <round_robin.h>
-#include <rtl8139.h>
 #include <scheduler.h>
 #include <string.h>
 #include <sys/syscall.h>
@@ -193,8 +192,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	pci_scan();
 		
-	int irq = rtl8139_driver_init();
-	interrupt_set_routine(irq,  rtl8139_isr, 0);
+	/* Désactivé en attendant un vrai système de drivers réseaux.
+	 * int irq = rtl8139_driver_init();
+	 * interrupt_set_routine(irq,  rtl8139_isr, 0);*/
 	
 	floppy_detect_drives();
 	kdebug("Floppy controller version: 0x%x.", floppy_get_version());

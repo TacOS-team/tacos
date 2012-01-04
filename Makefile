@@ -25,9 +25,9 @@ export AR=@printf "\033[32m   AR   $$@\033[0m\n" && ar
 
 export LD=@printf "\033[31m   LD   $$@\033[0m\n" && ld
 export CFLAGS=-native $(WE) -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
-LDLIBS=-lc -ldrivers -lbaddrivers -z nodefaultlib -lsystem -lstl
+LDLIBS=-lc -ldrivers -z nodefaultlib -lsystem -lstl
 LDFLAGS=-Llib/
-SUBDIRS = kernel kernel/drivers libc drivers system libs/stl applications
+SUBDIRS = kernel kernel/drivers libc system libs/stl applications
 
 all: directories kernel.bin
 
