@@ -86,8 +86,7 @@ void switch_page(int i) {
 	paddr_t offset = ((paddr_t) ((paddr_t) pages[i].front_buffer
 			- BASE_VGA_VIDEO));
 
-	// J'ai juste passé des heures à essayer de comprendre.
-	// Faudrait peut être arriver à changer la taille de la résolution virtuelle pour avoir des pas constants...
+	// Divise par 2 car double buffering.
 	offset_video(offset / 2);
 }
 
@@ -153,7 +152,8 @@ void disable_cursor(int disable) {
 }
 
 void cursor_position_video(int n, int x, int y) {
-	int pos = x + y * COLUMNS + n * 4096;
+	// position (indice) du caractère = (adresse caractère - adresse base) / (nombre d'octets par caractères)
+	int pos = ((int)(pages[n].front_buffer + x + y * COLUMNS) - BASE_VGA_VIDEO) / sizeof(x86_video_mem);
 
 	outb(CURSOR_POS_LSB, CRT_REG_INDEX);
 	outb((uint8_t) pos, CRT_REG_DATA);

@@ -64,7 +64,7 @@
 /**
  * @brief Structure définissant un "caractère" à l'écran.
  */
-typedef struct x86_video_char {
+typedef struct {
 	unsigned char character; /**< Code ASCII du caractère. */
 	unsigned char attribute; /**< Attribut qui permet de définir la couleur : [blink(1)|Background(3)|foreground(4)] */
 }__attribute__ ((packed)) x86_video_mem;
