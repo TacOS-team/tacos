@@ -111,3 +111,18 @@ SYSCALL_HANDLER3(sys_stat, const char *path, struct stat *buf, int *ret) {
 SYSCALL_HANDLER2(sys_unlink, const char *path, int *ret) {
 	*ret = vfs_unlink(path);
 }
+
+SYSCALL_HANDLER2(sys_dup, int oldfd, int *ret) {
+	int i = 0;
+	process_t* process = get_current_process();
+
+	// recherche d'une place dans la file descriptor table du process :
+	while(process->fd[i].used) {
+		i++;
+	}
+
+	process->fd[i].used = true;
+	process->fd[i].ofd = process->fd[oldfd].ofd;
+
+	*ret = i;
+}

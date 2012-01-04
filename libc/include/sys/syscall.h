@@ -62,5 +62,6 @@
 #define SYS_DUMMY 27
 #define SYS_STAT 28
 #define SYS_UNLINK 29
+#define SYS_DUP 30
 
 #endif
