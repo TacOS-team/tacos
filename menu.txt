@@ -10,4 +10,3 @@ kernel /system/kernel.bin
 title Tacos(loljitas)
 root (fd0)
 kernel /system/kernel.bin -l
-

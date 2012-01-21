@@ -45,7 +45,7 @@ static const char * drive_types[8] __attribute__((unused))  = {
 	"none"
 };
 
-static volatile uint8_t current_drive = 0;
+static volatile uint8_t current_drive = 1;
 
 bool floppy_ready()
 {

@@ -57,6 +57,7 @@
 /* Includes des fs */
 #include <fs/devfs.h>
 #include <fs/fat.h>
+#include <fs/ext2.h>
 #include <fs/procfs.h>
 
 /* Includes des drivers */
@@ -193,11 +194,12 @@ void cmain (unsigned long magic, unsigned long addr) {
 		kerr("Initialisation du lecteur a echoue.");
 	
 	fat_init();
+	ext2_init();
 	procfs_init();
 
 	vfs_mount(NULL, "proc", "ProcFS");
 	
-	vfs_mount("/dev/fd0", "tacos", "FAT");
+	vfs_mount("/dev/fd0", "tacos", "EXT2");
 	
 	init_process_array();
 	
