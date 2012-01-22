@@ -32,6 +32,10 @@
 
 #define FOPEN_MAX 500
 
+#define SEEK_SET 0
+#define SEEK_CUR 1
+#define SEEK_END 2
+
 struct _fs_instance_t;
 
 typedef struct _open_file_descriptor {

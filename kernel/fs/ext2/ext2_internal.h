@@ -30,6 +30,9 @@
 #define _EXT2_INTERNAL_H_
 
 #include <fs/devfs.h>
+#include <vfs.h>
+
+#define EXT2_ROOT_INO 2
 
 // http://www.nongnu.org/ext2-doc/ext2.html#SUPERBLOCK
 // Repris du code de Linux
@@ -193,10 +196,15 @@ struct blk_t {
 typedef struct _ext2_fs_instance_t {
 	fs_instance_t super;
 	struct ext2_super_block superblock;
-	struct ext2_group_desk *group_desc_table;
+	struct ext2_group_desc *group_desc_table;
 	int n_groups;
 	blkdev_read_t read_data;
 	blkdev_write_t write_data;
 } ext2_fs_instance_t;
+
+typedef struct _ext2_extra_data {
+	uint32_t inode;
+	uint32_t type;
+} ext2_extra_data;
 
 #endif

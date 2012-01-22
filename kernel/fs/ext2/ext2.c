@@ -32,6 +32,10 @@
 
 #include "ext2_internal.h"
 
+static int ceil(float n) {
+  return (n == (int)n) ? n : (int)(n+(n>=0));
+} 
+
 /*
  * Register this FS.
  */
@@ -43,8 +47,25 @@ void ext2_init() {
 	vfs_register_fs(fs);
 }
 
+static void read_group_desc_table(ext2_fs_instance_t *instance) {
+	int b = instance->superblock.s_first_data_block + 1;
+	instance->n_groups = ceil((float)instance->superblock.s_blocks_count / (float)instance->superblock.s_blocks_per_group);
+	instance->group_desc_table = kmalloc(sizeof(struct ext2_group_desc) * instance->n_groups);
+
+	instance->read_data(instance->super.device, instance->group_desc_table, sizeof(struct ext2_group_desc) * instance->n_groups, b * (1024 << instance->superblock.s_log_block_size));
+}
+
+static void show_info(ext2_fs_instance_t *instance) {
+	klog("Nombre d'inodes : %d", instance->superblock.s_inodes_count);
+	klog("Taille d'un inode : %d", instance->superblock.s_inode_size);
+	klog("Blocks libres : %d", instance->superblock.s_free_blocks_count);
+	klog("Inodes libres : %d", instance->superblock.s_free_inodes_count);
+	klog("Taille block : %d", 1024 << instance->superblock.s_log_block_size);
+	klog("Blocks par groupe : %d", instance->superblock.s_blocks_per_group);
+}
+
 /*
- * Init the FAT driver for a specific devide.
+ * Init the EXT2 driver for a specific devide.
  */
 fs_instance_t* mount_EXT2(open_file_descriptor* ofd) {
 	klog("mounting EXT2");
@@ -52,6 +73,17 @@ fs_instance_t* mount_EXT2(open_file_descriptor* ofd) {
 
 	instance->read_data = ((blkdev_interfaces*)(ofd->extra_data))->read;
 	instance->write_data = ((blkdev_interfaces*)(ofd->extra_data))->write;
+
+	instance->super.open = ext2_open;
+	instance->super.readdir = ext2_readdir;
+	instance->super.opendir = ext2_opendir;
+	instance->super.mkdir = ext2_mkdir;
+	instance->super.stat = ext2_stat;
+	instance->super.unlink = ext2_unlink;
+
+  instance->read_data(instance->super.device, &(instance->superblock), sizeof(struct ext2_super_block), 1024);
+  read_group_desc_table(instance);
+  show_info(instance);
 
 	return (fs_instance_t*)instance;
 }

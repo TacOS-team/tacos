@@ -35,10 +35,6 @@
 #include <sys/stat.h>
 #include <vfs.h>
 
-#define SEEK_SET 0
-#define SEEK_CUR 1
-#define SEEK_END 2
-
 void fat_init();
 fs_instance_t* mount_FAT(open_file_descriptor* ofd);
 void umount_FAT(fs_instance_t *instance);
