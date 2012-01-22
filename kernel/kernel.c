@@ -199,7 +199,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	vfs_mount(NULL, "proc", "ProcFS");
 	
-	vfs_mount("/dev/fd0", "tacos", "EXT2");
+	vfs_mount("/dev/fd0", "tacos", "FAT");
 	
 	init_process_array();
 	
