@@ -32,7 +32,7 @@
 
 #include <types.h>
 #include <fd_types.h>
-#include <sys/stat.h>
+#include <kstat.h>
 #include <vfs.h>
 
 void fat_init();

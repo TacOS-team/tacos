@@ -31,8 +31,7 @@
 
 #include <types.h>
 #include <fd_types.h>
-//XXX: libc
-#include <sys/stat.h>
+#include <kstat.h>
 
 struct _fs_instance_t;
 

@@ -32,7 +32,7 @@
 
 #include <ksyscall.h>
 #include <types.h>
-#include <sys/stat.h>
+#include <kstat.h>
 
 #define NAME_MAX 256
 

@@ -36,7 +36,7 @@
 
 #include <types.h>
 #include <ksyscall.h>
-#include <sys/stat.h>
+#include <kstat.h>
 
 SYSCALL_HANDLER3(sys_write, uint32_t fd, const void *buf, size_t *c);
 SYSCALL_HANDLER3(sys_read, uint32_t fd, const void *buf, size_t *c);
