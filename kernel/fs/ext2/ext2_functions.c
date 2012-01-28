@@ -97,10 +97,9 @@ static int ext2_rename(fs_instance_t *instance, const char *orig, const char *de
 
 static void load_buffer(open_file_descriptor *ofd) {
 	ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
-	size_t size_buffer = sizeof(ofd->buffer) < (1024 << instance->superblock.s_log_block_size) ? 
-			sizeof(ofd->buffer) : (1024 << instance->superblock.s_log_block_size);
+	size_t size_buffer = sizeof(ofd->buffer) < (size_t) (1024 << instance->superblock.s_log_block_size) ? 
+			sizeof(ofd->buffer) : (size_t) (1024 << instance->superblock.s_log_block_size);
 	off_t offset = ofd->current_octet;
-	int inode = ((ext2_extra_data*)ofd->extra_data)->inode;
 
 	struct blk_t *blocks = ((ext2_extra_data*)ofd->extra_data)->blocks;
 	if (blocks == NULL) return;
@@ -325,8 +324,8 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 	int inode = ((ext2_extra_data*)ofd->extra_data)->inode;
 	if (inode >= 0) {
 		ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
-		size_t size_buffer = sizeof(ofd->buffer) < (1024 << instance->superblock.s_log_block_size) ? 
-			sizeof(ofd->buffer) : (1024 << instance->superblock.s_log_block_size);
+		size_t size_buffer = sizeof(ofd->buffer) < (size_t) (1024 << instance->superblock.s_log_block_size) ? 
+			sizeof(ofd->buffer) : (size_t) (1024 << instance->superblock.s_log_block_size);
 		size_t count = 0;
 		int j = 0;
 	
