@@ -33,6 +33,8 @@
 #include <types.h>
 #include <kfcntl.h>
 
+#include <fs/ext2.h>
+
 // XXX: Fonctions à intégrer.
 #ifdef FALSE
 
@@ -375,11 +377,21 @@ open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uin
 	ofd->write = ext2_write;
 	ofd->seek = ext2_seek;
 	ofd->readdir = ext2_readdir;
+	ofd->close = ext2_close;
 
 	ext2_extra_data *extra_data = kmalloc(sizeof(ext2_extra_data));
 	extra_data->inode = inode;
 	extra_data->type = EXT2_FT_REG_FILE; //XXX!
 	ofd->extra_data = extra_data;
 
+	klog("opened!\n");
 	return ofd;
+}
+
+int ext2_close(open_file_descriptor *ofd) {
+	if (ofd == NULL) {
+		return -1;
+	}
+	kfree(ofd);
+	return 0;
 }
