@@ -33,7 +33,6 @@
 #include <kprocess.h>
 #include <ksyscall.h>
 #include <scheduler.h>
-#include <string.h>
 #include <tty.h>
 #include <vfs.h>
 #include <fs/devfs.h>

@@ -1,5 +1,5 @@
 /**
- * @file stat.h
+ * @file kstat.h
  *
  * @author TacOS developers 
  *
@@ -25,8 +25,8 @@
  * 
  */
 
-#ifndef _STAT_H_
-#define _STAT_H_
+#ifndef _KSTAT_H_
+#define _KSTAT_H_
 
 #include <types.h>
 #include <time.h>
