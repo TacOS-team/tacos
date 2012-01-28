@@ -163,25 +163,36 @@ int ext2_stat(fs_instance_t *instance, const char *path, struct stat *stbuf) {
 	}
 }
 
-int ext2_readdir(fs_instance_t *instance, const char * path, int iter, char * filename) {
-	ext2_fs_instance_t* inst = (ext2_fs_instance_t*)instance;
-	int inode = getinode_from_path(inst, path);
+
+int ext2_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
+	size_t count = 0;
+	ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
+	int inode = ((ext2_extra_data*)ofd->extra_data)->inode;
 	if (inode >= 0) {
-		struct directories_t *dirs = readdir_inode(inst, inode);
+		size_t c = 0;
+		struct directories_t *dirs = readdir_inode(instance, inode);
 		struct directories_t *aux = dirs;
-		while (aux != NULL) {
-			if (!iter) {
-				strncpy(filename, aux->dir->name, aux->dir->name_len);
-				filename[aux->dir->name_len] = '\0';
-				return 0;
-			}
+
+		while (c < ofd->current_octet && aux != NULL) {
 			aux = aux->next;
-			iter--;
+			c++;
 		}
-		return -1;
-	} else {
-		return inode;
+
+		while (aux != NULL && count < size) {
+			struct dirent *d = (struct dirent *)(entries + count);
+			d->d_ino = aux->dir->inode;
+			strncpy(d->d_name, aux->dir->name, aux->dir->name_len);
+			d->d_name[aux->dir->name_len] = '\0';
+			d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + strlen(d->d_name) + 1;
+			d->d_type = aux->dir->file_type;
+			count += d->d_reclen;
+			c++;
+			aux = aux->next;
+		}
+
+		ofd->current_octet = c;
 	}
+	return count;
 }
 
 int ext2_seek(open_file_descriptor * ofd, long offset, int whence) {
@@ -363,6 +374,7 @@ open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uin
 	ofd->read = ext2_read;
 	ofd->write = ext2_write;
 	ofd->seek = ext2_seek;
+	ofd->readdir = ext2_readdir;
 
 	ext2_extra_data *extra_data = kmalloc(sizeof(ext2_extra_data));
 	extra_data->inode = inode;
