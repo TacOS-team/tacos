@@ -39,8 +39,7 @@ void fat_init();
 fs_instance_t* mount_FAT(open_file_descriptor* ofd);
 void umount_FAT(fs_instance_t *instance);
 
-int fat_readdir(fs_instance_t *instance, const char * path, int iter, char * filename);
-int fat_opendir(fs_instance_t *instance, const char * path);
+int fat_readdir(open_file_descriptor * ofd, char * entries, size_t size);
 
 open_file_descriptor * fat_open_file(fs_instance_t *instance, const char * path, uint32_t flags);
 int fat_mkdir(fs_instance_t *instance, const char * path, mode_t mode);

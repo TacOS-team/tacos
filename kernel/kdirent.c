@@ -31,17 +31,27 @@
 #include <kdirent.h>
 #include <kmalloc.h>
 #include <string.h>
+#include <scheduler.h>
+#include <klog.h>
 
-SYSCALL_HANDLER2(sys_opendir, const char *name, int *ret) {
-	if (vfs_opendir(name) == 0) {
-		*ret = 0;
+SYSCALL_HANDLER3(sys_readdir, int fd, char *entries, size_t *size) {
+	process_t * process = get_current_process();
+	ssize_t *t = (ssize_t*)size;
+	
+	open_file_descriptor *ofd;
+
+	if (process->fd[fd].used) {
+		ofd = process->fd[fd].ofd;
+		
+		if(ofd->readdir == NULL) {
+			kerr("No \"readdir\" method for this device.");
+			*t = 0;
+		} else {
+			*t = ofd->readdir(ofd, entries, *size);
+		}
 	} else {
-		*ret = 1;
+		*t = 0;
 	}
-}
-
-SYSCALL_HANDLER3(sys_readdir, DIR *dir, struct dirent *entry, int *ret) {
-	*ret = vfs_readdir(dir->path, dir->iter, entry->d_name);
 }
 
 SYSCALL_HANDLER3(sys_mkdir, const char *pathname, mode_t mode, int *ret) {

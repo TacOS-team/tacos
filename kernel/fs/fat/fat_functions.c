@@ -41,37 +41,41 @@
 
 #include "fat_internal.c"
 
-int fat_opendir(fs_instance_t *instance, const char * path) {
-	directory_t *f;
+int fat_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
+	fat_fs_instance_t *instance = (fat_fs_instance_t*) ofd->fs_instance;
+	size_t count = 0;
+	size_t c = 0;
 
-	if ((f = open_dir_from_path((fat_fs_instance_t*)instance, path)) == NULL)
-		return -ENOENT;
-
-	kfree(f);
-
-	return 0;
-}
-
-int fat_readdir(fs_instance_t *instance, const char * path, int iter, char * filename) {
 	directory_t *dir;
-
-	if ((dir = open_dir_from_path((fat_fs_instance_t*)instance, path)) == NULL)
-		return -ENOENT;
-
+	if (ofd->first_cluster > 0) {
+		dir = kmalloc(sizeof(directory_t));
+		open_dir(instance, ofd->first_cluster, dir);
+	} else {
+		dir = open_root_dir(instance);
+	}
 	directory_entry_t *dir_entry = dir->entries;
-	while (dir_entry) {
-		if (!iter) {
-			strcpy(filename, dir_entry->name);
-			
-			kfree(dir); // TODO: libérer liste chainée.
-			return 0;
-		}
-		iter--;
+
+	kfree(dir);
+
+	while (c < ofd->current_octet && dir_entry) {
 		dir_entry = dir_entry->next;
+		c++;
 	}
 
-	kfree(dir); // TODO: libérer liste chainée.
-	return 1;
+	while (dir_entry && count <= size) {
+		struct dirent *d = (struct dirent *)(entries + count);
+		d->d_ino = 1;
+		d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + strlen(dir_entry->name) + 1;
+		//d.d_type = dir_entry->attributes;
+		strcpy(d->d_name, dir_entry->name);
+		count += d->d_reclen;
+		dir_entry = dir_entry->next;
+		c++;
+	}
+
+	ofd->current_octet = c;
+
+	return count;
 }
 
 // TODO: Est-ce que offset peut être négatif ? Si oui, le gérer.
@@ -257,6 +261,7 @@ open_file_descriptor * fat_open_file(fs_instance_t *instance, const char * path,
 	ofd->current_octet = 0;
 	ofd->current_octet_buf = 0;
 
+	ofd->readdir = fat_readdir;
 	ofd->write = fat_write_file;
 	ofd->read = fat_read_file;
 	ofd->seek = fat_seek_file;
@@ -285,6 +290,7 @@ int fat_stat(fs_instance_t *instance, const char *path, struct stat *stbuf) {
 
 	if(strcmp(path, "/") == 0) {
 		stbuf->st_mode |= S_IFDIR;
+		stbuf->st_blksize = ((fat_fs_instance_t*)instance)->fat_info.bytes_per_cluster;
 	} else {
 		directory_t *dir;
 		char filename[256];
@@ -317,6 +323,7 @@ int fat_stat(fs_instance_t *instance, const char *path, struct stat *stbuf) {
 			stbuf->st_mtime = dir_entry->modification_time;
 			stbuf->st_ctime = dir_entry->creation_time;
 			stbuf->st_size = dir_entry->size;
+			stbuf->st_blksize = ((fat_fs_instance_t*)instance)->fat_info.bytes_per_cluster;
 		}
 		kfree(dir); // TODO: liberer memoire liste chainee.
 	}

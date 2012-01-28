@@ -161,7 +161,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_SIGPROCMASK, 	(syscall_handler_t) sys_sigprocmask);
 	syscall_set_handler(SYS_KILL,	(syscall_handler_t) sys_kill);
 	syscall_set_handler(SYS_CLOSE,	(syscall_handler_t) sys_close);
-	syscall_set_handler(SYS_OPENDIR,	(syscall_handler_t) sys_opendir);
 	syscall_set_handler(SYS_READDIR,	(syscall_handler_t) sys_readdir);
 	syscall_set_handler(SYS_MKDIR,	(syscall_handler_t) sys_mkdir);
 	syscall_set_handler(SYS_SIGRET,	(syscall_handler_t) sys_sigret);

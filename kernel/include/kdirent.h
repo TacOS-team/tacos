@@ -36,22 +36,18 @@
 
 #define NAME_MAX 256
 
-typedef struct _DIR {
-	int iter;
-	char *path;
-} DIR;
-
 struct dirent {
-	char d_name[NAME_MAX];
+	uint32_t  d_ino;
+	uint16_t  d_reclen;
+	uint8_t   d_type;
+	char      d_name[NAME_MAX];
 };
-
-SYSCALL_HANDLER2(sys_opendir, const char *name, int *ret);
 
 #define ENOENT 2
 #define ENOTDIR 3
 #define EEXIST 4
 
-SYSCALL_HANDLER3(sys_readdir, DIR *dir, struct dirent *entry, int *ret);
+SYSCALL_HANDLER3(sys_readdir, int fd, char *entries, size_t *size);
 SYSCALL_HANDLER3(sys_mkdir, const char *pathname, mode_t mode, int *ret);
 
 #endif

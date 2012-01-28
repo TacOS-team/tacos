@@ -265,26 +265,37 @@ static directory_t * open_dir_from_path(fat_fs_instance_t *instance, const char 
 }
 
 static directory_entry_t * open_file_from_path(fat_fs_instance_t *instance, const char *path) {
-	char * dir = kmalloc(strlen(path));
-	char filename[256];
-	fat_split_dir_filename(path, dir, filename);
+	directory_t * directory;
+	if (path[0] != '\0') {
+		char * dir = kmalloc(strlen(path) + 1);
+		char filename[256];
+		fat_split_dir_filename(path, dir, filename);
 
-	directory_t * directory = open_dir_from_path(instance, dir);
-	kfree(dir);
+		directory = open_dir_from_path(instance, dir);
+		kfree(dir);
 
-	if (directory) {
-		directory_entry_t *dir_entry = directory->entries;
-		while (dir_entry) {
-			if (strcmp(dir_entry->name, filename) == 0) {
-				kfree(directory);
-				// TODO: free de la liste chainée.
-				return dir_entry;
+		if (directory) {
+			directory_entry_t *dir_entry = directory->entries;
+			while (dir_entry) {
+				if (strcmp(dir_entry->name, filename) == 0) {
+					kfree(directory);
+					// TODO: free de la liste chainée.
+					return dir_entry;
+				}
+				dir_entry = dir_entry->next;
 			}
-			dir_entry = dir_entry->next;
+	
+			kfree(directory);
+			// TODO: free de la liste chainée.
 		}
+	} else {
+		directory_entry_t *dir_entry = kmalloc(sizeof(directory_entry_t));
+		strcpy(dir_entry->name, ".");
 
-		kfree(directory);
-		// TODO: free de la liste chainée.
+		dir_entry->cluster = 0;
+		dir_entry->size = instance->fat_info.bytes_per_cluster;
+		dir_entry->next = NULL;
+		return dir_entry;
 	}
 	
 	return NULL;

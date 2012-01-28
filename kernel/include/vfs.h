@@ -53,8 +53,6 @@ typedef struct _fs_instance_t {
 	file_system_t *fs; /**< Pointeur vers le FS utilisé. */ //XXX: Est-ce utile ?
 	open_file_descriptor * device;
 	open_file_descriptor * (*open) (struct _fs_instance_t *, const char * , uint32_t);
-	int (*opendir) (struct _fs_instance_t *, const char *);
-	int (*readdir) (struct _fs_instance_t *, const char *, int, char *);
 	int (*mkdir) (struct _fs_instance_t *, const char * , mode_t);
 	int (*stat) (struct _fs_instance_t *, const char *, struct stat *);
 	int (*unlink) (struct _fs_instance_t *, const char *);
@@ -69,9 +67,9 @@ open_file_descriptor* vfs_open(const char * pathname, uint32_t flags);
 void vfs_mount(const char *device, const char *mountpoint, const char *type);
 int vfs_umount(const char *mountpoint);
 int vfs_mkdir(const char * pathname, mode_t mode);
-int vfs_opendir(const char *path);
-int vfs_readdir(const char * pathname, int iter, char * filename);
 int vfs_stat(const char *pathname, struct stat *);
 int vfs_unlink(const char *pathname);
 
+int vfs_readdir(open_file_descriptor * ofd, char * entries, size_t size);
+int vfs_close(open_file_descriptor *ofd);
 #endif

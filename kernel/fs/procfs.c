@@ -5,6 +5,7 @@
 #include <kmalloc.h>
 #include <string.h>
 #include <types.h>
+#include <fs/procfs.h>
 
 #include <stdlib.h>
 
@@ -67,18 +68,36 @@ open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * pat
 	char buf[64];
 	process_t* process = NULL;
 	
-	if (path[0] != '/')
-		return NULL;
-	else {
-		i=0;
-		while (path[i] == '/') 
+	i = 0;
+	while (path[i] == '/') 
+		i++;
+		
+	if(path[i] == '\0') {
+		open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
+		
+		ofd->flags = flags;
+		ofd->fs_instance = instance;
+		ofd->first_cluster = 0;
+		ofd->file_size = 512; /* TODO */
+		ofd->current_cluster = 0;
+		ofd->current_octet = 0;
+		ofd->current_octet_buf = 0;
+
+		ofd->readdir = procfs_readdir;
+
+		return ofd;
+	}	else {
+		j=0;
+		while(path[i] != '\0' && path[i] != '/') {
+			buf[j] = path[i];
 			i++;
-			
-		if(path[i] == '\0') {
-			/* Les fichier son sous un dossier pid, donc ici y'a rien à ouvrir */
-			return NULL;
-		}	
-		else {
+			j++;
+		}
+		buf[j] = '\0';
+		pid = atoi(buf);
+		process = find_process(pid);
+		if(process != NULL) {
+			/* On est dans un pid valide, alors on regarde le fichier à ouvrir, et on configure l'ofd en fonction */
 			j=0;
 			while(path[i] != '\0' && path[i] != '/') {
 				buf[j] = path[i];
@@ -86,18 +105,8 @@ open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * pat
 				j++;
 			}
 			buf[j] = '\0';
-			pid = atoi(buf);
-			process = find_process(pid);
-			if(process != NULL) {
-				/* On est dans un pid valide, alors on regarde le fichier à ouvrire, et on configure l'ofd en fonction */
-				i++;
-				j=0;
-				while(path[i] != '\0' && path[i] != '/') {
-					buf[j] = path[i];
-					i++;
-					j++;
-				}
-				buf[j] = '\0';
+
+			if (j > 0) {
 				i=0;
 				while(i<sizeof(procfs_file_list)/sizeof(procfs_file_t)) {
 					if(strcmp(buf, procfs_file_list[i].filename) == 0) {
@@ -120,97 +129,64 @@ open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * pat
 					}
 					i++;
 				}
-				return NULL;
 			} else {
-				return NULL;
+				open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
+
+				ofd->fs_instance = instance;
+				ofd->first_cluster = pid;
+				ofd->file_size = 512; /* TODO */
+				ofd->current_cluster = ofd->first_cluster;
+				ofd->current_octet = 0;
+				ofd->current_octet_buf = 0;
+				
+				ofd->extra_data = process;
+				ofd->write = NULL;/* procfs_write_file;*/
+				ofd->read = procfs_file_list[i].read; /*procfs_read_file; */
+				ofd->seek = NULL; /*procfs_seek_file; */
+				ofd->close = procfs_close; /*procfs_close;*/
+				
+				return ofd;
 			}
-		}
-	}
-}
-
-
-int procfs_opendir(fs_instance_t *instance __attribute__((unused)), const char * path) {
-	int i,j;
-	int pid;
-	char buf[64]; /* Beaucoup trop */
-	
-	if (path[0] == '\0')
-		return 0;
-	if (path[0] != '/')
-		return -ENOENT;
-		
-	i=0;
-	while (path[i] == '/') 
-		i++;
-	
-	if(path[i] != '\0') { /* Dans ce cas on cherche un pid */
-		j=0;
-		while(path[i] != '\0' && path[i] != '/') {
-			buf[j] = path[i];
-			i++;
-			j++;
-		}
-		buf[j] = '\0';
-		pid = atoi(buf);
-		if(find_process(pid) != NULL) {
-			return 0;
+			return NULL;
 		} else {
-			return -ENOENT;
+			return NULL;
 		}
 	}
-	
-	return 0;
 }
 
-int procfs_readdir(fs_instance_t *instance __attribute__((unused)), const char * path, int iter, char * filename) {
-	int i,j;
-	int pid;
-	char buf[64];
-	
-	if (path[0] != '/')
-		return -ENOENT;
-	else {
-		i=0;
-		while (path[i] == '/') 
+int procfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
+	size_t count = 0;
+	int i = ofd->current_octet;
+
+	if (ofd->current_cluster == 0) {
+		while (i < MAX_PROC && count < size) {
+			if (get_process_array(i) != NULL) {
+				struct dirent *d = (struct dirent *)(entries + count);
+				d->d_ino = 1;
+				itoa (d->d_name, 10, get_process_array(i)->pid);
+				d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + strlen(d->d_name) + 1;
+				//d.d_type = dir_entry->attributes;
+				count += d->d_reclen;
+			}
 			i++;
-			
-		if(path[i] == '\0') {
-			i=0;
-			while(i<MAX_PROC) {
-				while(i<MAX_PROC && get_process_array(i) == NULL)
-					i++;
-				if(!iter && get_process_array(i) != NULL) {
-					itoa (filename, 10, get_process_array(i)->pid);
-					return 0;
-				}
-				iter--;
-				i++;
-			}
 		}
-		else {
-			j=0;
-			while(path[i] != '\0' && path[i] != '/') {
-				buf[j] = path[i];
-				i++;
-				j++;
-			}
-			buf[j] = '\0';
-			pid = atoi(buf);
-			if(find_process(pid) != NULL) {
-				if((unsigned int)iter<sizeof(procfs_file_list)/sizeof(procfs_file_t)) {
-					strcpy(filename, procfs_file_list[iter].filename);
-					return 0;
-				}
-			} else {
-				return -ENOENT;
-			}
+	} else {
+		int pid = ofd->current_cluster;
+		if (find_process(pid) != NULL) {
+			struct dirent *d = (struct dirent *)(entries + count);
+			d->d_ino = 1;
+			strcpy(d->d_name, procfs_file_list[i].filename);
+			d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + strlen(d->d_name) + 1;
+			count += d->d_reclen;
+			i++;
 		}
 	}
-	return 1;
+	ofd->current_octet = i;
+
+	return count;
 }
 
 int procfs_stat(fs_instance_t *instance __attribute__ ((unused)), const char *path, struct stat *stbuf) {
-	int res = 0;
 	unsigned int i,j;
 	int pid;
 	char buf[64];
@@ -221,6 +197,7 @@ int procfs_stat(fs_instance_t *instance __attribute__ ((unused)), const char *pa
 	stbuf->st_atime = 0;
 	stbuf->st_mtime = 0;
 	stbuf->st_ctime = 0;
+	stbuf->st_blksize = 2048;
 
 	if(strcmp(path, "/") == 0) {
 		stbuf->st_mode |= S_IFDIR;
@@ -263,8 +240,7 @@ int procfs_stat(fs_instance_t *instance __attribute__ ((unused)), const char *pa
 		}
 	}
 	
-
-	return res;
+	return 0;
 }
 
 fs_instance_t* mount_ProcFS() {
@@ -273,8 +249,6 @@ fs_instance_t* mount_ProcFS() {
 	fs_instance_t *instance = kmalloc(sizeof(fs_instance_t));
 	instance->open = procfs_open_file;
 	instance->mkdir = NULL;
-	instance->readdir = procfs_readdir;
-	instance->opendir = procfs_opendir;
 	instance->stat = procfs_stat;
 	
 	return instance;

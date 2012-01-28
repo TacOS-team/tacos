@@ -151,38 +151,24 @@ int register_blkdev(const char* name, blkdev_interfaces* di)
 	return done-1; /* Retourne -1 en cas d'erreur, 0 sinon */
 }
 
-int devfs_opendir(fs_instance_t *instance __attribute__((unused)), const char * path) {
-	if(strcmp(path,"/") != 0) {
-		return -ENOENT;
-	}		
-	return 0;
-}
+int devfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
+	size_t count = 0;
 
-int devfs_readdir(fs_instance_t *instance __attribute__((unused)), const char * path, int iter, char * filename) {
-	int i;
-	
-	if (path[0] != '/')
-		return -ENOENT;
-	else {
-		i=0;
-		while (path[i] == '/') 
-			i++;
-			
-		if(path[i] == '\0') {
-			i=0;
-			while(i<MAX_DRIVERS) {
-				while(i<MAX_DRIVERS && driver_list[i].used == 0)
-					i++;
-				if(!iter && driver_list[i].used == 1) {
-					strcpy(filename, driver_list[i].name);
-					return 0;
-				}
-				iter--;
-				i++;
-			}
+	int i = ofd->current_octet;
+	while (i < MAX_DRIVERS && count < size) {
+		if (driver_list[i].used) {
+			struct dirent *d = (struct dirent *)(entries + count);
+			d->d_ino = 1;
+			d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + strlen(driver_list[i].name) + 1;
+			//d.d_type = dir_entry->attributes;
+			strcpy(d->d_name, driver_list[i].name);
+			count += d->d_reclen;
 		}
+		i++;
 	}
-	return 1;
+	ofd->current_octet = i;
+
+	return count;
 }
 
 open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path, uint32_t flags) {
@@ -190,9 +176,24 @@ open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path
 	char buf[64];
 	driver_entry* drentry;
 	
-	if (path[0] != '/')
+	if (path[0] != '/') {
+		if (path[0] == '\0') {
+			open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
+			
+			ofd->flags = flags;
+			ofd->fs_instance = instance;
+			ofd->first_cluster = 0;
+			ofd->file_size = 512; /* TODO */
+			ofd->current_cluster = 0;
+			ofd->current_octet = 0;
+			ofd->current_octet_buf = 0;
+
+			ofd->readdir = devfs_readdir;
+
+			return ofd;
+		}
 		return NULL;
-	else {
+	} else {
 		i=0;
 		while (path[i] == '/') 
 			i++;
@@ -216,7 +217,7 @@ open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path
 			ofd->current_octet = 0;
 			ofd->current_octet_buf = 0;
 			ofd->extra_data = drentry->di; /* XXX Un peu laid mais ça fera la blague pour le moment */
-			
+
 			switch(drentry->type) {
 				case CHARDEV:
 					ofd->write = ((chardev_interfaces*)(drentry->di))->write;
@@ -267,6 +268,7 @@ int devfs_stat(fs_instance_t *instance __attribute__ ((unused)), const char *pat
 	stbuf->st_atime = 0;
 	stbuf->st_mtime = 0;
 	stbuf->st_ctime = 0;
+	stbuf->st_blksize = 2048;
 
 	if(strcmp(path, "/") == 0) {
 		stbuf->st_mode |= S_IFDIR;
@@ -298,8 +300,6 @@ fs_instance_t* mount_devfs() {
 	fs_instance_t *instance = kmalloc(sizeof(fs_instance_t));
 	instance->open = devfs_open_file;
 	instance->mkdir = NULL;
-	instance->readdir = devfs_readdir;
-	instance->opendir = devfs_opendir;
 	instance->stat = devfs_stat;
 	
 	return instance;

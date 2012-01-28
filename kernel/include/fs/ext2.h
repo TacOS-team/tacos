@@ -39,7 +39,6 @@ void umount_EXT2(fs_instance_t *instance);
 open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uint32_t flags);
 size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size);
 int ext2_readdir(fs_instance_t *instance, const char * path, int iter, char * filename);
-int ext2_opendir(fs_instance_t *instance, const char * path);
 int ext2_stat(fs_instance_t *instance, const char *path, struct stat *stbuf);
 int ext2_mkdir(fs_instance_t *instance, const char * path, mode_t mode);
 int ext2_unlink(fs_instance_t *instance, const char * path);

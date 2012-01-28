@@ -93,7 +93,23 @@ open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 	if (instance && instance->open != NULL) {
 		return instance->open(instance, pathname + len, flags);
 	}
+	if (instance == NULL && len == 0) {
+		open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
+		
+		ofd->readdir = vfs_readdir;
+		ofd->close = vfs_close;
+		
+		return ofd;
+	}
 	return NULL;
+}
+
+int vfs_close(open_file_descriptor *ofd) {
+	if (ofd == NULL) {
+		return -1;
+	}
+	kfree(ofd);
+	return 0;
 }
 
 void vfs_mount(const char *device, const char *mountpoint, const char *type) {
@@ -154,6 +170,7 @@ int vfs_stat(const char *pathname, struct stat *buf) {
 		if (len == 0) {
 			buf->st_mode = S_IFDIR;
 			buf->st_size = 0;
+			buf->st_blksize = 2048;
 			return 0;
 		}
 	}
@@ -188,48 +205,28 @@ int vfs_mkdir(const char * pathname, mode_t mode) {
 	return -1;
 }
 
-int vfs_opendir(const char *pathname) {
-	int len;
-	fs_instance_t *instance = get_instance_from_path(pathname, &len);
-	if (instance) {
-		if (instance->opendir != NULL) {
-			if (pathname[len] == '\0') {
-				return instance->opendir(instance, "/");
-			} else {
-				return instance->opendir(instance, pathname + len);
-			}
-		}
-	} else {
-		if (len == 0) {
-			return 0;
-		}
-	}
-	return -ENOENT;
-}
+int vfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
+	size_t count = 0;
+	size_t c = 0;
+	mounted_fs_t *aux = mount_list;
 
-int vfs_readdir(const char * pathname, int iter, char * filename) {
-	int len;
-	fs_instance_t *instance = get_instance_from_path(pathname, &len);
-	if (instance) {
-		if (instance->readdir != NULL) {
-			if (pathname[len] == '\0') {
-				return instance->readdir(instance, "/", iter, filename);
-			} else {
-				return instance->readdir(instance, pathname + len, iter, filename);
-			}
-		}
-	} else {
-		if (len == 0) {
-			mounted_fs_t *aux = mount_list;
-			while (aux != NULL) {
-				if (iter == 0) {
-					strcpy(filename, aux->name);
-					return 0;
-				}
-				aux = aux->next;
-				iter--;
-			}
-		}
+	while (c < ofd->current_octet && aux) {
+		aux = aux->next;
+		c++;
 	}
-	return -1;
+
+	while (aux != NULL && count < size) {
+		struct dirent *d = (struct dirent *)(entries + count);
+		d->d_ino = 1;
+		d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + strlen(aux->name) + 1;
+		//d.d_type = dir_entry->attributes;
+		strcpy(d->d_name, aux->name);
+		count += d->d_reclen;
+		aux = aux->next;
+		c++;
+	}
+
+	ofd->current_octet = c;
+
+	return count;
 }

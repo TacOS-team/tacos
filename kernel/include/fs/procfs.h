@@ -31,5 +31,6 @@
 #define _PROCFS_H
 
 void procfs_init();
+int procfs_readdir(open_file_descriptor * ofd, char * entries, size_t size);
 
 #endif /* _PROCFS_H */

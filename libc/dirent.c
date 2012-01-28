@@ -28,10 +28,13 @@
  */
 
 #include <dirent.h>
+#include <fcntl.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/syscall.h>
 #include <unistd.h>
+
+#include <stdio.h>
 
 int mkdir(const char *pathname, mode_t mode) {
 	int ret;
@@ -46,34 +49,41 @@ int mkdir(const char *pathname, mode_t mode) {
 }
 
 DIR* opendir(const char* dirname) {
-	DIR* dir = malloc(sizeof(DIR));
+	struct stat buf;
 	int ret;
 	if (dirname[0] != '/') {
 		char * absolutepath = get_absolute_path(dirname);
-		syscall(SYS_OPENDIR, (uint32_t) absolutepath, (uint32_t) &ret, 0);
+		syscall(SYS_STAT, (uint32_t) absolutepath, (uint32_t) &buf, (uint32_t) &ret);
 		free(absolutepath);
 	} else {
-		syscall(SYS_OPENDIR, (uint32_t) dirname, (uint32_t) &ret, 0);
+		syscall(SYS_STAT, (uint32_t) dirname, (uint32_t) &buf, (uint32_t) &ret);
 	}
-	if (ret == 0) {
-		dir->path = strdup(dirname);
-		dir->iter = 0;
+	if (ret == 0 && S_ISDIR(buf.st_mode)) {
+		DIR* dir = malloc(sizeof(DIR) + buf.st_blksize);
+		dir->fd = open(dirname, O_RDONLY);
+		dir->allocation = buf.st_blksize;
+		dir->size = 0;
+		dir->offset = 0;
+		dir->filepos = 0;
 		return dir;
 	}
 	return NULL;
 }
 
 struct dirent* readdir(DIR* dirp) {
-	int ret;
-	struct dirent *entry = malloc(sizeof(struct dirent));
-	syscall(SYS_READDIR, (uint32_t) dirp, (uint32_t) entry, (uint32_t) &ret);
-	if (ret == 0) {
-		dirp->iter++;
-		return entry;
-	} else {
-		free(entry);
-		return NULL;
+	if (dirp->offset >= dirp->size) {
+		int size = dirp->allocation;
+		syscall(SYS_READDIR, (uint32_t) dirp->fd, (uint32_t) dirp->data, (uint32_t) &size);
+		dirp->size = size;
 	}
+	
+	if (dirp->size > 0) {
+		struct dirent *d = (struct dirent*)(&(dirp->data) + dirp->filepos);
+		dirp->offset += d->d_reclen;
+		dirp->filepos += d->d_reclen;
+		return d;
+	}
+	return NULL;
 }
 
 int closedir(DIR* dirp) {

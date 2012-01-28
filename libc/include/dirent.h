@@ -36,12 +36,21 @@
 #define NAME_MAX 256
 
 typedef struct _DIR {
-	int iter;
-	char *path;
+	int			fd;
+	size_t	allocation;
+	size_t	size;
+	size_t	offset;
+
+	off_t		filepos;
+
+	char		data[1];
 } DIR;
 
 struct dirent {
-	char d_name[NAME_MAX];
+	uint32_t  d_ino;
+	uint16_t  d_reclen;
+	uint8_t   d_type;
+	char      d_name[NAME_MAX];
 };
 
 int mkdir(const char *pathname, mode_t mode);

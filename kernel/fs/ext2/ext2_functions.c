@@ -163,15 +163,6 @@ int ext2_stat(fs_instance_t *instance, const char *path, struct stat *stbuf) {
 	}
 }
 
-int ext2_opendir(fs_instance_t *instance, const char * path) {
-	int inode = getinode_from_path((ext2_fs_instance_t*)instance, path);
-
-	if (inode < 0) {
-		return inode;
-	}
-	return 0;
-}
-
 int ext2_readdir(fs_instance_t *instance, const char * path, int iter, char * filename) {
 	ext2_fs_instance_t* inst = (ext2_fs_instance_t*)instance;
 	int inode = getinode_from_path(inst, path);

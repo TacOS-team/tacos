@@ -75,4 +75,6 @@ void devfs_init();
 int register_chardev(const char* name, chardev_interfaces* di);
 int register_blkdev(const char* name, blkdev_interfaces* di);
 
+int devfs_readdir(open_file_descriptor * ofd, char * entries, size_t size);
+
 #endif /* _DEVFS_H */
