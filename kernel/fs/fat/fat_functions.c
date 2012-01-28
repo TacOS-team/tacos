@@ -164,7 +164,7 @@ size_t fat_read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 				ofd->current_cluster = instance->fat_info.file_alloc_table[ofd->current_cluster];
 				load_buffer(ofd);
 			} else if (ofd->current_octet_buf >= size_buffer) {
-				load_buffer(ofd); 
+				load_buffer(ofd);
 			}
 		}
 	}

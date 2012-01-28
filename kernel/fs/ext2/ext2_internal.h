@@ -205,6 +205,7 @@ typedef struct _ext2_fs_instance_t {
 typedef struct _ext2_extra_data {
 	uint32_t inode;
 	uint32_t type;
+	struct blk_t *blocks;
 } ext2_extra_data;
 
 #endif

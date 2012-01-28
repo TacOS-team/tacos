@@ -45,14 +45,14 @@ force_look:
 core.img: all
 	@echo "drive v: file=\"`pwd`/core.img\" 1.44M filter" > mtoolsrc
 	@dd if=/dev/zero of=core.img bs=512 count=2880
-#	@mkfs.ext2 -F core.img
-#	@e2cp README core.img:/
-#	@e2mkdir core.img:/bin
-#	@e2cp bin/* core.img:/bin/
-	@mkfs.vfat core.img
-	@MTOOLSRC=mtoolsrc mcopy README v:/
-	@MTOOLSRC=mtoolsrc mcopy bin v:/
-	@MTOOLSRC=mtoolsrc mcopy modules v:/
+	@mkfs.ext2 -F core.img
+	@e2cp README core.img:/
+	@e2mkdir core.img:/bin
+	@e2cp bin/* core.img:/bin/
+#	@mkfs.vfat core.img
+#	@MTOOLSRC=mtoolsrc mcopy README v:/
+#	@MTOOLSRC=mtoolsrc mcopy bin v:/
+#	@MTOOLSRC=mtoolsrc mcopy modules v:/
 	
 grub.img: all
 	@echo "drive v: file=\"`pwd`/grub.img\" 1.44M filter" > mtoolsrc

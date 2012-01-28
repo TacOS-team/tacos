@@ -95,6 +95,40 @@ static int ext2_rename(fs_instance_t *instance, const char *orig, const char *de
 
 #endif
 
+static void load_buffer(open_file_descriptor *ofd) {
+	ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
+	size_t size_buffer = sizeof(ofd->buffer) < (1024 << instance->superblock.s_log_block_size) ? 
+			sizeof(ofd->buffer) : (1024 << instance->superblock.s_log_block_size);
+	off_t offset = ofd->current_octet;
+	int inode = ((ext2_extra_data*)ofd->extra_data)->inode;
+
+	struct blk_t *blocks = ((ext2_extra_data*)ofd->extra_data)->blocks;
+	if (blocks == NULL) return;
+	while (offset >= (unsigned int)(1024 << instance->superblock.s_log_block_size)) {
+		if (blocks && blocks->next) {
+			blocks = blocks->next;
+		} else return;
+		offset -= 1024 << instance->superblock.s_log_block_size;
+	}
+
+	size_t count = 0;
+	while (count < size_buffer && blocks != NULL) {
+		int addr = blocks->addr + offset;
+		size_t size2 = (1024 << instance->superblock.s_log_block_size) - offset;
+		offset = 0;
+		if (size2 > size_buffer - count) {
+			size2 = size_buffer - count;
+		}
+
+		instance->read_data(instance->super.device, (char*)(ofd->buffer) + count, size2, addr);
+		count += size2;
+
+		blocks = blocks->next;
+	}
+	ofd->current_octet_buf = 0;
+}
+
+
 int ext2_chmod(fs_instance_t *instance, const char * path, mode_t mode) {
 	ext2_fs_instance_t* inst = (ext2_fs_instance_t*)instance;
 	int inode = getinode_from_path(inst, path);
@@ -198,28 +232,27 @@ int ext2_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 }
 
 int ext2_seek(open_file_descriptor * ofd, long offset, int whence) {
-	ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
-	int inode = ((ext2_extra_data*)ofd->extra_data)->inode;
-	struct ext2_inode einode;
-	read_inode(instance, inode, &einode);
 	switch (whence) {
 	case SEEK_SET:
-		if ((uint32_t)offset > einode.i_size) {
+		if ((uint32_t)offset > ofd->file_size) {
 			return -1;
 		}
 		ofd->current_octet = offset;
+		load_buffer(ofd);
 		break;
 	case SEEK_CUR:
-		if (ofd->current_octet + (uint32_t)offset > einode.i_size) {
+		if (ofd->current_octet + (uint32_t)offset > ofd->file_size) {
 			return -1;
 		}
 		ofd->current_octet += offset;
+		load_buffer(ofd);
 		break;
 	case SEEK_END:
-		if ((uint32_t)offset > einode.i_size) {
+		if ((uint32_t)offset > ofd->file_size) {
 			return -1;
 		}
-		ofd->current_octet = einode.i_size - offset;
+		ofd->current_octet = ofd->file_size - offset;
+		load_buffer(ofd);
 		break;
 	}
 
@@ -235,7 +268,7 @@ size_t ext2_write (open_file_descriptor * ofd, const void *buf, size_t size) {
 		if (read_inode(instance, inode, &einode) == 0) {
 			int count = 0;
 			struct blk_t *last = NULL;
-			struct blk_t *blocks = addr_inode_data(instance, inode);
+			struct blk_t *blocks = ((ext2_extra_data*)ofd->extra_data)->blocks;
 			struct blk_t *aux = blocks;
 
 			int off = offset;
@@ -292,42 +325,24 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 	int inode = ((ext2_extra_data*)ofd->extra_data)->inode;
 	if (inode >= 0) {
 		ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
-		off_t offset = ofd->current_octet;
-		int count = 0;
-		struct ext2_inode einode;
-		read_inode(instance, inode, &einode);
-		
-		if (offset >= einode.i_size) {
-			return 0;
-		}
-
-		if (size + offset > einode.i_size) {
-			size = einode.i_size - offset;
-		}
-
-		struct blk_t *blocks = addr_inode_data(instance, inode);
-		if (blocks == NULL) return 0;
-		while (offset >= (unsigned int)(1024 << instance->superblock.s_log_block_size)) {
-			if (blocks && blocks->next) {
-				blocks = blocks->next;
-			} else return 0;
-			offset -= 1024 << instance->superblock.s_log_block_size;
-		}
-
-
-		while (size > 0 && blocks != NULL) {
-			int addr = blocks->addr + offset;
-			size_t size2 = (1024 << instance->superblock.s_log_block_size) - offset;
-			offset = 0;
-			if (size2 > size) {
-				size2 = size;
+		size_t size_buffer = sizeof(ofd->buffer) < (1024 << instance->superblock.s_log_block_size) ? 
+			sizeof(ofd->buffer) : (1024 << instance->superblock.s_log_block_size);
+		size_t count = 0;
+		int j = 0;
+	
+		while (size--) {
+			if (ofd->current_octet == ofd->file_size) {
+				break;
+			} else {
+				char c = ofd->buffer[ofd->current_octet_buf];
+				count++;
+				ofd->current_octet_buf++;
+				ofd->current_octet++;
+				((char*) buf)[j++] = c;
+				if (ofd->current_octet_buf >= size_buffer) {
+					load_buffer(ofd);
+				}
 			}
-
-			instance->read_data(instance->super.device, ((char*)buf) + count, size2, addr);
-			size -= size2;
-			count += size2;
-
-			blocks = blocks->next;
 		}
 
 		// Commenté pour des raisons évidentes de perf.
@@ -336,7 +351,6 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 		//	einode.i_atime = tv.tv_sec;
 		//	write_inode(inode, &einode);
  		
-		ofd->current_octet += count;
 		return count;
 	} else {
 		return inode;
@@ -358,7 +372,6 @@ int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t de
 }
 
 open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uint32_t flags) {
-	klog("open %s\n", path);
 	int inode = getinode_from_path((ext2_fs_instance_t*)instance, path);
 	if (inode == -ENOENT && (flags & O_CREAT)) {
 		//XXX
@@ -369,10 +382,14 @@ open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uin
 		return NULL;
 	}
 	
+	struct ext2_inode einode;
+	read_inode((ext2_fs_instance_t*)instance, inode, &einode);
+
 	open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
 	ofd->fs_instance = instance;
 	ofd->current_octet = 0;
-	//ofd->file_size = f->size;
+	ofd->current_octet_buf = 0;
+	ofd->file_size = einode.i_size;
 	ofd->read = ext2_read;
 	ofd->write = ext2_write;
 	ofd->seek = ext2_seek;
@@ -382,9 +399,9 @@ open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uin
 	ext2_extra_data *extra_data = kmalloc(sizeof(ext2_extra_data));
 	extra_data->inode = inode;
 	extra_data->type = EXT2_FT_REG_FILE; //XXX!
+	extra_data->blocks = addr_inode_data((ext2_fs_instance_t*)instance, inode);
 	ofd->extra_data = extra_data;
 
-	klog("opened!\n");
 	return ofd;
 }
 
