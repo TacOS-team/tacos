@@ -29,6 +29,26 @@
 #include <unistd.h>
 #include <sys/stat.h>
 
+static char* get_filetype(mode_t mode) {
+	if (S_ISBLK(mode)) {
+		return "block device";
+	} else if (S_ISCHR(mode)) {
+		return "char device";
+	} else if (S_ISDIR(mode)) {
+		return "directory";
+	} else if (S_ISFIFO(mode)) {
+		return "FIFO";
+	} else if (S_ISLNK(mode)) {
+		return "symbolic link";
+	} else if (S_ISREG(mode)) {
+		return "regular file";
+	} else if (S_ISSOCK(mode)) {
+		return "socket";
+	} else {
+		return "type non reconnu";
+	}
+}
+
 int main(int argc, char** argv) {
 	int i;
 	for(i = 1; i < argc; i++) {
@@ -37,7 +57,8 @@ int main(int argc, char** argv) {
 			printf("  File: '%s'\n", argv[i]);
 			printf("  Size: %d\n", buf.st_size);
 			printf(" Inode: %d\n", buf.st_ino);
-			printf("Access: %o		uid: %d		gid: %d\n", buf.st_mode, buf.st_uid, buf.st_gid);
+			printf("  Type: %s\n", get_filetype(buf.st_mode));
+			printf("Access: %o		uid: %d		gid: %d\n", buf.st_mode & ~S_IFMT, buf.st_uid, buf.st_gid);
 			printf("Modify: %d\n", buf.st_mtime);
 			printf("Change: %d\n", buf.st_ctime);
 		} else {
