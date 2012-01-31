@@ -31,23 +31,127 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/stat.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_FILES 1024
+
+struct res_entry {
+	char name[256];
+	struct stat s;
+};
+
+static struct res_entry *entries[MAX_FILES];
+static int n_entries;
+static int long_format = 0;
+static int disp_all = 0;
+static int disp_classify = 0;
+
+void add_entry(char *name, struct stat *s) {
+	entries[n_entries] = malloc(sizeof(struct res_entry));
+	strcpy(entries[n_entries]->name, name);
+	entries[n_entries]->s = *s;
+	n_entries++;
+}
+
+void disp_mode(mode_t mode) {
+	char m[11];
+	strcpy(m,	"----------");
+	if (S_ISDIR(mode)) {
+		m[0] = 'd';
+	} else if (S_ISLNK(mode)) {
+		m[0] = 'l';
+	}
+
+	if (mode & S_IRUSR) {
+		m[1] = 'r';
+	}
+	if (mode & S_IWUSR) {
+		m[2] = 'w';
+	}
+	if (mode & S_IXUSR) {
+		m[3] = 'x';
+	}
+
+	if (mode & S_IRGRP) {
+		m[4] = 'r';
+	}
+	if (mode & S_IWGRP) {
+		m[5] = 'w';
+	}
+	if (mode & S_IXGRP) {
+		m[6] = 'x';
+	}
+	
+	if (mode & S_IROTH) {
+		m[7] = 'r';
+	}
+	if (mode & S_IWOTH) {
+		m[8] = 'w';
+	}
+	if (mode & S_IXOTH) {
+		m[9] = 'x';
+	}
+
+	printf("%s", m);
+}
+
+char classify(mode_t mode) {
+	if (S_ISDIR(mode)) {
+		return '/';
+	}
+	if (S_ISLNK(mode)) {
+		return '@';
+	}
+	if (S_ISFIFO(mode)) {
+		return '|';
+	}
+	if (S_ISSOCK(mode)) {
+		return '=';
+	}
+	if (mode & S_IXUSR || mode & S_IXGRP || mode & S_IXOTH) {
+		return '*';
+	}
+	return ' ';
+}
 
 void listdir(const char *path) {
 	struct stat buf;
 	DIR* dir = opendir(path);
 	struct dirent* entry;
 	if (dir != NULL) {
-		char c;
 		while((entry = readdir(dir))) {
-			stat(entry->d_name, &buf);
-			if (S_ISDIR(buf.st_mode)) {
-				c = '/';
-			} else {
-				c = ' ';
+			if (entry->d_name[0] == '.' && !disp_all) {
+				continue;
 			}
-			printf("%s%c ", entry->d_name, c);
+			stat(entry->d_name, &buf);
+			add_entry(entry->d_name, &buf);
 		}
 		closedir(dir);
+
+		// TODO: do sort.
+
+		int i = 0;
+		while (entries[i]) {
+			if (long_format) {
+				// mode
+				disp_mode(entries[i]->s.st_mode);
+				// TODO: date
+
+				if (disp_classify) {
+					printf(" %s%c\n", entries[i]->name, classify(entries[i]->s.st_mode));
+				} else {
+					printf(" %s\n", entries[i]->name);
+				}
+			} else {
+				if (disp_classify) {
+					printf("%s%c ", entries[i]->name, classify(entries[i]->s.st_mode));
+				} else {
+					printf("%s ", entries[i]->name);
+				}
+			}
+			i++;
+		}
 	} else {
 		fprintf(stderr, "%s not found.\n", path);
 	}
@@ -68,12 +172,25 @@ void list(const char *path) {
 
 int main(int argc, char** argv)
 {
-	
-	if (argc == 1) {
+	int marg = 1;
+	if (argc > 1 && argv[1][0] == '-') {
+		int i = 1;
+		while (argv[1][i] != '\0') {
+			switch (argv[1][i]) {
+				case 'l': long_format = 1; break;
+				case 'a': disp_all = 1; break;
+				case 'F': disp_classify = 1; break;
+			}
+			i++;
+		}
+		marg++;
+	}
+
+	if (argc == marg) {
 		list(getcwd(NULL, 0));
 	} else {
 		int i;
-		for(i = 1; i < argc; i++) {
+		for(i = marg; i < argc; i++) {
 			list(argv[i]);
 		}
 	}

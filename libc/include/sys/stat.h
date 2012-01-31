@@ -49,6 +49,16 @@
 #define S_ISREG(m)  (((m) & S_IFMT) == S_IFREG)
 #define S_ISSOCK(m) (((m) & S_IFMT) == S_IFSOCK)
 
+#define S_IXOTH 001
+#define S_IROTH 002
+#define S_IWOTH 004
+#define S_IXGRP 0010
+#define S_IRGRP 0020
+#define S_IWGRP 0040
+#define S_IXUSR 00100
+#define S_IRUSR 00200
+#define S_IWUSR 00400
+
 typedef uint32_t mode_t;
 typedef uint32_t dev_t;
 typedef uint32_t uid_t;
