@@ -61,6 +61,10 @@ void disp_mode(mode_t mode) {
 		m[0] = 'd';
 	} else if (S_ISLNK(mode)) {
 		m[0] = 'l';
+	} else if (S_ISFIFO(mode)) {
+		m[0] = 'p';
+	} else if (S_ISSOCK(mode)) {
+		m[0] = 's';
 	}
 
 	if (mode & S_IRUSR) {
