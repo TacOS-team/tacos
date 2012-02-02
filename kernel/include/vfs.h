@@ -53,6 +53,7 @@ typedef struct _fs_instance_t {
 	open_file_descriptor * device;
 	open_file_descriptor * (*open) (struct _fs_instance_t *, const char * , uint32_t);
 	int (*mkdir) (struct _fs_instance_t *, const char * , mode_t);
+	int (*mknod) (struct _fs_instance_t *, const char *, mode_t, dev_t);
 	int (*stat) (struct _fs_instance_t *, const char *, struct stat *);
 	int (*unlink) (struct _fs_instance_t *, const char *);
 } fs_instance_t;
@@ -68,6 +69,7 @@ int vfs_umount(const char *mountpoint);
 int vfs_mkdir(const char * pathname, mode_t mode);
 int vfs_stat(const char *pathname, struct stat *);
 int vfs_unlink(const char *pathname);
+int vfs_mknod(const char * path, mode_t mode, dev_t dev);
 
 int vfs_readdir(open_file_descriptor * ofd, char * entries, size_t size);
 int vfs_close(open_file_descriptor *ofd);

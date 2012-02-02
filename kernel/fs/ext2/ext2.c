@@ -75,6 +75,7 @@ fs_instance_t* mount_EXT2(open_file_descriptor* ofd) {
 	instance->write_data = ((blkdev_interfaces*)(ofd->extra_data))->write;
 
 	instance->super.open = ext2_open;
+	instance->super.mknod = ext2_mknod;
 	instance->super.mkdir = ext2_mkdir;
 	instance->super.stat = ext2_stat;
 	instance->super.unlink = ext2_unlink;

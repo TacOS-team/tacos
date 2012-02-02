@@ -50,7 +50,7 @@
 #define SYS_SIGNAL 15
 #define SYS_SIGPROCMASK 16
 #define SYS_CLOSE 17
-#define SYS_OPENDIR 18
+#define SYS_MKNOD 18
 #define SYS_READDIR 19
 #define SYS_MKDIR 20
 #define SYS_SIGRET 21

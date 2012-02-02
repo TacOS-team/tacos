@@ -41,6 +41,7 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size);
 int ext2_close(open_file_descriptor *ofd);
 int ext2_readdir(open_file_descriptor * ofd, char * entries, size_t size);
 int ext2_stat(fs_instance_t *instance, const char *path, struct stat *stbuf);
+int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t dev);
 int ext2_mkdir(fs_instance_t *instance, const char * path, mode_t mode);
 int ext2_unlink(fs_instance_t *instance, const char * path);
 

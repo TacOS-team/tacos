@@ -176,6 +176,17 @@ int stat(const char *path, struct stat *buf) {
 	return ret;
 }
 
+int mknod(const char *path, mode_t mode, dev_t dev) {
+	if (path[0] != '/') {
+		char * absolutepath = get_absolute_path(path);
+		syscall(SYS_MKNOD, (uint32_t)absolutepath, (uint32_t)mode, (uint32_t)&dev);
+		free(absolutepath);
+	} else {
+		syscall(SYS_MKNOD, (uint32_t)path, (uint32_t)mode, (uint32_t)&dev);
+	}
+	return (int)dev;
+}
+
 int unlink(const char *path) {
 	int ret;
 	if (path[0] != '/') {

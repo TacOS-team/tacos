@@ -45,5 +45,6 @@ SYSCALL_HANDLER3(sys_ioctl, uint32_t fd, unsigned int request, void *data);
 SYSCALL_HANDLER3(sys_stat, const char *path, struct stat *buf, int *ret);
 SYSCALL_HANDLER2(sys_unlink, const char *path, int *ret);
 SYSCALL_HANDLER2(sys_dup, int oldfd, int *ret);
+SYSCALL_HANDLER3(sys_mknod, const char *path, mode_t mode, dev_t *dev);
 
 #endif

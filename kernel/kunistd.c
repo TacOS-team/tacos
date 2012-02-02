@@ -126,3 +126,7 @@ SYSCALL_HANDLER2(sys_dup, int oldfd, int *ret) {
 
 	*ret = i;
 }
+
+SYSCALL_HANDLER3(sys_mknod, const char *path, mode_t mode, dev_t *dev) {
+	*dev = vfs_mknod(path, mode, *dev);
+}

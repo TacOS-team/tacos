@@ -171,6 +171,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_STAT,	(syscall_handler_t) sys_stat);
 	syscall_set_handler(SYS_UNLINK,	(syscall_handler_t) sys_unlink);
 	syscall_set_handler(SYS_DUP,	(syscall_handler_t) sys_dup);
+	syscall_set_handler(SYS_MKNOD,	(syscall_handler_t) sys_mknod);
 	
 
 	devfs_init();

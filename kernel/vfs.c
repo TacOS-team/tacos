@@ -196,6 +196,16 @@ int vfs_unlink(const char *pathname) {
 	return -ENOENT;
 }
 
+int vfs_mknod(const char * pathname, mode_t mode, dev_t dev) {
+	int len;
+	fs_instance_t *instance = get_instance_from_path(pathname, &len);
+	if (instance && instance->mknod != NULL) {
+		return instance->mknod(instance, pathname + len, mode, dev);
+	}
+	return -1;
+
+}
+
 int vfs_mkdir(const char * pathname, mode_t mode) {
 	int len;
 	fs_instance_t *instance = get_instance_from_path(pathname, &len);
