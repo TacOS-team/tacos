@@ -143,4 +143,6 @@ int stat(const char *path, struct stat *buf);
 
 int unlink(const char *pathname);
 
+int mknod(const char *path, mode_t mode, dev_t dev);
+
 #endif //_UNISTD_H_
