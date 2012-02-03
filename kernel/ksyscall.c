@@ -107,5 +107,11 @@ void init_syscall()
 }
 
 SYSCALL_HANDLER3(sys_dummy, uint32_t a,uint32_t b,uint32_t c) {
-	klog("dummy! %d %d %d\n",a,b,c);
+	float fa = 2.0f;
+	float fb = 0.1f;
+	int i;
+	klog("sys - fucking - dummy %d %d %d", a,b,c);
+	for(i=0; i<1000000;i++) {
+		fa = fa*fb;
+	}
 }

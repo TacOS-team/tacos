@@ -29,13 +29,13 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include <sys/syscall.h>
 
 int main(int argc, char** argv)
 {
 	while(1) {
 		printf(".");
-		fflush(stdout);
-		sleep(10);
+		syscall(SYS_DUMMY,1,1,1);
 	}
 	return 0;
 }	
