@@ -62,7 +62,7 @@ int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	putenv("PWD=/");
 
 	klog("Starting user process...");
-	exec_elf("/tacos/bin/mishell", 0);
+	exec_elf("/tacos/bin/getty /dev/tty0", 0);
 	
 	
 	get_current_process()->state = PROCSTATE_WAITING;

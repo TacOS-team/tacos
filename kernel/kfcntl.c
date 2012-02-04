@@ -37,36 +37,50 @@
 #include <vfs.h>
 #include <fs/devfs.h>
 
+#include <string.h>
+
 void init_stdfd(process_t *new_proc) {
 	if (new_proc->pid == 0)
 		return;
 
-  struct _file_descriptor *fd0 = &(new_proc->fd[0]);
-  struct _file_descriptor *fd1 = &(new_proc->fd[1]);
-  struct _file_descriptor *fd2 = &(new_proc->fd[2]);
-	chardev_interfaces *di;
+	process_t *pprocess = NULL;
 
 	if (new_proc->ppid > 0) {
-		process_t *pprocess = find_process(new_proc->ppid);
-		if (pprocess)
-			new_proc->ctrl_tty = pprocess->ctrl_tty;
-		else
-			new_proc->ctrl_tty = "/dev/tty0";
-	} else {
-		new_proc->ctrl_tty = "/dev/tty0";
+		pprocess = find_process(new_proc->ppid);
 	}
 
+	if (pprocess) { //XXX: Je n'assume pas la paternité de ces quelques lignes (ahah).
+		new_proc->ctrl_tty = pprocess->ctrl_tty;
+		int i;
+		for (i = 0; i < FOPEN_MAX; i++) {
+			if (pprocess->fd[i].used) {
+				new_proc->fd[i].used = true;
+				new_proc->fd[i].ofd = kmalloc(sizeof(struct _open_file_descriptor));
+				memcpy(new_proc->fd[i].ofd, pprocess->fd[i].ofd, sizeof(struct _open_file_descriptor));
+			} else {
+				new_proc->fd[i].used = false;
+			}
+		}
+	} else {
+		new_proc->ctrl_tty = "/dev/tty0";
+
+		struct _file_descriptor *fd0 = &(new_proc->fd[0]);
+		struct _file_descriptor *fd1 = &(new_proc->fd[1]);
+		struct _file_descriptor *fd2 = &(new_proc->fd[2]);
+	
+		fd0->used = true; /* stdin */
+		fd0->ofd = vfs_open(new_proc->ctrl_tty, O_RDONLY);
+		fd1->used = true; /* stdout */
+		fd1->ofd = vfs_open(new_proc->ctrl_tty, O_WRONLY);
+		fd2->used = true; /* stderr */
+		fd2->ofd = vfs_open(new_proc->ctrl_tty, O_WRONLY);
+	}
+
+	chardev_interfaces *di;
 	open_file_descriptor *t_i = vfs_open(new_proc->ctrl_tty, 0); //XXX: flags.
 	di = t_i->extra_data;
 	tty_struct_t *t = di->custom_data;
 	t->fg_process = new_proc->pid;
-
-	fd0->used = true; /* stdin */
-	fd0->ofd = vfs_open(new_proc->ctrl_tty, O_RDONLY);
-	fd1->used = true; /* stdout */
-	fd1->ofd = vfs_open(new_proc->ctrl_tty, O_WRONLY);
-	fd2->used = true; /* stderr */
-	fd2->ofd = vfs_open(new_proc->ctrl_tty, O_WRONLY);
 }
 
 void close_all_fd() {
