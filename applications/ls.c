@@ -33,6 +33,7 @@
 #include <sys/stat.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 
 #define MAX_FILES 1024
 
@@ -46,6 +47,7 @@ static int n_entries;
 static int long_format = 0;
 static int disp_all = 0;
 static int disp_classify = 0;
+static int human = 0;
 
 void add_entry(char *name, struct stat *s) {
 	entries[n_entries] = malloc(sizeof(struct res_entry));
@@ -116,20 +118,48 @@ char classify(mode_t mode) {
 	if (mode & S_IXUSR || mode & S_IXGRP || mode & S_IXOTH) {
 		return '*';
 	}
-	return ' ';
+	return '\0';
+}
+
+void convert_human(size_t size, size_t *nsize, char *c) {
+	int p = 0;
+	while (size > 1024) {
+		size /= 1024;
+		p++;
+	}
+
+	switch (p) {
+		case 0: *c = '\0'; break;
+		case 1:	*c = 'K'; break;
+		case 2:	*c = 'M'; break;
+		case 3:	*c = 'G'; break;
+		case 4:	*c = 'T'; break;
+		case 5: *c = 'P'; break;
+	}
+	*nsize = size;
 }
 
 void listdir(const char *path) {
 	struct stat buf;
 	DIR* dir = opendir(path);
 	struct dirent* entry;
+	size_t pathlen = strlen(path);
+	char *filepath = malloc(255 + pathlen + 1);
+	strcpy(filepath, path);
+	if (pathlen > 0 && path[pathlen - 1] != '/') {
+		filepath[pathlen] = '/';
+		pathlen++;
+	}
+	
 	if (dir != NULL) {
 		while((entry = readdir(dir))) {
 			if (entry->d_name[0] == '.' && !disp_all) {
 				continue;
 			}
-			stat(entry->d_name, &buf);
-			add_entry(entry->d_name, &buf);
+			strcpy(filepath + pathlen, entry->d_name);
+			if (stat(filepath, &buf) == 0) {
+				add_entry(entry->d_name, &buf);
+			}
 		}
 		closedir(dir);
 
@@ -140,6 +170,20 @@ void listdir(const char *path) {
 			if (long_format) {
 				// mode
 				disp_mode(entries[i]->s.st_mode);
+
+				// user + group
+				printf(" %d %d", entries[i]->s.st_uid, entries[i]->s.st_gid);
+
+				// taille
+				if (human) {
+					char c;
+					size_t size;
+					convert_human(entries[i]->s.st_size, &size, &c);
+					printf(" %d%c", size, c);
+				} else {
+					printf(" %d", entries[i]->s.st_size);
+				}
+				
 				// TODO: date
 
 				if (disp_classify) {
@@ -159,6 +203,8 @@ void listdir(const char *path) {
 	} else {
 		fprintf(stderr, "%s not found.\n", path);
 	}
+
+	free(filepath);
 }
 
 void list(const char *path) {
@@ -184,6 +230,7 @@ int main(int argc, char** argv)
 				case 'l': long_format = 1; break;
 				case 'a': disp_all = 1; break;
 				case 'F': disp_classify = 1; break;
+				case 'h': human = 1; break;
 			}
 			i++;
 		}
@@ -191,7 +238,7 @@ int main(int argc, char** argv)
 	}
 
 	if (argc == marg) {
-		list(getcwd(NULL, 0));
+		listdir(getcwd(NULL, 0));
 	} else {
 		int i;
 		for(i = marg; i < argc; i++) {
