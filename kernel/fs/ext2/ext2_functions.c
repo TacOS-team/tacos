@@ -401,6 +401,8 @@ open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uin
 	extra_data->blocks = addr_inode_data((ext2_fs_instance_t*)instance, inode);
 	ofd->extra_data = extra_data;
 
+	load_buffer(ofd);
+
 	return ofd;
 }
 
