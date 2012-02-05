@@ -75,6 +75,7 @@ int vfprintf(FILE *stream, const char *format, va_list ap) {
 			}
 
 			switch (c) {
+				case 'o':
 				case 'd':
 				case 'u':
 				case 'x':

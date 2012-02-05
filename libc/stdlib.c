@@ -194,6 +194,8 @@ void itoa (char *buf, int base, int d) {
 		ud = -d;
 	} else if (base == 'x') {
 		divisor = 16;
+	} else if (base == 'o') {
+		divisor = 8;
 	}
 
 	/* Divide UD by DIVISOR until UD == 0. */
