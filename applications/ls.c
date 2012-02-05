@@ -139,6 +139,13 @@ void convert_human(size_t size, size_t *nsize, char *c) {
 	*nsize = size;
 }
 
+static int compar(const void *p1, const void *p2) {
+	struct res_entry **a1 = (struct res_entry**) p1;
+	struct res_entry **a2 = (struct res_entry**) p2;
+
+	return strcasecmp((*a1)->name, (*a2)->name);
+}
+
 void listdir(const char *path) {
 	struct stat buf;
 	DIR* dir = opendir(path);
@@ -150,7 +157,7 @@ void listdir(const char *path) {
 		filepath[pathlen] = '/';
 		pathlen++;
 	}
-	
+
 	if (dir != NULL) {
 		while((entry = readdir(dir))) {
 			if (entry->d_name[0] == '.' && !disp_all) {
@@ -164,6 +171,7 @@ void listdir(const char *path) {
 		closedir(dir);
 
 		// TODO: do sort.
+		qsort(entries, n_entries, sizeof(struct res_entry*), compar);
 
 		int i = 0;
 		while (entries[i]) {

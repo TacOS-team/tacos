@@ -98,6 +98,30 @@ int strncmp(const char *s1, const char *s2, size_t n) {
 	return s1[i] - s2[i];
 }
 
+int strcasecmp(const char *s1, const char *s2) {
+	int i = 0;
+	while (tolower(s1[i]) == tolower(s2[i])) {
+		if (s1[i] == '\0') {
+			return 0;
+		}
+		i++;
+	}
+	return tolower(s1[i]) - tolower(s2[i]);
+}
+
+int strncasecmp(const char *s1, const char *s2, size_t n) {
+	unsigned int i = 0;
+	while (tolower(s1[i]) == tolower(s2[i])) {
+		if (s1[i] == '\0' || i+1 == n) {
+			return 0;
+		}
+		i++;
+	}
+	return tolower(s1[i]) - tolower(s2[i]);
+}
+
+
+
 void *memset(void *s, int c, size_t n)
 {
 	size_t i;

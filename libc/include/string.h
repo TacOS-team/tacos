@@ -125,6 +125,42 @@ int strcmp(const char *s1, const char *s2);
  */
 int strncmp(const char *s1, const char *s2, size_t n);
 
+
+/** 
+* @brief Compare deux chaînes.
+* 
+* La fonction strcasecmp() compare deux chaînes de caractères et retourne en 
+* résultat un nombre négatif, positif ou nul si s1 est respectivement
+* inférieur, supérieur ou identique à s2.
+* 
+* @param s1 première chaîne
+* @param s2 seconde chaîne
+* 
+* @return un entier strictement négatif si s1 est inférieur à s2, strictement
+* 	 positif si s1 est supérieur à s2 et nul si s1 est identique à s2.
+*/
+int strcasecmp(const char *s1, const char *s2);
+
+/** 
+ * @brief Compare deux chaînes jusqu'à n caractères.
+ * 
+ * La fonction strncasecmp compare deux chaînes de caractères et retourne en 
+ * résultat un nombre négatif, positif ou nul si les n premiers caractères
+ * de s1 sont inférieurs, supérieurs ou identiques aux n premiers caractères
+ * de s2.
+ *
+ * @param s1 première chaîne
+ * @param s2 seconde chaîne
+ * @param n nombre de caractères à comparer
+ * 
+ * @return un entier strictement négatif si les n premiers caractères de s1 
+ * sont inférieurs aux n premiers caractères de s2, strictement positif s'ils
+ * sont supérieurs et nul s'ils sont identiques.
+ */
+int strncasecmp(const char *s1, const char *s2, size_t n);
+
+
+
 /** 
  * @brief Rempli une zone mémoire avec un octet donné.
  * 

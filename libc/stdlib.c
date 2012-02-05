@@ -295,3 +295,8 @@ int clearenv(void) {
 	environ = NULL;
 	return 0;
 }
+
+void qsort(void *base __attribute__((unused)), size_t nmemb __attribute__((unused)), size_t size __attribute__((unused)), int(*compar)(const void *, const void *) __attribute__((unused))) {
+	// TODO.
+}
+	
