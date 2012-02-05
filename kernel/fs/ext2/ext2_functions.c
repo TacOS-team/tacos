@@ -356,14 +356,10 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 	}
 }
 
-int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t dev) {
-	char filename[256];
-  char * dir = kmalloc(strlen(path));
-	split_dir_filename(path, dir, filename);
 
-	int inode = getinode_from_path((ext2_fs_instance_t*)instance, dir);
+int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t dev) {
+	int inode = ext2_mknod2((ext2_fs_instance_t*)instance, path, mode, dev);
 	if (inode >= 0) {
-		mknod_inode((ext2_fs_instance_t*)instance, inode, filename, mode, dev);
 		return 0;
 	}
 
@@ -373,8 +369,7 @@ int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t de
 open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uint32_t flags) {
 	int inode = getinode_from_path((ext2_fs_instance_t*)instance, path);
 	if (inode == -ENOENT && (flags & O_CREAT)) {
-		//XXX
-		ext2_mknod(instance, path, 00644 | 0x8000, 0);
+		inode = ext2_mknod2((ext2_fs_instance_t*)instance, path, 00644 | 0x8000, 0);
 	} else if (inode <= 0) {
 		return NULL;
 	} else if (flags & O_EXCL && flags & O_CREAT) {

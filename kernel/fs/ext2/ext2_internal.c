@@ -387,7 +387,7 @@ static void remove_dir_entry(ext2_fs_instance_t *instance, int inode, const char
 	}
 }
 
-static void mknod_inode(ext2_fs_instance_t *instance, int inode, const char *name, mode_t mode, dev_t dev __attribute__((unused))) {
+static int mknod_inode(ext2_fs_instance_t *instance, int inode, const char *name, mode_t mode, dev_t dev __attribute__((unused))) {
 	struct ext2_inode n_inode;
 	memset(&n_inode, 0, sizeof(struct ext2_inode));
 	n_inode.i_mode = mode;
@@ -400,7 +400,9 @@ static void mknod_inode(ext2_fs_instance_t *instance, int inode, const char *nam
 //	n_inode.i_ctime = tv.tv_sec;
 //	n_inode.i_mtime = tv.tv_sec;
 	
-	add_dir_entry(instance, inode, name, EXT2_FT_REG_FILE, alloc_inode(instance, &n_inode));
+	int i = alloc_inode(instance, &n_inode);
+	add_dir_entry(instance, inode, name, EXT2_FT_REG_FILE, i);
+	return i;
 }
 
 
@@ -445,6 +447,20 @@ static void mkdir_inode(ext2_fs_instance_t *instance, int inode, const char *nam
 	add_dir_entry(instance, inode, name, EXT2_FT_DIR, ninode);
 
 	init_dir(instance, ninode, inode);
+}
+
+
+int ext2_mknod2(ext2_fs_instance_t *instance, const char * path, mode_t mode, dev_t dev) {
+	char filename[256];
+	char * dir = kmalloc(strlen(path));
+	split_dir_filename(path, dir, filename);
+
+	int inode = getinode_from_path(instance, dir);
+	if (inode >= 0) {
+		return mknod_inode(instance, inode, filename, mode, dev);
+	}
+
+	return -ENOENT;
 }
 
 
