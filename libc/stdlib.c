@@ -298,7 +298,42 @@ int clearenv(void) {
 	return 0;
 }
 
-void qsort(void *base __attribute__((unused)), size_t nmemb __attribute__((unused)), size_t size __attribute__((unused)), int(*compar)(const void *, const void *) __attribute__((unused))) {
-	// TODO.
+/******************************
+ * Quicksort
+ ******************************/
+static void swap(void *a, void *b, size_t size) {
+	char *ca = a, *cb = b;
+	char tmp;
+	while (size--) {
+		tmp = ca[size];
+		ca[size] = cb[size];
+		cb[size] = tmp;
+	}
 }
-	
+
+static void* partition(void *begin, void *end, size_t size, int(*compar)(const void *, const void *)) {
+	char *pivot = end, *pos_pivot = begin;
+	char *current;
+	for (current = (char*) begin; current < (char*) end; current += size) {
+		if (compar(current, pivot) < 0) {
+			swap(current, pos_pivot, size);
+			pos_pivot += size;
+		}
+	}
+	swap(pivot, pos_pivot, size);
+
+	return pos_pivot;
+}
+
+static void quicksort(void *begin, void *end, size_t size, int(*compar)(const void *, const void *)) {
+	if (begin < end) {
+		char *middle = partition(begin, end, size, compar);
+		quicksort(begin, middle - size, size, compar);
+		quicksort(middle + size, end, size, compar);
+	}
+}
+
+void qsort(void *base, size_t nmemb, size_t size, int(*compar)(const void *, const void *)) {
+	quicksort(base, base + (nmemb - 1) * size, size, compar);
+}
+/******************************/
