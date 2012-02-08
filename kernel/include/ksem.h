@@ -24,19 +24,22 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Coté noyau de la gestion des sémaphores
  */
 
 #ifndef KSEM_H
 #define KSEM_H
 
-/**
- * @file ksem.h
- * Coté noyau de la gestion des sémaphores
- * 
- */
 #include <ksyscall.h>
 #include <types.h>
+
+#define SEM_NEW 255
+#define SEM_CREATE 1
+
+#define SEM_GETVAL 1
+#define SEM_DEL 2
+#define SEM_ZCNT 3
+#define SEM_SET 4
 
 /**
  * @brief Initialisation du système des sémaphores
@@ -56,45 +59,21 @@ int init_semaphores();
 SYSCALL_HANDLER3(sys_ksem, uint32_t op, uint32_t param, uint32_t ret);
 
 /**
- * @brief Obtenir un semid
- * ksemget retourn un semid propre au processus, associé au sémaphore désigné par key
+ * @brief Obtenir ou créer un sémaphore.
+ * ksemget retourne un semid propre au processus, associé au sémaphore désigné par key
  * 
  * @param key clé identifiant le sémaphore
  * 
  * @return semid associé au sémaphore identifié par key
  * -1 en cas d'erreur
  */
-int ksemget(uint8_t key);
+int ksemget(uint8_t key, int flags);
 
 /**
- * @brief Créer un sémaphore
- * Crée le sémaphore associé à la clé key, et retourne un semid à la manière de ksemget
- * 
- * @param key clé identifiant le sémaphore
- * 
- * @return semid associé au sémaphore identifié par key
- * -1 en cas d'erreur
+ * @brief Manipulation d'un sémaphore.
+ * ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)
  */
-int ksemcreate(uint8_t key);
-
-/**
- * @brief Créer un sémaphore sans définir la clef.
- * Crée le sémaphore associé à la clé key, et retourne un semid à la manière de ksemget
- * 
- * @return semid associé au sémaphore identifié par key
- * -1 en cas d'erreur
- */
-int ksemcreate_without_key(uint8_t *key);
-
-/**
- * @brief Supprime un sémaphore
- * Supprime le sémaphore associé à semid (TODO: et libère les processus en attente)
- * 
- * @param semid Identifiant du sémaphore
- * 
- * @return 0 en cas de succès, -1 sinon
- */
-int ksemdel(uint32_t semid);
+int ksemctl(uint8_t key, int cmd, void* res);
 
 /**
  * @brief Opération P sur un sémaphore
@@ -108,7 +87,7 @@ int ksemdel(uint32_t semid);
  * @return 0 en cas de succès, -1 sinon
  *
  */
-int ksemP(uint32_t semid);
+int ksemP(uint8_t key);
 
 /**
  * @brief Opération V sur un sémaphore
@@ -121,7 +100,7 @@ int ksemP(uint32_t semid);
  * @return 0 en cas de succès, -1 sinon
  *
  */
-int ksemV(uint32_t semid);
+int ksemV(uint8_t key);
 
 #endif //KSEM_H
 

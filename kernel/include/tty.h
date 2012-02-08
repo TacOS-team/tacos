@@ -64,7 +64,7 @@ typedef struct _tty_struct_t {
 	unsigned int p_begin;
 	unsigned int p_end;
 	struct _tty_driver_t *driver;
-	int sem;
+	uint8_t sem;
 	int fg_process;
 	int n_open;
 } tty_struct_t;

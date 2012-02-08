@@ -184,7 +184,7 @@ int tty_register_driver(tty_driver_t *driver) {
 		driver->ttys[n]->termios = driver->init_termios;
 		driver->ttys[n]->p_begin = 0;
 		driver->ttys[n]->p_end = 0;
-		driver->ttys[n]->sem = ksemcreate_without_key(NULL);
+		driver->ttys[n]->sem = ksemget(SEM_NEW, SEM_CREATE);
 		driver->ttys[n]->index = n;
 		driver->ttys[n]->fg_process = 0;
 		driver->ttys[n]->n_open = 0;

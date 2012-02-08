@@ -35,7 +35,7 @@
 #include <scheduler.h>
 
 #define FIFO_MAX_SIZE 32
-#define MAX_SEM 256
+#define MAX_SEM 255
 #define KSEM_GET 1
 #define KSEM_CREATE 2
 #define KSEM_DEL 3
@@ -75,7 +75,6 @@ typedef struct
  ************************************/
 
 static sem_t semaphores[MAX_SEM];
-static int  next_semid = 1;
 
 /*************************************
  * 
@@ -142,15 +141,26 @@ static int sem_fifo_size(sem_fifo* fifo)
 	return fifo->size;
 }
 
-// Note sur les semid
-// 8 most significant bits = key
-// 24 least .............. = valeur incrementee a chaque fois
+/**
+ * Revoie une clef libre.
+ */
+static uint8_t ksem_getkey()
+{
+
+  uint8_t new_key = 0;
+
+	while (new_key < MAX_SEM && semaphores[new_key].allocated) {
+		new_key++;
+	}
+  
+	return new_key;
+}
+
 
 int init_semaphores()
 {
 	int i;
-	for(i=0 ; i<MAX_SEM ; i++)
-	{
+	for (i = 0; i < MAX_SEM; i++) {
 		semaphores[i].value = 0;
 		semaphores[i].allocated = 0;
 		sem_fifo_init(&(semaphores[i].fifo));
@@ -158,82 +168,56 @@ int init_semaphores()
 	return 0;
 }
 
-int ksemget(uint8_t key)
-{
+/**
+ * @return key en cas de succès, -1 sinon.
+ */
+int ksemget(uint8_t key, int flags) {
 	int ret = -1;
 
-	/*kprintf("semget key %d pid %d \n",key);*/
-	if(semaphores[key].allocated)
-	{
-		ret = next_semid | key<<24;
-		next_semid++;
+	if (key == SEM_NEW && (flags & SEM_CREATE)) {
+		key = ksem_getkey();
 	}
-
-	/* kprintf("returning semid %d\n",ret);*/
-	return ret;
-}
-
-int ksemcreate(uint8_t key)
-{
-	int ret = -1;
-
-	//kprintf("semcreate key %d pid %d \n",key);
-	/* key est toujours inferieur à MAX_SEM...*/
-	if(/*key < MAX_SEM && */!semaphores[key].allocated)
+	if (key < MAX_SEM && !semaphores[key].allocated)
 	{
-		ret = next_semid | key<<24;
-		next_semid++;
 		semaphores[key].allocated = 1;
 		semaphores[key].value = 1;
+		ret = 0;
 	}
 
-	//kprintf("returning semid %d\n",ret);
 	return ret;
 }
 
-int ksemcreate_without_key(uint8_t *key)
-{
-
-  uint8_t new_key = 0;
-
-	while (/* *key < MAX_SEM && */semaphores[new_key].allocated) {
-		new_key++;
-	}
-  
-	if(key != NULL)
-		*key = new_key;
-
-	return ksemcreate(new_key);
-}
-
-int ksemdel(uint32_t semid)
-{
-	int key = (semid & 0xFF000000) >> 24;
-	//kprintf("semdel semid %d \n",semid);
-	if(semaphores[key].allocated)
-	{
-		semaphores[key].allocated = 0;
-		
-		/* TODO : Liberer tous les processus en attente */
-		return 0;
+int ksemctl(uint8_t key, int cmd, void* res) {
+	sem_t* sem = &semaphores[key];
+	if (sem->allocated == 0) {
+		return -1;
 	}
 
-	return -1;
+	switch (cmd) {
+		case SEM_GETVAL:
+			*((int*)res) = sem->value;
+			break;
+		case SEM_DEL:
+			return -1; //TODO.
+		case SEM_ZCNT:
+			*((int*)res) = sem_fifo_size(&(sem->fifo));
+			break;
+		case SEM_SET:
+			return -1; //TODO.
+	}
+	return 0;
 }
 
-int ksemP(uint32_t semid)
+int ksemP(uint8_t key)
 {
 	int ret = -1;
-	int key = (semid & 0xFF000000) >> 24;
 	sem_t* sem = &semaphores[key];
 	
-	if(sem->allocated)
-	{	
+	if (sem->allocated) {	
 		/* Si le sémaphore est libre, on le prend, sinon, on attend */
 		if(sem->value >= 1) {
 			sem->value--;
-		}
-		else {
+		} else {
 			process_t* proc = get_current_process();
 			/* Si on attend, on met le pid dans la file d'attente pour pouvoir traiter le processus quand le semaphore sera libre */
 			sem_fifo_put(&(sem->fifo), proc->pid);
@@ -247,21 +231,17 @@ int ksemP(uint32_t semid)
 	return ret;
 }
 
-int ksemV(uint32_t semid)
+int ksemV(uint8_t key)
 {
 	int ret = -1;
-	int key = (semid & 0xFF000000) >> 24;
-	process_t* proc;
 	sem_t* sem = &semaphores[key];
 	
-	if(sem->allocated)
-	{
+	if (sem->allocated) {
 		/* Si la file est vide, on incrémente la valeur, sinon, on débloque le premier processus en attente */
-		if(sem_fifo_size(&(sem->fifo)) == 0) {
+		if (sem_fifo_size(&(sem->fifo)) == 0) {
 			sem->value++;
-		}
-		else {
-			proc = find_process(sem_fifo_get(&(sem->fifo)));
+		} else {
+			process_t *proc = find_process(sem_fifo_get(&(sem->fifo)));
 			proc->state = PROCSTATE_RUNNING;
 		}
 		ret = 0;
@@ -275,13 +255,7 @@ SYSCALL_HANDLER3(sys_ksem, uint32_t param1, uint32_t param2, uint32_t param3)
 	switch(param1)
 	{
 		case KSEM_GET:
-			*((int*)param3) = ksemget(param2);
-			break;
-		case KSEM_CREATE:
-			*((int*)param3) = ksemcreate(param2);
-			break;
-		case KSEM_DEL:
-			*((int*)param3) = ksemdel(param2);
+			*((int*)param3) = ksemget(param2, param3);
 			break;
 		case KSEM_P:
 			*((int*)param3) = ksemP(param2);
