@@ -38,6 +38,7 @@
 #include <types.h>
 #include <string.h>
 #include <pagination.h>
+#include <ksem.h>
 
 #define GET_PROCESS 0
 #define GET_PROCESS_LIST 1
@@ -298,6 +299,11 @@ process_t* create_process_elf(process_init_data_t* init_data)
 		return NULL;
 	}
 	
+	// Sémaphore pour le wait
+	new_proc->sem_wait = ksemget(SEM_NEW, SEM_CREATE);
+	int val = 0;
+	ksemctl(new_proc->sem_wait, SEM_SET, &val);
+
 	new_proc->ppid = init_data_dup->ppid;
 	
 	// Initialisation des données pour la vmm
@@ -424,6 +430,10 @@ process_t* create_process(process_init_data_t* init_data)
 	*(stack_ptr-4) = (vaddr_t) sys_exit;
 	
 	new_proc->ppid = init_data->ppid;
+
+	new_proc->sem_wait = ksemget(SEM_NEW, SEM_CREATE);
+	int val = 0;
+	ksemctl(new_proc->sem_wait, SEM_SET, &val);
 	
 	new_proc->user_time = 0;
 	new_proc->sys_time = 0;
@@ -523,9 +533,9 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	close_all_fd();
 
 	//kprintf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
-	
 	// On a pas forcement envie de supprimer le processus immédiatement
 	current->state = PROCSTATE_TERMINATED;
+	ksemctl(current->sem_wait, SEM_DEL, NULL);
 	sys_kill(current->ppid, SIGCHLD, NULL);
 }
 
@@ -541,12 +551,16 @@ SYSCALL_HANDLER1(sys_getppid, uint32_t* ppid)
 	*ppid = process->ppid;
 }
 
-SYSCALL_HANDLER1(sys_exec, process_init_data_t* init_data)
+SYSCALL_HANDLER2(sys_exec, process_init_data_t* init_data, int *pid)
 {
-	if(init_data->exec_type == EXEC_KERNEL)
-		scheduler_add_process(create_process(init_data));
-	else
-		scheduler_add_process(create_process_elf(init_data));
+	process_t *process;
+	if(init_data->exec_type == EXEC_KERNEL) {
+		process = create_process(init_data);
+	} else {
+		process = create_process_elf(init_data);
+	}
+	*pid = process->pid;
+	scheduler_add_process(process);
 }
 
 process_t* sys_proc_list(uint32_t action)
@@ -601,5 +615,16 @@ SYSCALL_HANDLER3(sys_proc, uint32_t sub_func, uint32_t param1, uint32_t param2)
 			
 		default:
 			kerr("invalid syscall (0x%x).\n", sub_func);
+	}
+}
+
+SYSCALL_HANDLER1(sys_waitpid, int pid) {
+	if (pid <= 0) {
+		klog("waitpid <= 0 non supporté pour l'instant.");
+	} else {
+		process_t* proc = find_process(pid);
+		if (proc->state != PROCSTATE_TERMINATED) {
+			ksemP(proc->sem_wait);
+		}
 	}
 }

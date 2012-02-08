@@ -32,5 +32,6 @@
 #include <sys/types.h>
 
 pid_t wait(int *status);
+void waitpid(int pid);
 
 #endif

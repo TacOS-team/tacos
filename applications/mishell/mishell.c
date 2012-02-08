@@ -188,18 +188,19 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 		if (strlen(buffer) > 1) {
 			if(exec_builtin_cmd(buffer) != 0)
 			{
+				int pid;
 				if (buffer[0] == '/') {
-					if(exec_elf(buffer, 0) != 0)
+					if((pid = exec_elf(buffer, 0)) < 0)
 						printf("commande introuvable.\n");
 					else
-						wait(NULL);
+						waitpid(pid);
 				} else {
 					char temp[278];
 					sprintf(temp, "/tacos/bin/%s", buffer);
-					if(exec_elf(temp, 0) != 0)
+					if((pid = exec_elf(temp, 0)) < 0)
 						printf("commande introuvable.\n");
 					else
-						wait(NULL);
+						waitpid(pid);
 				}
 			}
 		}

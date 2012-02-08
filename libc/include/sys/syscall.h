@@ -63,5 +63,6 @@
 #define SYS_STAT 28
 #define SYS_UNLINK 29
 #define SYS_DUP 30
+#define SYS_WAITPID 31
 
 #endif

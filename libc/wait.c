@@ -28,6 +28,10 @@
 
 #include <sys/wait.h>
 #include <signal.h>
+#include <unistd.h>
+#include <sys/syscall.h>
+
+#include <stdio.h>
 
 pid_t wait(int *status __attribute__ ((unused))) {
 //XXX: devrait juste faire : waitpid(-1, &status, 0);
@@ -36,4 +40,8 @@ pid_t wait(int *status __attribute__ ((unused))) {
 	sigdelset(&set, SIGCHLD);
 	sigsuspend(&set);
 	return -1;
+}
+
+void waitpid(pid_t pid) {
+	syscall(SYS_WAITPID, (uint32_t) pid, (uint32_t)NULL, (uint32_t)NULL);
 }

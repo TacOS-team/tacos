@@ -42,25 +42,25 @@
 
 extern char **environ;
 
-void exec(void* prog, char* name, int orphan)
-{
-	process_init_data_t init_data;
-	
-	init_data.name	= name;
-	init_data.stack_size = 0x1000;
-	init_data.priority = 0;
-	init_data.args = "fajitas bonitas";
-	init_data.envp = environ;
-
-	init_data.data = prog;
-
-	init_data.mem_size = 0;
-	init_data.entry_point = 0;
-	
-	init_data.ppid = orphan?0:getpid();
-	
-	syscall(SYS_EXEC, (uint32_t)NULL, (uint32_t)&init_data, 1);
-}
+//void exec(void* prog, char* name, int orphan)
+//{
+//	process_init_data_t init_data;
+//	
+//	init_data.name	= name;
+//	init_data.stack_size = 0x1000;
+//	init_data.priority = 0;
+//	init_data.args = "fajitas bonitas";
+//	init_data.envp = environ;
+//
+//	init_data.data = prog;
+//
+//	init_data.mem_size = 0;
+//	init_data.entry_point = 0;
+//	
+//	init_data.ppid = orphan?0:getpid();
+//	
+//	syscall(SYS_EXEC, (uint32_t)NULL, (uint32_t)&init_data, 1);
+//}
 
 int exec_elf(char* cmdline, int orphan)
 {	
@@ -97,7 +97,7 @@ int exec_elf(char* cmdline, int orphan)
 		init_data.ppid = orphan?0:getpid();
 		init_data.exec_type = EXEC_ELF;
 
-		syscall(SYS_EXEC, (uint32_t)&init_data, (uint32_t)NULL, (uint32_t)NULL);
+		syscall(SYS_EXEC, (uint32_t)&init_data, (uint32_t)&ret, (uint32_t)NULL);
 		
 		free(init_data.data);
 	}

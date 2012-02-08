@@ -59,14 +59,14 @@ typedef struct {
 	int size;
 	sem_fifo_cell* head;
 	sem_fifo_cell* tail;
-}sem_fifo;
+} sem_fifo;
 
 typedef struct
 {
 	int value;
 	uint8_t allocated;
 	sem_fifo fifo;
-}sem_t;
+} sem_t;
 
 /************************************
  * 
@@ -198,12 +198,19 @@ int ksemctl(uint8_t key, int cmd, void* res) {
 			*((int*)res) = sem->value;
 			break;
 		case SEM_DEL:
-			return -1; //TODO.
+			while (sem_fifo_size(&(sem->fifo)) > 0) {
+				process_t *proc = find_process(sem_fifo_get(&(sem->fifo)));
+				proc->state = PROCSTATE_RUNNING;
+			}
+			break;
 		case SEM_ZCNT:
 			*((int*)res) = sem_fifo_size(&(sem->fifo));
 			break;
 		case SEM_SET:
-			return -1; //TODO.
+			sem->value = *((int*)res);
+			break;
+		default:
+			return -1;
 	}
 	return 0;
 }
