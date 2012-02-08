@@ -181,7 +181,7 @@ int ksemget(uint8_t key, int flags) {
 	{
 		semaphores[key].allocated = 1;
 		semaphores[key].value = 1;
-		ret = 0;
+		ret = key;
 	}
 
 	return ret;
@@ -202,6 +202,7 @@ int ksemctl(uint8_t key, int cmd, void* res) {
 				process_t *proc = find_process(sem_fifo_get(&(sem->fifo)));
 				proc->state = PROCSTATE_RUNNING;
 			}
+			sem->allocated = 0;
 			break;
 		case SEM_ZCNT:
 			*((int*)res) = sem_fifo_size(&(sem->fifo));
