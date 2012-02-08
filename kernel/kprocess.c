@@ -433,10 +433,8 @@ process_t* create_process(process_init_data_t* init_data)
 	new_proc->ppid = init_data->ppid;
 
 	new_proc->sem_wait = ksemget(SEM_NEW, SEM_CREATE);
-	klog("(create) pid : %d, sem_wait : %d", new_proc->pid, new_proc->sem_wait);
 	int val = 0;
 	ksemctl(new_proc->sem_wait, SEM_SET, &val);
-	klog("(create) pid : %d, sem_wait : %d", new_proc->pid, new_proc->sem_wait);
 	
 	new_proc->user_time = 0;
 	new_proc->sys_time = 0;
@@ -537,10 +535,9 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 
 	//kprintf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
 	// On a pas forcement envie de supprimer le processus immédiatement
-	current->state = PROCSTATE_TERMINATED;
-	klog("(exit) pid : %d, sem_wait : %d", current->pid, current->sem_wait);
 	ksemctl(current->sem_wait, SEM_DEL, NULL);
 	sys_kill(current->ppid, SIGCHLD, NULL);
+	current->state = PROCSTATE_TERMINATED;
 }
 
 SYSCALL_HANDLER1(sys_getpid, uint32_t* pid)
