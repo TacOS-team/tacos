@@ -31,7 +31,7 @@
 #define _FAT_INTERNAL_H_
 
 #include <types.h>
-#include <time.h>
+#include <clock.h>
 #include <vfs.h>
 #include <fs/devfs.h>
 

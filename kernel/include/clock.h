@@ -31,8 +31,35 @@
 #define _CLOCK_H_
 
 #include <types.h>
-#include <time.h>
 #include <ksyscall.h>
+
+#define CLOCKS_PER_SEC 1000
+#define USEC_PER_SEC 1000000
+
+struct timeval{
+	long int tv_sec;
+	long int tv_usec;
+};
+
+struct timespec{
+	long int tv_sec;
+	long int tv_nsec;
+};
+
+struct tm{
+	int tm_sec;   //seconds after the minute — [0, 60]
+	int tm_min;   //minutes after the hour — [0, 59]
+	int tm_hour;  //hours since midnight — [0, 23]
+	int tm_mday;  //day of the month — [1, 31]
+	int tm_mon;   //months since January — [0, 11]
+	int tm_year;  //years since 1900
+	int tm_wday;  //days since Sunday — [0, 6]
+	int tm_yday;  //days since January 1 — [0, 365]
+	int tm_isdst; //Daylight Saving Time flag (1 true, 0 false, neg unavailable)
+};
+
+typedef long int time_t;
+typedef long int clock_t;
 
 int compare_times(struct timeval a, struct timeval b);
 void clock_init();

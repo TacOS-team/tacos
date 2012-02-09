@@ -47,7 +47,10 @@ typedef uint32_t size_t;
 typedef int ssize_t;
 #endif
 
+#ifndef _TYPES_OFF_T_
+#define _TYPES_OFF_T_
 typedef unsigned long long int off_t;
+#endif
 
 #define NULL ((void*)0)
 
