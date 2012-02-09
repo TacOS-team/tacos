@@ -185,7 +185,7 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 		//scanf("%s", buffer);
 		getline(buffer, 256);
 		//printf("\n");
-		if (strlen(buffer) > 1) {
+		if (strlen(buffer) >= 1) {
 			if(exec_builtin_cmd(buffer) != 0)
 			{
 				int pid;
