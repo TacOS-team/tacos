@@ -140,5 +140,7 @@ struct timeval get_tv();
  */
 time_t clock_mktime(struct tm *timep);
 
+void klog_systime();
+
 #endif
 
