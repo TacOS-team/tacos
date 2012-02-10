@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Gestion d'évènements datés.
+ * @brief Gestion d'évènements datés.
  */
 
 #include <types.h>

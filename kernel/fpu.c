@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Initialisation de la FPU.
+ * @brief Configuration de la FPU.
  */
 
 #include <fpu.h>

@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010 - TacOS developers.
@@ -55,7 +54,7 @@ void events_init();
  *
  * @param call la fonction qui sera lancée
  * @param data un pointeur qui sera passé à la fonction
- * @param time la fonction sera lancée dans "time" usec
+ * @param dtime_usec la fonction sera lancée dans "time" usec
  */
 void set_scheduler_event(callback_t call, void *data, time_t dtime_usec);
 

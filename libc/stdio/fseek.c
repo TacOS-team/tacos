@@ -1,8 +1,7 @@
 /**
- * @file fseek.c
+ * @file stdio/fseek.c
  *
  * @author TacOS developers 
- *
  *
  * @section LICENSE
  *

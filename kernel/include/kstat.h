@@ -29,7 +29,7 @@
 #define _KSTAT_H_
 
 #include <types.h>
-#include <time.h>
+#include <clock.h>
 
 /* File types.  */
 #define	S_IFMT	 0170000	/* These bits determine file type.  */

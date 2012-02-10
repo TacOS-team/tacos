@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Définitions liées au fonctionnement interne du processeur
+ * @brief Définitions liées au fonctionnement interne du processeur
  */
 #ifndef _CPU_H
 #define _CPU_H

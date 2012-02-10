@@ -1,8 +1,7 @@
 /**
- * @file fopen.c
+ * @file stdio/fclose.c
  *
  * @author TacOS developers 
- *
  *
  * @section LICENSE
  *
@@ -24,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Define "fclose" method
+ * @brief Define "fclose" method
  */
 
 

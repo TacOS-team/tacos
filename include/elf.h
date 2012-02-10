@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010 - TacOS developers.
@@ -24,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Bibliotèque destinée à manipuler les fichiers exécutables ELF
+ * @brief Bibliotèque destinée à manipuler les fichiers exécutables ELF
  */
 
 #ifndef _ELF_H_
@@ -37,30 +36,27 @@ typedef signed long int 	Elf32_Sword;
 typedef	unsigned long int	Elf32_Word;
 
 
-/*******************************
- * 
- * ELF HEADER
- * 
- *******************************/
- 
 #define EI_NIDENT	16
 
-typedef struct{
-	unsigned char	e_ident[EI_NIDENT];	/* ELF Identification */
-	Elf32_Half		e_type;				/* Type de fichier ELF */
-	Elf32_Half		e_machine;			/* Architecture de la machine */
-	Elf32_Word		e_version;			/* Version du fichier objet */
-	Elf32_Addr		e_entry;			/* Adresse virtuelle du point d'entrée */
-	Elf32_Off		e_phoff;			/* Offset du program header dans le fichier (0 si aucun program header)*/
-	Elf32_Off		e_shoff;			/* Offset du section header dans le fichier (0 si aucun section header)*/
-	Elf32_Word		e_flags;			/* Flags spécifiques à la machine */
-	Elf32_Half		e_ehsize;			/* Taille du header ELF */
-	Elf32_Half		e_phentsize;		/* Taille d'une entrée dans la table des program header (toutes les entrées ont la même taille) */
-	Elf32_Half		e_phnum;			/* Nombre d'entrées dans la table des program header */
-	Elf32_Half		e_shentsize;		/* Taille d'une entrée dans la table des section header */
-	Elf32_Half		e_shnum;			/* Nombre d'entrées dans la table des section header */
-	Elf32_Half		e_shstrndx;			/* Indice de l'entrée de la table des section header correspondant à la table des strings, si aucune entrée de ce genre, SHN_UNDEF */
-}Elf32_Ehdr;
+/**
+ * ELF HEADER
+ */
+typedef struct {
+	unsigned char	e_ident[EI_NIDENT];	/**< ELF Identification */
+	Elf32_Half		e_type;				/**< Type de fichier ELF */
+	Elf32_Half		e_machine;			/**< Architecture de la machine */
+	Elf32_Word		e_version;			/**< Version du fichier objet */
+	Elf32_Addr		e_entry;			/**< Adresse virtuelle du point d'entrée */
+	Elf32_Off		e_phoff;			/**< Offset du program header dans le fichier (0 si aucun program header)*/
+	Elf32_Off		e_shoff;			/**< Offset du section header dans le fichier (0 si aucun section header)*/
+	Elf32_Word		e_flags;			/**< Flags spécifiques à la machine */
+	Elf32_Half		e_ehsize;			/**< Taille du header ELF */
+	Elf32_Half		e_phentsize;		/**< Taille d'une entrée dans la table des program header (toutes les entrées ont la même taille) */
+	Elf32_Half		e_phnum;			/**< Nombre d'entrées dans la table des program header */
+	Elf32_Half		e_shentsize;		/**< Taille d'une entrée dans la table des section header */
+	Elf32_Half		e_shnum;			/**< Nombre d'entrées dans la table des section header */
+	Elf32_Half		e_shstrndx;			/**< Indice de l'entrée de la table des section header correspondant à la table des strings, si aucune entrée de ce genre, SHN_UNDEF */
+} Elf32_Ehdr;
 
 /* Indices pour e_ident: */
 #define EI_MAG0		0	/* 0x7F */
@@ -344,7 +340,7 @@ int load_elf(int fd, void* dest);
 /**
  * @brief charge un fichier elf dans la structure Elf32_File
  * 
- * @param filename Nom du fichier à charger
+ * @param fd File descriptor du fichier à charger.
  * 
  * @return pointeur vers une structure Elf32_file chargée, NULL en cas d'échec
  */
@@ -354,8 +350,8 @@ Elf32_File* load_elf_file(int fd);
 /**
  * @brief Trouve un symbole dans un fichier
  * 
- * @param Fichier dans lequel on recherche le symbole
- * @param Symbole cherché
+ * @param file Fichier dans lequel on recherche le symbole
+ * @param symbol Symbole cherché
  * 
  * @return symbole recherché
  */

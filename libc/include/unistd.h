@@ -126,23 +126,90 @@ unsigned int sleep(unsigned int seconds);
  * 
  * Endort le processus pour une durée déterminée (en microsecondes).
  *
- * @param milliseconds Le nombre de microsecondes pendant lesquelles le 
+ * @param microseconds Le nombre de microsecondes pendant lesquelles le 
  * processus doit être endormi.
  * 
  * @return 0 en cas de succès, -1 en cas d'erreur.
  */
 unsigned int usleep(unsigned int microseconds);
 
+/**
+ * @brief Écrire dans un descripteur de fichier.
+ *
+ * Lit au maximum count octets dans la zone mémoire pointée par
+ * buf, et les écrit dans le fichier référencé par le descripteur fd.
+ *
+ * @param fd Numero du descripteur de fichier ouvert.
+ * @param buf Buffer qui contient les données à écrire.
+ * @param count Le nombre maximum d'octets à écrire.
+ *
+ * @return le nombre d'octets écrits (0 si aucune écriture, -1 en cas d'erreur).
+ */
 ssize_t write(int fd, const void *buf, size_t count);
 
+/**
+ * @brief Lire depuis un descripteur de fichier.
+ *
+ * Lit jusqu'à count octets depuis le descripteur de fichier fd dans le tampon
+ * pointé par buf.
+ *
+ * @param fd Numero du descripteur de fichier ouvert.
+ * @param buf Buffer où enregistrer les données lues.
+ * @param count Nombre maximum d'octets à lire.
+ *
+ * @return le nombre d'octets lus (0 en fin de fichier, -1 en cas d'erreur).
+ */
 ssize_t read(int fd, void *buf, size_t count);
 
+/**
+ * @brief Positionner la tête de lecture/écriture dans un fichier.
+ *
+ * Place la tête de lecture/écriture à la position offset dans le fichier
+ * associé au descripteur fd en suivant la directive whence.
+ *
+ * @param fd Numero du descripteur de fichier ouvert.
+ * @param offset Position dans le fichier.
+ * @param whence Directive (SET, CUR, END)
+ *
+ * @return offset depuis le début du fichier. -1 en cas d'erreur.
+ */
 int lseek(int fd, long offset, int whence);
 
+/**
+ * @brief Obtenir l'état d'un fichier (status).
+ *
+ * Renvoie des informations à propos du fichier indiqué.
+ *
+ * @param path Chemin du fichier.
+ * @param buf Structure qui va recevoir les informations.
+ *
+ * @return 0 en cas de succès, -1 sinon.
+ */
 int stat(const char *path, struct stat *buf);
 
+/**
+ * @brief Détruire un nom et éventuellement le fichier associé.
+ *
+ * Détruit un nom dans le système de fichier. Actuellement, le fichier associé
+ * est toujours effacé, même s'il y a plusieurs liens. (TODO améliorer ça)
+ *
+ * @param pathname Chemin du fichier.
+ *
+ * @return 0 en cas de succès, -1 sinon.
+ */
 int unlink(const char *pathname);
 
+/**
+ * @brief Créer un noeud du système de fichiers.
+ *
+ * Crée un noeud du système de fichier (fichier, fichier spécial, etc.)
+ *
+ * @param path Chemin du noeud.
+ * @param mode Droit d'accès sur ce noeud.
+ * @param dev Dans le cas d'un fichier de périphérique, c'est son identifiant.
+ *
+ * @return 0 en cas de succès, -1 sinon.
+ */
 int mknod(const char *path, mode_t mode, dev_t dev);
 
 #endif //_UNISTD_H_

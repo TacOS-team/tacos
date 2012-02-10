@@ -81,7 +81,10 @@ directories:
 	@mkdir -p modules
 
 doc:
-	doxygen doxygen.conf && $(MAKE) -C doc/latex
+	doxygen doxygen.conf
+
+docpdf: doc
+	$(MAKE) -C doc/latex
 
 clean:
 	@for i in $(SUBDIRS); do \
