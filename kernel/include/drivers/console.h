@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010 - TacOS developers.
@@ -33,15 +32,17 @@
 #include <types.h>
 #include <tty.h>
 
+/**
+ * @brief Structure qui contient les informations d'une console.
+ */
 struct console_t {
-	bool used;
-	unsigned int n_page;
-	unsigned int cur_x;
-	unsigned int cur_y;
-	bool disp_cur;
-	char attr;
-	unsigned int lines;
-	unsigned int cols;
+	bool used;						/**< Console activée. */
+	unsigned int cur_x;		/**< Position horizontale du curseur. */
+	unsigned int cur_y;		/**< Position verticale du curseur. */
+	bool disp_cur;				/**< Curseur visible. */
+	char attr;						/**< Attribut actuel pour l'affichage de caractères. */
+	unsigned int lines;		/**< Nombre de lignes. */
+	unsigned int cols;		/**< Nombre de colonnes. */
 };
 
 /**

@@ -50,7 +50,6 @@ static int active_console = 0;
 void console_init() {
 	int i;
 	for (i = 0; i < NB_CONSOLES; i++) {
-		consoles[i].n_page = i;
 		consoles[i].used = false;
 		consoles[i].lines = 25;
 		consoles[i].cols = 80;
@@ -83,47 +82,47 @@ tty_struct_t* get_active_terminal() {
 
 void focus_console(int n) {
 	active_console = n;
-	switch_page(consoles[n].n_page);
+	switch_page(n);
 	disable_cursor(!consoles[n].disp_cur);
 	if (consoles[n].disp_cur) {
-		cursor_position_video(consoles[n].n_page, consoles[n].cur_x, consoles[n].cur_y);
+		cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 	}
 }
 
 static void cursor_up(int n) {
 	if (consoles[n].cur_y > 0)
 		consoles[n].cur_y--;
-	cursor_position_video(consoles[n].n_page, consoles[n].cur_x, consoles[n].cur_y);
+	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
 static void cursor_down(int n) {
 	if (consoles[n].cur_y < consoles[n].lines - 1)
 		consoles[n].cur_y++;
-	cursor_position_video(consoles[n].n_page, consoles[n].cur_x, consoles[n].cur_y);
+	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
 static void cursor_back(int n) {
 	if (consoles[n].cur_x > 0)
 		consoles[n].cur_x--;
-	cursor_position_video(consoles[n].n_page, consoles[n].cur_x, consoles[n].cur_y);
+	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
 static void cursor_forward(int n) {
 	if (consoles[n].cur_x < consoles[n].cols - 1)
 		consoles[n].cur_x++;
-	cursor_position_video(consoles[n].n_page, consoles[n].cur_x, consoles[n].cur_y);
+	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
 static void lineup(int n) {
 	cursor_up(n);
 	consoles[n].cur_x = 0;
-	cursor_position_video(consoles[n].n_page, consoles[n].cur_x, consoles[n].cur_y);
+	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
 static void cursor_move_col(unsigned int n, unsigned int x) {
 	if (x <= consoles[n].cols) {
 		consoles[n].cur_x = x - 1;
-		cursor_position_video(consoles[n].n_page, consoles[n].cur_x, consoles[n].cur_y);
+		cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 	}
 }
 
@@ -134,7 +133,7 @@ static void cursor_move(unsigned int n, unsigned int y, unsigned int x) {
 	if (x > 0 && x <= consoles[n].cols) {
 		consoles[n].cur_x = x - 1;
 	}
-	cursor_position_video(consoles[n].n_page, consoles[n].cur_x, consoles[n].cur_y);
+	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
 static void clear_console(int n) {
@@ -142,15 +141,15 @@ static void clear_console(int n) {
 
 	for (y = 0; y < consoles[n].lines; y++) {
 		for (x = 0; x < consoles[n].cols; x++) {
-			kputchar_video(consoles[n].n_page, false, ' ', x, y,
+			kputchar_video(n, false, ' ', x, y,
 					consoles[n].attr);
 		}
 	}
-	flip_page(consoles[n].n_page);
+	flip_page(n);
 
 	consoles[n].cur_x = 0;
 	consoles[n].cur_y = 0;
-	cursor_position_video(consoles[n].n_page, 0, 0);
+	cursor_position_video(n, 0, 0);
 }
 
 static void scrollup(int n) {
@@ -159,16 +158,16 @@ static void scrollup(int n) {
 	for (l = 0; l < consoles[n].lines - 1; l++) {
 		for (c = 0; c < consoles[n].cols; c++) {
 			char car, attr;
-			get_char_video(consoles[n].n_page, true, &car, c, l + 1, &attr);
-			kputchar_video(consoles[n].n_page, false, car, c, l, attr);
+			get_char_video(n, true, &car, c, l + 1, &attr);
+			kputchar_video(n, false, car, c, l, attr);
 		}
 	}
 	for (c = 0; c < consoles[n].cols; c++) {
-		kputchar_video(consoles[n].n_page, false, ' ', c,
+		kputchar_video(n, false, ' ', c,
 				consoles[n].lines - 1, consoles[n].attr);
 	}
 
-	flip_page(consoles[n].n_page);
+	flip_page(n);
 }
 
 static void newline(int n) {
@@ -178,7 +177,7 @@ static void newline(int n) {
 		scrollup(n);
 		consoles[n].cur_y--;
 	}
-	cursor_position_video(consoles[n].n_page, consoles[n].cur_x, consoles[n].cur_y);
+	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
 void set_foreground(int n, uint8_t foreground) {
@@ -429,14 +428,14 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 	} else if (c == '\b') {
 		backspace(n);
 	} else {
-		kputchar_video(consoles[n].n_page, true, c, consoles[n].cur_x,
+		kputchar_video(n, true, c, consoles[n].cur_x,
 				consoles[n].cur_y, consoles[n].attr);
 		consoles[n].cur_x++;
 		if (consoles[n].cur_x >= consoles[n].cols)
 			newline(n);
 	}
 
-	cursor_position_video(consoles[n].n_page, consoles[n].cur_x, consoles[n].cur_y);
+	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
 static void kputchar_tab(tty_struct_t *tty) {
@@ -468,6 +467,6 @@ static void backspace(int n) {
 	int x = consoles[n].cur_x;
 	int y = consoles[n].cur_y;
 
-	kputchar_video(consoles[n].n_page, true, ' ', x, y, consoles[n].attr);
-	cursor_position_video(consoles[n].n_page, consoles[n].cur_x, consoles[n].cur_y);
+	kputchar_video(n, true, ' ', x, y, consoles[n].attr);
+	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
