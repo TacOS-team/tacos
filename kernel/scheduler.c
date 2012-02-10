@@ -205,6 +205,7 @@ void* schedule(void* data __attribute__ ((unused)))
 		{
 			current->regs.ss = frame->ss;
 			current->regs.esp = frame->esp;
+			current->regs.kesp = (uint32_t)(frame+1);
 		}
 /*
 		current->regs.kss = get_default_tss()->ss0;

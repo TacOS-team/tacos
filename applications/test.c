@@ -33,9 +33,11 @@
 
 int main(int argc, char** argv)
 {
+	int i = 0;
 	while(1) {
-		printf(".");
+		for(i=0; i<1000000;i++);
 		syscall(SYS_DUMMY,1,1,1);
+		i++;
 	}
 	return 0;
 }	
