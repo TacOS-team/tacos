@@ -1,8 +1,7 @@
 /**
- * @file types.h
+ * @file kernel/include/types.h
  *
  * @author TacOS developers 
- *
  *
  * @section LICENSE
  *

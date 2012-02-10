@@ -1,8 +1,7 @@
 /**
- * @file fopen.c
+ * @file stdio/fopen.c
  *
  * @author TacOS developers 
- *
  *
  * @section LICENSE
  *

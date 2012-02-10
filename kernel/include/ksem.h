@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010 - TacOS developers.
@@ -24,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Coté noyau de la gestion des sémaphores
+ * @brief Coté noyau de la gestion des sémaphores
  */
 
 #ifndef KSEM_H
@@ -82,7 +81,7 @@ int ksemctl(uint8_t key, int cmd, void* res);
  * Si ce n'est pas le cas, il met son pid dans la fifo du sémaphore pour 
  * pouvoir être réveillé en temps voulu, et se met en état d'attente.
  * 
- * @param semid Identifiant du sémaphore sur lequel l'opération doit être réalisée
+ * @param key Identifiant du sémaphore sur lequel l'opération doit être réalisée
  * 
  * @return 0 en cas de succès, -1 sinon
  *
@@ -95,7 +94,7 @@ int ksemP(uint8_t key);
  * Le processus libère le sémaphore. Si la fifo est vide, il incrémente la valeur du sémaphore.
  * Si un processus est présent dans la fifo, il le réveille.
  * 
- * @param semid Identifiant du sémaphore sur lequel l'opération doit être réalisée
+ * @param key Identifiant du sémaphore sur lequel l'opération doit être réalisée
  * 
  * @return 0 en cas de succès, -1 sinon
  *

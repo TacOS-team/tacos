@@ -126,7 +126,7 @@ unsigned int sleep(unsigned int seconds);
  * 
  * Endort le processus pour une durée déterminée (en microsecondes).
  *
- * @param milliseconds Le nombre de microsecondes pendant lesquelles le 
+ * @param microseconds Le nombre de microsecondes pendant lesquelles le 
  * processus doit être endormi.
  * 
  * @return 0 en cas de succès, -1 en cas d'erreur.

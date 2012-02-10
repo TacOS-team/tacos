@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010 - TacOS developers.
@@ -98,9 +97,7 @@
  * 
  *	Initialise les descripteurs de fichiers standards.
  *
- * @param fd0 stdin
- * @param fd1 stdout
- * @param fd2 stderr
+ * @param new_proc Processus à initialiser.
  */
 void init_stdfd(process_t *new_proc);
 
