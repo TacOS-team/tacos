@@ -49,20 +49,20 @@ struct termios tty_std_termios = {
 	.c_ispeed = 38400,
 };
 
-#define I_ECHO(tty) (tty->termios.c_lflag & ECHO)
-#define I_CANON(tty) (tty->termios.c_lflag & ICANON)
+#define I_ECHO(tty) (tty->termios.c_lflag & ECHO)			/**< Echo activé ? */
+#define I_CANON(tty) (tty->termios.c_lflag & ICANON)	/**< Mode canonique ? */
 
-#define I_IGNCR(tty) (tty->termios.c_iflag & IGNCR)
-#define I_ICRNL(tty) (tty->termios.c_iflag & ICRNL)
-#define I_INLCR(tty) (tty->termios.c_iflag & INLCR)
+#define I_IGNCR(tty) (tty->termios.c_iflag & IGNCR)		/**< Ignore CR ? */
+#define I_ICRNL(tty) (tty->termios.c_iflag & ICRNL)		/**< CR => NL ? */
+#define I_INLCR(tty) (tty->termios.c_iflag & INLCR)		/**< NL => CR ? */
 
-#define L_ISIG(tty) (tty->termios.c_lflag & ISIG)
-#define L_ECHOE(tty) (tty->termios.c_lflag & ECHOE)
+#define L_ISIG(tty) (tty->termios.c_lflag & ISIG)			/**< Signals enabled ? */
+#define L_ECHOE(tty) (tty->termios.c_lflag & ECHOE)		/**< Echo erase ? */
 
-#define QUIT_CHAR(tty) ((tty)->termios.c_cc[VQUIT])
-#define INTR_CHAR(tty) ((tty)->termios.c_cc[VINTR])
-#define SUSP_CHAR(tty) ((tty)->termios.c_cc[VSUSP])
-#define ERASE_CHAR(tty) ((tty)->termios.c_cc[VERASE])
+#define QUIT_CHAR(tty) ((tty)->termios.c_cc[VQUIT])		/**< Quit char */
+#define INTR_CHAR(tty) ((tty)->termios.c_cc[VINTR])		/**< Interrupt char */
+#define SUSP_CHAR(tty) ((tty)->termios.c_cc[VSUSP])		/**< Suspend char */
+#define ERASE_CHAR(tty) ((tty)->termios.c_cc[VERASE])	/**< Erase char */
 
 void tty_init() {
 

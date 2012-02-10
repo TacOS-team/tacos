@@ -103,6 +103,9 @@ void put_tty_driver(tty_driver_t *driver);
 int tty_register_driver(tty_driver_t *driver);
 void tty_insert_flip_char(tty_struct_t *tty, unsigned char ch);
 
+/**
+ * @brief Initialisation du système de terminaux.
+ */
 void tty_init();
 
 size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count);
