@@ -45,40 +45,42 @@ int main() {
 	unlink("fichiertestio");
 	f = fopen("fichiertestio", "r");
 	unit_test_int("Ouverture d'un fichier inexistant avec 'r'", 1, f == NULL);
+	if (f) fclose(f);
 
 	// Test 2:
 	unlink("fichiertestio");
 	f = fopen("fichiertestio", "r+");
 	unit_test_int("Ouverture d'un fichier inexistant avec 'r+'", 1, f == NULL);
+	if (f) fclose(f);
 
 	// Test 3:
 	unlink("fichiertestio");
 	f = fopen("fichiertestio", "w");
 	unit_test_int("Ouverture d'un fichier inexistant avec 'w'", 1, f != NULL);
-	fclose(f);
+	if (f) fclose(f);
 
 	// Test 4:
 	unlink("fichiertestio");
 	f = fopen("fichiertestio", "w+");
 	unit_test_int("Ouverture d'un fichier inexistant avec 'w+'", 1, f != NULL);
-	fclose(f);
+	if (f) fclose(f);
 
 	// Test 5:
 	unlink("fichiertestio");
 	f = fopen("fichiertestio", "a");
 	unit_test_int("Ouverture d'un fichier inexistant avec 'a'", 1, f != NULL);
-	fclose(f);
+	if (f) fclose(f);
 
 	// Test 6:
 	unlink("fichiertestio");
 	f = fopen("fichiertestio", "a+");
 	unit_test_int("Ouverture d'un fichier inexistant avec 'a+'", 1, f != NULL);
-	fclose(f);
+	if (f) fclose(f);
 
 	// Test 7:
 	unlink("fichiertestio");
 	f = fopen("fichiertestio", "w+");
-	fclose(f);
+	if (f) fclose(f);
 	stat("fichiertestio", &buf);
 	unit_test_int("Longueur d'un fichier ouvert avec 'w+' doit etre de 0 (fichier inexistant)", 0, buf.st_size);
 	
@@ -86,9 +88,9 @@ int main() {
 	unlink("fichiertestio");
 	f = fopen("fichiertestio", "w");
 	fwrite("0123456789", sizeof(char), 10, f);
-	fclose(f);
+	if (f) fclose(f);
 	f = fopen("fichiertestio", "w+");
-	fclose(f);
+	if (f) fclose(f);
 	stat("fichiertestio", &buf);
 	unit_test_int("Longueur d'un fichier ouvert avec 'w+' doit etre de 0 (fichier non vide)", 0, buf.st_size);
 
@@ -96,38 +98,38 @@ int main() {
 	unlink("fichiertestio");
 	f = fopen("fichiertestio", "w");
 	fwrite("0123456789", sizeof(char), 10, f);
-	fclose(f);
+	if (f) fclose(f);
 	f = fopen("fichiertestio", "r");
 	char buffer[11];
 	fread(buffer, sizeof(char), 10, f);
 	buffer[10] = '\0';
-	fclose(f);
+	if (f) fclose(f);
 	unit_test_str("Lecture d'un fichier depuis le début.", "0123456789", buffer);
 
 	// Test 10:
 	unlink("fichiertestio");
 	f = fopen("fichiertestio", "w");
 	fwrite("0123456789", sizeof(char), 10, f);
-	fclose(f);
+	if (f) fclose(f);
 	f = fopen("fichiertestio", "a");
 	fwrite("1011121314", sizeof(char), 10, f);
-	fclose(f);
+	if (f) fclose(f);
 	char buffer2[21];
 	f = fopen("fichiertestio", "r");
 	fread(buffer2, sizeof(char), 20, f);
 	buffer2[20] = '\0';
-	fclose(f);
+	if (f) fclose(f);
 	unit_test_str("Ecriture, fermeture, Append, Lecture.", "01234567891011121314", buffer2);
 
 	// Test 11:
 	unlink("fichiertestio");
 	f = fopen("fichiertestio", "w");
 	fwrite("01234567891011121314", sizeof(char), 20, f);
-	fclose(f);
+	if (f) fclose(f);
 	f = fopen("fichiertestio", "r");
 	fseek(f, 5, SEEK_SET);
 	fread(buffer, sizeof(char), 10, f);
-	fclose(f);
+	if (f) fclose(f);
 	unit_test_str("Ecriture, fermeture, fseek, lecture.", "5678910111", buffer);
 
 	return 0;
