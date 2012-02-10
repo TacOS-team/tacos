@@ -113,7 +113,12 @@ void pci_scan()
 			}
 		}
 	}
-	pci_table_len>0?klog("%d device(s) found.",pci_table_len):klog("no device found.\n");
+	if(pci_table_len>0)
+	{
+		klog("%d device(s) found.",pci_table_len);
+	} else {
+		klog("no device found.\n");
+	}
 }
 
 

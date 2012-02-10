@@ -34,12 +34,14 @@
 
 #include <kstdio.h>
 
+extern void klog_systime();
 
-#define klog(message, ...) kprintf("[%s] "message"\n", __FILE__, ##__VA_ARGS__)
-#define kerr(message, ...) kprintf("\033[031m[%s:%d in %s] ERROR: "message"\033[0m\n", __FILE__, __LINE__, __func__, ##__VA_ARGS__)
+#define klog(message, ...) do{klog_systime();kprintf("[%s] "message"\n", __FILE__, ##__VA_ARGS__);}while(0)
+
+#define kerr(message, ...) do{kprintf("\033[031m");klog_systime();kprintf("\033[031m[%s:%d in %s] ERROR: "message"\033[0m\n", __FILE__, __LINE__, __func__, ##__VA_ARGS__);}while(0)
 
 #ifdef DEBUG
-	#define kdebug(message, ...) kprintf("[%s] DEBUG: "message"\n", __FILE__, ##__VA_ARGS__)
+	#define kdebug(message, ...) do{klog_systime();kprintf("[%s] DEBUG: "message"\n", __FILE__, ##__VA_ARGS__);}while(0)
 #else
 	#define kdebug(message, ...)
 #endif

@@ -32,6 +32,7 @@
 #include <i8254.h>
 #include <clock.h>
 #include <interrupts.h>
+#include <kstdio.h>
 #include "heap.h"
 
 // Note: RTC signifie Real Time Clock.
@@ -60,6 +61,8 @@
 
 static clock_t sysclock; /**< Nombre de ticks d'horloge. */
 static time_t systime; /**< Date en secondes. */
+
+time_t boot_systime;
 
 const int _ytab[2][12] = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 },
                            { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }};
@@ -221,6 +224,7 @@ void clock_init()
   date.tm_sec = bcd2binary(inb(RTC_ANSWER));
   
   systime = clock_mktime(&date);
+  boot_systime = systime;
 }
 
 clock_t get_clock()
@@ -275,5 +279,15 @@ void timeval_add_usec(struct timeval *t, time_t usec) {
 		overflow = t->tv_usec/USEC_PER_SEC;
 		t->tv_usec = t->tv_usec%USEC_PER_SEC;
 		t->tv_sec += overflow;
+	}
+}
+
+void klog_systime() {
+	int decimales = (int)(((float)sysclock/(float)CLOCKS_PER_SEC)*100.0f);
+	kprintf("[%d.", get_date() - boot_systime);
+	if(decimales <10) {
+		kprintf("0%d]", decimales);
+	} else {
+		kprintf("%d]", decimales);
 	}
 }
