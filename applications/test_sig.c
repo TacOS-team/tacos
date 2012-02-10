@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010 - TacOS developers.
@@ -24,29 +23,54 @@
  *
  * @section DESCRIPTION
  *
- * Programme de test pour les signaux
+ * @brief Programme de test des signaux.
  */
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/syscall.h>
-#include <signal.h>
 #include <unistd.h>
+#include <signal.h>
+#include <string.h>
 
+#define DEBUG
 
-void handler(int signal) {
-	printf("Me revoila!\n", signal);
+static int var;
+
+static void usr_handler1(int signum)
+{
+#ifdef DEBUG
+	printf("usr_handler1 %d\n", signum);
+#endif
+	var = 12345;
+	return;
 }
 
-int main() {
-	int i;
-	for(i=0; i<4; i++) {
-		syscall(SYS_DUMMY,0,1,2);
+static void padding(int c) {
+	while (c-- > 0) {
+		printf(" ");
 	}
-
-    return 0;
 }
 
+static void unit_test(const char* msg, int attendu, int obtenu) {
+	int len = strlen(msg);
+	printf("%s", msg);
+	if (attendu == obtenu) {
+		padding(80 - len - 4);
+		printf("[OK]\n");
+	} else {
+		padding(80 - len - 7);
+		printf("[ERROR]\n");
+	}
+}
 
+int main()
+{
+	int pid = getpid();
+	
+	// Test 1 :
+	signal(SIGUSR1, usr_handler1);
+	var = 0;
+	kill(pid, SIGUSR1);
+	unit_test("Mise en place d'un handler et envoi d'un signal. ", 12345, var);
+
+	return 0;
+}
