@@ -88,6 +88,16 @@ static void usr_handler7(int signum __attribute__((unused))) {
 	var = time(NULL) - a;
 }
 
+static void usr_handler8(int signum __attribute__((unused))) {
+	var--;
+    kill(getpid(), SIGUSR2);
+}
+
+static void usr_handler9(int signum __attribute__((unused))) {
+    if (var > 0) {
+        kill(getpid(), SIGUSR1);
+    }
+}
 static void padding(int c) {
 	while (c-- > 0) {
 		printf(" ");
@@ -161,6 +171,14 @@ int main()
 	kill(pid, SIGUSR1);
 	sleep(1);
 	unit_test("Sleep de 3 secondes dans le handler alors que j'ai un sleep de 1s ici aussi.", 3, var);
+
+    // Test 8 :
+    signal(SIGUSR1, usr_handler8);
+    signal(SIGUSR2, usr_handler9);
+    var = 3;
+    kill(pid, SIGUSR1);
+    sleep(1);
+    unit_test("Appels recursifs entre 2 signaux.", 0, var);
 
 	return 0;
 }
