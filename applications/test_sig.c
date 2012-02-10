@@ -98,6 +98,7 @@ static void usr_handler9(int signum __attribute__((unused))) {
         kill(getpid(), SIGUSR1);
     }
 }
+
 static void padding(int c) {
 	while (c-- > 0) {
 		printf(" ");
