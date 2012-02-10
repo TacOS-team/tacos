@@ -83,6 +83,8 @@ typedef void (*sighandler_t)(int);
 #define SIG_UNBLOCK	1
 #define SIG_SETMASK	2
 
+#define SIG_IGN     sig_ignore_handler
+
 int kill(unsigned int pid, int sig);
 
 sighandler_t signal(int sig, sighandler_t func);
@@ -102,5 +104,8 @@ int sigdelset(sigset_t *set, int signum);
 int sigismember(const sigset_t *set, int signum);
 
 void init_signals(void);
+
+
+void sig_ignore_handler(int signal);
 
 #endif /* _SIGNAL_H */
