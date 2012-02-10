@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Gestion de l'horloge et du temps en général.
+ * @brief Gestion de l'horloge et du temps en général.
  */
 
 #include <types.h>
