@@ -129,7 +129,7 @@ void convert_human(size_t size, size_t *nsize, char *c) {
 	}
 
 	switch (p) {
-		case 0: *c = '\0'; break;
+		case 0: *c = ' '; break;
 		case 1:	*c = 'K'; break;
 		case 2:	*c = 'M'; break;
 		case 3:	*c = 'G'; break;
