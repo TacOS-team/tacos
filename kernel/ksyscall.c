@@ -61,6 +61,8 @@ void syscall_entry(int interrupt_id __attribute__ ((unused)))
 	/* Récupération des données empilées par l'interruption*/
 	frame = (intframe*) &interrupt_id;
 
+	//klog("syscall:0x%x 0x%x", frame+1, frame->kesp);
+
 	/* Si on fait le syscall depuis l'user-mode, on sauvegarde l'esp user dans la tss */
 	if(frame->cs == USER_CODE_SEGMENT) {
 		get_default_tss()->esp1 = frame->esp;
