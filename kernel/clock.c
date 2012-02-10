@@ -34,34 +34,32 @@
 #include <interrupts.h>
 #include "heap.h"
 
-#define RTC_REQUEST 0x70
-#define RTC_ANSWER  0x71
+// Note: RTC signifie Real Time Clock.
 
-#define RTC_SECOND        0x00
-#define RTC_SECOND_ALARM  0x01
-#define RTC_MINUTE        0x02
-#define RTC_MINUTE_ALARM  0x03
-#define RTC_HOUR          0x04
-#define RTC_HOUR_ALARM    0x05
-#define RTC_DAY_OF_WEEK   0x06
-#define RTC_DATE_OF_MONTH 0x07
-#define RTC_MONTH         0x08
-#define RTC_YEAR          0x09
+#define RTC_REQUEST 0x70 /**< RTC select port */
+#define RTC_ANSWER  0x71 /**< RTC read/write port */
 
-#define A_SMALLER -1
-#define B_SMALLER 1
+#define RTC_SECOND        0x00 /**< select seconds */
+#define RTC_SECOND_ALARM  0x01 /**< select seconds alarm */
+#define RTC_MINUTE        0x02 /**< select minutes */
+#define RTC_MINUTE_ALARM  0x03 /**< select minutes alarm */
+#define RTC_HOUR          0x04 /**< select hours */
+#define RTC_HOUR_ALARM    0x05 /**< select hours alarm */
+#define RTC_DAY_OF_WEEK   0x06 /**< select day of week */
+#define RTC_DATE_OF_MONTH 0x07 /**< select day of month */
+#define RTC_MONTH         0x08 /**< select month */
+#define RTC_YEAR          0x09 /**< select year */
 
-#define LEAPYEAR(year) (!((year) % 4) && (((year) % 100) || !((year) % 400)))
-#define YEARSIZE(year) (LEAPYEAR(year) ? 366 : 365)
-#define YEAR0 1900
-#define EPOCH_YR   1970
-#define SECS_DAY   (24L * 60L * 60L)
-#define LONG_MAX   2147483647L
+#define LEAPYEAR(year) (!((year) % 4) && (((year) % 100) || !((year) % 400))) /**< Macro function pour déterminer si une année est bissextile. */
+#define YEARSIZE(year) (LEAPYEAR(year) ? 366 : 365) /**< Nombre de jour dans une année. */
+#define YEAR0 1900 /**< Constante pour convertir les années exprimées depuis 1900 */
+#define EPOCH_YR   1970 /**< Constante pour convertir les années exprimées depuis 1970. */
+#define SECS_DAY   (24L * 60L * 60L) /**< Nombre de secondes dans un jour. */
+#define LONG_MAX   2147483647L //XXX: Qu'est-ce que ça fait là ?
 #define TIME_MAX   0xFFFFFFFFL
 
-
-static clock_t sysclock;
-static time_t systime;
+static clock_t sysclock; /**< Nombre de ticks d'horloge. */
+static time_t systime; /**< Date en secondes. */
 
 const int _ytab[2][12] = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 },
                            { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }};
@@ -257,17 +255,11 @@ int compare_times(struct timeval a, struct timeval b)
 {
 	if(a.tv_sec != b.tv_sec)
 	{
-		if(a.tv_sec < b.tv_sec)
-			return A_SMALLER;
-		else
-			return B_SMALLER;
+	    return (a.tv_sec < b.tv_sec) ? -1 : 1;
 	}
 	if(a.tv_usec != b.tv_usec)
 	{
-		if(a.tv_usec < b.tv_usec)
-			return A_SMALLER;
-		else
-			return B_SMALLER;
+	    return (a.tv_usec < b.tv_usec) ? -1 : 1;
 	}
 	
 	return 0;

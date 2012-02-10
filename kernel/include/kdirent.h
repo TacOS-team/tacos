@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010 - TacOS developers.
@@ -24,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Syscall pour ce qui est relatif aux dossiers. 
  */
 
 #ifndef _KDIRENT_H
@@ -34,7 +33,7 @@
 #include <types.h>
 #include <kstat.h>
 
-#define NAME_MAX 256
+#define NAME_MAX 256 /**< Longueur maximale d'un nom de fichier. */
 
 struct dirent {
 	uint32_t  d_ino;
@@ -43,9 +42,9 @@ struct dirent {
 	char      d_name[NAME_MAX];
 };
 
-#define ENOENT 2
-#define ENOTDIR 3
-#define EEXIST 4
+#define ENOENT 2 /**< Code erreur entrée non trouvée. */
+#define ENOTDIR 3 /**< Core erreur ce n'est pas un dossier. */
+#define EEXIST 4 /**< Code erreur existe déjà. */
 
 SYSCALL_HANDLER3(sys_readdir, int fd, char *entries, size_t *size);
 SYSCALL_HANDLER3(sys_mkdir, const char *pathname, mode_t mode, int *ret);

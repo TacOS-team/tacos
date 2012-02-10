@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010 - TacOS developers.
@@ -24,15 +23,13 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Driver clavier.
  */
 
 #include <types.h>
 #include <ioports.h>
 #include <drivers/keyboard.h>
 #include <drivers/console.h>
-
-#define BUFFER_SIZE 256
 
 /**
  * Scancode SET 1 : (IBM XT)
@@ -41,49 +38,54 @@
 
 /** SCAN CODES **/
 
-#define KEY_RELEASE 0x80
+#define KEY_RELEASE 0x80 /**< Masque pour le scancode d'un relâchement de touche. */
 
 // Protocol 
-#define KEYBOARD_ERROR_MODE_2 0x00 // Erreur en scancode mode 2 et 3
-#define KEYBOARD_BAT_OK       0xAA // Basic Assurance Test
-#define KEYBOARD_ECHO_RES     0xEE // Result of echo command
-#define KEYBOARD_UNKNOWN      0xF1 // ????
+#define KEYBOARD_ERROR_MODE_2 0x00 /**< Erreur en scancode mode 2 et 3 */
+#define KEYBOARD_BAT_OK       0xAA /**< Basic Assurance Test */
+#define KEYBOARD_ECHO_RES     0xEE /**< Result of echo command */
+#define KEYBOARD_UNKNOWN      0xF1 /**< ???? */
 #define KEYBOARD_ACK          0xFA
-#define KEYBOARD_BAT_KO       0xFC // Basic Assurance Test
-#define KEYBOARD_FAILURE      0xFD // Internal failure
-#define KEYBOARD_ACK_FAIL     0xFE // fails to ack, please resend
-#define KEYBOARD_ERROR_MODE_1 0xFF // Erreur en scancode mode 1
+#define KEYBOARD_BAT_KO       0xFC /**< Basic Assurance Test */
+#define KEYBOARD_FAILURE      0xFD /**< Internal failure */
+#define KEYBOARD_ACK_FAIL     0xFE /**< fails to ack, please resend */
+#define KEYBOARD_ERROR_MODE_1 0xFF /**< Erreur en scancode mode 1 */
 // Escape
 #define KEYBOARD_EXPAND   0xE0
-#define KEYBOARD_PAUSE    0xE1 // pause/break
+#define KEYBOARD_PAUSE    0xE1 /**< scancode pause/break key. */
 #define KEYBOARD_LOGITECH 0xE2
 
-#define KEY_ESCAPE  0x01
-#define KEY_ALT  0x38
-#define KEY_LSHIFT  0x2A
-#define KEY_RSHIFT  0x36
-#define KEY_LCTRL	0x1D
-#define KEY_CAPSLOCK 0x3A
-#define KEY_NUMLOCK 0x45
-#define KEY_RETURN  0x1C
-#define KEY_SPACE   0x39
-#define KEY_F1      0x3b
-#define KEY_F2      0x3c
-#define KEY_F3      0x3d
-#define KEY_F4      0x3e
-#define KEY_F5      0x3f
-#define KEY_F6      0x40
-#define KEY_F7      0x41
-#define KEY_F8      0x42
-#define KEY_F9      0x43
-#define KEY_F10     0x44
-#define KEY_F11     0x57
-#define KEY_F12     0x58
+#define KEY_ESCAPE  0x01 /**< scancode escape key. */
+#define KEY_ALT     0x38 /**< scancode alt key. */
+#define KEY_LSHIFT  0x2A /**< scancode left shift key. */
+#define KEY_RSHIFT  0x36 /**< scancode right shift key. */
+#define KEY_LCTRL	0x1D /**< scancode left control key. */
+#define KEY_CAPSLOCK 0x3A /**< scancode capslock key. */
+#define KEY_NUMLOCK 0x45 /**< scancode numlock key. */ 
+#define KEY_RETURN  0x1C /**< scancode return key. */
+#define KEY_SPACE   0x39 /**< scancode space key. */
+#define KEY_F1      0x3b /**< scancode F1 key. */
+#define KEY_F2      0x3c /**< scancode F2 key. */
+#define KEY_F3      0x3d /**< scancode F3 key. */
+#define KEY_F4      0x3e /**< scancode F4 key. */
+#define KEY_F5      0x3f /**< scancode F5 key. */
+#define KEY_F6      0x40 /**< scancode F6 key. */
+#define KEY_F7      0x41 /**< scancode F7 key. */
+#define KEY_F8      0x42 /**< scancode F8 key. */
+#define KEY_F9      0x43 /**< scancode F9 key. */
+#define KEY_F10     0x44 /**< scancode F10 key. */
+#define KEY_F11     0x57 /**< scancode F11 key. */
+#define KEY_F12     0x58 /**< scancode F12 key. */
 
+/**
+ * @brief Structure permettant la conversion d'un scancode vers une lettre
+ * ASCII.
+ * TODO: On devrait passer par une étape de keycode.
+ */
 typedef struct {
-	uint8_t scancode;
-	char lowercase;
-	char uppercase;
+	uint8_t scancode; /**< Le scancode. */
+	char lowercase; /**< Caractère ASCII en lowercase. */
+	char uppercase; /**< Caractère ASCII en uppercase. */
 } letter;
 
 static letter letters_qwerty[] __attribute__ ((unused)) = { { 0x02, '1', '!' },
@@ -123,20 +125,20 @@ static letter letters_azerty[] = { // TODO : remplacer le scancode par un keycod
 				'6', '6' }, { 0x47, '7', '7' }, { 0x48, '8', '8' }, { 0x49,
 				'9', '9' } };
 
-static int alt = 0;
-static int shift = 0;
-static int capslock = 0;
-static int numlock = 0;
-static int ctrl = 0;
+static int alt = 0; /**< 1 si la touche alt est enfoncée, 0 sinon. */
+static int shift = 0; /**< 1 si la touche shift est enfoncée, 0 sinon. */
+static int capslock = 0; /**< 1 si la les majuscules sont vérouillées, 0 sinon. */
+static int numlock = 0; /**< 1 si le pavé numérique est activé, 0 sinon. */
+static int ctrl = 0; /**< 1 si la touche control est activée, 0 sinon. */
 static uint8_t scancode_m1 = 0;
 static uint8_t scancode_m2 = 0;
 
-void keyBufferPush(char c) {
+static void keyBufferPush(char c) {
     tty_struct_t *tty = get_active_terminal();
 		tty_insert_flip_char(tty, c);
 }
 
-char keyboardConvertToChar(uint8_t scancode) {
+static char keyboardConvertToChar(uint8_t scancode) {
 	unsigned int i;
 	for (i = 0; i < sizeof(letters_azerty) / sizeof(letter); i++) {
 		if (scancode == letters_azerty[i].scancode) {
