@@ -39,25 +39,26 @@ int convert_flags(const char *mode) {
 	} else if (strcmp(mode, "r+") == 0) {
 		flags = O_RDWR;
 	} else if (strcmp(mode, "w") == 0) {
-		flags = O_WRONLY | O_CREAT;
+		flags = O_WRONLY | O_CREAT | O_TRUNC;
 	} else if (strcmp(mode, "w+") == 0) {
-		flags = O_RDWR | O_CREAT;
+		flags = O_RDWR | O_CREAT | O_TRUNC;
 	} else if (strcmp(mode, "a") == 0) {
-		flags = O_APPEND | O_WRONLY | O_CREAT; // TODO : faut filer un "mode" indiquant les droits pour le nouveau fichier créé.
+		flags = O_APPEND | O_WRONLY | O_CREAT; 
+		// TODO : faut filer un "mode" indiquant les droits pour le nouveau fichier créé.
 	} else if (strcmp(mode, "a+") == 0) {
 		flags = O_APPEND | O_RDWR | O_CREAT;
 	} else if (strcmp(mode, "ab") == 0) {
-
+		flags = O_APPEND | O_WRONLY | O_CREAT; 
 	} else if (strcmp(mode, "rb") == 0) {
-
+		flags = O_RDONLY;
 	} else if (strcmp(mode, "wb") == 0) {
-		
+		flags = O_WRONLY | O_CREAT | O_TRUNC;
 	} else if (strcmp(mode, "r+b") == 0 || strcmp(mode, "rb+")) {
-
+		flags = O_RDWR;
 	} else if (strcmp(mode, "w+b") == 0 || strcmp(mode, "wb+")) {
-
+		flags = O_RDWR | O_CREAT | O_TRUNC;
 	} else if (strcmp(mode, "a+b") == 0 || strcmp(mode, "ab+")) {
-
+		flags = O_APPEND | O_RDWR | O_CREAT;
 	} else { // "Otherwise, the behavior is undefined." cf iso libc
 		return -1;
 	}

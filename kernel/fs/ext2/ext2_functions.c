@@ -376,12 +376,21 @@ open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uin
 		return NULL;
 	}
 	
+	if (flags & O_TRUNC) {
+		klog("truncate %s!\n", path);
+	}
+
 	struct ext2_inode einode;
 	read_inode((ext2_fs_instance_t*)instance, inode, &einode);
 
 	open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
 	ofd->fs_instance = instance;
-	ofd->current_octet = 0;
+
+	if (flags & O_APPEND) {
+		ofd->current_octet = einode.i_size;
+	} else {
+		ofd->current_octet = 0;
+	}
 	ofd->current_octet_buf = 0;
 	ofd->file_size = einode.i_size;
 	ofd->read = ext2_read;
