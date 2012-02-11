@@ -34,8 +34,8 @@
 #include <termios.h>
 #include <fcntl.h>
 
-#define LIGNES 10
-#define COLONNES 20
+#define LIGNES 24
+#define COLONNES 79
 
 static int dir = 2, dir_ = 2;
 static int score = 0;
