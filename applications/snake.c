@@ -23,8 +23,18 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Jeu snake en mode texte
  */
+ 
+/* Hall of Fame 
+ * ------------
+ * 1) Nico: 49pts
+ * 2)
+ * 3)
+ * 4)
+ * 5)
+ */
+ 
 
 #include <signal.h>
 #include <stdio.h>
