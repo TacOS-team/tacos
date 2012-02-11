@@ -381,6 +381,14 @@ int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t de
 	return -ENOENT;
 }
 
+int ext2_truncate(fs_instance_t *instance, const char * path, off_t off) {
+	int inode = getinode_from_path((ext2_fs_instance_t*)instance, path);
+	if (inode > 0) {
+		return ext2_truncate_inode((ext2_fs_instance_t*)instance, inode, off);
+	}
+	return -ENOENT;
+}
+
 open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uint32_t flags) {
 	int inode = getinode_from_path((ext2_fs_instance_t*)instance, path);
 	if (inode == -ENOENT && (flags & O_CREAT)) {
@@ -392,7 +400,7 @@ open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uin
 	}
 	
 	if (flags & O_TRUNC) {
-		klog("truncate %s!\n", path);
+		ext2_truncate_inode((ext2_fs_instance_t*)instance, inode, 0);
 	}
 
 	struct ext2_inode einode;

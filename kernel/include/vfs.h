@@ -56,6 +56,7 @@ typedef struct _fs_instance_t {
 	int (*mknod) (struct _fs_instance_t *, const char *, mode_t, dev_t);
 	int (*stat) (struct _fs_instance_t *, const char *, struct stat *);
 	int (*unlink) (struct _fs_instance_t *, const char *);
+	int (*truncate) (struct _fs_instance_t *, const char *, off_t size);
 } fs_instance_t;
 
 /**

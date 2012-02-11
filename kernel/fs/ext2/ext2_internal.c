@@ -310,6 +310,31 @@ static int alloc_inode(ext2_fs_instance_t *instance, struct ext2_inode *inode) {
 	return 0;
 }
 
+static void free_block(ext2_fs_instance_t *instance, uint32_t blk) {
+	int i = blk / instance->superblock.s_blocks_per_group; // Groupe de block.
+	int ib = blk - instance->superblock.s_blocks_per_group * i; // Indice dans le groupe.
+	int addr_bitmap = instance->group_desc_table[i].bg_block_bitmap;
+
+	uint8_t block_bitmap;
+	instance->read_data(instance->super.device, &(block_bitmap), sizeof(uint8_t), addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
+	block_bitmap &= ~(1 << (ib % 8));
+	instance->write_data(instance->super.device, &(block_bitmap), sizeof(uint8_t), addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
+	
+	// TODO: increment bg_free_blocks_count
+}
+
+//static void free_inode(ext2_fs_instance_t *instance, int inode) {
+//	int i = inode / instance->superblock.s_blocks_per_group; // Groupe de block.
+//	int ib = inode - instance->superblock.s_blocks_per_group * i; // Indice dans le groupe.
+//	int addr_bitmap = instance->group_desc_table[i].bg_inode_bitmap;
+//
+//	uint8_t block_bitmap;
+//	instance->read_data(instance->super.device, &(block_bitmap), sizeof(uint8_t), addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
+//	block_bitmap &= ~(1 << (ib % 8));
+//	instance->write_data(instance->super.device, &(block_bitmap), sizeof(uint8_t), addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
+//}
+
+
 static void add_dir_entry(ext2_fs_instance_t *instance, int inode, const char *name, int type, int n_inode) {
 	struct blk_t *blocks = addr_inode_data(instance, inode);
 
@@ -460,6 +485,54 @@ int ext2_mknod2(ext2_fs_instance_t *instance, const char * path, mode_t mode, de
 		return mknod_inode(instance, inode, filename, mode, dev);
 	}
 
+	return -ENOENT;
+}
+
+static int ext2_truncate_inode(ext2_fs_instance_t *instance, int inode, off_t off) {
+	uint32_t size = off;
+	struct ext2_inode einode;
+	if (read_inode(instance, inode, &einode) >= 0) {
+		struct blk_t *blocks = addr_inode_data(instance, inode);
+		struct blk_t *aux = blocks;
+		struct blk_t *prec = NULL;
+		int first = 1;
+		while (aux) {
+			if (off <= 0) {
+				free_block(instance, aux->addr);
+				if (first) {
+					if (prec == NULL) {
+						blocks = NULL;
+					} else {
+						prec->next = NULL;
+					}
+					first = 0;
+				}
+				prec = aux;
+				aux = aux->next;
+				kfree(prec);
+			} else {
+				off -= 1024 << instance->superblock.s_log_block_size;
+				prec = aux;
+				aux = aux->next;
+			}
+		}
+		while (off > 0) {
+			struct blk_t *element = kmalloc(sizeof(struct blk_t));
+			element->addr = alloc_block(instance);
+			element->next = NULL;
+			if (prec == NULL) {
+				blocks = element;
+			} else {
+				prec->next = element;
+			}
+			prec = element;
+			off -= 1024 << instance->superblock.s_log_block_size;
+		}
+		einode.i_size = size;
+		update_blocks(instance, &einode, blocks);
+		write_inode(instance, inode, &einode);
+		return 0;
+	}
 	return -ENOENT;
 }
 

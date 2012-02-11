@@ -44,5 +44,6 @@ int ext2_stat(fs_instance_t *instance, const char *path, struct stat *stbuf);
 int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t dev);
 int ext2_mkdir(fs_instance_t *instance, const char * path, mode_t mode);
 int ext2_unlink(fs_instance_t *instance, const char * path);
+int ext2_truncate(fs_instance_t *instance, const char * path, off_t off);
 
 #endif
