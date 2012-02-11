@@ -39,7 +39,7 @@ int convert_flags(const char *mode) {
 	} else if (strcmp(mode, "r+") == 0) {
 		flags = O_RDWR;
 	} else if (strcmp(mode, "w") == 0) {
-		flags = O_WRONLY;
+		flags = O_WRONLY | O_CREAT;
 	} else if (strcmp(mode, "w+") == 0) {
 		flags = O_RDWR | O_CREAT;
 	} else if (strcmp(mode, "a") == 0) {

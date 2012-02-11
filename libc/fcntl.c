@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010 - TacOS developers.
@@ -24,11 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
- */
-
-/**
- * @file fcntl.c
+ * @brief File control operations.
  */
 
 #include <stdlib.h>
