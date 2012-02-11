@@ -26,8 +26,9 @@
  *
  */
 #include <stdio.h>
-#include <unistd.h>
 #include <sys/stat.h>
+#include <time.h>
+#include <unistd.h>
 
 static char* get_filetype(mode_t mode) {
 	if (S_ISBLK(mode)) {
@@ -59,8 +60,8 @@ int main(int argc, char** argv) {
 			printf(" Inode: %d\n", buf.st_ino);
 			printf("  Type: %s\n", get_filetype(buf.st_mode));
 			printf("Access: %o		uid: %d		gid: %d\n", buf.st_mode & ~S_IFMT, buf.st_uid, buf.st_gid);
-			printf("Modify: %d\n", buf.st_mtime);
-			printf("Change: %d\n", buf.st_ctime);
+			printf("Modify: %s", ctime(&buf.st_mtime));
+			printf("Change: %s", ctime(&buf.st_ctime));
 		} else {
 			printf("%s: file not found.\n", argv[i]);
 		}	

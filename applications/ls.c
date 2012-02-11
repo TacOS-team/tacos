@@ -24,18 +24,24 @@
  *
  * @section DESCRIPTION
  *
- * List files
+ * @brief List files
  */
 
 #include <dirent.h>
+#include <errno.h>
 #include <stdio.h>
-#include <unistd.h>
-#include <sys/stat.h>
 #include <stdlib.h>
 #include <string.h>
-#include <errno.h>
+#include <sys/stat.h>
+#include <time.h>
+#include <unistd.h>
 
 #define MAX_FILES 1024
+
+static const char mon_name[12][4] = {
+          "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+     };
 
 struct res_entry {
 	char name[256];
@@ -192,7 +198,16 @@ void listdir(const char *path) {
 					printf(" %d", entries[i]->s.st_size);
 				}
 				
-				// TODO: date
+				// date
+				time_t n = time(NULL);
+				time_t d = entries[i]->s.st_mtime;
+				struct tm *t = localtime(&d);
+				printf(" %s %d", mon_name[t->tm_mon], t->tm_mday);
+				if (n - d > 366 * 24 * 60 * 60) {
+					printf("  %d", t->tm_year + 1900);
+				} else {
+					printf(" %d:%d", t->tm_hour, t->tm_min);
+				}
 
 				if (disp_classify) {
 					printf(" %s%c\n", entries[i]->name, classify(entries[i]->s.st_mode));
