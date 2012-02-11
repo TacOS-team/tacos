@@ -28,10 +28,10 @@
  
 /* Hall of Fame 
  * ------------
- * 1) Nico: 49pts
- * 2) Max:  35pts
- * 3)
- * 4)
+ * 1) Max:	59pts
+ * 2) Nico:	49pts
+ * 3) Max:  35pts
+ * 4) 
  * 5)
  */
  
