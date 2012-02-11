@@ -5,7 +5,7 @@ SRCS=*.c
 
 all: libutils
 
-libutils: widget.o
+libutils: widget.o unittest.o
 	$(AR) r ../$@.a $^
 
 %.o: %.c

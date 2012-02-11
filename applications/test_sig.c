@@ -31,24 +31,18 @@
 #include <signal.h>
 #include <string.h>
 
-//#define DEBUG
+#include "utils/include/unittest.h"
 
 static int var;
 
 static void usr_handler1(int signum __attribute__((unused)))
 {
-#ifdef DEBUG
-	printf("usr_handler1 %d\n");
-#endif
 	var = 12345;
 	return;
 }
 
 static void usr_handler2(int signum)
 {
-#ifdef DEBUG
-	printf("usr_handler2 %d\n", signum);
-#endif
 	var = signum * 2;
 	return;
 }
@@ -105,19 +99,6 @@ static void padding(int c) {
 	}
 }
 
-static void unit_test(const char* msg, int attendu, int obtenu) {
-	int len = strlen(msg);
-	printf("%s", msg);
-	if (attendu == obtenu) {
-		padding(80 - len - 4);
-		printf("[OK]\n");
-	} else {
-		padding(80 - len - 7);
-		printf("[ERROR]\n");
-		printf("Attendu : %d, Obtenu : %d\n", attendu, obtenu);
-	}
-}
-
 int main()
 {
 	int pid = getpid();
@@ -127,28 +108,28 @@ int main()
 	var = 0;
 	kill(pid, SIGUSR1);
 	sleep(1);
-	unit_test("Mise en place d'un handler et envoi d'un signal.", 12345, var);
+	unit_test_int("Mise en place d'un handler et envoi d'un signal.", 12345, var);
 
 	// Test 2 :
 	signal(SIGUSR1, usr_handler2);
 	var = 0;
 	kill(pid, SIGUSR1);
 	sleep(1);
-	unit_test("Utilisation du numero du signal dans le handler.", 2 * SIGUSR1, var);
+	unit_test_int("Utilisation du numero du signal dans le handler.", 2 * SIGUSR1, var);
 
 	// Test 3 :
 	signal(SIGUSR1, SIG_IGN);
 	var = 12;
 	kill(pid, SIGUSR1);
 	sleep(1);
-	unit_test("Le handler remplacé par SIG_IGN.", 12, var);
+	unit_test_int("Le handler remplacé par SIG_IGN.", 12, var);
 
 	// Test 4 :
 	signal(SIGUSR1, usr_handler3);
 	var = 3;
 	kill(pid, SIGUSR1);
 	sleep(1);
-	unit_test("Appels de fonction dans le handler.", f(SIGUSR1), var);
+	unit_test_int("Appels de fonction dans le handler.", f(SIGUSR1), var);
 
 	// Test 5 :
 	signal(SIGUSR1, usr_handler4);
@@ -156,7 +137,7 @@ int main()
 	var = 2;
 	kill(pid, SIGUSR1);
 	sleep(1);
-	unit_test("Envoi de signal depuis le handler d'un autre signal.", 2 * SIGUSR1 + SIGUSR2, var);
+	unit_test_int("Envoi de signal depuis le handler d'un autre signal.", 2 * SIGUSR1 + SIGUSR2, var);
 
 	// Test 6 (test à vérifier, peut-être un peu tendancieux) :
 	signal(SIGUSR1, usr_handler6);
@@ -164,22 +145,22 @@ int main()
 	kill(pid, SIGUSR1);
 	sleep(1);
 	kill(pid, SIGUSR1);
-	unit_test("Envoi d'un signal alors que le précédent n'a pas fini d'être traité.", 4 + 5 + 6 + 5 + 6, var);
+	unit_test_int("Envoi d'un signal alors que le précédent n'a pas fini d'être traité.", 4 + 5 + 6 + 5 + 6, var);
 
 	// Test 7 :
 	signal(SIGUSR1, usr_handler7);
 	var = 42;
 	kill(pid, SIGUSR1);
 	sleep(1);
-	unit_test("Sleep de 3 secondes dans le handler alors que j'ai un sleep de 1s ici aussi.", 3, var);
+	unit_test_int("Sleep de 3 secondes dans le handler alors que j'ai un sleep de 1s ici aussi.", 3, var);
 
-    // Test 8 :
-    signal(SIGUSR1, usr_handler8);
-    signal(SIGUSR2, usr_handler9);
-    var = 3;
-    kill(pid, SIGUSR1);
-    sleep(1);
-    unit_test("Appels recursifs entre 2 signaux.", 0, var);
+	// Test 8 :
+	signal(SIGUSR1, usr_handler8);
+	signal(SIGUSR2, usr_handler9);
+	var = 3;
+	kill(pid, SIGUSR1);
+	sleep(1);
+	unit_test_int("Appels recursifs entre 2 signaux.", 0, var);
 
 	return 0;
 }
