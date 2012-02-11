@@ -23,13 +23,13 @@
  *
  * @section DESCRIPTION
  *
- * Jeu snake en mode texte
+ * @brief Jeu snake en mode texte.
  */
  
 /* Hall of Fame 
  * ------------
  * 1) Nico: 49pts
- * 2)
+ * 2) Max:  35pts
  * 3)
  * 4)
  * 5)
