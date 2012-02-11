@@ -259,12 +259,23 @@ int ext2_seek(open_file_descriptor * ofd, long offset, int whence) {
 }
 
 size_t ext2_write (open_file_descriptor * ofd, const void *buf, size_t size) {
+	if ((ofd->flags & O_ACCMODE) == O_RDONLY) {
+		return 0;
+	}
+
 	int inode = ((ext2_extra_data*)ofd->extra_data)->inode;
 	if (inode >= 0) {
 		ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
-		unsigned int offset = ofd->current_octet;
+		
 		struct ext2_inode einode;
 		if (read_inode(instance, inode, &einode) == 0) {
+			unsigned int offset;
+			if (ofd->flags & O_APPEND) {
+				offset = einode.i_size;
+			} else {
+			 	offset = ofd->current_octet;
+			}
+
 			int count = 0;
 			struct blk_t *last = NULL;
 			struct blk_t *blocks = ((ext2_extra_data*)ofd->extra_data)->blocks;
@@ -321,6 +332,10 @@ size_t ext2_write (open_file_descriptor * ofd, const void *buf, size_t size) {
 }
 
 size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
+	if ((ofd->flags & O_ACCMODE) == O_WRONLY) {
+		return 0;
+	}
+
 	int inode = ((ext2_extra_data*)ofd->extra_data)->inode;
 	if (inode >= 0) {
 		ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
@@ -384,13 +399,9 @@ open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uin
 	read_inode((ext2_fs_instance_t*)instance, inode, &einode);
 
 	open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
+	ofd->flags = flags;
 	ofd->fs_instance = instance;
-
-	if (flags & O_APPEND) {
-		ofd->current_octet = einode.i_size;
-	} else {
-		ofd->current_octet = 0;
-	}
+	ofd->current_octet = 0;
 	ofd->current_octet_buf = 0;
 	ofd->file_size = einode.i_size;
 	ofd->read = ext2_read;

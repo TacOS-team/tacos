@@ -38,6 +38,7 @@ static void unit_test_str(const char* msg, const char* attendu, const char* obte
 int main() {
 	FILE * f;
 	struct stat buf;
+	int r;
 	const char * fichiertest = "/tacos/fichiertestio";
 
 	// Tests 1-6: Test la création de fichier selon le flag.
@@ -132,6 +133,24 @@ int main() {
 	fread(buffer, sizeof(char), 10, f);
 	if (f) fclose(f);
 	unit_test_str("Ecriture, fermeture, fseek, lecture.", "5678910111", buffer);
+
+	// Test 12:
+	unlink(fichiertest);
+	f = fopen(fichiertest, "w");
+	fclose(f);
+	f = fopen(fichiertest, "r");
+	r = fwrite("01234567891011121314", sizeof(char), 20, f);
+	if (f) fclose(f);
+	unit_test_int("Ecriture sur fichier ouvert en lecture (retour fonction).", 0, r);
+	stat(fichiertest, &buf);
+	unit_test_int("Ecriture sur fichier ouvert en lecture (taille fichier).", 0, buf.st_size);
+
+	// Test 13:
+	unlink(fichiertest);
+	f = fopen(fichiertest, "w");
+	r = fwrite("01234567891011121314", sizeof(char), 20, f);
+	if (f) fclose(f);
+	unit_test_int("Ecriture sur fichier ouvert en écriture.", 20, r);
 
 	return 0;
 }

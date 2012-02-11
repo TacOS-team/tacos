@@ -36,10 +36,11 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
-static FILE _IO_stdin = {_IO_MAGIC + _IO_LINE_BUF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 0, 0};
-static FILE _IO_stdout = {_IO_MAGIC + _IO_LINE_BUF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 1, 0};
-static FILE _IO_stderr = {_IO_MAGIC + _IO_UNBUFFERED, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 2, 0};
+static FILE _IO_stdin = {_IO_MAGIC + _IO_LINE_BUF + O_RDONLY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 0};
+static FILE _IO_stdout = {_IO_MAGIC + _IO_LINE_BUF + O_WRONLY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 1};
+static FILE _IO_stderr = {_IO_MAGIC + _IO_UNBUFFERED + O_WRONLY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 2};
 
 FILE *stdin;
 FILE *stdout;

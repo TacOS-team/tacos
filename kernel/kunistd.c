@@ -42,13 +42,14 @@ SYSCALL_HANDLER3(sys_write, uint32_t fd, const void *buf, size_t *c) {
 	if (process->fd[fd].used) {
 		ofd = process->fd[fd].ofd;
 		
-		if(ofd->write == NULL)
-		{
+		if(ofd->write == NULL) {
 			kerr("No \"write\" method for this device.");
 			*t = -1;
-		}
-		else
+		} else {
 			*t = ofd->write(ofd, buf, *c);
+		}
+	} else {
+		*t = -1;
 	}
 }
 
@@ -61,13 +62,14 @@ SYSCALL_HANDLER3(sys_read, uint32_t fd, const void *buf, size_t *c) {
 	if (process->fd[fd].used) {
 		ofd = process->fd[fd].ofd;
 		
-		if(ofd->read == NULL)
-		{
+		if(ofd->read == NULL) {
 			kerr("No \"read\" method for this device.");
 			*t = -1;
-		}
-		else
+		} else {
 			*t = ofd->read(ofd, (void*) buf, *c);
+		}
+	} else {
+		*t = -1;
 	}
 }
 

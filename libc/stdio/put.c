@@ -30,6 +30,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <fcntl.h>
 
 int fflush(FILE *stream) {
 	if (stream->_fileno > 0) {
@@ -46,8 +47,11 @@ int fflush(FILE *stream) {
 	return EOF;
 }
 
+// Ajoute dans le buffer.
 int fputc(int c, FILE *stream) {
-	// Ajoute dans le buffer.
+	if ((stream->_flags & O_ACCMODE) == O_RDONLY) {
+		return -1;
+	}
 	
 	if (stream->_IO_buf_base == NULL) {
 		// Si aucun buffer alors on en crée un nouveau.

@@ -47,7 +47,7 @@
  * @struct _IO_FILE
  */
 struct _IO_FILE {
-	int _flags;		/* High-order word is _IO_MAGIC; rest is flags. */
+	int _flags;		/**< High-order word is _IO_MAGIC; rest is flags. */
 
 	/* The following pointers correspond to the C++ streambuf protocol. */
 	/* Note:  Tk uses the _IO_read_ptr and _IO_read_end fields directly. */
@@ -67,7 +67,6 @@ struct _IO_FILE {
 	struct _IO_FILE *_chain;
 
 	int _fileno;
-	int _flags2;
 };
 
 typedef struct _IO_FILE FILE;
