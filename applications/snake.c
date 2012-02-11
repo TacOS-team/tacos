@@ -165,6 +165,13 @@ int avance_snake() {
 	return 0;
 }
 
+static struct termios oldt;
+
+static void handler(int signum __attribute__((unused))) {
+	tcsetattr( STDIN_FILENO, TCSETS, &oldt );
+	exit(0);
+}
+
 void game() {
 	int l, c;
 
@@ -184,8 +191,11 @@ void game() {
 
   setvbuf(stdin, NULL, _IO_MAGIC | _IONBF, 0);
 
-	struct termios oldt, newt;
+	struct termios newt;
 	tcgetattr( STDIN_FILENO, &oldt );
+
+	signal(SIGINT, handler);
+
 	newt = oldt;
 	newt.c_lflag &= ~( ICANON | ECHO );
 	tcsetattr( STDIN_FILENO, TCSETS, &newt );
