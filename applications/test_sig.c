@@ -5,7 +5,7 @@
  *
  * @section LICENSE
  *
- * Copyright (C) 2010 - TacOS developers.
+ * Copyright (C) 2010, 2011, 2012 - TacOS developers.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -91,12 +91,6 @@ static void usr_handler9(int signum __attribute__((unused))) {
     if (var > 0) {
         kill(getpid(), SIGUSR1);
     }
-}
-
-static void padding(int c) {
-	while (c-- > 0) {
-		printf(" ");
-	}
 }
 
 int main()

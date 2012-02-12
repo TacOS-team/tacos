@@ -5,7 +5,7 @@
  *
  * @section LICENSE
  *
- * Copyright (C) 2010 - TacOS developers.
+ * Copyright (C) 2010, 2011, 2012 - TacOS developers.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -49,14 +49,14 @@ typedef struct {
  * @brief Instance d'un couple FS/Device monté.
  */
 typedef struct _fs_instance_t {
-	file_system_t *fs; /**< Pointeur vers le FS utilisé. */ //XXX: Est-ce utile ?
-	open_file_descriptor * device;
-	open_file_descriptor * (*open) (struct _fs_instance_t *, const char * , uint32_t);
-	int (*mkdir) (struct _fs_instance_t *, const char * , mode_t);
-	int (*mknod) (struct _fs_instance_t *, const char *, mode_t, dev_t);
-	int (*stat) (struct _fs_instance_t *, const char *, struct stat *);
-	int (*unlink) (struct _fs_instance_t *, const char *);
-	int (*truncate) (struct _fs_instance_t *, const char *, off_t size);
+	file_system_t *fs;							/**< Pointeur vers le FS utilisé. */ //XXX: Est-ce utile ?
+	open_file_descriptor * device;																											/**< Device utilisé. */
+	open_file_descriptor * (*open) (struct _fs_instance_t *, const char * , uint32_t);	/**< Fonction pour ouvrir un fichier. */
+	int (*mkdir) (struct _fs_instance_t *, const char * , mode_t);											/**< Création d'un dossier. */
+	int (*mknod) (struct _fs_instance_t *, const char *, mode_t, dev_t);								/**< Création d'un noeud. */
+	int (*stat) (struct _fs_instance_t *, const char *, struct stat *);									/**< Obtenir le status d'un noeud. */
+	int (*unlink) (struct _fs_instance_t *, const char *);															/**< Suppression d'un noeud. */
+	int (*truncate) (struct _fs_instance_t *, const char *, off_t size);								/**< Changer la taille d'un fichier. */
 } fs_instance_t;
 
 /**

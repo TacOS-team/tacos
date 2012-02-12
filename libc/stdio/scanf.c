@@ -6,7 +6,7 @@
  *
  * @section LICENSE
  *
- * Copyright (C) 2010 - TacOS developers.
+ * Copyright (C) 2010, 2011, 2012 - TacOS developers.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -60,6 +60,7 @@ int sscanf(const char *s, const char *format, ...) {
 	return result;
 }
 
+/* Code fortement inspiré de la GNU C Library. */
 int vfscanf(FILE *stream, const char *format, va_list ap) {
   const char *f = format;
   char fc;                /* Current character of the format.  */
