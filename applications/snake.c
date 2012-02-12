@@ -178,7 +178,7 @@ int avance_snake() {
 static struct termios oldt;
 
 static void handler(int signum __attribute__((unused))) {
-	tcsetattr( STDIN_FILENO, TCSETS, &oldt );
+	tcsetattr( STDIN_FILENO, TCSANOW, &oldt );
 	exit(0);
 }
 
@@ -208,7 +208,7 @@ void game() {
 
 	newt = oldt;
 	newt.c_lflag &= ~( ICANON | ECHO );
-	tcsetattr( STDIN_FILENO, TCSETS, &newt );
+	tcsetattr( STDIN_FILENO, TCSANOW, &newt );
 	fcntl(STDIN_FILENO, F_SETFL, (void*)O_NONBLOCK);
 
   init_snake();
@@ -218,7 +218,7 @@ void game() {
 		thread_input();
 	}
 
-	tcsetattr( STDIN_FILENO, TCSETS, &oldt );
+	tcsetattr( STDIN_FILENO, TCSANOW, &oldt );
 
 }
 

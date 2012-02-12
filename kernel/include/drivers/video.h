@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,42 +23,36 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Driver console (vidéo texte). 
  */
 
 #ifndef _VIDEO_H_
 #define _VIDEO_H_
 
-/**
- * @file video.h
- */
-
 #include <types.h>
 
 /** Light blue sur fond noir. */
-#define DEFAULT_ATTRIBUTE_VALUE 0x09
+#define DEFAULT_ATTRIBUTE_VALUE 0x09 /**< Attribut par défaut d'un caractère */
 
-#define BLACK         0x0
-#define BLUE          0x1
-#define GREEN         0x2
-#define CYAN          0x3
-#define RED           0x4
-#define MAGENTA       0x5
-#define BROWN         0x6
-#define LIGHT_GRAY    0x7
-#define DARK_GRAY     0x8
-#define LIGHT_BLUE    0x9
-#define LIGHT_GREEN   0xA
-#define LIGHT_CYAN    0xB
-#define LIGHT_RED     0xC
-#define LIGHT_MAGENTA 0xD
-#define YELLOW        0xE
-#define WHITE         0xF
+#define BLACK         0x0   /**< Code couleur noir. */
+#define BLUE          0x1   /**< Code couleur bleu. */
+#define GREEN         0x2   /**< Code couleur vert. */
+#define CYAN          0x3   /**< Code couleur cyan. */
+#define RED           0x4   /**< Code couleur rouge. */
+#define MAGENTA       0x5   /**< Code couleur magenta. */
+#define BROWN         0x6   /**< Code couleur marron. */
+#define LIGHT_GRAY    0x7   /**< Code couleur gris clair. */
+#define DARK_GRAY     0x8   /**< Code couleur gris sombre. */
+#define LIGHT_BLUE    0x9   /**< Code couleur bleu clair. */
+#define LIGHT_GREEN   0xA   /**< Code couleur vert clair. */
+#define LIGHT_CYAN    0xB   /**< Code couleur cyan clair. */
+#define LIGHT_RED     0xC   /**< Code couleur rouge clair. */
+#define LIGHT_MAGENTA 0xD   /**< Code couleur magenta clair. */
+#define YELLOW        0xE   /**< Code couleur jaune. */
+#define WHITE         0xF   /**< Code couleur blanc. */
 
-/** The number of columns. */
-#define COLUMNS                 80
-/** The number of lines. */
-#define LINES                   25
+#define COLUMNS                 80 /**< The number of columns. */
+#define LINES                   25 /** The number of lines. */
 
 /**
  * @brief Structure définissant un "caractère" à l'écran.
@@ -73,8 +66,8 @@ typedef struct {
  * @brief Structure définissant une "page" vidéo. C'est en fait un couple de 2 pages pour gérer le double buffering.
  */
 struct vga_page_t {
-	volatile x86_video_mem* front_buffer;
-	volatile x86_video_mem* back_buffer;
+	volatile x86_video_mem* front_buffer; /**< Adresse du buffer au premier plan. */
+	volatile x86_video_mem* back_buffer;  /**< Adresse du buffer au second plan. */
 };
 
 /**
@@ -89,11 +82,15 @@ void cursor_position_video(int n, int x, int y);
 
 /**
  * @brief Désactive l'affichage du curseur.
+ *
+ * @param disable 1 si le curseur ne doit pas être affiché. 0 sinon.
  */
 void disable_cursor(int disable);
 
 /**
  * @brief Interverti les 2 buffers d'une page.
+ *
+ * @param n Le numero de la page concernée.
  */
 void flip_page(int n);
 
@@ -108,12 +105,16 @@ void get_char_video(int n, bool front, char *c, int x, int y, char *attr);
 void kputchar_video(int n, bool front, char c, int x, int y, char attr);
 
 /**
- * @brief Active le clignotement du curseur je crois ? De toute façon ça ne marche pas.
+ * @brief Active le clignotement du curseur.
+ *
+ * @param blink_bit 1 si le cursor doit clignoter.
  */
 void set_blink_bit(int blink_bit);
 
 /**
  * @brief Change la page à afficher à l'écran.
+ *
+ * @param i Le numero de la page concernée.
  */
 void switch_page(int i);
 

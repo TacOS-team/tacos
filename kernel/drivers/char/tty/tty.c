@@ -44,7 +44,7 @@ struct termios tty_std_termios = {
 	.c_oflag = OPOST | ONLCR,
 	.c_cflag = CS8 | CREAD | HUPCL,
 	.c_lflag = ISIG | ICANON | ECHO | ECHOE | ECHOK |
-	     ECHOCTL | ECHOKE | IEXTEN,
+	     ECHOCTL | ECHOKE,
 	.c_cc = INIT_C_CC,
 	.c_ispeed = 38400,
 };
