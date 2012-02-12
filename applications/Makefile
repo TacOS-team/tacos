@@ -25,8 +25,8 @@ subdirs:
 depend: $(SRCS)
 	$(CC) -MM $(CFLAGS) $(INCLUDES) $(CPPINCLUDES) $^ > .depend
 
-%: %.o
-	$(LD) -o $(BIN)$@ $^ $(LIBS)
+%: %.o subdirs
+	$(LD) -o $(BIN)$@ $< $(LIBS)
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES)

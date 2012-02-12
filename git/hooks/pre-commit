@@ -16,7 +16,7 @@ git apply current_change.patch
 # make depend
 make depend
 # on compile avec -Werror.
-make WERROR=1
+make -j16 WERROR=1
 
 rc=$?
 
