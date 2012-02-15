@@ -249,7 +249,7 @@ size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 		c = t->buffer[(t->p_end + MAX_INPUT - 1) % MAX_INPUT];
 
 		if (!I_CANON(t) || c == '\n' || c == '\r') {
-			while (j < count && t->p_begin < t->p_end) {
+			while (j < count && t->p_begin != t->p_end) {
 				((char*) buf)[j] = t->buffer[t->p_begin];
 				t->p_begin = (t->p_begin + 1) % MAX_INPUT;
 				j++;
