@@ -257,4 +257,12 @@ void rewind(FILE *stream);
  */
 int remove(const char *pathname);
 
+void clearerr(FILE *stream);
+
+int feof(FILE *stream);
+
+int ferror(FILE *stream);
+
+int fileno(FILE *stream);
+
 #endif

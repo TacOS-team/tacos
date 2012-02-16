@@ -77,7 +77,7 @@ FILE *fopen(const char *path, const char *mode) {
 	stream->_chain = __file_list;
 	__file_list = stream;
 
-	stream->_flags = _IO_LINE_BUF | flags;
+	stream->_flags = _IO_LINE_BUF | (flags & O_ACCMODE);
 	stream->_fileno = fileno;
 	// TODO : allouer buffer, en tenant compte des droits !
 
