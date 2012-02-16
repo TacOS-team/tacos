@@ -248,5 +248,13 @@ long ftell(FILE *stream);
 
 void rewind(FILE *stream);
 
+/**
+ * @brief Supprimer un fichier ou répertoire.
+ *
+ * Supprime un fichier en utilisant unlink et un dossier avec rmdir.
+ *
+ * @return ce que return unlink et rmdir.
+ */
+int remove(const char *pathname);
 
 #endif

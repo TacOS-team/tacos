@@ -200,6 +200,15 @@ int stat(const char *path, struct stat *buf);
 int unlink(const char *pathname);
 
 /**
+ * @brief Supprimer un dossier, lequel doit être vide.
+ *
+ * @param pathname Chemin du dossier.
+ *
+ * @return 0 en cas de succès, -1 sinon.
+ */
+int rmdir(const char *pathname);
+
+/**
  * @brief Créer un noeud du système de fichiers.
  *
  * Crée un noeud du système de fichier (fichier, fichier spécial, etc.)

@@ -60,7 +60,7 @@ static int is_empty(struct mem_list *list)
 
 // Enlève une mem d'une mem_list
 // Le bloc doit appartenir à la liste
-static void remove(struct mem_list *list, struct mem *m)
+static void mremove(struct mem_list *list, struct mem *m)
 {
   if(m->prev != NULL)
     m->prev->next = m->next;
@@ -135,7 +135,7 @@ static void cut_mem(struct mem* m, size_t size,
     m->size = size;
   } 
 
-  remove(free_mem, m);
+  mremove(free_mem, m);
   add(allocated_mem, m);
 }
 
@@ -205,20 +205,20 @@ int __free(void *p, struct mem_list *free_mem, struct mem_list *allocated_mem)
   if(m == NULL)
     return -1;
 
-  remove(allocated_mem, m);
+  mremove(allocated_mem, m);
   add(free_mem, m);
 
   if(is_stuck(m->prev, m))
   {
     m->prev->size += m->size;
-    remove(free_mem, m);
+    mremove(free_mem, m);
     m = m->prev;
   }
   
   if(is_stuck(m, m->next))
   {
     m->size += m->next->size;
-    remove(free_mem, m->next);
+    mremove(free_mem, m->next);
   }
 
   return 0;

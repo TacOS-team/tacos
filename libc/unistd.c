@@ -199,6 +199,11 @@ int unlink(const char *path) {
 	return ret;
 }
 
+int rmdir(const char *path) {
+	//TODO !
+	return unlink(path);
+}
+
 int dup(int oldfd) {
 	int newfd;
 	syscall(SYS_DUP, (uint32_t) oldfd, (uint32_t)&newfd, 0);
