@@ -44,7 +44,7 @@ void pagination_create_page_dir(struct page_directory_entry *pagination_kernel,
 	struct page_directory_entry * pde = &pagination_kernel[index_pd];
 	paddr_t pt_addr = memory_reserve_page_frame();
 	pde->r_w = 1;
-	pde->u_s = 1;
+	pde->u_s = 0;
 	pde->present = 1;
 	pde->page_table_addr = pt_addr >> 12;
 
