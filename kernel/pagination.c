@@ -145,9 +145,9 @@ void pagination_init_page_directory(struct page_directory_entry * pd) {
 	// 0xFFFFF00 est traduit par la MMU en l'adresse du page directory
 	// 0xFFC + 1024 * index_page_table permet d'accéder à une pde
 	pd[1023].page_table_addr = ((paddr_t)pd) >> 12;
-	pd[1023].r_w = 1;
+	pd[1023].r_w = 0;
 	pd[1023].present = 1;
-	pd[1023].u_s = 1;
+	pd[1023].u_s = 0;
 }
 
 void pagination_init_page_directory_copy_kernel_only(struct page_directory_entry *pd, paddr_t pd_paddr) {
@@ -177,9 +177,9 @@ void pagination_init_page_directory_copy_kernel_only(struct page_directory_entry
 	// 0xFFFFF000 est traduit par la MMU en l'adresse du page directory
 	// 0xFFC + 1024 * index_page_table permet d'accéder à une pde
 	pd[1023].page_table_addr = pd_paddr >> 12;
-	pd[1023].r_w = 1;
+	pd[1023].r_w = 0;
 	pd[1023].present = 1;
-	pd[1023].u_s = 1;
+	pd[1023].u_s = 0;
 }
 
 /**
