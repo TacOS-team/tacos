@@ -60,6 +60,7 @@ int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	/* ************************** */
 	
 	putenv("PWD=/");
+	putenv("PATH=/tacos/bin");
 
 	klog("Starting user process...");
 	exec_elf("/tacos/bin/getty /dev/tty0", 0);

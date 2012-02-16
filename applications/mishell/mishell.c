@@ -196,7 +196,8 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 						waitpid(pid);
 				} else {
 					char temp[278];
-					sprintf(temp, "/tacos/bin/%s", buffer);
+					char *path = getenv("PATH");
+					sprintf(temp, "%s/%s", path, buffer);
 					if((pid = exec_elf(temp, 0)) < 0)
 						printf("commande introuvable.\n");
 					else
