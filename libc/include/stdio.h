@@ -206,6 +206,8 @@ char *fgets(char *s, int size, FILE *stream);
  */
 int fgetc(FILE *stream);
 
+#define getc(stream) fgetc(stream)
+
 /** 
  * @brief lit un caractère depuis stdin.
  *

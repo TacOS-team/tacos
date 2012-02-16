@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -30,10 +29,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
-/**
- * @file get.c
- */
 
 char *fgets(char *s, int size, FILE *stream) {
 	int i = 0;
