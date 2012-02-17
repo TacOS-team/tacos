@@ -180,15 +180,37 @@ int arg_build(char* string, vaddr_t base, char*** argv_ptr)
 	return argc;
 }
 
+char** envp_build(uint32_t* base, char** envp) {
+	int i;
+	char **renvp;
+	char* str_copy_base;
+	int taille_env = 0;
+	while (envp[taille_env++]);
+
+	renvp = (char**)(base - taille_env*sizeof(char*));
+	str_copy_base = (char*)(renvp - 1);
+
+	renvp[taille_env - 1] = NULL;
+	// On commence par la fin pour que renvp[0] soit le plus petit.
+	for (i = taille_env - 2; i >= 0; i--) {
+		renvp[i] = str_copy_base - strlen(envp[i]) - 1;
+		strcpy(renvp[i], envp[i]);
+		str_copy_base = renvp[i];
+	}
+
+	return renvp;
+}
+
 vaddr_t init_stack(uint32_t* base, char* args, char** envp, paddr_t return_func) {
 		int argc;
 		char** argv;
 		uint32_t* stack_ptr;
 		
-		argc = arg_build(args, (vaddr_t)base, &argv);
+		char** benvp = envp_build(base, envp);
+		argc = arg_build(args, (vaddr_t)benvp[0], &argv);
 		
 		stack_ptr = (uint32_t*) argv[0];
-		*(stack_ptr-1) = (vaddr_t) envp;
+		*(stack_ptr-1) = (vaddr_t) benvp;
 		*(stack_ptr-2) = (vaddr_t) argv;
 		*(stack_ptr-3) = argc;
 		*(stack_ptr-4) = (vaddr_t) return_func;

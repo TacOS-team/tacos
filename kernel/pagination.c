@@ -71,7 +71,7 @@ void pagination_map(struct page_directory_entry * pagination_kernel, paddr_t pag
 	pte->present = 1;
 	pte->page_addr = page_addr >> 12;
 	pte->r_w = 1;
-	pte->u_s = 1;
+	pte->u_s = 0;
 }
 
 /** 
