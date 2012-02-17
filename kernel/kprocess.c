@@ -285,8 +285,15 @@ void free_init_data(process_init_data_t* init_data) {
 	kfree(init_data->name);
 	kfree(init_data->args);
 	kfree(init_data->data);
+
+	int i = 0;
+	while (init_data->envp[i]) {
+		kfree(init_data->envp[i]);
+		i++;
+	}
+	kfree(init_data->envp);
+
 	kfree(init_data);
-	
 }
 
 process_t* create_process_elf(process_init_data_t* init_data)
