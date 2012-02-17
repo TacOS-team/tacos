@@ -83,7 +83,7 @@ void *kmalloc(size_t size)
     size_t real_alloc_size;
 
 	  real_alloc_size = allocate_new_pages(&kvm, calculate_min_pages(real_size),
-                                         (void **) &alloc); 
+                                         (void **) &alloc, 0);
     
     if(real_alloc_size <= 0)
       return NULL;
@@ -134,7 +134,7 @@ int kfree(void *p)
 /* XXX ÜBER MOCHE, mais au moins ça doit marcher... */
 void *kmalloc_one_aligned_page() {
 	uint32_t tmp;
-	allocate_new_pages(&kvm, 2, (void **) &tmp);
+	allocate_new_pages(&kvm, 2, (void **) &tmp, 0);
 	
 	return (void *) memory_align_page_sup((paddr_t) tmp);
 }

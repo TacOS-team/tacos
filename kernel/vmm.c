@@ -24,7 +24,10 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * vmm est l'allocateur qui s'occupe de gérer les pages virtuelles du noyau.
+ * Il se base sur l'algorithme first fit (premier emplacement de taille suffisante)
+ *
+ * Maintien la liste des espaces libres et des espaces occupés (slabs).
  */
 
 #include <memory.h>
@@ -34,16 +37,11 @@
 #include <kstdio.h>
 #include <scheduler.h>
 
-/**
- * vmm est l'allocateur qui s'occupe de gérer les pages virtuelles du noyau.
- * Il se base sur l'algorithme first fit (premier emplacement de taille suffisante)
- *
- * Maintien la liste des espaces libres et des espaces occupés (slabs).
- */
-
 // Page Table Entry Magic
 #define PTE_MAGIC 0xFFC00000
 #define PDE_MAGIC 0xFFFFF000
+
+static int map(paddr_t phys_page_addr, vaddr_t virt_page_addr, int u_s);
 
 static int is_empty(struct slabs_list *list)
 {
@@ -140,7 +138,7 @@ vaddr_t get_linear_address(int dir, int table, int offset)
 }
 
 // créer une entrée de page
-static void create_page_entry(struct page_table_entry *pte, paddr_t page_addr)
+static void create_page_entry(struct page_table_entry *pte, paddr_t page_addr, int u_s)
 {
 	if (pte->present == 1) 
 	{
@@ -150,12 +148,12 @@ static void create_page_entry(struct page_table_entry *pte, paddr_t page_addr)
 		pte->present = 1;
 		pte->page_addr = page_addr >> 12;
 		pte->r_w = 1;
-		pte->u_s = 1;
+		pte->u_s = u_s;
 	}
 }
 
 // créer une entrée de répertoire
-static int create_page_dir(struct page_directory_entry *pde, int dir)
+static int create_page_dir(struct page_directory_entry *pde, int dir, int u_s)
 {
 	if(memory_get_first_free_page() == NULL)
 		return -1;
@@ -164,11 +162,11 @@ static int create_page_dir(struct page_directory_entry *pde, int dir)
 	pde->present = 1;
 	pde->page_table_addr = page_addr >> 12; // check phys or virtual
 	pde->r_w = 1;
-	pde->u_s = 1;
+	pde->u_s = u_s;
 
 	// map new PTE
 	vaddr_t v_page_addr = get_page_table_vaddr(dir);
-	map(page_addr, v_page_addr);
+	map(page_addr, v_page_addr, u_s);
 
 	int i;
 	struct page_table_entry *pte = (struct page_table_entry *) v_page_addr;
@@ -180,16 +178,16 @@ static int create_page_dir(struct page_directory_entry *pde, int dir)
 
 /* XXX : A changer de fichier (pagination l'utilise au final) */
 // Map dans le répertoire des pages une nouvelle page
-int map(paddr_t phys_page_addr, vaddr_t virt_page_addr)
+static int map(paddr_t phys_page_addr, vaddr_t virt_page_addr, int u_s)
 {
 	int dir = virt_page_addr >> 22;
 	int table = (virt_page_addr >> 12) & 0x3FF;
 	struct page_directory_entry * pde = get_pde(dir);
 
-	if (!pde->present && create_page_dir(pde, dir) == -1)
+	if (!pde->present && create_page_dir(pde, dir, u_s) == -1)
 		return -1;
 
-	create_page_entry(get_pte(dir, table), phys_page_addr);
+	create_page_entry(get_pte(dir, table), phys_page_addr, u_s);
 
 	return 0;
 }
@@ -211,7 +209,7 @@ void init_vmm(struct virtual_mem *kvm)
 {
 	vaddr_t page_sup_end_kernel = memory_get_kernel_top();
 
-	map(memory_reserve_page_frame(), page_sup_end_kernel);
+	map(memory_reserve_page_frame(), page_sup_end_kernel, 0);
 
 	kvm->free_slabs.begin = (struct slab *) page_sup_end_kernel; 
 	kvm->free_slabs.begin->prev = NULL;
@@ -233,7 +231,7 @@ void init_process_vm(struct virtual_mem *vm, int init_nb_pages)
 	vaddr_t vm_begin = _PAGINATION_KERNEL_TOP;
 	
 	for(i = 0; i < (init_nb_pages+1); i++)
-		map(memory_reserve_page_frame(), vm_begin + i*PAGE_SIZE);
+		map(memory_reserve_page_frame(), vm_begin + i*PAGE_SIZE, 1); //XXX: u_s = 0 ?
 
 	//vm->used_slabs.begin = (struct slab *) vm_begin;
 	vm->used_slabs.begin = (struct slab *) (vm_begin + init_nb_pages*PAGE_SIZE - sizeof(struct slab));
@@ -252,7 +250,7 @@ void init_process_vm(struct virtual_mem *vm, int init_nb_pages)
 }
 
 // Agrandit le heap de nb_pages pages et ajoute le nouveau slab à la fin de free_pages
-static int increase_heap(struct virtual_mem *vm, unsigned int nb_pages)
+static int increase_heap(struct virtual_mem *vm, unsigned int nb_pages, int u_s)
 {
 	unsigned int i;
 	/* vaddr_t top_last_slab; unused */
@@ -262,7 +260,7 @@ static int increase_heap(struct virtual_mem *vm, unsigned int nb_pages)
 	{
 		if(memory_get_first_free_page() == NULL)
 			return -1;
-		if(map(memory_reserve_page_frame(), vm->vmm_top) == -1)
+		if(map(memory_reserve_page_frame(), vm->vmm_top, u_s) == -1)
 			return -1;
 		vm->vmm_top += PAGE_SIZE;
 	}
@@ -316,14 +314,14 @@ static void cut_slab(struct virtual_mem *vm, struct slab *s,
 }
 
 // Alloue une page
-unsigned int allocate_new_page(struct virtual_mem *vm, void **alloc)
+unsigned int allocate_new_page(struct virtual_mem *vm, void **alloc, int u_s)
 {
-	return allocate_new_pages(vm, 1, alloc);
+	return allocate_new_pages(vm, 1, alloc, u_s);
 }
 
 // Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle 
 unsigned int allocate_new_pages(struct virtual_mem *vm, unsigned int nb_pages,
-																void **alloc)
+																void **alloc, int u_s)
 {
 	struct slab *slab = vm->free_slabs.begin;
 
@@ -332,7 +330,7 @@ unsigned int allocate_new_pages(struct virtual_mem *vm, unsigned int nb_pages,
 
 	if(slab == NULL)
 	{
-		if(increase_heap(vm, nb_pages) == -1)
+		if(increase_heap(vm, nb_pages, u_s) == -1)
 			return 0;
 
 		slab = vm->free_slabs.end;
@@ -443,7 +441,7 @@ void sys_vmm(uint32_t min_size, uint32_t alloc_ptr, uint32_t size_ptr) {
 
 	asm("cli");
 	*real_alloc_size = allocate_new_pages(vm, calculate_min_pages(min_size),
-                                        alloc); 
+                                        alloc, 1); 
 	asm("sti");
 }
 
