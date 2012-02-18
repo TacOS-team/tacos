@@ -1,9 +1,7 @@
 /**
- * @file sem.h
+ * @file sem.c
  *
  * @author TacOS developers 
- *
- * @brief l'interface de manipulation des semaphores
  *
  * @section LICENSE
  *
@@ -28,39 +26,43 @@
  * Description de ce que fait le fichier
  */
 
-#ifndef _SEM_H_
-#define _SEM_H_
+#include <sys/sem.h>
+#include <sys/syscall.h>
+#include <unistd.h>
 
-#include <sys/types.h>
+#define MAX_SEM 256
+#define KSEM_GET 1
+#define KSEM_CREATE 2
+#define KSEM_DEL 3
+#define KSEM_P 4
+#define KSEM_V 5
 
-/** 
-* @brief donne l'identifiant (semid) d'un sémaphore déjà existant
-* 
-* @param key la clef du sémaphore, cette clef est commune au système
-* 
-* @return le semid correspondant au sémaphore, -1 si une erreur s'est produite.
-*/
-int semget(uint8_t key);
+int semget(uint8_t key, int semflg)
+{
+	int ret = semflg;
+	int data = key;
+	syscall(SYS_SEMCTL, KSEM_GET, (uint32_t)data, (uint32_t)&ret);
+	return ret;
+}
 
-/** 
-* @brief crée un sémaphore
-* 
-* @param key la clef du sémaphore
-* 
-* @return le semid correspondant au sémaphore, -1 si une erreur s'est produite.
-*/
-int semcreate(uint8_t key);
+int semdel(uint32_t semid)
+{
+	int ret;
+	syscall(SYS_SEMCTL, KSEM_DEL, semid, (uint32_t)&ret);
+	return ret;
+}
 
-/** 
-* @brief supprime un sémaphore
-* 
-* @param semid l'identifiant du sémaphore à supprimer.
-* 
-* @return 
-*/
-int semdel(uint32_t semid);
-int semP(uint32_t semid);
-int semV(uint32_t semid);
+int semP(uint32_t semid)
+{
+	int ret;
+	syscall(SYS_SEMCTL, KSEM_P, semid, (uint32_t)&ret);
+	return ret;
+}
 
-#endif //_SEM_H_
+int semV(uint32_t semid)
+{
+	int ret;
+	syscall(SYS_SEMCTL, KSEM_V, semid, (uint32_t)&ret);
+	return ret;
+}
 

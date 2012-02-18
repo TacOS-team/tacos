@@ -258,18 +258,17 @@ int ksemV(uint8_t key)
 }
 
 
-SYSCALL_HANDLER3(sys_ksem, uint32_t param1, uint32_t param2, uint32_t param3)
-{
-	switch(param1)
+SYSCALL_HANDLER3(sys_ksem, uint32_t op, uint32_t param, int *ret) {
+	switch(op)
 	{
 		case KSEM_GET:
-			*((int*)param3) = ksemget(param2, param3);
+			*ret = ksemget(param, *ret);
 			break;
 		case KSEM_P:
-			*((int*)param3) = ksemP(param2);
+			*ret = ksemP(param);
 			break;
 		case KSEM_V:
-			*((int*)param3) = ksemV(param2);
+			*ret = ksemV(param);
 			break;
 		default:
 			break;

@@ -55,7 +55,7 @@ int init_semaphores();
  * @param param	Dépend du type d'opération
  * @param ret	Adresse pour la valeur de retour
  */
-SYSCALL_HANDLER3(sys_ksem, uint32_t op, uint32_t param, uint32_t ret);
+SYSCALL_HANDLER3(sys_ksem, uint32_t op, uint32_t param, int *ret);
 
 /**
  * @brief Obtenir ou créer un sémaphore.
