@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/stat.h>
+#include <dirent.h>
 
 #include "utils/include/unittest.h"
 
@@ -9,6 +10,7 @@ int main() {
 	struct stat buf;
 	int r;
 	const char * fichiertest = "/tacos/fichiertestio";
+	const char * dossiertest = "/tacos/dossiertestio";
 
 	// Tests 1-6: Test la création de fichier selon le flag.
 
@@ -120,6 +122,19 @@ int main() {
 	r = fwrite("01234567891011121314", sizeof(char), 20, f);
 	if (f) fclose(f);
 	unit_test_int("Ecriture sur fichier ouvert en écriture.", 20, r);
+	unlink(fichiertest);
+
+	// Test 14:
+	mkdir(dossiertest, 777);
+	stat(dossiertest, &buf);
+	unit_test_int("Création d'un dossier non existant.", 1, S_ISDIR(buf.st_mode));
+
+	// Test 15:
+	mkdir(dossiertest, 777);
+	r = rmdir(dossiertest);
+	unit_test_int("Suppression d'un dossier existant (retour fonction).", 0, r);
+	DIR* dir = opendir(dossiertest);
+	unit_test_int("Suppression d'un dossier existant (opendir).", (int)NULL, (int)dir);
 
 	return 0;
 }

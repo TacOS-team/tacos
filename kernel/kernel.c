@@ -163,6 +163,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_CLOSE,	(syscall_handler_t) sys_close);
 	syscall_set_handler(SYS_READDIR,	(syscall_handler_t) sys_readdir);
 	syscall_set_handler(SYS_MKDIR,	(syscall_handler_t) sys_mkdir);
+	syscall_set_handler(SYS_RMDIR,	(syscall_handler_t) sys_rmdir);
 	syscall_set_handler(SYS_SIGRET,	(syscall_handler_t) sys_sigret);
 	syscall_set_handler(SYS_SIGSUSPEND,	(syscall_handler_t) sys_sigsuspend);
 	syscall_set_handler(SYS_GETCLOCK,	(syscall_handler_t) sys_getclock);

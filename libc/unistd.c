@@ -200,8 +200,15 @@ int unlink(const char *path) {
 }
 
 int rmdir(const char *path) {
-	//TODO !
-	return unlink(path);
+	int ret;
+	if (path[0] != '/') {
+		char * absolutepath = get_absolute_path(path);
+		syscall(SYS_RMDIR, (uint32_t)absolutepath, (uint32_t)&ret, 0);
+		free(absolutepath);
+	} else {
+		syscall(SYS_RMDIR, (uint32_t)path, (uint32_t)&ret, 0);
+	}
+	return ret;
 }
 
 int dup(int oldfd) {

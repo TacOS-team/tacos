@@ -64,5 +64,6 @@
 #define SYS_UNLINK 29
 #define SYS_DUP 30
 #define SYS_WAITPID 31
+#define SYS_RMDIR 32
 
 #endif
