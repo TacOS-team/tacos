@@ -52,23 +52,6 @@ static int ext2_utimens(fs_instance_t *instance, const char *path, const struct 
 	}
 }
 
-static int ext2_rmdir(fs_instance_t *instance, const char * path) {
-	int inode = getinode_from_path((ext2_fs_instance_t*)instance, path);
-	if (inode > 0) {
-		char filename[256];
-		char * dir = kmalloc(strlen(path));
-		split_dir_filename(path, dir, filename);
-		inode = getinode_from_path(dir);
-		// TODO: Check is dir.
-		// TODO: Call rmdir_inode!
-		remove_dir_entry(inode, filename);
-		// Free !
-		return 0;
-	} else {
-		return inode;
-	}
-}
-
 static int ext2_rename(fs_instance_t *instance, const char *orig, const char *dest) {
 	ext2_fs_instance_t* inst = (ext2_fs_instance_t*)instance;
 	int inode = getinode_from_path(inst, orig);
@@ -94,6 +77,23 @@ static int ext2_rename(fs_instance_t *instance, const char *orig, const char *de
 }
 
 #endif
+
+int ext2_rmdir(fs_instance_t *instance, const char * path) {
+	int inode = getinode_from_path((ext2_fs_instance_t*)instance, path);
+	if (inode > 0) {
+		char filename[256];
+		char * dir = kmalloc(strlen(path));
+		split_dir_filename(path, dir, filename);
+		inode = getinode_from_path((ext2_fs_instance_t*)instance, dir);
+		// TODO: Check is dir.
+		// TODO: Call rmdir_inode!
+		remove_dir_entry((ext2_fs_instance_t*)instance, inode, filename);
+		// Free !
+		return 0;
+	} else {
+		return inode;
+	}
+}
 
 static void load_buffer(open_file_descriptor *ofd) {
 	ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;

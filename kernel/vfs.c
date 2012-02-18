@@ -190,7 +190,26 @@ int vfs_unlink(const char *pathname) {
 		}
 	} else {
 		if (len == 0) {
-			return 1;
+			return -1;
+		}
+	}
+	return -ENOENT;
+}
+
+int vfs_rmdir(const char *pathname) {
+	int len;
+	fs_instance_t *instance = get_instance_from_path(pathname, &len);
+	if (instance) {
+		if (instance->rmdir != NULL) {
+			if (pathname[len] == '\0') {
+				return instance->rmdir(instance, "/");
+			} else {
+				return instance->rmdir(instance, pathname + len);
+			}
+		}
+	} else {
+		if (len == 0) {
+			return -1;
 		}
 	}
 	return -ENOENT;

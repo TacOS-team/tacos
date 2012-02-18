@@ -48,5 +48,6 @@ struct dirent {
 
 SYSCALL_HANDLER3(sys_readdir, int fd, char *entries, size_t *size);
 SYSCALL_HANDLER3(sys_mkdir, const char *pathname, mode_t mode, int *ret);
+SYSCALL_HANDLER2(sys_rmdir, const char *pathname, int *ret);
 
 #endif

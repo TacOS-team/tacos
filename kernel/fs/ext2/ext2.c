@@ -79,6 +79,7 @@ fs_instance_t* mount_EXT2(open_file_descriptor* ofd) {
 	instance->super.mkdir = ext2_mkdir;
 	instance->super.stat = ext2_stat;
 	instance->super.unlink = ext2_unlink;
+	instance->super.rmdir = ext2_rmdir;
 	instance->super.truncate = ext2_truncate;
 
   instance->read_data(instance->super.device, &(instance->superblock), sizeof(struct ext2_super_block), 1024);

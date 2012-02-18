@@ -56,6 +56,7 @@ typedef struct _fs_instance_t {
 	int (*mknod) (struct _fs_instance_t *, const char *, mode_t, dev_t);								/**< Création d'un noeud. */
 	int (*stat) (struct _fs_instance_t *, const char *, struct stat *);									/**< Obtenir le status d'un noeud. */
 	int (*unlink) (struct _fs_instance_t *, const char *);															/**< Suppression d'un noeud. */
+	int (*rmdir) (struct _fs_instance_t *, const char *);																/**< Suppression d'un dossier vide. */
 	int (*truncate) (struct _fs_instance_t *, const char *, off_t size);								/**< Changer la taille d'un fichier. */
 } fs_instance_t;
 
@@ -71,7 +72,9 @@ int vfs_mkdir(const char * pathname, mode_t mode);
 int vfs_stat(const char *pathname, struct stat *);
 int vfs_unlink(const char *pathname);
 int vfs_mknod(const char * path, mode_t mode, dev_t dev);
+int vfs_rmdir(const char *pathname);
 
 int vfs_readdir(open_file_descriptor * ofd, char * entries, size_t size);
 int vfs_close(open_file_descriptor *ofd);
+
 #endif

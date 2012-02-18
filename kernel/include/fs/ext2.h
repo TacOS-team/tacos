@@ -45,5 +45,6 @@ int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t de
 int ext2_mkdir(fs_instance_t *instance, const char * path, mode_t mode);
 int ext2_unlink(fs_instance_t *instance, const char * path);
 int ext2_truncate(fs_instance_t *instance, const char * path, off_t off);
+int ext2_rmdir(fs_instance_t *instance, const char * path);
 
 #endif
