@@ -99,16 +99,15 @@ void close_all_fd() {
 }
 
 
-SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags) {
+SYSCALL_HANDLER3(sys_open, uint32_t fd_id, char *path , uint32_t flags) {
 	int i=0;
 	
-	//process_t * process = (process_t*) p_process;
-	char* path = (char*) p_path;
 	process_t* process = get_current_process();
 	
 	// recherche d une place dans la file descriptor table du process
-	while(process->fd[i].used==true) 
+	while (process->fd[i].used) { 
 		i++;
+	}
 
 	// ouverture du fichier
 	if ((process->fd[i].ofd = vfs_open(path, flags)) != NULL) {

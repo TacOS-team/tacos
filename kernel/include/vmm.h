@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,7 +23,11 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * vmm est l'allocateur qui s'occupe de gérer les pages virtuelles du noyau.
+ * Il se base sur l'algorithme first fit (premier emplacement de taille suffisante)
+ *
+ * Maintien la liste des espaces libres et des espaces occupés (slabs).
+ *
  */
 
 #ifndef _VMM_H_
@@ -32,8 +35,11 @@
 
 #include <types.h>
 
-// a slab of pages
-// chaque slab commence par un entête (struct slab) et est suivi par les données utiles.
+/**
+ * @brief a slab of pages.
+ *
+ * chaque slab commence par un entête (struct slab) et est suivi par les données utiles.
+ */
 struct slab
 {
 	struct slab *prev;
@@ -54,16 +60,48 @@ struct virtual_mem
 	vaddr_t vmm_top;
 };
 
+/**
+ * Initialisation de la VMM.
+ *
+ * @param kvm
+ */
 void init_vmm(struct virtual_mem *kvm);
+
 void init_process_vm(struct virtual_mem *vm, int init_nb_pages);
+
+/**
+ * @brief Allocation d'une nouvelle page.
+ *
+ * @param vm
+ * @param alloc
+ * @param u_s 1 si accessible en userspace, 0 sinon.
+ *
+ * @return 
+ */
 unsigned int allocate_new_page(struct virtual_mem *vm, void **alloc, int u_s);
+
+/**
+ * @brief Alloue nb_pages pages qui sont placé en espace contigüe de la 
+ * mémoire virtuelle.
+ *
+ * @param vm
+ * @param nb_pages
+ * @param alloc
+ * @param u_s 1 si accessible en userspace, 0 sinon.
+ *
+ * @return
+ */
 unsigned int allocate_new_pages(struct virtual_mem *vm, unsigned int nb_pages,
 																void **alloc, int u_s);
 int unallocate_page(struct virtual_mem *vm, void *page);
 unsigned int calculate_min_pages(size_t size);
 void vmm_print_heap(struct virtual_mem *vm);
 vaddr_t get_linear_address(int dir, int table, int offset);
-void sys_vmm(uint32_t vm, uint32_t nb_pages, uint32_t alloc);
+
+/**
+ * Syscall VMM pour allouer des pages.
+ */
+void sys_vmm(uint32_t min_size, void **alloc, size_t *real_alloc_size);
 
 struct page_table_entry *get_pte(int dir, int table);
 paddr_t vmm_get_page_paddr(vaddr_t vaddr); 

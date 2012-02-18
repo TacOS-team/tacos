@@ -106,7 +106,7 @@ void init_stdfd(process_t *new_proc);
  */
 void close_all_fd();
 
-SYSCALL_HANDLER3(sys_open, uint32_t fd_id, uint32_t p_path , uint32_t flags);
+SYSCALL_HANDLER3(sys_open, uint32_t fd_id, char *path , uint32_t flags);
 SYSCALL_HANDLER2(sys_close, uint32_t fd_id, uint32_t* ret);
 SYSCALL_HANDLER3(sys_fcntl, int *fd_id, unsigned int request, void * data);
 

@@ -434,9 +434,7 @@ void vmm_print_heap(struct virtual_mem *vm)
 	kprintf("-- VMM : end --\n");
 }
 
-void sys_vmm(uint32_t min_size, uint32_t alloc_ptr, uint32_t size_ptr) {
-	void **alloc = (void **) alloc_ptr;
-	size_t *real_alloc_size = (size_t *) size_ptr;
+void sys_vmm(uint32_t min_size, void **alloc, size_t *real_alloc_size) {
   struct virtual_mem* vm = get_current_process()->vm;
 
 	asm("cli");
