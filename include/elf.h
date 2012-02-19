@@ -23,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * @brief Bibliotèque destinée à manipuler les fichiers exécutables ELF
+ * @brief Bibliothèque destinée à manipuler les fichiers exécutables ELF
  */
 
 #ifndef _ELF_H_
@@ -40,6 +40,8 @@ typedef	unsigned long int	Elf32_Word;
 
 /**
  * ELF HEADER
+ *
+ * @struct Elf32_Ehdr
  */
 typedef struct {
 	unsigned char	e_ident[EI_NIDENT];	/**< ELF Identification */
@@ -59,42 +61,42 @@ typedef struct {
 } Elf32_Ehdr;
 
 /* Indices pour e_ident: */
-#define EI_MAG0		0	/* 0x7F */
-#define EI_MAG1		1	/* 'E' */
-#define EI_MAG2		2	/* 'L' */
-#define EI_MAG3		3	/* 'F' */
+#define EI_MAG0		0	/**< 0x7F */
+#define EI_MAG1		1	/**< 'E' */
+#define EI_MAG2		2	/**< 'L' */
+#define EI_MAG3		3	/**< 'F' */
 #define EI_CLASS	4
-	#define ELFCLASSNONE	0	/* Classe invalide */
-	#define ELFCLASS32		1	/* Objet 32-bits */
-	#define ELFCLASS64		2	/* Objet 64-bits */
+	#define ELFCLASSNONE	0	/**< Classe invalide */
+	#define ELFCLASS32		1	/**< Objet 32-bits */
+	#define ELFCLASS64		2	/**< Objet 64-bits */
 	
 #define EI_DATA		5
-	#define ELFDATANONE		0	/* Encodage des données invalide */
-	#define ELFDATA2LSB		1	/* Big-endian */
-	#define ELFDATA2MSB		2	/* Little-endian */
+	#define ELFDATANONE		0	/**< Encodage des données invalide */
+	#define ELFDATA2LSB		1	/**< Big-endian */
+	#define ELFDATA2MSB		2	/**< Little-endian */
 	
 #define EI_VERSION	6
 #define EI_PAD		7
 
 
 /* Valeurs pour e_type: */
-#define ET_NONE		0	/* No type */
-#define ET_REL		1	/* Relocatable file */
-#define ET_EXE		2	/* Executable file */
-#define ET_DYN		3	/* Shared object file */
-#define ET_CORE		4	/* Core file */
-#define ET_LOPROC	0xff00	/* Processor-specific */
-#define ET_HIPROC	0xffff	/* Processor-specific */
+#define ET_NONE		0	/**< No type */
+#define ET_REL		1	/**< Relocatable file */
+#define ET_EXE		2	/**< Executable file */
+#define ET_DYN		3	/**< Shared object file */
+#define ET_CORE		4	/**< Core file */
+#define ET_LOPROC	0xff00	/**< Processor-specific */
+#define ET_HIPROC	0xffff	/**< Processor-specific */
 
 /* Valeurs pour e_machine: */
-#define EM_NONE		0	/* Aucune architecture spécifiée */
-#define EM_M32		1	/* AT&T WE 32100 */
-#define EM_SPARC	2	/* SPARC */
-#define EM_386		3	/* Intel 80386 */
-#define EM_68K		4	/* Motorola 68000 */
-#define EM_88K		5	/* Motorola 88000 */
-#define EM_860		7	/* Intel 80860 */
-#define EM_MIPS		8	/* MIPS RS3000 */
+#define EM_NONE		0	/**< Aucune architecture spécifiée */
+#define EM_M32		1	/**< AT&T WE 32100 */
+#define EM_SPARC	2	/**< SPARC */
+#define EM_386		3	/**< Intel 80386 */
+#define EM_68K		4	/**< Motorola 68000 */
+#define EM_88K		5	/**< Motorola 88000 */
+#define EM_860		7	/**< Intel 80860 */
+#define EM_MIPS		8	/**< MIPS RS3000 */
 
 /* Valeurs pour e_version: */
 #define EV_NONE		0
@@ -116,26 +118,26 @@ typedef struct {
 #define	SHN_HIRESERVE	0xffff
 
 typedef struct{
-	Elf32_Word	p_type;		/* Type de segment */
-	Elf32_Off	p_offset;	/* Offset du segment dans le fichier */
-	Elf32_Addr	p_vaddr;	/* Adresse virtuelle ce segment */
-	Elf32_Addr	p_paddr;	/* Adresse physique / Utilisation indéfinie */
-	Elf32_Word	p_filesz; 	/* Taille prise par le segment dans le fichier */
-	Elf32_Word	p_memsz;	/* Taille prise par le segment dans la mémoire */
-	Elf32_Word	p_flags;	/* Flags quoi... */
-	Elf32_Word	p_align;	/* Si différent de 0 ou 1, on doit avoir (p_vaddr = p_offset mod p_align) */
+	Elf32_Word	p_type;		/**< Type de segment */
+	Elf32_Off	p_offset;		/**< Offset du segment dans le fichier */
+	Elf32_Addr	p_vaddr;	/**< Adresse virtuelle ce segment */
+	Elf32_Addr	p_paddr;	/**< Adresse physique / Utilisation indéfinie */
+	Elf32_Word	p_filesz; /**< Taille prise par le segment dans le fichier */
+	Elf32_Word	p_memsz;	/**< Taille prise par le segment dans la mémoire */
+	Elf32_Word	p_flags;	/**< Flags quoi... */
+	Elf32_Word	p_align;	/**< Si différent de 0 ou 1, on doit avoir (p_vaddr = p_offset mod p_align) */
 }Elf32_Phdr;
 
 /* Valeurs prises par p_type: */
-#define PT_NULL		0		/* Unused element */
-#define	PT_LOAD		1		/* Loadable segment */
-#define PT_DYNAMIC	2		/* Dynamic linking information */
-#define	PT_INTERP	3		/* Pathname to an interpreter */
-#define	PT_NOTE		4		/* Auxiliary informations */
-#define PT_SHLIB	5		/* No specified semantics */
-#define PT_PHDR		6		/* Specifie location of the program header table itself */
-#define PT_LOPROC	0x7000000	/* Processor specific semantics */
-#define PT_HIPROC	0x7FFFFFF	/* Processor specific semantics */
+#define PT_NULL		0		/**< Unused element */
+#define	PT_LOAD		1		/**< Loadable segment */
+#define PT_DYNAMIC	2	/**< Dynamic linking information */
+#define	PT_INTERP	3		/**< Pathname to an interpreter */
+#define	PT_NOTE		4		/**< Auxiliary informations */
+#define PT_SHLIB	5		/**< No specified semantics */
+#define PT_PHDR		6		/**< Specifie location of the program header table itself */
+#define PT_LOPROC	0x7000000	/**< Processor specific semantics */
+#define PT_HIPROC	0x7FFFFFF	/**< Processor specific semantics */
 
 /* Valeurs prises par p_flags */
 #define PF_X	0x1
@@ -149,16 +151,16 @@ typedef struct{
  ********************************/
  
 typedef struct {
-	Elf32_Word	sh_name;		/* Indice du nom de la section dans la string table */
-	Elf32_Word	sh_type;		/* Type de section (voir définitions)*/
-	Elf32_Word	sh_flags;		/* Attributs */
-	Elf32_Addr	sh_addr;		/* Adresse en mémoire de la section si elle y a une image, 0 sinon */
-	Elf32_Off	sh_offset;		/* Offset de la section dans le fichier */
-	Elf32_Word	sh_size;		/* Taille de la section (sauf cas SHT_NOBITS) */
-	Elf32_Word	sh_link;		/* Lien vers un autre indice de la table */
-	Elf32_Word	sh_info;		/* Informations supplémentaires (Dépend du type) */
-	Elf32_Word	sh_addralign;	/* Contrainte d'alignement de la section */
-	Elf32_Word	sh_entsize;		/* Taille des entrées d'une table, si la section contiens une table */
+	Elf32_Word	sh_name;		/**< Indice du nom de la section dans la string table */
+	Elf32_Word	sh_type;		/**< Type de section (voir définitions)*/
+	Elf32_Word	sh_flags;		/**< Attributs */
+	Elf32_Addr	sh_addr;		/**< Adresse en mémoire de la section si elle y a une image, 0 sinon */
+	Elf32_Off	sh_offset;		/**< Offset de la section dans le fichier */
+	Elf32_Word	sh_size;		/**< Taille de la section (sauf cas SHT_NOBITS) */
+	Elf32_Word	sh_link;		/**< Lien vers un autre indice de la table */
+	Elf32_Word	sh_info;		/**< Informations supplémentaires (Dépend du type) */
+	Elf32_Word	sh_addralign;	/**< Contrainte d'alignement de la section */
+	Elf32_Word	sh_entsize;		/**< Taille des entrées d'une table, si la section contiens une table */
 }Elf32_Shdr;
 
 /* Valeurs pour sh_type */
@@ -192,12 +194,12 @@ typedef struct {
  ***************************/
  
 typedef struct {
-	Elf32_Word		st_name;	/* Indice du nom du symbol dans la string table des symbols */
-	Elf32_Addr		st_value;	/* Valeur dépendant du contexte */
+	Elf32_Word		st_name;	/**< Indice du nom du symbol dans la string table des symbols */
+	Elf32_Addr		st_value;	/**< Valeur dépendant du contexte */
 	Elf32_Word		st_size;	
-	unsigned char	st_info;	/* Attributs sur le type et le binding du symbol */
-	unsigned char	st_other;	/* Toujours 0, inutilisé */
-	Elf32_Half		st_shndx;	/* Indice de la section contenant le symbol */
+	unsigned char	st_info;	/**< Attributs sur le type et le binding du symbol */
+	unsigned char	st_other;	/**< Toujours 0, inutilisé */
+	Elf32_Half		st_shndx;	/**< Indice de la section contenant le symbol */
 }Elf32_Sym;
 
 
@@ -208,17 +210,17 @@ typedef struct {
 #define	ELF32_ST_INFO(b,t)	(((b)<<4)+((t)&0xf))
 
 /* Valeurs pour ELF32_ST_BIND */
-#define	STB_LOCAL	0		/* Invisible hors du fichier objet contenant sa définition */
-#define	STB_GLOBAL	1		/* Visible par tous les objet combinés à celui ci */
-#define	STB_WEAK	2		/* Pareil que global, grosso modo, voir la doc pour avoir les nuances */
+#define	STB_LOCAL	0		/**< Invisible hors du fichier objet contenant sa définition */
+#define	STB_GLOBAL	1		/**< Visible par tous les objet combinés à celui ci */
+#define	STB_WEAK	2		/**< Pareil que global, grosso modo, voir la doc pour avoir les nuances */
 #define	STB_LOPROC	13
 #define	STB_HIPROC	15
 
 /* valeurs pour ELF32_ST_TYPE */
-#define	STT_NOTYPE	0	/* Pas de type */
-#define	STT_OBJECT	1	/* Données: variables, tableau, etc. */
-#define	STT_FUNC	2	/* Fonction ou code */
-#define	STT_SECTION	3	/* Le symbol est une fonction */
+#define	STT_NOTYPE	0	/**< Pas de type */
+#define	STT_OBJECT	1	/**< Données: variables, tableau, etc. */
+#define	STT_FUNC	2	/**< Fonction ou code */
+#define	STT_SECTION	3	/**< Le symbol est une fonction */
 #define	STT_FILE	4	
 #define	STT_LOPROC	13
 #define	STT_HIPROC	15
