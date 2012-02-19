@@ -43,16 +43,16 @@ static struct event_t scheduler_event;
 
 int compare_events(void* a, void* b)
 {
-  struct event_t *event_a = (struct event_t *) a;
-  struct event_t *event_b = (struct event_t *) b;
+	struct event_t *event_a = (struct event_t *) a;
+	struct event_t *event_b = (struct event_t *) b;
 
-  return compare_times(event_a->date, event_b->date);
+	return compare_times(event_a->date, event_b->date);
 }
 
 static void events_interrupt(int interrupt_id __attribute__ ((unused)))
 {
 	struct event_t *event;
-  callback_t callback;
+	callback_t callback;
 
 	clock_tick();
 
@@ -64,39 +64,39 @@ static void events_interrupt(int interrupt_id __attribute__ ((unused)))
 		event = (struct event_t *) listGetTop(events);
 	}
 
-  if(scheduler_event.callback != NULL 
-     && compare_times(scheduler_event.date, get_tv()) <= 0) {
-     callback = scheduler_event.callback;
-     unset_scheduler_event();
-     callback(scheduler_event.data);
-  }
+	if(scheduler_event.callback != NULL 
+		&& compare_times(scheduler_event.date, get_tv()) <= 0) {
+		callback = scheduler_event.callback;
+		unset_scheduler_event();
+		callback(scheduler_event.data);
+	}
 }
 
 void events_init()
 {
-  unset_scheduler_event();
+	unset_scheduler_event();
 
-  clock_init();
-  initList(	&events, 
+	clock_init();
+	initList(	&events, 
 			(cmp_func_type)compare_events, 
 			sizeof(struct event_t), 
 			MAX_EVENTS);
 
-  interrupt_set_routine(IRQ_TIMER, events_interrupt, 0);
-  //ticks = TIMER_FREQ;
-  i8254_init(1000/*TIMER_FREQ*/);
+	interrupt_set_routine(IRQ_TIMER, events_interrupt, 0);
+	//ticks = TIMER_FREQ;
+	i8254_init(1000/*TIMER_FREQ*/);
 }
 
 void set_scheduler_event(callback_t call, void *data, time_t dtime_usec) {
-  scheduler_event.date = get_tv();
-  timeval_add_usec(&(scheduler_event.date), dtime_usec);
+	scheduler_event.date = get_tv();
+	timeval_add_usec(&(scheduler_event.date), dtime_usec);
 
-  scheduler_event.callback = call;
-  scheduler_event.data = data;
+	scheduler_event.callback = call;
+	scheduler_event.data = data;
 }
 
 void unset_scheduler_event() {
-  scheduler_event.callback = NULL;
+	scheduler_event.callback = NULL;
 }
 
 int add_event(callback_t call, void* data, time_t dtime_usec)
@@ -106,7 +106,7 @@ int add_event(callback_t call, void* data, time_t dtime_usec)
 	
 	event.date = get_tv();
 
-  timeval_add_usec(&(event.date), dtime_usec);
+	timeval_add_usec(&(event.date), dtime_usec);
 
 	event.callback = call;
 	event.data = data;											
@@ -120,8 +120,8 @@ int add_event(callback_t call, void* data, time_t dtime_usec)
 
 static int identifier(int id, void* element)
 {
-  struct event_t *event_element = (struct event_t *) element;
-  return event_element->id == id;
+	struct event_t *event_element = (struct event_t *) element;
+	return event_element->id == id;
 }
 
 int del_event(int id)

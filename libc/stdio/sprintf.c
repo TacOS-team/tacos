@@ -34,32 +34,32 @@
 #include "stdio.h"
 
 int sprintf(char *str, const char *format, ...) {
-    va_list arg;
-    int result;
+	va_list arg;
+	int result;
  
-    va_start(arg, format);
-    result = vsprintf(str, format, arg);
-    va_end(arg);
+	va_start(arg, format);
+	result = vsprintf(str, format, arg);
+	va_end(arg);
  
-    return result;
+	return result;
 }
 
 int snprintf(char *str, size_t size, const char *format, ...) {
-    va_list arg;
-    int result;
+	va_list arg;
+	int result;
  
-    va_start(arg, format);
-    result = vsnprintf(str, size, format, arg);
-    va_end(arg);
+	va_start(arg, format);
+	result = vsnprintf(str, size, format, arg);
+	va_end(arg);
  
-    return result;
+	return result;
 }
 
 int vsprintf(char *str, const char *format, va_list ap) {
 	FILE * stream = fmemopen(str, 10000, "r");
 	int r = vfprintf(stream, format, ap);
-    str[r] = '\0';
-    return r;
+	str[r] = '\0';
+	return r;
 }
 
 int vsnprintf(char *str, size_t size, const char *format, va_list ap) {

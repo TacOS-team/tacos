@@ -36,14 +36,14 @@
 #include <stdlib.h>
 
 int fprintf(FILE *stream, const char *format, ...) {
-    va_list arg;
-    int result;
+	va_list arg;
+	int result;
  
-    va_start(arg, format);
-    result = vfprintf(stream, format, arg);
-    va_end(arg);
+	va_start(arg, format);
+	result = vfprintf(stream, format, arg);
+	va_end(arg);
  
-    return result;
+	return result;
 }
 
 int vfprintf(FILE *stream, const char *format, va_list ap) {

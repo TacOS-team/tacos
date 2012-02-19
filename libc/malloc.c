@@ -34,15 +34,15 @@
 
 struct mem_list
 {
-  struct mem *begin;
-  struct mem *end;
+	struct mem *begin;
+	struct mem *end;
 };
 
 struct mem
 {
-  struct mem *prev;
-  size_t size; // (struct mem) + data
-  struct mem *next;
+	struct mem *prev;
+	size_t size; // (struct mem) + data
+	struct mem *next;
 };
 
 static struct mem_list process_free_mem;
@@ -55,93 +55,93 @@ static int __free(void *p, struct mem_list *free_mem,
 
 static int is_empty(struct mem_list *list)
 {
-  return list->begin == NULL;
+	return list->begin == NULL;
 }
 
 // Enlève une mem d'une mem_list
 // Le bloc doit appartenir à la liste
 static void mremove(struct mem_list *list, struct mem *m)
 {
-  if(m->prev != NULL)
-    m->prev->next = m->next;
-  if(m->next != NULL)
-    m->next->prev = m->prev;
+	if(m->prev != NULL)
+		m->prev->next = m->next;
+	if(m->next != NULL)
+		m->next->prev = m->prev;
 
-  if(m == list->begin)
-    list->begin = m->next;
-  if(m == list->end)
-    list->end = m->prev;
+	if(m == list->begin)
+		list->begin = m->next;
+	if(m == list->end)
+		list->end = m->prev;
 }
 
 static void add_first_element(struct mem_list *list, struct mem *m)
 {
-  list->begin = m;
-  m->prev = NULL;
-  m->next = NULL;
-  list->end = m;
+	list->begin = m;
+	m->prev = NULL;
+	m->next = NULL;
+	list->end = m;
 }
 
 static void push_back(struct mem_list *list, struct mem *m)
 {
-  if(is_empty(list))
-    add_first_element(list, m);
-  else
-  {
-    list->end->next = m;
-    m->prev = list->end;
-    m->next = NULL;
-    list->end = m;
-  }
+	if(is_empty(list))
+		add_first_element(list, m);
+	else
+	{
+		list->end->next = m;
+		m->prev = list->end;
+		m->next = NULL;
+		list->end = m;
+	}
 }
 
 // Ajoute une mem à une mem_list
 // l'ordre de la liste est celui de la mémoire virtuelle
 static void add(struct mem_list *list, struct mem *m)
 {
-  struct mem *it = list->begin;
+	struct mem *it = list->begin;
 
-  if(is_empty(list))
-  {
-    add_first_element(list, m);
-    return;
-  }
+	if(is_empty(list))
+	{
+		add_first_element(list, m);
+		return;
+	}
 
-  while(it->next != NULL && it->next < m)
-    it = it->next;
+	while(it->next != NULL && it->next < m)
+		it = it->next;
 
-  // add at the end of the list
-  if(it->next == NULL)
-  {
-    push_back(list, m);
-    return;
-  }
+	// add at the end of the list
+	if(it->next == NULL)
+	{
+		push_back(list, m);
+		return;
+	}
 
-  m->prev = it;
-  m->next = it->next;
-  it->next->prev = m;
-  it->next = m;
+	m->prev = it;
+	m->next = it->next;
+	it->next->prev = m;
+	it->next = m;
 }
 
 // Sépare un bloc mem en deux quand il est trop grand et déplace le bloc de free_mem vers used_mem
 static void cut_mem(struct mem* m, size_t size, 
 										struct mem_list *free_mem, struct mem_list *allocated_mem)
 {
-  if(m->size - size > sizeof(struct mem)) // cut mem
-  {
-    struct mem *new_mem = (struct mem*) ((vaddr_t) m + size);
-    new_mem->size = m->size - size;
-    add(free_mem, new_mem);
+	if(m->size - size > sizeof(struct mem)) // cut mem
+	{
+		struct mem *new_mem = (struct mem*) ((vaddr_t) m + size);
+		new_mem->size = m->size - size;
+		add(free_mem, new_mem);
 
-    m->size = size;
-  } 
+		m->size = size;
+	} 
 
-  mremove(free_mem, m);
-  add(allocated_mem, m);
+	mremove(free_mem, m);
+	add(allocated_mem, m);
 }
 
 static int is_stuck(struct mem *m1, struct mem *m2)
 {
-  return m1 != NULL && (vaddr_t) m1 + m1->size == (vaddr_t) m2;
+	return m1 != NULL && (vaddr_t) m1 + m1->size == (vaddr_t) m2;
 }
 
 void init_process_malloc()
@@ -157,34 +157,34 @@ void *malloc(size_t size) {
 }
 
 void *__malloc(struct mem_list *free_mem, struct mem_list *allocated_mem,
-               size_t size)
+							 size_t size)
 { 
-  struct mem *mem = free_mem->begin;
-  size_t real_size = size + sizeof(struct mem);
+	struct mem *mem = free_mem->begin;
+	size_t real_size = size + sizeof(struct mem);
 
-  while(mem != NULL && mem->size < real_size)
-    mem = mem->next;
+	while(mem != NULL && mem->size < real_size)
+		mem = mem->next;
 
-  if(mem == NULL)
-  {
-    struct mem *new_mem;
-    struct mem *alloc;
-    size_t real_alloc_size;
+	if(mem == NULL)
+	{
+		struct mem *new_mem;
+		struct mem *alloc;
+		size_t real_alloc_size;
 
 		syscall(SYS_VMM, (uint32_t) real_size, (uint32_t) &alloc,
                      (uint32_t) &real_alloc_size);
-    
-    if(real_alloc_size <= 0)
-      return NULL;
-    
-    new_mem = (struct mem *) alloc;
-    new_mem->size = real_alloc_size;
-    push_back(free_mem, new_mem);
-    mem = free_mem->end;
-  }
 
-  cut_mem(mem, real_size, free_mem, allocated_mem);
-  return (void *) (((uint32_t) mem) + sizeof(struct mem));
+		if(real_alloc_size <= 0)
+			return NULL;
+		
+		new_mem = (struct mem *) alloc;
+		new_mem->size = real_alloc_size;
+		push_back(free_mem, new_mem);
+		mem = free_mem->end;
+	}
+
+	cut_mem(mem, real_size, free_mem, allocated_mem);
+	return (void *) (((uint32_t) mem) + sizeof(struct mem));
 }
 
 int free(void *p) {
@@ -193,78 +193,78 @@ int free(void *p) {
 
 int __free(void *p, struct mem_list *free_mem, struct mem_list *allocated_mem)
 {
-  struct mem *m = allocated_mem->end;
+	struct mem *m = allocated_mem->end;
 
-  while(m != NULL) {
-    if((vaddr_t) m + sizeof(struct mem) <= (vaddr_t) p &&
-       (vaddr_t) p < (vaddr_t) m + m->size)
-      break;
-    m = m->prev;
-  }
+	while(m != NULL) {
+		if((vaddr_t) m + sizeof(struct mem) <= (vaddr_t) p &&
+			 (vaddr_t) p < (vaddr_t) m + m->size)
+			break;
+		m = m->prev;
+	}
 
-  if(m == NULL)
-    return -1;
+	if(m == NULL)
+		return -1;
 
-  mremove(allocated_mem, m);
-  add(free_mem, m);
+	mremove(allocated_mem, m);
+	add(free_mem, m);
 
-  if(is_stuck(m->prev, m))
-  {
-    m->prev->size += m->size;
-    mremove(free_mem, m);
-    m = m->prev;
-  }
-  
-  if(is_stuck(m, m->next))
-  {
-    m->size += m->next->size;
-    mremove(free_mem, m->next);
-  }
+	if(is_stuck(m->prev, m))
+	{
+		m->prev->size += m->size;
+		mremove(free_mem, m);
+		m = m->prev;
+	}
+	
+	if(is_stuck(m, m->next))
+	{
+		m->size += m->next->size;
+		mremove(free_mem, m->next);
+	}
 
-  return 0;
+	return 0;
 }
 
 static void print_mem(struct mem* m, bool free __attribute__ ((unused)))
 {
  // set_attribute(BLACK, free ? GREEN : RED);
-  printf("[%x ; %d ; %x ; %x] ", m, m->size,  m->prev, m->next);
-  fflush(stdout);
-//  reset_attribute();
+	printf("[%x ; %d ; %x ; %x] ", m, m->size,	m->prev, m->next);
+	fflush(stdout);
+//	reset_attribute();
 }
 
 void malloc_print_mem()
 {
-  struct mem *free_it = process_free_mem.begin;
-  struct mem *allocated_it = process_allocated_mem.begin;
+	struct mem *free_it = process_free_mem.begin;
+	struct mem *allocated_it = process_allocated_mem.begin;
 
-  printf("\n-- malloc : printing heap --\n");
+	printf("\n-- malloc : printing heap --\n");
 
 	/*int i = 0;*/
-  while(free_it != NULL && allocated_it != NULL)
-  {
-    if(free_it < allocated_it)
-    {
-      print_mem(free_it, true);
-      free_it = free_it->next;
-    } else
-    {
-      print_mem(allocated_it, false);
-      allocated_it = allocated_it->next;
-    }
-  }
+	while(free_it != NULL && allocated_it != NULL)
+	{
+		if(free_it < allocated_it)
+		{
+			print_mem(free_it, true);
+			free_it = free_it->next;
+		} else
+		{
+			print_mem(allocated_it, false);
+			allocated_it = allocated_it->next;
+		}
+	}
 
-  while(free_it != NULL)
-  {
-    print_mem(free_it, true);
-    free_it = free_it->next;
-  }
+	while(free_it != NULL)
+	{
+		print_mem(free_it, true);
+		free_it = free_it->next;
+	}
 
-  while(allocated_it != NULL)
-  {
-    print_mem(allocated_it, false);
-    allocated_it = allocated_it->next;
-  }
-  
-  printf("\n-- malloc : end --\n\n\n");
+	while(allocated_it != NULL)
+	{
+		print_mem(allocated_it, false);
+		allocated_it = allocated_it->next;
+	}
+	
+	printf("\n-- malloc : end --\n\n\n");
 }
 

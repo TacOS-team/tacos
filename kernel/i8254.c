@@ -63,8 +63,9 @@ int i8254_init(uint32_t freq)
   uint8_t controlByte;
   uint32_t nb_tick;
   
-  if(freq > I8254_MAX_FREQ)
-    return -1;
+  if (freq > I8254_MAX_FREQ) {
+		return -1;
+	}
   
   nb_tick = I8254_MAX_FREQ / freq;
 

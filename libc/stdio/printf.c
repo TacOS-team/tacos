@@ -34,14 +34,14 @@
 #include <stdio.h>
 
 int printf(const char *format, ...) {
-    va_list arg;
-    int result;
+	va_list arg;
+	int result;
  
-    va_start(arg, format);
-    result = vfprintf(stdout, format, arg);
-    va_end(arg);
+	va_start(arg, format);
+	result = vfprintf(stdout, format, arg);
+	va_end(arg);
  
-    return result;
+	return result;
 }
 
 int vprintf(const char *format, va_list ap) {

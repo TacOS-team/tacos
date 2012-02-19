@@ -178,7 +178,7 @@ int fat_mkdir (fs_instance_t *instance, const char * path, mode_t mode __attribu
   fat_split_dir_filename(path, dir, filename);
 
   char * sfn = fat_lfn_to_sfn(filename);
-  
+
   int n_entries = 1 + ((strlen(filename) - 1) / 13);
   lfn_entry_t * long_file_name = kmalloc(sizeof(lfn_entry_t) * (n_entries + 1));
   fat_dir_entry_t *fentry = (fat_dir_entry_t*) &long_file_name[n_entries];
@@ -211,7 +211,7 @@ int fat_createfile (fat_fs_instance_t* instance, const char * path, mode_t mode 
   fat_split_dir_filename(path, dir, filename);
 
   char * sfn = fat_lfn_to_sfn(filename);
-  
+
   int n_entries = 1 + ((strlen(filename) - 1) / 13);
   lfn_entry_t * long_file_name = kmalloc(sizeof(lfn_entry_t) * (n_entries + 1));
   fat_dir_entry_t *fentry = (fat_dir_entry_t*) &long_file_name[n_entries];

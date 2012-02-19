@@ -51,12 +51,12 @@ int fgetc(FILE *stream) {
 	
 	// Première utilisation du stream, on alloue un buffer.
 	if (stream->_IO_buf_base == NULL) {
-      char * buf = (char*) malloc(1024);
-      stream->_IO_buf_base = buf;
-      stream->_IO_buf_end = buf + 1024;
-      stream->_IO_read_base = buf;
-      stream->_IO_read_end = buf;
-      stream->_IO_read_ptr = buf;
+		char * buf = (char*) malloc(1024);
+		stream->_IO_buf_base = buf;
+		stream->_IO_buf_end = buf + 1024;
+		stream->_IO_read_base = buf;
+		stream->_IO_read_end = buf;
+		stream->_IO_read_ptr = buf;
 	}
 
 	// Si on a plus d'octet dans le buffer de lecture, on rerempli le buffer.

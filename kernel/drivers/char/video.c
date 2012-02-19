@@ -164,29 +164,29 @@ void cursor_position_video(int n, int x, int y) {
  * Conversion entre latin1 et la table ASCII utilisée.
  */
 static char convert_ascii(unsigned char c) {
-        if (c == 0xE9) { // é
-                c = 0x82;
-        } else if (c == 0xE2) { // â
-                c = 0x83;
-        } else if (c == 0xE4) { // ä
-                c = 0x84;
-        } else if (c == 0xE0) { // à
-                c = 0x85;
-        } else if (c == 0xE7) { // ç
-                c = 0x87;
-        } else if (c == 0xE8) { // è
-                c = 0x8a;
-        } else if (c == 0xF4) { // ô
-                c = 0x93;
-        } else if (c == 0xFC) { // ü
-                c = 0x81;
-        } else if (c == 0xEA) { // ê
-                c = 0x88;
-        } else if (c == 0xF9) { // ù
-                c = 0x97;
-        }
+		if (c == 0xE9) { // é
+				c = 0x82;
+		} else if (c == 0xE2) { // â
+				c = 0x83;
+		} else if (c == 0xE4) { // ä
+				c = 0x84;
+		} else if (c == 0xE0) { // à
+				c = 0x85;
+		} else if (c == 0xE7) { // ç
+				c = 0x87;
+		} else if (c == 0xE8) { // è
+				c = 0x8a;
+		} else if (c == 0xF4) { // ô
+				c = 0x93;
+		} else if (c == 0xFC) { // ü
+				c = 0x81;
+		} else if (c == 0xEA) { // ê
+				c = 0x88;
+		} else if (c == 0xF9) { // ù
+				c = 0x97;
+		}
 
-        return c;
+		return c;
 }
 
 void kputchar_video(int n, bool front, char c, int x, int y, char attr) {
