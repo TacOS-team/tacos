@@ -32,14 +32,14 @@
 #include <clock.h>
 
 /* File types.  */
-#define	S_IFMT	 0170000	/* These bits determine file type.  */
-#define S_IFSOCK 0140000 /* Socket.  */
-#define S_IFLNK  0120000 /* Symbolic link.  */
-#define S_IFREG  0100000 /* Regular file.  */
-#define S_IFBLK  0060000 /* Block device.  */
-#define S_IFDIR  0040000 /* Directory.  */
-#define S_IFCHR  0020000 /* Character device.  */
-#define S_IFIFO  0010000 /* FIFO.  */
+#define	S_IFMT	 0170000 /**< These bits determine file type.  */
+#define S_IFSOCK 0140000 /**< Socket.  */
+#define S_IFLNK  0120000 /**< Symbolic link.  */
+#define S_IFREG  0100000 /**< Regular file.  */
+#define S_IFBLK  0060000 /**< Block device.  */
+#define S_IFDIR  0040000 /**< Directory.  */
+#define S_IFCHR  0020000 /**< Character device.  */
+#define S_IFIFO  0010000 /**< FIFO.  */
 
 #define S_ISBLK(m)  (((m) & S_IFMT) == S_IFBLK)
 #define S_ISCHR(m)  (((m) & S_IFMT) == S_IFCHR)
