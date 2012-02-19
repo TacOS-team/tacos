@@ -23,21 +23,26 @@
  *
  * @section DESCRIPTION
  *
- * Defines types used by the mouse driver.
+ * @brief Defines types used by the mouse driver.
  */
 
 #ifndef _MOUSE_TYPES_H_
 #define _MOUSE_TYPES_H_
 
+/**
+ * @brief Structure pour réprésenter l'état de la souris.
+ *
+ * @struct mousestate_t
+ */
 typedef struct mousestate {
-	unsigned int x : 13;
-	unsigned int y : 13;
-	unsigned int b1 : 1;
-	unsigned int b2 : 1;
-	unsigned int b3 : 1;
-	unsigned int b4 : 1;
-	unsigned int b5 : 1;
-	unsigned int b6 : 1;
+	unsigned int x : 13; /**< Coordonnée horizontale du curseur. */
+	unsigned int y : 13; /**< Coordonnée verticale du curseur. */
+	unsigned int b1 : 1; /**< Etat du bouton 1. */
+	unsigned int b2 : 1; /**< Etat du bouton 2. */
+	unsigned int b3 : 1; /**< Etat du bouton 3. */
+	unsigned int b4 : 1; /**< Etat du bouton 4. */
+	unsigned int b5 : 1; /**< Etat du bouton 5. */
+	unsigned int b6 : 1; /**< Etat du bouton 6. */
 } mousestate_t;
 
 enum mouse_req_codes { SETRES };
