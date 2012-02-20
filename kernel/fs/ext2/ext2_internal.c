@@ -3,6 +3,7 @@
 #include <klog.h>
 #include <kmalloc.h>
 #include <kdirent.h>
+#include <clock.h>
 
 static struct blk_t* addr_inode_data(ext2_fs_instance_t *instance, int inode);
 static int read_inode(ext2_fs_instance_t *instance, int inode, struct ext2_inode* einode);
@@ -255,9 +256,7 @@ static void setattr_inode(ext2_fs_instance_t *instance, int inode, struct stat *
 		einode.i_gid = stbuf->st_gid;
 		einode.i_atime = stbuf->st_atime;
 		einode.i_mtime = stbuf->st_mtime;
-//		struct timeval tv;
-//		gettimeofday(&tv, NULL);
-//		einode.i_ctime = tv.tv_sec;
+		einode.i_ctime = get_date();
 		write_inode(instance, inode, &einode);
 	}
 }
@@ -417,13 +416,13 @@ static int mknod_inode(ext2_fs_instance_t *instance, int inode, const char *name
 	memset(&n_inode, 0, sizeof(struct ext2_inode));
 	n_inode.i_mode = mode;
 	n_inode.i_links_count = 1;
+// TODO uid/gid
 //	n_inode.i_uid = fc->uid;
 //	n_inode.i_gid = fc->gid;
-//	struct timeval tv;
-//	gettimeofday(&tv, NULL);
-//	n_inode.i_atime = tv.tv_sec;
-//	n_inode.i_ctime = tv.tv_sec;
-//	n_inode.i_mtime = tv.tv_sec;
+	time_t cdate = get_date();
+	n_inode.i_atime = cdate;
+	n_inode.i_ctime = cdate;
+	n_inode.i_mtime = cdate;
 	
 	int i = alloc_inode(instance, &n_inode);
 	add_dir_entry(instance, inode, name, EXT2_FT_REG_FILE, i);
@@ -461,13 +460,14 @@ static void mkdir_inode(ext2_fs_instance_t *instance, int inode, const char *nam
 	memset(&n_inode, 0, sizeof(struct ext2_inode));
 	n_inode.i_mode = mode | EXT2_S_IFDIR;
 	n_inode.i_links_count = 2;
+// TODO uid/gid
 //	n_inode.i_uid = fc->uid;
 //	n_inode.i_gid = fc->gid;
-//	struct timeval tv;
-//	gettimeofday(&tv, NULL);
-//	n_inode.i_atime = tv.tv_sec;
-//	n_inode.i_ctime = tv.tv_sec;
-//	n_inode.i_mtime = tv.tv_sec;
+	time_t cdate = get_date();
+	n_inode.i_atime = cdate;
+	n_inode.i_ctime = cdate;
+	n_inode.i_mtime = cdate;
+	
 	int ninode = alloc_inode(instance, &n_inode);
 	add_dir_entry(instance, inode, name, EXT2_FT_DIR, ninode);
 

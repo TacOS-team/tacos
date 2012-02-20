@@ -176,7 +176,7 @@ void listdir(const char *path) {
 		}
 		closedir(dir);
 
-		// TODO: do sort.
+        // TODO: sort en fonction d'autres critères que la taille.
 		qsort(entries, n_entries, sizeof(struct res_entry*), compar);
 
 		int i = 0;

@@ -27,10 +27,6 @@
  * Description de ce que fait le fichier
  */
 
-/**
- * @file interrupts.c
- */
-
 #include <types.h>
 #include <idt.h>
 #include <i8259.h>
