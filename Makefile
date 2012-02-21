@@ -70,7 +70,7 @@ runqemu: core.img grub.img
 runqemugdb: core.img grub.img
 	qemu -fda grub.img -fdb core.img -soundhw pcspk -parallel none -m 20 -s -S -serial stdio
 	
-runbochs: core.img
+runbochs: core.img grub.img
 	BOCHSRC=bochsrc bochs
 
 .PHONY: clean depend doc directories
