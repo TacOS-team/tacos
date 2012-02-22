@@ -227,10 +227,10 @@ void* schedule(void* data __attribute__ ((unused)))
 		current = idle_process;
 		idle_injected = 1;
 	}
-	else {
+	//else {
 		/* Sinon on regarde si le process a des signaux en attente */
-		exec_sighandler(current);
-	}
+	//	exec_sighandler(current);
+	//}
 	/* Evaluation de l'usage du CPU */
 	current->current_sample++;
 	sample_counter++;
