@@ -50,6 +50,7 @@ static int current_page;
 
 void init_video() {
 	// Initialisation à 0xC0 du Attribute Mode Control Register.
+	// XXX: Visiblement ce code ne fait rien...
 	(void) inb(0x3DA);
 	outb(0x10, 0x3C0);
 	outb(0xC0, 0x3C0);
