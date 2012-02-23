@@ -43,12 +43,12 @@
 #include <unistd.h>
 #include <termios.h>
 #include <fcntl.h>
-
-#define LIGNES 24
-#define COLONNES 79
+#include <sys/ioctl.h>
 
 static int dir = 2, dir_ = 2;
 static int score = 0;
+static int lignes;
+static int colonnes;
 
 struct coord_t {
 	int l, c;
@@ -57,7 +57,7 @@ struct coord_t {
 struct snake_t {
 	int longueur;
 	int indice_deb;
-	struct coord_t coords[LIGNES * COLONNES];
+	struct coord_t *coords;
 };
 
 static struct snake_t snake;
@@ -106,14 +106,14 @@ void clear_screen() {
 }
 
 void print_locate(int l, int c, char car) {
-	printf("\033[%d;%df%c\033[%d;%df", l, c, car, LIGNES, COLONNES);
+	printf("\033[%d;%df%c\033[%d;%df", l, c, car, lignes, colonnes);
 	fflush(stdout);
 }
 
 static int collision(int l, int c, int n){
 	int i;
 	for (i = 0; i < snake.longueur - n; i++) {
-		if (l == snake.coords[(snake.indice_deb + i) % (LIGNES * COLONNES)].l && c == snake.coords[(snake.indice_deb + i) % (LIGNES * COLONNES)].c) {
+		if (l == snake.coords[(snake.indice_deb + i) % (lignes * colonnes)].l && c == snake.coords[(snake.indice_deb + i) % (lignes * colonnes)].c) {
 			return 1;
 		}
 	}
@@ -122,8 +122,8 @@ static int collision(int l, int c, int n){
 
 static void genere_bonus() {
 	do {
-		bonus.l = (rand() % (LIGNES-2)) + 2;
-		bonus.c = (rand() % (COLONNES-2)) + 2;
+		bonus.l = (rand() % (lignes-2)) + 2;
+		bonus.c = (rand() % (colonnes-2)) + 2;
 	} while (collision(bonus.l, bonus.c, 0));
 	print_locate(bonus.l, bonus.c, '+');
 }
@@ -133,15 +133,15 @@ void init_snake() {
 	dir_ = 2;
 	snake.longueur = 1;
 	snake.indice_deb = 0;
-	snake.coords[snake.indice_deb].c = COLONNES/3;
-	snake.coords[snake.indice_deb].l = LIGNES/2;
+	snake.coords[snake.indice_deb].c = colonnes/3;
+	snake.coords[snake.indice_deb].l = lignes/2;
 	print_locate(snake.coords[snake.indice_deb].l, snake.coords[snake.indice_deb].c, '*');
 
 	genere_bonus();
 }
 
 static inline int dans_aire_jeu(int l, int c) {
-	return l > 1 && l < LIGNES && c > 1 && c < COLONNES;
+	return l > 1 && l < lignes && c > 1 && c < colonnes;
 }
 
 int avance_snake() {
@@ -151,11 +151,11 @@ int avance_snake() {
 		allonge = 0;
 	} else {
 		print_locate(snake.coords[snake.indice_deb].l, snake.coords[snake.indice_deb].c, ' ');
-		snake.indice_deb = (snake.indice_deb + 1) % (LIGNES * COLONNES);
+		snake.indice_deb = (snake.indice_deb + 1) % (lignes * colonnes);
 	}
 
-	int i = (snake.indice_deb + snake.longueur - 1) % (LIGNES * COLONNES);
-	int i_ = (snake.indice_deb + snake.longueur - 2) % (LIGNES * COLONNES);
+	int i = (snake.indice_deb + snake.longueur - 1) % (lignes * colonnes);
+	int i_ = (snake.indice_deb + snake.longueur - 2) % (lignes * colonnes);
 	snake.coords[i].l = snake.coords[i_].l + directions[dir].l;
 	snake.coords[i].c = snake.coords[i_].c + directions[dir].c;
 
@@ -178,19 +178,24 @@ int avance_snake() {
 static struct termios oldt;
 
 static void handler(int signum __attribute__((unused))) {
-	tcsetattr( STDIN_FILENO, TCSANOW, &oldt );
+	tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
 	exit(0);
 }
 
 void game() {
+    struct winsize ws;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws);
+    lignes = ws.ws_row - 1;
+    colonnes = ws.ws_col - 1;
+    snake.coords = malloc(lignes * colonnes * sizeof(struct coord_t));
 	int l, c;
 
 	clear_screen();
 	printf("\033[0;0H");
-	for(l = 0; l < LIGNES; l++) {
+	for(l = 0; l < lignes; l++) {
 		printf("#");
-		for(c = 1; c < COLONNES-1; c++) {
-			if (l == 0 || l == LIGNES - 1) {
+		for(c = 1; c < colonnes-1; c++) {
+			if (l == 0 || l == lignes - 1) {
 				printf("#");
 			} else {
 				printf(" ");
@@ -199,7 +204,7 @@ void game() {
 		printf("#\n");
 	}
 
-  setvbuf(stdin, NULL, _IO_MAGIC | _IONBF, 0);
+	setvbuf(stdin, NULL, _IO_MAGIC | _IONBF, 0);
 
 	struct termios newt;
 	tcgetattr( STDIN_FILENO, &oldt );
@@ -211,7 +216,7 @@ void game() {
 	tcsetattr( STDIN_FILENO, TCSANOW, &newt );
 	fcntl(STDIN_FILENO, F_SETFL, (void*)O_NONBLOCK);
 
-  init_snake();
+	init_snake();
 
 	while(avance_snake() != -1) {
 		usleep(100000);

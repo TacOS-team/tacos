@@ -34,6 +34,8 @@
 #include <termios.h>
 #include <fd_types.h>
 
+#define TIOCGWINSZ 3
+
 #define MAX_INPUT 255
 
 #define TTY_DRIVER_TYPE_SYSTEM 1
@@ -97,6 +99,10 @@ typedef struct _tty_driver_t {
 	tty_operations_t *ops;
 } tty_driver_t;
 
+struct winsize {
+	unsigned short ws_row;
+	unsigned short ws_col;
+};
 
 tty_driver_t *alloc_tty_driver(int lines);
 void put_tty_driver(tty_driver_t *driver);
