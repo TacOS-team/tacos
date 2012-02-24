@@ -1,0 +1,28 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$sem_8c.html#a1ea8785f5ec6eadaa818747e4cbb6298" title="donne l&#39;identifiant (semid) d&#39;un sémaphore déjà existant" alt="" coords="117,5,184,35"/>
+<area shape="rect" id="node5" href="$sem_8c.html#a51cd1d5e354c3e1cc996c424bbf71be5" title="supprime un sémaphore" alt="" coords="117,59,184,88"/>
+<area shape="rect" id="node7" href="$unistd_8c.html#ac61b207337ca21b3b309593fd1a0cb82" title="Obtenir l&#39;identifiant du processus." alt="" coords="121,112,180,141"/>
+<area shape="rect" id="node9" href="$unistd_8c.html#ac6d7f7ade00dcdc302b0da5664eee812" title="Obtenir l&#39;identifiant du processus père." alt="" coords="117,165,184,195"/>
+<area shape="rect" id="node11" href="$unistd_8c.html#ae205f852ca2b47db9e16949153e12247" title="Endort le processus pour une durée déterminée (en microsecondes)." alt="" coords="120,219,181,248"/>
+<area shape="rect" id="node15" href="$unistd_8c.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier." alt="" coords="127,272,175,301"/>
+<area shape="rect" id="node21" href="$unistd_8c.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="127,325,175,355"/>
+<area shape="rect" id="node47" href="$unistd_8c.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier." alt="" coords="124,379,177,408"/>
+<area shape="rect" id="node53" href="$unistd_8c.html#a3dc1b07404b646712a144e2057359876" title="Obtenir l&#39;état d&#39;un fichier (status)." alt="" coords="129,432,172,461"/>
+<area shape="rect" id="node57" href="$unistd_8c.html#a8ada37e3927c3e99ea7c1accfdc6576f" title="Créer un noeud du système de fichiers." alt="" coords="120,592,181,621"/>
+<area shape="rect" id="node59" href="$unistd_8c.html#a28af9471bbdf262321af663e02899a47" title="Détruire un nom et éventuellement le fichier associé." alt="" coords="123,485,179,515"/>
+<area shape="rect" id="node62" href="$unistd_8c.html#ab2df76f2c62ae012c2e417813b5fe8ce" title="Supprimer un dossier, lequel doit être vide." alt="" coords="125,539,176,568"/>
+<area shape="rect" id="node13" href="$unistd_8c.html#a69c97039c9ec10a30e5edbdf365e3bbd" title="Endort le processus pour une durée déterminée (en secondes)." alt="" coords="283,69,336,99"/>
+<area shape="rect" id="node17" href="$ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="260,123,359,152"/>
+<area shape="rect" id="node19" href="$ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="447,68,516,97"/>
+<area shape="rect" id="node24" href="$get_8c.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream." alt="" coords="284,176,335,205"/>
+<area shape="rect" id="node32" href="$elf_8c.html#a9aae782f070af1c6009d0cc2a6d60a08" title="charge un program header depuis un fichier elf Charge le program header n°index depuis le fichier..." alt="" coords="233,331,385,360"/>
+<area shape="rect" id="node36" href="$elf_8c.html#a35e8f32030ee36d8c02357a0b483c1b2" title="charge un fichier elf Charge les données utiles de l&#39;exécutable en mémoire, de façon à ce que ce soit..." alt="" coords="447,281,516,311"/>
+<area shape="rect" id="node38" href="$elf_8c.html#abbbb3d1f6ac9986f87d655cec7819556" title="charge un fichier elf dans la structure Elf32_File" alt="" coords="435,412,528,441"/>
+<area shape="rect" id="node42" href="$elf_8c.html#a8138ecf1d1d9bd1e80e05694ef4362e4" title="charge un section header depuis un fichier elf Charge le section header n°index depuis le fichier..." alt="" coords="236,435,383,464"/>
+<area shape="rect" id="node26" href="$fread_8c.html#a084251eb18ccd5c936faa2c39c86ec63" title="fread" alt="" coords="456,228,507,257"/>
+<area shape="rect" id="node28" href="$get_8c.html#a2b3df0e66b41edab3c039191fe6cc4f9" title="Lit au plus size&#45;1 caractères depuis le stream passé en argument." alt="" coords="456,121,507,151"/>
+<area shape="rect" id="node30" href="$get_8c.html#a3e29caa20f7cffe18f410f01278905a8" title="lit un caractère depuis stdin." alt="" coords="448,175,515,204"/>
+<area shape="rect" id="node34" href="$elf_8c.html#aa84790a8edae8d2859861f19adf5dd41" title="Calcul la taille que prendra l&#39;exécutable dans la mémoire La fonction évalue l&#39;adresse de départ en m..." alt="" coords="448,335,515,364"/>
+<area shape="rect" id="node40" href="$elf_8c.html#af969175b11017f629b1dfbf557fccbcc" title="Affiche des information sur le fichier elf." alt="" coords="576,412,640,441"/>
+<area shape="rect" id="node55" href="$stdio_8h.html#a02b13b56a188401119ea4da43c184913" title="Supprimer un fichier ou répertoire." alt="" coords="276,539,343,568"/>
+</map>

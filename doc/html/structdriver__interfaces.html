@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>TacOS: Référence de la structure driver_interfaces</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS&#160;<span id="projectnumber">0.1</span></div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Champs de données</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence de la structure driver_interfaces</div>  </div>
+</div>
+<div class="contents">
+<!-- doxytag: class="driver_interfaces" --><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e97a8351318a1e215fcddfb73a3eb46"></a><!-- doxytag: member="driver_interfaces::read" ref="a7e97a8351318a1e215fcddfb73a3eb46" args=")(open_file_descriptor *, void *, size_t)" -->
+size_t(*&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> )(<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *, void *, size_t)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acbcce4d6a20f81821651178cd19dd993"></a><!-- doxytag: member="driver_interfaces::write" ref="acbcce4d6a20f81821651178cd19dd993" args=")(open_file_descriptor *, const void *, size_t)" -->
+size_t(*&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> )(<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *, const void *, size_t)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06af28116095c9cc550103fd17407be9"></a><!-- doxytag: member="driver_interfaces::seek" ref="a06af28116095c9cc550103fd17407be9" args=")(open_file_descriptor *, long, int)" -->
+int(*&#160;</td><td class="memItemRight" valign="bottom"><b>seek</b> )(<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *, long, int)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc96d0554ca3acbc51569fc764e94f68"></a><!-- doxytag: member="driver_interfaces::ioctl" ref="abc96d0554ca3acbc51569fc764e94f68" args=")(open_file_descriptor *, unsigned int, void *)" -->
+int(*&#160;</td><td class="memItemRight" valign="bottom"><b>ioctl</b> )(<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *, unsigned int, void *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9796ad0325e74254ff3b8ef15bce1593"></a><!-- doxytag: member="driver_interfaces::open" ref="a9796ad0325e74254ff3b8ef15bce1593" args=")(open_file_descriptor *)" -->
+int(*&#160;</td><td class="memItemRight" valign="bottom"><b>open</b> )(<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83f6770b440b2632a8c622557aa7a6f1"></a><!-- doxytag: member="driver_interfaces::close" ref="a83f6770b440b2632a8c622557aa7a6f1" args=")(open_file_descriptor *)" -->
+int(*&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> )(<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *)</td></tr>
+</table>
+<hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
+<li>kernel/include/fs/<a class="el" href="devfs_8h_source.html">devfs.h</a></li>
+</ul>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définition de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Sun Nov 20 2011 02:58:54 pour TacOS par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

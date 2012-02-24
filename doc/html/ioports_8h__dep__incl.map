@@ -1,0 +1,17 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="5,83,109,112"/>
+<area shape="rect" id="node5" href="$floppy_8c.html" title="kernel/drivers/block/floppy/floppy.c" alt="" coords="133,83,360,112"/>
+<area shape="rect" id="node7" href="$floppy__dma_8c.html" title="kernel/drivers/block/floppy/floppy_dma.c" alt="" coords="384,83,645,112"/>
+<area shape="rect" id="node9" href="$floppy__motor_8c.html" title="kernel/drivers/block/floppy/floppy_motor.c" alt="" coords="669,83,939,112"/>
+<area shape="rect" id="node11" href="$floppy__utils_8c.html" title="kernel/drivers/block/floppy/floppy_utils.c" alt="" coords="963,83,1221,112"/>
+<area shape="rect" id="node13" href="$beeper_8c.html" title="kernel/drivers/char/beeper.c" alt="" coords="1245,83,1435,112"/>
+<area shape="rect" id="node15" href="$mouse_8c.html" title="kernel/drivers/char/mouse.c" alt="" coords="1459,83,1645,112"/>
+<area shape="rect" id="node17" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="1669,83,1848,112"/>
+<area shape="rect" id="node19" href="$keyboard_8c.html" title="Driver clavier." alt="" coords="1872,83,2091,112"/>
+<area shape="rect" id="node21" href="$vga_8c.html" title="kernel/drivers/char/vga.c" alt="" coords="2115,83,2283,112"/>
+<area shape="rect" id="node23" href="$video_8c.html" title="kernel/drivers/char/video.c" alt="" coords="2307,83,2488,112"/>
+<area shape="rect" id="node25" href="$i8254_8c.html" title="kernel/i8254.c" alt="" coords="2512,83,2616,112"/>
+<area shape="rect" id="node27" href="$i8259_8c.html" title="kernel/i8259.c" alt="" coords="2640,83,2744,112"/>
+<area shape="rect" id="node29" href="$pci__config_8c.html" title="kernel/pci/pci_config.c" alt="" coords="2768,83,2923,112"/>
+<area shape="rect" id="node31" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="2947,83,3077,112"/>
+</map>

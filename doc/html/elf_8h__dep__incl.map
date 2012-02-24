@@ -1,0 +1,31 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$symtable_8h.html" title="kernel/include/symtable.h" alt="" coords="2791,83,2964,112"/>
+<area shape="rect" id="node48" href="$init_8c.html" title="kernel/init.c" alt="" coords="2896,315,2984,344"/>
+<area shape="rect" id="node76" href="$module_8c.html" title="kernel/module.c" alt="" coords="2915,160,3032,189"/>
+<area shape="rect" id="node80" href="$process_8h.html" title="libc/include/process.h" alt="" coords="3107,83,3256,112"/>
+<area shape="rect" id="node82" href="$process_8c.html" title="libc/process.c" alt="" coords="3185,160,3289,189"/>
+<area shape="rect" id="node85" href="$elf_8c.html" title="system/elf.c" alt="" coords="3331,83,3424,112"/>
+<area shape="rect" id="node5" href="$kprocess_8h.html" title="kernel/include/kprocess.h" alt="" coords="2067,160,2240,189"/>
+<area shape="rect" id="node54" href="$kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="2763,315,2872,344"/>
+<area shape="rect" id="node7" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="1195,315,1371,344"/>
+<area shape="rect" id="node9" href="$context_8h.html" title="kernel/include/context.h" alt="" coords="2411,237,2573,267"/>
+<area shape="rect" id="node11" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="2557,315,2688,344"/>
+<area shape="rect" id="node13" href="$kfcntl_8h.html" title="kernel/include/kfcntl.h" alt="" coords="819,237,968,267"/>
+<area shape="rect" id="node22" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="1776,392,1885,421"/>
+<area shape="rect" id="node24" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="931,315,1032,344"/>
+<area shape="rect" id="node30" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="1056,315,1171,344"/>
+<area shape="rect" id="node34" href="$ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="1500,237,1663,267"/>
+<area shape="rect" id="node39" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="1597,315,1712,344"/>
+<area shape="rect" id="node42" href="$scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="1967,237,2145,267"/>
+<area shape="rect" id="node57" href="$ksem_8c.html" title="kernel/ksem.c" alt="" coords="2261,315,2368,344"/>
+<area shape="rect" id="node61" href="$round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="2392,315,2533,344"/>
+<area shape="rect" id="node15" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="453,315,632,344"/>
+<area shape="rect" id="node18" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="656,315,856,344"/>
+<area shape="rect" id="node20" href="$fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="5,315,181,344"/>
+<area shape="rect" id="node26" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="1445,315,1573,344"/>
+<area shape="rect" id="node28" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="205,315,315,344"/>
+<area shape="rect" id="node32" href="$vfs_8c.html" title="kernel/vfs.c" alt="" coords="339,315,429,344"/>
+<area shape="rect" id="node45" href="$round__robin_8h.html" title="kernel/include/round_robin.h" alt="" coords="1736,315,1925,344"/>
+<area shape="rect" id="node50" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="2000,315,2112,344"/>
+<area shape="rect" id="node64" href="$vmm_8c.html" title="kernel/vmm.c" alt="" coords="2136,315,2237,344"/>
+</map>

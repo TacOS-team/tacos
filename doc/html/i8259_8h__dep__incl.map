@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$interrupts_8c.html" title="kernel/interrupts.c" alt="" coords="5,83,131,112"/>
+<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="155,83,264,112"/>
+<area shape="rect" id="node7" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="288,83,419,112"/>
+</map>

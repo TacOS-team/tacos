@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$structElf32__Sym.html" title="Elf32_Sym" alt="" coords="5,5,88,35"/>
+<area shape="rect" id="node4" href="$structElf32__Phdr.html" title="Elf32_Phdr" alt="" coords="112,5,197,35"/>
+<area shape="rect" id="node6" href="$structElf32__Shdr.html" title="Elf32_Shdr" alt="" coords="221,5,307,35"/>
+<area shape="rect" id="node8" href="$structElf32__Ehdr.html" title="Elf32_Ehdr" alt="" coords="331,5,413,35"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="156,83,247,112"/>
+<area shape="rect" id="node5" href="$kprocess_8h.html" title="kprocess.h" alt="" coords="217,160,303,189"/>
+<area shape="rect" id="node7" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="5,237,85,267"/>
+<area shape="rect" id="node9" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="313,315,377,344"/>
+<area shape="rect" id="node11" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="160,237,243,267"/>
+<area shape="rect" id="node13" href="$signal__types_8h.html" title="signal_types.h" alt="" coords="267,237,373,267"/>
+<area shape="rect" id="node15" href="$process__types_8h.html" title="process_types.h" alt="" coords="397,237,515,267"/>
+<area shape="rect" id="node17" href="$symtable_8h.html" title="symtable.h" alt="" coords="624,237,709,267"/>
+<area shape="rect" id="node23" href="$vmm_8h.html" title="vmm.h" alt="" coords="539,237,600,267"/>
+<area shape="rect" id="node20" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="644,315,689,344"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="236,5,377,35"/>
+<area shape="rect" id="node5" href="$ksem_8h.html#acfbbd3e3f726b24309758cf6499a8141" title="Opération P sur un sémaphore Réalise l&#39;opération P sur le sémaphore. Le processus essaye donc de pren..." alt="" coords="123,31,187,60"/>
+</map>

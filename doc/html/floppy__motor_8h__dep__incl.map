@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$floppy_8c.html" title="kernel/drivers/block/floppy/floppy.c" alt="" coords="5,83,232,112"/>
+<area shape="rect" id="node5" href="$floppy__dma_8c.html" title="kernel/drivers/block/floppy/floppy_dma.c" alt="" coords="256,83,517,112"/>
+<area shape="rect" id="node7" href="$floppy__motor_8c.html" title="kernel/drivers/block/floppy/floppy_motor.c" alt="" coords="541,83,811,112"/>
+<area shape="rect" id="node9" href="$floppy__utils_8c.html" title="kernel/drivers/block/floppy/floppy_utils.c" alt="" coords="835,83,1093,112"/>
+</map>

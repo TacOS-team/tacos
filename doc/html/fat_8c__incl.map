@@ -1,0 +1,17 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$fat_8h.html" title="fs/fat.h" alt="" coords="250,83,309,112"/>
+<area shape="rect" id="node24" href="$kmalloc_8h.html" title="kmalloc.h" alt="" coords="491,315,569,344"/>
+<area shape="rect" id="node27" href="$klog_8h.html" title="klog.h" alt="" coords="430,83,489,112"/>
+<area shape="rect" id="node31" href="$string_8h.html" title="string.h" alt="" coords="522,83,586,112"/>
+<area shape="rect" id="node37" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="95,83,189,112"/>
+<area shape="rect" id="node7" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="129,237,211,267"/>
+<area shape="rect" id="node9" href="$kstat_8h.html" title="kstat.h" alt="" coords="293,237,351,267"/>
+<area shape="rect" id="node19" href="$vfs_8h.html" title="vfs.h" alt="" coords="255,160,303,189"/>
+<area shape="rect" id="node11" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="345,469,409,499"/>
+<area shape="rect" id="node13" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="287,315,351,344"/>
+<area shape="rect" id="node16" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="337,392,417,421"/>
+<area shape="rect" id="node29" href="$kstdio_8h.html" title="kstdio.h" alt="" coords="429,160,495,189"/>
+<area shape="rect" id="node33" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="519,160,607,189"/>
+<area shape="rect" id="node35" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="526,237,601,267"/>
+<area shape="rect" id="node42" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="103,160,181,189"/>
+</map>

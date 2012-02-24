@@ -1,0 +1,51 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$libc_2include_2sys_2types_8h.html" title="libc/include/sys/types.h" alt="" coords="2876,83,3036,112"/>
+<area shape="rect" id="node5" href="$clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="5,160,109,189"/>
+<area shape="rect" id="node7" href="$floppy_8c.html" title="kernel/drivers/block/floppy/floppy.c" alt="" coords="2235,237,2461,267"/>
+<area shape="rect" id="node9" href="$floppy__dma_8c.html" title="kernel/drivers/block/floppy/floppy_dma.c" alt="" coords="2773,315,3035,344"/>
+<area shape="rect" id="node11" href="$floppy__interrupt_8c.html" title="kernel/drivers/block/floppy/floppy_interrupt.c" alt="" coords="235,160,515,189"/>
+<area shape="rect" id="node13" href="$floppy__motor_8c.html" title="kernel/drivers/block/floppy/floppy_motor.c" alt="" coords="240,315,509,344"/>
+<area shape="rect" id="node15" href="$floppy__utils_8c.html" title="kernel/drivers/block/floppy/floppy_utils.c" alt="" coords="688,160,947,189"/>
+<area shape="rect" id="node17" href="$beeper_8c.html" title="kernel/drivers/char/beeper.c" alt="" coords="1776,237,1965,267"/>
+<area shape="rect" id="node19" href="$mouse_8c.html" title="kernel/drivers/char/mouse.c" alt="" coords="2485,237,2672,267"/>
+<area shape="rect" id="node21" href="$keyboard_8c.html" title="Driver clavier." alt="" coords="965,237,1184,267"/>
+<area shape="rect" id="node23" href="$video_8c.html" title="kernel/drivers/char/video.c" alt="" coords="1236,237,1417,267"/>
+<area shape="rect" id="node25" href="$events_8c.html" title="Gestion d&#39;évènements datés." alt="" coords="1531,160,1643,189"/>
+<area shape="rect" id="node27" href="$exception_8c.html" title="Gestion des exceptions." alt="" coords="1667,160,1797,189"/>
+<area shape="rect" id="node29" href="$devfs_8c.html" title="kernel/fs/devfs.c" alt="" coords="2696,237,2816,267"/>
+<area shape="rect" id="node31" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="1872,160,2072,189"/>
+<area shape="rect" id="node33" href="$fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="2036,237,2201,267"/>
+<area shape="rect" id="node35" href="$fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="3375,237,3551,267"/>
+<area shape="rect" id="node37" href="$gdt_8c.html" title="Setup de la GDT." alt="" coords="2336,160,2427,189"/>
+<area shape="rect" id="node39" href="$i8259_8c.html" title="kernel/i8259.c" alt="" coords="2451,160,2555,189"/>
+<area shape="rect" id="node41" href="$idt_8c.html" title="kernel/idt.c" alt="" coords="2579,160,2664,189"/>
+<area shape="rect" id="node43" href="$console_8h.html" title="kernel/include/drivers/console.h" alt="" coords="1021,160,1235,189"/>
+<area shape="rect" id="node46" href="$floppy_8h.html" title="kernel/include/drivers/floppy.h" alt="" coords="4416,160,4616,189"/>
+<area shape="rect" id="node48" href="$mbr_8c.html" title="kernel/mbr.c" alt="" coords="4400,237,4493,267"/>
+<area shape="rect" id="node50" href="$video_8h.html" title="Driver console (vidéo texte)." alt="" coords="1309,160,1507,189"/>
+<area shape="rect" id="node53" href="$devfs_8h.html" title="kernel/include/fs/devfs.h" alt="" coords="2147,160,2312,189"/>
+<area shape="rect" id="node60" href="$fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="3389,160,3536,189"/>
+<area shape="rect" id="node63" href="$interrupts_8c.html" title="kernel/interrupts.c" alt="" coords="3099,160,3224,189"/>
+<area shape="rect" id="node65" href="$kmalloc_8c.html" title="kernel/kmalloc.c" alt="" coords="3248,160,3365,189"/>
+<area shape="rect" id="node67" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="3855,237,3983,267"/>
+<area shape="rect" id="node69" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="3560,160,3675,189"/>
+<area shape="rect" id="node72" href="$memory_8c.html" title="kernel/memory.c" alt="" coords="3699,160,3821,189"/>
+<area shape="rect" id="node74" href="$pagination_8c.html" title="kernel/pagination.c" alt="" coords="3845,160,3979,189"/>
+<area shape="rect" id="node76" href="$pci_8c.html" title="kernel/pci/pci.c" alt="" coords="4003,160,4112,189"/>
+<area shape="rect" id="node78" href="$pci__config_8c.html" title="kernel/pci/pci_config.c" alt="" coords="1564,315,1719,344"/>
+<area shape="rect" id="node80" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="5191,237,5321,267"/>
+<area shape="rect" id="node82" href="$vm86_8c.html" title="kernel/vm86.c" alt="" coords="4237,160,4341,189"/>
+<area shape="rect" id="node84" href="$dirent_8h.html" title="libc/include/dirent.h" alt="" coords="5205,315,5341,344"/>
+<area shape="rect" id="node86" href="$libio_8h.html" title="libc/include/libio.h" alt="" coords="539,160,664,189"/>
+<area shape="rect" id="node88" href="$stdio_8h.html" title="libc/include/stdio.h" alt="" coords="536,237,667,267"/>
+<area shape="rect" id="node93" href="$malloc_8h.html" title="libc/include/malloc.h" alt="" coords="4640,160,4781,189"/>
+<area shape="rect" id="node95" href="$stdlib_8h.html" title="libc/include/stdlib.h" alt="" coords="4671,237,4804,267"/>
+<area shape="rect" id="node97" href="$process_8h.html" title="libc/include/process.h" alt="" coords="4907,160,5056,189"/>
+<area shape="rect" id="node99" href="$signal_8h.html" title="libc/include/signal.h" alt="" coords="5080,160,5219,189"/>
+<area shape="rect" id="node103" href="$string_8h.html" title="libc/include/string.h" alt="" coords="2941,160,3075,189"/>
+<area shape="rect" id="node112" href="$sem_8h.html" title="l&#39;interface de manipulation des semaphores" alt="" coords="5293,160,5448,189"/>
+<area shape="rect" id="node114" href="$stat_8h.html" title="libc/include/sys/stat.h" alt="" coords="5604,237,5751,267"/>
+<area shape="rect" id="node117" href="$syscall_8h.html" title="libc/include/sys/syscall.h" alt="" coords="5472,160,5640,189"/>
+<area shape="rect" id="node120" href="$wait_8h.html" title="libc/include/sys/wait.h" alt="" coords="5715,160,5864,189"/>
+<area shape="rect" id="node122" href="$time_8h.html" title="libc/include/time.h" alt="" coords="5888,160,6016,189"/>
+</map>

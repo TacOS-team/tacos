@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de kernel/fs/fat/fat_internal.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">kernel/fs/fat/fat_internal.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="fat__internal_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00030"></a>00030 <span class="preprocessor">#ifndef _FAT_INTERNAL_H_</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define _FAT_INTERNAL_H_</span>
+<a name="l00032"></a>00032 <span class="preprocessor"></span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;types.h&gt;</span>
+<a name="l00034"></a>00034 <span class="preprocessor">#include &lt;<a class="code" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général.">clock.h</a>&gt;</span>
+<a name="l00035"></a>00035 <span class="preprocessor">#include &lt;<a class="code" href="vfs_8h.html">vfs.h</a>&gt;</span>
+<a name="l00036"></a>00036 <span class="preprocessor">#include &lt;<a class="code" href="devfs_8h.html">fs/devfs.h</a>&gt;</span>
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 <span class="comment">// FAT low level.</span>
+<a name="l00039"></a>00039 
+<a name="l00040"></a><a class="code" href="struct__fat__BS.html">00040</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__fat__BS.html">_fat_BS</a> {
+<a name="l00041"></a>00041 <span class="comment">// Boot Sector</span>
+<a name="l00042"></a>00042         uint8_t   bootjmp[3];         <span class="comment">//0x00</span>
+<a name="l00043"></a>00043         uint8_t   oem_name[8];        <span class="comment">//0x03</span>
+<a name="l00044"></a>00044         uint16_t  bytes_per_sector;     <span class="comment">//0x0b</span>
+<a name="l00045"></a>00045         uint8_t   sectors_per_cluster;    <span class="comment">//0x0d</span>
+<a name="l00046"></a>00046         uint16_t  reserved_sector_count;    <span class="comment">//0x0e</span>
+<a name="l00047"></a>00047         uint8_t   table_count;        <span class="comment">//0x10</span>
+<a name="l00048"></a>00048         uint16_t  root_entry_count;     <span class="comment">//0x11</span>
+<a name="l00049"></a>00049         uint16_t  total_sectors_16;     <span class="comment">//0x13</span>
+<a name="l00050"></a>00050         uint8_t   media_type;         <span class="comment">//0x15</span>
+<a name="l00051"></a>00051         uint16_t  table_size_16;        <span class="comment">//0x16</span>
+<a name="l00052"></a>00052         uint16_t  sectors_per_track;      <span class="comment">//0x18</span>
+<a name="l00053"></a>00053         uint16_t  head_side_count;      <span class="comment">//0x1a</span>
+<a name="l00054"></a>00054         uint32_t  hidden_sector_count;    <span class="comment">//0x1c</span>
+<a name="l00055"></a>00055         uint32_t  total_sectors_32;     <span class="comment">//0x20</span>
+<a name="l00056"></a>00056 } __attribute__ ((packed)) <a class="code" href="struct__fat__BS.html">fat_BS_t</a>; 
+<a name="l00057"></a>00057 
+<a name="l00058"></a><a class="code" href="struct__fat__extended__BIOS__16.html">00058</a> typedef struct <a class="code" href="struct__fat__extended__BIOS__16.html">_fat_extended_BIOS_16</a> {
+<a name="l00059"></a>00059 <span class="comment">// Extended BIOS Parameter Block (FAT12 / FAT16)</span>
+<a name="l00060"></a>00060         uint8_t   bios_drive_num;       <span class="comment">//0x24</span>
+<a name="l00061"></a>00061         uint8_t   reserved;         <span class="comment">//0x25</span>
+<a name="l00062"></a>00062         uint8_t   ext_boot_signature;       <span class="comment">//0x26</span>
+<a name="l00063"></a>00063         uint32_t  volume_id;          <span class="comment">//0x27</span>
+<a name="l00064"></a>00064         uint8_t   volume_label[11];     <span class="comment">//0x2b</span>
+<a name="l00065"></a>00065         uint8_t   fat_type_label[8];      <span class="comment">//0x36</span>
+<a name="l00066"></a>00066         uint8_t   os_boot_code[448];      <span class="comment">//0x3e</span>
+<a name="l00067"></a>00067         uint16_t  boot_sector_sign;     <span class="comment">//0x1fe</span>
+<a name="l00068"></a>00068 } __attribute__ ((packed)) <a class="code" href="struct__fat__extended__BIOS__16.html">fat_extended_BIOS_16_t</a>;
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="struct__fat__extended__BIOS__32.html">00070</a> typedef struct <a class="code" href="struct__fat__extended__BIOS__32.html">_fat_extended_BIOS_32</a> {
+<a name="l00071"></a>00071 <span class="comment">// Extended BIOS Parameter Block (FAT32)</span>
+<a name="l00072"></a>00072         uint32_t  table_size_32;       <span class="comment">//0x24</span>
+<a name="l00073"></a>00073         uint16_t  fat_flags;           <span class="comment">//0x28</span>
+<a name="l00074"></a>00074         uint16_t  version;             <span class="comment">//0x2a</span>
+<a name="l00075"></a>00075         uint32_t  cluster_root_dir;    <span class="comment">//0x2c</span>
+<a name="l00076"></a>00076         uint16_t  sector_fs_info;      <span class="comment">//0x30</span>
+<a name="l00077"></a>00077         uint16_t  sector_bs_backup;    <span class="comment">//0x32</span>
+<a name="l00078"></a>00078         uint8_t   reserved[12];        <span class="comment">//0x34</span>
+<a name="l00079"></a>00079         uint8_t   bios_drive_num;      <span class="comment">//0x40</span>
+<a name="l00080"></a>00080         uint8_t   reserved2;           <span class="comment">//0x41</span>
+<a name="l00081"></a>00081         uint8_t   ext_boot_signature;  <span class="comment">//0x42</span>
+<a name="l00082"></a>00082         uint32_t  volume_id;           <span class="comment">//0x43</span>
+<a name="l00083"></a>00083         uint8_t   volume_label[11];    <span class="comment">//0x47</span>
+<a name="l00084"></a>00084         uint8_t   fat_type_label[8];   <span class="comment">//0x52</span>
+<a name="l00085"></a>00085         uint8_t   os_boot_code[420];   <span class="comment">//0x5a</span>
+<a name="l00086"></a>00086         uint16_t  boot_sector_sign;    <span class="comment">//0x1fe</span>
+<a name="l00087"></a>00087 } __attribute__ ((packed)) <a class="code" href="struct__fat__extended__BIOS__32.html">fat_extended_BIOS_32_t</a>;
+<a name="l00088"></a>00088 
+<a name="l00089"></a><a class="code" href="struct__fat__time.html">00089</a> typedef struct <a class="code" href="struct__fat__time.html">_fat_time</a> {
+<a name="l00090"></a>00090         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> seconds2 : 5;
+<a name="l00091"></a>00091         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> minutes : 6;
+<a name="l00092"></a>00092         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> hours : 5;
+<a name="l00093"></a>00093 } __attribute__ ((packed)) <a class="code" href="struct__fat__time.html">fat_time_t</a>;
+<a name="l00094"></a>00094 
+<a name="l00095"></a><a class="code" href="struct__fat__date.html">00095</a> typedef struct <a class="code" href="struct__fat__date.html">_fat_date</a> {
+<a name="l00096"></a>00096         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> day : 5;
+<a name="l00097"></a>00097         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> month : 4;
+<a name="l00098"></a>00098         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> year : 7;
+<a name="l00099"></a>00099 } __attribute__ ((packed)) <a class="code" href="struct__fat__date.html">fat_date_t</a>;
+<a name="l00100"></a>00100 
+<a name="l00101"></a><a class="code" href="struct__fat__dir__entry.html">00101</a> typedef struct <a class="code" href="struct__fat__dir__entry.html">_fat_dir_entry</a> {
+<a name="l00102"></a>00102         <span class="keywordtype">char</span>      utf8_short_name[8];
+<a name="l00103"></a>00103         <span class="keywordtype">char</span>      file_extension[3];
+<a name="l00104"></a>00104         uint8_t   file_attributes;
+<a name="l00105"></a>00105         uint8_t   reserved;
+<a name="l00106"></a>00106         uint8_t   create_time_ms;
+<a name="l00107"></a>00107         <a class="code" href="struct__fat__time.html">fat_time_t</a>  create_time;
+<a name="l00108"></a>00108         fat_date_t  create_date;
+<a name="l00109"></a>00109         fat_date_t  last_access_date;
+<a name="l00110"></a>00110         uint16_t  ea_index;
+<a name="l00111"></a>00111         <a class="code" href="struct__fat__time.html">fat_time_t</a>  last_modif_time;
+<a name="l00112"></a>00112         fat_date_t  last_modif_date;
+<a name="l00113"></a>00113         uint16_t  cluster_pointer;
+<a name="l00114"></a>00114         uint32_t  file_size;
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 }__attribute__((packed)) <a class="code" href="struct__fat__dir__entry.html">fat_dir_entry_t</a>;
+<a name="l00117"></a>00117 
+<a name="l00118"></a><a class="code" href="structlfn__entry__t.html">00118</a> typedef struct {
+<a name="l00119"></a>00119         uint8_t   seq_number;
+<a name="l00120"></a>00120         uint8_t   filename1[10];
+<a name="l00121"></a>00121         uint8_t   attributes;
+<a name="l00122"></a>00122         uint8_t   reserved; <span class="comment">// always 0x0</span>
+<a name="l00123"></a>00123         uint8_t   checksum;
+<a name="l00124"></a>00124         uint8_t   filename2[12];
+<a name="l00125"></a>00125         uint16_t  cluster_pointer; <span class="comment">// always 0x000</span>
+<a name="l00126"></a>00126         uint8_t   filename3[4];
+<a name="l00127"></a>00127 }__attribute__((packed)) <a class="code" href="structlfn__entry__t.html">lfn_entry_t</a>;
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130 <span class="comment">// FAT higher level.</span>
+<a name="l00131"></a><a class="code" href="struct__directory__entry.html">00131</a> typedef struct <a class="code" href="struct__directory__entry.html">_directory_entry</a> {
+<a name="l00132"></a>00132         <span class="keywordtype">char</span> name[256];
+<a name="l00133"></a>00133         uint8_t attributes;
+<a name="l00134"></a>00134         uint32_t size;
+<a name="l00135"></a>00135         time_t access_time;
+<a name="l00136"></a>00136         time_t modification_time;
+<a name="l00137"></a>00137         time_t creation_time;
+<a name="l00138"></a>00138         uint32_t cluster;
+<a name="l00139"></a>00139         <span class="keyword">struct </span>_directory_entry *next;
+<a name="l00140"></a>00140 } <a class="code" href="struct__directory__entry.html">directory_entry_t</a>;
+<a name="l00141"></a>00141 
+<a name="l00142"></a><a class="code" href="struct__directory.html">00142</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__directory.html">_directory</a> {
+<a name="l00143"></a>00143         <a class="code" href="struct__directory__entry.html">directory_entry_t</a> *entries; 
+<a name="l00144"></a>00144         <span class="keywordtype">int</span> total_entries;
+<a name="l00145"></a>00145         <span class="keywordtype">char</span> name[256];
+<a name="l00146"></a>00146         uint32_t cluster;
+<a name="l00147"></a>00147 } <a class="code" href="struct__directory.html">directory_t</a>;
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149 <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00150"></a>00150         FAT12,
+<a name="l00151"></a>00151         FAT16,
+<a name="l00152"></a>00152         FAT32
+<a name="l00153"></a>00153 } fat_t;
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155 <span class="comment">// Structure qui contient tout ce qui est utilisé par le driver FAT.</span>
+<a name="l00156"></a><a class="code" href="struct__fat__info.html">00156</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__fat__info.html">_fat_info</a> {
+<a name="l00157"></a>00157         <a class="code" href="struct__fat__BS.html">fat_BS_t</a> BS;
+<a name="l00158"></a>00158         <a class="code" href="struct__fat__extended__BIOS__16.html">fat_extended_BIOS_16_t</a> *ext_BIOS_16;
+<a name="l00159"></a>00159         <a class="code" href="struct__fat__extended__BIOS__32.html">fat_extended_BIOS_32_t</a> *ext_BIOS_32;
+<a name="l00160"></a>00160         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> *addr_fat;
+<a name="l00161"></a>00161         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> addr_root_dir;
+<a name="l00162"></a>00162         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> addr_data;
+<a name="l00163"></a>00163         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> *file_alloc_table;
+<a name="l00164"></a>00164         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> total_data_clusters;
+<a name="l00165"></a>00165         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> table_size;
+<a name="l00166"></a>00166         fat_t fat_type;
+<a name="l00167"></a>00167         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> bytes_per_cluster;
+<a name="l00168"></a>00168         blkdev_read_t read_data;
+<a name="l00169"></a>00169         blkdev_write_t write_data;
+<a name="l00170"></a>00170 } <a class="code" href="struct__fat__info.html">fat_info_t</a>;
+<a name="l00171"></a>00171 
+<a name="l00172"></a>00172 
+<a name="l00173"></a><a class="code" href="struct__fat__fs__instance__t.html">00173</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__fat__fs__instance__t.html">_fat_fs_instance_t</a> {
+<a name="l00174"></a>00174         <a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> super;
+<a name="l00175"></a>00175         <a class="code" href="struct__fat__info.html">fat_info_t</a> fat_info;
+<a name="l00176"></a>00176 } <a class="code" href="struct__fat__fs__instance__t.html">fat_fs_instance_t</a>;
+<a name="l00177"></a>00177 
+<a name="l00178"></a>00178 <span class="keywordtype">void</span> read_fat(<a class="code" href="struct__fat__fs__instance__t.html">fat_fs_instance_t</a> *instance);
+<a name="l00179"></a>00179 
+<a name="l00180"></a>00180 <span class="preprocessor">#endif</span>
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

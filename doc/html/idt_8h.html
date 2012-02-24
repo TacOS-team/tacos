@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/include/idt.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier kernel/include/idt.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Initialisation de la table des descripteurs d'interruption (et exceptions) et association aux handlers.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de idt.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="idt_8h__incl.png" border="0" usemap="#kernel_2include_2idt_8h" alt=""/></div>
+<map name="kernel_2include_2idt_8h" id="kernel_2include_2idt_8h">
+<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="40,83,104,112"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="idt_8h__dep__incl.png" border="0" usemap="#kernel_2include_2idt_8hdep" alt=""/></div>
+<map name="kernel_2include_2idt_8hdep" id="kernel_2include_2idt_8hdep">
+<area shape="rect" id="node3" href="exception_8c.html" title="Gestion des exceptions." alt="" coords="5,83,136,112"/><area shape="rect" id="node5" href="idt_8c.html" title="kernel/idt.c" alt="" coords="160,83,245,112"/><area shape="rect" id="node7" href="interrupts_8c.html" title="kernel/interrupts.c" alt="" coords="269,83,395,112"/><area shape="rect" id="node9" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="419,83,528,112"/></map>
+</div>
+</div>
+<p><a href="idt_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8h.html#a1e638762d3982aadbcb3a847d7cb396b">EXCEPTION_NUM</a>&#160;&#160;&#160;32</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8h.html#ac9c6830789e26eebd0ccc5b4d6304c40">EXCEPTION_BASE</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8h.html#ac0283c827dbcca38f83f73900746ffa5">INTERRUPT_NUM</a>&#160;&#160;&#160;32</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8h.html#ac375aea9903187b528bbc74c208a0f02">INTERRUPT_BASE</a>&#160;&#160;&#160;32 /* Juste après les exceptions */</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8c923af9e0579b1c606b4b640770e84c"></a><!-- doxytag: member="idt.h::IDT_TRAPGATE" ref="a8c923af9e0579b1c606b4b640770e84c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IDT_TRAPGATE</b>&#160;&#160;&#160;0x7</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1cba572fcc7a309a96a7ea8e0957b8d4"></a><!-- doxytag: member="idt.h::IDT_INTGATE" ref="a1cba572fcc7a309a96a7ea8e0957b8d4" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IDT_INTGATE</b>&#160;&#160;&#160;0x6</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab6c7bd5d5daa1f157f8d1d1f36346264"></a><!-- doxytag: member="idt.h::IDT_TASKGATE" ref="ab6c7bd5d5daa1f157f8d1d1f36346264" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IDT_TASKGATE</b>&#160;&#160;&#160;0x5</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8h.html#a559dc3a4f73d1813f12a104840e68550">idt_setup</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation de l'IDT.  <a href="#a559dc3a4f73d1813f12a104840e68550"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8h.html#a042510d9d3af14a9dac9a6c46f27c403">idt_set_handler</a> (uint8_t index, paddr_t handler_address, uint8_t priority)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Associe un handler à une interruption/exception.  <a href="#a042510d9d3af14a9dac9a6c46f27c403"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8h.html#affa07557443fe1c9a508b346d8f06523">idt_set_handler_type</a> (uint8_t index, uint8_t trap_type)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change le type d'une interruption (interrupt gate, trap gate, task gate).  <a href="#affa07557443fe1c9a508b346d8f06523"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8h.html#a49a66783b420e15221ba67a340267b8d">idt_disable_handler</a> (uint8_t index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Désactive une interruption.  <a href="#a49a66783b420e15221ba67a340267b8d"></a><br/></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+<p>Description de ce que fait le fichier</p>
+</div><hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="ac9c6830789e26eebd0ccc5b4d6304c40"></a><!-- doxytag: member="idt.h::EXCEPTION_BASE" ref="ac9c6830789e26eebd0ccc5b4d6304c40" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="idt_8h.html#ac9c6830789e26eebd0ccc5b4d6304c40">EXCEPTION_BASE</a>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>On va définir une constante pour dire où on va mapper (pour l'idt) </p>
+
+</div>
+</div>
+<a class="anchor" id="a1e638762d3982aadbcb3a847d7cb396b"></a><!-- doxytag: member="idt.h::EXCEPTION_NUM" ref="a1e638762d3982aadbcb3a847d7cb396b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="idt_8h.html#a1e638762d3982aadbcb3a847d7cb396b">EXCEPTION_NUM</a>&#160;&#160;&#160;32</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre d'exceptions : </p>
+
+</div>
+</div>
+<a class="anchor" id="ac375aea9903187b528bbc74c208a0f02"></a><!-- doxytag: member="idt.h::INTERRUPT_BASE" ref="ac375aea9903187b528bbc74c208a0f02" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="idt_8h.html#ac375aea9903187b528bbc74c208a0f02">INTERRUPT_BASE</a>&#160;&#160;&#160;32 /* Juste après les exceptions */</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Définition de là où on mappe les interruptions. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac0283c827dbcca38f83f73900746ffa5"></a><!-- doxytag: member="idt.h::INTERRUPT_NUM" ref="ac0283c827dbcca38f83f73900746ffa5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="idt_8h.html#ac0283c827dbcca38f83f73900746ffa5">INTERRUPT_NUM</a>&#160;&#160;&#160;32</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre d'interruptions : </p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a49a66783b420e15221ba67a340267b8d"></a><!-- doxytag: member="idt.h::idt_disable_handler" ref="a49a66783b420e15221ba67a340267b8d" args="(uint8_t index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="idt_8h.html#a49a66783b420e15221ba67a340267b8d">idt_disable_handler</a> </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>L'index dans l'IDT. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="idt_8h_a49a66783b420e15221ba67a340267b8d_cgraph.png" border="0" usemap="#idt_8h_a49a66783b420e15221ba67a340267b8d_cgraph" alt=""/></div>
+<map name="idt_8h_a49a66783b420e15221ba67a340267b8d_cgraph" id="idt_8h_a49a66783b420e15221ba67a340267b8d_cgraph">
+<area shape="rect" id="node3" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="192,5,304,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="idt_8h_a49a66783b420e15221ba67a340267b8d_icgraph.png" border="0" usemap="#idt_8h_a49a66783b420e15221ba67a340267b8d_icgraph" alt=""/></div>
+<map name="idt_8h_a49a66783b420e15221ba67a340267b8d_icgraph" id="idt_8h_a49a66783b420e15221ba67a340267b8d_icgraph">
+<area shape="rect" id="node3" href="idt_8h.html#a559dc3a4f73d1813f12a104840e68550" title="Initialisation de l&#39;IDT." alt="" coords="215,5,289,35"/><area shape="rect" id="node5" href="interrupts_8c.html#ac3f5203c31fd554b562cba8cec42ceb6" title="Désactive une interruption." alt="" coords="193,59,311,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a042510d9d3af14a9dac9a6c46f27c403"></a><!-- doxytag: member="idt.h::idt_set_handler" ref="a042510d9d3af14a9dac9a6c46f27c403" args="(uint8_t index, paddr_t handler_address, uint8_t priority)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="idt_8h.html#a042510d9d3af14a9dac9a6c46f27c403">idt_set_handler</a> </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">paddr_t&#160;</td>
+          <td class="paramname"><em>handler_address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>priority</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>L'index dans l'IDT. </td></tr>
+    <tr><td class="paramname">handler_address</td><td>L'adresse du handler. </td></tr>
+    <tr><td class="paramname">priority</td><td>Le niveau de privilège dans lequel va s'exécuter l'interruption.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="idt_8h_a042510d9d3af14a9dac9a6c46f27c403_icgraph.png" border="0" usemap="#idt_8h_a042510d9d3af14a9dac9a6c46f27c403_icgraph" alt=""/></div>
+<map name="idt_8h_a042510d9d3af14a9dac9a6c46f27c403_icgraph" id="idt_8h_a042510d9d3af14a9dac9a6c46f27c403_icgraph">
+<area shape="rect" id="node3" href="idt_8h.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption." alt="" coords="168,59,304,88"/><area shape="rect" id="node9" href="interrupts_8c.html#aecc1fa8433fa21ba233b8feb2558e954" title="Ajoute une nouvelle interruption." alt="" coords="167,112,305,141"/><area shape="rect" id="node5" href="idt_8h.html#a559dc3a4f73d1813f12a104840e68550" title="Initialisation de l&#39;IDT." alt="" coords="377,5,452,35"/><area shape="rect" id="node7" href="interrupts_8c.html#ac3f5203c31fd554b562cba8cec42ceb6" title="Désactive une interruption." alt="" coords="356,59,473,88"/><area shape="rect" id="node11" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="372,112,457,141"/><area shape="rect" id="node13" href="ksyscall_8c.html#a3e64f9d87cb92e4dc7d748a495e232f1" title="Initialisation des appels systemes." alt="" coords="372,165,457,195"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="affa07557443fe1c9a508b346d8f06523"></a><!-- doxytag: member="idt.h::idt_set_handler_type" ref="affa07557443fe1c9a508b346d8f06523" args="(uint8_t index, uint8_t trap_type)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="idt_8h.html#affa07557443fe1c9a508b346d8f06523">idt_set_handler_type</a> </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>trap_type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>L'index dans l'IDT. </td></tr>
+    <tr><td class="paramname">trap_type</td><td>Le type de gate. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="idt_8h_affa07557443fe1c9a508b346d8f06523_icgraph.png" border="0" usemap="#idt_8h_affa07557443fe1c9a508b346d8f06523_icgraph" alt=""/></div>
+<map name="idt_8h_affa07557443fe1c9a508b346d8f06523_icgraph" id="idt_8h_affa07557443fe1c9a508b346d8f06523_icgraph">
+<area shape="rect" id="node3" href="interrupts_8c.html#a4eea959d9a7be06d7b87a0aad03b490e" title="Change le type d&#39;une interruption en une trapgate." alt="" coords="197,5,360,35"/><area shape="rect" id="node5" href="ksyscall_8c.html#a3e64f9d87cb92e4dc7d748a495e232f1" title="Initialisation des appels systemes." alt="" coords="409,5,495,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a559dc3a4f73d1813f12a104840e68550"></a><!-- doxytag: member="idt.h::idt_setup" ref="a559dc3a4f73d1813f12a104840e68550" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="idt_8h.html#a559dc3a4f73d1813f12a104840e68550">idt_setup</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Initialisation de l'IDT avec des champs par défaut mais aucun handler. L'IDT est envoyée au CPU. </p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="idt_8h_a559dc3a4f73d1813f12a104840e68550_cgraph.png" border="0" usemap="#idt_8h_a559dc3a4f73d1813f12a104840e68550_cgraph" alt=""/></div>
+<map name="idt_8h_a559dc3a4f73d1813f12a104840e68550_cgraph" id="idt_8h_a559dc3a4f73d1813f12a104840e68550_cgraph">
+<area shape="rect" id="node3" href="idt_8c.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption." alt="" coords="129,5,265,35"/><area shape="rect" id="node5" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="315,5,427,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

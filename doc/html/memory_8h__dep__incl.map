@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$gdt_8c.html" title="Setup de la GDT." alt="" coords="5,83,96,112"/>
+<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="120,83,229,112"/>
+<area shape="rect" id="node7" href="$kmalloc_8c.html" title="kernel/kmalloc.c" alt="" coords="253,83,371,112"/>
+<area shape="rect" id="node9" href="$memory_8c.html" title="kernel/memory.c" alt="" coords="395,83,517,112"/>
+<area shape="rect" id="node11" href="$pagination_8c.html" title="kernel/pagination.c" alt="" coords="541,83,675,112"/>
+<area shape="rect" id="node13" href="$vmm_8c.html" title="kernel/vmm.c" alt="" coords="699,83,800,112"/>
+</map>

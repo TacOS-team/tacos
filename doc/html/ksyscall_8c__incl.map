@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$gdt_8h.html" title="gdt.h" alt="" coords="5,83,56,112"/>
+<area shape="rect" id="node7" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="80,83,165,112"/>
+<area shape="rect" id="node10" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="189,83,269,112"/>
+<area shape="rect" id="node13" href="$klog_8h.html" title="klog.h" alt="" coords="293,83,352,112"/>
+<area shape="rect" id="node17" href="$string_8h.html" title="string.h" alt="" coords="384,83,448,112"/>
+<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="91,160,155,189"/>
+<area shape="rect" id="node15" href="$kstdio_8h.html" title="kstdio.h" alt="" coords="285,160,352,189"/>
+<area shape="rect" id="node19" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="376,160,464,189"/>
+<area shape="rect" id="node21" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="383,237,457,267"/>
+</map>

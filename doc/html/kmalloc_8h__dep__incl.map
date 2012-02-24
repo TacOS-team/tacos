@@ -1,0 +1,21 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="5,83,184,112"/>
+<area shape="rect" id="node5" href="$console_8c.html" title="kernel/drivers/char/tty/console.c" alt="" coords="208,83,419,112"/>
+<area shape="rect" id="node7" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="443,83,619,112"/>
+<area shape="rect" id="node9" href="$devfs_8c.html" title="kernel/fs/devfs.c" alt="" coords="643,83,763,112"/>
+<area shape="rect" id="node11" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="787,83,928,112"/>
+<area shape="rect" id="node13" href="$fat_8c.html" title="kernel/fs/fat/fat.c" alt="" coords="952,83,1069,112"/>
+<area shape="rect" id="node15" href="$fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="1093,83,1269,112"/>
+<area shape="rect" id="node17" href="$fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="1293,83,1448,112"/>
+<area shape="rect" id="node19" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="1472,83,1584,112"/>
+<area shape="rect" id="node21" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="1608,83,1717,112"/>
+<area shape="rect" id="node23" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="1741,83,1843,112"/>
+<area shape="rect" id="node25" href="$kmalloc_8c.html" title="kernel/kmalloc.c" alt="" coords="1867,83,1984,112"/>
+<area shape="rect" id="node27" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="2008,83,2136,112"/>
+<area shape="rect" id="node29" href="$ksem_8c.html" title="kernel/ksem.c" alt="" coords="2160,83,2267,112"/>
+<area shape="rect" id="node31" href="$module_8c.html" title="kernel/module.c" alt="" coords="2291,83,2408,112"/>
+<area shape="rect" id="node33" href="$round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="2432,83,2573,112"/>
+<area shape="rect" id="node35" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="2597,83,2728,112"/>
+<area shape="rect" id="node37" href="$list_8c.html" title="kernel/utils/list.c" alt="" coords="2752,83,2867,112"/>
+<area shape="rect" id="node39" href="$vfs_8c.html" title="kernel/vfs.c" alt="" coords="2891,83,2981,112"/>
+</map>

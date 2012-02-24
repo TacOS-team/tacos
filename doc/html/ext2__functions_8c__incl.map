@@ -1,0 +1,18 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$klog_8h.html" title="klog.h" alt="" coords="418,83,477,112"/>
+<area shape="rect" id="node9" href="$kfcntl_8h.html" title="kfcntl.h" alt="" coords="554,237,615,267"/>
+<area shape="rect" id="node35" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="671,83,741,112"/>
+<area shape="rect" id="node5" href="$kstdio_8h.html" title="kstdio.h" alt="" coords="414,160,481,189"/>
+<area shape="rect" id="node11" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="566,469,630,499"/>
+<area shape="rect" id="node13" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="543,392,626,421"/>
+<area shape="rect" id="node15" href="$kprocess_8h.html" title="kprocess.h" alt="" coords="417,315,502,344"/>
+<area shape="rect" id="node17" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="650,392,730,421"/>
+<area shape="rect" id="node21" href="$signal__types_8h.html" title="signal_types.h" alt="" coords="362,392,469,421"/>
+<area shape="rect" id="node23" href="$process__types_8h.html" title="process_types.h" alt="" coords="221,392,338,421"/>
+<area shape="rect" id="node25" href="$symtable_8h.html" title="symtable.h" alt="" coords="26,392,111,421"/>
+<area shape="rect" id="node31" href="$vmm_8h.html" title="vmm.h" alt="" coords="135,392,197,421"/>
+<area shape="rect" id="node28" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="46,469,91,499"/>
+<area shape="rect" id="node37" href="$vfs_8h.html" title="vfs.h" alt="" coords="698,160,746,189"/>
+<area shape="rect" id="node41" href="$kstat_8h.html" title="kstat.h" alt="" coords="789,237,847,267"/>
+<area shape="rect" id="node44" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="786,315,850,344"/>
+</map>

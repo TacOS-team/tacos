@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="5,83,115,112"/>
+<area shape="rect" id="node5" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="139,83,267,112"/>
+<area shape="rect" id="node7" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="291,83,405,112"/>
+<area shape="rect" id="node9" href="$pagination_8c.html" title="kernel/pagination.c" alt="" coords="429,83,563,112"/>
+<area shape="rect" id="node11" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="587,83,717,112"/>
+<area shape="rect" id="node13" href="$vmm_8c.html" title="kernel/vmm.c" alt="" coords="741,83,843,112"/>
+</map>

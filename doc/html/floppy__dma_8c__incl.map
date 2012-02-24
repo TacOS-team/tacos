@@ -1,0 +1,15 @@
+<map id="G" name="G">
+<area shape="rect" id="node5" href="$stdio_8h.html" title="stdio.h" alt="" coords="115,83,176,112"/>
+<area shape="rect" id="node16" href="$string_8h.html" title="string.h" alt="" coords="229,160,293,189"/>
+<area shape="rect" id="node19" href="$ioports_8h.html" title="ioports.h" alt="" coords="251,83,323,112"/>
+<area shape="rect" id="node21" href="$klog_8h.html" title="klog.h" alt="" coords="347,83,405,112"/>
+<area shape="rect" id="node25" href="$floppy__motor_8h.html" title="floppy_motor.h" alt="" coords="429,83,536,112"/>
+<area shape="rect" id="node27" href="$floppy__utils_8h.html" title="floppy_utils.h" alt="" coords="560,83,656,112"/>
+<area shape="rect" id="node29" href="$floppy__interrupt_8h.html" title="floppy_interrupt.h" alt="" coords="680,83,800,112"/>
+<area shape="rect" id="node31" href="$floppy__dma_8h.html" title="floppy_dma.h" alt="" coords="824,83,923,112"/>
+<area shape="rect" id="node7" href="$libio_8h.html" title="libio.h" alt="" coords="5,160,61,189"/>
+<area shape="rect" id="node9" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="55,237,143,267"/>
+<area shape="rect" id="node14" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="136,160,205,189"/>
+<area shape="rect" id="node11" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="61,315,136,344"/>
+<area shape="rect" id="node23" href="$kstdio_8h.html" title="kstdio.h" alt="" coords="343,160,409,189"/>
+</map>

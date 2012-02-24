@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="5,83,184,112"/>
+<area shape="rect" id="node5" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="208,83,384,112"/>
+<area shape="rect" id="node7" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="408,83,517,112"/>
+<area shape="rect" id="node9" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="541,83,669,112"/>
+<area shape="rect" id="node11" href="$ksem_8c.html" title="kernel/ksem.c" alt="" coords="693,83,800,112"/>
+</map>

@@ -1,0 +1,46 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$devfs_8h.html" title="kernel/include/fs/devfs.h" alt="" coords="973,160,1139,189"/>
+<area shape="rect" id="node42" href="$fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="1520,237,1667,267"/>
+<area shape="rect" id="node48" href="$kfcntl_8h.html" title="kernel/include/kfcntl.h" alt="" coords="2636,160,2785,189"/>
+<area shape="rect" id="node64" href="$kprocess_8h.html" title="kernel/include/kprocess.h" alt="" coords="3471,83,3644,112"/>
+<area shape="rect" id="node112" href="$tty_8h.html" title="kernel/include/tty.h" alt="" coords="2205,160,2339,189"/>
+<area shape="rect" id="node125" href="$vfs_8h.html" title="kernel/include/vfs.h" alt="" coords="1752,160,1888,189"/>
+<area shape="rect" id="node5" href="$floppy_8c.html" title="kernel/drivers/block/floppy/floppy.c" alt="" coords="723,237,949,267"/>
+<area shape="rect" id="node7" href="$beeper_8c.html" title="kernel/drivers/char/beeper.c" alt="" coords="5,237,195,267"/>
+<area shape="rect" id="node9" href="$mouse_8c.html" title="kernel/drivers/char/mouse.c" alt="" coords="219,237,405,267"/>
+<area shape="rect" id="node11" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="2824,237,3000,267"/>
+<area shape="rect" id="node13" href="$vga_8c.html" title="kernel/drivers/char/vga.c" alt="" coords="480,237,648,267"/>
+<area shape="rect" id="node15" href="$devfs_8c.html" title="kernel/fs/devfs.c" alt="" coords="1163,237,1283,267"/>
+<area shape="rect" id="node17" href="$ext2__internal_8h.html" title="kernel/fs/ext2/ext2_internal.h" alt="" coords="1307,237,1496,267"/>
+<area shape="rect" id="node21" href="$fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="973,237,1139,267"/>
+<area shape="rect" id="node34" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="2640,315,2749,344"/>
+<area shape="rect" id="node36" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="2293,237,2395,267"/>
+<area shape="rect" id="node38" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1923,237,2032,267"/>
+<area shape="rect" id="node40" href="$vfs_8c.html" title="kernel/vfs.c" alt="" coords="1659,315,1749,344"/>
+<area shape="rect" id="node19" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="1493,315,1635,344"/>
+<area shape="rect" id="node23" href="$fat_8c.html" title="kernel/fs/fat/fat.c" alt="" coords="1276,315,1393,344"/>
+<area shape="rect" id="node25" href="$fat__outils_8h.html" title="kernel/fs/fat/fat_outils.h" alt="" coords="1048,315,1203,344"/>
+<area shape="rect" id="node27" href="$fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="1308,469,1484,499"/>
+<area shape="rect" id="node29" href="$fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="1253,392,1419,421"/>
+<area shape="rect" id="node32" href="$fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="1024,392,1179,421"/>
+<area shape="rect" id="node50" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="2419,237,2597,267"/>
+<area shape="rect" id="node53" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="2385,315,2585,344"/>
+<area shape="rect" id="node58" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="3349,237,3477,267"/>
+<area shape="rect" id="node61" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="3160,237,3275,267"/>
+<area shape="rect" id="node67" href="$context_8h.html" title="kernel/include/context.h" alt="" coords="3620,160,3783,189"/>
+<area shape="rect" id="node69" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="3640,237,3771,267"/>
+<area shape="rect" id="node72" href="$ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="3332,160,3495,189"/>
+<area shape="rect" id="node77" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="3501,237,3616,267"/>
+<area shape="rect" id="node80" href="$scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="3807,160,3985,189"/>
+<area shape="rect" id="node92" href="$kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="4296,237,4405,267"/>
+<area shape="rect" id="node95" href="$ksem_8c.html" title="kernel/ksem.c" alt="" coords="4429,237,4536,267"/>
+<area shape="rect" id="node99" href="$round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="4560,237,4701,267"/>
+<area shape="rect" id="node83" href="$round__robin_8h.html" title="kernel/include/round_robin.h" alt="" coords="4083,237,4272,267"/>
+<area shape="rect" id="node86" href="$init_8c.html" title="kernel/init.c" alt="" coords="3795,237,3883,267"/>
+<area shape="rect" id="node88" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="3024,237,3136,267"/>
+<area shape="rect" id="node102" href="$vmm_8c.html" title="kernel/vmm.c" alt="" coords="3907,237,4008,267"/>
+<area shape="rect" id="node116" href="$console_8h.html" title="kernel/include/drivers/console.h" alt="" coords="2056,237,2269,267"/>
+<area shape="rect" id="node118" href="$console_8c.html" title="kernel/drivers/char/tty/console.c" alt="" coords="2089,315,2300,344"/>
+<area shape="rect" id="node120" href="$keyboard_8c.html" title="Driver clavier." alt="" coords="1847,315,2065,344"/>
+<area shape="rect" id="node130" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="1741,237,1899,267"/>
+</map>

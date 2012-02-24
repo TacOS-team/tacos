@@ -1,0 +1,618 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/drivers/char/tty/keyboard.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier kernel/drivers/char/tty/keyboard.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Driver clavier.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;types.h&gt;</code><br/>
+<code>#include &lt;<a class="el" href="ioports_8h_source.html">ioports.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="keyboard_8h_source.html">drivers/keyboard.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="console_8h_source.html">drivers/console.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de keyboard.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="keyboard_8c__incl.png" border="0" usemap="#kernel_2drivers_2char_2tty_2keyboard_8c" alt=""/></div>
+<map name="kernel_2drivers_2char_2tty_2keyboard_8c" id="kernel_2drivers_2char_2tty_2keyboard_8c">
+<area shape="rect" id="node5" href="ioports_8h.html" title="ioports.h" alt="" coords="22,83,94,112"/><area shape="rect" id="node7" href="keyboard_8h.html" title="drivers/keyboard.h" alt="" coords="118,83,252,112"/><area shape="rect" id="node9" href="console_8h.html" title="drivers/console.h" alt="" coords="276,83,401,112"/><area shape="rect" id="node12" href="tty_8h.html" title="tty.h" alt="" coords="316,160,361,189"/><area shape="rect" id="node14" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="213,237,277,267"/><area shape="rect" id="node16" href="termios_8h.html" title="termios.h" alt="" coords="301,237,376,267"/><area shape="rect" id="node18" href="fd__types_8h.html" title="fd_types.h" alt="" coords="400,237,482,267"/></map>
+</div>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structletter.html">letter</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure permettant la conversion d'un scancode vers une lettre ASCII. TODO: On devrait passer par une étape de keycode.  <a href="structletter.html#details">Plus de détails...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#abf733d62dcb751685e3210c34fe513a9">KEY_RELEASE</a>&#160;&#160;&#160;0x80</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a3d4a986e607033bfc29af8cd64fac10e">KEYBOARD_ERROR_MODE_2</a>&#160;&#160;&#160;0x00</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ab9e455bca51c4c348c41fd25b43f8d36">KEYBOARD_BAT_OK</a>&#160;&#160;&#160;0xAA</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a591a53aabe6ff5ad73d714b9fa84dd61">KEYBOARD_ECHO_RES</a>&#160;&#160;&#160;0xEE</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a0c3c8f01e96a5def954ce91f9e198602">KEYBOARD_UNKNOWN</a>&#160;&#160;&#160;0xF1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37cd03d36b4540b0e9b97db83b0786c2"></a><!-- doxytag: member="keyboard.c::KEYBOARD_ACK" ref="a37cd03d36b4540b0e9b97db83b0786c2" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KEYBOARD_ACK</b>&#160;&#160;&#160;0xFA</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a78b9cc2c6b6852cf6d70397f347f6087">KEYBOARD_BAT_KO</a>&#160;&#160;&#160;0xFC</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a970038aa0ef60de1aac31b61cdc4ce23">KEYBOARD_FAILURE</a>&#160;&#160;&#160;0xFD</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ab54ea743e1642104977d9eb54d9dd804">KEYBOARD_ACK_FAIL</a>&#160;&#160;&#160;0xFE</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a78bccde615c6200a835e5af95cfc3d93">KEYBOARD_ERROR_MODE_1</a>&#160;&#160;&#160;0xFF</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a76724347f77910592dedb79be93b5c59"></a><!-- doxytag: member="keyboard.c::KEYBOARD_EXPAND" ref="a76724347f77910592dedb79be93b5c59" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KEYBOARD_EXPAND</b>&#160;&#160;&#160;0xE0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a7c36913f02e82864a374d734521446a1">KEYBOARD_PAUSE</a>&#160;&#160;&#160;0xE1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9eb6c05fd34e1a89d2b068bdeaa4685b"></a><!-- doxytag: member="keyboard.c::KEYBOARD_LOGITECH" ref="a9eb6c05fd34e1a89d2b068bdeaa4685b" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KEYBOARD_LOGITECH</b>&#160;&#160;&#160;0xE2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a6c8ee53908fc5d6df19f1da8502b38dc">KEY_ESCAPE</a>&#160;&#160;&#160;0x01</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a5f25a8926d9c3ce4b4a0824234e8ffd4">KEY_ALT</a>&#160;&#160;&#160;0x38</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ae8b9735c4a7fd10317aaab6dcbe91e51">KEY_LSHIFT</a>&#160;&#160;&#160;0x2A</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a5b52e8d492e96e2b4c21a94f50a689c5">KEY_RSHIFT</a>&#160;&#160;&#160;0x36</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a5286700e5cf8acb2707c1c08968c6c25">KEY_LCTRL</a>&#160;&#160;&#160;0x1D</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#af168e54444bdaff5f50f6f4734784762">KEY_CAPSLOCK</a>&#160;&#160;&#160;0x3A</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#aa9a01a8ed5fb358424866f4bc61d7c13">KEY_NUMLOCK</a>&#160;&#160;&#160;0x45</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#afe5716cf1626fceab51044a6c2492831">KEY_RETURN</a>&#160;&#160;&#160;0x1C</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a8a5ff83d21dfa704c1c3eff56d5b3a4b">KEY_SPACE</a>&#160;&#160;&#160;0x39</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a2772a1f7024ba1fd62e88ec1adb541f8">KEY_F1</a>&#160;&#160;&#160;0x3b</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ae2e2edb31bb7796786da12f85f2d5cd1">KEY_F2</a>&#160;&#160;&#160;0x3c</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a38ebe8e5c5f1d5727c9638bf79fc3952">KEY_F3</a>&#160;&#160;&#160;0x3d</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ab99474b01ffcbc57d74b60a77895e5e8">KEY_F4</a>&#160;&#160;&#160;0x3e</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a2a0aae1931111382ade29fd75ef64790">KEY_F5</a>&#160;&#160;&#160;0x3f</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ad31281b771b8b85f4aa98bbd527d91a0">KEY_F6</a>&#160;&#160;&#160;0x40</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a7eed6766ef9ddb721c6a2bce807fc9dc">KEY_F7</a>&#160;&#160;&#160;0x41</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a7a8ad03f07f2e4757a70385e88fbbe3c">KEY_F8</a>&#160;&#160;&#160;0x42</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a417a382624f91fb0cdfdf1c33adc8c90">KEY_F9</a>&#160;&#160;&#160;0x43</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ad37282615edb2c357149c2a1342b4a85">KEY_F10</a>&#160;&#160;&#160;0x44</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#abd820bb8b4b2a47e4210401b13789106">KEY_F11</a>&#160;&#160;&#160;0x57</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a0a3de83275f6bbc2b88692f947f0d595">KEY_F12</a>&#160;&#160;&#160;0x58</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac7ec49aa0203d9bd2dd5c4bcba7cb61"></a><!-- doxytag: member="keyboard.c::keyboardInterrupt" ref="aac7ec49aa0203d9bd2dd5c4bcba7cb61" args="(int id)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>keyboardInterrupt</b> (int id)</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+</div><hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="a5f25a8926d9c3ce4b4a0824234e8ffd4"></a><!-- doxytag: member="keyboard.c::KEY_ALT" ref="a5f25a8926d9c3ce4b4a0824234e8ffd4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a5f25a8926d9c3ce4b4a0824234e8ffd4">KEY_ALT</a>&#160;&#160;&#160;0x38</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode alt key. </p>
+
+</div>
+</div>
+<a class="anchor" id="af168e54444bdaff5f50f6f4734784762"></a><!-- doxytag: member="keyboard.c::KEY_CAPSLOCK" ref="af168e54444bdaff5f50f6f4734784762" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#af168e54444bdaff5f50f6f4734784762">KEY_CAPSLOCK</a>&#160;&#160;&#160;0x3A</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode capslock key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6c8ee53908fc5d6df19f1da8502b38dc"></a><!-- doxytag: member="keyboard.c::KEY_ESCAPE" ref="a6c8ee53908fc5d6df19f1da8502b38dc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a6c8ee53908fc5d6df19f1da8502b38dc">KEY_ESCAPE</a>&#160;&#160;&#160;0x01</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode escape key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a2772a1f7024ba1fd62e88ec1adb541f8"></a><!-- doxytag: member="keyboard.c::KEY_F1" ref="a2772a1f7024ba1fd62e88ec1adb541f8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a2772a1f7024ba1fd62e88ec1adb541f8">KEY_F1</a>&#160;&#160;&#160;0x3b</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode F1 key. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad37282615edb2c357149c2a1342b4a85"></a><!-- doxytag: member="keyboard.c::KEY_F10" ref="ad37282615edb2c357149c2a1342b4a85" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#ad37282615edb2c357149c2a1342b4a85">KEY_F10</a>&#160;&#160;&#160;0x44</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode F10 key. </p>
+
+</div>
+</div>
+<a class="anchor" id="abd820bb8b4b2a47e4210401b13789106"></a><!-- doxytag: member="keyboard.c::KEY_F11" ref="abd820bb8b4b2a47e4210401b13789106" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#abd820bb8b4b2a47e4210401b13789106">KEY_F11</a>&#160;&#160;&#160;0x57</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode F11 key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0a3de83275f6bbc2b88692f947f0d595"></a><!-- doxytag: member="keyboard.c::KEY_F12" ref="a0a3de83275f6bbc2b88692f947f0d595" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a0a3de83275f6bbc2b88692f947f0d595">KEY_F12</a>&#160;&#160;&#160;0x58</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode F12 key. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae2e2edb31bb7796786da12f85f2d5cd1"></a><!-- doxytag: member="keyboard.c::KEY_F2" ref="ae2e2edb31bb7796786da12f85f2d5cd1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#ae2e2edb31bb7796786da12f85f2d5cd1">KEY_F2</a>&#160;&#160;&#160;0x3c</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode F2 key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a38ebe8e5c5f1d5727c9638bf79fc3952"></a><!-- doxytag: member="keyboard.c::KEY_F3" ref="a38ebe8e5c5f1d5727c9638bf79fc3952" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a38ebe8e5c5f1d5727c9638bf79fc3952">KEY_F3</a>&#160;&#160;&#160;0x3d</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode F3 key. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab99474b01ffcbc57d74b60a77895e5e8"></a><!-- doxytag: member="keyboard.c::KEY_F4" ref="ab99474b01ffcbc57d74b60a77895e5e8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#ab99474b01ffcbc57d74b60a77895e5e8">KEY_F4</a>&#160;&#160;&#160;0x3e</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode F4 key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a2a0aae1931111382ade29fd75ef64790"></a><!-- doxytag: member="keyboard.c::KEY_F5" ref="a2a0aae1931111382ade29fd75ef64790" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a2a0aae1931111382ade29fd75ef64790">KEY_F5</a>&#160;&#160;&#160;0x3f</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode F5 key. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad31281b771b8b85f4aa98bbd527d91a0"></a><!-- doxytag: member="keyboard.c::KEY_F6" ref="ad31281b771b8b85f4aa98bbd527d91a0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#ad31281b771b8b85f4aa98bbd527d91a0">KEY_F6</a>&#160;&#160;&#160;0x40</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode F6 key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7eed6766ef9ddb721c6a2bce807fc9dc"></a><!-- doxytag: member="keyboard.c::KEY_F7" ref="a7eed6766ef9ddb721c6a2bce807fc9dc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a7eed6766ef9ddb721c6a2bce807fc9dc">KEY_F7</a>&#160;&#160;&#160;0x41</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode F7 key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7a8ad03f07f2e4757a70385e88fbbe3c"></a><!-- doxytag: member="keyboard.c::KEY_F8" ref="a7a8ad03f07f2e4757a70385e88fbbe3c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a7a8ad03f07f2e4757a70385e88fbbe3c">KEY_F8</a>&#160;&#160;&#160;0x42</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode F8 key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a417a382624f91fb0cdfdf1c33adc8c90"></a><!-- doxytag: member="keyboard.c::KEY_F9" ref="a417a382624f91fb0cdfdf1c33adc8c90" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a417a382624f91fb0cdfdf1c33adc8c90">KEY_F9</a>&#160;&#160;&#160;0x43</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode F9 key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5286700e5cf8acb2707c1c08968c6c25"></a><!-- doxytag: member="keyboard.c::KEY_LCTRL" ref="a5286700e5cf8acb2707c1c08968c6c25" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a5286700e5cf8acb2707c1c08968c6c25">KEY_LCTRL</a>&#160;&#160;&#160;0x1D</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode left control key. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae8b9735c4a7fd10317aaab6dcbe91e51"></a><!-- doxytag: member="keyboard.c::KEY_LSHIFT" ref="ae8b9735c4a7fd10317aaab6dcbe91e51" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#ae8b9735c4a7fd10317aaab6dcbe91e51">KEY_LSHIFT</a>&#160;&#160;&#160;0x2A</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode left shift key. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa9a01a8ed5fb358424866f4bc61d7c13"></a><!-- doxytag: member="keyboard.c::KEY_NUMLOCK" ref="aa9a01a8ed5fb358424866f4bc61d7c13" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#aa9a01a8ed5fb358424866f4bc61d7c13">KEY_NUMLOCK</a>&#160;&#160;&#160;0x45</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode numlock key. </p>
+
+</div>
+</div>
+<a class="anchor" id="abf733d62dcb751685e3210c34fe513a9"></a><!-- doxytag: member="keyboard.c::KEY_RELEASE" ref="abf733d62dcb751685e3210c34fe513a9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#abf733d62dcb751685e3210c34fe513a9">KEY_RELEASE</a>&#160;&#160;&#160;0x80</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Scancode SET 1 : (IBM XT) <a href="http://www.computer-engineering.org/ps2keyboard/scancodes1.html">http://www.computer-engineering.org/ps2keyboard/scancodes1.html</a> SCAN CODES Masque pour le scancode d'un relâchement de touche. </p>
+
+</div>
+</div>
+<a class="anchor" id="afe5716cf1626fceab51044a6c2492831"></a><!-- doxytag: member="keyboard.c::KEY_RETURN" ref="afe5716cf1626fceab51044a6c2492831" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#afe5716cf1626fceab51044a6c2492831">KEY_RETURN</a>&#160;&#160;&#160;0x1C</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode return key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5b52e8d492e96e2b4c21a94f50a689c5"></a><!-- doxytag: member="keyboard.c::KEY_RSHIFT" ref="a5b52e8d492e96e2b4c21a94f50a689c5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a5b52e8d492e96e2b4c21a94f50a689c5">KEY_RSHIFT</a>&#160;&#160;&#160;0x36</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode right shift key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8a5ff83d21dfa704c1c3eff56d5b3a4b"></a><!-- doxytag: member="keyboard.c::KEY_SPACE" ref="a8a5ff83d21dfa704c1c3eff56d5b3a4b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a8a5ff83d21dfa704c1c3eff56d5b3a4b">KEY_SPACE</a>&#160;&#160;&#160;0x39</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode space key. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab54ea743e1642104977d9eb54d9dd804"></a><!-- doxytag: member="keyboard.c::KEYBOARD_ACK_FAIL" ref="ab54ea743e1642104977d9eb54d9dd804" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#ab54ea743e1642104977d9eb54d9dd804">KEYBOARD_ACK_FAIL</a>&#160;&#160;&#160;0xFE</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>fails to ack, please resend </p>
+
+</div>
+</div>
+<a class="anchor" id="a78b9cc2c6b6852cf6d70397f347f6087"></a><!-- doxytag: member="keyboard.c::KEYBOARD_BAT_KO" ref="a78b9cc2c6b6852cf6d70397f347f6087" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a78b9cc2c6b6852cf6d70397f347f6087">KEYBOARD_BAT_KO</a>&#160;&#160;&#160;0xFC</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Basic Assurance Test </p>
+
+</div>
+</div>
+<a class="anchor" id="ab9e455bca51c4c348c41fd25b43f8d36"></a><!-- doxytag: member="keyboard.c::KEYBOARD_BAT_OK" ref="ab9e455bca51c4c348c41fd25b43f8d36" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#ab9e455bca51c4c348c41fd25b43f8d36">KEYBOARD_BAT_OK</a>&#160;&#160;&#160;0xAA</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Basic Assurance Test </p>
+
+</div>
+</div>
+<a class="anchor" id="a591a53aabe6ff5ad73d714b9fa84dd61"></a><!-- doxytag: member="keyboard.c::KEYBOARD_ECHO_RES" ref="a591a53aabe6ff5ad73d714b9fa84dd61" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a591a53aabe6ff5ad73d714b9fa84dd61">KEYBOARD_ECHO_RES</a>&#160;&#160;&#160;0xEE</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Result of echo command </p>
+
+</div>
+</div>
+<a class="anchor" id="a78bccde615c6200a835e5af95cfc3d93"></a><!-- doxytag: member="keyboard.c::KEYBOARD_ERROR_MODE_1" ref="a78bccde615c6200a835e5af95cfc3d93" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a78bccde615c6200a835e5af95cfc3d93">KEYBOARD_ERROR_MODE_1</a>&#160;&#160;&#160;0xFF</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Erreur en scancode mode 1 </p>
+
+</div>
+</div>
+<a class="anchor" id="a3d4a986e607033bfc29af8cd64fac10e"></a><!-- doxytag: member="keyboard.c::KEYBOARD_ERROR_MODE_2" ref="a3d4a986e607033bfc29af8cd64fac10e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a3d4a986e607033bfc29af8cd64fac10e">KEYBOARD_ERROR_MODE_2</a>&#160;&#160;&#160;0x00</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Erreur en scancode mode 2 et 3 </p>
+
+</div>
+</div>
+<a class="anchor" id="a970038aa0ef60de1aac31b61cdc4ce23"></a><!-- doxytag: member="keyboard.c::KEYBOARD_FAILURE" ref="a970038aa0ef60de1aac31b61cdc4ce23" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a970038aa0ef60de1aac31b61cdc4ce23">KEYBOARD_FAILURE</a>&#160;&#160;&#160;0xFD</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Internal failure </p>
+
+</div>
+</div>
+<a class="anchor" id="a7c36913f02e82864a374d734521446a1"></a><!-- doxytag: member="keyboard.c::KEYBOARD_PAUSE" ref="a7c36913f02e82864a374d734521446a1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a7c36913f02e82864a374d734521446a1">KEYBOARD_PAUSE</a>&#160;&#160;&#160;0xE1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>scancode pause/break key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0c3c8f01e96a5def954ce91f9e198602"></a><!-- doxytag: member="keyboard.c::KEYBOARD_UNKNOWN" ref="a0c3c8f01e96a5def954ce91f9e198602" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="keyboard_8c.html#a0c3c8f01e96a5def954ce91f9e198602">KEYBOARD_UNKNOWN</a>&#160;&#160;&#160;0xF1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>???? </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

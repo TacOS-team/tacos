@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/fs/fat/fat_outils.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier kernel/fs/fat/fat_outils.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="fat__internal_8h_source.html">fat_internal.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de fat_outils.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__outils_8h__incl.png" border="0" usemap="#kernel_2fs_2fat_2fat__outils_8h" alt=""/></div>
+<map name="kernel_2fs_2fat_2fat__outils_8h" id="kernel_2fs_2fat_2fat__outils_8h">
+<area shape="rect" id="node3" href="fat__internal_8h.html" title="fat_internal.h" alt="" coords="50,83,143,112"/><area shape="rect" id="node7" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="111,315,175,344"/><area shape="rect" id="node14" href="vfs_8h.html" title="vfs.h" alt="" coords="212,160,260,189"/><area shape="rect" id="node23" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="96,160,174,189"/><area shape="rect" id="node9" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="188,469,252,499"/><area shape="rect" id="node11" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="142,392,222,421"/><area shape="rect" id="node17" href="fd__types_8h.html" title="fd_types.h" alt="" coords="115,237,198,267"/><area shape="rect" id="node19" href="kstat_8h.html" title="kstat.h" alt="" coords="222,237,280,267"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__outils_8h__dep__incl.png" border="0" usemap="#kernel_2fs_2fat_2fat__outils_8hdep" alt=""/></div>
+<map name="kernel_2fs_2fat_2fat__outils_8hdep" id="kernel_2fs_2fat_2fat__outils_8hdep">
+<area shape="rect" id="node3" href="fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="5,160,181,189"/><area shape="rect" id="node5" href="fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="71,83,236,112"/><area shape="rect" id="node8" href="fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="260,83,415,112"/></map>
+</div>
+</div>
+<p><a href="fat__outils_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a93808d4692d60c69db061effc6232ee6"></a><!-- doxytag: member="fat_outils.h::fat_last_cluster" ref="a93808d4692d60c69db061effc6232ee6" args="(fat_fs_instance_t *instance)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>fat_last_cluster</b> (<a class="el" href="struct__fat__fs__instance__t.html">fat_fs_instance_t</a> *instance)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a90bf5b4a5741e770ea8c3f8fc15f180b"></a><!-- doxytag: member="fat_outils.h::fat_is_free_cluster" ref="a90bf5b4a5741e770ea8c3f8fc15f180b" args="(int cluster)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>fat_is_free_cluster</b> (int cluster)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad7455b50fef42408155f1c32109dfe50"></a><!-- doxytag: member="fat_outils.h::fat_is_last_cluster" ref="ad7455b50fef42408155f1c32109dfe50" args="(fat_fs_instance_t *instance, int cluster)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>fat_is_last_cluster</b> (<a class="el" href="struct__fat__fs__instance__t.html">fat_fs_instance_t</a> *instance, int cluster)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa28cc73f6fb1875fde62a8ee24a13960"></a><!-- doxytag: member="fat_outils.h::fat_is_used_cluster" ref="aa28cc73f6fb1875fde62a8ee24a13960" args="(fat_fs_instance_t *instance, int cluster)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>fat_is_used_cluster</b> (<a class="el" href="struct__fat__fs__instance__t.html">fat_fs_instance_t</a> *instance, int cluster)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f582028e77ee5dc535200f3e6b3312b"></a><!-- doxytag: member="fat_outils.h::fat_encode_long_file_name" ref="a4f582028e77ee5dc535200f3e6b3312b" args="(char *name, lfn_entry_t *long_file_name, int n_entries)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>fat_encode_long_file_name</b> (char *name, <a class="el" href="structlfn__entry__t.html">lfn_entry_t</a> *long_file_name, int n_entries)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac588ac3acb0265e0db3158ba5c5a4a0f"></a><!-- doxytag: member="fat_outils.h::fat_decode_long_file_name" ref="ac588ac3acb0265e0db3158ba5c5a4a0f" args="(char *name, lfn_entry_t *long_file_name)" -->
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>fat_decode_long_file_name</b> (char *name, <a class="el" href="structlfn__entry__t.html">lfn_entry_t</a> *long_file_name)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae33b4bd360a352f9b2bb6316d7221970"></a><!-- doxytag: member="fat_outils.h::convert_datetime_fat_to_time_t" ref="ae33b4bd360a352f9b2bb6316d7221970" args="(fat_date_t *date, fat_time_t *time)" -->
+time_t&#160;</td><td class="memItemRight" valign="bottom"><b>convert_datetime_fat_to_time_t</b> (<a class="el" href="struct__fat__date.html">fat_date_t</a> *date, <a class="el" href="struct__fat__time.html">fat_time_t</a> *time)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae71051d0397ad65e7ddb79589ddd9347"></a><!-- doxytag: member="fat_outils.h::convert_time_t_to_datetime_fat" ref="ae71051d0397ad65e7ddb79589ddd9347" args="(time_t time, fat_time_t *timefat, fat_date_t *datefat)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>convert_time_t_to_datetime_fat</b> (time_t time, <a class="el" href="struct__fat__time.html">fat_time_t</a> *timefat, <a class="el" href="struct__fat__date.html">fat_date_t</a> *datefat)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15df5ebf35fdd77ac639ed071c731841"></a><!-- doxytag: member="fat_outils.h::fat_dir_entry_to_directory_entry" ref="a15df5ebf35fdd77ac639ed071c731841" args="(char *filename, fat_dir_entry_t *dir, directory_entry_t *entry)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>fat_dir_entry_to_directory_entry</b> (char *filename, <a class="el" href="struct__fat__dir__entry.html">fat_dir_entry_t</a> *dir, <a class="el" href="struct__directory__entry.html">directory_entry_t</a> *entry)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a015254ce721ab0097a1008ec7153b819"></a><!-- doxytag: member="fat_outils.h::fat_lfn_to_sfn" ref="a015254ce721ab0097a1008ec7153b819" args="(char *filename)" -->
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>fat_lfn_to_sfn</b> (char *filename)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54dad60e76b8e913b497b0a903778093"></a><!-- doxytag: member="fat_outils.h::fat_decode_short_file_name" ref="a54dad60e76b8e913b497b0a903778093" args="(char *filename, fat_dir_entry_t *fdir)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>fat_decode_short_file_name</b> (char *filename, <a class="el" href="struct__fat__dir__entry.html">fat_dir_entry_t</a> *fdir)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc4ab73ddc901dbfa52071c98ce0de6b"></a><!-- doxytag: member="fat_outils.h::fat_decode_lfn_entry" ref="acc4ab73ddc901dbfa52071c98ce0de6b" args="(lfn_entry_t *fdir)" -->
+<a class="el" href="struct__directory__entry.html">directory_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>fat_decode_lfn_entry</b> (<a class="el" href="structlfn__entry__t.html">lfn_entry_t</a> *fdir)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8100c884384ccb3b8ecec7f5180ad346"></a><!-- doxytag: member="fat_outils.h::fat_decode_sfn_entry" ref="a8100c884384ccb3b8ecec7f5180ad346" args="(fat_dir_entry_t *fdir)" -->
+<a class="el" href="struct__directory__entry.html">directory_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>fat_decode_sfn_entry</b> (<a class="el" href="struct__fat__dir__entry.html">fat_dir_entry_t</a> *fdir)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bc59b6b9bca39fe4ba101a3c019b91a"></a><!-- doxytag: member="fat_outils.h::fat_split_dir_filename" ref="a2bc59b6b9bca39fe4ba101a3c019b91a" args="(const char *path, char *dir, char *filename)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>fat_split_dir_filename</b> (const char *path, char *dir, char *filename)</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+<p>Description de ce que fait le fichier </p>
+</div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

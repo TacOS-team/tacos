@@ -1,0 +1,703 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/clock.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier kernel/clock.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion de l'horloge et du temps en général.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;types.h&gt;</code><br/>
+<code>#include &lt;<a class="el" href="ioports_8h_source.html">ioports.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="i8254_8h_source.html">i8254.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="clock_8h_source.html">clock.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="interrupts_8h_source.html">interrupts.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kstdio_8h_source.html">kstdio.h</a>&gt;</code><br/>
+<code>#include &quot;<a class="el" href="heap_8h_source.html">heap.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de clock.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="clock_8c__incl.png" border="0" usemap="#kernel_2clock_8c" alt=""/></div>
+<map name="kernel_2clock_8c" id="kernel_2clock_8c">
+<area shape="rect" id="node5" href="ioports_8h.html" title="ioports.h" alt="" coords="93,83,165,112"/><area shape="rect" id="node7" href="i8254_8h.html" title="Initialisation du i8254 (timer)." alt="" coords="103,160,164,189"/><area shape="rect" id="node11" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="240,83,304,112"/><area shape="rect" id="node17" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="343,160,428,189"/><area shape="rect" id="node20" href="kstdio_8h.html" title="kstdio.h" alt="" coords="379,83,445,112"/><area shape="rect" id="node22" href="heap_8h.html" title="heap.h" alt="" coords="452,160,513,189"/><area shape="rect" id="node9" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="247,237,311,267"/><area shape="rect" id="node14" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="239,160,319,189"/></map>
+</div>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a59fb9be7a7d728632cdb9553ec759102">RTC_REQUEST</a>&#160;&#160;&#160;0x70</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a9e8ea3cf4245155349bed1cea2590792">RTC_ANSWER</a>&#160;&#160;&#160;0x71</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a777f67a779626b4d69b3eb4b4f5b6305">RTC_SECOND</a>&#160;&#160;&#160;0x00</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a4f6fb35439604f172b4eb075f62e9a24">RTC_SECOND_ALARM</a>&#160;&#160;&#160;0x01</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#afdd30426a2ccab4daa054d7999e3d856">RTC_MINUTE</a>&#160;&#160;&#160;0x02</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#ad8d654d2fb65cf3a3241fd1730bc7838">RTC_MINUTE_ALARM</a>&#160;&#160;&#160;0x03</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a7264eac87ffc91cbdea1239d346a0ea4">RTC_HOUR</a>&#160;&#160;&#160;0x04</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a737b5ee081f79807f221932a06d7efca">RTC_HOUR_ALARM</a>&#160;&#160;&#160;0x05</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#adc8a8bbebc2c39de86f9be71c257859b">RTC_DAY_OF_WEEK</a>&#160;&#160;&#160;0x06</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a9d8502fb2abae7b9f234c7da90932f3d">RTC_DATE_OF_MONTH</a>&#160;&#160;&#160;0x07</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#abda0c877ee1a02b8351c0cfe72838088">RTC_MONTH</a>&#160;&#160;&#160;0x08</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a1df5568e6774b73aa4c6e59fc40e9147">RTC_YEAR</a>&#160;&#160;&#160;0x09</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a3ac65777322869d89cd0cbb9ba3c165c">LEAPYEAR</a>(year)&#160;&#160;&#160;(!((year) % 4) &amp;&amp; (((year) % 100) || !((year) % 400)))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a9db507ef8c3ce0d32650da0f0a7e5b48">YEARSIZE</a>(year)&#160;&#160;&#160;(<a class="el" href="clock_8c.html#a3ac65777322869d89cd0cbb9ba3c165c">LEAPYEAR</a>(year) ? 366 : 365)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#acb20471223b4d330209e1ff1950c999d">YEAR0</a>&#160;&#160;&#160;1900</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a2cd69e03a0d15e6115c196f7ac35da13">EPOCH_YR</a>&#160;&#160;&#160;1970</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a69917c6f775aefa006141379c81e0e8f">SECS_DAY</a>&#160;&#160;&#160;(24L * 60L * 60L)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a50fece4db74f09568b2938db583c5655"></a><!-- doxytag: member="clock.c::LONG_MAX" ref="a50fece4db74f09568b2938db583c5655" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LONG_MAX</b>&#160;&#160;&#160;2147483647L</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0540485394df82add6b7c4f2137c7f21"></a><!-- doxytag: member="clock.c::TIME_MAX" ref="a0540485394df82add6b7c4f2137c7f21" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TIME_MAX</b>&#160;&#160;&#160;0xFFFFFFFFL</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc0cc7974581cee0900c817955ff2f5b"></a><!-- doxytag: member="clock.c::clock_tick" ref="abc0cc7974581cee0900c817955ff2f5b" args="()" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#abc0cc7974581cee0900c817955ff2f5b">clock_tick</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Incrémente le temps système. Ajoute une milliseconde au temps système, ne met rien à jour au dela du jour actuel. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2217dd848bce59e4c4635650a0beee4"></a><!-- doxytag: member="clock.c::bcd2binary" ref="aa2217dd848bce59e4c4635650a0beee4" args="(uint8_t n)" -->
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bcd2binary</b> (uint8_t n)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#ab07bd3e86ff449c65b06fd50ec8e422e">clock_mktime</a> (struct <a class="el" href="structtm.html">tm</a> *timep)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Conversion struct tm vers time_t. Conversion d'une date exprimée sous la forme secondes, minutes, heures, jour, mois, année, etc, vers le format time_t.  <a href="#ab07bd3e86ff449c65b06fd50ec8e422e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9cc0a879e88eea28e4e8b57318ef8e5"></a><!-- doxytag: member="clock.c::clock_init" ref="ae9cc0a879e88eea28e4e8b57318ef8e5" args="()" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#ae9cc0a879e88eea28e4e8b57318ef8e5">clock_init</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation de l'horloge. Initialisation de l'horloge. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a36d22a2c7fc11c6f382386a8b658b6f8"></a><!-- doxytag: member="clock.c::get_clock" ref="a36d22a2c7fc11c6f382386a8b658b6f8" args="()" -->
+clock_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8">get_clock</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1ms). <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#ab594b78936f7a5c4ba0c3b7ad653b6d5">SYSCALL_HANDLER1</a> (sys_getclock, clock_t *clock)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Syscall handler pour get_clock. Syscall handler pour get_clock.  <a href="#ab594b78936f7a5c4ba0c3b7ad653b6d5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e">get_date</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la date actuelle en secondes. Retourne la date actuelle en secondes.  <a href="#ab1bd72177a9697cdd2eec38a4fe6651e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a8bfadf8175457fd7fbe6b53a46788a4e">SYSCALL_HANDLER1</a> (sys_getdate, time_t *date)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Syscall handler pour get_date. Syscall handler pour get_date.  <a href="#a8bfadf8175457fd7fbe6b53a46788a4e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtimeval.html">timeval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5">get_tv</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et microsecondes.  <a href="#a0dc3166547de3bc1b9bdf45fdfb7d2e5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a33cb84a5e3ce0c59505d776e5a736c08">compare_times</a> (struct <a class="el" href="structtimeval.html">timeval</a> a, struct <a class="el" href="structtimeval.html">timeval</a> b)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparaison de 2 temps. Comparaison de 2 temps.  <a href="#a33cb84a5e3ce0c59505d776e5a736c08"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a052807a5c6ae63175a937381014a5701">timeval_add_usec</a> (struct <a class="el" href="structtimeval.html">timeval</a> *t, time_t usec)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute des us à un temps. Ajoute des us à un temps contenu dans une structure timeval.  <a href="#a052807a5c6ae63175a937381014a5701"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="accc6640b25e5d278185c360538d3cc3b"></a><!-- doxytag: member="clock.c::klog_systime" ref="accc6640b25e5d278185c360538d3cc3b" args="()" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>klog_systime</b> ()</td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f3af239bc4359d67b96004c530f5ce7"></a><!-- doxytag: member="clock.c::boot_systime" ref="a3f3af239bc4359d67b96004c530f5ce7" args="" -->
+time_t&#160;</td><td class="memItemRight" valign="bottom"><b>boot_systime</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><b>_ytab</b> [2][12]</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+</div><hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="a2cd69e03a0d15e6115c196f7ac35da13"></a><!-- doxytag: member="clock.c::EPOCH_YR" ref="a2cd69e03a0d15e6115c196f7ac35da13" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#a2cd69e03a0d15e6115c196f7ac35da13">EPOCH_YR</a>&#160;&#160;&#160;1970</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Constante pour convertir les années exprimées depuis 1970. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3ac65777322869d89cd0cbb9ba3c165c"></a><!-- doxytag: member="clock.c::LEAPYEAR" ref="a3ac65777322869d89cd0cbb9ba3c165c" args="(year)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#a3ac65777322869d89cd0cbb9ba3c165c">LEAPYEAR</a></td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">year</td><td>)</td>
+          <td>&#160;&#160;&#160;(!((year) % 4) &amp;&amp; (((year) % 100) || !((year) % 400)))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Macro function pour déterminer si une année est bissextile. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9e8ea3cf4245155349bed1cea2590792"></a><!-- doxytag: member="clock.c::RTC_ANSWER" ref="a9e8ea3cf4245155349bed1cea2590792" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#a9e8ea3cf4245155349bed1cea2590792">RTC_ANSWER</a>&#160;&#160;&#160;0x71</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>RTC read/write port </p>
+
+</div>
+</div>
+<a class="anchor" id="a9d8502fb2abae7b9f234c7da90932f3d"></a><!-- doxytag: member="clock.c::RTC_DATE_OF_MONTH" ref="a9d8502fb2abae7b9f234c7da90932f3d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#a9d8502fb2abae7b9f234c7da90932f3d">RTC_DATE_OF_MONTH</a>&#160;&#160;&#160;0x07</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>select day of month </p>
+
+</div>
+</div>
+<a class="anchor" id="adc8a8bbebc2c39de86f9be71c257859b"></a><!-- doxytag: member="clock.c::RTC_DAY_OF_WEEK" ref="adc8a8bbebc2c39de86f9be71c257859b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#adc8a8bbebc2c39de86f9be71c257859b">RTC_DAY_OF_WEEK</a>&#160;&#160;&#160;0x06</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>select day of week </p>
+
+</div>
+</div>
+<a class="anchor" id="a7264eac87ffc91cbdea1239d346a0ea4"></a><!-- doxytag: member="clock.c::RTC_HOUR" ref="a7264eac87ffc91cbdea1239d346a0ea4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#a7264eac87ffc91cbdea1239d346a0ea4">RTC_HOUR</a>&#160;&#160;&#160;0x04</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>select hours </p>
+
+</div>
+</div>
+<a class="anchor" id="a737b5ee081f79807f221932a06d7efca"></a><!-- doxytag: member="clock.c::RTC_HOUR_ALARM" ref="a737b5ee081f79807f221932a06d7efca" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#a737b5ee081f79807f221932a06d7efca">RTC_HOUR_ALARM</a>&#160;&#160;&#160;0x05</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>select hours alarm </p>
+
+</div>
+</div>
+<a class="anchor" id="afdd30426a2ccab4daa054d7999e3d856"></a><!-- doxytag: member="clock.c::RTC_MINUTE" ref="afdd30426a2ccab4daa054d7999e3d856" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#afdd30426a2ccab4daa054d7999e3d856">RTC_MINUTE</a>&#160;&#160;&#160;0x02</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>select minutes </p>
+
+</div>
+</div>
+<a class="anchor" id="ad8d654d2fb65cf3a3241fd1730bc7838"></a><!-- doxytag: member="clock.c::RTC_MINUTE_ALARM" ref="ad8d654d2fb65cf3a3241fd1730bc7838" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#ad8d654d2fb65cf3a3241fd1730bc7838">RTC_MINUTE_ALARM</a>&#160;&#160;&#160;0x03</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>select minutes alarm </p>
+
+</div>
+</div>
+<a class="anchor" id="abda0c877ee1a02b8351c0cfe72838088"></a><!-- doxytag: member="clock.c::RTC_MONTH" ref="abda0c877ee1a02b8351c0cfe72838088" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#abda0c877ee1a02b8351c0cfe72838088">RTC_MONTH</a>&#160;&#160;&#160;0x08</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>select month </p>
+
+</div>
+</div>
+<a class="anchor" id="a59fb9be7a7d728632cdb9553ec759102"></a><!-- doxytag: member="clock.c::RTC_REQUEST" ref="a59fb9be7a7d728632cdb9553ec759102" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#a59fb9be7a7d728632cdb9553ec759102">RTC_REQUEST</a>&#160;&#160;&#160;0x70</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>RTC select port </p>
+
+</div>
+</div>
+<a class="anchor" id="a777f67a779626b4d69b3eb4b4f5b6305"></a><!-- doxytag: member="clock.c::RTC_SECOND" ref="a777f67a779626b4d69b3eb4b4f5b6305" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#a777f67a779626b4d69b3eb4b4f5b6305">RTC_SECOND</a>&#160;&#160;&#160;0x00</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>select seconds </p>
+
+</div>
+</div>
+<a class="anchor" id="a4f6fb35439604f172b4eb075f62e9a24"></a><!-- doxytag: member="clock.c::RTC_SECOND_ALARM" ref="a4f6fb35439604f172b4eb075f62e9a24" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#a4f6fb35439604f172b4eb075f62e9a24">RTC_SECOND_ALARM</a>&#160;&#160;&#160;0x01</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>select seconds alarm </p>
+
+</div>
+</div>
+<a class="anchor" id="a1df5568e6774b73aa4c6e59fc40e9147"></a><!-- doxytag: member="clock.c::RTC_YEAR" ref="a1df5568e6774b73aa4c6e59fc40e9147" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#a1df5568e6774b73aa4c6e59fc40e9147">RTC_YEAR</a>&#160;&#160;&#160;0x09</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>select year </p>
+
+</div>
+</div>
+<a class="anchor" id="a69917c6f775aefa006141379c81e0e8f"></a><!-- doxytag: member="clock.c::SECS_DAY" ref="a69917c6f775aefa006141379c81e0e8f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#a69917c6f775aefa006141379c81e0e8f">SECS_DAY</a>&#160;&#160;&#160;(24L * 60L * 60L)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre de secondes dans un jour. </p>
+
+</div>
+</div>
+<a class="anchor" id="acb20471223b4d330209e1ff1950c999d"></a><!-- doxytag: member="clock.c::YEAR0" ref="acb20471223b4d330209e1ff1950c999d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#acb20471223b4d330209e1ff1950c999d">YEAR0</a>&#160;&#160;&#160;1900</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Constante pour convertir les années exprimées depuis 1900 </p>
+
+</div>
+</div>
+<a class="anchor" id="a9db507ef8c3ce0d32650da0f0a7e5b48"></a><!-- doxytag: member="clock.c::YEARSIZE" ref="a9db507ef8c3ce0d32650da0f0a7e5b48" args="(year)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="clock_8c.html#a9db507ef8c3ce0d32650da0f0a7e5b48">YEARSIZE</a></td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">year</td><td>)</td>
+          <td>&#160;&#160;&#160;(<a class="el" href="clock_8c.html#a3ac65777322869d89cd0cbb9ba3c165c">LEAPYEAR</a>(year) ? 366 : 365)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre de jour dans une année. </p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ab07bd3e86ff449c65b06fd50ec8e422e"></a><!-- doxytag: member="clock.c::clock_mktime" ref="ab07bd3e86ff449c65b06fd50ec8e422e" args="(struct tm *timep)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">time_t <a class="el" href="clock_8h.html#ab07bd3e86ff449c65b06fd50ec8e422e">clock_mktime</a> </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structtm.html">tm</a> *&#160;</td>
+          <td class="paramname"><em>timep</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>Le temps correspondant. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="clock_8c_ab07bd3e86ff449c65b06fd50ec8e422e_icgraph.png" border="0" usemap="#clock_8c_ab07bd3e86ff449c65b06fd50ec8e422e_icgraph" alt=""/></div>
+<map name="clock_8c_ab07bd3e86ff449c65b06fd50ec8e422e_icgraph" id="clock_8c_ab07bd3e86ff449c65b06fd50ec8e422e_icgraph">
+<area shape="rect" id="node3" href="clock_8h.html#ae9cc0a879e88eea28e4e8b57318ef8e5" title="Initialisation de l&#39;horloge. Initialisation de l&#39;horloge." alt="" coords="157,5,235,35"/><area shape="rect" id="node5" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="283,5,368,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a33cb84a5e3ce0c59505d776e5a736c08"></a><!-- doxytag: member="clock.c::compare_times" ref="a33cb84a5e3ce0c59505d776e5a736c08" args="(struct timeval a, struct timeval b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="clock_8h.html#a33cb84a5e3ce0c59505d776e5a736c08">compare_times</a> </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structtimeval.html">timeval</a>&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structtimeval.html">timeval</a>&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>-1, 1 ou 0 en fonction du résultat. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab1bd72177a9697cdd2eec38a4fe6651e"></a><!-- doxytag: member="clock.c::get_date" ref="ab1bd72177a9697cdd2eec38a4fe6651e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">time_t <a class="el" href="clock_8h.html#ab1bd72177a9697cdd2eec38a4fe6651e">get_date</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>la date en secondes. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="clock_8c_ab1bd72177a9697cdd2eec38a4fe6651e_icgraph.png" border="0" usemap="#clock_8c_ab1bd72177a9697cdd2eec38a4fe6651e_icgraph" alt=""/></div>
+<map name="clock_8c_ab1bd72177a9697cdd2eec38a4fe6651e_icgraph" id="clock_8c_ab1bd72177a9697cdd2eec38a4fe6651e_icgraph">
+<area shape="rect" id="node3" href="clock_8h.html#a8bfadf8175457fd7fbe6b53a46788a4e" title="Syscall handler pour get_date. Syscall handler pour get_date." alt="" coords="128,5,283,35"/><area shape="rect" id="node5" href="clock_8h.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="176,59,235,88"/><area shape="rect" id="node7" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur" alt="" coords="331,32,477,61"/><area shape="rect" id="node13" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="539,84,624,113"/><area shape="rect" id="node9" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="525,31,637,60"/><area shape="rect" id="node11" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep Endors un processus, et crée un évenement pour le réveiller..." alt="" coords="685,57,840,87"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0dc3166547de3bc1b9bdf45fdfb7d2e5"></a><!-- doxytag: member="clock.c::get_tv" ref="a0dc3166547de3bc1b9bdf45fdfb7d2e5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structtimeval.html">timeval</a> <a class="el" href="clock_8h.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5">get_tv</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [read]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>une structure timeval. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="clock_8c_a0dc3166547de3bc1b9bdf45fdfb7d2e5_cgraph.png" border="0" usemap="#clock_8c_a0dc3166547de3bc1b9bdf45fdfb7d2e5_cgraph" alt=""/></div>
+<map name="clock_8c_a0dc3166547de3bc1b9bdf45fdfb7d2e5_cgraph" id="clock_8c_a0dc3166547de3bc1b9bdf45fdfb7d2e5_cgraph">
+<area shape="rect" id="node3" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes." alt="" coords="115,5,189,35"/><area shape="rect" id="node5" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="112,59,192,88"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="clock_8c_a0dc3166547de3bc1b9bdf45fdfb7d2e5_icgraph.png" border="0" usemap="#clock_8c_a0dc3166547de3bc1b9bdf45fdfb7d2e5_icgraph" alt=""/></div>
+<map name="clock_8c_a0dc3166547de3bc1b9bdf45fdfb7d2e5_icgraph" id="clock_8c_a0dc3166547de3bc1b9bdf45fdfb7d2e5_icgraph">
+<area shape="rect" id="node3" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur" alt="" coords="112,7,259,36"/><area shape="rect" id="node9" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="320,59,405,88"/><area shape="rect" id="node5" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="307,5,419,35"/><area shape="rect" id="node7" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep Endors un processus, et crée un évenement pour le réveiller..." alt="" coords="467,32,621,61"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab594b78936f7a5c4ba0c3b7ad653b6d5"></a><!-- doxytag: member="clock.c::SYSCALL_HANDLER1" ref="ab594b78936f7a5c4ba0c3b7ad653b6d5" args="(sys_getclock, clock_t *clock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5">SYSCALL_HANDLER1</a> </td>
+          <td>(</td>
+          <td class="paramtype">sys_getclock&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">clock_t *&#160;</td>
+          <td class="paramname"><em>clock</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clock</td><td>Un pointeur pour y stocker la valeur de l'horloge système. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="clock_8c_ab594b78936f7a5c4ba0c3b7ad653b6d5_cgraph.png" border="0" usemap="#clock_8c_ab594b78936f7a5c4ba0c3b7ad653b6d5_cgraph" alt=""/></div>
+<map name="clock_8c_ab594b78936f7a5c4ba0c3b7ad653b6d5_cgraph" id="clock_8c_ab594b78936f7a5c4ba0c3b7ad653b6d5_cgraph">
+<area shape="rect" id="node3" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="208,5,288,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8bfadf8175457fd7fbe6b53a46788a4e"></a><!-- doxytag: member="clock.c::SYSCALL_HANDLER1" ref="a8bfadf8175457fd7fbe6b53a46788a4e" args="(sys_getdate, time_t *date)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5">SYSCALL_HANDLER1</a> </td>
+          <td>(</td>
+          <td class="paramtype">sys_getdate&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">time_t *&#160;</td>
+          <td class="paramname"><em>date</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">date</td><td>Un pointeur pour y stocker la date. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="clock_8c_a8bfadf8175457fd7fbe6b53a46788a4e_cgraph.png" border="0" usemap="#clock_8c_a8bfadf8175457fd7fbe6b53a46788a4e_cgraph" alt=""/></div>
+<map name="clock_8c_a8bfadf8175457fd7fbe6b53a46788a4e_cgraph" id="clock_8c_a8bfadf8175457fd7fbe6b53a46788a4e_cgraph">
+<area shape="rect" id="node3" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes." alt="" coords="208,5,283,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a052807a5c6ae63175a937381014a5701"></a><!-- doxytag: member="clock.c::timeval_add_usec" ref="a052807a5c6ae63175a937381014a5701" args="(struct timeval *t, time_t usec)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="clock_8h.html#a052807a5c6ae63175a937381014a5701">timeval_add_usec</a> </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structtimeval.html">timeval</a> *&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">time_t&#160;</td>
+          <td class="paramname"><em>usec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>La structure qui contient un temps. </td></tr>
+    <tr><td class="paramname">usec</td><td>Le nombre de us à ajouter. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="clock_8c_a052807a5c6ae63175a937381014a5701_icgraph.png" border="0" usemap="#clock_8c_a052807a5c6ae63175a937381014a5701_icgraph" alt=""/></div>
+<map name="clock_8c_a052807a5c6ae63175a937381014a5701_icgraph" id="clock_8c_a052807a5c6ae63175a937381014a5701_icgraph">
+<area shape="rect" id="node3" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur" alt="" coords="184,7,331,36"/><area shape="rect" id="node9" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="392,59,477,88"/><area shape="rect" id="node5" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="379,5,491,35"/><area shape="rect" id="node7" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep Endors un processus, et crée un évenement pour le réveiller..." alt="" coords="539,32,693,61"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<hr/><h2>Documentation des variables</h2>
+<a class="anchor" id="a71eeef3b16d170231b5aa59331e0ab60"></a><!-- doxytag: member="clock.c::_ytab" ref="a71eeef3b16d170231b5aa59331e0ab60" args="[2][12]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int _ytab[2][12]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur initiale :</b><div class="fragment"><pre class="fragment"> { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 },
+                           { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }}
+</pre></div>
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

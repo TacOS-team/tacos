@@ -1,0 +1,1246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier include/elf.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier include/elf.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Bibliothèque destinée à manipuler les fichiers exécutables ELF.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="elf_8h__dep__incl.png" border="0" usemap="#include_2elf_8hdep" alt=""/></div>
+<map name="include_2elf_8hdep" id="include_2elf_8hdep">
+<area shape="rect" id="node3" href="symtable_8h.html" title="kernel/include/symtable.h" alt="" coords="2791,83,2964,112"/><area shape="rect" id="node48" href="init_8c.html" title="kernel/init.c" alt="" coords="2896,315,2984,344"/><area shape="rect" id="node76" href="module_8c.html" title="kernel/module.c" alt="" coords="2915,160,3032,189"/><area shape="rect" id="node80" href="process_8h.html" title="libc/include/process.h" alt="" coords="3107,83,3256,112"/><area shape="rect" id="node82" href="process_8c.html" title="libc/process.c" alt="" coords="3185,160,3289,189"/><area shape="rect" id="node85" href="elf_8c.html" title="system/elf.c" alt="" coords="3331,83,3424,112"/><area shape="rect" id="node5" href="kprocess_8h.html" title="kernel/include/kprocess.h" alt="" coords="2067,160,2240,189"/><area shape="rect" id="node54" href="kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="2763,315,2872,344"/><area shape="rect" id="node7" href="tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="1195,315,1371,344"/><area shape="rect" id="node9" href="context_8h.html" title="kernel/include/context.h" alt="" coords="2411,237,2573,267"/><area shape="rect" id="node11" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="2557,315,2688,344"/><area shape="rect" id="node13" href="kfcntl_8h.html" title="kernel/include/kfcntl.h" alt="" coords="819,237,968,267"/><area shape="rect" id="node22" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="1776,392,1885,421"/><area shape="rect" id="node24" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="931,315,1032,344"/><area shape="rect" id="node30" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="1056,315,1171,344"/><area shape="rect" id="node34" href="ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="1500,237,1663,267"/><area shape="rect" id="node39" href="ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="1597,315,1712,344"/><area shape="rect" id="node42" href="scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="1967,237,2145,267"/><area shape="rect" id="node57" href="ksem_8c.html" title="kernel/ksem.c" alt="" coords="2261,315,2368,344"/><area shape="rect" id="node61" href="round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="2392,315,2533,344"/><area shape="rect" id="node15" href="serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="453,315,632,344"/><area shape="rect" id="node18" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="656,315,856,344"/><area shape="rect" id="node20" href="fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="5,315,181,344"/><area shape="rect" id="node26" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="1445,315,1573,344"/><area shape="rect" id="node28" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="205,315,315,344"/><area shape="rect" id="node32" href="vfs_8c.html" title="kernel/vfs.c" alt="" coords="339,315,429,344"/><area shape="rect" id="node45" href="round__robin_8h.html" title="kernel/include/round_robin.h" alt="" coords="1736,315,1925,344"/><area shape="rect" id="node50" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="2000,315,2112,344"/><area shape="rect" id="node64" href="vmm_8c.html" title="kernel/vmm.c" alt="" coords="2136,315,2237,344"/></map>
+</div>
+</div>
+<p><a href="elf_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structElf32__Ehdr.html">Elf32_Ehdr</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structElf32__Phdr.html">Elf32_Phdr</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structElf32__Shdr.html">Elf32_Shdr</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structElf32__Sym.html">Elf32_Sym</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structElf32__Rel.html">Elf32_Rel</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structElf32__Rela.html">Elf32_Rela</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structElf32__File.html">Elf32_File</a></td></tr>
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae407130db14180c6737390604ba7c1fe"></a><!-- doxytag: member="elf.h::EI_NIDENT" ref="ae407130db14180c6737390604ba7c1fe" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EI_NIDENT</b>&#160;&#160;&#160;16</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#aba717f40a418b0d99c2efd4cdab4f54f">EI_MAG0</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a2cae3878d982911632b418680718d53b">EI_MAG1</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a2884a339ef7aefee59d160ed3fbb1739">EI_MAG2</a>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#ace03d4c5e8952e27b8505581432c3b84">EI_MAG3</a>&#160;&#160;&#160;3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b508cacf6662e4bc0e98ffe1eb61636"></a><!-- doxytag: member="elf.h::EI_CLASS" ref="a5b508cacf6662e4bc0e98ffe1eb61636" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EI_CLASS</b>&#160;&#160;&#160;4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#aab8a7e71c15cccd3f1d721420cd3c2ee">ELFCLASSNONE</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a5f84b1bf6e07374d6289eab3d8c57f1c">ELFCLASS32</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a9ee66b59be5c78ea1f1eea8a36f2c291">ELFCLASS64</a>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a79c714b4bf89638ff576e163d7d2144f"></a><!-- doxytag: member="elf.h::EI_DATA" ref="a79c714b4bf89638ff576e163d7d2144f" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EI_DATA</b>&#160;&#160;&#160;5</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#ad25f21c9d99ad7f440811610bfc57ff6">ELFDATANONE</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#af66303c799da18c8aec282ea8592e7e7">ELFDATA2LSB</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a06385c3e5f0a3b62fae7f5e224e10f89">ELFDATA2MSB</a>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac8694b14e6500d9dc5047ef62518845"></a><!-- doxytag: member="elf.h::EI_VERSION" ref="aac8694b14e6500d9dc5047ef62518845" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EI_VERSION</b>&#160;&#160;&#160;6</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed24a379d553d0e36853949dd6ddd6c1"></a><!-- doxytag: member="elf.h::EI_PAD" ref="aed24a379d553d0e36853949dd6ddd6c1" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EI_PAD</b>&#160;&#160;&#160;7</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a343a36d721130c5017a5669537e96822">ET_NONE</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a2a91046a80fd753ce3dbfb109212761d">ET_REL</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#acdd2a7a43d6483137646603c3c31ab80">ET_EXE</a>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a4373ea3b3d512434ebe2213829b6751b">ET_DYN</a>&#160;&#160;&#160;3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a2b9430d26ba60f7a9d65c8d43e54f213">ET_CORE</a>&#160;&#160;&#160;4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a929894d9c68a7d9b8c29211b1e1a7469">ET_LOPROC</a>&#160;&#160;&#160;0xff00</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a77894d49f8672fee77686cc7f7ba1a1a">ET_HIPROC</a>&#160;&#160;&#160;0xffff</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a5a14b1234094272355977c59e351a14f">EM_NONE</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a19b0cea9b063bb97e84b0931ebc7d699">EM_M32</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a3d33cb376c76e9fb077ddf5389f8f8b8">EM_SPARC</a>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a77301c665274669ba8d05978eb0d299e">EM_386</a>&#160;&#160;&#160;3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#acc74dd2d7cd1e872c2d2f52d64a7982a">EM_68K</a>&#160;&#160;&#160;4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a66801fe3ae7746ab9386537d236cd4e4">EM_88K</a>&#160;&#160;&#160;5</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a80e7667a64867c4252a1c3a6333514d9">EM_860</a>&#160;&#160;&#160;7</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a3168ea327621f9848abb996540342fb6">EM_MIPS</a>&#160;&#160;&#160;8</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0307c9d093060e148ecca1c7cfb02429"></a><!-- doxytag: member="elf.h::EV_NONE" ref="a0307c9d093060e148ecca1c7cfb02429" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EV_NONE</b>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8085a255e82173046afefd2a1c6de930"></a><!-- doxytag: member="elf.h::EV_CURRENT" ref="a8085a255e82173046afefd2a1c6de930" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EV_CURRENT</b>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab2f25695673c5f1c4ec723e595288411"></a><!-- doxytag: member="elf.h::SHN_UNDEF" ref="ab2f25695673c5f1c4ec723e595288411" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHN_UNDEF</b>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac663b490fedc8aeab91bf941772ba306"></a><!-- doxytag: member="elf.h::SHN_LORESERVE" ref="ac663b490fedc8aeab91bf941772ba306" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHN_LORESERVE</b>&#160;&#160;&#160;0xff00</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab9efa7bd7617e554f6158699401d4e10"></a><!-- doxytag: member="elf.h::SHN_LOPROC" ref="ab9efa7bd7617e554f6158699401d4e10" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHN_LOPROC</b>&#160;&#160;&#160;0xff00</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e94b5a4fc1e90cfc5d08af79025171b"></a><!-- doxytag: member="elf.h::SHN_HIPROC" ref="a5e94b5a4fc1e90cfc5d08af79025171b" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHN_HIPROC</b>&#160;&#160;&#160;0xff1f</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a322030426afae1a37a8ba1ab86a39066"></a><!-- doxytag: member="elf.h::SHN_ABS" ref="a322030426afae1a37a8ba1ab86a39066" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHN_ABS</b>&#160;&#160;&#160;0xfff1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d62721d3fe66370be9ec0ca0764ec7b"></a><!-- doxytag: member="elf.h::SHN_COMMON" ref="a3d62721d3fe66370be9ec0ca0764ec7b" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHN_COMMON</b>&#160;&#160;&#160;0xfff2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaac4804ef07b9da1d840d951469692f0"></a><!-- doxytag: member="elf.h::SHN_HIRESERVE" ref="aaac4804ef07b9da1d840d951469692f0" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHN_HIRESERVE</b>&#160;&#160;&#160;0xffff</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a854729c1dc4623abeaeb765a1b745012">PT_NULL</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a84d7768fd6c6ece599d297090900cf92">PT_LOAD</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a2121a2f01c51e8462bfd4d47725649d8">PT_DYNAMIC</a>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#abcd3aa15bc567949c1ab6b1abc137710">PT_INTERP</a>&#160;&#160;&#160;3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a72baf87d62607c7fdccd3b8010d4ce30">PT_NOTE</a>&#160;&#160;&#160;4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#abff9f38fd394e09e60f5640550a23e46">PT_SHLIB</a>&#160;&#160;&#160;5</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a58ff00be749ca4000074f9b9066a1056">PT_PHDR</a>&#160;&#160;&#160;6</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#acaa6971207ea507ed02f22ba574b8534">PT_LOPROC</a>&#160;&#160;&#160;0x7000000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a74427c5909fdced36b41134c11650249">PT_HIPROC</a>&#160;&#160;&#160;0x7FFFFFF</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1780bfb8eae34d26e52459699877c640"></a><!-- doxytag: member="elf.h::PF_X" ref="a1780bfb8eae34d26e52459699877c640" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PF_X</b>&#160;&#160;&#160;0x1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20892094358e21f49ab6e5f8c4e29ae6"></a><!-- doxytag: member="elf.h::PF_W" ref="a20892094358e21f49ab6e5f8c4e29ae6" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PF_W</b>&#160;&#160;&#160;0x2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae529f935e58c029768c06fbc98b2ba8c"></a><!-- doxytag: member="elf.h::PF_R" ref="ae529f935e58c029768c06fbc98b2ba8c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PF_R</b>&#160;&#160;&#160;0x4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1566f4c14cff9f4b539b00af54d62dbb"></a><!-- doxytag: member="elf.h::SHT_NULL" ref="a1566f4c14cff9f4b539b00af54d62dbb" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_NULL</b>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4bff22edbae51353ba9b3572d424b91a"></a><!-- doxytag: member="elf.h::SHT_PROGBITS" ref="a4bff22edbae51353ba9b3572d424b91a" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_PROGBITS</b>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4add7784e43ec3d3b9c09d3ffc476a81"></a><!-- doxytag: member="elf.h::SHT_SYMTAB" ref="a4add7784e43ec3d3b9c09d3ffc476a81" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_SYMTAB</b>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af4b916dc4ca5016fb5c374068002a532"></a><!-- doxytag: member="elf.h::SHT_STRTAB" ref="af4b916dc4ca5016fb5c374068002a532" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_STRTAB</b>&#160;&#160;&#160;3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf2fc2781a2869352c2ffa0555f34118"></a><!-- doxytag: member="elf.h::SHT_RELA" ref="abf2fc2781a2869352c2ffa0555f34118" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_RELA</b>&#160;&#160;&#160;4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a446fd322326bea21373453c80c3f7925"></a><!-- doxytag: member="elf.h::SHT_HASH" ref="a446fd322326bea21373453c80c3f7925" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_HASH</b>&#160;&#160;&#160;5</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a9278d12cf2c9e7eaca87688d0a6e37"></a><!-- doxytag: member="elf.h::SHT_DYNAMIC" ref="a3a9278d12cf2c9e7eaca87688d0a6e37" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_DYNAMIC</b>&#160;&#160;&#160;6</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65506a79f0e972c851851af7b1008d94"></a><!-- doxytag: member="elf.h::SHT_NOTE" ref="a65506a79f0e972c851851af7b1008d94" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_NOTE</b>&#160;&#160;&#160;7</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a820ff00317949be2ea1fd634a17dc13e"></a><!-- doxytag: member="elf.h::SHT_NOBITS" ref="a820ff00317949be2ea1fd634a17dc13e" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_NOBITS</b>&#160;&#160;&#160;8</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2aea2ed985f81f13a157fe2da02a621a"></a><!-- doxytag: member="elf.h::SHT_REL" ref="a2aea2ed985f81f13a157fe2da02a621a" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_REL</b>&#160;&#160;&#160;9</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace0ce008ff50406077a9450174fe55a5"></a><!-- doxytag: member="elf.h::SHT_SHLIB" ref="ace0ce008ff50406077a9450174fe55a5" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_SHLIB</b>&#160;&#160;&#160;10</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9949aedf49107f6a07e618d5d791d40"></a><!-- doxytag: member="elf.h::SHT_DYNSYM" ref="aa9949aedf49107f6a07e618d5d791d40" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_DYNSYM</b>&#160;&#160;&#160;11</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5180feedae655c854f46e4f7f8b0d75a"></a><!-- doxytag: member="elf.h::SHT_LOPROC" ref="a5180feedae655c854f46e4f7f8b0d75a" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_LOPROC</b>&#160;&#160;&#160;0x70000000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9be8a10dd9e8859bec0b640038890d51"></a><!-- doxytag: member="elf.h::SHT_HIPROC" ref="a9be8a10dd9e8859bec0b640038890d51" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_HIPROC</b>&#160;&#160;&#160;0x7fffffff</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65191e50120fb55adb41cce8ee010915"></a><!-- doxytag: member="elf.h::SHT_LOUSER" ref="a65191e50120fb55adb41cce8ee010915" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_LOUSER</b>&#160;&#160;&#160;0x80000000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae46f05b4c63b841f74e2d349d777a688"></a><!-- doxytag: member="elf.h::SHT_HIUSER" ref="ae46f05b4c63b841f74e2d349d777a688" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHT_HIUSER</b>&#160;&#160;&#160;0x8fffffff</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a025c79223b0fee4676337d660f76b59b"></a><!-- doxytag: member="elf.h::SHF_WRITE" ref="a025c79223b0fee4676337d660f76b59b" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHF_WRITE</b>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38476fe4ed88ac83ba86a4e103199a86"></a><!-- doxytag: member="elf.h::SHF_ALLOC" ref="a38476fe4ed88ac83ba86a4e103199a86" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHF_ALLOC</b>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab3780594e35fbbc6e5028bcb921d0a76"></a><!-- doxytag: member="elf.h::SHF_EXECINSTR" ref="ab3780594e35fbbc6e5028bcb921d0a76" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHF_EXECINSTR</b>&#160;&#160;&#160;4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a5fff5464bf6eb2a4d8a86481cff333"></a><!-- doxytag: member="elf.h::SHF_MASKPROC" ref="a4a5fff5464bf6eb2a4d8a86481cff333" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SHF_MASKPROC</b>&#160;&#160;&#160;0xf0000000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b84f3e0e035d1264115f5c76227c5eb"></a><!-- doxytag: member="elf.h::ELF32_ST_BIND" ref="a3b84f3e0e035d1264115f5c76227c5eb" args="(i)" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ELF32_ST_BIND</b>(i)&#160;&#160;&#160;((i)&gt;&gt;4)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54dd2783f11c5f926d8db9250e1baa35"></a><!-- doxytag: member="elf.h::ELF32_ST_TYPE" ref="a54dd2783f11c5f926d8db9250e1baa35" args="(i)" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ELF32_ST_TYPE</b>(i)&#160;&#160;&#160;((i)&amp;0xf)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aceda3fb943b9f15cc44fe24651c25f29"></a><!-- doxytag: member="elf.h::ELF32_ST_INFO" ref="aceda3fb943b9f15cc44fe24651c25f29" args="(b, t)" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ELF32_ST_INFO</b>(b, t)&#160;&#160;&#160;(((b)&lt;&lt;4)+((t)&amp;0xf))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a72c40de459931e6f1d041201dc7398b1">STB_LOCAL</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a8091960a6799bf71a7494551dac1a2e8">STB_GLOBAL</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#ad4247ded90f9371e3c4d2f7dda260c93">STB_WEAK</a>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f4d0360fcb960e31e119973a472010e"></a><!-- doxytag: member="elf.h::STB_LOPROC" ref="a4f4d0360fcb960e31e119973a472010e" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STB_LOPROC</b>&#160;&#160;&#160;13</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5fa61266452365ab0e2d2ad32b87043e"></a><!-- doxytag: member="elf.h::STB_HIPROC" ref="a5fa61266452365ab0e2d2ad32b87043e" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STB_HIPROC</b>&#160;&#160;&#160;15</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#aa15a54cc9c881e4d54daedc9d984c2fc">STT_NOTYPE</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#ac236cc313291ed38ecb346a8b4bde6b2">STT_OBJECT</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a9cdfedf900935f23f6e409ce378dc1d2">STT_FUNC</a>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a9e9a3c0fa59c3fc896f8e4c1872c6af1">STT_SECTION</a>&#160;&#160;&#160;3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a983395f99446fa4d398c4e902bec34c6"></a><!-- doxytag: member="elf.h::STT_FILE" ref="a983395f99446fa4d398c4e902bec34c6" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STT_FILE</b>&#160;&#160;&#160;4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb49b6a738078d32e5979885e26c4ddf"></a><!-- doxytag: member="elf.h::STT_LOPROC" ref="aeb49b6a738078d32e5979885e26c4ddf" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STT_LOPROC</b>&#160;&#160;&#160;13</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5bf951d9b37f10dfe17a1bd6b4489599"></a><!-- doxytag: member="elf.h::STT_HIPROC" ref="a5bf951d9b37f10dfe17a1bd6b4489599" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STT_HIPROC</b>&#160;&#160;&#160;15</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d1ac0f35a8999a4a8a3350ca95ab54b"></a><!-- doxytag: member="elf.h::ELF32_R_SYM" ref="a8d1ac0f35a8999a4a8a3350ca95ab54b" args="(i)" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ELF32_R_SYM</b>(i)&#160;&#160;&#160;((i)&gt;&gt;8)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4ffd69f2c1c03229686bfa3a898db00"></a><!-- doxytag: member="elf.h::ELF32_R_TYPE" ref="aa4ffd69f2c1c03229686bfa3a898db00" args="(i)" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ELF32_R_TYPE</b>(i)&#160;&#160;&#160;((unsigned char)(i))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb7c1eec87bedbd8241d71ce4617d72c"></a><!-- doxytag: member="elf.h::ELF32_R_INFO" ref="aeb7c1eec87bedbd8241d71ce4617d72c" args="(s, t)" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ELF32_R_INFO</b>(s, t)&#160;&#160;&#160;(((s)&lt;&lt;8)+(unsigned char)(t))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e2fc1d7696704e230b4d767c173e3b0"></a><!-- doxytag: member="elf.h::R_386_NONE" ref="a9e2fc1d7696704e230b4d767c173e3b0" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>R_386_NONE</b>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af363b787459afd7e272677d7858572c0"></a><!-- doxytag: member="elf.h::R_386_32" ref="af363b787459afd7e272677d7858572c0" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>R_386_32</b>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad55eb4ccb6e52c4c03f99b34cc8c690b"></a><!-- doxytag: member="elf.h::R_386_PC32" ref="ad55eb4ccb6e52c4c03f99b34cc8c690b" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>R_386_PC32</b>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42f8dd027e6f2384dba2cfa060240c63"></a><!-- doxytag: member="elf.h::R_386_GOT32" ref="a42f8dd027e6f2384dba2cfa060240c63" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>R_386_GOT32</b>&#160;&#160;&#160;3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ee43218883fb9f2836f425615c2da40"></a><!-- doxytag: member="elf.h::R_386_PLT32" ref="a6ee43218883fb9f2836f425615c2da40" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>R_386_PLT32</b>&#160;&#160;&#160;4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac08872c616d1b9649dc13780f71833b1"></a><!-- doxytag: member="elf.h::R_386_COPY" ref="ac08872c616d1b9649dc13780f71833b1" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>R_386_COPY</b>&#160;&#160;&#160;5</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ab6b058a8dd4e90c49e74415809f867"></a><!-- doxytag: member="elf.h::R_386_GLOB_DAT" ref="a6ab6b058a8dd4e90c49e74415809f867" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>R_386_GLOB_DAT</b>&#160;&#160;&#160;6</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d36bf95ffa6b0f7a369b23938db5aaf"></a><!-- doxytag: member="elf.h::R_386_JMP_SLOT" ref="a4d36bf95ffa6b0f7a369b23938db5aaf" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>R_386_JMP_SLOT</b>&#160;&#160;&#160;7</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee5190154984e6176e1c6804ac13217d"></a><!-- doxytag: member="elf.h::R_386_RELATIVE" ref="aee5190154984e6176e1c6804ac13217d" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>R_386_RELATIVE</b>&#160;&#160;&#160;8</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2ed0eac08066a8dd368873fcd54ae3c"></a><!-- doxytag: member="elf.h::R_386_GOTOFF" ref="ac2ed0eac08066a8dd368873fcd54ae3c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>R_386_GOTOFF</b>&#160;&#160;&#160;9</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69665820640b0fb427ea40c8cd2496ce"></a><!-- doxytag: member="elf.h::R_386_GOTPC" ref="a69665820640b0fb427ea40c8cd2496ce" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>R_386_GOTPC</b>&#160;&#160;&#160;10</td></tr>
+<tr><td colspan="2"><h2><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f28fca75a4aa46b16575dd9ce48f9f8"></a><!-- doxytag: member="elf.h::Elf32_Addr" ref="a8f28fca75a4aa46b16575dd9ce48f9f8" args="" -->
+typedef unsigned long int&#160;</td><td class="memItemRight" valign="bottom"><b>Elf32_Addr</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2323ceef0db8b27712c77f03b8fca90"></a><!-- doxytag: member="elf.h::Elf32_Half" ref="af2323ceef0db8b27712c77f03b8fca90" args="" -->
+typedef unsigned short int&#160;</td><td class="memItemRight" valign="bottom"><b>Elf32_Half</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75936552c00685a3ced05e0dddc1b80a"></a><!-- doxytag: member="elf.h::Elf32_Off" ref="a75936552c00685a3ced05e0dddc1b80a" args="" -->
+typedef unsigned long int&#160;</td><td class="memItemRight" valign="bottom"><b>Elf32_Off</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa0a94dbf317c36105e5038e8d5501d50"></a><!-- doxytag: member="elf.h::Elf32_Sword" ref="aa0a94dbf317c36105e5038e8d5501d50" args="" -->
+typedef signed long int&#160;</td><td class="memItemRight" valign="bottom"><b>Elf32_Sword</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6076eba35a01a89db3d103d7e8e5580f"></a><!-- doxytag: member="elf.h::Elf32_Word" ref="a6076eba35a01a89db3d103d7e8e5580f" args="" -->
+typedef unsigned long int&#160;</td><td class="memItemRight" valign="bottom"><b>Elf32_Word</b></td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a0a376bfb8dd86fece985ec35032a635b">load_efl_header</a> (<a class="el" href="structElf32__Ehdr.html">Elf32_Ehdr</a> *elf_header, int fd)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">charge le header principal d'un fichier elf  <a href="#a0a376bfb8dd86fece985ec35032a635b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a9aae782f070af1c6009d0cc2a6d60a08">load_program_header</a> (<a class="el" href="structElf32__Phdr.html">Elf32_Phdr</a> *program_header, <a class="el" href="structElf32__Ehdr.html">Elf32_Ehdr</a> *elf_header, int index, int fd)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">charge un program header depuis un fichier elf Charge le program header n°index depuis le fichier  <a href="#a9aae782f070af1c6009d0cc2a6d60a08"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a8138ecf1d1d9bd1e80e05694ef4362e4">load_section_header</a> (<a class="el" href="structElf32__Shdr.html">Elf32_Shdr</a> *section_header, <a class="el" href="structElf32__Ehdr.html">Elf32_Ehdr</a> *elf_header, int index, int fd)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">charge un section header depuis un fichier elf Charge le section header n°index depuis le fichier  <a href="#a8138ecf1d1d9bd1e80e05694ef4362e4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#aa84790a8edae8d2859861f19adf5dd41">elf_size</a> (int fd)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcul la taille que prendra l'exécutable dans la mémoire La fonction évalue l'adresse de départ en mémoire, et l'adresse de fin, et retourne la différence (il n'est pas suffisant d'additionner les tailles des différentes sections)  <a href="#aa84790a8edae8d2859861f19adf5dd41"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a35e8f32030ee36d8c02357a0b483c1b2">load_elf</a> (int fd, void *dest)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">charge un fichier elf Charge les données utiles de l'exécutable en mémoire, de façon à ce que ce soit pret à exécuter  <a href="#a35e8f32030ee36d8c02357a0b483c1b2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structElf32__File.html">Elf32_File</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#abbbb3d1f6ac9986f87d655cec7819556">load_elf_file</a> (int fd)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">charge un fichier elf dans la structure <a class="el" href="structElf32__File.html">Elf32_File</a>  <a href="#abbbb3d1f6ac9986f87d655cec7819556"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structElf32__Sym.html">Elf32_Sym</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#a8f556b72039271c88d4567c6e2f84ea0">find_symbol</a> (<a class="el" href="structElf32__File.html">Elf32_File</a> *file, const char *symbol)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Trouve un symbole dans un fichier.  <a href="#a8f556b72039271c88d4567c6e2f84ea0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af969175b11017f629b1dfbf557fccbcc"></a><!-- doxytag: member="elf.h::elf_info" ref="af969175b11017f629b1dfbf557fccbcc" args="(char *name)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elf_8h.html#af969175b11017f629b1dfbf557fccbcc">elf_info</a> (char *name)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche des information sur le fichier elf. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add3dc980af2e721693ea9452e4f1707f"></a><!-- doxytag: member="elf.h::exec_elf" ref="add3dc980af2e721693ea9452e4f1707f" args="(char *name, int orphan)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>exec_elf</b> (char *name, int orphan)</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+</div><hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="aba717f40a418b0d99c2efd4cdab4f54f"></a><!-- doxytag: member="elf.h::EI_MAG0" ref="aba717f40a418b0d99c2efd4cdab4f54f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#aba717f40a418b0d99c2efd4cdab4f54f">EI_MAG0</a>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>0x7F </p>
+
+</div>
+</div>
+<a class="anchor" id="a2cae3878d982911632b418680718d53b"></a><!-- doxytag: member="elf.h::EI_MAG1" ref="a2cae3878d982911632b418680718d53b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a2cae3878d982911632b418680718d53b">EI_MAG1</a>&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>'E' </p>
+
+</div>
+</div>
+<a class="anchor" id="a2884a339ef7aefee59d160ed3fbb1739"></a><!-- doxytag: member="elf.h::EI_MAG2" ref="a2884a339ef7aefee59d160ed3fbb1739" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a2884a339ef7aefee59d160ed3fbb1739">EI_MAG2</a>&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>'L' </p>
+
+</div>
+</div>
+<a class="anchor" id="ace03d4c5e8952e27b8505581432c3b84"></a><!-- doxytag: member="elf.h::EI_MAG3" ref="ace03d4c5e8952e27b8505581432c3b84" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#ace03d4c5e8952e27b8505581432c3b84">EI_MAG3</a>&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>'F' </p>
+
+</div>
+</div>
+<a class="anchor" id="a5f84b1bf6e07374d6289eab3d8c57f1c"></a><!-- doxytag: member="elf.h::ELFCLASS32" ref="a5f84b1bf6e07374d6289eab3d8c57f1c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a5f84b1bf6e07374d6289eab3d8c57f1c">ELFCLASS32</a>&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Objet 32-bits </p>
+
+</div>
+</div>
+<a class="anchor" id="a9ee66b59be5c78ea1f1eea8a36f2c291"></a><!-- doxytag: member="elf.h::ELFCLASS64" ref="a9ee66b59be5c78ea1f1eea8a36f2c291" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a9ee66b59be5c78ea1f1eea8a36f2c291">ELFCLASS64</a>&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Objet 64-bits </p>
+
+</div>
+</div>
+<a class="anchor" id="aab8a7e71c15cccd3f1d721420cd3c2ee"></a><!-- doxytag: member="elf.h::ELFCLASSNONE" ref="aab8a7e71c15cccd3f1d721420cd3c2ee" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#aab8a7e71c15cccd3f1d721420cd3c2ee">ELFCLASSNONE</a>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Classe invalide </p>
+
+</div>
+</div>
+<a class="anchor" id="af66303c799da18c8aec282ea8592e7e7"></a><!-- doxytag: member="elf.h::ELFDATA2LSB" ref="af66303c799da18c8aec282ea8592e7e7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#af66303c799da18c8aec282ea8592e7e7">ELFDATA2LSB</a>&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Big-endian </p>
+
+</div>
+</div>
+<a class="anchor" id="a06385c3e5f0a3b62fae7f5e224e10f89"></a><!-- doxytag: member="elf.h::ELFDATA2MSB" ref="a06385c3e5f0a3b62fae7f5e224e10f89" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a06385c3e5f0a3b62fae7f5e224e10f89">ELFDATA2MSB</a>&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Little-endian </p>
+
+</div>
+</div>
+<a class="anchor" id="ad25f21c9d99ad7f440811610bfc57ff6"></a><!-- doxytag: member="elf.h::ELFDATANONE" ref="ad25f21c9d99ad7f440811610bfc57ff6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#ad25f21c9d99ad7f440811610bfc57ff6">ELFDATANONE</a>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Encodage des données invalide </p>
+
+</div>
+</div>
+<a class="anchor" id="a77301c665274669ba8d05978eb0d299e"></a><!-- doxytag: member="elf.h::EM_386" ref="a77301c665274669ba8d05978eb0d299e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a77301c665274669ba8d05978eb0d299e">EM_386</a>&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Intel 80386 </p>
+
+</div>
+</div>
+<a class="anchor" id="acc74dd2d7cd1e872c2d2f52d64a7982a"></a><!-- doxytag: member="elf.h::EM_68K" ref="acc74dd2d7cd1e872c2d2f52d64a7982a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#acc74dd2d7cd1e872c2d2f52d64a7982a">EM_68K</a>&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Motorola 68000 </p>
+
+</div>
+</div>
+<a class="anchor" id="a80e7667a64867c4252a1c3a6333514d9"></a><!-- doxytag: member="elf.h::EM_860" ref="a80e7667a64867c4252a1c3a6333514d9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a80e7667a64867c4252a1c3a6333514d9">EM_860</a>&#160;&#160;&#160;7</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Intel 80860 </p>
+
+</div>
+</div>
+<a class="anchor" id="a66801fe3ae7746ab9386537d236cd4e4"></a><!-- doxytag: member="elf.h::EM_88K" ref="a66801fe3ae7746ab9386537d236cd4e4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a66801fe3ae7746ab9386537d236cd4e4">EM_88K</a>&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Motorola 88000 </p>
+
+</div>
+</div>
+<a class="anchor" id="a19b0cea9b063bb97e84b0931ebc7d699"></a><!-- doxytag: member="elf.h::EM_M32" ref="a19b0cea9b063bb97e84b0931ebc7d699" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a19b0cea9b063bb97e84b0931ebc7d699">EM_M32</a>&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>AT&amp;T WE 32100 </p>
+
+</div>
+</div>
+<a class="anchor" id="a3168ea327621f9848abb996540342fb6"></a><!-- doxytag: member="elf.h::EM_MIPS" ref="a3168ea327621f9848abb996540342fb6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a3168ea327621f9848abb996540342fb6">EM_MIPS</a>&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>MIPS RS3000 </p>
+
+</div>
+</div>
+<a class="anchor" id="a5a14b1234094272355977c59e351a14f"></a><!-- doxytag: member="elf.h::EM_NONE" ref="a5a14b1234094272355977c59e351a14f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a5a14b1234094272355977c59e351a14f">EM_NONE</a>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Aucune architecture spécifiée </p>
+
+</div>
+</div>
+<a class="anchor" id="a3d33cb376c76e9fb077ddf5389f8f8b8"></a><!-- doxytag: member="elf.h::EM_SPARC" ref="a3d33cb376c76e9fb077ddf5389f8f8b8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a3d33cb376c76e9fb077ddf5389f8f8b8">EM_SPARC</a>&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>SPARC </p>
+
+</div>
+</div>
+<a class="anchor" id="a2b9430d26ba60f7a9d65c8d43e54f213"></a><!-- doxytag: member="elf.h::ET_CORE" ref="a2b9430d26ba60f7a9d65c8d43e54f213" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a2b9430d26ba60f7a9d65c8d43e54f213">ET_CORE</a>&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Core file </p>
+
+</div>
+</div>
+<a class="anchor" id="a4373ea3b3d512434ebe2213829b6751b"></a><!-- doxytag: member="elf.h::ET_DYN" ref="a4373ea3b3d512434ebe2213829b6751b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a4373ea3b3d512434ebe2213829b6751b">ET_DYN</a>&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Shared object file </p>
+
+</div>
+</div>
+<a class="anchor" id="acdd2a7a43d6483137646603c3c31ab80"></a><!-- doxytag: member="elf.h::ET_EXE" ref="acdd2a7a43d6483137646603c3c31ab80" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#acdd2a7a43d6483137646603c3c31ab80">ET_EXE</a>&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Executable file </p>
+
+</div>
+</div>
+<a class="anchor" id="a77894d49f8672fee77686cc7f7ba1a1a"></a><!-- doxytag: member="elf.h::ET_HIPROC" ref="a77894d49f8672fee77686cc7f7ba1a1a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a77894d49f8672fee77686cc7f7ba1a1a">ET_HIPROC</a>&#160;&#160;&#160;0xffff</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Processor-specific </p>
+
+</div>
+</div>
+<a class="anchor" id="a929894d9c68a7d9b8c29211b1e1a7469"></a><!-- doxytag: member="elf.h::ET_LOPROC" ref="a929894d9c68a7d9b8c29211b1e1a7469" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a929894d9c68a7d9b8c29211b1e1a7469">ET_LOPROC</a>&#160;&#160;&#160;0xff00</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Processor-specific </p>
+
+</div>
+</div>
+<a class="anchor" id="a343a36d721130c5017a5669537e96822"></a><!-- doxytag: member="elf.h::ET_NONE" ref="a343a36d721130c5017a5669537e96822" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a343a36d721130c5017a5669537e96822">ET_NONE</a>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>No type </p>
+
+</div>
+</div>
+<a class="anchor" id="a2a91046a80fd753ce3dbfb109212761d"></a><!-- doxytag: member="elf.h::ET_REL" ref="a2a91046a80fd753ce3dbfb109212761d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a2a91046a80fd753ce3dbfb109212761d">ET_REL</a>&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Relocatable file </p>
+
+</div>
+</div>
+<a class="anchor" id="a2121a2f01c51e8462bfd4d47725649d8"></a><!-- doxytag: member="elf.h::PT_DYNAMIC" ref="a2121a2f01c51e8462bfd4d47725649d8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a2121a2f01c51e8462bfd4d47725649d8">PT_DYNAMIC</a>&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Dynamic linking information </p>
+
+</div>
+</div>
+<a class="anchor" id="a74427c5909fdced36b41134c11650249"></a><!-- doxytag: member="elf.h::PT_HIPROC" ref="a74427c5909fdced36b41134c11650249" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a74427c5909fdced36b41134c11650249">PT_HIPROC</a>&#160;&#160;&#160;0x7FFFFFF</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Processor specific semantics </p>
+
+</div>
+</div>
+<a class="anchor" id="abcd3aa15bc567949c1ab6b1abc137710"></a><!-- doxytag: member="elf.h::PT_INTERP" ref="abcd3aa15bc567949c1ab6b1abc137710" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#abcd3aa15bc567949c1ab6b1abc137710">PT_INTERP</a>&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Pathname to an interpreter </p>
+
+</div>
+</div>
+<a class="anchor" id="a84d7768fd6c6ece599d297090900cf92"></a><!-- doxytag: member="elf.h::PT_LOAD" ref="a84d7768fd6c6ece599d297090900cf92" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a84d7768fd6c6ece599d297090900cf92">PT_LOAD</a>&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Loadable segment </p>
+
+</div>
+</div>
+<a class="anchor" id="acaa6971207ea507ed02f22ba574b8534"></a><!-- doxytag: member="elf.h::PT_LOPROC" ref="acaa6971207ea507ed02f22ba574b8534" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#acaa6971207ea507ed02f22ba574b8534">PT_LOPROC</a>&#160;&#160;&#160;0x7000000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Processor specific semantics </p>
+
+</div>
+</div>
+<a class="anchor" id="a72baf87d62607c7fdccd3b8010d4ce30"></a><!-- doxytag: member="elf.h::PT_NOTE" ref="a72baf87d62607c7fdccd3b8010d4ce30" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a72baf87d62607c7fdccd3b8010d4ce30">PT_NOTE</a>&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Auxiliary informations </p>
+
+</div>
+</div>
+<a class="anchor" id="a854729c1dc4623abeaeb765a1b745012"></a><!-- doxytag: member="elf.h::PT_NULL" ref="a854729c1dc4623abeaeb765a1b745012" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a854729c1dc4623abeaeb765a1b745012">PT_NULL</a>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Unused element </p>
+
+</div>
+</div>
+<a class="anchor" id="a58ff00be749ca4000074f9b9066a1056"></a><!-- doxytag: member="elf.h::PT_PHDR" ref="a58ff00be749ca4000074f9b9066a1056" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a58ff00be749ca4000074f9b9066a1056">PT_PHDR</a>&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Specifie location of the program header table itself </p>
+
+</div>
+</div>
+<a class="anchor" id="abff9f38fd394e09e60f5640550a23e46"></a><!-- doxytag: member="elf.h::PT_SHLIB" ref="abff9f38fd394e09e60f5640550a23e46" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#abff9f38fd394e09e60f5640550a23e46">PT_SHLIB</a>&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>No specified semantics </p>
+
+</div>
+</div>
+<a class="anchor" id="a8091960a6799bf71a7494551dac1a2e8"></a><!-- doxytag: member="elf.h::STB_GLOBAL" ref="a8091960a6799bf71a7494551dac1a2e8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a8091960a6799bf71a7494551dac1a2e8">STB_GLOBAL</a>&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Visible par tous les objet combinés à celui ci </p>
+
+</div>
+</div>
+<a class="anchor" id="a72c40de459931e6f1d041201dc7398b1"></a><!-- doxytag: member="elf.h::STB_LOCAL" ref="a72c40de459931e6f1d041201dc7398b1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a72c40de459931e6f1d041201dc7398b1">STB_LOCAL</a>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Invisible hors du fichier objet contenant sa définition </p>
+
+</div>
+</div>
+<a class="anchor" id="ad4247ded90f9371e3c4d2f7dda260c93"></a><!-- doxytag: member="elf.h::STB_WEAK" ref="ad4247ded90f9371e3c4d2f7dda260c93" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#ad4247ded90f9371e3c4d2f7dda260c93">STB_WEAK</a>&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Pareil que global, grosso modo, voir la doc pour avoir les nuances </p>
+
+</div>
+</div>
+<a class="anchor" id="a9cdfedf900935f23f6e409ce378dc1d2"></a><!-- doxytag: member="elf.h::STT_FUNC" ref="a9cdfedf900935f23f6e409ce378dc1d2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a9cdfedf900935f23f6e409ce378dc1d2">STT_FUNC</a>&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Fonction ou code </p>
+
+</div>
+</div>
+<a class="anchor" id="aa15a54cc9c881e4d54daedc9d984c2fc"></a><!-- doxytag: member="elf.h::STT_NOTYPE" ref="aa15a54cc9c881e4d54daedc9d984c2fc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#aa15a54cc9c881e4d54daedc9d984c2fc">STT_NOTYPE</a>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Pas de type </p>
+
+</div>
+</div>
+<a class="anchor" id="ac236cc313291ed38ecb346a8b4bde6b2"></a><!-- doxytag: member="elf.h::STT_OBJECT" ref="ac236cc313291ed38ecb346a8b4bde6b2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#ac236cc313291ed38ecb346a8b4bde6b2">STT_OBJECT</a>&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Données: variables, tableau, etc. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9e9a3c0fa59c3fc896f8e4c1872c6af1"></a><!-- doxytag: member="elf.h::STT_SECTION" ref="a9e9a3c0fa59c3fc896f8e4c1872c6af1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="elf_8h.html#a9e9a3c0fa59c3fc896f8e4c1872c6af1">STT_SECTION</a>&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Le symbol est une fonction </p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="aa84790a8edae8d2859861f19adf5dd41"></a><!-- doxytag: member="elf.h::elf_size" ref="aa84790a8edae8d2859861f19adf5dd41" args="(int fd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long int <a class="el" href="elf_8c.html#aa84790a8edae8d2859861f19adf5dd41">elf_size</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fd</td><td>descripteur du fichier elf</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>taille prise initialement par l'exécutable en mémoire </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="elf_8h_aa84790a8edae8d2859861f19adf5dd41_cgraph.png" border="0" usemap="#elf_8h_aa84790a8edae8d2859861f19adf5dd41_cgraph" alt=""/></div>
+<map name="elf_8h_aa84790a8edae8d2859861f19adf5dd41_cgraph" id="elf_8h_aa84790a8edae8d2859861f19adf5dd41_cgraph">
+<area shape="rect" id="node3" href="elf_8h.html#a9aae782f070af1c6009d0cc2a6d60a08" title="charge un program header depuis un fichier elf Charge le program header n°index depuis le fichier..." alt="" coords="124,32,276,61"/><area shape="rect" id="node5" href="unistd_8h.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier." alt="" coords="327,5,380,35"/><area shape="rect" id="node9" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="329,59,377,88"/><area shape="rect" id="node7" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="431,32,492,61"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8f556b72039271c88d4567c6e2f84ea0"></a><!-- doxytag: member="elf.h::find_symbol" ref="a8f556b72039271c88d4567c6e2f84ea0" args="(Elf32_File *file, const char *symbol)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structElf32__Sym.html">Elf32_Sym</a>* <a class="el" href="elf_8c.html#a8f556b72039271c88d4567c6e2f84ea0">find_symbol</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structElf32__File.html">Elf32_File</a> *&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>symbol</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>Fichier dans lequel on recherche le symbole </td></tr>
+    <tr><td class="paramname">symbol</td><td>Symbole cherché</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>symbole recherché </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="elf_8h_a8f556b72039271c88d4567c6e2f84ea0_cgraph.png" border="0" usemap="#elf_8h_a8f556b72039271c88d4567c6e2f84ea0_cgraph" alt=""/></div>
+<map name="elf_8h_a8f556b72039271c88d4567c6e2f84ea0_cgraph" id="elf_8h_a8f556b72039271c88d4567c6e2f84ea0_cgraph">
+<area shape="rect" id="node3" href="string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="147,5,208,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0a376bfb8dd86fece985ec35032a635b"></a><!-- doxytag: member="elf.h::load_efl_header" ref="a0a376bfb8dd86fece985ec35032a635b" args="(Elf32_Ehdr *elf_header, int fd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="elf_8h.html#a0a376bfb8dd86fece985ec35032a635b">load_efl_header</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structElf32__Ehdr.html">Elf32_Ehdr</a> *&#160;</td>
+          <td class="paramname"><em>elf_header</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elf_header</td><td>adresse où l'on veut charger le header </td></tr>
+    <tr><td class="paramname">fd</td><td>descripteur du fichier à charger</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>1 si le fichier est bien un fichier elf valide, 0 sinon </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a35e8f32030ee36d8c02357a0b483c1b2"></a><!-- doxytag: member="elf.h::load_elf" ref="a35e8f32030ee36d8c02357a0b483c1b2" args="(int fd, void *dest)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="elf_8c.html#a35e8f32030ee36d8c02357a0b483c1b2">load_elf</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fd</td><td>descripteur du fichier à charger </td></tr>
+    <tr><td class="paramname">dest</td><td>adresse à laquelle il faut charger l'exécutable</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>adresse du point d'entrée de l'exécutable </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="elf_8h_a35e8f32030ee36d8c02357a0b483c1b2_cgraph.png" border="0" usemap="#elf_8h_a35e8f32030ee36d8c02357a0b483c1b2_cgraph" alt=""/></div>
+<map name="elf_8h_a35e8f32030ee36d8c02357a0b483c1b2_cgraph" id="elf_8h_a35e8f32030ee36d8c02357a0b483c1b2_cgraph">
+<area shape="rect" id="node3" href="elf_8h.html#a9aae782f070af1c6009d0cc2a6d60a08" title="charge un program header depuis un fichier elf Charge le program header n°index depuis le fichier..." alt="" coords="124,32,276,61"/><area shape="rect" id="node5" href="unistd_8h.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier." alt="" coords="327,5,380,35"/><area shape="rect" id="node9" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="329,59,377,88"/><area shape="rect" id="node7" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="431,32,492,61"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="abbbb3d1f6ac9986f87d655cec7819556"></a><!-- doxytag: member="elf.h::load_elf_file" ref="abbbb3d1f6ac9986f87d655cec7819556" args="(int fd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structElf32__File.html">Elf32_File</a>* <a class="el" href="elf_8c.html#abbbb3d1f6ac9986f87d655cec7819556">load_elf_file</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fd</td><td>File descriptor du fichier à charger.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>pointeur vers une structure Elf32_file chargée, NULL en cas d'échec </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="elf_8h_abbbb3d1f6ac9986f87d655cec7819556_cgraph.png" border="0" usemap="#elf_8h_abbbb3d1f6ac9986f87d655cec7819556_cgraph" alt=""/></div>
+<map name="elf_8h_abbbb3d1f6ac9986f87d655cec7819556_cgraph" id="elf_8h_abbbb3d1f6ac9986f87d655cec7819556_cgraph">
+<area shape="rect" id="node3" href="elf_8h.html#a9aae782f070af1c6009d0cc2a6d60a08" title="charge un program header depuis un fichier elf Charge le program header n°index depuis le fichier..." alt="" coords="148,85,300,114"/><area shape="rect" id="node5" href="unistd_8h.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier." alt="" coords="351,31,404,61"/><area shape="rect" id="node9" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="353,85,401,114"/><area shape="rect" id="node12" href="elf_8h.html#a8138ecf1d1d9bd1e80e05694ef4362e4" title="charge un section header depuis un fichier elf Charge le section header n°index depuis le fichier..." alt="" coords="151,31,297,61"/><area shape="rect" id="node18" href="string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="193,189,255,218"/><area shape="rect" id="node7" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="455,58,516,87"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="elf_8h_abbbb3d1f6ac9986f87d655cec7819556_icgraph.png" border="0" usemap="#elf_8h_abbbb3d1f6ac9986f87d655cec7819556_icgraph" alt=""/></div>
+<map name="elf_8h_abbbb3d1f6ac9986f87d655cec7819556_icgraph" id="elf_8h_abbbb3d1f6ac9986f87d655cec7819556_icgraph">
+<area shape="rect" id="node3" href="elf_8c.html#af969175b11017f629b1dfbf557fccbcc" title="Affiche des information sur le fichier elf." alt="" coords="147,5,211,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9aae782f070af1c6009d0cc2a6d60a08"></a><!-- doxytag: member="elf.h::load_program_header" ref="a9aae782f070af1c6009d0cc2a6d60a08" args="(Elf32_Phdr *program_header, Elf32_Ehdr *elf_header, int index, int fd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="elf_8c.html#a9aae782f070af1c6009d0cc2a6d60a08">load_program_header</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structElf32__Phdr.html">Elf32_Phdr</a> *&#160;</td>
+          <td class="paramname"><em>program_header</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structElf32__Ehdr.html">Elf32_Ehdr</a> *&#160;</td>
+          <td class="paramname"><em>elf_header</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">program_header</td><td>adresse où l'on veut charger le header </td></tr>
+    <tr><td class="paramname">elf_header</td><td>header principal du fichier </td></tr>
+    <tr><td class="paramname">index</td><td>numero du program header à charger </td></tr>
+    <tr><td class="paramname">fd</td><td>descripteur du fichier à charger</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 si succès, -1 sinon </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="elf_8h_a9aae782f070af1c6009d0cc2a6d60a08_cgraph.png" border="0" usemap="#elf_8h_a9aae782f070af1c6009d0cc2a6d60a08_cgraph" alt=""/></div>
+<map name="elf_8h_a9aae782f070af1c6009d0cc2a6d60a08_cgraph" id="elf_8h_a9aae782f070af1c6009d0cc2a6d60a08_cgraph">
+<area shape="rect" id="node3" href="unistd_8h.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier." alt="" coords="209,5,263,35"/><area shape="rect" id="node7" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="212,59,260,88"/><area shape="rect" id="node5" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="313,32,375,61"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="elf_8h_a9aae782f070af1c6009d0cc2a6d60a08_icgraph.png" border="0" usemap="#elf_8h_a9aae782f070af1c6009d0cc2a6d60a08_icgraph" alt=""/></div>
+<map name="elf_8h_a9aae782f070af1c6009d0cc2a6d60a08_icgraph" id="elf_8h_a9aae782f070af1c6009d0cc2a6d60a08_icgraph">
+<area shape="rect" id="node3" href="elf_8c.html#aa84790a8edae8d2859861f19adf5dd41" title="Calcul la taille que prendra l&#39;exécutable dans la mémoire La fonction évalue l&#39;adresse de départ en m..." alt="" coords="221,5,288,35"/><area shape="rect" id="node5" href="elf_8c.html#a35e8f32030ee36d8c02357a0b483c1b2" title="charge un fichier elf Charge les données utiles de l&#39;exécutable en mémoire, de façon à ce que ce soit..." alt="" coords="220,59,289,88"/><area shape="rect" id="node7" href="elf_8c.html#abbbb3d1f6ac9986f87d655cec7819556" title="charge un fichier elf dans la structure Elf32_File" alt="" coords="208,112,301,141"/><area shape="rect" id="node9" href="elf_8c.html#af969175b11017f629b1dfbf557fccbcc" title="Affiche des information sur le fichier elf." alt="" coords="349,112,413,141"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8138ecf1d1d9bd1e80e05694ef4362e4"></a><!-- doxytag: member="elf.h::load_section_header" ref="a8138ecf1d1d9bd1e80e05694ef4362e4" args="(Elf32_Shdr *section_header, Elf32_Ehdr *elf_header, int index, int fd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="elf_8c.html#a8138ecf1d1d9bd1e80e05694ef4362e4">load_section_header</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structElf32__Shdr.html">Elf32_Shdr</a> *&#160;</td>
+          <td class="paramname"><em>section_header</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structElf32__Ehdr.html">Elf32_Ehdr</a> *&#160;</td>
+          <td class="paramname"><em>elf_header</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">section_header</td><td>adresse où l'on veut charger le header </td></tr>
+    <tr><td class="paramname">elf_header</td><td>header principal du fichier </td></tr>
+    <tr><td class="paramname">index</td><td>numero du section header à charger </td></tr>
+    <tr><td class="paramname">fd</td><td>descripteur du fichier à charger</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 si succès, -1 sinon </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="elf_8h_a8138ecf1d1d9bd1e80e05694ef4362e4_cgraph.png" border="0" usemap="#elf_8h_a8138ecf1d1d9bd1e80e05694ef4362e4_cgraph" alt=""/></div>
+<map name="elf_8h_a8138ecf1d1d9bd1e80e05694ef4362e4_cgraph" id="elf_8h_a8138ecf1d1d9bd1e80e05694ef4362e4_cgraph">
+<area shape="rect" id="node3" href="unistd_8h.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier." alt="" coords="201,5,255,35"/><area shape="rect" id="node7" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="204,59,252,88"/><area shape="rect" id="node5" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="305,32,367,61"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="elf_8h_a8138ecf1d1d9bd1e80e05694ef4362e4_icgraph.png" border="0" usemap="#elf_8h_a8138ecf1d1d9bd1e80e05694ef4362e4_icgraph" alt=""/></div>
+<map name="elf_8h_a8138ecf1d1d9bd1e80e05694ef4362e4_icgraph" id="elf_8h_a8138ecf1d1d9bd1e80e05694ef4362e4_icgraph">
+<area shape="rect" id="node3" href="elf_8c.html#abbbb3d1f6ac9986f87d655cec7819556" title="charge un fichier elf dans la structure Elf32_File" alt="" coords="200,5,293,35"/><area shape="rect" id="node5" href="elf_8c.html#af969175b11017f629b1dfbf557fccbcc" title="Affiche des information sur le fichier elf." alt="" coords="341,5,405,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

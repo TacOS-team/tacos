@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="5,83,181,112"/>
+<area shape="rect" id="node5" href="$fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="205,83,360,112"/>
+<area shape="rect" id="node7" href="$ctype_8c.html" title="Fonctions de classification des caractères." alt="" coords="384,83,472,112"/>
+<area shape="rect" id="node9" href="$scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="496,83,616,112"/>
+<area shape="rect" id="node11" href="$stdlib_8c.html" title="libc/stdlib.c" alt="" coords="640,83,725,112"/>
+<area shape="rect" id="node13" href="$string_8c.html" title="libc/string.c" alt="" coords="749,83,837,112"/>
+</map>

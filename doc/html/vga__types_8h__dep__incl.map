@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$vga_8h.html" title="kernel/include/drivers/vga.h" alt="" coords="264,83,451,112"/>
+<area shape="rect" id="node9" href="$vga__modes_8h.html" title="kernel/include/drivers/vga_modes.h" alt="" coords="5,83,240,112"/>
+<area shape="rect" id="node5" href="$vga_8c.html" title="kernel/drivers/char/vga.c" alt="" coords="80,160,248,189"/>
+<area shape="rect" id="node7" href="$init_8c.html" title="kernel/init.c" alt="" coords="313,160,401,189"/>
+</map>

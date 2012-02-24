@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de kernel/include/fs/fat.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">kernel/include/fs/fat.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="fat_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00030"></a>00030 <span class="preprocessor">#ifndef _KFAT_H_</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define _KFAT_H_</span>
+<a name="l00032"></a>00032 <span class="preprocessor"></span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;types.h&gt;</span>
+<a name="l00034"></a>00034 <span class="preprocessor">#include &lt;<a class="code" href="fd__types_8h.html">fd_types.h</a>&gt;</span>
+<a name="l00035"></a>00035 <span class="preprocessor">#include &lt;<a class="code" href="kstat_8h.html">kstat.h</a>&gt;</span>
+<a name="l00036"></a>00036 <span class="preprocessor">#include &lt;<a class="code" href="vfs_8h.html">vfs.h</a>&gt;</span>
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 <span class="keywordtype">void</span> fat_init();
+<a name="l00039"></a>00039 <a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a>* mount_FAT(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>* ofd);
+<a name="l00040"></a>00040 <span class="keywordtype">void</span> umount_FAT(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance);
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 <span class="keywordtype">int</span> fat_readdir(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keywordtype">char</span> * entries, <span class="keywordtype">size_t</span> size);
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * fat_open_file(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path, uint32_t flags);
+<a name="l00045"></a>00045 <span class="keywordtype">int</span> fat_mkdir(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path, mode_t <a class="code" href="structmode.html">mode</a>);
+<a name="l00046"></a>00046 <span class="keywordtype">int</span> fat_stat(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">struct</span> <a class="code" href="structstat.html">stat</a> *stbuf);
+<a name="l00047"></a>00047 <span class="keywordtype">int</span> fat_unlink(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path);
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 <span class="keywordtype">size_t</span> fat_read_file (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keywordtype">void</span> * buf, <span class="keywordtype">size_t</span> count);
+<a name="l00050"></a>00050 <span class="keywordtype">size_t</span> fat_write_file (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keyword">const</span> <span class="keywordtype">void</span> * buf, <span class="keywordtype">size_t</span> nb_octet);
+<a name="l00051"></a>00051 <span class="keywordtype">int</span> fat_seek_file (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> whence);
+<a name="l00052"></a>00052 <span class="keywordtype">int</span> fat_close(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd);
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 <span class="preprocessor">#endif</span>
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

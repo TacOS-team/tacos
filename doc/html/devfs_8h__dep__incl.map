@@ -1,0 +1,20 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$floppy_8c.html" title="kernel/drivers/block/floppy/floppy.c" alt="" coords="5,83,232,112"/>
+<area shape="rect" id="node5" href="$beeper_8c.html" title="kernel/drivers/char/beeper.c" alt="" coords="256,83,445,112"/>
+<area shape="rect" id="node7" href="$mouse_8c.html" title="kernel/drivers/char/mouse.c" alt="" coords="469,83,656,112"/>
+<area shape="rect" id="node9" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="680,83,856,112"/>
+<area shape="rect" id="node11" href="$vga_8c.html" title="kernel/drivers/char/vga.c" alt="" coords="880,83,1048,112"/>
+<area shape="rect" id="node13" href="$devfs_8c.html" title="kernel/fs/devfs.c" alt="" coords="1072,83,1192,112"/>
+<area shape="rect" id="node15" href="$ext2__internal_8h.html" title="kernel/fs/ext2/ext2_internal.h" alt="" coords="1216,83,1405,112"/>
+<area shape="rect" id="node19" href="$fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="1429,83,1595,112"/>
+<area shape="rect" id="node32" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="1619,83,1728,112"/>
+<area shape="rect" id="node34" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="1752,83,1853,112"/>
+<area shape="rect" id="node36" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1877,83,1987,112"/>
+<area shape="rect" id="node38" href="$vfs_8c.html" title="kernel/vfs.c" alt="" coords="2011,83,2101,112"/>
+<area shape="rect" id="node17" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="1240,160,1381,189"/>
+<area shape="rect" id="node21" href="$fat_8c.html" title="kernel/fs/fat/fat.c" alt="" coords="1429,160,1547,189"/>
+<area shape="rect" id="node23" href="$fat__outils_8h.html" title="kernel/fs/fat/fat_outils.h" alt="" coords="1571,160,1725,189"/>
+<area shape="rect" id="node25" href="$fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="1500,315,1676,344"/>
+<area shape="rect" id="node27" href="$fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="1565,237,1731,267"/>
+<area shape="rect" id="node30" href="$fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="1755,237,1909,267"/>
+</map>

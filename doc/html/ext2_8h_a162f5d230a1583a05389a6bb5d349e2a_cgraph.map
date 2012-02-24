@@ -1,0 +1,17 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="179,5,227,35"/>
+<area shape="rect" id="node7" href="$unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier." alt="" coords="179,59,227,88"/>
+<area shape="rect" id="node10" href="$ext2__functions_8c.html#a9df1cc1b1a14caf87d09762a4886ce53" title="Ouverture de fichier." alt="" coords="161,112,244,141"/>
+<area shape="rect" id="node22" href="$ext2__functions_8c.html#a8e34d61b346e77ba8d32ff6829dd6cfa" title="Création d&#39;un noeud (fichier, dossier, fichier spécial...)" alt="" coords="156,165,249,195"/>
+<area shape="rect" id="node24" href="$ext2__functions_8c.html#a2a5245bfa03e55c15539e6aa518e4fab" title="Création d&#39;un dossier." alt="" coords="307,225,392,255"/>
+<area shape="rect" id="node27" href="$ext2__functions_8c.html#a9a8b01e29da31a35719cbf11adab1f9d" title="Récupère l&#39;état d&#39;un fichier ou dossier." alt="" coords="165,269,240,299"/>
+<area shape="rect" id="node29" href="$ext2__functions_8c.html#aa78e9c6b4686b24a0183b164800a04ed" title="Suppression d&#39;un noeud." alt="" coords="305,284,393,313"/>
+<area shape="rect" id="node32" href="$ext2__functions_8c.html#ad87ef876e972f1bcb11d752042207d47" title="Suppression d&#39;un dossier vide." alt="" coords="308,349,391,379"/>
+<area shape="rect" id="node35" href="$ext2__functions_8c.html#a196cd1d4c0446caf3ec91f859c655170" title="Change la taille d&#39;un fichier." alt="" coords="153,424,252,453"/>
+<area shape="rect" id="node5" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="319,8,380,37"/>
+<area shape="rect" id="node12" href="$ext2__functions_8c.html#aa5552876c927b5b04e708531c07344b0" title="Lecture d&#39;un fichier." alt="" coords="309,63,389,92"/>
+<area shape="rect" id="node14" href="$ext2__functions_8c.html#ac9b55aefa79e5e521e4e5d993b4c009a" title="Lecture du contenu d&#39;un dossier." alt="" coords="301,116,397,145"/>
+<area shape="rect" id="node20" href="$ext2__functions_8c.html#ab2859a00444ce0ad527332da72e2629a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="307,169,392,199"/>
+<area shape="rect" id="node16" href="$string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères." alt="" coords="445,116,509,145"/>
+<area shape="rect" id="node18" href="$string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="451,255,504,284"/>
+</map>

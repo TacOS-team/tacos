@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['g',['g',['../structpage__table__entry.html#a0b1753967ff3ee9dfba96975d668cf50',1,'page_table_entry']]],
+  ['granularity',['granularity',['../structx86__segment__descriptor.html#a19d5da93d41a1ec3327cbd92ace8fa08',1,'x86_segment_descriptor']]],
+  ['graphic',['graphic',['../structmode.html#a04810864c94405d05fdab5f4467a4db3',1,'mode']]],
+  ['group_5fdesc_5ftable',['group_desc_table',['../struct__ext2__fs__instance__t.html#acc01ef58cbc6cfa9d3ff4e08709a561a',1,'_ext2_fs_instance_t']]]
+];

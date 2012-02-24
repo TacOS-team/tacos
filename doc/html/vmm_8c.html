@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/vmm.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier kernel/vmm.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="memory_8h_source.html">memory.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="pagination_8h_source.html">pagination.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="vmm_8h_source.html">vmm.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="ksyscall_8h_source.html">ksyscall.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kstdio_8h_source.html">kstdio.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="scheduler_8h_source.html">scheduler.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de vmm.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="vmm_8c__incl.png" border="0" usemap="#kernel_2vmm_8c" alt=""/></div>
+<map name="kernel_2vmm_8c" id="kernel_2vmm_8c">
+<area shape="rect" id="node3" href="memory_8h.html" title="memory.h" alt="" coords="5,160,85,189"/><area shape="rect" id="node7" href="pagination_8h.html" title="pagination.h" alt="" coords="109,160,200,189"/><area shape="rect" id="node10" href="vmm_8h.html" title="vmm.h" alt="" coords="177,237,239,267"/><area shape="rect" id="node13" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="263,237,343,267"/><area shape="rect" id="node16" href="kstdio_8h.html" title="kstdio.h" alt="" coords="440,83,507,112"/><area shape="rect" id="node18" href="scheduler_8h.html" title="scheduler.h" alt="" coords="325,83,416,112"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="223,315,287,344"/><area shape="rect" id="node20" href="kprocess_8h.html" title="kprocess.h" alt="" coords="404,160,489,189"/><area shape="rect" id="node23" href="fd__types_8h.html" title="fd_types.h" alt="" coords="417,237,500,267"/><area shape="rect" id="node25" href="signal__types_8h.html" title="signal_types.h" alt="" coords="524,237,631,267"/><area shape="rect" id="node27" href="process__types_8h.html" title="process_types.h" alt="" coords="655,237,772,267"/><area shape="rect" id="node29" href="symtable_8h.html" title="symtable.h" alt="" coords="796,237,881,267"/><area shape="rect" id="node32" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="816,315,861,344"/></map>
+</div>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b45eae19437de2668526d0ffd4b36dd"></a><!-- doxytag: member="vmm.c::PTE_MAGIC" ref="a3b45eae19437de2668526d0ffd4b36dd" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PTE_MAGIC</b>&#160;&#160;&#160;0xFFC00000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0411770681f0fac662bc86c42aa59d69"></a><!-- doxytag: member="vmm.c::PDE_MAGIC" ref="a0411770681f0fac662bc86c42aa59d69" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PDE_MAGIC</b>&#160;&#160;&#160;0xFFFFF000</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afec707c94cbac3d19ac985be2419efae"></a><!-- doxytag: member="vmm.c::get_pde" ref="afec707c94cbac3d19ac985be2419efae" args="(int dir)" -->
+struct <a class="el" href="structpage__directory__entry.html">page_directory_entry</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get_pde</b> (int dir)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b8567beb8e915a4313dc7d0706687b4"></a><!-- doxytag: member="vmm.c::get_pte" ref="a2b8567beb8e915a4313dc7d0706687b4" args="(int dir, int table)" -->
+struct <a class="el" href="structpage__table__entry.html">page_table_entry</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get_pte</b> (int dir, int table)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae55ef35e3be343419b2267fbb2f664f3"></a><!-- doxytag: member="vmm.c::get_linear_address" ref="ae55ef35e3be343419b2267fbb2f664f3" args="(int dir, int table, int offset)" -->
+vaddr_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_linear_address</b> (int dir, int table, int offset)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vmm_8c.html#a99b3ba454c13cfdb437fcaadd1cd3e97">init_vmm</a> (struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *kvm)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0e0fd30967b0927b223ea3c6eb8b72a"></a><!-- doxytag: member="vmm.c::init_process_vm" ref="ab0e0fd30967b0927b223ea3c6eb8b72a" args="(struct virtual_mem *vm, int init_nb_pages)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_process_vm</b> (struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *vm, int init_nb_pages)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vmm_8c.html#aa6984df26426c14049065875c6b85e9c">allocate_new_page</a> (struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *vm, void **alloc, int u_s)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocation d'une nouvelle page.  <a href="#aa6984df26426c14049065875c6b85e9c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vmm_8c.html#a042a3049e6bc33c07f2b2c2a9dcfe78b">allocate_new_pages</a> (struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *vm, unsigned int nb_pages, void **alloc, int u_s)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle.  <a href="#a042a3049e6bc33c07f2b2c2a9dcfe78b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aebd98fed59e0c1376fe6952ec2d063c4"></a><!-- doxytag: member="vmm.c::unallocate_page" ref="aebd98fed59e0c1376fe6952ec2d063c4" args="(struct virtual_mem *vm, void *page)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>unallocate_page</b> (struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *vm, void *page)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b15e99fd34b3e01cdfae1d5c877ea0c"></a><!-- doxytag: member="vmm.c::vmm_print_heap" ref="a9b15e99fd34b3e01cdfae1d5c877ea0c" args="(struct virtual_mem *vm)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>vmm_print_heap</b> (struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *vm)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vmm_8c.html#a8a8d898de5c72c3b55b845d19ec32172">sys_vmm</a> (uint32_t min_size, void **alloc, size_t *real_alloc_size)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade03970596f39a143387325dd835d2c4"></a><!-- doxytag: member="vmm.c::vmm_get_page_paddr" ref="ade03970596f39a143387325dd835d2c4" args="(vaddr_t vaddr)" -->
+paddr_t&#160;</td><td class="memItemRight" valign="bottom"><b>vmm_get_page_paddr</b> (vaddr_t vaddr)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf9022ad1609a6a896bd75311896c670"></a><!-- doxytag: member="vmm.c::calculate_min_pages" ref="abf9022ad1609a6a896bd75311896c670" args="(size_t size)" -->
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>calculate_min_pages</b> (size_t size)</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+<p>vmm est l'allocateur qui s'occupe de gérer les pages virtuelles du noyau. Il se base sur l'algorithme first fit (premier emplacement de taille suffisante)</p>
+<p>Maintien la liste des espaces libres et des espaces occupés (slabs). </p>
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="aa6984df26426c14049065875c6b85e9c"></a><!-- doxytag: member="vmm.c::allocate_new_page" ref="aa6984df26426c14049065875c6b85e9c" args="(struct virtual_mem *vm, void **alloc, int u_s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="vmm_8c.html#aa6984df26426c14049065875c6b85e9c">allocate_new_page</a> </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *&#160;</td>
+          <td class="paramname"><em>vm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&#160;</td>
+          <td class="paramname"><em>alloc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>u_s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+    <tr><td class="paramname">alloc</td><td></td></tr>
+    <tr><td class="paramname">u_s</td><td>1 si accessible en userspace, 0 sinon.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd></dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vmm_8c_aa6984df26426c14049065875c6b85e9c_cgraph.png" border="0" usemap="#vmm_8c_aa6984df26426c14049065875c6b85e9c_cgraph" alt=""/></div>
+<map name="vmm_8c_aa6984df26426c14049065875c6b85e9c_cgraph" id="vmm_8c_aa6984df26426c14049065875c6b85e9c_cgraph">
+<area shape="rect" id="node3" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="191,5,332,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a042a3049e6bc33c07f2b2c2a9dcfe78b"></a><!-- doxytag: member="vmm.c::allocate_new_pages" ref="a042a3049e6bc33c07f2b2c2a9dcfe78b" args="(struct virtual_mem *vm, unsigned int nb_pages, void **alloc, int u_s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="vmm_8c.html#a042a3049e6bc33c07f2b2c2a9dcfe78b">allocate_new_pages</a> </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *&#160;</td>
+          <td class="paramname"><em>vm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>nb_pages</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&#160;</td>
+          <td class="paramname"><em>alloc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>u_s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+    <tr><td class="paramname">nb_pages</td><td></td></tr>
+    <tr><td class="paramname">alloc</td><td></td></tr>
+    <tr><td class="paramname">u_s</td><td>1 si accessible en userspace, 0 sinon.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd></dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vmm_8c_a042a3049e6bc33c07f2b2c2a9dcfe78b_icgraph.png" border="0" usemap="#vmm_8c_a042a3049e6bc33c07f2b2c2a9dcfe78b_icgraph" alt=""/></div>
+<map name="vmm_8c_a042a3049e6bc33c07f2b2c2a9dcfe78b_icgraph" id="vmm_8c_a042a3049e6bc33c07f2b2c2a9dcfe78b_icgraph">
+<area shape="rect" id="node3" href="vmm_8c.html#aa6984df26426c14049065875c6b85e9c" title="Allocation d&#39;une nouvelle page." alt="" coords="197,5,333,35"/><area shape="rect" id="node5" href="vmm_8c.html#a8a8d898de5c72c3b55b845d19ec32172" title="sys_vmm" alt="" coords="227,59,304,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a99b3ba454c13cfdb437fcaadd1cd3e97"></a><!-- doxytag: member="vmm.c::init_vmm" ref="a99b3ba454c13cfdb437fcaadd1cd3e97" args="(struct virtual_mem *kvm)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="vmm_8c.html#a99b3ba454c13cfdb437fcaadd1cd3e97">init_vmm</a> </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *&#160;</td>
+          <td class="paramname"><em>kvm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Initialisation de la VMM.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kvm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vmm_8c_a99b3ba454c13cfdb437fcaadd1cd3e97_cgraph.png" border="0" usemap="#vmm_8c_a99b3ba454c13cfdb437fcaadd1cd3e97_cgraph" alt=""/></div>
+<map name="vmm_8c_a99b3ba454c13cfdb437fcaadd1cd3e97_cgraph" id="vmm_8c_a99b3ba454c13cfdb437fcaadd1cd3e97_cgraph">
+<area shape="rect" id="node3" href="memory_8h.html#ab67b6223b9ebbe423e9102dbbed1afce" title="memory_get_kernel_top" alt="" coords="147,5,312,35"/><area shape="rect" id="node5" href="memory_8h.html#aeed93f8c282af6d9d4428813e331f583" title="Réserve un cadre de page." alt="" coords="129,59,329,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8a8d898de5c72c3b55b845d19ec32172"></a><!-- doxytag: member="vmm.c::sys_vmm" ref="a8a8d898de5c72c3b55b845d19ec32172" args="(uint32_t min_size, void **alloc, size_t *real_alloc_size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="vmm_8c.html#a8a8d898de5c72c3b55b845d19ec32172">sys_vmm</a> </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>min_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&#160;</td>
+          <td class="paramname"><em>alloc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>real_alloc_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Syscall VMM pour allouer des pages. </p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vmm_8c_a8a8d898de5c72c3b55b845d19ec32172_cgraph.png" border="0" usemap="#vmm_8c_a8a8d898de5c72c3b55b845d19ec32172_cgraph" alt=""/></div>
+<map name="vmm_8c_a8a8d898de5c72c3b55b845d19ec32172_cgraph" id="vmm_8c_a8a8d898de5c72c3b55b845d19ec32172_cgraph">
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="135,5,276,35"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="135,59,276,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

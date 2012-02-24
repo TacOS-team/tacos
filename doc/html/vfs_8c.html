@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/vfs.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier kernel/vfs.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="devfs_8h_source.html">fs/devfs.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="fat_8h_source.html">fs/fat.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kdirent_8h_source.html">kdirent.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kfcntl_8h_source.html">kfcntl.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="vfs_8h_source.html">vfs.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="string_8h_source.html">string.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de vfs.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c__incl.png" border="0" usemap="#kernel_2vfs_8c" alt=""/></div>
+<map name="kernel_2vfs_8c" id="kernel_2vfs_8c">
+<area shape="rect" id="node3" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="207,83,284,112"/><area shape="rect" id="node9" href="fat_8h.html" title="fs/fat.h" alt="" coords="521,83,580,112"/><area shape="rect" id="node23" href="vfs_8h.html" title="vfs.h" alt="" coords="705,160,753,189"/><area shape="rect" id="node28" href="kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="795,160,867,189"/><area shape="rect" id="node33" href="kfcntl_8h.html" title="kfcntl.h" alt="" coords="577,237,639,267"/><area shape="rect" id="node55" href="kmalloc_8h.html" title="kmalloc.h" alt="" coords="987,315,1064,344"/><area shape="rect" id="node59" href="string_8h.html" title="string.h" alt="" coords="1043,83,1107,112"/><area shape="rect" id="node7" href="fd__types_8h.html" title="fd_types.h" alt="" coords="5,392,88,421"/><area shape="rect" id="node13" href="kstat_8h.html" title="kstat.h" alt="" coords="700,237,759,267"/><area shape="rect" id="node15" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="727,469,791,499"/><area shape="rect" id="node17" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="696,315,760,344"/><area shape="rect" id="node20" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="680,392,760,421"/><area shape="rect" id="node37" href="kprocess_8h.html" title="kprocess.h" alt="" coords="453,315,539,344"/><area shape="rect" id="node41" href="signal__types_8h.html" title="signal_types.h" alt="" coords="307,392,413,421"/><area shape="rect" id="node43" href="process__types_8h.html" title="process_types.h" alt="" coords="437,392,555,421"/><area shape="rect" id="node45" href="symtable_8h.html" title="symtable.h" alt="" coords="112,392,197,421"/><area shape="rect" id="node51" href="vmm_8h.html" title="vmm.h" alt="" coords="221,392,283,421"/><area shape="rect" id="node48" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="132,469,177,499"/><area shape="rect" id="node61" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="1037,160,1125,189"/><area shape="rect" id="node63" href="stdbool_8h.html" title="stdbool.h" alt="" coords="1044,237,1119,267"/></map>
+</div>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__available__fs__t.html">_available_fs_t</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__mounted__fs__t.html">_mounted_fs_t</a></td></tr>
+<tr><td colspan="2"><h2><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e535233f88552b377b2f1523c182acc"></a><!-- doxytag: member="vfs.c::available_fs_t" ref="a2e535233f88552b377b2f1523c182acc" args="" -->
+typedef struct <a class="el" href="struct__available__fs__t.html">_available_fs_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>available_fs_t</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab4e925860df7937f38b15433bb05225a"></a><!-- doxytag: member="vfs.c::mounted_fs_t" ref="ab4e925860df7937f38b15433bb05225a" args="" -->
+typedef struct <a class="el" href="struct__mounted__fs__t.html">_mounted_fs_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>mounted_fs_t</b></td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab2237a3610010d8a211ef3d55a521dba"></a><!-- doxytag: member="vfs.c::vfs_register_fs" ref="ab2237a3610010d8a211ef3d55a521dba" args="(file_system_t *fs)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#ab2237a3610010d8a211ef3d55a521dba">vfs_register_fs</a> (<a class="el" href="structfile__system__t.html">file_system_t</a> *fs)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistrer un FS dans le VFS pour le rendre disponible. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b293d0cca90e9f633dc69cc5900c430"></a><!-- doxytag: member="vfs.c::vfs_open" ref="a7b293d0cca90e9f633dc69cc5900c430" args="(const char *pathname, uint32_t flags)" -->
+<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_open</b> (const char *pathname, uint32_t flags)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0c805d30412c7b434adf437a404ce6a"></a><!-- doxytag: member="vfs.c::vfs_close" ref="ab0c805d30412c7b434adf437a404ce6a" args="(open_file_descriptor *ofd)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_close</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a26aa39a32af0bfccaffdbcec89c0a00e"></a><!-- doxytag: member="vfs.c::vfs_mount" ref="a26aa39a32af0bfccaffdbcec89c0a00e" args="(const char *device, const char *mountpoint, const char *type)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_mount</b> (const char *device, const char *mountpoint, const char *type)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69a4424755e56bad13f341c1600db527"></a><!-- doxytag: member="vfs.c::vfs_umount" ref="a69a4424755e56bad13f341c1600db527" args="(const char *mountpoint)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_umount</b> (const char *mountpoint)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66f99a282d420f307e37ea72d7e3fa71"></a><!-- doxytag: member="vfs.c::vfs_stat" ref="a66f99a282d420f307e37ea72d7e3fa71" args="(const char *pathname, struct stat *buf)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_stat</b> (const char *pathname, struct <a class="el" href="structstat.html">stat</a> *buf)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f8b6a1f2b0e6012446196f18b33d686"></a><!-- doxytag: member="vfs.c::vfs_unlink" ref="a4f8b6a1f2b0e6012446196f18b33d686" args="(const char *pathname)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_unlink</b> (const char *pathname)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f5dc4e5e4a2aa5d7649790256f11685"></a><!-- doxytag: member="vfs.c::vfs_rmdir" ref="a8f5dc4e5e4a2aa5d7649790256f11685" args="(const char *pathname)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_rmdir</b> (const char *pathname)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54142c2a2009cc49e3b3b8c12d955b04"></a><!-- doxytag: member="vfs.c::vfs_mknod" ref="a54142c2a2009cc49e3b3b8c12d955b04" args="(const char *pathname, mode_t mode, dev_t dev)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_mknod</b> (const char *pathname, mode_t <a class="el" href="structmode.html">mode</a>, dev_t dev)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a392f80d5c4ab48178abcd268c3f64c45"></a><!-- doxytag: member="vfs.c::vfs_mkdir" ref="a392f80d5c4ab48178abcd268c3f64c45" args="(const char *pathname, mode_t mode)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_mkdir</b> (const char *pathname, mode_t <a class="el" href="structmode.html">mode</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a631bdc2a44ac1b7477782b058277a8d3"></a><!-- doxytag: member="vfs.c::vfs_readdir" ref="a631bdc2a44ac1b7477782b058277a8d3" args="(open_file_descriptor *ofd, char *entries, size_t size)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_readdir</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, char *entries, size_t size)</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+<p>Virtual File System. Gestion des points de montage. </p>
+</div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

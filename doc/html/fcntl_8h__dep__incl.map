@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$module_8c.html" title="kernel/module.c" alt="" coords="5,83,123,112"/>
+<area shape="rect" id="node5" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="147,83,235,112"/>
+<area shape="rect" id="node7" href="$fcntl_8c.html" title="File control operations." alt="" coords="259,83,336,112"/>
+<area shape="rect" id="node9" href="$process_8c.html" title="libc/process.c" alt="" coords="360,83,464,112"/>
+<area shape="rect" id="node11" href="$fclose_8c.html" title="Define &quot;fclose&quot; method." alt="" coords="488,83,613,112"/>
+<area shape="rect" id="node13" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="637,83,760,112"/>
+<area shape="rect" id="node15" href="$put_8c.html" title="libc/stdio/put.c" alt="" coords="784,83,891,112"/>
+<area shape="rect" id="node17" href="$stdfiles_8c.html" title="libc/stdio/stdfiles.c" alt="" coords="915,83,1045,112"/>
+<area shape="rect" id="node19" href="$elf_8c.html" title="system/elf.c" alt="" coords="1069,83,1163,112"/>
+</map>

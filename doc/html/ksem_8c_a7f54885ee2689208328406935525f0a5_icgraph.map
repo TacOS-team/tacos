@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="148,5,263,35"/>
+<area shape="rect" id="node7" href="$ksem_8c.html#a82fb70bceeb23516b8cbdc1bc8f77805" title="Handler de l&#39;appel système SYS_SEM Dans la pratique, sys_ksem ne fait qu&#39;exécuter la fonction corresp..." alt="" coords="128,59,283,88"/>
+<area shape="rect" id="node5" href="$scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="331,5,435,35"/>
+</map>

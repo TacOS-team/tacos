@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$fcntl_8h.html" title="fcntl.h" alt="" coords="8,83,61,112"/>
+<area shape="rect" id="node5" href="$stdio_8h.html" title="stdio.h" alt="" coords="68,160,129,189"/>
+<area shape="rect" id="node16" href="$ioctl_8h.html" title="sys/ioctl.h" alt="" coords="136,83,216,112"/>
+<area shape="rect" id="node18" href="$unistd_8h.html" title="unistd.h" alt="" coords="240,83,307,112"/>
+<area shape="rect" id="node27" href="$vga__types_8h.html" title="vga_types.h" alt="" coords="331,83,424,112"/>
+<area shape="rect" id="node29" href="$mouse__types_8h.html" title="mouse_types.h" alt="" coords="448,83,560,112"/>
+<area shape="rect" id="node7" href="$libio_8h.html" title="libio.h" alt="" coords="5,237,61,267"/>
+<area shape="rect" id="node9" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="199,315,287,344"/>
+<area shape="rect" id="node14" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="136,237,205,267"/>
+<area shape="rect" id="node11" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="205,392,280,421"/>
+<area shape="rect" id="node21" href="$stat_8h.html" title="sys/stat.h" alt="" coords="280,160,357,189"/>
+<area shape="rect" id="node24" href="$time_8h.html" title="time.h" alt="" coords="331,237,387,267"/>
+</map>

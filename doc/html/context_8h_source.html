@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de kernel/include/context.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">kernel/include/context.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="context_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00030"></a>00030 <span class="preprocessor">#ifndef _CONTEXT_H</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define _CONTEXT_H</span>
+<a name="l00032"></a>00032 <span class="preprocessor"></span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="kprocess_8h.html">kprocess.h</a>&gt;</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> RESTORE_CONTEXT() __attribute__((always_inline));
+<a name="l00036"></a>00036 static inline <span class="keywordtype">void</span> PUSH_CONTEXT() __attribute__((always_inline));
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 static inline <span class="keywordtype">void</span> RESTORE_CONTEXT(){
+<a name="l00039"></a>00039                 <span class="keyword">asm</span>(
+<a name="l00040"></a>00040                 <span class="comment">/*On dépile les registres pour les mettre en place */</span>
+<a name="l00041"></a>00041                  <span class="stringliteral">&quot;pop %gs\n\t&quot;</span>
+<a name="l00042"></a>00042                  <span class="stringliteral">&quot;pop %fs\n\t&quot;</span>
+<a name="l00043"></a>00043                  <span class="stringliteral">&quot;pop %es\n\t&quot;</span>
+<a name="l00044"></a>00044                  <span class="stringliteral">&quot;pop %ds\n\t&quot;</span>
+<a name="l00045"></a>00045                  <span class="stringliteral">&quot;pop %edi\n\t&quot;</span>
+<a name="l00046"></a>00046                  <span class="stringliteral">&quot;pop %esi\n\t&quot;</span>
+<a name="l00047"></a>00047                  <span class="stringliteral">&quot;pop %ebp\n\t&quot;</span>
+<a name="l00048"></a>00048                  <span class="stringliteral">&quot;pop %ebx\n\t&quot;</span>
+<a name="l00049"></a>00049                  <span class="stringliteral">&quot;pop %edx\n\t&quot;</span>
+<a name="l00050"></a>00050                  <span class="stringliteral">&quot;pop %ecx\n\t&quot;</span>
+<a name="l00051"></a>00051                  <span class="stringliteral">&quot;pop %eax\n\t&quot;</span>
+<a name="l00052"></a>00052                  
+<a name="l00053"></a>00053                  <span class="comment">/* Et on switch! (enfin! &gt;_&lt;) */</span>
+<a name="l00054"></a>00054                  <span class="stringliteral">&quot;iret\n\t&quot;</span>
+<a name="l00055"></a>00055          );
+<a name="l00056"></a>00056 } 
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058 <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PUSH_CONTEXT(<a class="code" href="structprocess__t.html">process_t</a>* current) {
+<a name="l00059"></a>00059         <span class="keyword">asm</span>(
+<a name="l00060"></a>00060                         <span class="stringliteral">&quot;push %0\n\t&quot;</span>
+<a name="l00061"></a>00061                         <span class="stringliteral">&quot;push %1\n\t&quot;</span>
+<a name="l00062"></a>00062                         <span class="stringliteral">&quot;push %2\n\t&quot;</span>
+<a name="l00063"></a>00063                         <span class="stringliteral">&quot;push %3\n\t&quot;</span>
+<a name="l00064"></a>00064                         <span class="stringliteral">&quot;push %4\n\t&quot;</span>
+<a name="l00065"></a>00065                         <span class="stringliteral">&quot;push %5\n\t&quot;</span>
+<a name="l00066"></a>00066                         ::<span class="stringliteral">&quot;m&quot;</span> (current-&gt;regs.eax),
+<a name="l00067"></a>00067                         <span class="stringliteral">&quot;m&quot;</span> (current-&gt;regs.ecx),
+<a name="l00068"></a>00068                         <span class="stringliteral">&quot;m&quot;</span> (current-&gt;regs.edx),
+<a name="l00069"></a>00069                         <span class="stringliteral">&quot;m&quot;</span> (current-&gt;regs.ebx),
+<a name="l00070"></a>00070                         <span class="stringliteral">&quot;m&quot;</span> (current-&gt;regs.ebp),
+<a name="l00071"></a>00071                         <span class="stringliteral">&quot;m&quot;</span> (current-&gt;regs.esi)
+<a name="l00072"></a>00072         );
+<a name="l00073"></a>00073         <span class="keyword">asm</span>(
+<a name="l00074"></a>00074                         <span class="stringliteral">&quot;push %0\n\t&quot;</span>
+<a name="l00075"></a>00075                         <span class="stringliteral">&quot;push %1\n\t&quot;</span>
+<a name="l00076"></a>00076                         <span class="stringliteral">&quot;push %2\n\t&quot;</span>
+<a name="l00077"></a>00077                         <span class="stringliteral">&quot;push %3\n\t&quot;</span>
+<a name="l00078"></a>00078                         <span class="stringliteral">&quot;push %4\n\t&quot;</span>
+<a name="l00079"></a>00079                         ::
+<a name="l00080"></a>00080                         <span class="stringliteral">&quot;m&quot;</span> (current-&gt;regs.edi),        
+<a name="l00081"></a>00081                         <span class="stringliteral">&quot;m&quot;</span> (current-&gt;regs.ds),         
+<a name="l00082"></a>00082                         <span class="stringliteral">&quot;m&quot;</span> (current-&gt;regs.es),         
+<a name="l00083"></a>00083                         <span class="stringliteral">&quot;m&quot;</span> (current-&gt;regs.fs),         
+<a name="l00084"></a>00084                         <span class="stringliteral">&quot;m&quot;</span> (current-&gt;regs.gs)          
+<a name="l00085"></a>00085         );
+<a name="l00086"></a>00086 }
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089 <span class="preprocessor">#endif </span><span class="comment">/* _CONTEXT_H */</span>
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

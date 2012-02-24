@@ -1,0 +1,17 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$fcntl_8h.html" title="fcntl.h" alt="" coords="5,83,59,112"/>
+<area shape="rect" id="node5" href="$unistd_8h.html" title="unistd.h" alt="" coords="83,83,149,112"/>
+<area shape="rect" id="node17" href="$gui_8h.html" title="gui.h" alt="" coords="171,160,221,189"/>
+<area shape="rect" id="node20" href="$widget_8h.html" title="widget.h" alt="" coords="229,83,299,112"/>
+<area shape="rect" id="node22" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="273,160,335,189"/>
+<area shape="rect" id="node28" href="$string_8h.html" title="string.h" alt="" coords="359,160,423,189"/>
+<area shape="rect" id="node31" href="$stdio_8h.html" title="stdio.h" alt="" coords="461,160,523,189"/>
+<area shape="rect" id="node39" href="$ctype_8h.html" title="Fonctions de classification de caractères." alt="" coords="475,83,539,112"/>
+<area shape="rect" id="node7" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="203,315,291,344"/>
+<area shape="rect" id="node11" href="$stat_8h.html" title="sys/stat.h" alt="" coords="69,160,147,189"/>
+<area shape="rect" id="node9" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="209,392,284,421"/>
+<area shape="rect" id="node14" href="$time_8h.html" title="time.h" alt="" coords="103,237,159,267"/>
+<area shape="rect" id="node25" href="$malloc_8h.html" title="malloc.h" alt="" coords="284,237,353,267"/>
+<area shape="rect" id="node33" href="$libio_8h.html" title="libio.h" alt="" coords="479,237,535,267"/>
+<area shape="rect" id="node37" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="559,237,628,267"/>
+</map>

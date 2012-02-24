@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$ioports_8h.html" title="ioports.h" alt="" coords="5,83,77,112"/>
+<area shape="rect" id="node7" href="$pci__config_8h.html" title="pci_config.h" alt="" coords="189,83,280,112"/>
+<area shape="rect" id="node13" href="$pci__vendor_8h.html" title="pci_vendor.h" alt="" coords="304,83,403,112"/>
+<area shape="rect" id="node15" href="$stdio_8h.html" title="stdio.h" alt="" coords="427,83,488,112"/>
+<area shape="rect" id="node9" href="$pci__types_8h.html" title="pci_types.h" alt="" coords="191,160,279,189"/>
+<area shape="rect" id="node11" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="203,237,267,267"/>
+<area shape="rect" id="node17" href="$libio_8h.html" title="libio.h" alt="" coords="364,160,420,189"/>
+<area shape="rect" id="node19" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="380,237,468,267"/>
+<area shape="rect" id="node24" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="495,160,564,189"/>
+<area shape="rect" id="node21" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="387,315,461,344"/>
+</map>

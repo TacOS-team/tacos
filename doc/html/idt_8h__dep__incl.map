@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$exception_8c.html" title="Gestion des exceptions." alt="" coords="5,83,136,112"/>
+<area shape="rect" id="node5" href="$idt_8c.html" title="kernel/idt.c" alt="" coords="160,83,245,112"/>
+<area shape="rect" id="node7" href="$interrupts_8c.html" title="kernel/interrupts.c" alt="" coords="269,83,395,112"/>
+<area shape="rect" id="node9" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="419,83,528,112"/>
+</map>

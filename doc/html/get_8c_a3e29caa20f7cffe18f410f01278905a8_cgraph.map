@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$stdio_8h.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream." alt="" coords="120,5,171,35"/>
+<area shape="rect" id="node5" href="$unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="220,5,268,35"/>
+<area shape="rect" id="node7" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="319,5,380,35"/>
+</map>

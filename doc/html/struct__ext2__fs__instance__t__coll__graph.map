@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$structext2__super__block.html" title="ext2_super_block" alt="" coords="5,117,131,147"/>
+<area shape="rect" id="node4" href="$structext2__group__desc.html" title="ext2_group_desc" alt="" coords="155,117,280,147"/>
+<area shape="rect" id="node6" href="$struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté." alt="" coords="412,5,516,35"/>
+<area shape="rect" id="node8" href="$structfile__system__t.html" title="Structure qui représente un FS." alt="" coords="409,117,508,147"/>
+<area shape="rect" id="node11" href="$struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="532,117,681,147"/>
+</map>

@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['d',['d',['../structpage__table__entry.html#a0cced2bdd03dd78e0031f7364fa55a67',1,'page_table_entry']]],
+  ['dark_5fgray',['DARK_GRAY',['../video_8h.html#aca56870f2285abae489635f0ee4d65e3',1,'video.h']]],
+  ['debug_2eh',['debug.h',['../debug_8h.html',1,'']]],
+  ['default_5fattribute_5fvalue',['DEFAULT_ATTRIBUTE_VALUE',['../video_8h.html#a844ed4c612903242a4a9d1abcc3a77ae',1,'video.h']]],
+  ['del_5fevent',['del_event',['../events_8c.html#a066fd6048f5a6f5a6d4b93abea00013d',1,'del_event(int id):&#160;events.c'],['../events_8h.html#a066fd6048f5a6f5a6d4b93abea00013d',1,'del_event(int id):&#160;events.c']]],
+  ['delete_5fprocess',['delete_process',['../kprocess_8h.html#a7cced35f469ae897c55ab96940289cf6',1,'delete_process(int pid):&#160;kprocess.c'],['../kprocess_8c.html#a7cced35f469ae897c55ab96940289cf6',1,'delete_process(int pid):&#160;kprocess.c']]],
+  ['descriptor_5ftype',['descriptor_type',['../structx86__segment__descriptor.html#adda0434239b7e6c6a68b8e7556e4bb2f',1,'x86_segment_descriptor']]],
+  ['devfs_2ec',['devfs.c',['../devfs_8c.html',1,'']]],
+  ['devfs_2eh',['devfs.h',['../devfs_8h.html',1,'']]],
+  ['devfs_5fname',['devfs_name',['../struct__tty__driver__t.html#a0c46e5dd6e7275908881f644d7fff927',1,'_tty_driver_t']]],
+  ['device',['device',['../struct__fs__instance__t.html#acc3db122838752a84c6ecb93c3644256',1,'_fs_instance_t']]],
+  ['dir',['dir',['../structdirectories__t.html#aedd8927cb97dd25be9b97fc3d823a5af',1,'directories_t']]],
+  ['directories_5ft',['directories_t',['../structdirectories__t.html',1,'']]],
+  ['dirent',['dirent',['../structdirent.html',1,'']]],
+  ['dirent_2ec',['dirent.c',['../dirent_8c.html',1,'']]],
+  ['dirent_2eh',['dirent.h',['../dirent_8h.html',1,'']]],
+  ['disable_5fcursor',['disable_cursor',['../video_8c.html#a61e8f22681edb740e2d057ac270e6f5b',1,'disable_cursor(int disable):&#160;video.c'],['../video_8h.html#a61e8f22681edb740e2d057ac270e6f5b',1,'disable_cursor(int disable):&#160;video.c']]],
+  ['disp_5fcur',['disp_cur',['../structconsole__t.html#a6242c03c5b347ed6b0909c1486116bee',1,'console_t']]],
+  ['dpl',['dpl',['../structx86__idt__entry.html#a5c0f7af9139df1e94d0c6d17dcd0fb66',1,'x86_idt_entry::dpl()'],['../structx86__segment__descriptor.html#ab45e49c27bbe57a568d914bd13e45ef7',1,'x86_segment_descriptor::dpl()']]],
+  ['driver_5fdata',['driver_data',['../struct__tty__struct__t.html#a974cb784cad13e547e5cace553875f90',1,'_tty_struct_t']]],
+  ['driver_5fentry',['driver_entry',['../structdriver__entry.html',1,'']]],
+  ['driver_5fname',['driver_name',['../struct__tty__driver__t.html#ae2f43b40c48f11feab23551e34a4fe6d',1,'_tty_driver_t']]],
+  ['dummy_5fdriver_2eh',['dummy_driver.h',['../dummy__driver_8h.html',1,'']]]
+];

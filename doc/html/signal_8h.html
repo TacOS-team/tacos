@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier libc/include/signal.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier libc/include/signal.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="libc_2include_2sys_2types_8h_source.html">sys/types.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de signal.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="signal_8h__incl.png" border="0" usemap="#libc_2include_2signal_8h" alt=""/></div>
+<map name="libc_2include_2signal_8h" id="libc_2include_2signal_8h">
+<area shape="rect" id="node3" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="31,83,119,112"/><area shape="rect" id="node5" href="stdbool_8h.html" title="stdbool.h" alt="" coords="37,160,112,189"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="signal_8h__dep__incl.png" border="0" usemap="#libc_2include_2signal_8hdep" alt=""/></div>
+<map name="libc_2include_2signal_8hdep" id="libc_2include_2signal_8hdep">
+<area shape="rect" id="node3" href="ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="321,83,484,112"/><area shape="rect" id="node15" href="signal_8c.html" title="libc/signal.c" alt="" coords="508,83,599,112"/><area shape="rect" id="node17" href="start_8c.html" title="libc/start.c" alt="" coords="623,83,703,112"/><area shape="rect" id="node19" href="wait_8c.html" title="libc/wait.c" alt="" coords="727,83,804,112"/><area shape="rect" id="node5" href="tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="5,160,181,189"/><area shape="rect" id="node7" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="205,160,315,189"/><area shape="rect" id="node9" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="339,160,467,189"/><area shape="rect" id="node11" href="ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="491,160,605,189"/><area shape="rect" id="node13" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="629,160,760,189"/></map>
+</div>
+</div>
+<p><a href="signal_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab83b88daaecc469d1edb90a527ab4a39"></a><!-- doxytag: member="signal.h::NSIG" ref="ab83b88daaecc469d1edb90a527ab4a39" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NSIG</b>&#160;&#160;&#160;32</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1836b0246d63153d3443f07a230f5797"></a><!-- doxytag: member="signal.h::SIGTYPES" ref="a1836b0246d63153d3443f07a230f5797" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGTYPES</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a136c64ec2d1306de745e39d6aee362ca"></a><!-- doxytag: member="signal.h::SIGHUP" ref="a136c64ec2d1306de745e39d6aee362ca" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGHUP</b>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a487309e3e9e0527535644115204a639a"></a><!-- doxytag: member="signal.h::SIGINT" ref="a487309e3e9e0527535644115204a639a" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGINT</b>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a62045b465be11891160d53c10861b16c"></a><!-- doxytag: member="signal.h::SIGQUIT" ref="a62045b465be11891160d53c10861b16c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGQUIT</b>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4c9c5284f8c8d146bd7a93d25017fc62"></a><!-- doxytag: member="signal.h::SIGILL" ref="a4c9c5284f8c8d146bd7a93d25017fc62" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGILL</b>&#160;&#160;&#160;3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2beb906ab1b46676e63823f4e773c38"></a><!-- doxytag: member="signal.h::SIGTRAP" ref="aa2beb906ab1b46676e63823f4e773c38" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGTRAP</b>&#160;&#160;&#160;4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa86c630133e5b5174ac970227b273446"></a><!-- doxytag: member="signal.h::SIGABRT" ref="aa86c630133e5b5174ac970227b273446" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGABRT</b>&#160;&#160;&#160;5</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab12271d5e5911f8a85dc7c3f0e2364c7"></a><!-- doxytag: member="signal.h::SIGIOT" ref="ab12271d5e5911f8a85dc7c3f0e2364c7" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGIOT</b>&#160;&#160;&#160;5</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aead3d488474201acf18c4b63d91edc3c"></a><!-- doxytag: member="signal.h::SIGBUS" ref="aead3d488474201acf18c4b63d91edc3c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGBUS</b>&#160;&#160;&#160;6</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7fbba29aec3e4a8daae12935299df92d"></a><!-- doxytag: member="signal.h::SIGFPE" ref="a7fbba29aec3e4a8daae12935299df92d" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGFPE</b>&#160;&#160;&#160;7</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="addd8dcd406ce514ab3b4f576a5343d42"></a><!-- doxytag: member="signal.h::SIGKILL" ref="addd8dcd406ce514ab3b4f576a5343d42" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGKILL</b>&#160;&#160;&#160;8</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a944a8250e34bfd7991123abd3436d8c0"></a><!-- doxytag: member="signal.h::SIGUSR1" ref="a944a8250e34bfd7991123abd3436d8c0" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGUSR1</b>&#160;&#160;&#160;9</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae20b4f7171a09516ea73c9d2745bd596"></a><!-- doxytag: member="signal.h::SIGSEGV" ref="ae20b4f7171a09516ea73c9d2745bd596" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGSEGV</b>&#160;&#160;&#160;10</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abaaa61abe503c43481e35e21b0b5a031"></a><!-- doxytag: member="signal.h::SIGUSR2" ref="abaaa61abe503c43481e35e21b0b5a031" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGUSR2</b>&#160;&#160;&#160;11</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57e9c8c5fa13bf86bc779a9f6f408b7c"></a><!-- doxytag: member="signal.h::SIGPIPE" ref="a57e9c8c5fa13bf86bc779a9f6f408b7c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGPIPE</b>&#160;&#160;&#160;12</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa6946723c6b7a86ec3c33caaf832840b"></a><!-- doxytag: member="signal.h::SIGALRM" ref="aa6946723c6b7a86ec3c33caaf832840b" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGALRM</b>&#160;&#160;&#160;13</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a682182a5e5f38fd61f4311501e9dac5d"></a><!-- doxytag: member="signal.h::SIGTERM" ref="a682182a5e5f38fd61f4311501e9dac5d" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGTERM</b>&#160;&#160;&#160;14</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03612fcda4ab9671dfa7051e7b666fb6"></a><!-- doxytag: member="signal.h::SIGSTKFLT" ref="a03612fcda4ab9671dfa7051e7b666fb6" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGSTKFLT</b>&#160;&#160;&#160;15</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0e63521a64cc8bc2b91d36a87d32c9f8"></a><!-- doxytag: member="signal.h::SIGCHLD" ref="a0e63521a64cc8bc2b91d36a87d32c9f8" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGCHLD</b>&#160;&#160;&#160;16</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a024f43063003e753afc6cca1acd6e104"></a><!-- doxytag: member="signal.h::SIGCONT" ref="a024f43063003e753afc6cca1acd6e104" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGCONT</b>&#160;&#160;&#160;17</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a069e358bc9a864b7dc4fed2440eda14c"></a><!-- doxytag: member="signal.h::SIGSTOP" ref="a069e358bc9a864b7dc4fed2440eda14c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGSTOP</b>&#160;&#160;&#160;18</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe65c086e01f0d286b7a785a7e3cdd1a"></a><!-- doxytag: member="signal.h::SIGTSTP" ref="abe65c086e01f0d286b7a785a7e3cdd1a" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGTSTP</b>&#160;&#160;&#160;19</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c146e34a6b5a78dfba41cded3331181"></a><!-- doxytag: member="signal.h::SIGTTIN" ref="a2c146e34a6b5a78dfba41cded3331181" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGTTIN</b>&#160;&#160;&#160;20</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a782864287613e2c5c030411fa9c5e9b1"></a><!-- doxytag: member="signal.h::SIGTTOU" ref="a782864287613e2c5c030411fa9c5e9b1" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGTTOU</b>&#160;&#160;&#160;21</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9ff13149e36144a4ea28788948c34dd"></a><!-- doxytag: member="signal.h::SIGURG" ref="ad9ff13149e36144a4ea28788948c34dd" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGURG</b>&#160;&#160;&#160;22</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7265cbba4972503c1c30a2e52a929874"></a><!-- doxytag: member="signal.h::SIGXCPU" ref="a7265cbba4972503c1c30a2e52a929874" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGXCPU</b>&#160;&#160;&#160;23</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75440a7aa885a1052dfd3b4393fd9baa"></a><!-- doxytag: member="signal.h::SIGXFSZ" ref="a75440a7aa885a1052dfd3b4393fd9baa" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGXFSZ</b>&#160;&#160;&#160;24</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71403d2f5240e409e213060ea3301851"></a><!-- doxytag: member="signal.h::SIGVTALRM" ref="a71403d2f5240e409e213060ea3301851" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGVTALRM</b>&#160;&#160;&#160;25</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab6bd2a2ff7e58d45965ef257f96dfe65"></a><!-- doxytag: member="signal.h::SIGPROF" ref="ab6bd2a2ff7e58d45965ef257f96dfe65" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGPROF</b>&#160;&#160;&#160;26</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13ba0e7c4365813312eb4566907bce4f"></a><!-- doxytag: member="signal.h::SIGWINCH" ref="a13ba0e7c4365813312eb4566907bce4f" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGWINCH</b>&#160;&#160;&#160;27</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a929c5eace94ce2e099c6fa732450ce86"></a><!-- doxytag: member="signal.h::SIGIO" ref="a929c5eace94ce2e099c6fa732450ce86" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGIO</b>&#160;&#160;&#160;28</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1614264a836d6a5642554775ef0134d0"></a><!-- doxytag: member="signal.h::SIGPOLL" ref="a1614264a836d6a5642554775ef0134d0" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGPOLL</b>&#160;&#160;&#160;SIGIO</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a633dbd7dca7d839e6af0299bd4713f0a"></a><!-- doxytag: member="signal.h::SIGPWR" ref="a633dbd7dca7d839e6af0299bd4713f0a" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGPWR</b>&#160;&#160;&#160;29</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8bacf9eb18fd539099c1bb4666c45d60"></a><!-- doxytag: member="signal.h::SIGSYS" ref="a8bacf9eb18fd539099c1bb4666c45d60" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGSYS</b>&#160;&#160;&#160;30</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11e925ada5a97c7bbb6b88de8ed543b4"></a><!-- doxytag: member="signal.h::SIGUNUSED" ref="a11e925ada5a97c7bbb6b88de8ed543b4" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGUNUSED</b>&#160;&#160;&#160;30</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae89f9a1282bd2d1b2a2b310c12ea16a5"></a><!-- doxytag: member="signal.h::SIGRTMIN" ref="ae89f9a1282bd2d1b2a2b310c12ea16a5" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGRTMIN</b>&#160;&#160;&#160;31</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5336d2c76af22b10373e3dd28fb3b0f0"></a><!-- doxytag: member="signal.h::SIGRTMAX" ref="a5336d2c76af22b10373e3dd28fb3b0f0" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGRTMAX</b>&#160;&#160;&#160;NSIG-1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a927f6ae16379576d638006c7498ac5d7"></a><!-- doxytag: member="signal.h::SIG_BLOCK" ref="a927f6ae16379576d638006c7498ac5d7" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIG_BLOCK</b>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5fcd73313a63dac2cc7eb3b654215250"></a><!-- doxytag: member="signal.h::SIG_UNBLOCK" ref="a5fcd73313a63dac2cc7eb3b654215250" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIG_UNBLOCK</b>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37750b78b7ae75fe02ad26e70f6cc845"></a><!-- doxytag: member="signal.h::SIG_SETMASK" ref="a37750b78b7ae75fe02ad26e70f6cc845" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIG_SETMASK</b>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf0e499b0ac946b366b4f47a3b3e8b9e"></a><!-- doxytag: member="signal.h::SIG_IGN" ref="acf0e499b0ac946b366b4f47a3b3e8b9e" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIG_IGN</b>&#160;&#160;&#160;sig_ignore_handler</td></tr>
+<tr><td colspan="2"><h2><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9140a5882f847f67b8155c759ac6aa05"></a><!-- doxytag: member="signal.h::sigset_t" ref="a9140a5882f847f67b8155c759ac6aa05" args="" -->
+typedef unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>sigset_t</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a564498016effaee1f3384e07b7ced24f"></a><!-- doxytag: member="signal.h::sighandler_t" ref="a564498016effaee1f3384e07b7ced24f" args=")(int)" -->
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>sighandler_t</b> )(int)</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9fc1d1a853fcc23a5e434506aa47bca"></a><!-- doxytag: member="signal.h::kill" ref="ae9fc1d1a853fcc23a5e434506aa47bca" args="(unsigned int pid, int sig)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>kill</b> (unsigned int pid, int sig)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a18b3c89ca28c1045ee53f16a1ebca8b3"></a><!-- doxytag: member="signal.h::signal" ref="a18b3c89ca28c1045ee53f16a1ebca8b3" args="(int sig, sighandler_t func)" -->
+sighandler_t&#160;</td><td class="memItemRight" valign="bottom"><b>signal</b> (int sig, sighandler_t func)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20d9f879bbe69c79f62bd3813fcc1e63"></a><!-- doxytag: member="signal.h::sigsuspend" ref="a20d9f879bbe69c79f62bd3813fcc1e63" args="(const sigset_t *sigmask)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>sigsuspend</b> (const sigset_t *sigmask)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0fd1024302d5bc062261b9b732bdf92b"></a><!-- doxytag: member="signal.h::sigprocmask" ref="a0fd1024302d5bc062261b9b732bdf92b" args="(int how, const sigset_t *set, sigset_t *oldset)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>sigprocmask</b> (int how, const sigset_t *set, sigset_t *oldset)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5925352f90eb589393274fa0376d7def"></a><!-- doxytag: member="signal.h::sigemptyset" ref="a5925352f90eb589393274fa0376d7def" args="(sigset_t *set)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>sigemptyset</b> (sigset_t *set)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88d7bbc77ea1569ee21c90db549ea023"></a><!-- doxytag: member="signal.h::sigfillset" ref="a88d7bbc77ea1569ee21c90db549ea023" args="(sigset_t *set)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>sigfillset</b> (sigset_t *set)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae412e6a5436a6c28424b0173251d349c"></a><!-- doxytag: member="signal.h::sigaddset" ref="ae412e6a5436a6c28424b0173251d349c" args="(sigset_t *set, int signum)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>sigaddset</b> (sigset_t *set, int signum)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0025e4f32ce2737c40cc0074cc6d7d2"></a><!-- doxytag: member="signal.h::sigdelset" ref="ab0025e4f32ce2737c40cc0074cc6d7d2" args="(sigset_t *set, int signum)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>sigdelset</b> (sigset_t *set, int signum)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63693cc65f43d772729b588b453fe1ef"></a><!-- doxytag: member="signal.h::sigismember" ref="a63693cc65f43d772729b588b453fe1ef" args="(const sigset_t *set, int signum)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>sigismember</b> (const sigset_t *set, int signum)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1de31bdef82f181f8045b94ae0933916"></a><!-- doxytag: member="signal.h::init_signals" ref="a1de31bdef82f181f8045b94ae0933916" args="(void)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_signals</b> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad63ce69011851ac099d5d95d3db1863b"></a><!-- doxytag: member="signal.h::sig_ignore_handler" ref="ad63ce69011851ac099d5d95d3db1863b" args="(int signal)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>sig_ignore_handler</b> (int signal)</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+<p>Description de ce que fait le fichier </p>
+</div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

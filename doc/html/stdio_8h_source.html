@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de libc/include/stdio.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">libc/include/stdio.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="stdio_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00030"></a>00030 <span class="preprocessor">#ifndef _STDIO_H_</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define _STDIO_H_</span>
+<a name="l00032"></a>00032 <span class="preprocessor"></span>
+<a name="l00037"></a>00037 <span class="preprocessor">#include &lt;<a class="code" href="libio_8h.html">libio.h</a>&gt;</span>
+<a name="l00038"></a>00038 <span class="preprocessor">#include &lt;<a class="code" href="libc_2include_2sys_2types_8h.html">sys/types.h</a>&gt;</span>
+<a name="l00039"></a>00039 <span class="preprocessor">#include &lt;<a class="code" href="stdarg_8h.html">stdarg.h</a>&gt;</span>
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 <span class="comment">/* End Of File character. */</span>
+<a name="l00042"></a>00042 <span class="preprocessor">#ifndef EOF</span>
+<a name="l00043"></a>00043 <span class="preprocessor"></span><span class="preprocessor"># define EOF (-1)</span>
+<a name="l00044"></a>00044 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00045"></a>00045 <span class="preprocessor"></span>
+<a name="l00046"></a>00046 <span class="preprocessor">#define _IOFBF 0 </span><span class="comment">/* Fully buffered. */</span>
+<a name="l00047"></a>00047 <span class="preprocessor">#define _IOLBF 1 </span><span class="comment">/* Line buffered. */</span>
+<a name="l00048"></a>00048 <span class="preprocessor">#define _IONBF 2 </span><span class="comment">/* No buffering. */</span>
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050 <span class="preprocessor">#define SEEK_SET 0</span>
+<a name="l00051"></a>00051 <span class="preprocessor"></span><span class="preprocessor">#define SEEK_CUR 1</span>
+<a name="l00052"></a>00052 <span class="preprocessor"></span><span class="preprocessor">#define SEEK_END 2</span>
+<a name="l00053"></a>00053 <span class="preprocessor"></span>
+<a name="l00057"></a>00057 <span class="keyword">extern</span> <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a>* <a class="code" href="stdio_8h.html#ad9a717e4aa4b82cb2e26752399eaa918">__file_list</a>; 
+<a name="l00058"></a>00058 
+<a name="l00079"></a>00079 <span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be" title="Affiche un message sur la sortie standard stdout.">printf</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...);
+<a name="l00080"></a>00080 
+<a name="l00102"></a>00102 <span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#ad9291335f34e874c8431285d705bc3aa" title="Affiche un message dans le stream passé en argument.">fprintf</a>(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...);
+<a name="l00103"></a>00103 
+<a name="l00126"></a>00126 <span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a3082155ec11e7229f7a20439b31a169e" title="Écrit un message dans le buffer passé en argument.">sprintf</a>(<span class="keywordtype">char</span> *str, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...);
+<a name="l00127"></a>00127 
+<a name="l00155"></a>00155 <span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#ad76145a6edfc98981ded8815a760e0cd" title="Écrit un message dans le buffer passé en argument avec une limite sur le nombre de caractères à écrir...">snprintf</a>(<span class="keywordtype">char</span> *str, <span class="keywordtype">size_t</span> size, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...);
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157 <span class="keywordtype">int</span> vprintf(<span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list ap);
+<a name="l00158"></a>00158 <span class="keywordtype">int</span> vfprintf(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list ap);
+<a name="l00159"></a>00159 <span class="keywordtype">int</span> vsprintf(<span class="keywordtype">char</span> *str, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list ap);
+<a name="l00160"></a>00160 <span class="keywordtype">int</span> vsnprintf(<span class="keywordtype">char</span> *str, <span class="keywordtype">size_t</span> size, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list ap);
+<a name="l00161"></a>00161 
+<a name="l00162"></a>00162 <span class="keywordtype">int</span> scanf(<span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...);
+<a name="l00163"></a>00163 <span class="keywordtype">int</span> sscanf(<span class="keyword">const</span> <span class="keywordtype">char</span> *s, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...);
+<a name="l00164"></a>00164 <span class="keywordtype">int</span> fscanf(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...);
+<a name="l00165"></a>00165 
+<a name="l00166"></a>00166 <span class="keywordtype">int</span> vsscanf(<span class="keyword">const</span> <span class="keywordtype">char</span> *s, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list ap);
+<a name="l00167"></a>00167 <span class="keywordtype">int</span> vfscanf(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list ap);
+<a name="l00168"></a>00168 <span class="keywordtype">int</span> vscanf(<span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list ap);
+<a name="l00169"></a>00169 
+<a name="l00170"></a>00170 <span class="keywordtype">int</span> fputc(<span class="keywordtype">int</span> c, <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream);
+<a name="l00171"></a>00171 <span class="keywordtype">int</span> fputs(<span class="keyword">const</span> <span class="keywordtype">char</span> *s, <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream);
+<a name="l00172"></a>00172 <span class="keywordtype">int</span> putc(<span class="keywordtype">int</span> c, <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream);
+<a name="l00173"></a>00173 <span class="keywordtype">int</span> putchar(<span class="keywordtype">int</span> c);
+<a name="l00174"></a>00174 <span class="keywordtype">int</span> puts(<span class="keyword">const</span> <span class="keywordtype">char</span> *s);
+<a name="l00175"></a>00175 <span class="keywordtype">int</span> fgetline(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *fp, <span class="keywordtype">char</span> s[], <span class="keywordtype">int</span> lim);
+<a name="l00176"></a>00176 <span class="keywordtype">int</span> getline(<span class="keywordtype">char</span> *s, <span class="keywordtype">int</span> lim);
+<a name="l00177"></a>00177 
+<a name="l00178"></a>00178 <span class="keywordtype">size_t</span> <a class="code" href="stdio_8h.html#a20d465b196f378c16fc31d4117170623">fwrite</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *ptr, <span class="keywordtype">size_t</span> size, <span class="keywordtype">size_t</span> nmemb, <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream);
+<a name="l00179"></a>00179 <span class="keywordtype">size_t</span> <a class="code" href="stdio_8h.html#a084251eb18ccd5c936faa2c39c86ec63">fread</a>(<span class="keywordtype">void</span> *ptr, <span class="keywordtype">size_t</span> size, <span class="keywordtype">size_t</span> nmemb, <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream);
+<a name="l00180"></a>00180 
+<a name="l00196"></a>00196 <span class="keywordtype">char</span> *<a class="code" href="stdio_8h.html#a2b3df0e66b41edab3c039191fe6cc4f9" title="Lit au plus size-1 caractères depuis le stream passé en argument.">fgets</a>(<span class="keywordtype">char</span> *s, <span class="keywordtype">int</span> size, <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream);
+<a name="l00197"></a>00197 
+<a name="l00207"></a>00207 <span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream.">fgetc</a>(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream);
+<a name="l00208"></a>00208 
+<a name="l00209"></a>00209 <span class="preprocessor">#define getc(stream) fgetc(stream)</span>
+<a name="l00210"></a>00210 <span class="preprocessor"></span>
+<a name="l00218"></a>00218 <span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a3e29caa20f7cffe18f410f01278905a8" title="lit un caractère depuis stdin.">getchar</a>(<span class="keywordtype">void</span>);
+<a name="l00219"></a>00219 
+<a name="l00220"></a>00220 <span class="keywordtype">int</span> fflush(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream);
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222 <span class="keywordtype">int</span> fclose(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a>* fd);
+<a name="l00223"></a>00223 <span class="keywordtype">int</span> fcloseall(<span class="keywordtype">void</span>);
+<a name="l00224"></a>00224 
+<a name="l00225"></a>00225 <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *fopen(<span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structmode.html">mode</a>);
+<a name="l00226"></a>00226 <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *fdopen(<span class="keywordtype">int</span> fd, <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structmode.html">mode</a>);
+<a name="l00227"></a>00227 <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *freopen(<span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structmode.html">mode</a>, <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream);
+<a name="l00228"></a>00228 
+<a name="l00229"></a>00229 <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *<a class="code" href="stdio_8h.html#a6b2efc6515c53ab5f0c9800c35f65789">fmemopen</a>(<span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> size, <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structmode.html">mode</a>);
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231 
+<a name="l00243"></a>00243 <span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#af691eb990d669a9edec8a9ec721ce3bc" title="Modifie le buffer et les flags d&#39;un stream.">setvbuf</a>(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream, <span class="keywordtype">char</span> *buf, <span class="keywordtype">int</span> <a class="code" href="structmode.html">mode</a>, <span class="keywordtype">size_t</span> size);
+<a name="l00244"></a>00244 
+<a name="l00245"></a>00245 <span class="keywordtype">void</span> init_stdfiles(<span class="keywordtype">void</span>);
+<a name="l00246"></a>00246 
+<a name="l00247"></a>00247 <span class="keywordtype">int</span> fseek(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream, <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> whence);
+<a name="l00248"></a>00248 
+<a name="l00249"></a>00249 <span class="keywordtype">long</span> ftell(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream);
+<a name="l00250"></a>00250 
+<a name="l00251"></a>00251 <span class="keywordtype">void</span> rewind(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream);
+<a name="l00252"></a>00252 
+<a name="l00260"></a>00260 <span class="keywordtype">int</span> <span class="keyword">remove</span>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname);
+<a name="l00261"></a>00261 
+<a name="l00262"></a>00262 <span class="keywordtype">void</span> clearerr(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream);
+<a name="l00263"></a>00263 
+<a name="l00264"></a>00264 <span class="keywordtype">int</span> feof(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream);
+<a name="l00265"></a>00265 
+<a name="l00266"></a>00266 <span class="keywordtype">int</span> ferror(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream);
+<a name="l00267"></a>00267 
+<a name="l00268"></a>00268 <span class="keywordtype">int</span> fileno(<a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *stream);
+<a name="l00269"></a>00269 
+<a name="l00270"></a>00270 <span class="preprocessor">#endif</span>
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

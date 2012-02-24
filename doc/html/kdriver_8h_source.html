@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>TacOS:  Fichier source de kernel/include/kdriver.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS&#160;<span id="projectnumber">0.1</span></div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">kernel/include/kdriver.h</div>  </div>
+</div>
+<div class="contents">
+<a href="kdriver_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00030"></a>00030 <span class="preprocessor">#ifndef _KDRIVER_H</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define _KDRIVER_H</span>
+<a name="l00032"></a>00032 <span class="preprocessor"></span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;types.h&gt;</span>
+<a name="l00034"></a>00034 <span class="preprocessor">#include &lt;<a class="code" href="kfcntl_8h.html">kfcntl.h</a>&gt;</span>
+<a name="l00035"></a>00035 
+<a name="l00036"></a><a class="code" href="structdriver__interfaces.html">00036</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+<a name="l00037"></a>00037         size_t (*read)(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *,<span class="keywordtype">void</span>*, size_t);
+<a name="l00038"></a>00038         size_t (*write)(open_file_descriptor *, <span class="keyword">const</span> <span class="keywordtype">void</span>*, size_t);
+<a name="l00039"></a>00039         int (*seek) (open_file_descriptor *, long, int);
+<a name="l00040"></a>00040         int (*ioctl) (open_file_descriptor*, <span class="keywordtype">unsigned</span> int, <span class="keywordtype">void</span>*);
+<a name="l00041"></a>00041         int (*open) (open_file_descriptor*);
+<a name="l00042"></a>00042         int (*close) (open_file_descriptor*);
+<a name="l00043"></a>00043 }<a class="code" href="structdriver__interfaces.html">driver_interfaces</a>;
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 <span class="keywordtype">void</span> <a class="code" href="kdriver_8h.html#a1279d0621da67d0065d99077517d197a" title="Initialise la liste des drivers. Initialise la liste des drivers.">init_driver_list</a>();
+<a name="l00046"></a>00046 <a class="code" href="structdriver__interfaces.html">driver_interfaces</a>* <a class="code" href="kdriver_8h.html#a659c045c4a57f0e458fff5d06a281dd7" title="Trouve les interfaces d&#39;un driver en fonction de son nom.">find_driver</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name);
+<a name="l00047"></a>00047 <span class="keywordtype">int</span> <a class="code" href="kdriver_8h.html#a0a09c693bb2a499556451c4b2d7d2b68" title="Enregistre le driver dans la liste.">register_driver</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name, <a class="code" href="structdriver__interfaces.html">driver_interfaces</a>* di);
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 <span class="preprocessor">#endif </span><span class="comment">/* _KDRIVER_H */</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définition de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Sat Nov 19 2011 20:27:14 pour TacOS par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

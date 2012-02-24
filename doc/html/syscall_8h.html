@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier libc/include/sys/syscall.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier libc/include/sys/syscall.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="libc_2include_2sys_2types_8h_source.html">sys/types.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de syscall.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="syscall_8h__incl.png" border="0" usemap="#libc_2include_2sys_2syscall_8h" alt=""/></div>
+<map name="libc_2include_2sys_2syscall_8h" id="libc_2include_2sys_2syscall_8h">
+<area shape="rect" id="node3" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="45,83,133,112"/><area shape="rect" id="node5" href="stdbool_8h.html" title="stdbool.h" alt="" coords="52,160,127,189"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="syscall_8h__dep__incl.png" border="0" usemap="#libc_2include_2sys_2syscall_8hdep" alt=""/></div>
+<map name="libc_2include_2sys_2syscall_8hdep" id="libc_2include_2sys_2syscall_8hdep">
+<area shape="rect" id="node3" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="5,83,115,112"/><area shape="rect" id="node5" href="ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="139,83,253,112"/><area shape="rect" id="node7" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="277,83,408,112"/><area shape="rect" id="node9" href="dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="432,83,520,112"/><area shape="rect" id="node11" href="fcntl_8c.html" title="File control operations." alt="" coords="544,83,621,112"/><area shape="rect" id="node13" href="malloc_8c.html" title="libc/malloc.c" alt="" coords="645,83,739,112"/><area shape="rect" id="node15" href="process_8c.html" title="libc/process.c" alt="" coords="763,83,867,112"/><area shape="rect" id="node17" href="sem_8c.html" title="libc/sem.c" alt="" coords="891,83,973,112"/><area shape="rect" id="node19" href="signal_8c.html" title="libc/signal.c" alt="" coords="997,83,1088,112"/><area shape="rect" id="node21" href="stdlib_8c.html" title="libc/stdlib.c" alt="" coords="1112,83,1197,112"/><area shape="rect" id="node23" href="time_8c.html" title="libc/time.c" alt="" coords="1221,83,1301,112"/><area shape="rect" id="node25" href="unistd_8c.html" title="libc/unistd.c" alt="" coords="1325,83,1416,112"/><area shape="rect" id="node27" href="wait_8c.html" title="libc/wait.c" alt="" coords="1440,83,1517,112"/><area shape="rect" id="node29" href="syscall_8c.html" title="system/syscall.c" alt="" coords="1541,83,1661,112"/></map>
+</div>
+</div>
+<p><a href="syscall_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1812279c69c5d8d2e1d3e9355c7b1304"></a><!-- doxytag: member="syscall.h::SYS_EXIT" ref="a1812279c69c5d8d2e1d3e9355c7b1304" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_EXIT</b>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09b503d13289888386984d4edc2d1b25"></a><!-- doxytag: member="syscall.h::SYS_GETPID" ref="a09b503d13289888386984d4edc2d1b25" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_GETPID</b>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa67514492cfefe865488642181fa9f98"></a><!-- doxytag: member="syscall.h::SYS_GETPPID" ref="aa67514492cfefe865488642181fa9f98" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_GETPPID</b>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a679385bbb1a8dd5d987c6141091ed580"></a><!-- doxytag: member="syscall.h::SYS_OPEN" ref="a679385bbb1a8dd5d987c6141091ed580" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_OPEN</b>&#160;&#160;&#160;3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8ad8eb5218b176ff3984cbb5170549fc"></a><!-- doxytag: member="syscall.h::SYS_KILL" ref="a8ad8eb5218b176ff3984cbb5170549fc" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_KILL</b>&#160;&#160;&#160;4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5d873acf1ed604853238dade4838ad58"></a><!-- doxytag: member="syscall.h::SYS_WRITE" ref="a5d873acf1ed604853238dade4838ad58" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_WRITE</b>&#160;&#160;&#160;5</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6606b11bd07d2e36776e55a7f5284883"></a><!-- doxytag: member="syscall.h::SYS_READ" ref="a6606b11bd07d2e36776e55a7f5284883" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_READ</b>&#160;&#160;&#160;6</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae14f25e5393f2785e77fcba7feb2efc2"></a><!-- doxytag: member="syscall.h::SYS_EXEC" ref="ae14f25e5393f2785e77fcba7feb2efc2" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_EXEC</b>&#160;&#160;&#160;7</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9fb867967ebb3fd89af40625a4a7b9be"></a><!-- doxytag: member="syscall.h::SYS_SLEEP" ref="a9fb867967ebb3fd89af40625a4a7b9be" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_SLEEP</b>&#160;&#160;&#160;8</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac339db638df2c5eda25c0d44876b4b09"></a><!-- doxytag: member="syscall.h::SYS_SEMCTL" ref="ac339db638df2c5eda25c0d44876b4b09" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_SEMCTL</b>&#160;&#160;&#160;9</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c256a0f5e22d6a89e8d96458b017a29"></a><!-- doxytag: member="syscall.h::SYS_VIDEO_CTL" ref="a9c256a0f5e22d6a89e8d96458b017a29" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_VIDEO_CTL</b>&#160;&#160;&#160;10</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaadb55ffa0c8569ab05c192b7cc53d76"></a><!-- doxytag: member="syscall.h::SYS_PROC" ref="aaadb55ffa0c8569ab05c192b7cc53d76" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_PROC</b>&#160;&#160;&#160;11</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7469c996d8302983ac0f03c374b1c0de"></a><!-- doxytag: member="syscall.h::SYS_VMM" ref="a7469c996d8302983ac0f03c374b1c0de" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_VMM</b>&#160;&#160;&#160;12</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aad98481b1b135c191f0240c4ba11d875"></a><!-- doxytag: member="syscall.h::SYS_SEEK" ref="aad98481b1b135c191f0240c4ba11d875" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_SEEK</b>&#160;&#160;&#160;13</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae72345a75b0a47e0a142786b4eadb43c"></a><!-- doxytag: member="syscall.h::SYS_HLT" ref="ae72345a75b0a47e0a142786b4eadb43c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_HLT</b>&#160;&#160;&#160;14</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a77e3de1554bd9925b18fe6d9d9117c0f"></a><!-- doxytag: member="syscall.h::SYS_SIGNAL" ref="a77e3de1554bd9925b18fe6d9d9117c0f" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_SIGNAL</b>&#160;&#160;&#160;15</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0dd0f5c004dbd9037dfb5dc4842c2fde"></a><!-- doxytag: member="syscall.h::SYS_SIGPROCMASK" ref="a0dd0f5c004dbd9037dfb5dc4842c2fde" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_SIGPROCMASK</b>&#160;&#160;&#160;16</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adede9a13ca34fe3ad84694c9f9b34a7b"></a><!-- doxytag: member="syscall.h::SYS_CLOSE" ref="adede9a13ca34fe3ad84694c9f9b34a7b" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_CLOSE</b>&#160;&#160;&#160;17</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5c573c190fb19b4f8866a64e7553d81"></a><!-- doxytag: member="syscall.h::SYS_MKNOD" ref="ad5c573c190fb19b4f8866a64e7553d81" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_MKNOD</b>&#160;&#160;&#160;18</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a403c64b5a2c2be401dc0a27db01e97f7"></a><!-- doxytag: member="syscall.h::SYS_READDIR" ref="a403c64b5a2c2be401dc0a27db01e97f7" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_READDIR</b>&#160;&#160;&#160;19</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20eeacb9be5aeba71a5800d9369b653c"></a><!-- doxytag: member="syscall.h::SYS_MKDIR" ref="a20eeacb9be5aeba71a5800d9369b653c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_MKDIR</b>&#160;&#160;&#160;20</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25db13fc48047f92d916a158f2fc87d8"></a><!-- doxytag: member="syscall.h::SYS_SIGRET" ref="a25db13fc48047f92d916a158f2fc87d8" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_SIGRET</b>&#160;&#160;&#160;21</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a472acfddc178192b0a664ad66c5d4c"></a><!-- doxytag: member="syscall.h::SYS_SIGSUSPEND" ref="a6a472acfddc178192b0a664ad66c5d4c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_SIGSUSPEND</b>&#160;&#160;&#160;22</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af608941da74f84864e9995e2eba4c50a"></a><!-- doxytag: member="syscall.h::SYS_IOCTL" ref="af608941da74f84864e9995e2eba4c50a" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_IOCTL</b>&#160;&#160;&#160;23</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad48b735c2f1799e583d4b608349a9d87"></a><!-- doxytag: member="syscall.h::SYS_GETCLOCK" ref="ad48b735c2f1799e583d4b608349a9d87" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_GETCLOCK</b>&#160;&#160;&#160;24</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87151de198ab13e5081974f7b094e2ef"></a><!-- doxytag: member="syscall.h::SYS_GETDATE" ref="a87151de198ab13e5081974f7b094e2ef" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_GETDATE</b>&#160;&#160;&#160;25</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89610394e1c56d5134185aae61c84421"></a><!-- doxytag: member="syscall.h::SYS_FCNTL" ref="a89610394e1c56d5134185aae61c84421" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_FCNTL</b>&#160;&#160;&#160;26</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa5d81846022bf67540844379f33a40c7"></a><!-- doxytag: member="syscall.h::SYS_DUMMY" ref="aa5d81846022bf67540844379f33a40c7" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_DUMMY</b>&#160;&#160;&#160;27</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8fa2c43ce2b7ef7c85890cf4809b28c"></a><!-- doxytag: member="syscall.h::SYS_STAT" ref="aa8fa2c43ce2b7ef7c85890cf4809b28c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_STAT</b>&#160;&#160;&#160;28</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad6cd58960ba6c69c79cdd195a6b9f4f4"></a><!-- doxytag: member="syscall.h::SYS_UNLINK" ref="ad6cd58960ba6c69c79cdd195a6b9f4f4" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_UNLINK</b>&#160;&#160;&#160;29</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43626d40cf574d3e9654d7e805663561"></a><!-- doxytag: member="syscall.h::SYS_DUP" ref="a43626d40cf574d3e9654d7e805663561" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_DUP</b>&#160;&#160;&#160;30</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aecded11a130b00224aed5a246e4fda35"></a><!-- doxytag: member="syscall.h::SYS_WAITPID" ref="aecded11a130b00224aed5a246e4fda35" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_WAITPID</b>&#160;&#160;&#160;31</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1637dd7c2d32b1b5037a3ba6f505db2f"></a><!-- doxytag: member="syscall.h::SYS_RMDIR" ref="a1637dd7c2d32b1b5037a3ba6f505db2f" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_RMDIR</b>&#160;&#160;&#160;32</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+<p>Liste des SYSCALL de TacOS. </p>
+</div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$time_8h.html" title="time.h" alt="" coords="373,237,429,267"/>
+<area shape="rect" id="node9" href="$stdio_8h.html" title="stdio.h" alt="" coords="129,160,191,189"/>
+<area shape="rect" id="node17" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="267,160,328,189"/>
+<area shape="rect" id="node23" href="$unistd_8h.html" title="unistd.h" alt="" coords="408,83,475,112"/>
+<area shape="rect" id="node30" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="508,83,607,112"/>
+<area shape="rect" id="node5" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="313,315,401,344"/>
+<area shape="rect" id="node7" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="320,392,395,421"/>
+<area shape="rect" id="node11" href="$libio_8h.html" title="libio.h" alt="" coords="99,237,155,267"/>
+<area shape="rect" id="node15" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="5,237,75,267"/>
+<area shape="rect" id="node20" href="$malloc_8h.html" title="malloc.h" alt="" coords="280,237,349,267"/>
+<area shape="rect" id="node26" href="$stat_8h.html" title="sys/stat.h" alt="" coords="403,160,480,189"/>
+</map>

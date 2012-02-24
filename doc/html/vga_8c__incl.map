@@ -1,0 +1,13 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="59,83,136,112"/>
+<area shape="rect" id="node9" href="$ioports_8h.html" title="ioports.h" alt="" coords="160,83,232,112"/>
+<area shape="rect" id="node11" href="$klog_8h.html" title="klog.h" alt="" coords="256,83,315,112"/>
+<area shape="rect" id="node15" href="$string_8h.html" title="string.h" alt="" coords="339,83,403,112"/>
+<area shape="rect" id="node21" href="$vga_8h.html" title="drivers/vga.h" alt="" coords="427,83,525,112"/>
+<area shape="rect" id="node25" href="$vga__modes_8h.html" title="drivers/vga_modes.h" alt="" coords="549,83,696,112"/>
+<area shape="rect" id="node7" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="93,160,176,189"/>
+<area shape="rect" id="node13" href="$kstdio_8h.html" title="kstdio.h" alt="" coords="244,160,311,189"/>
+<area shape="rect" id="node17" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="335,160,423,189"/>
+<area shape="rect" id="node19" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="341,237,416,267"/>
+<area shape="rect" id="node23" href="$vga__types_8h.html" title="vga_types.h" alt="" coords="507,160,600,189"/>
+</map>

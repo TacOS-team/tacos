@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="232,83,301,112"/>
+<area shape="rect" id="node20" href="$klog_8h.html" title="klog.h" alt="" coords="508,83,567,112"/>
+<area shape="rect" id="node24" href="$kmalloc_8h.html" title="kmalloc.h" alt="" coords="345,315,423,344"/>
+<area shape="rect" id="node27" href="$ext2__internal_8h.html" title="ext2_internal.h" alt="" coords="325,83,432,112"/>
+<area shape="rect" id="node5" href="$vfs_8h.html" title="vfs.h" alt="" coords="243,160,291,189"/>
+<area shape="rect" id="node7" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="141,469,205,499"/>
+<area shape="rect" id="node9" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="261,237,344,267"/>
+<area shape="rect" id="node11" href="$kstat_8h.html" title="kstat.h" alt="" coords="128,237,187,267"/>
+<area shape="rect" id="node14" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="72,315,136,344"/>
+<area shape="rect" id="node17" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="5,392,85,421"/>
+<area shape="rect" id="node22" href="$kstdio_8h.html" title="kstdio.h" alt="" coords="507,160,573,189"/>
+<area shape="rect" id="node29" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="340,160,417,189"/>
+</map>

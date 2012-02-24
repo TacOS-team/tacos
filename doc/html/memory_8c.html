@@ -1,0 +1,448 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/memory.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier kernel/memory.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;types.h&gt;</code><br/>
+<code>#include &lt;<a class="el" href="memory_8h_source.html">memory.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de memory.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="memory_8c__incl.png" border="0" usemap="#kernel_2memory_8c" alt=""/></div>
+<map name="kernel_2memory_8c" id="kernel_2memory_8c">
+<area shape="rect" id="node5" href="memory_8h.html" title="memory.h" alt="" coords="93,83,173,112"/><area shape="rect" id="node7" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="101,160,165,189"/></map>
+</div>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">paddr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#af0f914a32931e95e6e9ce2c1463b7978">memory_align_page_inf</a> (paddr_t value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse du cadre de page en arrondissant à l'inférieur.  <a href="#af0f914a32931e95e6e9ce2c1463b7978"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">paddr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a1c72d3a8d1a8b95fb4d75e634534320a">memory_align_page_sup</a> (paddr_t value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse du cadre de page en arrondissant au supérieur.  <a href="#a1c72d3a8d1a8b95fb4d75e634534320a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a5973498654f77e506df68cfb1322d0e5">memory_get_first_used_page</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne une copie du pointeur du premier descripteur de cadre de page utilisés.  <a href="#a5973498654f77e506df68cfb1322d0e5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a700b910217b425c592693b70801e8141">memory_get_first_free_page</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne une copie du pointeur du premier descripteur de cadre de page libres.  <a href="#a700b910217b425c592693b70801e8141"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a3b842dcc01f272fb96c6fbce35a81e99">memory_has_next_page</a> (struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a> *iterator)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne vrai s'il y a encore un cadre de page qui suit.  <a href="#a3b842dcc01f272fb96c6fbce35a81e99"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">paddr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a1de41321b1a8a9c6c12efd1a5ed998fa">memory_next_page</a> (struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a> **iterator)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le prochain cadre de page.  <a href="#a1de41321b1a8a9c6c12efd1a5ed998fa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a2225d120bb97730dca7fe16322e706f3">memory_setup</a> (size_t ram_size)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Découpage de la mémoire physique en cadres de page.  <a href="#a2225d120bb97730dca7fe16322e706f3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">paddr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#aeed93f8c282af6d9d4428813e331f583">memory_reserve_page_frame</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Réserve un cadre de page.  <a href="#aeed93f8c282af6d9d4428813e331f583"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#adcd850959d671b2d519a01d5c47ed090">memory_free_page_frame</a> (paddr_t addr)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère un cadre de page.  <a href="#adcd850959d671b2d519a01d5c47ed090"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">paddr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#ab67b6223b9ebbe423e9102dbbed1afce">memory_get_kernel_top</a> ()</td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42475ca62ffba0a4aea7cdb4913d40a9"></a><!-- doxytag: member="memory.c::_start" ref="a42475ca62ffba0a4aea7cdb4913d40a9" args="" -->
+char&#160;</td><td class="memItemRight" valign="bottom"><b>_start</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada8eaff0eacb8c9fb46e1b3850af042e"></a><!-- doxytag: member="memory.c::__e_kernel" ref="ada8eaff0eacb8c9fb46e1b3850af042e" args="" -->
+char&#160;</td><td class="memItemRight" valign="bottom"><b>__e_kernel</b></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+<p>Description de ce que fait le fichier</p>
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="af0f914a32931e95e6e9ce2c1463b7978"></a><!-- doxytag: member="memory.c::memory_align_page_inf" ref="af0f914a32931e95e6e9ce2c1463b7978" args="(paddr_t value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">paddr_t <a class="el" href="memory_8c.html#af0f914a32931e95e6e9ce2c1463b7978">memory_align_page_inf</a> </td>
+          <td>(</td>
+          <td class="paramtype">paddr_t&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Prend en argument une adresse physique et donne l'adresse du cadre correspondant en arrondissant à l'inférieur.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>l'adresse physique à arrondir.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>l'adresse physique arrondie. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="memory_8c_af0f914a32931e95e6e9ce2c1463b7978_icgraph.png" border="0" usemap="#memory_8c_af0f914a32931e95e6e9ce2c1463b7978_icgraph" alt=""/></div>
+<map name="memory_8c_af0f914a32931e95e6e9ce2c1463b7978_icgraph" id="memory_8c_af0f914a32931e95e6e9ce2c1463b7978_icgraph">
+<area shape="rect" id="node3" href="memory_8c.html#a2225d120bb97730dca7fe16322e706f3" title="Découpage de la mémoire physique en cadres de page." alt="" coords="217,5,327,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a1c72d3a8d1a8b95fb4d75e634534320a"></a><!-- doxytag: member="memory.c::memory_align_page_sup" ref="a1c72d3a8d1a8b95fb4d75e634534320a" args="(paddr_t value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">paddr_t <a class="el" href="memory_8c.html#a1c72d3a8d1a8b95fb4d75e634534320a">memory_align_page_sup</a> </td>
+          <td>(</td>
+          <td class="paramtype">paddr_t&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Prend en argument une adresse physique et donne l'adresse du cadre correspondant en arrondissant au supérieur.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>l'adresse physique à arrondir.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>l'adresse physique arrondie. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="memory_8c_a1c72d3a8d1a8b95fb4d75e634534320a_icgraph.png" border="0" usemap="#memory_8c_a1c72d3a8d1a8b95fb4d75e634534320a_icgraph" alt=""/></div>
+<map name="memory_8c_a1c72d3a8d1a8b95fb4d75e634534320a_icgraph" id="memory_8c_a1c72d3a8d1a8b95fb4d75e634534320a_icgraph">
+<area shape="rect" id="node3" href="memory_8c.html#a2225d120bb97730dca7fe16322e706f3" title="Découpage de la mémoire physique en cadres de page." alt="" coords="225,5,335,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="adcd850959d671b2d519a01d5c47ed090"></a><!-- doxytag: member="memory.c::memory_free_page_frame" ref="adcd850959d671b2d519a01d5c47ed090" args="(paddr_t addr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="memory_8c.html#adcd850959d671b2d519a01d5c47ed090">memory_free_page_frame</a> </td>
+          <td>(</td>
+          <td class="paramtype">paddr_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Libère un cadre de page occupé, le place dans la listes des cadres libres et retourne 0 en cas de succès.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>l'adresse physique du cadre à libérer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. Une autre valeur sinon. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a700b910217b425c592693b70801e8141"></a><!-- doxytag: member="memory.c::memory_get_first_free_page" ref="a700b910217b425c592693b70801e8141" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a>* <a class="el" href="memory_8c.html#a700b910217b425c592693b70801e8141">memory_get_first_free_page</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [read]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Donne une copie du pointeur du haut de la pile des descripteurs de cadre de page libres.</p>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>pointeur sur le premier descripteur de cadre de page libre. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5973498654f77e506df68cfb1322d0e5"></a><!-- doxytag: member="memory.c::memory_get_first_used_page" ref="a5973498654f77e506df68cfb1322d0e5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a>* <a class="el" href="memory_8c.html#a5973498654f77e506df68cfb1322d0e5">memory_get_first_used_page</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [read]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Donne une copie du pointeur du haut de la pile des descripteurs de cadre de page utilisés.</p>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>pointeur sur le premier descripteur de cadre de page utilisé. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="memory_8c_a5973498654f77e506df68cfb1322d0e5_icgraph.png" border="0" usemap="#memory_8c_a5973498654f77e506df68cfb1322d0e5_icgraph" alt=""/></div>
+<map name="memory_8c_a5973498654f77e506df68cfb1322d0e5_icgraph" id="memory_8c_a5973498654f77e506df68cfb1322d0e5_icgraph">
+<area shape="rect" id="node3" href="pagination_8c.html#a841b5f96bd3c392664b17627f55bfa36" title="Activation de la pagination et initialisation." alt="" coords="255,5,375,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab67b6223b9ebbe423e9102dbbed1afce"></a><!-- doxytag: member="memory.c::memory_get_kernel_top" ref="ab67b6223b9ebbe423e9102dbbed1afce" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">paddr_t <a class="el" href="memory_8c.html#ab67b6223b9ebbe423e9102dbbed1afce">memory_get_kernel_top</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>@ Premier cadre de page libre au dessus du kernel</p>
+<p>Premier cadre de page libre au dessus du kernel</p>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>l'adresse de la page. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="memory_8c_ab67b6223b9ebbe423e9102dbbed1afce_icgraph.png" border="0" usemap="#memory_8c_ab67b6223b9ebbe423e9102dbbed1afce_icgraph" alt=""/></div>
+<map name="memory_8c_ab67b6223b9ebbe423e9102dbbed1afce_icgraph" id="memory_8c_ab67b6223b9ebbe423e9102dbbed1afce_icgraph">
+<area shape="rect" id="node3" href="vmm_8c.html#a99b3ba454c13cfdb437fcaadd1cd3e97" title="init_vmm" alt="" coords="221,5,296,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a3b842dcc01f272fb96c6fbce35a81e99"></a><!-- doxytag: member="memory.c::memory_has_next_page" ref="a3b842dcc01f272fb96c6fbce35a81e99" args="(struct physical_page_descr *iterator)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="memory_8c.html#a3b842dcc01f272fb96c6fbce35a81e99">memory_has_next_page</a> </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a> *&#160;</td>
+          <td class="paramname"><em>iterator</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Retourne vrai s'il y a encore un cadre de page qui suit.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">iterator</td><td>pointeur de descripteur de page.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>vrai s'il y a encore un cadre de page qui suit. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="memory_8c_a3b842dcc01f272fb96c6fbce35a81e99_icgraph.png" border="0" usemap="#memory_8c_a3b842dcc01f272fb96c6fbce35a81e99_icgraph" alt=""/></div>
+<map name="memory_8c_a3b842dcc01f272fb96c6fbce35a81e99_icgraph" id="memory_8c_a3b842dcc01f272fb96c6fbce35a81e99_icgraph">
+<area shape="rect" id="node3" href="pagination_8c.html#a841b5f96bd3c392664b17627f55bfa36" title="Activation de la pagination et initialisation." alt="" coords="223,5,343,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a1de41321b1a8a9c6c12efd1a5ed998fa"></a><!-- doxytag: member="memory.c::memory_next_page" ref="a1de41321b1a8a9c6c12efd1a5ed998fa" args="(struct physical_page_descr **iterator)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">paddr_t <a class="el" href="memory_8c.html#a1de41321b1a8a9c6c12efd1a5ed998fa">memory_next_page</a> </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a> **&#160;</td>
+          <td class="paramname"><em>iterator</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cette fonction sert à autoriser une itération sur les listes de cadres de page sans manipuler directement les pointeurs next et prev.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">iterator</td><td>adresse d'un pointeur de descripteur de page. Sera modifiée pour pointer sur l'élément suivant.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>l'adresse physique du cadre de page. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="memory_8c_a1de41321b1a8a9c6c12efd1a5ed998fa_icgraph.png" border="0" usemap="#memory_8c_a1de41321b1a8a9c6c12efd1a5ed998fa_icgraph" alt=""/></div>
+<map name="memory_8c_a1de41321b1a8a9c6c12efd1a5ed998fa_icgraph" id="memory_8c_a1de41321b1a8a9c6c12efd1a5ed998fa_icgraph">
+<area shape="rect" id="node3" href="pagination_8c.html#a841b5f96bd3c392664b17627f55bfa36" title="Activation de la pagination et initialisation." alt="" coords="196,5,316,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aeed93f8c282af6d9d4428813e331f583"></a><!-- doxytag: member="memory.c::memory_reserve_page_frame" ref="aeed93f8c282af6d9d4428813e331f583" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">paddr_t <a class="el" href="memory_8c.html#aeed93f8c282af6d9d4428813e331f583">memory_reserve_page_frame</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Réserve un cadre de page libre, le place dans la liste des cadres utilisés et retourne l'adresse physique du cadre.</p>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>l'adresse physique du cadre réservé. 0 en cas d'erreur. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="memory_8c_aeed93f8c282af6d9d4428813e331f583_icgraph.png" border="0" usemap="#memory_8c_aeed93f8c282af6d9d4428813e331f583_icgraph" alt=""/></div>
+<map name="memory_8c_aeed93f8c282af6d9d4428813e331f583_icgraph" id="memory_8c_aeed93f8c282af6d9d4428813e331f583_icgraph">
+<area shape="rect" id="node3" href="pagination_8c.html#a841b5f96bd3c392664b17627f55bfa36" title="Activation de la pagination et initialisation." alt="" coords="257,5,377,35"/><area shape="rect" id="node5" href="vmm_8c.html#a99b3ba454c13cfdb437fcaadd1cd3e97" title="init_vmm" alt="" coords="280,59,355,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a2225d120bb97730dca7fe16322e706f3"></a><!-- doxytag: member="memory.c::memory_setup" ref="a2225d120bb97730dca7fe16322e706f3" args="(size_t ram_size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="memory_8c.html#a2225d120bb97730dca7fe16322e706f3">memory_setup</a> </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>ram_size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Découpage de la mémoire physique en taille fixe. Pour l'instant il n'y a pas de mémoire virtuelle, c'est donc juste une association linéaire avec autant de pages que de cadres.</p>
+<p>ram_size taille de la mémoire physique en octets. </p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="memory_8c_a2225d120bb97730dca7fe16322e706f3_cgraph.png" border="0" usemap="#memory_8c_a2225d120bb97730dca7fe16322e706f3_cgraph" alt=""/></div>
+<map name="memory_8c_a2225d120bb97730dca7fe16322e706f3_cgraph" id="memory_8c_a2225d120bb97730dca7fe16322e706f3_cgraph">
+<area shape="rect" id="node3" href="memory_8h.html#af0f914a32931e95e6e9ce2c1463b7978" title="Adresse du cadre de page en arrondissant à l&#39;inférieur." alt="" coords="169,5,332,35"/><area shape="rect" id="node5" href="memory_8h.html#a1c72d3a8d1a8b95fb4d75e634534320a" title="Adresse du cadre de page en arrondissant au supérieur." alt="" coords="165,59,336,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

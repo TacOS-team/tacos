@@ -1,0 +1,16 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$fat__outils_8h.html" title="fat_outils.h" alt="" coords="229,83,312,112"/>
+<area shape="rect" id="node9" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="315,392,379,421"/>
+<area shape="rect" id="node30" href="$string_8h.html" title="string.h" alt="" coords="485,83,549,112"/>
+<area shape="rect" id="node36" href="$kmalloc_8h.html" title="kmalloc.h" alt="" coords="420,392,497,421"/>
+<area shape="rect" id="node39" href="$ctype_8h.html" title="Fonctions de classification de caractères." alt="" coords="573,83,637,112"/>
+<area shape="rect" id="node5" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="171,160,264,189"/>
+<area shape="rect" id="node16" href="$vfs_8h.html" title="vfs.h" alt="" coords="193,237,241,267"/>
+<area shape="rect" id="node25" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="92,237,169,267"/>
+<area shape="rect" id="node11" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="309,547,373,576"/>
+<area shape="rect" id="node13" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="301,469,381,499"/>
+<area shape="rect" id="node19" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="93,315,176,344"/>
+<area shape="rect" id="node21" href="$kstat_8h.html" title="kstat.h" alt="" coords="251,315,309,344"/>
+<area shape="rect" id="node32" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="485,160,573,189"/>
+<area shape="rect" id="node34" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="492,237,567,267"/>
+</map>

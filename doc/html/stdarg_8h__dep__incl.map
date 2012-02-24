@@ -1,0 +1,33 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$stdio_8h.html" title="libc/include/stdio.h" alt="" coords="2332,83,2463,112"/>
+<area shape="rect" id="node47" href="$scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="4165,160,4285,189"/>
+<area shape="rect" id="node5" href="$floppy__dma_8c.html" title="kernel/drivers/block/floppy/floppy_dma.c" alt="" coords="5,160,267,189"/>
+<area shape="rect" id="node7" href="$floppy__motor_8c.html" title="kernel/drivers/block/floppy/floppy_motor.c" alt="" coords="291,160,560,189"/>
+<area shape="rect" id="node9" href="$init_8c.html" title="kernel/init.c" alt="" coords="584,160,672,189"/>
+<area shape="rect" id="node11" href="$module_8c.html" title="kernel/module.c" alt="" coords="696,160,813,189"/>
+<area shape="rect" id="node13" href="$pci__config_8c.html" title="kernel/pci/pci_config.c" alt="" coords="837,160,992,189"/>
+<area shape="rect" id="node15" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="1016,160,1104,189"/>
+<area shape="rect" id="node17" href="$libio_8c.html" title="libc/libio.c" alt="" coords="1128,160,1208,189"/>
+<area shape="rect" id="node19" href="$malloc_8c.html" title="libc/malloc.c" alt="" coords="1232,160,1325,189"/>
+<area shape="rect" id="node21" href="$process_8c.html" title="libc/process.c" alt="" coords="1349,160,1453,189"/>
+<area shape="rect" id="node23" href="$start_8c.html" title="libc/start.c" alt="" coords="1477,160,1557,189"/>
+<area shape="rect" id="node25" href="$fclose_8c.html" title="Define &quot;fclose&quot; method." alt="" coords="1581,160,1707,189"/>
+<area shape="rect" id="node27" href="$fmemopen_8c.html" title="libc/stdio/fmemopen.c" alt="" coords="1731,160,1883,189"/>
+<area shape="rect" id="node29" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="1907,160,2029,189"/>
+<area shape="rect" id="node31" href="$fprintf_8c.html" title="libc/stdio/fprintf.c" alt="" coords="2053,160,2171,189"/>
+<area shape="rect" id="node33" href="$fread_8c.html" title="libc/stdio/fread.c" alt="" coords="2195,160,2312,189"/>
+<area shape="rect" id="node35" href="$fseek_8c.html" title="libc/stdio/fseek.c" alt="" coords="2336,160,2459,189"/>
+<area shape="rect" id="node37" href="$fwrite_8c.html" title="libc/stdio/fwrite.c" alt="" coords="2483,160,2600,189"/>
+<area shape="rect" id="node39" href="$get_8c.html" title="libc/stdio/get.c" alt="" coords="2624,160,2731,189"/>
+<area shape="rect" id="node41" href="$getline_8c.html" title="libc/stdio/getline.c" alt="" coords="2755,160,2883,189"/>
+<area shape="rect" id="node43" href="$printf_8c.html" title="libc/stdio/printf.c" alt="" coords="2907,160,3021,189"/>
+<area shape="rect" id="node45" href="$put_8c.html" title="libc/stdio/put.c" alt="" coords="3045,160,3152,189"/>
+<area shape="rect" id="node49" href="$sprintf_8c.html" title="libc/stdio/sprintf.c" alt="" coords="3176,160,3299,189"/>
+<area shape="rect" id="node51" href="$stdfiles_8c.html" title="libc/stdio/stdfiles.c" alt="" coords="3323,160,3453,189"/>
+<area shape="rect" id="node53" href="$stdio_8c.html" title="libc/stdio/stdio.c" alt="" coords="3477,160,3595,189"/>
+<area shape="rect" id="node55" href="$stdlib_8c.html" title="libc/stdlib.c" alt="" coords="3619,160,3704,189"/>
+<area shape="rect" id="node57" href="$time_8c.html" title="libc/time.c" alt="" coords="3728,160,3808,189"/>
+<area shape="rect" id="node59" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="3832,160,3923,189"/>
+<area shape="rect" id="node61" href="$wait_8c.html" title="libc/wait.c" alt="" coords="3947,160,4024,189"/>
+<area shape="rect" id="node63" href="$elf_8c.html" title="system/elf.c" alt="" coords="4048,160,4141,189"/>
+</map>

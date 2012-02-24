@@ -1,0 +1,772 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/include/fs/ext2.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier kernel/include/fs/ext2.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Driver Ext2.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;<a class="el" href="vfs_8h_source.html">vfs.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de ext2.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h__incl.png" border="0" usemap="#kernel_2include_2fs_2ext2_8h" alt=""/></div>
+<map name="kernel_2include_2fs_2ext2_8h" id="kernel_2include_2fs_2ext2_8h">
+<area shape="rect" id="node3" href="vfs_8h.html" title="vfs.h" alt="" coords="60,83,108,112"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="76,392,140,421"/><area shape="rect" id="node7" href="fd__types_8h.html" title="fd_types.h" alt="" coords="43,160,125,189"/><area shape="rect" id="node9" href="kstat_8h.html" title="kstat.h" alt="" coords="149,160,208,189"/><area shape="rect" id="node12" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="147,237,211,267"/><area shape="rect" id="node15" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="171,315,251,344"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h__dep__incl.png" border="0" usemap="#kernel_2include_2fs_2ext2_8hdep" alt=""/></div>
+<map name="kernel_2include_2fs_2ext2_8hdep" id="kernel_2include_2fs_2ext2_8hdep">
+<area shape="rect" id="node3" href="ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="5,83,147,112"/><area shape="rect" id="node5" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="171,83,371,112"/><area shape="rect" id="node7" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="395,83,504,112"/></map>
+</div>
+</div>
+<p><a href="ext2_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9aed5bb9701eee5d20003be7dfc22e51"></a><!-- doxytag: member="ext2.h::ext2_init" ref="a9aed5bb9701eee5d20003be7dfc22e51" args="()" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51">ext2_init</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du driver ext2. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a">mount_EXT2</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un point de montage.  <a href="#a162f5d230a1583a05389a6bb5d349e2a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8h.html#aa055d93f3693085315aa853345de0032">umount_EXT2</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Unmount d'un point de montage.  <a href="#aa055d93f3693085315aa853345de0032"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8h.html#a9df1cc1b1a14caf87d09762a4886ce53">ext2_open</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, uint32_t flags)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouverture de fichier.  <a href="#a9df1cc1b1a14caf87d09762a4886ce53"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8h.html#aa5552876c927b5b04e708531c07344b0">ext2_read</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, void *buf, size_t size)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'un fichier.  <a href="#aa5552876c927b5b04e708531c07344b0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8h.html#ab2859a00444ce0ad527332da72e2629a">ext2_close</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fermeture d'un fichier ouvert.  <a href="#ab2859a00444ce0ad527332da72e2629a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8h.html#ac9b55aefa79e5e521e4e5d993b4c009a">ext2_readdir</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, char *entries, size_t size)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du contenu d'un dossier.  <a href="#ac9b55aefa79e5e521e4e5d993b4c009a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8h.html#a9a8b01e29da31a35719cbf11adab1f9d">ext2_stat</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, struct <a class="el" href="structstat.html">stat</a> *stbuf)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère l'état d'un fichier ou dossier.  <a href="#a9a8b01e29da31a35719cbf11adab1f9d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8h.html#a8e34d61b346e77ba8d32ff6829dd6cfa">ext2_mknod</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, mode_t <a class="el" href="structmode.html">mode</a>, dev_t dev)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Création d'un noeud (fichier, dossier, fichier spécial...)  <a href="#a8e34d61b346e77ba8d32ff6829dd6cfa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8h.html#a2a5245bfa03e55c15539e6aa518e4fab">ext2_mkdir</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, mode_t <a class="el" href="structmode.html">mode</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Création d'un dossier.  <a href="#a2a5245bfa03e55c15539e6aa518e4fab"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8h.html#aa78e9c6b4686b24a0183b164800a04ed">ext2_unlink</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Suppression d'un noeud.  <a href="#aa78e9c6b4686b24a0183b164800a04ed"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8h.html#a196cd1d4c0446caf3ec91f859c655170">ext2_truncate</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, off_t off)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la taille d'un fichier.  <a href="#a196cd1d4c0446caf3ec91f859c655170"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8h.html#ad87ef876e972f1bcb11d752042207d47">ext2_rmdir</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Suppression d'un dossier vide.  <a href="#ad87ef876e972f1bcb11d752042207d47"></a><br/></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ab2859a00444ce0ad527332da72e2629a"></a><!-- doxytag: member="ext2.h::ext2_close" ref="ab2859a00444ce0ad527332da72e2629a" args="(open_file_descriptor *ofd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2_8h.html#ab2859a00444ce0ad527332da72e2629a">ext2_close</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>Descripteur du fichier ouvert.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès, -1 sinon. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_ab2859a00444ce0ad527332da72e2629a_icgraph.png" border="0" usemap="#ext2_8h_ab2859a00444ce0ad527332da72e2629a_icgraph" alt=""/></div>
+<map name="ext2_8h_ab2859a00444ce0ad527332da72e2629a_icgraph" id="ext2_8h_ab2859a00444ce0ad527332da72e2629a_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a9df1cc1b1a14caf87d09762a4886ce53" title="Ouverture de fichier." alt="" coords="143,5,225,35"/><area shape="rect" id="node5" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="275,5,373,35"/><area shape="rect" id="node7" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="423,5,492,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a2a5245bfa03e55c15539e6aa518e4fab"></a><!-- doxytag: member="ext2.h::ext2_mkdir" ref="a2a5245bfa03e55c15539e6aa518e4fab" args="(fs_instance_t *instance, const char *path, mode_t mode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2_8h.html#a2a5245bfa03e55c15539e6aa518e4fab">ext2_mkdir</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mode_t&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instance de fs. </td></tr>
+    <tr><td class="paramname">path</td><td>Chemin du dossier à créer. </td></tr>
+    <tr><td class="paramname">mode</td><td>Droits sur le dossier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_a2a5245bfa03e55c15539e6aa518e4fab_cgraph.png" border="0" usemap="#ext2_8h_a2a5245bfa03e55c15539e6aa518e4fab_cgraph" alt=""/></div>
+<map name="ext2_8h_a2a5245bfa03e55c15539e6aa518e4fab_cgraph" id="ext2_8h_a2a5245bfa03e55c15539e6aa518e4fab_cgraph">
+<area shape="rect" id="node3" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="143,5,196,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_a2a5245bfa03e55c15539e6aa518e4fab_icgraph.png" border="0" usemap="#ext2_8h_a2a5245bfa03e55c15539e6aa518e4fab_icgraph" alt=""/></div>
+<map name="ext2_8h_a2a5245bfa03e55c15539e6aa518e4fab_icgraph" id="ext2_8h_a2a5245bfa03e55c15539e6aa518e4fab_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="141,5,240,35"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="289,5,359,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8e34d61b346e77ba8d32ff6829dd6cfa"></a><!-- doxytag: member="ext2.h::ext2_mknod" ref="a8e34d61b346e77ba8d32ff6829dd6cfa" args="(fs_instance_t *instance, const char *path, mode_t mode, dev_t dev)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2_8h.html#a8e34d61b346e77ba8d32ff6829dd6cfa">ext2_mknod</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mode_t&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dev_t&#160;</td>
+          <td class="paramname"><em>dev</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instance de fs. </td></tr>
+    <tr><td class="paramname">path</td><td>Chemin du noeud. </td></tr>
+    <tr><td class="paramname">dev</td><td>En cas de fichier spécial (device)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_a8e34d61b346e77ba8d32ff6829dd6cfa_icgraph.png" border="0" usemap="#ext2_8h_a8e34d61b346e77ba8d32ff6829dd6cfa_icgraph" alt=""/></div>
+<map name="ext2_8h_a8e34d61b346e77ba8d32ff6829dd6cfa_icgraph" id="ext2_8h_a8e34d61b346e77ba8d32ff6829dd6cfa_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="149,5,248,35"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="297,5,367,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9df1cc1b1a14caf87d09762a4886ce53"></a><!-- doxytag: member="ext2.h::ext2_open" ref="a9df1cc1b1a14caf87d09762a4886ce53" args="(fs_instance_t *instance, const char *path, uint32_t flags)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a>* <a class="el" href="ext2_8h.html#a9df1cc1b1a14caf87d09762a4886ce53">ext2_open</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Chemin (relatif au point de montage) du fichier à ouvrir. </td></tr>
+    <tr><td class="paramname">flags</td><td>Flags pour l'ouverture.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>un open file descriptor. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_a9df1cc1b1a14caf87d09762a4886ce53_cgraph.png" border="0" usemap="#ext2_8h_a9df1cc1b1a14caf87d09762a4886ce53_cgraph" alt=""/></div>
+<map name="ext2_8h_a9df1cc1b1a14caf87d09762a4886ce53_cgraph" id="ext2_8h_a9df1cc1b1a14caf87d09762a4886ce53_cgraph">
+<area shape="rect" id="node3" href="ext2__functions_8c.html#aa5552876c927b5b04e708531c07344b0" title="Lecture d&#39;un fichier." alt="" coords="147,5,227,35"/><area shape="rect" id="node5" href="ext2__functions_8c.html#ac9b55aefa79e5e521e4e5d993b4c009a" title="Lecture du contenu d&#39;un dossier." alt="" coords="139,59,235,88"/><area shape="rect" id="node11" href="ext2__functions_8c.html#ab2859a00444ce0ad527332da72e2629a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="144,112,229,141"/><area shape="rect" id="node7" href="string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères." alt="" coords="283,32,347,61"/><area shape="rect" id="node9" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="288,85,341,115"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_a9df1cc1b1a14caf87d09762a4886ce53_icgraph.png" border="0" usemap="#ext2_8h_a9df1cc1b1a14caf87d09762a4886ce53_icgraph" alt=""/></div>
+<map name="ext2_8h_a9df1cc1b1a14caf87d09762a4886ce53_icgraph" id="ext2_8h_a9df1cc1b1a14caf87d09762a4886ce53_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="139,5,237,35"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="287,5,356,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aa5552876c927b5b04e708531c07344b0"></a><!-- doxytag: member="ext2.h::ext2_read" ref="aa5552876c927b5b04e708531c07344b0" args="(open_file_descriptor *ofd, void *buf, size_t size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="ext2_8h.html#aa5552876c927b5b04e708531c07344b0">ext2_read</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>Descripteur du fichier ouvert. </td></tr>
+    <tr><td class="paramname">buf</td><td>Buffer où stocker les octets lus. </td></tr>
+    <tr><td class="paramname">size</td><td>Nombre d'octets à lire.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>nombre d'octets réellement lus. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_aa5552876c927b5b04e708531c07344b0_icgraph.png" border="0" usemap="#ext2_8h_aa5552876c927b5b04e708531c07344b0_icgraph" alt=""/></div>
+<map name="ext2_8h_aa5552876c927b5b04e708531c07344b0_icgraph" id="ext2_8h_aa5552876c927b5b04e708531c07344b0_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a9df1cc1b1a14caf87d09762a4886ce53" title="Ouverture de fichier." alt="" coords="137,5,220,35"/><area shape="rect" id="node5" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="269,5,368,35"/><area shape="rect" id="node7" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="417,5,487,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac9b55aefa79e5e521e4e5d993b4c009a"></a><!-- doxytag: member="ext2.h::ext2_readdir" ref="ac9b55aefa79e5e521e4e5d993b4c009a" args="(open_file_descriptor *ofd, char *entries, size_t size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2_8h.html#ac9b55aefa79e5e521e4e5d993b4c009a">ext2_readdir</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>entries</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>Descripteur de fichier qui correspond au dossier. </td></tr>
+    <tr><td class="paramname">entries</td><td>Buffer qui va recevoir les entrées de dossier. </td></tr>
+    <tr><td class="paramname">size</td><td>Nombre d'octets dans le buffer au maximum.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>Nombre d'octets écrits dans entries. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_ac9b55aefa79e5e521e4e5d993b4c009a_cgraph.png" border="0" usemap="#ext2_8h_ac9b55aefa79e5e521e4e5d993b4c009a_cgraph" alt=""/></div>
+<map name="ext2_8h_ac9b55aefa79e5e521e4e5d993b4c009a_cgraph" id="ext2_8h_ac9b55aefa79e5e521e4e5d993b4c009a_cgraph">
+<area shape="rect" id="node3" href="string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères." alt="" coords="149,5,213,35"/><area shape="rect" id="node5" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="155,59,208,88"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_ac9b55aefa79e5e521e4e5d993b4c009a_icgraph.png" border="0" usemap="#ext2_8h_ac9b55aefa79e5e521e4e5d993b4c009a_icgraph" alt=""/></div>
+<map name="ext2_8h_ac9b55aefa79e5e521e4e5d993b4c009a_icgraph" id="ext2_8h_ac9b55aefa79e5e521e4e5d993b4c009a_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a9df1cc1b1a14caf87d09762a4886ce53" title="Ouverture de fichier." alt="" coords="151,5,233,35"/><area shape="rect" id="node5" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="283,5,381,35"/><area shape="rect" id="node7" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="431,5,500,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ad87ef876e972f1bcb11d752042207d47"></a><!-- doxytag: member="ext2.h::ext2_rmdir" ref="ad87ef876e972f1bcb11d752042207d47" args="(fs_instance_t *instance, const char *path)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2_8h.html#ad87ef876e972f1bcb11d752042207d47">ext2_rmdir</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instance de fs. </td></tr>
+    <tr><td class="paramname">path</td><td>Chemin du dossier à supprimer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_ad87ef876e972f1bcb11d752042207d47_cgraph.png" border="0" usemap="#ext2_8h_ad87ef876e972f1bcb11d752042207d47_cgraph" alt=""/></div>
+<map name="ext2_8h_ad87ef876e972f1bcb11d752042207d47_cgraph" id="ext2_8h_ad87ef876e972f1bcb11d752042207d47_cgraph">
+<area shape="rect" id="node3" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="140,5,193,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_ad87ef876e972f1bcb11d752042207d47_icgraph.png" border="0" usemap="#ext2_8h_ad87ef876e972f1bcb11d752042207d47_icgraph" alt=""/></div>
+<map name="ext2_8h_ad87ef876e972f1bcb11d752042207d47_icgraph" id="ext2_8h_ad87ef876e972f1bcb11d752042207d47_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="139,5,237,35"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="287,5,356,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9a8b01e29da31a35719cbf11adab1f9d"></a><!-- doxytag: member="ext2.h::ext2_stat" ref="a9a8b01e29da31a35719cbf11adab1f9d" args="(fs_instance_t *instance, const char *path, struct stat *stbuf)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2_8h.html#a9a8b01e29da31a35719cbf11adab1f9d">ext2_stat</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structstat.html">stat</a> *&#160;</td>
+          <td class="paramname"><em>stbuf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instance de fs. </td></tr>
+    <tr><td class="paramname">path</td><td>Chemin du fichier. </td></tr>
+    <tr><td class="paramname">stbuf</td><td>Endroit où enregistrer les infos.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_a9a8b01e29da31a35719cbf11adab1f9d_icgraph.png" border="0" usemap="#ext2_8h_a9a8b01e29da31a35719cbf11adab1f9d_icgraph" alt=""/></div>
+<map name="ext2_8h_a9a8b01e29da31a35719cbf11adab1f9d_icgraph" id="ext2_8h_a9a8b01e29da31a35719cbf11adab1f9d_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="128,5,227,35"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="276,5,345,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a196cd1d4c0446caf3ec91f859c655170"></a><!-- doxytag: member="ext2.h::ext2_truncate" ref="a196cd1d4c0446caf3ec91f859c655170" args="(fs_instance_t *instance, const char *path, off_t off)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2_8h.html#a196cd1d4c0446caf3ec91f859c655170">ext2_truncate</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">off_t&#160;</td>
+          <td class="paramname"><em>off</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instance de fs. </td></tr>
+    <tr><td class="paramname">path</td><td>Chemin du fichier. </td></tr>
+    <tr><td class="paramname">off</td><td>Nouvelle taille.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_a196cd1d4c0446caf3ec91f859c655170_icgraph.png" border="0" usemap="#ext2_8h_a196cd1d4c0446caf3ec91f859c655170_icgraph" alt=""/></div>
+<map name="ext2_8h_a196cd1d4c0446caf3ec91f859c655170_icgraph" id="ext2_8h_a196cd1d4c0446caf3ec91f859c655170_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="155,5,253,35"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="303,5,372,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aa78e9c6b4686b24a0183b164800a04ed"></a><!-- doxytag: member="ext2.h::ext2_unlink" ref="aa78e9c6b4686b24a0183b164800a04ed" args="(fs_instance_t *instance, const char *path)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2_8h.html#aa78e9c6b4686b24a0183b164800a04ed">ext2_unlink</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instance de fs. </td></tr>
+    <tr><td class="paramname">path</td><td>Chemin du noeud.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_aa78e9c6b4686b24a0183b164800a04ed_cgraph.png" border="0" usemap="#ext2_8h_aa78e9c6b4686b24a0183b164800a04ed_cgraph" alt=""/></div>
+<map name="ext2_8h_aa78e9c6b4686b24a0183b164800a04ed_cgraph" id="ext2_8h_aa78e9c6b4686b24a0183b164800a04ed_cgraph">
+<area shape="rect" id="node3" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="143,5,196,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_aa78e9c6b4686b24a0183b164800a04ed_icgraph.png" border="0" usemap="#ext2_8h_aa78e9c6b4686b24a0183b164800a04ed_icgraph" alt=""/></div>
+<map name="ext2_8h_aa78e9c6b4686b24a0183b164800a04ed_icgraph" id="ext2_8h_aa78e9c6b4686b24a0183b164800a04ed_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="141,5,240,35"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="289,5,359,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a162f5d230a1583a05389a6bb5d349e2a"></a><!-- doxytag: member="ext2.h::mount_EXT2" ref="a162f5d230a1583a05389a6bb5d349e2a" args="(open_file_descriptor *ofd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a>* <a class="el" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a">mount_EXT2</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>OFD du device que l'on veut monter.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>Une instance de FS. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_a162f5d230a1583a05389a6bb5d349e2a_cgraph.png" border="0" usemap="#ext2_8h_a162f5d230a1583a05389a6bb5d349e2a_cgraph" alt=""/></div>
+<map name="ext2_8h_a162f5d230a1583a05389a6bb5d349e2a_cgraph" id="ext2_8h_a162f5d230a1583a05389a6bb5d349e2a_cgraph">
+<area shape="rect" id="node3" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="179,5,227,35"/><area shape="rect" id="node7" href="unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier." alt="" coords="179,59,227,88"/><area shape="rect" id="node10" href="ext2__functions_8c.html#a9df1cc1b1a14caf87d09762a4886ce53" title="Ouverture de fichier." alt="" coords="161,112,244,141"/><area shape="rect" id="node22" href="ext2__functions_8c.html#a8e34d61b346e77ba8d32ff6829dd6cfa" title="Création d&#39;un noeud (fichier, dossier, fichier spécial...)" alt="" coords="156,165,249,195"/><area shape="rect" id="node24" href="ext2__functions_8c.html#a2a5245bfa03e55c15539e6aa518e4fab" title="Création d&#39;un dossier." alt="" coords="307,225,392,255"/><area shape="rect" id="node27" href="ext2__functions_8c.html#a9a8b01e29da31a35719cbf11adab1f9d" title="Récupère l&#39;état d&#39;un fichier ou dossier." alt="" coords="165,269,240,299"/><area shape="rect" id="node29" href="ext2__functions_8c.html#aa78e9c6b4686b24a0183b164800a04ed" title="Suppression d&#39;un noeud." alt="" coords="305,284,393,313"/><area shape="rect" id="node32" href="ext2__functions_8c.html#ad87ef876e972f1bcb11d752042207d47" title="Suppression d&#39;un dossier vide." alt="" coords="308,349,391,379"/><area shape="rect" id="node35" href="ext2__functions_8c.html#a196cd1d4c0446caf3ec91f859c655170" title="Change la taille d&#39;un fichier." alt="" coords="153,424,252,453"/><area shape="rect" id="node5" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="319,8,380,37"/><area shape="rect" id="node12" href="ext2__functions_8c.html#aa5552876c927b5b04e708531c07344b0" title="Lecture d&#39;un fichier." alt="" coords="309,63,389,92"/><area shape="rect" id="node14" href="ext2__functions_8c.html#ac9b55aefa79e5e521e4e5d993b4c009a" title="Lecture du contenu d&#39;un dossier." alt="" coords="301,116,397,145"/><area shape="rect" id="node20" href="ext2__functions_8c.html#ab2859a00444ce0ad527332da72e2629a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="307,169,392,199"/><area shape="rect" id="node16" href="string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères." alt="" coords="445,116,509,145"/><area shape="rect" id="node18" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="451,255,504,284"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_a162f5d230a1583a05389a6bb5d349e2a_icgraph.png" border="0" usemap="#ext2_8h_a162f5d230a1583a05389a6bb5d349e2a_icgraph" alt=""/></div>
+<map name="ext2_8h_a162f5d230a1583a05389a6bb5d349e2a_icgraph" id="ext2_8h_a162f5d230a1583a05389a6bb5d349e2a_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="153,5,223,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aa055d93f3693085315aa853345de0032"></a><!-- doxytag: member="ext2.h::umount_EXT2" ref="aa055d93f3693085315aa853345de0032" args="(fs_instance_t *instance)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="ext2_8h.html#aa055d93f3693085315aa853345de0032">umount_EXT2</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>L'instance de fs que l'on veut démonter. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8h_aa055d93f3693085315aa853345de0032_icgraph.png" border="0" usemap="#ext2_8h_aa055d93f3693085315aa853345de0032_icgraph" alt=""/></div>
+<map name="ext2_8h_aa055d93f3693085315aa853345de0032_icgraph" id="ext2_8h_aa055d93f3693085315aa853345de0032_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="161,5,231,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

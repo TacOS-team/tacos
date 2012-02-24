@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="101,160,165,189"/>
+<area shape="rect" id="node10" href="$kprocess_8h.html" title="kprocess.h" alt="" coords="340,160,425,189"/>
+<area shape="rect" id="node28" href="$kmalloc_8h.html" title="kmalloc.h" alt="" coords="5,83,83,112"/>
+<area shape="rect" id="node31" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="171,83,261,112"/>
+<area shape="rect" id="node5" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="119,237,199,267"/>
+<area shape="rect" id="node7" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="355,315,419,344"/>
+<area shape="rect" id="node13" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="223,237,305,267"/>
+<area shape="rect" id="node15" href="$signal__types_8h.html" title="signal_types.h" alt="" coords="329,237,436,267"/>
+<area shape="rect" id="node17" href="$process__types_8h.html" title="process_types.h" alt="" coords="460,237,577,267"/>
+<area shape="rect" id="node19" href="$symtable_8h.html" title="symtable.h" alt="" coords="737,237,823,267"/>
+<area shape="rect" id="node25" href="$vmm_8h.html" title="vmm.h" alt="" coords="652,237,713,267"/>
+<area shape="rect" id="node22" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="757,315,803,344"/>
+</map>

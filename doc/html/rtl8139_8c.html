@@ -1,0 +1,414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier olddrivers/ethernet/rtl8139.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier olddrivers/ethernet/rtl8139.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="pci_8h_source.html">pci.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="pci__config_8h_source.html">pci_config.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="ioports_8h_source.html">ioports.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="string_8h_source.html">string.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kstdio_8h_source.html">kstdio.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de rtl8139.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="rtl8139_8c__incl.png" border="0" usemap="#olddrivers_2ethernet_2rtl8139_8c" alt=""/></div>
+<map name="olddrivers_2ethernet_2rtl8139_8c" id="olddrivers_2ethernet_2rtl8139_8c">
+<area shape="rect" id="node3" href="pci_8h.html" title="pci.h" alt="" coords="5,83,53,112"/><area shape="rect" id="node10" href="pci__config_8h.html" title="pci_config.h" alt="" coords="77,83,168,112"/><area shape="rect" id="node13" href="ioports_8h.html" title="ioports.h" alt="" coords="192,83,264,112"/><area shape="rect" id="node15" href="string_8h.html" title="string.h" alt="" coords="288,83,352,112"/><area shape="rect" id="node21" href="kstdio_8h.html" title="kstdio.h" alt="" coords="405,160,472,189"/><area shape="rect" id="node23" href="klog_8h.html" title="klog.h" alt="" coords="427,83,485,112"/><area shape="rect" id="node5" href="kernel_2include_2types_8h_source.html" title="types.h" alt="" coords="39,237,103,267"/><area shape="rect" id="node7" href="pci__types_8h.html" title="pci_types.h" alt="" coords="67,160,155,189"/><area shape="rect" id="node17" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="276,160,364,189"/><area shape="rect" id="node19" href="stdbool_8h.html" title="stdbool.h" alt="" coords="283,237,357,267"/></map>
+</div>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtransmit__descriptor__t.html">transmit_descriptor_t</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrx__packet__header__t.html">rx_packet_header_t</a></td></tr>
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f195356e45805ccf74184a3616ba53a"></a><!-- doxytag: member="rtl8139.c::RTL8139_VENDOR_ID" ref="a3f195356e45805ccf74184a3616ba53a" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RTL8139_VENDOR_ID</b>&#160;&#160;&#160;0x10EC	/* Realtek Semiconductor’s PCI Vendor ID */</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a832875eaec4756d1ba1309eb5b18d77c"></a><!-- doxytag: member="rtl8139.c::RTL8139_DEVICE_ID" ref="a832875eaec4756d1ba1309eb5b18d77c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RTL8139_DEVICE_ID</b>&#160;&#160;&#160;0x8139	/* RTL8139 PCI Device ID */</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1d66c48099b7164f7bcdf41d75ee6b9b"></a><!-- doxytag: member="rtl8139.c::IDR_BASE" ref="a1d66c48099b7164f7bcdf41d75ee6b9b" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IDR_BASE</b>&#160;&#160;&#160;0x00</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a907eb4fd11cab47a9f9f501fb59753b1"></a><!-- doxytag: member="rtl8139.c::IDR0" ref="a907eb4fd11cab47a9f9f501fb59753b1" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IDR0</b>&#160;&#160;&#160;0x00</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3ddd6e804159d914694a5630ca6c24e"></a><!-- doxytag: member="rtl8139.c::IDR1" ref="ac3ddd6e804159d914694a5630ca6c24e" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IDR1</b>&#160;&#160;&#160;0x01</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e1c6f783a34c26f8cd14cd8655f5c77"></a><!-- doxytag: member="rtl8139.c::IDR2" ref="a5e1c6f783a34c26f8cd14cd8655f5c77" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IDR2</b>&#160;&#160;&#160;0x02</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1545518590d344ea174a992edcf683ee"></a><!-- doxytag: member="rtl8139.c::IDR3" ref="a1545518590d344ea174a992edcf683ee" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IDR3</b>&#160;&#160;&#160;0x03</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b7ed56e18576777763887b512ac03e2"></a><!-- doxytag: member="rtl8139.c::IDR4" ref="a7b7ed56e18576777763887b512ac03e2" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IDR4</b>&#160;&#160;&#160;0x04</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38d1eb69f027914e2e2afecc0cf62242"></a><!-- doxytag: member="rtl8139.c::IDR5" ref="a38d1eb69f027914e2e2afecc0cf62242" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IDR5</b>&#160;&#160;&#160;0x05</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8cf6c431bb390cdff475e7f849b1d62f"></a><!-- doxytag: member="rtl8139.c::MAR" ref="a8cf6c431bb390cdff475e7f849b1d62f" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAR</b>&#160;&#160;&#160;0x08</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acd66d98ebe79014fb732561715e4472d"></a><!-- doxytag: member="rtl8139.c::TSD_BASE" ref="acd66d98ebe79014fb732561715e4472d" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD_BASE</b>&#160;&#160;&#160;0x10</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54335ee93338b43f00762a1f4034852e"></a><!-- doxytag: member="rtl8139.c::TSD0" ref="a54335ee93338b43f00762a1f4034852e" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD0</b>&#160;&#160;&#160;0x10</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69a97f44b1a749b2bc5d69fb580d8aa1"></a><!-- doxytag: member="rtl8139.c::TSD1" ref="a69a97f44b1a749b2bc5d69fb580d8aa1" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD1</b>&#160;&#160;&#160;0x14</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a385d22d46c5764a7cf83e02709b613e1"></a><!-- doxytag: member="rtl8139.c::TSD2" ref="a385d22d46c5764a7cf83e02709b613e1" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD2</b>&#160;&#160;&#160;0x18</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab9dcc4e9a49042d5b350b275a1250178"></a><!-- doxytag: member="rtl8139.c::TSD3" ref="ab9dcc4e9a49042d5b350b275a1250178" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD3</b>&#160;&#160;&#160;0x1C</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a619dfaf267be044ce5dba34cec0a3512"></a><!-- doxytag: member="rtl8139.c::TSAD_BASE" ref="a619dfaf267be044ce5dba34cec0a3512" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSAD_BASE</b>&#160;&#160;&#160;0x20</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8448f7bf63fc28a8face18765430076b"></a><!-- doxytag: member="rtl8139.c::TSAD0" ref="a8448f7bf63fc28a8face18765430076b" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSAD0</b>&#160;&#160;&#160;0x20</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a440430223282dde06aeab3f5605a72e1"></a><!-- doxytag: member="rtl8139.c::TSAD1" ref="a440430223282dde06aeab3f5605a72e1" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSAD1</b>&#160;&#160;&#160;0x24</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29395890c7478ecb593bb19cd60225fd"></a><!-- doxytag: member="rtl8139.c::TSAD2" ref="a29395890c7478ecb593bb19cd60225fd" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSAD2</b>&#160;&#160;&#160;0x28</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acdd491c22e14b5c093fc6e044327cf79"></a><!-- doxytag: member="rtl8139.c::TSAD3" ref="acdd491c22e14b5c093fc6e044327cf79" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSAD3</b>&#160;&#160;&#160;0x2C</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a90ae942fdc6090866b68aa447e38a5a0"></a><!-- doxytag: member="rtl8139.c::RBSTART" ref="a90ae942fdc6090866b68aa447e38a5a0" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RBSTART</b>&#160;&#160;&#160;0x30</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a73dffab41093bb9a4533cf85c17f0d8e"></a><!-- doxytag: member="rtl8139.c::ERBCR" ref="a73dffab41093bb9a4533cf85c17f0d8e" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ERBCR</b>&#160;&#160;&#160;0x34</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ac09504b53f25abb23b92613e3b95e0"></a><!-- doxytag: member="rtl8139.c::ERSR" ref="a1ac09504b53f25abb23b92613e3b95e0" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ERSR</b>&#160;&#160;&#160;0x36</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a876ce77f3c672c7162658151e648389e"></a><!-- doxytag: member="rtl8139.c::CR" ref="a876ce77f3c672c7162658151e648389e" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CR</b>&#160;&#160;&#160;0x37</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae43401c03f18a61b4ad2eae5523b860e"></a><!-- doxytag: member="rtl8139.c::CAPR" ref="ae43401c03f18a61b4ad2eae5523b860e" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CAPR</b>&#160;&#160;&#160;0x38</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acebe3276342f4156b7d8f6ff8a33299b"></a><!-- doxytag: member="rtl8139.c::CBR" ref="acebe3276342f4156b7d8f6ff8a33299b" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CBR</b>&#160;&#160;&#160;0x3A</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a30fd4faef73fc23b1f09a0bd643455c1"></a><!-- doxytag: member="rtl8139.c::IMR" ref="a30fd4faef73fc23b1f09a0bd643455c1" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IMR</b>&#160;&#160;&#160;0x3C</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a421ef10418d62e6b65390cb8cdab5c15"></a><!-- doxytag: member="rtl8139.c::ISR" ref="a421ef10418d62e6b65390cb8cdab5c15" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ISR</b>&#160;&#160;&#160;0x3E</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a380869a8309123a03ff77170b67e112d"></a><!-- doxytag: member="rtl8139.c::TCR" ref="a380869a8309123a03ff77170b67e112d" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TCR</b>&#160;&#160;&#160;0x40</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37adcf98d04632a70fc1e3aff01be01e"></a><!-- doxytag: member="rtl8139.c::RCR" ref="a37adcf98d04632a70fc1e3aff01be01e" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCR</b>&#160;&#160;&#160;0x44</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a677a6dd79c5702a49bd13bc97cb90208"></a><!-- doxytag: member="rtl8139.c::TCTR" ref="a677a6dd79c5702a49bd13bc97cb90208" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TCTR</b>&#160;&#160;&#160;0x48</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a26e079136415ff57657e59ec9bf9b119"></a><!-- doxytag: member="rtl8139.c::MPC" ref="a26e079136415ff57657e59ec9bf9b119" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MPC</b>&#160;&#160;&#160;0x4C</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af4105ca8f550e707dbc8b48bd7a660d6"></a><!-- doxytag: member="rtl8139.c::R9346C" ref="af4105ca8f550e707dbc8b48bd7a660d6" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>R9346C</b>&#160;&#160;&#160;0x50</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad193857f382bfa9daaba760d58379757"></a><!-- doxytag: member="rtl8139.c::CONFIG0" ref="ad193857f382bfa9daaba760d58379757" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONFIG0</b>&#160;&#160;&#160;0x51</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae28dbf424985dc1c58ae7dbc5a0926b9"></a><!-- doxytag: member="rtl8139.c::CONFIG1" ref="ae28dbf424985dc1c58ae7dbc5a0926b9" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONFIG1</b>&#160;&#160;&#160;0x52</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa322998ffec30e0ef43b0b292cd3114f"></a><!-- doxytag: member="rtl8139.c::TimerInt" ref="aa322998ffec30e0ef43b0b292cd3114f" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TimerInt</b>&#160;&#160;&#160;0x54</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad4806a0bfd996121bc27d2466393207e"></a><!-- doxytag: member="rtl8139.c::MSR" ref="ad4806a0bfd996121bc27d2466393207e" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MSR</b>&#160;&#160;&#160;0x58</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d128687074c874210b0c9dada3d8ca7"></a><!-- doxytag: member="rtl8139.c::CONFIG3" ref="a8d128687074c874210b0c9dada3d8ca7" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONFIG3</b>&#160;&#160;&#160;0x59</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a73621b04f3881ce7c5f91812ca82f6b0"></a><!-- doxytag: member="rtl8139.c::CONFIG4" ref="a73621b04f3881ce7c5f91812ca82f6b0" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONFIG4</b>&#160;&#160;&#160;0x5A</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9ab17ec0125b7eb46726d17d4eb370a"></a><!-- doxytag: member="rtl8139.c::MULINT" ref="ad9ab17ec0125b7eb46726d17d4eb370a" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MULINT</b>&#160;&#160;&#160;0x5C</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0c466f1614097d1e727560f506e7f9a2"></a><!-- doxytag: member="rtl8139.c::RERID" ref="a0c466f1614097d1e727560f506e7f9a2" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RERID</b>&#160;&#160;&#160;0x5E</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aadd30c9527387eaaa89722e6cacbabc7"></a><!-- doxytag: member="rtl8139.c::TSAD" ref="aadd30c9527387eaaa89722e6cacbabc7" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSAD</b>&#160;&#160;&#160;0x60</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38883fac19e52668af6dc83999e836cd"></a><!-- doxytag: member="rtl8139.c::BMCR" ref="a38883fac19e52668af6dc83999e836cd" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BMCR</b>&#160;&#160;&#160;0x62</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ddcd1d9f9d21893eb7e9624336a4a23"></a><!-- doxytag: member="rtl8139.c::BMSR" ref="a9ddcd1d9f9d21893eb7e9624336a4a23" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BMSR</b>&#160;&#160;&#160;0x64</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a89e5248ffe91d746fd6fb7817004a8"></a><!-- doxytag: member="rtl8139.c::ANAR" ref="a5a89e5248ffe91d746fd6fb7817004a8" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ANAR</b>&#160;&#160;&#160;0x66</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15080c7b00e7a8c9bc2b8def393e5702"></a><!-- doxytag: member="rtl8139.c::ANLPAR" ref="a15080c7b00e7a8c9bc2b8def393e5702" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ANLPAR</b>&#160;&#160;&#160;0x68</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac55267ee24a8e1ff55287323431b4549"></a><!-- doxytag: member="rtl8139.c::ANER" ref="ac55267ee24a8e1ff55287323431b4549" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ANER</b>&#160;&#160;&#160;0x6A</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e5c46282d69d86c09a6e3669ed16ff5"></a><!-- doxytag: member="rtl8139.c::DIS" ref="a6e5c46282d69d86c09a6e3669ed16ff5" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DIS</b>&#160;&#160;&#160;0x6C</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ac242a4ae8f48a5c977b724fc51af64"></a><!-- doxytag: member="rtl8139.c::FCSC" ref="a9ac242a4ae8f48a5c977b724fc51af64" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FCSC</b>&#160;&#160;&#160;0x6E</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac0b5334c788e47e83a7d88ba58943e36"></a><!-- doxytag: member="rtl8139.c::NWAYTR" ref="ac0b5334c788e47e83a7d88ba58943e36" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NWAYTR</b>&#160;&#160;&#160;0x70</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8ef3693e46c397a26e50de7d35901e23"></a><!-- doxytag: member="rtl8139.c::REC" ref="a8ef3693e46c397a26e50de7d35901e23" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>REC</b>&#160;&#160;&#160;0x72</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca7ecd69d0dd44bd8c822aaa77326e47"></a><!-- doxytag: member="rtl8139.c::CSCR" ref="aca7ecd69d0dd44bd8c822aaa77326e47" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CSCR</b>&#160;&#160;&#160;0x74</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a61393984b3724ded63738b08ae89000c"></a><!-- doxytag: member="rtl8139.c::PHY1_PARM" ref="a61393984b3724ded63738b08ae89000c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PHY1_PARM</b>&#160;&#160;&#160;0x78</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc19567da18df57982b9f87f234ebff8"></a><!-- doxytag: member="rtl8139.c::TW_PARM" ref="adc19567da18df57982b9f87f234ebff8" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TW_PARM</b>&#160;&#160;&#160;0x7C</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a61fced915e29a91052c8b123636f0b95"></a><!-- doxytag: member="rtl8139.c::PHY2_PARM" ref="a61fced915e29a91052c8b123636f0b95" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PHY2_PARM</b>&#160;&#160;&#160;0x80</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a656a447589e785594cbf2f45c835ad7e"></a><!-- doxytag: member="rtl8139.c::CRC_BASE" ref="a656a447589e785594cbf2f45c835ad7e" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CRC_BASE</b>&#160;&#160;&#160;0x84</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63a00bd3e91184e000bd4dcf87c539f9"></a><!-- doxytag: member="rtl8139.c::CRC0" ref="a63a00bd3e91184e000bd4dcf87c539f9" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CRC0</b>&#160;&#160;&#160;0x84</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d0218c129a4de8037e2c2e928799da3"></a><!-- doxytag: member="rtl8139.c::CRC1" ref="a0d0218c129a4de8037e2c2e928799da3" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CRC1</b>&#160;&#160;&#160;0x85</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e6afc9d00793ac44c29f697e0bbcc98"></a><!-- doxytag: member="rtl8139.c::CRC2" ref="a5e6afc9d00793ac44c29f697e0bbcc98" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CRC2</b>&#160;&#160;&#160;0x86</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a474018b092afe3e4149cfb13791aa78e"></a><!-- doxytag: member="rtl8139.c::CRC3" ref="a474018b092afe3e4149cfb13791aa78e" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CRC3</b>&#160;&#160;&#160;0x87</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0be2cf591fbba27da886e91ba59f1f34"></a><!-- doxytag: member="rtl8139.c::CRC4" ref="a0be2cf591fbba27da886e91ba59f1f34" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CRC4</b>&#160;&#160;&#160;0x88</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05ee2d5fdfc20449c26fa581ea505ad5"></a><!-- doxytag: member="rtl8139.c::CRC5" ref="a05ee2d5fdfc20449c26fa581ea505ad5" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CRC5</b>&#160;&#160;&#160;0x89</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a9f4c6426195875235cf9876b116b16"></a><!-- doxytag: member="rtl8139.c::CRC6" ref="a2a9f4c6426195875235cf9876b116b16" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CRC6</b>&#160;&#160;&#160;0x8A</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa62a72e05e0a1b6e1ac275e490307916"></a><!-- doxytag: member="rtl8139.c::CRC7" ref="aa62a72e05e0a1b6e1ac275e490307916" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CRC7</b>&#160;&#160;&#160;0x8B</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9652ac958c07093c773fb01760d7acb2"></a><!-- doxytag: member="rtl8139.c::Wakeup_BASE" ref="a9652ac958c07093c773fb01760d7acb2" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Wakeup_BASE</b>&#160;&#160;&#160;0x8C</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17332f73b0acce7ebd388296f3ada375"></a><!-- doxytag: member="rtl8139.c::Wakeup0" ref="a17332f73b0acce7ebd388296f3ada375" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Wakeup0</b>&#160;&#160;&#160;0x8C</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af64e94007ae4c7f71d4a94bb6479ab52"></a><!-- doxytag: member="rtl8139.c::Wakeup1" ref="af64e94007ae4c7f71d4a94bb6479ab52" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Wakeup1</b>&#160;&#160;&#160;0x94</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8fc97a99663edaf415aeb537f2452f0a"></a><!-- doxytag: member="rtl8139.c::Wakeup2" ref="a8fc97a99663edaf415aeb537f2452f0a" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Wakeup2</b>&#160;&#160;&#160;0x9C</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1e30fca78235faf6d872beb9dae84b68"></a><!-- doxytag: member="rtl8139.c::Wakeup3" ref="a1e30fca78235faf6d872beb9dae84b68" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Wakeup3</b>&#160;&#160;&#160;0xA4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4fd9a7c90ec02a47f920dbcd0afaa0a3"></a><!-- doxytag: member="rtl8139.c::Wakeup4" ref="a4fd9a7c90ec02a47f920dbcd0afaa0a3" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Wakeup4</b>&#160;&#160;&#160;0xAC</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d2291e3d587ae4a5d19060cd257198f"></a><!-- doxytag: member="rtl8139.c::Wakeup5" ref="a8d2291e3d587ae4a5d19060cd257198f" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Wakeup5</b>&#160;&#160;&#160;0xB4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3036568d6375c8f987e0e47ba16de2b9"></a><!-- doxytag: member="rtl8139.c::Wakeup6" ref="a3036568d6375c8f987e0e47ba16de2b9" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Wakeup6</b>&#160;&#160;&#160;0xBC</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a367a93ef9cee8ddc129edf8020b693ee"></a><!-- doxytag: member="rtl8139.c::Wakeup7" ref="a367a93ef9cee8ddc129edf8020b693ee" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Wakeup7</b>&#160;&#160;&#160;0xC4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19e45577c46f406d78e82673502c9f2e"></a><!-- doxytag: member="rtl8139.c::LSBCRC_BASE" ref="a19e45577c46f406d78e82673502c9f2e" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LSBCRC_BASE</b>&#160;&#160;&#160;0xCC</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d1354916b4ca55314ba2e9136c844f1"></a><!-- doxytag: member="rtl8139.c::LSBCRC0" ref="a8d1354916b4ca55314ba2e9136c844f1" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LSBCRC0</b>&#160;&#160;&#160;0xCC</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86721bc508e22c1d7c94a982530a41e3"></a><!-- doxytag: member="rtl8139.c::LSBCRC1" ref="a86721bc508e22c1d7c94a982530a41e3" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LSBCRC1</b>&#160;&#160;&#160;0xCD</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1135652c56006c5d1d48721cc694473f"></a><!-- doxytag: member="rtl8139.c::LSBCRC2" ref="a1135652c56006c5d1d48721cc694473f" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LSBCRC2</b>&#160;&#160;&#160;0xCE</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2657cc38e8dc403d432dafc117a0859c"></a><!-- doxytag: member="rtl8139.c::LSBCRC3" ref="a2657cc38e8dc403d432dafc117a0859c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LSBCRC3</b>&#160;&#160;&#160;0xCF</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc92532f44260532b70f2eb21690b7e2"></a><!-- doxytag: member="rtl8139.c::LSBCRC4" ref="abc92532f44260532b70f2eb21690b7e2" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LSBCRC4</b>&#160;&#160;&#160;0xD0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e177d22afdb3d9913bfbfa840ce9b70"></a><!-- doxytag: member="rtl8139.c::LSBCRC5" ref="a4e177d22afdb3d9913bfbfa840ce9b70" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LSBCRC5</b>&#160;&#160;&#160;0xD1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ba5786511437381c225fd1bf339b704"></a><!-- doxytag: member="rtl8139.c::LSBCRC6" ref="a3ba5786511437381c225fd1bf339b704" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LSBCRC6</b>&#160;&#160;&#160;0xD2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac97cf3d2b85dcbbaba2465b3c555fdf4"></a><!-- doxytag: member="rtl8139.c::LSBCRC7" ref="ac97cf3d2b85dcbbaba2465b3c555fdf4" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LSBCRC7</b>&#160;&#160;&#160;0xD3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1964d43b709dcb106620e58bdb0e7f64"></a><!-- doxytag: member="rtl8139.c::CONFIG5" ref="a1964d43b709dcb106620e58bdb0e7f64" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONFIG5</b>&#160;&#160;&#160;0xD8</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a3777d2fe3c609d1675997cad1c656d"></a><!-- doxytag: member="rtl8139.c::TSD_OWN" ref="a3a3777d2fe3c609d1675997cad1c656d" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD_OWN</b>&#160;&#160;&#160;0x00002000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5740399750131c8588f12be8fbee89bd"></a><!-- doxytag: member="rtl8139.c::TSD_TUN" ref="a5740399750131c8588f12be8fbee89bd" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD_TUN</b>&#160;&#160;&#160;0x00004000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af761a4b9bebe27744fc1eaa55d68af46"></a><!-- doxytag: member="rtl8139.c::TSD_TOK" ref="af761a4b9bebe27744fc1eaa55d68af46" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD_TOK</b>&#160;&#160;&#160;0x00008000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17a65cabf43ba68f75f6516e43a1a851"></a><!-- doxytag: member="rtl8139.c::TSD_ERTXTH" ref="a17a65cabf43ba68f75f6516e43a1a851" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD_ERTXTH</b>&#160;&#160;&#160;0x00010000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a745549ed2c39b4bb6837c2e7ab5fb791"></a><!-- doxytag: member="rtl8139.c::TSD_NCC" ref="a745549ed2c39b4bb6837c2e7ab5fb791" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD_NCC</b>&#160;&#160;&#160;0x01000000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb39b19dadea21c6b2d95fc3a4b37c97"></a><!-- doxytag: member="rtl8139.c::TSD_CDH" ref="acb39b19dadea21c6b2d95fc3a4b37c97" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD_CDH</b>&#160;&#160;&#160;0x10000000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad26b5a8b96adb777a9c71122d1c8ac80"></a><!-- doxytag: member="rtl8139.c::TSD_OWC" ref="ad26b5a8b96adb777a9c71122d1c8ac80" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD_OWC</b>&#160;&#160;&#160;0x20000000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89854cdd8952f025d66f73d5e5b9d0fd"></a><!-- doxytag: member="rtl8139.c::TSD_TABT" ref="a89854cdd8952f025d66f73d5e5b9d0fd" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD_TABT</b>&#160;&#160;&#160;0x40000000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a28ecaeccd4fce915b794d28e25bb0a27"></a><!-- doxytag: member="rtl8139.c::TSD_CRS" ref="a28ecaeccd4fce915b794d28e25bb0a27" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD_CRS</b>&#160;&#160;&#160;0x80000000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31f84f2a2d4e6e7de18add4f8db8e585"></a><!-- doxytag: member="rtl8139.c::CR_RST" ref="a31f84f2a2d4e6e7de18add4f8db8e585" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CR_RST</b>&#160;&#160;&#160;0x10</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1295667f0a3de4bdcc7ad87c474c73e"></a><!-- doxytag: member="rtl8139.c::CR_RE" ref="ad1295667f0a3de4bdcc7ad87c474c73e" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CR_RE</b>&#160;&#160;&#160;0x08</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae101fdaac1072c6ed0899e0c30511d81"></a><!-- doxytag: member="rtl8139.c::CR_TE" ref="ae101fdaac1072c6ed0899e0c30511d81" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CR_TE</b>&#160;&#160;&#160;0x04</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adcee5d75af1b65e3d8066a8357842a6a"></a><!-- doxytag: member="rtl8139.c::CR_BUFE" ref="adcee5d75af1b65e3d8066a8357842a6a" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CR_BUFE</b>&#160;&#160;&#160;0x01</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aefa76ff1e29003d3bfc6a0b9872e343c"></a><!-- doxytag: member="rtl8139.c::INT_ROK" ref="aefa76ff1e29003d3bfc6a0b9872e343c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_ROK</b>&#160;&#160;&#160;0x0001</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe0766e80ef4e0929602f5adb6c5aa79"></a><!-- doxytag: member="rtl8139.c::INT_RER" ref="abe0766e80ef4e0929602f5adb6c5aa79" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_RER</b>&#160;&#160;&#160;0x0002</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a038def3ae8d86b3bdc5d7263ccac5131"></a><!-- doxytag: member="rtl8139.c::INT_TOK" ref="a038def3ae8d86b3bdc5d7263ccac5131" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_TOK</b>&#160;&#160;&#160;0x0004</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a004f108a18478f68b946d29575f445af"></a><!-- doxytag: member="rtl8139.c::INT_TER" ref="a004f108a18478f68b946d29575f445af" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_TER</b>&#160;&#160;&#160;0x0008</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6910a3965ff4d3b5a3d2858a16f08c3b"></a><!-- doxytag: member="rtl8139.c::INT_RXOVW" ref="a6910a3965ff4d3b5a3d2858a16f08c3b" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_RXOVW</b>&#160;&#160;&#160;0x0010</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac35ae5ea7dd2bede9478d1af0fb6caeb"></a><!-- doxytag: member="rtl8139.c::INT_PUN" ref="ac35ae5ea7dd2bede9478d1af0fb6caeb" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_PUN</b>&#160;&#160;&#160;0x0020</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a667d20758b25bbde3ae1610eb1526f58"></a><!-- doxytag: member="rtl8139.c::INT_LINKCHG" ref="a667d20758b25bbde3ae1610eb1526f58" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_LINKCHG</b>&#160;&#160;&#160;0x0020</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b42cfb84aac0bb08e703be7c27e3f6c"></a><!-- doxytag: member="rtl8139.c::INT_FOVW" ref="a8b42cfb84aac0bb08e703be7c27e3f6c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_FOVW</b>&#160;&#160;&#160;0x0040</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a3a61576303d38b139be522307ad4eb"></a><!-- doxytag: member="rtl8139.c::INT_LENCHG" ref="a4a3a61576303d38b139be522307ad4eb" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_LENCHG</b>&#160;&#160;&#160;0x2000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e25bf3fd6a960b6f8a8136f7fcfbe42"></a><!-- doxytag: member="rtl8139.c::INT_TIMEOUT" ref="a3e25bf3fd6a960b6f8a8136f7fcfbe42" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_TIMEOUT</b>&#160;&#160;&#160;0x4000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e966cc54ee2881bddab8efa56a18ec0"></a><!-- doxytag: member="rtl8139.c::INT_SERR" ref="a8e966cc54ee2881bddab8efa56a18ec0" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_SERR</b>&#160;&#160;&#160;0x8000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a12b4a2348c45ae227005052e9f9a39"></a><!-- doxytag: member="rtl8139.c::READ_BYTE" ref="a2a12b4a2348c45ae227005052e9f9a39" args="(offset)" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>READ_BYTE</b>(offset)&#160;&#160;&#160;inb(io_base+offset)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab16a7e88d1d7cee3bc127de648820ad9"></a><!-- doxytag: member="rtl8139.c::READ_WORD" ref="ab16a7e88d1d7cee3bc127de648820ad9" args="(offset)" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>READ_WORD</b>(offset)&#160;&#160;&#160;inw(io_base+offset)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afda89996c7500b6ce7416cb82b5b76c5"></a><!-- doxytag: member="rtl8139.c::READ_DWORD" ref="afda89996c7500b6ce7416cb82b5b76c5" args="(offset)" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>READ_DWORD</b>(offset)&#160;&#160;&#160;inl(io_base+offset)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb5e5c7861783d9d54d47739f63dffe4"></a><!-- doxytag: member="rtl8139.c::WRITE_BYTE" ref="adb5e5c7861783d9d54d47739f63dffe4" args="(offset, value)" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WRITE_BYTE</b>(offset, value)&#160;&#160;&#160;outb(value, io_base+offset)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a0fc528ed5ef11349a5bd6ca9c21df0"></a><!-- doxytag: member="rtl8139.c::WRITE_WORD" ref="a7a0fc528ed5ef11349a5bd6ca9c21df0" args="(offset, value)" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WRITE_WORD</b>(offset, value)&#160;&#160;&#160;outw(value, io_base+offset)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a4c5a423449eb647574ab8abdecbaab"></a><!-- doxytag: member="rtl8139.c::WRITE_DWORD" ref="a9a4c5a423449eb647574ab8abdecbaab" args="(offset, value)" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WRITE_DWORD</b>(offset, value)&#160;&#160;&#160;outl(value, io_base+offset)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adfed551595b6638bc4891279581fd78f"></a><!-- doxytag: member="rtl8139.c::TX_DESC_NUM" ref="adfed551595b6638bc4891279581fd78f" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TX_DESC_NUM</b>&#160;&#160;&#160;4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bc13c87c2b404e5902eb6f710f96504"></a><!-- doxytag: member="rtl8139.c::NEXT_TX_DESC" ref="a1bc13c87c2b404e5902eb6f710f96504" args="(current)" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NEXT_TX_DESC</b>(current)&#160;&#160;&#160;(current == TX_DESC_NUM-1)?0:(current+1)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a746135cd2861253f04a5e6e5f208517b"></a><!-- doxytag: member="rtl8139.c::TSD_STATUS_BOTH" ref="a746135cd2861253f04a5e6e5f208517b" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD_STATUS_BOTH</b>&#160;&#160;&#160;3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb5811307c9fd6586cdc245bb2407aa1"></a><!-- doxytag: member="rtl8139.c::TSD_STATUS_OWN" ref="adb5811307c9fd6586cdc245bb2407aa1" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD_STATUS_OWN</b>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24323fd256c92b97d9f992ae3919efcd"></a><!-- doxytag: member="rtl8139.c::TSD_STATUS_TOK" ref="a24323fd256c92b97d9f992ae3919efcd" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD_STATUS_TOK</b>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89c8fce8c1c59f0d81b090a2e5cfb248"></a><!-- doxytag: member="rtl8139.c::TSD_STATUS_0" ref="a89c8fce8c1c59f0d81b090a2e5cfb248" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSD_STATUS_0</b>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a189d374f87235726e5a318237d6f3702"></a><!-- doxytag: member="rtl8139.c::RX_BUF_LEN" ref="a189d374f87235726e5a318237d6f3702" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RX_BUF_LEN</b>&#160;&#160;&#160;8192</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc0e11da0a1704559e1cd8a55f5041cc"></a><!-- doxytag: member="rtl8139.c::send_packet" ref="adc0e11da0a1704559e1cd8a55f5041cc" args="(char *packet, uint32_t length)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>send_packet</b> (char *packet, uint32_t length)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab529b09194c2555ed429f2c6fc646a07"></a><!-- doxytag: member="rtl8139.c::tx_interrupt_handler" ref="ab529b09194c2555ed429f2c6fc646a07" args="(uint16_t isr)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>tx_interrupt_handler</b> (uint16_t isr)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ce8def48173bfe968fe5e0f88d00d73"></a><!-- doxytag: member="rtl8139.c::rx_interrupt_handler" ref="a5ce8def48173bfe968fe5e0f88d00d73" args="(uint16_t isr)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rx_interrupt_handler</b> (uint16_t isr)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae5689156966e8d2d8f90f59d010bcc9f"></a><!-- doxytag: member="rtl8139.c::rtl8139_isr" ref="ae5689156966e8d2d8f90f59d010bcc9f" args="(int id)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rtl8139_isr</b> (int id)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8035018506f10b017a998f63c36a827d"></a><!-- doxytag: member="rtl8139.c::rtl8139_debug_info" ref="a8035018506f10b017a998f63c36a827d" args="()" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rtl8139_debug_info</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtl8139_8c.html#ac12bf0cf1cd648c2f4367bbd2119ac29">rtl8139_driver_init</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le driver Son rôle principal est de chercher le périphérique sur le bus PCI et de sauvegardé son adresse.  <a href="#ac12bf0cf1cd648c2f4367bbd2119ac29"></a><br/></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+<p>Description de ce que fait le fichier </p>
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ac12bf0cf1cd648c2f4367bbd2119ac29"></a><!-- doxytag: member="rtl8139.c::rtl8139_driver_init" ref="ac12bf0cf1cd648c2f4367bbd2119ac29" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="rtl8139_8c.html#ac12bf0cf1cd648c2f4367bbd2119ac29">rtl8139_driver_init</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 pour un succès, -1 sinon </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi Février 10 2012 09:59:49 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>
