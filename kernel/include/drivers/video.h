@@ -109,7 +109,7 @@ void kputchar_video(int n, bool front, char c, int x, int y, char attr);
  *
  * @param blink_bit 1 si le cursor doit clignoter.
  */
-void set_blink_bit(int blink_bit);
+//void set_blink_bit(int blink_bit);
 
 /**
  * @brief Change la page à afficher à l'écran.

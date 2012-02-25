@@ -193,7 +193,7 @@ void sys_set_attribute(int n, uint8_t background, uint8_t foreground) {
 }
 
 void reset_attribute(int n) {
-	set_blink_bit(0);
+	//set_blink_bit(0);
 	consoles[n].attr = DEFAULT_ATTRIBUTE_VALUE;
 }
 
@@ -280,9 +280,9 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 					} else if (val == 2) {
 						bright = 0;
 					} else if (val == 5 || val == 6) {
-						set_blink_bit(1);
+						//set_blink_bit(1);
 					} else if (val == 25) {
-						set_blink_bit(0);
+						//set_blink_bit(0);
 					} else if (val >= 30 && val <= 37) {
 						// si low intensity (normal) :
 						if (bright == 0) {
