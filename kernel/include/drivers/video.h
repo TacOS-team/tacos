@@ -32,7 +32,7 @@
 #include <types.h>
 
 /** Light blue sur fond noir. */
-#define DEFAULT_ATTRIBUTE_VALUE 0x02 /**< Attribut par défaut d'un caractère */
+#define DEFAULT_ATTRIBUTE_VALUE 0x0F /**< Attribut par défaut d'un caractère */
 
 #define BLACK         0x0   /**< Code couleur noir. */
 #define BLUE          0x1   /**< Code couleur bleu. */
