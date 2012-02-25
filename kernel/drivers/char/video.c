@@ -49,11 +49,10 @@ static struct vga_page_t pages[NB_VGA_PAGES];
 static int current_page;
 
 void init_video() {
-	// Initialisation à 0xC0 du Attribute Mode Control Register.
-	// XXX: Visiblement ce code ne fait rien...
+	// Initialisation à 0x0C du Attribute Mode Control Register.
 	(void) inb(0x3DA);
 	outb(0x10, 0x3C0);
-	outb(0xC0, 0x3C0);
+	outb(0x0C, 0x3C0);
 	outb(0x20, 0x3C0);
 	(void) inb(0x3DA);
 
