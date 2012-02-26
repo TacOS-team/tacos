@@ -265,6 +265,10 @@ int pcc(struct coord_t *orig, struct coord_t *dest) {
 	}
 
 	free(Q);
+	for (l = 0; l < lignes; l++) {
+		free(grid_visited[l]);
+	}
+	free(grid_visited);
 	return r;
 }
 
