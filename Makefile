@@ -95,6 +95,7 @@ clean:
 	done
 	@rm -f *.o *.bin *.img
 	@rm -f lib/*
+	@rm -f bin/*
 	@find . -name "*.o" -exec rm {} \;
 
 depend:
