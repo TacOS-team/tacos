@@ -95,10 +95,10 @@ static void displayWidget(struct widget_t* wdg)
 				ligne[i] = '\0';
 			}
 			for(y=wdg->y ; y<(wdg->y+wdg->h) ; y++)
-				printf("\033[%d;%dH\033[3%dm\033[4%dm%s",y+1,wdg->x+1,wdg->fg,wdg->bg,ligne);
+				printf("\033[%d;%dH\033[3%dm\033[10%dm%s",y+1,wdg->x+1,wdg->fg,wdg->bg,ligne);
 			x = wdg->x + (wdg->w - ansi_strlen(wdg->adv))/2;
 			y = wdg->y + (wdg->h)/2;
-			printf("\033[%d;%dH\033[3%dm\033[4%dm%s",y+1,x+1,wdg->fg,wdg->bg,wdg->adv);
+			printf("\033[%d;%dH\033[3%dm\033[10%dm%s",y+1,x+1,wdg->fg,wdg->bg,wdg->adv);
 			break;
 		case TXT :
 			for(x=wdg->x ; x<(wdg->x+wdg->w) ; x++)
@@ -108,7 +108,7 @@ static void displayWidget(struct widget_t* wdg)
 				ligne[i] = '\0';
 			}
 			for(y=wdg->y ; y<(wdg->y+wdg->h) ; y++)
-				printf("\033[%d;%dH\033[3%dm\033[4%dm%s",y+1,wdg->x+1,wdg->fg,wdg->bg,ligne);
+				printf("\033[%d;%dH\033[3%dm\033[10%dm%s",y+1,wdg->x+1,wdg->fg,wdg->bg,ligne);
 			x = wdg->x + 2;
 			y = wdg->y + 2;
 			int indice = 0;
@@ -137,7 +137,7 @@ static void displayWidget(struct widget_t* wdg)
 				}
 				// On print la ligne
 				indice+=strlen(ligne);
-				printf("\033[%d;%dH\033[3%dm\033[4%dm%s",y,x,wdg->fg,wdg->bg,ligne);
+				printf("\033[%d;%dH\033[3%dm\033[10%dm%s",y,x,wdg->fg,wdg->bg,ligne);
 				y++;
 			}
 			break;
@@ -162,7 +162,7 @@ void displayWindow(struct window_t* win)
 {
 	int i;
 
-	printf("\033[4%dm\033[2J",win->bg);
+	printf("\033[10%dm\033[2J",win->bg);
 
 	for(i=0 ; i<win->nb_widgets ; i++)
 	{
@@ -207,7 +207,7 @@ void runWindow(struct window_t* win)
 		if ((x != old_x || y != old_y) && !(x == 79 && y == 24)) {
 			// Dernière condition car si on est tout en bas à gauche, une nouvelle ligne apparaît :/
 			displayWindow(win);
-			printf("\033[%d;%dH\033[4%dm ", y + 1, x + 1, 6);
+			printf("\033[%d;%dH\033[10%dm ", y + 1, x + 1, 6);
 			fflush(stdout);
 			old_x = x;
 			old_y = y;
