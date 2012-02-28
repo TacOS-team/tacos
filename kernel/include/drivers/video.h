@@ -105,13 +105,6 @@ void get_char_video(int n, bool front, char *c, int x, int y, char *attr);
 void kputchar_video(int n, bool front, char c, int x, int y, char attr);
 
 /**
- * @brief Active le clignotement du curseur.
- *
- * @param blink_bit 1 si le cursor doit clignoter.
- */
-//void set_blink_bit(int blink_bit);
-
-/**
  * @brief Change la page à afficher à l'écran.
  *
  * @param i Le numero de la page concernée.
