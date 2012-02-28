@@ -49,10 +49,11 @@ static struct vga_page_t pages[NB_VGA_PAGES];
 static int current_page;
 
 void init_video() {
-	// Initialisation à 0xC0 du Attribute Mode Control Register.
+	// Initialisation du Attribute Mode Control Register.
+	// 0x08: Blink, 0x04: LGE, 0x02: Mono, 0x01: ATGE
 	(void) inb(0x3DA);
 	outb(0x10, 0x3C0);
-	outb(0xC0, 0x3C0);
+	outb(0x04, 0x3C0);
 	outb(0x20, 0x3C0);
 	(void) inb(0x3DA);
 
@@ -105,6 +106,7 @@ static volatile x86_video_mem* get_page(int i, bool front) {
 	}
 }
 
+/*
 void set_blink_bit(int blink_bit) {
 	// XXX: ne marche pas ?
 	int val = 0;
@@ -125,7 +127,7 @@ void set_blink_bit(int blink_bit) {
 	outb(val, 0x3C0);
 	outb(0x20, 0x3C0);
 	(void) inb(0x3DA);
-}
+}*/
 
 void disable_cursor(int disable) {
 	if (disable) {

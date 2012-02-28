@@ -52,17 +52,9 @@ static int pwd_cmd()
 	return 0;
 }
 
-/*
 static int help_cmd()
 {
 	show_builtin_cmd();
-	return 0;
-}
-
-static int date_cmd()
-{
-	time_t curr_time = time(NULL);
-	printf("%s",ctime(&curr_time));	
 	return 0;
 }
 
@@ -70,7 +62,7 @@ static int cls_cmd() {
 	printf("\033[2J");
 	fflush(stdout);
 	return 0;
-}*/
+}
 
 static int cd_cmd(int argc, char **argv)
 {
@@ -160,11 +152,10 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	signal(SIGTTOU, sigstp_handler);
 	signal(SIGTTIN, sigstp_handler);
 
-	//add_builtin_cmd(help_cmd, "help");
-	//add_builtin_cmd(date_cmd, "date");
-	//add_builtin_cmd(cls_cmd, "clear");
+	add_builtin_cmd(help_cmd, "help");
+	add_builtin_cmd(cls_cmd, "clear");
 	//add_builtin_cmd(ps, "ps");
-	//add_builtin_cmd(pwd_cmd, "pwd");
+	add_builtin_cmd(pwd_cmd, "pwd");
 	add_builtin_cmd(cd_cmd, "cd");
 
 	//disable_cursor(0);

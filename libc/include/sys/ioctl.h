@@ -30,6 +30,12 @@
 
 #define TCGETS 1
 #define TCSETS 2
+#define TIOCGWINSZ 3
+
+struct winsize {
+	unsigned short ws_row;
+	unsigned short ws_col;
+};
 
 int ioctl(int d, unsigned int request, void *data);
 

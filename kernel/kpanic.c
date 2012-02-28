@@ -203,7 +203,6 @@ void kpanic_handler(uint32_t error_id, uint32_t error_code)
 	stop_scheduler();	/* On arrête le déroulement des taches durant la gestion du kernel panic */
 	badboy = get_current_process();	/* On récupère le bad boy */
 	
-	kpanic_main_report(error_id, error_code, badboy, frame);	/* Affichage des information plus ou moins utiles */
 	
 	/* 
 	 * Si on arrive ici, c'est que ce n'étais pas si grave que ça, du coup, on règle le problème et on relance le scheduler
@@ -211,6 +210,7 @@ void kpanic_handler(uint32_t error_id, uint32_t error_code)
 	 
 	badboy->state = PROCSTATE_TERMINATED; /* ouais ouais, bourrin */
 	asm("sti");			/* Et on tente de revenir au choses normales */
+	kpanic_main_report(error_id, error_code, badboy, frame);	/* Affichage des information plus ou moins utiles */
 	start_scheduler();
 	
 	while(1);

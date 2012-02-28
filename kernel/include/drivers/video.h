@@ -32,7 +32,7 @@
 #include <types.h>
 
 /** Light blue sur fond noir. */
-#define DEFAULT_ATTRIBUTE_VALUE 0x09 /**< Attribut par défaut d'un caractère */
+#define DEFAULT_ATTRIBUTE_VALUE 0x0F /**< Attribut par défaut d'un caractère */
 
 #define BLACK         0x0   /**< Code couleur noir. */
 #define BLUE          0x1   /**< Code couleur bleu. */
@@ -109,7 +109,7 @@ void kputchar_video(int n, bool front, char c, int x, int y, char attr);
  *
  * @param blink_bit 1 si le cursor doit clignoter.
  */
-void set_blink_bit(int blink_bit);
+//void set_blink_bit(int blink_bit);
 
 /**
  * @brief Change la page à afficher à l'écran.

@@ -282,6 +282,13 @@ int tty_ioctl (open_file_descriptor *ofd,  unsigned int request, void *data) {
 				memcpy(&t->termios, data, sizeof(struct termios));
 			}
 			return 0;
+	case TIOCGWINSZ:
+			{struct winsize ws;
+			ws.ws_row = 25;
+			ws.ws_col = 80;
+			//TODO: prendre les infos depuis le periphérique.
+			memcpy(data, &ws, sizeof(struct winsize));}
+			return 0;
 	}
 
 	return 0;
