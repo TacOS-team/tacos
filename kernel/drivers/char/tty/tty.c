@@ -96,42 +96,38 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 		}
 	}
 
-	if (c == ERASE_CHAR(tty)) {
+	if (c == ERASE_CHAR(tty) && I_ECHO(tty)) {
 		if (tty->p_end != tty->p_begin) {
 			tty->p_end--;
-			if (I_ECHO(tty)) {
-				if (tty->driver->ops->put_char != NULL) {
-					if (L_ECHOE(tty)) {
-						tty->driver->ops->put_char(tty, '\b');
-						tty->driver->ops->put_char(tty, ' ');
-						tty->driver->ops->put_char(tty, '\b');
-					} else {
-						tty->driver->ops->put_char(tty, c);
-					}
+			if (tty->driver->ops->put_char != NULL) {
+				if (L_ECHOE(tty)) {
+					tty->driver->ops->put_char(tty, '\b');
+					tty->driver->ops->put_char(tty, ' ');
+					tty->driver->ops->put_char(tty, '\b');
 				} else {
-					unsigned char ch[2];
-					ch[0] = c;
-					ch[1] = '\0';
-					tty->driver->ops->write(tty, NULL, ch, 1);
-				}
-			}
-		} else {
-			return;
-		}
-	} else {
-		if ((tty->p_end + 1) % MAX_INPUT != tty->p_begin) {
-			tty->buffer[tty->p_end] = c;
-			tty->p_end = (tty->p_end + 1) % MAX_INPUT;
-
-			if (I_ECHO(tty)) {
-				if (tty->driver->ops->put_char != NULL) {
 					tty->driver->ops->put_char(tty, c);
-				} else {
-					unsigned char ch[2];
-					ch[0] = c;
-					ch[1] = '\0';
-					tty->driver->ops->write(tty, NULL, ch, 1);
 				}
+			} else {
+				unsigned char ch[2];
+				ch[0] = c;
+				ch[1] = '\0';
+				tty->driver->ops->write(tty, NULL, ch, 1);
+			}
+		} 
+	}
+
+	if ((tty->p_end + 1) % MAX_INPUT != tty->p_begin) {
+		tty->buffer[tty->p_end] = c;
+		tty->p_end = (tty->p_end + 1) % MAX_INPUT;
+
+		if (I_ECHO(tty)) {
+			if (tty->driver->ops->put_char != NULL) {
+				tty->driver->ops->put_char(tty, c);
+			} else {
+				unsigned char ch[2];
+				ch[0] = c;
+				ch[1] = '\0';
+				tty->driver->ops->write(tty, NULL, ch, 1);
 			}
 		}
 	}

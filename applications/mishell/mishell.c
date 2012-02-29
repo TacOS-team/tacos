@@ -36,6 +36,9 @@
 #include <signal.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <readline.h>
+
+int lolbug[100000]; //XXX XXX XXX : issue #135
 
 void sigint_handler(int signal __attribute__((unused))) {
 	printf("On ferme pas mishell!!\n");
@@ -145,7 +148,7 @@ void print_logo()
 int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	
-	char buffer[256];
+	char *buffer;
 	
 	signal(SIGINT, sigint_handler);
 	signal(SIGTSTP, sigstp_handler);
@@ -166,15 +169,13 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	for(;;)
 	{
 		//time_t curr_time = time(NULL);
-		printf("\n");
 		pwd_cmd();
 		printf(">");
 		
 		fflush(stdout);
 		fflush(stdin);
 		
-		//scanf("%s", buffer);
-		getline(buffer, 256);
+		buffer = readline(NULL);
 		//printf("\n");
 		if (strlen(buffer) >= 1) {
 			if(exec_builtin_cmd(buffer) != 0)
@@ -196,5 +197,6 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 				}
 			}
 		}
+		free(buffer);
 	}
 }

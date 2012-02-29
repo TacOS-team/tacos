@@ -87,6 +87,7 @@
 #endif
 
 #define F_SETFL	4
+#define F_GETFL	5
 
 int open(const char *pathname, int flags);
 int close(int id);

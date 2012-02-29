@@ -91,6 +91,7 @@
 #endif
 
 #define F_SETFL	4
+#define F_GETFL	5
 
 /** 
  * @brief Initialise les descripteurs de fichiers standards.

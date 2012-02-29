@@ -249,6 +249,12 @@ void keyboardInterrupt(int id __attribute__ ((unused))) {
                 keyBufferPush(0x36);
                 keyBufferPush(0x7E);
                 break;
+						case 0x53: // DELETE
+								keyBufferPush(0x1B);
+								keyBufferPush(0x5B);
+								keyBufferPush(0x33);
+								keyBufferPush(0x7E);
+								break;
             }
         }
 	}

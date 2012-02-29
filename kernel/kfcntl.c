@@ -146,6 +146,9 @@ SYSCALL_HANDLER3(sys_fcntl, int *fd_id, unsigned int request, void * data) {
 			ofd->flags = (int)data;
 			*fd_id = 0;
 			return;
+		} else if (request == F_GETFL) {
+			*fd_id = ofd->flags;
+			return;
 		}
 	}
 	*fd_id = -1;
