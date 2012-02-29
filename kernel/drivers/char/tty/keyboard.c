@@ -217,27 +217,38 @@ void keyboardInterrupt(int id __attribute__ ((unused))) {
 			}
 		} else if (scancode_m1 == KEYBOARD_EXPAND) {
             switch (scancode) {
-            case 0x48:
+            case 0x48: // U_ARROW
                 keyBufferPush(0x1B);
                 keyBufferPush(0x5B);
                 keyBufferPush(0x41);
                 break;
-            case 0x50:
+            case 0x50: // D_ARROW
                 keyBufferPush(0x1B);
                 keyBufferPush(0x5B);
                 keyBufferPush(0x42);
                 break;
-            case 0x4D:
+            case 0x4D: // R_ARROW
                 keyBufferPush(0x1B);
                 keyBufferPush(0x5B);
                 keyBufferPush(0x43);
                 break;
-            case 0x4B:
+            case 0x4B: // L_ARROW
                 keyBufferPush(0x1B);
                 keyBufferPush(0x5B);
                 keyBufferPush(0x44);
                 break;
-
+            case 0x49: // PG_UP
+                keyBufferPush(0x1B);
+                keyBufferPush(0x5B);
+                keyBufferPush(0x35);
+                keyBufferPush(0x7E);
+                break;
+            case 0x51: // PG_DN
+                keyBufferPush(0x1B);
+                keyBufferPush(0x5B);
+                keyBufferPush(0x36);
+                keyBufferPush(0x7E);
+                break;
             }
         }
 	}
