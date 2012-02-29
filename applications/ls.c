@@ -49,7 +49,7 @@ struct res_entry {
 };
 
 static struct res_entry *entries[MAX_FILES];
-static int n_entries;
+static int n_entries = 0;
 static int long_format = 0;
 static int disp_all = 0;
 static int disp_classify = 0;
