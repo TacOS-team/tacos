@@ -279,10 +279,6 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 						bright = 1;
 					} else if (val == 2) {
 						bright = 0;
-					} else if (val == 5 || val == 6) {
-						//set_blink_bit(1);
-					} else if (val == 25) {
-						//set_blink_bit(0);
 					} else if (val >= 30 && val <= 37) {
 						// si low intensity (normal) :
 						if (bright == 0) {
@@ -297,7 +293,7 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 								set_foreground(n, GREEN);
 								break;
 							case 3:
-								set_foreground(n, YELLOW); // Devrait être BROWN
+								set_foreground(n, BROWN);
 								break;
 							case 4:
 								set_foreground(n, BLUE);
@@ -309,7 +305,7 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 								set_foreground(n, CYAN);
 								break;
 							case 7:
-								set_foreground(n, WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
+								set_foreground(n, LIGHT_GRAY);
 								break;
 							}
 						} else {
@@ -341,61 +337,86 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 							}
 						}
 					} else if (val >= 40 && val <= 47) {
-						// si low intensity (normal) :
-						if (bright == 0) {
-							switch (val - 40) {
-							case 0:
-								set_background(n, BLACK);
-								break;
-							case 1:
-								set_background(n, RED);
-								break;
-							case 2:
-								set_background(n, GREEN);
-								break;
-							case 3:
-								set_background(n, YELLOW); // Devrait être BROWN
-								break;
-							case 4:
-								set_background(n, BLUE);
-								break;
-							case 5:
-								set_background(n, MAGENTA);
-								break;
-							case 6:
-								set_background(n, CYAN);
-								break;
-							case 7:
-								set_background(n, WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
-								break;
-							}
-						} else {
-							switch (val - 40) {
-							case 0:
-								set_background(n, DARK_GRAY);
-								break;
-							case 1:
-								set_background(n, LIGHT_RED);
-								break;
-							case 2:
-								set_background(n, LIGHT_GREEN);
-								break;
-							case 3:
-								set_background(n, YELLOW);
-								break;
-							case 4:
-								set_background(n, LIGHT_BLUE);
-								break;
-							case 5:
-								set_background(n, LIGHT_MAGENTA);
-								break;
-							case 6:
-								set_background(n, LIGHT_CYAN);
-								break;
-							case 7:
-								set_background(n, WHITE);
-								break;
-							}
+						// low intensity (normal) :
+						switch (val - 40) {
+						case 0:
+							set_background(n, BLACK);
+							break;
+						case 1:
+							set_background(n, RED);
+							break;
+						case 2:
+							set_background(n, GREEN);
+							break;
+						case 3:
+							set_background(n, BROWN);
+							break;
+						case 4:
+							set_background(n, BLUE);
+							break;
+						case 5:
+							set_background(n, MAGENTA);
+							break;
+						case 6:
+							set_background(n, CYAN);
+							break;
+						case 7:
+							set_background(n, LIGHT_GRAY);
+							break;
+						}
+					} else if (val >= 90 && val <= 99) {
+						switch (val - 90) {
+						case 0:
+							set_foreground(n, DARK_GRAY);
+							break;
+						case 1:
+							set_foreground(n, LIGHT_RED);
+							break;
+						case 2:
+							set_foreground(n, LIGHT_GREEN);
+							break;
+						case 3:
+							set_foreground(n, YELLOW);
+							break;
+						case 4:
+							set_foreground(n, LIGHT_BLUE);
+							break;
+						case 5:
+							set_foreground(n, LIGHT_MAGENTA);
+							break;
+						case 6:
+							set_foreground(n, LIGHT_CYAN);
+							break;
+						case 7:
+							set_foreground(n, WHITE);
+							break;
+						}
+					} else if (val >= 100 && val <= 109) {
+						switch (val - 100) {
+						case 0:
+							set_background(n, DARK_GRAY);
+							break;
+						case 1:
+							set_background(n, LIGHT_RED);
+							break;
+						case 2:
+							set_background(n, LIGHT_GREEN);
+							break;
+						case 3:
+							set_background(n, YELLOW);
+							break;
+						case 4:
+							set_background(n, LIGHT_BLUE);
+							break;
+						case 5:
+							set_background(n, LIGHT_MAGENTA);
+							break;
+						case 6:
+							set_background(n, LIGHT_CYAN);
+							break;
+						case 7:
+							set_background(n, WHITE);
+							break;
 						}
 
 					}

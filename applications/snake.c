@@ -129,7 +129,7 @@ void print_locate(int l, int c, char car) {
 			fgcolor = 30;
 	}
 
-	printf("\033[%d;%df\033[%dm\033[47m%c\033[%d;%df", l+1, c+1, fgcolor, car, lignes, colonnes);
+	printf("\033[%d;%df\033[%dm\033[107m%c\033[%d;%df", l+1, c+1, fgcolor, car, lignes, colonnes);
 	fflush(stdout);
 }
 
@@ -342,7 +342,7 @@ int game() {
 				printf("\033[30m\033[40m#");
 				grid[l][c] = 1;
 			} else {
-				printf("\033[37m\033[47m ");
+				printf("\033[37m\033[107m ");
 				grid[l][c] = 0;
 			}
 		}
