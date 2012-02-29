@@ -53,7 +53,6 @@
 // Escape
 #define KEYBOARD_EXPAND   0xE0
 #define KEYBOARD_PAUSE    0xE1 /**< scancode pause/break key. */
-#define KEYBOARD_LOGITECH 0xE2
 
 #define KEY_ESCAPE  0x01 /**< scancode escape key. */
 #define KEY_ALT     0x38 /**< scancode alt key. */
@@ -211,13 +210,36 @@ void keyboardInterrupt(int id __attribute__ ((unused))) {
 			if (c != 0) {
 				keyBufferPush(c & 0x1F);
 			}
-		} else if (scancode_m1 != 0xe0 && scancode_m2 != 0xe1) {
+		} else if (scancode_m1 != KEYBOARD_EXPAND && scancode_m2 != KEYBOARD_PAUSE) {
 			char c = keyboardConvertToChar(scancode);
 			if (c != 0) {
 				keyBufferPush(c);
 			}
-		}
+		} else if (scancode_m1 == KEYBOARD_EXPAND) {
+            switch (scancode) {
+            case 0x48:
+                keyBufferPush(0x1B);
+                keyBufferPush(0x5B);
+                keyBufferPush(0x41);
+                break;
+            case 0x50:
+                keyBufferPush(0x1B);
+                keyBufferPush(0x5B);
+                keyBufferPush(0x42);
+                break;
+            case 0x4D:
+                keyBufferPush(0x1B);
+                keyBufferPush(0x5B);
+                keyBufferPush(0x43);
+                break;
+            case 0x4B:
+                keyBufferPush(0x1B);
+                keyBufferPush(0x5B);
+                keyBufferPush(0x44);
+                break;
 
+            }
+        }
 	}
 
 	scancode_m2 = scancode_m1;
