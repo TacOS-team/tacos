@@ -73,6 +73,13 @@ int exec_elf(char* cmdline, int orphan)
 	
 	execpath[offset] = '\0';
 	
+	struct stat buf;
+	stat(execpath, &buf);
+
+	if (!S_ISREG(buf.st_mode) || !(S_IXUSR & buf.st_mode)) {
+		return -1;
+	}
+
 	int fd = open(execpath, O_RDONLY);
 	
 	process_init_data_t init_data;
@@ -101,5 +108,6 @@ int exec_elf(char* cmdline, int orphan)
 		
 		free(init_data.data);
 	}
+	free(execpath);
 	return ret;
 }
