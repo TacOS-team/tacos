@@ -30,6 +30,7 @@
 #include <drivers/console.h>
 #include <drivers/video.h>
 #include <kmalloc.h>
+#include <klog.h>
 
 #define LARGEUR_TAB 8
 
@@ -449,11 +450,11 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 	} else if (c == '\b') {
 		backspace(n);
 	} else {
+		if (consoles[n].cur_x >= consoles[n].cols)
+			newline(n);
 		kputchar_video(n, true, c, consoles[n].cur_x,
 				consoles[n].cur_y, consoles[n].attr);
 		consoles[n].cur_x++;
-		if (consoles[n].cur_x >= consoles[n].cols)
-			newline(n);
 	}
 
 	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
