@@ -38,8 +38,6 @@
 #include <sys/wait.h>
 #include <readline.h>
 
-int lolbug[100000]; //XXX XXX XXX : issue #135
-
 void sigint_handler(int signal __attribute__((unused))) {
 	printf("On ferme pas mishell!!\n");
 }

@@ -89,7 +89,7 @@ int exec_elf(char* cmdline, int orphan)
 		init_data.envp = environ;
 		
 		init_data.mem_size = elf_size(fd);
-		init_data.data = malloc(init_data.mem_size);
+		init_data.data = calloc(init_data.mem_size, 1);
 		init_data.entry_point = load_elf(fd, init_data.data);
 		
 		init_data.file = load_elf_file(fd);
