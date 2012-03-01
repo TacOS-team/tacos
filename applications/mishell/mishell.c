@@ -169,13 +169,10 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	for(;;)
 	{
 		//time_t curr_time = time(NULL);
-		pwd_cmd();
-		printf(">");
+		char prompt[256];
+		sprintf(prompt, "%s>", getcwd(NULL, 0));
 		
-		fflush(stdout);
-		fflush(stdin);
-		
-		buffer = readline(NULL);
+		buffer = readline(prompt);
 		//printf("\n");
 		if (strlen(buffer) >= 1) {
 			if(exec_builtin_cmd(buffer) != 0)
