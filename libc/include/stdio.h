@@ -30,10 +30,6 @@
 #ifndef _STDIO_H_
 #define _STDIO_H_
 
-/**
- * @file stdio.h
- */
-
 #include <libio.h>
 #include <sys/types.h>
 #include <stdarg.h>
@@ -50,6 +46,8 @@
 #define SEEK_SET 0
 #define SEEK_CUR 1
 #define SEEK_END 2
+
+typedef long fpos_t;
 
 /**
  * Liste chainée qui contient les streams. 
@@ -249,6 +247,9 @@ int fseek(FILE *stream, long offset, int whence);
 long ftell(FILE *stream);
 
 void rewind(FILE *stream);
+
+int fgetpos(FILE *stream, fpos_t *pos);
+int fsetpos(FILE *stream, fpos_t *pos);
 
 /**
  * @brief Supprimer un fichier ou répertoire.
