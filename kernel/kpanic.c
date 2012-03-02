@@ -207,8 +207,8 @@ void kpanic_handler(uint32_t error_id, uint32_t error_code)
 	/* 
 	 * Si on arrive ici, c'est que ce n'étais pas si grave que ça, du coup, on règle le problème et on relance le scheduler
 	 */
-	 
-	badboy->state = PROCSTATE_TERMINATED; /* ouais ouais, bourrin */
+	sys_exit(0, 0, 0);
+	
 	asm("sti");			/* Et on tente de revenir au choses normales */
 	kpanic_main_report(error_id, error_code, badboy, frame);	/* Affichage des information plus ou moins utiles */
 	start_scheduler();
