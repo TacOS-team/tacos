@@ -56,12 +56,12 @@ static void events_interrupt(int interrupt_id __attribute__ ((unused)))
 
 	clock_tick();
 
-	event = (struct event_t *) listGetTop(events);
+	event = (struct event_t *) list_get_top(events);
 	while(event != NULL && compare_times(event->date, get_tv()) <= 0)
 	{
-		listRemoveTop(&events);
+		list_remove_top(&events);
 		event->callback(event->data);
-		event = (struct event_t *) listGetTop(events);
+		event = (struct event_t *) list_get_top(events);
 	}
 
 	if(scheduler_event.callback != NULL 
@@ -77,7 +77,7 @@ void events_init()
 	unset_scheduler_event();
 
 	clock_init();
-	initList(	&events, 
+	list_init(	&events, 
 			(cmp_func_type)compare_events, 
 			sizeof(struct event_t), 
 			MAX_EVENTS);
@@ -111,7 +111,7 @@ int add_event(callback_t call, void* data, time_t dtime_usec)
 	event.callback = call;
 	event.data = data;											
 	event.id = id;
-	listAddElement(&events, &event);
+	list_add_element(&events, &event);
 
 	id++;
 
@@ -126,6 +126,6 @@ static int identifier(int id, void* element)
 
 int del_event(int id)
 {
-	return listDelElement(&events, id, identifier);
+	return list_del_element(&events, id, identifier);
 }
 

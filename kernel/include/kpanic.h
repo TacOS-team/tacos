@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Handlers des exceptions.
  */
 
 #ifndef _K_PANIC_H
@@ -32,6 +31,9 @@
 
 #include <types.h>
 
+/**
+ * Mise en place des handlers d'exceptions.
+ */
 void kpanic_init();
 
 #endif

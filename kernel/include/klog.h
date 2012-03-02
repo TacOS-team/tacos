@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Logging macros
+ * @brief Logging macros
  */
 
 #ifndef _KLOG_H

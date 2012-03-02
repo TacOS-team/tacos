@@ -99,7 +99,7 @@ void close_all_fd() {
 }
 
 
-SYSCALL_HANDLER3(sys_open, uint32_t fd_id, char *path , uint32_t flags) {
+SYSCALL_HANDLER3(sys_open, int *fd_id, char *path , uint32_t flags) {
 	int i=0;
 	
 	process_t* process = get_current_process();
@@ -111,14 +111,14 @@ SYSCALL_HANDLER3(sys_open, uint32_t fd_id, char *path , uint32_t flags) {
 
 	// ouverture du fichier
 	if ((process->fd[i].ofd = vfs_open(path, flags)) != NULL) {
-		*((int *)fd_id) = i;
+		*fd_id = i;
 		process->fd[i].used = true;
 	} else {
-		*((int *)fd_id) = -1;
+		*fd_id = -1;
 	}
 }
 
-SYSCALL_HANDLER2(sys_close, uint32_t fd_id, uint32_t* ret)
+SYSCALL_HANDLER2(sys_close, int fd_id, uint32_t* ret)
 {
 	process_t * process = get_current_process();
 	*ret = -1;

@@ -48,7 +48,7 @@
 
 extern symbol_table_t* ksymtable;
 
-void printStackTrace(uint32_t depth,process_t* badboy)
+static void printStackTrace(uint32_t depth,process_t* badboy)
 {
 	// Joli petit hack:
 	// on récupère ebp à partir de l'adresse de l'argument:
@@ -78,7 +78,7 @@ void printStackTrace(uint32_t depth,process_t* badboy)
 	}
 }
 
-void page_fault_report(int error_code)
+static void page_fault_report(int error_code)
 {
 	uint32_t address;
 	/* On récupère le registre cr2 qui contient l'addresse virtuelle à l'origine de l'exception */
@@ -107,7 +107,7 @@ void page_fault_report(int error_code)
 }
 
 
-void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t* badboy, intframe* frame)
+static void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t* badboy, intframe* frame)
 {
 	// background white
 	kprintf("\033[47m");
@@ -189,7 +189,7 @@ void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t* badbo
 }
 	
 	
-void kpanic_handler(uint32_t error_id, uint32_t error_code)
+static void kpanic_handler(uint32_t error_id, uint32_t error_code)
 {
 	process_t* badboy;
 	uint32_t* stack_ptr;

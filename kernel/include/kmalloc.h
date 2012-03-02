@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,20 +23,34 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Allocateur mémoire en kernel space.
  */
 
 #ifndef _K_MALLOC_H_
 #define _K_MALLOC_H_
 
-/**
- * @file kmalloc.h
- */
-
 #include <types.h>
 
 void init_kmalloc();
+
+/**
+ * @brief Allocation de size octets.
+ *
+ * Allocation de size octets en kernel space.
+ *
+ * @param size Taille à allouer.
+ *
+ * @return un pointeur vers la zone allouée.
+ */
 void *kmalloc(size_t size);
+
+/**
+ * Libération d'une zone allouée.
+ *
+ * @param pointeur vers la zone allouée.
+ *
+ * @return 0 en cas de succès.
+ */
 int kfree(void *p);
 
 void *kmalloc_one_aligned_page();

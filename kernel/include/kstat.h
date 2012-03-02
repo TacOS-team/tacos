@@ -23,6 +23,7 @@
  *
  * @section DESCRIPTION
  * 
+ * @brief Manipulation des caractéristiques d'un fichier.
  */
 
 #ifndef _KSTAT_H_
@@ -49,15 +50,18 @@
 #define S_ISREG(m)  (((m) & S_IFMT) == S_IFREG) /**< Is a regular file. */
 #define S_ISSOCK(m) (((m) & S_IFMT) == S_IFSOCK) /**< Is a socket. */
 
-typedef uint32_t mode_t;
-typedef uint32_t dev_t;
-typedef uint32_t uid_t;
-typedef uint32_t gid_t;
+typedef uint32_t mode_t; /**< Mode d'accès d'un fichier (rwx...) et type. */
+typedef uint32_t dev_t; /**< Si c'est un fichier spécial, c'est le numéro du device. */
+typedef uint32_t uid_t; /**< User id du owner du fichier. */
+typedef uint32_t gid_t; /**< Group id du owner du fichier. */
 typedef uint32_t nlink_t;
 typedef uint32_t blksize_t;
 typedef uint32_t blkcnt_t;
-typedef uint32_t ino_t;
+typedef uint32_t ino_t; /**< Numéro d'inode. */
 
+/**
+ * @brief Informations sur un noeud.
+ */
 struct stat {
 	dev_t     st_dev;      /**< Périphérique                    */
 	ino_t     st_ino;      /**< Numéro inœud                    */

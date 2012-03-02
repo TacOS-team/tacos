@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Création de nouveaux processus.
  */
 
 #ifndef _KPROCESS_H_
