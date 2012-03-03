@@ -66,7 +66,7 @@ runqemunet: core.img grub.img
 	qemu -fda grub.img -fdb core.img -soundhw pcspk -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -net tap,ifname=tap0,script=no -net dump,file=eth.log -m 20 
 
 runqemu: core.img grub.img 
-	qemu -fda grub.img -fdb core.img -soundhw pcspk -parallel none -m 20 -serial stdio
+	qemu -fda grub.img -drive file=core.img,index=1,if=floppy,cache=writeback -soundhw pcspk -parallel none -m 20 -serial stdio
 runqemugdb: core.img grub.img
 	qemu -fda grub.img -fdb core.img -soundhw pcspk -parallel none -m 20 -s -S -serial stdio
 	
