@@ -403,8 +403,9 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->symtable = load_symtable(init_data->file);
 	
 	add_process(new_proc);
-	/* Plante... */
-	//free_init_data(init_data_dup);
+
+	/* Plantait, mais ne plante plus... */
+	free_init_data(init_data_dup);
 	
 	return new_proc;
 }
