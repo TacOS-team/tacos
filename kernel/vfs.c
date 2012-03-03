@@ -98,6 +98,7 @@ open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 		
 		ofd->readdir = vfs_readdir;
 		ofd->close = vfs_close;
+		ofd->current_octet = 0;
 		
 		return ofd;
 	}

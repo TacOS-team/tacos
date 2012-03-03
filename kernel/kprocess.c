@@ -284,7 +284,6 @@ void free_init_data(process_init_data_t* init_data) {
 	
 	kfree(init_data->name);
 	kfree(init_data->args);
-	// Ce free provoque des comportements étranges.
 	kfree(init_data->data);
 
 	if (init_data->envp) {
