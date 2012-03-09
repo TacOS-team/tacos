@@ -170,8 +170,11 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 		char prompt[256];
 		sprintf(prompt, "%s>", getcwd(NULL, 0));
 		
+		//printf("%s", prompt);
+		//fflush(stdout);
+		//buffer = malloc(1000);
+		//getline(buffer, 1000);
 		buffer = readline(prompt);
-		//printf("\n");
 		if (strlen(buffer) >= 1) {
 			if(exec_builtin_cmd(buffer) != 0)
 			{

@@ -64,8 +64,7 @@ int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 
 	klog("Starting user process...");
 	exec_elf("/tacos/bin/getty /dev/tty0", 0);
-	
-	
+
 	get_current_process()->state = PROCSTATE_WAITING;
 	while(1);
 	return 0;

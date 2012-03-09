@@ -332,7 +332,6 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	
 	// Sémaphore pour le wait
 	new_proc->sem_wait = ksemget(SEM_NEW, SEM_CREATE);
-	klog("(create) pid : %d, sem_wait : %d", new_proc->pid, new_proc->sem_wait);
 	int val = 0;
 	ksemctl(new_proc->sem_wait, SEM_SET, &val);
 

@@ -206,6 +206,8 @@ size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {
 	process_t *current_process = get_current_process();
 
 	if (current_process->pid != t->fg_process) {
+		klog("SIGTTOU venant du term %d de %d car != %d", t->index, current_process->pid, t->fg_process);
+
 		sys_kill(current_process->pid, SIGTTOU, NULL);
 	}
 
@@ -268,23 +270,31 @@ int tty_ioctl (open_file_descriptor *ofd,  unsigned int request, void *data) {
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;
 
 	switch	(request) {
-		case TCGETS:
-			memcpy(data, &t->termios, sizeof(struct termios));
-			return 0;
-		case TCSETS:
-			if (t->driver->ops->set_termios) {
-				t->driver->ops->set_termios(data, &t->termios);
-			} else {
-				memcpy(&t->termios, data, sizeof(struct termios));
-			}
-			return 0;
+	case TCGETS:
+		memcpy(data, &t->termios, sizeof(struct termios));
+		return 0;
+	case TCSETS:
+		if (t->driver->ops->set_termios) {
+			t->driver->ops->set_termios(data, &t->termios);
+		} else {
+			memcpy(&t->termios, data, sizeof(struct termios));
+		}
+		return 0;
 	case TIOCGWINSZ:
-			{struct winsize ws;
-			ws.ws_row = 25;
-			ws.ws_col = 80;
-			//TODO: prendre les infos depuis le periphérique.
-			memcpy(data, &ws, sizeof(struct winsize));}
-			return 0;
+		{struct winsize ws;
+		ws.ws_row = 25;
+		ws.ws_col = 80;
+		//TODO: prendre les infos depuis le periphérique.
+		memcpy(data, &ws, sizeof(struct winsize));}
+		return 0;
+	case TIOCSCTTY:
+		{
+			//XXX: C'est un peu moche, normalement je devrais utiliser ofd et non data pour mettre le chemin... Et donc on peut se demander pourquoi mettre la fonction ici aussi...
+		process_t *current_process = get_current_process();
+		current_process->ctrl_tty = kmalloc(strlen(data) + 1);
+		strcpy(current_process->ctrl_tty, data);
+		}
+		return 0;
 	}
 
 	return 0;

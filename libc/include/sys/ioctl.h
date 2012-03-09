@@ -31,6 +31,7 @@
 #define TCGETS 1
 #define TCSETS 2
 #define TIOCGWINSZ 3
+#define TIOCSCTTY 4
 
 struct winsize {
 	unsigned short ws_row;

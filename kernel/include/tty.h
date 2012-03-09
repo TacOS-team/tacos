@@ -35,6 +35,7 @@
 #include <fd_types.h>
 
 #define TIOCGWINSZ 3
+#define TIOCSCTTY 4
 
 #define MAX_INPUT 255
 
