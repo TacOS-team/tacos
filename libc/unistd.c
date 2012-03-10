@@ -147,13 +147,17 @@ unsigned int usleep(unsigned int microseconds)
 }
 
 ssize_t write(int fd, const void *buf, size_t count) {
-	syscall(SYS_WRITE, fd, (uint32_t) buf, (uint32_t)(&count));
+	if (count > 0) {
+		syscall(SYS_WRITE, fd, (uint32_t) buf, (uint32_t)(&count));
+	}
 
 	return count;
 }
 
 ssize_t read(int fd, void *buf, size_t count) {
-	syscall(SYS_READ, fd, (uint32_t) buf, (uint32_t)(&count));
+	if (count > 0) {
+		syscall(SYS_READ, fd, (uint32_t) buf, (uint32_t)(&count));
+	}
 
 	return count;
 }
