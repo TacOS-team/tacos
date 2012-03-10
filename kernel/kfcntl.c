@@ -95,6 +95,8 @@ void close_all_fd() {
 
 			if(ofd->close != NULL)
 				ofd->close(ofd);
+
+			kfree(ofd);
 		}
 	}
 }
