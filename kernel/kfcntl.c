@@ -125,7 +125,7 @@ SYSCALL_HANDLER2(sys_close, int fd_id, uint32_t* ret)
 	*ret = -1;
 	open_file_descriptor *ofd;
 
-	if (process->fd[fd_id].used) {
+	if (fd_id >= 0 && fd_id < FOPEN_MAX && process->fd[fd_id].used) {
 		ofd = process->fd[fd_id].ofd;
 	
 		if(ofd->close == NULL)

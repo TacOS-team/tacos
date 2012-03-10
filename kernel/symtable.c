@@ -87,14 +87,16 @@ symbol_table_t* load_symtable(Elf32_File* file)
 }
 
 void load_kernel_symtable() {
-	Elf32_File* file;
-	int fd = open("/tacos/system/kernel.bin",O_RDONLY);
+	int fd = open("/tacos/system/kernel.bin", O_RDONLY);
 	
-	file = load_elf_file(fd);
-	
-	ksymtable = load_symtable(file);
-	
-	close(fd);
+	if (fd > 0) {
+		Elf32_File* file;
+		file = load_elf_file(fd);
+		ksymtable = load_symtable(file);
+		close(fd);
+	} else {
+		klog("kernel.bin non trouvé !");
+	}
 }
 
 paddr_t sym_to_addr(symbol_table_t* table, char* symbol)
