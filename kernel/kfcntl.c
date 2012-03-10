@@ -91,6 +91,7 @@ void close_all_fd() {
 	for (fd_id = 0; fd_id < FOPEN_MAX; fd_id++) {
 		if (process->fd[fd_id].used) {
 			ofd = process->fd[fd_id].ofd;
+			process->fd[fd_id].used = 0;
 
 			if(ofd->close != NULL)
 				ofd->close(ofd);
