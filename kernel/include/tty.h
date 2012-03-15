@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Terminal posix-like.
  */
 
 #ifndef _TTY_H_
@@ -34,10 +34,10 @@
 #include <termios.h>
 #include <fd_types.h>
 
-#define TIOCGWINSZ 3
-#define TIOCSCTTY 4
+#define TIOCGWINSZ 3 /**< Request get window size. */
+#define TIOCSCTTY 4 /**< Request set ctrl terminal. */
 
-#define MAX_INPUT 255
+#define MAX_INPUT 255 /**< Taille du buffer où sont enregistrés les caractères prêt pour la lecture. */
 
 #define TTY_DRIVER_TYPE_SYSTEM 1
 #define TTY_DRIVER_TYPE_CONSOLE 2

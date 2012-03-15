@@ -161,7 +161,7 @@ open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * pat
 
 int procfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 	size_t count = 0;
-	int i = ofd->current_octet;
+	unsigned int i = ofd->current_octet;
 
 	if (ofd->current_cluster == 0) {
 		while (i < MAX_PROC && count < size) {

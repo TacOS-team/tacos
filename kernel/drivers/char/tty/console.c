@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Console virtuelle (Fn).
  */
 
 #include <drivers/console.h>
@@ -32,9 +31,9 @@
 #include <kmalloc.h>
 #include <klog.h>
 
-#define LARGEUR_TAB 8
+#define LARGEUR_TAB 8 /**< Taille d'une tabulation */
 
-#define NB_CONSOLES 4
+#define NB_CONSOLES 4 /**< Nombre de consoles virtuelles */
 
 static tty_driver_t *tty_driver;
 
