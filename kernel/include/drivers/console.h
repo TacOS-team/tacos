@@ -23,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Console virtuelle (Fn)
  */
 
 #ifndef _CONSOLE_H_

@@ -23,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Principales fonctions de l'API POSIX (read, write, seek, stat...)
  */
 
 #ifndef _KUNISTD_H
@@ -67,16 +67,26 @@ SYSCALL_HANDLER3(sys_ioctl, uint32_t fd, unsigned int request, void *data);
 
 /**
  * Syscall pour obtenir des informations sur un fichier.
+ *
+ * @param path Le chemin du fichier dont on veut obtenir les informations.
+ * @param buf Une structure stat pour y enregistrer les informations.
+ * @param ret Le code retour de la fonction.
  */
 SYSCALL_HANDLER3(sys_stat, const char *path, struct stat *buf, int *ret);
 
 /**
  * Syscall pour supprimer un fichier.
+ *
+ * @param path Le chemin du fichier à supprimer.
+ * @param ret Le code retour de la fonction.
  */
 SYSCALL_HANDLER2(sys_unlink, const char *path, int *ret);
 
 /**
  * Syscall pour dupliquer un open file descriptor.
+ *
+ * @param oldfd L'identifiant de descripteur de fichier ouvert à dupliquer.
+ * @param ret Le nouvel identifiant.
  */
 SYSCALL_HANDLER2(sys_dup, int oldfd, int *ret);
 
