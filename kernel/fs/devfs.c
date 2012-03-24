@@ -189,6 +189,10 @@ open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path
 			ofd->current_octet_buf = 0;
 
 			ofd->readdir = devfs_readdir;
+			ofd->write = NULL;
+			ofd->read = NULL;
+			ofd->seek = NULL;
+			ofd->close = NULL;
 
 			return ofd;
 		}

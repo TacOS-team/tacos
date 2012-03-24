@@ -84,6 +84,10 @@ open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * pat
 		ofd->current_octet_buf = 0;
 
 		ofd->readdir = procfs_readdir;
+		ofd->write = NULL;
+		ofd->read = NULL;
+		ofd->seek = NULL;
+		ofd->close = NULL;
 
 		return ofd;
 	}	else {
