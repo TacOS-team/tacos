@@ -45,15 +45,13 @@ void sigint_handler(int signal __attribute__((unused))) {
 void sigstp_handler(int signal __attribute__((unused))) {
 }
 
-int shell(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)));
-
-static int pwd_cmd()
+static int pwd_cmd(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 {
-	printf("%s", getcwd(NULL, 0));
+	printf("%s\n", getcwd(NULL, 0));
 	return 0;
 }
 
-static int help_cmd()
+static int help_cmd(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 {
 	show_builtin_cmd();
 	return 0;
@@ -82,57 +80,6 @@ static int cd_cmd(int argc, char **argv)
 	return 0;
 }
 
-// int ps()
-// {
-// 	process_t* aux = get_process_list(FIRST_PROCESS);
-// 	const int clk_per_ms = CLOCKS_PER_SEC / 1000;
-// 	long int ms;
-// 	int s;
-// 	int m;
-// 	int h;
-// 
-// 	printf("pid\tppid\tname\t\ttime\t\t%CPU\tstate\n");   
-// 	while(aux!=NULL)
-// 	{
-// 			
-// 			/* Calcul du temps d'execution du processus */
-// 			ms = aux->user_time / clk_per_ms;
-// 			s = ms / 1000;
-// 			
-// 			m = s / 60;
-// 			s = s % 60;
-// 			h = m / 60;
-// 			m = m % 60;
-// 			
-// 			/*if (aux->process == active_process) {
-// 					printf("*");
-// 			}*/
-// 			
-// 			printf("%d\t%d\t%s\t\t%dh %dm %ds\t%d\%\t",aux->pid, aux->ppid, aux->name, h, m ,s, (int)(((float)aux->last_sample/(float)CPU_USAGE_SAMPLE_RATE)*100.f));
-// 			
-// 			switch(aux->state)
-// 			{
-// 					case PROCSTATE_IDLE:
-// 							printf("IDLE\n");
-// 							break;
-// 					case PROCSTATE_RUNNING:
-// 							printf("RUNNING\n");
-// 							break;
-// 					case PROCSTATE_WAITING:
-// 							printf("WAITING\n");
-// 							break;
-// 					case PROCSTATE_TERMINATED:
-// 							printf("TERMINATED\n");
-// 							break;
-// 					default:
-// 							break;
-// 			}
-// 			
-// 			aux = get_process_list(NEXT_PROCESS);
-// 	}
-// 	return 0;
-// }
-
 void print_logo()
 {
 	printf("_|_|_|_|_|                      _|_|      _|_|_|\n");
@@ -155,7 +102,6 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 
 	add_builtin_cmd(help_cmd, "help");
 	add_builtin_cmd(cls_cmd, "clear");
-	//add_builtin_cmd(ps, "ps");
 	add_builtin_cmd(pwd_cmd, "pwd");
 	add_builtin_cmd(cd_cmd, "cd");
 
