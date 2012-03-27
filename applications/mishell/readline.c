@@ -42,14 +42,18 @@ char *readline(const char *prompt)
 		cur_col = strlen(prompt);
 		fflush(stdout);
 	}
-
 	struct winsize ws;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws);
 	int colonnes = ws.ws_col;
 
 	struct termios oldt;
 	tcgetattr(0, &oldt);
-	struct termios newt = oldt;
+
+	//XXX: Cette ligne plante sous bochs... remplacée par un memcpy...
+	//struct termios newt = oldt;
+	struct termios newt;
+	memcpy(&newt, &oldt, sizeof(newt));
+	
 	cfmakeraw(&newt);
 	tcsetattr(0, TCSANOW, &newt);
 
@@ -199,7 +203,7 @@ char *readline(const char *prompt)
 		fflush(stdout);
 	} while (!end);
 
-	tcsetattr(0, TCSANOW, &oldt);
+	//tcsetattr(0, TCSANOW, &oldt);
 
 	return buf;
 }

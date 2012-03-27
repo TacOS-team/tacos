@@ -425,7 +425,8 @@ int game()
 
 	signal(SIGINT, handler);
 
-	newt = oldt;
+	memcpy(&newt, &oldt, sizeof(newt));
+	
 	newt.c_lflag &= ~(ICANON | ECHO);
 	tcsetattr(STDIN_FILENO, TCSANOW, &newt);
 	fcntl(STDIN_FILENO, F_SETFL, (void *)O_NONBLOCK);
