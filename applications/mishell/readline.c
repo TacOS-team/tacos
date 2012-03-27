@@ -203,7 +203,7 @@ char *readline(const char *prompt)
 		fflush(stdout);
 	} while (!end);
 
-	//tcsetattr(0, TCSANOW, &oldt);
+	tcsetattr(0, TCSANOW, &oldt);
 
 	return buf;
 }
