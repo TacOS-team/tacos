@@ -35,9 +35,7 @@
 #include <interrupts.h>
 #include <ksyscall.h>
 #include <klog.h>
-
-/* LibC */
-#include <string.h>
+#include <klibc/string.h>
 
 syscall_handler_t syscall_handler_table[MAX_SYSCALL_NB];
 

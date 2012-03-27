@@ -1,5 +1,5 @@
 /**
- * @file string.c
+ * @file klibc/string.c
  *
  * @author TacOS developers 
  *
@@ -23,13 +23,14 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Manipulation de string depuis le kernel. 
  */
 
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
+#include <klibc/string.h>
+#include <kmalloc.h>
 
+//XXX
+#include <ctype.h>
 
 void* memcpy(void* dest, const void* src, size_t size)
 {
@@ -321,7 +322,7 @@ char *strcasestr(const char *haystack, const char *needle)
 char *strdup (const char *s)
 {
 	int len = strlen(s);
-	char* new_string = (char*) malloc((len+1)*sizeof(char)); // len + 1 pour le '\0'
+	char* new_string = (char*) kmalloc((len+1)*sizeof(char)); // len + 1 pour le '\0'
 	
 	return strcpy(new_string, s);
 }
@@ -396,3 +397,4 @@ char *strtok(char *str, const char *delim) {
 
 	return ret;
 }
+

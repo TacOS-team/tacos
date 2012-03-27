@@ -31,7 +31,7 @@
  */
 
 #include <list.h>
-#include <string.h>
+#include <klibc/string.h>
 #include <kmalloc.h>
 #include <kstdio.h>
 

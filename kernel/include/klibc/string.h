@@ -1,5 +1,5 @@
 /**
- * @file include/string.h
+ * @file klibc/string.h
  *
  * @author TacOS developers 
  *
@@ -23,13 +23,13 @@
  *
  * @section DESCRIPTION
  *
- * @brief Fonctions de manipulation de strings.
+ * @brief Fonctions de manipulation de strings depuis le kernel.
  */
 
 #ifndef _STRING_H_
 #define _STRING_H_
 
-#include <sys/types.h>
+#include <types.h>
 
 /** 
  * @brief Copie une zone mémoire.

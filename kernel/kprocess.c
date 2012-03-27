@@ -30,15 +30,15 @@
 #include <debug.h>
 #include <gdt.h>
 #include <kfcntl.h>
+#include <klibc/string.h>
 #include <klog.h>
+#include <kmalloc.h>
+#include <ksem.h>
 #include <ksignal.h>
 #include <ksyscall.h>
-#include <scheduler.h>
-#include <kmalloc.h>
-#include <types.h>
-#include <string.h>
 #include <pagination.h>
-#include <ksem.h>
+#include <scheduler.h>
+#include <types.h>
 
 #define GET_PROCESS 0
 #define GET_PROCESS_LIST 1

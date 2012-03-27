@@ -29,8 +29,9 @@
 
 #include "fat_outils.h"
 #include <clock.h>
-#include <string.h>
+#include <klibc/string.h>
 #include <kmalloc.h>
+
 #include <ctype.h>
 
 int fat_last_cluster(fat_fs_instance_t *instance) {

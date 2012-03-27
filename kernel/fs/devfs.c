@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,17 +23,16 @@
  *
  * @section DESCRIPTION
  *
- * DevFS
+ * @brief DevFS
  */
 
 #include <fs/devfs.h>
 #include <kdirent.h>
+#include <klibc/string.h>
 #include <klog.h>
 #include <kmalloc.h>
 #include <types.h>
 #include <vfs.h>
-
-#include <string.h>
 
 #define MAX_DRIVERS 64
 

@@ -28,7 +28,7 @@
  */
 
 #include <heap.h>
-#include <string.h>
+#include <klibc/string.h>
 #include <debug.h>
 
 // initialise le tas

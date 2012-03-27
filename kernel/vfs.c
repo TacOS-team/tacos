@@ -33,8 +33,7 @@
 #include <kfcntl.h>
 #include <kmalloc.h>
 #include <vfs.h>
-//XXX: libc
-#include <string.h>
+#include <klibc/string.h>
 
 typedef struct _available_fs_t {
 	file_system_t *fs;

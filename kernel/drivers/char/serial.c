@@ -42,7 +42,7 @@
 #include <kmalloc.h>
 #include <tty.h>
 
-#include <string.h>
+#include <klibc/string.h>
 
 #include "serial_masks.h"
 

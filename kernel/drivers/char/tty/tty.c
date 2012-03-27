@@ -29,6 +29,7 @@
 
 #include <fs/devfs.h>
 #include <kfcntl.h>
+#include <klibc/string.h>
 #include <klog.h>
 #include <kmalloc.h>
 #include <kprocess.h>
@@ -36,8 +37,6 @@
 #include <ksignal.h>
 #include <scheduler.h>
 #include <tty.h>
-
-#include <string.h>
 
 struct termios tty_std_termios = {
 	.c_iflag = ICRNL | IXON,

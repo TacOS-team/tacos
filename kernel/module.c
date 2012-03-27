@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -33,13 +32,13 @@
 #include <module.h>
 #include <kmalloc.h>
 #include <symtable.h>
+#include <klibc/string.h>
+#include <fd_types.h>
 
-/* LibC */
-#include <stdio.h>
+/* XXX: LibC */
 #include <unistd.h>
 #include <fcntl.h>
 #include <elf.h>
-#include <string.h>
 #include <stdlib.h>
 
 extern symbol_table_t* ksymtable;

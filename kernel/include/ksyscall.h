@@ -30,11 +30,6 @@
 #ifndef _KSYSCALL_H_
 #define _KSYSCALL_H_
 
-/**
- * @file string.h
- *
- */
-
 #include <types.h>
 
 #define UNUSED(X) uint32_t unused_ ## X __attribute__ ((unused))

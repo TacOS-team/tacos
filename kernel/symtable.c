@@ -1,4 +1,4 @@
-#include <string.h>
+#include <klibc/string.h>
 #include <kprocess.h>
 #include <kmalloc.h>
 #include <symtable.h>

@@ -1,5 +1,5 @@
 #include "ext2_internal.h"
-#include <string.h>
+#include <klibc/string.h>
 #include <klog.h>
 #include <kmalloc.h>
 #include <kdirent.h>
@@ -10,16 +10,6 @@ static int read_inode(ext2_fs_instance_t *instance, int inode, struct ext2_inode
 static uint32_t alloc_block(ext2_fs_instance_t *instance);
 
 #define max(a,b) ((a) > (b) ? (a) : (b))
-
-char *strchrnul(const char *s, int c) {
-	char *i;
-	for (i = (char*)s; *i != '\0'; ++i) {
-		if (*i == c) {
-			return i;
-		}
-	}
-	return i;
-}
 
 static void split_dir_filename(const char * path, char * dir, char * filename) {
 	char *p = strrchr(path, '/');
