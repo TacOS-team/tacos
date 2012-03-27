@@ -180,20 +180,15 @@ static void newline(int n) {
 	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
-void set_foreground(int n, uint8_t foreground) {
+static void set_foreground(int n, uint8_t foreground) {
 	consoles[n].attr = (consoles[n].attr & 0xF0) | (foreground & 0xF);
 }
 
-void set_background(int n, uint8_t background) {
+static void set_background(int n, uint8_t background) {
 	consoles[n].attr = ((background & 0xF) << 4) | (consoles[n].attr & 0x0F);
 }
 
-void sys_set_attribute(int n, uint8_t background, uint8_t foreground) {
-	consoles[n].attr = ((background & 0xF) << 4) | (foreground & 0xF);
-}
-
-void reset_attribute(int n) {
-	//set_blink_bit(0);
+static void reset_attribute(int n) {
 	consoles[n].attr = DEFAULT_ATTRIBUTE_VALUE;
 }
 

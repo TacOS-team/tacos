@@ -226,10 +226,8 @@ int __free(void *p, struct mem_list *free_mem, struct mem_list *allocated_mem)
 
 static void print_mem(struct mem* m, bool free __attribute__ ((unused)))
 {
- // set_attribute(BLACK, free ? GREEN : RED);
 	printf("[%x ; %d ; %x ; %x] ", m, m->size,	m->prev, m->next);
 	fflush(stdout);
-//	reset_attribute();
 }
 
 void malloc_print_mem()
