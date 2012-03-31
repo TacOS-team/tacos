@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -36,16 +35,25 @@
 #define CLOCKS_PER_SEC 1000 /**< Nombre de secondes par tick d'horloge. */
 #define USEC_PER_SEC 1000000 /**< Nombre de us par secondes. */
 
-struct timeval{
-	long int tv_sec;
-	long int tv_usec;
+/**
+ * Représente un temps écoulé.
+ */
+struct timeval {
+	long int tv_sec; /**< Le nombre de secondes écoulées. */
+	long int tv_usec; /**< Le reste (fraction d'une seconde) exprimée en usec. */
 };
 
-struct timespec{
-	long int tv_sec;
-	long int tv_nsec;
+/**
+ * Représente un temps écoule.
+ */
+struct timespec {
+	long int tv_sec; /**< Le nombre de secondes écoulées. */
+	long int tv_nsec; /**< Le reste en ns. */
 };
 
+/**
+ * Structure qui contient une date et heure.
+ */
 struct tm {
 	int tm_sec;   /**< seconds after the minute — [0, 60] */
 	int tm_min;   /**< minutes after the hour — [0, 59] */

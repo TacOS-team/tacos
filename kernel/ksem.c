@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Gestion des sémaphores.
  */
 
 /* TODO: Séparer le code de la fifo dans un autre fichier, voir le faire générique pour que ce soit réutilisable pour d'autres types d'IPC */
@@ -49,20 +48,28 @@
  * 
  ***********************************/
 
+/**
+ * Cellule d'une fifo.
+ */
 typedef struct _sem_fifo_cell{
 	int pid;
 	struct _sem_fifo_cell* prev;
 	struct _sem_fifo_cell* next;
 } sem_fifo_cell;
 
+/**
+ * Structure d'une fifo.
+ */
 typedef struct {
 	int size;
 	sem_fifo_cell* head;
 	sem_fifo_cell* tail;
 } sem_fifo;
 
-typedef struct
-{
+/**
+ * Structure définissant une sémaphore.
+ */
+typedef struct {
 	int value;
 	uint8_t allocated;
 	sem_fifo fifo;
@@ -82,7 +89,9 @@ static sem_t semaphores[MAX_SEM];
  * 
  *************************************/
 
-/* Initialisation de la fifo */
+/**
+ *  Initialisation de la fifo 
+ */
 static void sem_fifo_init(sem_fifo* fifo)
 {
 	fifo->size = 0;
@@ -90,7 +99,9 @@ static void sem_fifo_init(sem_fifo* fifo)
 	fifo->tail = NULL;
 }
 
-/* Met un élément dans la file */
+/**
+ *  Met un élément dans la file 
+ */
 static int sem_fifo_put(sem_fifo* fifo, int pid)
 {
 	int ret = -1;
@@ -120,7 +131,9 @@ static int sem_fifo_put(sem_fifo* fifo, int pid)
 	return ret;
 }
  
-/* Prend le prochain élément dans la file */
+/**
+ *  Prend le prochain élément dans la file 
+ */
 static int sem_fifo_get(sem_fifo* fifo)
 {
 	int pid = -1;
@@ -135,7 +148,9 @@ static int sem_fifo_get(sem_fifo* fifo)
 	return pid;
 }
 
-/* Retourne la taille actuelle de la fifo */
+/**
+ * Retourne la taille actuelle de la fifo
+ */
 static int sem_fifo_size(sem_fifo* fifo)
 {
 	return fifo->size;

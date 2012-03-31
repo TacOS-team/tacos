@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Définition de DIR et struct dirent.
+ * @brief Définition de DIR et struct dirent.
  */
 
 #ifndef _DIRENT_H_
@@ -35,6 +34,9 @@
 
 #define NAME_MAX 256
 
+/**
+ * Structure permettant de lire un dossier.
+ */
 typedef struct _DIR {
 	int			fd;
 	size_t	allocation;
@@ -46,6 +48,9 @@ typedef struct _DIR {
 	char		data[1];
 } DIR;
 
+/**
+ * Directory entry.
+ */
 struct dirent {
 	uint32_t  d_ino;
 	uint16_t  d_reclen;
@@ -53,11 +58,42 @@ struct dirent {
 	char      d_name[NAME_MAX];
 };
 
+/**
+ * Crée un nouveau répertoire.
+ *
+ * @param pathname Le chemin du dossier à créer.
+ * @param mode Les droits d'accès.
+ *
+ * @return 0 en cas de succès.
+ */
 int mkdir(const char *pathname, mode_t mode);
-DIR* opendir(const char* dirname);
-struct dirent* readdir(DIR* dirp);
-int closedir(DIR* dirp);
 
+/**
+ * Ouvre un dossier pour lister les fichiers à l'intérieur.
+ *
+ * @param dirname Le chemin du dossier à ouvrir.
+ *
+ * @return Une structure DIR permettant de lire le contenu du dossier. 
+ */
+DIR* opendir(const char* dirname);
+
+/**
+ * Lecture de la prochaine entrée du dossier.
+ *
+ * @param dirp La structure DIR initialisée par opendir.
+ *
+ * @return Un directory entry.
+ */
+struct dirent* readdir(DIR* dirp);
+
+/**
+ * Fermeture d'un dossier ouvert.
+ *
+ * @param dirp La structure DIR initialisée par opendir.
+ *
+ * @return 0 en cas de succès.
+ */
+int closedir(DIR* dirp);
 
 
 #endif
