@@ -57,6 +57,14 @@ void console_init() {
 		consoles[i].disp_cur = true;
 		consoles[i].cur_x = 0;
 		consoles[i].cur_y = 0;
+	
+		consoles[i].escape_char = false;
+		consoles[i].ansi_escape_code = false;
+		consoles[i].ansi_second_val = false;
+		consoles[i].val = 0;
+		consoles[i].val2 = 0;
+		consoles[i].bright = 1;
+
 		clear_console(i);
 	}
 
@@ -206,78 +214,72 @@ static size_t console_write (tty_struct_t* tty, open_file_descriptor* ofd __attr
  */
 static void console_putchar(tty_struct_t *tty, unsigned char c) {
 	int n = tty->index;
-	//XXX: par console !
-	static bool escape_char = false;
-	static bool ansi_escape_code = false;
-	static bool ansi_second_val = false;
-	static int val = 0, val2 = 0;
-	static int bright;
 
-	if (escape_char) {
-		if (ansi_escape_code) {
+	if (consoles[n].escape_char) {
+		if (consoles[n].ansi_escape_code) {
 			if (c >= '0' && c <= '9') {
-				if (ansi_second_val) {
-					val2 = val2 * 10 + c - '0';
+				if (consoles[n].ansi_second_val) {
+					consoles[n].val2 = consoles[n].val2 * 10 + c - '0';
 				} else {
-					val = val * 10 + c - '0';
+					consoles[n].val = consoles[n].val * 10 + c - '0';
 				}
 			} else {
-				escape_char = false;
-				ansi_second_val = false;
-				ansi_escape_code = false;
-				if (val == 0 && c != 'J' && c != 'm')
-					val = 1;
-				if (val2 == 0)
-					val2 = 1;
+				consoles[n].escape_char = false;
+				consoles[n].ansi_second_val = false;
+				consoles[n].ansi_escape_code = false;
+				if (consoles[n].val == 0 && c != 'J' && c != 'm')
+					consoles[n].val = 1;
+				if (consoles[n].val2 == 0)
+					consoles[n].val2 = 1;
 				switch (c) {
 				case 'A':
-					while (val--)
+					while (consoles[n].val--)
 						cursor_up(n);
 					break;
 				case 'B':
-					while (val--)
+					while (consoles[n].val--)
 						cursor_down(n);
 					break;
 				case 'C':
-					while (val--)
+					while (consoles[n].val--)
 						cursor_forward(n);
 					break;
 				case 'D':
-					while (val--)
+					while (consoles[n].val--)
 						cursor_back(n);
 					break;
 				case 'E':
-					while (val--)
+					while (consoles[n].val--)
 						newline(n);
 					break;
 				case 'F':
-					while (val--)
+					while (consoles[n].val--)
 						lineup(n);
 					break;
 				case 'G':
-					cursor_move_col(n, val);
+					cursor_move_col(n, consoles[n].val);
 					break;
 				case 'f':
 				case 'H':
-					cursor_move(n, val, val2);
+					cursor_move(n, consoles[n].val, consoles[n].val2);
 					break;
 				case ';':
-					escape_char = true;
-					ansi_second_val = true;
-					ansi_escape_code = true;
-					val2 = 0;
+					consoles[n].escape_char = true;
+					consoles[n].ansi_second_val = true;
+					consoles[n].ansi_escape_code = true;
+					consoles[n].val2 = 0;
 					break;
 				case 'm':
-					if (val == 0) {
+					if (consoles[n].val == 0) {
 						reset_attribute(n);
-					} else if (val == 1) {
-						bright = 1;
-					} else if (val == 2) {
-						bright = 0;
-					} else if (val >= 30 && val <= 37) {
+					} else if (consoles[n].val == 1) {
+						consoles[n].bright = 1;
+					} else if (consoles[n].val == 2) {
+						consoles[n].bright = 0;
+					} else if (consoles[n].val >= 30 && consoles[n].val <= 37) {
 						// si low intensity (normal) :
-						if (bright == 0) {
-							switch (val - 30) {
+						if (consoles[n].bright == 0) {
+							switch (consoles[n].val - 30) {
 							case 0:
 								set_foreground(n, BLACK);
 								break;
@@ -304,7 +306,7 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 								break;
 							}
 						} else {
-							switch (val - 30) {
+							switch (consoles[n].val - 30) {
 							case 0:
 								set_foreground(n, DARK_GRAY);
 								break;
@@ -331,9 +333,9 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 								break;
 							}
 						}
-					} else if (val >= 40 && val <= 47) {
+					} else if (consoles[n].val >= 40 && consoles[n].val <= 47) {
 						// low intensity (normal) :
-						switch (val - 40) {
+						switch (consoles[n].val - 40) {
 						case 0:
 							set_background(n, BLACK);
 							break;
@@ -359,8 +361,8 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 							set_background(n, LIGHT_GRAY);
 							break;
 						}
-					} else if (val >= 90 && val <= 99) {
-						switch (val - 90) {
+					} else if (consoles[n].val >= 90 && consoles[n].val <= 99) {
+						switch (consoles[n].val - 90) {
 						case 0:
 							set_foreground(n, DARK_GRAY);
 							break;
@@ -386,8 +388,8 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 							set_foreground(n, WHITE);
 							break;
 						}
-					} else if (val >= 100 && val <= 109) {
-						switch (val - 100) {
+					} else if (consoles[n].val >= 100 && consoles[n].val <= 109) {
+						switch (consoles[n].val - 100) {
 						case 0:
 							set_background(n, DARK_GRAY);
 							break;
@@ -417,11 +419,11 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 					}
 					break;
 				case 'J':
-					if (val == 0) {
+					if (consoles[n].val == 0) {
 
-					} else if (val == 1) {
+					} else if (consoles[n].val == 1) {
 
-					} else if (val == 2) {
+					} else if (consoles[n].val == 2) {
 						clear_console(n);
 					}
 					break;
@@ -429,14 +431,14 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 			}
 		} else {
 			if (c == '[') {
-				ansi_escape_code = true;
-				val = 0;
+				consoles[n].ansi_escape_code = true;
+				consoles[n].val = 0;
 			} else {
-				escape_char = false;
+				consoles[n].escape_char = false;
 			}
 		}
 	} else if (c == '\033') {
-		escape_char = true;
+		consoles[n].escape_char = true;
 	} else if (c == '\n' || c == '\r') {
 		newline(n);
 	} else if (c == '\t') {
@@ -444,10 +446,11 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 	} else if (c == '\b') {
 		backspace(n);
 	} else {
-		if (consoles[n].cur_x >= consoles[n].cols)
+		if (consoles[n].cur_x >= consoles[n].cols) {
 			newline(n);
-		kputchar_video(n, true, c, consoles[n].cur_x,
-				consoles[n].cur_y, consoles[n].attr);
+		}
+		kputchar_video(n, true, c, consoles[n].cur_x, consoles[n].cur_y,
+										consoles[n].attr);
 		consoles[n].cur_x++;
 	}
 
