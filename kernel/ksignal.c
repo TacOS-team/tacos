@@ -29,16 +29,17 @@
 
 /* Kernel */
 #include <gdt.h>
-#include <ksignal.h>
+#include <interrupts.h>
+#include <klog.h>
 #include <kprocess.h>
+#include <ksignal.h>
 #include <kstdio.h>
 #include <pagination.h>
 #include <scheduler.h>
-#include <klog.h>
-#include <interrupts.h>
 
-/* LibC */
+/* XXX:LibC */
 #include <sys/syscall.h>
+#include <signal.h>
 
 typedef struct {
 	vaddr_t ret_addr;
