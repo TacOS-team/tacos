@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -56,16 +55,18 @@
 #define EXEC_ELF 0
 #define EXEC_KERNEL 1
 
-/* Structure à passer au noyau pour créer un nouveau processus */
+/**
+ * Structure à passer au noyau pour créer un nouveau processus
+ */
 typedef struct
 {
-	char* name;
-	char* args;
-	char** envp;
+	char* name; /**< Nom du processus. */
+	char* args; /**< Ses arguments. */
+	char** envp; /**< Ses variables d'environnement. */
 	
-	int exec_type; /* Type d'exécution */
+	int exec_type; /**< Type d'exécution */
 	
-	void* data; /* Usage variable */
+	void* data; /**< Usage variable */
 	
 	Elf32_File* file;
 	
@@ -118,7 +119,9 @@ typedef struct{
 
 } process_t;
 
-
+/**
+ * Cellule de la liste des processus.
+ */
 typedef struct _proclist_cell{
 	process_t* process;
 	struct _proclist_cell* next;

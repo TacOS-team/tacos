@@ -1,5 +1,5 @@
 /**
- * @file string.c
+ * @file /libc/string.c
  *
  * @author TacOS developers 
  *
