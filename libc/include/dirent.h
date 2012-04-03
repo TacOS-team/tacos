@@ -32,7 +32,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#define NAME_MAX 256
+#define NAME_MAX 256 /**< Taille maximale d'un nom de fichier. */
 
 /**
  * Structure permettant de lire un dossier.

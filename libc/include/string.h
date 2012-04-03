@@ -153,7 +153,19 @@ int strcasecmp(const char *s1, const char *s2);
  */
 int strncasecmp(const char *s1, const char *s2, size_t n);
 
-
+/**
+ * @brief Recherche un caractère dans une chaîne.
+ *
+ * Recherche un caractère dans une chaîne, et si le caractère n'est pas présent,
+ * renvoie un pointeur vers l'octet nul de la chaîne.
+ *
+ * @param s La chaîne dans laquelle il faut effectuer une recherche.
+ * @param c Le caractère à rechercher.
+ *
+ * @return Un pointeur sur la première occurrence du caractère dans la chaîne ou
+ * un pointeur vers la caractère nul de la chaîne si le caractère n'est pas
+ * trouvé.
+ */
 char *strchrnul(const char *s, int c);
 
 /** 
@@ -311,8 +323,19 @@ char *strcasestr(const char *haystack, const char *needle);
  */
 char *strdup (const char *s);
 
+/**
+ * @brief Extraire des mots d'une chaîne.
+ *
+ * @param str La chaine à tokenizer.
+ * @param delim L'ensemble des délimiteurs possible.
+ *
+ * @return Un pointeur vers l'élément lexical suivant ou NULL s'il n'y en a
+ * plus.
+ */
 char *strtok(char *str, const char *delim);
-/* NOT IMPLEMENTED YET
+
+
+/* TODO: NOT IMPLEMENTED YET
 
 int strcoll(const char *s1, const char *s2);
 

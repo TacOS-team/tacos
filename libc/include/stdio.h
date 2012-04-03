@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -173,7 +172,23 @@ int puts(const char *s);
 int fgetline(FILE *fp, char s[], int lim);
 int getline(char *s, int lim);
 
+/**
+ * @brief Écriture binaire sur un flux.
+ *
+ * Cette fonction écrit jusqu'à nmemb elements dont la taille est 
+ * définie par size vers le stream pointé par le pointeur stream.
+ * Pour chaque elements, fwrite fait size appels à fputc en castant 
+ * simplement l'element en un tableau de uchar.
+ *
+ * @param ptr Pointeur vers les données à écrire.
+ * @param size Taille d'un élément de données.
+ * @param nmemb Nombre d'éléments.
+ * @param stream Stream à utiliser.
+ *
+ * @return Nombre d'éléments écrits.
+ */
 size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
+
 size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
 
 /** 

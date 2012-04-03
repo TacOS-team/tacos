@@ -101,7 +101,7 @@ int close(int id);
 /**
  * Manipulation d'un descripteur de fichier.
  *
- * @param id descripteur du fichier.
+ * @param fd descripteur du fichier.
  * @param request action à faire.
  * @param data les arguments nécessaires à l'action.
  *

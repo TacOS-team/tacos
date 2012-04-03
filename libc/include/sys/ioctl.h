@@ -33,9 +33,12 @@
 #define TIOCGWINSZ 3
 #define TIOCSCTTY 4
 
+/**
+ * @brief Structure qui contient la taille d'une fenetre.
+ */
 struct winsize {
-	unsigned short ws_row;
-	unsigned short ws_col;
+	unsigned short ws_row; /**< Nombre de lignes. */
+	unsigned short ws_col; /**< Nombre de colonnes. */
 };
 
 int ioctl(int d, unsigned int request, void *data);

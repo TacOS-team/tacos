@@ -30,7 +30,7 @@
 
 #include <stdbool.h>
 
-typedef int pid_t;
+typedef int pid_t; /**< Identifiant de processus. */
 
 #ifndef _TYPES_UINTX_T_
 #define _TYPES_UINTX_T_
@@ -49,9 +49,9 @@ typedef int ssize_t; /**< Type pour une taille positive */
 
 #ifndef _TYPES_OFF_T_
 #define _TYPES_OFF_T_
-typedef unsigned long long int off_t;
+typedef unsigned long long int off_t; /**< Offset ou taille. */
 #endif
 
-#define NULL ((void*)0)
+#define NULL ((void*)0) /**< Le fameux pointeur NULL. */
 
 #endif
