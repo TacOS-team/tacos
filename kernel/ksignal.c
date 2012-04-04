@@ -38,7 +38,7 @@
 #include <scheduler.h>
 
 /* XXX:LibC */
-#include <sys/syscall.h>
+#include <syscall_values.h>
 #include <signal.h>
 
 typedef struct {

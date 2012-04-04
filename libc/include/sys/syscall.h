@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -29,8 +28,6 @@
 
 #ifndef _SYSCALL_H_
 #define _SYSCALL_H_
-
-#include <sys/types.h>
 
 #define SYS_EXIT 0
 #define SYS_GETPID 1

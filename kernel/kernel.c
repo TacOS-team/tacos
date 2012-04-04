@@ -51,7 +51,7 @@
 #include <pci.h>
 #include <round_robin.h>
 #include <scheduler.h>
-#include <sys/syscall.h>
+#include <syscall_values.h>
 #include <vmm.h>
 
 /* Includes des fs */

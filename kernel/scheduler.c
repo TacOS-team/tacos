@@ -47,8 +47,6 @@
 #include <types.h>
 #include <vmm.h>
 
-#include <sys/syscall.h>
-
 #define USER_PROCESS 0
 #define KERNEL_PROCESS 1
 

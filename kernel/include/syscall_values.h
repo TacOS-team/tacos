@@ -1,5 +1,5 @@
 /**
- * @file syscall.c
+ * @file syscall_values.h
  *
  * @author TacOS developers 
  *
@@ -23,17 +23,44 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Liste des SYSCALL de TacOS.
  */
 
-#include <sys/syscall.h>
-#include <sys/types.h>
+#ifndef _SYSCALL_VALUES_H_
+#define _SYSCALL_VALUES_H_
 
-void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3)
-{
-	// On met la fonction et les parametres dans les bon registres
-	asm(""::"a"(func),"b"(param1),"c"(param2),"d"(param3));
-	
-	// et on lance l'interruption
-	asm("int $0x30");
-}
+#define SYS_EXIT 0
+#define SYS_GETPID 1
+#define SYS_GETPPID 2
+#define SYS_OPEN 3
+#define SYS_KILL 4
+#define SYS_WRITE 5
+#define SYS_READ 6
+#define SYS_EXEC 7
+#define SYS_SLEEP 8
+#define SYS_SEMCTL 9
+#define SYS_VIDEO_CTL 10
+#define SYS_PROC 11
+#define SYS_VMM 12
+#define SYS_SEEK 13
+#define SYS_HLT 14
+#define SYS_SIGNAL 15
+#define SYS_SIGPROCMASK 16
+#define SYS_CLOSE 17
+#define SYS_MKNOD 18
+#define SYS_READDIR 19
+#define SYS_MKDIR 20
+#define SYS_SIGRET 21
+#define SYS_SIGSUSPEND 22
+#define SYS_IOCTL 23
+#define SYS_GETCLOCK 24
+#define SYS_GETDATE 25
+#define SYS_FCNTL 26
+#define SYS_DUMMY 27
+#define SYS_STAT 28
+#define SYS_UNLINK 29
+#define SYS_DUP 30
+#define SYS_WAITPID 31
+#define SYS_RMDIR 32
+
+#endif
