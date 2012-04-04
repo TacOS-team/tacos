@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -29,10 +28,6 @@
 
 #ifndef _LIBIO_H_
 #define _LIBIO_H_
-
-/**
- * @file libio.h
- */
 
 #include <sys/types.h>
 
