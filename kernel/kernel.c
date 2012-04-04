@@ -70,7 +70,7 @@
 
 typedef struct
 {
-  uint8_t lol;
+	uint8_t lol;
 } kernel_options;
 
 /* Forward declarations. */
@@ -79,7 +79,7 @@ static void initKernelOptions(const char *cmdLine, kernel_options *options);
 
 void LPT1_routine(int id __attribute__ ((unused)))
 {
-  // XXX : avoid segment_not_present
+	// XXX : avoid segment_not_present
 }
 
 void cmain (unsigned long magic, unsigned long addr) {
@@ -119,7 +119,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	}
 	else
 		kerr("ELF section headers unavailable");
-  
+
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
 	interrupt_set_routine(IRQ_LPT1, LPT1_routine, 0);
 	interrupt_set_routine(IRQ_COM1, serial_isr, 0);

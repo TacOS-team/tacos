@@ -27,11 +27,6 @@
  * Description de ce que fait le fichier
  */
 
-/**
- * @file idt.c
- */
-
-#include <types.h>
 #include <idt.h>
 
 /* Code inspiré de SOS. 

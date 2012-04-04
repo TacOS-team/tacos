@@ -26,9 +26,8 @@
  * @brief Setup de la GDT.
  */
 
-#include <types.h>
-#include "memory.h"
-#include "gdt.h"
+#include <memory.h>
+#include <gdt.h>
 
 static tss_t default_tss;
 

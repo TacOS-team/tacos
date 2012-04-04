@@ -27,11 +27,10 @@
  * Description de ce que fait le fichier
  */
 
-#include <kfcntl.h>
 #include <klog.h>
 #include <kprocess.h>
+#include <kunistd.h>
 #include <scheduler.h>
-#include <types.h>
 #include <vfs.h>
 
 SYSCALL_HANDLER3(sys_write, uint32_t fd, const void *buf, size_t *c) {

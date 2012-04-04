@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -27,14 +26,13 @@
  * @brief Gestion d'évènements datés.
  */
 
-#include <types.h>
 #include <i8254.h>
 #include <interrupts.h>
 #include <list.h>
 #include <events.h>
 #include <debug.h>
 
-#define MAX_EVENTS 256
+#define MAX_EVENTS 256 /**< Nombre d'évènements au maximum. */
 
 //static const int TIMER_FREQ = I8254_MAX_FREQ / 1000;
 //static int ticks;
