@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -31,7 +30,7 @@
 #define _TTY_H_
 
 #include <types.h>
-#include <termios.h>
+#include <termios_types.h>
 #include <fd_types.h>
 
 #define TIOCGWINSZ 3 /**< Request get window size. */
