@@ -95,7 +95,7 @@ Graphe des dépendances par inclusion de kpanic.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="kpanic_8c__incl.png" border="0" usemap="#kernel_2kpanic_8c" alt=""/></div>
 <map name="kernel_2kpanic_8c" id="kernel_2kpanic_8c">
-<area shape="rect" id="node3" href="kstdio_8h.html" title="kstdio.h" alt="" coords="16,83,83,112"/><area shape="rect" id="node5" href="exception_8h.html" title="exception.h" alt="" coords="5,160,96,189"/><area shape="rect" id="node9" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="120,160,205,189"/><area shape="rect" id="node12" href="kpanic_8h.html" title="kpanic.h" alt="" coords="208,83,277,112"/><area shape="rect" id="node15" href="kprocess_8h.html" title="kprocess.h" alt="" coords="415,160,500,189"/><area shape="rect" id="node26" href="symtable_8h.html" title="symtable.h" alt="" coords="891,237,976,267"/><area shape="rect" id="node35" href="scheduler_8h.html" title="scheduler.h" alt="" coords="301,83,392,112"/><area shape="rect" id="node7" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="280,315,344,344"/><area shape="rect" id="node17" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="272,237,352,267"/><area shape="rect" id="node20" href="fd__types_8h.html" title="fd_types.h" alt="" coords="512,237,595,267"/><area shape="rect" id="node22" href="signal__types_8h.html" title="signal_types.h" alt="" coords="619,237,725,267"/><area shape="rect" id="node24" href="process__types_8h.html" title="process_types.h" alt="" coords="749,237,867,267"/><area shape="rect" id="node32" href="vmm_8h.html" title="vmm.h" alt="" coords="427,237,488,267"/><area shape="rect" id="node29" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="911,315,956,344"/></map>
+<area shape="rect" id="node3" href="kstdio_8h.html" title="kprintf" alt="" coords="16,83,83,112"/><area shape="rect" id="node5" href="exception_8h.html" title="exception.h" alt="" coords="5,160,96,189"/><area shape="rect" id="node9" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="120,160,205,189"/><area shape="rect" id="node12" href="kpanic_8h.html" title="Handlers des exceptions." alt="" coords="208,83,277,112"/><area shape="rect" id="node15" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="415,160,500,189"/><area shape="rect" id="node26" href="symtable_8h.html" title="symtable.h" alt="" coords="891,237,976,267"/><area shape="rect" id="node35" href="scheduler_8h.html" title="scheduler.h" alt="" coords="301,83,392,112"/><area shape="rect" id="node7" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="280,315,344,344"/><area shape="rect" id="node17" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="272,237,352,267"/><area shape="rect" id="node20" href="fd__types_8h.html" title="fd_types.h" alt="" coords="512,237,595,267"/><area shape="rect" id="node22" href="signal__types_8h.html" title="signal_types.h" alt="" coords="619,237,725,267"/><area shape="rect" id="node24" href="process__types_8h.html" title="process_types.h" alt="" coords="749,237,867,267"/><area shape="rect" id="node32" href="vmm_8h.html" title="vmm.h" alt="" coords="427,237,488,267"/><area shape="rect" id="node29" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="911,315,956,344"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="define-members"></a>
@@ -118,16 +118,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SELECTOR_IDT2</b>&#160;&#160;&#160;3</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa56f16c6fb65f64ad5aa63cdca298c5"></a><!-- doxytag: member="kpanic.c::printStackTrace" ref="afa56f16c6fb65f64ad5aa63cdca298c5" args="(uint32_t depth, process_t *badboy)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printStackTrace</b> (uint32_t depth, <a class="el" href="structprocess__t.html">process_t</a> *badboy)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06c6ba4335728894bf322eafbb04d432"></a><!-- doxytag: member="kpanic.c::page_fault_report" ref="a06c6ba4335728894bf322eafbb04d432" args="(int error_code)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>page_fault_report</b> (int error_code)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6902e94d857035c8e9c7824d2f9172b9"></a><!-- doxytag: member="kpanic.c::kpanic_main_report" ref="a6902e94d857035c8e9c7824d2f9172b9" args="(uint32_t error_id, uint32_t error_code, process_t *badboy, intframe *frame)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>kpanic_main_report</b> (uint32_t error_id, uint32_t error_code, <a class="el" href="structprocess__t.html">process_t</a> *badboy, <a class="el" href="structintframe.html">intframe</a> *frame)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8840c9b17a48b184ee2747c9729d7f2d"></a><!-- doxytag: member="kpanic.c::kpanic_handler" ref="a8840c9b17a48b184ee2747c9729d7f2d" args="(uint32_t error_id, uint32_t error_code)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>kpanic_handler</b> (uint32_t error_id, uint32_t error_code)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf070b3d87597bdddd1c1c413ed4adb2"></a><!-- doxytag: member="kpanic.c::kpanic_init" ref="acf070b3d87597bdddd1c1c413ed4adb2" args="()" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>kpanic_init</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kpanic_8c.html#acf070b3d87597bdddd1c1c413ed4adb2">kpanic_init</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9fafb6e1a22246096e6cf60cc664d3bf"></a><!-- doxytag: member="kpanic.c::ksymtable" ref="a9fafb6e1a22246096e6cf60cc664d3bf" args="" -->
@@ -144,7 +135,25 @@ LICENSE</h2>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
 <p>Description de ce que fait le fichier </p>
-</div></div><!-- contents -->
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="acf070b3d87597bdddd1c1c413ed4adb2"></a><!-- doxytag: member="kpanic.c::kpanic_init" ref="acf070b3d87597bdddd1c1c413ed4adb2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="kpanic_8c.html#acf070b3d87597bdddd1c1c413ed4adb2">kpanic_init</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Mise en place des handlers d'exceptions. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -162,7 +171,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

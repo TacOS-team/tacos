@@ -1,7 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$devfs_8c.html" title="kernel/fs/devfs.c" alt="" coords="5,83,125,112"/>
+<area shape="rect" id="node3" href="$devfs_8c.html" title="DevFS." alt="" coords="5,83,125,112"/>
 <area shape="rect" id="node5" href="$fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="149,83,325,112"/>
-<area shape="rect" id="node7" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="349,83,461,112"/>
-<area shape="rect" id="node9" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="485,83,595,112"/>
-<area shape="rect" id="node11" href="$vfs_8c.html" title="kernel/vfs.c" alt="" coords="619,83,709,112"/>
+<area shape="rect" id="node7" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="349,83,472,112"/>
+<area shape="rect" id="node9" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="496,83,608,112"/>
+<area shape="rect" id="node11" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="632,83,741,112"/>
+<area shape="rect" id="node13" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="765,83,856,112"/>
 </map>

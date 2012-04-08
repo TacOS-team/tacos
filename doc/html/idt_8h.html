@@ -119,11 +119,11 @@ Macros</h2></td></tr>
 Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8h.html#a559dc3a4f73d1813f12a104840e68550">idt_setup</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation de l'IDT.  <a href="#a559dc3a4f73d1813f12a104840e68550"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8h.html#a042510d9d3af14a9dac9a6c46f27c403">idt_set_handler</a> (uint8_t index, paddr_t handler_address, uint8_t priority)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8h.html#a042510d9d3af14a9dac9a6c46f27c403">idt_set_handler</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> index, <a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> handler_address, <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> priority)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Associe un handler à une interruption/exception.  <a href="#a042510d9d3af14a9dac9a6c46f27c403"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8h.html#affa07557443fe1c9a508b346d8f06523">idt_set_handler_type</a> (uint8_t index, uint8_t trap_type)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8h.html#affa07557443fe1c9a508b346d8f06523">idt_set_handler_type</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> index, <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> trap_type)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change le type d'une interruption (interrupt gate, trap gate, task gate).  <a href="#affa07557443fe1c9a508b346d8f06523"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8h.html#a49a66783b420e15221ba67a340267b8d">idt_disable_handler</a> (uint8_t index)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8h.html#a49a66783b420e15221ba67a340267b8d">idt_disable_handler</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> index)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Désactive une interruption.  <a href="#a49a66783b420e15221ba67a340267b8d"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
@@ -202,7 +202,7 @@ DESCRIPTION</h2>
         <tr>
           <td class="memname">void <a class="el" href="idt_8h.html#a49a66783b420e15221ba67a340267b8d">idt_disable_handler</a> </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td></td>
         </tr>
@@ -243,19 +243,19 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="memname">int <a class="el" href="idt_8h.html#a042510d9d3af14a9dac9a6c46f27c403">idt_set_handler</a> </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>index</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">paddr_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td>
           <td class="paramname"><em>handler_address</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>priority</em>&#160;</td>
         </tr>
         <tr>
@@ -294,13 +294,13 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="memname">void <a class="el" href="idt_8h.html#affa07557443fe1c9a508b346d8f06523">idt_set_handler_type</a> </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>index</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>trap_type</em>&#160;</td>
         </tr>
         <tr>
@@ -374,7 +374,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -84,6 +84,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier kernel/include/kprocess.h</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Création de nouveaux processus.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="ksyscall_8h_source.html">ksyscall.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="fd__types_8h_source.html">fd_types.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="signal__types_8h_source.html">signal_types.h</a>&gt;</code><br/>
@@ -103,7 +106,7 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <div class="dyncontent">
 <div class="center"><img src="kprocess_8h__dep__incl.png" border="0" usemap="#kernel_2include_2kprocess_8hdep" alt=""/></div>
 <map name="kernel_2include_2kprocess_8hdep" id="kernel_2include_2kprocess_8hdep">
-<area shape="rect" id="node3" href="tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="1195,160,1371,189"/><area shape="rect" id="node5" href="context_8h.html" title="kernel/include/context.h" alt="" coords="1657,83,1820,112"/><area shape="rect" id="node7" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="1597,160,1728,189"/><area shape="rect" id="node9" href="kfcntl_8h.html" title="kernel/include/kfcntl.h" alt="" coords="819,83,968,112"/><area shape="rect" id="node18" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="1849,237,1959,267"/><area shape="rect" id="node20" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="931,160,1032,189"/><area shape="rect" id="node26" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="1056,160,1171,189"/><area shape="rect" id="node30" href="ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="1420,83,1583,112"/><area shape="rect" id="node35" href="ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="1752,160,1867,189"/><area shape="rect" id="node38" href="scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="1895,83,2073,112"/><area shape="rect" id="node50" href="kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="2528,160,2637,189"/><area shape="rect" id="node53" href="ksem_8c.html" title="kernel/ksem.c" alt="" coords="2661,160,2768,189"/><area shape="rect" id="node57" href="round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="2792,160,2933,189"/><area shape="rect" id="node11" href="serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="253,160,432,189"/><area shape="rect" id="node14" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="456,160,656,189"/><area shape="rect" id="node16" href="fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="680,160,856,189"/><area shape="rect" id="node22" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="1395,160,1523,189"/><area shape="rect" id="node24" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="5,160,115,189"/><area shape="rect" id="node28" href="vfs_8c.html" title="kernel/vfs.c" alt="" coords="139,160,229,189"/><area shape="rect" id="node41" href="round__robin_8h.html" title="kernel/include/round_robin.h" alt="" coords="1941,160,2131,189"/><area shape="rect" id="node44" href="init_8c.html" title="kernel/init.c" alt="" coords="2155,160,2243,189"/><area shape="rect" id="node46" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="2267,160,2379,189"/><area shape="rect" id="node60" href="vmm_8c.html" title="kernel/vmm.c" alt="" coords="2403,160,2504,189"/></map>
+<area shape="rect" id="node3" href="tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="1056,160,1232,189"/><area shape="rect" id="node5" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="1088,83,1211,112"/><area shape="rect" id="node7" href="context_8h.html" title="kernel/include/context.h" alt="" coords="1573,83,1736,112"/><area shape="rect" id="node9" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="1459,160,1589,189"/><area shape="rect" id="node11" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="756,83,905,112"/><area shape="rect" id="node20" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="1711,237,1820,267"/><area shape="rect" id="node22" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="931,160,1032,189"/><area shape="rect" id="node30" href="ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="1336,83,1499,112"/><area shape="rect" id="node35" href="ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="1613,160,1728,189"/><area shape="rect" id="node38" href="scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="1811,83,1989,112"/><area shape="rect" id="node50" href="kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="2389,160,2499,189"/><area shape="rect" id="node53" href="ksem_8c.html" title="Gestion des sémaphores." alt="" coords="2523,160,2629,189"/><area shape="rect" id="node56" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="2653,160,2768,189"/><area shape="rect" id="node58" href="round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="2792,160,2933,189"/><area shape="rect" id="node13" href="serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="677,160,856,189"/><area shape="rect" id="node16" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="5,160,205,189"/><area shape="rect" id="node18" href="fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="229,160,405,189"/><area shape="rect" id="node24" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="1256,160,1384,189"/><area shape="rect" id="node26" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="429,160,539,189"/><area shape="rect" id="node28" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="563,160,653,189"/><area shape="rect" id="node41" href="round__robin_8h.html" title="kernel/include/round_robin.h" alt="" coords="1803,160,1992,189"/><area shape="rect" id="node44" href="init_8c.html" title="kernel/init.c" alt="" coords="2016,160,2104,189"/><area shape="rect" id="node46" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="2128,160,2240,189"/><area shape="rect" id="node61" href="vmm_8c.html" title="kernel/vmm.c" alt="" coords="2264,160,2365,189"/></map>
 </div>
 </div>
 <p><a href="kprocess_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -139,8 +142,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>EXEC_KERNEL</b>&#160;&#160;&#160;1</td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9040b1162f3fbe3bc0a5c2d7f07cf58"></a><!-- doxytag: member="kprocess.h::proc_list" ref="ac9040b1162f3fbe3bc0a5c2d7f07cf58" args="" -->
-typedef struct <a class="el" href="struct__proclist__cell.html">_proclist_cell</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>proc_list</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__proclist__cell.html">_proclist_cell</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#ac9040b1162f3fbe3bc0a5c2d7f07cf58">proc_list</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abadcd8dcc8e1833e872e34aad891185c"></a><!-- doxytag: member="kprocess.h::proclist_cell" ref="abadcd8dcc8e1833e872e34aad891185c" args="" -->
 typedef struct <a class="el" href="struct__proclist__cell.html">_proclist_cell</a>&#160;</td><td class="memItemRight" valign="bottom"><b>proclist_cell</b></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
@@ -155,7 +157,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>init_process_array</b
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Cherche le process_t* en correspondant à un pid donné.  <a href="#a99064f971fd1f14adcbf0a0a5c2af452"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structprocess__t.html">process_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#ab9b171d0bff7fe92083df6efaa920030">get_next_process</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le processus suivant le processus courant dans la liste.  <a href="#ab9b171d0bff7fe92083df6efaa920030"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#a63bbc7e770ccf29ac484112986ee7640">get_proc_count</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#a63bbc7e770ccf29ac484112986ee7640">get_proc_count</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le nombre de processus dans la liste.  <a href="#a63bbc7e770ccf29ac484112986ee7640"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d3174a39442391c9d23454a3bcf482b"></a><!-- doxytag: member="kprocess.h::clean_process_list" ref="a8d3174a39442391c9d23454a3bcf482b" args="()" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#a8d3174a39442391c9d23454a3bcf482b">clean_process_list</a> ()</td></tr>
@@ -163,15 +165,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kpro
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b501b3d2704f5c48c90ca79bec4d289"></a><!-- doxytag: member="kprocess.h::sample_CPU_usage" ref="a6b501b3d2704f5c48c90ca79bec4d289" args="()" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>sample_CPU_usage</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc70870c5d5807f03b0a58bd1e160f6f"></a><!-- doxytag: member="kprocess.h::SYSCALL_HANDLER1" ref="acc70870c5d5807f03b0a58bd1e160f6f" args="(sys_exit, uint32_t ret_value)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER1</b> (sys_exit, uint32_t ret_value)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER1</b> (sys_exit, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ret_value)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb04c10b6eb21ece6a889c874c3e1830"></a><!-- doxytag: member="kprocess.h::SYSCALL_HANDLER1" ref="aeb04c10b6eb21ece6a889c874c3e1830" args="(sys_getpid, uint32_t *pid)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER1</b> (sys_getpid, uint32_t *pid)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER1</b> (sys_getpid, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *pid)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1e4ed2d0a9b35c02447c629472a491f3"></a><!-- doxytag: member="kprocess.h::SYSCALL_HANDLER1" ref="a1e4ed2d0a9b35c02447c629472a491f3" args="(sys_getppid, uint32_t *ppid)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER1</b> (sys_getppid, uint32_t *ppid)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER1</b> (sys_getppid, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *ppid)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05c6e2910a550f70185f60d226c2bc02"></a><!-- doxytag: member="kprocess.h::SYSCALL_HANDLER2" ref="a05c6e2910a550f70185f60d226c2bc02" args="(sys_exec, process_init_data_t *init_data, int *pid)" -->
 &#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER2</b> (sys_exec, <a class="el" href="structprocess__init__data__t.html">process_init_data_t</a> *init_data, int *pid)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac57ad880ae66a0bf4339309fada43242"></a><!-- doxytag: member="kprocess.h::SYSCALL_HANDLER3" ref="ac57ad880ae66a0bf4339309fada43242" args="(sys_proc, uint32_t sub_func, uint32_t param1, uint32_t param2)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_proc, uint32_t sub_func, uint32_t param1, uint32_t param2)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_proc, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> sub_func, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param1, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param2)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e715b0cdc3fe2325e5dcc64ec07f0f9"></a><!-- doxytag: member="kprocess.h::SYSCALL_HANDLER1" ref="a4e715b0cdc3fe2325e5dcc64ec07f0f9" args="(sys_waitpid, int pid)" -->
 &#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER1</b> (sys_waitpid, int pid)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a95c28343e8515a53a2392068dc70d307"></a><!-- doxytag: member="kprocess.h::add_process" ref="a95c28343e8515a53a2392068dc70d307" args="(process_t *process)" -->
@@ -193,8 +195,22 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-<p>Description de ce que fait le fichier </p>
-</div><hr/><h2>Documentation des fonctions</h2>
+</div><hr/><h2>Documentation des définitions de type</h2>
+<a class="anchor" id="ac9040b1162f3fbe3bc0a5c2d7f07cf58"></a><!-- doxytag: member="kprocess.h::proc_list" ref="ac9040b1162f3fbe3bc0a5c2d7f07cf58" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__proclist__cell.html">_proclist_cell</a>* <a class="el" href="kprocess_8h.html#ac9040b1162f3fbe3bc0a5c2d7f07cf58">proc_list</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cellule de la liste des processus. </p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
 <a class="anchor" id="a21c8be1fe7cda8279886a50d946625bb"></a><!-- doxytag: member="kprocess.h::create_process" ref="a21c8be1fe7cda8279886a50d946625bb" args="(process_init_data_t *init_data)" -->
 <div class="memitem">
 <div class="memproto">
@@ -223,7 +239,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kprocess_8h_a21c8be1fe7cda8279886a50d946625bb_cgraph.png" border="0" usemap="#kprocess_8h_a21c8be1fe7cda8279886a50d946625bb_cgraph" alt=""/></div>
 <map name="kprocess_8h_a21c8be1fe7cda8279886a50d946625bb_cgraph" id="kprocess_8h_a21c8be1fe7cda8279886a50d946625bb_cgraph">
-<area shape="rect" id="node3" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="213,5,267,35"/><area shape="rect" id="node5" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="212,59,268,88"/><area shape="rect" id="node7" href="ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="203,112,277,141"/><area shape="rect" id="node9" href="ksem_8h.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)" alt="" coords="207,165,273,195"/><area shape="rect" id="node13" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="169,219,311,248"/><area shape="rect" id="node15" href="kfcntl_8h.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="203,272,277,301"/><area shape="rect" id="node11" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné." alt="" coords="360,192,459,221"/><area shape="rect" id="node18" href="string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="373,272,445,301"/></map>
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="517,5,584,35"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="688,204,741,233"/><area shape="rect" id="node9" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="687,281,743,311"/><area shape="rect" id="node11" href="ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="203,345,277,375"/><area shape="rect" id="node13" href="ksem_8h.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)" alt="" coords="207,164,273,193"/><area shape="rect" id="node17" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="169,399,311,428"/><area shape="rect" id="node19" href="kfcntl_8h.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="203,111,277,140"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="644,5,785,35"/><area shape="rect" id="node15" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné." alt="" coords="360,164,459,193"/><area shape="rect" id="node23" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="373,57,445,87"/><area shape="rect" id="node25" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="372,111,447,140"/><area shape="rect" id="node28" href="vfs_8h.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier." alt="" coords="507,241,595,271"/><area shape="rect" id="node32" href="vfs_8h.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="512,111,589,140"/><area shape="rect" id="node34" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="689,111,740,140"/></map>
 </div>
 </p>
 
@@ -259,6 +275,15 @@ Voici le graphe des appelants de cette fonction :</div>
   </dd>
 </dl>
 <dl class="return"><dt><b>Renvoie:</b></dt><dd>0 la plupart du temps. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kprocess_8h_a7cced35f469ae897c55ab96940289cf6_cgraph.png" border="0" usemap="#kprocess_8h_a7cced35f469ae897c55ab96940289cf6_cgraph" alt=""/></div>
+<map name="kprocess_8h_a7cced35f469ae897c55ab96940289cf6_cgraph" id="kprocess_8h_a7cced35f469ae897c55ab96940289cf6_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="169,5,220,35"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -317,7 +342,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t <a class="el" href="kprocess_8c.html#a63bbc7e770ccf29ac484112986ee7640">get_proc_count</a> </td>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="el" href="kprocess_8c.html#a63bbc7e770ccf29ac484112986ee7640">get_proc_count</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -347,7 +372,7 @@ Voici le graphe des appelants de cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

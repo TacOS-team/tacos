@@ -83,7 +83,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="ksyscall_8h_source.html">ksyscall.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="signal__types_8h_source.html">signal_types.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="signal_8h_source.html">signal.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="kprocess_8h_source.html">kprocess.h</a>&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
@@ -91,7 +90,7 @@ Graphe des dépendances par inclusion de ksignal.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="ksignal_8h__incl.png" border="0" usemap="#kernel_2include_2ksignal_8h" alt=""/></div>
 <map name="kernel_2include_2ksignal_8h" id="kernel_2include_2ksignal_8h">
-<area shape="rect" id="node3" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="23,160,103,189"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="108,237,172,267"/><area shape="rect" id="node7" href="signal__types_8h.html" title="signal_types.h" alt="" coords="620,160,727,189"/><area shape="rect" id="node9" href="signal_8h.html" title="signal.h" alt="" coords="664,83,731,112"/><area shape="rect" id="node16" href="kprocess_8h.html" title="kprocess.h" alt="" coords="263,83,348,112"/><area shape="rect" id="node11" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="751,160,839,189"/><area shape="rect" id="node13" href="stdbool_8h.html" title="stdbool.h" alt="" coords="758,237,832,267"/><area shape="rect" id="node19" href="fd__types_8h.html" title="fd_types.h" alt="" coords="372,160,455,189"/><area shape="rect" id="node22" href="process__types_8h.html" title="process_types.h" alt="" coords="479,160,596,189"/><area shape="rect" id="node24" href="symtable_8h.html" title="symtable.h" alt="" coords="263,160,348,189"/><area shape="rect" id="node30" href="vmm_8h.html" title="vmm.h" alt="" coords="178,160,239,189"/><area shape="rect" id="node27" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="283,237,328,267"/></map>
+<area shape="rect" id="node3" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="21,160,101,189"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="107,237,171,267"/><area shape="rect" id="node7" href="signal__types_8h.html" title="signal_types.h" alt="" coords="619,160,725,189"/><area shape="rect" id="node10" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="212,83,297,112"/><area shape="rect" id="node13" href="fd__types_8h.html" title="fd_types.h" alt="" coords="371,160,453,189"/><area shape="rect" id="node16" href="process__types_8h.html" title="process_types.h" alt="" coords="477,160,595,189"/><area shape="rect" id="node18" href="symtable_8h.html" title="symtable.h" alt="" coords="261,160,347,189"/><area shape="rect" id="node24" href="vmm_8h.html" title="vmm.h" alt="" coords="176,160,237,189"/><area shape="rect" id="node21" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="281,237,327,267"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
@@ -106,9 +105,9 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a32bf77872204526af28aafc045ce5394"></a><!-- doxytag: member="ksignal.h::SYSCALL_HANDLER3" ref="a32bf77872204526af28aafc045ce5394" args="(sys_signal, uint32_t signum, sighandler_t handler, sighandler_t *ret)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_signal, uint32_t signum, sighandler_t handler, sighandler_t *ret)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_signal, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> signum, sighandler_t handler, sighandler_t *ret)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7add7e76e02b507c69444b55dfc3f624"></a><!-- doxytag: member="ksignal.h::SYSCALL_HANDLER3" ref="a7add7e76e02b507c69444b55dfc3f624" args="(sys_sigprocmask, uint32_t how, sigset_t *set, sigset_t *oldset)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_sigprocmask, uint32_t how, sigset_t *set, sigset_t *oldset)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_sigprocmask, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> how, sigset_t *set, sigset_t *oldset)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c1d779f1e6c1d6bc55856400ec51a37"></a><!-- doxytag: member="ksignal.h::SYSCALL_HANDLER3" ref="a1c1d779f1e6c1d6bc55856400ec51a37" args="(sys_kill, int pid, int signum, int *ret)" -->
 &#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_kill, int pid, int signum, int *ret)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a681d76b9af6793b4cb44c6fbe97648e4"></a><!-- doxytag: member="ksignal.h::SYSCALL_HANDLER0" ref="a681d76b9af6793b4cb44c6fbe97648e4" args="(sys_sigret)" -->
@@ -149,7 +148,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

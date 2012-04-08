@@ -1,21 +1,19 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$klog_8h.html" title="klog.h" alt="" coords="9,83,68,112"/>
+<area shape="rect" id="node3" href="$klog_8h.html" title="Logging macros." alt="" coords="9,83,68,112"/>
 <area shape="rect" id="node7" href="$module_8h.html" title="module.h" alt="" coords="92,83,169,112"/>
-<area shape="rect" id="node11" href="$kmalloc_8h.html" title="kmalloc.h" alt="" coords="193,83,271,112"/>
+<area shape="rect" id="node11" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="193,83,271,112"/>
 <area shape="rect" id="node14" href="$symtable_8h.html" title="symtable.h" alt="" coords="295,83,380,112"/>
-<area shape="rect" id="node17" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="315,160,360,189"/>
-<area shape="rect" id="node19" href="$stdio_8h.html" title="stdio.h" alt="" coords="384,160,445,189"/>
-<area shape="rect" id="node30" href="$unistd_8h.html" title="unistd.h" alt="" coords="505,83,572,112"/>
-<area shape="rect" id="node39" href="$fcntl_8h.html" title="fcntl.h" alt="" coords="596,83,649,112"/>
-<area shape="rect" id="node42" href="$string_8h.html" title="string.h" alt="" coords="655,237,719,267"/>
-<area shape="rect" id="node45" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="725,160,787,189"/>
-<area shape="rect" id="node5" href="$kstdio_8h.html" title="kstdio.h" alt="" coords="5,160,72,189"/>
+<area shape="rect" id="node17" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="355,160,400,189"/>
+<area shape="rect" id="node19" href="$kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="455,83,548,112"/>
+<area shape="rect" id="node23" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="572,83,655,112"/>
+<area shape="rect" id="node25" href="$unistd_8h.html" title="unistd.h" alt="" coords="679,83,745,112"/>
+<area shape="rect" id="node37" href="$fcntl_8h.html" title="File control operations." alt="" coords="769,83,823,112"/>
+<area shape="rect" id="node40" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="829,160,891,189"/>
+<area shape="rect" id="node5" href="$kstdio_8h.html" title="kprintf" alt="" coords="5,160,72,189"/>
 <area shape="rect" id="node9" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="200,160,264,189"/>
-<area shape="rect" id="node21" href="$libio_8h.html" title="libio.h" alt="" coords="249,237,305,267"/>
-<area shape="rect" id="node23" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="525,315,613,344"/>
-<area shape="rect" id="node28" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="380,237,449,267"/>
-<area shape="rect" id="node25" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="532,392,607,421"/>
-<area shape="rect" id="node33" href="$stat_8h.html" title="sys/stat.h" alt="" coords="524,160,601,189"/>
-<area shape="rect" id="node36" href="$time_8h.html" title="time.h" alt="" coords="575,237,631,267"/>
-<area shape="rect" id="node48" href="$malloc_8h.html" title="malloc.h" alt="" coords="793,237,863,267"/>
+<area shape="rect" id="node27" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="729,315,817,344"/>
+<area shape="rect" id="node31" href="$stat_8h.html" title="sys/stat.h" alt="" coords="695,160,772,189"/>
+<area shape="rect" id="node29" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="736,392,811,421"/>
+<area shape="rect" id="node34" href="$time_8h.html" title="time.h" alt="" coords="745,237,801,267"/>
+<area shape="rect" id="node43" href="$malloc_8h.html" title="malloc.h" alt="" coords="876,237,945,267"/>
 </map>

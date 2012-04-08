@@ -82,8 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier kernel/interrupts.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;types.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="idt_8h_source.html">idt.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="idt_8h_source.html">idt.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="i8259_8h_source.html">i8259.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="interrupts_8h_source.html">interrupts.h</a>&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
@@ -91,20 +90,20 @@ Graphe des dépendances par inclusion de interrupts.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="interrupts_8c__incl.png" border="0" usemap="#kernel_2interrupts_8c" alt=""/></div>
 <map name="kernel_2interrupts_8c" id="kernel_2interrupts_8c">
-<area shape="rect" id="node5" href="idt_8h.html" title="Initialisation de la table des descripteurs d&#39;interruption (et exceptions) et association aux handler..." alt="" coords="93,83,139,112"/><area shape="rect" id="node9" href="i8259_8h.html" title="Initialisation du i8259 qui s&#39;occupe des interruptions." alt="" coords="163,83,224,112"/><area shape="rect" id="node12" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="248,83,333,112"/><area shape="rect" id="node7" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="161,160,225,189"/></map>
+<area shape="rect" id="node3" href="idt_8h.html" title="Initialisation de la table des descripteurs d&#39;interruption (et exceptions) et association aux handler..." alt="" coords="5,83,51,112"/><area shape="rect" id="node7" href="i8259_8h.html" title="Initialisation du i8259 qui s&#39;occupe des interruptions." alt="" coords="75,83,136,112"/><area shape="rect" id="node10" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="160,83,245,112"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="73,160,137,189"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8c.html#aecc1fa8433fa21ba233b8feb2558e954">interrupt_set_routine</a> (uint8_t interrupt_id, interrupt_handler_t routine, uint8_t privilege)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8c.html#aecc1fa8433fa21ba233b8feb2558e954">interrupt_set_routine</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id, interrupt_handler_t routine, <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> privilege)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une nouvelle interruption.  <a href="#aecc1fa8433fa21ba233b8feb2558e954"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8c.html#ac3f5203c31fd554b562cba8cec42ceb6">interrupt_disable</a> (uint8_t interrupt_id)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8c.html#ac3f5203c31fd554b562cba8cec42ceb6">interrupt_disable</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Désactive une interruption.  <a href="#ac3f5203c31fd554b562cba8cec42ceb6"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8c.html#a4eea959d9a7be06d7b87a0aad03b490e">make_trapgate_from_int</a> (uint8_t interrupt_id)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8c.html#a4eea959d9a7be06d7b87a0aad03b490e">make_trapgate_from_int</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change le type d'une interruption en une trapgate.  <a href="#a4eea959d9a7be06d7b87a0aad03b490e"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">paddr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8c.html#a62023b0378f42eabb08c367d0e690925">interrupts_wrapper_array</a> [<a class="el" href="idt_8h.html#ac0283c827dbcca38f83f73900746ffa5">INTERRUPT_NUM</a>]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8c.html#a62023b0378f42eabb08c367d0e690925">interrupts_wrapper_array</a> [<a class="el" href="idt_8h.html#ac0283c827dbcca38f83f73900746ffa5">INTERRUPT_NUM</a>]</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6fffdcf090c15f4a2bd9464c56134ad5"></a><!-- doxytag: member="interrupts.c::interrupts_handler_array" ref="a6fffdcf090c15f4a2bd9464c56134ad5" args="[INTERRUPT_NUM]" -->
 interrupt_handler_t&#160;</td><td class="memItemRight" valign="bottom"><b>interrupts_handler_array</b> [<a class="el" href="idt_8h.html#ac0283c827dbcca38f83f73900746ffa5">INTERRUPT_NUM</a>]</td></tr>
 </table>
@@ -127,7 +126,7 @@ DESCRIPTION</h2>
         <tr>
           <td class="memname">int <a class="el" href="interrupts_8c.html#ac3f5203c31fd554b562cba8cec42ceb6">interrupt_disable</a> </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>interrupt_id</em></td><td>)</td>
           <td></td>
         </tr>
@@ -160,7 +159,7 @@ Voici le graphe d'appel pour cette fonction :</div>
         <tr>
           <td class="memname">int <a class="el" href="interrupts_8c.html#aecc1fa8433fa21ba233b8feb2558e954">interrupt_set_routine</a> </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>interrupt_id</em>, </td>
         </tr>
         <tr>
@@ -172,7 +171,7 @@ Voici le graphe d'appel pour cette fonction :</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>privilege</em>&#160;</td>
         </tr>
         <tr>
@@ -221,7 +220,7 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="memname">void <a class="el" href="interrupts_8c.html#a4eea959d9a7be06d7b87a0aad03b490e">make_trapgate_from_int</a> </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>interrupt_id</em></td><td>)</td>
           <td></td>
         </tr>
@@ -261,7 +260,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">paddr_t <a class="el" href="interrupts_8c.html#a62023b0378f42eabb08c367d0e690925">interrupts_wrapper_array</a>[<a class="el" href="idt_8h.html#ac0283c827dbcca38f83f73900746ffa5">INTERRUPT_NUM</a>]</td>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> <a class="el" href="interrupts_8c.html#a62023b0378f42eabb08c367d0e690925">interrupts_wrapper_array</a>[<a class="el" href="idt_8h.html#ac0283c827dbcca38f83f73900746ffa5">INTERRUPT_NUM</a>]</td>
         </tr>
       </table>
 </div>
@@ -288,7 +287,7 @@ Voici le graphe des appelants de cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

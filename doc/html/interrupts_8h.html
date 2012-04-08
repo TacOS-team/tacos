@@ -149,11 +149,11 @@ Définitions de type</h2></td></tr>
 typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>interrupt_handler_t</b> )(int interrupt_id)</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#aecc1fa8433fa21ba233b8feb2558e954">interrupt_set_routine</a> (uint8_t interrupt_id, interrupt_handler_t routine, uint8_t privilege)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#aecc1fa8433fa21ba233b8feb2558e954">interrupt_set_routine</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id, interrupt_handler_t routine, <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> privilege)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une nouvelle interruption.  <a href="#aecc1fa8433fa21ba233b8feb2558e954"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#ac3f5203c31fd554b562cba8cec42ceb6">interrupt_disable</a> (uint8_t interrupt_id)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#ac3f5203c31fd554b562cba8cec42ceb6">interrupt_disable</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Désactive une interruption.  <a href="#ac3f5203c31fd554b562cba8cec42ceb6"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#a4eea959d9a7be06d7b87a0aad03b490e">make_trapgate_from_int</a> (uint8_t interrupt_id)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#a4eea959d9a7be06d7b87a0aad03b490e">make_trapgate_from_int</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change le type d'une interruption en une trapgate.  <a href="#a4eea959d9a7be06d7b87a0aad03b490e"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
@@ -190,7 +190,7 @@ DESCRIPTION</h2>
         <tr>
           <td class="memname">int <a class="el" href="interrupts_8c.html#ac3f5203c31fd554b562cba8cec42ceb6">interrupt_disable</a> </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>interrupt_id</em></td><td>)</td>
           <td></td>
         </tr>
@@ -223,7 +223,7 @@ Voici le graphe d'appel pour cette fonction :</div>
         <tr>
           <td class="memname">int <a class="el" href="interrupts_8c.html#aecc1fa8433fa21ba233b8feb2558e954">interrupt_set_routine</a> </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>interrupt_id</em>, </td>
         </tr>
         <tr>
@@ -235,7 +235,7 @@ Voici le graphe d'appel pour cette fonction :</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>privilege</em>&#160;</td>
         </tr>
         <tr>
@@ -284,7 +284,7 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="memname">void <a class="el" href="interrupts_8c.html#a4eea959d9a7be06d7b87a0aad03b490e">make_trapgate_from_int</a> </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>interrupt_id</em></td><td>)</td>
           <td></td>
         </tr>
@@ -336,7 +336,7 @@ Voici le graphe des appelants de cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

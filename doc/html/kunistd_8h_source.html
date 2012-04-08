@@ -80,23 +80,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </div><!--header-->
 <div class="contents">
 <a href="kunistd_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00030"></a>00030 <span class="preprocessor">#ifndef _KUNISTD_H</span>
-<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define _KUNISTD_H</span>
-<a name="l00032"></a>00032 <span class="preprocessor"></span>
-<a name="l00037"></a>00037 <span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span>
-<a name="l00038"></a>00038 <span class="preprocessor">#include &lt;<a class="code" href="ksyscall_8h.html">ksyscall.h</a>&gt;</span>
-<a name="l00039"></a>00039 <span class="preprocessor">#include &lt;<a class="code" href="kstat_8h.html">kstat.h</a>&gt;</span>
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041 SYSCALL_HANDLER3(sys_write, uint32_t fd, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> *c);
-<a name="l00042"></a>00042 SYSCALL_HANDLER3(sys_read, uint32_t fd, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> *c);
-<a name="l00043"></a>00043 SYSCALL_HANDLER3(sys_seek, uint32_t fd, <span class="keywordtype">long</span> *offset, <span class="keywordtype">int</span> whence);
-<a name="l00044"></a>00044 SYSCALL_HANDLER3(sys_ioctl, uint32_t fd, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> request, <span class="keywordtype">void</span> *data);
-<a name="l00045"></a>00045 SYSCALL_HANDLER3(sys_stat, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">struct</span> <a class="code" href="structstat.html">stat</a> *buf, <span class="keywordtype">int</span> *ret);
-<a name="l00046"></a>00046 SYSCALL_HANDLER2(sys_unlink, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keywordtype">int</span> *ret);
-<a name="l00047"></a>00047 SYSCALL_HANDLER2(sys_dup, <span class="keywordtype">int</span> oldfd, <span class="keywordtype">int</span> *ret);
-<a name="l00048"></a>00048 SYSCALL_HANDLER3(sys_mknod, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, mode_t <a class="code" href="structmode.html">mode</a>, dev_t *dev);
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050 <span class="preprocessor">#endif</span>
+<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _KUNISTD_H</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _KUNISTD_H</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="ksyscall_8h.html">ksyscall.h</a>&gt;</span>
+<a name="l00034"></a>00034 <span class="preprocessor">#include &lt;<a class="code" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier.">kstat.h</a>&gt;</span>
+<a name="l00035"></a>00035 
+<a name="l00043"></a>00043 SYSCALL_HANDLER3(sys_write, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> *c);
+<a name="l00044"></a>00044 
+<a name="l00052"></a>00052 SYSCALL_HANDLER3(sys_read, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> *c);
+<a name="l00053"></a>00053 
+<a name="l00059"></a>00059 SYSCALL_HANDLER3(sys_seek, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, <span class="keywordtype">long</span> *offset, <span class="keywordtype">int</span> whence);
+<a name="l00060"></a>00060 
+<a name="l00066"></a>00066 SYSCALL_HANDLER3(sys_ioctl, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> request, <span class="keywordtype">void</span> *data);
+<a name="l00067"></a>00067 
+<a name="l00075"></a>00075 SYSCALL_HANDLER3(sys_stat, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">struct</span> <a class="code" href="structstat.html" title="Informations sur un noeud.">stat</a> *buf, <span class="keywordtype">int</span> *ret);
+<a name="l00076"></a>00076 
+<a name="l00083"></a>00083 SYSCALL_HANDLER2(sys_unlink, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keywordtype">int</span> *ret);
+<a name="l00084"></a>00084 
+<a name="l00091"></a>00091 SYSCALL_HANDLER2(sys_dup, <span class="keywordtype">int</span> oldfd, <span class="keywordtype">int</span> *ret);
+<a name="l00092"></a>00092 
+<a name="l00096"></a>00096 SYSCALL_HANDLER3(sys_mknod, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>, <a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a> *dev);
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -115,7 +122,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -93,17 +93,14 @@ Graphe des dépendances par inclusion de fcntl.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="fcntl_8c__incl.png" border="0" usemap="#libc_2fcntl_8c" alt=""/></div>
 <map name="libc_2fcntl_8c" id="libc_2fcntl_8c">
-<area shape="rect" id="node3" href="stdlib_8h.html" title="stdlib.h" alt="" coords="27,160,88,189"/><area shape="rect" id="node12" href="fcntl_8h.html" title="fcntl.h" alt="" coords="95,83,148,112"/><area shape="rect" id="node14" href="unistd_8h.html" title="unistd.h" alt="" coords="172,83,239,112"/><area shape="rect" id="node23" href="syscall_8h.html" title="sys/syscall.h" alt="" coords="268,160,367,189"/><area shape="rect" id="node5" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="111,315,199,344"/><area shape="rect" id="node9" href="malloc_8h.html" title="malloc.h" alt="" coords="23,237,92,267"/><area shape="rect" id="node7" href="stdbool_8h.html" title="stdbool.h" alt="" coords="118,392,192,421"/><area shape="rect" id="node17" href="stat_8h.html" title="sys/stat.h" alt="" coords="167,160,244,189"/><area shape="rect" id="node20" href="time_8h.html" title="time.h" alt="" coords="218,237,274,267"/></map>
+<area shape="rect" id="node3" href="stdlib_8h.html" title="stdlib.h" alt="" coords="5,160,67,189"/><area shape="rect" id="node12" href="fcntl_8h.html" title="File control operations." alt="" coords="73,83,127,112"/><area shape="rect" id="node14" href="unistd_8h.html" title="unistd.h" alt="" coords="151,83,217,112"/><area shape="rect" id="node23" href="syscall_8h.html" title="sys/syscall.h" alt="" coords="241,83,340,112"/><area shape="rect" id="node5" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="100,315,188,344"/><area shape="rect" id="node9" href="malloc_8h.html" title="malloc.h" alt="" coords="37,237,107,267"/><area shape="rect" id="node7" href="stdbool_8h.html" title="stdbool.h" alt="" coords="107,392,181,421"/><area shape="rect" id="node17" href="stat_8h.html" title="sys/stat.h" alt="" coords="181,160,259,189"/><area shape="rect" id="node20" href="time_8h.html" title="time.h" alt="" coords="232,237,288,267"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adcb60598073f6f9cbb0091ef6768fa5c"></a><!-- doxytag: member="fcntl.c::open" ref="adcb60598073f6f9cbb0091ef6768fa5c" args="(const char *pathname, int flags)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>open</b> (const char *pathname, int flags)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae68e7e3d0b126184d5d00e78e94305fb"></a><!-- doxytag: member="fcntl.c::close" ref="ae68e7e3d0b126184d5d00e78e94305fb" args="(int id)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> (int id)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5752d6571b615f1b7b1b0f719c2bc69d"></a><!-- doxytag: member="fcntl.c::fcntl" ref="a5752d6571b615f1b7b1b0f719c2bc69d" args="(int fd, unsigned int request, void *data)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>fcntl</b> (int fd, unsigned int request, void *data)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fcntl_8c.html#adcb60598073f6f9cbb0091ef6768fa5c">open</a> (const char *pathname, int flags)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fcntl_8c.html#ae68e7e3d0b126184d5d00e78e94305fb">close</a> (int id)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fcntl_8c.html#a5752d6571b615f1b7b1b0f719c2bc69d">fcntl</a> (int fd, unsigned int request, void *data)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -115,7 +112,157 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-</div></div><!-- contents -->
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ae68e7e3d0b126184d5d00e78e94305fb"></a><!-- doxytag: member="fcntl.c::close" ref="ae68e7e3d0b126184d5d00e78e94305fb" args="(int id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="fcntl_8h.html#ae68e7e3d0b126184d5d00e78e94305fb">close</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Ferme un fichier ouvert.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>descripteur du fichier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fcntl_8c_ae68e7e3d0b126184d5d00e78e94305fb_cgraph.png" border="0" usemap="#fcntl_8c_ae68e7e3d0b126184d5d00e78e94305fb_cgraph" alt=""/></div>
+<map name="fcntl_8c_ae68e7e3d0b126184d5d00e78e94305fb_cgraph" id="fcntl_8c_ae68e7e3d0b126184d5d00e78e94305fb_cgraph">
+<area shape="rect" id="node3" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="111,5,172,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fcntl_8c_ae68e7e3d0b126184d5d00e78e94305fb_icgraph.png" border="0" usemap="#fcntl_8c_ae68e7e3d0b126184d5d00e78e94305fb_icgraph" alt=""/></div>
+<map name="fcntl_8c_ae68e7e3d0b126184d5d00e78e94305fb_icgraph" id="fcntl_8c_ae68e7e3d0b126184d5d00e78e94305fb_icgraph">
+<area shape="rect" id="node3" href="dirent_8h.html#aaeac2b41e8c2c3a5f91c9bd511a8c0a6" title="closedir" alt="" coords="111,5,180,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5752d6571b615f1b7b1b0f719c2bc69d"></a><!-- doxytag: member="fcntl.c::fcntl" ref="a5752d6571b615f1b7b1b0f719c2bc69d" args="(int fd, unsigned int request, void *data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="fcntl_8h.html#a5752d6571b615f1b7b1b0f719c2bc69d">fcntl</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Manipulation d'un descripteur de fichier.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fd</td><td>descripteur du fichier. </td></tr>
+    <tr><td class="paramname">request</td><td>action à faire. </td></tr>
+    <tr><td class="paramname">data</td><td>les arguments nécessaires à l'action.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>valeur en fonction de l'action. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fcntl_8c_a5752d6571b615f1b7b1b0f719c2bc69d_cgraph.png" border="0" usemap="#fcntl_8c_a5752d6571b615f1b7b1b0f719c2bc69d_cgraph" alt=""/></div>
+<map name="fcntl_8c_a5752d6571b615f1b7b1b0f719c2bc69d_cgraph" id="fcntl_8c_a5752d6571b615f1b7b1b0f719c2bc69d_cgraph">
+<area shape="rect" id="node3" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="100,5,161,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="adcb60598073f6f9cbb0091ef6768fa5c"></a><!-- doxytag: member="fcntl.c::open" ref="adcb60598073f6f9cbb0091ef6768fa5c" args="(const char *pathname, int flags)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="fcntl_8h.html#adcb60598073f6f9cbb0091ef6768fa5c">open</a> </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pathname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Ouvrir un fichier ou un périphérique.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pathname</td><td>Chemin du fichier. </td></tr>
+    <tr><td class="paramname">flags</td><td>Flags pour indiquer le mode d'ouverture.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>l'id du file descriptor. -1 en cas d'erreur. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fcntl_8c_adcb60598073f6f9cbb0091ef6768fa5c_cgraph.png" border="0" usemap="#fcntl_8c_adcb60598073f6f9cbb0091ef6768fa5c_cgraph" alt=""/></div>
+<map name="fcntl_8c_adcb60598073f6f9cbb0091ef6768fa5c_cgraph" id="fcntl_8c_adcb60598073f6f9cbb0091ef6768fa5c_cgraph">
+<area shape="rect" id="node3" href="unistd_8h.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="108,32,236,61"/><area shape="rect" id="node9" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="141,85,203,115"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="288,5,341,35"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="287,59,343,88"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fcntl_8c_adcb60598073f6f9cbb0091ef6768fa5c_icgraph.png" border="0" usemap="#fcntl_8c_adcb60598073f6f9cbb0091ef6768fa5c_icgraph" alt=""/></div>
+<map name="fcntl_8c_adcb60598073f6f9cbb0091ef6768fa5c_icgraph" id="fcntl_8c_adcb60598073f6f9cbb0091ef6768fa5c_icgraph">
+<area shape="rect" id="node3" href="dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591" title="opendir" alt="" coords="107,5,173,35"/><area shape="rect" id="node7" href="elf_8c.html#af969175b11017f629b1dfbf557fccbcc" title="Affiche des information sur le fichier elf." alt="" coords="108,59,172,88"/><area shape="rect" id="node5" href="unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="221,5,272,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -133,7 +280,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

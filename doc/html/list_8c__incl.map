@@ -1,9 +1,7 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$list_8h.html" title="list.h" alt="" coords="5,83,53,112"/>
-<area shape="rect" id="node7" href="$string_8h.html" title="string.h" alt="" coords="179,83,243,112"/>
-<area shape="rect" id="node13" href="$kmalloc_8h.html" title="kmalloc.h" alt="" coords="77,83,155,112"/>
-<area shape="rect" id="node16" href="$kstdio_8h.html" title="kstdio.h" alt="" coords="267,83,333,112"/>
-<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="37,160,101,189"/>
-<area shape="rect" id="node9" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="167,160,255,189"/>
-<area shape="rect" id="node11" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="173,237,248,267"/>
+<area shape="rect" id="node7" href="$kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="179,83,272,112"/>
+<area shape="rect" id="node11" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="77,83,155,112"/>
+<area shape="rect" id="node14" href="$kstdio_8h.html" title="kprintf" alt="" coords="296,83,363,112"/>
+<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="40,160,104,189"/>
 </map>

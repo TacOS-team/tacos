@@ -91,7 +91,7 @@ Graphe des dépendances par inclusion de kstdio.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="kstdio_8c__incl.png" border="0" usemap="#kernel_2kstdio_8c" alt=""/></div>
 <map name="kernel_2kstdio_8c" id="kernel_2kstdio_8c">
-<area shape="rect" id="node3" href="kfcntl_8h.html" title="kfcntl.h" alt="" coords="572,160,634,189"/><area shape="rect" id="node29" href="tty_8h.html" title="tty.h" alt="" coords="859,237,904,267"/><area shape="rect" id="node35" href="vfs_8h.html" title="vfs.h" alt="" coords="328,83,376,112"/><area shape="rect" id="node46" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="716,83,794,112"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="163,392,227,421"/><area shape="rect" id="node7" href="fd__types_8h.html" title="fd_types.h" alt="" coords="750,315,832,344"/><area shape="rect" id="node9" href="kprocess_8h.html" title="kprocess.h" alt="" coords="396,237,482,267"/><area shape="rect" id="node11" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="78,315,158,344"/><area shape="rect" id="node15" href="signal__types_8h.html" title="signal_types.h" alt="" coords="318,315,424,344"/><area shape="rect" id="node17" href="process__types_8h.html" title="process_types.h" alt="" coords="448,315,566,344"/><area shape="rect" id="node19" href="symtable_8h.html" title="symtable.h" alt="" coords="640,315,726,344"/><area shape="rect" id="node25" href="vmm_8h.html" title="vmm.h" alt="" coords="232,315,294,344"/><area shape="rect" id="node22" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="660,392,706,421"/><area shape="rect" id="node32" href="termios_8h.html" title="termios.h" alt="" coords="907,315,982,344"/><area shape="rect" id="node39" href="kstat_8h.html" title="kstat.h" alt="" coords="59,160,118,189"/><area shape="rect" id="node42" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="56,237,120,267"/></map>
+<area shape="rect" id="node3" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="572,160,634,189"/><area shape="rect" id="node29" href="tty_8h.html" title="Terminal posix&#45;like." alt="" coords="859,237,904,267"/><area shape="rect" id="node35" href="vfs_8h.html" title="Virtual File System." alt="" coords="328,83,376,112"/><area shape="rect" id="node46" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="716,83,794,112"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="163,392,227,421"/><area shape="rect" id="node7" href="fd__types_8h.html" title="fd_types.h" alt="" coords="750,315,832,344"/><area shape="rect" id="node9" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="396,237,482,267"/><area shape="rect" id="node11" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="78,315,158,344"/><area shape="rect" id="node15" href="signal__types_8h.html" title="signal_types.h" alt="" coords="318,315,424,344"/><area shape="rect" id="node17" href="process__types_8h.html" title="process_types.h" alt="" coords="448,315,566,344"/><area shape="rect" id="node19" href="symtable_8h.html" title="symtable.h" alt="" coords="640,315,726,344"/><area shape="rect" id="node25" href="vmm_8h.html" title="vmm.h" alt="" coords="232,315,294,344"/><area shape="rect" id="node22" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="660,392,706,421"/><area shape="rect" id="node32" href="termios__types_8h.html" title="termios_types.h" alt="" coords="907,315,1022,344"/><area shape="rect" id="node39" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="59,160,118,189"/><area shape="rect" id="node42" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="56,237,120,267"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="define-members"></a>
@@ -167,6 +167,24 @@ vsnprintf</dd></dl>
   </dd>
 </dl>
 
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kstdio_8c_a139d07e37f4cb84769b3c892f58696be_cgraph.png" border="0" usemap="#kstdio_8c_a139d07e37f4cb84769b3c892f58696be_cgraph" alt=""/></div>
+<map name="kstdio_8c_a139d07e37f4cb84769b3c892f58696be_cgraph" id="kstdio_8c_a139d07e37f4cb84769b3c892f58696be_cgraph">
+<area shape="rect" id="node3" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="111,72,185,101"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="245,12,312,41"/><area shape="rect" id="node9" href="vfs_8h.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier." alt="" coords="235,72,323,101"/><area shape="rect" id="node15" href="vfs_8h.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="240,139,317,168"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="372,5,513,35"/><area shape="rect" id="node11" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="416,59,469,88"/><area shape="rect" id="node13" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="415,112,471,141"/><area shape="rect" id="node17" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="417,165,468,195"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kstdio_8c_a139d07e37f4cb84769b3c892f58696be_icgraph.png" border="0" usemap="#kstdio_8c_a139d07e37f4cb84769b3c892f58696be_icgraph" alt=""/></div>
+<map name="kstdio_8c_a139d07e37f4cb84769b3c892f58696be_icgraph" id="kstdio_8c_a139d07e37f4cb84769b3c892f58696be_icgraph">
+<area shape="rect" id="node3" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="109,5,179,35"/></map>
+</div>
+</p>
+
 </div>
 </div>
 </div><!-- contents -->
@@ -187,7 +205,7 @@ vsnprintf</dd></dl>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

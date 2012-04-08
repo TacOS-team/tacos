@@ -87,7 +87,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="textblock"><code>#include &lt;<a class="el" href="dirent_8h_source.html">dirent.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="fcntl_8h_source.html">fcntl.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="stdlib_8h_source.html">stdlib.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="string_8h_source.html">string.h</a>&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
 <code>#include &lt;<a class="el" href="syscall_8h_source.html">sys/syscall.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="unistd_8h_source.html">unistd.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="stdio_8h_source.html">stdio.h</a>&gt;</code><br/>
@@ -96,19 +96,15 @@ Graphe des dépendances par inclusion de dirent.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="dirent_8c__incl.png" border="0" usemap="#libc_2dirent_8c" alt=""/></div>
 <map name="libc_2dirent_8c" id="libc_2dirent_8c">
-<area shape="rect" id="node3" href="dirent_8h.html" title="dirent.h" alt="" coords="308,83,372,112"/><area shape="rect" id="node15" href="fcntl_8h.html" title="fcntl.h" alt="" coords="89,83,143,112"/><area shape="rect" id="node17" href="stdlib_8h.html" title="stdlib.h" alt="" coords="21,160,83,189"/><area shape="rect" id="node23" href="string_8h.html" title="string.h" alt="" coords="112,160,176,189"/><area shape="rect" id="node26" href="syscall_8h.html" title="sys/syscall.h" alt="" coords="396,83,495,112"/><area shape="rect" id="node29" href="unistd_8h.html" title="unistd.h" alt="" coords="217,83,284,112"/><area shape="rect" id="node33" href="stdio_8h.html" title="stdio.h" alt="" coords="528,160,589,189"/><area shape="rect" id="node5" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="267,315,355,344"/><area shape="rect" id="node9" href="stat_8h.html" title="sys/stat.h" alt="" coords="265,160,343,189"/><area shape="rect" id="node7" href="stdbool_8h.html" title="stdbool.h" alt="" coords="273,392,348,421"/><area shape="rect" id="node12" href="time_8h.html" title="time.h" alt="" coords="251,237,307,267"/><area shape="rect" id="node20" href="malloc_8h.html" title="malloc.h" alt="" coords="5,237,75,267"/><area shape="rect" id="node35" href="libio_8h.html" title="libio.h" alt="" coords="627,237,683,267"/><area shape="rect" id="node39" href="stdarg_8h.html" title="stdarg.h" alt="" coords="533,237,603,267"/></map>
+<area shape="rect" id="node3" href="dirent_8h.html" title="Définition de DIR et struct dirent." alt="" coords="403,83,467,112"/><area shape="rect" id="node15" href="fcntl_8h.html" title="File control operations." alt="" coords="24,83,78,112"/><area shape="rect" id="node17" href="stdlib_8h.html" title="stdlib.h" alt="" coords="18,160,79,189"/><area shape="rect" id="node25" href="syscall_8h.html" title="sys/syscall.h" alt="" coords="280,83,379,112"/><area shape="rect" id="node27" href="unistd_8h.html" title="unistd.h" alt="" coords="102,83,168,112"/><area shape="rect" id="node31" href="stdio_8h.html" title="stdio.h" alt="" coords="455,160,516,189"/><area shape="rect" id="node5" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="224,315,312,344"/><area shape="rect" id="node9" href="stat_8h.html" title="sys/stat.h" alt="" coords="223,160,300,189"/><area shape="rect" id="node7" href="stdbool_8h.html" title="stdbool.h" alt="" coords="231,392,306,421"/><area shape="rect" id="node12" href="time_8h.html" title="time.h" alt="" coords="208,237,264,267"/><area shape="rect" id="node20" href="malloc_8h.html" title="malloc.h" alt="" coords="14,237,83,267"/><area shape="rect" id="node33" href="libio_8h.html" title="libio.h" alt="" coords="440,237,496,267"/><area shape="rect" id="node37" href="stdarg_8h.html" title="stdarg.h" alt="" coords="520,237,590,267"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee98bbe743c2d14dbaa67f01c3fb9ed5"></a><!-- doxytag: member="dirent.c::mkdir" ref="aee98bbe743c2d14dbaa67f01c3fb9ed5" args="(const char *pathname, mode_t mode)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>mkdir</b> (const char *pathname, mode_t <a class="el" href="structmode.html">mode</a>)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad09dd96447776d2bc5d8321e4b499591"></a><!-- doxytag: member="dirent.c::opendir" ref="ad09dd96447776d2bc5d8321e4b499591" args="(const char *dirname)" -->
-<a class="el" href="struct__DIR.html">DIR</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>opendir</b> (const char *dirname)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58257faf8b13b3f14558613c632b2373"></a><!-- doxytag: member="dirent.c::readdir" ref="a58257faf8b13b3f14558613c632b2373" args="(DIR *dirp)" -->
-struct <a class="el" href="structdirent.html">dirent</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>readdir</b> (<a class="el" href="struct__DIR.html">DIR</a> *dirp)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaeac2b41e8c2c3a5f91c9bd511a8c0a6"></a><!-- doxytag: member="dirent.c::closedir" ref="aaeac2b41e8c2c3a5f91c9bd511a8c0a6" args="(DIR *dirp)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>closedir</b> (<a class="el" href="struct__DIR.html">DIR</a> *dirp)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dirent_8c.html#aee98bbe743c2d14dbaa67f01c3fb9ed5">mkdir</a> (const char *pathname, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="dirent_8h.html#a9e986c0f8d94ffe9983a6eabb17cbb9a">DIR</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dirent_8c.html#ad09dd96447776d2bc5d8321e4b499591">opendir</a> (const char *dirname)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdirent.html">dirent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dirent_8c.html#a58257faf8b13b3f14558613c632b2373">readdir</a> (<a class="el" href="dirent_8h.html#a9e986c0f8d94ffe9983a6eabb17cbb9a">DIR</a> *dirp)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dirent_8c.html#aaeac2b41e8c2c3a5f91c9bd511a8c0a6">closedir</a> (<a class="el" href="dirent_8h.html#a9e986c0f8d94ffe9983a6eabb17cbb9a">DIR</a> *dirp)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -120,7 +116,164 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-</div></div><!-- contents -->
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="aaeac2b41e8c2c3a5f91c9bd511a8c0a6"></a><!-- doxytag: member="dirent.c::closedir" ref="aaeac2b41e8c2c3a5f91c9bd511a8c0a6" args="(DIR *dirp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="dirent_8h.html#aaeac2b41e8c2c3a5f91c9bd511a8c0a6">closedir</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="dirent_8h.html#a9e986c0f8d94ffe9983a6eabb17cbb9a">DIR</a> *&#160;</td>
+          <td class="paramname"><em>dirp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Fermeture d'un dossier ouvert.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dirp</td><td>La structure DIR initialisée par opendir.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="dirent_8c_aaeac2b41e8c2c3a5f91c9bd511a8c0a6_cgraph.png" border="0" usemap="#dirent_8c_aaeac2b41e8c2c3a5f91c9bd511a8c0a6_cgraph" alt=""/></div>
+<map name="dirent_8c_aaeac2b41e8c2c3a5f91c9bd511a8c0a6_cgraph" id="dirent_8c_aaeac2b41e8c2c3a5f91c9bd511a8c0a6_cgraph">
+<area shape="rect" id="node3" href="fcntl_8c.html#ae68e7e3d0b126184d5d00e78e94305fb" title="close" alt="" coords="127,5,180,35"/><area shape="rect" id="node5" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="231,5,292,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aee98bbe743c2d14dbaa67f01c3fb9ed5"></a><!-- doxytag: member="dirent.c::mkdir" ref="aee98bbe743c2d14dbaa67f01c3fb9ed5" args="(const char *pathname, mode_t mode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="dirent_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5">mkdir</a> </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pathname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Crée un nouveau répertoire.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pathname</td><td>Le chemin du dossier à créer. </td></tr>
+    <tr><td class="paramname">mode</td><td>Les droits d'accès.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="dirent_8c_aee98bbe743c2d14dbaa67f01c3fb9ed5_cgraph.png" border="0" usemap="#dirent_8c_aee98bbe743c2d14dbaa67f01c3fb9ed5_cgraph" alt=""/></div>
+<map name="dirent_8c_aee98bbe743c2d14dbaa67f01c3fb9ed5_cgraph" id="dirent_8c_aee98bbe743c2d14dbaa67f01c3fb9ed5_cgraph">
+<area shape="rect" id="node3" href="unistd_8h.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="111,32,239,61"/><area shape="rect" id="node9" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="144,85,205,115"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="291,5,344,35"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="289,59,345,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ad09dd96447776d2bc5d8321e4b499591"></a><!-- doxytag: member="dirent.c::opendir" ref="ad09dd96447776d2bc5d8321e4b499591" args="(const char *dirname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="dirent_8h.html#a9e986c0f8d94ffe9983a6eabb17cbb9a">DIR</a>* <a class="el" href="dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591">opendir</a> </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>dirname</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Ouvre un dossier pour lister les fichiers à l'intérieur.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dirname</td><td>Le chemin du dossier à ouvrir.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>Une structure DIR permettant de lire le contenu du dossier. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="dirent_8c_ad09dd96447776d2bc5d8321e4b499591_cgraph.png" border="0" usemap="#dirent_8c_ad09dd96447776d2bc5d8321e4b499591_cgraph" alt=""/></div>
+<map name="dirent_8c_ad09dd96447776d2bc5d8321e4b499591_cgraph" id="dirent_8c_ad09dd96447776d2bc5d8321e4b499591_cgraph">
+<area shape="rect" id="node3" href="unistd_8h.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="223,32,351,61"/><area shape="rect" id="node9" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="256,97,317,127"/><area shape="rect" id="node11" href="fcntl_8c.html#adcb60598073f6f9cbb0091ef6768fa5c" title="open" alt="" coords="121,71,172,100"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="403,5,456,35"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="401,59,457,88"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="dirent_8c_ad09dd96447776d2bc5d8321e4b499591_icgraph.png" border="0" usemap="#dirent_8c_ad09dd96447776d2bc5d8321e4b499591_icgraph" alt=""/></div>
+<map name="dirent_8c_ad09dd96447776d2bc5d8321e4b499591_icgraph" id="dirent_8c_ad09dd96447776d2bc5d8321e4b499591_icgraph">
+<area shape="rect" id="node3" href="unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="120,5,171,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a58257faf8b13b3f14558613c632b2373"></a><!-- doxytag: member="dirent.c::readdir" ref="a58257faf8b13b3f14558613c632b2373" args="(DIR *dirp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structdirent.html">dirent</a>* <a class="el" href="dirent_8h.html#a58257faf8b13b3f14558613c632b2373">readdir</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="dirent_8h.html#a9e986c0f8d94ffe9983a6eabb17cbb9a">DIR</a> *&#160;</td>
+          <td class="paramname"><em>dirp</em></td><td>)</td>
+          <td><code> [read]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Lecture de la prochaine entrée du dossier.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dirp</td><td>La structure DIR initialisée par opendir.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>Un directory entry. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="dirent_8c_a58257faf8b13b3f14558613c632b2373_cgraph.png" border="0" usemap="#dirent_8c_a58257faf8b13b3f14558613c632b2373_cgraph" alt=""/></div>
+<map name="dirent_8c_a58257faf8b13b3f14558613c632b2373_cgraph" id="dirent_8c_a58257faf8b13b3f14558613c632b2373_cgraph">
+<area shape="rect" id="node3" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="119,5,180,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -138,7 +291,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

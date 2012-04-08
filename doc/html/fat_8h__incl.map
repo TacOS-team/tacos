@@ -1,7 +1,7 @@
 <map id="G" name="G">
 <area shape="rect" id="node5" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="48,160,131,189"/>
-<area shape="rect" id="node7" href="$kstat_8h.html" title="kstat.h" alt="" coords="211,160,269,189"/>
-<area shape="rect" id="node17" href="$vfs_8h.html" title="vfs.h" alt="" coords="144,83,192,112"/>
+<area shape="rect" id="node7" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="211,160,269,189"/>
+<area shape="rect" id="node17" href="$vfs_8h.html" title="Virtual File System." alt="" coords="144,83,192,112"/>
 <area shape="rect" id="node9" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="252,392,316,421"/>
 <area shape="rect" id="node11" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="213,237,277,267"/>
 <area shape="rect" id="node14" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="205,315,285,344"/>

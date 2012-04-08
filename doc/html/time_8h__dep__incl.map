@@ -1,7 +1,7 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$stat_8h.html" title="libc/include/sys/stat.h" alt="" coords="917,83,1064,112"/>
 <area shape="rect" id="node36" href="$time_8c.html" title="libc/time.c" alt="" coords="1824,237,1904,267"/>
-<area shape="rect" id="node5" href="$dirent_8h.html" title="libc/include/dirent.h" alt="" coords="96,160,232,189"/>
+<area shape="rect" id="node5" href="$dirent_8h.html" title="Définition de DIR et struct dirent." alt="" coords="96,160,232,189"/>
 <area shape="rect" id="node11" href="$unistd_8h.html" title="libc/include/unistd.h" alt="" coords="921,160,1060,189"/>
 <area shape="rect" id="node7" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="120,237,208,267"/>
 <area shape="rect" id="node9" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="5,237,96,267"/>

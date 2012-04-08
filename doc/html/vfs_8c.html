@@ -83,19 +83,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier kernel/vfs.c</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Virtual File System. Gestion des points de montage.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="devfs_8h_source.html">fs/devfs.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="fat_8h_source.html">fs/fat.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="kdirent_8h_source.html">kdirent.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="kfcntl_8h_source.html">kfcntl.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="vfs_8h_source.html">vfs.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="string_8h_source.html">string.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kernel_2include_2klibc_2string_8h_source.html">klibc/string.h</a>&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de vfs.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="vfs_8c__incl.png" border="0" usemap="#kernel_2vfs_8c" alt=""/></div>
 <map name="kernel_2vfs_8c" id="kernel_2vfs_8c">
-<area shape="rect" id="node3" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="207,83,284,112"/><area shape="rect" id="node9" href="fat_8h.html" title="fs/fat.h" alt="" coords="521,83,580,112"/><area shape="rect" id="node23" href="vfs_8h.html" title="vfs.h" alt="" coords="705,160,753,189"/><area shape="rect" id="node28" href="kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="795,160,867,189"/><area shape="rect" id="node33" href="kfcntl_8h.html" title="kfcntl.h" alt="" coords="577,237,639,267"/><area shape="rect" id="node55" href="kmalloc_8h.html" title="kmalloc.h" alt="" coords="987,315,1064,344"/><area shape="rect" id="node59" href="string_8h.html" title="string.h" alt="" coords="1043,83,1107,112"/><area shape="rect" id="node7" href="fd__types_8h.html" title="fd_types.h" alt="" coords="5,392,88,421"/><area shape="rect" id="node13" href="kstat_8h.html" title="kstat.h" alt="" coords="700,237,759,267"/><area shape="rect" id="node15" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="727,469,791,499"/><area shape="rect" id="node17" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="696,315,760,344"/><area shape="rect" id="node20" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="680,392,760,421"/><area shape="rect" id="node37" href="kprocess_8h.html" title="kprocess.h" alt="" coords="453,315,539,344"/><area shape="rect" id="node41" href="signal__types_8h.html" title="signal_types.h" alt="" coords="307,392,413,421"/><area shape="rect" id="node43" href="process__types_8h.html" title="process_types.h" alt="" coords="437,392,555,421"/><area shape="rect" id="node45" href="symtable_8h.html" title="symtable.h" alt="" coords="112,392,197,421"/><area shape="rect" id="node51" href="vmm_8h.html" title="vmm.h" alt="" coords="221,392,283,421"/><area shape="rect" id="node48" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="132,469,177,499"/><area shape="rect" id="node61" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="1037,160,1125,189"/><area shape="rect" id="node63" href="stdbool_8h.html" title="stdbool.h" alt="" coords="1044,237,1119,267"/></map>
+<area shape="rect" id="node3" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="441,83,519,112"/><area shape="rect" id="node9" href="fat_8h.html" title="fs/fat.h" alt="" coords="660,83,719,112"/><area shape="rect" id="node23" href="vfs_8h.html" title="Virtual File System." alt="" coords="661,160,709,189"/><area shape="rect" id="node28" href="kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="784,160,856,189"/><area shape="rect" id="node33" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="373,237,435,267"/><area shape="rect" id="node55" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="968,237,1045,267"/><area shape="rect" id="node59" href="kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="543,83,636,112"/><area shape="rect" id="node7" href="fd__types_8h.html" title="fd_types.h" alt="" coords="555,392,637,421"/><area shape="rect" id="node13" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="720,237,779,267"/><area shape="rect" id="node15" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="681,469,745,499"/><area shape="rect" id="node17" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="779,315,843,344"/><area shape="rect" id="node20" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="712,392,792,421"/><area shape="rect" id="node37" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="293,315,379,344"/><area shape="rect" id="node41" href="signal__types_8h.html" title="signal_types.h" alt="" coords="147,392,253,421"/><area shape="rect" id="node43" href="process__types_8h.html" title="process_types.h" alt="" coords="277,392,395,421"/><area shape="rect" id="node45" href="symtable_8h.html" title="symtable.h" alt="" coords="37,392,123,421"/><area shape="rect" id="node51" href="vmm_8h.html" title="vmm.h" alt="" coords="419,392,480,421"/><area shape="rect" id="node48" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="57,469,103,499"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
@@ -104,35 +107,33 @@ Structures de données</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__mounted__fs__t.html">_mounted_fs_t</a></td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e535233f88552b377b2f1523c182acc"></a><!-- doxytag: member="vfs.c::available_fs_t" ref="a2e535233f88552b377b2f1523c182acc" args="" -->
-typedef struct <a class="el" href="struct__available__fs__t.html">_available_fs_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>available_fs_t</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab4e925860df7937f38b15433bb05225a"></a><!-- doxytag: member="vfs.c::mounted_fs_t" ref="ab4e925860df7937f38b15433bb05225a" args="" -->
-typedef struct <a class="el" href="struct__mounted__fs__t.html">_mounted_fs_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>mounted_fs_t</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__available__fs__t.html">_available_fs_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a2e535233f88552b377b2f1523c182acc">available_fs_t</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__mounted__fs__t.html">_mounted_fs_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#ab4e925860df7937f38b15433bb05225a">mounted_fs_t</a></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab2237a3610010d8a211ef3d55a521dba"></a><!-- doxytag: member="vfs.c::vfs_register_fs" ref="ab2237a3610010d8a211ef3d55a521dba" args="(file_system_t *fs)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#ab2237a3610010d8a211ef3d55a521dba">vfs_register_fs</a> (<a class="el" href="structfile__system__t.html">file_system_t</a> *fs)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistrer un FS dans le VFS pour le rendre disponible. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b293d0cca90e9f633dc69cc5900c430"></a><!-- doxytag: member="vfs.c::vfs_open" ref="a7b293d0cca90e9f633dc69cc5900c430" args="(const char *pathname, uint32_t flags)" -->
-<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_open</b> (const char *pathname, uint32_t flags)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0c805d30412c7b434adf437a404ce6a"></a><!-- doxytag: member="vfs.c::vfs_close" ref="ab0c805d30412c7b434adf437a404ce6a" args="(open_file_descriptor *ofd)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_close</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a26aa39a32af0bfccaffdbcec89c0a00e"></a><!-- doxytag: member="vfs.c::vfs_mount" ref="a26aa39a32af0bfccaffdbcec89c0a00e" args="(const char *device, const char *mountpoint, const char *type)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_mount</b> (const char *device, const char *mountpoint, const char *type)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69a4424755e56bad13f341c1600db527"></a><!-- doxytag: member="vfs.c::vfs_umount" ref="a69a4424755e56bad13f341c1600db527" args="(const char *mountpoint)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_umount</b> (const char *mountpoint)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66f99a282d420f307e37ea72d7e3fa71"></a><!-- doxytag: member="vfs.c::vfs_stat" ref="a66f99a282d420f307e37ea72d7e3fa71" args="(const char *pathname, struct stat *buf)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_stat</b> (const char *pathname, struct <a class="el" href="structstat.html">stat</a> *buf)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f8b6a1f2b0e6012446196f18b33d686"></a><!-- doxytag: member="vfs.c::vfs_unlink" ref="a4f8b6a1f2b0e6012446196f18b33d686" args="(const char *pathname)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_unlink</b> (const char *pathname)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f5dc4e5e4a2aa5d7649790256f11685"></a><!-- doxytag: member="vfs.c::vfs_rmdir" ref="a8f5dc4e5e4a2aa5d7649790256f11685" args="(const char *pathname)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_rmdir</b> (const char *pathname)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54142c2a2009cc49e3b3b8c12d955b04"></a><!-- doxytag: member="vfs.c::vfs_mknod" ref="a54142c2a2009cc49e3b3b8c12d955b04" args="(const char *pathname, mode_t mode, dev_t dev)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_mknod</b> (const char *pathname, mode_t <a class="el" href="structmode.html">mode</a>, dev_t dev)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a392f80d5c4ab48178abcd268c3f64c45"></a><!-- doxytag: member="vfs.c::vfs_mkdir" ref="a392f80d5c4ab48178abcd268c3f64c45" args="(const char *pathname, mode_t mode)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_mkdir</b> (const char *pathname, mode_t <a class="el" href="structmode.html">mode</a>)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a631bdc2a44ac1b7477782b058277a8d3"></a><!-- doxytag: member="vfs.c::vfs_readdir" ref="a631bdc2a44ac1b7477782b058277a8d3" args="(open_file_descriptor *ofd, char *entries, size_t size)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>vfs_readdir</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, char *entries, size_t size)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a7b293d0cca90e9f633dc69cc5900c430">vfs_open</a> (const char *pathname, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouverture d'un fichier.  <a href="#a7b293d0cca90e9f633dc69cc5900c430"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#ab0c805d30412c7b434adf437a404ce6a">vfs_close</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fermeture d'un fichier ouvert.  <a href="#ab0c805d30412c7b434adf437a404ce6a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e">vfs_mount</a> (const char *device, const char *mountpoint, const char *type)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Montage d'un device sur un certain point de montage.  <a href="#a26aa39a32af0bfccaffdbcec89c0a00e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a69a4424755e56bad13f341c1600db527">vfs_umount</a> (const char *mountpoint)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Démonte un point de montage.  <a href="#a69a4424755e56bad13f341c1600db527"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a66f99a282d420f307e37ea72d7e3fa71">vfs_stat</a> (const char *pathname, struct <a class="el" href="structstat.html">stat</a> *buf)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtient des infos sur un noeud.  <a href="#a66f99a282d420f307e37ea72d7e3fa71"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a4f8b6a1f2b0e6012446196f18b33d686">vfs_unlink</a> (const char *pathname)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Suppression d'un noeud.  <a href="#a4f8b6a1f2b0e6012446196f18b33d686"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a8f5dc4e5e4a2aa5d7649790256f11685">vfs_rmdir</a> (const char *pathname)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Suppression d'un dossier.  <a href="#a8f5dc4e5e4a2aa5d7649790256f11685"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a54142c2a2009cc49e3b3b8c12d955b04">vfs_mknod</a> (const char *pathname, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>, <a class="el" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a> dev)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Création d'un nouveau noeud.  <a href="#a54142c2a2009cc49e3b3b8c12d955b04"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a392f80d5c4ab48178abcd268c3f64c45">vfs_mkdir</a> (const char *pathname, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Création d'un dossier.  <a href="#a392f80d5c4ab48178abcd268c3f64c45"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a631bdc2a44ac1b7477782b058277a8d3">vfs_readdir</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, char *entries, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de plusieurs entrées d'un dossier.  <a href="#a631bdc2a44ac1b7477782b058277a8d3"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -144,8 +145,456 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-<p>Virtual File System. Gestion des points de montage. </p>
-</div></div><!-- contents -->
+</div><hr/><h2>Documentation des définitions de type</h2>
+<a class="anchor" id="a2e535233f88552b377b2f1523c182acc"></a><!-- doxytag: member="vfs.c::available_fs_t" ref="a2e535233f88552b377b2f1523c182acc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__available__fs__t.html">_available_fs_t</a>  <a class="el" href="vfs_8c.html#a2e535233f88552b377b2f1523c182acc">available_fs_t</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cellule d'une liste de fs disponibles. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab4e925860df7937f38b15433bb05225a"></a><!-- doxytag: member="vfs.c::mounted_fs_t" ref="ab4e925860df7937f38b15433bb05225a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__mounted__fs__t.html">_mounted_fs_t</a>  <a class="el" href="vfs_8c.html#ab4e925860df7937f38b15433bb05225a">mounted_fs_t</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cellule de la liste des points de montage. </p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ab0c805d30412c7b434adf437a404ce6a"></a><!-- doxytag: member="vfs.c::vfs_close" ref="ab0c805d30412c7b434adf437a404ce6a" args="(open_file_descriptor *ofd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="vfs_8c.html#ab0c805d30412c7b434adf437a404ce6a">vfs_close</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>du fichier ouvert.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_ab0c805d30412c7b434adf437a404ce6a_cgraph.png" border="0" usemap="#vfs_8c_ab0c805d30412c7b434adf437a404ce6a_cgraph" alt=""/></div>
+<map name="vfs_8c_ab0c805d30412c7b434adf437a404ce6a_cgraph" id="vfs_8c_ab0c805d30412c7b434adf437a404ce6a_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="135,5,185,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_ab0c805d30412c7b434adf437a404ce6a_icgraph.png" border="0" usemap="#vfs_8c_ab0c805d30412c7b434adf437a404ce6a_icgraph" alt=""/></div>
+<map name="vfs_8c_ab0c805d30412c7b434adf437a404ce6a_icgraph" id="vfs_8c_ab0c805d30412c7b434adf437a404ce6a_icgraph">
+<area shape="rect" id="node3" href="vfs_8c.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="135,85,209,115"/><area shape="rect" id="node5" href="kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="299,5,373,35"/><area shape="rect" id="node11" href="kfcntl_8c.html#aa1d225acb87c04ac8d56c8096f587a03" title="SYSCALL_HANDLER3" alt="" coords="259,59,413,88"/><area shape="rect" id="node13" href="kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="308,112,364,141"/><area shape="rect" id="node17" href="vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage." alt="" coords="295,165,377,195"/><area shape="rect" id="node7" href="kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="461,5,576,35"/><area shape="rect" id="node9" href="scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="624,5,728,35"/><area shape="rect" id="node15" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="484,112,553,141"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a392f80d5c4ab48178abcd268c3f64c45"></a><!-- doxytag: member="vfs.c::vfs_mkdir" ref="a392f80d5c4ab48178abcd268c3f64c45" args="(const char *pathname, mode_t mode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="vfs_8c.html#a392f80d5c4ab48178abcd268c3f64c45">vfs_mkdir</a> </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pathname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pathname</td><td>Chemin du dossier. </td></tr>
+    <tr><td class="paramname">mode</td><td>Droits sur le dossier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a54142c2a2009cc49e3b3b8c12d955b04"></a><!-- doxytag: member="vfs.c::vfs_mknod" ref="a54142c2a2009cc49e3b3b8c12d955b04" args="(const char *pathname, mode_t mode, dev_t dev)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="vfs_8c.html#a54142c2a2009cc49e3b3b8c12d955b04">vfs_mknod</a> </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a>&#160;</td>
+          <td class="paramname"><em>dev</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Chemin du fichier. </td></tr>
+    <tr><td class="paramname">mode</td><td>Droits et type de fichier. </td></tr>
+    <tr><td class="paramname">dev</td><td>Si c'est un fichier spécial, le device associé.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_a54142c2a2009cc49e3b3b8c12d955b04_icgraph.png" border="0" usemap="#vfs_8c_a54142c2a2009cc49e3b3b8c12d955b04_icgraph" alt=""/></div>
+<map name="vfs_8c_a54142c2a2009cc49e3b3b8c12d955b04_icgraph" id="vfs_8c_a54142c2a2009cc49e3b3b8c12d955b04_icgraph">
+<area shape="rect" id="node3" href="kunistd_8c.html#a8c6c302ef479ae5474c3aedf65ec8dbe" title="SYSCALL_HANDLER3" alt="" coords="141,5,296,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a26aa39a32af0bfccaffdbcec89c0a00e"></a><!-- doxytag: member="vfs.c::vfs_mount" ref="a26aa39a32af0bfccaffdbcec89c0a00e" args="(const char *device, const char *mountpoint, const char *type)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e">vfs_mount</a> </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>mountpoint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>à monter. </td></tr>
+    <tr><td class="paramname">mountpoint</td><td>nom du dossier. </td></tr>
+    <tr><td class="paramname">type</td><td>FS à utiliser. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_a26aa39a32af0bfccaffdbcec89c0a00e_cgraph.png" border="0" usemap="#vfs_8c_a26aa39a32af0bfccaffdbcec89c0a00e_cgraph" alt=""/></div>
+<map name="vfs_8c_a26aa39a32af0bfccaffdbcec89c0a00e_cgraph" id="vfs_8c_a26aa39a32af0bfccaffdbcec89c0a00e_cgraph">
+<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="144,5,205,35"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="272,56,339,85"/><area shape="rect" id="node9" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="443,108,496,137"/><area shape="rect" id="node11" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="137,160,212,189"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="399,55,540,84"/><area shape="rect" id="node14" href="vfs_8h.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier." alt="" coords="261,160,349,189"/><area shape="rect" id="node19" href="vfs_8h.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="267,213,344,243"/><area shape="rect" id="node17" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="441,161,497,191"/><area shape="rect" id="node21" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="444,215,495,244"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a7b293d0cca90e9f633dc69cc5900c430"></a><!-- doxytag: member="vfs.c::vfs_open" ref="a7b293d0cca90e9f633dc69cc5900c430" args="(const char *pathname, uint32_t flags)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a>* <a class="el" href="vfs_8c.html#a7b293d0cca90e9f633dc69cc5900c430">vfs_open</a> </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pathname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pathname</td><td>Chemin du fichier à ouvrir. </td></tr>
+    <tr><td class="paramname">flags</td><td>Mode d'ouverture.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>Un descripteur de fichier ouvert. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_a7b293d0cca90e9f633dc69cc5900c430_cgraph.png" border="0" usemap="#vfs_8c_a7b293d0cca90e9f633dc69cc5900c430_cgraph" alt=""/></div>
+<map name="vfs_8c_a7b293d0cca90e9f633dc69cc5900c430_cgraph" id="vfs_8c_a7b293d0cca90e9f633dc69cc5900c430_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="141,12,208,41"/><area shape="rect" id="node7" href="vfs_8h.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier." alt="" coords="131,72,219,101"/><area shape="rect" id="node13" href="vfs_8h.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="136,139,213,168"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="268,5,409,35"/><area shape="rect" id="node9" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="312,59,365,88"/><area shape="rect" id="node11" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="311,112,367,141"/><area shape="rect" id="node15" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="313,165,364,195"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_a7b293d0cca90e9f633dc69cc5900c430_icgraph.png" border="0" usemap="#vfs_8c_a7b293d0cca90e9f633dc69cc5900c430_icgraph" alt=""/></div>
+<map name="vfs_8c_a7b293d0cca90e9f633dc69cc5900c430_icgraph" id="vfs_8c_a7b293d0cca90e9f633dc69cc5900c430_icgraph">
+<area shape="rect" id="node3" href="kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="171,5,245,35"/><area shape="rect" id="node9" href="kfcntl_8c.html#aa1d225acb87c04ac8d56c8096f587a03" title="SYSCALL_HANDLER3" alt="" coords="131,59,285,88"/><area shape="rect" id="node11" href="kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="180,112,236,141"/><area shape="rect" id="node15" href="vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage." alt="" coords="167,165,249,195"/><area shape="rect" id="node5" href="kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="333,5,448,35"/><area shape="rect" id="node7" href="scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="496,5,600,35"/><area shape="rect" id="node13" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="356,112,425,141"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a631bdc2a44ac1b7477782b058277a8d3"></a><!-- doxytag: member="vfs.c::vfs_readdir" ref="a631bdc2a44ac1b7477782b058277a8d3" args="(open_file_descriptor *ofd, char *entries, size_t size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="vfs_8c.html#a631bdc2a44ac1b7477782b058277a8d3">vfs_readdir</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>entries</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>du dossier ouvert. </td></tr>
+    <tr><td class="paramname">entries</td><td>Contenu du dossier, encodé dans une chaîne de caractères. </td></tr>
+    <tr><td class="paramname">size</td><td>Taille de la chaîne entries.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_a631bdc2a44ac1b7477782b058277a8d3_cgraph.png" border="0" usemap="#vfs_8c_a631bdc2a44ac1b7477782b058277a8d3_cgraph" alt=""/></div>
+<map name="vfs_8c_a631bdc2a44ac1b7477782b058277a8d3_cgraph" id="vfs_8c_a631bdc2a44ac1b7477782b058277a8d3_cgraph">
+<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="144,5,197,35"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="143,59,199,88"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_a631bdc2a44ac1b7477782b058277a8d3_icgraph.png" border="0" usemap="#vfs_8c_a631bdc2a44ac1b7477782b058277a8d3_icgraph" alt=""/></div>
+<map name="vfs_8c_a631bdc2a44ac1b7477782b058277a8d3_icgraph" id="vfs_8c_a631bdc2a44ac1b7477782b058277a8d3_icgraph">
+<area shape="rect" id="node3" href="vfs_8c.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="143,85,217,115"/><area shape="rect" id="node5" href="kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="307,5,381,35"/><area shape="rect" id="node11" href="kfcntl_8c.html#aa1d225acb87c04ac8d56c8096f587a03" title="SYSCALL_HANDLER3" alt="" coords="267,59,421,88"/><area shape="rect" id="node13" href="kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="316,112,372,141"/><area shape="rect" id="node17" href="vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage." alt="" coords="303,165,385,195"/><area shape="rect" id="node7" href="kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="469,5,584,35"/><area shape="rect" id="node9" href="scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="632,5,736,35"/><area shape="rect" id="node15" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="492,112,561,141"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8f5dc4e5e4a2aa5d7649790256f11685"></a><!-- doxytag: member="vfs.c::vfs_rmdir" ref="a8f5dc4e5e4a2aa5d7649790256f11685" args="(const char *pathname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="vfs_8c.html#a8f5dc4e5e4a2aa5d7649790256f11685">vfs_rmdir</a> </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pathname</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pathname</td><td>Chemin du dossier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a66f99a282d420f307e37ea72d7e3fa71"></a><!-- doxytag: member="vfs.c::vfs_stat" ref="a66f99a282d420f307e37ea72d7e3fa71" args="(const char *pathname, struct stat *buf)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="vfs_8c.html#a66f99a282d420f307e37ea72d7e3fa71">vfs_stat</a> </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pathname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structstat.html">stat</a> *&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pathname</td><td>Chemin du fichier. </td></tr>
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_a66f99a282d420f307e37ea72d7e3fa71_icgraph.png" border="0" usemap="#vfs_8c_a66f99a282d420f307e37ea72d7e3fa71_icgraph" alt=""/></div>
+<map name="vfs_8c_a66f99a282d420f307e37ea72d7e3fa71_icgraph" id="vfs_8c_a66f99a282d420f307e37ea72d7e3fa71_icgraph">
+<area shape="rect" id="node3" href="kunistd_8c.html#a18585c0d8560c855f1d38405703e7eb3" title="SYSCALL_HANDLER3" alt="" coords="120,5,275,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a69a4424755e56bad13f341c1600db527"></a><!-- doxytag: member="vfs.c::vfs_umount" ref="a69a4424755e56bad13f341c1600db527" args="(const char *mountpoint)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="vfs_8c.html#a69a4424755e56bad13f341c1600db527">vfs_umount</a> </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>mountpoint</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_a69a4424755e56bad13f341c1600db527_cgraph.png" border="0" usemap="#vfs_8c_a69a4424755e56bad13f341c1600db527_cgraph" alt=""/></div>
+<map name="vfs_8c_a69a4424755e56bad13f341c1600db527_cgraph" id="vfs_8c_a69a4424755e56bad13f341c1600db527_cgraph">
+<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="144,5,205,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a4f8b6a1f2b0e6012446196f18b33d686"></a><!-- doxytag: member="vfs.c::vfs_unlink" ref="a4f8b6a1f2b0e6012446196f18b33d686" args="(const char *pathname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="vfs_8c.html#a4f8b6a1f2b0e6012446196f18b33d686">vfs_unlink</a> </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pathname</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pathname</td><td>Chemin du fichier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_a4f8b6a1f2b0e6012446196f18b33d686_icgraph.png" border="0" usemap="#vfs_8c_a4f8b6a1f2b0e6012446196f18b33d686_icgraph" alt=""/></div>
+<map name="vfs_8c_a4f8b6a1f2b0e6012446196f18b33d686_icgraph" id="vfs_8c_a4f8b6a1f2b0e6012446196f18b33d686_icgraph">
+<area shape="rect" id="node3" href="kunistd_8c.html#a99434c0e561b0e99c4ef081ae5773703" title="SYSCALL_HANDLER2" alt="" coords="133,5,288,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -163,7 +612,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

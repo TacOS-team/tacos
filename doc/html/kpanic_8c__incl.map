@@ -1,9 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$kstdio_8h.html" title="kstdio.h" alt="" coords="16,83,83,112"/>
+<area shape="rect" id="node3" href="$kstdio_8h.html" title="kprintf" alt="" coords="16,83,83,112"/>
 <area shape="rect" id="node5" href="$exception_8h.html" title="exception.h" alt="" coords="5,160,96,189"/>
 <area shape="rect" id="node9" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="120,160,205,189"/>
-<area shape="rect" id="node12" href="$kpanic_8h.html" title="kpanic.h" alt="" coords="208,83,277,112"/>
-<area shape="rect" id="node15" href="$kprocess_8h.html" title="kprocess.h" alt="" coords="415,160,500,189"/>
+<area shape="rect" id="node12" href="$kpanic_8h.html" title="Handlers des exceptions." alt="" coords="208,83,277,112"/>
+<area shape="rect" id="node15" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="415,160,500,189"/>
 <area shape="rect" id="node26" href="$symtable_8h.html" title="symtable.h" alt="" coords="891,237,976,267"/>
 <area shape="rect" id="node35" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="301,83,392,112"/>
 <area shape="rect" id="node7" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="280,315,344,344"/>

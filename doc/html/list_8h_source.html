@@ -88,28 +88,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00035"></a>00035 <span class="keyword">typedef</span> int (*cmp_func_type) (<span class="keywordtype">void</span>*, <span class="keywordtype">void</span>*);
 <a name="l00036"></a>00036 <span class="keyword">typedef</span> int (*id_func_type) (int, <span class="keywordtype">void</span>*);
 <a name="l00037"></a>00037 
-<a name="l00038"></a><a class="code" href="structlist__t.html">00038</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
-<a name="l00039"></a>00039         
-<a name="l00040"></a>00040         cmp_func_type comparator; <span class="comment">/* Fonction de comparaison des elements */</span>
-<a name="l00041"></a>00041         
-<a name="l00042"></a>00042         <span class="keywordtype">int</span> head;                               <span class="comment">/* Indice de la tête de liste */</span>
-<a name="l00043"></a>00043         <span class="keywordtype">void</span>* elements_array;   <span class="comment">/* Tableau contenant les éléments */</span>
-<a name="l00044"></a>00044         <span class="keywordtype">int</span>* link_array;                <span class="comment">/* Tableau contenant les liens entre les éléments,sers aussi à savoir si un emplacement est vide */</span>
-<a name="l00045"></a>00045         
-<a name="l00046"></a>00046         <span class="keywordtype">int</span> nb_elements;                <span class="comment">/* Nombre d&#39;éléments présents dans la liste */</span>
-<a name="l00047"></a>00047         <span class="keywordtype">size_t</span> elements_size;   <span class="comment">/* Taille du type d&#39;élement à contenir */</span>
-<a name="l00048"></a>00048         <span class="keywordtype">int</span> max_elements;               <span class="comment">/* Nombre maximum d&#39;élements dans la liste */</span>
-<a name="l00049"></a>00049 } <a class="code" href="structlist__t.html">list_t</a>;
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051 <span class="keywordtype">void</span> initList(<a class="code" href="structlist__t.html">list_t</a>* l, cmp_func_type cmp, <span class="keywordtype">size_t</span> elements_size,<span class="keywordtype">int</span> max_elements);
-<a name="l00052"></a>00052 <span class="keywordtype">void</span>* listGetTop(<a class="code" href="structlist__t.html">list_t</a> l);
-<a name="l00053"></a>00053 <span class="keywordtype">int</span> listAddElement(<a class="code" href="structlist__t.html">list_t</a>* l, <span class="keywordtype">void</span>* element);
-<a name="l00054"></a>00054 <span class="keywordtype">int</span> listRemoveTop(<a class="code" href="structlist__t.html">list_t</a>* l);
-<a name="l00055"></a>00055 <span class="keywordtype">int</span> listDelElement(<a class="code" href="structlist__t.html">list_t</a>* list, <span class="keywordtype">int</span> <span class="keywordtype">id</span>, id_func_type func);
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057 <span class="keywordtype">void</span> print_list(<a class="code" href="structlist__t.html">list_t</a> ma_liste);
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059 <span class="preprocessor">#endif //_LIST_H_</span>
+<a name="l00041"></a><a class="code" href="structlist__t.html">00041</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+<a name="l00042"></a><a class="code" href="structlist__t.html#a37b34fd423a00ddc7ad662c29fbd177e">00042</a>         cmp_func_type <a class="code" href="structlist__t.html#a37b34fd423a00ddc7ad662c29fbd177e">comparator</a>; 
+<a name="l00044"></a><a class="code" href="structlist__t.html#a0c48694d3aca4dbf169881b9df794cb6">00044</a>         <span class="keywordtype">int</span> <a class="code" href="structlist__t.html#a0c48694d3aca4dbf169881b9df794cb6">head</a>;                               
+<a name="l00045"></a><a class="code" href="structlist__t.html#a799d9396ef609198dc4dff6456a99bb9">00045</a>         <span class="keywordtype">void</span>* <a class="code" href="structlist__t.html#a799d9396ef609198dc4dff6456a99bb9">elements_array</a>;   
+<a name="l00046"></a><a class="code" href="structlist__t.html#ae66525dffaeeeda67bd46d8c90fa2863">00046</a>         <span class="keywordtype">int</span>* <a class="code" href="structlist__t.html#ae66525dffaeeeda67bd46d8c90fa2863">link_array</a>;                
+<a name="l00048"></a><a class="code" href="structlist__t.html#a21f815dfb80c00df4cc95304bc29161f">00048</a>         <span class="keywordtype">int</span> <a class="code" href="structlist__t.html#a21f815dfb80c00df4cc95304bc29161f">nb_elements</a>;                
+<a name="l00049"></a><a class="code" href="structlist__t.html#a467978ad64ca202b560905f80a93bf8a">00049</a>         <span class="keywordtype">size_t</span> <a class="code" href="structlist__t.html#a467978ad64ca202b560905f80a93bf8a">elements_size</a>;   
+<a name="l00050"></a><a class="code" href="structlist__t.html#a646f05091de2a2667b0f3c9aaffdfbdc">00050</a>         <span class="keywordtype">int</span> <a class="code" href="structlist__t.html#a646f05091de2a2667b0f3c9aaffdfbdc">max_elements</a>;               
+<a name="l00051"></a>00051 } <a class="code" href="structlist__t.html" title="Liste générique.">list_t</a>;
+<a name="l00052"></a>00052 
+<a name="l00058"></a>00058 <span class="keywordtype">void</span> <a class="code" href="list_8h.html#a8111dff4de9d78342e96563621a7da63">list_init</a>(<a class="code" href="structlist__t.html" title="Liste générique.">list_t</a>* l, cmp_func_type cmp, <span class="keywordtype">size_t</span> elements_size, <span class="keywordtype">int</span> max_elements);
+<a name="l00059"></a>00059 
+<a name="l00065"></a>00065 <span class="keywordtype">void</span>* <a class="code" href="list_8h.html#a4d06987bb22b3a5c66d2be44f6c23845">list_get_top</a>(<a class="code" href="structlist__t.html" title="Liste générique.">list_t</a> l);
+<a name="l00066"></a>00066 
+<a name="l00073"></a>00073 <span class="keywordtype">int</span> <a class="code" href="list_8h.html#a7a8bb1eb8a161ffce0167fca806e10ad">list_add_element</a>(<a class="code" href="structlist__t.html" title="Liste générique.">list_t</a>* l, <span class="keywordtype">void</span>* element);
+<a name="l00074"></a>00074 
+<a name="l00080"></a>00080 <span class="keywordtype">int</span> <a class="code" href="list_8h.html#a5ffcff1c3f7eace23a067c0051a3c8f9">list_remove_top</a>(<a class="code" href="structlist__t.html" title="Liste générique.">list_t</a>* l);
+<a name="l00081"></a>00081 
+<a name="l00087"></a>00087 <span class="keywordtype">int</span> <a class="code" href="list_8h.html#ad8dbf30907f29e3b4fc748a83d4b1784">list_del_element</a>(<a class="code" href="structlist__t.html" title="Liste générique.">list_t</a>* list, <span class="keywordtype">int</span> <span class="keywordtype">id</span>, id_func_type func);
+<a name="l00088"></a>00088 
+<a name="l00092"></a>00092 <span class="keywordtype">void</span> <a class="code" href="list_8h.html#a7b460be2c0d40f4da72af89c356ed7c1">print_list</a>(<a class="code" href="structlist__t.html" title="Liste générique.">list_t</a> ma_liste);
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 <span class="preprocessor">#endif //_LIST_H_</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -128,7 +129,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

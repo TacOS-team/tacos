@@ -1,9 +1,11 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$console_8h.html" title="drivers/console.h" alt="" coords="139,83,264,112"/>
+<area shape="rect" id="node3" href="$console_8h.html" title="Console virtuelle (Fn)" alt="" coords="139,83,264,112"/>
 <area shape="rect" id="node15" href="$video_8h.html" title="Driver console (vidéo texte)." alt="" coords="5,83,115,112"/>
-<area shape="rect" id="node18" href="$kmalloc_8h.html" title="kmalloc.h" alt="" coords="261,160,339,189"/>
-<area shape="rect" id="node7" href="$tty_8h.html" title="tty.h" alt="" coords="180,160,225,189"/>
-<area shape="rect" id="node9" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="268,237,332,267"/>
-<area shape="rect" id="node11" href="$termios_8h.html" title="termios.h" alt="" coords="63,237,137,267"/>
-<area shape="rect" id="node13" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="161,237,244,267"/>
+<area shape="rect" id="node18" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="260,160,337,189"/>
+<area shape="rect" id="node21" href="$klog_8h.html" title="Logging macros." alt="" coords="352,83,411,112"/>
+<area shape="rect" id="node7" href="$tty_8h.html" title="Terminal posix&#45;like." alt="" coords="179,160,224,189"/>
+<area shape="rect" id="node9" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="267,237,331,267"/>
+<area shape="rect" id="node11" href="$termios__types_8h.html" title="termios_types.h" alt="" coords="21,237,136,267"/>
+<area shape="rect" id="node13" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="160,237,243,267"/>
+<area shape="rect" id="node23" href="$kstdio_8h.html" title="kprintf" alt="" coords="361,160,428,189"/>
 </map>

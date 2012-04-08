@@ -2,7 +2,7 @@
 <area shape="rect" id="node3" href="$interrupts_8h.html#aecc1fa8433fa21ba233b8feb2558e954" title="Ajoute une nouvelle interruption." alt="" coords="153,5,292,35"/>
 <area shape="rect" id="node7" href="$ksyscall_8c.html#aa10969a644d213f1e778ac8c2a97fd6a" title="Point d&#39;entrée des appels systèmes C&#39;est cette fonction qui est lancée à la réception de l&#39;IRQ_SYSCAL..." alt="" coords="173,59,272,88"/>
 <area shape="rect" id="node9" href="$interrupts_8h.html#a4eea959d9a7be06d7b87a0aad03b490e" title="Change le type d&#39;une interruption en une trapgate." alt="" coords="141,112,304,141"/>
-<area shape="rect" id="node13" href="$string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné." alt="" coords="188,165,257,195"/>
+<area shape="rect" id="node13" href="$kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné." alt="" coords="188,165,257,195"/>
 <area shape="rect" id="node5" href="$idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="368,5,480,35"/>
 <area shape="rect" id="node11" href="$idt_8c.html#affa07557443fe1c9a508b346d8f06523" title="Change le type d&#39;une interruption (interrupt gate, trap gate, task gate)." alt="" coords="352,112,496,141"/>
 </map>

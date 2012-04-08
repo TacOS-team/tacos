@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node5" href="$idt_8h.html" title="Initialisation de la table des descripteurs d&#39;interruption (et exceptions) et association aux handler..." alt="" coords="93,83,139,112"/>
-<area shape="rect" id="node7" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="84,160,148,189"/>
+<area shape="rect" id="node3" href="$idt_8h.html" title="Initialisation de la table des descripteurs d&#39;interruption (et exceptions) et association aux handler..." alt="" coords="25,83,71,112"/>
+<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="16,160,80,189"/>
 </map>

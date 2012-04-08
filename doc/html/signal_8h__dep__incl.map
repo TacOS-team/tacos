@@ -1,11 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="321,83,484,112"/>
-<area shape="rect" id="node15" href="$signal_8c.html" title="libc/signal.c" alt="" coords="508,83,599,112"/>
-<area shape="rect" id="node17" href="$start_8c.html" title="libc/start.c" alt="" coords="623,83,703,112"/>
-<area shape="rect" id="node19" href="$wait_8c.html" title="libc/wait.c" alt="" coords="727,83,804,112"/>
-<area shape="rect" id="node5" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="5,160,181,189"/>
-<area shape="rect" id="node7" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="205,160,315,189"/>
-<area shape="rect" id="node9" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="339,160,467,189"/>
-<area shape="rect" id="node11" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="491,160,605,189"/>
-<area shape="rect" id="node13" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="629,160,760,189"/>
+<area shape="rect" id="node3" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="5,83,120,112"/>
+<area shape="rect" id="node5" href="$signal_8c.html" title="libc/signal.c" alt="" coords="144,83,235,112"/>
+<area shape="rect" id="node7" href="$start_8c.html" title="libc/start.c" alt="" coords="259,83,339,112"/>
+<area shape="rect" id="node9" href="$wait_8c.html" title="libc/wait.c" alt="" coords="363,83,440,112"/>
 </map>

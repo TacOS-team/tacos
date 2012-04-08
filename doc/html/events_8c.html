@@ -85,8 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Gestion d'évènements datés.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;types.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="i8254_8h_source.html">i8254.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="i8254_8h_source.html">i8254.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="interrupts_8h_source.html">interrupts.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="list_8h_source.html">list.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="events_8h_source.html">events.h</a>&gt;</code><br/>
@@ -96,13 +95,12 @@ Graphe des dépendances par inclusion de events.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="events_8c__incl.png" border="0" usemap="#kernel_2events_8c" alt=""/></div>
 <map name="kernel_2events_8c" id="kernel_2events_8c">
-<area shape="rect" id="node5" href="i8254_8h.html" title="Initialisation du i8254 (timer)." alt="" coords="52,160,113,189"/><area shape="rect" id="node9" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="115,237,200,267"/><area shape="rect" id="node12" href="list_8h.html" title="list.h" alt="" coords="195,160,243,189"/><area shape="rect" id="node15" href="events_8h.html" title="events.h" alt="" coords="245,83,317,112"/><area shape="rect" id="node23" href="debug_8h.html" title="debug.h" alt="" coords="341,83,411,112"/><area shape="rect" id="node7" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="205,315,269,344"/><area shape="rect" id="node17" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="267,160,331,189"/><area shape="rect" id="node20" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="325,237,405,267"/></map>
+<area shape="rect" id="node3" href="i8254_8h.html" title="Initialisation du i8254 (timer)." alt="" coords="5,160,67,189"/><area shape="rect" id="node7" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="68,237,153,267"/><area shape="rect" id="node10" href="list_8h.html" title="list.h" alt="" coords="148,160,196,189"/><area shape="rect" id="node13" href="events_8h.html" title="events.h" alt="" coords="204,83,276,112"/><area shape="rect" id="node21" href="debug_8h.html" title="debug.h" alt="" coords="300,83,369,112"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="159,315,223,344"/><area shape="rect" id="node15" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="220,160,284,189"/><area shape="rect" id="node18" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="279,237,359,267"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae42954bb8545d24e3e9dcde5920c9a0b"></a><!-- doxytag: member="events.c::MAX_EVENTS" ref="ae42954bb8545d24e3e9dcde5920c9a0b" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_EVENTS</b>&#160;&#160;&#160;256</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="events_8c.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>&#160;&#160;&#160;256</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a784e9765a3378794c49fe9702bcf2015"></a><!-- doxytag: member="events.c::compare_events" ref="a784e9765a3378794c49fe9702bcf2015" args="(void *a, void *b)" -->
@@ -127,7 +125,22 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-</div><hr/><h2>Documentation des fonctions</h2>
+</div><hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="ae42954bb8545d24e3e9dcde5920c9a0b"></a><!-- doxytag: member="events.c::MAX_EVENTS" ref="ae42954bb8545d24e3e9dcde5920c9a0b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="events_8c.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>&#160;&#160;&#160;256</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre d'évènements au maximum. </p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
 <a class="anchor" id="a82d6763c7ce9298afe7e0d97553e568f"></a><!-- doxytag: member="events.c::add_event" ref="a82d6763c7ce9298afe7e0d97553e568f" args="(callback_t call, void *data, time_t dtime_usec)" -->
 <div class="memitem">
 <div class="memproto">
@@ -173,7 +186,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="events_8c_a82d6763c7ce9298afe7e0d97553e568f_cgraph.png" border="0" usemap="#events_8c_a82d6763c7ce9298afe7e0d97553e568f_cgraph" alt=""/></div>
 <map name="events_8c_a82d6763c7ce9298afe7e0d97553e568f_cgraph" id="events_8c_a82d6763c7ce9298afe7e0d97553e568f_cgraph">
-<area shape="rect" id="node3" href="clock_8c.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="175,32,233,61"/><area shape="rect" id="node9" href="clock_8c.html#a052807a5c6ae63175a937381014a5701" title="Ajoute des us à un temps. Ajoute des us à un temps contenu dans une structure timeval." alt="" coords="139,85,269,115"/><area shape="rect" id="node5" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes." alt="" coords="320,5,395,35"/><area shape="rect" id="node7" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="317,59,397,88"/></map>
+<area shape="rect" id="node3" href="clock_8c.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="175,32,233,61"/><area shape="rect" id="node9" href="clock_8c.html#a052807a5c6ae63175a937381014a5701" title="Ajoute des us à un temps. Ajoute des us à un temps contenu dans une structure timeval." alt="" coords="139,85,269,115"/><area shape="rect" id="node11" href="list_8h.html#a7a8bb1eb8a161ffce0167fca806e10ad" title="list_add_element" alt="" coords="143,139,265,168"/><area shape="rect" id="node5" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes." alt="" coords="320,5,395,35"/><area shape="rect" id="node7" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="317,59,397,88"/><area shape="rect" id="node13" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="321,139,393,168"/></map>
 </div>
 </p>
 
@@ -209,6 +222,15 @@ Voici le graphe des appelants de cette fonction :</div>
   </table>
   </dd>
 </dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="events_8c_a066fd6048f5a6f5a6d4b93abea00013d_cgraph.png" border="0" usemap="#events_8c_a066fd6048f5a6f5a6d4b93abea00013d_cgraph" alt=""/></div>
+<map name="events_8c_a066fd6048f5a6f5a6d4b93abea00013d_cgraph" id="events_8c_a066fd6048f5a6f5a6d4b93abea00013d_cgraph">
+<area shape="rect" id="node3" href="list_8h.html#ad8dbf30907f29e3b4fc748a83d4b1784" title="list_del_element" alt="" coords="137,5,255,35"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -315,7 +337,7 @@ Voici le graphe des appelants de cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

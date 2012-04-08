@@ -81,6 +81,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier kernel/include/kmalloc.h</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Allocateur mémoire en kernel space.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de kmalloc.h:</div>
@@ -94,7 +97,7 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <div class="dyncontent">
 <div class="center"><img src="kmalloc_8h__dep__incl.png" border="0" usemap="#kernel_2include_2kmalloc_8hdep" alt=""/></div>
 <map name="kernel_2include_2kmalloc_8hdep" id="kernel_2include_2kmalloc_8hdep">
-<area shape="rect" id="node3" href="serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="5,83,184,112"/><area shape="rect" id="node5" href="console_8c.html" title="kernel/drivers/char/tty/console.c" alt="" coords="208,83,419,112"/><area shape="rect" id="node7" href="tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="443,83,619,112"/><area shape="rect" id="node9" href="devfs_8c.html" title="kernel/fs/devfs.c" alt="" coords="643,83,763,112"/><area shape="rect" id="node11" href="ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="787,83,928,112"/><area shape="rect" id="node13" href="fat_8c.html" title="kernel/fs/fat/fat.c" alt="" coords="952,83,1069,112"/><area shape="rect" id="node15" href="fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="1093,83,1269,112"/><area shape="rect" id="node17" href="fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="1293,83,1448,112"/><area shape="rect" id="node19" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="1472,83,1584,112"/><area shape="rect" id="node21" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="1608,83,1717,112"/><area shape="rect" id="node23" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="1741,83,1843,112"/><area shape="rect" id="node25" href="kmalloc_8c.html" title="kernel/kmalloc.c" alt="" coords="1867,83,1984,112"/><area shape="rect" id="node27" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="2008,83,2136,112"/><area shape="rect" id="node29" href="ksem_8c.html" title="kernel/ksem.c" alt="" coords="2160,83,2267,112"/><area shape="rect" id="node31" href="module_8c.html" title="kernel/module.c" alt="" coords="2291,83,2408,112"/><area shape="rect" id="node33" href="round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="2432,83,2573,112"/><area shape="rect" id="node35" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="2597,83,2728,112"/><area shape="rect" id="node37" href="list_8c.html" title="kernel/utils/list.c" alt="" coords="2752,83,2867,112"/><area shape="rect" id="node39" href="vfs_8c.html" title="kernel/vfs.c" alt="" coords="2891,83,2981,112"/></map>
+<area shape="rect" id="node3" href="serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="5,83,184,112"/><area shape="rect" id="node5" href="console_8c.html" title="Console virtuelle (Fn)." alt="" coords="208,83,419,112"/><area shape="rect" id="node7" href="tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="443,83,619,112"/><area shape="rect" id="node9" href="devfs_8c.html" title="DevFS." alt="" coords="643,83,763,112"/><area shape="rect" id="node11" href="ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="787,83,928,112"/><area shape="rect" id="node13" href="fat_8c.html" title="kernel/fs/fat/fat.c" alt="" coords="952,83,1069,112"/><area shape="rect" id="node15" href="fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="1093,83,1269,112"/><area shape="rect" id="node17" href="fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="1293,83,1448,112"/><area shape="rect" id="node19" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="1472,83,1595,112"/><area shape="rect" id="node21" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="1619,83,1731,112"/><area shape="rect" id="node23" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="1755,83,1864,112"/><area shape="rect" id="node25" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="1888,83,1989,112"/><area shape="rect" id="node27" href="kernel_2klibc_2string_8c.html" title="Manipulation de string depuis le kernel." alt="" coords="2013,83,2149,112"/><area shape="rect" id="node29" href="kmalloc_8c.html" title="kernel/kmalloc.c" alt="" coords="2173,83,2291,112"/><area shape="rect" id="node31" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="2315,83,2443,112"/><area shape="rect" id="node33" href="ksem_8c.html" title="Gestion des sémaphores." alt="" coords="2467,83,2573,112"/><area shape="rect" id="node35" href="module_8c.html" title="kernel/module.c" alt="" coords="2597,83,2715,112"/><area shape="rect" id="node37" href="round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="2739,83,2880,112"/><area shape="rect" id="node39" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="2904,83,3035,112"/><area shape="rect" id="node41" href="list_8c.html" title="kernel/utils/list.c" alt="" coords="3059,83,3173,112"/><area shape="rect" id="node43" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="3197,83,3288,112"/></map>
 </div>
 </div>
 <p><a href="kmalloc_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -103,10 +106,9 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf2150b867844d072868442d5b925fdb"></a><!-- doxytag: member="kmalloc.h::init_kmalloc" ref="acf2150b867844d072868442d5b925fdb" args="()" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>init_kmalloc</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5f52d7c56b7d67dc2f96b2e93dfdc7be"></a><!-- doxytag: member="kmalloc.h::kmalloc" ref="a5f52d7c56b7d67dc2f96b2e93dfdc7be" args="(size_t size)" -->
-void *&#160;</td><td class="memItemRight" valign="bottom"><b>kmalloc</b> (size_t size)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5aaca0462e88916f57db57384fd7618a"></a><!-- doxytag: member="kmalloc.h::kfree" ref="a5aaca0462e88916f57db57384fd7618a" args="(void *p)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>kfree</b> (void *p)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be">kmalloc</a> (<a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocation de size octets.  <a href="#a5f52d7c56b7d67dc2f96b2e93dfdc7be"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a">kfree</a> (void *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e3dce2f94889a2c5ad041726783f264"></a><!-- doxytag: member="kmalloc.h::kmalloc_one_aligned_page" ref="a6e3dce2f94889a2c5ad041726783f264" args="()" -->
 void *&#160;</td><td class="memItemRight" valign="bottom"><b>kmalloc_one_aligned_page</b> ()</td></tr>
 </table>
@@ -120,8 +122,85 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-<p>Description de ce que fait le fichier</p>
-</div></div><!-- contents -->
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a5aaca0462e88916f57db57384fd7618a"></a><!-- doxytag: member="kmalloc.h::kfree" ref="a5aaca0462e88916f57db57384fd7618a" args="(void *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="kmalloc_8c.html#a5aaca0462e88916f57db57384fd7618a">kfree</a> </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Libération d'une zone allouée.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pointeur</td><td>vers la zone allouée.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kmalloc_8h_a5aaca0462e88916f57db57384fd7618a_icgraph.png" border="0" usemap="#kmalloc_8h_a5aaca0462e88916f57db57384fd7618a_icgraph" alt=""/></div>
+<map name="kmalloc_8h_a5aaca0462e88916f57db57384fd7618a_icgraph" id="kmalloc_8h_a5aaca0462e88916f57db57384fd7618a_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#aa055d93f3693085315aa853345de0032" title="Unmount d&#39;un point de montage." alt="" coords="311,5,415,35"/><area shape="rect" id="node7" href="ext2_8h.html#ab2859a00444ce0ad527332da72e2629a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="141,57,227,87"/><area shape="rect" id="node14" href="kfcntl_8c.html#adc12a443121c63ad99a6311aa2739884" title="Ferme tous les file descriptors ouverts." alt="" coords="137,111,231,140"/><area shape="rect" id="node16" href="kfcntl_8c.html#a3a5f4c56fd3fcc2b69757102f722fc29" title="SYSCALL_HANDLER2" alt="" coords="107,164,261,193"/><area shape="rect" id="node18" href="kprocess_8c.html#a7cced35f469ae897c55ab96940289cf6" title="Retire un processus de la liste." alt="" coords="127,217,241,247"/><area shape="rect" id="node20" href="vfs_8c.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="145,271,223,300"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="689,32,759,61"/><area shape="rect" id="node9" href="ext2_8h.html#a9df1cc1b1a14caf87d09762a4886ce53" title="Ouverture de fichier." alt="" coords="321,59,404,88"/><area shape="rect" id="node11" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="492,59,591,88"/><area shape="rect" id="node22" href="vfs_8c.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="325,271,400,300"/><area shape="rect" id="node24" href="kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="504,191,579,220"/><area shape="rect" id="node30" href="kfcntl_8c.html#aa1d225acb87c04ac8d56c8096f587a03" title="SYSCALL_HANDLER3" alt="" coords="464,244,619,273"/><area shape="rect" id="node32" href="kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="513,297,569,327"/><area shape="rect" id="node36" href="vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage." alt="" coords="500,351,583,380"/><area shape="rect" id="node26" href="kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="667,191,781,220"/><area shape="rect" id="node28" href="scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="829,191,933,220"/><area shape="rect" id="node34" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="689,297,759,327"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5f52d7c56b7d67dc2f96b2e93dfdc7be"></a><!-- doxytag: member="kmalloc.h::kmalloc" ref="a5f52d7c56b7d67dc2f96b2e93dfdc7be" args="(size_t size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* <a class="el" href="kmalloc_8c.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be">kmalloc</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Allocation de size octets en kernel space.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>Taille à allouer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>un pointeur vers la zone allouée. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kmalloc_8h_a5f52d7c56b7d67dc2f96b2e93dfdc7be_cgraph.png" border="0" usemap="#kmalloc_8h_a5f52d7c56b7d67dc2f96b2e93dfdc7be_cgraph" alt=""/></div>
+<map name="kmalloc_8h_a5f52d7c56b7d67dc2f96b2e93dfdc7be_cgraph" id="kmalloc_8h_a5f52d7c56b7d67dc2f96b2e93dfdc7be_cgraph">
+<area shape="rect" id="node3" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="124,5,265,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kmalloc_8h_a5f52d7c56b7d67dc2f96b2e93dfdc7be_icgraph.png" border="0" usemap="#kmalloc_8h_a5f52d7c56b7d67dc2f96b2e93dfdc7be_icgraph" alt=""/></div>
+<map name="kmalloc_8h_a5f52d7c56b7d67dc2f96b2e93dfdc7be_icgraph" id="kmalloc_8h_a5f52d7c56b7d67dc2f96b2e93dfdc7be_icgraph">
+<area shape="rect" id="node3" href="console_8h.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;." alt="" coords="123,5,216,35"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="489,216,559,245"/><area shape="rect" id="node7" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="292,216,391,245"/><area shape="rect" id="node10" href="ext2_8h.html#ad87ef876e972f1bcb11d752042207d47" title="Suppression d&#39;un dossier vide." alt="" coords="128,109,211,139"/><area shape="rect" id="node13" href="ext2_8h.html#aa78e9c6b4686b24a0183b164800a04ed" title="Suppression d&#39;un noeud." alt="" coords="125,163,213,192"/><area shape="rect" id="node16" href="ext2_8h.html#a2a5245bfa03e55c15539e6aa518e4fab" title="Création d&#39;un dossier." alt="" coords="127,216,212,245"/><area shape="rect" id="node19" href="ext2_8h.html#a9df1cc1b1a14caf87d09762a4886ce53" title="Ouverture de fichier." alt="" coords="128,269,211,299"/><area shape="rect" id="node22" href="kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="304,553,379,583"/><area shape="rect" id="node24" href="kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="467,488,581,517"/><area shape="rect" id="node28" href="libc_2include_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="140,475,199,504"/><area shape="rect" id="node31" href="list_8c.html#a8111dff4de9d78342e96563621a7da63" title="list_init" alt="" coords="139,528,200,557"/><area shape="rect" id="node35" href="vfs_8c.html#ab2237a3610010d8a211ef3d55a521dba" title="Enregistrer un FS dans le VFS pour le rendre disponible." alt="" coords="288,320,395,349"/><area shape="rect" id="node38" href="vfs_8c.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="132,632,207,661"/><area shape="rect" id="node47" href="vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage." alt="" coords="300,713,383,743"/><area shape="rect" id="node26" href="scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="629,488,733,517"/><area shape="rect" id="node33" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="299,500,384,529"/><area shape="rect" id="node41" href="kfcntl_8c.html#aa1d225acb87c04ac8d56c8096f587a03" title="SYSCALL_HANDLER3" alt="" coords="264,660,419,689"/><area shape="rect" id="node43" href="kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="313,607,369,636"/><area shape="rect" id="node45" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="489,607,559,636"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -139,7 +218,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

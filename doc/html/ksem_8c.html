@@ -84,6 +84,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier kernel/ksem.c</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Gestion des sémaphores.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="ksem_8h_source.html">ksem.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="kprocess_8h_source.html">kprocess.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br/>
@@ -93,7 +96,7 @@ Graphe des dépendances par inclusion de ksem.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="ksem_8c__incl.png" border="0" usemap="#kernel_2ksem_8c" alt=""/></div>
 <map name="kernel_2ksem_8c" id="kernel_2ksem_8c">
-<area shape="rect" id="node3" href="ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="101,160,165,189"/><area shape="rect" id="node10" href="kprocess_8h.html" title="kprocess.h" alt="" coords="340,160,425,189"/><area shape="rect" id="node28" href="kmalloc_8h.html" title="kmalloc.h" alt="" coords="5,83,83,112"/><area shape="rect" id="node31" href="scheduler_8h.html" title="scheduler.h" alt="" coords="171,83,261,112"/><area shape="rect" id="node5" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="119,237,199,267"/><area shape="rect" id="node7" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="355,315,419,344"/><area shape="rect" id="node13" href="fd__types_8h.html" title="fd_types.h" alt="" coords="223,237,305,267"/><area shape="rect" id="node15" href="signal__types_8h.html" title="signal_types.h" alt="" coords="329,237,436,267"/><area shape="rect" id="node17" href="process__types_8h.html" title="process_types.h" alt="" coords="460,237,577,267"/><area shape="rect" id="node19" href="symtable_8h.html" title="symtable.h" alt="" coords="737,237,823,267"/><area shape="rect" id="node25" href="vmm_8h.html" title="vmm.h" alt="" coords="652,237,713,267"/><area shape="rect" id="node22" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="757,315,803,344"/></map>
+<area shape="rect" id="node3" href="ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="101,160,165,189"/><area shape="rect" id="node10" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="340,160,425,189"/><area shape="rect" id="node28" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="5,83,83,112"/><area shape="rect" id="node31" href="scheduler_8h.html" title="scheduler.h" alt="" coords="171,83,261,112"/><area shape="rect" id="node5" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="119,237,199,267"/><area shape="rect" id="node7" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="355,315,419,344"/><area shape="rect" id="node13" href="fd__types_8h.html" title="fd_types.h" alt="" coords="223,237,305,267"/><area shape="rect" id="node15" href="signal__types_8h.html" title="signal_types.h" alt="" coords="329,237,436,267"/><area shape="rect" id="node17" href="process__types_8h.html" title="process_types.h" alt="" coords="460,237,577,267"/><area shape="rect" id="node19" href="symtable_8h.html" title="symtable.h" alt="" coords="737,237,823,267"/><area shape="rect" id="node25" href="vmm_8h.html" title="vmm.h" alt="" coords="652,237,713,267"/><area shape="rect" id="node22" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="757,315,803,344"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
@@ -121,22 +124,21 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_SEMCTL</b>&#160;&#160;&#160;8</td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83e90e3f49b0f7bb4385e0759e1491f8"></a><!-- doxytag: member="ksem.c::sem_fifo_cell" ref="a83e90e3f49b0f7bb4385e0759e1491f8" args="" -->
-typedef struct <a class="el" href="struct__sem__fifo__cell.html">_sem_fifo_cell</a>&#160;</td><td class="memItemRight" valign="bottom"><b>sem_fifo_cell</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__sem__fifo__cell.html">_sem_fifo_cell</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ksem_8c.html#a83e90e3f49b0f7bb4385e0759e1491f8">sem_fifo_cell</a></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ksem_8c.html#a191f0fb163ab01b5d2041bdd20d6d424">init_semaphores</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du système des sémaphores.  <a href="#a191f0fb163ab01b5d2041bdd20d6d424"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ksem_8c.html#a7f54885ee2689208328406935525f0a5">ksemget</a> (uint8_t key, int flags)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ksem_8c.html#a7f54885ee2689208328406935525f0a5">ksemget</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key, int flags)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore désigné par key.  <a href="#a7f54885ee2689208328406935525f0a5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af980f49354b68b113faee6edd6851bf9"></a><!-- doxytag: member="ksem.c::ksemctl" ref="af980f49354b68b113faee6edd6851bf9" args="(uint8_t key, int cmd, void *res)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ksem_8c.html#af980f49354b68b113faee6edd6851bf9">ksemctl</a> (uint8_t key, int cmd, void *res)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ksem_8c.html#af980f49354b68b113faee6edd6851bf9">ksemctl</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key, int cmd, void *res)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulation d'un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.) <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ksem_8c.html#acfbbd3e3f726b24309758cf6499a8141">ksemP</a> (uint8_t key)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ksem_8c.html#acfbbd3e3f726b24309758cf6499a8141">ksemP</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Opération P sur un sémaphore Réalise l'opération P sur le sémaphore. Le processus essaye donc de prendre le sémaphore si il est libre (ie Sa valeur des supérieur à 0). Si ce n'est pas le cas, il met son pid dans la fifo du sémaphore pour pouvoir être réveillé en temps voulu, et se met en état d'attente.  <a href="#acfbbd3e3f726b24309758cf6499a8141"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ksem_8c.html#acf03efb500e930ca996059a6388b528b">ksemV</a> (uint8_t key)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ksem_8c.html#acf03efb500e930ca996059a6388b528b">ksemV</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Opération V sur un sémaphore Réalise l'opération V sur le sémaphore. Le processus libère le sémaphore. Si la fifo est vide, il incrémente la valeur du sémaphore. Si un processus est présent dans la fifo, il le réveille.  <a href="#acf03efb500e930ca996059a6388b528b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ksem_8c.html#a82fb70bceeb23516b8cbdc1bc8f77805">SYSCALL_HANDLER3</a> (sys_ksem, uint32_t op, uint32_t param, int *ret)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ksem_8c.html#a82fb70bceeb23516b8cbdc1bc8f77805">SYSCALL_HANDLER3</a> (sys_ksem, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> op, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param, int *ret)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler de l'appel système SYS_SEM Dans la pratique, sys_ksem ne fait qu'exécuter la fonction correspondant à l'opération demandée.  <a href="#a82fb70bceeb23516b8cbdc1bc8f77805"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
@@ -149,8 +151,22 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-<p>Description de ce que fait le fichier </p>
-</div><hr/><h2>Documentation des fonctions</h2>
+</div><hr/><h2>Documentation des définitions de type</h2>
+<a class="anchor" id="a83e90e3f49b0f7bb4385e0759e1491f8"></a><!-- doxytag: member="ksem.c::sem_fifo_cell" ref="a83e90e3f49b0f7bb4385e0759e1491f8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__sem__fifo__cell.html">_sem_fifo_cell</a>  <a class="el" href="ksem_8c.html#a83e90e3f49b0f7bb4385e0759e1491f8">sem_fifo_cell</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cellule d'une fifo. </p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
 <a class="anchor" id="a191f0fb163ab01b5d2041bdd20d6d424"></a><!-- doxytag: member="ksem.c::init_semaphores" ref="a191f0fb163ab01b5d2041bdd20d6d424" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -175,7 +191,7 @@ DESCRIPTION</h2>
         <tr>
           <td class="memname">int <a class="el" href="ksem_8c.html#a7f54885ee2689208328406935525f0a5">ksemget</a> </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
@@ -212,7 +228,7 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="memname">int <a class="el" href="ksem_8c.html#acfbbd3e3f726b24309758cf6499a8141">ksemP</a> </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>key</em></td><td>)</td>
           <td></td>
         </tr>
@@ -254,7 +270,7 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="memname">int <a class="el" href="ksem_8c.html#acf03efb500e930ca996059a6388b528b">ksemV</a> </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>key</em></td><td>)</td>
           <td></td>
         </tr>
@@ -294,7 +310,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ksem_8c.html#a82fb70bceeb23516b8cbdc1bc8f77805">SYSCALL_HANDLER3</a> </td>
+          <td class="memname"><a class="el" href="kunistd_8c.html#a8c6c302ef479ae5474c3aedf65ec8dbe">SYSCALL_HANDLER3</a> </td>
           <td>(</td>
           <td class="paramtype">sys_ksem&#160;</td>
           <td class="paramname">, </td>
@@ -302,13 +318,13 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td>
           <td class="paramname"><em>op</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td>
           <td class="paramname"><em>param</em>, </td>
         </tr>
         <tr>
@@ -363,7 +379,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -113,11 +113,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00060"></a>00060 <span class="preprocessor"></span><span class="preprocessor">#define PCI_INTERRUPT_PIN       0x3c,  8, 0x00ff</span>
 <a name="l00061"></a>00061 <span class="preprocessor"></span><span class="preprocessor">#define PCI_INTERRUPT_LINE      0x3c,  0, 0x00ff</span>
 <a name="l00062"></a>00062 <span class="preprocessor"></span>
-<a name="l00063"></a>00063 uint32_t pci_read_register(uint8_t bus, uint8_t device, uint8_t func, uint8_t reg);
+<a name="l00063"></a>00063 <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> pci_read_register(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> bus, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> device, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> func, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> reg);
 <a name="l00064"></a>00064 
-<a name="l00065"></a>00065 uint32_t pci_read_value(<a class="code" href="structpci__function__t.html">pci_function_p</a> func, uint8_t reg, uint8_t offset, uint32_t mask);
+<a name="l00065"></a>00065 <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> pci_read_value(<a class="code" href="structpci__function__t.html">pci_function_p</a> func, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> reg, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> offset, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> mask);
 <a name="l00066"></a>00066 
-<a name="l00067"></a>00067 uint32_t pci_write_register(uint8_t bus, uint8_t slot, uint8_t func, uint8_t reg, uint32_t value);
+<a name="l00067"></a>00067 <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> pci_write_register(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> bus, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> slot, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> func, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> reg, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> value);
 <a name="l00068"></a>00068 
 <a name="l00069"></a>00069 <span class="keywordtype">void</span> pci_print_info( <a class="code" href="structpci__function__t.html">pci_function_p</a> <span class="keyword">function</span>);
 <a name="l00070"></a>00070 <span class="keywordtype">void</span> pci_print_detailed_info(<a class="code" href="structpci__function__t.html">pci_function_p</a> func);      
@@ -142,7 +142,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

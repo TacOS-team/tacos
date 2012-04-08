@@ -90,14 +90,14 @@ Graphe des dépendances par inclusion de fat.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="fat_8h__incl.png" border="0" usemap="#kernel_2include_2fs_2fat_8h" alt=""/></div>
 <map name="kernel_2include_2fs_2fat_8h" id="kernel_2include_2fs_2fat_8h">
-<area shape="rect" id="node5" href="fd__types_8h.html" title="fd_types.h" alt="" coords="48,160,131,189"/><area shape="rect" id="node7" href="kstat_8h.html" title="kstat.h" alt="" coords="211,160,269,189"/><area shape="rect" id="node17" href="vfs_8h.html" title="vfs.h" alt="" coords="144,83,192,112"/><area shape="rect" id="node9" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="252,392,316,421"/><area shape="rect" id="node11" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="213,237,277,267"/><area shape="rect" id="node14" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="205,315,285,344"/></map>
+<area shape="rect" id="node5" href="fd__types_8h.html" title="fd_types.h" alt="" coords="48,160,131,189"/><area shape="rect" id="node7" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="211,160,269,189"/><area shape="rect" id="node17" href="vfs_8h.html" title="Virtual File System." alt="" coords="144,83,192,112"/><area shape="rect" id="node9" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="252,392,316,421"/><area shape="rect" id="node11" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="213,237,277,267"/><area shape="rect" id="node14" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="205,315,285,344"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="fat_8h__dep__incl.png" border="0" usemap="#kernel_2include_2fs_2fat_8hdep" alt=""/></div>
 <map name="kernel_2include_2fs_2fat_8hdep" id="kernel_2include_2fs_2fat_8hdep">
-<area shape="rect" id="node3" href="fat_8c.html" title="kernel/fs/fat/fat.c" alt="" coords="5,83,123,112"/><area shape="rect" id="node5" href="fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="147,83,323,112"/><area shape="rect" id="node7" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="347,83,456,112"/><area shape="rect" id="node9" href="vfs_8c.html" title="kernel/vfs.c" alt="" coords="480,83,571,112"/></map>
+<area shape="rect" id="node3" href="fat_8c.html" title="kernel/fs/fat/fat.c" alt="" coords="5,83,123,112"/><area shape="rect" id="node5" href="fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="147,83,323,112"/><area shape="rect" id="node7" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="347,83,456,112"/><area shape="rect" id="node9" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="480,83,571,112"/></map>
 </div>
 </div>
 <p><a href="fat_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -111,19 +111,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>fat_init</b> ()</td><
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab2204311ec26e0134235b4a6c895312f"></a><!-- doxytag: member="fat.h::umount_FAT" ref="ab2204311ec26e0134235b4a6c895312f" args="(fs_instance_t *instance)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>umount_FAT</b> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada9bd47fd90b01248fe52f302560f9f9"></a><!-- doxytag: member="fat.h::fat_readdir" ref="ada9bd47fd90b01248fe52f302560f9f9" args="(open_file_descriptor *ofd, char *entries, size_t size)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>fat_readdir</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, char *entries, size_t size)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>fat_readdir</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, char *entries, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acdf6c4c7632ebd3fff5ba51c888af3a6"></a><!-- doxytag: member="fat.h::fat_open_file" ref="acdf6c4c7632ebd3fff5ba51c888af3a6" args="(fs_instance_t *instance, const char *path, uint32_t flags)" -->
-<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>fat_open_file</b> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, uint32_t flags)</td></tr>
+<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>fat_open_file</b> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab6005d86e7ab13445d997d03e76bf914"></a><!-- doxytag: member="fat.h::fat_mkdir" ref="ab6005d86e7ab13445d997d03e76bf914" args="(fs_instance_t *instance, const char *path, mode_t mode)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>fat_mkdir</b> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, mode_t <a class="el" href="structmode.html">mode</a>)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>fat_mkdir</b> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8442aab7b7111d30d19b4be6a4464618"></a><!-- doxytag: member="fat.h::fat_stat" ref="a8442aab7b7111d30d19b4be6a4464618" args="(fs_instance_t *instance, const char *path, struct stat *stbuf)" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>fat_stat</b> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, struct <a class="el" href="structstat.html">stat</a> *stbuf)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2673c2b00be14ce740290ba2e92b9f90"></a><!-- doxytag: member="fat.h::fat_unlink" ref="a2673c2b00be14ce740290ba2e92b9f90" args="(fs_instance_t *instance, const char *path)" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>fat_unlink</b> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a85069bfaf4b7a57bc5d8e7bfa6aa83ad"></a><!-- doxytag: member="fat.h::fat_read_file" ref="a85069bfaf4b7a57bc5d8e7bfa6aa83ad" args="(open_file_descriptor *ofd, void *buf, size_t count)" -->
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>fat_read_file</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, void *buf, size_t count)</td></tr>
+<a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fat_read_file</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, void *buf, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> count)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aefed2caace7abdff25dc8276de118018"></a><!-- doxytag: member="fat.h::fat_write_file" ref="aefed2caace7abdff25dc8276de118018" args="(open_file_descriptor *ofd, const void *buf, size_t nb_octet)" -->
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>fat_write_file</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, const void *buf, size_t nb_octet)</td></tr>
+<a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fat_write_file</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, const void *buf, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> nb_octet)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e52d080338c1179ae01999006f077d3"></a><!-- doxytag: member="fat.h::fat_seek_file" ref="a5e52d080338c1179ae01999006f077d3" args="(open_file_descriptor *ofd, long offset, int whence)" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>fat_seek_file</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, long offset, int whence)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afdccf4bea2c0e70059a76f43fea9c33f"></a><!-- doxytag: member="fat.h::fat_close" ref="afdccf4bea2c0e70059a76f43fea9c33f" args="(open_file_descriptor *ofd)" -->
@@ -158,7 +158,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

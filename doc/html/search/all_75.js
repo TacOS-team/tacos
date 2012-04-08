@@ -1,6 +1,11 @@
 var searchData=
 [
   ['u_5fs',['u_s',['../structpage__directory__entry.html#a6e87e7efc2fbbbd5f8f7fd2e0cd09b3f',1,'page_directory_entry::u_s()'],['../structpage__table__entry.html#a96a4983103505173426da12be79d0fa5',1,'page_table_entry::u_s()']]],
+  ['uid_5ft',['uid_t',['../kstat_8h.html#af2306308627701b66dc6f3babe821ab4',1,'kstat.h']]],
+  ['uint16_5ft',['uint16_t',['../kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223',1,'uint16_t():&#160;types.h'],['../libc_2include_2sys_2types_8h.html#adf4d876453337156dde61095e1f20223',1,'uint16_t():&#160;types.h']]],
+  ['uint32_5ft',['uint32_t',['../kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af',1,'uint32_t():&#160;types.h'],['../libc_2include_2sys_2types_8h.html#a33594304e786b158f3fb30289278f5af',1,'uint32_t():&#160;types.h']]],
+  ['uint64_5ft',['uint64_t',['../kernel_2include_2types_8h.html#ad27ed092432b64ff558d2254c278720f',1,'uint64_t():&#160;types.h'],['../libc_2include_2sys_2types_8h.html#ad27ed092432b64ff558d2254c278720f',1,'uint64_t():&#160;types.h']]],
+  ['uint8_5ft',['uint8_t',['../kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5',1,'uint8_t():&#160;types.h'],['../libc_2include_2sys_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5',1,'uint8_t():&#160;types.h']]],
   ['umount',['umount',['../structfile__system__t.html#a899f34d838d88470373b60f7c5f0edd9',1,'file_system_t']]],
   ['umount_5fext2',['umount_EXT2',['../ext2_8c.html#aa055d93f3693085315aa853345de0032',1,'umount_EXT2(fs_instance_t *instance):&#160;ext2.c'],['../ext2_8h.html#aa055d93f3693085315aa853345de0032',1,'umount_EXT2(fs_instance_t *instance):&#160;ext2.c']]],
   ['unistd_2ec',['unistd.c',['../unistd_8c.html',1,'']]],

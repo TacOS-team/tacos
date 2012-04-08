@@ -104,6 +104,7 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Structures de données</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlist__t.html">list_t</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Liste générique.  <a href="structlist__t.html#details">Plus de détails...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35d066d4adbc5a7903210dcce0bf4717"></a><!-- doxytag: member="list.h::cmp_func_type" ref="a35d066d4adbc5a7903210dcce0bf4717" args=")(void *, void *)" -->
@@ -112,18 +113,12 @@ typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>cmp_func_typ
 typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>id_func_type</b> )(int, void *)</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a60c0d889036e1c3e63c38c9905653875"></a><!-- doxytag: member="list.h::initList" ref="a60c0d889036e1c3e63c38c9905653875" args="(list_t *l, cmp_func_type cmp, size_t elements_size, int max_elements)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>initList</b> (<a class="el" href="structlist__t.html">list_t</a> *l, cmp_func_type cmp, size_t elements_size, int max_elements)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9732593aa711a67ad82364a09b963cbf"></a><!-- doxytag: member="list.h::listGetTop" ref="a9732593aa711a67ad82364a09b963cbf" args="(list_t l)" -->
-void *&#160;</td><td class="memItemRight" valign="bottom"><b>listGetTop</b> (<a class="el" href="structlist__t.html">list_t</a> l)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b94d5ab814134efa6ae5780513cf74a"></a><!-- doxytag: member="list.h::listAddElement" ref="a3b94d5ab814134efa6ae5780513cf74a" args="(list_t *l, void *element)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>listAddElement</b> (<a class="el" href="structlist__t.html">list_t</a> *l, void *element)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c4e30b00ec7c9920fe5bb2316ad0ced"></a><!-- doxytag: member="list.h::listRemoveTop" ref="a9c4e30b00ec7c9920fe5bb2316ad0ced" args="(list_t *l)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>listRemoveTop</b> (<a class="el" href="structlist__t.html">list_t</a> *l)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa01a21a165fcddf4258c4c9197eb6f5f"></a><!-- doxytag: member="list.h::listDelElement" ref="aa01a21a165fcddf4258c4c9197eb6f5f" args="(list_t *list, int id, id_func_type func)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>listDelElement</b> (<a class="el" href="structlist__t.html">list_t</a> *list, int id, id_func_type func)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b460be2c0d40f4da72af89c356ed7c1"></a><!-- doxytag: member="list.h::print_list" ref="a7b460be2c0d40f4da72af89c356ed7c1" args="(list_t ma_liste)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>print_list</b> (<a class="el" href="structlist__t.html">list_t</a> ma_liste)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a8111dff4de9d78342e96563621a7da63">list_init</a> (<a class="el" href="structlist__t.html">list_t</a> *l, cmp_func_type cmp, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> elements_size, int max_elements)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a4d06987bb22b3a5c66d2be44f6c23845">list_get_top</a> (<a class="el" href="structlist__t.html">list_t</a> l)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a7a8bb1eb8a161ffce0167fca806e10ad">list_add_element</a> (<a class="el" href="structlist__t.html">list_t</a> *l, void *element)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a5ffcff1c3f7eace23a067c0051a3c8f9">list_remove_top</a> (<a class="el" href="structlist__t.html">list_t</a> *l)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#ad8dbf30907f29e3b4fc748a83d4b1784">list_del_element</a> (<a class="el" href="structlist__t.html">list_t</a> *list, int id, id_func_type func)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a7b460be2c0d40f4da72af89c356ed7c1">print_list</a> (<a class="el" href="structlist__t.html">list_t</a> ma_liste)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -135,8 +130,250 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-<p>Description de ce que fait le fichier </p>
-</div></div><!-- contents -->
+<p>Structure de liste chainée générique. </p>
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a7a8bb1eb8a161ffce0167fca806e10ad"></a><!-- doxytag: member="list.h::list_add_element" ref="a7a8bb1eb8a161ffce0167fca806e10ad" args="(list_t *l, void *element)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="list_8c.html#a7a8bb1eb8a161ffce0167fca806e10ad">list_add_element</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist__t.html">list_t</a> *&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>element</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Ajoute un élément à la fin de la liste.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>La liste manipulée. </td></tr>
+    <tr><td class="paramname">element</td><td>Element à ajouter. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_cgraph.png" border="0" usemap="#list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_cgraph" alt=""/></div>
+<map name="list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_cgraph" id="list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_cgraph">
+<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="177,5,249,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_icgraph.png" border="0" usemap="#list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_icgraph" alt=""/></div>
+<map name="list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_icgraph" id="list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_icgraph">
+<area shape="rect" id="node3" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="176,5,261,35"/><area shape="rect" id="node5" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep Endors un processus, et crée un évenement pour le réveiller..." alt="" coords="309,5,464,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ad8dbf30907f29e3b4fc748a83d4b1784"></a><!-- doxytag: member="list.h::list_del_element" ref="ad8dbf30907f29e3b4fc748a83d4b1784" args="(list_t *list, int id, id_func_type func)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="list_8c.html#ad8dbf30907f29e3b4fc748a83d4b1784">list_del_element</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist__t.html">list_t</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">id_func_type&#160;</td>
+          <td class="paramname"><em>func</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Suppression d'un élément de la liste.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>La liste manipulée. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="list_8h_ad8dbf30907f29e3b4fc748a83d4b1784_icgraph.png" border="0" usemap="#list_8h_ad8dbf30907f29e3b4fc748a83d4b1784_icgraph" alt=""/></div>
+<map name="list_8h_ad8dbf30907f29e3b4fc748a83d4b1784_icgraph" id="list_8h_ad8dbf30907f29e3b4fc748a83d4b1784_icgraph">
+<area shape="rect" id="node3" href="events_8h.html#a066fd6048f5a6f5a6d4b93abea00013d" title="del_event" alt="" coords="175,5,255,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a4d06987bb22b3a5c66d2be44f6c23845"></a><!-- doxytag: member="list.h::list_get_top" ref="a4d06987bb22b3a5c66d2be44f6c23845" args="(list_t l)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* <a class="el" href="list_8c.html#a4d06987bb22b3a5c66d2be44f6c23845">list_get_top</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist__t.html">list_t</a>&#160;</td>
+          <td class="paramname"><em>l</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Récupère le premier élément de la liste.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>La liste manipulée. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a8111dff4de9d78342e96563621a7da63"></a><!-- doxytag: member="list.h::list_init" ref="a8111dff4de9d78342e96563621a7da63" args="(list_t *l, cmp_func_type cmp, size_t elements_size, int max_elements)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="list_8c.html#a8111dff4de9d78342e96563621a7da63">list_init</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist__t.html">list_t</a> *&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cmp_func_type&#160;</td>
+          <td class="paramname"><em>cmp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>elements_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_elements</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Initialisation d'un liste.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>La liste manipulée. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="list_8h_a8111dff4de9d78342e96563621a7da63_cgraph.png" border="0" usemap="#list_8h_a8111dff4de9d78342e96563621a7da63_cgraph" alt=""/></div>
+<map name="list_8h_a8111dff4de9d78342e96563621a7da63_cgraph" id="list_8h_a8111dff4de9d78342e96563621a7da63_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="116,5,183,35"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="233,5,375,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="list_8h_a8111dff4de9d78342e96563621a7da63_icgraph.png" border="0" usemap="#list_8h_a8111dff4de9d78342e96563621a7da63_icgraph" alt=""/></div>
+<map name="list_8h_a8111dff4de9d78342e96563621a7da63_icgraph" id="list_8h_a8111dff4de9d78342e96563621a7da63_icgraph">
+<area shape="rect" id="node3" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="115,5,200,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5ffcff1c3f7eace23a067c0051a3c8f9"></a><!-- doxytag: member="list.h::list_remove_top" ref="a5ffcff1c3f7eace23a067c0051a3c8f9" args="(list_t *l)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="list_8c.html#a5ffcff1c3f7eace23a067c0051a3c8f9">list_remove_top</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist__t.html">list_t</a> *&#160;</td>
+          <td class="paramname"><em>l</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Retire le premier élément de la liste.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>La liste manipulée. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7b460be2c0d40f4da72af89c356ed7c1"></a><!-- doxytag: member="list.h::print_list" ref="a7b460be2c0d40f4da72af89c356ed7c1" args="(list_t ma_liste)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1">print_list</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist__t.html">list_t</a>&#160;</td>
+          <td class="paramname"><em>ma_liste</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Affichage d'une liste (pour debug). </p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="list_8h_a7b460be2c0d40f4da72af89c356ed7c1_cgraph.png" border="0" usemap="#list_8h_a7b460be2c0d40f4da72af89c356ed7c1_cgraph" alt=""/></div>
+<map name="list_8h_a7b460be2c0d40f4da72af89c356ed7c1_cgraph" id="list_8h_a7b460be2c0d40f4da72af89c356ed7c1_cgraph">
+<area shape="rect" id="node3" href="kstdio_8h.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="123,72,179,101"/><area shape="rect" id="node5" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="228,72,303,101"/><area shape="rect" id="node7" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="363,12,429,41"/><area shape="rect" id="node11" href="vfs_8h.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier." alt="" coords="352,72,440,101"/><area shape="rect" id="node17" href="vfs_8h.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="357,139,435,168"/><area shape="rect" id="node9" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="489,5,631,35"/><area shape="rect" id="node13" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="533,59,587,88"/><area shape="rect" id="node15" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="532,112,588,141"/><area shape="rect" id="node19" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="535,165,585,195"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -154,7 +391,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

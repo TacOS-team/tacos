@@ -1,10 +1,10 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="50,83,143,112"/>
 <area shape="rect" id="node7" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="111,315,175,344"/>
-<area shape="rect" id="node14" href="$vfs_8h.html" title="vfs.h" alt="" coords="212,160,260,189"/>
+<area shape="rect" id="node14" href="$vfs_8h.html" title="Virtual File System." alt="" coords="212,160,260,189"/>
 <area shape="rect" id="node23" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="96,160,174,189"/>
 <area shape="rect" id="node9" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="188,469,252,499"/>
 <area shape="rect" id="node11" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="142,392,222,421"/>
 <area shape="rect" id="node17" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="115,237,198,267"/>
-<area shape="rect" id="node19" href="$kstat_8h.html" title="kstat.h" alt="" coords="222,237,280,267"/>
+<area shape="rect" id="node19" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="222,237,280,267"/>
 </map>

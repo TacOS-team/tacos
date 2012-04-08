@@ -13,5 +13,9 @@ var searchData=
   ['e_5fshoff',['e_shoff',['../structElf32__Ehdr.html#a00601af5187a1b3f8babfe9cddd95c15',1,'Elf32_Ehdr']]],
   ['e_5fshstrndx',['e_shstrndx',['../structElf32__Ehdr.html#a3b3070ccd7d971e8cb6ea58d4c6fab09',1,'Elf32_Ehdr']]],
   ['e_5ftype',['e_type',['../structElf32__Ehdr.html#a49e40a791813c06e3b6ebcb53aef1bb8',1,'Elf32_Ehdr']]],
-  ['e_5fversion',['e_version',['../structElf32__Ehdr.html#aa27627bda53281221325df4dd782e800',1,'Elf32_Ehdr']]]
+  ['e_5fversion',['e_version',['../structElf32__Ehdr.html#aa27627bda53281221325df4dd782e800',1,'Elf32_Ehdr']]],
+  ['elements_5farray',['elements_array',['../structlist__t.html#a799d9396ef609198dc4dff6456a99bb9',1,'list_t']]],
+  ['elements_5fsize',['elements_size',['../structlist__t.html#a467978ad64ca202b560905f80a93bf8a',1,'list_t']]],
+  ['envp',['envp',['../structprocess__init__data__t.html#ac2a942b9852943b1fd1771a69047e514',1,'process_init_data_t']]],
+  ['exec_5ftype',['exec_type',['../structprocess__init__data__t.html#a1cda790f7d2446a04562094f09e358ab',1,'process_init_data_t']]]
 ];

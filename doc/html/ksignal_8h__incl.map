@@ -1,14 +1,11 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="23,160,103,189"/>
-<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="108,237,172,267"/>
-<area shape="rect" id="node7" href="$signal__types_8h.html" title="signal_types.h" alt="" coords="620,160,727,189"/>
-<area shape="rect" id="node9" href="$signal_8h.html" title="signal.h" alt="" coords="664,83,731,112"/>
-<area shape="rect" id="node16" href="$kprocess_8h.html" title="kprocess.h" alt="" coords="263,83,348,112"/>
-<area shape="rect" id="node11" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="751,160,839,189"/>
-<area shape="rect" id="node13" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="758,237,832,267"/>
-<area shape="rect" id="node19" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="372,160,455,189"/>
-<area shape="rect" id="node22" href="$process__types_8h.html" title="process_types.h" alt="" coords="479,160,596,189"/>
-<area shape="rect" id="node24" href="$symtable_8h.html" title="symtable.h" alt="" coords="263,160,348,189"/>
-<area shape="rect" id="node30" href="$vmm_8h.html" title="vmm.h" alt="" coords="178,160,239,189"/>
-<area shape="rect" id="node27" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="283,237,328,267"/>
+<area shape="rect" id="node3" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="21,160,101,189"/>
+<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="107,237,171,267"/>
+<area shape="rect" id="node7" href="$signal__types_8h.html" title="signal_types.h" alt="" coords="619,160,725,189"/>
+<area shape="rect" id="node10" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="212,83,297,112"/>
+<area shape="rect" id="node13" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="371,160,453,189"/>
+<area shape="rect" id="node16" href="$process__types_8h.html" title="process_types.h" alt="" coords="477,160,595,189"/>
+<area shape="rect" id="node18" href="$symtable_8h.html" title="symtable.h" alt="" coords="261,160,347,189"/>
+<area shape="rect" id="node24" href="$vmm_8h.html" title="vmm.h" alt="" coords="176,160,237,189"/>
+<area shape="rect" id="node21" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="281,237,327,267"/>
 </map>

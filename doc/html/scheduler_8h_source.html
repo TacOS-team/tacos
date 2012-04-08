@@ -83,7 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00030"></a>00030 <span class="preprocessor">#ifndef SCHEDULER_H</span>
 <a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define SCHEDULER_H</span>
 <a name="l00032"></a>00032 <span class="preprocessor"></span>
-<a name="l00037"></a>00037 <span class="preprocessor">#include &lt;<a class="code" href="kprocess_8h.html">kprocess.h</a>&gt;</span>
+<a name="l00037"></a>00037 <span class="preprocessor">#include &lt;<a class="code" href="kprocess_8h.html" title="Création de nouveaux processus.">kprocess.h</a>&gt;</span>
 <a name="l00038"></a>00038 <span class="preprocessor">#include &lt;<a class="code" href="ksyscall_8h.html">ksyscall.h</a>&gt;</span>
 <a name="l00039"></a>00039 
 <a name="l00040"></a>00040 <span class="comment">/* Cette structure doit contenir les differents pointeurs de fonctions pour manipuler le scheduler */</span>
@@ -109,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00075"></a>00075 
 <a name="l00080"></a>00080 <span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#aafa4b5a4a0ef6280c9834e1c30aff031" title="Arret du scheduler Arrète le scheduler en retirant le prochain schedule de la liste des évenements...">stop_scheduler</a>();
 <a name="l00081"></a>00081 
-<a name="l00086"></a>00086 SYSCALL_HANDLER1(sys_sleep, uint32_t delay); 
+<a name="l00086"></a>00086 SYSCALL_HANDLER1(sys_sleep, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> delay); 
 <a name="l00087"></a>00087 
 <a name="l00088"></a>00088 SYSCALL_HANDLER0(sys_hlt);
 <a name="l00089"></a>00089 
@@ -135,7 +135,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

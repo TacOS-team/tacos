@@ -98,13 +98,13 @@ Graphe de collaboration de _fs_instance_t:</div>
 Champs de données</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structfile__system__t.html">file_system_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a209ef4e2ed00460eead263311373a974">fs</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#acc3db122838752a84c6ecb93c3644256">device</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a693ff16b5d2119c50abd40a59f62cd66">open</a> )(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, uint32_t)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a7fb753cd49c899b570a9587bfaaec111">mkdir</a> )(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, mode_t)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a4c5f7b2df5a0aa45db83928acf1883c3">mknod</a> )(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, mode_t, dev_t)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a693ff16b5d2119c50abd40a59f62cd66">open</a> )(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a7fb753cd49c899b570a9587bfaaec111">mkdir</a> )(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a4c5f7b2df5a0aa45db83928acf1883c3">mknod</a> )(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>, <a class="el" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a2c6e81a4cb02717c82587c1995947e56">stat</a> )(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, struct <a class="el" href="structstat.html">stat</a> *)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#aca7d96dd5d309b2a83d1e649021e710d">unlink</a> )(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a50925b31c6d009dff759c7f02c7fecf9">rmdir</a> )(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#ae32572774c24e50d25439cfdd86fa164">truncate</a> )(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, off_t size)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#ae32572774c24e50d25439cfdd86fa164">truncate</a> )(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, <a class="el" href="libc_2include_2sys_2types_8h.html#a447a6a64dbb8fb44b1e62856b333db4a">off_t</a> size)</td></tr>
 </table>
 <hr/><h2>Documentation des champs</h2>
 <a class="anchor" id="acc3db122838752a84c6ecb93c3644256"></a><!-- doxytag: member="_fs_instance_t::device" ref="acc3db122838752a84c6ecb93c3644256" args="" -->
@@ -140,7 +140,7 @@ Champs de données</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* <a class="el" href="struct__fs__instance__t.html#a7fb753cd49c899b570a9587bfaaec111">_fs_instance_t::mkdir</a>)(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, mode_t)</td>
+          <td class="memname">int(* <a class="el" href="struct__fs__instance__t.html#a7fb753cd49c899b570a9587bfaaec111">_fs_instance_t::mkdir</a>)(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>)</td>
         </tr>
       </table>
 </div>
@@ -154,7 +154,7 @@ Champs de données</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* <a class="el" href="struct__fs__instance__t.html#a4c5f7b2df5a0aa45db83928acf1883c3">_fs_instance_t::mknod</a>)(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, mode_t, dev_t)</td>
+          <td class="memname">int(* <a class="el" href="struct__fs__instance__t.html#a4c5f7b2df5a0aa45db83928acf1883c3">_fs_instance_t::mknod</a>)(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>, <a class="el" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a>)</td>
         </tr>
       </table>
 </div>
@@ -168,7 +168,7 @@ Champs de données</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a>*(* <a class="el" href="struct__fs__instance__t.html#a693ff16b5d2119c50abd40a59f62cd66">_fs_instance_t::open</a>)(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, uint32_t)</td>
+          <td class="memname"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a>*(* <a class="el" href="struct__fs__instance__t.html#a693ff16b5d2119c50abd40a59f62cd66">_fs_instance_t::open</a>)(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>)</td>
         </tr>
       </table>
 </div>
@@ -210,7 +210,7 @@ Champs de données</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* <a class="el" href="struct__fs__instance__t.html#ae32572774c24e50d25439cfdd86fa164">_fs_instance_t::truncate</a>)(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, off_t size)</td>
+          <td class="memname">int(* <a class="el" href="struct__fs__instance__t.html#ae32572774c24e50d25439cfdd86fa164">_fs_instance_t::truncate</a>)(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, const char *, <a class="el" href="libc_2include_2sys_2types_8h.html#a447a6a64dbb8fb44b1e62856b333db4a">off_t</a> size)</td>
         </tr>
       </table>
 </div>
@@ -254,7 +254,7 @@ Champs de données</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

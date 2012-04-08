@@ -1,6 +1,8 @@
 var searchData=
 [
   ['magenta',['MAGENTA',['../video_8h.html#a6f699060902f800f12aaae150f3a708e',1,'video.h']]],
+  ['max_5fevents',['MAX_EVENTS',['../events_8c.html#ae42954bb8545d24e3e9dcde5920c9a0b',1,'events.c']]],
+  ['max_5finput',['MAX_INPUT',['../tty_8h.html#a00c1f0e7816626f58349492ef0720b5f',1,'tty.h']]],
   ['multiboot_5faout_5fkludge',['MULTIBOOT_AOUT_KLUDGE',['../multiboot_8h.html#a791f0c6a97c36de5388c990503ee4639',1,'multiboot.h']]],
   ['multiboot_5fbootloader_5fmagic',['MULTIBOOT_BOOTLOADER_MAGIC',['../multiboot_8h.html#aacd617f4e3daafd6eab95fb6215ccae4',1,'multiboot.h']]],
   ['multiboot_5fheader_5fmagic',['MULTIBOOT_HEADER_MAGIC',['../multiboot_8h.html#ab36ad4b4a42c58aac4ad1f2ba13054e9',1,'multiboot.h']]],

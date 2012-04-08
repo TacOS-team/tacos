@@ -1,20 +1,21 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$devfs_8c.html" title="kernel/fs/devfs.c" alt="" coords="5,83,125,112"/>
+<area shape="rect" id="node3" href="$devfs_8c.html" title="DevFS." alt="" coords="5,83,125,112"/>
 <area shape="rect" id="node5" href="$ext2__internal_8h.html" title="kernel/fs/ext2/ext2_internal.h" alt="" coords="149,83,339,112"/>
 <area shape="rect" id="node9" href="$fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="765,83,931,112"/>
-<area shape="rect" id="node22" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="363,83,520,112"/>
-<area shape="rect" id="node29" href="$fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="544,83,691,112"/>
-<area shape="rect" id="node34" href="$vfs_8c.html" title="kernel/vfs.c" alt="" coords="675,160,765,189"/>
-<area shape="rect" id="node36" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="955,83,1067,112"/>
-<area shape="rect" id="node38" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="1091,83,1192,112"/>
-<area shape="rect" id="node40" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1216,83,1325,112"/>
-<area shape="rect" id="node42" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="1349,83,1464,112"/>
+<area shape="rect" id="node22" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="955,83,1077,112"/>
+<area shape="rect" id="node24" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="363,83,520,112"/>
+<area shape="rect" id="node31" href="$fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="544,83,691,112"/>
+<area shape="rect" id="node36" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="675,160,765,189"/>
+<area shape="rect" id="node38" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="1101,83,1213,112"/>
+<area shape="rect" id="node40" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="1237,83,1339,112"/>
+<area shape="rect" id="node42" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1363,83,1472,112"/>
+<area shape="rect" id="node44" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="1496,83,1611,112"/>
 <area shape="rect" id="node7" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="101,160,243,189"/>
 <area shape="rect" id="node11" href="$fat_8c.html" title="kernel/fs/fat/fat.c" alt="" coords="789,160,907,189"/>
 <area shape="rect" id="node13" href="$fat__outils_8h.html" title="kernel/fs/fat/fat_outils.h" alt="" coords="931,160,1085,189"/>
 <area shape="rect" id="node15" href="$fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="860,315,1036,344"/>
 <area shape="rect" id="node17" href="$fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="985,237,1151,267"/>
 <area shape="rect" id="node20" href="$fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="756,237,911,267"/>
-<area shape="rect" id="node25" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="267,160,467,189"/>
-<area shape="rect" id="node27" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="491,160,600,189"/>
+<area shape="rect" id="node27" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="267,160,467,189"/>
+<area shape="rect" id="node29" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="491,160,600,189"/>
 </map>

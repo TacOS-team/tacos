@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$klog_8h.html" title="klog.h" alt="" coords="235,83,293,112"/>
+<area shape="rect" id="node3" href="$klog_8h.html" title="Logging macros." alt="" coords="235,83,293,112"/>
 <area shape="rect" id="node7" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="343,83,433,112"/>
 <area shape="rect" id="node21" href="$symtable_8h.html" title="symtable.h" alt="" coords="624,237,709,267"/>
 <area shape="rect" id="node24" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="684,315,729,344"/>
@@ -8,8 +8,8 @@
 <area shape="rect" id="node38" href="$vga_8h.html" title="drivers/vga.h" alt="" coords="1112,83,1211,112"/>
 <area shape="rect" id="node43" href="$stdio_8h.html" title="stdio.h" alt="" coords="1248,83,1309,112"/>
 <area shape="rect" id="node54" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="1419,83,1480,112"/>
-<area shape="rect" id="node5" href="$kstdio_8h.html" title="kstdio.h" alt="" coords="204,160,271,189"/>
-<area shape="rect" id="node9" href="$kprocess_8h.html" title="kprocess.h" alt="" coords="345,160,431,189"/>
+<area shape="rect" id="node5" href="$kstdio_8h.html" title="kprintf" alt="" coords="204,160,271,189"/>
+<area shape="rect" id="node9" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="345,160,431,189"/>
 <area shape="rect" id="node11" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="5,237,85,267"/>
 <area shape="rect" id="node13" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="313,315,377,344"/>
 <area shape="rect" id="node15" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="160,237,243,267"/>

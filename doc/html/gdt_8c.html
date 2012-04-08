@@ -85,15 +85,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Setup de la GDT.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;types.h&gt;</code><br/>
-<code>#include &quot;<a class="el" href="memory_8h_source.html">memory.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="gdt_8h_source.html">gdt.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="memory_8h_source.html">memory.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="gdt_8h_source.html">gdt.h</a>&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de gdt.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="gdt_8c__incl.png" border="0" usemap="#kernel_2gdt_8c" alt=""/></div>
 <map name="kernel_2gdt_8c" id="kernel_2gdt_8c">
-<area shape="rect" id="node5" href="memory_8h.html" title="memory.h" alt="" coords="93,83,173,112"/><area shape="rect" id="node9" href="gdt_8h.html" title="gdt.h" alt="" coords="197,83,248,112"/><area shape="rect" id="node7" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="145,160,209,189"/></map>
+<area shape="rect" id="node3" href="memory_8h.html" title="Gestion des pages mémoires physiques." alt="" coords="5,83,85,112"/><area shape="rect" id="node7" href="gdt_8h.html" title="gdt.h" alt="" coords="109,83,160,112"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="57,160,121,189"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
@@ -101,9 +100,9 @@ Structures de données</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__gdt__register.html">x86_gdt_register</a></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gdt_8c.html#abb81c8341c9230f4e46a1054d73a0ec4">gdt_setup</a> (size_t ram_size)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gdt_8c.html#abb81c8341c9230f4e46a1054d73a0ec4">gdt_setup</a> (<a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> ram_size)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57cd883493d6f9a5610a569e153393bf"></a><!-- doxytag: member="gdt.c::init_tss" ref="a57cd883493d6f9a5610a569e153393bf" args="(uint32_t stack_address)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init_tss</b> (uint32_t stack_address)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_tss</b> (<a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> stack_address)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72360769dc5cdf35fa18b4bfa67f1a66"></a><!-- doxytag: member="gdt.c::get_default_tss" ref="a72360769dc5cdf35fa18b4bfa67f1a66" args="()" -->
 <a class="el" href="structtss.html">tss_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get_default_tss</b> ()</td></tr>
 </table>
@@ -125,7 +124,7 @@ DESCRIPTION</h2>
         <tr>
           <td class="memname">void <a class="el" href="gdt_8h.html#abb81c8341c9230f4e46a1054d73a0ec4">gdt_setup</a> </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
           <td class="paramname"><em>ram_size</em></td><td>)</td>
           <td></td>
         </tr>
@@ -160,7 +159,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

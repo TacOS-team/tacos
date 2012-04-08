@@ -100,48 +100,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00051"></a><a class="code" href="structx86__segment__descriptor.html">00051</a> <span class="keyword">struct </span><a class="code" href="structx86__segment__descriptor.html" title="Segment Descriptor (cf doc intel v3. 3.4.3)">x86_segment_descriptor</a>
 <a name="l00052"></a>00052 {
 <a name="l00053"></a>00053         <span class="comment">/* Double mot de poids faible */</span>
-<a name="l00054"></a><a class="code" href="structx86__segment__descriptor.html#af9516f6d07c24ddedde31235b05b62c2">00054</a>         uint16_t <a class="code" href="structx86__segment__descriptor.html#af9516f6d07c24ddedde31235b05b62c2">segment_limit_15_0</a>; 
-<a name="l00057"></a>00057         uint16_t base_address_15_0;  <span class="comment">/* Défini la position de l&#39;octet 0 du segment </span>
+<a name="l00054"></a><a class="code" href="structx86__segment__descriptor.html#af9516f6d07c24ddedde31235b05b62c2">00054</a>         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> <a class="code" href="structx86__segment__descriptor.html#af9516f6d07c24ddedde31235b05b62c2">segment_limit_15_0</a>; 
+<a name="l00057"></a>00057         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> base_address_15_0;  <span class="comment">/* Défini la position de l&#39;octet 0 du segment </span>
 <a name="l00058"></a>00058 <span class="comment">                                                                                          dans les 4Gio de l&#39;espace adressable linéaire */</span>
 <a name="l00059"></a>00059 
 <a name="l00060"></a>00060         <span class="comment">/* Double mot de poids fort */</span>
-<a name="l00061"></a><a class="code" href="structx86__segment__descriptor.html#a95889fcbabf116ba15a6cea3364b903d">00061</a>         uint8_t <a class="code" href="structx86__segment__descriptor.html#a95889fcbabf116ba15a6cea3364b903d">base_address_23_16</a>; 
-<a name="l00062"></a><a class="code" href="structx86__segment__descriptor.html#ab3ef0c9fce1e74ee6549bbce5ea6f25f">00062</a>         uint8_t <a class="code" href="structx86__segment__descriptor.html#ab3ef0c9fce1e74ee6549bbce5ea6f25f">segment_type</a>:4;                 
-<a name="l00063"></a><a class="code" href="structx86__segment__descriptor.html#adda0434239b7e6c6a68b8e7556e4bb2f">00063</a>         uint8_t <a class="code" href="structx86__segment__descriptor.html#adda0434239b7e6c6a68b8e7556e4bb2f">descriptor_type</a>:1;      
-<a name="l00064"></a><a class="code" href="structx86__segment__descriptor.html#ab45e49c27bbe57a568d914bd13e45ef7">00064</a>         uint8_t <a class="code" href="structx86__segment__descriptor.html#ab45e49c27bbe57a568d914bd13e45ef7">dpl</a>:2; 
-<a name="l00065"></a><a class="code" href="structx86__segment__descriptor.html#ad4196191d05e69b42272a411a69d1eae">00065</a>         uint8_t <a class="code" href="structx86__segment__descriptor.html#ad4196191d05e69b42272a411a69d1eae">present</a>:1; 
-<a name="l00066"></a><a class="code" href="structx86__segment__descriptor.html#a6ab37b8f7730fe67af946725a3dd064a">00066</a>         uint8_t <a class="code" href="structx86__segment__descriptor.html#a6ab37b8f7730fe67af946725a3dd064a">segment_limit_19_16</a>:4; 
-<a name="l00067"></a><a class="code" href="structx86__segment__descriptor.html#a761494a7a460e493e0d5d188a31cd052">00067</a>         uint8_t <a class="code" href="structx86__segment__descriptor.html#a761494a7a460e493e0d5d188a31cd052">available</a>:1; 
-<a name="l00068"></a><a class="code" href="structx86__segment__descriptor.html#a4cbd016599f85d6a2060c31d7714dbbd">00068</a>         uint8_t <a class="code" href="structx86__segment__descriptor.html#a4cbd016599f85d6a2060c31d7714dbbd">zero</a>:1; 
-<a name="l00069"></a><a class="code" href="structx86__segment__descriptor.html#a40c320788bf23e3660d0def872cec94c">00069</a>         uint8_t <a class="code" href="structx86__segment__descriptor.html#a40c320788bf23e3660d0def872cec94c">operation_size</a>:1; 
-<a name="l00070"></a><a class="code" href="structx86__segment__descriptor.html#a19d5da93d41a1ec3327cbd92ace8fa08">00070</a>         uint8_t <a class="code" href="structx86__segment__descriptor.html#a19d5da93d41a1ec3327cbd92ace8fa08">granularity</a>:1; 
-<a name="l00071"></a><a class="code" href="structx86__segment__descriptor.html#af839dd21992c16573ea5b816b72f249f">00071</a>         uint8_t <a class="code" href="structx86__segment__descriptor.html#af839dd21992c16573ea5b816b72f249f">base_address_31_24</a>; 
+<a name="l00061"></a><a class="code" href="structx86__segment__descriptor.html#a95889fcbabf116ba15a6cea3364b903d">00061</a>         <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a95889fcbabf116ba15a6cea3364b903d">base_address_23_16</a>; 
+<a name="l00062"></a><a class="code" href="structx86__segment__descriptor.html#ab3ef0c9fce1e74ee6549bbce5ea6f25f">00062</a>         <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#ab3ef0c9fce1e74ee6549bbce5ea6f25f">segment_type</a>:4;                 
+<a name="l00063"></a><a class="code" href="structx86__segment__descriptor.html#adda0434239b7e6c6a68b8e7556e4bb2f">00063</a>         <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#adda0434239b7e6c6a68b8e7556e4bb2f">descriptor_type</a>:1;      
+<a name="l00064"></a><a class="code" href="structx86__segment__descriptor.html#ab45e49c27bbe57a568d914bd13e45ef7">00064</a>         <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#ab45e49c27bbe57a568d914bd13e45ef7">dpl</a>:2; 
+<a name="l00065"></a><a class="code" href="structx86__segment__descriptor.html#ad4196191d05e69b42272a411a69d1eae">00065</a>         <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#ad4196191d05e69b42272a411a69d1eae">present</a>:1; 
+<a name="l00066"></a><a class="code" href="structx86__segment__descriptor.html#a6ab37b8f7730fe67af946725a3dd064a">00066</a>         <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a6ab37b8f7730fe67af946725a3dd064a">segment_limit_19_16</a>:4; 
+<a name="l00067"></a><a class="code" href="structx86__segment__descriptor.html#a761494a7a460e493e0d5d188a31cd052">00067</a>         <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a761494a7a460e493e0d5d188a31cd052">available</a>:1; 
+<a name="l00068"></a><a class="code" href="structx86__segment__descriptor.html#a4cbd016599f85d6a2060c31d7714dbbd">00068</a>         <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a4cbd016599f85d6a2060c31d7714dbbd">zero</a>:1; 
+<a name="l00069"></a><a class="code" href="structx86__segment__descriptor.html#a40c320788bf23e3660d0def872cec94c">00069</a>         <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a40c320788bf23e3660d0def872cec94c">operation_size</a>:1; 
+<a name="l00070"></a><a class="code" href="structx86__segment__descriptor.html#a19d5da93d41a1ec3327cbd92ace8fa08">00070</a>         <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a19d5da93d41a1ec3327cbd92ace8fa08">granularity</a>:1; 
+<a name="l00071"></a><a class="code" href="structx86__segment__descriptor.html#af839dd21992c16573ea5b816b72f249f">00071</a>         <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#af839dd21992c16573ea5b816b72f249f">base_address_31_24</a>; 
 <a name="l00073"></a>00073 } __attribute__ ((packed, aligned (8)));
 <a name="l00074"></a>00074 
 <a name="l00075"></a>00075 
 <a name="l00076"></a><a class="code" href="structtss.html">00076</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structtss.html">tss</a> {
-<a name="l00077"></a>00077         uint16_t    previous_task, __previous_task_unused;
-<a name="l00078"></a>00078         uint32_t    esp0;
-<a name="l00079"></a>00079         uint16_t    ss0, __ss0_unused;
-<a name="l00080"></a>00080         uint32_t    esp1;
-<a name="l00081"></a>00081         uint16_t    ss1, __ss1_unused;
-<a name="l00082"></a>00082         uint32_t    esp2;
-<a name="l00083"></a>00083         uint16_t    ss2, __ss2_unused;
-<a name="l00084"></a>00084         uint32_t    cr3;
-<a name="l00085"></a>00085         uint32_t    eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;
-<a name="l00086"></a>00086         uint16_t    es, __es_unused;
-<a name="l00087"></a>00087         uint16_t    cs, __cs_unused;
-<a name="l00088"></a>00088         uint16_t    ss, __ss_unused;
-<a name="l00089"></a>00089         uint16_t    ds, __ds_unused;
-<a name="l00090"></a>00090         uint16_t    fs, __fs_unused;
-<a name="l00091"></a>00091         uint16_t    gs, __gs_unused;
-<a name="l00092"></a>00092         uint16_t    ldt_selector, __ldt_sel_unused;
-<a name="l00093"></a>00093         uint16_t    debug_flag, io_map;
+<a name="l00077"></a>00077         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    previous_task, __previous_task_unused;
+<a name="l00078"></a>00078         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>    esp0;
+<a name="l00079"></a>00079         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ss0, __ss0_unused;
+<a name="l00080"></a>00080         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>    esp1;
+<a name="l00081"></a>00081         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ss1, __ss1_unused;
+<a name="l00082"></a>00082         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>    esp2;
+<a name="l00083"></a>00083         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ss2, __ss2_unused;
+<a name="l00084"></a>00084         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>    cr3;
+<a name="l00085"></a>00085         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>    eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;
+<a name="l00086"></a>00086         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    es, __es_unused;
+<a name="l00087"></a>00087         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    cs, __cs_unused;
+<a name="l00088"></a>00088         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ss, __ss_unused;
+<a name="l00089"></a>00089         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ds, __ds_unused;
+<a name="l00090"></a>00090         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    fs, __fs_unused;
+<a name="l00091"></a>00091         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    gs, __gs_unused;
+<a name="l00092"></a>00092         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ldt_selector, __ldt_sel_unused;
+<a name="l00093"></a>00093         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    debug_flag, io_map;
 <a name="l00094"></a>00094 } __attribute__ ((packed)) <a class="code" href="structtss.html">tss_t</a>;
 <a name="l00095"></a>00095 
 <a name="l00101"></a>00101 <span class="keywordtype">void</span> <a class="code" href="gdt_8c.html#abb81c8341c9230f4e46a1054d73a0ec4">gdt_setup</a>(<span class="keywordtype">size_t</span> ram_size);
 <a name="l00102"></a>00102 
-<a name="l00103"></a>00103 <span class="keywordtype">void</span> init_tss(uint32_t stack_address);
+<a name="l00103"></a>00103 <span class="keywordtype">void</span> init_tss(<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> stack_address);
 <a name="l00104"></a>00104 tss_t* get_default_tss();
 <a name="l00105"></a>00105 
 <a name="l00106"></a>00106 <span class="preprocessor">#endif</span>
@@ -163,7 +163,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

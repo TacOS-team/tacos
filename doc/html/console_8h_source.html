@@ -84,7 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _CONSOLE_H_</span>
 <a name="l00031"></a>00031 <span class="preprocessor"></span>
 <a name="l00032"></a>00032 <span class="preprocessor">#include &lt;types.h&gt;</span>
-<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="tty_8h.html">tty.h</a>&gt;</span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="tty_8h.html" title="Terminal posix-like.">tty.h</a>&gt;</span>
 <a name="l00034"></a>00034 
 <a name="l00038"></a><a class="code" href="structconsole__t.html">00038</a> <span class="keyword">struct </span><a class="code" href="structconsole__t.html" title="Structure qui contient les informations d&#39;une console.">console_t</a> {
 <a name="l00039"></a><a class="code" href="structconsole__t.html#ad830edd689dced40135f6afa651677e3">00039</a>         <span class="keywordtype">bool</span> <a class="code" href="structconsole__t.html#ad830edd689dced40135f6afa651677e3">used</a>;                                              
@@ -94,15 +94,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00043"></a><a class="code" href="structconsole__t.html#a07b1c84ea67ce030ebd868917e56b0d9">00043</a>         <span class="keywordtype">char</span> <a class="code" href="structconsole__t.html#a07b1c84ea67ce030ebd868917e56b0d9">attr</a>;                                              
 <a name="l00044"></a><a class="code" href="structconsole__t.html#ada36635a93afd23c3eb88c856f218103">00044</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structconsole__t.html#ada36635a93afd23c3eb88c856f218103">lines</a>;             
 <a name="l00045"></a><a class="code" href="structconsole__t.html#a338612e1f99838e2b34cdb289bc514b8">00045</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structconsole__t.html#a338612e1f99838e2b34cdb289bc514b8">cols</a>;              
-<a name="l00046"></a>00046 };
-<a name="l00047"></a>00047 
-<a name="l00053"></a>00053 <span class="keywordtype">void</span> <a class="code" href="console_8c.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan.">focus_console</a>(<span class="keywordtype">int</span> n);
+<a name="l00047"></a>00047         <span class="keywordtype">bool</span> escape_char;
+<a name="l00048"></a>00048         <span class="keywordtype">bool</span> ansi_escape_code;
+<a name="l00049"></a>00049         <span class="keywordtype">bool</span> ansi_second_val;
+<a name="l00050"></a>00050         <span class="keywordtype">int</span> val;
+<a name="l00051"></a>00051         <span class="keywordtype">int</span> val2;
+<a name="l00052"></a>00052         <span class="keywordtype">int</span> bright;
+<a name="l00053"></a>00053 };
 <a name="l00054"></a>00054 
-<a name="l00058"></a>00058 <span class="keywordtype">void</span> <a class="code" href="console_8c.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;.">console_init</a>();
-<a name="l00059"></a>00059 
-<a name="l00063"></a>00063 <a class="code" href="struct__tty__struct__t.html">tty_struct_t</a>* <a class="code" href="console_8c.html#aaf8536584330c11f744630a135c7b78b" title="Retourne le tty_struct_t qui correspond à la console au premier plan.">get_active_terminal</a>();
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 <span class="preprocessor">#endif</span>
+<a name="l00060"></a>00060 <span class="keywordtype">void</span> <a class="code" href="console_8c.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan.">focus_console</a>(<span class="keywordtype">int</span> n);
+<a name="l00061"></a>00061 
+<a name="l00065"></a>00065 <span class="keywordtype">void</span> <a class="code" href="console_8c.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;.">console_init</a>();
+<a name="l00066"></a>00066 
+<a name="l00070"></a>00070 <a class="code" href="struct__tty__struct__t.html">tty_struct_t</a>* <a class="code" href="console_8c.html#aaf8536584330c11f744630a135c7b78b" title="Retourne le tty_struct_t qui correspond à la console au premier plan.">get_active_terminal</a>();
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -121,7 +127,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

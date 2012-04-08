@@ -1,6 +1,6 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="56,237,136,267"/>
 <area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="103,315,167,344"/>
-<area shape="rect" id="node8" href="$kstat_8h.html" title="kstat.h" alt="" coords="125,83,184,112"/>
+<area shape="rect" id="node8" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="125,83,184,112"/>
 <area shape="rect" id="node11" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="123,160,187,189"/>
 </map>

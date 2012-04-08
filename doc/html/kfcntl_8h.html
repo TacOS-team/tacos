@@ -82,6 +82,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier kernel/include/kfcntl.h</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Kernel file control operations.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="fd__types_8h_source.html">fd_types.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="kprocess_8h_source.html">kprocess.h</a>&gt;</code><br/>
@@ -91,60 +94,45 @@ Graphe des dépendances par inclusion de kfcntl.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="kfcntl_8h__incl.png" border="0" usemap="#kernel_2include_2kfcntl_8h" alt=""/></div>
 <map name="kernel_2include_2kfcntl_8h" id="kernel_2include_2kfcntl_8h">
-<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="107,237,171,267"/><area shape="rect" id="node5" href="fd__types_8h.html" title="fd_types.h" alt="" coords="643,160,725,189"/><area shape="rect" id="node7" href="kprocess_8h.html" title="kprocess.h" alt="" coords="212,83,297,112"/><area shape="rect" id="node9" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="21,160,101,189"/><area shape="rect" id="node13" href="signal__types_8h.html" title="signal_types.h" alt="" coords="371,160,477,189"/><area shape="rect" id="node15" href="process__types_8h.html" title="process_types.h" alt="" coords="501,160,619,189"/><area shape="rect" id="node17" href="symtable_8h.html" title="symtable.h" alt="" coords="261,160,347,189"/><area shape="rect" id="node23" href="vmm_8h.html" title="vmm.h" alt="" coords="176,160,237,189"/><area shape="rect" id="node20" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="281,237,327,267"/></map>
+<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="107,237,171,267"/><area shape="rect" id="node5" href="fd__types_8h.html" title="fd_types.h" alt="" coords="643,160,725,189"/><area shape="rect" id="node7" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="212,83,297,112"/><area shape="rect" id="node9" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="21,160,101,189"/><area shape="rect" id="node13" href="signal__types_8h.html" title="signal_types.h" alt="" coords="371,160,477,189"/><area shape="rect" id="node15" href="process__types_8h.html" title="process_types.h" alt="" coords="501,160,619,189"/><area shape="rect" id="node17" href="symtable_8h.html" title="symtable.h" alt="" coords="261,160,347,189"/><area shape="rect" id="node23" href="vmm_8h.html" title="vmm.h" alt="" coords="176,160,237,189"/><area shape="rect" id="node20" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="281,237,327,267"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="kfcntl_8h__dep__incl.png" border="0" usemap="#kernel_2include_2kfcntl_8hdep" alt=""/></div>
 <map name="kernel_2include_2kfcntl_8hdep" id="kernel_2include_2kfcntl_8hdep">
-<area shape="rect" id="node3" href="serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="5,83,184,112"/><area shape="rect" id="node5" href="tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="208,83,384,112"/><area shape="rect" id="node7" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="408,83,608,112"/><area shape="rect" id="node9" href="fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="632,83,808,112"/><area shape="rect" id="node11" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="832,83,941,112"/><area shape="rect" id="node13" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="965,83,1067,112"/><area shape="rect" id="node15" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="1091,83,1219,112"/><area shape="rect" id="node17" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1243,83,1352,112"/><area shape="rect" id="node19" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="1376,83,1491,112"/><area shape="rect" id="node21" href="vfs_8c.html" title="kernel/vfs.c" alt="" coords="1515,83,1605,112"/></map>
+<area shape="rect" id="node3" href="serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="5,83,184,112"/><area shape="rect" id="node5" href="tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="208,83,384,112"/><area shape="rect" id="node7" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="408,83,608,112"/><area shape="rect" id="node9" href="fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="632,83,808,112"/><area shape="rect" id="node11" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="832,83,941,112"/><area shape="rect" id="node13" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="965,83,1067,112"/><area shape="rect" id="node15" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="1091,83,1219,112"/><area shape="rect" id="node17" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1243,83,1352,112"/><area shape="rect" id="node19" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="1376,83,1467,112"/></map>
 </div>
 </div>
 <p><a href="kfcntl_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4dc4d45e07d2abc899bcaf04b2846a87"></a><!-- doxytag: member="kfcntl.h::O_ACCMODE" ref="a4dc4d45e07d2abc899bcaf04b2846a87" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_ACCMODE</b>&#160;&#160;&#160;00000003</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a68c9ffaac7dbcd652225dd7c06a54b"></a><!-- doxytag: member="kfcntl.h::O_RDONLY" ref="a7a68c9ffaac7dbcd652225dd7c06a54b" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_RDONLY</b>&#160;&#160;&#160;00000000</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11b644a8526139c4cc1850dac1271ced"></a><!-- doxytag: member="kfcntl.h::O_WRONLY" ref="a11b644a8526139c4cc1850dac1271ced" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_WRONLY</b>&#160;&#160;&#160;00000001</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abb0586253488ee61072b73557eeb873b"></a><!-- doxytag: member="kfcntl.h::O_RDWR" ref="abb0586253488ee61072b73557eeb873b" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_RDWR</b>&#160;&#160;&#160;00000002</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1cf6b1de1fffedaa1d26b189e9a8d2cc"></a><!-- doxytag: member="kfcntl.h::O_CREAT" ref="a1cf6b1de1fffedaa1d26b189e9a8d2cc" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_CREAT</b>&#160;&#160;&#160;00000100 /* not fcntl */</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#a4dc4d45e07d2abc899bcaf04b2846a87">O_ACCMODE</a>&#160;&#160;&#160;00000003</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#a7a68c9ffaac7dbcd652225dd7c06a54b">O_RDONLY</a>&#160;&#160;&#160;00000000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#a11b644a8526139c4cc1850dac1271ced">O_WRONLY</a>&#160;&#160;&#160;00000001</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#abb0586253488ee61072b73557eeb873b">O_RDWR</a>&#160;&#160;&#160;00000002</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#a1cf6b1de1fffedaa1d26b189e9a8d2cc">O_CREAT</a>&#160;&#160;&#160;00000100</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f5acfe79fafe14b6694447bd0e9f10b"></a><!-- doxytag: member="kfcntl.h::O_EXCL" ref="a9f5acfe79fafe14b6694447bd0e9f10b" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_EXCL</b>&#160;&#160;&#160;00000200 /* not fcntl */</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_EXCL</b>&#160;&#160;&#160;00000200 /* not <a class="el" href="fcntl_8h.html#a5752d6571b615f1b7b1b0f719c2bc69d">fcntl</a> */</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e375ab32c7ef4581b026be28e4cc116"></a><!-- doxytag: member="kfcntl.h::O_NOCTTY" ref="a2e375ab32c7ef4581b026be28e4cc116" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_NOCTTY</b>&#160;&#160;&#160;00000400 /* not fcntl */</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1d67e453fb3031f40f8cd3403773813"></a><!-- doxytag: member="kfcntl.h::O_TRUNC" ref="ad1d67e453fb3031f40f8cd3403773813" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_TRUNC</b>&#160;&#160;&#160;00001000 /* not fcntl */</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae036f789407d21f07b211552d67b3214"></a><!-- doxytag: member="kfcntl.h::O_APPEND" ref="ae036f789407d21f07b211552d67b3214" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_APPEND</b>&#160;&#160;&#160;00002000</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39d33ce33804efd4d52606d59071c6d8"></a><!-- doxytag: member="kfcntl.h::O_NONBLOCK" ref="a39d33ce33804efd4d52606d59071c6d8" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_NONBLOCK</b>&#160;&#160;&#160;00004000</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae85139bfa94236d126bb1e3b772998f"></a><!-- doxytag: member="kfcntl.h::O_SYNC" ref="aae85139bfa94236d126bb1e3b772998f" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_SYNC</b>&#160;&#160;&#160;00010000</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_NOCTTY</b>&#160;&#160;&#160;00000400 /* not <a class="el" href="fcntl_8h.html#a5752d6571b615f1b7b1b0f719c2bc69d">fcntl</a> */</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#ad1d67e453fb3031f40f8cd3403773813">O_TRUNC</a>&#160;&#160;&#160;00001000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#ae036f789407d21f07b211552d67b3214">O_APPEND</a>&#160;&#160;&#160;00002000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#a39d33ce33804efd4d52606d59071c6d8">O_NONBLOCK</a>&#160;&#160;&#160;00004000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#aae85139bfa94236d126bb1e3b772998f">O_SYNC</a>&#160;&#160;&#160;00010000</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c28a43c30721462ad7e40f37051c9ca"></a><!-- doxytag: member="kfcntl.h::FASYNC" ref="a1c28a43c30721462ad7e40f37051c9ca" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>FASYNC</b>&#160;&#160;&#160;00020000 /* fcntl, for BSD compatibility */</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad28ccbf6f0a42c91c160ac5ada0c8429"></a><!-- doxytag: member="kfcntl.h::O_DIRECT" ref="ad28ccbf6f0a42c91c160ac5ada0c8429" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_DIRECT</b>&#160;&#160;&#160;00040000 /* direct disk access hint */</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1126309aa58e7c99553c7f6be1bc7348"></a><!-- doxytag: member="kfcntl.h::O_LARGEFILE" ref="a1126309aa58e7c99553c7f6be1bc7348" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_LARGEFILE</b>&#160;&#160;&#160;00100000</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6afd3dd2f570069804b40e6aa24fc966"></a><!-- doxytag: member="kfcntl.h::O_DIRECTORY" ref="a6afd3dd2f570069804b40e6aa24fc966" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_DIRECTORY</b>&#160;&#160;&#160;00200000 /* must be a directory */</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82d4d551b214905742c9e045185d352a"></a><!-- doxytag: member="kfcntl.h::O_NOFOLLOW" ref="a82d4d551b214905742c9e045185d352a" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_NOFOLLOW</b>&#160;&#160;&#160;00400000 /* don't follow links */</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FASYNC</b>&#160;&#160;&#160;00020000 /* <a class="el" href="fcntl_8h.html#a5752d6571b615f1b7b1b0f719c2bc69d">fcntl</a>, for BSD compatibility */</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#ad28ccbf6f0a42c91c160ac5ada0c8429">O_DIRECT</a>&#160;&#160;&#160;00040000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#a6afd3dd2f570069804b40e6aa24fc966">O_DIRECTORY</a>&#160;&#160;&#160;00200000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#a82d4d551b214905742c9e045185d352a">O_NOFOLLOW</a>&#160;&#160;&#160;00400000</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a476bb0c47c4ceb1669c15c2635c94300"></a><!-- doxytag: member="kfcntl.h::O_NOATIME" ref="a476bb0c47c4ceb1669c15c2635c94300" args="" -->
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>O_NOATIME</b>&#160;&#160;&#160;01000000</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad6d8fbe4e494b4dbe051612572d3f757"></a><!-- doxytag: member="kfcntl.h::O_CLOEXEC" ref="ad6d8fbe4e494b4dbe051612572d3f757" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_CLOEXEC</b>&#160;&#160;&#160;02000000 /* set close_on_exec */</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63ba256ec18f373817941d5a4d0e2d5e"></a><!-- doxytag: member="kfcntl.h::O_NDELAY" ref="a63ba256ec18f373817941d5a4d0e2d5e" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>O_NDELAY</b>&#160;&#160;&#160;O_NONBLOCK</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#ad6d8fbe4e494b4dbe051612572d3f757">O_CLOEXEC</a>&#160;&#160;&#160;02000000</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2939853c650561d3495ed40f68f6249"></a><!-- doxytag: member="kfcntl.h::F_SETFL" ref="af2939853c650561d3495ed40f68f6249" args="" -->
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>F_SETFL</b>&#160;&#160;&#160;4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a025fad21a889c79f02ec53abe3526c32"></a><!-- doxytag: member="kfcntl.h::F_GETFL" ref="a025fad21a889c79f02ec53abe3526c32" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>F_GETFL</b>&#160;&#160;&#160;5</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#a5cb8d11eeb6842f49090696dbda4490b">init_stdfd</a> (<a class="el" href="structprocess__t.html">process_t</a> *new_proc)</td></tr>
@@ -152,12 +140,9 @@ Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc12a443121c63ad99a6311aa2739884"></a><!-- doxytag: member="kfcntl.h::close_all_fd" ref="adc12a443121c63ad99a6311aa2739884" args="()" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#adc12a443121c63ad99a6311aa2739884">close_all_fd</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Ferme tous les file descriptors ouverts. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff82b7a21385ae9ee7ed922282ae2289"></a><!-- doxytag: member="kfcntl.h::SYSCALL_HANDLER3" ref="aff82b7a21385ae9ee7ed922282ae2289" args="(sys_open, uint32_t fd_id, char *path, uint32_t flags)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_open, uint32_t fd_id, char *path, uint32_t flags)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab9dea28627740746b058e7cc69495dd0"></a><!-- doxytag: member="kfcntl.h::SYSCALL_HANDLER2" ref="ab9dea28627740746b058e7cc69495dd0" args="(sys_close, uint32_t fd_id, uint32_t *ret)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER2</b> (sys_close, uint32_t fd_id, uint32_t *ret)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c5292eb7af1637f45a0512c58c58cbc"></a><!-- doxytag: member="kfcntl.h::SYSCALL_HANDLER3" ref="a7c5292eb7af1637f45a0512c58c58cbc" args="(sys_fcntl, int *fd_id, unsigned int request, void *data)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_fcntl, int *fd_id, unsigned int request, void *data)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#aa1d225acb87c04ac8d56c8096f587a03">SYSCALL_HANDLER3</a> (sys_open, int *fd_id, char *path, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#a3a5f4c56fd3fcc2b69757102f722fc29">SYSCALL_HANDLER2</a> (sys_close, int fd_id, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *ret)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kfcntl_8h.html#a7c5292eb7af1637f45a0512c58c58cbc">SYSCALL_HANDLER3</a> (sys_fcntl, int *fd_id, unsigned int request, void *data)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -169,8 +154,190 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-<p>Description de ce que fait le fichier</p>
-</div><hr/><h2>Documentation des fonctions</h2>
+</div><hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="a4dc4d45e07d2abc899bcaf04b2846a87"></a><!-- doxytag: member="kfcntl.h::O_ACCMODE" ref="a4dc4d45e07d2abc899bcaf04b2846a87" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="fcntl_8h.html#a4dc4d45e07d2abc899bcaf04b2846a87">O_ACCMODE</a>&#160;&#160;&#160;00000003</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Access mode mask. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae036f789407d21f07b211552d67b3214"></a><!-- doxytag: member="kfcntl.h::O_APPEND" ref="ae036f789407d21f07b211552d67b3214" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="fcntl_8h.html#ae036f789407d21f07b211552d67b3214">O_APPEND</a>&#160;&#160;&#160;00002000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Ajoute en fin de fichier. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad6d8fbe4e494b4dbe051612572d3f757"></a><!-- doxytag: member="kfcntl.h::O_CLOEXEC" ref="ad6d8fbe4e494b4dbe051612572d3f757" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="fcntl_8h.html#ad6d8fbe4e494b4dbe051612572d3f757">O_CLOEXEC</a>&#160;&#160;&#160;02000000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>set close_on_exec </p>
+
+</div>
+</div>
+<a class="anchor" id="a1cf6b1de1fffedaa1d26b189e9a8d2cc"></a><!-- doxytag: member="kfcntl.h::O_CREAT" ref="a1cf6b1de1fffedaa1d26b189e9a8d2cc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="fcntl_8h.html#a1cf6b1de1fffedaa1d26b189e9a8d2cc">O_CREAT</a>&#160;&#160;&#160;00000100</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Create file if non-existant. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad28ccbf6f0a42c91c160ac5ada0c8429"></a><!-- doxytag: member="kfcntl.h::O_DIRECT" ref="ad28ccbf6f0a42c91c160ac5ada0c8429" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="fcntl_8h.html#ad28ccbf6f0a42c91c160ac5ada0c8429">O_DIRECT</a>&#160;&#160;&#160;00040000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>direct disk access hint </p>
+
+</div>
+</div>
+<a class="anchor" id="a6afd3dd2f570069804b40e6aa24fc966"></a><!-- doxytag: member="kfcntl.h::O_DIRECTORY" ref="a6afd3dd2f570069804b40e6aa24fc966" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="fcntl_8h.html#a6afd3dd2f570069804b40e6aa24fc966">O_DIRECTORY</a>&#160;&#160;&#160;00200000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>must be a directory </p>
+
+</div>
+</div>
+<a class="anchor" id="a82d4d551b214905742c9e045185d352a"></a><!-- doxytag: member="kfcntl.h::O_NOFOLLOW" ref="a82d4d551b214905742c9e045185d352a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="fcntl_8h.html#a82d4d551b214905742c9e045185d352a">O_NOFOLLOW</a>&#160;&#160;&#160;00400000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>don't follow links </p>
+
+</div>
+</div>
+<a class="anchor" id="a39d33ce33804efd4d52606d59071c6d8"></a><!-- doxytag: member="kfcntl.h::O_NONBLOCK" ref="a39d33ce33804efd4d52606d59071c6d8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="fcntl_8h.html#a39d33ce33804efd4d52606d59071c6d8">O_NONBLOCK</a>&#160;&#160;&#160;00004000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Le read ne sera pas bloquant. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7a68c9ffaac7dbcd652225dd7c06a54b"></a><!-- doxytag: member="kfcntl.h::O_RDONLY" ref="a7a68c9ffaac7dbcd652225dd7c06a54b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="fcntl_8h.html#a7a68c9ffaac7dbcd652225dd7c06a54b">O_RDONLY</a>&#160;&#160;&#160;00000000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Open file for read only access. </p>
+
+</div>
+</div>
+<a class="anchor" id="abb0586253488ee61072b73557eeb873b"></a><!-- doxytag: member="kfcntl.h::O_RDWR" ref="abb0586253488ee61072b73557eeb873b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="fcntl_8h.html#abb0586253488ee61072b73557eeb873b">O_RDWR</a>&#160;&#160;&#160;00000002</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Open file for both reading and writing. </p>
+
+</div>
+</div>
+<a class="anchor" id="aae85139bfa94236d126bb1e3b772998f"></a><!-- doxytag: member="kfcntl.h::O_SYNC" ref="aae85139bfa94236d126bb1e3b772998f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="fcntl_8h.html#aae85139bfa94236d126bb1e3b772998f">O_SYNC</a>&#160;&#160;&#160;00010000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Appel à write bloquant tant que les données ne sont pas écrites physiquement sur le disque. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad1d67e453fb3031f40f8cd3403773813"></a><!-- doxytag: member="kfcntl.h::O_TRUNC" ref="ad1d67e453fb3031f40f8cd3403773813" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="fcntl_8h.html#ad1d67e453fb3031f40f8cd3403773813">O_TRUNC</a>&#160;&#160;&#160;00001000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Tronque le fichier à une longueur nulle. </p>
+
+</div>
+</div>
+<a class="anchor" id="a11b644a8526139c4cc1850dac1271ced"></a><!-- doxytag: member="kfcntl.h::O_WRONLY" ref="a11b644a8526139c4cc1850dac1271ced" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="fcntl_8h.html#a11b644a8526139c4cc1850dac1271ced">O_WRONLY</a>&#160;&#160;&#160;00000001</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Open file for write only access. </p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
 <a class="anchor" id="a5cb8d11eeb6842f49090696dbda4490b"></a><!-- doxytag: member="kfcntl.h::init_stdfd" ref="a5cb8d11eeb6842f49090696dbda4490b" args="(process_t *new_proc)" -->
 <div class="memitem">
 <div class="memproto">
@@ -198,7 +365,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kfcntl_8h_a5cb8d11eeb6842f49090696dbda4490b_cgraph.png" border="0" usemap="#kfcntl_8h_a5cb8d11eeb6842f49090696dbda4490b_cgraph" alt=""/></div>
 <map name="kfcntl_8h_a5cb8d11eeb6842f49090696dbda4490b_cgraph" id="kfcntl_8h_a5cb8d11eeb6842f49090696dbda4490b_cgraph">
-<area shape="rect" id="node3" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné." alt="" coords="128,5,227,35"/><area shape="rect" id="node5" href="string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="141,59,213,88"/></map>
+<area shape="rect" id="node3" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné." alt="" coords="128,5,227,35"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="285,57,352,87"/><area shape="rect" id="node9" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="141,109,213,139"/><area shape="rect" id="node11" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="140,163,215,192"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="412,56,553,85"/><area shape="rect" id="node14" href="vfs_8h.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier." alt="" coords="275,163,363,192"/><area shape="rect" id="node20" href="vfs_8h.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="280,216,357,245"/><area shape="rect" id="node16" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="456,109,509,139"/><area shape="rect" id="node18" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="455,163,511,192"/><area shape="rect" id="node22" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="457,216,508,245"/></map>
 </div>
 </p>
 
@@ -208,6 +375,170 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="center"><img src="kfcntl_8h_a5cb8d11eeb6842f49090696dbda4490b_icgraph.png" border="0" usemap="#kfcntl_8h_a5cb8d11eeb6842f49090696dbda4490b_icgraph" alt=""/></div>
 <map name="kfcntl_8h_a5cb8d11eeb6842f49090696dbda4490b_icgraph" id="kfcntl_8h_a5cb8d11eeb6842f49090696dbda4490b_icgraph">
 <area shape="rect" id="node3" href="kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="128,5,243,35"/><area shape="rect" id="node5" href="scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="291,5,395,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a3a5f4c56fd3fcc2b69757102f722fc29"></a><!-- doxytag: member="kfcntl.h::SYSCALL_HANDLER2" ref="a3a5f4c56fd3fcc2b69757102f722fc29" args="(sys_close, int fd_id, uint32_t *ret)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kunistd_8c.html#a754a9d6d5d3da3db605147488e485805">SYSCALL_HANDLER2</a> </td>
+          <td>(</td>
+          <td class="paramtype">sys_close&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *&#160;</td>
+          <td class="paramname"><em>ret</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Syscall pour fermer un fichier.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fd_id</td><td>Identifiant du descripteur de fichier. </td></tr>
+    <tr><td class="paramname">ret</td><td>Pointeur pour enregistrer le résultat. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kfcntl_8h_a3a5f4c56fd3fcc2b69757102f722fc29_cgraph.png" border="0" usemap="#kfcntl_8h_a3a5f4c56fd3fcc2b69757102f722fc29_cgraph" alt=""/></div>
+<map name="kfcntl_8h_a3a5f4c56fd3fcc2b69757102f722fc29_cgraph" id="kfcntl_8h_a3a5f4c56fd3fcc2b69757102f722fc29_cgraph">
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="209,5,351,35"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="255,59,305,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aa1d225acb87c04ac8d56c8096f587a03"></a><!-- doxytag: member="kfcntl.h::SYSCALL_HANDLER3" ref="aa1d225acb87c04ac8d56c8096f587a03" args="(sys_open, int *fd_id, char *path, uint32_t flags)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kunistd_8c.html#a8c6c302ef479ae5474c3aedf65ec8dbe">SYSCALL_HANDLER3</a> </td>
+          <td>(</td>
+          <td class="paramtype">sys_open&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>fd_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Syscall pour ouvrir un fichier.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fd_id</td><td>Pointeur pour enregistrer le resultat. </td></tr>
+    <tr><td class="paramname">path</td><td>Chemin du fichier à ouvrir. </td></tr>
+    <tr><td class="paramname">flags</td><td>Mode d'ouverture. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kfcntl_8h_aa1d225acb87c04ac8d56c8096f587a03_cgraph.png" border="0" usemap="#kfcntl_8h_aa1d225acb87c04ac8d56c8096f587a03_cgraph" alt=""/></div>
+<map name="kfcntl_8h_aa1d225acb87c04ac8d56c8096f587a03_cgraph" id="kfcntl_8h_aa1d225acb87c04ac8d56c8096f587a03_cgraph">
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="209,19,351,48"/><area shape="rect" id="node5" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="243,72,317,101"/><area shape="rect" id="node7" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="411,12,477,41"/><area shape="rect" id="node11" href="vfs_8h.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier." alt="" coords="400,72,488,101"/><area shape="rect" id="node17" href="vfs_8h.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="405,139,483,168"/><area shape="rect" id="node9" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="537,5,679,35"/><area shape="rect" id="node13" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="581,59,635,88"/><area shape="rect" id="node15" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="580,112,636,141"/><area shape="rect" id="node19" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="583,165,633,195"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a7c5292eb7af1637f45a0512c58c58cbc"></a><!-- doxytag: member="kfcntl.h::SYSCALL_HANDLER3" ref="a7c5292eb7af1637f45a0512c58c58cbc" args="(sys_fcntl, int *fd_id, unsigned int request, void *data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kunistd_8c.html#a8c6c302ef479ae5474c3aedf65ec8dbe">SYSCALL_HANDLER3</a> </td>
+          <td>(</td>
+          <td class="paramtype">sys_fcntl&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>fd_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Syscall pour la manipulation d'un descripteur de fichier.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fd_id</td><td>descripteur du fichier et enregistrement du résultat. </td></tr>
+    <tr><td class="paramname">request</td><td>action à faire. </td></tr>
+    <tr><td class="paramname">data</td><td>les arguments nécessaires à l'action. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kfcntl_8h_a7c5292eb7af1637f45a0512c58c58cbc_cgraph.png" border="0" usemap="#kfcntl_8h_a7c5292eb7af1637f45a0512c58c58cbc_cgraph" alt=""/></div>
+<map name="kfcntl_8h_a7c5292eb7af1637f45a0512c58c58cbc_cgraph" id="kfcntl_8h_a7c5292eb7af1637f45a0512c58c58cbc_cgraph">
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="209,5,351,35"/></map>
 </div>
 </p>
 
@@ -231,7 +562,7 @@ Voici le graphe des appelants de cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -97,29 +97,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00069"></a>00069 
 <a name="l00080"></a>00080 <span class="keywordtype">char</span> * <a class="code" href="unistd_8h.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd.">get_absolute_path</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *dirname);
 <a name="l00081"></a>00081 
-<a name="l00089"></a>00089 pid_t <a class="code" href="unistd_8h.html#ac61b207337ca21b3b309593fd1a0cb82" title="Obtenir l&#39;identifiant du processus.">getpid</a>(<span class="keywordtype">void</span>);
+<a name="l00089"></a>00089 <a class="code" href="libc_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a> <a class="code" href="unistd_8h.html#ac61b207337ca21b3b309593fd1a0cb82" title="Obtenir l&#39;identifiant du processus.">getpid</a>(<span class="keywordtype">void</span>);
 <a name="l00090"></a>00090 
-<a name="l00098"></a>00098 pid_t <a class="code" href="unistd_8h.html#ac6d7f7ade00dcdc302b0da5664eee812" title="Obtenir l&#39;identifiant du processus père.">getppid</a>(<span class="keywordtype">void</span>);
+<a name="l00098"></a>00098 <a class="code" href="libc_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a> <a class="code" href="unistd_8h.html#ac6d7f7ade00dcdc302b0da5664eee812" title="Obtenir l&#39;identifiant du processus père.">getppid</a>(<span class="keywordtype">void</span>);
 <a name="l00099"></a>00099 
-<a name="l00107"></a>00107 <span class="keywordtype">void</span> <a class="code" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel-système indiqué par son identifiant.">syscall</a>(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3);
+<a name="l00107"></a>00107 <span class="keywordtype">void</span> <a class="code" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel-système indiqué par son identifiant.">syscall</a>(<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> func, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param1, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param2, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param3);
 <a name="l00108"></a>00108 
 <a name="l00122"></a>00122 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="unistd_8h.html#a69c97039c9ec10a30e5edbdf365e3bbd" title="Endort le processus pour une durée déterminée (en secondes).">sleep</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> seconds);
 <a name="l00123"></a>00123 
 <a name="l00134"></a>00134 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="unistd_8h.html#ae205f852ca2b47db9e16949153e12247" title="Endort le processus pour une durée déterminée (en microsecondes).">usleep</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> microseconds);
 <a name="l00135"></a>00135 
-<a name="l00148"></a>00148 ssize_t <a class="code" href="unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier.">write</a>(<span class="keywordtype">int</span> fd, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> count);
+<a name="l00148"></a>00148 <a class="code" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a> <a class="code" href="unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier.">write</a>(<span class="keywordtype">int</span> fd, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> count);
 <a name="l00149"></a>00149 
-<a name="l00162"></a>00162 ssize_t <a class="code" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier.">read</a>(<span class="keywordtype">int</span> fd, <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> count);
+<a name="l00162"></a>00162 <a class="code" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a> <a class="code" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier.">read</a>(<span class="keywordtype">int</span> fd, <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> count);
 <a name="l00163"></a>00163 
 <a name="l00176"></a>00176 <span class="keywordtype">int</span> <a class="code" href="unistd_8h.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier.">lseek</a>(<span class="keywordtype">int</span> fd, <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> whence);
 <a name="l00177"></a>00177 
-<a name="l00188"></a>00188 <span class="keywordtype">int</span> <a class="code" href="unistd_8h.html#a3dc1b07404b646712a144e2057359876" title="Obtenir l&#39;état d&#39;un fichier (status).">stat</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">struct</span> <a class="code" href="structstat.html">stat</a> *buf);
+<a name="l00188"></a>00188 <span class="keywordtype">int</span> <a class="code" href="unistd_8h.html#a3dc1b07404b646712a144e2057359876" title="Obtenir l&#39;état d&#39;un fichier (status).">stat</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">struct</span> <a class="code" href="structstat.html" title="Informations sur un noeud.">stat</a> *buf);
 <a name="l00189"></a>00189 
 <a name="l00200"></a>00200 <span class="keywordtype">int</span> <a class="code" href="unistd_8h.html#af3cee068f32a919cdd638e0578c1e5f8" title="Détruire un nom et éventuellement le fichier associé.">unlink</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname);
 <a name="l00201"></a>00201 
 <a name="l00209"></a>00209 <span class="keywordtype">int</span> <a class="code" href="unistd_8h.html#a570282ae7ba596263ec812b368d99b34" title="Supprimer un dossier, lequel doit être vide.">rmdir</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname);
 <a name="l00210"></a>00210 
-<a name="l00222"></a>00222 <span class="keywordtype">int</span> <a class="code" href="unistd_8h.html#a8ada37e3927c3e99ea7c1accfdc6576f" title="Créer un noeud du système de fichiers.">mknod</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *path, mode_t <a class="code" href="structmode.html">mode</a>, dev_t dev);
+<a name="l00222"></a>00222 <span class="keywordtype">int</span> <a class="code" href="unistd_8h.html#a8ada37e3927c3e99ea7c1accfdc6576f" title="Créer un noeud du système de fichiers.">mknod</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *path, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>, <a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a> dev);
 <a name="l00223"></a>00223 
 <a name="l00224"></a>00224 <span class="preprocessor">#endif //_UNISTD_H_</span>
 </pre></div></div><!-- contents -->
@@ -140,7 +140,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

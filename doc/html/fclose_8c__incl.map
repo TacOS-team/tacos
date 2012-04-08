@@ -1,6 +1,6 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$stdio_8h.html" title="stdio.h" alt="" coords="68,83,129,112"/>
-<area shape="rect" id="node14" href="$fcntl_8h.html" title="fcntl.h" alt="" coords="153,83,207,112"/>
+<area shape="rect" id="node14" href="$fcntl_8h.html" title="File control operations." alt="" coords="153,83,207,112"/>
 <area shape="rect" id="node16" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="231,83,292,112"/>
 <area shape="rect" id="node5" href="$libio_8h.html" title="libio.h" alt="" coords="5,160,61,189"/>
 <area shape="rect" id="node7" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="127,237,215,267"/>

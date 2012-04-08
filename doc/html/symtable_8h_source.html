@@ -89,7 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00034"></a><a class="code" href="structsymbol__t.html">00034</a> <span class="keyword">typedef</span> <span class="keyword">struct</span>
 <a name="l00035"></a>00035 {
 <a name="l00036"></a>00036         <span class="keywordtype">char</span>* name;
-<a name="l00037"></a>00037         paddr_t addr;
+<a name="l00037"></a>00037         <a class="code" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> addr;
 <a name="l00038"></a>00038 }<a class="code" href="structsymbol__t.html">symbol_t</a>;
 <a name="l00039"></a>00039 
 <a name="l00040"></a><a class="code" href="structsymbol__table__t.html">00040</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
@@ -101,9 +101,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00046"></a>00046 
 <a name="l00047"></a>00047 <span class="keywordtype">void</span> load_kernel_symtable();
 <a name="l00048"></a>00048 
-<a name="l00049"></a>00049 paddr_t sym_to_addr(<a class="code" href="structsymbol__table__t.html">symbol_table_t</a>* table, <span class="keywordtype">char</span>* symbol);
+<a name="l00049"></a>00049 <a class="code" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> sym_to_addr(<a class="code" href="structsymbol__table__t.html">symbol_table_t</a>* table, <span class="keywordtype">char</span>* symbol);
 <a name="l00050"></a>00050 
-<a name="l00051"></a>00051 <span class="keywordtype">char</span>* addr_to_sym(<a class="code" href="structsymbol__table__t.html">symbol_table_t</a>* table, paddr_t addr);
+<a name="l00051"></a>00051 <span class="keywordtype">char</span>* addr_to_sym(<a class="code" href="structsymbol__table__t.html">symbol_table_t</a>* table, <a class="code" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> addr);
 <a name="l00052"></a>00052 
 <a name="l00053"></a>00053 
 <a name="l00054"></a>00054 <span class="preprocessor">#endif</span>
@@ -125,7 +125,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

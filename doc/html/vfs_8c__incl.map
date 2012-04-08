@@ -1,22 +1,20 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="207,83,284,112"/>
-<area shape="rect" id="node9" href="$fat_8h.html" title="fs/fat.h" alt="" coords="521,83,580,112"/>
-<area shape="rect" id="node23" href="$vfs_8h.html" title="vfs.h" alt="" coords="705,160,753,189"/>
-<area shape="rect" id="node28" href="$kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="795,160,867,189"/>
-<area shape="rect" id="node33" href="$kfcntl_8h.html" title="kfcntl.h" alt="" coords="577,237,639,267"/>
-<area shape="rect" id="node55" href="$kmalloc_8h.html" title="kmalloc.h" alt="" coords="987,315,1064,344"/>
-<area shape="rect" id="node59" href="$string_8h.html" title="string.h" alt="" coords="1043,83,1107,112"/>
-<area shape="rect" id="node7" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="5,392,88,421"/>
-<area shape="rect" id="node13" href="$kstat_8h.html" title="kstat.h" alt="" coords="700,237,759,267"/>
-<area shape="rect" id="node15" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="727,469,791,499"/>
-<area shape="rect" id="node17" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="696,315,760,344"/>
-<area shape="rect" id="node20" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="680,392,760,421"/>
-<area shape="rect" id="node37" href="$kprocess_8h.html" title="kprocess.h" alt="" coords="453,315,539,344"/>
-<area shape="rect" id="node41" href="$signal__types_8h.html" title="signal_types.h" alt="" coords="307,392,413,421"/>
-<area shape="rect" id="node43" href="$process__types_8h.html" title="process_types.h" alt="" coords="437,392,555,421"/>
-<area shape="rect" id="node45" href="$symtable_8h.html" title="symtable.h" alt="" coords="112,392,197,421"/>
-<area shape="rect" id="node51" href="$vmm_8h.html" title="vmm.h" alt="" coords="221,392,283,421"/>
-<area shape="rect" id="node48" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="132,469,177,499"/>
-<area shape="rect" id="node61" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="1037,160,1125,189"/>
-<area shape="rect" id="node63" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="1044,237,1119,267"/>
+<area shape="rect" id="node3" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="441,83,519,112"/>
+<area shape="rect" id="node9" href="$fat_8h.html" title="fs/fat.h" alt="" coords="660,83,719,112"/>
+<area shape="rect" id="node23" href="$vfs_8h.html" title="Virtual File System." alt="" coords="661,160,709,189"/>
+<area shape="rect" id="node28" href="$kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="784,160,856,189"/>
+<area shape="rect" id="node33" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="373,237,435,267"/>
+<area shape="rect" id="node55" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="968,237,1045,267"/>
+<area shape="rect" id="node59" href="$kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="543,83,636,112"/>
+<area shape="rect" id="node7" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="555,392,637,421"/>
+<area shape="rect" id="node13" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="720,237,779,267"/>
+<area shape="rect" id="node15" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="681,469,745,499"/>
+<area shape="rect" id="node17" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="779,315,843,344"/>
+<area shape="rect" id="node20" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="712,392,792,421"/>
+<area shape="rect" id="node37" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="293,315,379,344"/>
+<area shape="rect" id="node41" href="$signal__types_8h.html" title="signal_types.h" alt="" coords="147,392,253,421"/>
+<area shape="rect" id="node43" href="$process__types_8h.html" title="process_types.h" alt="" coords="277,392,395,421"/>
+<area shape="rect" id="node45" href="$symtable_8h.html" title="symtable.h" alt="" coords="37,392,123,421"/>
+<area shape="rect" id="node51" href="$vmm_8h.html" title="vmm.h" alt="" coords="419,392,480,421"/>
+<area shape="rect" id="node48" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="57,469,103,499"/>
 </map>

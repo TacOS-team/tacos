@@ -85,8 +85,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00032"></a>00032 <span class="preprocessor"></span>
 <a name="l00033"></a>00033 <span class="preprocessor">#include &lt;types.h&gt;</span>
 <a name="l00034"></a>00034 <span class="preprocessor">#include &lt;<a class="code" href="fd__types_8h.html">fd_types.h</a>&gt;</span>
-<a name="l00035"></a>00035 <span class="preprocessor">#include &lt;<a class="code" href="kstat_8h.html">kstat.h</a>&gt;</span>
-<a name="l00036"></a>00036 <span class="preprocessor">#include &lt;<a class="code" href="vfs_8h.html">vfs.h</a>&gt;</span>
+<a name="l00035"></a>00035 <span class="preprocessor">#include &lt;<a class="code" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier.">kstat.h</a>&gt;</span>
+<a name="l00036"></a>00036 <span class="preprocessor">#include &lt;<a class="code" href="vfs_8h.html" title="Virtual File System.">vfs.h</a>&gt;</span>
 <a name="l00037"></a>00037 
 <a name="l00038"></a>00038 <span class="keywordtype">void</span> fat_init();
 <a name="l00039"></a>00039 <a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a>* mount_FAT(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>* ofd);
@@ -94,9 +94,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00041"></a>00041 
 <a name="l00042"></a>00042 <span class="keywordtype">int</span> fat_readdir(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keywordtype">char</span> * entries, <span class="keywordtype">size_t</span> size);
 <a name="l00043"></a>00043 
-<a name="l00044"></a>00044 <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * fat_open_file(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path, uint32_t flags);
-<a name="l00045"></a>00045 <span class="keywordtype">int</span> fat_mkdir(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path, mode_t <a class="code" href="structmode.html">mode</a>);
-<a name="l00046"></a>00046 <span class="keywordtype">int</span> fat_stat(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">struct</span> <a class="code" href="structstat.html">stat</a> *stbuf);
+<a name="l00044"></a>00044 <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * fat_open_file(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags);
+<a name="l00045"></a>00045 <span class="keywordtype">int</span> fat_mkdir(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>);
+<a name="l00046"></a>00046 <span class="keywordtype">int</span> fat_stat(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">struct</span> <a class="code" href="structstat.html" title="Informations sur un noeud.">stat</a> *stbuf);
 <a name="l00047"></a>00047 <span class="keywordtype">int</span> fat_unlink(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path);
 <a name="l00048"></a>00048 
 <a name="l00049"></a>00049 <span class="keywordtype">size_t</span> fat_read_file (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keywordtype">void</span> * buf, <span class="keywordtype">size_t</span> count);
@@ -123,7 +123,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

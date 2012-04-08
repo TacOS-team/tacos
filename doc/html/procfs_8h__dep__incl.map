@@ -1,3 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="36,83,145,112"/>
+<area shape="rect" id="node3" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="5,83,128,112"/>
+<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="152,83,261,112"/>
 </map>

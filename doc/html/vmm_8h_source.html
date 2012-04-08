@@ -102,7 +102,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00057"></a>00057 {
 <a name="l00058"></a>00058         <span class="keyword">struct </span><a class="code" href="structslabs__list.html">slabs_list</a> free_slabs;
 <a name="l00059"></a>00059         <span class="keyword">struct </span><a class="code" href="structslabs__list.html">slabs_list</a> used_slabs;
-<a name="l00060"></a>00060         vaddr_t vmm_top;
+<a name="l00060"></a>00060         <a class="code" href="kernel_2include_2types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">vaddr_t</a> vmm_top;
 <a name="l00061"></a>00061 };
 <a name="l00062"></a>00062 
 <a name="l00068"></a>00068 <span class="keywordtype">void</span> <a class="code" href="vmm_8h.html#a99b3ba454c13cfdb437fcaadd1cd3e97">init_vmm</a>(<span class="keyword">struct</span> <a class="code" href="structvirtual__mem.html">virtual_mem</a> *kvm);
@@ -116,12 +116,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00096"></a>00096 <span class="keywordtype">int</span> unallocate_page(<span class="keyword">struct</span> <a class="code" href="structvirtual__mem.html">virtual_mem</a> *vm, <span class="keywordtype">void</span> *page);
 <a name="l00097"></a>00097 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> calculate_min_pages(<span class="keywordtype">size_t</span> size);
 <a name="l00098"></a>00098 <span class="keywordtype">void</span> vmm_print_heap(<span class="keyword">struct</span> <a class="code" href="structvirtual__mem.html">virtual_mem</a> *vm);
-<a name="l00099"></a>00099 vaddr_t get_linear_address(<span class="keywordtype">int</span> dir, <span class="keywordtype">int</span> table, <span class="keywordtype">int</span> offset);
+<a name="l00099"></a>00099 <a class="code" href="kernel_2include_2types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">vaddr_t</a> get_linear_address(<span class="keywordtype">int</span> dir, <span class="keywordtype">int</span> table, <span class="keywordtype">int</span> offset);
 <a name="l00100"></a>00100 
-<a name="l00104"></a>00104 <span class="keywordtype">void</span> <a class="code" href="vmm_8h.html#a8a8d898de5c72c3b55b845d19ec32172">sys_vmm</a>(uint32_t min_size, <span class="keywordtype">void</span> **alloc, <span class="keywordtype">size_t</span> *real_alloc_size);
+<a name="l00104"></a>00104 <span class="keywordtype">void</span> <a class="code" href="vmm_8h.html#a8a8d898de5c72c3b55b845d19ec32172">sys_vmm</a>(<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> min_size, <span class="keywordtype">void</span> **alloc, <span class="keywordtype">size_t</span> *real_alloc_size);
 <a name="l00105"></a>00105 
 <a name="l00106"></a>00106 <span class="keyword">struct </span><a class="code" href="structpage__table__entry.html" title="Page Table Entry.">page_table_entry</a> *get_pte(<span class="keywordtype">int</span> dir, <span class="keywordtype">int</span> table);
-<a name="l00107"></a>00107 paddr_t vmm_get_page_paddr(vaddr_t vaddr); 
+<a name="l00107"></a>00107 <a class="code" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> vmm_get_page_paddr(<a class="code" href="kernel_2include_2types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">vaddr_t</a> vaddr); 
 <a name="l00108"></a>00108 
 <a name="l00109"></a>00109 <span class="preprocessor">#endif</span>
 <a name="l00110"></a>00110 <span class="preprocessor"></span>
@@ -143,7 +143,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

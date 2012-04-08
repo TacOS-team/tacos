@@ -82,9 +82,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier libc/stdio/stdfiles.c</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Définition et initialisation des fichiers standards (stdin, stdout, stderr).  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="libc_2include_2sys_2types_8h_source.html">sys/types.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="libio_8h_source.html">libio.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="string_8h_source.html">string.h</a>&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
 <code>#include &lt;<a class="el" href="stdio_8h_source.html">stdio.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="stdlib_8h_source.html">stdlib.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="fcntl_8h_source.html">fcntl.h</a>&gt;</code><br/>
@@ -93,7 +96,7 @@ Graphe des dépendances par inclusion de stdfiles.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="stdfiles_8c__incl.png" border="0" usemap="#libc_2stdio_2stdfiles_8c" alt=""/></div>
 <map name="libc_2stdio_2stdfiles_8c" id="libc_2stdio_2stdfiles_8c">
-<area shape="rect" id="node3" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="180,237,268,267"/><area shape="rect" id="node7" href="libio_8h.html" title="libio.h" alt="" coords="117,160,173,189"/><area shape="rect" id="node10" href="string_8h.html" title="string.h" alt="" coords="29,160,93,189"/><area shape="rect" id="node13" href="stdio_8h.html" title="stdio.h" alt="" coords="196,83,257,112"/><area shape="rect" id="node19" href="stdlib_8h.html" title="stdlib.h" alt="" coords="314,83,376,112"/><area shape="rect" id="node25" href="fcntl_8h.html" title="fcntl.h" alt="" coords="400,83,453,112"/><area shape="rect" id="node5" href="stdbool_8h.html" title="stdbool.h" alt="" coords="186,315,261,344"/><area shape="rect" id="node17" href="stdarg_8h.html" title="stdarg.h" alt="" coords="197,160,266,189"/><area shape="rect" id="node22" href="malloc_8h.html" title="malloc.h" alt="" coords="341,160,410,189"/></map>
+<area shape="rect" id="node3" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="71,237,159,267"/><area shape="rect" id="node7" href="libio_8h.html" title="libio.h" alt="" coords="21,160,77,189"/><area shape="rect" id="node12" href="stdio_8h.html" title="stdio.h" alt="" coords="156,83,217,112"/><area shape="rect" id="node18" href="stdlib_8h.html" title="stdlib.h" alt="" coords="241,83,303,112"/><area shape="rect" id="node24" href="fcntl_8h.html" title="File control operations." alt="" coords="327,83,380,112"/><area shape="rect" id="node5" href="stdbool_8h.html" title="stdbool.h" alt="" coords="77,315,152,344"/><area shape="rect" id="node16" href="stdarg_8h.html" title="stdarg.h" alt="" coords="152,160,221,189"/><area shape="rect" id="node21" href="malloc_8h.html" title="malloc.h" alt="" coords="296,160,365,189"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
@@ -108,7 +111,7 @@ Variables</h2></td></tr>
 <a class="el" href="struct__IO__FILE.html">FILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>stdout</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9e47c346a25e2e7edd2c9b4ca5d0262"></a><!-- doxytag: member="stdfiles.c::stderr" ref="ac9e47c346a25e2e7edd2c9b4ca5d0262" args="" -->
 <a class="el" href="struct__IO__FILE.html">FILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>stderr</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__IO__FILE.html">FILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stdfiles_8c.html#ad9a717e4aa4b82cb2e26752399eaa918">__file_list</a> = NULL</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__IO__FILE.html">FILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stdfiles_8c.html#ad9a717e4aa4b82cb2e26752399eaa918">__file_list</a> = <a class="el" href="libc_2include_2sys_2types_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -120,14 +123,13 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-<p>Description de ce que fait le fichier</p>
 </div><hr/><h2>Documentation des variables</h2>
 <a class="anchor" id="ad9a717e4aa4b82cb2e26752399eaa918"></a><!-- doxytag: member="stdfiles.c::__file_list" ref="ad9a717e4aa4b82cb2e26752399eaa918" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct__IO__FILE.html">FILE</a>* <a class="el" href="stdfiles_8c.html#ad9a717e4aa4b82cb2e26752399eaa918">__file_list</a> = NULL</td>
+          <td class="memname"><a class="el" href="struct__IO__FILE.html">FILE</a>* <a class="el" href="stdfiles_8c.html#ad9a717e4aa4b82cb2e26752399eaa918">__file_list</a> = <a class="el" href="libc_2include_2sys_2types_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
         </tr>
       </table>
 </div>
@@ -154,7 +156,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

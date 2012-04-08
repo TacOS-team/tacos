@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['parenb',['PARENB',['../termios_8h.html#ac4f671a0015eb258fcbfaf62bd5a9b17',1,'termios.h']]],
-  ['parodd',['PARODD',['../termios_8h.html#a339516a423571344e92138e42623843a',1,'termios.h']]],
+  ['parenb',['PARENB',['../termios__types_8h.html#ac4f671a0015eb258fcbfaf62bd5a9b17',1,'PARENB():&#160;termios_types.h'],['../termios_8h.html#ac4f671a0015eb258fcbfaf62bd5a9b17',1,'PARENB():&#160;termios.h']]],
+  ['parodd',['PARODD',['../termios__types_8h.html#a339516a423571344e92138e42623843a',1,'PARODD():&#160;termios_types.h'],['../termios_8h.html#a339516a423571344e92138e42623843a',1,'PARODD():&#160;termios.h']]],
   ['pt_5fdynamic',['PT_DYNAMIC',['../elf_8h.html#a2121a2f01c51e8462bfd4d47725649d8',1,'elf.h']]],
   ['pt_5fhiproc',['PT_HIPROC',['../elf_8h.html#a74427c5909fdced36b41134c11650249',1,'elf.h']]],
   ['pt_5finterp',['PT_INTERP',['../elf_8h.html#abcd3aa15bc567949c1ab6b1abc137710',1,'elf.h']]],

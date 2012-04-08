@@ -7,7 +7,7 @@
 <area shape="rect" id="node14" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="717,83,819,112"/>
 <area shape="rect" id="node16" href="$kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="843,83,952,112"/>
 <area shape="rect" id="node18" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="976,83,1104,112"/>
-<area shape="rect" id="node20" href="$ksem_8c.html" title="kernel/ksem.c" alt="" coords="1128,83,1235,112"/>
+<area shape="rect" id="node20" href="$ksem_8c.html" title="Gestion des sémaphores." alt="" coords="1128,83,1235,112"/>
 <area shape="rect" id="node22" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="1259,83,1373,112"/>
 <area shape="rect" id="node24" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="1397,83,1512,112"/>
 <area shape="rect" id="node26" href="$round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="1536,83,1677,112"/>

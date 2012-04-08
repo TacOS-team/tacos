@@ -7,6 +7,5 @@
 <area shape="rect" id="node13" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="965,83,1067,112"/>
 <area shape="rect" id="node15" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="1091,83,1219,112"/>
 <area shape="rect" id="node17" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1243,83,1352,112"/>
-<area shape="rect" id="node19" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="1376,83,1491,112"/>
-<area shape="rect" id="node21" href="$vfs_8c.html" title="kernel/vfs.c" alt="" coords="1515,83,1605,112"/>
+<area shape="rect" id="node19" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="1376,83,1467,112"/>
 </map>

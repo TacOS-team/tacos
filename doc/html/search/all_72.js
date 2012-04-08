@@ -3,6 +3,7 @@ var searchData=
   ['r_5fw',['r_w',['../structpage__directory__entry.html#af4aa8287c5da23728d33053fcb3f1715',1,'page_directory_entry::r_w()'],['../structpage__table__entry.html#a5d33a8057c30817a0680a3b8928d028e',1,'page_table_entry::r_w()']]],
   ['read',['read',['../unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2',1,'read(int fd, void *buf, size_t count):&#160;unistd.c'],['../unistd_8c.html#af32a16ad2dd9e48482f8f790db7dbbd2',1,'read(int fd, void *buf, size_t count):&#160;unistd.c']]],
   ['read_5fdata',['read_data',['../struct__ext2__fs__instance__t.html#ac3ea85962b66914cb42ec884d70a853d',1,'_ext2_fs_instance_t']]],
+  ['readdir',['readdir',['../dirent_8c.html#a58257faf8b13b3f14558613c632b2373',1,'readdir(DIR *dirp):&#160;dirent.c'],['../dirent_8h.html#a58257faf8b13b3f14558613c632b2373',1,'readdir(DIR *dirp):&#160;dirent.c']]],
   ['rec_5flen',['rec_len',['../structext2__directory.html#a349e610d4d226a480c577c94b09a5eaf',1,'ext2_directory']]],
   ['red',['RED',['../video_8h.html#a8d23feea868a983c8c2b661e1e16972f',1,'video.h']]],
   ['reg_5fvalues',['reg_values',['../structmode.html#a704a184dc9d562c705d1feeb5be8788b',1,'mode']]],

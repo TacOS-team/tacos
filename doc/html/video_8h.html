@@ -91,13 +91,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 Graphe des dépendances par inclusion de video.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="video_8h__incl.png" border="0" usemap="#kernel_2include_2drivers_2video_8h" alt=""/></div>
+<map name="kernel_2include_2drivers_2video_8h" id="kernel_2include_2drivers_2video_8h">
+</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="video_8h__dep__incl.png" border="0" usemap="#kernel_2include_2drivers_2video_8hdep" alt=""/></div>
 <map name="kernel_2include_2drivers_2video_8hdep" id="kernel_2include_2drivers_2video_8hdep">
-<area shape="rect" id="node3" href="console_8c.html" title="kernel/drivers/char/tty/console.c" alt="" coords="5,83,216,112"/><area shape="rect" id="node5" href="video_8c.html" title="kernel/drivers/char/video.c" alt="" coords="240,83,421,112"/><area shape="rect" id="node7" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="445,83,555,112"/></map>
+<area shape="rect" id="node3" href="console_8c.html" title="Console virtuelle (Fn)." alt="" coords="5,83,216,112"/><area shape="rect" id="node5" href="video_8c.html" title="kernel/drivers/char/video.c" alt="" coords="240,83,421,112"/><area shape="rect" id="node7" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="445,83,555,112"/></map>
 </div>
 </div>
 <p><a href="video_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -110,7 +112,7 @@ Structures de données</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure définissant une "page" vidéo. C'est en fait un couple de 2 pages pour gérer le double buffering.  <a href="structvga__page__t.html#details">Plus de détails...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a844ed4c612903242a4a9d1abcc3a77ae">DEFAULT_ATTRIBUTE_VALUE</a>&#160;&#160;&#160;0x09</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a844ed4c612903242a4a9d1abcc3a77ae">DEFAULT_ATTRIBUTE_VALUE</a>&#160;&#160;&#160;0x0F</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a7b3b25cba33b07c303f3060fe41887f6">BLACK</a>&#160;&#160;&#160;0x0</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a79d10e672abb49ad63eeaa8aaef57c38">BLUE</a>&#160;&#160;&#160;0x1</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#acfbc006ea433ad708fdee3e82996e721">GREEN</a>&#160;&#160;&#160;0x2</td></tr>
@@ -148,8 +150,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vide
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1abb360e352f13b691ed232ab8bc6f7"></a><!-- doxytag: member="video.h::kputchar_video" ref="ab1abb360e352f13b691ed232ab8bc6f7" args="(int n, bool front, char c, int x, int y, char attr)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#ab1abb360e352f13b691ed232ab8bc6f7">kputchar_video</a> (int n, bool front, char c, int x, int y, char attr)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche dans une page le caractère souhaité à l'endroit souhaité. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#ac2631558551ebf255e434f0a0ccf4964">set_blink_bit</a> (int blink_bit)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Active le clignotement du curseur.  <a href="#ac2631558551ebf255e434f0a0ccf4964"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#ab549780053994f6b1dba04869b562a43">switch_page</a> (int i)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la page à afficher à l'écran.  <a href="#ab549780053994f6b1dba04869b562a43"></a><br/></td></tr>
 </table>
@@ -253,7 +253,7 @@ DESCRIPTION</h2>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define <a class="el" href="video_8h.html#a844ed4c612903242a4a9d1abcc3a77ae">DEFAULT_ATTRIBUTE_VALUE</a>&#160;&#160;&#160;0x09</td>
+          <td class="memname">#define <a class="el" href="video_8h.html#a844ed4c612903242a4a9d1abcc3a77ae">DEFAULT_ATTRIBUTE_VALUE</a>&#160;&#160;&#160;0x0F</td>
         </tr>
       </table>
 </div>
@@ -481,29 +481,6 @@ Voici le graphe d'appel pour cette fonction :</div>
 
 </div>
 </div>
-<a class="anchor" id="ac2631558551ebf255e434f0a0ccf4964"></a><!-- doxytag: member="video.h::set_blink_bit" ref="ac2631558551ebf255e434f0a0ccf4964" args="(int blink_bit)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="video_8h.html#ac2631558551ebf255e434f0a0ccf4964">set_blink_bit</a> </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>blink_bit</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<dl class="params"><dt><b>Paramètres:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">blink_bit</td><td>1 si le cursor doit clignoter. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="ab549780053994f6b1dba04869b562a43"></a><!-- doxytag: member="video.h::switch_page" ref="ab549780053994f6b1dba04869b562a43" args="(int i)" -->
 <div class="memitem">
 <div class="memproto">
@@ -554,7 +531,7 @@ Voici le graphe des appelants de cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

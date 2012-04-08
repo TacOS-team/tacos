@@ -96,15 +96,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00042"></a>00042 <span class="preprocessor"></span>
 <a name="l00048"></a>00048 <span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#a191f0fb163ab01b5d2041bdd20d6d424" title="Initialisation du système des sémaphores.">init_semaphores</a>();
 <a name="l00049"></a>00049 
-<a name="l00058"></a>00058 SYSCALL_HANDLER3(sys_ksem, uint32_t op, uint32_t param, <span class="keywordtype">int</span> *ret);
+<a name="l00058"></a>00058 SYSCALL_HANDLER3(sys_ksem, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> op, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param, <span class="keywordtype">int</span> *ret);
 <a name="l00059"></a>00059 
-<a name="l00069"></a>00069 <span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé...">ksemget</a>(uint8_t key, <span class="keywordtype">int</span> flags);
+<a name="l00069"></a>00069 <span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé...">ksemget</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key, <span class="keywordtype">int</span> flags);
 <a name="l00070"></a>00070 
-<a name="l00075"></a>00075 <span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)">ksemctl</a>(uint8_t key, <span class="keywordtype">int</span> cmd, <span class="keywordtype">void</span>* res);
+<a name="l00075"></a>00075 <span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)">ksemctl</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key, <span class="keywordtype">int</span> cmd, <span class="keywordtype">void</span>* res);
 <a name="l00076"></a>00076 
-<a name="l00089"></a>00089 <span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#acfbbd3e3f726b24309758cf6499a8141" title="Opération P sur un sémaphore Réalise l&#39;opération P sur le sémaphore. Le processus essaye donc de pren...">ksemP</a>(uint8_t key);
+<a name="l00089"></a>00089 <span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#acfbbd3e3f726b24309758cf6499a8141" title="Opération P sur un sémaphore Réalise l&#39;opération P sur le sémaphore. Le processus essaye donc de pren...">ksemP</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key);
 <a name="l00090"></a>00090 
-<a name="l00102"></a>00102 <span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#acf03efb500e930ca996059a6388b528b" title="Opération V sur un sémaphore Réalise l&#39;opération V sur le sémaphore. Le processus libère le sémaphore...">ksemV</a>(uint8_t key);
+<a name="l00102"></a>00102 <span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#acf03efb500e930ca996059a6388b528b" title="Opération V sur un sémaphore Réalise l&#39;opération V sur le sémaphore. Le processus libère le sémaphore...">ksemV</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key);
 <a name="l00103"></a>00103 
 <a name="l00104"></a>00104 <span class="preprocessor">#endif //KSEM_H</span>
 <a name="l00105"></a>00105 <span class="preprocessor"></span>
@@ -126,7 +126,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

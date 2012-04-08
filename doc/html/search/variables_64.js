@@ -1,6 +1,7 @@
 var searchData=
 [
   ['d',['d',['../structpage__table__entry.html#a0cced2bdd03dd78e0031f7364fa55a67',1,'page_table_entry']]],
+  ['data',['data',['../structprocess__init__data__t.html#a4f4139a5267079b63cf2240676a28793',1,'process_init_data_t']]],
   ['descriptor_5ftype',['descriptor_type',['../structx86__segment__descriptor.html#adda0434239b7e6c6a68b8e7556e4bb2f',1,'x86_segment_descriptor']]],
   ['devfs_5fname',['devfs_name',['../struct__tty__driver__t.html#a0c46e5dd6e7275908881f644d7fff927',1,'_tty_driver_t']]],
   ['device',['device',['../struct__fs__instance__t.html#acc3db122838752a84c6ecb93c3644256',1,'_fs_instance_t']]],

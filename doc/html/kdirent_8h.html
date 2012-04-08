@@ -94,14 +94,14 @@ Graphe des dépendances par inclusion de kdirent.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="kdirent_8h__incl.png" border="0" usemap="#kernel_2include_2kdirent_8h" alt=""/></div>
 <map name="kernel_2include_2kdirent_8h" id="kernel_2include_2kdirent_8h">
-<area shape="rect" id="node3" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="56,237,136,267"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="103,315,167,344"/><area shape="rect" id="node8" href="kstat_8h.html" title="kstat.h" alt="" coords="125,83,184,112"/><area shape="rect" id="node11" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="123,160,187,189"/></map>
+<area shape="rect" id="node3" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="56,237,136,267"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="103,315,167,344"/><area shape="rect" id="node8" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="125,83,184,112"/><area shape="rect" id="node11" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="123,160,187,189"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="kdirent_8h__dep__incl.png" border="0" usemap="#kernel_2include_2kdirent_8hdep" alt=""/></div>
 <map name="kernel_2include_2kdirent_8hdep" id="kernel_2include_2kdirent_8hdep">
-<area shape="rect" id="node3" href="devfs_8c.html" title="kernel/fs/devfs.c" alt="" coords="5,83,125,112"/><area shape="rect" id="node5" href="fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="149,83,325,112"/><area shape="rect" id="node7" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="349,83,461,112"/><area shape="rect" id="node9" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="485,83,595,112"/><area shape="rect" id="node11" href="vfs_8c.html" title="kernel/vfs.c" alt="" coords="619,83,709,112"/></map>
+<area shape="rect" id="node3" href="devfs_8c.html" title="DevFS." alt="" coords="5,83,125,112"/><area shape="rect" id="node5" href="fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="149,83,325,112"/><area shape="rect" id="node7" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="349,83,472,112"/><area shape="rect" id="node9" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="496,83,608,112"/><area shape="rect" id="node11" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="632,83,741,112"/><area shape="rect" id="node13" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="765,83,856,112"/></map>
 </div>
 </div>
 <p><a href="kdirent_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -118,9 +118,9 @@ Macros</h2></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adfcdfa04bbc40b5d0cd715e66d906cad"></a><!-- doxytag: member="kdirent.h::SYSCALL_HANDLER3" ref="adfcdfa04bbc40b5d0cd715e66d906cad" args="(sys_readdir, int fd, char *entries, size_t *size)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_readdir, int fd, char *entries, size_t *size)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_readdir, int fd, char *entries, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> *size)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a90bdfb89824032c54ece9f851ca07f69"></a><!-- doxytag: member="kdirent.h::SYSCALL_HANDLER3" ref="a90bdfb89824032c54ece9f851ca07f69" args="(sys_mkdir, const char *pathname, mode_t mode, int *ret)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_mkdir, const char *pathname, mode_t <a class="el" href="structmode.html">mode</a>, int *ret)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_mkdir, const char *pathname, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>, int *ret)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad690af967ba8e26d8ac3e48b8353eacc"></a><!-- doxytag: member="kdirent.h::SYSCALL_HANDLER2" ref="ad690af967ba8e26d8ac3e48b8353eacc" args="(sys_rmdir, const char *pathname, int *ret)" -->
 &#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER2</b> (sys_rmdir, const char *pathname, int *ret)</td></tr>
 </table>
@@ -182,7 +182,7 @@ DESCRIPTION</h2>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define <a class="el" href="kdirent_8h.html#ac64541bdd81c961304b9babef1402640">NAME_MAX</a>&#160;&#160;&#160;256</td>
+          <td class="memname">#define <a class="el" href="dirent_8h.html#ac64541bdd81c961304b9babef1402640">NAME_MAX</a>&#160;&#160;&#160;256</td>
         </tr>
       </table>
 </div>
@@ -209,7 +209,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -20,6 +20,7 @@ var searchData=
   ['getline_2ec',['getline.c',['../getline_8c.html',1,'']]],
   ['getpid',['getpid',['../unistd_8h.html#ac61b207337ca21b3b309593fd1a0cb82',1,'getpid(void):&#160;unistd.c'],['../unistd_8c.html#ac61b207337ca21b3b309593fd1a0cb82',1,'getpid(void):&#160;unistd.c']]],
   ['getppid',['getppid',['../unistd_8h.html#ac6d7f7ade00dcdc302b0da5664eee812',1,'getppid(void):&#160;unistd.c'],['../unistd_8c.html#ac6d7f7ade00dcdc302b0da5664eee812',1,'getppid(void):&#160;unistd.c']]],
+  ['gid_5ft',['gid_t',['../kstat_8h.html#aa7352f1065fe606194d792e2b292cf83',1,'kstat.h']]],
   ['granularity',['granularity',['../structx86__segment__descriptor.html#a19d5da93d41a1ec3327cbd92ace8fa08',1,'x86_segment_descriptor']]],
   ['graphic',['graphic',['../structmode.html#a04810864c94405d05fdab5f4467a4db3',1,'mode']]],
   ['green',['GREEN',['../video_8h.html#acfbc006ea433ad708fdee3e82996e721',1,'video.h']]],

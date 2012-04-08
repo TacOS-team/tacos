@@ -81,12 +81,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier kernel/include/fs/procfs.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><div class="dynheader">
+<div class="textblock"><code>#include &lt;types.h&gt;</code><br/>
+<code>#include &lt;<a class="el" href="fd__types_8h_source.html">fd_types.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de procfs.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="procfs_8h__incl.png" border="0" usemap="#kernel_2include_2fs_2procfs_8h" alt=""/></div>
+<map name="kernel_2include_2fs_2procfs_8h" id="kernel_2include_2fs_2procfs_8h">
+<area shape="rect" id="node5" href="fd__types_8h.html" title="fd_types.h" alt="" coords="99,83,181,112"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="procfs_8h__dep__incl.png" border="0" usemap="#kernel_2include_2fs_2procfs_8hdep" alt=""/></div>
 <map name="kernel_2include_2fs_2procfs_8hdep" id="kernel_2include_2fs_2procfs_8hdep">
-<area shape="rect" id="node3" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="36,83,145,112"/></map>
+<area shape="rect" id="node3" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="5,83,128,112"/><area shape="rect" id="node5" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="152,83,261,112"/></map>
 </div>
 </div>
 <p><a href="procfs_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -96,7 +105,7 @@ Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67b19f8892567cdb63c98ee660300f60"></a><!-- doxytag: member="procfs.h::procfs_init" ref="a67b19f8892567cdb63c98ee660300f60" args="()" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>procfs_init</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a1d916c1a69df5096084642e6b83663"></a><!-- doxytag: member="procfs.h::procfs_readdir" ref="a6a1d916c1a69df5096084642e6b83663" args="(open_file_descriptor *ofd, char *entries, size_t size)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>procfs_readdir</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, char *entries, size_t size)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>procfs_readdir</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, char *entries, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -127,7 +136,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -106,41 +106,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00061"></a>00061 
 <a name="l00062"></a>00062 <span class="comment">/* Structement représentant comment les registres sont empilés lors d&#39;une interruption */</span>
 <a name="l00063"></a><a class="code" href="structintframe.html">00063</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
-<a name="l00064"></a>00064         uint32_t interrupt_id;
+<a name="l00064"></a>00064         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> interrupt_id;
 <a name="l00065"></a>00065         
 <a name="l00066"></a>00066         <span class="comment">/* Registres */</span>
-<a name="l00067"></a>00067         uint16_t es;
-<a name="l00068"></a>00068         uint16_t __es_unused;
-<a name="l00069"></a>00069         uint16_t ds;
-<a name="l00070"></a>00070         uint16_t __ds_unused;
-<a name="l00071"></a>00071         uint16_t gs;
-<a name="l00072"></a>00072         uint16_t __gs_unused;
-<a name="l00073"></a>00073         uint16_t fs;
-<a name="l00074"></a>00074         uint16_t __fs_unused;
-<a name="l00075"></a>00075         uint32_t edi;
-<a name="l00076"></a>00076         uint32_t esi;
-<a name="l00077"></a>00077         uint32_t ebp;
-<a name="l00078"></a>00078         uint32_t kesp;
-<a name="l00079"></a>00079         uint32_t ebx;
-<a name="l00080"></a>00080         uint32_t edx;
-<a name="l00081"></a>00081         uint32_t ecx;
-<a name="l00082"></a>00082         uint32_t eax;
-<a name="l00083"></a>00083         uint32_t eip;
-<a name="l00084"></a>00084         uint32_t cs;
-<a name="l00085"></a>00085         uint32_t eflags;
-<a name="l00086"></a>00086         uint32_t esp;
-<a name="l00087"></a>00087         uint16_t ss;
-<a name="l00088"></a>00088         uint16_t __ss_unused;
+<a name="l00067"></a>00067         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> es;
+<a name="l00068"></a>00068         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> __es_unused;
+<a name="l00069"></a>00069         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> ds;
+<a name="l00070"></a>00070         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> __ds_unused;
+<a name="l00071"></a>00071         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> gs;
+<a name="l00072"></a>00072         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> __gs_unused;
+<a name="l00073"></a>00073         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> fs;
+<a name="l00074"></a>00074         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> __fs_unused;
+<a name="l00075"></a>00075         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> edi;
+<a name="l00076"></a>00076         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> esi;
+<a name="l00077"></a>00077         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ebp;
+<a name="l00078"></a>00078         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> kesp;
+<a name="l00079"></a>00079         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ebx;
+<a name="l00080"></a>00080         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> edx;
+<a name="l00081"></a>00081         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ecx;
+<a name="l00082"></a>00082         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> eax;
+<a name="l00083"></a>00083         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> eip;
+<a name="l00084"></a>00084         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> cs;
+<a name="l00085"></a>00085         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> eflags;
+<a name="l00086"></a>00086         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> esp;
+<a name="l00087"></a>00087         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> ss;
+<a name="l00088"></a>00088         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> __ss_unused;
 <a name="l00089"></a>00089         
 <a name="l00090"></a>00090 }<a class="code" href="structintframe.html">intframe</a>;
 <a name="l00091"></a>00091 
 <a name="l00092"></a>00092 <span class="keyword">typedef</span> void (*interrupt_handler_t)(<span class="keywordtype">int</span> interrupt_id);
 <a name="l00093"></a>00093 
-<a name="l00106"></a>00106 <span class="keywordtype">int</span> <a class="code" href="interrupts_8h.html#aecc1fa8433fa21ba233b8feb2558e954" title="Ajoute une nouvelle interruption.">interrupt_set_routine</a>(uint8_t interrupt_id, interrupt_handler_t routine, uint8_t privilege);
+<a name="l00106"></a>00106 <span class="keywordtype">int</span> <a class="code" href="interrupts_8h.html#aecc1fa8433fa21ba233b8feb2558e954" title="Ajoute une nouvelle interruption.">interrupt_set_routine</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id, interrupt_handler_t routine, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> privilege);
 <a name="l00107"></a>00107 
-<a name="l00115"></a>00115 <span class="keywordtype">int</span> <a class="code" href="interrupts_8h.html#ac3f5203c31fd554b562cba8cec42ceb6" title="Désactive une interruption.">interrupt_disable</a>(uint8_t interrupt_id);
+<a name="l00115"></a>00115 <span class="keywordtype">int</span> <a class="code" href="interrupts_8h.html#ac3f5203c31fd554b562cba8cec42ceb6" title="Désactive une interruption.">interrupt_disable</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id);
 <a name="l00116"></a>00116 
-<a name="l00123"></a>00123 <span class="keywordtype">void</span> <a class="code" href="interrupts_8h.html#a4eea959d9a7be06d7b87a0aad03b490e" title="Change le type d&#39;une interruption en une trapgate.">make_trapgate_from_int</a>(uint8_t interrupt_id);
+<a name="l00123"></a>00123 <span class="keywordtype">void</span> <a class="code" href="interrupts_8h.html#a4eea959d9a7be06d7b87a0aad03b490e" title="Change le type d&#39;une interruption en une trapgate.">make_trapgate_from_int</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id);
 <a name="l00124"></a>00124 
 <a name="l00125"></a>00125 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
@@ -161,7 +161,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

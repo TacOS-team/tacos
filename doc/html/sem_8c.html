@@ -90,7 +90,7 @@ Graphe des dépendances par inclusion de sem.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="sem_8c__incl.png" border="0" usemap="#libc_2sem_8c" alt=""/></div>
 <map name="libc_2sem_8c" id="libc_2sem_8c">
-<area shape="rect" id="node3" href="sem_8h.html" title="l&#39;interface de manipulation des semaphores" alt="" coords="5,160,88,189"/><area shape="rect" id="node9" href="syscall_8h.html" title="sys/syscall.h" alt="" coords="80,237,179,267"/><area shape="rect" id="node12" href="unistd_8h.html" title="unistd.h" alt="" coords="183,83,249,112"/><area shape="rect" id="node5" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="172,315,260,344"/><area shape="rect" id="node7" href="stdbool_8h.html" title="stdbool.h" alt="" coords="179,392,253,421"/><area shape="rect" id="node15" href="stat_8h.html" title="sys/stat.h" alt="" coords="253,160,331,189"/><area shape="rect" id="node18" href="time_8h.html" title="time.h" alt="" coords="304,237,360,267"/></map>
+<area shape="rect" id="node3" href="sem_8h.html" title="l&#39;interface de manipulation des semaphores" alt="" coords="5,160,88,189"/><area shape="rect" id="node9" href="syscall_8h.html" title="sys/syscall.h" alt="" coords="76,83,175,112"/><area shape="rect" id="node11" href="unistd_8h.html" title="unistd.h" alt="" coords="199,83,265,112"/><area shape="rect" id="node5" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="121,315,209,344"/><area shape="rect" id="node7" href="stdbool_8h.html" title="stdbool.h" alt="" coords="128,392,203,421"/><area shape="rect" id="node14" href="stat_8h.html" title="sys/stat.h" alt="" coords="193,160,271,189"/><area shape="rect" id="node17" href="time_8h.html" title="time.h" alt="" coords="228,237,284,267"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="define-members"></a>
@@ -109,14 +109,14 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KSEM_V</b>&#160;&#160;&#160;5</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sem_8c.html#a1ea8785f5ec6eadaa818747e4cbb6298">semget</a> (uint8_t key, int semflg)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sem_8c.html#a1ea8785f5ec6eadaa818747e4cbb6298">semget</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key, int semflg)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">donne l'identifiant (semid) d'un sémaphore déjà existant  <a href="#a1ea8785f5ec6eadaa818747e4cbb6298"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sem_8c.html#a51cd1d5e354c3e1cc996c424bbf71be5">semdel</a> (uint32_t semid)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sem_8c.html#a51cd1d5e354c3e1cc996c424bbf71be5">semdel</a> (<a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> semid)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">supprime un sémaphore  <a href="#a51cd1d5e354c3e1cc996c424bbf71be5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41a767d191dcdb83ffd277b23797ff61"></a><!-- doxytag: member="sem.c::semP" ref="a41a767d191dcdb83ffd277b23797ff61" args="(uint32_t semid)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>semP</b> (uint32_t semid)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>semP</b> (<a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> semid)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a274f0e825fa433b94a16c2c7211ae71f"></a><!-- doxytag: member="sem.c::semV" ref="a274f0e825fa433b94a16c2c7211ae71f" args="(uint32_t semid)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>semV</b> (uint32_t semid)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>semV</b> (<a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> semid)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -137,7 +137,7 @@ DESCRIPTION</h2>
         <tr>
           <td class="memname">int <a class="el" href="sem_8c.html#a51cd1d5e354c3e1cc996c424bbf71be5">semdel</a> </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td>
           <td class="paramname"><em>semid</em></td><td>)</td>
           <td></td>
         </tr>
@@ -170,7 +170,7 @@ Voici le graphe d'appel pour cette fonction :</div>
         <tr>
           <td class="memname">int <a class="el" href="sem_8c.html#a1ea8785f5ec6eadaa818747e4cbb6298">semget</a> </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
           <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
@@ -224,7 +224,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

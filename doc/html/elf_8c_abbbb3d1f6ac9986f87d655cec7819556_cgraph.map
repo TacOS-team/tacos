@@ -3,6 +3,6 @@
 <area shape="rect" id="node5" href="$unistd_8h.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier." alt="" coords="351,31,404,61"/>
 <area shape="rect" id="node9" href="$unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="353,85,401,114"/>
 <area shape="rect" id="node12" href="$elf_8h.html#a8138ecf1d1d9bd1e80e05694ef4362e4" title="charge un section header depuis un fichier elf Charge le section header n°index depuis le fichier..." alt="" coords="151,31,297,61"/>
-<area shape="rect" id="node18" href="$string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="193,189,255,218"/>
+<area shape="rect" id="node18" href="$kernel_2include_2klibc_2string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="193,189,255,218"/>
 <area shape="rect" id="node7" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="455,58,516,87"/>
 </map>

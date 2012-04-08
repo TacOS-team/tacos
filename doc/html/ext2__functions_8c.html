@@ -91,7 +91,7 @@ Graphe des dépendances par inclusion de ext2_functions.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="ext2__functions_8c__incl.png" border="0" usemap="#kernel_2fs_2ext2_2ext2__functions_8c" alt=""/></div>
 <map name="kernel_2fs_2ext2_2ext2__functions_8c" id="kernel_2fs_2ext2_2ext2__functions_8c">
-<area shape="rect" id="node3" href="klog_8h.html" title="klog.h" alt="" coords="418,83,477,112"/><area shape="rect" id="node9" href="kfcntl_8h.html" title="kfcntl.h" alt="" coords="554,237,615,267"/><area shape="rect" id="node35" href="ext2_8h.html" title="Driver Ext2." alt="" coords="671,83,741,112"/><area shape="rect" id="node5" href="kstdio_8h.html" title="kstdio.h" alt="" coords="414,160,481,189"/><area shape="rect" id="node11" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="566,469,630,499"/><area shape="rect" id="node13" href="fd__types_8h.html" title="fd_types.h" alt="" coords="543,392,626,421"/><area shape="rect" id="node15" href="kprocess_8h.html" title="kprocess.h" alt="" coords="417,315,502,344"/><area shape="rect" id="node17" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="650,392,730,421"/><area shape="rect" id="node21" href="signal__types_8h.html" title="signal_types.h" alt="" coords="362,392,469,421"/><area shape="rect" id="node23" href="process__types_8h.html" title="process_types.h" alt="" coords="221,392,338,421"/><area shape="rect" id="node25" href="symtable_8h.html" title="symtable.h" alt="" coords="26,392,111,421"/><area shape="rect" id="node31" href="vmm_8h.html" title="vmm.h" alt="" coords="135,392,197,421"/><area shape="rect" id="node28" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="46,469,91,499"/><area shape="rect" id="node37" href="vfs_8h.html" title="vfs.h" alt="" coords="698,160,746,189"/><area shape="rect" id="node41" href="kstat_8h.html" title="kstat.h" alt="" coords="789,237,847,267"/><area shape="rect" id="node44" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="786,315,850,344"/></map>
+<area shape="rect" id="node3" href="klog_8h.html" title="Logging macros." alt="" coords="418,83,477,112"/><area shape="rect" id="node9" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="554,237,615,267"/><area shape="rect" id="node35" href="ext2_8h.html" title="Driver Ext2." alt="" coords="671,83,741,112"/><area shape="rect" id="node5" href="kstdio_8h.html" title="kprintf" alt="" coords="414,160,481,189"/><area shape="rect" id="node11" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="566,469,630,499"/><area shape="rect" id="node13" href="fd__types_8h.html" title="fd_types.h" alt="" coords="543,392,626,421"/><area shape="rect" id="node15" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="417,315,502,344"/><area shape="rect" id="node17" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="650,392,730,421"/><area shape="rect" id="node21" href="signal__types_8h.html" title="signal_types.h" alt="" coords="362,392,469,421"/><area shape="rect" id="node23" href="process__types_8h.html" title="process_types.h" alt="" coords="221,392,338,421"/><area shape="rect" id="node25" href="symtable_8h.html" title="symtable.h" alt="" coords="26,392,111,421"/><area shape="rect" id="node31" href="vmm_8h.html" title="vmm.h" alt="" coords="135,392,197,421"/><area shape="rect" id="node28" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="46,469,91,499"/><area shape="rect" id="node37" href="vfs_8h.html" title="Virtual File System." alt="" coords="698,160,746,189"/><area shape="rect" id="node41" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="789,237,847,267"/><area shape="rect" id="node44" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="786,315,850,344"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
@@ -99,28 +99,28 @@ Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#ad87ef876e972f1bcb11d752042207d47">ext2_rmdir</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Suppression d'un dossier vide.  <a href="#ad87ef876e972f1bcb11d752042207d47"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa6d9b6bb5637bf4457edf9363424260f"></a><!-- doxytag: member="ext2_functions.c::ext2_chmod" ref="aa6d9b6bb5637bf4457edf9363424260f" args="(fs_instance_t *instance, const char *path, mode_t mode)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>ext2_chmod</b> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, mode_t <a class="el" href="structmode.html">mode</a>)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>ext2_chmod</b> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9370bfacbafe9fad53725f6fb273575"></a><!-- doxytag: member="ext2_functions.c::ext2_chown" ref="aa9370bfacbafe9fad53725f6fb273575" args="(fs_instance_t *instance, const char *path, uid_t uid, gid_t gid)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>ext2_chown</b> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, uid_t uid, gid_t gid)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>ext2_chown</b> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, <a class="el" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a> uid, <a class="el" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a> gid)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#aa78e9c6b4686b24a0183b164800a04ed">ext2_unlink</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Suppression d'un noeud.  <a href="#aa78e9c6b4686b24a0183b164800a04ed"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a2a5245bfa03e55c15539e6aa518e4fab">ext2_mkdir</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, mode_t <a class="el" href="structmode.html">mode</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a2a5245bfa03e55c15539e6aa518e4fab">ext2_mkdir</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Création d'un dossier.  <a href="#a2a5245bfa03e55c15539e6aa518e4fab"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a9a8b01e29da31a35719cbf11adab1f9d">ext2_stat</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, struct <a class="el" href="structstat.html">stat</a> *stbuf)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère l'état d'un fichier ou dossier.  <a href="#a9a8b01e29da31a35719cbf11adab1f9d"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#ac9b55aefa79e5e521e4e5d993b4c009a">ext2_readdir</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, char *entries, size_t size)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#ac9b55aefa79e5e521e4e5d993b4c009a">ext2_readdir</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, char *entries, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du contenu d'un dossier.  <a href="#ac9b55aefa79e5e521e4e5d993b4c009a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a79a131bb760b0d236f6bf0209ee6f5cb"></a><!-- doxytag: member="ext2_functions.c::ext2_seek" ref="a79a131bb760b0d236f6bf0209ee6f5cb" args="(open_file_descriptor *ofd, long offset, int whence)" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>ext2_seek</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, long offset, int whence)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a598e5a2d603b1d2b31b8058b9dec3ab5"></a><!-- doxytag: member="ext2_functions.c::ext2_write" ref="a598e5a2d603b1d2b31b8058b9dec3ab5" args="(open_file_descriptor *ofd, const void *buf, size_t size)" -->
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ext2_write</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, const void *buf, size_t size)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#aa5552876c927b5b04e708531c07344b0">ext2_read</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, void *buf, size_t size)</td></tr>
+<a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ext2_write</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, const void *buf, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#aa5552876c927b5b04e708531c07344b0">ext2_read</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, void *buf, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'un fichier.  <a href="#aa5552876c927b5b04e708531c07344b0"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a8e34d61b346e77ba8d32ff6829dd6cfa">ext2_mknod</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, mode_t <a class="el" href="structmode.html">mode</a>, dev_t dev)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a8e34d61b346e77ba8d32ff6829dd6cfa">ext2_mknod</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>, <a class="el" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a> dev)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Création d'un noeud (fichier, dossier, fichier spécial...)  <a href="#a8e34d61b346e77ba8d32ff6829dd6cfa"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a196cd1d4c0446caf3ec91f859c655170">ext2_truncate</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, off_t off)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a196cd1d4c0446caf3ec91f859c655170">ext2_truncate</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, <a class="el" href="libc_2include_2sys_2types_8h.html#a447a6a64dbb8fb44b1e62856b333db4a">off_t</a> off)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la taille d'un fichier.  <a href="#a196cd1d4c0446caf3ec91f859c655170"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a9df1cc1b1a14caf87d09762a4886ce53">ext2_open</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, uint32_t flags)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a9df1cc1b1a14caf87d09762a4886ce53">ext2_open</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouverture de fichier.  <a href="#a9df1cc1b1a14caf87d09762a4886ce53"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#ab2859a00444ce0ad527332da72e2629a">ext2_close</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fermeture d'un fichier ouvert.  <a href="#ab2859a00444ce0ad527332da72e2629a"></a><br/></td></tr>
@@ -160,6 +160,15 @@ DESCRIPTION</h2>
 <dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès, -1 sinon. </dd></dl>
 
 <p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2__functions_8c_ab2859a00444ce0ad527332da72e2629a_cgraph.png" border="0" usemap="#ext2__functions_8c_ab2859a00444ce0ad527332da72e2629a_cgraph" alt=""/></div>
+<map name="ext2__functions_8c_ab2859a00444ce0ad527332da72e2629a_cgraph" id="ext2__functions_8c_ab2859a00444ce0ad527332da72e2629a_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="143,5,193,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="ext2__functions_8c_ab2859a00444ce0ad527332da72e2629a_icgraph.png" border="0" usemap="#ext2__functions_8c_ab2859a00444ce0ad527332da72e2629a_icgraph" alt=""/></div>
@@ -189,7 +198,7 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">mode_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>&#160;</td>
           <td class="paramname"><em>mode</em>&#160;</td>
         </tr>
         <tr>
@@ -215,7 +224,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="ext2__functions_8c_a2a5245bfa03e55c15539e6aa518e4fab_cgraph.png" border="0" usemap="#ext2__functions_8c_a2a5245bfa03e55c15539e6aa518e4fab_cgraph" alt=""/></div>
 <map name="ext2__functions_8c_a2a5245bfa03e55c15539e6aa518e4fab_cgraph" id="ext2__functions_8c_a2a5245bfa03e55c15539e6aa518e4fab_cgraph">
-<area shape="rect" id="node3" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="143,5,196,35"/></map>
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="143,5,209,35"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="149,59,203,88"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="260,5,401,35"/></map>
 </div>
 </p>
 
@@ -249,13 +258,13 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">mode_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>&#160;</td>
           <td class="paramname"><em>mode</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">dev_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a>&#160;</td>
           <td class="paramname"><em>dev</em>&#160;</td>
         </tr>
         <tr>
@@ -306,7 +315,7 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td>
           <td class="paramname"><em>flags</em>&#160;</td>
         </tr>
         <tr>
@@ -331,7 +340,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="ext2__functions_8c_a9df1cc1b1a14caf87d09762a4886ce53_cgraph.png" border="0" usemap="#ext2__functions_8c_a9df1cc1b1a14caf87d09762a4886ce53_cgraph" alt=""/></div>
 <map name="ext2__functions_8c_a9df1cc1b1a14caf87d09762a4886ce53_cgraph" id="ext2__functions_8c_a9df1cc1b1a14caf87d09762a4886ce53_cgraph">
-<area shape="rect" id="node3" href="ext2__functions_8c.html#aa5552876c927b5b04e708531c07344b0" title="Lecture d&#39;un fichier." alt="" coords="147,5,227,35"/><area shape="rect" id="node5" href="ext2__functions_8c.html#ac9b55aefa79e5e521e4e5d993b4c009a" title="Lecture du contenu d&#39;un dossier." alt="" coords="139,59,235,88"/><area shape="rect" id="node11" href="ext2__functions_8c.html#ab2859a00444ce0ad527332da72e2629a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="144,112,229,141"/><area shape="rect" id="node7" href="string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères." alt="" coords="283,32,347,61"/><area shape="rect" id="node9" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="288,85,341,115"/></map>
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="153,5,220,35"/><area shape="rect" id="node7" href="ext2__functions_8c.html#aa5552876c927b5b04e708531c07344b0" title="Lecture d&#39;un fichier." alt="" coords="147,59,227,88"/><area shape="rect" id="node9" href="ext2__functions_8c.html#ac9b55aefa79e5e521e4e5d993b4c009a" title="Lecture du contenu d&#39;un dossier." alt="" coords="139,112,235,141"/><area shape="rect" id="node15" href="ext2__functions_8c.html#ab2859a00444ce0ad527332da72e2629a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="144,165,229,195"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="284,5,425,35"/><area shape="rect" id="node11" href="kernel_2include_2klibc_2string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères." alt="" coords="323,59,387,88"/><area shape="rect" id="node13" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="328,112,381,141"/><area shape="rect" id="node17" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="329,165,380,195"/></map>
 </div>
 </p>
 
@@ -351,7 +360,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t <a class="el" href="ext2_8h.html#aa5552876c927b5b04e708531c07344b0">ext2_read</a> </td>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> <a class="el" href="ext2_8h.html#aa5552876c927b5b04e708531c07344b0">ext2_read</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
           <td class="paramname"><em>ofd</em>, </td>
@@ -365,7 +374,7 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
           <td class="paramname"><em>size</em>&#160;</td>
         </tr>
         <tr>
@@ -416,7 +425,7 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
           <td class="paramname"><em>size</em>&#160;</td>
         </tr>
         <tr>
@@ -442,7 +451,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="ext2__functions_8c_ac9b55aefa79e5e521e4e5d993b4c009a_cgraph.png" border="0" usemap="#ext2__functions_8c_ac9b55aefa79e5e521e4e5d993b4c009a_cgraph" alt=""/></div>
 <map name="ext2__functions_8c_ac9b55aefa79e5e521e4e5d993b4c009a_cgraph" id="ext2__functions_8c_ac9b55aefa79e5e521e4e5d993b4c009a_cgraph">
-<area shape="rect" id="node3" href="string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères." alt="" coords="149,5,213,35"/><area shape="rect" id="node5" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="155,59,208,88"/></map>
+<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères." alt="" coords="149,5,213,35"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="155,59,208,88"/></map>
 </div>
 </p>
 
@@ -495,7 +504,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="ext2__functions_8c_ad87ef876e972f1bcb11d752042207d47_cgraph.png" border="0" usemap="#ext2__functions_8c_ad87ef876e972f1bcb11d752042207d47_cgraph" alt=""/></div>
 <map name="ext2__functions_8c_ad87ef876e972f1bcb11d752042207d47_cgraph" id="ext2__functions_8c_ad87ef876e972f1bcb11d752042207d47_cgraph">
-<area shape="rect" id="node3" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="140,5,193,35"/></map>
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="140,5,207,35"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="147,59,200,88"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="257,5,399,35"/></map>
 </div>
 </p>
 
@@ -580,7 +589,7 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">off_t&#160;</td>
+          <td class="paramtype"><a class="el" href="libc_2include_2sys_2types_8h.html#a447a6a64dbb8fb44b1e62856b333db4a">off_t</a>&#160;</td>
           <td class="paramname"><em>off</em>&#160;</td>
         </tr>
         <tr>
@@ -650,7 +659,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="ext2__functions_8c_aa78e9c6b4686b24a0183b164800a04ed_cgraph.png" border="0" usemap="#ext2__functions_8c_aa78e9c6b4686b24a0183b164800a04ed_cgraph" alt=""/></div>
 <map name="ext2__functions_8c_aa78e9c6b4686b24a0183b164800a04ed_cgraph" id="ext2__functions_8c_aa78e9c6b4686b24a0183b164800a04ed_cgraph">
-<area shape="rect" id="node3" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="143,5,196,35"/></map>
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="143,5,209,35"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="149,59,203,88"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="260,5,401,35"/></map>
 </div>
 </p>
 
@@ -683,7 +692,7 @@ Voici le graphe des appelants de cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

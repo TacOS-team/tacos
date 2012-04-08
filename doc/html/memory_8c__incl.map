@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node5" href="$memory_8h.html" title="memory.h" alt="" coords="93,83,173,112"/>
-<area shape="rect" id="node7" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="101,160,165,189"/>
+<area shape="rect" id="node3" href="$memory_8h.html" title="Gestion des pages mémoires physiques." alt="" coords="27,83,107,112"/>
+<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="35,160,99,189"/>
 </map>

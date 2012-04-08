@@ -93,8 +93,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00040"></a>00040 
 <a name="l00041"></a>00041 <span class="keyword">typedef</span> <span class="keyword">enum</span> _device_type_t device_type_t ;
 <a name="l00042"></a>00042 
-<a name="l00043"></a>00043 <span class="keyword">typedef</span> size_t (*chardev_read_t)(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *,<span class="keywordtype">void</span>*, size_t);
-<a name="l00044"></a>00044 <span class="keyword">typedef</span> size_t (*chardev_write_t)(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *, <span class="keyword">const</span> <span class="keywordtype">void</span>*, size_t);
+<a name="l00043"></a>00043 <span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> (*chardev_read_t)(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *,<span class="keywordtype">void</span>*, <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>);
+<a name="l00044"></a>00044 <span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> (*chardev_write_t)(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *, <span class="keyword">const</span> <span class="keywordtype">void</span>*, <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>);
 <a name="l00045"></a>00045 <span class="keyword">typedef</span> int (*chardev_ioctl_t) (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>*, <span class="keywordtype">unsigned</span> int, <span class="keywordtype">void</span>*);
 <a name="l00046"></a>00046 <span class="keyword">typedef</span> int (*chardev_open_t) (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>*);
 <a name="l00047"></a>00047 <span class="keyword">typedef</span> int (*chardev_close_t) (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>*);
@@ -109,8 +109,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00056"></a>00056 }<a class="code" href="structchardev__interfaces.html">chardev_interfaces</a>;
 <a name="l00057"></a>00057 
 <a name="l00058"></a>00058 
-<a name="l00059"></a>00059 <span class="keyword">typedef</span> size_t (*blkdev_read_t)(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *,<span class="keywordtype">void</span>*, size_t, uint32_t);
-<a name="l00060"></a>00060 <span class="keyword">typedef</span> size_t (*blkdev_write_t)(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *, <span class="keyword">const</span> <span class="keywordtype">void</span>*, size_t, uint32_t);
+<a name="l00059"></a>00059 <span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> (*blkdev_read_t)(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *,<span class="keywordtype">void</span>*, <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>);
+<a name="l00060"></a>00060 <span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> (*blkdev_write_t)(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *, <span class="keyword">const</span> <span class="keywordtype">void</span>*, <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>);
 <a name="l00061"></a>00061 <span class="keyword">typedef</span> int (*blkdev_ioctl_t) (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>*, <span class="keywordtype">unsigned</span> int, <span class="keywordtype">void</span>*);
 <a name="l00062"></a>00062 <span class="keyword">typedef</span> int (*blkdev_open_t) (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>*);
 <a name="l00063"></a>00063 <span class="keyword">typedef</span> int (*blkdev_close_t) (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>*);
@@ -119,8 +119,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00066"></a>00066         blkdev_read_t <a class="code" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier.">read</a>;
 <a name="l00067"></a>00067         blkdev_write_t <a class="code" href="unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier.">write</a>;
 <a name="l00068"></a>00068         blkdev_ioctl_t ioctl;
-<a name="l00069"></a>00069         blkdev_open_t open;
-<a name="l00070"></a>00070         blkdev_close_t close;
+<a name="l00069"></a>00069         blkdev_open_t <a class="code" href="fcntl_8c.html#adcb60598073f6f9cbb0091ef6768fa5c">open</a>;
+<a name="l00070"></a>00070         blkdev_close_t <a class="code" href="fcntl_8c.html#ae68e7e3d0b126184d5d00e78e94305fb">close</a>;
 <a name="l00071"></a>00071         <span class="keywordtype">void</span> * custom_data;
 <a name="l00072"></a>00072 }<a class="code" href="structblkdev__interfaces.html">blkdev_interfaces</a>;
 <a name="l00073"></a>00073 
@@ -149,7 +149,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -1,11 +1,11 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="27,160,88,189"/>
-<area shape="rect" id="node12" href="$fcntl_8h.html" title="fcntl.h" alt="" coords="95,83,148,112"/>
-<area shape="rect" id="node14" href="$unistd_8h.html" title="unistd.h" alt="" coords="172,83,239,112"/>
-<area shape="rect" id="node23" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="268,160,367,189"/>
-<area shape="rect" id="node5" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="111,315,199,344"/>
-<area shape="rect" id="node9" href="$malloc_8h.html" title="malloc.h" alt="" coords="23,237,92,267"/>
-<area shape="rect" id="node7" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="118,392,192,421"/>
-<area shape="rect" id="node17" href="$stat_8h.html" title="sys/stat.h" alt="" coords="167,160,244,189"/>
-<area shape="rect" id="node20" href="$time_8h.html" title="time.h" alt="" coords="218,237,274,267"/>
+<area shape="rect" id="node3" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="5,160,67,189"/>
+<area shape="rect" id="node12" href="$fcntl_8h.html" title="File control operations." alt="" coords="73,83,127,112"/>
+<area shape="rect" id="node14" href="$unistd_8h.html" title="unistd.h" alt="" coords="151,83,217,112"/>
+<area shape="rect" id="node23" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="241,83,340,112"/>
+<area shape="rect" id="node5" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="100,315,188,344"/>
+<area shape="rect" id="node9" href="$malloc_8h.html" title="malloc.h" alt="" coords="37,237,107,267"/>
+<area shape="rect" id="node7" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="107,392,181,421"/>
+<area shape="rect" id="node17" href="$stat_8h.html" title="sys/stat.h" alt="" coords="181,160,259,189"/>
+<area shape="rect" id="node20" href="$time_8h.html" title="time.h" alt="" coords="232,237,288,267"/>
 </map>

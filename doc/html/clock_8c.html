@@ -98,7 +98,7 @@ Graphe des dépendances par inclusion de clock.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="clock_8c__incl.png" border="0" usemap="#kernel_2clock_8c" alt=""/></div>
 <map name="kernel_2clock_8c" id="kernel_2clock_8c">
-<area shape="rect" id="node5" href="ioports_8h.html" title="ioports.h" alt="" coords="93,83,165,112"/><area shape="rect" id="node7" href="i8254_8h.html" title="Initialisation du i8254 (timer)." alt="" coords="103,160,164,189"/><area shape="rect" id="node11" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="240,83,304,112"/><area shape="rect" id="node17" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="343,160,428,189"/><area shape="rect" id="node20" href="kstdio_8h.html" title="kstdio.h" alt="" coords="379,83,445,112"/><area shape="rect" id="node22" href="heap_8h.html" title="heap.h" alt="" coords="452,160,513,189"/><area shape="rect" id="node9" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="247,237,311,267"/><area shape="rect" id="node14" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="239,160,319,189"/></map>
+<area shape="rect" id="node5" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="93,83,165,112"/><area shape="rect" id="node7" href="i8254_8h.html" title="Initialisation du i8254 (timer)." alt="" coords="103,160,164,189"/><area shape="rect" id="node11" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="240,83,304,112"/><area shape="rect" id="node17" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="343,160,428,189"/><area shape="rect" id="node20" href="kstdio_8h.html" title="kprintf" alt="" coords="379,83,445,112"/><area shape="rect" id="node22" href="heap_8h.html" title="heap.h" alt="" coords="452,160,513,189"/><area shape="rect" id="node9" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="247,237,311,267"/><area shape="rect" id="node14" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="239,160,319,189"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="define-members"></a>
@@ -130,7 +130,7 @@ Fonctions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#abc0cc7974581cee0900c817955ff2f5b">clock_tick</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Incrémente le temps système. Ajoute une milliseconde au temps système, ne met rien à jour au dela du jour actuel. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2217dd848bce59e4c4635650a0beee4"></a><!-- doxytag: member="clock.c::bcd2binary" ref="aa2217dd848bce59e4c4635650a0beee4" args="(uint8_t n)" -->
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bcd2binary</b> (uint8_t n)</td></tr>
+<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bcd2binary</b> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> n)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#ab07bd3e86ff449c65b06fd50ec8e422e">clock_mktime</a> (struct <a class="el" href="structtm.html">tm</a> *timep)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Conversion struct tm vers time_t. Conversion d'une date exprimée sous la forme secondes, minutes, heures, jour, mois, année, etc, vers le format time_t.  <a href="#ab07bd3e86ff449c65b06fd50ec8e422e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9cc0a879e88eea28e4e8b57318ef8e5"></a><!-- doxytag: member="clock.c::clock_init" ref="ae9cc0a879e88eea28e4e8b57318ef8e5" args="()" -->
@@ -694,7 +694,7 @@ Voici le graphe des appelants de cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

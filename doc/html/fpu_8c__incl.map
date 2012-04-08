@@ -1,7 +1,7 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$fpu_8h.html" title="fpu.h" alt="" coords="5,83,53,112"/>
 <area shape="rect" id="node5" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="77,83,163,112"/>
-<area shape="rect" id="node9" href="$klog_8h.html" title="klog.h" alt="" coords="187,83,245,112"/>
+<area shape="rect" id="node9" href="$klog_8h.html" title="Logging macros." alt="" coords="187,83,245,112"/>
 <area shape="rect" id="node7" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="88,160,152,189"/>
-<area shape="rect" id="node11" href="$kstdio_8h.html" title="kstdio.h" alt="" coords="183,160,249,189"/>
+<area shape="rect" id="node11" href="$kstdio_8h.html" title="kprintf" alt="" coords="183,160,249,189"/>
 </map>

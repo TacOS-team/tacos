@@ -263,7 +263,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00182"></a>00182   m_reserve  = min(reserve, this-&gt;max_size());
 <a name="l00183"></a>00183   m_data     = <span class="keyword">new</span> T [m_reserve];
 <a name="l00184"></a>00184   m_size     = min(reserve, m_size);
-<a name="l00185"></a>00185   <a class="code" href="string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire.">memcpy</a>(m_data, old, m_size * <span class="keyword">sizeof</span>(T));
+<a name="l00185"></a>00185   <a class="code" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire.">memcpy</a>(m_data, old, m_size * <span class="keyword">sizeof</span>(T));
 <a name="l00186"></a>00186   <span class="keyword">delete</span> [] old;
 <a name="l00187"></a>00187 
 <a name="l00188"></a>00188 }<span class="comment">// VECTOR::reserve()</span>
@@ -271,7 +271,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00190"></a>00190 
 <a name="l00191"></a>00191 TEMPLATE
 <a name="l00192"></a>00192 <span class="keywordtype">size_t</span> VECTOR::max_size()<span class="keyword"> const </span>{
-<a name="l00193"></a>00193   <span class="keywordflow">return</span> size_t(-1) / <span class="keyword">sizeof</span>(T);
+<a name="l00193"></a>00193   <span class="keywordflow">return</span> <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>(-1) / <span class="keyword">sizeof</span>(T);
 <a name="l00194"></a>00194 
 <a name="l00195"></a>00195 }<span class="comment">// VECTOR::max_size()</span>
 <a name="l00196"></a>00196 
@@ -303,7 +303,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

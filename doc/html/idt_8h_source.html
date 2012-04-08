@@ -100,11 +100,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00063"></a>00063 
 <a name="l00070"></a>00070 <span class="keywordtype">void</span> <a class="code" href="idt_8c.html#a559dc3a4f73d1813f12a104840e68550" title="Initialisation de l&#39;IDT.">idt_setup</a>();
 <a name="l00071"></a>00071 
-<a name="l00081"></a>00081 <span class="keywordtype">int</span> <a class="code" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception.">idt_set_handler</a>(uint8_t index, paddr_t handler_address, uint8_t priority);
+<a name="l00081"></a>00081 <span class="keywordtype">int</span> <a class="code" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception.">idt_set_handler</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> index, <a class="code" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> handler_address, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> priority);
 <a name="l00082"></a>00082 
-<a name="l00090"></a>00090 <span class="keywordtype">void</span> <a class="code" href="idt_8c.html#affa07557443fe1c9a508b346d8f06523" title="Change le type d&#39;une interruption (interrupt gate, trap gate, task gate).">idt_set_handler_type</a>(uint8_t index, uint8_t trap_type);
+<a name="l00090"></a>00090 <span class="keywordtype">void</span> <a class="code" href="idt_8c.html#affa07557443fe1c9a508b346d8f06523" title="Change le type d&#39;une interruption (interrupt gate, trap gate, task gate).">idt_set_handler_type</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> index, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> trap_type);
 <a name="l00091"></a>00091 
-<a name="l00097"></a>00097 <span class="keywordtype">void</span> <a class="code" href="idt_8c.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption.">idt_disable_handler</a>(uint8_t index);
+<a name="l00097"></a>00097 <span class="keywordtype">void</span> <a class="code" href="idt_8c.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption.">idt_disable_handler</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> index);
 <a name="l00098"></a>00098 
 <a name="l00099"></a>00099 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
@@ -125,7 +125,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

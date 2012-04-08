@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['fcntl',['fcntl',['../fcntl_8c.html#a5752d6571b615f1b7b1b0f719c2bc69d',1,'fcntl(int fd, unsigned int request, void *data):&#160;fcntl.c'],['../fcntl_8h.html#a5752d6571b615f1b7b1b0f719c2bc69d',1,'fcntl(int fd, unsigned int request, void *data):&#160;fcntl.c']]],
   ['fgetc',['fgetc',['../stdio_8h.html#ab11a990e4f8863a1e7736e3c1d430092',1,'fgetc(FILE *stream):&#160;get.c'],['../get_8c.html#ab11a990e4f8863a1e7736e3c1d430092',1,'fgetc(FILE *stream):&#160;get.c']]],
   ['fgets',['fgets',['../stdio_8h.html#a2b3df0e66b41edab3c039191fe6cc4f9',1,'fgets(char *s, int size, FILE *stream):&#160;get.c'],['../get_8c.html#a2b3df0e66b41edab3c039191fe6cc4f9',1,'fgets(char *s, int size, FILE *stream):&#160;get.c']]],
   ['find_5fdriver',['find_driver',['../devfs_8c.html#a38f6fa048d759685554ab60cae2fb250',1,'devfs.c']]],

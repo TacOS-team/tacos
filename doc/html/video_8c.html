@@ -90,7 +90,7 @@ Graphe des dépendances par inclusion de video.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="video_8c__incl.png" border="0" usemap="#kernel_2drivers_2char_2video_8c" alt=""/></div>
 <map name="kernel_2drivers_2char_2video_8c" id="kernel_2drivers_2char_2video_8c">
-<area shape="rect" id="node5" href="ioports_8h.html" title="ioports.h" alt="" coords="60,83,132,112"/><area shape="rect" id="node7" href="video_8h.html" title="Driver console (vidéo texte)." alt="" coords="156,83,265,112"/></map>
+<area shape="rect" id="node5" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="60,83,132,112"/><area shape="rect" id="node7" href="video_8h.html" title="Driver console (vidéo texte)." alt="" coords="156,83,265,112"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="define-members"></a>
@@ -124,8 +124,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>offset_video</b> (int
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la page à afficher à l'écran.  <a href="#ab549780053994f6b1dba04869b562a43"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#ab5839353cba28b424b12338feca82385">flip_page</a> (int n)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Interverti les 2 buffers d'une page.  <a href="#ab5839353cba28b424b12338feca82385"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#ac2631558551ebf255e434f0a0ccf4964">set_blink_bit</a> (int blink_bit)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Active le clignotement du curseur.  <a href="#ac2631558551ebf255e434f0a0ccf4964"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#a61e8f22681edb740e2d057ac270e6f5b">disable_cursor</a> (int disable)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Désactive l'affichage du curseur.  <a href="#a61e8f22681edb740e2d057ac270e6f5b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1ddd4e6afaac2e5d7ed1d7575e8186b"></a><!-- doxytag: member="video.c::cursor_position_video" ref="ab1ddd4e6afaac2e5d7ed1d7575e8186b" args="(int n, int x, int y)" -->
@@ -214,29 +212,6 @@ Voici le graphe d'appel pour cette fonction :</div>
 
 </div>
 </div>
-<a class="anchor" id="ac2631558551ebf255e434f0a0ccf4964"></a><!-- doxytag: member="video.c::set_blink_bit" ref="ac2631558551ebf255e434f0a0ccf4964" args="(int blink_bit)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="video_8h.html#ac2631558551ebf255e434f0a0ccf4964">set_blink_bit</a> </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>blink_bit</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<dl class="params"><dt><b>Paramètres:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">blink_bit</td><td>1 si le cursor doit clignoter. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="ab549780053994f6b1dba04869b562a43"></a><!-- doxytag: member="video.c::switch_page" ref="ab549780053994f6b1dba04869b562a43" args="(int i)" -->
 <div class="memitem">
 <div class="memproto">
@@ -287,7 +262,7 @@ Voici le graphe des appelants de cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -85,26 +85,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00031"></a>00031 <span class="preprocessor"></span>
 <a name="l00032"></a>00032 <span class="preprocessor">#ifndef _TYPES_UINTX_T_</span>
 <a name="l00033"></a>00033 <span class="preprocessor"></span><span class="preprocessor">#define _TYPES_UINTX_T_</span>
-<a name="l00034"></a>00034 <span class="preprocessor"></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> uint8_t;  <span class="comment">/* 8 bits non signé */</span>
-<a name="l00035"></a>00035 <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> uint16_t;  <span class="comment">/* 16 bits non signé */</span>
-<a name="l00036"></a>00036 <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> uint32_t;  <span class="comment">/* 32 bits non signé */</span>
-<a name="l00037"></a>00037 <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> uint64_t;  <span class="comment">/* 64 bits non signé */</span>
-<a name="l00038"></a>00038 <span class="keyword">typedef</span> uint32_t vaddr_t;
+<a name="l00034"></a><a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">00034</a> <span class="preprocessor"></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>;  
+<a name="l00035"></a><a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">00035</a> <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>;  
+<a name="l00036"></a><a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">00036</a> <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>;  
+<a name="l00037"></a><a class="code" href="kernel_2include_2types_8h.html#ad27ed092432b64ff558d2254c278720f">00037</a> <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="kernel_2include_2types_8h.html#ad27ed092432b64ff558d2254c278720f">uint64_t</a>;  
+<a name="l00038"></a><a class="code" href="kernel_2include_2types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">00038</a> <span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="kernel_2include_2types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">vaddr_t</a>; 
 <a name="l00039"></a>00039 <span class="preprocessor">#endif</span>
 <a name="l00040"></a>00040 <span class="preprocessor"></span>
 <a name="l00041"></a>00041 <span class="preprocessor">#ifndef _TYPES_SIZE_T_</span>
 <a name="l00042"></a>00042 <span class="preprocessor"></span><span class="preprocessor">#define _TYPES_SIZE_T_</span>
-<a name="l00043"></a>00043 <span class="preprocessor"></span><span class="keyword">typedef</span> uint32_t size_t;
-<a name="l00044"></a>00044 <span class="keyword">typedef</span> <span class="keywordtype">int</span> ssize_t;
+<a name="l00043"></a><a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">00043</a> <span class="preprocessor"></span><span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>; 
+<a name="l00044"></a><a class="code" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">00044</a> <span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>; 
 <a name="l00045"></a>00045 <span class="preprocessor">#endif</span>
 <a name="l00046"></a>00046 <span class="preprocessor"></span>
 <a name="l00047"></a>00047 <span class="preprocessor">#ifndef _TYPES_OFF_T_</span>
 <a name="l00048"></a>00048 <span class="preprocessor"></span><span class="preprocessor">#define _TYPES_OFF_T_</span>
-<a name="l00049"></a>00049 <span class="preprocessor"></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> off_t;
+<a name="l00049"></a>00049 <span class="preprocessor"></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="libc_2include_2sys_2types_8h.html#a447a6a64dbb8fb44b1e62856b333db4a">off_t</a>;
 <a name="l00050"></a>00050 <span class="preprocessor">#endif</span>
 <a name="l00051"></a>00051 <span class="preprocessor"></span>
-<a name="l00052"></a>00052 <span class="keyword">typedef</span> uint32_t paddr_t;
-<a name="l00053"></a>00053 
+<a name="l00052"></a><a class="code" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">00052</a> <span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>; 
 <a name="l00054"></a>00054 <span class="preprocessor">#ifndef __cplusplus</span>
 <a name="l00055"></a>00055 <span class="preprocessor"></span><span class="preprocessor">#define bool _Bool</span>
 <a name="l00056"></a>00056 <span class="preprocessor"></span><span class="preprocessor">#define true 1</span>
@@ -135,7 +134,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

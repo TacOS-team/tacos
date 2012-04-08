@@ -5,7 +5,9 @@ var searchData=
   ['addr',['addr',['../structblk__t.html#a7c19dc926a0c8d6bf7bb5b2fe88f8ad6',1,'blk_t::addr()'],['../structphysical__page__descr.html#a8694fbd6da044ec77732927bd905e128',1,'physical_page_descr::addr()']]],
   ['allocate_5fnew_5fpage',['allocate_new_page',['../vmm_8h.html#aa6984df26426c14049065875c6b85e9c',1,'allocate_new_page(struct virtual_mem *vm, void **alloc, int u_s):&#160;vmm.c'],['../vmm_8c.html#aa6984df26426c14049065875c6b85e9c',1,'allocate_new_page(struct virtual_mem *vm, void **alloc, int u_s):&#160;vmm.c']]],
   ['allocate_5fnew_5fpages',['allocate_new_pages',['../vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b',1,'allocate_new_pages(struct virtual_mem *vm, unsigned int nb_pages, void **alloc, int u_s):&#160;vmm.c'],['../vmm_8c.html#a042a3049e6bc33c07f2b2c2a9dcfe78b',1,'allocate_new_pages(struct virtual_mem *vm, unsigned int nb_pages, void **alloc, int u_s):&#160;vmm.c']]],
+  ['args',['args',['../structprocess__init__data__t.html#a737fa5397e0a769d7d7c4f7aa7289c89',1,'process_init_data_t']]],
   ['attr',['attr',['../structconsole__t.html#a07b1c84ea67ce030ebd868917e56b0d9',1,'console_t']]],
   ['attribute',['attribute',['../structx86__video__mem.html#ab513d18ce9ef33e2d22e426973fd7417',1,'x86_video_mem']]],
-  ['available',['available',['../structx86__segment__descriptor.html#a761494a7a460e493e0d5d188a31cd052',1,'x86_segment_descriptor']]]
+  ['available',['available',['../structx86__segment__descriptor.html#a761494a7a460e493e0d5d188a31cd052',1,'x86_segment_descriptor']]],
+  ['available_5ffs_5ft',['available_fs_t',['../vfs_8c.html#a2e535233f88552b377b2f1523c182acc',1,'vfs.c']]]
 ];

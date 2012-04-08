@@ -81,7 +81,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence de la structure process_init_data_t</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="process_init_data_t" --><div class="dynheader">
+<!-- doxytag: class="process_init_data_t" -->
+<p><code>#include &lt;<a class="el" href="kprocess_8h_source.html">kprocess.h</a>&gt;</code></p>
+<div class="dynheader">
 Graphe de collaboration de process_init_data_t:</div>
 <div class="dyncontent">
 <div class="center"><img src="structprocess__init__data__t__coll__graph.png" border="0" usemap="#process__init__data__t_coll__map" alt="Collaboration graph"/></div>
@@ -91,29 +93,97 @@ Graphe de collaboration de process_init_data_t:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af94c0c0d6a880258c86175e13309d7bd"></a><!-- doxytag: member="process_init_data_t::name" ref="af94c0c0d6a880258c86175e13309d7bd" args="" -->
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a737fa5397e0a769d7d7c4f7aa7289c89"></a><!-- doxytag: member="process_init_data_t::args" ref="a737fa5397e0a769d7d7c4f7aa7289c89" args="" -->
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>args</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2a942b9852943b1fd1771a69047e514"></a><!-- doxytag: member="process_init_data_t::envp" ref="ac2a942b9852943b1fd1771a69047e514" args="" -->
-char **&#160;</td><td class="memItemRight" valign="bottom"><b>envp</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1cda790f7d2446a04562094f09e358ab"></a><!-- doxytag: member="process_init_data_t::exec_type" ref="a1cda790f7d2446a04562094f09e358ab" args="" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>exec_type</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f4139a5267079b63cf2240676a28793"></a><!-- doxytag: member="process_init_data_t::data" ref="a4f4139a5267079b63cf2240676a28793" args="" -->
-void *&#160;</td><td class="memItemRight" valign="bottom"><b>data</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprocess__init__data__t.html#af94c0c0d6a880258c86175e13309d7bd">name</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprocess__init__data__t.html#a737fa5397e0a769d7d7c4f7aa7289c89">args</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprocess__init__data__t.html#ac2a942b9852943b1fd1771a69047e514">envp</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprocess__init__data__t.html#a1cda790f7d2446a04562094f09e358ab">exec_type</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprocess__init__data__t.html#a4f4139a5267079b63cf2240676a28793">data</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae50ca59bb0fa3c3d1e3c17e1f7419b1d"></a><!-- doxytag: member="process_init_data_t::file" ref="ae50ca59bb0fa3c3d1e3c17e1f7419b1d" args="" -->
 <a class="el" href="structElf32__File.html">Elf32_File</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae720e802d58d2f1457e34998063695a1"></a><!-- doxytag: member="process_init_data_t::mem_size" ref="ae720e802d58d2f1457e34998063695a1" args="" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>mem_size</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf333ed57db9a2ca636801dcbc41da7e"></a><!-- doxytag: member="process_init_data_t::entry_point" ref="acf333ed57db9a2ca636801dcbc41da7e" args="" -->
-vaddr_t&#160;</td><td class="memItemRight" valign="bottom"><b>entry_point</b></td></tr>
+<a class="el" href="kernel_2include_2types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">vaddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>entry_point</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a9c2d2d0d602f8e2f3dc2f4c425da29"></a><!-- doxytag: member="process_init_data_t::stack_size" ref="a8a9c2d2d0d602f8e2f3dc2f4c425da29" args="" -->
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>stack_size</b></td></tr>
+<a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>stack_size</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3147915ee1aa09fd84245e28635c60c8"></a><!-- doxytag: member="process_init_data_t::priority" ref="a3147915ee1aa09fd84245e28635c60c8" args="" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>priority</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a34f85f3f56546700b1dc942070944e27"></a><!-- doxytag: member="process_init_data_t::ppid" ref="a34f85f3f56546700b1dc942070944e27" args="" -->
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>ppid</b></td></tr>
+<a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ppid</b></td></tr>
 </table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>Structure à passer au noyau pour créer un nouveau processus </p>
+</div><hr/><h2>Documentation des champs</h2>
+<a class="anchor" id="a737fa5397e0a769d7d7c4f7aa7289c89"></a><!-- doxytag: member="process_init_data_t::args" ref="a737fa5397e0a769d7d7c4f7aa7289c89" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * <a class="el" href="structprocess__init__data__t.html#a737fa5397e0a769d7d7c4f7aa7289c89">process_init_data_t::args</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Ses arguments. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4f4139a5267079b63cf2240676a28793"></a><!-- doxytag: member="process_init_data_t::data" ref="a4f4139a5267079b63cf2240676a28793" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * <a class="el" href="structprocess__init__data__t.html#a4f4139a5267079b63cf2240676a28793">process_init_data_t::data</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Usage variable </p>
+
+</div>
+</div>
+<a class="anchor" id="ac2a942b9852943b1fd1771a69047e514"></a><!-- doxytag: member="process_init_data_t::envp" ref="ac2a942b9852943b1fd1771a69047e514" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char ** <a class="el" href="structprocess__init__data__t.html#ac2a942b9852943b1fd1771a69047e514">process_init_data_t::envp</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Ses variables d'environnement. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1cda790f7d2446a04562094f09e358ab"></a><!-- doxytag: member="process_init_data_t::exec_type" ref="a1cda790f7d2446a04562094f09e358ab" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structprocess__init__data__t.html#a1cda790f7d2446a04562094f09e358ab">process_init_data_t::exec_type</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Type d'exécution </p>
+
+</div>
+</div>
+<a class="anchor" id="af94c0c0d6a880258c86175e13309d7bd"></a><!-- doxytag: member="process_init_data_t::name" ref="af94c0c0d6a880258c86175e13309d7bd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * <a class="el" href="structprocess__init__data__t.html#af94c0c0d6a880258c86175e13309d7bd">process_init_data_t::name</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nom du processus. </p>
+
+</div>
+</div>
 <hr/>La documentation de cette structure a été générée à partir des fichiers suivants :<ul>
 <li>kernel/include/<a class="el" href="kprocess_8h_source.html">kprocess.h</a></li>
 <li>libc/include/<a class="el" href="process_8h_source.html">process.h</a></li>
@@ -136,7 +206,7 @@ uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>ppid</b></td></tr
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

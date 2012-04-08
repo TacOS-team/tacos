@@ -81,6 +81,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier kernel/include/ioports.h</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Définition des macros pour faire des IO avec le matériel. Intel-specific I/O space access routines.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
@@ -93,12 +96,12 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>outb</b>(value, port)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>inb</b>(port)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>outw</b>(value, port)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>inw</b>(port)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>outl</b>(value, port)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>inl</b>(port)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ioports_8h.html#aff0f5d0c71d15c5888f22f86b5ca841b">outb</a>(value, port)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ioports_8h.html#ad6488a48837d179b1833e2f48dac9665">inb</a>(port)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ioports_8h.html#af5cccb303b5a6c843ffc631a8e9f9bf3">outw</a>(value, port)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ioports_8h.html#ac4195d1c9d8dcc8366ae15a79f06514c">inw</a>(port)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ioports_8h.html#a92861e5d69e7083cd52115acac183a2f">outl</a>(value, port)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ioports_8h.html#ae285c9abe0ed43579db8e8ba941385f7">inl</a>(port)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -110,15 +113,13 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-<p>Description de ce que fait le fichier</p>
-<p>Intel-specific I/O space access routines. </p>
 </div><hr/><h2>Documentation des macros</h2>
 <a class="anchor" id="ad6488a48837d179b1833e2f48dac9665"></a><!-- doxytag: member="ioports.h::inb" ref="ad6488a48837d179b1833e2f48dac9665" args="(port)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define inb</td>
+          <td class="memname">#define <a class="el" href="ioports_8h.html#ad6488a48837d179b1833e2f48dac9665">inb</a></td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">port</td><td>)</td>
@@ -127,16 +128,15 @@ DESCRIPTION</h2>
       </table>
 </div>
 <div class="memdoc">
-<b>Valeur :</b><div class="fragment"><pre class="fragment">({                                                              \
-  unsigned <span class="keywordtype">char</span> _v;                                             \
-  __asm__ <span class="keyword">volatile</span> (                                            \
-        <span class="stringliteral">&quot;inb %w1,%0&quot;</span>                                            \
-        :<span class="stringliteral">&quot;=a&quot;</span> (_v)                                              \
-        :<span class="stringliteral">&quot;Nd&quot;</span> (port)                                            \
-        );                                                      \
-  _v;                                                           \
+<b>Valeur :</b><div class="fragment"><pre class="fragment">({ \
+  unsigned <span class="keywordtype">char</span> _v; \
+  __asm__ <span class="keyword">volatile</span> (<span class="stringliteral">&quot;inb %w1,%0&quot;</span> \
+        :<span class="stringliteral">&quot;=a&quot;</span> (_v) \
+        :<span class="stringliteral">&quot;Nd&quot;</span> (port)); \
+  _v; \
 })
-</pre></div>
+</pre></div><p>Read one byte from port </p>
+
 </div>
 </div>
 <a class="anchor" id="ae285c9abe0ed43579db8e8ba941385f7"></a><!-- doxytag: member="ioports.h::inl" ref="ae285c9abe0ed43579db8e8ba941385f7" args="(port)" -->
@@ -144,7 +144,7 @@ DESCRIPTION</h2>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define inl</td>
+          <td class="memname">#define <a class="el" href="ioports_8h.html#ae285c9abe0ed43579db8e8ba941385f7">inl</a></td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">port</td><td>)</td>
@@ -153,16 +153,15 @@ DESCRIPTION</h2>
       </table>
 </div>
 <div class="memdoc">
-<b>Valeur :</b><div class="fragment"><pre class="fragment">({                                                              \
-  unsigned <span class="keywordtype">int</span> _v;                                              \
-  __asm__ <span class="keyword">volatile</span> (                                            \
-        <span class="stringliteral">&quot;inl %w1,%0&quot;</span>                                            \
-        :<span class="stringliteral">&quot;=a&quot;</span> (_v)                                              \
-        :<span class="stringliteral">&quot;Nd&quot;</span> (port)                                            \
-        );                                                      \
-  _v;                                                           \
+<b>Valeur :</b><div class="fragment"><pre class="fragment">({ \
+  unsigned <span class="keywordtype">int</span> _v; \
+  __asm__ <span class="keyword">volatile</span> (<span class="stringliteral">&quot;inl %w1,%0&quot;</span> \
+        :<span class="stringliteral">&quot;=a&quot;</span> (_v) \
+        :<span class="stringliteral">&quot;Nd&quot;</span> (port)); \
+  _v; \
 })
-</pre></div>
+</pre></div><p>read one long from port </p>
+
 </div>
 </div>
 <a class="anchor" id="ac4195d1c9d8dcc8366ae15a79f06514c"></a><!-- doxytag: member="ioports.h::inw" ref="ac4195d1c9d8dcc8366ae15a79f06514c" args="(port)" -->
@@ -170,7 +169,7 @@ DESCRIPTION</h2>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define inw</td>
+          <td class="memname">#define <a class="el" href="ioports_8h.html#ac4195d1c9d8dcc8366ae15a79f06514c">inw</a></td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">port</td><td>)</td>
@@ -179,16 +178,15 @@ DESCRIPTION</h2>
       </table>
 </div>
 <div class="memdoc">
-<b>Valeur :</b><div class="fragment"><pre class="fragment">({                                                              \
-  unsigned <span class="keywordtype">int</span> _v;                                              \
-  __asm__ <span class="keyword">volatile</span> (                                            \
-        <span class="stringliteral">&quot;inw %w1,%w0&quot;</span>                                           \
-        :<span class="stringliteral">&quot;=a&quot;</span> (_v)                                              \
-        :<span class="stringliteral">&quot;Nd&quot;</span> (port)                                            \
-        );                                                      \
-  _v;                                                           \
+<b>Valeur :</b><div class="fragment"><pre class="fragment">({ \
+  unsigned <span class="keywordtype">int</span> _v; \
+  __asm__ <span class="keyword">volatile</span> (<span class="stringliteral">&quot;inw %w1,%w0&quot;</span> \
+        :<span class="stringliteral">&quot;=a&quot;</span> (_v) \
+        :<span class="stringliteral">&quot;Nd&quot;</span> (port)); \
+  _v; \
 })
-</pre></div>
+</pre></div><p>Read one word from port </p>
+
 </div>
 </div>
 <a class="anchor" id="aff0f5d0c71d15c5888f22f86b5ca841b"></a><!-- doxytag: member="ioports.h::outb" ref="aff0f5d0c71d15c5888f22f86b5ca841b" args="(value, port)" -->
@@ -196,7 +194,7 @@ DESCRIPTION</h2>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define outb</td>
+          <td class="memname">#define <a class="el" href="ioports_8h.html#aff0f5d0c71d15c5888f22f86b5ca841b">outb</a></td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">value, </td>
@@ -215,11 +213,10 @@ DESCRIPTION</h2>
       </table>
 </div>
 <div class="memdoc">
-<b>Valeur :</b><div class="fragment"><pre class="fragment">__asm__ <span class="keyword">volatile</span> (                                            \
-        <span class="stringliteral">&quot;outb %b0,%w1&quot;</span>                                          \
-        ::<span class="stringliteral">&quot;a&quot;</span> (value),<span class="stringliteral">&quot;Nd&quot;</span> (port)                               \
-        )                                                       \
-</pre></div>
+<b>Valeur :</b><div class="fragment"><pre class="fragment">__asm__ <span class="keyword">volatile</span> (<span class="stringliteral">&quot;outb %b0,%w1&quot;</span> \
+        ::<span class="stringliteral">&quot;a&quot;</span> (value),<span class="stringliteral">&quot;Nd&quot;</span> (port))
+</pre></div><p>Write value (byte) on port </p>
+
 </div>
 </div>
 <a class="anchor" id="a92861e5d69e7083cd52115acac183a2f"></a><!-- doxytag: member="ioports.h::outl" ref="a92861e5d69e7083cd52115acac183a2f" args="(value, port)" -->
@@ -227,7 +224,7 @@ DESCRIPTION</h2>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define outl</td>
+          <td class="memname">#define <a class="el" href="ioports_8h.html#a92861e5d69e7083cd52115acac183a2f">outl</a></td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">value, </td>
@@ -246,11 +243,10 @@ DESCRIPTION</h2>
       </table>
 </div>
 <div class="memdoc">
-<b>Valeur :</b><div class="fragment"><pre class="fragment">__asm__ <span class="keyword">volatile</span> (                                            \
-        <span class="stringliteral">&quot;outl %0,%w1&quot;</span>                                           \
-        ::<span class="stringliteral">&quot;a&quot;</span> (value),<span class="stringliteral">&quot;Nd&quot;</span> (port)                               \
-        )                                                       \
-</pre></div>
+<b>Valeur :</b><div class="fragment"><pre class="fragment">__asm__ <span class="keyword">volatile</span> (<span class="stringliteral">&quot;outl %0,%w1&quot;</span> \
+        ::<span class="stringliteral">&quot;a&quot;</span> (value),<span class="stringliteral">&quot;Nd&quot;</span> (port))
+</pre></div><p>write value (long) on port </p>
+
 </div>
 </div>
 <a class="anchor" id="af5cccb303b5a6c843ffc631a8e9f9bf3"></a><!-- doxytag: member="ioports.h::outw" ref="af5cccb303b5a6c843ffc631a8e9f9bf3" args="(value, port)" -->
@@ -258,7 +254,7 @@ DESCRIPTION</h2>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define outw</td>
+          <td class="memname">#define <a class="el" href="ioports_8h.html#af5cccb303b5a6c843ffc631a8e9f9bf3">outw</a></td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">value, </td>
@@ -277,11 +273,10 @@ DESCRIPTION</h2>
       </table>
 </div>
 <div class="memdoc">
-<b>Valeur :</b><div class="fragment"><pre class="fragment">__asm__ <span class="keyword">volatile</span> (                                            \
-       <span class="stringliteral">&quot;outw %w0,%w1&quot;</span>                                          \
-        ::<span class="stringliteral">&quot;a&quot;</span> (value),<span class="stringliteral">&quot;Nd&quot;</span> (port)                               \
-        )                                                       \
-</pre></div>
+<b>Valeur :</b><div class="fragment"><pre class="fragment">__asm__ <span class="keyword">volatile</span> (<span class="stringliteral">&quot;outw %w0,%w1&quot;</span> \
+        ::<span class="stringliteral">&quot;a&quot;</span> (value),<span class="stringliteral">&quot;Nd&quot;</span> (port))
+</pre></div><p>Write value (word) on port </p>
+
 </div>
 </div>
 </div><!-- contents -->
@@ -302,7 +297,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

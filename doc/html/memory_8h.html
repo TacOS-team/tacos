@@ -83,6 +83,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier kernel/include/memory.h</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Gestion des pages mémoires physiques.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de memory.h:</div>
@@ -96,7 +99,7 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <div class="dyncontent">
 <div class="center"><img src="memory_8h__dep__incl.png" border="0" usemap="#kernel_2include_2memory_8hdep" alt=""/></div>
 <map name="kernel_2include_2memory_8hdep" id="kernel_2include_2memory_8hdep">
-<area shape="rect" id="node3" href="gdt_8c.html" title="Setup de la GDT." alt="" coords="5,83,96,112"/><area shape="rect" id="node5" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="120,83,229,112"/><area shape="rect" id="node7" href="kmalloc_8c.html" title="kernel/kmalloc.c" alt="" coords="253,83,371,112"/><area shape="rect" id="node9" href="memory_8c.html" title="kernel/memory.c" alt="" coords="395,83,517,112"/><area shape="rect" id="node11" href="pagination_8c.html" title="kernel/pagination.c" alt="" coords="541,83,675,112"/><area shape="rect" id="node13" href="vmm_8c.html" title="kernel/vmm.c" alt="" coords="699,83,800,112"/></map>
+<area shape="rect" id="node3" href="gdt_8c.html" title="Setup de la GDT." alt="" coords="5,83,96,112"/><area shape="rect" id="node5" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="120,83,229,112"/><area shape="rect" id="node7" href="kmalloc_8c.html" title="kernel/kmalloc.c" alt="" coords="253,83,371,112"/><area shape="rect" id="node9" href="memory_8c.html" title="Gestion des pages mémoires physiques." alt="" coords="395,83,517,112"/><area shape="rect" id="node11" href="pagination_8c.html" title="kernel/pagination.c" alt="" coords="541,83,675,112"/><area shape="rect" id="node13" href="vmm_8c.html" title="kernel/vmm.c" alt="" coords="699,83,800,112"/></map>
 </div>
 </div>
 <p><a href="memory_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -121,11 +124,11 @@ Fonctions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la liste des cadres utilisés.  <a href="#a8fba2533a7d88ec6038d6948ca695957"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#a09a07799735fa6d6fbae7e870052daa3">memory_print_free_pages</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la liste des cadres libres.  <a href="#a09a07799735fa6d6fbae7e870052daa3"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#a2225d120bb97730dca7fe16322e706f3">memory_setup</a> (size_t ram_size)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#a2225d120bb97730dca7fe16322e706f3">memory_setup</a> (<a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> ram_size)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Découpage de la mémoire physique en cadres de page.  <a href="#a2225d120bb97730dca7fe16322e706f3"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">paddr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#aeed93f8c282af6d9d4428813e331f583">memory_reserve_page_frame</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#aeed93f8c282af6d9d4428813e331f583">memory_reserve_page_frame</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Réserve un cadre de page.  <a href="#aeed93f8c282af6d9d4428813e331f583"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#adcd850959d671b2d519a01d5c47ed090">memory_free_page_frame</a> (paddr_t addr)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#adcd850959d671b2d519a01d5c47ed090">memory_free_page_frame</a> (<a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> addr)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère un cadre de page.  <a href="#adcd850959d671b2d519a01d5c47ed090"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#a5973498654f77e506df68cfb1322d0e5">memory_get_first_used_page</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne une copie du pointeur du premier descripteur de cadre de page utilisés.  <a href="#a5973498654f77e506df68cfb1322d0e5"></a><br/></td></tr>
@@ -133,13 +136,13 @@ Fonctions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne une copie du pointeur du premier descripteur de cadre de page libres.  <a href="#a700b910217b425c592693b70801e8141"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#a3b842dcc01f272fb96c6fbce35a81e99">memory_has_next_page</a> (struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a> *iterator)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne vrai s'il y a encore un cadre de page qui suit.  <a href="#a3b842dcc01f272fb96c6fbce35a81e99"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">paddr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#a1de41321b1a8a9c6c12efd1a5ed998fa">memory_next_page</a> (struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a> **iterator)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#a1de41321b1a8a9c6c12efd1a5ed998fa">memory_next_page</a> (struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a> **iterator)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le prochain cadre de page.  <a href="#a1de41321b1a8a9c6c12efd1a5ed998fa"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">paddr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#af0f914a32931e95e6e9ce2c1463b7978">memory_align_page_inf</a> (paddr_t value)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#af0f914a32931e95e6e9ce2c1463b7978">memory_align_page_inf</a> (<a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> value)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse du cadre de page en arrondissant à l'inférieur.  <a href="#af0f914a32931e95e6e9ce2c1463b7978"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">paddr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#a1c72d3a8d1a8b95fb4d75e634534320a">memory_align_page_sup</a> (paddr_t value)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#a1c72d3a8d1a8b95fb4d75e634534320a">memory_align_page_sup</a> (<a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> value)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse du cadre de page en arrondissant au supérieur.  <a href="#a1c72d3a8d1a8b95fb4d75e634534320a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">paddr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#ab67b6223b9ebbe423e9102dbbed1afce">memory_get_kernel_top</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#ab67b6223b9ebbe423e9102dbbed1afce">memory_get_kernel_top</a> ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -151,16 +154,15 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-<p>Description de ce que fait le fichier</p>
 </div><hr/><h2>Documentation des fonctions</h2>
 <a class="anchor" id="af0f914a32931e95e6e9ce2c1463b7978"></a><!-- doxytag: member="memory.h::memory_align_page_inf" ref="af0f914a32931e95e6e9ce2c1463b7978" args="(paddr_t value)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">paddr_t <a class="el" href="memory_8c.html#af0f914a32931e95e6e9ce2c1463b7978">memory_align_page_inf</a> </td>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> <a class="el" href="memory_8c.html#af0f914a32931e95e6e9ce2c1463b7978">memory_align_page_inf</a> </td>
           <td>(</td>
-          <td class="paramtype">paddr_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -192,9 +194,9 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">paddr_t <a class="el" href="memory_8c.html#a1c72d3a8d1a8b95fb4d75e634534320a">memory_align_page_sup</a> </td>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> <a class="el" href="memory_8c.html#a1c72d3a8d1a8b95fb4d75e634534320a">memory_align_page_sup</a> </td>
           <td>(</td>
-          <td class="paramtype">paddr_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -228,7 +230,7 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="memname">int <a class="el" href="memory_8c.html#adcd850959d671b2d519a01d5c47ed090">memory_free_page_frame</a> </td>
           <td>(</td>
-          <td class="paramtype">paddr_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td>
           <td class="paramname"><em>addr</em></td><td>)</td>
           <td></td>
         </tr>
@@ -296,7 +298,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">paddr_t <a class="el" href="memory_8c.html#ab67b6223b9ebbe423e9102dbbed1afce">memory_get_kernel_top</a> </td>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> <a class="el" href="memory_8c.html#ab67b6223b9ebbe423e9102dbbed1afce">memory_get_kernel_top</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -358,7 +360,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">paddr_t <a class="el" href="memory_8c.html#a1de41321b1a8a9c6c12efd1a5ed998fa">memory_next_page</a> </td>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> <a class="el" href="memory_8c.html#a1de41321b1a8a9c6c12efd1a5ed998fa">memory_next_page</a> </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a> **&#160;</td>
           <td class="paramname"><em>iterator</em></td><td>)</td>
@@ -443,7 +445,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">paddr_t <a class="el" href="memory_8c.html#aeed93f8c282af6d9d4428813e331f583">memory_reserve_page_frame</a> </td>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> <a class="el" href="memory_8c.html#aeed93f8c282af6d9d4428813e331f583">memory_reserve_page_frame</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -472,7 +474,7 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="memname">void <a class="el" href="memory_8c.html#a2225d120bb97730dca7fe16322e706f3">memory_setup</a> </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
           <td class="paramname"><em>ram_size</em></td><td>)</td>
           <td></td>
         </tr>
@@ -511,7 +513,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:54 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

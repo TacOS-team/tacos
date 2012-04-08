@@ -82,23 +82,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier kernel/drivers/char/tty/console.c</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Console virtuelle (Fn).  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="console_8h_source.html">drivers/console.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="video_8h_source.html">drivers/video.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de console.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="console_8c__incl.png" border="0" usemap="#kernel_2drivers_2char_2tty_2console_8c" alt=""/></div>
 <map name="kernel_2drivers_2char_2tty_2console_8c" id="kernel_2drivers_2char_2tty_2console_8c">
-<area shape="rect" id="node3" href="console_8h.html" title="drivers/console.h" alt="" coords="139,83,264,112"/><area shape="rect" id="node15" href="video_8h.html" title="Driver console (vidéo texte)." alt="" coords="5,83,115,112"/><area shape="rect" id="node18" href="kmalloc_8h.html" title="kmalloc.h" alt="" coords="261,160,339,189"/><area shape="rect" id="node7" href="tty_8h.html" title="tty.h" alt="" coords="180,160,225,189"/><area shape="rect" id="node9" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="268,237,332,267"/><area shape="rect" id="node11" href="termios_8h.html" title="termios.h" alt="" coords="63,237,137,267"/><area shape="rect" id="node13" href="fd__types_8h.html" title="fd_types.h" alt="" coords="161,237,244,267"/></map>
+<area shape="rect" id="node3" href="console_8h.html" title="Console virtuelle (Fn)" alt="" coords="139,83,264,112"/><area shape="rect" id="node15" href="video_8h.html" title="Driver console (vidéo texte)." alt="" coords="5,83,115,112"/><area shape="rect" id="node18" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="260,160,337,189"/><area shape="rect" id="node21" href="klog_8h.html" title="Logging macros." alt="" coords="352,83,411,112"/><area shape="rect" id="node7" href="tty_8h.html" title="Terminal posix&#45;like." alt="" coords="179,160,224,189"/><area shape="rect" id="node9" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="267,237,331,267"/><area shape="rect" id="node11" href="termios__types_8h.html" title="termios_types.h" alt="" coords="21,237,136,267"/><area shape="rect" id="node13" href="fd__types_8h.html" title="fd_types.h" alt="" coords="160,237,243,267"/><area shape="rect" id="node23" href="kstdio_8h.html" title="kprintf" alt="" coords="361,160,428,189"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d8e98aa3861460eb8e0f6bbeaf0ac9e"></a><!-- doxytag: member="console.c::LARGEUR_TAB" ref="a7d8e98aa3861460eb8e0f6bbeaf0ac9e" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>LARGEUR_TAB</b>&#160;&#160;&#160;8</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a134a7892d2d6c92f3f5a03b6620acbab"></a><!-- doxytag: member="console.c::NB_CONSOLES" ref="a134a7892d2d6c92f3f5a03b6620acbab" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>NB_CONSOLES</b>&#160;&#160;&#160;4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="console_8c.html#a7d8e98aa3861460eb8e0f6bbeaf0ac9e">LARGEUR_TAB</a>&#160;&#160;&#160;8</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="console_8c.html#a134a7892d2d6c92f3f5a03b6620acbab">NB_CONSOLES</a>&#160;&#160;&#160;4</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a463df5bcb42f4d4ad7d73c17c555e53d"></a><!-- doxytag: member="console.c::console_init" ref="a463df5bcb42f4d4ad7d73c17c555e53d" args="()" -->
@@ -109,14 +111,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cons
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le tty_struct_t qui correspond à la console au premier plan. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="console_8c.html#aa1b7adaa8346dcef6b4a5a967322b205">focus_console</a> (int n)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Passe une console au premier plan.  <a href="#aa1b7adaa8346dcef6b4a5a967322b205"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9fee7cfedf1d28843cda1b6a81e8d292"></a><!-- doxytag: member="console.c::set_foreground" ref="a9fee7cfedf1d28843cda1b6a81e8d292" args="(int n, uint8_t foreground)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_foreground</b> (int n, uint8_t foreground)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abcaa0aff48e05a4a4aaa393cae3da350"></a><!-- doxytag: member="console.c::set_background" ref="abcaa0aff48e05a4a4aaa393cae3da350" args="(int n, uint8_t background)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_background</b> (int n, uint8_t background)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc879a0fa243329abcdb5fa2b3b0faee"></a><!-- doxytag: member="console.c::sys_set_attribute" ref="abc879a0fa243329abcdb5fa2b3b0faee" args="(int n, uint8_t background, uint8_t foreground)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>sys_set_attribute</b> (int n, uint8_t background, uint8_t foreground)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a278602a21068c68c9a8162ad215c7272"></a><!-- doxytag: member="console.c::reset_attribute" ref="a278602a21068c68c9a8162ad215c7272" args="(int n)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>reset_attribute</b> (int n)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -128,8 +122,36 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-<p>Description de ce que fait le fichier </p>
-</div><hr/><h2>Documentation des fonctions</h2>
+</div><hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="a7d8e98aa3861460eb8e0f6bbeaf0ac9e"></a><!-- doxytag: member="console.c::LARGEUR_TAB" ref="a7d8e98aa3861460eb8e0f6bbeaf0ac9e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="console_8c.html#a7d8e98aa3861460eb8e0f6bbeaf0ac9e">LARGEUR_TAB</a>&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Taille d'une tabulation </p>
+
+</div>
+</div>
+<a class="anchor" id="a134a7892d2d6c92f3f5a03b6620acbab"></a><!-- doxytag: member="console.c::NB_CONSOLES" ref="a134a7892d2d6c92f3f5a03b6620acbab" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="console_8c.html#a134a7892d2d6c92f3f5a03b6620acbab">NB_CONSOLES</a>&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre de consoles virtuelles </p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
 <a class="anchor" id="aa1b7adaa8346dcef6b4a5a967322b205"></a><!-- doxytag: member="console.c::focus_console" ref="aa1b7adaa8346dcef6b4a5a967322b205" args="(int n)" -->
 <div class="memitem">
 <div class="memproto">
@@ -180,7 +202,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

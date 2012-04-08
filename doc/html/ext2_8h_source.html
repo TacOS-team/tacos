@@ -83,7 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00030"></a>00030 <span class="preprocessor">#ifndef _EXT2_H_</span>
 <a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define _EXT2_H_</span>
 <a name="l00032"></a>00032 <span class="preprocessor"></span>
-<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="vfs_8h.html">vfs.h</a>&gt;</span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="vfs_8h.html" title="Virtual File System.">vfs.h</a>&gt;</span>
 <a name="l00034"></a>00034 
 <a name="l00038"></a>00038 <span class="keywordtype">void</span> <a class="code" href="ext2_8c.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2.">ext2_init</a>();
 <a name="l00039"></a>00039 
@@ -91,7 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00048"></a>00048 
 <a name="l00054"></a>00054 <span class="keywordtype">void</span> <a class="code" href="ext2_8c.html#aa055d93f3693085315aa853345de0032" title="Unmount d&#39;un point de montage.">umount_EXT2</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance);
 <a name="l00055"></a>00055 
-<a name="l00064"></a>00064 <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * <a class="code" href="ext2__functions_8c.html#a9df1cc1b1a14caf87d09762a4886ce53" title="Ouverture de fichier.">ext2_open</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path, uint32_t flags);
+<a name="l00064"></a>00064 <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * <a class="code" href="ext2__functions_8c.html#a9df1cc1b1a14caf87d09762a4886ce53" title="Ouverture de fichier.">ext2_open</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags);
 <a name="l00065"></a>00065 
 <a name="l00075"></a>00075 <span class="keywordtype">size_t</span> <a class="code" href="ext2__functions_8c.html#aa5552876c927b5b04e708531c07344b0" title="Lecture d&#39;un fichier.">ext2_read</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keywordtype">void</span> * buf, <span class="keywordtype">size_t</span> size);
 <a name="l00076"></a>00076 
@@ -99,11 +99,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00085"></a>00085 
 <a name="l00095"></a>00095 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#ac9b55aefa79e5e521e4e5d993b4c009a" title="Lecture du contenu d&#39;un dossier.">ext2_readdir</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keywordtype">char</span> * entries, <span class="keywordtype">size_t</span> size);
 <a name="l00096"></a>00096 
-<a name="l00106"></a>00106 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#a9a8b01e29da31a35719cbf11adab1f9d" title="Récupère l&#39;état d&#39;un fichier ou dossier.">ext2_stat</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">struct</span> <a class="code" href="structstat.html">stat</a> *stbuf);
+<a name="l00106"></a>00106 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#a9a8b01e29da31a35719cbf11adab1f9d" title="Récupère l&#39;état d&#39;un fichier ou dossier.">ext2_stat</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">struct</span> <a class="code" href="structstat.html" title="Informations sur un noeud.">stat</a> *stbuf);
 <a name="l00107"></a>00107 
-<a name="l00117"></a>00117 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#a8e34d61b346e77ba8d32ff6829dd6cfa" title="Création d&#39;un noeud (fichier, dossier, fichier spécial...)">ext2_mknod</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path, mode_t <a class="code" href="structmode.html">mode</a>, dev_t dev);
+<a name="l00117"></a>00117 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#a8e34d61b346e77ba8d32ff6829dd6cfa" title="Création d&#39;un noeud (fichier, dossier, fichier spécial...)">ext2_mknod</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>, <a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a> dev);
 <a name="l00118"></a>00118 
-<a name="l00128"></a>00128 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#a2a5245bfa03e55c15539e6aa518e4fab" title="Création d&#39;un dossier.">ext2_mkdir</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path, mode_t <a class="code" href="structmode.html">mode</a>);
+<a name="l00128"></a>00128 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#a2a5245bfa03e55c15539e6aa518e4fab" title="Création d&#39;un dossier.">ext2_mkdir</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>);
 <a name="l00129"></a>00129 
 <a name="l00138"></a>00138 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#aa78e9c6b4686b24a0183b164800a04ed" title="Suppression d&#39;un noeud.">ext2_unlink</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path);
 <a name="l00139"></a>00139 
@@ -130,7 +130,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Février 21 2012 23:18:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

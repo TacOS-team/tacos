@@ -1,12 +1,12 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$memory_8h.html" title="memory.h" alt="" coords="5,160,85,189"/>
+<area shape="rect" id="node3" href="$memory_8h.html" title="Gestion des pages mémoires physiques." alt="" coords="5,160,85,189"/>
 <area shape="rect" id="node7" href="$pagination_8h.html" title="pagination.h" alt="" coords="109,160,200,189"/>
 <area shape="rect" id="node10" href="$vmm_8h.html" title="vmm.h" alt="" coords="177,237,239,267"/>
 <area shape="rect" id="node13" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="263,237,343,267"/>
-<area shape="rect" id="node16" href="$kstdio_8h.html" title="kstdio.h" alt="" coords="440,83,507,112"/>
+<area shape="rect" id="node16" href="$kstdio_8h.html" title="kprintf" alt="" coords="440,83,507,112"/>
 <area shape="rect" id="node18" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="325,83,416,112"/>
 <area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="223,315,287,344"/>
-<area shape="rect" id="node20" href="$kprocess_8h.html" title="kprocess.h" alt="" coords="404,160,489,189"/>
+<area shape="rect" id="node20" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="404,160,489,189"/>
 <area shape="rect" id="node23" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="417,237,500,267"/>
 <area shape="rect" id="node25" href="$signal__types_8h.html" title="signal_types.h" alt="" coords="524,237,631,267"/>
 <area shape="rect" id="node27" href="$process__types_8h.html" title="process_types.h" alt="" coords="655,237,772,267"/>

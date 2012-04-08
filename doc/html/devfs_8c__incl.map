@@ -1,16 +1,14 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="96,83,173,112"/>
-<area shape="rect" id="node9" href="$kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="343,83,415,112"/>
-<area shape="rect" id="node23" href="$klog_8h.html" title="klog.h" alt="" coords="535,83,593,112"/>
-<area shape="rect" id="node27" href="$kmalloc_8h.html" title="kmalloc.h" alt="" coords="483,315,560,344"/>
-<area shape="rect" id="node31" href="$vfs_8h.html" title="vfs.h" alt="" coords="235,83,283,112"/>
-<area shape="rect" id="node36" href="$string_8h.html" title="string.h" alt="" coords="627,83,691,112"/>
-<area shape="rect" id="node7" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="93,160,176,189"/>
-<area shape="rect" id="node11" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="328,315,408,344"/>
-<area shape="rect" id="node13" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="297,392,361,421"/>
-<area shape="rect" id="node16" href="$kstat_8h.html" title="kstat.h" alt="" coords="273,160,332,189"/>
-<area shape="rect" id="node19" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="277,237,341,267"/>
-<area shape="rect" id="node25" href="$kstdio_8h.html" title="kstdio.h" alt="" coords="533,160,600,189"/>
-<area shape="rect" id="node38" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="624,160,712,189"/>
-<area shape="rect" id="node40" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="631,237,705,267"/>
+<area shape="rect" id="node3" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="173,83,251,112"/>
+<area shape="rect" id="node9" href="$kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="275,83,347,112"/>
+<area shape="rect" id="node23" href="$kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="5,83,99,112"/>
+<area shape="rect" id="node26" href="$klog_8h.html" title="Logging macros." alt="" coords="595,83,653,112"/>
+<area shape="rect" id="node30" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="543,237,620,267"/>
+<area shape="rect" id="node34" href="$vfs_8h.html" title="Virtual File System." alt="" coords="371,83,419,112"/>
+<area shape="rect" id="node7" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="133,160,216,189"/>
+<area shape="rect" id="node11" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="287,315,367,344"/>
+<area shape="rect" id="node13" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="397,392,461,421"/>
+<area shape="rect" id="node16" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="359,160,417,189"/>
+<area shape="rect" id="node19" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="353,237,417,267"/>
+<area shape="rect" id="node28" href="$kstdio_8h.html" title="kprintf" alt="" coords="593,160,660,189"/>
 </map>
