@@ -32,8 +32,6 @@
 #include <klibc/string.h>
 #include <kmalloc.h>
 
-#include <ctype.h>
-
 int fat_last_cluster(fat_fs_instance_t *instance) {
 	if (instance->fat_info.fat_type == FAT12) {
 		return 0xFFF;
@@ -257,7 +255,9 @@ char * fat_lfn_to_sfn(char * filename) {
   // To upper case.
   int i = 0;
   while (lfn[i] != '\0') {
-    lfn[i] = toupper(lfn[i]);
+		if (lfn[i] >= 'a') {
+			lfn[i] = lfn[i] + 'A' - 'a';
+		}
     i++;
   }
 
@@ -333,7 +333,11 @@ void fat_decode_short_file_name(char *filename, fat_dir_entry_t *fdir) {
 				notspace = j;
 			}
 			if (fdir->reserved & 0x08) {
-				filename[j] = tolower(fdir->utf8_short_name[j]);
+				if (fdir->utf8_short_name[j] < 'a') {
+					filename[j] = fdir->utf8_short_name[j] + 'a' - 'A';
+				} else {
+					filename[j] = fdir->utf8_short_name[j];
+				}
 			} else {
 				filename[j] = fdir->utf8_short_name[j];
 			}
@@ -351,7 +355,11 @@ void fat_decode_short_file_name(char *filename, fat_dir_entry_t *fdir) {
 				notspaceext = k;
 			}
 			if (fdir->reserved & 0x10) {
-				filename[notspace + k] = tolower(fdir->file_extension[k]);
+				if (fdir->file_extension[k] < 'a') {
+					filename[notspace + k] = fdir->file_extension[k] + 'a' - 'A';
+				} else {
+					filename[notspace + k] = fdir->file_extension[k];
+				}
 			} else {
 				filename[notspace + k] = fdir->file_extension[k];
 			}
