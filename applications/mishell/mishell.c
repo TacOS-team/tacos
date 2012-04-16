@@ -74,7 +74,7 @@ static int cd_cmd(int argc, char **argv)
 		return 2;
 	}
 	if (chdir(buffer)) {
-		printf("cd: aucun fichier ou dossier de ce type: %s", buffer);
+		printf("cd: aucun fichier ou dossier de ce type: %s\n", buffer);
 		return 1;
 	}
 	return 0;
