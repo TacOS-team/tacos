@@ -65,6 +65,7 @@ namespace std
       for (size_t i = 0; i < this->m_size; ++i) {
         this->m_data[i] = v.m_data[i];
       }
+      return *this;
     }
 
     void push_back (const T & x);
@@ -94,10 +95,10 @@ namespace std
     size_t max_size() const;
     
     const iterator begin() {
-      return iterator(this, 0);
+      return m_data;
     }
     const iterator end() {
-      return iterator(this, this->m_size);
+      return m_data + this->size();
     }
     
     void clear() {
@@ -107,11 +108,14 @@ namespace std
       return this->erase(position, position);
     }
     iterator erase (const iterator first, const iterator last ) {
-      if (last.getIndex() < first.getIndex()) return first;// TODO Exception
-      size_t nb = last.getIndex() - first.getIndex() + 1;
+      if (last < first) return first;// TODO Exception
+      size_t nb = (size_t)(last - first) + 1;
       if (this->m_size < nb) return first;// TODO Exception
-      for (size_t i = last.getIndex() + 1; i < this->m_size; ++i) {
-        this->m_data[i-nb] = this->m_data[i];
+      iterator from = last + 1;
+      iterator to = first;
+      while (from != this->end()) {
+        *to = *from;
+        ++from;
       }
       this->m_size -= nb;
       return first;
