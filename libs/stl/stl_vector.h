@@ -2,7 +2,7 @@
 #define __STL_VECTOR_H__
 
 #include <types.h>
-#include <cstdio>
+#include <iterator>
 
 namespace std
 {
@@ -10,41 +10,8 @@ namespace std
   class vector
   {
    public:
-    class iterator {
-     protected:
-      size_t index;
-      vector<T> * vect;
-     public:
-      iterator() { this->index = 0; this->vect = (vector<T> *)NULL; }
-      iterator(vector<T> * vect, size_t index) { this->vect = vect; this->index = index; }
-      size_t getIndex() const { return this->index; }
-      bool operator == (const iterator & it) {
-        if (this->vect == it.vect && this->index == it.index) {
-          return true;
-        }
-        return false;
-      }
-      bool operator != (const iterator & it) {
-        return !(*this == it);
-      }
-      iterator operator ++ (int) {
-        iterator res = *this;
-        ++this->index;
-        return res;
-      }
-      iterator operator -- (int) {
-        iterator res = *this;
-        --this->index;
-        return res;
-      }
-      iterator operator + (int nb) const {
-        iterator res (this->vect, min(this->index + nb, vect->size()));
-        return res;
-      }
-      T & operator * () {
-        return (*this->vect)[this->index];
-      }
-    };
+    typedef T *iterator;
+    typedef _reverse_iterator<iterator, T> reverse_iterator;
     
    protected:
     T *     m_data;
@@ -97,25 +64,32 @@ namespace std
     const iterator begin() {
       return m_data;
     }
+    const reverse_iterator rbegin() {
+      return reverse_iterator(m_data + this->size());
+    }
     const iterator end() {
       return m_data + this->size();
+    }
+    const reverse_iterator rend() {
+      return reverse_iterator(m_data);
     }
     
     void clear() {
       this->m_size = 0;
     }
     iterator erase (const iterator position ) {
-      return this->erase(position, position);
+      return this->erase(position, position+1);
     }
     iterator erase (const iterator first, const iterator last ) {
-      if (last < first) return first;// TODO Exception
-      size_t nb = (size_t)(last - first) + 1;
-      if (this->m_size < nb) return first;// TODO Exception
-      iterator from = last + 1;
+      if (last <= first) return first;// TODO Exception
+      size_t nb = last - first;
+      if (this->m_size < nb + (size_t) (first - this->begin())) return first;// TODO Exception
+      iterator from = last;
       iterator to = first;
       while (from != this->end()) {
         *to = *from;
         ++from;
+        ++to;
       }
       this->m_size -= nb;
       return first;
