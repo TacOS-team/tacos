@@ -1,0 +1,19 @@
+FICHIERS= testDeque.out testQueue.out testStack.out
+
+all: clean $(addprefix std, $(FICHIERS)) $(FICHIERS)
+	@rm -f *.out
+
+# tests with standard stl lib
+std%.out: %.cpp
+	@g++ -o $@ $< -Wall
+	@./$@
+	@if [ $$? = 0 ]; then echo "\033[32m" $@ " ✔ \033[0m"; else echo "\033[31m" $@ " ✘ \033[0m"; fi
+
+# tests with tacos stl lib
+%.out: %.cpp
+	@g++ -o $@ $< -Wall -I../../libs/stl/ -I../../libc/include/
+	@./$@
+	@if [ $$? = 0 ]; then echo "\033[32m" $@ " ✔ \033[0m"; else echo "\033[31m " $@ " ✘ \033[0m"; fi
+
+clean:
+	@rm -f *.out

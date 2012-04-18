@@ -43,6 +43,9 @@ kernel.bin: force_look
 
 force_look:
 	@true
+	
+test:
+	$(MAKE) -s -C tests;
 
 core.img: all
 	@echo "drive v: file=\"`pwd`/core.img\" 1.44M filter" > mtoolsrc
