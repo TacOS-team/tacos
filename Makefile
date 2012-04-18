@@ -28,7 +28,7 @@ export CFLAGS=-native $(WE) -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodef
 LDLIBS=-lc -ldrivers -z nodefaultlib -lsystem -lstl
 LDLIBSKERNEL=-ldrivers -z nodefaultlib -lsystem
 LDFLAGS=-Llib/
-SUBDIRS = kernel kernel/drivers libc system libs/stl applications
+SUBDIRS = kernel kernel/drivers libc system libs/stl libs/tsock applications
 
 all: directories kernel.bin
 

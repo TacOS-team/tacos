@@ -1,9 +1,9 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=ps ls cube_graph clock_graph zen_graph snake cat mkdir rm getty test_sig test_io test_malloc pres
+OBJ=ps ls cube_graph clock_graph zen_graph snake cat mkdir rm getty pres tsock_client tsock_server
 SUBDIRS=mishell utils
-LIBS=../lib/libc.a ../lib/libsystem.a ../lib/libstl.a libutils.a
+LIBS=../lib/libtsock.a ../lib/libc.a ../lib/libsystem.a ../lib/libstl.a libutils.a
 LDFLAGS=-L./
-INCLUDES=-I../include/ -I../libc/include/ -I../system/include/
+INCLUDES=-I../include/ -I../libc/include/ -I../system/include/ -I../libs/tsock/
 CPPINCLUDES=-I../libs/stl/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 CPPFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32 -fno-rtti -fno-exceptions

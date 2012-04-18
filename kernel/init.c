@@ -58,6 +58,7 @@ int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	init_mouse();
 	init_vga();
 	init_vesa();
+	init_sock();
 	/* ************************** */
 	
 	putenv("PWD=/");
