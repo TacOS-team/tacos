@@ -2,6 +2,7 @@
 #define __ALGORITHM_H__
 
 #include <stl_algobase.h>
+#include <stl_algo.h>
 
 #endif// __ALGORITHM_H__
 
