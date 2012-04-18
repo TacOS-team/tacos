@@ -1,6 +1,6 @@
 #include <deque>
 #include <cstdio>
-#include <stdlib.h>
+#include <libtest.h>
 
 using namespace std;
 
@@ -19,7 +19,7 @@ void test1() {
   if (ok) {
     
   } else {
-    printf("test init and [] operator\n" );
+    ERROR("test init and [] operator\n" );
     exit(1);
   }
 }
@@ -38,7 +38,7 @@ void test2() {
   if (ok) {
     
   } else {
-    printf("test at\n");
+    ERROR("test at\n");
     exit(1);
   }
 }
@@ -49,7 +49,7 @@ void test3() {
   d.pop_back();
   d.pop_front();
   
-  //printf("test pop on an empty dequeOK\n");
+  //ERROR("test pop on an empty dequeOK\n");
 }
 
 // test push_front
@@ -62,7 +62,7 @@ void test4() {
     
   }
   else {
-    printf("test push_front\n");
+    ERROR("test push_front\n");
     exit(1);
   }
 }
@@ -77,7 +77,7 @@ void test5() {
     
   }
   else {
-    printf("test push_back\n" );
+    ERROR("test push_back\n" );
     exit(1);
   }
 }
@@ -93,7 +93,7 @@ void test6() {
     
   }
   else {
-    printf("test size\n");
+    ERROR("test size\n");
     exit(1);
   }
 }
@@ -109,7 +109,7 @@ void test7() {
     
   }
   else {
-    printf("test iterator\n" );
+    ERROR("test iterator\n" );
     exit(1);
   }
 }
@@ -125,7 +125,7 @@ void test8() {
     
   }
   else {
-    printf("test reverse iterator\n" );
+    ERROR("test reverse iterator\n" );
     exit(1);
   }
 }
@@ -141,7 +141,7 @@ void test9() {
     
   }
   else {
-    printf("test resize\n" );
+    ERROR("test resize\n" );
     exit(1);
   }
 }
@@ -153,7 +153,7 @@ void test10 () {
     
   }
   else {
-    printf("test empty\n");
+    ERROR("test empty\n");
     exit(1);
   }
 }
@@ -167,7 +167,7 @@ void test11 () {
     
   }
   else {
-    printf("test front and back\n");
+    ERROR("test front and back\n");
     exit(1);
   }
 }
@@ -183,7 +183,7 @@ void test12 () {
     
   }
   else {
-    printf("test pop_front\n");
+    ERROR("test pop_front\n");
     exit(1);
   }
 }
@@ -199,7 +199,7 @@ void test13 () {
     
   }
   else {
-    printf("test pop_back\n");
+    ERROR("test pop_back\n");
     exit(1);
   }
 }
@@ -214,7 +214,7 @@ void test14() {
     
   }
   else {
-    printf("test clear\n");
+    ERROR("test clear\n");
     exit(1);
   }
 }
@@ -233,7 +233,7 @@ void test15() {
     
   }
   else {
-    printf("test swap\n");
+    ERROR("test swap\n");
     exit(1);
   }
 }
@@ -253,7 +253,7 @@ void test16() {
     
   }
   else {
-    printf("test erase\n");
+    ERROR("test erase\n");
     exit(1);
   }
   
@@ -273,7 +273,7 @@ void test17() {
     
   }
   else {
-    printf("test insert\n");
+    ERROR("test insert\n");
     exit(1);
   }
   
