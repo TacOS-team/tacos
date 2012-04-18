@@ -1,0 +1,6 @@
+#ifndef __STL_DEQUE__
+#define __STL_DEQUE__
+
+#include <stl_deque.h>
+
+#endif// __STL_DEQUE__
