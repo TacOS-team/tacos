@@ -34,8 +34,7 @@
 #include <kprocess.h>
 #include <types.h>
 #include <vfs.h>
-
-#include <stdlib.h>
+#include <klibc/stdlib.h>
 
 typedef struct {
 	char* filename;

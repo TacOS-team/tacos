@@ -38,14 +38,12 @@
 #include <elf.h>
 
 /* LibC */
-#include <stdio.h>
 #include <stdlib.h>
-
 
 
 int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
-	init_stdfiles();
+	//init_stdfiles();
 	klog("Starting init process...");
 	
 	klog("Loading kernel symbol table...");

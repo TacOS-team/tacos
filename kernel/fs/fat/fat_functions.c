@@ -35,8 +35,6 @@
 #include <kmalloc.h>
 #include <types.h>
 
-#include <ctype.h>
-
 #include "fat_outils.h"
 
 #include "fat_internal.c"

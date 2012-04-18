@@ -29,8 +29,12 @@
 #include <klibc/string.h>
 #include <kmalloc.h>
 
-//XXX
-#include <ctype.h>
+static int tolower(int c) {
+	if (c >= 'A' && c <= 'Z') {
+		return c + ('a' - 'A');
+	}
+	return c;
+}
 
 void* memcpy(void* dest, const void* src, size_t size)
 {

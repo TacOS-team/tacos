@@ -36,10 +36,9 @@
 #include <kstdio.h>
 #include <pagination.h>
 #include <scheduler.h>
+#include <syscall_values.h>
 
 /* XXX:LibC */
-#include <syscall_values.h>
-#include <signal.h>
 
 typedef struct {
 	vaddr_t ret_addr;
@@ -49,6 +48,34 @@ typedef struct {
 	sigset_t mask;
 	char retcode[8];
 } sigframe;
+
+// Dupliqué de la libc.
+static int sigaddset(sigset_t *set, int signum)
+{
+	int ret = -1;
+	if(set != NULL)
+	{
+		ret = 0;
+		*set |= (1<<signum);
+	}
+	return ret;
+}
+
+static int sigdelset(sigset_t *set, int signum)
+{
+	int ret = -1;
+	if(set != NULL)
+	{
+		ret = 0;
+		*set &= ~(1<<signum);
+	}
+	return ret;
+}
+
+
+
+
+
 
 /*
  * TODO: gérer SIG_IGN et SIG_DFL 

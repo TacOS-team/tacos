@@ -3,7 +3,10 @@
 #include <kmalloc.h>
 #include <symtable.h>
 #include <klog.h>
-#include <fcntl.h>
+
+#include <kfcntl.h>
+
+#include <vfs.h>
 
 /**TODO Le tri du tableau c'est pas du tout optimal, il vaudrait mieux utiliser une liste chainée */
 
@@ -87,13 +90,15 @@ symbol_table_t* load_symtable(Elf32_File* file)
 }
 
 void load_kernel_symtable() {
-	int fd = open("/tacos/system/kernel.bin", O_RDONLY);
+	int fd;
+ 	sys_open(&fd, "/tacos/system/kernel.bin", O_RDONLY);
 	
 	if (fd > 0) {
 		Elf32_File* file;
 		file = load_elf_file(fd);
 		ksymtable = load_symtable(file);
-		close(fd);
+		uint32_t ret;
+		sys_close(fd, &ret, 0);
 	} else {
 		klog("kernel.bin non trouvé !");
 	}
