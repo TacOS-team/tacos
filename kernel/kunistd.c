@@ -90,18 +90,21 @@ SYSCALL_HANDLER3(sys_seek, uint32_t fd, long *offset, int whence) {
 	}
 }
 
-SYSCALL_HANDLER3(sys_ioctl, uint32_t fd, unsigned int request, void *data) {
+SYSCALL_HANDLER3(sys_ioctl, uint32_t *fd, unsigned int request, void *data) {
 	process_t * process = get_current_process();
 
 	open_file_descriptor *ofd;
 
-	if (process->fd[fd].used) {
-		ofd = process->fd[fd].ofd;
-		
-		if(ofd->ioctl == NULL)
+	if (process->fd[*fd].used) {
+		ofd = process->fd[*fd].ofd;
+
+		if (ofd->ioctl == NULL) {
 			kerr("No \"ioctl\" method for this device.");
-		else
-			ofd->ioctl(ofd, request, data);
+			*fd = -1;
+		}
+		else {
+			*fd = ofd->ioctl(ofd, request, data);
+		}
 	}
 }
 

@@ -61,9 +61,9 @@ SYSCALL_HANDLER3(sys_seek, uint32_t fd, long *offset, int whence);
 /**
  * Syscall pour controler un fichier.
  *
- * @param fd Id du descripteur de fichier.
+ * @param fd Pointeur sur l'id du descripteur de fichier. Utilisé comme code de retour.
  */
-SYSCALL_HANDLER3(sys_ioctl, uint32_t fd, unsigned int request, void *data);
+SYSCALL_HANDLER3(sys_ioctl, uint32_t *fd, unsigned int request, void *data);
 
 /**
  * Syscall pour obtenir des informations sur un fichier.
