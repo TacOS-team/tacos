@@ -59,6 +59,24 @@ namespace std {
       *this = *this - nb;
       return *this;
     }
+    bool operator >= (_reverse_iterator<Iterator, T> it) {
+      if (this->it == it.it) {
+        return true;
+      }
+      return it.it >= this->it;
+    }
+    bool operator > (_reverse_iterator<Iterator, T> it) {
+      if (this->it == it.it) {
+        return false;
+      }
+      return *this >= it;
+    }
+    bool operator <= (_reverse_iterator<Iterator, T> it) {
+      return !!(*this > it);
+    }
+    bool operator < (_reverse_iterator<Iterator, T> it) {
+      return !(*this >= it);
+    }
   };
 }
 

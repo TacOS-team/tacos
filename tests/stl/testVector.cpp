@@ -16,14 +16,14 @@ void testSort() {
   vector < int > v;
 
   for (int i = 0; i < NBITER; ++i) {
-    v.push_back(rand());
+    v.push_back(rand()%NBITER);
   }
 
   sort(v.begin(), v.end());
 
   int prev = v[0];
   for (int i = 1; i < NBITER; ++i) {
-    if (prev >= v[i]) {
+    if (prev > v[i]) {
       ERROR ("invalid sort");
       exit(1);
     }
