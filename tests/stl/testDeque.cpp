@@ -1,6 +1,8 @@
 #include <deque>
 #include <cstdio>
 #include <libtest.h>
+#include <cstdlib>
+#include <algorithm>
 
 using namespace std;
 
@@ -278,6 +280,28 @@ void test17() {
   }
   
 }
+
+// test sort
+void test18() {
+  deque<int> d;
+  for (int i = 0; i < NBITER; ++i) {
+    d.push_back(rand());
+  }
+
+  sort(d.begin(), d.end());
+
+  int prev = d.front();
+  for (deque<int>::iterator it = d.begin()+1; it != d.end(); ++it) {
+    if (prev > *it) {
+      ERROR ("invalid Sort");
+      exit(1);
+    }
+    prev = *it;
+  }
+  
+}
+
+
 int main () {
   test1();
   test2();
@@ -296,5 +320,6 @@ int main () {
   test15();
   test16();
   test17();
+  test18();
   return 0;
 }
