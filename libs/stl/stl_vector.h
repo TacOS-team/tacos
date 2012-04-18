@@ -110,6 +110,10 @@ namespace std
       
     }
 
+    bool empty() {
+      return this->m_size == 0;
+    }
+
   };// class vector
   
 }// namespace std

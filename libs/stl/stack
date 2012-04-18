@@ -1,0 +1,6 @@
+#ifndef __STL_STACK__
+#define __STL_STACK__
+
+#include <stl_stack.h>
+
+#endif// __STL_STACK__
