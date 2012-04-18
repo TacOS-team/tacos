@@ -18,39 +18,42 @@ class _reverse_iterator {
   bool operator != (const _reverse_iterator<Iterator, T> & it) {
     return !(*this == it);
   }
+  Iterator base() {
+    return this->it;
+  }
   T & operator * () {
     Iterator res = this->it;
     --res;
     return (*res);
   }
   // TODO gérer les effets de bords
-  virtual _reverse_iterator<Iterator, T> operator ++ (int) {
+  _reverse_iterator<Iterator, T> operator ++ (int) {
     return _reverse_iterator<Iterator, T>(this->it--);
   }
-  virtual _reverse_iterator<Iterator, T> operator ++ () {
+  _reverse_iterator<Iterator, T> operator ++ () {
     return _reverse_iterator<Iterator, T>(--this->it);
   }
-  virtual _reverse_iterator<Iterator, T> operator -- (int) {
+  _reverse_iterator<Iterator, T> operator -- (int) {
     return _reverse_iterator<Iterator, T>(this->it++);
   }
-  virtual _reverse_iterator<Iterator, T> operator -- () {
+  _reverse_iterator<Iterator, T> operator -- () {
     return _reverse_iterator<Iterator, T>(++this->it);
   }
-  virtual _reverse_iterator<Iterator, T> operator + (int nb) const {
+  _reverse_iterator<Iterator, T> operator + (int nb) const {
     _reverse_iterator<Iterator, T> res (this->it);
     res.it -= nb;
     return res;
   }
-  virtual _reverse_iterator<Iterator, T> & operator += (int nb) {
+  _reverse_iterator<Iterator, T> & operator += (int nb) {
     *this = *this + nb;
     return *this;
   }
-  virtual _reverse_iterator<Iterator, T> operator - (int nb) const {
+  _reverse_iterator<Iterator, T> operator - (int nb) const {
     _reverse_iterator<Iterator, T> res (this->it);
     res.it += nb;
     return res;
   }
-  virtual _reverse_iterator<Iterator, T> & operator -= (int nb) {
+  _reverse_iterator<Iterator, T> & operator -= (int nb) {
     *this = *this - nb;
     return *this;
   }
