@@ -30,6 +30,10 @@
 #ifndef _STDLIB_H_
 #define _STDLIB_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 /**
  * @file stdlib.h
  */
@@ -74,6 +78,8 @@ int putenv(char *string);
 int clearenv(void);
 
 void qsort(void *base, size_t nmemb, size_t size, int(*compar)(const void *, const void *));
+
+__END_DECLS
 
 #endif
 

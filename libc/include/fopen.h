@@ -30,6 +30,10 @@
 #ifndef _FOPEN_H_
 #define _FOPEN_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 /**
  * @file fopen.h
  */
@@ -45,5 +49,7 @@
  * @return un entier contenant les mêmes informations.
  */
 int convert_flags(const char *mode);
+
+__END_DECLS
 
 #endif

@@ -28,6 +28,10 @@
 #ifndef _IOCTL_H
 #define _IOCTL_H
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 #define TCGETS 1
 #define TCSETS 2
 #define TIOCGWINSZ 3
@@ -42,5 +46,7 @@ struct winsize {
 };
 
 int ioctl(int d, unsigned int request, void *data);
+
+__END_DECLS
 
 #endif

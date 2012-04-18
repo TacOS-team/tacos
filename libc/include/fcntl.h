@@ -30,6 +30,10 @@
 #ifndef _FCNTL_H_
 #define _FCNTL_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 // Define pour open.
 
 #define O_ACCMODE 00000003  /**< Access mode mask. */
@@ -109,5 +113,6 @@ int close(int id);
  */
 int fcntl(int fd, unsigned int request, void * data);
 
+__END_DECLS
 
 #endif

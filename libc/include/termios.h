@@ -27,9 +27,12 @@
  * Description de ce que fait le fichier
  */
 
-
 #ifndef _TERMIOS_H
 #define _TERMIOS_H
+
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
 
 typedef unsigned int tcflag_t;
 typedef unsigned int cc_t;
@@ -132,5 +135,7 @@ int tcsetattr(int fd, int optional_actions, const struct termios *termios_p);
 speed_t cfgetispeed(const struct termios *termios_p);
 int cfsetispeed(struct termios *termios_p, speed_t speed);
 void cfmakeraw(struct termios *termios_p);
+
+__END_DECLS
 
 #endif

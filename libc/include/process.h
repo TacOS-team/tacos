@@ -30,6 +30,10 @@
 #ifndef _PROCESS_H_
 #define _PROCESS_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 #include <sys/types.h>
 #include <elf.h>
 
@@ -62,5 +66,7 @@ typedef struct
 } process_init_data_t;
 
 void exec(void *prog, char* name, int orphan);
+
+__END_DECLS
 
 #endif

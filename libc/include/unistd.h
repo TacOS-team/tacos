@@ -30,6 +30,10 @@
 #ifndef _UNISTD_H_
 #define _UNISTD_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 /**
  * @file unistd.h
  */
@@ -220,5 +224,7 @@ int rmdir(const char *pathname);
  * @return 0 en cas de succès, -1 sinon.
  */
 int mknod(const char *path, mode_t mode, dev_t dev);
+
+__END_DECLS
 
 #endif //_UNISTD_H_

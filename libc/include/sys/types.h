@@ -28,6 +28,10 @@
 #ifndef _SYS_TYPES_H_
 #define _SYS_TYPES_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 #include <stdbool.h>
 
 typedef int pid_t; /**< Identifiant de processus. */
@@ -52,6 +56,12 @@ typedef int ssize_t; /**< Type pour une taille positive */
 typedef unsigned long long int off_t; /**< Offset ou taille. */
 #endif
 
+#ifdef __cplusplus
+#define NULL 0 /**< Le fameux pointeur NULL, en C++. */
+#else
 #define NULL ((void*)0) /**< Le fameux pointeur NULL. */
+#endif
+
+__END_DECLS
 
 #endif

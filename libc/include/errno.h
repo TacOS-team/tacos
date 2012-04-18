@@ -30,6 +30,10 @@
 #ifndef _ERRNO_H_
 #define _ERRNO_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 /* man 2 write - à éventuellement reclasser dans un ordre moins bourrin
  * ou copier /usr/include/asm-generic/errno-base.h */
 #define EAGAIN    1 
@@ -44,5 +48,7 @@
 #define ERANGE    10
 
 extern int errno;
+
+__END_DECLS
 
 #endif //_ERRNO_H_

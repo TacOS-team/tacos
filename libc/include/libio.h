@@ -29,6 +29,10 @@
 #ifndef _LIBIO_H_
 #define _LIBIO_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 #include <sys/types.h>
 
 #define _IO_MAGIC 0xFBAD0000 /* Magic number (je le garde par compatibilité) */
@@ -71,5 +75,7 @@ typedef struct _IO_FILE FILE;
 extern FILE *stdin;
 extern FILE *stdout;
 extern FILE *stderr;
+
+__END_DECLS
 
 #endif

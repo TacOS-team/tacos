@@ -29,6 +29,10 @@
 #ifndef _STDIO_H_
 #define _STDIO_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 #include <libio.h>
 #include <sys/types.h>
 #include <stdarg.h>
@@ -282,5 +286,7 @@ int feof(FILE *stream);
 int ferror(FILE *stream);
 
 int fileno(FILE *stream);
+
+__END_DECLS
 
 #endif

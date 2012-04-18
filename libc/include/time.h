@@ -30,6 +30,10 @@
 #ifndef _TIME_H_
 #define _TIME_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 #include <sys/types.h>
 
 struct timeval{
@@ -80,5 +84,6 @@ size_t strftime(char * s,
      const struct tm * timeptr);
 */
 
+__END_DECLS
 
 #endif //_TIME_H_

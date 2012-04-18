@@ -29,6 +29,10 @@
 #ifndef _STRING_H_
 #define _STRING_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 #include <sys/types.h>
 
 /** 
@@ -351,9 +355,10 @@ char *strrchr(const char *s, int c);
 
 size_t strspn(const char *s1, const char *s2);
 
-
 char *strerror(int errnum);
 
 */
+
+__END_DECLS
 
 #endif

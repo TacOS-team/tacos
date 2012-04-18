@@ -30,6 +30,10 @@
 #ifndef _SIGNAL_H
 #define _SIGNAL_H
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 #include <sys/types.h>	
 
 #define NSIG		32
@@ -105,7 +109,8 @@ int sigismember(const sigset_t *set, int signum);
 
 void init_signals(void);
 
-
 void sig_ignore_handler(int signal);
+
+__END_DECLS
 
 #endif /* _SIGNAL_H */

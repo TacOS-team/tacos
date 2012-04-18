@@ -29,6 +29,10 @@
 #ifndef _DIRENT_H_
 #define _DIRENT_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 #include <sys/types.h>
 #include <sys/stat.h>
 
@@ -95,5 +99,6 @@ struct dirent* readdir(DIR* dirp);
  */
 int closedir(DIR* dirp);
 
+__END_DECLS
 
 #endif
