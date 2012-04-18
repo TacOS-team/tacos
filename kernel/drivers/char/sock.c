@@ -4,6 +4,7 @@
 #include <klibc/string.h>
 #include <kmalloc.h>
 #include <kprocess.h>
+#include <ksem.h>
 #include <scheduler.h>
 
 #include <sock_types.h>
@@ -42,6 +43,10 @@ typedef struct socket {
   struct socket_msg in_buffer[MAX_MESSAGES];
   int in_base;
   int in_count;
+  uint8_t accept_sem;
+  uint8_t connect_sem;
+  uint8_t read_sem;
+  uint8_t write_sem;
 } socket_t;
 
 socket_t *socket_descriptors[MAX_OPEN_SOCK];
@@ -65,6 +70,16 @@ void init_socket(int sd, enum socket_type type, char *meetpoint) {
   memset(sock->in_buffer, 0, MAX_MESSAGES * sizeof(struct socket_msg));
   sock->in_base = 0;
   sock->in_count = 0;
+  int val = 0;
+  sock->accept_sem = ksemget(SEM_NEW, SEM_CREATE);
+  ksemctl(sock->accept_sem, SEM_SET, &val);
+  sock->connect_sem = ksemget(SEM_NEW, SEM_CREATE);
+  ksemctl(sock->connect_sem, SEM_SET, &val);
+  sock->read_sem = ksemget(SEM_NEW, SEM_CREATE);
+  ksemctl(sock->read_sem, SEM_SET, &val);
+  sock->write_sem = ksemget(SEM_NEW, SEM_CREATE);
+  val = MAX_MESSAGES;
+  ksemctl(sock->write_sem, SEM_SET, &val);
 }
 
 socket_t* create_socket(enum socket_type type, char *meetpoint) {
@@ -144,8 +159,9 @@ int sock_connect(char *meetpoint) {
   sock->paired_sock = paired_sock;
   paired_sock->new_conn_req[0] = sock;
   paired_sock->pending_conn_req++;
+  ksemV(paired_sock->accept_sem);
 
-  while (sock->state == closed); // TODO: semaphore
+  ksemP(sock->connect_sem);
 
   return sock->sd;
 }
@@ -159,9 +175,7 @@ int sock_accept(open_file_descriptor *ofd) {
     return -1;
   } else {
     // Wait while there is no pending connection
-    while (sock->pending_conn_req == 0) {
-      // TODO: semaphore
-    }
+    ksemP(sock->accept_sem);
   }
 
   socket_t *client = sock->new_conn_req[0];
@@ -173,6 +187,7 @@ int sock_accept(open_file_descriptor *ofd) {
 
   client->paired_sock = server;
   client->state = established;
+  ksemV(client->connect_sem);
 
   return server->sd;
 }
@@ -208,7 +223,9 @@ int sock_ioctl(open_file_descriptor *ofd, unsigned int request, void *data) {
         // XXX: création d'un nouvel ofd, moche
         process_t *process = get_current_process();
         int i = 0;
-        while (process->fd[i++].used);
+        while (process->fd[i].used) {
+          i++;
+        }
 
         process->fd[i].ofd = kmalloc(sizeof(open_file_descriptor));
         memcpy(process->fd[i].ofd, ofd, sizeof(open_file_descriptor));
@@ -244,15 +261,14 @@ size_t sock_read(open_file_descriptor* ofd, void* buf, size_t count __attribute_
     return -1;
   } else {
     // Wait while in_buffer is empty
-    while (sock->in_count == 0) {
-      // TODO: semaphore
-    }
+    ksemP(sock->read_sem);
   }
 
   int lrcvd = sock->in_buffer[sock->in_base].size;
   memcpy(buf, sock->in_buffer[sock->in_base].data, lrcvd);
   sock->in_base = (sock->in_base + 1) % MAX_MESSAGES;
   sock->in_count--;
+  ksemV(sock->write_sem);
 
   //klog("Read %d bytes from socket %d.", lrcvd, sock->sd);
 
@@ -270,15 +286,14 @@ size_t sock_write(open_file_descriptor* ofd, const void* buf, size_t count) {
     return -1;
   } else {
     // Wait while paired sock in_buffer is full
-    while (paired_sock->in_count == MAX_MESSAGES) {
-      // TODO: semaphore
-    }
+    ksemP(paired_sock->write_sem);
   }
 
   int in_top = (paired_sock->in_base + paired_sock->in_count) % MAX_MESSAGES;
   paired_sock->in_buffer[in_top].size = count;
   memcpy(&paired_sock->in_buffer[in_top].data, buf, count);
   paired_sock->in_count++;
+  ksemV(paired_sock->read_sem);
 
   //klog("Wrote %d bytes from socket %d to socket %d.", count, sock->sd, paired_sock->sd);
 
