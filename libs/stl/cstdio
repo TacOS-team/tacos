@@ -1,0 +1,6 @@
+#ifndef __CSTDIO_H__
+#define __CSTDIO_H__
+
+#include <stdio.h>
+
+#endif// __CSTDIO_H__
