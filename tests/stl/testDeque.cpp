@@ -285,13 +285,24 @@ void test17() {
 void test18() {
   deque<int> d;
   for (int i = 0; i < NBITER; ++i) {
-    d.push_back(rand());
+    d.push_back(rand()%NBITER);
   }
 
   sort(d.begin(), d.end());
 
   int prev = d.front();
   for (deque<int>::iterator it = d.begin()+1; it != d.end(); ++it) {
+    if (prev > *it) {
+      ERROR ("invalid Sort");
+      exit(1);
+    }
+    prev = *it;
+  }
+
+  sort(d.rbegin(), d.rend());
+
+  prev = d.back();
+  for (deque<int>::reverse_iterator it = d.rbegin()+1; it != d.rend(); ++it) {
     if (prev > *it) {
       ERROR ("invalid Sort");
       exit(1);

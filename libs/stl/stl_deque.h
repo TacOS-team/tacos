@@ -142,6 +142,22 @@ namespace std {
         *this = *this - nb;
         return *this;
       }
+      bool operator >= (iterator it) {
+        dequeNode * current = it.node;
+        while(current != NULL) {
+          if (current == this->node) {
+            return true;
+          }
+          current = current->next;
+        }
+        return false;
+      }
+      bool operator > (iterator it) {
+        if (this->node == it.node) {
+          return false;
+        }
+        return *this >= it;
+      }
     };
 
     typedef _reverse_iterator<iterator, T> reverse_iterator;
