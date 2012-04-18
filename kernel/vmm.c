@@ -41,8 +41,6 @@
 #define PTE_MAGIC 0xFFC00000
 #define PDE_MAGIC 0xFFFFF000
 
-static int map(paddr_t phys_page_addr, vaddr_t virt_page_addr, int u_s);
-
 static int is_empty(struct slabs_list *list)
 {
 	return list->begin == NULL;
@@ -178,7 +176,7 @@ static int create_page_dir(struct page_directory_entry *pde, int dir, int u_s)
 
 /* XXX : A changer de fichier (pagination l'utilise au final) */
 // Map dans le répertoire des pages une nouvelle page
-static int map(paddr_t phys_page_addr, vaddr_t virt_page_addr, int u_s)
+int map(paddr_t phys_page_addr, vaddr_t virt_page_addr, int u_s)
 {
 	int dir = virt_page_addr >> 22;
 	int table = (virt_page_addr >> 12) & 0x3FF;
@@ -192,7 +190,7 @@ static int map(paddr_t phys_page_addr, vaddr_t virt_page_addr, int u_s)
 	return 0;
 }
 
-static void unmap(vaddr_t virt_page_addr)
+void unmap(vaddr_t virt_page_addr)
 {
 	int dir = virt_page_addr >> 22;
 	int table = (virt_page_addr & 0x003FF000) >> 12;

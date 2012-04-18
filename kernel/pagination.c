@@ -38,13 +38,12 @@
 
 void pagination_map(struct page_directory_entry * pagination_kernel, paddr_t page_addr, vaddr_t v_page_addr);
 
-void pagination_create_page_dir(struct page_directory_entry *pagination_kernel, 
-																int index_pd) {
+void pagination_create_page_dir(struct page_directory_entry *pagination_kernel, int index_pd) {
 	int i;
 	struct page_directory_entry * pde = &pagination_kernel[index_pd];
 	paddr_t pt_addr = memory_reserve_page_frame();
 	pde->r_w = 1;
-	pde->u_s = 0;
+	pde->u_s = 1; // XXX: hack temporaire pour faire fonctionner le driver VESA
 	pde->present = 1;
 	pde->page_table_addr = pt_addr >> 12;
 
@@ -71,7 +70,7 @@ void pagination_map(struct page_directory_entry * pagination_kernel, paddr_t pag
 	pte->present = 1;
 	pte->page_addr = page_addr >> 12;
 	pte->r_w = 1;
-	pte->u_s = 0;
+	pte->u_s = 1; // XXX: hack temporaire pour faire fonctionner le driver VESA
 }
 
 /** 

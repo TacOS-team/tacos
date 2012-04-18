@@ -34,6 +34,8 @@
 #include <drivers/dummy_driver.h>
 #include <drivers/mouse.h>
 #include <drivers/vga.h>
+#include <drivers/vesa.h>
+#include <drivers/sock.h>
 
 #include <elf.h>
 
@@ -55,6 +57,7 @@ int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	init_dummy();
 	init_mouse();
 	init_vga();
+	init_vesa();
 	/* ************************** */
 	
 	putenv("PWD=/");
