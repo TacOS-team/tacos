@@ -8,8 +8,7 @@
 
 using namespace std;
 
-string::string()
-{
+string::string() {
   m_cstr = (char*) NULL;
   m_size = 0;
 
@@ -21,6 +20,7 @@ string::string (const char * cstr) {
   m_size = strlen(m_cstr) + 1;
 
 }// string::string()
+
 
 string::string (const string & str) {
   m_cstr = strdup(str.c_str());
@@ -121,11 +121,20 @@ const char * string::c_str ( ) const {
 }// c_str()
 
 
-
 size_t string::max_size() const {
   return size_t(-1);
 
 }// string::max_size()
+
+
+string string::operator + (const char * chaine) {
+  return string(*this).append(chaine);
+}
+
+
+string string::operator + (const string & chaine) {
+  return string(*this).append(chaine);
+}
 
 
 string::~string() {

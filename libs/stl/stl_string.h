@@ -3,11 +3,8 @@
 
 #include <sys/types.h>
 
-
-namespace std
-{
-  class string
-  {
+namespace std {
+  class string {
    private:
     char * m_cstr;
     size_t m_size;
@@ -34,8 +31,8 @@ namespace std
 
     //string operator = (const char * chaine);
     //string operator = (const string & chaine);
-    //string operator + (const char * chaine);
-    //string operator + (const string & chaine);
+    string operator + (const char * chaine);
+    string operator + (const string & chaine);
 
     //void resize (size_t n, char c = 0);
 
@@ -49,6 +46,5 @@ namespace std
   };// class string
 
 }// namespace std
-
 
 #endif// __STL_STRING_H__
