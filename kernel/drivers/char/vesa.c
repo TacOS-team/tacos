@@ -157,8 +157,14 @@ void init_vesa() {
 		kerr("error registering vesa driver.");
 	}
 
-	p_lfb_base = pci_read_value(pci_find_device(0x1234, 0x1111), PCI_BAR0) & 0xFFFF0000;
-	klog("base addr : %x\n", p_lfb_base);
+	pci_function_p pci_card = pci_find_device(0x1234, 0x1111);
+	if (pci_card != NULL) {
+		p_lfb_base = pci_read_value(pci_card, PCI_BAR0) & 0xFFFF0000;
+		klog("base addr (read from pci) : %x\n", p_lfb_base);
+	} else {
+		p_lfb_base = 0xE0000000;
+		klog("default base addr : %x\n", p_lfb_base);
+	}
 
 	size_t video_mem_size = 16 * 1024 * 1024; // 16Mio
 	unsigned int page;
