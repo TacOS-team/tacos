@@ -4,16 +4,23 @@
 #include <stl_vector.h>
 
 #include <cstring>
-#include <stdlib>
+#include <cstdlib>
 #include <algorithm>
-
 
 #define TEMPLATE template <typename T>
 #define VECTOR std::vector<T>
 
+TEMPLATE
+VECTOR::vector () {
+  m_reserve = 4;
+  m_data    = (T*) malloc(m_reserve * sizeof(T)); //new T[m_reserve];
+  m_size    = 0;
+
+}// VECTOR::vector()
+
 
 TEMPLATE
-VECTOR::vector (size_t size /* = 0 */, const T & value /* = T() */) {
+VECTOR::vector (size_t size, const T & value /* = T() */) {
   size = min(size, this->max_size());// TODO throw exception
   m_reserve = max(size, (size_t) 4);
   m_data    = new T [m_reserve];
@@ -81,6 +88,34 @@ void VECTOR::insert (size_t position, size_t n, const T & x) {
 
 }// VECTOR::insert()
 
+TEMPLATE
+void VECTOR::insert (const iterator position, const iterator first, const iterator last) {
+  size_t n = last - first;
+  if (n >= (this->max_size() - m_size)) {
+    // TODO throw exception
+    return;
+  }
+  size_t pos = min((size_t) (position - this->begin()), m_size);
+  // On réserve de la mémoire s'il n'y en a pas assez
+  if (m_size + n > m_reserve) {
+    this->reserve(max(m_size + n, m_reserve * 2));
+  }
+  // On décale toute la mémoire
+  if(m_size > 0) {
+    for (int i = m_size - 1; i >= (int)pos; --i) {
+      this->m_data[i+n] = this->m_data[i];
+    }
+  }
+  // On écrit les valeurs demandées
+  iterator it = this->begin() + pos;
+  for (iterator inputIt = first; inputIt != last; inputIt++, it++) {
+    *it = *inputIt;
+  }
+
+  m_size += n;
+
+}// VECTOR::insert()
+
 
 TEMPLATE
 void VECTOR::erase (size_t position) {
@@ -109,7 +144,8 @@ TEMPLATE
 T & VECTOR::operator [] (size_t index) {
   if (index >= m_size) {
     // TODO throw exception
-    return *(new T);// Hack en attendant les exceptions
+    //return *(new T);// Hack en attendant les exceptions
+    return m_data[m_size - 1];
   }
   return m_data[index];
 
@@ -120,7 +156,8 @@ TEMPLATE
 const T & VECTOR::operator [] (size_t index) const {
   if (index >= m_size) {
     // TODO throw exception
-    return *(new T);// Hack en attendant les exceptions
+    //return *(new T);// Hack en attendant les exceptions
+    return m_data[m_size - 1];
   }
   return m_data[index];
 
@@ -177,10 +214,17 @@ size_t VECTOR::size() const {
 
 
 TEMPLATE
+bool VECTOR::empty() const {
+  return m_size == 0;
+
+}// VECTOR::empty()
+
+
+TEMPLATE
 void VECTOR::reserve(size_t reserve) {
   T * old    = m_data;
   m_reserve  = min(reserve, this->max_size());
-  m_data     = new T [m_reserve];
+  m_data     = (T*) malloc(m_reserve * sizeof(T));//new T [m_reserve];
   m_size     = min(reserve, m_size);
   memcpy(m_data, old, m_size * sizeof(T));
   delete [] old;
@@ -195,12 +239,3 @@ size_t VECTOR::max_size() const {
 }// VECTOR::max_size()
 
 #endif// __STL_VECTOR_HXX__
-
-
-
-
-
-
-
-
-

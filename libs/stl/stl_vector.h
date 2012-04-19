@@ -1,14 +1,12 @@
 #ifndef __STL_VECTOR_H__
 #define __STL_VECTOR_H__
 
-#include <sys/types.h>
 #include <iterator>
+#include <sys/types.h>
 
-namespace std
-{
+namespace std {
   template <typename T>
-  class vector
-  {
+  class vector {
    public:
     typedef T *iterator;
     typedef _reverse_iterator<iterator, T> reverse_iterator;
@@ -19,7 +17,8 @@ namespace std
     size_t  m_reserve;
 
    public:
-    vector(size_t size = 0, const T & value = T());
+    vector();
+    vector(size_t size, const T & value = T());
     vector(const vector<T> & v) {
       *this = v;
     }
@@ -40,6 +39,7 @@ namespace std
 
     void insert (size_t position, const T & x);
     void insert (size_t position, size_t n, const T & x);
+    void insert (const iterator position, const iterator first, const iterator last);
 
     void erase (size_t position);
     void erase (size_t position, size_t n);
@@ -57,17 +57,18 @@ namespace std
           T & at (size_t index);
 
     size_t size() const;
+    bool empty() const;
     void reserve(size_t reserve);
 
     size_t max_size() const;
     
-    const iterator begin() {
+    iterator begin() {
       return m_data;
     }
     const reverse_iterator rbegin() {
       return reverse_iterator(m_data + this->size());
     }
-    const iterator end() {
+    iterator end() {
       return m_data + this->size();
     }
     const reverse_iterator rend() {
