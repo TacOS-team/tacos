@@ -2,7 +2,6 @@
 #define __STL_ITERATOR_H__
 
 namespace std {
-
   // Serait bien d'arriver à demander des templates
   template <class Iterator, typename T>
   class _reverse_iterator {
@@ -72,13 +71,12 @@ namespace std {
       return *this >= it;
     }
     bool operator <= (_reverse_iterator<Iterator, T> it) {
-      return !!(*this > it);
+      return !(*this > it);
     }
     bool operator < (_reverse_iterator<Iterator, T> it) {
       return !(*this >= it);
     }
   };
 }
-
 
 #endif// __STL_ITERATOR_H__
