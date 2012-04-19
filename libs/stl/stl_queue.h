@@ -9,37 +9,55 @@ namespace std {
   template < class T, class Container = deque<T> >
   class queue {
    protected:
-    Container container;
+    Container container; /**< Container. */
 
    public:
-    queue (const Container& ctnr = Container()) : container(ctnr) { }
+    /**
+     * Default constructor creates no elements.
+     * @param ctnr Container object used to store elements
+     */
+    queue(const Container& ctnr = Container());
 
-    bool empty() {
-      return container.empty();
-    }
+    /**
+     * Returns true if the %queue is empty.
+     * @return true if the %queue is empty
+     */
+    bool empty();
 
-    size_t size() {
-      return container.size();
-    }
+    /**
+     * Returns the number of elements in the %queue.
+     * @return The number of elements
+     */
+    size_t size();
 
-    void pop() {
-      if (container.empty()) return; // TODO throw exception
-      container.pop_front();
-    }
+    /**
+     * Removes the first element of the %queue.
+     */
+    void pop();
 
-    void push(const T & elem) {
-      // TODO gestion max size
-      container.push_back(elem);
-    }
+    /**
+     * Adds data to the end of the %queue.
+     * @param elem Data to be added.
+     */
+    void push(const T & elem);
 
-    T & front() {
-      return container.front();
-    }
+    /**
+     * Returns a read/write reference to the data at the first
+     * element of the %queue.
+     * @return Read-write reference to the first element
+     */
+    T & front();
 
-    T & back() {
-      return container.back();
-    }
+    /**
+     * Returns a read/write reference to the data at the last
+     * element of the %queue.
+     * @return Read-write reference to the last element
+     */
+    T & back();
   };
+
 }
+
+#include <stl_queue.hxx>
 
 #endif// __STL_QUEUE_H__

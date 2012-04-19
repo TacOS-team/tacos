@@ -307,4 +307,7 @@ void VECTOR::swap (vector<T> & v) {
 }// VECTOR::swap()
 
 
-#endif// __STL_VECTOR_HXX__
+#undef TEMPLATE
+
+
+#endif // __STL_VECTOR_HXX__

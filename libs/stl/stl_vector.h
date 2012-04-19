@@ -8,13 +8,13 @@ namespace std {
   template <typename T>
   class vector {
    public:
-    typedef T *iterator;
-    typedef _reverse_iterator<iterator, T> reverse_iterator;
+    typedef T *iterator; /**< Iterator. */
+    typedef _reverse_iterator<iterator, T> reverse_iterator; /**< Reverse iterator. */
     
    protected:
-    T *     m_data;
-    size_t  m_size;
-    size_t  m_reserve;
+    T *     m_data; /**< Elements of the %vector. */
+    size_t  m_size; /**< Number of elements in the %vector. */
+    size_t  m_reserve; /**< Number of elements that the %vector can contain. */
 
    public:
     /**
@@ -47,6 +47,7 @@ namespace std {
     /**
      * %Vector assignment operator.
      * @param v A %vector of identical element and allocator types.
+     * @return A new %vector containing the same elements as @a v
      */
     vector<T> & operator = (const vector<T> & v);
     
@@ -85,24 +86,28 @@ namespace std {
     /**
      * Returns a read-only (constant) reference to the data at the first
      * element of the %vector.
+     * @return Read-only reference to the first element
      */
     const T & front () const;
     
     /**
      * Returns a read/write reference to the data at the first
      * element of the %vector.
+     * @return Read-write reference to the first element
      */
     T & front ();
 
     /**
      * Returns a read-only (constant) reference to the data at the
      * last element of the %vector.
+     * @return Read-only reference to the last element
      */
     const T & back () const;
     
     /**
      * Returns a read/write reference to the data at the last
      * element of the %vector.
+     * @return Read-write reference to the last element
      */
     T & back ();
     
@@ -110,6 +115,7 @@ namespace std {
      * Returns a read-only (constant) iterator that points to the
      * first element in the %vector. Iteration is done in ordinary
      * element order.
+     * @return Read-only iterator pointing on the first element
      */
     /*const*/ iterator begin();
 
@@ -117,6 +123,7 @@ namespace std {
      * Returns a read-only (constant) reverse iterator that points
      * to the last element in the %vector. Iteration is done in
      * reverse element order.
+     * @return Read-only reverse iterator pointing on the last element
      */
     const reverse_iterator rbegin();
 
@@ -124,6 +131,7 @@ namespace std {
      * Returns a read-only (constant) iterator that points one past
      * the last element in the %vector. Iteration is done in
      * ordinary element order.
+     * @return Read-only iterator pointing after the last element
      */
     /*const*/ iterator end();
 
@@ -131,6 +139,7 @@ namespace std {
      * Returns a read-only (constant) reverse iterator that points
      * to one before the first element in the %vector. Iteration
      * is done in reverse element order.
+     * @return Read-only reverse iterator pointing before the first element
      */
     const reverse_iterator rend();
     
@@ -146,10 +155,13 @@ namespace std {
     void pop_back ();
 
     /**
-     * Inserts given value into %vector before specified iterator.
+     * @brief Inserts given value into %vector before specified iterator.
      * @param position An iterator into the %vector.
      * @param x Data to be inserted.
      * @return An iterator that points to the inserted data.
+     *
+     * This function will insert a copy of the given value before the
+     * specified location.
      */
     void insert (const iterator position, const T & x);
     
@@ -195,7 +207,7 @@ namespace std {
      * @brief Removes a range of elements.
      * @param first Iterator pointing to the first element to be erased.
      * @param last Iterator pointing to one past the last element to be erased.
-     * @return An iterator pointing to the element pointed to by @a __last
+     * @return An iterator pointing to the element pointed to by @a last
      * prior to erasing (or end()).
      *
      * This function will erase the elements in the range
@@ -203,18 +215,21 @@ namespace std {
      */
     iterator erase (const iterator first, const iterator last );
 
-    /*
+    /**
      * Returns the number of elements in the %vector.
+     * @return The number of elements
      */
     size_t size() const;
 
-    /*
+    /**
      * Returns the size() of the largest possible %vector.
+     * @return The maximum number of elements
      */
     size_t max_size() const;
 
     /**
      * Returns true if the %vector is empty.
+     * @return true if the %vector is empty
      */
     bool empty() const;
 

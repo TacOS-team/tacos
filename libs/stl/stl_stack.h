@@ -8,33 +8,48 @@ namespace std {
   template < class T, class Container = deque<T> >
   class stack {
    protected:
-    Container container;
+    Container container; /**< Container. */
 
    public:
-    stack (const Container& ctnr = Container()) : container(ctnr) { }
+    /**
+     * Default constructor creates no elements.
+     * @param ctnr Container object used to store elements
+     */
+    stack(const Container& ctnr = Container());
 
-    bool empty() {
-      return container.empty();
-    }
+    /**
+     * Returns true if the %stack is empty.
+     * @return true if the %stack is empty
+     */
+    bool empty();
 
-    size_t size() {
-      return container.size();
-    }
+    /** 
+     * Returns the number of elements in the %stack.
+     * @return The number of elements
+     */
+    size_t size();
 
-    void pop() {
-      if (container.empty()) return; // TODO throw exception
-      container.pop_back();
-    }
+    /**
+     * Removes the first element of the %stack.
+     */
+    void pop();
 
-    void push(const T & elem) {
-      // TODO gestion max size
-      container.push_back(elem);
-    }
+    /**
+     * Adds data to the top of the %stack.
+     * @param elem Data to be added.
+     */
+    void push(const T & elem);
 
-    T & top() {
-      return container.back();
-    }
+    /**
+     * Returns a read/write reference to the data at the first
+     * element of the %stack.
+     * @return Read-write reference to the first element
+     */
+    T & top();
   };
+
 }
 
-#endif// __STL_STACK_H__
+#include <stl_stack.hxx>
+
+#endif // __STL_STACK_H__
