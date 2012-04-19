@@ -7,58 +7,46 @@
 #include <tsock.h>
 
 int tsock_listen(const char *path) {
-  int tsockServer = open("/dev/sock", O_RDWR);
+  int server = open("/dev/sock", O_RDWR);
 
-  if (tsockServer == -1) {
+  if (server == -1) {
     //perror("socket");
     return -1;
   }
 
-  if (ioctl(tsockServer, SOCK_LISTEN, (char*) path) != 0) {
+  if (ioctl(server, SOCK_LISTEN, (char*) path) != 0) {
     //perror("listen");
     return -1;
   }
 
-  /*if (ioctl(tsockServer, SOCK_SETNONBLOCK, NULL) != 0) {
-    //perror("setnonblock");
-    return -1;
-  }*/
-
-  return tsockServer;
+  return server;
 }
 
 int tsock_connect(const char *path) {
-  int tsockClient = open("/dev/sock", O_RDWR);
+  int client = open("/dev/sock", O_RDWR);
 
-  if (tsockClient == -1) {
+  if (client == -1) {
     //perror("socket");
     return -1;
   }
 
-  if (ioctl(tsockClient, SOCK_CONNECT, (char*) path) != 0) {
+  if (ioctl(client, SOCK_CONNECT, (char*) path) != 0) {
     //perror("connect");
     return -1;
   }
 
-  return tsockClient;
+  return client;
 }
 
-int tsock_accept(int tsockServer) {
-  int tsockNewServer;
+int tsock_accept(int server) {
+  int newServer;
 
-  if (ioctl(tsockServer, SOCK_ACCEPT, &tsockNewServer) != 0) {
+  if (ioctl(server, SOCK_ACCEPT, &newServer) != 0) {
     //perror("accept");
     return -1;
   }
 
-  /*if (tsockNewServer >= 0) {
-    if (ioctl(tsockNewServer, SOCK_SETNONBLOCK, NULL) != 0) {
-      //perror("setnonblock");
-      return -1;
-    }
-  }*/
-
-  return tsockNewServer;
+  return newServer;
 }
 
 ssize_t tsock_read(int tsock, void *buffer, size_t len) {
