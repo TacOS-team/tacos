@@ -52,9 +52,11 @@ __BEGIN_DECLS
 #define EISDIR    15 /**< c'est un dossier. */
 #define ENFILE    16 /**< Overflow de la file table. */
 #define EMFILE    17 /**< Trop de fichiers ouverts. */
+#define ENOMEM    18
 
 extern const char* sys_errlist[]; /**< Liste des messages d'erreur. */
 extern int errno; /**< Variable qui contient le numéro de la dernière erreur. */
+
 
 __END_DECLS
 

@@ -1,3 +1,4 @@
+#include <kerrno.h>
 #include <fs/devfs.h>
 #include <types.h>
 #include <klog.h>
@@ -12,6 +13,8 @@
 #define MAX_OPEN_SOCK 10
 #define MAX_MESSAGE_SIZE 1024
 #define MAX_MESSAGES 10
+
+// Note: La gestion des erreurs avec errno a été commentée : cette variable n'existe que dans la libc.
 
 enum socket_type {
   client,
@@ -90,9 +93,9 @@ socket_t* create_socket(enum socket_type type, char *meetpoint) {
       socket_descriptors[sd] = kmalloc(sizeof(socket_t));
 
       if (socket_descriptors[sd] == NULL) {
-        // TODO: error handling
         klog("kmalloc failed.");
-        return NULL; // ENOMEM
+        // errno = ENOMEM; // XXX
+        return NULL;
       }
 
       klog("Found socket descriptor %d, initializing socket...", sd);
@@ -103,7 +106,8 @@ socket_t* create_socket(enum socket_type type, char *meetpoint) {
   }
 
   klog("No free socket descriptor found.");
-  return NULL; // ENFILE
+  // errno = ENFILE; // XXX
+  return NULL;
 }
 
 socket_t* get_socket(char *meetpoint) {
@@ -137,8 +141,14 @@ int sock_listen(char *meetpoint) {
   // Create LISTENING_SERVER socket
   klog("Creating LISTENING_SERVER socket, meetpoint = %s.", meetpoint);
   socket_t *sock = create_socket(listening_server, meetpoint);
-  sock->max_conn_req_backlog = 1;
-  sock->new_conn_req = kmalloc(sock->max_conn_req_backlog * sizeof(socket_t*));
+  if (sock != NULL) {
+    sock->max_conn_req_backlog = 1;
+    sock->new_conn_req = kmalloc(sock->max_conn_req_backlog * sizeof(socket_t*));
+  } else {
+    // errno set by create_socket()
+    // return -errno;
+    return -1;
+  }
 
   return sock->sd;
 }
@@ -148,9 +158,10 @@ int sock_connect(char *meetpoint) {
   klog("Getting listening server for meetpoint %s...", meetpoint);
   socket_t *paired_sock = get_socket(meetpoint);
 
-  if (paired_sock == NULL || paired_sock->pending_conn_req > 0) {
-    // TODO: error handling
-    return -1;
+  if (paired_sock == NULL) {
+    return -ENOENT;
+  } else if (paired_sock->pending_conn_req > 0) {
+    return -EAGAIN;
   }
 
   klog("OK paired_sd = %d, creating CLIENT socket...", paired_sock->sd);
@@ -171,8 +182,7 @@ int sock_accept(open_file_descriptor *ofd) {
 
   // Create SERVER socket
   if (!sock->blocking && sock->pending_conn_req == 0) {
-    // TODO: error handling
-    return -1;
+    return -EAGAIN;
   } else {
     // Wait while there is no pending connection
     ksemP(sock->accept_sem);
@@ -199,7 +209,7 @@ static int sock_ioctl(open_file_descriptor *ofd, unsigned int request, void *dat
       int sd = sock_connect(meetpoint);
       ofd->current_cluster = sd;
       if (sd < 0) {
-        return -1;
+        return sd;
       } else {
         return 0;
       }
@@ -209,7 +219,7 @@ static int sock_ioctl(open_file_descriptor *ofd, unsigned int request, void *dat
       int sd = sock_listen(meetpoint);
       ofd->current_cluster = sd;
       if (sd < 0) {
-        return -1;
+        return sd;
       } else {
         return 0;
       }
@@ -218,7 +228,7 @@ static int sock_ioctl(open_file_descriptor *ofd, unsigned int request, void *dat
       int newSd = sock_accept(ofd);
       if (newSd < 0) {
         *((int*) data) = -1;
-        return -1;
+        return newSd;
       } else {
         // XXX: création d'un nouvel ofd, moche
         process_t *process = get_current_process();
@@ -256,8 +266,7 @@ static ssize_t sock_read(open_file_descriptor* ofd, void* buf, size_t count __at
   //klog("Waiting for a message to read on socket %d...", sock->sd);
 
   if (!sock->blocking && sock->in_count == 0) {
-    // TODO: error handling
-    return -1;
+    return -EAGAIN;
   } else {
     // Wait while in_buffer is empty
     ksemP(sock->read_sem);
@@ -281,8 +290,7 @@ static ssize_t sock_write(open_file_descriptor* ofd, const void* buf, size_t cou
   //klog("Waiting for the target buffer to have an empty place on socket %d...", sock->sd);
 
   if (!sock->blocking && paired_sock->in_count == MAX_MESSAGES) {
-    // TODO: error handling
-    return -1;
+    return -EAGAIN;
   } else {
     // Wait while paired sock in_buffer is full
     ksemP(paired_sock->write_sem);

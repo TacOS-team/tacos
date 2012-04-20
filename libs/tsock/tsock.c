@@ -1,3 +1,4 @@
+#include <errno.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -14,7 +15,9 @@ int tsock_listen(const char *path) {
     return -1;
   }
 
-  if (ioctl(server, SOCK_LISTEN, (char*) path) != 0) {
+  int listen_ret = ioctl(server, SOCK_LISTEN, (char*) path);
+  if (listen_ret < 0) {
+    errno = -listen_ret;
     //perror("listen");
     return -1;
   }
@@ -30,7 +33,9 @@ int tsock_connect(const char *path) {
     return -1;
   }
 
-  if (ioctl(client, SOCK_CONNECT, (char*) path) != 0) {
+  int connect_ret = ioctl(client, SOCK_CONNECT, (char*) path);
+  if (connect_ret < 0) {
+    errno = -connect_ret;
     //perror("connect");
     return -1;
   }
@@ -41,7 +46,9 @@ int tsock_connect(const char *path) {
 int tsock_accept(int server) {
   int newServer;
 
-  if (ioctl(server, SOCK_ACCEPT, &newServer) != 0) {
+  int accept_ret = ioctl(server, SOCK_ACCEPT, &newServer);
+  if (accept_ret < 0) {
+    errno = -accept_ret;
     //perror("accept");
     return -1;
   }
@@ -52,8 +59,10 @@ int tsock_accept(int server) {
 ssize_t tsock_read(int tsock, void *buffer, size_t len) {
   ssize_t nbBytesRcvd = read(tsock, buffer, len);
 
-  if (nbBytesRcvd == -1) {
+  if (nbBytesRcvd < 0) {
+    errno = -nbBytesRcvd;
     //perror("read");
+    return -1;
   }
 
   return nbBytesRcvd;
@@ -62,8 +71,10 @@ ssize_t tsock_read(int tsock, void *buffer, size_t len) {
 ssize_t tsock_write(int tsock, void * buffer, size_t len) {
   ssize_t nbBytesSent = write(tsock, buffer, len);
 
-  if (nbBytesSent == -1) {
+  if (nbBytesSent < 0) {
+    errno = -nbBytesSent;
     //perror("write");
+    return -1;
   }
 
   return nbBytesSent;

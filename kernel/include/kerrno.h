@@ -46,5 +46,6 @@
 #define EISDIR    15 /**< c'est un dossier. */
 #define ENFILE    16 /**< Overflow de la file table. */
 #define EMFILE    17 /**< Trop de fichiers ouverts. */
+#define ENOMEM    18
 
 #endif
