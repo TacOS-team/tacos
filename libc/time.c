@@ -67,6 +67,8 @@
 #define SECS_DAY   (24L * 60L * 60L) /** Secondes dans une journée. */
 #define LONG_MAX   2147483647L
 #define TIME_MAX   0xFFFFFFFFL
+#define CLOCKS_PER_SEC 1000 /**< Nombre de secondes par tick d'horloge. */
+#define USEC_PER_SEC 1000000 /**< Nombre de us par secondes. */
 
 /**
  * Nombre de jours par mois.
@@ -139,6 +141,13 @@ time_t time(time_t *timer)
 double difftime(time_t time1, time_t time0)
 {
 	return time1-time0;
+}
+
+int gettimeofday(struct timeval *tv, void *tz_unused __attribute__((unused)))
+{
+	tv->tv_sec = time(NULL);
+	tv->tv_usec = clock()*USEC_PER_SEC/CLOCKS_PER_SEC;
+	return 0;
 }
 
 /*
