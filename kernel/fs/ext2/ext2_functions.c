@@ -127,7 +127,32 @@ int ext2_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 			strncpy(d->d_name, aux->dir->name, aux->dir->name_len);
 			d->d_name[aux->dir->name_len] = '\0';
 			d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + aux->dir->name_len + 1;
-			d->d_type = aux->dir->file_type;
+			switch (aux->dir->file_type) {
+				case EXT2_FT_UNKNOWN:
+					d->d_type = DT_UNKNOWN;
+					break;
+				case EXT2_FT_REG_FILE:
+					d->d_type = DT_REG;
+					break;
+				case EXT2_FT_DIR:
+					d->d_type = DT_DIR;
+					break;
+				case EXT2_FT_CHRDEV:
+					d->d_type = DT_CHR;
+					break;
+				case EXT2_FT_BLKDEV:
+					d->d_type = DT_BLK;
+					break;
+				case EXT2_FT_FIFO:
+					d->d_type = DT_FIFO;
+					break;
+				case EXT2_FT_SOCK:
+					d->d_type = DT_SOCK;
+					break;
+				case EXT2_FT_SYMLINK:
+					d->d_type = DT_LNK;
+					break;
+			}
 			count += d->d_reclen;
 			c++;
 			aux = aux->next;
