@@ -29,6 +29,7 @@
 
 #include <klog.h>
 #include <kprocess.h>
+#include <ksem.h>
 #include <kunistd.h>
 #include <scheduler.h>
 #include <vfs.h>
@@ -106,6 +107,41 @@ SYSCALL_HANDLER3(sys_ioctl, uint32_t *fd, unsigned int request, void *data) {
 			*fd = ofd->f_ops->ioctl(ofd, request, data);
 		}
 	}
+}
+
+SYSCALL_HANDLER3(sys_select, uint32_t *fds, size_t n, int *ret) {
+	process_t * process = get_current_process();
+	int val = 0;
+	uint8_t sem = ksemget(SEM_NEW, SEM_CREATE);
+	ksemctl(sem, SEM_SET, &val);
+
+	size_t i, j;
+	open_file_descriptor *ofd;
+	for (i = 0; i < n; i++) {
+		ofd = process->fd[fds[i]];
+		ofd->select_sem = sem;
+		if (ofd->current_octet < ofd->inode->i_size) {
+			// Found, exit
+			ksemctl(sem, SEM_DEL, NULL); 
+			for (j = 0; j <= i; j++) {
+				ofd->select_sem = 0;
+			}
+			*ret = fds[i];
+			return;
+		}
+	}
+
+	ksemP(sem);
+
+	for (i = 0; i < n; i++) {
+		ofd = process->fd[fds[i]];
+		ofd->select_sem = 0;
+		if (ofd->current_octet < ofd->inode->i_size) {
+			*ret = fds[i];
+		}
+	}
+
+	ksemctl(sem, SEM_DEL, NULL);
 }
 
 SYSCALL_HANDLER3(sys_stat, const char *path, struct stat *buf, int *ret) {

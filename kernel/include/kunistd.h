@@ -66,6 +66,15 @@ SYSCALL_HANDLER3(sys_seek, uint32_t fd, long *offset, int whence);
 SYSCALL_HANDLER3(sys_ioctl, uint32_t *fd, unsigned int request, void *data);
 
 /**
+ * Syscall pour surveiller des descripteurs de fichier.
+ *
+ * @param fds Tableau de numéros de descripteurs de fichier à surveiller.
+ * @param n Nombre de descripteurs de fichier.
+ * @param ret Retour de la fonction : premier descripteur de fichier prêt en lecture.
+ */
+SYSCALL_HANDLER3(sys_select, uint32_t *fd, size_t n, int *ret);
+
+/**
  * Syscall pour obtenir des informations sur un fichier.
  *
  * @param path Le chemin du fichier dont on veut obtenir les informations.

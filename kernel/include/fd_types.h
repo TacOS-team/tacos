@@ -47,40 +47,41 @@ struct _dentry_t;
  * ouvert.
  */
 struct _open_file_operations_t {
-    /**
-     * Écriture dans le fichier.
-     */
+	/**
+	 * Écriture dans le fichier.
+	 */
 	ssize_t (*write)(struct _open_file_descriptor *, const void*, size_t);
 
-    /**
-     * Lecture dans le fichier.
-     */
+	/**
+	 * Lecture dans le fichier.
+	 */
 	ssize_t (*read)(struct _open_file_descriptor *,void*, size_t);
 
-    /**
-     * Déplacement dans le fichier.
-     */
+	/**
+	 * Déplacement dans le fichier.
+	 */
 	int (*seek)(struct _open_file_descriptor *, long, int);
 
-    /**
-     * Configuration / contrôle du fichier.
-     */
+	/**
+	 * Configuration / contrôle du fichier.
+	 */
 	int (*ioctl)(struct _open_file_descriptor*, unsigned int, void *);
 
-    /**
-     * Ouverture du fichier.
-     */
+	/**
+	 * Ouverture du fichier.
+	 */
 	int (*open) (struct _open_file_descriptor*);
 
-    /**
-     * Fermeture du fichier.
-     */
+	/**
+	 * Fermeture du fichier.
+	 */
 	int (*close) (struct _open_file_descriptor*);
 
-    /**
-     * Lecture du dossier.
-     */
+	/**
+	 * Lecture du dossier.
+	 */
 	int (*readdir) (struct _open_file_descriptor*, char*, size_t);
+
 } open_file_operations_t;
 
 /**
@@ -93,6 +94,7 @@ typedef struct _open_file_descriptor {
 	int current_cluster; //XXX à supprimer (sock en dépend encore).
 	char * pathname;
 	uint32_t current_octet; // Utile pour f_pos ? TODO: Renommer :D
+	uint8_t select_sem;
 
 	// Utile ? on peut l'avoir par mnt->instance
 	struct _fs_instance_t *fs_instance;
