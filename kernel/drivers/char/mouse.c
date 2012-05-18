@@ -34,8 +34,8 @@
 #include <klibc/string.h>
 #include <drivers/mouse.h>
 
-#define DEFAULT_RES_WIDTH 320
-#define DEFAULT_RES_HEIGHT 200
+#define DEFAULT_RES_WIDTH 800
+#define DEFAULT_RES_HEIGHT 600
 
 static mousestate_t mouse_state;
 static int res_width, res_height;
@@ -109,7 +109,7 @@ static void mouse_interrupt_handler() {
 			if (mouse_y < 0) {
 				mouse_y = 0;
 			}
-			mouse_state.y = mouse_y;
+			mouse_state.y = res_height - 1 - mouse_y;
 			packet_num = 0;
 			break;
 	}
