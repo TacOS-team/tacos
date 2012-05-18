@@ -7,6 +7,7 @@
 #include <kprocess.h>
 #include <ksem.h>
 #include <scheduler.h>
+#include <vfs.h>
 
 #include <sock_types.h>
 
@@ -35,6 +36,7 @@ struct socket_msg {
 
 typedef struct socket {
   int sd;
+  open_file_descriptor *ofd;
   enum socket_type type;
   bool blocking;
   char *meetpoint;
@@ -54,9 +56,10 @@ typedef struct socket {
 
 socket_t *socket_descriptors[MAX_OPEN_SOCK];
 
-void init_socket(int sd, enum socket_type type, char *meetpoint) {
+void init_socket(int sd, open_file_descriptor *ofd, enum socket_type type, char *meetpoint) {
   socket_t *sock = socket_descriptors[sd];
   sock->sd = sd;
+  sock->ofd = ofd;
   sock->type = type;
   sock->blocking = true;
   if (sock->type == listening_server) {
@@ -85,7 +88,7 @@ void init_socket(int sd, enum socket_type type, char *meetpoint) {
   ksemctl(sock->write_sem, SEM_SET, &val);
 }
 
-socket_t* create_socket(enum socket_type type, char *meetpoint) {
+socket_t* create_socket(open_file_descriptor *ofd, enum socket_type type, char *meetpoint) {
   int sd;
 
   for (sd = 0; sd < MAX_OPEN_SOCK; sd++) {
@@ -99,7 +102,7 @@ socket_t* create_socket(enum socket_type type, char *meetpoint) {
       }
 
       klog("Found socket descriptor %d, initializing socket...", sd);
-      init_socket(sd, type, meetpoint);
+      init_socket(sd, ofd, type, meetpoint);
 
       return socket_descriptors[sd];
     }
@@ -137,10 +140,10 @@ void delete_socket(int sd) {
   }
 }
 
-int sock_listen(char *meetpoint) {
+int sock_listen(open_file_descriptor *ofd, char *meetpoint) {
   // Create LISTENING_SERVER socket
   klog("Creating LISTENING_SERVER socket, meetpoint = %s.", meetpoint);
-  socket_t *sock = create_socket(listening_server, meetpoint);
+  socket_t *sock = create_socket(ofd, listening_server, meetpoint);
   if (sock != NULL) {
     sock->max_conn_req_backlog = 1;
     sock->new_conn_req = kmalloc(sock->max_conn_req_backlog * sizeof(socket_t*));
@@ -153,7 +156,7 @@ int sock_listen(char *meetpoint) {
   return sock->sd;
 }
 
-int sock_connect(char *meetpoint) {
+int sock_connect(open_file_descriptor *ofd, char *meetpoint) {
   // Create CLIENT socket
   klog("Getting listening server for meetpoint %s...", meetpoint);
   socket_t *paired_sock = get_socket(meetpoint);
@@ -166,11 +169,15 @@ int sock_connect(char *meetpoint) {
 
   klog("OK paired_sd = %d, creating CLIENT socket...", paired_sock->sd);
 
-  socket_t *sock = create_socket(client, NULL);
+  socket_t *sock = create_socket(ofd, client, NULL);
   sock->paired_sock = paired_sock;
   paired_sock->new_conn_req[0] = sock;
   paired_sock->pending_conn_req++;
   ksemV(paired_sock->accept_sem);
+  paired_sock->ofd->inode->i_size = paired_sock->pending_conn_req;
+  if (paired_sock->ofd->select_sem > 0) {
+    ksemV(paired_sock->ofd->select_sem);
+  }
 
   ksemP(sock->connect_sem);
 
@@ -190,8 +197,9 @@ int sock_accept(open_file_descriptor *ofd) {
 
   socket_t *client = sock->new_conn_req[0];
   sock->pending_conn_req--;
+  sock->ofd->inode->i_size = sock->pending_conn_req;
 
-  socket_t *server = create_socket(nonlistening_server, NULL);
+  socket_t *server = create_socket(ofd, nonlistening_server, NULL);
   server->paired_sock = client;
   server->state = established;
 
@@ -206,7 +214,7 @@ static int sock_ioctl(open_file_descriptor *ofd, unsigned int request, void *dat
   switch (request) {
     case SOCK_CONNECT: {
       char *meetpoint = (char*) data;
-      int sd = sock_connect(meetpoint);
+      int sd = sock_connect(ofd, meetpoint);
       ofd->current_cluster = sd;
       if (sd < 0) {
         return sd;
@@ -216,7 +224,7 @@ static int sock_ioctl(open_file_descriptor *ofd, unsigned int request, void *dat
     }
     case SOCK_LISTEN: {
       char *meetpoint = (char*) data;
-      int sd = sock_listen(meetpoint);
+      int sd = sock_listen(ofd, meetpoint);
       ofd->current_cluster = sd;
       if (sd < 0) {
         return sd;
@@ -240,6 +248,8 @@ static int sock_ioctl(open_file_descriptor *ofd, unsigned int request, void *dat
         process->fd[i] = kmalloc(sizeof(open_file_descriptor));
         memcpy(process->fd[i], ofd, sizeof(open_file_descriptor));
         process->fd[i]->current_cluster = newSd;
+	// XXX: C'est juste pour que ça compile, mais c'est probablement cassé.
+        socket_descriptors[newSd] = (socket_t *)process->fd[i];
         *((int*) data) = i;
         return 0;
       }
@@ -277,6 +287,7 @@ static ssize_t sock_read(open_file_descriptor* ofd, void* buf, size_t count __at
   sock->in_base = (sock->in_base + 1) % MAX_MESSAGES;
   sock->in_count--;
   ksemV(sock->write_sem);
+  ofd->inode->i_size = sock->in_count;
 
   //klog("Read %d bytes from socket %d.", lrcvd, sock->sd);
 
@@ -301,16 +312,25 @@ static ssize_t sock_write(open_file_descriptor* ofd, const void* buf, size_t cou
   memcpy(&paired_sock->in_buffer[in_top].data, buf, count);
   paired_sock->in_count++;
   ksemV(paired_sock->read_sem);
+  paired_sock->ofd->inode->i_size = paired_sock->in_count;
+  if (paired_sock->ofd->select_sem > 0) {
+    ksemV(paired_sock->ofd->select_sem);
+  }
 
   //klog("Wrote %d bytes from socket %d to socket %d.", count, sock->sd, paired_sock->sd);
 
   return count;
 }
 
+int sock_open(open_file_descriptor *ofd) {
+  ofd->inode->i_size = 0;
+  return 0;
+}
+
 static chardev_interfaces di = {
   .read = sock_read,
   .write = sock_write,
-  .open = NULL,
+  .open = sock_open,
   .close = NULL,
   .ioctl = sock_ioctl
 };
