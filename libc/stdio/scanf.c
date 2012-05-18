@@ -133,12 +133,20 @@ int vfscanf(FILE *stream, const char *format, va_list ap) {
 				if (str == NULL)
 				 conv_error ();
 
+				// XXX: ignore all whitespace characters
+				while (isspace(c) || c == '\n') {
+					c = fgetc(stream);
+				}
+
 				if (c == EOF)
 				 input_error ();
 
 				do {
-					if (isspace (c) || c == '\n')
+					if (isspace (c) || c == '\n') {
+						// End of string: put back the whitespace character in the buffer
+						fseek(stream, -1, SEEK_CUR);
 						break;
+					}
 				 	*str++ = c; 
 				} while ((c = fgetc(stream)) != EOF);
 
@@ -172,6 +180,11 @@ int vfscanf(FILE *stream, const char *format, va_list ap) {
 				number_signed = 1;
 
 		  number:
+				// XXX: ignore all whitespace characters
+				while (isspace(c) || c == '\n') {
+					c = fgetc(stream);
+				}
+
 				if (c == EOF)
 				 input_error();
 
