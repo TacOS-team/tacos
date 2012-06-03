@@ -1,5 +1,5 @@
 /**
- * @file stdlib.h
+ * @file libc/include/stdlib.h
  *
  * @author TacOS developers 
  *
@@ -33,10 +33,6 @@
 #include <sys/cdefs.h>
 
 __BEGIN_DECLS
-
-/**
- * @file stdlib.h
- */
 
 #include <sys/types.h>
 #include <malloc.h>

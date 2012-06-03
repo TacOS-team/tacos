@@ -34,7 +34,7 @@
 #include <types.h>
 #include <vfs.h>
 
-#define MAX_DRIVERS 64
+#define MAX_DRIVERS 64 /**< Nombre maximum de drivers. */
 
 typedef struct {
 	char used;

@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -32,7 +31,7 @@
 
 #include <types.h>
 
-#define HEAP_MAX_SIZE 256
+#define HEAP_MAX_SIZE 256 /**< Taille maximale du tas. */
 
 /*
  * Structure de tas générique :
@@ -57,16 +56,37 @@ typedef struct {
 	int max_elements;
 } heap_t;
 
-// Initialise le tas à vide et regle la fonction de comparaison
+/*
+ *  Initialise le tas à vide et regle la fonction de comparaison
+ */
 void initHeap(heap_t* h, cmp_func_type cmp, void* heap, size_t elements_size,int max_elements);
 
-// Recupere le pointeur du sommet, NULL sinon
-void* getTop(heap_t h);
+/*
+ *  Recupere le premier élément du tas.
+ *
+ *	@param h pointeur vers le tas.
+ *
+ *	@return pointeur vers le premier élément du tas, NULL si aucun.
+ *
+ */
+void* getTop(heap_t *h);
 
-// Ajoute un element, retourne 0 en cas de succes
+/*
+ *	Ajoute un element au tas.
+ *
+ *	@param h pointeur vers le tas.
+ *	@param element pointeur vers l'élément à ajouter au tas.
+ *
+ *	@return 0 en cas de succes
+ */
 int addElement(heap_t* h, void* element);
 
-// Retire le sommet, retourne 0 en cas de succes
+/**
+ *  Retire le sommet.
+ *  @param h pointeur vers le tas.
+ *
+ *  @return 0 en cas de succes.
+ */
 int removetop(heap_t* h);
 
 int delElement(heap_t* heap, int id, id_func_type func);

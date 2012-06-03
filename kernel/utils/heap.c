@@ -47,12 +47,13 @@ void* getIn(heap_t* h,int index)
 }
 
 // retourne le sommet
-void* getTop(heap_t h)
+void* getTop(heap_t* h)
 {
 	void* top = NULL;
 	
-	if(h.nb_elements>0)
-		top = h.heap;
+	if (h->nb_elements > 0) {
+		top = h->heap;
+	}
 		
 	return top;
 }

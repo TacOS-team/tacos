@@ -1,8 +1,7 @@
 /**
- * @file stdlib.c
+ * @file /libc/stdlib.c
  *
  * @author TacOS developers 
- *
  *
  * @section LICENSE
  *

@@ -32,13 +32,14 @@
 #include <ksyscall.h>
 #include <types.h>
 
-#define SEM_NEW 255
-#define SEM_CREATE 1
+#define SEM_NEW 255 /**< key for a new semaphore. */
+#define SEM_CREATE 1 /**< create the semaphore. */
 
-#define SEM_GETVAL 1
-#define SEM_DEL 2
-#define SEM_ZCNT 3
-#define SEM_SET 4
+// semctl commands
+#define SEM_GETVAL 1 /**< Get Value. */
+#define SEM_DEL 2 /**< Delete semaphore. */
+#define SEM_ZCNT 3 /**< Get size. */
+#define SEM_SET 4 /**< Set value. */
 
 /**
  * @brief Initialisation du système des sémaphores
