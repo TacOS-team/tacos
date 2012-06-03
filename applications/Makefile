@@ -1,5 +1,5 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=ps ls cube_graph clock_graph zen_graph snake cat mkdir rm getty pres tsock_client tsock_server
+OBJ=ps ls zen_graph snake cat mkdir rm getty pres tsock_client tsock_server
 SUBDIRS=mishell utils
 LIBS=../lib/libtsock.a ../lib/libc.a ../lib/libsystem.a ../lib/libstl.a libutils.a
 LDFLAGS=-L./
