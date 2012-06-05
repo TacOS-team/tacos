@@ -5,7 +5,7 @@
 #include <sys/types.h>
 
 namespace std {
-  template <typename T>
+  template <class T>
   class vector {
    public:
     typedef T *iterator; /**< Iterator. */
@@ -57,6 +57,7 @@ namespace std {
      * accessed.
      * @return Read-only (constant) reference to data.
      */
+     
     const T & operator [] (size_t index) const;
     
     /**
