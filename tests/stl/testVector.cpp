@@ -269,6 +269,47 @@ void test14() {
   }
 }
 
+
+
+template <class T>
+class Comparator {
+ public:
+  bool operator()(const T & a, const T & b) const {
+    return a < b;
+  }
+};
+
+// test sort with class comparator
+void test15() {
+  vector<int> v;
+  Comparator<int> comparator;
+  for (int i = 0; i < NBITER; ++i) {
+    v.push_back(rand() % NBITER);
+  }
+
+  sort(v.begin(), v.end(), comparator);
+
+  int prev = v[0];
+  for (int i = 1; i < NBITER; ++i) {
+    if (prev > v[i]) {
+      ERROR ("invalid sort");
+      exit(1);
+    }
+    prev = v[i];
+  }
+
+  sort(v.rbegin(), v.rend(), comparator);
+
+  prev = v[0];
+  for (int i = 1; i < NBITER; ++i) {
+    if (prev < v[i]) {
+      ERROR("invalid sort");
+      exit(1);
+    }
+    prev = v[i];
+  }
+}
+
 int main() {
   test1();
   test2();
@@ -284,6 +325,7 @@ int main() {
   test12();
   test13();
   test14();
+  test15();
 
   return 0;
 }

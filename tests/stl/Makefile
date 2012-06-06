@@ -1,7 +1,8 @@
 #NBITER = 50000000
 NBITER = 10
 
-FICHIERS=testSet.out testMap.out testVector.out testPair.out testDeque.out testQueue.out testStack.out
+FICHIERS= testVector.out
+#testSet.out testMap.out testPair.out testDeque.out testQueue.out testStack.out
 
 all: clean $(addprefix std, $(FICHIERS)) $(FICHIERS)
 	@rm -f *.out
