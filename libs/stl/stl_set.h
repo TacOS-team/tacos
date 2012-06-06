@@ -1,15 +1,15 @@
-#ifndef __STL_MAP_H__
-#define __STL_MAP_H__
+#ifndef __STL_SET_H__
+#define __STL_SET_H__
 
 #include <vector>
 #include <utility>
 
 namespace std {
 
-template < class Key, class T >
-class map {
+template < class T >
+class set {
  public:
-  typedef pair < Key, T > value_t;
+  typedef T value_t;
   typedef vector< value_t > data_container_t;
   typedef value_t * iterator;
   typedef _reverse_iterator<iterator, value_t> reverse_iterator;
@@ -17,9 +17,9 @@ class map {
  protected:
   data_container_t data;
  public:
-  iterator find(const Key & k) {
+  iterator find(const value_t & k) {
     for(iterator it = this->begin(); it != this->end(); ++it) {
-      if(it->first == k) {
+      if(*it == k) {
         return it;
       }
     }
@@ -28,12 +28,12 @@ class map {
 
   pair<iterator, bool> insert(const value_t & v) {
     pair<iterator, bool> res;
-    res.first = this->find(v.first);
+    res.first = this->find(v);
     if(res.first == this->end()) {
         this->data.push_back(v);
         res.first = this->data.end()-1;
         res.second = true;
-        res.first->second = v.second;
+        *(res.first) = v;
     } else {
         res.second = false;
     }
@@ -58,9 +58,9 @@ class map {
     }
   }
 
-  T & operator[](const Key & k) {
-    return (*((this->insert(make_pair(k,T()))).first)).second;
-  }
+  /*T & operator[](const Key & k) {
+    return (*((this->insert(k).first));
+  }*/
 
   bool empty( ) const {
     return this->data.empty();
@@ -70,7 +70,7 @@ class map {
     return this->data.size();
   }
 
-  size_t count(const Key & k) {
+  size_t count(const T & k) {
     return this->find(k) == this->end() ? 0 : 1;
   }
 
@@ -87,7 +87,7 @@ class map {
     this->data.erase(first, last);
   }
 
-  size_t erase(const Key & x) {
+  size_t erase(const T & x) {
     size_t res = 0;
     iterator pos = this->find(x);
     if(pos != this->end()) {
@@ -140,4 +140,4 @@ class map {
 
 }// namespace std
 
-#endif // __STL_MAP_H__
+#endif // __STL_SET_H__

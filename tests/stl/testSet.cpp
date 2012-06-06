@@ -1,6 +1,5 @@
 
-#include <map>
-#include <string>
+#include <set>
 #include <cstdio>
 #include <libtest.h>
 
@@ -9,10 +8,10 @@ using namespace std;
 int nbIter = NBITER;
 
 void testErase() {
-  map<int, float> m;
+  set<int> m;
   for(int i = 0; i < nbIter; ++i) {
-    m[i] = i;
-    if(m[i] != i) {
+    m.insert(i);
+      if(m.find(i) == m.end() || *(m.find(i)) != i) {
       printf("%d\n", i);
       ERROR("opérator [] invalid")
       exit(1);
@@ -22,7 +21,7 @@ void testErase() {
   for(int i = 0; i < nbIter; ++i) {
     m.erase(m.find(i));
     for(int j = i+1; j < nbIter; ++j) {
-      if(m[j] != j) {
+      if(m.find(j) == m.end() || *(m.find(j)) != j) {
         ERROR("opérator [] invalid")
         exit(1);
       }
@@ -33,8 +32,8 @@ void testErase() {
     exit(1);
   }
   for(int i = 0; i < nbIter; ++i) {
-    m[i] = i;
-    if(m[i] != i) {
+    m.insert(i);
+    if(m.find(i) == m.end()) {
       printf("%d\n", i);
       ERROR("opérator [] invalid")
       exit(1);
@@ -44,7 +43,7 @@ void testErase() {
   for(int i = 0; i < nbIter; ++i) {
     m.erase(m.find(i));
     for(int j = nbIter-1; j > i; --j) {
-      if(m[j] != j) {
+      if(m.find(j) == m.end() || *(m.find(j)) != j) {
         ERROR("opérator [] invalid")
         exit(1);
       }
@@ -55,8 +54,8 @@ void testErase() {
     exit(1);
   }
   for(int i = 0; i < nbIter; ++i) {
-    m[i] = i;
-    if(m[i] != i) {
+    m.insert(i);
+    if(m.find(i) == m.end()) {
       printf("%d\n", i);
       ERROR("opérator [] invalid")
       exit(1);
@@ -66,7 +65,7 @@ void testErase() {
   for(int i = 0; i < nbIter; ++i) {
     m.erase(i);
     for(int j = i+1; j < nbIter; ++j) {
-      if(m[j] != j) {
+      if(m.find(j) == m.end() || *(m.find(j)) != j) {
         ERROR("opérator [] invalid")
         exit(1);
       }
@@ -77,8 +76,8 @@ void testErase() {
     exit(1);
   }
   for(int i = 0; i < nbIter; ++i) {
-    m[i] = i;
-    if(m[i] != i) {
+    m.insert(i);
+    if(m.find(i) == m.end()) {
       printf("%d\n", i);
       ERROR("opérator [] invalid")
       exit(1);
@@ -88,7 +87,7 @@ void testErase() {
   for(int i = 0; i < nbIter; ++i) {
     m.erase(i);
     for(int j = nbIter-1; j > i; --j) {
-      if(m[j] != j) {
+      if(m.find(j) == m.end() || *(m.find(j)) != j) {
         ERROR("opérator [] invalid")
         exit(1);
       }
@@ -99,14 +98,14 @@ void testErase() {
     exit(1);
   }
   for(int i = 0; i < nbIter; ++i) {
-    m[i] = i;
-    if(m[i] != i) {
+    m.insert(i);
+    if(m.find(i) == m.end()) {
       printf("%d\n", i);
       ERROR("opérator [] invalid")
       exit(1);
     }
   }
-  map<int, float>::iterator deb, fin;
+  set<int>::iterator deb, fin;
   deb = m.begin();
   ++deb;
   fin = m.end();
@@ -116,12 +115,12 @@ void testErase() {
     ERROR("Size invalid")
     exit(1);
   }
-  if (m[0] != 0.0) {
-    ERROR("Count invalide")
+  if(m.find(0) == m.end() || *(m.find(0)) != 0) {
+    ERROR("m.find(0) invalide")
     exit(1);
   }
-  if (m[nbIter-1] != nbIter-1) {
-    ERROR("Count invalide")
+  if(m.find(nbIter-1) == m.end() || *(m.find(nbIter-1)) != nbIter-1) {
+    ERROR("m.find(9) invalide")
     exit(1);
   }
   m.erase(m.begin(), m.end());
@@ -136,7 +135,7 @@ void testErase() {
 }
 
 int main() {
-  map<int, float> m;
+  set<int> m;
   if (!m.empty()) {
     ERROR("m non vide au départ")
     exit(1);
@@ -145,9 +144,9 @@ int main() {
     ERROR("Count invalide")
     exit(1);
   }
-  m[10] = 10.5;
-  if (m[10] != 10.5) {
-    ERROR("m[10] invalid")
+  m.insert(10);
+  if (m.find(10) == m.end()) {
+    ERROR("m.find(10) invalid")
     exit(1);
   }
   if (m.empty()) {
