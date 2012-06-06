@@ -37,7 +37,7 @@ class set {
     } else {
         res.second = false;
     }
-
+    sort(this->data.begin(), this->data.end());
     return res;
   }
 
@@ -49,6 +49,7 @@ class set {
       this->data.push_back(*position);
       *position = x;
     }
+    sort(this->data.begin(), this->data.end());
     return position;
   }
 
@@ -81,10 +82,12 @@ class set {
   void erase(iterator position) {
     *position = *(this->end()-1);
     this->data.pop_back();
+    sort(this->data.begin(), this->data.end());
   }
 
   void erase(iterator first, iterator last) {
     this->data.erase(first, last);
+    sort(this->data.begin(), this->data.end());
   }
 
   size_t erase(const T & x) {
