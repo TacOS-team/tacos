@@ -327,6 +327,21 @@ char *strcasestr(const char *haystack, const char *needle);
  */
 char *strdup (const char *s);
 
+/** 
+ * @brief Duplique une chaine.
+ * 
+ * strndup va faire un malloc de taille suffisante pour y copier la chaîne 
+ * en paramètre en se limitant à n caractères au maximum.
+ *
+ * @param s la chaîne à dupliquer.
+ * @param n la taille maximale de la chaîne.
+ * 
+ * @return un pointeur vers la nouvelle zone mémoire contenant une copie de la chaîne.
+ */
+char *strndup (const char *s, size_t n);
+
+
+
 /**
  * @brief Extraire des mots d'une chaîne.
  *

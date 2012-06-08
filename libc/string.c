@@ -326,6 +326,16 @@ char *strdup (const char *s)
 	return strcpy(new_string, s);
 }
 
+char *strndup(const char *s, size_t n) {
+	size_t len = strlen(s);
+	if (len > n) {
+		len = n;
+	}
+	char* new_string = (char*) malloc((len+1)*sizeof(char)); // len + 1 pour le '\0'
+	
+	return strcpy(new_string, s);
+}
+
 char *strchr(const char* s, int c)
 {
 	/* On parcourt la chaine */
