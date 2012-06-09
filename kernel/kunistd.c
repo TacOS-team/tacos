@@ -131,6 +131,26 @@ SYSCALL_HANDLER2(sys_dup, int oldfd, int *ret) {
 	*ret = i;
 }
 
+SYSCALL_HANDLER2(sys_dup2, int oldfd, int *newfd) {
+	process_t* process = get_current_process();
+
+	if (process->fd[oldfd].used) {
+		if (process->fd[*newfd].used) {
+			if (process->fd[*newfd].ofd->close != NULL) {
+				process->fd[*newfd].ofd->close(process->fd[*newfd].ofd);
+			}
+		}
+
+		process->fd[*newfd].used = true;
+		process->fd[*newfd].ofd = process->fd[oldfd].ofd;
+
+	} else {
+		*newfd = -1;
+	}
+}
+
+
+
 SYSCALL_HANDLER3(sys_mknod, const char *path, mode_t mode, dev_t *dev) {
 	*dev = vfs_mknod(path, mode, *dev);
 }

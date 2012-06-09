@@ -220,6 +220,11 @@ int dup(int oldfd) {
 	return newfd;
 }
 
+int dup2(int oldfd, int newfd) {
+	syscall(SYS_DUP2, (uint32_t) oldfd, (uint32_t)&newfd, 0);
+	return newfd;
+}
+
 int gethostname(char *name, size_t len) {
 	strncpy(name, "tacos", len);
 	return 0;

@@ -90,6 +90,8 @@ SYSCALL_HANDLER2(sys_unlink, const char *path, int *ret);
  */
 SYSCALL_HANDLER2(sys_dup, int oldfd, int *ret);
 
+SYSCALL_HANDLER2(sys_dup2, int oldfd, int *newfd);
+
 /**
  * Syscall pour créer un nouveau noeud.
  */

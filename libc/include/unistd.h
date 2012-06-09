@@ -222,6 +222,9 @@ int mknod(const char *path, mode_t mode, dev_t dev);
 
 int gethostname(char *name, size_t len);
 
+int dup(int oldfd);
+int dup2(int oldfd, int newfd);
+
 __END_DECLS
 
 #endif //_UNISTD_H_

@@ -62,5 +62,6 @@
 #define SYS_DUP 30
 #define SYS_WAITPID 31
 #define SYS_RMDIR 32
+#define SYS_DUP2 33
 
 #endif
