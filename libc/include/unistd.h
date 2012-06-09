@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -33,10 +32,6 @@
 #include <sys/cdefs.h>
 
 __BEGIN_DECLS
-
-/**
- * @file unistd.h
- */
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -224,6 +219,8 @@ int rmdir(const char *pathname);
  * @return 0 en cas de succès, -1 sinon.
  */
 int mknod(const char *path, mode_t mode, dev_t dev);
+
+int gethostname(char *name, size_t len);
 
 __END_DECLS
 

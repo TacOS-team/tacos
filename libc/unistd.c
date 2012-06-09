@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -219,4 +218,9 @@ int dup(int oldfd) {
 	int newfd;
 	syscall(SYS_DUP, (uint32_t) oldfd, (uint32_t)&newfd, 0);
 	return newfd;
+}
+
+int gethostname(char *name, size_t len) {
+	strncpy(name, "tacos", len);
+	return 0;
 }
