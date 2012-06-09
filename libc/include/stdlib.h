@@ -37,6 +37,8 @@ __BEGIN_DECLS
 #include <sys/types.h>
 #include <malloc.h>
 
+#define EXIT_SUCCESS 0
+
 #define RAND_MAX 2147483647
 
 void *calloc(size_t nmemb, size_t size);

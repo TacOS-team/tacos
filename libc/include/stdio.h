@@ -287,6 +287,8 @@ int ferror(FILE *stream);
 
 int fileno(FILE *stream);
 
+void perror(const char *s);
+
 __END_DECLS
 
 #endif
