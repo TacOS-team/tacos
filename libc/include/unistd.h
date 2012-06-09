@@ -225,6 +225,8 @@ int gethostname(char *name, size_t len);
 int dup(int oldfd);
 int dup2(int oldfd, int newfd);
 
+int isatty(int fd);
+
 __END_DECLS
 
 #endif //_UNISTD_H_

@@ -229,3 +229,9 @@ int gethostname(char *name, size_t len) {
 	strncpy(name, "tacos", len);
 	return 0;
 }
+
+int isatty(int fd) {
+	// TODO !
+	fprintf(stderr, "isatty non implémenté ! %d\n", fd);
+	return 0;
+}
