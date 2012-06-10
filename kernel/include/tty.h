@@ -61,8 +61,8 @@ extern struct termios tty_std_termios;
 typedef struct _tty_struct_t {
 	int index; /**< Équivalent du minor number.*/
 	void * driver_data; /**< De quoi enregistrer des données pour le driver.*/
-	struct termios termios;
-	char buffer[MAX_INPUT];
+	struct termios termios; /**< Configuration du terminal. */
+	char buffer[MAX_INPUT]; /**< Données prêtes pour la lecture. */
 	unsigned int p_begin;
 	unsigned int p_end;
 	struct _tty_driver_t *driver;
@@ -104,9 +104,28 @@ struct winsize {
 	unsigned short ws_col;
 };
 
+/**
+ * Allocation d'un driver de terminal.
+ *
+ * @param lines Nombre de terminaux géré par ce driver.
+ *
+ * @return le driver alloué.
+ */
 tty_driver_t *alloc_tty_driver(int lines);
-void put_tty_driver(tty_driver_t *driver);
+
+/**
+ * Enregistre en tant que char device un driver alloué et configuré.
+ *
+ * @param driver Le driver à enregistrer.
+ */
 int tty_register_driver(tty_driver_t *driver);
+
+/**
+ * Ajoute un caractère dans le butter du tty.
+ *
+ * @param tty le tty qui nous intéresse.
+ * @param ch le caractère à ajouter.
+ */
 void tty_insert_flip_char(tty_struct_t *tty, unsigned char ch);
 
 /**
