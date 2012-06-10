@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -33,6 +32,7 @@
 #include <clock.h>
 #include <interrupts.h>
 #include <kstdio.h>
+#include <klibc/limits.h>
 #include "heap.h"
 
 // Note: RTC signifie Real Time Clock.
@@ -56,8 +56,7 @@
 #define YEAR0 1900 /**< Constante pour convertir les années exprimées depuis 1900 */
 #define EPOCH_YR   1970 /**< Constante pour convertir les années exprimées depuis 1970. */
 #define SECS_DAY   (24L * 60L * 60L) /**< Nombre de secondes dans un jour. */
-#define LONG_MAX   2147483647L //XXX: Qu'est-ce que ça fait là ?
-#define TIME_MAX   0xFFFFFFFFL
+#define TIME_MAX   0xFFFFFFFFL /**< Temps maximum. */
 
 static clock_t sysclock; /**< Nombre de ticks d'horloge. */
 static time_t systime; /**< Date en secondes. */
