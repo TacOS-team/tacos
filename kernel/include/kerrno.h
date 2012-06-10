@@ -1,5 +1,5 @@
 /**
- * @file errno.h
+ * @file kerrno.h
  *
  * @author TacOS developers 
  *
@@ -23,17 +23,11 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Codes erreurs. 
  */
 
-#ifndef _ERRNO_H_
-#define _ERRNO_H_
-
-#include <sys/cdefs.h>
-
-__BEGIN_DECLS
-
-/* A garder sychronisé avec kerrno.h. La valeur n'a pas une grande importance. */
+#ifndef _KERRNO_H
+#define _KERRNO_H
 
 #define EAGAIN    1 /**< Essai encore ;). */
 #define EBADF     2 /**< Mauvais numero de fichier. */
@@ -53,9 +47,4 @@ __BEGIN_DECLS
 #define ENFILE    16 /**< Overflow de la file table. */
 #define EMFILE    17 /**< Trop de fichiers ouverts. */
 
-extern const char* sys_errlist[];
-extern int errno;
-
-__END_DECLS
-
-#endif //_ERRNO_H_
+#endif

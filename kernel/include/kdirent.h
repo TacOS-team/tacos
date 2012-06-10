@@ -42,10 +42,6 @@ struct dirent {
 	char      d_name[NAME_MAX];
 };
 
-#define ENOENT 2 /**< Code erreur entrée non trouvée. */
-#define ENOTDIR 3 /**< Core erreur ce n'est pas un dossier. */
-#define EEXIST 4 /**< Code erreur existe déjà. */
-
 SYSCALL_HANDLER3(sys_readdir, int fd, char *entries, size_t *size);
 SYSCALL_HANDLER3(sys_mkdir, const char *pathname, mode_t mode, int *ret);
 SYSCALL_HANDLER2(sys_rmdir, const char *pathname, int *ret);

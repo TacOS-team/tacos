@@ -32,6 +32,7 @@
 #include <klog.h>
 #include <kmalloc.h>
 #include <kprocess.h>
+#include <kerrno.h>
 #include <types.h>
 #include <vfs.h>
 #include <klibc/stdlib.h>

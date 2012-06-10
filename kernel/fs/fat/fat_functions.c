@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -33,6 +32,7 @@
 #include <klibc/string.h>
 #include <klog.h>
 #include <kmalloc.h>
+#include <kerrno.h>
 #include <types.h>
 
 #include "fat_outils.h"

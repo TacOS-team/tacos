@@ -31,6 +31,7 @@
 #include <klibc/string.h>
 #include <klog.h>
 #include <kmalloc.h>
+#include <kerrno.h>
 #include <types.h>
 #include <vfs.h>
 

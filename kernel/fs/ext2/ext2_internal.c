@@ -3,6 +3,7 @@
 #include <klog.h>
 #include <kmalloc.h>
 #include <kdirent.h>
+#include <kerrno.h>
 #include <clock.h>
 
 static struct blk_t* addr_inode_data(ext2_fs_instance_t *instance, int inode);

@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -32,6 +31,7 @@
 #include <klog.h>
 #include <types.h>
 #include <kfcntl.h>
+#include <kerrno.h>
 
 #include <fs/ext2.h>
 

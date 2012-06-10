@@ -32,14 +32,15 @@
 #include <kfcntl.h>
 #include <kmalloc.h>
 #include <vfs.h>
+#include <kerrno.h>
 #include <klibc/string.h>
 
 /**
  * Cellule d'une liste de fs disponibles.
  */
 typedef struct _available_fs_t {
-	file_system_t *fs;
-	struct _available_fs_t *next;
+	file_system_t *fs; /**< Informations sur le FS. */
+	struct _available_fs_t *next; /**< FS suivant. */
 } available_fs_t;
 
 static available_fs_t *fs_list;
@@ -50,7 +51,7 @@ static available_fs_t *fs_list;
 typedef struct _mounted_fs_t {
 	fs_instance_t *instance;
 	char *name;
-	struct _mounted_fs_t *next;
+	struct _mounted_fs_t *next; /**< Prochaine cellule. */
 } mounted_fs_t;
 
 static mounted_fs_t *mount_list;
