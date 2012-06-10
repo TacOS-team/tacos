@@ -88,6 +88,7 @@ typedef void (*sighandler_t)(int);
 #define SIG_SETMASK	2
 
 #define SIG_IGN     sig_ignore_handler
+#define SIG_DFL			0
 
 int kill(unsigned int pid, int sig);
 

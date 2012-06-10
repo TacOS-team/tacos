@@ -227,6 +227,8 @@ int dup2(int oldfd, int newfd);
 
 int isatty(int fd);
 
+int execv(const char *path, char *const argv[]);
+
 __END_DECLS
 
 #endif //_UNISTD_H_

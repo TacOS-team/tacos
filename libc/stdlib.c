@@ -297,6 +297,11 @@ int clearenv(void) {
 	return 0;
 }
 
+void *realloc(void *ptr, size_t size __attribute__ ((unused))) {
+	fprintf(stderr, "realloc non implementé !\n");
+	return ptr;
+}
+
 /******************************
  * Quicksort
  ******************************/

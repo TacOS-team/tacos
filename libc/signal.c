@@ -32,6 +32,8 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 
+static sighandler_t default_handlers[NSIG];
+
 int kill(unsigned int pid, int sig)
 {
 	int ret;
@@ -46,6 +48,10 @@ sighandler_t signal(int sig, sighandler_t func)
 {
 	sighandler_t ret;
 	
+	if (func == SIG_DFL) {
+		func = default_handlers[sig];
+	}
+
 	syscall(SYS_SIGNAL, (uint32_t)sig, (uint32_t)func, (uint32_t)&ret);
 	
 	return ret;
@@ -140,26 +146,31 @@ void sig_stop_handler(int signal __attribute__ ((unused)))
 
 void init_signals(void)
 {
-	signal(SIGHUP, (sighandler_t) exit);
-	signal(SIGINT, (sighandler_t) exit);
-	signal(SIGKILL, (sighandler_t) exit);
-	signal(SIGPIPE, (sighandler_t) exit);
-	signal(SIGALRM, (sighandler_t) exit);
-	signal(SIGTERM, (sighandler_t) exit);
-	signal(SIGUSR1, (sighandler_t) exit);
-	signal(SIGUSR2, (sighandler_t) exit);
-	signal(SIGCHLD, sig_ignore_handler);
-	signal(SIGPWR, sig_ignore_handler);
-	signal(SIGWINCH, sig_ignore_handler);
-	signal(SIGURG, sig_ignore_handler);
-	signal(SIGPOLL, (sighandler_t) exit);
-	signal(SIGSTOP, (sighandler_t) sig_stop_handler);
-	signal(SIGTSTP, (sighandler_t) sig_stop_handler);
-	signal(SIGCONT, sig_ignore_handler);
-	signal(SIGTTIN, (sighandler_t) sig_stop_handler);
-	signal(SIGTTOU, (sighandler_t) sig_stop_handler);
-	signal(SIGVTALRM, (sighandler_t) exit);
-	signal(SIGPROF, (sighandler_t) exit);
-	signal(SIGRTMIN, (sighandler_t) exit);
-	signal(SIGRTMAX, (sighandler_t) exit);
+	default_handlers[SIGHUP] = (sighandler_t) exit;
+	default_handlers[SIGINT] = (sighandler_t) exit;
+	default_handlers[SIGKILL] = (sighandler_t) exit;
+	default_handlers[SIGPIPE] = (sighandler_t) exit;
+	default_handlers[SIGALRM] = (sighandler_t) exit;
+	default_handlers[SIGTERM] = (sighandler_t) exit;
+	default_handlers[SIGUSR1] = (sighandler_t) exit;
+	default_handlers[SIGUSR2] = (sighandler_t) exit;
+	default_handlers[SIGCHLD] = sig_ignore_handler;
+	default_handlers[SIGPWR] = sig_ignore_handler;
+	default_handlers[SIGWINCH] = sig_ignore_handler;
+	default_handlers[SIGURG] = sig_ignore_handler;
+	default_handlers[SIGPOLL] = (sighandler_t) exit;
+	default_handlers[SIGSTOP] = (sighandler_t) sig_stop_handler;
+	default_handlers[SIGTSTP] = (sighandler_t) sig_stop_handler;
+	default_handlers[SIGCONT] = sig_ignore_handler;
+	default_handlers[SIGTTIN] = (sighandler_t) sig_stop_handler;
+	default_handlers[SIGTTOU] = (sighandler_t) sig_stop_handler;
+	default_handlers[SIGVTALRM] = (sighandler_t) exit;
+	default_handlers[SIGPROF] = (sighandler_t) exit;
+	default_handlers[SIGRTMIN] = (sighandler_t) exit;
+	default_handlers[SIGRTMAX] = (sighandler_t) exit;
+
+	int i;
+	for (i = 0; i < NSIG; i++) {
+		signal(i, SIG_DFL);
+	}
 }

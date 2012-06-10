@@ -34,6 +34,8 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 
+#include <elf.h>
+
 char * get_absolute_path(const char *dirname) {
 	char * cwd = getenv("PWD");
 	if (cwd == NULL) {
@@ -233,5 +235,16 @@ int gethostname(char *name, size_t len) {
 int isatty(int fd) {
 	// TODO !
 	fprintf(stderr, "isatty non implémenté ! %d\n", fd);
-	return 0;
+	return 1;
+}
+
+int execv(const char *path __attribute__ ((unused)), char *const argv[]) {
+	char *cmd = malloc(1024);
+	cmd[0] = '\0';
+	int i = 0;
+	while (argv[i] != NULL) {
+		strcat(cmd, argv[i]);
+		i++;
+	}
+	return exec_elf(cmd, 0);
 }

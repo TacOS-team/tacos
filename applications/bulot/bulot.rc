@@ -1,0 +1,4 @@
+echo "bulot 0.251";
+alias ls=ls --col;
+alias ne=emacs -nw;
+alias grep=grep --col;
