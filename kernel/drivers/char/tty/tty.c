@@ -138,10 +138,6 @@ tty_driver_t *alloc_tty_driver(int lines) {
 	return driver;
 }
 
-void put_tty_driver(tty_driver_t *driver) {
-	kfree(driver);
-}
-
 static chardev_interfaces* tty_get_driver_interface(tty_struct_t *tty) {
 	chardev_interfaces *di = kmalloc(sizeof(chardev_interfaces));
 	di->read = tty_read;
