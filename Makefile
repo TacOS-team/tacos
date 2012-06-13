@@ -86,8 +86,13 @@ directories:
 	@mkdir -p bin
 	@mkdir -p modules
 
-doc:
+doc: dockernel doclibc
+
+dockernel:
 	doxygen doxygen.conf
+
+doclibc:
+	doxygen doxygen_libc.conf
 
 docpdf: doc
 	$(MAKE) -C doc/latex
