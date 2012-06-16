@@ -430,7 +430,8 @@ static void init_dir(ext2_fs_instance_t *instance, int inode, int parent_inode) 
 	int addr = blocks->addr;
 	struct ext2_directory dir;
 	dir.inode = inode;
-	dir.rec_len = 4 + 2 + 1 + 1 +1;
+  // inode (4) + rec_len (2) + name_len (1) + file_type (1) + name (1) + padding
+	dir.rec_len = 4 + 2 + 1 + 1 + 4;
 	dir.name_len = 1;
 	dir.file_type = EXT2_FT_DIR;
 	strcpy(dir.name, ".");
@@ -458,6 +459,7 @@ static void mkdir_inode(ext2_fs_instance_t *instance, int inode, const char *nam
 	n_inode.i_atime = cdate;
 	n_inode.i_ctime = cdate;
 	n_inode.i_mtime = cdate;
+	n_inode.i_block[0] = alloc_block(instance);
 	
 	int ninode = alloc_inode(instance, &n_inode);
 	add_dir_entry(instance, inode, name, EXT2_FT_DIR, ninode);
