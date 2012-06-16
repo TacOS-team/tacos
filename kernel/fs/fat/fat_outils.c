@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -175,9 +174,9 @@ time_t convert_datetime_fat_to_time_t(fat_date_t *date, fat_time_t *time) {
 }
 
 void convert_time_t_to_datetime_fat(time_t time, fat_time_t *timefat, fat_date_t *datefat) {
-  #define MINUTES 60
-  #define HOURS 3600
-  #define DAYS 86400
+  #define MINUTES 60 /**< Nombre de secondes dans une minute. */
+  #define HOURS 3600 /**< Nombre de secondes dans une heure. */
+  #define DAYS 86400 /**< Nombre de secondes dans un jour. */
 
   int days_per_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
   int days_per_month_leap[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
