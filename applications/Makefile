@@ -1,6 +1,6 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=ps ls zen_graph snake cat mkdir rm getty stat
-SUBDIRS=mishell utils
+OBJ=ps ls zen_graph snake cat mkdir rm getty
+SUBDIRS=mishell utils bulot
 LIBS=../lib/libtsock.a ../lib/libc.a ../lib/libsystem.a ../lib/libstl.a libutils.a
 LDFLAGS=-L./
 INCLUDES=-I../include/ -I../libc/include/ -I../system/include/ -I../libs/tsock/

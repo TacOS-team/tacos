@@ -111,7 +111,7 @@ void launch_process(process *p, pid_t pgid, int infile, int outfile, int errfile
 		close(errfile);
 	}
 
-	if (execv(p->argv[0], p->argv) < 0)
+	if (execvp(p->argv[0], p->argv) < 0)
 	    printf("Commande inconnue\n");
 
 }
@@ -184,7 +184,7 @@ void wait_job(int block)
 {
 	int status;
 	process *p;
-	int pid;
+	int pid = 0;
 
 #ifdef FONCTIONS_AVANCEES
 	if (block) {
