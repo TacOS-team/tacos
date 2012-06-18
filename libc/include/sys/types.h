@@ -28,30 +28,40 @@
 #ifndef _SYS_TYPES_H_
 #define _SYS_TYPES_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 #include <stdbool.h>
 
-typedef int pid_t;
+typedef int pid_t; /**< Identifiant de processus. */
 
 #ifndef _TYPES_UINTX_T_
 #define _TYPES_UINTX_T_
-typedef unsigned char uint8_t;  /* 8 bits non signé */
-typedef unsigned short int uint16_t;  /* 16 bits non signé */
-typedef unsigned long int uint32_t;  /* 32 bits non signé */
-typedef unsigned long long int uint64_t;  /* 64 bits non signé */
-typedef uint32_t vaddr_t;
+typedef unsigned char uint8_t;  /**< 8 bits non signé */
+typedef unsigned short int uint16_t;  /**< 16 bits non signé */
+typedef unsigned long int uint32_t;  /**< 32 bits non signé */
+typedef unsigned long long int uint64_t;  /**< 64 bits non signé */
+typedef uint32_t vaddr_t; /**< Adresse Virtuelle */
 #endif
 
 #ifndef _TYPES_SIZE_T_
 #define _TYPES_SIZE_T_
-typedef uint32_t size_t;
-typedef int ssize_t;
+typedef uint32_t size_t; /**< Type pour une taille */
+typedef int ssize_t; /**< Type pour une taille positive */
 #endif
 
 #ifndef _TYPES_OFF_T_
 #define _TYPES_OFF_T_
-typedef unsigned long long int off_t;
+typedef unsigned long long int off_t; /**< Offset ou taille. */
 #endif
 
-#define NULL ((void*)0)
+#ifdef __cplusplus
+#define NULL 0 /**< Le fameux pointeur NULL, en C++. */
+#else
+#define NULL ((void*)0) /**< Le fameux pointeur NULL. */
+#endif
+
+__END_DECLS
 
 #endif

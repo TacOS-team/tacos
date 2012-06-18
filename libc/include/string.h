@@ -1,8 +1,7 @@
 /**
- * @file string.h
+ * @file include/string.h
  *
  * @author TacOS developers 
- *
  *
  * @section LICENSE
  *
@@ -24,16 +23,15 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Fonctions de manipulation de strings.
  */
 
 #ifndef _STRING_H_
 #define _STRING_H_
 
-/**
- * @file string.h
- *
- */
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
 
 #include <sys/types.h>
 
@@ -159,7 +157,20 @@ int strcasecmp(const char *s1, const char *s2);
  */
 int strncasecmp(const char *s1, const char *s2, size_t n);
 
-
+/**
+ * @brief Recherche un caractère dans une chaîne.
+ *
+ * Recherche un caractère dans une chaîne, et si le caractère n'est pas présent,
+ * renvoie un pointeur vers l'octet nul de la chaîne.
+ *
+ * @param s La chaîne dans laquelle il faut effectuer une recherche.
+ * @param c Le caractère à rechercher.
+ *
+ * @return Un pointeur sur la première occurrence du caractère dans la chaîne ou
+ * un pointeur vers la caractère nul de la chaîne si le caractère n'est pas
+ * trouvé.
+ */
+char *strchrnul(const char *s, int c);
 
 /** 
  * @brief Rempli une zone mémoire avec un octet donné.
@@ -316,8 +327,34 @@ char *strcasestr(const char *haystack, const char *needle);
  */
 char *strdup (const char *s);
 
+/** 
+ * @brief Duplique une chaine.
+ * 
+ * strndup va faire un malloc de taille suffisante pour y copier la chaîne 
+ * en paramètre en se limitant à n caractères au maximum.
+ *
+ * @param s la chaîne à dupliquer.
+ * @param n la taille maximale de la chaîne.
+ * 
+ * @return un pointeur vers la nouvelle zone mémoire contenant une copie de la chaîne.
+ */
+char *strndup (const char *s, size_t n);
+
+
+
+/**
+ * @brief Extraire des mots d'une chaîne.
+ *
+ * @param str La chaine à tokenizer.
+ * @param delim L'ensemble des délimiteurs possible.
+ *
+ * @return Un pointeur vers l'élément lexical suivant ou NULL s'il n'y en a
+ * plus.
+ */
 char *strtok(char *str, const char *delim);
-/* NOT IMPLEMENTED YET
+
+
+/* TODO: NOT IMPLEMENTED YET
 
 int strcoll(const char *s1, const char *s2);
 
@@ -333,9 +370,10 @@ char *strrchr(const char *s, int c);
 
 size_t strspn(const char *s1, const char *s2);
 
-
 char *strerror(int errnum);
 
 */
+
+__END_DECLS
 
 #endif

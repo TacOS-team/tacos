@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -30,9 +29,9 @@
 #ifndef _LIBIO_H_
 #define _LIBIO_H_
 
-/**
- * @file libio.h
- */
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
 
 #include <sys/types.h>
 
@@ -76,5 +75,7 @@ typedef struct _IO_FILE FILE;
 extern FILE *stdin;
 extern FILE *stdout;
 extern FILE *stderr;
+
+__END_DECLS
 
 #endif

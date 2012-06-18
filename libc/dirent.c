@@ -87,6 +87,7 @@ struct dirent* readdir(DIR* dirp) {
 
 int closedir(DIR* dirp) {
 	if (dirp) {
+		close(dirp->fd);
 		free(dirp);
 		return 0;
 	}

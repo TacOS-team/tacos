@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -28,6 +27,7 @@
  */
 
 #include <sys/syscall.h>
+#include <sys/types.h>
 
 void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3)
 {

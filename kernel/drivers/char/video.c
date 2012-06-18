@@ -106,29 +106,6 @@ static volatile x86_video_mem* get_page(int i, bool front) {
 	}
 }
 
-/*
-void set_blink_bit(int blink_bit) {
-	// XXX: ne marche pas ?
-	int val = 0;
-
-	(void) inb(0x3DA);
-	outb(0x10 , 0x3C0);
-	val = inb(0x3C1);
-	outb(0x20 , 0x3C0);
-
-	if (blink_bit) {
-		val |= 0x08;
-	} else {
-		val &= ~0x08;
-	}
-
-	(void) inb(0x3DA);
-	outb(0x10, 0x3C0);
-	outb(val, 0x3C0);
-	outb(0x20, 0x3C0);
-	(void) inb(0x3DA);
-}*/
-
 void disable_cursor(int disable) {
 	if (disable) {
 		/* CRT index port => demande l'accès au registre 0xa ("cursor start") */

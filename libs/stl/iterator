@@ -1,0 +1,6 @@
+#ifndef __STL_ITERATOR__
+#define __STL_ITERATOR__
+
+#include <stl_iterator.h>
+
+#endif// __STL_ITERATOR__

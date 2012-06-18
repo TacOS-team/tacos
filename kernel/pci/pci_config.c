@@ -31,7 +31,7 @@
 #include <types.h>
 #include <pci_config.h>
 #include "pci_vendor.h"
-#include <stdio.h>
+#include <kstdio.h>
 
 #define CONFIG_ADDRESS	0xCF8
 #define CONFIG_DATA	0xCFC
@@ -180,8 +180,8 @@ PPCI_CLASSCODETABLE pci_get_classcode(uint8_t bus, uint8_t slot, uint8_t functio
 
 void pci_print_info(pci_function_p func)
 {
-	printf("Bus %x, Slot %x, Func %x:\n",func->bus, func->slot, func->function);
-	printf("    %s : %s(%s)\n",pci_get_vendor(func->bus,func->slot,func->function)->VenFull, 
+	kprintf("Bus %x, Slot %x, Func %x:\n",func->bus, func->slot, func->function);
+	kprintf("    %s : %s(%s)\n",pci_get_vendor(func->bus,func->slot,func->function)->VenFull, 
                                   pci_get_device(func->bus,func->slot,func->function)->ChipDesc, 
                                   pci_get_device(func->bus,func->slot,func->function)->Chip);
 }
@@ -190,14 +190,14 @@ void pci_print_detailed_info(pci_function_p func)
 {
 	uint32_t bar = 0;
 	int irq;
-	printf("Bus %x, Slot %x, Func %x:\n",func->bus, func->slot, func->function);
-	printf("      Device: %s: %s (%s)\n",		pci_get_vendor(func->bus,func->slot,func->function)->VenFull,
+	kprintf("Bus %x, Slot %x, Func %x:\n",func->bus, func->slot, func->function);
+	kprintf("      Device: %s: %s (%s)\n",		pci_get_vendor(func->bus,func->slot,func->function)->VenFull,
 											pci_get_device(func->bus,func->slot,func->function)->ChipDesc, 
 											pci_get_device(func->bus,func->slot,func->function)->Chip);
 
 	irq = pci_read_value(func, PCI_INTERRUPT_LINE);
 	if(irq!=0)
-		printf("      IRQ:%d\n", irq);
+		kprintf("      IRQ:%d\n", irq);
 	
 /*	printf("      Class: 0x%x 0x%x (0x%x)\n",pci_get_classcode(func->bus,func->slot,func->function)->SubClass,
    					       pci_get_classcode(func->bus,func->slot,func->function)->BaseClass,
@@ -209,27 +209,27 @@ void pci_print_detailed_info(pci_function_p func)
 */
 	bar = pci_read_value(func, PCI_BAR0);
 	if(bar!=0)
-		printf("      BAR0=0x%x\n",bar);
+		kprintf("      BAR0=0x%x\n",bar);
 
 	bar = pci_read_value(func, PCI_BAR1);
 	if(bar!=0)
-		printf("      BAR1=0x%x\n",bar);
+		kprintf("      BAR1=0x%x\n",bar);
 
 	bar = pci_read_value(func, PCI_BAR2);
 	if(bar!=0)
-		printf("      BAR2=0x%x\n",bar);
+		kprintf("      BAR2=0x%x\n",bar);
 
 	bar = pci_read_value(func, PCI_BAR3);
 	if(bar!=0)
-		printf("      BAR0=3x%x\n",bar);
+		kprintf("      BAR0=3x%x\n",bar);
 
 	bar = pci_read_value(func, PCI_BAR4);
 	if(bar!=0)
-		printf("      BAR4=0x%x\n",bar);
+		kprintf("      BAR4=0x%x\n",bar);
 
 	bar = pci_read_value(func, PCI_BAR5);
 	if(bar!=0)
-		printf("      BAR0=0x%x\n",bar);
+		kprintf("      BAR0=0x%x\n",bar);
 
 }
 

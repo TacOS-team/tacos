@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -33,12 +32,12 @@
 
 static void FPU_handler(int id __attribute__ ((unused)))
 {
-  kdebug("FPU Exception");
+	kdebug("FPU Exception");
 }
 
 void init_fpu()
 {
 	interrupt_set_routine(IRQ_COPROCESSOR, FPU_handler, 0);
-  // FINIT : Initialize FPU after checking for pending unmasked floating-point exceptions.
-  asm("finit");
+	// FINIT : Initialize FPU after checking for pending unmasked floating-point exceptions.
+	asm("finit");
 }

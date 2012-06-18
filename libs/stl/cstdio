@@ -1,10 +1,6 @@
 #ifndef __CSTDIO_H__
 #define __CSTDIO_H__
 
-
-extern "C" {
-	#include <stdio.h>
-}
-
+#include <stdio.h>
 
 #endif// __CSTDIO_H__

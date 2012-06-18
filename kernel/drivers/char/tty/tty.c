@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -29,6 +28,7 @@
 
 #include <fs/devfs.h>
 #include <kfcntl.h>
+#include <klibc/string.h>
 #include <klog.h>
 #include <kmalloc.h>
 #include <kprocess.h>
@@ -36,8 +36,6 @@
 #include <ksignal.h>
 #include <scheduler.h>
 #include <tty.h>
-
-#include <string.h>
 
 struct termios tty_std_termios = {
 	.c_iflag = ICRNL | IXON,
@@ -96,42 +94,38 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 		}
 	}
 
-	if (c == ERASE_CHAR(tty)) {
+	if (c == ERASE_CHAR(tty) && I_ECHO(tty)) {
 		if (tty->p_end != tty->p_begin) {
 			tty->p_end--;
-			if (I_ECHO(tty)) {
-				if (tty->driver->ops->put_char != NULL) {
-					if (L_ECHOE(tty)) {
-						tty->driver->ops->put_char(tty, '\b');
-						tty->driver->ops->put_char(tty, ' ');
-						tty->driver->ops->put_char(tty, '\b');
-					} else {
-						tty->driver->ops->put_char(tty, c);
-					}
+			if (tty->driver->ops->put_char != NULL) {
+				if (L_ECHOE(tty)) {
+					tty->driver->ops->put_char(tty, '\b');
+					tty->driver->ops->put_char(tty, ' ');
+					tty->driver->ops->put_char(tty, '\b');
 				} else {
-					unsigned char ch[2];
-					ch[0] = c;
-					ch[1] = '\0';
-					tty->driver->ops->write(tty, NULL, ch, 1);
-				}
-			}
-		} else {
-			return;
-		}
-	} else {
-		if ((tty->p_end + 1) % MAX_INPUT != tty->p_begin) {
-			tty->buffer[tty->p_end] = c;
-			tty->p_end = (tty->p_end + 1) % MAX_INPUT;
-
-			if (I_ECHO(tty)) {
-				if (tty->driver->ops->put_char != NULL) {
 					tty->driver->ops->put_char(tty, c);
-				} else {
-					unsigned char ch[2];
-					ch[0] = c;
-					ch[1] = '\0';
-					tty->driver->ops->write(tty, NULL, ch, 1);
 				}
+			} else {
+				unsigned char ch[2];
+				ch[0] = c;
+				ch[1] = '\0';
+				tty->driver->ops->write(tty, NULL, ch, 1);
+			}
+		} 
+	}
+
+	if ((tty->p_end + 1) % MAX_INPUT != tty->p_begin) {
+		tty->buffer[tty->p_end] = c;
+		tty->p_end = (tty->p_end + 1) % MAX_INPUT;
+
+		if (I_ECHO(tty)) {
+			if (tty->driver->ops->put_char != NULL) {
+				tty->driver->ops->put_char(tty, c);
+			} else {
+				unsigned char ch[2];
+				ch[0] = c;
+				ch[1] = '\0';
+				tty->driver->ops->write(tty, NULL, ch, 1);
 			}
 		}
 	}
@@ -142,10 +136,6 @@ tty_driver_t *alloc_tty_driver(int lines) {
 	tty_driver_t *driver = (tty_driver_t *)kmalloc(sizeof(tty_driver_t));
 	driver->num = lines;
 	return driver;
-}
-
-void put_tty_driver(tty_driver_t *driver) {
-	kfree(driver);
 }
 
 static chardev_interfaces* tty_get_driver_interface(tty_struct_t *tty) {
@@ -210,6 +200,8 @@ size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {
 	process_t *current_process = get_current_process();
 
 	if (current_process->pid != t->fg_process) {
+		klog("SIGTTOU venant du term %d de %d car != %d", t->index, current_process->pid, t->fg_process);
+
 		sys_kill(current_process->pid, SIGTTOU, NULL);
 	}
 
@@ -272,23 +264,31 @@ int tty_ioctl (open_file_descriptor *ofd,  unsigned int request, void *data) {
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;
 
 	switch	(request) {
-		case TCGETS:
-			memcpy(data, &t->termios, sizeof(struct termios));
-			return 0;
-		case TCSETS:
-			if (t->driver->ops->set_termios) {
-				t->driver->ops->set_termios(data, &t->termios);
-			} else {
-				memcpy(&t->termios, data, sizeof(struct termios));
-			}
-			return 0;
+	case TCGETS:
+		memcpy(data, &t->termios, sizeof(struct termios));
+		return 0;
+	case TCSETS:
+		if (t->driver->ops->set_termios) {
+			t->driver->ops->set_termios(data, &t->termios);
+		} else {
+			memcpy(&t->termios, data, sizeof(struct termios));
+		}
+		return 0;
 	case TIOCGWINSZ:
-			{struct winsize ws;
-			ws.ws_row = 25;
-			ws.ws_col = 80;
-			//TODO: prendre les infos depuis le periphérique.
-			memcpy(data, &ws, sizeof(struct winsize));}
-			return 0;
+		{struct winsize ws;
+		ws.ws_row = 25;
+		ws.ws_col = 80;
+		//TODO: prendre les infos depuis le periphérique.
+		memcpy(data, &ws, sizeof(struct winsize));}
+		return 0;
+	case TIOCSCTTY:
+		{
+			//XXX: C'est un peu moche, normalement je devrais utiliser ofd et non data pour mettre le chemin... Et donc on peut se demander pourquoi mettre la fonction ici aussi...
+		process_t *current_process = get_current_process();
+		current_process->ctrl_tty = kmalloc(strlen(data) + 1);
+		strcpy(current_process->ctrl_tty, data);
+		}
+		return 0;
 	}
 
 	return 0;

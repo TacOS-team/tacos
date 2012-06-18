@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -30,19 +29,33 @@
 #ifndef _ERRNO_H_
 #define _ERRNO_H_
 
-/* man 2 write - à éventuellement reclasser dans un ordre moins bourrin
- * ou copier /usr/include/asm-generic/errno-base.h */
-#define EAGAIN    1 
-#define EBADF     2
-#define EFAULT    3
-#define EFBIG     4
-#define EINTR     5
-#define EINVAL    6
-#define EIO       7
-#define ENOSPC    8
-#define EPIPE     9
-#define ERANGE    10
+#include <sys/cdefs.h>
 
+__BEGIN_DECLS
+
+/* A garder sychronisé avec kerrno.h. La valeur n'a pas une grande importance. */
+
+#define EAGAIN    1 /**< Essai encore ;). */
+#define EBADF     2 /**< Mauvais numero de fichier. */
+#define EFAULT    3 /**< Mauvaise adresse. */
+#define EFBIG     4 /**< Fichier trop gros. */
+#define EINTR     5 /**< System call interrompu. */
+#define EINVAL    6 /**< Argument invalide. */
+#define EIO       7 /**< Erreur d'entrée / sortie. */
+#define ENOSPC    8 /**< Plus d'espace libre. */
+#define EPIPE     9 /**< broken pipe. */
+#define ERANGE    10 /**< Résultat maths non representable. */
+#define ENOENT    11 /**< entrée non trouvée. */
+#define ENOTDIR	  12 /**< ce n'est pas un dossier. */
+#define EEXIST    13 /**< existe déjà. */
+#define EPERM     14 /**< operation non permise. */
+#define EISDIR    15 /**< c'est un dossier. */
+#define ENFILE    16 /**< Overflow de la file table. */
+#define EMFILE    17 /**< Trop de fichiers ouverts. */
+
+extern const char* sys_errlist[];
 extern int errno;
+
+__END_DECLS
 
 #endif //_ERRNO_H_

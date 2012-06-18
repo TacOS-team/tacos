@@ -73,6 +73,13 @@ int exec_elf(char* cmdline, int orphan)
 	
 	execpath[offset] = '\0';
 	
+	struct stat buf;
+	stat(execpath, &buf);
+
+	if (!S_ISREG(buf.st_mode) || !(S_IXUSR & buf.st_mode)) {
+		return -1;
+	}
+
 	int fd = open(execpath, O_RDONLY);
 	
 	process_init_data_t init_data;
@@ -89,7 +96,7 @@ int exec_elf(char* cmdline, int orphan)
 		init_data.envp = environ;
 		
 		init_data.mem_size = elf_size(fd);
-		init_data.data = malloc(init_data.mem_size);
+		init_data.data = calloc(init_data.mem_size, 1);
 		init_data.entry_point = load_elf(fd, init_data.data);
 		
 		init_data.file = load_elf_file(fd);
@@ -101,5 +108,6 @@ int exec_elf(char* cmdline, int orphan)
 		
 		free(init_data.data);
 	}
+	free(execpath);
 	return ret;
 }

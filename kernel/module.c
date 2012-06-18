@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -33,14 +32,11 @@
 #include <module.h>
 #include <kmalloc.h>
 #include <symtable.h>
-
-/* LibC */
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <elf.h>
-#include <string.h>
-#include <stdlib.h>
+#include <klibc/string.h>
+#include <fd_types.h>
+#include <kunistd.h>
+#include <kfcntl.h>
+#include <vfs.h>
 
 extern symbol_table_t* ksymtable;
 
@@ -53,13 +49,12 @@ module_info_t* load_module(char* filename)
 	int nb_progbit = 0;
 	int i = 0;
 	unsigned int j = 0;
-	uint32_t offset;
 	size_t total_size = 0;
 	paddr_t ptr = (paddr_t) NULL;
 	
 	
 	klog("Loading module %s", filename);
-	fd = open(filename, O_RDONLY);
+	sys_open(&fd, filename, O_RDONLY);
 	
 	if(fd != -1)
 	{
@@ -92,8 +87,10 @@ module_info_t* load_module(char* filename)
 			/* On ne charche que les sections PROGBITS, de plus parfois certaines ont une taille nulle (.note.GNU-stack, wtf au passage), on les évite) */
 			if(elf_file->sheaders[i].sh_type == SHT_PROGBITS && elf_file->sheaders[i].sh_size > 0)
 			{
-				lseek(fd, elf_file->sheaders[i].sh_offset, SEEK_SET);
-				read(fd, (void*)ptr, elf_file->sheaders[i].sh_size);
+				long offset = elf_file->sheaders[i].sh_offset;
+				sys_seek(fd, &offset, SEEK_SET);
+				size_t size = elf_file->sheaders[i].sh_size;
+				sys_read(fd, (const void*)ptr, &size);
 				
 				if(elf_file->sheaders[i].sh_addralign > 1)
 					klog("aligned section %d -> %d", elf_file->sheaders[i].sh_addralign,ptr % elf_file->sheaders[i].sh_addralign);
@@ -137,10 +134,12 @@ module_info_t* load_module(char* filename)
 				 * savoir pourquoi, ça pourrait éventuellement venir 
 				 * de là 
 				 */
-				rel = malloc( elf_file->sheaders[i].sh_size );
+				rel = kmalloc( elf_file->sheaders[i].sh_size );
 				
-				lseek(fd, elf_file->sheaders[i].sh_offset, SEEK_SET);
-				read(fd, (void*)rel, elf_file->sheaders[i].sh_size);
+				long offset = elf_file->sheaders[i].sh_offset;
+				sys_seek(fd, &offset, SEEK_SET);
+				size_t size = elf_file->sheaders[i].sh_size;
+				sys_read(fd, (void*)rel, &size);
 
 				for(j=0; j< elf_file->sheaders[i].sh_size/elf_file->sheaders[i].sh_entsize; j++)
 				{
@@ -186,7 +185,7 @@ module_info_t* load_module(char* filename)
 					
 				}
 				 
-				 free(rel);
+				 kfree(rel);
 			}
 			
 		}

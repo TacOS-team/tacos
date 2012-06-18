@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -29,30 +28,27 @@
 
 #include <stdio.h>
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
 	int i;
-	FILE* fd;
+	FILE *fd;
 	char c;
-	
-	for(i=1; i<argc; i++)
-	{
-			fd = NULL;
-			fd = fopen(argv[i], "r");
-			if(fd != NULL)
-			{
+
+	for (i = 1; i < argc; i++) {
+		fd = NULL;
+		fd = fopen(argv[i], "r");
+		if (fd != NULL) {
+			c = fgetc(fd);
+			while (c != EOF) {
+				printf("%c", c);
 				c = fgetc(fd);
-				while( c != EOF )
-				{
-					printf("%c",c);
-					c = fgetc(fd);
-				}
-				
-				//fclose(fd);
 			}
-			else
-				printf("%s: file not found.\n", argv[i]);
+
+			//fclose(fd);
+		} else {
+			printf("%s: file not found.\n", argv[i]);
+		}
+		printf("\n");
 	}
 	return 0;
 }
-

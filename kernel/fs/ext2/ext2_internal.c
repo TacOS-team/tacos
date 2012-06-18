@@ -1,8 +1,9 @@
 #include "ext2_internal.h"
-#include <string.h>
+#include <klibc/string.h>
 #include <klog.h>
 #include <kmalloc.h>
 #include <kdirent.h>
+#include <kerrno.h>
 #include <clock.h>
 
 static struct blk_t* addr_inode_data(ext2_fs_instance_t *instance, int inode);
@@ -10,16 +11,6 @@ static int read_inode(ext2_fs_instance_t *instance, int inode, struct ext2_inode
 static uint32_t alloc_block(ext2_fs_instance_t *instance);
 
 #define max(a,b) ((a) > (b) ? (a) : (b))
-
-char *strchrnul(const char *s, int c) {
-	char *i;
-	for (i = (char*)s; *i != '\0'; ++i) {
-		if (*i == c) {
-			return i;
-		}
-	}
-	return i;
-}
 
 static void split_dir_filename(const char * path, char * dir, char * filename) {
 	char *p = strrchr(path, '/');
@@ -439,7 +430,8 @@ static void init_dir(ext2_fs_instance_t *instance, int inode, int parent_inode) 
 	int addr = blocks->addr;
 	struct ext2_directory dir;
 	dir.inode = inode;
-	dir.rec_len = 4 + 2 + 1 + 1 +1;
+  // inode (4) + rec_len (2) + name_len (1) + file_type (1) + name (1) + padding
+	dir.rec_len = 4 + 2 + 1 + 1 + 4;
 	dir.name_len = 1;
 	dir.file_type = EXT2_FT_DIR;
 	strcpy(dir.name, ".");
@@ -467,6 +459,7 @@ static void mkdir_inode(ext2_fs_instance_t *instance, int inode, const char *nam
 	n_inode.i_atime = cdate;
 	n_inode.i_ctime = cdate;
 	n_inode.i_mtime = cdate;
+	n_inode.i_block[0] = alloc_block(instance);
 	
 	int ninode = alloc_inode(instance, &n_inode);
 	add_dir_entry(instance, inode, name, EXT2_FT_DIR, ninode);

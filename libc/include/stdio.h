@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -30,9 +29,9 @@
 #ifndef _STDIO_H_
 #define _STDIO_H_
 
-/**
- * @file stdio.h
- */
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
 
 #include <libio.h>
 #include <sys/types.h>
@@ -50,6 +49,8 @@
 #define SEEK_SET 0
 #define SEEK_CUR 1
 #define SEEK_END 2
+
+typedef long fpos_t;
 
 /**
  * Liste chainée qui contient les streams. 
@@ -175,7 +176,23 @@ int puts(const char *s);
 int fgetline(FILE *fp, char s[], int lim);
 int getline(char *s, int lim);
 
+/**
+ * @brief Écriture binaire sur un flux.
+ *
+ * Cette fonction écrit jusqu'à nmemb elements dont la taille est 
+ * définie par size vers le stream pointé par le pointeur stream.
+ * Pour chaque elements, fwrite fait size appels à fputc en castant 
+ * simplement l'element en un tableau de uchar.
+ *
+ * @param ptr Pointeur vers les données à écrire.
+ * @param size Taille d'un élément de données.
+ * @param nmemb Nombre d'éléments.
+ * @param stream Stream à utiliser.
+ *
+ * @return Nombre d'éléments écrits.
+ */
 size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
+
 size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
 
 /** 
@@ -242,29 +259,96 @@ FILE *fmemopen(void *buf, size_t size, const char *mode);
  */
 int setvbuf(FILE *stream, char *buf, int mode, size_t size);
 
+/**
+ * @brief Initialise les streams de base.
+ */
 void init_stdfiles(void);
 
+/**
+ * @brief Fixe l'indicateur de position du flux.
+ *
+ * @param stream Le stream considéré.
+ * @param offset Le décalage.
+ * @param whence Méthode : depuis le début, la fin ou en relatif.
+ *
+ * @param 0 si tout s'est bien passé.
+ */
 int fseek(FILE *stream, long offset, int whence);
 
+/**
+ * @brief Obtient la valeur de l'indicateur de position.
+ *
+ * @param stream Le stream considéré.
+ *
+ * @return la position absolue.
+ */
 long ftell(FILE *stream);
 
+/**
+ * @brief Place l'indicateur de position au début du fichier.
+ *
+ * @param stream Le stream considéré.
+ */
 void rewind(FILE *stream);
+
+int fgetpos(FILE *stream, fpos_t *pos);
+int fsetpos(FILE *stream, fpos_t *pos);
 
 /**
  * @brief Supprimer un fichier ou répertoire.
  *
  * Supprime un fichier en utilisant unlink et un dossier avec rmdir.
  *
+ * @param pathname Chemin du fichier à supprimer.
+ *
  * @return ce que return unlink et rmdir.
  */
 int remove(const char *pathname);
 
+/**
+ * @brief Efface la fin de fichier et les indicateurs d'erreur du flux.
+ *
+ * @param stream Flux à réinitialiser.
+ */
 void clearerr(FILE *stream);
 
+/**
+ * @brief Teste l'indicateur de fin de fichier.
+ *
+ * @param stream Flux à tester.
+ *
+ * @return 0 si faux, sinon vrai.
+ */
 int feof(FILE *stream);
 
+/**
+ * @brief Teste l'indicateur d'erreur du flux.
+ *
+ * @param stream Flux à tester.
+ *
+ * @return non nul si indicateur actif.
+ */
 int ferror(FILE *stream);
 
+/**
+ * @brief Renvoie le numéro de descripteur de fichier associé au stream.
+ *
+ * @param stream Flux à analyser.
+ *
+ * @return le numéro du descripteur de fichier.
+ */
 int fileno(FILE *stream);
+
+/**
+ * @brief Affiche un message d'erreur système.
+ *
+ * Afficher le message donné en argument suivi du message associé à l'erreur 
+ * (errno).
+ *
+ * @param s le message à afficher avant l'erreur.
+ */
+void perror(const char *s);
+
+__END_DECLS
 
 #endif

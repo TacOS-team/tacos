@@ -1,5 +1,5 @@
 /**
- * @file stdlib.h
+ * @file libc/include/stdlib.h
  *
  * @author TacOS developers 
  *
@@ -30,15 +30,19 @@
 #ifndef _STDLIB_H_
 #define _STDLIB_H_
 
-/**
- * @file stdlib.h
- */
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
 
 #include <sys/types.h>
 #include <malloc.h>
 
+#define EXIT_SUCCESS 0
+#define EXIT_FAILURE 1
+
 #define RAND_MAX 2147483647
 
+void *realloc(void *ptr, size_t size);
 void *calloc(size_t nmemb, size_t size);
 long int strtol(const char* nptr, char** endptr, int base);
 unsigned long int strtoul(const char *nptr, char **endptr, int base);
@@ -74,6 +78,8 @@ int putenv(char *string);
 int clearenv(void);
 
 void qsort(void *base, size_t nmemb, size_t size, int(*compar)(const void *, const void *));
+
+__END_DECLS
 
 #endif
 

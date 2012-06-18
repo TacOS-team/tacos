@@ -27,7 +27,6 @@
  * Description de ce que fait le fichier
  */
 
-#include <types.h>
 #include <idt.h>
 #include <i8259.h>
 #include <interrupts.h>

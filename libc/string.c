@@ -1,8 +1,7 @@
 /**
- * @file string.c
+ * @file /libc/string.c
  *
  * @author TacOS developers 
- *
  *
  * @section LICENSE
  *
@@ -25,10 +24,6 @@
  * @section DESCRIPTION
  *
  * Description de ce que fait le fichier
- */
-
-/**
- * @file string.c
  */
 
 #include <stdlib.h>
@@ -120,7 +115,15 @@ int strncasecmp(const char *s1, const char *s2, size_t n) {
 	return tolower(s1[i]) - tolower(s2[i]);
 }
 
-
+char *strchrnul(const char *s, int c) {
+	char *i;
+	for (i = (char*)s; *i != '\0'; ++i) {
+		if (*i == c) {
+			return i;
+		}
+	}
+	return i;
+}
 
 void *memset(void *s, int c, size_t n)
 {
@@ -318,6 +321,16 @@ char *strcasestr(const char *haystack, const char *needle)
 char *strdup (const char *s)
 {
 	int len = strlen(s);
+	char* new_string = (char*) malloc((len+1)*sizeof(char)); // len + 1 pour le '\0'
+	
+	return strcpy(new_string, s);
+}
+
+char *strndup(const char *s, size_t n) {
+	size_t len = strlen(s);
+	if (len > n) {
+		len = n;
+	}
 	char* new_string = (char*) malloc((len+1)*sizeof(char)); // len + 1 pour le '\0'
 	
 	return strcpy(new_string, s);

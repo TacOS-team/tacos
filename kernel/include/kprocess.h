@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Création de nouveaux processus.
  */
 
 #ifndef _KPROCESS_H_
@@ -56,16 +55,18 @@
 #define EXEC_ELF 0
 #define EXEC_KERNEL 1
 
-/* Structure à passer au noyau pour créer un nouveau processus */
+/**
+ * Structure à passer au noyau pour créer un nouveau processus
+ */
 typedef struct
 {
-	char* name;
-	char* args;
-	char** envp;
+	char* name; /**< Nom du processus. */
+	char* args; /**< Ses arguments. */
+	char** envp; /**< Ses variables d'environnement. */
 	
-	int exec_type; /* Type d'exécution */
+	int exec_type; /**< Type d'exécution */
 	
-	void* data; /* Usage variable */
+	void* data; /**< Usage variable */
 	
 	Elf32_File* file;
 	
@@ -109,7 +110,7 @@ typedef struct{
 	
 	signal_process_data_t signal_data;
 
-	const char *ctrl_tty;
+	char *ctrl_tty;
 	
 	/* Données liées au debug run-time du process */
 	symbol_table_t* symtable;
@@ -118,7 +119,9 @@ typedef struct{
 
 } process_t;
 
-
+/**
+ * Cellule de la liste des processus.
+ */
 typedef struct _proclist_cell{
 	process_t* process;
 	struct _proclist_cell* next;

@@ -31,6 +31,10 @@
 #ifndef _SEM_H_
 #define _SEM_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 #include <sys/types.h>
 
 #define SEM_NEW 255
@@ -56,5 +60,6 @@ int semdel(uint32_t semid);
 int semP(uint32_t semid);
 int semV(uint32_t semid);
 
-#endif //_SEM_H_
+__END_DECLS
 
+#endif //_SEM_H_

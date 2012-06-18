@@ -23,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Virtual File System
  */
 
 #ifndef _VFS_H_
@@ -65,16 +65,99 @@ typedef struct _fs_instance_t {
  */
 void vfs_register_fs(file_system_t *fs);
 
+/**
+ * @brief Ouverture d'un fichier.
+ *
+ * @param pathname Chemin du fichier à ouvrir.
+ * @param flags Mode d'ouverture.
+ *
+ * @return Un descripteur de fichier ouvert.
+ */
 open_file_descriptor* vfs_open(const char * pathname, uint32_t flags);
+
+/**
+ * @brief Montage d'un device sur un certain point de montage.
+ *
+ * @param device à monter.
+ * @param mountpoint nom du dossier.
+ * @param type FS à utiliser.
+ */
 void vfs_mount(const char *device, const char *mountpoint, const char *type);
+
+/**
+ * @brief Démonte un point de montage.
+ *
+ * @return 0 en cas de succès.
+ */
 int vfs_umount(const char *mountpoint);
+
+/**
+ * @brief Création d'un dossier.
+ *
+ * @param pathname Chemin du dossier.
+ * @param mode Droits sur le dossier.
+ *
+ * @return 0 en cas de succès.
+ */
 int vfs_mkdir(const char * pathname, mode_t mode);
+
+/**
+ * @brief Obtient des infos sur un noeud.
+ *
+ * @param pathname Chemin du fichier.
+ * @param
+ *
+ * @return 0 en cas de succès.
+ */
 int vfs_stat(const char *pathname, struct stat *);
+
+/**
+ * @brief Suppression d'un noeud.
+ *
+ * @param pathname Chemin du fichier.
+ *
+ * @return 0 en cas de succès.
+ */
 int vfs_unlink(const char *pathname);
+
+/**
+ * @brief Création d'un nouveau noeud.
+ *
+ * @param path Chemin du fichier.
+ * @param mode Droits et type de fichier.
+ * @param dev Si c'est un fichier spécial, le device associé.
+ *
+ * @return 0 en cas de succès.
+ */
 int vfs_mknod(const char * path, mode_t mode, dev_t dev);
+
+/**
+ * @brief Suppression d'un dossier.
+ *
+ * @param pathname Chemin du dossier.
+ *
+ * @return 0 en cas de succès.
+ */
 int vfs_rmdir(const char *pathname);
 
+/**
+ * @brief Lecture de plusieurs entrées d'un dossier.
+ *
+ * @param ofd du dossier ouvert.
+ * @param entries Contenu du dossier, encodé dans une chaîne de caractères.
+ * @param size Taille de la chaîne entries.
+ *
+ * @return 0 en cas de succès.
+ */
 int vfs_readdir(open_file_descriptor * ofd, char * entries, size_t size);
+
+/**
+ * @brief Fermeture d'un fichier ouvert.
+ *
+ * @param ofd du fichier ouvert.
+ * 
+ * @return 0 en cas de succès.
+ */
 int vfs_close(open_file_descriptor *ofd);
 
 #endif

@@ -29,9 +29,15 @@
 #ifndef _WAIT_H_
 #define _WAIT_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 #include <sys/types.h>
 
 pid_t wait(int *status);
 void waitpid(int pid);
+
+__END_DECLS
 
 #endif

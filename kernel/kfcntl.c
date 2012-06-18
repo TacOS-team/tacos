@@ -27,7 +27,9 @@
  * Description de ce que fait le fichier
  */
 
+#include <fs/devfs.h>
 #include <kfcntl.h>
+#include <klibc/string.h>
 #include <klog.h>
 #include <kmalloc.h>
 #include <kprocess.h>
@@ -35,9 +37,6 @@
 #include <scheduler.h>
 #include <tty.h>
 #include <vfs.h>
-#include <fs/devfs.h>
-
-#include <string.h>
 
 void init_stdfd(process_t *new_proc) {
 	if (new_proc->pid == 0)
@@ -91,15 +90,18 @@ void close_all_fd() {
 	for (fd_id = 0; fd_id < FOPEN_MAX; fd_id++) {
 		if (process->fd[fd_id].used) {
 			ofd = process->fd[fd_id].ofd;
+			process->fd[fd_id].used = 0;
 
 			if(ofd->close != NULL)
 				ofd->close(ofd);
+
+			kfree(ofd);
 		}
 	}
 }
 
 
-SYSCALL_HANDLER3(sys_open, uint32_t fd_id, char *path , uint32_t flags) {
+SYSCALL_HANDLER3(sys_open, int *fd_id, char *path , uint32_t flags) {
 	int i=0;
 	
 	process_t* process = get_current_process();
@@ -111,20 +113,20 @@ SYSCALL_HANDLER3(sys_open, uint32_t fd_id, char *path , uint32_t flags) {
 
 	// ouverture du fichier
 	if ((process->fd[i].ofd = vfs_open(path, flags)) != NULL) {
-		*((int *)fd_id) = i;
+		*fd_id = i;
 		process->fd[i].used = true;
 	} else {
-		*((int *)fd_id) = -1;
+		*fd_id = -1;
 	}
 }
 
-SYSCALL_HANDLER2(sys_close, uint32_t fd_id, uint32_t* ret)
+SYSCALL_HANDLER2(sys_close, int fd_id, uint32_t* ret)
 {
 	process_t * process = get_current_process();
 	*ret = -1;
 	open_file_descriptor *ofd;
 
-	if (process->fd[fd_id].used) {
+	if (fd_id >= 0 && fd_id < FOPEN_MAX && process->fd[fd_id].used) {
 		ofd = process->fd[fd_id].ofd;
 	
 		if(ofd->close == NULL)
@@ -145,6 +147,9 @@ SYSCALL_HANDLER3(sys_fcntl, int *fd_id, unsigned int request, void * data) {
 		if (request == F_SETFL) {
 			ofd->flags = (int)data;
 			*fd_id = 0;
+			return;
+		} else if (request == F_GETFL) {
+			*fd_id = ofd->flags;
 			return;
 		}
 	}

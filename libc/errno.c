@@ -27,3 +27,24 @@
  */
 
 int errno;
+
+const char* sys_errlist[] = {
+"Erreur inconnue ou pas d'erreur.",
+"Essai encore ;).",
+"Mauvais numéro de fichier.",
+"Mauvaise adresse.",
+"Fichier trop gros.",
+"System call interrompu.",
+"Argument invalide.",
+"Erreur d'entrée / sortie.",
+"Plus d'espace libre sur le périphérique.",
+"Tube brisé.",
+"Résultat mathématique non representable.",
+"Entrée non trouvée.",
+"Ce n'est pas un dossier.",
+"Le fichier existe déjà.",
+"Opération non permise.",
+"C'est un dossier.",
+"Overflow de la file table.",
+"Trop de fichiers ouverts."};
+

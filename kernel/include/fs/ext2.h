@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -56,6 +55,7 @@ void umount_EXT2(fs_instance_t *instance);
 /**
  * @brief Ouverture de fichier.
  *
+ * @param instance Instance de fs.
  * @param path Chemin (relatif au point de montage) du fichier à ouvrir.
  * @param flags Flags pour l'ouverture.
  *

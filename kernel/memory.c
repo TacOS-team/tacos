@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,14 +23,9 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Gestion des pages mémoires physiques. 
  */
 
-/**
- * @file memory.c
- */
- 
-#include <types.h>
 #include <memory.h>
 
 static struct physical_page_descr *used_frame_pages = NULL;

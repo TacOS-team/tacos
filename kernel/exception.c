@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -27,7 +26,6 @@
  * @brief Gestion des exceptions.
  */
 
-#include <types.h>
 #include <idt.h>
 #include <exception.h>
 

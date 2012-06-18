@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,19 +23,19 @@
  *
  * @section DESCRIPTION
  *
- * DevFS
+ * @brief DevFS
  */
 
 #include <fs/devfs.h>
 #include <kdirent.h>
+#include <klibc/string.h>
 #include <klog.h>
 #include <kmalloc.h>
+#include <kerrno.h>
 #include <types.h>
 #include <vfs.h>
 
-#include <string.h>
-
-#define MAX_DRIVERS 64
+#define MAX_DRIVERS 64 /**< Nombre maximum de drivers. */
 
 typedef struct {
 	char used;
@@ -189,6 +188,10 @@ open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path
 			ofd->current_octet_buf = 0;
 
 			ofd->readdir = devfs_readdir;
+			ofd->write = NULL;
+			ofd->read = NULL;
+			ofd->seek = NULL;
+			ofd->close = NULL;
 
 			return ofd;
 		}

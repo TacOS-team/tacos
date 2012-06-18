@@ -36,7 +36,7 @@
 #include <fs/devfs.h>
 #include <ioports.h>
 #include <klog.h>
-#include <string.h>
+#include <klibc/string.h>
 #include <drivers/vga.h>
 #include <drivers/vga_modes.h>
 

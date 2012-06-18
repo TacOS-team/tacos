@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Logging macros
+ * @brief Logging macros
  */
 
 #ifndef _KLOG_H
@@ -36,13 +35,25 @@
 
 extern void klog_systime();
 
+/**
+ * Macro de log système.
+ */
 #define klog(message, ...) do{klog_systime();kprintf("[%s] "message"\n", __FILE__, ##__VA_ARGS__);}while(0)
 
+/**
+ * Macro de log d'erreur.
+ */
 #define kerr(message, ...) do{kprintf("\033[031m");klog_systime();kprintf("\033[031m[%s:%d in %s] ERROR: "message"\033[0m\n", __FILE__, __LINE__, __func__, ##__VA_ARGS__);}while(0)
 
 #ifdef DEBUG
+/**
+ * Macro pour les logs de debug.
+ */
 	#define kdebug(message, ...) do{klog_systime();kprintf("[%s] DEBUG: "message"\n", __FILE__, ##__VA_ARGS__);}while(0)
 #else
+/**
+ * Macro pour les logs de debug qui ne fait rien si pas en mode debug.
+ */
 	#define kdebug(message, ...)
 #endif
 

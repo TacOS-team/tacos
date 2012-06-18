@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,16 +23,17 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Console virtuelle (Fn).
  */
 
 #include <drivers/console.h>
 #include <drivers/video.h>
 #include <kmalloc.h>
+#include <klog.h>
 
-#define LARGEUR_TAB 8
+#define LARGEUR_TAB 8 /**< Taille d'une tabulation */
 
-#define NB_CONSOLES 4
+#define NB_CONSOLES 4 /**< Nombre de consoles virtuelles */
 
 static tty_driver_t *tty_driver;
 
@@ -57,6 +57,14 @@ void console_init() {
 		consoles[i].disp_cur = true;
 		consoles[i].cur_x = 0;
 		consoles[i].cur_y = 0;
+	
+		consoles[i].escape_char = false;
+		consoles[i].ansi_escape_code = false;
+		consoles[i].ansi_second_val = false;
+		consoles[i].val = 0;
+		consoles[i].val2 = 0;
+		consoles[i].bright = 1;
+
 		clear_console(i);
 	}
 
@@ -180,20 +188,15 @@ static void newline(int n) {
 	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
-void set_foreground(int n, uint8_t foreground) {
+static void set_foreground(int n, uint8_t foreground) {
 	consoles[n].attr = (consoles[n].attr & 0xF0) | (foreground & 0xF);
 }
 
-void set_background(int n, uint8_t background) {
+static void set_background(int n, uint8_t background) {
 	consoles[n].attr = ((background & 0xF) << 4) | (consoles[n].attr & 0x0F);
 }
 
-void sys_set_attribute(int n, uint8_t background, uint8_t foreground) {
-	consoles[n].attr = ((background & 0xF) << 4) | (foreground & 0xF);
-}
-
-void reset_attribute(int n) {
-	//set_blink_bit(0);
+static void reset_attribute(int n) {
 	consoles[n].attr = DEFAULT_ATTRIBUTE_VALUE;
 }
 
@@ -211,82 +214,72 @@ static size_t console_write (tty_struct_t* tty, open_file_descriptor* ofd __attr
  */
 static void console_putchar(tty_struct_t *tty, unsigned char c) {
 	int n = tty->index;
-	//XXX: par console !
-	static bool escape_char = false;
-	static bool ansi_escape_code = false;
-	static bool ansi_second_val = false;
-	static int val = 0, val2 = 0;
-	static int bright;
 
-	if (escape_char) {
-		if (ansi_escape_code) {
+	if (consoles[n].escape_char) {
+		if (consoles[n].ansi_escape_code) {
 			if (c >= '0' && c <= '9') {
-				if (ansi_second_val) {
-					val2 = val2 * 10 + c - '0';
+				if (consoles[n].ansi_second_val) {
+					consoles[n].val2 = consoles[n].val2 * 10 + c - '0';
 				} else {
-					val = val * 10 + c - '0';
+					consoles[n].val = consoles[n].val * 10 + c - '0';
 				}
 			} else {
-				escape_char = false;
-				ansi_second_val = false;
-				ansi_escape_code = false;
-				if (val == 0 && c != 'J' && c != 'm')
-					val = 1;
-				if (val2 == 0)
-					val2 = 1;
+				consoles[n].escape_char = false;
+				consoles[n].ansi_second_val = false;
+				consoles[n].ansi_escape_code = false;
+				if (consoles[n].val == 0 && c != 'J' && c != 'm')
+					consoles[n].val = 1;
+				if (consoles[n].val2 == 0)
+					consoles[n].val2 = 1;
 				switch (c) {
 				case 'A':
-					while (val--)
+					while (consoles[n].val--)
 						cursor_up(n);
 					break;
 				case 'B':
-					while (val--)
+					while (consoles[n].val--)
 						cursor_down(n);
 					break;
 				case 'C':
-					while (val--)
+					while (consoles[n].val--)
 						cursor_forward(n);
 					break;
 				case 'D':
-					while (val--)
+					while (consoles[n].val--)
 						cursor_back(n);
 					break;
 				case 'E':
-					while (val--)
+					while (consoles[n].val--)
 						newline(n);
 					break;
 				case 'F':
-					while (val--)
+					while (consoles[n].val--)
 						lineup(n);
 					break;
 				case 'G':
-					cursor_move_col(n, val);
+					cursor_move_col(n, consoles[n].val);
 					break;
 				case 'f':
 				case 'H':
-					cursor_move(n, val, val2);
+					cursor_move(n, consoles[n].val, consoles[n].val2);
 					break;
 				case ';':
-					escape_char = true;
-					ansi_second_val = true;
-					ansi_escape_code = true;
-					val2 = 0;
+					consoles[n].escape_char = true;
+					consoles[n].ansi_second_val = true;
+					consoles[n].ansi_escape_code = true;
+					consoles[n].val2 = 0;
 					break;
 				case 'm':
-					if (val == 0) {
+					if (consoles[n].val == 0) {
 						reset_attribute(n);
-					} else if (val == 1) {
-						bright = 1;
-					} else if (val == 2) {
-						bright = 0;
-					} else if (val == 5 || val == 6) {
-						//set_blink_bit(1);
-					} else if (val == 25) {
-						//set_blink_bit(0);
-					} else if (val >= 30 && val <= 37) {
+					} else if (consoles[n].val == 1) {
+						consoles[n].bright = 1;
+					} else if (consoles[n].val == 2) {
+						consoles[n].bright = 0;
+					} else if (consoles[n].val >= 30 && consoles[n].val <= 37) {
 						// si low intensity (normal) :
-						if (bright == 0) {
-							switch (val - 30) {
+						if (consoles[n].bright == 0) {
+							switch (consoles[n].val - 30) {
 							case 0:
 								set_foreground(n, BLACK);
 								break;
@@ -297,7 +290,7 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 								set_foreground(n, GREEN);
 								break;
 							case 3:
-								set_foreground(n, YELLOW); // Devrait être BROWN
+								set_foreground(n, BROWN);
 								break;
 							case 4:
 								set_foreground(n, BLUE);
@@ -309,11 +302,11 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 								set_foreground(n, CYAN);
 								break;
 							case 7:
-								set_foreground(n, WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
+								set_foreground(n, LIGHT_GRAY);
 								break;
 							}
 						} else {
-							switch (val - 30) {
+							switch (consoles[n].val - 30) {
 							case 0:
 								set_foreground(n, DARK_GRAY);
 								break;
@@ -340,72 +333,97 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 								break;
 							}
 						}
-					} else if (val >= 40 && val <= 47) {
-						// si low intensity (normal) :
-						if (bright == 0) {
-							switch (val - 40) {
-							case 0:
-								set_background(n, BLACK);
-								break;
-							case 1:
-								set_background(n, RED);
-								break;
-							case 2:
-								set_background(n, GREEN);
-								break;
-							case 3:
-								set_background(n, YELLOW); // Devrait être BROWN
-								break;
-							case 4:
-								set_background(n, BLUE);
-								break;
-							case 5:
-								set_background(n, MAGENTA);
-								break;
-							case 6:
-								set_background(n, CYAN);
-								break;
-							case 7:
-								set_background(n, WHITE); // Devrait être LIGHT_GRAY. Le White c'est pour le high intensity.
-								break;
-							}
-						} else {
-							switch (val - 40) {
-							case 0:
-								set_background(n, DARK_GRAY);
-								break;
-							case 1:
-								set_background(n, LIGHT_RED);
-								break;
-							case 2:
-								set_background(n, LIGHT_GREEN);
-								break;
-							case 3:
-								set_background(n, YELLOW);
-								break;
-							case 4:
-								set_background(n, LIGHT_BLUE);
-								break;
-							case 5:
-								set_background(n, LIGHT_MAGENTA);
-								break;
-							case 6:
-								set_background(n, LIGHT_CYAN);
-								break;
-							case 7:
-								set_background(n, WHITE);
-								break;
-							}
+					} else if (consoles[n].val >= 40 && consoles[n].val <= 47) {
+						// low intensity (normal) :
+						switch (consoles[n].val - 40) {
+						case 0:
+							set_background(n, BLACK);
+							break;
+						case 1:
+							set_background(n, RED);
+							break;
+						case 2:
+							set_background(n, GREEN);
+							break;
+						case 3:
+							set_background(n, BROWN);
+							break;
+						case 4:
+							set_background(n, BLUE);
+							break;
+						case 5:
+							set_background(n, MAGENTA);
+							break;
+						case 6:
+							set_background(n, CYAN);
+							break;
+						case 7:
+							set_background(n, LIGHT_GRAY);
+							break;
+						}
+					} else if (consoles[n].val >= 90 && consoles[n].val <= 99) {
+						switch (consoles[n].val - 90) {
+						case 0:
+							set_foreground(n, DARK_GRAY);
+							break;
+						case 1:
+							set_foreground(n, LIGHT_RED);
+							break;
+						case 2:
+							set_foreground(n, LIGHT_GREEN);
+							break;
+						case 3:
+							set_foreground(n, YELLOW);
+							break;
+						case 4:
+							set_foreground(n, LIGHT_BLUE);
+							break;
+						case 5:
+							set_foreground(n, LIGHT_MAGENTA);
+							break;
+						case 6:
+							set_foreground(n, LIGHT_CYAN);
+							break;
+						case 7:
+							set_foreground(n, WHITE);
+							break;
+						}
+					} else if (consoles[n].val >= 100 && consoles[n].val <= 109) {
+						switch (consoles[n].val - 100) {
+						case 0:
+							set_background(n, DARK_GRAY);
+							break;
+						case 1:
+							set_background(n, LIGHT_RED);
+							break;
+						case 2:
+							set_background(n, LIGHT_GREEN);
+							break;
+						case 3:
+							set_background(n, YELLOW);
+							break;
+						case 4:
+							set_background(n, LIGHT_BLUE);
+							break;
+						case 5:
+							set_background(n, LIGHT_MAGENTA);
+							break;
+						case 6:
+							set_background(n, LIGHT_CYAN);
+							break;
+						case 7:
+							set_background(n, WHITE);
+							break;
 						}
 
 					}
 					break;
 				case 'J':
-					if (val == 0) {
+					if (consoles[n].val == 0) {
 
-					} else if (val == 1) {
+					} else if (consoles[n].val == 1) {
 
-					} else if (val == 2) {
+					} else if (consoles[n].val == 2) {
 						clear_console(n);
 					}
 					break;
@@ -413,14 +431,14 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 			}
 		} else {
 			if (c == '[') {
-				ansi_escape_code = true;
-				val = 0;
+				consoles[n].ansi_escape_code = true;
+				consoles[n].val = 0;
 			} else {
-				escape_char = false;
+				consoles[n].escape_char = false;
 			}
 		}
 	} else if (c == '\033') {
-		escape_char = true;
+		consoles[n].escape_char = true;
 	} else if (c == '\n' || c == '\r') {
 		newline(n);
 	} else if (c == '\t') {
@@ -428,11 +446,12 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 	} else if (c == '\b') {
 		backspace(n);
 	} else {
-		kputchar_video(n, true, c, consoles[n].cur_x,
-				consoles[n].cur_y, consoles[n].attr);
-		consoles[n].cur_x++;
-		if (consoles[n].cur_x >= consoles[n].cols)
+		if (consoles[n].cur_x >= consoles[n].cols) {
 			newline(n);
+		}
+		kputchar_video(n, true, c, consoles[n].cur_x, consoles[n].cur_y,
+										consoles[n].attr);
+		consoles[n].cur_x++;
 	}
 
 	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);

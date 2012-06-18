@@ -1,12 +1,11 @@
 /**
- * @file vm86.h
+ * @file sock.h
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
- * Copyright (C) 2010, 2011, 2012 - TacOS developers.
+ * Copyright (C) 2011 - TacOS developers.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -24,12 +23,12 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Header file for the sock driver.
  */
 
-#ifndef _VM86_H_
-#define _VM86_H_
+#ifndef _SOCK_H_
+#define _SOCK_H_
 
-int check_vm86();
+void init_sock();
 
 #endif

@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -30,15 +29,15 @@
 #include <debug.h>
 #include <gdt.h>
 #include <kfcntl.h>
+#include <klibc/string.h>
 #include <klog.h>
+#include <kmalloc.h>
+#include <ksem.h>
 #include <ksignal.h>
 #include <ksyscall.h>
-#include <scheduler.h>
-#include <kmalloc.h>
-#include <types.h>
-#include <string.h>
 #include <pagination.h>
-#include <ksem.h>
+#include <scheduler.h>
+#include <types.h>
 
 #define GET_PROCESS 0
 #define GET_PROCESS_LIST 1
@@ -286,12 +285,14 @@ void free_init_data(process_init_data_t* init_data) {
 	kfree(init_data->args);
 	kfree(init_data->data);
 
-	int i = 0;
-	while (init_data->envp[i]) {
-		kfree(init_data->envp[i]);
-		i++;
+	if (init_data->envp) {
+		int i = 0;
+		while (init_data->envp[i]) {
+			kfree(init_data->envp[i]);
+			i++;
+		}
+		kfree(init_data->envp);
 	}
-	kfree(init_data->envp);
 
 	kfree(init_data);
 }
@@ -330,7 +331,6 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	
 	// Sémaphore pour le wait
 	new_proc->sem_wait = ksemget(SEM_NEW, SEM_CREATE);
-	klog("(create) pid : %d, sem_wait : %d", new_proc->pid, new_proc->sem_wait);
 	int val = 0;
 	ksemctl(new_proc->sem_wait, SEM_SET, &val);
 
@@ -403,8 +403,9 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->symtable = load_symtable(init_data->file);
 	
 	add_process(new_proc);
-	/* Plante... */
-	//free_init_data(init_data_dup);
+
+	/* Plantait, mais ne plante plus... */
+	free_init_data(init_data_dup);
 	
 	return new_proc;
 }

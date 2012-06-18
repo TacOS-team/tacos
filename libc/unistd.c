@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -34,6 +33,8 @@
 #include <string.h>
 #include <sys/syscall.h>
 #include <unistd.h>
+
+#include <elf.h>
 
 char * get_absolute_path(const char *dirname) {
 	char * cwd = getenv("PWD");
@@ -147,13 +148,17 @@ unsigned int usleep(unsigned int microseconds)
 }
 
 ssize_t write(int fd, const void *buf, size_t count) {
-	syscall(SYS_WRITE, fd, (uint32_t) buf, (uint32_t)(&count));
+	if (count > 0) {
+		syscall(SYS_WRITE, fd, (uint32_t) buf, (uint32_t)(&count));
+	}
 
 	return count;
 }
 
 ssize_t read(int fd, void *buf, size_t count) {
-	syscall(SYS_READ, fd, (uint32_t) buf, (uint32_t)(&count));
+	if (count > 0) {
+		syscall(SYS_READ, fd, (uint32_t) buf, (uint32_t)(&count));
+	}
 
 	return count;
 }
@@ -215,4 +220,31 @@ int dup(int oldfd) {
 	int newfd;
 	syscall(SYS_DUP, (uint32_t) oldfd, (uint32_t)&newfd, 0);
 	return newfd;
+}
+
+int dup2(int oldfd, int newfd) {
+	syscall(SYS_DUP2, (uint32_t) oldfd, (uint32_t)&newfd, 0);
+	return newfd;
+}
+
+int gethostname(char *name, size_t len) {
+	strncpy(name, "tacos", len);
+	return 0;
+}
+
+int isatty(int fd) {
+	// TODO !
+	fprintf(stderr, "isatty non implémenté ! %d\n", fd);
+	return 1;
+}
+
+int execv(const char *path __attribute__ ((unused)), char *const argv[]) {
+	char *cmd = malloc(1024);
+	cmd[0] = '\0';
+	int i = 0;
+	while (argv[i] != NULL) {
+		strcat(cmd, argv[i]);
+		i++;
+	}
+	return exec_elf(cmd, 0);
 }

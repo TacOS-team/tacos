@@ -29,7 +29,7 @@
 
 #include <types.h>
 #include <stdio.h>
-#include <string.h>
+#include <klibc/string.h>
 #include <ioports.h>
 #include <klog.h>
 #include "floppy_motor.h"

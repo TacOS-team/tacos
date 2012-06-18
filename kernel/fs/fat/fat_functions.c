@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -28,14 +27,13 @@
  */
 
 #include <fs/fat.h>
-#include <kfcntl.h>
 #include <kdirent.h>
+#include <kfcntl.h>
+#include <klibc/string.h>
 #include <klog.h>
 #include <kmalloc.h>
+#include <kerrno.h>
 #include <types.h>
-
-#include <ctype.h>
-#include <string.h>
 
 #include "fat_outils.h"
 

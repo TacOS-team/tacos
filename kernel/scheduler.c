@@ -28,30 +28,24 @@
  */
 
 
-/**
- * @file scheduler.c
- */
-
 #include <clock.h>
 #include <context.h>
+#include <cpu.h>
 #include <debug.h>
 #include <events.h>
 #include <gdt.h>
 #include <i8259.h>
+#include <interrupts.h>
+#include <ioports.h>
+#include <klibc/string.h>
 #include <klog.h>
 #include <kmalloc.h>
 #include <kprocess.h>
 #include <ksignal.h>
-#include <interrupts.h>
-#include <ioports.h>
+#include <pagination.h>
 #include <scheduler.h>
 #include <types.h>
 #include <vmm.h>
-#include <pagination.h>
-#include <cpu.h>
-
-#include <string.h>
-#include <sys/syscall.h>
 
 #define USER_PROCESS 0
 #define KERNEL_PROCESS 1

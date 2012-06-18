@@ -45,15 +45,12 @@
 #define KEYBOARD_BAT_OK       0xAA /**< Basic Assurance Test */
 #define KEYBOARD_ECHO_RES     0xEE /**< Result of echo command */
 #define KEYBOARD_UNKNOWN      0xF1 /**< ???? */
-#define KEYBOARD_ACK          0xFA
 #define KEYBOARD_BAT_KO       0xFC /**< Basic Assurance Test */
 #define KEYBOARD_FAILURE      0xFD /**< Internal failure */
-#define KEYBOARD_ACK_FAIL     0xFE /**< fails to ack, please resend */
 #define KEYBOARD_ERROR_MODE_1 0xFF /**< Erreur en scancode mode 1 */
 // Escape
-#define KEYBOARD_EXPAND   0xE0
-#define KEYBOARD_PAUSE    0xE1 /**< scancode pause/break key. */
-#define KEYBOARD_LOGITECH 0xE2
+#define KEYBOARD_EXPAND   0xE0 /**< scancode sur 2 octets. */
+#define KEYBOARD_PAUSE    0xE1 /**< scancode sur 3 octets. */
 
 #define KEY_ESCAPE  0x01 /**< scancode escape key. */
 #define KEY_ALT     0x38 /**< scancode alt key. */
@@ -211,13 +208,53 @@ void keyboardInterrupt(int id __attribute__ ((unused))) {
 			if (c != 0) {
 				keyBufferPush(c & 0x1F);
 			}
-		} else if (scancode_m1 != 0xe0 && scancode_m2 != 0xe1) {
+		} else if (scancode_m1 != KEYBOARD_EXPAND && scancode_m2 != KEYBOARD_PAUSE) {
 			char c = keyboardConvertToChar(scancode);
 			if (c != 0) {
 				keyBufferPush(c);
 			}
-		}
-
+		} else if (scancode_m1 == KEYBOARD_EXPAND) {
+            switch (scancode) {
+            case 0x48: // U_ARROW
+                keyBufferPush(0x1B);
+                keyBufferPush(0x5B);
+                keyBufferPush(0x41);
+                break;
+            case 0x50: // D_ARROW
+                keyBufferPush(0x1B);
+                keyBufferPush(0x5B);
+                keyBufferPush(0x42);
+                break;
+            case 0x4D: // R_ARROW
+                keyBufferPush(0x1B);
+                keyBufferPush(0x5B);
+                keyBufferPush(0x43);
+                break;
+            case 0x4B: // L_ARROW
+                keyBufferPush(0x1B);
+                keyBufferPush(0x5B);
+                keyBufferPush(0x44);
+                break;
+            case 0x49: // PG_UP
+                keyBufferPush(0x1B);
+                keyBufferPush(0x5B);
+                keyBufferPush(0x35);
+                keyBufferPush(0x7E);
+                break;
+            case 0x51: // PG_DN
+                keyBufferPush(0x1B);
+                keyBufferPush(0x5B);
+                keyBufferPush(0x36);
+                keyBufferPush(0x7E);
+                break;
+						case 0x53: // DELETE
+								keyBufferPush(0x1B);
+								keyBufferPush(0x5B);
+								keyBufferPush(0x33);
+								keyBufferPush(0x7E);
+								break;
+            }
+        }
 	}
 
 	scancode_m2 = scancode_m1;

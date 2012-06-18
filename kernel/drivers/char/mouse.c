@@ -31,7 +31,7 @@
 #include <klog.h>
 #include <ioports.h>
 #include <interrupts.h>
-#include <string.h>
+#include <klibc/string.h>
 #include <drivers/mouse.h>
 
 #define DEFAULT_RES_WIDTH 320

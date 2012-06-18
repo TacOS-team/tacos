@@ -34,18 +34,18 @@
 #include <drivers/dummy_driver.h>
 #include <drivers/mouse.h>
 #include <drivers/vga.h>
+#include <drivers/vesa.h>
+#include <drivers/sock.h>
 
 #include <elf.h>
 
 /* LibC */
-#include <stdio.h>
 #include <stdlib.h>
-
 
 
 int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
-	init_stdfiles();
+	//init_stdfiles();
 	klog("Starting init process...");
 	
 	klog("Loading kernel symbol table...");
@@ -57,6 +57,8 @@ int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	init_dummy();
 	init_mouse();
 	init_vga();
+	init_vesa();
+	init_sock();
 	/* ************************** */
 	
 	putenv("PWD=/");
@@ -64,8 +66,7 @@ int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 
 	klog("Starting user process...");
 	exec_elf("/tacos/bin/getty /dev/tty0", 0);
-	
-	
+
 	get_current_process()->state = PROCSTATE_WAITING;
 	while(1);
 	return 0;

@@ -42,7 +42,7 @@
 #include <kmalloc.h>
 #include <tty.h>
 
-#include <string.h>
+#include <klibc/string.h>
 
 #include "serial_masks.h"
 
@@ -178,13 +178,13 @@ void serial_isr(int id __attribute__ ((unused)))
 
 				
 				/* Si une interruption a été levée sur ce port, on la traite */
-				if(interrupt_identifier & INTERRUPT_PENDING || 1)
+				if((interrupt_identifier & INTERRUPT_PENDING) == 0)
 				{
 					i_id = INTERRUPT_ID(interrupt_identifier);
 					switch(i_id)
 					{	
 							case INT_NONE:
-								kerr("None interrupt");
+								//kerr("None interrupt");
 								break;
 							case INT_RX_LINE_STATUS:
 								(void) read_register(i, LINE_STATUS);

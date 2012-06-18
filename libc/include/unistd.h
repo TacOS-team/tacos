@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -30,9 +29,9 @@
 #ifndef _UNISTD_H_
 #define _UNISTD_H_
 
-/**
- * @file unistd.h
- */
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -220,5 +219,16 @@ int rmdir(const char *pathname);
  * @return 0 en cas de succès, -1 sinon.
  */
 int mknod(const char *path, mode_t mode, dev_t dev);
+
+int gethostname(char *name, size_t len);
+
+int dup(int oldfd);
+int dup2(int oldfd, int newfd);
+
+int isatty(int fd);
+
+int execv(const char *path, char *const argv[]);
+
+__END_DECLS
 
 #endif //_UNISTD_H_

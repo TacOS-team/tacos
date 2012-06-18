@@ -23,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Console virtuelle (Fn)
  */
 
 #ifndef _CONSOLE_H_
@@ -43,6 +43,13 @@ struct console_t {
 	char attr;						/**< Attribut actuel pour l'affichage de caractères. */
 	unsigned int lines;		/**< Nombre de lignes. */
 	unsigned int cols;		/**< Nombre de colonnes. */
+
+	bool escape_char;
+	bool ansi_escape_code;
+	bool ansi_second_val;
+	int val;
+	int val2;
+	int bright;
 };
 
 /**

@@ -30,7 +30,7 @@
 #include <vfs.h>
 #include <kdirent.h>
 #include <kmalloc.h>
-#include <string.h>
+#include <klibc/string.h>
 #include <scheduler.h>
 #include <klog.h>
 

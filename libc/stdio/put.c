@@ -34,7 +34,9 @@
 
 int fflush(FILE *stream) {
 	if (stream->_fileno > 0) {
-		write(stream->_fileno, stream->_IO_write_base, stream->_IO_write_ptr - stream->_IO_write_base);
+		if ((stream->_flags & O_ACCMODE) != O_RDONLY) {
+			write(stream->_fileno, stream->_IO_write_base, stream->_IO_write_ptr - stream->_IO_write_base);
+		}
 		stream->_IO_write_ptr = stream->_IO_write_base;
 		stream->_IO_read_ptr = stream->_IO_read_base;
 		stream->_IO_read_end = stream->_IO_read_base;

@@ -9,7 +9,7 @@ SRCS=*.c
 
 all: $(OBJ) 
 
-mishell: mishell.o shell_utils.o
+mishell: mishell.o shell_utils.o readline.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
 .o: .c 

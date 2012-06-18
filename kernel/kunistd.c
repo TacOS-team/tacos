@@ -27,11 +27,10 @@
  * Description de ce que fait le fichier
  */
 
-#include <kfcntl.h>
 #include <klog.h>
 #include <kprocess.h>
+#include <kunistd.h>
 #include <scheduler.h>
-#include <types.h>
 #include <vfs.h>
 
 SYSCALL_HANDLER3(sys_write, uint32_t fd, const void *buf, size_t *c) {
@@ -91,18 +90,21 @@ SYSCALL_HANDLER3(sys_seek, uint32_t fd, long *offset, int whence) {
 	}
 }
 
-SYSCALL_HANDLER3(sys_ioctl, uint32_t fd, unsigned int request, void *data) {
+SYSCALL_HANDLER3(sys_ioctl, uint32_t *fd, unsigned int request, void *data) {
 	process_t * process = get_current_process();
 
 	open_file_descriptor *ofd;
 
-	if (process->fd[fd].used) {
-		ofd = process->fd[fd].ofd;
-		
-		if(ofd->ioctl == NULL)
+	if (process->fd[*fd].used) {
+		ofd = process->fd[*fd].ofd;
+
+		if (ofd->ioctl == NULL) {
 			kerr("No \"ioctl\" method for this device.");
-		else
-			ofd->ioctl(ofd, request, data);
+			*fd = -1;
+		}
+		else {
+			*fd = ofd->ioctl(ofd, request, data);
+		}
 	}
 }
 
@@ -128,6 +130,26 @@ SYSCALL_HANDLER2(sys_dup, int oldfd, int *ret) {
 
 	*ret = i;
 }
+
+SYSCALL_HANDLER2(sys_dup2, int oldfd, int *newfd) {
+	process_t* process = get_current_process();
+
+	if (process->fd[oldfd].used) {
+		if (process->fd[*newfd].used) {
+			if (process->fd[*newfd].ofd->close != NULL) {
+				process->fd[*newfd].ofd->close(process->fd[*newfd].ofd);
+			}
+		}
+
+		process->fd[*newfd].used = true;
+		process->fd[*newfd].ofd = process->fd[oldfd].ofd;
+
+	} else {
+		*newfd = -1;
+	}
+}
+
+
 
 SYSCALL_HANDLER3(sys_mknod, const char *path, mode_t mode, dev_t *dev) {
 	*dev = vfs_mknod(path, mode, *dev);

@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Virtual File System. Gestion des points de montage.
+ * @brief Virtual File System. Gestion des points de montage.
  */
 
 #include <fs/devfs.h>
@@ -33,20 +32,26 @@
 #include <kfcntl.h>
 #include <kmalloc.h>
 #include <vfs.h>
-//XXX: libc
-#include <string.h>
+#include <kerrno.h>
+#include <klibc/string.h>
 
+/**
+ * Cellule d'une liste de fs disponibles.
+ */
 typedef struct _available_fs_t {
-	file_system_t *fs;
-	struct _available_fs_t *next;
+	file_system_t *fs; /**< Informations sur le FS. */
+	struct _available_fs_t *next; /**< FS suivant. */
 } available_fs_t;
 
 static available_fs_t *fs_list;
 
+/**
+ * Cellule de la liste des points de montage.
+ */
 typedef struct _mounted_fs_t {
 	fs_instance_t *instance;
 	char *name;
-	struct _mounted_fs_t *next;
+	struct _mounted_fs_t *next; /**< Prochaine cellule. */
 } mounted_fs_t;
 
 static mounted_fs_t *mount_list;
@@ -98,6 +103,7 @@ open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 		
 		ofd->readdir = vfs_readdir;
 		ofd->close = vfs_close;
+		ofd->current_octet = 0;
 		
 		return ofd;
 	}

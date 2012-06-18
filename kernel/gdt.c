@@ -26,22 +26,20 @@
  * @brief Setup de la GDT.
  */
 
-#include <types.h>
-#include "memory.h"
-#include "gdt.h"
+#include <memory.h>
+#include <gdt.h>
 
 static tss_t default_tss;
 
-/*
+/**
  * Registre gdt
  */
 struct x86_gdt_register {
-	/* Contient la taille */
-	uint16_t limit; /* Attention, un descripteur de segment faisant 8 octets, 
+	uint16_t limit;  /**< La taille */
+	/* Attention, un descripteur de segment faisant 8 octets, 
 							 la limite doit être un multiple de 8, moins 1 (8N-1). */
 
-	/* Et l'adresse où sont les descripteurs de segment. */
-	uint32_t	base_addr;
+	uint32_t	base_addr; /**< L'adresse où sont les descripteurs de segment. */
 } __attribute__((packed, aligned(8)));
 
 static struct x86_segment_descriptor gdt[] = {

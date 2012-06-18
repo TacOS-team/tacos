@@ -30,6 +30,10 @@
 #ifndef _MALLOC_H
 #define _MALLOC_H
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 #include <sys/types.h>
 
 void init_process_malloc();
@@ -37,5 +41,6 @@ void *malloc(size_t size);
 int free(void *p);
 void malloc_print_mem();
 
-#endif
+__END_DECLS
 
+#endif

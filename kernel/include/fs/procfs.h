@@ -30,6 +30,9 @@
 #ifndef _PROCFS_H
 #define _PROCFS_H
 
+#include <types.h>
+#include <fd_types.h>
+
 void procfs_init();
 int procfs_readdir(open_file_descriptor * ofd, char * entries, size_t size);
 

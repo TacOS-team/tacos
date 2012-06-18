@@ -30,7 +30,7 @@
 #include <fs/fat.h>
 #include <kmalloc.h>
 #include <klog.h>
-#include <string.h>
+#include <klibc/string.h>
 
 #include "fat_internal.h"
 

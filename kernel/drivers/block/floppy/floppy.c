@@ -30,7 +30,7 @@
 #include <fs/devfs.h>
 #include <ioports.h>
 #include <kstdio.h>
-#include <string.h>
+#include <klibc/string.h>
 #include <types.h>
 #include <klog.h>
 #include "floppy_interrupt.h"

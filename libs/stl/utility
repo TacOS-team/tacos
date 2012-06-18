@@ -1,0 +1,6 @@
+#ifndef __STL_UTILITY__
+#define __STL_UTILITY__
+
+#include <stl_pair.h>
+
+#endif /* __STL_UTILITY__ */

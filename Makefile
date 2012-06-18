@@ -26,8 +26,9 @@ export AR=@printf "\033[32m   AR   $$@\033[0m\n" && ar
 export LD=@printf "\033[31m   LD   $$@\033[0m\n" && ld
 export CFLAGS=-native $(WE) -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LDLIBS=-lc -ldrivers -z nodefaultlib -lsystem -lstl
+LDLIBSKERNEL=-ldrivers -z nodefaultlib -lsystem
 LDFLAGS=-Llib/
-SUBDIRS = kernel kernel/drivers libc system libs/stl applications
+SUBDIRS = kernel kernel/drivers libc system libs/stl libs/tsock applications
 
 all: directories kernel.bin
 
@@ -37,10 +38,14 @@ kernel.bin: force_look
 		$(MAKE) -s -C $$i; \
 		if [ $$? = 0 ]; then printf "\033[1m<<< [$$i] [OK]\033[0m\n"; else printf "\033[31m\033[1m<<< [$$i] [FAIL]\033[0m\n"; exit 1; fi; \
 	done
-	$(LD) -T linker.ld -o kernel.bin kernel/*.o kernel/fs/*.o kernel/fs/fat/*.o kernel/fs/ext2/*.o kernel/pci/*.o kernel/utils/*.o libs/stl/*.o -melf_i386 $(LDFLAGS) $(LDLIBS)
+	$(LD) -T linker.ld -o kernel.bin kernel/*.o kernel/fs/*.o kernel/fs/fat/*.o kernel/fs/ext2/*.o kernel/pci/*.o kernel/utils/*.o -melf_i386 $(LDFLAGS) $(LDLIBS)
+	#$(LD) -T linker.ld -o kernel.bin kernel/*.o kernel/klibc/*.o kernel/fs/*.o kernel/fs/fat/*.o kernel/fs/ext2/*.o kernel/pci/*.o kernel/utils/*.o -melf_i386 $(LDFLAGS) $(LDLIBSKERNEL)
 
 force_look:
 	@true
+	
+test:
+	$(MAKE) -s -C tests;
 
 core.img: all
 	@echo "drive v: file=\"`pwd`/core.img\" 1.44M filter" > mtoolsrc
@@ -48,7 +53,7 @@ core.img: all
 	@mkfs.ext2 -F core.img
 	@e2cp README core.img:/
 	@e2mkdir core.img:/bin
-	@e2cp bin/* core.img:/bin/
+	@e2cp -p bin/* core.img:/bin/
 #	@mkfs.vfat core.img
 #	@MTOOLSRC=mtoolsrc mcopy README v:/
 #	@MTOOLSRC=mtoolsrc mcopy bin v:/
@@ -63,12 +68,13 @@ grub.img: all
 	@rm mtoolsrc
 
 runqemunet: core.img grub.img
-	qemu -fda grub.img -fdb core.img -soundhw pcspk -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -net tap,ifname=tap0,script=no -net dump,file=eth.log -m 20 
+	qemu -fda grub.img -fdb core.img -vga std -soundhw pcspk -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -net tap,ifname=tap0,script=no -net dump,file=eth.log -m 20 
 
 runqemu: core.img grub.img 
-	qemu -fda grub.img -fdb core.img -soundhw pcspk -parallel none -m 20 -serial stdio
+	qemu -fda grub.img -drive file=core.img,index=1,if=floppy,cache=writeback -vga std -soundhw pcspk -parallel none -m 20 -serial stdio -serial vc -serial vc -serial vc
+	
 runqemugdb: core.img grub.img
-	qemu -fda grub.img -fdb core.img -soundhw pcspk -parallel none -m 20 -s -S -serial stdio
+	qemu -fda grub.img -fdb core.img -vga std -soundhw pcspk -parallel none -m 20 -s -S -serial stdio -serial vc -serial vc -serial vc
 	
 runbochs: core.img grub.img
 	BOCHSRC=bochsrc bochs
@@ -80,8 +86,13 @@ directories:
 	@mkdir -p bin
 	@mkdir -p modules
 
-doc:
+doc: dockernel doclibc
+
+dockernel:
 	doxygen doxygen.conf
+
+doclibc:
+	doxygen doxygen_libc.conf
 
 docpdf: doc
 	$(MAKE) -C doc/latex
@@ -95,6 +106,7 @@ clean:
 	done
 	@rm -f *.o *.bin *.img
 	@rm -f lib/*
+	@rm -f bin/*
 	@find . -name "*.o" -exec rm {} \;
 
 depend:

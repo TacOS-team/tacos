@@ -28,6 +28,10 @@
 #ifndef _STAT_H_
 #define _STAT_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 #include <sys/types.h>
 #include <time.h>
 
@@ -84,5 +88,6 @@ struct stat {
 	time_t    st_ctime;    /**< Heure dernier changement état   */
 };
 
+__END_DECLS
 
 #endif

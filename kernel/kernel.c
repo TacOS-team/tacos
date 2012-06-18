@@ -51,7 +51,7 @@
 #include <pci.h>
 #include <round_robin.h>
 #include <scheduler.h>
-#include <sys/syscall.h>
+#include <syscall_values.h>
 #include <vmm.h>
 
 /* Includes des fs */
@@ -70,7 +70,7 @@
 
 typedef struct
 {
-  uint8_t lol;
+	uint8_t lol;
 } kernel_options;
 
 /* Forward declarations. */
@@ -79,7 +79,7 @@ static void initKernelOptions(const char *cmdLine, kernel_options *options);
 
 void LPT1_routine(int id __attribute__ ((unused)))
 {
-  // XXX : avoid segment_not_present
+	// XXX : avoid segment_not_present
 }
 
 void cmain (unsigned long magic, unsigned long addr) {
@@ -119,10 +119,11 @@ void cmain (unsigned long magic, unsigned long addr) {
 	}
 	else
 		kerr("ELF section headers unavailable");
-  
+
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
 	interrupt_set_routine(IRQ_LPT1, LPT1_routine, 0);
 	interrupt_set_routine(IRQ_COM1, serial_isr, 0);
+	interrupt_set_routine(IRQ_COM2, serial_isr, 0);
 	init_fpu();
 
 	asm volatile ("sti\n");
@@ -172,6 +173,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_STAT,	(syscall_handler_t) sys_stat);
 	syscall_set_handler(SYS_UNLINK,	(syscall_handler_t) sys_unlink);
 	syscall_set_handler(SYS_DUP,	(syscall_handler_t) sys_dup);
+	syscall_set_handler(SYS_DUP2,	(syscall_handler_t) sys_dup2);
 	syscall_set_handler(SYS_MKNOD,	(syscall_handler_t) sys_mknod);
 	syscall_set_handler(SYS_WAITPID, (syscall_handler_t) sys_waitpid);
 

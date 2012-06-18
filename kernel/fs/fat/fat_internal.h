@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -37,8 +36,10 @@
 
 // FAT low level.
 
+/**
+ *  Boot Sector
+ */
 typedef struct _fat_BS {
-// Boot Sector
 	uint8_t   bootjmp[3];         //0x00
 	uint8_t   oem_name[8];        //0x03
 	uint16_t  bytes_per_sector;     //0x0b
@@ -55,8 +56,10 @@ typedef struct _fat_BS {
 	uint32_t  total_sectors_32;     //0x20
 } __attribute__ ((packed)) fat_BS_t; 
 
+/**
+ *  Extended BIOS Parameter Block (FAT12 / FAT16)
+ */
 typedef struct _fat_extended_BIOS_16 {
-// Extended BIOS Parameter Block (FAT12 / FAT16)
 	uint8_t   bios_drive_num;       //0x24
 	uint8_t   reserved;         //0x25
 	uint8_t   ext_boot_signature;       //0x26
@@ -67,8 +70,10 @@ typedef struct _fat_extended_BIOS_16 {
 	uint16_t  boot_sector_sign;     //0x1fe
 } __attribute__ ((packed)) fat_extended_BIOS_16_t;
 
+/**
+ *  Extended BIOS Parameter Block (FAT 32)
+ */
 typedef struct _fat_extended_BIOS_32 {
-// Extended BIOS Parameter Block (FAT32)
 	uint32_t  table_size_32;       //0x24
 	uint16_t  fat_flags;           //0x28
 	uint16_t  version;             //0x2a
@@ -86,48 +91,63 @@ typedef struct _fat_extended_BIOS_32 {
 	uint16_t  boot_sector_sign;    //0x1fe
 } __attribute__ ((packed)) fat_extended_BIOS_32_t;
 
+
+/**
+ * Représentation du temps au format FAT.
+ */
 typedef struct _fat_time {
-	unsigned int seconds2 : 5;
-	unsigned int minutes : 6;
-	unsigned int hours : 5;
+	unsigned int seconds2 : 5; /**< Nombre de secondes. */
+	unsigned int minutes : 6;  /**< Nombre de minutes. */
+	unsigned int hours : 5;    /**< Nombre d'heures. */
 } __attribute__ ((packed)) fat_time_t;
 
+/**
+ * Représentation de la date au format FAT.
+ */
 typedef struct _fat_date {
-	unsigned int day : 5;
-	unsigned int month : 4;
-	unsigned int year : 7;
+	unsigned int day : 5; /**< Jour. */
+	unsigned int month : 4; /**< Mois. */
+	unsigned int year : 7; /**< Année. */
 } __attribute__ ((packed)) fat_date_t;
 
+/**
+ * Entrée de dossier.
+ */
 typedef struct _fat_dir_entry {
-	char      utf8_short_name[8];
-	char      file_extension[3];
-	uint8_t   file_attributes;
-	uint8_t   reserved;
-	uint8_t   create_time_ms;
-	fat_time_t  create_time;
-	fat_date_t  create_date;
-	fat_date_t  last_access_date;
+	char      utf8_short_name[8]; /**< Nom court. */
+	char      file_extension[3];  /**< Extension. */
+	uint8_t   file_attributes;    /**< Attributs du fichier (write, hidden, etc.)*/
+	uint8_t   reserved;						/**< réservé. */
+	uint8_t   create_time_ms;			/**< Si existant : create time [0 - 199] x 10ms
+Sinon : premier caractère (puisqu'on le remplace). */
+	fat_time_t  create_time;		/**< Heure de création. */
+	fat_date_t  create_date;		/**< Date de création. */
+	fat_date_t  last_access_date; /**< Date dernier accès. */
 	uint16_t  ea_index;
-	fat_time_t  last_modif_time;
-	fat_date_t  last_modif_date;
-	uint16_t  cluster_pointer;
-	uint32_t  file_size;
+	fat_time_t  last_modif_time; /**< Heure de dernière modification. */
+	fat_date_t  last_modif_date; /**< Date de dernière modification. */
+	uint16_t  cluster_pointer;	/**< Cluster où se situe le fichier. */
+	uint32_t  file_size;				/**< Taille du fichier. */
 
 }__attribute__((packed)) fat_dir_entry_t;
 
+/**
+ * Entrée pour les noms de fichier long.
+ */
 typedef struct {
-	uint8_t   seq_number;
-	uint8_t   filename1[10];
-	uint8_t   attributes;
-	uint8_t   reserved; // always 0x0
-	uint8_t   checksum;
-	uint8_t   filename2[12];
-	uint16_t  cluster_pointer; // always 0x000
-	uint8_t   filename3[4];
+	uint8_t   seq_number; /**< Numéro de séquence. */
+	uint8_t   filename1[10]; /**< Partie du nom de fichier. */
+	uint8_t   attributes; /**< Attributs (Toujours 0x0F). */
+	uint8_t   reserved; /**< always 0x0. */
+	uint8_t   checksum; /**< checksum. */
+	uint8_t   filename2[12]; /**< Suite du nom de fichier. */
+	uint16_t  cluster_pointer; /**< always 0x000. */
+	uint8_t   filename3[4]; /**< Suite du nom de fichier. */
 }__attribute__((packed)) lfn_entry_t;
 
 
 // FAT higher level.
+
 typedef struct _directory_entry {
 	char name[256];
 	uint8_t attributes;
@@ -152,7 +172,9 @@ typedef enum {
 	FAT32
 } fat_t;
 
-// Structure qui contient tout ce qui est utilisé par le driver FAT.
+/**
+ *  Structure qui contient tout ce qui est utilisé par le driver FAT.
+ */
 typedef struct _fat_info {
 	fat_BS_t BS;
 	fat_extended_BIOS_16_t *ext_BIOS_16;
@@ -175,6 +197,11 @@ typedef struct _fat_fs_instance_t {
 	fat_info_t fat_info;
 } fat_fs_instance_t;
 
+/**
+ * Lecture de la FAT.
+ *
+ * @param instance Instance de FS.
+ */
 void read_fat(fat_fs_instance_t *instance);
 
 #endif

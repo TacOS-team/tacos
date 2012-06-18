@@ -25,7 +25,7 @@
  *
  * @brief Jeu snake en mode texte.
  */
- 
+
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -53,7 +53,8 @@ struct snake_t {
 
 static struct snake_t snake;
 static struct snake_t snake_ia;
-static struct coord_t directions[4] = {{-1, 0}, {0, 1}, {1, 0},  {0, -1}};
+static struct coord_t directions[4] = { {-1, 0}, {0, 1}, {1, 0}, {0, -1} };
+
 static int **grid;
 
 #define HAUT 0
@@ -63,123 +64,173 @@ static int **grid;
 
 static struct coord_t bonus;
 
-static void haut() {
+static void haut()
+{
 	if (dir_ != BAS) {
 		dir = HAUT;
 	}
 }
 
-static void bas() {
+static void bas()
+{
 	if (dir_ != HAUT) {
 		dir = BAS;
 	}
 }
 
-static void droite() {
+static void droite()
+{
 	if (dir_ != GAUCHE) {
 		dir = DROITE;
 	}
 }
 
-static void gauche() {
+static void gauche()
+{
 	if (dir_ != DROITE) {
 		dir = GAUCHE;
 	}
 }
 
-void thread_input() {
+void thread_input()
+{
 	char c;
+	int r;
 	do {
 		c = getchar();
-		switch(c) {
-			case 'z': haut(); break;
-			case 's': bas(); break;
-			case 'd': droite(); break;
-			case 'q': gauche(); break;
+		switch (c) {
+		case 'z':
+			haut();
+			break;
+		case 's':
+			bas();
+			break;
+		case 'd':
+			droite();
+			break;
+		case 'q':
+			gauche();
+			break;
+		case 27:
+			r = 1;
+			while ((c = getchar()) != -1) {
+				if (c == 27) {
+					r = 1;
+					continue;
+				}
+				r = r * 128 + c;
+			}
+			switch (r) {
+			case 28097:
+				haut();
+				break;
+			case 28098:
+				bas();
+				break;
+			case 28099:
+				droite();
+				break;
+			case 28100:
+				gauche();
+				break;
+			}
 		}
 	} while (c != EOF);
 }
 
-void clear_screen() {
+void clear_screen()
+{
 	printf("\033[2J");
 	fflush(stdout);
 }
 
-void print_locate(int l, int c, char car) {
+void print_locate(int l, int c, char car)
+{
 	int fgcolor;
 	switch (car) {
-		case '1':
-			fgcolor = 34;
-			car = '*';
-			break;
-		case '2':
-			fgcolor = 31;
-			car = '*';
-			break;
-		case '#':
-			fgcolor = 30;
-			break;
-		case ' ':
-			fgcolor = 37;
-			break;
-		case '+':
-			fgcolor = 32;
-			break;
-		default:
-			fgcolor = 30;
+	case '1':
+		fgcolor = 34;
+		car = '*';
+		break;
+	case '2':
+		fgcolor = 31;
+		car = '*';
+		break;
+	case '#':
+		fgcolor = 30;
+		break;
+	case ' ':
+		fgcolor = 37;
+		break;
+	case '+':
+		fgcolor = 32;
+		break;
+	default:
+		fgcolor = 30;
 	}
 
-	printf("\033[%d;%df\033[%dm\033[47m%c\033[%d;%df", l+1, c+1, fgcolor, car, lignes, colonnes);
+	printf("\033[%d;%df\033[%dm\033[107m%c\033[%d;%df", l + 1, c + 1,
+	       fgcolor, car, lignes, colonnes);
 	fflush(stdout);
 }
 
-static inline int collision(int l, int c) {
+static inline int collision(int l, int c)
+{
 	return grid[l][c];
 }
 
-static void genere_bonus() {
+static void genere_bonus()
+{
 	do {
-		bonus.l = (rand() % (lignes-2)) + 2;
-		bonus.c = (rand() % (colonnes-2)) + 2;
+		bonus.l = (rand() % (lignes - 2)) + 2;
+		bonus.c = (rand() % (colonnes - 2)) + 2;
 	} while (collision(bonus.l, bonus.c));
 	print_locate(bonus.l, bonus.c, '+');
 }
 
-void init_snake() {
+void init_snake()
+{
 	// player
 	dir = DROITE;
 	dir_ = DROITE;
 	snake.longueur = 1;
 	snake.indice_deb = 0;
-	snake.coords[snake.indice_deb].c = colonnes/3;
-	snake.coords[snake.indice_deb].l = lignes/2;
-	print_locate(snake.coords[snake.indice_deb].l, snake.coords[snake.indice_deb].c, '1');
+	snake.coords[snake.indice_deb].c = colonnes / 3;
+	snake.coords[snake.indice_deb].l = lignes / 2;
+	print_locate(snake.coords[snake.indice_deb].l,
+		     snake.coords[snake.indice_deb].c, '1');
 	grid[lignes / 2][colonnes / 3] = 1;
 
 	// ia
 	dir_ia = GAUCHE;
 	snake_ia.longueur = 1;
 	snake_ia.indice_deb = 0;
-	snake_ia.coords[snake_ia.indice_deb].c = 2*colonnes/3;
-	snake_ia.coords[snake_ia.indice_deb].l = lignes/2;
-	print_locate(snake_ia.coords[snake_ia.indice_deb].l, snake_ia.coords[snake_ia.indice_deb].c, '2');
+	snake_ia.coords[snake_ia.indice_deb].c = 2 * colonnes / 3;
+	snake_ia.coords[snake_ia.indice_deb].l = lignes / 2;
+	print_locate(snake_ia.coords[snake_ia.indice_deb].l,
+		     snake_ia.coords[snake_ia.indice_deb].c, '2');
 	grid[lignes / 2][2 * colonnes / 3] = 1;
 
 	genere_bonus();
 }
 
-static inline int dans_aire_jeu(int l, int c) {
+static inline int dans_aire_jeu(int l, int c)
+{
 	return l > 0 && l < lignes - 1 && c > 0 && c < colonnes - 1;
 }
 
-int avance_snake() {
+int avance_snake()
+{
 	static int allonge = 0;
 	if (snake.longueur < 4 || allonge) {
 		snake.longueur++;
 		allonge = 0;
 	} else {
-		print_locate(snake.coords[snake.indice_deb].l, snake.coords[snake.indice_deb].c, ' ');
-		grid[snake.coords[snake.indice_deb].l][snake.coords[snake.indice_deb].c] = 0;
+		print_locate(snake.coords[snake.indice_deb].l,
+			     snake.coords[snake.indice_deb].c, ' ');
+		grid[snake.coords[snake.indice_deb].l][snake.
+						       coords[snake.indice_deb].
+						       c] = 0;
 		snake.indice_deb = (snake.indice_deb + 1) % (lignes * colonnes);
 	}
 
@@ -195,8 +246,9 @@ int avance_snake() {
 		allonge = 1;
 	}
 
-	if (!dans_aire_jeu(snake.coords[i].l, snake.coords[i].c) || collision(snake.coords[i].l, snake.coords[i].c)) {
-			return -1;
+	if (!dans_aire_jeu(snake.coords[i].l, snake.coords[i].c)
+	    || collision(snake.coords[i].l, snake.coords[i].c)) {
+		return -1;
 	}
 
 	print_locate(snake.coords[i].l, snake.coords[i].c, '1');
@@ -209,16 +261,18 @@ struct noeud_t {
 	struct coord_t c;
 };
 
-struct coord_t get_direction(struct coord_t *c, int dir) {
+struct coord_t get_direction(struct coord_t *c, int dir)
+{
 	struct coord_t r;
 	r.l = c->l + directions[dir].l;
 	r.c = c->c + directions[dir].c;
 	return r;
 }
 
-int pcc(struct coord_t *orig, struct coord_t *dest) {
-	struct noeud_t* Q = malloc(lignes * colonnes * sizeof(struct noeud_t));
-	int **grid_visited = malloc(sizeof(int*) * lignes);
+int pcc(struct coord_t *orig, struct coord_t *dest)
+{
+	struct noeud_t *Q = malloc(lignes * colonnes * sizeof(struct noeud_t));
+	int **grid_visited = malloc(sizeof(int *) * lignes);
 	int l;
 	for (l = 0; l < lignes; l++) {
 		grid_visited[l] = malloc(sizeof(int) * colonnes);
@@ -272,28 +326,38 @@ int pcc(struct coord_t *orig, struct coord_t *dest) {
 	return r;
 }
 
-void decision_ia() {
+void decision_ia()
+{
 	//int n_dir = (double)rand() / (double)RAND_MAX * 4;
 
-//	if ((dir_ia + n_dir) % 2) {
-		int i = (snake_ia.indice_deb + snake_ia.longueur - 1) % (lignes * colonnes);
-		dir_ia = pcc(&snake_ia.coords[i], &bonus);
-//	}
+//      if ((dir_ia + n_dir) % 2) {
+	int i =
+	    (snake_ia.indice_deb + snake_ia.longueur - 1) % (lignes * colonnes);
+	dir_ia = pcc(&snake_ia.coords[i], &bonus);
+//      }
 }
 
-int avance_ia() {
+int avance_ia()
+{
 	static int allonge = 0;
 	if (snake_ia.longueur < 4 || allonge) {
 		snake_ia.longueur++;
 		allonge = 0;
 	} else {
-		print_locate(snake_ia.coords[snake_ia.indice_deb].l, snake_ia.coords[snake_ia.indice_deb].c, ' ');
-		grid[snake_ia.coords[snake_ia.indice_deb].l][snake_ia.coords[snake_ia.indice_deb].c] = 0;
-		snake_ia.indice_deb = (snake_ia.indice_deb + 1) % (lignes * colonnes);
+		print_locate(snake_ia.coords[snake_ia.indice_deb].l,
+			     snake_ia.coords[snake_ia.indice_deb].c, ' ');
+		grid[snake_ia.coords[snake_ia.indice_deb].l][snake_ia.
+							     coords[snake_ia.
+								    indice_deb].
+							     c] = 0;
+		snake_ia.indice_deb =
+		    (snake_ia.indice_deb + 1) % (lignes * colonnes);
 	}
 
-	int i = (snake_ia.indice_deb + snake_ia.longueur - 1) % (lignes * colonnes);
-	int i_ = (snake_ia.indice_deb + snake_ia.longueur - 2) % (lignes * colonnes);
+	int i =
+	    (snake_ia.indice_deb + snake_ia.longueur - 1) % (lignes * colonnes);
+	int i_ =
+	    (snake_ia.indice_deb + snake_ia.longueur - 2) % (lignes * colonnes);
 	snake_ia.coords[i].l = snake_ia.coords[i_].l + directions[dir_ia].l;
 	snake_ia.coords[i].c = snake_ia.coords[i_].c + directions[dir_ia].c;
 
@@ -302,8 +366,9 @@ int avance_ia() {
 		allonge = 1;
 	}
 
-	if (!dans_aire_jeu(snake_ia.coords[i].l, snake_ia.coords[i].c) || collision(snake_ia.coords[i].l, snake_ia.coords[i].c)) {
-			return -1;
+	if (!dans_aire_jeu(snake_ia.coords[i].l, snake_ia.coords[i].c)
+	    || collision(snake_ia.coords[i].l, snake_ia.coords[i].c)) {
+		return -1;
 	}
 
 	print_locate(snake_ia.coords[i].l, snake_ia.coords[i].c, '2');
@@ -313,12 +378,14 @@ int avance_ia() {
 
 static struct termios oldt;
 
-static void handler(int signum __attribute__((unused))) {
+static void handler(int signum __attribute__ ((unused)))
+{
 	tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
 	exit(0);
 }
 
-int game() {
+int game()
+{
 	int l, c;
 	struct winsize ws;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws);
@@ -326,7 +393,7 @@ int game() {
 	colonnes = ws.ws_col;
 	snake.coords = malloc(lignes * colonnes * sizeof(struct coord_t));
 	snake_ia.coords = malloc(lignes * colonnes * sizeof(struct coord_t));
-	grid = malloc(sizeof(int*) * lignes);
+	grid = malloc(sizeof(int *) * lignes);
 	for (l = 0; l < lignes; l++) {
 		grid[l] = malloc(sizeof(int) * colonnes);
 	}
@@ -342,7 +409,7 @@ int game() {
 				printf("\033[30m\033[40m#");
 				grid[l][c] = 1;
 			} else {
-				printf("\033[37m\033[47m ");
+				printf("\033[37m\033[107m ");
 				grid[l][c] = 0;
 			}
 		}
@@ -354,14 +421,15 @@ int game() {
 	setvbuf(stdin, NULL, _IO_MAGIC | _IONBF, 0);
 
 	struct termios newt;
-	tcgetattr( STDIN_FILENO, &oldt );
+	tcgetattr(STDIN_FILENO, &oldt);
 
 	signal(SIGINT, handler);
 
-	newt = oldt;
-	newt.c_lflag &= ~( ICANON | ECHO );
-	tcsetattr( STDIN_FILENO, TCSANOW, &newt );
-	fcntl(STDIN_FILENO, F_SETFL, (void*)O_NONBLOCK);
+	memcpy(&newt, &oldt, sizeof(newt));
+	
+	newt.c_lflag &= ~(ICANON | ECHO);
+	tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+	fcntl(STDIN_FILENO, F_SETFL, (void *)O_NONBLOCK);
 
 	init_snake();
 	int p = 0, ia;
@@ -379,16 +447,17 @@ int game() {
 		// Player second.
 		thread_input();
 		p = avance_snake();
-	} while(ia != -1 && p != -1);
+	} while (ia != -1 && p != -1);
 
-	tcsetattr( STDIN_FILENO, TCSANOW, &oldt );
+	tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
 
 	return p;
 }
 
-int main() {
+int main()
+{
 	srand(time(NULL));
- 
+
 	int r = game();
 
 	if (r == -1) {

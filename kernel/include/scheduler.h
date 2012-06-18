@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -84,8 +83,6 @@ void stop_scheduler();
  * Endors un processus, et crée un évenement pour le réveiller
  */
 SYSCALL_HANDLER1(sys_sleep, uint32_t delay); 
-
-SYSCALL_HANDLER0(sys_hlt);
 
 int is_schedulable(process_t* process);
 

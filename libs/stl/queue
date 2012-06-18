@@ -1,0 +1,6 @@
+#ifndef __STL_QUEUE__
+#define __STL_QUEUE__
+
+#include <stl_queue.h>
+
+#endif// __STL_QUEUE__

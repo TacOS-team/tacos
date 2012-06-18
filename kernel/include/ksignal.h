@@ -32,7 +32,6 @@
 
 #include <ksyscall.h>
 #include <signal_types.h>
-#include <signal.h>
 #include <types.h>
 #include <kprocess.h>
 

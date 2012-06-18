@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,11 +23,8 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
- */
-
-/**
- * @file stdfiles.c
+ * @brief Définition et initialisation des fichiers standards (stdin, stdout,
+ * stderr).
  */
 
 #include <sys/types.h>

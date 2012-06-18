@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,19 +23,20 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Terminal posix-like.
  */
 
 #ifndef _TTY_H_
 #define _TTY_H_
 
 #include <types.h>
-#include <termios.h>
+#include <termios_types.h>
 #include <fd_types.h>
 
-#define TIOCGWINSZ 3
+#define TIOCGWINSZ 3 /**< Request get window size. */
+#define TIOCSCTTY 4 /**< Request set ctrl terminal. */
 
-#define MAX_INPUT 255
+#define MAX_INPUT 255 /**< Taille du buffer où sont enregistrés les caractères prêt pour la lecture. */
 
 #define TTY_DRIVER_TYPE_SYSTEM 1
 #define TTY_DRIVER_TYPE_CONSOLE 2
@@ -61,8 +61,8 @@ extern struct termios tty_std_termios;
 typedef struct _tty_struct_t {
 	int index; /**< Équivalent du minor number.*/
 	void * driver_data; /**< De quoi enregistrer des données pour le driver.*/
-	struct termios termios;
-	char buffer[MAX_INPUT];
+	struct termios termios; /**< Configuration du terminal. */
+	char buffer[MAX_INPUT]; /**< Données prêtes pour la lecture. */
 	unsigned int p_begin;
 	unsigned int p_end;
 	struct _tty_driver_t *driver;
@@ -104,9 +104,28 @@ struct winsize {
 	unsigned short ws_col;
 };
 
+/**
+ * Allocation d'un driver de terminal.
+ *
+ * @param lines Nombre de terminaux géré par ce driver.
+ *
+ * @return le driver alloué.
+ */
 tty_driver_t *alloc_tty_driver(int lines);
-void put_tty_driver(tty_driver_t *driver);
+
+/**
+ * Enregistre en tant que char device un driver alloué et configuré.
+ *
+ * @param driver Le driver à enregistrer.
+ */
 int tty_register_driver(tty_driver_t *driver);
+
+/**
+ * Ajoute un caractère dans le butter du tty.
+ *
+ * @param tty le tty qui nous intéresse.
+ * @param ch le caractère à ajouter.
+ */
 void tty_insert_flip_char(tty_struct_t *tty, unsigned char ch);
 
 /**

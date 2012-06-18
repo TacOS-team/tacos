@@ -30,11 +30,14 @@
 #ifndef _CTYPE_H_
 #define _CTYPE_H_
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 /**
  * @file ctype.h
  * @brief Fonctions de classification de caractères.
  */
-
 
 /** 
  * @brief vérifie si l'on a un caractère alphanumérique.
@@ -184,5 +187,7 @@ int tolower(int c);
  * @return le caractère converti.
  */
 int toupper(int c);
+
+__END_DECLS
 
 #endif

@@ -5,6 +5,7 @@
 
 int ioctl(int d, unsigned int request, void* data)
 {
-	syscall(SYS_IOCTL, d, request, (uint32_t) data);
-	return 0;
+	int res = d;
+	syscall(SYS_IOCTL, (uint32_t) &res, request, (uint32_t) data);
+	return res;
 }

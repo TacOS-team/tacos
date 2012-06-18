@@ -5,7 +5,7 @@ SRCS=*.cpp
 
 all: libstl
 
-libstl: stl_string.o stl_stdlib.o
+libstl: stl_string.o stl_stdlib.o icxxabi.o
 	$(AR) r ../../lib/$@.a $^
 
 %.o: %.cpp

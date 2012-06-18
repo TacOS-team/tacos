@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -30,6 +29,11 @@
 #ifndef _KEYBOARD_H_
 #define _KEYBOARD_H_
 
+/**
+ * Handler d'une interruption clavier.
+ *
+ * @param id non utilisé.
+ */
 void keyboardInterrupt(int id);
 
 #endif

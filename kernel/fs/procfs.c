@@ -1,13 +1,41 @@
-#include <vfs.h>
-#include <kdirent.h>
-#include <klog.h>
-#include <kprocess.h>
-#include <kmalloc.h>
-#include <string.h>
-#include <types.h>
-#include <fs/procfs.h>
+/**
+ * @file procfs.c
+ *
+ * @author TacOS developers 
+ *
+ * @section LICENSE
+ *
+ * Copyright (C) 2010, 2011, 2012 - TacOS developers.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 3 of
+ * the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * General Public License for more details at
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * You should have received a copy of the GNU General Public License 
+ * along with this program; if not, see <http://www.gnu.org/licenses>.
+ *
+ * @section DESCRIPTION
+ *
+ * Description de ce que fait le fichier
+ */
 
-#include <stdlib.h>
+#include <fs/procfs.h>
+#include <kdirent.h>
+#include <klibc/string.h>
+#include <klog.h>
+#include <kmalloc.h>
+#include <kprocess.h>
+#include <kerrno.h>
+#include <types.h>
+#include <vfs.h>
+#include <klibc/stdlib.h>
 
 typedef struct {
 	char* filename;
@@ -84,6 +112,10 @@ open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * pat
 		ofd->current_octet_buf = 0;
 
 		ofd->readdir = procfs_readdir;
+		ofd->write = NULL;
+		ofd->read = NULL;
+		ofd->seek = NULL;
+		ofd->close = NULL;
 
 		return ofd;
 	}	else {
@@ -98,6 +130,9 @@ open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * pat
 		process = find_process(pid);
 		if(process != NULL) {
 			/* On est dans un pid valide, alors on regarde le fichier à ouvrir, et on configure l'ofd en fonction */
+			while (path[i] == '/') 
+				i++;
+
 			j=0;
 			while(path[i] != '\0' && path[i] != '/') {
 				buf[j] = path[i];
@@ -124,6 +159,7 @@ open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * pat
 						ofd->read = procfs_file_list[i].read; /*procfs_read_file; */
 						ofd->seek = NULL; /*procfs_seek_file; */
 						ofd->close = procfs_close; /*procfs_close;*/
+						ofd->readdir = NULL;
 						
 						return ofd;
 					}
@@ -141,9 +177,10 @@ open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * pat
 				
 				ofd->extra_data = process;
 				ofd->write = NULL;/* procfs_write_file;*/
-				ofd->read = procfs_file_list[i].read; /*procfs_read_file; */
 				ofd->seek = NULL; /*procfs_seek_file; */
+				ofd->read = NULL;
 				ofd->close = procfs_close; /*procfs_close;*/
+				ofd->readdir = procfs_readdir;
 				
 				return ofd;
 			}
@@ -156,7 +193,7 @@ open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * pat
 
 int procfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 	size_t count = 0;
-	int i = ofd->current_octet;
+	unsigned int i = ofd->current_octet;
 
 	if (ofd->current_cluster == 0) {
 		while (i < MAX_PROC && count < size) {
@@ -173,12 +210,14 @@ int procfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 	} else {
 		int pid = ofd->current_cluster;
 		if (find_process(pid) != NULL) {
-			struct dirent *d = (struct dirent *)(entries + count);
-			d->d_ino = 1;
-			strcpy(d->d_name, procfs_file_list[i].filename);
-			d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + strlen(d->d_name) + 1;
-			count += d->d_reclen;
-			i++;
+			while (i < sizeof(procfs_file_list)/sizeof(procfs_file_t) && count < size) {
+				struct dirent *d = (struct dirent *)(entries + count);
+				d->d_ino = 1;
+				strcpy(d->d_name, procfs_file_list[i].filename);
+				d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + strlen(d->d_name) + 1;
+				count += d->d_reclen;
+				i++;
+			}
 		}
 	}
 	ofd->current_octet = i;
@@ -220,6 +259,9 @@ int procfs_stat(fs_instance_t *instance __attribute__ ((unused)), const char *pa
 				return 0;
 			}
 			else {
+				while (path[i] == '/') 
+					i++;
+
 				j=0;
 				while(path[i] != '\0' && path[i] != '/') {
 					buf[j] = path[i];
