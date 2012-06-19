@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -37,8 +36,8 @@
 #include <string.h>
 #include <fcntl.h>
 
-#define GET_PROCESS 0
-#define GET_PROCESS_LIST 1
+#define GET_PROCESS 0 /**< Action pour obtenir les infos d'un process. */
+#define GET_PROCESS_LIST 1 /**< Action pour obtenir la liste. */
 
 extern char **environ;
 

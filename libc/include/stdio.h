@@ -243,6 +243,12 @@ FILE *fopen(const char *path, const char *mode);
 FILE *fdopen(int fd, const char *mode);
 FILE *freopen(const char *path, const char *mode, FILE *stream);
 
+/**
+ *	Cette fonction associe un buffer de taille size à un nouveau stream.
+ *	Les modes sont les même que fopen.
+ *
+ *	@return le nouveau stream.
+ */
 FILE *fmemopen(void *buf, size_t size, const char *mode);
 
 
@@ -256,6 +262,8 @@ FILE *fmemopen(void *buf, size_t size, const char *mode);
  *  automatiquement.
  * @param mode les nouveaux flags
  * @param size taille du nouveau buffer
+ *
+ * @return 0 si tout s'est bien passé.
  */
 int setvbuf(FILE *stream, char *buf, int mode, size_t size);
 
@@ -271,7 +279,7 @@ void init_stdfiles(void);
  * @param offset Le décalage.
  * @param whence Méthode : depuis le début, la fin ou en relatif.
  *
- * @param 0 si tout s'est bien passé.
+ * @return 0 si tout s'est bien passé.
  */
 int fseek(FILE *stream, long offset, int whence);
 
@@ -288,6 +296,8 @@ long ftell(FILE *stream);
  * @brief Place l'indicateur de position au début du fichier.
  *
  * @param stream Le stream considéré.
+ *
+ * @return 0 si tout s'est bien passé.
  */
 void rewind(FILE *stream);
 

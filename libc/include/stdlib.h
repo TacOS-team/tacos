@@ -37,8 +37,8 @@ __BEGIN_DECLS
 #include <sys/types.h>
 #include <malloc.h>
 
-#define EXIT_SUCCESS 0
-#define EXIT_FAILURE 1
+#define EXIT_SUCCESS 0 /**< Code retour en cas de succès. */
+#define EXIT_FAILURE 1 /**< Code retour d'erreur. */
 
 #define RAND_MAX 2147483647
 

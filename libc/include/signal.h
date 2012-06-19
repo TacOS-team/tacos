@@ -87,8 +87,8 @@ typedef void (*sighandler_t)(int);
 #define SIG_UNBLOCK	1
 #define SIG_SETMASK	2
 
-#define SIG_IGN     sig_ignore_handler
-#define SIG_DFL			0
+#define SIG_IGN     sig_ignore_handler  /**< Ignorer le signal. */
+#define SIG_DFL			0										/**< Utiliser le handler par défaut. */
 
 int kill(unsigned int pid, int sig);
 

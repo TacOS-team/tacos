@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -33,31 +32,50 @@
 #include <unistd.h>
 #include <sys/syscall.h>
 
-#define MILLISECONDS_PER_SECOND 1000
-#define SECONDS_PER_MINUTE 60
-#define MINUTES_PER_HOUR 60
-#define HOURS_PER_DAY 24
-#define MONTH_PER_YEAR 12
+#define MILLISECONDS_PER_SECOND 1000 /**< Nombre de millisecondes par secondes. */
+#define SECONDS_PER_MINUTE 60 /**< Nombre de secondes par minute. */
+#define MINUTES_PER_HOUR 60 /**< Nombre de minutes par heure. */
+#define HOURS_PER_DAY 24 /**< Nombre d'heures par jour. */
+#define MONTH_PER_YEAR 12 /**< Nombre de mois par année. */
 
+/**
+ * Nombre de millisecondes par minute.
+ */
 #define MILLISECONDS_PER_MINUTE MILLISECONDS_PER_SECOND*SECONDS_PER_MINUTE
+
+/**
+ * Nombre de millisecondes par heure.
+ */
 #define MILLISECONDS_PER_HOUR MILLISECONDS_PER_MINUTE*MINUTES_PER_HOUR
+
+/**
+ * Nombre de millisecondes par jour.
+ */
 #define MILLISECONDS_PER_DAY MILLISECONDS_PER_HOUR*HOURS_PER_DAY
 
+/**
+ * Macro qui indique si une année est bissextile.
+ */
 #define LEAPYEAR(year) (!((year) % 4) && (((year) % 100) || !((year) % 400)))
+
+/**
+ * Nombre de jours dans l'année spécifiée.
+ */
 #define YEARSIZE(year) (LEAPYEAR(year) ? 366 : 365)
 #define YEAR0 1900
 #define EPOCH_YR   1970
-#define SECS_DAY   (24L * 60L * 60L)
+#define SECS_DAY   (24L * 60L * 60L) /** Secondes dans une journée. */
 #define LONG_MAX   2147483647L
 #define TIME_MAX   0xFFFFFFFFL
 
+/**
+ * Nombre de jours par mois.
+ */
 static const int _ytab[2][12] = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 },
                            { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }};
 
 
 
-
-//TODO: Adapter quand les accès à la clock seront faisable en user space
 
 char *asctime(const struct tm *timeptr)
 {
