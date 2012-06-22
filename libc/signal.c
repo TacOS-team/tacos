@@ -167,17 +167,12 @@ void init_signals(void)
 	default_handlers[SIGUSR1] = (sighandler_t) exit;
 	default_handlers[SIGUSR2] = (sighandler_t) exit;
 	default_handlers[SIGCHLD] = sig_ignore_handler;
-	default_handlers[SIGPWR] = sig_ignore_handler;
-	default_handlers[SIGWINCH] = sig_ignore_handler;
 	default_handlers[SIGURG] = sig_ignore_handler;
-	default_handlers[SIGPOLL] = (sighandler_t) exit;
 	default_handlers[SIGSTOP] = (sighandler_t) sig_stop_handler;
 	default_handlers[SIGTSTP] = (sighandler_t) sig_stop_handler;
 	default_handlers[SIGCONT] = sig_ignore_handler;
 	default_handlers[SIGTTIN] = (sighandler_t) sig_stop_handler;
 	default_handlers[SIGTTOU] = (sighandler_t) sig_stop_handler;
-	default_handlers[SIGVTALRM] = (sighandler_t) exit;
-	default_handlers[SIGPROF] = (sighandler_t) exit;
 	default_handlers[SIGRTMIN] = (sighandler_t) exit;
 	default_handlers[SIGRTMAX] = (sighandler_t) exit;
 
