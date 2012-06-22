@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -34,6 +33,7 @@
 #include <kprocess.h>
 #include <scheduler.h>
 #include <symtable.h>
+#include <ksignal.h>
 
 #define GAME_OVER() asm("cli\n\thlt");
 
@@ -138,6 +138,7 @@ static void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t
 			GAME_OVER();
 			break;
 		case EXCEPTION_DIVIDE_ERROR:
+			sys_kill(badboy->pid, SIGFPE, NULL);
 			kprintf("Division by zero.\n");
 			break;
 		case EXCEPTION_INVALID_OPCODE:
@@ -149,6 +150,7 @@ static void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t
 			GAME_OVER();
 			break;
 		case EXCEPTION_PAGE_FAULT:
+			sys_kill(badboy->pid, SIGSEGV, NULL);
 			kprintf("Page fault (error code : %d).\n", error_code);
 			page_fault_report(error_code);
 			break;
@@ -202,12 +204,6 @@ static void kpanic_handler(uint32_t error_id, uint32_t error_code)
 	
 	stop_scheduler();	/* On arrête le déroulement des taches durant la gestion du kernel panic */
 	badboy = get_current_process();	/* On récupère le bad boy */
-	
-	
-	/* 
-	 * Si on arrive ici, c'est que ce n'étais pas si grave que ça, du coup, on règle le problème et on relance le scheduler
-	 */
-	sys_exit(0, 0, 0);
 	
 	asm("sti");			/* Et on tente de revenir au choses normales */
 	kpanic_main_report(error_id, error_code, badboy, frame);	/* Affichage des information plus ou moins utiles */

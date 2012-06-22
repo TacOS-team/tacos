@@ -134,6 +134,11 @@ void sig_ignore_handler(int signal __attribute__ ((unused)))
 	// Do nothing.
 }
 
+void core(int signal)
+{
+	exit(signal);
+}
+
 void sig_stop_handler(int signal __attribute__ ((unused)))
 {
 	sigset_t set;
@@ -148,6 +153,13 @@ void init_signals(void)
 {
 	default_handlers[SIGHUP] = (sighandler_t) exit;
 	default_handlers[SIGINT] = (sighandler_t) exit;
+	default_handlers[SIGQUIT] = core;
+	default_handlers[SIGILL] = core;
+	default_handlers[SIGTRAP] = core;
+	default_handlers[SIGABRT] = core;
+	default_handlers[SIGFPE] = core;
+	default_handlers[SIGSEGV] = core;
+	default_handlers[SIGSYS] = core;
 	default_handlers[SIGKILL] = (sighandler_t) exit;
 	default_handlers[SIGPIPE] = (sighandler_t) exit;
 	default_handlers[SIGALRM] = (sighandler_t) exit;

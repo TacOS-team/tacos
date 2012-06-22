@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -28,16 +27,21 @@
  */
 
 #include <stdio.h>
-#include <unistd.h>
-#include <sys/syscall.h>
+#include <signal.h>
+
+void handler(int signal) {
+	printf("Signal reçu : %d\n", signal);
+}
 
 int main(int argc, char** argv)
 {
 	int i = 0;
-	while(1) {
-		for(i=0; i<1000000;i++);
-		syscall(SYS_DUMMY,1,1,1);
-		i++;
-	}
+
+	//signal(SIGFPE, handler);
+
+	printf("%d\n", 5 / *(int*)i);
+	
+	printf("was here.\n");
+
 	return 0;
 }	
