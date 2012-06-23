@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Fonctions liées à l'utilisation du DMA dans le driver disquette
  */
 
 #include <types.h>
@@ -100,7 +100,7 @@ void floppy_dma_init(floppy_io io_dir)
 	
 }
 
-int floppy_cylinder(int cylinder, floppy_io io_dir)
+static int floppy_cylinder(int cylinder, floppy_io io_dir)
 {
 	uint8_t command = 0;
 	uint8_t drive = floppy_get_current_drive();

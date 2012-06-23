@@ -24,16 +24,40 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Fonctions liées à l'utilisation du DMA dans le driver disquette
  */
 
 #ifndef _FLOPPY_DMA_H_
 #define _FLOPPY_DMA_H_
 
+/**
+ * @enum floppy_io
+ * @brief Défini le sens de la communication (input / output)
+ */
 typedef enum {FLOPPY_WRITE = 1, FLOPPY_READ = 2} floppy_io;
 
+/** 
+ * @brief Initialise le dma en écriture ou en lecture selon la valeur passée en paramètre
+ * @param io_dir Sens de la communication du DMA à initialiser
+ */
 void floppy_dma_init(floppy_io io_dir);
+
+/**
+ * @brief Lis un secteur via le DMA à partir d'un adressage CHS
+ * @param cylinder Numero de cylindre
+ * @param head Numero de tête de lecture
+ * @param sector Numero de secteur
+ * @param buffer Buffer recevant les données lues
+ */
 void floppy_read_sector(int cylinder, int head, int sector, char* buffer);
+
+/**
+ * @brief Ecrit un secteur via le DMA à partir d'un adressage CHS
+ * @param cylinder Numero de cylindre
+ * @param head Numero de tête de lecture
+ * @param sector Numero de secteur
+ * @param buffer Buffer contenant les données à écrire
+ */
 void floppy_write_sector(int cylinder, int head, int sector, char* buffer);
 
 

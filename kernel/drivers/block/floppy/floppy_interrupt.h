@@ -30,9 +30,24 @@
 #ifndef _FLOPPY_INTERRUPT_H_
 #define _FLOPPY_INTERRUPT_H_
 
+/**
+ * @brief Initialise l'IRQ floppy
+ */
 void floppy_init_interrupt();
+
+/**
+ * @brief Remet à 0 le flag software d'interruption
+ */
 void floppy_reset_irq();
+
+/**
+ * @brief Attendre une interruption (XXX attente active)
+ */
 void floppy_wait_irq();
+
+/**
+ * @brief Récupère des données d'interruption
+ */
 void floppy_sense_interrupt(int* st0, int* cy1);
 
 #endif

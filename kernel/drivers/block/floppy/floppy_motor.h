@@ -30,7 +30,16 @@
 #ifndef _FLOPPY_MOTOR_H_
 #define _FLOPPY_MOTOR_H_
 
+/**
+ * @enum floppy_motor_state
+ * @brief Décrit l'état du moteur (on/off)
+ */
 typedef enum { OFF = 0, ON = 1 } floppy_motor_state ;
+
+/**
+ * @brief Change l'état du moteur
+ * @param new_state état du moteur désiré
+ */
 void floppy_motor(floppy_motor_state new_state);
 
 #endif

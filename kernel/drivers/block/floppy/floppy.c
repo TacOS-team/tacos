@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Floppy driver
  */
 
 #include <fs/devfs.h>
@@ -47,7 +47,7 @@ int floppy_close(open_file_descriptor *ofd);
 size_t floppy_read(open_file_descriptor *ofd, void* buf, size_t count, uint32_t offset);
 size_t floppy_write(open_file_descriptor *ofd, const void* buf, size_t count, uint32_t offset);
 
-blkdev_interfaces di = { 
+static blkdev_interfaces di = { 
 	.read = floppy_read,
 	.write = floppy_write,
 	.ioctl = NULL,

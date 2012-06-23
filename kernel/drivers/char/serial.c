@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Serial communication driver
  */
 
 /* TODO: Suggestions de modifications:
@@ -147,7 +147,7 @@ static void serial_putc(tty_struct_t *tty, const unsigned char c)
 	}
 }
 	
-size_t serial_write(tty_struct_t *tty, open_file_descriptor* odf __attribute__((unused)), const unsigned char* buf, size_t count)
+static size_t serial_write(tty_struct_t *tty, open_file_descriptor* odf __attribute__((unused)), const unsigned char* buf, size_t count)
 {
 	unsigned int i = 0;
 	char* ptr = (char*) buf;
@@ -261,7 +261,7 @@ static int set_baud_rate(serial_port port, unsigned int rate)
 	return real_rate;
 }
 
-/**
+/*
  * Explications sur le registre LINE_CTRL:
  * Il contrôle le protocol de transfert, c'est à dire le nombre de 
  * bits par paquet, la présence d'un bit de parité, et le nombre de
@@ -329,7 +329,7 @@ static void set_protocol(serial_port port, struct termios *term) {
 	write_register(port, LINE_CTRL, reg_value);
 }
 
-size_t serial_set_termios(struct termios* term_new, struct termios* term_old) {
+static size_t serial_set_termios(struct termios* term_new, struct termios* term_old) {
 	//XXX: trouver un moyen de préciser le port en question...
 	int port = 0;
 	unsigned int bauds = term_new->c_ispeed;

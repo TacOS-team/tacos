@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Floppy driver
  */
 
 #ifndef _FLOPPY_H_
@@ -32,9 +32,20 @@
 
 #include <types.h>
 
+/**
+ * @brief Fonction de détection des lecteur floppy présents
+ */
 void floppy_detect_drives();
+
+/** 
+ * @brief Retourne le numero de version du controleur disquette
+ * @return numero de version
+ */
 uint8_t floppy_get_version();
 
+/**
+ * @brief Initilise le driver floppy
+ */
 int init_floppy();
 
 

@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Fonctions utilitaires du driver floppy
  */
 
 #ifndef _FLOPPY_UTILS_H_
@@ -32,6 +32,10 @@
 
 #define FLOPPY_BASE	0x03f0
 
+/**
+ * @enum floppy_registers
+ * @brief Offset des différents registres du controleur disquette
+ */
 enum floppy_registers
 {
 	FLOPPY_SRA = 0, // Status register A		-- read-only
@@ -45,6 +49,10 @@ enum floppy_registers
 	FLOPPY_CCR = 7  // Configuration control register -- write-only
 };
 
+/**
+ * @enum floppy_commands
+ * @brief Numéros de commande du controleur disquette
+ */
 enum floppy_commands
 {
 	READ_TRACK =			2,
@@ -68,22 +76,65 @@ enum floppy_commands
 	SCAN_HIGH_OR_EQUAL =	29
 };
 
-
+/**
+ * @brief Vérifie si le controleur floppy est en état ready
+ * @return TRUE si le controleur est ready, FALSE sinon
+ */
 bool floppy_ready();
+
+/**
+ * @brief Envoi une commande au controleur floppy
+ * @param cmd commande à envoyer
+ * @return 0 si la commande a bien été transmise, -1 sinon
+ */
 int floppy_write_command(char cmd);
+
+/**
+ * @brief Lis les données disponibles sur la FIFO du controleur
+ * @return 0 si la commande a bien été transmise, -1 sinon
+ */
 uint8_t floppy_read_data();
 
-// Drive selection
+/**
+ * @brief Retourne le numero tu lecteur courrant
+ * @return numero du lecteur courrant
+ */
 uint8_t floppy_get_current_drive();
+
+/**
+ * @brief Défini le lecteur courrant
+ * @param drive numero du lecteur à passer en lecteur courrant
+ */
 void floppy_set_current_drive(uint8_t drive);
 
+/**
+ * @brief Déplace la tête de lecture à un cylindre défini
+ * @param cylindre numero du cylindre à atteindre
+ * @param head numero de la tête a déplacer
+ * @return 0 en cas de succes, -1 sinon
+ */
 int floppy_seek(int cylindre, int head);
 
 /*	
  * MISC  
  */
+
+/**
+ * @brief Retourne le type de disquette accepté par le lecteur
+ * @param drive numero du lecteur
+ * @return numero indiquant le type de disquette
+ */
 uint8_t floppy_get_type(int drive);
+
+/**
+ * @brief Fonction de détection des lecteur floppy présents
+ */
 void floppy_detect_drives();
+
+/** 
+ * @brief Retourne le numero de version du controleur disquette
+ * @return numero de version
+ */
 uint8_t floppy_get_version();
 
 #endif

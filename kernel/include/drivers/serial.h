@@ -24,18 +24,28 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Serial communication driver
  */
 
 #ifndef _SERIAL_H
 #define _SERIAL_H
 
+/**
+ * @enum serial_port
+ * @brief Ports de communication
+ */
 typedef enum {
 	COM1, COM2, COM3, COM4
 }serial_port;
 
+/**
+ * @brief Handler d'interruption du driver série
+ */
 void serial_isr(int id);
 
+/**
+ * @brief Fonction d'initialisation du driver série
+ */
 int serial_init();
 
 #endif /* _SERIAL_H_ */
