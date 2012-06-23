@@ -235,6 +235,13 @@ typedef struct _ext2_extra_data {
 
 
 /**
+ * @brief Unmount d'un point de montage.
+ *
+ * @param instance L'instance de fs que l'on veut démonter.
+ */
+void umount_EXT2(fs_instance_t *instance);
+
+/**
  * @brief Ouverture de fichier.
  *
  * @param instance Instance de fs.

@@ -45,11 +45,4 @@ void ext2_init();
  */
 fs_instance_t* mount_EXT2(open_file_descriptor* ofd);
 
-/**
- * @brief Unmount d'un point de montage.
- *
- * @param instance L'instance de fs que l'on veut démonter.
- */
-void umount_EXT2(fs_instance_t *instance);
-
 #endif

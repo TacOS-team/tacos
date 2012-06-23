@@ -39,8 +39,8 @@
 
 typedef struct {
 	char* filename;
-	size_t (*read)(open_file_descriptor *,void*, size_t);
-}procfs_file_t;
+	size_t (*read)(open_file_descriptor *, void*, size_t);
+} procfs_file_t;
 
 #ifndef EOF
 # define EOF (-1)
@@ -89,6 +89,42 @@ procfs_file_t procfs_file_list[] = {{"cmd_line", procfs_read_name},
 int procfs_close(open_file_descriptor *ofd) {
 	return kfree(ofd);
 }
+
+static int procfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
+	size_t count = 0;
+	unsigned int i = ofd->current_octet;
+
+	if (ofd->current_cluster == 0) {
+		while (i < MAX_PROC && count < size) {
+			if (get_process_array(i) != NULL) {
+				struct dirent *d = (struct dirent *)(entries + count);
+				d->d_ino = 1;
+				itoa (d->d_name, 10, get_process_array(i)->pid);
+				d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + strlen(d->d_name) + 1;
+				//d.d_type = dir_entry->attributes;
+				count += d->d_reclen;
+			}
+			i++;
+		}
+	} else {
+		int pid = ofd->current_cluster;
+		if (find_process(pid) != NULL) {
+			while (i < sizeof(procfs_file_list)/sizeof(procfs_file_t) && count < size) {
+				struct dirent *d = (struct dirent *)(entries + count);
+				d->d_ino = 1;
+				strcpy(d->d_name, procfs_file_list[i].filename);
+				d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + strlen(d->d_name) + 1;
+				count += d->d_reclen;
+				i++;
+			}
+		}
+	}
+	ofd->current_octet = i;
+
+	return count;
+}
+
+
 
 open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * path, uint32_t flags __attribute__((unused))) {
 	unsigned int i,j;
@@ -191,41 +227,7 @@ open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * pat
 	}
 }
 
-int procfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
-	size_t count = 0;
-	unsigned int i = ofd->current_octet;
-
-	if (ofd->current_cluster == 0) {
-		while (i < MAX_PROC && count < size) {
-			if (get_process_array(i) != NULL) {
-				struct dirent *d = (struct dirent *)(entries + count);
-				d->d_ino = 1;
-				itoa (d->d_name, 10, get_process_array(i)->pid);
-				d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + strlen(d->d_name) + 1;
-				//d.d_type = dir_entry->attributes;
-				count += d->d_reclen;
-			}
-			i++;
-		}
-	} else {
-		int pid = ofd->current_cluster;
-		if (find_process(pid) != NULL) {
-			while (i < sizeof(procfs_file_list)/sizeof(procfs_file_t) && count < size) {
-				struct dirent *d = (struct dirent *)(entries + count);
-				d->d_ino = 1;
-				strcpy(d->d_name, procfs_file_list[i].filename);
-				d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + strlen(d->d_name) + 1;
-				count += d->d_reclen;
-				i++;
-			}
-		}
-	}
-	ofd->current_octet = i;
-
-	return count;
-}
-
-int procfs_stat(fs_instance_t *instance __attribute__ ((unused)), const char *path, struct stat *stbuf) {
+static int procfs_stat(fs_instance_t *instance __attribute__ ((unused)), const char *path, struct stat *stbuf) {
 	unsigned int i,j;
 	int pid;
 	char buf[64];
