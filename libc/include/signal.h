@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Gestion des signaux.
  */
 
 #ifndef _SIGNAL_H
@@ -36,11 +35,11 @@ __BEGIN_DECLS
 
 #include <sys/types.h>	
 
-#define NSIG		32
+#define NSIG		32 /**< Nombre de signaux. */
 #ifndef SIGTYPES
 #define SIGTYPES
 typedef unsigned long sigset_t;
-typedef void (*sighandler_t)(int);
+typedef void (*sighandler_t)(int); /**< Type pour un handler de signal. */
 #endif
 
 /* Définition des signaux */
@@ -79,8 +78,37 @@ typedef void (*sighandler_t)(int);
 #define SIG_IGN     sig_ignore_handler  /**< Ignorer le signal. */
 #define SIG_DFL			0										/**< Utiliser le handler par défaut. */
 
+/**
+ * Mise en place des handlers par défaut.
+ */
+void init_signals(void);
+
+/**
+ * Envoyer un signal à un processus.
+ *
+ * @param pid l'identifiant du processus.
+ * @param sig le signal à envoyer.
+ *
+ * @return 0 en cas de succès.
+ */
 int kill(unsigned int pid, int sig);
 
+/**
+ * Envoyer un signal à l'appelant.
+ *
+ * @param sig le signal à envoyer.
+ *
+ * @return 0 en cas de succès.
+ */
+int raise(int sig);
+
+/**
+ * Met en place un handler pour un signal.
+ *
+ * @param sig le signal à catcher.
+ * @param func fonction handler à utiliser.
+ *
+ */
 sighandler_t signal(int sig, sighandler_t func);
 
 int sigsuspend(const sigset_t *sigmask);
@@ -96,8 +124,6 @@ int sigaddset(sigset_t *set, int signum);
 int sigdelset(sigset_t *set, int signum);
 
 int sigismember(const sigset_t *set, int signum);
-
-void init_signals(void);
 
 void sig_ignore_handler(int signal);
 

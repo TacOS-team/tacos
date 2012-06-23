@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Gestion des signaux.
  */
 
 #include <signal.h>
@@ -43,6 +43,10 @@ int kill(unsigned int pid, int sig)
 	return ret;
 }
 
+int raise(int sig)
+{
+	return kill(getpid(), sig);
+}
 
 sighandler_t signal(int sig, sighandler_t func)
 {
