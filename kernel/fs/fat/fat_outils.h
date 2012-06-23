@@ -98,15 +98,30 @@ void fat_decode_short_file_name(char *filename, fat_dir_entry_t *fdir);
 
 /**
  * Décode une entrée de type long file name.
+ *
+ * @param fdir Tableau contenant des entrées de type lfn. 
+ *
+ * @return les informations du dossier sous la forme d'un directory_entry_t.
  */
 directory_entry_t * fat_decode_lfn_entry(lfn_entry_t* fdir);
 
 /**
  * Décode une entrée de type short file name.
+ *
+ * @param fdir Pointeur sur une entrée de dossier.
+ *
+ * @return les informations du dossier sous la forme d'un directory_entry_t.
  */
 directory_entry_t * fat_decode_sfn_entry(fat_dir_entry_t *fdir);
 
-
+/**
+ * Découpe un chemin en deux parties (dossier séparé du filename).
+ *
+ * @param path Chemin à découper.
+ * @param dir Première partie qui va jusqu'au dernier slash du path.
+ * @param filename Dernière partie (après le dernier slash).
+ *
+ */
 void fat_split_dir_filename(const char * path, char * dir, char * filename);
 
 #endif

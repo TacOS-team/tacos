@@ -41,19 +41,19 @@
  */
 typedef struct _fat_BS {
 	uint8_t   bootjmp[3];         //0x00
-	uint8_t   oem_name[8];        //0x03
-	uint16_t  bytes_per_sector;     //0x0b
-	uint8_t   sectors_per_cluster;    //0x0d
-	uint16_t  reserved_sector_count;    //0x0e
-	uint8_t   table_count;        //0x10
-	uint16_t  root_entry_count;     //0x11
-	uint16_t  total_sectors_16;     //0x13
-	uint8_t   media_type;         //0x15
-	uint16_t  table_size_16;        //0x16
-	uint16_t  sectors_per_track;      //0x18
-	uint16_t  head_side_count;      //0x1a
-	uint32_t  hidden_sector_count;    //0x1c
-	uint32_t  total_sectors_32;     //0x20
+	uint8_t   oem_name[8]; /**< Nom de l'OS qui a formaté le volume. */ //0x03
+	uint16_t  bytes_per_sector; /**< Nombre d'octets par secteur. */    //0x0b
+	uint8_t   sectors_per_cluster; /**< Nombre de secteurs par cluster. */  //0x0d
+	uint16_t  reserved_sector_count; /**< Nombre de secteurs réservés. */   //0x0e
+	uint8_t   table_count; /**< Nombre de FATs. */  //0x10
+	uint16_t  root_entry_count; /**< Nombre d'entrées dans le dossier racine. */ //0x11
+	uint16_t  total_sectors_16; /**< Nombre de secteurs, si 0 alors utilise total_sectors_32. */     //0x13
+	uint8_t   media_type; /**< Type de disque. */        //0x15
+	uint16_t  table_size_16; /**< Nombre de secteurs pour une FAT (FAT 12 et 16 uniquement). */        //0x16
+	uint16_t  sectors_per_track; /**< Secteurs par piste. */      //0x18
+	uint16_t  head_side_count; /**< Nombre de secteurs par tête. */     //0x1a
+	uint32_t  hidden_sector_count; /**< Le nombre de secteurs entre le début et la table de partition. */    //0x1c
+	uint32_t  total_sectors_32; /**< Nombre de secteurs (si > 2^16) */    //0x20
 } __attribute__ ((packed)) fat_BS_t; 
 
 /**
@@ -61,11 +61,11 @@ typedef struct _fat_BS {
  */
 typedef struct _fat_extended_BIOS_16 {
 	uint8_t   bios_drive_num;       //0x24
-	uint8_t   reserved;         //0x25
-	uint8_t   ext_boot_signature;       //0x26
-	uint32_t  volume_id;          //0x27
-	uint8_t   volume_label[11];     //0x2b
-	uint8_t   fat_type_label[8];      //0x36
+	uint8_t   reserved; /**< Reserved */        //0x25
+	uint8_t   ext_boot_signature; /**< Ext Boot record signature = 29h */       //0x26
+	uint32_t  volume_id; /**< Identifiant du volume (serial). */         //0x27
+	uint8_t   volume_label[11]; /**< Nom du volume. */     //0x2b
+	uint8_t   fat_type_label[8]; /**< Nom du FS (FAT12, FAT16 ou FAT32). */  //0x36
 	uint8_t   os_boot_code[448];      //0x3e
 	uint16_t  boot_sector_sign;     //0x1fe
 } __attribute__ ((packed)) fat_extended_BIOS_16_t;
