@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,12 +23,15 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Driver pour utiliser le beeper.
  */
 
 #ifndef _BEEPER_H_
 #define _BEEPER_H_
 
+/**
+ * @brief Initialisation du driver.
+ */
 void beeper_init();
 
 #endif //_BEEPER_H_
