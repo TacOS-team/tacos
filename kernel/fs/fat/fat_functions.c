@@ -23,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Fonctions pour le driver FAT.
  */
 
 #include <fs/fat.h>

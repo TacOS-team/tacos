@@ -148,24 +148,33 @@ typedef struct {
 
 // FAT higher level.
 
+/**
+ * Liste chaînée pour stocker les entrées d'un dossier.
+ */
 typedef struct _directory_entry {
-	char name[256];
-	uint8_t attributes;
-	uint32_t size;
-	time_t access_time;
-	time_t modification_time;
-	time_t creation_time;
-	uint32_t cluster;
-	struct _directory_entry *next;
+	char name[256]; /**< Nom de l'entrée. */
+	uint8_t attributes; /**< Attributs du fichier/dossier. */
+	uint32_t size; /**< Taille. */
+	time_t access_time; /**< Date du dernier accès. */
+	time_t modification_time; /**< Date de la dernière modification. */
+	time_t creation_time; /**< Date de création. */
+	uint32_t cluster; /**< Cluster où est le fichier/dossier. */
+	struct _directory_entry *next; /**< Pointeur vers la prochaine entrée du dossier ou NULL. */
 } directory_entry_t;
 
+/**
+ * Structure de haut niveau pour stocker les informations d'un dossier.
+ */
 typedef struct _directory {
-	directory_entry_t *entries; 
-	int total_entries;
-	char name[256];
-	uint32_t cluster;
+	directory_entry_t *entries; /**< Liste des entrées dans ce dossier. */
+	int total_entries; /**< Nombre d'entrées dans le dossier. */
+	char name[256]; /**< Nom du dossier. */
+	uint32_t cluster; /**< Cluster où est enregistré le dossier. */
 } directory_t;
 
+/**
+ * Types de FAT.
+ */
 typedef enum {
 	FAT12,
 	FAT16,
@@ -176,25 +185,27 @@ typedef enum {
  *  Structure qui contient tout ce qui est utilisé par le driver FAT.
  */
 typedef struct _fat_info {
-	fat_BS_t BS;
-	fat_extended_BIOS_16_t *ext_BIOS_16;
-	fat_extended_BIOS_32_t *ext_BIOS_32;
-	unsigned int *addr_fat;
-	unsigned int addr_root_dir;
-	unsigned int addr_data;
-	unsigned int *file_alloc_table;
-	unsigned int total_data_clusters;
-	unsigned int table_size;
-	fat_t fat_type;
-	unsigned int bytes_per_cluster;
-	blkdev_read_t read_data;
-	blkdev_write_t write_data;
+	fat_BS_t BS; /**< Secteur de Boot. */
+	fat_extended_BIOS_16_t *ext_BIOS_16; /**< Infos supplémentaires pour FAT16. */
+	fat_extended_BIOS_32_t *ext_BIOS_32; /**< Infos supplémentaires pour FAT32. */
+	unsigned int *addr_fat; /**< Adresses des FAT. */
+	unsigned int addr_root_dir; /**< Adresse du dossier racine (attention spécificité FAT32). */
+	unsigned int addr_data; /**< Adresse des premiers clusters de données. */
+	unsigned int *file_alloc_table; /**< FAT en mémoire. */
+	unsigned int total_data_clusters; /**< Nombre de clusters de données. */
+	unsigned int table_size; /**< Taille de la FAT. */
+	fat_t fat_type; /**< Type de FAT (12, 16 ou 32) */
+	unsigned int bytes_per_cluster; /**< Nombre d'octets dans un cluster. */
+	blkdev_read_t read_data; /**< Fonction pour lire une donnée. */
+	blkdev_write_t write_data; /**< Fonction pour écriture une donnée. */
 } fat_info_t;
 
-
+/**
+ * Instance de FS de type FAT.
+ */
 typedef struct _fat_fs_instance_t {
-	fs_instance_t super;
-	fat_info_t fat_info;
+	fs_instance_t super; /**< Classe parente (fs_instance_t). */
+	fat_info_t fat_info; /**< Informations sur le volume monté. */
 } fat_fs_instance_t;
 
 /**
