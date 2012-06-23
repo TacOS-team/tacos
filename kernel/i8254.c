@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -31,11 +30,11 @@
 #include <ioports.h>
 
 // IO port
-#define COUNTER_0 0x40 // Clock
-#define COUNTER_1 0x41 // RAM Refresh Counter (usually in mode 2)
-#define COUNTER_2 0x42 // Speaker function
+#define COUNTER_0 0x40 /**< Clock */
+#define COUNTER_1 0x41 /**< RAM Refresh Counter (usually in mode 2) */
+#define COUNTER_2 0x42 /**< Speaker function */
 
-#define CONTROL_REG  0x43 // Mode control register
+#define CONTROL_REG  0x43 /**< Mode control register */
 
 // Control Word Register [SC1 SC0 RW1 RW0 M2 M1 M0 BCD]
 // SC - Counter selection
@@ -49,7 +48,7 @@
 #define RW_LOW  0x1
 #define RW_HIGH 0x2
 #define RW_ALL  0x3
-#define MODE_0 0x0 // count down and interrupt on 0
+#define MODE_0 0x0 /**< count down and interrupt on 0 */
 #define MODE_1 0x1 
 #define MODE_2 0x2
 #define MODE_3 0x3
