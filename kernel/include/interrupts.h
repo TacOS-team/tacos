@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,42 +23,38 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Gestion des interruptions..
  */
 
 #ifndef _INTERRUPTS_H_
 #define _INTERRUPTS_H_
 
 /**
- * @file interrupts.h
- * @brief Gestion des interruptions..
- */
-
-/**
  * Définition des IRQ :
  */
-#define IRQ_TIMER           0
-#define IRQ_KEYBOARD        1
+#define IRQ_TIMER           0 /**< Interruption timer. */
+#define IRQ_KEYBOARD        1 /**< Interruption clavier. */
 #define IRQ_SLAVE_PIC       2
-#define IRQ_COM2            3
-#define IRQ_COM1            4
-#define IRQ_RESERVED_1      5 // sound card
-#define IRQ_FLOPPY          6
-#define IRQ_LPT1            7
-#define IRQ_8_REAL_TIME_CLK 8
+#define IRQ_COM2            3 /**< Interruption liaison serie 2. */
+#define IRQ_COM1            4 /**< Interruption liaison serie 1. */
+#define IRQ_RESERVED_1      5 /**< Interruption carte son. */
+#define IRQ_FLOPPY          6 /**< Interruption disquette. */
+#define IRQ_LPT1            7 /**< Interruption port //. */
+#define IRQ_8_REAL_TIME_CLK 8 /**< Interruption clock. */
 #define IRQ_REDIRECT_IRQ2   9
 #define IRQ_RESERVED_2      10
 #define IRQ_RESERVED_3      11
-#define IRQ_PS2_MOUSE       12
+#define IRQ_PS2_MOUSE       12 /**< Interruption souris. */
 #define IRQ_COPROCESSOR     13
 #define IRQ_HARDDISK        14
 #define IRQ_RESERVED_4      15
-#define IRQ_SYSCALL			16
+#define IRQ_SYSCALL         16 /**< Interruption pour syscall. */
 
 #include <types.h>
 
-
-/* Structement représentant comment les registres sont empilés lors d'une interruption */
+/**
+ *  Structure représentant comment les registres sont empilés lors d'une interruption
+ */
 typedef struct {
 	uint32_t interrupt_id;
 	
@@ -87,7 +82,7 @@ typedef struct {
 	uint16_t ss;
 	uint16_t __ss_unused;
 	
-}intframe;
+} intframe;
 
 typedef void (*interrupt_handler_t)(int interrupt_id);
 

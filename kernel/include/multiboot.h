@@ -5,7 +5,7 @@
  *
  * @section LICENSE
  *
- * Copyright (C) 2010, 2011, 2012 - TacOS developers.
+ * Copyright (C) 1999,2003,2007,2008,2009  Free Software Foundation, Inc.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -23,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Multiboot header file. 
  */
      
 #ifndef MULTIBOOT_HEADER
@@ -155,17 +155,23 @@ struct multiboot_header
 
 	multiboot_uint32_t flags; /**< Feature flags. */
 
-	/* The above fields plus this one must equal 0 mod 2^32. */
+	/**
+	 *  The above fields plus this one must equal 0 mod 2^32.
+	 */
 	multiboot_uint32_t checksum;
 
-	/* These are only valid if MULTIBOOT_AOUT_KLUDGE is set. */
+	/**
+	 * These are only valid if MULTIBOOT_AOUT_KLUDGE is set.
+	 */
 	multiboot_uint32_t header_addr;
 	multiboot_uint32_t load_addr;
 	multiboot_uint32_t load_end_addr;
 	multiboot_uint32_t bss_end_addr;
 	multiboot_uint32_t entry_addr;
 
-	/* These are only valid if MULTIBOOT_VIDEO_MODE is set. */
+	/**
+	 * These are only valid if MULTIBOOT_VIDEO_MODE is set.
+	 */
 	multiboot_uint32_t mode_type;
 	multiboot_uint32_t width;
 	multiboot_uint32_t height;
@@ -198,20 +204,19 @@ typedef struct multiboot_elf_section_header_table multiboot_elf_section_header_t
 
 struct multiboot_info
 {
-	/* Multiboot info version number */
-	multiboot_uint32_t flags;
+	multiboot_uint32_t flags; /**< Multiboot info version number */
 
 	/* Available memory from BIOS */
 	multiboot_uint32_t mem_lower;
 	multiboot_uint32_t mem_upper;
 
-	/* "root" partition */
-	multiboot_uint32_t boot_device;
+	multiboot_uint32_t boot_device; /**< "root" partition */
 
-	/* Kernel command line */
-	multiboot_uint32_t cmdline;
+	multiboot_uint32_t cmdline; /**< Kernel command line */
 
-	/* Boot-Module list */
+	/**
+	 *  Boot-Module list
+	 */
 	multiboot_uint32_t mods_count;
 	multiboot_uint32_t mods_addr;
 
@@ -221,24 +226,27 @@ struct multiboot_info
 		 multiboot_elf_section_header_table_t elf_sec;
 	} syms;
 
-	/* Memory Mapping buffer */
+	/**
+	 *  Memory Mapping buffer
+	 */
 	multiboot_uint32_t mmap_length;
 	multiboot_uint32_t mmap_addr;
 
-	/* Drive Info buffer */
+	/**
+	 *  Drive Info buffer 
+	 */
 	multiboot_uint32_t drives_length;
 	multiboot_uint32_t drives_addr;
 
-	/* ROM configuration table */
-	multiboot_uint32_t config_table;
+	multiboot_uint32_t config_table; /**< ROM configuration table */
 
-	/* Boot Loader Name */
-	multiboot_uint32_t boot_loader_name;
+	multiboot_uint32_t boot_loader_name; /**< Boot Loader Name */
 
-	/* APM table */
-	multiboot_uint32_t apm_table;
+	multiboot_uint32_t apm_table; /**< APM table */
 
-	/* Video */
+	/**
+	 *  Video 
+	 */
 	multiboot_uint32_t vbe_control_info;
 	multiboot_uint32_t vbe_mode_info;
 	multiboot_uint16_t vbe_mode;
@@ -261,15 +269,13 @@ typedef struct multiboot_mmap_entry multiboot_memory_map_t;
 
 struct multiboot_mod_list
 {
-/* the memory used goes from bytes 'mod_start' to 'mod_end-1' inclusive */
-multiboot_uint32_t mod_start;
-multiboot_uint32_t mod_end;
+	/* the memory used goes from bytes 'mod_start' to 'mod_end-1' inclusive */
+	multiboot_uint32_t mod_start;
+	multiboot_uint32_t mod_end;
 
-/* Module command line */
-multiboot_uint32_t cmdline;
+	multiboot_uint32_t cmdline; /**< Module command line */
 
-/* padding to take it to 16 bytes (must be zero) */
-multiboot_uint32_t pad;
+	multiboot_uint32_t pad; /**< padding to take it to 16 bytes (must be zero) */
 };
 typedef struct multiboot_mod_list multiboot_module_t;
 
