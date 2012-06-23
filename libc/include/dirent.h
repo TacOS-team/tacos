@@ -42,24 +42,24 @@ __BEGIN_DECLS
  * Structure permettant de lire un dossier.
  */
 typedef struct _DIR {
-	int			fd;
-	size_t	allocation;
-	size_t	size;
-	size_t	offset;
+	int			fd; /**< File descriptor. */
+	size_t	allocation; /**< Espace réservé au block. */
+	size_t	size; /**< Données dans le block. */
+	size_t	offset; /**< Position dans le block. */
 
-	off_t		filepos;
+	off_t		filepos; /**< Offset dans le dossier. */
 
-	char		data[1];
+	char		data[1]; /**< Block qui est en fait plus grand que ça. */
 } DIR;
 
 /**
  * Directory entry.
  */
 struct dirent {
-	uint32_t  d_ino;
-	uint16_t  d_reclen;
-	uint8_t   d_type;
-	char      d_name[NAME_MAX];
+	uint32_t  d_ino; /**< Numéro inode. */
+	uint16_t  d_reclen; /**< Taille de l'entrée. */
+	uint8_t   d_type; /**< Type de fichier. */
+	char      d_name[NAME_MAX]; /**< Nom du fichier. */
 };
 
 /**

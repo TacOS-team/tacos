@@ -91,6 +91,12 @@ int fat_mkdir(fs_instance_t *instance, const char * path, mode_t mode);
 
 /**
  * Informations sur un fichier.
+ *
+ * @param instance Instance de fs.
+ * @param path Chemin du fichier.
+ * @param stbuf Structure pour enregistrer les informations.
+ *
+ * @return 0 en cas de succès.
  */
 int fat_stat(fs_instance_t *instance, const char *path, struct stat *stbuf);
 
@@ -109,7 +115,7 @@ int fat_unlink(fs_instance_t *instance, const char * path);
  *
  * @param ofd Descripteur du fichier ouvert.
  * @param buf Buffer où stocker les octets lus.
- * @param size Nombre d'octets à lire.
+ * @param count Nombre d'octets à lire.
  *
  * @return nombre d'octets réellement lus.
  */
@@ -117,11 +123,23 @@ size_t fat_read_file (open_file_descriptor * ofd, void * buf, size_t count);
 
 /**
  * Écriture de fichier.
+ *
+ * @param ofd Descripteur de fichier ouvert.
+ * @param buf Données à écrire.
+ * @param nb_octet Nombre d'octets à écrire.
+ *
+ * @return Nombre d'octets écrits.
  */
 size_t fat_write_file (open_file_descriptor * ofd, const void * buf, size_t nb_octet);
 
 /**
  * Déplacement dans un fichier.
+ *
+ * @param ofd Descripteur de fichier ouvert.
+ * @param offset Décalage
+ * @param whence depuis le debut, la fin ou en relatif.
+ *
+ * @return 0 en cas de succès, -1 sinon.
  */
 int fat_seek_file (open_file_descriptor * ofd, long offset, int whence);
 

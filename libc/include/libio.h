@@ -35,10 +35,10 @@ __BEGIN_DECLS
 
 #include <sys/types.h>
 
-#define _IO_MAGIC 0xFBAD0000 /* Magic number (je le garde par compatibilité) */
-#define _IO_MAGIC_MASK 0xFFFF0000 /* Pour filtrer le magic number */
-#define _IO_UNBUFFERED 2 
-#define _IO_LINE_BUF 0x200
+#define _IO_MAGIC 0xFBAD0000 /**< Magic number (je le garde par compatibilité) */
+#define _IO_MAGIC_MASK 0xFFFF0000 /**< Pour filtrer le magic number */
+#define _IO_UNBUFFERED 2  /**< Pas de buffer. */
+#define _IO_LINE_BUF 0x200 /**< Buffer flushé par une nouvelle ligne. */
 #define _IO_EOF_SEEN 0x10
 #define _IO_ERR_SEEN 0x20
 // TODO : définir d'autres flags (cf libc)
@@ -72,9 +72,9 @@ struct _IO_FILE {
 
 typedef struct _IO_FILE FILE;
 
-extern FILE *stdin;
-extern FILE *stdout;
-extern FILE *stderr;
+extern FILE *stdin; /**< Entrée standard. */
+extern FILE *stdout; /**< Sortie standard. */
+extern FILE *stderr; /**< Sortie d'erreur. */
 
 __END_DECLS
 

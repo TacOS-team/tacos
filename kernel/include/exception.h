@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -32,25 +31,25 @@
 
 /* Define des différentes exceptions possibles : */
 
-#define EXCEPTION_DIVIDE_ERROR                  0
-#define EXCEPTION_DEBUG                         1
-#define EXCEPTION_NMI_INTERRUPT                 2
-#define EXCEPTION_BREAKPOINT                    3
-#define EXCEPTION_OVERFLOW                      4
-#define EXCEPTION_BOUND_RANGE_EXCEDEED          5
-#define EXCEPTION_INVALID_OPCODE                6
-#define EXCEPTION_DEVICE_NOT_AVAILABLE          7
-#define EXCEPTION_DOUBLE_FAULT                  8
-#define EXCEPTION_COPROCESSOR_SEGMENT_OVERRUN   9
-#define EXCEPTION_INVALID_TSS                  10
-#define EXCEPTION_SEGMENT_NOT_PRESENT          11
-#define EXCEPTION_STACK_SEGMENT_FAULT          12
-#define EXCEPTION_GENERAL_PROTECTION           13
-#define EXCEPTION_PAGE_FAULT                   14
+#define EXCEPTION_DIVIDE_ERROR                  0 /**< Division par zero. */
+#define EXCEPTION_DEBUG                         1 /**< Debug exception. */
+#define EXCEPTION_NMI_INTERRUPT                 2 /**< Interruption non masquable. */
+#define EXCEPTION_BREAKPOINT                    3 /**< Point d'arrêt. */
+#define EXCEPTION_OVERFLOW                      4 /**< Overflow. */
+#define EXCEPTION_BOUND_RANGE_EXCEDEED          5 /**< Levé par l'instruction bound. */
+#define EXCEPTION_INVALID_OPCODE                6 /**< Opcode invalide. */
+#define EXCEPTION_DEVICE_NOT_AVAILABLE          7 /**< FPU instruction sans FPU. */
+#define EXCEPTION_DOUBLE_FAULT                  8 /**< Double faute. */
+#define EXCEPTION_COPROCESSOR_SEGMENT_OVERRUN   9 /**< Coprocessor Segment Overrun. */
+#define EXCEPTION_INVALID_TSS                  10 /**< Invalid segment selector. */
+#define EXCEPTION_SEGMENT_NOT_PRESENT          11 /**< Segment non présent (bit present à 0). */
+#define EXCEPTION_STACK_SEGMENT_FAULT          12 /**< Stack segment fault. */
+#define EXCEPTION_GENERAL_PROTECTION           13 /**< General Protection Fault. (segment, droits, etc) */
+#define EXCEPTION_PAGE_FAULT                   14 /**< Page fault. */
 #define EXCEPTION_INTEL_RESERVED_1             15
-#define EXCEPTION_FLOATING_POINT_ERROR         16
-#define EXCEPTION_ALIGNEMENT_CHECK             17
-#define EXCEPTION_MACHINE_CHECK                18
+#define EXCEPTION_FLOATING_POINT_ERROR         16 /**< Floating point error. */
+#define EXCEPTION_ALIGNEMENT_CHECK             17 /**< Défaut d'alignement. */
+#define EXCEPTION_MACHINE_CHECK                18 /**< Détection d'erreur interne. */
 #define EXCEPTION_INTEL_RESERVED_2             19
 #define EXCEPTION_INTEL_RESERVED_3             20
 #define EXCEPTION_INTEL_RESERVED_4             21
@@ -71,6 +70,9 @@
 
 typedef void (*exception_handler_t)(uint32_t error_id, uint32_t error_code);
 
+/**
+ * Définit le handler associé à une exception.
+ */
 int exception_set_routine(uint8_t exception_id, exception_handler_t routine);
 int exception_disable(uint8_t exception_id);
 

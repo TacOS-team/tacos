@@ -34,6 +34,7 @@
 #include <string.h>
 #include <sys/syscall.h>
 #include <unistd.h>
+#include <signal.h>
 
 char **environ = NULL;
 
@@ -341,3 +342,8 @@ void qsort(void *base, size_t nmemb, size_t size, int(*compar)(const void *, con
 	quicksort(base, base + (nmemb - 1) * size, size, compar);
 }
 /******************************/
+
+void abort(void)
+{
+	raise(SIGABRT);
+}

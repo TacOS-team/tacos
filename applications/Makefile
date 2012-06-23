@@ -1,5 +1,5 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=ps ls zen_graph snake cat mkdir rm getty stat
+OBJ=ps ls zen_graph snake cat mkdir rm getty test
 SUBDIRS=mishell utils
 LIBS=../lib/libtsock.a ../lib/libc.a ../lib/libsystem.a ../lib/libstl.a libutils.a
 LDFLAGS=-L./

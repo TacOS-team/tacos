@@ -45,8 +45,8 @@ struct timespec{
 	long int tv_nsec; /**< Nanosecondes */
 };
 
-typedef long int clock_t;
-typedef long int time_t;
+typedef long int clock_t; /**< Compte de ticks d'horloge. */
+typedef long int time_t; /**< Représentation du temps. */
 
 struct tm{
 	int tm_sec;   /**< seconds after the minute — [0, 60] */

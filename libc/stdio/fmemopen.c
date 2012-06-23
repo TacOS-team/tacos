@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -37,10 +36,6 @@ int fmemopen_close(FILE *stream) {
 	return 0;
 }
 
-/**
- *	Cette fonction associe un buffer de taille size à un nouveau stream.
- *	Les modes sont les même que fopen.
- */
 FILE *fmemopen(void *buf, size_t size, const char *mode) {
 //	int flags = convert_flags(mode);
 	int pos_buf = 0;

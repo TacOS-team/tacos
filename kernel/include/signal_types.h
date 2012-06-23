@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -24,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Types pour les signaux (en particulier les numéros de signaux).
  */
 
 #ifndef _SIGNAL_TYPES_H
@@ -47,40 +46,29 @@ typedef struct
 
 /* Définition des signaux (/!\ code aussi dupliqué dans la libc) */
 //XXX: Est-ce qu'on ne devrait pas se caller sur les numéros POSIX ?
-#define SIGHUP		 0
-#define SIGINT		 1
-#define SIGQUIT		 2
-#define SIGILL		 3
-#define SIGTRAP		 4
-#define SIGABRT		 5
-#define SIGIOT		 5
-#define SIGBUS		 6
-#define SIGFPE		 7
-#define SIGKILL		 8
-#define SIGUSR1		 9	
-#define SIGSEGV		10
-#define SIGUSR2		11
-#define SIGPIPE		12
-#define SIGALRM		13
-#define SIGTERM		14
-#define SIGSTKFLT	15
-#define SIGCHLD		16
-#define SIGCONT		17
-#define SIGSTOP		18
-#define SIGTSTP		19
-#define SIGTTIN		20
-#define SIGTTOU		21
-#define SIGURG		22
-#define SIGXCPU		23
-#define SIGXFSZ		24
-#define SIGVTALRM	25
-#define SIGPROF		26
-#define SIGWINCH	27
-#define SIGIO		28
-#define SIGPOLL		SIGIO
-#define SIGPWR		29
-#define SIGSYS		30
-#define	SIGUNUSED	30
+#define SIGHUP		 0 /**< Hang up. */
+#define SIGINT		 1 /**< Interrupt. */
+#define SIGQUIT		 2 /**< Quit and dump. */
+#define SIGILL		 3 /**< Illegal instruction. */
+#define SIGTRAP		 4 /**< Trap. */
+#define SIGABRT		 5 /**< Abort. */
+#define SIGBUS		 6 /**< Bus error. */
+#define SIGFPE		 7 /**< Floating Point Exception. */
+#define SIGKILL		 8 /**< Terminate. */
+#define SIGUSR1		 9 /**< Signal utilisateur 1. */
+#define SIGSEGV		10 /**< Segmentation Violation. */
+#define SIGUSR2		11 /**< Signal utilisateur 2. */
+#define SIGPIPE		12 /**< Write to pipe with no one reading. */
+#define SIGALRM		13 /**< Signal raised by alarm. */
+#define SIGTERM		14 /**< Termination. */
+#define SIGCHLD		16 /**< Fin processus fils. */
+#define SIGCONT		17 /**< Continue si arrêté. */
+#define SIGSTOP		18 /**< Stop l'exécution temporairement. */
+#define SIGTSTP		19 /**< Terminal Stop. */
+#define SIGTTIN		20 /**< Le process en background essaye de lire le tty. */
+#define SIGTTOU		21 /**< Le process en background essaye d'écrire sur le tty. */
+#define SIGURG		22 /**< Urgent data available on socket. */
+#define SIGSYS		30 /**< Bad syscall. */
 #define SIGRTMIN	31
 #define SIGRTMAX	NSIG-1
 
@@ -88,7 +76,6 @@ typedef struct
 #define SIG_BLOCK	0
 #define SIG_UNBLOCK	1
 #define SIG_SETMASK	2
-
 
 
 #endif

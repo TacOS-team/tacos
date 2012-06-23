@@ -53,8 +53,8 @@ __BEGIN_DECLS
 #define ENFILE    16 /**< Overflow de la file table. */
 #define EMFILE    17 /**< Trop de fichiers ouverts. */
 
-extern const char* sys_errlist[];
-extern int errno;
+extern const char* sys_errlist[]; /**< Liste des messages d'erreur. */
+extern int errno; /**< Variable qui contient le numéro de la dernière erreur. */
 
 __END_DECLS
 

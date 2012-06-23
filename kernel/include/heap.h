@@ -56,12 +56,12 @@ typedef struct {
 	int max_elements;
 } heap_t;
 
-/*
+/**
  *  Initialise le tas à vide et regle la fonction de comparaison
  */
 void initHeap(heap_t* h, cmp_func_type cmp, void* heap, size_t elements_size,int max_elements);
 
-/*
+/**
  *  Recupere le premier élément du tas.
  *
  *	@param h pointeur vers le tas.
@@ -71,7 +71,7 @@ void initHeap(heap_t* h, cmp_func_type cmp, void* heap, size_t elements_size,int
  */
 void* getTop(heap_t *h);
 
-/*
+/**
  *	Ajoute un element au tas.
  *
  *	@param h pointeur vers le tas.

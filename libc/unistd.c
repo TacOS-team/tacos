@@ -248,3 +248,19 @@ int execv(const char *path __attribute__ ((unused)), char *const argv[]) {
 	}
 	return exec_elf(cmd, 0);
 }
+
+int execvp(const char *file __attribute__ ((unused)), char *const argv[]) {
+	if (argv[0][0] == '/') {
+		return execv(file, argv);
+	} else {
+		char *cmd = malloc(1024);
+		char *path = getenv("PATH");
+		sprintf(cmd, "%s/%s", path, argv[0]);
+		int i = 1;
+		while (argv[i] != NULL) {
+			strcat(cmd, argv[i]);
+			i++;
+		}
+		return exec_elf(cmd, 0);
+	}
+}

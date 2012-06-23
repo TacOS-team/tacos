@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -27,16 +26,18 @@
  * Description de ce que fait le fichier
  */
 
-
 //Pour plus d'infos sur sysenter: Doc Intel 2B 4-483
 
-/* Kernel */
 #include <gdt.h>
 #include <interrupts.h>
 #include <ksyscall.h>
 #include <klog.h>
 #include <klibc/string.h>
+#include <scheduler.h>
 
+/**
+ * Table des syscall handlers.
+ */
 syscall_handler_t syscall_handler_table[MAX_SYSCALL_NB];
 
 /**
@@ -72,8 +73,12 @@ void syscall_entry(int interrupt_id __attribute__ ((unused)))
 		handler = syscall_handler_table[function];
 		handler(param1, param2, param3);
 	}
-	else
+	else {
 		kerr("Unknown syscall handler (0x%x).\n", function);
+		process_t *badboy = get_current_process();
+		sys_kill(badboy->pid, SIGSYS, NULL);
+	}
+	
 	
 	asm("cli");
 	get_default_tss()->esp0 = (uint32_t)(frame+1);

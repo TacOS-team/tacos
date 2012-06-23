@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief Gestion des signaux.
  */
 
 #include <signal.h>
@@ -43,6 +43,10 @@ int kill(unsigned int pid, int sig)
 	return ret;
 }
 
+int raise(int sig)
+{
+	return kill(getpid(), sig);
+}
 
 sighandler_t signal(int sig, sighandler_t func)
 {
@@ -134,6 +138,11 @@ void sig_ignore_handler(int signal __attribute__ ((unused)))
 	// Do nothing.
 }
 
+void core(int signal)
+{
+	exit(signal);
+}
+
 void sig_stop_handler(int signal __attribute__ ((unused)))
 {
 	sigset_t set;
@@ -148,6 +157,13 @@ void init_signals(void)
 {
 	default_handlers[SIGHUP] = (sighandler_t) exit;
 	default_handlers[SIGINT] = (sighandler_t) exit;
+	default_handlers[SIGQUIT] = core;
+	default_handlers[SIGILL] = core;
+	default_handlers[SIGTRAP] = core;
+	default_handlers[SIGABRT] = core;
+	default_handlers[SIGFPE] = core;
+	default_handlers[SIGSEGV] = core;
+	default_handlers[SIGSYS] = core;
 	default_handlers[SIGKILL] = (sighandler_t) exit;
 	default_handlers[SIGPIPE] = (sighandler_t) exit;
 	default_handlers[SIGALRM] = (sighandler_t) exit;
@@ -155,17 +171,12 @@ void init_signals(void)
 	default_handlers[SIGUSR1] = (sighandler_t) exit;
 	default_handlers[SIGUSR2] = (sighandler_t) exit;
 	default_handlers[SIGCHLD] = sig_ignore_handler;
-	default_handlers[SIGPWR] = sig_ignore_handler;
-	default_handlers[SIGWINCH] = sig_ignore_handler;
 	default_handlers[SIGURG] = sig_ignore_handler;
-	default_handlers[SIGPOLL] = (sighandler_t) exit;
 	default_handlers[SIGSTOP] = (sighandler_t) sig_stop_handler;
 	default_handlers[SIGTSTP] = (sighandler_t) sig_stop_handler;
 	default_handlers[SIGCONT] = sig_ignore_handler;
 	default_handlers[SIGTTIN] = (sighandler_t) sig_stop_handler;
 	default_handlers[SIGTTOU] = (sighandler_t) sig_stop_handler;
-	default_handlers[SIGVTALRM] = (sighandler_t) exit;
-	default_handlers[SIGPROF] = (sighandler_t) exit;
 	default_handlers[SIGRTMIN] = (sighandler_t) exit;
 	default_handlers[SIGRTMAX] = (sighandler_t) exit;
 
