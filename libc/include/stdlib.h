@@ -42,8 +42,31 @@ __BEGIN_DECLS
 
 #define RAND_MAX 2147483647
 
+/**
+ * @brief Terminer de manière anormale un programme.
+ */
+void abort(void);
+
+/**
+ * @brief Modifie la taille du bloc de mémoire.
+ *
+ * @param ptr Le bloc mémoire à modifier.
+ * @param size Nouvelle taille.
+ *
+ * @return nouvelle adresse.
+ */
 void *realloc(void *ptr, size_t size);
+
+/**
+ * @brief Alloue un bloc mémoire initiallement à 0.
+ *
+ * @param nmemb Nombre d'éléments.
+ * @param size Taille d'un élément.
+ *
+ * @return Adresse du bloc alloué.
+ */
 void *calloc(size_t nmemb, size_t size);
+
 long int strtol(const char* nptr, char** endptr, int base);
 unsigned long int strtoul(const char *nptr, char **endptr, int base);
 int atoi(const char* __nptr);
