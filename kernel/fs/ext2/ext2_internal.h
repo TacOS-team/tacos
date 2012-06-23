@@ -34,8 +34,12 @@
 
 #define EXT2_ROOT_INO 2
 
-// http://www.nongnu.org/ext2-doc/ext2.html#SUPERBLOCK
-// Repris du code de Linux
+
+/**
+ * Structure du Ext2 Super Block
+ * (Repris du code de Linux)
+ * http://www.nongnu.org/ext2-doc/ext2.html#SUPERBLOCK
+ */
 struct ext2_super_block {
 	uint32_t  s_inodes_count;		/**< Inodes count */
 	uint32_t  s_blocks_count;		/**< Blocks count */
@@ -107,6 +111,9 @@ struct ext2_super_block {
 #define EXT2_GOOD_OLD_REV 0		/**< The good old (original) format */
 #define EXT2_DYNAMIC_REV  1		/**< V2 format w/ dynamic inode sizes */
 
+/**
+ * Groupe.
+ */
 struct ext2_group_desc
 {
   uint32_t  bg_block_bitmap;		/**< Blocks bitmap block */
@@ -119,7 +126,7 @@ struct ext2_group_desc
   uint32_t  bg_reserved[3];			/**< reserved. */
 };
 
-/*
+/**
  * Structure of an inode on the disk
  */
 struct ext2_inode {
@@ -225,5 +232,178 @@ typedef struct _ext2_extra_data {
 	uint32_t type; /**< Type du fichier. */
 	struct blk_t *blocks; /**< Les blocs où sont les données du fichier. */
 } ext2_extra_data;
+
+
+/**
+ * @brief Unmount d'un point de montage.
+ *
+ * @param instance L'instance de fs que l'on veut démonter.
+ */
+void umount_EXT2(fs_instance_t *instance);
+
+/**
+ * @brief Ouverture de fichier.
+ *
+ * @param instance Instance de fs.
+ * @param path Chemin (relatif au point de montage) du fichier à ouvrir.
+ * @param flags Flags pour l'ouverture.
+ *
+ * @return un open file descriptor.
+ */
+open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uint32_t flags);
+
+/**
+ * @brief Lecture d'un fichier.
+ *
+ * @param ofd Descripteur du fichier ouvert.
+ * @param buf Buffer où stocker les octets lus.
+ * @param size Nombre d'octets à lire.
+ *
+ * @return nombre d'octets réellement lus.
+ */
+size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size);
+
+/**
+ * @brief Ecriture d'un fichier.
+ *
+ * @param ofd Descripteur du fichier ouvert.
+ * @param buf Buffer contenant les octets à écrire.
+ * @param size Nombre d'octets à écrire.
+ *
+ * @return nombre d'octets réellement écrits.
+ */
+size_t ext2_write (open_file_descriptor * ofd, const void *buf, size_t size);
+
+/**
+ * @brief Fermeture d'un fichier ouvert.
+ *
+ * @param ofd Descripteur du fichier ouvert.
+ *
+ * @return 0 en cas de succès, -1 sinon.
+ */
+int ext2_close(open_file_descriptor *ofd);
+
+/**
+ * @brief Lecture du contenu d'un dossier.
+ *
+ * @param ofd Descripteur de fichier qui correspond au dossier.
+ * @param entries Buffer qui va recevoir les entrées de dossier.
+ * @param size Nombre d'octets dans le buffer au maximum.
+ *
+ * @return Nombre d'octets écrits dans entries.
+ */
+int ext2_readdir(open_file_descriptor * ofd, char * entries, size_t size);
+
+/**
+ * @brief Récupère l'état d'un fichier ou dossier.
+ *
+ * @param instance Instance de fs.
+ * @param path Chemin du fichier.
+ * @param stbuf Endroit où enregistrer les infos.
+ *
+ * @return 0 en cas de succès.
+ */
+int ext2_stat(fs_instance_t *instance, const char *path, struct stat *stbuf);
+
+/**
+ * @brief Création d'un noeud (fichier, dossier, fichier spécial...)
+ *
+ * @param instance Instance de fs.
+ * @param path Chemin du noeud.
+ * @param dev En cas de fichier spécial (device)
+ *
+ * @return 0 en cas de succès.
+ */
+int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t dev);
+
+/**
+ * @brief Création d'un dossier.
+ *
+ * @param instance Instance de fs.
+ * @param path Chemin du dossier à créer.
+ * @param mode Droits sur le dossier.
+ *
+ * @return 0 en cas de succès.
+ */
+int ext2_mkdir(fs_instance_t *instance, const char * path, mode_t mode);
+
+/**
+ * @brief Suppression d'un noeud.
+ *
+ * @param instance Instance de fs.
+ * @param path Chemin du noeud.
+ *
+ * @return 0 en cas de succès.
+ */
+int ext2_unlink(fs_instance_t *instance, const char * path);
+
+/**
+ * @brief Change la taille d'un fichier.
+ *
+ * @param instance Instance de fs.
+ * @param path Chemin du fichier.
+ * @param off Nouvelle taille.
+ *
+ * @return 0 en cas de succès.
+ */
+int ext2_truncate(fs_instance_t *instance, const char * path, off_t off);
+
+/**
+ * @brief Suppression d'un dossier vide.
+ *
+ * @param instance Instance de fs.
+ * @param path Chemin du dossier à supprimer.
+ *
+ * @return 0 en cas de succès.
+ */
+int ext2_rmdir(fs_instance_t *instance, const char * path);
+
+/**
+ * @brief Change les droits d'un fichier.
+ *
+ * @param instance Instance de fs.
+ * @param path Chemin du fichier dont on veut modifier les droits.
+ * @param mode Droits.
+ *
+ * @return 0 en cas de succès.
+ */
+int ext2_chmod(fs_instance_t *instance, const char * path, mode_t mode);
+
+/**
+ * @brief Change le propriétaire et le groupe d'un fichier.
+ *
+ * @param instance Instance de fs.
+ * @param path Chemin du fichier dont on veut modifier les proprios.
+ * @param uid Id utilisateur.
+ * @param gid Id groupe.
+ *
+ * @return 0 en cas de succès.
+ */
+int ext2_chown(fs_instance_t *instance, const char * path, uid_t uid, gid_t gid);
+
+/**
+ * @brief Crée un noeud.
+ *
+ * @param instance Instance de fs.
+ * @param path Chemin du noeud à créer.
+ * @param mode Mode par défaut.
+ * @param dev Device (0 si fichier normal).
+ *
+ * @return 0 en cas de succès.
+ */
+int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t dev);
+
+/**
+ * Déplacement dans un fichier.
+ *
+ * @param ofd Descripteur de fichier ouvert.
+ * @param offset Décalage
+ * @param whence depuis le debut, la fin ou en relatif.
+ *
+ * @return 0 en cas de succès.
+ */
+int ext2_seek(open_file_descriptor * ofd, long offset, int whence);
+
+
 
 #endif

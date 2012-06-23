@@ -150,7 +150,7 @@ int register_blkdev(const char* name, blkdev_interfaces* di)
 	return done-1; /* Retourne -1 en cas d'erreur, 0 sinon */
 }
 
-int devfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
+static int devfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 	size_t count = 0;
 
 	int i = ofd->current_octet;
@@ -170,7 +170,7 @@ int devfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 	return count;
 }
 
-open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path, uint32_t flags) {
+static open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path, uint32_t flags) {
 	unsigned int i,j;
 	char buf[64];
 	driver_entry* drentry;
@@ -260,7 +260,7 @@ open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path
 	return NULL;
 }
 
-int devfs_stat(fs_instance_t *instance __attribute__ ((unused)), const char *path, struct stat *stbuf) {
+static int devfs_stat(fs_instance_t *instance __attribute__ ((unused)), const char *path, struct stat *stbuf) {
 	int res = 0;
 	unsigned int i,j;
 	char buf[64];

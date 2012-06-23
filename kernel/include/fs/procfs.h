@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -34,6 +33,5 @@
 #include <fd_types.h>
 
 void procfs_init();
-int procfs_readdir(open_file_descriptor * ofd, char * entries, size_t size);
 
 #endif /* _PROCFS_H */

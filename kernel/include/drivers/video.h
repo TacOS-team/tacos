@@ -52,7 +52,7 @@
 #define WHITE         0xF   /**< Code couleur blanc. */
 
 #define COLUMNS                 80 /**< The number of columns. */
-#define LINES                   25 /** The number of lines. */
+#define LINES                   25 /**< The number of lines. */
 
 /**
  * @brief Structure définissant un "caractère" à l'écran.

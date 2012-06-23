@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -53,7 +52,7 @@ typedef struct {
 	chardev_open_t open;
 	chardev_close_t close;
 	void * custom_data;
-}chardev_interfaces;
+} chardev_interfaces;
 
 
 typedef size_t (*blkdev_read_t)(open_file_descriptor *,void*, size_t, uint32_t);
@@ -69,12 +68,11 @@ typedef struct {
 	blkdev_open_t open;
 	blkdev_close_t close;
 	void * custom_data;
-}blkdev_interfaces;
+} blkdev_interfaces;
 
 void devfs_init();
 int register_chardev(const char* name, chardev_interfaces* di);
 int register_blkdev(const char* name, blkdev_interfaces* di);
 
-int devfs_readdir(open_file_descriptor * ofd, char * entries, size_t size);
 
 #endif /* _DEVFS_H */

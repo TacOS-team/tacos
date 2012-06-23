@@ -42,18 +42,25 @@
  * Il s'agit uniquement d'une structure de tri
  */
 
-// Une fonction de comparaison entre 2 elements
 // maxheap : la fonction doit retourner >0 si a>b, 0 si a=b, <0 si a<b
 // minheap : la fonction doit retourner <0 si a>b, 0 si a=b, >0 si a<b
+
+/**
+ *  Une fonction de comparaison entre 2 elements
+ */
 typedef int (*cmp_func_type) (void*, void*);
+
 typedef int (*id_func_type) (int, void*);
 
+/**
+ * Structure de tas.
+ */
 typedef struct {
-	cmp_func_type comparator;
-	void* heap;
-	int nb_elements;
-	size_t elements_size;
-	int max_elements;
+	cmp_func_type comparator; /**< Fonction de comparaison entre deux éléments. */
+	void* heap; /**< Tableau qui contient le tas. */
+	int nb_elements; /**< Nombre d'éléments dans le tas. */
+	size_t elements_size; /**< Taille de chaque élément. */
+	int max_elements; /**< Nombre maximum d'éléments. */
 } heap_t;
 
 /**

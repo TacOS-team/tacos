@@ -46,28 +46,31 @@
 #define EXCEPTION_STACK_SEGMENT_FAULT          12 /**< Stack segment fault. */
 #define EXCEPTION_GENERAL_PROTECTION           13 /**< General Protection Fault. (segment, droits, etc) */
 #define EXCEPTION_PAGE_FAULT                   14 /**< Page fault. */
-#define EXCEPTION_INTEL_RESERVED_1             15
+#define EXCEPTION_INTEL_RESERVED_1             15 /**< Réservé. */
 #define EXCEPTION_FLOATING_POINT_ERROR         16 /**< Floating point error. */
 #define EXCEPTION_ALIGNEMENT_CHECK             17 /**< Défaut d'alignement. */
 #define EXCEPTION_MACHINE_CHECK                18 /**< Détection d'erreur interne. */
-#define EXCEPTION_INTEL_RESERVED_2             19
-#define EXCEPTION_INTEL_RESERVED_3             20
-#define EXCEPTION_INTEL_RESERVED_4             21
-#define EXCEPTION_INTEL_RESERVED_5             22
-#define EXCEPTION_INTEL_RESERVED_6             23
-#define EXCEPTION_INTEL_RESERVED_7             24
-#define EXCEPTION_INTEL_RESERVED_8             25
-#define EXCEPTION_INTEL_RESERVED_9             26
-#define EXCEPTION_INTEL_RESERVED_10            27
-#define EXCEPTION_INTEL_RESERVED_11            28
-#define EXCEPTION_INTEL_RESERVED_12            29
-#define EXCEPTION_INTEL_RESERVED_13            30
-#define EXCEPTION_INTEL_RESERVED_14            31
+#define EXCEPTION_INTEL_RESERVED_2             19 /**< Réservé. */ 
+#define EXCEPTION_INTEL_RESERVED_3             20 /**< Réservé. */
+#define EXCEPTION_INTEL_RESERVED_4             21 /**< Réservé. */
+#define EXCEPTION_INTEL_RESERVED_5             22 /**< Réservé. */
+#define EXCEPTION_INTEL_RESERVED_6             23 /**< Réservé. */
+#define EXCEPTION_INTEL_RESERVED_7             24 /**< Réservé. */
+#define EXCEPTION_INTEL_RESERVED_8             25 /**< Réservé. */
+#define EXCEPTION_INTEL_RESERVED_9             26 /**< Réservé. */
+#define EXCEPTION_INTEL_RESERVED_10            27 /**< Réservé. */
+#define EXCEPTION_INTEL_RESERVED_11            28 /**< Réservé. */
+#define EXCEPTION_INTEL_RESERVED_12            29 /**< Réservé. */
+#define EXCEPTION_INTEL_RESERVED_13            30 /**< Réservé. */
+#define EXCEPTION_INTEL_RESERVED_14            31 /**< Réservé. */
 
 #ifndef ASM_SOURCE
 
 #include <types.h>
 
+/**
+ * Définition du type pour un handler d'exception.
+ */
 typedef void (*exception_handler_t)(uint32_t error_id, uint32_t error_code);
 
 /**
