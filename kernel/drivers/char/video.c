@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -31,7 +30,9 @@
 #include <ioports.h>
 #include <drivers/video.h>
 
-/* The video memory address. */
+/**
+ *  The video memory address. 
+ */
 #define BASE_VGA_VIDEO                   0xB8000
 
 #define CRT_REG_INDEX 0x3d4
@@ -39,11 +40,7 @@
 #define CURSOR_POS_MSB 0x0E
 #define CURSOR_POS_LSB 0x0F
 
-#define CTL_COL 0
-#define CTL_COL_POS 1
-#define CTL_CURSOR 2
-
-#define NB_VGA_PAGES 4
+#define NB_VGA_PAGES 4 /**< Nombre de pages possibles par le driver VGA dans le mode texte. */
 
 static struct vga_page_t pages[NB_VGA_PAGES];
 static int current_page;
@@ -68,7 +65,7 @@ void init_video() {
 	current_page = 0;
 }
 
-void offset_video(int offset) {
+static void offset_video(int offset) {
 	/* CRT index port => demande l'accès au registre 0xa ("addr start") */
 	outb(0x0C, CRT_REG_INDEX);
 
