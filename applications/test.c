@@ -36,10 +36,10 @@ void handler(int signal) {
 int main(int argc, char** argv)
 {
 	int i = 0;
+	
+	signal(SIGSYS, handler);
 
-	//signal(SIGFPE, handler);
-
-	printf("%d\n", 5 / *(int*)i);
+	syscall(9999, 0, 0, 0);
 	
 	printf("was here.\n");
 
