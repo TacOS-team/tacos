@@ -68,6 +68,9 @@
 
 #include <types.h>
 
+/**
+ * Définition du type pour un handler d'exception.
+ */
 typedef void (*exception_handler_t)(uint32_t error_id, uint32_t error_code);
 
 /**

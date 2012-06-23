@@ -34,6 +34,7 @@
 #include <klog.h>
 #include <klibc/string.h>
 #include <scheduler.h>
+#include <ksignal.h>
 
 /**
  * Table des syscall handlers.

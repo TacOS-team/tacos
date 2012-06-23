@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010, 2011, 2012 - TacOS developers.
@@ -41,9 +40,9 @@ void initHeap(heap_t* h, cmp_func_type cmp, void* heap, size_t elements_size,int
 	h->elements_size = elements_size;
 }
 
-void* getIn(heap_t* h,int index)
+static void* getIn(heap_t* h,int index)
 {
-	return h->heap+index*h->elements_size;
+	return h->heap + index * h->elements_size;
 }
 
 // retourne le sommet
@@ -59,7 +58,7 @@ void* getTop(heap_t* h)
 }
 
 // alterne deux elements d'indice a,b de tab
-void swap(int a, int b, void* tab, int size)
+static void swap(int a, int b, void* tab, int size)
 {
 	uint8_t tmp;
 	int i;
