@@ -83,12 +83,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00029"></a>00029 <span class="preprocessor">#ifndef _WAIT_H_</span>
 <a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _WAIT_H_</span>
 <a name="l00031"></a>00031 <span class="preprocessor"></span>
-<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="libc_2include_2sys_2types_8h.html">sys/types.h</a>&gt;</span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="cdefs_8h.html">sys/cdefs.h</a>&gt;</span>
 <a name="l00033"></a>00033 
-<a name="l00034"></a>00034 <a class="code" href="libc_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a> wait(<span class="keywordtype">int</span> *status);
-<a name="l00035"></a>00035 <span class="keywordtype">void</span> waitpid(<span class="keywordtype">int</span> pid);
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037 <span class="preprocessor">#endif</span>
+<a name="l00034"></a>00034 __BEGIN_DECLS
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="preprocessor">#include &lt;<a class="code" href="libc_2include_2sys_2types_8h.html">sys/types.h</a>&gt;</span>
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 <a class="code" href="libc_2include_2sys_2types_8h.html#a82257dd189e8030f78f83d124fd2d9ba">pid_t</a> wait(<span class="keywordtype">int</span> *status);
+<a name="l00039"></a>00039 <span class="keywordtype">void</span> waitpid(<span class="keywordtype">int</span> pid);
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 __END_DECLS
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -107,7 +113,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -83,31 +83,42 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00028"></a>00028 <span class="preprocessor">#ifndef _SYS_TYPES_H_</span>
 <a name="l00029"></a>00029 <span class="preprocessor"></span><span class="preprocessor">#define _SYS_TYPES_H_</span>
 <a name="l00030"></a>00030 <span class="preprocessor"></span>
-<a name="l00031"></a>00031 <span class="preprocessor">#include &lt;<a class="code" href="stdbool_8h.html">stdbool.h</a>&gt;</span>
+<a name="l00031"></a>00031 <span class="preprocessor">#include &lt;<a class="code" href="cdefs_8h.html">sys/cdefs.h</a>&gt;</span>
 <a name="l00032"></a>00032 
-<a name="l00033"></a><a class="code" href="libc_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">00033</a> <span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="libc_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a>; 
-<a name="l00035"></a>00035 <span class="preprocessor">#ifndef _TYPES_UINTX_T_</span>
-<a name="l00036"></a>00036 <span class="preprocessor"></span><span class="preprocessor">#define _TYPES_UINTX_T_</span>
-<a name="l00037"></a><a class="code" href="libc_2include_2sys_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">00037</a> <span class="preprocessor"></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>;  
-<a name="l00038"></a><a class="code" href="libc_2include_2sys_2types_8h.html#adf4d876453337156dde61095e1f20223">00038</a> <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>;  
-<a name="l00039"></a><a class="code" href="libc_2include_2sys_2types_8h.html#a33594304e786b158f3fb30289278f5af">00039</a> <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>;  
-<a name="l00040"></a><a class="code" href="libc_2include_2sys_2types_8h.html#ad27ed092432b64ff558d2254c278720f">00040</a> <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="kernel_2include_2types_8h.html#ad27ed092432b64ff558d2254c278720f">uint64_t</a>;  
-<a name="l00041"></a><a class="code" href="libc_2include_2sys_2types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">00041</a> <span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="kernel_2include_2types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">vaddr_t</a>; 
-<a name="l00042"></a>00042 <span class="preprocessor">#endif</span>
-<a name="l00043"></a>00043 <span class="preprocessor"></span>
-<a name="l00044"></a>00044 <span class="preprocessor">#ifndef _TYPES_SIZE_T_</span>
-<a name="l00045"></a>00045 <span class="preprocessor"></span><span class="preprocessor">#define _TYPES_SIZE_T_</span>
-<a name="l00046"></a><a class="code" href="libc_2include_2sys_2types_8h.html#a29d85914ddff32967d85ada69854206d">00046</a> <span class="preprocessor"></span><span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>; 
-<a name="l00047"></a><a class="code" href="libc_2include_2sys_2types_8h.html#af629ed855824cf5955b54529adf78ad6">00047</a> <span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>; 
-<a name="l00048"></a>00048 <span class="preprocessor">#endif</span>
-<a name="l00049"></a>00049 <span class="preprocessor"></span>
-<a name="l00050"></a>00050 <span class="preprocessor">#ifndef _TYPES_OFF_T_</span>
-<a name="l00051"></a>00051 <span class="preprocessor"></span><span class="preprocessor">#define _TYPES_OFF_T_</span>
-<a name="l00052"></a><a class="code" href="libc_2include_2sys_2types_8h.html#a447a6a64dbb8fb44b1e62856b333db4a">00052</a> <span class="preprocessor"></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="libc_2include_2sys_2types_8h.html#a447a6a64dbb8fb44b1e62856b333db4a">off_t</a>; 
-<a name="l00053"></a>00053 <span class="preprocessor">#endif</span>
-<a name="l00054"></a>00054 <span class="preprocessor"></span>
-<a name="l00055"></a><a class="code" href="libc_2include_2sys_2types_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">00055</a> <span class="preprocessor">#define NULL ((void*)0) </span>
+<a name="l00033"></a>00033 __BEGIN_DECLS
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 <span class="preprocessor">#include &lt;<a class="code" href="stdbool_8h.html" title="Type bool.">stdbool.h</a>&gt;</span>
+<a name="l00036"></a>00036 
+<a name="l00037"></a><a class="code" href="libc_2include_2sys_2types_8h.html#a82257dd189e8030f78f83d124fd2d9ba">00037</a> <span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="libc_2include_2sys_2types_8h.html#a82257dd189e8030f78f83d124fd2d9ba">pid_t</a>; 
+<a name="l00039"></a>00039 <span class="preprocessor">#ifndef _TYPES_UINTX_T_</span>
+<a name="l00040"></a>00040 <span class="preprocessor"></span><span class="preprocessor">#define _TYPES_UINTX_T_</span>
+<a name="l00041"></a><a class="code" href="libc_2include_2sys_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">00041</a> <span class="preprocessor"></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>;  
+<a name="l00042"></a><a class="code" href="libc_2include_2sys_2types_8h.html#adf4d876453337156dde61095e1f20223">00042</a> <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>;  
+<a name="l00043"></a><a class="code" href="libc_2include_2sys_2types_8h.html#a33594304e786b158f3fb30289278f5af">00043</a> <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>;  
+<a name="l00044"></a><a class="code" href="libc_2include_2sys_2types_8h.html#ad27ed092432b64ff558d2254c278720f">00044</a> <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="kernel_2include_2types_8h.html#ad27ed092432b64ff558d2254c278720f">uint64_t</a>;  
+<a name="l00045"></a><a class="code" href="libc_2include_2sys_2types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">00045</a> <span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="kernel_2include_2types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">vaddr_t</a>; 
+<a name="l00046"></a>00046 <span class="preprocessor">#endif</span>
+<a name="l00047"></a>00047 <span class="preprocessor"></span>
+<a name="l00048"></a>00048 <span class="preprocessor">#ifndef _TYPES_SIZE_T_</span>
+<a name="l00049"></a>00049 <span class="preprocessor"></span><span class="preprocessor">#define _TYPES_SIZE_T_</span>
+<a name="l00050"></a><a class="code" href="libc_2include_2sys_2types_8h.html#a29d85914ddff32967d85ada69854206d">00050</a> <span class="preprocessor"></span><span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>; 
+<a name="l00051"></a><a class="code" href="libc_2include_2sys_2types_8h.html#af629ed855824cf5955b54529adf78ad6">00051</a> <span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>; 
+<a name="l00052"></a>00052 <span class="preprocessor">#endif</span>
+<a name="l00053"></a>00053 <span class="preprocessor"></span>
+<a name="l00054"></a>00054 <span class="preprocessor">#ifndef _TYPES_OFF_T_</span>
+<a name="l00055"></a>00055 <span class="preprocessor"></span><span class="preprocessor">#define _TYPES_OFF_T_</span>
+<a name="l00056"></a><a class="code" href="libc_2include_2sys_2types_8h.html#a447a6a64dbb8fb44b1e62856b333db4a">00056</a> <span class="preprocessor"></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="libc_2include_2sys_2types_8h.html#a447a6a64dbb8fb44b1e62856b333db4a">off_t</a>; 
 <a name="l00057"></a>00057 <span class="preprocessor">#endif</span>
+<a name="l00058"></a>00058 <span class="preprocessor"></span>
+<a name="l00059"></a>00059 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00060"></a>00060 <span class="preprocessor"></span><span class="preprocessor">#define NULL 0 </span>
+<a name="l00061"></a>00061 <span class="preprocessor">#else</span>
+<a name="l00062"></a><a class="code" href="libc_2include_2sys_2types_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">00062</a> <span class="preprocessor"></span><span class="preprocessor">#define NULL ((void*)0) </span>
+<a name="l00063"></a>00063 <span class="preprocessor">#endif</span>
+<a name="l00064"></a>00064 <span class="preprocessor"></span>
+<a name="l00065"></a>00065 __END_DECLS
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -126,7 +137,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:46 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

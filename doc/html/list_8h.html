@@ -89,14 +89,14 @@ Graphe des dépendances par inclusion de list.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="list_8h__incl.png" border="0" usemap="#kernel_2include_2list_8h" alt=""/></div>
 <map name="kernel_2include_2list_8h" id="kernel_2include_2list_8h">
-<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="41,83,105,112"/></map>
+<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="41,83,103,111"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="list_8h__dep__incl.png" border="0" usemap="#kernel_2include_2list_8hdep" alt=""/></div>
 <map name="kernel_2include_2list_8hdep" id="kernel_2include_2list_8hdep">
-<area shape="rect" id="node3" href="events_8c.html" title="Gestion d&#39;évènements datés." alt="" coords="5,83,117,112"/><area shape="rect" id="node5" href="list_8c.html" title="kernel/utils/list.c" alt="" coords="141,83,256,112"/></map>
+<area shape="rect" id="node3" href="events_8c.html" title="Gestion d&#39;évènements datés." alt="" coords="5,83,115,111"/><area shape="rect" id="node5" href="list_8c.html" title="kernel/utils/list.c" alt="" coords="139,83,253,111"/></map>
 </div>
 </div>
 <p><a href="list_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -107,13 +107,12 @@ Structures de données</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Liste générique.  <a href="structlist__t.html#details">Plus de détails...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35d066d4adbc5a7903210dcce0bf4717"></a><!-- doxytag: member="list.h::cmp_func_type" ref="a35d066d4adbc5a7903210dcce0bf4717" args=")(void *, void *)" -->
-typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>cmp_func_type</b> )(void *, void *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a> )(void *, void *)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48a67855027ee831532d3b397cc95d01"></a><!-- doxytag: member="list.h::id_func_type" ref="a48a67855027ee831532d3b397cc95d01" args=")(int, void *)" -->
 typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>id_func_type</b> )(int, void *)</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a8111dff4de9d78342e96563621a7da63">list_init</a> (<a class="el" href="structlist__t.html">list_t</a> *l, cmp_func_type cmp, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> elements_size, int max_elements)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a8111dff4de9d78342e96563621a7da63">list_init</a> (<a class="el" href="structlist__t.html">list_t</a> *l, <a class="el" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a> cmp, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> elements_size, int max_elements)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a4d06987bb22b3a5c66d2be44f6c23845">list_get_top</a> (<a class="el" href="structlist__t.html">list_t</a> l)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a7a8bb1eb8a161ffce0167fca806e10ad">list_add_element</a> (<a class="el" href="structlist__t.html">list_t</a> *l, void *element)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a5ffcff1c3f7eace23a067c0051a3c8f9">list_remove_top</a> (<a class="el" href="structlist__t.html">list_t</a> *l)</td></tr>
@@ -131,7 +130,22 @@ LICENSE</h2>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
 <p>Structure de liste chainée générique. </p>
-</div><hr/><h2>Documentation des fonctions</h2>
+</div><hr/><h2>Documentation des définitions de type</h2>
+<a class="anchor" id="a35d066d4adbc5a7903210dcce0bf4717"></a><!-- doxytag: member="list.h::cmp_func_type" ref="a35d066d4adbc5a7903210dcce0bf4717" args=")(void *, void *)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* <a class="el" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a>)(void *, void *)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Définition du type pour une fonction de comparaison entre 2 éléments. </p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
 <a class="anchor" id="a7a8bb1eb8a161ffce0167fca806e10ad"></a><!-- doxytag: member="list.h::list_add_element" ref="a7a8bb1eb8a161ffce0167fca806e10ad" args="(list_t *l, void *element)" -->
 <div class="memitem">
 <div class="memproto">
@@ -160,17 +174,18 @@ DESCRIPTION</h2>
 <dl class="params"><dt><b>Paramètres:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">l</td><td>La liste manipulée. </td></tr>
-    <tr><td class="paramname">element</td><td>Element à ajouter. </td></tr>
+    <tr><td class="paramname">element</td><td>Element à ajouter.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
 
 <p><div class="dynheader">
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_cgraph.png" border="0" usemap="#list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_cgraph" alt=""/></div>
 <map name="list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_cgraph" id="list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_cgraph">
-<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="177,5,249,35"/></map>
+<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="175,5,244,33"/></map>
 </div>
 </p>
 
@@ -179,7 +194,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_icgraph.png" border="0" usemap="#list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_icgraph" alt=""/></div>
 <map name="list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_icgraph" id="list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_icgraph">
-<area shape="rect" id="node3" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="176,5,261,35"/><area shape="rect" id="node5" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep Endors un processus, et crée un évenement pour le réveiller..." alt="" coords="309,5,464,35"/></map>
+<area shape="rect" id="node3" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="173,5,256,33"/><area shape="rect" id="node5" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="304,5,464,33"/></map>
 </div>
 </p>
 
@@ -218,17 +233,18 @@ Voici le graphe des appelants de cette fonction :</div>
 <p>Suppression d'un élément de la liste.</p>
 <dl class="params"><dt><b>Paramètres:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>La liste manipulée. </td></tr>
+    <tr><td class="paramname">list</td><td>La liste manipulée.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
 
 <p><div class="dynheader">
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="list_8h_ad8dbf30907f29e3b4fc748a83d4b1784_icgraph.png" border="0" usemap="#list_8h_ad8dbf30907f29e3b4fc748a83d4b1784_icgraph" alt=""/></div>
 <map name="list_8h_ad8dbf30907f29e3b4fc748a83d4b1784_icgraph" id="list_8h_ad8dbf30907f29e3b4fc748a83d4b1784_icgraph">
-<area shape="rect" id="node3" href="events_8h.html#a066fd6048f5a6f5a6d4b93abea00013d" title="del_event" alt="" coords="175,5,255,35"/></map>
+<area shape="rect" id="node3" href="events_8h.html#a066fd6048f5a6f5a6d4b93abea00013d" title="del_event" alt="" coords="172,5,249,33"/></map>
 </div>
 </p>
 
@@ -271,7 +287,7 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">cmp_func_type&#160;</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a>&#160;</td>
           <td class="paramname"><em>cmp</em>, </td>
         </tr>
         <tr>
@@ -307,7 +323,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="list_8h_a8111dff4de9d78342e96563621a7da63_cgraph.png" border="0" usemap="#list_8h_a8111dff4de9d78342e96563621a7da63_cgraph" alt=""/></div>
 <map name="list_8h_a8111dff4de9d78342e96563621a7da63_cgraph" id="list_8h_a8111dff4de9d78342e96563621a7da63_cgraph">
-<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="116,5,183,35"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="233,5,375,35"/></map>
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="117,5,184,33"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="233,5,372,33"/></map>
 </div>
 </p>
 
@@ -316,7 +332,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="list_8h_a8111dff4de9d78342e96563621a7da63_icgraph.png" border="0" usemap="#list_8h_a8111dff4de9d78342e96563621a7da63_icgraph" alt=""/></div>
 <map name="list_8h_a8111dff4de9d78342e96563621a7da63_icgraph" id="list_8h_a8111dff4de9d78342e96563621a7da63_icgraph">
-<area shape="rect" id="node3" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="115,5,200,35"/></map>
+<area shape="rect" id="node3" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="117,5,203,33"/></map>
 </div>
 </p>
 
@@ -339,10 +355,11 @@ Voici le graphe des appelants de cette fonction :</div>
 <p>Retire le premier élément de la liste.</p>
 <dl class="params"><dt><b>Paramètres:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">l</td><td>La liste manipulée. </td></tr>
+    <tr><td class="paramname">l</td><td>La liste manipulée.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
 
 </div>
 </div>
@@ -360,14 +377,20 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div>
 <div class="memdoc">
-<p>Affichage d'une liste (pour debug). </p>
+<p>Affichage d'une liste (pour debug).</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ma_liste</td><td>Liste à afficher. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p><div class="dynheader">
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="list_8h_a7b460be2c0d40f4da72af89c356ed7c1_cgraph.png" border="0" usemap="#list_8h_a7b460be2c0d40f4da72af89c356ed7c1_cgraph" alt=""/></div>
 <map name="list_8h_a7b460be2c0d40f4da72af89c356ed7c1_cgraph" id="list_8h_a7b460be2c0d40f4da72af89c356ed7c1_cgraph">
-<area shape="rect" id="node3" href="kstdio_8h.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="123,72,179,101"/><area shape="rect" id="node5" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="228,72,303,101"/><area shape="rect" id="node7" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="363,12,429,41"/><area shape="rect" id="node11" href="vfs_8h.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier." alt="" coords="352,72,440,101"/><area shape="rect" id="node17" href="vfs_8h.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="357,139,435,168"/><area shape="rect" id="node9" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="489,5,631,35"/><area shape="rect" id="node13" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="533,59,587,88"/><area shape="rect" id="node15" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="532,112,588,141"/><area shape="rect" id="node19" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="535,165,585,195"/></map>
+<area shape="rect" id="node3" href="kstdio_8h.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="125,69,184,97"/><area shape="rect" id="node5" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="232,69,307,97"/><area shape="rect" id="node7" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="365,11,432,39"/><area shape="rect" id="node11" href="vfs_8h.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier." alt="" coords="356,69,441,97"/><area shape="rect" id="node17" href="vfs_8h.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="360,131,437,159"/><area shape="rect" id="node9" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="492,5,631,33"/><area shape="rect" id="node13" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="535,55,588,83"/><area shape="rect" id="node15" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="533,106,589,134"/><area shape="rect" id="node19" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="536,157,587,185"/></map>
 </div>
 </p>
 
@@ -391,7 +414,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

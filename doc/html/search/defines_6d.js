@@ -1,8 +1,16 @@
 var searchData=
 [
   ['magenta',['MAGENTA',['../video_8h.html#a6f699060902f800f12aaae150f3a708e',1,'video.h']]],
+  ['max_5fdrivers',['MAX_DRIVERS',['../devfs_8c.html#ac2ee6026a11a2d8472c29fed769c7e9f',1,'devfs.c']]],
   ['max_5fevents',['MAX_EVENTS',['../events_8c.html#ae42954bb8545d24e3e9dcde5920c9a0b',1,'events.c']]],
   ['max_5finput',['MAX_INPUT',['../tty_8h.html#a00c1f0e7816626f58349492ef0720b5f',1,'tty.h']]],
+  ['milliseconds_5fper_5fday',['MILLISECONDS_PER_DAY',['../time_8c.html#a49f7c2ec546a52e3f9d643bf8ce4ab5d',1,'time.c']]],
+  ['milliseconds_5fper_5fhour',['MILLISECONDS_PER_HOUR',['../time_8c.html#afda9a3746e6a8675fe65eb61d0f3318a',1,'time.c']]],
+  ['milliseconds_5fper_5fminute',['MILLISECONDS_PER_MINUTE',['../time_8c.html#a2a6c2d0ac65c9922488a582a2155799e',1,'time.c']]],
+  ['milliseconds_5fper_5fsecond',['MILLISECONDS_PER_SECOND',['../time_8c.html#afc22ab01ad31ee9dfebcfcb61faaa63a',1,'time.c']]],
+  ['minutes_5fper_5fhour',['MINUTES_PER_HOUR',['../time_8c.html#a0927f1071797d21fde096dea6842e606',1,'time.c']]],
+  ['mode_5f0',['MODE_0',['../i8254_8c.html#adc4559afdb0535cfebadef1c707a2f91',1,'i8254.c']]],
+  ['month_5fper_5fyear',['MONTH_PER_YEAR',['../time_8c.html#a096c53b93f98d5295e97390d06ff054e',1,'time.c']]],
   ['multiboot_5faout_5fkludge',['MULTIBOOT_AOUT_KLUDGE',['../multiboot_8h.html#a791f0c6a97c36de5388c990503ee4639',1,'multiboot.h']]],
   ['multiboot_5fbootloader_5fmagic',['MULTIBOOT_BOOTLOADER_MAGIC',['../multiboot_8h.html#aacd617f4e3daafd6eab95fb6215ccae4',1,'multiboot.h']]],
   ['multiboot_5fheader_5fmagic',['MULTIBOOT_HEADER_MAGIC',['../multiboot_8h.html#ab36ad4b4a42c58aac4ad1f2ba13054e9',1,'multiboot.h']]],

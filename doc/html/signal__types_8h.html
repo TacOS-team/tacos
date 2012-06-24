@@ -83,12 +83,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier kernel/include/signal_types.h</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Types pour les signaux (en particulier les numéros de signaux).  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="signal__types_8h__dep__incl.png" border="0" usemap="#kernel_2include_2signal__types_8hdep" alt=""/></div>
 <map name="kernel_2include_2signal__types_8hdep" id="kernel_2include_2signal__types_8hdep">
-<area shape="rect" id="node3" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="1584,83,1757,112"/><area shape="rect" id="node32" href="ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="1155,160,1317,189"/><area shape="rect" id="node5" href="tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="931,237,1107,267"/><area shape="rect" id="node7" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="2213,160,2336,189"/><area shape="rect" id="node9" href="context_8h.html" title="kernel/include/context.h" alt="" coords="1471,160,1633,189"/><area shape="rect" id="node11" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="1384,237,1515,267"/><area shape="rect" id="node13" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="724,160,873,189"/><area shape="rect" id="node22" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="1292,315,1401,344"/><area shape="rect" id="node24" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="1539,237,1640,267"/><area shape="rect" id="node37" href="ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="1664,237,1779,267"/><area shape="rect" id="node40" href="scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="1808,160,1987,189"/><area shape="rect" id="node52" href="kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="2440,237,2549,267"/><area shape="rect" id="node55" href="ksem_8c.html" title="Gestion des sémaphores." alt="" coords="2573,237,2680,267"/><area shape="rect" id="node58" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="2704,237,2819,267"/><area shape="rect" id="node60" href="round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="2843,237,2984,267"/><area shape="rect" id="node15" href="serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="5,237,184,267"/><area shape="rect" id="node18" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="208,237,408,267"/><area shape="rect" id="node20" href="fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="432,237,608,267"/><area shape="rect" id="node26" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="1181,237,1309,267"/><area shape="rect" id="node28" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="683,237,792,267"/><area shape="rect" id="node30" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="816,237,907,267"/><area shape="rect" id="node43" href="round__robin_8h.html" title="kernel/include/round_robin.h" alt="" coords="1853,237,2043,267"/><area shape="rect" id="node46" href="init_8c.html" title="kernel/init.c" alt="" coords="2067,237,2155,267"/><area shape="rect" id="node48" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="2179,237,2291,267"/><area shape="rect" id="node63" href="vmm_8c.html" title="kernel/vmm.c" alt="" coords="2315,237,2416,267"/></map>
+<area shape="rect" id="node3" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="929,83,1097,111"/><area shape="rect" id="node34" href="ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="457,161,615,189"/><area shape="rect" id="node5" href="tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="616,238,789,266"/><area shape="rect" id="node7" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="1325,161,1448,189"/><area shape="rect" id="node9" href="context_8h.html" title="kernel/include/context.h" alt="" coords="12,161,169,189"/><area shape="rect" id="node11" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="5,238,131,266"/><area shape="rect" id="node13" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="2240,161,2387,189"/><area shape="rect" id="node22" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="1416,315,1523,343"/><area shape="rect" id="node24" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="2008,238,2109,266"/><area shape="rect" id="node38" href="kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="205,238,315,266"/><area shape="rect" id="node41" href="ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="480,238,592,266"/><area shape="rect" id="node46" href="scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="928,161,1099,189"/><area shape="rect" id="node60" href="ksem_8c.html" title="Gestion des sémaphores." alt="" coords="1584,238,1685,266"/><area shape="rect" id="node64" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="1709,238,1821,266"/><area shape="rect" id="node66" href="round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="1845,238,1984,266"/><area shape="rect" id="node15" href="serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="2381,238,2555,266"/><area shape="rect" id="node18" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="2579,238,2776,266"/><area shape="rect" id="node20" href="fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="2800,238,2979,266"/><area shape="rect" id="node26" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="813,238,936,266"/><area shape="rect" id="node28" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="3053,238,3160,266"/><area shape="rect" id="node30" href="module_8c.html" title="kernel/module.c" alt="" coords="2133,238,2245,266"/><area shape="rect" id="node32" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="2269,238,2357,266"/><area shape="rect" id="node43" href="ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="339,238,456,266"/><area shape="rect" id="node49" href="round__robin_8h.html" title="kernel/include/round_robin.h" alt="" coords="1379,238,1560,266"/><area shape="rect" id="node52" href="init_8c.html" title="kernel/init.c" alt="" coords="1011,238,1099,266"/><area shape="rect" id="node54" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="1123,238,1232,266"/><area shape="rect" id="node69" href="vmm_8c.html" title="kernel/vmm.c" alt="" coords="1256,238,1355,266"/></map>
 </div>
 </div>
 <p><a href="signal__types_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -102,78 +105,33 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>NSIG</b>&#160;&#160;&#160;32</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1836b0246d63153d3443f07a230f5797"></a><!-- doxytag: member="signal_types.h::SIGTYPES" ref="a1836b0246d63153d3443f07a230f5797" args="" -->
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGTYPES</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a136c64ec2d1306de745e39d6aee362ca"></a><!-- doxytag: member="signal_types.h::SIGHUP" ref="a136c64ec2d1306de745e39d6aee362ca" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGHUP</b>&#160;&#160;&#160;0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a487309e3e9e0527535644115204a639a"></a><!-- doxytag: member="signal_types.h::SIGINT" ref="a487309e3e9e0527535644115204a639a" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGINT</b>&#160;&#160;&#160;1</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a62045b465be11891160d53c10861b16c"></a><!-- doxytag: member="signal_types.h::SIGQUIT" ref="a62045b465be11891160d53c10861b16c" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGQUIT</b>&#160;&#160;&#160;2</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4c9c5284f8c8d146bd7a93d25017fc62"></a><!-- doxytag: member="signal_types.h::SIGILL" ref="a4c9c5284f8c8d146bd7a93d25017fc62" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGILL</b>&#160;&#160;&#160;3</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2beb906ab1b46676e63823f4e773c38"></a><!-- doxytag: member="signal_types.h::SIGTRAP" ref="aa2beb906ab1b46676e63823f4e773c38" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGTRAP</b>&#160;&#160;&#160;4</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa86c630133e5b5174ac970227b273446"></a><!-- doxytag: member="signal_types.h::SIGABRT" ref="aa86c630133e5b5174ac970227b273446" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGABRT</b>&#160;&#160;&#160;5</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab12271d5e5911f8a85dc7c3f0e2364c7"></a><!-- doxytag: member="signal_types.h::SIGIOT" ref="ab12271d5e5911f8a85dc7c3f0e2364c7" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGIOT</b>&#160;&#160;&#160;5</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aead3d488474201acf18c4b63d91edc3c"></a><!-- doxytag: member="signal_types.h::SIGBUS" ref="aead3d488474201acf18c4b63d91edc3c" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGBUS</b>&#160;&#160;&#160;6</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7fbba29aec3e4a8daae12935299df92d"></a><!-- doxytag: member="signal_types.h::SIGFPE" ref="a7fbba29aec3e4a8daae12935299df92d" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGFPE</b>&#160;&#160;&#160;7</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="addd8dcd406ce514ab3b4f576a5343d42"></a><!-- doxytag: member="signal_types.h::SIGKILL" ref="addd8dcd406ce514ab3b4f576a5343d42" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGKILL</b>&#160;&#160;&#160;8</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a944a8250e34bfd7991123abd3436d8c0"></a><!-- doxytag: member="signal_types.h::SIGUSR1" ref="a944a8250e34bfd7991123abd3436d8c0" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGUSR1</b>&#160;&#160;&#160;9</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae20b4f7171a09516ea73c9d2745bd596"></a><!-- doxytag: member="signal_types.h::SIGSEGV" ref="ae20b4f7171a09516ea73c9d2745bd596" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGSEGV</b>&#160;&#160;&#160;10</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abaaa61abe503c43481e35e21b0b5a031"></a><!-- doxytag: member="signal_types.h::SIGUSR2" ref="abaaa61abe503c43481e35e21b0b5a031" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGUSR2</b>&#160;&#160;&#160;11</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57e9c8c5fa13bf86bc779a9f6f408b7c"></a><!-- doxytag: member="signal_types.h::SIGPIPE" ref="a57e9c8c5fa13bf86bc779a9f6f408b7c" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGPIPE</b>&#160;&#160;&#160;12</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa6946723c6b7a86ec3c33caaf832840b"></a><!-- doxytag: member="signal_types.h::SIGALRM" ref="aa6946723c6b7a86ec3c33caaf832840b" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGALRM</b>&#160;&#160;&#160;13</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a682182a5e5f38fd61f4311501e9dac5d"></a><!-- doxytag: member="signal_types.h::SIGTERM" ref="a682182a5e5f38fd61f4311501e9dac5d" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGTERM</b>&#160;&#160;&#160;14</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03612fcda4ab9671dfa7051e7b666fb6"></a><!-- doxytag: member="signal_types.h::SIGSTKFLT" ref="a03612fcda4ab9671dfa7051e7b666fb6" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGSTKFLT</b>&#160;&#160;&#160;15</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0e63521a64cc8bc2b91d36a87d32c9f8"></a><!-- doxytag: member="signal_types.h::SIGCHLD" ref="a0e63521a64cc8bc2b91d36a87d32c9f8" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGCHLD</b>&#160;&#160;&#160;16</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a024f43063003e753afc6cca1acd6e104"></a><!-- doxytag: member="signal_types.h::SIGCONT" ref="a024f43063003e753afc6cca1acd6e104" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGCONT</b>&#160;&#160;&#160;17</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a069e358bc9a864b7dc4fed2440eda14c"></a><!-- doxytag: member="signal_types.h::SIGSTOP" ref="a069e358bc9a864b7dc4fed2440eda14c" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGSTOP</b>&#160;&#160;&#160;18</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe65c086e01f0d286b7a785a7e3cdd1a"></a><!-- doxytag: member="signal_types.h::SIGTSTP" ref="abe65c086e01f0d286b7a785a7e3cdd1a" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGTSTP</b>&#160;&#160;&#160;19</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c146e34a6b5a78dfba41cded3331181"></a><!-- doxytag: member="signal_types.h::SIGTTIN" ref="a2c146e34a6b5a78dfba41cded3331181" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGTTIN</b>&#160;&#160;&#160;20</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a782864287613e2c5c030411fa9c5e9b1"></a><!-- doxytag: member="signal_types.h::SIGTTOU" ref="a782864287613e2c5c030411fa9c5e9b1" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGTTOU</b>&#160;&#160;&#160;21</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9ff13149e36144a4ea28788948c34dd"></a><!-- doxytag: member="signal_types.h::SIGURG" ref="ad9ff13149e36144a4ea28788948c34dd" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGURG</b>&#160;&#160;&#160;22</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7265cbba4972503c1c30a2e52a929874"></a><!-- doxytag: member="signal_types.h::SIGXCPU" ref="a7265cbba4972503c1c30a2e52a929874" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGXCPU</b>&#160;&#160;&#160;23</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75440a7aa885a1052dfd3b4393fd9baa"></a><!-- doxytag: member="signal_types.h::SIGXFSZ" ref="a75440a7aa885a1052dfd3b4393fd9baa" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGXFSZ</b>&#160;&#160;&#160;24</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71403d2f5240e409e213060ea3301851"></a><!-- doxytag: member="signal_types.h::SIGVTALRM" ref="a71403d2f5240e409e213060ea3301851" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGVTALRM</b>&#160;&#160;&#160;25</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab6bd2a2ff7e58d45965ef257f96dfe65"></a><!-- doxytag: member="signal_types.h::SIGPROF" ref="ab6bd2a2ff7e58d45965ef257f96dfe65" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGPROF</b>&#160;&#160;&#160;26</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13ba0e7c4365813312eb4566907bce4f"></a><!-- doxytag: member="signal_types.h::SIGWINCH" ref="a13ba0e7c4365813312eb4566907bce4f" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGWINCH</b>&#160;&#160;&#160;27</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a929c5eace94ce2e099c6fa732450ce86"></a><!-- doxytag: member="signal_types.h::SIGIO" ref="a929c5eace94ce2e099c6fa732450ce86" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGIO</b>&#160;&#160;&#160;28</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1614264a836d6a5642554775ef0134d0"></a><!-- doxytag: member="signal_types.h::SIGPOLL" ref="a1614264a836d6a5642554775ef0134d0" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGPOLL</b>&#160;&#160;&#160;SIGIO</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a633dbd7dca7d839e6af0299bd4713f0a"></a><!-- doxytag: member="signal_types.h::SIGPWR" ref="a633dbd7dca7d839e6af0299bd4713f0a" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGPWR</b>&#160;&#160;&#160;29</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8bacf9eb18fd539099c1bb4666c45d60"></a><!-- doxytag: member="signal_types.h::SIGSYS" ref="a8bacf9eb18fd539099c1bb4666c45d60" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGSYS</b>&#160;&#160;&#160;30</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11e925ada5a97c7bbb6b88de8ed543b4"></a><!-- doxytag: member="signal_types.h::SIGUNUSED" ref="a11e925ada5a97c7bbb6b88de8ed543b4" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGUNUSED</b>&#160;&#160;&#160;30</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#a136c64ec2d1306de745e39d6aee362ca">SIGHUP</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#a487309e3e9e0527535644115204a639a">SIGINT</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#a62045b465be11891160d53c10861b16c">SIGQUIT</a>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#a4c9c5284f8c8d146bd7a93d25017fc62">SIGILL</a>&#160;&#160;&#160;3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#aa2beb906ab1b46676e63823f4e773c38">SIGTRAP</a>&#160;&#160;&#160;4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#aa86c630133e5b5174ac970227b273446">SIGABRT</a>&#160;&#160;&#160;5</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#aead3d488474201acf18c4b63d91edc3c">SIGBUS</a>&#160;&#160;&#160;6</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#a7fbba29aec3e4a8daae12935299df92d">SIGFPE</a>&#160;&#160;&#160;7</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#addd8dcd406ce514ab3b4f576a5343d42">SIGKILL</a>&#160;&#160;&#160;8</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#a944a8250e34bfd7991123abd3436d8c0">SIGUSR1</a>&#160;&#160;&#160;9</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#ae20b4f7171a09516ea73c9d2745bd596">SIGSEGV</a>&#160;&#160;&#160;10</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#abaaa61abe503c43481e35e21b0b5a031">SIGUSR2</a>&#160;&#160;&#160;11</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#a57e9c8c5fa13bf86bc779a9f6f408b7c">SIGPIPE</a>&#160;&#160;&#160;12</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#aa6946723c6b7a86ec3c33caaf832840b">SIGALRM</a>&#160;&#160;&#160;13</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#a682182a5e5f38fd61f4311501e9dac5d">SIGTERM</a>&#160;&#160;&#160;14</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#a0e63521a64cc8bc2b91d36a87d32c9f8">SIGCHLD</a>&#160;&#160;&#160;16</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#a024f43063003e753afc6cca1acd6e104">SIGCONT</a>&#160;&#160;&#160;17</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#a069e358bc9a864b7dc4fed2440eda14c">SIGSTOP</a>&#160;&#160;&#160;18</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#abe65c086e01f0d286b7a785a7e3cdd1a">SIGTSTP</a>&#160;&#160;&#160;19</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#a2c146e34a6b5a78dfba41cded3331181">SIGTTIN</a>&#160;&#160;&#160;20</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#a782864287613e2c5c030411fa9c5e9b1">SIGTTOU</a>&#160;&#160;&#160;21</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#ad9ff13149e36144a4ea28788948c34dd">SIGURG</a>&#160;&#160;&#160;22</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal__types_8h.html#a8bacf9eb18fd539099c1bb4666c45d60">SIGSYS</a>&#160;&#160;&#160;30</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae89f9a1282bd2d1b2a2b310c12ea16a5"></a><!-- doxytag: member="signal_types.h::SIGRTMIN" ref="ae89f9a1282bd2d1b2a2b310c12ea16a5" args="" -->
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGRTMIN</b>&#160;&#160;&#160;31</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5336d2c76af22b10373e3dd28fb3b0f0"></a><!-- doxytag: member="signal_types.h::SIGRTMAX" ref="a5336d2c76af22b10373e3dd28fb3b0f0" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGRTMAX</b>&#160;&#160;&#160;NSIG-1</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGRTMAX</b>&#160;&#160;&#160;<a class="el" href="signal_8h.html#ab83b88daaecc469d1edb90a527ab4a39">NSIG</a>-1</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a927f6ae16379576d638006c7498ac5d7"></a><!-- doxytag: member="signal_types.h::SIG_BLOCK" ref="a927f6ae16379576d638006c7498ac5d7" args="" -->
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SIG_BLOCK</b>&#160;&#160;&#160;0</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5fcd73313a63dac2cc7eb3b654215250"></a><!-- doxytag: member="signal_types.h::SIG_UNBLOCK" ref="a5fcd73313a63dac2cc7eb3b654215250" args="" -->
@@ -197,8 +155,330 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-<p>Description de ce que fait le fichier </p>
-</div></div><!-- contents -->
+</div><hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="aa86c630133e5b5174ac970227b273446"></a><!-- doxytag: member="signal_types.h::SIGABRT" ref="aa86c630133e5b5174ac970227b273446" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#aa86c630133e5b5174ac970227b273446">SIGABRT</a>&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Abort. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa6946723c6b7a86ec3c33caaf832840b"></a><!-- doxytag: member="signal_types.h::SIGALRM" ref="aa6946723c6b7a86ec3c33caaf832840b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#aa6946723c6b7a86ec3c33caaf832840b">SIGALRM</a>&#160;&#160;&#160;13</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Signal raised by alarm. </p>
+
+</div>
+</div>
+<a class="anchor" id="aead3d488474201acf18c4b63d91edc3c"></a><!-- doxytag: member="signal_types.h::SIGBUS" ref="aead3d488474201acf18c4b63d91edc3c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#aead3d488474201acf18c4b63d91edc3c">SIGBUS</a>&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Bus error. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0e63521a64cc8bc2b91d36a87d32c9f8"></a><!-- doxytag: member="signal_types.h::SIGCHLD" ref="a0e63521a64cc8bc2b91d36a87d32c9f8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#a0e63521a64cc8bc2b91d36a87d32c9f8">SIGCHLD</a>&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Fin processus fils. </p>
+
+</div>
+</div>
+<a class="anchor" id="a024f43063003e753afc6cca1acd6e104"></a><!-- doxytag: member="signal_types.h::SIGCONT" ref="a024f43063003e753afc6cca1acd6e104" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#a024f43063003e753afc6cca1acd6e104">SIGCONT</a>&#160;&#160;&#160;17</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Continue si arrêté. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7fbba29aec3e4a8daae12935299df92d"></a><!-- doxytag: member="signal_types.h::SIGFPE" ref="a7fbba29aec3e4a8daae12935299df92d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#a7fbba29aec3e4a8daae12935299df92d">SIGFPE</a>&#160;&#160;&#160;7</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Floating Point Exception. </p>
+
+</div>
+</div>
+<a class="anchor" id="a136c64ec2d1306de745e39d6aee362ca"></a><!-- doxytag: member="signal_types.h::SIGHUP" ref="a136c64ec2d1306de745e39d6aee362ca" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#a136c64ec2d1306de745e39d6aee362ca">SIGHUP</a>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Hang up. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4c9c5284f8c8d146bd7a93d25017fc62"></a><!-- doxytag: member="signal_types.h::SIGILL" ref="a4c9c5284f8c8d146bd7a93d25017fc62" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#a4c9c5284f8c8d146bd7a93d25017fc62">SIGILL</a>&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Illegal instruction. </p>
+
+</div>
+</div>
+<a class="anchor" id="a487309e3e9e0527535644115204a639a"></a><!-- doxytag: member="signal_types.h::SIGINT" ref="a487309e3e9e0527535644115204a639a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#a487309e3e9e0527535644115204a639a">SIGINT</a>&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Interrupt. </p>
+
+</div>
+</div>
+<a class="anchor" id="addd8dcd406ce514ab3b4f576a5343d42"></a><!-- doxytag: member="signal_types.h::SIGKILL" ref="addd8dcd406ce514ab3b4f576a5343d42" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#addd8dcd406ce514ab3b4f576a5343d42">SIGKILL</a>&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Terminate. </p>
+
+</div>
+</div>
+<a class="anchor" id="a57e9c8c5fa13bf86bc779a9f6f408b7c"></a><!-- doxytag: member="signal_types.h::SIGPIPE" ref="a57e9c8c5fa13bf86bc779a9f6f408b7c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#a57e9c8c5fa13bf86bc779a9f6f408b7c">SIGPIPE</a>&#160;&#160;&#160;12</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Write to pipe with no one reading. </p>
+
+</div>
+</div>
+<a class="anchor" id="a62045b465be11891160d53c10861b16c"></a><!-- doxytag: member="signal_types.h::SIGQUIT" ref="a62045b465be11891160d53c10861b16c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#a62045b465be11891160d53c10861b16c">SIGQUIT</a>&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Quit and dump. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae20b4f7171a09516ea73c9d2745bd596"></a><!-- doxytag: member="signal_types.h::SIGSEGV" ref="ae20b4f7171a09516ea73c9d2745bd596" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#ae20b4f7171a09516ea73c9d2745bd596">SIGSEGV</a>&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Segmentation Violation. </p>
+
+</div>
+</div>
+<a class="anchor" id="a069e358bc9a864b7dc4fed2440eda14c"></a><!-- doxytag: member="signal_types.h::SIGSTOP" ref="a069e358bc9a864b7dc4fed2440eda14c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#a069e358bc9a864b7dc4fed2440eda14c">SIGSTOP</a>&#160;&#160;&#160;18</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Stop l'exécution temporairement. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8bacf9eb18fd539099c1bb4666c45d60"></a><!-- doxytag: member="signal_types.h::SIGSYS" ref="a8bacf9eb18fd539099c1bb4666c45d60" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#a8bacf9eb18fd539099c1bb4666c45d60">SIGSYS</a>&#160;&#160;&#160;30</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Bad syscall. </p>
+
+</div>
+</div>
+<a class="anchor" id="a682182a5e5f38fd61f4311501e9dac5d"></a><!-- doxytag: member="signal_types.h::SIGTERM" ref="a682182a5e5f38fd61f4311501e9dac5d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#a682182a5e5f38fd61f4311501e9dac5d">SIGTERM</a>&#160;&#160;&#160;14</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Termination. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa2beb906ab1b46676e63823f4e773c38"></a><!-- doxytag: member="signal_types.h::SIGTRAP" ref="aa2beb906ab1b46676e63823f4e773c38" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#aa2beb906ab1b46676e63823f4e773c38">SIGTRAP</a>&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Trap. </p>
+
+</div>
+</div>
+<a class="anchor" id="abe65c086e01f0d286b7a785a7e3cdd1a"></a><!-- doxytag: member="signal_types.h::SIGTSTP" ref="abe65c086e01f0d286b7a785a7e3cdd1a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#abe65c086e01f0d286b7a785a7e3cdd1a">SIGTSTP</a>&#160;&#160;&#160;19</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Terminal Stop. </p>
+
+</div>
+</div>
+<a class="anchor" id="a2c146e34a6b5a78dfba41cded3331181"></a><!-- doxytag: member="signal_types.h::SIGTTIN" ref="a2c146e34a6b5a78dfba41cded3331181" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#a2c146e34a6b5a78dfba41cded3331181">SIGTTIN</a>&#160;&#160;&#160;20</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Le process en background essaye de lire le tty. </p>
+
+</div>
+</div>
+<a class="anchor" id="a782864287613e2c5c030411fa9c5e9b1"></a><!-- doxytag: member="signal_types.h::SIGTTOU" ref="a782864287613e2c5c030411fa9c5e9b1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#a782864287613e2c5c030411fa9c5e9b1">SIGTTOU</a>&#160;&#160;&#160;21</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Le process en background essaye d'écrire sur le tty. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad9ff13149e36144a4ea28788948c34dd"></a><!-- doxytag: member="signal_types.h::SIGURG" ref="ad9ff13149e36144a4ea28788948c34dd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#ad9ff13149e36144a4ea28788948c34dd">SIGURG</a>&#160;&#160;&#160;22</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Urgent data available on socket. </p>
+
+</div>
+</div>
+<a class="anchor" id="a944a8250e34bfd7991123abd3436d8c0"></a><!-- doxytag: member="signal_types.h::SIGUSR1" ref="a944a8250e34bfd7991123abd3436d8c0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#a944a8250e34bfd7991123abd3436d8c0">SIGUSR1</a>&#160;&#160;&#160;9</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Signal utilisateur 1. </p>
+
+</div>
+</div>
+<a class="anchor" id="abaaa61abe503c43481e35e21b0b5a031"></a><!-- doxytag: member="signal_types.h::SIGUSR2" ref="abaaa61abe503c43481e35e21b0b5a031" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="signal_8h.html#abaaa61abe503c43481e35e21b0b5a031">SIGUSR2</a>&#160;&#160;&#160;11</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Signal utilisateur 2. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -216,7 +496,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

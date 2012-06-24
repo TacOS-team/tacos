@@ -81,25 +81,82 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence de la structure _directory</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="_directory" --><div class="dynheader">
+<!-- doxytag: class="_directory" -->
+<p><code>#include &lt;<a class="el" href="fat__internal_8h_source.html">fat_internal.h</a>&gt;</code></p>
+<div class="dynheader">
 Graphe de collaboration de _directory:</div>
 <div class="dyncontent">
 <div class="center"><img src="struct__directory__coll__graph.png" border="0" usemap="#__directory_coll__map" alt="Collaboration graph"/></div>
 <map name="__directory_coll__map" id="__directory_coll__map">
-<area shape="rect" id="node2" href="struct__directory__entry.html" title="_directory_entry" alt="" coords="5,5,123,35"/></map>
+<area shape="rect" id="node2" href="struct__directory__entry.html" title="_directory_entry" alt="" coords="5,6,117,34"/></map>
 <center><span class="legend">[<a href="graph_legend.html">légende</a>]</span></center></div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2aa96162372442698a14e116ce88110d"></a><!-- doxytag: member="_directory::entries" ref="a2aa96162372442698a14e116ce88110d" args="" -->
-<a class="el" href="struct__directory__entry.html">directory_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>entries</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb73476149e19828774d4dfbd96a051f"></a><!-- doxytag: member="_directory::total_entries" ref="aeb73476149e19828774d4dfbd96a051f" args="" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>total_entries</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a535c678fe29215d35ac64200865147a4"></a><!-- doxytag: member="_directory::name" ref="a535c678fe29215d35ac64200865147a4" args="[256]" -->
-char&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> [256]</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a45241095c7fb2a39f158638631ddbc"></a><!-- doxytag: member="_directory::cluster" ref="a5a45241095c7fb2a39f158638631ddbc" args="" -->
-<a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>cluster</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fat__internal_8h.html#ab6546cb0abf935a615fae20884a41818">directory_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__directory.html#a2aa96162372442698a14e116ce88110d">entries</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__directory.html#aeb73476149e19828774d4dfbd96a051f">total_entries</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__directory.html#a535c678fe29215d35ac64200865147a4">name</a> [256]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__directory.html#a5a45241095c7fb2a39f158638631ddbc">cluster</a></td></tr>
 </table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>Structure de haut niveau pour stocker les informations d'un dossier. </p>
+</div><hr/><h2>Documentation des champs</h2>
+<a class="anchor" id="a5a45241095c7fb2a39f158638631ddbc"></a><!-- doxytag: member="_directory::cluster" ref="a5a45241095c7fb2a39f158638631ddbc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="el" href="struct__directory.html#a5a45241095c7fb2a39f158638631ddbc">_directory::cluster</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cluster où est enregistré le dossier. </p>
+
+</div>
+</div>
+<a class="anchor" id="a2aa96162372442698a14e116ce88110d"></a><!-- doxytag: member="_directory::entries" ref="a2aa96162372442698a14e116ce88110d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fat__internal_8h.html#ab6546cb0abf935a615fae20884a41818">directory_entry_t</a>* <a class="el" href="struct__directory.html#a2aa96162372442698a14e116ce88110d">_directory::entries</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Liste des entrées dans ce dossier. </p>
+
+</div>
+</div>
+<a class="anchor" id="a535c678fe29215d35ac64200865147a4"></a><!-- doxytag: member="_directory::name" ref="a535c678fe29215d35ac64200865147a4" args="[256]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="struct__directory.html#a535c678fe29215d35ac64200865147a4">_directory::name</a>[256]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nom du dossier. </p>
+
+</div>
+</div>
+<a class="anchor" id="aeb73476149e19828774d4dfbd96a051f"></a><!-- doxytag: member="_directory::total_entries" ref="aeb73476149e19828774d4dfbd96a051f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="struct__directory.html#aeb73476149e19828774d4dfbd96a051f">_directory::total_entries</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre d'entrées dans le dossier. </p>
+
+</div>
+</div>
 <hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
 <li>kernel/fs/fat/<a class="el" href="fat__internal_8h_source.html">fat_internal.h</a></li>
 </ul>
@@ -121,7 +178,7 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> [256]</td></
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:48 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

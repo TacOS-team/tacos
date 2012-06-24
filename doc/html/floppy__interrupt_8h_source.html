@@ -83,12 +83,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00030"></a>00030 <span class="preprocessor">#ifndef _FLOPPY_INTERRUPT_H_</span>
 <a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define _FLOPPY_INTERRUPT_H_</span>
 <a name="l00032"></a>00032 <span class="preprocessor"></span>
-<a name="l00033"></a>00033 <span class="keywordtype">void</span> floppy_init_interrupt();
-<a name="l00034"></a>00034 <span class="keywordtype">void</span> floppy_reset_irq();
-<a name="l00035"></a>00035 <span class="keywordtype">void</span> floppy_wait_irq();
-<a name="l00036"></a>00036 <span class="keywordtype">void</span> floppy_sense_interrupt(<span class="keywordtype">int</span>* st0, <span class="keywordtype">int</span>* cy1);
+<a name="l00036"></a>00036 <span class="keywordtype">void</span> <a class="code" href="floppy__interrupt_8c.html#a19cdddd056dff00ace3567933e4d2b71" title="Initialise l&#39;IRQ floppy.">floppy_init_interrupt</a>();
 <a name="l00037"></a>00037 
-<a name="l00038"></a>00038 <span class="preprocessor">#endif</span>
+<a name="l00041"></a>00041 <span class="keywordtype">void</span> <a class="code" href="floppy__interrupt_8c.html#a4faeb801db3260ba0d654d34c843ddf2" title="Remet à 0 le flag software d&#39;interruption.">floppy_reset_irq</a>();
+<a name="l00042"></a>00042 
+<a name="l00046"></a>00046 <span class="keywordtype">void</span> <a class="code" href="floppy__interrupt_8c.html#a579397f7aad55a1eff3648712e9b1f5a" title="Attendre une interruption (XXX attente active)">floppy_wait_irq</a>();
+<a name="l00047"></a>00047 
+<a name="l00051"></a>00051 <span class="keywordtype">void</span> <a class="code" href="floppy__interrupt_8c.html#aa736fd868e99a0bde478ea3b5a836b04" title="Récupère des données d&#39;interruption.">floppy_sense_interrupt</a>(<span class="keywordtype">int</span>* st0, <span class="keywordtype">int</span>* cy1);
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -107,7 +110,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:46 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

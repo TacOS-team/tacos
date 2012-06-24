@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$structmultiboot__aout__symbol__table.html" title="multiboot_aout_symbol_table" alt="" coords="5,5,197,35"/>
-<area shape="rect" id="node4" href="$structmultiboot__elf__section__header__table.html" title="multiboot_elf_section_header_table" alt="" coords="221,5,451,35"/>
+<area shape="rect" id="node2" href="$structmultiboot__aout__symbol__table.html" title="multiboot_aout_symbol_table" alt="" coords="5,6,195,34"/>
+<area shape="rect" id="node4" href="$structmultiboot__elf__section__header__table.html" title="multiboot_elf_section_header_table" alt="" coords="219,6,445,34"/>
 </map>

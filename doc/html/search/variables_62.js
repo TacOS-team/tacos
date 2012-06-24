@@ -1,11 +1,5 @@
 var searchData=
 [
-  ['b1',['b1',['../structmousestate.html#a4fac81ad425e98e190c6a7f9105be31e',1,'mousestate']]],
-  ['b2',['b2',['../structmousestate.html#ab58a27ba60a6b7a84df81d2dc75ab7f0',1,'mousestate']]],
-  ['b3',['b3',['../structmousestate.html#ad51bd5ca20799f15e35f26d273ff3f28',1,'mousestate']]],
-  ['b4',['b4',['../structmousestate.html#a28d7736996094ab999e01031bb34323c',1,'mousestate']]],
-  ['b5',['b5',['../structmousestate.html#ae2e8a4005f53bb338312ac8417623330',1,'mousestate']]],
-  ['b6',['b6',['../structmousestate.html#a9c664d5f4a4f7aa8998cda2522071425',1,'mousestate']]],
   ['back_5fbuffer',['back_buffer',['../structvga__page__t.html#aaad0350a467498fb34a0b8b1586ac76c',1,'vga_page_t']]],
   ['base_5faddr',['base_addr',['../structx86__gdt__register.html#a0de89b2ba10927885a25ef7d5422af17',1,'x86_gdt_register']]],
   ['base_5faddress_5f23_5f16',['base_address_23_16',['../structx86__segment__descriptor.html#a95889fcbabf116ba15a6cea3364b903d',1,'x86_segment_descriptor']]],
@@ -19,5 +13,11 @@ var searchData=
   ['bg_5freserved',['bg_reserved',['../structext2__group__desc.html#aff7f7dc0b67aed284218b238991f5c93',1,'ext2_group_desc']]],
   ['bg_5fused_5fdirs_5fcount',['bg_used_dirs_count',['../structext2__group__desc.html#adc9924671cb04dd63b4b7ffff8c262dc',1,'ext2_group_desc']]],
   ['blocks',['blocks',['../struct__ext2__extra__data.html#ab7503f7c0104cc8e081af354595fb1a0',1,'_ext2_extra_data']]],
-  ['bpp',['bpp',['../structmode.html#a5ca924aaa8f33c270e7896095df93c64',1,'mode']]]
+  ['boot_5fdevice',['boot_device',['../structmultiboot__info.html#ac7dd626a05c9ba62d55ea8a7a254de80',1,'multiboot_info']]],
+  ['boot_5floader_5fname',['boot_loader_name',['../structmultiboot__info.html#a4442438f7c2da9c0cf87a94ffd1acc04',1,'multiboot_info']]],
+  ['bpp',['bpp',['../structmode.html#a5ca924aaa8f33c270e7896095df93c64',1,'mode']]],
+  ['bs',['BS',['../struct__fat__info.html#adcd12930a4a7f94ecac42ba82567adb7',1,'_fat_info']]],
+  ['buffer',['buffer',['../struct__tty__struct__t.html#ace735f0fca7a2e1c4c75f6ffb9223b19',1,'_tty_struct_t']]],
+  ['bytes_5fper_5fcluster',['bytes_per_cluster',['../struct__fat__info.html#ac1ba92d928512827ab7978f136efda96',1,'_fat_info']]],
+  ['bytes_5fper_5fsector',['bytes_per_sector',['../struct__fat__BS.html#a28755d8abcc38818f9a64918ba7b2de4',1,'_fat_BS']]]
 ];

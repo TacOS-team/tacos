@@ -1,9 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="88,83,165,112"/>
-<area shape="rect" id="node9" href="$vfs_8h.html" title="Virtual File System." alt="" coords="189,83,237,112"/>
-<area shape="rect" id="node7" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="93,160,176,189"/>
-<area shape="rect" id="node11" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="257,392,321,421"/>
-<area shape="rect" id="node14" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="251,160,309,189"/>
-<area shape="rect" id="node17" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="301,237,365,267"/>
-<area shape="rect" id="node20" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="352,315,432,344"/>
+<area shape="rect" id="node3" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="81,83,159,111"/>
+<area shape="rect" id="node9" href="$vfs_8h.html" title="Virtual File System." alt="" coords="183,83,233,111"/>
+<area shape="rect" id="node7" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="91,161,171,189"/>
+<area shape="rect" id="node11" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="253,393,315,421"/>
+<area shape="rect" id="node14" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="245,161,307,189"/>
+<area shape="rect" id="node17" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="296,238,357,266"/>
+<area shape="rect" id="node20" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="347,315,424,343"/>
 </map>

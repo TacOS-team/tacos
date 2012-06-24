@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$devfs_8c.html#a38f6fa048d759685554ab60cae2fb250" title="Trouve les interfaces d&#39;un driver en fonction de son nom." alt="" coords="124,5,207,35"/>
-<area shape="rect" id="node5" href="$fopen_8c.html#acdefa543c661333e27beda1c868e6ce9" title="Conversion de modes de lecture/ecriture/ajout..." alt="" coords="115,59,216,88"/>
-<area shape="rect" id="node7" href="$unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="140,112,191,141"/>
-<area shape="rect" id="node9" href="$elf_8c.html#abbbb3d1f6ac9986f87d655cec7819556" title="charge un fichier elf dans la structure Elf32_File" alt="" coords="119,165,212,195"/>
-<area shape="rect" id="node13" href="$elf_8c.html#a8f556b72039271c88d4567c6e2f84ea0" title="Trouve un symbole dans un fichier." alt="" coords="119,219,212,248"/>
-<area shape="rect" id="node11" href="$elf_8c.html#af969175b11017f629b1dfbf557fccbcc" title="Affiche des information sur le fichier elf." alt="" coords="264,165,328,195"/>
-</map>

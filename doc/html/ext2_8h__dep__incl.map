@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="5,83,147,112"/>
-<area shape="rect" id="node5" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="171,83,371,112"/>
-<area shape="rect" id="node7" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="395,83,504,112"/>
+<area shape="rect" id="node3" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="5,83,144,111"/>
+<area shape="rect" id="node5" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="168,83,365,111"/>
+<area shape="rect" id="node7" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="389,83,496,111"/>
 </map>

@@ -84,12 +84,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="libc_2include_2sys_2types_8h_source.html">sys/types.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="stdlib_8h_source.html">stdlib.h</a>&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
 <code>#include &lt;<a class="el" href="stdio_8h_source.html">stdio.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="unistd_8h_source.html">unistd.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="syscall_8h_source.html">sys/syscall.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="process_8h_source.html">process.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="elf_8h_source.html">elf.h</a>&gt;</code><br/>
+<code>#include &lt;elf.h&gt;</code><br/>
 <code>#include &lt;string.h&gt;</code><br/>
 <code>#include &lt;<a class="el" href="fcntl_8h_source.html">fcntl.h</a>&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
@@ -97,15 +97,13 @@ Graphe des dépendances par inclusion de process.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="process_8c__incl.png" border="0" usemap="#libc_2process_8c" alt=""/></div>
 <map name="libc_2process_8c" id="libc_2process_8c">
-<area shape="rect" id="node3" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="172,315,260,344"/><area shape="rect" id="node7" href="stdlib_8h.html" title="stdlib.h" alt="" coords="48,160,109,189"/><area shape="rect" id="node13" href="stdio_8h.html" title="stdio.h" alt="" coords="194,160,256,189"/><area shape="rect" id="node21" href="unistd_8h.html" title="unistd.h" alt="" coords="297,83,364,112"/><area shape="rect" id="node30" href="syscall_8h.html" title="sys/syscall.h" alt="" coords="388,83,486,112"/><area shape="rect" id="node32" href="process_8h.html" title="process.h" alt="" coords="510,83,590,112"/><area shape="rect" id="node35" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="601,160,646,189"/><area shape="rect" id="node40" href="fcntl_8h.html" title="File control operations." alt="" coords="753,83,806,112"/><area shape="rect" id="node5" href="stdbool_8h.html" title="stdbool.h" alt="" coords="178,392,253,421"/><area shape="rect" id="node10" href="malloc_8h.html" title="malloc.h" alt="" coords="44,237,113,267"/><area shape="rect" id="node15" href="libio_8h.html" title="libio.h" alt="" coords="188,237,244,267"/><area shape="rect" id="node19" href="stdarg_8h.html" title="stdarg.h" alt="" coords="268,237,337,267"/><area shape="rect" id="node24" href="stat_8h.html" title="sys/stat.h" alt="" coords="412,160,489,189"/><area shape="rect" id="node27" href="time_8h.html" title="time.h" alt="" coords="462,237,518,267"/></map>
+<area shape="rect" id="node3" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="321,315,407,343"/><area shape="rect" id="node11" href="stdio_8h.html" title="stdio.h" alt="" coords="123,161,181,189"/><area shape="rect" id="node21" href="unistd_8h.html" title="unistd.h" alt="" coords="327,83,393,111"/><area shape="rect" id="node33" href="syscall_8h.html" title="sys/syscall.h" alt="" coords="417,83,513,111"/><area shape="rect" id="node35" href="process_8h.html" title="process.h" alt="" coords="537,83,615,111"/><area shape="rect" id="node44" href="fcntl_8h.html" title="File control operations." alt="" coords="735,315,791,343"/><area shape="rect" id="node5" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="497,393,585,421"/><area shape="rect" id="node7" href="stdbool_8h.html" title="Type bool." alt="" coords="327,393,401,421"/><area shape="rect" id="node14" href="libio_8h.html" title="libio.h" alt="" coords="147,238,200,266"/><area shape="rect" id="node19" href="stdarg_8h.html" title="stdarg.h" alt="" coords="5,238,72,266"/><area shape="rect" id="node25" href="stat_8h.html" title="sys/stat.h" alt="" coords="384,161,461,189"/><area shape="rect" id="node29" href="time_8h.html" title="time.h" alt="" coords="477,238,533,266"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5f18c5cf9200ee46df999df149fbd052"></a><!-- doxytag: member="process.c::GET_PROCESS" ref="a5f18c5cf9200ee46df999df149fbd052" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>GET_PROCESS</b>&#160;&#160;&#160;0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1155fc607922003fe71e41886aa0f811"></a><!-- doxytag: member="process.c::GET_PROCESS_LIST" ref="a1155fc607922003fe71e41886aa0f811" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>GET_PROCESS_LIST</b>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="process_8c.html#a5f18c5cf9200ee46df999df149fbd052">GET_PROCESS</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="process_8c.html#a1155fc607922003fe71e41886aa0f811">GET_PROCESS_LIST</a>&#160;&#160;&#160;1</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c59204b02d7d844597edb6262c0972e"></a><!-- doxytag: member="process.c::exec_elf" ref="a3c59204b02d7d844597edb6262c0972e" args="(char *cmdline, int orphan)" -->
@@ -126,7 +124,36 @@ LICENSE</h2>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
 <p>Description de ce que fait le fichier </p>
-</div></div><!-- contents -->
+</div><hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="a5f18c5cf9200ee46df999df149fbd052"></a><!-- doxytag: member="process.c::GET_PROCESS" ref="a5f18c5cf9200ee46df999df149fbd052" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="process_8c.html#a5f18c5cf9200ee46df999df149fbd052">GET_PROCESS</a>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Action pour obtenir les infos d'un process. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1155fc607922003fe71e41886aa0f811"></a><!-- doxytag: member="process.c::GET_PROCESS_LIST" ref="a1155fc607922003fe71e41886aa0f811" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="process_8c.html#a1155fc607922003fe71e41886aa0f811">GET_PROCESS_LIST</a>&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Action pour obtenir la liste. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -144,7 +171,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:48 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

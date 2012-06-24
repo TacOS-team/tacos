@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$fpu_8c.html" title="Configuration de la FPU." alt="" coords="5,83,96,112"/>
-<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="120,83,229,112"/>
+<area shape="rect" id="node3" href="$fpu_8c.html" title="Configuration de la FPU." alt="" coords="5,83,93,111"/>
+<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="117,83,224,111"/>
 </map>

@@ -87,24 +87,25 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <div class="dyncontent">
 <div class="center"><img src="floppy__dma_8h__dep__incl.png" border="0" usemap="#kernel_2drivers_2block_2floppy_2floppy__dma_8hdep" alt=""/></div>
 <map name="kernel_2drivers_2block_2floppy_2floppy__dma_8hdep" id="kernel_2drivers_2block_2floppy_2floppy__dma_8hdep">
-<area shape="rect" id="node3" href="floppy_8c.html" title="kernel/drivers/block/floppy/floppy.c" alt="" coords="5,83,232,112"/><area shape="rect" id="node5" href="floppy__dma_8c.html" title="kernel/drivers/block/floppy/floppy_dma.c" alt="" coords="256,83,517,112"/></map>
+<area shape="rect" id="node3" href="floppy_8c.html" title="kernel/drivers/block/floppy/floppy.c" alt="" coords="5,83,224,111"/><area shape="rect" id="node5" href="floppy__dma_8c.html" title="kernel/drivers/block/floppy/floppy_dma.c" alt="" coords="248,83,499,111"/></map>
 </div>
 </div>
 <p><a href="floppy__dma_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="enum-members"></a>
 Énumérations</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>floppy_io</b> { <b>FLOPPY_WRITE</b> =  1, 
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__dma_8h.html#adfcc8a5beaf1532fc574bc706d3e1fbe">floppy_io</a> { <b>FLOPPY_WRITE</b> =  1, 
 <b>FLOPPY_READ</b> =  2
  }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Défini le sens de la communication (input / output) <br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82b03eec2e2db0df14b77521b2b0cd99"></a><!-- doxytag: member="floppy_dma.h::floppy_dma_init" ref="a82b03eec2e2db0df14b77521b2b0cd99" args="(floppy_io io_dir)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>floppy_dma_init</b> (floppy_io io_dir)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac6e644203ea530de67552b2debe0bac2"></a><!-- doxytag: member="floppy_dma.h::floppy_read_sector" ref="ac6e644203ea530de67552b2debe0bac2" args="(int cylinder, int head, int sector, char *buffer)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>floppy_read_sector</b> (int cylinder, int head, int sector, char *buffer)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af9d347980c43209de48f63cd9f201419"></a><!-- doxytag: member="floppy_dma.h::floppy_write_sector" ref="af9d347980c43209de48f63cd9f201419" args="(int cylinder, int head, int sector, char *buffer)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>floppy_write_sector</b> (int cylinder, int head, int sector, char *buffer)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__dma_8h.html#a82b03eec2e2db0df14b77521b2b0cd99">floppy_dma_init</a> (<a class="el" href="floppy__dma_8h.html#adfcc8a5beaf1532fc574bc706d3e1fbe">floppy_io</a> io_dir)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le dma en écriture ou en lecture selon la valeur passée en paramètre.  <a href="#a82b03eec2e2db0df14b77521b2b0cd99"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__dma_8h.html#ac6e644203ea530de67552b2debe0bac2">floppy_read_sector</a> (int cylinder, int head, int sector, char *buffer)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lis un secteur via le DMA à partir d'un adressage CHS.  <a href="#ac6e644203ea530de67552b2debe0bac2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__dma_8h.html#af9d347980c43209de48f63cd9f201419">floppy_write_sector</a> (int cylinder, int head, int sector, char *buffer)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecrit un secteur via le DMA à partir d'un adressage CHS.  <a href="#af9d347980c43209de48f63cd9f201419"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -116,8 +117,146 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-<p>Description de ce que fait le fichier </p>
-</div></div><!-- contents -->
+<p>Fonctions liées à l'utilisation du DMA dans le driver disquette </p>
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a82b03eec2e2db0df14b77521b2b0cd99"></a><!-- doxytag: member="floppy_dma.h::floppy_dma_init" ref="a82b03eec2e2db0df14b77521b2b0cd99" args="(floppy_io io_dir)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="floppy__dma_8h.html#a82b03eec2e2db0df14b77521b2b0cd99">floppy_dma_init</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="floppy__dma_8h.html#adfcc8a5beaf1532fc574bc706d3e1fbe">floppy_io</a>&#160;</td>
+          <td class="paramname"><em>io_dir</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">io_dir</td><td>Sens de la communication du DMA à initialiser </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac6e644203ea530de67552b2debe0bac2"></a><!-- doxytag: member="floppy_dma.h::floppy_read_sector" ref="ac6e644203ea530de67552b2debe0bac2" args="(int cylinder, int head, int sector, char *buffer)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="floppy__dma_8h.html#ac6e644203ea530de67552b2debe0bac2">floppy_read_sector</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cylinder</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>head</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cylinder</td><td>Numero de cylindre </td></tr>
+    <tr><td class="paramname">head</td><td>Numero de tête de lecture </td></tr>
+    <tr><td class="paramname">sector</td><td>Numero de secteur </td></tr>
+    <tr><td class="paramname">buffer</td><td>Buffer recevant les données lues </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="floppy__dma_8h_ac6e644203ea530de67552b2debe0bac2_cgraph.png" border="0" usemap="#floppy__dma_8h_ac6e644203ea530de67552b2debe0bac2_cgraph" alt=""/></div>
+<map name="floppy__dma_8h_ac6e644203ea530de67552b2debe0bac2_cgraph" id="floppy__dma_8h_ac6e644203ea530de67552b2debe0bac2_cgraph">
+<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="185,5,255,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="af9d347980c43209de48f63cd9f201419"></a><!-- doxytag: member="floppy_dma.h::floppy_write_sector" ref="af9d347980c43209de48f63cd9f201419" args="(int cylinder, int head, int sector, char *buffer)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="floppy__dma_8h.html#af9d347980c43209de48f63cd9f201419">floppy_write_sector</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cylinder</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>head</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cylinder</td><td>Numero de cylindre </td></tr>
+    <tr><td class="paramname">head</td><td>Numero de tête de lecture </td></tr>
+    <tr><td class="paramname">sector</td><td>Numero de secteur </td></tr>
+    <tr><td class="paramname">buffer</td><td>Buffer contenant les données à écrire </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="floppy__dma_8h_af9d347980c43209de48f63cd9f201419_cgraph.png" border="0" usemap="#floppy__dma_8h_af9d347980c43209de48f63cd9f201419_cgraph" alt=""/></div>
+<map name="floppy__dma_8h_af9d347980c43209de48f63cd9f201419_cgraph" id="floppy__dma_8h_af9d347980c43209de48f63cd9f201419_cgraph">
+<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="188,5,257,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -135,7 +274,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

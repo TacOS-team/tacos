@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$mouse_8c.html" title="kernel/drivers/mouse.c" alt="" coords="5,83,163,112"/>
-<area shape="rect" id="node5" href="$serial_8c.html" title="kernel/drivers/serial.c" alt="" coords="187,83,336,112"/>
-<area shape="rect" id="node7" href="$init_8c.html" title="kernel/init.c" alt="" coords="360,83,448,112"/>
-<area shape="rect" id="node9" href="$kdriver_8c.html" title="kernel/kdriver.c" alt="" coords="472,83,587,112"/>
-<area shape="rect" id="node11" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="611,83,720,112"/>
-<area shape="rect" id="node13" href="$vfs_8c.html" title="kernel/vfs.c" alt="" coords="744,83,835,112"/>
-</map>

@@ -1,20 +1,22 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="316,57,383,87"/>
-<area shape="rect" id="node7" href="$unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="179,269,227,299"/>
-<area shape="rect" id="node11" href="$unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier." alt="" coords="179,323,227,352"/>
-<area shape="rect" id="node14" href="$ext2__functions_8c.html#a9df1cc1b1a14caf87d09762a4886ce53" title="Ouverture de fichier." alt="" coords="161,216,244,245"/>
-<area shape="rect" id="node29" href="$ext2__functions_8c.html#a8e34d61b346e77ba8d32ff6829dd6cfa" title="Création d&#39;un noeud (fichier, dossier, fichier spécial...)" alt="" coords="156,376,249,405"/>
-<area shape="rect" id="node31" href="$ext2__functions_8c.html#a2a5245bfa03e55c15539e6aa518e4fab" title="Création d&#39;un dossier." alt="" coords="160,109,245,139"/>
-<area shape="rect" id="node35" href="$ext2__functions_8c.html#a9a8b01e29da31a35719cbf11adab1f9d" title="Récupère l&#39;état d&#39;un fichier ou dossier." alt="" coords="165,429,240,459"/>
-<area shape="rect" id="node37" href="$ext2__functions_8c.html#aa78e9c6b4686b24a0183b164800a04ed" title="Suppression d&#39;un noeud." alt="" coords="159,5,247,35"/>
-<area shape="rect" id="node41" href="$ext2__functions_8c.html#ad87ef876e972f1bcb11d752042207d47" title="Suppression d&#39;un dossier vide." alt="" coords="161,163,244,192"/>
-<area shape="rect" id="node45" href="$ext2__functions_8c.html#a196cd1d4c0446caf3ec91f859c655170" title="Change la taille d&#39;un fichier." alt="" coords="153,483,252,512"/>
-<area shape="rect" id="node5" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="447,57,588,87"/>
-<area shape="rect" id="node9" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="319,372,380,401"/>
-<area shape="rect" id="node17" href="$ext2__functions_8c.html#aa5552876c927b5b04e708531c07344b0" title="Lecture d&#39;un fichier." alt="" coords="309,212,389,241"/>
-<area shape="rect" id="node19" href="$ext2__functions_8c.html#ac9b55aefa79e5e521e4e5d993b4c009a" title="Lecture du contenu d&#39;un dossier." alt="" coords="301,265,397,295"/>
-<area shape="rect" id="node25" href="$ext2__functions_8c.html#ab2859a00444ce0ad527332da72e2629a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="307,319,392,348"/>
-<area shape="rect" id="node21" href="$kernel_2include_2klibc_2string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères." alt="" coords="485,265,549,295"/>
-<area shape="rect" id="node23" href="$kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="491,136,544,165"/>
-<area shape="rect" id="node27" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="492,319,543,348"/>
+<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="443,334,509,362"/>
+<area shape="rect" id="node7" href="$unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="180,511,225,539"/>
+<area shape="rect" id="node11" href="$unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier." alt="" coords="177,562,228,590"/>
+<area shape="rect" id="node14" href="$ext2__functions_8c.html#a9df1cc1b1a14caf87d09762a4886ce53" title="Ouverture de fichier." alt="" coords="163,157,243,185"/>
+<area shape="rect" id="node34" href="$ext2__functions_8c.html#a8e34d61b346e77ba8d32ff6829dd6cfa" title="Crée un noeud." alt="" coords="157,613,248,641"/>
+<area shape="rect" id="node36" href="$ext2__functions_8c.html#a2a5245bfa03e55c15539e6aa518e4fab" title="Création d&#39;un dossier." alt="" coords="305,359,391,387"/>
+<area shape="rect" id="node40" href="$ext2__functions_8c.html#a9a8b01e29da31a35719cbf11adab1f9d" title="Récupère l&#39;état d&#39;un fichier ou dossier." alt="" coords="165,663,240,691"/>
+<area shape="rect" id="node42" href="$ext2__functions_8c.html#aa78e9c6b4686b24a0183b164800a04ed" title="Suppression d&#39;un noeud." alt="" coords="305,461,391,489"/>
+<area shape="rect" id="node46" href="$ext2__functions_8c.html#ad87ef876e972f1bcb11d752042207d47" title="Suppression d&#39;un dossier vide." alt="" coords="307,410,389,438"/>
+<area shape="rect" id="node50" href="$ext2__functions_8c.html#a196cd1d4c0446caf3ec91f859c655170" title="Change la taille d&#39;un fichier." alt="" coords="153,714,252,742"/>
+<area shape="rect" id="node5" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="559,334,697,362"/>
+<area shape="rect" id="node9" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="317,537,379,565"/>
+<area shape="rect" id="node17" href="$ext2__functions_8c.html#aa5552876c927b5b04e708531c07344b0" title="Lecture d&#39;un fichier." alt="" coords="309,55,387,83"/>
+<area shape="rect" id="node19" href="$ext2__functions_8c.html#a598e5a2d603b1d2b31b8058b9dec3ab5" title="Ecriture d&#39;un fichier." alt="" coords="308,207,388,235"/>
+<area shape="rect" id="node22" href="$ext2__functions_8c.html#a79a131bb760b0d236f6bf0209ee6f5cb" title="ext2_seek" alt="" coords="308,106,388,134"/>
+<area shape="rect" id="node24" href="$ext2__functions_8c.html#ac9b55aefa79e5e521e4e5d993b4c009a" title="Lecture du contenu d&#39;un dossier." alt="" coords="303,258,393,286"/>
+<area shape="rect" id="node30" href="$ext2__functions_8c.html#ab2859a00444ce0ad527332da72e2629a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="307,5,389,33"/>
+<area shape="rect" id="node26" href="$kernel_2include_2klibc_2string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères." alt="" coords="444,258,508,286"/>
+<area shape="rect" id="node28" href="$kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="449,410,503,438"/>
+<area shape="rect" id="node32" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="451,5,501,33"/>
 </map>

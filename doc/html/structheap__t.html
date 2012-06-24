@@ -81,20 +81,90 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence de la structure heap_t</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="heap_t" --><table class="memberdecls">
+<!-- doxytag: class="heap_t" -->
+<p><code>#include &lt;<a class="el" href="heap_8h_source.html">heap.h</a>&gt;</code></p>
+<table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeba09c8db02d651cfe45023364d756f9"></a><!-- doxytag: member="heap_t::comparator" ref="aeba09c8db02d651cfe45023364d756f9" args="" -->
-cmp_func_type&#160;</td><td class="memItemRight" valign="bottom"><b>comparator</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3924b3948b77f2ea568ccbd9fa0bd20b"></a><!-- doxytag: member="heap_t::heap" ref="a3924b3948b77f2ea568ccbd9fa0bd20b" args="" -->
-void *&#160;</td><td class="memItemRight" valign="bottom"><b>heap</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e3c1dd26d87564ee5beb5e2835bb445"></a><!-- doxytag: member="heap_t::nb_elements" ref="a3e3c1dd26d87564ee5beb5e2835bb445" args="" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>nb_elements</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a53cb84142d9a188aed138b4d894158"></a><!-- doxytag: member="heap_t::elements_size" ref="a5a53cb84142d9a188aed138b4d894158" args="" -->
-<a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>elements_size</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7919079b18428f31e03827344bc5a390"></a><!-- doxytag: member="heap_t::max_elements" ref="a7919079b18428f31e03827344bc5a390" args="" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>max_elements</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structheap__t.html#aeba09c8db02d651cfe45023364d756f9">comparator</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structheap__t.html#a3924b3948b77f2ea568ccbd9fa0bd20b">heap</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structheap__t.html#a3e3c1dd26d87564ee5beb5e2835bb445">nb_elements</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structheap__t.html#a5a53cb84142d9a188aed138b4d894158">elements_size</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structheap__t.html#a7919079b18428f31e03827344bc5a390">max_elements</a></td></tr>
 </table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>Structure de tas. </p>
+</div><hr/><h2>Documentation des champs</h2>
+<a class="anchor" id="aeba09c8db02d651cfe45023364d756f9"></a><!-- doxytag: member="heap_t::comparator" ref="aeba09c8db02d651cfe45023364d756f9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a> <a class="el" href="structheap__t.html#aeba09c8db02d651cfe45023364d756f9">heap_t::comparator</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Fonction de comparaison entre deux éléments. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5a53cb84142d9a188aed138b4d894158"></a><!-- doxytag: member="heap_t::elements_size" ref="a5a53cb84142d9a188aed138b4d894158" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> <a class="el" href="structheap__t.html#a5a53cb84142d9a188aed138b4d894158">heap_t::elements_size</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Taille de chaque élément. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3924b3948b77f2ea568ccbd9fa0bd20b"></a><!-- doxytag: member="heap_t::heap" ref="a3924b3948b77f2ea568ccbd9fa0bd20b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* <a class="el" href="structheap__t.html#a3924b3948b77f2ea568ccbd9fa0bd20b">heap_t::heap</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Tableau qui contient le tas. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7919079b18428f31e03827344bc5a390"></a><!-- doxytag: member="heap_t::max_elements" ref="a7919079b18428f31e03827344bc5a390" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structheap__t.html#a7919079b18428f31e03827344bc5a390">heap_t::max_elements</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre maximum d'éléments. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3e3c1dd26d87564ee5beb5e2835bb445"></a><!-- doxytag: member="heap_t::nb_elements" ref="a3e3c1dd26d87564ee5beb5e2835bb445" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structheap__t.html#a3e3c1dd26d87564ee5beb5e2835bb445">heap_t::nb_elements</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre d'éléments dans le tas. </p>
+
+</div>
+</div>
 <hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
 <li>kernel/include/<a class="el" href="heap_8h_source.html">heap.h</a></li>
 </ul>
@@ -116,7 +186,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>max_elements</b></td><
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:48 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

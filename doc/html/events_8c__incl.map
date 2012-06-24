@@ -1,10 +1,10 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$i8254_8h.html" title="Initialisation du i8254 (timer)." alt="" coords="5,160,67,189"/>
-<area shape="rect" id="node7" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="68,237,153,267"/>
-<area shape="rect" id="node10" href="$list_8h.html" title="list.h" alt="" coords="148,160,196,189"/>
-<area shape="rect" id="node13" href="$events_8h.html" title="events.h" alt="" coords="204,83,276,112"/>
-<area shape="rect" id="node21" href="$debug_8h.html" title="debug.h" alt="" coords="300,83,369,112"/>
-<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="159,315,223,344"/>
-<area shape="rect" id="node15" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="220,160,284,189"/>
-<area shape="rect" id="node18" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="279,237,359,267"/>
+<area shape="rect" id="node3" href="$i8254_8h.html" title="Initialisation du i8254 (timer)." alt="" coords="5,161,67,189"/>
+<area shape="rect" id="node7" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="68,238,153,266"/>
+<area shape="rect" id="node10" href="$list_8h.html" title="list.h" alt="" coords="148,161,196,189"/>
+<area shape="rect" id="node13" href="$events_8h.html" title="events.h" alt="" coords="204,83,273,111"/>
+<area shape="rect" id="node21" href="$debug_8h.html" title="debug.h" alt="" coords="297,83,364,111"/>
+<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="160,315,221,343"/>
+<area shape="rect" id="node15" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="220,161,281,189"/>
+<area shape="rect" id="node18" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="279,238,356,266"/>
 </map>

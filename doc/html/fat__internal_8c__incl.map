@@ -1,11 +1,11 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$fat__outils_8h.html" title="fat_outils.h" alt="" coords="55,83,138,112"/>
-<area shape="rect" id="node5" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="50,160,143,189"/>
-<area shape="rect" id="node9" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="111,392,175,421"/>
-<area shape="rect" id="node16" href="$vfs_8h.html" title="Virtual File System." alt="" coords="212,237,260,267"/>
-<area shape="rect" id="node25" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="96,237,174,267"/>
-<area shape="rect" id="node11" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="188,547,252,576"/>
-<area shape="rect" id="node13" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="142,469,222,499"/>
-<area shape="rect" id="node19" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="115,315,198,344"/>
-<area shape="rect" id="node21" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="222,315,280,344"/>
+<area shape="rect" id="node3" href="$fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="52,83,138,111"/>
+<area shape="rect" id="node5" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="47,161,143,189"/>
+<area shape="rect" id="node9" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="110,393,171,421"/>
+<area shape="rect" id="node16" href="$vfs_8h.html" title="Virtual File System." alt="" coords="208,238,259,266"/>
+<area shape="rect" id="node25" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="95,238,172,266"/>
+<area shape="rect" id="node11" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="186,547,247,575"/>
+<area shape="rect" id="node13" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="140,470,218,498"/>
+<area shape="rect" id="node19" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="112,315,192,343"/>
+<area shape="rect" id="node21" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="216,315,278,343"/>
 </map>

@@ -1,7 +1,9 @@
 var searchData=
 [
+  ['calloc',['calloc',['../libc_2include_2stdlib_8h.html#a62b7798461bd461da64c5f9d35feddf7',1,'calloc(size_t nmemb, size_t size):&#160;stdlib.c'],['../libc_2stdlib_8c.html#a62b7798461bd461da64c5f9d35feddf7',1,'calloc(size_t nmemb, size_t size):&#160;stdlib.c']]],
   ['chdir',['chdir',['../unistd_8h.html#a03af571dfb595681bfa203c83385c07b',1,'chdir(const char *path):&#160;unistd.c'],['../unistd_8c.html#a03af571dfb595681bfa203c83385c07b',1,'chdir(const char *path):&#160;unistd.c']]],
   ['clean_5fprocess_5flist',['clean_process_list',['../kprocess_8h.html#a8d3174a39442391c9d23454a3bcf482b',1,'kprocess.h']]],
+  ['clearerr',['clearerr',['../stdio_8h.html#ab5de865c3093158c70bf4bd88a9deea5',1,'ferr.c']]],
   ['clock_5finit',['clock_init',['../clock_8c.html#ae9cc0a879e88eea28e4e8b57318ef8e5',1,'clock_init():&#160;clock.c'],['../clock_8h.html#ae9cc0a879e88eea28e4e8b57318ef8e5',1,'clock_init():&#160;clock.c']]],
   ['clock_5fmktime',['clock_mktime',['../clock_8c.html#ab07bd3e86ff449c65b06fd50ec8e422e',1,'clock_mktime(struct tm *timep):&#160;clock.c'],['../clock_8h.html#ab07bd3e86ff449c65b06fd50ec8e422e',1,'clock_mktime(struct tm *timep):&#160;clock.c']]],
   ['clock_5ftick',['clock_tick',['../clock_8c.html#abc0cc7974581cee0900c817955ff2f5b',1,'clock_tick():&#160;clock.c'],['../clock_8h.html#abc0cc7974581cee0900c817955ff2f5b',1,'clock_tick():&#160;clock.c']]],

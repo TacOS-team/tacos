@@ -1,9 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="5,83,181,112"/>
-<area shape="rect" id="node5" href="$fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="205,83,360,112"/>
-<area shape="rect" id="node7" href="$kernel_2klibc_2string_8c.html" title="Manipulation de string depuis le kernel." alt="" coords="384,83,520,112"/>
-<area shape="rect" id="node9" href="$ctype_8c.html" title="Fonctions de classification des caractères." alt="" coords="544,83,632,112"/>
-<area shape="rect" id="node11" href="$scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="656,83,776,112"/>
-<area shape="rect" id="node13" href="$stdlib_8c.html" title="libc/stdlib.c" alt="" coords="800,83,885,112"/>
-<area shape="rect" id="node15" href="$libc_2string_8c.html" title="libc/string.c" alt="" coords="909,83,997,112"/>
+<area shape="rect" id="node3" href="$ctype_8c.html" title="Fonctions de classification des caractères." alt="" coords="5,83,91,111"/>
+<area shape="rect" id="node5" href="$scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="115,83,235,111"/>
+<area shape="rect" id="node7" href="$libc_2stdlib_8c.html" title="libc/stdlib.c" alt="" coords="259,83,344,111"/>
+<area shape="rect" id="node9" href="$libc_2string_8c.html" title="libc/string.c" alt="" coords="368,83,456,111"/>
 </map>

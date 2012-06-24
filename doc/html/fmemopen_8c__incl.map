@@ -1,10 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$stdio_8h.html" title="stdio.h" alt="" coords="112,83,173,112"/>
-<area shape="rect" id="node5" href="$libio_8h.html" title="libio.h" alt="" coords="5,160,61,189"/>
-<area shape="rect" id="node14" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="204,83,265,112"/>
-<area shape="rect" id="node21" href="$fopen_8h.html" title="fopen.h" alt="" coords="289,83,353,112"/>
-<area shape="rect" id="node7" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="127,237,215,267"/>
-<area shape="rect" id="node12" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="136,160,205,189"/>
-<area shape="rect" id="node9" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="133,315,208,344"/>
-<area shape="rect" id="node17" href="$malloc_8h.html" title="malloc.h" alt="" coords="280,160,349,189"/>
+<area shape="rect" id="node3" href="$stdio_8h.html" title="stdio.h" alt="" coords="161,83,220,111"/>
+<area shape="rect" id="node7" href="$libio_8h.html" title="libio.h" alt="" coords="248,161,301,189"/>
+<area shape="rect" id="node21" href="$fopen_8h.html" title="fopen.h" alt="" coords="284,238,348,266"/>
+<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="144,315,232,343"/>
+<area shape="rect" id="node10" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="5,238,91,266"/>
+<area shape="rect" id="node16" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="157,161,224,189"/>
+<area shape="rect" id="node13" href="$stdbool_8h.html" title="Type bool." alt="" coords="11,315,85,343"/>
 </map>

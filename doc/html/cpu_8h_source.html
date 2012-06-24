@@ -80,30 +80,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </div><!--header-->
 <div class="contents">
 <a href="cpu_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _CPU_H</span>
-<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _CPU_H</span>
-<a name="l00031"></a>00031 <span class="preprocessor"></span>
-<a name="l00032"></a>00032 <span class="comment">/* Définitions des masques pour les flags */</span>
-<a name="l00033"></a>00033 <span class="preprocessor">#define FLAGS_CF        0x00000001</span>
-<a name="l00034"></a>00034 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_PF        0x00000004</span>
-<a name="l00035"></a>00035 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_AF        0x00000010</span>
-<a name="l00036"></a>00036 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_ZF        0x00000040</span>
-<a name="l00037"></a>00037 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_SF        0x00000080</span>
-<a name="l00038"></a>00038 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_TF        0x00000100</span>
-<a name="l00039"></a>00039 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_IF        0x00000200</span>
-<a name="l00040"></a>00040 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_DF        0x00000400</span>
-<a name="l00041"></a>00041 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_OF        0x00000800</span>
-<a name="l00042"></a>00042 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_IOPL1     0x00001000</span>
-<a name="l00043"></a>00043 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_IOPL2     0x00002000</span>
-<a name="l00044"></a>00044 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_NT        0x00004000</span>
-<a name="l00045"></a>00045 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_RF        0x00010000</span>
-<a name="l00046"></a>00046 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_VM        0x00020000</span>
-<a name="l00047"></a>00047 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_AC        0x00040000</span>
-<a name="l00048"></a>00048 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_VIF       0x00080000</span>
-<a name="l00049"></a>00049 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_VIP       0x00100000</span>
-<a name="l00050"></a>00050 <span class="preprocessor"></span><span class="preprocessor">#define FLAGS_ID        0x00200000</span>
-<a name="l00051"></a>00051 <span class="preprocessor"></span>
-<a name="l00052"></a>00052 <span class="preprocessor">#endif </span><span class="comment">/* _CPU_H */</span>
+<a name="l00028"></a>00028 <span class="preprocessor">#ifndef _CPU_H</span>
+<a name="l00029"></a>00029 <span class="preprocessor"></span><span class="preprocessor">#define _CPU_H</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span>
+<a name="l00031"></a>00031 <span class="comment">/* Définitions des masques pour les flags */</span>
+<a name="l00032"></a><a class="code" href="cpu_8h.html#a2bedd71ee3fb79ef52f892f0d8c38944">00032</a> <span class="preprocessor">#define FLAGS_CF        0x00000001 </span>
+<a name="l00033"></a><a class="code" href="cpu_8h.html#a7e6aff229a00df76b28aabb5151fa0d9">00033</a> <span class="preprocessor">#define FLAGS_PF        0x00000004 </span>
+<a name="l00034"></a><a class="code" href="cpu_8h.html#ac2e065f36c5ae17f3dae4406b5333e45">00034</a> <span class="preprocessor">#define FLAGS_AF        0x00000010 </span>
+<a name="l00035"></a><a class="code" href="cpu_8h.html#a81e1a9abcac8701d25ad2fd6a8afbe62">00035</a> <span class="preprocessor">#define FLAGS_ZF        0x00000040 </span>
+<a name="l00036"></a><a class="code" href="cpu_8h.html#a932a45daf3fa04dd038df7b8644c0778">00036</a> <span class="preprocessor">#define FLAGS_SF        0x00000080 </span>
+<a name="l00037"></a><a class="code" href="cpu_8h.html#a1792407992a5406c18966aa379deb928">00037</a> <span class="preprocessor">#define FLAGS_TF        0x00000100 </span>
+<a name="l00038"></a><a class="code" href="cpu_8h.html#a86444793225d0c51717c9cccf541f47c">00038</a> <span class="preprocessor">#define FLAGS_IF        0x00000200 </span>
+<a name="l00039"></a><a class="code" href="cpu_8h.html#a2db82202c9d87e24f787b4972ac82d01">00039</a> <span class="preprocessor">#define FLAGS_DF        0x00000400 </span>
+<a name="l00040"></a><a class="code" href="cpu_8h.html#a7e2d10c6161198293e49ae2dc3e1b281">00040</a> <span class="preprocessor">#define FLAGS_OF        0x00000800 </span>
+<a name="l00041"></a><a class="code" href="cpu_8h.html#a9d5fda33cf0f6d6819ed984535cb8ff5">00041</a> <span class="preprocessor">#define FLAGS_IOPL1     0x00001000 </span>
+<a name="l00042"></a><a class="code" href="cpu_8h.html#a362713d800ef199939855c9d727ef045">00042</a> <span class="preprocessor">#define FLAGS_IOPL2     0x00002000 </span>
+<a name="l00043"></a><a class="code" href="cpu_8h.html#a0cdb72124771ac31c011b328c2b080d7">00043</a> <span class="preprocessor">#define FLAGS_NT        0x00004000 </span>
+<a name="l00044"></a><a class="code" href="cpu_8h.html#ab9ad3a8a690973cdf9d50328edddaa93">00044</a> <span class="preprocessor">#define FLAGS_RF        0x00010000 </span>
+<a name="l00045"></a><a class="code" href="cpu_8h.html#a9774b257c7c702af7c344b936de517d1">00045</a> <span class="preprocessor">#define FLAGS_VM        0x00020000 </span>
+<a name="l00046"></a><a class="code" href="cpu_8h.html#a3640ad0b12f50bedbd1836c946bf0368">00046</a> <span class="preprocessor">#define FLAGS_AC        0x00040000 </span>
+<a name="l00047"></a><a class="code" href="cpu_8h.html#aa1fd46f697afacff611d12fefd48b36c">00047</a> <span class="preprocessor">#define FLAGS_VIF       0x00080000 </span>
+<a name="l00048"></a><a class="code" href="cpu_8h.html#a4ad34e0df2b9ffb461818bd987341a4e">00048</a> <span class="preprocessor">#define FLAGS_VIP       0x00100000 </span>
+<a name="l00049"></a><a class="code" href="cpu_8h.html#ac1642f73f6c83284f3d7ab2427c261d8">00049</a> <span class="preprocessor">#define FLAGS_ID        0x00200000 </span>
+<a name="l00051"></a>00051 <span class="preprocessor">#endif </span><span class="comment">/* _CPU_H */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -122,7 +121,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:46 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

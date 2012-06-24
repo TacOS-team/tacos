@@ -80,25 +80,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </div><!--header-->
 <div class="contents">
 <a href="errno_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00030"></a>00030 <span class="preprocessor">#ifndef _ERRNO_H_</span>
-<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define _ERRNO_H_</span>
-<a name="l00032"></a>00032 <span class="preprocessor"></span>
-<a name="l00033"></a>00033 <span class="comment">/* man 2 write - à éventuellement reclasser dans un ordre moins bourrin</span>
-<a name="l00034"></a>00034 <span class="comment"> * ou copier /usr/include/asm-generic/errno-base.h */</span>
-<a name="l00035"></a>00035 <span class="preprocessor">#define EAGAIN    1 </span>
-<a name="l00036"></a>00036 <span class="preprocessor"></span><span class="preprocessor">#define EBADF     2</span>
-<a name="l00037"></a>00037 <span class="preprocessor"></span><span class="preprocessor">#define EFAULT    3</span>
-<a name="l00038"></a>00038 <span class="preprocessor"></span><span class="preprocessor">#define EFBIG     4</span>
-<a name="l00039"></a>00039 <span class="preprocessor"></span><span class="preprocessor">#define EINTR     5</span>
-<a name="l00040"></a>00040 <span class="preprocessor"></span><span class="preprocessor">#define EINVAL    6</span>
-<a name="l00041"></a>00041 <span class="preprocessor"></span><span class="preprocessor">#define EIO       7</span>
-<a name="l00042"></a>00042 <span class="preprocessor"></span><span class="preprocessor">#define ENOSPC    8</span>
-<a name="l00043"></a>00043 <span class="preprocessor"></span><span class="preprocessor">#define EPIPE     9</span>
-<a name="l00044"></a>00044 <span class="preprocessor"></span><span class="preprocessor">#define ERANGE    10</span>
-<a name="l00045"></a>00045 <span class="preprocessor"></span>
-<a name="l00046"></a>00046 <span class="keyword">extern</span> <span class="keywordtype">int</span> errno;
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048 <span class="preprocessor">#endif //_ERRNO_H_</span>
+<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _ERRNO_H_</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _ERRNO_H_</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="cdefs_8h.html">sys/cdefs.h</a>&gt;</span>
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 __BEGIN_DECLS
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="comment">/* A garder sychronisé avec kerrno.h. La valeur n&#39;a pas une grande importance. */</span>
+<a name="l00037"></a>00037 
+<a name="l00038"></a><a class="code" href="errno_8h.html#af0fac1cea1165b4debec7f686edf3313">00038</a> <span class="preprocessor">#define EAGAIN    1 </span>
+<a name="l00039"></a><a class="code" href="errno_8h.html#ac54507d66b43ad12f9356257323c0018">00039</a> <span class="preprocessor">#define EBADF     2 </span>
+<a name="l00040"></a><a class="code" href="errno_8h.html#a3f317946e043623f9d6b93dbf60e6316">00040</a> <span class="preprocessor">#define EFAULT    3 </span>
+<a name="l00041"></a><a class="code" href="errno_8h.html#af5401a500939ed1812c04ca200b95eef">00041</a> <span class="preprocessor">#define EFBIG     4 </span>
+<a name="l00042"></a><a class="code" href="errno_8h.html#a46b83d9f6c23b1b65a8cecfd775ddaed">00042</a> <span class="preprocessor">#define EINTR     5 </span>
+<a name="l00043"></a><a class="code" href="errno_8h.html#a2d1678d5a7cc8ce499643f3b8957def4">00043</a> <span class="preprocessor">#define EINVAL    6 </span>
+<a name="l00044"></a><a class="code" href="errno_8h.html#a70979f50f9c83e5aebab3d6a1bd4cf35">00044</a> <span class="preprocessor">#define EIO       7 </span>
+<a name="l00045"></a><a class="code" href="errno_8h.html#a088abe8bad2df798edad3053d719b937">00045</a> <span class="preprocessor">#define ENOSPC    8 </span>
+<a name="l00046"></a><a class="code" href="errno_8h.html#a5f8d33deb08fa27c04897b278ac7f965">00046</a> <span class="preprocessor">#define EPIPE     9 </span>
+<a name="l00047"></a><a class="code" href="errno_8h.html#aa1591a4f3a86360108de5b9ba34980ca">00047</a> <span class="preprocessor">#define ERANGE    10 </span>
+<a name="l00048"></a><a class="code" href="errno_8h.html#a03e689f378f643d16ea7537918528a48">00048</a> <span class="preprocessor">#define ENOENT    11 </span>
+<a name="l00049"></a><a class="code" href="errno_8h.html#a9262fb92f7ef662d0bdd577912a5b101">00049</a> <span class="preprocessor">#define ENOTDIR   12 </span>
+<a name="l00050"></a><a class="code" href="errno_8h.html#a0a3bef9e5c47e42917692b5dae3b5498">00050</a> <span class="preprocessor">#define EEXIST    13 </span>
+<a name="l00051"></a><a class="code" href="errno_8h.html#add669d31505a077f769cff8e66c780b3">00051</a> <span class="preprocessor">#define EPERM     14 </span>
+<a name="l00052"></a><a class="code" href="errno_8h.html#ae22c3a1e0a38f3896de238cc30d0e19b">00052</a> <span class="preprocessor">#define EISDIR    15 </span>
+<a name="l00053"></a><a class="code" href="errno_8h.html#a5554094b3fb4bb6ebeb0157cb3f82a55">00053</a> <span class="preprocessor">#define ENFILE    16 </span>
+<a name="l00054"></a><a class="code" href="errno_8h.html#a64a75c174882ddbfa726c7fd040f87a1">00054</a> <span class="preprocessor">#define EMFILE    17 </span>
+<a name="l00056"></a>00056 <span class="preprocessor">extern const char* sys_errlist[]; </span>
+<a name="l00057"></a>00057 <span class="preprocessor">extern int errno; </span>
+<a name="l00059"></a>00059 <span class="preprocessor">__END_DECLS</span>
+<a name="l00060"></a>00060 <span class="preprocessor"></span>
+<a name="l00061"></a>00061 <span class="preprocessor">#endif //_ERRNO_H_</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -117,7 +129,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -90,7 +90,7 @@ Graphe des dépendances par inclusion de floppy_interrupt.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="floppy__interrupt_8c__incl.png" border="0" usemap="#kernel_2drivers_2block_2floppy_2floppy__interrupt_8c" alt=""/></div>
 <map name="kernel_2drivers_2block_2floppy_2floppy__interrupt_8c" id="kernel_2drivers_2block_2floppy_2floppy__interrupt_8c">
-<area shape="rect" id="node5" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="103,83,188,112"/><area shape="rect" id="node9" href="floppy__utils_8h.html" title="floppy_utils.h" alt="" coords="212,83,308,112"/><area shape="rect" id="node7" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="113,160,177,189"/></map>
+<area shape="rect" id="node5" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="99,83,184,111"/><area shape="rect" id="node9" href="floppy__utils_8h.html" title="floppy_utils.h" alt="" coords="208,83,304,111"/><area shape="rect" id="node7" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="111,161,172,189"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
@@ -98,17 +98,21 @@ Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a93239c23be41c3d5c489989685bb7700"></a><!-- doxytag: member="floppy_interrupt.c::floppy_handler" ref="a93239c23be41c3d5c489989685bb7700" args="(int interrupt_id)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>floppy_handler</b> (int interrupt_id)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a579397f7aad55a1eff3648712e9b1f5a"></a><!-- doxytag: member="floppy_interrupt.c::floppy_wait_irq" ref="a579397f7aad55a1eff3648712e9b1f5a" args="()" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>floppy_wait_irq</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__interrupt_8c.html#a579397f7aad55a1eff3648712e9b1f5a">floppy_wait_irq</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Attendre une interruption (XXX attente active) <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19cdddd056dff00ace3567933e4d2b71"></a><!-- doxytag: member="floppy_interrupt.c::floppy_init_interrupt" ref="a19cdddd056dff00ace3567933e4d2b71" args="()" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>floppy_init_interrupt</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__interrupt_8c.html#a19cdddd056dff00ace3567933e4d2b71">floppy_init_interrupt</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise l'IRQ floppy. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4faeb801db3260ba0d654d34c843ddf2"></a><!-- doxytag: member="floppy_interrupt.c::floppy_reset_irq" ref="a4faeb801db3260ba0d654d34c843ddf2" args="()" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>floppy_reset_irq</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__interrupt_8c.html#a4faeb801db3260ba0d654d34c843ddf2">floppy_reset_irq</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Remet à 0 le flag software d'interruption. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa736fd868e99a0bde478ea3b5a836b04"></a><!-- doxytag: member="floppy_interrupt.c::floppy_sense_interrupt" ref="aa736fd868e99a0bde478ea3b5a836b04" args="(int *st0, int *cy1)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>floppy_sense_interrupt</b> (int *st0, int *cy1)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__interrupt_8c.html#aa736fd868e99a0bde478ea3b5a836b04">floppy_sense_interrupt</a> (int *st0, int *cy1)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère des données d'interruption. <br/></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae7efee70f38c540260b05380dd454f14"></a><!-- doxytag: member="floppy_interrupt.c::irq_received" ref="ae7efee70f38c540260b05380dd454f14" args="" -->
-volatile bool&#160;</td><td class="memItemRight" valign="bottom"><b>irq_received</b> = false</td></tr>
+volatile bool&#160;</td><td class="memItemRight" valign="bottom"><b>irq_received</b> = <a class="el" href="stdbool_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -139,7 +143,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

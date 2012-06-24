@@ -83,38 +83,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00029"></a>00029 <span class="preprocessor">#ifndef _DIRENT_H_</span>
 <a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _DIRENT_H_</span>
 <a name="l00031"></a>00031 <span class="preprocessor"></span>
-<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="libc_2include_2sys_2types_8h.html">sys/types.h</a>&gt;</span>
-<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="stat_8h.html">sys/stat.h</a>&gt;</span>
-<a name="l00034"></a>00034 
-<a name="l00035"></a><a class="code" href="dirent_8h.html#ac64541bdd81c961304b9babef1402640">00035</a> <span class="preprocessor">#define NAME_MAX 256 </span>
-<a name="l00040"></a><a class="code" href="struct__DIR.html">00040</a> <span class="preprocessor">typedef struct _DIR {</span>
-<a name="l00041"></a>00041 <span class="preprocessor"></span>        <span class="keywordtype">int</span>                     fd;
-<a name="l00042"></a>00042         <span class="keywordtype">size_t</span>  allocation;
-<a name="l00043"></a>00043         <span class="keywordtype">size_t</span>  size;
-<a name="l00044"></a>00044         <span class="keywordtype">size_t</span>  offset;
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046         off_t           filepos;
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048         <span class="keywordtype">char</span>            data[1];
-<a name="l00049"></a>00049 } <a class="code" href="dirent_8h.html#a9e986c0f8d94ffe9983a6eabb17cbb9a">DIR</a>;
-<a name="l00050"></a>00050 
-<a name="l00054"></a>00054 <span class="keyword">struct </span><a class="code" href="structdirent.html">dirent</a> {
-<a name="l00055"></a>00055         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  d_ino;
-<a name="l00056"></a>00056         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  d_reclen;
-<a name="l00057"></a>00057         <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   d_type;
-<a name="l00058"></a>00058         <span class="keywordtype">char</span>      d_name[<a class="code" href="dirent_8h.html#ac64541bdd81c961304b9babef1402640">NAME_MAX</a>];
-<a name="l00059"></a>00059 };
-<a name="l00060"></a>00060 
-<a name="l00069"></a>00069 <span class="keywordtype">int</span> <a class="code" href="dirent_8c.html#aee98bbe743c2d14dbaa67f01c3fb9ed5">mkdir</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>);
-<a name="l00070"></a>00070 
-<a name="l00078"></a>00078 <a class="code" href="struct__DIR.html">DIR</a>* <a class="code" href="dirent_8c.html#ad09dd96447776d2bc5d8321e4b499591">opendir</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* dirname);
-<a name="l00079"></a>00079 
-<a name="l00087"></a>00087 <span class="keyword">struct </span><a class="code" href="structdirent.html">dirent</a>* <a class="code" href="dirent_8c.html#a58257faf8b13b3f14558613c632b2373">readdir</a>(<a class="code" href="struct__DIR.html">DIR</a>* dirp);
-<a name="l00088"></a>00088 
-<a name="l00096"></a>00096 <span class="keywordtype">int</span> <a class="code" href="dirent_8c.html#aaeac2b41e8c2c3a5f91c9bd511a8c0a6">closedir</a>(<a class="code" href="struct__DIR.html">DIR</a>* dirp);
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098 
-<a name="l00099"></a>00099 <span class="preprocessor">#endif</span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="cdefs_8h.html">sys/cdefs.h</a>&gt;</span>
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 __BEGIN_DECLS
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="preprocessor">#include &lt;<a class="code" href="libc_2include_2sys_2types_8h.html">sys/types.h</a>&gt;</span>
+<a name="l00037"></a>00037 <span class="preprocessor">#include &lt;<a class="code" href="stat_8h.html">sys/stat.h</a>&gt;</span>
+<a name="l00038"></a>00038 
+<a name="l00039"></a><a class="code" href="dirent_8h.html#ac64541bdd81c961304b9babef1402640">00039</a> <span class="preprocessor">#define NAME_MAX 256 </span>
+<a name="l00044"></a><a class="code" href="struct__DIR.html">00044</a> <span class="preprocessor">typedef struct _DIR {</span>
+<a name="l00045"></a><a class="code" href="struct__DIR.html#a1ee17b3cb06ddc80fb648e65c8353c55">00045</a> <span class="preprocessor"></span>        <span class="keywordtype">int</span>                     <a class="code" href="struct__DIR.html#a1ee17b3cb06ddc80fb648e65c8353c55">fd</a>; 
+<a name="l00046"></a><a class="code" href="struct__DIR.html#a395fdd86b324fd71725a24e4f6edd55c">00046</a>         <span class="keywordtype">size_t</span>  <a class="code" href="struct__DIR.html#a395fdd86b324fd71725a24e4f6edd55c">allocation</a>; 
+<a name="l00047"></a><a class="code" href="struct__DIR.html#a117676c5eb31163a8b99520bd2cbf1aa">00047</a>         <span class="keywordtype">size_t</span>  <a class="code" href="struct__DIR.html#a117676c5eb31163a8b99520bd2cbf1aa">size</a>; 
+<a name="l00048"></a><a class="code" href="struct__DIR.html#a298b074b577743d5c726b4fdc2917795">00048</a>         <span class="keywordtype">size_t</span>  <a class="code" href="struct__DIR.html#a298b074b577743d5c726b4fdc2917795">offset</a>; 
+<a name="l00050"></a><a class="code" href="struct__DIR.html#a759e6f1c2754b12a4aba9d120f3d1e57">00050</a>         off_t           <a class="code" href="struct__DIR.html#a759e6f1c2754b12a4aba9d120f3d1e57">filepos</a>; 
+<a name="l00052"></a><a class="code" href="struct__DIR.html#a87bb023e0bf0b2f075e90d270ff7033e">00052</a>         <span class="keywordtype">char</span>            data[1]; 
+<a name="l00053"></a>00053 } <a class="code" href="dirent_8h.html#a9e986c0f8d94ffe9983a6eabb17cbb9a">DIR</a>;
+<a name="l00054"></a>00054 
+<a name="l00058"></a>00058 <span class="keyword">struct </span><a class="code" href="structdirent.html">dirent</a> {
+<a name="l00059"></a>00059         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">d_ino</a>; 
+<a name="l00060"></a>00060         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">d_reclen</a>; 
+<a name="l00061"></a>00061         <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">d_type</a>; 
+<a name="l00062"></a>00062         <span class="keywordtype">char</span>      <a class="code" href="structdirent.html#a4325a83c49c6f2cd01ef80e1ae1dd4c5">d_name</a>[<a class="code" href="dirent_8h.html#ac64541bdd81c961304b9babef1402640">NAME_MAX</a>]; 
+<a name="l00063"></a>00063 };
+<a name="l00064"></a>00064 
+<a name="l00073"></a>00073 <span class="keywordtype">int</span> <a class="code" href="dirent_8c.html#aee98bbe743c2d14dbaa67f01c3fb9ed5">mkdir</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>);
+<a name="l00074"></a>00074 
+<a name="l00082"></a>00082 <a class="code" href="struct__DIR.html">DIR</a>* <a class="code" href="dirent_8c.html#ad09dd96447776d2bc5d8321e4b499591">opendir</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* dirname);
+<a name="l00083"></a>00083 
+<a name="l00091"></a>00091 <span class="keyword">struct </span><a class="code" href="structdirent.html">dirent</a>* <a class="code" href="dirent_8c.html#a58257faf8b13b3f14558613c632b2373">readdir</a>(<a class="code" href="struct__DIR.html">DIR</a>* dirp);
+<a name="l00092"></a>00092 
+<a name="l00100"></a>00100 <span class="keywordtype">int</span> <a class="code" href="dirent_8c.html#aaeac2b41e8c2c3a5f91c9bd511a8c0a6">closedir</a>(<a class="code" href="struct__DIR.html">DIR</a>* dirp);
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102 __END_DECLS
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -133,7 +136,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

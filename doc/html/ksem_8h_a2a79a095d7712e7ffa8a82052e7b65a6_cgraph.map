@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="208,5,283,35"/>
-<area shape="rect" id="node5" href="$ksem_8h.html#acfbbd3e3f726b24309758cf6499a8141" title="Opération P sur un sémaphore Réalise l&#39;opération P sur le sémaphore. Le processus essaye donc de pren..." alt="" coords="213,59,277,88"/>
-<area shape="rect" id="node9" href="$ksem_8h.html#acf03efb500e930ca996059a6388b528b" title="Opération V sur un sémaphore Réalise l&#39;opération V sur le sémaphore. Le processus libère le sémaphore..." alt="" coords="213,112,277,141"/>
-<area shape="rect" id="node7" href="$scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="332,59,473,88"/>
-<area shape="rect" id="node11" href="$kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné." alt="" coords="353,112,452,141"/>
-</map>

@@ -90,14 +90,14 @@ Graphe des dépendances par inclusion de heap.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="heap_8h__incl.png" border="0" usemap="#kernel_2include_2heap_8h" alt=""/></div>
 <map name="kernel_2include_2heap_8h" id="kernel_2include_2heap_8h">
-<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="48,83,112,112"/></map>
+<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="47,83,108,111"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="heap_8h__dep__incl.png" border="0" usemap="#kernel_2include_2heap_8hdep" alt=""/></div>
 <map name="kernel_2include_2heap_8hdep" id="kernel_2include_2heap_8hdep">
-<area shape="rect" id="node3" href="clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="5,83,109,112"/><area shape="rect" id="node5" href="heap_8c.html" title="kernel/utils/heap.c" alt="" coords="133,83,261,112"/></map>
+<area shape="rect" id="node3" href="clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="5,83,107,111"/><area shape="rect" id="node5" href="heap_8c.html" title="kernel/utils/heap.c" alt="" coords="131,83,256,111"/></map>
 </div>
 </div>
 <p><a href="heap_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -107,24 +107,18 @@ Structures de données</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structheap__t.html">heap_t</a></td></tr>
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7085c62c43230e23f6fa23eed518061e"></a><!-- doxytag: member="heap.h::HEAP_MAX_SIZE" ref="a7085c62c43230e23f6fa23eed518061e" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>HEAP_MAX_SIZE</b>&#160;&#160;&#160;256</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8h.html#a7085c62c43230e23f6fa23eed518061e">HEAP_MAX_SIZE</a>&#160;&#160;&#160;256</td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35d066d4adbc5a7903210dcce0bf4717"></a><!-- doxytag: member="heap.h::cmp_func_type" ref="a35d066d4adbc5a7903210dcce0bf4717" args=")(void *, void *)" -->
-typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>cmp_func_type</b> )(void *, void *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a> )(void *, void *)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48a67855027ee831532d3b397cc95d01"></a><!-- doxytag: member="heap.h::id_func_type" ref="a48a67855027ee831532d3b397cc95d01" args=")(int, void *)" -->
 typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>id_func_type</b> )(int, void *)</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1e10f55e192cb2229ba2b294eee1306"></a><!-- doxytag: member="heap.h::initHeap" ref="ad1e10f55e192cb2229ba2b294eee1306" args="(heap_t *h, cmp_func_type cmp, void *heap, size_t elements_size, int max_elements)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>initHeap</b> (<a class="el" href="structheap__t.html">heap_t</a> *h, cmp_func_type cmp, void *heap, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> elements_size, int max_elements)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ed12e88ab330058b0547f2cc20a544d"></a><!-- doxytag: member="heap.h::getTop" ref="a0ed12e88ab330058b0547f2cc20a544d" args="(heap_t h)" -->
-void *&#160;</td><td class="memItemRight" valign="bottom"><b>getTop</b> (<a class="el" href="structheap__t.html">heap_t</a> h)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af42ea714951cb83a022c742d5bce5300"></a><!-- doxytag: member="heap.h::addElement" ref="af42ea714951cb83a022c742d5bce5300" args="(heap_t *h, void *element)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>addElement</b> (<a class="el" href="structheap__t.html">heap_t</a> *h, void *element)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab2d2b864167da4bf231eb63de7c83ff1"></a><!-- doxytag: member="heap.h::removetop" ref="ab2d2b864167da4bf231eb63de7c83ff1" args="(heap_t *h)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>removetop</b> (<a class="el" href="structheap__t.html">heap_t</a> *h)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8h.html#ad1e10f55e192cb2229ba2b294eee1306">initHeap</a> (<a class="el" href="structheap__t.html">heap_t</a> *h, <a class="el" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a> cmp, void *heap, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> elements_size, int max_elements)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8h.html#a645a9636c018450e7629b5e2c8505b58">getTop</a> (<a class="el" href="structheap__t.html">heap_t</a> *h)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8h.html#af42ea714951cb83a022c742d5bce5300">addElement</a> (<a class="el" href="structheap__t.html">heap_t</a> *h, void *element)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8h.html#ab2d2b864167da4bf231eb63de7c83ff1">removetop</a> (<a class="el" href="structheap__t.html">heap_t</a> *h)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86bf8b32a1ee2c700a5ad9f1eb07b0d9"></a><!-- doxytag: member="heap.h::delElement" ref="a86bf8b32a1ee2c700a5ad9f1eb07b0d9" args="(heap_t *heap, int id, id_func_type func)" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>delElement</b> (<a class="el" href="structheap__t.html">heap_t</a> *heap, int id, id_func_type func)</td></tr>
 </table>
@@ -139,7 +133,188 @@ LICENSE</h2>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
 <p>Description de ce que fait le fichier </p>
-</div></div><!-- contents -->
+</div><hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="a7085c62c43230e23f6fa23eed518061e"></a><!-- doxytag: member="heap.h::HEAP_MAX_SIZE" ref="a7085c62c43230e23f6fa23eed518061e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="heap_8h.html#a7085c62c43230e23f6fa23eed518061e">HEAP_MAX_SIZE</a>&#160;&#160;&#160;256</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Taille maximale du tas. </p>
+
+</div>
+</div>
+<hr/><h2>Documentation des définitions de type</h2>
+<a class="anchor" id="a35d066d4adbc5a7903210dcce0bf4717"></a><!-- doxytag: member="heap.h::cmp_func_type" ref="a35d066d4adbc5a7903210dcce0bf4717" args=")(void *, void *)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* <a class="el" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a>)(void *, void *)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Une fonction de comparaison entre 2 elements </p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="af42ea714951cb83a022c742d5bce5300"></a><!-- doxytag: member="heap.h::addElement" ref="af42ea714951cb83a022c742d5bce5300" args="(heap_t *h, void *element)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="heap_8c.html#af42ea714951cb83a022c742d5bce5300">addElement</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structheap__t.html">heap_t</a> *&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>element</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Ajoute un element au tas.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>pointeur vers le tas. </td></tr>
+    <tr><td class="paramname">element</td><td>pointeur vers l'élément à ajouter au tas.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succes </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="heap_8h_af42ea714951cb83a022c742d5bce5300_cgraph.png" border="0" usemap="#heap_8h_af42ea714951cb83a022c742d5bce5300_cgraph" alt=""/></div>
+<map name="heap_8h_af42ea714951cb83a022c742d5bce5300_cgraph" id="heap_8h_af42ea714951cb83a022c742d5bce5300_cgraph">
+<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="145,5,215,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a645a9636c018450e7629b5e2c8505b58"></a><!-- doxytag: member="heap.h::getTop" ref="a645a9636c018450e7629b5e2c8505b58" args="(heap_t *h)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* <a class="el" href="heap_8c.html#a645a9636c018450e7629b5e2c8505b58">getTop</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structheap__t.html">heap_t</a> *&#160;</td>
+          <td class="paramname"><em>h</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Recupere le premier élément du tas.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>pointeur vers le tas.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>pointeur vers le premier élément du tas, NULL si aucun. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad1e10f55e192cb2229ba2b294eee1306"></a><!-- doxytag: member="heap.h::initHeap" ref="ad1e10f55e192cb2229ba2b294eee1306" args="(heap_t *h, cmp_func_type cmp, void *heap, size_t elements_size, int max_elements)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="heap_8c.html#ad1e10f55e192cb2229ba2b294eee1306">initHeap</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structheap__t.html">heap_t</a> *&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a>&#160;</td>
+          <td class="paramname"><em>cmp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>heap</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>elements_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_elements</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Initialise le tas à vide et regle la fonction de comparaison </p>
+
+</div>
+</div>
+<a class="anchor" id="ab2d2b864167da4bf231eb63de7c83ff1"></a><!-- doxytag: member="heap.h::removetop" ref="ab2d2b864167da4bf231eb63de7c83ff1" args="(heap_t *h)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="heap_8c.html#ab2d2b864167da4bf231eb63de7c83ff1">removetop</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structheap__t.html">heap_t</a> *&#160;</td>
+          <td class="paramname"><em>h</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Retire le sommet. </p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>pointeur vers le tas.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succes. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="heap_8h_ab2d2b864167da4bf231eb63de7c83ff1_cgraph.png" border="0" usemap="#heap_8h_ab2d2b864167da4bf231eb63de7c83ff1_cgraph" alt=""/></div>
+<map name="heap_8h_ab2d2b864167da4bf231eb63de7c83ff1_cgraph" id="heap_8h_ab2d2b864167da4bf231eb63de7c83ff1_cgraph">
+<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="137,5,207,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -157,7 +332,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

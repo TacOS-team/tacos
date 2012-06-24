@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$idt_8c.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption." alt="" coords="129,5,265,35"/>
-<area shape="rect" id="node5" href="$idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="315,5,427,35"/>
+<area shape="rect" id="node3" href="$idt_8c.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption." alt="" coords="128,5,261,33"/>
+<area shape="rect" id="node5" href="$idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="311,5,420,33"/>
 </map>

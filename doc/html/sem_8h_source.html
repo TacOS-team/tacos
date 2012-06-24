@@ -83,19 +83,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00031"></a>00031 <span class="preprocessor">#ifndef _SEM_H_</span>
 <a name="l00032"></a>00032 <span class="preprocessor"></span><span class="preprocessor">#define _SEM_H_</span>
 <a name="l00033"></a>00033 <span class="preprocessor"></span>
-<a name="l00034"></a>00034 <span class="preprocessor">#include &lt;<a class="code" href="libc_2include_2sys_2types_8h.html">sys/types.h</a>&gt;</span>
+<a name="l00034"></a>00034 <span class="preprocessor">#include &lt;<a class="code" href="cdefs_8h.html">sys/cdefs.h</a>&gt;</span>
 <a name="l00035"></a>00035 
-<a name="l00036"></a>00036 <span class="preprocessor">#define SEM_NEW 255</span>
-<a name="l00037"></a>00037 <span class="preprocessor"></span><span class="preprocessor">#define SEM_CREATE 1</span>
-<a name="l00038"></a>00038 <span class="preprocessor"></span>
-<a name="l00046"></a>00046 <span class="keywordtype">int</span> <a class="code" href="sem_8h.html#a1ea8785f5ec6eadaa818747e4cbb6298" title="donne l&#39;identifiant (semid) d&#39;un sémaphore déjà existant">semget</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key, <span class="keywordtype">int</span> semflg);
-<a name="l00047"></a>00047 
-<a name="l00055"></a>00055 <span class="keywordtype">int</span> <a class="code" href="sem_8h.html#a51cd1d5e354c3e1cc996c424bbf71be5" title="supprime un sémaphore">semdel</a>(<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> semid);
-<a name="l00056"></a>00056 <span class="keywordtype">int</span> semP(<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> semid);
-<a name="l00057"></a>00057 <span class="keywordtype">int</span> semV(<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> semid);
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059 <span class="preprocessor">#endif //_SEM_H_</span>
-<a name="l00060"></a>00060 <span class="preprocessor"></span>
+<a name="l00036"></a>00036 __BEGIN_DECLS
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 <span class="preprocessor">#include &lt;<a class="code" href="libc_2include_2sys_2types_8h.html">sys/types.h</a>&gt;</span>
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 <span class="preprocessor">#define SEM_NEW 255</span>
+<a name="l00041"></a>00041 <span class="preprocessor"></span><span class="preprocessor">#define SEM_CREATE 1</span>
+<a name="l00042"></a>00042 <span class="preprocessor"></span>
+<a name="l00050"></a>00050 <span class="keywordtype">int</span> <a class="code" href="sem_8h.html#a1ea8785f5ec6eadaa818747e4cbb6298" title="donne l&#39;identifiant (semid) d&#39;un sémaphore déjà existant">semget</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key, <span class="keywordtype">int</span> semflg);
+<a name="l00051"></a>00051 
+<a name="l00059"></a>00059 <span class="keywordtype">int</span> <a class="code" href="sem_8h.html#a51cd1d5e354c3e1cc996c424bbf71be5" title="supprime un sémaphore">semdel</a>(<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> semid);
+<a name="l00060"></a>00060 <span class="keywordtype">int</span> semP(<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> semid);
+<a name="l00061"></a>00061 <span class="keywordtype">int</span> semV(<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> semid);
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 __END_DECLS
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 <span class="preprocessor">#endif //_SEM_H_</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -114,7 +119,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

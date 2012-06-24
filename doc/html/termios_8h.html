@@ -79,17 +79,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a href="#nested-classes">Structures de données</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Définitions de type</a> &#124;
-<a href="#func-members">Fonctions</a>  </div>
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Référence du fichier libc/include/termios.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><div class="dynheader">
+<div class="textblock"><code>#include &lt;<a class="el" href="cdefs_8h_source.html">sys/cdefs.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de termios.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="termios_8h__incl.png" border="0" usemap="#libc_2include_2termios_8h" alt=""/></div>
+<map name="libc_2include_2termios_8h" id="libc_2include_2termios_8h">
+<area shape="rect" id="node3" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="33,83,121,111"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="termios_8h__dep__incl.png" border="0" usemap="#libc_2include_2termios_8hdep" alt=""/></div>
 <map name="libc_2include_2termios_8hdep" id="libc_2include_2termios_8hdep">
-<area shape="rect" id="node3" href="termios_8c.html" title="libc/termios.c" alt="" coords="29,83,128,112"/></map>
+<area shape="rect" id="node3" href="termios_8c.html" title="libc/termios.c" alt="" coords="28,83,127,111"/></map>
 </div>
 </div>
 <p><a href="termios_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -152,8 +161,6 @@ Macros</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="termios_8h.html#a0008abcc29ab2adba2c8fda3566de6ed">VEOL2</a>&#160;&#160;&#160;16</td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9d3e47a1913b6665ee950e89ccb916b"></a><!-- doxytag: member="termios.h::tcflag_t" ref="ac9d3e47a1913b6665ee950e89ccb916b" args="" -->
-typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>tcflag_t</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0881aacdd021ae3253111427b36afe6d"></a><!-- doxytag: member="termios.h::cc_t" ref="a0881aacdd021ae3253111427b36afe6d" args="" -->
 typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>cc_t</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a14a0666abcf3bb67c7ff400b4a450467"></a><!-- doxytag: member="termios.h::speed_t" ref="a14a0666abcf3bb67c7ff400b4a450467" args="" -->
@@ -170,6 +177,10 @@ speed_t&#160;</td><td class="memItemRight" valign="bottom"><b>cfgetispeed</b> (c
 int&#160;</td><td class="memItemRight" valign="bottom"><b>cfsetispeed</b> (struct <a class="el" href="structtermios.html">termios</a> *termios_p, speed_t speed)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9314d134f42b3b578eeb4d9bb6ecfa8"></a><!-- doxytag: member="termios.h::cfmakeraw" ref="ae9314d134f42b3b578eeb4d9bb6ecfa8" args="(struct termios *termios_p)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>cfmakeraw</b> (struct <a class="el" href="structtermios.html">termios</a> *termios_p)</td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07869abff8b7150240e6f7872330402e"></a><!-- doxytag: member="termios.h::tcflag_t" ref="a07869abff8b7150240e6f7872330402e" args="" -->
+__BEGIN_DECLS typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>tcflag_t</b></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -909,7 +920,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:48 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

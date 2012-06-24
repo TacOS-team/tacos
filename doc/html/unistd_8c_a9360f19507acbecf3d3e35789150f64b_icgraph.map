@@ -1,8 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$elf_8c.html#a9aae782f070af1c6009d0cc2a6d60a08" title="charge un program header depuis un fichier elf Charge le program header n°index depuis le fichier..." alt="" coords="111,57,263,87"/>
-<area shape="rect" id="node7" href="$elf_8c.html#a35e8f32030ee36d8c02357a0b483c1b2" title="charge un fichier elf Charge les données utiles de l&#39;exécutable en mémoire, de façon à ce que ce soit..." alt="" coords="324,5,393,35"/>
-<area shape="rect" id="node9" href="$elf_8c.html#abbbb3d1f6ac9986f87d655cec7819556" title="charge un fichier elf dans la structure Elf32_File" alt="" coords="312,112,405,141"/>
-<area shape="rect" id="node13" href="$elf_8c.html#a8138ecf1d1d9bd1e80e05694ef4362e4" title="charge un section header depuis un fichier elf Charge le section header n°index depuis le fichier..." alt="" coords="113,161,260,191"/>
-<area shape="rect" id="node5" href="$elf_8c.html#aa84790a8edae8d2859861f19adf5dd41" title="Calcul la taille que prendra l&#39;exécutable dans la mémoire La fonction évalue l&#39;adresse de départ en m..." alt="" coords="325,59,392,88"/>
-<area shape="rect" id="node11" href="$elf_8c.html#af969175b11017f629b1dfbf557fccbcc" title="Affiche des information sur le fichier elf." alt="" coords="453,112,517,141"/>
+<area shape="rect" id="node3" href="$fseek_8c.html#a5e25775bd8597f839a28125b616bd241" title="Fixe l&#39;indicateur de position du flux." alt="" coords="108,5,161,33"/>
+<area shape="rect" id="node7" href="$fseek_8c.html#a5a002ad43f113e8c634d284ee34d1d53" title="Obtient la valeur de l&#39;indicateur de position." alt="" coords="113,55,156,83"/>
+<area shape="rect" id="node5" href="$fseek_8c.html#aa0cd401f198d33d9d01a9e8aa4026819" title="Place l&#39;indicateur de position au début du fichier." alt="" coords="212,5,271,33"/>
 </map>

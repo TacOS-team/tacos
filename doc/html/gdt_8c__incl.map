@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$memory_8h.html" title="Gestion des pages mémoires physiques." alt="" coords="5,83,85,112"/>
-<area shape="rect" id="node7" href="$gdt_8h.html" title="gdt.h" alt="" coords="109,83,160,112"/>
-<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="57,160,121,189"/>
+<area shape="rect" id="node3" href="$memory_8h.html" title="Gestion des pages mémoires physiques." alt="" coords="5,83,83,111"/>
+<area shape="rect" id="node7" href="$gdt_8h.html" title="gdt.h" alt="" coords="107,83,157,111"/>
+<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="57,161,119,189"/>
 </map>

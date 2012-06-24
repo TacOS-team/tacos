@@ -81,8 +81,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier libc/signal.c</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Gestion des signaux.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="signal_8h_source.html">signal.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="stdlib_8h_source.html">stdlib.h</a>&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
 <code>#include &lt;<a class="el" href="syscall_8h_source.html">sys/syscall.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="unistd_8h_source.html">unistd.h</a>&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
@@ -90,15 +93,14 @@ Graphe des dépendances par inclusion de signal.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="signal_8c__incl.png" border="0" usemap="#libc_2signal_8c" alt=""/></div>
 <map name="libc_2signal_8c" id="libc_2signal_8c">
-<area shape="rect" id="node3" href="signal_8h.html" title="signal.h" alt="" coords="5,160,72,189"/><area shape="rect" id="node9" href="stdlib_8h.html" title="stdlib.h" alt="" coords="96,160,157,189"/><area shape="rect" id="node15" href="syscall_8h.html" title="sys/syscall.h" alt="" coords="147,83,245,112"/><area shape="rect" id="node17" href="unistd_8h.html" title="unistd.h" alt="" coords="269,83,336,112"/><area shape="rect" id="node5" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="153,315,241,344"/><area shape="rect" id="node7" href="stdbool_8h.html" title="stdbool.h" alt="" coords="160,392,235,421"/><area shape="rect" id="node12" href="malloc_8h.html" title="malloc.h" alt="" coords="127,237,196,267"/><area shape="rect" id="node20" href="stat_8h.html" title="sys/stat.h" alt="" coords="271,160,348,189"/><area shape="rect" id="node23" href="time_8h.html" title="time.h" alt="" coords="321,237,377,267"/></map>
+<area shape="rect" id="node3" href="signal_8h.html" title="Gestion des signaux." alt="" coords="247,238,313,266"/><area shape="rect" id="node14" href="syscall_8h.html" title="sys/syscall.h" alt="" coords="181,83,277,111"/><area shape="rect" id="node16" href="unistd_8h.html" title="unistd.h" alt="" coords="5,83,72,111"/><area shape="rect" id="node5" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="28,393,116,421"/><area shape="rect" id="node7" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="123,315,208,343"/><area shape="rect" id="node10" href="stdbool_8h.html" title="Type bool." alt="" coords="140,393,215,421"/><area shape="rect" id="node20" href="stat_8h.html" title="sys/stat.h" alt="" coords="35,161,112,189"/><area shape="rect" id="node24" href="time_8h.html" title="time.h" alt="" coords="65,238,121,266"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9fc1d1a853fcc23a5e434506aa47bca"></a><!-- doxytag: member="signal.c::kill" ref="ae9fc1d1a853fcc23a5e434506aa47bca" args="(unsigned int pid, int sig)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>kill</b> (unsigned int pid, int sig)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a18b3c89ca28c1045ee53f16a1ebca8b3"></a><!-- doxytag: member="signal.c::signal" ref="a18b3c89ca28c1045ee53f16a1ebca8b3" args="(int sig, sighandler_t func)" -->
-sighandler_t&#160;</td><td class="memItemRight" valign="bottom"><b>signal</b> (int sig, sighandler_t func)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8c.html#ae9fc1d1a853fcc23a5e434506aa47bca">kill</a> (unsigned int pid, int sig)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8c.html#a08ba0dd26a850108a1746412faba2b21">raise</a> (int sig)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8c.html#a18b3c89ca28c1045ee53f16a1ebca8b3">signal</a> (int sig, <a class="el" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a> func)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20d9f879bbe69c79f62bd3813fcc1e63"></a><!-- doxytag: member="signal.c::sigsuspend" ref="a20d9f879bbe69c79f62bd3813fcc1e63" args="(const sigset_t *sigmask)" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>sigsuspend</b> (const sigset_t *sigmask)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0fd1024302d5bc062261b9b732bdf92b"></a><!-- doxytag: member="signal.c::sigprocmask" ref="a0fd1024302d5bc062261b9b732bdf92b" args="(int how, const sigset_t *set, sigset_t *oldset)" -->
@@ -114,11 +116,12 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>sigdelset</b> (sigset_
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63693cc65f43d772729b588b453fe1ef"></a><!-- doxytag: member="signal.c::sigismember" ref="a63693cc65f43d772729b588b453fe1ef" args="(const sigset_t *set, int signum)" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>sigismember</b> (const sigset_t *set, int signum)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad63ce69011851ac099d5d95d3db1863b"></a><!-- doxytag: member="signal.c::sig_ignore_handler" ref="ad63ce69011851ac099d5d95d3db1863b" args="(int signal)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>sig_ignore_handler</b> (int signal)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>sig_ignore_handler</b> (int <a class="el" href="signal_8c.html#a18b3c89ca28c1045ee53f16a1ebca8b3">signal</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c8c1ad859e619ff50ab5590cd7fceb2"></a><!-- doxytag: member="signal.c::core" ref="a1c8c1ad859e619ff50ab5590cd7fceb2" args="(int signal)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>core</b> (int <a class="el" href="signal_8c.html#a18b3c89ca28c1045ee53f16a1ebca8b3">signal</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af4cd39b50e431e2cc9f32685d675393f"></a><!-- doxytag: member="signal.c::sig_stop_handler" ref="af4cd39b50e431e2cc9f32685d675393f" args="(int signal)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>sig_stop_handler</b> (int signal)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1de31bdef82f181f8045b94ae0933916"></a><!-- doxytag: member="signal.c::init_signals" ref="a1de31bdef82f181f8045b94ae0933916" args="(void)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init_signals</b> (void)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>sig_stop_handler</b> (int <a class="el" href="signal_8c.html#a18b3c89ca28c1045ee53f16a1ebca8b3">signal</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8c.html#a1de31bdef82f181f8045b94ae0933916">init_signals</a> (void)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -130,8 +133,176 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-<p>Description de ce que fait le fichier </p>
-</div></div><!-- contents -->
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a1de31bdef82f181f8045b94ae0933916"></a><!-- doxytag: member="signal.c::init_signals" ref="a1de31bdef82f181f8045b94ae0933916" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="signal_8c.html#a1de31bdef82f181f8045b94ae0933916">init_signals</a> </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Mise en place des handlers par défaut. </p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="signal_8c_a1de31bdef82f181f8045b94ae0933916_cgraph.png" border="0" usemap="#signal_8c_a1de31bdef82f181f8045b94ae0933916_cgraph" alt=""/></div>
+<map name="signal_8c_a1de31bdef82f181f8045b94ae0933916_cgraph" id="signal_8c_a1de31bdef82f181f8045b94ae0933916_cgraph">
+<area shape="rect" id="node3" href="signal_8h.html#a18b3c89ca28c1045ee53f16a1ebca8b3" title="signal" alt="" coords="141,5,197,33"/><area shape="rect" id="node5" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="247,5,308,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ae9fc1d1a853fcc23a5e434506aa47bca"></a><!-- doxytag: member="signal.c::kill" ref="ae9fc1d1a853fcc23a5e434506aa47bca" args="(unsigned int pid, int sig)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="signal_8c.html#ae9fc1d1a853fcc23a5e434506aa47bca">kill</a> </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>pid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sig</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Envoyer un signal à un processus.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pid</td><td>l'identifiant du processus. </td></tr>
+    <tr><td class="paramname">sig</td><td>le signal à envoyer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="signal_8c_ae9fc1d1a853fcc23a5e434506aa47bca_cgraph.png" border="0" usemap="#signal_8c_ae9fc1d1a853fcc23a5e434506aa47bca_cgraph" alt=""/></div>
+<map name="signal_8c_ae9fc1d1a853fcc23a5e434506aa47bca_cgraph" id="signal_8c_ae9fc1d1a853fcc23a5e434506aa47bca_cgraph">
+<area shape="rect" id="node3" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="95,5,156,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="signal_8c_ae9fc1d1a853fcc23a5e434506aa47bca_icgraph.png" border="0" usemap="#signal_8c_ae9fc1d1a853fcc23a5e434506aa47bca_icgraph" alt=""/></div>
+<map name="signal_8c_ae9fc1d1a853fcc23a5e434506aa47bca_icgraph" id="signal_8c_ae9fc1d1a853fcc23a5e434506aa47bca_icgraph">
+<area shape="rect" id="node3" href="signal_8c.html#a08ba0dd26a850108a1746412faba2b21" title="raise" alt="" coords="93,5,144,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a08ba0dd26a850108a1746412faba2b21"></a><!-- doxytag: member="signal.c::raise" ref="a08ba0dd26a850108a1746412faba2b21" args="(int sig)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="signal_8c.html#a08ba0dd26a850108a1746412faba2b21">raise</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sig</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Envoyer un signal à l'appelant.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sig</td><td>le signal à envoyer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="signal_8c_a08ba0dd26a850108a1746412faba2b21_cgraph.png" border="0" usemap="#signal_8c_a08ba0dd26a850108a1746412faba2b21_cgraph" alt=""/></div>
+<map name="signal_8c_a08ba0dd26a850108a1746412faba2b21_cgraph" id="signal_8c_a08ba0dd26a850108a1746412faba2b21_cgraph">
+<area shape="rect" id="node3" href="signal_8h.html#ae9fc1d1a853fcc23a5e434506aa47bca" title="kill" alt="" coords="115,5,152,33"/><area shape="rect" id="node7" href="unistd_8h.html#ac61b207337ca21b3b309593fd1a0cb82" title="Obtenir l&#39;identifiant du processus." alt="" coords="105,55,161,83"/><area shape="rect" id="node5" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="212,30,273,58"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a18b3c89ca28c1045ee53f16a1ebca8b3"></a><!-- doxytag: member="signal.c::signal" ref="a18b3c89ca28c1045ee53f16a1ebca8b3" args="(int sig, sighandler_t func)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a> <a class="el" href="signal_8c.html#a18b3c89ca28c1045ee53f16a1ebca8b3">signal</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sig</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a>&#160;</td>
+          <td class="paramname"><em>func</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Met en place un handler pour un signal.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sig</td><td>le signal à catcher. </td></tr>
+    <tr><td class="paramname">func</td><td>fonction handler à utiliser. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="signal_8c_a18b3c89ca28c1045ee53f16a1ebca8b3_cgraph.png" border="0" usemap="#signal_8c_a18b3c89ca28c1045ee53f16a1ebca8b3_cgraph" alt=""/></div>
+<map name="signal_8c_a18b3c89ca28c1045ee53f16a1ebca8b3_cgraph" id="signal_8c_a18b3c89ca28c1045ee53f16a1ebca8b3_cgraph">
+<area shape="rect" id="node3" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="111,5,172,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="signal_8c_a18b3c89ca28c1045ee53f16a1ebca8b3_icgraph.png" border="0" usemap="#signal_8c_a18b3c89ca28c1045ee53f16a1ebca8b3_icgraph" alt=""/></div>
+<map name="signal_8c_a18b3c89ca28c1045ee53f16a1ebca8b3_icgraph" id="signal_8c_a18b3c89ca28c1045ee53f16a1ebca8b3_icgraph">
+<area shape="rect" id="node3" href="signal_8c.html#a1de31bdef82f181f8045b94ae0933916" title="init_signals" alt="" coords="111,5,196,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -149,7 +320,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:48 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

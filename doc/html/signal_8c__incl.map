@@ -1,11 +1,10 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$signal_8h.html" title="signal.h" alt="" coords="5,160,72,189"/>
-<area shape="rect" id="node9" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="96,160,157,189"/>
-<area shape="rect" id="node15" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="147,83,245,112"/>
-<area shape="rect" id="node17" href="$unistd_8h.html" title="unistd.h" alt="" coords="269,83,336,112"/>
-<area shape="rect" id="node5" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="153,315,241,344"/>
-<area shape="rect" id="node7" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="160,392,235,421"/>
-<area shape="rect" id="node12" href="$malloc_8h.html" title="malloc.h" alt="" coords="127,237,196,267"/>
-<area shape="rect" id="node20" href="$stat_8h.html" title="sys/stat.h" alt="" coords="271,160,348,189"/>
-<area shape="rect" id="node23" href="$time_8h.html" title="time.h" alt="" coords="321,237,377,267"/>
+<area shape="rect" id="node3" href="$signal_8h.html" title="Gestion des signaux." alt="" coords="247,238,313,266"/>
+<area shape="rect" id="node14" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="181,83,277,111"/>
+<area shape="rect" id="node16" href="$unistd_8h.html" title="unistd.h" alt="" coords="5,83,72,111"/>
+<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="28,393,116,421"/>
+<area shape="rect" id="node7" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="123,315,208,343"/>
+<area shape="rect" id="node10" href="$stdbool_8h.html" title="Type bool." alt="" coords="140,393,215,421"/>
+<area shape="rect" id="node20" href="$stat_8h.html" title="sys/stat.h" alt="" coords="35,161,112,189"/>
+<area shape="rect" id="node24" href="$time_8h.html" title="time.h" alt="" coords="65,238,121,266"/>
 </map>

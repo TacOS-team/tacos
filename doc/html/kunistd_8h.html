@@ -92,14 +92,14 @@ Graphe des dépendances par inclusion de kunistd.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h__incl.png" border="0" usemap="#kernel_2include_2kunistd_8h" alt=""/></div>
 <map name="kernel_2include_2kunistd_8h" id="kernel_2include_2kunistd_8h">
-<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="104,315,168,344"/><area shape="rect" id="node5" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="57,237,137,267"/><area shape="rect" id="node8" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="127,83,185,112"/><area shape="rect" id="node11" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="124,160,188,189"/></map>
+<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="100,315,161,343"/><area shape="rect" id="node5" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="55,238,132,266"/><area shape="rect" id="node8" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="121,83,183,111"/><area shape="rect" id="node11" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="121,161,183,189"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h__dep__incl.png" border="0" usemap="#kernel_2include_2kunistd_8hdep" alt=""/></div>
 <map name="kernel_2include_2kunistd_8hdep" id="kernel_2include_2kunistd_8hdep">
-<area shape="rect" id="node3" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="5,83,115,112"/><area shape="rect" id="node5" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="139,83,253,112"/></map>
+<area shape="rect" id="node3" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="5,83,112,111"/><area shape="rect" id="node5" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="136,83,248,111"/><area shape="rect" id="node7" href="module_8c.html" title="kernel/module.c" alt="" coords="272,83,384,111"/></map>
 </div>
 </div>
 <p><a href="kunistd_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -109,10 +109,12 @@ Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a> (sys_write, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, const void *buf, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> *c)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a1a5c9caaf5f21371f9d9d6886eb26bc0">SYSCALL_HANDLER3</a> (sys_read, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, const void *buf, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> *c)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a5dd5ee4481953b987bfc1bcb836be820">SYSCALL_HANDLER3</a> (sys_seek, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, long *offset, int whence)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a2999b8cb7ae296bd3da79308b1cb2f42">SYSCALL_HANDLER3</a> (sys_ioctl, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, unsigned int request, void *data)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a1eab9ba54efce654ee3cd717f2161b8f">SYSCALL_HANDLER3</a> (sys_ioctl, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *fd, unsigned int request, void *data)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a18585c0d8560c855f1d38405703e7eb3">SYSCALL_HANDLER3</a> (sys_stat, const char *path, struct <a class="el" href="structstat.html">stat</a> *buf, int *ret)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a99434c0e561b0e99c4ef081ae5773703">SYSCALL_HANDLER2</a> (sys_unlink, const char *path, int *ret)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a754a9d6d5d3da3db605147488e485805">SYSCALL_HANDLER2</a> (sys_dup, int oldfd, int *ret)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f1fab5ee3e02656c4b5aabbb8043f4a"></a><!-- doxytag: member="kunistd.h::SYSCALL_HANDLER2" ref="a9f1fab5ee3e02656c4b5aabbb8043f4a" args="(sys_dup2, int oldfd, int *newfd)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER2</b> (sys_dup2, int oldfd, int *newfd)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a8c6c302ef479ae5474c3aedf65ec8dbe">SYSCALL_HANDLER3</a> (sys_mknod, const char *path, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>, <a class="el" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a> *dev)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
@@ -170,7 +172,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h_a99434c0e561b0e99c4ef081ae5773703_cgraph.png" border="0" usemap="#kunistd_8h_a99434c0e561b0e99c4ef081ae5773703_cgraph" alt=""/></div>
 <map name="kunistd_8h_a99434c0e561b0e99c4ef081ae5773703_cgraph" id="kunistd_8h_a99434c0e561b0e99c4ef081ae5773703_cgraph">
-<area shape="rect" id="node3" href="vfs_8h.html#a4f8b6a1f2b0e6012446196f18b33d686" title="Suppression d&#39;un noeud." alt="" coords="208,5,288,35"/></map>
+<area shape="rect" id="node3" href="vfs_8h.html#a4f8b6a1f2b0e6012446196f18b33d686" title="Suppression d&#39;un noeud." alt="" coords="215,5,295,33"/></map>
 </div>
 </p>
 
@@ -220,7 +222,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h_a754a9d6d5d3da3db605147488e485805_cgraph.png" border="0" usemap="#kunistd_8h_a754a9d6d5d3da3db605147488e485805_cgraph" alt=""/></div>
 <map name="kunistd_8h_a754a9d6d5d3da3db605147488e485805_cgraph" id="kunistd_8h_a754a9d6d5d3da3db605147488e485805_cgraph">
-<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="209,5,351,35"/></map>
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
 </div>
 </p>
 
@@ -277,7 +279,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph.png" border="0" usemap="#kunistd_8h_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph" alt=""/></div>
 <map name="kunistd_8h_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph" id="kunistd_8h_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph">
-<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="209,5,351,35"/></map>
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
 </div>
 </p>
 
@@ -334,7 +336,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph.png" border="0" usemap="#kunistd_8h_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph" alt=""/></div>
 <map name="kunistd_8h_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph" id="kunistd_8h_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph">
-<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="209,5,351,35"/></map>
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
 </div>
 </p>
 
@@ -389,13 +391,13 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h_a5dd5ee4481953b987bfc1bcb836be820_cgraph.png" border="0" usemap="#kunistd_8h_a5dd5ee4481953b987bfc1bcb836be820_cgraph" alt=""/></div>
 <map name="kunistd_8h_a5dd5ee4481953b987bfc1bcb836be820_cgraph" id="kunistd_8h_a5dd5ee4481953b987bfc1bcb836be820_cgraph">
-<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="209,5,351,35"/></map>
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a2999b8cb7ae296bd3da79308b1cb2f42"></a><!-- doxytag: member="kunistd.h::SYSCALL_HANDLER3" ref="a2999b8cb7ae296bd3da79308b1cb2f42" args="(sys_ioctl, uint32_t fd, unsigned int request, void *data)" -->
+<a class="anchor" id="a1eab9ba54efce654ee3cd717f2161b8f"></a><!-- doxytag: member="kunistd.h::SYSCALL_HANDLER3" ref="a1eab9ba54efce654ee3cd717f2161b8f" args="(sys_ioctl, uint32_t *fd, unsigned int request, void *data)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -408,7 +410,7 @@ Voici le graphe d'appel pour cette fonction :</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *&#160;</td>
           <td class="paramname"><em>fd</em>, </td>
         </tr>
         <tr>
@@ -434,7 +436,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <p>Syscall pour controler un fichier.</p>
 <dl class="params"><dt><b>Paramètres:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">fd</td><td>Id du descripteur de fichier. </td></tr>
+    <tr><td class="paramname">fd</td><td>Pointeur sur l'id du descripteur de fichier. Utilisé comme code de retour. </td></tr>
   </table>
   </dd>
 </dl>
@@ -442,9 +444,9 @@ Voici le graphe d'appel pour cette fonction :</div>
 <p><div class="dynheader">
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
-<div class="center"><img src="kunistd_8h_a2999b8cb7ae296bd3da79308b1cb2f42_cgraph.png" border="0" usemap="#kunistd_8h_a2999b8cb7ae296bd3da79308b1cb2f42_cgraph" alt=""/></div>
-<map name="kunistd_8h_a2999b8cb7ae296bd3da79308b1cb2f42_cgraph" id="kunistd_8h_a2999b8cb7ae296bd3da79308b1cb2f42_cgraph">
-<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="209,5,351,35"/></map>
+<div class="center"><img src="kunistd_8h_a1eab9ba54efce654ee3cd717f2161b8f_cgraph.png" border="0" usemap="#kunistd_8h_a1eab9ba54efce654ee3cd717f2161b8f_cgraph" alt=""/></div>
+<map name="kunistd_8h_a1eab9ba54efce654ee3cd717f2161b8f_cgraph" id="kunistd_8h_a1eab9ba54efce654ee3cd717f2161b8f_cgraph">
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
 </div>
 </p>
 
@@ -501,7 +503,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h_a18585c0d8560c855f1d38405703e7eb3_cgraph.png" border="0" usemap="#kunistd_8h_a18585c0d8560c855f1d38405703e7eb3_cgraph" alt=""/></div>
 <map name="kunistd_8h_a18585c0d8560c855f1d38405703e7eb3_cgraph" id="kunistd_8h_a18585c0d8560c855f1d38405703e7eb3_cgraph">
-<area shape="rect" id="node3" href="vfs_8h.html#abc4b699568e273fe58f842c5c5363f02" title="Obtient des infos sur un noeud." alt="" coords="208,5,275,35"/></map>
+<area shape="rect" id="node3" href="vfs_8h.html#abc4b699568e273fe58f842c5c5363f02" title="Obtient des infos sur un noeud." alt="" coords="213,5,283,33"/></map>
 </div>
 </p>
 
@@ -550,7 +552,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph.png" border="0" usemap="#kunistd_8h_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph" alt=""/></div>
 <map name="kunistd_8h_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph" id="kunistd_8h_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph">
-<area shape="rect" id="node3" href="vfs_8h.html#addbdd0f5a70a3babbcb5ca4d63e2c3fd" title="Création d&#39;un nouveau noeud." alt="" coords="209,5,295,35"/></map>
+<area shape="rect" id="node3" href="vfs_8h.html#addbdd0f5a70a3babbcb5ca4d63e2c3fd" title="Création d&#39;un nouveau noeud." alt="" coords="215,5,300,33"/></map>
 </div>
 </p>
 
@@ -574,7 +576,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -88,17 +88,15 @@ Graphe de collaboration de _tty_struct_t:</div>
 <div class="dyncontent">
 <div class="center"><img src="struct__tty__struct__t__coll__graph.png" border="0" usemap="#__tty__struct__t_coll__map" alt="Collaboration graph"/></div>
 <map name="__tty__struct__t_coll__map" id="__tty__struct__t_coll__map">
-<area shape="rect" id="node2" href="struct__tty__driver__t.html" title="_tty_driver_t" alt="" coords="68,197,161,227"/><area shape="rect" id="node4" href="structtermios.html" title="termios" alt="" coords="69,5,136,35"/><area shape="rect" id="node6" href="struct__tty__operations__t.html" title="_tty_operations_t" alt="" coords="240,101,360,131"/></map>
+<area shape="rect" id="node2" href="struct__tty__driver__t.html" title="_tty_driver_t" alt="" coords="72,193,165,221"/><area shape="rect" id="node4" href="structtermios.html" title="termios" alt="" coords="75,6,139,34"/><area shape="rect" id="node6" href="struct__tty__operations__t.html" title="_tty_operations_t" alt="" coords="241,99,361,127"/></map>
 <center><span class="legend">[<a href="graph_legend.html">légende</a>]</span></center></div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__struct__t.html#a4208e736cfcd8e0b00a3c0bbfe4674f7">index</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__struct__t.html#a974cb784cad13e547e5cace553875f90">driver_data</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39471b82fd4e3a235744e73775ac2523"></a><!-- doxytag: member="_tty_struct_t::termios" ref="a39471b82fd4e3a235744e73775ac2523" args="" -->
-struct <a class="el" href="structtermios.html">termios</a>&#160;</td><td class="memItemRight" valign="bottom"><b>termios</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace735f0fca7a2e1c4c75f6ffb9223b19"></a><!-- doxytag: member="_tty_struct_t::buffer" ref="ace735f0fca7a2e1c4c75f6ffb9223b19" args="[MAX_INPUT]" -->
-char&#160;</td><td class="memItemRight" valign="bottom"><b>buffer</b> [<a class="el" href="tty_8h.html#a00c1f0e7816626f58349492ef0720b5f">MAX_INPUT</a>]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtermios.html">termios</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__struct__t.html#a39471b82fd4e3a235744e73775ac2523">termios</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__struct__t.html#ace735f0fca7a2e1c4c75f6ffb9223b19">buffer</a> [<a class="el" href="tty_8h.html#a00c1f0e7816626f58349492ef0720b5f">MAX_INPUT</a>]</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae136497684ded03f21999f2239b3b67c"></a><!-- doxytag: member="_tty_struct_t::p_begin" ref="ae136497684ded03f21999f2239b3b67c" args="" -->
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>p_begin</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a437e8f9f913784a7f60cf95af3917b23"></a><!-- doxytag: member="_tty_struct_t::p_end" ref="a437e8f9f913784a7f60cf95af3917b23" args="" -->
@@ -115,6 +113,20 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>n_open</b></td></tr>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><p>Structure qui est passée à chaque appel de fonction (open, close, write...) au tty driver. </p>
 </div><hr/><h2>Documentation des champs</h2>
+<a class="anchor" id="ace735f0fca7a2e1c4c75f6ffb9223b19"></a><!-- doxytag: member="_tty_struct_t::buffer" ref="ace735f0fca7a2e1c4c75f6ffb9223b19" args="[MAX_INPUT]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="struct__tty__struct__t.html#ace735f0fca7a2e1c4c75f6ffb9223b19">_tty_struct_t::buffer</a>[<a class="el" href="tty_8h.html#a00c1f0e7816626f58349492ef0720b5f">MAX_INPUT</a>]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Données prêtes pour la lecture. </p>
+
+</div>
+</div>
 <a class="anchor" id="a974cb784cad13e547e5cace553875f90"></a><!-- doxytag: member="_tty_struct_t::driver_data" ref="a974cb784cad13e547e5cace553875f90" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -143,6 +155,20 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>n_open</b></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a39471b82fd4e3a235744e73775ac2523"></a><!-- doxytag: member="_tty_struct_t::termios" ref="a39471b82fd4e3a235744e73775ac2523" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structtermios.html">termios</a> <a class="el" href="struct__tty__struct__t.html#a39471b82fd4e3a235744e73775ac2523">_tty_struct_t::termios</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Configuration du terminal. </p>
+
+</div>
+</div>
 <hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
 <li>kernel/include/<a class="el" href="tty_8h_source.html">tty.h</a></li>
 </ul>
@@ -164,7 +190,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>n_open</b></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:48 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="53,83,117,112"/>
-<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="53,237,117,267"/>
-<area shape="rect" id="node7" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="84,160,164,189"/>
+<area shape="rect" id="node3" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="52,83,113,111"/>
+<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="52,238,113,266"/>
+<area shape="rect" id="node7" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="83,161,160,189"/>
 </map>

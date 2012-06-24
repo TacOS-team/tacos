@@ -84,7 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00029"></a>00029 <span class="preprocessor"></span><span class="preprocessor">#define _SYMTABLE_H</span>
 <a name="l00030"></a>00030 <span class="preprocessor"></span>
 <a name="l00031"></a>00031 <span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span>
-<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF.">elf.h</a>&gt;</span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;elf.h&gt;</span>
 <a name="l00033"></a>00033 
 <a name="l00034"></a><a class="code" href="structsymbol__t.html">00034</a> <span class="keyword">typedef</span> <span class="keyword">struct</span>
 <a name="l00035"></a>00035 {
@@ -97,7 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00042"></a>00042         <span class="keywordtype">int</span> count;
 <a name="l00043"></a>00043 }<a class="code" href="structsymbol__table__t.html">symbol_table_t</a>;
 <a name="l00044"></a>00044 
-<a name="l00045"></a>00045 <a class="code" href="structsymbol__table__t.html">symbol_table_t</a>* load_symtable(<a class="code" href="structElf32__File.html">Elf32_File</a>* file);
+<a name="l00045"></a>00045 <a class="code" href="structsymbol__table__t.html">symbol_table_t</a>* load_symtable(Elf32_File* file);
 <a name="l00046"></a>00046 
 <a name="l00047"></a>00047 <span class="keywordtype">void</span> load_kernel_symtable();
 <a name="l00048"></a>00048 
@@ -125,7 +125,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:46 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

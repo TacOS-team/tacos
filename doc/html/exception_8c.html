@@ -92,13 +92,12 @@ Graphe des dépendances par inclusion de exception.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="exception_8c__incl.png" border="0" usemap="#kernel_2exception_8c" alt=""/></div>
 <map name="kernel_2exception_8c" id="kernel_2exception_8c">
-<area shape="rect" id="node3" href="idt_8h.html" title="Initialisation de la table des descripteurs d&#39;interruption (et exceptions) et association aux handler..." alt="" coords="5,83,51,112"/><area shape="rect" id="node7" href="exception_8h.html" title="exception.h" alt="" coords="75,83,165,112"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="41,160,105,189"/></map>
+<area shape="rect" id="node3" href="idt_8h.html" title="Initialisation de la table des descripteurs d&#39;interruption (et exceptions) et association aux handler..." alt="" coords="5,83,51,111"/><area shape="rect" id="node7" href="exception_8h.html" title="exception.h" alt="" coords="75,83,160,111"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="41,161,103,189"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5a3d89ca654d3606b6afd836a01e207"></a><!-- doxytag: member="exception.c::exception_set_routine" ref="ac5a3d89ca654d3606b6afd836a01e207" args="(uint8_t exception_id, exception_handler_t routine)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>exception_set_routine</b> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> exception_id, exception_handler_t routine)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8c.html#ac5a3d89ca654d3606b6afd836a01e207">exception_set_routine</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> exception_id, <a class="el" href="exception_8h.html#a27a88f1aea43a3b64d4ab8d578471642">exception_handler_t</a> routine)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a845efe084f5994d748fd7c30403ac879"></a><!-- doxytag: member="exception.c::exception_disable" ref="a845efe084f5994d748fd7c30403ac879" args="(uint8_t exception_id)" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>exception_disable</b> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> exception_id)</td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
@@ -106,7 +105,7 @@ Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae3a2ef644e2e40acf9a7844e65e8ce19"></a><!-- doxytag: member="exception.c::exception_wrapper_array" ref="ae3a2ef644e2e40acf9a7844e65e8ce19" args="[EXCEPTION_NUM]" -->
 <a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>exception_wrapper_array</b> [<a class="el" href="idt_8h.html#a1e638762d3982aadbcb3a847d7cb396b">EXCEPTION_NUM</a>]</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ede695acf41b0e60948d79f8395c5b8"></a><!-- doxytag: member="exception.c::exception_handler_array" ref="a1ede695acf41b0e60948d79f8395c5b8" args="[EXCEPTION_NUM]" -->
-exception_handler_t&#160;</td><td class="memItemRight" valign="bottom"><b>exception_handler_array</b> [<a class="el" href="idt_8h.html#a1e638762d3982aadbcb3a847d7cb396b">EXCEPTION_NUM</a>]</td></tr>
+<a class="el" href="exception_8h.html#a27a88f1aea43a3b64d4ab8d578471642">exception_handler_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>exception_handler_array</b> [<a class="el" href="idt_8h.html#a1e638762d3982aadbcb3a847d7cb396b">EXCEPTION_NUM</a>]</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -118,7 +117,54 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-</div></div><!-- contents -->
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ac5a3d89ca654d3606b6afd836a01e207"></a><!-- doxytag: member="exception.c::exception_set_routine" ref="ac5a3d89ca654d3606b6afd836a01e207" args="(uint8_t exception_id, exception_handler_t routine)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="exception_8h.html#ac5a3d89ca654d3606b6afd836a01e207">exception_set_routine</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
+          <td class="paramname"><em>exception_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="exception_8h.html#a27a88f1aea43a3b64d4ab8d578471642">exception_handler_t</a>&#160;</td>
+          <td class="paramname"><em>routine</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Définit le handler associé à une exception. </p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="exception_8c_ac5a3d89ca654d3606b6afd836a01e207_cgraph.png" border="0" usemap="#exception_8c_ac5a3d89ca654d3606b6afd836a01e207_cgraph" alt=""/></div>
+<map name="exception_8c_ac5a3d89ca654d3606b6afd836a01e207_cgraph" id="exception_8c_ac5a3d89ca654d3606b6afd836a01e207_cgraph">
+<area shape="rect" id="node3" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="204,5,313,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="exception_8c_ac5a3d89ca654d3606b6afd836a01e207_icgraph.png" border="0" usemap="#exception_8c_ac5a3d89ca654d3606b6afd836a01e207_icgraph" alt=""/></div>
+<map name="exception_8c_ac5a3d89ca654d3606b6afd836a01e207_icgraph" id="exception_8c_ac5a3d89ca654d3606b6afd836a01e207_icgraph">
+<area shape="rect" id="node3" href="kpanic_8c.html#acf070b3d87597bdddd1c1c413ed4adb2" title="kpanic_init" alt="" coords="204,5,287,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -136,7 +182,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

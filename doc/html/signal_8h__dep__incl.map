@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="5,83,120,112"/>
-<area shape="rect" id="node5" href="$signal_8c.html" title="libc/signal.c" alt="" coords="144,83,235,112"/>
-<area shape="rect" id="node7" href="$start_8c.html" title="libc/start.c" alt="" coords="259,83,339,112"/>
-<area shape="rect" id="node9" href="$wait_8c.html" title="libc/wait.c" alt="" coords="363,83,440,112"/>
+<area shape="rect" id="node3" href="$signal_8c.html" title="Gestion des signaux." alt="" coords="5,83,96,111"/>
+<area shape="rect" id="node5" href="$start_8c.html" title="libc/start.c" alt="" coords="120,83,203,111"/>
+<area shape="rect" id="node7" href="$libc_2stdlib_8c.html" title="libc/stdlib.c" alt="" coords="227,83,312,111"/>
+<area shape="rect" id="node9" href="$wait_8c.html" title="libc/wait.c" alt="" coords="336,83,416,111"/>
 </map>

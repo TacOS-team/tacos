@@ -1,6 +1,8 @@
 var searchData=
 [
+  ['keyboardinterrupt',['keyboardInterrupt',['../keyboard_8c.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61',1,'keyboardInterrupt(int id):&#160;keyboard.c'],['../keyboard_8h.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61',1,'keyboardInterrupt(int id):&#160;keyboard.c']]],
   ['kfree',['kfree',['../kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a',1,'kfree(void *p):&#160;kmalloc.c'],['../kmalloc_8c.html#a5aaca0462e88916f57db57384fd7618a',1,'kfree(void *p):&#160;kmalloc.c']]],
+  ['kill',['kill',['../signal_8h.html#ae9fc1d1a853fcc23a5e434506aa47bca',1,'kill(unsigned int pid, int sig):&#160;signal.c'],['../signal_8c.html#ae9fc1d1a853fcc23a5e434506aa47bca',1,'kill(unsigned int pid, int sig):&#160;signal.c']]],
   ['kmalloc',['kmalloc',['../kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be',1,'kmalloc(size_t size):&#160;kmalloc.c'],['../kmalloc_8c.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be',1,'kmalloc(size_t size):&#160;kmalloc.c']]],
   ['kpanic_5finit',['kpanic_init',['../kpanic_8h.html#acf070b3d87597bdddd1c1c413ed4adb2',1,'kpanic_init():&#160;kpanic.c'],['../kpanic_8c.html#acf070b3d87597bdddd1c1c413ed4adb2',1,'kpanic_init():&#160;kpanic.c']]],
   ['kprintf',['kprintf',['../kstdio_8h.html#a139d07e37f4cb84769b3c892f58696be',1,'kprintf(const char *format,...):&#160;kstdio.c'],['../kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be',1,'kprintf(const char *format,...):&#160;kstdio.c']]],

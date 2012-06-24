@@ -87,20 +87,21 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <div class="dyncontent">
 <div class="center"><img src="floppy__motor_8h__dep__incl.png" border="0" usemap="#kernel_2drivers_2block_2floppy_2floppy__motor_8hdep" alt=""/></div>
 <map name="kernel_2drivers_2block_2floppy_2floppy__motor_8hdep" id="kernel_2drivers_2block_2floppy_2floppy__motor_8hdep">
-<area shape="rect" id="node3" href="floppy_8c.html" title="kernel/drivers/block/floppy/floppy.c" alt="" coords="5,83,232,112"/><area shape="rect" id="node5" href="floppy__dma_8c.html" title="kernel/drivers/block/floppy/floppy_dma.c" alt="" coords="256,83,517,112"/><area shape="rect" id="node7" href="floppy__motor_8c.html" title="kernel/drivers/block/floppy/floppy_motor.c" alt="" coords="541,83,811,112"/><area shape="rect" id="node9" href="floppy__utils_8c.html" title="kernel/drivers/block/floppy/floppy_utils.c" alt="" coords="835,83,1093,112"/></map>
+<area shape="rect" id="node3" href="floppy_8c.html" title="kernel/drivers/block/floppy/floppy.c" alt="" coords="5,83,224,111"/><area shape="rect" id="node5" href="floppy__dma_8c.html" title="kernel/drivers/block/floppy/floppy_dma.c" alt="" coords="248,83,499,111"/><area shape="rect" id="node7" href="floppy__motor_8c.html" title="kernel/drivers/block/floppy/floppy_motor.c" alt="" coords="523,83,781,111"/><area shape="rect" id="node9" href="floppy__utils_8c.html" title="kernel/drivers/block/floppy/floppy_utils.c" alt="" coords="805,83,1056,111"/></map>
 </div>
 </div>
 <p><a href="floppy__motor_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="enum-members"></a>
 Énumérations</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>floppy_motor_state</b> { <b>OFF</b> =  0, 
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__motor_8h.html#add6bb30f455445a1aa955aa5f3bc6f3d">floppy_motor_state</a> { <b>OFF</b> =  0, 
 <b>ON</b> =  1
  }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Décrit l'état du moteur (on/off) <br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e34854bf77e8b763e57b6a8986ecff5"></a><!-- doxytag: member="floppy_motor.h::floppy_motor" ref="a8e34854bf77e8b763e57b6a8986ecff5" args="(floppy_motor_state new_state)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>floppy_motor</b> (floppy_motor_state new_state)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__motor_8h.html#a8e34854bf77e8b763e57b6a8986ecff5">floppy_motor</a> (<a class="el" href="floppy__motor_8h.html#add6bb30f455445a1aa955aa5f3bc6f3d">floppy_motor_state</a> new_state)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change l'état du moteur.  <a href="#a8e34854bf77e8b763e57b6a8986ecff5"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -113,7 +114,49 @@ LICENSE</h2>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
 <p>Description de ce que fait le fichier </p>
-</div></div><!-- contents -->
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a8e34854bf77e8b763e57b6a8986ecff5"></a><!-- doxytag: member="floppy_motor.h::floppy_motor" ref="a8e34854bf77e8b763e57b6a8986ecff5" args="(floppy_motor_state new_state)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="floppy__motor_8h.html#a8e34854bf77e8b763e57b6a8986ecff5">floppy_motor</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="floppy__motor_8h.html#add6bb30f455445a1aa955aa5f3bc6f3d">floppy_motor_state</a>&#160;</td>
+          <td class="paramname"><em>new_state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_state</td><td>état du moteur désiré </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_cgraph.png" border="0" usemap="#floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_cgraph" alt=""/></div>
+<map name="floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_cgraph" id="floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_cgraph">
+<area shape="rect" id="node3" href="floppy__utils_8c.html#aab49f8f343dc0a1f9c89ec5f5e444e0e" title="Retourne le numero tu lecteur courrant." alt="" coords="149,5,312,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_icgraph.png" border="0" usemap="#floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_icgraph" alt=""/></div>
+<map name="floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_icgraph" id="floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_icgraph">
+<area shape="rect" id="node3" href="floppy__utils_8h.html#acf13f3cbd5df998eefb55cd2d15210c5" title="Déplace la tête de lecture à un cylindre défini." alt="" coords="149,5,240,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -131,7 +174,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

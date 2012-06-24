@@ -1,18 +1,16 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$module_8c.html" title="kernel/module.c" alt="" coords="5,83,123,112"/>
-<area shape="rect" id="node5" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="147,83,235,112"/>
-<area shape="rect" id="node7" href="$fcntl_8c.html" title="File control operations." alt="" coords="259,83,336,112"/>
-<area shape="rect" id="node9" href="$malloc_8c.html" title="libc/malloc.c" alt="" coords="360,83,453,112"/>
-<area shape="rect" id="node11" href="$process_8c.html" title="libc/process.c" alt="" coords="477,83,581,112"/>
-<area shape="rect" id="node13" href="$sem_8c.html" title="libc/sem.c" alt="" coords="605,83,688,112"/>
-<area shape="rect" id="node15" href="$signal_8c.html" title="libc/signal.c" alt="" coords="712,83,803,112"/>
-<area shape="rect" id="node17" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="827,83,949,112"/>
-<area shape="rect" id="node19" href="$fseek_8c.html" title="libc/stdio/fseek.c" alt="" coords="973,83,1096,112"/>
-<area shape="rect" id="node21" href="$get_8c.html" title="libc/stdio/get.c" alt="" coords="1120,83,1227,112"/>
-<area shape="rect" id="node23" href="$put_8c.html" title="libc/stdio/put.c" alt="" coords="1251,83,1357,112"/>
-<area shape="rect" id="node25" href="$stdlib_8c.html" title="libc/stdlib.c" alt="" coords="1381,83,1467,112"/>
-<area shape="rect" id="node27" href="$time_8c.html" title="libc/time.c" alt="" coords="1491,83,1571,112"/>
-<area shape="rect" id="node29" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="1595,83,1685,112"/>
-<area shape="rect" id="node31" href="$wait_8c.html" title="libc/wait.c" alt="" coords="1709,83,1787,112"/>
-<area shape="rect" id="node33" href="$elf_8c.html" title="system/elf.c" alt="" coords="1811,83,1904,112"/>
+<area shape="rect" id="node3" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="5,83,93,111"/>
+<area shape="rect" id="node5" href="$fcntl_8c.html" title="File control operations." alt="" coords="117,83,197,111"/>
+<area shape="rect" id="node7" href="$malloc_8c.html" title="libc/malloc.c" alt="" coords="221,83,315,111"/>
+<area shape="rect" id="node9" href="$process_8c.html" title="libc/process.c" alt="" coords="339,83,440,111"/>
+<area shape="rect" id="node11" href="$sem_8c.html" title="libc/sem.c" alt="" coords="464,83,544,111"/>
+<area shape="rect" id="node13" href="$signal_8c.html" title="Gestion des signaux." alt="" coords="568,83,659,111"/>
+<area shape="rect" id="node15" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="683,83,803,111"/>
+<area shape="rect" id="node17" href="$fseek_8c.html" title="libc/stdio/fseek.c" alt="" coords="827,83,947,111"/>
+<area shape="rect" id="node19" href="$get_8c.html" title="libc/stdio/get.c" alt="" coords="971,83,1077,111"/>
+<area shape="rect" id="node21" href="$put_8c.html" title="libc/stdio/put.c" alt="" coords="1101,83,1208,111"/>
+<area shape="rect" id="node23" href="$libc_2stdlib_8c.html" title="libc/stdlib.c" alt="" coords="1232,83,1317,111"/>
+<area shape="rect" id="node25" href="$time_8c.html" title="libc/time.c" alt="" coords="1341,83,1421,111"/>
+<area shape="rect" id="node27" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="1445,83,1536,111"/>
+<area shape="rect" id="node29" href="$wait_8c.html" title="libc/wait.c" alt="" coords="1560,83,1640,111"/>
 </map>

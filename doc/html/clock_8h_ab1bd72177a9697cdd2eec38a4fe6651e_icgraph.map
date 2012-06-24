@@ -1,8 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$clock_8h.html#a8bfadf8175457fd7fbe6b53a46788a4e" title="Syscall handler pour get_date. Syscall handler pour get_date." alt="" coords="128,5,283,35"/>
-<area shape="rect" id="node5" href="$clock_8h.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="176,59,235,88"/>
-<area shape="rect" id="node7" href="$events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur" alt="" coords="331,32,477,61"/>
-<area shape="rect" id="node13" href="$events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="539,84,624,113"/>
-<area shape="rect" id="node9" href="$scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="525,31,637,60"/>
-<area shape="rect" id="node11" href="$scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep Endors un processus, et crée un évenement pour le réveiller..." alt="" coords="685,57,840,87"/>
+<area shape="rect" id="node3" href="$clock_8h.html#a8bfadf8175457fd7fbe6b53a46788a4e" title="Syscall handler pour get_date. Syscall handler pour get_date." alt="" coords="125,5,285,33"/>
+<area shape="rect" id="node5" href="$clock_8h.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="176,55,235,83"/>
+<area shape="rect" id="node7" href="$events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur" alt="" coords="335,30,476,58"/>
+<area shape="rect" id="node13" href="$events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="540,81,623,109"/>
+<area shape="rect" id="node9" href="$scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="527,30,636,58"/>
+<area shape="rect" id="node11" href="$scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="685,55,845,83"/>
 </map>

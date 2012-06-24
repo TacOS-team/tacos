@@ -1,17 +1,17 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$kprocess_8h.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="157,216,272,245"/>
-<area shape="rect" id="node5" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="669,5,736,35"/>
-<area shape="rect" id="node9" href="$kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="840,204,893,233"/>
-<area shape="rect" id="node11" href="$kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="839,281,895,311"/>
-<area shape="rect" id="node13" href="$ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="355,345,429,375"/>
-<area shape="rect" id="node15" href="$ksem_8h.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)" alt="" coords="359,164,425,193"/>
-<area shape="rect" id="node19" href="$scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="321,399,463,428"/>
-<area shape="rect" id="node21" href="$kfcntl_8h.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="355,111,429,140"/>
-<area shape="rect" id="node7" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="796,5,937,35"/>
-<area shape="rect" id="node17" href="$kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné." alt="" coords="512,164,611,193"/>
-<area shape="rect" id="node25" href="$kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="525,57,597,87"/>
-<area shape="rect" id="node27" href="$vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="524,111,599,140"/>
-<area shape="rect" id="node30" href="$vfs_8h.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier." alt="" coords="659,241,747,271"/>
-<area shape="rect" id="node34" href="$vfs_8h.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="664,111,741,140"/>
-<area shape="rect" id="node36" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="841,111,892,140"/>
+<area shape="rect" id="node3" href="$kprocess_8h.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="159,207,268,235"/>
+<area shape="rect" id="node5" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="661,5,728,33"/>
+<area shape="rect" id="node9" href="$kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="831,195,884,223"/>
+<area shape="rect" id="node11" href="$kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="829,271,885,299"/>
+<area shape="rect" id="node13" href="$ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="352,334,424,362"/>
+<area shape="rect" id="node15" href="$ksem_8h.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)" alt="" coords="355,157,421,185"/>
+<area shape="rect" id="node19" href="$scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="319,385,457,413"/>
+<area shape="rect" id="node21" href="$kfcntl_8h.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="351,106,425,134"/>
+<area shape="rect" id="node7" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="788,5,927,33"/>
+<area shape="rect" id="node17" href="$kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné." alt="" coords="508,157,601,185"/>
+<area shape="rect" id="node25" href="$kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="520,55,589,83"/>
+<area shape="rect" id="node27" href="$vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="517,106,592,134"/>
+<area shape="rect" id="node30" href="$vfs_8h.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier." alt="" coords="652,233,737,261"/>
+<area shape="rect" id="node34" href="$vfs_8h.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="656,106,733,134"/>
+<area shape="rect" id="node36" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="832,106,883,134"/>
 </map>

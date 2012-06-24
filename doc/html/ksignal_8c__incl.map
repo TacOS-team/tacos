@@ -1,22 +1,18 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$gdt_8h.html" title="gdt.h" alt="" coords="5,160,56,189"/>
-<area shape="rect" id="node7" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="195,160,280,189"/>
-<area shape="rect" id="node10" href="$klog_8h.html" title="Logging macros." alt="" coords="589,83,648,112"/>
-<area shape="rect" id="node12" href="$kstdio_8h.html" title="kprintf" alt="" coords="616,160,683,189"/>
-<area shape="rect" id="node14" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="456,160,541,189"/>
-<area shape="rect" id="node34" href="$ksignal_8h.html" title="ksignal.h" alt="" coords="389,83,464,112"/>
-<area shape="rect" id="node41" href="$pagination_8h.html" title="pagination.h" alt="" coords="80,160,171,189"/>
-<area shape="rect" id="node44" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="275,83,365,112"/>
-<area shape="rect" id="node48" href="$syscall__values_8h.html" title="syscall_values.h" alt="" coords="672,83,789,112"/>
-<area shape="rect" id="node50" href="$signal_8h.html" title="signal.h" alt="" coords="863,83,929,112"/>
-<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="259,315,323,344"/>
-<area shape="rect" id="node16" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="289,237,369,267"/>
-<area shape="rect" id="node19" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="444,237,527,267"/>
-<area shape="rect" id="node21" href="$signal__types_8h.html" title="signal_types.h" alt="" coords="887,237,993,267"/>
-<area shape="rect" id="node23" href="$process__types_8h.html" title="process_types.h" alt="" coords="551,237,668,267"/>
-<area shape="rect" id="node25" href="$symtable_8h.html" title="symtable.h" alt="" coords="777,237,863,267"/>
-<area shape="rect" id="node31" href="$vmm_8h.html" title="vmm.h" alt="" coords="692,237,753,267"/>
-<area shape="rect" id="node28" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="797,315,843,344"/>
-<area shape="rect" id="node52" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="949,160,1037,189"/>
-<area shape="rect" id="node54" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="1017,237,1092,267"/>
+<area shape="rect" id="node3" href="$gdt_8h.html" title="gdt.h" alt="" coords="229,161,280,189"/>
+<area shape="rect" id="node7" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="120,161,205,189"/>
+<area shape="rect" id="node10" href="$klog_8h.html" title="Logging macros." alt="" coords="627,83,683,111"/>
+<area shape="rect" id="node12" href="$kstdio_8h.html" title="kprintf" alt="" coords="707,161,773,189"/>
+<area shape="rect" id="node14" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="496,161,581,189"/>
+<area shape="rect" id="node34" href="$ksignal_8h.html" title="ksignal.h" alt="" coords="368,83,440,111"/>
+<area shape="rect" id="node41" href="$pagination_8h.html" title="pagination.h" alt="" coords="5,161,96,189"/>
+<area shape="rect" id="node44" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="515,83,603,111"/>
+<area shape="rect" id="node48" href="$syscall__values_8h.html" title="syscall_values.h" alt="" coords="757,83,875,111"/>
+<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="331,315,392,343"/>
+<area shape="rect" id="node16" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="915,238,992,266"/>
+<area shape="rect" id="node19" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="653,238,733,266"/>
+<area shape="rect" id="node21" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="301,238,405,266"/>
+<area shape="rect" id="node23" href="$process__types_8h.html" title="process_types.h" alt="" coords="515,238,629,266"/>
+<area shape="rect" id="node25" href="$symtable_8h.html" title="symtable.h" alt="" coords="808,238,891,266"/>
+<area shape="rect" id="node31" href="$vmm_8h.html" title="vmm.h" alt="" coords="429,238,491,266"/>
 </map>

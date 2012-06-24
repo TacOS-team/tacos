@@ -80,71 +80,59 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </div><!--header-->
 <div class="contents">
 <a href="signal__types_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00030"></a>00030 <span class="preprocessor">#ifndef _SIGNAL_TYPES_H</span>
-<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define _SIGNAL_TYPES_H</span>
-<a name="l00032"></a>00032 <span class="preprocessor"></span>
-<a name="l00033"></a>00033 <span class="preprocessor">#define NSIG            32</span>
-<a name="l00034"></a>00034 <span class="preprocessor"></span>
-<a name="l00035"></a>00035 <span class="preprocessor">#ifndef SIGTYPES</span>
-<a name="l00036"></a>00036 <span class="preprocessor"></span><span class="preprocessor">#define SIGTYPES</span>
-<a name="l00037"></a>00037 <span class="preprocessor"></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> sigset_t;
-<a name="l00038"></a>00038 <span class="keyword">typedef</span> void (*sighandler_t)(int);
-<a name="l00039"></a>00039 <span class="preprocessor">#endif</span>
-<a name="l00040"></a>00040 <span class="preprocessor"></span>
-<a name="l00041"></a><a class="code" href="structsignal__process__data__t.html">00041</a> <span class="keyword">typedef</span> <span class="keyword">struct</span>
-<a name="l00042"></a>00042 {
-<a name="l00043"></a>00043         sigset_t mask;
-<a name="l00044"></a>00044         sigset_t pending_set;
-<a name="l00045"></a>00045         sighandler_t handlers[NSIG];
-<a name="l00046"></a>00046 } <a class="code" href="structsignal__process__data__t.html">signal_process_data_t</a>;
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048 <span class="comment">/* Définition des signaux (/!\ code aussi dupliqué dans la libc) */</span>
-<a name="l00049"></a>00049 <span class="comment">//XXX: Est-ce qu&#39;on ne devrait pas se caller sur les numéros POSIX ?</span>
-<a name="l00050"></a>00050 <span class="preprocessor">#define SIGHUP           0</span>
-<a name="l00051"></a>00051 <span class="preprocessor"></span><span class="preprocessor">#define SIGINT           1</span>
-<a name="l00052"></a>00052 <span class="preprocessor"></span><span class="preprocessor">#define SIGQUIT          2</span>
-<a name="l00053"></a>00053 <span class="preprocessor"></span><span class="preprocessor">#define SIGILL           3</span>
-<a name="l00054"></a>00054 <span class="preprocessor"></span><span class="preprocessor">#define SIGTRAP          4</span>
-<a name="l00055"></a>00055 <span class="preprocessor"></span><span class="preprocessor">#define SIGABRT          5</span>
-<a name="l00056"></a>00056 <span class="preprocessor"></span><span class="preprocessor">#define SIGIOT           5</span>
-<a name="l00057"></a>00057 <span class="preprocessor"></span><span class="preprocessor">#define SIGBUS           6</span>
-<a name="l00058"></a>00058 <span class="preprocessor"></span><span class="preprocessor">#define SIGFPE           7</span>
-<a name="l00059"></a>00059 <span class="preprocessor"></span><span class="preprocessor">#define SIGKILL          8</span>
-<a name="l00060"></a>00060 <span class="preprocessor"></span><span class="preprocessor">#define SIGUSR1          9      </span>
-<a name="l00061"></a>00061 <span class="preprocessor"></span><span class="preprocessor">#define SIGSEGV         10</span>
-<a name="l00062"></a>00062 <span class="preprocessor"></span><span class="preprocessor">#define SIGUSR2         11</span>
-<a name="l00063"></a>00063 <span class="preprocessor"></span><span class="preprocessor">#define SIGPIPE         12</span>
-<a name="l00064"></a>00064 <span class="preprocessor"></span><span class="preprocessor">#define SIGALRM         13</span>
-<a name="l00065"></a>00065 <span class="preprocessor"></span><span class="preprocessor">#define SIGTERM         14</span>
-<a name="l00066"></a>00066 <span class="preprocessor"></span><span class="preprocessor">#define SIGSTKFLT       15</span>
-<a name="l00067"></a>00067 <span class="preprocessor"></span><span class="preprocessor">#define SIGCHLD         16</span>
-<a name="l00068"></a>00068 <span class="preprocessor"></span><span class="preprocessor">#define SIGCONT         17</span>
-<a name="l00069"></a>00069 <span class="preprocessor"></span><span class="preprocessor">#define SIGSTOP         18</span>
-<a name="l00070"></a>00070 <span class="preprocessor"></span><span class="preprocessor">#define SIGTSTP         19</span>
-<a name="l00071"></a>00071 <span class="preprocessor"></span><span class="preprocessor">#define SIGTTIN         20</span>
-<a name="l00072"></a>00072 <span class="preprocessor"></span><span class="preprocessor">#define SIGTTOU         21</span>
-<a name="l00073"></a>00073 <span class="preprocessor"></span><span class="preprocessor">#define SIGURG          22</span>
-<a name="l00074"></a>00074 <span class="preprocessor"></span><span class="preprocessor">#define SIGXCPU         23</span>
-<a name="l00075"></a>00075 <span class="preprocessor"></span><span class="preprocessor">#define SIGXFSZ         24</span>
-<a name="l00076"></a>00076 <span class="preprocessor"></span><span class="preprocessor">#define SIGVTALRM       25</span>
-<a name="l00077"></a>00077 <span class="preprocessor"></span><span class="preprocessor">#define SIGPROF         26</span>
-<a name="l00078"></a>00078 <span class="preprocessor"></span><span class="preprocessor">#define SIGWINCH        27</span>
-<a name="l00079"></a>00079 <span class="preprocessor"></span><span class="preprocessor">#define SIGIO           28</span>
-<a name="l00080"></a>00080 <span class="preprocessor"></span><span class="preprocessor">#define SIGPOLL         SIGIO</span>
-<a name="l00081"></a>00081 <span class="preprocessor"></span><span class="preprocessor">#define SIGPWR          29</span>
-<a name="l00082"></a>00082 <span class="preprocessor"></span><span class="preprocessor">#define SIGSYS          30</span>
-<a name="l00083"></a>00083 <span class="preprocessor"></span><span class="preprocessor">#define SIGUNUSED       30</span>
-<a name="l00084"></a>00084 <span class="preprocessor"></span><span class="preprocessor">#define SIGRTMIN        31</span>
-<a name="l00085"></a>00085 <span class="preprocessor"></span><span class="preprocessor">#define SIGRTMAX        NSIG-1</span>
-<a name="l00086"></a>00086 <span class="preprocessor"></span>
-<a name="l00087"></a>00087 <span class="comment">/* Paramètre pour sigprocmask */</span>
-<a name="l00088"></a>00088 <span class="preprocessor">#define SIG_BLOCK       0</span>
-<a name="l00089"></a>00089 <span class="preprocessor"></span><span class="preprocessor">#define SIG_UNBLOCK     1</span>
-<a name="l00090"></a>00090 <span class="preprocessor"></span><span class="preprocessor">#define SIG_SETMASK     2</span>
-<a name="l00091"></a>00091 <span class="preprocessor"></span>
-<a name="l00092"></a>00092 
-<a name="l00093"></a>00093 
-<a name="l00094"></a>00094 <span class="preprocessor">#endif</span>
+<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _SIGNAL_TYPES_H</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _SIGNAL_TYPES_H</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span>
+<a name="l00032"></a>00032 <span class="preprocessor">#define NSIG            32</span>
+<a name="l00033"></a>00033 <span class="preprocessor"></span>
+<a name="l00034"></a>00034 <span class="preprocessor">#ifndef SIGTYPES</span>
+<a name="l00035"></a>00035 <span class="preprocessor"></span><span class="preprocessor">#define SIGTYPES</span>
+<a name="l00036"></a>00036 <span class="preprocessor"></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> sigset_t;
+<a name="l00037"></a>00037 <span class="keyword">typedef</span> void (*<a class="code" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a>)(int);
+<a name="l00038"></a>00038 <span class="preprocessor">#endif</span>
+<a name="l00039"></a>00039 <span class="preprocessor"></span>
+<a name="l00040"></a><a class="code" href="structsignal__process__data__t.html">00040</a> <span class="keyword">typedef</span> <span class="keyword">struct</span>
+<a name="l00041"></a>00041 {
+<a name="l00042"></a>00042         sigset_t mask;
+<a name="l00043"></a>00043         sigset_t pending_set;
+<a name="l00044"></a>00044         <a class="code" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a> handlers[<a class="code" href="signal_8h.html#ab83b88daaecc469d1edb90a527ab4a39">NSIG</a>];
+<a name="l00045"></a>00045 } <a class="code" href="structsignal__process__data__t.html">signal_process_data_t</a>;
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 <span class="comment">/* Définition des signaux (/!\ code aussi dupliqué dans la libc) */</span>
+<a name="l00048"></a>00048 <span class="comment">//XXX: Est-ce qu&#39;on ne devrait pas se caller sur les numéros POSIX ?</span>
+<a name="l00049"></a><a class="code" href="signal__types_8h.html#a136c64ec2d1306de745e39d6aee362ca">00049</a> <span class="preprocessor">#define SIGHUP           0 </span>
+<a name="l00050"></a><a class="code" href="signal__types_8h.html#a487309e3e9e0527535644115204a639a">00050</a> <span class="preprocessor">#define SIGINT           1 </span>
+<a name="l00051"></a><a class="code" href="signal__types_8h.html#a62045b465be11891160d53c10861b16c">00051</a> <span class="preprocessor">#define SIGQUIT          2 </span>
+<a name="l00052"></a><a class="code" href="signal__types_8h.html#a4c9c5284f8c8d146bd7a93d25017fc62">00052</a> <span class="preprocessor">#define SIGILL           3 </span>
+<a name="l00053"></a><a class="code" href="signal__types_8h.html#aa2beb906ab1b46676e63823f4e773c38">00053</a> <span class="preprocessor">#define SIGTRAP          4 </span>
+<a name="l00054"></a><a class="code" href="signal__types_8h.html#aa86c630133e5b5174ac970227b273446">00054</a> <span class="preprocessor">#define SIGABRT          5 </span>
+<a name="l00055"></a><a class="code" href="signal__types_8h.html#aead3d488474201acf18c4b63d91edc3c">00055</a> <span class="preprocessor">#define SIGBUS           6 </span>
+<a name="l00056"></a><a class="code" href="signal__types_8h.html#a7fbba29aec3e4a8daae12935299df92d">00056</a> <span class="preprocessor">#define SIGFPE           7 </span>
+<a name="l00057"></a><a class="code" href="signal__types_8h.html#addd8dcd406ce514ab3b4f576a5343d42">00057</a> <span class="preprocessor">#define SIGKILL          8 </span>
+<a name="l00058"></a><a class="code" href="signal__types_8h.html#a944a8250e34bfd7991123abd3436d8c0">00058</a> <span class="preprocessor">#define SIGUSR1          9 </span>
+<a name="l00059"></a><a class="code" href="signal__types_8h.html#ae20b4f7171a09516ea73c9d2745bd596">00059</a> <span class="preprocessor">#define SIGSEGV         10 </span>
+<a name="l00060"></a><a class="code" href="signal__types_8h.html#abaaa61abe503c43481e35e21b0b5a031">00060</a> <span class="preprocessor">#define SIGUSR2         11 </span>
+<a name="l00061"></a><a class="code" href="signal__types_8h.html#a57e9c8c5fa13bf86bc779a9f6f408b7c">00061</a> <span class="preprocessor">#define SIGPIPE         12 </span>
+<a name="l00062"></a><a class="code" href="signal__types_8h.html#aa6946723c6b7a86ec3c33caaf832840b">00062</a> <span class="preprocessor">#define SIGALRM         13 </span>
+<a name="l00063"></a><a class="code" href="signal__types_8h.html#a682182a5e5f38fd61f4311501e9dac5d">00063</a> <span class="preprocessor">#define SIGTERM         14 </span>
+<a name="l00064"></a><a class="code" href="signal__types_8h.html#a0e63521a64cc8bc2b91d36a87d32c9f8">00064</a> <span class="preprocessor">#define SIGCHLD         16 </span>
+<a name="l00065"></a><a class="code" href="signal__types_8h.html#a024f43063003e753afc6cca1acd6e104">00065</a> <span class="preprocessor">#define SIGCONT         17 </span>
+<a name="l00066"></a><a class="code" href="signal__types_8h.html#a069e358bc9a864b7dc4fed2440eda14c">00066</a> <span class="preprocessor">#define SIGSTOP         18 </span>
+<a name="l00067"></a><a class="code" href="signal__types_8h.html#abe65c086e01f0d286b7a785a7e3cdd1a">00067</a> <span class="preprocessor">#define SIGTSTP         19 </span>
+<a name="l00068"></a><a class="code" href="signal__types_8h.html#a2c146e34a6b5a78dfba41cded3331181">00068</a> <span class="preprocessor">#define SIGTTIN         20 </span>
+<a name="l00069"></a><a class="code" href="signal__types_8h.html#a782864287613e2c5c030411fa9c5e9b1">00069</a> <span class="preprocessor">#define SIGTTOU         21 </span>
+<a name="l00070"></a><a class="code" href="signal__types_8h.html#ad9ff13149e36144a4ea28788948c34dd">00070</a> <span class="preprocessor">#define SIGURG          22 </span>
+<a name="l00071"></a><a class="code" href="signal__types_8h.html#a8bacf9eb18fd539099c1bb4666c45d60">00071</a> <span class="preprocessor">#define SIGSYS          30 </span>
+<a name="l00072"></a>00072 <span class="preprocessor">#define SIGRTMIN        31</span>
+<a name="l00073"></a>00073 <span class="preprocessor"></span><span class="preprocessor">#define SIGRTMAX        NSIG-1</span>
+<a name="l00074"></a>00074 <span class="preprocessor"></span>
+<a name="l00075"></a>00075 <span class="comment">/* Paramètre pour sigprocmask */</span>
+<a name="l00076"></a>00076 <span class="preprocessor">#define SIG_BLOCK       0</span>
+<a name="l00077"></a>00077 <span class="preprocessor"></span><span class="preprocessor">#define SIG_UNBLOCK     1</span>
+<a name="l00078"></a>00078 <span class="preprocessor"></span><span class="preprocessor">#define SIG_SETMASK     2</span>
+<a name="l00079"></a>00079 <span class="preprocessor"></span>
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -163,7 +151,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:46 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

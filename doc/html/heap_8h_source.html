@@ -80,51 +80,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </div><!--header-->
 <div class="contents">
 <a href="heap_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00030"></a>00030 <span class="preprocessor">#ifndef _HEAP_H_</span>
-<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define _HEAP_H_</span>
-<a name="l00032"></a>00032 <span class="preprocessor"></span>
-<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span>
-<a name="l00034"></a>00034 
-<a name="l00035"></a>00035 <span class="preprocessor">#define HEAP_MAX_SIZE 256</span>
-<a name="l00036"></a>00036 <span class="preprocessor"></span>
-<a name="l00037"></a>00037 <span class="comment">/*</span>
-<a name="l00038"></a>00038 <span class="comment"> * Structure de tas générique :</span>
-<a name="l00039"></a>00039 <span class="comment"> * Ce tas est compatible avec n&#39;importe quel type de données pour peu qu&#39;on lui</span>
-<a name="l00040"></a>00040 <span class="comment"> * donne une fonction de comparaison entre les elements.</span>
-<a name="l00041"></a>00041 <span class="comment"> * Ce tas manipule uniquement des pointeurs vers les elements qu&#39;il contient</span>
-<a name="l00042"></a>00042 <span class="comment"> * Le tas n&#39;est pas responsable de l&#39;allocation et de la liberation de la mémoire</span>
-<a name="l00043"></a>00043 <span class="comment"> * Il s&#39;agit uniquement d&#39;une structure de tri</span>
-<a name="l00044"></a>00044 <span class="comment"> */</span>
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046 <span class="comment">// Une fonction de comparaison entre 2 elements</span>
-<a name="l00047"></a>00047 <span class="comment">// maxheap : la fonction doit retourner &gt;0 si a&gt;b, 0 si a=b, &lt;0 si a&lt;b</span>
-<a name="l00048"></a>00048 <span class="comment">// minheap : la fonction doit retourner &lt;0 si a&gt;b, 0 si a=b, &gt;0 si a&lt;b</span>
-<a name="l00049"></a>00049 <span class="keyword">typedef</span> int (*cmp_func_type) (<span class="keywordtype">void</span>*, <span class="keywordtype">void</span>*);
-<a name="l00050"></a>00050 <span class="keyword">typedef</span> int (*id_func_type) (int, <span class="keywordtype">void</span>*);
-<a name="l00051"></a>00051 
-<a name="l00052"></a><a class="code" href="structheap__t.html">00052</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
-<a name="l00053"></a>00053         cmp_func_type comparator;
-<a name="l00054"></a>00054         <span class="keywordtype">void</span>* heap;
-<a name="l00055"></a>00055         <span class="keywordtype">int</span> nb_elements;
-<a name="l00056"></a>00056         <span class="keywordtype">size_t</span> elements_size;
-<a name="l00057"></a>00057         <span class="keywordtype">int</span> max_elements;
-<a name="l00058"></a>00058 } <a class="code" href="structheap__t.html">heap_t</a>;
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060 <span class="comment">// Initialise le tas à vide et regle la fonction de comparaison</span>
-<a name="l00061"></a>00061 <span class="keywordtype">void</span> initHeap(<a class="code" href="structheap__t.html">heap_t</a>* h, cmp_func_type cmp, <span class="keywordtype">void</span>* heap, <span class="keywordtype">size_t</span> elements_size,<span class="keywordtype">int</span> max_elements);
-<a name="l00062"></a>00062 
-<a name="l00063"></a>00063 <span class="comment">// Recupere le pointeur du sommet, NULL sinon</span>
-<a name="l00064"></a>00064 <span class="keywordtype">void</span>* getTop(<a class="code" href="structheap__t.html">heap_t</a> h);
+<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _HEAP_H_</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _HEAP_H_</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span>
+<a name="l00033"></a>00033 
+<a name="l00034"></a><a class="code" href="heap_8h.html#a7085c62c43230e23f6fa23eed518061e">00034</a> <span class="preprocessor">#define HEAP_MAX_SIZE 256 </span>
+<a name="l00036"></a>00036 <span class="preprocessor"></span><span class="comment">/*</span>
+<a name="l00037"></a>00037 <span class="comment"> * Structure de tas générique :</span>
+<a name="l00038"></a>00038 <span class="comment"> * Ce tas est compatible avec n&#39;importe quel type de données pour peu qu&#39;on lui</span>
+<a name="l00039"></a>00039 <span class="comment"> * donne une fonction de comparaison entre les elements.</span>
+<a name="l00040"></a>00040 <span class="comment"> * Ce tas manipule uniquement des pointeurs vers les elements qu&#39;il contient</span>
+<a name="l00041"></a>00041 <span class="comment"> * Le tas n&#39;est pas responsable de l&#39;allocation et de la liberation de la mémoire</span>
+<a name="l00042"></a>00042 <span class="comment"> * Il s&#39;agit uniquement d&#39;une structure de tri</span>
+<a name="l00043"></a>00043 <span class="comment"> */</span>
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 <span class="comment">// maxheap : la fonction doit retourner &gt;0 si a&gt;b, 0 si a=b, &lt;0 si a&lt;b</span>
+<a name="l00046"></a>00046 <span class="comment">// minheap : la fonction doit retourner &lt;0 si a&gt;b, 0 si a=b, &gt;0 si a&lt;b</span>
+<a name="l00047"></a>00047 
+<a name="l00051"></a><a class="code" href="heap_8h.html#a35d066d4adbc5a7903210dcce0bf4717">00051</a> <span class="keyword">typedef</span> int (*<a class="code" href="heap_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a>) (<span class="keywordtype">void</span>*, <span class="keywordtype">void</span>*);
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053 <span class="keyword">typedef</span> int (*id_func_type) (int, <span class="keywordtype">void</span>*);
+<a name="l00054"></a>00054 
+<a name="l00058"></a><a class="code" href="structheap__t.html">00058</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+<a name="l00059"></a><a class="code" href="structheap__t.html#aeba09c8db02d651cfe45023364d756f9">00059</a>         <a class="code" href="heap_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a> <a class="code" href="structheap__t.html#aeba09c8db02d651cfe45023364d756f9">comparator</a>; 
+<a name="l00060"></a><a class="code" href="structheap__t.html#a3924b3948b77f2ea568ccbd9fa0bd20b">00060</a>         <span class="keywordtype">void</span>* <a class="code" href="structheap__t.html#a3924b3948b77f2ea568ccbd9fa0bd20b">heap</a>; 
+<a name="l00061"></a><a class="code" href="structheap__t.html#a3e3c1dd26d87564ee5beb5e2835bb445">00061</a>         <span class="keywordtype">int</span> <a class="code" href="structheap__t.html#a3e3c1dd26d87564ee5beb5e2835bb445">nb_elements</a>; 
+<a name="l00062"></a><a class="code" href="structheap__t.html#a5a53cb84142d9a188aed138b4d894158">00062</a>         <span class="keywordtype">size_t</span> <a class="code" href="structheap__t.html#a5a53cb84142d9a188aed138b4d894158">elements_size</a>; 
+<a name="l00063"></a><a class="code" href="structheap__t.html#a7919079b18428f31e03827344bc5a390">00063</a>         <span class="keywordtype">int</span> <a class="code" href="structheap__t.html#a7919079b18428f31e03827344bc5a390">max_elements</a>; 
+<a name="l00064"></a>00064 } <a class="code" href="structheap__t.html">heap_t</a>;
 <a name="l00065"></a>00065 
-<a name="l00066"></a>00066 <span class="comment">// Ajoute un element, retourne 0 en cas de succes</span>
-<a name="l00067"></a>00067 <span class="keywordtype">int</span> addElement(<a class="code" href="structheap__t.html">heap_t</a>* h, <span class="keywordtype">void</span>* element);
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069 <span class="comment">// Retire le sommet, retourne 0 en cas de succes</span>
-<a name="l00070"></a>00070 <span class="keywordtype">int</span> removetop(<a class="code" href="structheap__t.html">heap_t</a>* h);
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072 <span class="keywordtype">int</span> delElement(<a class="code" href="structheap__t.html">heap_t</a>* heap, <span class="keywordtype">int</span> <span class="keywordtype">id</span>, id_func_type func);
-<a name="l00073"></a>00073 
-<a name="l00074"></a>00074 <span class="preprocessor">#endif</span>
+<a name="l00069"></a>00069 <span class="keywordtype">void</span> <a class="code" href="heap_8h.html#ad1e10f55e192cb2229ba2b294eee1306">initHeap</a>(<a class="code" href="structheap__t.html">heap_t</a>* h, <a class="code" href="heap_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a> cmp, <span class="keywordtype">void</span>* heap, <span class="keywordtype">size_t</span> elements_size,<span class="keywordtype">int</span> max_elements);
+<a name="l00070"></a>00070 
+<a name="l00079"></a>00079 <span class="keywordtype">void</span>* <a class="code" href="heap_8h.html#a645a9636c018450e7629b5e2c8505b58">getTop</a>(<a class="code" href="structheap__t.html">heap_t</a> *h);
+<a name="l00080"></a>00080 
+<a name="l00089"></a>00089 <span class="keywordtype">int</span> <a class="code" href="heap_8h.html#af42ea714951cb83a022c742d5bce5300">addElement</a>(<a class="code" href="structheap__t.html">heap_t</a>* h, <span class="keywordtype">void</span>* element);
+<a name="l00090"></a>00090 
+<a name="l00097"></a>00097 <span class="keywordtype">int</span> <a class="code" href="heap_8h.html#ab2d2b864167da4bf231eb63de7c83ff1">removetop</a>(<a class="code" href="structheap__t.html">heap_t</a>* h);
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099 <span class="keywordtype">int</span> delElement(<a class="code" href="structheap__t.html">heap_t</a>* heap, <span class="keywordtype">int</span> <span class="keywordtype">id</span>, id_func_type func);
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -143,7 +139,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:46 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

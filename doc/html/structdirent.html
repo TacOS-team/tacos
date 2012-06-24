@@ -86,18 +86,71 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ed2e5ea3c71500f628914bf3966e4ba"></a><!-- doxytag: member="dirent::d_ino" ref="a0ed2e5ea3c71500f628914bf3966e4ba" args="" -->
-<a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>d_ino</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7cc67dd4ba5a8bed7f107f249957688d"></a><!-- doxytag: member="dirent::d_reclen" ref="a7cc67dd4ba5a8bed7f107f249957688d" args="" -->
-<a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>d_reclen</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a948760e3b7f607213a19f85e7af15a32"></a><!-- doxytag: member="dirent::d_type" ref="a948760e3b7f607213a19f85e7af15a32" args="" -->
-<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>d_type</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4325a83c49c6f2cd01ef80e1ae1dd4c5"></a><!-- doxytag: member="dirent::d_name" ref="a4325a83c49c6f2cd01ef80e1ae1dd4c5" args="[NAME_MAX]" -->
-char&#160;</td><td class="memItemRight" valign="bottom"><b>d_name</b> [<a class="el" href="dirent_8h.html#ac64541bdd81c961304b9babef1402640">NAME_MAX</a>]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">d_ino</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">d_reclen</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">d_type</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdirent.html#a4325a83c49c6f2cd01ef80e1ae1dd4c5">d_name</a> [<a class="el" href="dirent_8h.html#ac64541bdd81c961304b9babef1402640">NAME_MAX</a>]</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><p>Directory entry. </p>
-</div><hr/>La documentation de cette structure a été générée à partir des fichiers suivants :<ul>
+</div><hr/><h2>Documentation des champs</h2>
+<a class="anchor" id="a0ed2e5ea3c71500f628914bf3966e4ba"></a><!-- doxytag: member="dirent::d_ino" ref="a0ed2e5ea3c71500f628914bf3966e4ba" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="el" href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">dirent::d_ino</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Numéro inode. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4325a83c49c6f2cd01ef80e1ae1dd4c5"></a><!-- doxytag: member="dirent::d_name" ref="a4325a83c49c6f2cd01ef80e1ae1dd4c5" args="[NAME_MAX]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="structdirent.html#a4325a83c49c6f2cd01ef80e1ae1dd4c5">dirent::d_name</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nom du fichier. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7cc67dd4ba5a8bed7f107f249957688d"></a><!-- doxytag: member="dirent::d_reclen" ref="a7cc67dd4ba5a8bed7f107f249957688d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> <a class="el" href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">dirent::d_reclen</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Taille de l'entrée. </p>
+
+</div>
+</div>
+<a class="anchor" id="a948760e3b7f607213a19f85e7af15a32"></a><!-- doxytag: member="dirent::d_type" ref="a948760e3b7f607213a19f85e7af15a32" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="el" href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">dirent::d_type</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Type de fichier. </p>
+
+</div>
+</div>
+<hr/>La documentation de cette structure a été générée à partir des fichiers suivants :<ul>
 <li>kernel/include/<a class="el" href="kdirent_8h_source.html">kdirent.h</a></li>
 <li>libc/include/<a class="el" href="dirent_8h_source.html">dirent.h</a></li>
 </ul>
@@ -119,7 +172,7 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>d_name</b> [<a class=
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:48 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

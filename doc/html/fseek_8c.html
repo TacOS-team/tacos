@@ -88,17 +88,17 @@ Graphe des dépendances par inclusion de fseek.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="fseek_8c__incl.png" border="0" usemap="#libc_2stdio_2fseek_8c" alt=""/></div>
 <map name="libc_2stdio_2fseek_8c" id="libc_2stdio_2fseek_8c">
-<area shape="rect" id="node3" href="stdio_8h.html" title="stdio.h" alt="" coords="87,160,148,189"/><area shape="rect" id="node14" href="unistd_8h.html" title="unistd.h" alt="" coords="209,83,276,112"/><area shape="rect" id="node5" href="libio_8h.html" title="libio.h" alt="" coords="5,237,61,267"/><area shape="rect" id="node7" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="199,315,287,344"/><area shape="rect" id="node12" href="stdarg_8h.html" title="stdarg.h" alt="" coords="136,237,205,267"/><area shape="rect" id="node9" href="stdbool_8h.html" title="stdbool.h" alt="" coords="205,392,280,421"/><area shape="rect" id="node17" href="stat_8h.html" title="sys/stat.h" alt="" coords="280,160,357,189"/><area shape="rect" id="node20" href="time_8h.html" title="time.h" alt="" coords="331,237,387,267"/></map>
+<area shape="rect" id="node3" href="stdio_8h.html" title="stdio.h" alt="" coords="144,161,203,189"/><area shape="rect" id="node18" href="unistd_8h.html" title="unistd.h" alt="" coords="312,83,379,111"/><area shape="rect" id="node5" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="356,393,444,421"/><area shape="rect" id="node7" href="libio_8h.html" title="libio.h" alt="" coords="147,238,200,266"/><area shape="rect" id="node10" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="247,315,332,343"/><area shape="rect" id="node16" href="stdarg_8h.html" title="stdarg.h" alt="" coords="5,238,72,266"/><area shape="rect" id="node13" href="stdbool_8h.html" title="Type bool." alt="" coords="252,393,327,421"/><area shape="rect" id="node22" href="stat_8h.html" title="sys/stat.h" alt="" coords="345,161,423,189"/><area shape="rect" id="node26" href="time_8h.html" title="time.h" alt="" coords="376,238,432,266"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e25775bd8597f839a28125b616bd241"></a><!-- doxytag: member="fseek.c::fseek" ref="a5e25775bd8597f839a28125b616bd241" args="(FILE *stream, long offset, int whence)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>fseek</b> (<a class="el" href="struct__IO__FILE.html">FILE</a> *stream, long offset, int whence)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a002ad43f113e8c634d284ee34d1d53"></a><!-- doxytag: member="fseek.c::ftell" ref="a5a002ad43f113e8c634d284ee34d1d53" args="(FILE *stream)" -->
-long&#160;</td><td class="memItemRight" valign="bottom"><b>ftell</b> (<a class="el" href="struct__IO__FILE.html">FILE</a> *stream)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa0cd401f198d33d9d01a9e8aa4026819"></a><!-- doxytag: member="fseek.c::rewind" ref="aa0cd401f198d33d9d01a9e8aa4026819" args="(FILE *stream)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rewind</b> (<a class="el" href="struct__IO__FILE.html">FILE</a> *stream)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fseek_8c.html#a5e25775bd8597f839a28125b616bd241">fseek</a> (<a class="el" href="struct__IO__FILE.html">FILE</a> *stream, long offset, int whence)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fixe l'indicateur de position du flux.  <a href="#a5e25775bd8597f839a28125b616bd241"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fseek_8c.html#a5a002ad43f113e8c634d284ee34d1d53">ftell</a> (<a class="el" href="struct__IO__FILE.html">FILE</a> *stream)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtient la valeur de l'indicateur de position.  <a href="#a5a002ad43f113e8c634d284ee34d1d53"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fseek_8c.html#aa0cd401f198d33d9d01a9e8aa4026819">rewind</a> (<a class="el" href="struct__IO__FILE.html">FILE</a> *stream)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Place l'indicateur de position au début du fichier.  <a href="#aa0cd401f198d33d9d01a9e8aa4026819"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -111,7 +111,134 @@ LICENSE</h2>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
 <p>Description de ce que fait le fichier </p>
-</div></div><!-- contents -->
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a5e25775bd8597f839a28125b616bd241"></a><!-- doxytag: member="fseek.c::fseek" ref="a5e25775bd8597f839a28125b616bd241" args="(FILE *stream, long offset, int whence)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="fseek_8c.html#a5e25775bd8597f839a28125b616bd241">fseek</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__IO__FILE.html">FILE</a> *&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>whence</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>Le stream considéré. </td></tr>
+    <tr><td class="paramname">offset</td><td>Le décalage. </td></tr>
+    <tr><td class="paramname">whence</td><td>Méthode : depuis le début, la fin ou en relatif.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 si tout s'est bien passé. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fseek_8c_a5e25775bd8597f839a28125b616bd241_cgraph.png" border="0" usemap="#fseek_8c_a5e25775bd8597f839a28125b616bd241_cgraph" alt=""/></div>
+<map name="fseek_8c_a5e25775bd8597f839a28125b616bd241_cgraph" id="fseek_8c_a5e25775bd8597f839a28125b616bd241_cgraph">
+<area shape="rect" id="node3" href="unistd_8h.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier." alt="" coords="109,5,163,33"/><area shape="rect" id="node5" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="212,5,273,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fseek_8c_a5e25775bd8597f839a28125b616bd241_icgraph.png" border="0" usemap="#fseek_8c_a5e25775bd8597f839a28125b616bd241_icgraph" alt=""/></div>
+<map name="fseek_8c_a5e25775bd8597f839a28125b616bd241_icgraph" id="fseek_8c_a5e25775bd8597f839a28125b616bd241_icgraph">
+<area shape="rect" id="node3" href="fseek_8c.html#aa0cd401f198d33d9d01a9e8aa4026819" title="Place l&#39;indicateur de position au début du fichier." alt="" coords="111,5,169,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5a002ad43f113e8c634d284ee34d1d53"></a><!-- doxytag: member="fseek.c::ftell" ref="a5a002ad43f113e8c634d284ee34d1d53" args="(FILE *stream)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long <a class="el" href="fseek_8c.html#a5a002ad43f113e8c634d284ee34d1d53">ftell</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__IO__FILE.html">FILE</a> *&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>Le stream considéré.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>la position absolue. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fseek_8c_a5a002ad43f113e8c634d284ee34d1d53_cgraph.png" border="0" usemap="#fseek_8c_a5a002ad43f113e8c634d284ee34d1d53_cgraph" alt=""/></div>
+<map name="fseek_8c_a5a002ad43f113e8c634d284ee34d1d53_cgraph" id="fseek_8c_a5a002ad43f113e8c634d284ee34d1d53_cgraph">
+<area shape="rect" id="node3" href="unistd_8h.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier." alt="" coords="96,5,149,33"/><area shape="rect" id="node5" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="199,5,260,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aa0cd401f198d33d9d01a9e8aa4026819"></a><!-- doxytag: member="fseek.c::rewind" ref="aa0cd401f198d33d9d01a9e8aa4026819" args="(FILE *stream)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="fseek_8c.html#aa0cd401f198d33d9d01a9e8aa4026819">rewind</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__IO__FILE.html">FILE</a> *&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>Le stream considéré.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 si tout s'est bien passé. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fseek_8c_aa0cd401f198d33d9d01a9e8aa4026819_cgraph.png" border="0" usemap="#fseek_8c_aa0cd401f198d33d9d01a9e8aa4026819_cgraph" alt=""/></div>
+<map name="fseek_8c_aa0cd401f198d33d9d01a9e8aa4026819_cgraph" id="fseek_8c_aa0cd401f198d33d9d01a9e8aa4026819_cgraph">
+<area shape="rect" id="node3" href="stdio_8h.html#a5e25775bd8597f839a28125b616bd241" title="Fixe l&#39;indicateur de position du flux." alt="" coords="116,5,169,33"/><area shape="rect" id="node5" href="unistd_8h.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier." alt="" coords="219,5,272,33"/><area shape="rect" id="node7" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="321,5,383,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -129,7 +256,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:48 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

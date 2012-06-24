@@ -1,14 +1,10 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="132,57,231,87"/>
-<area shape="rect" id="node7" href="$get_8c.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream." alt="" coords="156,139,207,168"/>
-<area shape="rect" id="node15" href="$elf_8c.html#a9aae782f070af1c6009d0cc2a6d60a08" title="charge un program header depuis un fichier elf Charge le program header n°index depuis le fichier..." alt="" coords="105,245,257,275"/>
-<area shape="rect" id="node19" href="$elf_8c.html#a35e8f32030ee36d8c02357a0b483c1b2" title="charge un fichier elf Charge les données utiles de l&#39;exécutable en mémoire, de façon à ce que ce soit..." alt="" coords="319,219,388,248"/>
-<area shape="rect" id="node21" href="$elf_8c.html#abbbb3d1f6ac9986f87d655cec7819556" title="charge un fichier elf dans la structure Elf32_File" alt="" coords="307,325,400,355"/>
-<area shape="rect" id="node25" href="$elf_8c.html#a8138ecf1d1d9bd1e80e05694ef4362e4" title="charge un section header depuis un fichier elf Charge le section header n°index depuis le fichier..." alt="" coords="108,349,255,379"/>
-<area shape="rect" id="node5" href="$ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="319,5,388,35"/>
-<area shape="rect" id="node9" href="$fread_8c.html#a084251eb18ccd5c936faa2c39c86ec63" title="fread" alt="" coords="328,112,379,141"/>
-<area shape="rect" id="node11" href="$get_8c.html#a2b3df0e66b41edab3c039191fe6cc4f9" title="Lit au plus size&#45;1 caractères depuis le stream passé en argument." alt="" coords="328,165,379,195"/>
-<area shape="rect" id="node13" href="$get_8c.html#a3e29caa20f7cffe18f410f01278905a8" title="lit un caractère depuis stdin." alt="" coords="320,59,387,88"/>
-<area shape="rect" id="node17" href="$elf_8c.html#aa84790a8edae8d2859861f19adf5dd41" title="Calcul la taille que prendra l&#39;exécutable dans la mémoire La fonction évalue l&#39;adresse de départ en m..." alt="" coords="320,272,387,301"/>
-<area shape="rect" id="node23" href="$elf_8c.html#af969175b11017f629b1dfbf557fccbcc" title="Affiche des information sur le fichier elf." alt="" coords="448,325,512,355"/>
+<area shape="rect" id="node3" href="$ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="103,5,199,33"/>
+<area shape="rect" id="node7" href="$fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae" title="mount_FAT" alt="" coords="105,55,196,83"/>
+<area shape="rect" id="node11" href="$get_8c.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream." alt="" coords="125,131,176,159"/>
+<area shape="rect" id="node5" href="$ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="249,5,319,33"/>
+<area shape="rect" id="node9" href="$fat_8h.html#a3d1f5d8e3b22672684528c112bc6ff06" title="fat_init" alt="" coords="253,55,315,83"/>
+<area shape="rect" id="node13" href="$fread_8c.html#a084251eb18ccd5c936faa2c39c86ec63" title="fread" alt="" coords="259,106,309,134"/>
+<area shape="rect" id="node15" href="$get_8c.html#a2b3df0e66b41edab3c039191fe6cc4f9" title="Lit au plus size&#45;1 caractères depuis le stream passé en argument." alt="" coords="259,157,309,185"/>
+<area shape="rect" id="node17" href="$get_8c.html#a3e29caa20f7cffe18f410f01278905a8" title="lit un caractère depuis stdin." alt="" coords="252,207,316,235"/>
 </map>

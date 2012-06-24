@@ -10,6 +10,5 @@ var searchData=
   ['module_2eh',['module.h',['../module_8h.html',1,'']]],
   ['mouse_2ec',['mouse.c',['../mouse_8c.html',1,'']]],
   ['mouse_2eh',['mouse.h',['../mouse_8h.html',1,'']]],
-  ['mouse_5ftypes_2eh',['mouse_types.h',['../mouse__types_8h.html',1,'']]],
   ['multiboot_2eh',['multiboot.h',['../multiboot_8h.html',1,'']]]
 ];

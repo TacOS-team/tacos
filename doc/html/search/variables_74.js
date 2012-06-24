@@ -1,5 +1,9 @@
 var searchData=
 [
+  ['table_5fcount',['table_count',['../struct__fat__BS.html#aa76ccd037c4f693d968a64860be99d44',1,'_fat_BS']]],
+  ['table_5fsize',['table_size',['../struct__fat__info.html#af110757af771c0f3fe0c515cca1ff177',1,'_fat_info']]],
+  ['table_5fsize_5f16',['table_size_16',['../struct__fat__BS.html#aa6408c3aa26eec38e6620624c3075f27',1,'_fat_BS']]],
+  ['termios',['termios',['../struct__tty__struct__t.html#a39471b82fd4e3a235744e73775ac2523',1,'_tty_struct_t']]],
   ['tm_5fhour',['tm_hour',['../structtm.html#a3e7ca4e37f1abcaf56b8a916c38eb9fe',1,'tm']]],
   ['tm_5fisdst',['tm_isdst',['../structtm.html#a5645ca0580c8ab2c24f6c2965d9c9f9c',1,'tm']]],
   ['tm_5fmday',['tm_mday',['../structtm.html#ab8d8904bad43b0c8b96e61941c5b5310',1,'tm']]],
@@ -9,6 +13,10 @@ var searchData=
   ['tm_5fwday',['tm_wday',['../structtm.html#afe81a8c46f1c693c43f259b288859f4f',1,'tm']]],
   ['tm_5fyday',['tm_yday',['../structtm.html#a93a0ba77cc23796df84405dcbcc57eb1',1,'tm']]],
   ['tm_5fyear',['tm_year',['../structtm.html#a33adf78fd6476b2120ce3b9c4a852053',1,'tm']]],
+  ['total_5fdata_5fclusters',['total_data_clusters',['../struct__fat__info.html#ab43681d4b5c7cf719cd6c934cada39e3',1,'_fat_info']]],
+  ['total_5fentries',['total_entries',['../struct__directory.html#aeb73476149e19828774d4dfbd96a051f',1,'_directory']]],
+  ['total_5fsectors_5f16',['total_sectors_16',['../struct__fat__BS.html#a17243f0faca4d34eb12df96f8b9e6896',1,'_fat_BS']]],
+  ['total_5fsectors_5f32',['total_sectors_32',['../struct__fat__BS.html#a103e421c799f77466fc57eef601014a3',1,'_fat_BS']]],
   ['truncate',['truncate',['../struct__fs__instance__t.html#ae32572774c24e50d25439cfdd86fa164',1,'_fs_instance_t']]],
   ['tv_5fnsec',['tv_nsec',['../structtimespec.html#aa9689622a344d847333e534ac23d3093',1,'timespec']]],
   ['tv_5fsec',['tv_sec',['../structtimeval.html#ab6fac84a084d017bb157f4681dafe8a3',1,'timeval::tv_sec()'],['../structtimespec.html#af632894a12c37dea87073c0126f99fff',1,'timespec::tv_sec()']]],

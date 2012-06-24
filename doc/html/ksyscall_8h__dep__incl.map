@@ -1,47 +1,48 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="1478,83,1630,112"/>
-<area shape="rect" id="node25" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="2170,392,2279,421"/>
-<area shape="rect" id="node38" href="$kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="587,237,747,267"/>
-<area shape="rect" id="node49" href="$kunistd_8h.html" title="Principales fonctions de l&#39;API POSIX (read, write, seek, stat...)" alt="" coords="1734,237,1897,267"/>
-<area shape="rect" id="node71" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="2262,315,2363,344"/>
-<area shape="rect" id="node80" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="2155,237,2305,267"/>
-<area shape="rect" id="node90" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="3809,315,3937,344"/>
-<area shape="rect" id="node94" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="2763,160,2937,189"/>
-<area shape="rect" id="node102" href="$ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="3446,237,3609,267"/>
-<area shape="rect" id="node110" href="$scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="3018,237,3197,267"/>
-<area shape="rect" id="node131" href="$vmm_8c.html" title="kernel/vmm.c" alt="" coords="4193,315,4294,344"/>
-<area shape="rect" id="node141" href="$ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="3646,237,3798,267"/>
-<area shape="rect" id="node154" href="$ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="4369,83,4489,112"/>
-<area shape="rect" id="node5" href="$clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="1211,160,1315,189"/>
-<area shape="rect" id="node7" href="$fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="166,315,331,344"/>
-<area shape="rect" id="node18" href="$fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="266,469,421,499"/>
-<area shape="rect" id="node21" href="$events_8h.html" title="kernel/include/events.h" alt="" coords="1971,237,2131,267"/>
-<area shape="rect" id="node27" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="2438,315,2569,344"/>
-<area shape="rect" id="node29" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="1339,160,1486,189"/>
-<area shape="rect" id="node9" href="$fat_8c.html" title="kernel/fs/fat/fat.c" alt="" coords="354,392,471,421"/>
-<area shape="rect" id="node11" href="$fat__outils_8h.html" title="kernel/fs/fat/fat_outils.h" alt="" coords="26,392,181,421"/>
-<area shape="rect" id="node13" href="$fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="71,547,247,576"/>
-<area shape="rect" id="node15" href="$fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="77,469,242,499"/>
-<area shape="rect" id="node23" href="$events_8c.html" title="Gestion d&#39;évènements datés." alt="" coords="1923,315,2035,344"/>
-<area shape="rect" id="node31" href="$fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="697,315,843,344"/>
-<area shape="rect" id="node54" href="$vfs_8h.html" title="Virtual File System." alt="" coords="1063,237,1199,267"/>
-<area shape="rect" id="node36" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="807,392,898,421"/>
-<area shape="rect" id="node40" href="$devfs_8c.html" title="DevFS." alt="" coords="553,315,673,344"/>
-<area shape="rect" id="node43" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="406,315,529,344"/>
-<area shape="rect" id="node45" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="867,315,979,344"/>
-<area shape="rect" id="node52" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="1785,315,1899,344"/>
-<area shape="rect" id="node57" href="$ext2__internal_8h.html" title="kernel/fs/ext2/ext2_internal.h" alt="" coords="1105,315,1294,344"/>
-<area shape="rect" id="node63" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="1318,315,1475,344"/>
-<area shape="rect" id="node73" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1550,315,1659,344"/>
-<area shape="rect" id="node59" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="1227,392,1369,421"/>
-<area shape="rect" id="node66" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="1591,392,1791,421"/>
-<area shape="rect" id="node82" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="2593,315,2771,344"/>
-<area shape="rect" id="node84" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="3609,315,3785,344"/>
-<area shape="rect" id="node98" href="$context_8h.html" title="kernel/include/context.h" alt="" coords="2642,237,2805,267"/>
-<area shape="rect" id="node107" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="3470,315,3585,344"/>
-<area shape="rect" id="node121" href="$kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="2795,315,2905,344"/>
-<area shape="rect" id="node124" href="$ksem_8c.html" title="Gestion des sémaphores." alt="" coords="4011,315,4118,344"/>
-<area shape="rect" id="node128" href="$round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="2929,315,3070,344"/>
-<area shape="rect" id="node113" href="$round__robin_8h.html" title="kernel/include/round_robin.h" alt="" coords="3145,315,3334,344"/>
-<area shape="rect" id="node116" href="$init_8c.html" title="kernel/init.c" alt="" coords="3358,315,3446,344"/>
+<area shape="rect" id="node3" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="1234,83,1381,111"/>
+<area shape="rect" id="node25" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="2182,393,2289,421"/>
+<area shape="rect" id="node38" href="$kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="538,238,693,266"/>
+<area shape="rect" id="node49" href="$kunistd_8h.html" title="Principales fonctions de l&#39;API POSIX (read, write, seek, stat...)" alt="" coords="1592,238,1749,266"/>
+<area shape="rect" id="node73" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="2273,315,2374,343"/>
+<area shape="rect" id="node83" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="1873,238,2020,266"/>
+<area shape="rect" id="node93" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="3700,315,3822,343"/>
+<area shape="rect" id="node98" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="2781,161,2949,189"/>
+<area shape="rect" id="node106" href="$ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="3682,238,3840,266"/>
+<area shape="rect" id="node115" href="$ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="4166,315,4284,343"/>
+<area shape="rect" id="node118" href="$scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="3022,238,3193,266"/>
+<area shape="rect" id="node139" href="$vmm_8c.html" title="kernel/vmm.c" alt="" coords="4308,315,4406,343"/>
+<area shape="rect" id="node149" href="$ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="3349,238,3496,266"/>
+<area shape="rect" id="node5" href="$clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="974,161,1076,189"/>
+<area shape="rect" id="node7" href="$fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="57,315,225,343"/>
+<area shape="rect" id="node18" href="$fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="273,470,430,498"/>
+<area shape="rect" id="node21" href="$events_8h.html" title="kernel/include/events.h" alt="" coords="2044,238,2198,266"/>
+<area shape="rect" id="node27" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="2596,315,2721,343"/>
+<area shape="rect" id="node29" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="1100,161,1244,189"/>
+<area shape="rect" id="node9" href="$fat_8c.html" title="Driver FAT." alt="" coords="262,393,382,421"/>
+<area shape="rect" id="node11" href="$fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="30,393,188,421"/>
+<area shape="rect" id="node13" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="76,547,254,575"/>
+<area shape="rect" id="node15" href="$fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="81,470,249,498"/>
+<area shape="rect" id="node23" href="$events_8c.html" title="Gestion d&#39;évènements datés." alt="" coords="2038,315,2148,343"/>
+<area shape="rect" id="node31" href="$fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="249,315,396,343"/>
+<area shape="rect" id="node56" href="$vfs_8h.html" title="Virtual File System." alt="" coords="969,238,1102,266"/>
+<area shape="rect" id="node36" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="617,393,705,421"/>
+<area shape="rect" id="node40" href="$devfs_8c.html" title="DevFS." alt="" coords="617,315,734,343"/>
+<area shape="rect" id="node43" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="470,315,593,343"/>
+<area shape="rect" id="node45" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="809,315,918,343"/>
+<area shape="rect" id="node52" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="1750,315,1862,343"/>
+<area shape="rect" id="node54" href="$module_8c.html" title="kernel/module.c" alt="" coords="1614,315,1726,343"/>
+<area shape="rect" id="node59" href="$ext2__internal_8h.html" title="kernel/fs/ext2/ext2_internal.h" alt="" coords="942,315,1129,343"/>
+<area shape="rect" id="node65" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="1204,315,1358,343"/>
+<area shape="rect" id="node75" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1433,315,1540,343"/>
+<area shape="rect" id="node61" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="1089,393,1228,421"/>
+<area shape="rect" id="node68" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="1449,393,1646,421"/>
+<area shape="rect" id="node85" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="2398,315,2572,343"/>
+<area shape="rect" id="node87" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="3326,315,3500,343"/>
+<area shape="rect" id="node102" href="$context_8h.html" title="kernel/include/context.h" alt="" coords="2513,238,2670,266"/>
+<area shape="rect" id="node110" href="$kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="3846,315,3956,343"/>
+<area shape="rect" id="node113" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="3980,315,4092,343"/>
+<area shape="rect" id="node131" href="$ksem_8c.html" title="Gestion des sémaphores." alt="" coords="3524,315,3625,343"/>
+<area shape="rect" id="node136" href="$round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="2796,315,2934,343"/>
+<area shape="rect" id="node121" href="$round__robin_8h.html" title="kernel/include/round_robin.h" alt="" coords="3009,315,3190,343"/>
+<area shape="rect" id="node124" href="$init_8c.html" title="kernel/init.c" alt="" coords="3214,315,3302,343"/>
 </map>

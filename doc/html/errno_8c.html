@@ -87,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad65a8842cc674e3ddf69355898c0ecbf"></a><!-- doxytag: member="errno.c::errno" ref="ad65a8842cc674e3ddf69355898c0ecbf" args="" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>errno</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errno_8c.html#ad65a8842cc674e3ddf69355898c0ecbf">errno</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errno_8c.html#a76ebfe24a40210e5935998c1fa86d3a0">sys_errlist</a> []</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
@@ -100,7 +100,55 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-</div></div><!-- contents -->
+</div><hr/><h2>Documentation des variables</h2>
+<a class="anchor" id="ad65a8842cc674e3ddf69355898c0ecbf"></a><!-- doxytag: member="errno.c::errno" ref="ad65a8842cc674e3ddf69355898c0ecbf" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="errno_8h.html#ad65a8842cc674e3ddf69355898c0ecbf">errno</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Variable qui contient le numéro de la dernière erreur. </p>
+
+</div>
+</div>
+<a class="anchor" id="a76ebfe24a40210e5935998c1fa86d3a0"></a><!-- doxytag: member="errno.c::sys_errlist" ref="a76ebfe24a40210e5935998c1fa86d3a0" args="[]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* <a class="el" href="errno_8h.html#a76ebfe24a40210e5935998c1fa86d3a0">sys_errlist</a>[]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur initiale :</b><div class="fragment"><pre class="fragment"> {
+<span class="stringliteral">&quot;Erreur inconnue ou pas d&#39;erreur.&quot;</span>,
+<span class="stringliteral">&quot;Essai encore ;).&quot;</span>,
+<span class="stringliteral">&quot;Mauvais numéro de fichier.&quot;</span>,
+<span class="stringliteral">&quot;Mauvaise adresse.&quot;</span>,
+<span class="stringliteral">&quot;Fichier trop gros.&quot;</span>,
+<span class="stringliteral">&quot;System call interrompu.&quot;</span>,
+<span class="stringliteral">&quot;Argument invalide.&quot;</span>,
+<span class="stringliteral">&quot;Erreur d&#39;entrée / sortie.&quot;</span>,
+<span class="stringliteral">&quot;Plus d&#39;espace libre sur le périphérique.&quot;</span>,
+<span class="stringliteral">&quot;Tube brisé.&quot;</span>,
+<span class="stringliteral">&quot;Résultat mathématique non representable.&quot;</span>,
+<span class="stringliteral">&quot;Entrée non trouvée.&quot;</span>,
+<span class="stringliteral">&quot;Ce n&#39;est pas un dossier.&quot;</span>,
+<span class="stringliteral">&quot;Le fichier existe déjà.&quot;</span>,
+<span class="stringliteral">&quot;Opération non permise.&quot;</span>,
+<span class="stringliteral">&quot;C&#39;est un dossier.&quot;</span>,
+<span class="stringliteral">&quot;Overflow de la file table.&quot;</span>,
+<span class="stringliteral">&quot;Trop de fichiers ouverts.&quot;</span>}
+</pre></div><p>Liste des messages d'erreur. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -118,7 +166,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

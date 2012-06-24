@@ -86,10 +86,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 Champs de données</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__header.html#a7fddee92e60ff58e159c6bf2c40bf29b">magic</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__header.html#ab922f32c179ec7bde91519d19f27d95b">flags</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17e73abddfe8264c254767a20099038d"></a><!-- doxytag: member="multiboot_header::checksum" ref="a17e73abddfe8264c254767a20099038d" args="" -->
-multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>checksum</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9718b2fc6ce29a37e9a209f92ab856e3"></a><!-- doxytag: member="multiboot_header::header_addr" ref="a9718b2fc6ce29a37e9a209f92ab856e3" args="" -->
-multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>header_addr</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__header.html#a17e73abddfe8264c254767a20099038d">checksum</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__header.html#a9718b2fc6ce29a37e9a209f92ab856e3">header_addr</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a99de1cf326c46c76c6039f317b7a1ef2"></a><!-- doxytag: member="multiboot_header::load_addr" ref="a99de1cf326c46c76c6039f317b7a1ef2" args="" -->
 multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>load_addr</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9efc1a4c3cd18f286b2fd50ff052e31"></a><!-- doxytag: member="multiboot_header::load_end_addr" ref="ac9efc1a4c3cd18f286b2fd50ff052e31" args="" -->
@@ -98,8 +96,7 @@ multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>load_en
 multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>bss_end_addr</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3d807775a9d69730e6698dcdcf6491e"></a><!-- doxytag: member="multiboot_header::entry_addr" ref="ac3d807775a9d69730e6698dcdcf6491e" args="" -->
 multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>entry_addr</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4c90b7929342dd5aab7d08afa0906d28"></a><!-- doxytag: member="multiboot_header::mode_type" ref="a4c90b7929342dd5aab7d08afa0906d28" args="" -->
-multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>mode_type</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__header.html#a4c90b7929342dd5aab7d08afa0906d28">mode_type</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad72a1a3dd608e73c818d0c27974def40"></a><!-- doxytag: member="multiboot_header::width" ref="ad72a1a3dd608e73c818d0c27974def40" args="" -->
 multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>width</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a055c5e6553ea032897ad50a12f998a17"></a><!-- doxytag: member="multiboot_header::height" ref="a055c5e6553ea032897ad50a12f998a17" args="" -->
@@ -108,6 +105,20 @@ multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>height<
 multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>depth</b></td></tr>
 </table>
 <hr/><h2>Documentation des champs</h2>
+<a class="anchor" id="a17e73abddfe8264c254767a20099038d"></a><!-- doxytag: member="multiboot_header::checksum" ref="a17e73abddfe8264c254767a20099038d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">multiboot_uint32_t <a class="el" href="structmultiboot__header.html#a17e73abddfe8264c254767a20099038d">multiboot_header::checksum</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>The above fields plus this one must equal 0 mod 2^32. </p>
+
+</div>
+</div>
 <a class="anchor" id="ab922f32c179ec7bde91519d19f27d95b"></a><!-- doxytag: member="multiboot_header::flags" ref="ab922f32c179ec7bde91519d19f27d95b" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -122,6 +133,20 @@ multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>depth</
 
 </div>
 </div>
+<a class="anchor" id="a9718b2fc6ce29a37e9a209f92ab856e3"></a><!-- doxytag: member="multiboot_header::header_addr" ref="a9718b2fc6ce29a37e9a209f92ab856e3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">multiboot_uint32_t <a class="el" href="structmultiboot__header.html#a9718b2fc6ce29a37e9a209f92ab856e3">multiboot_header::header_addr</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>These are only valid if MULTIBOOT_AOUT_KLUDGE is set. </p>
+
+</div>
+</div>
 <a class="anchor" id="a7fddee92e60ff58e159c6bf2c40bf29b"></a><!-- doxytag: member="multiboot_header::magic" ref="a7fddee92e60ff58e159c6bf2c40bf29b" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -133,6 +158,20 @@ multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>depth</
 </div>
 <div class="memdoc">
 <p>Must be MULTIBOOT_MAGIC - see above. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4c90b7929342dd5aab7d08afa0906d28"></a><!-- doxytag: member="multiboot_header::mode_type" ref="a4c90b7929342dd5aab7d08afa0906d28" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">multiboot_uint32_t <a class="el" href="structmultiboot__header.html#a4c90b7929342dd5aab7d08afa0906d28">multiboot_header::mode_type</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>These are only valid if MULTIBOOT_VIDEO_MODE is set. </p>
 
 </div>
 </div>
@@ -157,7 +196,7 @@ multiboot_uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>depth</
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:48 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

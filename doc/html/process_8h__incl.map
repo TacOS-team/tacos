@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="5,83,93,112"/>
-<area shape="rect" id="node7" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="117,83,163,112"/>
-<area shape="rect" id="node5" href="$stdbool_8h.html" title="stdbool.h" alt="" coords="12,160,87,189"/>
+<area shape="rect" id="node3" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="5,161,93,189"/>
+<area shape="rect" id="node5" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="87,83,172,111"/>
+<area shape="rect" id="node8" href="$stdbool_8h.html" title="Type bool." alt="" coords="117,161,192,189"/>
 </map>

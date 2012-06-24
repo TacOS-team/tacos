@@ -1,26 +1,28 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="1056,160,1232,189"/>
-<area shape="rect" id="node5" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="1088,83,1211,112"/>
-<area shape="rect" id="node7" href="$context_8h.html" title="kernel/include/context.h" alt="" coords="1573,83,1736,112"/>
-<area shape="rect" id="node9" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="1459,160,1589,189"/>
-<area shape="rect" id="node11" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="756,83,905,112"/>
-<area shape="rect" id="node20" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="1711,237,1820,267"/>
-<area shape="rect" id="node22" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="931,160,1032,189"/>
-<area shape="rect" id="node30" href="$ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="1336,83,1499,112"/>
-<area shape="rect" id="node35" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="1613,160,1728,189"/>
-<area shape="rect" id="node38" href="$scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="1811,83,1989,112"/>
-<area shape="rect" id="node50" href="$kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="2389,160,2499,189"/>
-<area shape="rect" id="node53" href="$ksem_8c.html" title="Gestion des sémaphores." alt="" coords="2523,160,2629,189"/>
-<area shape="rect" id="node56" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="2653,160,2768,189"/>
-<area shape="rect" id="node58" href="$round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="2792,160,2933,189"/>
-<area shape="rect" id="node13" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="677,160,856,189"/>
-<area shape="rect" id="node16" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="5,160,205,189"/>
-<area shape="rect" id="node18" href="$fat__functions_8c.html" title="kernel/fs/fat/fat_functions.c" alt="" coords="229,160,405,189"/>
-<area shape="rect" id="node24" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="1256,160,1384,189"/>
-<area shape="rect" id="node26" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="429,160,539,189"/>
-<area shape="rect" id="node28" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="563,160,653,189"/>
-<area shape="rect" id="node41" href="$round__robin_8h.html" title="kernel/include/round_robin.h" alt="" coords="1803,160,1992,189"/>
-<area shape="rect" id="node44" href="$init_8c.html" title="kernel/init.c" alt="" coords="2016,160,2104,189"/>
-<area shape="rect" id="node46" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="2128,160,2240,189"/>
-<area shape="rect" id="node61" href="$vmm_8c.html" title="kernel/vmm.c" alt="" coords="2264,160,2365,189"/>
+<area shape="rect" id="node3" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="1232,161,1405,189"/>
+<area shape="rect" id="node5" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="2368,83,2491,111"/>
+<area shape="rect" id="node7" href="$context_8h.html" title="kernel/include/context.h" alt="" coords="1480,83,1637,111"/>
+<area shape="rect" id="node9" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="1429,161,1555,189"/>
+<area shape="rect" id="node11" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="657,83,804,111"/>
+<area shape="rect" id="node20" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="1539,238,1645,266"/>
+<area shape="rect" id="node22" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="1056,161,1157,189"/>
+<area shape="rect" id="node32" href="$ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="1661,83,1819,111"/>
+<area shape="rect" id="node36" href="$kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="1776,161,1885,189"/>
+<area shape="rect" id="node39" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="2051,161,2163,189"/>
+<area shape="rect" id="node44" href="$scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="2021,83,2192,111"/>
+<area shape="rect" id="node58" href="$ksem_8c.html" title="Gestion des sémaphores." alt="" coords="2811,161,2912,189"/>
+<area shape="rect" id="node62" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="2936,161,3048,189"/>
+<area shape="rect" id="node64" href="$round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="3072,161,3211,189"/>
+<area shape="rect" id="node13" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="435,161,608,189"/>
+<area shape="rect" id="node16" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="632,161,829,189"/>
+<area shape="rect" id="node18" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="853,161,1032,189"/>
+<area shape="rect" id="node24" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="1629,161,1752,189"/>
+<area shape="rect" id="node26" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="5,161,112,189"/>
+<area shape="rect" id="node28" href="$module_8c.html" title="kernel/module.c" alt="" coords="136,161,248,189"/>
+<area shape="rect" id="node30" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="272,161,360,189"/>
+<area shape="rect" id="node41" href="$ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="1909,161,2027,189"/>
+<area shape="rect" id="node47" href="$round__robin_8h.html" title="kernel/include/round_robin.h" alt="" coords="2493,161,2675,189"/>
+<area shape="rect" id="node50" href="$init_8c.html" title="kernel/init.c" alt="" coords="2699,161,2787,189"/>
+<area shape="rect" id="node52" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="2187,161,2296,189"/>
+<area shape="rect" id="node67" href="$vmm_8c.html" title="kernel/vmm.c" alt="" coords="2371,161,2469,189"/>
 </map>

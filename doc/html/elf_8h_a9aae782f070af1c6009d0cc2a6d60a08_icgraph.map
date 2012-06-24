@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$elf_8c.html#aa84790a8edae8d2859861f19adf5dd41" title="Calcul la taille que prendra l&#39;exécutable dans la mémoire La fonction évalue l&#39;adresse de départ en m..." alt="" coords="221,5,288,35"/>
-<area shape="rect" id="node5" href="$elf_8c.html#a35e8f32030ee36d8c02357a0b483c1b2" title="charge un fichier elf Charge les données utiles de l&#39;exécutable en mémoire, de façon à ce que ce soit..." alt="" coords="220,59,289,88"/>
-<area shape="rect" id="node7" href="$elf_8c.html#abbbb3d1f6ac9986f87d655cec7819556" title="charge un fichier elf dans la structure Elf32_File" alt="" coords="208,112,301,141"/>
-<area shape="rect" id="node9" href="$elf_8c.html#af969175b11017f629b1dfbf557fccbcc" title="Affiche des information sur le fichier elf." alt="" coords="349,112,413,141"/>
-</map>

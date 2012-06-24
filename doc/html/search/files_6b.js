@@ -3,6 +3,7 @@ var searchData=
   ['kdirent_2ec',['kdirent.c',['../kdirent_8c.html',1,'']]],
   ['kdirent_2eh',['kdirent.h',['../kdirent_8h.html',1,'']]],
   ['kernel_2ec',['kernel.c',['../kernel_8c.html',1,'']]],
+  ['kerrno_2eh',['kerrno.h',['../kerrno_8h.html',1,'']]],
   ['keyboard_2ec',['keyboard.c',['../keyboard_8c.html',1,'']]],
   ['keyboard_2eh',['keyboard.h',['../keyboard_8h.html',1,'']]],
   ['kfcntl_2ec',['kfcntl.c',['../kfcntl_8c.html',1,'']]],

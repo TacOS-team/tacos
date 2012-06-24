@@ -90,13 +90,12 @@ Graphe des dépendances par inclusion de video.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="video_8c__incl.png" border="0" usemap="#kernel_2drivers_2char_2video_8c" alt=""/></div>
 <map name="kernel_2drivers_2char_2video_8c" id="kernel_2drivers_2char_2video_8c">
-<area shape="rect" id="node5" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="60,83,132,112"/><area shape="rect" id="node7" href="video_8h.html" title="Driver console (vidéo texte)." alt="" coords="156,83,265,112"/></map>
+<area shape="rect" id="node5" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="57,83,127,111"/><area shape="rect" id="node7" href="video_8h.html" title="Driver console (vidéo texte)." alt="" coords="151,83,257,111"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad7ed43a2e8bd59c7bb6c00e1e3f88d1b"></a><!-- doxytag: member="video.c::BASE_VGA_VIDEO" ref="ad7ed43a2e8bd59c7bb6c00e1e3f88d1b" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>BASE_VGA_VIDEO</b>&#160;&#160;&#160;0xB8000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#ad7ed43a2e8bd59c7bb6c00e1e3f88d1b">BASE_VGA_VIDEO</a>&#160;&#160;&#160;0xB8000</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8725fb7a6014e9fdccb345f16f712ce4"></a><!-- doxytag: member="video.c::CRT_REG_INDEX" ref="a8725fb7a6014e9fdccb345f16f712ce4" args="" -->
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CRT_REG_INDEX</b>&#160;&#160;&#160;0x3d4</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e64c358bf521d0f067c58b74fcf02e7"></a><!-- doxytag: member="video.c::CRT_REG_DATA" ref="a3e64c358bf521d0f067c58b74fcf02e7" args="" -->
@@ -105,21 +104,12 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CURSOR_POS_MSB</b>&#160;&#160;&#160;0x0E</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acd16c06f0724819659298faa07d8e0f4"></a><!-- doxytag: member="video.c::CURSOR_POS_LSB" ref="acd16c06f0724819659298faa07d8e0f4" args="" -->
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CURSOR_POS_LSB</b>&#160;&#160;&#160;0x0F</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed099262b934370c5a13a8099c95099f"></a><!-- doxytag: member="video.c::CTL_COL" ref="aed099262b934370c5a13a8099c95099f" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CTL_COL</b>&#160;&#160;&#160;0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c164d3699f75ff290456252b35960d1"></a><!-- doxytag: member="video.c::CTL_COL_POS" ref="a3c164d3699f75ff290456252b35960d1" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CTL_COL_POS</b>&#160;&#160;&#160;1</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aad308ef81137bdb4ad223d1a5cfb3045"></a><!-- doxytag: member="video.c::CTL_CURSOR" ref="aad308ef81137bdb4ad223d1a5cfb3045" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CTL_CURSOR</b>&#160;&#160;&#160;2</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeac6f81ecab12113ca0beab3094f086c"></a><!-- doxytag: member="video.c::NB_VGA_PAGES" ref="aeac6f81ecab12113ca0beab3094f086c" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>NB_VGA_PAGES</b>&#160;&#160;&#160;4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#aeac6f81ecab12113ca0beab3094f086c">NB_VGA_PAGES</a>&#160;&#160;&#160;4</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a759f71f304c11873e67bf7cc3f2d08a8"></a><!-- doxytag: member="video.c::init_video" ref="a759f71f304c11873e67bf7cc3f2d08a8" args="()" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#a759f71f304c11873e67bf7cc3f2d08a8">init_video</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise l'affichage vidéo. En particulier les 4 pages disponibles. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad119683beee4aad11d38fac1fe930e96"></a><!-- doxytag: member="video.c::offset_video" ref="ad119683beee4aad11d38fac1fe930e96" args="(int offset)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>offset_video</b> (int offset)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#ab549780053994f6b1dba04869b562a43">switch_page</a> (int i)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la page à afficher à l'écran.  <a href="#ab549780053994f6b1dba04869b562a43"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#ab5839353cba28b424b12338feca82385">flip_page</a> (int n)</td></tr>
@@ -147,7 +137,36 @@ LICENSE</h2>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
 <p>Description de ce que fait le fichier </p>
-</div><hr/><h2>Documentation des fonctions</h2>
+</div><hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="ad7ed43a2e8bd59c7bb6c00e1e3f88d1b"></a><!-- doxytag: member="video.c::BASE_VGA_VIDEO" ref="ad7ed43a2e8bd59c7bb6c00e1e3f88d1b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="video_8c.html#ad7ed43a2e8bd59c7bb6c00e1e3f88d1b">BASE_VGA_VIDEO</a>&#160;&#160;&#160;0xB8000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>The video memory address. </p>
+
+</div>
+</div>
+<a class="anchor" id="aeac6f81ecab12113ca0beab3094f086c"></a><!-- doxytag: member="video.c::NB_VGA_PAGES" ref="aeac6f81ecab12113ca0beab3094f086c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="video_8c.html#aeac6f81ecab12113ca0beab3094f086c">NB_VGA_PAGES</a>&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre de pages possibles par le driver VGA dans le mode texte. </p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
 <a class="anchor" id="a61e8f22681edb740e2d057ac270e6f5b"></a><!-- doxytag: member="video.c::disable_cursor" ref="a61e8f22681edb740e2d057ac270e6f5b" args="(int disable)" -->
 <div class="memitem">
 <div class="memproto">
@@ -174,7 +193,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="video_8c_a61e8f22681edb740e2d057ac270e6f5b_icgraph.png" border="0" usemap="#video_8c_a61e8f22681edb740e2d057ac270e6f5b_icgraph" alt=""/></div>
 <map name="video_8c_a61e8f22681edb740e2d057ac270e6f5b_icgraph" id="video_8c_a61e8f22681edb740e2d057ac270e6f5b_icgraph">
-<area shape="rect" id="node3" href="console_8h.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan." alt="" coords="163,5,272,35"/></map>
+<area shape="rect" id="node3" href="console_8h.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan." alt="" coords="160,5,267,33"/><area shape="rect" id="node5" href="keyboard_8h.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61" title="keyboardInterrupt" alt="" coords="315,5,437,33"/></map>
 </div>
 </p>
 
@@ -206,7 +225,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="video_8c_ab5839353cba28b424b12338feca82385_cgraph.png" border="0" usemap="#video_8c_ab5839353cba28b424b12338feca82385_cgraph" alt=""/></div>
 <map name="video_8c_ab5839353cba28b424b12338feca82385_cgraph" id="video_8c_ab5839353cba28b424b12338feca82385_cgraph">
-<area shape="rect" id="node3" href="video_8c.html#ab549780053994f6b1dba04869b562a43" title="Change la page à afficher à l&#39;écran." alt="" coords="129,5,223,35"/></map>
+<area shape="rect" id="node3" href="video_8c.html#ab549780053994f6b1dba04869b562a43" title="Change la page à afficher à l&#39;écran." alt="" coords="129,5,223,33"/></map>
 </div>
 </p>
 
@@ -238,7 +257,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="video_8c_ab549780053994f6b1dba04869b562a43_icgraph.png" border="0" usemap="#video_8c_ab549780053994f6b1dba04869b562a43_icgraph" alt=""/></div>
 <map name="video_8c_ab549780053994f6b1dba04869b562a43_icgraph" id="video_8c_ab549780053994f6b1dba04869b562a43_icgraph">
-<area shape="rect" id="node3" href="console_8h.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan." alt="" coords="149,5,259,35"/><area shape="rect" id="node5" href="video_8h.html#ab5839353cba28b424b12338feca82385" title="Interverti les 2 buffers d&#39;une page." alt="" coords="167,59,241,88"/></map>
+<area shape="rect" id="node3" href="console_8h.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan." alt="" coords="149,5,256,33"/><area shape="rect" id="node7" href="video_8h.html#ab5839353cba28b424b12338feca82385" title="Interverti les 2 buffers d&#39;une page." alt="" coords="167,55,239,83"/><area shape="rect" id="node5" href="keyboard_8h.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61" title="keyboardInterrupt" alt="" coords="304,5,427,33"/></map>
 </div>
 </p>
 
@@ -262,7 +281,7 @@ Voici le graphe des appelants de cette fonction :</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

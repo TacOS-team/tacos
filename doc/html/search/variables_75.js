@@ -4,5 +4,6 @@ var searchData=
   ['umount',['umount',['../structfile__system__t.html#a899f34d838d88470373b60f7c5f0edd9',1,'file_system_t']]],
   ['unlink',['unlink',['../struct__fs__instance__t.html#aca7d96dd5d309b2a83d1e649021e710d',1,'_fs_instance_t']]],
   ['uppercase',['uppercase',['../structletter.html#abcf4b11624e2497e2d5798a805002268',1,'letter']]],
-  ['used',['used',['../structconsole__t.html#ad830edd689dced40135f6afa651677e3',1,'console_t']]]
+  ['used',['used',['../structconsole__t.html#ad830edd689dced40135f6afa651677e3',1,'console_t']]],
+  ['utf8_5fshort_5fname',['utf8_short_name',['../struct__fat__dir__entry.html#abb18201b12e6039275e6dad91c19a99d',1,'_fat_dir_entry']]]
 ];

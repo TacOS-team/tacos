@@ -22,6 +22,7 @@ var searchData=
   ['ign2',['ign2',['../structpage__directory__entry.html#a54717dda3e1fea6c0495742d858b7258',1,'page_directory_entry']]],
   ['ignored',['ignored',['../structpage__table__entry.html#a173467d58b0695933772f5a5bdbf7a43',1,'page_table_entry']]],
   ['index',['index',['../struct__tty__struct__t.html#a4208e736cfcd8e0b00a3c0bbfe4674f7',1,'_tty_struct_t']]],
+  ['initialize',['initialize',['../structscheduler__descriptor__t.html#a250bb59b72e7a3828160638033ac5cb3',1,'scheduler_descriptor_t']]],
   ['inode',['inode',['../structext2__directory.html#a58f91a7939507e98be75baed206c149c',1,'ext2_directory::inode()'],['../struct__ext2__extra__data.html#a67635cdfceeb4475b1410ec3bc8ae552',1,'_ext2_extra_data::inode()']]],
   ['interrupts_5fwrapper_5farray',['interrupts_wrapper_array',['../interrupts_8c.html#a62023b0378f42eabb08c367d0e690925',1,'interrupts.c']]]
 ];

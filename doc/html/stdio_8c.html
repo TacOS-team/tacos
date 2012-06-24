@@ -82,13 +82,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="stdio_8h_source.html">stdio.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="stdlib_8h_source.html">stdlib.h</a>&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de stdio.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="stdio_8c__incl.png" border="0" usemap="#libc_2stdio_2stdio_8c" alt=""/></div>
 <map name="libc_2stdio_2stdio_8c" id="libc_2stdio_2stdio_8c">
-<area shape="rect" id="node3" href="stdio_8h.html" title="stdio.h" alt="" coords="97,83,159,112"/><area shape="rect" id="node14" href="stdlib_8h.html" title="stdlib.h" alt="" coords="212,83,273,112"/><area shape="rect" id="node5" href="libio_8h.html" title="libio.h" alt="" coords="5,160,61,189"/><area shape="rect" id="node7" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="127,237,215,267"/><area shape="rect" id="node12" href="stdarg_8h.html" title="stdarg.h" alt="" coords="136,160,205,189"/><area shape="rect" id="node9" href="stdbool_8h.html" title="stdbool.h" alt="" coords="133,315,208,344"/><area shape="rect" id="node17" href="malloc_8h.html" title="malloc.h" alt="" coords="280,160,349,189"/></map>
+<area shape="rect" id="node3" href="stdio_8h.html" title="stdio.h" alt="" coords="80,83,139,111"/><area shape="rect" id="node5" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="5,315,93,343"/><area shape="rect" id="node7" href="libio_8h.html" title="libio.h" alt="" coords="51,161,104,189"/><area shape="rect" id="node10" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="100,238,185,266"/><area shape="rect" id="node16" href="stdarg_8h.html" title="stdarg.h" alt="" coords="179,161,245,189"/><area shape="rect" id="node13" href="stdbool_8h.html" title="Type bool." alt="" coords="117,315,192,343"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
@@ -106,7 +106,7 @@ LICENSE</h2>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
 <h2><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h2>
-<p>Description de ce que fait le fichier</p>
+<p>Description de ce que fait le fichier </p>
 </div><hr/><h2>Documentation des fonctions</h2>
 <a class="anchor" id="af691eb990d669a9edec8a9ec721ce3bc"></a><!-- doxytag: member="stdio.c::setvbuf" ref="af691eb990d669a9edec8a9ec721ce3bc" args="(FILE *stream, char *buf, int mode, size_t size)" -->
 <div class="memitem">
@@ -150,10 +150,11 @@ DESCRIPTION</h2>
     <tr><td class="paramname">stream</td><td>le stream a modifier </td></tr>
     <tr><td class="paramname">buf</td><td>le nouveau buffer (peut être défini à NULL et sera alloué automatiquement. </td></tr>
     <tr><td class="paramname">mode</td><td>les nouveaux flags </td></tr>
-    <tr><td class="paramname">size</td><td>taille du nouveau buffer </td></tr>
+    <tr><td class="paramname">size</td><td>taille du nouveau buffer</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 si tout s'est bien passé. </dd></dl>
 
 </div>
 </div>
@@ -175,7 +176,7 @@ DESCRIPTION</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:58 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:48 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

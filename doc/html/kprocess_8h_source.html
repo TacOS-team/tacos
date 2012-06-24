@@ -87,7 +87,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00033"></a>00033 <span class="preprocessor"></span>
 <a name="l00034"></a>00034 <span class="preprocessor">#include &lt;<a class="code" href="ksyscall_8h.html">ksyscall.h</a>&gt;</span>
 <a name="l00035"></a>00035 <span class="preprocessor">#include &lt;<a class="code" href="fd__types_8h.html">fd_types.h</a>&gt;</span>
-<a name="l00036"></a>00036 <span class="preprocessor">#include &lt;<a class="code" href="signal__types_8h.html">signal_types.h</a>&gt;</span>
+<a name="l00036"></a>00036 <span class="preprocessor">#include &lt;<a class="code" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux).">signal_types.h</a>&gt;</span>
 <a name="l00037"></a>00037 <span class="preprocessor">#include &lt;<a class="code" href="process__types_8h.html">process_types.h</a>&gt;</span>
 <a name="l00038"></a>00038 <span class="preprocessor">#include &lt;<a class="code" href="symtable_8h.html">symtable.h</a>&gt;</span>
 <a name="l00039"></a>00039 <span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span>
@@ -116,16 +116,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00065"></a><a class="code" href="structprocess__init__data__t.html#ac2a942b9852943b1fd1771a69047e514">00065</a>         <span class="keywordtype">char</span>** <a class="code" href="structprocess__init__data__t.html#ac2a942b9852943b1fd1771a69047e514">envp</a>; 
 <a name="l00067"></a><a class="code" href="structprocess__init__data__t.html#a1cda790f7d2446a04562094f09e358ab">00067</a>         <span class="keywordtype">int</span> <a class="code" href="structprocess__init__data__t.html#a1cda790f7d2446a04562094f09e358ab">exec_type</a>; 
 <a name="l00069"></a><a class="code" href="structprocess__init__data__t.html#a4f4139a5267079b63cf2240676a28793">00069</a>         <span class="keywordtype">void</span>* <a class="code" href="structprocess__init__data__t.html#a4f4139a5267079b63cf2240676a28793">data</a>; 
-<a name="l00071"></a>00071         <a class="code" href="structElf32__File.html">Elf32_File</a>* file;
+<a name="l00071"></a>00071         Elf32_File* file;
 <a name="l00072"></a>00072         
 <a name="l00073"></a>00073         <span class="comment">/* Données pour le chargement de l&#39;elf */</span>
 <a name="l00074"></a>00074         <span class="keywordtype">int</span> mem_size;
 <a name="l00075"></a>00075         <a class="code" href="kernel_2include_2types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">vaddr_t</a> entry_point;
 <a name="l00076"></a>00076         
-<a name="l00077"></a>00077         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> stack_size;
-<a name="l00078"></a>00078         <span class="keywordtype">int</span> priority;
+<a name="l00077"></a><a class="code" href="structprocess__init__data__t.html#a8a9c2d2d0d602f8e2f3dc2f4c425da29">00077</a>         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="structprocess__init__data__t.html#a8a9c2d2d0d602f8e2f3dc2f4c425da29">stack_size</a>;
+<a name="l00078"></a><a class="code" href="structprocess__init__data__t.html#a3147915ee1aa09fd84245e28635c60c8">00078</a>         <span class="keywordtype">int</span> <a class="code" href="structprocess__init__data__t.html#a3147915ee1aa09fd84245e28635c60c8">priority</a>;
 <a name="l00079"></a>00079         
-<a name="l00080"></a>00080         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> ppid;
+<a name="l00080"></a><a class="code" href="structprocess__init__data__t.html#a34f85f3f56546700b1dc942070944e27">00080</a>         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> <a class="code" href="structprocess__init__data__t.html#a34f85f3f56546700b1dc942070944e27">ppid</a>;
 <a name="l00081"></a>00081         
 <a name="l00082"></a>00082 } <a class="code" href="structprocess__init__data__t.html">process_init_data_t</a>;
 <a name="l00083"></a>00083 
@@ -221,7 +221,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:46 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

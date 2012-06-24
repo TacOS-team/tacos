@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$elf_8h.html#a9aae782f070af1c6009d0cc2a6d60a08" title="charge un program header depuis un fichier elf Charge le program header n°index depuis le fichier..." alt="" coords="124,32,276,61"/>
-<area shape="rect" id="node5" href="$unistd_8h.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier." alt="" coords="327,5,380,35"/>
-<area shape="rect" id="node9" href="$unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="329,59,377,88"/>
-<area shape="rect" id="node7" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="431,32,492,61"/>
-</map>

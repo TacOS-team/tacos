@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['kdebug',['kdebug',['../klog_8h.html#a4dbe7575bddeab8958d7fa47693cf318',1,'klog.h']]],
+  ['kerr',['kerr',['../klog_8h.html#a7bc73d397e0b9afbd974e4feb837f16d',1,'klog.h']]],
   ['key_5falt',['KEY_ALT',['../keyboard_8c.html#a5f25a8926d9c3ce4b4a0824234e8ffd4',1,'keyboard.c']]],
   ['key_5fcapslock',['KEY_CAPSLOCK',['../keyboard_8c.html#af168e54444bdaff5f50f6f4734784762',1,'keyboard.c']]],
   ['key_5fescape',['KEY_ESCAPE',['../keyboard_8c.html#a6c8ee53908fc5d6df19f1da8502b38dc',1,'keyboard.c']]],
@@ -22,13 +24,14 @@ var searchData=
   ['key_5freturn',['KEY_RETURN',['../keyboard_8c.html#afe5716cf1626fceab51044a6c2492831',1,'keyboard.c']]],
   ['key_5frshift',['KEY_RSHIFT',['../keyboard_8c.html#a5b52e8d492e96e2b4c21a94f50a689c5',1,'keyboard.c']]],
   ['key_5fspace',['KEY_SPACE',['../keyboard_8c.html#a8a5ff83d21dfa704c1c3eff56d5b3a4b',1,'keyboard.c']]],
-  ['keyboard_5fack_5ffail',['KEYBOARD_ACK_FAIL',['../keyboard_8c.html#ab54ea743e1642104977d9eb54d9dd804',1,'keyboard.c']]],
   ['keyboard_5fbat_5fko',['KEYBOARD_BAT_KO',['../keyboard_8c.html#a78b9cc2c6b6852cf6d70397f347f6087',1,'keyboard.c']]],
   ['keyboard_5fbat_5fok',['KEYBOARD_BAT_OK',['../keyboard_8c.html#ab9e455bca51c4c348c41fd25b43f8d36',1,'keyboard.c']]],
   ['keyboard_5fecho_5fres',['KEYBOARD_ECHO_RES',['../keyboard_8c.html#a591a53aabe6ff5ad73d714b9fa84dd61',1,'keyboard.c']]],
   ['keyboard_5ferror_5fmode_5f1',['KEYBOARD_ERROR_MODE_1',['../keyboard_8c.html#a78bccde615c6200a835e5af95cfc3d93',1,'keyboard.c']]],
   ['keyboard_5ferror_5fmode_5f2',['KEYBOARD_ERROR_MODE_2',['../keyboard_8c.html#a3d4a986e607033bfc29af8cd64fac10e',1,'keyboard.c']]],
+  ['keyboard_5fexpand',['KEYBOARD_EXPAND',['../keyboard_8c.html#a76724347f77910592dedb79be93b5c59',1,'keyboard.c']]],
   ['keyboard_5ffailure',['KEYBOARD_FAILURE',['../keyboard_8c.html#a970038aa0ef60de1aac31b61cdc4ce23',1,'keyboard.c']]],
   ['keyboard_5fpause',['KEYBOARD_PAUSE',['../keyboard_8c.html#a7c36913f02e82864a374d734521446a1',1,'keyboard.c']]],
-  ['keyboard_5funknown',['KEYBOARD_UNKNOWN',['../keyboard_8c.html#a0c3c8f01e96a5def954ce91f9e198602',1,'keyboard.c']]]
+  ['keyboard_5funknown',['KEYBOARD_UNKNOWN',['../keyboard_8c.html#a0c3c8f01e96a5def954ce91f9e198602',1,'keyboard.c']]],
+  ['klog',['klog',['../klog_8h.html#a0b4bb9d111462c3990c48a6844a6ee7f',1,'klog.h']]]
 ];

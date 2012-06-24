@@ -85,61 +85,65 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a name="l00032"></a>00032 <span class="preprocessor"></span>
 <a name="l00033"></a>00033 <span class="preprocessor">#define FLOPPY_BASE     0x03f0</span>
 <a name="l00034"></a>00034 <span class="preprocessor"></span>
-<a name="l00035"></a>00035 <span class="keyword">enum</span> floppy_registers
-<a name="l00036"></a>00036 {
-<a name="l00037"></a>00037         FLOPPY_SRA = 0, <span class="comment">// Status register A            -- read-only</span>
-<a name="l00038"></a>00038         FLOPPY_SRB = 1, <span class="comment">// Status register B            -- read-only</span>
-<a name="l00039"></a>00039         FLOPPY_DOR = 2, <span class="comment">// Digital output register</span>
-<a name="l00040"></a>00040         FLOPPY_TDR = 3, <span class="comment">// Tape drive register</span>
-<a name="l00041"></a>00041         FLOPPY_MSR = 4, <span class="comment">// Main status register         -- read-only</span>
-<a name="l00042"></a>00042         FLOPPY_DSR = 4, <span class="comment">// Datarate select register     -- write-only</span>
-<a name="l00043"></a>00043         FLOPPY_FIFO = 5, <span class="comment">// Data FIFO</span>
-<a name="l00044"></a>00044         FLOPPY_DIR = 7, <span class="comment">// Digital input register       -- read-only</span>
-<a name="l00045"></a>00045         FLOPPY_CCR = 7  <span class="comment">// Configuration control register -- write-only</span>
-<a name="l00046"></a>00046 };
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048 <span class="keyword">enum</span> floppy_commands
-<a name="l00049"></a>00049 {
-<a name="l00050"></a>00050         READ_TRACK =                    2,
-<a name="l00051"></a>00051         SPECIFY =                               3,
-<a name="l00052"></a>00052         SENSE_DRIVE_STATUS =    4,
-<a name="l00053"></a>00053         WRITE_DATA =                    5,
-<a name="l00054"></a>00054         READ_DATA =                             6,
-<a name="l00055"></a>00055         RECALIBRATE =                   7,
-<a name="l00056"></a>00056         SENSE_INTERRUPT =               8,
-<a name="l00057"></a>00057         READ_ID =                               10,
-<a name="l00058"></a>00058         READ_DELETED_DATA =             12,
-<a name="l00059"></a>00059         FORMAT_TRACK =                  13,
-<a name="l00060"></a>00060         SEEK =                                  15,
-<a name="l00061"></a>00061         VERSION =                               16,
-<a name="l00062"></a>00062         SCAN_EQUAL =                    17,
-<a name="l00063"></a>00063         PERPENDICULAR_MODE =    18,
-<a name="l00064"></a>00064         CONFIGURE =                             19,
-<a name="l00065"></a>00065         LOCK =                                  20,
-<a name="l00066"></a>00066         VERIFY =                                22,
-<a name="l00067"></a>00067         SCAN_LOW_OR_EQUAL =             25,
-<a name="l00068"></a>00068         SCAN_HIGH_OR_EQUAL =    29
-<a name="l00069"></a>00069 };
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072 <span class="keywordtype">bool</span> floppy_ready();
-<a name="l00073"></a>00073 <span class="keywordtype">int</span> floppy_write_command(<span class="keywordtype">char</span> cmd);
-<a name="l00074"></a>00074 <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> floppy_read_data();
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076 <span class="comment">// Drive selection</span>
-<a name="l00077"></a>00077 <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> floppy_get_current_drive();
-<a name="l00078"></a>00078 <span class="keywordtype">void</span> floppy_set_current_drive(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> drive);
-<a name="l00079"></a>00079 
-<a name="l00080"></a>00080 <span class="keywordtype">int</span> floppy_seek(<span class="keywordtype">int</span> cylindre, <span class="keywordtype">int</span> head);
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082 <span class="comment">/*      </span>
-<a name="l00083"></a>00083 <span class="comment"> * MISC  </span>
-<a name="l00084"></a>00084 <span class="comment"> */</span>
-<a name="l00085"></a>00085 <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> floppy_get_type(<span class="keywordtype">int</span> drive);
-<a name="l00086"></a>00086 <span class="keywordtype">void</span> floppy_detect_drives();
-<a name="l00087"></a>00087 <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> floppy_get_version();
-<a name="l00088"></a>00088 
-<a name="l00089"></a>00089 <span class="preprocessor">#endif</span>
+<a name="l00039"></a><a class="code" href="floppy__utils_8h.html#ae3cc03358ffc6b586ec8fbd981f3db87">00039</a> <span class="keyword">enum</span> <a class="code" href="floppy__utils_8h.html#ae3cc03358ffc6b586ec8fbd981f3db87" title="Offset des différents registres du controleur disquette.">floppy_registers</a>
+<a name="l00040"></a>00040 {
+<a name="l00041"></a>00041         FLOPPY_SRA = 0, <span class="comment">// Status register A            -- read-only</span>
+<a name="l00042"></a>00042         FLOPPY_SRB = 1, <span class="comment">// Status register B            -- read-only</span>
+<a name="l00043"></a>00043         FLOPPY_DOR = 2, <span class="comment">// Digital output register</span>
+<a name="l00044"></a>00044         FLOPPY_TDR = 3, <span class="comment">// Tape drive register</span>
+<a name="l00045"></a>00045         FLOPPY_MSR = 4, <span class="comment">// Main status register         -- read-only</span>
+<a name="l00046"></a>00046         FLOPPY_DSR = 4, <span class="comment">// Datarate select register     -- write-only</span>
+<a name="l00047"></a>00047         FLOPPY_FIFO = 5, <span class="comment">// Data FIFO</span>
+<a name="l00048"></a>00048         FLOPPY_DIR = 7, <span class="comment">// Digital input register       -- read-only</span>
+<a name="l00049"></a>00049         FLOPPY_CCR = 7  <span class="comment">// Configuration control register -- write-only</span>
+<a name="l00050"></a>00050 };
+<a name="l00051"></a>00051 
+<a name="l00056"></a><a class="code" href="floppy__utils_8h.html#afb5e2e7b7b5ee95fef2889715a343720">00056</a> <span class="keyword">enum</span> <a class="code" href="floppy__utils_8h.html#afb5e2e7b7b5ee95fef2889715a343720" title="Numéros de commande du controleur disquette.">floppy_commands</a>
+<a name="l00057"></a>00057 {
+<a name="l00058"></a>00058         READ_TRACK =                    2,
+<a name="l00059"></a>00059         SPECIFY =                               3,
+<a name="l00060"></a>00060         SENSE_DRIVE_STATUS =    4,
+<a name="l00061"></a>00061         WRITE_DATA =                    5,
+<a name="l00062"></a>00062         READ_DATA =                             6,
+<a name="l00063"></a>00063         RECALIBRATE =                   7,
+<a name="l00064"></a>00064         SENSE_INTERRUPT =               8,
+<a name="l00065"></a>00065         READ_ID =                               10,
+<a name="l00066"></a>00066         READ_DELETED_DATA =             12,
+<a name="l00067"></a>00067         FORMAT_TRACK =                  13,
+<a name="l00068"></a>00068         SEEK =                                  15,
+<a name="l00069"></a>00069         VERSION =                               16,
+<a name="l00070"></a>00070         SCAN_EQUAL =                    17,
+<a name="l00071"></a>00071         PERPENDICULAR_MODE =    18,
+<a name="l00072"></a>00072         CONFIGURE =                             19,
+<a name="l00073"></a>00073         LOCK =                                  20,
+<a name="l00074"></a>00074         VERIFY =                                22,
+<a name="l00075"></a>00075         SCAN_LOW_OR_EQUAL =             25,
+<a name="l00076"></a>00076         SCAN_HIGH_OR_EQUAL =    29
+<a name="l00077"></a>00077 };
+<a name="l00078"></a>00078 
+<a name="l00083"></a>00083 <span class="keywordtype">bool</span> <a class="code" href="floppy__utils_8c.html#a1b528d56e03dda853060f541fa772847" title="Vérifie si le controleur floppy est en état ready.">floppy_ready</a>();
+<a name="l00084"></a>00084 
+<a name="l00090"></a>00090 <span class="keywordtype">int</span> <a class="code" href="floppy__utils_8c.html#a0e012dd33083ef16c714cda568627983" title="Envoi une commande au controleur floppy.">floppy_write_command</a>(<span class="keywordtype">char</span> cmd);
+<a name="l00091"></a>00091 
+<a name="l00096"></a>00096 <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="floppy__utils_8c.html#accc0dbdcd680cab9890db94a13067284" title="Lis les données disponibles sur la FIFO du controleur.">floppy_read_data</a>();
+<a name="l00097"></a>00097 
+<a name="l00102"></a>00102 <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="floppy__utils_8c.html#aab49f8f343dc0a1f9c89ec5f5e444e0e" title="Retourne le numero tu lecteur courrant.">floppy_get_current_drive</a>();
+<a name="l00103"></a>00103 
+<a name="l00108"></a>00108 <span class="keywordtype">void</span> <a class="code" href="floppy__utils_8c.html#a0f4c4c2b326322e490f1db0071ad1073" title="Défini le lecteur courrant.">floppy_set_current_drive</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> drive);
+<a name="l00109"></a>00109 
+<a name="l00116"></a>00116 <span class="keywordtype">int</span> <a class="code" href="floppy__utils_8c.html#acf13f3cbd5df998eefb55cd2d15210c5" title="Déplace la tête de lecture à un cylindre défini.">floppy_seek</a>(<span class="keywordtype">int</span> cylindre, <span class="keywordtype">int</span> head);
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118 <span class="comment">/*      </span>
+<a name="l00119"></a>00119 <span class="comment"> * MISC  </span>
+<a name="l00120"></a>00120 <span class="comment"> */</span>
+<a name="l00121"></a>00121 
+<a name="l00127"></a>00127 <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="floppy__utils_8c.html#a5999e4ed8530afd23984eddeeef2ad60" title="Retourne le type de disquette accepté par le lecteur.">floppy_get_type</a>(<span class="keywordtype">int</span> drive);
+<a name="l00128"></a>00128 
+<a name="l00132"></a>00132 <span class="keywordtype">void</span> <a class="code" href="floppy__utils_8c.html#aa4a9a9bd28b1b9b857febc670b883517" title="Fonction de détection des lecteur floppy présents.">floppy_detect_drives</a>();
+<a name="l00133"></a>00133 
+<a name="l00138"></a>00138 <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="floppy__utils_8c.html#a54d322040af5e9281dc034336f286398" title="Retourne le numero de version du controleur disquette.">floppy_get_version</a>();
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -158,7 +162,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Avril 8 2012 22:06:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 24 2012 10:56:46 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

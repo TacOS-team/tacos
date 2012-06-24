@@ -1,9 +1,12 @@
 var searchData=
 [
   ['r_5fw',['r_w',['../structpage__directory__entry.html#af4aa8287c5da23728d33053fcb3f1715',1,'page_directory_entry::r_w()'],['../structpage__table__entry.html#a5d33a8057c30817a0680a3b8928d028e',1,'page_table_entry::r_w()']]],
+  ['raise',['raise',['../signal_8h.html#a08ba0dd26a850108a1746412faba2b21',1,'raise(int sig):&#160;signal.c'],['../signal_8c.html#a08ba0dd26a850108a1746412faba2b21',1,'raise(int sig):&#160;signal.c']]],
   ['read',['read',['../unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2',1,'read(int fd, void *buf, size_t count):&#160;unistd.c'],['../unistd_8c.html#af32a16ad2dd9e48482f8f790db7dbbd2',1,'read(int fd, void *buf, size_t count):&#160;unistd.c']]],
-  ['read_5fdata',['read_data',['../struct__ext2__fs__instance__t.html#ac3ea85962b66914cb42ec884d70a853d',1,'_ext2_fs_instance_t']]],
+  ['read_5fdata',['read_data',['../struct__ext2__fs__instance__t.html#ac3ea85962b66914cb42ec884d70a853d',1,'_ext2_fs_instance_t::read_data()'],['../struct__fat__info.html#a443e425e86f7401bed57670103d74cf2',1,'_fat_info::read_data()']]],
+  ['read_5ffat',['read_fat',['../fat__internal_8c.html#acc9f1bc688e7d7c5459ad50676608995',1,'read_fat(fat_fs_instance_t *instance):&#160;fat_internal.c'],['../fat__internal_8h.html#acc9f1bc688e7d7c5459ad50676608995',1,'read_fat(fat_fs_instance_t *instance):&#160;fat_internal.c']]],
   ['readdir',['readdir',['../dirent_8c.html#a58257faf8b13b3f14558613c632b2373',1,'readdir(DIR *dirp):&#160;dirent.c'],['../dirent_8h.html#a58257faf8b13b3f14558613c632b2373',1,'readdir(DIR *dirp):&#160;dirent.c']]],
+  ['realloc',['realloc',['../libc_2include_2stdlib_8h.html#a1a6b5e8d2f1c37e5b43e4345586075be',1,'realloc(void *ptr, size_t size):&#160;stdlib.c'],['../libc_2stdlib_8c.html#a1a6b5e8d2f1c37e5b43e4345586075be',1,'realloc(void *ptr, size_t size):&#160;stdlib.c']]],
   ['rec_5flen',['rec_len',['../structext2__directory.html#a349e610d4d226a480c577c94b09a5eaf',1,'ext2_directory']]],
   ['red',['RED',['../video_8h.html#a8d23feea868a983c8c2b661e1e16972f',1,'video.h']]],
   ['reg_5fvalues',['reg_values',['../structmode.html#a704a184dc9d562c705d1feeb5be8788b',1,'mode']]],
@@ -11,8 +14,12 @@ var searchData=
   ['register_5fchardev',['register_chardev',['../devfs_8c.html#acf0abbf4b629aa36d142733e27eaf6e6',1,'register_chardev(const char *name, chardev_interfaces *di):&#160;devfs.c'],['../devfs_8h.html#acf0abbf4b629aa36d142733e27eaf6e6',1,'register_chardev(const char *name, chardev_interfaces *di):&#160;devfs.c']]],
   ['regs_5ft',['regs_t',['../structregs__t.html',1,'']]],
   ['remove',['remove',['../stdio_8h.html#a02b13b56a188401119ea4da43c184913',1,'remove.c']]],
-  ['reserved',['reserved',['../structx86__idt__entry.html#adb99b161a27397d74e715d962b1c65fa',1,'x86_idt_entry']]],
+  ['removetop',['removetop',['../heap_8h.html#ab2d2b864167da4bf231eb63de7c83ff1',1,'removetop(heap_t *h):&#160;heap.c'],['../heap_8c.html#ab2d2b864167da4bf231eb63de7c83ff1',1,'removetop(heap_t *h):&#160;heap.c']]],
+  ['reserved',['reserved',['../struct__fat__extended__BIOS__16.html#a893876cfc91a64059613c6fe02a1e178',1,'_fat_extended_BIOS_16::reserved()'],['../struct__fat__dir__entry.html#a27e7962cefa12233338034dff3d75304',1,'_fat_dir_entry::reserved()'],['../structlfn__entry__t.html#a506f9cbd0e4fe209626eedaf48c1f8bf',1,'lfn_entry_t::reserved()'],['../structx86__idt__entry.html#adb99b161a27397d74e715d962b1c65fa',1,'x86_idt_entry::reserved()']]],
+  ['reserved_5fsector_5fcount',['reserved_sector_count',['../struct__fat__BS.html#a7c4d28484980635def2bb6c1e6675b5a',1,'_fat_BS']]],
+  ['rewind',['rewind',['../stdio_8h.html#aa0cd401f198d33d9d01a9e8aa4026819',1,'rewind(FILE *stream):&#160;fseek.c'],['../fseek_8c.html#aa0cd401f198d33d9d01a9e8aa4026819',1,'rewind(FILE *stream):&#160;fseek.c']]],
   ['rmdir',['rmdir',['../struct__fs__instance__t.html#a50925b31c6d009dff759c7f02c7fecf9',1,'_fs_instance_t::rmdir()'],['../unistd_8h.html#a570282ae7ba596263ec812b368d99b34',1,'rmdir(const char *pathname):&#160;unistd.c'],['../unistd_8c.html#ab2df76f2c62ae012c2e417813b5fe8ce',1,'rmdir(const char *path):&#160;unistd.c']]],
+  ['root_5fentry_5fcount',['root_entry_count',['../struct__fat__BS.html#ae9265a2e00c0c3cbb4de257b602bcd2c',1,'_fat_BS']]],
   ['round_5frobin_2ec',['round_robin.c',['../round__robin_8c.html',1,'']]],
   ['round_5frobin_2eh',['round_robin.h',['../round__robin_8h.html',1,'']]],
   ['rtc_5fanswer',['RTC_ANSWER',['../clock_8c.html#a9e8ea3cf4245155349bed1cea2590792',1,'clock.c']]],
@@ -26,7 +33,5 @@ var searchData=
   ['rtc_5frequest',['RTC_REQUEST',['../clock_8c.html#a59fb9be7a7d728632cdb9553ec759102',1,'clock.c']]],
   ['rtc_5fsecond',['RTC_SECOND',['../clock_8c.html#a777f67a779626b4d69b3eb4b4f5b6305',1,'clock.c']]],
   ['rtc_5fsecond_5falarm',['RTC_SECOND_ALARM',['../clock_8c.html#a4f6fb35439604f172b4eb075f62e9a24',1,'clock.c']]],
-  ['rtc_5fyear',['RTC_YEAR',['../clock_8c.html#a1df5568e6774b73aa4c6e59fc40e9147',1,'clock.c']]],
-  ['rtl8139_2eh',['rtl8139.h',['../rtl8139_8h.html',1,'']]],
-  ['rtl8139_5fdriver_5finit',['rtl8139_driver_init',['../rtl8139_8h.html#ac12bf0cf1cd648c2f4367bbd2119ac29',1,'rtl8139.h']]]
+  ['rtc_5fyear',['RTC_YEAR',['../clock_8c.html#a1df5568e6774b73aa4c6e59fc40e9147',1,'clock.c']]]
 ];

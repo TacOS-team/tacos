@@ -1,4 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="104,5,203,35"/>
-<area shape="rect" id="node5" href="$ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="252,5,321,35"/>
+<area shape="rect" id="node3" href="$ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="105,5,201,33"/>
+<area shape="rect" id="node7" href="$fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae" title="mount_FAT" alt="" coords="108,55,199,83"/>
+<area shape="rect" id="node5" href="$ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="252,5,321,33"/>
+<area shape="rect" id="node9" href="$fat_8h.html#a3d1f5d8e3b22672684528c112bc6ff06" title="fat_init" alt="" coords="256,55,317,83"/>
 </map>

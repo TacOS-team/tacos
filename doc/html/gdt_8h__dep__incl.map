@@ -1,8 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$gdt_8c.html" title="Setup de la GDT." alt="" coords="5,83,96,112"/>
-<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="120,83,229,112"/>
-<area shape="rect" id="node7" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="253,83,381,112"/>
-<area shape="rect" id="node9" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="405,83,520,112"/>
-<area shape="rect" id="node11" href="$ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="544,83,664,112"/>
-<area shape="rect" id="node13" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="688,83,819,112"/>
+<area shape="rect" id="node3" href="$gdt_8c.html" title="Setup de la GDT." alt="" coords="5,83,93,111"/>
+<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="117,83,224,111"/>
+<area shape="rect" id="node7" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="248,83,371,111"/>
+<area shape="rect" id="node9" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="395,83,507,111"/>
+<area shape="rect" id="node11" href="$ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="531,83,648,111"/>
+<area shape="rect" id="node13" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="672,83,797,111"/>
 </map>

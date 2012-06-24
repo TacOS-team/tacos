@@ -1,7 +1,13 @@
 var searchData=
 [
   ['d',['d',['../structpage__table__entry.html#a0cced2bdd03dd78e0031f7364fa55a67',1,'page_table_entry']]],
-  ['data',['data',['../structprocess__init__data__t.html#a4f4139a5267079b63cf2240676a28793',1,'process_init_data_t']]],
+  ['d_5fino',['d_ino',['../structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba',1,'dirent']]],
+  ['d_5fname',['d_name',['../structdirent.html#a4325a83c49c6f2cd01ef80e1ae1dd4c5',1,'dirent']]],
+  ['d_5freclen',['d_reclen',['../structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d',1,'dirent']]],
+  ['d_5ftype',['d_type',['../structdirent.html#a948760e3b7f607213a19f85e7af15a32',1,'dirent']]],
+  ['data',['data',['../structprocess__init__data__t.html#a4f4139a5267079b63cf2240676a28793',1,'process_init_data_t::data()'],['../struct__DIR.html#a87bb023e0bf0b2f075e90d270ff7033e',1,'_DIR::data()']]],
+  ['day',['day',['../struct__fat__date.html#aeaf6be5099571559b22e0d0bb429ab82',1,'_fat_date']]],
+  ['delete_5fprocess',['delete_process',['../structscheduler__descriptor__t.html#a656d41ddd8d861d0ee55523de3693dfa',1,'scheduler_descriptor_t']]],
   ['descriptor_5ftype',['descriptor_type',['../structx86__segment__descriptor.html#adda0434239b7e6c6a68b8e7556e4bb2f',1,'x86_segment_descriptor']]],
   ['devfs_5fname',['devfs_name',['../struct__tty__driver__t.html#a0c46e5dd6e7275908881f644d7fff927',1,'_tty_driver_t']]],
   ['device',['device',['../struct__fs__instance__t.html#acc3db122838752a84c6ecb93c3644256',1,'_fs_instance_t']]],
@@ -9,5 +15,6 @@ var searchData=
   ['disp_5fcur',['disp_cur',['../structconsole__t.html#a6242c03c5b347ed6b0909c1486116bee',1,'console_t']]],
   ['dpl',['dpl',['../structx86__idt__entry.html#a5c0f7af9139df1e94d0c6d17dcd0fb66',1,'x86_idt_entry::dpl()'],['../structx86__segment__descriptor.html#ab45e49c27bbe57a568d914bd13e45ef7',1,'x86_segment_descriptor::dpl()']]],
   ['driver_5fdata',['driver_data',['../struct__tty__struct__t.html#a974cb784cad13e547e5cace553875f90',1,'_tty_struct_t']]],
-  ['driver_5fname',['driver_name',['../struct__tty__driver__t.html#ae2f43b40c48f11feab23551e34a4fe6d',1,'_tty_driver_t']]]
+  ['driver_5fname',['driver_name',['../struct__tty__driver__t.html#ae2f43b40c48f11feab23551e34a4fe6d',1,'_tty_driver_t']]],
+  ['drives_5flength',['drives_length',['../structmultiboot__info.html#abe859eaa7e97309f072b3bc1caf5742e',1,'multiboot_info']]]
 ];
