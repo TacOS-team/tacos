@@ -86,10 +86,11 @@ directories:
 	@mkdir -p bin
 	@mkdir -p modules
 
-doc: dockernel doclibc
+doc:
+	doxygen doxygen.conf
 
 dockernel:
-	doxygen doxygen.conf
+	doxygen doxygen_kernel.conf
 
 doclibc:
 	doxygen doxygen_libc.conf
