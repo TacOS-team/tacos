@@ -259,11 +259,11 @@ open_file_descriptor * fat_open_file(fs_instance_t *instance, const char * path,
 	ofd->current_octet = 0;
 	ofd->current_octet_buf = 0;
 
-	ofd->readdir = fat_readdir;
-	ofd->write = fat_write_file;
-	ofd->read = fat_read_file;
-	ofd->seek = fat_seek_file;
-	ofd->close = fat_close;
+	ofd->f_ops->readdir = fat_readdir;
+	ofd->f_ops->write = fat_write_file;
+	ofd->f_ops->read = fat_read_file;
+	ofd->f_ops->seek = fat_seek_file;
+	ofd->f_ops->close = fat_close;
 
 	((fat_fs_instance_t*)instance)->fat_info.read_data(instance->device, ofd->buffer, size_buffer, ((fat_fs_instance_t*)instance)->fat_info.addr_data + (ofd->current_cluster - 2) * ((fat_fs_instance_t*)instance)->fat_info.BS.sectors_per_cluster * ((fat_fs_instance_t*)instance)->fat_info.BS.bytes_per_sector);
 

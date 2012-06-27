@@ -43,11 +43,11 @@ SYSCALL_HANDLER3(sys_readdir, int fd, char *entries, size_t *size) {
 	if (process->fd[fd].used) {
 		ofd = process->fd[fd].ofd;
 		
-		if(ofd->readdir == NULL) {
+		if(ofd->f_ops->readdir == NULL) {
 			kerr("No \"readdir\" method for this device.");
 			*t = 0;
 		} else {
-			*t = ofd->readdir(ofd, entries, *size);
+			*t = ofd->f_ops->readdir(ofd, entries, *size);
 		}
 	} else {
 		*t = 0;

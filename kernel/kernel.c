@@ -177,6 +177,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_MKNOD,	(syscall_handler_t) sys_mknod);
 	syscall_set_handler(SYS_WAITPID, (syscall_handler_t) sys_waitpid);
 
+	vfs_init();
+
 	devfs_init();
 	vfs_mount(NULL, "dev", "DevFS");
 

@@ -36,18 +36,11 @@
 #define SEEK_CUR 1
 #define SEEK_END 2
 
+struct _open_file_descriptor;
 struct _fs_instance_t;
+struct _dentry_t;
 
-typedef struct _open_file_descriptor {
-	uint32_t flags;
-	uint8_t buffer[512];
-	uint32_t current_octet_buf;
-	uint32_t current_cluster;
-	uint32_t current_octet;
-	uint32_t first_cluster;
-	uint32_t file_size;
-	struct _fs_instance_t *fs_instance;
-	void * extra_data;
+struct _open_file_operations_t {
 	size_t (*write)(struct _open_file_descriptor *, const void*, size_t);
 	size_t (*read)(struct _open_file_descriptor *,void*, size_t);
 	int (*seek)(struct _open_file_descriptor *, long, int);
@@ -55,6 +48,25 @@ typedef struct _open_file_descriptor {
 	int (*open) (struct _open_file_descriptor*);
 	int (*close) (struct _open_file_descriptor*);
 	int (*readdir) (struct _open_file_descriptor*, char*, size_t);
+} open_file_operations_t;
+
+typedef struct _open_file_descriptor {
+// A dégager ? Infos dans l'inode.
+	uint32_t flags;
+	uint8_t buffer[512];
+	uint32_t current_octet_buf;
+	uint32_t current_cluster;
+	uint32_t current_octet; // Utile pour f_pos ?
+	uint32_t first_cluster;
+	uint32_t file_size; 
+
+	// Utile ? on peut l'avoir par mnt->instance
+	struct _fs_instance_t *fs_instance;
+	// Rajouter inode ?
+	struct _dentry_t *dentry;
+	struct _mounted_fs_t *mnt;
+	struct _open_file_operations_t *f_ops;
+	void * extra_data;
 } open_file_descriptor;
 
 typedef struct _file_descriptor {

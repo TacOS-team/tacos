@@ -37,12 +37,17 @@
 
 #define MAX_DRIVERS 64 /**< Nombre maximum de drivers. */
 
+static int devfs_readdir(open_file_descriptor * ofd, char * entries, size_t size);
+
+static dentry_t root_devfs;
+static struct _open_file_operations_t devfs_fops = {.write = NULL, .read = NULL, .seek = NULL, .ioctl = NULL, .open = NULL, .close = NULL, .readdir = devfs_readdir};
+
 typedef struct {
 	char used;
 	char* name;
 	device_type_t type;
 	void* di;
-}driver_entry;
+} driver_entry;
 
 static driver_entry driver_list[MAX_DRIVERS];
 
@@ -170,92 +175,66 @@ static int devfs_readdir(open_file_descriptor * ofd, char * entries, size_t size
 	return count;
 }
 
-static open_file_descriptor* devfs_open_file(fs_instance_t *instance, const char * path, uint32_t flags) {
-	unsigned int i,j;
-	char buf[64];
-	driver_entry* drentry;
-	
-	if (path[0] != '/') {
-		if (path[0] == '\0') {
-			open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
-			
-			ofd->flags = flags;
-			ofd->fs_instance = instance;
-			ofd->first_cluster = 0;
-			ofd->file_size = 512; /* TODO */
-			ofd->current_cluster = 0;
-			ofd->current_octet = 0;
-			ofd->current_octet_buf = 0;
+static dentry_t *devfs_getroot() {
+	return &root_devfs;
+}
 
-			ofd->readdir = devfs_readdir;
-			ofd->write = NULL;
-			ofd->read = NULL;
-			ofd->seek = NULL;
-			ofd->close = NULL;
+static dentry_t* devfs_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry __attribute__((unused)), const char * name) {
+	//TODO: gérer dentry pour avoir des sous-dossiers.
 
-			return ofd;
-		}
-		return NULL;
-	} else {
-		i=0;
-		while (path[i] == '/') 
-			i++;
-		j=0;
-		while(path[i] != '\0' && path[i] != '/') {
-			buf[j] = path[i];
-			i++;
-			j++;
-		}
-		buf[j] = '\0';
-		drentry = find_driver(buf);
-		if(drentry != NULL) {
-			
-			open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
-			
-			ofd->flags = flags;
-			ofd->fs_instance = instance;
-			ofd->first_cluster = 0;
-			ofd->file_size = 512; /* TODO */
-			ofd->current_cluster = 0;
-			ofd->current_octet = 0;
-			ofd->current_octet_buf = 0;
-			ofd->extra_data = drentry->di; /* XXX Un peu laid mais ça fera la blague pour le moment */
+	driver_entry *drentry = find_driver(name);
+	if (drentry != NULL) {
+		inode_t *inode = kmalloc(sizeof(inode_t));
+		inode->i_ino = 42; //XXX
+		inode->i_mode = 0755;
+		inode->i_uid = 0;
+		inode->i_gid = 0;
+		inode->i_size = 0;
+		inode->i_atime = inode->i_ctime = inode->i_mtime = inode->i_dtime = 0; // XXX
+		inode->i_nlink = 1;
+		inode->i_blocks = 1;
+		inode->i_instance = instance;
+		inode->i_fops = kmalloc(sizeof(open_file_operations_t));
+		inode->i_fs_specific = (chardev_interfaces*)(drentry->di);
 
-			switch(drentry->type) {
-				case CHARDEV:
-					ofd->write = ((chardev_interfaces*)(drentry->di))->write;
-					ofd->read = ((chardev_interfaces*)(drentry->di))->read; 
-					ofd->seek = NULL; /* à implémenter */
-					ofd->close = ((chardev_interfaces*)(drentry->di))->close;
-					ofd->ioctl = ((chardev_interfaces*)(drentry->di))->ioctl;
-					
-					if(((chardev_interfaces*)(drentry->di))->open != NULL) {
-						((chardev_interfaces*)(drentry->di))->open(ofd);
-					}
-					else {
-						kerr("No \"open\" method for %s.", drentry->name);
-					}
-					
-					break;
-				case BLKDEV:
-					ofd->write = NULL; /* à implémenter */
-					ofd->read = NULL; /* à implémenter */
-					ofd->seek = NULL; /* à implémenter */
-					ofd->close = ((blkdev_interfaces*)(drentry->di))->close;
-					ofd->ioctl = NULL; /* à implémenter */
-					
-					if(((blkdev_interfaces*)(drentry->di))->open != NULL) {
-						((blkdev_interfaces*)(drentry->di))->open(ofd);
-					}
-					else {
-						kerr("No \"open\" method for %s.", drentry->name);
-					}
-					break;
-				default:
-					ofd = NULL;
-			}
-			return ofd;
+		switch(drentry->type) {
+			case CHARDEV:
+				inode->i_fops->write = ((chardev_interfaces*)(drentry->di))->write;
+				inode->i_fops->read = ((chardev_interfaces*)(drentry->di))->read; 
+				inode->i_fops->seek = NULL; /* à implémenter */
+				inode->i_fops->close = ((chardev_interfaces*)(drentry->di))->close;
+				inode->i_fops->ioctl = ((chardev_interfaces*)(drentry->di))->ioctl;
+				
+				/*if(((chardev_interfaces*)(drentry->di))->open != NULL) {
+					((chardev_interfaces*)(drentry->di))->open(ofd);
+				}
+				else {
+					kerr("No \"open\" method for %s.", drentry->name);
+				}*/
+				
+				break;
+			case BLKDEV:
+				inode->i_fops->write = NULL; /* à implémenter */
+				inode->i_fops->read = NULL; /* à implémenter */
+				inode->i_fops->seek = NULL; /* à implémenter */
+				inode->i_fops->close = ((blkdev_interfaces*)(drentry->di))->close;
+				inode->i_fops->ioctl = NULL; /* à implémenter */
+				
+				/*
+				if(((blkdev_interfaces*)(drentry->di))->open != NULL) {
+					((blkdev_interfaces*)(drentry->di))->open(ofd);
+				}
+				else {
+					kerr("No \"open\" method for %s.", drentry->name);
+				}
+				*/
+				break;
 		}
+		dentry_t *d = kmalloc(sizeof(dentry_t));
+		d->d_name = kmalloc(strlen(name));
+		strcpy(d->d_name, name);
+		d->d_inode = inode;
+		return d;
 	}
 	return NULL;
 }
@@ -301,9 +280,11 @@ fs_instance_t* mount_devfs() {
 //	klog("mounting DevFS");
 
 	fs_instance_t *instance = kmalloc(sizeof(fs_instance_t));
-	instance->open = devfs_open_file;
+//	instance->open = devfs_open_file;
 	instance->mkdir = NULL;
 	instance->stat = devfs_stat;
+	instance->getroot = devfs_getroot;
+	instance->lookup = devfs_lookup;
 	
 	return instance;
 }
@@ -314,7 +295,10 @@ void umount_devfs(fs_instance_t *instance) {
 
 void devfs_init() {
 	file_system_t *fs = kmalloc(sizeof(file_system_t));
-	
+	root_devfs.d_name = "";
+	root_devfs.d_inode = kmalloc(sizeof(inode_t));
+	root_devfs.d_inode->i_ino = 0;
+	root_devfs.d_inode->i_fops = &devfs_fops;
 	init_driver_list();
 	
 	fs->name = "DevFS";

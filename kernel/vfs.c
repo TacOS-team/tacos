@@ -34,6 +34,11 @@
 #include <vfs.h>
 #include <kerrno.h>
 #include <klibc/string.h>
+#include <fd_types.h>
+#include <klog.h>
+
+static dentry_t root_vfs;
+static struct _open_file_operations_t vfs_fops = {.write = NULL, .read = NULL, .seek = NULL, .ioctl = NULL, .open = NULL, .close = NULL, .readdir = vfs_readdir};
 
 /**
  * Cellule d'une liste de fs disponibles.
@@ -45,16 +50,14 @@ typedef struct _available_fs_t {
 
 static available_fs_t *fs_list;
 
-/**
- * Cellule de la liste des points de montage.
- */
-typedef struct _mounted_fs_t {
-	fs_instance_t *instance;
-	char *name;
-	struct _mounted_fs_t *next; /**< Prochaine cellule. */
-} mounted_fs_t;
-
 static mounted_fs_t *mount_list;
+
+void vfs_init() {
+	root_vfs.d_name = "";
+	root_vfs.d_inode = kmalloc(sizeof(inode_t));
+	root_vfs.d_inode->i_ino = 0;
+	root_vfs.d_inode->i_fops = &vfs_fops;
+}
 
 void vfs_register_fs(file_system_t *fs) {
 	available_fs_t *element = kmalloc(sizeof(available_fs_t));
@@ -63,51 +66,94 @@ void vfs_register_fs(file_system_t *fs) {
 	fs_list = element;
 }
 
-static fs_instance_t* get_instance_from_path(const char * pathname, int *len) {
-	char *mountpoint;
-	int i = 1;
-	while (pathname[i] != '/' && pathname[i] != '\0') {
-		i++;
-	}
-	if (i <= 1) {
-		*len = 0;
-		return NULL;
-	}
-	*len = i;
-	mountpoint = kmalloc(i);
-
-	int j;
-	for (j = 0; j < i; j++) {
-		mountpoint[j] = pathname[j+1];
-	}
-	mountpoint[i-1] = '\0';
-
+static mounted_fs_t* get_mnt_from_path(const char * name) {
 	mounted_fs_t *aux = mount_list;
 	while (aux != NULL) {
-		if (strcmp(aux->name, mountpoint) == 0) {
-			return aux->instance;
+		if (strcmp(aux->name, name) == 0) {
+			return aux;
 		}
 		aux = aux->next;
 	}
 	return NULL;
 }
 
+//XXX: A supprimer (c'est juste histoire de compiler encore) !
+static fs_instance_t* get_instance_from_path(const char * pathname __attribute__((unused)), int *len __attribute__((unused))) {
+		return NULL;
+}
+
+char * get_next_part_path(struct nameidata *nb) {
+	const char *last = nb->last;
+	char *name = NULL;
+	
+	if (last) {
+		while (*last == '/') last++;
+		char *p = strchrnul(last, '/');
+		name = kmalloc(p - last + 1);
+		strncpy(name, last, p - last);
+		nb->last = p;
+	}
+
+	return name;
+}
+
+static int open_namei(const char *pathname, struct nameidata *nb) {
+	dentry_t *dentry;
+
+	nb->last = pathname;
+	nb->mnt = get_mnt_from_path(get_next_part_path(nb));
+	if (nb->mnt) {
+		if (nb->mnt->instance && nb->mnt->instance->getroot) {
+			nb->dentry = nb->mnt->instance->getroot(nb->mnt->instance);
+		} else {
+			kerr("instance ou getroot null");
+			return -1;
+		}
+	
+		// On va de dossier en dossier.
+		do {
+			const char *name = get_next_part_path(nb);
+			if (name[0] == '.') {
+				if (name[1] == '\0') {
+					continue;
+				} else if (name[1] == '.' && name[2] == '\0') {
+					// TODO: remonter d'un niveau.
+				}
+			}
+			dentry = nb->mnt->instance->lookup(nb->mnt->instance, nb->dentry, name);
+			if (dentry) {
+				nb->dentry = dentry;
+			} else {
+				return -1;
+			}
+		} while (*(nb->last));
+		return 0;
+	} else if (strlen(pathname) <= 1) {
+		nb->mnt = NULL; // TODO: mettre autre chose (rootfs ?)
+		nb->dentry = &root_vfs;
+		return 0;
+	}
+	return -2;
+}
+
+static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, uint32_t flags __attribute__((unused))) {
+	open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
+	ofd->dentry = dentry;
+	ofd->mnt = mnt;
+	ofd->file_size = dentry->d_inode->i_size;
+	ofd->f_ops = dentry->d_inode->i_fops;
+	ofd->fs_instance = mnt->instance;
+	ofd->extra_data = dentry->d_inode->i_fs_specific;
+	return ofd;
+}
+
 open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
-	int len;
-	fs_instance_t *instance = get_instance_from_path(pathname, &len);
-	if (instance && instance->open != NULL) {
-		return instance->open(instance, pathname + len, flags);
+	struct nameidata nd;
+	if (open_namei(pathname, &nd) == 0) {
+		return dentry_open(nd.dentry, nd.mnt, flags);
+	} else {
+		return NULL;
 	}
-	if (instance == NULL && len == 0) {
-		open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
-		
-		ofd->readdir = vfs_readdir;
-		ofd->close = vfs_close;
-		ofd->current_octet = 0;
-		
-		return ofd;
-	}
-	return NULL;
 }
 
 int vfs_close(open_file_descriptor *ofd) {
@@ -150,8 +196,8 @@ int vfs_umount(const char *mountpoint) {
 			if (aux->instance->fs->umount != NULL) {
 				aux->instance->fs->umount(aux->instance);
 				/* Close the device ofd. */
-				if (aux->instance->device != NULL && aux->instance->device->close) {
-					aux->instance->device->close(aux->instance->device);
+				if (aux->instance->device != NULL && aux->instance->device->f_ops->close) {
+					aux->instance->device->f_ops->close(aux->instance->device);
 				}
 			}
 			return 0;
@@ -161,26 +207,31 @@ int vfs_umount(const char *mountpoint) {
 	return 1;
 }
 
+void fill_stat_from_inode(inode_t *inode, struct stat *buf) {
+	// TODO :
+//	buf->st_dev = inode->instance->
+	buf->st_ino = inode->i_ino;
+	buf->st_mode = inode->i_mode;
+	buf->st_nlink = inode->i_nlink;
+	buf->st_uid = inode->i_uid;
+	buf->st_gid = inode->i_gid;
+// st_rdev;     /**< Type périphérique               */
+	buf->st_size = inode->i_size;
+	buf->st_blocks = inode->i_blocks;
+	buf->st_atime = inode->i_atime;
+	buf->st_mtime = inode->i_mtime;
+	buf->st_ctime = inode->i_ctime;
+}
+
 int vfs_stat(const char *pathname, struct stat *buf) {
-	int len;
-	fs_instance_t *instance = get_instance_from_path(pathname, &len);
-	if (instance) {
-		if (instance->stat != NULL) {
-			if (pathname[len] == '\0') {
-				return instance->stat(instance, "/", buf);
-			} else {
-				return instance->stat(instance, pathname + len, buf);
-			}
-		}
+	struct nameidata nd;
+	if (open_namei(pathname, &nd) == 0) {
+		// TODO: appeler fonction stat du FS.
+		fill_stat_from_inode(nd.dentry->d_inode, buf);
+		return 0;
 	} else {
-		if (len == 0) {
-			buf->st_mode = S_IFDIR;
-			buf->st_size = 0;
-			buf->st_blksize = 2048;
-			return 0;
-		}
+		return -ENOENT;
 	}
-	return -ENOENT;
 }
 
 int vfs_unlink(const char *pathname) {

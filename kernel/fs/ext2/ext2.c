@@ -44,6 +44,7 @@ void ext2_init() {
 	fs->name = "EXT2";
 	fs->mount = mount_EXT2;
 	fs->umount = umount_EXT2;
+	init_rootext2fs();
 	vfs_register_fs(fs);
 }
 
@@ -74,13 +75,14 @@ fs_instance_t* mount_EXT2(open_file_descriptor* ofd) {
 	instance->read_data = ((blkdev_interfaces*)(ofd->extra_data))->read;
 	instance->write_data = ((blkdev_interfaces*)(ofd->extra_data))->write;
 
-	instance->super.open = ext2_open;
 	instance->super.mknod = ext2_mknod;
 	instance->super.mkdir = ext2_mkdir;
 	instance->super.stat = ext2_stat;
 	instance->super.unlink = ext2_unlink;
 	instance->super.rmdir = ext2_rmdir;
 	instance->super.truncate = ext2_truncate;
+	instance->super.lookup = ext2_lookup;
+	instance->super.getroot = ext2_getroot;
 
   instance->read_data(instance->super.device, &(instance->superblock), sizeof(struct ext2_super_block), 1024);
   read_group_desc_table(instance);

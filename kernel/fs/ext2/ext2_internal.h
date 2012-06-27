@@ -242,17 +242,6 @@ typedef struct _ext2_extra_data {
 void umount_EXT2(fs_instance_t *instance);
 
 /**
- * @brief Ouverture de fichier.
- *
- * @param instance Instance de fs.
- * @param path Chemin (relatif au point de montage) du fichier à ouvrir.
- * @param flags Flags pour l'ouverture.
- *
- * @return un open file descriptor.
- */
-open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uint32_t flags);
-
-/**
  * @brief Lecture d'un fichier.
  *
  * @param ofd Descripteur du fichier ouvert.
@@ -404,6 +393,9 @@ int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t de
  */
 int ext2_seek(open_file_descriptor * ofd, long offset, int whence);
 
+dentry_t *ext2_getroot();
+dentry_t* ext2_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name);
 
+void init_rootext2fs();
 
 #endif

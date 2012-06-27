@@ -35,6 +35,17 @@
 
 #include <fs/ext2.h>
 
+static dentry_t root_ext2fs;
+static struct _open_file_operations_t ext2fs_fops = {.write = ext2_write, .read = ext2_read, .seek = ext2_seek, .ioctl = NULL, .open = NULL, .close = ext2_close, .readdir = ext2_readdir};
+
+void init_rootext2fs() {
+	root_ext2fs.d_name = "";
+	root_ext2fs.d_inode = kmalloc(sizeof(inode_t));
+	root_ext2fs.d_inode->i_ino = EXT2_ROOT_INO;
+	root_ext2fs.d_inode->i_fops = &ext2fs_fops;
+}
+
+
 // XXX: Fonctions à intégrer.
 #ifdef FALSE
 
@@ -95,6 +106,7 @@ int ext2_rmdir(fs_instance_t *instance, const char * path) {
 	}
 }
 
+// XXX! Virer ce buffer.
 static void load_buffer(open_file_descriptor *ofd) {
 	ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
 	size_t size_buffer = sizeof(ofd->buffer) < (size_t) (1024 << instance->superblock.s_log_block_size) ? 
@@ -371,7 +383,6 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 	}
 }
 
-
 int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t dev) {
 	int inode = ext2_mknod2((ext2_fs_instance_t*)instance, path, mode, dev);
 	if (inode >= 0) {
@@ -389,10 +400,41 @@ int ext2_truncate(fs_instance_t *instance, const char * path, off_t off) {
 	return -ENOENT;
 }
 
-open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uint32_t flags) {
-	int inode = getinode_from_path((ext2_fs_instance_t*)instance, path);
+static inode_t* ext2inode_2_inode(struct _fs_instance_t *instance, int ino, struct ext2_inode *einode) {
+	inode_t *inode = kmalloc(sizeof(inode_t));
+	inode->i_ino = ino;
+	inode->i_mode = einode->i_mode;
+	inode->i_uid = einode->i_uid;
+	inode->i_gid = einode->i_gid;
+	inode->i_size = einode->i_size;
+	inode->i_atime = einode->i_atime;
+	inode->i_ctime = einode->i_ctime;
+	inode->i_dtime = einode->i_dtime;
+	inode->i_mtime = einode->i_mtime;
+	inode->i_nlink = einode->i_links_count;
+	inode->i_blocks = einode->i_blocks;
+	inode->i_instance = instance;
+	inode->i_fops = &ext2fs_fops; 
+	ext2_extra_data *extra_data = kmalloc(sizeof(ext2_extra_data));
+	extra_data->inode = ino;
+	extra_data->type = EXT2_FT_REG_FILE; //XXX!!!
+	extra_data->blocks = addr_inode_data((ext2_fs_instance_t*)instance, ino);
+	inode->i_fs_specific = extra_data;
+
+	return inode;
+}
+
+dentry_t *ext2_getroot() {
+	return &root_ext2fs;
+}
+
+dentry_t* ext2_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name) {
+	int flags = 0; // XXX
+	
+
+	int inode = getinode_from_name((ext2_fs_instance_t*)instance, dentry->d_inode->i_ino, name);
 	if (inode == -ENOENT && (flags & O_CREAT)) {
-		inode = ext2_mknod2((ext2_fs_instance_t*)instance, path, 00644 | 0x8000, 0);
+		inode = ext2_mknod2((ext2_fs_instance_t*)instance, name, 00644 | 0x8000, 0); //FIXME!
 	} else if (inode <= 0) {
 		return NULL;
 	} else if (flags & O_EXCL && flags & O_CREAT) {
@@ -406,27 +448,12 @@ open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uin
 	struct ext2_inode einode;
 	read_inode((ext2_fs_instance_t*)instance, inode, &einode);
 
-	open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
-	ofd->flags = flags;
-	ofd->fs_instance = instance;
-	ofd->current_octet = 0;
-	ofd->current_octet_buf = 0;
-	ofd->file_size = einode.i_size;
-	ofd->read = ext2_read;
-	ofd->write = ext2_write;
-	ofd->seek = ext2_seek;
-	ofd->readdir = ext2_readdir;
-	ofd->close = ext2_close;
+	dentry_t *d = kmalloc(sizeof(dentry_t));
+	d->d_name = kmalloc(strlen(name));
+	strcpy(d->d_name, name);
+	d->d_inode = ext2inode_2_inode(instance, inode, &einode);
 
-	ext2_extra_data *extra_data = kmalloc(sizeof(ext2_extra_data));
-	extra_data->inode = inode;
-	extra_data->type = EXT2_FT_REG_FILE; //XXX!
-	extra_data->blocks = addr_inode_data((ext2_fs_instance_t*)instance, inode);
-	ofd->extra_data = extra_data;
-
-	load_buffer(ofd);
-
-	return ofd;
+	return d;
 }
 
 int ext2_close(open_file_descriptor *ofd) {

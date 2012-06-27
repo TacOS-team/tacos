@@ -51,27 +51,26 @@ static struct directories_t * readdir_inode(ext2_fs_instance_t *instance, int in
 	return dir_result;
 }
 
+int getinode_from_name(ext2_fs_instance_t *instance, int inode, const char *name) {
+	struct directories_t *dirs = readdir_inode(instance, inode);
+	struct directories_t *aux = dirs;
+	while (aux != NULL) {
+		aux->dir->name[aux->dir->name_len] = '\0';
+		if (strcmp(name, aux->dir->name) == 0) {
+			return aux->dir->inode;
+		}
+		aux = aux->next;
+	}
+	return -ENOTDIR;
+}
+
 static int getinode_from_path2(ext2_fs_instance_t *instance, const char *path, int current_inode) {
 	while (*path == '/') path++;
 	if (*path == '\0') {
 		return current_inode;
 	}
 
-	struct directories_t *dirs = readdir_inode(instance, current_inode);
-	struct directories_t *aux = dirs;
-	char *s = strchrnul(path, '/');
-	while (aux != NULL) {
-		aux->dir->name[aux->dir->name_len] = '\0';
-		if (strncmp(path, aux->dir->name, s - path) == 0 && (s - path) == (aux->dir->name_len)) {
-			if (*s == '\0' || aux->dir->file_type & EXT2_FT_DIR) {
-				return getinode_from_path2(instance, s, aux->dir->inode);
-			} else {
-				return -ENOTDIR;
-			}
-		}
-		aux = aux->next;
-	}
-	return -ENOENT;
+	return getinode_from_name(instance, current_inode, path);
 }
 
 static int getinode_from_path(ext2_fs_instance_t *instance, const char *path) {

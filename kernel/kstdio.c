@@ -57,6 +57,9 @@ void kprintf(const char *format, ...) {
 	static tty_struct_t *tty = NULL;
 	if (tty == NULL) {
 		open_file_descriptor* ofd = vfs_open("/dev/ttyS0", 0); //XXX:flags
+//		if (!ofd) {
+//			return;
+//		}
 		if (ofd)
 			tty = ((chardev_interfaces*)ofd->extra_data)->custom_data;
 		else
@@ -71,6 +74,7 @@ void kprintf(const char *format, ...) {
 
 	while ((c = *format++) != 0) {
 		if (c != '%') {
+			//ofd->f_ops->write(ofd, &c, 1);
 			tty->driver->ops->put_char(tty, c);
 		} else {
 			char *p;
@@ -93,11 +97,13 @@ void kprintf(const char *format, ...) {
 				if (!p)
 					p = "(null)";
 
-				string: 
+				string:
+					//ofd->f_ops->write(ofd, (unsigned char*) p, 1024);
 					tty->driver->ops->write(tty, NULL, (unsigned char*) p, 1024);
 					break;
 
 			default:
+				//ofd->f_ops->write(ofd, (int *) arg++, 1);
 				tty->driver->ops->put_char(tty, *((int *) arg++));
 				break;
 			}

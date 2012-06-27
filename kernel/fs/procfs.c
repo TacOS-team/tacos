@@ -147,11 +147,11 @@ open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * pat
 		ofd->current_octet = 0;
 		ofd->current_octet_buf = 0;
 
-		ofd->readdir = procfs_readdir;
-		ofd->write = NULL;
-		ofd->read = NULL;
-		ofd->seek = NULL;
-		ofd->close = NULL;
+		ofd->f_ops->readdir = procfs_readdir;
+		ofd->f_ops->write = NULL;
+		ofd->f_ops->read = NULL;
+		ofd->f_ops->seek = NULL;
+		ofd->f_ops->close = NULL;
 
 		return ofd;
 	}	else {
@@ -191,11 +191,11 @@ open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * pat
 						ofd->current_octet_buf = 0;
 						
 						ofd->extra_data = process;
-						ofd->write = NULL;/* procfs_write_file;*/
-						ofd->read = procfs_file_list[i].read; /*procfs_read_file; */
-						ofd->seek = NULL; /*procfs_seek_file; */
-						ofd->close = procfs_close; /*procfs_close;*/
-						ofd->readdir = NULL;
+						ofd->f_ops->write = NULL;/* procfs_write_file;*/
+						ofd->f_ops->read = procfs_file_list[i].read; /*procfs_read_file; */
+						ofd->f_ops->seek = NULL; /*procfs_seek_file; */
+						ofd->f_ops->close = procfs_close; /*procfs_close;*/
+						ofd->f_ops->readdir = NULL;
 						
 						return ofd;
 					}
@@ -212,11 +212,11 @@ open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * pat
 				ofd->current_octet_buf = 0;
 				
 				ofd->extra_data = process;
-				ofd->write = NULL;/* procfs_write_file;*/
-				ofd->seek = NULL; /*procfs_seek_file; */
-				ofd->read = NULL;
-				ofd->close = procfs_close; /*procfs_close;*/
-				ofd->readdir = procfs_readdir;
+				ofd->f_ops->write = NULL;/* procfs_write_file;*/
+				ofd->f_ops->seek = NULL; /*procfs_seek_file; */
+				ofd->f_ops->read = NULL;
+				ofd->f_ops->close = procfs_close; /*procfs_close;*/
+				ofd->f_ops->readdir = procfs_readdir;
 				
 				return ofd;
 			}

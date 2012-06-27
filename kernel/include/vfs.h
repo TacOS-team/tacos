@@ -34,6 +34,7 @@
 #include <kstat.h>
 
 struct _fs_instance_t;
+struct _dentry_t;
 
 /**
  * @brief Structure qui représente un FS.
@@ -51,6 +52,8 @@ typedef struct {
 typedef struct _fs_instance_t {
 	file_system_t *fs;							/**< Pointeur vers le FS utilisé. */ //XXX: Est-ce utile ?
 	open_file_descriptor * device;																											/**< Device utilisé. */
+	struct _dentry_t* (*getroot) (struct _fs_instance_t *);
+	struct _dentry_t* (*lookup) (struct _fs_instance_t *, struct _dentry_t*, const char *);
 	open_file_descriptor * (*open) (struct _fs_instance_t *, const char * , uint32_t);	/**< Fonction pour ouvrir un fichier. */
 	int (*mkdir) (struct _fs_instance_t *, const char * , mode_t);											/**< Création d'un dossier. */
 	int (*mknod) (struct _fs_instance_t *, const char *, mode_t, dev_t);								/**< Création d'un noeud. */
@@ -59,6 +62,47 @@ typedef struct _fs_instance_t {
 	int (*rmdir) (struct _fs_instance_t *, const char *);																/**< Suppression d'un dossier vide. */
 	int (*truncate) (struct _fs_instance_t *, const char *, off_t size);								/**< Changer la taille d'un fichier. */
 } fs_instance_t;
+
+/**
+ * Cellule de la liste des points de montage.
+ */
+typedef struct _mounted_fs_t {
+	fs_instance_t *instance;
+	char *name;
+	struct _mounted_fs_t *next; /**< Prochaine cellule. */
+} mounted_fs_t;
+
+typedef struct _inode_t {
+	unsigned long i_ino; /**< Inode number */
+	int  i_mode;   /**< File mode */
+	uid_t  i_uid;    /**< Low 16 bits of Owner Uid */
+	gid_t  i_gid;    /**< Low 16 bits of Group Id */
+	off_t  i_size;   /**< Size in bytes */
+	time_t  i_atime;  /**< Access time */
+	time_t  i_ctime;  /**< Creation time */
+	time_t  i_mtime;  /**< Modification time */
+	time_t  i_dtime;  /**< Deletion Time */
+	unsigned char  i_nlink;  /**< Links count */
+	unsigned char  i_flags;  /**< File flags */
+	unsigned long  i_blocks; /**< Blocks count */
+	fs_instance_t *i_instance; /**< Instance de fs auquel appartient cet inoeud. */
+//	inode_ops_t *i_ops; /**< Inode operations. */
+	struct _open_file_operations_t *i_fops; /**< Ofd operations. */
+	void *i_fs_specific; /**< Extra data */
+} inode_t;
+
+typedef struct _dentry_t {
+	char *d_name;
+	inode_t *d_inode;
+} dentry_t;
+
+struct nameidata {
+	dentry_t *dentry;
+	mounted_fs_t *mnt;
+	const char *last;
+};
+
+
 
 /**
  * @brief Enregistrer un FS dans le VFS pour le rendre disponible.
@@ -159,5 +203,7 @@ int vfs_readdir(open_file_descriptor * ofd, char * entries, size_t size);
  * @return 0 en cas de succès.
  */
 int vfs_close(open_file_descriptor *ofd);
+
+void vfs_init();
 
 #endif

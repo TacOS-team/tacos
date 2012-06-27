@@ -41,11 +41,11 @@ SYSCALL_HANDLER3(sys_write, uint32_t fd, const void *buf, size_t *c) {
 	if (process->fd[fd].used) {
 		ofd = process->fd[fd].ofd;
 		
-		if(ofd->write == NULL) {
+		if(ofd->f_ops->write == NULL) {
 			kerr("No \"write\" method for this device.");
 			*t = -1;
 		} else {
-			*t = ofd->write(ofd, buf, *c);
+			*t = ofd->f_ops->write(ofd, buf, *c);
 		}
 	} else {
 		*t = -1;
@@ -61,11 +61,11 @@ SYSCALL_HANDLER3(sys_read, uint32_t fd, const void *buf, size_t *c) {
 	if (process->fd[fd].used) {
 		ofd = process->fd[fd].ofd;
 		
-		if(ofd->read == NULL) {
+		if(ofd->f_ops->read == NULL) {
 			kerr("No \"read\" method for this device.");
 			*t = -1;
 		} else {
-			*t = ofd->read(ofd, (void*) buf, *c);
+			*t = ofd->f_ops->read(ofd, (void*) buf, *c);
 		}
 	} else {
 		*t = -1;
@@ -80,11 +80,11 @@ SYSCALL_HANDLER3(sys_seek, uint32_t fd, long *offset, int whence) {
 	if (process->fd[fd].used) {
 		ofd = process->fd[fd].ofd;
 		
-		if(ofd->seek == NULL) {
+		if(ofd->f_ops->seek == NULL) {
 			kerr("No \"seek\" method for this device.");
 			*offset = -1;
 		} else {
-			ofd->seek(ofd, *offset, whence);
+			ofd->f_ops->seek(ofd, *offset, whence);
 			*offset = ofd->current_octet;
 		}
 	}
@@ -98,12 +98,12 @@ SYSCALL_HANDLER3(sys_ioctl, uint32_t *fd, unsigned int request, void *data) {
 	if (process->fd[*fd].used) {
 		ofd = process->fd[*fd].ofd;
 
-		if (ofd->ioctl == NULL) {
+		if (ofd->f_ops->ioctl == NULL) {
 			kerr("No \"ioctl\" method for this device.");
 			*fd = -1;
 		}
 		else {
-			*fd = ofd->ioctl(ofd, request, data);
+			*fd = ofd->f_ops->ioctl(ofd, request, data);
 		}
 	}
 }
@@ -136,8 +136,8 @@ SYSCALL_HANDLER2(sys_dup2, int oldfd, int *newfd) {
 
 	if (process->fd[oldfd].used) {
 		if (process->fd[*newfd].used) {
-			if (process->fd[*newfd].ofd->close != NULL) {
-				process->fd[*newfd].ofd->close(process->fd[*newfd].ofd);
+			if (process->fd[*newfd].ofd->f_ops->close != NULL) {
+				process->fd[*newfd].ofd->f_ops->close(process->fd[*newfd].ofd);
 			}
 		}
 
