@@ -31,6 +31,7 @@
 #include <unistd.h>
 #include <sys/syscall.h>
 #include <malloc.h>
+#include <string.h>
 
 struct mem_list
 {
@@ -264,5 +265,36 @@ void malloc_print_mem()
 	}
 	
 	printf("\n-- malloc : end --\n\n\n");
+}
+
+void *realloc(void *ptr, size_t size)
+{
+  size_t old_size;
+  struct mem* mem;
+  void *tmp;
+
+  if(ptr == NULL)
+    return (size == 0) ?
+      NULL : __malloc(&process_free_mem, &process_allocated_mem, size);
+
+  if(size == 0)
+  {
+    __free(ptr, &process_free_mem, &process_allocated_mem);
+    return NULL;
+  }
+
+  /** 
+   * - the following implementation is BAD & SLOW
+   * - ptr should have been returned by an earlier call to malloc, calloc or
+   * realloc (standard)
+   */
+  mem = (struct mem*) (((uint32_t) ptr) - sizeof(struct mem));
+  old_size = mem->size - sizeof(struct mem);
+
+  tmp = __malloc(&process_free_mem, &process_allocated_mem, size);
+  memcpy(tmp, ptr, size < old_size ? size : old_size);
+  __free(ptr, &process_free_mem, &process_allocated_mem);
+
+  return tmp;
 }
 
