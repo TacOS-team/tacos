@@ -231,7 +231,7 @@ static dentry_t* devfs_lookup(struct _fs_instance_t *instance, struct _dentry_t*
 				break;
 		}
 		dentry_t *d = kmalloc(sizeof(dentry_t));
-		d->d_name = kmalloc(strlen(name));
+		d->d_name = kmalloc(strlen(name) + 1);
 		strcpy(d->d_name, name);
 		d->d_inode = inode;
 		return d;
