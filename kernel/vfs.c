@@ -158,6 +158,7 @@ static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, u
 	ofd->mnt = mnt;
 	ofd->file_size = dentry->d_inode->i_size;
 	ofd->current_octet = 0;
+	ofd->current_cluster = 0; //XXX!!!
 	ofd->current_octet_buf = 0; //XXX
 	ofd->f_ops = dentry->d_inode->i_fops;
 	ofd->fs_instance = mnt->instance;

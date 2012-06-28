@@ -280,7 +280,6 @@ fs_instance_t* mount_devfs() {
 //	klog("mounting DevFS");
 
 	fs_instance_t *instance = kmalloc(sizeof(fs_instance_t));
-//	instance->open = devfs_open_file;
 	instance->mkdir = NULL;
 	instance->stat = devfs_stat;
 	instance->getroot = devfs_getroot;

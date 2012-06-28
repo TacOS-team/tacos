@@ -37,6 +37,12 @@
 #include <vfs.h>
 #include <klibc/stdlib.h>
 
+static int procfs_readdir(open_file_descriptor * ofd, char * entries, size_t size);
+
+static dentry_t root_procfs;
+static struct _open_file_operations_t procfs_fops = {.write = NULL, .read = NULL, .seek = NULL, .ioctl = NULL, .open = NULL, .close = NULL, .readdir = procfs_readdir};
+
+
 typedef struct {
 	char* filename;
 	size_t (*read)(open_file_descriptor *, void*, size_t);
@@ -47,6 +53,10 @@ typedef struct {
 #endif
 
 char* proc_status[]= {"IDLE", "RUNNING", "WAITING", "SUSPEND", "TERMINATED"};
+
+static dentry_t *procfs_getroot() {
+	return &root_procfs;
+}
 
 static size_t procfs_read_name(open_file_descriptor* ofd, void* buffer, size_t count __attribute__((unused))) {
 	process_t* process = ofd->extra_data;
@@ -125,106 +135,40 @@ static int procfs_readdir(open_file_descriptor * ofd, char * entries, size_t siz
 }
 
 
-
-open_file_descriptor* procfs_open_file(fs_instance_t *instance, const char * path, uint32_t flags __attribute__((unused))) {
-	unsigned int i,j;
+static dentry_t* procfs_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name) {
 	int pid;
-	char buf[64];
 	process_t* process = NULL;
 	
-	i = 0;
-	while (path[i] == '/') 
-		i++;
-		
-	if(path[i] == '\0') {
-		open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
-		
-		ofd->flags = flags;
-		ofd->fs_instance = instance;
-		ofd->first_cluster = 0;
-		ofd->file_size = 512; /* TODO */
-		ofd->current_cluster = 0;
-		ofd->current_octet = 0;
-		ofd->current_octet_buf = 0;
-
-		ofd->f_ops->readdir = procfs_readdir;
-		ofd->f_ops->write = NULL;
-		ofd->f_ops->read = NULL;
-		ofd->f_ops->seek = NULL;
-		ofd->f_ops->close = NULL;
-
-		return ofd;
-	}	else {
-		j=0;
-		while(path[i] != '\0' && path[i] != '/') {
-			buf[j] = path[i];
-			i++;
-			j++;
-		}
-		buf[j] = '\0';
-		pid = atoi(buf);
+	if (dentry == &root_procfs) {
+		pid = atoi(name);
 		process = find_process(pid);
 		if(process != NULL) {
-			/* On est dans un pid valide, alors on regarde le fichier à ouvrir, et on configure l'ofd en fonction */
-			while (path[i] == '/') 
-				i++;
-
-			j=0;
-			while(path[i] != '\0' && path[i] != '/') {
-				buf[j] = path[i];
-				i++;
-				j++;
-			}
-			buf[j] = '\0';
-
-			if (j > 0) {
-				i=0;
-				while(i<sizeof(procfs_file_list)/sizeof(procfs_file_t)) {
-					if(strcmp(buf, procfs_file_list[i].filename) == 0) {
-						open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
-
-						ofd->fs_instance = instance;
-						ofd->first_cluster = 0;
-						ofd->file_size = 512; /* TODO */
-						ofd->current_cluster = ofd->first_cluster;
-						ofd->current_octet = 0;
-						ofd->current_octet_buf = 0;
-						
-						ofd->extra_data = process;
-						ofd->f_ops->write = NULL;/* procfs_write_file;*/
-						ofd->f_ops->read = procfs_file_list[i].read; /*procfs_read_file; */
-						ofd->f_ops->seek = NULL; /*procfs_seek_file; */
-						ofd->f_ops->close = procfs_close; /*procfs_close;*/
-						ofd->f_ops->readdir = NULL;
-						
-						return ofd;
-					}
-					i++;
-				}
-			} else {
-				open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
-
-				ofd->fs_instance = instance;
-				ofd->first_cluster = pid;
-				ofd->file_size = 512; /* TODO */
-				ofd->current_cluster = ofd->first_cluster;
-				ofd->current_octet = 0;
-				ofd->current_octet_buf = 0;
-				
-				ofd->extra_data = process;
-				ofd->f_ops->write = NULL;/* procfs_write_file;*/
-				ofd->f_ops->seek = NULL; /*procfs_seek_file; */
-				ofd->f_ops->read = NULL;
-				ofd->f_ops->close = procfs_close; /*procfs_close;*/
-				ofd->f_ops->readdir = procfs_readdir;
-				
-				return ofd;
-			}
-			return NULL;
+			inode_t *inode = kmalloc(sizeof(inode_t));
+			inode->i_ino = pid; //XXX
+			inode->i_mode = 0755 | S_IFDIR;
+			inode->i_uid = 0;
+			inode->i_gid = 0;
+			inode->i_size = 512;
+			inode->i_atime = inode->i_ctime = inode->i_mtime = inode->i_dtime = 0; // XXX
+			inode->i_nlink = 1;
+			inode->i_blocks = 1;
+			inode->i_instance = instance;
+			inode->i_fops = kmalloc(sizeof(open_file_operations_t));
+			//inode->i_fs_specific = ;
+			inode->i_fops->close = procfs_close; /*procfs_close;*/
+			inode->i_fops->readdir = procfs_readdir;
+			
+			dentry_t *d = kmalloc(sizeof(dentry_t));
+			d->d_name = kmalloc(strlen(name) + 1);
+			strcpy(d->d_name, name);
+			d->d_inode = inode;
+			return d;
 		} else {
 			return NULL;
 		}
 	}
+
+	return NULL;
 }
 
 static int procfs_stat(fs_instance_t *instance __attribute__ ((unused)), const char *path, struct stat *stbuf) {
@@ -291,9 +235,10 @@ fs_instance_t* mount_ProcFS() {
 	klog("mounting ProcFS");
 
 	fs_instance_t *instance = kmalloc(sizeof(fs_instance_t));
-	instance->open = procfs_open_file;
 	instance->mkdir = NULL;
 	instance->stat = procfs_stat;
+    instance->getroot = procfs_getroot;
+    instance->lookup = procfs_lookup;
 	
 	return instance;
 }
@@ -304,6 +249,12 @@ void umount_ProcFS(fs_instance_t *instance) {
 
 void procfs_init() {
 	file_system_t *fs = kmalloc(sizeof(file_system_t));
+	root_procfs.d_name = "";
+	root_procfs.d_inode = kmalloc(sizeof(inode_t));
+	root_procfs.d_inode->i_ino = 0;
+	root_procfs.d_inode->i_mode = S_IFDIR | 00755;
+	root_procfs.d_inode->i_fops = &procfs_fops;
+    
 	fs->name = "ProcFS";
 	fs->mount = mount_ProcFS;
 	fs->umount = umount_ProcFS;
