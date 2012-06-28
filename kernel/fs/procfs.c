@@ -42,6 +42,11 @@ static int procfs_readdir(open_file_descriptor * ofd, char * entries, size_t siz
 static dentry_t root_procfs;
 static struct _open_file_operations_t procfs_fops = {.write = NULL, .read = NULL, .seek = NULL, .ioctl = NULL, .open = NULL, .close = NULL, .readdir = procfs_readdir};
 
+typedef struct {
+	int pid;
+	process_t *process;
+	// TODO.
+} extra_data_procfs_t;
 
 typedef struct {
 	char* filename;
@@ -59,7 +64,8 @@ static dentry_t *procfs_getroot() {
 }
 
 static size_t procfs_read_name(open_file_descriptor* ofd, void* buffer, size_t count __attribute__((unused))) {
-	process_t* process = ofd->extra_data;
+	extra_data_procfs_t *extra = ofd->extra_data;
+	process_t* process = extra->process;
 	if(ofd->current_octet == 0) {
 		strcpy(buffer,process->name);
 		ofd->current_octet = strlen(process->name);
@@ -70,7 +76,8 @@ static size_t procfs_read_name(open_file_descriptor* ofd, void* buffer, size_t c
 }
 
 static size_t procfs_read_ppid(open_file_descriptor* ofd, void* buffer, size_t count __attribute__((unused))) {
-	process_t* process = ofd->extra_data;
+	extra_data_procfs_t *extra = ofd->extra_data;
+	process_t* process = extra->process;
 	if(ofd->current_octet == 0) {
 		itoa(buffer, 10, process->ppid);
 		ofd->current_octet = strlen(buffer);
@@ -81,7 +88,8 @@ static size_t procfs_read_ppid(open_file_descriptor* ofd, void* buffer, size_t c
 }
 
 static size_t procfs_read_state(open_file_descriptor* ofd, void* buffer, size_t count __attribute__((unused))) {
-	process_t* process = ofd->extra_data;
+	extra_data_procfs_t *extra = ofd->extra_data;
+	process_t* process = extra->process;
 	if(ofd->current_octet == 0) {
 		strcpy(buffer,proc_status[process->state]);
 		ofd->current_octet = strlen(buffer);
@@ -104,7 +112,9 @@ static int procfs_readdir(open_file_descriptor * ofd, char * entries, size_t siz
 	size_t count = 0;
 	unsigned int i = ofd->current_octet;
 
-	if (ofd->current_cluster == 0) {
+	extra_data_procfs_t *extra = ofd->extra_data;
+
+	if (extra->pid == -1) {
 		while (i < MAX_PROC && count < size) {
 			if (get_process_array(i) != NULL) {
 				struct dirent *d = (struct dirent *)(entries + count);
@@ -116,8 +126,8 @@ static int procfs_readdir(open_file_descriptor * ofd, char * entries, size_t siz
 			}
 			i++;
 		}
-	} else {
-		int pid = ofd->current_cluster;
+	} else if (extra->pid >= 0) {
+		int pid = extra->pid;
 		if (find_process(pid) != NULL) {
 			while (i < sizeof(procfs_file_list)/sizeof(procfs_file_t) && count < size) {
 				struct dirent *d = (struct dirent *)(entries + count);
@@ -144,7 +154,7 @@ static dentry_t* procfs_lookup(struct _fs_instance_t *instance, struct _dentry_t
 		process = find_process(pid);
 		if(process != NULL) {
 			inode_t *inode = kmalloc(sizeof(inode_t));
-			inode->i_ino = pid; //XXX
+			inode->i_ino = pid + 1;
 			inode->i_mode = 0755 | S_IFDIR;
 			inode->i_uid = 0;
 			inode->i_gid = 0;
@@ -153,8 +163,11 @@ static dentry_t* procfs_lookup(struct _fs_instance_t *instance, struct _dentry_t
 			inode->i_nlink = 1;
 			inode->i_blocks = 1;
 			inode->i_instance = instance;
+			extra_data_procfs_t *extra = kmalloc(sizeof(extra_data_procfs_t));
+			extra->pid = pid;
+			extra->process = process;
+			inode->i_fs_specific = extra;
 			inode->i_fops = kmalloc(sizeof(open_file_operations_t));
-			//inode->i_fs_specific = ;
 			inode->i_fops->close = procfs_close; /*procfs_close;*/
 			inode->i_fops->readdir = procfs_readdir;
 			
@@ -164,7 +177,37 @@ static dentry_t* procfs_lookup(struct _fs_instance_t *instance, struct _dentry_t
 			d->d_inode = inode;
 			return d;
 		} else {
-			return NULL;
+			return NULL;			 
+		}	
+	} else if (((extra_data_procfs_t*)(dentry->d_inode->i_fs_specific))->process != NULL) {
+		unsigned int i;
+		for (i = 0; i < sizeof(procfs_file_list)/sizeof(procfs_file_t); i++) {
+			if (strcmp(procfs_file_list[i].filename, name) == 0) {
+				inode_t *inode = kmalloc(sizeof(inode_t));
+				inode->i_ino = pid + 1;
+				inode->i_mode = 0755;
+				inode->i_uid = 0;
+				inode->i_gid = 0;
+				inode->i_size = 512;
+				inode->i_atime = inode->i_ctime = inode->i_mtime = inode->i_dtime = 0; // XXX
+				inode->i_nlink = 1;
+				inode->i_blocks = 1;
+				inode->i_instance = instance;
+				extra_data_procfs_t *oldextra = dentry->d_inode->i_fs_specific;
+				extra_data_procfs_t *extra = kmalloc(sizeof(extra_data_procfs_t));
+				inode->i_fs_specific = extra;
+				extra->pid = oldextra->pid;
+				extra->process = oldextra->process;
+				inode->i_fops = kmalloc(sizeof(open_file_operations_t));
+				inode->i_fops->close = procfs_close; /*procfs_close;*/
+				inode->i_fops->read = procfs_file_list[i].read;
+		
+				dentry_t *d = kmalloc(sizeof(dentry_t));
+				d->d_name = kmalloc(strlen(name) + 1);
+				strcpy(d->d_name, name);
+				d->d_inode = inode;
+				return d;
+			}
 		}
 	}
 
@@ -237,8 +280,8 @@ fs_instance_t* mount_ProcFS() {
 	fs_instance_t *instance = kmalloc(sizeof(fs_instance_t));
 	instance->mkdir = NULL;
 	instance->stat = procfs_stat;
-    instance->getroot = procfs_getroot;
-    instance->lookup = procfs_lookup;
+	instance->getroot = procfs_getroot;
+	instance->lookup = procfs_lookup;
 	
 	return instance;
 }
@@ -254,7 +297,11 @@ void procfs_init() {
 	root_procfs.d_inode->i_ino = 0;
 	root_procfs.d_inode->i_mode = S_IFDIR | 00755;
 	root_procfs.d_inode->i_fops = &procfs_fops;
-    
+	extra_data_procfs_t *extra = kmalloc(sizeof(extra_data_procfs_t));
+	extra->pid = -1;
+	extra->process = NULL;
+	root_procfs.d_inode->i_fs_specific = extra;
+
 	fs->name = "ProcFS";
 	fs->mount = mount_ProcFS;
 	fs->umount = umount_ProcFS;
