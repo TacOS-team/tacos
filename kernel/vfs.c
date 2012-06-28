@@ -91,6 +91,7 @@ char * get_next_part_path(struct nameidata *nb) {
 		char *p = strchrnul(last, '/');
 		name = kmalloc(p - last + 1);
 		strncpy(name, last, p - last);
+		name[p - last] = '\0';
 		nb->last = p;
 	}
 
