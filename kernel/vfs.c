@@ -137,8 +137,9 @@ static int open_namei(const char *pathname, struct nameidata *nb) {
 	return -2;
 }
 
-static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, uint32_t flags __attribute__((unused))) {
+static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, uint32_t flags) {
 	open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
+	ofd->flags = flags;
 	ofd->dentry = dentry;
 	ofd->mnt = mnt;
 	ofd->file_size = dentry->d_inode->i_size;
