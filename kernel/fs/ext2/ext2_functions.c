@@ -42,6 +42,12 @@ void init_rootext2fs() {
 	root_ext2fs.d_name = "";
 	root_ext2fs.d_inode = kmalloc(sizeof(inode_t));
 	root_ext2fs.d_inode->i_ino = EXT2_ROOT_INO;
+	ext2_extra_data *ext = kmalloc(sizeof(ext2_extra_data));
+	ext->inode = EXT2_ROOT_INO;
+	ext->type = EXT2_FT_DIR;
+	ext->blocks = NULL;
+  root_ext2fs.d_inode->i_fs_specific = ext;
+	root_ext2fs.d_inode->i_mode = S_IFDIR | 00755;
 	root_ext2fs.d_inode->i_fops = &ext2fs_fops;
 }
 
@@ -114,7 +120,9 @@ static void load_buffer(open_file_descriptor *ofd) {
 	off_t offset = ofd->current_octet;
 
 	struct blk_t *blocks = ((ext2_extra_data*)ofd->extra_data)->blocks;
-	if (blocks == NULL) return;
+	if (blocks == NULL) {
+		blocks = addr_inode_data(instance, ((ext2_extra_data*)ofd->extra_data)->inode);
+	}
 	while (offset >= (unsigned int)(1024 << instance->superblock.s_log_block_size)) {
 		if (blocks && blocks->next) {
 			blocks = blocks->next;
@@ -291,6 +299,9 @@ size_t ext2_write (open_file_descriptor * ofd, const void *buf, size_t size) {
 			int count = 0;
 			struct blk_t *last = NULL;
 			struct blk_t *blocks = ((ext2_extra_data*)ofd->extra_data)->blocks;
+			if (blocks == NULL) {
+				blocks = addr_inode_data(instance, inode);
+			}
 			struct blk_t *aux = blocks;
 
 			int off = offset;

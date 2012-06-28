@@ -39,6 +39,7 @@
 
 static dentry_t root_vfs;
 static struct _open_file_operations_t vfs_fops = {.write = NULL, .read = NULL, .seek = NULL, .ioctl = NULL, .open = NULL, .close = NULL, .readdir = vfs_readdir};
+static mounted_fs_t mvfs;
 
 /**
  * Cellule d'une liste de fs disponibles.
@@ -52,11 +53,24 @@ static available_fs_t *fs_list;
 
 static mounted_fs_t *mount_list;
 
+static struct _dentry_t* vfs_getroot (struct _fs_instance_t *instance __attribute__((unused))) {
+	return &root_vfs;
+}
+
 void vfs_init() {
 	root_vfs.d_name = "";
 	root_vfs.d_inode = kmalloc(sizeof(inode_t));
 	root_vfs.d_inode->i_ino = 0;
+	root_vfs.d_inode->i_size = 512;
+	root_vfs.d_inode->i_blocks = 1;
+	root_vfs.d_inode->i_nlink = 1;
+	root_vfs.d_inode->i_mode = S_IFDIR | 00755;
 	root_vfs.d_inode->i_fops = &vfs_fops;
+
+	mvfs.instance = kmalloc(sizeof(fs_instance_t));
+	mvfs.instance->device = NULL;
+	mvfs.instance->getroot = vfs_getroot;
+	mvfs.instance->lookup = NULL;
 }
 
 void vfs_register_fs(file_system_t *fs) {
@@ -112,7 +126,7 @@ static int open_namei(const char *pathname, struct nameidata *nb) {
 		}
 	
 		// On va de dossier en dossier.
-		do {
+		while (*(nb->last)) {
 			const char *name = get_next_part_path(nb);
 			if (name[0] == '.') {
 				if (name[1] == '\0') {
@@ -127,10 +141,10 @@ static int open_namei(const char *pathname, struct nameidata *nb) {
 			} else {
 				return -1;
 			}
-		} while (*(nb->last));
+		}
 		return 0;
 	} else if (strlen(pathname) <= 1) {
-		nb->mnt = NULL; // TODO: mettre autre chose (rootfs ?)
+		nb->mnt = &mvfs;
 		nb->dentry = &root_vfs;
 		return 0;
 	}
@@ -143,6 +157,8 @@ static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, u
 	ofd->dentry = dentry;
 	ofd->mnt = mnt;
 	ofd->file_size = dentry->d_inode->i_size;
+	ofd->current_octet = 0;
+	ofd->current_octet_buf = 0; //XXX
 	ofd->f_ops = dentry->d_inode->i_fops;
 	ofd->fs_instance = mnt->instance;
 	ofd->extra_data = dentry->d_inode->i_fs_specific;
@@ -186,6 +202,7 @@ void vfs_mount(const char *device, const char *mountpoint, const char *type) {
 			element->instance->device = ofd;
 			element->next = mount_list;
 			mount_list = element;
+			root_vfs.d_inode->i_nlink++;
 		}
 		aux = aux->next;
 	}
@@ -202,6 +219,7 @@ int vfs_umount(const char *mountpoint) {
 					aux->instance->device->f_ops->close(aux->instance->device);
 				}
 			}
+			root_vfs.d_inode->i_nlink--;
 			return 0;
 		}
 		aux = aux->next;
@@ -220,6 +238,7 @@ void fill_stat_from_inode(inode_t *inode, struct stat *buf) {
 // st_rdev;     /**< Type périphérique               */
 	buf->st_size = inode->i_size;
 	buf->st_blocks = inode->i_blocks;
+	buf->st_blksize = 512;
 	buf->st_atime = inode->i_atime;
 	buf->st_mtime = inode->i_mtime;
 	buf->st_ctime = inode->i_ctime;
