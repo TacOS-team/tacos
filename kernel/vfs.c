@@ -91,11 +91,6 @@ static mounted_fs_t* get_mnt_from_path(const char * name) {
 	return NULL;
 }
 
-//XXX: A supprimer (c'est juste histoire de compiler encore) !
-static fs_instance_t* get_instance_from_path(const char * pathname __attribute__((unused)), int *len __attribute__((unused))) {
-		return NULL;
-}
-
 char * get_next_part_path(struct nameidata *nb) {
 	const char *last = nb->last;
 	char *name = NULL;
@@ -111,6 +106,20 @@ char * get_next_part_path(struct nameidata *nb) {
 
 	return name;
 }
+
+//XXX: A supprimer (c'est juste histoire de compiler encore) !
+static fs_instance_t* get_instance_from_path(const char * pathname, int *len) {
+	struct nameidata nb;
+	nb.last = pathname;
+	char * name = get_next_part_path(&nb);
+	*len = strlen(name) + 1;
+	mounted_fs_t *mnt = get_mnt_from_path(name);
+	kfree(name);
+
+	return mnt ? mnt->instance : NULL;
+}
+
+
 
 static int open_namei(const char *pathname, struct nameidata *nb) {
 	dentry_t *dentry;

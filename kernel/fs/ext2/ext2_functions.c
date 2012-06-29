@@ -195,7 +195,7 @@ int ext2_unlink(fs_instance_t *instance, const char * path) {
 
 int ext2_mkdir(fs_instance_t *instance, const char * path, mode_t mode) {
 	char filename[256];
-  char * dir = kmalloc(strlen(path));
+	char * dir = kmalloc(strlen(path));
 	split_dir_filename(path, dir, filename);
 
 	int inode = getinode_from_path((ext2_fs_instance_t*)instance, dir);

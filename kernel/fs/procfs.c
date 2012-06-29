@@ -184,7 +184,7 @@ static dentry_t* procfs_lookup(struct _fs_instance_t *instance, struct _dentry_t
 		for (i = 0; i < sizeof(procfs_file_list)/sizeof(procfs_file_t); i++) {
 			if (strcmp(procfs_file_list[i].filename, name) == 0) {
 				inode_t *inode = kmalloc(sizeof(inode_t));
-				inode->i_ino = pid + 1;
+				inode->i_ino = 1;
 				inode->i_mode = 0755;
 				inode->i_uid = 0;
 				inode->i_gid = 0;
