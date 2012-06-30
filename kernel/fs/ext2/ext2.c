@@ -44,7 +44,6 @@ void ext2_init() {
 	fs->name = "EXT2";
 	fs->mount = mount_EXT2;
 	fs->umount = umount_EXT2;
-	init_rootext2fs();
 	vfs_register_fs(fs);
 }
 
@@ -65,12 +64,32 @@ static void show_info(ext2_fs_instance_t *instance) {
 	klog("Blocks par groupe : %d", instance->superblock.s_blocks_per_group);
 }
 
+static inline dentry_t * init_rootext2fs(ext2_fs_instance_t *instance) {
+	dentry_t *root_ext2fs = kmalloc(sizeof(dentry_t));
+	
+	root_ext2fs->d_name = "";
+	root_ext2fs->d_inode = kmalloc(sizeof(inode_t));
+	root_ext2fs->d_inode->i_ino = EXT2_ROOT_INO;
+	root_ext2fs->d_inode->i_instance = (fs_instance_t*)instance;
+	ext2_extra_data *ext = kmalloc(sizeof(ext2_extra_data));
+	ext->inode = EXT2_ROOT_INO;
+	ext->type = EXT2_FT_DIR;
+	ext->blocks = NULL;
+  root_ext2fs->d_inode->i_fs_specific = ext;
+	root_ext2fs->d_inode->i_mode = S_IFDIR | 00755;
+	root_ext2fs->d_inode->i_fops = &ext2fs_fops;
+
+	return root_ext2fs;
+}
+
 /*
  * Init the EXT2 driver for a specific devide.
  */
 fs_instance_t* mount_EXT2(open_file_descriptor* ofd) {
 	klog("mounting EXT2");
 	ext2_fs_instance_t *instance = kmalloc(sizeof(ext2_fs_instance_t));
+
+	instance->root = init_rootext2fs(instance);
 
 	instance->read_data = ((blkdev_interfaces*)(ofd->extra_data))->read;
 	instance->write_data = ((blkdev_interfaces*)(ofd->extra_data))->write;

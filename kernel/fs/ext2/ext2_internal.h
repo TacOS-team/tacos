@@ -217,6 +217,7 @@ struct blk_t {
  */
 typedef struct _ext2_fs_instance_t {
 	fs_instance_t super; /**< Common fields for all FS instances. */
+	dentry_t * root;
 	struct ext2_super_block superblock; /**< Superblock. */
 	struct ext2_group_desc *group_desc_table; /**< Block group descriptor table. */
 	int n_groups;   /**< Number of entries in the group desc table. */
@@ -303,7 +304,8 @@ int ext2_stat(fs_instance_t *instance, const char *path, struct stat *stbuf);
  *
  * @return 0 en cas de succès.
  */
-int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t dev);
+int ext2_mknod(inode_t *dir, dentry_t *dentry, mode_t mode, dev_t dev);
+
 
 /**
  * @brief Création d'un dossier.
@@ -371,18 +373,6 @@ int ext2_chmod(fs_instance_t *instance, const char * path, mode_t mode);
 int ext2_chown(fs_instance_t *instance, const char * path, uid_t uid, gid_t gid);
 
 /**
- * @brief Crée un noeud.
- *
- * @param instance Instance de fs.
- * @param path Chemin du noeud à créer.
- * @param mode Mode par défaut.
- * @param dev Device (0 si fichier normal).
- *
- * @return 0 en cas de succès.
- */
-int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t dev);
-
-/**
  * Déplacement dans un fichier.
  *
  * @param ofd Descripteur de fichier ouvert.
@@ -396,6 +386,6 @@ int ext2_seek(open_file_descriptor * ofd, long offset, int whence);
 dentry_t *ext2_getroot();
 dentry_t* ext2_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name);
 
-void init_rootext2fs();
+extern struct _open_file_operations_t ext2fs_fops;
 
 #endif

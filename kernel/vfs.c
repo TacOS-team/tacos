@@ -37,6 +37,8 @@
 #include <fd_types.h>
 #include <klog.h>
 
+#define LOOKUP_PARENT 1
+
 static dentry_t root_vfs;
 static struct _open_file_operations_t vfs_fops = {.write = NULL, .read = NULL, .seek = NULL, .ioctl = NULL, .open = NULL, .close = NULL, .readdir = vfs_readdir};
 static mounted_fs_t mvfs;
@@ -119,11 +121,37 @@ static fs_instance_t* get_instance_from_path(const char * pathname, int *len) {
 	return mnt ? mnt->instance : NULL;
 }
 
+static int lookup(struct nameidata *nb) {
+	dentry_t *dentry;
+	// On va de dossier en dossier.
+	while (*(nb->last)) {
+		const char *name = get_next_part_path(nb);
+		if (name[0] == '.') {
+			if (name[1] == '\0') {
+				continue;
+			} else if (name[1] == '.' && name[2] == '\0') {
+				// TODO: remonter d'un niveau.
+			}
+		}
 
+		if (*(nb->last) == '\0') { // Si c'est le dernier élément
+			if (nb->flags & LOOKUP_PARENT) {
+				nb->last = name;
+				break;
+			}
+		}
+
+		dentry = nb->mnt->instance->lookup(nb->mnt->instance, nb->dentry, name);
+		if (dentry) {
+			nb->dentry = dentry;
+		} else {
+			return -1;
+		}
+	}
+	return 0;
+}
 
 static int open_namei(const char *pathname, struct nameidata *nb) {
-	dentry_t *dentry;
-
 	nb->last = pathname;
 	nb->mnt = get_mnt_from_path(get_next_part_path(nb));
 	if (nb->mnt) {
@@ -133,25 +161,15 @@ static int open_namei(const char *pathname, struct nameidata *nb) {
 			kerr("instance ou getroot null");
 			return -1;
 		}
-	
-		// On va de dossier en dossier.
-		while (*(nb->last)) {
-			const char *name = get_next_part_path(nb);
-			if (name[0] == '.') {
-				if (name[1] == '\0') {
-					continue;
-				} else if (name[1] == '.' && name[2] == '\0') {
-					// TODO: remonter d'un niveau.
-				}
-			}
-			dentry = nb->mnt->instance->lookup(nb->mnt->instance, nb->dentry, name);
-			if (dentry) {
-				nb->dentry = dentry;
-			} else {
-				return -1;
+
+		// Si c'est le dernier élément
+		if (*(nb->last) == '\0') {
+			if (nb->flags & LOOKUP_PARENT) {
+				return 0;
 			}
 		}
-		return 0;
+
+		return lookup(nb);
 	} else if (strlen(pathname) <= 1) {
 		nb->mnt = &mvfs;
 		nb->dentry = &root_vfs;
@@ -176,9 +194,25 @@ static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, u
 }
 
 open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
-	struct nameidata nd;
-	if (open_namei(pathname, &nd) == 0) {
-		return dentry_open(nd.dentry, nd.mnt, flags);
+	struct nameidata nb;
+	nb.flags = LOOKUP_PARENT;
+	if (open_namei(pathname, &nb) == 0) {
+		nb.flags &= ~LOOKUP_PARENT;
+		if (!(flags & O_CREAT)) {
+			if (lookup(&nb) != 0) {
+				return NULL;
+			}
+		} else {
+			struct nameidata nb_last;
+			memcpy(&nb_last, &nb, sizeof(struct nameidata));
+			if (lookup(&nb_last) != 0) {
+				// TODO: on le crée !
+				return NULL;
+			} else {
+				memcpy(&nb, &nb_last, sizeof(struct nameidata));
+			}
+		}
+		return dentry_open(nb.dentry, nb.mnt, flags);
 	} else {
 		return NULL;
 	}
@@ -256,6 +290,7 @@ void fill_stat_from_inode(inode_t *inode, struct stat *buf) {
 
 int vfs_stat(const char *pathname, struct stat *buf) {
 	struct nameidata nd;
+	nd.flags = 0;
 	if (open_namei(pathname, &nd) == 0) {
 		// TODO: appeler fonction stat du FS.
 		fill_stat_from_inode(nd.dentry->d_inode, buf);
@@ -304,13 +339,20 @@ int vfs_rmdir(const char *pathname) {
 }
 
 int vfs_mknod(const char * pathname, mode_t mode, dev_t dev) {
-	int len;
-	fs_instance_t *instance = get_instance_from_path(pathname, &len);
-	if (instance && instance->mknod != NULL) {
-		return instance->mknod(instance, pathname + len, mode, dev);
+	struct nameidata nd;
+	nd.flags = LOOKUP_PARENT;
+	if (open_namei(pathname, &nd) == 0) {
+		if (nd.mnt->instance->mknod) {
+			dentry_t new_entry;
+			new_entry.d_name = nd.last;
+			nd.mnt->instance->mknod(nd.dentry->d_inode, &new_entry, mode, dev);
+		} else {
+			klog("Pas de mknod pour ce fs.");
+		}
+		return 0;
+	} else {
+		return -ENOENT;
 	}
-	return -1;
-
 }
 
 int vfs_mkdir(const char * pathname, mode_t mode) {

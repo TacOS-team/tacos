@@ -35,6 +35,7 @@
 
 struct _fs_instance_t;
 struct _dentry_t;
+struct _inode_t;
 
 /**
  * @brief Structure qui représente un FS.
@@ -56,7 +57,7 @@ typedef struct _fs_instance_t {
 	struct _dentry_t* (*lookup) (struct _fs_instance_t *, struct _dentry_t*, const char *);
 	open_file_descriptor * (*open) (struct _fs_instance_t *, const char * , uint32_t);	/**< Fonction pour ouvrir un fichier. */
 	int (*mkdir) (struct _fs_instance_t *, const char * , mode_t);											/**< Création d'un dossier. */
-	int (*mknod) (struct _fs_instance_t *, const char *, mode_t, dev_t);								/**< Création d'un noeud. */
+	int (*mknod) (struct _inode_t *, struct _dentry_t *, mode_t, dev_t);								/**< Création d'un noeud. */
 	int (*stat) (struct _fs_instance_t *, const char *, struct stat *);									/**< Obtenir le status d'un noeud. */
 	int (*unlink) (struct _fs_instance_t *, const char *);															/**< Suppression d'un noeud. */
 	int (*rmdir) (struct _fs_instance_t *, const char *);																/**< Suppression d'un dossier vide. */
@@ -92,11 +93,12 @@ typedef struct _inode_t {
 } inode_t;
 
 typedef struct _dentry_t {
-	char *d_name;
+	const char *d_name;
 	inode_t *d_inode;
 } dentry_t;
 
 struct nameidata {
+	int flags;
 	dentry_t *dentry;
 	mounted_fs_t *mnt;
 	const char *last;

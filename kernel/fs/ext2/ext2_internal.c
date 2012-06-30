@@ -6,6 +6,8 @@
 #include <kerrno.h>
 #include <clock.h>
 
+struct _open_file_operations_t ext2fs_fops = {.write = ext2_write, .read = ext2_read, .seek = ext2_seek, .ioctl = NULL, .open = NULL, .close = ext2_close, .readdir = ext2_readdir};
+
 static struct blk_t* addr_inode_data(ext2_fs_instance_t *instance, int inode);
 static int read_inode(ext2_fs_instance_t *instance, int inode, struct ext2_inode* einode);
 static uint32_t alloc_block(ext2_fs_instance_t *instance);
@@ -355,7 +357,7 @@ static void add_dir_entry(ext2_fs_instance_t *instance, int inode, const char *n
 	ndir.file_type = type;
 	strcpy(ndir.name, name);
 	int s2 = 4 + 2 + 1 + 1 + ndir.name_len;
-	s2 += (4 - (s % 4)) % 4;
+	s2 += (4 - (s2 % 4)) % 4;
 	instance->write_data(instance->super.device, &ndir, s2, cur_pos);
 }
 
@@ -467,19 +469,6 @@ static void mkdir_inode(ext2_fs_instance_t *instance, int inode, const char *nam
 }
 
 
-int ext2_mknod2(ext2_fs_instance_t *instance, const char * path, mode_t mode, dev_t dev) {
-	char filename[256];
-	char * dir = kmalloc(strlen(path));
-	split_dir_filename(path, dir, filename);
-
-	int inode = getinode_from_path(instance, dir);
-	if (inode >= 0) {
-		return mknod_inode(instance, inode, filename, mode, dev);
-	}
-
-	return -ENOENT;
-}
-
 static int ext2_truncate_inode(ext2_fs_instance_t *instance, int inode, off_t off) {
 	uint32_t size = off;
 	struct ext2_inode einode;
@@ -529,3 +518,26 @@ static int ext2_truncate_inode(ext2_fs_instance_t *instance, int inode, off_t of
 }
 
 
+static inode_t* ext2inode_2_inode(struct _fs_instance_t *instance, int ino, struct ext2_inode *einode) {
+	inode_t *inode = kmalloc(sizeof(inode_t));
+	inode->i_ino = ino;
+	inode->i_mode = einode->i_mode;
+	inode->i_uid = einode->i_uid;
+	inode->i_gid = einode->i_gid;
+	inode->i_size = einode->i_size;
+	inode->i_atime = einode->i_atime;
+	inode->i_ctime = einode->i_ctime;
+	inode->i_dtime = einode->i_dtime;
+	inode->i_mtime = einode->i_mtime;
+	inode->i_nlink = einode->i_links_count;
+	inode->i_blocks = einode->i_blocks;
+	inode->i_instance = instance;
+	inode->i_fops = &ext2fs_fops; 
+	ext2_extra_data *extra_data = kmalloc(sizeof(ext2_extra_data));
+	extra_data->inode = ino;
+	extra_data->type = EXT2_FT_REG_FILE; //XXX!!!
+	extra_data->blocks = addr_inode_data((ext2_fs_instance_t*)instance, ino);
+	inode->i_fs_specific = extra_data;
+
+	return inode;
+}
