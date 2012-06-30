@@ -326,7 +326,7 @@ int ext2_mkdir(inode_t *dir, dentry_t *dentry, mode_t mode);
  *
  * @return 0 en cas de succès.
  */
-int ext2_unlink(fs_instance_t *instance, const char * path);
+int ext2_unlink(inode_t *dir, dentry_t *dentry);
 
 /**
  * @brief Change la taille d'un fichier.

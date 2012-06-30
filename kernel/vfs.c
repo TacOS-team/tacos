@@ -301,22 +301,20 @@ int vfs_stat(const char *pathname, struct stat *buf) {
 }
 
 int vfs_unlink(const char *pathname) {
-	int len;
-	fs_instance_t *instance = get_instance_from_path(pathname, &len);
-	if (instance) {
-		if (instance->unlink != NULL) {
-			if (pathname[len] == '\0') {
-				return instance->unlink(instance, "/");
-			} else {
-				return instance->unlink(instance, pathname + len);
-			}
+	struct nameidata nb;
+	nb.flags = LOOKUP_PARENT;
+	if (open_namei(pathname, &nb) == 0) {
+		if (nb.mnt->instance->unlink) {
+			dentry_t new_entry;
+			new_entry.d_name = nb.last;
+			nb.mnt->instance->unlink(nb.dentry->d_inode, &new_entry);
+		} else {
+			klog("Pas de unlink pour ce fs.");
 		}
+		return 0;
 	} else {
-		if (len == 0) {
-			return -1;
-		}
+		return -ENOENT;
 	}
-	return -ENOENT;
 }
 
 int vfs_rmdir(const char *pathname) {

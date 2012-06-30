@@ -160,20 +160,10 @@ int ext2_chown(fs_instance_t *instance, const char * path, uid_t uid, gid_t gid)
 	}
 }
 
-int ext2_unlink(fs_instance_t *instance, const char * path) {
-	int inode = getinode_from_path((ext2_fs_instance_t*)instance, path);
-	if (inode > 0) {
-		char filename[256];
-		char * dir = kmalloc(strlen(path));
-		split_dir_filename(path, dir, filename);
-		inode = getinode_from_path((ext2_fs_instance_t*)instance, dir);
-		// TODO: Check is regular file.
-		remove_dir_entry((ext2_fs_instance_t*)instance, inode, filename);
-		// Free !
-		return 0;
-	} else {
-		return inode;
-	}
+int ext2_unlink(inode_t *dir, dentry_t *dentry) {
+	remove_dir_entry((ext2_fs_instance_t*)dir->i_instance, dir->i_ino, dentry->d_name);
+	// TODO: nlink--
+	return 0;
 }
 
 int ext2_mkdir(inode_t *dir, dentry_t *dentry, mode_t mode) {
