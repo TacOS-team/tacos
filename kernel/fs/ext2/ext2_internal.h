@@ -316,7 +316,7 @@ int ext2_mknod(inode_t *dir, dentry_t *dentry, mode_t mode, dev_t dev);
  *
  * @return 0 en cas de succès.
  */
-int ext2_mkdir(fs_instance_t *instance, const char * path, mode_t mode);
+int ext2_mkdir(inode_t *dir, dentry_t *dentry, mode_t mode);
 
 /**
  * @brief Suppression d'un noeud.

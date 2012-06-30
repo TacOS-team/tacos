@@ -49,7 +49,7 @@ fs_instance_t* mount_FAT(open_file_descriptor* ofd) {
 
 	fat_fs_instance_t *instance = kmalloc(sizeof(fat_fs_instance_t));
 	instance->super.open = fat_open_file;
-	instance->super.mkdir = fat_mkdir;
+	//instance->super.mkdir = fat_mkdir; // XXX!
 	instance->super.stat = fat_stat;
 	instance->super.unlink = fat_unlink;
 

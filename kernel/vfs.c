@@ -339,13 +339,13 @@ int vfs_rmdir(const char *pathname) {
 }
 
 int vfs_mknod(const char * pathname, mode_t mode, dev_t dev) {
-	struct nameidata nd;
-	nd.flags = LOOKUP_PARENT;
-	if (open_namei(pathname, &nd) == 0) {
-		if (nd.mnt->instance->mknod) {
+	struct nameidata nb;
+	nb.flags = LOOKUP_PARENT;
+	if (open_namei(pathname, &nb) == 0) {
+		if (nb.mnt->instance->mknod) {
 			dentry_t new_entry;
-			new_entry.d_name = nd.last;
-			nd.mnt->instance->mknod(nd.dentry->d_inode, &new_entry, mode, dev);
+			new_entry.d_name = nb.last;
+			nb.mnt->instance->mknod(nb.dentry->d_inode, &new_entry, mode, dev);
 		} else {
 			klog("Pas de mknod pour ce fs.");
 		}
@@ -356,12 +356,20 @@ int vfs_mknod(const char * pathname, mode_t mode, dev_t dev) {
 }
 
 int vfs_mkdir(const char * pathname, mode_t mode) {
-	int len;
-	fs_instance_t *instance = get_instance_from_path(pathname, &len);
-	if (instance && instance->mkdir != NULL) {
-		return instance->mkdir(instance, pathname + len, mode);
+	struct nameidata nb;
+	nb.flags = LOOKUP_PARENT;
+	if (open_namei(pathname, &nb) == 0) {
+		if (nb.mnt->instance->mkdir) {
+			dentry_t new_entry;
+			new_entry.d_name = nb.last;
+			nb.mnt->instance->mkdir(nb.dentry->d_inode, &new_entry, mode);
+		} else {
+			klog("Pas de mknod pour ce fs.");
+		}
+		return 0;
+	} else {
+		return -ENOENT;
 	}
-	return -1;
 }
 
 int vfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {

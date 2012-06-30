@@ -172,8 +172,9 @@ static dentry_t* procfs_lookup(struct _fs_instance_t *instance, struct _dentry_t
 			inode->i_fops->readdir = procfs_readdir;
 			
 			dentry_t *d = kmalloc(sizeof(dentry_t));
-			d->d_name = kmalloc(strlen(name) + 1);
-			strcpy(d->d_name, name);
+			char *n = kmalloc(strlen(name) + 1);
+			strcpy(n, name);
+			d->d_name = (const char*)n;
 			d->d_inode = inode;
 			return d;
 		} else {
@@ -203,8 +204,9 @@ static dentry_t* procfs_lookup(struct _fs_instance_t *instance, struct _dentry_t
 				inode->i_fops->read = procfs_file_list[i].read;
 		
 				dentry_t *d = kmalloc(sizeof(dentry_t));
-				d->d_name = kmalloc(strlen(name) + 1);
-				strcpy(d->d_name, name);
+				char *n = kmalloc(strlen(name) + 1);
+				strcpy(n, name);
+				d->d_name = (const char*)n;
 				d->d_inode = inode;
 				return d;
 			}

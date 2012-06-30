@@ -56,7 +56,7 @@ typedef struct _fs_instance_t {
 	struct _dentry_t* (*getroot) (struct _fs_instance_t *);
 	struct _dentry_t* (*lookup) (struct _fs_instance_t *, struct _dentry_t*, const char *);
 	open_file_descriptor * (*open) (struct _fs_instance_t *, const char * , uint32_t);	/**< Fonction pour ouvrir un fichier. */
-	int (*mkdir) (struct _fs_instance_t *, const char * , mode_t);											/**< Création d'un dossier. */
+	int (*mkdir) (struct _inode_t *, struct _dentry_t *, mode_t);											/**< Création d'un dossier. */
 	int (*mknod) (struct _inode_t *, struct _dentry_t *, mode_t, dev_t);								/**< Création d'un noeud. */
 	int (*stat) (struct _fs_instance_t *, const char *, struct stat *);									/**< Obtenir le status d'un noeud. */
 	int (*unlink) (struct _fs_instance_t *, const char *);															/**< Suppression d'un noeud. */

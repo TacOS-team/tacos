@@ -176,18 +176,8 @@ int ext2_unlink(fs_instance_t *instance, const char * path) {
 	}
 }
 
-int ext2_mkdir(fs_instance_t *instance, const char * path, mode_t mode) {
-	char filename[256];
-	char * dir = kmalloc(strlen(path));
-	split_dir_filename(path, dir, filename);
-
-	int inode = getinode_from_path((ext2_fs_instance_t*)instance, dir);
-	if (inode >= 0) {
-		mkdir_inode((ext2_fs_instance_t*)instance, inode, filename, mode);
-		return 0;
-	} else {
-		return inode;
-	}
+int ext2_mkdir(inode_t *dir, dentry_t *dentry, mode_t mode) {
+	return ext2_mknod(dir, dentry, mode | EXT2_S_IFDIR, 0);
 }
 
 int ext2_stat(fs_instance_t *instance, const char *path, struct stat *stbuf) {
@@ -408,7 +398,6 @@ dentry_t *ext2_getroot(struct _fs_instance_t *instance) {
 
 dentry_t* ext2_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name) {
 	int flags = 0; // XXX
-	
 
 	int inode = getinode_from_name((ext2_fs_instance_t*)instance, dentry->d_inode->i_ino, name);
 	if (inode == -ENOENT && (flags & O_CREAT)) {
@@ -427,8 +416,9 @@ dentry_t* ext2_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry,
 	read_inode((ext2_fs_instance_t*)instance, inode, &einode);
 
 	dentry_t *d = kmalloc(sizeof(dentry_t));
-	d->d_name = kmalloc(strlen(name) + 1);
-	strcpy(d->d_name, name);
+	char *n = kmalloc(strlen(name) + 1);
+	strcpy(n, name);
+	d->d_name = (const char*)n;
 	d->d_inode = ext2inode_2_inode(instance, inode, &einode);
 
 	return d;

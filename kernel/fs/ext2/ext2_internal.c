@@ -301,6 +301,21 @@ static int alloc_inode(ext2_fs_instance_t *instance, struct ext2_inode *inode) {
 	return 0;
 }
 
+static int alloc_block_inode(ext2_fs_instance_t *instance, int inode) {
+	struct ext2_inode einode;
+	if (read_inode(instance, inode, &einode) >= 0) {
+		int i = 0;
+		while (einode.i_block[i] > 0 && i < 12) i++;
+		if (i < 12) {
+			einode.i_block[i] = alloc_block(instance);
+			write_inode(instance, inode, &einode);
+			return einode.i_block[i];
+		}
+	}
+	return 0;
+}
+
+
 static void free_block(ext2_fs_instance_t *instance, uint32_t blk) {
 	int i = blk / instance->superblock.s_blocks_per_group; // Groupe de block.
 	int ib = blk - instance->superblock.s_blocks_per_group * i; // Indice dans le groupe.
@@ -403,30 +418,15 @@ static void remove_dir_entry(ext2_fs_instance_t *instance, int inode, const char
 	}
 }
 
-static int mknod_inode(ext2_fs_instance_t *instance, int inode, const char *name, mode_t mode, dev_t dev __attribute__((unused))) {
-	struct ext2_inode n_inode;
-	memset(&n_inode, 0, sizeof(struct ext2_inode));
-	n_inode.i_mode = mode;
-	n_inode.i_links_count = 1;
-// TODO uid/gid
-//	n_inode.i_uid = fc->uid;
-//	n_inode.i_gid = fc->gid;
-	time_t cdate = get_date();
-	n_inode.i_atime = cdate;
-	n_inode.i_ctime = cdate;
-	n_inode.i_mtime = cdate;
-	
-	int i = alloc_inode(instance, &n_inode);
-	add_dir_entry(instance, inode, name, EXT2_FT_REG_FILE, i);
-	return i;
-}
-
-
 static void init_dir(ext2_fs_instance_t *instance, int inode, int parent_inode) {
 	struct blk_t *blocks = addr_inode_data(instance, inode);
 
 	if (blocks == NULL) {
-		return;
+		if (alloc_block_inode(instance, inode) >= 0) {
+			blocks = addr_inode_data(instance, inode);
+		} else {
+			return;
+		}
 	}
 	int addr = blocks->addr;
 	struct ext2_directory dir;
@@ -448,11 +448,12 @@ static void init_dir(ext2_fs_instance_t *instance, int inode, int parent_inode) 
 	instance->write_data(instance->super.device, &dir, sizeof(dir), addr);
 }
 
-static void mkdir_inode(ext2_fs_instance_t *instance, int inode, const char *name, mode_t mode) {
+
+static int mknod_inode(ext2_fs_instance_t *instance, int inode, const char *name, mode_t mode, dev_t dev __attribute__((unused))) {
 	struct ext2_inode n_inode;
 	memset(&n_inode, 0, sizeof(struct ext2_inode));
-	n_inode.i_mode = mode | EXT2_S_IFDIR;
-	n_inode.i_links_count = 2;
+	n_inode.i_mode = mode;
+	n_inode.i_links_count = 1;
 // TODO uid/gid
 //	n_inode.i_uid = fc->uid;
 //	n_inode.i_gid = fc->gid;
@@ -460,14 +461,26 @@ static void mkdir_inode(ext2_fs_instance_t *instance, int inode, const char *nam
 	n_inode.i_atime = cdate;
 	n_inode.i_ctime = cdate;
 	n_inode.i_mtime = cdate;
-	n_inode.i_block[0] = alloc_block(instance);
 	
-	int ninode = alloc_inode(instance, &n_inode);
-	add_dir_entry(instance, inode, name, EXT2_FT_DIR, ninode);
-
-	init_dir(instance, ninode, inode);
+	int i = alloc_inode(instance, &n_inode);
+	if (mode & EXT2_S_IFDIR) {
+		add_dir_entry(instance, inode, name, EXT2_FT_DIR, i);
+		init_dir(instance, i, inode);
+	} else if (mode & EXT2_S_IFIFO) {
+		add_dir_entry(instance, inode, name, EXT2_FT_FIFO, i);
+	} else if (mode & EXT2_S_IFCHR) {
+		add_dir_entry(instance, inode, name, EXT2_FT_CHRDEV, i);
+	} else if (mode & EXT2_S_IFBLK) {
+		add_dir_entry(instance, inode, name, EXT2_FT_BLKDEV, i);
+	} else if (mode & EXT2_S_IFSOCK) {
+		add_dir_entry(instance, inode, name, EXT2_FT_SOCK, i);
+	} else if (mode & EXT2_S_IFLNK) {
+		add_dir_entry(instance, inode, name, EXT2_FT_SYMLINK, i);
+	} else {
+		add_dir_entry(instance, inode, name, EXT2_FT_REG_FILE, i);
+	}
+	return i;
 }
-
 
 static int ext2_truncate_inode(ext2_fs_instance_t *instance, int inode, off_t off) {
 	uint32_t size = off;
