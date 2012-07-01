@@ -61,7 +61,7 @@ typedef struct _fs_instance_t {
 	int (*stat) (struct _fs_instance_t *, const char *, struct stat *);									/**< Obtenir le status d'un noeud. */
 	int (*unlink) (struct _inode_t *, struct _dentry_t *);															/**< Suppression d'un noeud. */
 	int (*rmdir) (struct _fs_instance_t *, const char *);																/**< Suppression d'un dossier vide. */
-	int (*truncate) (struct _fs_instance_t *, const char *, off_t size);								/**< Changer la taille d'un fichier. */
+	int (*truncate) (struct _inode_t *, off_t size);	/**< Changer la taille d'un fichier. */
 } fs_instance_t;
 
 /**

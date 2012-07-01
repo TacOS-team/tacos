@@ -131,33 +131,22 @@ static void load_buffer(open_file_descriptor *ofd) {
 }
 
 
-int ext2_chmod(fs_instance_t *instance, const char * path, mode_t mode) {
-	ext2_fs_instance_t* inst = (ext2_fs_instance_t*)instance;
-	int inode = getinode_from_path(inst, path);
-	if (inode >= 0) {
-		struct stat s;
-		getattr_inode(inst, inode, &s);
-		s.st_mode = mode;
-		setattr_inode(inst, inode, &s);
-		return 0;
-	} else {
-		return inode;
-	}
+int ext2_chmod(inode_t *inode, mode_t mode) {
+	struct stat s;
+	ext2_fs_instance_t *inst = (ext2_fs_instance_t*)inode->i_instance;
+	getattr_inode(inst, inode->i_ino, &s);
+	s.st_mode = mode;
+	setattr_inode(inst, inode->i_ino, &s);
+	return 0;
 }
 
-int ext2_chown(fs_instance_t *instance, const char * path, uid_t uid, gid_t gid) {
-	ext2_fs_instance_t* inst = (ext2_fs_instance_t*)instance;
-	int inode = getinode_from_path(inst, path);
-	if (inode >= 0) {
-		struct stat s;
-		getattr_inode(inst, inode, &s);
-		s.st_uid = uid;
-		s.st_gid = gid;
-		setattr_inode(inst, inode, &s);
-		return 0;
-	} else {
-		return inode;
-	}
+int ext2_chown(inode_t *inode, uid_t uid, gid_t gid) {
+	struct stat s;
+	getattr_inode((ext2_fs_instance_t*)inode->i_instance, inode->i_ino, &s);
+	s.st_uid = uid;
+	s.st_gid = gid;
+	setattr_inode((ext2_fs_instance_t*)inode->i_instance, inode->i_ino, &s);
+	return 0;
 }
 
 int ext2_unlink(inode_t *dir, dentry_t *dentry) {
@@ -170,17 +159,12 @@ int ext2_mkdir(inode_t *dir, dentry_t *dentry, mode_t mode) {
 	return ext2_mknod(dir, dentry, mode | EXT2_S_IFDIR, 0);
 }
 
-int ext2_stat(fs_instance_t *instance, const char *path, struct stat *stbuf) {
-	ext2_fs_instance_t* inst = (ext2_fs_instance_t*)instance;
-	int inode = getinode_from_path(inst, path);
-	if (inode >= 0) {
-		getattr_inode(inst, inode, stbuf);
-		return 0;
-	} else {
-		return inode;
-	}
+/*
+int ext2_stat(dentry_t *dentry, struct stat *stbuf) {
+	getattr_inode((ext2_fs_instance_t*)dentry->d_inode->i_instance, dentry->d_inode, stbuf);
+	return 0;
 }
-
+*/
 
 int ext2_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 	size_t count = 0;
@@ -372,15 +356,9 @@ int ext2_mknod(inode_t *dir, dentry_t *dentry, mode_t mode, dev_t dev) {
 	return 0;
 }
 
-int ext2_truncate(fs_instance_t *instance, const char * path, off_t off) {
-	int inode = getinode_from_path((ext2_fs_instance_t*)instance, path);
-	if (inode > 0) {
-		return ext2_truncate_inode((ext2_fs_instance_t*)instance, inode, off);
-	}
-	return -ENOENT;
+int ext2_truncate(inode_t *inode, off_t off) {
+	return ext2_truncate_inode((ext2_fs_instance_t*)inode->i_instance, inode->i_ino, off);
 }
-
-
 
 dentry_t *ext2_getroot(struct _fs_instance_t *instance) {
 	return ((ext2_fs_instance_t*)instance)->root;

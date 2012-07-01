@@ -337,7 +337,7 @@ int ext2_unlink(inode_t *dir, dentry_t *dentry);
  *
  * @return 0 en cas de succès.
  */
-int ext2_truncate(fs_instance_t *instance, const char * path, off_t off);
+int ext2_truncate(inode_t *inode, off_t off);
 
 /**
  * @brief Suppression d'un dossier vide.
@@ -358,7 +358,7 @@ int ext2_rmdir(fs_instance_t *instance, const char * path);
  *
  * @return 0 en cas de succès.
  */
-int ext2_chmod(fs_instance_t *instance, const char * path, mode_t mode);
+int ext2_chmod(inode_t *inode, mode_t mode);
 
 /**
  * @brief Change le propriétaire et le groupe d'un fichier.
@@ -370,7 +370,7 @@ int ext2_chmod(fs_instance_t *instance, const char * path, mode_t mode);
  *
  * @return 0 en cas de succès.
  */
-int ext2_chown(fs_instance_t *instance, const char * path, uid_t uid, gid_t gid);
+int ext2_chown(inode_t *inode, uid_t uid, gid_t gid);
 
 /**
  * Déplacement dans un fichier.
