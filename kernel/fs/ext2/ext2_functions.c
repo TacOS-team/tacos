@@ -78,21 +78,18 @@ static int ext2_rename(fs_instance_t *instance, const char *orig, const char *de
 
 #endif
 
-int ext2_rmdir(fs_instance_t *instance, const char * path) {
-	int inode = getinode_from_path((ext2_fs_instance_t*)instance, path);
-	if (inode > 0) {
-		char filename[256];
-		char * dir = kmalloc(strlen(path));
-		split_dir_filename(path, dir, filename);
-		inode = getinode_from_path((ext2_fs_instance_t*)instance, dir);
-		// TODO: Check is dir.
-		// TODO: Call rmdir_inode!
-		remove_dir_entry((ext2_fs_instance_t*)instance, inode, filename);
-		// Free !
+int ext2_rmdir(inode_t *dir, dentry_t *dentry) {
+	if (S_ISDIR(dentry->d_inode->i_mode)) {
+		remove_dir_entry((ext2_fs_instance_t*)dir->i_instance, dir->i_ino, dentry->d_name);
 		return 0;
 	} else {
-		return inode;
+		return -ENOTDIR;
 	}
+
+
+	// TODO: Check is empty.
+	// TODO: Call rmdir_inode!
+	// décompter link!
 }
 
 // XXX! Virer ce buffer.

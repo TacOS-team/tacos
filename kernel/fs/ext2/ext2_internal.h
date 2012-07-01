@@ -347,7 +347,7 @@ int ext2_truncate(inode_t *inode, off_t off);
  *
  * @return 0 en cas de succès.
  */
-int ext2_rmdir(fs_instance_t *instance, const char * path);
+int ext2_rmdir(inode_t *dir, dentry_t *dentry);
 
 /**
  * @brief Change les droits d'un fichier.

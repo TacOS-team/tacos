@@ -14,15 +14,6 @@ static uint32_t alloc_block(ext2_fs_instance_t *instance);
 
 #define max(a,b) ((a) > (b) ? (a) : (b))
 
-static void split_dir_filename(const char * path, char * dir, char * filename) {
-	char *p = strrchr(path, '/');
-	strcpy(filename, p+1);
-	for (; path < p; path++, dir++) {
-		*dir = *path;
-	} 
-	*dir = '\0';
-}
-
 static struct directories_t * readdir_inode(ext2_fs_instance_t *instance, int inode) {
 	struct directories_t * dir_result = kmalloc(sizeof(struct directories_t));
 
@@ -64,19 +55,6 @@ int getinode_from_name(ext2_fs_instance_t *instance, int inode, const char *name
 		aux = aux->next;
 	}
 	return -ENOTDIR;
-}
-
-static int getinode_from_path2(ext2_fs_instance_t *instance, const char *path, int current_inode) {
-	while (*path == '/') path++;
-	if (*path == '\0') {
-		return current_inode;
-	}
-
-	return getinode_from_name(instance, current_inode, path);
-}
-
-static int getinode_from_path(ext2_fs_instance_t *instance, const char *path) {
-	return getinode_from_path2(instance, path, EXT2_ROOT_INO);
 }
 
 static int read_inode(ext2_fs_instance_t *instance, int inode, struct ext2_inode* einode) {

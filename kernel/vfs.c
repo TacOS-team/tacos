@@ -109,18 +109,6 @@ char * get_next_part_path(struct nameidata *nb) {
 	return name;
 }
 
-//XXX: A supprimer (c'est juste histoire de compiler encore) !
-static fs_instance_t* get_instance_from_path(const char * pathname, int *len) {
-	struct nameidata nb;
-	nb.last = pathname;
-	char * name = get_next_part_path(&nb);
-	*len = strlen(name) + 1;
-	mounted_fs_t *mnt = get_mnt_from_path(name);
-	kfree(name);
-
-	return mnt ? mnt->instance : NULL;
-}
-
 static int lookup(struct nameidata *nb) {
 	dentry_t *dentry;
 	// On va de dossier en dossier.
@@ -305,9 +293,10 @@ int vfs_unlink(const char *pathname) {
 	nb.flags = LOOKUP_PARENT;
 	if (open_namei(pathname, &nb) == 0) {
 		if (nb.mnt->instance->unlink) {
-			dentry_t new_entry;
-			new_entry.d_name = nb.last;
-			nb.mnt->instance->unlink(nb.dentry->d_inode, &new_entry);
+			inode_t *pinode = nb.dentry->d_inode;
+			nb.flags &= ~LOOKUP_PARENT;
+			lookup(&nb);
+			nb.mnt->instance->unlink(pinode, nb.dentry);
 		} else {
 			klog("Pas de unlink pour ce fs.");
 		}
@@ -318,22 +307,21 @@ int vfs_unlink(const char *pathname) {
 }
 
 int vfs_rmdir(const char *pathname) {
-	int len;
-	fs_instance_t *instance = get_instance_from_path(pathname, &len);
-	if (instance) {
-		if (instance->rmdir != NULL) {
-			if (pathname[len] == '\0') {
-				return instance->rmdir(instance, "/");
-			} else {
-				return instance->rmdir(instance, pathname + len);
-			}
+	struct nameidata nb;
+	nb.flags = LOOKUP_PARENT;
+	if (open_namei(pathname, &nb) == 0) {
+		if (nb.mnt->instance->rmdir) {
+			inode_t *pinode = nb.dentry->d_inode;
+			nb.flags &= ~LOOKUP_PARENT;
+			lookup(&nb);
+			nb.mnt->instance->rmdir(pinode, nb.dentry);
+		} else {
+			klog("Pas de rmdir pour ce fs.");
 		}
+		return 0;
 	} else {
-		if (len == 0) {
-			return -1;
-		}
+		return -ENOENT;
 	}
-	return -ENOENT;
 }
 
 int vfs_mknod(const char * pathname, mode_t mode, dev_t dev) {
