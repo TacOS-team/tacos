@@ -350,13 +350,31 @@ int vfs_mkdir(const char * pathname, mode_t mode) {
 			new_entry.d_name = nb.last;
 			nb.mnt->instance->mkdir(nb.dentry->d_inode, &new_entry, mode);
 		} else {
-			klog("Pas de mknod pour ce fs.");
+			klog("Pas de mkdir pour ce fs.");
 		}
 		return 0;
 	} else {
 		return -ENOENT;
 	}
 }
+
+int vfs_chmod(const char *pathname, mode_t mode) {
+	struct nameidata nb;
+	if (open_namei(pathname, &nb) == 0) {
+		if (nb.mnt->instance->setattr) {
+			file_attributes_t attr;
+			attr.mask = ATTR_MODE;
+			attr.stbuf = kmalloc(sizeof(struct stat));
+			attr.stbuf->st_mode = mode;
+			nb.mnt->instance->setattr(nb.dentry->d_inode, &attr);
+			kfree(attr.stbuf);
+		}
+	}
+	return 0;
+}
+
+
+// ------
 
 int vfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 	size_t count = 0;

@@ -127,21 +127,28 @@ static void load_buffer(open_file_descriptor *ofd) {
 	ofd->current_octet_buf = 0;
 }
 
-
-int ext2_chmod(inode_t *inode, mode_t mode) {
-	struct stat s;
-	ext2_fs_instance_t *inst = (ext2_fs_instance_t*)inode->i_instance;
-	getattr_inode(inst, inode->i_ino, &s);
-	s.st_mode = mode;
-	setattr_inode(inst, inode->i_ino, &s);
-	return 0;
-}
-
-int ext2_chown(inode_t *inode, uid_t uid, gid_t gid) {
+//XXX: est-ce que cela ne devrait pas être générique ? Le mettre dans l'inode, etc.
+int ext2_setattr(inode_t *inode, file_attributes_t *attr) {
 	struct stat s;
 	getattr_inode((ext2_fs_instance_t*)inode->i_instance, inode->i_ino, &s);
-	s.st_uid = uid;
-	s.st_gid = gid;
+	if (attr->mask & ATTR_UID) {
+		s.st_uid = attr->stbuf->st_uid;
+	}
+	if (attr->mask & ATTR_GID) {
+		s.st_gid = attr->stbuf->st_gid;
+	}
+	if (attr->mask & ATTR_MODE) {
+		s.st_mode = attr->stbuf->st_mode;
+	}
+	if (attr->mask & ATTR_ATIME) {
+		s.st_atime = attr->stbuf->st_atime;
+	}
+	if (attr->mask & ATTR_MTIME) {
+		s.st_mtime = attr->stbuf->st_mtime;
+	}
+	if (attr->mask & ATTR_CTIME) {
+		s.st_ctime = attr->stbuf->st_ctime;
+	}
 	setattr_inode((ext2_fs_instance_t*)inode->i_instance, inode->i_ino, &s);
 	return 0;
 }

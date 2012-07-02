@@ -36,6 +36,8 @@
 struct _fs_instance_t;
 struct _dentry_t;
 struct _inode_t;
+struct _file_attributes_t;
+
 
 /**
  * @brief Structure qui représente un FS.
@@ -62,6 +64,7 @@ typedef struct _fs_instance_t {
 	int (*unlink) (struct _inode_t *, struct _dentry_t *);															/**< Suppression d'un noeud. */
 	int (*rmdir) (struct _inode_t *, struct _dentry_t *);																/**< Suppression d'un dossier vide. */
 	int (*truncate) (struct _inode_t *, off_t size);	/**< Changer la taille d'un fichier. */
+	int (*setattr) (struct _inode_t *inode, struct _file_attributes_t *attr);
 } fs_instance_t;
 
 /**
@@ -104,7 +107,17 @@ struct nameidata {
 	const char *last;
 };
 
+#define ATTR_UID 1 /**< Attribut uid valide. */
+#define ATTR_GID (1 << 1) /**< Attribut gid valide. */
+#define ATTR_MODE (1 << 2) /**< Attribut mode valide. */
+#define ATTR_ATIME (1 << 3) /**< Attribut atime valide. */
+#define ATTR_MTIME (1 << 4) /**< Attribut mtime valide. */
+#define ATTR_CTIME (1 << 5) /**< Attribut ctime valide. */
 
+typedef struct _file_attributes_t {
+	int mask; /**< Champs valides. */
+	struct stat *stbuf; /**< Structure contenant les informations. */
+} file_attributes_t;
 
 /**
  * @brief Enregistrer un FS dans le VFS pour le rendre disponible.

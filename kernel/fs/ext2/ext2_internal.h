@@ -349,28 +349,7 @@ int ext2_truncate(inode_t *inode, off_t off);
  */
 int ext2_rmdir(inode_t *dir, dentry_t *dentry);
 
-/**
- * @brief Change les droits d'un fichier.
- *
- * @param instance Instance de fs.
- * @param path Chemin du fichier dont on veut modifier les droits.
- * @param mode Droits.
- *
- * @return 0 en cas de succès.
- */
-int ext2_chmod(inode_t *inode, mode_t mode);
-
-/**
- * @brief Change le propriétaire et le groupe d'un fichier.
- *
- * @param instance Instance de fs.
- * @param path Chemin du fichier dont on veut modifier les proprios.
- * @param uid Id utilisateur.
- * @param gid Id groupe.
- *
- * @return 0 en cas de succès.
- */
-int ext2_chown(inode_t *inode, uid_t uid, gid_t gid);
+int ext2_setattr(inode_t *inode, file_attributes_t *attr);
 
 /**
  * Déplacement dans un fichier.
