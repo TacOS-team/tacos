@@ -116,6 +116,10 @@ SYSCALL_HANDLER2(sys_unlink, const char *path, int *ret) {
 	*ret = vfs_unlink(path);
 }
 
+SYSCALL_HANDLER3(sys_chmod, const char *path, mode_t mode, int *ret) {
+	*ret = vfs_chmod(path, mode);
+}
+
 SYSCALL_HANDLER2(sys_dup, int oldfd, int *ret) {
 	int i = 0;
 	process_t* process = get_current_process();

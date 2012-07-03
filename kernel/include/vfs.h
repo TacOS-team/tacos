@@ -190,6 +190,9 @@ int vfs_unlink(const char *pathname);
  */
 int vfs_mknod(const char * path, mode_t mode, dev_t dev);
 
+
+int vfs_chmod(const char *pathname, mode_t mode);
+
 /**
  * @brief Suppression d'un dossier.
  *

@@ -1,5 +1,5 @@
 /**
- * @file mkdir.c
+ * @file chmod.c
  *
  * @author TacOS developers 
  *
@@ -23,27 +23,39 @@
  *
  * @section DESCRIPTION
  *
- * Crée un dossier.
+ * Change les droits.
  */
 
 #include <dirent.h>
 #include <stdio.h>
 
+mode_t convert(char *droits) {
+	mode_t m = 0;
+	while (*droits) {
+		if (*droits < '0' || *droits > '7') {
+			return -1;
+		}
+		m = m * 8 + *droits - '0';
+		droits++;
+	}
+	return m;
+}
+
 int main(int argc, char** argv)
 {
 	int i;
-	DIR* dir;
 	
-	if (argc == 1) {
-		fprintf(stderr, "%s: opérande manquant\n", argv[0]);
+	if (argc <= 2) {
+		fprintf(stderr, "usage: %s droits fichier\n", argv[0]);
 	} else {
-		for(i = 1; i < argc; i++) {
-			dir = opendir(argv[i]);
-			if (dir == NULL) {
-				mkdir(argv[i], 0);
-			} else {
-				fprintf(stderr, "Le dossier %s existe déjà.\n", argv[i]);
-				closedir(dir);
+		mode_t droits = convert(argv[1]);
+		if (droits != (mode_t)(-1)) {
+			for(i = 2; i < argc; i++) {
+				if (chmod(argv[i], droits) != 0) {
+					fprintf(stderr, "Le fichier %s n'existe pas.\n", argv[i]);
+				} else {
+					printf("Changement des droits de %s, ok.\n", argv[i]);
+				}
 			}
 		}
 	}

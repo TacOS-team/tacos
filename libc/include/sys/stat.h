@@ -91,6 +91,8 @@ struct stat {
 	time_t    st_ctime;    /**< Heure dernier changement état   */
 };
 
+int chmod(const char *path, mode_t mode);
+
 __END_DECLS
 
 #endif
