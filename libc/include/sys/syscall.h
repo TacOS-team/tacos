@@ -64,5 +64,6 @@
 #define SYS_RMDIR 32			/**< Suppression d'un dossier vide. */
 #define SYS_DUP2 33				/**< Duplique un descripteur de fichier en précisant le nouveau fd à utiliser. */
 #define SYS_CHMOD 34			/**< Change les droits d'un fichier. */
+#define SYS_CHOWN 35			/**< Change les propriétaires d'un fichier. */
 
 #endif

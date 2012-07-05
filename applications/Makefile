@@ -1,5 +1,5 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=ps ls cat mkdir rm getty stat mkfifo rmdir chmod
+OBJ=ps ls cat mkdir rm getty stat mkfifo rmdir chown
 SUBDIRS=mishell utils
 LIBS=../lib/libtsock.a ../lib/libc.a ../lib/libsystem.a ../lib/libstl.a libutils.a
 LDFLAGS=-L./

@@ -181,6 +181,18 @@ int chmod(const char *path, mode_t mode) {
 	return ret;
 }
 
+int chown(const char *path, uid_t owner, gid_t group) {
+	int *ret = (int*)&group;
+	if (path[0] != '/') {
+		char * absolutepath = get_absolute_path(path);
+		syscall(SYS_CHOWN, (uint32_t)absolutepath, (uint32_t)owner, (uint32_t)ret);
+		free(absolutepath);
+	} else {
+		syscall(SYS_CHMOD, (uint32_t)path, (uint32_t)owner, (uint32_t)ret);
+	}
+	return *ret;
+}
+
 int stat(const char *path, struct stat *buf) {
 	int ret;
 	if (path[0] != '/') {

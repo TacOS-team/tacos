@@ -373,6 +373,22 @@ int vfs_chmod(const char *pathname, mode_t mode) {
 	return 0;
 }
 
+int vfs_chown(const char *pathname, uid_t owner, gid_t group) {
+	struct nameidata nb;
+	if (open_namei(pathname, &nb) == 0) {
+		if (nb.mnt->instance->setattr) {
+			file_attributes_t attr;
+			attr.mask = ((int)owner >= 0 ? ATTR_UID : 0) | ((int)group >= 0 ? ATTR_GID : 0);
+			attr.stbuf = kmalloc(sizeof(struct stat));
+			attr.stbuf->st_uid = owner;
+			attr.stbuf->st_gid = group;
+			nb.mnt->instance->setattr(nb.dentry->d_inode, &attr);
+			kfree(attr.stbuf);
+		}
+	}
+	return 0;
+}
+
 
 // ------
 
