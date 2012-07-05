@@ -8,6 +8,7 @@ http://tacos-team.github.com/
 
 Compiler :
 make
+(Avant une première compilation, penser à lancer un make depend)
 
 Compiler et exécuter avec qemu :
 make runqemu
