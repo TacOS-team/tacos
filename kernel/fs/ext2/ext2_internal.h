@@ -365,6 +365,8 @@ int ext2_seek(open_file_descriptor * ofd, long offset, int whence);
 dentry_t *ext2_getroot();
 dentry_t* ext2_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name);
 
+int ext2_rename(inode_t *old_dir, dentry_t *old_dentry, inode_t *new_dir, dentry_t *new_dentry);
+
 extern struct _open_file_operations_t ext2fs_fops;
 
 #endif

@@ -128,6 +128,10 @@ SYSCALL_HANDLER3(sys_chown, const char *path, uid_t owner, gid_t *group) {
 	*group = vfs_chown(path, owner, *group);
 }
 
+SYSCALL_HANDLER3(sys_rename, const char *oldpath, const char *newpath, int *ret) {
+	*ret = vfs_rename(oldpath, newpath);
+}
+
 SYSCALL_HANDLER2(sys_dup, int oldfd, int *ret) {
 	int i = 0;
 	process_t* process = get_current_process();

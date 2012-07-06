@@ -65,6 +65,7 @@ typedef struct _fs_instance_t {
 	int (*rmdir) (struct _inode_t *, struct _dentry_t *);																/**< Suppression d'un dossier vide. */
 	int (*truncate) (struct _inode_t *, off_t size);	/**< Changer la taille d'un fichier. */
 	int (*setattr) (struct _inode_t *inode, struct _file_attributes_t *attr);
+	int (*rename) (struct _inode_t *old_dir, struct _dentry_t *old_dentry, struct _inode_t *new_dir, struct _dentry_t *new_dentry);
 } fs_instance_t;
 
 /**
@@ -194,6 +195,7 @@ int vfs_mknod(const char * path, mode_t mode, dev_t dev);
 int vfs_chmod(const char *pathname, mode_t mode);
 int vfs_chown(const char *pathname, uid_t owner, gid_t group);
 int vfs_utimes(const char *pathname, const struct timeval tv[2]);
+int vfs_rename(const char *oldpath, const char *newpath);
 
 /**
  * @brief Suppression d'un dossier.

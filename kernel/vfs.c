@@ -399,6 +399,33 @@ int vfs_utimes(const char *pathname, const struct timeval tv[2]) {
 	return 0;
 }
 
+int vfs_rename(const char *oldpath, const char *newpath) {
+//TODO: rename entre 2 disques différents
+	struct nameidata nb;
+	nb.flags = LOOKUP_PARENT;
+	if (open_namei(oldpath, &nb) == 0) {
+		if (nb.mnt->instance->rename) {
+			inode_t *old_dir = nb.dentry->d_inode;
+			nb.flags &= ~LOOKUP_PARENT;
+			lookup(&nb);
+			dentry_t *old_dentry = nb.dentry;
+
+			nb.flags = LOOKUP_PARENT;
+			if (open_namei(newpath, &nb) == 0) {
+				dentry_t new_entry;
+				new_entry.d_name = nb.last;
+	
+				nb.mnt->instance->rename(old_dir, old_dentry, nb.dentry->d_inode, &new_entry);
+			}
+		} else {
+			klog("Pas de rename pour ce fs.");
+		}
+		return 0;
+	} else {
+		return -ENOENT;
+	}
+}
+
 // ------
 
 int vfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {

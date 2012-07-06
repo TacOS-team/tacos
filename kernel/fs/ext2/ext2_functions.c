@@ -35,48 +35,14 @@
 
 #include <fs/ext2.h>
 
-// XXX: Fonctions à intégrer.
-#ifdef FALSE
+int ext2_rename(inode_t *old_dir, dentry_t *old_dentry, inode_t *new_dir, dentry_t *new_dentry) {
+	// Remove inode from parent dir.
+	remove_dir_entry((ext2_fs_instance_t*)old_dir->i_instance, old_dir->i_ino, old_dentry->d_name);
 
-static int ext2_utimens(fs_instance_t *instance, const char *path, const struct timespec tv[2]) {
-	int inode = getinode_from_path(path);
-	if (inode >= 0) {
-		struct stat s;
-		getattr_inode(inode, &s);
-		s.st_atime = tv[0].tv_sec;
-		s.st_mtime = tv[1].tv_sec;
-		setattr_inode(inode, &s);
-		return 0;
-	} else {
-		return inode;
-	}
+	add_dir_entry((ext2_fs_instance_t*)new_dir->i_instance, new_dir->i_ino, new_dentry->d_name, EXT2_FT_REG_FILE, old_dentry->d_inode->i_ino); //XXX
+
+	return 0;
 }
-
-static int ext2_rename(fs_instance_t *instance, const char *orig, const char *dest) {
-	ext2_fs_instance_t* inst = (ext2_fs_instance_t*)instance;
-	int inode = getinode_from_path(inst, orig);
-	if (inode > 0) {
-		// Get parent dir.
-		char filename[256];
-		char * dir = kmalloc(strlen(orig));
-		split_dir_filename(orig, dir, filename);
-		int dir_inode = getinode_from_path(inst, dir);
-
-		// Remove inode from parent dir.
-		remove_dir_entry(inst, dir_inode, filename);
-
-		// Add inode to dest.
-		dir = kmalloc(strlen(dest));
-		split_dir_filename(dest, dir, filename);
-		int dest_inode = getinode_from_path(inst, dir);
-		add_dir_entry(inst, dest_inode, filename, EXT2_FT_REG_FILE, inode); //XXX
-		return 0;
-	} else {
-		return inode;
-	}
-}
-
-#endif
 
 int ext2_rmdir(inode_t *dir, dentry_t *dentry) {
 	if (S_ISDIR(dentry->d_inode->i_mode)) {
