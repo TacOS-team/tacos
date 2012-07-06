@@ -178,6 +178,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_WAITPID, (syscall_handler_t) sys_waitpid);
 	syscall_set_handler(SYS_CHMOD, (syscall_handler_t) sys_chmod);
 	syscall_set_handler(SYS_CHOWN, (syscall_handler_t) sys_chown);
+	syscall_set_handler(SYS_UTIMES, (syscall_handler_t) sys_utimes);
 
 	vfs_init();
 

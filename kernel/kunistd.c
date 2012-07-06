@@ -120,6 +120,9 @@ SYSCALL_HANDLER3(sys_chmod, const char *path, mode_t mode, int *ret) {
 	*ret = vfs_chmod(path, mode);
 }
 
+SYSCALL_HANDLER3(sys_utimes, const char *path, const struct timeval times[2], int *ret) {
+	*ret = vfs_utimes(path, times);
+}
 
 SYSCALL_HANDLER3(sys_chown, const char *path, uid_t owner, gid_t *group) {
 	*group = vfs_chown(path, owner, *group);
@@ -157,7 +160,6 @@ SYSCALL_HANDLER2(sys_dup2, int oldfd, int *newfd) {
 		*newfd = -1;
 	}
 }
-
 
 
 SYSCALL_HANDLER3(sys_mknod, const char *path, mode_t mode, dev_t *dev) {

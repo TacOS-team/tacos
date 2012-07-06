@@ -116,7 +116,7 @@ struct nameidata {
 
 typedef struct _file_attributes_t {
 	int mask; /**< Champs valides. */
-	struct stat *stbuf; /**< Structure contenant les informations. */
+	struct stat stbuf; /**< Structure contenant les informations. */
 } file_attributes_t;
 
 /**
@@ -193,6 +193,7 @@ int vfs_mknod(const char * path, mode_t mode, dev_t dev);
 
 int vfs_chmod(const char *pathname, mode_t mode);
 int vfs_chown(const char *pathname, uid_t owner, gid_t group);
+int vfs_utimes(const char *pathname, const struct timeval tv[2]);
 
 /**
  * @brief Suppression d'un dossier.

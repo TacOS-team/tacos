@@ -364,10 +364,8 @@ int vfs_chmod(const char *pathname, mode_t mode) {
 		if (nb.mnt->instance->setattr) {
 			file_attributes_t attr;
 			attr.mask = ATTR_MODE;
-			attr.stbuf = kmalloc(sizeof(struct stat));
-			attr.stbuf->st_mode = mode;
+			attr.stbuf.st_mode = mode;
 			nb.mnt->instance->setattr(nb.dentry->d_inode, &attr);
-			kfree(attr.stbuf);
 		}
 	}
 	return 0;
@@ -379,16 +377,27 @@ int vfs_chown(const char *pathname, uid_t owner, gid_t group) {
 		if (nb.mnt->instance->setattr) {
 			file_attributes_t attr;
 			attr.mask = ((int)owner >= 0 ? ATTR_UID : 0) | ((int)group >= 0 ? ATTR_GID : 0);
-			attr.stbuf = kmalloc(sizeof(struct stat));
-			attr.stbuf->st_uid = owner;
-			attr.stbuf->st_gid = group;
+			attr.stbuf.st_uid = owner;
+			attr.stbuf.st_gid = group;
 			nb.mnt->instance->setattr(nb.dentry->d_inode, &attr);
-			kfree(attr.stbuf);
 		}
 	}
 	return 0;
 }
 
+int vfs_utimes(const char *pathname, const struct timeval tv[2]) {
+	struct nameidata nb;
+	if (open_namei(pathname, &nb) == 0) {
+		if (nb.mnt->instance->setattr) {
+			file_attributes_t attr;
+			attr.mask = ATTR_ATIME | ATTR_MTIME;
+			attr.stbuf.st_atime = tv[0].tv_sec;
+			attr.stbuf.st_mtime = tv[1].tv_sec;
+			nb.mnt->instance->setattr(nb.dentry->d_inode, &attr);
+		}
+	}
+	return 0;
+}
 
 // ------
 
