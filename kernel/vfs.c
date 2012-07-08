@@ -37,7 +37,7 @@
 #include <fd_types.h>
 #include <klog.h>
 
-#define LOOKUP_PARENT 1
+#define LOOKUP_PARENT 1 /**< S'arrête au niveau du parent. */
 
 static dentry_t root_vfs;
 static struct _open_file_operations_t vfs_fops = {.write = NULL, .read = NULL, .seek = NULL, .ioctl = NULL, .open = NULL, .close = NULL, .readdir = vfs_readdir};
@@ -93,7 +93,7 @@ static mounted_fs_t* get_mnt_from_path(const char * name) {
 	return NULL;
 }
 
-char * get_next_part_path(struct nameidata *nb) {
+static char * get_next_part_path(struct nameidata *nb) {
 	const char *last = nb->last;
 	char *name = NULL;
 	
@@ -264,7 +264,7 @@ int vfs_umount(const char *mountpoint) {
 	return 1;
 }
 
-void fill_stat_from_inode(inode_t *inode, struct stat *buf) {
+static void fill_stat_from_inode(inode_t *inode, struct stat *buf) {
 	// TODO :
 //	buf->st_dev = inode->instance->
 	buf->st_ino = inode->i_ino;
