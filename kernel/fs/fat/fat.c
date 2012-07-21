@@ -23,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * @brief Driver FAT.
+ * @brief Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS.
  */
 
 #include <fs/fat.h>
@@ -48,7 +48,7 @@ fs_instance_t* mount_FAT(open_file_descriptor* ofd) {
 	klog("mounting FAT");
 
 	fat_fs_instance_t *instance = kmalloc(sizeof(fat_fs_instance_t));
-	instance->super.open = fat_open_file;
+	//instance->super.open = fat_open_file;
 	//instance->super.mkdir = fat_mkdir; // XXX!
 	instance->super.stat = fat_stat;
 	//instance->super.unlink = fat_unlink;
