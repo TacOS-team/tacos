@@ -190,17 +190,20 @@ open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 	struct nameidata nb;
 	nb.flags = LOOKUP_PARENT;
 	if (open_namei(pathname, &nb) == 0) {
-		nb.flags &= ~LOOKUP_PARENT;
 		if (!(flags & O_CREAT)) {
+			nb.flags &= ~LOOKUP_PARENT;
 			if (lookup(&nb) != 0) {
 				return NULL;
 			}
 		} else {
 			struct nameidata nb_last;
 			memcpy(&nb_last, &nb, sizeof(struct nameidata));
+			nb_last.flags &= ~LOOKUP_PARENT;
 			if (lookup(&nb_last) != 0) {
-				// TODO: on le crée !
-				return NULL;
+				dentry_t new_entry;
+				new_entry.d_name = nb.last;
+				nb.mnt->instance->mknod(nb.dentry->d_inode, &new_entry, 0, 0); //XXX
+				return dentry_open(&new_entry, nb.mnt, flags);
 			} else {
 				memcpy(&nb, &nb_last, sizeof(struct nameidata));
 			}
