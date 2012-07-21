@@ -240,8 +240,8 @@ static dentry_t* devfs_lookup(struct _fs_instance_t *instance, struct _dentry_t*
 	}
 	return NULL;
 }
-
-static int devfs_stat(fs_instance_t *instance __attribute__ ((unused)), const char *path, struct stat *stbuf) {
+/*
+static int devfs_stat(inode_t *inode, struct stat *stbuf) {
 	int res = 0;
 	unsigned int i,j;
 	char buf[64];
@@ -276,14 +276,14 @@ static int devfs_stat(fs_instance_t *instance __attribute__ ((unused)), const ch
 		}
 	}
 	return res;
-}
+}*/
 
 fs_instance_t* mount_devfs() {
 //	klog("mounting DevFS");
 
 	fs_instance_t *instance = kmalloc(sizeof(fs_instance_t));
 	instance->mkdir = NULL;
-	instance->stat = devfs_stat;
+//	instance->stat = devfs_stat;
 	instance->getroot = devfs_getroot;
 	instance->lookup = devfs_lookup;
 	

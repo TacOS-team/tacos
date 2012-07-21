@@ -59,7 +59,7 @@ typedef struct _fs_instance_t {
 	struct _dentry_t* (*lookup) (struct _fs_instance_t *, struct _dentry_t*, const char *); /**< Résolution path. */
 	int (*mkdir) (struct _inode_t *, struct _dentry_t *, mode_t);											/**< Création d'un dossier. */
 	int (*mknod) (struct _inode_t *, struct _dentry_t *, mode_t, dev_t);								/**< Création d'un noeud. */
-	int (*stat) (struct _fs_instance_t *, const char *, struct stat *);									/**< Obtenir le status d'un noeud. */
+	int (*stat) (struct _inode_t *, struct stat *);									/**< Obtenir les infos d'un noeud. */
 	int (*unlink) (struct _inode_t *, struct _dentry_t *);															/**< Suppression d'un noeud. */
 	int (*rmdir) (struct _inode_t *, struct _dentry_t *);																/**< Suppression d'un dossier vide. */
 	int (*truncate) (struct _inode_t *, off_t size);	/**< Changer la taille d'un fichier. */

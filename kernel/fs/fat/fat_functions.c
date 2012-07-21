@@ -280,7 +280,8 @@ int fat_close(open_file_descriptor *ofd) {
 	return 0;
 }
 
-int fat_stat(fs_instance_t *instance, const char *path, struct stat *stbuf) {
+/*
+int fat_stat(inode_t *inode, struct stat *stbuf) {
 	int res = 0;
 
 	memset(stbuf, 0, sizeof(struct stat));
@@ -328,7 +329,7 @@ int fat_stat(fs_instance_t *instance, const char *path, struct stat *stbuf) {
 
 	return res;
 }
-
+*/
 
 int fat_unlink(fs_instance_t *instance, const char * path) {
   if (path[0] == '\0' || strcmp(path, "/") == 0)

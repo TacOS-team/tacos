@@ -216,7 +216,8 @@ static dentry_t* procfs_lookup(struct _fs_instance_t *instance, struct _dentry_t
 	return NULL;
 }
 
-static int procfs_stat(fs_instance_t *instance __attribute__ ((unused)), const char *path, struct stat *stbuf) {
+/*
+static int procfs_stat(inode_t *inode, struct stat *stbuf) {
 	unsigned int i,j;
 	int pid;
 	char buf[64];
@@ -272,16 +273,19 @@ static int procfs_stat(fs_instance_t *instance __attribute__ ((unused)), const c
 			}
 		}
 	}
-	
+	// XXX: Absolete.
+
+
 	return 0;
 }
+*/
 
 fs_instance_t* mount_ProcFS() {
 	klog("mounting ProcFS");
 
 	fs_instance_t *instance = kmalloc(sizeof(fs_instance_t));
 	instance->mkdir = NULL;
-	instance->stat = procfs_stat;
+//	instance->stat = procfs_stat;
 	instance->getroot = procfs_getroot;
 	instance->lookup = procfs_lookup;
 	
