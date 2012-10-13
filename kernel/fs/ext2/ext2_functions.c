@@ -93,7 +93,7 @@ static void load_buffer(open_file_descriptor *ofd) {
 	ofd->current_octet_buf = 0;
 }
 
-//XXX: est-ce que cela ne devrait pas être générique ? Le mettre dans l'inode, etc.
+//XXX: Une partie pourrait être générique je pense. 
 int ext2_setattr(inode_t *inode, file_attributes_t *attr) {
 	struct stat s;
 	getattr_inode((ext2_fs_instance_t*)inode->i_instance, inode->i_ino, &s);
@@ -114,6 +114,9 @@ int ext2_setattr(inode_t *inode, file_attributes_t *attr) {
 	}
 	if (attr->mask & ATTR_CTIME) {
 		s.st_ctime = attr->stbuf.st_ctime;
+	}
+	if (attr->mask & ATTR_SIZE && attr->ia_size != inode->i_size) {
+		ext2_truncate(inode, attr->ia_size);
 	}
 	setattr_inode((ext2_fs_instance_t*)inode->i_instance, inode->i_ino, &s);
 	return 0;

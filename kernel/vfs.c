@@ -188,12 +188,13 @@ static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, u
 
 open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 	struct nameidata nb;
+	open_file_descriptor *ret = NULL;
 	nb.flags = LOOKUP_PARENT;
 	if (open_namei(pathname, &nb) == 0) {
 		if (!(flags & O_CREAT)) {
 			nb.flags &= ~LOOKUP_PARENT;
 			if (lookup(&nb) != 0) {
-				return NULL;
+				goto end;
 			}
 		} else {
 			struct nameidata nb_last;
@@ -203,15 +204,26 @@ open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 				dentry_t new_entry;
 				new_entry.d_name = nb.last;
 				nb.mnt->instance->mknod(nb.dentry->d_inode, &new_entry, 0, 0); //XXX
-				return dentry_open(&new_entry, nb.mnt, flags);
+				ret = dentry_open(&new_entry, nb.mnt, flags);
+				goto ok;
 			} else {
 				memcpy(&nb, &nb_last, sizeof(struct nameidata));
 			}
 		}
-		return dentry_open(nb.dentry, nb.mnt, flags);
-	} else {
-		return NULL;
+		ret = dentry_open(nb.dentry, nb.mnt, flags);
+		goto ok;
 	}
+
+end:
+	return ret;
+ok:
+	if (flags & O_TRUNC && nb.mnt->instance->setattr) {
+			file_attributes_t attr;
+			attr.mask = ATTR_SIZE;
+			attr.ia_size = 0;
+			nb.mnt->instance->setattr(nb.dentry->d_inode, &attr);
+	}
+	goto end;
 }
 
 int vfs_close(open_file_descriptor *ofd) {

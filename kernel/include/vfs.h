@@ -122,6 +122,7 @@ struct nameidata {
 #define ATTR_ATIME (1 << 3) /**< Attribut atime valide. */
 #define ATTR_MTIME (1 << 4) /**< Attribut mtime valide. */
 #define ATTR_CTIME (1 << 5) /**< Attribut ctime valide. */
+#define ATTR_SIZE (1 << 6) /**< Attribut ia_size valide. */
 
 /**
  * Structure permettant de setter des informations.
@@ -129,6 +130,7 @@ struct nameidata {
 typedef struct _file_attributes_t {
 	int mask; /**< Champs valides. */
 	struct stat stbuf; /**< Structure contenant les informations. */
+	size_t ia_size;
 } file_attributes_t;
 
 /**
