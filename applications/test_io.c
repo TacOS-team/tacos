@@ -125,11 +125,15 @@ int main() {
 	unlink(fichiertest);
 
 	// Test 14:
+	DIR *d = opendir(dossiertest);
+	unit_test_int("Ouverture d'un dossier non existant.", (int)NULL, (int)d);
+
+	// Test 15:
 	mkdir(dossiertest, 777);
 	stat(dossiertest, &buf);
 	unit_test_int("Création d'un dossier non existant.", 1, S_ISDIR(buf.st_mode));
 
-	// Test 15:
+	// Test 16:
 	mkdir(dossiertest, 777);
 	r = rmdir(dossiertest);
 	unit_test_int("Suppression d'un dossier existant (retour fonction).", 0, r);

@@ -58,41 +58,6 @@ int ext2_rmdir(inode_t *dir, dentry_t *dentry) {
 	// décompter link!
 }
 
-// XXX! Virer ce buffer.
-static void load_buffer(open_file_descriptor *ofd) {
-	ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
-	size_t size_buffer = sizeof(ofd->buffer) < (size_t) (1024 << instance->superblock.s_log_block_size) ? 
-			sizeof(ofd->buffer) : (size_t) (1024 << instance->superblock.s_log_block_size);
-	off_t offset = ofd->current_octet;
-
-	struct blk_t *blocks = ((ext2_extra_data*)ofd->extra_data)->blocks;
-	if (blocks == NULL) {
-		blocks = addr_inode_data(instance, ((ext2_extra_data*)ofd->extra_data)->inode);
-	}
-	while (offset >= (unsigned int)(1024 << instance->superblock.s_log_block_size)) {
-		if (blocks && blocks->next) {
-			blocks = blocks->next;
-		} else return;
-		offset -= 1024 << instance->superblock.s_log_block_size;
-	}
-
-	size_t count = 0;
-	while (count < size_buffer && blocks != NULL) {
-		int addr = blocks->addr + offset;
-		size_t size2 = (1024 << instance->superblock.s_log_block_size) - offset;
-		offset = 0;
-		if (size2 > size_buffer - count) {
-			size2 = size_buffer - count;
-		}
-
-		instance->read_data(instance->super.device, (char*)(ofd->buffer) + count, size2, addr);
-		count += size2;
-
-		blocks = blocks->next;
-	}
-	ofd->current_octet_buf = 0;
-}
-
 //XXX: Une partie pourrait être générique je pense. 
 int ext2_setattr(inode_t *inode, file_attributes_t *attr) {
 	struct stat s;
@@ -177,21 +142,18 @@ int ext2_seek(open_file_descriptor * ofd, long offset, int whence) {
 			return -1;
 		}
 		ofd->current_octet = offset;
-		load_buffer(ofd);
 		break;
 	case SEEK_CUR:
 		if (ofd->current_octet + (uint32_t)offset > ofd->file_size) {
 			return -1;
 		}
 		ofd->current_octet += offset;
-		load_buffer(ofd);
 		break;
 	case SEEK_END:
 		if ((uint32_t)offset > ofd->file_size) {
 			return -1;
 		}
 		ofd->current_octet = ofd->file_size - offset;
-		load_buffer(ofd);
 		break;
 	}
 
@@ -282,24 +244,43 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 	int inode = ((ext2_extra_data*)ofd->extra_data)->inode;
 	if (inode >= 0) {
 		ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
-		size_t size_buffer = sizeof(ofd->buffer) < (size_t) (1024 << instance->superblock.s_log_block_size) ? 
-			sizeof(ofd->buffer) : (size_t) (1024 << instance->superblock.s_log_block_size);
-		size_t count = 0;
-		int j = 0;
-	
-		while (size--) {
-			if (ofd->current_octet == ofd->file_size) {
-				break;
-			} else {
-				char c = ofd->buffer[ofd->current_octet_buf];
-				count++;
-				ofd->current_octet_buf++;
-				ofd->current_octet++;
-				((char*) buf)[j++] = c;
-				if (ofd->current_octet_buf >= size_buffer) {
-					load_buffer(ofd);
-				}
+		off_t offset = ofd->current_octet;
+		int count = 0;
+		struct ext2_inode einode;
+		read_inode(instance, inode, &einode);
+		
+		if (offset >= einode.i_size) {
+			return 0;
+		}
+
+		if (size + offset > einode.i_size) {
+			size = einode.i_size - offset;
+		}
+
+		struct blk_t *blocks = addr_inode_data(instance, inode);
+		if (blocks == NULL) return 0;
+		while (offset >= (unsigned int)(1024 << instance->superblock.s_log_block_size)) {
+			if (blocks && blocks->next) {
+				blocks = blocks->next;
+			} else return 0;
+			offset -= 1024 << instance->superblock.s_log_block_size;
+		}
+
+
+		while (size > 0 && blocks != NULL) {
+			int addr = blocks->addr + offset;
+			size_t size2 = (1024 << instance->superblock.s_log_block_size) - offset;
+			offset = 0;
+			if (size2 > size) {
+				size2 = size;
 			}
+
+			instance->read_data(instance->super.device, ((char*)buf) + count, size2, addr);
+
+			size -= size2;
+			count += size2;
+
+			blocks = blocks->next;
 		}
 
 		// Commenté pour des raisons évidentes de perf.
@@ -307,7 +288,7 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 		//	gettimeofday(&tv, NULL);
 		//	einode.i_atime = tv.tv_sec;
 		//	write_inode(inode, &einode);
- 		
+ 		ofd->current_octet += count;
 		return count;
 	} else {
 		return inode;
