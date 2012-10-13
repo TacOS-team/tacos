@@ -362,6 +362,12 @@ int vfs_mknod(const char * pathname, mode_t mode, dev_t dev) {
 }
 
 int vfs_mkdir(const char * pathname, mode_t mode) {
+	struct nameidata nd1;
+	nd1.flags = 0;
+	if (open_namei(pathname, &nd1) == 0) {
+		return -EEXIST;
+	}
+
 	struct nameidata nb;
 	nb.flags = LOOKUP_PARENT;
 	if (open_namei(pathname, &nb) == 0) {

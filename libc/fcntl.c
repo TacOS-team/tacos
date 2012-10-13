@@ -47,12 +47,11 @@ int open(const char *pathname, int flags) {
 int close(int id) {
 	int ret;
 	syscall(SYS_CLOSE,(uint32_t) id,(uint32_t) &ret,(uint32_t) NULL);
-	return ret;
+	return -ret;
 }
 
 int fcntl(int fd, unsigned int request, void * data) {
 	syscall(SYS_FCNTL,(uint32_t) &fd,(uint32_t) request,(uint32_t) data);
 	return fd;
 }
-
 
