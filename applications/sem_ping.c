@@ -27,7 +27,7 @@
  * Description de ce que fait le fichier
  */
 
-#include <sem.h>
+#include <sys/sem.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h>
