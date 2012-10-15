@@ -37,7 +37,7 @@ __BEGIN_DECLS
 #include <sys/types.h>
 
 void init_process_malloc();
-void *malloc(size_t size);
+void *malloc(size_t size) __attribute__((malloc));
 int free(void *p);
 void malloc_print_mem();
 
