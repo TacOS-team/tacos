@@ -62,7 +62,7 @@ void* memcpy(void* dest, const void* src, size_t size);
 * 
 * @return le nombre de caractères dans la chaîne s.
 */
-size_t strlen(const char* s);
+size_t strlen(const char* s) __attribute__ ((pure));
 
 /**
  * @brief Rechercher un caractère dans une chaîne.

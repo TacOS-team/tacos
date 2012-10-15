@@ -35,12 +35,12 @@ __BEGIN_DECLS
 
 #include <sys/types.h>
 
-struct timeval{
+struct timeval {
 	long int tv_sec; /**< Secondes */
 	long int tv_usec; /**< Microsecondes */
 };
 
-struct timespec{
+struct timespec {
 	long int tv_sec; /**< Secondes */
 	long int tv_nsec; /**< Nanosecondes */
 };

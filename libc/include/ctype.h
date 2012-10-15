@@ -43,7 +43,7 @@ __BEGIN_DECLS
  * 
  * @return vrai si le caractère est alphanumérique.
  */
-int isalnum(int c);
+int isalnum(int c) __attribute__((const));
 
 /** 
  * @brief vérifie si l'on a un caractère alphabétique.
@@ -57,7 +57,7 @@ int isalnum(int c);
  * 
  * @return vrai si le caractère est alphabétique.
  */
-int isalpha(int c);
+int isalpha(int c) __attribute__((const));
 
 /** 
  * @brief vérifie si le caractère est blanc, c'est-à-dire un espace ou une
@@ -70,7 +70,7 @@ int isalpha(int c);
  * 
  * @return vrai si le caractère est blanc.
  */
-int isblank(int c);
+int isblank(int c) __attribute__((const));
 
 /** 
  * @brief vérifie si l'on a un caractère de contrôle.
@@ -81,7 +81,7 @@ int isblank(int c);
  * 
  * @return vrai si le caractère est de contrôle.
  */
-int iscntrl(int c);
+int iscntrl(int c) __attribute__((const));
 
 /** 
  * @brief vérifie si l'on a un chiffre (0 à 9).
@@ -90,7 +90,7 @@ int iscntrl(int c);
  * 
  * @return vrai si le caractère est un chiffre.
  */
-int isdigit(int c);
+int isdigit(int c) __attribute__((const));
 
 /** 
  * @brief vérifie si l'on a un caractère minuscule.
@@ -99,7 +99,7 @@ int isdigit(int c);
  * 
  * @return vrai si le caractère est minuscule.
  */
-int islower(int c);
+int islower(int c) __attribute__((const));
 
 /** 
  * @brief vérifie s'il s'agit d'un caractère imprimable, y compris l'espace.
@@ -108,7 +108,7 @@ int islower(int c);
  * 
  * @return vrai si le caractère est imprimable.
  */
-int isprint(int c);
+int isprint(int c) __attribute__((const));
 
 /** 
  * @brief vérifie s'il s'agit d'un caractère imprimable, qui ne soit ni un
@@ -121,7 +121,7 @@ int isprint(int c);
  * 
  * @return vrai si le caractère est une ponctuation.
  */
-int ispunct(int c);
+int ispunct(int c) __attribute__((const));
 
 /** 
  * @brief vérifie  si  l'on  a  un caractère blanc, d'espacement.
@@ -135,7 +135,7 @@ int ispunct(int c);
  * 
  * @return vrai si le caractère est d'espacement.
  */
-int isspace(int c);
+int isspace(int c) __attribute__((const));
 
 /** 
  * @brief vérifie si l'on a un caractère majuscule.
@@ -146,7 +146,7 @@ int isspace(int c);
  * 
  * @return vrai si le caractère est majuscule.
  */
-int isupper(int c);
+int isupper(int c) __attribute__((const));
 
 /** 
  * @brief vérifie s'il s'agit d'un chiffre hexadécimal.
@@ -158,7 +158,7 @@ int isupper(int c);
  * 
  * @return vrai si le caractère est un chiffre hexadécimal.
  */
-int isxdigit(int c);
+int isxdigit(int c) __attribute__((const));
 
 /** 
  * @brief Convertit la lettre c en minuscule.
@@ -169,7 +169,7 @@ int isxdigit(int c);
  * 
  * @return le caractère converti.
  */
-int tolower(int c);
+int tolower(int c) __attribute__((const));
 
 /** 
  * @brief Convertit la lettre c en majuscule.
@@ -180,7 +180,7 @@ int tolower(int c);
  * 
  * @return le caractère converti.
  */
-int toupper(int c);
+int toupper(int c) __attribute__((const));
 
 __END_DECLS
 
