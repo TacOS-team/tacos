@@ -209,13 +209,20 @@ typedef struct _fat_fs_instance_t {
 } fat_fs_instance_t;
 
 /**
+ * @brief Données supplémentaires qui sont ajoutés à l'ofd lors du open.
+ */
+typedef struct _fat_extra_data {
+	int current_octet_buf;
+} fat_extra_data;
+
+
+
+/**
  * Lecture de la FAT.
  *
  * @param instance Instance de FS.
  */
 void read_fat(fat_fs_instance_t *instance);
-
-
 
 
 /**
