@@ -41,6 +41,24 @@ void fat_init() {
 	vfs_register_fs(fs);
 }
 
+static inline dentry_t * init_rootfatfs(fat_fs_instance_t *instance) {
+	fat_direntry_t *root_fatfs = kmalloc(sizeof(fat_direntry_t));
+	
+	root_fatfs->fat_directory = open_root_dir(instance);
+	root_fatfs->fat_entry = NULL;
+	root_fatfs->super.d_name = "";
+	root_fatfs->super.d_inode = kmalloc(sizeof(inode_t));
+	root_fatfs->super.d_inode->i_ino = 0;
+	root_fatfs->super.d_inode->i_instance = (fs_instance_t*)instance;
+	fat_extra_data *ext = kmalloc(sizeof(fat_extra_data));
+	ext->current_octet_buf = 0;
+  root_fatfs->super.d_inode->i_fs_specific = ext;
+	root_fatfs->super.d_inode->i_mode = 00755 | S_IFDIR;
+	root_fatfs->super.d_inode->i_fops = &fatfs_fops;
+
+	return (dentry_t*)root_fatfs;
+}
+
 /*
  * Init the FAT driver for a specific devide.
  */
@@ -48,16 +66,12 @@ fs_instance_t* mount_FAT(open_file_descriptor* ofd) {
 	klog("mounting FAT");
 
 	fat_fs_instance_t *instance = kmalloc(sizeof(fat_fs_instance_t));
-	//instance->super.open = fat_open_file;
-	//instance->super.mkdir = fat_mkdir; // XXX!
-	//instance->super.stat = fat_stat;
-	//instance->super.unlink = fat_unlink;
 
-	instance->fat_info.read_data = ((blkdev_interfaces*)(ofd->extra_data))->read;
-	instance->fat_info.write_data = ((blkdev_interfaces*)(ofd->extra_data))->write;
+	instance->read_data = ((blkdev_interfaces*)(ofd->extra_data))->read;
+	instance->write_data = ((blkdev_interfaces*)(ofd->extra_data))->write;
 
 	uint8_t sector[512];
-	instance->fat_info.read_data(instance->super.device, sector, 512, 0);
+	instance->read_data(instance->super.device, sector, 512, 0);
 	memcpy(&(instance->fat_info.BS), sector, sizeof(fat_BS_t));
 
 	if (instance->fat_info.BS.table_size_16 == 0) { // Si 0 alors on considère qu'on est en FAT32.
@@ -114,6 +128,18 @@ fs_instance_t* mount_FAT(open_file_descriptor* ofd) {
 	instance->fat_info.file_alloc_table = (unsigned int*) kmalloc(sizeof(unsigned int) * instance->fat_info.total_data_clusters);
 
 	read_fat(instance);
+
+//	instance->super.mknod = fat_mknod; //XXX
+//	instance->super.mkdir = fat_mkdir; //XXX
+//	instance->super.rename = fat_rename; //XXX
+//	instance->super.setattr = fat_setattr; //XXX
+//	instance->super.unlink = fat_unlink; //XXX
+//	instance->super.rmdir = fat_rmdir; //XXX
+//	instance->super.truncate = fat_truncate; //XXX
+	
+	instance->root = init_rootfatfs(instance);
+	instance->super.lookup = fat_lookup;
+	instance->super.getroot = fat_getroot;
 
 	return (fs_instance_t*)instance;
 }

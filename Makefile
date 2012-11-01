@@ -57,7 +57,6 @@ core.img: all
 #	@mkfs.vfat core.img
 #	@MTOOLSRC=mtoolsrc mcopy README v:/
 #	@MTOOLSRC=mtoolsrc mcopy bin v:/
-#	@MTOOLSRC=mtoolsrc mcopy modules v:/
 	
 grub.img: all
 	@echo "drive v: file=\"`pwd`/grub.img\" 1.44M filter" > mtoolsrc
