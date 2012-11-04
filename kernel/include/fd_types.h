@@ -53,9 +53,8 @@ struct _open_file_operations_t {
 typedef struct _open_file_descriptor {
 // A dégager ? Infos dans l'inode.
 	uint32_t flags;
-	uint8_t buffer[512];
-	uint32_t current_octet_buf;
-	uint32_t current_cluster;
+	int current_cluster; //XXX à supprimer (sock en dépend encore).
+	uint8_t buffer[512]; //XXX à supprimer.
 	uint32_t current_octet; // Utile pour f_pos ?
 	uint32_t first_cluster;
 	uint32_t file_size; 

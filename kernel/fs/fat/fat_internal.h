@@ -212,9 +212,12 @@ typedef struct _fat_fs_instance_t {
 /**
  * @brief Données supplémentaires qui sont ajoutés à l'ofd lors du open.
  */
-typedef struct _fat_extra_data {
-	int current_octet_buf;
-} fat_extra_data;
+typedef struct _fat_extra_data_t {
+	int first_cluster;
+	int current_cluster;
+	unsigned int current_octet_buf;
+	uint8_t buffer[512];
+} fat_extra_data_t;
 
 typedef struct _fat_direntry_t {
 	dentry_t super;

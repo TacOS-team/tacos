@@ -50,8 +50,10 @@ static inline dentry_t * init_rootfatfs(fat_fs_instance_t *instance) {
 	root_fatfs->super.d_inode = kmalloc(sizeof(inode_t));
 	root_fatfs->super.d_inode->i_ino = 0;
 	root_fatfs->super.d_inode->i_instance = (fs_instance_t*)instance;
-	fat_extra_data *ext = kmalloc(sizeof(fat_extra_data));
+	fat_extra_data_t *ext = kmalloc(sizeof(fat_extra_data_t));
 	ext->current_octet_buf = 0;
+	ext->current_cluster = 0;
+	ext->first_cluster = 0;
   root_fatfs->super.d_inode->i_fs_specific = ext;
 	root_fatfs->super.d_inode->i_mode = 00755 | S_IFDIR;
 	root_fatfs->super.d_inode->i_fops = &fatfs_fops;

@@ -386,14 +386,15 @@ static void load_buffer(open_file_descriptor *ofd) {
 			sizeof(ofd->buffer) : instance->fat_info.BS.bytes_per_sector;
 	int current_octet_cluster = ofd->current_octet % instance->fat_info.bytes_per_cluster;
 	size_t r = instance->fat_info.bytes_per_cluster - current_octet_cluster;
+	fat_extra_data_t* extra_data = (fat_extra_data_t*)(ofd->extra_data);
 
 	if (r < size_buffer) {
 		if (r > 0)
-			instance->read_data(instance->super.device, ofd->buffer, r, instance->fat_info.addr_data + (ofd->current_cluster - 2) * instance->fat_info.bytes_per_cluster + current_octet_cluster);
+			instance->read_data(instance->super.device, extra_data->buffer, r, instance->fat_info.addr_data + (extra_data->current_cluster - 2) * instance->fat_info.bytes_per_cluster + current_octet_cluster);
 	} else {
-		instance->read_data(instance->super.device, ofd->buffer, size_buffer, instance->fat_info.addr_data + (ofd->current_cluster - 2) * instance->fat_info.bytes_per_cluster + current_octet_cluster);
+		instance->read_data(instance->super.device, extra_data->buffer, size_buffer, instance->fat_info.addr_data + (extra_data->current_cluster - 2) * instance->fat_info.bytes_per_cluster + current_octet_cluster);
 	}
-	ofd->current_octet_buf = 0;
+	extra_data->current_octet_buf = 0;
 }
 
 static int delete_dir_entry(fat_dir_entry_t *fdir, const char *name, int n) {
