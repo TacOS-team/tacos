@@ -333,6 +333,6 @@ int fat_seek_file (open_file_descriptor * ofd, long offset, int whence);
  */
 int fat_close(open_file_descriptor *ofd);
 
-
+int fat_open(open_file_descriptor *ofd);
 
 #endif

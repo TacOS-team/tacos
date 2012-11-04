@@ -34,7 +34,7 @@
 #include "fat_internal.h"
 #include "fat_outils.h"
 
-struct _open_file_operations_t fatfs_fops = {.write = fat_write_file, .read = fat_read_file, .seek = fat_seek_file, .ioctl = NULL, .open = NULL, .close = fat_close, .readdir = fat_readdir};
+struct _open_file_operations_t fatfs_fops = {.write = fat_write_file, .read = fat_read_file, .seek = fat_seek_file, .ioctl = NULL, .open = fat_open, .close = fat_close, .readdir = fat_readdir};
 
 
 /*

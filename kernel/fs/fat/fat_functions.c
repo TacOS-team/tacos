@@ -289,6 +289,11 @@ int fat_createfile (fat_fs_instance_t* instance, const char * path, mode_t mode 
   return 0;
 }
 
+int fat_open(open_file_descriptor *ofd) {
+	load_buffer(ofd);
+	return 0;
+}
+
 int fat_close(open_file_descriptor *ofd) {
 	if (ofd == NULL) {
 		return -1;
