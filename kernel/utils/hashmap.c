@@ -33,6 +33,10 @@ hashmap_t* hashmap_create(int size, int (*equal)(struct hashmap_key_t*, struct h
 	hashmap_t *this = kmalloc(sizeof(hashmap_t));
 	this->size = size;
 	this->table = kmalloc(sizeof(struct hashmap_cell_t*) * size);
+	int i;
+	for (i = 0; i < size; i++) {
+		this->table[i] = NULL;	
+	}
 	this->equal = equal;
 	this->hash = hash;
 	return this;
