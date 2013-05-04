@@ -180,10 +180,7 @@ size_t ext2_write (open_file_descriptor * ofd, const void *buf, size_t size) {
 
 			int count = 0;
 			struct blk_t *last = NULL;
-			struct blk_t *blocks = ((ext2_extra_data*)ofd->extra_data)->blocks;
-			if (blocks == NULL) {
-				blocks = addr_inode_data(instance, inode);
-			}
+			struct blk_t *blocks = addr_inode_data(instance, inode);
 			struct blk_t *aux = blocks;
 
 			int off = offset;
@@ -257,7 +254,7 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 			size = einode.i_size - offset;
 		}
 
-		struct blk_t *blocks = addr_inode_data(instance, inode);
+		struct blk_t *blocks = addr_inode_data2(instance, &einode);
 		if (blocks == NULL) return 0;
 		while (offset >= (unsigned int)(1024 << instance->superblock.s_log_block_size)) {
 			if (blocks && blocks->next) {

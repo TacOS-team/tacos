@@ -26,6 +26,7 @@
  * @brief Virtual File System. Gestion des points de montage.
  */
 
+//#include <dcache.h>
 #include <fs/devfs.h>
 #include <fs/fat.h>
 #include <kdirent.h>
@@ -73,6 +74,9 @@ void vfs_init() {
 	mvfs.instance->device = NULL;
 	mvfs.instance->getroot = vfs_getroot;
 	mvfs.instance->lookup = NULL;
+
+// Non 100% fonctionnel.
+//	dcache_init();
 }
 
 void vfs_register_fs(file_system_t *fs) {
@@ -129,7 +133,13 @@ static int lookup(struct nameidata *nb) {
 			}
 		}
 
-		dentry = nb->mnt->instance->lookup(nb->mnt->instance, nb->dentry, name);
+		//dentry = dcache_get(nb->mnt->instance, nb->dentry, name);
+		//if (!dentry) {
+			dentry = nb->mnt->instance->lookup(nb->mnt->instance, nb->dentry, name);
+		//	if (dentry) {
+		//		dcache_set(nb->mnt->instance, nb->dentry, name, dentry);
+		//	}
+		//}
 		if (dentry) {
 			nb->dentry = dentry;
 		} else {
@@ -177,6 +187,7 @@ static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, u
 	ofd->fs_instance = mnt->instance;
 	ofd->extra_data = dentry->d_inode->i_fs_specific;
 
+	// XXX ici ou dans vfs_open ?
 	if (ofd->f_ops->open) {
 		ofd->f_ops->open(ofd);
 	}
@@ -313,7 +324,11 @@ int vfs_unlink(const char *pathname) {
 		if (nb.mnt->instance->unlink) {
 			inode_t *pinode = nb.dentry->d_inode;
 			nb.flags &= ~LOOKUP_PARENT;
+			//dentry_t *dentry = nb.dentry;
+			//const char *last = nb.last;
 			lookup(&nb);
+			//FIXME
+			//dcache_remove(nb.mnt->instance, dentry, last);
 			nb.mnt->instance->unlink(pinode, nb.dentry);
 		} else {
 			klog("Pas de unlink pour ce fs.");
@@ -331,7 +346,11 @@ int vfs_rmdir(const char *pathname) {
 		if (nb.mnt->instance->rmdir) {
 			inode_t *pinode = nb.dentry->d_inode;
 			nb.flags &= ~LOOKUP_PARENT;
+			//dentry_t *dentry = nb.dentry;
+			//const char *last = nb.last;
 			lookup(&nb);
+			//FIXME
+			//dcache_remove(nb.mnt->instance, dentry, last);
 			nb.mnt->instance->rmdir(pinode, nb.dentry);
 		} else {
 			klog("Pas de rmdir pour ce fs.");

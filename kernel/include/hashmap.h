@@ -26,6 +26,9 @@
  * Hashmap générique. Des tests un peu plus poussés sont à faire.
  */
 
+#ifndef _HASHMAP_H
+#define _HASHMAP_H
+
 // Types incomplets, juste pour y voir plus clair.
 struct hashmap_key_t;
 struct hashmap_value_t;
@@ -47,3 +50,5 @@ hashmap_t* hashmap_create(int size, int (*equal)(struct hashmap_key_t*, struct h
 void hashmap_set(hashmap_t* this, struct hashmap_key_t* key, struct hashmap_value_t* value);
 struct hashmap_value_t* hashmap_remove(hashmap_t* this, struct hashmap_key_t *key);
 struct hashmap_value_t* hashmap_get(hashmap_t* this, struct hashmap_key_t *key);
+
+#endif

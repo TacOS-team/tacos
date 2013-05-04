@@ -37,6 +37,10 @@
 
 #define MAX_DRIVERS 64 /**< Nombre maximum de drivers. */
 
+static fs_instance_t* mount_devfs();
+static void umount_devfs(fs_instance_t *instance);
+static file_system_t dev_fs = {.name="DevFS", .unique_inode=0, .mount=mount_devfs, .umount=umount_devfs};
+
 static int devfs_readdir(open_file_descriptor * ofd, char * entries, size_t size);
 
 static dentry_t root_devfs;
@@ -278,10 +282,11 @@ static int devfs_stat(inode_t *inode, struct stat *stbuf) {
 	return res;
 }*/
 
-fs_instance_t* mount_devfs() {
+static fs_instance_t* mount_devfs() {
 //	klog("mounting DevFS");
 
 	fs_instance_t *instance = kmalloc(sizeof(fs_instance_t));
+	instance->fs = &dev_fs;
 	instance->mkdir = NULL;
 //	instance->stat = devfs_stat;
 	instance->getroot = devfs_getroot;
@@ -290,21 +295,16 @@ fs_instance_t* mount_devfs() {
 	return instance;
 }
 
-void umount_devfs(fs_instance_t *instance) {
+static void umount_devfs(fs_instance_t *instance) {
 	kfree(instance);
 }
 
 void devfs_init() {
-	file_system_t *fs = kmalloc(sizeof(file_system_t));
 	root_devfs.d_name = "";
 	root_devfs.d_inode = kmalloc(sizeof(inode_t));
 	root_devfs.d_inode->i_ino = 0;
 	root_devfs.d_inode->i_mode = S_IFDIR | 00755;
 	root_devfs.d_inode->i_fops = &devfs_fops;
 	init_driver_list();
-	
-	fs->name = "DevFS";
-	fs->mount = mount_devfs;
-	fs->umount = umount_devfs;
-	vfs_register_fs(fs);
+	vfs_register_fs(&dev_fs);
 }

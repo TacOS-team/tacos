@@ -9,6 +9,7 @@
 struct _open_file_operations_t ext2fs_fops = {.write = ext2_write, .read = ext2_read, .seek = ext2_seek, .ioctl = NULL, .open = NULL, .close = ext2_close, .readdir = ext2_readdir};
 
 static struct blk_t* addr_inode_data(ext2_fs_instance_t *instance, int inode);
+static struct blk_t* addr_inode_data2(ext2_fs_instance_t *instance, struct ext2_inode *einode);
 static int read_inode(ext2_fs_instance_t *instance, int inode, struct ext2_inode* einode);
 static uint32_t alloc_block(ext2_fs_instance_t *instance);
 
@@ -165,38 +166,41 @@ static void update_blocks(ext2_fs_instance_t *instance, struct ext2_inode* einod
 	// TODO!
 }
 
+static struct blk_t* addr_inode_data2(ext2_fs_instance_t *instance, struct ext2_inode *einode) {
+	struct blk_t *blocks = NULL;
+	struct blk_t *last = NULL;
+	int j;
+	// direct blocks
+	for (j = 0; j < 12 && einode->i_block[j]; j++) {
+		struct blk_t* element = kmalloc(sizeof(struct blk_t));
+		element->next = NULL;
+		element->addr = einode->i_block[j] * (1024 << instance->superblock.s_log_block_size);
+		if (last == NULL) {
+			blocks = element;
+		} else {
+			last->next = element;
+		}
+		last = element;
+	}
+	if (j == 12) {
+		// indirect blocks
+		if (einode->i_block[12]) {
+			last = read_indirect_blk(instance, last, einode->i_block[12]);
+		}
+		if (einode->i_block[13]) {
+			last = read_double_indirect_blk(instance, last, einode->i_block[13]);
+		}
+		if (einode->i_block[14]) {
+			last = read_triple_indirect_blk(instance, last, einode->i_block[14]);
+		}
+	}
+	return blocks;
+}
 
 static struct blk_t* addr_inode_data(ext2_fs_instance_t *instance, int inode) {
 	struct ext2_inode einode;
 	if (read_inode(instance, inode, &einode) >= 0) {
-		struct blk_t *blocks = NULL;
-		struct blk_t *last = NULL;
-		int j;
-		// direct blocks
-		for (j = 0; j < 12 && einode.i_block[j]; j++) {
-			struct blk_t* element = kmalloc(sizeof(struct blk_t));
-			element->next = NULL;
-			element->addr = einode.i_block[j] * (1024 << instance->superblock.s_log_block_size);
-			if (last == NULL) {
-				blocks = element;
-			} else {
-				last->next = element;
-			}
-			last = element;
-		}
-		if (j == 12) {
-			// indirect blocks
-			if (einode.i_block[12]) {
-				last = read_indirect_blk(instance, last, einode.i_block[12]);
-			}
-			if (einode.i_block[13]) {
-				last = read_double_indirect_blk(instance, last, einode.i_block[13]);
-			}
-			if (einode.i_block[14]) {
-				last = read_triple_indirect_blk(instance, last, einode.i_block[14]);
-			}
-		}
-		return blocks;
+		return addr_inode_data2(instance, &einode);
 	}
 	return NULL;
 }
@@ -527,7 +531,6 @@ static inode_t* ext2inode_2_inode(struct _fs_instance_t *instance, int ino, stru
 	ext2_extra_data *extra_data = kmalloc(sizeof(ext2_extra_data));
 	extra_data->inode = ino;
 	extra_data->type = EXT2_FT_REG_FILE; //XXX!!!
-	extra_data->blocks = addr_inode_data((ext2_fs_instance_t*)instance, ino);
 	inode->i_fs_specific = extra_data;
 
 	return inode;

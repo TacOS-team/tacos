@@ -33,12 +33,10 @@
 
 #include "fat_internal.h"
 
+static file_system_t fat_fs = {.name="FAT", .unique_inode=0, .mount=mount_FAT, .umount=umount_FAT};
+
 void fat_init() {
-	file_system_t *fs = kmalloc(sizeof(file_system_t));
-	fs->name = "FAT";
-	fs->mount = mount_FAT;
-	fs->umount = umount_FAT;
-	vfs_register_fs(fs);
+	vfs_register_fs(&fat_fs);
 }
 
 static inline dentry_t * init_rootfatfs(fat_fs_instance_t *instance) {
@@ -68,7 +66,7 @@ fs_instance_t* mount_FAT(open_file_descriptor* ofd) {
 	klog("mounting FAT");
 
 	fat_fs_instance_t *instance = kmalloc(sizeof(fat_fs_instance_t));
-
+	instance->super.fs = &fat_fs;
 	instance->read_data = ((blkdev_interfaces*)(ofd->extra_data))->read;
 	instance->write_data = ((blkdev_interfaces*)(ofd->extra_data))->write;
 

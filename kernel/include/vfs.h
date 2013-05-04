@@ -44,7 +44,7 @@ struct _file_attributes_t;
  */
 typedef struct {
 	char *name;	/**< Nom du FS, c'est aussi son "type" utilisé lors du mount. */
-	//XXX: ajouter device en argument de mount.
+	int unique_inode; /**< 1 if the inodes are unique. */
 	struct _fs_instance_t * (*mount) (open_file_descriptor*); /**< Pointeur vers la fonction mount du FS. */
 	void (*umount) (struct _fs_instance_t *); /**< Pointeur vers la fonction umount du FS. */
 } file_system_t;
@@ -53,8 +53,8 @@ typedef struct {
  * @brief Instance d'un couple FS/Device monté.
  */
 typedef struct _fs_instance_t {
-	file_system_t *fs;							/**< Pointeur vers le FS utilisé. */ //XXX: Est-ce utile ?
-	open_file_descriptor * device;																											/**< Device utilisé. */
+	file_system_t *fs;							/**< Pointeur vers le FS utilisé. */
+	open_file_descriptor * device;								/**< Device utilisé. */
 	struct _dentry_t* (*getroot) (struct _fs_instance_t *); /**< Noeud racine. */
 	struct _dentry_t* (*lookup) (struct _fs_instance_t *, struct _dentry_t*, const char *); /**< Résolution path. */
 	int (*mkdir) (struct _inode_t *, struct _dentry_t *, mode_t);											/**< Création d'un dossier. */

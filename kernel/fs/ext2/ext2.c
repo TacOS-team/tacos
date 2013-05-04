@@ -32,6 +32,8 @@
 
 #include "ext2_internal.h"
 
+static file_system_t ext2_fs = {.name="EXT2", .unique_inode=1, .mount=mount_EXT2, .umount=umount_EXT2};
+
 static int ceil(float n) {
   return (n == (int)n) ? n : (int)(n+(n>=0));
 } 
@@ -40,11 +42,7 @@ static int ceil(float n) {
  * Register this FS.
  */
 void ext2_init() {
-	file_system_t *fs = kmalloc(sizeof(file_system_t));
-	fs->name = "EXT2";
-	fs->mount = mount_EXT2;
-	fs->umount = umount_EXT2;
-	vfs_register_fs(fs);
+	vfs_register_fs(&ext2_fs);
 }
 
 static void read_group_desc_table(ext2_fs_instance_t *instance) {
@@ -74,7 +72,6 @@ static inline dentry_t * init_rootext2fs(ext2_fs_instance_t *instance) {
 	ext2_extra_data *ext = kmalloc(sizeof(ext2_extra_data));
 	ext->inode = EXT2_ROOT_INO;
 	ext->type = EXT2_FT_DIR;
-	ext->blocks = NULL;
   root_ext2fs->d_inode->i_fs_specific = ext;
 	root_ext2fs->d_inode->i_mode = S_IFDIR | 00755;
 	root_ext2fs->d_inode->i_fops = &ext2fs_fops;
@@ -89,6 +86,7 @@ fs_instance_t* mount_EXT2(open_file_descriptor* ofd) {
 	klog("mounting EXT2");
 	ext2_fs_instance_t *instance = kmalloc(sizeof(ext2_fs_instance_t));
 
+	instance->super.fs = &ext2_fs;
 	instance->root = init_rootext2fs(instance);
 
 	instance->read_data = ((blkdev_interfaces*)(ofd->extra_data))->read;

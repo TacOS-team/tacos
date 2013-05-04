@@ -37,6 +37,11 @@
 #include <vfs.h>
 #include <klibc/stdlib.h>
 
+static fs_instance_t* mount_procfs();
+static void umount_procfs(fs_instance_t *instance);
+
+static file_system_t proc_fs = {.name="ProcFS", .unique_inode=0, .mount=mount_procfs, .umount=umount_procfs};
+
 static int procfs_readdir(open_file_descriptor * ofd, char * entries, size_t size);
 
 static dentry_t root_procfs;
@@ -280,7 +285,7 @@ static int procfs_stat(inode_t *inode, struct stat *stbuf) {
 }
 */
 
-fs_instance_t* mount_ProcFS() {
+static fs_instance_t* mount_procfs() {
 	klog("mounting ProcFS");
 
 	fs_instance_t *instance = kmalloc(sizeof(fs_instance_t));
@@ -292,12 +297,11 @@ fs_instance_t* mount_ProcFS() {
 	return instance;
 }
 
-void umount_ProcFS(fs_instance_t *instance) {
+static void umount_procfs(fs_instance_t *instance) {
 	kfree(instance);
 }
 
 void procfs_init() {
-	file_system_t *fs = kmalloc(sizeof(file_system_t));
 	root_procfs.d_name = "";
 	root_procfs.d_inode = kmalloc(sizeof(inode_t));
 	root_procfs.d_inode->i_ino = 0;
@@ -308,9 +312,6 @@ void procfs_init() {
 	extra->process = NULL;
 	root_procfs.d_inode->i_fs_specific = extra;
 
-	fs->name = "ProcFS";
-	fs->mount = mount_ProcFS;
-	fs->umount = umount_ProcFS;
-	vfs_register_fs(fs);
+	vfs_register_fs(&proc_fs);
 }
 

@@ -231,7 +231,6 @@ typedef struct _ext2_fs_instance_t {
 typedef struct _ext2_extra_data {
 	uint32_t inode; /**< Inode du fichier. */
 	uint32_t type; /**< Type du fichier. */
-	struct blk_t *blocks; /**< Les blocs où sont les données du fichier. */
 } ext2_extra_data;
 
 
