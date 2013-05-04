@@ -36,23 +36,6 @@
 #include <fs/devfs.h>
 #include <klibc/stdlib.h>
 
-/* Affichage des hexa en longueur fixe, c'est plus commode */
-void itox(char *buf, int d)
-{
-	int i;
-	int tmp = d;
-	int digit;
-	for(i=0; i<8; i++)
-	{
-		digit = (char)(tmp&0x0000000f);
-		buf[7-i] = digit>9?'a'+(digit-10):'0'+(digit);
-		tmp >>= 4;
-	}
-	buf[8] = '\0';
-}
-
-
-
 void kprintf(const char *format, ...) {
 	static tty_struct_t *tty = NULL;
 	if (tty == NULL) {

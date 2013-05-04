@@ -38,8 +38,8 @@ kernel.bin: force_look
 		$(MAKE) -s -C $$i; \
 		if [ $$? = 0 ]; then printf "\033[1m<<< [$$i] [OK]\033[0m\n"; else printf "\033[31m\033[1m<<< [$$i] [FAIL]\033[0m\n"; exit 1; fi; \
 	done
-	$(LD) -T linker.ld -o kernel.bin kernel/*.o kernel/fs/*.o kernel/fs/fat/*.o kernel/fs/ext2/*.o kernel/pci/*.o kernel/utils/*.o -melf_i386 $(LDFLAGS) $(LDLIBS)
-	#$(LD) -T linker.ld -o kernel.bin kernel/*.o kernel/klibc/*.o kernel/fs/*.o kernel/fs/fat/*.o kernel/fs/ext2/*.o kernel/pci/*.o kernel/utils/*.o -melf_i386 $(LDFLAGS) $(LDLIBSKERNEL)
+	#$(LD) -T linker.ld -o kernel.bin kernel/*.o kernel/fs/*.o kernel/fs/fat/*.o kernel/fs/ext2/*.o kernel/pci/*.o kernel/utils/*.o -melf_i386 $(LDFLAGS) $(LDLIBS)
+	$(LD) -T linker.ld -o kernel.bin kernel/*.o kernel/klibc/*.o kernel/fs/*.o kernel/fs/fat/*.o kernel/fs/ext2/*.o kernel/pci/*.o kernel/utils/*.o -melf_i386 $(LDFLAGS) $(LDLIBSKERNEL)
 
 force_look:
 	@true

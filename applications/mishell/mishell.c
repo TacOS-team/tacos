@@ -27,7 +27,6 @@
  * Description de ce que fait le fichier
  */
 
-#include <process.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -126,7 +125,7 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 			{
 				int pid;
 				if (buffer[0] == '/') {
-					if((pid = exec_elf(buffer, 0)) < 0)
+					if((pid = exec_elf(buffer)) < 0)
 						printf("commande introuvable.\n");
 					else
 						waitpid(pid);
@@ -134,7 +133,7 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 					char temp[278];
 					char *path = getenv("PATH");
 					sprintf(temp, "%s/%s", path, buffer);
-					if((pid = exec_elf(temp, 0)) < 0)
+					if((pid = exec_elf(temp)) < 0)
 						printf("commande introuvable.\n");
 					else
 						waitpid(pid);

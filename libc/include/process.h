@@ -29,47 +29,4 @@
 #ifndef _PROCESS_H_
 #define _PROCESS_H_
 
-#include <sys/cdefs.h>
-
-__BEGIN_DECLS
-
-#include <sys/types.h>
-#include <elf.h>
-
-/* Type d'exécution */
-#define EXEC_ELF 0
-#define EXEC_KERNEL 1
-
-/**
- *  Structure à passer au noyau pour créer un nouveau processus 
- */
-typedef struct
-{
-	char* name; /**< Nom du process. */
-	char* args; /**< Arguments. */
-	char** envp; /**< Environnement. */
-	
-	int exec_type; /**< Type d'exécution */
-	
-	void* data; /**< Usage variable */
-	
-	Elf32_File* file;
-	
-	/*
-	 *  Données pour le chargement de l'elf 
-	 */
-	int mem_size;
-	vaddr_t entry_point;
-	
-	uint32_t stack_size; /**< Taille de la pile. */
-	int priority; /**< Priorité du process */
-	
-	uint16_t ppid; /**< Parent PID */
-	
-} process_init_data_t;
-
-void exec(void *prog, char* name, int orphan);
-
-__END_DECLS
-
 #endif

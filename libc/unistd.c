@@ -34,8 +34,6 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 
-#include <elf.h>
-
 char * get_absolute_path(const char *dirname) {
 	char * cwd = getenv("PWD");
 	if (cwd == NULL) {
@@ -270,7 +268,7 @@ int execv(const char *path __attribute__ ((unused)), char *const argv[]) {
 		strcat(cmd, argv[i]);
 		i++;
 	}
-	return exec_elf(cmd, 0);
+	return exec_elf(cmd);
 }
 
 int execvp(const char *file __attribute__ ((unused)), char *const argv[]) {
@@ -285,6 +283,6 @@ int execvp(const char *file __attribute__ ((unused)), char *const argv[]) {
 			strcat(cmd, argv[i]);
 			i++;
 		}
-		return exec_elf(cmd, 0);
+		return exec_elf(cmd);
 	}
 }

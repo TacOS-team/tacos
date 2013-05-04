@@ -231,6 +231,8 @@ int execv(const char *path, char *const argv[]);
 
 int chown(const char *path, uid_t owner, gid_t group);
 
+int exec_elf(char *path);
+
 __END_DECLS
 
 #endif //_UNISTD_H_

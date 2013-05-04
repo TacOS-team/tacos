@@ -31,8 +31,6 @@
 #include <stdio.h> 
 #include <unistd.h>
 #include <sys/syscall.h>
-#include <process.h>
-#include <elf.h>
 #include <string.h>
 #include <fcntl.h>
 
@@ -41,72 +39,9 @@
 
 extern char **environ;
 
-//void exec(void* prog, char* name, int orphan)
-//{
-//	process_init_data_t init_data;
-//	
-//	init_data.name	= name;
-//	init_data.stack_size = 0x1000;
-//	init_data.priority = 0;
-//	init_data.args = "fajitas bonitas";
-//	init_data.envp = environ;
-//
-//	init_data.data = prog;
-//
-//	init_data.mem_size = 0;
-//	init_data.entry_point = 0;
-//	
-//	init_data.ppid = orphan?0:getpid();
-//	
-//	syscall(SYS_EXEC, (uint32_t)NULL, (uint32_t)&init_data, 1);
-//}
-
-int exec_elf(char* cmdline, int orphan)
-{	
-	char* execpath = strdup(cmdline);
-	int ret = -1;
-	int offset = 0;
-	
-	while(execpath[offset] != ' ' && execpath[offset] != '\0')
-		offset++;
-	
-	execpath[offset] = '\0';
-	
-	struct stat buf;
-	stat(execpath, &buf);
-
-	if (!S_ISREG(buf.st_mode) || !(S_IXUSR & buf.st_mode)) {
-		return -1;
-	}
-
-	int fd = open(execpath, O_RDONLY);
-	
-	process_init_data_t init_data;
-	
-	if(fd != -1)
-	{
-		ret = 0;
-			
-		init_data.name	= execpath;
-		init_data.stack_size = 0x1000;
-		init_data.priority = 0;
-		
-		init_data.args = cmdline;
-		init_data.envp = environ;
-		
-		init_data.mem_size = elf_size(fd);
-		init_data.data = calloc(init_data.mem_size, 1);
-		init_data.entry_point = load_elf(fd, init_data.data);
-		
-		init_data.file = load_elf_file(fd);
-
-		init_data.ppid = orphan?0:getpid();
-		init_data.exec_type = EXEC_ELF;
-
-		syscall(SYS_EXEC, (uint32_t)&init_data, (uint32_t)&ret, (uint32_t)NULL);
-		
-		free(init_data.data);
-	}
-	free(execpath);
+int exec_elf(char* cmdline)
+{
+	int ret;
+	syscall(SYS_EXEC, (uint32_t)cmdline, (uint32_t)environ, (uint32_t)&ret);
 	return ret;
 }

@@ -205,7 +205,7 @@ static struct blk_t* addr_inode_data(ext2_fs_instance_t *instance, int inode) {
 	return NULL;
 }
 
-static void getattr_inode(ext2_fs_instance_t *instance, int inode, struct stat *stbuf) {
+static int getattr_inode(ext2_fs_instance_t *instance, int inode, struct stat *stbuf) {
 	struct ext2_inode einode;
 	if (read_inode(instance, inode, &einode) == 0) {
 		stbuf->st_ino = inode + 1;
@@ -219,7 +219,9 @@ static void getattr_inode(ext2_fs_instance_t *instance, int inode, struct stat *
 		stbuf->st_atime = einode.i_atime;
 		stbuf->st_mtime = einode.i_mtime;
 		stbuf->st_ctime = einode.i_ctime;
+		return 0;
 	}
+	return -1;
 }
 
 static void setattr_inode(ext2_fs_instance_t *instance, int inode, struct stat *stbuf) {

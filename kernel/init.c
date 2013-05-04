@@ -36,12 +36,7 @@
 #include <drivers/vga.h>
 #include <drivers/vesa.h>
 #include <drivers/sock.h>
-
-#include <elf.h>
-
-/* LibC */
-#include <stdlib.h>
-
+#include <kmalloc.h>
 
 int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
@@ -61,11 +56,14 @@ int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	init_sock();
 	/* ************************** */
 	
-	putenv("PWD=/");
-	putenv("PATH=/tacos/bin");
+	char **environ = kmalloc(sizeof(char*) * 3);
+	environ[0] = "PWD=/";
+	environ[1] = "PATH=/tacos/bin";
+	environ[2] = NULL;
 
 	klog("Starting user process...");
-	exec_elf("/tacos/bin/getty /dev/tty0", 0);
+	int ret;
+	sys_exec("/tacos/bin/getty /dev/tty0", environ, &ret);
 
 	get_current_process()->state = PROCSTATE_WAITING;
 	while(1);

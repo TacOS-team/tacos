@@ -185,7 +185,7 @@ void sample_CPU_usage();
 SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)));
 SYSCALL_HANDLER1(sys_getpid, uint32_t* pid);
 SYSCALL_HANDLER1(sys_getppid, uint32_t* ppid);
-SYSCALL_HANDLER2(sys_exec, process_init_data_t* init_data, int *pid);
+SYSCALL_HANDLER3(sys_exec, char*, char**, int*);
 SYSCALL_HANDLER3(sys_proc, uint32_t sub_func, uint32_t param1, uint32_t param2);
 SYSCALL_HANDLER1(sys_waitpid, int pid);
 

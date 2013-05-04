@@ -61,30 +61,32 @@ int ext2_rmdir(inode_t *dir, dentry_t *dentry) {
 //XXX: Une partie pourrait être générique je pense. 
 int ext2_setattr(inode_t *inode, file_attributes_t *attr) {
 	struct stat s;
-	getattr_inode((ext2_fs_instance_t*)inode->i_instance, inode->i_ino, &s);
-	if (attr->mask & ATTR_UID) {
-		s.st_uid = attr->stbuf.st_uid;
+	if (getattr_inode((ext2_fs_instance_t*)inode->i_instance, inode->i_ino, &s) == 0) {
+		if (attr->mask & ATTR_UID) {
+			s.st_uid = attr->stbuf.st_uid;
+		}
+		if (attr->mask & ATTR_GID) {
+			s.st_gid = attr->stbuf.st_gid;
+		}
+		if (attr->mask & ATTR_MODE) {
+			s.st_mode = attr->stbuf.st_mode;
+		}
+		if (attr->mask & ATTR_ATIME) {
+			s.st_atime = attr->stbuf.st_atime;
+		}
+		if (attr->mask & ATTR_MTIME) {
+			s.st_mtime = attr->stbuf.st_mtime;
+		}
+		if (attr->mask & ATTR_CTIME) {
+			s.st_ctime = attr->stbuf.st_ctime;
+		}
+		if (attr->mask & ATTR_SIZE && attr->ia_size != inode->i_size) {
+			ext2_truncate(inode, attr->ia_size);
+		}
+		setattr_inode((ext2_fs_instance_t*)inode->i_instance, inode->i_ino, &s);
+		return 0;
 	}
-	if (attr->mask & ATTR_GID) {
-		s.st_gid = attr->stbuf.st_gid;
-	}
-	if (attr->mask & ATTR_MODE) {
-		s.st_mode = attr->stbuf.st_mode;
-	}
-	if (attr->mask & ATTR_ATIME) {
-		s.st_atime = attr->stbuf.st_atime;
-	}
-	if (attr->mask & ATTR_MTIME) {
-		s.st_mtime = attr->stbuf.st_mtime;
-	}
-	if (attr->mask & ATTR_CTIME) {
-		s.st_ctime = attr->stbuf.st_ctime;
-	}
-	if (attr->mask & ATTR_SIZE && attr->ia_size != inode->i_size) {
-		ext2_truncate(inode, attr->ia_size);
-	}
-	setattr_inode((ext2_fs_instance_t*)inode->i_instance, inode->i_ino, &s);
-	return 0;
+	return -1;
 }
 
 int ext2_unlink(inode_t *dir, dentry_t *dentry) {
