@@ -1,6 +1,5 @@
 #include "ext2_internal.h"
 #include <klibc/string.h>
-#include <klog.h>
 #include <kmalloc.h>
 #include <kdirent.h>
 #include <kerrno.h>

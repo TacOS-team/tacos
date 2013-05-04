@@ -75,22 +75,9 @@ int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int 
 	return 0;
 }
 
-int load_section_header(Elf32_Shdr* section_header, Elf32_Ehdr* elf_header, int index __attribute__ ((unused)), int fd)
-{
-	/* On se déplace au bon endroit dans le fichier (offset du premier header + index*taille d'un header) */
-	long offset = elf_header->e_shoff + index*elf_header->e_shentsize;
-	sys_seek(fd, &offset, SEEK_SET);
-	
-	read(fd, section_header, elf_header->e_shentsize);
-
-	/* TODO: vérifier que ce header existe bien, et retourner un code d'erreur sinon... */
-	return 0;
-}
-
 unsigned long int elf_size(int fd)
 {
 	Elf32_Ehdr elf_header;
-	Elf32_Phdr p_header;
 	int i;
 
 	vaddr_t start = 0xFFFFFFFF;
@@ -98,15 +85,20 @@ unsigned long int elf_size(int fd)
 	
 	if(load_elf_header(&elf_header, fd))
 	{
+		Elf32_Phdr p_header[elf_header.e_phnum];
+
+		long offset = elf_header.e_phoff;
+		sys_seek(fd, &offset, SEEK_SET);
+		read(fd, p_header, elf_header.e_phentsize * elf_header.e_phnum);
+
 		for(i=0; i<elf_header.e_phnum; i++)
 		{
-			load_program_header(&p_header, &elf_header, i, fd);
-			if(p_header.p_type == PT_LOAD)
+			if(p_header[i].p_type == PT_LOAD)
 			{	
-				if(p_header.p_vaddr < start)
-					start = p_header.p_vaddr;
-				if(p_header.p_vaddr + p_header.p_memsz > end)
-					end = p_header.p_vaddr + p_header.p_memsz;
+				if(p_header[i].p_vaddr < start)
+					start = p_header[i].p_vaddr;
+				if(p_header[i].p_vaddr + p_header[i].p_memsz > end)
+					end = p_header[i].p_vaddr + p_header[i].p_memsz;
 			}
 		}
 	}
@@ -116,7 +108,6 @@ unsigned long int elf_size(int fd)
 int load_elf(int fd, void* dest)
 {
 	Elf32_Ehdr elf_header;
-	Elf32_Phdr p_header;
 
 	uint32_t i;
 	
@@ -124,16 +115,20 @@ int load_elf(int fd, void* dest)
 
 	if(load_elf_header(&elf_header, fd))
 	{
+		Elf32_Phdr p_header[elf_header.e_phnum];
+
+		long offset = elf_header.e_phoff;
+		sys_seek(fd, &offset, SEEK_SET);
+		read(fd, p_header, elf_header.e_phentsize * elf_header.e_phnum);
+
 		for(i=0; i< elf_header.e_phnum; i++)
 		{
-			load_program_header(&p_header, &elf_header, i, fd);
-			
 			/* Si le header correspondond à un segment à charger, on le charge! */
-			if( p_header.p_type == PT_LOAD && p_header.p_vaddr >= 0x40000000)
+			if( p_header[i].p_type == PT_LOAD && p_header[i].p_vaddr >= 0x40000000)
 			{
-				long offset = p_header.p_offset;
+				long offset = p_header[i].p_offset;
 				sys_seek(fd, &offset, SEEK_SET);
-				read(fd, &(pointeur[p_header.p_vaddr - 0x40000000]),p_header.p_filesz); 
+				read(fd, &(pointeur[p_header[i].p_vaddr - 0x40000000]),p_header[i].p_filesz); 
 			}
 		}
 	}
@@ -173,13 +168,15 @@ Elf32_File* load_elf_file(int fd)
 			file->sheaders = kmalloc(file->elf_header->e_shnum * sizeof(Elf32_Shdr));
 			
 			/* Charge les program headers */
-			for(i=0; i<file->elf_header->e_phnum; i++)
-				load_program_header(&(file->pheaders[i]), file->elf_header, i, fd);
-				
+			long offset = file->elf_header->e_phoff;
+			sys_seek(fd, &offset, SEEK_SET);
+			read(fd, file->pheaders, file->elf_header->e_phentsize * file->elf_header->e_phnum);
+
 			/* Charge les section headers */
-			for(i=0; i<file->elf_header->e_shnum; i++)
-			{
-				load_section_header(&(file->sheaders[i]), file->elf_header, i, fd);
+			offset = file->elf_header->e_shoff;
+			sys_seek(fd, &offset, SEEK_SET);
+			read(fd, file->sheaders, file->elf_header->e_shentsize * file->elf_header->e_shnum);
+			for (i = 0; i < file->elf_header->e_shnum; i++) {
 				if(file->sheaders[i].sh_type == SHT_SYMTAB)
 					symtab_index = i;
 			}
