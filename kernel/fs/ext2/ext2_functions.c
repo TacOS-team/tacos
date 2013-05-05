@@ -185,7 +185,7 @@ size_t ext2_write (open_file_descriptor * ofd, const void *buf, size_t size) {
 
 			int count = 0;
 			struct blk_t *last = NULL;
-			struct blk_t *blocks = addr_inode_data(instance, inode);
+			struct blk_t *blocks = addr_inode_data_old(instance, einode);
 			struct blk_t *aux = blocks;
 
 			int off = offset;
@@ -242,7 +242,6 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 	if ((ofd->flags & O_ACCMODE) == O_WRONLY) {
 		return 0;
 	}
-	klog(">read");
 	int inode = ((ext2_extra_data*)ofd->extra_data)->inode;
 	if (inode >= 0) {
 		ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
@@ -257,34 +256,30 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 		if (size + offset > einode->i_size) {
 			size = einode->i_size - offset;
 		}
-		klog(".1");
-		struct blk_t *blocks = addr_inode_data2(instance, einode);
-		if (blocks == NULL) return 0;
+		
+		int n_blk = 0;
 		while (offset >= (unsigned int)(1024 << instance->superblock.s_log_block_size)) {
-			if (blocks && blocks->next) {
-				blocks = blocks->next;
-			} else {
-				return 0;
-			}
-			offset -= 1024 << instance->superblock.s_log_block_size;
+			n_blk++;
+			offset -= (1024 << instance->superblock.s_log_block_size);
 		}
+		//int n_blk = offset / (1024 << instance->superblock.s_log_block_size);
+		//offset %= (1024 << instance->superblock.s_log_block_size);
+		//
+		while (size > 0) {
+			int addr = addr_inode_data3(instance, einode, n_blk);
+			if (addr == 0) break;
+			n_blk++;
 
-
-		klog(".2");
-		while (size > 0 && blocks != NULL) {
-			int addr = blocks->addr + offset;
 			size_t size2 = (1024 << instance->superblock.s_log_block_size) - offset;
-			offset = 0;
 			if (size2 > size) {
 				size2 = size;
 			}
 
-			instance->read_data(instance->super.device, ((char*)buf) + count, size2, addr);
+			instance->read_data(instance->super.device, ((char*)buf) + count, size2, addr + offset);
 
 			size -= size2;
 			count += size2;
-
-			blocks = blocks->next;
+			offset = 0;
 		}
 
 		// Commenté pour des raisons évidentes de perf.
@@ -293,7 +288,6 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 		//	einode.i_atime = tv.tv_sec;
 		//	write_inode(inode, &einode);
 		ofd->current_octet += count;
-		klog("<read");
 		return count;
 	} else {
 		return inode;
