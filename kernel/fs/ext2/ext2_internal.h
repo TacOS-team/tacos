@@ -114,8 +114,7 @@ struct ext2_super_block {
 /**
  * Groupe.
  */
-struct ext2_group_desc
-{
+struct ext2_group_desc {
   uint32_t  bg_block_bitmap;		/**< Blocks bitmap block */
   uint32_t  bg_inode_bitmap;		/**< Inodes bitmap block */
   uint32_t  bg_inode_table;			/**< Inodes table block */
@@ -124,6 +123,15 @@ struct ext2_group_desc
   uint16_t  bg_used_dirs_count;		/**< Directories count */
   uint16_t  bg_pad;					/**< unused. */
   uint32_t  bg_reserved[3];			/**< reserved. */
+};
+
+/**
+ * Copie mémoire des infos du disque pour limiter le nombre d'accès inutiles.
+ */
+struct ext2_group_desc_internal {
+	uint8_t *inode_bitmap;
+	struct ext2_inode *inodes;
+	//TODO
 };
 
 /**
@@ -223,6 +231,7 @@ typedef struct _ext2_fs_instance_t {
 	int n_groups;   /**< Number of entries in the group desc table. */
 	blkdev_read_t read_data; /**< Function to read data. */
 	blkdev_write_t write_data; /**< Function to write data. */
+	struct ext2_group_desc_internal *group_desc_table_internal; /**< */
 } ext2_fs_instance_t;
 
 /**

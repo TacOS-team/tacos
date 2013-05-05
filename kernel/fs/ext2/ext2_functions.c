@@ -171,11 +171,14 @@ size_t ext2_write (open_file_descriptor * ofd, const void *buf, size_t size) {
 	if (inode >= 0) {
 		ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
 		
-		struct ext2_inode einode;
-		if (read_inode(instance, inode, &einode) == 0) {
+		struct ext2_inode *einode = read_inode(instance, inode);
+		if (einode == NULL) {
+			//FIXME !!!!!!!!!!!!!!!!
+			//!!!!!!!!!!!!!!!!!!!!!!
+			//(alouer inode)
 			unsigned int offset;
 			if (ofd->flags & O_APPEND) {
-				offset = einode.i_size;
+				offset = einode->i_size;
 			} else {
 			 	offset = ofd->current_octet;
 			}
@@ -219,12 +222,12 @@ size_t ext2_write (open_file_descriptor * ofd, const void *buf, size_t size) {
 				aux = aux->next;
 			}
 
-			einode.i_size = max(einode.i_size, offset + count);
+			einode->i_size = max(einode->i_size, offset + count);
 	//		struct timeval tv;
 	//		gettimeofday(&tv, NULL);
 	//		einode.i_mtime = tv.tv_sec;
-			update_blocks(instance, &einode, blocks);
-			write_inode(instance, inode, &einode);
+			update_blocks(instance, einode, blocks);
+			write_inode(instance, inode, einode);
 			return count;		
 		} else {
 			return -ENOENT;
@@ -239,33 +242,35 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 	if ((ofd->flags & O_ACCMODE) == O_WRONLY) {
 		return 0;
 	}
-
+	klog(">read");
 	int inode = ((ext2_extra_data*)ofd->extra_data)->inode;
 	if (inode >= 0) {
 		ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
 		off_t offset = ofd->current_octet;
 		int count = 0;
-		struct ext2_inode einode;
-		read_inode(instance, inode, &einode);
+		struct ext2_inode *einode = read_inode(instance, inode);
 		
-		if (offset >= einode.i_size) {
+		if (offset >= einode->i_size) {
 			return 0;
 		}
 
-		if (size + offset > einode.i_size) {
-			size = einode.i_size - offset;
+		if (size + offset > einode->i_size) {
+			size = einode->i_size - offset;
 		}
-
-		struct blk_t *blocks = addr_inode_data2(instance, &einode);
+		klog(".1");
+		struct blk_t *blocks = addr_inode_data2(instance, einode);
 		if (blocks == NULL) return 0;
 		while (offset >= (unsigned int)(1024 << instance->superblock.s_log_block_size)) {
 			if (blocks && blocks->next) {
 				blocks = blocks->next;
-			} else return 0;
+			} else {
+				return 0;
+			}
 			offset -= 1024 << instance->superblock.s_log_block_size;
 		}
 
 
+		klog(".2");
 		while (size > 0 && blocks != NULL) {
 			int addr = blocks->addr + offset;
 			size_t size2 = (1024 << instance->superblock.s_log_block_size) - offset;
@@ -287,7 +292,8 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 		//	gettimeofday(&tv, NULL);
 		//	einode.i_atime = tv.tv_sec;
 		//	write_inode(inode, &einode);
- 		ofd->current_octet += count;
+		ofd->current_octet += count;
+		klog("<read");
 		return count;
 	} else {
 		return inode;
@@ -300,10 +306,9 @@ int ext2_mknod(inode_t *dir, dentry_t *dentry, mode_t mode, dev_t dev) {
 	if (ino == 0) {
 		return -ENOTDIR; //XXX
 	}
-	struct ext2_inode einode;
-	read_inode((ext2_fs_instance_t*)dir->i_instance, ino, &einode);
+	struct ext2_inode *einode = read_inode((ext2_fs_instance_t*)dir->i_instance, ino);
 
-	inode_t *inode = ext2inode_2_inode(dir->i_instance, ino, &einode);
+	inode_t *inode = ext2inode_2_inode(dir->i_instance, ino, einode);
 	dentry->d_inode = inode;
 
 	return 0;
@@ -333,14 +338,13 @@ dentry_t* ext2_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry,
 		ext2_truncate_inode((ext2_fs_instance_t*)instance, inode, 0);
 	}
 
-	struct ext2_inode einode;
-	read_inode((ext2_fs_instance_t*)instance, inode, &einode);
+	struct ext2_inode *einode = read_inode((ext2_fs_instance_t*)instance, inode);
 
 	dentry_t *d = kmalloc(sizeof(dentry_t));
 	char *n = kmalloc(strlen(name) + 1);
 	strcpy(n, name);
 	d->d_name = (const char*)n;
-	d->d_inode = ext2inode_2_inode(instance, inode, &einode);
+	d->d_inode = ext2inode_2_inode(instance, inode, einode);
 
 	return d;
 }

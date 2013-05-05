@@ -51,6 +51,21 @@ static void read_group_desc_table(ext2_fs_instance_t *instance) {
 	instance->group_desc_table = kmalloc(sizeof(struct ext2_group_desc) * instance->n_groups);
 
 	instance->read_data(instance->super.device, instance->group_desc_table, sizeof(struct ext2_group_desc) * instance->n_groups, b * (1024 << instance->superblock.s_log_block_size));
+
+	// Init de la copie mémoire
+	instance->group_desc_table_internal = kmalloc(sizeof(struct ext2_group_desc) * instance->n_groups);
+	int i;
+	for (i = 0; i < instance->n_groups; i++) {
+		// Chargement inode bitmap.
+		instance->group_desc_table_internal[i].inode_bitmap = kmalloc(instance->superblock.s_inodes_per_group / 8);
+		int addr_bitmap = instance->group_desc_table[i].bg_inode_bitmap;
+		instance->read_data(instance->super.device, instance->group_desc_table_internal[i].inode_bitmap, instance->superblock.s_inodes_per_group / 8, addr_bitmap * (1024 << instance->superblock.s_log_block_size));
+
+		// Chargement inodes.
+		instance->group_desc_table_internal[i].inodes = kmalloc(instance->superblock.s_inodes_per_group * sizeof(struct ext2_inode));
+		int addr_table = instance->group_desc_table[i].bg_inode_table;
+		instance->read_data(instance->super.device, instance->group_desc_table_internal[i].inodes, instance->superblock.s_inodes_per_group * sizeof(struct ext2_inode), addr_table * (1024 << instance->superblock.s_log_block_size));
+	}
 }
 
 static void show_info(ext2_fs_instance_t *instance) {

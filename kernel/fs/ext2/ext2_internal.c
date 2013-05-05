@@ -4,12 +4,12 @@
 #include <kdirent.h>
 #include <kerrno.h>
 #include <clock.h>
+#include <klog.h>
 
 struct _open_file_operations_t ext2fs_fops = {.write = ext2_write, .read = ext2_read, .seek = ext2_seek, .ioctl = NULL, .open = NULL, .close = ext2_close, .readdir = ext2_readdir};
 
 static struct blk_t* addr_inode_data(ext2_fs_instance_t *instance, int inode);
 static struct blk_t* addr_inode_data2(ext2_fs_instance_t *instance, struct ext2_inode *einode);
-static int read_inode(ext2_fs_instance_t *instance, int inode, struct ext2_inode* einode);
 static uint32_t alloc_block(ext2_fs_instance_t *instance);
 
 #define max(a,b) ((a) > (b) ? (a) : (b))
@@ -57,25 +57,39 @@ int getinode_from_name(ext2_fs_instance_t *instance, int inode, const char *name
 	return -ENOTDIR;
 }
 
+static inline struct ext2_inode* read_inode(ext2_fs_instance_t *instance, int inode) {
+	if (inode > 0) {
+		int n = (inode - 1) / instance->superblock.s_inodes_per_group;
+		uint32_t ib = (inode - 1) % instance->superblock.s_inodes_per_group;
+		
+		if (instance->group_desc_table_internal[n].inode_bitmap[ib / 8] & (1 << (ib % 8))) {
+			return &(instance->group_desc_table_internal[n].inodes[ib]);
+		}
+	}
+	return NULL;
+}
+
+/*
 static int read_inode(ext2_fs_instance_t *instance, int inode, struct ext2_inode* einode) {
+	//klog("read_inode");
 	if (inode > 0) {
 		uint32_t i = inode - 1;
 		int n = i / instance->superblock.s_inodes_per_group;
 		uint32_t ib = i % instance->superblock.s_inodes_per_group;
 		
-		int addr_bitmap = instance->group_desc_table[n].bg_inode_bitmap;
-		int addr_table = instance->group_desc_table[n].bg_inode_table;
-		uint8_t inode_bitmap;
-		
-		instance->read_data(instance->super.device, &inode_bitmap, 1, addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
+//		int addr_bitmap = instance->group_desc_table[n].bg_inode_bitmap;
+//		int addr_table = instance->group_desc_table[n].bg_inode_table;
+
+//		instance->read_data(instance->super.device, &inode_bitmap, 1, addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
 	
-		if (inode_bitmap & (1 << (ib % 8))) {
-			instance->read_data(instance->super.device, einode, sizeof(struct ext2_inode), addr_table * (1024 << instance->superblock.s_log_block_size) + sizeof(struct ext2_inode) * ib);
+		if (instance->group_desc_table_internal[n].inode_bitmap[ib / 8] & (1 << (ib % 8))) {
+			*einode = instance->group_desc_table_internal[n].inodes[ib];
+//			instance->read_data(instance->super.device, einode, sizeof(struct ext2_inode), addr_table * (1024 << instance->superblock.s_log_block_size) + sizeof(struct ext2_inode) * ib);
 			return 0;
 		}
 	}
 	return -ENOENT;
-}
+}*/
 
 static int write_inode(ext2_fs_instance_t *instance, int inode, struct ext2_inode* einode) {
 	if (inode > 0) {
@@ -166,11 +180,15 @@ static void update_blocks(ext2_fs_instance_t *instance, struct ext2_inode* einod
 }
 
 static struct blk_t* addr_inode_data2(ext2_fs_instance_t *instance, struct ext2_inode *einode) {
+	klog(">");
 	struct blk_t *blocks = NULL;
 	struct blk_t *last = NULL;
 	int j;
+	klog(">1");
+	kprintf("inodes blks : %d\n", einode->i_blocks);
 	// direct blocks
 	for (j = 0; j < 12 && einode->i_block[j]; j++) {
+		kprintf("%d\n", einode->i_block[j]);
 		struct blk_t* element = kmalloc(sizeof(struct blk_t));
 		element->next = NULL;
 		element->addr = einode->i_block[j] * (1024 << instance->superblock.s_log_block_size);
@@ -181,59 +199,64 @@ static struct blk_t* addr_inode_data2(ext2_fs_instance_t *instance, struct ext2_
 		}
 		last = element;
 	}
+				klog(">2");
 	if (j == 12) {
 		// indirect blocks
 		if (einode->i_block[12]) {
 			last = read_indirect_blk(instance, last, einode->i_block[12]);
 		}
+		klog(">3");
 		if (einode->i_block[13]) {
 			last = read_double_indirect_blk(instance, last, einode->i_block[13]);
 		}
+		klog(">4");
 		if (einode->i_block[14]) {
 			last = read_triple_indirect_blk(instance, last, einode->i_block[14]);
 		}
 	}
+	klog("<");
 	return blocks;
 }
 
 static struct blk_t* addr_inode_data(ext2_fs_instance_t *instance, int inode) {
-	struct ext2_inode einode;
-	if (read_inode(instance, inode, &einode) >= 0) {
-		return addr_inode_data2(instance, &einode);
+	struct ext2_inode *einode = read_inode(instance, inode);
+	if (einode) {
+		return addr_inode_data2(instance, einode);
 	}
 	return NULL;
 }
 
 static int getattr_inode(ext2_fs_instance_t *instance, int inode, struct stat *stbuf) {
-	struct ext2_inode einode;
-	if (read_inode(instance, inode, &einode) == 0) {
+	struct ext2_inode *einode = read_inode(instance, inode);
+	if (einode) {
 		stbuf->st_ino = inode + 1;
-		stbuf->st_mode = einode.i_mode;
-		stbuf->st_nlink = einode.i_links_count;
-		stbuf->st_uid = einode.i_uid;
-		stbuf->st_gid = einode.i_gid;
-		stbuf->st_size = einode.i_size;
+		stbuf->st_mode = einode->i_mode;
+		stbuf->st_nlink = einode->i_links_count;
+		stbuf->st_uid = einode->i_uid;
+		stbuf->st_gid = einode->i_gid;
+		stbuf->st_size = einode->i_size;
 		stbuf->st_blksize = 1024 << instance->superblock.s_log_block_size;
-		stbuf->st_blocks = einode.i_size / 512;
-		stbuf->st_atime = einode.i_atime;
-		stbuf->st_mtime = einode.i_mtime;
-		stbuf->st_ctime = einode.i_ctime;
+		stbuf->st_blocks = einode->i_size / 512;
+		stbuf->st_atime = einode->i_atime;
+		stbuf->st_mtime = einode->i_mtime;
+		stbuf->st_ctime = einode->i_ctime;
 		return 0;
 	}
 	return -1;
 }
 
 static void setattr_inode(ext2_fs_instance_t *instance, int inode, struct stat *stbuf) {
-	struct ext2_inode einode;
-	if (read_inode(instance, inode, &einode) == 0) {
-		einode.i_mode = stbuf->st_mode;
-		einode.i_uid = stbuf->st_uid;
-		einode.i_gid = stbuf->st_gid;
-		einode.i_atime = stbuf->st_atime;
-		einode.i_mtime = stbuf->st_mtime;
-		einode.i_ctime = get_date();
-		write_inode(instance, inode, &einode);
+	struct ext2_inode *einode = read_inode(instance, inode);
+	if (einode) {
+		einode->i_mode = stbuf->st_mode;
+		einode->i_uid = stbuf->st_uid;
+		einode->i_gid = stbuf->st_gid;
+		einode->i_atime = stbuf->st_atime;
+		einode->i_mtime = stbuf->st_mtime;
+		einode->i_ctime = get_date();
+		write_inode(instance, inode, einode);
 	}
+	//FIXME?
 }
 
 static uint32_t alloc_block(ext2_fs_instance_t *instance) {
@@ -285,14 +308,15 @@ static int alloc_inode(ext2_fs_instance_t *instance, struct ext2_inode *inode) {
 }
 
 static int alloc_block_inode(ext2_fs_instance_t *instance, int inode) {
-	struct ext2_inode einode;
-	if (read_inode(instance, inode, &einode) >= 0) {
+	struct ext2_inode *einode = read_inode(instance, inode);
+	if (einode) {
 		int i = 0;
-		while (einode.i_block[i] > 0 && i < 12) i++;
+		while (einode->i_block[i] > 0 && i < 12) i++;
 		if (i < 12) {
-			einode.i_block[i] = alloc_block(instance);
-			write_inode(instance, inode, &einode);
-			return einode.i_block[i];
+			einode->i_block[i] = alloc_block(instance);
+			write_inode(instance, inode, einode);
+			//FIXME?
+			return einode->i_block[i];
 		}
 	}
 	return 0;
@@ -467,8 +491,8 @@ static int mknod_inode(ext2_fs_instance_t *instance, int inode, const char *name
 
 static int ext2_truncate_inode(ext2_fs_instance_t *instance, int inode, off_t off) {
 	uint32_t size = off;
-	struct ext2_inode einode;
-	if (read_inode(instance, inode, &einode) >= 0) {
+	struct ext2_inode *einode = read_inode(instance, inode);
+	if (einode) {
 		struct blk_t *blocks = addr_inode_data(instance, inode);
 		struct blk_t *aux = blocks;
 		struct blk_t *prec = NULL;
@@ -505,9 +529,10 @@ static int ext2_truncate_inode(ext2_fs_instance_t *instance, int inode, off_t of
 			prec = element;
 			off -= 1024 << instance->superblock.s_log_block_size;
 		}
-		einode.i_size = size;
-		update_blocks(instance, &einode, blocks);
-		write_inode(instance, inode, &einode);
+		einode->i_size = size;
+		update_blocks(instance, einode, blocks);
+		write_inode(instance, inode, einode);
+		//FIXME?
 		return 0;
 	}
 	return -ENOENT;
