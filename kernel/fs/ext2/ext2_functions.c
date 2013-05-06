@@ -162,7 +162,7 @@ int ext2_seek(open_file_descriptor * ofd, long offset, int whence) {
 	return 0;
 }
 
-size_t ext2_write (open_file_descriptor * ofd, const void *buf, size_t size) {
+size_t ext2_write(open_file_descriptor * ofd, const void *buf, size_t size) {
 	if ((ofd->flags & O_ACCMODE) == O_RDONLY) {
 		return 0;
 	}
@@ -181,49 +181,45 @@ size_t ext2_write (open_file_descriptor * ofd, const void *buf, size_t size) {
 			}
 
 			int count = 0;
-			struct blk_t *last = NULL;
-			struct blk_t *blocks = addr_inode_data_old(instance, einode);
-			struct blk_t *aux = blocks;
 
+			// On avance de block en block tant que offset > taille d'un block.
+			int n_blk = 0;
 			int off = offset;
-			while (aux != NULL && off >= (1024 << instance->superblock.s_log_block_size)) {
-				last = aux;
-				aux = aux->next;
+			while (off >= (1024 << instance->superblock.s_log_block_size)) {
+				if (addr_inode_data2(instance, einode, n_blk) == 0) {
+					int addr = alloc_block(instance);
+					set_block_inode_data(instance, einode, n_blk, addr);
+				}
+
 				off -= 1024 << instance->superblock.s_log_block_size;
+				n_blk++;
 			}
 
 			while (size > 0) {
-				if (aux == NULL) {
-					struct blk_t *element = kmalloc(sizeof(struct blk_t));
-					element->addr = alloc_block(instance) * (1024 << instance->superblock.s_log_block_size);
-					element->next = NULL;
-					if (last == NULL) {
-						blocks = element;
-					} else {
-						last->next = element;
-					}
-					aux = element;
+				int addr = addr_inode_data2(instance, einode, n_blk);
+				if (addr == 0) {
+					addr = alloc_block(instance);
+					set_block_inode_data(instance, einode, n_blk, addr);
+					addr *= (1024 << instance->superblock.s_log_block_size);
 				}
-				int addr = aux->addr + off;
+				addr += off;
+
 				size_t size2 = (1024 << instance->superblock.s_log_block_size) - off;
 				off = 0;
 				if (size2 > size) {
 					size2 = size;
 				}
-
+				kprintf("ecrire : %d %d\n", size2, addr);
 				instance->write_data(instance->super.device, ((char*)buf) + count, size2, addr);
 				size -= size2;
 				count += size2;
-
-				last = aux;
-				aux = aux->next;
+				n_blk++;
 			}
 
 			einode->i_size = max(einode->i_size, offset + count);
 	//		struct timeval tv;
 	//		gettimeofday(&tv, NULL);
 	//		einode.i_mtime = tv.tv_sec;
-			update_blocks(instance, einode, blocks);
 			write_inode(instance, inode, einode);
 			return count;		
 		} else {
@@ -263,7 +259,7 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 		//offset %= (1024 << instance->superblock.s_log_block_size);
 		//
 		while (size > 0) {
-			int addr = addr_inode_data3(instance, einode, n_blk);
+			int addr = addr_inode_data2(instance, einode, n_blk);
 			if (addr == 0) break;
 			n_blk++;
 

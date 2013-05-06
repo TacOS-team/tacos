@@ -188,15 +188,6 @@ struct directories_t {
 	struct directories_t *next; /**< Pointeur vers la prochaine structure du même type. */
 };
 
-/**
- * @brief Structure chaînée pour enregistrer une suite d'adresses (utile lorsque les
- * données ne rentrent pas dans un seul inode).
- */
-struct blk_t {
-	int addr;           /**< Une adresse. */
-	struct blk_t *next; /**< Pointeur vers une structure contenant l'adresse suivante. */
-};
-
 // -- file format --
 #define EXT2_S_IFSOCK	0xC000	/**< socket */
 #define EXT2_S_IFLNK	0xA000	/**< symbolic link */
@@ -231,7 +222,7 @@ typedef struct _ext2_fs_instance_t {
 	int n_groups;   /**< Number of entries in the group desc table. */
 	blkdev_read_t read_data; /**< Function to read data. */
 	blkdev_write_t write_data; /**< Function to write data. */
-	struct ext2_group_desc_internal *group_desc_table_internal; /**< */
+	struct ext2_group_desc_internal *group_desc_table_internal; /**< Copy of inodes (only, for now?) */
 } ext2_fs_instance_t;
 
 /**
