@@ -38,8 +38,6 @@
 #include <scheduler.h>
 #include <syscall_values.h>
 
-/* XXX:LibC */
-
 typedef struct {
 	vaddr_t ret_addr;
 	int sig;

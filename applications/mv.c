@@ -1,5 +1,5 @@
 /**
- * @file process.c
+ * @file mv.c
  *
  * @author TacOS developers 
  *
@@ -23,25 +23,19 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Déplace ou renomme un fichier.
  */
 
-#include <sys/types.h>
-#include <stdlib.h>
-#include <stdio.h> 
-#include <unistd.h>
-#include <sys/syscall.h>
-#include <string.h>
-#include <fcntl.h>
+#include <dirent.h>
+#include <stdio.h>
 
-#define GET_PROCESS 0 /**< Action pour obtenir les infos d'un process. */
-#define GET_PROCESS_LIST 1 /**< Action pour obtenir la liste. */
-
-extern char **environ;
-
-int exec_elf(char* cmdline)
+int main(int argc, char** argv)
 {
-	int ret;
-	syscall(SYS_EXEC, (uint32_t)cmdline, (uint32_t)environ, (uint32_t)&ret);
-	return ret;
+	if (argc <= 2) {
+		fprintf(stderr, "%s: opérande manquant\n", argv[0]);
+	} else {
+		rename(argv[1], argv[2]);
+	}
+	return 0;
 }
+

@@ -359,6 +359,8 @@ int fileno(FILE *stream);
  */
 void perror(const char *s);
 
+int rename(const char *oldpath, const char *newpath);
+
 __END_DECLS
 
 #endif

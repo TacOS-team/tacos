@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <dirent.h>
+#include <errno.h>
 
 #include "utils/include/unittest.h"
 
@@ -125,12 +126,19 @@ int main() {
 	unlink(fichiertest);
 
 	// Test 14:
+	DIR *d = opendir(dossiertest);
+	unit_test_int("Ouverture d'un dossier non existant.", (int)NULL, (int)d);
+
+	// Test 15:
 	mkdir(dossiertest, 777);
 	stat(dossiertest, &buf);
 	unit_test_int("Création d'un dossier non existant.", 1, S_ISDIR(buf.st_mode));
 
-	// Test 15:
-	mkdir(dossiertest, 777);
+	// Test 16:
+	r = mkdir(dossiertest, 777);
+	unit_test_int("Création d'un dossier existant doit renvoyer EEXIST.", EEXIST, r);
+
+	// Test 17:
 	r = rmdir(dossiertest);
 	unit_test_int("Suppression d'un dossier existant (retour fonction).", 0, r);
 	DIR* dir = opendir(dossiertest);

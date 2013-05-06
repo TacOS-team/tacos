@@ -36,27 +36,13 @@
 #include <fs/devfs.h>
 #include <klibc/stdlib.h>
 
-/* Affichage des hexa en longueur fixe, c'est plus commode */
-void itox(char *buf, int d)
-{
-	int i;
-	int tmp = d;
-	int digit;
-	for(i=0; i<8; i++)
-	{
-		digit = (char)(tmp&0x0000000f);
-		buf[7-i] = digit>9?'a'+(digit-10):'0'+(digit);
-		tmp >>= 4;
-	}
-	buf[8] = '\0';
-}
-
-
-
 void kprintf(const char *format, ...) {
 	static tty_struct_t *tty = NULL;
 	if (tty == NULL) {
 		open_file_descriptor* ofd = vfs_open("/dev/ttyS0", 0); //XXX:flags
+//		if (!ofd) {
+//			return;
+//		}
 		if (ofd)
 			tty = ((chardev_interfaces*)ofd->extra_data)->custom_data;
 		else
@@ -71,6 +57,7 @@ void kprintf(const char *format, ...) {
 
 	while ((c = *format++) != 0) {
 		if (c != '%') {
+			//ofd->f_ops->write(ofd, &c, 1);
 			tty->driver->ops->put_char(tty, c);
 		} else {
 			char *p;
@@ -93,11 +80,13 @@ void kprintf(const char *format, ...) {
 				if (!p)
 					p = "(null)";
 
-				string: 
+				string:
+					//ofd->f_ops->write(ofd, (unsigned char*) p, 1024);
 					tty->driver->ops->write(tty, NULL, (unsigned char*) p, 1024);
 					break;
 
 			default:
+				//ofd->f_ops->write(ofd, (int *) arg++, 1);
 				tty->driver->ops->put_char(tty, *((int *) arg++));
 				break;
 			}

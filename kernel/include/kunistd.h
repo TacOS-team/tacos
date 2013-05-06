@@ -97,4 +97,8 @@ SYSCALL_HANDLER2(sys_dup2, int oldfd, int *newfd);
  */
 SYSCALL_HANDLER3(sys_mknod, const char *path, mode_t mode, dev_t *dev);
 
+SYSCALL_HANDLER3(sys_chmod, const char *path, mode_t mode, int *ret);
+SYSCALL_HANDLER3(sys_chown, const char *path, uid_t owner, gid_t *group);
+SYSCALL_HANDLER3(sys_utimes, const char *path, const struct timeval times[2], int *ret);
+SYSCALL_HANDLER3(sys_rename, const char *oldpath, const char *newpath, int *ret);
 #endif

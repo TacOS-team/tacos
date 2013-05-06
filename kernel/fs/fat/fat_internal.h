@@ -196,8 +196,6 @@ typedef struct _fat_info {
 	unsigned int table_size; /**< Taille de la FAT. */
 	fat_t fat_type; /**< Type de FAT (12, 16 ou 32) */
 	unsigned int bytes_per_cluster; /**< Nombre d'octets dans un cluster. */
-	blkdev_read_t read_data; /**< Fonction pour lire une donnée. */
-	blkdev_write_t write_data; /**< Fonction pour écriture une donnée. */
 } fat_info_t;
 
 /**
@@ -205,8 +203,35 @@ typedef struct _fat_info {
  */
 typedef struct _fat_fs_instance_t {
 	fs_instance_t super; /**< Classe parente (fs_instance_t). */
+	dentry_t * root;
 	fat_info_t fat_info; /**< Informations sur le volume monté. */
+	blkdev_read_t read_data; /**< Fonction pour lire une donnée. */
+	blkdev_write_t write_data; /**< Fonction pour écriture une donnée. */
 } fat_fs_instance_t;
+
+/**
+ * @brief Données supplémentaires qui sont ajoutés à l'ofd lors du open.
+ */
+typedef struct _fat_extra_data_t {
+	int first_cluster;
+	int current_cluster;
+	unsigned int current_octet_buf;
+	uint8_t buffer[512];
+} fat_extra_data_t;
+
+typedef struct _fat_direntry_t {
+	dentry_t super;
+	directory_entry_t *fat_entry;
+	directory_t *fat_directory;
+} fat_direntry_t;
+
+extern struct _open_file_operations_t fatfs_fops; /**< Pointeurs sur les fonctions de manipulation de fichiers pour ce FS. */
+
+dentry_t *fat_getroot(struct _fs_instance_t *instance);
+dentry_t* fat_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name);
+
+
+directory_t * open_root_dir(fat_fs_instance_t *instance);
 
 /**
  * Lecture de la FAT.
@@ -214,8 +239,6 @@ typedef struct _fat_fs_instance_t {
  * @param instance Instance de FS.
  */
 void read_fat(fat_fs_instance_t *instance);
-
-
 
 
 /**
@@ -235,18 +258,6 @@ void umount_FAT(fs_instance_t *instance);
  * @return Nombre d'octets écrits dans entries.
  */
 int fat_readdir(open_file_descriptor * ofd, char * entries, size_t size);
-
-/**
- * Ouverture d'un fichier.
- *
- * @param instance Instance du fs.
- * @param path Chemin (relatif au point de montage) du fichier à ouvrir.
- * @param flags Flags pour l'ouverture.
- *
- * @return un open file descriptor.
-
- */
-open_file_descriptor * fat_open_file(fs_instance_t *instance, const char * path, uint32_t flags);
 
 /**
  * Création d'un dossier.
@@ -322,6 +333,6 @@ int fat_seek_file (open_file_descriptor * ofd, long offset, int whence);
  */
 int fat_close(open_file_descriptor *ofd);
 
-
+int fat_open(open_file_descriptor *ofd);
 
 #endif

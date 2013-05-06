@@ -29,6 +29,7 @@
 #include <fs/fat.h>
 #include <kdirent.h>
 #include <kfcntl.h>
+#include <kstat.h>
 #include <klibc/string.h>
 #include <klog.h>
 #include <kmalloc.h>
@@ -38,6 +39,56 @@
 #include "fat_outils.h"
 
 #include "fat_internal.c"
+
+dentry_t *fat_getroot(struct _fs_instance_t *instance) {
+	klog("fat_getroot");
+	return ((fat_fs_instance_t*)instance)->root;
+}
+
+
+dentry_t* fat_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name) {
+	klog("fat_lookup");
+	fat_direntry_t *d = kmalloc(sizeof(fat_direntry_t));
+
+	// Get prev_dir.
+	fat_direntry_t *prev_dentry = (fat_direntry_t*) dentry;
+	if (prev_dentry->fat_directory == NULL) {
+		prev_dentry->fat_directory = kmalloc(sizeof(directory_t));
+		open_dir((fat_fs_instance_t*)instance, prev_dentry->fat_entry->cluster, prev_dentry->fat_directory);
+	}
+
+	// Get directory_entry that match this name.
+	directory_entry_t *next_dentry = open_next_direntry(prev_dentry->fat_directory, name);
+
+	if (!next_dentry) {
+		return NULL;
+	}
+
+	d->fat_directory = NULL;
+	d->fat_entry = next_dentry;
+	d->super.d_inode = kmalloc(sizeof(inode_t));
+	d->super.d_inode->i_fops = &fatfs_fops;
+	d->super.d_inode->i_ino = 0;
+	d->super.d_inode->i_mode = 00755;
+	d->super.d_inode->i_mode |= (next_dentry->attributes & 0x10) ? S_IFDIR : S_IFREG;
+	d->super.d_inode->i_uid = 0;
+	d->super.d_inode->i_gid = 0;
+	d->super.d_inode->i_size = next_dentry->size;
+	d->super.d_inode->i_atime = next_dentry->access_time;
+	d->super.d_inode->i_mtime = next_dentry->modification_time;
+	d->super.d_inode->i_ctime = next_dentry->creation_time;
+	d->super.d_inode->i_nlink = 1;
+	d->super.d_inode->i_flags = 0; //XXX
+	d->super.d_inode->i_blocks = 1; //XXX
+	d->super.d_inode->i_instance = NULL; //XXX
+	fat_extra_data_t *fs_specific = kmalloc(sizeof(fat_extra_data_t));
+	fs_specific->first_cluster = next_dentry->cluster;
+	fs_specific->current_cluster = next_dentry->cluster;
+	fs_specific->current_octet_buf = 0;
+	d->super.d_inode->i_fs_specific = fs_specific;
+
+	return (dentry_t*)d;
+}
 
 int fat_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 	fat_fs_instance_t *instance = (fat_fs_instance_t*) ofd->fs_instance;
@@ -79,18 +130,19 @@ int fat_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 // TODO: Est-ce que offset peut être négatif ? Si oui, le gérer.
 int fat_seek_file(open_file_descriptor * ofd, long offset, int whence) {
 	fat_fs_instance_t *instance = (fat_fs_instance_t*) ofd->fs_instance;
+	fat_extra_data_t *extra_data = (fat_extra_data_t*) ofd->extra_data;
 	switch (whence) {
 	case SEEK_SET: // depuis le debut du fichier
 		if ((unsigned long) offset < ofd->file_size) {
 			// On se met au début :
-			ofd->current_cluster = ofd->first_cluster;
+			extra_data->current_cluster = extra_data->first_cluster;
 			ofd->current_octet = 0;
 
 			// On avance de cluster en cluster.
 			while (offset >= (long)instance->fat_info.bytes_per_cluster) {
 				offset -= instance->fat_info.bytes_per_cluster;
 				ofd->current_octet += instance->fat_info.bytes_per_cluster;
-				ofd->current_cluster = instance->fat_info.file_alloc_table[ofd->current_cluster];
+				extra_data->current_cluster = instance->fat_info.file_alloc_table[extra_data->current_cluster];
 			}
 
 			ofd->current_octet += offset;
@@ -107,7 +159,7 @@ int fat_seek_file(open_file_descriptor * ofd, long offset, int whence) {
 
 			while (offset + current_octet_cluster >= (long)instance->fat_info.bytes_per_cluster) {
 				offset -= instance->fat_info.bytes_per_cluster;
-				ofd->current_cluster = instance->fat_info.file_alloc_table[ofd->current_cluster];
+				extra_data->current_cluster = instance->fat_info.file_alloc_table[extra_data->current_cluster];
 			}
 			load_buffer(ofd);
 		} else {
@@ -133,6 +185,7 @@ size_t fat_write_file(open_file_descriptor *ofd __attribute__((__unused__)), con
 
 size_t fat_read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 	fat_fs_instance_t *instance = (fat_fs_instance_t*) ofd->fs_instance;
+	fat_extra_data_t *extra_data = (fat_extra_data_t*) ofd->extra_data;
 	size_t size_buffer = sizeof(ofd->buffer) < instance->fat_info.BS.bytes_per_sector ? 
 			sizeof(ofd->buffer) : instance->fat_info.BS.bytes_per_sector;
 	int ret = 0;
@@ -152,16 +205,16 @@ size_t fat_read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 		if (ofd->current_octet == ofd->file_size) {
 			break;
 		} else {
-			char c = ofd->buffer[ofd->current_octet_buf];
+			char c = extra_data->buffer[extra_data->current_octet_buf];
 			ret++;
-			ofd->current_octet_buf++;
+			extra_data->current_octet_buf++;
 			ofd->current_octet++;
 			((char*) buf)[j++] = c;
 			int current_octet_cluster = ofd->current_octet % instance->fat_info.bytes_per_cluster;
 			if (current_octet_cluster == 0) {
-				ofd->current_cluster = instance->fat_info.file_alloc_table[ofd->current_cluster];
+				extra_data->current_cluster = instance->fat_info.file_alloc_table[extra_data->current_cluster];
 				load_buffer(ofd);
-			} else if (ofd->current_octet_buf >= size_buffer) {
+			} else if (extra_data->current_octet_buf >= size_buffer) {
 				load_buffer(ofd);
 			}
 		}
@@ -236,40 +289,9 @@ int fat_createfile (fat_fs_instance_t* instance, const char * path, mode_t mode 
   return 0;
 }
 
-open_file_descriptor * fat_open_file(fs_instance_t *instance, const char * path, uint32_t flags) {
-	directory_entry_t *f;
-	if ((f = open_file_from_path((fat_fs_instance_t*)instance, path)) == NULL) {
-		if (flags & O_CREAT) {
-			fat_createfile((fat_fs_instance_t*)instance, path, 0); // XXX: set du vrai mode.
-			if ((f = open_file_from_path((fat_fs_instance_t*)instance, path)) == NULL) {
-				return NULL;
-			}
-		} else {
-			return NULL;
-		}
-	}
-	open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
-	size_t size_buffer = sizeof(ofd->buffer) < ((fat_fs_instance_t*)instance)->fat_info.BS.bytes_per_sector ? 
-			sizeof(ofd->buffer) : ((fat_fs_instance_t*)instance)->fat_info.BS.bytes_per_sector;
-
-	ofd->fs_instance = instance;
-	ofd->first_cluster = f->cluster;
-	ofd->file_size = f->size;
-	ofd->current_cluster = ofd->first_cluster;
-	ofd->current_octet = 0;
-	ofd->current_octet_buf = 0;
-
-	ofd->readdir = fat_readdir;
-	ofd->write = fat_write_file;
-	ofd->read = fat_read_file;
-	ofd->seek = fat_seek_file;
-	ofd->close = fat_close;
-
-	((fat_fs_instance_t*)instance)->fat_info.read_data(instance->device, ofd->buffer, size_buffer, ((fat_fs_instance_t*)instance)->fat_info.addr_data + (ofd->current_cluster - 2) * ((fat_fs_instance_t*)instance)->fat_info.BS.sectors_per_cluster * ((fat_fs_instance_t*)instance)->fat_info.BS.bytes_per_sector);
-
-	kfree(f);
-
-	return ofd;
+int fat_open(open_file_descriptor *ofd) {
+	load_buffer(ofd);
+	return 0;
 }
 
 int fat_close(open_file_descriptor *ofd) {
@@ -280,7 +302,8 @@ int fat_close(open_file_descriptor *ofd) {
 	return 0;
 }
 
-int fat_stat(fs_instance_t *instance, const char *path, struct stat *stbuf) {
+/*
+int fat_stat(inode_t *inode, struct stat *stbuf) {
 	int res = 0;
 
 	memset(stbuf, 0, sizeof(struct stat));
@@ -328,7 +351,7 @@ int fat_stat(fs_instance_t *instance, const char *path, struct stat *stbuf) {
 
 	return res;
 }
-
+*/
 
 int fat_unlink(fs_instance_t *instance, const char * path) {
   if (path[0] == '\0' || strcmp(path, "/") == 0)

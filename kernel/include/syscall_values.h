@@ -63,5 +63,9 @@
 #define SYS_WAITPID 31		/**< Attend la fin d'un processus. */
 #define SYS_RMDIR 32			/**< Suppression d'un dossier vide. */
 #define SYS_DUP2 33				/**< Duplique un descripteur de fichier en précisant le nouveau fd à utiliser. */
+#define SYS_CHMOD 34			/**< Change les droits d'un fichier. */
+#define SYS_CHOWN 35			/**< Change les propriétaires d'un fichier. */
+#define SYS_UTIMES 36			/**< Change la date d'accès et de modification d'un fichier. */
+#define SYS_RENAME 37			/**< Déplace ou renomme un fichier. */
 
 #endif

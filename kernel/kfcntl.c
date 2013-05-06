@@ -92,8 +92,8 @@ void close_all_fd() {
 			ofd = process->fd[fd_id].ofd;
 			process->fd[fd_id].used = 0;
 
-			if(ofd->close != NULL)
-				ofd->close(ofd);
+			if(ofd->f_ops->close != NULL)
+				ofd->f_ops->close(ofd);
 
 			kfree(ofd);
 		}
@@ -129,10 +129,10 @@ SYSCALL_HANDLER2(sys_close, int fd_id, uint32_t* ret)
 	if (fd_id >= 0 && fd_id < FOPEN_MAX && process->fd[fd_id].used) {
 		ofd = process->fd[fd_id].ofd;
 	
-		if(ofd->close == NULL)
+		if(ofd->f_ops->close == NULL)
 			kerr("No \"close\" method for this device.");
 		else
-			*ret = ofd->close(ofd);
+			*ret = ofd->f_ops->close(ofd);
 		kfree(ofd);
 		process->fd[fd_id].used = 0;
 	}

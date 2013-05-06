@@ -38,6 +38,9 @@
 #include <pagination.h>
 #include <scheduler.h>
 #include <types.h>
+#include <elf.h>
+#include <kstat.h>
+#include <kunistd.h>
 
 #define GET_PROCESS 0
 #define GET_PROCESS_LIST 1
@@ -582,7 +585,7 @@ SYSCALL_HANDLER1(sys_getppid, uint32_t* ppid)
 	*ppid = process->ppid;
 }
 
-SYSCALL_HANDLER2(sys_exec, process_init_data_t* init_data, int *pid)
+static int sys_exec2(process_init_data_t* init_data)
 {
 	process_t *process;
 	if(init_data->exec_type == EXEC_KERNEL) {
@@ -590,8 +593,65 @@ SYSCALL_HANDLER2(sys_exec, process_init_data_t* init_data, int *pid)
 	} else {
 		process = create_process_elf(init_data);
 	}
-	*pid = process->pid;
 	scheduler_add_process(process);
+	return process->pid;
+}
+
+SYSCALL_HANDLER3(sys_exec, char *cmdline, char **environ, int *retval)
+{
+	process_t* process = get_current_process();
+	int pid = process->pid;
+
+	char* execpath = kmalloc(strlen(cmdline) + 1);
+	strcpy(execpath, cmdline);
+
+	int ret = -1;
+	int offset = 0;
+	
+	while(execpath[offset] != ' ' && execpath[offset] != '\0')
+		offset++;
+	
+	execpath[offset] = '\0';
+	
+	struct stat buf;
+	sys_stat(execpath, &buf, &ret);
+
+	if (!S_ISREG(buf.st_mode) || !(S_IXUSR & buf.st_mode)) {
+		*retval = -1;
+	}
+
+	int fd;
+	sys_open(&fd, execpath, O_RDONLY);
+	
+	process_init_data_t init_data;
+	
+	ret = -1;
+	if(fd != -1)
+	{
+		init_data.name	= execpath;
+		init_data.stack_size = 0x1000;
+		init_data.priority = 0;
+		
+		init_data.args = cmdline;
+		init_data.envp = environ;
+		
+		init_data.mem_size = elf_size(fd);
+		init_data.data = kmalloc(init_data.mem_size);
+		memset(init_data.data, 0, init_data.mem_size);
+		init_data.entry_point = load_elf(fd, init_data.data);
+		
+		init_data.file = load_elf_file(fd);
+
+		init_data.ppid = pid;
+		init_data.exec_type = EXEC_ELF;
+
+		ret = sys_exec2(&init_data);
+
+		kfree(init_data.data);
+	}
+	kfree(execpath);
+	
+	*retval = ret;
 }
 
 process_t* sys_proc_list(uint32_t action)

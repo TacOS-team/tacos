@@ -1,5 +1,5 @@
 /**
- * @file process.c
+ * @file dcache.h
  *
  * @author TacOS developers 
  *
@@ -23,25 +23,18 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * @brief dentry cache
  */
 
-#include <sys/types.h>
-#include <stdlib.h>
-#include <stdio.h> 
-#include <unistd.h>
-#include <sys/syscall.h>
-#include <string.h>
-#include <fcntl.h>
+#ifndef _DCACHE_H
+#define _DCACHE_H
 
-#define GET_PROCESS 0 /**< Action pour obtenir les infos d'un process. */
-#define GET_PROCESS_LIST 1 /**< Action pour obtenir la liste. */
+struct _fs_instance_t;
+struct _dentry_t;
 
-extern char **environ;
+void dcache_init();
+struct _dentry_t *dcache_get(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name);
+void dcache_set(struct _fs_instance_t *instance, struct _dentry_t* pdentry, const char * name, struct _dentry_t *dentry);
+void dcache_remove(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name);
 
-int exec_elf(char* cmdline)
-{
-	int ret;
-	syscall(SYS_EXEC, (uint32_t)cmdline, (uint32_t)environ, (uint32_t)&ret);
-	return ret;
-}
+#endif

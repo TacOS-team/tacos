@@ -28,13 +28,17 @@
  */
 
 #include <elf.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
+#include <kmalloc.h>
+#include <kunistd.h>
+#include <fd_types.h>
+#include <klibc/string.h>
 
 const char debug_string_sname[] = ".strtab";
+
+static ssize_t read(int fd, void *buf, size_t count) {
+	sys_read(fd, buf, &count);
+	return count;
+}
 
 int is_elf(Elf32_Ehdr* elf_header)
 {
@@ -51,7 +55,8 @@ int is_elf(Elf32_Ehdr* elf_header)
 
 int load_elf_header(Elf32_Ehdr* elf_header, int fd)
 {
-	lseek(fd, 0, SEEK_SET);	
+	long offset = 0;
+	sys_seek(fd, &offset, SEEK_SET);	
 
 	read(fd, elf_header, sizeof(Elf32_Ehdr));
 	
@@ -61,20 +66,10 @@ int load_elf_header(Elf32_Ehdr* elf_header, int fd)
 int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int index __attribute__ ((unused)), int fd)
 {
 	/* On se déplace au bon endroit dans le fichier (offset du premier header + index*taille d'un header) */
-	lseek(fd, elf_header->e_phoff + index*elf_header->e_phentsize, SEEK_SET);
+	long offset = elf_header->e_phoff + index*elf_header->e_phentsize;
+	sys_seek(fd, &offset, SEEK_SET);
 	
 	read(fd, program_header, elf_header->e_phentsize);
-
-	/* TODO: vérifier que ce header existe bien, et retourner un code d'erreur sinon... */
-	return 0;
-}
-
-int load_section_header(Elf32_Shdr* section_header, Elf32_Ehdr* elf_header, int index __attribute__ ((unused)), int fd)
-{
-	/* On se déplace au bon endroit dans le fichier (offset du premier header + index*taille d'un header) */
-	lseek(fd, elf_header->e_shoff + index*elf_header->e_shentsize, SEEK_SET);
-	
-	read(fd, section_header, elf_header->e_shentsize);
 
 	/* TODO: vérifier que ce header existe bien, et retourner un code d'erreur sinon... */
 	return 0;
@@ -83,7 +78,6 @@ int load_section_header(Elf32_Shdr* section_header, Elf32_Ehdr* elf_header, int 
 unsigned long int elf_size(int fd)
 {
 	Elf32_Ehdr elf_header;
-	Elf32_Phdr p_header;
 	int i;
 
 	vaddr_t start = 0xFFFFFFFF;
@@ -91,15 +85,20 @@ unsigned long int elf_size(int fd)
 	
 	if(load_elf_header(&elf_header, fd))
 	{
+		Elf32_Phdr p_header[elf_header.e_phnum];
+
+		long offset = elf_header.e_phoff;
+		sys_seek(fd, &offset, SEEK_SET);
+		read(fd, p_header, elf_header.e_phentsize * elf_header.e_phnum);
+
 		for(i=0; i<elf_header.e_phnum; i++)
 		{
-			load_program_header(&p_header, &elf_header, i, fd);
-			if(p_header.p_type == PT_LOAD)
+			if(p_header[i].p_type == PT_LOAD)
 			{	
-				if(p_header.p_vaddr < start)
-					start = p_header.p_vaddr;
-				if(p_header.p_vaddr + p_header.p_memsz > end)
-					end = p_header.p_vaddr + p_header.p_memsz;
+				if(p_header[i].p_vaddr < start)
+					start = p_header[i].p_vaddr;
+				if(p_header[i].p_vaddr + p_header[i].p_memsz > end)
+					end = p_header[i].p_vaddr + p_header[i].p_memsz;
 			}
 		}
 	}
@@ -109,7 +108,6 @@ unsigned long int elf_size(int fd)
 int load_elf(int fd, void* dest)
 {
 	Elf32_Ehdr elf_header;
-	Elf32_Phdr p_header;
 
 	uint32_t i;
 	
@@ -117,15 +115,20 @@ int load_elf(int fd, void* dest)
 
 	if(load_elf_header(&elf_header, fd))
 	{
+		Elf32_Phdr p_header[elf_header.e_phnum];
+
+		long offset = elf_header.e_phoff;
+		sys_seek(fd, &offset, SEEK_SET);
+		read(fd, p_header, elf_header.e_phentsize * elf_header.e_phnum);
+
 		for(i=0; i< elf_header.e_phnum; i++)
 		{
-			load_program_header(&p_header, &elf_header, i, fd);
-			
 			/* Si le header correspondond à un segment à charger, on le charge! */
-			if( p_header.p_type == PT_LOAD && p_header.p_vaddr >= 0x40000000)
+			if( p_header[i].p_type == PT_LOAD && p_header[i].p_vaddr >= 0x40000000)
 			{
-				lseek(fd, p_header.p_offset, SEEK_SET);
-				read(fd, &(pointeur[p_header.p_vaddr - 0x40000000]),p_header.p_filesz); 
+				long offset = p_header[i].p_offset;
+				sys_seek(fd, &offset, SEEK_SET);
+				read(fd, &(pointeur[p_header[i].p_vaddr - 0x40000000]),p_header[i].p_filesz); 
 			}
 		}
 	}
@@ -153,25 +156,27 @@ Elf32_File* load_elf_file(int fd)
 	if(fd != -1) 
 	{
 		/* Allocation de la mémoire pour la structure principale et le header du fichier */
-		file = malloc(sizeof(Elf32_File));
-		file->elf_header = malloc(sizeof(Elf32_Ehdr));
+		file = kmalloc(sizeof(Elf32_File));
+		file->elf_header = kmalloc(sizeof(Elf32_Ehdr));
 		
 		if (load_elf_header(file->elf_header, fd)) 
 		{
 			/*file->name = strdup(filename);*/
 			
 			/* Allouer la mémoire pour les différents headers */
-			file->pheaders = malloc(file->elf_header->e_phnum * sizeof(Elf32_Phdr));
-			file->sheaders = malloc(file->elf_header->e_shnum * sizeof(Elf32_Shdr));
+			file->pheaders = kmalloc(file->elf_header->e_phnum * sizeof(Elf32_Phdr));
+			file->sheaders = kmalloc(file->elf_header->e_shnum * sizeof(Elf32_Shdr));
 			
 			/* Charge les program headers */
-			for(i=0; i<file->elf_header->e_phnum; i++)
-				load_program_header(&(file->pheaders[i]), file->elf_header, i, fd);
-				
+			long offset = file->elf_header->e_phoff;
+			sys_seek(fd, &offset, SEEK_SET);
+			read(fd, file->pheaders, file->elf_header->e_phentsize * file->elf_header->e_phnum);
+
 			/* Charge les section headers */
-			for(i=0; i<file->elf_header->e_shnum; i++)
-			{
-				load_section_header(&(file->sheaders[i]), file->elf_header, i, fd);
+			offset = file->elf_header->e_shoff;
+			sys_seek(fd, &offset, SEEK_SET);
+			read(fd, file->sheaders, file->elf_header->e_shentsize * file->elf_header->e_shnum);
+			for (i = 0; i < file->elf_header->e_shnum; i++) {
 				if(file->sheaders[i].sh_type == SHT_SYMTAB)
 					symtab_index = i;
 			}
@@ -180,8 +185,9 @@ Elf32_File* load_elf_file(int fd)
 			/* Si on a trouvé une table de string, on la charge */
 			if(strtab_index != SHN_UNDEF)
 			{
-				file->string_table = malloc(file->sheaders[strtab_index].sh_size);
-				lseek(fd, file->sheaders[strtab_index].sh_offset, SEEK_SET);
+				file->string_table = kmalloc(file->sheaders[strtab_index].sh_size);
+				long offset = file->sheaders[strtab_index].sh_offset; 
+				sys_seek(fd, &offset, SEEK_SET);
 				read(fd, file->string_table, file->sheaders[strtab_index].sh_size);
 			}
 			
@@ -189,8 +195,9 @@ Elf32_File* load_elf_file(int fd)
 			
 			if(symtab_index != -1)
 			{
-				file->sym_table = malloc(file->sheaders[symtab_index].sh_size);
-				lseek(fd, file->sheaders[symtab_index].sh_offset, SEEK_SET);
+				file->sym_table = kmalloc(file->sheaders[symtab_index].sh_size);
+				long offset = file->sheaders[symtab_index].sh_offset;
+				sys_seek(fd, &offset, SEEK_SET);
 				read(fd, file->sym_table, file->sheaders[symtab_index].sh_size);
 				file->nb_symbols = file->sheaders[symtab_index].sh_size / file->sheaders[symtab_index].sh_entsize;
 				
@@ -205,8 +212,9 @@ Elf32_File* load_elf_file(int fd)
 				if(found)
 				{
 					i--;
-					file->symbol_string_table = malloc(file->sheaders[i].sh_size);
-					lseek(fd, file->sheaders[i].sh_offset, SEEK_SET);
+					file->symbol_string_table = kmalloc(file->sheaders[i].sh_size);
+					long offset = file->sheaders[i].sh_offset;
+					sys_seek(fd, &offset, SEEK_SET);
 					read(fd, file->symbol_string_table, file->sheaders[i].sh_size);
 				}
 				
@@ -234,6 +242,7 @@ Elf32_Sym* find_symbol(Elf32_File* file, const char* symbol)
 	return ret;
 }
 
+#if 0
 
 void print_elf_header_info(Elf32_Ehdr* elf_header)
 {
@@ -460,3 +469,5 @@ void elf_info(char* name)
 /* TODO
 Utiliser la bonne string table selon l'utilisation (.debug_str pour les section, .debug_pubtypes pour les symboles visiblement)
 */
+
+#endif

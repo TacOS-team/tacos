@@ -1,5 +1,5 @@
 /**
- * @file process.c
+ * @file chown.c
  *
  * @author TacOS developers 
  *
@@ -23,25 +23,31 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Change proprio et groupe.
  */
 
-#include <sys/types.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include <stdio.h> 
 #include <unistd.h>
-#include <sys/syscall.h>
-#include <string.h>
-#include <fcntl.h>
 
-#define GET_PROCESS 0 /**< Action pour obtenir les infos d'un process. */
-#define GET_PROCESS_LIST 1 /**< Action pour obtenir la liste. */
-
-extern char **environ;
-
-int exec_elf(char* cmdline)
+int main(int argc, char** argv)
 {
-	int ret;
-	syscall(SYS_EXEC, (uint32_t)cmdline, (uint32_t)environ, (uint32_t)&ret);
-	return ret;
+	int i;
+	
+	if (argc <= 2) {
+		fprintf(stderr, "usage: %s uid:gid fichier\n", argv[0]);
+	} else {
+		uid_t uid = atoi(argv[1]); // TODO: gérer gid
+		if (uid != (uid_t)(-1)) {
+			for(i = 2; i < argc; i++) {
+				if (chown(argv[i], uid, -1) != 0) {
+					fprintf(stderr, "Le fichier %s n'existe pas.\n", argv[i]);
+				} else {
+					printf("Changement des droits de %s, ok.\n", argv[i]);
+				}
+			}
+		}
+	}
+	return 0;
 }
+

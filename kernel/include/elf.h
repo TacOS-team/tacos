@@ -365,7 +365,4 @@ Elf32_Sym* find_symbol(Elf32_File* file, const char* symbol);
 void elf_info(char* name);
 
 
-// XXX: pas sa place...
-int exec_elf(char* name, int orphan);
-
 #endif /* _ELF_H_ */

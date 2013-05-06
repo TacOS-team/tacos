@@ -44,7 +44,7 @@ int mkdir(const char *pathname, mode_t mode) {
 	} else {
 		syscall(SYS_MKDIR, (uint32_t) pathname, (uint32_t) mode, (uint32_t) &ret);
 	}
-	return ret;
+	return -ret;
 }
 
 DIR* opendir(const char* dirname) {

@@ -34,8 +34,6 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 
-#include <elf.h>
-
 char * get_absolute_path(const char *dirname) {
 	char * cwd = getenv("PWD");
 	if (cwd == NULL) {
@@ -169,6 +167,30 @@ int lseek(int fd, long offset, int whence) {
 	return offset;
 }
 
+int chmod(const char *path, mode_t mode) {
+	int ret;
+	if (path[0] != '/') {
+		char * absolutepath = get_absolute_path(path);
+		syscall(SYS_CHMOD, (uint32_t)absolutepath, (uint32_t)mode, (uint32_t)&ret);
+		free(absolutepath);
+	} else {
+		syscall(SYS_CHMOD, (uint32_t)path, (uint32_t)mode, (uint32_t)&ret);
+	}
+	return ret;
+}
+
+int chown(const char *path, uid_t owner, gid_t group) {
+	int *ret = (int*)&group;
+	if (path[0] != '/') {
+		char * absolutepath = get_absolute_path(path);
+		syscall(SYS_CHOWN, (uint32_t)absolutepath, (uint32_t)owner, (uint32_t)ret);
+		free(absolutepath);
+	} else {
+		syscall(SYS_CHMOD, (uint32_t)path, (uint32_t)owner, (uint32_t)ret);
+	}
+	return *ret;
+}
+
 int stat(const char *path, struct stat *buf) {
 	int ret;
 	if (path[0] != '/') {
@@ -246,7 +268,7 @@ int execv(const char *path __attribute__ ((unused)), char *const argv[]) {
 		strcat(cmd, argv[i]);
 		i++;
 	}
-	return exec_elf(cmd, 0);
+	return exec_elf(cmd);
 }
 
 int execvp(const char *file __attribute__ ((unused)), char *const argv[]) {
@@ -261,6 +283,6 @@ int execvp(const char *file __attribute__ ((unused)), char *const argv[]) {
 			strcat(cmd, argv[i]);
 			i++;
 		}
-		return exec_elf(cmd, 0);
+		return exec_elf(cmd);
 	}
 }

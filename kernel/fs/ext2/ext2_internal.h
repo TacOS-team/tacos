@@ -32,7 +32,7 @@
 #include <fs/devfs.h>
 #include <vfs.h>
 
-#define EXT2_ROOT_INO 2
+#define EXT2_ROOT_INO 2 /**< Numéro de l'inode racine. */
 
 
 /**
@@ -80,7 +80,7 @@ struct ext2_super_block {
 // -- Performance Hints --
 	uint8_t   s_prealloc_blocks;	/**< Nr of blocks to try to preallocate*/
 	uint8_t   s_prealloc_dir_blocks;  /**< Nr to preallocate for dirs */
-	uint16_t  s_padding1;			/** unused. */
+	uint16_t  s_padding1;			/**< unused. */
 // -- Journaling Support --
 	uint8_t   s_journal_uuid[16];	/**< uuid of journal superblock */
 	uint32_t  s_journal_inum;		/**< inode number of journal file */
@@ -89,7 +89,7 @@ struct ext2_super_block {
 // -- Directory Indexing Support --
 	uint32_t  s_hash_seed[4];		/**< HTREE hash seed */
 	uint8_t   s_def_hash_version;	/**< Default hash version to use */
-	uint8_t   s_padding[3];
+	uint8_t   s_padding[3];		/**< unused. */
 // -- Other options --
 	uint32_t  s_default_mount_opts;
 	uint32_t  s_first_meta_bg;		/**< First metablock block group */
@@ -114,8 +114,7 @@ struct ext2_super_block {
 /**
  * Groupe.
  */
-struct ext2_group_desc
-{
+struct ext2_group_desc {
   uint32_t  bg_block_bitmap;		/**< Blocks bitmap block */
   uint32_t  bg_inode_bitmap;		/**< Inodes bitmap block */
   uint32_t  bg_inode_table;			/**< Inodes table block */
@@ -124,6 +123,15 @@ struct ext2_group_desc
   uint16_t  bg_used_dirs_count;		/**< Directories count */
   uint16_t  bg_pad;					/**< unused. */
   uint32_t  bg_reserved[3];			/**< reserved. */
+};
+
+/**
+ * Copie mémoire des infos du disque pour limiter le nombre d'accès inutiles.
+ */
+struct ext2_group_desc_internal {
+	uint8_t *inode_bitmap;
+	struct ext2_inode *inodes;
+	//TODO
 };
 
 /**
@@ -180,15 +188,6 @@ struct directories_t {
 	struct directories_t *next; /**< Pointeur vers la prochaine structure du même type. */
 };
 
-/**
- * @brief Structure chaînée pour enregistrer une suite d'adresses (utile lorsque les
- * données ne rentrent pas dans un seul inode).
- */
-struct blk_t {
-	int addr;           /**< Une adresse. */
-	struct blk_t *next; /**< Pointeur vers une structure contenant l'adresse suivante. */
-};
-
 // -- file format --
 #define EXT2_S_IFSOCK	0xC000	/**< socket */
 #define EXT2_S_IFLNK	0xA000	/**< symbolic link */
@@ -217,11 +216,13 @@ struct blk_t {
  */
 typedef struct _ext2_fs_instance_t {
 	fs_instance_t super; /**< Common fields for all FS instances. */
+	dentry_t * root;
 	struct ext2_super_block superblock; /**< Superblock. */
 	struct ext2_group_desc *group_desc_table; /**< Block group descriptor table. */
 	int n_groups;   /**< Number of entries in the group desc table. */
 	blkdev_read_t read_data; /**< Function to read data. */
 	blkdev_write_t write_data; /**< Function to write data. */
+	struct ext2_group_desc_internal *group_desc_table_internal; /**< Copy of inodes (only, for now?) */
 } ext2_fs_instance_t;
 
 /**
@@ -230,7 +231,6 @@ typedef struct _ext2_fs_instance_t {
 typedef struct _ext2_extra_data {
 	uint32_t inode; /**< Inode du fichier. */
 	uint32_t type; /**< Type du fichier. */
-	struct blk_t *blocks; /**< Les blocs où sont les données du fichier. */
 } ext2_extra_data;
 
 
@@ -240,17 +240,6 @@ typedef struct _ext2_extra_data {
  * @param instance L'instance de fs que l'on veut démonter.
  */
 void umount_EXT2(fs_instance_t *instance);
-
-/**
- * @brief Ouverture de fichier.
- *
- * @param instance Instance de fs.
- * @param path Chemin (relatif au point de montage) du fichier à ouvrir.
- * @param flags Flags pour l'ouverture.
- *
- * @return un open file descriptor.
- */
-open_file_descriptor * ext2_open(fs_instance_t *instance, const char * path, uint32_t flags);
 
 /**
  * @brief Lecture d'un fichier.
@@ -308,90 +297,58 @@ int ext2_stat(fs_instance_t *instance, const char *path, struct stat *stbuf);
 /**
  * @brief Création d'un noeud (fichier, dossier, fichier spécial...)
  *
- * @param instance Instance de fs.
- * @param path Chemin du noeud.
+ * @param dir Inode du dossier parent. 
+ * @param dentry Structure contenant le nom et un pointeur vers l'inode qui sera créé.
+ * @param mode Droits sur le noeud.
  * @param dev En cas de fichier spécial (device)
  *
  * @return 0 en cas de succès.
  */
-int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t dev);
+int ext2_mknod(inode_t *dir, dentry_t *dentry, mode_t mode, dev_t dev);
+
 
 /**
  * @brief Création d'un dossier.
  *
- * @param instance Instance de fs.
- * @param path Chemin du dossier à créer.
+ * @param dir Inode du dossier parent. 
+ * @param dentry Structure contenant le nom et un pointeur vers l'inode qui sera créé.
  * @param mode Droits sur le dossier.
  *
  * @return 0 en cas de succès.
  */
-int ext2_mkdir(fs_instance_t *instance, const char * path, mode_t mode);
+int ext2_mkdir(inode_t *dir, dentry_t *dentry, mode_t mode);
 
 /**
  * @brief Suppression d'un noeud.
  *
- * @param instance Instance de fs.
- * @param path Chemin du noeud.
+ * @param dir Inode du dossier parent. 
+ * @param dentry Entrée à supprimer.
  *
  * @return 0 en cas de succès.
  */
-int ext2_unlink(fs_instance_t *instance, const char * path);
+int ext2_unlink(inode_t *dir, dentry_t *dentry);
 
 /**
  * @brief Change la taille d'un fichier.
  *
- * @param instance Instance de fs.
- * @param path Chemin du fichier.
+ * @param inode Inode à modifier.
  * @param off Nouvelle taille.
  *
  * @return 0 en cas de succès.
  */
-int ext2_truncate(fs_instance_t *instance, const char * path, off_t off);
+int ext2_truncate(inode_t *inode, off_t off);
 
 /**
  * @brief Suppression d'un dossier vide.
  *
- * @param instance Instance de fs.
- * @param path Chemin du dossier à supprimer.
+ * @param dir Inode du dossier parent. 
+ * @param dentry Dossier à supprimer.
  *
  * @return 0 en cas de succès.
  */
-int ext2_rmdir(fs_instance_t *instance, const char * path);
+int ext2_rmdir(inode_t *dir, dentry_t *dentry);
 
-/**
- * @brief Change les droits d'un fichier.
- *
- * @param instance Instance de fs.
- * @param path Chemin du fichier dont on veut modifier les droits.
- * @param mode Droits.
- *
- * @return 0 en cas de succès.
- */
-int ext2_chmod(fs_instance_t *instance, const char * path, mode_t mode);
-
-/**
- * @brief Change le propriétaire et le groupe d'un fichier.
- *
- * @param instance Instance de fs.
- * @param path Chemin du fichier dont on veut modifier les proprios.
- * @param uid Id utilisateur.
- * @param gid Id groupe.
- *
- * @return 0 en cas de succès.
- */
-int ext2_chown(fs_instance_t *instance, const char * path, uid_t uid, gid_t gid);
-
-/**
- * @brief Crée un noeud.
- *
- * @param instance Instance de fs.
- * @param path Chemin du noeud à créer.
- * @param mode Mode par défaut.
- * @param dev Device (0 si fichier normal).
- *
- * @return 0 en cas de succès.
- */
-int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t dev);
+int ext2_setattr(inode_t *inode, file_attributes_t *attr);
 
 /**
  * Déplacement dans un fichier.
@@ -404,6 +361,26 @@ int ext2_mknod(fs_instance_t *instance, const char * path, mode_t mode, dev_t de
  */
 int ext2_seek(open_file_descriptor * ofd, long offset, int whence);
 
+/**
+ * Retourne le noeud racine.
+ *
+ * @return le noeud racine.
+ */
+dentry_t *ext2_getroot();
+dentry_t* ext2_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name);
 
+/**
+ * @brief Renomme ou déplace un fichier.
+ *
+ * @param old_dir Inode du dossier parent de l'ancien nom.
+ * @param old_dentry Nom et inode à déplacer.
+ * @param new_dir Inode du dossier de destination.
+ * @param new_dentry Nom et inode de destination.
+ *
+ * @return 0 en cas de succès.
+ */
+int ext2_rename(inode_t *old_dir, dentry_t *old_dentry, inode_t *new_dir, dentry_t *new_dentry);
+
+extern struct _open_file_operations_t ext2fs_fops; /**< Pointeurs sur les fonctions de manipulation de fichiers pour ce FS. */
 
 #endif

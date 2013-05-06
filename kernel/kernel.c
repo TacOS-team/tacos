@@ -176,6 +176,12 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_DUP2,	(syscall_handler_t) sys_dup2);
 	syscall_set_handler(SYS_MKNOD,	(syscall_handler_t) sys_mknod);
 	syscall_set_handler(SYS_WAITPID, (syscall_handler_t) sys_waitpid);
+	syscall_set_handler(SYS_CHMOD, (syscall_handler_t) sys_chmod);
+	syscall_set_handler(SYS_CHOWN, (syscall_handler_t) sys_chown);
+	syscall_set_handler(SYS_UTIMES, (syscall_handler_t) sys_utimes);
+	syscall_set_handler(SYS_RENAME, (syscall_handler_t) sys_rename);
+
+	vfs_init();
 
 	devfs_init();
 	vfs_mount(NULL, "dev", "DevFS");

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <fcntl.h>
-#include <process.h>
+#include <unistd.h>
 #include <sys/ioctl.h>
 
 int main(int argc, char **argv) {
@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
 	ioctl(cttyfd, TIOCSCTTY, argv[1]);
 	close(cttyfd);
 
-	exec_elf("/tacos/bin/mishell", 0);
+	exec_elf("/tacos/bin/mishell");
 
 	return 0;
 }

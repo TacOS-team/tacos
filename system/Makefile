@@ -5,7 +5,7 @@ SRCS=*.c
 
 all: libsystem
 
-libsystem: syscall.o elf.o
+libsystem: syscall.o
 	$(AR) r ../lib/$@.a $^
 
 %.o: %.c

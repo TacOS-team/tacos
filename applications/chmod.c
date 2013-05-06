@@ -1,5 +1,5 @@
 /**
- * @file process.c
+ * @file chmod.c
  *
  * @author TacOS developers 
  *
@@ -23,25 +23,42 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Change les droits.
  */
 
-#include <sys/types.h>
-#include <stdlib.h>
-#include <stdio.h> 
-#include <unistd.h>
-#include <sys/syscall.h>
-#include <string.h>
-#include <fcntl.h>
+#include <dirent.h>
+#include <stdio.h>
 
-#define GET_PROCESS 0 /**< Action pour obtenir les infos d'un process. */
-#define GET_PROCESS_LIST 1 /**< Action pour obtenir la liste. */
-
-extern char **environ;
-
-int exec_elf(char* cmdline)
-{
-	int ret;
-	syscall(SYS_EXEC, (uint32_t)cmdline, (uint32_t)environ, (uint32_t)&ret);
-	return ret;
+mode_t convert(char *droits) {
+	mode_t m = 0;
+	while (*droits) {
+		if (*droits < '0' || *droits > '7') {
+			return -1;
+		}
+		m = m * 8 + *droits - '0';
+		droits++;
+	}
+	return m;
 }
+
+int main(int argc, char** argv)
+{
+	int i;
+	
+	if (argc <= 2) {
+		fprintf(stderr, "usage: %s droits fichier\n", argv[0]);
+	} else {
+		mode_t droits = convert(argv[1]);
+		if (droits != (mode_t)(-1)) {
+			for(i = 2; i < argc; i++) {
+				if (chmod(argv[i], droits) != 0) {
+					fprintf(stderr, "Le fichier %s n'existe pas.\n", argv[i]);
+				} else {
+					printf("Changement des droits de %s, ok.\n", argv[i]);
+				}
+			}
+		}
+	}
+	return 0;
+}
+

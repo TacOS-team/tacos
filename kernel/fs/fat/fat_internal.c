@@ -31,7 +31,11 @@
 # define EOF (-1)
 #endif
 
+#include "fat_internal.h"
 #include "fat_outils.h"
+
+struct _open_file_operations_t fatfs_fops = {.write = fat_write_file, .read = fat_read_file, .seek = fat_seek_file, .ioctl = NULL, .open = fat_open, .close = fat_close, .readdir = fat_readdir};
+
 
 /*
  * Read the File Allocation Table.
@@ -43,7 +47,7 @@ void read_fat(fat_fs_instance_t *instance) {
 	int p = 0;
 	uint32_t tmp = 0;
 
-  instance->fat_info.read_data(instance->super.device, buffer, sizeof(buffer), instance->fat_info.addr_fat[0]);
+  instance->read_data(instance->super.device, buffer, sizeof(buffer), instance->fat_info.addr_fat[0]);
 
 	if (instance->fat_info.fat_type == FAT12) {
 		// decodage FAT12
@@ -97,7 +101,7 @@ static void write_fat() {
   }
  
   for (i = 0; i < fat_info.BS.table_count; i++) {
-    fat_info.write_data(instance->super.device, buffer, sizeof(buffer), fat_info.addr_fat[i]);
+    write_data(instance->super.device, buffer, sizeof(buffer), fat_info.addr_fat[i]);
   }
 }
 */
@@ -117,14 +121,14 @@ static void write_fat_entry(fat_fs_instance_t *instance, int index) {
     buffer[2] = tmp & 0xFF0000;
 
 		for (i = 0; i < instance->fat_info.BS.table_count; i++) {
-			instance->fat_info.write_data(instance->super.device, buffer, sizeof(buffer), instance->fat_info.addr_fat[i] + index * 12);
+			instance->write_data(instance->super.device, buffer, sizeof(buffer), instance->fat_info.addr_fat[i] + index * 12);
 		}
   } else if (instance->fat_info.fat_type == FAT16) {
 		uint8_t buffer[2];
     buffer[0] = instance->fat_info.file_alloc_table[index] & 0x00FF;
     buffer[1] = instance->fat_info.file_alloc_table[index] & 0xFF00;
 		for (i = 0; i < instance->fat_info.BS.table_count; i++) {
-			instance->fat_info.write_data(instance->super.device, buffer, sizeof(buffer), instance->fat_info.addr_fat[i] + index * 16);
+			instance->write_data(instance->super.device, buffer, sizeof(buffer), instance->fat_info.addr_fat[i] + index * 16);
 		}
   } else if (instance->fat_info.fat_type == FAT32) {
 		uint8_t buffer[4];
@@ -133,7 +137,7 @@ static void write_fat_entry(fat_fs_instance_t *instance, int index) {
     buffer[2] = instance->fat_info.file_alloc_table[index] & 0x00FF0000;
     buffer[3] = instance->fat_info.file_alloc_table[index] & 0xFF000000;
 		for (i = 0;  i < instance->fat_info.BS.table_count; i++) {
-			instance->fat_info.write_data(instance->super.device, buffer, sizeof(buffer), instance->fat_info.addr_fat[i] + index * 32);
+			instance->write_data(instance->super.device, buffer, sizeof(buffer), instance->fat_info.addr_fat[i] + index * 32);
 		}
   }
 }
@@ -172,7 +176,7 @@ static void open_dir(fat_fs_instance_t *instance, int cluster, directory_t *dir)
 	int c = 0;
 	next = cluster;
 	while (!fat_is_last_cluster(instance, next)) {
-		instance->fat_info.read_data(instance->super.device, (uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
+		instance->read_data(instance->super.device, (uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
 		next = instance->fat_info.file_alloc_table[next];
 		c++;
 	}
@@ -184,7 +188,7 @@ static void open_dir(fat_fs_instance_t *instance, int cluster, directory_t *dir)
 	read_dir_entries(sub_dir, dir, n_dir_entries * n_clusters);
 }
 
-static directory_t * open_root_dir(fat_fs_instance_t *instance) {
+directory_t * open_root_dir(fat_fs_instance_t *instance) {
 	directory_t *dir = kmalloc(sizeof(directory_t));
 
 	if (instance->fat_info.fat_type == FAT32) {
@@ -192,7 +196,7 @@ static directory_t * open_root_dir(fat_fs_instance_t *instance) {
 	} else {
 		fat_dir_entry_t *root_dir = kmalloc(sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count);
 	
-		instance->fat_info.read_data(instance->super.device, (uint8_t*)root_dir, sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count, instance->fat_info.addr_root_dir);
+		instance->read_data(instance->super.device, (uint8_t*)root_dir, sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count, instance->fat_info.addr_root_dir);
 	
 		dir->cluster = -1;
 		dir->total_entries = 0;
@@ -206,29 +210,34 @@ static directory_t * open_root_dir(fat_fs_instance_t *instance) {
 	return dir;
 }
 
-static int open_next_dir(fat_fs_instance_t *instance, directory_t * prev_dir, directory_t * next_dir, char * name) {
+static directory_entry_t* open_next_direntry(directory_t * prev_dir,  const char * name) {
 	int next = 0;
 
 	directory_entry_t *dentry = prev_dir->entries;
 	while (dentry) {
 		if (strcmp(dentry->name, name) == 0) {
-			if ((dentry->attributes & 0x10) == 0x10) { //c'est bien un repe
-				next = dentry->cluster;
-				break;
-			} else {
-				return 2;
-			}
+			next = dentry->cluster;
+			break;
 		}
 		dentry = dentry->next;
 	}
 
 	if (next == 0) {
-		return 1;
+		return NULL;
 	}
- 
-	open_dir(instance, next, next_dir);
 
-	return 0;
+	return dentry;
+}
+
+static int open_next_dir(fat_fs_instance_t *instance, directory_t * prev_dir, directory_t * next_dir, char * name) {
+	int next = 0;
+
+	directory_entry_t *dentry = open_next_direntry(prev_dir, name);
+	if (dentry && (dentry->attributes & 0x10) == 0x10) { //c'est bien un repe
+		open_dir(instance, next, next_dir);
+		return 0;
+	}
+	return 1;
 }
 
 static directory_t * open_dir_from_path(fat_fs_instance_t *instance, const char *path) {
@@ -264,44 +273,6 @@ static directory_t * open_dir_from_path(fat_fs_instance_t *instance, const char 
 	return dir;
 }
 
-static directory_entry_t * open_file_from_path(fat_fs_instance_t *instance, const char *path) {
-	directory_t * directory;
-	if (path[0] != '\0') {
-		char * dir = kmalloc(strlen(path) + 1);
-		char filename[256];
-		fat_split_dir_filename(path, dir, filename);
-
-		directory = open_dir_from_path(instance, dir);
-		kfree(dir);
-
-		if (directory) {
-			directory_entry_t *dir_entry = directory->entries;
-			while (dir_entry) {
-				if (strcmp(dir_entry->name, filename) == 0) {
-					kfree(directory);
-					// TODO: free de la liste chainée.
-					return dir_entry;
-				}
-				dir_entry = dir_entry->next;
-			}
-	
-			kfree(directory);
-			// TODO: free de la liste chainée.
-		}
-	} else {
-		directory_entry_t *dir_entry = kmalloc(sizeof(directory_entry_t));
-		strcpy(dir_entry->name, ".");
-
-		dir_entry->cluster = 0;
-		dir_entry->size = instance->fat_info.bytes_per_cluster;
-		dir_entry->next = NULL;
-		return dir_entry;
-	}
-	
-	return NULL;
-}
-
-
 static int alloc_cluster(fat_fs_instance_t *instance, int n) {
   if (n <= 0) {
     return fat_last_cluster(instance);
@@ -323,7 +294,7 @@ static void init_dir_cluster(fat_fs_instance_t *instance, int cluster) {
   fat_dir_entry_t * dir_entries = kmalloc(n_dir_entries * sizeof(fat_dir_entry_t));
 	memset(dir_entries, 0, n_dir_entries * sizeof(fat_dir_entry_t));
  
-  instance->fat_info.write_data(instance->super.device, (uint8_t*) dir_entries, sizeof(fat_dir_entry_t) * n_dir_entries, instance->fat_info.addr_data + (cluster - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
+  instance->write_data(instance->super.device, (uint8_t*) dir_entries, sizeof(fat_dir_entry_t) * n_dir_entries, instance->fat_info.addr_data + (cluster - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
 }
 
 static int add_fat_dir_entry(fat_fs_instance_t *instance, char * path, fat_dir_entry_t *fentry, int n) {
@@ -342,7 +313,7 @@ static int add_fat_dir_entry(fat_fs_instance_t *instance, char * path, fat_dir_e
     int c = 0;
     next = dir->cluster;
     while (!fat_is_last_cluster(instance, next)) {
-      instance->fat_info.read_data(instance->super.device, (uint8_t*)(dir_entries + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
+      instance->read_data(instance->super.device, (uint8_t*)(dir_entries + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
       next = instance->fat_info.file_alloc_table[next];
       c++;
     }
@@ -359,7 +330,7 @@ static int add_fat_dir_entry(fat_fs_instance_t *instance, char * path, fat_dir_e
             next = instance->fat_info.file_alloc_table[next];
           for (j = 0; j < n; j++) {
             int off = (i - n + j + 1) % n_dir_entries; // offset dans le cluster.
-            instance->fat_info.write_data(instance->super.device, (uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
+            instance->write_data(instance->super.device, (uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
             if (off == n_dir_entries - 1) {
               next = instance->fat_info.file_alloc_table[next];
             }
@@ -382,11 +353,11 @@ static int add_fat_dir_entry(fat_fs_instance_t *instance, char * path, fat_dir_e
   
       for (j = 0; j < consecutif; j++) {
         int off = n_dir_entries - consecutif + j;
-        instance->fat_info.write_data(instance->super.device, (uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
+        instance->write_data(instance->super.device, (uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
       }
       for (j = consecutif; j < n; j++) {
         int off = n_dir_entries - consecutif + j;
-        instance->fat_info.write_data(instance->super.device, (uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (newcluster - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
+        instance->write_data(instance->super.device, (uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (newcluster - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
       }
       return 0;
     }
@@ -394,13 +365,13 @@ static int add_fat_dir_entry(fat_fs_instance_t *instance, char * path, fat_dir_e
     int i;
     int consecutif = 0;
     fat_dir_entry_t *root_dir = kmalloc(sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count);
-    instance->fat_info.read_data(instance->super.device, (uint8_t*)root_dir, sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count, instance->fat_info.addr_root_dir);
+    instance->read_data(instance->super.device, (uint8_t*)root_dir, sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count, instance->fat_info.addr_root_dir);
 
     for (i = 0; i < instance->fat_info.BS.root_entry_count; i++) {
       if (root_dir[i].utf8_short_name[0] == 0 || (unsigned char)root_dir[i].utf8_short_name[0] == 0xe5) {
         consecutif++;
         if (consecutif == n) {
-          instance->fat_info.write_data(instance->super.device, (uint8_t*)fentry, sizeof(fat_dir_entry_t) * n, instance->fat_info.addr_root_dir + (i - n + 1) * sizeof(fat_dir_entry_t));
+          instance->write_data(instance->super.device, (uint8_t*)fentry, sizeof(fat_dir_entry_t) * n, instance->fat_info.addr_root_dir + (i - n + 1) * sizeof(fat_dir_entry_t));
           return 0;
         }
       }
@@ -415,14 +386,15 @@ static void load_buffer(open_file_descriptor *ofd) {
 			sizeof(ofd->buffer) : instance->fat_info.BS.bytes_per_sector;
 	int current_octet_cluster = ofd->current_octet % instance->fat_info.bytes_per_cluster;
 	size_t r = instance->fat_info.bytes_per_cluster - current_octet_cluster;
+	fat_extra_data_t* extra_data = (fat_extra_data_t*)(ofd->extra_data);
 
 	if (r < size_buffer) {
 		if (r > 0)
-			instance->fat_info.read_data(instance->super.device, ofd->buffer, r, instance->fat_info.addr_data + (ofd->current_cluster - 2) * instance->fat_info.bytes_per_cluster + current_octet_cluster);
+			instance->read_data(instance->super.device, extra_data->buffer, r, instance->fat_info.addr_data + (extra_data->current_cluster - 2) * instance->fat_info.bytes_per_cluster + current_octet_cluster);
 	} else {
-		instance->fat_info.read_data(instance->super.device, ofd->buffer, size_buffer, instance->fat_info.addr_data + (ofd->current_cluster - 2) * instance->fat_info.bytes_per_cluster + current_octet_cluster);
+		instance->read_data(instance->super.device, extra_data->buffer, size_buffer, instance->fat_info.addr_data + (extra_data->current_cluster - 2) * instance->fat_info.bytes_per_cluster + current_octet_cluster);
 	}
-	ofd->current_octet_buf = 0;
+	extra_data->current_octet_buf = 0;
 }
 
 static int delete_dir_entry(fat_dir_entry_t *fdir, const char *name, int n) {
@@ -476,7 +448,7 @@ static int delete_file_dir(fat_fs_instance_t *instance, int cluster, const char 
 	  int c = 0;
 	  next = cluster;
 	  while (!fat_is_last_cluster(instance, next)) {
-	    instance->fat_info.read_data(instance->super.device, (uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
+	    instance->read_data(instance->super.device, (uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
 	    next = instance->fat_info.file_alloc_table[next];
 	    c++;
 	  }
@@ -485,7 +457,7 @@ static int delete_file_dir(fat_fs_instance_t *instance, int cluster, const char 
 			c = 0;
 			next = cluster;
 		  while (!fat_is_last_cluster(instance, next)) {
-				instance->fat_info.write_data(instance->super.device, (uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
+				instance->write_data(instance->super.device, (uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
 		    next = instance->fat_info.file_alloc_table[next];
 		    c++;
 			}
@@ -495,9 +467,9 @@ static int delete_file_dir(fat_fs_instance_t *instance, int cluster, const char 
 		kfree(sub_dir);
 	} else {
     fat_dir_entry_t *root_dir = kmalloc(sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count);
-    instance->fat_info.read_data(instance->super.device, (uint8_t*)(root_dir), sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count, instance->fat_info.addr_root_dir);
+    instance->read_data(instance->super.device, (uint8_t*)(root_dir), sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count, instance->fat_info.addr_root_dir);
 		if (delete_dir_entry(root_dir, name, n_dir_entries) == 0) {
-			instance->fat_info.write_data(instance->super.device, (uint8_t*)(root_dir), sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count, instance->fat_info.addr_root_dir);
+			instance->write_data(instance->super.device, (uint8_t*)(root_dir), sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count, instance->fat_info.addr_root_dir);
 			kfree(root_dir);
 			return 0;
 		}
