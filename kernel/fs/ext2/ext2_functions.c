@@ -172,10 +172,7 @@ size_t ext2_write (open_file_descriptor * ofd, const void *buf, size_t size) {
 		ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
 		
 		struct ext2_inode *einode = read_inode(instance, inode);
-		if (einode == NULL) {
-			//FIXME !!!!!!!!!!!!!!!!
-			//!!!!!!!!!!!!!!!!!!!!!!
-			//(alouer inode)
+		if (einode != NULL) {
 			unsigned int offset;
 			if (ofd->flags & O_APPEND) {
 				offset = einode->i_size;

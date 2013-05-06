@@ -166,7 +166,6 @@ static int open_namei(const char *pathname, struct nameidata *nb) {
 				return 0;
 			}
 		}
-
 		return lookup(nb);
 	} else if (strlen(pathname) <= 1) {
 		nb->mnt = &mvfs;

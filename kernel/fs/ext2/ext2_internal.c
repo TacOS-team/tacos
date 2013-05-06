@@ -69,13 +69,22 @@ static inline struct ext2_inode* read_inode(ext2_fs_instance_t *instance, int in
 
 static int write_inode(ext2_fs_instance_t *instance, int inode, struct ext2_inode* einode) {
 	if (inode > 0) {
-		int i = inode - 1;
-		int n = i / instance->superblock.s_inodes_per_group;
-		int ib = i % instance->superblock.s_inodes_per_group;
+		int n = (inode - 1) / instance->superblock.s_inodes_per_group;
+		int ib = (inode - 1) % instance->superblock.s_inodes_per_group;
 		
 		int addr_table = instance->group_desc_table[n].bg_inode_table;
 		
+		// update hardware
 		instance->write_data(instance->super.device, einode, sizeof(struct ext2_inode), addr_table * (1024 << instance->superblock.s_log_block_size) + sizeof(struct ext2_inode) * ib);
+		// update software
+		if (instance->group_desc_table_internal[n].inode_bitmap[ib / 8] & (1 << (ib % 8))) {
+			if (&(instance->group_desc_table_internal[n].inodes[ib]) != einode) {
+				instance->group_desc_table_internal[n].inodes[ib] = *einode;
+			}
+		} else {
+			kerr("This inode is not used yet. Start allocating it!");
+		}
+
 		return 0;
 	}
 	return -ENOENT;
@@ -193,15 +202,11 @@ static uint32_t addr_inode_data3(ext2_fs_instance_t *instance, struct ext2_inode
 
 //XXX: deprecated!
 static struct blk_t* addr_inode_data_old(ext2_fs_instance_t *instance, struct ext2_inode *einode) {
-	//klog(">");
 	struct blk_t *blocks = NULL;
 	struct blk_t *last = NULL;
 	int j;
-	//klog(">1");
-	//kprintf("inodes blks : %d\n", einode->i_blocks);
 	// direct blocks
 	for (j = 0; j < 12 && einode->i_block[j]; j++) {
-		//kprintf("%d\n", einode->i_block[j]);
 		struct blk_t* element = kmalloc(sizeof(struct blk_t));
 		element->next = NULL;
 		element->addr = einode->i_block[j] * (1024 << instance->superblock.s_log_block_size);
@@ -212,22 +217,18 @@ static struct blk_t* addr_inode_data_old(ext2_fs_instance_t *instance, struct ex
 		}
 		last = element;
 	}
-				//klog(">2");
 	if (j == 12) {
 		// indirect blocks
 		if (einode->i_block[12]) {
 			last = read_indirect_blk(instance, last, einode->i_block[12]);
 		}
-		//klog(">3");
 		if (einode->i_block[13]) {
 			last = read_double_indirect_blk(instance, last, einode->i_block[13]);
 		}
-		//klog(">4");
 		if (einode->i_block[14]) {
 			last = read_triple_indirect_blk(instance, last, einode->i_block[14]);
 		}
 	}
-	//klog("<");
 	return blocks;
 }
 
@@ -298,17 +299,17 @@ static int alloc_inode(ext2_fs_instance_t *instance, struct ext2_inode *inode) {
 	int i;
 	for (i = 0; i < instance->n_groups; i++) {
 		if (instance->group_desc_table[i].bg_free_inodes_count) {
+			uint8_t *inode_bitmap = instance->group_desc_table_internal[i].inode_bitmap;
+
 			// TODO: decrement bg_free_inodes_count
 			int addr_bitmap = instance->group_desc_table[i].bg_inode_bitmap;
 			int addr_table = instance->group_desc_table[i].bg_inode_table;
-			uint8_t *inode_bitmap = kmalloc(1024 << instance->superblock.s_log_block_size);
-	
-			instance->read_data(instance->super.device, inode_bitmap, (1024 << instance->superblock.s_log_block_size), addr_bitmap * (1024 << instance->superblock.s_log_block_size));
 
 			uint32_t ib;
 			for (ib = 0; ib < instance->superblock.s_inodes_per_group; ib++) {
 				int inode_n = i * instance->superblock.s_inodes_per_group + ib + 1;
 				if ((inode_bitmap[ib/8] & (1 << (ib % 8))) == 0) {
+					instance->group_desc_table_internal[i].inodes[ib] = *inode;
 					instance->write_data(instance->super.device, inode, sizeof(struct ext2_inode), addr_table * (1024 << instance->superblock.s_log_block_size) + sizeof(struct ext2_inode) * ib);
 					inode_bitmap[ib/8] |= (1 << (ib % 8));
 					instance->write_data(instance->super.device, &(inode_bitmap[ib/8]), sizeof(uint8_t), addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
@@ -548,6 +549,10 @@ static int ext2_truncate_inode(ext2_fs_instance_t *instance, int inode, off_t of
 
 
 static inode_t* ext2inode_2_inode(struct _fs_instance_t *instance, int ino, struct ext2_inode *einode) {
+	if (einode == NULL) {
+		kerr("inode is null! Can't convert it to real inode.");
+		return NULL;
+	}
 	inode_t *inode = kmalloc(sizeof(inode_t));
 	inode->i_ino = ino;
 	inode->i_mode = einode->i_mode;
