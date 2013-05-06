@@ -209,7 +209,6 @@ size_t ext2_write(open_file_descriptor * ofd, const void *buf, size_t size) {
 				if (size2 > size) {
 					size2 = size;
 				}
-				kprintf("ecrire : %d %d\n", size2, addr);
 				instance->write_data(instance->super.device, ((char*)buf) + count, size2, addr);
 				size -= size2;
 				count += size2;
