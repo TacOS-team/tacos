@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de libc/include/string.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">libc/include/string.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="string_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _STRING_H_</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _STRING_H_</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="cdefs_8h.html">sys/cdefs.h</a>&gt;</span>
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 __BEGIN_DECLS
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="preprocessor">#include &lt;<a class="code" href="types_8h.html">sys/types.h</a>&gt;</span>
+<a name="l00037"></a>00037 
+<a name="l00053"></a>00053 <span class="keywordtype">void</span>* <a class="code" href="string_8h.html#a9ea2311b6ee5ded71a785075df281d97" title="Copie une zone mémoire.">memcpy</a>(<span class="keywordtype">void</span>* dest, <span class="keyword">const</span> <span class="keywordtype">void</span>* src, <span class="keywordtype">size_t</span> size);
+<a name="l00054"></a>00054 
+<a name="l00065"></a>00065 <span class="keywordtype">size_t</span> <a class="code" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères.">strlen</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* s);
+<a name="l00066"></a>00066 
+<a name="l00078"></a>00078 <span class="keywordtype">char</span> *<a class="code" href="string_8h.html#a12871ed234858ef0e363d2b8aa572fc1" title="Rechercher un caractère dans une chaîne.">strchr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *s, <span class="keywordtype">int</span> c);
+<a name="l00079"></a>00079 
+<a name="l00091"></a>00091 <span class="keywordtype">char</span> *<a class="code" href="string_8h.html#a0c05a458deff028ef4d4e64059098db4" title="Rechercher un caractère dans une chaîne.">strrchr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *s, <span class="keywordtype">int</span> c);
+<a name="l00092"></a>00092 
+<a name="l00106"></a>00106 <span class="keywordtype">int</span> <a class="code" href="string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes.">strcmp</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *s1, <span class="keyword">const</span> <span class="keywordtype">char</span> *s2);
+<a name="l00107"></a>00107 
+<a name="l00124"></a>00124 <span class="keywordtype">int</span> <a class="code" href="string_8h.html#a07f4a84c11c106e95c32b6ab509346ef" title="Compare deux chaînes jusqu&#39;à n caractères.">strncmp</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *s1, <span class="keyword">const</span> <span class="keywordtype">char</span> *s2, <span class="keywordtype">size_t</span> n);
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126 
+<a name="l00140"></a>00140 <span class="keywordtype">int</span> <a class="code" href="string_8h.html#a706b36f3a672f84685576723c3928baa" title="Compare deux chaînes.">strcasecmp</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *s1, <span class="keyword">const</span> <span class="keywordtype">char</span> *s2);
+<a name="l00141"></a>00141 
+<a name="l00158"></a>00158 <span class="keywordtype">int</span> <a class="code" href="string_8h.html#a674b7f779fec84cb1a3be8222b5c381a" title="Compare deux chaînes jusqu&#39;à n caractères.">strncasecmp</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *s1, <span class="keyword">const</span> <span class="keywordtype">char</span> *s2, <span class="keywordtype">size_t</span> n);
+<a name="l00159"></a>00159 
+<a name="l00173"></a>00173 <span class="keywordtype">char</span> *<a class="code" href="string_8h.html#a48d911e1a150610b7182d19b81651828" title="Recherche un caractère dans une chaîne.">strchrnul</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *s, <span class="keywordtype">int</span> c);
+<a name="l00174"></a>00174 
+<a name="l00186"></a>00186 <span class="keywordtype">void</span> *<a class="code" href="string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné.">memset</a>(<span class="keywordtype">void</span> *s, <span class="keywordtype">int</span> c, <span class="keywordtype">size_t</span> n);
+<a name="l00187"></a>00187 
+<a name="l00207"></a>00207 <span class="keywordtype">int</span> <a class="code" href="string_8h.html#a9e6df54ee04e18a3772335580e2ed872" title="Compare deux zones mémoire.">memcmp</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *s1, <span class="keyword">const</span> <span class="keywordtype">void</span> *s2, <span class="keywordtype">size_t</span> n);
+<a name="l00208"></a>00208 
+<a name="l00220"></a>00220 <span class="keywordtype">char</span> *<a class="code" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine.">strcpy</a>(<span class="keywordtype">char</span> * s1, <span class="keyword">const</span> <span class="keywordtype">char</span> * s2);
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222 
+<a name="l00238"></a>00238 <span class="keywordtype">char</span> *<a class="code" href="string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères.">strncpy</a>(<span class="keywordtype">char</span> * s1, <span class="keyword">const</span> <span class="keywordtype">char</span> * s2, <span class="keywordtype">size_t</span> n);
+<a name="l00239"></a>00239 
+<a name="l00240"></a>00240 
+<a name="l00252"></a>00252 <span class="keywordtype">char</span> *<a class="code" href="string_8h.html#a8908188ae9fc2f05d993257ef001d553" title="Concaténation de deux chaînes.">strcat</a>(<span class="keywordtype">char</span> * s1, <span class="keyword">const</span> <span class="keywordtype">char</span> * s2);
+<a name="l00253"></a>00253 
+<a name="l00267"></a>00267 <span class="keywordtype">char</span> *<a class="code" href="string_8h.html#a4c10a214b02eed3dafc48c59ad71abbd" title="Concaténation de deux chaînes avec une limite aux n premiers caractères.">strncat</a>(<span class="keywordtype">char</span> * s1, <span class="keyword">const</span> <span class="keywordtype">char</span> * s2, <span class="keywordtype">size_t</span> n);
+<a name="l00268"></a>00268 
+<a name="l00269"></a>00269 
+<a name="l00285"></a>00285 <span class="keywordtype">void</span> *<a class="code" href="string_8h.html#a802c986820d3866639922b6bc9484f90" title="Copie une zone mémoire.">memmove</a>(<span class="keywordtype">void</span> *dest, <span class="keyword">const</span> <span class="keywordtype">void</span> *src, <span class="keywordtype">size_t</span> n);
+<a name="l00286"></a>00286 
+<a name="l00287"></a>00287 
+<a name="l00300"></a>00300 <span class="keywordtype">char</span> *<a class="code" href="string_8h.html#a4a710d86541afc6b7dafddcdb4b1c94f" title="Recherche une sous-chaîne.">strstr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *haystack, <span class="keyword">const</span> <span class="keywordtype">char</span> *needle);
+<a name="l00301"></a>00301 
+<a name="l00302"></a>00302 
+<a name="l00316"></a>00316 <span class="keywordtype">char</span> *<a class="code" href="string_8h.html#ae9229017a4501f8d6a637b4498cfed2e" title="Recherche une sous-chaîne en ignorant la casse.">strcasestr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *haystack, <span class="keyword">const</span> <span class="keywordtype">char</span> *needle);
+<a name="l00317"></a>00317 
+<a name="l00328"></a>00328 <span class="keywordtype">char</span> *<a class="code" href="string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine.">strdup</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> *s);
+<a name="l00329"></a>00329 
+<a name="l00341"></a>00341 <span class="keywordtype">char</span> *<a class="code" href="string_8h.html#a8b860ba32fef12da8acd4507c059e509" title="Duplique une chaine.">strndup</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> *s, <span class="keywordtype">size_t</span> n);
+<a name="l00342"></a>00342 
+<a name="l00343"></a>00343 
+<a name="l00344"></a>00344 
+<a name="l00354"></a>00354 <span class="keywordtype">char</span> *<a class="code" href="string_8h.html#a8cb460f64c449f2a9b9b7a40569ce0fe" title="Extraire des mots d&#39;une chaîne.">strtok</a>(<span class="keywordtype">char</span> *str, <span class="keyword">const</span> <span class="keywordtype">char</span> *delim);
+<a name="l00355"></a>00355 
+<a name="l00356"></a>00356 
+<a name="l00357"></a>00357 <span class="comment">/* TODO: NOT IMPLEMENTED YET</span>
+<a name="l00358"></a>00358 <span class="comment"></span>
+<a name="l00359"></a>00359 <span class="comment">int strcoll(const char *s1, const char *s2);</span>
+<a name="l00360"></a>00360 <span class="comment"></span>
+<a name="l00361"></a>00361 <span class="comment">size_t strxfrm(char * s1, const char * s2, size_t n);</span>
+<a name="l00362"></a>00362 <span class="comment"></span>
+<a name="l00363"></a>00363 <span class="comment">void *memchr(const void *s, int c, size_t n);</span>
+<a name="l00364"></a>00364 <span class="comment"></span>
+<a name="l00365"></a>00365 <span class="comment">size_t strcspn(const char *s1, const char *s2);</span>
+<a name="l00366"></a>00366 <span class="comment"></span>
+<a name="l00367"></a>00367 <span class="comment">char *strpbrk(const char *s1, const char *s2);</span>
+<a name="l00368"></a>00368 <span class="comment"></span>
+<a name="l00369"></a>00369 <span class="comment">char *strrchr(const char *s, int c);</span>
+<a name="l00370"></a>00370 <span class="comment"></span>
+<a name="l00371"></a>00371 <span class="comment">size_t strspn(const char *s1, const char *s2);</span>
+<a name="l00372"></a>00372 <span class="comment"></span>
+<a name="l00373"></a>00373 <span class="comment">char *strerror(int errnum);</span>
+<a name="l00374"></a>00374 <span class="comment"></span>
+<a name="l00375"></a>00375 <span class="comment">*/</span>
+<a name="l00376"></a>00376 
+<a name="l00377"></a>00377 __END_DECLS
+<a name="l00378"></a>00378 
+<a name="l00379"></a>00379 <span class="preprocessor">#endif</span>
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juin 24 2012 00:25:06 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

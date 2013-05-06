@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="libc/dirent.c" name="libc/dirent.c">
 <area shape="rect" id="node3" href="$dirent_8h.html" title="Définition de DIR et struct dirent." alt="" coords="452,83,516,111"/>
 <area shape="rect" id="node20" href="$fcntl_8h.html" title="File control operations." alt="" coords="5,315,61,343"/>
 <area shape="rect" id="node27" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="332,83,428,111"/>

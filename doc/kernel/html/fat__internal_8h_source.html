@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de kernel/fs/fat/fat_internal.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">kernel/fs/fat/fat_internal.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="fat__internal_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _FAT_INTERNAL_H_</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _FAT_INTERNAL_H_</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="types_8h.html">types.h</a>&gt;</span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général.">clock.h</a>&gt;</span>
+<a name="l00034"></a>00034 <span class="preprocessor">#include &lt;<a class="code" href="vfs_8h.html" title="Virtual File System.">vfs.h</a>&gt;</span>
+<a name="l00035"></a>00035 <span class="preprocessor">#include &lt;<a class="code" href="devfs_8h.html">fs/devfs.h</a>&gt;</span>
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 <span class="comment">// FAT low level.</span>
+<a name="l00038"></a>00038 
+<a name="l00042"></a><a class="code" href="struct__fat__BS.html">00042</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__fat__BS.html">_fat_BS</a> {
+<a name="l00043"></a>00043         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   bootjmp[3];         <span class="comment">//0x00</span>
+<a name="l00044"></a><a class="code" href="struct__fat__BS.html#a6e3cafc7b7a76af3f3d82b322bda2903">00044</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="struct__fat__BS.html#a6e3cafc7b7a76af3f3d82b322bda2903">oem_name</a>[8];  <span class="comment">//0x03</span>
+<a name="l00045"></a><a class="code" href="struct__fat__BS.html#a28755d8abcc38818f9a64918ba7b2de4">00045</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="struct__fat__BS.html#a28755d8abcc38818f9a64918ba7b2de4">bytes_per_sector</a>;     <span class="comment">//0x0b</span>
+<a name="l00046"></a><a class="code" href="struct__fat__BS.html#ab26cacbe204fc157d8165af3ad86a33f">00046</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="struct__fat__BS.html#ab26cacbe204fc157d8165af3ad86a33f">sectors_per_cluster</a>;   <span class="comment">//0x0d</span>
+<a name="l00047"></a><a class="code" href="struct__fat__BS.html#a7c4d28484980635def2bb6c1e6675b5a">00047</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="struct__fat__BS.html#a7c4d28484980635def2bb6c1e6675b5a">reserved_sector_count</a>;    <span class="comment">//0x0e</span>
+<a name="l00048"></a><a class="code" href="struct__fat__BS.html#aa76ccd037c4f693d968a64860be99d44">00048</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="struct__fat__BS.html#aa76ccd037c4f693d968a64860be99d44">table_count</a>;   <span class="comment">//0x10</span>
+<a name="l00049"></a><a class="code" href="struct__fat__BS.html#ae9265a2e00c0c3cbb4de257b602bcd2c">00049</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="struct__fat__BS.html#ae9265a2e00c0c3cbb4de257b602bcd2c">root_entry_count</a>;  <span class="comment">//0x11</span>
+<a name="l00050"></a><a class="code" href="struct__fat__BS.html#a17243f0faca4d34eb12df96f8b9e6896">00050</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="struct__fat__BS.html#a17243f0faca4d34eb12df96f8b9e6896">total_sectors_16</a>;      <span class="comment">//0x13</span>
+<a name="l00051"></a><a class="code" href="struct__fat__BS.html#ae6537235795059976bd79d26e4b61053">00051</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="struct__fat__BS.html#ae6537235795059976bd79d26e4b61053">media_type</a>;         <span class="comment">//0x15</span>
+<a name="l00052"></a><a class="code" href="struct__fat__BS.html#aa6408c3aa26eec38e6620624c3075f27">00052</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="struct__fat__BS.html#aa6408c3aa26eec38e6620624c3075f27">table_size_16</a>;         <span class="comment">//0x16</span>
+<a name="l00053"></a><a class="code" href="struct__fat__BS.html#abb98686b32bd168ee31d9847c990916a">00053</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="struct__fat__BS.html#abb98686b32bd168ee31d9847c990916a">sectors_per_track</a>;       <span class="comment">//0x18</span>
+<a name="l00054"></a><a class="code" href="struct__fat__BS.html#ad58562d1dd05ac79b72053708ff52c3c">00054</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="struct__fat__BS.html#ad58562d1dd05ac79b72053708ff52c3c">head_side_count</a>;      <span class="comment">//0x1a</span>
+<a name="l00055"></a><a class="code" href="struct__fat__BS.html#a92f0f210cd522150211d990b4d3aeecb">00055</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="struct__fat__BS.html#a92f0f210cd522150211d990b4d3aeecb">hidden_sector_count</a>;     <span class="comment">//0x1c</span>
+<a name="l00056"></a><a class="code" href="struct__fat__BS.html#a103e421c799f77466fc57eef601014a3">00056</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="struct__fat__BS.html#a103e421c799f77466fc57eef601014a3">total_sectors_32</a>;     <span class="comment">//0x20</span>
+<a name="l00057"></a>00057 } __attribute__ ((packed)) <a class="code" href="struct__fat__BS.html">fat_BS_t</a>; 
+<a name="l00058"></a>00058 
+<a name="l00062"></a><a class="code" href="struct__fat__extended__BIOS__16.html">00062</a> typedef struct <a class="code" href="struct__fat__extended__BIOS__16.html">_fat_extended_BIOS_16</a> {
+<a name="l00063"></a>00063         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   bios_drive_num;       <span class="comment">//0x24</span>
+<a name="l00064"></a><a class="code" href="struct__fat__extended__BIOS__16.html#a893876cfc91a64059613c6fe02a1e178">00064</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="struct__fat__extended__BIOS__16.html#a893876cfc91a64059613c6fe02a1e178">reserved</a>;         <span class="comment">//0x25</span>
+<a name="l00065"></a><a class="code" href="struct__fat__extended__BIOS__16.html#a96dde388d85873830b8b421d13336737">00065</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="struct__fat__extended__BIOS__16.html#a96dde388d85873830b8b421d13336737">ext_boot_signature</a>;        <span class="comment">//0x26</span>
+<a name="l00066"></a><a class="code" href="struct__fat__extended__BIOS__16.html#aa932fbe482a2da22749a6f9fa42fce59">00066</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="struct__fat__extended__BIOS__16.html#aa932fbe482a2da22749a6f9fa42fce59">volume_id</a>;          <span class="comment">//0x27</span>
+<a name="l00067"></a><a class="code" href="struct__fat__extended__BIOS__16.html#a0f859beb837eb3013ef4ad48dd0c9845">00067</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   volume_label[11];      <span class="comment">//0x2b</span>
+<a name="l00068"></a><a class="code" href="struct__fat__extended__BIOS__16.html#a0cdaccd704186c37f3df6b7a44fdbad8">00068</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   fat_type_label[8];   <span class="comment">//0x36</span>
+<a name="l00069"></a>00069         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   os_boot_code[448];      <span class="comment">//0x3e</span>
+<a name="l00070"></a>00070         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  boot_sector_sign;     <span class="comment">//0x1fe</span>
+<a name="l00071"></a>00071 } __attribute__ ((packed)) <a class="code" href="struct__fat__extended__BIOS__16.html">fat_extended_BIOS_16_t</a>;
+<a name="l00072"></a>00072 
+<a name="l00076"></a><a class="code" href="struct__fat__extended__BIOS__32.html">00076</a> typedef struct <a class="code" href="struct__fat__extended__BIOS__32.html">_fat_extended_BIOS_32</a> {
+<a name="l00077"></a>00077         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  table_size_32;       <span class="comment">//0x24</span>
+<a name="l00078"></a>00078         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  fat_flags;           <span class="comment">//0x28</span>
+<a name="l00079"></a>00079         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  version;             <span class="comment">//0x2a</span>
+<a name="l00080"></a>00080         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  cluster_root_dir;    <span class="comment">//0x2c</span>
+<a name="l00081"></a>00081         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  sector_fs_info;      <span class="comment">//0x30</span>
+<a name="l00082"></a>00082         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  sector_bs_backup;    <span class="comment">//0x32</span>
+<a name="l00083"></a>00083         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   reserved[12];        <span class="comment">//0x34</span>
+<a name="l00084"></a>00084         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   bios_drive_num;      <span class="comment">//0x40</span>
+<a name="l00085"></a>00085         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   reserved2;           <span class="comment">//0x41</span>
+<a name="l00086"></a>00086         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   ext_boot_signature;  <span class="comment">//0x42</span>
+<a name="l00087"></a>00087         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  volume_id;           <span class="comment">//0x43</span>
+<a name="l00088"></a>00088         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   volume_label[11];    <span class="comment">//0x47</span>
+<a name="l00089"></a>00089         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   fat_type_label[8];   <span class="comment">//0x52</span>
+<a name="l00090"></a>00090         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   os_boot_code[420];   <span class="comment">//0x5a</span>
+<a name="l00091"></a>00091         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  boot_sector_sign;    <span class="comment">//0x1fe</span>
+<a name="l00092"></a>00092 } __attribute__ ((packed)) <a class="code" href="struct__fat__extended__BIOS__32.html">fat_extended_BIOS_32_t</a>;
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 
+<a name="l00098"></a><a class="code" href="struct__fat__time.html">00098</a> typedef struct <a class="code" href="struct__fat__time.html">_fat_time</a> {
+<a name="l00099"></a><a class="code" href="struct__fat__time.html#ab02d4606058041887618d3b9beb92749">00099</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> seconds2 : 5; 
+<a name="l00100"></a><a class="code" href="struct__fat__time.html#a92c31beaa1318e3ddf1457a57c30f1aa">00100</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> minutes : 6;  
+<a name="l00101"></a><a class="code" href="struct__fat__time.html#a7a3028be0bfed0b785e012d88c45f873">00101</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> hours : 5;    
+<a name="l00102"></a>00102 } __attribute__ ((packed)) <a class="code" href="struct__fat__time.html">fat_time_t</a>;
+<a name="l00103"></a>00103 
+<a name="l00107"></a><a class="code" href="struct__fat__date.html">00107</a> typedef struct <a class="code" href="struct__fat__date.html">_fat_date</a> {
+<a name="l00108"></a><a class="code" href="struct__fat__date.html#aeaf6be5099571559b22e0d0bb429ab82">00108</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> day : 5; 
+<a name="l00109"></a><a class="code" href="struct__fat__date.html#aa5ccb6b7232dc246d4a1414604d72e42">00109</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> month : 4; 
+<a name="l00110"></a><a class="code" href="struct__fat__date.html#a336bf56f413ee75cde875d691010ef4e">00110</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> year : 7; 
+<a name="l00111"></a>00111 } __attribute__ ((packed)) <a class="code" href="struct__fat__date.html">fat_date_t</a>;
+<a name="l00112"></a>00112 
+<a name="l00116"></a><a class="code" href="struct__fat__dir__entry.html">00116</a> typedef struct <a class="code" href="struct__fat__dir__entry.html">_fat_dir_entry</a> {
+<a name="l00117"></a><a class="code" href="struct__fat__dir__entry.html#abb18201b12e6039275e6dad91c19a99d">00117</a>         <span class="keywordtype">char</span>      utf8_short_name[8]; 
+<a name="l00118"></a><a class="code" href="struct__fat__dir__entry.html#addf0d1b2feefb5d50d90ea66b06703b9">00118</a>         <span class="keywordtype">char</span>      file_extension[3];  
+<a name="l00119"></a><a class="code" href="struct__fat__dir__entry.html#a4672718a4c89a279dd1c2b083ea73789">00119</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="struct__fat__dir__entry.html#a4672718a4c89a279dd1c2b083ea73789">file_attributes</a>;    
+<a name="l00120"></a><a class="code" href="struct__fat__dir__entry.html#a27e7962cefa12233338034dff3d75304">00120</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="struct__fat__dir__entry.html#a27e7962cefa12233338034dff3d75304">reserved</a>;                                             
+<a name="l00121"></a><a class="code" href="struct__fat__dir__entry.html#a54232a69203bce440a4bfaca30abcd00">00121</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   create_time_ms;                       
+<a name="l00123"></a><a class="code" href="struct__fat__dir__entry.html#a3c6cbf375afefcf8fc1518d5a96790a8">00123</a>         <a class="code" href="struct__fat__time.html">fat_time_t</a>  <a class="code" href="struct__fat__dir__entry.html#a3c6cbf375afefcf8fc1518d5a96790a8">create_time</a>;                
+<a name="l00124"></a><a class="code" href="struct__fat__dir__entry.html#ac30b1ec037ee7658eda85b2dc09e5c2e">00124</a>         fat_date_t  <a class="code" href="struct__fat__dir__entry.html#ac30b1ec037ee7658eda85b2dc09e5c2e">create_date</a>;                
+<a name="l00125"></a><a class="code" href="struct__fat__dir__entry.html#aa53da680ae2a6594c0f956c80a1b8ca4">00125</a>         fat_date_t  <a class="code" href="struct__fat__dir__entry.html#aa53da680ae2a6594c0f956c80a1b8ca4">last_access_date</a>; 
+<a name="l00126"></a>00126         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  ea_index;
+<a name="l00127"></a><a class="code" href="struct__fat__dir__entry.html#a967f3fe06020a24a22bc83cb80637669">00127</a>         <a class="code" href="struct__fat__time.html">fat_time_t</a>  <a class="code" href="struct__fat__dir__entry.html#a967f3fe06020a24a22bc83cb80637669">last_modif_time</a>; 
+<a name="l00128"></a><a class="code" href="struct__fat__dir__entry.html#a9be27b92458730fbdf5342f717aadc32">00128</a>         fat_date_t  <a class="code" href="struct__fat__dir__entry.html#a9be27b92458730fbdf5342f717aadc32">last_modif_date</a>; 
+<a name="l00129"></a><a class="code" href="struct__fat__dir__entry.html#ae129dc6a378e1bec5c92a3963d6522c6">00129</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="struct__fat__dir__entry.html#ae129dc6a378e1bec5c92a3963d6522c6">cluster_pointer</a>;      
+<a name="l00130"></a><a class="code" href="struct__fat__dir__entry.html#a557cd14b001d64851ad5e7cadb742411">00130</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="struct__fat__dir__entry.html#a557cd14b001d64851ad5e7cadb742411">file_size</a>;                            
+<a name="l00132"></a>00132 }__attribute__((packed)) <a class="code" href="struct__fat__dir__entry.html">fat_dir_entry_t</a>;
+<a name="l00133"></a>00133 
+<a name="l00137"></a><a class="code" href="structlfn__entry__t.html">00137</a> typedef struct {
+<a name="l00138"></a><a class="code" href="structlfn__entry__t.html#a07b88226674917555309538459b194df">00138</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="structlfn__entry__t.html#a07b88226674917555309538459b194df">seq_number</a>; 
+<a name="l00139"></a><a class="code" href="structlfn__entry__t.html#a04e5c493f02fa433b7d7d2d489c89e60">00139</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   filename1[10]; 
+<a name="l00140"></a><a class="code" href="structlfn__entry__t.html#a5b1eb8b963f05e47b3d6508b5a986985">00140</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="structlfn__entry__t.html#a5b1eb8b963f05e47b3d6508b5a986985">attributes</a>; 
+<a name="l00141"></a><a class="code" href="structlfn__entry__t.html#a506f9cbd0e4fe209626eedaf48c1f8bf">00141</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="structlfn__entry__t.html#a506f9cbd0e4fe209626eedaf48c1f8bf">reserved</a>; 
+<a name="l00142"></a><a class="code" href="structlfn__entry__t.html#a1a60017a7c8b7502fefc8358a821f0ae">00142</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="structlfn__entry__t.html#a1a60017a7c8b7502fefc8358a821f0ae">checksum</a>; 
+<a name="l00143"></a><a class="code" href="structlfn__entry__t.html#ab88e34e402a566da06c83163e94a1763">00143</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   filename2[12]; 
+<a name="l00144"></a><a class="code" href="structlfn__entry__t.html#a6f3355b0c241c7a5936c04dccf1614ca">00144</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structlfn__entry__t.html#a6f3355b0c241c7a5936c04dccf1614ca">cluster_pointer</a>; 
+<a name="l00145"></a><a class="code" href="structlfn__entry__t.html#aa157718941579c9ef9bb5eba85015ec0">00145</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   filename3[4]; 
+<a name="l00146"></a>00146 }__attribute__((packed)) <a class="code" href="structlfn__entry__t.html">lfn_entry_t</a>;
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149 <span class="comment">// FAT higher level.</span>
+<a name="l00150"></a>00150 
+<a name="l00154"></a><a class="code" href="struct__directory__entry.html">00154</a> typedef struct <a class="code" href="struct__directory__entry.html">_directory_entry</a> {
+<a name="l00155"></a><a class="code" href="struct__directory__entry.html#ac9142fdeb8e265f045fee1edf9608c78">00155</a>         <span class="keywordtype">char</span> name[256]; 
+<a name="l00156"></a><a class="code" href="struct__directory__entry.html#a63da8f87e73a3eb30e55b2d405fa35d7">00156</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="struct__directory__entry.html#a63da8f87e73a3eb30e55b2d405fa35d7">attributes</a>; 
+<a name="l00157"></a><a class="code" href="struct__directory__entry.html#a5d6f559c1b7ab2b5a64643073172cc25">00157</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="struct__directory__entry.html#a5d6f559c1b7ab2b5a64643073172cc25">size</a>; 
+<a name="l00158"></a><a class="code" href="struct__directory__entry.html#a27e1020c5262094ab3b58759da9660ae">00158</a>         time_t <a class="code" href="struct__directory__entry.html#a27e1020c5262094ab3b58759da9660ae">access_time</a>; 
+<a name="l00159"></a><a class="code" href="struct__directory__entry.html#a120c3a3857bd7892a0fc2e6644e6f188">00159</a>         time_t <a class="code" href="struct__directory__entry.html#a120c3a3857bd7892a0fc2e6644e6f188">modification_time</a>; 
+<a name="l00160"></a><a class="code" href="struct__directory__entry.html#a95f0f5ef18bf17f332bd0dc352d62ac4">00160</a>         time_t <a class="code" href="struct__directory__entry.html#a95f0f5ef18bf17f332bd0dc352d62ac4">creation_time</a>; 
+<a name="l00161"></a><a class="code" href="struct__directory__entry.html#a8c70d9d0c2b2557cba83fb827d5c6e90">00161</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="struct__directory__entry.html#a8c70d9d0c2b2557cba83fb827d5c6e90">cluster</a>; 
+<a name="l00162"></a><a class="code" href="struct__directory__entry.html#a75001bda0d1d80e4ff5350ad69f83030">00162</a>         <span class="keyword">struct </span>_directory_entry *<a class="code" href="struct__directory__entry.html#a75001bda0d1d80e4ff5350ad69f83030">next</a>; 
+<a name="l00163"></a>00163 } <a class="code" href="fat__internal_8h.html#ab6546cb0abf935a615fae20884a41818">directory_entry_t</a>;
+<a name="l00164"></a>00164 
+<a name="l00168"></a><a class="code" href="struct__directory.html">00168</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__directory.html">_directory</a> {
+<a name="l00169"></a><a class="code" href="struct__directory.html#a2aa96162372442698a14e116ce88110d">00169</a>         <a class="code" href="struct__directory__entry.html">directory_entry_t</a> *<a class="code" href="struct__directory.html#a2aa96162372442698a14e116ce88110d">entries</a>; 
+<a name="l00170"></a><a class="code" href="struct__directory.html#aeb73476149e19828774d4dfbd96a051f">00170</a>         <span class="keywordtype">int</span> <a class="code" href="struct__directory.html#aeb73476149e19828774d4dfbd96a051f">total_entries</a>; 
+<a name="l00171"></a><a class="code" href="struct__directory.html#a535c678fe29215d35ac64200865147a4">00171</a>         <span class="keywordtype">char</span> <a class="code" href="struct__directory.html#a535c678fe29215d35ac64200865147a4">name</a>[256]; 
+<a name="l00172"></a><a class="code" href="struct__directory.html#a5a45241095c7fb2a39f158638631ddbc">00172</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="struct__directory.html#a5a45241095c7fb2a39f158638631ddbc">cluster</a>; 
+<a name="l00173"></a>00173 } <a class="code" href="fat__internal_8h.html#a04e3d213fd143d58bbabf68062bdc21c">directory_t</a>;
+<a name="l00174"></a>00174 
+<a name="l00178"></a><a class="code" href="fat__internal_8h.html#aea47744930623076e66d2f155e12ca24">00178</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00179"></a>00179         FAT12,
+<a name="l00180"></a>00180         FAT16,
+<a name="l00181"></a>00181         FAT32
+<a name="l00182"></a>00182 } <a class="code" href="fat__internal_8h.html#aea47744930623076e66d2f155e12ca24">fat_t</a>;
+<a name="l00183"></a>00183 
+<a name="l00187"></a><a class="code" href="struct__fat__info.html">00187</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__fat__info.html">_fat_info</a> {
+<a name="l00188"></a><a class="code" href="struct__fat__info.html#adcd12930a4a7f94ecac42ba82567adb7">00188</a>         <a class="code" href="struct__fat__BS.html">fat_BS_t</a> <a class="code" href="struct__fat__info.html#adcd12930a4a7f94ecac42ba82567adb7">BS</a>; 
+<a name="l00189"></a><a class="code" href="struct__fat__info.html#a4da4c2a7a629ca59a686822e6447acb8">00189</a>         <a class="code" href="struct__fat__extended__BIOS__16.html">fat_extended_BIOS_16_t</a> *<a class="code" href="struct__fat__info.html#a4da4c2a7a629ca59a686822e6447acb8">ext_BIOS_16</a>; 
+<a name="l00190"></a><a class="code" href="struct__fat__info.html#aab203e7eb3c2027e3034d7765a2d5281">00190</a>         <a class="code" href="struct__fat__extended__BIOS__32.html">fat_extended_BIOS_32_t</a> *<a class="code" href="struct__fat__info.html#aab203e7eb3c2027e3034d7765a2d5281">ext_BIOS_32</a>; 
+<a name="l00191"></a><a class="code" href="struct__fat__info.html#a0344193eb413dce4369b6e36ed03b92b">00191</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> *<a class="code" href="struct__fat__info.html#a0344193eb413dce4369b6e36ed03b92b">addr_fat</a>; 
+<a name="l00192"></a><a class="code" href="struct__fat__info.html#ae9133d320e0afc89c5e6cc9cedf6dfb5">00192</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="struct__fat__info.html#ae9133d320e0afc89c5e6cc9cedf6dfb5">addr_root_dir</a>; 
+<a name="l00193"></a><a class="code" href="struct__fat__info.html#a4cb2766e74dd65f24d4eb30ce3b49302">00193</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="struct__fat__info.html#a4cb2766e74dd65f24d4eb30ce3b49302">addr_data</a>; 
+<a name="l00194"></a><a class="code" href="struct__fat__info.html#a27195d09eb1dcd65d35d7b312d1bec0b">00194</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> *<a class="code" href="struct__fat__info.html#a27195d09eb1dcd65d35d7b312d1bec0b">file_alloc_table</a>; 
+<a name="l00195"></a><a class="code" href="struct__fat__info.html#ab43681d4b5c7cf719cd6c934cada39e3">00195</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="struct__fat__info.html#ab43681d4b5c7cf719cd6c934cada39e3">total_data_clusters</a>; 
+<a name="l00196"></a><a class="code" href="struct__fat__info.html#af110757af771c0f3fe0c515cca1ff177">00196</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="struct__fat__info.html#af110757af771c0f3fe0c515cca1ff177">table_size</a>; 
+<a name="l00197"></a><a class="code" href="struct__fat__info.html#af9e994d6d2c5211614ca61cfa4492500">00197</a>         <a class="code" href="fat__internal_8h.html#aea47744930623076e66d2f155e12ca24">fat_t</a> <a class="code" href="struct__fat__info.html#af9e994d6d2c5211614ca61cfa4492500">fat_type</a>; 
+<a name="l00198"></a><a class="code" href="struct__fat__info.html#ac1ba92d928512827ab7978f136efda96">00198</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="struct__fat__info.html#ac1ba92d928512827ab7978f136efda96">bytes_per_cluster</a>; 
+<a name="l00199"></a><a class="code" href="struct__fat__info.html#a443e425e86f7401bed57670103d74cf2">00199</a>         blkdev_read_t <a class="code" href="struct__fat__info.html#a443e425e86f7401bed57670103d74cf2">read_data</a>; 
+<a name="l00200"></a><a class="code" href="struct__fat__info.html#a419699acceacb59718e0b1f9262de102">00200</a>         blkdev_write_t <a class="code" href="struct__fat__info.html#a419699acceacb59718e0b1f9262de102">write_data</a>; 
+<a name="l00201"></a>00201 } <a class="code" href="fat__internal_8h.html#a1921d26ef987e5498294fe311a23c62f">fat_info_t</a>;
+<a name="l00202"></a>00202 
+<a name="l00206"></a><a class="code" href="struct__fat__fs__instance__t.html">00206</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__fat__fs__instance__t.html">_fat_fs_instance_t</a> {
+<a name="l00207"></a><a class="code" href="struct__fat__fs__instance__t.html#ac50318180f107a1950961c404ec6fd6d">00207</a>         <a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> <a class="code" href="struct__fat__fs__instance__t.html#ac50318180f107a1950961c404ec6fd6d">super</a>; 
+<a name="l00208"></a><a class="code" href="struct__fat__fs__instance__t.html#acebada58b620f950c9ef3c454db812fc">00208</a>         <a class="code" href="struct__fat__info.html">fat_info_t</a> <a class="code" href="struct__fat__fs__instance__t.html#acebada58b620f950c9ef3c454db812fc">fat_info</a>; 
+<a name="l00209"></a>00209 } <a class="code" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a>;
+<a name="l00210"></a>00210 
+<a name="l00216"></a>00216 <span class="keywordtype">void</span> <a class="code" href="fat__internal_8c.html#acc9f1bc688e7d7c5459ad50676608995">read_fat</a>(<a class="code" href="struct__fat__fs__instance__t.html">fat_fs_instance_t</a> *instance);
+<a name="l00217"></a>00217 
+<a name="l00218"></a>00218 
+<a name="l00219"></a>00219 
+<a name="l00220"></a>00220 
+<a name="l00226"></a>00226 <span class="keywordtype">void</span> <a class="code" href="fat_8c.html#ab2204311ec26e0134235b4a6c895312f">umount_FAT</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance);
+<a name="l00227"></a>00227 
+<a name="l00237"></a>00237 <span class="keywordtype">int</span> <a class="code" href="fat__functions_8c.html#ada9bd47fd90b01248fe52f302560f9f9">fat_readdir</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keywordtype">char</span> * entries, <span class="keywordtype">size_t</span> size);
+<a name="l00238"></a>00238 
+<a name="l00249"></a>00249 <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * <a class="code" href="fat__functions_8c.html#acdf6c4c7632ebd3fff5ba51c888af3a6">fat_open_file</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path, <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags);
+<a name="l00250"></a>00250 
+<a name="l00260"></a>00260 <span class="keywordtype">int</span> <a class="code" href="fat__functions_8c.html#ab6005d86e7ab13445d997d03e76bf914">fat_mkdir</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>);
+<a name="l00261"></a>00261 
+<a name="l00271"></a>00271 <span class="keywordtype">int</span> <a class="code" href="fat__functions_8c.html#a8442aab7b7111d30d19b4be6a4464618">fat_stat</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">struct</span> <a class="code" href="structstat.html" title="Informations sur un noeud.">stat</a> *stbuf);
+<a name="l00272"></a>00272 
+<a name="l00281"></a>00281 <span class="keywordtype">int</span> <a class="code" href="fat__functions_8c.html#a2673c2b00be14ce740290ba2e92b9f90">fat_unlink</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> * path);
+<a name="l00282"></a>00282 
+<a name="l00292"></a>00292 <span class="keywordtype">size_t</span> <a class="code" href="fat__functions_8c.html#a85069bfaf4b7a57bc5d8e7bfa6aa83ad">fat_read_file</a> (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keywordtype">void</span> * buf, <span class="keywordtype">size_t</span> count);
+<a name="l00293"></a>00293 
+<a name="l00303"></a>00303 <span class="keywordtype">size_t</span> <a class="code" href="fat__functions_8c.html#aefed2caace7abdff25dc8276de118018">fat_write_file</a> (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keyword">const</span> <span class="keywordtype">void</span> * buf, <span class="keywordtype">size_t</span> nb_octet);
+<a name="l00304"></a>00304 
+<a name="l00314"></a>00314 <span class="keywordtype">int</span> <a class="code" href="fat__functions_8c.html#a5e52d080338c1179ae01999006f077d3">fat_seek_file</a> (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> whence);
+<a name="l00315"></a>00315 
+<a name="l00323"></a>00323 <span class="keywordtype">int</span> <a class="code" href="fat__functions_8c.html#afdccf4bea2c0e70059a76f43fea9c33f">fat_close</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd);
+<a name="l00324"></a>00324 
+<a name="l00325"></a>00325 
+<a name="l00326"></a>00326 
+<a name="l00327"></a>00327 <span class="preprocessor">#endif</span>
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juillet 8 2012 15:18:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

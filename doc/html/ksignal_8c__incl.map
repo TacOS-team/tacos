@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/ksignal.c" name="kernel/ksignal.c">
 <area shape="rect" id="node3" href="$gdt_8h.html" title="gdt.h" alt="" coords="229,161,280,189"/>
 <area shape="rect" id="node7" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="120,161,205,189"/>
 <area shape="rect" id="node10" href="$klog_8h.html" title="Logging macros." alt="" coords="627,83,683,111"/>
@@ -15,4 +15,5 @@
 <area shape="rect" id="node23" href="$process__types_8h.html" title="process_types.h" alt="" coords="515,238,629,266"/>
 <area shape="rect" id="node25" href="$symtable_8h.html" title="symtable.h" alt="" coords="808,238,891,266"/>
 <area shape="rect" id="node31" href="$vmm_8h.html" title="vmm.h" alt="" coords="429,238,491,266"/>
+<area shape="rect" id="node28" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="827,315,872,343"/>
 </map>

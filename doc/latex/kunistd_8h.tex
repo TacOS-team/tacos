@@ -1,0 +1,317 @@
+\hypertarget{kunistd_8h}{\section{Référence du fichier kernel/include/kunistd.h}
+\label{kunistd_8h}\index{kernel/include/kunistd.\-h@{kernel/include/kunistd.\-h}}
+}
+
+
+Principales fonctions de l'A\-P\-I P\-O\-S\-I\-X (read, write, seek, stat...)  
+
+
+{\ttfamily \#include $<$types.\-h$>$}\\*
+{\ttfamily \#include $<$ksyscall.\-h$>$}\\*
+{\ttfamily \#include $<$kstat.\-h$>$}\\*
+Graphe des dépendances par inclusion de kunistd.\-h\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{kunistd_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kunistd_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{kunistd_8h_a12b7516e50c36ff9b70f66e8d7e62ba8}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-write, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} fd, const void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} $\ast$c)
+\item 
+\hyperlink{kunistd_8h_a1a5c9caaf5f21371f9d9d6886eb26bc0}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-read, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} fd, const void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} $\ast$c)
+\item 
+\hyperlink{kunistd_8h_a5dd5ee4481953b987bfc1bcb836be820}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-seek, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} fd, long $\ast$offset, int whence)
+\item 
+\hyperlink{kunistd_8h_a1eab9ba54efce654ee3cd717f2161b8f}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-ioctl, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} $\ast$fd, unsigned int request, void $\ast$data)
+\item 
+\hyperlink{kunistd_8h_a18585c0d8560c855f1d38405703e7eb3}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-stat, const char $\ast$path, struct \hyperlink{structstat}{stat} $\ast$buf, int $\ast$ret)
+\item 
+\hyperlink{kunistd_8h_a99434c0e561b0e99c4ef081ae5773703}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2} (sys\-\_\-unlink, const char $\ast$path, int $\ast$ret)
+\item 
+\hyperlink{kunistd_8h_a754a9d6d5d3da3db605147488e485805}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2} (sys\-\_\-dup, int oldfd, int $\ast$ret)
+\item 
+\hypertarget{kunistd_8h_a9f1fab5ee3e02656c4b5aabbb8043f4a}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2} (sys\-\_\-dup2, int oldfd, int $\ast$newfd)}\label{kunistd_8h_a9f1fab5ee3e02656c4b5aabbb8043f4a}
+
+\item 
+\hyperlink{kunistd_8h_a8c6c302ef479ae5474c3aedf65ec8dbe}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-mknod, const char $\ast$path, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t} \hyperlink{structmode}{mode}, \hyperlink{kstat_8h_a451f1b5788fa7cc5d33db47a5992e7a6}{dev\-\_\-t} $\ast$dev)
+\item 
+\hypertarget{kunistd_8h_a55268fce444099c28094cb9c42ea6bd7}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-chmod, const char $\ast$path, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t} \hyperlink{structmode}{mode}, int $\ast$ret)}\label{kunistd_8h_a55268fce444099c28094cb9c42ea6bd7}
+
+\item 
+\hypertarget{kunistd_8h_a46360ac642b4433254d5fce6fa9dc076}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-chown, const char $\ast$path, \hyperlink{kstat_8h_af2306308627701b66dc6f3babe821ab4}{uid\-\_\-t} owner, \hyperlink{kstat_8h_aa7352f1065fe606194d792e2b292cf83}{gid\-\_\-t} $\ast$group)}\label{kunistd_8h_a46360ac642b4433254d5fce6fa9dc076}
+
+\item 
+\hypertarget{kunistd_8h_a33914b700f1e73c3f4908c58e7d3ec11}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-utimes, const char $\ast$path, const struct \hyperlink{structtimeval}{timeval} times\mbox{[}2\mbox{]}, int $\ast$ret)}\label{kunistd_8h_a33914b700f1e73c3f4908c58e7d3ec11}
+
+\item 
+\hypertarget{kunistd_8h_a8510f0ffa3080d9713c29d0e13dd3cf7}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-rename, const char $\ast$oldpath, const char $\ast$newpath, int $\ast$ret)}\label{kunistd_8h_a8510f0ffa3080d9713c29d0e13dd3cf7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{kunistd_8h_a99434c0e561b0e99c4ef081ae5773703}{\index{kunistd.\-h@{kunistd.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}!kunistd.h@{kunistd.\-h}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-unlink}]{, }
+\item[{const char $\ast$}]{path, }
+\item[{int $\ast$}]{ret}
+\end{DoxyParamCaption}
+)}}\label{kunistd_8h_a99434c0e561b0e99c4ef081ae5773703}
+Syscall pour supprimer un fichier.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em path} & Le chemin du fichier à supprimer. \\
+\hline
+{\em ret} & Le code retour de la fonction. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{kunistd_8h_a99434c0e561b0e99c4ef081ae5773703_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kunistd_8h_a754a9d6d5d3da3db605147488e485805}{\index{kunistd.\-h@{kunistd.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}!kunistd.h@{kunistd.\-h}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-dup}]{, }
+\item[{int}]{oldfd, }
+\item[{int $\ast$}]{ret}
+\end{DoxyParamCaption}
+)}}\label{kunistd_8h_a754a9d6d5d3da3db605147488e485805}
+Syscall pour dupliquer un open file descriptor.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em oldfd} & L'identifiant de descripteur de fichier ouvert à dupliquer. \\
+\hline
+{\em ret} & Le nouvel identifiant. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{kunistd_8h_a754a9d6d5d3da3db605147488e485805_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kunistd_8h_a12b7516e50c36ff9b70f66e8d7e62ba8}{\index{kunistd.\-h@{kunistd.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kunistd.h@{kunistd.\-h}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-write}]{, }
+\item[{{\bf uint32\-\_\-t}}]{fd, }
+\item[{const void $\ast$}]{buf, }
+\item[{{\bf size\-\_\-t} $\ast$}]{c}
+\end{DoxyParamCaption}
+)}}\label{kunistd_8h_a12b7516e50c36ff9b70f66e8d7e62ba8}
+Syscall pour écrire dans un fichier.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em fd} & Id du descripteur de fichier. \\
+\hline
+{\em buf} & Données à écrire. \\
+\hline
+{\em c} & Nombre d'octets à écrire. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{kunistd_8h_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kunistd_8h_a1a5c9caaf5f21371f9d9d6886eb26bc0}{\index{kunistd.\-h@{kunistd.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kunistd.h@{kunistd.\-h}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-read}]{, }
+\item[{{\bf uint32\-\_\-t}}]{fd, }
+\item[{const void $\ast$}]{buf, }
+\item[{{\bf size\-\_\-t} $\ast$}]{c}
+\end{DoxyParamCaption}
+)}}\label{kunistd_8h_a1a5c9caaf5f21371f9d9d6886eb26bc0}
+Syscall pour lire dans un fichier.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em fd} & Id du descripteur de fichier. \\
+\hline
+{\em buf} & Buffer pour stocker les données lues. \\
+\hline
+{\em c} & Nombre d'octets à lire. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{kunistd_8h_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kunistd_8h_a5dd5ee4481953b987bfc1bcb836be820}{\index{kunistd.\-h@{kunistd.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kunistd.h@{kunistd.\-h}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-seek}]{, }
+\item[{{\bf uint32\-\_\-t}}]{fd, }
+\item[{long $\ast$}]{offset, }
+\item[{int}]{whence}
+\end{DoxyParamCaption}
+)}}\label{kunistd_8h_a5dd5ee4481953b987bfc1bcb836be820}
+Syscall pour se déplacer dans un fichier.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em fd} & Id du descripteur de fichier. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{kunistd_8h_a5dd5ee4481953b987bfc1bcb836be820_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kunistd_8h_a1eab9ba54efce654ee3cd717f2161b8f}{\index{kunistd.\-h@{kunistd.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kunistd.h@{kunistd.\-h}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-ioctl}]{, }
+\item[{{\bf uint32\-\_\-t} $\ast$}]{fd, }
+\item[{unsigned int}]{request, }
+\item[{void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{kunistd_8h_a1eab9ba54efce654ee3cd717f2161b8f}
+Syscall pour controler un fichier.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em fd} & Pointeur sur l'id du descripteur de fichier. Utilisé comme code de retour. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{kunistd_8h_a1eab9ba54efce654ee3cd717f2161b8f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kunistd_8h_a18585c0d8560c855f1d38405703e7eb3}{\index{kunistd.\-h@{kunistd.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kunistd.h@{kunistd.\-h}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-stat}]{, }
+\item[{const char $\ast$}]{path, }
+\item[{struct {\bf stat} $\ast$}]{buf, }
+\item[{int $\ast$}]{ret}
+\end{DoxyParamCaption}
+)}}\label{kunistd_8h_a18585c0d8560c855f1d38405703e7eb3}
+Syscall pour obtenir des informations sur un fichier.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em path} & Le chemin du fichier dont on veut obtenir les informations. \\
+\hline
+{\em buf} & Une structure stat pour y enregistrer les informations. \\
+\hline
+{\em ret} & Le code retour de la fonction. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{kunistd_8h_a18585c0d8560c855f1d38405703e7eb3_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kunistd_8h_a8c6c302ef479ae5474c3aedf65ec8dbe}{\index{kunistd.\-h@{kunistd.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kunistd.h@{kunistd.\-h}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-mknod}]{, }
+\item[{const char $\ast$}]{path, }
+\item[{{\bf mode\-\_\-t}}]{mode, }
+\item[{{\bf dev\-\_\-t} $\ast$}]{dev}
+\end{DoxyParamCaption}
+)}}\label{kunistd_8h_a8c6c302ef479ae5474c3aedf65ec8dbe}
+Syscall pour créer un nouveau noeud. 
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{kunistd_8h_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph}
+\end{center}
+\end{figure}
+
+

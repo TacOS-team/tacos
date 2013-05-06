@@ -1,0 +1,141 @@
+\documentclass[a4paper]{book}
+\usepackage{makeidx}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage[table]{xcolor}
+\usepackage{textcomp}
+\usepackage{alltt}
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[pdftex,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\else
+\usepackage[ps2pdf,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\usepackage{pspicture}
+\fi
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{sectsty}
+\usepackage[titles]{tocloft}
+\usepackage{doxygen}
+\lstset{language=C++,inputencoding=utf8,basicstyle=\footnotesize,breaklines=true,breakatwhitespace=true,tabsize=8,numbers=left }
+\makeindex
+\setcounter{tocdepth}{3}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\familydefault}{\sfdefault}
+\hfuzz=15pt
+\setlength{\emergencystretch}{15pt}
+\hbadness=750
+\tolerance=750
+\begin{document}
+\hypersetup{pageanchor=false,citecolor=blue}
+\begin{titlepage}
+\vspace*{7cm}
+\begin{center}
+{\Large \-Tac\-O\-S \\[1ex]\large 0.\-1 }\\
+\vspace*{1cm}
+{\large \-Généré par Doxygen 1.7.6.1}\\
+\vspace*{0.5cm}
+{\small Dimanche Juin 24 2012 00:25:06}\\
+\end{center}
+\end{titlepage}
+\clearemptydoublepage
+\pagenumbering{roman}
+\tableofcontents
+\clearemptydoublepage
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true,citecolor=blue}
+\chapter{\-Index des structures de données}
+\input{annotated}
+\chapter{\-Index des fichiers}
+\input{files}
+\chapter{\-Documentation des structures de données}
+\input{struct__DIR}
+\input{struct__IO__FILE}
+\input{structdirent}
+\input{structmem}
+\input{structmem__list}
+\input{structprocess__init__data__t}
+\input{structstat}
+\input{structtermios}
+\input{structtimespec}
+\input{structtimeval}
+\input{structtm}
+\input{structwinsize}
+\chapter{\-Documentation des fichiers}
+\input{ctype_8c}
+\input{dirent_8c}
+\input{errno_8c}
+\input{fcntl_8c}
+\input{ctype_8h}
+\input{dirent_8h}
+\input{errno_8h}
+\input{fcntl_8h}
+\input{fopen_8h}
+\input{libio_8h}
+\input{malloc_8h}
+\input{process_8h}
+\input{signal_8h}
+\input{stdarg_8h}
+\input{stdbool_8h}
+\input{stdio_8h}
+\input{stdlib_8h}
+\input{string_8h}
+\input{cdefs_8h}
+\input{ioctl_8h}
+\input{sem_8h}
+\input{stat_8h}
+\input{syscall_8h}
+\input{types_8h}
+\input{wait_8h}
+\input{termios_8h}
+\input{time_8h}
+\input{unistd_8h}
+\input{libio_8c}
+\input{malloc_8c}
+\input{process_8c}
+\input{sem_8c}
+\input{signal_8c}
+\input{start_8c}
+\input{fclose_8c}
+\input{fmemopen_8c}
+\input{fopen_8c}
+\input{fprintf_8c}
+\input{fread_8c}
+\input{fseek_8c}
+\input{fwrite_8c}
+\input{get_8c}
+\input{getline_8c}
+\input{perror_8c}
+\input{printf_8c}
+\input{put_8c}
+\input{scanf_8c}
+\input{sprintf_8c}
+\input{stdfiles_8c}
+\input{stdio_8c}
+\input{stdlib_8c}
+\input{string_8c}
+\input{termios_8c}
+\input{time_8c}
+\input{unistd_8c}
+\input{wait_8c}
+\printindex
+\end{document}

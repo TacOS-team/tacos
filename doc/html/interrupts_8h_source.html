@@ -4,43 +4,33 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <title>TacOS:  Fichier source de kernel/include/interrupts.h</title>
-
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
-
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div! -->
-
-
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  
-  
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
    &#160;<span id="projectnumber">0.1</span>
    </div>
-   
   </td>
-  
-  
-  
  </tr>
  </tbody>
 </table>
 </div>
-
-<!-- Généré par Doxygen 1.7.6.1 -->
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -73,74 +63,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
     </ul>
   </div>
-</div>
-<div class="header">
-  <div class="headertitle">
-<div class="title">kernel/include/interrupts.h</div>  </div>
-</div><!--header-->
-<div class="contents">
-<a href="interrupts_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _INTERRUPTS_H_</span>
-<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _INTERRUPTS_H_</span>
-<a name="l00031"></a>00031 <span class="preprocessor"></span>
-<a name="l00035"></a><a class="code" href="interrupts_8h.html#a85fc66e3edd4ed6a4db6e455feaba8ca">00035</a> <span class="preprocessor">#define IRQ_TIMER           0 </span>
-<a name="l00036"></a><a class="code" href="interrupts_8h.html#a8092843c014fad609c1b01a4604a44a3">00036</a> <span class="preprocessor">#define IRQ_KEYBOARD        1 </span>
-<a name="l00037"></a>00037 <span class="preprocessor">#define IRQ_SLAVE_PIC       2</span>
-<a name="l00038"></a><a class="code" href="interrupts_8h.html#afe9f19b981c093830239430dd2e42ba5">00038</a> <span class="preprocessor"></span><span class="preprocessor">#define IRQ_COM2            3 </span>
-<a name="l00039"></a><a class="code" href="interrupts_8h.html#a603b478f70a928f442e33fefba73494a">00039</a> <span class="preprocessor">#define IRQ_COM1            4 </span>
-<a name="l00040"></a><a class="code" href="interrupts_8h.html#a124409fc7614dbfc0fa4e4f051bf34bf">00040</a> <span class="preprocessor">#define IRQ_RESERVED_1      5 </span>
-<a name="l00041"></a><a class="code" href="interrupts_8h.html#a51ebc06bb64338ca52ccd907757236d5">00041</a> <span class="preprocessor">#define IRQ_FLOPPY          6 </span>
-<a name="l00042"></a><a class="code" href="interrupts_8h.html#a7470b817cb853efc47827610aa7d7658">00042</a> <span class="preprocessor">#define IRQ_LPT1            7 </span>
-<a name="l00043"></a><a class="code" href="interrupts_8h.html#afcc3514b333a16589ac65bcd44080530">00043</a> <span class="preprocessor">#define IRQ_8_REAL_TIME_CLK 8 </span>
-<a name="l00044"></a>00044 <span class="preprocessor">#define IRQ_REDIRECT_IRQ2   9</span>
-<a name="l00045"></a>00045 <span class="preprocessor"></span><span class="preprocessor">#define IRQ_RESERVED_2      10</span>
-<a name="l00046"></a>00046 <span class="preprocessor"></span><span class="preprocessor">#define IRQ_RESERVED_3      11</span>
-<a name="l00047"></a><a class="code" href="interrupts_8h.html#aacd1e86773887394ce22a62b0af5d183">00047</a> <span class="preprocessor"></span><span class="preprocessor">#define IRQ_PS2_MOUSE       12 </span>
-<a name="l00048"></a>00048 <span class="preprocessor">#define IRQ_COPROCESSOR     13</span>
-<a name="l00049"></a>00049 <span class="preprocessor"></span><span class="preprocessor">#define IRQ_HARDDISK        14</span>
-<a name="l00050"></a>00050 <span class="preprocessor"></span><span class="preprocessor">#define IRQ_RESERVED_4      15</span>
-<a name="l00051"></a><a class="code" href="interrupts_8h.html#a4738790c15755ecd75912c6a0228ed13">00051</a> <span class="preprocessor"></span><span class="preprocessor">#define IRQ_SYSCALL         16 </span>
-<a name="l00053"></a>00053 <span class="preprocessor">#include &lt;types.h&gt;</span>
-<a name="l00054"></a>00054 <span class="preprocessor"></span>
-<a name="l00058"></a><a class="code" href="structintframe.html">00058</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
-<a name="l00059"></a>00059         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> interrupt_id;
-<a name="l00060"></a>00060         
-<a name="l00061"></a>00061         <span class="comment">/* Registres */</span>
-<a name="l00062"></a>00062         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> es;
-<a name="l00063"></a>00063         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> __es_unused;
-<a name="l00064"></a>00064         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> ds;
-<a name="l00065"></a>00065         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> __ds_unused;
-<a name="l00066"></a>00066         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> gs;
-<a name="l00067"></a>00067         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> __gs_unused;
-<a name="l00068"></a>00068         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> fs;
-<a name="l00069"></a>00069         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> __fs_unused;
-<a name="l00070"></a>00070         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> edi;
-<a name="l00071"></a>00071         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> esi;
-<a name="l00072"></a>00072         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ebp;
-<a name="l00073"></a>00073         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> kesp;
-<a name="l00074"></a>00074         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ebx;
-<a name="l00075"></a>00075         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> edx;
-<a name="l00076"></a>00076         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ecx;
-<a name="l00077"></a>00077         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> eax;
-<a name="l00078"></a>00078         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> eip;
-<a name="l00079"></a>00079         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> cs;
-<a name="l00080"></a>00080         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> eflags;
-<a name="l00081"></a>00081         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> esp;
-<a name="l00082"></a>00082         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> ss;
-<a name="l00083"></a>00083         <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> __ss_unused;
-<a name="l00084"></a>00084         
-<a name="l00085"></a>00085 } <a class="code" href="structintframe.html">intframe</a>;
-<a name="l00086"></a>00086 
-<a name="l00087"></a>00087 <span class="keyword">typedef</span> void (*interrupt_handler_t)(<span class="keywordtype">int</span> interrupt_id);
-<a name="l00088"></a>00088 
-<a name="l00101"></a>00101 <span class="keywordtype">int</span> <a class="code" href="interrupts_8h.html#aecc1fa8433fa21ba233b8feb2558e954" title="Ajoute une nouvelle interruption.">interrupt_set_routine</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id, interrupt_handler_t routine, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> privilege);
-<a name="l00102"></a>00102 
-<a name="l00110"></a>00110 <span class="keywordtype">int</span> <a class="code" href="interrupts_8h.html#ac3f5203c31fd554b562cba8cec42ceb6" title="Désactive une interruption.">interrupt_disable</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id);
-<a name="l00111"></a>00111 
-<a name="l00118"></a>00118 <span class="keywordtype">void</span> <a class="code" href="interrupts_8h.html#a4eea959d9a7be06d7b87a0aad03b490e" title="Change le type d&#39;une interruption en une trapgate.">make_trapgate_from_int</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id);
-<a name="l00119"></a>00119 
-<a name="l00120"></a>00120 <span class="preprocessor">#endif</span>
-</pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -155,13 +77,83 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </iframe>
 </div>
 
-
-
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">interrupts.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="interrupts_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _INTERRUPTS_H_</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _INTERRUPTS_H_</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="interrupts_8h.html#a85fc66e3edd4ed6a4db6e455feaba8ca">   35</a></span>&#160;<span class="preprocessor">#define IRQ_TIMER           0 </span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="interrupts_8h.html#a8092843c014fad609c1b01a4604a44a3">   36</a></span>&#160;<span class="preprocessor">#define IRQ_KEYBOARD        1 </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define IRQ_SLAVE_PIC       2</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="interrupts_8h.html#afe9f19b981c093830239430dd2e42ba5">   38</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define IRQ_COM2            3 </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="interrupts_8h.html#a603b478f70a928f442e33fefba73494a">   39</a></span>&#160;<span class="preprocessor">#define IRQ_COM1            4 </span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="interrupts_8h.html#a124409fc7614dbfc0fa4e4f051bf34bf">   40</a></span>&#160;<span class="preprocessor">#define IRQ_RESERVED_1      5 </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="interrupts_8h.html#a51ebc06bb64338ca52ccd907757236d5">   41</a></span>&#160;<span class="preprocessor">#define IRQ_FLOPPY          6 </span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="interrupts_8h.html#a7470b817cb853efc47827610aa7d7658">   42</a></span>&#160;<span class="preprocessor">#define IRQ_LPT1            7 </span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="interrupts_8h.html#afcc3514b333a16589ac65bcd44080530">   43</a></span>&#160;<span class="preprocessor">#define IRQ_8_REAL_TIME_CLK 8 </span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define IRQ_REDIRECT_IRQ2   9</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define IRQ_RESERVED_2      10</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define IRQ_RESERVED_3      11</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="interrupts_8h.html#aacd1e86773887394ce22a62b0af5d183">   47</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define IRQ_PS2_MOUSE       12 </span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#define IRQ_COPROCESSOR     13</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define IRQ_HARDDISK        14</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define IRQ_RESERVED_4      15</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="interrupts_8h.html#a4738790c15755ecd75912c6a0228ed13">   51</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define IRQ_SYSCALL         16 </span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#include &lt;types.h&gt;</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="structintframe.html">   58</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> interrupt_id;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">/* Registres */</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> es;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> __es_unused;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> ds;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> __ds_unused;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> gs;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> __gs_unused;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> fs;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> __fs_unused;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> edi;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> esi;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ebp;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> kesp;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ebx;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> edx;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ecx;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> eax;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> eip;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> cs;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> eflags;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> esp;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> ss;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> __ss_unused;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;} <a class="code" href="structintframe.html">intframe</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">typedef</span> void (*interrupt_handler_t)(<span class="keywordtype">int</span> interrupt_id);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keywordtype">int</span> <a class="code" href="interrupts_8h.html#aecc1fa8433fa21ba233b8feb2558e954" title="Ajoute une nouvelle interruption.">interrupt_set_routine</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id, interrupt_handler_t routine, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> privilege);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keywordtype">int</span> <a class="code" href="interrupts_8h.html#ac3f5203c31fd554b562cba8cec42ceb6" title="Désactive une interruption.">interrupt_disable</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interrupts_8h.html#a4eea959d9a7be06d7b87a0aad03b490e" title="Change le type d&#39;une interruption en une trapgate.">make_trapgate_from_int</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Juin 24 2012 10:56:46 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Lundi Mai 6 2013 23:52:52 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
+</a> 1.8.1.2
 </small></address>
-
 </body>
 </html>

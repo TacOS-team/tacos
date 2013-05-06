@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/drivers/char/vesa.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier kernel/drivers/char/vesa.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;<a class="el" href="devfs_8h_source.html">fs/devfs.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="types_8h_source.html">types.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="ioports_8h_source.html">ioports.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="string_8h_source.html">string.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="pci_8h_source.html">pci.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="pci__config_8h_source.html">pci_config.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="memory_8h_source.html">memory.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="pagination_8h_source.html">pagination.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="vmm_8h_source.html">vmm.h</a>&gt;</code><br/>
+<code>#include &lt;vesa_types.h&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de vesa.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="vesa_8c__incl.png" border="0" usemap="#kernel_2drivers_2char_2vesa_8c" alt=""/></div>
+<map name="kernel_2drivers_2char_2vesa_8c" id="kernel_2drivers_2char_2vesa_8c">
+<area shape="rect" id="node5" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="88,83,165,111"/><area shape="rect" id="node7" href="types_8h.html" title="types.h" alt="" coords="441,238,503,266"/><area shape="rect" id="node12" href="klog_8h.html" title="Logging macros." alt="" coords="240,83,296,111"/><area shape="rect" id="node16" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="320,83,389,111"/><area shape="rect" id="node18" href="string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="331,161,395,189"/><area shape="rect" id="node21" href="pci_8h.html" title="pci.h" alt="" coords="464,83,512,111"/><area shape="rect" id="node27" href="pci__config_8h.html" title="pci_config.h" alt="" coords="536,83,627,111"/><area shape="rect" id="node30" href="memory_8h.html" title="Gestion des pages mémoires physiques." alt="" coords="579,161,656,189"/><area shape="rect" id="node33" href="pagination_8h.html" title="pagination.h" alt="" coords="680,161,771,189"/><area shape="rect" id="node36" href="vmm_8h.html" title="vmm.h" alt="" coords="795,161,856,189"/><area shape="rect" id="node9" href="fd__types_8h.html" title="fd_types.h" alt="" coords="85,161,165,189"/><area shape="rect" id="node14" href="kstdio_8h.html" title="kprintf" alt="" coords="240,161,307,189"/><area shape="rect" id="node24" href="pci__types_8h.html" title="pci_types.h" alt="" coords="469,161,555,189"/></map>
+</div>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11e06361305e586dc8eb955a4e7abf08"></a><!-- doxytag: member="vesa.c::VBE_DISPI_IOPORT_INDEX" ref="a11e06361305e586dc8eb955a4e7abf08" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_IOPORT_INDEX</b>&#160;&#160;&#160;0x01CE</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29bba03bd28b8cf1951749b7a6e541f2"></a><!-- doxytag: member="vesa.c::VBE_DISPI_IOPORT_DATA" ref="a29bba03bd28b8cf1951749b7a6e541f2" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_IOPORT_DATA</b>&#160;&#160;&#160;0x01CF</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bb1b4ba4a3bb660e693273040e566fe"></a><!-- doxytag: member="vesa.c::VBE_DISPI_INDEX_ID" ref="a1bb1b4ba4a3bb660e693273040e566fe" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_INDEX_ID</b>&#160;&#160;&#160;0x0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38304e110133ebfbf8b91553373d6613"></a><!-- doxytag: member="vesa.c::VBE_DISPI_INDEX_XRES" ref="a38304e110133ebfbf8b91553373d6613" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_INDEX_XRES</b>&#160;&#160;&#160;0x1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac33b578c847ac664e573d7b9432350f1"></a><!-- doxytag: member="vesa.c::VBE_DISPI_INDEX_YRES" ref="ac33b578c847ac664e573d7b9432350f1" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_INDEX_YRES</b>&#160;&#160;&#160;0x2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05b0b84db2b3a8acc44c7b6514f5067d"></a><!-- doxytag: member="vesa.c::VBE_DISPI_INDEX_BPP" ref="a05b0b84db2b3a8acc44c7b6514f5067d" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_INDEX_BPP</b>&#160;&#160;&#160;0x3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac636ee4589606791a0a4b7db7f56ed1c"></a><!-- doxytag: member="vesa.c::VBE_DISPI_INDEX_ENABLE" ref="ac636ee4589606791a0a4b7db7f56ed1c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_INDEX_ENABLE</b>&#160;&#160;&#160;0x4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a79e1578167e02154ab247bec20876a76"></a><!-- doxytag: member="vesa.c::VBE_DISPI_INDEX_BANK" ref="a79e1578167e02154ab247bec20876a76" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_INDEX_BANK</b>&#160;&#160;&#160;0x5</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42e3ceeee90c363f9f4b00c6bf9b228f"></a><!-- doxytag: member="vesa.c::VBE_DISPI_INDEX_VIRT_WIDTH" ref="a42e3ceeee90c363f9f4b00c6bf9b228f" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_INDEX_VIRT_WIDTH</b>&#160;&#160;&#160;0x6</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9cb3fd08583091a28463fa7e8217c9f7"></a><!-- doxytag: member="vesa.c::VBE_DISPI_INDEX_VIRT_HEIGHT" ref="a9cb3fd08583091a28463fa7e8217c9f7" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_INDEX_VIRT_HEIGHT</b>&#160;&#160;&#160;0x7</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1cf3b8eac8ec6d55834b0f465ea64415"></a><!-- doxytag: member="vesa.c::VBE_DISPI_INDEX_X_OFFSET" ref="a1cf3b8eac8ec6d55834b0f465ea64415" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_INDEX_X_OFFSET</b>&#160;&#160;&#160;0x8</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45c806ba6814cd5ffab51a1f439bd715"></a><!-- doxytag: member="vesa.c::VBE_DISPI_INDEX_Y_OFFSET" ref="a45c806ba6814cd5ffab51a1f439bd715" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_INDEX_Y_OFFSET</b>&#160;&#160;&#160;0x9</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67606e4e957a275487673ce0de07a51f"></a><!-- doxytag: member="vesa.c::VBE_DISPI_DISABLED" ref="a67606e4e957a275487673ce0de07a51f" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_DISABLED</b>&#160;&#160;&#160;0x00</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a172bc762a0f6f101a7f375a58d157bff"></a><!-- doxytag: member="vesa.c::VBE_DISPI_ENABLED" ref="a172bc762a0f6f101a7f375a58d157bff" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_ENABLED</b>&#160;&#160;&#160;0x01</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07d6bcb9da42cec60ee6429444b40794"></a><!-- doxytag: member="vesa.c::VBE_DISPI_GETCAPS" ref="a07d6bcb9da42cec60ee6429444b40794" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_GETCAPS</b>&#160;&#160;&#160;0x02</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af35f05800cfc7bb3b9ca974b75c689db"></a><!-- doxytag: member="vesa.c::VBE_DISPI_8BIT_DAC" ref="af35f05800cfc7bb3b9ca974b75c689db" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_8BIT_DAC</b>&#160;&#160;&#160;0x20</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8b487acf11a22b30c314b70035d7768"></a><!-- doxytag: member="vesa.c::VBE_DISPI_LFB_ENABLED" ref="af8b487acf11a22b30c314b70035d7768" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_LFB_ENABLED</b>&#160;&#160;&#160;0x40</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa6f6ec763286881674c1889585a502c5"></a><!-- doxytag: member="vesa.c::VBE_DISPI_NOCLEARMEM" ref="aa6f6ec763286881674c1889585a502c5" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VBE_DISPI_NOCLEARMEM</b>&#160;&#160;&#160;0x80</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a80c96efc6fcdfa8f6ef9343f83ac7679"></a><!-- doxytag: member="vesa.c::V_BACKBUFFER_BASE" ref="a80c96efc6fcdfa8f6ef9343f83ac7679" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>V_BACKBUFFER_BASE</b>&#160;&#160;&#160;0x10000000</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa530590b8d91d20e1675adaa05b87bde"></a><!-- doxytag: member="vesa.c::init_vesa" ref="aa530590b8d91d20e1675adaa05b87bde" args="()" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_vesa</b> ()</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2011 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+<p>VBE driver.</p>
+<dl class="see"><dt><b>Voir également:</b></dt><dd><a href="http://wiki.osdev.org/Bochs_VBE_Extensions">http://wiki.osdev.org/Bochs_VBE_Extensions</a> </dd></dl>
+</div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juillet 8 2012 15:18:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

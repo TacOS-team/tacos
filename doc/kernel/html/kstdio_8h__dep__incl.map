@@ -1,0 +1,36 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="2003,83,2104,111"/>
+<area shape="rect" id="node5" href="$floppy_8c.html" title="kernel/drivers/block/floppy/floppy.c" alt="" coords="5,161,224,189"/>
+<area shape="rect" id="node7" href="$klog_8h.html" title="Logging macros." alt="" coords="2179,83,2317,111"/>
+<area shape="rect" id="node50" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="4461,161,4573,189"/>
+<area shape="rect" id="node58" href="$pci_8c.html" title="kernel/pci/pci.c" alt="" coords="4597,161,4707,189"/>
+<area shape="rect" id="node64" href="$kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="2443,83,2552,111"/>
+<area shape="rect" id="node68" href="$pci__config_8c.html" title="kernel/pci/pci_config.c" alt="" coords="2576,83,2725,111"/>
+<area shape="rect" id="node70" href="$list_8c.html" title="kernel/utils/list.c" alt="" coords="2749,83,2864,111"/>
+<area shape="rect" id="node72" href="$vmm_8c.html" title="kernel/vmm.c" alt="" coords="2888,83,2987,111"/>
+<area shape="rect" id="node10" href="$floppy__dma_8c.html" title="kernel/drivers/block/floppy/floppy_dma.c" alt="" coords="2589,161,2840,189"/>
+<area shape="rect" id="node12" href="$floppy__utils_8c.html" title="kernel/drivers/block/floppy/floppy_utils.c" alt="" coords="2864,161,3115,189"/>
+<area shape="rect" id="node14" href="$mouse_8c.html" title="kernel/drivers/char/mouse.c" alt="" coords="3139,161,3320,189"/>
+<area shape="rect" id="node16" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="3344,161,3517,189"/>
+<area shape="rect" id="node18" href="$console_8c.html" title="Console virtuelle (Fn)." alt="" coords="3541,161,3747,189"/>
+<area shape="rect" id="node20" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="3771,161,3944,189"/>
+<area shape="rect" id="node22" href="$vesa_8c.html" title="kernel/drivers/char/vesa.c" alt="" coords="3968,161,4139,189"/>
+<area shape="rect" id="node24" href="$vga_8c.html" title="kernel/drivers/char/vga.c" alt="" coords="4163,161,4325,189"/>
+<area shape="rect" id="node26" href="$fpu_8c.html" title="Configuration de la FPU." alt="" coords="4349,161,4437,189"/>
+<area shape="rect" id="node28" href="$devfs_8c.html" title="DevFS." alt="" coords="248,161,365,189"/>
+<area shape="rect" id="node30" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="389,161,528,189"/>
+<area shape="rect" id="node32" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="552,161,749,189"/>
+<area shape="rect" id="node34" href="$fat_8c.html" title="Driver FAT." alt="" coords="773,161,893,189"/>
+<area shape="rect" id="node36" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="917,161,1096,189"/>
+<area shape="rect" id="node38" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="1120,161,1243,189"/>
+<area shape="rect" id="node40" href="$init_8c.html" title="kernel/init.c" alt="" coords="1267,161,1355,189"/>
+<area shape="rect" id="node42" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="1379,161,1488,189"/>
+<area shape="rect" id="node44" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="1512,161,1619,189"/>
+<area shape="rect" id="node46" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="1643,161,1744,189"/>
+<area shape="rect" id="node48" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="1768,161,1891,189"/>
+<area shape="rect" id="node52" href="$ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="1915,161,2032,189"/>
+<area shape="rect" id="node54" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="2056,161,2168,189"/>
+<area shape="rect" id="node56" href="$module_8c.html" title="kernel/module.c" alt="" coords="2192,161,2304,189"/>
+<area shape="rect" id="node60" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="2328,161,2453,189"/>
+<area shape="rect" id="node62" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="2477,161,2565,189"/>
+</map>

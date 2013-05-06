@@ -1,0 +1,244 @@
+\hypertarget{ksem_8h}{\section{Référence du fichier kernel/include/ksem.h}
+\label{ksem_8h}\index{kernel/include/ksem.\-h@{kernel/include/ksem.\-h}}
+}
+
+
+Coté noyau de la gestion des sémaphores.  
+
+
+{\ttfamily \#include $<$ksyscall.\-h$>$}\\*
+{\ttfamily \#include $<$types.\-h$>$}\\*
+Graphe des dépendances par inclusion de ksem.\-h\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{ksem_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ksem_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{ksem_8h_a50eabf011dba36652a098b706c2b0bc7}{S\-E\-M\-\_\-\-N\-E\-W}~255
+\item 
+\#define \hyperlink{ksem_8h_a6509192a31012daee9e37542c101b383}{S\-E\-M\-\_\-\-C\-R\-E\-A\-T\-E}~1
+\item 
+\#define \hyperlink{ksem_8h_a64f2292daa17048ddad96280a7e7ad43}{S\-E\-M\-\_\-\-G\-E\-T\-V\-A\-L}~1
+\item 
+\#define \hyperlink{ksem_8h_a9b107c7e8a214a9a97aaf58711f6ebd9}{S\-E\-M\-\_\-\-D\-E\-L}~2
+\item 
+\#define \hyperlink{ksem_8h_a618218b969fbc9639e1d988cadaea5ec}{S\-E\-M\-\_\-\-Z\-C\-N\-T}~3
+\item 
+\#define \hyperlink{ksem_8h_aeef734ee66a32553f40421752c4e8cbf}{S\-E\-M\-\_\-\-S\-E\-T}~4
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{ksem_8h_a191f0fb163ab01b5d2041bdd20d6d424}{init\-\_\-semaphores} ()
+\begin{DoxyCompactList}\small\item\em Initialisation du système des sémaphores. \end{DoxyCompactList}\item 
+\hyperlink{ksem_8h_a82fb70bceeb23516b8cbdc1bc8f77805}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-ksem, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} op, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} param, int $\ast$ret)
+\begin{DoxyCompactList}\small\item\em Handler de l'appel système S\-Y\-S\-\_\-\-S\-E\-M Dans la pratique, sys\-\_\-ksem ne fait qu'exécuter la fonction correspondant à l'opération demandée. \end{DoxyCompactList}\item 
+int \hyperlink{ksem_8h_a7f54885ee2689208328406935525f0a5}{ksemget} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} key, int flags)
+\begin{DoxyCompactList}\small\item\em Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore désigné par key. \end{DoxyCompactList}\item 
+\hypertarget{ksem_8h_af980f49354b68b113faee6edd6851bf9}{int \hyperlink{ksem_8h_af980f49354b68b113faee6edd6851bf9}{ksemctl} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} key, int cmd, void $\ast$res)}\label{ksem_8h_af980f49354b68b113faee6edd6851bf9}
+
+\begin{DoxyCompactList}\small\item\em Manipulation d'un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.) \end{DoxyCompactList}\item 
+int \hyperlink{ksem_8h_acfbbd3e3f726b24309758cf6499a8141}{ksem\-P} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} key)
+\begin{DoxyCompactList}\small\item\em Opération P sur un sémaphore Réalise l'opération P sur le sémaphore. Le processus essaye donc de prendre le sémaphore si il est libre (ie Sa valeur des supérieur à 0). Si ce n'est pas le cas, il met son pid dans la fifo du sémaphore pour pouvoir être réveillé en temps voulu, et se met en état d'attente. \end{DoxyCompactList}\item 
+int \hyperlink{ksem_8h_acf03efb500e930ca996059a6388b528b}{ksem\-V} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} key)
+\begin{DoxyCompactList}\small\item\em Opération V sur un sémaphore Réalise l'opération V sur le sémaphore. Le processus libère le sémaphore. Si la fifo est vide, il incrémente la valeur du sémaphore. Si un processus est présent dans la fifo, il le réveille. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+
+
+\subsection{Documentation des macros}
+\hypertarget{ksem_8h_a6509192a31012daee9e37542c101b383}{\index{ksem.\-h@{ksem.\-h}!S\-E\-M\-\_\-\-C\-R\-E\-A\-T\-E@{S\-E\-M\-\_\-\-C\-R\-E\-A\-T\-E}}
+\index{S\-E\-M\-\_\-\-C\-R\-E\-A\-T\-E@{S\-E\-M\-\_\-\-C\-R\-E\-A\-T\-E}!ksem.h@{ksem.\-h}}
+\subsubsection[{S\-E\-M\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-E\-M\-\_\-\-C\-R\-E\-A\-T\-E~1}}\label{ksem_8h_a6509192a31012daee9e37542c101b383}
+create the semaphore. \hypertarget{ksem_8h_a9b107c7e8a214a9a97aaf58711f6ebd9}{\index{ksem.\-h@{ksem.\-h}!S\-E\-M\-\_\-\-D\-E\-L@{S\-E\-M\-\_\-\-D\-E\-L}}
+\index{S\-E\-M\-\_\-\-D\-E\-L@{S\-E\-M\-\_\-\-D\-E\-L}!ksem.h@{ksem.\-h}}
+\subsubsection[{S\-E\-M\-\_\-\-D\-E\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-E\-M\-\_\-\-D\-E\-L~2}}\label{ksem_8h_a9b107c7e8a214a9a97aaf58711f6ebd9}
+Delete semaphore. \hypertarget{ksem_8h_a64f2292daa17048ddad96280a7e7ad43}{\index{ksem.\-h@{ksem.\-h}!S\-E\-M\-\_\-\-G\-E\-T\-V\-A\-L@{S\-E\-M\-\_\-\-G\-E\-T\-V\-A\-L}}
+\index{S\-E\-M\-\_\-\-G\-E\-T\-V\-A\-L@{S\-E\-M\-\_\-\-G\-E\-T\-V\-A\-L}!ksem.h@{ksem.\-h}}
+\subsubsection[{S\-E\-M\-\_\-\-G\-E\-T\-V\-A\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-E\-M\-\_\-\-G\-E\-T\-V\-A\-L~1}}\label{ksem_8h_a64f2292daa17048ddad96280a7e7ad43}
+Get Value. \hypertarget{ksem_8h_a50eabf011dba36652a098b706c2b0bc7}{\index{ksem.\-h@{ksem.\-h}!S\-E\-M\-\_\-\-N\-E\-W@{S\-E\-M\-\_\-\-N\-E\-W}}
+\index{S\-E\-M\-\_\-\-N\-E\-W@{S\-E\-M\-\_\-\-N\-E\-W}!ksem.h@{ksem.\-h}}
+\subsubsection[{S\-E\-M\-\_\-\-N\-E\-W}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-E\-M\-\_\-\-N\-E\-W~255}}\label{ksem_8h_a50eabf011dba36652a098b706c2b0bc7}
+key for a new semaphore. \hypertarget{ksem_8h_aeef734ee66a32553f40421752c4e8cbf}{\index{ksem.\-h@{ksem.\-h}!S\-E\-M\-\_\-\-S\-E\-T@{S\-E\-M\-\_\-\-S\-E\-T}}
+\index{S\-E\-M\-\_\-\-S\-E\-T@{S\-E\-M\-\_\-\-S\-E\-T}!ksem.h@{ksem.\-h}}
+\subsubsection[{S\-E\-M\-\_\-\-S\-E\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-E\-M\-\_\-\-S\-E\-T~4}}\label{ksem_8h_aeef734ee66a32553f40421752c4e8cbf}
+Set value. \hypertarget{ksem_8h_a618218b969fbc9639e1d988cadaea5ec}{\index{ksem.\-h@{ksem.\-h}!S\-E\-M\-\_\-\-Z\-C\-N\-T@{S\-E\-M\-\_\-\-Z\-C\-N\-T}}
+\index{S\-E\-M\-\_\-\-Z\-C\-N\-T@{S\-E\-M\-\_\-\-Z\-C\-N\-T}!ksem.h@{ksem.\-h}}
+\subsubsection[{S\-E\-M\-\_\-\-Z\-C\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-E\-M\-\_\-\-Z\-C\-N\-T~3}}\label{ksem_8h_a618218b969fbc9639e1d988cadaea5ec}
+Get size. 
+
+\subsection{Documentation des fonctions}
+\hypertarget{ksem_8h_a191f0fb163ab01b5d2041bdd20d6d424}{\index{ksem.\-h@{ksem.\-h}!init\-\_\-semaphores@{init\-\_\-semaphores}}
+\index{init\-\_\-semaphores@{init\-\_\-semaphores}!ksem.h@{ksem.\-h}}
+\subsubsection[{init\-\_\-semaphores}]{\setlength{\rightskip}{0pt plus 5cm}int init\-\_\-semaphores (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{ksem_8h_a191f0fb163ab01b5d2041bdd20d6d424}
+\begin{DoxyReturn}{Renvoie}
+0 
+\end{DoxyReturn}
+\hypertarget{ksem_8h_a7f54885ee2689208328406935525f0a5}{\index{ksem.\-h@{ksem.\-h}!ksemget@{ksemget}}
+\index{ksemget@{ksemget}!ksem.h@{ksem.\-h}}
+\subsubsection[{ksemget}]{\setlength{\rightskip}{0pt plus 5cm}int ksemget (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\-\_\-t}}]{key, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}}\label{ksem_8h_a7f54885ee2689208328406935525f0a5}
+
+\begin{DoxyParams}{Paramètres}
+{\em key} & clé identifiant le sémaphore\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+semid associé au sémaphore identifié par key -\/1 en cas d'erreur
+
+key en cas de succès, -\/1 sinon. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ksem_8h_a7f54885ee2689208328406935525f0a5_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ksem_8h_acfbbd3e3f726b24309758cf6499a8141}{\index{ksem.\-h@{ksem.\-h}!ksem\-P@{ksem\-P}}
+\index{ksem\-P@{ksem\-P}!ksem.h@{ksem.\-h}}
+\subsubsection[{ksem\-P}]{\setlength{\rightskip}{0pt plus 5cm}int ksem\-P (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\-\_\-t}}]{key}
+\end{DoxyParamCaption}
+)}}\label{ksem_8h_acfbbd3e3f726b24309758cf6499a8141}
+
+\begin{DoxyParams}{Paramètres}
+{\em key} & Identifiant du sémaphore sur lequel l'opération doit être réalisée\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès, -\/1 sinon 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{ksem_8h_acfbbd3e3f726b24309758cf6499a8141_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{ksem_8h_acfbbd3e3f726b24309758cf6499a8141_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ksem_8h_acf03efb500e930ca996059a6388b528b}{\index{ksem.\-h@{ksem.\-h}!ksem\-V@{ksem\-V}}
+\index{ksem\-V@{ksem\-V}!ksem.h@{ksem.\-h}}
+\subsubsection[{ksem\-V}]{\setlength{\rightskip}{0pt plus 5cm}int ksem\-V (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\-\_\-t}}]{key}
+\end{DoxyParamCaption}
+)}}\label{ksem_8h_acf03efb500e930ca996059a6388b528b}
+
+\begin{DoxyParams}{Paramètres}
+{\em key} & Identifiant du sémaphore sur lequel l'opération doit être réalisée\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès, -\/1 sinon 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{ksem_8h_acf03efb500e930ca996059a6388b528b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ksem_8h_acf03efb500e930ca996059a6388b528b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ksem_8h_a82fb70bceeb23516b8cbdc1bc8f77805}{\index{ksem.\-h@{ksem.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!ksem.h@{ksem.\-h}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-ksem}]{, }
+\item[{{\bf uint32\-\_\-t}}]{op, }
+\item[{{\bf uint32\-\_\-t}}]{param, }
+\item[{int $\ast$}]{ret}
+\end{DoxyParamCaption}
+)}}\label{ksem_8h_a82fb70bceeb23516b8cbdc1bc8f77805}
+
+\begin{DoxyParams}{Paramètres}
+{\em op} & Type d'opération à exécuter \\
+\hline
+{\em param} & Dépend du type d'opération \\
+\hline
+{\em ret} & Adresse pour la valeur de retour \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ksem_8h_a82fb70bceeb23516b8cbdc1bc8f77805_cgraph}
+\end{center}
+\end{figure}
+
+

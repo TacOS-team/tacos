@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/ksem.c" name="kernel/ksem.c">
 <area shape="rect" id="node3" href="$ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="100,161,164,189"/>
 <area shape="rect" id="node10" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="333,161,419,189"/>
 <area shape="rect" id="node28" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="5,83,83,111"/>
@@ -10,4 +10,5 @@
 <area shape="rect" id="node17" href="$process__types_8h.html" title="process_types.h" alt="" coords="452,238,567,266"/>
 <area shape="rect" id="node19" href="$symtable_8h.html" title="symtable.h" alt="" coords="727,238,809,266"/>
 <area shape="rect" id="node25" href="$vmm_8h.html" title="vmm.h" alt="" coords="641,238,703,266"/>
+<area shape="rect" id="node22" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="745,315,791,343"/>
 </map>

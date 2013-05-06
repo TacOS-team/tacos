@@ -1,5 +1,7 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="5,83,112,111"/>
-<area shape="rect" id="node5" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="136,83,248,111"/>
-<area shape="rect" id="node7" href="$module_8c.html" title="kernel/module.c" alt="" coords="272,83,384,111"/>
+<map id="kernel/include/kunistd.h" name="kernel/include/kunistd.h">
+<area shape="rect" id="node3" href="$elf_8c.html" title="kernel/elf.c" alt="" coords="5,83,91,111"/>
+<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="115,83,221,111"/>
+<area shape="rect" id="node7" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="245,83,368,111"/>
+<area shape="rect" id="node9" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="392,83,504,111"/>
+<area shape="rect" id="node11" href="$module_8c.html" title="kernel/module.c" alt="" coords="528,83,640,111"/>
 </map>

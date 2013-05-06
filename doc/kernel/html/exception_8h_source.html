@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de kernel/include/exception.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">kernel/include/exception.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="exception_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _EXCEPTION_H_</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _EXCEPTION_H_</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span>
+<a name="l00032"></a>00032 <span class="comment">/* Define des différentes exceptions possibles : */</span>
+<a name="l00033"></a>00033 
+<a name="l00034"></a><a class="code" href="exception_8h.html#ad35edefd94af5a06b579528092f53905">00034</a> <span class="preprocessor">#define EXCEPTION_DIVIDE_ERROR                  0 </span>
+<a name="l00035"></a><a class="code" href="exception_8h.html#a65bef4675226bcd50c2bec6b013d826c">00035</a> <span class="preprocessor">#define EXCEPTION_DEBUG                         1 </span>
+<a name="l00036"></a><a class="code" href="exception_8h.html#a6fff968799e97bc81c65c3995715a5bc">00036</a> <span class="preprocessor">#define EXCEPTION_NMI_INTERRUPT                 2 </span>
+<a name="l00037"></a><a class="code" href="exception_8h.html#ad4e81d136c5938015e8332e2bbfc69cb">00037</a> <span class="preprocessor">#define EXCEPTION_BREAKPOINT                    3 </span>
+<a name="l00038"></a><a class="code" href="exception_8h.html#a64d813978016e23be519a7db0ccc2fcb">00038</a> <span class="preprocessor">#define EXCEPTION_OVERFLOW                      4 </span>
+<a name="l00039"></a><a class="code" href="exception_8h.html#a0aabdeff397774307e200d755ea3da39">00039</a> <span class="preprocessor">#define EXCEPTION_BOUND_RANGE_EXCEDEED          5 </span>
+<a name="l00040"></a><a class="code" href="exception_8h.html#a8dc64106296eed50cbbac522c97489fd">00040</a> <span class="preprocessor">#define EXCEPTION_INVALID_OPCODE                6 </span>
+<a name="l00041"></a><a class="code" href="exception_8h.html#aee7067ca72cf5f3f4924d781f4ab9d18">00041</a> <span class="preprocessor">#define EXCEPTION_DEVICE_NOT_AVAILABLE          7 </span>
+<a name="l00042"></a><a class="code" href="exception_8h.html#a03c881e5cf9c80352e89c2cc2aedce17">00042</a> <span class="preprocessor">#define EXCEPTION_DOUBLE_FAULT                  8 </span>
+<a name="l00043"></a><a class="code" href="exception_8h.html#afa2958cf0eb2220156b89780b58e06fb">00043</a> <span class="preprocessor">#define EXCEPTION_COPROCESSOR_SEGMENT_OVERRUN   9 </span>
+<a name="l00044"></a><a class="code" href="exception_8h.html#a02fd7012d7fbec88227b20dd84f046c2">00044</a> <span class="preprocessor">#define EXCEPTION_INVALID_TSS                  10 </span>
+<a name="l00045"></a><a class="code" href="exception_8h.html#a8fe1ea0a4bf0b605af35bbddc73f6fad">00045</a> <span class="preprocessor">#define EXCEPTION_SEGMENT_NOT_PRESENT          11 </span>
+<a name="l00046"></a><a class="code" href="exception_8h.html#ade6628460c124de1939d6b8abc08fdd6">00046</a> <span class="preprocessor">#define EXCEPTION_STACK_SEGMENT_FAULT          12 </span>
+<a name="l00047"></a><a class="code" href="exception_8h.html#a664cb67866dbd9a39007f64078d677e1">00047</a> <span class="preprocessor">#define EXCEPTION_GENERAL_PROTECTION           13 </span>
+<a name="l00048"></a><a class="code" href="exception_8h.html#aeb69823191506fccf4465650fe58fec9">00048</a> <span class="preprocessor">#define EXCEPTION_PAGE_FAULT                   14 </span>
+<a name="l00049"></a><a class="code" href="exception_8h.html#aada3f4afee1f6ba9699ed1cc0e275ea8">00049</a> <span class="preprocessor">#define EXCEPTION_INTEL_RESERVED_1             15 </span>
+<a name="l00050"></a><a class="code" href="exception_8h.html#a5defe6df1b73c38bc29de7cec992f2c7">00050</a> <span class="preprocessor">#define EXCEPTION_FLOATING_POINT_ERROR         16 </span>
+<a name="l00051"></a><a class="code" href="exception_8h.html#ae132caa3d09be165b343fd206ba7d162">00051</a> <span class="preprocessor">#define EXCEPTION_ALIGNEMENT_CHECK             17 </span>
+<a name="l00052"></a><a class="code" href="exception_8h.html#a8ef4fc61aade77229b89d05e7ff1a365">00052</a> <span class="preprocessor">#define EXCEPTION_MACHINE_CHECK                18 </span>
+<a name="l00053"></a><a class="code" href="exception_8h.html#a86f81610ea78321b8c571b13a708212b">00053</a> <span class="preprocessor">#define EXCEPTION_INTEL_RESERVED_2             19 </span>
+<a name="l00054"></a><a class="code" href="exception_8h.html#aca7238d54d3a295fb655848f30a92b30">00054</a> <span class="preprocessor">#define EXCEPTION_INTEL_RESERVED_3             20 </span>
+<a name="l00055"></a><a class="code" href="exception_8h.html#ac6d5666ed777500640e4835ccbee5aa9">00055</a> <span class="preprocessor">#define EXCEPTION_INTEL_RESERVED_4             21 </span>
+<a name="l00056"></a><a class="code" href="exception_8h.html#a6b4c3e5b4547724e8ee44e98595b2b28">00056</a> <span class="preprocessor">#define EXCEPTION_INTEL_RESERVED_5             22 </span>
+<a name="l00057"></a><a class="code" href="exception_8h.html#aba3f1287c6aca7276d53688507e626b4">00057</a> <span class="preprocessor">#define EXCEPTION_INTEL_RESERVED_6             23 </span>
+<a name="l00058"></a><a class="code" href="exception_8h.html#aa96d17234dc55af36cf91b33edbecb4f">00058</a> <span class="preprocessor">#define EXCEPTION_INTEL_RESERVED_7             24 </span>
+<a name="l00059"></a><a class="code" href="exception_8h.html#a4a399bcdae3445634378429da6cc4d87">00059</a> <span class="preprocessor">#define EXCEPTION_INTEL_RESERVED_8             25 </span>
+<a name="l00060"></a><a class="code" href="exception_8h.html#a2fa646179c19865a5affa7f7624c39b5">00060</a> <span class="preprocessor">#define EXCEPTION_INTEL_RESERVED_9             26 </span>
+<a name="l00061"></a><a class="code" href="exception_8h.html#a86309bab28363f553b8e8a627d2494a7">00061</a> <span class="preprocessor">#define EXCEPTION_INTEL_RESERVED_10            27 </span>
+<a name="l00062"></a><a class="code" href="exception_8h.html#ae938f75e3f5678ca256e73ce905c82ff">00062</a> <span class="preprocessor">#define EXCEPTION_INTEL_RESERVED_11            28 </span>
+<a name="l00063"></a><a class="code" href="exception_8h.html#adc4dd786c73179a3230da46208e3c3b7">00063</a> <span class="preprocessor">#define EXCEPTION_INTEL_RESERVED_12            29 </span>
+<a name="l00064"></a><a class="code" href="exception_8h.html#a3b4da35765e11fb33df732c95a9e3f74">00064</a> <span class="preprocessor">#define EXCEPTION_INTEL_RESERVED_13            30 </span>
+<a name="l00065"></a><a class="code" href="exception_8h.html#a4ff4d33c01f9ac9362653312fd4b4ab1">00065</a> <span class="preprocessor">#define EXCEPTION_INTEL_RESERVED_14            31 </span>
+<a name="l00067"></a>00067 <span class="preprocessor">#ifndef ASM_SOURCE</span>
+<a name="l00068"></a>00068 <span class="preprocessor"></span>
+<a name="l00069"></a>00069 <span class="preprocessor">#include &lt;<a class="code" href="types_8h.html">types.h</a>&gt;</span>
+<a name="l00070"></a>00070 
+<a name="l00074"></a><a class="code" href="exception_8h.html#a27a88f1aea43a3b64d4ab8d578471642">00074</a> <span class="keyword">typedef</span> void (*<a class="code" href="exception_8h.html#a27a88f1aea43a3b64d4ab8d578471642">exception_handler_t</a>)(<a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> error_id, <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> error_code);
+<a name="l00075"></a>00075 
+<a name="l00079"></a>00079 <span class="keywordtype">int</span> <a class="code" href="exception_8c.html#ac5a3d89ca654d3606b6afd836a01e207">exception_set_routine</a>(<a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> exception_id, <a class="code" href="exception_8h.html#a27a88f1aea43a3b64d4ab8d578471642">exception_handler_t</a> routine);
+<a name="l00080"></a>00080 <span class="keywordtype">int</span> exception_disable(<a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> exception_id);
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082 <span class="preprocessor">#endif</span>
+<a name="l00083"></a>00083 <span class="preprocessor"></span>
+<a name="l00084"></a>00084 <span class="preprocessor">#endif</span>
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juillet 8 2012 15:18:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

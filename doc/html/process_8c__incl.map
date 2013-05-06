@@ -1,14 +1,13 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="321,315,407,343"/>
-<area shape="rect" id="node11" href="$stdio_8h.html" title="stdio.h" alt="" coords="123,161,181,189"/>
-<area shape="rect" id="node21" href="$unistd_8h.html" title="unistd.h" alt="" coords="327,83,393,111"/>
-<area shape="rect" id="node33" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="417,83,513,111"/>
-<area shape="rect" id="node35" href="$process_8h.html" title="process.h" alt="" coords="537,83,615,111"/>
-<area shape="rect" id="node44" href="$fcntl_8h.html" title="File control operations." alt="" coords="735,315,791,343"/>
-<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="497,393,585,421"/>
-<area shape="rect" id="node7" href="$stdbool_8h.html" title="Type bool." alt="" coords="327,393,401,421"/>
-<area shape="rect" id="node14" href="$libio_8h.html" title="libio.h" alt="" coords="147,238,200,266"/>
-<area shape="rect" id="node19" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="5,238,72,266"/>
-<area shape="rect" id="node25" href="$stat_8h.html" title="sys/stat.h" alt="" coords="384,161,461,189"/>
-<area shape="rect" id="node29" href="$time_8h.html" title="time.h" alt="" coords="477,238,533,266"/>
+<map id="libc/process.c" name="libc/process.c">
+<area shape="rect" id="node3" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="265,315,350,343"/>
+<area shape="rect" id="node11" href="$stdio_8h.html" title="stdio.h" alt="" coords="91,161,150,189"/>
+<area shape="rect" id="node21" href="$unistd_8h.html" title="unistd.h" alt="" coords="294,83,361,111"/>
+<area shape="rect" id="node33" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="385,83,481,111"/>
+<area shape="rect" id="node37" href="$fcntl_8h.html" title="File control operations." alt="" coords="577,315,633,343"/>
+<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="379,393,467,421"/>
+<area shape="rect" id="node7" href="$stdbool_8h.html" title="Type bool." alt="" coords="270,393,345,421"/>
+<area shape="rect" id="node14" href="$libio_8h.html" title="libio.h" alt="" coords="166,238,219,266"/>
+<area shape="rect" id="node19" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="25,238,91,266"/>
+<area shape="rect" id="node25" href="$stat_8h.html" title="sys/stat.h" alt="" coords="365,161,442,189"/>
+<area shape="rect" id="node29" href="$time_8h.html" title="time.h" alt="" coords="395,238,451,266"/>
 </map>

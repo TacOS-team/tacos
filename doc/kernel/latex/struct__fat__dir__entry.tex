@@ -1,0 +1,93 @@
+\hypertarget{struct__fat__dir__entry}{\section{\-Référence de la structure \-\_\-fat\-\_\-dir\-\_\-entry}
+\label{struct__fat__dir__entry}\index{\-\_\-fat\-\_\-dir\-\_\-entry@{\-\_\-fat\-\_\-dir\-\_\-entry}}
+}
+
+
+{\ttfamily \#include $<$fat\-\_\-internal.\-h$>$}
+
+
+
+\-Graphe de collaboration de \-\_\-fat\-\_\-dir\-\_\-entry\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{struct__fat__dir__entry__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{\-Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{struct__fat__dir__entry_abb18201b12e6039275e6dad91c19a99d}{utf8\-\_\-short\-\_\-name} \mbox{[}8\mbox{]}
+\item 
+char \hyperlink{struct__fat__dir__entry_addf0d1b2feefb5d50d90ea66b06703b9}{file\-\_\-extension} \mbox{[}3\mbox{]}
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{struct__fat__dir__entry_a4672718a4c89a279dd1c2b083ea73789}{file\-\_\-attributes}
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{struct__fat__dir__entry_a27e7962cefa12233338034dff3d75304}{reserved}
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{struct__fat__dir__entry_a54232a69203bce440a4bfaca30abcd00}{create\-\_\-time\-\_\-ms}
+\item 
+\hyperlink{fat__internal_8h_ab864004b9f8da2db1862a0da9acb1735}{fat\-\_\-time\-\_\-t} \hyperlink{struct__fat__dir__entry_a3c6cbf375afefcf8fc1518d5a96790a8}{create\-\_\-time}
+\item 
+\hyperlink{fat__internal_8h_a50b52e2d394a6d7c7f1f2b7c7ef93a19}{fat\-\_\-date\-\_\-t} \hyperlink{struct__fat__dir__entry_ac30b1ec037ee7658eda85b2dc09e5c2e}{create\-\_\-date}
+\item 
+\hyperlink{fat__internal_8h_a50b52e2d394a6d7c7f1f2b7c7ef93a19}{fat\-\_\-date\-\_\-t} \hyperlink{struct__fat__dir__entry_aa53da680ae2a6594c0f956c80a1b8ca4}{last\-\_\-access\-\_\-date}
+\item 
+\hypertarget{struct__fat__dir__entry_a4e4d3ec0d8662c572bb2ac7f9c4bc4c8}{\hyperlink{types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} {\bfseries ea\-\_\-index}}\label{struct__fat__dir__entry_a4e4d3ec0d8662c572bb2ac7f9c4bc4c8}
+
+\item 
+\hyperlink{fat__internal_8h_ab864004b9f8da2db1862a0da9acb1735}{fat\-\_\-time\-\_\-t} \hyperlink{struct__fat__dir__entry_a967f3fe06020a24a22bc83cb80637669}{last\-\_\-modif\-\_\-time}
+\item 
+\hyperlink{fat__internal_8h_a50b52e2d394a6d7c7f1f2b7c7ef93a19}{fat\-\_\-date\-\_\-t} \hyperlink{struct__fat__dir__entry_a9be27b92458730fbdf5342f717aadc32}{last\-\_\-modif\-\_\-date}
+\item 
+\hyperlink{types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} \hyperlink{struct__fat__dir__entry_ae129dc6a378e1bec5c92a3963d6522c6}{cluster\-\_\-pointer}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{struct__fat__dir__entry_a557cd14b001d64851ad5e7cadb742411}{file\-\_\-size}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Description détaillée}
+\-Entrée de dossier. 
+
+\subsection{\-Documentation des champs}
+\hypertarget{struct__fat__dir__entry_ae129dc6a378e1bec5c92a3963d6522c6}{\index{\-\_\-fat\-\_\-dir\-\_\-entry@{\-\_\-fat\-\_\-dir\-\_\-entry}!cluster\-\_\-pointer@{cluster\-\_\-pointer}}
+\index{cluster\-\_\-pointer@{cluster\-\_\-pointer}!_fat_dir_entry@{\-\_\-fat\-\_\-dir\-\_\-entry}}
+\subsubsection[{cluster\-\_\-pointer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint16\-\_\-t} {\bf \-\_\-fat\-\_\-dir\-\_\-entry\-::cluster\-\_\-pointer}}}\label{struct__fat__dir__entry_ae129dc6a378e1bec5c92a3963d6522c6}
+\-Cluster où se situe le fichier. \hypertarget{struct__fat__dir__entry_ac30b1ec037ee7658eda85b2dc09e5c2e}{\index{\-\_\-fat\-\_\-dir\-\_\-entry@{\-\_\-fat\-\_\-dir\-\_\-entry}!create\-\_\-date@{create\-\_\-date}}
+\index{create\-\_\-date@{create\-\_\-date}!_fat_dir_entry@{\-\_\-fat\-\_\-dir\-\_\-entry}}
+\subsubsection[{create\-\_\-date}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fat\-\_\-date\-\_\-t} {\bf \-\_\-fat\-\_\-dir\-\_\-entry\-::create\-\_\-date}}}\label{struct__fat__dir__entry_ac30b1ec037ee7658eda85b2dc09e5c2e}
+\-Date de création. \hypertarget{struct__fat__dir__entry_a3c6cbf375afefcf8fc1518d5a96790a8}{\index{\-\_\-fat\-\_\-dir\-\_\-entry@{\-\_\-fat\-\_\-dir\-\_\-entry}!create\-\_\-time@{create\-\_\-time}}
+\index{create\-\_\-time@{create\-\_\-time}!_fat_dir_entry@{\-\_\-fat\-\_\-dir\-\_\-entry}}
+\subsubsection[{create\-\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fat\-\_\-time\-\_\-t} {\bf \-\_\-fat\-\_\-dir\-\_\-entry\-::create\-\_\-time}}}\label{struct__fat__dir__entry_a3c6cbf375afefcf8fc1518d5a96790a8}
+\-Heure de création. \hypertarget{struct__fat__dir__entry_a54232a69203bce440a4bfaca30abcd00}{\index{\-\_\-fat\-\_\-dir\-\_\-entry@{\-\_\-fat\-\_\-dir\-\_\-entry}!create\-\_\-time\-\_\-ms@{create\-\_\-time\-\_\-ms}}
+\index{create\-\_\-time\-\_\-ms@{create\-\_\-time\-\_\-ms}!_fat_dir_entry@{\-\_\-fat\-\_\-dir\-\_\-entry}}
+\subsubsection[{create\-\_\-time\-\_\-ms}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf \-\_\-fat\-\_\-dir\-\_\-entry\-::create\-\_\-time\-\_\-ms}}}\label{struct__fat__dir__entry_a54232a69203bce440a4bfaca30abcd00}
+\-Si existant \-: create time \mbox{[}0 -\/ 199\mbox{]} x 10ms \-Sinon \-: premier caractère (puisqu'on le remplace). \hypertarget{struct__fat__dir__entry_a4672718a4c89a279dd1c2b083ea73789}{\index{\-\_\-fat\-\_\-dir\-\_\-entry@{\-\_\-fat\-\_\-dir\-\_\-entry}!file\-\_\-attributes@{file\-\_\-attributes}}
+\index{file\-\_\-attributes@{file\-\_\-attributes}!_fat_dir_entry@{\-\_\-fat\-\_\-dir\-\_\-entry}}
+\subsubsection[{file\-\_\-attributes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf \-\_\-fat\-\_\-dir\-\_\-entry\-::file\-\_\-attributes}}}\label{struct__fat__dir__entry_a4672718a4c89a279dd1c2b083ea73789}
+\-Attributs du fichier (write, hidden, etc.) \hypertarget{struct__fat__dir__entry_addf0d1b2feefb5d50d90ea66b06703b9}{\index{\-\_\-fat\-\_\-dir\-\_\-entry@{\-\_\-fat\-\_\-dir\-\_\-entry}!file\-\_\-extension@{file\-\_\-extension}}
+\index{file\-\_\-extension@{file\-\_\-extension}!_fat_dir_entry@{\-\_\-fat\-\_\-dir\-\_\-entry}}
+\subsubsection[{file\-\_\-extension}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf \-\_\-fat\-\_\-dir\-\_\-entry\-::file\-\_\-extension}\mbox{[}3\mbox{]}}}\label{struct__fat__dir__entry_addf0d1b2feefb5d50d90ea66b06703b9}
+\-Extension. \hypertarget{struct__fat__dir__entry_a557cd14b001d64851ad5e7cadb742411}{\index{\-\_\-fat\-\_\-dir\-\_\-entry@{\-\_\-fat\-\_\-dir\-\_\-entry}!file\-\_\-size@{file\-\_\-size}}
+\index{file\-\_\-size@{file\-\_\-size}!_fat_dir_entry@{\-\_\-fat\-\_\-dir\-\_\-entry}}
+\subsubsection[{file\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} {\bf \-\_\-fat\-\_\-dir\-\_\-entry\-::file\-\_\-size}}}\label{struct__fat__dir__entry_a557cd14b001d64851ad5e7cadb742411}
+\-Taille du fichier. \hypertarget{struct__fat__dir__entry_aa53da680ae2a6594c0f956c80a1b8ca4}{\index{\-\_\-fat\-\_\-dir\-\_\-entry@{\-\_\-fat\-\_\-dir\-\_\-entry}!last\-\_\-access\-\_\-date@{last\-\_\-access\-\_\-date}}
+\index{last\-\_\-access\-\_\-date@{last\-\_\-access\-\_\-date}!_fat_dir_entry@{\-\_\-fat\-\_\-dir\-\_\-entry}}
+\subsubsection[{last\-\_\-access\-\_\-date}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fat\-\_\-date\-\_\-t} {\bf \-\_\-fat\-\_\-dir\-\_\-entry\-::last\-\_\-access\-\_\-date}}}\label{struct__fat__dir__entry_aa53da680ae2a6594c0f956c80a1b8ca4}
+\-Date dernier accès. \hypertarget{struct__fat__dir__entry_a9be27b92458730fbdf5342f717aadc32}{\index{\-\_\-fat\-\_\-dir\-\_\-entry@{\-\_\-fat\-\_\-dir\-\_\-entry}!last\-\_\-modif\-\_\-date@{last\-\_\-modif\-\_\-date}}
+\index{last\-\_\-modif\-\_\-date@{last\-\_\-modif\-\_\-date}!_fat_dir_entry@{\-\_\-fat\-\_\-dir\-\_\-entry}}
+\subsubsection[{last\-\_\-modif\-\_\-date}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fat\-\_\-date\-\_\-t} {\bf \-\_\-fat\-\_\-dir\-\_\-entry\-::last\-\_\-modif\-\_\-date}}}\label{struct__fat__dir__entry_a9be27b92458730fbdf5342f717aadc32}
+\-Date de dernière modification. \hypertarget{struct__fat__dir__entry_a967f3fe06020a24a22bc83cb80637669}{\index{\-\_\-fat\-\_\-dir\-\_\-entry@{\-\_\-fat\-\_\-dir\-\_\-entry}!last\-\_\-modif\-\_\-time@{last\-\_\-modif\-\_\-time}}
+\index{last\-\_\-modif\-\_\-time@{last\-\_\-modif\-\_\-time}!_fat_dir_entry@{\-\_\-fat\-\_\-dir\-\_\-entry}}
+\subsubsection[{last\-\_\-modif\-\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fat\-\_\-time\-\_\-t} {\bf \-\_\-fat\-\_\-dir\-\_\-entry\-::last\-\_\-modif\-\_\-time}}}\label{struct__fat__dir__entry_a967f3fe06020a24a22bc83cb80637669}
+\-Heure de dernière modification. \hypertarget{struct__fat__dir__entry_a27e7962cefa12233338034dff3d75304}{\index{\-\_\-fat\-\_\-dir\-\_\-entry@{\-\_\-fat\-\_\-dir\-\_\-entry}!reserved@{reserved}}
+\index{reserved@{reserved}!_fat_dir_entry@{\-\_\-fat\-\_\-dir\-\_\-entry}}
+\subsubsection[{reserved}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf \-\_\-fat\-\_\-dir\-\_\-entry\-::reserved}}}\label{struct__fat__dir__entry_a27e7962cefa12233338034dff3d75304}
+réservé. \hypertarget{struct__fat__dir__entry_abb18201b12e6039275e6dad91c19a99d}{\index{\-\_\-fat\-\_\-dir\-\_\-entry@{\-\_\-fat\-\_\-dir\-\_\-entry}!utf8\-\_\-short\-\_\-name@{utf8\-\_\-short\-\_\-name}}
+\index{utf8\-\_\-short\-\_\-name@{utf8\-\_\-short\-\_\-name}!_fat_dir_entry@{\-\_\-fat\-\_\-dir\-\_\-entry}}
+\subsubsection[{utf8\-\_\-short\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf \-\_\-fat\-\_\-dir\-\_\-entry\-::utf8\-\_\-short\-\_\-name}\mbox{[}8\mbox{]}}}\label{struct__fat__dir__entry_abb18201b12e6039275e6dad91c19a99d}
+\-Nom court. 
+
+\-La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+\item 
+kernel/fs/fat/\hyperlink{fat__internal_8h}{fat\-\_\-internal.\-h}\end{DoxyCompactItemize}

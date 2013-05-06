@@ -1,0 +1,5 @@
+<map id="floppy_get_current_drive" name="floppy_get_current_drive">
+<area shape="rect" id="node3" href="$floppy_8h.html#a4b305e10e95fed92b047adfac6dc4881" title="Initilise le driver floppy." alt="" coords="191,5,268,33"/>
+<area shape="rect" id="node5" href="$floppy__motor_8h.html#a8e34854bf77e8b763e57b6a8986ecff5" title="Change l&#39;état du moteur." alt="" coords="183,55,276,83"/>
+<area shape="rect" id="node7" href="$floppy__utils_8h.html#acf13f3cbd5df998eefb55cd2d15210c5" title="Déplace la tête de lecture à un cylindre défini." alt="" coords="325,81,416,109"/>
+</map>

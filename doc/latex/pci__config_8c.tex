@@ -1,0 +1,67 @@
+\hypertarget{pci__config_8c}{\section{Référence du fichier kernel/pci/pci\-\_\-config.c}
+\label{pci__config_8c}\index{kernel/pci/pci\-\_\-config.\-c@{kernel/pci/pci\-\_\-config.\-c}}
+}
+{\ttfamily \#include $<$ioports.\-h$>$}\\*
+{\ttfamily \#include $<$types.\-h$>$}\\*
+{\ttfamily \#include $<$pci\-\_\-config.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}pci\-\_\-vendor.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$kstdio.\-h$>$}\\*
+Graphe des dépendances par inclusion de pci\-\_\-config.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pci__config_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{pci__config_8c_a98b9b2b06a1aba5b41a9c4a94cbd89df}{\#define {\bfseries C\-O\-N\-F\-I\-G\-\_\-\-A\-D\-D\-R\-E\-S\-S}~0x\-C\-F8}\label{pci__config_8c_a98b9b2b06a1aba5b41a9c4a94cbd89df}
+
+\item 
+\hypertarget{pci__config_8c_aa7512e01dc2265a37384327e5470a595}{\#define {\bfseries C\-O\-N\-F\-I\-G\-\_\-\-D\-A\-T\-A}~0x\-C\-F\-C}\label{pci__config_8c_aa7512e01dc2265a37384327e5470a595}
+
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{pci__config_8c_a5d648b63c1a3ed58beac94da03aecee9}{\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} {\bfseries pci\-\_\-read\-\_\-register} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} bus, \hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} slot, \hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} func, \hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} reg)}\label{pci__config_8c_a5d648b63c1a3ed58beac94da03aecee9}
+
+\item 
+\hypertarget{pci__config_8c_ac20cc5bc0b7c4f3257dc1b9c9b49abd1}{\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} {\bfseries pci\-\_\-write\-\_\-register} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} bus, \hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} slot, \hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} func, \hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} reg, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} value)}\label{pci__config_8c_ac20cc5bc0b7c4f3257dc1b9c9b49abd1}
+
+\item 
+\hypertarget{pci__config_8c_ad30d98fc1a7a24917852b76af04a232f}{\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} {\bfseries pci\-\_\-read\-\_\-value} (\hyperlink{structpci__function__t}{pci\-\_\-function\-\_\-p} func, \hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} reg, \hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} offset, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} mask)}\label{pci__config_8c_ad30d98fc1a7a24917852b76af04a232f}
+
+\item 
+\hypertarget{pci__config_8c_a576c67463b10e116609d0049fa89baa8}{\hyperlink{struct__PCI__VENTABLE}{P\-P\-C\-I\-\_\-\-V\-E\-N\-T\-A\-B\-L\-E} {\bfseries pci\-\_\-get\-\_\-vendor} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} bus, \hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} slot, \hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} function)}\label{pci__config_8c_a576c67463b10e116609d0049fa89baa8}
+
+\item 
+\hypertarget{pci__config_8c_a1c172c359f2d84e7a3dafa085006603f}{\hyperlink{struct__PCI__DEVTABLE}{P\-P\-C\-I\-\_\-\-D\-E\-V\-T\-A\-B\-L\-E} {\bfseries pci\-\_\-get\-\_\-device} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} bus, \hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} slot, \hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} function)}\label{pci__config_8c_a1c172c359f2d84e7a3dafa085006603f}
+
+\item 
+\hypertarget{pci__config_8c_a866aafb6e2dabb66c24876d89396ed44}{\hyperlink{struct__PCI__CLASSCODETABLE}{P\-P\-C\-I\-\_\-\-C\-L\-A\-S\-S\-C\-O\-D\-E\-T\-A\-B\-L\-E} {\bfseries pci\-\_\-get\-\_\-classcode} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} bus, \hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} slot, \hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} function)}\label{pci__config_8c_a866aafb6e2dabb66c24876d89396ed44}
+
+\item 
+\hypertarget{pci__config_8c_a9a17d6e90f06c6ef37c0b5239039d4f0}{void {\bfseries pci\-\_\-print\-\_\-info} (\hyperlink{structpci__function__t}{pci\-\_\-function\-\_\-p} func)}\label{pci__config_8c_a9a17d6e90f06c6ef37c0b5239039d4f0}
+
+\item 
+\hypertarget{pci__config_8c_ae0fa4ce97d44994969ebde46d6c76c75}{void {\bfseries pci\-\_\-print\-\_\-detailed\-\_\-info} (\hyperlink{structpci__function__t}{pci\-\_\-function\-\_\-p} func)}\label{pci__config_8c_ae0fa4ce97d44994969ebde46d6c76c75}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+Description de ce que fait le fichier 

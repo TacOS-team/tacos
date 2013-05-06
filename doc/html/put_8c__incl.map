@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="libc/stdio/put.c" name="libc/stdio/put.c">
 <area shape="rect" id="node3" href="$stdio_8h.html" title="stdio.h" alt="" coords="144,161,203,189"/>
 <area shape="rect" id="node20" href="$unistd_8h.html" title="unistd.h" alt="" coords="428,83,495,111"/>
 <area shape="rect" id="node32" href="$fcntl_8h.html" title="File control operations." alt="" coords="557,315,613,343"/>

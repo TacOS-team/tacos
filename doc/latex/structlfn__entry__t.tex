@@ -1,0 +1,61 @@
+\hypertarget{structlfn__entry__t}{\section{Référence de la structure lfn\-\_\-entry\-\_\-t}
+\label{structlfn__entry__t}\index{lfn\-\_\-entry\-\_\-t@{lfn\-\_\-entry\-\_\-t}}
+}
+
+
+{\ttfamily \#include $<$fat\-\_\-internal.\-h$>$}
+
+\subsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structlfn__entry__t_a07b88226674917555309538459b194df}{seq\-\_\-number}
+\item 
+\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structlfn__entry__t_a04e5c493f02fa433b7d7d2d489c89e60}{filename1} \mbox{[}10\mbox{]}
+\item 
+\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structlfn__entry__t_a5b1eb8b963f05e47b3d6508b5a986985}{attributes}
+\item 
+\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structlfn__entry__t_a506f9cbd0e4fe209626eedaf48c1f8bf}{reserved}
+\item 
+\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structlfn__entry__t_a1a60017a7c8b7502fefc8358a821f0ae}{checksum}
+\item 
+\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structlfn__entry__t_ab88e34e402a566da06c83163e94a1763}{filename2} \mbox{[}12\mbox{]}
+\item 
+\hyperlink{kernel_2include_2types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} \hyperlink{structlfn__entry__t_a6f3355b0c241c7a5936c04dccf1614ca}{cluster\-\_\-pointer}
+\item 
+\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structlfn__entry__t_aa157718941579c9ef9bb5eba85015ec0}{filename3} \mbox{[}4\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Entrée pour les noms de fichier long. 
+
+\subsection{Documentation des champs}
+\hypertarget{structlfn__entry__t_a5b1eb8b963f05e47b3d6508b5a986985}{\index{lfn\-\_\-entry\-\_\-t@{lfn\-\_\-entry\-\_\-t}!attributes@{attributes}}
+\index{attributes@{attributes}!lfn_entry_t@{lfn\-\_\-entry\-\_\-t}}
+\subsubsection[{attributes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} lfn\-\_\-entry\-\_\-t\-::attributes}}\label{structlfn__entry__t_a5b1eb8b963f05e47b3d6508b5a986985}
+Attributs (Toujours 0x0\-F). \hypertarget{structlfn__entry__t_a1a60017a7c8b7502fefc8358a821f0ae}{\index{lfn\-\_\-entry\-\_\-t@{lfn\-\_\-entry\-\_\-t}!checksum@{checksum}}
+\index{checksum@{checksum}!lfn_entry_t@{lfn\-\_\-entry\-\_\-t}}
+\subsubsection[{checksum}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} lfn\-\_\-entry\-\_\-t\-::checksum}}\label{structlfn__entry__t_a1a60017a7c8b7502fefc8358a821f0ae}
+checksum. \hypertarget{structlfn__entry__t_a6f3355b0c241c7a5936c04dccf1614ca}{\index{lfn\-\_\-entry\-\_\-t@{lfn\-\_\-entry\-\_\-t}!cluster\-\_\-pointer@{cluster\-\_\-pointer}}
+\index{cluster\-\_\-pointer@{cluster\-\_\-pointer}!lfn_entry_t@{lfn\-\_\-entry\-\_\-t}}
+\subsubsection[{cluster\-\_\-pointer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint16\-\_\-t} lfn\-\_\-entry\-\_\-t\-::cluster\-\_\-pointer}}\label{structlfn__entry__t_a6f3355b0c241c7a5936c04dccf1614ca}
+always 0x000. \hypertarget{structlfn__entry__t_a04e5c493f02fa433b7d7d2d489c89e60}{\index{lfn\-\_\-entry\-\_\-t@{lfn\-\_\-entry\-\_\-t}!filename1@{filename1}}
+\index{filename1@{filename1}!lfn_entry_t@{lfn\-\_\-entry\-\_\-t}}
+\subsubsection[{filename1}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} lfn\-\_\-entry\-\_\-t\-::filename1\mbox{[}10\mbox{]}}}\label{structlfn__entry__t_a04e5c493f02fa433b7d7d2d489c89e60}
+Partie du nom de fichier. \hypertarget{structlfn__entry__t_ab88e34e402a566da06c83163e94a1763}{\index{lfn\-\_\-entry\-\_\-t@{lfn\-\_\-entry\-\_\-t}!filename2@{filename2}}
+\index{filename2@{filename2}!lfn_entry_t@{lfn\-\_\-entry\-\_\-t}}
+\subsubsection[{filename2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} lfn\-\_\-entry\-\_\-t\-::filename2\mbox{[}12\mbox{]}}}\label{structlfn__entry__t_ab88e34e402a566da06c83163e94a1763}
+Suite du nom de fichier. \hypertarget{structlfn__entry__t_aa157718941579c9ef9bb5eba85015ec0}{\index{lfn\-\_\-entry\-\_\-t@{lfn\-\_\-entry\-\_\-t}!filename3@{filename3}}
+\index{filename3@{filename3}!lfn_entry_t@{lfn\-\_\-entry\-\_\-t}}
+\subsubsection[{filename3}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} lfn\-\_\-entry\-\_\-t\-::filename3\mbox{[}4\mbox{]}}}\label{structlfn__entry__t_aa157718941579c9ef9bb5eba85015ec0}
+Suite du nom de fichier. \hypertarget{structlfn__entry__t_a506f9cbd0e4fe209626eedaf48c1f8bf}{\index{lfn\-\_\-entry\-\_\-t@{lfn\-\_\-entry\-\_\-t}!reserved@{reserved}}
+\index{reserved@{reserved}!lfn_entry_t@{lfn\-\_\-entry\-\_\-t}}
+\subsubsection[{reserved}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} lfn\-\_\-entry\-\_\-t\-::reserved}}\label{structlfn__entry__t_a506f9cbd0e4fe209626eedaf48c1f8bf}
+always 0x0. \hypertarget{structlfn__entry__t_a07b88226674917555309538459b194df}{\index{lfn\-\_\-entry\-\_\-t@{lfn\-\_\-entry\-\_\-t}!seq\-\_\-number@{seq\-\_\-number}}
+\index{seq\-\_\-number@{seq\-\_\-number}!lfn_entry_t@{lfn\-\_\-entry\-\_\-t}}
+\subsubsection[{seq\-\_\-number}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} lfn\-\_\-entry\-\_\-t\-::seq\-\_\-number}}\label{structlfn__entry__t_a07b88226674917555309538459b194df}
+Numéro de séquence. 
+
+La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+\item 
+kernel/fs/fat/\hyperlink{fat__internal_8h}{fat\-\_\-internal.\-h}\end{DoxyCompactItemize}

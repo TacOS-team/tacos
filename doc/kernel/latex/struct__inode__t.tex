@@ -1,0 +1,105 @@
+\hypertarget{struct__inode__t}{\section{\-Référence de la structure \-\_\-inode\-\_\-t}
+\label{struct__inode__t}\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}}
+}
+
+
+{\ttfamily \#include $<$vfs.\-h$>$}
+
+
+
+\-Graphe de collaboration de \-\_\-inode\-\_\-t\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct__inode__t__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{\-Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \hyperlink{struct__inode__t_aba602b843ba63a32ca3950dbaf7e959c}{i\-\_\-ino}
+\item 
+int \hyperlink{struct__inode__t_acead4732b6c22ef17ada59203509e728}{i\-\_\-mode}
+\item 
+\hyperlink{kstat_8h_af2306308627701b66dc6f3babe821ab4}{uid\-\_\-t} \hyperlink{struct__inode__t_a7ddcb65050ac0b4c9cfbacd495d56f4b}{i\-\_\-uid}
+\item 
+\hyperlink{kstat_8h_aa7352f1065fe606194d792e2b292cf83}{gid\-\_\-t} \hyperlink{struct__inode__t_a95d052a6e9b1b1e4f6837fa0f33b393e}{i\-\_\-gid}
+\item 
+off\-\_\-t \hyperlink{struct__inode__t_aed37b31c96c90873201abfc8b4b3e463}{i\-\_\-size}
+\item 
+time\-\_\-t \hyperlink{struct__inode__t_a01f50c6c44a3b50e4414a794643b741f}{i\-\_\-atime}
+\item 
+time\-\_\-t \hyperlink{struct__inode__t_a73ee1e604547b74b8e1045fd4f6699b6}{i\-\_\-ctime}
+\item 
+time\-\_\-t \hyperlink{struct__inode__t_a331d724391efce2f89aeb1a503ae5c43}{i\-\_\-mtime}
+\item 
+time\-\_\-t \hyperlink{struct__inode__t_a393de4c58241168fdf397ab8421a3539}{i\-\_\-dtime}
+\item 
+unsigned char \hyperlink{struct__inode__t_a929fc1e6837d02a2525027a121b4e67e}{i\-\_\-nlink}
+\item 
+unsigned char \hyperlink{struct__inode__t_a36ff48a57a9e483d74682972d31ef46c}{i\-\_\-flags}
+\item 
+unsigned long \hyperlink{struct__inode__t_a92ebe4c1e93af9fba4efae4d07e14858}{i\-\_\-blocks}
+\item 
+\hyperlink{vfs_8h_a0eefa9aac35a5462ebf1e038992ca860}{fs\-\_\-instance\-\_\-t} $\ast$ \hyperlink{struct__inode__t_affefc88b22f45e2ec8340d582486d0f2}{i\-\_\-instance}
+\item 
+struct \hyperlink{struct__open__file__operations__t}{\-\_\-open\-\_\-file\-\_\-operations\-\_\-t} $\ast$ \hyperlink{struct__inode__t_acf149d7d1601f78142b1eec480badf7e}{i\-\_\-fops}
+\item 
+void $\ast$ \hyperlink{struct__inode__t_a54e34439c448c46bae90fd040dadc5c0}{i\-\_\-fs\-\_\-specific}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Description détaillée}
+\-Structure inode. 
+
+\subsection{\-Documentation des champs}
+\hypertarget{struct__inode__t_a01f50c6c44a3b50e4414a794643b741f}{\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}!i\-\_\-atime@{i\-\_\-atime}}
+\index{i\-\_\-atime@{i\-\_\-atime}!_inode_t@{\-\_\-inode\-\_\-t}}
+\subsubsection[{i\-\_\-atime}]{\setlength{\rightskip}{0pt plus 5cm}time\-\_\-t {\bf \-\_\-inode\-\_\-t\-::i\-\_\-atime}}}\label{struct__inode__t_a01f50c6c44a3b50e4414a794643b741f}
+\-Access time \hypertarget{struct__inode__t_a92ebe4c1e93af9fba4efae4d07e14858}{\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}!i\-\_\-blocks@{i\-\_\-blocks}}
+\index{i\-\_\-blocks@{i\-\_\-blocks}!_inode_t@{\-\_\-inode\-\_\-t}}
+\subsubsection[{i\-\_\-blocks}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long {\bf \-\_\-inode\-\_\-t\-::i\-\_\-blocks}}}\label{struct__inode__t_a92ebe4c1e93af9fba4efae4d07e14858}
+\-Blocks count \hypertarget{struct__inode__t_a73ee1e604547b74b8e1045fd4f6699b6}{\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}!i\-\_\-ctime@{i\-\_\-ctime}}
+\index{i\-\_\-ctime@{i\-\_\-ctime}!_inode_t@{\-\_\-inode\-\_\-t}}
+\subsubsection[{i\-\_\-ctime}]{\setlength{\rightskip}{0pt plus 5cm}time\-\_\-t {\bf \-\_\-inode\-\_\-t\-::i\-\_\-ctime}}}\label{struct__inode__t_a73ee1e604547b74b8e1045fd4f6699b6}
+\-Creation time \hypertarget{struct__inode__t_a393de4c58241168fdf397ab8421a3539}{\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}!i\-\_\-dtime@{i\-\_\-dtime}}
+\index{i\-\_\-dtime@{i\-\_\-dtime}!_inode_t@{\-\_\-inode\-\_\-t}}
+\subsubsection[{i\-\_\-dtime}]{\setlength{\rightskip}{0pt plus 5cm}time\-\_\-t {\bf \-\_\-inode\-\_\-t\-::i\-\_\-dtime}}}\label{struct__inode__t_a393de4c58241168fdf397ab8421a3539}
+\-Deletion \-Time \hypertarget{struct__inode__t_a36ff48a57a9e483d74682972d31ef46c}{\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}!i\-\_\-flags@{i\-\_\-flags}}
+\index{i\-\_\-flags@{i\-\_\-flags}!_inode_t@{\-\_\-inode\-\_\-t}}
+\subsubsection[{i\-\_\-flags}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf \-\_\-inode\-\_\-t\-::i\-\_\-flags}}}\label{struct__inode__t_a36ff48a57a9e483d74682972d31ef46c}
+\-File flags \hypertarget{struct__inode__t_acf149d7d1601f78142b1eec480badf7e}{\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}!i\-\_\-fops@{i\-\_\-fops}}
+\index{i\-\_\-fops@{i\-\_\-fops}!_inode_t@{\-\_\-inode\-\_\-t}}
+\subsubsection[{i\-\_\-fops}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \-\_\-open\-\_\-file\-\_\-operations\-\_\-t}$\ast$ {\bf \-\_\-inode\-\_\-t\-::i\-\_\-fops}}}\label{struct__inode__t_acf149d7d1601f78142b1eec480badf7e}
+\-Ofd operations. \hypertarget{struct__inode__t_a54e34439c448c46bae90fd040dadc5c0}{\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}!i\-\_\-fs\-\_\-specific@{i\-\_\-fs\-\_\-specific}}
+\index{i\-\_\-fs\-\_\-specific@{i\-\_\-fs\-\_\-specific}!_inode_t@{\-\_\-inode\-\_\-t}}
+\subsubsection[{i\-\_\-fs\-\_\-specific}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf \-\_\-inode\-\_\-t\-::i\-\_\-fs\-\_\-specific}}}\label{struct__inode__t_a54e34439c448c46bae90fd040dadc5c0}
+\-Extra data \hypertarget{struct__inode__t_a95d052a6e9b1b1e4f6837fa0f33b393e}{\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}!i\-\_\-gid@{i\-\_\-gid}}
+\index{i\-\_\-gid@{i\-\_\-gid}!_inode_t@{\-\_\-inode\-\_\-t}}
+\subsubsection[{i\-\_\-gid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf gid\-\_\-t} {\bf \-\_\-inode\-\_\-t\-::i\-\_\-gid}}}\label{struct__inode__t_a95d052a6e9b1b1e4f6837fa0f33b393e}
+\-Low 16 bits of \-Group \-Id \hypertarget{struct__inode__t_aba602b843ba63a32ca3950dbaf7e959c}{\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}!i\-\_\-ino@{i\-\_\-ino}}
+\index{i\-\_\-ino@{i\-\_\-ino}!_inode_t@{\-\_\-inode\-\_\-t}}
+\subsubsection[{i\-\_\-ino}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long {\bf \-\_\-inode\-\_\-t\-::i\-\_\-ino}}}\label{struct__inode__t_aba602b843ba63a32ca3950dbaf7e959c}
+\-Inode number \hypertarget{struct__inode__t_affefc88b22f45e2ec8340d582486d0f2}{\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}!i\-\_\-instance@{i\-\_\-instance}}
+\index{i\-\_\-instance@{i\-\_\-instance}!_inode_t@{\-\_\-inode\-\_\-t}}
+\subsubsection[{i\-\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fs\-\_\-instance\-\_\-t}$\ast$ {\bf \-\_\-inode\-\_\-t\-::i\-\_\-instance}}}\label{struct__inode__t_affefc88b22f45e2ec8340d582486d0f2}
+\-Instance de fs auquel appartient cet inoeud. \hypertarget{struct__inode__t_acead4732b6c22ef17ada59203509e728}{\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}!i\-\_\-mode@{i\-\_\-mode}}
+\index{i\-\_\-mode@{i\-\_\-mode}!_inode_t@{\-\_\-inode\-\_\-t}}
+\subsubsection[{i\-\_\-mode}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-\_\-inode\-\_\-t\-::i\-\_\-mode}}}\label{struct__inode__t_acead4732b6c22ef17ada59203509e728}
+\-File mode \hypertarget{struct__inode__t_a331d724391efce2f89aeb1a503ae5c43}{\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}!i\-\_\-mtime@{i\-\_\-mtime}}
+\index{i\-\_\-mtime@{i\-\_\-mtime}!_inode_t@{\-\_\-inode\-\_\-t}}
+\subsubsection[{i\-\_\-mtime}]{\setlength{\rightskip}{0pt plus 5cm}time\-\_\-t {\bf \-\_\-inode\-\_\-t\-::i\-\_\-mtime}}}\label{struct__inode__t_a331d724391efce2f89aeb1a503ae5c43}
+\-Modification time \hypertarget{struct__inode__t_a929fc1e6837d02a2525027a121b4e67e}{\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}!i\-\_\-nlink@{i\-\_\-nlink}}
+\index{i\-\_\-nlink@{i\-\_\-nlink}!_inode_t@{\-\_\-inode\-\_\-t}}
+\subsubsection[{i\-\_\-nlink}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf \-\_\-inode\-\_\-t\-::i\-\_\-nlink}}}\label{struct__inode__t_a929fc1e6837d02a2525027a121b4e67e}
+\-Links count \hypertarget{struct__inode__t_aed37b31c96c90873201abfc8b4b3e463}{\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}!i\-\_\-size@{i\-\_\-size}}
+\index{i\-\_\-size@{i\-\_\-size}!_inode_t@{\-\_\-inode\-\_\-t}}
+\subsubsection[{i\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}off\-\_\-t {\bf \-\_\-inode\-\_\-t\-::i\-\_\-size}}}\label{struct__inode__t_aed37b31c96c90873201abfc8b4b3e463}
+\-Size in bytes \hypertarget{struct__inode__t_a7ddcb65050ac0b4c9cfbacd495d56f4b}{\index{\-\_\-inode\-\_\-t@{\-\_\-inode\-\_\-t}!i\-\_\-uid@{i\-\_\-uid}}
+\index{i\-\_\-uid@{i\-\_\-uid}!_inode_t@{\-\_\-inode\-\_\-t}}
+\subsubsection[{i\-\_\-uid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uid\-\_\-t} {\bf \-\_\-inode\-\_\-t\-::i\-\_\-uid}}}\label{struct__inode__t_a7ddcb65050ac0b4c9cfbacd495d56f4b}
+\-Low 16 bits of \-Owner \-Uid 
+
+\-La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+\item 
+kernel/include/\hyperlink{vfs_8h}{vfs.\-h}\end{DoxyCompactItemize}

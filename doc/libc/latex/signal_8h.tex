@@ -1,0 +1,371 @@
+\hypertarget{signal_8h}{\section{\-Référence du fichier libc/include/signal.h}
+\label{signal_8h}\index{libc/include/signal.\-h@{libc/include/signal.\-h}}
+}
+
+
+\-Gestion des signaux.  
+
+
+{\ttfamily \#include $<$sys/cdefs.\-h$>$}\*
+{\ttfamily \#include $<$sys/types.\-h$>$}\*
+\-Graphe des dépendances par inclusion de signal.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{signal_8h__incl}
+\end{center}
+\end{figure}
+\-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{signal_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{signal_8h_ab83b88daaecc469d1edb90a527ab4a39}{\-N\-S\-I\-G}~32
+\item 
+\hypertarget{signal_8h_a1836b0246d63153d3443f07a230f5797}{\#define {\bfseries \-S\-I\-G\-T\-Y\-P\-E\-S}}\label{signal_8h_a1836b0246d63153d3443f07a230f5797}
+
+\item 
+\#define \hyperlink{signal_8h_a136c64ec2d1306de745e39d6aee362ca}{\-S\-I\-G\-H\-U\-P}~0
+\item 
+\#define \hyperlink{signal_8h_a487309e3e9e0527535644115204a639a}{\-S\-I\-G\-I\-N\-T}~1
+\item 
+\#define \hyperlink{signal_8h_a62045b465be11891160d53c10861b16c}{\-S\-I\-G\-Q\-U\-I\-T}~2
+\item 
+\#define \hyperlink{signal_8h_a4c9c5284f8c8d146bd7a93d25017fc62}{\-S\-I\-G\-I\-L\-L}~3
+\item 
+\#define \hyperlink{signal_8h_aa2beb906ab1b46676e63823f4e773c38}{\-S\-I\-G\-T\-R\-A\-P}~4
+\item 
+\#define \hyperlink{signal_8h_aa86c630133e5b5174ac970227b273446}{\-S\-I\-G\-A\-B\-R\-T}~5
+\item 
+\#define \hyperlink{signal_8h_aead3d488474201acf18c4b63d91edc3c}{\-S\-I\-G\-B\-U\-S}~6
+\item 
+\#define \hyperlink{signal_8h_a7fbba29aec3e4a8daae12935299df92d}{\-S\-I\-G\-F\-P\-E}~7
+\item 
+\#define \hyperlink{signal_8h_addd8dcd406ce514ab3b4f576a5343d42}{\-S\-I\-G\-K\-I\-L\-L}~8
+\item 
+\#define \hyperlink{signal_8h_a944a8250e34bfd7991123abd3436d8c0}{\-S\-I\-G\-U\-S\-R1}~9
+\item 
+\#define \hyperlink{signal_8h_ae20b4f7171a09516ea73c9d2745bd596}{\-S\-I\-G\-S\-E\-G\-V}~10
+\item 
+\#define \hyperlink{signal_8h_abaaa61abe503c43481e35e21b0b5a031}{\-S\-I\-G\-U\-S\-R2}~11
+\item 
+\#define \hyperlink{signal_8h_a57e9c8c5fa13bf86bc779a9f6f408b7c}{\-S\-I\-G\-P\-I\-P\-E}~12
+\item 
+\#define \hyperlink{signal_8h_aa6946723c6b7a86ec3c33caaf832840b}{\-S\-I\-G\-A\-L\-R\-M}~13
+\item 
+\#define \hyperlink{signal_8h_a682182a5e5f38fd61f4311501e9dac5d}{\-S\-I\-G\-T\-E\-R\-M}~14
+\item 
+\#define \hyperlink{signal_8h_a0e63521a64cc8bc2b91d36a87d32c9f8}{\-S\-I\-G\-C\-H\-L\-D}~16
+\item 
+\#define \hyperlink{signal_8h_a024f43063003e753afc6cca1acd6e104}{\-S\-I\-G\-C\-O\-N\-T}~17
+\item 
+\#define \hyperlink{signal_8h_a069e358bc9a864b7dc4fed2440eda14c}{\-S\-I\-G\-S\-T\-O\-P}~18
+\item 
+\#define \hyperlink{signal_8h_abe65c086e01f0d286b7a785a7e3cdd1a}{\-S\-I\-G\-T\-S\-T\-P}~19
+\item 
+\#define \hyperlink{signal_8h_a2c146e34a6b5a78dfba41cded3331181}{\-S\-I\-G\-T\-T\-I\-N}~20
+\item 
+\#define \hyperlink{signal_8h_a782864287613e2c5c030411fa9c5e9b1}{\-S\-I\-G\-T\-T\-O\-U}~21
+\item 
+\#define \hyperlink{signal_8h_ad9ff13149e36144a4ea28788948c34dd}{\-S\-I\-G\-U\-R\-G}~22
+\item 
+\#define \hyperlink{signal_8h_a8bacf9eb18fd539099c1bb4666c45d60}{\-S\-I\-G\-S\-Y\-S}~30
+\item 
+\hypertarget{signal_8h_ae89f9a1282bd2d1b2a2b310c12ea16a5}{\#define {\bfseries \-S\-I\-G\-R\-T\-M\-I\-N}~31}\label{signal_8h_ae89f9a1282bd2d1b2a2b310c12ea16a5}
+
+\item 
+\hypertarget{signal_8h_a5336d2c76af22b10373e3dd28fb3b0f0}{\#define {\bfseries \-S\-I\-G\-R\-T\-M\-A\-X}~\hyperlink{signal_8h_ab83b88daaecc469d1edb90a527ab4a39}{\-N\-S\-I\-G}-\/1}\label{signal_8h_a5336d2c76af22b10373e3dd28fb3b0f0}
+
+\item 
+\hypertarget{signal_8h_a927f6ae16379576d638006c7498ac5d7}{\#define {\bfseries \-S\-I\-G\-\_\-\-B\-L\-O\-C\-K}~0}\label{signal_8h_a927f6ae16379576d638006c7498ac5d7}
+
+\item 
+\hypertarget{signal_8h_a5fcd73313a63dac2cc7eb3b654215250}{\#define {\bfseries \-S\-I\-G\-\_\-\-U\-N\-B\-L\-O\-C\-K}~1}\label{signal_8h_a5fcd73313a63dac2cc7eb3b654215250}
+
+\item 
+\hypertarget{signal_8h_a37750b78b7ae75fe02ad26e70f6cc845}{\#define {\bfseries \-S\-I\-G\-\_\-\-S\-E\-T\-M\-A\-S\-K}~2}\label{signal_8h_a37750b78b7ae75fe02ad26e70f6cc845}
+
+\item 
+\#define \hyperlink{signal_8h_acf0e499b0ac946b366b4f47a3b3e8b9e}{\-S\-I\-G\-\_\-\-I\-G\-N}~sig\-\_\-ignore\-\_\-handler
+\item 
+\#define \hyperlink{signal_8h_a27d5dc561093d6243542e6a2465bc0f8}{\-S\-I\-G\-\_\-\-D\-F\-L}~0
+\end{DoxyCompactItemize}
+\subsection*{\-Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{signal_8h_a9140a5882f847f67b8155c759ac6aa05}{typedef unsigned long {\bfseries sigset\-\_\-t}}\label{signal_8h_a9140a5882f847f67b8155c759ac6aa05}
+
+\item 
+typedef void($\ast$ \hyperlink{signal_8h_a564498016effaee1f3384e07b7ced24f}{sighandler\-\_\-t} )(int)
+\end{DoxyCompactItemize}
+\subsection*{\-Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{signal_8h_a1de31bdef82f181f8045b94ae0933916}{init\-\_\-signals} (void)
+\item 
+int \hyperlink{signal_8h_ae9fc1d1a853fcc23a5e434506aa47bca}{kill} (unsigned int pid, int sig)
+\item 
+int \hyperlink{signal_8h_a08ba0dd26a850108a1746412faba2b21}{raise} (int sig)
+\item 
+\hyperlink{signal_8h_a564498016effaee1f3384e07b7ced24f}{sighandler\-\_\-t} \hyperlink{signal_8h_a18b3c89ca28c1045ee53f16a1ebca8b3}{signal} (int sig, \hyperlink{signal_8h_a564498016effaee1f3384e07b7ced24f}{sighandler\-\_\-t} func)
+\item 
+\hypertarget{signal_8h_a20d9f879bbe69c79f62bd3813fcc1e63}{int {\bfseries sigsuspend} (const sigset\-\_\-t $\ast$sigmask)}\label{signal_8h_a20d9f879bbe69c79f62bd3813fcc1e63}
+
+\item 
+\hypertarget{signal_8h_a0fd1024302d5bc062261b9b732bdf92b}{int {\bfseries sigprocmask} (int how, const sigset\-\_\-t $\ast$set, sigset\-\_\-t $\ast$oldset)}\label{signal_8h_a0fd1024302d5bc062261b9b732bdf92b}
+
+\item 
+\hypertarget{signal_8h_a5925352f90eb589393274fa0376d7def}{int {\bfseries sigemptyset} (sigset\-\_\-t $\ast$set)}\label{signal_8h_a5925352f90eb589393274fa0376d7def}
+
+\item 
+\hypertarget{signal_8h_a88d7bbc77ea1569ee21c90db549ea023}{int {\bfseries sigfillset} (sigset\-\_\-t $\ast$set)}\label{signal_8h_a88d7bbc77ea1569ee21c90db549ea023}
+
+\item 
+\hypertarget{signal_8h_ae412e6a5436a6c28424b0173251d349c}{int {\bfseries sigaddset} (sigset\-\_\-t $\ast$set, int signum)}\label{signal_8h_ae412e6a5436a6c28424b0173251d349c}
+
+\item 
+\hypertarget{signal_8h_ab0025e4f32ce2737c40cc0074cc6d7d2}{int {\bfseries sigdelset} (sigset\-\_\-t $\ast$set, int signum)}\label{signal_8h_ab0025e4f32ce2737c40cc0074cc6d7d2}
+
+\item 
+\hypertarget{signal_8h_a63693cc65f43d772729b588b453fe1ef}{int {\bfseries sigismember} (const sigset\-\_\-t $\ast$set, int signum)}\label{signal_8h_a63693cc65f43d772729b588b453fe1ef}
+
+\item 
+\hypertarget{signal_8h_ad63ce69011851ac099d5d95d3db1863b}{void {\bfseries sig\-\_\-ignore\-\_\-handler} (int \hyperlink{signal_8c_a18b3c89ca28c1045ee53f16a1ebca8b3}{signal})}\label{signal_8h_ad63ce69011851ac099d5d95d3db1863b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Description détaillée}
+\begin{DoxyAuthor}{\-Auteur}
+\-Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{\-L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+\-Copyright (\-C) 2010, 2011, 2012 -\/ \-Tac\-O\-S developers.
+
+\-This program is free software; you can redistribute it and/or modify it under the terms of the \-G\-N\-U \-General \-Public \-License as published by the \-Free \-Software \-Foundation; either version 3 of the \-License, or (at your option) any later version.
+
+\-This program is distributed in the hope that it will be useful, but \-W\-I\-T\-H\-O\-U\-T \-A\-N\-Y \-W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of \-M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or \-F\-I\-T\-N\-E\-S\-S \-F\-O\-R \-A \-P\-A\-R\-T\-I\-C\-U\-L\-A\-R \-P\-U\-R\-P\-O\-S\-E. \-See the \-G\-N\-U \-General \-Public \-License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+\-You should have received a copy of the \-G\-N\-U \-General \-Public \-License along with this program; if not, see $<$\href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}$>$.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{\-D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+
+
+\subsection{\-Documentation des macros}
+\hypertarget{signal_8h_ab83b88daaecc469d1edb90a527ab4a39}{\index{signal.\-h@{signal.\-h}!\-N\-S\-I\-G@{\-N\-S\-I\-G}}
+\index{\-N\-S\-I\-G@{\-N\-S\-I\-G}!signal.h@{signal.\-h}}
+\subsubsection[{\-N\-S\-I\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-N\-S\-I\-G}~32}}\label{signal_8h_ab83b88daaecc469d1edb90a527ab4a39}
+\-Nombre de signaux. \hypertarget{signal_8h_a27d5dc561093d6243542e6a2465bc0f8}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-\_\-\-D\-F\-L@{\-S\-I\-G\-\_\-\-D\-F\-L}}
+\index{\-S\-I\-G\-\_\-\-D\-F\-L@{\-S\-I\-G\-\_\-\-D\-F\-L}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-\_\-\-D\-F\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-\_\-\-D\-F\-L}~0}}\label{signal_8h_a27d5dc561093d6243542e6a2465bc0f8}
+\-Utiliser le handler par défaut. \hypertarget{signal_8h_acf0e499b0ac946b366b4f47a3b3e8b9e}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-\_\-\-I\-G\-N@{\-S\-I\-G\-\_\-\-I\-G\-N}}
+\index{\-S\-I\-G\-\_\-\-I\-G\-N@{\-S\-I\-G\-\_\-\-I\-G\-N}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-\_\-\-I\-G\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-\_\-\-I\-G\-N}~sig\-\_\-ignore\-\_\-handler}}\label{signal_8h_acf0e499b0ac946b366b4f47a3b3e8b9e}
+\-Ignorer le signal. \hypertarget{signal_8h_aa86c630133e5b5174ac970227b273446}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-A\-B\-R\-T@{\-S\-I\-G\-A\-B\-R\-T}}
+\index{\-S\-I\-G\-A\-B\-R\-T@{\-S\-I\-G\-A\-B\-R\-T}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-A\-B\-R\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-A\-B\-R\-T}~5}}\label{signal_8h_aa86c630133e5b5174ac970227b273446}
+\-Abort. \hypertarget{signal_8h_aa6946723c6b7a86ec3c33caaf832840b}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-A\-L\-R\-M@{\-S\-I\-G\-A\-L\-R\-M}}
+\index{\-S\-I\-G\-A\-L\-R\-M@{\-S\-I\-G\-A\-L\-R\-M}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-A\-L\-R\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-A\-L\-R\-M}~13}}\label{signal_8h_aa6946723c6b7a86ec3c33caaf832840b}
+\-Signal raised by alarm. \hypertarget{signal_8h_aead3d488474201acf18c4b63d91edc3c}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-B\-U\-S@{\-S\-I\-G\-B\-U\-S}}
+\index{\-S\-I\-G\-B\-U\-S@{\-S\-I\-G\-B\-U\-S}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-B\-U\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-B\-U\-S}~6}}\label{signal_8h_aead3d488474201acf18c4b63d91edc3c}
+\-Bus error. \hypertarget{signal_8h_a0e63521a64cc8bc2b91d36a87d32c9f8}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-C\-H\-L\-D@{\-S\-I\-G\-C\-H\-L\-D}}
+\index{\-S\-I\-G\-C\-H\-L\-D@{\-S\-I\-G\-C\-H\-L\-D}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-C\-H\-L\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-C\-H\-L\-D}~16}}\label{signal_8h_a0e63521a64cc8bc2b91d36a87d32c9f8}
+\-Fin processus fils. \hypertarget{signal_8h_a024f43063003e753afc6cca1acd6e104}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-C\-O\-N\-T@{\-S\-I\-G\-C\-O\-N\-T}}
+\index{\-S\-I\-G\-C\-O\-N\-T@{\-S\-I\-G\-C\-O\-N\-T}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-C\-O\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-C\-O\-N\-T}~17}}\label{signal_8h_a024f43063003e753afc6cca1acd6e104}
+\-Continue si arrêté. \hypertarget{signal_8h_a7fbba29aec3e4a8daae12935299df92d}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-F\-P\-E@{\-S\-I\-G\-F\-P\-E}}
+\index{\-S\-I\-G\-F\-P\-E@{\-S\-I\-G\-F\-P\-E}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-F\-P\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-F\-P\-E}~7}}\label{signal_8h_a7fbba29aec3e4a8daae12935299df92d}
+\-Floating \-Point \-Exception. \hypertarget{signal_8h_a136c64ec2d1306de745e39d6aee362ca}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-H\-U\-P@{\-S\-I\-G\-H\-U\-P}}
+\index{\-S\-I\-G\-H\-U\-P@{\-S\-I\-G\-H\-U\-P}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-H\-U\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-H\-U\-P}~0}}\label{signal_8h_a136c64ec2d1306de745e39d6aee362ca}
+\-Hang up. \hypertarget{signal_8h_a4c9c5284f8c8d146bd7a93d25017fc62}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-I\-L\-L@{\-S\-I\-G\-I\-L\-L}}
+\index{\-S\-I\-G\-I\-L\-L@{\-S\-I\-G\-I\-L\-L}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-I\-L\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-I\-L\-L}~3}}\label{signal_8h_a4c9c5284f8c8d146bd7a93d25017fc62}
+\-Illegal instruction. \hypertarget{signal_8h_a487309e3e9e0527535644115204a639a}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-I\-N\-T@{\-S\-I\-G\-I\-N\-T}}
+\index{\-S\-I\-G\-I\-N\-T@{\-S\-I\-G\-I\-N\-T}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-I\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-I\-N\-T}~1}}\label{signal_8h_a487309e3e9e0527535644115204a639a}
+\-Interrupt. \hypertarget{signal_8h_addd8dcd406ce514ab3b4f576a5343d42}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-K\-I\-L\-L@{\-S\-I\-G\-K\-I\-L\-L}}
+\index{\-S\-I\-G\-K\-I\-L\-L@{\-S\-I\-G\-K\-I\-L\-L}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-K\-I\-L\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-K\-I\-L\-L}~8}}\label{signal_8h_addd8dcd406ce514ab3b4f576a5343d42}
+\-Terminate. \hypertarget{signal_8h_a57e9c8c5fa13bf86bc779a9f6f408b7c}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-P\-I\-P\-E@{\-S\-I\-G\-P\-I\-P\-E}}
+\index{\-S\-I\-G\-P\-I\-P\-E@{\-S\-I\-G\-P\-I\-P\-E}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-P\-I\-P\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-P\-I\-P\-E}~12}}\label{signal_8h_a57e9c8c5fa13bf86bc779a9f6f408b7c}
+\-Write to pipe with no one reading. \hypertarget{signal_8h_a62045b465be11891160d53c10861b16c}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-Q\-U\-I\-T@{\-S\-I\-G\-Q\-U\-I\-T}}
+\index{\-S\-I\-G\-Q\-U\-I\-T@{\-S\-I\-G\-Q\-U\-I\-T}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-Q\-U\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-Q\-U\-I\-T}~2}}\label{signal_8h_a62045b465be11891160d53c10861b16c}
+\-Quit and dump. \hypertarget{signal_8h_ae20b4f7171a09516ea73c9d2745bd596}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-S\-E\-G\-V@{\-S\-I\-G\-S\-E\-G\-V}}
+\index{\-S\-I\-G\-S\-E\-G\-V@{\-S\-I\-G\-S\-E\-G\-V}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-S\-E\-G\-V}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-S\-E\-G\-V}~10}}\label{signal_8h_ae20b4f7171a09516ea73c9d2745bd596}
+\-Segmentation \-Violation. \hypertarget{signal_8h_a069e358bc9a864b7dc4fed2440eda14c}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-S\-T\-O\-P@{\-S\-I\-G\-S\-T\-O\-P}}
+\index{\-S\-I\-G\-S\-T\-O\-P@{\-S\-I\-G\-S\-T\-O\-P}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-S\-T\-O\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-S\-T\-O\-P}~18}}\label{signal_8h_a069e358bc9a864b7dc4fed2440eda14c}
+\-Stop l'exécution temporairement. \hypertarget{signal_8h_a8bacf9eb18fd539099c1bb4666c45d60}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-S\-Y\-S@{\-S\-I\-G\-S\-Y\-S}}
+\index{\-S\-I\-G\-S\-Y\-S@{\-S\-I\-G\-S\-Y\-S}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-S\-Y\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-S\-Y\-S}~30}}\label{signal_8h_a8bacf9eb18fd539099c1bb4666c45d60}
+\-Bad syscall. \hypertarget{signal_8h_a682182a5e5f38fd61f4311501e9dac5d}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-T\-E\-R\-M@{\-S\-I\-G\-T\-E\-R\-M}}
+\index{\-S\-I\-G\-T\-E\-R\-M@{\-S\-I\-G\-T\-E\-R\-M}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-T\-E\-R\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-T\-E\-R\-M}~14}}\label{signal_8h_a682182a5e5f38fd61f4311501e9dac5d}
+\-Termination. \hypertarget{signal_8h_aa2beb906ab1b46676e63823f4e773c38}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-T\-R\-A\-P@{\-S\-I\-G\-T\-R\-A\-P}}
+\index{\-S\-I\-G\-T\-R\-A\-P@{\-S\-I\-G\-T\-R\-A\-P}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-T\-R\-A\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-T\-R\-A\-P}~4}}\label{signal_8h_aa2beb906ab1b46676e63823f4e773c38}
+\-Trap. \hypertarget{signal_8h_abe65c086e01f0d286b7a785a7e3cdd1a}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-T\-S\-T\-P@{\-S\-I\-G\-T\-S\-T\-P}}
+\index{\-S\-I\-G\-T\-S\-T\-P@{\-S\-I\-G\-T\-S\-T\-P}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-T\-S\-T\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-T\-S\-T\-P}~19}}\label{signal_8h_abe65c086e01f0d286b7a785a7e3cdd1a}
+\-Terminal \-Stop. \hypertarget{signal_8h_a2c146e34a6b5a78dfba41cded3331181}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-T\-T\-I\-N@{\-S\-I\-G\-T\-T\-I\-N}}
+\index{\-S\-I\-G\-T\-T\-I\-N@{\-S\-I\-G\-T\-T\-I\-N}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-T\-T\-I\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-T\-T\-I\-N}~20}}\label{signal_8h_a2c146e34a6b5a78dfba41cded3331181}
+\-Le process en background essaye de lire le tty. \hypertarget{signal_8h_a782864287613e2c5c030411fa9c5e9b1}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-T\-T\-O\-U@{\-S\-I\-G\-T\-T\-O\-U}}
+\index{\-S\-I\-G\-T\-T\-O\-U@{\-S\-I\-G\-T\-T\-O\-U}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-T\-T\-O\-U}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-T\-T\-O\-U}~21}}\label{signal_8h_a782864287613e2c5c030411fa9c5e9b1}
+\-Le process en background essaye d'écrire sur le tty. \hypertarget{signal_8h_ad9ff13149e36144a4ea28788948c34dd}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-U\-R\-G@{\-S\-I\-G\-U\-R\-G}}
+\index{\-S\-I\-G\-U\-R\-G@{\-S\-I\-G\-U\-R\-G}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-U\-R\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-U\-R\-G}~22}}\label{signal_8h_ad9ff13149e36144a4ea28788948c34dd}
+\-Urgent data available on socket. \hypertarget{signal_8h_a944a8250e34bfd7991123abd3436d8c0}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-U\-S\-R1@{\-S\-I\-G\-U\-S\-R1}}
+\index{\-S\-I\-G\-U\-S\-R1@{\-S\-I\-G\-U\-S\-R1}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-U\-S\-R1}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-U\-S\-R1}~9}}\label{signal_8h_a944a8250e34bfd7991123abd3436d8c0}
+\-Signal utilisateur 1. \hypertarget{signal_8h_abaaa61abe503c43481e35e21b0b5a031}{\index{signal.\-h@{signal.\-h}!\-S\-I\-G\-U\-S\-R2@{\-S\-I\-G\-U\-S\-R2}}
+\index{\-S\-I\-G\-U\-S\-R2@{\-S\-I\-G\-U\-S\-R2}!signal.h@{signal.\-h}}
+\subsubsection[{\-S\-I\-G\-U\-S\-R2}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-I\-G\-U\-S\-R2}~11}}\label{signal_8h_abaaa61abe503c43481e35e21b0b5a031}
+\-Signal utilisateur 2. 
+
+\subsection{\-Documentation des définitions de type}
+\hypertarget{signal_8h_a564498016effaee1f3384e07b7ced24f}{\index{signal.\-h@{signal.\-h}!sighandler\-\_\-t@{sighandler\-\_\-t}}
+\index{sighandler\-\_\-t@{sighandler\-\_\-t}!signal.h@{signal.\-h}}
+\subsubsection[{sighandler\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf sighandler\-\_\-t})(int)}}\label{signal_8h_a564498016effaee1f3384e07b7ced24f}
+\-Type pour un handler de signal. 
+
+\subsection{\-Documentation des fonctions}
+\hypertarget{signal_8h_a1de31bdef82f181f8045b94ae0933916}{\index{signal.\-h@{signal.\-h}!init\-\_\-signals@{init\-\_\-signals}}
+\index{init\-\_\-signals@{init\-\_\-signals}!signal.h@{signal.\-h}}
+\subsubsection[{init\-\_\-signals}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf init\-\_\-signals} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{signal_8h_a1de31bdef82f181f8045b94ae0933916}
+\-Mise en place des handlers par défaut. 
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{signal_8h_a1de31bdef82f181f8045b94ae0933916_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{signal_8h_ae9fc1d1a853fcc23a5e434506aa47bca}{\index{signal.\-h@{signal.\-h}!kill@{kill}}
+\index{kill@{kill}!signal.h@{signal.\-h}}
+\subsubsection[{kill}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf kill} (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{pid, }
+\item[{int}]{sig}
+\end{DoxyParamCaption}
+)}}\label{signal_8h_ae9fc1d1a853fcc23a5e434506aa47bca}
+\-Envoyer un signal à un processus.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em pid} & l'identifiant du processus. \\
+\hline
+{\em sig} & le signal à envoyer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{signal_8h_ae9fc1d1a853fcc23a5e434506aa47bca_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{signal_8h_ae9fc1d1a853fcc23a5e434506aa47bca_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{signal_8h_a08ba0dd26a850108a1746412faba2b21}{\index{signal.\-h@{signal.\-h}!raise@{raise}}
+\index{raise@{raise}!signal.h@{signal.\-h}}
+\subsubsection[{raise}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf raise} (
+\begin{DoxyParamCaption}
+\item[{int}]{sig}
+\end{DoxyParamCaption}
+)}}\label{signal_8h_a08ba0dd26a850108a1746412faba2b21}
+\-Envoyer un signal à l'appelant.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em sig} & le signal à envoyer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{signal_8h_a08ba0dd26a850108a1746412faba2b21_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{signal_8h_a18b3c89ca28c1045ee53f16a1ebca8b3}{\index{signal.\-h@{signal.\-h}!signal@{signal}}
+\index{signal@{signal}!signal.h@{signal.\-h}}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}{\bf sighandler\-\_\-t} {\bf signal} (
+\begin{DoxyParamCaption}
+\item[{int}]{sig, }
+\item[{{\bf sighandler\-\_\-t}}]{func}
+\end{DoxyParamCaption}
+)}}\label{signal_8h_a18b3c89ca28c1045ee53f16a1ebca8b3}
+\-Met en place un handler pour un signal.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em sig} & le signal à catcher. \\
+\hline
+{\em func} & fonction handler à utiliser. \\
+\hline
+\end{DoxyParams}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{signal_8h_a18b3c89ca28c1045ee53f16a1ebca8b3_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{signal_8h_a18b3c89ca28c1045ee53f16a1ebca8b3_icgraph}
+\end{center}
+\end{figure}
+
+

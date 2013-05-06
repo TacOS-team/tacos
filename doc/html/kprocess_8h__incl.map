@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/include/kprocess.h" name="kernel/include/kprocess.h">
 <area shape="rect" id="node3" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="5,83,83,111"/>
 <area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="308,161,369,189"/>
 <area shape="rect" id="node7" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="157,83,237,111"/>
@@ -6,4 +6,5 @@
 <area shape="rect" id="node11" href="$process__types_8h.html" title="process_types.h" alt="" coords="389,83,504,111"/>
 <area shape="rect" id="node13" href="$symtable_8h.html" title="symtable.h" alt="" coords="613,83,696,111"/>
 <area shape="rect" id="node19" href="$vmm_8h.html" title="vmm.h" alt="" coords="528,83,589,111"/>
+<area shape="rect" id="node16" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="632,161,677,189"/>
 </map>

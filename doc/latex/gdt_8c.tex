@@ -1,0 +1,65 @@
+\hypertarget{gdt_8c}{\section{Référence du fichier kernel/gdt.c}
+\label{gdt_8c}\index{kernel/gdt.\-c@{kernel/gdt.\-c}}
+}
+
+
+Setup de la G\-D\-T.  
+
+
+{\ttfamily \#include $<$memory.\-h$>$}\\*
+{\ttfamily \#include $<$gdt.\-h$>$}\\*
+Graphe des dépendances par inclusion de gdt.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{gdt_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structx86__gdt__register}{x86\-\_\-gdt\-\_\-register}
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{gdt_8c_abb81c8341c9230f4e46a1054d73a0ec4}{gdt\-\_\-setup} (\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} ram\-\_\-size)
+\item 
+\hypertarget{gdt_8c_a57cd883493d6f9a5610a569e153393bf}{void {\bfseries init\-\_\-tss} (\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} stack\-\_\-address)}\label{gdt_8c_a57cd883493d6f9a5610a569e153393bf}
+
+\item 
+\hypertarget{gdt_8c_a72360769dc5cdf35fa18b4bfa67f1a66}{\hyperlink{structtss}{tss\-\_\-t} $\ast$ {\bfseries get\-\_\-default\-\_\-tss} ()}\label{gdt_8c_a72360769dc5cdf35fa18b4bfa67f1a66}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{gdt_8c_abb81c8341c9230f4e46a1054d73a0ec4}{\index{gdt.\-c@{gdt.\-c}!gdt\-\_\-setup@{gdt\-\_\-setup}}
+\index{gdt\-\_\-setup@{gdt\-\_\-setup}!gdt.c@{gdt.\-c}}
+\subsubsection[{gdt\-\_\-setup}]{\setlength{\rightskip}{0pt plus 5cm}void gdt\-\_\-setup (
+\begin{DoxyParamCaption}
+\item[{{\bf size\-\_\-t}}]{ram\-\_\-size}
+\end{DoxyParamCaption}
+)}}\label{gdt_8c_abb81c8341c9230f4e46a1054d73a0ec4}
+Configuration de la gdt.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ram\-\_\-size} & Taille de la ram. 0 si non connue. \\
+\hline
+\end{DoxyParams}

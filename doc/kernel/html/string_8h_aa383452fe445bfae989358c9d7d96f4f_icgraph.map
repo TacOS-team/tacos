@@ -1,0 +1,20 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$tty_8h.html#a302b60b1c52001915aeb108b51efc397" title="tty_register_driver" alt="" coords="109,10,235,38"/>
+<area shape="rect" id="node9" href="$ext2__internal_8h.html#ac9b55aefa79e5e521e4e5d993b4c009a" title="Lecture du contenu d&#39;un dossier." alt="" coords="127,61,217,89"/>
+<area shape="rect" id="node11" href="$fat__internal_8h.html#ada9bd47fd90b01248fe52f302560f9f9" title="fat_readdir" alt="" coords="131,111,213,139"/>
+<area shape="rect" id="node19" href="$fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="297,194,372,222"/>
+<area shape="rect" id="node21" href="$fat__internal_8h.html#a8442aab7b7111d30d19b4be6a4464618" title="fat_stat" alt="" coords="301,254,368,282"/>
+<area shape="rect" id="node24" href="$fat__outils_8h.html#a015254ce721ab0097a1008ec7153b819" title="fat_lfn_to_sfn" alt="" coords="121,213,223,241"/>
+<area shape="rect" id="node27" href="$string_8c.html#a8908188ae9fc2f05d993257ef001d553" title="Concaténation de deux chaînes." alt="" coords="145,314,199,342"/>
+<area shape="rect" id="node29" href="$string_8c.html#a4c10a214b02eed3dafc48c59ad71abbd" title="Concaténation de deux chaînes avec une limite aux n premiers caractères." alt="" coords="141,365,203,393"/>
+<area shape="rect" id="node31" href="$string_8c.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="143,415,201,443"/>
+<area shape="rect" id="node33" href="$kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="117,466,227,494"/>
+<area shape="rect" id="node37" href="$vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage." alt="" coords="131,517,213,545"/>
+<area shape="rect" id="node39" href="$vfs_8c.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier." alt="" coords="129,567,215,595"/>
+<area shape="rect" id="node5" href="$serial_8h.html#a459999cfa35c788b64284953a93c4b57" title="Fonction d&#39;initialisation du driver série." alt="" coords="296,5,373,33"/>
+<area shape="rect" id="node7" href="$console_8h.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;." alt="" coords="289,55,380,83"/>
+<area shape="rect" id="node13" href="$fat__internal_8h.html#acdf6c4c7632ebd3fff5ba51c888af3a6" title="fat_open_file" alt="" coords="288,118,381,146"/>
+<area shape="rect" id="node15" href="$fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae" title="mount_FAT" alt="" coords="435,182,525,210"/>
+<area shape="rect" id="node17" href="$fat_8h.html#a3d1f5d8e3b22672684528c112bc6ff06" title="fat_init" alt="" coords="573,182,635,210"/>
+<area shape="rect" id="node35" href="$scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="284,466,385,494"/>
+</map>

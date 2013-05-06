@@ -1,0 +1,20 @@
+<map id="kernel/drivers/char/vesa.c" name="kernel/drivers/char/vesa.c">
+<area shape="rect" id="node3" href="$stdio_8h.html" title="stdio.h" alt="" coords="112,99,171,127"/>
+<area shape="rect" id="node18" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="337,99,415,127"/>
+<area shape="rect" id="node25" href="$klog_8h.html" title="Logging macros." alt="" coords="439,99,495,127"/>
+<area shape="rect" id="node29" href="$ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="519,99,588,127"/>
+<area shape="rect" id="node33" href="$pci_8h.html" title="pci.h" alt="" coords="700,99,748,127"/>
+<area shape="rect" id="node40" href="$pci__config_8h.html" title="pci_config.h" alt="" coords="772,99,863,127"/>
+<area shape="rect" id="node43" href="$memory_8h.html" title="Gestion des pages mémoires physiques." alt="" coords="833,177,911,205"/>
+<area shape="rect" id="node46" href="$pagination_8h.html" title="pagination.h" alt="" coords="935,177,1025,205"/>
+<area shape="rect" id="node49" href="$vmm_8h.html" title="vmm.h" alt="" coords="1049,177,1111,205"/>
+<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="5,331,93,359"/>
+<area shape="rect" id="node7" href="$libio_8h.html" title="libio.h" alt="" coords="51,177,104,205"/>
+<area shape="rect" id="node10" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="100,254,185,282"/>
+<area shape="rect" id="node16" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="179,177,245,205"/>
+<area shape="rect" id="node13" href="$stdbool_8h.html" title="Type bool." alt="" coords="117,331,192,359"/>
+<area shape="rect" id="node22" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="355,177,435,205"/>
+<area shape="rect" id="node27" href="$kstdio_8h.html" title="kprintf" alt="" coords="459,177,525,205"/>
+<area shape="rect" id="node35" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="841,254,903,282"/>
+<area shape="rect" id="node37" href="$pci__types_8h.html" title="pci_types.h" alt="" coords="724,177,809,205"/>
+</map>

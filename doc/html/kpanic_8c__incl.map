@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/kpanic.c" name="kernel/kpanic.c">
 <area shape="rect" id="node3" href="$kstdio_8h.html" title="kprintf" alt="" coords="115,83,181,111"/>
 <area shape="rect" id="node5" href="$exception_8h.html" title="exception.h" alt="" coords="99,161,184,189"/>
 <area shape="rect" id="node9" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="208,161,293,189"/>
@@ -13,4 +13,5 @@
 <area shape="rect" id="node22" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="280,238,384,266"/>
 <area shape="rect" id="node24" href="$process__types_8h.html" title="process_types.h" alt="" coords="512,238,627,266"/>
 <area shape="rect" id="node32" href="$vmm_8h.html" title="vmm.h" alt="" coords="651,238,712,266"/>
+<area shape="rect" id="node29" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="907,315,952,343"/>
 </map>

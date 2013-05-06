@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="tolower" name="tolower">
 <area shape="rect" id="node3" href="$ctype_8c.html#ac79d6114c9df7350cedcd8cf921a6ea4" title="Convertit la lettre c en minuscule." alt="" coords="117,29,181,57"/>
 <area shape="rect" id="node6" href="$ctype_8c.html#adadd6582d46775aab6a51e29d16d9f77" title="vérifie si l&#39;on a un caractère majuscule." alt="" coords="229,54,293,82"/>
 </map>

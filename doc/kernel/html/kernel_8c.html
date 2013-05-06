@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/kernel.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier kernel/kernel.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="clock_8h_source.html">clock.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="events_8h_source.html">events.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="fpu_8h_source.html">fpu.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="gdt_8h_source.html">gdt.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="i8259_8h_source.html">i8259.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="idt_8h_source.html">idt.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="init_8h_source.html">init.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="interrupts_8h_source.html">interrupts.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kdirent_8h_source.html">kdirent.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kfcntl_8h_source.html">kfcntl.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kpanic_8h_source.html">kpanic.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kprocess_8h_source.html">kprocess.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="ksem_8h_source.html">ksem.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="ksignal_8h_source.html">ksignal.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="ksyscall_8h_source.html">ksyscall.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kunistd_8h_source.html">kunistd.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="memory_8h_source.html">memory.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="multiboot_8h_source.html">multiboot.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="pagination_8h_source.html">pagination.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="pci_8h_source.html">pci.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="round__robin_8h_source.html">round_robin.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="scheduler_8h_source.html">scheduler.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="syscall__values_8h_source.html">syscall_values.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="vmm_8h_source.html">vmm.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="devfs_8h_source.html">fs/devfs.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="fat_8h_source.html">fs/fat.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="ext2_8h_source.html">fs/ext2.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="procfs_8h_source.html">fs/procfs.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="beeper_8h_source.html">drivers/beeper.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="console_8h_source.html">drivers/console.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="floppy_8h_source.html">drivers/floppy.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="keyboard_8h_source.html">drivers/keyboard.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="serial_8h_source.html">drivers/serial.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="video_8h_source.html">drivers/video.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de kernel.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="kernel_8c__incl.png" border="0" usemap="#kernel_2kernel_8c" alt=""/></div>
+<map name="kernel_2kernel_8c" id="kernel_2kernel_8c">
+<area shape="rect" id="node3" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="889,315,951,343"/><area shape="rect" id="node7" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="616,393,693,421"/><area shape="rect" id="node10" href="events_8h.html" title="events.h" alt="" coords="860,161,929,189"/><area shape="rect" id="node13" href="fpu_8h.html" title="fpu.h" alt="" coords="321,83,372,111"/><area shape="rect" id="node15" href="gdt_8h.html" title="gdt.h" alt="" coords="1833,161,1884,189"/><area shape="rect" id="node18" href="i8259_8h.html" title="Initialisation du i8259 qui s&#39;occupe des interruptions." alt="" coords="1913,238,1975,266"/><area shape="rect" id="node21" href="idt_8h.html" title="Initialisation de la table des descripteurs d&#39;interruption (et exceptions) et association aux handler..." alt="" coords="1977,161,2023,189"/><area shape="rect" id="node24" href="init_8h.html" title="init.h" alt="" coords="560,83,608,111"/><area shape="rect" id="node26" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="2049,238,2135,266"/><area shape="rect" id="node29" href="kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="665,161,735,189"/><area shape="rect" id="node37" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="1228,238,1292,266"/><area shape="rect" id="node42" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="273,315,359,343"/><area shape="rect" id="node56" href="vmm_8h.html" title="vmm.h" alt="" coords="5,393,67,421"/><area shape="rect" id="node60" href="klog_8h.html" title="Logging macros." alt="" coords="1191,83,1247,111"/><area shape="rect" id="node64" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="2116,161,2193,189"/><area shape="rect" id="node67" href="kpanic_8h.html" title="Handlers des exceptions." alt="" coords="2217,238,2287,266"/><area shape="rect" id="node71" href="ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="1329,315,1393,343"/><area shape="rect" id="node75" href="ksignal_8h.html" title="ksignal.h" alt="" coords="175,238,247,266"/><area shape="rect" id="node82" href="kunistd_8h.html" title="Principales fonctions de l&#39;API POSIX (read, write, seek, stat...)" alt="" coords="516,161,591,189"/><area shape="rect" id="node87" href="memory_8h.html" title="Gestion des pages mémoires physiques." alt="" coords="2275,315,2352,343"/><area shape="rect" id="node90" href="multiboot_8h.html" title="multiboot.h" alt="" coords="1473,83,1559,111"/><area shape="rect" id="node92" href="pagination_8h.html" title="pagination.h" alt="" coords="2493,161,2584,189"/><area shape="rect" id="node95" href="pci_8h.html" title="pci.h" alt="" coords="1644,315,1692,343"/><area shape="rect" id="node101" href="round__robin_8h.html" title="round_robin.h" alt="" coords="393,161,492,189"/><area shape="rect" id="node103" href="scheduler_8h.html" title="scheduler.h" alt="" coords="321,238,409,266"/><area shape="rect" id="node108" href="syscall__values_8h.html" title="syscall_values.h" alt="" coords="1785,83,1903,111"/><area shape="rect" id="node111" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="737,315,815,343"/><area shape="rect" id="node115" href="fat_8h.html" title="fs/fat.h" alt="" coords="1012,83,1073,111"/><area shape="rect" id="node125" href="ext2_8h.html" title="Driver Ext2." alt="" coords="1097,83,1167,111"/><area shape="rect" id="node128" href="procfs_8h.html" title="fs/procfs.h" alt="" coords="1537,315,1620,343"/><area shape="rect" id="node132" href="beeper_8h.html" title="Driver pour utiliser le beeper." alt="" coords="2129,83,2244,111"/><area shape="rect" id="node134" href="console_8h.html" title="Console virtuelle (Fn)" alt="" coords="1372,238,1492,266"/><area shape="rect" id="node143" href="floppy_8h.html" title="drivers/floppy.h" alt="" coords="1633,238,1740,266"/><area shape="rect" id="node146" href="keyboard_8h.html" title="drivers/keyboard.h" alt="" coords="2369,83,2495,111"/><area shape="rect" id="node148" href="serial_8h.html" title="drivers/serial.h" alt="" coords="2519,83,2625,111"/><area shape="rect" id="node150" href="video_8h.html" title="Driver console (vidéo texte)." alt="" coords="1767,315,1873,343"/><area shape="rect" id="node5" href="types_8h.html" title="types.h" alt="" coords="1284,470,1345,498"/><area shape="rect" id="node33" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="811,238,872,266"/><area shape="rect" id="node40" href="fd__types_8h.html" title="fd_types.h" alt="" coords="1096,393,1176,421"/><area shape="rect" id="node46" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="141,393,245,421"/><area shape="rect" id="node48" href="process__types_8h.html" title="process_types.h" alt="" coords="427,393,541,421"/><area shape="rect" id="node50" href="symtable_8h.html" title="symtable.h" alt="" coords="269,393,352,421"/><area shape="rect" id="node62" href="kstdio_8h.html" title="kprintf" alt="" coords="1180,161,1247,189"/><area shape="rect" id="node98" href="pci__types_8h.html" title="pci_types.h" alt="" coords="1589,393,1675,421"/><area shape="rect" id="node120" href="vfs_8h.html" title="Virtual File System." alt="" coords="1055,161,1105,189"/><area shape="rect" id="node137" href="tty_8h.html" title="Terminal posix&#45;like." alt="" coords="1417,315,1463,343"/><area shape="rect" id="node140" href="termios__types_8h.html" title="termios_types.h" alt="" coords="1352,393,1464,421"/></map>
+</div>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkernel__options.html">kernel_options</a></td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bfc511cb9209fa1f98e7cdb85e8093e"></a><!-- doxytag: member="kernel.c::cmain" ref="a1bfc511cb9209fa1f98e7cdb85e8093e" args="(unsigned long magic, unsigned long addr)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>cmain</b> (unsigned long magic, unsigned long addr)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac34c090e192c6c23a61c0d85469b07e3"></a><!-- doxytag: member="kernel.c::LPT1_routine" ref="ac34c090e192c6c23a61c0d85469b07e3" args="(int id)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>LPT1_routine</b> (int id)</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+<p>Point d'entrée du kernel. Initialisation du système. </p>
+</div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juillet 8 2012 15:18:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+\hypertarget{floppy__utils_8c}{\section{\-Référence du fichier kernel/drivers/block/floppy/floppy\-\_\-utils.c}
+\label{floppy__utils_8c}\index{kernel/drivers/block/floppy/floppy\-\_\-utils.\-c@{kernel/drivers/block/floppy/floppy\-\_\-utils.\-c}}
+}
+{\ttfamily \#include $<$ioports.\-h$>$}\*
+{\ttfamily \#include $<$types.\-h$>$}\*
+{\ttfamily \#include $<$klog.\-h$>$}\*
+{\ttfamily \#include \char`\"{}floppy\-\_\-interrupt.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}floppy\-\_\-utils.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}floppy\-\_\-motor.\-h\char`\"{}}\*
+\-Graphe des dépendances par inclusion de floppy\-\_\-utils.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{floppy__utils_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{floppy__utils_8c_a1b528d56e03dda853060f541fa772847}{floppy\-\_\-ready} ()
+\begin{DoxyCompactList}\small\item\em \-Vérifie si le controleur floppy est en état ready. \end{DoxyCompactList}\item 
+int \hyperlink{floppy__utils_8c_a0e012dd33083ef16c714cda568627983}{floppy\-\_\-write\-\_\-command} (char cmd)
+\begin{DoxyCompactList}\small\item\em \-Envoi une commande au controleur floppy. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{floppy__utils_8c_accc0dbdcd680cab9890db94a13067284}{floppy\-\_\-read\-\_\-data} ()
+\begin{DoxyCompactList}\small\item\em \-Lis les données disponibles sur la \-F\-I\-F\-O du controleur. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{floppy__utils_8c_aab49f8f343dc0a1f9c89ec5f5e444e0e}{floppy\-\_\-get\-\_\-current\-\_\-drive} ()
+\begin{DoxyCompactList}\small\item\em \-Retourne le numero tu lecteur courrant. \end{DoxyCompactList}\item 
+void \hyperlink{floppy__utils_8c_a0f4c4c2b326322e490f1db0071ad1073}{floppy\-\_\-set\-\_\-current\-\_\-drive} (\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} drive)
+\begin{DoxyCompactList}\small\item\em \-Défini le lecteur courrant. \end{DoxyCompactList}\item 
+int \hyperlink{floppy__utils_8c_acf13f3cbd5df998eefb55cd2d15210c5}{floppy\-\_\-seek} (int cylindre, int head)
+\begin{DoxyCompactList}\small\item\em \-Déplace la tête de lecture à un cylindre défini. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{floppy__utils_8c_a5999e4ed8530afd23984eddeeef2ad60}{floppy\-\_\-get\-\_\-type} (int drive)
+\begin{DoxyCompactList}\small\item\em \-Retourne le type de disquette accepté par le lecteur. \end{DoxyCompactList}\item 
+\hypertarget{floppy__utils_8c_aa4a9a9bd28b1b9b857febc670b883517}{void \hyperlink{floppy__utils_8c_aa4a9a9bd28b1b9b857febc670b883517}{floppy\-\_\-detect\-\_\-drives} ()}\label{floppy__utils_8c_aa4a9a9bd28b1b9b857febc670b883517}
+
+\begin{DoxyCompactList}\small\item\em \-Fonction de détection des lecteur floppy présents. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{floppy__utils_8c_a54d322040af5e9281dc034336f286398}{floppy\-\_\-get\-\_\-version} ()
+\begin{DoxyCompactList}\small\item\em \-Retourne le numero de version du controleur disquette. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Description détaillée}
+\begin{DoxyAuthor}{\-Auteur}
+\-Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{\-L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+\-Copyright (\-C) 2010, 2011, 2012 -\/ \-Tac\-O\-S developers.
+
+\-This program is free software; you can redistribute it and/or modify it under the terms of the \-G\-N\-U \-General \-Public \-License as published by the \-Free \-Software \-Foundation; either version 3 of the \-License, or (at your option) any later version.
+
+\-This program is distributed in the hope that it will be useful, but \-W\-I\-T\-H\-O\-U\-T \-A\-N\-Y \-W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of \-M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or \-F\-I\-T\-N\-E\-S\-S \-F\-O\-R \-A \-P\-A\-R\-T\-I\-C\-U\-L\-A\-R \-P\-U\-R\-P\-O\-S\-E. \-See the \-G\-N\-U \-General \-Public \-License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+\-You should have received a copy of the \-G\-N\-U \-General \-Public \-License along with this program; if not, see $<$\href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}$>$.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{\-D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+\-Description de ce que fait le fichier 
+
+\subsection{\-Documentation des fonctions}
+\hypertarget{floppy__utils_8c_aab49f8f343dc0a1f9c89ec5f5e444e0e}{\index{floppy\-\_\-utils.\-c@{floppy\-\_\-utils.\-c}!floppy\-\_\-get\-\_\-current\-\_\-drive@{floppy\-\_\-get\-\_\-current\-\_\-drive}}
+\index{floppy\-\_\-get\-\_\-current\-\_\-drive@{floppy\-\_\-get\-\_\-current\-\_\-drive}!floppy_utils.c@{floppy\-\_\-utils.\-c}}
+\subsubsection[{floppy\-\_\-get\-\_\-current\-\_\-drive}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf floppy\-\_\-get\-\_\-current\-\_\-drive} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{floppy__utils_8c_aab49f8f343dc0a1f9c89ec5f5e444e0e}
+\begin{DoxyReturn}{\-Renvoie}
+numero du lecteur courrant 
+\end{DoxyReturn}
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{floppy__utils_8c_aab49f8f343dc0a1f9c89ec5f5e444e0e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{floppy__utils_8c_a5999e4ed8530afd23984eddeeef2ad60}{\index{floppy\-\_\-utils.\-c@{floppy\-\_\-utils.\-c}!floppy\-\_\-get\-\_\-type@{floppy\-\_\-get\-\_\-type}}
+\index{floppy\-\_\-get\-\_\-type@{floppy\-\_\-get\-\_\-type}!floppy_utils.c@{floppy\-\_\-utils.\-c}}
+\subsubsection[{floppy\-\_\-get\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf floppy\-\_\-get\-\_\-type} (
+\begin{DoxyParamCaption}
+\item[{int}]{drive}
+\end{DoxyParamCaption}
+)}}\label{floppy__utils_8c_a5999e4ed8530afd23984eddeeef2ad60}
+
+\begin{DoxyParams}{\-Paramètres}
+{\em drive} & numero du lecteur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+numero indiquant le type de disquette 
+\end{DoxyReturn}
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{floppy__utils_8c_a5999e4ed8530afd23984eddeeef2ad60_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{floppy__utils_8c_a54d322040af5e9281dc034336f286398}{\index{floppy\-\_\-utils.\-c@{floppy\-\_\-utils.\-c}!floppy\-\_\-get\-\_\-version@{floppy\-\_\-get\-\_\-version}}
+\index{floppy\-\_\-get\-\_\-version@{floppy\-\_\-get\-\_\-version}!floppy_utils.c@{floppy\-\_\-utils.\-c}}
+\subsubsection[{floppy\-\_\-get\-\_\-version}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf floppy\-\_\-get\-\_\-version} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{floppy__utils_8c_a54d322040af5e9281dc034336f286398}
+\begin{DoxyReturn}{\-Renvoie}
+numero de version 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{floppy__utils_8c_a54d322040af5e9281dc034336f286398_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{floppy__utils_8c_a54d322040af5e9281dc034336f286398_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{floppy__utils_8c_accc0dbdcd680cab9890db94a13067284}{\index{floppy\-\_\-utils.\-c@{floppy\-\_\-utils.\-c}!floppy\-\_\-read\-\_\-data@{floppy\-\_\-read\-\_\-data}}
+\index{floppy\-\_\-read\-\_\-data@{floppy\-\_\-read\-\_\-data}!floppy_utils.c@{floppy\-\_\-utils.\-c}}
+\subsubsection[{floppy\-\_\-read\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf floppy\-\_\-read\-\_\-data} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{floppy__utils_8c_accc0dbdcd680cab9890db94a13067284}
+\begin{DoxyReturn}{\-Renvoie}
+0 si la commande a bien été transmise, -\/1 sinon 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{floppy__utils_8c_accc0dbdcd680cab9890db94a13067284_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{floppy__utils_8c_accc0dbdcd680cab9890db94a13067284_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{floppy__utils_8c_a1b528d56e03dda853060f541fa772847}{\index{floppy\-\_\-utils.\-c@{floppy\-\_\-utils.\-c}!floppy\-\_\-ready@{floppy\-\_\-ready}}
+\index{floppy\-\_\-ready@{floppy\-\_\-ready}!floppy_utils.c@{floppy\-\_\-utils.\-c}}
+\subsubsection[{floppy\-\_\-ready}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf floppy\-\_\-ready} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{floppy__utils_8c_a1b528d56e03dda853060f541fa772847}
+\begin{DoxyReturn}{\-Renvoie}
+\-T\-R\-U\-E si le controleur est ready, \-F\-A\-L\-S\-E sinon 
+\end{DoxyReturn}
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{floppy__utils_8c_a1b528d56e03dda853060f541fa772847_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{floppy__utils_8c_acf13f3cbd5df998eefb55cd2d15210c5}{\index{floppy\-\_\-utils.\-c@{floppy\-\_\-utils.\-c}!floppy\-\_\-seek@{floppy\-\_\-seek}}
+\index{floppy\-\_\-seek@{floppy\-\_\-seek}!floppy_utils.c@{floppy\-\_\-utils.\-c}}
+\subsubsection[{floppy\-\_\-seek}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf floppy\-\_\-seek} (
+\begin{DoxyParamCaption}
+\item[{int}]{cylindre, }
+\item[{int}]{head}
+\end{DoxyParamCaption}
+)}}\label{floppy__utils_8c_acf13f3cbd5df998eefb55cd2d15210c5}
+
+\begin{DoxyParams}{\-Paramètres}
+{\em cylindre} & numero du cylindre à atteindre \\
+\hline
+{\em head} & numero de la tête a déplacer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+0 en cas de succes, -\/1 sinon 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{floppy__utils_8c_acf13f3cbd5df998eefb55cd2d15210c5_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{floppy__utils_8c_a0f4c4c2b326322e490f1db0071ad1073}{\index{floppy\-\_\-utils.\-c@{floppy\-\_\-utils.\-c}!floppy\-\_\-set\-\_\-current\-\_\-drive@{floppy\-\_\-set\-\_\-current\-\_\-drive}}
+\index{floppy\-\_\-set\-\_\-current\-\_\-drive@{floppy\-\_\-set\-\_\-current\-\_\-drive}!floppy_utils.c@{floppy\-\_\-utils.\-c}}
+\subsubsection[{floppy\-\_\-set\-\_\-current\-\_\-drive}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf floppy\-\_\-set\-\_\-current\-\_\-drive} (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\-\_\-t}}]{drive}
+\end{DoxyParamCaption}
+)}}\label{floppy__utils_8c_a0f4c4c2b326322e490f1db0071ad1073}
+
+\begin{DoxyParams}{\-Paramètres}
+{\em drive} & numero du lecteur à passer en lecteur courrant \\
+\hline
+\end{DoxyParams}
+\hypertarget{floppy__utils_8c_a0e012dd33083ef16c714cda568627983}{\index{floppy\-\_\-utils.\-c@{floppy\-\_\-utils.\-c}!floppy\-\_\-write\-\_\-command@{floppy\-\_\-write\-\_\-command}}
+\index{floppy\-\_\-write\-\_\-command@{floppy\-\_\-write\-\_\-command}!floppy_utils.c@{floppy\-\_\-utils.\-c}}
+\subsubsection[{floppy\-\_\-write\-\_\-command}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf floppy\-\_\-write\-\_\-command} (
+\begin{DoxyParamCaption}
+\item[{char}]{cmd}
+\end{DoxyParamCaption}
+)}}\label{floppy__utils_8c_a0e012dd33083ef16c714cda568627983}
+
+\begin{DoxyParams}{\-Paramètres}
+{\em cmd} & commande à envoyer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+0 si la commande a bien été transmise, -\/1 sinon 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{floppy__utils_8c_a0e012dd33083ef16c714cda568627983_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{floppy__utils_8c_a0e012dd33083ef16c714cda568627983_icgraph}
+\end{center}
+\end{figure}
+
+

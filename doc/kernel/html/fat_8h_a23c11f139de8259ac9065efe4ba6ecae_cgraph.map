@@ -1,0 +1,20 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="471,76,537,104"/>
+<area shape="rect" id="node7" href="$fat__functions_8c.html#acdf6c4c7632ebd3fff5ba51c888af3a6" title="fat_open_file" alt="" coords="145,152,239,180"/>
+<area shape="rect" id="node30" href="$fat__functions_8c.html#a8442aab7b7111d30d19b4be6a4464618" title="fat_stat" alt="" coords="303,379,369,407"/>
+<area shape="rect" id="node44" href="$string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="157,253,227,281"/>
+<area shape="rect" id="node46" href="$fat__internal_8c.html#acc9f1bc688e7d7c5459ad50676608995" title="read_fat" alt="" coords="157,304,227,332"/>
+<area shape="rect" id="node5" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="625,76,764,104"/>
+<area shape="rect" id="node10" href="$fat__functions_8c.html#ada9bd47fd90b01248fe52f302560f9f9" title="fat_readdir" alt="" coords="295,101,377,129"/>
+<area shape="rect" id="node13" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="479,277,529,305"/>
+<area shape="rect" id="node19" href="$fat__functions_8c.html#aefed2caace7abdff25dc8276de118018" title="fat_write_file" alt="" coords="289,51,383,79"/>
+<area shape="rect" id="node21" href="$fat__functions_8c.html#a85069bfaf4b7a57bc5d8e7bfa6aa83ad" title="fat_read_file" alt="" coords="291,152,381,180"/>
+<area shape="rect" id="node23" href="$fat__functions_8c.html#a5e52d080338c1179ae01999006f077d3" title="fat_seek_file" alt="" coords="289,227,383,255"/>
+<area shape="rect" id="node26" href="$fat__functions_8c.html#afdccf4bea2c0e70059a76f43fea9c33f" title="fat_close" alt="" coords="299,277,373,305"/>
+<area shape="rect" id="node15" href="$string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="477,213,531,241"/>
+<area shape="rect" id="node17" href="$string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="667,233,723,261"/>
+<area shape="rect" id="node32" href="$string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné." alt="" coords="469,429,539,457"/>
+<area shape="rect" id="node34" href="$string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="473,328,535,356"/>
+<area shape="rect" id="node38" href="$fat__outils_8c.html#a2bc59b6b9bca39fe4ba101a3c019b91a" title="fat_split_dir_filename" alt="" coords="432,379,576,407"/>
+<area shape="rect" id="node40" href="$string_8h.html#a0c05a458deff028ef4d4e64059098db4" title="Rechercher un caractère dans une chaîne." alt="" coords="665,379,724,407"/>
+</map>

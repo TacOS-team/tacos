@@ -1,0 +1,47 @@
+\hypertarget{structfile__system__t}{\section{\-Référence de la structure file\-\_\-system\-\_\-t}
+\label{structfile__system__t}\index{file\-\_\-system\-\_\-t@{file\-\_\-system\-\_\-t}}
+}
+
+
+\-Structure qui représente un \-F\-S.  
+
+
+
+
+{\ttfamily \#include $<$vfs.\-h$>$}
+
+
+
+\-Graphe de collaboration de file\-\_\-system\-\_\-t\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structfile__system__t__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{\-Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{structfile__system__t_a2b7d7c0f769113d1164052beeeca777d}{name}
+\item 
+struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$($\ast$ \hyperlink{structfile__system__t_a7edaed95e6ac68991bbaac6cd07b458b}{mount} )(\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$)
+\item 
+void($\ast$ \hyperlink{structfile__system__t_a899f34d838d88470373b60f7c5f0edd9}{umount} )(struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Documentation des champs}
+\hypertarget{structfile__system__t_a7edaed95e6ac68991bbaac6cd07b458b}{\index{file\-\_\-system\-\_\-t@{file\-\_\-system\-\_\-t}!mount@{mount}}
+\index{mount@{mount}!file_system_t@{file\-\_\-system\-\_\-t}}
+\subsubsection[{mount}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \-\_\-fs\-\_\-instance\-\_\-t}$\ast$($\ast$ {\bf file\-\_\-system\-\_\-t\-::mount})({\bf open\-\_\-file\-\_\-descriptor} $\ast$)\hspace{0.3cm}{\ttfamily  \mbox{[}read\mbox{]}}}}\label{structfile__system__t_a7edaed95e6ac68991bbaac6cd07b458b}
+\-Pointeur vers la fonction mount du \-F\-S. \hypertarget{structfile__system__t_a2b7d7c0f769113d1164052beeeca777d}{\index{file\-\_\-system\-\_\-t@{file\-\_\-system\-\_\-t}!name@{name}}
+\index{name@{name}!file_system_t@{file\-\_\-system\-\_\-t}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf file\-\_\-system\-\_\-t\-::name}}}\label{structfile__system__t_a2b7d7c0f769113d1164052beeeca777d}
+\-Nom du \-F\-S, c'est aussi son \char`\"{}type\char`\"{} utilisé lors du mount. \hypertarget{structfile__system__t_a899f34d838d88470373b60f7c5f0edd9}{\index{file\-\_\-system\-\_\-t@{file\-\_\-system\-\_\-t}!umount@{umount}}
+\index{umount@{umount}!file_system_t@{file\-\_\-system\-\_\-t}}
+\subsubsection[{umount}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ {\bf file\-\_\-system\-\_\-t\-::umount})(struct {\bf \-\_\-fs\-\_\-instance\-\_\-t} $\ast$)}}\label{structfile__system__t_a899f34d838d88470373b60f7c5f0edd9}
+\-Pointeur vers la fonction umount du \-F\-S. 
+
+\-La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+\item 
+kernel/include/\hyperlink{vfs_8h}{vfs.\-h}\end{DoxyCompactItemize}

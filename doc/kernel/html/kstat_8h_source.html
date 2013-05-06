@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de kernel/include/kstat.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">kernel/include/kstat.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="kstat_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _KSTAT_H_</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _KSTAT_H_</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="types_8h.html">types.h</a>&gt;</span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général.">clock.h</a>&gt;</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 <span class="comment">/* File types.  */</span>
+<a name="l00036"></a><a class="code" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">00036</a> <span class="preprocessor">#define S_IFMT   0170000 </span>
+<a name="l00037"></a><a class="code" href="kstat_8h.html#a28e80cd43106882904be148b2a397d42">00037</a> <span class="preprocessor">#define S_IFSOCK 0140000 </span>
+<a name="l00038"></a><a class="code" href="kstat_8h.html#afef163ce62372757e84bd9fc88c07aad">00038</a> <span class="preprocessor">#define S_IFLNK  0120000 </span>
+<a name="l00039"></a><a class="code" href="kstat_8h.html#a1aaa48b192a5dd3b6d7ee91fc98cd17d">00039</a> <span class="preprocessor">#define S_IFREG  0100000 </span>
+<a name="l00040"></a><a class="code" href="kstat_8h.html#a5c5b74a1cb1a1ae83572500b94e1938f">00040</a> <span class="preprocessor">#define S_IFBLK  0060000 </span>
+<a name="l00041"></a><a class="code" href="kstat_8h.html#a11fb0652b963a735f3377eb1c9239f2d">00041</a> <span class="preprocessor">#define S_IFDIR  0040000 </span>
+<a name="l00042"></a><a class="code" href="kstat_8h.html#aef3a1d1ba22c83e30b5c834dd343b2a8">00042</a> <span class="preprocessor">#define S_IFCHR  0020000 </span>
+<a name="l00043"></a><a class="code" href="kstat_8h.html#a4966f25d9f03a7a06bc47ac729fd86cf">00043</a> <span class="preprocessor">#define S_IFIFO  0010000 </span>
+<a name="l00045"></a><a class="code" href="kstat_8h.html#a722eba7370eb3b0aafb3272182e08520">00045</a> <span class="preprocessor">#define S_ISBLK(m)  (((m) &amp; S_IFMT) == S_IFBLK) </span>
+<a name="l00046"></a><a class="code" href="kstat_8h.html#a767b5d0691f435f8a9b7f5e0fa97a645">00046</a> <span class="preprocessor">#define S_ISCHR(m)  (((m) &amp; S_IFMT) == S_IFCHR) </span>
+<a name="l00047"></a><a class="code" href="kstat_8h.html#a70b64ed67c0ab484b4ba09487da34e91">00047</a> <span class="preprocessor">#define S_ISDIR(m)  (((m) &amp; S_IFMT) == S_IFDIR) </span>
+<a name="l00048"></a><a class="code" href="kstat_8h.html#a777b706bbe9e7920c091aaa2b547b093">00048</a> <span class="preprocessor">#define S_ISFIFO(m) (((m) &amp; S_IFMT) == S_IFIFO) </span>
+<a name="l00049"></a><a class="code" href="kstat_8h.html#a835359614ec43fbd96f53993cde84ef2">00049</a> <span class="preprocessor">#define S_ISLNK(m)  (((m) &amp; S_IFMT) == S_IFLNK) </span>
+<a name="l00050"></a><a class="code" href="kstat_8h.html#abf68371159fa46b5cc47d0f3ac9ab723">00050</a> <span class="preprocessor">#define S_ISREG(m)  (((m) &amp; S_IFMT) == S_IFREG) </span>
+<a name="l00051"></a><a class="code" href="kstat_8h.html#a765304585be8c05f7fa72495e6d5881f">00051</a> <span class="preprocessor">#define S_ISSOCK(m) (((m) &amp; S_IFMT) == S_IFSOCK) </span>
+<a name="l00053"></a><a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">00053</a> <span class="preprocessor">typedef uint32_t mode_t; </span>
+<a name="l00054"></a><a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">00054</a> <span class="preprocessor">typedef uint32_t dev_t; </span>
+<a name="l00055"></a><a class="code" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">00055</a> <span class="preprocessor">typedef uint32_t uid_t; </span>
+<a name="l00056"></a><a class="code" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">00056</a> <span class="preprocessor">typedef uint32_t gid_t; </span>
+<a name="l00057"></a>00057 <span class="preprocessor">typedef uint32_t nlink_t;</span>
+<a name="l00058"></a>00058 <span class="preprocessor"></span><span class="keyword">typedef</span> <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> blksize_t;
+<a name="l00059"></a>00059 <span class="keyword">typedef</span> <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> blkcnt_t;
+<a name="l00060"></a><a class="code" href="kstat_8h.html#aed4e918b44240739869c4bdb1c4787a9">00060</a> <span class="keyword">typedef</span> <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="kstat_8h.html#aed4e918b44240739869c4bdb1c4787a9">ino_t</a>; 
+<a name="l00065"></a><a class="code" href="structstat.html">00065</a> <span class="keyword">struct </span><a class="code" href="structstat.html" title="Informations sur un noeud.">stat</a> {
+<a name="l00066"></a><a class="code" href="structstat.html#ac5b90090ae323741ae4c9e4f3683a29f">00066</a>         <a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a>     <a class="code" href="structstat.html#ac5b90090ae323741ae4c9e4f3683a29f">st_dev</a>;      
+<a name="l00067"></a><a class="code" href="structstat.html#a9769ed8f0d4c5a9f329c32bc92479d56">00067</a>         <a class="code" href="kstat_8h.html#aed4e918b44240739869c4bdb1c4787a9">ino_t</a>     <a class="code" href="structstat.html#a9769ed8f0d4c5a9f329c32bc92479d56">st_ino</a>;      
+<a name="l00068"></a><a class="code" href="structstat.html#a5cbdd829011af82ba61e83773bbcbc7d">00068</a>         <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>    <a class="code" href="structstat.html#a5cbdd829011af82ba61e83773bbcbc7d">st_mode</a>;     
+<a name="l00069"></a><a class="code" href="structstat.html#a0ed9092fa6c77a3251b9b9a4738ef84f">00069</a>         nlink_t   <a class="code" href="structstat.html#a0ed9092fa6c77a3251b9b9a4738ef84f">st_nlink</a>;    
+<a name="l00070"></a><a class="code" href="structstat.html#a4a8708a3d18be60ee7b2f06c4cab0c70">00070</a>         <a class="code" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a>     <a class="code" href="structstat.html#a4a8708a3d18be60ee7b2f06c4cab0c70">st_uid</a>;      
+<a name="l00071"></a><a class="code" href="structstat.html#ab864f16f436cec370f0ced585d897698">00071</a>         <a class="code" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a>     <a class="code" href="structstat.html#ab864f16f436cec370f0ced585d897698">st_gid</a>;      
+<a name="l00072"></a><a class="code" href="structstat.html#aa61e6c1a8a91c69f1d26f6700a0546cb">00072</a>         <a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a>     <a class="code" href="structstat.html#aa61e6c1a8a91c69f1d26f6700a0546cb">st_rdev</a>;     
+<a name="l00073"></a><a class="code" href="structstat.html#a040e19c8b9766f841fde8786ce9297bf">00073</a>         off_t     <a class="code" href="structstat.html#a040e19c8b9766f841fde8786ce9297bf">st_size</a>;     
+<a name="l00074"></a><a class="code" href="structstat.html#a38d474e1ae3cf6fbdde89ac3c3e308f1">00074</a>         blksize_t <a class="code" href="structstat.html#a38d474e1ae3cf6fbdde89ac3c3e308f1">st_blksize</a>;  
+<a name="l00075"></a><a class="code" href="structstat.html#a42dd716b2f9234f961d949fc9500eefb">00075</a>         blkcnt_t  <a class="code" href="structstat.html#a42dd716b2f9234f961d949fc9500eefb">st_blocks</a>;   
+<a name="l00076"></a><a class="code" href="structstat.html#ab74d1e7e345e88b9d0fb2688a97cba64">00076</a>         time_t    <a class="code" href="structstat.html#ab74d1e7e345e88b9d0fb2688a97cba64">st_atime</a>;    
+<a name="l00077"></a><a class="code" href="structstat.html#a77e235090f8cb6897f1c0ce65689006b">00077</a>         time_t    <a class="code" href="structstat.html#a77e235090f8cb6897f1c0ce65689006b">st_mtime</a>;    
+<a name="l00078"></a><a class="code" href="structstat.html#a1b4b858db1ebe79c3d6e0fc1ef721024">00078</a>         time_t    <a class="code" href="structstat.html#a1b4b858db1ebe79c3d6e0fc1ef721024">st_ctime</a>;    
+<a name="l00079"></a>00079 };
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082 <span class="preprocessor">#endif</span>
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juillet 8 2012 15:18:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

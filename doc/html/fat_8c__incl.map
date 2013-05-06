@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/fs/fat/fat.c" name="kernel/fs/fat/fat.c">
 <area shape="rect" id="node3" href="$fat_8h.html" title="fs/fat.h" alt="" coords="389,83,451,111"/>
 <area shape="rect" id="node24" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="524,315,601,343"/>
 <area shape="rect" id="node27" href="$klog_8h.html" title="Logging macros." alt="" coords="605,83,661,111"/>

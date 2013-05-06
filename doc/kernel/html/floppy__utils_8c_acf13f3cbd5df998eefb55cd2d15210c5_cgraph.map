@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$floppy__utils_8c.html#aab49f8f343dc0a1f9c89ec5f5e444e0e" title="Retourne le numero tu lecteur courrant." alt="" coords="344,10,507,38"/>
+<area shape="rect" id="node5" href="$floppy__motor_8c.html#a8e34854bf77e8b763e57b6a8986ecff5" title="Change l&#39;état du moteur." alt="" coords="173,35,267,63"/>
+<area shape="rect" id="node8" href="$floppy__utils_8c.html#a0e012dd33083ef16c714cda568627983" title="Envoi une commande au controleur floppy." alt="" coords="348,137,503,165"/>
+<area shape="rect" id="node12" href="$floppy__interrupt_8c.html#a579397f7aad55a1eff3648712e9b1f5a" title="Attendre une interruption (XXX attente active)" alt="" coords="167,137,273,165"/>
+<area shape="rect" id="node14" href="$floppy__interrupt_8c.html#aa736fd868e99a0bde478ea3b5a836b04" title="Récupère des données d&#39;interruption." alt="" coords="145,187,295,215"/>
+<area shape="rect" id="node10" href="$floppy__utils_8c.html#a1b528d56e03dda853060f541fa772847" title="Vérifie si le controleur floppy est en état ready." alt="" coords="555,162,648,190"/>
+<area shape="rect" id="node17" href="$floppy__utils_8c.html#accc0dbdcd680cab9890db94a13067284" title="Lis les données disponibles sur la FIFO du controleur." alt="" coords="367,187,484,215"/>
+</map>

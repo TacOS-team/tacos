@@ -29,6 +29,7 @@ var searchData=
   ['key_5freturn',['KEY_RETURN',['../keyboard_8c.html#afe5716cf1626fceab51044a6c2492831',1,'keyboard.c']]],
   ['key_5frshift',['KEY_RSHIFT',['../keyboard_8c.html#a5b52e8d492e96e2b4c21a94f50a689c5',1,'keyboard.c']]],
   ['key_5fspace',['KEY_SPACE',['../keyboard_8c.html#a8a5ff83d21dfa704c1c3eff56d5b3a4b',1,'keyboard.c']]],
+  ['key_5ft',['key_t',['../structkey__t.html',1,'']]],
   ['keyboard_2ec',['keyboard.c',['../keyboard_8c.html',1,'']]],
   ['keyboard_2eh',['keyboard.h',['../keyboard_8h.html',1,'']]],
   ['keyboard_5fbat_5fko',['KEYBOARD_BAT_KO',['../keyboard_8c.html#a78b9cc2c6b6852cf6d70397f347f6087',1,'keyboard.c']]],

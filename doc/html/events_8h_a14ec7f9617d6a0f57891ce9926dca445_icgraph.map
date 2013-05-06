@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="unset_scheduler_event" name="unset_scheduler_event">
 <area shape="rect" id="node3" href="$events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="224,5,309,33"/>
 <area shape="rect" id="node5" href="$scheduler_8c.html#aafa4b5a4a0ef6280c9834e1c30aff031" title="Arret du scheduler Arrète le scheduler en retirant le prochain schedule de la liste des évenements..." alt="" coords="212,55,321,83"/>
 <area shape="rect" id="node7" href="$scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="371,55,531,83"/>

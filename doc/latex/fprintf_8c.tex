@@ -1,0 +1,82 @@
+\hypertarget{fprintf_8c}{\section{Référence du fichier libc/stdio/fprintf.c}
+\label{fprintf_8c}\index{libc/stdio/fprintf.\-c@{libc/stdio/fprintf.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+Graphe des dépendances par inclusion de fprintf.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{fprintf_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{fprintf_8c_ad9291335f34e874c8431285d705bc3aa}{fprintf} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream, const char $\ast$format,...)
+\begin{DoxyCompactList}\small\item\em Affiche un message dans le stream passé en argument. \end{DoxyCompactList}\item 
+\hypertarget{fprintf_8c_ad80f05917df38df3a5e1817498d67c26}{int {\bfseries vfprintf} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream, const char $\ast$format, va\-\_\-list ap)}\label{fprintf_8c_ad80f05917df38df3a5e1817498d67c26}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+Description de ce que fait le fichier
+
+\subsection{Documentation des fonctions}
+\hypertarget{fprintf_8c_ad9291335f34e874c8431285d705bc3aa}{\index{fprintf.\-c@{fprintf.\-c}!fprintf@{fprintf}}
+\index{fprintf@{fprintf}!fprintf.c@{fprintf.\-c}}
+\subsubsection[{fprintf}]{\setlength{\rightskip}{0pt plus 5cm}int fprintf (
+\begin{DoxyParamCaption}
+\item[{{\bf F\-I\-L\-E} $\ast$}]{stream, }
+\item[{const char $\ast$}]{format, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}}\label{fprintf_8c_ad9291335f34e874c8431285d705bc3aa}
+Affiche un message dans le stream passé en argument. En effectuant les conversions. \begin{DoxyVerb} @see fprintf
+ @see sprintf
+ @see snprintf
+ @see vprintf
+ @see vfprintf
+ @see vsprintf
+ @see vsnprintf
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Paramètres}
+{\em stream} & un pointeur sur un stream. \\
+\hline
+{\em format} & chaîne de format précisant le format de conversion pour la sortie. \\
+\hline
+{\em ...} & liste variable d'arguments à afficher.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+En cas de succès, renvoit le nombre de caractères affichés. Négatif en cas d'erreur. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{fprintf_8c_ad9291335f34e874c8431285d705bc3aa_icgraph}
+\end{center}
+\end{figure}
+
+

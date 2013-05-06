@@ -1,0 +1,18 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="5,83,107,111"/>
+<area shape="rect" id="node5" href="$floppy_8c.html" title="kernel/drivers/block/floppy/floppy.c" alt="" coords="131,83,349,111"/>
+<area shape="rect" id="node7" href="$floppy__dma_8c.html" title="kernel/drivers/block/floppy/floppy_dma.c" alt="" coords="373,83,624,111"/>
+<area shape="rect" id="node9" href="$floppy__motor_8c.html" title="kernel/drivers/block/floppy/floppy_motor.c" alt="" coords="648,83,907,111"/>
+<area shape="rect" id="node11" href="$floppy__utils_8c.html" title="kernel/drivers/block/floppy/floppy_utils.c" alt="" coords="931,83,1181,111"/>
+<area shape="rect" id="node13" href="$beeper_8c.html" title="kernel/drivers/char/beeper.c" alt="" coords="1205,83,1387,111"/>
+<area shape="rect" id="node15" href="$mouse_8c.html" title="kernel/drivers/char/mouse.c" alt="" coords="1411,83,1592,111"/>
+<area shape="rect" id="node17" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="1616,83,1789,111"/>
+<area shape="rect" id="node19" href="$keyboard_8c.html" title="Driver clavier." alt="" coords="1813,83,2027,111"/>
+<area shape="rect" id="node21" href="$vesa_8c.html" title="kernel/drivers/char/vesa.c" alt="" coords="2051,83,2221,111"/>
+<area shape="rect" id="node23" href="$vga_8c.html" title="kernel/drivers/char/vga.c" alt="" coords="2245,83,2408,111"/>
+<area shape="rect" id="node25" href="$video_8c.html" title="kernel/drivers/char/video.c" alt="" coords="2432,83,2605,111"/>
+<area shape="rect" id="node27" href="$i8254_8c.html" title="kernel/i8254.c" alt="" coords="2629,83,2731,111"/>
+<area shape="rect" id="node29" href="$i8259_8c.html" title="kernel/i8259.c" alt="" coords="2755,83,2856,111"/>
+<area shape="rect" id="node31" href="$pci__config_8c.html" title="kernel/pci/pci_config.c" alt="" coords="2880,83,3029,111"/>
+<area shape="rect" id="node33" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="3053,83,3179,111"/>
+</map>

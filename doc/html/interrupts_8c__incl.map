@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/interrupts.c" name="kernel/interrupts.c">
 <area shape="rect" id="node3" href="$idt_8h.html" title="Initialisation de la table des descripteurs d&#39;interruption (et exceptions) et association aux handler..." alt="" coords="5,83,51,111"/>
 <area shape="rect" id="node7" href="$i8259_8h.html" title="Initialisation du i8259 qui s&#39;occupe des interruptions." alt="" coords="75,83,136,111"/>
 <area shape="rect" id="node10" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="160,83,245,111"/>

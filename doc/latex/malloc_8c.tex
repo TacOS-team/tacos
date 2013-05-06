@@ -1,0 +1,91 @@
+\hypertarget{malloc_8c}{\section{Référence du fichier libc/malloc.c}
+\label{malloc_8c}\index{libc/malloc.\-c@{libc/malloc.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$unistd.\-h$>$}\\*
+{\ttfamily \#include $<$sys/syscall.\-h$>$}\\*
+{\ttfamily \#include $<$malloc.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+Graphe des dépendances par inclusion de malloc.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{malloc_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmem__list}{mem\-\_\-list}
+\item 
+struct \hyperlink{structmem}{mem}
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{malloc_8c_a9ecdc0fe5a3e3dd9c9fc157e3cdb3622}{void {\bfseries init\-\_\-process\-\_\-malloc} ()}\label{malloc_8c_a9ecdc0fe5a3e3dd9c9fc157e3cdb3622}
+
+\item 
+\hypertarget{malloc_8c_a7ac38fce3243a7dcf448301ee9ffd392}{void $\ast$ {\bfseries malloc} (\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)}\label{malloc_8c_a7ac38fce3243a7dcf448301ee9ffd392}
+
+\item 
+\hypertarget{malloc_8c_a0b804e30d1d960fc19a23f9ebfd7c3c7}{int {\bfseries free} (void $\ast$p)}\label{malloc_8c_a0b804e30d1d960fc19a23f9ebfd7c3c7}
+
+\item 
+\hypertarget{malloc_8c_a20387506ceee016ce746c5f89dedc0f3}{void {\bfseries malloc\-\_\-print\-\_\-mem} ()}\label{malloc_8c_a20387506ceee016ce746c5f89dedc0f3}
+
+\item 
+void $\ast$ \hyperlink{malloc_8c_a1a6b5e8d2f1c37e5b43e4345586075be}{realloc} (void $\ast$ptr, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+\begin{DoxyCompactList}\small\item\em Modifie la taille du bloc de mémoire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+Description de ce que fait le fichier 
+
+\subsection{Documentation des fonctions}
+\hypertarget{malloc_8c_a1a6b5e8d2f1c37e5b43e4345586075be}{\index{malloc.\-c@{malloc.\-c}!realloc@{realloc}}
+\index{realloc@{realloc}!malloc.c@{malloc.\-c}}
+\subsubsection[{realloc}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ realloc (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{{\bf size\-\_\-t}}]{size}
+\end{DoxyParamCaption}
+)}}\label{malloc_8c_a1a6b5e8d2f1c37e5b43e4345586075be}
+
+\begin{DoxyParams}{Paramètres}
+{\em ptr} & Le bloc mémoire à modifier. \\
+\hline
+{\em size} & Nouvelle taille.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+nouvelle adresse. 
+\end{DoxyReturn}
+
+\begin{DoxyItemize}
+\item the following implementation is B\-A\-D \& S\-L\-O\-W
+\item ptr should have been returned by an earlier call to malloc, calloc or realloc (standard)
+\end{DoxyItemize}
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{malloc_8c_a1a6b5e8d2f1c37e5b43e4345586075be_cgraph}
+\end{center}
+\end{figure}
+
+

@@ -4,43 +4,33 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <title>TacOS:  Fichier source de kernel/include/ksignal.h</title>
-
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
-
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div! -->
-
-
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  
-  
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
    &#160;<span id="projectnumber">0.1</span>
    </div>
-   
   </td>
-  
-  
-  
  </tr>
  </tbody>
 </table>
 </div>
-
-<!-- Généré par Doxygen 1.7.6.1 -->
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -73,33 +63,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
     </ul>
   </div>
-</div>
-<div class="header">
-  <div class="headertitle">
-<div class="title">kernel/include/ksignal.h</div>  </div>
-</div><!--header-->
-<div class="contents">
-<a href="ksignal_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00030"></a>00030 <span class="preprocessor">#ifndef _KSIGNAL_H</span>
-<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define _KSIGNAL_H</span>
-<a name="l00032"></a>00032 <span class="preprocessor"></span>
-<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="ksyscall_8h.html">ksyscall.h</a>&gt;</span>
-<a name="l00034"></a>00034 <span class="preprocessor">#include &lt;<a class="code" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux).">signal_types.h</a>&gt;</span>
-<a name="l00035"></a>00035 <span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span>
-<a name="l00036"></a>00036 <span class="preprocessor">#include &lt;<a class="code" href="kprocess_8h.html" title="Création de nouveaux processus.">kprocess.h</a>&gt;</span>
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038 SYSCALL_HANDLER3(sys_signal, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> signum, <a class="code" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a> handler, <a class="code" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a>* ret);
-<a name="l00039"></a>00039 SYSCALL_HANDLER3(sys_sigprocmask, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> how, sigset_t* <span class="keyword">set</span>, sigset_t* oldset);
-<a name="l00040"></a>00040 SYSCALL_HANDLER3(sys_kill, <span class="keywordtype">int</span> pid, <span class="keywordtype">int</span> signum, <span class="keywordtype">int</span>* ret);
-<a name="l00041"></a>00041 SYSCALL_HANDLER0(sys_sigret);
-<a name="l00042"></a>00042 SYSCALL_HANDLER1(sys_sigsuspend, sigset_t* mask);
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044 <span class="keywordtype">int</span> exec_sighandler(<a class="code" href="structprocess__t.html">process_t</a>* process);
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046 <span class="keywordtype">int</span> signal_pending(<a class="code" href="structprocess__t.html">process_t</a>* process);
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048 <span class="preprocessor">#endif </span><span class="comment">/* _KSIGNAL_H */</span>
-</pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -114,13 +77,42 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </iframe>
 </div>
 
-
-
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ksignal.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="ksignal_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifndef _KSIGNAL_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _KSIGNAL_H</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ksyscall_8h.html">ksyscall.h</a>&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux).">signal_types.h</a>&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kprocess_8h.html" title="Création de nouveaux processus.">kprocess.h</a>&gt;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;SYSCALL_HANDLER3(sys_signal, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> signum, <a class="code" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a> handler, <a class="code" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a>* ret);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;SYSCALL_HANDLER3(sys_sigprocmask, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> how, sigset_t* <span class="keyword">set</span>, sigset_t* oldset);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;SYSCALL_HANDLER3(sys_kill, <span class="keywordtype">int</span> pid, <span class="keywordtype">int</span> signum, <span class="keywordtype">int</span>* ret);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;SYSCALL_HANDLER0(sys_sigret);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;SYSCALL_HANDLER1(sys_sigsuspend, sigset_t* mask);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">int</span> exec_sighandler(<a class="code" href="structprocess__t.html">process_t</a>* process);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">int</span> signal_pending(<a class="code" href="structprocess__t.html">process_t</a>* process);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _KSIGNAL_H */</span><span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Juin 24 2012 10:56:46 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Lundi Mai 6 2013 23:52:52 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
+</a> 1.8.1.2
 </small></address>
-
 </body>
 </html>

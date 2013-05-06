@@ -1,4 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="5,83,179,111"/>
-<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="203,83,309,111"/>
+<map id="kernel/include/drivers/serial.h" name="kernel/include/drivers/serial.h">
+<area shape="rect" id="node3" href="$serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="5,99,133,143"/>
+<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="157,107,264,135"/>
 </map>

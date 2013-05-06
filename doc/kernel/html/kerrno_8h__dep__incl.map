@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$devfs_8c.html" title="DevFS." alt="" coords="5,83,123,111"/>
+<area shape="rect" id="node5" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="147,83,344,111"/>
+<area shape="rect" id="node7" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="368,83,547,111"/>
+<area shape="rect" id="node9" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="571,83,693,111"/>
+<area shape="rect" id="node11" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="717,83,805,111"/>
+</map>

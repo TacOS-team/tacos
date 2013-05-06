@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="5,83,179,111"/>
+<area shape="rect" id="node5" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="203,83,376,111"/>
+<area shape="rect" id="node7" href="$console_8h.html" title="Console virtuelle (Fn)" alt="" coords="400,83,603,111"/>
+<area shape="rect" id="node15" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="627,83,728,111"/>
+<area shape="rect" id="node17" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="752,83,859,111"/>
+<area shape="rect" id="node9" href="$console_8c.html" title="Console virtuelle (Fn)." alt="" coords="165,161,371,189"/>
+<area shape="rect" id="node11" href="$keyboard_8c.html" title="Driver clavier." alt="" coords="395,161,608,189"/>
+<area shape="rect" id="node13" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="632,161,739,189"/>
+</map>

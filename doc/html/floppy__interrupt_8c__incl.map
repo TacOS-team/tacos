@@ -1,5 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" id="node5" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="99,83,184,111"/>
-<area shape="rect" id="node9" href="$floppy__utils_8h.html" title="floppy_utils.h" alt="" coords="208,83,304,111"/>
-<area shape="rect" id="node7" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="111,161,172,189"/>
+<map id="kernel/drivers/block/floppy/floppy_interrupt.c" name="kernel/drivers/block/floppy/floppy_interrupt.c">
+<area shape="rect" id="node5" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="91,99,176,127"/>
+<area shape="rect" id="node9" href="$floppy__utils_8h.html" title="floppy_utils.h" alt="" coords="200,99,296,127"/>
+<area shape="rect" id="node7" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="103,177,164,205"/>
 </map>

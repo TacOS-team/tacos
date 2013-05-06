@@ -1,0 +1,51 @@
+\hypertarget{structphysical__page__descr}{\section{Référence de la structure physical\-\_\-page\-\_\-descr}
+\label{structphysical__page__descr}\index{physical\-\_\-page\-\_\-descr@{physical\-\_\-page\-\_\-descr}}
+}
+
+
+Descripteur de page physique.  
+
+
+
+
+{\ttfamily \#include $<$memory.\-h$>$}
+
+
+
+Graphe de collaboration de physical\-\_\-page\-\_\-descr\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{structphysical__page__descr__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{kernel_2include_2types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\-\_\-t} \hyperlink{structphysical__page__descr_a8694fbd6da044ec77732927bd905e128}{addr}
+\item 
+struct \hyperlink{structphysical__page__descr}{physical\-\_\-page\-\_\-descr} $\ast$ \hyperlink{structphysical__page__descr_ab5fc54ca3d91062fbadb940f9c0a5495}{next}
+\item 
+struct \hyperlink{structphysical__page__descr}{physical\-\_\-page\-\_\-descr} $\ast$ \hyperlink{structphysical__page__descr_acecbcc1b0a68569fea25aa968528b30e}{prev}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Descripteur de page physique. Contient juste l'adresse physique de la zone mémoire et des pointeurs vers les pages suivantes et précédentes. 
+
+\subsection{Documentation des champs}
+\hypertarget{structphysical__page__descr_a8694fbd6da044ec77732927bd905e128}{\index{physical\-\_\-page\-\_\-descr@{physical\-\_\-page\-\_\-descr}!addr@{addr}}
+\index{addr@{addr}!physical_page_descr@{physical\-\_\-page\-\_\-descr}}
+\subsubsection[{addr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf paddr\-\_\-t} physical\-\_\-page\-\_\-descr\-::addr}}\label{structphysical__page__descr_a8694fbd6da044ec77732927bd905e128}
+L'adresse physique de la zone mémoire. \hypertarget{structphysical__page__descr_ab5fc54ca3d91062fbadb940f9c0a5495}{\index{physical\-\_\-page\-\_\-descr@{physical\-\_\-page\-\_\-descr}!next@{next}}
+\index{next@{next}!physical_page_descr@{physical\-\_\-page\-\_\-descr}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf physical\-\_\-page\-\_\-descr}$\ast$ physical\-\_\-page\-\_\-descr\-::next}}\label{structphysical__page__descr_ab5fc54ca3d91062fbadb940f9c0a5495}
+Pointeur sur le descripteur suivant. \hypertarget{structphysical__page__descr_acecbcc1b0a68569fea25aa968528b30e}{\index{physical\-\_\-page\-\_\-descr@{physical\-\_\-page\-\_\-descr}!prev@{prev}}
+\index{prev@{prev}!physical_page_descr@{physical\-\_\-page\-\_\-descr}}
+\subsubsection[{prev}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf physical\-\_\-page\-\_\-descr}$\ast$ physical\-\_\-page\-\_\-descr\-::prev}}\label{structphysical__page__descr_acecbcc1b0a68569fea25aa968528b30e}
+Pointeur sur le descripteur précédent. 
+
+La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+\item 
+kernel/include/\hyperlink{memory_8h}{memory.\-h}\end{DoxyCompactItemize}

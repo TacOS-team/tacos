@@ -1,0 +1,5 @@
+<map id="kernel/klibc/string.c" name="kernel/klibc/string.c">
+<area shape="rect" id="node3" href="$kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="5,83,99,111"/>
+<area shape="rect" id="node7" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="123,83,200,111"/>
+<area shape="rect" id="node9" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="131,161,192,189"/>
+</map>

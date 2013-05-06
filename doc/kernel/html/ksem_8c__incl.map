@@ -1,0 +1,13 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="100,161,164,189"/>
+<area shape="rect" id="node10" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="333,161,419,189"/>
+<area shape="rect" id="node28" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="5,83,83,111"/>
+<area shape="rect" id="node31" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="169,83,257,111"/>
+<area shape="rect" id="node5" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="119,238,196,266"/>
+<area shape="rect" id="node7" href="$types_8h.html" title="types.h" alt="" coords="349,315,411,343"/>
+<area shape="rect" id="node13" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="220,238,300,266"/>
+<area shape="rect" id="node15" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="324,238,428,266"/>
+<area shape="rect" id="node17" href="$process__types_8h.html" title="process_types.h" alt="" coords="452,238,567,266"/>
+<area shape="rect" id="node19" href="$symtable_8h.html" title="symtable.h" alt="" coords="727,238,809,266"/>
+<area shape="rect" id="node25" href="$vmm_8h.html" title="vmm.h" alt="" coords="641,238,703,266"/>
+</map>

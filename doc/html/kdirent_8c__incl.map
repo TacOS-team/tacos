@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/kdirent.c" name="kernel/kdirent.c">
 <area shape="rect" id="node3" href="$vfs_8h.html" title="Virtual File System." alt="" coords="687,83,737,111"/>
 <area shape="rect" id="node18" href="$kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="787,83,856,111"/>
 <area shape="rect" id="node23" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="923,238,1000,266"/>
@@ -15,5 +15,6 @@
 <area shape="rect" id="node38" href="$process__types_8h.html" title="process_types.h" alt="" coords="291,315,405,343"/>
 <area shape="rect" id="node40" href="$symtable_8h.html" title="symtable.h" alt="" coords="5,315,88,343"/>
 <area shape="rect" id="node46" href="$vmm_8h.html" title="vmm.h" alt="" coords="429,315,491,343"/>
+<area shape="rect" id="node43" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="24,393,69,421"/>
 <area shape="rect" id="node52" href="$kstdio_8h.html" title="kprintf" alt="" coords="1085,161,1152,189"/>
 </map>

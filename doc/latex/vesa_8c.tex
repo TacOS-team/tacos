@@ -1,0 +1,108 @@
+\hypertarget{vesa_8c}{\section{Référence du fichier kernel/drivers/char/vesa.c}
+\label{vesa_8c}\index{kernel/drivers/char/vesa.\-c@{kernel/drivers/char/vesa.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$fs/devfs.\-h$>$}\\*
+{\ttfamily \#include $<$types.\-h$>$}\\*
+{\ttfamily \#include $<$klog.\-h$>$}\\*
+{\ttfamily \#include $<$ioports.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$pci.\-h$>$}\\*
+{\ttfamily \#include $<$pci\-\_\-config.\-h$>$}\\*
+{\ttfamily \#include $<$memory.\-h$>$}\\*
+{\ttfamily \#include $<$pagination.\-h$>$}\\*
+{\ttfamily \#include $<$vmm.\-h$>$}\\*
+{\ttfamily \#include $<$vesa\-\_\-types.\-h$>$}\\*
+Graphe des dépendances par inclusion de vesa.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vesa_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{vesa_8c_a11e06361305e586dc8eb955a4e7abf08}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-D\-E\-X}~0x01\-C\-E}\label{vesa_8c_a11e06361305e586dc8eb955a4e7abf08}
+
+\item 
+\hypertarget{vesa_8c_a29bba03bd28b8cf1951749b7a6e541f2}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-I\-O\-P\-O\-R\-T\-\_\-\-D\-A\-T\-A}~0x01\-C\-F}\label{vesa_8c_a29bba03bd28b8cf1951749b7a6e541f2}
+
+\item 
+\hypertarget{vesa_8c_a1bb1b4ba4a3bb660e693273040e566fe}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-I\-N\-D\-E\-X\-\_\-\-I\-D}~0x0}\label{vesa_8c_a1bb1b4ba4a3bb660e693273040e566fe}
+
+\item 
+\hypertarget{vesa_8c_a38304e110133ebfbf8b91553373d6613}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-I\-N\-D\-E\-X\-\_\-\-X\-R\-E\-S}~0x1}\label{vesa_8c_a38304e110133ebfbf8b91553373d6613}
+
+\item 
+\hypertarget{vesa_8c_ac33b578c847ac664e573d7b9432350f1}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-I\-N\-D\-E\-X\-\_\-\-Y\-R\-E\-S}~0x2}\label{vesa_8c_ac33b578c847ac664e573d7b9432350f1}
+
+\item 
+\hypertarget{vesa_8c_a05b0b84db2b3a8acc44c7b6514f5067d}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-I\-N\-D\-E\-X\-\_\-\-B\-P\-P}~0x3}\label{vesa_8c_a05b0b84db2b3a8acc44c7b6514f5067d}
+
+\item 
+\hypertarget{vesa_8c_ac636ee4589606791a0a4b7db7f56ed1c}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-I\-N\-D\-E\-X\-\_\-\-E\-N\-A\-B\-L\-E}~0x4}\label{vesa_8c_ac636ee4589606791a0a4b7db7f56ed1c}
+
+\item 
+\hypertarget{vesa_8c_a79e1578167e02154ab247bec20876a76}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-I\-N\-D\-E\-X\-\_\-\-B\-A\-N\-K}~0x5}\label{vesa_8c_a79e1578167e02154ab247bec20876a76}
+
+\item 
+\hypertarget{vesa_8c_a42e3ceeee90c363f9f4b00c6bf9b228f}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-I\-N\-D\-E\-X\-\_\-\-V\-I\-R\-T\-\_\-\-W\-I\-D\-T\-H}~0x6}\label{vesa_8c_a42e3ceeee90c363f9f4b00c6bf9b228f}
+
+\item 
+\hypertarget{vesa_8c_a9cb3fd08583091a28463fa7e8217c9f7}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-I\-N\-D\-E\-X\-\_\-\-V\-I\-R\-T\-\_\-\-H\-E\-I\-G\-H\-T}~0x7}\label{vesa_8c_a9cb3fd08583091a28463fa7e8217c9f7}
+
+\item 
+\hypertarget{vesa_8c_a1cf3b8eac8ec6d55834b0f465ea64415}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-I\-N\-D\-E\-X\-\_\-\-X\-\_\-\-O\-F\-F\-S\-E\-T}~0x8}\label{vesa_8c_a1cf3b8eac8ec6d55834b0f465ea64415}
+
+\item 
+\hypertarget{vesa_8c_a45c806ba6814cd5ffab51a1f439bd715}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-I\-N\-D\-E\-X\-\_\-\-Y\-\_\-\-O\-F\-F\-S\-E\-T}~0x9}\label{vesa_8c_a45c806ba6814cd5ffab51a1f439bd715}
+
+\item 
+\hypertarget{vesa_8c_a67606e4e957a275487673ce0de07a51f}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-D\-I\-S\-A\-B\-L\-E\-D}~0x00}\label{vesa_8c_a67606e4e957a275487673ce0de07a51f}
+
+\item 
+\hypertarget{vesa_8c_a172bc762a0f6f101a7f375a58d157bff}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-E\-N\-A\-B\-L\-E\-D}~0x01}\label{vesa_8c_a172bc762a0f6f101a7f375a58d157bff}
+
+\item 
+\hypertarget{vesa_8c_a07d6bcb9da42cec60ee6429444b40794}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-G\-E\-T\-C\-A\-P\-S}~0x02}\label{vesa_8c_a07d6bcb9da42cec60ee6429444b40794}
+
+\item 
+\hypertarget{vesa_8c_af35f05800cfc7bb3b9ca974b75c689db}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-8\-B\-I\-T\-\_\-\-D\-A\-C}~0x20}\label{vesa_8c_af35f05800cfc7bb3b9ca974b75c689db}
+
+\item 
+\hypertarget{vesa_8c_af8b487acf11a22b30c314b70035d7768}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-L\-F\-B\-\_\-\-E\-N\-A\-B\-L\-E\-D}~0x40}\label{vesa_8c_af8b487acf11a22b30c314b70035d7768}
+
+\item 
+\hypertarget{vesa_8c_aa6f6ec763286881674c1889585a502c5}{\#define {\bfseries V\-B\-E\-\_\-\-D\-I\-S\-P\-I\-\_\-\-N\-O\-C\-L\-E\-A\-R\-M\-E\-M}~0x80}\label{vesa_8c_aa6f6ec763286881674c1889585a502c5}
+
+\item 
+\hypertarget{vesa_8c_a80c96efc6fcdfa8f6ef9343f83ac7679}{\#define {\bfseries V\-\_\-\-B\-A\-C\-K\-B\-U\-F\-F\-E\-R\-\_\-\-B\-A\-S\-E}~0x10000000}\label{vesa_8c_a80c96efc6fcdfa8f6ef9343f83ac7679}
+
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{vesa_8c_aa530590b8d91d20e1675adaa05b87bde}{void {\bfseries init\-\_\-vesa} ()}\label{vesa_8c_aa530590b8d91d20e1675adaa05b87bde}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2011 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+V\-B\-E driver.
+
+\begin{DoxySeeAlso}{Voir également}
+\href{http://wiki.osdev.org/Bochs_VBE_Extensions}{\tt http\-://wiki.\-osdev.\-org/\-Bochs\-\_\-\-V\-B\-E\-\_\-\-Extensions} 
+\end{DoxySeeAlso}

@@ -1,18 +1,19 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$klog_8h.html" title="Logging macros." alt="" coords="429,83,485,111"/>
-<area shape="rect" id="node9" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="543,238,607,266"/>
-<area shape="rect" id="node35" href="$kerrno_8h.html" title="Codes erreurs." alt="" coords="738,83,805,111"/>
-<area shape="rect" id="node37" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="645,83,714,111"/>
-<area shape="rect" id="node5" href="$kstdio_8h.html" title="kprintf" alt="" coords="423,161,490,189"/>
-<area shape="rect" id="node11" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="557,470,618,498"/>
-<area shape="rect" id="node13" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="535,393,615,421"/>
-<area shape="rect" id="node15" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="409,315,494,343"/>
-<area shape="rect" id="node17" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="639,393,717,421"/>
-<area shape="rect" id="node21" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="357,393,461,421"/>
-<area shape="rect" id="node23" href="$process__types_8h.html" title="process_types.h" alt="" coords="218,393,333,421"/>
-<area shape="rect" id="node25" href="$symtable_8h.html" title="symtable.h" alt="" coords="26,393,109,421"/>
-<area shape="rect" id="node31" href="$vmm_8h.html" title="vmm.h" alt="" coords="133,393,194,421"/>
-<area shape="rect" id="node39" href="$vfs_8h.html" title="Virtual File System." alt="" coords="685,161,735,189"/>
-<area shape="rect" id="node43" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="774,238,835,266"/>
-<area shape="rect" id="node46" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="774,315,835,343"/>
+<map id="kernel/fs/ext2/ext2_functions.c" name="kernel/fs/ext2/ext2_functions.c">
+<area shape="rect" id="node3" href="$klog_8h.html" title="Logging macros." alt="" coords="429,99,485,127"/>
+<area shape="rect" id="node9" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="543,254,607,282"/>
+<area shape="rect" id="node35" href="$kerrno_8h.html" title="Codes erreurs." alt="" coords="738,99,805,127"/>
+<area shape="rect" id="node37" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="645,99,714,127"/>
+<area shape="rect" id="node5" href="$kstdio_8h.html" title="kprintf" alt="" coords="423,177,490,205"/>
+<area shape="rect" id="node11" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="557,486,618,514"/>
+<area shape="rect" id="node13" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="535,409,615,437"/>
+<area shape="rect" id="node15" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="409,331,494,359"/>
+<area shape="rect" id="node17" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="639,409,717,437"/>
+<area shape="rect" id="node21" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="357,409,461,437"/>
+<area shape="rect" id="node23" href="$process__types_8h.html" title="process_types.h" alt="" coords="218,409,333,437"/>
+<area shape="rect" id="node25" href="$symtable_8h.html" title="symtable.h" alt="" coords="26,409,109,437"/>
+<area shape="rect" id="node31" href="$vmm_8h.html" title="vmm.h" alt="" coords="133,409,194,437"/>
+<area shape="rect" id="node28" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="45,486,90,514"/>
+<area shape="rect" id="node39" href="$vfs_8h.html" title="Virtual File System." alt="" coords="685,177,735,205"/>
+<area shape="rect" id="node43" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="774,254,835,282"/>
+<area shape="rect" id="node46" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="774,331,835,359"/>
 </map>

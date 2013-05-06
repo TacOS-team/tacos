@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="205,5,272,33"/>
+<area shape="rect" id="node7" href="$string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="212,55,265,83"/>
+<area shape="rect" id="node9" href="$ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="203,106,275,134"/>
+<area shape="rect" id="node11" href="$devfs_8c.html#acf0abbf4b629aa36d142733e27eaf6e6" title="Enregistre le chardev dans la liste." alt="" coords="180,157,297,185"/>
+<area shape="rect" id="node5" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="348,5,487,33"/>
+</map>

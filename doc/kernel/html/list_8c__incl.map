@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$list_8h.html" title="list.h" alt="" coords="5,83,53,111"/>
+<area shape="rect" id="node7" href="$string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="77,83,171,111"/>
+<area shape="rect" id="node10" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="195,83,272,111"/>
+<area shape="rect" id="node13" href="$kstdio_8h.html" title="kprintf" alt="" coords="296,83,363,111"/>
+<area shape="rect" id="node5" href="$types_8h.html" title="types.h" alt="" coords="93,161,155,189"/>
+</map>

@@ -1,0 +1,349 @@
+\hypertarget{memory_8h}{\section{Référence du fichier kernel/include/memory.h}
+\label{memory_8h}\index{kernel/include/memory.\-h@{kernel/include/memory.\-h}}
+}
+
+
+Gestion des pages mémoires physiques.  
+
+
+{\ttfamily \#include $<$types.\-h$>$}\\*
+Graphe des dépendances par inclusion de memory.\-h\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{memory_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{memory_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structphysical__page__descr}{physical\-\_\-page\-\_\-descr}
+\begin{DoxyCompactList}\small\item\em Descripteur de page physique. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{memory_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}{\#define {\bfseries P\-A\-G\-E\-\_\-\-S\-I\-Z\-E}~4096}\label{memory_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}
+
+\item 
+\hypertarget{memory_8h_a94c57ec5a753fc6a320e6ec0c8cd1ae9}{\#define {\bfseries B\-I\-O\-S\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-\-B\-A\-S\-E}~0xa0000}\label{memory_8h_a94c57ec5a753fc6a320e6ec0c8cd1ae9}
+
+\item 
+\hypertarget{memory_8h_ab1d4bfb793749b1b563f2aeae5e6ecf8}{\#define {\bfseries B\-I\-O\-S\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-\-T\-O\-P}~0x100000}\label{memory_8h_ab1d4bfb793749b1b563f2aeae5e6ecf8}
+
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{memory_8h_a0a428a3b3b69b116515e43ffc7a96042}{memory\-\_\-print} ()
+\begin{DoxyCompactList}\small\item\em Affiche la mémoire physique. \end{DoxyCompactList}\item 
+void \hyperlink{memory_8h_a8fba2533a7d88ec6038d6948ca695957}{memory\-\_\-print\-\_\-used\-\_\-pages} ()
+\begin{DoxyCompactList}\small\item\em Affiche la liste des cadres utilisés. \end{DoxyCompactList}\item 
+void \hyperlink{memory_8h_a09a07799735fa6d6fbae7e870052daa3}{memory\-\_\-print\-\_\-free\-\_\-pages} ()
+\begin{DoxyCompactList}\small\item\em Affiche la liste des cadres libres. \end{DoxyCompactList}\item 
+void \hyperlink{memory_8h_a2225d120bb97730dca7fe16322e706f3}{memory\-\_\-setup} (\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} ram\-\_\-size)
+\begin{DoxyCompactList}\small\item\em Découpage de la mémoire physique en cadres de page. \end{DoxyCompactList}\item 
+\hyperlink{kernel_2include_2types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\-\_\-t} \hyperlink{memory_8h_aeed93f8c282af6d9d4428813e331f583}{memory\-\_\-reserve\-\_\-page\-\_\-frame} ()
+\begin{DoxyCompactList}\small\item\em Réserve un cadre de page. \end{DoxyCompactList}\item 
+int \hyperlink{memory_8h_adcd850959d671b2d519a01d5c47ed090}{memory\-\_\-free\-\_\-page\-\_\-frame} (\hyperlink{kernel_2include_2types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\-\_\-t} addr)
+\begin{DoxyCompactList}\small\item\em Libère un cadre de page. \end{DoxyCompactList}\item 
+struct \hyperlink{structphysical__page__descr}{physical\-\_\-page\-\_\-descr} $\ast$ \hyperlink{memory_8h_a5973498654f77e506df68cfb1322d0e5}{memory\-\_\-get\-\_\-first\-\_\-used\-\_\-page} ()
+\begin{DoxyCompactList}\small\item\em Donne une copie du pointeur du premier descripteur de cadre de page utilisés. \end{DoxyCompactList}\item 
+struct \hyperlink{structphysical__page__descr}{physical\-\_\-page\-\_\-descr} $\ast$ \hyperlink{memory_8h_a700b910217b425c592693b70801e8141}{memory\-\_\-get\-\_\-first\-\_\-free\-\_\-page} ()
+\begin{DoxyCompactList}\small\item\em Donne une copie du pointeur du premier descripteur de cadre de page libres. \end{DoxyCompactList}\item 
+bool \hyperlink{memory_8h_a3b842dcc01f272fb96c6fbce35a81e99}{memory\-\_\-has\-\_\-next\-\_\-page} (struct \hyperlink{structphysical__page__descr}{physical\-\_\-page\-\_\-descr} $\ast$iterator)
+\begin{DoxyCompactList}\small\item\em Retourne vrai s'il y a encore un cadre de page qui suit. \end{DoxyCompactList}\item 
+\hyperlink{kernel_2include_2types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\-\_\-t} \hyperlink{memory_8h_a1de41321b1a8a9c6c12efd1a5ed998fa}{memory\-\_\-next\-\_\-page} (struct \hyperlink{structphysical__page__descr}{physical\-\_\-page\-\_\-descr} $\ast$$\ast$iterator)
+\begin{DoxyCompactList}\small\item\em Retourne le prochain cadre de page. \end{DoxyCompactList}\item 
+\hyperlink{kernel_2include_2types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\-\_\-t} \hyperlink{memory_8h_af0f914a32931e95e6e9ce2c1463b7978}{memory\-\_\-align\-\_\-page\-\_\-inf} (\hyperlink{kernel_2include_2types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\-\_\-t} value)
+\begin{DoxyCompactList}\small\item\em Adresse du cadre de page en arrondissant à l'inférieur. \end{DoxyCompactList}\item 
+\hyperlink{kernel_2include_2types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\-\_\-t} \hyperlink{memory_8h_a1c72d3a8d1a8b95fb4d75e634534320a}{memory\-\_\-align\-\_\-page\-\_\-sup} (\hyperlink{kernel_2include_2types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\-\_\-t} value)
+\begin{DoxyCompactList}\small\item\em Adresse du cadre de page en arrondissant au supérieur. \end{DoxyCompactList}\item 
+\hyperlink{kernel_2include_2types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\-\_\-t} \hyperlink{memory_8h_ab67b6223b9ebbe423e9102dbbed1afce}{memory\-\_\-get\-\_\-kernel\-\_\-top} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{memory_8h_af0f914a32931e95e6e9ce2c1463b7978}{\index{memory.\-h@{memory.\-h}!memory\-\_\-align\-\_\-page\-\_\-inf@{memory\-\_\-align\-\_\-page\-\_\-inf}}
+\index{memory\-\_\-align\-\_\-page\-\_\-inf@{memory\-\_\-align\-\_\-page\-\_\-inf}!memory.h@{memory.\-h}}
+\subsubsection[{memory\-\_\-align\-\_\-page\-\_\-inf}]{\setlength{\rightskip}{0pt plus 5cm}{\bf paddr\-\_\-t} memory\-\_\-align\-\_\-page\-\_\-inf (
+\begin{DoxyParamCaption}
+\item[{{\bf paddr\-\_\-t}}]{value}
+\end{DoxyParamCaption}
+)}}\label{memory_8h_af0f914a32931e95e6e9ce2c1463b7978}
+Prend en argument une adresse physique et donne l'adresse du cadre correspondant en arrondissant à l'inférieur.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em value} & l'adresse physique à arrondir.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+l'adresse physique arrondie. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{memory_8h_af0f914a32931e95e6e9ce2c1463b7978_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{memory_8h_a1c72d3a8d1a8b95fb4d75e634534320a}{\index{memory.\-h@{memory.\-h}!memory\-\_\-align\-\_\-page\-\_\-sup@{memory\-\_\-align\-\_\-page\-\_\-sup}}
+\index{memory\-\_\-align\-\_\-page\-\_\-sup@{memory\-\_\-align\-\_\-page\-\_\-sup}!memory.h@{memory.\-h}}
+\subsubsection[{memory\-\_\-align\-\_\-page\-\_\-sup}]{\setlength{\rightskip}{0pt plus 5cm}{\bf paddr\-\_\-t} memory\-\_\-align\-\_\-page\-\_\-sup (
+\begin{DoxyParamCaption}
+\item[{{\bf paddr\-\_\-t}}]{value}
+\end{DoxyParamCaption}
+)}}\label{memory_8h_a1c72d3a8d1a8b95fb4d75e634534320a}
+Prend en argument une adresse physique et donne l'adresse du cadre correspondant en arrondissant au supérieur.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em value} & l'adresse physique à arrondir.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+l'adresse physique arrondie. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{memory_8h_a1c72d3a8d1a8b95fb4d75e634534320a_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{memory_8h_adcd850959d671b2d519a01d5c47ed090}{\index{memory.\-h@{memory.\-h}!memory\-\_\-free\-\_\-page\-\_\-frame@{memory\-\_\-free\-\_\-page\-\_\-frame}}
+\index{memory\-\_\-free\-\_\-page\-\_\-frame@{memory\-\_\-free\-\_\-page\-\_\-frame}!memory.h@{memory.\-h}}
+\subsubsection[{memory\-\_\-free\-\_\-page\-\_\-frame}]{\setlength{\rightskip}{0pt plus 5cm}int memory\-\_\-free\-\_\-page\-\_\-frame (
+\begin{DoxyParamCaption}
+\item[{{\bf paddr\-\_\-t}}]{addr}
+\end{DoxyParamCaption}
+)}}\label{memory_8h_adcd850959d671b2d519a01d5c47ed090}
+Libère un cadre de page occupé, le place dans la listes des cadres libres et retourne 0 en cas de succès.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em addr} & l'adresse physique du cadre à libérer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. Une autre valeur sinon. 
+\end{DoxyReturn}
+\hypertarget{memory_8h_a700b910217b425c592693b70801e8141}{\index{memory.\-h@{memory.\-h}!memory\-\_\-get\-\_\-first\-\_\-free\-\_\-page@{memory\-\_\-get\-\_\-first\-\_\-free\-\_\-page}}
+\index{memory\-\_\-get\-\_\-first\-\_\-free\-\_\-page@{memory\-\_\-get\-\_\-first\-\_\-free\-\_\-page}!memory.h@{memory.\-h}}
+\subsubsection[{memory\-\_\-get\-\_\-first\-\_\-free\-\_\-page}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf physical\-\_\-page\-\_\-descr}$\ast$ memory\-\_\-get\-\_\-first\-\_\-free\-\_\-page (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [read]}}}\label{memory_8h_a700b910217b425c592693b70801e8141}
+Donne une copie du pointeur du haut de la pile des descripteurs de cadre de page libres.
+
+\begin{DoxyReturn}{Renvoie}
+pointeur sur le premier descripteur de cadre de page libre. 
+\end{DoxyReturn}
+\hypertarget{memory_8h_a5973498654f77e506df68cfb1322d0e5}{\index{memory.\-h@{memory.\-h}!memory\-\_\-get\-\_\-first\-\_\-used\-\_\-page@{memory\-\_\-get\-\_\-first\-\_\-used\-\_\-page}}
+\index{memory\-\_\-get\-\_\-first\-\_\-used\-\_\-page@{memory\-\_\-get\-\_\-first\-\_\-used\-\_\-page}!memory.h@{memory.\-h}}
+\subsubsection[{memory\-\_\-get\-\_\-first\-\_\-used\-\_\-page}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf physical\-\_\-page\-\_\-descr}$\ast$ memory\-\_\-get\-\_\-first\-\_\-used\-\_\-page (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [read]}}}\label{memory_8h_a5973498654f77e506df68cfb1322d0e5}
+Donne une copie du pointeur du haut de la pile des descripteurs de cadre de page utilisés.
+
+\begin{DoxyReturn}{Renvoie}
+pointeur sur le premier descripteur de cadre de page utilisé. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{memory_8h_a5973498654f77e506df68cfb1322d0e5_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{memory_8h_ab67b6223b9ebbe423e9102dbbed1afce}{\index{memory.\-h@{memory.\-h}!memory\-\_\-get\-\_\-kernel\-\_\-top@{memory\-\_\-get\-\_\-kernel\-\_\-top}}
+\index{memory\-\_\-get\-\_\-kernel\-\_\-top@{memory\-\_\-get\-\_\-kernel\-\_\-top}!memory.h@{memory.\-h}}
+\subsubsection[{memory\-\_\-get\-\_\-kernel\-\_\-top}]{\setlength{\rightskip}{0pt plus 5cm}{\bf paddr\-\_\-t} memory\-\_\-get\-\_\-kernel\-\_\-top (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{memory_8h_ab67b6223b9ebbe423e9102dbbed1afce}
+@ Premier cadre de page libre au dessus du kernel
+
+Premier cadre de page libre au dessus du kernel
+
+\begin{DoxyReturn}{Renvoie}
+l'adresse de la page. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{memory_8h_ab67b6223b9ebbe423e9102dbbed1afce_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{memory_8h_a3b842dcc01f272fb96c6fbce35a81e99}{\index{memory.\-h@{memory.\-h}!memory\-\_\-has\-\_\-next\-\_\-page@{memory\-\_\-has\-\_\-next\-\_\-page}}
+\index{memory\-\_\-has\-\_\-next\-\_\-page@{memory\-\_\-has\-\_\-next\-\_\-page}!memory.h@{memory.\-h}}
+\subsubsection[{memory\-\_\-has\-\_\-next\-\_\-page}]{\setlength{\rightskip}{0pt plus 5cm}bool memory\-\_\-has\-\_\-next\-\_\-page (
+\begin{DoxyParamCaption}
+\item[{struct {\bf physical\-\_\-page\-\_\-descr} $\ast$}]{iterator}
+\end{DoxyParamCaption}
+)}}\label{memory_8h_a3b842dcc01f272fb96c6fbce35a81e99}
+Retourne vrai s'il y a encore un cadre de page qui suit.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em iterator} & pointeur de descripteur de page.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+vrai s'il y a encore un cadre de page qui suit. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{memory_8h_a3b842dcc01f272fb96c6fbce35a81e99_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{memory_8h_a1de41321b1a8a9c6c12efd1a5ed998fa}{\index{memory.\-h@{memory.\-h}!memory\-\_\-next\-\_\-page@{memory\-\_\-next\-\_\-page}}
+\index{memory\-\_\-next\-\_\-page@{memory\-\_\-next\-\_\-page}!memory.h@{memory.\-h}}
+\subsubsection[{memory\-\_\-next\-\_\-page}]{\setlength{\rightskip}{0pt plus 5cm}{\bf paddr\-\_\-t} memory\-\_\-next\-\_\-page (
+\begin{DoxyParamCaption}
+\item[{struct {\bf physical\-\_\-page\-\_\-descr} $\ast$$\ast$}]{iterator}
+\end{DoxyParamCaption}
+)}}\label{memory_8h_a1de41321b1a8a9c6c12efd1a5ed998fa}
+Cette fonction sert à autoriser une itération sur les listes de cadres de page sans manipuler directement les pointeurs next et prev.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em iterator} & adresse d'un pointeur de descripteur de page. Sera modifiée pour pointer sur l'élément suivant.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+l'adresse physique du cadre de page. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{memory_8h_a1de41321b1a8a9c6c12efd1a5ed998fa_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{memory_8h_a0a428a3b3b69b116515e43ffc7a96042}{\index{memory.\-h@{memory.\-h}!memory\-\_\-print@{memory\-\_\-print}}
+\index{memory\-\_\-print@{memory\-\_\-print}!memory.h@{memory.\-h}}
+\subsubsection[{memory\-\_\-print}]{\setlength{\rightskip}{0pt plus 5cm}void memory\-\_\-print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{memory_8h_a0a428a3b3b69b116515e43ffc7a96042}
+Affiche la mémoire physique à l'aide de caractères F (libre) ou U (utilisée) pour chaque cadre de page. \hypertarget{memory_8h_a09a07799735fa6d6fbae7e870052daa3}{\index{memory.\-h@{memory.\-h}!memory\-\_\-print\-\_\-free\-\_\-pages@{memory\-\_\-print\-\_\-free\-\_\-pages}}
+\index{memory\-\_\-print\-\_\-free\-\_\-pages@{memory\-\_\-print\-\_\-free\-\_\-pages}!memory.h@{memory.\-h}}
+\subsubsection[{memory\-\_\-print\-\_\-free\-\_\-pages}]{\setlength{\rightskip}{0pt plus 5cm}void memory\-\_\-print\-\_\-free\-\_\-pages (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{memory_8h_a09a07799735fa6d6fbae7e870052daa3}
+Affiche la liste des cadres libres en donnant simplement la liste des adresses. \hypertarget{memory_8h_a8fba2533a7d88ec6038d6948ca695957}{\index{memory.\-h@{memory.\-h}!memory\-\_\-print\-\_\-used\-\_\-pages@{memory\-\_\-print\-\_\-used\-\_\-pages}}
+\index{memory\-\_\-print\-\_\-used\-\_\-pages@{memory\-\_\-print\-\_\-used\-\_\-pages}!memory.h@{memory.\-h}}
+\subsubsection[{memory\-\_\-print\-\_\-used\-\_\-pages}]{\setlength{\rightskip}{0pt plus 5cm}void memory\-\_\-print\-\_\-used\-\_\-pages (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{memory_8h_a8fba2533a7d88ec6038d6948ca695957}
+Affiche la liste des cadres utilisés en donnant simplement la liste des adresses. \hypertarget{memory_8h_aeed93f8c282af6d9d4428813e331f583}{\index{memory.\-h@{memory.\-h}!memory\-\_\-reserve\-\_\-page\-\_\-frame@{memory\-\_\-reserve\-\_\-page\-\_\-frame}}
+\index{memory\-\_\-reserve\-\_\-page\-\_\-frame@{memory\-\_\-reserve\-\_\-page\-\_\-frame}!memory.h@{memory.\-h}}
+\subsubsection[{memory\-\_\-reserve\-\_\-page\-\_\-frame}]{\setlength{\rightskip}{0pt plus 5cm}{\bf paddr\-\_\-t} memory\-\_\-reserve\-\_\-page\-\_\-frame (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{memory_8h_aeed93f8c282af6d9d4428813e331f583}
+Réserve un cadre de page libre, le place dans la liste des cadres utilisés et retourne l'adresse physique du cadre.
+
+\begin{DoxyReturn}{Renvoie}
+l'adresse physique du cadre réservé. 0 en cas d'erreur. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{memory_8h_aeed93f8c282af6d9d4428813e331f583_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{memory_8h_a2225d120bb97730dca7fe16322e706f3}{\index{memory.\-h@{memory.\-h}!memory\-\_\-setup@{memory\-\_\-setup}}
+\index{memory\-\_\-setup@{memory\-\_\-setup}!memory.h@{memory.\-h}}
+\subsubsection[{memory\-\_\-setup}]{\setlength{\rightskip}{0pt plus 5cm}void memory\-\_\-setup (
+\begin{DoxyParamCaption}
+\item[{{\bf size\-\_\-t}}]{ram\-\_\-size}
+\end{DoxyParamCaption}
+)}}\label{memory_8h_a2225d120bb97730dca7fe16322e706f3}
+Découpage de la mémoire physique en taille fixe. Pour l'instant il n'y a pas de mémoire virtuelle, c'est donc juste une association linéaire avec autant de pages que de cadres.
+
+ram\-\_\-size taille de la mémoire physique en octets. 
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{memory_8h_a2225d120bb97730dca7fe16322e706f3_cgraph}
+\end{center}
+\end{figure}
+
+

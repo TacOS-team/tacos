@@ -1,0 +1,571 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/fs/fat/fat_outils.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier kernel/fs/fat/fat_outils.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="fat__outils_8h_source.html">fat_outils.h</a>&quot;</code><br/>
+<code>#include &lt;<a class="el" href="clock_8h_source.html">clock.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="string_8h_source.html">klibc/string.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de fat_outils.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__outils_8c__incl.png" border="0" usemap="#kernel_2fs_2fat_2fat__outils_8c" alt=""/></div>
+<map name="kernel_2fs_2fat_2fat__outils_8c" id="kernel_2fs_2fat_2fat__outils_8c">
+<area shape="rect" id="node3" href="fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="252,83,337,111"/><area shape="rect" id="node9" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="320,393,381,421"/><area shape="rect" id="node29" href="string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="435,161,528,189"/><area shape="rect" id="node32" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="525,393,603,421"/><area shape="rect" id="node5" href="fat__internal_8h.html" title="fat_internal.h" alt="" coords="208,161,304,189"/><area shape="rect" id="node7" href="types_8h.html" title="types.h" alt="" coords="277,547,339,575"/><area shape="rect" id="node15" href="vfs_8h.html" title="Virtual File System." alt="" coords="113,238,164,266"/><area shape="rect" id="node24" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="217,238,295,266"/><area shape="rect" id="node12" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="371,470,448,498"/><area shape="rect" id="node18" href="fd__types_8h.html" title="fd_types.h" alt="" coords="179,315,259,343"/><area shape="rect" id="node20" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="93,315,155,343"/></map>
+</div>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a84be9dcfa5a172ee83121620d15c8e29"></a><!-- doxytag: member="fat_outils.c::MINUTES" ref="a84be9dcfa5a172ee83121620d15c8e29" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MINUTES</b>&#160;&#160;&#160;60</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a212d0f839f6f7ca43ccde311f93d5892"></a><!-- doxytag: member="fat_outils.c::HOURS" ref="a212d0f839f6f7ca43ccde311f93d5892" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HOURS</b>&#160;&#160;&#160;3600</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa6aa2a2fb8f4380e680d5ecb81a7d319"></a><!-- doxytag: member="fat_outils.c::DAYS" ref="aa6aa2a2fb8f4380e680d5ecb81a7d319" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DAYS</b>&#160;&#160;&#160;86400</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8c.html#a93808d4692d60c69db061effc6232ee6">fat_last_cluster</a> (<a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a> *instance)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8c.html#a90bf5b4a5741e770ea8c3f8fc15f180b">fat_is_free_cluster</a> (int cluster)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8c.html#ad7455b50fef42408155f1c32109dfe50">fat_is_last_cluster</a> (<a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a> *instance, int cluster)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8c.html#aa28cc73f6fb1875fde62a8ee24a13960">fat_is_used_cluster</a> (<a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a> *instance, int cluster)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8c.html#a4f582028e77ee5dc535200f3e6b3312b">fat_encode_long_file_name</a> (char *name, <a class="el" href="structlfn__entry__t.html">lfn_entry_t</a> *long_file_name, int n_entries)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8c.html#ac588ac3acb0265e0db3158ba5c5a4a0f">fat_decode_long_file_name</a> (char *name, <a class="el" href="structlfn__entry__t.html">lfn_entry_t</a> *long_file_name)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae33b4bd360a352f9b2bb6316d7221970"></a><!-- doxytag: member="fat_outils.c::convert_datetime_fat_to_time_t" ref="ae33b4bd360a352f9b2bb6316d7221970" args="(fat_date_t *date, fat_time_t *time)" -->
+time_t&#160;</td><td class="memItemRight" valign="bottom"><b>convert_datetime_fat_to_time_t</b> (<a class="el" href="fat__internal_8h.html#a50b52e2d394a6d7c7f1f2b7c7ef93a19">fat_date_t</a> *date, <a class="el" href="fat__internal_8h.html#ab864004b9f8da2db1862a0da9acb1735">fat_time_t</a> *time)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae71051d0397ad65e7ddb79589ddd9347"></a><!-- doxytag: member="fat_outils.c::convert_time_t_to_datetime_fat" ref="ae71051d0397ad65e7ddb79589ddd9347" args="(time_t time, fat_time_t *timefat, fat_date_t *datefat)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>convert_time_t_to_datetime_fat</b> (time_t time, <a class="el" href="fat__internal_8h.html#ab864004b9f8da2db1862a0da9acb1735">fat_time_t</a> *timefat, <a class="el" href="fat__internal_8h.html#a50b52e2d394a6d7c7f1f2b7c7ef93a19">fat_date_t</a> *datefat)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15df5ebf35fdd77ac639ed071c731841"></a><!-- doxytag: member="fat_outils.c::fat_dir_entry_to_directory_entry" ref="a15df5ebf35fdd77ac639ed071c731841" args="(char *filename, fat_dir_entry_t *dir, directory_entry_t *entry)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>fat_dir_entry_to_directory_entry</b> (char *filename, <a class="el" href="fat__internal_8h.html#a8b649d2d9d92d259f456e45f4c901f30">fat_dir_entry_t</a> *dir, <a class="el" href="fat__internal_8h.html#ab6546cb0abf935a615fae20884a41818">directory_entry_t</a> *entry)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8c.html#a015254ce721ab0097a1008ec7153b819">fat_lfn_to_sfn</a> (char *filename)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8c.html#a54dad60e76b8e913b497b0a903778093">fat_decode_short_file_name</a> (char *filename, <a class="el" href="fat__internal_8h.html#a8b649d2d9d92d259f456e45f4c901f30">fat_dir_entry_t</a> *fdir)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fat__internal_8h.html#ab6546cb0abf935a615fae20884a41818">directory_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8c.html#acc4ab73ddc901dbfa52071c98ce0de6b">fat_decode_lfn_entry</a> (<a class="el" href="structlfn__entry__t.html">lfn_entry_t</a> *fdir)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fat__internal_8h.html#ab6546cb0abf935a615fae20884a41818">directory_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8c.html#a8100c884384ccb3b8ecec7f5180ad346">fat_decode_sfn_entry</a> (<a class="el" href="fat__internal_8h.html#a8b649d2d9d92d259f456e45f4c901f30">fat_dir_entry_t</a> *fdir)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8c.html#a2bc59b6b9bca39fe4ba101a3c019b91a">fat_split_dir_filename</a> (const char *path, char *dir, char *filename)</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+<p>Description de ce que fait le fichier </p>
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="acc4ab73ddc901dbfa52071c98ce0de6b"></a><!-- doxytag: member="fat_outils.c::fat_decode_lfn_entry" ref="acc4ab73ddc901dbfa52071c98ce0de6b" args="(lfn_entry_t *fdir)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fat__internal_8h.html#ab6546cb0abf935a615fae20884a41818">directory_entry_t</a>* <a class="el" href="fat__outils_8h.html#acc4ab73ddc901dbfa52071c98ce0de6b">fat_decode_lfn_entry</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlfn__entry__t.html">lfn_entry_t</a> *&#160;</td>
+          <td class="paramname"><em>fdir</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Décode une entrée de type long file name.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fdir</td><td>Tableau contenant des entrées de type lfn.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>les informations du dossier sous la forme d'un directory_entry_t. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__outils_8c_acc4ab73ddc901dbfa52071c98ce0de6b_cgraph.png" border="0" usemap="#fat__outils_8c_acc4ab73ddc901dbfa52071c98ce0de6b_cgraph" alt=""/></div>
+<map name="fat__outils_8c_acc4ab73ddc901dbfa52071c98ce0de6b_cgraph" id="fat__outils_8c_acc4ab73ddc901dbfa52071c98ce0de6b_cgraph">
+<area shape="rect" id="node3" href="fat__outils_8c.html#ac588ac3acb0265e0db3158ba5c5a4a0f" title="fat_decode_long_file_name" alt="" coords="197,5,376,33"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="253,55,320,83"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="425,55,564,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac588ac3acb0265e0db3158ba5c5a4a0f"></a><!-- doxytag: member="fat_outils.c::fat_decode_long_file_name" ref="ac588ac3acb0265e0db3158ba5c5a4a0f" args="(char *name, lfn_entry_t *long_file_name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* <a class="el" href="fat__outils_8h.html#ac588ac3acb0265e0db3158ba5c5a4a0f">fat_decode_long_file_name</a> </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structlfn__entry__t.html">lfn_entry_t</a> *&#160;</td>
+          <td class="paramname"><em>long_file_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Décode un nom long. </p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__outils_8c_ac588ac3acb0265e0db3158ba5c5a4a0f_icgraph.png" border="0" usemap="#fat__outils_8c_ac588ac3acb0265e0db3158ba5c5a4a0f_icgraph" alt=""/></div>
+<map name="fat__outils_8c_ac588ac3acb0265e0db3158ba5c5a4a0f_icgraph" id="fat__outils_8c_ac588ac3acb0265e0db3158ba5c5a4a0f_icgraph">
+<area shape="rect" id="node3" href="fat__outils_8h.html#acc4ab73ddc901dbfa52071c98ce0de6b" title="fat_decode_lfn_entry" alt="" coords="233,5,375,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8100c884384ccb3b8ecec7f5180ad346"></a><!-- doxytag: member="fat_outils.c::fat_decode_sfn_entry" ref="a8100c884384ccb3b8ecec7f5180ad346" args="(fat_dir_entry_t *fdir)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fat__internal_8h.html#ab6546cb0abf935a615fae20884a41818">directory_entry_t</a>* <a class="el" href="fat__outils_8h.html#a8100c884384ccb3b8ecec7f5180ad346">fat_decode_sfn_entry</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fat__internal_8h.html#a8b649d2d9d92d259f456e45f4c901f30">fat_dir_entry_t</a> *&#160;</td>
+          <td class="paramname"><em>fdir</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Décode une entrée de type short file name.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fdir</td><td>Pointeur sur une entrée de dossier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>les informations du dossier sous la forme d'un directory_entry_t. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__outils_8c_a8100c884384ccb3b8ecec7f5180ad346_cgraph.png" border="0" usemap="#fat__outils_8c_a8100c884384ccb3b8ecec7f5180ad346_cgraph" alt=""/></div>
+<map name="fat__outils_8c_a8100c884384ccb3b8ecec7f5180ad346_cgraph" id="fat__outils_8c_a8100c884384ccb3b8ecec7f5180ad346_cgraph">
+<area shape="rect" id="node3" href="fat__outils_8c.html#a54dad60e76b8e913b497b0a903778093" title="fat_decode_short_file_name" alt="" coords="200,5,384,33"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="259,55,325,83"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="433,55,572,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a54dad60e76b8e913b497b0a903778093"></a><!-- doxytag: member="fat_outils.c::fat_decode_short_file_name" ref="a54dad60e76b8e913b497b0a903778093" args="(char *filename, fat_dir_entry_t *fdir)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="fat__outils_8h.html#a54dad60e76b8e913b497b0a903778093">fat_decode_short_file_name</a> </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="fat__internal_8h.html#a8b649d2d9d92d259f456e45f4c901f30">fat_dir_entry_t</a> *&#160;</td>
+          <td class="paramname"><em>fdir</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Décodage d'un nom court. </p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__outils_8c_a54dad60e76b8e913b497b0a903778093_icgraph.png" border="0" usemap="#fat__outils_8c_a54dad60e76b8e913b497b0a903778093_icgraph" alt=""/></div>
+<map name="fat__outils_8c_a54dad60e76b8e913b497b0a903778093_icgraph" id="fat__outils_8c_a54dad60e76b8e913b497b0a903778093_icgraph">
+<area shape="rect" id="node3" href="fat__outils_8h.html#a8100c884384ccb3b8ecec7f5180ad346" title="fat_decode_sfn_entry" alt="" coords="237,5,384,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a4f582028e77ee5dc535200f3e6b3312b"></a><!-- doxytag: member="fat_outils.c::fat_encode_long_file_name" ref="a4f582028e77ee5dc535200f3e6b3312b" args="(char *name, lfn_entry_t *long_file_name, int n_entries)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="fat__outils_8h.html#a4f582028e77ee5dc535200f3e6b3312b">fat_encode_long_file_name</a> </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structlfn__entry__t.html">lfn_entry_t</a> *&#160;</td>
+          <td class="paramname"><em>long_file_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_entries</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Encode un nom long. </p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__outils_8c_a4f582028e77ee5dc535200f3e6b3312b_icgraph.png" border="0" usemap="#fat__outils_8c_a4f582028e77ee5dc535200f3e6b3312b_icgraph" alt=""/></div>
+<map name="fat__outils_8c_a4f582028e77ee5dc535200f3e6b3312b_icgraph" id="fat__outils_8c_a4f582028e77ee5dc535200f3e6b3312b_icgraph">
+<area shape="rect" id="node3" href="fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="233,5,308,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a90bf5b4a5741e770ea8c3f8fc15f180b"></a><!-- doxytag: member="fat_outils.c::fat_is_free_cluster" ref="a90bf5b4a5741e770ea8c3f8fc15f180b" args="(int cluster)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="fat__outils_8h.html#a90bf5b4a5741e770ea8c3f8fc15f180b">fat_is_free_cluster</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cluster</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Indique si le cluster est libre.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cluster</td><td>Adresse du cluster.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>vrai ou faux. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad7455b50fef42408155f1c32109dfe50"></a><!-- doxytag: member="fat_outils.c::fat_is_last_cluster" ref="ad7455b50fef42408155f1c32109dfe50" args="(fat_fs_instance_t *instance, int cluster)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="fat__outils_8h.html#ad7455b50fef42408155f1c32109dfe50">fat_is_last_cluster</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cluster</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Indique si c'est le dernier cluster.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>de FS. </td></tr>
+    <tr><td class="paramname">cluster</td><td>Adresse du cluster.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>vrai ou faux. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa28cc73f6fb1875fde62a8ee24a13960"></a><!-- doxytag: member="fat_outils.c::fat_is_used_cluster" ref="aa28cc73f6fb1875fde62a8ee24a13960" args="(fat_fs_instance_t *instance, int cluster)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="fat__outils_8h.html#aa28cc73f6fb1875fde62a8ee24a13960">fat_is_used_cluster</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cluster</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Indique si c'est le dernier cluster.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>de FS. </td></tr>
+    <tr><td class="paramname">cluster</td><td>Adresse du cluster.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>vrai ou faux. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a93808d4692d60c69db061effc6232ee6"></a><!-- doxytag: member="fat_outils.c::fat_last_cluster" ref="a93808d4692d60c69db061effc6232ee6" args="(fat_fs_instance_t *instance)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="fat__outils_8h.html#a93808d4692d60c69db061effc6232ee6">fat_last_cluster</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Renvoie l'adresse utilisée pour indiquer que c'est le dernier cluster.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>de FS.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>return l'adresse. </p>
+
+</div>
+</div>
+<a class="anchor" id="a015254ce721ab0097a1008ec7153b819"></a><!-- doxytag: member="fat_outils.c::fat_lfn_to_sfn" ref="a015254ce721ab0097a1008ec7153b819" args="(char *filename)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* <a class="el" href="fat__outils_8h.html#a015254ce721ab0097a1008ec7153b819">fat_lfn_to_sfn</a> </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Converti un nom de fichier long en nom court.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>nom long.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>nom court. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__outils_8c_a015254ce721ab0097a1008ec7153b819_cgraph.png" border="0" usemap="#fat__outils_8c_a015254ce721ab0097a1008ec7153b819_cgraph" alt=""/></div>
+<map name="fat__outils_8c_a015254ce721ab0097a1008ec7153b819_cgraph" id="fat__outils_8c_a015254ce721ab0097a1008ec7153b819_cgraph">
+<area shape="rect" id="node3" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="161,5,215,33"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="155,55,221,83"/><area shape="rect" id="node9" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="160,106,216,134"/><area shape="rect" id="node11" href="string_8h.html#a0c05a458deff028ef4d4e64059098db4" title="Rechercher un caractère dans une chaîne." alt="" coords="159,157,217,185"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="271,55,409,83"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__outils_8c_a015254ce721ab0097a1008ec7153b819_icgraph.png" border="0" usemap="#fat__outils_8c_a015254ce721ab0097a1008ec7153b819_icgraph" alt=""/></div>
+<map name="fat__outils_8c_a015254ce721ab0097a1008ec7153b819_icgraph" id="fat__outils_8c_a015254ce721ab0097a1008ec7153b819_icgraph">
+<area shape="rect" id="node3" href="fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="156,5,231,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a2bc59b6b9bca39fe4ba101a3c019b91a"></a><!-- doxytag: member="fat_outils.c::fat_split_dir_filename" ref="a2bc59b6b9bca39fe4ba101a3c019b91a" args="(const char *path, char *dir, char *filename)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="fat__outils_8h.html#a2bc59b6b9bca39fe4ba101a3c019b91a">fat_split_dir_filename</a> </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Découpe un chemin en deux parties (dossier séparé du filename).</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Chemin à découper. </td></tr>
+    <tr><td class="paramname">dir</td><td>Première partie qui va jusqu'au dernier slash du path. </td></tr>
+    <tr><td class="paramname">filename</td><td>Dernière partie (après le dernier slash). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__outils_8c_a2bc59b6b9bca39fe4ba101a3c019b91a_cgraph.png" border="0" usemap="#fat__outils_8c_a2bc59b6b9bca39fe4ba101a3c019b91a_cgraph" alt=""/></div>
+<map name="fat__outils_8c_a2bc59b6b9bca39fe4ba101a3c019b91a_cgraph" id="fat__outils_8c_a2bc59b6b9bca39fe4ba101a3c019b91a_cgraph">
+<area shape="rect" id="node3" href="string_8h.html#a0c05a458deff028ef4d4e64059098db4" title="Rechercher un caractère dans une chaîne." alt="" coords="197,5,256,33"/><area shape="rect" id="node5" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="199,55,255,83"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__outils_8c_a2bc59b6b9bca39fe4ba101a3c019b91a_icgraph.png" border="0" usemap="#fat__outils_8c_a2bc59b6b9bca39fe4ba101a3c019b91a_icgraph" alt=""/></div>
+<map name="fat__outils_8c_a2bc59b6b9bca39fe4ba101a3c019b91a_icgraph" id="fat__outils_8c_a2bc59b6b9bca39fe4ba101a3c019b91a_icgraph">
+<area shape="rect" id="node3" href="fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="199,5,273,33"/><area shape="rect" id="node5" href="fat__internal_8h.html#a8442aab7b7111d30d19b4be6a4464618" title="fat_stat" alt="" coords="203,55,269,83"/><area shape="rect" id="node7" href="fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae" title="mount_FAT" alt="" coords="323,55,413,83"/><area shape="rect" id="node9" href="fat_8h.html#a3d1f5d8e3b22672684528c112bc6ff06" title="fat_init" alt="" coords="461,55,523,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juillet 8 2012 15:18:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

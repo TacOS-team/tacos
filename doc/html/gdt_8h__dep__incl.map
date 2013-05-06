@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/include/gdt.h" name="kernel/include/gdt.h">
 <area shape="rect" id="node3" href="$gdt_8c.html" title="Setup de la GDT." alt="" coords="5,83,93,111"/>
 <area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="117,83,224,111"/>
 <area shape="rect" id="node7" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="248,83,371,111"/>

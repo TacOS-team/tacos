@@ -1,0 +1,112 @@
+\hypertarget{ext2_8c}{\section{\-Référence du fichier kernel/fs/ext2/ext2.c}
+\label{ext2_8c}\index{kernel/fs/ext2/ext2.\-c@{kernel/fs/ext2/ext2.\-c}}
+}
+{\ttfamily \#include $<$fs/ext2.\-h$>$}\*
+{\ttfamily \#include $<$klog.\-h$>$}\*
+{\ttfamily \#include $<$kmalloc.\-h$>$}\*
+{\ttfamily \#include \char`\"{}ext2\-\_\-internal.\-h\char`\"{}}\*
+\-Graphe des dépendances par inclusion de ext2.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ext2_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{ext2_8c_a9aed5bb9701eee5d20003be7dfc22e51}{void \hyperlink{ext2_8c_a9aed5bb9701eee5d20003be7dfc22e51}{ext2\-\_\-init} ()}\label{ext2_8c_a9aed5bb9701eee5d20003be7dfc22e51}
+
+\begin{DoxyCompactList}\small\item\em \-Initialisation du driver ext2. \end{DoxyCompactList}\item 
+\hyperlink{vfs_8h_a0eefa9aac35a5462ebf1e038992ca860}{fs\-\_\-instance\-\_\-t} $\ast$ \hyperlink{ext2_8c_a162f5d230a1583a05389a6bb5d349e2a}{mount\-\_\-\-E\-X\-T2} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd)
+\begin{DoxyCompactList}\small\item\em \-Ajoute un point de montage. \end{DoxyCompactList}\item 
+void \hyperlink{ext2_8c_aa055d93f3693085315aa853345de0032}{umount\-\_\-\-E\-X\-T2} (\hyperlink{vfs_8h_a0eefa9aac35a5462ebf1e038992ca860}{fs\-\_\-instance\-\_\-t} $\ast$instance)
+\begin{DoxyCompactList}\small\item\em \-Unmount d'un point de montage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Description détaillée}
+\begin{DoxyAuthor}{\-Auteur}
+\-Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{\-L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+\-Copyright (\-C) 2010, 2011, 2012 -\/ \-Tac\-O\-S developers.
+
+\-This program is free software; you can redistribute it and/or modify it under the terms of the \-G\-N\-U \-General \-Public \-License as published by the \-Free \-Software \-Foundation; either version 3 of the \-License, or (at your option) any later version.
+
+\-This program is distributed in the hope that it will be useful, but \-W\-I\-T\-H\-O\-U\-T \-A\-N\-Y \-W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of \-M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or \-F\-I\-T\-N\-E\-S\-S \-F\-O\-R \-A \-P\-A\-R\-T\-I\-C\-U\-L\-A\-R \-P\-U\-R\-P\-O\-S\-E. \-See the \-G\-N\-U \-General \-Public \-License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+\-You should have received a copy of the \-G\-N\-U \-General \-Public \-License along with this program; if not, see $<$\href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}$>$.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{\-D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+\-E\-X\-T2 \-File \-System. 
+
+\subsection{\-Documentation des fonctions}
+\hypertarget{ext2_8c_a162f5d230a1583a05389a6bb5d349e2a}{\index{ext2.\-c@{ext2.\-c}!mount\-\_\-\-E\-X\-T2@{mount\-\_\-\-E\-X\-T2}}
+\index{mount\-\_\-\-E\-X\-T2@{mount\-\_\-\-E\-X\-T2}!ext2.c@{ext2.\-c}}
+\subsubsection[{mount\-\_\-\-E\-X\-T2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fs\-\_\-instance\-\_\-t}$\ast$ {\bf mount\-\_\-\-E\-X\-T2} (
+\begin{DoxyParamCaption}
+\item[{{\bf open\-\_\-file\-\_\-descriptor} $\ast$}]{ofd}
+\end{DoxyParamCaption}
+)}}\label{ext2_8c_a162f5d230a1583a05389a6bb5d349e2a}
+
+\begin{DoxyParams}{\-Paramètres}
+{\em ofd} & \-O\-F\-D du device que l'on veut monter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+\-Une instance de \-F\-S. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ext2_8c_a162f5d230a1583a05389a6bb5d349e2a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{ext2_8c_a162f5d230a1583a05389a6bb5d349e2a_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ext2_8c_aa055d93f3693085315aa853345de0032}{\index{ext2.\-c@{ext2.\-c}!umount\-\_\-\-E\-X\-T2@{umount\-\_\-\-E\-X\-T2}}
+\index{umount\-\_\-\-E\-X\-T2@{umount\-\_\-\-E\-X\-T2}!ext2.c@{ext2.\-c}}
+\subsubsection[{umount\-\_\-\-E\-X\-T2}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf umount\-\_\-\-E\-X\-T2} (
+\begin{DoxyParamCaption}
+\item[{{\bf fs\-\_\-instance\-\_\-t} $\ast$}]{instance}
+\end{DoxyParamCaption}
+)}}\label{ext2_8c_aa055d93f3693085315aa853345de0032}
+
+\begin{DoxyParams}{\-Paramètres}
+{\em instance} & \-L'instance de fs que l'on veut démonter. \\
+\hline
+\end{DoxyParams}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{ext2_8c_aa055d93f3693085315aa853345de0032_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{ext2_8c_aa055d93f3693085315aa853345de0032_icgraph}
+\end{center}
+\end{figure}
+
+

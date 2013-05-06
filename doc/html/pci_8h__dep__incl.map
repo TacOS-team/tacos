@@ -1,5 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$vesa_8c.html" title="kernel/drivers/char/vesa.c" alt="" coords="5,83,176,111"/>
-<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="200,83,307,111"/>
-<area shape="rect" id="node7" href="$pci_8c.html" title="kernel/pci/pci.c" alt="" coords="331,83,440,111"/>
+<map id="kernel/include/pci.h" name="kernel/include/pci.h">
+<area shape="rect" id="node3" href="$vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="5,83,133,127"/>
+<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="157,91,264,119"/>
+<area shape="rect" id="node7" href="$pci_8c.html" title="kernel/pci/pci.c" alt="" coords="288,91,397,119"/>
 </map>

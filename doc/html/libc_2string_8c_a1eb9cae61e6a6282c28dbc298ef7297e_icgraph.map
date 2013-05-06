@@ -1,0 +1,23 @@
+<map id="strcpy" name="strcpy">
+<area shape="rect" id="node3" href="$fat__internal_8h.html#ada9bd47fd90b01248fe52f302560f9f9" title="fat_readdir" alt="" coords="143,5,225,33"/>
+<area shape="rect" id="node5" href="$fat__outils_8h.html#a015254ce721ab0097a1008ec7153b819" title="fat_lfn_to_sfn" alt="" coords="133,55,235,83"/>
+<area shape="rect" id="node9" href="$fat__outils_8h.html#a2bc59b6b9bca39fe4ba101a3c019b91a" title="fat_split_dir_filename" alt="" coords="112,106,256,134"/>
+<area shape="rect" id="node12" href="$libc_2include_2string_8h.html#a8908188ae9fc2f05d993257ef001d553" title="Concaténation de deux chaînes." alt="" coords="157,157,211,185"/>
+<area shape="rect" id="node14" href="$libc_2include_2string_8h.html#a4c10a214b02eed3dafc48c59ad71abbd" title="Concaténation de deux chaînes avec une limite aux n premiers caractères." alt="" coords="153,207,215,235"/>
+<area shape="rect" id="node16" href="$libc_2include_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="155,258,213,286"/>
+<area shape="rect" id="node18" href="$libc_2string_8c.html#a8b860ba32fef12da8acd4507c059e509" title="Duplique une chaine." alt="" coords="152,309,216,337"/>
+<area shape="rect" id="node20" href="$kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="129,359,239,387"/>
+<area shape="rect" id="node24" href="$vfs_8c.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier." alt="" coords="141,410,227,438"/>
+<area shape="rect" id="node26" href="$unistd_8c.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="120,511,248,539"/>
+<area shape="rect" id="node7" href="$fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="319,81,393,109"/>
+<area shape="rect" id="node22" href="$scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="305,309,407,337"/>
+<area shape="rect" id="node28" href="$dirent_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title="mkdir" alt="" coords="329,359,383,387"/>
+<area shape="rect" id="node30" href="$dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591" title="opendir" alt="" coords="457,461,521,489"/>
+<area shape="rect" id="node32" href="$unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="571,486,621,514"/>
+<area shape="rect" id="node34" href="$fcntl_8h.html#adcb60598073f6f9cbb0091ef6768fa5c" title="open" alt="" coords="331,461,381,489"/>
+<area shape="rect" id="node38" href="$unistd_8c.html#a3dc1b07404b646712a144e2057359876" title="Obtenir l&#39;état d&#39;un fichier (status)." alt="" coords="335,562,377,590"/>
+<area shape="rect" id="node42" href="$unistd_8c.html#a8ada37e3927c3e99ea7c1accfdc6576f" title="Créer un noeud du système de fichiers." alt="" coords="325,613,387,641"/>
+<area shape="rect" id="node44" href="$unistd_8c.html#a28af9471bbdf262321af663e02899a47" title="Détruire un nom et éventuellement le fichier associé." alt="" coords="328,663,384,691"/>
+<area shape="rect" id="node47" href="$unistd_8c.html#ab2df76f2c62ae012c2e417813b5fe8ce" title="Supprimer un dossier, lequel doit être vide." alt="" coords="331,714,381,742"/>
+<area shape="rect" id="node40" href="$stdio_8h.html#a02b13b56a188401119ea4da43c184913" title="Supprimer un fichier ou répertoire." alt="" coords="457,663,521,691"/>
+</map>

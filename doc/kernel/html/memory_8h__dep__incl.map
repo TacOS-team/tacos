@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$vesa_8c.html" title="kernel/drivers/char/vesa.c" alt="" coords="5,83,176,111"/>
+<area shape="rect" id="node5" href="$gdt_8c.html" title="Setup de la GDT." alt="" coords="200,83,288,111"/>
+<area shape="rect" id="node7" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="312,83,419,111"/>
+<area shape="rect" id="node9" href="$kmalloc_8c.html" title="kernel/kmalloc.c" alt="" coords="443,83,557,111"/>
+<area shape="rect" id="node11" href="$memory_8c.html" title="Gestion des pages mémoires physiques." alt="" coords="581,83,699,111"/>
+<area shape="rect" id="node13" href="$pagination_8c.html" title="kernel/pagination.c" alt="" coords="723,83,853,111"/>
+<area shape="rect" id="node15" href="$vmm_8c.html" title="kernel/vmm.c" alt="" coords="877,83,976,111"/>
+</map>

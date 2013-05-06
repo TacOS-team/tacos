@@ -4,43 +4,33 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <title>TacOS: Référence de la structure _tty_driver_t</title>
-
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
-
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div! -->
-
-
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  
-  
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
    &#160;<span id="projectnumber">0.1</span>
    </div>
-   
   </td>
-  
-  
-  
  </tr>
  </tbody>
 </table>
 </div>
-
-<!-- Généré par Doxygen 1.7.6.1 -->
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -73,130 +63,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
     </ul>
   </div>
-</div>
-<div class="header">
-  <div class="summary">
-<a href="#pub-attribs">Champs de données</a>  </div>
-  <div class="headertitle">
-<div class="title">Référence de la structure _tty_driver_t</div>  </div>
-</div><!--header-->
-<div class="contents">
-<!-- doxytag: class="_tty_driver_t" -->
-<p><code>#include &lt;<a class="el" href="tty_8h_source.html">tty.h</a>&gt;</code></p>
-<div class="dynheader">
-Graphe de collaboration de _tty_driver_t:</div>
-<div class="dyncontent">
-<div class="center"><img src="struct__tty__driver__t__coll__graph.png" border="0" usemap="#__tty__driver__t_coll__map" alt="Collaboration graph"/></div>
-<map name="__tty__driver__t_coll__map" id="__tty__driver__t_coll__map">
-<area shape="rect" id="node6" href="struct__tty__struct__t.html" title="_tty_struct_t" alt="" coords="37,193,131,221"/><area shape="rect" id="node2" href="structtermios.html" title="termios" alt="" coords="5,6,69,34"/><area shape="rect" id="node4" href="struct__tty__operations__t.html" title="_tty_operations_t" alt="" coords="108,6,228,34"/></map>
-<center><span class="legend">[<a href="graph_legend.html">légende</a>]</span></center></div>
-<table class="memberdecls">
-<tr><td colspan="2"><h2><a name="pub-attribs"></a>
-Champs de données</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__driver__t.html#ae2f43b40c48f11feab23551e34a4fe6d">driver_name</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__driver__t.html#a0c46e5dd6e7275908881f644d7fff927">devfs_name</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__driver__t.html#a0f0243090bc705d41b3a6cc28c886cdf">num</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__driver__t.html#a0c9f7f164f7454cf2bea36de5e23a5d1">type</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__driver__t.html#a291fe7f9436ef9cbe34b490d516f46bd">subtype</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__driver__t.html#a4ce1272b5e539a50b106986a79d7cab9">flags</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afca7a640278fe195af30dbbd5116ee68"></a><!-- doxytag: member="_tty_driver_t::init_termios" ref="afca7a640278fe195af30dbbd5116ee68" args="" -->
-struct <a class="el" href="structtermios.html">termios</a>&#160;</td><td class="memItemRight" valign="bottom"><b>init_termios</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e10e237b92b125136a6e4bb5203a210"></a><!-- doxytag: member="_tty_driver_t::ttys" ref="a8e10e237b92b125136a6e4bb5203a210" args="" -->
-<a class="el" href="tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e">tty_struct_t</a> **&#160;</td><td class="memItemRight" valign="bottom"><b>ttys</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaed3302c349f8bf34d51cfe3cc603f70"></a><!-- doxytag: member="_tty_driver_t::ops" ref="aaed3302c349f8bf34d51cfe3cc603f70" args="" -->
-<a class="el" href="tty_8h.html#af76ab451b44b0a6479abe8aeb1bab6b4">tty_operations_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ops</b></td></tr>
-</table>
-<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
-<div class="textblock"><p>Structure qui sert à l'enregistrement d'un driver tty. </p>
-</div><hr/><h2>Documentation des champs</h2>
-<a class="anchor" id="a0c46e5dd6e7275908881f644d7fff927"></a><!-- doxytag: member="_tty_driver_t::devfs_name" ref="a0c46e5dd6e7275908881f644d7fff927" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* <a class="el" href="struct__tty__driver__t.html#a0c46e5dd6e7275908881f644d7fff927">_tty_driver_t::devfs_name</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Le prefixe à ajouter dans le devfs </p>
-
-</div>
-</div>
-<a class="anchor" id="ae2f43b40c48f11feab23551e34a4fe6d"></a><!-- doxytag: member="_tty_driver_t::driver_name" ref="ae2f43b40c48f11feab23551e34a4fe6d" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* <a class="el" href="struct__tty__driver__t.html#ae2f43b40c48f11feab23551e34a4fe6d">_tty_driver_t::driver_name</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Le nom du driver </p>
-
-</div>
-</div>
-<a class="anchor" id="a4ce1272b5e539a50b106986a79d7cab9"></a><!-- doxytag: member="_tty_driver_t::flags" ref="a4ce1272b5e539a50b106986a79d7cab9" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="el" href="struct__tty__driver__t.html#a4ce1272b5e539a50b106986a79d7cab9">_tty_driver_t::flags</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Flags, tel que RESET_TERMIOS, REAL_RAW ou NO_DEVFS </p>
-
-</div>
-</div>
-<a class="anchor" id="a0f0243090bc705d41b3a6cc28c886cdf"></a><!-- doxytag: member="_tty_driver_t::num" ref="a0f0243090bc705d41b3a6cc28c886cdf" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="struct__tty__driver__t.html#a0f0243090bc705d41b3a6cc28c886cdf">_tty_driver_t::num</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Nombre de devices au maximum. </p>
-
-</div>
-</div>
-<a class="anchor" id="a291fe7f9436ef9cbe34b490d516f46bd"></a><!-- doxytag: member="_tty_driver_t::subtype" ref="a291fe7f9436ef9cbe34b490d516f46bd" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">short <a class="el" href="struct__tty__driver__t.html#a291fe7f9436ef9cbe34b490d516f46bd">_tty_driver_t::subtype</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Soustype : ptm, pts par exemple </p>
-
-</div>
-</div>
-<a class="anchor" id="a0c9f7f164f7454cf2bea36de5e23a5d1"></a><!-- doxytag: member="_tty_driver_t::type" ref="a0c9f7f164f7454cf2bea36de5e23a5d1" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">short <a class="el" href="struct__tty__driver__t.html#a0c9f7f164f7454cf2bea36de5e23a5d1">_tty_driver_t::type</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>type : console, serial, pty </p>
-
-</div>
-</div>
-<hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
-<li>kernel/include/<a class="el" href="tty_8h_source.html">tty.h</a></li>
-</ul>
-</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -211,13 +77,129 @@ struct <a class="el" href="structtermios.html">termios</a>&#160;</td><td class="
 </iframe>
 </div>
 
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Champs de données</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence de la structure _tty_driver_t</div>  </div>
+</div><!--header-->
+<div class="contents">
 
+<p><code>#include &lt;<a class="el" href="tty_8h_source.html">tty.h</a>&gt;</code></p>
+<div class="dynheader">
+Graphe de collaboration de _tty_driver_t:</div>
+<div class="dyncontent">
+<div class="center"><img src="struct__tty__driver__t__coll__graph.png" border="0" usemap="#__tty__driver__t_coll__map" alt="Collaboration graph"/></div>
+<map name="__tty__driver__t_coll__map" id="__tty__driver__t_coll__map">
+<area shape="rect" id="node6" href="struct__tty__struct__t.html" title="_tty_struct_t" alt="" coords="37,193,131,221"/><area shape="rect" id="node2" href="structtermios.html" title="termios" alt="" coords="5,6,69,34"/><area shape="rect" id="node4" href="struct__tty__operations__t.html" title="_tty_operations_t" alt="" coords="108,6,228,34"/></map>
+<center><span class="legend">[<a href="graph_legend.html">légende</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr class="memitem:ae2f43b40c48f11feab23551e34a4fe6d"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__driver__t.html#ae2f43b40c48f11feab23551e34a4fe6d">driver_name</a></td></tr>
+<tr class="memitem:a0c46e5dd6e7275908881f644d7fff927"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__driver__t.html#a0c46e5dd6e7275908881f644d7fff927">devfs_name</a></td></tr>
+<tr class="memitem:a0f0243090bc705d41b3a6cc28c886cdf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__driver__t.html#a0f0243090bc705d41b3a6cc28c886cdf">num</a></td></tr>
+<tr class="memitem:a0c9f7f164f7454cf2bea36de5e23a5d1"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__driver__t.html#a0c9f7f164f7454cf2bea36de5e23a5d1">type</a></td></tr>
+<tr class="memitem:a291fe7f9436ef9cbe34b490d516f46bd"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__driver__t.html#a291fe7f9436ef9cbe34b490d516f46bd">subtype</a></td></tr>
+<tr class="memitem:a4ce1272b5e539a50b106986a79d7cab9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__tty__driver__t.html#a4ce1272b5e539a50b106986a79d7cab9">flags</a></td></tr>
+<tr class="memitem:afca7a640278fe195af30dbbd5116ee68"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afca7a640278fe195af30dbbd5116ee68"></a>
+struct <a class="el" href="structtermios.html">termios</a>&#160;</td><td class="memItemRight" valign="bottom"><b>init_termios</b></td></tr>
+<tr class="memitem:a8e10e237b92b125136a6e4bb5203a210"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e10e237b92b125136a6e4bb5203a210"></a>
+<a class="el" href="tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e">tty_struct_t</a> **&#160;</td><td class="memItemRight" valign="bottom"><b>ttys</b></td></tr>
+<tr class="memitem:aaed3302c349f8bf34d51cfe3cc603f70"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaed3302c349f8bf34d51cfe3cc603f70"></a>
+<a class="el" href="tty_8h.html#af76ab451b44b0a6479abe8aeb1bab6b4">tty_operations_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ops</b></td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>Structure qui sert à l'enregistrement d'un driver tty. </p>
+</div><h2>Documentation des champs</h2>
+<a class="anchor" id="a0c46e5dd6e7275908881f644d7fff927"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* _tty_driver_t::devfs_name</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Le prefixe à ajouter dans le devfs </p>
 
+</div>
+</div>
+<a class="anchor" id="ae2f43b40c48f11feab23551e34a4fe6d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* _tty_driver_t::driver_name</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Le nom du driver </p>
+
+</div>
+</div>
+<a class="anchor" id="a4ce1272b5e539a50b106986a79d7cab9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> _tty_driver_t::flags</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Flags, tel que RESET_TERMIOS, REAL_RAW ou NO_DEVFS </p>
+
+</div>
+</div>
+<a class="anchor" id="a0f0243090bc705d41b3a6cc28c886cdf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _tty_driver_t::num</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Nombre de devices au maximum. </p>
+
+</div>
+</div>
+<a class="anchor" id="a291fe7f9436ef9cbe34b490d516f46bd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short _tty_driver_t::subtype</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Soustype : ptm, pts par exemple </p>
+
+</div>
+</div>
+<a class="anchor" id="a0c9f7f164f7454cf2bea36de5e23a5d1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short _tty_driver_t::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>type : console, serial, pty </p>
+
+</div>
+</div>
+<hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
+<li>kernel/include/<a class="el" href="tty_8h_source.html">tty.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Juin 24 2012 10:56:48 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Lundi Mai 6 2013 23:52:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
+</a> 1.8.1.2
 </small></address>
-
 </body>
 </html>

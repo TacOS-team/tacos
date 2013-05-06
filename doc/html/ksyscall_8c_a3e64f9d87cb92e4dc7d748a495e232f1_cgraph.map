@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="init_syscall" name="init_syscall">
 <area shape="rect" id="node3" href="$interrupts_8h.html#aecc1fa8433fa21ba233b8feb2558e954" title="Ajoute une nouvelle interruption." alt="" coords="153,5,292,33"/>
 <area shape="rect" id="node7" href="$ksyscall_8c.html#aa10969a644d213f1e778ac8c2a97fd6a" title="Point d&#39;entrée des appels systèmes C&#39;est cette fonction qui est lancée à la réception de l&#39;IRQ_SYSCAL..." alt="" coords="175,55,271,83"/>
 <area shape="rect" id="node11" href="$interrupts_8h.html#a4eea959d9a7be06d7b87a0aad03b490e" title="Change le type d&#39;une interruption en une trapgate." alt="" coords="141,106,304,134"/>

@@ -1,0 +1,19 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$klog_8h.html" title="Logging macros." alt="" coords="229,83,285,111"/>
+<area shape="rect" id="node7" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="336,83,424,111"/>
+<area shape="rect" id="node21" href="$symtable_8h.html" title="symtable.h" alt="" coords="613,238,696,266"/>
+<area shape="rect" id="node32" href="$dummy__driver_8h.html" title="drivers/dummy_driver.h" alt="" coords="771,83,925,111"/>
+<area shape="rect" id="node34" href="$mouse_8h.html" title="drivers/mouse.h" alt="" coords="949,83,1064,111"/>
+<area shape="rect" id="node38" href="$vga_8h.html" title="drivers/vga.h" alt="" coords="1088,83,1184,111"/>
+<area shape="rect" id="node42" href="$vesa_8h.html" title="drivers/vesa.h" alt="" coords="1208,83,1309,111"/>
+<area shape="rect" id="node44" href="$sock_8h.html" title="drivers/sock.h" alt="" coords="1333,83,1435,111"/>
+<area shape="rect" id="node47" href="$stdlib_8h_source.html" title="stdlib.h" alt="" coords="1459,83,1520,111"/>
+<area shape="rect" id="node5" href="$kstdio_8h.html" title="kprintf" alt="" coords="196,161,263,189"/>
+<area shape="rect" id="node9" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="337,161,423,189"/>
+<area shape="rect" id="node11" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="5,238,83,266"/>
+<area shape="rect" id="node13" href="$types_8h.html" title="types.h" alt="" coords="308,315,369,343"/>
+<area shape="rect" id="node15" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="157,238,237,266"/>
+<area shape="rect" id="node17" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="261,238,365,266"/>
+<area shape="rect" id="node19" href="$process__types_8h.html" title="process_types.h" alt="" coords="389,238,504,266"/>
+<area shape="rect" id="node27" href="$vmm_8h.html" title="vmm.h" alt="" coords="528,238,589,266"/>
+</map>

@@ -1,0 +1,482 @@
+\hypertarget{vfs_8c}{\section{Référence du fichier kernel/vfs.c}
+\label{vfs_8c}\index{kernel/vfs.\-c@{kernel/vfs.\-c}}
+}
+
+
+Virtual File System. Gestion des points de montage.  
+
+
+{\ttfamily \#include $<$fs/devfs.\-h$>$}\\*
+{\ttfamily \#include $<$fs/fat.\-h$>$}\\*
+{\ttfamily \#include $<$kdirent.\-h$>$}\\*
+{\ttfamily \#include $<$kfcntl.\-h$>$}\\*
+{\ttfamily \#include $<$kmalloc.\-h$>$}\\*
+{\ttfamily \#include $<$vfs.\-h$>$}\\*
+{\ttfamily \#include $<$kerrno.\-h$>$}\\*
+{\ttfamily \#include $<$klibc/string.\-h$>$}\\*
+{\ttfamily \#include $<$fd\-\_\-types.\-h$>$}\\*
+{\ttfamily \#include $<$klog.\-h$>$}\\*
+Graphe des dépendances par inclusion de vfs.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__available__fs__t}{\-\_\-available\-\_\-fs\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{vfs_8c_a63ed32a1a370c741228dad9092324038}{L\-O\-O\-K\-U\-P\-\_\-\-P\-A\-R\-E\-N\-T}~1
+\end{DoxyCompactItemize}
+\subsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__available__fs__t}{\-\_\-available\-\_\-fs\-\_\-t} \hyperlink{vfs_8c_a2e535233f88552b377b2f1523c182acc}{available\-\_\-fs\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{vfs_8c_a2e2b9554ca8721b61981dff16a7b54ad}{vfs\-\_\-init} ()
+\item 
+\hypertarget{vfs_8c_ab2237a3610010d8a211ef3d55a521dba}{void \hyperlink{vfs_8c_ab2237a3610010d8a211ef3d55a521dba}{vfs\-\_\-register\-\_\-fs} (\hyperlink{structfile__system__t}{file\-\_\-system\-\_\-t} $\ast$fs)}\label{vfs_8c_ab2237a3610010d8a211ef3d55a521dba}
+
+\begin{DoxyCompactList}\small\item\em Enregistrer un F\-S dans le V\-F\-S pour le rendre disponible. \end{DoxyCompactList}\item 
+\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ \hyperlink{vfs_8c_a7b293d0cca90e9f633dc69cc5900c430}{vfs\-\_\-open} (const char $\ast$pathname, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} flags)
+\begin{DoxyCompactList}\small\item\em Ouverture d'un fichier. \end{DoxyCompactList}\item 
+int \hyperlink{vfs_8c_ab0c805d30412c7b434adf437a404ce6a}{vfs\-\_\-close} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd)
+\begin{DoxyCompactList}\small\item\em Fermeture d'un fichier ouvert. \end{DoxyCompactList}\item 
+void \hyperlink{vfs_8c_a26aa39a32af0bfccaffdbcec89c0a00e}{vfs\-\_\-mount} (const char $\ast$device, const char $\ast$mountpoint, const char $\ast$type)
+\begin{DoxyCompactList}\small\item\em Montage d'un device sur un certain point de montage. \end{DoxyCompactList}\item 
+int \hyperlink{vfs_8c_a69a4424755e56bad13f341c1600db527}{vfs\-\_\-umount} (const char $\ast$mountpoint)
+\begin{DoxyCompactList}\small\item\em Démonte un point de montage. \end{DoxyCompactList}\item 
+int \hyperlink{vfs_8c_a66f99a282d420f307e37ea72d7e3fa71}{vfs\-\_\-stat} (const char $\ast$pathname, struct \hyperlink{structstat}{stat} $\ast$buf)
+\begin{DoxyCompactList}\small\item\em Obtient des infos sur un noeud. \end{DoxyCompactList}\item 
+int \hyperlink{vfs_8c_a4f8b6a1f2b0e6012446196f18b33d686}{vfs\-\_\-unlink} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em Suppression d'un noeud. \end{DoxyCompactList}\item 
+int \hyperlink{vfs_8c_a8f5dc4e5e4a2aa5d7649790256f11685}{vfs\-\_\-rmdir} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em Suppression d'un dossier. \end{DoxyCompactList}\item 
+int \hyperlink{vfs_8c_a54142c2a2009cc49e3b3b8c12d955b04}{vfs\-\_\-mknod} (const char $\ast$pathname, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t} \hyperlink{structmode}{mode}, \hyperlink{kstat_8h_a451f1b5788fa7cc5d33db47a5992e7a6}{dev\-\_\-t} dev)
+\begin{DoxyCompactList}\small\item\em Création d'un nouveau noeud. \end{DoxyCompactList}\item 
+int \hyperlink{vfs_8c_a392f80d5c4ab48178abcd268c3f64c45}{vfs\-\_\-mkdir} (const char $\ast$pathname, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t} \hyperlink{structmode}{mode})
+\begin{DoxyCompactList}\small\item\em Création d'un dossier. \end{DoxyCompactList}\item 
+int \hyperlink{vfs_8c_ace33cd3f034512a44e787d384053d014}{vfs\-\_\-chmod} (const char $\ast$pathname, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t} \hyperlink{structmode}{mode})
+\begin{DoxyCompactList}\small\item\em Change les droits d'un noeud. \end{DoxyCompactList}\item 
+int \hyperlink{vfs_8c_ad548e6ff795e606e8f1825a7a45e5157}{vfs\-\_\-chown} (const char $\ast$pathname, \hyperlink{kstat_8h_af2306308627701b66dc6f3babe821ab4}{uid\-\_\-t} owner, \hyperlink{kstat_8h_aa7352f1065fe606194d792e2b292cf83}{gid\-\_\-t} group)
+\begin{DoxyCompactList}\small\item\em Change le propriétaire d'un noeud. \end{DoxyCompactList}\item 
+int \hyperlink{vfs_8c_aa536fea0b394849df5d127410b5b4f19}{vfs\-\_\-utimes} (const char $\ast$pathname, const struct \hyperlink{structtimeval}{timeval} tv\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Modifie la date d'accès et de modification d'un fichier. \end{DoxyCompactList}\item 
+int \hyperlink{vfs_8c_a64ef66712e6c30f0295e1e1cad601beb}{vfs\-\_\-rename} (const char $\ast$oldpath, const char $\ast$newpath)
+\begin{DoxyCompactList}\small\item\em Renomme ou déplace un fichier. \end{DoxyCompactList}\item 
+int \hyperlink{vfs_8c_a631bdc2a44ac1b7477782b058277a8d3}{vfs\-\_\-readdir} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, char $\ast$entries, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+\begin{DoxyCompactList}\small\item\em Lecture de plusieurs entrées d'un dossier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+
+
+\subsection{Documentation des macros}
+\hypertarget{vfs_8c_a63ed32a1a370c741228dad9092324038}{\index{vfs.\-c@{vfs.\-c}!L\-O\-O\-K\-U\-P\-\_\-\-P\-A\-R\-E\-N\-T@{L\-O\-O\-K\-U\-P\-\_\-\-P\-A\-R\-E\-N\-T}}
+\index{L\-O\-O\-K\-U\-P\-\_\-\-P\-A\-R\-E\-N\-T@{L\-O\-O\-K\-U\-P\-\_\-\-P\-A\-R\-E\-N\-T}!vfs.c@{vfs.\-c}}
+\subsubsection[{L\-O\-O\-K\-U\-P\-\_\-\-P\-A\-R\-E\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-O\-O\-K\-U\-P\-\_\-\-P\-A\-R\-E\-N\-T~1}}\label{vfs_8c_a63ed32a1a370c741228dad9092324038}
+S'arrête au niveau du parent. 
+
+\subsection{Documentation des définitions de type}
+\hypertarget{vfs_8c_a2e535233f88552b377b2f1523c182acc}{\index{vfs.\-c@{vfs.\-c}!available\-\_\-fs\-\_\-t@{available\-\_\-fs\-\_\-t}}
+\index{available\-\_\-fs\-\_\-t@{available\-\_\-fs\-\_\-t}!vfs.c@{vfs.\-c}}
+\subsubsection[{available\-\_\-fs\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \-\_\-available\-\_\-fs\-\_\-t}  {\bf available\-\_\-fs\-\_\-t}}}\label{vfs_8c_a2e535233f88552b377b2f1523c182acc}
+Cellule d'une liste de fs disponibles. 
+
+\subsection{Documentation des fonctions}
+\hypertarget{vfs_8c_ace33cd3f034512a44e787d384053d014}{\index{vfs.\-c@{vfs.\-c}!vfs\-\_\-chmod@{vfs\-\_\-chmod}}
+\index{vfs\-\_\-chmod@{vfs\-\_\-chmod}!vfs.c@{vfs.\-c}}
+\subsubsection[{vfs\-\_\-chmod}]{\setlength{\rightskip}{0pt plus 5cm}int vfs\-\_\-chmod (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{{\bf mode\-\_\-t}}]{mode}
+\end{DoxyParamCaption}
+)}}\label{vfs_8c_ace33cd3f034512a44e787d384053d014}
+
+\begin{DoxyParams}{Paramètres}
+{\em pathname} & Chemin du fichier. \\
+\hline
+{\em mode} & Droits du fichier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+\hypertarget{vfs_8c_ad548e6ff795e606e8f1825a7a45e5157}{\index{vfs.\-c@{vfs.\-c}!vfs\-\_\-chown@{vfs\-\_\-chown}}
+\index{vfs\-\_\-chown@{vfs\-\_\-chown}!vfs.c@{vfs.\-c}}
+\subsubsection[{vfs\-\_\-chown}]{\setlength{\rightskip}{0pt plus 5cm}int vfs\-\_\-chown (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{{\bf uid\-\_\-t}}]{owner, }
+\item[{{\bf gid\-\_\-t}}]{group}
+\end{DoxyParamCaption}
+)}}\label{vfs_8c_ad548e6ff795e606e8f1825a7a45e5157}
+
+\begin{DoxyParams}{Paramètres}
+{\em pathname} & Chemin du fichier. \\
+\hline
+{\em owner} & Propriétaire du fichier. \\
+\hline
+{\em group} & Groupe auquel appartient le fichier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+\hypertarget{vfs_8c_ab0c805d30412c7b434adf437a404ce6a}{\index{vfs.\-c@{vfs.\-c}!vfs\-\_\-close@{vfs\-\_\-close}}
+\index{vfs\-\_\-close@{vfs\-\_\-close}!vfs.c@{vfs.\-c}}
+\subsubsection[{vfs\-\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}int vfs\-\_\-close (
+\begin{DoxyParamCaption}
+\item[{{\bf open\-\_\-file\-\_\-descriptor} $\ast$}]{ofd}
+\end{DoxyParamCaption}
+)}}\label{vfs_8c_ab0c805d30412c7b434adf437a404ce6a}
+
+\begin{DoxyParams}{Paramètres}
+{\em ofd} & du fichier ouvert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{vfs_8c_ab0c805d30412c7b434adf437a404ce6a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{vfs_8c_a2e2b9554ca8721b61981dff16a7b54ad}{\index{vfs.\-c@{vfs.\-c}!vfs\-\_\-init@{vfs\-\_\-init}}
+\index{vfs\-\_\-init@{vfs\-\_\-init}!vfs.c@{vfs.\-c}}
+\subsubsection[{vfs\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void vfs\-\_\-init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{vfs_8c_a2e2b9554ca8721b61981dff16a7b54ad}
+Initialisation du V\-F\-S. 
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs_8c_a2e2b9554ca8721b61981dff16a7b54ad_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{vfs_8c_a392f80d5c4ab48178abcd268c3f64c45}{\index{vfs.\-c@{vfs.\-c}!vfs\-\_\-mkdir@{vfs\-\_\-mkdir}}
+\index{vfs\-\_\-mkdir@{vfs\-\_\-mkdir}!vfs.c@{vfs.\-c}}
+\subsubsection[{vfs\-\_\-mkdir}]{\setlength{\rightskip}{0pt plus 5cm}int vfs\-\_\-mkdir (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{{\bf mode\-\_\-t}}]{mode}
+\end{DoxyParamCaption}
+)}}\label{vfs_8c_a392f80d5c4ab48178abcd268c3f64c45}
+
+\begin{DoxyParams}{Paramètres}
+{\em pathname} & Chemin du dossier. \\
+\hline
+{\em mode} & Droits sur le dossier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+\hypertarget{vfs_8c_a54142c2a2009cc49e3b3b8c12d955b04}{\index{vfs.\-c@{vfs.\-c}!vfs\-\_\-mknod@{vfs\-\_\-mknod}}
+\index{vfs\-\_\-mknod@{vfs\-\_\-mknod}!vfs.c@{vfs.\-c}}
+\subsubsection[{vfs\-\_\-mknod}]{\setlength{\rightskip}{0pt plus 5cm}int vfs\-\_\-mknod (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path, }
+\item[{{\bf mode\-\_\-t}}]{mode, }
+\item[{{\bf dev\-\_\-t}}]{dev}
+\end{DoxyParamCaption}
+)}}\label{vfs_8c_a54142c2a2009cc49e3b3b8c12d955b04}
+
+\begin{DoxyParams}{Paramètres}
+{\em path} & Chemin du fichier. \\
+\hline
+{\em mode} & Droits et type de fichier. \\
+\hline
+{\em dev} & Si c'est un fichier spécial, le device associé.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{vfs_8c_a54142c2a2009cc49e3b3b8c12d955b04_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{vfs_8c_a26aa39a32af0bfccaffdbcec89c0a00e}{\index{vfs.\-c@{vfs.\-c}!vfs\-\_\-mount@{vfs\-\_\-mount}}
+\index{vfs\-\_\-mount@{vfs\-\_\-mount}!vfs.c@{vfs.\-c}}
+\subsubsection[{vfs\-\_\-mount}]{\setlength{\rightskip}{0pt plus 5cm}void vfs\-\_\-mount (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{device, }
+\item[{const char $\ast$}]{mountpoint, }
+\item[{const char $\ast$}]{type}
+\end{DoxyParamCaption}
+)}}\label{vfs_8c_a26aa39a32af0bfccaffdbcec89c0a00e}
+
+\begin{DoxyParams}{Paramètres}
+{\em device} & à monter. \\
+\hline
+{\em mountpoint} & nom du dossier. \\
+\hline
+{\em type} & F\-S à utiliser. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs_8c_a26aa39a32af0bfccaffdbcec89c0a00e_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{vfs_8c_a7b293d0cca90e9f633dc69cc5900c430}{\index{vfs.\-c@{vfs.\-c}!vfs\-\_\-open@{vfs\-\_\-open}}
+\index{vfs\-\_\-open@{vfs\-\_\-open}!vfs.c@{vfs.\-c}}
+\subsubsection[{vfs\-\_\-open}]{\setlength{\rightskip}{0pt plus 5cm}{\bf open\-\_\-file\-\_\-descriptor}$\ast$ vfs\-\_\-open (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{{\bf uint32\-\_\-t}}]{flags}
+\end{DoxyParamCaption}
+)}}\label{vfs_8c_a7b293d0cca90e9f633dc69cc5900c430}
+
+\begin{DoxyParams}{Paramètres}
+{\em pathname} & Chemin du fichier à ouvrir. \\
+\hline
+{\em flags} & Mode d'ouverture.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un descripteur de fichier ouvert. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{vfs_8c_a7b293d0cca90e9f633dc69cc5900c430_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs_8c_a7b293d0cca90e9f633dc69cc5900c430_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{vfs_8c_a631bdc2a44ac1b7477782b058277a8d3}{\index{vfs.\-c@{vfs.\-c}!vfs\-\_\-readdir@{vfs\-\_\-readdir}}
+\index{vfs\-\_\-readdir@{vfs\-\_\-readdir}!vfs.c@{vfs.\-c}}
+\subsubsection[{vfs\-\_\-readdir}]{\setlength{\rightskip}{0pt plus 5cm}int vfs\-\_\-readdir (
+\begin{DoxyParamCaption}
+\item[{{\bf open\-\_\-file\-\_\-descriptor} $\ast$}]{ofd, }
+\item[{char $\ast$}]{entries, }
+\item[{{\bf size\-\_\-t}}]{size}
+\end{DoxyParamCaption}
+)}}\label{vfs_8c_a631bdc2a44ac1b7477782b058277a8d3}
+
+\begin{DoxyParams}{Paramètres}
+{\em ofd} & du dossier ouvert. \\
+\hline
+{\em entries} & Contenu du dossier, encodé dans une chaîne de caractères. \\
+\hline
+{\em size} & Taille de la chaîne entries.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{vfs_8c_a631bdc2a44ac1b7477782b058277a8d3_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{vfs_8c_a64ef66712e6c30f0295e1e1cad601beb}{\index{vfs.\-c@{vfs.\-c}!vfs\-\_\-rename@{vfs\-\_\-rename}}
+\index{vfs\-\_\-rename@{vfs\-\_\-rename}!vfs.c@{vfs.\-c}}
+\subsubsection[{vfs\-\_\-rename}]{\setlength{\rightskip}{0pt plus 5cm}int vfs\-\_\-rename (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{oldpath, }
+\item[{const char $\ast$}]{newpath}
+\end{DoxyParamCaption}
+)}}\label{vfs_8c_a64ef66712e6c30f0295e1e1cad601beb}
+
+\begin{DoxyParams}{Paramètres}
+{\em oldpath} & Ancien chemin du fichier. \\
+\hline
+{\em newpath} & Nouveau chemin du fichier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+\hypertarget{vfs_8c_a8f5dc4e5e4a2aa5d7649790256f11685}{\index{vfs.\-c@{vfs.\-c}!vfs\-\_\-rmdir@{vfs\-\_\-rmdir}}
+\index{vfs\-\_\-rmdir@{vfs\-\_\-rmdir}!vfs.c@{vfs.\-c}}
+\subsubsection[{vfs\-\_\-rmdir}]{\setlength{\rightskip}{0pt plus 5cm}int vfs\-\_\-rmdir (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}}\label{vfs_8c_a8f5dc4e5e4a2aa5d7649790256f11685}
+
+\begin{DoxyParams}{Paramètres}
+{\em pathname} & Chemin du dossier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+\hypertarget{vfs_8c_a66f99a282d420f307e37ea72d7e3fa71}{\index{vfs.\-c@{vfs.\-c}!vfs\-\_\-stat@{vfs\-\_\-stat}}
+\index{vfs\-\_\-stat@{vfs\-\_\-stat}!vfs.c@{vfs.\-c}}
+\subsubsection[{vfs\-\_\-stat}]{\setlength{\rightskip}{0pt plus 5cm}int vfs\-\_\-stat (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{struct {\bf stat} $\ast$}]{stbuf}
+\end{DoxyParamCaption}
+)}}\label{vfs_8c_a66f99a282d420f307e37ea72d7e3fa71}
+
+\begin{DoxyParams}{Paramètres}
+{\em pathname} & Chemin du fichier. \\
+\hline
+{\em stbuf} & Structure pour stocker les informations du noeud.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{vfs_8c_a66f99a282d420f307e37ea72d7e3fa71_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{vfs_8c_a69a4424755e56bad13f341c1600db527}{\index{vfs.\-c@{vfs.\-c}!vfs\-\_\-umount@{vfs\-\_\-umount}}
+\index{vfs\-\_\-umount@{vfs\-\_\-umount}!vfs.c@{vfs.\-c}}
+\subsubsection[{vfs\-\_\-umount}]{\setlength{\rightskip}{0pt plus 5cm}int vfs\-\_\-umount (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{mountpoint}
+\end{DoxyParamCaption}
+)}}\label{vfs_8c_a69a4424755e56bad13f341c1600db527}
+
+\begin{DoxyParams}{Paramètres}
+{\em mountpoint} & Point de montage à démonter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{vfs_8c_a69a4424755e56bad13f341c1600db527_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{vfs_8c_a4f8b6a1f2b0e6012446196f18b33d686}{\index{vfs.\-c@{vfs.\-c}!vfs\-\_\-unlink@{vfs\-\_\-unlink}}
+\index{vfs\-\_\-unlink@{vfs\-\_\-unlink}!vfs.c@{vfs.\-c}}
+\subsubsection[{vfs\-\_\-unlink}]{\setlength{\rightskip}{0pt plus 5cm}int vfs\-\_\-unlink (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}}\label{vfs_8c_a4f8b6a1f2b0e6012446196f18b33d686}
+
+\begin{DoxyParams}{Paramètres}
+{\em pathname} & Chemin du fichier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{vfs_8c_a4f8b6a1f2b0e6012446196f18b33d686_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{vfs_8c_aa536fea0b394849df5d127410b5b4f19}{\index{vfs.\-c@{vfs.\-c}!vfs\-\_\-utimes@{vfs\-\_\-utimes}}
+\index{vfs\-\_\-utimes@{vfs\-\_\-utimes}!vfs.c@{vfs.\-c}}
+\subsubsection[{vfs\-\_\-utimes}]{\setlength{\rightskip}{0pt plus 5cm}int vfs\-\_\-utimes (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{const struct {\bf timeval}}]{tv\mbox{[}2\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{vfs_8c_aa536fea0b394849df5d127410b5b4f19}
+
+\begin{DoxyParams}{Paramètres}
+{\em pathname} & Chemin du fichier. \\
+\hline
+{\em tv} & Date d'accès et de modification.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}

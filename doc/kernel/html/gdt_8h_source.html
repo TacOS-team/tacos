@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de kernel/include/gdt.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">kernel/include/gdt.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="gdt_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _GDT_H_</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _GDT_H_</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="types_8h.html">types.h</a>&gt;</span>
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 <span class="preprocessor">#define KERNEL_CODE_SEGMENT             0x08</span>
+<a name="l00035"></a>00035 <span class="preprocessor"></span><span class="preprocessor">#define KERNEL_DATA_SEGMENT             0x10</span>
+<a name="l00036"></a>00036 <span class="preprocessor"></span><span class="preprocessor">#define KERNEL_STACK_SEGMENT    (KERNEL_DATA_SEGMENT)</span>
+<a name="l00037"></a>00037 <span class="preprocessor"></span>
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039 <span class="preprocessor">#define USER_CODE_SEGMENT               0x1B</span>
+<a name="l00040"></a>00040 <span class="preprocessor"></span><span class="preprocessor">#define USER_DATA_SEGMENT               0x23</span>
+<a name="l00041"></a>00041 <span class="preprocessor"></span><span class="preprocessor">#define USER_STACK_SEGMENT              (USER_DATA_SEGMENT)</span>
+<a name="l00042"></a>00042 <span class="preprocessor"></span>
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 <span class="comment">//#define SIZE_OF_GDT_ENTRY 8</span>
+<a name="l00045"></a>00045 
+<a name="l00051"></a><a class="code" href="structx86__segment__descriptor.html">00051</a> <span class="keyword">struct </span><a class="code" href="structx86__segment__descriptor.html" title="Segment Descriptor (cf doc intel v3. 3.4.3)">x86_segment_descriptor</a>
+<a name="l00052"></a>00052 {
+<a name="l00053"></a>00053         <span class="comment">/* Double mot de poids faible */</span>
+<a name="l00054"></a><a class="code" href="structx86__segment__descriptor.html#af9516f6d07c24ddedde31235b05b62c2">00054</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> <a class="code" href="structx86__segment__descriptor.html#af9516f6d07c24ddedde31235b05b62c2">segment_limit_15_0</a>; 
+<a name="l00057"></a>00057         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> base_address_15_0;  <span class="comment">/* Défini la position de l&#39;octet 0 du segment </span>
+<a name="l00058"></a>00058 <span class="comment">                                                                                          dans les 4Gio de l&#39;espace adressable linéaire */</span>
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060         <span class="comment">/* Double mot de poids fort */</span>
+<a name="l00061"></a><a class="code" href="structx86__segment__descriptor.html#a95889fcbabf116ba15a6cea3364b903d">00061</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a95889fcbabf116ba15a6cea3364b903d">base_address_23_16</a>; 
+<a name="l00062"></a><a class="code" href="structx86__segment__descriptor.html#ab3ef0c9fce1e74ee6549bbce5ea6f25f">00062</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#ab3ef0c9fce1e74ee6549bbce5ea6f25f">segment_type</a>:4;                 
+<a name="l00063"></a><a class="code" href="structx86__segment__descriptor.html#adda0434239b7e6c6a68b8e7556e4bb2f">00063</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#adda0434239b7e6c6a68b8e7556e4bb2f">descriptor_type</a>:1;      
+<a name="l00064"></a><a class="code" href="structx86__segment__descriptor.html#ab45e49c27bbe57a568d914bd13e45ef7">00064</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#ab45e49c27bbe57a568d914bd13e45ef7">dpl</a>:2; 
+<a name="l00065"></a><a class="code" href="structx86__segment__descriptor.html#ad4196191d05e69b42272a411a69d1eae">00065</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#ad4196191d05e69b42272a411a69d1eae">present</a>:1; 
+<a name="l00066"></a><a class="code" href="structx86__segment__descriptor.html#a6ab37b8f7730fe67af946725a3dd064a">00066</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a6ab37b8f7730fe67af946725a3dd064a">segment_limit_19_16</a>:4; 
+<a name="l00067"></a><a class="code" href="structx86__segment__descriptor.html#a761494a7a460e493e0d5d188a31cd052">00067</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a761494a7a460e493e0d5d188a31cd052">available</a>:1; 
+<a name="l00068"></a><a class="code" href="structx86__segment__descriptor.html#a4cbd016599f85d6a2060c31d7714dbbd">00068</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a4cbd016599f85d6a2060c31d7714dbbd">zero</a>:1; 
+<a name="l00069"></a><a class="code" href="structx86__segment__descriptor.html#a40c320788bf23e3660d0def872cec94c">00069</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a40c320788bf23e3660d0def872cec94c">operation_size</a>:1; 
+<a name="l00070"></a><a class="code" href="structx86__segment__descriptor.html#a19d5da93d41a1ec3327cbd92ace8fa08">00070</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a19d5da93d41a1ec3327cbd92ace8fa08">granularity</a>:1; 
+<a name="l00071"></a><a class="code" href="structx86__segment__descriptor.html#af839dd21992c16573ea5b816b72f249f">00071</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#af839dd21992c16573ea5b816b72f249f">base_address_31_24</a>; 
+<a name="l00073"></a>00073 } __attribute__ ((packed, aligned (8)));
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075 
+<a name="l00076"></a><a class="code" href="structtss.html">00076</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structtss.html">tss</a> {
+<a name="l00077"></a>00077         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    previous_task, __previous_task_unused;
+<a name="l00078"></a>00078         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>    esp0;
+<a name="l00079"></a>00079         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ss0, __ss0_unused;
+<a name="l00080"></a>00080         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>    esp1;
+<a name="l00081"></a>00081         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ss1, __ss1_unused;
+<a name="l00082"></a>00082         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>    esp2;
+<a name="l00083"></a>00083         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ss2, __ss2_unused;
+<a name="l00084"></a>00084         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>    cr3;
+<a name="l00085"></a>00085         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>    eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;
+<a name="l00086"></a>00086         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    es, __es_unused;
+<a name="l00087"></a>00087         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    cs, __cs_unused;
+<a name="l00088"></a>00088         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ss, __ss_unused;
+<a name="l00089"></a>00089         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ds, __ds_unused;
+<a name="l00090"></a>00090         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    fs, __fs_unused;
+<a name="l00091"></a>00091         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    gs, __gs_unused;
+<a name="l00092"></a>00092         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ldt_selector, __ldt_sel_unused;
+<a name="l00093"></a>00093         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    debug_flag, io_map;
+<a name="l00094"></a>00094 } __attribute__ ((packed)) <a class="code" href="structtss.html">tss_t</a>;
+<a name="l00095"></a>00095 
+<a name="l00101"></a>00101 <span class="keywordtype">void</span> <a class="code" href="gdt_8c.html#abb81c8341c9230f4e46a1054d73a0ec4">gdt_setup</a>(<span class="keywordtype">size_t</span> ram_size);
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103 <span class="keywordtype">void</span> init_tss(<a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> stack_address);
+<a name="l00104"></a>00104 tss_t* get_default_tss();
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 <span class="preprocessor">#endif</span>
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juillet 8 2012 15:18:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

@@ -12,5 +12,6 @@ var searchData=
   ['light_5fred',['LIGHT_RED',['../video_8h.html#a664c8f5b9d90f79a49a16960b9ccedba',1,'video.h']]],
   ['lines',['LINES',['../video_8h.html#a321ae946de24c36489276616d13c46cd',1,'video.h']]],
   ['long_5fmax',['LONG_MAX',['../limits_8h.html#a50fece4db74f09568b2938db583c5655',1,'limits.h']]],
-  ['long_5fmin',['LONG_MIN',['../limits_8h.html#ae8a44c5a7436466221e0f3859d02420f',1,'limits.h']]]
+  ['long_5fmin',['LONG_MIN',['../limits_8h.html#ae8a44c5a7436466221e0f3859d02420f',1,'limits.h']]],
+  ['lookup_5fparent',['LOOKUP_PARENT',['../vfs_8c.html#a63ed32a1a370c741228dad9092324038',1,'vfs.c']]]
 ];

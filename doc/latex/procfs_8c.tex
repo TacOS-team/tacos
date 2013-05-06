@@ -1,0 +1,79 @@
+\hypertarget{procfs_8c}{\section{Référence du fichier kernel/fs/procfs.c}
+\label{procfs_8c}\index{kernel/fs/procfs.\-c@{kernel/fs/procfs.\-c}}
+}
+{\ttfamily \#include $<$fs/procfs.\-h$>$}\\*
+{\ttfamily \#include $<$kdirent.\-h$>$}\\*
+{\ttfamily \#include $<$klibc/string.\-h$>$}\\*
+{\ttfamily \#include $<$klog.\-h$>$}\\*
+{\ttfamily \#include $<$kmalloc.\-h$>$}\\*
+{\ttfamily \#include $<$kprocess.\-h$>$}\\*
+{\ttfamily \#include $<$kerrno.\-h$>$}\\*
+{\ttfamily \#include $<$types.\-h$>$}\\*
+{\ttfamily \#include $<$vfs.\-h$>$}\\*
+{\ttfamily \#include $<$klibc/stdlib.\-h$>$}\\*
+Graphe des dépendances par inclusion de procfs.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{procfs_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structextra__data__procfs__t}{extra\-\_\-data\-\_\-procfs\-\_\-t}
+\item 
+struct \hyperlink{structprocfs__file__t}{procfs\-\_\-file\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{procfs_8c_a59adc4c82490d23754cd39c2fb99b0da}{\#define {\bfseries E\-O\-F}~(-\/1)}\label{procfs_8c_a59adc4c82490d23754cd39c2fb99b0da}
+
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{procfs_8c_ab1d4fd947aae28a0c7fa7156492ada5e}{int {\bfseries procfs\-\_\-close} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd)}\label{procfs_8c_ab1d4fd947aae28a0c7fa7156492ada5e}
+
+\item 
+\hypertarget{procfs_8c_a67b19f8892567cdb63c98ee660300f60}{void {\bfseries procfs\-\_\-init} ()}\label{procfs_8c_a67b19f8892567cdb63c98ee660300f60}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{procfs_8c_a2f4f852541f0e6f0bb6793b130f9c85e}{char $\ast$ {\bfseries proc\-\_\-status} \mbox{[}$\,$\mbox{]} = \{\char`\"{}I\-D\-L\-E\char`\"{}, \char`\"{}R\-U\-N\-N\-I\-N\-G\char`\"{}, \char`\"{}W\-A\-I\-T\-I\-N\-G\char`\"{}, \char`\"{}S\-U\-S\-P\-E\-N\-D\char`\"{}, \char`\"{}T\-E\-R\-M\-I\-N\-A\-T\-E\-D\char`\"{}\}}\label{procfs_8c_a2f4f852541f0e6f0bb6793b130f9c85e}
+
+\item 
+\hyperlink{structprocfs__file__t}{procfs\-\_\-file\-\_\-t} {\bfseries procfs\-\_\-file\-\_\-list} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+Description de ce que fait le fichier 
+
+\subsection{Documentation des variables}
+\hypertarget{procfs_8c_a38e03a96bdfd47c31638a05b2a3b17de}{\index{procfs.\-c@{procfs.\-c}!procfs\-\_\-file\-\_\-list@{procfs\-\_\-file\-\_\-list}}
+\index{procfs\-\_\-file\-\_\-list@{procfs\-\_\-file\-\_\-list}!procfs.c@{procfs.\-c}}
+\subsubsection[{procfs\-\_\-file\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf procfs\-\_\-file\-\_\-t} procfs\-\_\-file\-\_\-list\mbox{[}$\,$\mbox{]}}}\label{procfs_8c_a38e03a96bdfd47c31638a05b2a3b17de}
+{\bfseries Valeur initiale \-:}
+\begin{DoxyCode}
+ \{\{\textcolor{stringliteral}{"cmd\_line"}, procfs\_read\_name\},
+                                                                        \{\textcolor{stringliteral}{"ppid"}
+      , procfs\_read\_ppid\},
+                                                                        \{\textcolor{stringliteral}{"state
+      "}, procfs\_read\_state\}\}
+\end{DoxyCode}

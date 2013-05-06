@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/kmalloc.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier kernel/kmalloc.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="memory_8h_source.html">memory.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="vmm_8h_source.html">vmm.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de kmalloc.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="kmalloc_8c__incl.png" border="0" usemap="#kernel_2kmalloc_8c" alt=""/></div>
+<map name="kernel_2kmalloc_8c" id="kernel_2kmalloc_8c">
+<area shape="rect" id="node3" href="memory_8h.html" title="Gestion des pages mémoires physiques." alt="" coords="5,83,83,111"/><area shape="rect" id="node7" href="vmm_8h.html" title="vmm.h" alt="" coords="107,83,168,111"/><area shape="rect" id="node10" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="192,83,269,111"/><area shape="rect" id="node5" href="types_8h.html" title="types.h" alt="" coords="107,161,168,189"/></map>
+</div>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmem__list.html">mem_list</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmem.html">mem</a></td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf2150b867844d072868442d5b925fdb"></a><!-- doxytag: member="kmalloc.c::init_kmalloc" ref="acf2150b867844d072868442d5b925fdb" args="()" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_kmalloc</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kmalloc_8c.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be">kmalloc</a> (<a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocation de size octets.  <a href="#a5f52d7c56b7d67dc2f96b2e93dfdc7be"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kmalloc_8c.html#a5aaca0462e88916f57db57384fd7618a">kfree</a> (void *p)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e3dce2f94889a2c5ad041726783f264"></a><!-- doxytag: member="kmalloc.c::kmalloc_one_aligned_page" ref="a6e3dce2f94889a2c5ad041726783f264" args="()" -->
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>kmalloc_one_aligned_page</b> ()</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+<p>Description de ce que fait le fichier </p>
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a5aaca0462e88916f57db57384fd7618a"></a><!-- doxytag: member="kmalloc.c::kfree" ref="a5aaca0462e88916f57db57384fd7618a" args="(void *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="kmalloc_8c.html#a5aaca0462e88916f57db57384fd7618a">kfree</a> </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Libération d'une zone allouée.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pointeur</td><td>vers la zone allouée.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kmalloc_8c_a5aaca0462e88916f57db57384fd7618a_icgraph.png" border="0" usemap="#kmalloc_8c_a5aaca0462e88916f57db57384fd7618a_icgraph" alt=""/></div>
+<map name="kmalloc_8c_a5aaca0462e88916f57db57384fd7618a_icgraph" id="kmalloc_8c_a5aaca0462e88916f57db57384fd7618a_icgraph">
+<area shape="rect" id="node3" href="ext2__internal_8h.html#aa055d93f3693085315aa853345de0032" title="Unmount d&#39;un point de montage." alt="" coords="132,5,236,33"/><area shape="rect" id="node7" href="ext2__internal_8h.html#ab2859a00444ce0ad527332da72e2629a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="143,55,225,83"/><area shape="rect" id="node9" href="fat__internal_8h.html#ab2204311ec26e0134235b4a6c895312f" title="umount_FAT" alt="" coords="457,131,553,159"/><area shape="rect" id="node13" href="fat__internal_8h.html#ada9bd47fd90b01248fe52f302560f9f9" title="fat_readdir" alt="" coords="143,157,225,185"/><area shape="rect" id="node15" href="fat__internal_8h.html#acdf6c4c7632ebd3fff5ba51c888af3a6" title="fat_open_file" alt="" coords="313,207,407,235"/><area shape="rect" id="node20" href="fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="147,258,221,286"/><area shape="rect" id="node23" href="fat__internal_8h.html#afdccf4bea2c0e70059a76f43fea9c33f" title="fat_close" alt="" coords="147,309,221,337"/><area shape="rect" id="node26" href="fat__internal_8h.html#a8442aab7b7111d30d19b4be6a4464618" title="fat_stat" alt="" coords="327,309,393,337"/><area shape="rect" id="node29" href="kfcntl_8c.html#adc12a443121c63ad99a6311aa2739884" title="Ferme tous les file descriptors ouverts." alt="" coords="139,410,229,438"/><area shape="rect" id="node31" href="kfcntl_8c.html#a3a5f4c56fd3fcc2b69757102f722fc29" title="SYSCALL_HANDLER2" alt="" coords="104,461,264,489"/><area shape="rect" id="node33" href="kprocess_8c.html#a7cced35f469ae897c55ab96940289cf6" title="Retire un processus de la liste." alt="" coords="129,511,239,539"/><area shape="rect" id="node35" href="vfs_8c.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="145,562,223,590"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="325,5,395,33"/><area shape="rect" id="node11" href="fat_8h.html#a3d1f5d8e3b22672684528c112bc6ff06" title="fat_init" alt="" coords="603,170,664,198"/><area shape="rect" id="node17" href="fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae" title="mount_FAT" alt="" coords="460,207,551,235"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5f52d7c56b7d67dc2f96b2e93dfdc7be"></a><!-- doxytag: member="kmalloc.c::kmalloc" ref="a5f52d7c56b7d67dc2f96b2e93dfdc7be" args="(size_t size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* <a class="el" href="kmalloc_8c.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be">kmalloc</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Allocation de size octets en kernel space.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>Taille à allouer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>un pointeur vers la zone allouée. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kmalloc_8c_a5f52d7c56b7d67dc2f96b2e93dfdc7be_cgraph.png" border="0" usemap="#kmalloc_8c_a5f52d7c56b7d67dc2f96b2e93dfdc7be_cgraph" alt=""/></div>
+<map name="kmalloc_8c_a5f52d7c56b7d67dc2f96b2e93dfdc7be_cgraph" id="kmalloc_8c_a5f52d7c56b7d67dc2f96b2e93dfdc7be_cgraph">
+<area shape="rect" id="node3" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="121,5,260,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kmalloc_8c_a5f52d7c56b7d67dc2f96b2e93dfdc7be_icgraph.png" border="0" usemap="#kmalloc_8c_a5f52d7c56b7d67dc2f96b2e93dfdc7be_icgraph" alt=""/></div>
+<map name="kmalloc_8c_a5f52d7c56b7d67dc2f96b2e93dfdc7be_icgraph" id="kmalloc_8c_a5f52d7c56b7d67dc2f96b2e93dfdc7be_icgraph">
+<area shape="rect" id="node3" href="serial_8h.html#a459999cfa35c788b64284953a93c4b57" title="Fonction d&#39;initialisation du driver série." alt="" coords="332,44,409,72"/><area shape="rect" id="node5" href="console_8h.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;." alt="" coords="325,94,416,122"/><area shape="rect" id="node7" href="tty_8h.html#a9ae7085e2afaadc63a592910d4ac4328" title="alloc_tty_driver" alt="" coords="139,94,248,122"/><area shape="rect" id="node11" href="tty_8h.html#a302b60b1c52001915aeb108b51efc397" title="tty_register_driver" alt="" coords="131,44,256,72"/><area shape="rect" id="node15" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="336,246,405,274"/><area shape="rect" id="node17" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="145,246,241,274"/><area shape="rect" id="node20" href="ext2__internal_8h.html#a598e5a2d603b1d2b31b8058b9dec3ab5" title="Ecriture d&#39;un fichier." alt="" coords="153,601,233,629"/><area shape="rect" id="node22" href="fat_8h.html#a3d1f5d8e3b22672684528c112bc6ff06" title="fat_init" alt="" coords="627,348,688,376"/><area shape="rect" id="node24" href="fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae" title="mount_FAT" alt="" coords="481,424,572,452"/><area shape="rect" id="node27" href="fat__internal_8h.html#ada9bd47fd90b01248fe52f302560f9f9" title="fat_readdir" alt="" coords="152,449,235,477"/><area shape="rect" id="node29" href="fat__internal_8h.html#acdf6c4c7632ebd3fff5ba51c888af3a6" title="fat_open_file" alt="" coords="324,449,417,477"/><area shape="rect" id="node32" href="fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="333,677,408,705"/><area shape="rect" id="node35" href="fat__internal_8h.html#a8442aab7b7111d30d19b4be6a4464618" title="fat_stat" alt="" coords="337,525,404,553"/><area shape="rect" id="node38" href="fat__outils_8h.html#a015254ce721ab0097a1008ec7153b819" title="fat_lfn_to_sfn" alt="" coords="143,702,244,730"/><area shape="rect" id="node41" href="fat__outils_8h.html#acc4ab73ddc901dbfa52071c98ce0de6b" title="fat_decode_lfn_entry" alt="" coords="123,753,264,781"/><area shape="rect" id="node43" href="fat__outils_8h.html#a8100c884384ccb3b8ecec7f5180ad346" title="fat_decode_sfn_entry" alt="" coords="120,804,267,832"/><area shape="rect" id="node45" href="kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="156,905,231,933"/><area shape="rect" id="node47" href="kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="316,880,425,908"/><area shape="rect" id="node51" href="string_8c.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="164,956,223,984"/><area shape="rect" id="node54" href="list_8c.html#a8111dff4de9d78342e96563621a7da63" title="list_init" alt="" coords="163,1006,224,1034"/><area shape="rect" id="node58" href="vfs_8c.html#a2e2b9554ca8721b61981dff16a7b54ad" title="vfs_init" alt="" coords="161,1057,225,1085"/><area shape="rect" id="node60" href="vfs_8c.html#ab2237a3610010d8a211ef3d55a521dba" title="Enregistrer un FS dans le VFS pour le rendre disponible." alt="" coords="140,297,247,325"/><area shape="rect" id="node64" href="vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage." alt="" coords="152,1108,235,1136"/><area shape="rect" id="node49" href="scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="476,880,577,908"/><area shape="rect" id="node56" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="328,1006,413,1034"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juillet 8 2012 15:18:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

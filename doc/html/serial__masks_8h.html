@@ -4,43 +4,33 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <title>TacOS: Référence du fichier kernel/drivers/char/serial_masks.h</title>
-
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
-
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div! -->
-
-
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  
-  
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
    &#160;<span id="projectnumber">0.1</span>
    </div>
-   
   </td>
-  
-  
-  
  </tr>
  </tbody>
 </table>
 </div>
-
-<!-- Généré par Doxygen 1.7.6.1 -->
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -73,143 +63,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
     </ul>
   </div>
-</div>
-<div class="header">
-  <div class="summary">
-<a href="#define-members">Macros</a>  </div>
-  <div class="headertitle">
-<div class="title">Référence du fichier kernel/drivers/char/serial_masks.h</div>  </div>
-</div><!--header-->
-<div class="contents">
-<div class="textblock"><div class="dynheader">
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
-<div class="dyncontent">
-<div class="center"><img src="serial__masks_8h__dep__incl.png" border="0" usemap="#kernel_2drivers_2char_2serial__masks_8hdep" alt=""/></div>
-<map name="kernel_2drivers_2char_2serial__masks_8hdep" id="kernel_2drivers_2char_2serial__masks_8hdep">
-<area shape="rect" id="node3" href="serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="28,83,201,111"/></map>
-</div>
-</div>
-<p><a href="serial__masks_8h_source.html">Aller au code source de ce fichier.</a></p>
-<table class="memberdecls">
-<tr><td colspan="2"><h2><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafc94d05182d27ce68df323a54b63dd6"></a><!-- doxytag: member="serial_masks.h::ERBFI" ref="aafc94d05182d27ce68df323a54b63dd6" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ERBFI</b>&#160;&#160;&#160;0x01	/* Enable Receive Data Available Interrupt */</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b56d54d35ace7ee98fac9c6e8a3700c"></a><!-- doxytag: member="serial_masks.h::ETBEI" ref="a2b56d54d35ace7ee98fac9c6e8a3700c" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ETBEI</b>&#160;&#160;&#160;0x02	/* Enable Transmit Holding Register Empty Interrupt */</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d6ebea0517b7ef1aa139f2d296c6cfe"></a><!-- doxytag: member="serial_masks.h::ELSI" ref="a7d6ebea0517b7ef1aa139f2d296c6cfe" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ELSI</b>&#160;&#160;&#160;0x04	/* Enable Receiver Line Status Interrupt */</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae05e619b919df110bc11bb74d78dbc18"></a><!-- doxytag: member="serial_masks.h::EDSSI" ref="ae05e619b919df110bc11bb74d78dbc18" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EDSSI</b>&#160;&#160;&#160;0x08	/* Enable MODEM Status Interrupt */</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d52f0cbe06a10fadf7f41afafaf2685"></a><!-- doxytag: member="serial_masks.h::INTERRUPT_PENDING" ref="a2d52f0cbe06a10fadf7f41afafaf2685" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>INTERRUPT_PENDING</b>&#160;&#160;&#160;0x01</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a320f21e7b4b9d4e7430f35b725b76c8d"></a><!-- doxytag: member="serial_masks.h::INTERRUPT_ID" ref="a320f21e7b4b9d4e7430f35b725b76c8d" args="(reg)" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>INTERRUPT_ID</b>(reg)&#160;&#160;&#160;(reg&amp;0x0F)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee30a8fa760ddabad70a8bc007affd4c"></a><!-- doxytag: member="serial_masks.h::INT_NONE" ref="aee30a8fa760ddabad70a8bc007affd4c" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_NONE</b>&#160;&#160;&#160;0x1</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae62f2535e15b2bffb98664f53a794d86"></a><!-- doxytag: member="serial_masks.h::INT_RX_LINE_STATUS" ref="ae62f2535e15b2bffb98664f53a794d86" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_RX_LINE_STATUS</b>&#160;&#160;&#160;0x6</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa372e18cf5f38482a448f3b3ef090ea8"></a><!-- doxytag: member="serial_masks.h::INT_DATA_AVAILABLE" ref="aa372e18cf5f38482a448f3b3ef090ea8" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_DATA_AVAILABLE</b>&#160;&#160;&#160;0x4</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05dcf0dee6408dd465fd006bed9e295d"></a><!-- doxytag: member="serial_masks.h::INT_CHAR_TIMEOUT" ref="a05dcf0dee6408dd465fd006bed9e295d" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_CHAR_TIMEOUT</b>&#160;&#160;&#160;0xC</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a989ce91f4df3a14ef57604f98775e8ef"></a><!-- doxytag: member="serial_masks.h::INT_THR_EMPTY" ref="a989ce91f4df3a14ef57604f98775e8ef" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_THR_EMPTY</b>&#160;&#160;&#160;0x2</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23d7b81a3bfaf4c8262ec62747a44bce"></a><!-- doxytag: member="serial_masks.h::INT_MODEM_STATUS" ref="a23d7b81a3bfaf4c8262ec62747a44bce" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_MODEM_STATUS</b>&#160;&#160;&#160;0x0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af9b32425a0da09026f389c4814342022"></a><!-- doxytag: member="serial_masks.h::FIFO_ENABLE" ref="af9b32425a0da09026f389c4814342022" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIFO_ENABLE</b>&#160;&#160;&#160;0x01</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb0387a7a93c4801a011f8a4112d5b6d"></a><!-- doxytag: member="serial_masks.h::RCVR_FIFO_RESET" ref="afb0387a7a93c4801a011f8a4112d5b6d" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCVR_FIFO_RESET</b>&#160;&#160;&#160;0x02</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adbfca4205ec50fc21feb3ab521644173"></a><!-- doxytag: member="serial_masks.h::XMIT_FIFO_RESET" ref="adbfca4205ec50fc21feb3ab521644173" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>XMIT_FIFO_RESET</b>&#160;&#160;&#160;0x04</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad32888c9ff52244bbdc0e2d72466d0a7"></a><!-- doxytag: member="serial_masks.h::DMA_MODE_SELECT" ref="ad32888c9ff52244bbdc0e2d72466d0a7" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DMA_MODE_SELECT</b>&#160;&#160;&#160;0x08</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4efb2f6eeb037e51bf87983aed68ffbe"></a><!-- doxytag: member="serial_masks.h::RCVR_TRIGGER" ref="a4efb2f6eeb037e51bf87983aed68ffbe" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCVR_TRIGGER</b>&#160;&#160;&#160;0xC0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acfc1fde06f44651c14c84f4d3c177117"></a><!-- doxytag: member="serial_masks.h::RCVR_TRIGGER_1" ref="acfc1fde06f44651c14c84f4d3c177117" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCVR_TRIGGER_1</b>&#160;&#160;&#160;0x00</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae364a0fdd9ef554087add871a985f378"></a><!-- doxytag: member="serial_masks.h::RCVR_TRIGGER_4" ref="ae364a0fdd9ef554087add871a985f378" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCVR_TRIGGER_4</b>&#160;&#160;&#160;0x40</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa35d0536e30289645c3bb7546b1ada75"></a><!-- doxytag: member="serial_masks.h::RCVR_TRIGGER_8" ref="aa35d0536e30289645c3bb7546b1ada75" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCVR_TRIGGER_8</b>&#160;&#160;&#160;0x80</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a616ec5a86c01969838fdc4a36e5577cb"></a><!-- doxytag: member="serial_masks.h::RCVR_TRIGGER_14" ref="a616ec5a86c01969838fdc4a36e5577cb" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCVR_TRIGGER_14</b>&#160;&#160;&#160;0xC0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4c8b6e3f5b517ddc1b9f9670ea0ead8f"></a><!-- doxytag: member="serial_masks.h::WORD_LENGTH" ref="a4c8b6e3f5b517ddc1b9f9670ea0ead8f" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>WORD_LENGTH</b>&#160;&#160;&#160;0x03</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad0c3743efc15a1320478871dc92998bd"></a><!-- doxytag: member="serial_masks.h::STOP_BIT" ref="ad0c3743efc15a1320478871dc92998bd" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>STOP_BIT</b>&#160;&#160;&#160;0x04</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3fe0dea7b30a55d84f5763338956eb44"></a><!-- doxytag: member="serial_masks.h::PARITY_BIT" ref="a3fe0dea7b30a55d84f5763338956eb44" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PARITY_BIT</b>&#160;&#160;&#160;0x38</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e39c5c443322398878f10e0f1e6f023"></a><!-- doxytag: member="serial_masks.h::NO_PARITY" ref="a6e39c5c443322398878f10e0f1e6f023" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>NO_PARITY</b>&#160;&#160;&#160;0x00</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a30a963ff1432e4cfbdd83e74045ef142"></a><!-- doxytag: member="serial_masks.h::EVEN_PARITY" ref="a30a963ff1432e4cfbdd83e74045ef142" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EVEN_PARITY</b>&#160;&#160;&#160;0x08</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a898d7631f24dd6b1deebf808a2214ea2"></a><!-- doxytag: member="serial_masks.h::ODD_PARITY" ref="a898d7631f24dd6b1deebf808a2214ea2" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ODD_PARITY</b>&#160;&#160;&#160;0x18</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07fe59003e865d7d9abe270465985711"></a><!-- doxytag: member="serial_masks.h::MARK_PARITY" ref="a07fe59003e865d7d9abe270465985711" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MARK_PARITY</b>&#160;&#160;&#160;0x28</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a321943571d12084d5c42a4275595000b"></a><!-- doxytag: member="serial_masks.h::SPACE_PARITY" ref="a321943571d12084d5c42a4275595000b" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SPACE_PARITY</b>&#160;&#160;&#160;0x38</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37a5529789f9658be9efe84db0fb04fe"></a><!-- doxytag: member="serial_masks.h::SET_BREAK" ref="a37a5529789f9658be9efe84db0fb04fe" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SET_BREAK</b>&#160;&#160;&#160;0x40</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeacff95e17799eeacbff843e63ead9d3"></a><!-- doxytag: member="serial_masks.h::DLAB" ref="aeacff95e17799eeacbff843e63ead9d3" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DLAB</b>&#160;&#160;&#160;0x80</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67198df5376db153ccd642a81d2623ad"></a><!-- doxytag: member="serial_masks.h::DTR" ref="a67198df5376db153ccd642a81d2623ad" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DTR</b>&#160;&#160;&#160;0x01</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5da46cdb9a2133d1b4f0db71a332ba2e"></a><!-- doxytag: member="serial_masks.h::RTS" ref="a5da46cdb9a2133d1b4f0db71a332ba2e" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RTS</b>&#160;&#160;&#160;0x02</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6852950010a1b039347cb86df74cc270"></a><!-- doxytag: member="serial_masks.h::OUT1" ref="a6852950010a1b039347cb86df74cc270" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT1</b>&#160;&#160;&#160;0x04</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f6562f6a79336bba7d01d5f2102502f"></a><!-- doxytag: member="serial_masks.h::OUT2" ref="a0f6562f6a79336bba7d01d5f2102502f" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT2</b>&#160;&#160;&#160;0x08</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e8f11caf539de9555d07b4e7ef5b1da"></a><!-- doxytag: member="serial_masks.h::LOOP" ref="a8e8f11caf539de9555d07b4e7ef5b1da" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>LOOP</b>&#160;&#160;&#160;0x10</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8fb916e86eee9bc7a2c2924d6e9d65f3"></a><!-- doxytag: member="serial_masks.h::DATA_READY" ref="a8fb916e86eee9bc7a2c2924d6e9d65f3" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DATA_READY</b>&#160;&#160;&#160;0x01</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71c26bc752960acd5308f21b05a13714"></a><!-- doxytag: member="serial_masks.h::OVERRUN_ERROR" ref="a71c26bc752960acd5308f21b05a13714" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OVERRUN_ERROR</b>&#160;&#160;&#160;0x02</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a81d2ca6759f3f3bf04556b7558aea6bc"></a><!-- doxytag: member="serial_masks.h::PARITY_ERROR" ref="a81d2ca6759f3f3bf04556b7558aea6bc" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PARITY_ERROR</b>&#160;&#160;&#160;0x04</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5bf1d46877ac22d5e12d9b1c0432d373"></a><!-- doxytag: member="serial_masks.h::FRAMING_ERROR" ref="a5bf1d46877ac22d5e12d9b1c0432d373" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>FRAMING_ERROR</b>&#160;&#160;&#160;0x08</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aba80f8e0eadad6692ac6e17c342cc0bd"></a><!-- doxytag: member="serial_masks.h::BREAK_INTERRUPT" ref="aba80f8e0eadad6692ac6e17c342cc0bd" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>BREAK_INTERRUPT</b>&#160;&#160;&#160;0x10</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a999ff55f951859dfb2d82c886c1379bb"></a><!-- doxytag: member="serial_masks.h::THR_EMPTY" ref="a999ff55f951859dfb2d82c886c1379bb" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>THR_EMPTY</b>&#160;&#160;&#160;0x20</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4034d6a21b6646c8710d09e43bd9383"></a><!-- doxytag: member="serial_masks.h::TX_EMPTY" ref="ae4034d6a21b6646c8710d09e43bd9383" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>TX_EMPTY</b>&#160;&#160;&#160;0x40</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a32560e690492fabe1588f5b922315cfa"></a><!-- doxytag: member="serial_masks.h::RCVR_FIFO_ERROR" ref="a32560e690492fabe1588f5b922315cfa" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCVR_FIFO_ERROR</b>&#160;&#160;&#160;0x80</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a230decb2e8e20d6ef3df26c7051f775e"></a><!-- doxytag: member="serial_masks.h::DCTS" ref="a230decb2e8e20d6ef3df26c7051f775e" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DCTS</b>&#160;&#160;&#160;0x01</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ef491029f03966f58e211a4b3dd731d"></a><!-- doxytag: member="serial_masks.h::DDSR" ref="a6ef491029f03966f58e211a4b3dd731d" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DDSR</b>&#160;&#160;&#160;0x02</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add3cb0cb2765504541e9cf0a33231f67"></a><!-- doxytag: member="serial_masks.h::TERI" ref="add3cb0cb2765504541e9cf0a33231f67" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>TERI</b>&#160;&#160;&#160;0x04</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f44d8de622e68c467e2191a5ed2442d"></a><!-- doxytag: member="serial_masks.h::DDCD" ref="a3f44d8de622e68c467e2191a5ed2442d" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DDCD</b>&#160;&#160;&#160;0x08</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d9ce8cebc572a42e7b4ab9e92c3a350"></a><!-- doxytag: member="serial_masks.h::CTS" ref="a9d9ce8cebc572a42e7b4ab9e92c3a350" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CTS</b>&#160;&#160;&#160;0x10</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa94aa7be4f567346163b45d1c18ec0a5"></a><!-- doxytag: member="serial_masks.h::DSR" ref="aa94aa7be4f567346163b45d1c18ec0a5" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DSR</b>&#160;&#160;&#160;0x20</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e71def3baefc10ec36f1dd48da4050e"></a><!-- doxytag: member="serial_masks.h::RI" ref="a7e71def3baefc10ec36f1dd48da4050e" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RI</b>&#160;&#160;&#160;0x40</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45d0e388f3c855ad190ee81d73188584"></a><!-- doxytag: member="serial_masks.h::DCD" ref="a45d0e388f3c855ad190ee81d73188584" args="" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DCD</b>&#160;&#160;&#160;0x80</td></tr>
-</table>
-<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
-<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
-<h2><a class="anchor" id="LICENSE"></a>
-LICENSE</h2>
-<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
-<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
-<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
-<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
-<h2><a class="anchor" id="DESCRIPTION"></a>
-DESCRIPTION</h2>
-<p>Description de ce que fait le fichier </p>
-</div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -224,13 +77,152 @@ DESCRIPTION</h2>
 </iframe>
 </div>
 
-
-
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_0de1d64efa6df97eacc8f5b0f9da3e59.html">drivers</a></li><li class="navelem"><a class="el" href="dir_4f51db4643cd003614c6e9a2383a0754.html">char</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier serial_masks.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="serial__masks_8h__dep__incl.png" border="0" usemap="#kernel_2drivers_2char_2serial__masks_8hdep" alt=""/></div>
+<map name="kernel_2drivers_2char_2serial__masks_8hdep" id="kernel_2drivers_2char_2serial__masks_8hdep">
+<area shape="rect" id="node3" href="serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="5,99,133,143"/></map>
+</div>
+</div>
+<p><a href="serial__masks_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aafc94d05182d27ce68df323a54b63dd6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafc94d05182d27ce68df323a54b63dd6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ERBFI</b>&#160;&#160;&#160;0x01	/* Enable Receive Data Available Interrupt */</td></tr>
+<tr class="memitem:a2b56d54d35ace7ee98fac9c6e8a3700c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b56d54d35ace7ee98fac9c6e8a3700c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ETBEI</b>&#160;&#160;&#160;0x02	/* Enable Transmit Holding Register Empty Interrupt */</td></tr>
+<tr class="memitem:a7d6ebea0517b7ef1aa139f2d296c6cfe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d6ebea0517b7ef1aa139f2d296c6cfe"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ELSI</b>&#160;&#160;&#160;0x04	/* Enable Receiver Line Status Interrupt */</td></tr>
+<tr class="memitem:ae05e619b919df110bc11bb74d78dbc18"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae05e619b919df110bc11bb74d78dbc18"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EDSSI</b>&#160;&#160;&#160;0x08	/* Enable MODEM Status Interrupt */</td></tr>
+<tr class="memitem:a2d52f0cbe06a10fadf7f41afafaf2685"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d52f0cbe06a10fadf7f41afafaf2685"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INTERRUPT_PENDING</b>&#160;&#160;&#160;0x01</td></tr>
+<tr class="memitem:a320f21e7b4b9d4e7430f35b725b76c8d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a320f21e7b4b9d4e7430f35b725b76c8d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INTERRUPT_ID</b>(reg)&#160;&#160;&#160;(reg&amp;0x0F)</td></tr>
+<tr class="memitem:aee30a8fa760ddabad70a8bc007affd4c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee30a8fa760ddabad70a8bc007affd4c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_NONE</b>&#160;&#160;&#160;0x1</td></tr>
+<tr class="memitem:ae62f2535e15b2bffb98664f53a794d86"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae62f2535e15b2bffb98664f53a794d86"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_RX_LINE_STATUS</b>&#160;&#160;&#160;0x6</td></tr>
+<tr class="memitem:aa372e18cf5f38482a448f3b3ef090ea8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa372e18cf5f38482a448f3b3ef090ea8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_DATA_AVAILABLE</b>&#160;&#160;&#160;0x4</td></tr>
+<tr class="memitem:a05dcf0dee6408dd465fd006bed9e295d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05dcf0dee6408dd465fd006bed9e295d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_CHAR_TIMEOUT</b>&#160;&#160;&#160;0xC</td></tr>
+<tr class="memitem:a989ce91f4df3a14ef57604f98775e8ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a989ce91f4df3a14ef57604f98775e8ef"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_THR_EMPTY</b>&#160;&#160;&#160;0x2</td></tr>
+<tr class="memitem:a23d7b81a3bfaf4c8262ec62747a44bce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23d7b81a3bfaf4c8262ec62747a44bce"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_MODEM_STATUS</b>&#160;&#160;&#160;0x0</td></tr>
+<tr class="memitem:af9b32425a0da09026f389c4814342022"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af9b32425a0da09026f389c4814342022"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIFO_ENABLE</b>&#160;&#160;&#160;0x01</td></tr>
+<tr class="memitem:afb0387a7a93c4801a011f8a4112d5b6d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb0387a7a93c4801a011f8a4112d5b6d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCVR_FIFO_RESET</b>&#160;&#160;&#160;0x02</td></tr>
+<tr class="memitem:adbfca4205ec50fc21feb3ab521644173"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adbfca4205ec50fc21feb3ab521644173"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XMIT_FIFO_RESET</b>&#160;&#160;&#160;0x04</td></tr>
+<tr class="memitem:ad32888c9ff52244bbdc0e2d72466d0a7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad32888c9ff52244bbdc0e2d72466d0a7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DMA_MODE_SELECT</b>&#160;&#160;&#160;0x08</td></tr>
+<tr class="memitem:a4efb2f6eeb037e51bf87983aed68ffbe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4efb2f6eeb037e51bf87983aed68ffbe"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCVR_TRIGGER</b>&#160;&#160;&#160;0xC0</td></tr>
+<tr class="memitem:acfc1fde06f44651c14c84f4d3c177117"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acfc1fde06f44651c14c84f4d3c177117"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCVR_TRIGGER_1</b>&#160;&#160;&#160;0x00</td></tr>
+<tr class="memitem:ae364a0fdd9ef554087add871a985f378"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae364a0fdd9ef554087add871a985f378"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCVR_TRIGGER_4</b>&#160;&#160;&#160;0x40</td></tr>
+<tr class="memitem:aa35d0536e30289645c3bb7546b1ada75"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa35d0536e30289645c3bb7546b1ada75"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCVR_TRIGGER_8</b>&#160;&#160;&#160;0x80</td></tr>
+<tr class="memitem:a616ec5a86c01969838fdc4a36e5577cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a616ec5a86c01969838fdc4a36e5577cb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCVR_TRIGGER_14</b>&#160;&#160;&#160;0xC0</td></tr>
+<tr class="memitem:a4c8b6e3f5b517ddc1b9f9670ea0ead8f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4c8b6e3f5b517ddc1b9f9670ea0ead8f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WORD_LENGTH</b>&#160;&#160;&#160;0x03</td></tr>
+<tr class="memitem:ad0c3743efc15a1320478871dc92998bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad0c3743efc15a1320478871dc92998bd"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STOP_BIT</b>&#160;&#160;&#160;0x04</td></tr>
+<tr class="memitem:a3fe0dea7b30a55d84f5763338956eb44"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3fe0dea7b30a55d84f5763338956eb44"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PARITY_BIT</b>&#160;&#160;&#160;0x38</td></tr>
+<tr class="memitem:a6e39c5c443322398878f10e0f1e6f023"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e39c5c443322398878f10e0f1e6f023"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NO_PARITY</b>&#160;&#160;&#160;0x00</td></tr>
+<tr class="memitem:a30a963ff1432e4cfbdd83e74045ef142"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a30a963ff1432e4cfbdd83e74045ef142"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EVEN_PARITY</b>&#160;&#160;&#160;0x08</td></tr>
+<tr class="memitem:a898d7631f24dd6b1deebf808a2214ea2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a898d7631f24dd6b1deebf808a2214ea2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ODD_PARITY</b>&#160;&#160;&#160;0x18</td></tr>
+<tr class="memitem:a07fe59003e865d7d9abe270465985711"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07fe59003e865d7d9abe270465985711"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MARK_PARITY</b>&#160;&#160;&#160;0x28</td></tr>
+<tr class="memitem:a321943571d12084d5c42a4275595000b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a321943571d12084d5c42a4275595000b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SPACE_PARITY</b>&#160;&#160;&#160;0x38</td></tr>
+<tr class="memitem:a37a5529789f9658be9efe84db0fb04fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37a5529789f9658be9efe84db0fb04fe"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SET_BREAK</b>&#160;&#160;&#160;0x40</td></tr>
+<tr class="memitem:aeacff95e17799eeacbff843e63ead9d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeacff95e17799eeacbff843e63ead9d3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DLAB</b>&#160;&#160;&#160;0x80</td></tr>
+<tr class="memitem:a67198df5376db153ccd642a81d2623ad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67198df5376db153ccd642a81d2623ad"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DTR</b>&#160;&#160;&#160;0x01</td></tr>
+<tr class="memitem:a5da46cdb9a2133d1b4f0db71a332ba2e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5da46cdb9a2133d1b4f0db71a332ba2e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RTS</b>&#160;&#160;&#160;0x02</td></tr>
+<tr class="memitem:a6852950010a1b039347cb86df74cc270"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6852950010a1b039347cb86df74cc270"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT1</b>&#160;&#160;&#160;0x04</td></tr>
+<tr class="memitem:a0f6562f6a79336bba7d01d5f2102502f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f6562f6a79336bba7d01d5f2102502f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT2</b>&#160;&#160;&#160;0x08</td></tr>
+<tr class="memitem:a8e8f11caf539de9555d07b4e7ef5b1da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e8f11caf539de9555d07b4e7ef5b1da"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LOOP</b>&#160;&#160;&#160;0x10</td></tr>
+<tr class="memitem:a8fb916e86eee9bc7a2c2924d6e9d65f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8fb916e86eee9bc7a2c2924d6e9d65f3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DATA_READY</b>&#160;&#160;&#160;0x01</td></tr>
+<tr class="memitem:a71c26bc752960acd5308f21b05a13714"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71c26bc752960acd5308f21b05a13714"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OVERRUN_ERROR</b>&#160;&#160;&#160;0x02</td></tr>
+<tr class="memitem:a81d2ca6759f3f3bf04556b7558aea6bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a81d2ca6759f3f3bf04556b7558aea6bc"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PARITY_ERROR</b>&#160;&#160;&#160;0x04</td></tr>
+<tr class="memitem:a5bf1d46877ac22d5e12d9b1c0432d373"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5bf1d46877ac22d5e12d9b1c0432d373"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FRAMING_ERROR</b>&#160;&#160;&#160;0x08</td></tr>
+<tr class="memitem:aba80f8e0eadad6692ac6e17c342cc0bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aba80f8e0eadad6692ac6e17c342cc0bd"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BREAK_INTERRUPT</b>&#160;&#160;&#160;0x10</td></tr>
+<tr class="memitem:a999ff55f951859dfb2d82c886c1379bb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a999ff55f951859dfb2d82c886c1379bb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>THR_EMPTY</b>&#160;&#160;&#160;0x20</td></tr>
+<tr class="memitem:ae4034d6a21b6646c8710d09e43bd9383"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4034d6a21b6646c8710d09e43bd9383"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TX_EMPTY</b>&#160;&#160;&#160;0x40</td></tr>
+<tr class="memitem:a32560e690492fabe1588f5b922315cfa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a32560e690492fabe1588f5b922315cfa"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCVR_FIFO_ERROR</b>&#160;&#160;&#160;0x80</td></tr>
+<tr class="memitem:a230decb2e8e20d6ef3df26c7051f775e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a230decb2e8e20d6ef3df26c7051f775e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DCTS</b>&#160;&#160;&#160;0x01</td></tr>
+<tr class="memitem:a6ef491029f03966f58e211a4b3dd731d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ef491029f03966f58e211a4b3dd731d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DDSR</b>&#160;&#160;&#160;0x02</td></tr>
+<tr class="memitem:add3cb0cb2765504541e9cf0a33231f67"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add3cb0cb2765504541e9cf0a33231f67"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TERI</b>&#160;&#160;&#160;0x04</td></tr>
+<tr class="memitem:a3f44d8de622e68c467e2191a5ed2442d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f44d8de622e68c467e2191a5ed2442d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DDCD</b>&#160;&#160;&#160;0x08</td></tr>
+<tr class="memitem:a9d9ce8cebc572a42e7b4ab9e92c3a350"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d9ce8cebc572a42e7b4ab9e92c3a350"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CTS</b>&#160;&#160;&#160;0x10</td></tr>
+<tr class="memitem:aa94aa7be4f567346163b45d1c18ec0a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa94aa7be4f567346163b45d1c18ec0a5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DSR</b>&#160;&#160;&#160;0x20</td></tr>
+<tr class="memitem:a7e71def3baefc10ec36f1dd48da4050e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e71def3baefc10ec36f1dd48da4050e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RI</b>&#160;&#160;&#160;0x40</td></tr>
+<tr class="memitem:a45d0e388f3c855ad190ee81d73188584"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45d0e388f3c855ad190ee81d73188584"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DCD</b>&#160;&#160;&#160;0x80</td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+<p>Description de ce que fait le fichier </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Lundi Mai 6 2013 23:52:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
+</a> 1.8.1.2
 </small></address>
-
 </body>
 </html>

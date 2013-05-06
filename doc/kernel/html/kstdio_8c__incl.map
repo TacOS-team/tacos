@@ -1,0 +1,18 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="674,161,738,189"/>
+<area shape="rect" id="node29" href="$tty_8h.html" title="Terminal posix&#45;like." alt="" coords="938,238,984,266"/>
+<area shape="rect" id="node35" href="$vfs_8h.html" title="Virtual File System." alt="" coords="385,83,436,111"/>
+<area shape="rect" id="node46" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="744,238,821,266"/>
+<area shape="rect" id="node50" href="$stdlib_8h_source.html" title="klibc/stdlib.h" alt="" coords="866,83,960,111"/>
+<area shape="rect" id="node5" href="$types_8h.html" title="types.h" alt="" coords="392,393,453,421"/>
+<area shape="rect" id="node7" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="717,315,797,343"/>
+<area shape="rect" id="node9" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="485,238,570,266"/>
+<area shape="rect" id="node11" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="213,315,290,343"/>
+<area shape="rect" id="node15" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="314,315,418,343"/>
+<area shape="rect" id="node17" href="$process__types_8h.html" title="process_types.h" alt="" coords="442,315,557,343"/>
+<area shape="rect" id="node19" href="$symtable_8h.html" title="symtable.h" alt="" coords="56,315,138,343"/>
+<area shape="rect" id="node25" href="$vmm_8h.html" title="vmm.h" alt="" coords="632,315,693,343"/>
+<area shape="rect" id="node32" href="$termios__types_8h.html" title="termios_types.h" alt="" coords="922,315,1034,343"/>
+<area shape="rect" id="node39" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="166,161,228,189"/>
+<area shape="rect" id="node42" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="166,238,228,266"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="5,83,179,111"/>
+<area shape="rect" id="node5" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="203,83,376,111"/>
+<area shape="rect" id="node7" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="400,83,507,111"/>
+<area shape="rect" id="node9" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="531,83,653,111"/>
+<area shape="rect" id="node11" href="$ksem_8c.html" title="Gestion des sémaphores." alt="" coords="677,83,779,111"/>
+</map>

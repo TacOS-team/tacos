@@ -23,7 +23,7 @@ var searchData=
   ['onlret',['ONLRET',['../termios__types_8h.html#a8fd17e0aa25ab2abd07477442ba1928e',1,'ONLRET():&#160;termios_types.h'],['../termios_8h.html#a8fd17e0aa25ab2abd07477442ba1928e',1,'ONLRET():&#160;termios.h']]],
   ['onocr',['ONOCR',['../termios__types_8h.html#aab452deaf5d1b993c3b0ff2d3e408577',1,'ONOCR():&#160;termios_types.h'],['../termios_8h.html#aab452deaf5d1b993c3b0ff2d3e408577',1,'ONOCR():&#160;termios.h']]],
   ['op_5fsize',['op_size',['../structx86__idt__entry.html#a58f211f10555adac756847fa46a0c856',1,'x86_idt_entry']]],
-  ['open',['open',['../struct__fs__instance__t.html#a693ff16b5d2119c50abd40a59f62cd66',1,'_fs_instance_t::open()'],['../fcntl_8c.html#adcb60598073f6f9cbb0091ef6768fa5c',1,'open(const char *pathname, int flags):&#160;fcntl.c'],['../fcntl_8h.html#adcb60598073f6f9cbb0091ef6768fa5c',1,'open(const char *pathname, int flags):&#160;fcntl.c']]],
+  ['open',['open',['../fcntl_8c.html#adcb60598073f6f9cbb0091ef6768fa5c',1,'open(const char *pathname, int flags):&#160;fcntl.c'],['../fcntl_8h.html#adcb60598073f6f9cbb0091ef6768fa5c',1,'open(const char *pathname, int flags):&#160;fcntl.c']]],
   ['opendir',['opendir',['../dirent_8c.html#ad09dd96447776d2bc5d8321e4b499591',1,'opendir(const char *dirname):&#160;dirent.c'],['../dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591',1,'opendir(const char *dirname):&#160;dirent.c']]],
   ['operation_5fsize',['operation_size',['../structx86__segment__descriptor.html#a40c320788bf23e3660d0def872cec94c',1,'x86_segment_descriptor']]],
   ['opost',['OPOST',['../termios__types_8h.html#a0aad4afe9e202fff8ced3485bc835bb1',1,'OPOST():&#160;termios_types.h'],['../termios_8h.html#a0aad4afe9e202fff8ced3485bc835bb1',1,'OPOST():&#160;termios.h']]],

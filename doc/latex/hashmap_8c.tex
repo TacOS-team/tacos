@@ -1,0 +1,43 @@
+\hypertarget{hashmap_8c}{\section{Référence du fichier kernel/utils/hashmap.c}
+\label{hashmap_8c}\index{kernel/utils/hashmap.\-c@{kernel/utils/hashmap.\-c}}
+}
+{\ttfamily \#include $<$kmalloc.\-h$>$}\\*
+{\ttfamily \#include $<$hashmap.\-h$>$}\\*
+Graphe des dépendances par inclusion de hashmap.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{hashmap_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d}{\hyperlink{struct____hashmap__t}{hashmap\-\_\-t} $\ast$ {\bfseries hashmap\-\_\-create} (int size, int($\ast$equal)(struct hashmap\-\_\-key\-\_\-t $\ast$, struct hashmap\-\_\-key\-\_\-t $\ast$), int($\ast$hash)(struct hashmap\-\_\-key\-\_\-t $\ast$))}\label{hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d}
+
+\item 
+\hypertarget{hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d}{void {\bfseries hashmap\-\_\-set} (\hyperlink{struct____hashmap__t}{hashmap\-\_\-t} $\ast$this, struct hashmap\-\_\-key\-\_\-t $\ast$key, struct hashmap\-\_\-value\-\_\-t $\ast$value)}\label{hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d}
+
+\item 
+\hypertarget{hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e}{struct hashmap\-\_\-value\-\_\-t $\ast$ {\bfseries hashmap\-\_\-remove} (\hyperlink{struct____hashmap__t}{hashmap\-\_\-t} $\ast$this, struct hashmap\-\_\-key\-\_\-t $\ast$key)}\label{hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e}
+
+\item 
+\hypertarget{hashmap_8c_a37bdba9503b86db73e6067b97b858dbd}{struct hashmap\-\_\-value\-\_\-t $\ast$ {\bfseries hashmap\-\_\-get} (\hyperlink{struct____hashmap__t}{hashmap\-\_\-t} $\ast$this, struct hashmap\-\_\-key\-\_\-t $\ast$key)}\label{hashmap_8c_a37bdba9503b86db73e6067b97b858dbd}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+Hashmap générique. Des tests un peu plus poussés sont à faire. 

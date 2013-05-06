@@ -1,0 +1,62 @@
+\hypertarget{structscheduler__descriptor__t}{\section{Référence de la structure scheduler\-\_\-descriptor\-\_\-t}
+\label{structscheduler__descriptor__t}\index{scheduler\-\_\-descriptor\-\_\-t@{scheduler\-\_\-descriptor\-\_\-t}}
+}
+
+
+{\ttfamily \#include $<$scheduler.\-h$>$}
+
+
+
+Graphe de collaboration de scheduler\-\_\-descriptor\-\_\-t\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structscheduler__descriptor__t__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structscheduler__descriptor__t_afced959947154805968548b106fe322b}{char $\ast$ {\bfseries name}}\label{structscheduler__descriptor__t_afced959947154805968548b106fe322b}
+
+\item 
+int($\ast$ \hyperlink{structscheduler__descriptor__t_a250bb59b72e7a3828160638033ac5cb3}{initialize} )(int)
+\item 
+\hyperlink{structprocess__t}{process\-\_\-t} $\ast$($\ast$ \hyperlink{structscheduler__descriptor__t_a41661a5080062b563df01dfb1a02e22e}{get\-\_\-next\-\_\-process} )()
+\item 
+\hyperlink{structprocess__t}{process\-\_\-t} $\ast$($\ast$ \hyperlink{structscheduler__descriptor__t_a077b3b95ecf49c9dacc40b6a87cb1008}{get\-\_\-current\-\_\-process} )()
+\item 
+int($\ast$ \hyperlink{structscheduler__descriptor__t_a8919a05ae907a4b642563078a28e744a}{add\-\_\-process} )(\hyperlink{structprocess__t}{process\-\_\-t} $\ast$)
+\item 
+int($\ast$ \hyperlink{structscheduler__descriptor__t_a656d41ddd8d861d0ee55523de3693dfa}{delete\-\_\-process} )(int)
+\item 
+\hypertarget{structscheduler__descriptor__t_a147506c1d8e71482bad2a906102d8f30}{void($\ast$ {\bfseries inject\-\_\-idle} )(\hyperlink{structprocess__t}{process\-\_\-t} $\ast$)}\label{structscheduler__descriptor__t_a147506c1d8e71482bad2a906102d8f30}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Cette structure doit contenir les differents pointeurs de fonctions pour manipuler le scheduler 
+
+\subsection{Documentation des champs}
+\hypertarget{structscheduler__descriptor__t_a8919a05ae907a4b642563078a28e744a}{\index{scheduler\-\_\-descriptor\-\_\-t@{scheduler\-\_\-descriptor\-\_\-t}!add\-\_\-process@{add\-\_\-process}}
+\index{add\-\_\-process@{add\-\_\-process}!scheduler_descriptor_t@{scheduler\-\_\-descriptor\-\_\-t}}
+\subsubsection[{add\-\_\-process}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ scheduler\-\_\-descriptor\-\_\-t\-::add\-\_\-process)({\bf process\-\_\-t} $\ast$)}}\label{structscheduler__descriptor__t_a8919a05ae907a4b642563078a28e744a}
+Ajouter un processus \hypertarget{structscheduler__descriptor__t_a656d41ddd8d861d0ee55523de3693dfa}{\index{scheduler\-\_\-descriptor\-\_\-t@{scheduler\-\_\-descriptor\-\_\-t}!delete\-\_\-process@{delete\-\_\-process}}
+\index{delete\-\_\-process@{delete\-\_\-process}!scheduler_descriptor_t@{scheduler\-\_\-descriptor\-\_\-t}}
+\subsubsection[{delete\-\_\-process}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ scheduler\-\_\-descriptor\-\_\-t\-::delete\-\_\-process)(int)}}\label{structscheduler__descriptor__t_a656d41ddd8d861d0ee55523de3693dfa}
+Supprimer un processus \hypertarget{structscheduler__descriptor__t_a077b3b95ecf49c9dacc40b6a87cb1008}{\index{scheduler\-\_\-descriptor\-\_\-t@{scheduler\-\_\-descriptor\-\_\-t}!get\-\_\-current\-\_\-process@{get\-\_\-current\-\_\-process}}
+\index{get\-\_\-current\-\_\-process@{get\-\_\-current\-\_\-process}!scheduler_descriptor_t@{scheduler\-\_\-descriptor\-\_\-t}}
+\subsubsection[{get\-\_\-current\-\_\-process}]{\setlength{\rightskip}{0pt plus 5cm}{\bf process\-\_\-t}$\ast$($\ast$ scheduler\-\_\-descriptor\-\_\-t\-::get\-\_\-current\-\_\-process)()}}\label{structscheduler__descriptor__t_a077b3b95ecf49c9dacc40b6a87cb1008}
+Trouver le processus actuel \hypertarget{structscheduler__descriptor__t_a41661a5080062b563df01dfb1a02e22e}{\index{scheduler\-\_\-descriptor\-\_\-t@{scheduler\-\_\-descriptor\-\_\-t}!get\-\_\-next\-\_\-process@{get\-\_\-next\-\_\-process}}
+\index{get\-\_\-next\-\_\-process@{get\-\_\-next\-\_\-process}!scheduler_descriptor_t@{scheduler\-\_\-descriptor\-\_\-t}}
+\subsubsection[{get\-\_\-next\-\_\-process}]{\setlength{\rightskip}{0pt plus 5cm}{\bf process\-\_\-t}$\ast$($\ast$ scheduler\-\_\-descriptor\-\_\-t\-::get\-\_\-next\-\_\-process)()}}\label{structscheduler__descriptor__t_a41661a5080062b563df01dfb1a02e22e}
+Trouver le prochain processus selon le scheduler \hypertarget{structscheduler__descriptor__t_a250bb59b72e7a3828160638033ac5cb3}{\index{scheduler\-\_\-descriptor\-\_\-t@{scheduler\-\_\-descriptor\-\_\-t}!initialize@{initialize}}
+\index{initialize@{initialize}!scheduler_descriptor_t@{scheduler\-\_\-descriptor\-\_\-t}}
+\subsubsection[{initialize}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ scheduler\-\_\-descriptor\-\_\-t\-::initialize)(int)}}\label{structscheduler__descriptor__t_a250bb59b72e7a3828160638033ac5cb3}
+Initialisation du scheduler 
+
+La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+\item 
+kernel/include/\hyperlink{scheduler_8h}{scheduler.\-h}\end{DoxyCompactItemize}

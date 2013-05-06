@@ -4,43 +4,33 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <title>TacOS:  Fichier source de kernel/drivers/block/floppy/floppy_dma.h</title>
-
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
-
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div! -->
-
-
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  
-  
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
    &#160;<span id="projectnumber">0.1</span>
    </div>
-   
   </td>
-  
-  
-  
  </tr>
  </tbody>
 </table>
 </div>
-
-<!-- Généré par Doxygen 1.7.6.1 -->
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -73,28 +63,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
     </ul>
   </div>
-</div>
-<div class="header">
-  <div class="headertitle">
-<div class="title">kernel/drivers/block/floppy/floppy_dma.h</div>  </div>
-</div><!--header-->
-<div class="contents">
-<a href="floppy__dma_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00030"></a>00030 <span class="preprocessor">#ifndef _FLOPPY_DMA_H_</span>
-<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define _FLOPPY_DMA_H_</span>
-<a name="l00032"></a>00032 <span class="preprocessor"></span>
-<a name="l00037"></a><a class="code" href="floppy__dma_8h.html#adfcc8a5beaf1532fc574bc706d3e1fbe">00037</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {FLOPPY_WRITE = 1, FLOPPY_READ = 2} <a class="code" href="floppy__dma_8h.html#adfcc8a5beaf1532fc574bc706d3e1fbe" title="Défini le sens de la communication (input / output)">floppy_io</a>;
-<a name="l00038"></a>00038 
-<a name="l00043"></a>00043 <span class="keywordtype">void</span> <a class="code" href="floppy__dma_8c.html#a82b03eec2e2db0df14b77521b2b0cd99" title="Initialise le dma en écriture ou en lecture selon la valeur passée en paramètre.">floppy_dma_init</a>(<a class="code" href="floppy__dma_8h.html#adfcc8a5beaf1532fc574bc706d3e1fbe" title="Défini le sens de la communication (input / output)">floppy_io</a> io_dir);
-<a name="l00044"></a>00044 
-<a name="l00052"></a>00052 <span class="keywordtype">void</span> <a class="code" href="floppy__dma_8c.html#ac6e644203ea530de67552b2debe0bac2" title="Lis un secteur via le DMA à partir d&#39;un adressage CHS.">floppy_read_sector</a>(<span class="keywordtype">int</span> cylinder, <span class="keywordtype">int</span> head, <span class="keywordtype">int</span> sector, <span class="keywordtype">char</span>* buffer);
-<a name="l00053"></a>00053 
-<a name="l00061"></a>00061 <span class="keywordtype">void</span> <a class="code" href="floppy__dma_8c.html#af9d347980c43209de48f63cd9f201419" title="Ecrit un secteur via le DMA à partir d&#39;un adressage CHS.">floppy_write_sector</a>(<span class="keywordtype">int</span> cylinder, <span class="keywordtype">int</span> head, <span class="keywordtype">int</span> sector, <span class="keywordtype">char</span>* buffer);
-<a name="l00062"></a>00062 
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 <span class="preprocessor">#endif</span>
-</pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -109,13 +77,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </iframe>
 </div>
 
-
-
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_0de1d64efa6df97eacc8f5b0f9da3e59.html">drivers</a></li><li class="navelem"><a class="el" href="dir_9327dbb3bc40ae88994b7f67f81babb9.html">block</a></li><li class="navelem"><a class="el" href="dir_4c153ac04b642253c2d4619fe8aafeed.html">floppy</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">floppy_dma.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="floppy__dma_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifndef _FLOPPY_DMA_H_</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _FLOPPY_DMA_H_</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="floppy__dma_8h.html#adfcc8a5beaf1532fc574bc706d3e1fbe">   37</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {FLOPPY_WRITE = 1, FLOPPY_READ = 2} <a class="code" href="floppy__dma_8h.html#adfcc8a5beaf1532fc574bc706d3e1fbe" title="Défini le sens de la communication (input / output)">floppy_io</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__dma_8c.html#a82b03eec2e2db0df14b77521b2b0cd99" title="Initialise le dma en écriture ou en lecture selon la valeur passée en paramètre.">floppy_dma_init</a>(<a class="code" href="floppy__dma_8h.html#adfcc8a5beaf1532fc574bc706d3e1fbe" title="Défini le sens de la communication (input / output)">floppy_io</a> io_dir);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__dma_8c.html#ac6e644203ea530de67552b2debe0bac2" title="Lis un secteur via le DMA à partir d&#39;un adressage CHS.">floppy_read_sector</a>(<span class="keywordtype">int</span> cylinder, <span class="keywordtype">int</span> head, <span class="keywordtype">int</span> sector, <span class="keywordtype">char</span>* buffer);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__dma_8c.html#af9d347980c43209de48f63cd9f201419" title="Ecrit un secteur via le DMA à partir d&#39;un adressage CHS.">floppy_write_sector</a>(<span class="keywordtype">int</span> cylinder, <span class="keywordtype">int</span> head, <span class="keywordtype">int</span> sector, <span class="keywordtype">char</span>* buffer);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Juin 24 2012 10:56:46 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Lundi Mai 6 2013 23:52:52 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
+</a> 1.8.1.2
 </small></address>
-
 </body>
 </html>

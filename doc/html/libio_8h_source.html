@@ -4,43 +4,33 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <title>TacOS:  Fichier source de libc/include/libio.h</title>
-
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
-
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div! -->
-
-
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  
-  
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
    &#160;<span id="projectnumber">0.1</span>
    </div>
-   
   </td>
-  
-  
-  
  </tr>
  </tbody>
 </table>
 </div>
-
-<!-- Généré par Doxygen 1.7.6.1 -->
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -73,60 +63,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
     </ul>
   </div>
-</div>
-<div class="header">
-  <div class="headertitle">
-<div class="title">libc/include/libio.h</div>  </div>
-</div><!--header-->
-<div class="contents">
-<a href="libio_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _LIBIO_H_</span>
-<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _LIBIO_H_</span>
-<a name="l00031"></a>00031 <span class="preprocessor"></span>
-<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="cdefs_8h.html">sys/cdefs.h</a>&gt;</span>
-<a name="l00033"></a>00033 
-<a name="l00034"></a>00034 __BEGIN_DECLS
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036 <span class="preprocessor">#include &lt;<a class="code" href="libc_2include_2sys_2types_8h.html">sys/types.h</a>&gt;</span>
-<a name="l00037"></a>00037 
-<a name="l00038"></a><a class="code" href="libio_8h.html#a8a7b4be44019ecd4f5daa590b49bfa46">00038</a> <span class="preprocessor">#define _IO_MAGIC 0xFBAD0000 </span>
-<a name="l00039"></a><a class="code" href="libio_8h.html#a5607bcef18c9bfdca76e5e267bfe6cd9">00039</a> <span class="preprocessor">#define _IO_MAGIC_MASK 0xFFFF0000 </span>
-<a name="l00040"></a><a class="code" href="libio_8h.html#aecd47314dd69a1e4fc63ada7eff1175b">00040</a> <span class="preprocessor">#define _IO_UNBUFFERED 2  </span>
-<a name="l00041"></a><a class="code" href="libio_8h.html#ae5debdcd9d593da3bfa82b0727a5f0a6">00041</a> <span class="preprocessor">#define _IO_LINE_BUF 0x200 </span>
-<a name="l00042"></a>00042 <span class="preprocessor">#define _IO_EOF_SEEN 0x10</span>
-<a name="l00043"></a>00043 <span class="preprocessor"></span><span class="preprocessor">#define _IO_ERR_SEEN 0x20</span>
-<a name="l00044"></a>00044 <span class="preprocessor"></span><span class="comment">// TODO : définir d&#39;autres flags (cf libc)</span>
-<a name="l00045"></a>00045 
-<a name="l00050"></a><a class="code" href="struct__IO__FILE.html">00050</a> <span class="keyword">struct </span><a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">_IO_FILE</a> {
-<a name="l00051"></a><a class="code" href="struct__IO__FILE.html#a364ce3577f2cdb788df3a2a54909f45a">00051</a>         <span class="keywordtype">int</span> <a class="code" href="struct__IO__FILE.html#a364ce3577f2cdb788df3a2a54909f45a">_flags</a>;             
-<a name="l00053"></a>00053         <span class="comment">/* The following pointers correspond to the C++ streambuf protocol. */</span>
-<a name="l00054"></a>00054         <span class="comment">/* Note:  Tk uses the _IO_read_ptr and _IO_read_end fields directly. */</span>
-<a name="l00055"></a><a class="code" href="struct__IO__FILE.html#a1c2f65148a6f2e35c478af0fc144fded">00055</a>         <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#a1c2f65148a6f2e35c478af0fc144fded">_IO_read_ptr</a>;             
-<a name="l00056"></a><a class="code" href="struct__IO__FILE.html#a6994a0f73699af311e4669b4baa0e26b">00056</a>         <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#a6994a0f73699af311e4669b4baa0e26b">_IO_read_end</a>;             
-<a name="l00057"></a><a class="code" href="struct__IO__FILE.html#a2a449978f6e6aa2172f7f82ed1d42f37">00057</a>         <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#a2a449978f6e6aa2172f7f82ed1d42f37">_IO_read_base</a>;            
-<a name="l00058"></a><a class="code" href="struct__IO__FILE.html#a6631dc1b00cd5a378280606c9333f40a">00058</a>         <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#a6631dc1b00cd5a378280606c9333f40a">_IO_write_base</a>;   
-<a name="l00059"></a><a class="code" href="struct__IO__FILE.html#ab746b60c0613c28d3451b13afdd703b5">00059</a>         <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#ab746b60c0613c28d3451b13afdd703b5">_IO_write_ptr</a>;            
-<a name="l00060"></a><a class="code" href="struct__IO__FILE.html#ad68f27b22fb43ab7a50bdaa50dc7d725">00060</a>         <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#ad68f27b22fb43ab7a50bdaa50dc7d725">_IO_write_end</a>;            
-<a name="l00061"></a><a class="code" href="struct__IO__FILE.html#a2bf5a30fdc43564cf2e46d2cce8e82dd">00061</a>         <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#a2bf5a30fdc43564cf2e46d2cce8e82dd">_IO_buf_base</a>;             
-<a name="l00062"></a><a class="code" href="struct__IO__FILE.html#ac9fa3b261e95a246dac19dc35045be42">00062</a>         <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#ac9fa3b261e95a246dac19dc35045be42">_IO_buf_end</a>;              
-<a name="l00063"></a>00063         <span class="comment">/* The following fields are used to support backing up and undo. */</span>
-<a name="l00064"></a><a class="code" href="struct__IO__FILE.html#a3ef98bd6be88c72459cf4a670a5ba35c">00064</a>         <span class="keywordtype">char</span> *<a class="code" href="struct__IO__FILE.html#a3ef98bd6be88c72459cf4a670a5ba35c">_IO_save_base</a>;            
-<a name="l00065"></a><a class="code" href="struct__IO__FILE.html#a8e6f38619f990a207a598132f4e6e661">00065</a>         <span class="keywordtype">char</span> *<a class="code" href="struct__IO__FILE.html#a8e6f38619f990a207a598132f4e6e661">_IO_backup_base</a>;  
-<a name="l00066"></a><a class="code" href="struct__IO__FILE.html#a48102d534ea93a120fc025b1bead08cb">00066</a>         <span class="keywordtype">char</span> *<a class="code" href="struct__IO__FILE.html#a48102d534ea93a120fc025b1bead08cb">_IO_save_end</a>;             
-<a name="l00068"></a>00068         <span class="keyword">struct </span><a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">_IO_FILE</a> *_chain;
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070         <span class="keywordtype">int</span> _fileno;
-<a name="l00071"></a>00071 };
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073 <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">_IO_FILE</a> <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a>;
-<a name="l00074"></a>00074 
-<a name="l00075"></a>00075 <span class="keyword">extern</span> <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *<a class="code" href="libio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a>; 
-<a name="l00076"></a>00076 <span class="keyword">extern</span> <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *<a class="code" href="libio_8h.html#ac80f4484175bf6c48d7b7ca4e9897ae6">stdout</a>; 
-<a name="l00077"></a>00077 <span class="keyword">extern</span> <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *<a class="code" href="libio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>; 
-<a name="l00079"></a>00079 __END_DECLS
-<a name="l00080"></a>00080 
-<a name="l00081"></a>00081 <span class="preprocessor">#endif</span>
-</pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -141,13 +77,69 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </iframe>
 </div>
 
-
-
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_fc1eb218ab426e5adb60367f98438da0.html">libc</a></li><li class="navelem"><a class="el" href="dir_2a917577c833953ff5901e4935a90760.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">libio.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="libio_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _LIBIO_H_</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _LIBIO_H_</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cdefs_8h.html">sys/cdefs.h</a>&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;__BEGIN_DECLS</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="libc_2include_2sys_2types_8h.html">sys/types.h</a>&gt;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="libio_8h.html#a8a7b4be44019ecd4f5daa590b49bfa46">   38</a></span>&#160;<span class="preprocessor">#define _IO_MAGIC 0xFBAD0000 </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="libio_8h.html#a5607bcef18c9bfdca76e5e267bfe6cd9">   39</a></span>&#160;<span class="preprocessor">#define _IO_MAGIC_MASK 0xFFFF0000 </span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="libio_8h.html#aecd47314dd69a1e4fc63ada7eff1175b">   40</a></span>&#160;<span class="preprocessor">#define _IO_UNBUFFERED 2  </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="libio_8h.html#ae5debdcd9d593da3bfa82b0727a5f0a6">   41</a></span>&#160;<span class="preprocessor">#define _IO_LINE_BUF 0x200 </span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#define _IO_EOF_SEEN 0x10</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _IO_ERR_SEEN 0x20</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span><span class="comment">// TODO : définir d&#39;autres flags (cf libc)</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="struct__IO__FILE.html">   50</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">_IO_FILE</a> {</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="struct__IO__FILE.html#a364ce3577f2cdb788df3a2a54909f45a">   51</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="struct__IO__FILE.html#a364ce3577f2cdb788df3a2a54909f45a">_flags</a>;             </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="comment">/* The following pointers correspond to the C++ streambuf protocol. */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="comment">/* Note:  Tk uses the _IO_read_ptr and _IO_read_end fields directly. */</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="struct__IO__FILE.html#a1c2f65148a6f2e35c478af0fc144fded">   55</a></span>&#160;        <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#a1c2f65148a6f2e35c478af0fc144fded">_IO_read_ptr</a>;             </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="struct__IO__FILE.html#a6994a0f73699af311e4669b4baa0e26b">   56</a></span>&#160;        <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#a6994a0f73699af311e4669b4baa0e26b">_IO_read_end</a>;             </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="struct__IO__FILE.html#a2a449978f6e6aa2172f7f82ed1d42f37">   57</a></span>&#160;        <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#a2a449978f6e6aa2172f7f82ed1d42f37">_IO_read_base</a>;            </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="struct__IO__FILE.html#a6631dc1b00cd5a378280606c9333f40a">   58</a></span>&#160;        <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#a6631dc1b00cd5a378280606c9333f40a">_IO_write_base</a>;   </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="struct__IO__FILE.html#ab746b60c0613c28d3451b13afdd703b5">   59</a></span>&#160;        <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#ab746b60c0613c28d3451b13afdd703b5">_IO_write_ptr</a>;            </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="struct__IO__FILE.html#ad68f27b22fb43ab7a50bdaa50dc7d725">   60</a></span>&#160;        <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#ad68f27b22fb43ab7a50bdaa50dc7d725">_IO_write_end</a>;            </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="struct__IO__FILE.html#a2bf5a30fdc43564cf2e46d2cce8e82dd">   61</a></span>&#160;        <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#a2bf5a30fdc43564cf2e46d2cce8e82dd">_IO_buf_base</a>;             </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="struct__IO__FILE.html#ac9fa3b261e95a246dac19dc35045be42">   62</a></span>&#160;        <span class="keywordtype">char</span>* <a class="code" href="struct__IO__FILE.html#ac9fa3b261e95a246dac19dc35045be42">_IO_buf_end</a>;              </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">/* The following fields are used to support backing up and undo. */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="struct__IO__FILE.html#a3ef98bd6be88c72459cf4a670a5ba35c">   64</a></span>&#160;        <span class="keywordtype">char</span> *<a class="code" href="struct__IO__FILE.html#a3ef98bd6be88c72459cf4a670a5ba35c">_IO_save_base</a>;            </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="struct__IO__FILE.html#a8e6f38619f990a207a598132f4e6e661">   65</a></span>&#160;        <span class="keywordtype">char</span> *<a class="code" href="struct__IO__FILE.html#a8e6f38619f990a207a598132f4e6e661">_IO_backup_base</a>;  </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="struct__IO__FILE.html#a48102d534ea93a120fc025b1bead08cb">   66</a></span>&#160;        <span class="keywordtype">char</span> *<a class="code" href="struct__IO__FILE.html#a48102d534ea93a120fc025b1bead08cb">_IO_save_end</a>;             </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">_IO_FILE</a> *_chain;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">int</span> _fileno;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">_IO_FILE</a> <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">extern</span> <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *<a class="code" href="libio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a>; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">extern</span> <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *<a class="code" href="libio_8h.html#ac80f4484175bf6c48d7b7ca4e9897ae6">stdout</a>; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">extern</span> <a class="code" href="struct__IO__FILE.html" title="Gestion de stream. Inspiré de posix.">FILE</a> *<a class="code" href="libio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;__END_DECLS</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Lundi Mai 6 2013 23:52:52 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
+</a> 1.8.1.2
 </small></address>
-
 </body>
 </html>

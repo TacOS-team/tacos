@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="libc/include/time.h" name="libc/include/time.h">
 <area shape="rect" id="node3" href="$stat_8h.html" title="libc/include/sys/stat.h" alt="" coords="805,83,952,111"/>
 <area shape="rect" id="node34" href="$time_8c.html" title="libc/time.c" alt="" coords="1560,238,1640,266"/>
 <area shape="rect" id="node5" href="$dirent_8h.html" title="Définition de DIR et struct dirent." alt="" coords="97,161,231,189"/>

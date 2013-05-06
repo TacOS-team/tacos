@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$signal_8h.html#ae9fc1d1a853fcc23a5e434506aa47bca" title="kill" alt="" coords="115,5,152,33"/>
+<area shape="rect" id="node7" href="$unistd_8h.html#ac61b207337ca21b3b309593fd1a0cb82" title="Obtenir l&#39;identifiant du processus." alt="" coords="105,55,161,83"/>
+<area shape="rect" id="node5" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="212,30,273,58"/>
+</map>

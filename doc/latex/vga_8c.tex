@@ -1,0 +1,93 @@
+\hypertarget{vga_8c}{\section{Référence du fichier kernel/drivers/char/vga.c}
+\label{vga_8c}\index{kernel/drivers/char/vga.\-c@{kernel/drivers/char/vga.\-c}}
+}
+{\ttfamily \#include $<$fs/devfs.\-h$>$}\\*
+{\ttfamily \#include $<$ioports.\-h$>$}\\*
+{\ttfamily \#include $<$klog.\-h$>$}\\*
+{\ttfamily \#include $<$klibc/string.\-h$>$}\\*
+{\ttfamily \#include $<$drivers/vga.\-h$>$}\\*
+{\ttfamily \#include $<$drivers/vga\-\_\-modes.\-h$>$}\\*
+Graphe des dépendances par inclusion de vga.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vga_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{vga_8c_ae7216e48b3fa4629e39e1002bbfad10b}{N\-B\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R\-\_\-\-G\-R\-O\-U\-P\-S}~5
+\end{DoxyCompactItemize}
+\subsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries reg\-\_\-groups\-\_\-names} \{ \\*
+{\bfseries G\-C}, 
+{\bfseries S\-E\-Q}, 
+{\bfseries A\-C}, 
+{\bfseries C\-R\-T\-C}, 
+\\*
+{\bfseries M\-I\-S\-C}
+ \}
+\item 
+enum \hyperlink{vga_8c_ac1f0e67ab147f10622a5aca934210abb}{other\-\_\-regs\-\_\-names} \{ {\bfseries I\-N\-S\-T\-A\-T\-\_\-1\-\_\-\-R\-E\-A\-D}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{vga_8c_aeabb12f067a78b36631a610544bc09a7}{void {\bfseries vga\-\_\-write\-\_\-buf} (char $\ast$buffer)}\label{vga_8c_aeabb12f067a78b36631a610544bc09a7}
+
+\item 
+\hypertarget{vga_8c_a6f3973bec3dcf69873c06c680338ccd9}{void {\bfseries vga\-\_\-set\-\_\-mode} (enum vga\-\_\-mode \hyperlink{structmode}{mode})}\label{vga_8c_a6f3973bec3dcf69873c06c680338ccd9}
+
+\item 
+\hypertarget{vga_8c_a6449fa6f08d0b13a43ac1a373acd7ed2}{void {\bfseries vga\-\_\-back\-\_\-to\-\_\-text\-\_\-mode} ()}\label{vga_8c_a6449fa6f08d0b13a43ac1a373acd7ed2}
+
+\item 
+\hypertarget{vga_8c_ab4914929beebc81e861d0dfac915dffd}{void {\bfseries init\-\_\-vga} ()}\label{vga_8c_ab4914929beebc81e861d0dfac915dffd}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2011 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+V\-G\-A driver.
+
+\begin{DoxySeeAlso}{Voir également}
+\href{http://wiki.osdev.org/VGA_Hardware}{\tt http\-://wiki.\-osdev.\-org/\-V\-G\-A\-\_\-\-Hardware} 
+
+\href{http://www.osdever.net/FreeVGA/vga/vga.htm}{\tt http\-://www.\-osdever.\-net/\-Free\-V\-G\-A/vga/vga.\-htm} 
+
+\href{http://files.osdev.org/mirrors/geezer/osd/graphics/modes.c}{\tt http\-://files.\-osdev.\-org/mirrors/geezer/osd/graphics/modes.\-c} (modes structs taken from there) \-: \char`\"{}paranoïd\char`\"{} advises from Free\-V\-G\-A \-: currently only supports \hyperlink{structmode}{mode} 320$\ast$200$\ast$256 colors \-: video memory base address is hardcoded 
+\end{DoxySeeAlso}
+
+
+\subsection{Documentation des macros}
+\hypertarget{vga_8c_ae7216e48b3fa4629e39e1002bbfad10b}{\index{vga.\-c@{vga.\-c}!N\-B\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R\-\_\-\-G\-R\-O\-U\-P\-S@{N\-B\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R\-\_\-\-G\-R\-O\-U\-P\-S}}
+\index{N\-B\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R\-\_\-\-G\-R\-O\-U\-P\-S@{N\-B\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R\-\_\-\-G\-R\-O\-U\-P\-S}!vga.c@{vga.\-c}}
+\subsubsection[{N\-B\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R\-\_\-\-G\-R\-O\-U\-P\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-B\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R\-\_\-\-G\-R\-O\-U\-P\-S~5}}\label{vga_8c_ae7216e48b3fa4629e39e1002bbfad10b}
+Defines the number of registers and the ports corresponding to the address registers (addr\-\_\-w\-\_\-registers) and the data read/write registers (data\-\_\-r/w\-\_\-registers) for the 5 groups of V\-G\-A registers. \begin{DoxySeeAlso}{Voir également}
+\href{http://www.osdever.net/FreeVGA/vga/vga.htm}{\tt http\-://www.\-osdever.\-net/\-Free\-V\-G\-A/vga/vga.\-htm} $|$ G\-C\-: Graphics Registers -- control the way the C\-P\-U accesses video R\-A\-M. $|$ S\-E\-Q\-: Sequencer Registers -- control how video data is sent to the D\-A\-C. $|$ A\-C\-: Attribute Controller Registers -- selects the 16 color and 64 color palettes used for E\-G\-A/\-C\-G\-A compatibility. $|$ C\-R\-T\-C\-: C\-R\-T Controller Registers -- control how the video is output to the display. $|$ M\-I\-S\-C\-: External Registers -- miscellaneous registers used to control video operation. 
+\end{DoxySeeAlso}
+
+
+\subsection{Documentation du type de l'énumération}
+\hypertarget{vga_8c_ac1f0e67ab147f10622a5aca934210abb}{\index{vga.\-c@{vga.\-c}!other\-\_\-regs\-\_\-names@{other\-\_\-regs\-\_\-names}}
+\index{other\-\_\-regs\-\_\-names@{other\-\_\-regs\-\_\-names}!vga.c@{vga.\-c}}
+\subsubsection[{other\-\_\-regs\-\_\-names}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf other\-\_\-regs\-\_\-names}}}\label{vga_8c_ac1f0e67ab147f10622a5aca934210abb}
+Defines the ports corresponding to other registers used. $|$ I\-N\-S\-T\-A\-T\-\_\-1\-\_\-\-R\-E\-A\-D\-: Input Status \#1 Register -- Used to initialize the Attribute controllers registers flipflop (\begin{DoxySeeAlso}{Voir également}
+reset\-\_\-ac\-\_\-controllers\-\_\-flipflop) 
+\end{DoxySeeAlso}

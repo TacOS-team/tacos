@@ -1,0 +1,74 @@
+\hypertarget{fopen_8c}{\section{\-Référence du fichier libc/stdio/fopen.c}
+\label{fopen_8c}\index{libc/stdio/fopen.\-c@{libc/stdio/fopen.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\*
+{\ttfamily \#include $<$string.\-h$>$}\*
+{\ttfamily \#include $<$fcntl.\-h$>$}\*
+{\ttfamily \#include $<$unistd.\-h$>$}\*
+\-Graphe des dépendances par inclusion de fopen.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fopen_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{fopen_8c_acdefa543c661333e27beda1c868e6ce9}{convert\-\_\-flags} (const char $\ast$mode)
+\begin{DoxyCompactList}\small\item\em \-Conversion de modes de lecture/ecriture/ajout... \end{DoxyCompactList}\item 
+\hypertarget{fopen_8c_a61171f829f6067fa0c9936fc4e0cbb82}{\hyperlink{struct__IO__FILE}{\-F\-I\-L\-E} $\ast$ {\bfseries fopen} (const char $\ast$path, const char $\ast$mode)}\label{fopen_8c_a61171f829f6067fa0c9936fc4e0cbb82}
+
+\item 
+\hypertarget{fopen_8c_ab13b5edcd6e585f41214da079623b209}{\hyperlink{struct__IO__FILE}{\-F\-I\-L\-E} $\ast$ {\bfseries fdopen} (int fd, const char $\ast$mode)}\label{fopen_8c_ab13b5edcd6e585f41214da079623b209}
+
+\item 
+\hypertarget{fopen_8c_a317d5eb3bcd77341b0c2d5ba95859410}{\hyperlink{struct__IO__FILE}{\-F\-I\-L\-E} $\ast$ {\bfseries freopen} (const char $\ast$path, const char $\ast$mode, \hyperlink{struct__IO__FILE}{\-F\-I\-L\-E} $\ast$stream)}\label{fopen_8c_a317d5eb3bcd77341b0c2d5ba95859410}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Description détaillée}
+\begin{DoxyAuthor}{\-Auteur}
+\-Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{\-L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+\-Copyright (\-C) 2010, 2011, 2012 -\/ \-Tac\-O\-S developers.
+
+\-This program is free software; you can redistribute it and/or modify it under the terms of the \-G\-N\-U \-General \-Public \-License as published by the \-Free \-Software \-Foundation; either version 3 of the \-License, or (at your option) any later version.
+
+\-This program is distributed in the hope that it will be useful, but \-W\-I\-T\-H\-O\-U\-T \-A\-N\-Y \-W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of \-M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or \-F\-I\-T\-N\-E\-S\-S \-F\-O\-R \-A \-P\-A\-R\-T\-I\-C\-U\-L\-A\-R \-P\-U\-R\-P\-O\-S\-E. \-See the \-G\-N\-U \-General \-Public \-License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+\-You should have received a copy of the \-G\-N\-U \-General \-Public \-License along with this program; if not, see $<$\href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}$>$.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{\-D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+\-Description de ce que fait le fichier 
+
+\subsection{\-Documentation des fonctions}
+\hypertarget{fopen_8c_acdefa543c661333e27beda1c868e6ce9}{\index{fopen.\-c@{fopen.\-c}!convert\-\_\-flags@{convert\-\_\-flags}}
+\index{convert\-\_\-flags@{convert\-\_\-flags}!fopen.c@{fopen.\-c}}
+\subsubsection[{convert\-\_\-flags}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf convert\-\_\-flags} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{mode}
+\end{DoxyParamCaption}
+)}}\label{fopen_8c_acdefa543c661333e27beda1c868e6ce9}
+\-Converti depuis la forme \char`\"{}r+\char`\"{} par exemple en un entier formé de la superposition de plusieurs masques.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em mode} & le mode présenté sous la forme d'une chaine de caractère.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+un entier contenant les mêmes informations. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{fopen_8c_acdefa543c661333e27beda1c868e6ce9_cgraph}
+\end{center}
+\end{figure}
+
+

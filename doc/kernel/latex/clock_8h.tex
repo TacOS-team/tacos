@@ -1,0 +1,263 @@
+\hypertarget{clock_8h}{\section{\-Référence du fichier kernel/include/clock.h}
+\label{clock_8h}\index{kernel/include/clock.\-h@{kernel/include/clock.\-h}}
+}
+
+
+\-Gestion de l'horloge et du temps en général.  
+
+
+{\ttfamily \#include $<$types.\-h$>$}\*
+{\ttfamily \#include $<$ksyscall.\-h$>$}\*
+\-Graphe des dépendances par inclusion de clock.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{clock_8h__incl}
+\end{center}
+\end{figure}
+\-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{clock_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtimeval}{timeval}
+\item 
+struct \hyperlink{structtimespec}{timespec}
+\item 
+struct \hyperlink{structtm}{tm}
+\end{DoxyCompactItemize}
+\subsection*{\-Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{clock_8h_a3d9fc3c745d0880902fe3ea3d5d5f71e}{\-C\-L\-O\-C\-K\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}~1000
+\item 
+\#define \hyperlink{clock_8h_a6a69d6cbdab5f24c2e66959293f210c1}{\-U\-S\-E\-C\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}~1000000
+\end{DoxyCompactItemize}
+\subsection*{\-Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{clock_8h_aaaf414ca0598a3633e6e9161cbb5a58a}{typedef long int {\bfseries time\-\_\-t}}\label{clock_8h_aaaf414ca0598a3633e6e9161cbb5a58a}
+
+\item 
+\hypertarget{clock_8h_a395cccf6dc65e52ae3eb47f3d23282b9}{typedef long int {\bfseries clock\-\_\-t}}\label{clock_8h_a395cccf6dc65e52ae3eb47f3d23282b9}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{clock_8h_a33cb84a5e3ce0c59505d776e5a736c08}{compare\-\_\-times} (struct \hyperlink{structtimeval}{timeval} a, struct \hyperlink{structtimeval}{timeval} b)
+\begin{DoxyCompactList}\small\item\em \-Comparaison de 2 temps. \-Comparaison de 2 temps. \end{DoxyCompactList}\item 
+\hypertarget{clock_8h_ae9cc0a879e88eea28e4e8b57318ef8e5}{void \hyperlink{clock_8h_ae9cc0a879e88eea28e4e8b57318ef8e5}{clock\-\_\-init} ()}\label{clock_8h_ae9cc0a879e88eea28e4e8b57318ef8e5}
+
+\begin{DoxyCompactList}\small\item\em \-Initialisation de l'horloge. \-Initialisation de l'horloge. \end{DoxyCompactList}\item 
+\hypertarget{clock_8h_abc0cc7974581cee0900c817955ff2f5b}{void \hyperlink{clock_8h_abc0cc7974581cee0900c817955ff2f5b}{clock\-\_\-tick} ()}\label{clock_8h_abc0cc7974581cee0900c817955ff2f5b}
+
+\begin{DoxyCompactList}\small\item\em \-Incrémente le temps système. \-Ajoute une milliseconde au temps système, ne met rien à jour au dela du jour actuel. \end{DoxyCompactList}\item 
+\hypertarget{clock_8h_a36d22a2c7fc11c6f382386a8b658b6f8}{clock\-\_\-t \hyperlink{clock_8h_a36d22a2c7fc11c6f382386a8b658b6f8}{get\-\_\-clock} ()}\label{clock_8h_a36d22a2c7fc11c6f382386a8b658b6f8}
+
+\begin{DoxyCompactList}\small\item\em \-Retourne le temps système. \-Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1ms). \end{DoxyCompactList}\item 
+\hyperlink{clock_8h_ab594b78936f7a5c4ba0c3b7ad653b6d5}{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1} (sys\-\_\-getclock, clock\-\_\-t $\ast$clock)
+\begin{DoxyCompactList}\small\item\em \-Syscall handler pour get\-\_\-clock. \-Syscall handler pour get\-\_\-clock. \end{DoxyCompactList}\item 
+time\-\_\-t \hyperlink{clock_8h_ab1bd72177a9697cdd2eec38a4fe6651e}{get\-\_\-date} ()
+\begin{DoxyCompactList}\small\item\em \-Retourne la date actuelle en secondes. \-Retourne la date actuelle en secondes. \end{DoxyCompactList}\item 
+\hyperlink{clock_8h_a8bfadf8175457fd7fbe6b53a46788a4e}{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1} (sys\-\_\-getdate, time\-\_\-t $\ast$date)
+\begin{DoxyCompactList}\small\item\em \-Syscall handler pour get\-\_\-date. \-Syscall handler pour get\-\_\-date. \end{DoxyCompactList}\item 
+void \hyperlink{clock_8h_a052807a5c6ae63175a937381014a5701}{timeval\-\_\-add\-\_\-usec} (struct \hyperlink{structtimeval}{timeval} $\ast$t, time\-\_\-t usec)
+\begin{DoxyCompactList}\small\item\em \-Ajoute des us à un temps. \-Ajoute des us à un temps contenu dans une structure timeval. \end{DoxyCompactList}\item 
+struct \hyperlink{structtimeval}{timeval} \hyperlink{clock_8h_a0dc3166547de3bc1b9bdf45fdfb7d2e5}{get\-\_\-tv} ()
+\begin{DoxyCompactList}\small\item\em \-Retourne date courante. \-Retourne une structure timeval qui contient la date courante en seconde et microsecondes. \end{DoxyCompactList}\item 
+time\-\_\-t \hyperlink{clock_8h_ab07bd3e86ff449c65b06fd50ec8e422e}{clock\-\_\-mktime} (struct \hyperlink{structtm}{tm} $\ast$timep)
+\begin{DoxyCompactList}\small\item\em \-Conversion struct tm vers time\-\_\-t. \-Conversion d'une date exprimée sous la forme secondes, minutes, heures, jour, mois, année, etc, vers le format time\-\_\-t. \end{DoxyCompactList}\item 
+\hypertarget{clock_8h_accc6640b25e5d278185c360538d3cc3b}{void {\bfseries klog\-\_\-systime} ()}\label{clock_8h_accc6640b25e5d278185c360538d3cc3b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Description détaillée}
+\begin{DoxyAuthor}{\-Auteur}
+\-Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{\-L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+\-Copyright (\-C) 2010, 2011, 2012 -\/ \-Tac\-O\-S developers.
+
+\-This program is free software; you can redistribute it and/or modify it under the terms of the \-G\-N\-U \-General \-Public \-License as published by the \-Free \-Software \-Foundation; either version 3 of the \-License, or (at your option) any later version.
+
+\-This program is distributed in the hope that it will be useful, but \-W\-I\-T\-H\-O\-U\-T \-A\-N\-Y \-W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of \-M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or \-F\-I\-T\-N\-E\-S\-S \-F\-O\-R \-A \-P\-A\-R\-T\-I\-C\-U\-L\-A\-R \-P\-U\-R\-P\-O\-S\-E. \-See the \-G\-N\-U \-General \-Public \-License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+\-You should have received a copy of the \-G\-N\-U \-General \-Public \-License along with this program; if not, see $<$\href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}$>$.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{\-D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+
+
+\subsection{\-Documentation des macros}
+\hypertarget{clock_8h_a3d9fc3c745d0880902fe3ea3d5d5f71e}{\index{clock.\-h@{clock.\-h}!\-C\-L\-O\-C\-K\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C@{\-C\-L\-O\-C\-K\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}}
+\index{\-C\-L\-O\-C\-K\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C@{\-C\-L\-O\-C\-K\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}!clock.h@{clock.\-h}}
+\subsubsection[{\-C\-L\-O\-C\-K\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-C\-L\-O\-C\-K\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}~1000}}\label{clock_8h_a3d9fc3c745d0880902fe3ea3d5d5f71e}
+\-Nombre de secondes par tick d'horloge. \hypertarget{clock_8h_a6a69d6cbdab5f24c2e66959293f210c1}{\index{clock.\-h@{clock.\-h}!\-U\-S\-E\-C\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C@{\-U\-S\-E\-C\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}}
+\index{\-U\-S\-E\-C\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C@{\-U\-S\-E\-C\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}!clock.h@{clock.\-h}}
+\subsubsection[{\-U\-S\-E\-C\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-U\-S\-E\-C\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}~1000000}}\label{clock_8h_a6a69d6cbdab5f24c2e66959293f210c1}
+\-Nombre de us par secondes. 
+
+\subsection{\-Documentation des fonctions}
+\hypertarget{clock_8h_ab07bd3e86ff449c65b06fd50ec8e422e}{\index{clock.\-h@{clock.\-h}!clock\-\_\-mktime@{clock\-\_\-mktime}}
+\index{clock\-\_\-mktime@{clock\-\_\-mktime}!clock.h@{clock.\-h}}
+\subsubsection[{clock\-\_\-mktime}]{\setlength{\rightskip}{0pt plus 5cm}time\-\_\-t {\bf clock\-\_\-mktime} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf tm} $\ast$}]{timep}
+\end{DoxyParamCaption}
+)}}\label{clock_8h_ab07bd3e86ff449c65b06fd50ec8e422e}
+\begin{DoxyReturn}{\-Renvoie}
+\-Le temps correspondant. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{clock_8h_ab07bd3e86ff449c65b06fd50ec8e422e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{clock_8h_a33cb84a5e3ce0c59505d776e5a736c08}{\index{clock.\-h@{clock.\-h}!compare\-\_\-times@{compare\-\_\-times}}
+\index{compare\-\_\-times@{compare\-\_\-times}!clock.h@{clock.\-h}}
+\subsubsection[{compare\-\_\-times}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf compare\-\_\-times} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf timeval}}]{a, }
+\item[{struct {\bf timeval}}]{b}
+\end{DoxyParamCaption}
+)}}\label{clock_8h_a33cb84a5e3ce0c59505d776e5a736c08}
+\begin{DoxyReturn}{\-Renvoie}
+-\/1, 1 ou 0 en fonction du résultat. 
+\end{DoxyReturn}
+\hypertarget{clock_8h_ab1bd72177a9697cdd2eec38a4fe6651e}{\index{clock.\-h@{clock.\-h}!get\-\_\-date@{get\-\_\-date}}
+\index{get\-\_\-date@{get\-\_\-date}!clock.h@{clock.\-h}}
+\subsubsection[{get\-\_\-date}]{\setlength{\rightskip}{0pt plus 5cm}time\-\_\-t {\bf get\-\_\-date} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{clock_8h_ab1bd72177a9697cdd2eec38a4fe6651e}
+\begin{DoxyReturn}{\-Renvoie}
+la date en secondes. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{clock_8h_ab1bd72177a9697cdd2eec38a4fe6651e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{clock_8h_a0dc3166547de3bc1b9bdf45fdfb7d2e5}{\index{clock.\-h@{clock.\-h}!get\-\_\-tv@{get\-\_\-tv}}
+\index{get\-\_\-tv@{get\-\_\-tv}!clock.h@{clock.\-h}}
+\subsubsection[{get\-\_\-tv}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf timeval} {\bf get\-\_\-tv} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}read\mbox{]}}}}\label{clock_8h_a0dc3166547de3bc1b9bdf45fdfb7d2e5}
+\begin{DoxyReturn}{\-Renvoie}
+une structure timeval. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{clock_8h_a0dc3166547de3bc1b9bdf45fdfb7d2e5_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{clock_8h_a0dc3166547de3bc1b9bdf45fdfb7d2e5_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{clock_8h_ab594b78936f7a5c4ba0c3b7ad653b6d5}{\index{clock.\-h@{clock.\-h}!\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1@{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}}
+\index{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1@{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}!clock.h@{clock.\-h}}
+\subsubsection[{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1} (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-getclock}]{, }
+\item[{clock\-\_\-t $\ast$}]{clock}
+\end{DoxyParamCaption}
+)}}\label{clock_8h_ab594b78936f7a5c4ba0c3b7ad653b6d5}
+
+\begin{DoxyParams}{\-Paramètres}
+{\em clock} & \-Un pointeur pour y stocker la valeur de l'horloge système. \\
+\hline
+\end{DoxyParams}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{clock_8h_ab594b78936f7a5c4ba0c3b7ad653b6d5_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{clock_8h_a8bfadf8175457fd7fbe6b53a46788a4e}{\index{clock.\-h@{clock.\-h}!\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1@{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}}
+\index{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1@{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}!clock.h@{clock.\-h}}
+\subsubsection[{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1} (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-getdate}]{, }
+\item[{time\-\_\-t $\ast$}]{date}
+\end{DoxyParamCaption}
+)}}\label{clock_8h_a8bfadf8175457fd7fbe6b53a46788a4e}
+
+\begin{DoxyParams}{\-Paramètres}
+{\em date} & \-Un pointeur pour y stocker la date. \\
+\hline
+\end{DoxyParams}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{clock_8h_a8bfadf8175457fd7fbe6b53a46788a4e_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{clock_8h_a052807a5c6ae63175a937381014a5701}{\index{clock.\-h@{clock.\-h}!timeval\-\_\-add\-\_\-usec@{timeval\-\_\-add\-\_\-usec}}
+\index{timeval\-\_\-add\-\_\-usec@{timeval\-\_\-add\-\_\-usec}!clock.h@{clock.\-h}}
+\subsubsection[{timeval\-\_\-add\-\_\-usec}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf timeval\-\_\-add\-\_\-usec} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf timeval} $\ast$}]{t, }
+\item[{time\-\_\-t}]{usec}
+\end{DoxyParamCaption}
+)}}\label{clock_8h_a052807a5c6ae63175a937381014a5701}
+
+\begin{DoxyParams}{\-Paramètres}
+{\em t} & \-La structure qui contient un temps. \\
+\hline
+{\em usec} & \-Le nombre de us à ajouter. \\
+\hline
+\end{DoxyParams}
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{clock_8h_a052807a5c6ae63175a937381014a5701_icgraph}
+\end{center}
+\end{figure}
+
+

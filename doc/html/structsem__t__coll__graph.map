@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="sem_t" name="sem_t">
 <area shape="rect" id="node2" href="$structsem__fifo.html" title="sem_fifo" alt="" coords="23,118,92,146"/>
 <area shape="rect" id="node4" href="$struct__sem__fifo__cell.html" title="_sem_fifo_cell" alt="" coords="5,7,109,35"/>
 </map>

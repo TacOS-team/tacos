@@ -4,43 +4,33 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <title>TacOS:  Fichier source de libc/include/ctype.h</title>
-
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
-
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div! -->
-
-
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  
-  
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
    &#160;<span id="projectnumber">0.1</span>
    </div>
-   
   </td>
-  
-  
-  
  </tr>
  </tbody>
 </table>
 </div>
-
-<!-- Généré par Doxygen 1.7.6.1 -->
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -73,50 +63,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
     </ul>
   </div>
-</div>
-<div class="header">
-  <div class="headertitle">
-<div class="title">libc/include/ctype.h</div>  </div>
-</div><!--header-->
-<div class="contents">
-<a href="ctype_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _CTYPE_H_</span>
-<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _CTYPE_H_</span>
-<a name="l00031"></a>00031 <span class="preprocessor"></span>
-<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="cdefs_8h.html">sys/cdefs.h</a>&gt;</span>
-<a name="l00033"></a>00033 
-<a name="l00034"></a>00034 __BEGIN_DECLS
-<a name="l00035"></a>00035 
-<a name="l00046"></a>00046 <span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#adf38e126f73a010f30af76db2a28c6e1" title="vérifie si l&#39;on a un caractère alphanumérique.">isalnum</a>(<span class="keywordtype">int</span> c);
-<a name="l00047"></a>00047 
-<a name="l00060"></a>00060 <span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#a25908ae63aac2df990634e1ae5bd14d9" title="vérifie si l&#39;on a un caractère alphabétique.">isalpha</a>(<span class="keywordtype">int</span> c);
-<a name="l00061"></a>00061 
-<a name="l00073"></a>00073 <span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#aea4929b1b41f1a6d723e0312b1f050ed" title="vérifie si le caractère est blanc, c&#39;est-à-dire un espace ou une tabulation.">isblank</a>(<span class="keywordtype">int</span> c);
-<a name="l00074"></a>00074 
-<a name="l00084"></a>00084 <span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#a0008a4e8e7889734dc1d83297de07158" title="vérifie si l&#39;on a un caractère de contrôle.">iscntrl</a>(<span class="keywordtype">int</span> c);
-<a name="l00085"></a>00085 
-<a name="l00093"></a>00093 <span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#a3fa45b35c8abf67a950b6d3d4063dede" title="vérifie si l&#39;on a un chiffre (0 à 9).">isdigit</a>(<span class="keywordtype">int</span> c);
-<a name="l00094"></a>00094 
-<a name="l00102"></a>00102 <span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#a7b8f652a0423a80922dd89d8829db5f2" title="vérifie si l&#39;on a un caractère minuscule.">islower</a>(<span class="keywordtype">int</span> c);
-<a name="l00103"></a>00103 
-<a name="l00111"></a>00111 <span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#a99355d8f0fb41ec43effb95189db0ed4" title="vérifie s&#39;il s&#39;agit d&#39;un caractère imprimable, y compris l&#39;espace.">isprint</a>(<span class="keywordtype">int</span> c);
-<a name="l00112"></a>00112 
-<a name="l00124"></a>00124 <span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#af29554b3ec04ea7684482bffed5dbce6" title="vérifie s&#39;il s&#39;agit d&#39;un caractère imprimable, qui ne soit ni un espace, ni un caractère alphanumériq...">ispunct</a>(<span class="keywordtype">int</span> c);
-<a name="l00125"></a>00125 
-<a name="l00138"></a>00138 <span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#a56be4166e4673843042a548a7f513dbc" title="vérifie si l&#39;on a un caractère blanc, d&#39;espacement.">isspace</a>(<span class="keywordtype">int</span> c);
-<a name="l00139"></a>00139 
-<a name="l00149"></a>00149 <span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#adadd6582d46775aab6a51e29d16d9f77" title="vérifie si l&#39;on a un caractère majuscule.">isupper</a>(<span class="keywordtype">int</span> c);
-<a name="l00150"></a>00150 
-<a name="l00161"></a>00161 <span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#adaf3aadefe3fc4fb07b6be0d7b880f53" title="vérifie s&#39;il s&#39;agit d&#39;un chiffre hexadécimal.">isxdigit</a>(<span class="keywordtype">int</span> c);
-<a name="l00162"></a>00162 
-<a name="l00172"></a>00172 <span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#ac79d6114c9df7350cedcd8cf921a6ea4" title="Convertit la lettre c en minuscule.">tolower</a>(<span class="keywordtype">int</span> c);
-<a name="l00173"></a>00173 
-<a name="l00183"></a>00183 <span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#a9c2f57ac3865af9006fdbfd5db9fd517" title="Convertit la lettre c en majuscule.">toupper</a>(<span class="keywordtype">int</span> c);
-<a name="l00184"></a>00184 
-<a name="l00185"></a>00185 __END_DECLS
-<a name="l00186"></a>00186 
-<a name="l00187"></a>00187 <span class="preprocessor">#endif</span>
-</pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -131,13 +77,59 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </iframe>
 </div>
 
-
-
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_fc1eb218ab426e5adb60367f98438da0.html">libc</a></li><li class="navelem"><a class="el" href="dir_2a917577c833953ff5901e4935a90760.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ctype.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="ctype_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _CTYPE_H_</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _CTYPE_H_</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cdefs_8h.html">sys/cdefs.h</a>&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;__BEGIN_DECLS</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#adf38e126f73a010f30af76db2a28c6e1" title="vérifie si l&#39;on a un caractère alphanumérique.">isalnum</a>(<span class="keywordtype">int</span> c) __attribute__((<span class="keyword">const</span>));</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#a25908ae63aac2df990634e1ae5bd14d9" title="vérifie si l&#39;on a un caractère alphabétique.">isalpha</a>(<span class="keywordtype">int</span> c) __attribute__((<span class="keyword">const</span>));</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#aea4929b1b41f1a6d723e0312b1f050ed" title="vérifie si le caractère est blanc, c&#39;est-à-dire un espace ou une tabulation.">isblank</a>(<span class="keywordtype">int</span> c) __attribute__((<span class="keyword">const</span>));</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#a0008a4e8e7889734dc1d83297de07158" title="vérifie si l&#39;on a un caractère de contrôle.">iscntrl</a>(<span class="keywordtype">int</span> c) __attribute__((<span class="keyword">const</span>));</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#a3fa45b35c8abf67a950b6d3d4063dede" title="vérifie si l&#39;on a un chiffre (0 à 9).">isdigit</a>(<span class="keywordtype">int</span> c) __attribute__((<span class="keyword">const</span>));</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#a7b8f652a0423a80922dd89d8829db5f2" title="vérifie si l&#39;on a un caractère minuscule.">islower</a>(<span class="keywordtype">int</span> c) __attribute__((<span class="keyword">const</span>));</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#a99355d8f0fb41ec43effb95189db0ed4" title="vérifie s&#39;il s&#39;agit d&#39;un caractère imprimable, y compris l&#39;espace.">isprint</a>(<span class="keywordtype">int</span> c) __attribute__((<span class="keyword">const</span>));</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#af29554b3ec04ea7684482bffed5dbce6" title="vérifie s&#39;il s&#39;agit d&#39;un caractère imprimable, qui ne soit ni un espace, ni un caractère alphanumériq...">ispunct</a>(<span class="keywordtype">int</span> c) __attribute__((<span class="keyword">const</span>));</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#a56be4166e4673843042a548a7f513dbc" title="vérifie si l&#39;on a un caractère blanc, d&#39;espacement.">isspace</a>(<span class="keywordtype">int</span> c) __attribute__((<span class="keyword">const</span>));</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#adadd6582d46775aab6a51e29d16d9f77" title="vérifie si l&#39;on a un caractère majuscule.">isupper</a>(<span class="keywordtype">int</span> c) __attribute__((<span class="keyword">const</span>));</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#adaf3aadefe3fc4fb07b6be0d7b880f53" title="vérifie s&#39;il s&#39;agit d&#39;un chiffre hexadécimal.">isxdigit</a>(<span class="keywordtype">int</span> c) __attribute__((<span class="keyword">const</span>));</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#ac79d6114c9df7350cedcd8cf921a6ea4" title="Convertit la lettre c en minuscule.">tolower</a>(<span class="keywordtype">int</span> c) __attribute__((<span class="keyword">const</span>));</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8c.html#a9c2f57ac3865af9006fdbfd5db9fd517" title="Convertit la lettre c en majuscule.">toupper</a>(<span class="keywordtype">int</span> c) __attribute__((<span class="keyword">const</span>));</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;__END_DECLS</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Lundi Mai 6 2013 23:52:52 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
+</a> 1.8.1.2
 </small></address>
-
 </body>
 </html>

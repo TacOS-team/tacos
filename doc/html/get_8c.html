@@ -4,43 +4,33 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <title>TacOS: Référence du fichier libc/stdio/get.c</title>
-
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
-
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div! -->
-
-
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  
-  
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
    &#160;<span id="projectnumber">0.1</span>
    </div>
-   
   </td>
-  
-  
-  
  </tr>
  </tbody>
 </table>
 </div>
-
-<!-- Généré par Doxygen 1.7.6.1 -->
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -73,12 +63,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
     </ul>
   </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
 </div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_fc1eb218ab426e5adb60367f98438da0.html">libc</a></li><li class="navelem"><a class="el" href="dir_deb10f77d2ca2c15fbb5176528e8ff6c.html">stdio</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle">
-<div class="title">Référence du fichier libc/stdio/get.c</div>  </div>
+<div class="title">Référence du fichier get.c</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="stdio_8h_source.html">stdio.h</a>&gt;</code><br/>
@@ -92,51 +100,50 @@ Graphe des dépendances par inclusion de get.c:</div>
 <area shape="rect" id="node3" href="stdio_8h.html" title="stdio.h" alt="" coords="144,161,203,189"/><area shape="rect" id="node20" href="unistd_8h.html" title="unistd.h" alt="" coords="343,83,409,111"/><area shape="rect" id="node5" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="356,393,444,421"/><area shape="rect" id="node7" href="libio_8h.html" title="libio.h" alt="" coords="147,238,200,266"/><area shape="rect" id="node10" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="247,315,332,343"/><area shape="rect" id="node16" href="stdarg_8h.html" title="stdarg.h" alt="" coords="5,238,72,266"/><area shape="rect" id="node13" href="stdbool_8h.html" title="Type bool." alt="" coords="252,393,327,421"/><area shape="rect" id="node24" href="stat_8h.html" title="sys/stat.h" alt="" coords="345,161,423,189"/><area shape="rect" id="node28" href="time_8h.html" title="time.h" alt="" coords="376,238,432,266"/></map>
 </div>
 </div><table class="memberdecls">
-<tr><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get_8c.html#a2b3df0e66b41edab3c039191fe6cc4f9">fgets</a> (char *s, int size, <a class="el" href="struct__IO__FILE.html">FILE</a> *stream)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit au plus size-1 caractères depuis le stream passé en argument.  <a href="#a2b3df0e66b41edab3c039191fe6cc4f9"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get_8c.html#ab11a990e4f8863a1e7736e3c1d430092">fgetc</a> (<a class="el" href="struct__IO__FILE.html">FILE</a> *stream)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit un caractère depuis le flux stream.  <a href="#ab11a990e4f8863a1e7736e3c1d430092"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get_8c.html#a3e29caa20f7cffe18f410f01278905a8">getchar</a> (void)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">lit un caractère depuis stdin.  <a href="#a3e29caa20f7cffe18f410f01278905a8"></a><br/></td></tr>
+<tr class="memitem:a2b3df0e66b41edab3c039191fe6cc4f9"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get_8c.html#a2b3df0e66b41edab3c039191fe6cc4f9">fgets</a> (char *s, int size, <a class="el" href="struct__IO__FILE.html">FILE</a> *stream)</td></tr>
+<tr class="memdesc:a2b3df0e66b41edab3c039191fe6cc4f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit au plus size-1 caractères depuis le stream passé en argument.  <a href="#a2b3df0e66b41edab3c039191fe6cc4f9"></a><br/></td></tr>
+<tr class="memitem:ab11a990e4f8863a1e7736e3c1d430092"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get_8c.html#ab11a990e4f8863a1e7736e3c1d430092">fgetc</a> (<a class="el" href="struct__IO__FILE.html">FILE</a> *stream)</td></tr>
+<tr class="memdesc:ab11a990e4f8863a1e7736e3c1d430092"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit un caractère depuis le flux stream.  <a href="#ab11a990e4f8863a1e7736e3c1d430092"></a><br/></td></tr>
+<tr class="memitem:a3e29caa20f7cffe18f410f01278905a8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get_8c.html#a3e29caa20f7cffe18f410f01278905a8">getchar</a> (void)</td></tr>
+<tr class="memdesc:a3e29caa20f7cffe18f410f01278905a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">lit un caractère depuis stdin.  <a href="#a3e29caa20f7cffe18f410f01278905a8"></a><br/></td></tr>
 </table>
-<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
-<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
-<h2><a class="anchor" id="LICENSE"></a>
-LICENSE</h2>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
 <p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
-<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
-<h2><a class="anchor" id="DESCRIPTION"></a>
-DESCRIPTION</h2>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
 <p>Description de ce que fait le fichier </p>
-</div><hr/><h2>Documentation des fonctions</h2>
-<a class="anchor" id="ab11a990e4f8863a1e7736e3c1d430092"></a><!-- doxytag: member="get.c::fgetc" ref="ab11a990e4f8863a1e7736e3c1d430092" args="(FILE *stream)" -->
+</div><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ab11a990e4f8863a1e7736e3c1d430092"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="get_8c.html#ab11a990e4f8863a1e7736e3c1d430092">fgetc</a> </td>
+          <td class="memname">int fgetc </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct__IO__FILE.html">FILE</a> *&#160;</td>
           <td class="paramname"><em>stream</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-</div>
-<div class="memdoc">
+</div><div class="memdoc">
 <p>Fgetc lit le caractère suivant depuis le flux stream.</p>
 <p>stream le stream depuis lequel on lit le caractère.</p>
-<dl class="return"><dt><b>Renvoie:</b></dt><dd>le caractère lu ou EOF en cas d'erreur ou fin de flux. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le caractère lu ou EOF en cas d'erreur ou fin de flux. </dd></dl>
 
 <p><div class="dynheader">
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="get_8c_ab11a990e4f8863a1e7736e3c1d430092_cgraph.png" border="0" usemap="#get_8c_ab11a990e4f8863a1e7736e3c1d430092_cgraph" alt=""/></div>
 <map name="get_8c_ab11a990e4f8863a1e7736e3c1d430092_cgraph" id="get_8c_ab11a990e4f8863a1e7736e3c1d430092_cgraph">
-<area shape="rect" id="node3" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="105,5,151,33"/><area shape="rect" id="node5" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="201,5,263,33"/></map>
+<area shape="rect" id="node3" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="105,29,151,57"/><area shape="rect" id="node6" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="201,29,263,57"/></map>
 </div>
 </p>
 
@@ -151,12 +158,12 @@ Voici le graphe des appelants de cette fonction :</div>
 
 </div>
 </div>
-<a class="anchor" id="a2b3df0e66b41edab3c039191fe6cc4f9"></a><!-- doxytag: member="get.c::fgets" ref="a2b3df0e66b41edab3c039191fe6cc4f9" args="(char *s, int size, FILE *stream)" -->
+<a class="anchor" id="a2b3df0e66b41edab3c039191fe6cc4f9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* <a class="el" href="get_8c.html#a2b3df0e66b41edab3c039191fe6cc4f9">fgets</a> </td>
+          <td class="memname">char* fgets </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>s</em>, </td>
@@ -179,10 +186,9 @@ Voici le graphe des appelants de cette fonction :</div>
           <td></td><td></td>
         </tr>
       </table>
-</div>
-<div class="memdoc">
+</div><div class="memdoc">
 <p>Lit au plus size-1 caractères depuis le stream passé en argument. La lecture s'arrête par EOF, retour chariot ou si size-1 caractères ont été lus. Attention, il n'y a pas d'allocation mémoire pour le buffer où on écrit. Le caractère nul est placé à la fin de la chaîne.</p>
-<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+<dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">s</td><td>buffer où on va écrire ce qu'on lit sur stream. </td></tr>
     <tr><td class="paramname">size</td><td>la taille du buffer. </td></tr>
@@ -190,33 +196,32 @@ Voici le graphe des appelants de cette fonction :</div>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Renvoie:</b></dt><dd>un pointeur sur s en cas de succès. NULL en cas d'erreur. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur sur s en cas de succès. NULL en cas d'erreur. </dd></dl>
 
 <p><div class="dynheader">
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="get_8c_a2b3df0e66b41edab3c039191fe6cc4f9_cgraph.png" border="0" usemap="#get_8c_a2b3df0e66b41edab3c039191fe6cc4f9_cgraph" alt=""/></div>
 <map name="get_8c_a2b3df0e66b41edab3c039191fe6cc4f9_cgraph" id="get_8c_a2b3df0e66b41edab3c039191fe6cc4f9_cgraph">
-<area shape="rect" id="node3" href="stdio_8h.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream." alt="" coords="104,5,155,33"/><area shape="rect" id="node5" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="204,5,249,33"/><area shape="rect" id="node7" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="300,5,361,33"/></map>
+<area shape="rect" id="node3" href="stdio_8h.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream." alt="" coords="104,29,155,57"/><area shape="rect" id="node5" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="204,29,249,57"/><area shape="rect" id="node8" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="300,29,361,57"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a3e29caa20f7cffe18f410f01278905a8"></a><!-- doxytag: member="get.c::getchar" ref="a3e29caa20f7cffe18f410f01278905a8" args="(void)" -->
+<a class="anchor" id="a3e29caa20f7cffe18f410f01278905a8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="get_8c.html#a3e29caa20f7cffe18f410f01278905a8">getchar</a> </td>
+          <td class="memname">int getchar </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-</div>
-<div class="memdoc">
+</div><div class="memdoc">
 <p>Fonction de la libc. getchar est équivalent à fgetc(stdin). </p>
 
 <p><div class="dynheader">
@@ -224,34 +229,18 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="get_8c_a3e29caa20f7cffe18f410f01278905a8_cgraph.png" border="0" usemap="#get_8c_a3e29caa20f7cffe18f410f01278905a8_cgraph" alt=""/></div>
 <map name="get_8c_a3e29caa20f7cffe18f410f01278905a8_cgraph" id="get_8c_a3e29caa20f7cffe18f410f01278905a8_cgraph">
-<area shape="rect" id="node3" href="stdio_8h.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream." alt="" coords="120,5,171,33"/><area shape="rect" id="node5" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="220,5,265,33"/><area shape="rect" id="node7" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="316,5,377,33"/></map>
+<area shape="rect" id="node3" href="stdio_8h.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream." alt="" coords="120,29,171,57"/><area shape="rect" id="node5" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="220,29,265,57"/><area shape="rect" id="node8" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="316,29,377,57"/></map>
 </div>
 </p>
 
 </div>
 </div>
 </div><!-- contents -->
-<!-- window showing the filter options -->
-<div id="MSearchSelectWindow"
-     onmouseover="return searchBox.OnSearchSelectShow()"
-     onmouseout="return searchBox.OnSearchSelectHide()"
-     onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
-
-<!-- iframe showing the search results (closed by default) -->
-<div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
-</div>
-
-
-
+<!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Juin 24 2012 10:56:48 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Lundi Mai 6 2013 23:52:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
+</a> 1.8.1.2
 </small></address>
-
 </body>
 </html>

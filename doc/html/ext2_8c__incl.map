@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/fs/ext2/ext2.c" name="kernel/fs/ext2/ext2.c">
 <area shape="rect" id="node3" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="227,83,296,111"/>
 <area shape="rect" id="node20" href="$klog_8h.html" title="Logging macros." alt="" coords="501,83,557,111"/>
 <area shape="rect" id="node24" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="340,315,417,343"/>

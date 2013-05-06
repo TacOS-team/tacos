@@ -1,4 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="5,83,112,111"/>
-<area shape="rect" id="node5" href="$mbr_8c.html" title="kernel/mbr.c" alt="" coords="136,83,229,111"/>
+<map id="kernel/include/drivers/floppy.h" name="kernel/include/drivers/floppy.h">
+<area shape="rect" id="node3" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="5,99,112,127"/>
+<area shape="rect" id="node5" href="$mbr_8c.html" title="kernel/mbr.c" alt="" coords="136,99,229,127"/>
 </map>

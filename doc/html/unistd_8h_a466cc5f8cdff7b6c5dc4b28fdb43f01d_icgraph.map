@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="get_absolute_path" name="get_absolute_path">
 <area shape="rect" id="node3" href="$dirent_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title="mkdir" alt="" coords="185,5,239,33"/>
 <area shape="rect" id="node5" href="$dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591" title="opendir" alt="" coords="292,106,356,134"/>
 <area shape="rect" id="node7" href="$unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="405,131,456,159"/>

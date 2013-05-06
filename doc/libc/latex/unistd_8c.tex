@@ -1,0 +1,585 @@
+\hypertarget{unistd_8c}{\section{\-Référence du fichier libc/unistd.c}
+\label{unistd_8c}\index{libc/unistd.\-c@{libc/unistd.\-c}}
+}
+{\ttfamily \#include $<$dirent.\-h$>$}\*
+{\ttfamily \#include $<$errno.\-h$>$}\*
+{\ttfamily \#include $<$stdio.\-h$>$}\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\*
+{\ttfamily \#include $<$string.\-h$>$}\*
+{\ttfamily \#include $<$sys/syscall.\-h$>$}\*
+{\ttfamily \#include $<$unistd.\-h$>$}\*
+{\ttfamily \#include $<$elf.\-h$>$}\*
+\-Graphe des dépendances par inclusion de unistd.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unistd_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{unistd_8c_a466cc5f8cdff7b6c5dc4b28fdb43f01d}{get\-\_\-absolute\-\_\-path} (const char $\ast$dirname)
+\begin{DoxyCompactList}\small\item\em \-Retourne le chemin absolu d'un path en fonction du cwd. \end{DoxyCompactList}\item 
+int \hyperlink{unistd_8c_a03af571dfb595681bfa203c83385c07b}{chdir} (const char $\ast$path)
+\begin{DoxyCompactList}\small\item\em \-Change le current working directory. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{unistd_8c_ac75704bc8cda22edbe5c8c1241297882}{getcwd} (char $\ast$buf, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+\begin{DoxyCompactList}\small\item\em \-Retourne l'actuel working directory. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_a82257dd189e8030f78f83d124fd2d9ba}{pid\-\_\-t} \hyperlink{unistd_8c_ac61b207337ca21b3b309593fd1a0cb82}{getpid} (void)
+\begin{DoxyCompactList}\small\item\em \-Obtenir l'identifiant du processus. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_a82257dd189e8030f78f83d124fd2d9ba}{pid\-\_\-t} \hyperlink{unistd_8c_ac6d7f7ade00dcdc302b0da5664eee812}{getppid} (void)
+\begin{DoxyCompactList}\small\item\em \-Obtenir l'identifiant du processus père. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{unistd_8c_a69c97039c9ec10a30e5edbdf365e3bbd}{sleep} (unsigned int seconds)
+\begin{DoxyCompactList}\small\item\em \-Endort le processus pour une durée déterminée (en secondes). \end{DoxyCompactList}\item 
+unsigned int \hyperlink{unistd_8c_ae205f852ca2b47db9e16949153e12247}{usleep} (unsigned int microseconds)
+\begin{DoxyCompactList}\small\item\em \-Endort le processus pour une durée déterminée (en microsecondes). \end{DoxyCompactList}\item 
+\hyperlink{types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\-\_\-t} \hyperlink{unistd_8c_abb39b21888372e95ad3e5c59b166f5c8}{write} (int fd, const void $\ast$buf, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} count)
+\begin{DoxyCompactList}\small\item\em Écrire dans un descripteur de fichier. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\-\_\-t} \hyperlink{unistd_8c_af32a16ad2dd9e48482f8f790db7dbbd2}{read} (int fd, void $\ast$buf, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} count)
+\begin{DoxyCompactList}\small\item\em \-Lire depuis un descripteur de fichier. \end{DoxyCompactList}\item 
+int \hyperlink{unistd_8c_a9360f19507acbecf3d3e35789150f64b}{lseek} (int fd, long offset, int whence)
+\begin{DoxyCompactList}\small\item\em \-Positionner la tête de lecture/écriture dans un fichier. \end{DoxyCompactList}\item 
+int \hyperlink{unistd_8c_a3dc1b07404b646712a144e2057359876}{stat} (const char $\ast$path, struct \hyperlink{structstat}{stat} $\ast$buf)
+\begin{DoxyCompactList}\small\item\em \-Obtenir l'état d'un fichier (status). \end{DoxyCompactList}\item 
+int \hyperlink{unistd_8c_a8ada37e3927c3e99ea7c1accfdc6576f}{mknod} (const char $\ast$path, \hyperlink{stat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t} mode, \hyperlink{stat_8h_a451f1b5788fa7cc5d33db47a5992e7a6}{dev\-\_\-t} dev)
+\begin{DoxyCompactList}\small\item\em \-Créer un noeud du système de fichiers. \end{DoxyCompactList}\item 
+int \hyperlink{unistd_8c_a28af9471bbdf262321af663e02899a47}{unlink} (const char $\ast$path)
+\begin{DoxyCompactList}\small\item\em \-Détruire un nom et éventuellement le fichier associé. \end{DoxyCompactList}\item 
+int \hyperlink{unistd_8c_ab2df76f2c62ae012c2e417813b5fe8ce}{rmdir} (const char $\ast$path)
+\begin{DoxyCompactList}\small\item\em \-Supprimer un dossier, lequel doit être vide. \end{DoxyCompactList}\item 
+\hypertarget{unistd_8c_a2599c985f9cce0d9d7b11732941bd9dc}{int {\bfseries dup} (int oldfd)}\label{unistd_8c_a2599c985f9cce0d9d7b11732941bd9dc}
+
+\item 
+\hypertarget{unistd_8c_a0bbddf8ae4f3dea6e57532be36c04268}{int {\bfseries dup2} (int oldfd, int newfd)}\label{unistd_8c_a0bbddf8ae4f3dea6e57532be36c04268}
+
+\item 
+\hypertarget{unistd_8c_a97682b5596c36bcac6dd87ffd4ebd085}{int {\bfseries gethostname} (char $\ast$name, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} len)}\label{unistd_8c_a97682b5596c36bcac6dd87ffd4ebd085}
+
+\item 
+\hypertarget{unistd_8c_a49bb0c485f30ab14364721c9ce433bab}{int {\bfseries isatty} (int fd)}\label{unistd_8c_a49bb0c485f30ab14364721c9ce433bab}
+
+\item 
+\hypertarget{unistd_8c_ae1dd6bbd94b0f4e3dd37ecf1c1b832dd}{int {\bfseries execv} (const char $\ast$path, char $\ast$const argv\mbox{[}$\,$\mbox{]})}\label{unistd_8c_ae1dd6bbd94b0f4e3dd37ecf1c1b832dd}
+
+\item 
+\hypertarget{unistd_8c_a99c68bc1f0de7e428c2e24023e669658}{int {\bfseries execvp} (const char $\ast$file, char $\ast$const argv\mbox{[}$\,$\mbox{]})}\label{unistd_8c_a99c68bc1f0de7e428c2e24023e669658}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Description détaillée}
+\begin{DoxyAuthor}{\-Auteur}
+\-Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{\-L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+\-Copyright (\-C) 2010, 2011, 2012 -\/ \-Tac\-O\-S developers.
+
+\-This program is free software; you can redistribute it and/or modify it under the terms of the \-G\-N\-U \-General \-Public \-License as published by the \-Free \-Software \-Foundation; either version 3 of the \-License, or (at your option) any later version.
+
+\-This program is distributed in the hope that it will be useful, but \-W\-I\-T\-H\-O\-U\-T \-A\-N\-Y \-W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of \-M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or \-F\-I\-T\-N\-E\-S\-S \-F\-O\-R \-A \-P\-A\-R\-T\-I\-C\-U\-L\-A\-R \-P\-U\-R\-P\-O\-S\-E. \-See the \-G\-N\-U \-General \-Public \-License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+\-You should have received a copy of the \-G\-N\-U \-General \-Public \-License along with this program; if not, see $<$\href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}$>$.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{\-D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+\-Description de ce que fait le fichier 
+
+\subsection{\-Documentation des fonctions}
+\hypertarget{unistd_8c_a03af571dfb595681bfa203c83385c07b}{\index{unistd.\-c@{unistd.\-c}!chdir@{chdir}}
+\index{chdir@{chdir}!unistd.c@{unistd.\-c}}
+\subsubsection[{chdir}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf chdir} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path}
+\end{DoxyParamCaption}
+)}}\label{unistd_8c_a03af571dfb595681bfa203c83385c07b}
+\-Change le current working directory.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em path} & \-Le chemin où on veut aller.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+0 en cas de succès, -\/1 sinon. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unistd_8c_a03af571dfb595681bfa203c83385c07b_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{unistd_8c_a466cc5f8cdff7b6c5dc4b28fdb43f01d}{\index{unistd.\-c@{unistd.\-c}!get\-\_\-absolute\-\_\-path@{get\-\_\-absolute\-\_\-path}}
+\index{get\-\_\-absolute\-\_\-path@{get\-\_\-absolute\-\_\-path}!unistd.c@{unistd.\-c}}
+\subsubsection[{get\-\_\-absolute\-\_\-path}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf get\-\_\-absolute\-\_\-path} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{dirname}
+\end{DoxyParamCaption}
+)}}\label{unistd_8c_a466cc5f8cdff7b6c5dc4b28fdb43f01d}
+\-Retourne le chemin absolue d'un path en fonction du cwd à partir d'un chemin relatif.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em dirname} & \-Chemin relatif.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+\-Chemin absolu. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{unistd_8c_a466cc5f8cdff7b6c5dc4b28fdb43f01d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unistd_8c_a466cc5f8cdff7b6c5dc4b28fdb43f01d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{unistd_8c_ac75704bc8cda22edbe5c8c1241297882}{\index{unistd.\-c@{unistd.\-c}!getcwd@{getcwd}}
+\index{getcwd@{getcwd}!unistd.c@{unistd.\-c}}
+\subsubsection[{getcwd}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf getcwd} (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{buf, }
+\item[{{\bf size\-\_\-t}}]{size}
+\end{DoxyParamCaption}
+)}}\label{unistd_8c_ac75704bc8cda22edbe5c8c1241297882}
+\-Retourne l'actuel working directory.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em buf} & \-Table qui prend le chemin actuel. \-Si \-N\-U\-L\-L, alors un malloc est fait. \\
+\hline
+{\em size} & \-Taille du buffer. \-Si le buffer est trop petit, une erreur sera renvoyée.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+\-Le chemin actuel. \-N\-U\-L\-L en cas d'erreur. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{unistd_8c_ac75704bc8cda22edbe5c8c1241297882_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{unistd_8c_ac61b207337ca21b3b309593fd1a0cb82}{\index{unistd.\-c@{unistd.\-c}!getpid@{getpid}}
+\index{getpid@{getpid}!unistd.c@{unistd.\-c}}
+\subsubsection[{getpid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pid\-\_\-t} {\bf getpid} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{unistd_8c_ac61b207337ca21b3b309593fd1a0cb82}
+\-Obtenir l'identifiant du processus.
+
+\begin{DoxyReturn}{\-Renvoie}
+\-L'identifiant du processus. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{unistd_8c_ac61b207337ca21b3b309593fd1a0cb82_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{unistd_8c_ac61b207337ca21b3b309593fd1a0cb82_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{unistd_8c_ac6d7f7ade00dcdc302b0da5664eee812}{\index{unistd.\-c@{unistd.\-c}!getppid@{getppid}}
+\index{getppid@{getppid}!unistd.c@{unistd.\-c}}
+\subsubsection[{getppid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pid\-\_\-t} {\bf getppid} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{unistd_8c_ac6d7f7ade00dcdc302b0da5664eee812}
+\-Obtenir l'identifiant du processus père.
+
+\begin{DoxyReturn}{\-Renvoie}
+\-L'identifiant du processus père. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{unistd_8c_ac6d7f7ade00dcdc302b0da5664eee812_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{unistd_8c_a9360f19507acbecf3d3e35789150f64b}{\index{unistd.\-c@{unistd.\-c}!lseek@{lseek}}
+\index{lseek@{lseek}!unistd.c@{unistd.\-c}}
+\subsubsection[{lseek}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf lseek} (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{long}]{offset, }
+\item[{int}]{whence}
+\end{DoxyParamCaption}
+)}}\label{unistd_8c_a9360f19507acbecf3d3e35789150f64b}
+\-Place la tête de lecture/écriture à la position offset dans le fichier associé au descripteur fd en suivant la directive whence.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em fd} & \-Numero du descripteur de fichier ouvert. \\
+\hline
+{\em offset} & \-Position dans le fichier. \\
+\hline
+{\em whence} & \-Directive (\-S\-E\-T, \-C\-U\-R, \-E\-N\-D)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+offset depuis le début du fichier. -\/1 en cas d'erreur. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{unistd_8c_a9360f19507acbecf3d3e35789150f64b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{unistd_8c_a9360f19507acbecf3d3e35789150f64b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{unistd_8c_a8ada37e3927c3e99ea7c1accfdc6576f}{\index{unistd.\-c@{unistd.\-c}!mknod@{mknod}}
+\index{mknod@{mknod}!unistd.c@{unistd.\-c}}
+\subsubsection[{mknod}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf mknod} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path, }
+\item[{{\bf mode\-\_\-t}}]{mode, }
+\item[{{\bf dev\-\_\-t}}]{dev}
+\end{DoxyParamCaption}
+)}}\label{unistd_8c_a8ada37e3927c3e99ea7c1accfdc6576f}
+\-Crée un noeud du système de fichier (fichier, fichier spécial, etc.)
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em path} & \-Chemin du noeud. \\
+\hline
+{\em mode} & \-Droit d'accès sur ce noeud. \\
+\hline
+{\em dev} & \-Dans le cas d'un fichier de périphérique, c'est son identifiant.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+0 en cas de succès, -\/1 sinon. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{unistd_8c_a8ada37e3927c3e99ea7c1accfdc6576f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{unistd_8c_af32a16ad2dd9e48482f8f790db7dbbd2}{\index{unistd.\-c@{unistd.\-c}!read@{read}}
+\index{read@{read}!unistd.c@{unistd.\-c}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ssize\-\_\-t} {\bf read} (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{void $\ast$}]{buf, }
+\item[{{\bf size\-\_\-t}}]{count}
+\end{DoxyParamCaption}
+)}}\label{unistd_8c_af32a16ad2dd9e48482f8f790db7dbbd2}
+\-Lit jusqu'à count octets depuis le descripteur de fichier fd dans le tampon pointé par buf.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em fd} & \-Numero du descripteur de fichier ouvert. \\
+\hline
+{\em buf} & \-Buffer où enregistrer les données lues. \\
+\hline
+{\em count} & \-Nombre maximum d'octets à lire.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+le nombre d'octets lus (0 en fin de fichier, -\/1 en cas d'erreur). 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{unistd_8c_af32a16ad2dd9e48482f8f790db7dbbd2_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{unistd_8c_af32a16ad2dd9e48482f8f790db7dbbd2_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{unistd_8c_ab2df76f2c62ae012c2e417813b5fe8ce}{\index{unistd.\-c@{unistd.\-c}!rmdir@{rmdir}}
+\index{rmdir@{rmdir}!unistd.c@{unistd.\-c}}
+\subsubsection[{rmdir}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf rmdir} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}}\label{unistd_8c_ab2df76f2c62ae012c2e417813b5fe8ce}
+
+\begin{DoxyParams}{\-Paramètres}
+{\em pathname} & \-Chemin du dossier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+0 en cas de succès, -\/1 sinon. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{unistd_8c_ab2df76f2c62ae012c2e417813b5fe8ce_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{unistd_8c_ab2df76f2c62ae012c2e417813b5fe8ce_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{unistd_8c_a69c97039c9ec10a30e5edbdf365e3bbd}{\index{unistd.\-c@{unistd.\-c}!sleep@{sleep}}
+\index{sleep@{sleep}!unistd.c@{unistd.\-c}}
+\subsubsection[{sleep}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf sleep} (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{seconds}
+\end{DoxyParamCaption}
+)}}\label{unistd_8c_a69c97039c9ec10a30e5edbdf365e3bbd}
+\-Endort le processus pour une durée déterminée (en secondes).
+
+\begin{DoxySeeAlso}{\-Voir également}
+\hyperlink{unistd_8c_ae205f852ca2b47db9e16949153e12247}{usleep}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{\-Paramètres}
+{\em seconds} & \-Le nombre de secondes pendant lesquelles le processus doit être endormi.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+0 si le temps prévu s'est écoulé. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{unistd_8c_a69c97039c9ec10a30e5edbdf365e3bbd_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{unistd_8c_a3dc1b07404b646712a144e2057359876}{\index{unistd.\-c@{unistd.\-c}!stat@{stat}}
+\index{stat@{stat}!unistd.c@{unistd.\-c}}
+\subsubsection[{stat}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf stat} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path, }
+\item[{struct {\bf stat} $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}}\label{unistd_8c_a3dc1b07404b646712a144e2057359876}
+\-Renvoie des informations à propos du fichier indiqué.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em path} & \-Chemin du fichier. \\
+\hline
+{\em buf} & \-Structure qui va recevoir les informations.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+0 en cas de succès, -\/1 sinon. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{unistd_8c_a3dc1b07404b646712a144e2057359876_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{unistd_8c_a3dc1b07404b646712a144e2057359876_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{unistd_8c_a28af9471bbdf262321af663e02899a47}{\index{unistd.\-c@{unistd.\-c}!unlink@{unlink}}
+\index{unlink@{unlink}!unistd.c@{unistd.\-c}}
+\subsubsection[{unlink}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf unlink} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}}\label{unistd_8c_a28af9471bbdf262321af663e02899a47}
+\-Détruit un nom dans le système de fichier. \-Actuellement, le fichier associé est toujours effacé, même s'il y a plusieurs liens. (\-T\-O\-D\-O améliorer ça)
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em pathname} & \-Chemin du fichier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+0 en cas de succès, -\/1 sinon. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{unistd_8c_a28af9471bbdf262321af663e02899a47_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{unistd_8c_a28af9471bbdf262321af663e02899a47_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{unistd_8c_ae205f852ca2b47db9e16949153e12247}{\index{unistd.\-c@{unistd.\-c}!usleep@{usleep}}
+\index{usleep@{usleep}!unistd.c@{unistd.\-c}}
+\subsubsection[{usleep}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf usleep} (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{microseconds}
+\end{DoxyParamCaption}
+)}}\label{unistd_8c_ae205f852ca2b47db9e16949153e12247}
+\-Endort le processus pour une durée déterminée (en microsecondes).
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em microseconds} & \-Le nombre de microsecondes pendant lesquelles le processus doit être endormi.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+0 en cas de succès, -\/1 en cas d'erreur. 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{unistd_8c_ae205f852ca2b47db9e16949153e12247_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{unistd_8c_ae205f852ca2b47db9e16949153e12247_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{unistd_8c_abb39b21888372e95ad3e5c59b166f5c8}{\index{unistd.\-c@{unistd.\-c}!write@{write}}
+\index{write@{write}!unistd.c@{unistd.\-c}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ssize\-\_\-t} {\bf write} (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{const void $\ast$}]{buf, }
+\item[{{\bf size\-\_\-t}}]{count}
+\end{DoxyParamCaption}
+)}}\label{unistd_8c_abb39b21888372e95ad3e5c59b166f5c8}
+\-Lit au maximum count octets dans la zone mémoire pointée par buf, et les écrit dans le fichier référencé par le descripteur fd.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em fd} & \-Numero du descripteur de fichier ouvert. \\
+\hline
+{\em buf} & \-Buffer qui contient les données à écrire. \\
+\hline
+{\em count} & \-Le nombre maximum d'octets à écrire.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+le nombre d'octets écrits (0 si aucune écriture, -\/1 en cas d'erreur). 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{unistd_8c_abb39b21888372e95ad3e5c59b166f5c8_cgraph}
+\end{center}
+\end{figure}
+
+

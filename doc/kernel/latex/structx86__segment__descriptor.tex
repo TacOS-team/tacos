@@ -1,0 +1,86 @@
+\hypertarget{structx86__segment__descriptor}{\section{\-Référence de la structure x86\-\_\-segment\-\_\-descriptor}
+\label{structx86__segment__descriptor}\index{x86\-\_\-segment\-\_\-descriptor@{x86\-\_\-segment\-\_\-descriptor}}
+}
+
+
+\-Segment \-Descriptor (cf doc intel v3. 3.\-4.\-3)  
+
+
+
+
+{\ttfamily \#include $<$gdt.\-h$>$}
+
+\subsection*{\-Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} \hyperlink{structx86__segment__descriptor_af9516f6d07c24ddedde31235b05b62c2}{segment\-\_\-limit\-\_\-15\-\_\-0}
+\item 
+\hypertarget{structx86__segment__descriptor_a6cd0f49e21060fadba677c3b41685ebf}{\hyperlink{types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} {\bfseries base\-\_\-address\-\_\-15\-\_\-0}}\label{structx86__segment__descriptor_a6cd0f49e21060fadba677c3b41685ebf}
+
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structx86__segment__descriptor_a95889fcbabf116ba15a6cea3364b903d}{base\-\_\-address\-\_\-23\-\_\-16}
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structx86__segment__descriptor_ab3ef0c9fce1e74ee6549bbce5ea6f25f}{segment\-\_\-type}\-:4
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structx86__segment__descriptor_adda0434239b7e6c6a68b8e7556e4bb2f}{descriptor\-\_\-type}\-:1
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structx86__segment__descriptor_ab45e49c27bbe57a568d914bd13e45ef7}{dpl}\-:2
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structx86__segment__descriptor_ad4196191d05e69b42272a411a69d1eae}{present}\-:1
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structx86__segment__descriptor_a6ab37b8f7730fe67af946725a3dd064a}{segment\-\_\-limit\-\_\-19\-\_\-16}\-:4
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structx86__segment__descriptor_a761494a7a460e493e0d5d188a31cd052}{available}\-:1
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structx86__segment__descriptor_a4cbd016599f85d6a2060c31d7714dbbd}{zero}\-:1
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structx86__segment__descriptor_a40c320788bf23e3660d0def872cec94c}{operation\-\_\-size}\-:1
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structx86__segment__descriptor_a19d5da93d41a1ec3327cbd92ace8fa08}{granularity}\-:1
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structx86__segment__descriptor_af839dd21992c16573ea5b816b72f249f}{base\-\_\-address\-\_\-31\-\_\-24}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Documentation des champs}
+\hypertarget{structx86__segment__descriptor_a761494a7a460e493e0d5d188a31cd052}{\index{x86\-\_\-segment\-\_\-descriptor@{x86\-\_\-segment\-\_\-descriptor}!available@{available}}
+\index{available@{available}!x86_segment_descriptor@{x86\-\_\-segment\-\_\-descriptor}}
+\subsubsection[{available}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf x86\-\_\-segment\-\_\-descriptor\-::available}}}\label{structx86__segment__descriptor_a761494a7a460e493e0d5d188a31cd052}
+\-Un bit disponible pour nous... \hypertarget{structx86__segment__descriptor_a95889fcbabf116ba15a6cea3364b903d}{\index{x86\-\_\-segment\-\_\-descriptor@{x86\-\_\-segment\-\_\-descriptor}!base\-\_\-address\-\_\-23\-\_\-16@{base\-\_\-address\-\_\-23\-\_\-16}}
+\index{base\-\_\-address\-\_\-23\-\_\-16@{base\-\_\-address\-\_\-23\-\_\-16}!x86_segment_descriptor@{x86\-\_\-segment\-\_\-descriptor}}
+\subsubsection[{base\-\_\-address\-\_\-23\-\_\-16}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf x86\-\_\-segment\-\_\-descriptor\-::base\-\_\-address\-\_\-23\-\_\-16}}}\label{structx86__segment__descriptor_a95889fcbabf116ba15a6cea3364b903d}
+\-Suite de la base address. \hypertarget{structx86__segment__descriptor_af839dd21992c16573ea5b816b72f249f}{\index{x86\-\_\-segment\-\_\-descriptor@{x86\-\_\-segment\-\_\-descriptor}!base\-\_\-address\-\_\-31\-\_\-24@{base\-\_\-address\-\_\-31\-\_\-24}}
+\index{base\-\_\-address\-\_\-31\-\_\-24@{base\-\_\-address\-\_\-31\-\_\-24}!x86_segment_descriptor@{x86\-\_\-segment\-\_\-descriptor}}
+\subsubsection[{base\-\_\-address\-\_\-31\-\_\-24}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf x86\-\_\-segment\-\_\-descriptor\-::base\-\_\-address\-\_\-31\-\_\-24}}}\label{structx86__segment__descriptor_af839dd21992c16573ea5b816b72f249f}
+\-Fin de la base address. \-Soit 32 bits ce qui correspond aux 4\-Gio adressables. \hypertarget{structx86__segment__descriptor_adda0434239b7e6c6a68b8e7556e4bb2f}{\index{x86\-\_\-segment\-\_\-descriptor@{x86\-\_\-segment\-\_\-descriptor}!descriptor\-\_\-type@{descriptor\-\_\-type}}
+\index{descriptor\-\_\-type@{descriptor\-\_\-type}!x86_segment_descriptor@{x86\-\_\-segment\-\_\-descriptor}}
+\subsubsection[{descriptor\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf x86\-\_\-segment\-\_\-descriptor\-::descriptor\-\_\-type}}}\label{structx86__segment__descriptor_adda0434239b7e6c6a68b8e7556e4bb2f}
+0 = system segment, 1 = code ou data segment \hypertarget{structx86__segment__descriptor_ab45e49c27bbe57a568d914bd13e45ef7}{\index{x86\-\_\-segment\-\_\-descriptor@{x86\-\_\-segment\-\_\-descriptor}!dpl@{dpl}}
+\index{dpl@{dpl}!x86_segment_descriptor@{x86\-\_\-segment\-\_\-descriptor}}
+\subsubsection[{dpl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf x86\-\_\-segment\-\_\-descriptor\-::dpl}}}\label{structx86__segment__descriptor_ab45e49c27bbe57a568d914bd13e45ef7}
+\-Descriptor \-Privilege \-Level. 0 à 3. 0 pour le kernel et 3 pour les applis \hypertarget{structx86__segment__descriptor_a19d5da93d41a1ec3327cbd92ace8fa08}{\index{x86\-\_\-segment\-\_\-descriptor@{x86\-\_\-segment\-\_\-descriptor}!granularity@{granularity}}
+\index{granularity@{granularity}!x86_segment_descriptor@{x86\-\_\-segment\-\_\-descriptor}}
+\subsubsection[{granularity}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf x86\-\_\-segment\-\_\-descriptor\-::granularity}}}\label{structx86__segment__descriptor_a19d5da93d41a1ec3327cbd92ace8fa08}
+\-Granularité \-: \-Détermine l'échele du segment limit. 0 \-: c'est des bytes, 1 \-: c'est par 4kio \hypertarget{structx86__segment__descriptor_a40c320788bf23e3660d0def872cec94c}{\index{x86\-\_\-segment\-\_\-descriptor@{x86\-\_\-segment\-\_\-descriptor}!operation\-\_\-size@{operation\-\_\-size}}
+\index{operation\-\_\-size@{operation\-\_\-size}!x86_segment_descriptor@{x86\-\_\-segment\-\_\-descriptor}}
+\subsubsection[{operation\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf x86\-\_\-segment\-\_\-descriptor\-::operation\-\_\-size}}}\label{structx86__segment__descriptor_a40c320788bf23e3660d0def872cec94c}
+0 = 16bits, 1 = 32bits \hypertarget{structx86__segment__descriptor_ad4196191d05e69b42272a411a69d1eae}{\index{x86\-\_\-segment\-\_\-descriptor@{x86\-\_\-segment\-\_\-descriptor}!present@{present}}
+\index{present@{present}!x86_segment_descriptor@{x86\-\_\-segment\-\_\-descriptor}}
+\subsubsection[{present}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf x86\-\_\-segment\-\_\-descriptor\-::present}}}\label{structx86__segment__descriptor_ad4196191d05e69b42272a411a69d1eae}
+\-Indique si le segment est présent en mémoire (1) ou non (0) \hypertarget{structx86__segment__descriptor_af9516f6d07c24ddedde31235b05b62c2}{\index{x86\-\_\-segment\-\_\-descriptor@{x86\-\_\-segment\-\_\-descriptor}!segment\-\_\-limit\-\_\-15\-\_\-0@{segment\-\_\-limit\-\_\-15\-\_\-0}}
+\index{segment\-\_\-limit\-\_\-15\-\_\-0@{segment\-\_\-limit\-\_\-15\-\_\-0}!x86_segment_descriptor@{x86\-\_\-segment\-\_\-descriptor}}
+\subsubsection[{segment\-\_\-limit\-\_\-15\-\_\-0}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint16\-\_\-t} {\bf x86\-\_\-segment\-\_\-descriptor\-::segment\-\_\-limit\-\_\-15\-\_\-0}}}\label{structx86__segment__descriptor_af9516f6d07c24ddedde31235b05b62c2}
+\-Segment \-Limit 15\-:00. \-Spécifie la taille du segment. \-Le proc concatene les 2 champs segment limit pour former une valeur de 20 bits. \hypertarget{structx86__segment__descriptor_a6ab37b8f7730fe67af946725a3dd064a}{\index{x86\-\_\-segment\-\_\-descriptor@{x86\-\_\-segment\-\_\-descriptor}!segment\-\_\-limit\-\_\-19\-\_\-16@{segment\-\_\-limit\-\_\-19\-\_\-16}}
+\index{segment\-\_\-limit\-\_\-19\-\_\-16@{segment\-\_\-limit\-\_\-19\-\_\-16}!x86_segment_descriptor@{x86\-\_\-segment\-\_\-descriptor}}
+\subsubsection[{segment\-\_\-limit\-\_\-19\-\_\-16}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf x86\-\_\-segment\-\_\-descriptor\-::segment\-\_\-limit\-\_\-19\-\_\-16}}}\label{structx86__segment__descriptor_a6ab37b8f7730fe67af946725a3dd064a}
+\-Suite du segment limit. \hypertarget{structx86__segment__descriptor_ab3ef0c9fce1e74ee6549bbce5ea6f25f}{\index{x86\-\_\-segment\-\_\-descriptor@{x86\-\_\-segment\-\_\-descriptor}!segment\-\_\-type@{segment\-\_\-type}}
+\index{segment\-\_\-type@{segment\-\_\-type}!x86_segment_descriptor@{x86\-\_\-segment\-\_\-descriptor}}
+\subsubsection[{segment\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf x86\-\_\-segment\-\_\-descriptor\-::segment\-\_\-type}}}\label{structx86__segment__descriptor_ab3ef0c9fce1e74ee6549bbce5ea6f25f}
+\-Cf 3.\-4.\-3.\-1 de la doc intel ! \hypertarget{structx86__segment__descriptor_a4cbd016599f85d6a2060c31d7714dbbd}{\index{x86\-\_\-segment\-\_\-descriptor@{x86\-\_\-segment\-\_\-descriptor}!zero@{zero}}
+\index{zero@{zero}!x86_segment_descriptor@{x86\-\_\-segment\-\_\-descriptor}}
+\subsubsection[{zero}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} {\bf x86\-\_\-segment\-\_\-descriptor\-::zero}}}\label{structx86__segment__descriptor_a4cbd016599f85d6a2060c31d7714dbbd}
+\-Bit réservé qui doit prendre la valeur 0. 
+
+\-La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+\item 
+kernel/include/\hyperlink{gdt_8h}{gdt.\-h}\end{DoxyCompactItemize}

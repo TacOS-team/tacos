@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$ctype_8h.html#a25908ae63aac2df990634e1ae5bd14d9" title="vérifie si l&#39;on a un caractère alphabétique." alt="" coords="120,5,181,33"/>
+<area shape="rect" id="node9" href="$ctype_8h.html#a9c2f57ac3865af9006fdbfd5db9fd517" title="Convertit la lettre c en majuscule." alt="" coords="119,55,183,83"/>
+<area shape="rect" id="node5" href="$ctype_8h.html#a9ce2e598cec9a4644e4d475011f29a73" title="vérifie si l&#39;on a un caractère alphanumérique." alt="" coords="232,5,299,33"/>
+<area shape="rect" id="node7" href="$ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4" title="vérifie s&#39;il s&#39;agit d&#39;un caractère imprimable, y compris l&#39;espace." alt="" coords="348,5,404,33"/>
+</map>

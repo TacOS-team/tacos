@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="libc/stdio/fopen.c" name="libc/stdio/fopen.c">
 <area shape="rect" id="node3" href="$stdio_8h.html" title="stdio.h" alt="" coords="99,161,158,189"/>
 <area shape="rect" id="node22" href="$fcntl_8h.html" title="File control operations." alt="" coords="526,315,582,343"/>
 <area shape="rect" id="node25" href="$unistd_8h.html" title="unistd.h" alt="" coords="407,83,474,111"/>

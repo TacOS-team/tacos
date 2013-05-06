@@ -1,0 +1,180 @@
+\hypertarget{kfcntl_8c}{\section{\-Référence du fichier kernel/kfcntl.c}
+\label{kfcntl_8c}\index{kernel/kfcntl.\-c@{kernel/kfcntl.\-c}}
+}
+{\ttfamily \#include $<$fs/devfs.\-h$>$}\*
+{\ttfamily \#include $<$kfcntl.\-h$>$}\*
+{\ttfamily \#include $<$klibc/string.\-h$>$}\*
+{\ttfamily \#include $<$klog.\-h$>$}\*
+{\ttfamily \#include $<$kmalloc.\-h$>$}\*
+{\ttfamily \#include $<$kprocess.\-h$>$}\*
+{\ttfamily \#include $<$ksyscall.\-h$>$}\*
+{\ttfamily \#include $<$scheduler.\-h$>$}\*
+{\ttfamily \#include $<$tty.\-h$>$}\*
+{\ttfamily \#include $<$vfs.\-h$>$}\*
+\-Graphe des dépendances par inclusion de kfcntl.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kfcntl_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{kfcntl_8c_a5cb8d11eeb6842f49090696dbda4490b}{init\-\_\-stdfd} (\hyperlink{structprocess__t}{process\-\_\-t} $\ast$new\-\_\-proc)
+\begin{DoxyCompactList}\small\item\em \-Initialise les descripteurs de fichiers standards. \end{DoxyCompactList}\item 
+\hypertarget{kfcntl_8c_adc12a443121c63ad99a6311aa2739884}{void \hyperlink{kfcntl_8c_adc12a443121c63ad99a6311aa2739884}{close\-\_\-all\-\_\-fd} ()}\label{kfcntl_8c_adc12a443121c63ad99a6311aa2739884}
+
+\begin{DoxyCompactList}\small\item\em \-Ferme tous les file descriptors ouverts. \end{DoxyCompactList}\item 
+\hyperlink{kfcntl_8c_aa1d225acb87c04ac8d56c8096f587a03}{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-open, int $\ast$fd\-\_\-id, char $\ast$path, \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} flags)
+\item 
+\hyperlink{kfcntl_8c_a3a5f4c56fd3fcc2b69757102f722fc29}{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2} (sys\-\_\-close, int fd\-\_\-id, \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} $\ast$ret)
+\item 
+\hyperlink{kfcntl_8c_a7c5292eb7af1637f45a0512c58c58cbc}{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-fcntl, int $\ast$fd\-\_\-id, unsigned int request, void $\ast$data)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Description détaillée}
+\begin{DoxyAuthor}{\-Auteur}
+\-Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{\-L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+\-Copyright (\-C) 2010, 2011, 2012 -\/ \-Tac\-O\-S developers.
+
+\-This program is free software; you can redistribute it and/or modify it under the terms of the \-G\-N\-U \-General \-Public \-License as published by the \-Free \-Software \-Foundation; either version 3 of the \-License, or (at your option) any later version.
+
+\-This program is distributed in the hope that it will be useful, but \-W\-I\-T\-H\-O\-U\-T \-A\-N\-Y \-W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of \-M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or \-F\-I\-T\-N\-E\-S\-S \-F\-O\-R \-A \-P\-A\-R\-T\-I\-C\-U\-L\-A\-R \-P\-U\-R\-P\-O\-S\-E. \-See the \-G\-N\-U \-General \-Public \-License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+\-You should have received a copy of the \-G\-N\-U \-General \-Public \-License along with this program; if not, see $<$\href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}$>$.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{\-D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+\-Description de ce que fait le fichier 
+
+\subsection{\-Documentation des fonctions}
+\hypertarget{kfcntl_8c_a5cb8d11eeb6842f49090696dbda4490b}{\index{kfcntl.\-c@{kfcntl.\-c}!init\-\_\-stdfd@{init\-\_\-stdfd}}
+\index{init\-\_\-stdfd@{init\-\_\-stdfd}!kfcntl.c@{kfcntl.\-c}}
+\subsubsection[{init\-\_\-stdfd}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf init\-\_\-stdfd} (
+\begin{DoxyParamCaption}
+\item[{{\bf process\-\_\-t} $\ast$}]{new\-\_\-proc}
+\end{DoxyParamCaption}
+)}}\label{kfcntl_8c_a5cb8d11eeb6842f49090696dbda4490b}
+\-Initialise les descripteurs de fichiers standards.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em new\-\_\-proc} & \-Processus à initialiser. \\
+\hline
+\end{DoxyParams}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kfcntl_8c_a5cb8d11eeb6842f49090696dbda4490b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kfcntl_8c_a5cb8d11eeb6842f49090696dbda4490b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kfcntl_8c_a3a5f4c56fd3fcc2b69757102f722fc29}{\index{kfcntl.\-c@{kfcntl.\-c}!\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2@{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}}
+\index{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2@{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}!kfcntl.c@{kfcntl.\-c}}
+\subsubsection[{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2} (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-close}]{, }
+\item[{int}]{fd\-\_\-id, }
+\item[{{\bf uint32\-\_\-t} $\ast$}]{ret}
+\end{DoxyParamCaption}
+)}}\label{kfcntl_8c_a3a5f4c56fd3fcc2b69757102f722fc29}
+\-Syscall pour fermer un fichier.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em fd\-\_\-id} & \-Identifiant du descripteur de fichier. \\
+\hline
+{\em ret} & \-Pointeur pour enregistrer le résultat. \\
+\hline
+\end{DoxyParams}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{kfcntl_8c_a3a5f4c56fd3fcc2b69757102f722fc29_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kfcntl_8c_aa1d225acb87c04ac8d56c8096f587a03}{\index{kfcntl.\-c@{kfcntl.\-c}!\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
+\index{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kfcntl.c@{kfcntl.\-c}}
+\subsubsection[{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-open}]{, }
+\item[{int $\ast$}]{fd\-\_\-id, }
+\item[{char $\ast$}]{path, }
+\item[{{\bf uint32\-\_\-t}}]{flags}
+\end{DoxyParamCaption}
+)}}\label{kfcntl_8c_aa1d225acb87c04ac8d56c8096f587a03}
+\-Syscall pour ouvrir un fichier.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em fd\-\_\-id} & \-Pointeur pour enregistrer le resultat. \\
+\hline
+{\em path} & \-Chemin du fichier à ouvrir. \\
+\hline
+{\em flags} & \-Mode d'ouverture. \\
+\hline
+\end{DoxyParams}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kfcntl_8c_aa1d225acb87c04ac8d56c8096f587a03_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kfcntl_8c_a7c5292eb7af1637f45a0512c58c58cbc}{\index{kfcntl.\-c@{kfcntl.\-c}!\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
+\index{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kfcntl.c@{kfcntl.\-c}}
+\subsubsection[{\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-fcntl}]{, }
+\item[{int $\ast$}]{fd\-\_\-id, }
+\item[{unsigned int}]{request, }
+\item[{void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{kfcntl_8c_a7c5292eb7af1637f45a0512c58c58cbc}
+\-Syscall pour la manipulation d'un descripteur de fichier.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em fd\-\_\-id} & descripteur du fichier et enregistrement du résultat. \\
+\hline
+{\em request} & action à faire. \\
+\hline
+{\em data} & les arguments nécessaires à l'action. \\
+\hline
+\end{DoxyParams}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{kfcntl_8c_a7c5292eb7af1637f45a0512c58c58cbc_cgraph}
+\end{center}
+\end{figure}
+
+

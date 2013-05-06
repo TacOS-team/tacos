@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$exception_8h.html#ac5a3d89ca654d3606b6afd836a01e207" title="exception_set_routine" alt="" coords="167,18,313,46"/>
+<area shape="rect" id="node7" href="$idt_8h.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption." alt="" coords="173,94,307,122"/>
+<area shape="rect" id="node13" href="$interrupts_8c.html#aecc1fa8433fa21ba233b8feb2558e954" title="Ajoute une nouvelle interruption." alt="" coords="171,170,309,198"/>
+<area shape="rect" id="node5" href="$kpanic_8c.html#acf070b3d87597bdddd1c1c413ed4adb2" title="kpanic_init" alt="" coords="388,5,471,33"/>
+<area shape="rect" id="node9" href="$idt_8h.html#a559dc3a4f73d1813f12a104840e68550" title="Initialisation de l&#39;IDT." alt="" coords="392,55,467,83"/>
+<area shape="rect" id="node11" href="$interrupts_8c.html#ac3f5203c31fd554b562cba8cec42ceb6" title="Désactive une interruption." alt="" coords="371,106,488,134"/>
+<area shape="rect" id="node15" href="$floppy__interrupt_8h.html#a19cdddd056dff00ace3567933e4d2b71" title="Initialise l&#39;IRQ floppy." alt="" coords="363,157,496,185"/>
+<area shape="rect" id="node19" href="$events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="387,207,472,235"/>
+<area shape="rect" id="node21" href="$ksyscall_8c.html#a3e64f9d87cb92e4dc7d748a495e232f1" title="Initialisation des appels systemes." alt="" coords="387,258,472,286"/>
+<area shape="rect" id="node17" href="$floppy_8h.html#a4b305e10e95fed92b047adfac6dc4881" title="Initilise le driver floppy." alt="" coords="545,157,623,185"/>
+</map>

@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="tolower" name="tolower">
 <area shape="rect" id="node3" href="$libc_2string_8c.html#a706b36f3a672f84685576723c3928baa" title="Compare deux chaînes." alt="" coords="121,5,212,33"/>
 <area shape="rect" id="node5" href="$libc_2string_8c.html#a674b7f779fec84cb1a3be8222b5c381a" title="Compare deux chaînes jusqu&#39;à n caractères." alt="" coords="119,55,215,83"/>
 <area shape="rect" id="node7" href="$libc_2string_8c.html#ae9229017a4501f8d6a637b4498cfed2e" title="Recherche une sous&#45;chaîne en ignorant la casse." alt="" coords="127,106,207,134"/>

@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence de la structure _tty_operations_t</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Champs de données</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence de la structure _tty_operations_t</div>  </div>
+</div><!--header-->
+<div class="contents">
+<!-- doxytag: class="_tty_operations_t" -->
+<p><code>#include &lt;<a class="el" href="tty_8h_source.html">tty.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44fb314b6ba47294932a8fdfe8e25d63"></a><!-- doxytag: member="_tty_operations_t::open" ref="a44fb314b6ba47294932a8fdfe8e25d63" args=")(tty_struct_t *, open_file_descriptor *)" -->
+int(*&#160;</td><td class="memItemRight" valign="bottom"><b>open</b> )(<a class="el" href="tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e">tty_struct_t</a> *, <a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9277a33599caf8b99b1f4ba52708a117"></a><!-- doxytag: member="_tty_operations_t::close" ref="a9277a33599caf8b99b1f4ba52708a117" args=")(tty_struct_t *, open_file_descriptor *)" -->
+int(*&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> )(<a class="el" href="tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e">tty_struct_t</a> *, <a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b53188048a05fa70f02311f48b6d877"></a><!-- doxytag: member="_tty_operations_t::write" ref="a2b53188048a05fa70f02311f48b6d877" args=")(tty_struct_t *, open_file_descriptor *, const unsigned char *, size_t)" -->
+<a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> )(<a class="el" href="tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e">tty_struct_t</a> *, <a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *, const unsigned char *, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa6245586b6d4d0fb23f2afe2ea6e6672"></a><!-- doxytag: member="_tty_operations_t::put_char" ref="aa6245586b6d4d0fb23f2afe2ea6e6672" args=")(tty_struct_t *tty, unsigned char ch)" -->
+void(*&#160;</td><td class="memItemRight" valign="bottom"><b>put_char</b> )(<a class="el" href="tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e">tty_struct_t</a> *tty, unsigned char ch)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a635940084e0140e5b859572d4b1cb647"></a><!-- doxytag: member="_tty_operations_t::set_termios" ref="a635940084e0140e5b859572d4b1cb647" args=")(struct termios *, struct termios *)" -->
+<a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><b>set_termios</b> )(struct <a class="el" href="structtermios.html">termios</a> *, struct <a class="el" href="structtermios.html">termios</a> *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d583c140c5fcf8896c42b571be2d2cb"></a><!-- doxytag: member="_tty_operations_t::ioctl" ref="a0d583c140c5fcf8896c42b571be2d2cb" args=")(tty_struct_t *tty, open_file_descriptor *, unsigned int, void *)" -->
+int(*&#160;</td><td class="memItemRight" valign="bottom"><b>ioctl</b> )(<a class="el" href="tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e">tty_struct_t</a> *tty, <a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *, unsigned int, void *)</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>Contient les opérations fournies par le tty driver. </p>
+</div><hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
+<li>kernel/include/<a class="el" href="tty_8h_source.html">tty.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juillet 8 2012 15:18:32 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

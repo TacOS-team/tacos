@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="libc/stdio/stdfiles.c" name="libc/stdio/stdfiles.c">
 <area shape="rect" id="node3" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="5,238,91,266"/>
 <area shape="rect" id="node9" href="$libio_8h.html" title="libio.h" alt="" coords="256,161,309,189"/>
 <area shape="rect" id="node15" href="$stdio_8h.html" title="stdio.h" alt="" coords="169,83,228,111"/>

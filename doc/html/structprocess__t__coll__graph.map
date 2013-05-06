@@ -1,14 +1,18 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$structsignal__process__data__t.html" title="signal_process_data_t" alt="" coords="400,5,552,33"/>
-<area shape="rect" id="node4" href="$structregs__t.html" title="regs_t" alt="" coords="447,55,505,83"/>
-<area shape="rect" id="node6" href="$structvirtual__mem.html" title="virtual_mem" alt="" coords="429,106,523,134"/>
-<area shape="rect" id="node8" href="$structslabs__list.html" title="slabs_list" alt="" coords="169,106,247,134"/>
-<area shape="rect" id="node10" href="$structslab.html" title="a slab of pages." alt="" coords="7,106,52,134"/>
-<area shape="rect" id="node13" href="$structpage__directory__entry.html" title="Page Directory Entry." alt="" coords="405,157,547,185"/>
-<area shape="rect" id="node15" href="$structsymbol__table__t.html" title="symbol_table_t" alt="" coords="421,207,531,235"/>
-<area shape="rect" id="node17" href="$structsymbol__t.html" title="symbol_t" alt="" coords="171,207,245,235"/>
-<area shape="rect" id="node19" href="$struct__file__descriptor.html" title="_file_descriptor" alt="" coords="421,258,531,286"/>
-<area shape="rect" id="node21" href="$struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="136,321,280,349"/>
-<area shape="rect" id="node23" href="$struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté." alt="" coords="423,355,529,383"/>
-<area shape="rect" id="node25" href="$structfile__system__t.html" title="Structure qui représente un FS." alt="" coords="669,342,768,370"/>
+<map id="process_t" name="process_t">
+<area shape="rect" id="node2" href="$structsignal__process__data__t.html" title="signal_process_data_t" alt="" coords="515,5,667,33"/>
+<area shape="rect" id="node4" href="$structregs__t.html" title="regs_t" alt="" coords="561,106,620,134"/>
+<area shape="rect" id="node6" href="$structvirtual__mem.html" title="virtual_mem" alt="" coords="544,157,637,185"/>
+<area shape="rect" id="node8" href="$structslabs__list.html" title="slabs_list" alt="" coords="284,157,361,185"/>
+<area shape="rect" id="node10" href="$structslab.html" title="a slab of pages." alt="" coords="63,157,108,185"/>
+<area shape="rect" id="node13" href="$structpage__directory__entry.html" title="Page Directory Entry." alt="" coords="520,207,661,235"/>
+<area shape="rect" id="node15" href="$structsymbol__table__t.html" title="symbol_table_t" alt="" coords="536,55,645,83"/>
+<area shape="rect" id="node17" href="$structsymbol__t.html" title="symbol_t" alt="" coords="285,55,360,83"/>
+<area shape="rect" id="node19" href="$struct__file__descriptor.html" title="_file_descriptor" alt="" coords="536,258,645,286"/>
+<area shape="rect" id="node21" href="$struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="251,406,395,434"/>
+<area shape="rect" id="node30" href="$struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté." alt="" coords="537,471,644,499"/>
+<area shape="rect" id="node23" href="$struct__open__file__operations__t.html" title="_open_file_operations_t" alt="" coords="7,571,164,599"/>
+<area shape="rect" id="node27" href="$struct__inode__t.html" title="_inode_t" alt="" coords="804,598,873,626"/>
+<area shape="rect" id="node25" href="$struct__dentry__t.html" title="_dentry_t" alt="" coords="992,469,1067,497"/>
+<area shape="rect" id="node33" href="$structfile__system__t.html" title="Structure qui représente un FS." alt="" coords="789,538,888,566"/>
+<area shape="rect" id="node38" href="$struct__mounted__fs__t.html" title="_mounted_fs_t" alt="" coords="785,399,892,427"/>
 </map>

@@ -1,0 +1,5 @@
+<map id="rewind" name="rewind">
+<area shape="rect" id="node3" href="$stdio_8h.html#a5e25775bd8597f839a28125b616bd241" title="Fixe l&#39;indicateur de position du flux." alt="" coords="116,5,169,33"/>
+<area shape="rect" id="node5" href="$unistd_8h.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier." alt="" coords="219,5,272,33"/>
+<area shape="rect" id="node7" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="321,5,383,33"/>
+</map>

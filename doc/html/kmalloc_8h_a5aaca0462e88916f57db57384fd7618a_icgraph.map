@@ -1,0 +1,12 @@
+<map id="kfree" name="kfree">
+<area shape="rect" id="node3" href="$ext2__internal_8h.html#aa055d93f3693085315aa853345de0032" title="Unmount d&#39;un point de montage." alt="" coords="132,5,236,33"/>
+<area shape="rect" id="node5" href="$ext2__internal_8h.html#ab2859a00444ce0ad527332da72e2629a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="143,55,225,83"/>
+<area shape="rect" id="node7" href="$fat__internal_8h.html#ab2204311ec26e0134235b4a6c895312f" title="umount_FAT" alt="" coords="136,106,232,134"/>
+<area shape="rect" id="node9" href="$fat__internal_8h.html#ada9bd47fd90b01248fe52f302560f9f9" title="fat_readdir" alt="" coords="143,157,225,185"/>
+<area shape="rect" id="node11" href="$fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="147,207,221,235"/>
+<area shape="rect" id="node13" href="$fat__internal_8h.html#afdccf4bea2c0e70059a76f43fea9c33f" title="fat_close" alt="" coords="147,258,221,286"/>
+<area shape="rect" id="node15" href="$kfcntl_8c.html#adc12a443121c63ad99a6311aa2739884" title="Ferme tous les file descriptors ouverts." alt="" coords="139,309,229,337"/>
+<area shape="rect" id="node17" href="$kfcntl_8c.html#a3a5f4c56fd3fcc2b69757102f722fc29" title="SYSCALL_HANDLER2" alt="" coords="104,359,264,387"/>
+<area shape="rect" id="node19" href="$kprocess_8c.html#a7cced35f469ae897c55ab96940289cf6" title="Retire un processus de la liste." alt="" coords="129,410,239,438"/>
+<area shape="rect" id="node21" href="$vfs_8c.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="145,461,223,489"/>
+</map>

@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/include/kfcntl.h" name="kernel/include/kfcntl.h">
 <area shape="rect" id="node3" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="105,238,167,266"/>
 <area shape="rect" id="node5" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="632,161,712,189"/>
 <area shape="rect" id="node7" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="209,83,295,111"/>
@@ -7,4 +7,5 @@
 <area shape="rect" id="node15" href="$process__types_8h.html" title="process_types.h" alt="" coords="493,161,608,189"/>
 <area shape="rect" id="node17" href="$symtable_8h.html" title="symtable.h" alt="" coords="259,161,341,189"/>
 <area shape="rect" id="node23" href="$vmm_8h.html" title="vmm.h" alt="" coords="173,161,235,189"/>
+<area shape="rect" id="node20" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="277,238,323,266"/>
 </map>

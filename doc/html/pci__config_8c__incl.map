@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/pci/pci_config.c" name="kernel/pci/pci_config.c">
 <area shape="rect" id="node3" href="$ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="5,83,75,111"/>
 <area shape="rect" id="node7" href="$pci__config_8h.html" title="pci_config.h" alt="" coords="184,83,275,111"/>
 <area shape="rect" id="node13" href="$pci__vendor_8h.html" title="pci_vendor.h" alt="" coords="299,83,392,111"/>

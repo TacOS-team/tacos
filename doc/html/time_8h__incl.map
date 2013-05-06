@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="libc/include/time.h" name="libc/include/time.h">
 <area shape="rect" id="node3" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="5,161,93,189"/>
 <area shape="rect" id="node5" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="87,83,172,111"/>
 <area shape="rect" id="node8" href="$stdbool_8h.html" title="Type bool." alt="" coords="117,161,192,189"/>

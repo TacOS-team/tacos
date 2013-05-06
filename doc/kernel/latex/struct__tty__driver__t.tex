@@ -1,0 +1,69 @@
+\hypertarget{struct__tty__driver__t}{\section{\-Référence de la structure \-\_\-tty\-\_\-driver\-\_\-t}
+\label{struct__tty__driver__t}\index{\-\_\-tty\-\_\-driver\-\_\-t@{\-\_\-tty\-\_\-driver\-\_\-t}}
+}
+
+
+{\ttfamily \#include $<$tty.\-h$>$}
+
+
+
+\-Graphe de collaboration de \-\_\-tty\-\_\-driver\-\_\-t\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{struct__tty__driver__t__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{\-Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{struct__tty__driver__t_ae2f43b40c48f11feab23551e34a4fe6d}{driver\-\_\-name}
+\item 
+const char $\ast$ \hyperlink{struct__tty__driver__t_a0c46e5dd6e7275908881f644d7fff927}{devfs\-\_\-name}
+\item 
+int \hyperlink{struct__tty__driver__t_a0f0243090bc705d41b3a6cc28c886cdf}{num}
+\item 
+short \hyperlink{struct__tty__driver__t_a0c9f7f164f7454cf2bea36de5e23a5d1}{type}
+\item 
+short \hyperlink{struct__tty__driver__t_a291fe7f9436ef9cbe34b490d516f46bd}{subtype}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{struct__tty__driver__t_a4ce1272b5e539a50b106986a79d7cab9}{flags}
+\item 
+\hypertarget{struct__tty__driver__t_afca7a640278fe195af30dbbd5116ee68}{struct \hyperlink{structtermios}{termios} {\bfseries init\-\_\-termios}}\label{struct__tty__driver__t_afca7a640278fe195af30dbbd5116ee68}
+
+\item 
+\hypertarget{struct__tty__driver__t_a8e10e237b92b125136a6e4bb5203a210}{\hyperlink{tty_8h_a0870504b9f2d2e99a669e6df3dc9e84e}{tty\-\_\-struct\-\_\-t} $\ast$$\ast$ {\bfseries ttys}}\label{struct__tty__driver__t_a8e10e237b92b125136a6e4bb5203a210}
+
+\item 
+\hypertarget{struct__tty__driver__t_aaed3302c349f8bf34d51cfe3cc603f70}{\hyperlink{tty_8h_af76ab451b44b0a6479abe8aeb1bab6b4}{tty\-\_\-operations\-\_\-t} $\ast$ {\bfseries ops}}\label{struct__tty__driver__t_aaed3302c349f8bf34d51cfe3cc603f70}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Description détaillée}
+\-Structure qui sert à l'enregistrement d'un driver tty. 
+
+\subsection{\-Documentation des champs}
+\hypertarget{struct__tty__driver__t_a0c46e5dd6e7275908881f644d7fff927}{\index{\-\_\-tty\-\_\-driver\-\_\-t@{\-\_\-tty\-\_\-driver\-\_\-t}!devfs\-\_\-name@{devfs\-\_\-name}}
+\index{devfs\-\_\-name@{devfs\-\_\-name}!_tty_driver_t@{\-\_\-tty\-\_\-driver\-\_\-t}}
+\subsubsection[{devfs\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf \-\_\-tty\-\_\-driver\-\_\-t\-::devfs\-\_\-name}}}\label{struct__tty__driver__t_a0c46e5dd6e7275908881f644d7fff927}
+\-Le prefixe à ajouter dans le devfs \hypertarget{struct__tty__driver__t_ae2f43b40c48f11feab23551e34a4fe6d}{\index{\-\_\-tty\-\_\-driver\-\_\-t@{\-\_\-tty\-\_\-driver\-\_\-t}!driver\-\_\-name@{driver\-\_\-name}}
+\index{driver\-\_\-name@{driver\-\_\-name}!_tty_driver_t@{\-\_\-tty\-\_\-driver\-\_\-t}}
+\subsubsection[{driver\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf \-\_\-tty\-\_\-driver\-\_\-t\-::driver\-\_\-name}}}\label{struct__tty__driver__t_ae2f43b40c48f11feab23551e34a4fe6d}
+\-Le nom du driver \hypertarget{struct__tty__driver__t_a4ce1272b5e539a50b106986a79d7cab9}{\index{\-\_\-tty\-\_\-driver\-\_\-t@{\-\_\-tty\-\_\-driver\-\_\-t}!flags@{flags}}
+\index{flags@{flags}!_tty_driver_t@{\-\_\-tty\-\_\-driver\-\_\-t}}
+\subsubsection[{flags}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} {\bf \-\_\-tty\-\_\-driver\-\_\-t\-::flags}}}\label{struct__tty__driver__t_a4ce1272b5e539a50b106986a79d7cab9}
+\-Flags, tel que \-R\-E\-S\-E\-T\-\_\-\-T\-E\-R\-M\-I\-O\-S, \-R\-E\-A\-L\-\_\-\-R\-A\-W ou \-N\-O\-\_\-\-D\-E\-V\-F\-S \hypertarget{struct__tty__driver__t_a0f0243090bc705d41b3a6cc28c886cdf}{\index{\-\_\-tty\-\_\-driver\-\_\-t@{\-\_\-tty\-\_\-driver\-\_\-t}!num@{num}}
+\index{num@{num}!_tty_driver_t@{\-\_\-tty\-\_\-driver\-\_\-t}}
+\subsubsection[{num}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-\_\-tty\-\_\-driver\-\_\-t\-::num}}}\label{struct__tty__driver__t_a0f0243090bc705d41b3a6cc28c886cdf}
+\-Nombre de devices au maximum. \hypertarget{struct__tty__driver__t_a291fe7f9436ef9cbe34b490d516f46bd}{\index{\-\_\-tty\-\_\-driver\-\_\-t@{\-\_\-tty\-\_\-driver\-\_\-t}!subtype@{subtype}}
+\index{subtype@{subtype}!_tty_driver_t@{\-\_\-tty\-\_\-driver\-\_\-t}}
+\subsubsection[{subtype}]{\setlength{\rightskip}{0pt plus 5cm}short {\bf \-\_\-tty\-\_\-driver\-\_\-t\-::subtype}}}\label{struct__tty__driver__t_a291fe7f9436ef9cbe34b490d516f46bd}
+\-Soustype \-: ptm, pts par exemple \hypertarget{struct__tty__driver__t_a0c9f7f164f7454cf2bea36de5e23a5d1}{\index{\-\_\-tty\-\_\-driver\-\_\-t@{\-\_\-tty\-\_\-driver\-\_\-t}!type@{type}}
+\index{type@{type}!_tty_driver_t@{\-\_\-tty\-\_\-driver\-\_\-t}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}short {\bf \-\_\-tty\-\_\-driver\-\_\-t\-::type}}}\label{struct__tty__driver__t_a0c9f7f164f7454cf2bea36de5e23a5d1}
+type \-: console, serial, pty 
+
+\-La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+\item 
+kernel/include/\hyperlink{tty_8h}{tty.\-h}\end{DoxyCompactItemize}

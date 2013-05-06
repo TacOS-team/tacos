@@ -1,0 +1,23 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="5,83,179,111"/>
+<area shape="rect" id="node5" href="$console_8c.html" title="Console virtuelle (Fn)." alt="" coords="203,83,408,111"/>
+<area shape="rect" id="node7" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="432,83,605,111"/>
+<area shape="rect" id="node9" href="$devfs_8c.html" title="DevFS." alt="" coords="629,83,747,111"/>
+<area shape="rect" id="node11" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="771,83,909,111"/>
+<area shape="rect" id="node13" href="$fat_8c.html" title="Driver FAT." alt="" coords="933,83,1053,111"/>
+<area shape="rect" id="node15" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="1077,83,1256,111"/>
+<area shape="rect" id="node17" href="$fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="1280,83,1437,111"/>
+<area shape="rect" id="node19" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="1461,83,1584,111"/>
+<area shape="rect" id="node21" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="1608,83,1717,111"/>
+<area shape="rect" id="node23" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="1741,83,1848,111"/>
+<area shape="rect" id="node25" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="1872,83,1973,111"/>
+<area shape="rect" id="node27" href="$string_8c.html" title="Manipulation de string depuis le kernel." alt="" coords="1997,83,2131,111"/>
+<area shape="rect" id="node29" href="$kmalloc_8c.html" title="kernel/kmalloc.c" alt="" coords="2155,83,2269,111"/>
+<area shape="rect" id="node31" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="2293,83,2416,111"/>
+<area shape="rect" id="node33" href="$ksem_8c.html" title="Gestion des sémaphores." alt="" coords="2440,83,2541,111"/>
+<area shape="rect" id="node35" href="$module_8c.html" title="kernel/module.c" alt="" coords="2565,83,2677,111"/>
+<area shape="rect" id="node37" href="$round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="2701,83,2840,111"/>
+<area shape="rect" id="node39" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="2864,83,2989,111"/>
+<area shape="rect" id="node41" href="$list_8c.html" title="kernel/utils/list.c" alt="" coords="3013,83,3128,111"/>
+<area shape="rect" id="node43" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="3152,83,3240,111"/>
+</map>

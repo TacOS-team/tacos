@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="clock_mktime" name="clock_mktime">
 <area shape="rect" id="node3" href="$clock_8h.html#ae9cc0a879e88eea28e4e8b57318ef8e5" title="Initialisation de l&#39;horloge. Initialisation de l&#39;horloge." alt="" coords="157,5,235,33"/>
 <area shape="rect" id="node5" href="$events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="283,5,368,33"/>
 </map>

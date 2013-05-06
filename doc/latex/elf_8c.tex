@@ -1,0 +1,172 @@
+\hypertarget{elf_8c}{\section{Référence du fichier kernel/elf.c}
+\label{elf_8c}\index{kernel/elf.\-c@{kernel/elf.\-c}}
+}
+{\ttfamily \#include $<$elf.\-h$>$}\\*
+{\ttfamily \#include $<$kmalloc.\-h$>$}\\*
+{\ttfamily \#include $<$kunistd.\-h$>$}\\*
+{\ttfamily \#include $<$fd\-\_\-types.\-h$>$}\\*
+{\ttfamily \#include $<$klibc/string.\-h$>$}\\*
+Graphe des dépendances par inclusion de elf.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{elf_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{elf_8c_a31fc4f1a707bc6836e4e46543143ce38}{int {\bfseries is\-\_\-elf} (\hyperlink{structElf32__Ehdr}{Elf32\-\_\-\-Ehdr} $\ast$elf\-\_\-header)}\label{elf_8c_a31fc4f1a707bc6836e4e46543143ce38}
+
+\item 
+\hypertarget{elf_8c_ad61d6e274f84b1b4ca6803bc4b74ae45}{int {\bfseries load\-\_\-elf\-\_\-header} (\hyperlink{structElf32__Ehdr}{Elf32\-\_\-\-Ehdr} $\ast$elf\-\_\-header, int fd)}\label{elf_8c_ad61d6e274f84b1b4ca6803bc4b74ae45}
+
+\item 
+int \hyperlink{elf_8c_a9aae782f070af1c6009d0cc2a6d60a08}{load\-\_\-program\-\_\-header} (\hyperlink{structElf32__Phdr}{Elf32\-\_\-\-Phdr} $\ast$program\-\_\-header, \hyperlink{structElf32__Ehdr}{Elf32\-\_\-\-Ehdr} $\ast$elf\-\_\-header, int index, int fd)
+\begin{DoxyCompactList}\small\item\em charge un program header depuis un fichier elf Charge le program header n°index depuis le fichier \end{DoxyCompactList}\item 
+unsigned long int \hyperlink{elf_8c_aa84790a8edae8d2859861f19adf5dd41}{elf\-\_\-size} (int fd)
+\begin{DoxyCompactList}\small\item\em Calcul la taille que prendra l'exécutable dans la mémoire La fonction évalue l'adresse de départ en mémoire, et l'adresse de fin, et retourne la différence (il n'est pas suffisant d'additionner les tailles des différentes sections) \end{DoxyCompactList}\item 
+int \hyperlink{elf_8c_a35e8f32030ee36d8c02357a0b483c1b2}{load\-\_\-elf} (int fd, void $\ast$dest)
+\begin{DoxyCompactList}\small\item\em charge un fichier elf Charge les données utiles de l'exécutable en mémoire, de façon à ce que ce soit pret à exécuter \end{DoxyCompactList}\item 
+\hyperlink{structElf32__File}{Elf32\-\_\-\-File} $\ast$ \hyperlink{elf_8c_abbbb3d1f6ac9986f87d655cec7819556}{load\-\_\-elf\-\_\-file} (int fd)
+\begin{DoxyCompactList}\small\item\em charge un fichier elf dans la structure \hyperlink{structElf32__File}{Elf32\-\_\-\-File} \end{DoxyCompactList}\item 
+\hyperlink{structElf32__Sym}{Elf32\-\_\-\-Sym} $\ast$ \hyperlink{elf_8c_a8f556b72039271c88d4567c6e2f84ea0}{find\-\_\-symbol} (\hyperlink{structElf32__File}{Elf32\-\_\-\-File} $\ast$file, const char $\ast$symbol)
+\begin{DoxyCompactList}\small\item\em Trouve un symbole dans un fichier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{elf_8c_a4b55f34e2077685c50bd1472fb75aff5}{const char {\bfseries debug\-\_\-string\-\_\-sname} \mbox{[}$\,$\mbox{]} = \char`\"{}.strtab\char`\"{}}\label{elf_8c_a4b55f34e2077685c50bd1472fb75aff5}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+Bibliotèque destinée à manipuler les fichiers exécutables E\-L\-F 
+
+\subsection{Documentation des fonctions}
+\hypertarget{elf_8c_aa84790a8edae8d2859861f19adf5dd41}{\index{elf.\-c@{elf.\-c}!elf\-\_\-size@{elf\-\_\-size}}
+\index{elf\-\_\-size@{elf\-\_\-size}!elf.c@{elf.\-c}}
+\subsubsection[{elf\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long int elf\-\_\-size (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}}\label{elf_8c_aa84790a8edae8d2859861f19adf5dd41}
+
+\begin{DoxyParams}{Paramètres}
+{\em fd} & descripteur du fichier elf\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+taille prise initialement par l'exécutable en mémoire 
+\end{DoxyReturn}
+\hypertarget{elf_8c_a8f556b72039271c88d4567c6e2f84ea0}{\index{elf.\-c@{elf.\-c}!find\-\_\-symbol@{find\-\_\-symbol}}
+\index{find\-\_\-symbol@{find\-\_\-symbol}!elf.c@{elf.\-c}}
+\subsubsection[{find\-\_\-symbol}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Elf32\-\_\-\-Sym}$\ast$ find\-\_\-symbol (
+\begin{DoxyParamCaption}
+\item[{{\bf Elf32\-\_\-\-File} $\ast$}]{file, }
+\item[{const char $\ast$}]{symbol}
+\end{DoxyParamCaption}
+)}}\label{elf_8c_a8f556b72039271c88d4567c6e2f84ea0}
+
+\begin{DoxyParams}{Paramètres}
+{\em file} & Fichier dans lequel on recherche le symbole \\
+\hline
+{\em symbol} & Symbole cherché\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+symbole recherché 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{elf_8c_a8f556b72039271c88d4567c6e2f84ea0_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{elf_8c_a35e8f32030ee36d8c02357a0b483c1b2}{\index{elf.\-c@{elf.\-c}!load\-\_\-elf@{load\-\_\-elf}}
+\index{load\-\_\-elf@{load\-\_\-elf}!elf.c@{elf.\-c}}
+\subsubsection[{load\-\_\-elf}]{\setlength{\rightskip}{0pt plus 5cm}int load\-\_\-elf (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{void $\ast$}]{dest}
+\end{DoxyParamCaption}
+)}}\label{elf_8c_a35e8f32030ee36d8c02357a0b483c1b2}
+
+\begin{DoxyParams}{Paramètres}
+{\em fd} & descripteur du fichier à charger \\
+\hline
+{\em dest} & adresse à laquelle il faut charger l'exécutable\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+adresse du point d'entrée de l'exécutable 
+\end{DoxyReturn}
+\hypertarget{elf_8c_abbbb3d1f6ac9986f87d655cec7819556}{\index{elf.\-c@{elf.\-c}!load\-\_\-elf\-\_\-file@{load\-\_\-elf\-\_\-file}}
+\index{load\-\_\-elf\-\_\-file@{load\-\_\-elf\-\_\-file}!elf.c@{elf.\-c}}
+\subsubsection[{load\-\_\-elf\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Elf32\-\_\-\-File}$\ast$ load\-\_\-elf\-\_\-file (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}}\label{elf_8c_abbbb3d1f6ac9986f87d655cec7819556}
+
+\begin{DoxyParams}{Paramètres}
+{\em fd} & File descriptor du fichier à charger.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+pointeur vers une structure Elf32\-\_\-file chargée, N\-U\-L\-L en cas d'échec 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{elf_8c_abbbb3d1f6ac9986f87d655cec7819556_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{elf_8c_a9aae782f070af1c6009d0cc2a6d60a08}{\index{elf.\-c@{elf.\-c}!load\-\_\-program\-\_\-header@{load\-\_\-program\-\_\-header}}
+\index{load\-\_\-program\-\_\-header@{load\-\_\-program\-\_\-header}!elf.c@{elf.\-c}}
+\subsubsection[{load\-\_\-program\-\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}int load\-\_\-program\-\_\-header (
+\begin{DoxyParamCaption}
+\item[{{\bf Elf32\-\_\-\-Phdr} $\ast$}]{program\-\_\-header, }
+\item[{{\bf Elf32\-\_\-\-Ehdr} $\ast$}]{elf\-\_\-header, }
+\item[{int}]{index, }
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}}\label{elf_8c_a9aae782f070af1c6009d0cc2a6d60a08}
+
+\begin{DoxyParams}{Paramètres}
+{\em program\-\_\-header} & adresse où l'on veut charger le header \\
+\hline
+{\em elf\-\_\-header} & header principal du fichier \\
+\hline
+{\em index} & numero du program header à charger \\
+\hline
+{\em fd} & descripteur du fichier à charger\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 si succès, -\/1 sinon 
+\end{DoxyReturn}

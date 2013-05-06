@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de kernel/fs/ext2/ext2_internal.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">kernel/fs/ext2/ext2_internal.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="ext2__internal_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _EXT2_INTERNAL_H_</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _EXT2_INTERNAL_H_</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="devfs_8h.html">fs/devfs.h</a>&gt;</span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="vfs_8h.html" title="Virtual File System.">vfs.h</a>&gt;</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a><a class="code" href="ext2__internal_8h.html#acb50ee6c9362361d2cc44d8be16f9959">00035</a> <span class="preprocessor">#define EXT2_ROOT_INO 2 </span>
+<a name="l00043"></a><a class="code" href="structext2__super__block.html">00043</a> <span class="preprocessor">struct ext2_super_block {</span>
+<a name="l00044"></a><a class="code" href="structext2__super__block.html#a2ea20f821c0ddc19b0adc7d1b8d0685d">00044</a> <span class="preprocessor"></span>        <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a2ea20f821c0ddc19b0adc7d1b8d0685d">s_inodes_count</a>;               
+<a name="l00045"></a><a class="code" href="structext2__super__block.html#a3878ffaff13c625cce6b825ecb797547">00045</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a3878ffaff13c625cce6b825ecb797547">s_blocks_count</a>;               
+<a name="l00046"></a><a class="code" href="structext2__super__block.html#a660db33fc94622167793c6b080c515e4">00046</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a660db33fc94622167793c6b080c515e4">s_r_blocks_count</a>;             
+<a name="l00047"></a><a class="code" href="structext2__super__block.html#a005160872a0474cdc9be97da00b81b84">00047</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a005160872a0474cdc9be97da00b81b84">s_free_blocks_count</a>;  
+<a name="l00048"></a><a class="code" href="structext2__super__block.html#aeefbe6028c7e1554805b033287de0097">00048</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#aeefbe6028c7e1554805b033287de0097">s_free_inodes_count</a>;  
+<a name="l00049"></a><a class="code" href="structext2__super__block.html#ab7c5dfba6eafbb1974f7628d4ae32601">00049</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#ab7c5dfba6eafbb1974f7628d4ae32601">s_first_data_block</a>;   
+<a name="l00050"></a><a class="code" href="structext2__super__block.html#a34965ad64787db6bf0893e000b19f608">00050</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a34965ad64787db6bf0893e000b19f608">s_log_block_size</a>;             
+<a name="l00051"></a><a class="code" href="structext2__super__block.html#a441780f5356cad879e465bb23d5c0659">00051</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a441780f5356cad879e465bb23d5c0659">s_log_frag_size</a>;              
+<a name="l00052"></a><a class="code" href="structext2__super__block.html#a037ab0266050cd0d0026c5da1fda3ab1">00052</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a037ab0266050cd0d0026c5da1fda3ab1">s_blocks_per_group</a>;   
+<a name="l00053"></a><a class="code" href="structext2__super__block.html#a6370cd7307aa833951c40fcc3f941b61">00053</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a6370cd7307aa833951c40fcc3f941b61">s_frags_per_group</a>;    
+<a name="l00054"></a><a class="code" href="structext2__super__block.html#a4b417c308a43cfd8d744c3fdd19832af">00054</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a4b417c308a43cfd8d744c3fdd19832af">s_inodes_per_group</a>;   
+<a name="l00055"></a><a class="code" href="structext2__super__block.html#a3966a51d4e26f1b0280798db227b9720">00055</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a3966a51d4e26f1b0280798db227b9720">s_mtime</a>;                              
+<a name="l00056"></a><a class="code" href="structext2__super__block.html#a97c255a8e87dbea1ab953b0a8fce054d">00056</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a97c255a8e87dbea1ab953b0a8fce054d">s_wtime</a>;                              
+<a name="l00057"></a><a class="code" href="structext2__super__block.html#a0a2557d9e186c2774e4eac28ef07a942">00057</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structext2__super__block.html#a0a2557d9e186c2774e4eac28ef07a942">s_mnt_count</a>;                  
+<a name="l00058"></a><a class="code" href="structext2__super__block.html#a7823bb2004c8a837a207b71d73dc8662">00058</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structext2__super__block.html#a7823bb2004c8a837a207b71d73dc8662">s_max_mnt_count</a>;              
+<a name="l00059"></a><a class="code" href="structext2__super__block.html#a22b76c4f2b2547630739f5c2ebb9d4b9">00059</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structext2__super__block.html#a22b76c4f2b2547630739f5c2ebb9d4b9">s_magic</a>;                              
+<a name="l00060"></a><a class="code" href="structext2__super__block.html#a06b739ed98ef97510f193cb582e78eb6">00060</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structext2__super__block.html#a06b739ed98ef97510f193cb582e78eb6">s_state</a>;                              
+<a name="l00061"></a><a class="code" href="structext2__super__block.html#a06e31d621f6250d56d1af5c342220a08">00061</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structext2__super__block.html#a06e31d621f6250d56d1af5c342220a08">s_errors</a>;                             
+<a name="l00062"></a><a class="code" href="structext2__super__block.html#a0ca2f1fc71b73dc837a15392a35abb89">00062</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structext2__super__block.html#a0ca2f1fc71b73dc837a15392a35abb89">s_minor_rev_level</a>;    
+<a name="l00063"></a><a class="code" href="structext2__super__block.html#a4a8a628c48e36668f87ff1d0f831224a">00063</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a4a8a628c48e36668f87ff1d0f831224a">s_lastcheck</a>;                  
+<a name="l00064"></a><a class="code" href="structext2__super__block.html#a41729c3eb872813abe1489de88e6f736">00064</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a41729c3eb872813abe1489de88e6f736">s_checkinterval</a>;              
+<a name="l00065"></a><a class="code" href="structext2__super__block.html#a421f09691aa0911da60db7ef23dc30ca">00065</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a421f09691aa0911da60db7ef23dc30ca">s_creator_os</a>;                 
+<a name="l00066"></a><a class="code" href="structext2__super__block.html#a70b07eaf44b6a5e777b8072ee4b593b4">00066</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a70b07eaf44b6a5e777b8072ee4b593b4">s_rev_level</a>;                  
+<a name="l00067"></a><a class="code" href="structext2__super__block.html#a83da108c4a1f27a275f54970fb8edf07">00067</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structext2__super__block.html#a83da108c4a1f27a275f54970fb8edf07">s_def_resuid</a>;                 
+<a name="l00068"></a><a class="code" href="structext2__super__block.html#a2973f6cda59f008e1f649c6d68ddafd6">00068</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structext2__super__block.html#a2973f6cda59f008e1f649c6d68ddafd6">s_def_resgid</a>;                 
+<a name="l00069"></a>00069 <span class="comment">// -- EXT2_DYNAMIC_REV Specific --</span>
+<a name="l00070"></a><a class="code" href="structext2__super__block.html#a0d3a8f3c14e0a971750cfdfbc2cf6070">00070</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a0d3a8f3c14e0a971750cfdfbc2cf6070">s_first_ino</a>;                  
+<a name="l00071"></a><a class="code" href="structext2__super__block.html#a9a1ee9cd5f706fa2e753a4c781ebae73">00071</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structext2__super__block.html#a9a1ee9cd5f706fa2e753a4c781ebae73">s_inode_size</a>;                 
+<a name="l00072"></a><a class="code" href="structext2__super__block.html#aa69ff4c80207a79de2464e3065df607c">00072</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structext2__super__block.html#aa69ff4c80207a79de2464e3065df607c">s_block_group_nr</a>;             
+<a name="l00073"></a><a class="code" href="structext2__super__block.html#a1cf404a1bcfb748e924c62032cd723a5">00073</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a1cf404a1bcfb748e924c62032cd723a5">s_feature_compat</a>;             
+<a name="l00074"></a><a class="code" href="structext2__super__block.html#a56005d1ae97dc32f86567d018c753440">00074</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a56005d1ae97dc32f86567d018c753440">s_feature_incompat</a>;   
+<a name="l00075"></a><a class="code" href="structext2__super__block.html#a9c63e7954f0344d3de19aad4099d84c7">00075</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a9c63e7954f0344d3de19aad4099d84c7">s_feature_ro_compat</a>;  
+<a name="l00076"></a><a class="code" href="structext2__super__block.html#a1a546d295c2dc760ece8bf44c7623eb3">00076</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   s_uuid[16];                   
+<a name="l00077"></a><a class="code" href="structext2__super__block.html#aafa5ddd1cf9fbf19aa2b80e83bff5a43">00077</a>         <span class="keywordtype">char</span>      s_volume_name[16];    
+<a name="l00078"></a><a class="code" href="structext2__super__block.html#ad2849dfeab713d00ddd93c97eaf80cea">00078</a>         <span class="keywordtype">char</span>      s_last_mounted[64];   
+<a name="l00079"></a><a class="code" href="structext2__super__block.html#ab3772dfdb48734922447cc462e5495ed">00079</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#ab3772dfdb48734922447cc462e5495ed">s_algorithm_usage_bitmap</a>; 
+<a name="l00080"></a>00080 <span class="comment">// -- Performance Hints --</span>
+<a name="l00081"></a><a class="code" href="structext2__super__block.html#a352689df3b3cb2a357bde6645e3c7f29">00081</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="structext2__super__block.html#a352689df3b3cb2a357bde6645e3c7f29">s_prealloc_blocks</a>;    
+<a name="l00082"></a><a class="code" href="structext2__super__block.html#aa820a721fcbf64ee9aa797bca3171785">00082</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="structext2__super__block.html#aa820a721fcbf64ee9aa797bca3171785">s_prealloc_dir_blocks</a>;  
+<a name="l00083"></a><a class="code" href="structext2__super__block.html#a1b0760049d39f6cfb1b26af0a01f64d2">00083</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structext2__super__block.html#a1b0760049d39f6cfb1b26af0a01f64d2">s_padding1</a>;                   
+<a name="l00084"></a>00084 <span class="comment">// -- Journaling Support --</span>
+<a name="l00085"></a><a class="code" href="structext2__super__block.html#a31f78875053afe2073c72ab700e831cd">00085</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   s_journal_uuid[16];   
+<a name="l00086"></a><a class="code" href="structext2__super__block.html#a593535b5ffb1b5480f887e0aae0be698">00086</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a593535b5ffb1b5480f887e0aae0be698">s_journal_inum</a>;               
+<a name="l00087"></a><a class="code" href="structext2__super__block.html#a5c65ec434f4b1394d6ec68fb8d055a4e">00087</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a5c65ec434f4b1394d6ec68fb8d055a4e">s_journal_dev</a>;                
+<a name="l00088"></a><a class="code" href="structext2__super__block.html#a48682cfbe704f555d18fe030f1ee6fe6">00088</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a48682cfbe704f555d18fe030f1ee6fe6">s_last_orphan</a>;                
+<a name="l00089"></a>00089 <span class="comment">// -- Directory Indexing Support --</span>
+<a name="l00090"></a><a class="code" href="structext2__super__block.html#a70910c5d87977d65b2a69fb7b079d3a1">00090</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  s_hash_seed[4];               
+<a name="l00091"></a><a class="code" href="structext2__super__block.html#a3120768bf3ac685a2e5d38d84ec3c5b8">00091</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="structext2__super__block.html#a3120768bf3ac685a2e5d38d84ec3c5b8">s_def_hash_version</a>;   
+<a name="l00092"></a><a class="code" href="structext2__super__block.html#a81b4e1959f344b5b7445044806d27807">00092</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   s_padding[3];         
+<a name="l00093"></a>00093 <span class="comment">// -- Other options --</span>
+<a name="l00094"></a>00094         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  s_default_mount_opts;
+<a name="l00095"></a><a class="code" href="structext2__super__block.html#a436c7c8af548ade7f8045e88c2861d61">00095</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__super__block.html#a436c7c8af548ade7f8045e88c2861d61">s_first_meta_bg</a>;              
+<a name="l00096"></a><a class="code" href="structext2__super__block.html#a17e0d263a7fceb8b53aff24b66c216df">00096</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   s_reserved[760];              
+<a name="l00097"></a>00097 };
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099 <span class="comment">/*</span>
+<a name="l00100"></a>00100 <span class="comment"> * Codes for operating systems</span>
+<a name="l00101"></a>00101 <span class="comment"> */</span>
+<a name="l00102"></a><a class="code" href="ext2__internal_8h.html#a80253adc8e223859f4156fbabb970e32">00102</a> <span class="preprocessor">#define EXT2_OS_LINUX           0 </span>
+<a name="l00103"></a><a class="code" href="ext2__internal_8h.html#a7af4ecf350d7b5ba9f4d929bc91d4793">00103</a> <span class="preprocessor">#define EXT2_OS_HURD            1 </span>
+<a name="l00104"></a><a class="code" href="ext2__internal_8h.html#af9871fe2b6a9510f18263e27ff224f38">00104</a> <span class="preprocessor">#define EXT2_OS_MASIX           2 </span>
+<a name="l00105"></a><a class="code" href="ext2__internal_8h.html#a1910a0445cd5ceb6bd436631ae5b0448">00105</a> <span class="preprocessor">#define EXT2_OS_FREEBSD         3 </span>
+<a name="l00106"></a><a class="code" href="ext2__internal_8h.html#aaf563eacc83118b8d11c7b25bd52d363">00106</a> <span class="preprocessor">#define EXT2_OS_LITES           4 </span>
+<a name="l00108"></a>00108 <span class="preprocessor"></span><span class="comment">/*</span>
+<a name="l00109"></a>00109 <span class="comment"> * Revision levels</span>
+<a name="l00110"></a>00110 <span class="comment"> */</span>
+<a name="l00111"></a><a class="code" href="ext2__internal_8h.html#abce95b7831e511179ececb8f0a7b948c">00111</a> <span class="preprocessor">#define EXT2_GOOD_OLD_REV 0             </span>
+<a name="l00112"></a><a class="code" href="ext2__internal_8h.html#ad045e597ad1e193ecc156e019129c55c">00112</a> <span class="preprocessor">#define EXT2_DYNAMIC_REV  1             </span>
+<a name="l00117"></a><a class="code" href="structext2__group__desc.html">00117</a> <span class="preprocessor">struct ext2_group_desc</span>
+<a name="l00118"></a>00118 <span class="preprocessor"></span>{
+<a name="l00119"></a><a class="code" href="structext2__group__desc.html#a57481ebe34986e28812cc9b4e122c016">00119</a>   <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__group__desc.html#a57481ebe34986e28812cc9b4e122c016">bg_block_bitmap</a>;            
+<a name="l00120"></a><a class="code" href="structext2__group__desc.html#a7ba3737304b14529a45aede6381aa968">00120</a>   <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__group__desc.html#a7ba3737304b14529a45aede6381aa968">bg_inode_bitmap</a>;            
+<a name="l00121"></a><a class="code" href="structext2__group__desc.html#abf527c572a5fe30354cdf2cfc4f88b26">00121</a>   <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__group__desc.html#abf527c572a5fe30354cdf2cfc4f88b26">bg_inode_table</a>;                     
+<a name="l00122"></a><a class="code" href="structext2__group__desc.html#af1cf7574780c76da67e973179f6edd43">00122</a>   <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structext2__group__desc.html#af1cf7574780c76da67e973179f6edd43">bg_free_blocks_count</a>;       
+<a name="l00123"></a><a class="code" href="structext2__group__desc.html#a5488cd2eb4ea863ca9d15a5df8da6bab">00123</a>   <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structext2__group__desc.html#a5488cd2eb4ea863ca9d15a5df8da6bab">bg_free_inodes_count</a>;       
+<a name="l00124"></a><a class="code" href="structext2__group__desc.html#adc9924671cb04dd63b4b7ffff8c262dc">00124</a>   <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structext2__group__desc.html#adc9924671cb04dd63b4b7ffff8c262dc">bg_used_dirs_count</a>;         
+<a name="l00125"></a><a class="code" href="structext2__group__desc.html#ac99983cee73aa4aace5c7d51b6d5a7e1">00125</a>   <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structext2__group__desc.html#ac99983cee73aa4aace5c7d51b6d5a7e1">bg_pad</a>;                                     
+<a name="l00126"></a><a class="code" href="structext2__group__desc.html#aff7f7dc0b67aed284218b238991f5c93">00126</a>   <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  bg_reserved[3];                     
+<a name="l00127"></a>00127 };
+<a name="l00128"></a>00128 
+<a name="l00132"></a><a class="code" href="structext2__inode.html">00132</a> <span class="keyword">struct </span><a class="code" href="structext2__inode.html">ext2_inode</a> {
+<a name="l00133"></a><a class="code" href="structext2__inode.html#ab18d6b6ddb4d36a2faff527b43241126">00133</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>        <a class="code" href="structext2__inode.html#ab18d6b6ddb4d36a2faff527b43241126">i_mode</a>;         
+<a name="l00134"></a><a class="code" href="structext2__inode.html#a082def4b3c1c0c5f9dce1eab8ba51189">00134</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>        <a class="code" href="structext2__inode.html#a082def4b3c1c0c5f9dce1eab8ba51189">i_uid</a>;          
+<a name="l00135"></a><a class="code" href="structext2__inode.html#a2b9e2a1c732aa02b5dead0948fb47c72">00135</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>        <a class="code" href="structext2__inode.html#a2b9e2a1c732aa02b5dead0948fb47c72">i_size</a>;         
+<a name="l00136"></a><a class="code" href="structext2__inode.html#adb682923fb8b418217d78fd78737406b">00136</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>        <a class="code" href="structext2__inode.html#adb682923fb8b418217d78fd78737406b">i_atime</a>;        
+<a name="l00137"></a><a class="code" href="structext2__inode.html#a7d45cc039be5128d9771412191e55544">00137</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>        <a class="code" href="structext2__inode.html#a7d45cc039be5128d9771412191e55544">i_ctime</a>;        
+<a name="l00138"></a><a class="code" href="structext2__inode.html#a7eb44698eabf570fee0e65d22cc5fbd1">00138</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>        <a class="code" href="structext2__inode.html#a7eb44698eabf570fee0e65d22cc5fbd1">i_mtime</a>;        
+<a name="l00139"></a><a class="code" href="structext2__inode.html#a2a30cea7fb676d2fa5e9f0bd799dfa7c">00139</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>        <a class="code" href="structext2__inode.html#a2a30cea7fb676d2fa5e9f0bd799dfa7c">i_dtime</a>;        
+<a name="l00140"></a><a class="code" href="structext2__inode.html#af1686b705ca7912d370d12ceaab83b8b">00140</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>        <a class="code" href="structext2__inode.html#af1686b705ca7912d370d12ceaab83b8b">i_gid</a>;          
+<a name="l00141"></a><a class="code" href="structext2__inode.html#aa6d7753ffe6e8634bafe0b55638ee29a">00141</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>        <a class="code" href="structext2__inode.html#aa6d7753ffe6e8634bafe0b55638ee29a">i_links_count</a>;  
+<a name="l00142"></a><a class="code" href="structext2__inode.html#a6e5b258ebc92b6ae75c61572c60cbb4b">00142</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>        <a class="code" href="structext2__inode.html#a6e5b258ebc92b6ae75c61572c60cbb4b">i_blocks</a>;       
+<a name="l00143"></a><a class="code" href="structext2__inode.html#a2037da1edbe1d421dd4453f84cb973e6">00143</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>        <a class="code" href="structext2__inode.html#a2037da1edbe1d421dd4453f84cb973e6">i_flags</a>;        
+<a name="l00144"></a><a class="code" href="structext2__inode.html#ab06178218f59df43b3d80ad53edc6105">00144</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__inode.html#ab06178218f59df43b3d80ad53edc6105">i_osd1</a>;               
+<a name="l00145"></a><a class="code" href="structext2__inode.html#a3e2386992eeb6a3b6aa5e282c50221c7">00145</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>        <a class="code" href="structext2__inode.html#a3e2386992eeb6a3b6aa5e282c50221c7">i_block</a>[15];
+<a name="l00146"></a><a class="code" href="structext2__inode.html#a551df9f3b8f61eb5840eeeb5921c69fb">00146</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>        <a class="code" href="structext2__inode.html#a551df9f3b8f61eb5840eeeb5921c69fb">i_generation</a>;   
+<a name="l00147"></a><a class="code" href="structext2__inode.html#aee0fba48998e7d27b836d04ee53e4463">00147</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>        <a class="code" href="structext2__inode.html#aee0fba48998e7d27b836d04ee53e4463">i_file_acl</a>;     
+<a name="l00148"></a><a class="code" href="structext2__inode.html#a11c2793c33c6ce3f13a5f046e246fd47">00148</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>        <a class="code" href="structext2__inode.html#a11c2793c33c6ce3f13a5f046e246fd47">i_dir_acl</a>;      
+<a name="l00149"></a><a class="code" href="structext2__inode.html#a3c921d50835f4869a08444b7e8b01043">00149</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>        <a class="code" href="structext2__inode.html#a3c921d50835f4869a08444b7e8b01043">i_faddr</a>;        
+<a name="l00150"></a><a class="code" href="structext2__inode.html#a6f05264ef1f6a42a6975a858d1aa17c3">00150</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structext2__inode.html#a6f05264ef1f6a42a6975a858d1aa17c3">i_osd2</a>[3];    
+<a name="l00151"></a>00151 };
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153 <span class="comment">// Types d&#39;inode :</span>
+<a name="l00154"></a><a class="code" href="ext2__internal_8h.html#abfce2bf61a808e0e33b54cc55074769d">00154</a> <span class="preprocessor">#define EXT2_FT_UNKNOWN         0 </span>
+<a name="l00155"></a><a class="code" href="ext2__internal_8h.html#af695d0f019e8655d3209478816dcbe2e">00155</a> <span class="preprocessor">#define EXT2_FT_REG_FILE        1 </span>
+<a name="l00156"></a><a class="code" href="ext2__internal_8h.html#a015c3232a7dee95fe7d3117819f7c353">00156</a> <span class="preprocessor">#define EXT2_FT_DIR                     2 </span>
+<a name="l00157"></a><a class="code" href="ext2__internal_8h.html#aa2990e776053f7962e5a8a235ed0db5d">00157</a> <span class="preprocessor">#define EXT2_FT_CHRDEV          3 </span>
+<a name="l00158"></a><a class="code" href="ext2__internal_8h.html#a5f734f7814d4cbf8c129824d3ca8a9a5">00158</a> <span class="preprocessor">#define EXT2_FT_BLKDEV          4 </span>
+<a name="l00159"></a><a class="code" href="ext2__internal_8h.html#a1dd9aa1f03cfeb067bb855da4049ec70">00159</a> <span class="preprocessor">#define EXT2_FT_FIFO            5 </span>
+<a name="l00160"></a><a class="code" href="ext2__internal_8h.html#ade24e3d90cfa230bb96f882a5f39c71a">00160</a> <span class="preprocessor">#define EXT2_FT_SOCK            6 </span>
+<a name="l00161"></a><a class="code" href="ext2__internal_8h.html#ac5e03cbec437c0617e5cfafb2f4c9845">00161</a> <span class="preprocessor">#define EXT2_FT_SYMLINK         7 </span>
+<a name="l00167"></a><a class="code" href="structext2__directory.html">00167</a> <span class="preprocessor">struct ext2_directory {</span>
+<a name="l00168"></a><a class="code" href="structext2__directory.html#a58f91a7939507e98be75baed206c149c">00168</a> <span class="preprocessor"></span>        <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>        <a class="code" href="structext2__directory.html#a58f91a7939507e98be75baed206c149c">inode</a>;      
+<a name="l00169"></a><a class="code" href="structext2__directory.html#a349e610d4d226a480c577c94b09a5eaf">00169</a>         <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>        <a class="code" href="structext2__directory.html#a349e610d4d226a480c577c94b09a5eaf">rec_len</a>;    
+<a name="l00170"></a><a class="code" href="structext2__directory.html#ab2ab4e90da260d09d51d74abdaabb095">00170</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>         <a class="code" href="structext2__directory.html#ab2ab4e90da260d09d51d74abdaabb095">name_len</a>;   
+<a name="l00171"></a><a class="code" href="structext2__directory.html#a100a0ca76dac23225e9fbaa03b8925d0">00171</a>         <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>         <a class="code" href="structext2__directory.html#a100a0ca76dac23225e9fbaa03b8925d0">file_type</a>;  
+<a name="l00172"></a><a class="code" href="structext2__directory.html#a68dde9644a76168693b569434ab17fd4">00172</a>         <span class="keywordtype">char</span>            name[256];  
+<a name="l00173"></a>00173 };
+<a name="l00174"></a>00174 
+<a name="l00178"></a><a class="code" href="structdirectories__t.html">00178</a> <span class="keyword">struct </span><a class="code" href="structdirectories__t.html" title="Structure chaînée pour enregistrer les entrées d&#39;un dossier.">directories_t</a> {
+<a name="l00179"></a><a class="code" href="structdirectories__t.html#aedd8927cb97dd25be9b97fc3d823a5af">00179</a>         <span class="keyword">struct </span><a class="code" href="structext2__directory.html" title="Structure qui représente une entrée dans un dossier ext2. Format imposé par Ext2.">ext2_directory</a> *<a class="code" href="structdirectories__t.html#aedd8927cb97dd25be9b97fc3d823a5af">dir</a>; 
+<a name="l00180"></a><a class="code" href="structdirectories__t.html#a5c41ffb210dce35d7cc655777a354c92">00180</a>         <span class="keyword">struct </span><a class="code" href="structdirectories__t.html" title="Structure chaînée pour enregistrer les entrées d&#39;un dossier.">directories_t</a> *<a class="code" href="structdirectories__t.html#a5c41ffb210dce35d7cc655777a354c92">next</a>; 
+<a name="l00181"></a>00181 };
+<a name="l00182"></a>00182 
+<a name="l00187"></a><a class="code" href="structblk__t.html">00187</a> <span class="keyword">struct </span><a class="code" href="structblk__t.html" title="Structure chaînée pour enregistrer une suite d&#39;adresses (utile lorsque les données ne rentrent pas da...">blk_t</a> {
+<a name="l00188"></a><a class="code" href="structblk__t.html#a7c19dc926a0c8d6bf7bb5b2fe88f8ad6">00188</a>         <span class="keywordtype">int</span> <a class="code" href="structblk__t.html#a7c19dc926a0c8d6bf7bb5b2fe88f8ad6">addr</a>;           
+<a name="l00189"></a><a class="code" href="structblk__t.html#abd7c7af776e8fbe8b366247a859da088">00189</a>         <span class="keyword">struct </span><a class="code" href="structblk__t.html" title="Structure chaînée pour enregistrer une suite d&#39;adresses (utile lorsque les données ne rentrent pas da...">blk_t</a> *<a class="code" href="structblk__t.html#abd7c7af776e8fbe8b366247a859da088">next</a>; 
+<a name="l00190"></a>00190 };
+<a name="l00191"></a>00191 
+<a name="l00192"></a>00192 <span class="comment">// -- file format --</span>
+<a name="l00193"></a><a class="code" href="ext2__internal_8h.html#ad45908d1fe05e34057fc0e9e9e285df2">00193</a> <span class="preprocessor">#define EXT2_S_IFSOCK   0xC000  </span>
+<a name="l00194"></a><a class="code" href="ext2__internal_8h.html#aff4d841e1f50d07c6dd2c33dbc9fc75f">00194</a> <span class="preprocessor">#define EXT2_S_IFLNK    0xA000  </span>
+<a name="l00195"></a><a class="code" href="ext2__internal_8h.html#acaacf118aa2b4861775147ea812669a3">00195</a> <span class="preprocessor">#define EXT2_S_IFREG    0x8000  </span>
+<a name="l00196"></a><a class="code" href="ext2__internal_8h.html#a24f82827b296fe1cc2b35f3db8c41feb">00196</a> <span class="preprocessor">#define EXT2_S_IFBLK    0x6000  </span>
+<a name="l00197"></a><a class="code" href="ext2__internal_8h.html#a7320539ed732dd6a8722ae644953ed7b">00197</a> <span class="preprocessor">#define EXT2_S_IFDIR    0x4000  </span>
+<a name="l00198"></a><a class="code" href="ext2__internal_8h.html#ab8d1b41d62f66a1e91eb8f3160229431">00198</a> <span class="preprocessor">#define EXT2_S_IFCHR    0x2000  </span>
+<a name="l00199"></a><a class="code" href="ext2__internal_8h.html#a4c48acbda2a486ccebcbd0ba501b85f8">00199</a> <span class="preprocessor">#define EXT2_S_IFIFO    0x1000  </span>
+<a name="l00200"></a>00200 <span class="preprocessor">// -- process execution user/group override --</span>
+<a name="l00201"></a><a class="code" href="ext2__internal_8h.html#a8a9f2cd835d659f4d6cbd63b53550f62">00201</a> <span class="preprocessor"></span><span class="preprocessor">#define EXT2_S_ISUID    0x0800  </span>
+<a name="l00202"></a><a class="code" href="ext2__internal_8h.html#aa81e34e6941316e9c72793b5d6b6ab7f">00202</a> <span class="preprocessor">#define EXT2_S_ISGID    0x0400  </span>
+<a name="l00203"></a><a class="code" href="ext2__internal_8h.html#a1745e9d39e3064af59ba7afd79277e5f">00203</a> <span class="preprocessor">#define EXT2_S_ISVTX    0x0200  </span>
+<a name="l00204"></a>00204 <span class="preprocessor">// -- access rights --</span>
+<a name="l00205"></a><a class="code" href="ext2__internal_8h.html#a271ff434740d4b9f06a5af49e727341c">00205</a> <span class="preprocessor"></span><span class="preprocessor">#define EXT2_S_IRUSR    0x0100  </span>
+<a name="l00206"></a><a class="code" href="ext2__internal_8h.html#a2770c24e68ebe2ea91b729a4e1245d53">00206</a> <span class="preprocessor">#define EXT2_S_IWUSR    0x0080  </span>
+<a name="l00207"></a><a class="code" href="ext2__internal_8h.html#a360833154bcc6f517311e4a2ed241e03">00207</a> <span class="preprocessor">#define EXT2_S_IXUSR    0x0040  </span>
+<a name="l00208"></a><a class="code" href="ext2__internal_8h.html#ab6d745c8329751b2985a6029363762e5">00208</a> <span class="preprocessor">#define EXT2_S_IRGRP    0x0020  </span>
+<a name="l00209"></a><a class="code" href="ext2__internal_8h.html#aa2b54450b815f4d44e068ae27af3a0be">00209</a> <span class="preprocessor">#define EXT2_S_IWGRP    0x0010  </span>
+<a name="l00210"></a><a class="code" href="ext2__internal_8h.html#a415d04f40b87167e5a7f1131a41afa63">00210</a> <span class="preprocessor">#define EXT2_S_IXGRP    0x0008  </span>
+<a name="l00211"></a><a class="code" href="ext2__internal_8h.html#a8b2a613fd90026648c24958e02dcb24c">00211</a> <span class="preprocessor">#define EXT2_S_IROTH    0x0004  </span>
+<a name="l00212"></a><a class="code" href="ext2__internal_8h.html#ab88473468942288af1c7b2e7733ce257">00212</a> <span class="preprocessor">#define EXT2_S_IWOTH    0x0002  </span>
+<a name="l00213"></a><a class="code" href="ext2__internal_8h.html#acb0a6cd1abe8a29c90dbae22a815f800">00213</a> <span class="preprocessor">#define EXT2_S_IXOTH    0x0001  </span>
+<a name="l00218"></a><a class="code" href="struct__ext2__fs__instance__t.html">00218</a> <span class="preprocessor">typedef struct _ext2_fs_instance_t {</span>
+<a name="l00219"></a><a class="code" href="struct__ext2__fs__instance__t.html#a456ee695fb1a0b71edadda9f4504ca2d">00219</a> <span class="preprocessor"></span>        <a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> <a class="code" href="struct__ext2__fs__instance__t.html#a456ee695fb1a0b71edadda9f4504ca2d">super</a>; 
+<a name="l00220"></a>00220         <a class="code" href="struct__dentry__t.html">dentry_t</a> * root;
+<a name="l00221"></a><a class="code" href="struct__ext2__fs__instance__t.html#a81ad8719743e20da6f661c2586b56ad2">00221</a>         <span class="keyword">struct </span><a class="code" href="structext2__super__block.html">ext2_super_block</a> superblock; 
+<a name="l00222"></a><a class="code" href="struct__ext2__fs__instance__t.html#acc01ef58cbc6cfa9d3ff4e08709a561a">00222</a>         <span class="keyword">struct </span><a class="code" href="structext2__group__desc.html">ext2_group_desc</a> *<a class="code" href="struct__ext2__fs__instance__t.html#acc01ef58cbc6cfa9d3ff4e08709a561a">group_desc_table</a>; 
+<a name="l00223"></a><a class="code" href="struct__ext2__fs__instance__t.html#a81a5e5b8f7d46d744c96a4f28317e59f">00223</a>         <span class="keywordtype">int</span> <a class="code" href="struct__ext2__fs__instance__t.html#a81a5e5b8f7d46d744c96a4f28317e59f">n_groups</a>;   
+<a name="l00224"></a><a class="code" href="struct__ext2__fs__instance__t.html#ac3ea85962b66914cb42ec884d70a853d">00224</a>         blkdev_read_t <a class="code" href="struct__ext2__fs__instance__t.html#ac3ea85962b66914cb42ec884d70a853d">read_data</a>; 
+<a name="l00225"></a><a class="code" href="struct__ext2__fs__instance__t.html#a90d334c34e9aeea01be13fe1ed66ba7b">00225</a>         blkdev_write_t <a class="code" href="struct__ext2__fs__instance__t.html#a90d334c34e9aeea01be13fe1ed66ba7b">write_data</a>; 
+<a name="l00226"></a>00226 } <a class="code" href="ext2__internal_8h.html#adadd96c517f11a9b94cb4200748c2b21" title="Instance de FS Ext2.">ext2_fs_instance_t</a>;
+<a name="l00227"></a>00227 
+<a name="l00231"></a><a class="code" href="struct__ext2__extra__data.html">00231</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__ext2__extra__data.html" title="Données supplémentaires qui sont ajoutés à l&#39;ofd lors du open.">_ext2_extra_data</a> {
+<a name="l00232"></a><a class="code" href="struct__ext2__extra__data.html#a67635cdfceeb4475b1410ec3bc8ae552">00232</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="struct__ext2__extra__data.html#a67635cdfceeb4475b1410ec3bc8ae552">inode</a>; 
+<a name="l00233"></a><a class="code" href="struct__ext2__extra__data.html#a607854c0e8d75ee5be59b7e67eb2a00c">00233</a>         <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="struct__ext2__extra__data.html#a607854c0e8d75ee5be59b7e67eb2a00c">type</a>; 
+<a name="l00234"></a><a class="code" href="struct__ext2__extra__data.html#ab7503f7c0104cc8e081af354595fb1a0">00234</a>         <span class="keyword">struct </span><a class="code" href="structblk__t.html" title="Structure chaînée pour enregistrer une suite d&#39;adresses (utile lorsque les données ne rentrent pas da...">blk_t</a> *<a class="code" href="struct__ext2__extra__data.html#ab7503f7c0104cc8e081af354595fb1a0">blocks</a>; 
+<a name="l00235"></a>00235 } <a class="code" href="ext2__internal_8h.html#acdc51486b3bce68f34449d62825d121a" title="Données supplémentaires qui sont ajoutés à l&#39;ofd lors du open.">ext2_extra_data</a>;
+<a name="l00236"></a>00236 
+<a name="l00237"></a>00237 
+<a name="l00243"></a>00243 <span class="keywordtype">void</span> <a class="code" href="ext2_8c.html#aa055d93f3693085315aa853345de0032" title="Unmount d&#39;un point de montage.">umount_EXT2</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance);
+<a name="l00244"></a>00244 
+<a name="l00254"></a>00254 <span class="keywordtype">size_t</span> <a class="code" href="ext2__functions_8c.html#aa5552876c927b5b04e708531c07344b0" title="Lecture d&#39;un fichier.">ext2_read</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keywordtype">void</span> * buf, <span class="keywordtype">size_t</span> size);
+<a name="l00255"></a>00255 
+<a name="l00265"></a>00265 <span class="keywordtype">size_t</span> <a class="code" href="ext2__functions_8c.html#a598e5a2d603b1d2b31b8058b9dec3ab5" title="Ecriture d&#39;un fichier.">ext2_write</a> (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> size);
+<a name="l00266"></a>00266 
+<a name="l00274"></a>00274 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#ab2859a00444ce0ad527332da72e2629a" title="Fermeture d&#39;un fichier ouvert.">ext2_close</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd);
+<a name="l00275"></a>00275 
+<a name="l00285"></a>00285 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#ac9b55aefa79e5e521e4e5d993b4c009a" title="Lecture du contenu d&#39;un dossier.">ext2_readdir</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keywordtype">char</span> * entries, <span class="keywordtype">size_t</span> size);
+<a name="l00286"></a>00286 
+<a name="l00296"></a>00296 <span class="keywordtype">int</span> <a class="code" href="ext2__internal_8h.html#a9a8b01e29da31a35719cbf11adab1f9d" title="Récupère l&#39;état d&#39;un fichier ou dossier.">ext2_stat</a>(<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *instance, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">struct</span> <a class="code" href="structstat.html" title="Informations sur un noeud.">stat</a> *stbuf);
+<a name="l00297"></a>00297 
+<a name="l00308"></a>00308 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#a1814eebfe79637247b38dda8e50a3263" title="Création d&#39;un noeud (fichier, dossier, fichier spécial...)">ext2_mknod</a>(<a class="code" href="struct__inode__t.html">inode_t</a> *dir, <a class="code" href="struct__dentry__t.html">dentry_t</a> *dentry, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>, <a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a> dev);
+<a name="l00309"></a>00309 
+<a name="l00310"></a>00310 
+<a name="l00320"></a>00320 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#a099858facc12a389ffbff826567cb7c4" title="Création d&#39;un dossier.">ext2_mkdir</a>(<a class="code" href="struct__inode__t.html">inode_t</a> *dir, <a class="code" href="struct__dentry__t.html">dentry_t</a> *dentry, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>);
+<a name="l00321"></a>00321 
+<a name="l00330"></a>00330 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#a4af1597cc97e9aa9591ed390589e6dfc" title="Suppression d&#39;un noeud.">ext2_unlink</a>(<a class="code" href="struct__inode__t.html">inode_t</a> *dir, <a class="code" href="struct__dentry__t.html">dentry_t</a> *dentry);
+<a name="l00331"></a>00331 
+<a name="l00340"></a>00340 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#aeb55aa4d71dded497758c72d86b2b2f7" title="Change la taille d&#39;un fichier.">ext2_truncate</a>(<a class="code" href="struct__inode__t.html">inode_t</a> *inode, off_t off);
+<a name="l00341"></a>00341 
+<a name="l00350"></a>00350 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#a4c86d6a4886145e7cd974675eb5a19a0" title="Suppression d&#39;un dossier vide.">ext2_rmdir</a>(<a class="code" href="struct__inode__t.html">inode_t</a> *dir, <a class="code" href="struct__dentry__t.html">dentry_t</a> *dentry);
+<a name="l00351"></a>00351 
+<a name="l00352"></a>00352 <span class="keywordtype">int</span> ext2_setattr(<a class="code" href="struct__inode__t.html">inode_t</a> *inode, <a class="code" href="struct__file__attributes__t.html">file_attributes_t</a> *attr);
+<a name="l00353"></a>00353 
+<a name="l00363"></a>00363 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#a79a131bb760b0d236f6bf0209ee6f5cb">ext2_seek</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> whence);
+<a name="l00364"></a>00364 
+<a name="l00370"></a>00370 <a class="code" href="struct__dentry__t.html">dentry_t</a> *<a class="code" href="ext2__internal_8h.html#a02a2b017e1b3cd41ece3cb73ab2db9df">ext2_getroot</a>();
+<a name="l00371"></a>00371 <a class="code" href="struct__dentry__t.html">dentry_t</a>* ext2_lookup(<span class="keyword">struct</span> <a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">_fs_instance_t</a> *instance, <span class="keyword">struct</span> <a class="code" href="struct__dentry__t.html">_dentry_t</a>* dentry, <span class="keyword">const</span> <span class="keywordtype">char</span> * name);
+<a name="l00372"></a>00372 
+<a name="l00383"></a>00383 <span class="keywordtype">int</span> <a class="code" href="ext2__functions_8c.html#a4d19a34580976adf582bb45bd402649c" title="Renomme ou déplace un fichier.">ext2_rename</a>(<a class="code" href="struct__inode__t.html">inode_t</a> *old_dir, <a class="code" href="struct__dentry__t.html">dentry_t</a> *old_dentry, <a class="code" href="struct__inode__t.html">inode_t</a> *new_dir, <a class="code" href="struct__dentry__t.html">dentry_t</a> *new_dentry);
+<a name="l00384"></a>00384 
+<a name="l00385"></a>00385 <span class="keyword">extern</span> <span class="keyword">struct </span><a class="code" href="struct__open__file__operations__t.html">_open_file_operations_t</a> ext2fs_fops; 
+<a name="l00387"></a>00387 <span class="preprocessor">#endif</span>
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juillet 8 2012 15:18:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

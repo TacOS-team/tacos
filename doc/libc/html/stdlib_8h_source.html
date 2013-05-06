@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de libc/include/stdlib.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">libc/include/stdlib.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="stdlib_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00030"></a>00030 <span class="preprocessor">#ifndef _STDLIB_H_</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define _STDLIB_H_</span>
+<a name="l00032"></a>00032 <span class="preprocessor"></span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="cdefs_8h.html">sys/cdefs.h</a>&gt;</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 __BEGIN_DECLS
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 <span class="preprocessor">#include &lt;<a class="code" href="types_8h.html">sys/types.h</a>&gt;</span>
+<a name="l00038"></a>00038 <span class="preprocessor">#include &lt;<a class="code" href="malloc_8h.html">malloc.h</a>&gt;</span>
+<a name="l00039"></a>00039 
+<a name="l00040"></a><a class="code" href="stdlib_8h.html#a687984f47d8cce148d1b914d2b79612a">00040</a> <span class="preprocessor">#define EXIT_SUCCESS 0 </span>
+<a name="l00041"></a><a class="code" href="stdlib_8h.html#a73efe787c131b385070f25d18b7c9aa4">00041</a> <span class="preprocessor">#define EXIT_FAILURE 1 </span>
+<a name="l00043"></a>00043 <span class="preprocessor">#define RAND_MAX 2147483647</span>
+<a name="l00044"></a>00044 <span class="preprocessor"></span>
+<a name="l00048"></a>00048 <span class="keywordtype">void</span> <a class="code" href="stdlib_8h.html#a8dec7c95227ff149687066cf04029191" title="Terminer de manière anormale un programme.">abort</a>(<span class="keywordtype">void</span>);
+<a name="l00049"></a>00049 
+<a name="l00058"></a>00058 <span class="keywordtype">void</span> *<a class="code" href="stdlib_8h.html#a1a6b5e8d2f1c37e5b43e4345586075be" title="Modifie la taille du bloc de mémoire.">realloc</a>(<span class="keywordtype">void</span> *ptr, <span class="keywordtype">size_t</span> size);
+<a name="l00059"></a>00059 
+<a name="l00068"></a>00068 <span class="keywordtype">void</span> *<a class="code" href="stdlib_8h.html#a62b7798461bd461da64c5f9d35feddf7" title="Alloue un bloc mémoire initiallement à 0.">calloc</a>(<span class="keywordtype">size_t</span> nmemb, <span class="keywordtype">size_t</span> size);
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 <span class="keywordtype">long</span> <span class="keywordtype">int</span> strtol(<span class="keyword">const</span> <span class="keywordtype">char</span>* nptr, <span class="keywordtype">char</span>** endptr, <span class="keywordtype">int</span> base);
+<a name="l00071"></a>00071 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> strtoul(<span class="keyword">const</span> <span class="keywordtype">char</span> *nptr, <span class="keywordtype">char</span> **endptr, <span class="keywordtype">int</span> base);
+<a name="l00072"></a>00072 <span class="keywordtype">int</span> atoi(<span class="keyword">const</span> <span class="keywordtype">char</span>* __nptr);
+<a name="l00073"></a>00073 
+<a name="l00088"></a>00088 <span class="keywordtype">void</span> <a class="code" href="stdlib_8h.html#a5e1f93e3feb632ee74c5f40cdd907ca2" title="Converti l&#39;entier d en une chaîne de caractère et le stock dans buf. L&#39;entier base permet de spécifie...">itoa</a> (<span class="keywordtype">char</span> *buf, <span class="keywordtype">int</span> base, <span class="keywordtype">int</span> d);
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090 <span class="keywordtype">int</span> rand(<span class="keywordtype">void</span>);
+<a name="l00091"></a>00091 <span class="keywordtype">void</span> srand(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> seed);
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 <span class="keywordtype">void</span> exit(<span class="keywordtype">int</span> value);
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 <span class="keywordtype">void</span> init_environ(<span class="keywordtype">char</span> **envp);
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097 <span class="keywordtype">char</span> *getenv(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099 <span class="keywordtype">int</span> putenv(<span class="keywordtype">char</span> *<span class="keywordtype">string</span>);
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101 <span class="keywordtype">int</span> clearenv(<span class="keywordtype">void</span>);
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103 <span class="keywordtype">void</span> qsort(<span class="keywordtype">void</span> *base, <span class="keywordtype">size_t</span> nmemb, <span class="keywordtype">size_t</span> size, <span class="keywordtype">int</span>(*compar)(<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 __END_DECLS
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107 <span class="preprocessor">#endif</span>
+<a name="l00108"></a>00108 <span class="preprocessor"></span>
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juin 24 2012 00:25:06 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

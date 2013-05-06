@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier libc/time.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier libc/time.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="time_8h_source.html">time.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="stdio_8h_source.html">stdio.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="stdlib_8h_source.html">stdlib.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="unistd_8h_source.html">unistd.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="syscall_8h_source.html">sys/syscall.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de time.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="time_8c__incl.png" border="0" usemap="#libc_2time_8c" alt=""/></div>
+<map name="libc_2time_8c" id="libc_2time_8c">
+<area shape="rect" id="node3" href="time_8h.html" title="time.h" alt="" coords="621,238,677,266"/><area shape="rect" id="node12" href="stdio_8h.html" title="stdio.h" alt="" coords="144,161,203,189"/><area shape="rect" id="node22" href="stdlib_8h.html" title="stdlib.h" alt="" coords="445,161,507,189"/><area shape="rect" id="node30" href="unistd_8h.html" title="unistd.h" alt="" coords="551,83,617,111"/><area shape="rect" id="node39" href="syscall_8h.html" title="sys/syscall.h" alt="" coords="775,83,871,111"/><area shape="rect" id="node5" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="445,393,533,421"/><area shape="rect" id="node7" href="types_8h.html" title="sys/types.h" alt="" coords="328,315,413,343"/><area shape="rect" id="node10" href="stdbool_8h.html" title="Type bool." alt="" coords="333,393,408,421"/><area shape="rect" id="node15" href="libio_8h.html" title="libio.h" alt="" coords="147,238,200,266"/><area shape="rect" id="node20" href="stdarg_8h.html" title="stdarg.h" alt="" coords="5,238,72,266"/><area shape="rect" id="node26" href="malloc_8h.html" title="malloc.h" alt="" coords="427,238,496,266"/><area shape="rect" id="node34" href="stat_8h.html" title="sys/stat.h" alt="" coords="545,161,623,189"/></map>
+</div>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8c.html#afc22ab01ad31ee9dfebcfcb61faaa63a">MILLISECONDS_PER_SECOND</a>&#160;&#160;&#160;1000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8c.html#ae5e089b553f791f79d02046ff63f3cdb">SECONDS_PER_MINUTE</a>&#160;&#160;&#160;60</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8c.html#a0927f1071797d21fde096dea6842e606">MINUTES_PER_HOUR</a>&#160;&#160;&#160;60</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8c.html#ab6e4646c1e386028708330569ee98f64">HOURS_PER_DAY</a>&#160;&#160;&#160;24</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8c.html#a096c53b93f98d5295e97390d06ff054e">MONTH_PER_YEAR</a>&#160;&#160;&#160;12</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8c.html#a2a6c2d0ac65c9922488a582a2155799e">MILLISECONDS_PER_MINUTE</a>&#160;&#160;&#160;<a class="el" href="time_8c.html#afc22ab01ad31ee9dfebcfcb61faaa63a">MILLISECONDS_PER_SECOND</a>*<a class="el" href="time_8c.html#ae5e089b553f791f79d02046ff63f3cdb">SECONDS_PER_MINUTE</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8c.html#afda9a3746e6a8675fe65eb61d0f3318a">MILLISECONDS_PER_HOUR</a>&#160;&#160;&#160;<a class="el" href="time_8c.html#a2a6c2d0ac65c9922488a582a2155799e">MILLISECONDS_PER_MINUTE</a>*<a class="el" href="time_8c.html#a0927f1071797d21fde096dea6842e606">MINUTES_PER_HOUR</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8c.html#a49f7c2ec546a52e3f9d643bf8ce4ab5d">MILLISECONDS_PER_DAY</a>&#160;&#160;&#160;<a class="el" href="time_8c.html#afda9a3746e6a8675fe65eb61d0f3318a">MILLISECONDS_PER_HOUR</a>*<a class="el" href="time_8c.html#ab6e4646c1e386028708330569ee98f64">HOURS_PER_DAY</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8c.html#a3ac65777322869d89cd0cbb9ba3c165c">LEAPYEAR</a>(year)&#160;&#160;&#160;(!((year) % 4) &amp;&amp; (((year) % 100) || !((year) % 400)))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8c.html#a9db507ef8c3ce0d32650da0f0a7e5b48">YEARSIZE</a>(year)&#160;&#160;&#160;(<a class="el" href="time_8c.html#a3ac65777322869d89cd0cbb9ba3c165c">LEAPYEAR</a>(year) ? 366 : 365)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb20471223b4d330209e1ff1950c999d"></a><!-- doxytag: member="time.c::YEAR0" ref="acb20471223b4d330209e1ff1950c999d" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>YEAR0</b>&#160;&#160;&#160;1900</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2cd69e03a0d15e6115c196f7ac35da13"></a><!-- doxytag: member="time.c::EPOCH_YR" ref="a2cd69e03a0d15e6115c196f7ac35da13" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EPOCH_YR</b>&#160;&#160;&#160;1970</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69917c6f775aefa006141379c81e0e8f"></a><!-- doxytag: member="time.c::SECS_DAY" ref="a69917c6f775aefa006141379c81e0e8f" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SECS_DAY</b>&#160;&#160;&#160;(24L * 60L * 60L) /** Secondes dans une journée. */</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a50fece4db74f09568b2938db583c5655"></a><!-- doxytag: member="time.c::LONG_MAX" ref="a50fece4db74f09568b2938db583c5655" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LONG_MAX</b>&#160;&#160;&#160;2147483647L</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0540485394df82add6b7c4f2137c7f21"></a><!-- doxytag: member="time.c::TIME_MAX" ref="a0540485394df82add6b7c4f2137c7f21" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TIME_MAX</b>&#160;&#160;&#160;0xFFFFFFFFL</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a68a0e9d22417dfcf9c0be64261352e64"></a><!-- doxytag: member="time.c::asctime" ref="a68a0e9d22417dfcf9c0be64261352e64" args="(const struct tm *timeptr)" -->
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>asctime</b> (const struct <a class="el" href="structtm.html">tm</a> *timeptr)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72a5383fadfbaa033ac36e9e45b0bd6d"></a><!-- doxytag: member="time.c::ctime" ref="a72a5383fadfbaa033ac36e9e45b0bd6d" args="(const time_t *timer)" -->
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>ctime</b> (const <a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a> *timer)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade863cfcca9ee19f20ca95796f8ddc1e"></a><!-- doxytag: member="time.c::clock" ref="ade863cfcca9ee19f20ca95796f8ddc1e" args="(void)" -->
+<a class="el" href="time_8h.html#a395cccf6dc65e52ae3eb47f3d23282b9">clock_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>clock</b> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a26c7d1dbf93fa8c23c5effbacec91f8c"></a><!-- doxytag: member="time.c::time" ref="a26c7d1dbf93fa8c23c5effbacec91f8c" args="(time_t *timer)" -->
+<a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>time</b> (<a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a> *timer)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a281c7b9f05d5bd8f947c62b585adc476"></a><!-- doxytag: member="time.c::difftime" ref="a281c7b9f05d5bd8f947c62b585adc476" args="(time_t time1, time_t time0)" -->
+double&#160;</td><td class="memItemRight" valign="bottom"><b>difftime</b> (<a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a> time1, <a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a> time0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a129bf00a0400a4850fcbe47eec72a4e7"></a><!-- doxytag: member="time.c::mktime" ref="a129bf00a0400a4850fcbe47eec72a4e7" args="(struct tm *timep)" -->
+<a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>mktime</b> (struct <a class="el" href="structtm.html">tm</a> *timep)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae76343d6a51c93b9318ac0ced05225cd"></a><!-- doxytag: member="time.c::gmtime" ref="ae76343d6a51c93b9318ac0ced05225cd" args="(const time_t *timer)" -->
+struct <a class="el" href="structtm.html">tm</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>gmtime</b> (const <a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a> *timer)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9336f97d394e8e02d97b9ff4fb0aca2"></a><!-- doxytag: member="time.c::localtime" ref="aa9336f97d394e8e02d97b9ff4fb0aca2" args="(const time_t *timer)" -->
+struct <a class="el" href="structtm.html">tm</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>localtime</b> (const <a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a> *timer)</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+<p>Description de ce que fait le fichier </p>
+</div><hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="ab6e4646c1e386028708330569ee98f64"></a><!-- doxytag: member="time.c::HOURS_PER_DAY" ref="ab6e4646c1e386028708330569ee98f64" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="time_8c.html#ab6e4646c1e386028708330569ee98f64">HOURS_PER_DAY</a>&#160;&#160;&#160;24</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre d'heures par jour. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3ac65777322869d89cd0cbb9ba3c165c"></a><!-- doxytag: member="time.c::LEAPYEAR" ref="a3ac65777322869d89cd0cbb9ba3c165c" args="(year)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="time_8c.html#a3ac65777322869d89cd0cbb9ba3c165c">LEAPYEAR</a></td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">year</td><td>)</td>
+          <td>&#160;&#160;&#160;(!((year) % 4) &amp;&amp; (((year) % 100) || !((year) % 400)))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Macro qui indique si une année est bissextile. </p>
+
+</div>
+</div>
+<a class="anchor" id="a49f7c2ec546a52e3f9d643bf8ce4ab5d"></a><!-- doxytag: member="time.c::MILLISECONDS_PER_DAY" ref="a49f7c2ec546a52e3f9d643bf8ce4ab5d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="time_8c.html#a49f7c2ec546a52e3f9d643bf8ce4ab5d">MILLISECONDS_PER_DAY</a>&#160;&#160;&#160;<a class="el" href="time_8c.html#afda9a3746e6a8675fe65eb61d0f3318a">MILLISECONDS_PER_HOUR</a>*<a class="el" href="time_8c.html#ab6e4646c1e386028708330569ee98f64">HOURS_PER_DAY</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre de millisecondes par jour. </p>
+
+</div>
+</div>
+<a class="anchor" id="afda9a3746e6a8675fe65eb61d0f3318a"></a><!-- doxytag: member="time.c::MILLISECONDS_PER_HOUR" ref="afda9a3746e6a8675fe65eb61d0f3318a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="time_8c.html#afda9a3746e6a8675fe65eb61d0f3318a">MILLISECONDS_PER_HOUR</a>&#160;&#160;&#160;<a class="el" href="time_8c.html#a2a6c2d0ac65c9922488a582a2155799e">MILLISECONDS_PER_MINUTE</a>*<a class="el" href="time_8c.html#a0927f1071797d21fde096dea6842e606">MINUTES_PER_HOUR</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre de millisecondes par heure. </p>
+
+</div>
+</div>
+<a class="anchor" id="a2a6c2d0ac65c9922488a582a2155799e"></a><!-- doxytag: member="time.c::MILLISECONDS_PER_MINUTE" ref="a2a6c2d0ac65c9922488a582a2155799e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="time_8c.html#a2a6c2d0ac65c9922488a582a2155799e">MILLISECONDS_PER_MINUTE</a>&#160;&#160;&#160;<a class="el" href="time_8c.html#afc22ab01ad31ee9dfebcfcb61faaa63a">MILLISECONDS_PER_SECOND</a>*<a class="el" href="time_8c.html#ae5e089b553f791f79d02046ff63f3cdb">SECONDS_PER_MINUTE</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre de millisecondes par minute. </p>
+
+</div>
+</div>
+<a class="anchor" id="afc22ab01ad31ee9dfebcfcb61faaa63a"></a><!-- doxytag: member="time.c::MILLISECONDS_PER_SECOND" ref="afc22ab01ad31ee9dfebcfcb61faaa63a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="time_8c.html#afc22ab01ad31ee9dfebcfcb61faaa63a">MILLISECONDS_PER_SECOND</a>&#160;&#160;&#160;1000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre de millisecondes par secondes. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0927f1071797d21fde096dea6842e606"></a><!-- doxytag: member="time.c::MINUTES_PER_HOUR" ref="a0927f1071797d21fde096dea6842e606" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="time_8c.html#a0927f1071797d21fde096dea6842e606">MINUTES_PER_HOUR</a>&#160;&#160;&#160;60</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre de minutes par heure. </p>
+
+</div>
+</div>
+<a class="anchor" id="a096c53b93f98d5295e97390d06ff054e"></a><!-- doxytag: member="time.c::MONTH_PER_YEAR" ref="a096c53b93f98d5295e97390d06ff054e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="time_8c.html#a096c53b93f98d5295e97390d06ff054e">MONTH_PER_YEAR</a>&#160;&#160;&#160;12</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre de mois par année. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae5e089b553f791f79d02046ff63f3cdb"></a><!-- doxytag: member="time.c::SECONDS_PER_MINUTE" ref="ae5e089b553f791f79d02046ff63f3cdb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="time_8c.html#ae5e089b553f791f79d02046ff63f3cdb">SECONDS_PER_MINUTE</a>&#160;&#160;&#160;60</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre de secondes par minute. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9db507ef8c3ce0d32650da0f0a7e5b48"></a><!-- doxytag: member="time.c::YEARSIZE" ref="a9db507ef8c3ce0d32650da0f0a7e5b48" args="(year)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="time_8c.html#a9db507ef8c3ce0d32650da0f0a7e5b48">YEARSIZE</a></td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">year</td><td>)</td>
+          <td>&#160;&#160;&#160;(<a class="el" href="time_8c.html#a3ac65777322869d89cd0cbb9ba3c165c">LEAPYEAR</a>(year) ? 366 : 365)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nombre de jours dans l'année spécifiée. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juin 24 2012 00:25:06 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

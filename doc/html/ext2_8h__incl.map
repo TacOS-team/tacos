@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/include/fs/ext2.h" name="kernel/include/fs/ext2.h">
 <area shape="rect" id="node3" href="$vfs_8h.html" title="Virtual File System." alt="" coords="57,83,108,111"/>
 <area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="77,393,139,421"/>
 <area shape="rect" id="node7" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="43,161,123,189"/>

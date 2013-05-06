@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/include/vfs.h" name="kernel/include/vfs.h">
 <area shape="rect" id="node3" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="67,315,128,343"/>
 <area shape="rect" id="node5" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="32,83,112,111"/>
 <area shape="rect" id="node7" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="136,83,197,111"/>

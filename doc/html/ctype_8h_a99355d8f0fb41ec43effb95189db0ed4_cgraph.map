@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="isprint" name="isprint">
 <area shape="rect" id="node3" href="$ctype_8c.html#af29554b3ec04ea7684482bffed5dbce6" title="vérifie s&#39;il s&#39;agit d&#39;un caractère imprimable, qui ne soit ni un espace, ni un caractère alphanumériq..." alt="" coords="113,5,177,33"/>
 <area shape="rect" id="node5" href="$ctype_8c.html#adf38e126f73a010f30af76db2a28c6e1" title="vérifie si l&#39;on a un caractère alphanumérique." alt="" coords="112,55,179,83"/>
 <area shape="rect" id="node7" href="$ctype_8c.html#a25908ae63aac2df990634e1ae5bd14d9" title="vérifie si l&#39;on a un caractère alphabétique." alt="" coords="228,30,289,58"/>

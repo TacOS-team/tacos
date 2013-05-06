@@ -1,0 +1,60 @@
+\hypertarget{fwrite_8c}{\section{Référence du fichier libc/stdio/fwrite.c}
+\label{fwrite_8c}\index{libc/stdio/fwrite.\-c@{libc/stdio/fwrite.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+Graphe des dépendances par inclusion de fwrite.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{fwrite_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} \hyperlink{fwrite_8c_a20d465b196f378c16fc31d4117170623}{fwrite} (const void $\ast$ptr, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} nmemb, \hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)
+\begin{DoxyCompactList}\small\item\em Écriture binaire sur un flux. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+Description de ce que fait le fichier 
+
+\subsection{Documentation des fonctions}
+\hypertarget{fwrite_8c_a20d465b196f378c16fc31d4117170623}{\index{fwrite.\-c@{fwrite.\-c}!fwrite@{fwrite}}
+\index{fwrite@{fwrite}!fwrite.c@{fwrite.\-c}}
+\subsubsection[{fwrite}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\-\_\-t} fwrite (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{ptr, }
+\item[{{\bf size\-\_\-t}}]{size, }
+\item[{{\bf size\-\_\-t}}]{nmemb, }
+\item[{{\bf F\-I\-L\-E} $\ast$}]{stream}
+\end{DoxyParamCaption}
+)}}\label{fwrite_8c_a20d465b196f378c16fc31d4117170623}
+Cette fonction écrit jusqu'à nmemb elements dont la taille est définie par size vers le stream pointé par le pointeur stream. Pour chaque elements, fwrite fait size appels à fputc en castant simplement l'element en un tableau de uchar.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ptr} & Pointeur vers les données à écrire. \\
+\hline
+{\em size} & Taille d'un élément de données. \\
+\hline
+{\em nmemb} & Nombre d'éléments. \\
+\hline
+{\em stream} & Stream à utiliser.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Nombre d'éléments écrits. 
+\end{DoxyReturn}

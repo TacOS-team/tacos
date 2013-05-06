@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="libc/signal.c" name="libc/signal.c">
 <area shape="rect" id="node3" href="$signal_8h.html" title="Gestion des signaux." alt="" coords="247,238,313,266"/>
 <area shape="rect" id="node14" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="181,83,277,111"/>
 <area shape="rect" id="node16" href="$unistd_8h.html" title="unistd.h" alt="" coords="5,83,72,111"/>

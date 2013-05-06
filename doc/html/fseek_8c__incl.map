@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="libc/stdio/fseek.c" name="libc/stdio/fseek.c">
 <area shape="rect" id="node3" href="$stdio_8h.html" title="stdio.h" alt="" coords="144,161,203,189"/>
 <area shape="rect" id="node18" href="$unistd_8h.html" title="unistd.h" alt="" coords="312,83,379,111"/>
 <area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="356,393,444,421"/>

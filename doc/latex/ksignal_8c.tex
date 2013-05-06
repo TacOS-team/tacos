@@ -1,0 +1,64 @@
+\hypertarget{ksignal_8c}{\section{Référence du fichier kernel/ksignal.c}
+\label{ksignal_8c}\index{kernel/ksignal.\-c@{kernel/ksignal.\-c}}
+}
+{\ttfamily \#include $<$gdt.\-h$>$}\\*
+{\ttfamily \#include $<$interrupts.\-h$>$}\\*
+{\ttfamily \#include $<$klog.\-h$>$}\\*
+{\ttfamily \#include $<$kprocess.\-h$>$}\\*
+{\ttfamily \#include $<$ksignal.\-h$>$}\\*
+{\ttfamily \#include $<$kstdio.\-h$>$}\\*
+{\ttfamily \#include $<$pagination.\-h$>$}\\*
+{\ttfamily \#include $<$scheduler.\-h$>$}\\*
+{\ttfamily \#include $<$syscall\-\_\-values.\-h$>$}\\*
+Graphe des dépendances par inclusion de ksignal.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ksignal_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structsigframe}{sigframe}
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{ksignal_8c_a32bf77872204526af28aafc045ce5394}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-signal, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} signum, \hyperlink{signal_8h_a564498016effaee1f3384e07b7ced24f}{sighandler\-\_\-t} handler, \hyperlink{signal_8h_a564498016effaee1f3384e07b7ced24f}{sighandler\-\_\-t} $\ast$ret)}\label{ksignal_8c_a32bf77872204526af28aafc045ce5394}
+
+\item 
+\hypertarget{ksignal_8c_a7add7e76e02b507c69444b55dfc3f624}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-sigprocmask, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} how, sigset\-\_\-t $\ast$set, sigset\-\_\-t $\ast$oldset)}\label{ksignal_8c_a7add7e76e02b507c69444b55dfc3f624}
+
+\item 
+\hypertarget{ksignal_8c_a1c1d779f1e6c1d6bc55856400ec51a37}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-kill, int pid, int signum, int $\ast$ret)}\label{ksignal_8c_a1c1d779f1e6c1d6bc55856400ec51a37}
+
+\item 
+\hypertarget{ksignal_8c_a681d76b9af6793b4cb44c6fbe97648e4}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R0} (sys\-\_\-sigret)}\label{ksignal_8c_a681d76b9af6793b4cb44c6fbe97648e4}
+
+\item 
+\hypertarget{ksignal_8c_af3d7ef764b6cf62d4572ca5718784cd3}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1} (sys\-\_\-sigsuspend, sigset\-\_\-t $\ast$mask)}\label{ksignal_8c_af3d7ef764b6cf62d4572ca5718784cd3}
+
+\item 
+\hypertarget{ksignal_8c_a59cefc4855d6bb8a0ba1ff5182f6cf6c}{int {\bfseries signal\-\_\-pending} (\hyperlink{structprocess__t}{process\-\_\-t} $\ast$process)}\label{ksignal_8c_a59cefc4855d6bb8a0ba1ff5182f6cf6c}
+
+\item 
+\hypertarget{ksignal_8c_ae6ceba17af8d973820683556d2c0291f}{int {\bfseries exec\-\_\-sighandler} (\hyperlink{structprocess__t}{process\-\_\-t} $\ast$process)}\label{ksignal_8c_ae6ceba17af8d973820683556d2c0291f}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+Description de ce que fait le fichier 

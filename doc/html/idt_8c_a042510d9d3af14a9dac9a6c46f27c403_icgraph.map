@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="idt_set_handler" name="idt_set_handler">
 <area shape="rect" id="node3" href="$exception_8h.html#ac5a3d89ca654d3606b6afd836a01e207" title="exception_set_routine" alt="" coords="167,18,313,46"/>
 <area shape="rect" id="node7" href="$idt_8h.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption." alt="" coords="173,94,307,122"/>
 <area shape="rect" id="node13" href="$interrupts_8c.html#aecc1fa8433fa21ba233b8feb2558e954" title="Ajoute une nouvelle interruption." alt="" coords="171,170,309,198"/>

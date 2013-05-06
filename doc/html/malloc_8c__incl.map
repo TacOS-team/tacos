@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="libc/malloc.c" name="libc/malloc.c">
 <area shape="rect" id="node3" href="$stdio_8h.html" title="stdio.h" alt="" coords="84,161,143,189"/>
 <area shape="rect" id="node18" href="$unistd_8h.html" title="unistd.h" alt="" coords="340,83,407,111"/>
 <area shape="rect" id="node30" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="484,83,580,111"/>

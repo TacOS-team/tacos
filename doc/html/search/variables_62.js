@@ -12,7 +12,6 @@ var searchData=
   ['bg_5fpad',['bg_pad',['../structext2__group__desc.html#ac99983cee73aa4aace5c7d51b6d5a7e1',1,'ext2_group_desc']]],
   ['bg_5freserved',['bg_reserved',['../structext2__group__desc.html#aff7f7dc0b67aed284218b238991f5c93',1,'ext2_group_desc']]],
   ['bg_5fused_5fdirs_5fcount',['bg_used_dirs_count',['../structext2__group__desc.html#adc9924671cb04dd63b4b7ffff8c262dc',1,'ext2_group_desc']]],
-  ['blocks',['blocks',['../struct__ext2__extra__data.html#ab7503f7c0104cc8e081af354595fb1a0',1,'_ext2_extra_data']]],
   ['boot_5fdevice',['boot_device',['../structmultiboot__info.html#ac7dd626a05c9ba62d55ea8a7a254de80',1,'multiboot_info']]],
   ['boot_5floader_5fname',['boot_loader_name',['../structmultiboot__info.html#a4442438f7c2da9c0cf87a94ffd1acc04',1,'multiboot_info']]],
   ['bpp',['bpp',['../structmode.html#a5ca924aaa8f33c270e7896095df93c64',1,'mode']]],

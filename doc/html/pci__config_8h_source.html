@@ -4,43 +4,33 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <title>TacOS:  Fichier source de kernel/include/pci_config.h</title>
-
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
-
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div! -->
-
-
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  
-  
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
    &#160;<span id="projectnumber">0.1</span>
    </div>
-   
   </td>
-  
-  
-  
  </tr>
  </tbody>
 </table>
 </div>
-
-<!-- Généré par Doxygen 1.7.6.1 -->
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -73,58 +63,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
     </ul>
   </div>
-</div>
-<div class="header">
-  <div class="headertitle">
-<div class="title">kernel/include/pci_config.h</div>  </div>
-</div><!--header-->
-<div class="contents">
-<a href="pci__config_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00030"></a>00030 <span class="preprocessor">#ifndef _PCI_CONFIG_H</span>
-<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define _PCI_CONFIG_H</span>
-<a name="l00032"></a>00032 <span class="preprocessor"></span>
-<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="pci__types_8h.html">pci_types.h</a>&gt;</span>
-<a name="l00034"></a>00034 
-<a name="l00035"></a>00035 <span class="preprocessor">#define PCI_DEVICE_ID           0x00, 16, 0xffff</span>
-<a name="l00036"></a>00036 <span class="preprocessor"></span><span class="preprocessor">#define PCI_VENDOR_ID           0x00,  0, 0xffff </span>
-<a name="l00037"></a>00037 <span class="preprocessor"></span><span class="preprocessor">#define PCI_STATUS              0x04, 16, 0xffff</span>
-<a name="l00038"></a>00038 <span class="preprocessor"></span><span class="preprocessor">#define PCI_COMMAND             0x04,  0, 0xffff</span>
-<a name="l00039"></a>00039 <span class="preprocessor"></span><span class="preprocessor">#define PCI_CLASS_CODE          0x08, 24, 0x00ff</span>
-<a name="l00040"></a>00040 <span class="preprocessor"></span><span class="preprocessor">#define PCI_SUBCLASS            0x08, 16, 0x00ff</span>
-<a name="l00041"></a>00041 <span class="preprocessor"></span><span class="preprocessor">#define PCI_PROG_IF             0x08,  8, 0x00ff</span>
-<a name="l00042"></a>00042 <span class="preprocessor"></span><span class="preprocessor">#define PCI_REVISION_ID         0x08,  0, 0x00ff</span>
-<a name="l00043"></a>00043 <span class="preprocessor"></span><span class="preprocessor">#define PCI_BIST                0x0C, 24, 0x00ff</span>
-<a name="l00044"></a>00044 <span class="preprocessor"></span><span class="preprocessor">#define PCI_HEADER_TYPE         0x0C, 16, 0x00ff</span>
-<a name="l00045"></a>00045 <span class="preprocessor"></span><span class="preprocessor">#define PCI_LATENCY_TIMER       0x0C,  8, 0x00ff</span>
-<a name="l00046"></a>00046 <span class="preprocessor"></span><span class="preprocessor">#define PCI_CACHE_LINE_SIZE     0x0C,  0, 0x00ff</span>
-<a name="l00047"></a>00047 <span class="preprocessor"></span><span class="preprocessor">#define PCI_BAR0                0x10,  0, 0xffffffff</span>
-<a name="l00048"></a>00048 <span class="preprocessor"></span><span class="preprocessor">#define PCI_BAR1                0x14,  0, 0xffffffff</span>
-<a name="l00049"></a>00049 <span class="preprocessor"></span><span class="preprocessor">#define PCI_BAR2                0x18,  0, 0xffffffff</span>
-<a name="l00050"></a>00050 <span class="preprocessor"></span><span class="preprocessor">#define PCI_BAR3                0x1C,  0, 0xffffffff</span>
-<a name="l00051"></a>00051 <span class="preprocessor"></span><span class="preprocessor">#define PCI_BAR4                0x20,  0, 0xffffffff</span>
-<a name="l00052"></a>00052 <span class="preprocessor"></span><span class="preprocessor">#define PCI_BAR5                0x24,  0, 0xffffffff</span>
-<a name="l00053"></a>00053 <span class="preprocessor"></span><span class="preprocessor">#define PCI_CARDBUS_CIS_POINTER 0x28,  0, 0xffffffff</span>
-<a name="l00054"></a>00054 <span class="preprocessor"></span><span class="preprocessor">#define PCI_SUBSYS_ID           0x2C, 16, 0xffff </span>
-<a name="l00055"></a>00055 <span class="preprocessor"></span><span class="preprocessor">#define PCI_SUBSYS_VENDOR_ID    0x2C,  0, 0xffff                </span>
-<a name="l00056"></a>00056 <span class="preprocessor"></span><span class="preprocessor">#define PCI_EXPROM_BAR          0x30,  0, 0xffffffff</span>
-<a name="l00057"></a>00057 <span class="preprocessor"></span><span class="preprocessor">#define PCI_CAP_POINTER         0x34,  0, 0x00ff</span>
-<a name="l00058"></a>00058 <span class="preprocessor"></span><span class="preprocessor">#define PCI_MAX_LATENCY         0x3c, 24, 0x00ff</span>
-<a name="l00059"></a>00059 <span class="preprocessor"></span><span class="preprocessor">#define PCI_MIN_GRANT           0x3c, 16, 0x00ff</span>
-<a name="l00060"></a>00060 <span class="preprocessor"></span><span class="preprocessor">#define PCI_INTERRUPT_PIN       0x3c,  8, 0x00ff</span>
-<a name="l00061"></a>00061 <span class="preprocessor"></span><span class="preprocessor">#define PCI_INTERRUPT_LINE      0x3c,  0, 0x00ff</span>
-<a name="l00062"></a>00062 <span class="preprocessor"></span>
-<a name="l00063"></a>00063 <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> pci_read_register(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> bus, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> device, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> func, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> reg);
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> pci_read_value(<a class="code" href="structpci__function__t.html">pci_function_p</a> func, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> reg, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> offset, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> mask);
-<a name="l00066"></a>00066 
-<a name="l00067"></a>00067 <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> pci_write_register(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> bus, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> slot, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> func, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> reg, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> value);
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069 <span class="keywordtype">void</span> pci_print_info( <a class="code" href="structpci__function__t.html">pci_function_p</a> <span class="keyword">function</span>);
-<a name="l00070"></a>00070 <span class="keywordtype">void</span> pci_print_detailed_info(<a class="code" href="structpci__function__t.html">pci_function_p</a> func);      
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073 <span class="preprocessor">#endif</span>
-</pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -139,13 +77,67 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </iframe>
 </div>
 
-
-
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">pci_config.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="pci__config_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifndef _PCI_CONFIG_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _PCI_CONFIG_H</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="pci__types_8h.html">pci_types.h</a>&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#define PCI_DEVICE_ID           0x00, 16, 0xffff</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_VENDOR_ID           0x00,  0, 0xffff </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_STATUS              0x04, 16, 0xffff</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_COMMAND             0x04,  0, 0xffff</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_CLASS_CODE          0x08, 24, 0x00ff</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_SUBCLASS            0x08, 16, 0x00ff</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_PROG_IF             0x08,  8, 0x00ff</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_REVISION_ID         0x08,  0, 0x00ff</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_BIST                0x0C, 24, 0x00ff</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_HEADER_TYPE         0x0C, 16, 0x00ff</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_LATENCY_TIMER       0x0C,  8, 0x00ff</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_CACHE_LINE_SIZE     0x0C,  0, 0x00ff</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_BAR0                0x10,  0, 0xffffffff</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_BAR1                0x14,  0, 0xffffffff</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_BAR2                0x18,  0, 0xffffffff</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_BAR3                0x1C,  0, 0xffffffff</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_BAR4                0x20,  0, 0xffffffff</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_BAR5                0x24,  0, 0xffffffff</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_CARDBUS_CIS_POINTER 0x28,  0, 0xffffffff</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_SUBSYS_ID           0x2C, 16, 0xffff </span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_SUBSYS_VENDOR_ID    0x2C,  0, 0xffff                </span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_EXPROM_BAR          0x30,  0, 0xffffffff</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_CAP_POINTER         0x34,  0, 0x00ff</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_MAX_LATENCY         0x3c, 24, 0x00ff</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_MIN_GRANT           0x3c, 16, 0x00ff</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_INTERRUPT_PIN       0x3c,  8, 0x00ff</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCI_INTERRUPT_LINE      0x3c,  0, 0x00ff</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> pci_read_register(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> bus, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> device, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> func, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> reg);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> pci_read_value(<a class="code" href="structpci__function__t.html">pci_function_p</a> func, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> reg, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> offset, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> mask);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> pci_write_register(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> bus, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> slot, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> func, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> reg, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> value);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">void</span> pci_print_info( <a class="code" href="structpci__function__t.html">pci_function_p</a> <span class="keyword">function</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span> pci_print_detailed_info(<a class="code" href="structpci__function__t.html">pci_function_p</a> func);      </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Juin 24 2012 10:56:46 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Lundi Mai 6 2013 23:52:52 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
+</a> 1.8.1.2
 </small></address>
-
 </body>
 </html>

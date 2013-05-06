@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/pci/pci.c" name="kernel/pci/pci.c">
 <area shape="rect" id="node3" href="$pci_8h.html" title="pci.h" alt="" coords="5,83,53,111"/>
 <area shape="rect" id="node7" href="$pci__types_8h.html" title="pci_types.h" alt="" coords="57,161,143,189"/>
 <area shape="rect" id="node10" href="$pci__config_8h.html" title="pci_config.h" alt="" coords="128,83,219,111"/>

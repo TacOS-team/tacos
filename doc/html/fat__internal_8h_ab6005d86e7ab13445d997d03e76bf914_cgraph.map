@@ -1,0 +1,12 @@
+<map id="fat_mkdir" name="fat_mkdir">
+<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="357,5,424,33"/>
+<area shape="rect" id="node7" href="$kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="364,55,417,83"/>
+<area shape="rect" id="node9" href="$fat__outils_8c.html#a2bc59b6b9bca39fe4ba101a3c019b91a" title="fat_split_dir_filename" alt="" coords="148,157,292,185"/>
+<area shape="rect" id="node15" href="$fat__outils_8c.html#a015254ce721ab0097a1008ec7153b819" title="fat_lfn_to_sfn" alt="" coords="169,106,271,134"/>
+<area shape="rect" id="node21" href="$fat__outils_8c.html#a4f582028e77ee5dc535200f3e6b3312b" title="fat_encode_long_file_name" alt="" coords="131,207,309,235"/>
+<area shape="rect" id="node23" href="$kernel_2include_2klibc_2string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères." alt="" coords="188,258,252,286"/>
+<area shape="rect" id="node25" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="195,309,245,337"/>
+<area shape="rect" id="node5" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="473,5,612,33"/>
+<area shape="rect" id="node11" href="$kernel_2include_2klibc_2string_8h.html#a0c05a458deff028ef4d4e64059098db4" title="Rechercher un caractère dans une chaîne." alt="" coords="361,106,420,134"/>
+<area shape="rect" id="node13" href="$kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="363,157,419,185"/>
+</map>

@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/fpu.c" name="kernel/fpu.c">
 <area shape="rect" id="node3" href="$fpu_8h.html" title="fpu.h" alt="" coords="5,83,56,111"/>
 <area shape="rect" id="node5" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="80,83,165,111"/>
 <area shape="rect" id="node9" href="$klog_8h.html" title="Logging macros." alt="" coords="189,83,245,111"/>

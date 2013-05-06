@@ -1,29 +1,31 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$floppy_8c.html" title="kernel/drivers/block/floppy/floppy.c" alt="" coords="5,83,224,111"/>
-<area shape="rect" id="node5" href="$floppy__dma_8c.html" title="kernel/drivers/block/floppy/floppy_dma.c" alt="" coords="248,83,499,111"/>
-<area shape="rect" id="node7" href="$floppy__utils_8c.html" title="kernel/drivers/block/floppy/floppy_utils.c" alt="" coords="523,83,773,111"/>
-<area shape="rect" id="node9" href="$mouse_8c.html" title="kernel/drivers/char/mouse.c" alt="" coords="797,83,979,111"/>
-<area shape="rect" id="node11" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="1003,83,1176,111"/>
-<area shape="rect" id="node13" href="$console_8c.html" title="Console virtuelle (Fn)." alt="" coords="1200,83,1405,111"/>
-<area shape="rect" id="node15" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="1429,83,1603,111"/>
-<area shape="rect" id="node17" href="$vesa_8c.html" title="kernel/drivers/char/vesa.c" alt="" coords="1627,83,1797,111"/>
-<area shape="rect" id="node19" href="$vga_8c.html" title="kernel/drivers/char/vga.c" alt="" coords="1821,83,1984,111"/>
-<area shape="rect" id="node21" href="$fpu_8c.html" title="Configuration de la FPU." alt="" coords="2008,83,2096,111"/>
-<area shape="rect" id="node23" href="$devfs_8c.html" title="DevFS." alt="" coords="2120,83,2237,111"/>
-<area shape="rect" id="node25" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="2261,83,2400,111"/>
-<area shape="rect" id="node27" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="2424,83,2621,111"/>
-<area shape="rect" id="node29" href="$fat_8c.html" title="Driver FAT." alt="" coords="2645,83,2765,111"/>
-<area shape="rect" id="node31" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="2789,83,2968,111"/>
-<area shape="rect" id="node33" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="2992,83,3115,111"/>
-<area shape="rect" id="node35" href="$init_8c.html" title="kernel/init.c" alt="" coords="3139,83,3227,111"/>
-<area shape="rect" id="node37" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="3251,83,3360,111"/>
-<area shape="rect" id="node39" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="3384,83,3491,111"/>
-<area shape="rect" id="node41" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="3515,83,3616,111"/>
-<area shape="rect" id="node43" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="3640,83,3763,111"/>
-<area shape="rect" id="node45" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="3787,83,3899,111"/>
-<area shape="rect" id="node47" href="$ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="3923,83,4040,111"/>
-<area shape="rect" id="node49" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="4064,83,4176,111"/>
-<area shape="rect" id="node51" href="$module_8c.html" title="kernel/module.c" alt="" coords="4200,83,4312,111"/>
-<area shape="rect" id="node53" href="$pci_8c.html" title="kernel/pci/pci.c" alt="" coords="4336,83,4445,111"/>
-<area shape="rect" id="node55" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="4469,83,4595,111"/>
+<map id="kernel/include/klog.h" name="kernel/include/klog.h">
+<area shape="rect" id="node3" href="$dcache_8c.html" title="dentry cache" alt="" coords="5,91,117,119"/>
+<area shape="rect" id="node5" href="$floppy_8c.html" title="kernel/drivers/block\l/floppy/floppy.c" alt="" coords="141,83,275,127"/>
+<area shape="rect" id="node7" href="$floppy__dma_8c.html" title="kernel/drivers/block\l/floppy/floppy_dma.c" alt="" coords="299,83,437,127"/>
+<area shape="rect" id="node9" href="$floppy__utils_8c.html" title="kernel/drivers/block\l/floppy/floppy_utils.c" alt="" coords="461,83,597,127"/>
+<area shape="rect" id="node11" href="$mouse_8c.html" title="kernel/drivers/char\l/mouse.c" alt="" coords="621,83,749,127"/>
+<area shape="rect" id="node13" href="$serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="773,83,901,127"/>
+<area shape="rect" id="node15" href="$console_8c.html" title="Console virtuelle (Fn)." alt="" coords="925,83,1053,127"/>
+<area shape="rect" id="node17" href="$tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="1077,83,1205,127"/>
+<area shape="rect" id="node19" href="$vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="1229,83,1357,127"/>
+<area shape="rect" id="node21" href="$vga_8c.html" title="kernel/drivers/char\l/vga.c" alt="" coords="1381,83,1509,127"/>
+<area shape="rect" id="node23" href="$fpu_8c.html" title="Configuration de la FPU." alt="" coords="1533,91,1621,119"/>
+<area shape="rect" id="node25" href="$devfs_8c.html" title="DevFS." alt="" coords="1645,91,1763,119"/>
+<area shape="rect" id="node27" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="1787,91,1925,119"/>
+<area shape="rect" id="node29" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2\l_functions.c" alt="" coords="1949,83,2077,127"/>
+<area shape="rect" id="node31" href="$fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="2101,91,2221,119"/>
+<area shape="rect" id="node33" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="2245,91,2424,119"/>
+<area shape="rect" id="node35" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="2448,91,2571,119"/>
+<area shape="rect" id="node37" href="$init_8c.html" title="kernel/init.c" alt="" coords="2595,91,2683,119"/>
+<area shape="rect" id="node39" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="2707,91,2816,119"/>
+<area shape="rect" id="node41" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="2840,91,2947,119"/>
+<area shape="rect" id="node43" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="2971,91,3072,119"/>
+<area shape="rect" id="node45" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="3096,91,3219,119"/>
+<area shape="rect" id="node47" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="3243,91,3355,119"/>
+<area shape="rect" id="node49" href="$ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="3379,91,3496,119"/>
+<area shape="rect" id="node51" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="3520,91,3632,119"/>
+<area shape="rect" id="node53" href="$module_8c.html" title="kernel/module.c" alt="" coords="3656,91,3768,119"/>
+<area shape="rect" id="node55" href="$pci_8c.html" title="kernel/pci/pci.c" alt="" coords="3792,91,3901,119"/>
+<area shape="rect" id="node57" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="3925,91,4051,119"/>
+<area shape="rect" id="node59" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="4075,91,4163,119"/>
 </map>

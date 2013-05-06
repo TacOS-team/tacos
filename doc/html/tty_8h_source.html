@@ -4,43 +4,33 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <title>TacOS:  Fichier source de kernel/include/tty.h</title>
-
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
-
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div! -->
-
-
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  
-  
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
    &#160;<span id="projectnumber">0.1</span>
    </div>
-   
   </td>
-  
-  
-  
  </tr>
  </tbody>
 </table>
 </div>
-
-<!-- Généré par Doxygen 1.7.6.1 -->
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -73,98 +63,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
     </ul>
   </div>
-</div>
-<div class="header">
-  <div class="headertitle">
-<div class="title">kernel/include/tty.h</div>  </div>
-</div><!--header-->
-<div class="contents">
-<a href="tty_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _TTY_H_</span>
-<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _TTY_H_</span>
-<a name="l00031"></a>00031 <span class="preprocessor"></span>
-<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span>
-<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="termios__types_8h.html">termios_types.h</a>&gt;</span>
-<a name="l00034"></a>00034 <span class="preprocessor">#include &lt;<a class="code" href="fd__types_8h.html">fd_types.h</a>&gt;</span>
-<a name="l00035"></a>00035 
-<a name="l00036"></a><a class="code" href="tty_8h.html#a36ef545c47ae4202e81e14efafdd64db">00036</a> <span class="preprocessor">#define TIOCGWINSZ 3 </span>
-<a name="l00037"></a><a class="code" href="tty_8h.html#a6190b01427a76620b36670123372f442">00037</a> <span class="preprocessor">#define TIOCSCTTY 4 </span>
-<a name="l00039"></a><a class="code" href="tty_8h.html#a00c1f0e7816626f58349492ef0720b5f">00039</a> <span class="preprocessor">#define MAX_INPUT 255 </span>
-<a name="l00041"></a>00041 <span class="preprocessor">#define TTY_DRIVER_TYPE_SYSTEM 1</span>
-<a name="l00042"></a>00042 <span class="preprocessor"></span><span class="preprocessor">#define TTY_DRIVER_TYPE_CONSOLE 2</span>
-<a name="l00043"></a>00043 <span class="preprocessor"></span><span class="preprocessor">#define TTY_DRIVER_TYPE_SERIAL 3</span>
-<a name="l00044"></a>00044 <span class="preprocessor"></span><span class="preprocessor">#define TTY_DRIVER_TYPE_PTY 4</span>
-<a name="l00045"></a>00045 <span class="preprocessor"></span>
-<a name="l00046"></a>00046 <span class="keyword">struct </span><a class="code" href="struct__tty__driver__t.html">_tty_driver_t</a>;
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048 <span class="comment">/*  intr=^C   quit=^\   erase=bs kill=^U</span>
-<a name="l00049"></a>00049 <span class="comment">  eof=^D    vtime=\0  vmin=\1   sxtc=\0</span>
-<a name="l00050"></a>00050 <span class="comment">  start=^Q  stop=^S   susp=^Z   eol=\0</span>
-<a name="l00051"></a>00051 <span class="comment">  reprint=^R  discard=^U  werase=^W lnext=^V</span>
-<a name="l00052"></a>00052 <span class="comment">  eol2=\0</span>
-<a name="l00053"></a>00053 <span class="comment">*/</span>
-<a name="l00054"></a>00054 <span class="preprocessor">#define INIT_C_CC {3, 28, 127, 21, 4, 0, 1, 0, 17, 19, 26, 0, 18, 21, 23, 22, 0}</span>
-<a name="l00055"></a>00055 <span class="preprocessor"></span>
-<a name="l00056"></a>00056 <span class="keyword">extern</span> <span class="keyword">struct </span><a class="code" href="structtermios.html">termios</a> tty_std_termios;
-<a name="l00057"></a>00057 
-<a name="l00061"></a><a class="code" href="struct__tty__struct__t.html">00061</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__tty__struct__t.html">_tty_struct_t</a> {
-<a name="l00062"></a><a class="code" href="struct__tty__struct__t.html#a4208e736cfcd8e0b00a3c0bbfe4674f7">00062</a>         <span class="keywordtype">int</span> <a class="code" href="struct__tty__struct__t.html#a4208e736cfcd8e0b00a3c0bbfe4674f7">index</a>; 
-<a name="l00063"></a><a class="code" href="struct__tty__struct__t.html#a974cb784cad13e547e5cace553875f90">00063</a>         <span class="keywordtype">void</span> * <a class="code" href="struct__tty__struct__t.html#a974cb784cad13e547e5cace553875f90">driver_data</a>; 
-<a name="l00064"></a><a class="code" href="struct__tty__struct__t.html#a39471b82fd4e3a235744e73775ac2523">00064</a>         <span class="keyword">struct </span><a class="code" href="structtermios.html">termios</a> <a class="code" href="structtermios.html">termios</a>; 
-<a name="l00065"></a><a class="code" href="struct__tty__struct__t.html#ace735f0fca7a2e1c4c75f6ffb9223b19">00065</a>         <span class="keywordtype">char</span> <a class="code" href="struct__tty__struct__t.html#ace735f0fca7a2e1c4c75f6ffb9223b19">buffer</a>[<a class="code" href="tty_8h.html#a00c1f0e7816626f58349492ef0720b5f">MAX_INPUT</a>]; 
-<a name="l00066"></a>00066         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> p_begin;
-<a name="l00067"></a>00067         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> p_end;
-<a name="l00068"></a>00068         <span class="keyword">struct </span><a class="code" href="struct__tty__driver__t.html">_tty_driver_t</a> *driver;
-<a name="l00069"></a>00069         <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> sem;
-<a name="l00070"></a>00070         <span class="keywordtype">int</span> fg_process;
-<a name="l00071"></a>00071         <span class="keywordtype">int</span> n_open;
-<a name="l00072"></a>00072 } <a class="code" href="tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e">tty_struct_t</a>;
-<a name="l00073"></a>00073 
-<a name="l00077"></a><a class="code" href="struct__tty__operations__t.html">00077</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__tty__operations__t.html">_tty_operations_t</a> {
-<a name="l00078"></a>00078         int (*open) (<a class="code" href="struct__tty__struct__t.html">tty_struct_t</a>*, <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>*);
-<a name="l00079"></a>00079         int (*close) (<a class="code" href="struct__tty__struct__t.html">tty_struct_t</a>*, <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>*);
-<a name="l00080"></a>00080         <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> (*write)(<a class="code" href="struct__tty__struct__t.html">tty_struct_t</a>*, <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>*, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*, <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>);
-<a name="l00081"></a>00081         void (*put_char)(<a class="code" href="struct__tty__struct__t.html">tty_struct_t</a> *tty, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> ch);
-<a name="l00082"></a>00082         <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> (*set_termios)(<span class="keyword">struct </span><a class="code" href="structtermios.html">termios</a>*, <span class="keyword">struct </span><a class="code" href="structtermios.html">termios</a>*);
-<a name="l00083"></a>00083         int (*ioctl)(<a class="code" href="struct__tty__struct__t.html">tty_struct_t</a> *tty, <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>*, <span class="keywordtype">unsigned</span> int, <span class="keywordtype">void</span> *); 
-<a name="l00084"></a>00084 } <a class="code" href="tty_8h.html#af76ab451b44b0a6479abe8aeb1bab6b4">tty_operations_t</a>;
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086 
-<a name="l00090"></a><a class="code" href="struct__tty__driver__t.html">00090</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__tty__driver__t.html">_tty_driver_t</a> {
-<a name="l00091"></a><a class="code" href="struct__tty__driver__t.html#ae2f43b40c48f11feab23551e34a4fe6d">00091</a>         <span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code" href="struct__tty__driver__t.html#ae2f43b40c48f11feab23551e34a4fe6d">driver_name</a>; 
-<a name="l00092"></a><a class="code" href="struct__tty__driver__t.html#a0c46e5dd6e7275908881f644d7fff927">00092</a>         <span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code" href="struct__tty__driver__t.html#a0c46e5dd6e7275908881f644d7fff927">devfs_name</a>; 
-<a name="l00093"></a><a class="code" href="struct__tty__driver__t.html#a0f0243090bc705d41b3a6cc28c886cdf">00093</a>         <span class="keywordtype">int</span> <a class="code" href="struct__tty__driver__t.html#a0f0243090bc705d41b3a6cc28c886cdf">num</a>; 
-<a name="l00094"></a><a class="code" href="struct__tty__driver__t.html#a0c9f7f164f7454cf2bea36de5e23a5d1">00094</a>         <span class="keywordtype">short</span> <a class="code" href="struct__tty__driver__t.html#a0c9f7f164f7454cf2bea36de5e23a5d1">type</a>; 
-<a name="l00095"></a><a class="code" href="struct__tty__driver__t.html#a291fe7f9436ef9cbe34b490d516f46bd">00095</a>         <span class="keywordtype">short</span> <a class="code" href="struct__tty__driver__t.html#a291fe7f9436ef9cbe34b490d516f46bd">subtype</a>; 
-<a name="l00096"></a><a class="code" href="struct__tty__driver__t.html#a4ce1272b5e539a50b106986a79d7cab9">00096</a>         <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="struct__tty__driver__t.html#a4ce1272b5e539a50b106986a79d7cab9">flags</a>; 
-<a name="l00097"></a>00097         <span class="keyword">struct </span><a class="code" href="structtermios.html">termios</a> init_termios;
-<a name="l00098"></a>00098         <a class="code" href="struct__tty__struct__t.html">tty_struct_t</a> **ttys;
-<a name="l00099"></a>00099         <a class="code" href="struct__tty__operations__t.html">tty_operations_t</a> *ops;
-<a name="l00100"></a>00100 } <a class="code" href="tty_8h.html#af1896b31f0109954b4aa8244f064e923">tty_driver_t</a>;
-<a name="l00101"></a>00101 
-<a name="l00102"></a><a class="code" href="structwinsize.html">00102</a> <span class="keyword">struct </span><a class="code" href="structwinsize.html" title="Structure qui contient la taille d&#39;une fenetre.">winsize</a> {
-<a name="l00103"></a><a class="code" href="structwinsize.html#a73698fa1d966374b0701e4bf225f0141">00103</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="structwinsize.html#a73698fa1d966374b0701e4bf225f0141">ws_row</a>;
-<a name="l00104"></a><a class="code" href="structwinsize.html#a80bedf71a49fd324e0d92d0702cc7005">00104</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="structwinsize.html#a80bedf71a49fd324e0d92d0702cc7005">ws_col</a>;
-<a name="l00105"></a>00105 };
-<a name="l00106"></a>00106 
-<a name="l00114"></a>00114 <a class="code" href="struct__tty__driver__t.html">tty_driver_t</a> *<a class="code" href="tty_8c.html#a9ae7085e2afaadc63a592910d4ac4328">alloc_tty_driver</a>(<span class="keywordtype">int</span> lines);
-<a name="l00115"></a>00115 
-<a name="l00121"></a>00121 <span class="keywordtype">int</span> <a class="code" href="tty_8c.html#a302b60b1c52001915aeb108b51efc397">tty_register_driver</a>(<a class="code" href="struct__tty__driver__t.html">tty_driver_t</a> *driver);
-<a name="l00122"></a>00122 
-<a name="l00129"></a>00129 <span class="keywordtype">void</span> <a class="code" href="tty_8c.html#aeef2c61d0ecab57968b5d1dd0f3c8028">tty_insert_flip_char</a>(<a class="code" href="struct__tty__struct__t.html">tty_struct_t</a> *tty, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> ch);
-<a name="l00130"></a>00130 
-<a name="l00134"></a>00134 <span class="keywordtype">void</span> <a class="code" href="tty_8c.html#a3bf9faf77dd76addc6deac2722b097e2" title="Initialisation du système de terminaux.">tty_init</a>();
-<a name="l00135"></a>00135 
-<a name="l00148"></a>00148 <span class="keywordtype">size_t</span> <a class="code" href="tty_8c.html#a14c960f80aeb3910c46aff4b2c56bede" title="Écriture sur le terminal.">tty_write</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> count);
-<a name="l00149"></a>00149 
-<a name="l00161"></a>00161 <span class="keywordtype">size_t</span> <a class="code" href="tty_8c.html#a01c908d67f089bbb78825ff0add5dd19" title="Lecture sur le terminal.">tty_read</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> count);
-<a name="l00162"></a>00162 
-<a name="l00163"></a>00163 <span class="keywordtype">int</span> tty_ioctl (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> request, <span class="keywordtype">void</span> *data);
-<a name="l00164"></a>00164 <span class="keywordtype">int</span> tty_close (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd);
-<a name="l00165"></a>00165 <span class="keywordtype">int</span> tty_open (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd);
-<a name="l00166"></a>00166 
-<a name="l00167"></a>00167 <span class="preprocessor">#endif</span>
-</pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -179,13 +77,107 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </iframe>
 </div>
 
-
-
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">tty.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="tty_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _TTY_H_</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _TTY_H_</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="termios__types_8h.html">termios_types.h</a>&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fd__types_8h.html">fd_types.h</a>&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="tty_8h.html#a36ef545c47ae4202e81e14efafdd64db">   36</a></span>&#160;<span class="preprocessor">#define TIOCGWINSZ 3 </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="tty_8h.html#a6190b01427a76620b36670123372f442">   37</a></span>&#160;<span class="preprocessor">#define TIOCSCTTY 4 </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="tty_8h.html#a00c1f0e7816626f58349492ef0720b5f">   39</a></span>&#160;<span class="preprocessor">#define MAX_INPUT 255 </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define TTY_DRIVER_TYPE_SYSTEM 1</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define TTY_DRIVER_TYPE_CONSOLE 2</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define TTY_DRIVER_TYPE_SERIAL 3</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define TTY_DRIVER_TYPE_PTY 4</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">struct </span><a class="code" href="struct__tty__driver__t.html">_tty_driver_t</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/*  intr=^C   quit=^\   erase=bs kill=^U</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">  eof=^D    vtime=\0  vmin=\1   sxtc=\0</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">  start=^Q  stop=^S   susp=^Z   eol=\0</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">  reprint=^R  discard=^U  werase=^W lnext=^V</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">  eol2=\0</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define INIT_C_CC {3, 28, 127, 21, 4, 0, 1, 0, 17, 19, 26, 0, 18, 21, 23, 22, 0}</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span><a class="code" href="structtermios.html">termios</a> tty_std_termios;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="struct__tty__struct__t.html">   61</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__tty__struct__t.html">_tty_struct_t</a> {</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="struct__tty__struct__t.html#a4208e736cfcd8e0b00a3c0bbfe4674f7">   62</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="struct__tty__struct__t.html#a4208e736cfcd8e0b00a3c0bbfe4674f7">index</a>; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="struct__tty__struct__t.html#a974cb784cad13e547e5cace553875f90">   63</a></span>&#160;        <span class="keywordtype">void</span> * <a class="code" href="struct__tty__struct__t.html#a974cb784cad13e547e5cace553875f90">driver_data</a>; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="struct__tty__struct__t.html#a39471b82fd4e3a235744e73775ac2523">   64</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structtermios.html">termios</a> <a class="code" href="structtermios.html">termios</a>; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="struct__tty__struct__t.html#ace735f0fca7a2e1c4c75f6ffb9223b19">   65</a></span>&#160;        <span class="keywordtype">char</span> <a class="code" href="struct__tty__struct__t.html#ace735f0fca7a2e1c4c75f6ffb9223b19">buffer</a>[<a class="code" href="tty_8h.html#a00c1f0e7816626f58349492ef0720b5f">MAX_INPUT</a>]; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> p_begin;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> p_end;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__tty__driver__t.html">_tty_driver_t</a> *driver;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> sem;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">int</span> fg_process;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordtype">int</span> n_open;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;} <a class="code" href="tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e">tty_struct_t</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="code" href="struct__tty__operations__t.html">   77</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__tty__operations__t.html">_tty_operations_t</a> {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        int (*open) (<a class="code" href="struct__tty__struct__t.html">tty_struct_t</a>*, <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>*);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        int (*close) (<a class="code" href="struct__tty__struct__t.html">tty_struct_t</a>*, <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>*);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> (*write)(<a class="code" href="struct__tty__struct__t.html">tty_struct_t</a>*, <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>*, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*, <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        void (*put_char)(<a class="code" href="struct__tty__struct__t.html">tty_struct_t</a> *tty, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> ch);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> (*set_termios)(<span class="keyword">struct </span><a class="code" href="structtermios.html">termios</a>*, <span class="keyword">struct </span><a class="code" href="structtermios.html">termios</a>*);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        int (*ioctl)(<a class="code" href="struct__tty__struct__t.html">tty_struct_t</a> *tty, <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>*, <span class="keywordtype">unsigned</span> int, <span class="keywordtype">void</span> *); </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;} <a class="code" href="tty_8h.html#af76ab451b44b0a6479abe8aeb1bab6b4">tty_operations_t</a>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="struct__tty__driver__t.html">   90</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__tty__driver__t.html">_tty_driver_t</a> {</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="struct__tty__driver__t.html#ae2f43b40c48f11feab23551e34a4fe6d">   91</a></span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code" href="struct__tty__driver__t.html#ae2f43b40c48f11feab23551e34a4fe6d">driver_name</a>; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="struct__tty__driver__t.html#a0c46e5dd6e7275908881f644d7fff927">   92</a></span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code" href="struct__tty__driver__t.html#a0c46e5dd6e7275908881f644d7fff927">devfs_name</a>; </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="code" href="struct__tty__driver__t.html#a0f0243090bc705d41b3a6cc28c886cdf">   93</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="struct__tty__driver__t.html#a0f0243090bc705d41b3a6cc28c886cdf">num</a>; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="struct__tty__driver__t.html#a0c9f7f164f7454cf2bea36de5e23a5d1">   94</a></span>&#160;        <span class="keywordtype">short</span> <a class="code" href="struct__tty__driver__t.html#a0c9f7f164f7454cf2bea36de5e23a5d1">type</a>; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="struct__tty__driver__t.html#a291fe7f9436ef9cbe34b490d516f46bd">   95</a></span>&#160;        <span class="keywordtype">short</span> <a class="code" href="struct__tty__driver__t.html#a291fe7f9436ef9cbe34b490d516f46bd">subtype</a>; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="code" href="struct__tty__driver__t.html#a4ce1272b5e539a50b106986a79d7cab9">   96</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="struct__tty__driver__t.html#a4ce1272b5e539a50b106986a79d7cab9">flags</a>; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keyword">struct </span><a class="code" href="structtermios.html">termios</a> init_termios;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <a class="code" href="struct__tty__struct__t.html">tty_struct_t</a> **ttys;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <a class="code" href="struct__tty__operations__t.html">tty_operations_t</a> *ops;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;} <a class="code" href="tty_8h.html#af1896b31f0109954b4aa8244f064e923">tty_driver_t</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="code" href="structwinsize.html">  102</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structwinsize.html" title="Structure qui contient la taille d&#39;une fenetre.">winsize</a> {</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="code" href="structwinsize.html#a73698fa1d966374b0701e4bf225f0141">  103</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="structwinsize.html#a73698fa1d966374b0701e4bf225f0141">ws_row</a>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="code" href="structwinsize.html#a80bedf71a49fd324e0d92d0702cc7005">  104</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="structwinsize.html#a80bedf71a49fd324e0d92d0702cc7005">ws_col</a>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;};</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<a class="code" href="struct__tty__driver__t.html">tty_driver_t</a> *<a class="code" href="tty_8c.html#a9ae7085e2afaadc63a592910d4ac4328">alloc_tty_driver</a>(<span class="keywordtype">int</span> lines);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keywordtype">int</span> <a class="code" href="tty_8c.html#a302b60b1c52001915aeb108b51efc397">tty_register_driver</a>(<a class="code" href="struct__tty__driver__t.html">tty_driver_t</a> *driver);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keywordtype">void</span> <a class="code" href="tty_8c.html#aeef2c61d0ecab57968b5d1dd0f3c8028">tty_insert_flip_char</a>(<a class="code" href="struct__tty__struct__t.html">tty_struct_t</a> *tty, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> ch);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keywordtype">void</span> <a class="code" href="tty_8c.html#a3bf9faf77dd76addc6deac2722b097e2" title="Initialisation du système de terminaux.">tty_init</a>();</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="tty_8c.html#a14c960f80aeb3910c46aff4b2c56bede" title="Écriture sur le terminal.">tty_write</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> count);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="tty_8c.html#a01c908d67f089bbb78825ff0add5dd19" title="Lecture sur le terminal.">tty_read</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> count);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keywordtype">int</span> tty_ioctl (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> request, <span class="keywordtype">void</span> *data);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keywordtype">int</span> tty_close (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="keywordtype">int</span> tty_open (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Juin 24 2012 10:56:46 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Lundi Mai 6 2013 23:52:52 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
+</a> 1.8.1.2
 </small></address>
-
 </body>
 </html>

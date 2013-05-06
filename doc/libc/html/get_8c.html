@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier libc/stdio/get.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier libc/stdio/get.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="stdio_8h_source.html">stdio.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="stdlib_8h_source.html">stdlib.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="unistd_8h_source.html">unistd.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de get.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="get_8c__incl.png" border="0" usemap="#libc_2stdio_2get_8c" alt=""/></div>
+<map name="libc_2stdio_2get_8c" id="libc_2stdio_2get_8c">
+<area shape="rect" id="node3" href="stdio_8h.html" title="stdio.h" alt="" coords="144,161,203,189"/><area shape="rect" id="node18" href="stdlib_8h.html" title="stdlib.h" alt="" coords="279,161,340,189"/><area shape="rect" id="node26" href="unistd_8h.html" title="unistd.h" alt="" coords="497,83,564,111"/><area shape="rect" id="node5" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="272,393,360,421"/><area shape="rect" id="node7" href="libio_8h.html" title="libio.h" alt="" coords="147,238,200,266"/><area shape="rect" id="node10" href="types_8h.html" title="sys/types.h" alt="" coords="387,315,472,343"/><area shape="rect" id="node16" href="stdarg_8h.html" title="stdarg.h" alt="" coords="5,238,72,266"/><area shape="rect" id="node13" href="stdbool_8h.html" title="Type bool." alt="" coords="392,393,467,421"/><area shape="rect" id="node22" href="malloc_8h.html" title="malloc.h" alt="" coords="275,238,344,266"/><area shape="rect" id="node30" href="stat_8h.html" title="sys/stat.h" alt="" coords="540,161,617,189"/><area shape="rect" id="node34" href="time_8h.html" title="time.h" alt="" coords="571,238,627,266"/></map>
+</div>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get_8c.html#a2b3df0e66b41edab3c039191fe6cc4f9">fgets</a> (char *s, int size, <a class="el" href="struct__IO__FILE.html">FILE</a> *stream)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit au plus size-1 caractères depuis le stream passé en argument.  <a href="#a2b3df0e66b41edab3c039191fe6cc4f9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get_8c.html#ab11a990e4f8863a1e7736e3c1d430092">fgetc</a> (<a class="el" href="struct__IO__FILE.html">FILE</a> *stream)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit un caractère depuis le flux stream.  <a href="#ab11a990e4f8863a1e7736e3c1d430092"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get_8c.html#a3e29caa20f7cffe18f410f01278905a8">getchar</a> (void)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">lit un caractère depuis stdin.  <a href="#a3e29caa20f7cffe18f410f01278905a8"></a><br/></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+<p>Description de ce que fait le fichier </p>
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ab11a990e4f8863a1e7736e3c1d430092"></a><!-- doxytag: member="get.c::fgetc" ref="ab11a990e4f8863a1e7736e3c1d430092" args="(FILE *stream)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="get_8c.html#ab11a990e4f8863a1e7736e3c1d430092">fgetc</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__IO__FILE.html">FILE</a> *&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Fgetc lit le caractère suivant depuis le flux stream.</p>
+<p>stream le stream depuis lequel on lit le caractère.</p>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>le caractère lu ou EOF en cas d'erreur ou fin de flux. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="get_8c_ab11a990e4f8863a1e7736e3c1d430092_cgraph.png" border="0" usemap="#get_8c_ab11a990e4f8863a1e7736e3c1d430092_cgraph" alt=""/></div>
+<map name="get_8c_ab11a990e4f8863a1e7736e3c1d430092_cgraph" id="get_8c_ab11a990e4f8863a1e7736e3c1d430092_cgraph">
+<area shape="rect" id="node3" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="105,5,151,33"/><area shape="rect" id="node5" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="201,5,263,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="get_8c_ab11a990e4f8863a1e7736e3c1d430092_icgraph.png" border="0" usemap="#get_8c_ab11a990e4f8863a1e7736e3c1d430092_icgraph" alt=""/></div>
+<map name="get_8c_ab11a990e4f8863a1e7736e3c1d430092_icgraph" id="get_8c_ab11a990e4f8863a1e7736e3c1d430092_icgraph">
+<area shape="rect" id="node3" href="fread_8c.html#a084251eb18ccd5c936faa2c39c86ec63" title="fread" alt="" coords="112,5,163,33"/><area shape="rect" id="node5" href="get_8c.html#a2b3df0e66b41edab3c039191fe6cc4f9" title="Lit au plus size&#45;1 caractères depuis le stream passé en argument." alt="" coords="112,55,163,83"/><area shape="rect" id="node7" href="get_8c.html#a3e29caa20f7cffe18f410f01278905a8" title="lit un caractère depuis stdin." alt="" coords="105,106,169,134"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a2b3df0e66b41edab3c039191fe6cc4f9"></a><!-- doxytag: member="get.c::fgets" ref="a2b3df0e66b41edab3c039191fe6cc4f9" args="(char *s, int size, FILE *stream)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* <a class="el" href="get_8c.html#a2b3df0e66b41edab3c039191fe6cc4f9">fgets</a> </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct__IO__FILE.html">FILE</a> *&#160;</td>
+          <td class="paramname"><em>stream</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Lit au plus size-1 caractères depuis le stream passé en argument. La lecture s'arrête par EOF, retour chariot ou si size-1 caractères ont été lus. Attention, il n'y a pas d'allocation mémoire pour le buffer où on écrit. Le caractère nul est placé à la fin de la chaîne.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>buffer où on va écrire ce qu'on lit sur stream. </td></tr>
+    <tr><td class="paramname">size</td><td>la taille du buffer. </td></tr>
+    <tr><td class="paramname">stream</td><td>le stream depuis lequel on lit les caractères.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>un pointeur sur s en cas de succès. NULL en cas d'erreur. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="get_8c_a2b3df0e66b41edab3c039191fe6cc4f9_cgraph.png" border="0" usemap="#get_8c_a2b3df0e66b41edab3c039191fe6cc4f9_cgraph" alt=""/></div>
+<map name="get_8c_a2b3df0e66b41edab3c039191fe6cc4f9_cgraph" id="get_8c_a2b3df0e66b41edab3c039191fe6cc4f9_cgraph">
+<area shape="rect" id="node3" href="stdio_8h.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream." alt="" coords="104,5,155,33"/><area shape="rect" id="node5" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="204,5,249,33"/><area shape="rect" id="node7" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="300,5,361,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a3e29caa20f7cffe18f410f01278905a8"></a><!-- doxytag: member="get.c::getchar" ref="a3e29caa20f7cffe18f410f01278905a8" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="get_8c.html#a3e29caa20f7cffe18f410f01278905a8">getchar</a> </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Fonction de la libc. getchar est équivalent à fgetc(stdin). </p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="get_8c_a3e29caa20f7cffe18f410f01278905a8_cgraph.png" border="0" usemap="#get_8c_a3e29caa20f7cffe18f410f01278905a8_cgraph" alt=""/></div>
+<map name="get_8c_a3e29caa20f7cffe18f410f01278905a8_cgraph" id="get_8c_a3e29caa20f7cffe18f410f01278905a8_cgraph">
+<area shape="rect" id="node3" href="stdio_8h.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream." alt="" coords="120,5,171,33"/><area shape="rect" id="node5" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="220,5,265,33"/><area shape="rect" id="node7" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="316,5,377,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juin 24 2012 00:25:06 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

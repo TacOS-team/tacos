@@ -1,0 +1,51 @@
+<map id="libc/include/sys/types.h" name="libc/include/sys/types.h">
+<area shape="rect" id="node3" href="$clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="5,91,107,119"/>
+<area shape="rect" id="node5" href="$floppy_8c.html" title="kernel/drivers/block\l/floppy/floppy.c" alt="" coords="1809,177,1943,221"/>
+<area shape="rect" id="node7" href="$floppy__dma_8c.html" title="kernel/drivers/block\l/floppy/floppy_dma.c" alt="" coords="2759,270,2897,314"/>
+<area shape="rect" id="node9" href="$floppy__interrupt_8c.html" title="kernel/drivers/block\l/floppy/floppy_interrupt.c" alt="" coords="232,83,392,127"/>
+<area shape="rect" id="node11" href="$floppy__motor_8c.html" title="kernel/drivers/block\l/floppy/floppy_motor.c" alt="" coords="2943,270,3089,314"/>
+<area shape="rect" id="node13" href="$floppy__utils_8c.html" title="kernel/drivers/block\l/floppy/floppy_utils.c" alt="" coords="584,83,720,127"/>
+<area shape="rect" id="node15" href="$beeper_8c.html" title="kernel/drivers/char\l/beeper.c" alt="" coords="1415,177,1543,221"/>
+<area shape="rect" id="node17" href="$mouse_8c.html" title="kernel/drivers/char\l/mouse.c" alt="" coords="1967,177,2095,221"/>
+<area shape="rect" id="node19" href="$keyboard_8c.html" title="Driver clavier." alt="" coords="376,177,504,221"/>
+<area shape="rect" id="node21" href="$vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="3199,270,3327,314"/>
+<area shape="rect" id="node23" href="$video_8c.html" title="kernel/drivers/char\l/video.c" alt="" coords="128,177,256,221"/>
+<area shape="rect" id="node25" href="$devfs_8c.html" title="DevFS." alt="" coords="2119,185,2236,213"/>
+<area shape="rect" id="node27" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2\l_functions.c" alt="" coords="1541,83,1669,127"/>
+<area shape="rect" id="node29" href="$fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="1567,185,1735,213"/>
+<area shape="rect" id="node35" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="1681,441,1860,469"/>
+<area shape="rect" id="node42" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="1268,185,1391,213"/>
+<area shape="rect" id="node44" href="$i8259_8c.html" title="kernel/i8259.c" alt="" coords="1981,91,2083,119"/>
+<area shape="rect" id="node46" href="$console_8h.html" title="Console virtuelle (Fn)" alt="" coords="744,83,888,127"/>
+<area shape="rect" id="node53" href="$floppy_8h.html" title="kernel/include/drivers\l/floppy.h" alt="" coords="963,83,1107,127"/>
+<area shape="rect" id="node56" href="$mbr_8c.html" title="kernel/mbr.c" alt="" coords="888,185,981,213"/>
+<area shape="rect" id="node58" href="$video_8h.html" title="Driver console (vidéo texte)." alt="" coords="416,83,560,127"/>
+<area shape="rect" id="node63" href="$devfs_8h.html" title="kernel/include/fs/devfs.h" alt="" coords="1795,91,1957,119"/>
+<area shape="rect" id="node72" href="$fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="1131,91,1277,119"/>
+<area shape="rect" id="node77" href="$procfs_8h.html" title="kernel/include/fs/procfs.h" alt="" coords="1301,91,1467,119"/>
+<area shape="rect" id="node81" href="$kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="2259,83,2392,127"/>
+<area shape="rect" id="node90" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="2412,185,2535,213"/>
+<area shape="rect" id="node92" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="2559,185,2684,213"/>
+<area shape="rect" id="node96" href="$pagination_8c.html" title="kernel/pagination.c" alt="" coords="2720,91,2851,119"/>
+<area shape="rect" id="node98" href="$pci_8c.html" title="kernel/pci/pci.c" alt="" coords="2875,91,2984,119"/>
+<area shape="rect" id="node100" href="$pci__config_8c.html" title="kernel/pci/pci_config.c" alt="" coords="3008,91,3157,119"/>
+<area shape="rect" id="node103" href="$dirent_8h.html" title="Définition de DIR et struct dirent." alt="" coords="4283,278,4416,306"/>
+<area shape="rect" id="node105" href="$libio_8h.html" title="libc/include/libio.h" alt="" coords="3181,91,3304,119"/>
+<area shape="rect" id="node107" href="$stdio_8h.html" title="libc/include/stdio.h" alt="" coords="3072,185,3200,213"/>
+<area shape="rect" id="node112" href="$process_8c.html" title="libc/process.c" alt="" coords="3548,363,3649,391"/>
+<area shape="rect" id="node114" href="$stdfiles_8c.html" title="Définition et initialisation des fichiers standards (stdin, stdout, stderr)." alt="" coords="3429,278,3557,306"/>
+<area shape="rect" id="node117" href="$malloc_8h.html" title="libc/include/malloc.h" alt="" coords="3480,91,3619,119"/>
+<area shape="rect" id="node119" href="$libc_2include_2stdlib_8h.html" title="libc/include/stdlib.h" alt="" coords="3533,185,3664,213"/>
+<area shape="rect" id="node123" href="$signal_8h.html" title="Gestion des signaux." alt="" coords="3744,91,3877,119"/>
+<area shape="rect" id="node127" href="$libc_2include_2string_8h.html" title="Fonctions de manipulation de strings." alt="" coords="3325,185,3459,213"/>
+<area shape="rect" id="node132" href="$sem_8h.html" title="l&#39;interface de manipulation des semaphores" alt="" coords="3952,91,4101,119"/>
+<area shape="rect" id="node134" href="$stat_8h.html" title="libc/include/sys/stat.h" alt="" coords="4115,185,4261,213"/>
+<area shape="rect" id="node137" href="$unistd_8h.html" title="libc/include/unistd.h" alt="" coords="3847,278,3983,306"/>
+<area shape="rect" id="node140" href="$wait_8h.html" title="libc/include/sys/wait.h" alt="" coords="4325,91,4475,119"/>
+<area shape="rect" id="node142" href="$time_8h.html" title="libc/include/time.h" alt="" coords="4176,91,4301,119"/>
+<area shape="rect" id="node31" href="$fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="1811,278,1931,306"/>
+<area shape="rect" id="node33" href="$fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="1629,278,1787,306"/>
+<area shape="rect" id="node37" href="$fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="1565,363,1733,391"/>
+<area shape="rect" id="node48" href="$console_8c.html" title="Console virtuelle (Fn)." alt="" coords="585,177,713,221"/>
+<area shape="rect" id="node51" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="1025,185,1132,213"/>
+</map>

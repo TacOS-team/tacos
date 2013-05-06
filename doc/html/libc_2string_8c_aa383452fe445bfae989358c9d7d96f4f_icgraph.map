@@ -1,0 +1,27 @@
+<map id="strlen" name="strlen">
+<area shape="rect" id="node3" href="$tty_8h.html#a302b60b1c52001915aeb108b51efc397" title="tty_register_driver" alt="" coords="111,30,236,58"/>
+<area shape="rect" id="node9" href="$ext2__internal_8h.html#ac9b55aefa79e5e521e4e5d993b4c009a" title="Lecture du contenu d&#39;un dossier." alt="" coords="128,81,219,109"/>
+<area shape="rect" id="node11" href="$fat__internal_8h.html#ada9bd47fd90b01248fe52f302560f9f9" title="fat_readdir" alt="" coords="132,131,215,159"/>
+<area shape="rect" id="node13" href="$fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="300,207,375,235"/>
+<area shape="rect" id="node15" href="$fat__outils_8h.html#a015254ce721ab0097a1008ec7153b819" title="fat_lfn_to_sfn" alt="" coords="123,233,224,261"/>
+<area shape="rect" id="node18" href="$libc_2include_2string_8h.html#a8908188ae9fc2f05d993257ef001d553" title="Concaténation de deux chaînes." alt="" coords="147,283,200,311"/>
+<area shape="rect" id="node20" href="$libc_2include_2string_8h.html#a4c10a214b02eed3dafc48c59ad71abbd" title="Concaténation de deux chaînes avec une limite aux n premiers caractères." alt="" coords="143,334,204,362"/>
+<area shape="rect" id="node22" href="$libc_2include_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="144,385,203,413"/>
+<area shape="rect" id="node24" href="$libc_2string_8c.html#a8b860ba32fef12da8acd4507c059e509" title="Duplique une chaine." alt="" coords="141,435,205,463"/>
+<area shape="rect" id="node26" href="$kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="119,486,228,514"/>
+<area shape="rect" id="node30" href="$vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage." alt="" coords="132,537,215,565"/>
+<area shape="rect" id="node32" href="$vfs_8c.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier." alt="" coords="131,587,216,615"/>
+<area shape="rect" id="node34" href="$unistd_8c.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="109,638,237,666"/>
+<area shape="rect" id="node40" href="$unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="552,613,603,641"/>
+<area shape="rect" id="node5" href="$serial_8h.html#a459999cfa35c788b64284953a93c4b57" title="Fonction d&#39;initialisation du driver série." alt="" coords="299,5,376,33"/>
+<area shape="rect" id="node7" href="$console_8h.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;." alt="" coords="292,55,383,83"/>
+<area shape="rect" id="node28" href="$scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="287,410,388,438"/>
+<area shape="rect" id="node36" href="$dirent_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title="mkdir" alt="" coords="311,461,364,489"/>
+<area shape="rect" id="node38" href="$dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591" title="opendir" alt="" coords="439,562,503,590"/>
+<area shape="rect" id="node42" href="$fcntl_8h.html#adcb60598073f6f9cbb0091ef6768fa5c" title="open" alt="" coords="312,562,363,590"/>
+<area shape="rect" id="node46" href="$unistd_8c.html#a3dc1b07404b646712a144e2057359876" title="Obtenir l&#39;état d&#39;un fichier (status)." alt="" coords="316,663,359,691"/>
+<area shape="rect" id="node50" href="$unistd_8c.html#a8ada37e3927c3e99ea7c1accfdc6576f" title="Créer un noeud du système de fichiers." alt="" coords="307,714,368,742"/>
+<area shape="rect" id="node52" href="$unistd_8c.html#a28af9471bbdf262321af663e02899a47" title="Détruire un nom et éventuellement le fichier associé." alt="" coords="309,765,365,793"/>
+<area shape="rect" id="node55" href="$unistd_8c.html#ab2df76f2c62ae012c2e417813b5fe8ce" title="Supprimer un dossier, lequel doit être vide." alt="" coords="312,815,363,843"/>
+<area shape="rect" id="node48" href="$stdio_8h.html#a02b13b56a188401119ea4da43c184913" title="Supprimer un fichier ou répertoire." alt="" coords="439,765,503,793"/>
+</map>

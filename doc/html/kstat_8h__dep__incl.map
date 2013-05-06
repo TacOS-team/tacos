@@ -1,25 +1,28 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="49,161,196,189"/>
-<area shape="rect" id="node13" href="$kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="254,83,409,111"/>
-<area shape="rect" id="node24" href="$kunistd_8h.html" title="Principales fonctions de l&#39;API POSIX (read, write, seek, stat...)" alt="" coords="1625,83,1782,111"/>
-<area shape="rect" id="node31" href="$vfs_8h.html" title="Virtual File System." alt="" coords="760,83,893,111"/>
-<area shape="rect" id="node5" href="$fat_8c.html" title="Driver FAT." alt="" coords="230,238,350,266"/>
-<area shape="rect" id="node7" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="26,393,205,421"/>
-<area shape="rect" id="node9" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="777,238,884,266"/>
-<area shape="rect" id="node11" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="118,238,206,266"/>
-<area shape="rect" id="node15" href="$devfs_8c.html" title="DevFS." alt="" coords="550,161,668,189"/>
-<area shape="rect" id="node18" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="270,161,393,189"/>
-<area shape="rect" id="node20" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="417,161,526,189"/>
-<area shape="rect" id="node27" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="1580,161,1692,189"/>
-<area shape="rect" id="node29" href="$module_8c.html" title="kernel/module.c" alt="" coords="1716,161,1828,189"/>
-<area shape="rect" id="node34" href="$ext2__internal_8h.html" title="kernel/fs/ext2/ext2_internal.h" alt="" coords="1369,161,1556,189"/>
-<area shape="rect" id="node38" href="$fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="742,161,910,189"/>
-<area shape="rect" id="node50" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="1190,161,1345,189"/>
-<area shape="rect" id="node58" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="934,161,1036,189"/>
-<area shape="rect" id="node60" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1060,161,1166,189"/>
-<area shape="rect" id="node36" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="1392,238,1530,266"/>
-<area shape="rect" id="node41" href="$fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="374,238,532,266"/>
-<area shape="rect" id="node44" href="$fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="369,315,537,343"/>
-<area shape="rect" id="node47" href="$fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="188,315,345,343"/>
-<area shape="rect" id="node53" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="1169,238,1366,266"/>
+<map id="kernel/include/kstat.h" name="kernel/include/kstat.h">
+<area shape="rect" id="node3" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="1284,425,1463,453"/>
+<area shape="rect" id="node5" href="$fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="1208,169,1355,197"/>
+<area shape="rect" id="node14" href="$kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="720,83,875,111"/>
+<area shape="rect" id="node25" href="$kunistd_8h.html" title="Principales fonctions de l&#39;API POSIX (read, write, seek, stat...)" alt="" coords="293,83,451,111"/>
+<area shape="rect" id="node30" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="5,169,128,197"/>
+<area shape="rect" id="node36" href="$vfs_8h.html" title="Virtual File System." alt="" coords="1105,83,1239,111"/>
+<area shape="rect" id="node7" href="$fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="1221,262,1341,290"/>
+<area shape="rect" id="node10" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="761,262,868,290"/>
+<area shape="rect" id="node12" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="1059,262,1147,290"/>
+<area shape="rect" id="node16" href="$devfs_8c.html" title="DevFS." alt="" coords="1016,169,1133,197"/>
+<area shape="rect" id="node19" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="736,169,859,197"/>
+<area shape="rect" id="node21" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="883,169,992,197"/>
+<area shape="rect" id="node27" href="$elf_8c.html" title="kernel/elf.c" alt="" coords="152,169,237,197"/>
+<area shape="rect" id="node32" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="363,169,475,197"/>
+<area shape="rect" id="node34" href="$module_8c.html" title="kernel/module.c" alt="" coords="499,169,611,197"/>
+<area shape="rect" id="node38" href="$dcache_8c.html" title="dentry cache" alt="" coords="1901,169,2013,197"/>
+<area shape="rect" id="node41" href="$ext2__internal_8h.html" title="kernel/fs/ext2/ext2\l_internal.h" alt="" coords="1749,161,1877,205"/>
+<area shape="rect" id="node45" href="$fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="1379,169,1547,197"/>
+<area shape="rect" id="node58" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="1571,169,1725,197"/>
+<area shape="rect" id="node66" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="2037,169,2139,197"/>
+<area shape="rect" id="node68" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="2163,169,2269,197"/>
+<area shape="rect" id="node43" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="1749,262,1888,290"/>
+<area shape="rect" id="node48" href="$fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="1416,262,1573,290"/>
+<area shape="rect" id="node51" href="$fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="1289,347,1457,375"/>
+<area shape="rect" id="node54" href="$fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="1532,347,1689,375"/>
+<area shape="rect" id="node61" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2\l_functions.c" alt="" coords="1597,254,1725,298"/>
 </map>

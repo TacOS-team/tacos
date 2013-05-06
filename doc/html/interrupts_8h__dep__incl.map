@@ -1,14 +1,14 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="5,83,107,111"/>
-<area shape="rect" id="node5" href="$floppy__interrupt_8c.html" title="kernel/drivers/block/floppy/floppy_interrupt.c" alt="" coords="131,83,403,111"/>
-<area shape="rect" id="node7" href="$mouse_8c.html" title="kernel/drivers/char/mouse.c" alt="" coords="427,83,608,111"/>
-<area shape="rect" id="node9" href="$serial_8c.html" title="kernel/drivers/char/serial.c" alt="" coords="632,83,805,111"/>
-<area shape="rect" id="node11" href="$events_8c.html" title="Gestion d&#39;évènements datés." alt="" coords="829,83,939,111"/>
-<area shape="rect" id="node13" href="$fpu_8c.html" title="Configuration de la FPU." alt="" coords="963,83,1051,111"/>
-<area shape="rect" id="node15" href="$interrupts_8c.html" title="kernel/interrupts.c" alt="" coords="1075,83,1200,111"/>
-<area shape="rect" id="node17" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="1224,83,1331,111"/>
-<area shape="rect" id="node19" href="$kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="1355,83,1464,111"/>
-<area shape="rect" id="node21" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="1488,83,1600,111"/>
-<area shape="rect" id="node23" href="$ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="1624,83,1741,111"/>
-<area shape="rect" id="node25" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="1765,83,1891,111"/>
+<map id="kernel/include/interrupts.h" name="kernel/include/interrupts.h">
+<area shape="rect" id="node3" href="$clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="5,91,107,119"/>
+<area shape="rect" id="node5" href="$floppy__interrupt_8c.html" title="kernel/drivers/block\l/floppy/floppy_interrupt.c" alt="" coords="131,83,291,127"/>
+<area shape="rect" id="node7" href="$mouse_8c.html" title="kernel/drivers/char\l/mouse.c" alt="" coords="315,83,443,127"/>
+<area shape="rect" id="node9" href="$serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="467,83,595,127"/>
+<area shape="rect" id="node11" href="$events_8c.html" title="Gestion d&#39;évènements datés." alt="" coords="619,91,728,119"/>
+<area shape="rect" id="node13" href="$fpu_8c.html" title="Configuration de la FPU." alt="" coords="752,91,840,119"/>
+<area shape="rect" id="node15" href="$interrupts_8c.html" title="kernel/interrupts.c" alt="" coords="864,91,989,119"/>
+<area shape="rect" id="node17" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="1013,91,1120,119"/>
+<area shape="rect" id="node19" href="$kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="1144,91,1253,119"/>
+<area shape="rect" id="node21" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="1277,91,1389,119"/>
+<area shape="rect" id="node23" href="$ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="1413,91,1531,119"/>
+<area shape="rect" id="node25" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="1555,91,1680,119"/>
 </map>

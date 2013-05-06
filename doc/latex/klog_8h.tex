@@ -1,0 +1,82 @@
+\hypertarget{klog_8h}{\section{Référence du fichier kernel/include/klog.h}
+\label{klog_8h}\index{kernel/include/klog.\-h@{kernel/include/klog.\-h}}
+}
+
+
+Logging macros.  
+
+
+{\ttfamily \#include $<$kstdio.\-h$>$}\\*
+Graphe des dépendances par inclusion de klog.\-h\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{klog_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{klog_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{klog_8h_a0b4bb9d111462c3990c48a6844a6ee7f}{klog}(message,...)~do\{klog\-\_\-systime();\hyperlink{kstdio_8c_a139d07e37f4cb84769b3c892f58696be}{kprintf}(\char`\"{}\mbox{[}\%s\mbox{]} \char`\"{}message\char`\"{}\textbackslash{}n\char`\"{}, \-\_\-\-\_\-\-F\-I\-L\-E\-\_\-\-\_\-, \#\#\-\_\-\-\_\-\-V\-A\-\_\-\-A\-R\-G\-S\-\_\-\-\_\-);\}while(0)
+\item 
+\#define \hyperlink{klog_8h_a7bc73d397e0b9afbd974e4feb837f16d}{kerr}(message,...)~do\{\hyperlink{kstdio_8c_a139d07e37f4cb84769b3c892f58696be}{kprintf}(\char`\"{}\textbackslash{}033\mbox{[}031m\char`\"{});klog\-\_\-systime();kprintf(\char`\"{}\textbackslash{}033\mbox{[}031m\mbox{[}\%s\-:\%d in \%s\mbox{]} E\-R\-R\-O\-R\-: \char`\"{}message\char`\"{}\textbackslash{}033\mbox{[}0m\textbackslash{}n\char`\"{}, \-\_\-\-\_\-\-F\-I\-L\-E\-\_\-\-\_\-, \-\_\-\-\_\-\-L\-I\-N\-E\-\_\-\-\_\-, \-\_\-\-\_\-func\-\_\-\-\_\-, \#\#\-\_\-\-\_\-\-V\-A\-\_\-\-A\-R\-G\-S\-\_\-\-\_\-);\}while(0)
+\item 
+\#define \hyperlink{klog_8h_a4dbe7575bddeab8958d7fa47693cf318}{kdebug}(message,...)
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{klog_8h_accc6640b25e5d278185c360538d3cc3b}{void {\bfseries klog\-\_\-systime} ()}\label{klog_8h_accc6640b25e5d278185c360538d3cc3b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+
+
+\subsection{Documentation des macros}
+\hypertarget{klog_8h_a4dbe7575bddeab8958d7fa47693cf318}{\index{klog.\-h@{klog.\-h}!kdebug@{kdebug}}
+\index{kdebug@{kdebug}!klog.h@{klog.\-h}}
+\subsubsection[{kdebug}]{\setlength{\rightskip}{0pt plus 5cm}\#define kdebug(
+\begin{DoxyParamCaption}
+\item[{}]{message, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}}\label{klog_8h_a4dbe7575bddeab8958d7fa47693cf318}
+Macro pour les logs de debug qui ne fait rien si pas en mode debug. \hypertarget{klog_8h_a7bc73d397e0b9afbd974e4feb837f16d}{\index{klog.\-h@{klog.\-h}!kerr@{kerr}}
+\index{kerr@{kerr}!klog.h@{klog.\-h}}
+\subsubsection[{kerr}]{\setlength{\rightskip}{0pt plus 5cm}\#define kerr(
+\begin{DoxyParamCaption}
+\item[{}]{message, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~do\{{\bf kprintf}(\char`\"{}\textbackslash{}033\mbox{[}031m\char`\"{});klog\-\_\-systime();kprintf(\char`\"{}\textbackslash{}033\mbox{[}031m\mbox{[}\%s\-:\%d in \%s\mbox{]} E\-R\-R\-O\-R\-: \char`\"{}message\char`\"{}\textbackslash{}033\mbox{[}0m\textbackslash{}n\char`\"{}, \-\_\-\-\_\-\-F\-I\-L\-E\-\_\-\-\_\-, \-\_\-\-\_\-\-L\-I\-N\-E\-\_\-\-\_\-, \-\_\-\-\_\-func\-\_\-\-\_\-, \#\#\-\_\-\-\_\-\-V\-A\-\_\-\-A\-R\-G\-S\-\_\-\-\_\-);\}while(0)}}\label{klog_8h_a7bc73d397e0b9afbd974e4feb837f16d}
+Macro de log d'erreur. \hypertarget{klog_8h_a0b4bb9d111462c3990c48a6844a6ee7f}{\index{klog.\-h@{klog.\-h}!klog@{klog}}
+\index{klog@{klog}!klog.h@{klog.\-h}}
+\subsubsection[{klog}]{\setlength{\rightskip}{0pt plus 5cm}\#define klog(
+\begin{DoxyParamCaption}
+\item[{}]{message, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~do\{klog\-\_\-systime();{\bf kprintf}(\char`\"{}\mbox{[}\%s\mbox{]} \char`\"{}message\char`\"{}\textbackslash{}n\char`\"{}, \-\_\-\-\_\-\-F\-I\-L\-E\-\_\-\-\_\-, \#\#\-\_\-\-\_\-\-V\-A\-\_\-\-A\-R\-G\-S\-\_\-\-\_\-);\}while(0)}}\label{klog_8h_a0b4bb9d111462c3990c48a6844a6ee7f}
+Macro de log système. 

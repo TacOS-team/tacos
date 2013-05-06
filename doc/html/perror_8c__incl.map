@@ -1,0 +1,9 @@
+<map id="libc/stdio/perror.c" name="libc/stdio/perror.c">
+<area shape="rect" id="node3" href="$errno_8h.html" title="errno.h" alt="" coords="5,238,67,266"/>
+<area shape="rect" id="node7" href="$stdio_8h.html" title="stdio.h" alt="" coords="139,83,197,111"/>
+<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="72,315,160,343"/>
+<area shape="rect" id="node10" href="$libio_8h.html" title="libio.h" alt="" coords="141,161,195,189"/>
+<area shape="rect" id="node13" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="192,238,277,266"/>
+<area shape="rect" id="node19" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="269,161,336,189"/>
+<area shape="rect" id="node16" href="$stdbool_8h.html" title="Type bool." alt="" coords="197,315,272,343"/>
+</map>

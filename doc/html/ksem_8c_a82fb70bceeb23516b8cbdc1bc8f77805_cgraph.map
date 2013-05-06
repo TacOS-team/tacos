@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="SYSCALL_HANDLER3" name="SYSCALL_HANDLER3">
 <area shape="rect" id="node3" href="$ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="213,5,285,33"/>
 <area shape="rect" id="node5" href="$ksem_8h.html#acfbbd3e3f726b24309758cf6499a8141" title="Opération P sur un sémaphore Réalise l&#39;opération P sur le sémaphore. Le processus essaye donc de pren..." alt="" coords="219,55,280,83"/>
 <area shape="rect" id="node9" href="$ksem_8h.html#acf03efb500e930ca996059a6388b528b" title="Opération V sur un sémaphore Réalise l&#39;opération V sur le sémaphore. Le processus libère le sémaphore..." alt="" coords="219,106,280,134"/>

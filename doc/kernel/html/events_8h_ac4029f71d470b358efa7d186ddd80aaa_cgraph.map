@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$clock_8c.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="171,30,229,58"/>
+<area shape="rect" id="node9" href="$clock_8c.html#a052807a5c6ae63175a937381014a5701" title="Ajoute des us à un temps. Ajoute des us à un temps contenu dans une structure timeval." alt="" coords="137,81,263,109"/>
+<area shape="rect" id="node11" href="$list_8h.html#a7a8bb1eb8a161ffce0167fca806e10ad" title="list_add_element" alt="" coords="140,131,260,159"/>
+<area shape="rect" id="node5" href="$clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes." alt="" coords="316,5,388,33"/>
+<area shape="rect" id="node7" href="$clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="313,55,391,83"/>
+<area shape="rect" id="node13" href="$string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="317,131,387,159"/>
+</map>

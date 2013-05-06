@@ -4,43 +4,33 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <title>TacOS: Référence de la structure lfn_entry_t</title>
-
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
-
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div! -->
-
-
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  
-  
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
    &#160;<span id="projectnumber">0.1</span>
    </div>
-   
   </td>
-  
-  
-  
  </tr>
  </tbody>
 </table>
 </div>
-
-<!-- Généré par Doxygen 1.7.6.1 -->
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -73,147 +63,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
     </ul>
   </div>
-</div>
-<div class="header">
-  <div class="summary">
-<a href="#pub-attribs">Champs de données</a>  </div>
-  <div class="headertitle">
-<div class="title">Référence de la structure lfn_entry_t</div>  </div>
-</div><!--header-->
-<div class="contents">
-<!-- doxytag: class="lfn_entry_t" -->
-<p><code>#include &lt;<a class="el" href="fat__internal_8h_source.html">fat_internal.h</a>&gt;</code></p>
-<table class="memberdecls">
-<tr><td colspan="2"><h2><a name="pub-attribs"></a>
-Champs de données</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#a07b88226674917555309538459b194df">seq_number</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#a04e5c493f02fa433b7d7d2d489c89e60">filename1</a> [10]</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#a5b1eb8b963f05e47b3d6508b5a986985">attributes</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#a506f9cbd0e4fe209626eedaf48c1f8bf">reserved</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#a1a60017a7c8b7502fefc8358a821f0ae">checksum</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#ab88e34e402a566da06c83163e94a1763">filename2</a> [12]</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#a6f3355b0c241c7a5936c04dccf1614ca">cluster_pointer</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#aa157718941579c9ef9bb5eba85015ec0">filename3</a> [4]</td></tr>
-</table>
-<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
-<div class="textblock"><p>Entrée pour les noms de fichier long. </p>
-</div><hr/><h2>Documentation des champs</h2>
-<a class="anchor" id="a5b1eb8b963f05e47b3d6508b5a986985"></a><!-- doxytag: member="lfn_entry_t::attributes" ref="a5b1eb8b963f05e47b3d6508b5a986985" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="el" href="structlfn__entry__t.html#a5b1eb8b963f05e47b3d6508b5a986985">lfn_entry_t::attributes</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Attributs (Toujours 0x0F). </p>
-
-</div>
-</div>
-<a class="anchor" id="a1a60017a7c8b7502fefc8358a821f0ae"></a><!-- doxytag: member="lfn_entry_t::checksum" ref="a1a60017a7c8b7502fefc8358a821f0ae" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="el" href="structlfn__entry__t.html#a1a60017a7c8b7502fefc8358a821f0ae">lfn_entry_t::checksum</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>checksum. </p>
-
-</div>
-</div>
-<a class="anchor" id="a6f3355b0c241c7a5936c04dccf1614ca"></a><!-- doxytag: member="lfn_entry_t::cluster_pointer" ref="a6f3355b0c241c7a5936c04dccf1614ca" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> <a class="el" href="structlfn__entry__t.html#a6f3355b0c241c7a5936c04dccf1614ca">lfn_entry_t::cluster_pointer</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>always 0x000. </p>
-
-</div>
-</div>
-<a class="anchor" id="a04e5c493f02fa433b7d7d2d489c89e60"></a><!-- doxytag: member="lfn_entry_t::filename1" ref="a04e5c493f02fa433b7d7d2d489c89e60" args="[10]" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="el" href="structlfn__entry__t.html#a04e5c493f02fa433b7d7d2d489c89e60">lfn_entry_t::filename1</a>[10]</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Partie du nom de fichier. </p>
-
-</div>
-</div>
-<a class="anchor" id="ab88e34e402a566da06c83163e94a1763"></a><!-- doxytag: member="lfn_entry_t::filename2" ref="ab88e34e402a566da06c83163e94a1763" args="[12]" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="el" href="structlfn__entry__t.html#ab88e34e402a566da06c83163e94a1763">lfn_entry_t::filename2</a>[12]</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Suite du nom de fichier. </p>
-
-</div>
-</div>
-<a class="anchor" id="aa157718941579c9ef9bb5eba85015ec0"></a><!-- doxytag: member="lfn_entry_t::filename3" ref="aa157718941579c9ef9bb5eba85015ec0" args="[4]" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="el" href="structlfn__entry__t.html#aa157718941579c9ef9bb5eba85015ec0">lfn_entry_t::filename3</a>[4]</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Suite du nom de fichier. </p>
-
-</div>
-</div>
-<a class="anchor" id="a506f9cbd0e4fe209626eedaf48c1f8bf"></a><!-- doxytag: member="lfn_entry_t::reserved" ref="a506f9cbd0e4fe209626eedaf48c1f8bf" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="el" href="structlfn__entry__t.html#a506f9cbd0e4fe209626eedaf48c1f8bf">lfn_entry_t::reserved</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>always 0x0. </p>
-
-</div>
-</div>
-<a class="anchor" id="a07b88226674917555309538459b194df"></a><!-- doxytag: member="lfn_entry_t::seq_number" ref="a07b88226674917555309538459b194df" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="el" href="structlfn__entry__t.html#a07b88226674917555309538459b194df">lfn_entry_t::seq_number</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Numéro de séquence. </p>
-
-</div>
-</div>
-<hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
-<li>kernel/fs/fat/<a class="el" href="fat__internal_8h_source.html">fat_internal.h</a></li>
-</ul>
-</div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -228,13 +77,144 @@ Champs de données</h2></td></tr>
 </iframe>
 </div>
 
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Champs de données</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence de la structure lfn_entry_t</div>  </div>
+</div><!--header-->
+<div class="contents">
 
+<p><code>#include &lt;<a class="el" href="fat__internal_8h_source.html">fat_internal.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr class="memitem:a07b88226674917555309538459b194df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#a07b88226674917555309538459b194df">seq_number</a></td></tr>
+<tr class="memitem:a04e5c493f02fa433b7d7d2d489c89e60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#a04e5c493f02fa433b7d7d2d489c89e60">filename1</a> [10]</td></tr>
+<tr class="memitem:a5b1eb8b963f05e47b3d6508b5a986985"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#a5b1eb8b963f05e47b3d6508b5a986985">attributes</a></td></tr>
+<tr class="memitem:a506f9cbd0e4fe209626eedaf48c1f8bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#a506f9cbd0e4fe209626eedaf48c1f8bf">reserved</a></td></tr>
+<tr class="memitem:a1a60017a7c8b7502fefc8358a821f0ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#a1a60017a7c8b7502fefc8358a821f0ae">checksum</a></td></tr>
+<tr class="memitem:ab88e34e402a566da06c83163e94a1763"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#ab88e34e402a566da06c83163e94a1763">filename2</a> [12]</td></tr>
+<tr class="memitem:a6f3355b0c241c7a5936c04dccf1614ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#a6f3355b0c241c7a5936c04dccf1614ca">cluster_pointer</a></td></tr>
+<tr class="memitem:aa157718941579c9ef9bb5eba85015ec0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html#aa157718941579c9ef9bb5eba85015ec0">filename3</a> [4]</td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>Entrée pour les noms de fichier long. </p>
+</div><h2>Documentation des champs</h2>
+<a class="anchor" id="a5b1eb8b963f05e47b3d6508b5a986985"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> lfn_entry_t::attributes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Attributs (Toujours 0x0F). </p>
 
+</div>
+</div>
+<a class="anchor" id="a1a60017a7c8b7502fefc8358a821f0ae"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> lfn_entry_t::checksum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>checksum. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6f3355b0c241c7a5936c04dccf1614ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> lfn_entry_t::cluster_pointer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>always 0x000. </p>
+
+</div>
+</div>
+<a class="anchor" id="a04e5c493f02fa433b7d7d2d489c89e60"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> lfn_entry_t::filename1[10]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Partie du nom de fichier. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab88e34e402a566da06c83163e94a1763"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> lfn_entry_t::filename2[12]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Suite du nom de fichier. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa157718941579c9ef9bb5eba85015ec0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> lfn_entry_t::filename3[4]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Suite du nom de fichier. </p>
+
+</div>
+</div>
+<a class="anchor" id="a506f9cbd0e4fe209626eedaf48c1f8bf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> lfn_entry_t::reserved</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>always 0x0. </p>
+
+</div>
+</div>
+<a class="anchor" id="a07b88226674917555309538459b194df"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> lfn_entry_t::seq_number</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Numéro de séquence. </p>
+
+</div>
+</div>
+<hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
+<li>kernel/fs/fat/<a class="el" href="fat__internal_8h_source.html">fat_internal.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Juin 24 2012 10:56:48 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Lundi Mai 6 2013 23:52:57 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
+</a> 1.8.1.2
 </small></address>
-
 </body>
 </html>

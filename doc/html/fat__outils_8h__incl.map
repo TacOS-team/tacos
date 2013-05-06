@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/fs/fat/fat_outils.h" name="kernel/fs/fat/fat_outils.h">
 <area shape="rect" id="node3" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="47,83,143,111"/>
 <area shape="rect" id="node7" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="110,315,171,343"/>
 <area shape="rect" id="node14" href="$vfs_8h.html" title="Virtual File System." alt="" coords="208,161,259,189"/>

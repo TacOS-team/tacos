@@ -4,43 +4,33 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <title>TacOS: Référence du fichier kernel/drivers/char/serial.c</title>
-
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
-
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div! -->
-
-
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  
-  
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
    &#160;<span id="projectnumber">0.1</span>
    </div>
-   
   </td>
-  
-  
-  
  </tr>
  </tbody>
 </table>
 </div>
-
-<!-- Généré par Doxygen 1.7.6.1 -->
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -73,13 +63,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
     </ul>
   </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
 </div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_0de1d64efa6df97eacc8f5b0f9da3e59.html">drivers</a></li><li class="navelem"><a class="el" href="dir_4f51db4643cd003614c6e9a2383a0754.html">char</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle">
-<div class="title">Référence du fichier kernel/drivers/char/serial.c</div>  </div>
+<div class="title">Référence du fichier serial.c</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="interrupts_8h_source.html">interrupts.h</a>&gt;</code><br/>
@@ -97,89 +105,74 @@ Graphe des dépendances par inclusion de serial.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="serial_8c__incl.png" border="0" usemap="#kernel_2drivers_2char_2serial_8c" alt=""/></div>
 <map name="kernel_2drivers_2char_2serial_8c" id="kernel_2drivers_2char_2serial_8c">
-<area shape="rect" id="node3" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="5,161,91,189"/><area shape="rect" id="node7" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="549,83,619,111"/><area shape="rect" id="node9" href="serial_8h.html" title="drivers/serial.h" alt="" coords="643,83,749,111"/><area shape="rect" id="node11" href="klog_8h.html" title="Logging macros." alt="" coords="773,83,829,111"/><area shape="rect" id="node15" href="ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="216,161,280,189"/><area shape="rect" id="node21" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="411,83,475,111"/><area shape="rect" id="node44" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="115,161,192,189"/><area shape="rect" id="node47" href="tty_8h.html" title="Terminal posix&#45;like." alt="" coords="737,161,783,189"/><area shape="rect" id="node53" href="kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="853,83,947,111"/><area shape="rect" id="node57" href="serial__masks_8h.html" title="serial_masks.h" alt="" coords="971,83,1080,111"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="280,315,341,343"/><area shape="rect" id="node13" href="kstdio_8h.html" title="kprintf" alt="" coords="807,161,873,189"/><area shape="rect" id="node17" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="272,238,349,266"/><area shape="rect" id="node24" href="fd__types_8h.html" title="fd_types.h" alt="" coords="883,238,963,266"/><area shape="rect" id="node26" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="505,161,591,189"/><area shape="rect" id="node30" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="424,238,528,266"/><area shape="rect" id="node32" href="process__types_8h.html" title="process_types.h" alt="" coords="552,238,667,266"/><area shape="rect" id="node34" href="symtable_8h.html" title="symtable.h" alt="" coords="776,238,859,266"/><area shape="rect" id="node40" href="vmm_8h.html" title="vmm.h" alt="" coords="691,238,752,266"/><area shape="rect" id="node50" href="termios__types_8h.html" title="termios_types.h" alt="" coords="1037,238,1149,266"/></map>
+<area shape="rect" id="node3" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="5,177,91,205"/><area shape="rect" id="node7" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="549,99,619,127"/><area shape="rect" id="node9" href="serial_8h.html" title="drivers/serial.h" alt="" coords="643,99,749,127"/><area shape="rect" id="node11" href="klog_8h.html" title="Logging macros." alt="" coords="773,99,829,127"/><area shape="rect" id="node15" href="ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="216,177,280,205"/><area shape="rect" id="node21" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="411,99,475,127"/><area shape="rect" id="node44" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="115,177,192,205"/><area shape="rect" id="node47" href="tty_8h.html" title="Terminal posix&#45;like." alt="" coords="737,177,783,205"/><area shape="rect" id="node53" href="kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="853,99,947,127"/><area shape="rect" id="node57" href="serial__masks_8h.html" title="serial_masks.h" alt="" coords="971,99,1080,127"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="280,331,341,359"/><area shape="rect" id="node13" href="kstdio_8h.html" title="kprintf" alt="" coords="807,177,873,205"/><area shape="rect" id="node17" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="272,254,349,282"/><area shape="rect" id="node24" href="fd__types_8h.html" title="fd_types.h" alt="" coords="883,254,963,282"/><area shape="rect" id="node26" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="505,177,591,205"/><area shape="rect" id="node30" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="424,254,528,282"/><area shape="rect" id="node32" href="process__types_8h.html" title="process_types.h" alt="" coords="552,254,667,282"/><area shape="rect" id="node34" href="symtable_8h.html" title="symtable.h" alt="" coords="776,254,859,282"/><area shape="rect" id="node40" href="vmm_8h.html" title="vmm.h" alt="" coords="691,254,752,282"/><area shape="rect" id="node37" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="795,331,840,359"/><area shape="rect" id="node50" href="termios__types_8h.html" title="termios_types.h" alt="" coords="1037,254,1149,282"/></map>
 </div>
 </div><table class="memberdecls">
-<tr><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a739a2a1a0047c98ac1b18ecd25dac092"></a><!-- doxytag: member="serial.c::RX_BUFFER_SIZE" ref="a739a2a1a0047c98ac1b18ecd25dac092" args="" -->
+<tr class="memitem:a739a2a1a0047c98ac1b18ecd25dac092"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a739a2a1a0047c98ac1b18ecd25dac092"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RX_BUFFER_SIZE</b>&#160;&#160;&#160;256</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ab33647617098646990fe263600b650"></a><!-- doxytag: member="serial.c::TX_BUFFER_SIZE" ref="a9ab33647617098646990fe263600b650" args="" -->
+<tr class="memitem:a9ab33647617098646990fe263600b650"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ab33647617098646990fe263600b650"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>TX_BUFFER_SIZE</b>&#160;&#160;&#160;256</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88540454f43c07e91701dd077089dcfe"></a><!-- doxytag: member="serial.c::TX_FIFO_SIZE" ref="a88540454f43c07e91701dd077089dcfe" args="" -->
+<tr class="memitem:a88540454f43c07e91701dd077089dcfe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88540454f43c07e91701dd077089dcfe"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>TX_FIFO_SIZE</b>&#160;&#160;&#160;16 /* D'après la datasheet du PC1550D, pas évident que ce soit le bon model */</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0449f9f9f1ba32438d7cf0930de48661"></a><!-- doxytag: member="serial.c::UART_CLOCK_FREQ" ref="a0449f9f9f1ba32438d7cf0930de48661" args="" -->
+<tr class="memitem:a0449f9f9f1ba32438d7cf0930de48661"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0449f9f9f1ba32438d7cf0930de48661"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>UART_CLOCK_FREQ</b>&#160;&#160;&#160;115200</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aad9ae913bdfab20dd94ad04ee2d5b045"></a><!-- doxytag: member="serial.c::DATA" ref="aad9ae913bdfab20dd94ad04ee2d5b045" args="" -->
+<tr class="memitem:aad9ae913bdfab20dd94ad04ee2d5b045"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aad9ae913bdfab20dd94ad04ee2d5b045"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>DATA</b>&#160;&#160;&#160;0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae942966c7cbecd9ce09b4c6fb959bc9b"></a><!-- doxytag: member="serial.c::DL_LSB" ref="ae942966c7cbecd9ce09b4c6fb959bc9b" args="" -->
+<tr class="memitem:ae942966c7cbecd9ce09b4c6fb959bc9b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae942966c7cbecd9ce09b4c6fb959bc9b"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>DL_LSB</b>&#160;&#160;&#160;0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf43057fc38f77d20456c074909ba772"></a><!-- doxytag: member="serial.c::INTERRUPT_ENABLE" ref="acf43057fc38f77d20456c074909ba772" args="" -->
+<tr class="memitem:acf43057fc38f77d20456c074909ba772"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf43057fc38f77d20456c074909ba772"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>INTERRUPT_ENABLE</b>&#160;&#160;&#160;1</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8ad4affdf38f644451e72f654d0366b4"></a><!-- doxytag: member="serial.c::DL_MSB" ref="a8ad4affdf38f644451e72f654d0366b4" args="" -->
+<tr class="memitem:a8ad4affdf38f644451e72f654d0366b4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8ad4affdf38f644451e72f654d0366b4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>DL_MSB</b>&#160;&#160;&#160;1</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6624b0e7d14d658837e0dd389df233a6"></a><!-- doxytag: member="serial.c::INTERRUPT_ID_REG" ref="a6624b0e7d14d658837e0dd389df233a6" args="" -->
+<tr class="memitem:a6624b0e7d14d658837e0dd389df233a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6624b0e7d14d658837e0dd389df233a6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>INTERRUPT_ID_REG</b>&#160;&#160;&#160;2</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adcd8d113c8791a336768b8da70010ea7"></a><!-- doxytag: member="serial.c::FIFO_CTRL" ref="adcd8d113c8791a336768b8da70010ea7" args="" -->
+<tr class="memitem:adcd8d113c8791a336768b8da70010ea7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adcd8d113c8791a336768b8da70010ea7"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FIFO_CTRL</b>&#160;&#160;&#160;2</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afdfbab6c55abbfa2e09f1aac20c59b59"></a><!-- doxytag: member="serial.c::LINE_CTRL" ref="afdfbab6c55abbfa2e09f1aac20c59b59" args="" -->
+<tr class="memitem:afdfbab6c55abbfa2e09f1aac20c59b59"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afdfbab6c55abbfa2e09f1aac20c59b59"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>LINE_CTRL</b>&#160;&#160;&#160;3</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0bcee366aa87f066c588cadec8cd51ec"></a><!-- doxytag: member="serial.c::MODEM_CTRL" ref="a0bcee366aa87f066c588cadec8cd51ec" args="" -->
+<tr class="memitem:a0bcee366aa87f066c588cadec8cd51ec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0bcee366aa87f066c588cadec8cd51ec"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MODEM_CTRL</b>&#160;&#160;&#160;4</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57842fefd7fa676c36779e4f43ac6cc0"></a><!-- doxytag: member="serial.c::LINE_STATUS" ref="a57842fefd7fa676c36779e4f43ac6cc0" args="" -->
+<tr class="memitem:a57842fefd7fa676c36779e4f43ac6cc0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57842fefd7fa676c36779e4f43ac6cc0"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>LINE_STATUS</b>&#160;&#160;&#160;5</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6513628ede18301c0857892dab0ee4a9"></a><!-- doxytag: member="serial.c::MODEM_STATUS" ref="a6513628ede18301c0857892dab0ee4a9" args="" -->
+<tr class="memitem:a6513628ede18301c0857892dab0ee4a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6513628ede18301c0857892dab0ee4a9"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MODEM_STATUS</b>&#160;&#160;&#160;6</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec8a026f804bcb1be68ce357673e3045"></a><!-- doxytag: member="serial.c::SCRATCH" ref="aec8a026f804bcb1be68ce357673e3045" args="" -->
+<tr class="memitem:aec8a026f804bcb1be68ce357673e3045"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec8a026f804bcb1be68ce357673e3045"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SCRATCH</b>&#160;&#160;&#160;7</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7dd7fde7a54fe0ec4fae8d2356c14aed"></a><!-- doxytag: member="serial.c::write_register" ref="a7dd7fde7a54fe0ec4fae8d2356c14aed" args="(PORT, REG, DATA)" -->
+<tr class="memitem:a7dd7fde7a54fe0ec4fae8d2356c14aed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7dd7fde7a54fe0ec4fae8d2356c14aed"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>write_register</b>(PORT, REG, DATA)&#160;&#160;&#160;<a class="el" href="ioports_8h.html#aff0f5d0c71d15c5888f22f86b5ca841b">outb</a>(DATA,base_addr[PORT]+REG)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1d0b23ee864d6c0d825a341c107ccc38"></a><!-- doxytag: member="serial.c::read_register" ref="a1d0b23ee864d6c0d825a341c107ccc38" args="(PORT, REG)" -->
+<tr class="memitem:a1d0b23ee864d6c0d825a341c107ccc38"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1d0b23ee864d6c0d825a341c107ccc38"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>read_register</b>(PORT, REG)&#160;&#160;&#160;<a class="el" href="ioports_8h.html#ad6488a48837d179b1833e2f48dac9665">inb</a>(base_addr[PORT]+REG)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f7b278912168b50fd7cc04c65ec743f"></a><!-- doxytag: member="serial.c::TX_BUFFER_FULL" ref="a8f7b278912168b50fd7cc04c65ec743f" args="(port)" -->
+<tr class="memitem:a8f7b278912168b50fd7cc04c65ec743f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f7b278912168b50fd7cc04c65ec743f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>TX_BUFFER_FULL</b>(port)&#160;&#160;&#160;((tx_size[port] == TX_BUFFER_SIZE-1)?1:0)</td></tr>
-<tr><td colspan="2"><h2><a name="func-members"></a>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac50cbde292e2ec8e27be3384c942d56a"></a><!-- doxytag: member="serial.c::serial_isr" ref="ac50cbde292e2ec8e27be3384c942d56a" args="(int id)" -->
+<tr class="memitem:ac50cbde292e2ec8e27be3384c942d56a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac50cbde292e2ec8e27be3384c942d56a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="serial_8c.html#ac50cbde292e2ec8e27be3384c942d56a">serial_isr</a> (int id)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler d'interruption du driver série. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a459999cfa35c788b64284953a93c4b57"></a><!-- doxytag: member="serial.c::serial_init" ref="a459999cfa35c788b64284953a93c4b57" args="()" -->
+<tr class="memdesc:ac50cbde292e2ec8e27be3384c942d56a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler d'interruption du driver série. <br/></td></tr>
+<tr class="memitem:a459999cfa35c788b64284953a93c4b57"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a459999cfa35c788b64284953a93c4b57"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="serial_8c.html#a459999cfa35c788b64284953a93c4b57">serial_init</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction d'initialisation du driver série. <br/></td></tr>
+<tr class="memdesc:a459999cfa35c788b64284953a93c4b57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction d'initialisation du driver série. <br/></td></tr>
 </table>
-<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
-<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
-<h2><a class="anchor" id="LICENSE"></a>
-LICENSE</h2>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
 <p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
-<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
-<h2><a class="anchor" id="DESCRIPTION"></a>
-DESCRIPTION</h2>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
 <p>Serial communication driver </p>
 </div></div><!-- contents -->
-<!-- window showing the filter options -->
-<div id="MSearchSelectWindow"
-     onmouseover="return searchBox.OnSearchSelectShow()"
-     onmouseout="return searchBox.OnSearchSelectHide()"
-     onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
-
-<!-- iframe showing the search results (closed by default) -->
-<div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
-</div>
-
-
-
+<!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Juin 24 2012 10:56:47 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Lundi Mai 6 2013 23:52:53 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
+</a> 1.8.1.2
 </small></address>
-
 </body>
 </html>

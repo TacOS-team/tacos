@@ -1,0 +1,18 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$dirent_8h.html" title="Définition de DIR et struct dirent." alt="" coords="96,83,229,111"/>
+<area shape="rect" id="node9" href="$unistd_8h.html" title="libc/include/unistd.h" alt="" coords="719,83,855,111"/>
+<area shape="rect" id="node5" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="5,161,93,189"/>
+<area shape="rect" id="node7" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="117,161,208,189"/>
+<area shape="rect" id="node12" href="$fcntl_8c.html" title="File control operations." alt="" coords="955,161,1035,189"/>
+<area shape="rect" id="node14" href="$malloc_8c.html" title="libc/malloc.c" alt="" coords="1059,161,1152,189"/>
+<area shape="rect" id="node16" href="$process_8c.html" title="libc/process.c" alt="" coords="1176,161,1277,189"/>
+<area shape="rect" id="node18" href="$sem_8c.html" title="libc/sem.c" alt="" coords="1301,161,1381,189"/>
+<area shape="rect" id="node20" href="$signal_8c.html" title="Gestion des signaux." alt="" coords="1405,161,1496,189"/>
+<area shape="rect" id="node22" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="1520,161,1640,189"/>
+<area shape="rect" id="node24" href="$fseek_8c.html" title="libc/stdio/fseek.c" alt="" coords="232,161,352,189"/>
+<area shape="rect" id="node26" href="$get_8c.html" title="libc/stdio/get.c" alt="" coords="376,161,483,189"/>
+<area shape="rect" id="node28" href="$put_8c.html" title="libc/stdio/put.c" alt="" coords="507,161,613,189"/>
+<area shape="rect" id="node30" href="$stdlib_8c.html" title="libc/stdlib.c" alt="" coords="637,161,723,189"/>
+<area shape="rect" id="node32" href="$time_8c.html" title="libc/time.c" alt="" coords="747,161,827,189"/>
+<area shape="rect" id="node35" href="$wait_8c.html" title="libc/wait.c" alt="" coords="851,161,931,189"/>
+</map>

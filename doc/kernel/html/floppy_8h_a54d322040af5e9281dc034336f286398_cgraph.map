@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$floppy__utils_8c.html#a0e012dd33083ef16c714cda568627983" title="Envoi une commande au controleur floppy." alt="" coords="184,5,339,33"/>
+<area shape="rect" id="node7" href="$floppy__utils_8c.html#accc0dbdcd680cab9890db94a13067284" title="Lis les données disponibles sur la FIFO du controleur." alt="" coords="203,55,320,83"/>
+<area shape="rect" id="node5" href="$floppy__utils_8c.html#a1b528d56e03dda853060f541fa772847" title="Vérifie si le controleur floppy est en état ready." alt="" coords="387,30,480,58"/>
+</map>

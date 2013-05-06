@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="libc/fcntl.c" name="libc/fcntl.c">
 <area shape="rect" id="node5" href="$fcntl_8h.html" title="File control operations." alt="" coords="31,161,87,189"/>
 <area shape="rect" id="node9" href="$unistd_8h.html" title="unistd.h" alt="" coords="141,83,208,111"/>
 <area shape="rect" id="node25" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="232,83,328,111"/>

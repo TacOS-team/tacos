@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/include/ksignal.h" name="kernel/include/ksignal.h">
 <area shape="rect" id="node3" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="21,161,99,189"/>
 <area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="105,238,167,266"/>
 <area shape="rect" id="node7" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="608,161,712,189"/>
@@ -7,4 +7,5 @@
 <area shape="rect" id="node16" href="$process__types_8h.html" title="process_types.h" alt="" coords="469,161,584,189"/>
 <area shape="rect" id="node18" href="$symtable_8h.html" title="symtable.h" alt="" coords="259,161,341,189"/>
 <area shape="rect" id="node24" href="$vmm_8h.html" title="vmm.h" alt="" coords="173,161,235,189"/>
+<area shape="rect" id="node21" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="277,238,323,266"/>
 </map>

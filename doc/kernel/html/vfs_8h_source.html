@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de kernel/include/vfs.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">kernel/include/vfs.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="vfs_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00029"></a>00029 <span class="preprocessor">#ifndef _VFS_H_</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define _VFS_H_</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;<a class="code" href="types_8h.html">types.h</a>&gt;</span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;<a class="code" href="fd__types_8h.html">fd_types.h</a>&gt;</span>
+<a name="l00034"></a>00034 <span class="preprocessor">#include &lt;<a class="code" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier.">kstat.h</a>&gt;</span>
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="keyword">struct </span><a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">_fs_instance_t</a>;
+<a name="l00037"></a>00037 <span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a>;
+<a name="l00038"></a>00038 <span class="keyword">struct </span><a class="code" href="struct__inode__t.html">_inode_t</a>;
+<a name="l00039"></a>00039 <span class="keyword">struct </span><a class="code" href="struct__file__attributes__t.html">_file_attributes_t</a>;
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 
+<a name="l00045"></a><a class="code" href="structfile__system__t.html">00045</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+<a name="l00046"></a><a class="code" href="structfile__system__t.html#a2b7d7c0f769113d1164052beeeca777d">00046</a>         <span class="keywordtype">char</span> *<a class="code" href="structfile__system__t.html#a2b7d7c0f769113d1164052beeeca777d">name</a>;     
+<a name="l00047"></a>00047         <span class="comment">//XXX: ajouter device en argument de mount.</span>
+<a name="l00048"></a><a class="code" href="structfile__system__t.html#a7edaed95e6ac68991bbaac6cd07b458b">00048</a>         <span class="keyword">struct </span><a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">_fs_instance_t</a> * (*mount) (<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>*); 
+<a name="l00049"></a><a class="code" href="structfile__system__t.html#a899f34d838d88470373b60f7c5f0edd9">00049</a>         void (*umount) (<span class="keyword">struct </span><a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">_fs_instance_t</a> *); 
+<a name="l00050"></a>00050 } <a class="code" href="structfile__system__t.html" title="Structure qui représente un FS.">file_system_t</a>;
+<a name="l00051"></a>00051 
+<a name="l00055"></a><a class="code" href="struct__fs__instance__t.html">00055</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">_fs_instance_t</a> {
+<a name="l00056"></a><a class="code" href="struct__fs__instance__t.html#a209ef4e2ed00460eead263311373a974">00056</a>         <a class="code" href="structfile__system__t.html" title="Structure qui représente un FS.">file_system_t</a> *<a class="code" href="struct__fs__instance__t.html#a209ef4e2ed00460eead263311373a974">fs</a>;                                                       <span class="comment">//XXX: Est-ce utile ?</span>
+<a name="l00057"></a><a class="code" href="struct__fs__instance__t.html#acc3db122838752a84c6ecb93c3644256">00057</a>         <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * <a class="code" href="struct__fs__instance__t.html#acc3db122838752a84c6ecb93c3644256">device</a>;                                                                                                                                                                                                                  
+<a name="l00058"></a><a class="code" href="struct__fs__instance__t.html#af6891a9d9e5c2fd0458312fd8567213a">00058</a>         <span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a>* (*getroot) (<span class="keyword">struct </span><a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">_fs_instance_t</a> *); 
+<a name="l00059"></a><a class="code" href="struct__fs__instance__t.html#a820510562ecb31cbbf6b4fc8a4d2ce6a">00059</a>         <span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a>* (*lookup) (<span class="keyword">struct </span><a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">_fs_instance_t</a> *, <span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a>*, <span class="keyword">const</span> <span class="keywordtype">char</span> *); 
+<a name="l00060"></a><a class="code" href="struct__fs__instance__t.html#a693ff16b5d2119c50abd40a59f62cd66">00060</a>         <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * (*open) (<span class="keyword">struct </span><a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">_fs_instance_t</a> *, <span class="keyword">const</span> <span class="keywordtype">char</span> * , <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>);      
+<a name="l00061"></a><a class="code" href="struct__fs__instance__t.html#a705d100026840b619f217931dc8419f3">00061</a>         int (*<a class="code" href="struct__fs__instance__t.html#a705d100026840b619f217931dc8419f3">mkdir</a>) (<span class="keyword">struct </span><a class="code" href="struct__inode__t.html">_inode_t</a> *, <span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a> *, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>);                                                                                   
+<a name="l00062"></a><a class="code" href="struct__fs__instance__t.html#ae57436a3bfd6de530204a67a8ac2f4f0">00062</a>         int (*<a class="code" href="struct__fs__instance__t.html#ae57436a3bfd6de530204a67a8ac2f4f0">mknod</a>) (<span class="keyword">struct </span><a class="code" href="struct__inode__t.html">_inode_t</a> *, <span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a> *, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>, <a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a>);                                                            
+<a name="l00063"></a><a class="code" href="struct__fs__instance__t.html#a2c6e81a4cb02717c82587c1995947e56">00063</a>         int (*<a class="code" href="structstat.html" title="Informations sur un noeud.">stat</a>) (<span class="keyword">struct </span><a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">_fs_instance_t</a> *, <span class="keyword">const</span> <span class="keywordtype">char</span> *, <span class="keyword">struct </span><a class="code" href="structstat.html" title="Informations sur un noeud.">stat</a> *);                                                                     
+<a name="l00064"></a><a class="code" href="struct__fs__instance__t.html#a38cfd710b2d88ebb388059e90a406db6">00064</a>         int (*<a class="code" href="struct__fs__instance__t.html#a38cfd710b2d88ebb388059e90a406db6">unlink</a>) (<span class="keyword">struct </span><a class="code" href="struct__inode__t.html">_inode_t</a> *, <span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a> *);                                                                                                                  
+<a name="l00065"></a><a class="code" href="struct__fs__instance__t.html#a4ceb71ff00d0a5fda03aa644c4694bef">00065</a>         int (*<a class="code" href="struct__fs__instance__t.html#a4ceb71ff00d0a5fda03aa644c4694bef">rmdir</a>) (<span class="keyword">struct </span><a class="code" href="struct__inode__t.html">_inode_t</a> *, <span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a> *);                                                                                                                           
+<a name="l00066"></a><a class="code" href="struct__fs__instance__t.html#a02c8b56a14997bf58d8350a26e441954">00066</a>         int (*<a class="code" href="struct__fs__instance__t.html#a02c8b56a14997bf58d8350a26e441954">truncate</a>) (<span class="keyword">struct </span><a class="code" href="struct__inode__t.html">_inode_t</a> *, off_t size);        
+<a name="l00067"></a><a class="code" href="struct__fs__instance__t.html#ae76a7f1f9c4653baa497343bf26918a6">00067</a>         int (*<a class="code" href="struct__fs__instance__t.html#ae76a7f1f9c4653baa497343bf26918a6">setattr</a>) (<span class="keyword">struct </span><a class="code" href="struct__inode__t.html">_inode_t</a> *inode, <span class="keyword">struct </span><a class="code" href="struct__file__attributes__t.html">_file_attributes_t</a> *attr); 
+<a name="l00068"></a><a class="code" href="struct__fs__instance__t.html#a62e37513c47dda9d11e534cf84d6f48b">00068</a>         int (*<a class="code" href="struct__fs__instance__t.html#a62e37513c47dda9d11e534cf84d6f48b">rename</a>) (<span class="keyword">struct </span><a class="code" href="struct__inode__t.html">_inode_t</a> *old_dir, <span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a> *old_dentry, <span class="keyword">struct </span><a class="code" href="struct__inode__t.html">_inode_t</a> *new_dir, <span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a> *new_dentry); 
+<a name="l00069"></a>00069 } <a class="code" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a>;
+<a name="l00070"></a>00070 
+<a name="l00074"></a><a class="code" href="struct__mounted__fs__t.html">00074</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__mounted__fs__t.html">_mounted_fs_t</a> {
+<a name="l00075"></a><a class="code" href="struct__mounted__fs__t.html#a81752bb01c13d0edca51b944ee2c53a8">00075</a>         <a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *<a class="code" href="struct__mounted__fs__t.html#a81752bb01c13d0edca51b944ee2c53a8">instance</a>; 
+<a name="l00076"></a><a class="code" href="struct__mounted__fs__t.html#a334bde8995efec727b127e7a161398a5">00076</a>         <span class="keywordtype">char</span> *<a class="code" href="struct__mounted__fs__t.html#a334bde8995efec727b127e7a161398a5">name</a>; 
+<a name="l00077"></a><a class="code" href="struct__mounted__fs__t.html#af0751160c22589b18daa3ed6e775aeb8">00077</a>         <span class="keyword">struct </span><a class="code" href="struct__mounted__fs__t.html">_mounted_fs_t</a> *<a class="code" href="struct__mounted__fs__t.html#af0751160c22589b18daa3ed6e775aeb8">next</a>; 
+<a name="l00078"></a>00078 } <a class="code" href="vfs_8h.html#ab4e925860df7937f38b15433bb05225a">mounted_fs_t</a>;
+<a name="l00079"></a>00079 
+<a name="l00083"></a><a class="code" href="struct__inode__t.html">00083</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__inode__t.html">_inode_t</a> {
+<a name="l00084"></a><a class="code" href="struct__inode__t.html#aba602b843ba63a32ca3950dbaf7e959c">00084</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="struct__inode__t.html#aba602b843ba63a32ca3950dbaf7e959c">i_ino</a>; 
+<a name="l00085"></a><a class="code" href="struct__inode__t.html#acead4732b6c22ef17ada59203509e728">00085</a>         <span class="keywordtype">int</span>  <a class="code" href="struct__inode__t.html#acead4732b6c22ef17ada59203509e728">i_mode</a>;   
+<a name="l00086"></a><a class="code" href="struct__inode__t.html#a7ddcb65050ac0b4c9cfbacd495d56f4b">00086</a>         <a class="code" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a>  <a class="code" href="struct__inode__t.html#a7ddcb65050ac0b4c9cfbacd495d56f4b">i_uid</a>;    
+<a name="l00087"></a><a class="code" href="struct__inode__t.html#a95d052a6e9b1b1e4f6837fa0f33b393e">00087</a>         <a class="code" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a>  <a class="code" href="struct__inode__t.html#a95d052a6e9b1b1e4f6837fa0f33b393e">i_gid</a>;    
+<a name="l00088"></a><a class="code" href="struct__inode__t.html#aed37b31c96c90873201abfc8b4b3e463">00088</a>         off_t  <a class="code" href="struct__inode__t.html#aed37b31c96c90873201abfc8b4b3e463">i_size</a>;   
+<a name="l00089"></a><a class="code" href="struct__inode__t.html#a01f50c6c44a3b50e4414a794643b741f">00089</a>         time_t  <a class="code" href="struct__inode__t.html#a01f50c6c44a3b50e4414a794643b741f">i_atime</a>;  
+<a name="l00090"></a><a class="code" href="struct__inode__t.html#a73ee1e604547b74b8e1045fd4f6699b6">00090</a>         time_t  <a class="code" href="struct__inode__t.html#a73ee1e604547b74b8e1045fd4f6699b6">i_ctime</a>;  
+<a name="l00091"></a><a class="code" href="struct__inode__t.html#a331d724391efce2f89aeb1a503ae5c43">00091</a>         time_t  <a class="code" href="struct__inode__t.html#a331d724391efce2f89aeb1a503ae5c43">i_mtime</a>;  
+<a name="l00092"></a><a class="code" href="struct__inode__t.html#a393de4c58241168fdf397ab8421a3539">00092</a>         time_t  <a class="code" href="struct__inode__t.html#a393de4c58241168fdf397ab8421a3539">i_dtime</a>;  
+<a name="l00093"></a><a class="code" href="struct__inode__t.html#a929fc1e6837d02a2525027a121b4e67e">00093</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>  <a class="code" href="struct__inode__t.html#a929fc1e6837d02a2525027a121b4e67e">i_nlink</a>;  
+<a name="l00094"></a><a class="code" href="struct__inode__t.html#a36ff48a57a9e483d74682972d31ef46c">00094</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>  <a class="code" href="struct__inode__t.html#a36ff48a57a9e483d74682972d31ef46c">i_flags</a>;  
+<a name="l00095"></a><a class="code" href="struct__inode__t.html#a92ebe4c1e93af9fba4efae4d07e14858">00095</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>  <a class="code" href="struct__inode__t.html#a92ebe4c1e93af9fba4efae4d07e14858">i_blocks</a>; 
+<a name="l00096"></a><a class="code" href="struct__inode__t.html#affefc88b22f45e2ec8340d582486d0f2">00096</a>         <a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a> *<a class="code" href="struct__inode__t.html#affefc88b22f45e2ec8340d582486d0f2">i_instance</a>; 
+<a name="l00097"></a>00097 <span class="comment">//      inode_ops_t *i_ops; /**&lt; Inode operations. */</span>
+<a name="l00098"></a><a class="code" href="struct__inode__t.html#acf149d7d1601f78142b1eec480badf7e">00098</a>         <span class="keyword">struct </span><a class="code" href="struct__open__file__operations__t.html">_open_file_operations_t</a> *<a class="code" href="struct__inode__t.html#acf149d7d1601f78142b1eec480badf7e">i_fops</a>; 
+<a name="l00099"></a><a class="code" href="struct__inode__t.html#a54e34439c448c46bae90fd040dadc5c0">00099</a>         <span class="keywordtype">void</span> *<a class="code" href="struct__inode__t.html#a54e34439c448c46bae90fd040dadc5c0">i_fs_specific</a>; 
+<a name="l00100"></a>00100 } <a class="code" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a>;
+<a name="l00101"></a>00101 
+<a name="l00105"></a><a class="code" href="struct__dentry__t.html">00105</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a> {
+<a name="l00106"></a><a class="code" href="struct__dentry__t.html#ac9b991f6f5d5c5ce60e8d256d667265e">00106</a>         <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="struct__dentry__t.html#ac9b991f6f5d5c5ce60e8d256d667265e">d_name</a>; 
+<a name="l00107"></a><a class="code" href="struct__dentry__t.html#ac711731a0c08b35b5d2731b8545c7454">00107</a>         <a class="code" href="struct__inode__t.html">inode_t</a> *<a class="code" href="struct__dentry__t.html#ac711731a0c08b35b5d2731b8545c7454">d_inode</a>; 
+<a name="l00108"></a>00108 } <a class="code" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a>;
+<a name="l00109"></a>00109 
+<a name="l00113"></a><a class="code" href="structnameidata.html">00113</a> <span class="keyword">struct </span><a class="code" href="structnameidata.html">nameidata</a> {
+<a name="l00114"></a><a class="code" href="structnameidata.html#a9064ec2b4dd712691e3c7442e48ce798">00114</a>         <span class="keywordtype">int</span> <a class="code" href="structnameidata.html#a9064ec2b4dd712691e3c7442e48ce798">flags</a>; 
+<a name="l00115"></a><a class="code" href="structnameidata.html#a19b1de01d7a6f689707fa7079cb54d7c">00115</a>         <a class="code" href="struct__dentry__t.html">dentry_t</a> *<a class="code" href="structnameidata.html#a19b1de01d7a6f689707fa7079cb54d7c">dentry</a>; 
+<a name="l00116"></a><a class="code" href="structnameidata.html#a5488ed23ef4b37b431921f71b15e1f19">00116</a>         <a class="code" href="struct__mounted__fs__t.html">mounted_fs_t</a> *<a class="code" href="structnameidata.html#a5488ed23ef4b37b431921f71b15e1f19">mnt</a>; 
+<a name="l00117"></a><a class="code" href="structnameidata.html#a4a11e098a53839c36c2a0a4e732f8037">00117</a>         <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structnameidata.html#a4a11e098a53839c36c2a0a4e732f8037">last</a>; 
+<a name="l00118"></a>00118 };
+<a name="l00119"></a>00119 
+<a name="l00120"></a><a class="code" href="vfs_8h.html#a6c2c5ed9cf50c5861d70238652fa5813">00120</a> <span class="preprocessor">#define ATTR_UID 1 </span>
+<a name="l00121"></a><a class="code" href="vfs_8h.html#a2f67637725e6855425902256f49d698d">00121</a> <span class="preprocessor">#define ATTR_GID (1 &lt;&lt; 1) </span>
+<a name="l00122"></a><a class="code" href="vfs_8h.html#a3c725d4542bb23bf54f3ec8efac86153">00122</a> <span class="preprocessor">#define ATTR_MODE (1 &lt;&lt; 2) </span>
+<a name="l00123"></a><a class="code" href="vfs_8h.html#abf6532914d5888f0900e1bd2249af18a">00123</a> <span class="preprocessor">#define ATTR_ATIME (1 &lt;&lt; 3) </span>
+<a name="l00124"></a><a class="code" href="vfs_8h.html#abf6b0439264862baba53428f252e5c9a">00124</a> <span class="preprocessor">#define ATTR_MTIME (1 &lt;&lt; 4) </span>
+<a name="l00125"></a><a class="code" href="vfs_8h.html#ad73c3749e48d6fde948428c4e1838bac">00125</a> <span class="preprocessor">#define ATTR_CTIME (1 &lt;&lt; 5) </span>
+<a name="l00130"></a><a class="code" href="struct__file__attributes__t.html">00130</a> <span class="preprocessor">typedef struct _file_attributes_t {</span>
+<a name="l00131"></a><a class="code" href="struct__file__attributes__t.html#a51072887a2d07ba9e5566cef453c3707">00131</a> <span class="preprocessor"></span>        <span class="keywordtype">int</span> <a class="code" href="struct__file__attributes__t.html#a51072887a2d07ba9e5566cef453c3707">mask</a>; 
+<a name="l00132"></a><a class="code" href="struct__file__attributes__t.html#aa42b25ef9e64509420c287ab6b60c8a8">00132</a>         <span class="keyword">struct </span><a class="code" href="structstat.html" title="Informations sur un noeud.">stat</a> stbuf; 
+<a name="l00133"></a>00133 } <a class="code" href="vfs_8h.html#a4ad5156f3f4319159c4e28e8787713f1">file_attributes_t</a>;
+<a name="l00134"></a>00134 
+<a name="l00138"></a>00138 <span class="keywordtype">void</span> <a class="code" href="vfs_8h.html#ab2237a3610010d8a211ef3d55a521dba" title="Enregistrer un FS dans le VFS pour le rendre disponible.">vfs_register_fs</a>(<a class="code" href="structfile__system__t.html" title="Structure qui représente un FS.">file_system_t</a> *fs);
+<a name="l00139"></a>00139 
+<a name="l00148"></a>00148 <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>* <a class="code" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier.">vfs_open</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * pathname, <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags);
+<a name="l00149"></a>00149 
+<a name="l00157"></a>00157 <span class="keywordtype">void</span> <a class="code" href="vfs_8h.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage.">vfs_mount</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *device, <span class="keyword">const</span> <span class="keywordtype">char</span> *mountpoint, <span class="keyword">const</span> <span class="keywordtype">char</span> *type);
+<a name="l00158"></a>00158 
+<a name="l00166"></a>00166 <span class="keywordtype">int</span> <a class="code" href="vfs_8h.html#a69a4424755e56bad13f341c1600db527" title="Démonte un point de montage.">vfs_umount</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *mountpoint);
+<a name="l00167"></a>00167 
+<a name="l00176"></a>00176 <span class="keywordtype">int</span> <a class="code" href="vfs_8h.html#a392f80d5c4ab48178abcd268c3f64c45" title="Création d&#39;un dossier.">vfs_mkdir</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * pathname, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>);
+<a name="l00177"></a>00177 
+<a name="l00186"></a>00186 <span class="keywordtype">int</span> <a class="code" href="vfs_8h.html#a67e1b452e79d57b6080feb5e1d320234" title="Obtient des infos sur un noeud.">vfs_stat</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <span class="keyword">struct</span> <a class="code" href="structstat.html" title="Informations sur un noeud.">stat</a> * stbuf);
+<a name="l00187"></a>00187 
+<a name="l00195"></a>00195 <span class="keywordtype">int</span> <a class="code" href="vfs_8h.html#a4f8b6a1f2b0e6012446196f18b33d686" title="Suppression d&#39;un noeud.">vfs_unlink</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname);
+<a name="l00196"></a>00196 
+<a name="l00206"></a>00206 <span class="keywordtype">int</span> <a class="code" href="vfs_8h.html#addbdd0f5a70a3babbcb5ca4d63e2c3fd" title="Création d&#39;un nouveau noeud.">vfs_mknod</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * path, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>, <a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a> dev);
+<a name="l00207"></a>00207 
+<a name="l00216"></a>00216 <span class="keywordtype">int</span> <a class="code" href="vfs_8h.html#ace33cd3f034512a44e787d384053d014" title="Change les droits d&#39;un noeud.">vfs_chmod</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>);
+<a name="l00217"></a>00217 
+<a name="l00227"></a>00227 <span class="keywordtype">int</span> <a class="code" href="vfs_8h.html#ad548e6ff795e606e8f1825a7a45e5157" title="Change le propriétaire d&#39;un noeud.">vfs_chown</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <a class="code" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a> owner, <a class="code" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a> group);
+<a name="l00228"></a>00228 
+<a name="l00237"></a>00237 <span class="keywordtype">int</span> <a class="code" href="vfs_8h.html#aa536fea0b394849df5d127410b5b4f19" title="Modifie la date d&#39;accès et de modification d&#39;un fichier.">vfs_utimes</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structtimeval.html">timeval</a> tv[2]);
+<a name="l00238"></a>00238 
+<a name="l00247"></a>00247 <span class="keywordtype">int</span> <a class="code" href="vfs_8h.html#a64ef66712e6c30f0295e1e1cad601beb" title="Renomme ou déplace un fichier.">vfs_rename</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *oldpath, <span class="keyword">const</span> <span class="keywordtype">char</span> *newpath);
+<a name="l00248"></a>00248 
+<a name="l00256"></a>00256 <span class="keywordtype">int</span> <a class="code" href="vfs_8h.html#a8f5dc4e5e4a2aa5d7649790256f11685" title="Suppression d&#39;un dossier.">vfs_rmdir</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname);
+<a name="l00257"></a>00257 
+<a name="l00267"></a>00267 <span class="keywordtype">int</span> <a class="code" href="vfs_8h.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier.">vfs_readdir</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> * ofd, <span class="keywordtype">char</span> * entries, <span class="keywordtype">size_t</span> size);
+<a name="l00268"></a>00268 
+<a name="l00276"></a>00276 <span class="keywordtype">int</span> <a class="code" href="vfs_8h.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert.">vfs_close</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd);
+<a name="l00277"></a>00277 
+<a name="l00281"></a>00281 <span class="keywordtype">void</span> <a class="code" href="vfs_8h.html#a2e2b9554ca8721b61981dff16a7b54ad">vfs_init</a>();
+<a name="l00282"></a>00282 
+<a name="l00283"></a>00283 <span class="preprocessor">#endif</span>
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juillet 8 2012 15:18:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

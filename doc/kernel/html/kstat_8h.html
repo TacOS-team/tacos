@@ -1,0 +1,487 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/include/kstat.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier kernel/include/kstat.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Manipulation des caractéristiques d'un fichier.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;<a class="el" href="types_8h_source.html">types.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="clock_8h_source.html">clock.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de kstat.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="kstat_8h__incl.png" border="0" usemap="#kernel_2include_2kstat_8h" alt=""/></div>
+<map name="kernel_2include_2kstat_8h" id="kernel_2include_2kstat_8h">
+<area shape="rect" id="node3" href="types_8h.html" title="types.h" alt="" coords="64,238,125,266"/><area shape="rect" id="node5" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="81,83,143,111"/><area shape="rect" id="node8" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="132,161,209,189"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="kstat_8h__dep__incl.png" border="0" usemap="#kernel_2include_2kstat_8hdep" alt=""/></div>
+<map name="kernel_2include_2kstat_8hdep" id="kernel_2include_2kstat_8hdep">
+<area shape="rect" id="node3" href="fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="49,161,196,189"/><area shape="rect" id="node13" href="kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="254,83,409,111"/><area shape="rect" id="node24" href="kunistd_8h.html" title="Principales fonctions de l&#39;API POSIX (read, write, seek, stat...)" alt="" coords="1625,83,1782,111"/><area shape="rect" id="node31" href="vfs_8h.html" title="Virtual File System." alt="" coords="760,83,893,111"/><area shape="rect" id="node5" href="fat_8c.html" title="Driver FAT." alt="" coords="230,238,350,266"/><area shape="rect" id="node7" href="fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="26,393,205,421"/><area shape="rect" id="node9" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="777,238,884,266"/><area shape="rect" id="node11" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="118,238,206,266"/><area shape="rect" id="node15" href="devfs_8c.html" title="DevFS." alt="" coords="550,161,668,189"/><area shape="rect" id="node18" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="270,161,393,189"/><area shape="rect" id="node20" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="417,161,526,189"/><area shape="rect" id="node27" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="1580,161,1692,189"/><area shape="rect" id="node29" href="module_8c.html" title="kernel/module.c" alt="" coords="1716,161,1828,189"/><area shape="rect" id="node34" href="ext2__internal_8h.html" title="kernel/fs/ext2/ext2_internal.h" alt="" coords="1369,161,1556,189"/><area shape="rect" id="node38" href="fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="742,161,910,189"/><area shape="rect" id="node50" href="ext2_8h.html" title="Driver Ext2." alt="" coords="1190,161,1345,189"/><area shape="rect" id="node58" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="934,161,1036,189"/><area shape="rect" id="node60" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1060,161,1166,189"/><area shape="rect" id="node36" href="ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="1392,238,1530,266"/><area shape="rect" id="node41" href="fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="374,238,532,266"/><area shape="rect" id="node44" href="fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="369,315,537,343"/><area shape="rect" id="node47" href="fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="188,315,345,343"/><area shape="rect" id="node53" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2_functions.c" alt="" coords="1169,238,1366,266"/></map>
+</div>
+</div>
+<p><a href="kstat_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstat.html">stat</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Informations sur un noeud.  <a href="structstat.html#details">Plus de détails...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>&#160;&#160;&#160;0170000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#a28e80cd43106882904be148b2a397d42">S_IFSOCK</a>&#160;&#160;&#160;0140000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#afef163ce62372757e84bd9fc88c07aad">S_IFLNK</a>&#160;&#160;&#160;0120000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#a1aaa48b192a5dd3b6d7ee91fc98cd17d">S_IFREG</a>&#160;&#160;&#160;0100000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#a5c5b74a1cb1a1ae83572500b94e1938f">S_IFBLK</a>&#160;&#160;&#160;0060000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#a11fb0652b963a735f3377eb1c9239f2d">S_IFDIR</a>&#160;&#160;&#160;0040000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#aef3a1d1ba22c83e30b5c834dd343b2a8">S_IFCHR</a>&#160;&#160;&#160;0020000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#a4966f25d9f03a7a06bc47ac729fd86cf">S_IFIFO</a>&#160;&#160;&#160;0010000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#a722eba7370eb3b0aafb3272182e08520">S_ISBLK</a>(m)&#160;&#160;&#160;(((m) &amp; <a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>) == <a class="el" href="kstat_8h.html#a5c5b74a1cb1a1ae83572500b94e1938f">S_IFBLK</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#a767b5d0691f435f8a9b7f5e0fa97a645">S_ISCHR</a>(m)&#160;&#160;&#160;(((m) &amp; <a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>) == <a class="el" href="kstat_8h.html#aef3a1d1ba22c83e30b5c834dd343b2a8">S_IFCHR</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#a70b64ed67c0ab484b4ba09487da34e91">S_ISDIR</a>(m)&#160;&#160;&#160;(((m) &amp; <a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>) == <a class="el" href="kstat_8h.html#a11fb0652b963a735f3377eb1c9239f2d">S_IFDIR</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#a777b706bbe9e7920c091aaa2b547b093">S_ISFIFO</a>(m)&#160;&#160;&#160;(((m) &amp; <a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>) == <a class="el" href="kstat_8h.html#a4966f25d9f03a7a06bc47ac729fd86cf">S_IFIFO</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#a835359614ec43fbd96f53993cde84ef2">S_ISLNK</a>(m)&#160;&#160;&#160;(((m) &amp; <a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>) == <a class="el" href="kstat_8h.html#afef163ce62372757e84bd9fc88c07aad">S_IFLNK</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#abf68371159fa46b5cc47d0f3ac9ab723">S_ISREG</a>(m)&#160;&#160;&#160;(((m) &amp; <a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>) == <a class="el" href="kstat_8h.html#a1aaa48b192a5dd3b6d7ee91fc98cd17d">S_IFREG</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#a765304585be8c05f7fa72495e6d5881f">S_ISSOCK</a>(m)&#160;&#160;&#160;(((m) &amp; <a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>) == <a class="el" href="kstat_8h.html#a28e80cd43106882904be148b2a397d42">S_IFSOCK</a>)</td></tr>
+<tr><td colspan="2"><h2><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e3c03dae15b90102eb1770dd95adadc"></a><!-- doxytag: member="kstat.h::nlink_t" ref="a9e3c03dae15b90102eb1770dd95adadc" args="" -->
+typedef <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>nlink_t</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a390f3028d0805a15c3d28ee27439c389"></a><!-- doxytag: member="kstat.h::blksize_t" ref="a390f3028d0805a15c3d28ee27439c389" args="" -->
+typedef <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>blksize_t</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2706f994576080967d7633282dfcabbf"></a><!-- doxytag: member="kstat.h::blkcnt_t" ref="a2706f994576080967d7633282dfcabbf" args="" -->
+typedef <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>blkcnt_t</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kstat_8h.html#aed4e918b44240739869c4bdb1c4787a9">ino_t</a></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+</div><hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="a5c5b74a1cb1a1ae83572500b94e1938f"></a><!-- doxytag: member="kstat.h::S_IFBLK" ref="a5c5b74a1cb1a1ae83572500b94e1938f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="kstat_8h.html#a5c5b74a1cb1a1ae83572500b94e1938f">S_IFBLK</a>&#160;&#160;&#160;0060000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Block device. </p>
+
+</div>
+</div>
+<a class="anchor" id="aef3a1d1ba22c83e30b5c834dd343b2a8"></a><!-- doxytag: member="kstat.h::S_IFCHR" ref="aef3a1d1ba22c83e30b5c834dd343b2a8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="kstat_8h.html#aef3a1d1ba22c83e30b5c834dd343b2a8">S_IFCHR</a>&#160;&#160;&#160;0020000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Character device. </p>
+
+</div>
+</div>
+<a class="anchor" id="a11fb0652b963a735f3377eb1c9239f2d"></a><!-- doxytag: member="kstat.h::S_IFDIR" ref="a11fb0652b963a735f3377eb1c9239f2d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="kstat_8h.html#a11fb0652b963a735f3377eb1c9239f2d">S_IFDIR</a>&#160;&#160;&#160;0040000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Directory. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4966f25d9f03a7a06bc47ac729fd86cf"></a><!-- doxytag: member="kstat.h::S_IFIFO" ref="a4966f25d9f03a7a06bc47ac729fd86cf" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="kstat_8h.html#a4966f25d9f03a7a06bc47ac729fd86cf">S_IFIFO</a>&#160;&#160;&#160;0010000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>FIFO. </p>
+
+</div>
+</div>
+<a class="anchor" id="afef163ce62372757e84bd9fc88c07aad"></a><!-- doxytag: member="kstat.h::S_IFLNK" ref="afef163ce62372757e84bd9fc88c07aad" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="kstat_8h.html#afef163ce62372757e84bd9fc88c07aad">S_IFLNK</a>&#160;&#160;&#160;0120000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Symbolic link. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab5bee51e9ee68b83ab11d4b340f7200b"></a><!-- doxytag: member="kstat.h::S_IFMT" ref="ab5bee51e9ee68b83ab11d4b340f7200b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>&#160;&#160;&#160;0170000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>These bits determine file type. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1aaa48b192a5dd3b6d7ee91fc98cd17d"></a><!-- doxytag: member="kstat.h::S_IFREG" ref="a1aaa48b192a5dd3b6d7ee91fc98cd17d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="kstat_8h.html#a1aaa48b192a5dd3b6d7ee91fc98cd17d">S_IFREG</a>&#160;&#160;&#160;0100000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Regular file. </p>
+
+</div>
+</div>
+<a class="anchor" id="a28e80cd43106882904be148b2a397d42"></a><!-- doxytag: member="kstat.h::S_IFSOCK" ref="a28e80cd43106882904be148b2a397d42" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="kstat_8h.html#a28e80cd43106882904be148b2a397d42">S_IFSOCK</a>&#160;&#160;&#160;0140000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Socket. </p>
+
+</div>
+</div>
+<a class="anchor" id="a722eba7370eb3b0aafb3272182e08520"></a><!-- doxytag: member="kstat.h::S_ISBLK" ref="a722eba7370eb3b0aafb3272182e08520" args="(m)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="kstat_8h.html#a722eba7370eb3b0aafb3272182e08520">S_ISBLK</a></td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">m</td><td>)</td>
+          <td>&#160;&#160;&#160;(((m) &amp; <a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>) == <a class="el" href="kstat_8h.html#a5c5b74a1cb1a1ae83572500b94e1938f">S_IFBLK</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Is block device special file. </p>
+
+</div>
+</div>
+<a class="anchor" id="a767b5d0691f435f8a9b7f5e0fa97a645"></a><!-- doxytag: member="kstat.h::S_ISCHR" ref="a767b5d0691f435f8a9b7f5e0fa97a645" args="(m)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="kstat_8h.html#a767b5d0691f435f8a9b7f5e0fa97a645">S_ISCHR</a></td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">m</td><td>)</td>
+          <td>&#160;&#160;&#160;(((m) &amp; <a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>) == <a class="el" href="kstat_8h.html#aef3a1d1ba22c83e30b5c834dd343b2a8">S_IFCHR</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Is char device special file. </p>
+
+</div>
+</div>
+<a class="anchor" id="a70b64ed67c0ab484b4ba09487da34e91"></a><!-- doxytag: member="kstat.h::S_ISDIR" ref="a70b64ed67c0ab484b4ba09487da34e91" args="(m)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="kstat_8h.html#a70b64ed67c0ab484b4ba09487da34e91">S_ISDIR</a></td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">m</td><td>)</td>
+          <td>&#160;&#160;&#160;(((m) &amp; <a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>) == <a class="el" href="kstat_8h.html#a11fb0652b963a735f3377eb1c9239f2d">S_IFDIR</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Is a directory. </p>
+
+</div>
+</div>
+<a class="anchor" id="a777b706bbe9e7920c091aaa2b547b093"></a><!-- doxytag: member="kstat.h::S_ISFIFO" ref="a777b706bbe9e7920c091aaa2b547b093" args="(m)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="kstat_8h.html#a777b706bbe9e7920c091aaa2b547b093">S_ISFIFO</a></td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">m</td><td>)</td>
+          <td>&#160;&#160;&#160;(((m) &amp; <a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>) == <a class="el" href="kstat_8h.html#a4966f25d9f03a7a06bc47ac729fd86cf">S_IFIFO</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Is a FIFO. </p>
+
+</div>
+</div>
+<a class="anchor" id="a835359614ec43fbd96f53993cde84ef2"></a><!-- doxytag: member="kstat.h::S_ISLNK" ref="a835359614ec43fbd96f53993cde84ef2" args="(m)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="kstat_8h.html#a835359614ec43fbd96f53993cde84ef2">S_ISLNK</a></td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">m</td><td>)</td>
+          <td>&#160;&#160;&#160;(((m) &amp; <a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>) == <a class="el" href="kstat_8h.html#afef163ce62372757e84bd9fc88c07aad">S_IFLNK</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Is a link. </p>
+
+</div>
+</div>
+<a class="anchor" id="abf68371159fa46b5cc47d0f3ac9ab723"></a><!-- doxytag: member="kstat.h::S_ISREG" ref="abf68371159fa46b5cc47d0f3ac9ab723" args="(m)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="kstat_8h.html#abf68371159fa46b5cc47d0f3ac9ab723">S_ISREG</a></td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">m</td><td>)</td>
+          <td>&#160;&#160;&#160;(((m) &amp; <a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>) == <a class="el" href="kstat_8h.html#a1aaa48b192a5dd3b6d7ee91fc98cd17d">S_IFREG</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Is a regular file. </p>
+
+</div>
+</div>
+<a class="anchor" id="a765304585be8c05f7fa72495e6d5881f"></a><!-- doxytag: member="kstat.h::S_ISSOCK" ref="a765304585be8c05f7fa72495e6d5881f" args="(m)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="kstat_8h.html#a765304585be8c05f7fa72495e6d5881f">S_ISSOCK</a></td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">m</td><td>)</td>
+          <td>&#160;&#160;&#160;(((m) &amp; <a class="el" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">S_IFMT</a>) == <a class="el" href="kstat_8h.html#a28e80cd43106882904be148b2a397d42">S_IFSOCK</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Is a socket. </p>
+
+</div>
+</div>
+<hr/><h2>Documentation des définitions de type</h2>
+<a class="anchor" id="a451f1b5788fa7cc5d33db47a5992e7a6"></a><!-- doxytag: member="kstat.h::dev_t" ref="a451f1b5788fa7cc5d33db47a5992e7a6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="el" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Si c'est un fichier spécial, c'est le numéro du device. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa7352f1065fe606194d792e2b292cf83"></a><!-- doxytag: member="kstat.h::gid_t" ref="aa7352f1065fe606194d792e2b292cf83" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="el" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Group id du owner du fichier. </p>
+
+</div>
+</div>
+<a class="anchor" id="aed4e918b44240739869c4bdb1c4787a9"></a><!-- doxytag: member="kstat.h::ino_t" ref="aed4e918b44240739869c4bdb1c4787a9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="el" href="kstat_8h.html#aed4e918b44240739869c4bdb1c4787a9">ino_t</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Numéro d'inode. </p>
+
+</div>
+</div>
+<a class="anchor" id="af8f4385bb42836d1e3ad4fea9d71d1b9"></a><!-- doxytag: member="kstat.h::mode_t" ref="af8f4385bb42836d1e3ad4fea9d71d1b9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Mode d'accès d'un fichier (rwx...) et type. </p>
+
+</div>
+</div>
+<a class="anchor" id="af2306308627701b66dc6f3babe821ab4"></a><!-- doxytag: member="kstat.h::uid_t" ref="af2306308627701b66dc6f3babe821ab4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="el" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>User id du owner du fichier. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juillet 8 2012 15:18:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

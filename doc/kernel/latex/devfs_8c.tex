@@ -1,0 +1,167 @@
+\hypertarget{devfs_8c}{\section{\-Référence du fichier kernel/fs/devfs.c}
+\label{devfs_8c}\index{kernel/fs/devfs.\-c@{kernel/fs/devfs.\-c}}
+}
+
+
+\-Dev\-F\-S.  
+
+
+{\ttfamily \#include $<$fs/devfs.\-h$>$}\*
+{\ttfamily \#include $<$kdirent.\-h$>$}\*
+{\ttfamily \#include $<$klibc/string.\-h$>$}\*
+{\ttfamily \#include $<$klog.\-h$>$}\*
+{\ttfamily \#include $<$kmalloc.\-h$>$}\*
+{\ttfamily \#include $<$kerrno.\-h$>$}\*
+{\ttfamily \#include $<$types.\-h$>$}\*
+{\ttfamily \#include $<$vfs.\-h$>$}\*
+\-Graphe des dépendances par inclusion de devfs.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{devfs_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structdriver__entry}{driver\-\_\-entry}
+\end{DoxyCompactItemize}
+\subsection*{\-Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{devfs_8c_ac2ee6026a11a2d8472c29fed769c7e9f}{\-M\-A\-X\-\_\-\-D\-R\-I\-V\-E\-R\-S}~64
+\end{DoxyCompactItemize}
+\subsection*{\-Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{devfs_8c_a1279d0621da67d0065d99077517d197a}{void \hyperlink{devfs_8c_a1279d0621da67d0065d99077517d197a}{init\-\_\-driver\-\_\-list} ()}\label{devfs_8c_a1279d0621da67d0065d99077517d197a}
+
+\begin{DoxyCompactList}\small\item\em \-Initialise la liste des drivers. \-Initialise la liste des drivers. \end{DoxyCompactList}\item 
+\hyperlink{structdriver__entry}{driver\-\_\-entry} $\ast$ \hyperlink{devfs_8c_a38f6fa048d759685554ab60cae2fb250}{find\-\_\-driver} (const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em \-Trouve les interfaces d'un driver en fonction de son nom. \end{DoxyCompactList}\item 
+int \hyperlink{devfs_8c_acf0abbf4b629aa36d142733e27eaf6e6}{register\-\_\-chardev} (const char $\ast$name, \hyperlink{structchardev__interfaces}{chardev\-\_\-interfaces} $\ast$di)
+\begin{DoxyCompactList}\small\item\em \-Enregistre le chardev dans la liste. \end{DoxyCompactList}\item 
+int \hyperlink{devfs_8c_a3ad133a010648db1c6df6f7d00cf8d77}{register\-\_\-blkdev} (const char $\ast$name, \hyperlink{structblkdev__interfaces}{blkdev\-\_\-interfaces} $\ast$di)
+\begin{DoxyCompactList}\small\item\em \-Enregistre le blkdev dans la liste. \end{DoxyCompactList}\item 
+\hypertarget{devfs_8c_aa344febc9fb7514ffeda44bdb33f7cb0}{\hyperlink{vfs_8h_a0eefa9aac35a5462ebf1e038992ca860}{fs\-\_\-instance\-\_\-t} $\ast$ {\bfseries mount\-\_\-devfs} ()}\label{devfs_8c_aa344febc9fb7514ffeda44bdb33f7cb0}
+
+\item 
+\hypertarget{devfs_8c_a7b8bad319a6c5ea697f2cba123a84614}{void {\bfseries umount\-\_\-devfs} (\hyperlink{vfs_8h_a0eefa9aac35a5462ebf1e038992ca860}{fs\-\_\-instance\-\_\-t} $\ast$instance)}\label{devfs_8c_a7b8bad319a6c5ea697f2cba123a84614}
+
+\item 
+\hypertarget{devfs_8c_ac01eef8358c344396a59f06531a5dcb4}{void {\bfseries devfs\-\_\-init} ()}\label{devfs_8c_ac01eef8358c344396a59f06531a5dcb4}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Description détaillée}
+\begin{DoxyAuthor}{\-Auteur}
+\-Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{\-L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+\-Copyright (\-C) 2010, 2011, 2012 -\/ \-Tac\-O\-S developers.
+
+\-This program is free software; you can redistribute it and/or modify it under the terms of the \-G\-N\-U \-General \-Public \-License as published by the \-Free \-Software \-Foundation; either version 3 of the \-License, or (at your option) any later version.
+
+\-This program is distributed in the hope that it will be useful, but \-W\-I\-T\-H\-O\-U\-T \-A\-N\-Y \-W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of \-M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or \-F\-I\-T\-N\-E\-S\-S \-F\-O\-R \-A \-P\-A\-R\-T\-I\-C\-U\-L\-A\-R \-P\-U\-R\-P\-O\-S\-E. \-See the \-G\-N\-U \-General \-Public \-License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+\-You should have received a copy of the \-G\-N\-U \-General \-Public \-License along with this program; if not, see $<$\href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}$>$.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{\-D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+
+
+\subsection{\-Documentation des macros}
+\hypertarget{devfs_8c_ac2ee6026a11a2d8472c29fed769c7e9f}{\index{devfs.\-c@{devfs.\-c}!\-M\-A\-X\-\_\-\-D\-R\-I\-V\-E\-R\-S@{\-M\-A\-X\-\_\-\-D\-R\-I\-V\-E\-R\-S}}
+\index{\-M\-A\-X\-\_\-\-D\-R\-I\-V\-E\-R\-S@{\-M\-A\-X\-\_\-\-D\-R\-I\-V\-E\-R\-S}!devfs.c@{devfs.\-c}}
+\subsubsection[{\-M\-A\-X\-\_\-\-D\-R\-I\-V\-E\-R\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-M\-A\-X\-\_\-\-D\-R\-I\-V\-E\-R\-S}~64}}\label{devfs_8c_ac2ee6026a11a2d8472c29fed769c7e9f}
+\-Nombre maximum de drivers. 
+
+\subsection{\-Documentation des fonctions}
+\hypertarget{devfs_8c_a38f6fa048d759685554ab60cae2fb250}{\index{devfs.\-c@{devfs.\-c}!find\-\_\-driver@{find\-\_\-driver}}
+\index{find\-\_\-driver@{find\-\_\-driver}!devfs.c@{devfs.\-c}}
+\subsubsection[{find\-\_\-driver}]{\setlength{\rightskip}{0pt plus 5cm}{\bf driver\-\_\-entry}$\ast$ {\bf find\-\_\-driver} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}\label{devfs_8c_a38f6fa048d759685554ab60cae2fb250}
+\-Cherche dans la liste des drivers celui qui s'appelle name, et retourne ses interfaces
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em name} & chaine identifiant le driver\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+interfaces du driver trouvé 
+\end{DoxyReturn}
+
+
+\-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{devfs_8c_a38f6fa048d759685554ab60cae2fb250_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{devfs_8c_a3ad133a010648db1c6df6f7d00cf8d77}{\index{devfs.\-c@{devfs.\-c}!register\-\_\-blkdev@{register\-\_\-blkdev}}
+\index{register\-\_\-blkdev@{register\-\_\-blkdev}!devfs.c@{devfs.\-c}}
+\subsubsection[{register\-\_\-blkdev}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf register\-\_\-blkdev} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name, }
+\item[{{\bf blkdev\-\_\-interfaces} $\ast$}]{di}
+\end{DoxyParamCaption}
+)}}\label{devfs_8c_a3ad133a010648db1c6df6f7d00cf8d77}
+\-Enregistre le driver dans la liste.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em name} & chaine identifiant le driver \\
+\hline
+{\em di} & structure contenant les interfaces du driver\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+-\/1 en cas d'erreur, 0 sinon 
+\end{DoxyReturn}
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{devfs_8c_a3ad133a010648db1c6df6f7d00cf8d77_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{devfs_8c_acf0abbf4b629aa36d142733e27eaf6e6}{\index{devfs.\-c@{devfs.\-c}!register\-\_\-chardev@{register\-\_\-chardev}}
+\index{register\-\_\-chardev@{register\-\_\-chardev}!devfs.c@{devfs.\-c}}
+\subsubsection[{register\-\_\-chardev}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf register\-\_\-chardev} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name, }
+\item[{{\bf chardev\-\_\-interfaces} $\ast$}]{di}
+\end{DoxyParamCaption}
+)}}\label{devfs_8c_acf0abbf4b629aa36d142733e27eaf6e6}
+\-Enregistre le driver dans la liste.
+
+
+\begin{DoxyParams}{\-Paramètres}
+{\em name} & chaine identifiant le driver \\
+\hline
+{\em di} & structure contenant les interfaces du driver\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+-\/1 en cas d'erreur, 0 sinon 
+\end{DoxyReturn}
+
+
+\-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{devfs_8c_acf0abbf4b629aa36d142733e27eaf6e6_icgraph}
+\end{center}
+\end{figure}
+
+

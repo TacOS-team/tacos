@@ -1,0 +1,53 @@
+\hypertarget{mouse_8c}{\section{\-Référence du fichier kernel/drivers/char/mouse.c}
+\label{mouse_8c}\index{kernel/drivers/char/mouse.\-c@{kernel/drivers/char/mouse.\-c}}
+}
+{\ttfamily \#include $<$fs/devfs.\-h$>$}\*
+{\ttfamily \#include $<$types.\-h$>$}\*
+{\ttfamily \#include $<$klog.\-h$>$}\*
+{\ttfamily \#include $<$ioports.\-h$>$}\*
+{\ttfamily \#include $<$interrupts.\-h$>$}\*
+{\ttfamily \#include $<$klibc/string.\-h$>$}\*
+{\ttfamily \#include $<$drivers/mouse.\-h$>$}\*
+\-Graphe des dépendances par inclusion de mouse.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mouse_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{mouse_8c_a31c7b1e70708528a456d2ba8759b5980}{\#define {\bfseries \-D\-E\-F\-A\-U\-L\-T\-\_\-\-R\-E\-S\-\_\-\-W\-I\-D\-T\-H}~320}\label{mouse_8c_a31c7b1e70708528a456d2ba8759b5980}
+
+\item 
+\hypertarget{mouse_8c_ac21ae4e41850e273052111486a542dab}{\#define {\bfseries \-D\-E\-F\-A\-U\-L\-T\-\_\-\-R\-E\-S\-\_\-\-H\-E\-I\-G\-H\-T}~200}\label{mouse_8c_ac21ae4e41850e273052111486a542dab}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{mouse_8c_a2216c49a5c3462e326788669aef01d15}{void {\bfseries mouse\-\_\-read\-\_\-state} (mousestate\-\_\-t $\ast$state)}\label{mouse_8c_a2216c49a5c3462e326788669aef01d15}
+
+\item 
+\hypertarget{mouse_8c_a15c9edc825dbf848517faa7dd0cf9265}{void {\bfseries mouse\-\_\-setres} (int width, int height)}\label{mouse_8c_a15c9edc825dbf848517faa7dd0cf9265}
+
+\item 
+\hypertarget{mouse_8c_a2d63b26282ebd8e4a9bfc606405a88f4}{void {\bfseries init\-\_\-mouse} ()}\label{mouse_8c_a2d63b26282ebd8e4a9bfc606405a88f4}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Description détaillée}
+\begin{DoxyAuthor}{\-Auteur}
+\-Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{\-L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+\-Copyright (\-C) 2011 -\/ \-Tac\-O\-S developers.
+
+\-This program is free software; you can redistribute it and/or modify it under the terms of the \-G\-N\-U \-General \-Public \-License as published by the \-Free \-Software \-Foundation; either version 3 of the \-License, or (at your option) any later version.
+
+\-This program is distributed in the hope that it will be useful, but \-W\-I\-T\-H\-O\-U\-T \-A\-N\-Y \-W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of \-M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or \-F\-I\-T\-N\-E\-S\-S \-F\-O\-R \-A \-P\-A\-R\-T\-I\-C\-U\-L\-A\-R \-P\-U\-R\-P\-O\-S\-E. \-See the \-G\-N\-U \-General \-Public \-License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+\-You should have received a copy of the \-G\-N\-U \-General \-Public \-License along with this program; if not, see $<$\href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}$>$.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{\-D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+\-Mouse driver. 

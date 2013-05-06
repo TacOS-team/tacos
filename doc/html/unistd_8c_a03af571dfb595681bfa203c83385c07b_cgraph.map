@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="chdir" name="chdir">
 <area shape="rect" id="node3" href="$kernel_2include_2klibc_2string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="105,5,167,33"/>
 <area shape="rect" id="node5" href="$kernel_2include_2klibc_2string_8h.html#a0c05a458deff028ef4d4e64059098db4" title="Rechercher un caractère dans une chaîne." alt="" coords="107,55,165,83"/>
 <area shape="rect" id="node7" href="$kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="493,145,547,173"/>

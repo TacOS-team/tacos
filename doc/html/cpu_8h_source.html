@@ -4,43 +4,33 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <title>TacOS:  Fichier source de kernel/include/cpu.h</title>
-
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
-
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div! -->
-
-
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  
-  
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
    &#160;<span id="projectnumber">0.1</span>
    </div>
-   
   </td>
-  
-  
-  
  </tr>
  </tbody>
 </table>
 </div>
-
-<!-- Généré par Doxygen 1.7.6.1 -->
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -73,37 +63,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
     </ul>
   </div>
-</div>
-<div class="header">
-  <div class="headertitle">
-<div class="title">kernel/include/cpu.h</div>  </div>
-</div><!--header-->
-<div class="contents">
-<a href="cpu_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00028"></a>00028 <span class="preprocessor">#ifndef _CPU_H</span>
-<a name="l00029"></a>00029 <span class="preprocessor"></span><span class="preprocessor">#define _CPU_H</span>
-<a name="l00030"></a>00030 <span class="preprocessor"></span>
-<a name="l00031"></a>00031 <span class="comment">/* Définitions des masques pour les flags */</span>
-<a name="l00032"></a><a class="code" href="cpu_8h.html#a2bedd71ee3fb79ef52f892f0d8c38944">00032</a> <span class="preprocessor">#define FLAGS_CF        0x00000001 </span>
-<a name="l00033"></a><a class="code" href="cpu_8h.html#a7e6aff229a00df76b28aabb5151fa0d9">00033</a> <span class="preprocessor">#define FLAGS_PF        0x00000004 </span>
-<a name="l00034"></a><a class="code" href="cpu_8h.html#ac2e065f36c5ae17f3dae4406b5333e45">00034</a> <span class="preprocessor">#define FLAGS_AF        0x00000010 </span>
-<a name="l00035"></a><a class="code" href="cpu_8h.html#a81e1a9abcac8701d25ad2fd6a8afbe62">00035</a> <span class="preprocessor">#define FLAGS_ZF        0x00000040 </span>
-<a name="l00036"></a><a class="code" href="cpu_8h.html#a932a45daf3fa04dd038df7b8644c0778">00036</a> <span class="preprocessor">#define FLAGS_SF        0x00000080 </span>
-<a name="l00037"></a><a class="code" href="cpu_8h.html#a1792407992a5406c18966aa379deb928">00037</a> <span class="preprocessor">#define FLAGS_TF        0x00000100 </span>
-<a name="l00038"></a><a class="code" href="cpu_8h.html#a86444793225d0c51717c9cccf541f47c">00038</a> <span class="preprocessor">#define FLAGS_IF        0x00000200 </span>
-<a name="l00039"></a><a class="code" href="cpu_8h.html#a2db82202c9d87e24f787b4972ac82d01">00039</a> <span class="preprocessor">#define FLAGS_DF        0x00000400 </span>
-<a name="l00040"></a><a class="code" href="cpu_8h.html#a7e2d10c6161198293e49ae2dc3e1b281">00040</a> <span class="preprocessor">#define FLAGS_OF        0x00000800 </span>
-<a name="l00041"></a><a class="code" href="cpu_8h.html#a9d5fda33cf0f6d6819ed984535cb8ff5">00041</a> <span class="preprocessor">#define FLAGS_IOPL1     0x00001000 </span>
-<a name="l00042"></a><a class="code" href="cpu_8h.html#a362713d800ef199939855c9d727ef045">00042</a> <span class="preprocessor">#define FLAGS_IOPL2     0x00002000 </span>
-<a name="l00043"></a><a class="code" href="cpu_8h.html#a0cdb72124771ac31c011b328c2b080d7">00043</a> <span class="preprocessor">#define FLAGS_NT        0x00004000 </span>
-<a name="l00044"></a><a class="code" href="cpu_8h.html#ab9ad3a8a690973cdf9d50328edddaa93">00044</a> <span class="preprocessor">#define FLAGS_RF        0x00010000 </span>
-<a name="l00045"></a><a class="code" href="cpu_8h.html#a9774b257c7c702af7c344b936de517d1">00045</a> <span class="preprocessor">#define FLAGS_VM        0x00020000 </span>
-<a name="l00046"></a><a class="code" href="cpu_8h.html#a3640ad0b12f50bedbd1836c946bf0368">00046</a> <span class="preprocessor">#define FLAGS_AC        0x00040000 </span>
-<a name="l00047"></a><a class="code" href="cpu_8h.html#aa1fd46f697afacff611d12fefd48b36c">00047</a> <span class="preprocessor">#define FLAGS_VIF       0x00080000 </span>
-<a name="l00048"></a><a class="code" href="cpu_8h.html#a4ad34e0df2b9ffb461818bd987341a4e">00048</a> <span class="preprocessor">#define FLAGS_VIP       0x00100000 </span>
-<a name="l00049"></a><a class="code" href="cpu_8h.html#ac1642f73f6c83284f3d7ab2427c261d8">00049</a> <span class="preprocessor">#define FLAGS_ID        0x00200000 </span>
-<a name="l00051"></a>00051 <span class="preprocessor">#endif </span><span class="comment">/* _CPU_H */</span>
-</pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -118,13 +77,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </iframe>
 </div>
 
-
-
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">cpu.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="cpu_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#ifndef _CPU_H</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _CPU_H</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/* Définitions des masques pour les flags */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="cpu_8h.html#a2bedd71ee3fb79ef52f892f0d8c38944">   32</a></span>&#160;<span class="preprocessor">#define FLAGS_CF        0x00000001 </span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="cpu_8h.html#a7e6aff229a00df76b28aabb5151fa0d9">   33</a></span>&#160;<span class="preprocessor">#define FLAGS_PF        0x00000004 </span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="cpu_8h.html#ac2e065f36c5ae17f3dae4406b5333e45">   34</a></span>&#160;<span class="preprocessor">#define FLAGS_AF        0x00000010 </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="cpu_8h.html#a81e1a9abcac8701d25ad2fd6a8afbe62">   35</a></span>&#160;<span class="preprocessor">#define FLAGS_ZF        0x00000040 </span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="cpu_8h.html#a932a45daf3fa04dd038df7b8644c0778">   36</a></span>&#160;<span class="preprocessor">#define FLAGS_SF        0x00000080 </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="cpu_8h.html#a1792407992a5406c18966aa379deb928">   37</a></span>&#160;<span class="preprocessor">#define FLAGS_TF        0x00000100 </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="cpu_8h.html#a86444793225d0c51717c9cccf541f47c">   38</a></span>&#160;<span class="preprocessor">#define FLAGS_IF        0x00000200 </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="cpu_8h.html#a2db82202c9d87e24f787b4972ac82d01">   39</a></span>&#160;<span class="preprocessor">#define FLAGS_DF        0x00000400 </span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="cpu_8h.html#a7e2d10c6161198293e49ae2dc3e1b281">   40</a></span>&#160;<span class="preprocessor">#define FLAGS_OF        0x00000800 </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="cpu_8h.html#a9d5fda33cf0f6d6819ed984535cb8ff5">   41</a></span>&#160;<span class="preprocessor">#define FLAGS_IOPL1     0x00001000 </span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="cpu_8h.html#a362713d800ef199939855c9d727ef045">   42</a></span>&#160;<span class="preprocessor">#define FLAGS_IOPL2     0x00002000 </span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="cpu_8h.html#a0cdb72124771ac31c011b328c2b080d7">   43</a></span>&#160;<span class="preprocessor">#define FLAGS_NT        0x00004000 </span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="cpu_8h.html#ab9ad3a8a690973cdf9d50328edddaa93">   44</a></span>&#160;<span class="preprocessor">#define FLAGS_RF        0x00010000 </span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="cpu_8h.html#a9774b257c7c702af7c344b936de517d1">   45</a></span>&#160;<span class="preprocessor">#define FLAGS_VM        0x00020000 </span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="cpu_8h.html#a3640ad0b12f50bedbd1836c946bf0368">   46</a></span>&#160;<span class="preprocessor">#define FLAGS_AC        0x00040000 </span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="cpu_8h.html#aa1fd46f697afacff611d12fefd48b36c">   47</a></span>&#160;<span class="preprocessor">#define FLAGS_VIF       0x00080000 </span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="cpu_8h.html#a4ad34e0df2b9ffb461818bd987341a4e">   48</a></span>&#160;<span class="preprocessor">#define FLAGS_VIP       0x00100000 </span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="cpu_8h.html#ac1642f73f6c83284f3d7ab2427c261d8">   49</a></span>&#160;<span class="preprocessor">#define FLAGS_ID        0x00200000 </span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _CPU_H */</span><span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Juin 24 2012 10:56:46 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Lundi Mai 6 2013 23:52:52 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
+</a> 1.8.1.2
 </small></address>
-
 </body>
 </html>

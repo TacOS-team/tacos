@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="libc/time.c" name="libc/time.c">
 <area shape="rect" id="node3" href="$time_8h.html" title="time.h" alt="" coords="376,238,432,266"/>
 <area shape="rect" id="node12" href="$stdio_8h.html" title="stdio.h" alt="" coords="144,161,203,189"/>
 <area shape="rect" id="node24" href="$unistd_8h.html" title="unistd.h" alt="" coords="461,83,528,111"/>

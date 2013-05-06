@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="find_process" name="find_process">
 <area shape="rect" id="node3" href="$kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="149,5,224,33"/>
 <area shape="rect" id="node9" href="$ksem_8c.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)" alt="" coords="153,55,220,83"/>
 <area shape="rect" id="node12" href="$ksem_8c.html#acf03efb500e930ca996059a6388b528b" title="Opération V sur un sémaphore Réalise l&#39;opération V sur le sémaphore. Le processus libère le sémaphore..." alt="" coords="156,106,217,134"/>

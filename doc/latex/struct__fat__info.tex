@@ -1,0 +1,86 @@
+\hypertarget{struct__fat__info}{\section{Référence de la structure \-\_\-fat\-\_\-info}
+\label{struct__fat__info}\index{\-\_\-fat\-\_\-info@{\-\_\-fat\-\_\-info}}
+}
+
+
+{\ttfamily \#include $<$fat\-\_\-internal.\-h$>$}
+
+
+
+Graphe de collaboration de \-\_\-fat\-\_\-info\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct__fat__info__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{fat__internal_8h_a2fa84596abf5ea3bd6f27951a77333c5}{fat\-\_\-\-B\-S\-\_\-t} \hyperlink{struct__fat__info_adcd12930a4a7f94ecac42ba82567adb7}{B\-S}
+\item 
+\hyperlink{fat__internal_8h_a017a64d5b6e25780d01109008245c15c}{fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16\-\_\-t} $\ast$ \hyperlink{struct__fat__info_a4da4c2a7a629ca59a686822e6447acb8}{ext\-\_\-\-B\-I\-O\-S\-\_\-16}
+\item 
+\hyperlink{fat__internal_8h_ac3feb4afc4c75c10410e9e867e3f99e8}{fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-32\-\_\-t} $\ast$ \hyperlink{struct__fat__info_aab203e7eb3c2027e3034d7765a2d5281}{ext\-\_\-\-B\-I\-O\-S\-\_\-32}
+\item 
+unsigned int $\ast$ \hyperlink{struct__fat__info_a0344193eb413dce4369b6e36ed03b92b}{addr\-\_\-fat}
+\item 
+unsigned int \hyperlink{struct__fat__info_ae9133d320e0afc89c5e6cc9cedf6dfb5}{addr\-\_\-root\-\_\-dir}
+\item 
+unsigned int \hyperlink{struct__fat__info_a4cb2766e74dd65f24d4eb30ce3b49302}{addr\-\_\-data}
+\item 
+unsigned int $\ast$ \hyperlink{struct__fat__info_a27195d09eb1dcd65d35d7b312d1bec0b}{file\-\_\-alloc\-\_\-table}
+\item 
+unsigned int \hyperlink{struct__fat__info_ab43681d4b5c7cf719cd6c934cada39e3}{total\-\_\-data\-\_\-clusters}
+\item 
+unsigned int \hyperlink{struct__fat__info_af110757af771c0f3fe0c515cca1ff177}{table\-\_\-size}
+\item 
+\hyperlink{fat__internal_8h_aea47744930623076e66d2f155e12ca24}{fat\-\_\-t} \hyperlink{struct__fat__info_af9e994d6d2c5211614ca61cfa4492500}{fat\-\_\-type}
+\item 
+unsigned int \hyperlink{struct__fat__info_ac1ba92d928512827ab7978f136efda96}{bytes\-\_\-per\-\_\-cluster}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Structure qui contient tout ce qui est utilisé par le driver F\-A\-T. 
+
+\subsection{Documentation des champs}
+\hypertarget{struct__fat__info_a4cb2766e74dd65f24d4eb30ce3b49302}{\index{\-\_\-fat\-\_\-info@{\-\_\-fat\-\_\-info}!addr\-\_\-data@{addr\-\_\-data}}
+\index{addr\-\_\-data@{addr\-\_\-data}!_fat_info@{\-\_\-fat\-\_\-info}}
+\subsubsection[{addr\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int \-\_\-fat\-\_\-info\-::addr\-\_\-data}}\label{struct__fat__info_a4cb2766e74dd65f24d4eb30ce3b49302}
+Adresse des premiers clusters de données. \hypertarget{struct__fat__info_a0344193eb413dce4369b6e36ed03b92b}{\index{\-\_\-fat\-\_\-info@{\-\_\-fat\-\_\-info}!addr\-\_\-fat@{addr\-\_\-fat}}
+\index{addr\-\_\-fat@{addr\-\_\-fat}!_fat_info@{\-\_\-fat\-\_\-info}}
+\subsubsection[{addr\-\_\-fat}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int$\ast$ \-\_\-fat\-\_\-info\-::addr\-\_\-fat}}\label{struct__fat__info_a0344193eb413dce4369b6e36ed03b92b}
+Adresses des F\-A\-T. \hypertarget{struct__fat__info_ae9133d320e0afc89c5e6cc9cedf6dfb5}{\index{\-\_\-fat\-\_\-info@{\-\_\-fat\-\_\-info}!addr\-\_\-root\-\_\-dir@{addr\-\_\-root\-\_\-dir}}
+\index{addr\-\_\-root\-\_\-dir@{addr\-\_\-root\-\_\-dir}!_fat_info@{\-\_\-fat\-\_\-info}}
+\subsubsection[{addr\-\_\-root\-\_\-dir}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int \-\_\-fat\-\_\-info\-::addr\-\_\-root\-\_\-dir}}\label{struct__fat__info_ae9133d320e0afc89c5e6cc9cedf6dfb5}
+Adresse du dossier racine (attention spécificité F\-A\-T32). \hypertarget{struct__fat__info_adcd12930a4a7f94ecac42ba82567adb7}{\index{\-\_\-fat\-\_\-info@{\-\_\-fat\-\_\-info}!B\-S@{B\-S}}
+\index{B\-S@{B\-S}!_fat_info@{\-\_\-fat\-\_\-info}}
+\subsubsection[{B\-S}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fat\-\_\-\-B\-S\-\_\-t} \-\_\-fat\-\_\-info\-::\-B\-S}}\label{struct__fat__info_adcd12930a4a7f94ecac42ba82567adb7}
+Secteur de Boot. \hypertarget{struct__fat__info_ac1ba92d928512827ab7978f136efda96}{\index{\-\_\-fat\-\_\-info@{\-\_\-fat\-\_\-info}!bytes\-\_\-per\-\_\-cluster@{bytes\-\_\-per\-\_\-cluster}}
+\index{bytes\-\_\-per\-\_\-cluster@{bytes\-\_\-per\-\_\-cluster}!_fat_info@{\-\_\-fat\-\_\-info}}
+\subsubsection[{bytes\-\_\-per\-\_\-cluster}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int \-\_\-fat\-\_\-info\-::bytes\-\_\-per\-\_\-cluster}}\label{struct__fat__info_ac1ba92d928512827ab7978f136efda96}
+Nombre d'octets dans un cluster. \hypertarget{struct__fat__info_a4da4c2a7a629ca59a686822e6447acb8}{\index{\-\_\-fat\-\_\-info@{\-\_\-fat\-\_\-info}!ext\-\_\-\-B\-I\-O\-S\-\_\-16@{ext\-\_\-\-B\-I\-O\-S\-\_\-16}}
+\index{ext\-\_\-\-B\-I\-O\-S\-\_\-16@{ext\-\_\-\-B\-I\-O\-S\-\_\-16}!_fat_info@{\-\_\-fat\-\_\-info}}
+\subsubsection[{ext\-\_\-\-B\-I\-O\-S\-\_\-16}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16\-\_\-t}$\ast$ \-\_\-fat\-\_\-info\-::ext\-\_\-\-B\-I\-O\-S\-\_\-16}}\label{struct__fat__info_a4da4c2a7a629ca59a686822e6447acb8}
+Infos supplémentaires pour F\-A\-T16. \hypertarget{struct__fat__info_aab203e7eb3c2027e3034d7765a2d5281}{\index{\-\_\-fat\-\_\-info@{\-\_\-fat\-\_\-info}!ext\-\_\-\-B\-I\-O\-S\-\_\-32@{ext\-\_\-\-B\-I\-O\-S\-\_\-32}}
+\index{ext\-\_\-\-B\-I\-O\-S\-\_\-32@{ext\-\_\-\-B\-I\-O\-S\-\_\-32}!_fat_info@{\-\_\-fat\-\_\-info}}
+\subsubsection[{ext\-\_\-\-B\-I\-O\-S\-\_\-32}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-32\-\_\-t}$\ast$ \-\_\-fat\-\_\-info\-::ext\-\_\-\-B\-I\-O\-S\-\_\-32}}\label{struct__fat__info_aab203e7eb3c2027e3034d7765a2d5281}
+Infos supplémentaires pour F\-A\-T32. \hypertarget{struct__fat__info_af9e994d6d2c5211614ca61cfa4492500}{\index{\-\_\-fat\-\_\-info@{\-\_\-fat\-\_\-info}!fat\-\_\-type@{fat\-\_\-type}}
+\index{fat\-\_\-type@{fat\-\_\-type}!_fat_info@{\-\_\-fat\-\_\-info}}
+\subsubsection[{fat\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fat\-\_\-t} \-\_\-fat\-\_\-info\-::fat\-\_\-type}}\label{struct__fat__info_af9e994d6d2c5211614ca61cfa4492500}
+Type de F\-A\-T (12, 16 ou 32) \hypertarget{struct__fat__info_a27195d09eb1dcd65d35d7b312d1bec0b}{\index{\-\_\-fat\-\_\-info@{\-\_\-fat\-\_\-info}!file\-\_\-alloc\-\_\-table@{file\-\_\-alloc\-\_\-table}}
+\index{file\-\_\-alloc\-\_\-table@{file\-\_\-alloc\-\_\-table}!_fat_info@{\-\_\-fat\-\_\-info}}
+\subsubsection[{file\-\_\-alloc\-\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int$\ast$ \-\_\-fat\-\_\-info\-::file\-\_\-alloc\-\_\-table}}\label{struct__fat__info_a27195d09eb1dcd65d35d7b312d1bec0b}
+F\-A\-T en mémoire. \hypertarget{struct__fat__info_af110757af771c0f3fe0c515cca1ff177}{\index{\-\_\-fat\-\_\-info@{\-\_\-fat\-\_\-info}!table\-\_\-size@{table\-\_\-size}}
+\index{table\-\_\-size@{table\-\_\-size}!_fat_info@{\-\_\-fat\-\_\-info}}
+\subsubsection[{table\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int \-\_\-fat\-\_\-info\-::table\-\_\-size}}\label{struct__fat__info_af110757af771c0f3fe0c515cca1ff177}
+Taille de la F\-A\-T. \hypertarget{struct__fat__info_ab43681d4b5c7cf719cd6c934cada39e3}{\index{\-\_\-fat\-\_\-info@{\-\_\-fat\-\_\-info}!total\-\_\-data\-\_\-clusters@{total\-\_\-data\-\_\-clusters}}
+\index{total\-\_\-data\-\_\-clusters@{total\-\_\-data\-\_\-clusters}!_fat_info@{\-\_\-fat\-\_\-info}}
+\subsubsection[{total\-\_\-data\-\_\-clusters}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int \-\_\-fat\-\_\-info\-::total\-\_\-data\-\_\-clusters}}\label{struct__fat__info_ab43681d4b5c7cf719cd6c934cada39e3}
+Nombre de clusters de données. 
+
+La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+\item 
+kernel/fs/fat/\hyperlink{fat__internal_8h}{fat\-\_\-internal.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="5,83,93,111"/>
+<area shape="rect" id="node5" href="$process_8c.html" title="libc/process.c" alt="" coords="117,83,219,111"/>
+<area shape="rect" id="node7" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="243,83,363,111"/>
+<area shape="rect" id="node9" href="$fprintf_8c.html" title="libc/stdio/fprintf.c" alt="" coords="387,83,507,111"/>
+<area shape="rect" id="node11" href="$scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="531,83,651,111"/>
+<area shape="rect" id="node13" href="$stdfiles_8c.html" title="Définition et initialisation des fichiers standards (stdin, stdout, stderr)." alt="" coords="675,83,803,111"/>
+<area shape="rect" id="node15" href="$stdlib_8c.html" title="libc/stdlib.c" alt="" coords="827,83,912,111"/>
+<area shape="rect" id="node17" href="$string_8c.html" title="libc/string.c" alt="" coords="936,83,1024,111"/>
+<area shape="rect" id="node19" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="1048,83,1139,111"/>
+</map>

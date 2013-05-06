@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/include/kdirent.h" name="kernel/include/kdirent.h">
 <area shape="rect" id="node3" href="$devfs_8c.html" title="DevFS." alt="" coords="5,83,123,111"/>
 <area shape="rect" id="node5" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="147,83,325,111"/>
 <area shape="rect" id="node7" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="349,83,472,111"/>

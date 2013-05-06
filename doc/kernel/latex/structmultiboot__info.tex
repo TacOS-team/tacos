@@ -1,0 +1,112 @@
+\hypertarget{structmultiboot__info}{\section{\-Référence de la structure multiboot\-\_\-info}
+\label{structmultiboot__info}\index{multiboot\-\_\-info@{multiboot\-\_\-info}}
+}
+
+
+\-Graphe de collaboration de multiboot\-\_\-info\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structmultiboot__info__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{\-Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+multiboot\-\_\-uint32\-\_\-t \hyperlink{structmultiboot__info_aa562865bc325fd785c9fa4c5056294f3}{flags}
+\item 
+\hypertarget{structmultiboot__info_aa3503176ee0d132ef98537fa0b36ff09}{multiboot\-\_\-uint32\-\_\-t {\bfseries mem\-\_\-lower}}\label{structmultiboot__info_aa3503176ee0d132ef98537fa0b36ff09}
+
+\item 
+\hypertarget{structmultiboot__info_a87db5803d5a79490b2bf32cb8e9a05c9}{multiboot\-\_\-uint32\-\_\-t {\bfseries mem\-\_\-upper}}\label{structmultiboot__info_a87db5803d5a79490b2bf32cb8e9a05c9}
+
+\item 
+multiboot\-\_\-uint32\-\_\-t \hyperlink{structmultiboot__info_ac7dd626a05c9ba62d55ea8a7a254de80}{boot\-\_\-device}
+\item 
+multiboot\-\_\-uint32\-\_\-t \hyperlink{structmultiboot__info_a0f2f05f69c69c615bf2b4820d357cf36}{cmdline}
+\item 
+multiboot\-\_\-uint32\-\_\-t \hyperlink{structmultiboot__info_aebdafce31f94277d138202f7b1ec35cc}{mods\-\_\-count}
+\item 
+\hypertarget{structmultiboot__info_a854bdbfa7b23c9c3dfa0bfc155ef8242}{multiboot\-\_\-uint32\-\_\-t {\bfseries mods\-\_\-addr}}\label{structmultiboot__info_a854bdbfa7b23c9c3dfa0bfc155ef8242}
+
+\item 
+\hypertarget{structmultiboot__info_ad932c5f1fab8e3a745e3d3fb3a1ceb73}{\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\hyperlink{structmultiboot__aout__symbol__table}{multiboot\_aout\_symbol\_table\_t} {\bfseries aout\_sym}\\
+\>\hyperlink{structmultiboot__elf__section__header__table}{multiboot\_elf\_section\_header\_table\_t} {\bfseries elf\_sec}\\
+\} {\bfseries syms}}\label{structmultiboot__info_ad932c5f1fab8e3a745e3d3fb3a1ceb73}
+\\
+
+\end{tabbing}\item 
+multiboot\-\_\-uint32\-\_\-t \hyperlink{structmultiboot__info_a86a0d881c5233a4b1c8cd690ccd19b75}{mmap\-\_\-length}
+\item 
+\hypertarget{structmultiboot__info_aacf83273b9f8448d91fb24690492c0d8}{multiboot\-\_\-uint32\-\_\-t {\bfseries mmap\-\_\-addr}}\label{structmultiboot__info_aacf83273b9f8448d91fb24690492c0d8}
+
+\item 
+multiboot\-\_\-uint32\-\_\-t \hyperlink{structmultiboot__info_abe859eaa7e97309f072b3bc1caf5742e}{drives\-\_\-length}
+\item 
+\hypertarget{structmultiboot__info_a34d90ffaaf58124095cb17de9c3b1515}{multiboot\-\_\-uint32\-\_\-t {\bfseries drives\-\_\-addr}}\label{structmultiboot__info_a34d90ffaaf58124095cb17de9c3b1515}
+
+\item 
+multiboot\-\_\-uint32\-\_\-t \hyperlink{structmultiboot__info_a919ce01f85d05ab90857f8591dfb3948}{config\-\_\-table}
+\item 
+multiboot\-\_\-uint32\-\_\-t \hyperlink{structmultiboot__info_a4442438f7c2da9c0cf87a94ffd1acc04}{boot\-\_\-loader\-\_\-name}
+\item 
+multiboot\-\_\-uint32\-\_\-t \hyperlink{structmultiboot__info_ad4285d60142d241a9e6b68a03e62ee0a}{apm\-\_\-table}
+\item 
+multiboot\-\_\-uint32\-\_\-t \hyperlink{structmultiboot__info_a06191cef73b64e9d64a01850547fd2e8}{vbe\-\_\-control\-\_\-info}
+\item 
+\hypertarget{structmultiboot__info_a88f574fe1adbcb5ff63fc95b2e072b4c}{multiboot\-\_\-uint32\-\_\-t {\bfseries vbe\-\_\-mode\-\_\-info}}\label{structmultiboot__info_a88f574fe1adbcb5ff63fc95b2e072b4c}
+
+\item 
+\hypertarget{structmultiboot__info_ac7653182e52bddb7e437cc8a66d74ce5}{multiboot\-\_\-uint16\-\_\-t {\bfseries vbe\-\_\-mode}}\label{structmultiboot__info_ac7653182e52bddb7e437cc8a66d74ce5}
+
+\item 
+\hypertarget{structmultiboot__info_a204c99787efd58c0f54fe1e056b1d69f}{multiboot\-\_\-uint16\-\_\-t {\bfseries vbe\-\_\-interface\-\_\-seg}}\label{structmultiboot__info_a204c99787efd58c0f54fe1e056b1d69f}
+
+\item 
+\hypertarget{structmultiboot__info_a1621d51b1cc198a1496e9f61b3708291}{multiboot\-\_\-uint16\-\_\-t {\bfseries vbe\-\_\-interface\-\_\-off}}\label{structmultiboot__info_a1621d51b1cc198a1496e9f61b3708291}
+
+\item 
+\hypertarget{structmultiboot__info_ab3c537df524db1ed0aeaa2e6f61a23e6}{multiboot\-\_\-uint16\-\_\-t {\bfseries vbe\-\_\-interface\-\_\-len}}\label{structmultiboot__info_ab3c537df524db1ed0aeaa2e6f61a23e6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Documentation des champs}
+\hypertarget{structmultiboot__info_ad4285d60142d241a9e6b68a03e62ee0a}{\index{multiboot\-\_\-info@{multiboot\-\_\-info}!apm\-\_\-table@{apm\-\_\-table}}
+\index{apm\-\_\-table@{apm\-\_\-table}!multiboot_info@{multiboot\-\_\-info}}
+\subsubsection[{apm\-\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}multiboot\-\_\-uint32\-\_\-t {\bf multiboot\-\_\-info\-::apm\-\_\-table}}}\label{structmultiboot__info_ad4285d60142d241a9e6b68a03e62ee0a}
+\-A\-P\-M table \hypertarget{structmultiboot__info_ac7dd626a05c9ba62d55ea8a7a254de80}{\index{multiboot\-\_\-info@{multiboot\-\_\-info}!boot\-\_\-device@{boot\-\_\-device}}
+\index{boot\-\_\-device@{boot\-\_\-device}!multiboot_info@{multiboot\-\_\-info}}
+\subsubsection[{boot\-\_\-device}]{\setlength{\rightskip}{0pt plus 5cm}multiboot\-\_\-uint32\-\_\-t {\bf multiboot\-\_\-info\-::boot\-\_\-device}}}\label{structmultiboot__info_ac7dd626a05c9ba62d55ea8a7a254de80}
+\char`\"{}root\char`\"{} partition \hypertarget{structmultiboot__info_a4442438f7c2da9c0cf87a94ffd1acc04}{\index{multiboot\-\_\-info@{multiboot\-\_\-info}!boot\-\_\-loader\-\_\-name@{boot\-\_\-loader\-\_\-name}}
+\index{boot\-\_\-loader\-\_\-name@{boot\-\_\-loader\-\_\-name}!multiboot_info@{multiboot\-\_\-info}}
+\subsubsection[{boot\-\_\-loader\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}multiboot\-\_\-uint32\-\_\-t {\bf multiboot\-\_\-info\-::boot\-\_\-loader\-\_\-name}}}\label{structmultiboot__info_a4442438f7c2da9c0cf87a94ffd1acc04}
+\-Boot \-Loader \-Name \hypertarget{structmultiboot__info_a0f2f05f69c69c615bf2b4820d357cf36}{\index{multiboot\-\_\-info@{multiboot\-\_\-info}!cmdline@{cmdline}}
+\index{cmdline@{cmdline}!multiboot_info@{multiboot\-\_\-info}}
+\subsubsection[{cmdline}]{\setlength{\rightskip}{0pt plus 5cm}multiboot\-\_\-uint32\-\_\-t {\bf multiboot\-\_\-info\-::cmdline}}}\label{structmultiboot__info_a0f2f05f69c69c615bf2b4820d357cf36}
+\-Kernel command line \hypertarget{structmultiboot__info_a919ce01f85d05ab90857f8591dfb3948}{\index{multiboot\-\_\-info@{multiboot\-\_\-info}!config\-\_\-table@{config\-\_\-table}}
+\index{config\-\_\-table@{config\-\_\-table}!multiboot_info@{multiboot\-\_\-info}}
+\subsubsection[{config\-\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}multiboot\-\_\-uint32\-\_\-t {\bf multiboot\-\_\-info\-::config\-\_\-table}}}\label{structmultiboot__info_a919ce01f85d05ab90857f8591dfb3948}
+\-R\-O\-M configuration table \hypertarget{structmultiboot__info_abe859eaa7e97309f072b3bc1caf5742e}{\index{multiboot\-\_\-info@{multiboot\-\_\-info}!drives\-\_\-length@{drives\-\_\-length}}
+\index{drives\-\_\-length@{drives\-\_\-length}!multiboot_info@{multiboot\-\_\-info}}
+\subsubsection[{drives\-\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}multiboot\-\_\-uint32\-\_\-t {\bf multiboot\-\_\-info\-::drives\-\_\-length}}}\label{structmultiboot__info_abe859eaa7e97309f072b3bc1caf5742e}
+\-Drive \-Info buffer \hypertarget{structmultiboot__info_aa562865bc325fd785c9fa4c5056294f3}{\index{multiboot\-\_\-info@{multiboot\-\_\-info}!flags@{flags}}
+\index{flags@{flags}!multiboot_info@{multiboot\-\_\-info}}
+\subsubsection[{flags}]{\setlength{\rightskip}{0pt plus 5cm}multiboot\-\_\-uint32\-\_\-t {\bf multiboot\-\_\-info\-::flags}}}\label{structmultiboot__info_aa562865bc325fd785c9fa4c5056294f3}
+\-Multiboot info version number \hypertarget{structmultiboot__info_a86a0d881c5233a4b1c8cd690ccd19b75}{\index{multiboot\-\_\-info@{multiboot\-\_\-info}!mmap\-\_\-length@{mmap\-\_\-length}}
+\index{mmap\-\_\-length@{mmap\-\_\-length}!multiboot_info@{multiboot\-\_\-info}}
+\subsubsection[{mmap\-\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}multiboot\-\_\-uint32\-\_\-t {\bf multiboot\-\_\-info\-::mmap\-\_\-length}}}\label{structmultiboot__info_a86a0d881c5233a4b1c8cd690ccd19b75}
+\-Memory \-Mapping buffer \hypertarget{structmultiboot__info_aebdafce31f94277d138202f7b1ec35cc}{\index{multiboot\-\_\-info@{multiboot\-\_\-info}!mods\-\_\-count@{mods\-\_\-count}}
+\index{mods\-\_\-count@{mods\-\_\-count}!multiboot_info@{multiboot\-\_\-info}}
+\subsubsection[{mods\-\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}multiboot\-\_\-uint32\-\_\-t {\bf multiboot\-\_\-info\-::mods\-\_\-count}}}\label{structmultiboot__info_aebdafce31f94277d138202f7b1ec35cc}
+\-Boot-\/\-Module list \hypertarget{structmultiboot__info_a06191cef73b64e9d64a01850547fd2e8}{\index{multiboot\-\_\-info@{multiboot\-\_\-info}!vbe\-\_\-control\-\_\-info@{vbe\-\_\-control\-\_\-info}}
+\index{vbe\-\_\-control\-\_\-info@{vbe\-\_\-control\-\_\-info}!multiboot_info@{multiboot\-\_\-info}}
+\subsubsection[{vbe\-\_\-control\-\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}multiboot\-\_\-uint32\-\_\-t {\bf multiboot\-\_\-info\-::vbe\-\_\-control\-\_\-info}}}\label{structmultiboot__info_a06191cef73b64e9d64a01850547fd2e8}
+\-Video 
+
+\-La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+\item 
+kernel/include/\hyperlink{multiboot_8h}{multiboot.\-h}\end{DoxyCompactItemize}

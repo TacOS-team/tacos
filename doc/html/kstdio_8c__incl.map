@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/kstdio.c" name="kernel/kstdio.c">
 <area shape="rect" id="node3" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="563,161,627,189"/>
 <area shape="rect" id="node29" href="$tty_8h.html" title="Terminal posix&#45;like." alt="" coords="847,238,893,266"/>
 <area shape="rect" id="node35" href="$vfs_8h.html" title="Virtual File System." alt="" coords="315,83,366,111"/>
@@ -12,6 +12,7 @@
 <area shape="rect" id="node17" href="$process__types_8h.html" title="process_types.h" alt="" coords="443,315,558,343"/>
 <area shape="rect" id="node19" href="$symtable_8h.html" title="symtable.h" alt="" coords="633,315,715,343"/>
 <area shape="rect" id="node25" href="$vmm_8h.html" title="vmm.h" alt="" coords="230,315,291,343"/>
+<area shape="rect" id="node22" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="651,393,697,421"/>
 <area shape="rect" id="node32" href="$termios__types_8h.html" title="termios_types.h" alt="" coords="894,315,1006,343"/>
 <area shape="rect" id="node39" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="57,161,118,189"/>
 <area shape="rect" id="node42" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="57,238,118,266"/>

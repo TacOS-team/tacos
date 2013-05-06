@@ -1,0 +1,692 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/fs/ext2/ext2_functions.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Généré par Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier kernel/fs/ext2/ext2_functions.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;ext2_internal.c&quot;</code><br/>
+<code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="types_8h_source.html">types.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kfcntl_8h_source.html">kfcntl.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kerrno_8h_source.html">kerrno.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="ext2_8h_source.html">fs/ext2.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de ext2_functions.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2__functions_8c__incl.png" border="0" usemap="#kernel_2fs_2ext2_2ext2__functions_8c" alt=""/></div>
+<map name="kernel_2fs_2ext2_2ext2__functions_8c" id="kernel_2fs_2ext2_2ext2__functions_8c">
+<area shape="rect" id="node3" href="klog_8h.html" title="Logging macros." alt="" coords="13,83,69,111"/><area shape="rect" id="node7" href="types_8h.html" title="types.h" alt="" coords="307,470,368,498"/><area shape="rect" id="node9" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="381,238,445,266"/><area shape="rect" id="node34" href="kerrno_8h.html" title="Codes erreurs." alt="" coords="263,83,329,111"/><area shape="rect" id="node36" href="ext2_8h.html" title="Driver Ext2." alt="" coords="169,83,239,111"/><area shape="rect" id="node5" href="kstdio_8h.html" title="kprintf" alt="" coords="5,161,72,189"/><area shape="rect" id="node12" href="fd__types_8h.html" title="fd_types.h" alt="" coords="960,393,1040,421"/><area shape="rect" id="node14" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="547,315,632,343"/><area shape="rect" id="node16" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="299,393,376,421"/><area shape="rect" id="node20" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="725,393,829,421"/><area shape="rect" id="node22" href="process__types_8h.html" title="process_types.h" alt="" coords="587,393,701,421"/><area shape="rect" id="node24" href="symtable_8h.html" title="symtable.h" alt="" coords="853,393,936,421"/><area shape="rect" id="node30" href="vmm_8h.html" title="vmm.h" alt="" coords="451,393,512,421"/><area shape="rect" id="node38" href="vfs_8h.html" title="Virtual File System." alt="" coords="191,161,241,189"/><area shape="rect" id="node42" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="197,238,259,266"/><area shape="rect" id="node45" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="248,315,309,343"/></map>
+</div>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a4d19a34580976adf582bb45bd402649c">ext2_rename</a> (<a class="el" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a> *old_dir, <a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *old_dentry, <a class="el" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a> *new_dir, <a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *new_dentry)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Renomme ou déplace un fichier.  <a href="#a4d19a34580976adf582bb45bd402649c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a4c86d6a4886145e7cd974675eb5a19a0">ext2_rmdir</a> (<a class="el" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a> *dir, <a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *dentry)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Suppression d'un dossier vide.  <a href="#a4c86d6a4886145e7cd974675eb5a19a0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acad804eba95e7600b534e07bb9134a44"></a><!-- doxytag: member="ext2_functions.c::ext2_setattr" ref="acad804eba95e7600b534e07bb9134a44" args="(inode_t *inode, file_attributes_t *attr)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>ext2_setattr</b> (<a class="el" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a> *inode, <a class="el" href="vfs_8h.html#a4ad5156f3f4319159c4e28e8787713f1">file_attributes_t</a> *attr)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a4af1597cc97e9aa9591ed390589e6dfc">ext2_unlink</a> (<a class="el" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a> *dir, <a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *dentry)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Suppression d'un noeud.  <a href="#a4af1597cc97e9aa9591ed390589e6dfc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a099858facc12a389ffbff826567cb7c4">ext2_mkdir</a> (<a class="el" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a> *dir, <a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *dentry, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Création d'un dossier.  <a href="#a099858facc12a389ffbff826567cb7c4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#ac9b55aefa79e5e521e4e5d993b4c009a">ext2_readdir</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, char *entries, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du contenu d'un dossier.  <a href="#ac9b55aefa79e5e521e4e5d993b4c009a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a79a131bb760b0d236f6bf0209ee6f5cb">ext2_seek</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, long offset, int whence)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a598e5a2d603b1d2b31b8058b9dec3ab5">ext2_write</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, const void *buf, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecriture d'un fichier.  <a href="#a598e5a2d603b1d2b31b8058b9dec3ab5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#aa5552876c927b5b04e708531c07344b0">ext2_read</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, void *buf, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'un fichier.  <a href="#aa5552876c927b5b04e708531c07344b0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#a1814eebfe79637247b38dda8e50a3263">ext2_mknod</a> (<a class="el" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a> *dir, <a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *dentry, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>, <a class="el" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a> dev)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Création d'un noeud (fichier, dossier, fichier spécial...)  <a href="#a1814eebfe79637247b38dda8e50a3263"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#aeb55aa4d71dded497758c72d86b2b2f7">ext2_truncate</a> (<a class="el" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a> *inode, off_t off)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la taille d'un fichier.  <a href="#aeb55aa4d71dded497758c72d86b2b2f7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a185452dee205dcca978c1c6f7fdeee22"></a><!-- doxytag: member="ext2_functions.c::ext2_getroot" ref="a185452dee205dcca978c1c6f7fdeee22" args="(struct _fs_instance_t *instance)" -->
+<a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ext2_getroot</b> (struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *instance)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aacb0077cd0a76158c9288ecd193d58da"></a><!-- doxytag: member="ext2_functions.c::ext2_lookup" ref="aacb0077cd0a76158c9288ecd193d58da" args="(struct _fs_instance_t *instance, struct _dentry_t *dentry, const char *name)" -->
+<a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ext2_lookup</b> (struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *instance, struct <a class="el" href="struct__dentry__t.html">_dentry_t</a> *dentry, const char *name)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2__functions_8c.html#ab2859a00444ce0ad527332da72e2629a">ext2_close</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fermeture d'un fichier ouvert.  <a href="#ab2859a00444ce0ad527332da72e2629a"></a><br/></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="author"><dt><b>Auteur:</b></dt><dd>TacOS developers</dd></dl>
+<h2><a class="anchor" id="LICENSE"></a>
+LICENSE</h2>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see &lt;<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>&gt;.</p>
+<h2><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h2>
+<p>Description de ce que fait le fichier </p>
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ab2859a00444ce0ad527332da72e2629a"></a><!-- doxytag: member="ext2_functions.c::ext2_close" ref="ab2859a00444ce0ad527332da72e2629a" args="(open_file_descriptor *ofd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2__internal_8h.html#ab2859a00444ce0ad527332da72e2629a">ext2_close</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>Descripteur du fichier ouvert.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès, -1 sinon. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2__functions_8c_ab2859a00444ce0ad527332da72e2629a_cgraph.png" border="0" usemap="#ext2__functions_8c_ab2859a00444ce0ad527332da72e2629a_cgraph" alt=""/></div>
+<map name="ext2__functions_8c_ab2859a00444ce0ad527332da72e2629a_cgraph" id="ext2__functions_8c_ab2859a00444ce0ad527332da72e2629a_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="139,5,189,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a099858facc12a389ffbff826567cb7c4"></a><!-- doxytag: member="ext2_functions.c::ext2_mkdir" ref="a099858facc12a389ffbff826567cb7c4" args="(inode_t *dir, dentry_t *dentry, mode_t mode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2__internal_8h.html#a099858facc12a389ffbff826567cb7c4">ext2_mkdir</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a> *&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *&#160;</td>
+          <td class="paramname"><em>dentry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dir</td><td>Inode du dossier parent. </td></tr>
+    <tr><td class="paramname">dentry</td><td>Structure contenant le nom et un pointeur vers l'inode qui sera créé. </td></tr>
+    <tr><td class="paramname">mode</td><td>Droits sur le dossier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2__functions_8c_a099858facc12a389ffbff826567cb7c4_cgraph.png" border="0" usemap="#ext2__functions_8c_a099858facc12a389ffbff826567cb7c4_cgraph" alt=""/></div>
+<map name="ext2__functions_8c_a099858facc12a389ffbff826567cb7c4_cgraph" id="ext2__functions_8c_a099858facc12a389ffbff826567cb7c4_cgraph">
+<area shape="rect" id="node3" href="ext2__functions_8c.html#a1814eebfe79637247b38dda8e50a3263" title="Création d&#39;un noeud (fichier, dossier, fichier spécial...)" alt="" coords="140,5,231,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2__functions_8c_a099858facc12a389ffbff826567cb7c4_icgraph.png" border="0" usemap="#ext2__functions_8c_a099858facc12a389ffbff826567cb7c4_icgraph" alt=""/></div>
+<map name="ext2__functions_8c_a099858facc12a389ffbff826567cb7c4_icgraph" id="ext2__functions_8c_a099858facc12a389ffbff826567cb7c4_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="140,5,236,33"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="287,5,356,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a1814eebfe79637247b38dda8e50a3263"></a><!-- doxytag: member="ext2_functions.c::ext2_mknod" ref="a1814eebfe79637247b38dda8e50a3263" args="(inode_t *dir, dentry_t *dentry, mode_t mode, dev_t dev)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2__internal_8h.html#a1814eebfe79637247b38dda8e50a3263">ext2_mknod</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a> *&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *&#160;</td>
+          <td class="paramname"><em>dentry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a>&#160;</td>
+          <td class="paramname"><em>dev</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dir</td><td>Inode du dossier parent. </td></tr>
+    <tr><td class="paramname">dentry</td><td>Structure contenant le nom et un pointeur vers l'inode qui sera créé. </td></tr>
+    <tr><td class="paramname">mode</td><td>Droits sur le noeud. </td></tr>
+    <tr><td class="paramname">dev</td><td>En cas de fichier spécial (device)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2__functions_8c_a1814eebfe79637247b38dda8e50a3263_icgraph.png" border="0" usemap="#ext2__functions_8c_a1814eebfe79637247b38dda8e50a3263_icgraph" alt=""/></div>
+<map name="ext2__functions_8c_a1814eebfe79637247b38dda8e50a3263_icgraph" id="ext2__functions_8c_a1814eebfe79637247b38dda8e50a3263_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="281,5,377,33"/><area shape="rect" id="node7" href="ext2__internal_8h.html#a099858facc12a389ffbff826567cb7c4" title="Création d&#39;un dossier." alt="" coords="147,30,232,58"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="428,5,497,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aa5552876c927b5b04e708531c07344b0"></a><!-- doxytag: member="ext2_functions.c::ext2_read" ref="aa5552876c927b5b04e708531c07344b0" args="(open_file_descriptor *ofd, void *buf, size_t size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> <a class="el" href="ext2__internal_8h.html#aa5552876c927b5b04e708531c07344b0">ext2_read</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>Descripteur du fichier ouvert. </td></tr>
+    <tr><td class="paramname">buf</td><td>Buffer où stocker les octets lus. </td></tr>
+    <tr><td class="paramname">size</td><td>Nombre d'octets à lire.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>nombre d'octets réellement lus. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac9b55aefa79e5e521e4e5d993b4c009a"></a><!-- doxytag: member="ext2_functions.c::ext2_readdir" ref="ac9b55aefa79e5e521e4e5d993b4c009a" args="(open_file_descriptor *ofd, char *entries, size_t size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2__internal_8h.html#ac9b55aefa79e5e521e4e5d993b4c009a">ext2_readdir</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>entries</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>Descripteur de fichier qui correspond au dossier. </td></tr>
+    <tr><td class="paramname">entries</td><td>Buffer qui va recevoir les entrées de dossier. </td></tr>
+    <tr><td class="paramname">size</td><td>Nombre d'octets dans le buffer au maximum.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>Nombre d'octets écrits dans entries. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2__functions_8c_ac9b55aefa79e5e521e4e5d993b4c009a_cgraph.png" border="0" usemap="#ext2__functions_8c_ac9b55aefa79e5e521e4e5d993b4c009a_cgraph" alt=""/></div>
+<map name="ext2__functions_8c_ac9b55aefa79e5e521e4e5d993b4c009a_cgraph" id="ext2__functions_8c_ac9b55aefa79e5e521e4e5d993b4c009a_cgraph">
+<area shape="rect" id="node3" href="string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères." alt="" coords="147,5,211,33"/><area shape="rect" id="node5" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="152,55,205,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a4d19a34580976adf582bb45bd402649c"></a><!-- doxytag: member="ext2_functions.c::ext2_rename" ref="a4d19a34580976adf582bb45bd402649c" args="(inode_t *old_dir, dentry_t *old_dentry, inode_t *new_dir, dentry_t *new_dentry)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2__internal_8h.html#a4d19a34580976adf582bb45bd402649c">ext2_rename</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a> *&#160;</td>
+          <td class="paramname"><em>old_dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *&#160;</td>
+          <td class="paramname"><em>old_dentry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a> *&#160;</td>
+          <td class="paramname"><em>new_dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *&#160;</td>
+          <td class="paramname"><em>new_dentry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">old_dir</td><td>Inode du dossier parent de l'ancien nom. </td></tr>
+    <tr><td class="paramname">old_dentry</td><td>Nom et inode à déplacer. </td></tr>
+    <tr><td class="paramname">new_dir</td><td>Inode du dossier de destination. </td></tr>
+    <tr><td class="paramname">new_dentry</td><td>Nom et inode de destination.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2__functions_8c_a4d19a34580976adf582bb45bd402649c_icgraph.png" border="0" usemap="#ext2__functions_8c_a4d19a34580976adf582bb45bd402649c_icgraph" alt=""/></div>
+<map name="ext2__functions_8c_a4d19a34580976adf582bb45bd402649c_icgraph" id="ext2__functions_8c_a4d19a34580976adf582bb45bd402649c_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="151,5,247,33"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="297,5,367,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a4c86d6a4886145e7cd974675eb5a19a0"></a><!-- doxytag: member="ext2_functions.c::ext2_rmdir" ref="a4c86d6a4886145e7cd974675eb5a19a0" args="(inode_t *dir, dentry_t *dentry)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2__internal_8h.html#a4c86d6a4886145e7cd974675eb5a19a0">ext2_rmdir</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a> *&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *&#160;</td>
+          <td class="paramname"><em>dentry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dir</td><td>Inode du dossier parent. </td></tr>
+    <tr><td class="paramname">dentry</td><td>Dossier à supprimer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2__functions_8c_a4c86d6a4886145e7cd974675eb5a19a0_icgraph.png" border="0" usemap="#ext2__functions_8c_a4c86d6a4886145e7cd974675eb5a19a0_icgraph" alt=""/></div>
+<map name="ext2__functions_8c_a4c86d6a4886145e7cd974675eb5a19a0_icgraph" id="ext2__functions_8c_a4c86d6a4886145e7cd974675eb5a19a0_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="137,5,233,33"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="284,5,353,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a79a131bb760b0d236f6bf0209ee6f5cb"></a><!-- doxytag: member="ext2_functions.c::ext2_seek" ref="a79a131bb760b0d236f6bf0209ee6f5cb" args="(open_file_descriptor *ofd, long offset, int whence)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2__internal_8h.html#a79a131bb760b0d236f6bf0209ee6f5cb">ext2_seek</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>whence</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Déplacement dans un fichier.</p>
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>Descripteur de fichier ouvert. </td></tr>
+    <tr><td class="paramname">offset</td><td>Décalage </td></tr>
+    <tr><td class="paramname">whence</td><td>depuis le debut, la fin ou en relatif.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aeb55aa4d71dded497758c72d86b2b2f7"></a><!-- doxytag: member="ext2_functions.c::ext2_truncate" ref="aeb55aa4d71dded497758c72d86b2b2f7" args="(inode_t *inode, off_t off)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2__internal_8h.html#aeb55aa4d71dded497758c72d86b2b2f7">ext2_truncate</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a> *&#160;</td>
+          <td class="paramname"><em>inode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">off_t&#160;</td>
+          <td class="paramname"><em>off</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inode</td><td>Inode à modifier. </td></tr>
+    <tr><td class="paramname">off</td><td>Nouvelle taille.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2__functions_8c_aeb55aa4d71dded497758c72d86b2b2f7_icgraph.png" border="0" usemap="#ext2__functions_8c_aeb55aa4d71dded497758c72d86b2b2f7_icgraph" alt=""/></div>
+<map name="ext2__functions_8c_aeb55aa4d71dded497758c72d86b2b2f7_icgraph" id="ext2__functions_8c_aeb55aa4d71dded497758c72d86b2b2f7_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="156,5,252,33"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="303,5,372,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a4af1597cc97e9aa9591ed390589e6dfc"></a><!-- doxytag: member="ext2_functions.c::ext2_unlink" ref="a4af1597cc97e9aa9591ed390589e6dfc" args="(inode_t *dir, dentry_t *dentry)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="ext2__internal_8h.html#a4af1597cc97e9aa9591ed390589e6dfc">ext2_unlink</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#af51b41660b60ad79b490887fe6e22da9">inode_t</a> *&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *&#160;</td>
+          <td class="paramname"><em>dentry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dir</td><td>Inode du dossier parent. </td></tr>
+    <tr><td class="paramname">dentry</td><td>Entrée à supprimer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2__functions_8c_a4af1597cc97e9aa9591ed390589e6dfc_icgraph.png" border="0" usemap="#ext2__functions_8c_a4af1597cc97e9aa9591ed390589e6dfc_icgraph" alt=""/></div>
+<map name="ext2__functions_8c_a4af1597cc97e9aa9591ed390589e6dfc_icgraph" id="ext2__functions_8c_a4af1597cc97e9aa9591ed390589e6dfc_icgraph">
+<area shape="rect" id="node3" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="143,5,239,33"/><area shape="rect" id="node5" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="289,5,359,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a598e5a2d603b1d2b31b8058b9dec3ab5"></a><!-- doxytag: member="ext2_functions.c::ext2_write" ref="a598e5a2d603b1d2b31b8058b9dec3ab5" args="(open_file_descriptor *ofd, const void *buf, size_t size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> <a class="el" href="ext2__internal_8h.html#a598e5a2d603b1d2b31b8058b9dec3ab5">ext2_write</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>Descripteur du fichier ouvert. </td></tr>
+    <tr><td class="paramname">buf</td><td>Buffer contenant les octets à écrire. </td></tr>
+    <tr><td class="paramname">size</td><td>Nombre d'octets à écrire.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>nombre d'octets réellement écrits. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2__functions_8c_a598e5a2d603b1d2b31b8058b9dec3ab5_cgraph.png" border="0" usemap="#ext2__functions_8c_a598e5a2d603b1d2b31b8058b9dec3ab5_cgraph" alt=""/></div>
+<map name="ext2__functions_8c_a598e5a2d603b1d2b31b8058b9dec3ab5_cgraph" id="ext2__functions_8c_a598e5a2d603b1d2b31b8058b9dec3ab5_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="136,5,203,33"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="252,5,391,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Généré le Dimanche Juillet 8 2012 15:18:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

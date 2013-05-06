@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="kernel/kfcntl.c" name="kernel/kfcntl.c">
 <area shape="rect" id="node3" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="393,83,471,111"/>
 <area shape="rect" id="node9" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="676,161,740,189"/>
 <area shape="rect" id="node14" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="640,238,725,266"/>
@@ -15,6 +15,7 @@
 <area shape="rect" id="node22" href="$process__types_8h.html" title="process_types.h" alt="" coords="531,315,645,343"/>
 <area shape="rect" id="node24" href="$symtable_8h.html" title="symtable.h" alt="" coords="296,315,379,343"/>
 <area shape="rect" id="node30" href="$vmm_8h.html" title="vmm.h" alt="" coords="669,315,731,343"/>
+<area shape="rect" id="node27" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="315,393,360,421"/>
 <area shape="rect" id="node39" href="$kstdio_8h.html" title="kprintf" alt="" coords="484,161,551,189"/>
 <area shape="rect" id="node53" href="$termios__types_8h.html" title="termios_types.h" alt="" coords="5,315,117,343"/>
 <area shape="rect" id="node60" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="1003,161,1064,189"/>
