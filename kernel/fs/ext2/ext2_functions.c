@@ -314,6 +314,9 @@ dentry_t* ext2_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry,
 	int inode = getinode_from_name((ext2_fs_instance_t*)instance, dentry->d_inode->i_ino, name);
 	if (inode == -ENOENT && (flags & O_CREAT)) {
 		//inode = ext2_mknod2((ext2_fs_instance_t*)instance, name, 00644 | 0x8000, 0); //FIXME!
+		// Plusieurs choses : getinode_from_name retourne ENOTDIR et pas ENOENT, 
+		// flags vaut 0, et ce mknod est réalisé plus haut, peut-être qu'on devrait
+		// supprimer ce cas tout simplement ?
 	} else if (inode <= 0) {
 		return NULL;
 	} else if (flags & O_EXCL && flags & O_CREAT) {

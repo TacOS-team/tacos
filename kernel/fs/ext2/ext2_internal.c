@@ -180,7 +180,6 @@ static void setattr_inode(ext2_fs_instance_t *instance, int inode, struct stat *
 		einode->i_ctime = get_date();
 		write_inode(instance, inode, einode);
 	}
-	//FIXME?
 }
 
 static uint32_t alloc_block(ext2_fs_instance_t *instance) {
@@ -239,7 +238,6 @@ static int alloc_block_inode(ext2_fs_instance_t *instance, int inode) {
 		if (i < 12) {
 			einode->i_block[i] = alloc_block(instance);
 			write_inode(instance, inode, einode);
-			//FIXME?
 			return einode->i_block[i];
 		}
 	}
