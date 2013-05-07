@@ -28,7 +28,6 @@
  */
 
 #include <types.h>
-#include <stdio.h>
 #include <klibc/string.h>
 #include <ioports.h>
 #include <klog.h>

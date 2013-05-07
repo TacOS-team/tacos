@@ -28,7 +28,6 @@
  */
 
 #include <types.h>
-#include <stdio.h>
 #include <ioports.h>
 #include "floppy_motor.h"
 #include "floppy_utils.h"

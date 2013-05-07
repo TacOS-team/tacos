@@ -27,18 +27,17 @@
  *
  * @see http://wiki.osdev.org/Bochs_VBE_Extensions
  */
-#include <stdio.h>
 #include <fs/devfs.h>
 #include <types.h>
 #include <klog.h>
 #include <ioports.h>
-#include <string.h>
 #include <pci.h>
 #include <pci_config.h>
 #include <memory.h>
 #include <pagination.h>
 #include <vmm.h>
 #include <vesa_types.h>
+#include <klibc/string.h>
 
 #define VBE_DISPI_IOPORT_INDEX		0x01CE
 #define VBE_DISPI_IOPORT_DATA		0x01CF
