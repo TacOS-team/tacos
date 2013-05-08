@@ -173,6 +173,7 @@ static dentry_t* procfs_lookup(struct _fs_instance_t *instance, struct _dentry_t
 			extra->process = process;
 			inode->i_fs_specific = extra;
 			inode->i_fops = kmalloc(sizeof(open_file_operations_t));
+			memset(inode->i_fops, 0, sizeof(open_file_operations_t));
 			inode->i_fops->close = procfs_close; /*procfs_close;*/
 			inode->i_fops->readdir = procfs_readdir;
 			
@@ -205,6 +206,7 @@ static dentry_t* procfs_lookup(struct _fs_instance_t *instance, struct _dentry_t
 				extra->pid = oldextra->pid;
 				extra->process = oldextra->process;
 				inode->i_fops = kmalloc(sizeof(open_file_operations_t));
+				memset(inode->i_fops, 0, sizeof(open_file_operations_t));
 				inode->i_fops->close = procfs_close; /*procfs_close;*/
 				inode->i_fops->read = procfs_file_list[i].read;
 		
