@@ -33,42 +33,50 @@
 #include <unistd.h>
 #include <sys/stat.h>
 
-void print_cmdline(int pid) {
+static const int MAX_CONTENT_LENGTH = 128;
+static const int MIN_NAME_LENGTH    = 30;
+
+void print_headers() {
+	printf("PID\tPPID\tNAME");
+	int length = 0;
+	for (length=0; length < MIN_NAME_LENGTH - 2; ++length) {
+		printf(" ");
+	}
+	printf("STATE\n\n");
+}
+
+void print_info(int pid, char * info_name, int min_length) {
 	FILE* fd;
-	char path[128];
+	char path[MAX_CONTENT_LENGTH];
 	char c;
-	sprintf(path,"/proc/%d/cmd_line",pid);
+	sprintf(path, "/proc/%d/%s", pid, info_name);
 	
 	fd = fopen(path, "r");
-	if(fd != NULL)
-	{
+	if (fd != NULL) {
 		c = fgetc(fd);
-		while( c != EOF )
-		{
-		printf("%c",c);
-		c = fgetc(fd);
+		int length = 0;
+		while (c != EOF) {
+			printf("%c", c);
+			c = fgetc(fd);
+			++length;
+		}
+		while (length++ < min_length) {
+			printf(" ");
 		}
 		fclose(fd);
-	}	
+	}
+}
+
+void print_cmdline(int pid) {
+	print_info(pid, "cmd_line", MIN_NAME_LENGTH);
+}
+
+void print_ppid(int pid) {
+	print_info(pid, "ppid", 0);
 }
 
 void print_state(int pid) {
-	FILE* fd;
-	char c;
-	char path[128];
-	sprintf(path,"/proc/%d/state",pid);
-	
-	fd = fopen(path, "r");
-	if(fd != NULL)
-	{
-		c = fgetc(fd);
-		while( c != EOF )
-		{
-		printf("%c",c);
-		c = fgetc(fd);
-		}
-		fclose(fd);
-	}	
+	print_info(pid, "state", 11);
 }
 
 
@@ -78,9 +86,12 @@ int main() {
 	int pid;
 	
 	if (dir != NULL) {
-		while((entry = readdir(dir))) {
+		print_headers();
+		while ((entry = readdir(dir))) {
 			pid = atoi(entry->d_name);
 			printf("%d\t", pid);
+			print_ppid(pid);
+			printf("\t");
 			print_cmdline(pid);
 			printf("\t");
 			print_state(pid);
