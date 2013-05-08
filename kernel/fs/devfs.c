@@ -289,8 +289,8 @@ static fs_instance_t* mount_devfs() {
 //	klog("mounting DevFS");
 
 	fs_instance_t *instance = kmalloc(sizeof(fs_instance_t));
+	memset(instance, 0, sizeof(fs_instance_t));
 	instance->fs = &dev_fs;
-	instance->mkdir = NULL;
 //	instance->stat = devfs_stat;
 	instance->getroot = devfs_getroot;
 	instance->lookup = devfs_lookup;

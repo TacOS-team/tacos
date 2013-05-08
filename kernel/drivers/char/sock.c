@@ -223,14 +223,13 @@ int sock_ioctl(open_file_descriptor *ofd, unsigned int request, void *data) {
         // XXX: création d'un nouvel ofd, moche
         process_t *process = get_current_process();
         int i = 0;
-        while (process->fd[i].used) {
+        while (process->fd[i]) {
           i++;
         }
 
-        process->fd[i].ofd = kmalloc(sizeof(open_file_descriptor));
-        memcpy(process->fd[i].ofd, ofd, sizeof(open_file_descriptor));
-        process->fd[i].used = true;
-        process->fd[i].ofd->current_cluster = newSd;
+        process->fd[i] = kmalloc(sizeof(open_file_descriptor));
+        memcpy(process->fd[i], ofd, sizeof(open_file_descriptor));
+        process->fd[i]->current_cluster = newSd;
         *((int*) data) = i;
         return 0;
       }

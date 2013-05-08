@@ -413,17 +413,18 @@ static int ext2_truncate_inode(ext2_fs_instance_t *instance, int inode, off_t of
 // TODO vérifier le bon fonctionnement.
 
 		int n_blk = 0;
+/** FIXME! Il faut commencer par supprimer les blocks avec n_blk le plus grand.
 		// 1er cas : off est plus petit que size.
 		int addr = addr_inode_data2(instance, einode, n_blk);
 		while (addr) {
 			if (off <= 0) {
-				free_block(instance, addr);
+				free_block(instance, addr / (1024 << instance->superblock.s_log_block_size));
 			} else {
 				off -= 1024 << instance->superblock.s_log_block_size;
 			}
 			n_blk++;
 			addr = addr_inode_data2(instance, einode, n_blk);
-		}
+		} */
 
 		// 2er cas : off est plus grand.
 		while (off > 0) {

@@ -351,6 +351,8 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->pid = next_pid;
 	next_pid++;
 
+	new_proc->ctrl_tty = NULL;
+	
 	/* ZONE CRITIQUE */
 	asm("cli");
 
@@ -402,10 +404,13 @@ process_t* create_process_elf(process_init_data_t* init_data)
 	/* Initilisation des masques de signal */
 	new_proc->signal_data.mask = 0;
 	new_proc->signal_data.pending_set = 0;
+	for (i = 0; i < NSIG; i++) {
+		new_proc->signal_data.handlers[i] = NULL;
+	}
 	
 	/* Création de la table des symboles */
 	new_proc->symtable = load_symtable(init_data->file);
-	
+
 	add_process(new_proc);
 
 	/* Plantait, mais ne plante plus... */
@@ -470,6 +475,7 @@ process_t* create_process(process_init_data_t* init_data)
 	int val = 0;
 	ksemctl(new_proc->sem_wait, SEM_SET, &val);
 	
+	new_proc->priority = init_data->priority;
 	new_proc->user_time = 0;
 	new_proc->sys_time = 0;
 	new_proc->current_sample = 0;
@@ -481,9 +487,17 @@ process_t* create_process(process_init_data_t* init_data)
 	new_proc->regs.ecx = 0;
 	new_proc->regs.edx = 0;
 
+	new_proc->regs.esi = 0;
+	new_proc->regs.edi = 0;
+
 	new_proc->regs.cs = 0x8;
 	new_proc->regs.ds = 0x10;
 	new_proc->regs.ss = 0x10;
+
+	new_proc->regs.es = 0;
+	new_proc->regs.fs = 0;
+	new_proc->regs.gs = 0;
+	new_proc->regs.cr3 = 0;
 	
 	new_proc->regs.eflags = 0;
 	new_proc->regs.eip = prog;
@@ -495,6 +509,8 @@ process_t* create_process(process_init_data_t* init_data)
 	
 	new_proc->state = PROCSTATE_IDLE;
 	
+	new_proc->ctrl_tty = NULL;
+
 	/* Initialisation des signaux */
 	for(i=0; i<NSIG; i++)
 		new_proc->signal_data.handlers[i] = NULL;

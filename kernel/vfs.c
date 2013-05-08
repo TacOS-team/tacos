@@ -71,9 +71,8 @@ void vfs_init() {
 	root_vfs.d_inode->i_fops = &vfs_fops;
 
 	mvfs.instance = kmalloc(sizeof(fs_instance_t));
-	mvfs.instance->device = NULL;
+	memset(mvfs.instance, 0, sizeof(fs_instance_t));
 	mvfs.instance->getroot = vfs_getroot;
-	mvfs.instance->lookup = NULL;
 
 // Non 100% fonctionnel.
 //	dcache_init();

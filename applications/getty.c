@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
 	fclose(stdin);
 	fclose(stdout);
 	fclose(stderr);
-
+	
 	stdin = fopen(argv[1], "r");
 	stdout = fopen(argv[1], "w");
 	stderr = fopen(argv[1], "w");
