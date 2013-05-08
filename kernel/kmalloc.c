@@ -94,7 +94,13 @@ void *kmalloc(size_t size)
 	}
 
 	cut_mem(mem, real_size, &k_free_mem, &k_allocated_mem);
-	return (void *) (((uint32_t) mem) + sizeof(struct mem));
+	void * ret = (void *) (((uint32_t) mem) + sizeof(struct mem));
+
+	// Uniquement pour éviter que certaines parties bugguées ne marche par chance.
+	size_t i;
+	for (i = 0; i < size; i++) ((char *)ret)[i] = 0x42;
+
+	return ret;
 }
 
 int kfree(void *p)
