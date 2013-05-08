@@ -38,8 +38,8 @@ SYSCALL_HANDLER3(sys_write, uint32_t fd, const void *buf, size_t *c) {
 	ssize_t *t = (ssize_t*)c;
 	open_file_descriptor *ofd;
 
-	if (process->fd[fd].used) {
-		ofd = process->fd[fd].ofd;
+	if (process->fd[fd]) {
+		ofd = process->fd[fd];
 		
 		if(ofd->f_ops->write == NULL) {
 			kerr("No \"write\" method for this device.");
@@ -58,8 +58,8 @@ SYSCALL_HANDLER3(sys_read, uint32_t fd, const void *buf, size_t *c) {
 	
 	open_file_descriptor *ofd;
 
-	if (process->fd[fd].used) {
-		ofd = process->fd[fd].ofd;
+	if (process->fd[fd]) {
+		ofd = process->fd[fd];
 		
 		if(ofd->f_ops->read == NULL) {
 			kerr("No \"read\" method for this device.");
@@ -77,8 +77,8 @@ SYSCALL_HANDLER3(sys_seek, uint32_t fd, long *offset, int whence) {
 
 	open_file_descriptor *ofd;
 
-	if (process->fd[fd].used) {
-		ofd = process->fd[fd].ofd;
+	if (process->fd[fd]) {
+		ofd = process->fd[fd];
 		
 		if(ofd->f_ops->seek == NULL) {
 			kerr("No \"seek\" method for this device.");
@@ -95,8 +95,8 @@ SYSCALL_HANDLER3(sys_ioctl, uint32_t *fd, unsigned int request, void *data) {
 
 	open_file_descriptor *ofd;
 
-	if (process->fd[*fd].used) {
-		ofd = process->fd[*fd].ofd;
+	if (process->fd[*fd]) {
+		ofd = process->fd[*fd];
 
 		if (ofd->f_ops->ioctl == NULL) {
 			kerr("No \"ioctl\" method for this device.");
@@ -137,12 +137,11 @@ SYSCALL_HANDLER2(sys_dup, int oldfd, int *ret) {
 	process_t* process = get_current_process();
 
 	// recherche d'une place dans la file descriptor table du process :
-	while(process->fd[i].used) {
+	while(process->fd[i]) {
 		i++;
 	}
 
-	process->fd[i].used = true;
-	process->fd[i].ofd = process->fd[oldfd].ofd;
+	process->fd[i] = process->fd[oldfd];
 
 	*ret = i;
 }
@@ -150,15 +149,14 @@ SYSCALL_HANDLER2(sys_dup, int oldfd, int *ret) {
 SYSCALL_HANDLER2(sys_dup2, int oldfd, int *newfd) {
 	process_t* process = get_current_process();
 
-	if (process->fd[oldfd].used) {
-		if (process->fd[*newfd].used) {
-			if (process->fd[*newfd].ofd->f_ops->close != NULL) {
-				process->fd[*newfd].ofd->f_ops->close(process->fd[*newfd].ofd);
+	if (process->fd[oldfd]) {
+		if (process->fd[*newfd]) {
+			if (process->fd[*newfd]->f_ops->close != NULL) {
+				process->fd[*newfd]->f_ops->close(process->fd[*newfd]);
 			}
 		}
 
-		process->fd[*newfd].used = true;
-		process->fd[*newfd].ofd = process->fd[oldfd].ofd;
+		process->fd[*newfd] = process->fd[oldfd];
 
 	} else {
 		*newfd = -1;

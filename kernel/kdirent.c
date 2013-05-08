@@ -40,8 +40,8 @@ SYSCALL_HANDLER3(sys_readdir, int fd, char *entries, size_t *size) {
 	
 	open_file_descriptor *ofd;
 
-	if (process->fd[fd].used) {
-		ofd = process->fd[fd].ofd;
+	if (process->fd[fd] != NULL) {
+		ofd = process->fd[fd];
 		
 		if(ofd->f_ops->readdir == NULL) {
 			kerr("No \"readdir\" method for this device.");

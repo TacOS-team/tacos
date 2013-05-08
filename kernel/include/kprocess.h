@@ -103,7 +103,7 @@ typedef struct{
 	regs_t regs;
 	
 	/* Données utilisées pour les IO */
-	file_descriptor fd[FOPEN_MAX];
+	open_file_descriptor* fd[FOPEN_MAX];
 	
 	struct page_directory_entry * pd;
 	struct virtual_mem *vm;

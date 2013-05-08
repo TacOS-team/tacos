@@ -52,27 +52,22 @@ void init_stdfd(process_t *new_proc) {
 		new_proc->ctrl_tty = pprocess->ctrl_tty;
 		int i;
 		for (i = 0; i < FOPEN_MAX; i++) {
-			if (pprocess->fd[i].used) {
-				new_proc->fd[i].used = true;
-				new_proc->fd[i].ofd = kmalloc(sizeof(struct _open_file_descriptor));
-				memcpy(new_proc->fd[i].ofd, pprocess->fd[i].ofd, sizeof(struct _open_file_descriptor));
+			if (pprocess->fd[i]) {
+				new_proc->fd[i] = kmalloc(sizeof(struct _open_file_descriptor));
+				memcpy(new_proc->fd[i], pprocess->fd[i], sizeof(struct _open_file_descriptor));
 			} else {
-				new_proc->fd[i].used = false;
+				new_proc->fd[i] = NULL;
 			}
 		}
 	} else {
 		new_proc->ctrl_tty = "/dev/tty0";
 
-		struct _file_descriptor *fd0 = &(new_proc->fd[0]);
-		struct _file_descriptor *fd1 = &(new_proc->fd[1]);
-		struct _file_descriptor *fd2 = &(new_proc->fd[2]);
-	
-		fd0->used = true; /* stdin */
-		fd0->ofd = vfs_open(new_proc->ctrl_tty, O_RDONLY);
-		fd1->used = true; /* stdout */
-		fd1->ofd = vfs_open(new_proc->ctrl_tty, O_WRONLY);
-		fd2->used = true; /* stderr */
-		fd2->ofd = vfs_open(new_proc->ctrl_tty, O_WRONLY);
+		/* stdin */
+		new_proc->fd[0] = vfs_open(new_proc->ctrl_tty, O_RDONLY);
+		/* stdout */
+		new_proc->fd[1] = vfs_open(new_proc->ctrl_tty, O_WRONLY);
+		/* stderr */
+		new_proc->fd[2] = vfs_open(new_proc->ctrl_tty, O_WRONLY);
 	}
 
 	chardev_interfaces *di;
@@ -88,14 +83,14 @@ void close_all_fd() {
 	open_file_descriptor *ofd;
 
 	for (fd_id = 0; fd_id < FOPEN_MAX; fd_id++) {
-		if (process->fd[fd_id].used) {
-			ofd = process->fd[fd_id].ofd;
-			process->fd[fd_id].used = 0;
+		if (process->fd[fd_id]) {
+			ofd = process->fd[fd_id];
 
 			if(ofd->f_ops->close != NULL)
 				ofd->f_ops->close(ofd);
 
 			kfree(ofd);
+			process->fd[fd_id] = NULL;
 		}
 	}
 }
@@ -107,14 +102,13 @@ SYSCALL_HANDLER3(sys_open, int *fd_id, char *path , uint32_t flags) {
 	process_t* process = get_current_process();
 	
 	// recherche d une place dans la file descriptor table du process
-	while (process->fd[i].used) { 
+	while (process->fd[i]) { 
 		i++;
 	}
 
 	// ouverture du fichier
-	if ((process->fd[i].ofd = vfs_open(path, flags)) != NULL) {
+	if ((process->fd[i] = vfs_open(path, flags)) != NULL) {
 		*fd_id = i;
-		process->fd[i].used = true;
 	} else {
 		*fd_id = -1;
 	}
@@ -126,23 +120,23 @@ SYSCALL_HANDLER2(sys_close, int fd_id, uint32_t* ret)
 	*ret = -1;
 	open_file_descriptor *ofd;
 
-	if (fd_id >= 0 && fd_id < FOPEN_MAX && process->fd[fd_id].used) {
-		ofd = process->fd[fd_id].ofd;
+	if (fd_id >= 0 && fd_id < FOPEN_MAX && process->fd[fd_id]) {
+		ofd = process->fd[fd_id];
 	
 		if(ofd->f_ops->close == NULL)
 			kerr("No \"close\" method for this device.");
 		else
 			*ret = ofd->f_ops->close(ofd);
 		kfree(ofd);
-		process->fd[fd_id].used = 0;
+		process->fd[fd_id] = NULL;
 	}
 }
 
 SYSCALL_HANDLER3(sys_fcntl, int *fd_id, unsigned int request, void * data) {
 	process_t * process = get_current_process();
 	open_file_descriptor *ofd;
-	if (process->fd[*fd_id].used) {
-		ofd = process->fd[*fd_id].ofd;
+	if (process->fd[*fd_id]) {
+		ofd = process->fd[*fd_id];
 
 		if (request == F_SETFL) {
 			ofd->flags = (int)data;

@@ -72,14 +72,4 @@ typedef struct _open_file_descriptor {
 	void * extra_data;
 } open_file_descriptor;
 
-/**
- * Chaque process contient une table de descripteur de fichiers, et chaque
- * élément de cette table est de ce type.
- * XXX: Est-ce vraiment utile ???
- */
-typedef struct _file_descriptor {
-	struct _open_file_descriptor *ofd; /**< Descripteur de fichier ouvert. */
-	bool used; /**< Est-il utilisé ? */
-} file_descriptor;
-
 #endif
