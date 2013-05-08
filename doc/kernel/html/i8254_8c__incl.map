@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$i8254_8h.html" title="Initialisation du i8254 (timer)." alt="" coords="5,83,67,111"/>
-<area shape="rect" id="node7" href="$ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="91,83,160,111"/>
-<area shape="rect" id="node5" href="$types_8h.html" title="types.h" alt="" coords="5,161,67,189"/>
-</map>

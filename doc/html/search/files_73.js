@@ -22,6 +22,7 @@ var searchData=
   ['stdio_2eh',['stdio.h',['../stdio_8h.html',1,'']]],
   ['stdlib_2ec',['stdlib.c',['../libc_2stdlib_8c.html',1,'']]],
   ['stdlib_2eh',['stdlib.h',['../libc_2include_2stdlib_8h.html',1,'']]],
+  ['stdlib_2eh',['stdlib.h',['../kernel_2include_2klibc_2stdlib_8h.html',1,'']]],
   ['string_2ec',['string.c',['../libc_2string_8c.html',1,'']]],
   ['string_2ec',['string.c',['../kernel_2klibc_2string_8c.html',1,'']]],
   ['string_2eh',['string.h',['../libc_2include_2string_8h.html',1,'']]],

@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$fat__internal_8h.html#a8442aab7b7111d30d19b4be6a4464618" title="fat_stat" alt="" coords="133,5,200,33"/>
-<area shape="rect" id="node9" href="$ksyscall_8c.html#a3e64f9d87cb92e4dc7d748a495e232f1" title="Initialisation des appels systemes." alt="" coords="124,55,209,83"/>
-<area shape="rect" id="node5" href="$fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae" title="mount_FAT" alt="" coords="259,5,349,33"/>
-<area shape="rect" id="node7" href="$fat_8h.html#a3d1f5d8e3b22672684528c112bc6ff06" title="fat_init" alt="" coords="397,5,459,33"/>
-</map>

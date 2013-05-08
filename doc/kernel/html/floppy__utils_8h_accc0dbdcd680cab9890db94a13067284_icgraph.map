@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$floppy__interrupt_8h.html#aa736fd868e99a0bde478ea3b5a836b04" title="Récupère des données d&#39;interruption." alt="" coords="175,55,324,83"/>
-<area shape="rect" id="node9" href="$floppy_8h.html#a54d322040af5e9281dc034336f286398" title="Retourne le numero de version du controleur disquette." alt="" coords="185,5,313,33"/>
-<area shape="rect" id="node5" href="$floppy_8h.html#a4b305e10e95fed92b047adfac6dc4881" title="Initilise le driver floppy." alt="" coords="380,5,457,33"/>
-<area shape="rect" id="node7" href="$floppy__utils_8h.html#acf13f3cbd5df998eefb55cd2d15210c5" title="Déplace la tête de lecture à un cylindre défini." alt="" coords="373,55,464,83"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$types_8h.html" title="types.h" alt="" coords="83,161,145,189"/>
-<area shape="rect" id="node5" href="$memory_8h.html" title="Gestion des pages mémoires physiques." alt="" coords="22,83,99,111"/>
-<area shape="rect" id="node8" href="$pagination_8h.html" title="pagination.h" alt="" coords="123,83,214,111"/>
-<area shape="rect" id="node11" href="$vmm_8h.html" title="vmm.h" alt="" coords="238,83,299,111"/>
-</map>

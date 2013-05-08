@@ -196,6 +196,7 @@ var searchData=
   ['stdio_2ec',['stdio.c',['../stdio_8c.html',1,'']]],
   ['stdio_2eh',['stdio.h',['../stdio_8h.html',1,'']]],
   ['stdlib_2ec',['stdlib.c',['../libc_2stdlib_8c.html',1,'']]],
+  ['stdlib_2eh',['stdlib.h',['../kernel_2include_2klibc_2stdlib_8h.html',1,'']]],
   ['stdlib_2eh',['stdlib.h',['../libc_2include_2stdlib_8h.html',1,'']]],
   ['stdout',['stdout',['../libio_8h.html#ac80f4484175bf6c48d7b7ca4e9897ae6',1,'stdout():&#160;stdfiles.c'],['../stdfiles_8c.html#ac80f4484175bf6c48d7b7ca4e9897ae6',1,'stdout():&#160;stdfiles.c']]],
   ['stop_5fscheduler',['stop_scheduler',['../scheduler_8h.html#aafa4b5a4a0ef6280c9834e1c30aff031',1,'stop_scheduler():&#160;scheduler.c'],['../scheduler_8c.html#aafa4b5a4a0ef6280c9834e1c30aff031',1,'stop_scheduler():&#160;scheduler.c']]],

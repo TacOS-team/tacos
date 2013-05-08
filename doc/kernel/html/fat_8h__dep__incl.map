@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$fat_8c.html" title="Driver FAT." alt="" coords="5,83,125,111"/>
-<area shape="rect" id="node5" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="149,83,328,111"/>
-<area shape="rect" id="node7" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="352,83,459,111"/>
-<area shape="rect" id="node9" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="483,83,571,111"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$structfile__system__t.html" title="Structure qui représente un FS." alt="" coords="136,6,235,34"/>
-<area shape="rect" id="node4" href="$struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté." alt="" coords="203,99,309,127"/>
-<area shape="rect" id="node8" href="$struct__inode__t.html" title="_inode_t" alt="" coords="321,194,391,222"/>
-<area shape="rect" id="node14" href="$struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="224,398,368,426"/>
-<area shape="rect" id="node19" href="$struct__mounted__fs__t.html" title="_mounted_fs_t" alt="" coords="5,250,112,278"/>
-<area shape="rect" id="node6" href="$struct__dentry__t.html" title="_dentry_t" alt="" coords="259,305,333,333"/>
-<area shape="rect" id="node10" href="$struct__open__file__operations__t.html" title="_open_file_operations_t" alt="" coords="423,99,580,127"/>
-</map>

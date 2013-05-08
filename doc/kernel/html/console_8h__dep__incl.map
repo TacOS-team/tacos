@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$console_8c.html" title="Console virtuelle (Fn)." alt="" coords="5,83,211,111"/>
-<area shape="rect" id="node5" href="$keyboard_8c.html" title="Driver clavier." alt="" coords="235,83,448,111"/>
-<area shape="rect" id="node7" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="472,83,579,111"/>
-</map>

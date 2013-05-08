@@ -1,9 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="5,83,75,111"/>
-<area shape="rect" id="node5" href="$types_8h.html" title="types.h" alt="" coords="99,83,160,111"/>
-<area shape="rect" id="node7" href="$klog_8h.html" title="Logging macros." alt="" coords="184,83,240,111"/>
-<area shape="rect" id="node11" href="$floppy__interrupt_8h.html" title="floppy_interrupt.h" alt="" coords="264,83,381,111"/>
-<area shape="rect" id="node13" href="$floppy__utils_8h.html" title="floppy_utils.h" alt="" coords="405,83,501,111"/>
-<area shape="rect" id="node15" href="$floppy__motor_8h.html" title="floppy_motor.h" alt="" coords="525,83,629,111"/>
-<area shape="rect" id="node9" href="$kstdio_8h.html" title="kprintf" alt="" coords="179,161,245,189"/>
-</map>

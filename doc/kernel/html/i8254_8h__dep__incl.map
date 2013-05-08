@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="5,83,107,111"/>
-<area shape="rect" id="node5" href="$events_8c.html" title="Gestion d&#39;évènements datés." alt="" coords="131,83,240,111"/>
-<area shape="rect" id="node7" href="$i8254_8c.html" title="kernel/i8254.c" alt="" coords="264,83,365,111"/>
-</map>

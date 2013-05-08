@@ -1,9 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$tty_8c.html" title="kernel/drivers/char/tty/tty.c" alt="" coords="5,83,179,111"/>
-<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="203,83,309,111"/>
-<area shape="rect" id="node7" href="$kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="333,83,443,111"/>
-<area shape="rect" id="node9" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="467,83,589,111"/>
-<area shape="rect" id="node11" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="613,83,725,111"/>
-<area shape="rect" id="node13" href="$ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="749,83,867,111"/>
-<area shape="rect" id="node15" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="891,83,1016,111"/>
-</map>
