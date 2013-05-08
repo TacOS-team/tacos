@@ -203,6 +203,7 @@ static dentry_t* devfs_lookup(struct _fs_instance_t *instance, struct _dentry_t*
 
 		switch(drentry->type) {
 			case CHARDEV:
+				inode->i_fops->readdir = NULL;
 				inode->i_fops->open = ((chardev_interfaces*)(drentry->di))->open;
 				inode->i_fops->write = ((chardev_interfaces*)(drentry->di))->write;
 				inode->i_fops->read = ((chardev_interfaces*)(drentry->di))->read; 
@@ -219,6 +220,8 @@ static dentry_t* devfs_lookup(struct _fs_instance_t *instance, struct _dentry_t*
 				
 				break;
 			case BLKDEV:
+				inode->i_fops->readdir = NULL;
+				inode->i_fops->open = NULL;
 				inode->i_fops->write = NULL; /* à implémenter */
 				inode->i_fops->read = NULL; /* à implémenter */
 				inode->i_fops->seek = NULL; /* à implémenter */
