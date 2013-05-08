@@ -99,9 +99,12 @@ typedef struct _tty_driver_t {
 	tty_operations_t *ops;
 } tty_driver_t;
 
+/**
+ * Représente une taille de fenêtre.
+ */
 struct winsize {
-	unsigned short ws_row;
-	unsigned short ws_col;
+	unsigned short ws_row; /**< Nombre de lignes. */
+	unsigned short ws_col; /**< Nombre de colonnes. */
 };
 
 /**
@@ -161,7 +164,23 @@ size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count);
 size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count);
 
 int tty_ioctl (open_file_descriptor *ofd, unsigned int request, void *data);
+
+/**
+ * Fermeture d'un tty.
+ *
+ * @param ofd Descripteur de fichier ouvert d'un tty.
+ *
+ * @return 0 en cas de succès, 1 si déjà fermé.
+ */
 int tty_close (open_file_descriptor *ofd);
+
+/**
+ * Ouverture d'un tty.
+ *
+ * @param ofd Descripteur de fichier ouvert d'un tty.
+ *
+ * @return 0 ou plante. :)
+ */
 int tty_open (open_file_descriptor *ofd);
 
 #endif

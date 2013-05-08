@@ -75,8 +75,21 @@ typedef void (*exception_handler_t)(uint32_t error_id, uint32_t error_code);
 
 /**
  * Définit le handler associé à une exception.
+ *
+ * @param exception_id identifiant de l'exception.
+ * @param routine handler pour cette exception.
+ *
+ * @return 0 en cas de succès, -1 sinon.
  */
 int exception_set_routine(uint8_t exception_id, exception_handler_t routine);
+
+/**
+ * Désactive le handler d'une exception.
+ *
+ * @param exception_id identifiant de l'exception.
+ *
+ * @return 0 en cas de succès, -1 sinon.
+ */
 int exception_disable(uint8_t exception_id);
 
 #endif

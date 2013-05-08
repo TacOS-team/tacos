@@ -38,19 +38,19 @@ struct hashmap_value_t;
  * éléments sont du type hashmap_cell_t.
  */
 struct hashmap_cell_t {
-	struct hashmap_key_t *key;
-	struct hashmap_value_t *value;
-	struct hashmap_cell_t *next;
+	struct hashmap_key_t *key; /**< Clef. */
+	struct hashmap_value_t *value; /**< Valeur. */
+	struct hashmap_cell_t *next; /**< Élement suivant. */
 };
 
 /**
  * Structure représentant une hashmap.
  */
 typedef struct __hashmap_t {
-	int size;
-	struct hashmap_cell_t** table;
-	int (*equal)(struct hashmap_key_t*, struct hashmap_key_t*);
-	int (*hash)(struct hashmap_key_t*);
+	int size; /**< Taile de la table. */
+	struct hashmap_cell_t** table; /**< Table de liste d'éléments ayant le même hash. */
+	int (*equal)(struct hashmap_key_t*, struct hashmap_key_t*); /**< Fonction de comparaison de clefs. */
+	int (*hash)(struct hashmap_key_t*); /**< Fonction de hashage. */
 } hashmap_t;
 
 /**

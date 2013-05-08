@@ -91,7 +91,7 @@ struct ext2_super_block {
 	uint8_t   s_def_hash_version;	/**< Default hash version to use */
 	uint8_t   s_padding[3];		/**< unused. */
 // -- Other options --
-	uint32_t  s_default_mount_opts;
+	uint32_t  s_default_mount_opts; /**< Option de mount par défaut. */
 	uint32_t  s_first_meta_bg;		/**< First metablock block group */
 	uint8_t   s_reserved[760];		/**< Padding to the end of the block */
 };
@@ -129,9 +129,9 @@ struct ext2_group_desc {
  * Copie mémoire des infos du disque pour limiter le nombre d'accès inutiles.
  */
 struct ext2_group_desc_internal {
-	uint8_t *inode_bitmap;
-	struct ext2_inode *inodes;
-	//TODO
+	uint8_t *inode_bitmap; /**< Inode bitmap. */
+	struct ext2_inode *inodes; /**< Tableau d'inodes. */
+	//TODO: Je pourrais faire de même avec les blocks. À voir...
 };
 
 /**
@@ -216,7 +216,7 @@ struct directories_t {
  */
 typedef struct _ext2_fs_instance_t {
 	fs_instance_t super; /**< Common fields for all FS instances. */
-	dentry_t * root;
+	dentry_t * root; /**< Inode root. */
 	struct ext2_super_block superblock; /**< Superblock. */
 	struct ext2_group_desc *group_desc_table; /**< Block group descriptor table. */
 	int n_groups;   /**< Number of entries in the group desc table. */
@@ -348,6 +348,14 @@ int ext2_truncate(inode_t *inode, off_t off);
  */
 int ext2_rmdir(inode_t *dir, dentry_t *dentry);
 
+/**
+ * Change les attributs d'un inode.
+ *
+ * @param inode Inode à modifier.
+ * @param attr Nouveaux attributs.
+ *
+ * @return 0 en cas de succès.
+ */
 int ext2_setattr(inode_t *inode, file_attributes_t *attr);
 
 /**
@@ -364,9 +372,21 @@ int ext2_seek(open_file_descriptor * ofd, long offset, int whence);
 /**
  * Retourne le noeud racine.
  *
+ * @param instance Instance de FS.
+ *
  * @return le noeud racine.
  */
-dentry_t *ext2_getroot();
+dentry_t *ext2_getroot(struct _fs_instance_t *instance);
+
+/**
+ * Recherche le directory entry qui correspond au nom donné.
+ *
+ * @param instance Instance de FS.
+ * @param dentry Parent directory entry.
+ * @param name Nom de l'entrée.
+ *
+ * @return Directory Entry de l'entrée recherchée ou NULL.
+ */
 dentry_t* ext2_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name);
 
 /**
