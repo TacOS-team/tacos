@@ -46,9 +46,9 @@ __BEGIN_DECLS
 #define _IOLBF 1 /* Line buffered. */
 #define _IONBF 2 /* No buffering. */
 
-#define SEEK_SET 0
-#define SEEK_CUR 1
-#define SEEK_END 2
+#define SEEK_SET 0 /**< SEEK à une position donnée. */
+#define SEEK_CUR 1 /**< SEEK relatif à la position actuelle. */
+#define SEEK_END 2 /**< SEEK par rapport à la fin du fichier. */
 
 typedef long fpos_t;
 

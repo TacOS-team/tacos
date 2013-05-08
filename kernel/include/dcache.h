@@ -23,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * @brief dentry cache
+ * @brief Dentry cache.
  */
 
 #ifndef _DCACHE_H
@@ -32,9 +32,40 @@
 struct _fs_instance_t;
 struct _dentry_t;
 
+/**
+ * Initialisation du cache.
+ */
 void dcache_init();
+
+/**
+ * Cherche une valeur dans le cache.
+ *
+ * @param instance Instance de FS.
+ * @param dentry Dentry parent.
+ * @param name Nom de l'entrée.
+ *
+ * @return Dentry recherchée ou NULL si non en cache.
+ */
 struct _dentry_t *dcache_get(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name);
+
+/**
+ * Insert une valeur dans le cache.
+ *
+ * @param instance Instance de FS.
+ * @param pdentry Dentry parent.
+ * @param name Nom de l'entrée.
+ * @param dentry Dentry à mettre en cache.
+ *
+ */
 void dcache_set(struct _fs_instance_t *instance, struct _dentry_t* pdentry, const char * name, struct _dentry_t *dentry);
+
+/**
+ * Supprime une valeur du cache.
+ *
+ * @param instance Instance de FS.
+ * @param dentry Dentry parent.
+ * @param name Nom de l'entrée.
+ */
 void dcache_remove(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name);
 
 #endif

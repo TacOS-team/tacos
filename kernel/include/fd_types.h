@@ -30,11 +30,11 @@
 #ifndef _FD_TYPES_H
 #define _FD_TYPES_H
 
-#define FOPEN_MAX 500
+#define FOPEN_MAX 500 /**< Nombre max d'ouverture de fichier. */
 
-#define SEEK_SET 0
-#define SEEK_CUR 1
-#define SEEK_END 2
+#define SEEK_SET 0 /**< SEEK à une position donnée. */
+#define SEEK_CUR 1 /**< SEEK relatif à la position actuelle. */
+#define SEEK_END 2 /**< SEEK par rapport à la fin du fichier. */
 
 struct _open_file_descriptor;
 struct _fs_instance_t;
@@ -50,6 +50,10 @@ struct _open_file_operations_t {
 	int (*readdir) (struct _open_file_descriptor*, char*, size_t);
 } open_file_operations_t;
 
+/**
+ * Descripteur de fichier ouvert. À chaque fichier ouvert, une structure de ce
+ * type est instanciée pour y stocker les informations sur le fichier et le FS.
+ */
 typedef struct _open_file_descriptor {
 // A dégager ? Infos dans l'inode.
 	uint32_t flags;
@@ -68,9 +72,14 @@ typedef struct _open_file_descriptor {
 	void * extra_data;
 } open_file_descriptor;
 
+/**
+ * Chaque process contient une table de descripteur de fichiers, et chaque
+ * élément de cette table est de ce type.
+ * XXX: Est-ce vraiment utile ???
+ */
 typedef struct _file_descriptor {
-	struct _open_file_descriptor *ofd;
-	bool used;
+	struct _open_file_descriptor *ofd; /**< Descripteur de fichier ouvert. */
+	bool used; /**< Est-il utilisé ? */
 } file_descriptor;
 
 #endif
