@@ -126,7 +126,7 @@ int ext2_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 			d->d_ino = aux->dir->inode;
 			strncpy(d->d_name, aux->dir->name, aux->dir->name_len);
 			d->d_name[aux->dir->name_len] = '\0';
-			d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + strlen(d->d_name) + 1;
+			d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + aux->dir->name_len + 1;
 			d->d_type = aux->dir->file_type;
 			count += d->d_reclen;
 			c++;
