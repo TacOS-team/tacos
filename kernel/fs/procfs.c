@@ -55,8 +55,10 @@
 #define procfs_ppid_offset         procfs_state_offset + 1
 // fd
 #define procfs_fd_offset           procfs_ppid_offset + 1
-// fd/*
+// fd/* => taille de FOPEN_MAX
 #define procfs_first_fd_offset     procfs_fd_offset + 1
+// priority
+#define procfs_priority_offset     procfs_first_fd_offset + FOPEN_MAX
 
 #define PROCFS_PROCESS_RANGE       60*1000;
 
@@ -173,6 +175,18 @@ static ssize_t procfs_read_ppid(open_file_descriptor * ofd, void* buffer, size_t
 	return result;
 }
 
+static ssize_t procfs_read_priority(open_file_descriptor * ofd, void* buffer, size_t count) {
+	ssize_t result = EOF;
+	extra_data_procfs_t *extra = ofd->extra_data;
+	process_t* process = find_process(extra->pid);
+	if(process) {
+		char priority[MAX_PID_LENGTH+1];
+		itoa(priority, 10, process->priority);
+		result = write_string_in_buffer(ofd, buffer, priority, count);
+	}
+	return result;
+}
+
 static ssize_t procfs_read_state(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
 	extra_data_procfs_t *extra = ofd->extra_data;
@@ -207,9 +221,10 @@ typedef struct {
 } procfs_file_function_t;
 
 static procfs_file_function_t procfs_file_functions_list[] = {
-									{ "cmd_line", 0, procfs_read_name,  procfs_cmd_line_offset },
-									{ "ppid",     0, procfs_read_ppid,  procfs_ppid_offset },
-									{ "state",    0, procfs_read_state, procfs_state_offset }
+									{ "cmd_line", 0, procfs_read_name,     procfs_cmd_line_offset },
+									{ "ppid",     0, procfs_read_ppid,     procfs_ppid_offset },
+									{ "state",    0, procfs_read_state,    procfs_state_offset },
+									{ "priority", 0, procfs_read_priority, procfs_priority_offset }
 								};
 
 const size_t nb_file_functions = sizeof(procfs_file_functions_list)
