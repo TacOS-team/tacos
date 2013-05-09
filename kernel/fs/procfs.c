@@ -152,9 +152,11 @@ static size_t procfs_read_process_fd(open_file_descriptor* ofd, void* buffer, si
 	extra_data_procfs_t *extra = ofd->extra_data;
 	process_t* process = find_process(extra->pid);
 	if(process && ofd->current_octet == 0) {
-		strcpy(buffer, "toto !!!!!");// TODO
-		ofd->current_octet = strlen(buffer);
-		result= ofd->current_octet;
+		if (process->fd[extra->specific_data.fd] != NULL) {
+			strcpy(buffer, process->fd[extra->specific_data.fd]->pathname);
+			ofd->current_octet = strlen(buffer);
+			result= ofd->current_octet;
+		}
 	}
 	return result;
 }
@@ -267,8 +269,7 @@ static int procfs_read_process_dir(open_file_descriptor * ofd, char * entries,
 }
 
 static int procfs_read_fd_process_dir(open_file_descriptor * ofd, char * entries,
-																	 size_t size) {
-	kprintf("procfs_read_fd_process_dir\n");
+																	 		size_t size) {
 	size_t count   = 0;
 	struct dirent *d;
 
@@ -445,12 +446,9 @@ static dentry_t * process_fd_lookup(struct _fs_instance_t *instance,
 	size_t i;
 	extra_data_procfs_t * extra = dentry->d_inode->i_fs_specific;
 	process_t * process = find_process(extra->pid);
-	if (process != NULL) {
-		for (i = 0; i < FOPEN_MAX; ++i) {
-			if (process->fd[i] != NULL) {
-				result = get_process_fd_dentry(instance, name, extra->pid, i);
-			}
-		}
+	size_t num_fd = atoi(name);
+	if (process && num_fd < FOPEN_MAX && process->fd[num_fd]) {
+		result = get_process_fd_dentry(instance, name, extra->pid, num_fd);
 	}
 	return result;
 }
