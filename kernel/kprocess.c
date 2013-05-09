@@ -666,6 +666,8 @@ SYSCALL_HANDLER3(sys_exec, char *cmdline, char **environ, int *retval)
 		ret = sys_exec2(&init_data);
 
 		kfree(init_data.data);
+		uint32_t r;
+		sys_close(fd, &r, 0);
 	}
 	kfree(execpath);
 	
