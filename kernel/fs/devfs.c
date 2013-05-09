@@ -166,8 +166,10 @@ static int devfs_readdir(open_file_descriptor * ofd, char * entries, size_t size
 	while (i < MAX_DRIVERS && count < size) {
 		if (driver_list[i].used) {
 			struct dirent *d = (struct dirent *)(entries + count);
+			int reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + strlen(driver_list[i].name) + 1;
+			if (count + reclen > size) break;
+			d->d_reclen = reclen;
 			d->d_ino = 1;
-			d->d_reclen = sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + strlen(driver_list[i].name) + 1;
 			//d.d_type = dir_entry->attributes;
 			strcpy(d->d_name, driver_list[i].name);
 			count += d->d_reclen;
