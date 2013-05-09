@@ -222,6 +222,10 @@ open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 	}
 
 end:
+	if (ret != NULL) {
+		ret->pathname = kmalloc(strlen(pathname) + 1);
+		strcpy(ret->pathname, pathname);
+	}
 	return ret;
 ok:
 	if (flags & O_TRUNC && nb.mnt->instance->setattr) {
@@ -237,6 +241,7 @@ int vfs_close(open_file_descriptor *ofd) {
 	if (ofd == NULL) {
 		return -1;
 	}
+	kfree(ofd->pathname);
 	kfree(ofd);
 	return 0;
 }
