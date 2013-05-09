@@ -546,6 +546,7 @@ static fs_instance_t* mount_procfs() {
 //	instance->stat = procfs_stat;
 	instance->getroot = procfs_getroot;
 	instance->lookup = procfs_lookup;
+	instance->fs = &proc_fs;
 	
 	return instance;
 }
