@@ -241,6 +241,7 @@ int vfs_close(open_file_descriptor *ofd) {
 	if (ofd == NULL) {
 		return -1;
 	}
+	//TODO decrement utilisateurs de l'inode, si 0 alors on remove du dcache.
 	kfree(ofd->pathname);
 	kfree(ofd);
 	return 0;
