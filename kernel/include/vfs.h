@@ -38,7 +38,6 @@ struct _dentry_t;
 struct _inode_t;
 struct _file_attributes_t;
 
-
 /**
  * @brief Structure qui représente un FS.
  */
