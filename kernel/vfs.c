@@ -26,7 +26,7 @@
  * @brief Virtual File System. Gestion des points de montage.
  */
 
-//#include <dcache.h>
+#include <dcache.h>
 #include <fs/devfs.h>
 #include <fs/fat.h>
 #include <kdirent.h>
@@ -75,7 +75,7 @@ void vfs_init() {
 	mvfs.instance->getroot = vfs_getroot;
 
 // Non 100% fonctionnel.
-//	dcache_init();
+	dcache_init();
 }
 
 void vfs_register_fs(file_system_t *fs) {
@@ -132,13 +132,13 @@ static int lookup(struct nameidata *nb) {
 			}
 		}
 
-		//dentry = dcache_get(nb->mnt->instance, nb->dentry, name);
-		//if (!dentry) {
+		dentry = dcache_get(nb->mnt->instance, nb->dentry, name);
+		if (!dentry) {
 			dentry = nb->mnt->instance->lookup(nb->mnt->instance, nb->dentry, name);
-		//	if (dentry) {
-		//		dcache_set(nb->mnt->instance, nb->dentry, name, dentry);
-		//	}
-		//}
+			if (dentry) {
+				dcache_set(nb->mnt->instance, nb->dentry, name, dentry);
+			}
+		}
 		if (dentry) {
 			nb->dentry = dentry;
 		} else {
@@ -327,11 +327,11 @@ int vfs_unlink(const char *pathname) {
 		if (nb.mnt->instance->unlink) {
 			inode_t *pinode = nb.dentry->d_inode;
 			nb.flags &= ~LOOKUP_PARENT;
-			//dentry_t *dentry = nb.dentry;
-			//const char *last = nb.last;
+			dentry_t *dentry = nb.dentry;
+			const char *last = nb.last;
 			lookup(&nb);
 			//FIXME
-			//dcache_remove(nb.mnt->instance, dentry, last);
+			dcache_remove(nb.mnt->instance, dentry, last);
 			nb.mnt->instance->unlink(pinode, nb.dentry);
 		} else {
 			klog("Pas de unlink pour ce fs.");
@@ -349,11 +349,11 @@ int vfs_rmdir(const char *pathname) {
 		if (nb.mnt->instance->rmdir) {
 			inode_t *pinode = nb.dentry->d_inode;
 			nb.flags &= ~LOOKUP_PARENT;
-			//dentry_t *dentry = nb.dentry;
-			//const char *last = nb.last;
+			dentry_t *dentry = nb.dentry;
+			const char *last = nb.last;
 			lookup(&nb);
 			//FIXME
-			//dcache_remove(nb.mnt->instance, dentry, last);
+			dcache_remove(nb.mnt->instance, dentry, last);
 			nb.mnt->instance->rmdir(pinode, nb.dentry);
 		} else {
 			klog("Pas de rmdir pour ce fs.");
