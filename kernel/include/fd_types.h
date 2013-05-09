@@ -32,6 +32,8 @@
 
 #define FOPEN_MAX 500 /**< Nombre max d'ouverture de fichier. */
 
+#define MAX_PATH_LENGTH 1024
+
 #define SEEK_SET 0 /**< SEEK à une position donnée. */
 #define SEEK_CUR 1 /**< SEEK relatif à la position actuelle. */
 #define SEEK_END 2 /**< SEEK par rapport à la fin du fichier. */
@@ -59,6 +61,7 @@ typedef struct _open_file_descriptor {
 	uint32_t flags;
 	int current_cluster; //XXX à supprimer (sock en dépend encore).
 	uint8_t buffer[512]; //XXX à supprimer.
+	char * pathname;
 	uint32_t current_octet; // Utile pour f_pos ?
 	uint32_t first_cluster;
 	uint32_t file_size; 
