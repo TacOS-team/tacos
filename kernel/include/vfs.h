@@ -89,6 +89,7 @@ typedef struct _inode_t {
 	time_t  i_ctime;  /**< Creation time */
 	time_t  i_mtime;  /**< Modification time */
 	time_t  i_dtime;  /**< Deletion Time */
+	int i_count; /**< Nombre d'ofd l'utilisant */
 	unsigned char  i_nlink;  /**< Links count */
 	unsigned char  i_flags;  /**< File flags */
 	unsigned long  i_blocks; /**< Blocks count */

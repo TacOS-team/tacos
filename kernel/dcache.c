@@ -40,21 +40,6 @@ struct key_t {
 	const char* name; /**< Dir name. */
 };
 
-struct lru_t {
-	int index;
-	int size;
-	struct key_t **keys;
-};
-
-static struct lru_t *lru;
-
-/*
-static void swap_pointers(void *a, void *b) {
-	void *buf = a;
-	a = b;
-	b = buf;
-}*/
-
 static int dentry_equal(struct hashmap_key_t *a, struct hashmap_key_t *b) {
 	struct key_t *ka = (struct key_t*) a;
 	struct key_t *kb = (struct key_t*) b;
@@ -68,31 +53,17 @@ static int dentry_hash(struct hashmap_key_t* key) {
 }
 
 void dcache_init() {
-	int i;
 	map = hashmap_create(100, dentry_equal, dentry_hash);
-	lru = kmalloc(sizeof(struct lru_t));
-	lru->index = 0;
-	lru->size = 200;
-	lru->keys = kmalloc(sizeof(struct key_t*) * lru->size);
-	for (i = 0; i < lru->size; i++) lru->keys[i] = NULL;
 }
 
 void dcache_remove(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name) {
 	if (!instance->fs->unique_inode) return;
-klog("dcache remove");
+	klog("dcache remove %s", name);
 	struct key_t key;
 	key.instance = instance;
 	key.dentry = dentry;
 	key.name = name;
-	int i;
-	for (i = 0; i < lru->size; i++) {
-		if (map->equal((struct hashmap_key_t*)lru->keys[i], (struct hashmap_key_t*)&key)) {
-			hashmap_remove(map, (struct hashmap_key_t*)lru->keys[i]);
-			klog("ok");
-			kfree(lru->keys[i]);
-			lru->keys[i] = NULL;
-		}
-	}
+	hashmap_remove(map, (struct hashmap_key_t*)&key);
 }
 
 struct _dentry_t *dcache_get(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name) {
@@ -114,14 +85,6 @@ void dcache_set(struct _fs_instance_t *instance, struct _dentry_t* pdentry, cons
 	key->instance = instance;
 	key->dentry = pdentry;
 	key->name = name;
-
-	if (lru->keys[lru->index]) {
-		dentry_t* d = (dentry_t*) hashmap_remove(map, (struct hashmap_key_t*)lru->keys[lru->index]);
-		kfree(d);
-		kfree(lru->keys[lru->index]);
-	}
-	lru->keys[lru->index] = key;
-	lru->index = (lru->index + 1) % lru->size;
 
 	hashmap_set(map, (struct hashmap_key_t*)key, (struct hashmap_value_t*)dentry);
 }

@@ -406,54 +406,11 @@ static int mknod_inode(ext2_fs_instance_t *instance, int inode, const char *name
 	return i;
 }
 
-static int ext2_truncate_inode(ext2_fs_instance_t *instance, int inode, off_t off) {
-	uint32_t size = off;
-	struct ext2_inode *einode = read_inode(instance, inode);
-	if (einode) {
-// TODO vérifier le bon fonctionnement.
-
-		int n_blk;
-		if (size > 0) {
-			n_blk	= (size - 1) / (1024 << instance->superblock.s_log_block_size) + 1;
-		} else {
-			n_blk = 1;
-		}
-
-		int addr = addr_inode_data2(instance, einode, n_blk);
-		if (addr) {
-			// 1er cas : off est plus petit que la taille du fichier.
-			while (addr) {
-				if (off <= 0) {
-					free_block(instance, addr / (1024 << instance->superblock.s_log_block_size));
-				} else {
-					off -= 1024 << instance->superblock.s_log_block_size;
-				}
-				n_blk++;
-				addr = addr_inode_data2(instance, einode, n_blk);
-			}
-		} else {
-			// 2er cas : off est plus grand.
-			while (off > 0) {
-				set_block_inode_data(instance, einode, n_blk, alloc_block(instance));
-				n_blk++;
-				off -= 1024 << instance->superblock.s_log_block_size;
-			}
-		}
-
-		einode->i_size = size;
-		write_inode(instance, inode, einode);
-		return 0;
-	}
-	return -ENOENT;
-}
-
-
-static inode_t* ext2inode_2_inode(struct _fs_instance_t *instance, int ino, struct ext2_inode *einode) {
+static void ext2inode_2_inode(inode_t* inode, struct _fs_instance_t *instance, int ino, struct ext2_inode *einode) {
 	if (einode == NULL) {
 		kerr("inode is null! Can't convert it to real inode.");
-		return NULL;
+		return;
 	}
-	inode_t *inode = kmalloc(sizeof(inode_t));
 	inode->i_ino = ino;
 	inode->i_mode = einode->i_mode;
 	inode->i_uid = einode->i_uid;
@@ -471,6 +428,4 @@ static inode_t* ext2inode_2_inode(struct _fs_instance_t *instance, int ino, stru
 	extra_data->inode = ino;
 	extra_data->type = EXT2_FT_REG_FILE; //XXX!!!
 	inode->i_fs_specific = extra_data;
-
-	return inode;
 }

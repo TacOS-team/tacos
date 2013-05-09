@@ -295,14 +295,53 @@ int ext2_mknod(inode_t *dir, dentry_t *dentry, mode_t mode, dev_t dev) {
 	}
 	struct ext2_inode *einode = read_inode((ext2_fs_instance_t*)dir->i_instance, ino);
 
-	inode_t *inode = ext2inode_2_inode(dir->i_instance, ino, einode);
-	dentry->d_inode = inode;
+	dentry->d_inode = kmalloc(sizeof(inode_t));
+	ext2inode_2_inode(dentry->d_inode, dir->i_instance, ino, einode);
 
 	return 0;
 }
 
 int ext2_truncate(inode_t *inode, off_t off) {
-	return ext2_truncate_inode((ext2_fs_instance_t*)inode->i_instance, inode->i_ino, off);
+
+	uint32_t size = off;
+	ext2_fs_instance_t *instance = (ext2_fs_instance_t*)inode->i_instance;
+	struct ext2_inode *einode = read_inode(instance, inode->i_ino);
+	if (einode) {
+// TODO vérifier le bon fonctionnement.
+		int n_blk;
+		if (size > 0) {
+			n_blk	= (size - 1) / (1024 << instance->superblock.s_log_block_size) + 1;
+		} else {
+			n_blk = 1;
+		}
+
+		int addr = addr_inode_data2(instance, einode, n_blk);
+		if (addr) {
+			// 1er cas : off est plus petit que la taille du fichier.
+			while (addr) {
+				if (off <= 0) {
+					free_block(instance, addr / (1024 << instance->superblock.s_log_block_size));
+				} else {
+					off -= 1024 << instance->superblock.s_log_block_size;
+				}
+				n_blk++;
+				addr = addr_inode_data2(instance, einode, n_blk);
+			}
+		} else {
+			// 2er cas : off est plus grand.
+			while (off > 0) {
+				set_block_inode_data(instance, einode, n_blk, alloc_block(instance));
+				n_blk++;
+				off -= 1024 << instance->superblock.s_log_block_size;
+			}
+		}
+
+		einode->i_size = size;
+		write_inode(instance, inode->i_ino, einode);
+		ext2inode_2_inode(inode, inode->i_instance, inode->i_ino, einode);
+		return 0;
+	}
+	return -ENOENT;
 }
 
 dentry_t *ext2_getroot(struct _fs_instance_t *instance) {
@@ -324,17 +363,18 @@ dentry_t* ext2_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry,
 		return NULL;
 	}
 	
-	if (flags & O_TRUNC) {
-		ext2_truncate_inode((ext2_fs_instance_t*)instance, inode, 0);
-	}
-
 	struct ext2_inode *einode = read_inode((ext2_fs_instance_t*)instance, inode);
 
 	dentry_t *d = kmalloc(sizeof(dentry_t));
 	char *n = kmalloc(strlen(name) + 1);
 	strcpy(n, name);
 	d->d_name = (const char*)n;
-	d->d_inode = ext2inode_2_inode(instance, inode, einode);
+	d->d_inode = kmalloc(sizeof(inode_t));
+	ext2inode_2_inode(d->d_inode, instance, inode, einode);
+
+	if (flags & O_TRUNC) {
+		ext2_truncate(d->d_inode, 0);
+	}
 
 	return d;
 }

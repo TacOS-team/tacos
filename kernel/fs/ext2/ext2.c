@@ -32,8 +32,7 @@
 
 #include "ext2_internal.h"
 
-//TODO: remettre unique_inode=1 lorsque dcache sera stabilisé.
-static file_system_t ext2_fs = {.name="EXT2", .unique_inode=0, .mount=mount_EXT2, .umount=umount_EXT2};
+static file_system_t ext2_fs = {.name="EXT2", .unique_inode=1, .mount=mount_EXT2, .umount=umount_EXT2};
 
 static int ceil(float n) {
   return (n == (int)n) ? n : (int)(n+(n>=0));
