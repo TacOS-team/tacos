@@ -282,7 +282,7 @@ static int procfs_read_fd_process_dir(open_file_descriptor * ofd, char * entries
 
 	process_t * process = find_process(extra->pid);
 	if (process != NULL) {
-		while (ofd->current_octet < FOPEN_MAX) {
+		while (ofd->current_octet < FOPEN_MAX && count + reclen < size) {
 			if (process->fd[ofd->current_octet] != NULL) {
 				d = (struct dirent *)(entries + count);
 				d->d_ino = 1;
@@ -443,7 +443,6 @@ static dentry_t * process_fd_lookup(struct _fs_instance_t *instance,
 																 struct _dentry_t* dentry,
 																 const char * name) {
 	dentry_t * result = NULL;
-	size_t i;
 	extra_data_procfs_t * extra = dentry->d_inode->i_fs_specific;
 	process_t * process = find_process(extra->pid);
 	size_t num_fd = atoi(name);
