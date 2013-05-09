@@ -43,8 +43,8 @@ struct _fs_instance_t;
 struct _dentry_t;
 
 struct _open_file_operations_t {
-	size_t (*write)(struct _open_file_descriptor *, const void*, size_t);
-	size_t (*read)(struct _open_file_descriptor *,void*, size_t);
+	ssize_t (*write)(struct _open_file_descriptor *, const void*, size_t);
+	ssize_t (*read)(struct _open_file_descriptor *,void*, size_t);
 	int (*seek)(struct _open_file_descriptor *, long, int);
 	int (*ioctl)(struct _open_file_descriptor*, unsigned int, void *);
 	int (*open) (struct _open_file_descriptor*);

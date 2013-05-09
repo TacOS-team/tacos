@@ -2,14 +2,13 @@
 #include <types.h>
 #include <klog.h>
 
-
-size_t dummy_read(open_file_descriptor* ofd __attribute__((unused)), void* buf __attribute__((unused)), size_t count) 
+static ssize_t dummy_read(open_file_descriptor* ofd __attribute__((unused)), void* buf __attribute__((unused)), size_t count) 
 {
 	klog("reading %d bytes on dummy_device.",count);
 	return 0;
 }
 
-size_t dummy_write(open_file_descriptor* ofd __attribute__((unused)), const void* buf, size_t count)
+static ssize_t dummy_write(open_file_descriptor* ofd __attribute__((unused)), const void* buf, size_t count)
 {
 	klog("writing \"%s\" on dummy device.", buf);
 	return count;

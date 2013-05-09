@@ -119,7 +119,7 @@ void mouse_read_state(mousestate_t* state) {
 	memcpy(state, &mouse_state, sizeof(mouse_state));
 }
 
-static size_t mouse_read_state_ofd(open_file_descriptor* ofd __attribute__((unused)), void* buf, size_t count __attribute__((unused))) {
+static ssize_t mouse_read_state_ofd(open_file_descriptor* ofd __attribute__((unused)), void* buf, size_t count __attribute__((unused))) {
 	mouse_read_state((mousestate_t*)buf);
 	return sizeof(mouse_state);
 }

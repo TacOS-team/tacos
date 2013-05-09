@@ -250,7 +250,7 @@ void umount_EXT2(fs_instance_t *instance);
  *
  * @return nombre d'octets réellement lus.
  */
-size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size);
+ssize_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size);
 
 /**
  * @brief Ecriture d'un fichier.
@@ -261,7 +261,7 @@ size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size);
  *
  * @return nombre d'octets réellement écrits.
  */
-size_t ext2_write (open_file_descriptor * ofd, const void *buf, size_t size);
+ssize_t ext2_write (open_file_descriptor * ofd, const void *buf, size_t size);
 
 /**
  * @brief Fermeture d'un fichier ouvert.

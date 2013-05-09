@@ -163,7 +163,7 @@ int ext2_seek(open_file_descriptor * ofd, long offset, int whence) {
 	return 0;
 }
 
-size_t ext2_write(open_file_descriptor * ofd, const void *buf, size_t size) {
+ssize_t ext2_write(open_file_descriptor * ofd, const void *buf, size_t size) {
 	if ((ofd->flags & O_ACCMODE) == O_RDONLY) {
 		return 0;
 	}
@@ -231,7 +231,7 @@ size_t ext2_write(open_file_descriptor * ofd, const void *buf, size_t size) {
 	}
 }
 
-size_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
+ssize_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 	if ((ofd->flags & O_ACCMODE) == O_WRONLY) {
 		return 0;
 	}

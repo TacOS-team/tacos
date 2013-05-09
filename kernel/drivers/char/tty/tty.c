@@ -62,6 +62,8 @@ struct termios tty_std_termios = {
 #define SUSP_CHAR(tty) ((tty)->termios.c_cc[VSUSP])		/**< Suspend char */
 #define ERASE_CHAR(tty) ((tty)->termios.c_cc[VERASE])	/**< Erase char */
 
+static chardev_interfaces* tty_get_driver_interface(tty_struct_t *tty);
+
 void tty_init() {
 
 }
@@ -138,16 +140,6 @@ tty_driver_t *alloc_tty_driver(int lines) {
 	return driver;
 }
 
-static chardev_interfaces* tty_get_driver_interface(tty_struct_t *tty) {
-	chardev_interfaces *di = kmalloc(sizeof(chardev_interfaces));
-	di->read = tty_read;
-	di->write = tty_write;
-	di->open = tty_open;
-	di->close = tty_close;
-	di->ioctl = tty_ioctl;
-	di->custom_data = (void*)tty;
-	return di;
-}
 
 int tty_register_driver(tty_driver_t *driver) {
 	int n;
@@ -185,7 +177,7 @@ int tty_register_driver(tty_driver_t *driver) {
 	return 0;
 }
 
-size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {
+static ssize_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {
 	if (count <= 0) {
 		return -2;
 	}
@@ -208,7 +200,7 @@ size_t tty_write(open_file_descriptor *ofd, const void *buf, size_t count) {
 	return t->driver->ops->write(t, ofd, buf, count);
 }
 
-size_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
+static ssize_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 	if (count <= 0) {
 		return -2;
 	}
@@ -294,7 +286,7 @@ int tty_ioctl (open_file_descriptor *ofd,  unsigned int request, void *data) {
 	return 0;
 }
 
-int tty_close (open_file_descriptor *ofd) {
+static int tty_close (open_file_descriptor *ofd) {
 	chardev_interfaces *di = ofd->extra_data;
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;
 
@@ -310,7 +302,7 @@ int tty_close (open_file_descriptor *ofd) {
 	return 0;
 }
 
-int tty_open (open_file_descriptor *ofd) {
+static int tty_open (open_file_descriptor *ofd) {
 	chardev_interfaces *di = ofd->extra_data;
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;
 
@@ -324,3 +316,13 @@ int tty_open (open_file_descriptor *ofd) {
 	return 0;
 }
 
+static chardev_interfaces* tty_get_driver_interface(tty_struct_t *tty) {
+	chardev_interfaces *di = kmalloc(sizeof(chardev_interfaces));
+	di->read = tty_read;
+	di->write = tty_write;
+	di->open = tty_open;
+	di->close = tty_close;
+	di->ioctl = tty_ioctl;
+	di->custom_data = (void*)tty;
+	return di;
+}

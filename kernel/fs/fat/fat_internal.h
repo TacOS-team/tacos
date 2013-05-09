@@ -300,7 +300,7 @@ int fat_unlink(fs_instance_t *instance, const char * path);
  *
  * @return nombre d'octets réellement lus.
  */
-size_t fat_read_file (open_file_descriptor * ofd, void * buf, size_t count);
+ssize_t fat_read_file (open_file_descriptor * ofd, void * buf, size_t count);
 
 /**
  * Écriture de fichier.
@@ -311,7 +311,7 @@ size_t fat_read_file (open_file_descriptor * ofd, void * buf, size_t count);
  *
  * @return Nombre d'octets écrits.
  */
-size_t fat_write_file (open_file_descriptor * ofd, const void * buf, size_t nb_octet);
+ssize_t fat_write_file (open_file_descriptor * ofd, const void * buf, size_t nb_octet);
 
 /**
  * Déplacement dans un fichier.

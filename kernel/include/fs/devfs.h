@@ -39,8 +39,8 @@ enum _device_type_t{
 
 typedef enum _device_type_t device_type_t ;
 
-typedef size_t (*chardev_read_t)(open_file_descriptor *,void*, size_t);
-typedef size_t (*chardev_write_t)(open_file_descriptor *, const void*, size_t);
+typedef ssize_t (*chardev_read_t)(open_file_descriptor *,void*, size_t);
+typedef ssize_t (*chardev_write_t)(open_file_descriptor *, const void*, size_t);
 typedef int (*chardev_ioctl_t) (open_file_descriptor*, unsigned int, void*);
 typedef int (*chardev_open_t) (open_file_descriptor*);
 typedef int (*chardev_close_t) (open_file_descriptor*);
@@ -55,8 +55,8 @@ typedef struct {
 } chardev_interfaces;
 
 
-typedef size_t (*blkdev_read_t)(open_file_descriptor *,void*, size_t, uint32_t);
-typedef size_t (*blkdev_write_t)(open_file_descriptor *, const void*, size_t, uint32_t);
+typedef ssize_t (*blkdev_read_t)(open_file_descriptor *,void*, size_t, uint32_t);
+typedef ssize_t (*blkdev_write_t)(open_file_descriptor *, const void*, size_t, uint32_t);
 typedef int (*blkdev_ioctl_t) (open_file_descriptor*, unsigned int, void*);
 typedef int (*blkdev_open_t) (open_file_descriptor*);
 typedef int (*blkdev_close_t) (open_file_descriptor*);

@@ -42,10 +42,10 @@
 #define FLOPPY_NB_HEADS 2
 #define FLOPPY_SECTORS_PER_TRACK 18
 
-int floppy_open(open_file_descriptor *ofd);
-int floppy_close(open_file_descriptor *ofd);
-size_t floppy_read(open_file_descriptor *ofd, void* buf, size_t count, uint32_t offset);
-size_t floppy_write(open_file_descriptor *ofd, const void* buf, size_t count, uint32_t offset);
+static int floppy_open(open_file_descriptor *ofd);
+static int floppy_close(open_file_descriptor *ofd);
+static ssize_t floppy_read(open_file_descriptor *ofd, void* buf, size_t count, uint32_t offset);
+static ssize_t floppy_write(open_file_descriptor *ofd, const void* buf, size_t count, uint32_t offset);
 
 static blkdev_interfaces di = { 
 	.read = floppy_read,
@@ -177,7 +177,7 @@ int floppy_close(open_file_descriptor *ofd __attribute__((unused))) {
 	return 0;
 }
 
-size_t floppy_read(open_file_descriptor *ofd __attribute__((unused)), void* buf, size_t count, uint32_t offset) {
+static ssize_t floppy_read(open_file_descriptor *ofd __attribute__((unused)), void* buf, size_t count, uint32_t offset) {
 	int offset_sector = offset / FLOPPY_SECTOR_SIZE;
 	int offset_in_sector = offset % FLOPPY_SECTOR_SIZE;
 	uint32_t cylinder;
@@ -208,7 +208,7 @@ size_t floppy_read(open_file_descriptor *ofd __attribute__((unused)), void* buf,
 	return size;
 }
 
-size_t floppy_write(open_file_descriptor *ofd __attribute__((unused)), const void* buf, size_t count, uint32_t offset) {
+static ssize_t floppy_write(open_file_descriptor *ofd __attribute__((unused)), const void* buf, size_t count, uint32_t offset) {
 	int offset_sector = offset / FLOPPY_SECTOR_SIZE;
 	int offset_in_sector = offset % FLOPPY_SECTOR_SIZE;
 	uint32_t cylinder;

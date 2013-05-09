@@ -66,7 +66,7 @@ static void nosound()
 static int frequences[2][7] = {{131, 147, 165, 175, 196, 220, 247},
 														 {262, 294, 330, 349, 392, 440, 446}};
 
-static size_t beeper_write(open_file_descriptor* ofd __attribute__((unused)), const void* b, size_t count) {
+static ssize_t beeper_write(open_file_descriptor* ofd __attribute__((unused)), const void* b, size_t count) {
 	unsigned char* buf = (unsigned char*)b;
 	// NOTE(0-3) OCTAVE(4-6) 0(7)
 	// DUREE(0-6)						 1(7)

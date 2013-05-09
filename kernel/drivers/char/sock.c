@@ -192,7 +192,7 @@ int sock_accept(open_file_descriptor *ofd) {
   return server->sd;
 }
 
-int sock_ioctl(open_file_descriptor *ofd, unsigned int request, void *data) {
+static int sock_ioctl(open_file_descriptor *ofd, unsigned int request, void *data) {
   switch (request) {
     case SOCK_CONNECT: {
       char *meetpoint = (char*) data;
@@ -250,7 +250,7 @@ int sock_ioctl(open_file_descriptor *ofd, unsigned int request, void *data) {
   }
 }
 
-size_t sock_read(open_file_descriptor* ofd, void* buf, size_t count __attribute__((unused))) {
+static ssize_t sock_read(open_file_descriptor* ofd, void* buf, size_t count __attribute__((unused))) {
   socket_t *sock = socket_descriptors[ofd->current_cluster];
 
   //klog("Waiting for a message to read on socket %d...", sock->sd);
@@ -274,7 +274,7 @@ size_t sock_read(open_file_descriptor* ofd, void* buf, size_t count __attribute_
   return lrcvd;
 }
 
-size_t sock_write(open_file_descriptor* ofd, const void* buf, size_t count) {
+static ssize_t sock_write(open_file_descriptor* ofd, const void* buf, size_t count) {
   socket_t *sock = socket_descriptors[ofd->current_cluster];
   socket_t *paired_sock = sock->paired_sock;
 

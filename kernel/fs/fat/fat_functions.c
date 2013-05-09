@@ -179,11 +179,11 @@ int fat_seek_file(open_file_descriptor * ofd, long offset, int whence) {
 
 }
 
-size_t fat_write_file(open_file_descriptor *ofd __attribute__((__unused__)), const void * buf __attribute__((__unused__)), size_t nb_octet __attribute__((__unused__))) {
+ssize_t fat_write_file(open_file_descriptor *ofd __attribute__((__unused__)), const void * buf __attribute__((__unused__)), size_t nb_octet __attribute__((__unused__))) {
 	return 0;
 }
 
-size_t fat_read_file(open_file_descriptor * ofd, void * buf, size_t count) {
+ssize_t fat_read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 	fat_fs_instance_t *instance = (fat_fs_instance_t*) ofd->fs_instance;
 	fat_extra_data_t *extra_data = (fat_extra_data_t*) ofd->extra_data;
 	size_t size_buffer = sizeof(ofd->buffer) < instance->fat_info.BS.bytes_per_sector ? 
