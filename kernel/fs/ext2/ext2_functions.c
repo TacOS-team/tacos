@@ -120,8 +120,9 @@ int ext2_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 			c++;
 		}
 
-		while (aux != NULL && count < size) {
-			struct dirent *d = (struct dirent *)(entries + count);
+		struct dirent *d;
+		while (aux != NULL && count + sizeof(d->d_ino) + sizeof(d->d_reclen) + sizeof(d->d_type) + aux->dir->name_len + 1 < size) {
+			d = (struct dirent *)(entries + count);
 			d->d_ino = aux->dir->inode;
 			strncpy(d->d_name, aux->dir->name, aux->dir->name_len);
 			d->d_name[aux->dir->name_len] = '\0';
