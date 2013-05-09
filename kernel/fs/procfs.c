@@ -38,6 +38,29 @@
 #include <klibc/stdlib.h>
 
 
+/**
+ * Unique id politic :
+ *  each process has a range of PROCFS_PPROCESS_RANGE possible values for inode ids
+ *  The begining of the range is computed by pid * PROCFS_PPROCESS_RANGE
+ *  Then for each process, the vars ofset are :
+ */
+
+// process folder
+#define procfs_root_process_offset 1
+// cmd_line
+#define procfs_cmd_line_offset     procfs_root_process_offset + 1
+// state
+#define procfs_state_offset        procfs_cmd_line_offset + 1
+// ppid
+#define procfs_ppid_offset         procfs_state_offset + 1
+// fd
+#define procfs_fd_offset           procfs_ppid_offset + 1
+// fd/*
+#define procfs_first_fd_offset     procfs_fd_offset + 1
+
+#define PROCFS_PROCESS_RANGE       60*1000;
+
+
 static const int MAX_PID_LENGTH = 5;
 static const int MAX_FD_LENGTH  = 6;
 
@@ -111,7 +134,7 @@ char* proc_status[]= {
  *                           procfs files functions                          *
  *****************************************************************************/
 
-static ssize_t write_string_in_buffer(open_file_descriptor* ofd, char * dest,
+static ssize_t write_string_in_buffer(open_file_descriptor * ofd, char * dest,
 																			char * src, size_t count) {
 	ssize_t result = EOF;
 	size_t src_length = strlen(src);
@@ -128,7 +151,7 @@ static ssize_t write_string_in_buffer(open_file_descriptor* ofd, char * dest,
 	return result;
 }
 
-static ssize_t procfs_read_name(open_file_descriptor* ofd, void* buffer, size_t count) {
+static ssize_t procfs_read_name(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
 	extra_data_procfs_t * extra = ofd->extra_data;
 	process_t * process         = find_process(extra->pid);
@@ -138,7 +161,7 @@ static ssize_t procfs_read_name(open_file_descriptor* ofd, void* buffer, size_t 
 	return result;
 }
 
-static ssize_t procfs_read_ppid(open_file_descriptor* ofd, void* buffer, size_t count) {
+static ssize_t procfs_read_ppid(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
 	extra_data_procfs_t *extra = ofd->extra_data;
 	process_t* process = find_process(extra->pid);
@@ -150,7 +173,7 @@ static ssize_t procfs_read_ppid(open_file_descriptor* ofd, void* buffer, size_t 
 	return result;
 }
 
-static ssize_t procfs_read_state(open_file_descriptor* ofd, void* buffer, size_t count) {
+static ssize_t procfs_read_state(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
 	extra_data_procfs_t *extra = ofd->extra_data;
 	process_t* process = find_process(extra->pid);
@@ -161,7 +184,7 @@ static ssize_t procfs_read_state(open_file_descriptor* ofd, void* buffer, size_t
 }
 
 
-static ssize_t procfs_read_process_fd(open_file_descriptor* ofd, void* buffer, size_t count) {
+static ssize_t procfs_read_process_fd(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
 	extra_data_procfs_t *extra = ofd->extra_data;
 	process_t* process = find_process(extra->pid);
@@ -180,13 +203,14 @@ typedef struct {
 	char * name;
 	size_t name_length;// init dans procfs_init
 	ssize_t (*read)(open_file_descriptor *, void *, size_t);
+	size_t inode_offset;
 } procfs_file_function_t;
 
 static procfs_file_function_t procfs_file_functions_list[] = {
-														{ "cmd_line", 0, procfs_read_name },
-														{ "ppid",     0, procfs_read_ppid },
-														{ "state",    0, procfs_read_state }
-													};
+									{ "cmd_line", 0, procfs_read_name,  procfs_cmd_line_offset },
+									{ "ppid",     0, procfs_read_ppid,  procfs_ppid_offset },
+									{ "state",    0, procfs_read_state, procfs_state_offset }
+								};
 
 const size_t nb_file_functions = sizeof(procfs_file_functions_list)
 															 / sizeof(procfs_file_functions_list[0]);
@@ -198,11 +222,12 @@ typedef struct {
 	size_t name_length;// init dans procfs_init
 	lookup_function_t * lookup;
 	procfs_read_dir_function_t * readdir;
+	size_t inode_offset;
 } procfs_directory_function_t;
 
 static procfs_directory_function_t procfs_directory_functions_list[] = {
-														{ "fd", 0, process_fd_lookup, procfs_read_fd_process_dir }
-													};
+		{ "fd", 0, process_fd_lookup, procfs_read_fd_process_dir, procfs_fd_offset }
+	};
 
 const size_t nb_directory_functions = sizeof(procfs_directory_functions_list)
 															 		  / sizeof(procfs_directory_functions_list[0]);
@@ -317,6 +342,7 @@ dentry_t * get_default_dentry(struct _fs_instance_t * instance,
 															const char * name, int pid) {
 	inode_t * inode   = kmalloc(sizeof(inode_t));
 	memset(inode, 0, sizeof(*inode));
+	inode->i_ino      = pid * PROCFS_PROCESS_RANGE;
 	// inode->i_uid      = 0;
 	// inode->i_gid      = 0;
 	inode->i_size     = 512;
@@ -351,7 +377,7 @@ dentry_t * get_process_dentry(struct _fs_instance_t * instance,
 	dentry_t * result = get_default_dentry(instance, name, pid);
 	inode_t * inode   = result->d_inode;
 
-	inode->i_ino      = pid + 1;
+	inode->i_ino     += procfs_root_process_offset;
 	inode->i_mode     = 0755 | S_IFDIR;
 
 	extra_data_procfs_t *extra = inode->i_fs_specific;
@@ -368,7 +394,7 @@ dentry_t * get_process_fd_dentry(struct _fs_instance_t * instance,
 	inode_t * inode   = result->d_inode;
 
 	// TODO y réfléchir pour qu'ils soient vraiment uniques
-	inode->i_ino      = pid + 200*1000 + fd;
+	inode->i_ino     += procfs_first_fd_offset + fd;
 	inode->i_mode     = 0755;
 
 	extra_data_procfs_t *extra = inode->i_fs_specific;
@@ -381,11 +407,12 @@ dentry_t * get_process_fd_dentry(struct _fs_instance_t * instance,
 }
 
 dentry_t * get_file_function_dentry(struct _fs_instance_t * instance,
-																		const char * name, int pid) {
+																		const char * name, int pid,
+																		size_t inode_offset) {
 	dentry_t * result = get_default_dentry(instance, name, pid);
 	inode_t * inode   = result->d_inode;
 
-	inode->i_ino = 1;
+	inode->i_ino = inode_offset;
 
 	extra_data_procfs_t *extra = inode->i_fs_specific;
 	extra->lookup = NULL;
@@ -397,11 +424,12 @@ dentry_t * get_file_function_dentry(struct _fs_instance_t * instance,
 
 dentry_t * get_directory_function_dentry(struct _fs_instance_t * instance,
 																		const char * name, int pid,
-																		lookup_function_t lookup_function) {
+																		lookup_function_t lookup_function,
+																		size_t inode_offset) {
 	dentry_t * result = get_default_dentry(instance, name, pid);
 	inode_t * inode   = result->d_inode;
 
-	inode->i_ino      = pid + 100*1000;
+	inode->i_ino     += inode_offset;
 
 	extra_data_procfs_t *extra = inode->i_fs_specific;
 	extra->lookup = lookup_function;
@@ -436,14 +464,16 @@ static dentry_t * process_lookup(struct _fs_instance_t *instance,
 	size_t i;
 	for (i = 0; i < nb_file_functions && result == NULL; ++i) {
 		if (strcmp(procfs_file_functions_list[i].name, name) == 0) {
-			result = get_file_function_dentry(instance, name, extra->pid);
+			result = get_file_function_dentry(instance, name, extra->pid,
+																				procfs_file_functions_list[i].inode_offset);
 			result->d_inode->i_fops->read = procfs_file_functions_list[i].read;
 		}
 	}
 	for (i = 0; i < nb_directory_functions && result == NULL; ++i) {
 		if (strcmp(procfs_directory_functions_list[i].name, name) == 0) {
 			result = get_directory_function_dentry(instance, name, extra->pid,
-																		 procfs_directory_functions_list[i].lookup);
+																		procfs_directory_functions_list[i].lookup,
+																		procfs_directory_functions_list[i].inode_offset);
 			result->d_inode->i_fops->readdir = procfs_directory_functions_list[i].readdir;
 		}
 	}
