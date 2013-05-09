@@ -39,6 +39,7 @@
 
 
 static const int MAX_PID_LENGTH = 5;
+static const int MAX_FD_LENGTH  = 6;
 
 
 // File system informations
@@ -68,19 +69,28 @@ typedef dentry_t* (lookup_function_t)(struct _fs_instance_t *instance,
 											const char * name);
 
 static lookup_function_t process_lookup;
+static lookup_function_t process_fd_lookup;
 static lookup_function_t root_lookup;
 
 
 // readdir functions
-static int procfs_read_root_dir   (open_file_descriptor * ofd, char * entries,
-																   size_t size);
-static int procfs_read_process_dir(open_file_descriptor * ofd, char * entries,
-																	 size_t size);
+typedef int (procfs_read_dir_function_t) (open_file_descriptor * ofd,
+																				char * entries,
+																   			size_t size);
+static procfs_read_dir_function_t procfs_read_root_dir;
+static procfs_read_dir_function_t procfs_read_process_dir;
+static procfs_read_dir_function_t procfs_read_fd_process_dir;
+
+typedef union specific_extra_data_procfs_t {
+	// For file descriptors list
+	size_t fd;
+} specific_extra_data_procfs_t;
 
 // Specific extra datas for procfs dentries
 typedef struct {
 	int pid;
 	lookup_function_t * lookup;
+	specific_extra_data_procfs_t specific_data;
 } extra_data_procfs_t;
 
 
@@ -101,53 +111,65 @@ char* proc_status[]= {
  *                           procfs files functions                          *
  *****************************************************************************/
 static size_t procfs_read_name(open_file_descriptor* ofd, void* buffer, size_t count __attribute__((unused))) {
+	size_t result = EOF;
 	extra_data_procfs_t *extra = ofd->extra_data;
 	process_t* process = find_process(extra->pid);
-	if(ofd->current_octet == 0) {
+	if(process && ofd->current_octet == 0) {
 		strcpy(buffer,process->name);
 		ofd->current_octet = strlen(process->name);
-		return ofd->current_octet;
+		result = ofd->current_octet;
 	}
-	else {
-		return EOF;
-	}
+	return result;
 }
 
 static size_t procfs_read_ppid(open_file_descriptor* ofd, void* buffer, size_t count __attribute__((unused))) {
+	size_t result = EOF;
 	extra_data_procfs_t *extra = ofd->extra_data;
 	process_t* process = find_process(extra->pid);
-	if(ofd->current_octet == 0) {
+	if(process && ofd->current_octet == 0) {
 		itoa(buffer, 10, process->ppid);
 		ofd->current_octet = strlen(buffer);
-		return ofd->current_octet;
+		result = ofd->current_octet;
 	}
-	else {
-		return EOF;
-	}
+	return result;
 }
 
 static size_t procfs_read_state(open_file_descriptor* ofd, void* buffer, size_t count __attribute__((unused))) {
+	size_t result = EOF;
 	extra_data_procfs_t *extra = ofd->extra_data;
 	process_t* process = find_process(extra->pid);
-	if(ofd->current_octet == 0) {
+	if(process && ofd->current_octet == 0) {
 		strcpy(buffer,proc_status[process->state]);
 		ofd->current_octet = strlen(buffer);
-		return ofd->current_octet;
+		result= ofd->current_octet;
 	}
-	else {
-		return EOF;
-	}
+	return result;
 }
 
 
-// List of files/informations in a process directory
+static size_t procfs_read_process_fd(open_file_descriptor* ofd, void* buffer, size_t count __attribute__((unused))) {
+	size_t result = EOF;
+	extra_data_procfs_t *extra = ofd->extra_data;
+	process_t* process = find_process(extra->pid);
+	if(process && ofd->current_octet == 0) {
+		strcpy(buffer, "toto !!!!!");// TODO
+		ofd->current_octet = strlen(buffer);
+		result= ofd->current_octet;
+	}
+	return result;
+}
+
+/*****************************************************************************
+ *                        procfs directories functions                       *
+ *****************************************************************************/
+// List of files in a process directory
 typedef struct {
-	char * filename;
+	char * name;
 	size_t name_length;// init dans procfs_init
-	size_t (*read)(open_file_descriptor *, void*, size_t);
+	size_t (*read)(open_file_descriptor *, void *, size_t);
 } procfs_file_function_t;
 
-procfs_file_function_t procfs_file_functions_list[] = {
+static procfs_file_function_t procfs_file_functions_list[] = {
 														{ "cmd_line", 0, procfs_read_name },
 														{ "ppid",     0, procfs_read_ppid },
 														{ "state",    0, procfs_read_state }
@@ -157,6 +179,22 @@ const size_t nb_file_functions = sizeof(procfs_file_functions_list)
 															 / sizeof(procfs_file_functions_list[0]);
 
 
+// List of directories in the process directory
+typedef struct {
+	char * name;
+	size_t name_length;// init dans procfs_init
+	lookup_function_t * lookup;
+	procfs_read_dir_function_t * readdir;
+} procfs_directory_function_t;
+
+static procfs_directory_function_t procfs_directory_functions_list[] = {
+														{ "fd", 0, process_fd_lookup, procfs_read_fd_process_dir }
+													};
+
+const size_t nb_directory_functions = sizeof(procfs_directory_functions_list)
+															 		  / sizeof(procfs_directory_functions_list[0]);
+
+
 /*****************************************************************************
  *                         read directories functions                        *
  *****************************************************************************/
@@ -164,7 +202,6 @@ const size_t nb_file_functions = sizeof(procfs_file_functions_list)
 static int procfs_read_root_dir(open_file_descriptor * ofd, char * entries,
 																size_t size) {
 	size_t count = 0;
-	unsigned int i = ofd->current_octet;
 
 	struct dirent *d;
 
@@ -173,8 +210,8 @@ static int procfs_read_root_dir(open_file_descriptor * ofd, char * entries,
 	const size_t reclen = sizeof(d->d_ino)  + sizeof(d->d_reclen)
 											+ sizeof(d->d_type) + MAX_PID_LENGTH + 1;
 
-	while (i < MAX_PROC && count + reclen < size) {
-		process_t * process = get_process_array(i);
+	while (ofd->current_octet < MAX_PROC && count + reclen < size) {
+		process_t * process = get_process_array(ofd->current_octet);
 		if (process != NULL) {
 			d = (struct dirent *)(entries + count);
 			d->d_ino = 1;
@@ -182,9 +219,8 @@ static int procfs_read_root_dir(open_file_descriptor * ofd, char * entries,
 			d->d_reclen = reclen;
 			count += reclen;
 		}
-		++i;
+		++ofd->current_octet;
 	}
-	ofd->current_octet = i;
 
 	return count;
 }
@@ -192,7 +228,7 @@ static int procfs_read_root_dir(open_file_descriptor * ofd, char * entries,
 static int procfs_read_process_dir(open_file_descriptor * ofd, char * entries,
 																	 size_t size) {
 	size_t count   = 0;
-	unsigned int i = ofd->current_octet;
+	size_t i;
 
 	struct dirent *d;
 
@@ -202,18 +238,60 @@ static int procfs_read_process_dir(open_file_descriptor * ofd, char * entries,
 	extra_data_procfs_t * extra = ofd->extra_data;
 
 	if (find_process(extra->pid) != NULL) {
-		while (i < nb_file_functions
+		i = 0;
+		while (ofd->current_octet < nb_file_functions
 						&& count + procfs_file_functions_list[i].name_length < size) {
+			i = ofd->current_octet;
 			d = (struct dirent *)(entries + count);
 			d->d_ino = 1;
-			strcpy(d->d_name, procfs_file_functions_list[i].filename);
+			strcpy(d->d_name, procfs_file_functions_list[i].name);
 			d->d_reclen = base_reclen + procfs_file_functions_list[i].name_length;
 			count      += d->d_reclen;
+			++ofd->current_octet;
+			++i;
+		}
+		i = 0;
+		while (ofd->current_octet - nb_file_functions < nb_directory_functions
+						&& count + procfs_directory_functions_list[i].name_length < size) {
+			d = (struct dirent *)(entries + count);
+			d->d_ino = 1;
+			strcpy(d->d_name, procfs_directory_functions_list[i].name);
+			d->d_reclen = base_reclen + procfs_directory_functions_list[i].name_length;
+			count      += d->d_reclen;
+			++ofd->current_octet;
 			++i;
 		}
 	}
-	ofd->current_octet = i;
 
+	return count;
+}
+
+static int procfs_read_fd_process_dir(open_file_descriptor * ofd, char * entries,
+																	 size_t size) {
+	kprintf("procfs_read_fd_process_dir\n");
+	size_t count   = 0;
+	struct dirent *d;
+
+	// On met une taille fixe à tous les dirent car on connait la taille max
+	//  d'un FD
+	const size_t reclen = sizeof(d->d_ino)  + sizeof(d->d_reclen)
+											+ sizeof(d->d_type) + MAX_FD_LENGTH + 1;
+
+	extra_data_procfs_t * extra = ofd->extra_data;
+
+	process_t * process = find_process(extra->pid);
+	if (process != NULL) {
+		while (ofd->current_octet < FOPEN_MAX) {
+			if (process->fd[ofd->current_octet] != NULL) {
+				d = (struct dirent *)(entries + count);
+				d->d_ino = 1;
+				itoa (d->d_name, 10, ofd->current_octet);
+				d->d_reclen = reclen;
+				count += reclen;
+			}
+			++ofd->current_octet;
+		}
+	}
 	return count;
 }
 
@@ -272,18 +350,51 @@ dentry_t * get_process_dentry(struct _fs_instance_t * instance,
 	return result;
 }
 
+dentry_t * get_process_fd_dentry(struct _fs_instance_t * instance,
+															const char * name, int pid, size_t fd) {
+	dentry_t * result = get_default_dentry(instance, name, pid);
+	inode_t * inode   = result->d_inode;
+
+	// TODO y réfléchir pour qu'ils soient vraiment uniques
+	inode->i_ino      = pid + 200*1000 + fd;
+	inode->i_mode     = 0755;
+
+	extra_data_procfs_t *extra = inode->i_fs_specific;
+	extra->lookup = NULL;
+	extra->specific_data.fd = fd;
+
+	inode->i_fops->read = procfs_read_process_fd;
+
+	return result;
+}
+
 dentry_t * get_file_function_dentry(struct _fs_instance_t * instance,
-																		const char * name, int pid,
-																		lookup_function_t lookup_function) {
+																		const char * name, int pid) {
 	dentry_t * result = get_default_dentry(instance, name, pid);
 	inode_t * inode   = result->d_inode;
 
 	inode->i_ino = 1;
 
 	extra_data_procfs_t *extra = inode->i_fs_specific;
-	extra->lookup = lookup_function;
+	extra->lookup = NULL;
 
 	inode->i_mode = 0755;
+
+	return result;
+}
+
+dentry_t * get_directory_function_dentry(struct _fs_instance_t * instance,
+																		const char * name, int pid,
+																		lookup_function_t lookup_function) {
+	dentry_t * result = get_default_dentry(instance, name, pid);
+	inode_t * inode   = result->d_inode;
+
+	inode->i_ino      = pid + 100*1000;
+
+	extra_data_procfs_t *extra = inode->i_fs_specific;
+	extra->lookup = lookup_function;
+
+	inode->i_mode     = 0755 | S_IFDIR;
 
 	return result;
 }
@@ -312,13 +423,38 @@ static dentry_t * process_lookup(struct _fs_instance_t *instance,
 	dentry_t * result = NULL;
 	size_t i;
 	for (i = 0; i < nb_file_functions && result == NULL; ++i) {
-		if (strcmp(procfs_file_functions_list[i].filename, name) == 0) {
-			result = get_file_function_dentry(instance, name, extra->pid, NULL);
+		if (strcmp(procfs_file_functions_list[i].name, name) == 0) {
+			result = get_file_function_dentry(instance, name, extra->pid);
 			result->d_inode->i_fops->read = procfs_file_functions_list[i].read;
+		}
+	}
+	for (i = 0; i < nb_directory_functions && result == NULL; ++i) {
+		if (strcmp(procfs_directory_functions_list[i].name, name) == 0) {
+			result = get_directory_function_dentry(instance, name, extra->pid,
+																		 procfs_directory_functions_list[i].lookup);
+			result->d_inode->i_fops->readdir = procfs_directory_functions_list[i].readdir;
 		}
 	}
 	return result;
 }
+
+static dentry_t * process_fd_lookup(struct _fs_instance_t *instance,
+																 struct _dentry_t* dentry,
+																 const char * name) {
+	dentry_t * result = NULL;
+	size_t i;
+	extra_data_procfs_t * extra = dentry->d_inode->i_fs_specific;
+	process_t * process = find_process(extra->pid);
+	if (process != NULL) {
+		for (i = 0; i < FOPEN_MAX; ++i) {
+			if (process->fd[i] != NULL) {
+				result = get_process_fd_dentry(instance, name, extra->pid, i);
+			}
+		}
+	}
+	return result;
+}
+
 
 static dentry_t * procfs_lookup(struct _fs_instance_t *instance,
 																struct _dentry_t* dentry, const char * name) {
@@ -377,7 +513,7 @@ static int procfs_stat(inode_t *inode, struct stat *stbuf) {
 				buf[j] = '\0';
 				i=0;
 				while(i<sizeof(procfs_file_list)/sizeof(procfs_file_t)) {
-					if(strcmp(buf, procfs_file_list[i].filename) == 0) {
+					if(strcmp(buf, procfs_file_list[i].name) == 0) {
 						stbuf->st_mode |= S_IFREG;
 						return 0;
 					}
@@ -415,8 +551,13 @@ void procfs_init() {
 	// Initialise la taille des noms de fonctions
 	for (i = 0; i < nb_file_functions; ++i) {
 		procfs_file_functions_list[i].name_length
-				= strlen(procfs_file_functions_list[i].filename);
+				= strlen(procfs_file_functions_list[i].name);
 	}
+	for (i = 0; i < nb_directory_functions; ++i) {
+		procfs_directory_functions_list[i].name_length
+				= strlen(procfs_directory_functions_list[i].name);
+	}
+
 	root_procfs.d_name = "";
 
 	root_procfs.d_inode = kmalloc(sizeof(inode_t));
