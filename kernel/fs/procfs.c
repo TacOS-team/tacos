@@ -110,53 +110,64 @@ char* proc_status[]= {
 /*****************************************************************************
  *                           procfs files functions                          *
  *****************************************************************************/
-static size_t procfs_read_name(open_file_descriptor* ofd, void* buffer, size_t count __attribute__((unused))) {
-	size_t result = EOF;
-	extra_data_procfs_t *extra = ofd->extra_data;
-	process_t* process = find_process(extra->pid);
-	if(process && ofd->current_octet == 0) {
-		strcpy(buffer,process->name);
-		ofd->current_octet = strlen(process->name);
-		result = ofd->current_octet;
-	}
-	return result;
-}
 
-static size_t procfs_read_ppid(open_file_descriptor* ofd, void* buffer, size_t count __attribute__((unused))) {
-	size_t result = EOF;
-	extra_data_procfs_t *extra = ofd->extra_data;
-	process_t* process = find_process(extra->pid);
-	if(process && ofd->current_octet == 0) {
-		itoa(buffer, 10, process->ppid);
-		ofd->current_octet = strlen(buffer);
-		result = ofd->current_octet;
-	}
-	return result;
-}
-
-static size_t procfs_read_state(open_file_descriptor* ofd, void* buffer, size_t count __attribute__((unused))) {
-	size_t result = EOF;
-	extra_data_procfs_t *extra = ofd->extra_data;
-	process_t* process = find_process(extra->pid);
-	if(process && ofd->current_octet == 0) {
-		strcpy(buffer,proc_status[process->state]);
-		ofd->current_octet = strlen(buffer);
-		result= ofd->current_octet;
-	}
-	return result;
-}
-
-
-static size_t procfs_read_process_fd(open_file_descriptor* ofd, void* buffer, size_t count __attribute__((unused))) {
-	size_t result = EOF;
-	extra_data_procfs_t *extra = ofd->extra_data;
-	process_t* process = find_process(extra->pid);
-	if(process && ofd->current_octet == 0) {
-		if (process->fd[extra->specific_data.fd] != NULL) {
-			strcpy(buffer, process->fd[extra->specific_data.fd]->pathname);
-			ofd->current_octet = strlen(buffer);
-			result= ofd->current_octet;
+static ssize_t write_string_in_buffer(open_file_descriptor* ofd, char * dest,
+																			char * src, size_t count) {
+	ssize_t result = EOF;
+	size_t src_length = strlen(src);
+	if (ofd->current_octet < src_length) {
+		size_t remaining_bytes = src_length - ofd->current_octet;
+		if (remaining_bytes > count) {
+			result = count;
+		} else {
+			result = remaining_bytes;
 		}
+		memcpy(dest, src + ofd->current_octet, result);
+		ofd->current_octet += result;
+	}
+	return result;
+}
+
+static ssize_t procfs_read_name(open_file_descriptor* ofd, void* buffer, size_t count) {
+	ssize_t result = EOF;
+	extra_data_procfs_t * extra = ofd->extra_data;
+	process_t * process         = find_process(extra->pid);
+	if(process) {
+		result = write_string_in_buffer(ofd, buffer, process->name, count);
+	}
+	return result;
+}
+
+static ssize_t procfs_read_ppid(open_file_descriptor* ofd, void* buffer, size_t count) {
+	ssize_t result = EOF;
+	extra_data_procfs_t *extra = ofd->extra_data;
+	process_t* process = find_process(extra->pid);
+	if(process) {
+		char ppid[MAX_PID_LENGTH+1];
+		itoa(ppid, 10, process->ppid);
+		result = write_string_in_buffer(ofd, buffer, ppid, count);
+	}
+	return result;
+}
+
+static ssize_t procfs_read_state(open_file_descriptor* ofd, void* buffer, size_t count) {
+	ssize_t result = EOF;
+	extra_data_procfs_t *extra = ofd->extra_data;
+	process_t* process = find_process(extra->pid);
+	if(process) {
+		result = write_string_in_buffer(ofd, buffer, proc_status[process->state], count);
+	}
+	return result;
+}
+
+
+static ssize_t procfs_read_process_fd(open_file_descriptor* ofd, void* buffer, size_t count) {
+	ssize_t result = EOF;
+	extra_data_procfs_t *extra = ofd->extra_data;
+	process_t* process = find_process(extra->pid);
+	if(process && process->fd[extra->specific_data.fd]) {
+		result = write_string_in_buffer(ofd, buffer,
+									process->fd[extra->specific_data.fd]->pathname,count);
 	}
 	return result;
 }
@@ -168,7 +179,7 @@ static size_t procfs_read_process_fd(open_file_descriptor* ofd, void* buffer, si
 typedef struct {
 	char * name;
 	size_t name_length;// init dans procfs_init
-	size_t (*read)(open_file_descriptor *, void *, size_t);
+	ssize_t (*read)(open_file_descriptor *, void *, size_t);
 } procfs_file_function_t;
 
 static procfs_file_function_t procfs_file_functions_list[] = {
