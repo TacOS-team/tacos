@@ -40,6 +40,8 @@
 
 #define LOOKUP_PARENT 1 /**< S'arrête au niveau du parent. */
 
+extern struct _open_file_operations_t pipe_fops;
+
 static dentry_t root_vfs;
 static struct _open_file_operations_t vfs_fops = {.write = NULL, .read = NULL, .seek = NULL, .ioctl = NULL, .open = NULL, .close = NULL, .readdir = vfs_readdir};
 static mounted_fs_t mvfs;
@@ -181,9 +183,15 @@ static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, u
 	ofd->mnt = mnt;
 	ofd->file_size = dentry->d_inode->i_size;
 	ofd->current_octet = 0;
-	ofd->f_ops = dentry->d_inode->i_fops;
-	ofd->fs_instance = mnt->instance;
-	ofd->extra_data = dentry->d_inode->i_fs_specific;
+
+	if (S_ISFIFO(dentry->d_inode->i_mode)) {
+		klog("ouverture d'un pipe !");
+		ofd->f_ops = &pipe_fops;
+	} else {
+		ofd->f_ops = dentry->d_inode->i_fops;
+		ofd->fs_instance = mnt->instance;
+		ofd->extra_data = dentry->d_inode->i_fs_specific;
+	}
 
 	// XXX ici ou dans vfs_open ?
 	if (ofd->f_ops->open) {

@@ -30,6 +30,8 @@
 #ifndef _FD_TYPES_H
 #define _FD_TYPES_H
 
+#include <types.h>
+
 #define FOPEN_MAX 500 /**< Nombre max d'ouverture de fichier. */
 
 #define MAX_PATH_LENGTH 1024
