@@ -24,15 +24,13 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Structures liées aux fichiers ouverts.
  */
 
 #ifndef _FD_TYPES_H
 #define _FD_TYPES_H
 
 #define FOPEN_MAX 500 /**< Nombre max d'ouverture de fichier. */
-
-#define MAX_PATH_LENGTH 1024
 
 #define SEEK_SET 0 /**< SEEK à une position donnée. */
 #define SEEK_CUR 1 /**< SEEK relatif à la position actuelle. */
@@ -42,13 +40,44 @@ struct _open_file_descriptor;
 struct _fs_instance_t;
 struct _dentry_t;
 
+/**
+ * Structure contenant les pointeurs vers les fonctions liées à un fichier
+ * ouvert.
+ */
 struct _open_file_operations_t {
+    /**
+     * Écriture dans le fichier.
+     */
 	ssize_t (*write)(struct _open_file_descriptor *, const void*, size_t);
+
+    /**
+     * Lecture dans le fichier.
+     */
 	ssize_t (*read)(struct _open_file_descriptor *,void*, size_t);
+
+    /**
+     * Déplacement dans le fichier.
+     */
 	int (*seek)(struct _open_file_descriptor *, long, int);
+
+    /**
+     * Configuration / contrôle du fichier.
+     */
 	int (*ioctl)(struct _open_file_descriptor*, unsigned int, void *);
+
+    /**
+     * Ouverture du fichier.
+     */
 	int (*open) (struct _open_file_descriptor*);
+
+    /**
+     * Fermeture du fichier.
+     */
 	int (*close) (struct _open_file_descriptor*);
+
+    /**
+     * Lecture du dossier.
+     */
 	int (*readdir) (struct _open_file_descriptor*, char*, size_t);
 } open_file_operations_t;
 
