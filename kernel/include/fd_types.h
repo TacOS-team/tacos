@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * Structures liées aux fichiers ouverts.
+ * @brief Structures liées aux fichiers ouverts.
  */
 
 #ifndef _FD_TYPES_H

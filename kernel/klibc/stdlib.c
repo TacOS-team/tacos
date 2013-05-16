@@ -66,7 +66,6 @@ void itoa (char *buf, int base, int d) {
 	}
 }
 
-/* Affichage des hexa en longueur fixe, c'est plus commode */
 void itox(char *buf, int d)
 {
 	int i;

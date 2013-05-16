@@ -128,7 +128,7 @@ int delete_process(int pid)
 /* Procédure permettant de construire le char** argv */
 /* TODO: un schéma */
 /* Valeur retournée: argc */
-int arg_build(char* string, vaddr_t base, char*** argv_ptr)
+static int arg_build(char* string, vaddr_t base, char*** argv_ptr)
 {
 	int argc = 1;
 	int len = 0;
@@ -182,7 +182,7 @@ int arg_build(char* string, vaddr_t base, char*** argv_ptr)
 	return argc;
 }
 
-char** envp_build(uint32_t* base, char** envp) {
+static char** envp_build(uint32_t* base, char** envp) {
 	int i;
 	char **renvp;
 	char* str_copy_base;
@@ -203,7 +203,7 @@ char** envp_build(uint32_t* base, char** envp) {
 	return renvp;
 }
 
-vaddr_t init_stack(uint32_t* base, char* args, char** envp, paddr_t return_func) {
+static vaddr_t init_stack(uint32_t* base, char* args, char** envp, paddr_t return_func) {
 		int argc;
 		char** argv;
 		uint32_t* stack_ptr;
@@ -222,7 +222,7 @@ vaddr_t init_stack(uint32_t* base, char* args, char** envp, paddr_t return_func)
 		return (vaddr_t) stack_ptr;
 }
 
-void init_regs(regs_t* regs, vaddr_t esp, vaddr_t kesp, vaddr_t eip) {
+static void init_regs(regs_t* regs, vaddr_t esp, vaddr_t kesp, vaddr_t eip) {
 	regs->eax = 0;
 	regs->ebx = 0;
 	regs->ecx = 0;
@@ -244,7 +244,7 @@ void init_regs(regs_t* regs, vaddr_t esp, vaddr_t kesp, vaddr_t eip) {
 	regs->kesp = kesp;
 }
 
-process_init_data_t* dup_init_data(process_init_data_t* init_data) {
+static process_init_data_t* dup_init_data(process_init_data_t* init_data) {
 	
 	process_init_data_t* dup = kmalloc(sizeof(process_init_data_t));
 	
@@ -282,7 +282,7 @@ process_init_data_t* dup_init_data(process_init_data_t* init_data) {
 	return dup;
 }
 
-void free_init_data(process_init_data_t* init_data) {
+static void free_init_data(process_init_data_t* init_data) {
 	
 	kfree(init_data->name);
 	kfree(init_data->args);
@@ -300,7 +300,7 @@ void free_init_data(process_init_data_t* init_data) {
 	kfree(init_data);
 }
 
-process_t* create_process_elf(process_init_data_t* init_data)
+static process_t* create_process_elf(process_init_data_t* init_data)
 {
 	uint32_t *sys_stack, *user_stack;
 	process_init_data_t* init_data_dup;
