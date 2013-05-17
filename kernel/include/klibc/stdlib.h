@@ -53,6 +53,12 @@ int atoi(const char* __nptr);
  */
 void itoa(char *buf, int base, int d);
 
+/**
+ * Affichage des hexa en longueur fixe, c'est plus commode.
+ *
+ * @param buf une chaîne de taille suffisament grande pour y stocker le 
+ * @param d le nombre à convertir.
+ */
 void itox(char *buf, int d);
 
 #endif

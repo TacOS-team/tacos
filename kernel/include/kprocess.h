@@ -39,15 +39,18 @@
 #include <types.h>
 #include <vmm.h>
 
-#define MAX_PROC 512
+#define MAX_PROC 512 /**< Nombre max de processus. */
 
 #define CPU_USAGE_SAMPLE_RATE 100
 
-#define PROCSTATE_IDLE 0
-#define PROCSTATE_RUNNING 1
-#define PROCSTATE_WAITING 2
-#define PROCSTATE_SUSPENDED 3
-#define PROCSTATE_TERMINATED 4
+/**
+ * États possibles des process.
+ */
+#define PROCSTATE_IDLE 0 /**< Inactif. */
+#define PROCSTATE_RUNNING 1 /**< En cours d'exécution. */
+#define PROCSTATE_WAITING 2 /**< En attente. */
+#define PROCSTATE_SUSPENDED 3 /**< Suspendu. */
+#define PROCSTATE_TERMINATED 4 /**< Terminé. */
 
 #define CURRENT_PROCESS -1
 
@@ -77,7 +80,7 @@ typedef struct
 	uint32_t stack_size;
 	int priority;
 	
-	uint16_t ppid;
+	uint16_t ppid; /**< Parent process ID */
 	
 } process_init_data_t;
 
@@ -87,8 +90,8 @@ struct _tty_struct_t;
 * @brief 
 */
 typedef struct{
-	uint16_t	pid;
-	uint16_t	ppid;
+	uint16_t	pid; /**< Process ID */
+	uint16_t	ppid; /**< Parent process ID */
 	char* 		name;
 	uint8_t	state;
 	uint8_t	priority;
@@ -110,7 +113,7 @@ typedef struct{
 	
 	signal_process_data_t signal_data;
 
-	char *ctrl_tty;
+	char *ctrl_tty; /**< Controlling tty. */
 	
 	/* Données liées au debug run-time du process */
 	symbol_table_t* symtable;

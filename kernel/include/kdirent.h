@@ -35,15 +35,40 @@
 
 #define NAME_MAX 256 /**< Longueur maximale d'un nom de fichier. */
 
+/**
+ * Entrée de dossier.
+ */
 struct dirent {
-	uint32_t  d_ino;
-	uint16_t  d_reclen;
-	uint8_t   d_type;
-	char      d_name[NAME_MAX];
+	uint32_t  d_ino; /**< Numéro inode. */
+	uint16_t  d_reclen; /**< Longueur du nom de l'entrée. */
+	uint8_t   d_type; /**< Type de fichier. */
+	char      d_name[NAME_MAX]; /**< Nom de l'entrée. */
 };
 
+/**
+ * Lecture d'un dossier.
+ *
+ * @param fd Identifiant du fichier ouvert.
+ * @param entries Buffer qui contient des struct dirent.
+ * @param size Taille du buffer.
+ */
 SYSCALL_HANDLER3(sys_readdir, int fd, char *entries, size_t *size);
+
+/**
+ * Création d'un dossier.
+ *
+ * @param pathname Nom du dossier.
+ * @param mode Droits.
+ * @param ret Valeur de retour.
+ */
 SYSCALL_HANDLER3(sys_mkdir, const char *pathname, mode_t mode, int *ret);
+
+/**
+ * Suppression d'un dossier.
+ *
+ * @param pathname Nom du dossier.
+ * @param ret Valeur de retour.
+ */
 SYSCALL_HANDLER2(sys_rmdir, const char *pathname, int *ret);
 
 #endif

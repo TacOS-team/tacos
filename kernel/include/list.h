@@ -56,6 +56,9 @@ typedef struct {
  * Initialisation d'un liste.
  *
  * @param l La liste manipulée.
+ * @param cmp Fonction de comparaison.
+ * @param elements_size Taille d'un élément de la liste.
+ * @param max_elements Nombre max d'éléments dans la liste.
  */
 void list_init(list_t* l, cmp_func_type cmp, size_t elements_size, int max_elements);
 
