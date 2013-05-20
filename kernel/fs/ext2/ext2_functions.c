@@ -297,6 +297,7 @@ int ext2_mknod(inode_t *dir, dentry_t *dentry, mode_t mode, dev_t dev) {
 
 	dentry->d_inode = kmalloc(sizeof(inode_t));
 	ext2inode_2_inode(dentry->d_inode, dir->i_instance, ino, einode);
+	dentry->d_inode->i_count = 0;
 
 	return 0;
 }
@@ -371,6 +372,7 @@ dentry_t* ext2_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry,
 	d->d_name = (const char*)n;
 	d->d_inode = kmalloc(sizeof(inode_t));
 	ext2inode_2_inode(d->d_inode, instance, inode, einode);
+	d->d_inode->i_count = 0;
 
 	if (flags & O_TRUNC) {
 		ext2_truncate(d->d_inode, 0);

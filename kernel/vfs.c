@@ -65,6 +65,7 @@ static struct _dentry_t* vfs_getroot (struct _fs_instance_t *instance __attribut
 void vfs_init() {
 	root_vfs.d_name = "";
 	root_vfs.d_inode = kmalloc(sizeof(inode_t));
+	root_vfs.d_inode->i_count = 1;
 	root_vfs.d_inode->i_ino = 0;
 	root_vfs.d_inode->i_size = 512;
 	root_vfs.d_inode->i_blocks = 1;
@@ -177,6 +178,8 @@ static int open_namei(const char *pathname, struct nameidata *nb) {
 }
 
 static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, uint32_t flags) {
+	dentry->d_inode->i_count++;
+
 	open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
 	ofd->flags = flags;
 	ofd->dentry = dentry;
@@ -186,6 +189,7 @@ static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, u
 
 	if (S_ISFIFO(dentry->d_inode->i_mode)) {
 		klog("ouverture d'un pipe !");
+		klog("i count : %d", dentry->d_inode->i_count);
 		ofd->f_ops = &pipe_fops;
 	} else {
 		ofd->f_ops = dentry->d_inode->i_fops;
