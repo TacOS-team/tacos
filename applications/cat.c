@@ -41,6 +41,7 @@ int main(int argc, char **argv)
 			c = fgetc(fd);
 			while (c != EOF) {
 				printf("%c", c);
+				fflush(stdout);
 				c = fgetc(fd);
 			}
 
