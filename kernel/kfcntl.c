@@ -89,7 +89,7 @@ void close_all_fd() {
 			if(ofd->f_ops->close != NULL)
 				ofd->f_ops->close(ofd);
 
-			kfree(ofd);
+			vfs_close(ofd);
 			process->fd[fd_id] = NULL;
 		}
 	}

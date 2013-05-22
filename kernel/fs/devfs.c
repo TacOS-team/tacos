@@ -199,6 +199,7 @@ static dentry_t* devfs_lookup(struct _fs_instance_t *instance, struct _dentry_t*
 		inode->i_atime = inode->i_ctime = inode->i_mtime = inode->i_dtime = 0; // XXX
 		inode->i_nlink = 1;
 		inode->i_blocks = 1;
+		inode->i_count = 0;
 		inode->i_instance = instance;
 		inode->i_fops = kmalloc(sizeof(open_file_operations_t));
 		inode->i_fs_specific = (chardev_interfaces*)(drentry->di);
