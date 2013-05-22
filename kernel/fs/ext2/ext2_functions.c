@@ -370,6 +370,7 @@ dentry_t* ext2_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry,
 	char *n = kmalloc(strlen(name) + 1);
 	strcpy(n, name);
 	d->d_name = (const char*)n;
+	d->d_pdentry = dentry;
 	d->d_inode = kmalloc(sizeof(inode_t));
 	ext2inode_2_inode(d->d_inode, instance, inode, einode);
 	d->d_inode->i_count = 0;

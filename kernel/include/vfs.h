@@ -104,6 +104,7 @@ typedef struct _inode_t {
 typedef struct _dentry_t {
 	const char *d_name; /**< Nom de l'entrée. */
 	inode_t *d_inode; /**< Inode associé. */
+	struct _dentry_t *d_pdentry; /**< Parent dentry. */
 } dentry_t;
 
 /**

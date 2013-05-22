@@ -222,6 +222,7 @@ open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 			if (lookup(&nb_last) != 0) {
 				dentry_t new_entry;
 				new_entry.d_name = nb.last;
+				new_entry.d_pdentry = nb.dentry;
 				nb.mnt->instance->mknod(nb.dentry->d_inode, &new_entry, 0, 0); //XXX
 				ret = dentry_open(&new_entry, nb.mnt, flags);
 				goto ok;
@@ -254,6 +255,13 @@ int vfs_close(open_file_descriptor *ofd) {
 		return -1;
 	}
 	//TODO decrement utilisateurs de l'inode, si 0 alors on remove du dcache.
+	klog("vfs close");
+	ofd->dentry->d_inode->i_count--;
+	if (ofd->dentry->d_inode->i_count == 0) {
+			dcache_remove(ofd->fs_instance, ofd->dentry->d_pdentry, ofd->dentry->d_name);
+	} else {
+			klog("> %s %d", ofd->dentry->d_name, ofd->dentry->d_inode->i_count);
+	}
 	kfree(ofd->pathname);
 	kfree(ofd);
 	return 0;

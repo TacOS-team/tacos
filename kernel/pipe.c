@@ -99,6 +99,7 @@ static int pipe_open(open_file_descriptor * ofd) {
 	} else {
 		struct extra_data_pipe_t *extra = (struct extra_data_pipe_t*)ofd->dentry->d_inode->i_fs_specific;
 		ksemV(extra->sem_open);
+		// Attention, vérifier qu'on a un lecteur et un écrivain et pas juste 2 read ou 2 write !
 	}
 	
 	return 0;
