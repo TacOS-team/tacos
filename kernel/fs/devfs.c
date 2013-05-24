@@ -306,11 +306,13 @@ static void umount_devfs(fs_instance_t *instance) {
 }
 
 void devfs_init() {
-	root_devfs.d_name = "";
+	root_devfs.d_name = "dev";
 	root_devfs.d_inode = kmalloc(sizeof(inode_t));
+	root_devfs.d_inode->i_count = 0;
 	root_devfs.d_inode->i_ino = 0;
 	root_devfs.d_inode->i_mode = S_IFDIR | 00755;
 	root_devfs.d_inode->i_fops = &devfs_fops;
+	root_devfs.d_pdentry = NULL;
 	init_driver_list();
 	vfs_register_fs(&dev_fs);
 }

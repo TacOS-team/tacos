@@ -65,7 +65,7 @@ static struct _dentry_t* vfs_getroot (struct _fs_instance_t *instance __attribut
 void vfs_init() {
 	root_vfs.d_name = "";
 	root_vfs.d_inode = kmalloc(sizeof(inode_t));
-	root_vfs.d_inode->i_count = 1;
+	root_vfs.d_inode->i_count = 0;
 	root_vfs.d_inode->i_ino = 0;
 	root_vfs.d_inode->i_size = 512;
 	root_vfs.d_inode->i_blocks = 1;
@@ -172,6 +172,7 @@ static int open_namei(const char *pathname, struct nameidata *nb) {
 	} else if (strlen(pathname) <= 1) {
 		nb->mnt = &mvfs;
 		nb->dentry = &root_vfs;
+		nb->dentry->d_inode->i_count++;
 		return 0;
 	}
 	return -2;
@@ -213,54 +214,56 @@ open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 		if (!(flags & O_CREAT)) {
 			nb.flags &= ~LOOKUP_PARENT;
 			if (lookup(&nb) != 0) {
-				goto end;
+				return NULL;
 			}
 		} else {
 			struct nameidata nb_last;
 			memcpy(&nb_last, &nb, sizeof(struct nameidata));
 			nb_last.flags &= ~LOOKUP_PARENT;
 			if (lookup(&nb_last) != 0) {
-				dentry_t new_entry;
-				new_entry.d_name = nb.last;
-				new_entry.d_pdentry = nb.dentry;
-				nb.mnt->instance->mknod(nb.dentry->d_inode, &new_entry, 0, 0); //XXX
-				ret = dentry_open(&new_entry, nb.mnt, flags);
+				dentry_t *new_entry = kmalloc(sizeof(dentry_t));
+				new_entry->d_name = nb.last;
+				klog("vfs_open create d_name : %s", nb.last);
+				new_entry->d_pdentry = nb.dentry;
+				nb.mnt->instance->mknod(nb.dentry->d_inode, new_entry, 0, 0); //XXX
+				ret = dentry_open(new_entry, nb.mnt, flags);
 				goto ok;
 			} else {
 				memcpy(&nb, &nb_last, sizeof(struct nameidata));
 			}
 		}
 		ret = dentry_open(nb.dentry, nb.mnt, flags);
-		goto ok;
 	}
-
-end:
-	if (ret != NULL) {
-		ret->pathname = kmalloc(strlen(pathname) + 1);
-		strcpy(ret->pathname, pathname);
-	}
-	return ret;
 ok:
-	if (flags & O_TRUNC && nb.mnt->instance->setattr) {
+	if (ret != NULL) {
+		if (flags & O_TRUNC && nb.mnt->instance->setattr) {
 			file_attributes_t attr;
 			attr.mask = ATTR_SIZE;
 			attr.ia_size = 0;
 			nb.mnt->instance->setattr(nb.dentry->d_inode, &attr);
+		}
+		ret->pathname = kmalloc(strlen(pathname) + 1);
+		strcpy(ret->pathname, pathname);
 	}
-	goto end;
+
+	return ret;
 }
 
 int vfs_close(open_file_descriptor *ofd) {
 	if (ofd == NULL) {
 		return -1;
 	}
-	//TODO decrement utilisateurs de l'inode, si 0 alors on remove du dcache.
-	klog("vfs close");
+	klog("vfs close %s", ofd->pathname);
+
+	klog("dentry: %d", ofd->dentry);
+	klog("d_name: %s", ofd->dentry->d_name);
+	klog("d_inode: %d", ofd->dentry->d_inode);
+
 	ofd->dentry->d_inode->i_count--;
-	if (ofd->dentry->d_inode->i_count == 0) {
+	if (ofd->dentry->d_inode->i_count == 0 && ofd->dentry->d_pdentry) {
 			dcache_remove(ofd->fs_instance, ofd->dentry->d_pdentry, ofd->dentry->d_name);
 	} else {
-			klog("> %s %d", ofd->dentry->d_name, ofd->dentry->d_inode->i_count);
+			klog("i_count ok : %s %d", ofd->dentry->d_name, ofd->dentry->d_inode->i_count);
 	}
 	kfree(ofd->pathname);
 	kfree(ofd);

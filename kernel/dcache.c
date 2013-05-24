@@ -87,4 +87,6 @@ void dcache_set(struct _fs_instance_t *instance, struct _dentry_t* pdentry, cons
 	key->name = name;
 
 	hashmap_set(map, (struct hashmap_key_t*)key, (struct hashmap_value_t*)dentry);
+
+	klog("set : %d %s", dentry, dentry->d_name);
 }

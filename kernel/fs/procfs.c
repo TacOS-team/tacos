@@ -368,6 +368,7 @@ dentry_t * get_default_dentry(struct _fs_instance_t * instance,
 	inode->i_nlink    = 1;
 	inode->i_blocks   = 1;
 	inode->i_instance = instance;
+	inode->i_count = 0;
 
 	extra_data_procfs_t * extra = kmalloc(sizeof(extra_data_procfs_t));
 	extra->pid    = pid;
@@ -612,7 +613,7 @@ void procfs_init() {
 				= strlen(procfs_directory_functions_list[i].name);
 	}
 
-	root_procfs.d_name = "";
+	root_procfs.d_name = "proc";
 
 	root_procfs.d_inode = kmalloc(sizeof(inode_t));
 	memset(root_procfs.d_inode, 0, sizeof(*(root_procfs.d_inode)));
