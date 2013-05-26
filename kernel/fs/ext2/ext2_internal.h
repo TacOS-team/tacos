@@ -226,15 +226,6 @@ typedef struct _ext2_fs_instance_t {
 } ext2_fs_instance_t;
 
 /**
- * @brief Données supplémentaires qui sont ajoutés à l'ofd lors du open.
- */
-typedef struct _ext2_extra_data {
-	uint32_t inode; /**< Inode du fichier. */
-	uint32_t type; /**< Type du fichier. */
-} ext2_extra_data;
-
-
-/**
  * @brief Unmount d'un point de montage.
  *
  * @param instance L'instance de fs que l'on veut démonter.

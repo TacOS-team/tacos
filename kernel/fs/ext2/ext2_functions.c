@@ -109,7 +109,7 @@ int ext2_stat(dentry_t *dentry, struct stat *stbuf) {
 int ext2_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 	size_t count = 0;
 	ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
-	int inode = ((ext2_extra_data*)ofd->extra_data)->inode;
+	int inode = ofd->inode->i_ino;
 	if (inode >= 0) {
 		size_t c = 0;
 		struct directories_t *dirs = readdir_inode(instance, inode);
@@ -168,7 +168,7 @@ ssize_t ext2_write(open_file_descriptor * ofd, const void *buf, size_t size) {
 		return 0;
 	}
 
-	int inode = ((ext2_extra_data*)ofd->extra_data)->inode;
+	int inode = ofd->inode->i_ino;
 	if (inode >= 0) {
 		ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
 		
@@ -235,7 +235,7 @@ ssize_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size) {
 	if ((ofd->flags & O_ACCMODE) == O_WRONLY) {
 		return 0;
 	}
-	int inode = ((ext2_extra_data*)ofd->extra_data)->inode;
+	int inode = ofd->inode->i_ino;
 	if (inode >= 0) {
 		ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
 		off_t offset = ofd->current_octet;

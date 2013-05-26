@@ -85,10 +85,7 @@ static inline dentry_t * init_rootext2fs(ext2_fs_instance_t *instance) {
 	root_ext2fs->d_inode->i_count = 0;
 	root_ext2fs->d_inode->i_ino = EXT2_ROOT_INO;
 	root_ext2fs->d_inode->i_instance = (fs_instance_t*)instance;
-	ext2_extra_data *ext = kmalloc(sizeof(ext2_extra_data));
-	ext->inode = EXT2_ROOT_INO;
-	ext->type = EXT2_FT_DIR;
-  root_ext2fs->d_inode->i_fs_specific = ext;
+	root_ext2fs->d_inode->i_fs_specific = NULL;
 	root_ext2fs->d_inode->i_mode = S_IFDIR | 00755;
 	root_ext2fs->d_inode->i_fops = &ext2fs_fops;
 	root_ext2fs->d_pdentry = NULL;

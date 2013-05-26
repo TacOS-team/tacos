@@ -100,6 +100,7 @@ typedef struct _open_file_descriptor {
 	// Utile ? on peut l'avoir par mnt->instance
 	struct _fs_instance_t *fs_instance;
 	// Rajouter inode ?
+	struct _inode_t *inode;
 	struct _dentry_t *dentry;
 	struct _mounted_fs_t *mnt;
 	struct _open_file_operations_t *f_ops;

@@ -424,8 +424,5 @@ static void ext2inode_2_inode(inode_t* inode, struct _fs_instance_t *instance, i
 	inode->i_blocks = einode->i_blocks;
 	inode->i_instance = instance;
 	inode->i_fops = &ext2fs_fops; 
-	ext2_extra_data *extra_data = kmalloc(sizeof(ext2_extra_data));
-	extra_data->inode = ino;
-	extra_data->type = EXT2_FT_REG_FILE; //XXX!!!
-	inode->i_fs_specific = extra_data;
+	inode->i_fs_specific = NULL;
 }

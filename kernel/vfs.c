@@ -184,6 +184,7 @@ static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, u
 
 	open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
 	ofd->flags = flags;
+	ofd->inode = dentry->d_inode;
 	ofd->dentry = dentry;
 	ofd->mnt = mnt;
 	ofd->file_size = dentry->d_inode->i_size;
