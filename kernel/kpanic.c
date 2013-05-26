@@ -48,6 +48,32 @@
 
 extern symbol_table_t* ksymtable;
 
+static void printStackTraceNoSymb(uint32_t depth)
+{
+	// Joli petit hack:
+	// on récupère ebp à partir de l'adresse de l'argument:
+	uint32_t* ebp = &depth - 2;
+	uint32_t i;
+	kprintf("\nStack Trace:\n");
+	
+	for(i=0; i<depth+3; ++i)
+	{
+		uint32_t eip = ebp[1];
+		
+		if(eip == 0x0010001f) // Si on arrive au multiboot_entry
+		{
+			break;
+		}
+		if(eip == 0x1)
+			break;
+		ebp = (uint32_t*) ebp[0];
+		if(i>=3) {
+			kprintf("0x%x\n",eip);
+		}
+	}
+}
+
+
 static void printStackTrace(uint32_t depth,process_t* badboy)
 {
 	// Joli petit hack:
@@ -129,6 +155,8 @@ static void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t
 
 	if(ksymtable != NULL)
 		printStackTrace(10, badboy);
+	else
+		printStackTraceNoSymb(10);
 	
 	kprintf("\nException handled : ");
 	switch(error_id)
