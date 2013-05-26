@@ -44,6 +44,7 @@ static inline dentry_t * init_rootfatfs(fat_fs_instance_t *instance) {
 	
 	root_fatfs->fat_directory = open_root_dir(instance);
 	root_fatfs->fat_entry = NULL;
+	root_fatfs->super.d_pdentry = NULL;
 	root_fatfs->super.d_name = "";
 	root_fatfs->super.d_inode = kmalloc(sizeof(inode_t));
 	root_fatfs->super.d_inode->i_ino = 0;
