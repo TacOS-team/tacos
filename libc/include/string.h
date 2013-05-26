@@ -183,7 +183,7 @@ char *strchrnul(const char *s, int c);
  * 
  * @return un pointeur vers la zone mémoire s.
  */
-void *memset(void *s, int c, size_t n);
+void *memset(void *s, int c, size_t n) __attribute__ ((optimize ("no-tree-loop-distribute-patterns")));
 
 /** 
  * @brief Compare deux zones mémoire.
