@@ -115,4 +115,6 @@ static int pipe_close(open_file_descriptor *ofd) {
 	ksemctl(extra->sem_read, SEM_DEL, &ret);
 	ksemctl(extra->sem_write, SEM_DEL, &ret);
 	kfree(extra);
+
+	return 0; // XXX 
 }

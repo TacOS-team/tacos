@@ -126,19 +126,22 @@ char* addr_to_sym(symbol_table_t* table, paddr_t addr)
 	int found = 0;
 	int i = 0;
 	char* res = NULL;
-	while(!found && (i < table->count-1))
-	{
-		if(addr >= table->symbols[i].addr && addr < table->symbols[i+1].addr)
-		{
-			found = 1;
-			res = table->symbols[i].name;
+        if(table != NULL) {
+		while(!found && (i < table->count-1))
+		{	
+			if(addr >= table->symbols[i].addr && addr < table->symbols[i+1].addr)
+			{
+				found = 1;
+				res = table->symbols[i].name;
+			}
+			i++;
 		}
-		i++;
-	}
-	/*if(addr > USER_PROCESS_BASE)
-		res = (char*) userland;*/
-	if(!found)
+		/*if(addr > USER_PROCESS_BASE)
+			res = (char*) userland;*/
+		if(!found)
+			res = (char*) undef;
+	} else {
 		res = (char*) undef;
-	
+	}
 	return res;
 }
