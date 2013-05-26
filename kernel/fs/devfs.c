@@ -246,6 +246,7 @@ static dentry_t* devfs_lookup(struct _fs_instance_t *instance, struct _dentry_t*
 		strcpy(n, name);
 		d->d_name = (const char*)n;
 		d->d_inode = inode;
+		d->d_pdentry = NULL; //FIXME !
 		return d;
 	}
 	return NULL;
