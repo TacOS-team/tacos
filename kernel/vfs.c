@@ -278,13 +278,9 @@ void vfs_mount(const char *device, const char *mountpoint, const char *type) {
 	while (aux != NULL) {
 		if (strcmp(aux->fs->name, type) == 0) {
 			mounted_fs_t *element = kmalloc(sizeof(mounted_fs_t));
-			int len = strlen(mountpoint);
-			element->name = kmalloc(len + 1);
-			int i;
-			for (i = 0; i <= len; i++)
-				element->name[i] = mountpoint[i];
+			element->name = strdup(mountpoint);
 				
-			if(device != NULL) {
+			if (device != NULL) {
 				/* Open the mounted device */
 				ofd = vfs_open(device, O_RDWR);
 			}
