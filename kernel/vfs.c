@@ -64,6 +64,7 @@ static struct _dentry_t* vfs_getroot (struct _fs_instance_t *instance __attribut
 
 void vfs_init() {
 	root_vfs.d_name = "";
+	root_vfs.d_pdentry = NULL;
 	root_vfs.d_inode = kmalloc(sizeof(inode_t));
 	root_vfs.d_inode->i_count = 0;
 	root_vfs.d_inode->i_ino = 0;

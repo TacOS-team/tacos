@@ -8,8 +8,9 @@
 static int pipe_open(open_file_descriptor * ofd);
 static ssize_t pipe_read(struct _open_file_descriptor *ofd, void* buf, size_t size);
 static ssize_t pipe_write(struct _open_file_descriptor *ofd, const void* buf, size_t size);
+static int pipe_close(struct _open_file_descriptor *ofd);
 
-struct _open_file_operations_t pipe_fops = {.write = pipe_write, .read = pipe_read, .seek = NULL, .ioctl = NULL, .open = pipe_open, .close = NULL, .readdir = NULL};
+struct _open_file_operations_t pipe_fops = {.write = pipe_write, .read = pipe_read, .seek = NULL, .ioctl = NULL, .open = pipe_open, .close = pipe_close, .readdir = NULL};
 
 #define DATA_SIZE 4096
 
@@ -103,4 +104,15 @@ static int pipe_open(open_file_descriptor * ofd) {
 	}
 	
 	return 0;
+}
+
+static int pipe_close(open_file_descriptor *ofd) {
+	klog("pipe close !");
+
+	struct extra_data_pipe_t *extra = (struct extra_data_pipe_t*)ofd->dentry->d_inode->i_fs_specific;
+
+	int ret;
+	ksemctl(extra->sem_read, SEM_DEL, &ret);
+	ksemctl(extra->sem_write, SEM_DEL, &ret);
+	kfree(extra);
 }
