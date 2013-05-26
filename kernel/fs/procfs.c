@@ -380,9 +380,7 @@ dentry_t * get_default_dentry(struct _fs_instance_t * instance,
 	inode->i_fops->close   = procfs_close;
 	
 	dentry_t * d = kmalloc(sizeof(dentry_t));
-	char * n = kmalloc(strlen(name) + 1);
-	strcpy(n, name);
-	d->d_name  = (const char*)n;
+	d->d_name = (const char*) strdup(name);
 	d->d_inode = inode;
 
 	return d;

@@ -185,7 +185,7 @@ static dentry_t *devfs_getroot() {
 	return &root_devfs;
 }
 
-static dentry_t* devfs_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry __attribute__((unused)), const char * name) {
+static dentry_t* devfs_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name) {
 	//TODO: gérer dentry pour avoir des sous-dossiers.
 
 	driver_entry *drentry = find_driver(name);
@@ -242,11 +242,10 @@ static dentry_t* devfs_lookup(struct _fs_instance_t *instance, struct _dentry_t*
 				break;
 		}
 		dentry_t *d = kmalloc(sizeof(dentry_t));
-		char *n = kmalloc(strlen(name) + 1);
-		strcpy(n, name);
+		char *n = strdup(name);
 		d->d_name = (const char*)n;
 		d->d_inode = inode;
-		d->d_pdentry = NULL; //FIXME !
+		d->d_pdentry = dentry;
 		return d;
 	}
 	return NULL;

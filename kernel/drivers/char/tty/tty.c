@@ -146,7 +146,7 @@ int tty_register_driver(tty_driver_t *driver) {
 	driver->ttys = kmalloc(sizeof(tty_struct_t*) * driver->num);
 	for (n = 0; n < driver->num; n++) {
 		int len = strlen(driver->devfs_name);
-		char *name = kmalloc(strlen(driver->devfs_name) + 5);
+		char *name = kmalloc(len + 5);
 		int i;
 		for (i = 0; i < len; i++) {
 			name[i] = driver->devfs_name[i];
@@ -277,8 +277,7 @@ int tty_ioctl (open_file_descriptor *ofd,  unsigned int request, void *data) {
 		{
 			//XXX: C'est un peu moche, normalement je devrais utiliser ofd et non data pour mettre le chemin... Et donc on peut se demander pourquoi mettre la fonction ici aussi...
 		process_t *current_process = get_current_process();
-		current_process->ctrl_tty = kmalloc(strlen(data) + 1);
-		strcpy(current_process->ctrl_tty, data);
+		current_process->ctrl_tty = strdup(data);
 		}
 		return 0;
 	}

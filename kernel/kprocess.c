@@ -248,11 +248,8 @@ static process_init_data_t* dup_init_data(process_init_data_t* init_data) {
 	
 	process_init_data_t* dup = kmalloc(sizeof(process_init_data_t));
 	
-	dup->name = kmalloc(strlen(init_data->name) + 1);
-	strcpy(dup->name, init_data->name);
-	
-	dup->args = kmalloc(strlen(init_data->args) + 1);
-	strcpy(dup->args, init_data->args);
+	dup->name = strdup(init_data->name);
+	dup->args = strdup(init_data->args);
 	
 	if (init_data->envp) {
 		int i;
@@ -260,8 +257,7 @@ static process_init_data_t* dup_init_data(process_init_data_t* init_data) {
 		while (init_data->envp[taille_env++]);
 		dup->envp = kmalloc(taille_env * sizeof(char*));
 		for (i = 0; i < taille_env - 1; i++) {
-			dup->envp[i] = kmalloc(strlen(init_data->envp[i]) + 1);
-			strcpy(dup->envp[i], init_data->envp[i]);
+			dup->envp[i] = strdup(init_data->envp[i]);
 		}
 		dup->envp[taille_env - 1] = NULL;
 	} else {
@@ -309,7 +305,6 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 	uint32_t* stack_ptr;
 		
 	int i;
-	int len;
 	
 	init_data_dup = dup_init_data(init_data);
 	
@@ -320,9 +315,7 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 		return NULL;
 	}
 	
-	len = strlen(init_data_dup->name);
-	new_proc->name = (char *) kmalloc((len+1)*sizeof(char));
-	strcpy(new_proc->name, init_data_dup->name);
+	new_proc->name = strdup(init_data_dup->name);
 	
 	/* Initialisation de la kernel stack */
 	sys_stack = kmalloc(init_data_dup->stack_size*sizeof(uint32_t));
@@ -434,7 +427,6 @@ process_t* create_process(process_init_data_t* init_data)
 	uint32_t* stack_ptr;
 	
 	int i;
-	int len;
 	
 	new_proc = kmalloc(sizeof(process_t));
 	if (new_proc == NULL)
@@ -442,9 +434,7 @@ process_t* create_process(process_init_data_t* init_data)
 		kerr("impossible de reserver la memoire pour le nouveau processus.");
 		return NULL;
 	}
-	len = strlen(name);
-	new_proc->name = (char *) kmalloc((len+1)*sizeof(char));
-	strcpy(new_proc->name, name);
+	new_proc->name = strdup(name);
 	
 	sys_stack = kmalloc(stack_size*sizeof(uint32_t));
 	if (sys_stack == NULL)
@@ -620,8 +610,7 @@ SYSCALL_HANDLER3(sys_exec, char *cmdline, char **environ, int *retval)
 	process_t* process = get_current_process();
 	int pid = process->pid;
 
-	char* execpath = kmalloc(strlen(cmdline) + 1);
-	strcpy(execpath, cmdline);
+	char* execpath = strdup(cmdline);
 
 	int ret = -1;
 	int offset = 0;

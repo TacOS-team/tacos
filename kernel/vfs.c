@@ -243,8 +243,7 @@ ok:
 			attr.ia_size = 0;
 			nb.mnt->instance->setattr(nb.dentry->d_inode, &attr);
 		}
-		ret->pathname = kmalloc(strlen(pathname) + 1);
-		strcpy(ret->pathname, pathname);
+		ret->pathname = strdup(pathname);
 	}
 
 	return ret;
@@ -259,6 +258,7 @@ int vfs_close(open_file_descriptor *ofd) {
 	klog("dentry: %d", ofd->dentry);
 	klog("d_name: %s", ofd->dentry->d_name);
 	klog("d_inode: %d", ofd->dentry->d_inode);
+	klog("d_pdentry: %d", ofd->dentry->d_pdentry);
 
 	ofd->dentry->d_inode->i_count--;
 	if (ofd->dentry->d_inode->i_count == 0 && ofd->dentry->d_pdentry) {
