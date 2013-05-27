@@ -224,12 +224,12 @@ static dentry_t* devfs_lookup(struct _fs_instance_t *instance, struct _dentry_t*
 				break;
 			case BLKDEV:
 				inode->i_fops->readdir = NULL;
-				inode->i_fops->open = NULL;
+				inode->i_fops->open = ((blkdev_interfaces*)(drentry->di))->open;
 				inode->i_fops->write = NULL; /* à implémenter */
 				inode->i_fops->read = NULL; /* à implémenter */
 				inode->i_fops->seek = NULL; /* à implémenter */
 				inode->i_fops->close = ((blkdev_interfaces*)(drentry->di))->close;
-				inode->i_fops->ioctl = NULL; /* à implémenter */
+				inode->i_fops->ioctl = ((blkdev_interfaces*)(drentry->di))->ioctl;
 				
 				/*
 				if(((blkdev_interfaces*)(drentry->di))->open != NULL) {
