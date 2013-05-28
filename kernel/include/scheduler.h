@@ -86,6 +86,13 @@ void stop_scheduler();
  */
 SYSCALL_HANDLER1(sys_sleep, uint32_t delay); 
 
+/**
+ * Retourne si le process donné en argument est ordonnançable. C'est à dire s'il peut s'exécuter (pas bloqué ni terminé).
+ *
+ * @param process Le processus à tester.
+ *
+ * @return 1 si schedulable, 0 sinon.
+ */
 int is_schedulable(process_t* process);
 
 void halt();

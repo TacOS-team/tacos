@@ -175,6 +175,7 @@ static ssize_t procfs_read_ppid(open_file_descriptor * ofd, void* buffer, size_t
 	return result;
 }
 
+/*
 static ssize_t procfs_read_priority(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
 	extra_data_procfs_t *extra = ofd->extra_data;
@@ -185,7 +186,7 @@ static ssize_t procfs_read_priority(open_file_descriptor * ofd, void* buffer, si
 		result = write_string_in_buffer(ofd, buffer, priority, count);
 	}
 	return result;
-}
+}*/
 
 static ssize_t procfs_read_state(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
@@ -223,8 +224,8 @@ typedef struct {
 static procfs_file_function_t procfs_file_functions_list[] = {
 									{ "cmd_line", 0, procfs_read_name,     procfs_cmd_line_offset },
 									{ "ppid",     0, procfs_read_ppid,     procfs_ppid_offset },
-									{ "state",    0, procfs_read_state,    procfs_state_offset },
-									{ "priority", 0, procfs_read_priority, procfs_priority_offset }
+									{ "state",    0, procfs_read_state,    procfs_state_offset }/*,
+									{ "priority", 0, procfs_read_priority, procfs_priority_offset }*/
 								};
 
 const size_t nb_file_functions = sizeof(procfs_file_functions_list)

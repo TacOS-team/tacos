@@ -55,16 +55,6 @@ static uint32_t next_pid = 0;	/* pid à donner au prochain processus créé */
 
 static process_t* process_array[MAX_PROC];
 
-void init_process_array()
-{
-	int i;
-	
-	for(i=0; i<MAX_PROC; i++)
-	{
-		process_array[i] = NULL;
-	}
-}
-
 uint32_t get_proc_count()
 {
 	return proc_count;
@@ -465,7 +455,7 @@ process_t* create_process(process_init_data_t* init_data)
 	int val = 0;
 	ksemctl(new_proc->sem_wait, SEM_SET, &val);
 	
-	new_proc->priority = init_data->priority;
+//	new_proc->priority = init_data->priority;
 	new_proc->user_time = 0;
 	new_proc->sys_time = 0;
 	new_proc->current_sample = 0;

@@ -32,6 +32,9 @@
 #include <types.h>
 #include <fd_types.h>
 
+/**
+ * Initialisation of the proc FS.
+ */
 void procfs_init();
 
 #endif /* _PROCFS_H */

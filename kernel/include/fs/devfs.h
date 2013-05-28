@@ -32,12 +32,13 @@
 #include <types.h>
 #include <fd_types.h>
 
-enum _device_type_t{
+/**
+ * Type de device.
+ */
+typedef enum _device_type_t{
 	CHARDEV,
 	BLKDEV
-};
-
-typedef enum _device_type_t device_type_t ;
+} device_type_t;
 
 typedef ssize_t (*chardev_read_t)(open_file_descriptor *,void*, size_t);
 typedef ssize_t (*chardev_write_t)(open_file_descriptor *, const void*, size_t);
@@ -45,13 +46,16 @@ typedef int (*chardev_ioctl_t) (open_file_descriptor*, unsigned int, void*);
 typedef int (*chardev_open_t) (open_file_descriptor*);
 typedef int (*chardev_close_t) (open_file_descriptor*);
 
+/**
+ * @brief Structure contenant les fonction qui permettent d'utiliser un char device.
+ */
 typedef struct {
-	chardev_read_t read;
-	chardev_write_t write;
-	chardev_ioctl_t ioctl;
-	chardev_open_t open;
-	chardev_close_t close;
-	void * custom_data;
+	chardev_read_t read; /**< Fonction de lecture. */
+	chardev_write_t write; /**< Fonction d'écriture. */
+	chardev_ioctl_t ioctl; /**< Fonction de contrôle du périphérique. */
+	chardev_open_t open; /**< Fonction appelée à l'ouverture du device. */
+	chardev_close_t close; /**< Fonction appelée à la fermeture du device. */
+	void * custom_data; /**< Données complémentaires qui peuvent être nécessaires pour utiliser le device. */
 } chardev_interfaces;
 
 
@@ -61,17 +65,31 @@ typedef int (*blkdev_ioctl_t) (open_file_descriptor*, unsigned int, void*);
 typedef int (*blkdev_open_t) (open_file_descriptor*);
 typedef int (*blkdev_close_t) (open_file_descriptor*);
 
+/**
+ * @brief Structure contenant les fonctions qui permettent d'utiliser un block device.
+ */
 typedef struct {
-	blkdev_read_t read;
-	blkdev_write_t write;
-	blkdev_ioctl_t ioctl;
-	blkdev_open_t open;
-	blkdev_close_t close;
-	void * custom_data;
+	blkdev_read_t read; /**< Fonction de lecture. */
+	blkdev_write_t write; /**< Fonction d'écriture. */
+	blkdev_ioctl_t ioctl; /**< Fonction de contrôle du périphérique. */
+	blkdev_open_t open; /**< Fonction appelée à l'ouverture du device. */
+	blkdev_close_t close; /**< Fonction appelée à la fermeture du device. */
+	void * custom_data; /**< Données complémentaires qui peuvent être nécessaires pour utiliser le device. */
 } blkdev_interfaces;
 
+/**
+ * @brief Initialisation du dev FS.
+ */
 void devfs_init();
+
+/**
+ * @brief Enregistre un char device dans le dev FS.
+ */
 int register_chardev(const char* name, chardev_interfaces* di);
+
+/**
+ * @brief Enregistre un block device dans le dev FS.
+ */
 int register_blkdev(const char* name, blkdev_interfaces* di);
 
 

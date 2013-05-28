@@ -87,14 +87,14 @@ typedef struct
 struct _tty_struct_t;
 
 /** 
-* @brief 
+* @brief Structure représentant un processus.
 */
 typedef struct{
 	uint16_t	pid; /**< Process ID */
 	uint16_t	ppid; /**< Parent process ID */
-	char* 		name;
-	uint8_t	state;
-	uint8_t	priority;
+	char* 		name; /**< Nom du processus. */
+	uint8_t	state; /**< Etat du processus (idle, running, waiting...) */
+	//uint8_t	priority; // Not used.
 	
 	/* Données dédiées au évaluation de perf */
 	long int	user_time;
@@ -126,13 +126,10 @@ typedef struct{
  * Cellule de la liste des processus.
  */
 typedef struct _proclist_cell{
-	process_t* process;
-	struct _proclist_cell* next;
-	struct _proclist_cell* prev;
+	process_t* process; /**< Processus. */
+	struct _proclist_cell* next; /**< Maillon suivant. */
+	struct _proclist_cell* prev; /**< Maillon précedent. */
 }*proc_list, proclist_cell;
-
-
-void init_process_array();
 
 /** 
 * @brief (OUTDATED)Crée un nouveau processus.
