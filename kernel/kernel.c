@@ -68,16 +68,19 @@
 #include <drivers/serial.h>
 #include <drivers/video.h>
 
+/**
+ * Options passées au kernel.
+ */
 typedef struct
 {
-	uint8_t lol;
+	uint8_t lol; /**< Exemple d'option, qui n'est plus utilisée. */
 } kernel_options;
 
 /* Forward declarations. */
 void cmain (unsigned long magic, unsigned long addr);
 static void initKernelOptions(const char *cmdLine, kernel_options *options);
 
-void LPT1_routine(int id __attribute__ ((unused)))
+static void LPT1_routine(int id __attribute__ ((unused)))
 {
 	// XXX : avoid segment_not_present
 }

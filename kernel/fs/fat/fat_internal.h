@@ -213,12 +213,15 @@ typedef struct _fat_fs_instance_t {
  * @brief Données supplémentaires qui sont ajoutés à l'ofd lors du open.
  */
 typedef struct _fat_extra_data_t {
-	int first_cluster;
-	int current_cluster;
-	unsigned int current_octet_buf;
-	uint8_t buffer[512];
+	int first_cluster; /**< Adresse du premier cluster. */
+	int current_cluster; /**< Cluster courant. */
+	unsigned int current_octet_buf; /**< Position dans le buffer. */
+	uint8_t buffer[512]; /**< Buffer pour limiter les appels au disque. */
 } fat_extra_data_t;
 
+/**
+ * @brief Structure fille d'un dentry_t qui ajoute quelques données.
+ */
 typedef struct _fat_direntry_t {
 	dentry_t super;
 	directory_entry_t *fat_entry;
@@ -227,10 +230,33 @@ typedef struct _fat_direntry_t {
 
 extern struct _open_file_operations_t fatfs_fops; /**< Pointeurs sur les fonctions de manipulation de fichiers pour ce FS. */
 
+/**
+ * Fonction qui permet de récupérer le dentry à la racine.
+ *
+ * @param instance Instance de FS.
+ *
+ * @return Dossier racine.
+ */
 dentry_t *fat_getroot(struct _fs_instance_t *instance);
+
+/**
+ * Fonction de lookup : retourne l'entrée de dossier qui correspond au nom demandé.
+ *
+ * @param instance Instance de FS.
+ * @param dentry Dossier parent.
+ * @param name Nom de l'entrée dans ce dossier.
+ *
+ * @return Entrée de dossier correspondant.
+ */
 dentry_t* fat_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name);
 
-
+/**
+ * Ouvre le répertoire racine.
+ *
+ * @param instance Instance de FS.
+ *
+ * @return Dossier racine.
+ */
 directory_t * open_root_dir(fat_fs_instance_t *instance);
 
 /**
@@ -303,17 +329,6 @@ int fat_unlink(fs_instance_t *instance, const char * path);
 ssize_t fat_read_file (open_file_descriptor * ofd, void * buf, size_t count);
 
 /**
- * Écriture de fichier.
- *
- * @param ofd Descripteur de fichier ouvert.
- * @param buf Données à écrire.
- * @param nb_octet Nombre d'octets à écrire.
- *
- * @return Nombre d'octets écrits.
- */
-ssize_t fat_write_file (open_file_descriptor * ofd, const void * buf, size_t nb_octet);
-
-/**
  * Déplacement dans un fichier.
  *
  * @param ofd Descripteur de fichier ouvert.
@@ -333,6 +348,13 @@ int fat_seek_file (open_file_descriptor * ofd, long offset, int whence);
  */
 int fat_close(open_file_descriptor *ofd);
 
+/**
+ * Ouverture d'un fichier. Initialise certaines données de l'ofd.
+ *
+ * @param ofd Descripteur de fichier ouvert.
+ *
+ * @return 0 en cas de succès.
+ */
 int fat_open(open_file_descriptor *ofd);
 
 #endif

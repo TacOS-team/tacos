@@ -266,8 +266,11 @@ typedef struct {
  * 
  ***************************/
  
+/**
+ * @brief Structure qui caractérise un binaire elf.
+ */
 typedef struct {
-	char* name;
+	char* name; /**< Nom du fichier. */
 	
 	Elf32_Ehdr* elf_header;
 	

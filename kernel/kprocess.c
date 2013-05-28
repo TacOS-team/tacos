@@ -64,7 +64,7 @@ process_t* get_process_array(int i) {
 	return process_array[i];
 }
 
-void add_process(process_t* process)
+static void add_process(process_t* process)
 {
 	int i = 0;
 

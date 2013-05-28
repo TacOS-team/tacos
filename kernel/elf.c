@@ -33,14 +33,14 @@
 #include <fd_types.h>
 #include <klibc/string.h>
 
-const char debug_string_sname[] = ".strtab";
+static const char debug_string_sname[] = ".strtab";
 
 static ssize_t read(int fd, void *buf, size_t count) {
 	sys_read(fd, buf, &count);
 	return count;
 }
 
-int is_elf(Elf32_Ehdr* elf_header)
+static int is_elf(Elf32_Ehdr* elf_header)
 {
 	int ret = 0;
 	/* Pour vérifier qu'on a bien affaire à un fichier elf, il suffit de
@@ -53,7 +53,7 @@ int is_elf(Elf32_Ehdr* elf_header)
 	return ret;
 }
 
-int load_elf_header(Elf32_Ehdr* elf_header, int fd)
+static int load_elf_header(Elf32_Ehdr* elf_header, int fd)
 {
 	long offset = 0;
 	sys_seek(fd, &offset, SEEK_SET);	

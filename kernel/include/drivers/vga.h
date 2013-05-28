@@ -5,7 +5,7 @@
  *
  * @section LICENSE
  *
- * Copyright (C) 2011 - TacOS developers.
+ * Copyright (C) 2011, 2012, 2013 - TacOS developers.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -31,6 +31,9 @@
 
 #include <vga_types.h>
 
+/**
+ * Initialisation Driver VGA.
+ */
 void init_vga();
 void vga_set_mode(enum vga_mode mode);
 void vga_write_buf(char *buffer);

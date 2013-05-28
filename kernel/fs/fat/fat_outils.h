@@ -71,6 +71,10 @@ int fat_is_used_cluster(fat_fs_instance_t *instance, int cluster);
 
 /**
  * Encode un nom long.
+ *
+ * @param name Name to encode.
+ * @param long_file_name Name encoded.
+ * @param n_entries Nombre d'entrées nécessaires.
  */
 void fat_encode_long_file_name(char * name, lfn_entry_t * long_file_name, int n_entries);
 

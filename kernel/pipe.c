@@ -14,14 +14,17 @@ struct _open_file_operations_t pipe_fops = {.write = pipe_write, .read = pipe_re
 
 #define DATA_SIZE 4096
 
+/**
+ * Données nécessairs pour gérer le pipe.
+ */
 struct extra_data_pipe_t {
 	int sem_open;
 	int sem_read;
 	int sem_write;
  // On se sert de data comme un buffer circulaire.
 	uint8_t data[DATA_SIZE]; // Idéalement il lui faudrait sa propre page pour des raisons de perf.
-	int pos_read; // position prochaine lecture.
-	int pos_write; // position prochaine écriture.
+	int pos_read; /**< position prochaine lecture. */
+	int pos_write; /**< position prochaine écriture. */
 };
 
 static ssize_t pipe_read(struct _open_file_descriptor *ofd, void* buf, size_t size) {

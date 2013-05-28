@@ -5,7 +5,7 @@
  *
  * @section LICENSE
  *
- * Copyright (C) 2011 - TacOS developers.
+ * Copyright (C) 2011, 2012, 2013 - TacOS developers.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -29,9 +29,9 @@
  * @see http://www.osdever.net/FreeVGA/vga/vga.htm
  * @see http://files.osdev.org/mirrors/geezer/osd/graphics/modes.c
  * (modes structs taken from there)
- * @TODO: "paranoïd" advises from FreeVGA
- * @TODO: currently only supports mode 320*200*256 colors 
- * @TODO: video memory base address is hardcoded
+ * TODO: "paranoïd" advises from FreeVGA
+ * TODO: currently only supports mode 320*200*256 colors 
+ * TODO: video memory base address is hardcoded
  */
 #include <fs/devfs.h>
 #include <ioports.h>
@@ -219,7 +219,7 @@ void vga_set_mode(enum vga_mode mode) {
 	clear_screen();
 }
 
-void vga_back_to_text_mode() {
+static void vga_back_to_text_mode() {
 	restore_font_data();
 	write_register_values(backup_text_regs);
 }

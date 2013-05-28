@@ -41,13 +41,11 @@
 #include "fat_internal.c"
 
 dentry_t *fat_getroot(struct _fs_instance_t *instance) {
-	klog("fat_getroot");
 	return ((fat_fs_instance_t*)instance)->root;
 }
 
 
 dentry_t* fat_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name) {
-	klog("fat_lookup");
 	fat_direntry_t *d = kmalloc(sizeof(fat_direntry_t));
 
 	// Get prev_dir.
@@ -180,10 +178,6 @@ int fat_seek_file(open_file_descriptor * ofd, long offset, int whence) {
 
 }
 
-ssize_t fat_write_file(open_file_descriptor *ofd __attribute__((__unused__)), const void * buf __attribute__((__unused__)), size_t nb_octet __attribute__((__unused__))) {
-	return 0;
-}
-
 ssize_t fat_read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 	fat_fs_instance_t *instance = (fat_fs_instance_t*) ofd->fs_instance;
 	fat_extra_data_t *extra_data = (fat_extra_data_t*) ofd->extra_data;
@@ -257,6 +251,7 @@ int fat_mkdir (fs_instance_t *instance, const char * path, mode_t mode __attribu
   return 0;
 }
 
+/*
 int fat_createfile (fat_fs_instance_t* instance, const char * path, mode_t mode __attribute__((__unused__))) {
   char * dir = kmalloc(strlen(path));
   char filename[256];
@@ -288,7 +283,7 @@ int fat_createfile (fat_fs_instance_t* instance, const char * path, mode_t mode 
 	kfree(dir);
 
   return 0;
-}
+} */
 
 int fat_open(open_file_descriptor *ofd) {
 	load_buffer(ofd);

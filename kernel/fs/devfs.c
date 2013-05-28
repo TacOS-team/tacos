@@ -46,10 +46,13 @@ static int devfs_readdir(open_file_descriptor * ofd, char * entries, size_t size
 static dentry_t root_devfs;
 static struct _open_file_operations_t devfs_fops = {.write = NULL, .read = NULL, .seek = NULL, .ioctl = NULL, .open = NULL, .close = NULL, .readdir = devfs_readdir};
 
+/**
+ * Entrée de driver.
+ */
 typedef struct {
-	char used;
-	char* name;
-	device_type_t type;
+	char used; /**< Est-ce que cette entrée est utilisée. */
+	char* name; /**< Nom du driver. */
+	device_type_t type; /**< Type de device (block, char) */
 	void* di;
 } driver_entry;
 

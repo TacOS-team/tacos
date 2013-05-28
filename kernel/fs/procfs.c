@@ -23,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Proc FS.
  */
 
 #include <fs/procfs.h>
@@ -39,7 +39,7 @@
 
 
 /**
- * Unique id politic :
+ * Unique id policy :
  *  each process has a range of PROCFS_PPROCESS_RANGE possible values for inode ids
  *  The begining of the range is computed by pid * PROCFS_PPROCESS_RANGE
  *  Then for each process, the vars ofset are :
@@ -84,7 +84,7 @@ static dentry_t * procfs_getroot() {
 	return &root_procfs;
 }								
 
-int procfs_close(open_file_descriptor *ofd) {
+static int procfs_close(open_file_descriptor *ofd) {
 	return kfree(ofd);
 }
 
@@ -111,9 +111,11 @@ typedef union specific_extra_data_procfs_t {
 	size_t fd;
 } specific_extra_data_procfs_t;
 
-// Specific extra datas for procfs dentries
+/**
+ *  Specific extra datas for procfs dentries
+ */
 typedef struct {
-	int pid;
+	int pid; /**< PID du process. */
 	lookup_function_t * lookup;
 	specific_extra_data_procfs_t specific_data;
 } extra_data_procfs_t;
@@ -123,7 +125,8 @@ typedef struct {
 # define EOF (-1)
 #endif
 
-char* proc_status[]= {
+
+static char* proc_status[]= {
 					"IDLE",
 					"RUNNING",
 					"WAITING",
@@ -213,7 +216,10 @@ static ssize_t procfs_read_process_fd(open_file_descriptor * ofd, void* buffer, 
 /*****************************************************************************
  *                        procfs directories functions                       *
  *****************************************************************************/
-// List of files in a process directory
+
+/**
+ * List of files in a process directory
+ */
 typedef struct {
 	char * name;
 	size_t name_length;// init dans procfs_init
@@ -232,7 +238,9 @@ const size_t nb_file_functions = sizeof(procfs_file_functions_list)
 															 / sizeof(procfs_file_functions_list[0]);
 
 
-// List of directories in the process directory
+/**
+ *  List of directories in the process directory
+ */
 typedef struct {
 	char * name;
 	size_t name_length;// init dans procfs_init
@@ -245,7 +253,7 @@ static procfs_directory_function_t procfs_directory_functions_list[] = {
 		{ "fd", 0, process_fd_lookup, procfs_read_fd_process_dir, procfs_fd_offset }
 	};
 
-const size_t nb_directory_functions = sizeof(procfs_directory_functions_list)
+static const size_t nb_directory_functions = sizeof(procfs_directory_functions_list)
 															 		  / sizeof(procfs_directory_functions_list[0]);
 
 
@@ -269,7 +277,7 @@ static int procfs_read_root_dir(open_file_descriptor * ofd, char * entries,
 		if (process != NULL) {
 			d = (struct dirent *)(entries + count);
 			d->d_ino = 1;
-			itoa (d->d_name, 10, process->pid);
+			itoa(d->d_name, 10, process->pid);
 			d->d_reclen = reclen;
 			count += reclen;
 		}
@@ -354,7 +362,7 @@ static int procfs_read_fd_process_dir(open_file_descriptor * ofd, char * entries
  *                             dentries créations                            *
  *****************************************************************************/
 
-dentry_t * get_default_dentry(struct _fs_instance_t * instance,
+static dentry_t * get_default_dentry(struct _fs_instance_t * instance,
 															const char * name, int pid) {
 	inode_t * inode   = kmalloc(sizeof(inode_t));
 	memset(inode, 0, sizeof(*inode));
@@ -387,7 +395,7 @@ dentry_t * get_default_dentry(struct _fs_instance_t * instance,
 	return d;
 }
 
-dentry_t * get_process_dentry(struct _fs_instance_t * instance,
+static dentry_t * get_process_dentry(struct _fs_instance_t * instance,
 															const char * name, int pid) {
 	dentry_t * result = get_default_dentry(instance, name, pid);
 	inode_t * inode   = result->d_inode;
@@ -403,7 +411,7 @@ dentry_t * get_process_dentry(struct _fs_instance_t * instance,
 	return result;
 }
 
-dentry_t * get_process_fd_dentry(struct _fs_instance_t * instance,
+static dentry_t * get_process_fd_dentry(struct _fs_instance_t * instance,
 															const char * name, int pid, size_t fd) {
 	dentry_t * result = get_default_dentry(instance, name, pid);
 	inode_t * inode   = result->d_inode;
@@ -421,7 +429,7 @@ dentry_t * get_process_fd_dentry(struct _fs_instance_t * instance,
 	return result;
 }
 
-dentry_t * get_file_function_dentry(struct _fs_instance_t * instance,
+static dentry_t * get_file_function_dentry(struct _fs_instance_t * instance,
 																		const char * name, int pid,
 																		size_t inode_offset) {
 	dentry_t * result = get_default_dentry(instance, name, pid);
@@ -437,7 +445,7 @@ dentry_t * get_file_function_dentry(struct _fs_instance_t * instance,
 	return result;
 }
 
-dentry_t * get_directory_function_dentry(struct _fs_instance_t * instance,
+static dentry_t * get_directory_function_dentry(struct _fs_instance_t * instance,
 																		const char * name, int pid,
 																		lookup_function_t lookup_function,
 																		size_t inode_offset) {
@@ -519,76 +527,11 @@ static dentry_t * procfs_lookup(struct _fs_instance_t *instance,
 	return result;
 }
 
-/*
-static int procfs_stat(inode_t *inode, struct stat *stbuf) {
-	unsigned int i,j;
-	int pid;
-	char buf[64];
-
-	memset(stbuf, 0, sizeof(struct stat));
-	stbuf->st_mode = 0755;
-	stbuf->st_size = 10;
-	stbuf->st_atime = 0;
-	stbuf->st_mtime = 0;
-	stbuf->st_ctime = 0;
-	stbuf->st_blksize = 2048;
-
-	if(strcmp(path, "/") == 0) {
-		stbuf->st_mode |= S_IFDIR;
-		return 0;
-	} else {
-		i=0;
-		while (path[i] == '/') 
-			i++;
-		j=0;
-		while(path[i] != '\0' && path[i] != '/') {
-			buf[j] = path[i];
-			i++;
-			j++;
-		}
-		buf[j] = '\0';
-		pid = atoi(buf);
-		if(find_process(pid) != NULL) {
-			if(path[i] == '\0') {
-				stbuf->st_mode |= S_IFDIR;
-				return 0;
-			}
-			else {
-				while (path[i] == '/') 
-					i++;
-
-				j=0;
-				while(path[i] != '\0' && path[i] != '/') {
-					buf[j] = path[i];
-					i++;
-					j++;
-				}
-				buf[j] = '\0';
-				i=0;
-				while(i<sizeof(procfs_file_list)/sizeof(procfs_file_t)) {
-					if(strcmp(buf, procfs_file_list[i].name) == 0) {
-						stbuf->st_mode |= S_IFREG;
-						return 0;
-					}
-					i++;
-				}
-				return -ENOENT;
-			}
-		}
-	}
-	// XXX: Absolete.
-
-
-	return 0;
-}
-*/
-
 static fs_instance_t* mount_procfs() {
 	klog("mounting ProcFS");
 
 	fs_instance_t *instance = kmalloc(sizeof(fs_instance_t));
 	memset(instance, 0, sizeof(fs_instance_t));
-//	instance->stat = procfs_stat;
 	instance->getroot = procfs_getroot;
 	instance->lookup = procfs_lookup;
 	instance->fs = &proc_fs;

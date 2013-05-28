@@ -175,25 +175,66 @@ process_t* get_next_process();
 uint32_t get_proc_count();
 
 /** 
-* @brief Nettoie la liste des processus.
-* Retire de la liste tous les processus en état PROCSTATE_TERMINATED.
-*/
+ * @brief Nettoie la liste des processus.
+ * Retire de la liste tous les processus en état PROCSTATE_TERMINATED.
+ */
 void clean_process_list();
 
 void sample_CPU_usage();
 
+/**
+ * @brief Syscall appelé lors de la fin d'exécution d'un process.
+ */
 SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)));
+
+/**
+ * @brief Récupére le PID du process courant.
+ *
+ * @param pid adresse où enregistrer le pid.
+ */
 SYSCALL_HANDLER1(sys_getpid, uint32_t* pid);
+/**
+ * @brief Récupére le PID du process parent.
+ *
+ * @param ppid adresse où enregistrer le ppid.
+ */
 SYSCALL_HANDLER1(sys_getppid, uint32_t* ppid);
-SYSCALL_HANDLER3(sys_exec, char*, char**, int*);
+
+/**
+ * @brief Syscall pour exécuter un programme.
+ *
+ * @param cmdline Ligne de commande à exécuter.
+ * @param environ Variables d'environnement.
+ * @param retval Pointeur servant à retourner le résultat.
+ */
+SYSCALL_HANDLER3(sys_exec, char *cmdline, char **environ, int *retval);
+
+/**
+ * @brief Récupère des infos sur un process.
+ *
+ * @param sub_func Action (récupère la liste ou les infos d'un process en particulier)
+ * @param param1 paramètre pour l'action.
+ * @param param2 pointeur de retour.
+ */
 SYSCALL_HANDLER3(sys_proc, uint32_t sub_func, uint32_t param1, uint32_t param2);
+
+/**
+ * @brief Bloque le process courant jusqu'à ce que le processus identifié par pid se termine.
+ *
+ * @param pid PID du process à attendre.
+ */
 SYSCALL_HANDLER1(sys_waitpid, int pid);
 
-void add_process(process_t* process);
-
-void inject_idle(process_t* proc);
-
+/**
+ * @brief Initialisation du proc FS.
+ */
 void procfs_init();
 
+/**
+ * @brief Récupère un process à partir de sa position dans le tableau.
+ *
+ * @param i indice du process dans le tableau (attention, ce n'est pas son pid)
+ */
 process_t* get_process_array(int i);
+
 #endif /* _K_PROCESS_H_ */
