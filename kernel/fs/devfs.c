@@ -217,13 +217,6 @@ static dentry_t* devfs_lookup(struct _fs_instance_t *instance, struct _dentry_t*
 				inode->i_fops->close = ((chardev_interfaces*)(drentry->di))->close;
 				inode->i_fops->ioctl = ((chardev_interfaces*)(drentry->di))->ioctl;
 				
-				/*if(((chardev_interfaces*)(drentry->di))->open != NULL) {
-					((chardev_interfaces*)(drentry->di))->open(ofd);
-				}
-				else {
-					kerr("No \"open\" method for %s.", drentry->name);
-				}*/
-				
 				break;
 			case BLKDEV:
 				inode->i_fops->readdir = NULL;
@@ -234,14 +227,6 @@ static dentry_t* devfs_lookup(struct _fs_instance_t *instance, struct _dentry_t*
 				inode->i_fops->close = ((blkdev_interfaces*)(drentry->di))->close;
 				inode->i_fops->ioctl = ((blkdev_interfaces*)(drentry->di))->ioctl;
 				
-				/*
-				if(((blkdev_interfaces*)(drentry->di))->open != NULL) {
-					((blkdev_interfaces*)(drentry->di))->open(ofd);
-				}
-				else {
-					kerr("No \"open\" method for %s.", drentry->name);
-				}
-				*/
 				break;
 		}
 		dentry_t *d = kmalloc(sizeof(dentry_t));
@@ -253,43 +238,6 @@ static dentry_t* devfs_lookup(struct _fs_instance_t *instance, struct _dentry_t*
 	}
 	return NULL;
 }
-/*
-static int devfs_stat(inode_t *inode, struct stat *stbuf) {
-	int res = 0;
-	unsigned int i,j;
-	char buf[64];
-
-	memset(stbuf, 0, sizeof(struct stat));
-	stbuf->st_mode = 0755;
-	stbuf->st_size = 10;
-	stbuf->st_atime = 0;
-	stbuf->st_mtime = 0;
-	stbuf->st_ctime = 0;
-	stbuf->st_blksize = 2048;
-
-	if(strcmp(path, "/") == 0) {
-		stbuf->st_mode |= S_IFDIR;
-		return 0;
-	} else {
-		i=0;
-		while (path[i] == '/') 
-			i++;
-		j=0;
-		while(path[i] != '\0' && path[i] != '/') {
-			buf[j] = path[i];
-			i++;
-			j++;
-		}
-		buf[j] = '\0';
-		
-		if(find_driver(buf) != NULL) {
-			stbuf->st_mode |= S_IFCHR;
-		} else {
-			return -ENOENT;
-		}
-	}
-	return res;
-}*/
 
 static fs_instance_t* mount_devfs() {
 //	klog("mounting DevFS");
