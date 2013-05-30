@@ -391,6 +391,7 @@ static dentry_t * get_default_dentry(struct _fs_instance_t * instance,
 	dentry_t * d = kmalloc(sizeof(dentry_t));
 	d->d_name = (const char*) strdup(name);
 	d->d_inode = inode;
+	d->d_pdentry = NULL; //FIXME: Normalement il faudrait le faire à chaque niveau et appeler le père à chaque fois.
 
 	return d;
 }
@@ -556,6 +557,7 @@ void procfs_init() {
 	}
 
 	root_procfs.d_name = "proc";
+	root_procfs.d_pdentry = NULL;
 
 	root_procfs.d_inode = kmalloc(sizeof(inode_t));
 	memset(root_procfs.d_inode, 0, sizeof(*(root_procfs.d_inode)));
