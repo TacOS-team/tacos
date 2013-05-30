@@ -1,0 +1,11 @@
+<map id="get_absolute_path" name="get_absolute_path">
+<area shape="rect" id="node3" href="$dirent_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title="mkdir" alt="" coords="185,5,239,33"/>
+<area shape="rect" id="node5" href="$dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591" title="opendir" alt="" coords="292,106,356,134"/>
+<area shape="rect" id="node7" href="$unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="405,131,456,159"/>
+<area shape="rect" id="node9" href="$fcntl_8h.html#adcb60598073f6f9cbb0091ef6768fa5c" title="open" alt="" coords="187,106,237,134"/>
+<area shape="rect" id="node13" href="$unistd_8c.html#a3dc1b07404b646712a144e2057359876" title="Obtenir l&#39;état d&#39;un fichier (status)." alt="" coords="191,207,233,235"/>
+<area shape="rect" id="node17" href="$unistd_8c.html#a8ada37e3927c3e99ea7c1accfdc6576f" title="Créer un noeud du système de fichiers." alt="" coords="181,258,243,286"/>
+<area shape="rect" id="node19" href="$unistd_8c.html#a28af9471bbdf262321af663e02899a47" title="Détruire un nom et éventuellement le fichier associé." alt="" coords="184,309,240,337"/>
+<area shape="rect" id="node22" href="$unistd_8c.html#ab2df76f2c62ae012c2e417813b5fe8ce" title="Supprimer un dossier, lequel doit être vide." alt="" coords="187,359,237,387"/>
+<area shape="rect" id="node15" href="$stdio_8h.html#a02b13b56a188401119ea4da43c184913" title="Supprimer un fichier ou répertoire." alt="" coords="292,309,356,337"/>
+</map>

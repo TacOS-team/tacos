@@ -1,0 +1,111 @@
+\hypertarget{structext2__inode}{\section{Référence de la structure ext2\-\_\-inode}
+\label{structext2__inode}\index{ext2\-\_\-inode@{ext2\-\_\-inode}}
+}
+
+
+{\ttfamily \#include $<$ext2\-\_\-internal.\-h$>$}
+
+\subsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} \hyperlink{structext2__inode_ab18d6b6ddb4d36a2faff527b43241126}{i\-\_\-mode}
+\item 
+\hyperlink{types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} \hyperlink{structext2__inode_a082def4b3c1c0c5f9dce1eab8ba51189}{i\-\_\-uid}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{structext2__inode_a2b9e2a1c732aa02b5dead0948fb47c72}{i\-\_\-size}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{structext2__inode_adb682923fb8b418217d78fd78737406b}{i\-\_\-atime}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{structext2__inode_a7d45cc039be5128d9771412191e55544}{i\-\_\-ctime}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{structext2__inode_a7eb44698eabf570fee0e65d22cc5fbd1}{i\-\_\-mtime}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{structext2__inode_a2a30cea7fb676d2fa5e9f0bd799dfa7c}{i\-\_\-dtime}
+\item 
+\hyperlink{types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} \hyperlink{structext2__inode_af1686b705ca7912d370d12ceaab83b8b}{i\-\_\-gid}
+\item 
+\hyperlink{types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} \hyperlink{structext2__inode_aa6d7753ffe6e8634bafe0b55638ee29a}{i\-\_\-links\-\_\-count}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{structext2__inode_a6e5b258ebc92b6ae75c61572c60cbb4b}{i\-\_\-blocks}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{structext2__inode_a2037da1edbe1d421dd4453f84cb973e6}{i\-\_\-flags}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{structext2__inode_ab06178218f59df43b3d80ad53edc6105}{i\-\_\-osd1}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{structext2__inode_a3e2386992eeb6a3b6aa5e282c50221c7}{i\-\_\-block} \mbox{[}15\mbox{]}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{structext2__inode_a551df9f3b8f61eb5840eeeb5921c69fb}{i\-\_\-generation}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{structext2__inode_aee0fba48998e7d27b836d04ee53e4463}{i\-\_\-file\-\_\-acl}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{structext2__inode_a11c2793c33c6ce3f13a5f046e246fd47}{i\-\_\-dir\-\_\-acl}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{structext2__inode_a3c921d50835f4869a08444b7e8b01043}{i\-\_\-faddr}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{structext2__inode_a6f05264ef1f6a42a6975a858d1aa17c3}{i\-\_\-osd2} \mbox{[}3\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Structure of an inode on the disk 
+
+\subsection{Documentation des champs}
+\hypertarget{structext2__inode_adb682923fb8b418217d78fd78737406b}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-atime@{i\-\_\-atime}}
+\index{i\-\_\-atime@{i\-\_\-atime}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-atime}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} ext2\-\_\-inode\-::i\-\_\-atime}}\label{structext2__inode_adb682923fb8b418217d78fd78737406b}
+Access time \hypertarget{structext2__inode_a3e2386992eeb6a3b6aa5e282c50221c7}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-block@{i\-\_\-block}}
+\index{i\-\_\-block@{i\-\_\-block}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-block}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} ext2\-\_\-inode\-::i\-\_\-block\mbox{[}15\mbox{]}}}\label{structext2__inode_a3e2386992eeb6a3b6aa5e282c50221c7}
+Pointers to blocks \hypertarget{structext2__inode_a6e5b258ebc92b6ae75c61572c60cbb4b}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-blocks@{i\-\_\-blocks}}
+\index{i\-\_\-blocks@{i\-\_\-blocks}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-blocks}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} ext2\-\_\-inode\-::i\-\_\-blocks}}\label{structext2__inode_a6e5b258ebc92b6ae75c61572c60cbb4b}
+Blocks count \hypertarget{structext2__inode_a7d45cc039be5128d9771412191e55544}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-ctime@{i\-\_\-ctime}}
+\index{i\-\_\-ctime@{i\-\_\-ctime}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-ctime}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} ext2\-\_\-inode\-::i\-\_\-ctime}}\label{structext2__inode_a7d45cc039be5128d9771412191e55544}
+Creation time \hypertarget{structext2__inode_a11c2793c33c6ce3f13a5f046e246fd47}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-dir\-\_\-acl@{i\-\_\-dir\-\_\-acl}}
+\index{i\-\_\-dir\-\_\-acl@{i\-\_\-dir\-\_\-acl}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-dir\-\_\-acl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} ext2\-\_\-inode\-::i\-\_\-dir\-\_\-acl}}\label{structext2__inode_a11c2793c33c6ce3f13a5f046e246fd47}
+Directory A\-C\-L \hypertarget{structext2__inode_a2a30cea7fb676d2fa5e9f0bd799dfa7c}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-dtime@{i\-\_\-dtime}}
+\index{i\-\_\-dtime@{i\-\_\-dtime}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-dtime}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} ext2\-\_\-inode\-::i\-\_\-dtime}}\label{structext2__inode_a2a30cea7fb676d2fa5e9f0bd799dfa7c}
+Deletion Time \hypertarget{structext2__inode_a3c921d50835f4869a08444b7e8b01043}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-faddr@{i\-\_\-faddr}}
+\index{i\-\_\-faddr@{i\-\_\-faddr}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-faddr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} ext2\-\_\-inode\-::i\-\_\-faddr}}\label{structext2__inode_a3c921d50835f4869a08444b7e8b01043}
+Fragment address \hypertarget{structext2__inode_aee0fba48998e7d27b836d04ee53e4463}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-file\-\_\-acl@{i\-\_\-file\-\_\-acl}}
+\index{i\-\_\-file\-\_\-acl@{i\-\_\-file\-\_\-acl}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-file\-\_\-acl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} ext2\-\_\-inode\-::i\-\_\-file\-\_\-acl}}\label{structext2__inode_aee0fba48998e7d27b836d04ee53e4463}
+File A\-C\-L \hypertarget{structext2__inode_a2037da1edbe1d421dd4453f84cb973e6}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-flags@{i\-\_\-flags}}
+\index{i\-\_\-flags@{i\-\_\-flags}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-flags}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} ext2\-\_\-inode\-::i\-\_\-flags}}\label{structext2__inode_a2037da1edbe1d421dd4453f84cb973e6}
+File flags \hypertarget{structext2__inode_a551df9f3b8f61eb5840eeeb5921c69fb}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-generation@{i\-\_\-generation}}
+\index{i\-\_\-generation@{i\-\_\-generation}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-generation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} ext2\-\_\-inode\-::i\-\_\-generation}}\label{structext2__inode_a551df9f3b8f61eb5840eeeb5921c69fb}
+File version (for N\-F\-S) \hypertarget{structext2__inode_af1686b705ca7912d370d12ceaab83b8b}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-gid@{i\-\_\-gid}}
+\index{i\-\_\-gid@{i\-\_\-gid}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-gid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint16\-\_\-t} ext2\-\_\-inode\-::i\-\_\-gid}}\label{structext2__inode_af1686b705ca7912d370d12ceaab83b8b}
+Low 16 bits of Group Id \hypertarget{structext2__inode_aa6d7753ffe6e8634bafe0b55638ee29a}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-links\-\_\-count@{i\-\_\-links\-\_\-count}}
+\index{i\-\_\-links\-\_\-count@{i\-\_\-links\-\_\-count}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-links\-\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint16\-\_\-t} ext2\-\_\-inode\-::i\-\_\-links\-\_\-count}}\label{structext2__inode_aa6d7753ffe6e8634bafe0b55638ee29a}
+Links count \hypertarget{structext2__inode_ab18d6b6ddb4d36a2faff527b43241126}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-mode@{i\-\_\-mode}}
+\index{i\-\_\-mode@{i\-\_\-mode}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-mode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint16\-\_\-t} ext2\-\_\-inode\-::i\-\_\-mode}}\label{structext2__inode_ab18d6b6ddb4d36a2faff527b43241126}
+File mode \hypertarget{structext2__inode_a7eb44698eabf570fee0e65d22cc5fbd1}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-mtime@{i\-\_\-mtime}}
+\index{i\-\_\-mtime@{i\-\_\-mtime}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-mtime}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} ext2\-\_\-inode\-::i\-\_\-mtime}}\label{structext2__inode_a7eb44698eabf570fee0e65d22cc5fbd1}
+Modification time \hypertarget{structext2__inode_ab06178218f59df43b3d80ad53edc6105}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-osd1@{i\-\_\-osd1}}
+\index{i\-\_\-osd1@{i\-\_\-osd1}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-osd1}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} ext2\-\_\-inode\-::i\-\_\-osd1}}\label{structext2__inode_ab06178218f59df43b3d80ad53edc6105}
+O\-S dependent 1 \hypertarget{structext2__inode_a6f05264ef1f6a42a6975a858d1aa17c3}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-osd2@{i\-\_\-osd2}}
+\index{i\-\_\-osd2@{i\-\_\-osd2}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-osd2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} ext2\-\_\-inode\-::i\-\_\-osd2\mbox{[}3\mbox{]}}}\label{structext2__inode_a6f05264ef1f6a42a6975a858d1aa17c3}
+O\-S dependent 2 \hypertarget{structext2__inode_a2b9e2a1c732aa02b5dead0948fb47c72}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-size@{i\-\_\-size}}
+\index{i\-\_\-size@{i\-\_\-size}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} ext2\-\_\-inode\-::i\-\_\-size}}\label{structext2__inode_a2b9e2a1c732aa02b5dead0948fb47c72}
+Size in bytes \hypertarget{structext2__inode_a082def4b3c1c0c5f9dce1eab8ba51189}{\index{ext2\-\_\-inode@{ext2\-\_\-inode}!i\-\_\-uid@{i\-\_\-uid}}
+\index{i\-\_\-uid@{i\-\_\-uid}!ext2_inode@{ext2\-\_\-inode}}
+\subsubsection[{i\-\_\-uid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint16\-\_\-t} ext2\-\_\-inode\-::i\-\_\-uid}}\label{structext2__inode_a082def4b3c1c0c5f9dce1eab8ba51189}
+Low 16 bits of Owner Uid 
+
+La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+\item 
+kernel/fs/ext2/\hyperlink{ext2__internal_8h}{ext2\-\_\-internal.\-h}\end{DoxyCompactItemize}

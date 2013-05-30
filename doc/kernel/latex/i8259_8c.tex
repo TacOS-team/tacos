@@ -1,0 +1,122 @@
+\hypertarget{i8259_8c}{\section{Référence du fichier kernel/i8259.c}
+\label{i8259_8c}\index{kernel/i8259.\-c@{kernel/i8259.\-c}}
+}
+{\ttfamily \#include $<$types.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}ioports.\-h\char`\"{}}\\*
+Graphe des dépendances par inclusion de i8259.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{i8259_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{i8259_8c_a6e30a26c8ff65ac960f078f5951aa8a2}{\#define {\bfseries M\-A\-S\-T\-E\-R\-\_\-\-P\-I\-C\-\_\-\-I\-C\-W1}~0x20}\label{i8259_8c_a6e30a26c8ff65ac960f078f5951aa8a2}
+
+\item 
+\hypertarget{i8259_8c_a32aeb93399a5e947039c54e8bb410705}{\#define {\bfseries S\-L\-A\-V\-E\-\_\-\-P\-I\-C\-\_\-\-I\-C\-W1}~0xa0}\label{i8259_8c_a32aeb93399a5e947039c54e8bb410705}
+
+\item 
+\hypertarget{i8259_8c_a8caffb8c243e8c1de369f3d9c76013a1}{\#define {\bfseries I\-C\-W\-\_\-\-S\-E\-L\-E\-C\-T}~(1 $<$$<$ 4)}\label{i8259_8c_a8caffb8c243e8c1de369f3d9c76013a1}
+
+\item 
+\hypertarget{i8259_8c_a45c8f1889cf28bc518706d041ff5ae5f}{\#define {\bfseries O\-C\-W\-\_\-\-S\-E\-L\-E\-C\-T}~(0 $<$$<$ 4)}\label{i8259_8c_a45c8f1889cf28bc518706d041ff5ae5f}
+
+\item 
+\hypertarget{i8259_8c_af47b70854a9fb27b678c284dbe512296}{\#define {\bfseries A\-D\-I}~(1 $<$$<$ 2)}\label{i8259_8c_af47b70854a9fb27b678c284dbe512296}
+
+\item 
+\hypertarget{i8259_8c_aadd967f434459a6951137613e8ff27f8}{\#define {\bfseries S\-N\-G\-L}~(1 $<$$<$ 1)}\label{i8259_8c_aadd967f434459a6951137613e8ff27f8}
+
+\item 
+\hypertarget{i8259_8c_aae5970aae14d55546217f89a7a9b4362}{\#define {\bfseries I\-C4}~(1 $<$$<$ 0)}\label{i8259_8c_aae5970aae14d55546217f89a7a9b4362}
+
+\item 
+\hypertarget{i8259_8c_ae20dce22771fa05c3964636c185c7e07}{\#define {\bfseries M\-A\-S\-T\-E\-R\-\_\-\-P\-I\-C\-\_\-\-I\-C\-W2}~0x21}\label{i8259_8c_ae20dce22771fa05c3964636c185c7e07}
+
+\item 
+\hypertarget{i8259_8c_ab16a55e921dbe74b4f0485627c32ffc4}{\#define {\bfseries S\-L\-A\-V\-E\-\_\-\-P\-I\-C\-\_\-\-I\-C\-W2}~0xa1}\label{i8259_8c_ab16a55e921dbe74b4f0485627c32ffc4}
+
+\item 
+\hypertarget{i8259_8c_a63a8e6fd221ce6bdf94b9ec7adf173ac}{\#define {\bfseries I\-N\-T\-\_\-\-V\-E\-C\-T\-O\-R\-\_\-\-M\-A\-S\-T\-E\-R}~0x20}\label{i8259_8c_a63a8e6fd221ce6bdf94b9ec7adf173ac}
+
+\item 
+\hypertarget{i8259_8c_a8885a13da4dafeb2cb209ce1b7ec3107}{\#define {\bfseries I\-R\-Q0}~0x00}\label{i8259_8c_a8885a13da4dafeb2cb209ce1b7ec3107}
+
+\item 
+\hypertarget{i8259_8c_a37360776bcc1dd3b5da93b025177551f}{\#define {\bfseries I\-R\-Q1}~0x01}\label{i8259_8c_a37360776bcc1dd3b5da93b025177551f}
+
+\item 
+\hypertarget{i8259_8c_ae19eb9c867d66be58e621cb71037cee0}{\#define {\bfseries I\-N\-T\-\_\-\-V\-E\-C\-T\-O\-R\-\_\-\-S\-L\-A\-V\-E}~0x28}\label{i8259_8c_ae19eb9c867d66be58e621cb71037cee0}
+
+\item 
+\hypertarget{i8259_8c_ad299f4a78ead6e9f10cfa55376be25ac}{\#define {\bfseries I\-R\-Q8}~0x00}\label{i8259_8c_ad299f4a78ead6e9f10cfa55376be25ac}
+
+\item 
+\hypertarget{i8259_8c_af59ffb9e0de6a5a1f9078a110460a2f4}{\#define {\bfseries I\-R\-Q9}~0x01}\label{i8259_8c_af59ffb9e0de6a5a1f9078a110460a2f4}
+
+\item 
+\hypertarget{i8259_8c_abbac9c23b148b4cdc191ee2c880795a7}{\#define {\bfseries M\-A\-S\-T\-E\-R\-\_\-\-P\-I\-C\-\_\-\-I\-C\-W3}~0x21}\label{i8259_8c_abbac9c23b148b4cdc191ee2c880795a7}
+
+\item 
+\hypertarget{i8259_8c_a3957fa305f3de261bee78aa94e6a5e0d}{\#define {\bfseries C\-A\-S\-C\-A\-D\-E\-D\-\_\-\-P\-I\-C}~(1 $<$$<$ 2)}\label{i8259_8c_a3957fa305f3de261bee78aa94e6a5e0d}
+
+\item 
+\hypertarget{i8259_8c_a8e74919dcb4cbe69421d34722f0d86f7}{\#define {\bfseries M\-A\-S\-T\-E\-R\-\_\-\-P\-I\-C\-\_\-\-I\-C\-W4}~0x21}\label{i8259_8c_a8e74919dcb4cbe69421d34722f0d86f7}
+
+\item 
+\hypertarget{i8259_8c_a8a64495e65b5d573dcda48a3df15968d}{\#define {\bfseries S\-L\-A\-V\-E\-\_\-\-P\-I\-C\-\_\-\-I\-C\-W4}~0xa1}\label{i8259_8c_a8a64495e65b5d573dcda48a3df15968d}
+
+\item 
+\hypertarget{i8259_8c_af310bcac6213675f02e5704c152e74bd}{\#define {\bfseries M\-I\-C\-R\-O\-P\-R\-O\-C\-E\-S\-S\-O\-R\-\_\-\-M\-O\-D\-E}~(1 $<$$<$ 0)}\label{i8259_8c_af310bcac6213675f02e5704c152e74bd}
+
+\item 
+\hypertarget{i8259_8c_aa995a5309eee52bdef7e3b044664f6a6}{\#define {\bfseries S\-L\-A\-V\-E\-\_\-\-P\-I\-C\-\_\-\-I\-C\-W3}~0xa1}\label{i8259_8c_aa995a5309eee52bdef7e3b044664f6a6}
+
+\item 
+\hypertarget{i8259_8c_aed258e18fa2ea561f21f58d651a33cff}{\#define {\bfseries S\-L\-A\-V\-E\-\_\-\-I\-D}~0x02}\label{i8259_8c_aed258e18fa2ea561f21f58d651a33cff}
+
+\item 
+\hypertarget{i8259_8c_ab720954ea086b143ab78cc88612373c5}{\#define {\bfseries M\-A\-S\-T\-E\-R\-\_\-\-P\-I\-C\-\_\-\-O\-C\-W1}~0x21}\label{i8259_8c_ab720954ea086b143ab78cc88612373c5}
+
+\item 
+\hypertarget{i8259_8c_ae77cf7f7f1bc23884b809a8897d2773a}{\#define {\bfseries S\-L\-A\-V\-E\-\_\-\-P\-I\-C\-\_\-\-O\-C\-W1}~0xa1}\label{i8259_8c_ae77cf7f7f1bc23884b809a8897d2773a}
+
+\item 
+\hypertarget{i8259_8c_a5388784cb69a0b869c4e5f60c839ca24}{\#define {\bfseries I\-R\-Q2}~(1 $<$$<$ 2)}\label{i8259_8c_a5388784cb69a0b869c4e5f60c839ca24}
+
+\item 
+\hypertarget{i8259_8c_a8ca0a6cac29029a16833cf6d40e459cd}{\#define {\bfseries A\-L\-L\-\_\-\-I\-R\-Q\-S}~0xff}\label{i8259_8c_a8ca0a6cac29029a16833cf6d40e459cd}
+
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{i8259_8c_ab77a0e69d035f8038ae62871bdad50c9}{void {\bfseries i8259\-\_\-setup} (void)}\label{i8259_8c_ab77a0e69d035f8038ae62871bdad50c9}
+
+\item 
+\hypertarget{i8259_8c_adafa185c8940aaca24645b71d26aea13}{void {\bfseries i8259\-\_\-enable\-\_\-irq\-\_\-line} (\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} n)}\label{i8259_8c_adafa185c8940aaca24645b71d26aea13}
+
+\item 
+\hypertarget{i8259_8c_a91d2b843125d73b83bf05a5193a97e1a}{void {\bfseries i8259\-\_\-disable\-\_\-irq\-\_\-line} (\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} n)}\label{i8259_8c_a91d2b843125d73b83bf05a5193a97e1a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+Configuration du i8259 pour gérer les interruptions. \begin{DoxySeeAlso}{Voir également}
+\href{http://www.etud.insa-toulouse.fr/~projet_tut_OS/w/Interruption}{\tt http\-://www.\-etud.\-insa-\/toulouse.\-fr/$\sim$projet\-\_\-tut\-\_\-\-O\-S/w/\-Interruption} 
+\end{DoxySeeAlso}

@@ -1,0 +1,587 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier libc/include/ctype.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_fc1eb218ab426e5adb60367f98438da0.html">libc</a></li><li class="navelem"><a class="el" href="dir_2a917577c833953ff5901e4935a90760.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier ctype.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Fonctions de classification de caractères.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;<a class="el" href="cdefs_8h_source.html">sys/cdefs.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de ctype.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="ctype_8h__incl.png" border="0" usemap="#libc_2include_2ctype_8h" alt=""/></div>
+<map name="libc_2include_2ctype_8h" id="libc_2include_2ctype_8h">
+<area shape="rect" id="node3" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="27,83,115,111"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="ctype_8h__dep__incl.png" border="0" usemap="#libc_2include_2ctype_8hdep" alt=""/></div>
+<map name="libc_2include_2ctype_8hdep" id="libc_2include_2ctype_8hdep">
+<area shape="rect" id="node3" href="ctype_8c.html" title="Fonctions de classification des caractères." alt="" coords="5,83,91,111"/><area shape="rect" id="node5" href="scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="115,83,235,111"/><area shape="rect" id="node7" href="stdlib_8c.html" title="libc/stdlib.c" alt="" coords="259,83,344,111"/><area shape="rect" id="node9" href="string_8c.html" title="libc/string.c" alt="" coords="368,83,456,111"/></map>
+</div>
+</div>
+<p><a href="ctype_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a9ce2e598cec9a4644e4d475011f29a73"><td class="memItemLeft" align="right" valign="top">__BEGIN_DECLS int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ctype_8h.html#a9ce2e598cec9a4644e4d475011f29a73">isalnum</a> (int c)</td></tr>
+<tr class="memdesc:a9ce2e598cec9a4644e4d475011f29a73"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie si l'on a un caractère alphanumérique.  <a href="#a9ce2e598cec9a4644e4d475011f29a73"></a><br/></td></tr>
+<tr class="memitem:a25908ae63aac2df990634e1ae5bd14d9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ctype_8h.html#a25908ae63aac2df990634e1ae5bd14d9">isalpha</a> (int c)</td></tr>
+<tr class="memdesc:a25908ae63aac2df990634e1ae5bd14d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie si l'on a un caractère alphabétique.  <a href="#a25908ae63aac2df990634e1ae5bd14d9"></a><br/></td></tr>
+<tr class="memitem:aea4929b1b41f1a6d723e0312b1f050ed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ctype_8h.html#aea4929b1b41f1a6d723e0312b1f050ed">isblank</a> (int c)</td></tr>
+<tr class="memdesc:aea4929b1b41f1a6d723e0312b1f050ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie si le caractère est blanc, c'est-à-dire un espace ou une tabulation.  <a href="#aea4929b1b41f1a6d723e0312b1f050ed"></a><br/></td></tr>
+<tr class="memitem:a0008a4e8e7889734dc1d83297de07158"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ctype_8h.html#a0008a4e8e7889734dc1d83297de07158">iscntrl</a> (int c)</td></tr>
+<tr class="memdesc:a0008a4e8e7889734dc1d83297de07158"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie si l'on a un caractère de contrôle.  <a href="#a0008a4e8e7889734dc1d83297de07158"></a><br/></td></tr>
+<tr class="memitem:a3fa45b35c8abf67a950b6d3d4063dede"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">isdigit</a> (int c)</td></tr>
+<tr class="memdesc:a3fa45b35c8abf67a950b6d3d4063dede"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie si l'on a un chiffre (0 à 9).  <a href="#a3fa45b35c8abf67a950b6d3d4063dede"></a><br/></td></tr>
+<tr class="memitem:a7b8f652a0423a80922dd89d8829db5f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ctype_8h.html#a7b8f652a0423a80922dd89d8829db5f2">islower</a> (int c)</td></tr>
+<tr class="memdesc:a7b8f652a0423a80922dd89d8829db5f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie si l'on a un caractère minuscule.  <a href="#a7b8f652a0423a80922dd89d8829db5f2"></a><br/></td></tr>
+<tr class="memitem:a99355d8f0fb41ec43effb95189db0ed4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4">isprint</a> (int c)</td></tr>
+<tr class="memdesc:a99355d8f0fb41ec43effb95189db0ed4"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie s'il s'agit d'un caractère imprimable, y compris l'espace.  <a href="#a99355d8f0fb41ec43effb95189db0ed4"></a><br/></td></tr>
+<tr class="memitem:af29554b3ec04ea7684482bffed5dbce6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ctype_8h.html#af29554b3ec04ea7684482bffed5dbce6">ispunct</a> (int c)</td></tr>
+<tr class="memdesc:af29554b3ec04ea7684482bffed5dbce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie s'il s'agit d'un caractère imprimable, qui ne soit ni un espace, ni un caractère alphanumérique.  <a href="#af29554b3ec04ea7684482bffed5dbce6"></a><br/></td></tr>
+<tr class="memitem:a56be4166e4673843042a548a7f513dbc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ctype_8h.html#a56be4166e4673843042a548a7f513dbc">isspace</a> (int c)</td></tr>
+<tr class="memdesc:a56be4166e4673843042a548a7f513dbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie si l'on a un caractère blanc, d'espacement.  <a href="#a56be4166e4673843042a548a7f513dbc"></a><br/></td></tr>
+<tr class="memitem:adadd6582d46775aab6a51e29d16d9f77"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ctype_8h.html#adadd6582d46775aab6a51e29d16d9f77">isupper</a> (int c)</td></tr>
+<tr class="memdesc:adadd6582d46775aab6a51e29d16d9f77"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie si l'on a un caractère majuscule.  <a href="#adadd6582d46775aab6a51e29d16d9f77"></a><br/></td></tr>
+<tr class="memitem:adaf3aadefe3fc4fb07b6be0d7b880f53"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ctype_8h.html#adaf3aadefe3fc4fb07b6be0d7b880f53">isxdigit</a> (int c)</td></tr>
+<tr class="memdesc:adaf3aadefe3fc4fb07b6be0d7b880f53"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie s'il s'agit d'un chiffre hexadécimal.  <a href="#adaf3aadefe3fc4fb07b6be0d7b880f53"></a><br/></td></tr>
+<tr class="memitem:ac79d6114c9df7350cedcd8cf921a6ea4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ctype_8h.html#ac79d6114c9df7350cedcd8cf921a6ea4">tolower</a> (int c)</td></tr>
+<tr class="memdesc:ac79d6114c9df7350cedcd8cf921a6ea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit la lettre c en minuscule.  <a href="#ac79d6114c9df7350cedcd8cf921a6ea4"></a><br/></td></tr>
+<tr class="memitem:a9c2f57ac3865af9006fdbfd5db9fd517"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ctype_8h.html#a9c2f57ac3865af9006fdbfd5db9fd517">toupper</a> (int c)</td></tr>
+<tr class="memdesc:a9c2f57ac3865af9006fdbfd5db9fd517"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit la lettre c en majuscule.  <a href="#a9c2f57ac3865af9006fdbfd5db9fd517"></a><br/></td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+</div><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a9ce2e598cec9a4644e4d475011f29a73"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__BEGIN_DECLS int isalnum </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Vérifie si l'on a un caractère alphanumérique. C'est équivalent à (isalpha(c) || isdigit(c)).</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>le caractère à vérifier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>vrai si le caractère est alphanumérique. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ctype_8h_a9ce2e598cec9a4644e4d475011f29a73_cgraph.png" border="0" usemap="#ctype_8h_a9ce2e598cec9a4644e4d475011f29a73_cgraph" alt=""/></div>
+<map name="ctype_8h_a9ce2e598cec9a4644e4d475011f29a73_cgraph" id="ctype_8h_a9ce2e598cec9a4644e4d475011f29a73_cgraph">
+<area shape="rect" id="node3" href="ctype_8c.html#a25908ae63aac2df990634e1ae5bd14d9" title="vérifie si l&#39;on a un caractère alphabétique." alt="" coords="121,30,183,58"/><area shape="rect" id="node9" href="ctype_8c.html#a3fa45b35c8abf67a950b6d3d4063dede" title="vérifie si l&#39;on a un chiffre (0 à 9)." alt="" coords="124,81,180,109"/><area shape="rect" id="node5" href="ctype_8c.html#adadd6582d46775aab6a51e29d16d9f77" title="vérifie si l&#39;on a un caractère majuscule." alt="" coords="232,5,296,33"/><area shape="rect" id="node7" href="ctype_8c.html#a7b8f652a0423a80922dd89d8829db5f2" title="vérifie si l&#39;on a un caractère minuscule." alt="" coords="233,55,295,83"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ctype_8h_a9ce2e598cec9a4644e4d475011f29a73_icgraph.png" border="0" usemap="#ctype_8h_a9ce2e598cec9a4644e4d475011f29a73_icgraph" alt=""/></div>
+<map name="ctype_8h_a9ce2e598cec9a4644e4d475011f29a73_icgraph" id="ctype_8h_a9ce2e598cec9a4644e4d475011f29a73_icgraph">
+<area shape="rect" id="node3" href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4" title="vérifie s&#39;il s&#39;agit d&#39;un caractère imprimable, y compris l&#39;espace." alt="" coords="121,5,177,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a25908ae63aac2df990634e1ae5bd14d9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isalpha </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Vérifie si l'on a un caractère alphabétique. Attention, ici on suppose qu'un caractère alphabétique est soit minuscule soit majuscule et exclu donc la gestion d'une locale où un caractère alphabétique ne serait ni minuscule ni majuscule.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>le caractère à vérifier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>vrai si le caractère est alphabétique. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ctype_8h_a25908ae63aac2df990634e1ae5bd14d9_cgraph.png" border="0" usemap="#ctype_8h_a25908ae63aac2df990634e1ae5bd14d9_cgraph" alt=""/></div>
+<map name="ctype_8h_a25908ae63aac2df990634e1ae5bd14d9_cgraph" id="ctype_8h_a25908ae63aac2df990634e1ae5bd14d9_cgraph">
+<area shape="rect" id="node3" href="ctype_8c.html#adadd6582d46775aab6a51e29d16d9f77" title="vérifie si l&#39;on a un caractère majuscule." alt="" coords="117,5,181,33"/><area shape="rect" id="node5" href="ctype_8c.html#a7b8f652a0423a80922dd89d8829db5f2" title="vérifie si l&#39;on a un caractère minuscule." alt="" coords="119,55,180,83"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ctype_8h_a25908ae63aac2df990634e1ae5bd14d9_icgraph.png" border="0" usemap="#ctype_8h_a25908ae63aac2df990634e1ae5bd14d9_icgraph" alt=""/></div>
+<map name="ctype_8h_a25908ae63aac2df990634e1ae5bd14d9_icgraph" id="ctype_8h_a25908ae63aac2df990634e1ae5bd14d9_icgraph">
+<area shape="rect" id="node3" href="ctype_8h.html#a9ce2e598cec9a4644e4d475011f29a73" title="vérifie si l&#39;on a un caractère alphanumérique." alt="" coords="117,5,184,33"/><area shape="rect" id="node5" href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4" title="vérifie s&#39;il s&#39;agit d&#39;un caractère imprimable, y compris l&#39;espace." alt="" coords="233,5,289,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aea4929b1b41f1a6d723e0312b1f050ed"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isblank </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Vérifie si le caractère est blanc, c'est-à-dire un espace ou une tabulation.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>le caractère à vérifier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>vrai si le caractère est blanc. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0008a4e8e7889734dc1d83297de07158"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iscntrl </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Vérifie si l'on a un caractère de contrôle.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>le caractère à vérifier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>vrai si le caractère est de contrôle. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3fa45b35c8abf67a950b6d3d4063dede"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isdigit </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>le caractère à vérifier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>vrai si le caractère est un chiffre. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ctype_8h_a3fa45b35c8abf67a950b6d3d4063dede_icgraph.png" border="0" usemap="#ctype_8h_a3fa45b35c8abf67a950b6d3d4063dede_icgraph" alt=""/></div>
+<map name="ctype_8h_a3fa45b35c8abf67a950b6d3d4063dede_icgraph" id="ctype_8h_a3fa45b35c8abf67a950b6d3d4063dede_icgraph">
+<area shape="rect" id="node3" href="ctype_8h.html#a9ce2e598cec9a4644e4d475011f29a73" title="vérifie si l&#39;on a un caractère alphanumérique." alt="" coords="109,5,176,33"/><area shape="rect" id="node7" href="ctype_8h.html#adaf3aadefe3fc4fb07b6be0d7b880f53" title="vérifie s&#39;il s&#39;agit d&#39;un chiffre hexadécimal." alt="" coords="112,55,173,83"/><area shape="rect" id="node5" href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4" title="vérifie s&#39;il s&#39;agit d&#39;un caractère imprimable, y compris l&#39;espace." alt="" coords="225,5,281,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a7b8f652a0423a80922dd89d8829db5f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int islower </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>le caractère à vérifier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>vrai si le caractère est minuscule. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ctype_8h_a7b8f652a0423a80922dd89d8829db5f2_icgraph.png" border="0" usemap="#ctype_8h_a7b8f652a0423a80922dd89d8829db5f2_icgraph" alt=""/></div>
+<map name="ctype_8h_a7b8f652a0423a80922dd89d8829db5f2_icgraph" id="ctype_8h_a7b8f652a0423a80922dd89d8829db5f2_icgraph">
+<area shape="rect" id="node3" href="ctype_8h.html#a25908ae63aac2df990634e1ae5bd14d9" title="vérifie si l&#39;on a un caractère alphabétique." alt="" coords="120,5,181,33"/><area shape="rect" id="node9" href="ctype_8h.html#a9c2f57ac3865af9006fdbfd5db9fd517" title="Convertit la lettre c en majuscule." alt="" coords="119,55,183,83"/><area shape="rect" id="node5" href="ctype_8h.html#a9ce2e598cec9a4644e4d475011f29a73" title="vérifie si l&#39;on a un caractère alphanumérique." alt="" coords="232,5,299,33"/><area shape="rect" id="node7" href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4" title="vérifie s&#39;il s&#39;agit d&#39;un caractère imprimable, y compris l&#39;espace." alt="" coords="348,5,404,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a99355d8f0fb41ec43effb95189db0ed4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isprint </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>le caractère à vérifier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>vrai si le caractère est imprimable. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ctype_8h_a99355d8f0fb41ec43effb95189db0ed4_cgraph.png" border="0" usemap="#ctype_8h_a99355d8f0fb41ec43effb95189db0ed4_cgraph" alt=""/></div>
+<map name="ctype_8h_a99355d8f0fb41ec43effb95189db0ed4_cgraph" id="ctype_8h_a99355d8f0fb41ec43effb95189db0ed4_cgraph">
+<area shape="rect" id="node3" href="ctype_8c.html#af29554b3ec04ea7684482bffed5dbce6" title="vérifie s&#39;il s&#39;agit d&#39;un caractère imprimable, qui ne soit ni un espace, ni un caractère alphanumériq..." alt="" coords="113,5,177,33"/><area shape="rect" id="node5" href="ctype_8c.html#adf38e126f73a010f30af76db2a28c6e1" title="vérifie si l&#39;on a un caractère alphanumérique." alt="" coords="112,55,179,83"/><area shape="rect" id="node7" href="ctype_8c.html#a25908ae63aac2df990634e1ae5bd14d9" title="vérifie si l&#39;on a un caractère alphabétique." alt="" coords="228,30,289,58"/><area shape="rect" id="node13" href="ctype_8c.html#a3fa45b35c8abf67a950b6d3d4063dede" title="vérifie si l&#39;on a un chiffre (0 à 9)." alt="" coords="231,81,287,109"/><area shape="rect" id="node9" href="ctype_8c.html#adadd6582d46775aab6a51e29d16d9f77" title="vérifie si l&#39;on a un caractère majuscule." alt="" coords="339,5,403,33"/><area shape="rect" id="node11" href="ctype_8c.html#a7b8f652a0423a80922dd89d8829db5f2" title="vérifie si l&#39;on a un caractère minuscule." alt="" coords="340,55,401,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="af29554b3ec04ea7684482bffed5dbce6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ispunct </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Vérifie s'il s'agit d'un caractère imprimable, qui ne soit ni un espace, ni un caractère alphanumérique.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>le caractère à vérifier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>vrai si le caractère est une ponctuation. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ctype_8h_af29554b3ec04ea7684482bffed5dbce6_icgraph.png" border="0" usemap="#ctype_8h_af29554b3ec04ea7684482bffed5dbce6_icgraph" alt=""/></div>
+<map name="ctype_8h_af29554b3ec04ea7684482bffed5dbce6_icgraph" id="ctype_8h_af29554b3ec04ea7684482bffed5dbce6_icgraph">
+<area shape="rect" id="node3" href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4" title="vérifie s&#39;il s&#39;agit d&#39;un caractère imprimable, y compris l&#39;espace." alt="" coords="119,5,175,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a56be4166e4673843042a548a7f513dbc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isspace </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Vérifie si l'on a un caractère blanc, d'espacement. Il s'agit de : espace, saut de page (form-feed, '\f'), saut de ligne (newline, '\n'), retour chariot (carriage return, '\r'), tabulation horizontale ('\t'), et tabulation verticale ('\v').</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>le caractère à vérifier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>vrai si le caractère est d'espacement. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="adadd6582d46775aab6a51e29d16d9f77"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isupper </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Vérifie si l'on a un caractère majuscule.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>le caractère à vérifier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>vrai si le caractère est majuscule. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ctype_8h_adadd6582d46775aab6a51e29d16d9f77_icgraph.png" border="0" usemap="#ctype_8h_adadd6582d46775aab6a51e29d16d9f77_icgraph" alt=""/></div>
+<map name="ctype_8h_adadd6582d46775aab6a51e29d16d9f77_icgraph" id="ctype_8h_adadd6582d46775aab6a51e29d16d9f77_icgraph">
+<area shape="rect" id="node3" href="ctype_8h.html#a25908ae63aac2df990634e1ae5bd14d9" title="vérifie si l&#39;on a un caractère alphabétique." alt="" coords="119,18,180,46"/><area shape="rect" id="node9" href="ctype_8h.html#ac79d6114c9df7350cedcd8cf921a6ea4" title="Convertit la lettre c en minuscule." alt="" coords="117,94,181,122"/><area shape="rect" id="node5" href="ctype_8h.html#a9ce2e598cec9a4644e4d475011f29a73" title="vérifie si l&#39;on a un caractère alphanumérique." alt="" coords="245,5,312,33"/><area shape="rect" id="node7" href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4" title="vérifie s&#39;il s&#39;agit d&#39;un caractère imprimable, y compris l&#39;espace." alt="" coords="377,5,433,33"/><area shape="rect" id="node11" href="string_8c.html#a706b36f3a672f84685576723c3928baa" title="Compare deux chaînes." alt="" coords="233,55,324,83"/><area shape="rect" id="node13" href="string_8c.html#a674b7f779fec84cb1a3be8222b5c381a" title="Compare deux chaînes jusqu&#39;à n caractères." alt="" coords="231,106,327,134"/><area shape="rect" id="node15" href="string_8c.html#ae9229017a4501f8d6a637b4498cfed2e" title="Recherche une sous&#45;chaîne en ignorant la casse." alt="" coords="239,157,319,185"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="adaf3aadefe3fc4fb07b6be0d7b880f53"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isxdigit </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Vérifie s'il s'agit d'un chiffre hexadécimal, c'est à dire 0 1 2 3 4 5 6 7 8 9 a b c d e f A B C D E F.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>le caractère à vérifier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>vrai si le caractère est un chiffre hexadécimal. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ctype_8h_adaf3aadefe3fc4fb07b6be0d7b880f53_cgraph.png" border="0" usemap="#ctype_8h_adaf3aadefe3fc4fb07b6be0d7b880f53_cgraph" alt=""/></div>
+<map name="ctype_8h_adaf3aadefe3fc4fb07b6be0d7b880f53_cgraph" id="ctype_8h_adaf3aadefe3fc4fb07b6be0d7b880f53_cgraph">
+<area shape="rect" id="node3" href="ctype_8c.html#a3fa45b35c8abf67a950b6d3d4063dede" title="vérifie si l&#39;on a un chiffre (0 à 9)." alt="" coords="117,5,173,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac79d6114c9df7350cedcd8cf921a6ea4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tolower </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Convertit la lettre c en minuscule si c'est possible.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>le caractère à convertir.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le caractère converti. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ctype_8h_ac79d6114c9df7350cedcd8cf921a6ea4_cgraph.png" border="0" usemap="#ctype_8h_ac79d6114c9df7350cedcd8cf921a6ea4_cgraph" alt=""/></div>
+<map name="ctype_8h_ac79d6114c9df7350cedcd8cf921a6ea4_cgraph" id="ctype_8h_ac79d6114c9df7350cedcd8cf921a6ea4_cgraph">
+<area shape="rect" id="node3" href="ctype_8c.html#adadd6582d46775aab6a51e29d16d9f77" title="vérifie si l&#39;on a un caractère majuscule." alt="" coords="117,5,181,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ctype_8h_ac79d6114c9df7350cedcd8cf921a6ea4_icgraph.png" border="0" usemap="#ctype_8h_ac79d6114c9df7350cedcd8cf921a6ea4_icgraph" alt=""/></div>
+<map name="ctype_8h_ac79d6114c9df7350cedcd8cf921a6ea4_icgraph" id="ctype_8h_ac79d6114c9df7350cedcd8cf921a6ea4_icgraph">
+<area shape="rect" id="node3" href="string_8c.html#a706b36f3a672f84685576723c3928baa" title="Compare deux chaînes." alt="" coords="121,5,212,33"/><area shape="rect" id="node5" href="string_8c.html#a674b7f779fec84cb1a3be8222b5c381a" title="Compare deux chaînes jusqu&#39;à n caractères." alt="" coords="119,55,215,83"/><area shape="rect" id="node7" href="string_8c.html#ae9229017a4501f8d6a637b4498cfed2e" title="Recherche une sous&#45;chaîne en ignorant la casse." alt="" coords="127,106,207,134"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9c2f57ac3865af9006fdbfd5db9fd517"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int toupper </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Convertit la lettre c en majuscule si c'est possible.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>le caractère à convertir.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le caractère converti. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ctype_8h_a9c2f57ac3865af9006fdbfd5db9fd517_cgraph.png" border="0" usemap="#ctype_8h_a9c2f57ac3865af9006fdbfd5db9fd517_cgraph" alt=""/></div>
+<map name="ctype_8h_a9c2f57ac3865af9006fdbfd5db9fd517_cgraph" id="ctype_8h_a9c2f57ac3865af9006fdbfd5db9fd517_cgraph">
+<area shape="rect" id="node3" href="ctype_8c.html#a7b8f652a0423a80922dd89d8829db5f2" title="vérifie si l&#39;on a un caractère minuscule." alt="" coords="121,5,183,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Mai 28 2013 22:52:15 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

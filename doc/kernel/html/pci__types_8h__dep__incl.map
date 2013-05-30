@@ -1,0 +1,8 @@
+<map id="kernel/include/pci_types.h" name="kernel/include/pci_types.h">
+<area shape="rect" id="node3" href="$pci_8h.html" title="kernel/include/pci.h" alt="" coords="319,107,452,135"/>
+<area shape="rect" id="node9" href="$pci_8c.html" title="kernel/pci/pci.c" alt="" coords="331,201,440,229"/>
+<area shape="rect" id="node11" href="$pci__config_8h.html" title="kernel/include/pci\l_config.h" alt="" coords="172,99,295,143"/>
+<area shape="rect" id="node5" href="$vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="179,193,307,237"/>
+<area shape="rect" id="node7" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="464,201,571,229"/>
+<area shape="rect" id="node15" href="$pci__config_8c.html" title="kernel/pci/pci_config.c" alt="" coords="5,201,155,229"/>
+</map>

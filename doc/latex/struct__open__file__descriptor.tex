@@ -3,8 +3,11 @@
 }
 
 
-Graphe de collaboration de \-\_\-open\-\_\-file\-\_\-descriptor\-:
-\nopagebreak
+{\ttfamily \#include $<$fd\-\_\-types.\-h$>$}
+
+
+
+Graphe de collaboration de \-\_\-open\-\_\-file\-\_\-descriptor\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,6 +26,9 @@ Graphe de collaboration de \-\_\-open\-\_\-file\-\_\-descriptor\-:
 \hypertarget{struct__open__file__descriptor_a77a2aad2470554b058b4565059fa8c8c}{\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} {\bfseries buffer} \mbox{[}512\mbox{]}}\label{struct__open__file__descriptor_a77a2aad2470554b058b4565059fa8c8c}
 
 \item 
+\hypertarget{struct__open__file__descriptor_a452e65f0c6de16bfeaa62825f916b077}{char $\ast$ {\bfseries pathname}}\label{struct__open__file__descriptor_a452e65f0c6de16bfeaa62825f916b077}
+
+\item 
 \hypertarget{struct__open__file__descriptor_a0ba8e85021c79e224ca628e14d0795c2}{\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} {\bfseries current\-\_\-octet}}\label{struct__open__file__descriptor_a0ba8e85021c79e224ca628e14d0795c2}
 
 \item 
@@ -33,6 +39,9 @@ Graphe de collaboration de \-\_\-open\-\_\-file\-\_\-descriptor\-:
 
 \item 
 \hypertarget{struct__open__file__descriptor_a032a031b6293ba41fff7652cad4c507e}{struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$ {\bfseries fs\-\_\-instance}}\label{struct__open__file__descriptor_a032a031b6293ba41fff7652cad4c507e}
+
+\item 
+\hypertarget{struct__open__file__descriptor_a6884ddeaeb43e81a0317cb5eae4c7d4e}{struct \hyperlink{struct__inode__t}{\-\_\-inode\-\_\-t} $\ast$ {\bfseries inode}}\label{struct__open__file__descriptor_a6884ddeaeb43e81a0317cb5eae4c7d4e}
 
 \item 
 \hypertarget{struct__open__file__descriptor_a3b375ad15f7bcb8e92123bd1a17765f3}{struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$ {\bfseries dentry}}\label{struct__open__file__descriptor_a3b375ad15f7bcb8e92123bd1a17765f3}
@@ -48,6 +57,9 @@ Graphe de collaboration de \-\_\-open\-\_\-file\-\_\-descriptor\-:
 
 \end{DoxyCompactItemize}
 
+
+\subsection{Description détaillée}
+Descripteur de fichier ouvert. À chaque fichier ouvert, une structure de ce type est instanciée pour y stocker les informations sur le fichier et le F\-S. 
 
 La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
 \item 

@@ -3,16 +3,14 @@
 }
 {\ttfamily \#include \char`\"{}fat\-\_\-internal.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}fat\-\_\-outils.\-h\char`\"{}}\\*
-Graphe des dépendances par inclusion de fat\-\_\-internal.\-c\-:
-\nopagebreak
+Graphe des dépendances par inclusion de fat\-\_\-internal.\-c\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=295pt]{fat__internal_8c__incl}
+\includegraphics[width=317pt]{fat__internal_8c__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:
-\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -22,21 +20,19 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{fat__internal_8c_a59adc4c82490d23754cd39c2fb99b0da}{\#define {\bfseries E\-O\-F}~(-\/1)}\label{fat__internal_8c_a59adc4c82490d23754cd39c2fb99b0da}
-
+\#define \hyperlink{fat__internal_8c_a59adc4c82490d23754cd39c2fb99b0da}{E\-O\-F}~(-\/1)
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{fat__internal_8c_acc9f1bc688e7d7c5459ad50676608995}{read\-\_\-fat} (\hyperlink{fat__internal_8h_a9e8df592f54b50d959a9b9c84fa64fce}{fat\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance)
 \item 
-\hypertarget{fat__internal_8c_a0ae169e11ec76cae96a82e41fed70ece}{\hyperlink{fat__internal_8h_a04e3d213fd143d58bbabf68062bdc21c}{directory\-\_\-t} $\ast$ {\bfseries open\-\_\-root\-\_\-dir} (\hyperlink{fat__internal_8h_a9e8df592f54b50d959a9b9c84fa64fce}{fat\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance)}\label{fat__internal_8c_a0ae169e11ec76cae96a82e41fed70ece}
-
+\hyperlink{fat__internal_8h_a04e3d213fd143d58bbabf68062bdc21c}{directory\-\_\-t} $\ast$ \hyperlink{fat__internal_8c_a0ae169e11ec76cae96a82e41fed70ece}{open\-\_\-root\-\_\-dir} (\hyperlink{fat__internal_8h_a9e8df592f54b50d959a9b9c84fa64fce}{fat\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{struct__open__file__operations__t}{\-\_\-open\-\_\-file\-\_\-operations\-\_\-t} \hyperlink{fat__internal_8c_a9f07e47f75ec13bd1445162841e204d4}{fatfs\-\_\-fops} = \{.\hyperlink{unistd_8c_abb39b21888372e95ad3e5c59b166f5c8}{write} = \hyperlink{fat__internal_8h_aefed2caace7abdff25dc8276de118018}{fat\-\_\-write\-\_\-file}, .\hyperlink{unistd_8c_af32a16ad2dd9e48482f8f790db7dbbd2}{read} = \hyperlink{fat__internal_8h_a85069bfaf4b7a57bc5d8e7bfa6aa83ad}{fat\-\_\-read\-\_\-file}, .seek = \hyperlink{fat__internal_8h_a5e52d080338c1179ae01999006f077d3}{fat\-\_\-seek\-\_\-file}, .ioctl = \hyperlink{libc_2include_2sys_2types_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\-U\-L\-L}, .\hyperlink{fcntl_8h_adcb60598073f6f9cbb0091ef6768fa5c}{open} = fat\-\_\-open, .\hyperlink{fcntl_8h_ae68e7e3d0b126184d5d00e78e94305fb}{close} = \hyperlink{fat__internal_8h_afdccf4bea2c0e70059a76f43fea9c33f}{fat\-\_\-close}, .\hyperlink{dirent_8h_a58257faf8b13b3f14558613c632b2373}{readdir} = \hyperlink{fat__internal_8h_ada9bd47fd90b01248fe52f302560f9f9}{fat\-\_\-readdir}\}
+struct \hyperlink{struct__open__file__operations__t}{\-\_\-open\-\_\-file\-\_\-operations\-\_\-t} \hyperlink{fat__internal_8c_a9f07e47f75ec13bd1445162841e204d4}{fatfs\-\_\-fops} = \{.\hyperlink{unistd_8c_abb39b21888372e95ad3e5c59b166f5c8}{write} = \hyperlink{libc_2include_2sys_2types_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\-U\-L\-L}, .\hyperlink{unistd_8c_af32a16ad2dd9e48482f8f790db7dbbd2}{read} = \hyperlink{fat__internal_8h_a84b490d3d5e212e003c6b84071bd204b}{fat\-\_\-read\-\_\-file}, .seek = \hyperlink{fat__internal_8h_a5e52d080338c1179ae01999006f077d3}{fat\-\_\-seek\-\_\-file}, .ioctl = \hyperlink{libc_2include_2sys_2types_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\-U\-L\-L}, .\hyperlink{fcntl_8h_adcb60598073f6f9cbb0091ef6768fa5c}{open} = \hyperlink{fat__internal_8h_a2ac41048fa02e77edaece792c02c5692}{fat\-\_\-open}, .\hyperlink{fcntl_8h_ae68e7e3d0b126184d5d00e78e94305fb}{close} = \hyperlink{fat__internal_8h_afdccf4bea2c0e70059a76f43fea9c33f}{fat\-\_\-close}, .\hyperlink{dirent_8h_a58257faf8b13b3f14558613c632b2373}{readdir} = \hyperlink{fat__internal_8h_ada9bd47fd90b01248fe52f302560f9f9}{fat\-\_\-readdir}\}
 \end{DoxyCompactItemize}
 
 
@@ -54,7 +50,52 @@ This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-
 You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
 Description de ce que fait le fichier 
 
+\subsection{Documentation des macros}
+\hypertarget{fat__internal_8c_a59adc4c82490d23754cd39c2fb99b0da}{\index{fat\-\_\-internal.\-c@{fat\-\_\-internal.\-c}!E\-O\-F@{E\-O\-F}}
+\index{E\-O\-F@{E\-O\-F}!fat_internal.c@{fat\-\_\-internal.\-c}}
+\subsubsection[{E\-O\-F}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-O\-F~(-\/1)}}\label{fat__internal_8c_a59adc4c82490d23754cd39c2fb99b0da}
+End Of File 
+
 \subsection{Documentation des fonctions}
+\hypertarget{fat__internal_8c_a0ae169e11ec76cae96a82e41fed70ece}{\index{fat\-\_\-internal.\-c@{fat\-\_\-internal.\-c}!open\-\_\-root\-\_\-dir@{open\-\_\-root\-\_\-dir}}
+\index{open\-\_\-root\-\_\-dir@{open\-\_\-root\-\_\-dir}!fat_internal.c@{fat\-\_\-internal.\-c}}
+\subsubsection[{open\-\_\-root\-\_\-dir}]{\setlength{\rightskip}{0pt plus 5cm}{\bf directory\-\_\-t}$\ast$ open\-\_\-root\-\_\-dir (
+\begin{DoxyParamCaption}
+\item[{{\bf fat\-\_\-fs\-\_\-instance\-\_\-t} $\ast$}]{instance}
+\end{DoxyParamCaption}
+)}}\label{fat__internal_8c_a0ae169e11ec76cae96a82e41fed70ece}
+Ouvre le répertoire racine.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em instance} & Instance de F\-S.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Dossier racine. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fat__internal_8c_a0ae169e11ec76cae96a82e41fed70ece_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=254pt]{fat__internal_8c_a0ae169e11ec76cae96a82e41fed70ece_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{fat__internal_8c_acc9f1bc688e7d7c5459ad50676608995}{\index{fat\-\_\-internal.\-c@{fat\-\_\-internal.\-c}!read\-\_\-fat@{read\-\_\-fat}}
 \index{read\-\_\-fat@{read\-\_\-fat}!fat_internal.c@{fat\-\_\-internal.\-c}}
 \subsubsection[{read\-\_\-fat}]{\setlength{\rightskip}{0pt plus 5cm}void read\-\_\-fat (
@@ -71,8 +112,7 @@ Lecture de la F\-A\-T.
 \end{DoxyParams}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -86,5 +126,5 @@ Voici le graphe des appelants de cette fonction \-:
 \subsection{Documentation des variables}
 \hypertarget{fat__internal_8c_a9f07e47f75ec13bd1445162841e204d4}{\index{fat\-\_\-internal.\-c@{fat\-\_\-internal.\-c}!fatfs\-\_\-fops@{fatfs\-\_\-fops}}
 \index{fatfs\-\_\-fops@{fatfs\-\_\-fops}!fat_internal.c@{fat\-\_\-internal.\-c}}
-\subsubsection[{fatfs\-\_\-fops}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \-\_\-open\-\_\-file\-\_\-operations\-\_\-t} fatfs\-\_\-fops = \{.{\bf write} = {\bf fat\-\_\-write\-\_\-file}, .{\bf read} = {\bf fat\-\_\-read\-\_\-file}, .seek = {\bf fat\-\_\-seek\-\_\-file}, .ioctl = {\bf N\-U\-L\-L}, .{\bf open} = fat\-\_\-open, .{\bf close} = {\bf fat\-\_\-close}, .{\bf readdir} = {\bf fat\-\_\-readdir}\}}}\label{fat__internal_8c_a9f07e47f75ec13bd1445162841e204d4}
+\subsubsection[{fatfs\-\_\-fops}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \-\_\-open\-\_\-file\-\_\-operations\-\_\-t} fatfs\-\_\-fops = \{.{\bf write} = {\bf N\-U\-L\-L}, .{\bf read} = {\bf fat\-\_\-read\-\_\-file}, .seek = {\bf fat\-\_\-seek\-\_\-file}, .ioctl = {\bf N\-U\-L\-L}, .{\bf open} = {\bf fat\-\_\-open}, .{\bf close} = {\bf fat\-\_\-close}, .{\bf readdir} = {\bf fat\-\_\-readdir}\}}}\label{fat__internal_8c_a9f07e47f75ec13bd1445162841e204d4}
 Pointeurs sur les fonctions de manipulation de fichiers pour ce F\-S. 

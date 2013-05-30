@@ -1,0 +1,5 @@
+<map id="switch_page" name="switch_page">
+<area shape="rect" id="node3" href="$console_8h.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan." alt="" coords="149,5,256,33"/>
+<area shape="rect" id="node7" href="$video_8h.html#ab5839353cba28b424b12338feca82385" title="Interverti les 2 buffers d&#39;une page." alt="" coords="167,55,239,83"/>
+<area shape="rect" id="node5" href="$keyboard_8h.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61" title="keyboardInterrupt" alt="" coords="304,5,427,33"/>
+</map>

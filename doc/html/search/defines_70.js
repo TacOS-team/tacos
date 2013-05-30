@@ -2,6 +2,12 @@ var searchData=
 [
   ['parenb',['PARENB',['../termios__types_8h.html#ac4f671a0015eb258fcbfaf62bd5a9b17',1,'PARENB():&#160;termios_types.h'],['../termios_8h.html#ac4f671a0015eb258fcbfaf62bd5a9b17',1,'PARENB():&#160;termios.h']]],
   ['parodd',['PARODD',['../termios__types_8h.html#a339516a423571344e92138e42623843a',1,'PARODD():&#160;termios_types.h'],['../termios_8h.html#a339516a423571344e92138e42623843a',1,'PARODD():&#160;termios.h']]],
+  ['procfs_5froot_5fprocess_5foffset',['procfs_root_process_offset',['../procfs_8c.html#a7b59605600222e4a5eada2f42bca8de9',1,'procfs.c']]],
+  ['procstate_5fidle',['PROCSTATE_IDLE',['../kprocess_8h.html#a0a3202b6e8073e458785ebcdf6d8c9f2',1,'kprocess.h']]],
+  ['procstate_5frunning',['PROCSTATE_RUNNING',['../kprocess_8h.html#a1538df1594431185fbbced3805cddc37',1,'kprocess.h']]],
+  ['procstate_5fsuspended',['PROCSTATE_SUSPENDED',['../kprocess_8h.html#a0d5a62fb2d0f0faed256d4b5b872f7f0',1,'kprocess.h']]],
+  ['procstate_5fterminated',['PROCSTATE_TERMINATED',['../kprocess_8h.html#ab809d396d2bb4d37ee1facf1e8ef34e3',1,'kprocess.h']]],
+  ['procstate_5fwaiting',['PROCSTATE_WAITING',['../kprocess_8h.html#af93e7bcf4bed8ec35b44970c4b332b92',1,'kprocess.h']]],
   ['pt_5fdynamic',['PT_DYNAMIC',['../elf_8h.html#a2121a2f01c51e8462bfd4d47725649d8',1,'elf.h']]],
   ['pt_5fhiproc',['PT_HIPROC',['../elf_8h.html#a74427c5909fdced36b41134c11650249',1,'elf.h']]],
   ['pt_5finterp',['PT_INTERP',['../elf_8h.html#abcd3aa15bc567949c1ab6b1abc137710',1,'elf.h']]],

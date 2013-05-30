@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/include/hashmap.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier hashmap.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="hashmap_8h__dep__incl.png" border="0" usemap="#kernel_2include_2hashmap_8hdep" alt=""/></div>
+<map name="kernel_2include_2hashmap_8hdep" id="kernel_2include_2hashmap_8hdep">
+<area shape="rect" id="node3" href="dcache_8c.html" title="dentry cache" alt="" coords="5,83,117,111"/><area shape="rect" id="node5" href="hashmap_8c.html" title="kernel/utils/hashmap.c" alt="" coords="141,83,293,111"/></map>
+</div>
+</div>
+<p><a href="hashmap_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashmap__cell__t.html">hashmap_cell_t</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____hashmap__t.html">__hashmap_t</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:accc61a2ac7ac10813e1bfa84d0ab2cf6"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct____hashmap__t.html">__hashmap_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a81cd9ee5f00b62bf3103612cd87d8a5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashmap_8h.html#a81cd9ee5f00b62bf3103612cd87d8a5d">hashmap_create</a> (int size, int(*equal)(struct hashmap_key_t *, struct hashmap_key_t *), int(*hash)(struct hashmap_key_t *))</td></tr>
+<tr class="memitem:a0c25525e8b6599bcafda45b74dcac19d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashmap_8h.html#a0c25525e8b6599bcafda45b74dcac19d">hashmap_set</a> (<a class="el" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a> *this, struct hashmap_key_t *key, struct hashmap_value_t *value)</td></tr>
+<tr class="memitem:ae3866ef4f62955d2803f96170ab2fa9e"><td class="memItemLeft" align="right" valign="top">struct hashmap_value_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e">hashmap_remove</a> (<a class="el" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a> *this, struct hashmap_key_t *key)</td></tr>
+<tr class="memitem:a37bdba9503b86db73e6067b97b858dbd"><td class="memItemLeft" align="right" valign="top">struct hashmap_value_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashmap_8h.html#a37bdba9503b86db73e6067b97b858dbd">hashmap_get</a> (<a class="el" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a> *this, struct hashmap_key_t *key)</td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+<p>Hashmap générique. Des tests un peu plus poussés sont à faire. </p>
+</div><h2>Documentation des définitions de type</h2>
+<a class="anchor" id="accc61a2ac7ac10813e1bfa84d0ab2cf6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct____hashmap__t.html">__hashmap_t</a>  <a class="el" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Structure représentant une hashmap. </p>
+
+</div>
+</div>
+<h2>Documentation des fonctions</h2>
+<a class="anchor" id="a81cd9ee5f00b62bf3103612cd87d8a5d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a>* hashmap_create </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int(*)(struct hashmap_key_t *, struct hashmap_key_t *)&#160;</td>
+          <td class="paramname"><em>equal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int(*)(struct hashmap_key_t *)&#160;</td>
+          <td class="paramname"><em>hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Crée et initialise une nouvelle hashmap.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>La taille de la table, correspond à la valeur maximale - 1 que peut retourner la fonction de hash. </td></tr>
+    <tr><td class="paramname">equal</td><td>Fonction qui retourne 1 si 2 clefs sont identiques. </td></tr>
+    <tr><td class="paramname">hash</td><td>Fonction de hash.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers la hashmap. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="hashmap_8h_a81cd9ee5f00b62bf3103612cd87d8a5d_cgraph.png" border="0" usemap="#hashmap_8h_a81cd9ee5f00b62bf3103612cd87d8a5d_cgraph" alt=""/></div>
+<map name="hashmap_8h_a81cd9ee5f00b62bf3103612cd87d8a5d_cgraph" id="hashmap_8h_a81cd9ee5f00b62bf3103612cd87d8a5d_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="173,5,240,33"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="289,5,428,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="hashmap_8h_a81cd9ee5f00b62bf3103612cd87d8a5d_icgraph.png" border="0" usemap="#hashmap_8h_a81cd9ee5f00b62bf3103612cd87d8a5d_icgraph" alt=""/></div>
+<map name="hashmap_8h_a81cd9ee5f00b62bf3103612cd87d8a5d_icgraph" id="hashmap_8h_a81cd9ee5f00b62bf3103612cd87d8a5d_icgraph">
+<area shape="rect" id="node3" href="dcache_8h.html#a6a634167e657e519cadf44eb6e6b9068" title="dcache_init" alt="" coords="173,5,261,33"/><area shape="rect" id="node5" href="vfs_8c.html#a2e2b9554ca8721b61981dff16a7b54ad" title="vfs_init" alt="" coords="309,5,373,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a37bdba9503b86db73e6067b97b858dbd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct hashmap_value_t* hashmap_get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a> *&#160;</td>
+          <td class="paramname"><em>this</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct hashmap_key_t *&#160;</td>
+          <td class="paramname"><em>key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Lit un élément de la hashmap.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">this</td><td>Pointeur vers la hashmap à utiliser. </td></tr>
+    <tr><td class="paramname">key</td><td>La clef de l'élément à lire.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers la valeur, NULL si non trouvée. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="hashmap_8h_a37bdba9503b86db73e6067b97b858dbd_icgraph.png" border="0" usemap="#hashmap_8h_a37bdba9503b86db73e6067b97b858dbd_icgraph" alt=""/></div>
+<map name="hashmap_8h_a37bdba9503b86db73e6067b97b858dbd_icgraph" id="hashmap_8h_a37bdba9503b86db73e6067b97b858dbd_icgraph">
+<area shape="rect" id="node3" href="dcache_8h.html#a4ba65ffaa114e5eb940fa446292f08da" title="dcache_get" alt="" coords="156,5,244,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ae3866ef4f62955d2803f96170ab2fa9e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct hashmap_value_t* hashmap_remove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a> *&#160;</td>
+          <td class="paramname"><em>this</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct hashmap_key_t *&#160;</td>
+          <td class="paramname"><em>key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Supprime un élément de la hashmap. Attention, seule la cellule est freed.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">this</td><td>Pointeur vers la hashmap à utiliser. </td></tr>
+    <tr><td class="paramname">key</td><td>La clef de l'élément à supprimer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers la valeur enlevée de la hashmap, NULL si non trouvée. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="hashmap_8h_ae3866ef4f62955d2803f96170ab2fa9e_cgraph.png" border="0" usemap="#hashmap_8h_ae3866ef4f62955d2803f96170ab2fa9e_cgraph" alt=""/></div>
+<map name="hashmap_8h_ae3866ef4f62955d2803f96170ab2fa9e_cgraph" id="hashmap_8h_ae3866ef4f62955d2803f96170ab2fa9e_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="179,5,229,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="hashmap_8h_ae3866ef4f62955d2803f96170ab2fa9e_icgraph.png" border="0" usemap="#hashmap_8h_ae3866ef4f62955d2803f96170ab2fa9e_icgraph" alt=""/></div>
+<map name="hashmap_8h_ae3866ef4f62955d2803f96170ab2fa9e_icgraph" id="hashmap_8h_ae3866ef4f62955d2803f96170ab2fa9e_icgraph">
+<area shape="rect" id="node3" href="dcache_8h.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="179,106,293,134"/><area shape="rect" id="node5" href="vfs_8c.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="344,55,421,83"/><area shape="rect" id="node13" href="vfs_8c.html#a4f8b6a1f2b0e6012446196f18b33d686" title="Suppression d&#39;un noeud." alt="" coords="343,106,423,134"/><area shape="rect" id="node17" href="vfs_8c.html#a8f5dc4e5e4a2aa5d7649790256f11685" title="Suppression d&#39;un dossier." alt="" coords="345,157,420,185"/><area shape="rect" id="node7" href="kfcntl_8c.html#adc12a443121c63ad99a6311aa2739884" title="Ferme tous les file descriptors ouverts." alt="" coords="507,5,597,33"/><area shape="rect" id="node11" href="kfcntl_8c.html#a3a5f4c56fd3fcc2b69757102f722fc29" title="SYSCALL_HANDLER2" alt="" coords="472,55,632,83"/><area shape="rect" id="node9" href="kprocess_8c.html#acc70870c5d5807f03b0a58bd1e160f6f" title="Syscall appelé lors de la fin d&#39;exécution d&#39;un process." alt="" coords="680,5,840,33"/><area shape="rect" id="node15" href="kunistd_8c.html#a99434c0e561b0e99c4ef081ae5773703" title="SYSCALL_HANDLER2" alt="" coords="472,106,632,134"/><area shape="rect" id="node19" href="kdirent_8c.html#ad690af967ba8e26d8ac3e48b8353eacc" title="SYSCALL_HANDLER2" alt="" coords="472,157,632,185"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0c25525e8b6599bcafda45b74dcac19d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hashmap_set </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a> *&#160;</td>
+          <td class="paramname"><em>this</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct hashmap_key_t *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct hashmap_value_t *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ajoute ou modifie une valeur dans la hashmap.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">this</td><td>Pointeur vers la hashmap à utiliser. </td></tr>
+    <tr><td class="paramname">key</td><td>La clef. </td></tr>
+    <tr><td class="paramname">value</td><td>La valeur. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="hashmap_8h_a0c25525e8b6599bcafda45b74dcac19d_cgraph.png" border="0" usemap="#hashmap_8h_a0c25525e8b6599bcafda45b74dcac19d_cgraph" alt=""/></div>
+<map name="hashmap_8h_a0c25525e8b6599bcafda45b74dcac19d_cgraph" id="hashmap_8h_a0c25525e8b6599bcafda45b74dcac19d_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="155,5,221,33"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="271,5,409,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="hashmap_8h_a0c25525e8b6599bcafda45b74dcac19d_icgraph.png" border="0" usemap="#hashmap_8h_a0c25525e8b6599bcafda45b74dcac19d_icgraph" alt=""/></div>
+<map name="hashmap_8h_a0c25525e8b6599bcafda45b74dcac19d_icgraph" id="hashmap_8h_a0c25525e8b6599bcafda45b74dcac19d_icgraph">
+<area shape="rect" id="node3" href="dcache_8h.html#a4f122b8158ba9f2044fda159f8ff0680" title="dcache_set" alt="" coords="156,5,244,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:20 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

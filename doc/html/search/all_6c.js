@@ -35,11 +35,11 @@ var searchData=
   ['load_5felf_5ffile',['load_elf_file',['../elf_8c.html#abbbb3d1f6ac9986f87d655cec7819556',1,'load_elf_file(int fd):&#160;elf.c'],['../elf_8h.html#abbbb3d1f6ac9986f87d655cec7819556',1,'load_elf_file(int fd):&#160;elf.c']]],
   ['load_5fprogram_5fheader',['load_program_header',['../elf_8c.html#a9aae782f070af1c6009d0cc2a6d60a08',1,'load_program_header(Elf32_Phdr *program_header, Elf32_Ehdr *elf_header, int index, int fd):&#160;elf.c'],['../elf_8h.html#a9aae782f070af1c6009d0cc2a6d60a08',1,'load_program_header(Elf32_Phdr *program_header, Elf32_Ehdr *elf_header, int index, int fd):&#160;elf.c']]],
   ['load_5fsection_5fheader',['load_section_header',['../elf_8h.html#a8138ecf1d1d9bd1e80e05694ef4362e4',1,'elf.h']]],
+  ['lol',['lol',['../structkernel__options.html#aaf8b5378f13106d9ddbc9e392e7f0367',1,'kernel_options']]],
   ['long_5fmax',['LONG_MAX',['../limits_8h.html#a50fece4db74f09568b2938db583c5655',1,'limits.h']]],
   ['long_5fmin',['LONG_MIN',['../limits_8h.html#ae8a44c5a7436466221e0f3859d02420f',1,'limits.h']]],
   ['lookup',['lookup',['../struct__fs__instance__t.html#a820510562ecb31cbbf6b4fc8a4d2ce6a',1,'_fs_instance_t']]],
   ['lookup_5fparent',['LOOKUP_PARENT',['../vfs_8c.html#a63ed32a1a370c741228dad9092324038',1,'vfs.c']]],
   ['lowercase',['lowercase',['../structletter.html#af4289f944a89553b8145286331ca3bdd',1,'letter']]],
-  ['lru_5ft',['lru_t',['../structlru__t.html',1,'']]],
   ['lseek',['lseek',['../unistd_8h.html#a9360f19507acbecf3d3e35789150f64b',1,'lseek(int fd, long offset, int whence):&#160;unistd.c'],['../unistd_8c.html#a9360f19507acbecf3d3e35789150f64b',1,'lseek(int fd, long offset, int whence):&#160;unistd.c']]]
 ];

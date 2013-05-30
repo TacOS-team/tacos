@@ -16,6 +16,7 @@ var searchData=
   ['allocation',['allocation',['../struct__DIR.html#a395fdd86b324fd71725a24e4f6edd55c',1,'_DIR']]],
   ['apm_5ftable',['apm_table',['../structmultiboot__info.html#ad4285d60142d241a9e6b68a03e62ee0a',1,'multiboot_info']]],
   ['args',['args',['../structprocess__init__data__t.html#a16d011771835f06e0bb3d5fd6115e13c',1,'process_init_data_t']]],
+  ['atoi',['atoi',['../kernel_2include_2klibc_2stdlib_8h.html#a2c81f61ee897bc5a1f5491f3e2bf711b',1,'atoi(const char *__nptr):&#160;stdlib.c'],['../libc_2include_2stdlib_8h.html#a2c81f61ee897bc5a1f5491f3e2bf711b',1,'atoi(const char *__nptr):&#160;stdlib.c'],['../libc_2stdlib_8c.html#a2c81f61ee897bc5a1f5491f3e2bf711b',1,'atoi(const char *__nptr):&#160;stdlib.c']]],
   ['attr',['attr',['../structconsole__t.html#a07b1c84ea67ce030ebd868917e56b0d9',1,'console_t']]],
   ['attr_5fatime',['ATTR_ATIME',['../vfs_8h.html#abf6532914d5888f0900e1bd2249af18a',1,'vfs.h']]],
   ['attr_5fctime',['ATTR_CTIME',['../vfs_8h.html#ad73c3749e48d6fde948428c4e1838bac',1,'vfs.h']]],

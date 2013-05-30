@@ -1,0 +1,51 @@
+\hypertarget{struct__DIR}{\section{Référence de la structure \-\_\-\-D\-I\-R}
+\label{struct__DIR}\index{\-\_\-\-D\-I\-R@{\-\_\-\-D\-I\-R}}
+}
+
+
+{\ttfamily \#include $<$dirent.\-h$>$}
+
+\subsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{struct__DIR_a1ee17b3cb06ddc80fb648e65c8353c55}{fd}
+\item 
+\hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} \hyperlink{struct__DIR_a395fdd86b324fd71725a24e4f6edd55c}{allocation}
+\item 
+\hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} \hyperlink{struct__DIR_a117676c5eb31163a8b99520bd2cbf1aa}{size}
+\item 
+\hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} \hyperlink{struct__DIR_a298b074b577743d5c726b4fdc2917795}{offset}
+\item 
+\hyperlink{types_8h_a447a6a64dbb8fb44b1e62856b333db4a}{off\-\_\-t} \hyperlink{struct__DIR_a759e6f1c2754b12a4aba9d120f3d1e57}{filepos}
+\item 
+char \hyperlink{struct__DIR_a87bb023e0bf0b2f075e90d270ff7033e}{data} \mbox{[}1\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Structure permettant de lire un dossier. 
+
+\subsection{Documentation des champs}
+\hypertarget{struct__DIR_a395fdd86b324fd71725a24e4f6edd55c}{\index{\-\_\-\-D\-I\-R@{\-\_\-\-D\-I\-R}!allocation@{allocation}}
+\index{allocation@{allocation}!_DIR@{\-\_\-\-D\-I\-R}}
+\subsubsection[{allocation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\-\_\-t} \-\_\-\-D\-I\-R\-::allocation}}\label{struct__DIR_a395fdd86b324fd71725a24e4f6edd55c}
+Espace réservé au block. \hypertarget{struct__DIR_a87bb023e0bf0b2f075e90d270ff7033e}{\index{\-\_\-\-D\-I\-R@{\-\_\-\-D\-I\-R}!data@{data}}
+\index{data@{data}!_DIR@{\-\_\-\-D\-I\-R}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}char \-\_\-\-D\-I\-R\-::data\mbox{[}1\mbox{]}}}\label{struct__DIR_a87bb023e0bf0b2f075e90d270ff7033e}
+Block qui est en fait plus grand que ça. \hypertarget{struct__DIR_a1ee17b3cb06ddc80fb648e65c8353c55}{\index{\-\_\-\-D\-I\-R@{\-\_\-\-D\-I\-R}!fd@{fd}}
+\index{fd@{fd}!_DIR@{\-\_\-\-D\-I\-R}}
+\subsubsection[{fd}]{\setlength{\rightskip}{0pt plus 5cm}int \-\_\-\-D\-I\-R\-::fd}}\label{struct__DIR_a1ee17b3cb06ddc80fb648e65c8353c55}
+File descriptor. \hypertarget{struct__DIR_a759e6f1c2754b12a4aba9d120f3d1e57}{\index{\-\_\-\-D\-I\-R@{\-\_\-\-D\-I\-R}!filepos@{filepos}}
+\index{filepos@{filepos}!_DIR@{\-\_\-\-D\-I\-R}}
+\subsubsection[{filepos}]{\setlength{\rightskip}{0pt plus 5cm}{\bf off\-\_\-t} \-\_\-\-D\-I\-R\-::filepos}}\label{struct__DIR_a759e6f1c2754b12a4aba9d120f3d1e57}
+Offset dans le dossier. \hypertarget{struct__DIR_a298b074b577743d5c726b4fdc2917795}{\index{\-\_\-\-D\-I\-R@{\-\_\-\-D\-I\-R}!offset@{offset}}
+\index{offset@{offset}!_DIR@{\-\_\-\-D\-I\-R}}
+\subsubsection[{offset}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\-\_\-t} \-\_\-\-D\-I\-R\-::offset}}\label{struct__DIR_a298b074b577743d5c726b4fdc2917795}
+Position dans le block. \hypertarget{struct__DIR_a117676c5eb31163a8b99520bd2cbf1aa}{\index{\-\_\-\-D\-I\-R@{\-\_\-\-D\-I\-R}!size@{size}}
+\index{size@{size}!_DIR@{\-\_\-\-D\-I\-R}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\-\_\-t} \-\_\-\-D\-I\-R\-::size}}\label{struct__DIR_a117676c5eb31163a8b99520bd2cbf1aa}
+Données dans le block. 
+
+La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+\item 
+libc/include/\hyperlink{dirent_8h}{dirent.\-h}\end{DoxyCompactItemize}

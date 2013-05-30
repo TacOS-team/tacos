@@ -1,0 +1,85 @@
+\hypertarget{termios_8c}{\section{Référence du fichier libc/termios.c}
+\label{termios_8c}\index{libc/termios.\-c@{libc/termios.\-c}}
+}
+{\ttfamily \#include $<$termios.\-h$>$}\\*
+{\ttfamily \#include $<$sys/ioctl.\-h$>$}\\*
+Graphe des dépendances par inclusion de termios.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{termios_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{termios_8c_a0c6ac3b0abc1e5d121d8f9d85c75acd5}{tcgetattr} (int fd, struct \hyperlink{structtermios}{termios} $\ast$termios\-\_\-p)
+\begin{DoxyCompactList}\small\item\em Récupère la configuration du terminal. \end{DoxyCompactList}\item 
+int \hyperlink{termios_8c_abd381a1bb023227ec64afb8a123a0650}{tcsetattr} (int fd, int optional\-\_\-actions, const struct \hyperlink{structtermios}{termios} $\ast$termios\-\_\-p)
+\begin{DoxyCompactList}\small\item\em Change la configuration du terminal. \end{DoxyCompactList}\item 
+\hypertarget{termios_8c_a0a7a120a86218385f77ea69b2f2dc474}{speed\-\_\-t {\bfseries cfgetispeed} (const struct \hyperlink{structtermios}{termios} $\ast$termios\-\_\-p)}\label{termios_8c_a0a7a120a86218385f77ea69b2f2dc474}
+
+\item 
+\hypertarget{termios_8c_a51faec41da16e3a090516f074341bdc7}{int {\bfseries cfsetispeed} (struct \hyperlink{structtermios}{termios} $\ast$termios\-\_\-p, speed\-\_\-t speed)}\label{termios_8c_a51faec41da16e3a090516f074341bdc7}
+
+\item 
+\hypertarget{termios_8c_ae9314d134f42b3b578eeb4d9bb6ecfa8}{void {\bfseries cfmakeraw} (struct \hyperlink{structtermios}{termios} $\ast$termios\-\_\-p)}\label{termios_8c_ae9314d134f42b3b578eeb4d9bb6ecfa8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+Description de ce que fait le fichier 
+
+\subsection{Documentation des fonctions}
+\hypertarget{termios_8c_a0c6ac3b0abc1e5d121d8f9d85c75acd5}{\index{termios.\-c@{termios.\-c}!tcgetattr@{tcgetattr}}
+\index{tcgetattr@{tcgetattr}!termios.c@{termios.\-c}}
+\subsubsection[{tcgetattr}]{\setlength{\rightskip}{0pt plus 5cm}int tcgetattr (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{struct {\bf termios} $\ast$}]{termios\-\_\-p}
+\end{DoxyParamCaption}
+)}}\label{termios_8c_a0c6ac3b0abc1e5d121d8f9d85c75acd5}
+
+\begin{DoxyParams}{Paramètres}
+{\em fd} & File descriptor du terminal. \\
+\hline
+{\em termios\-\_\-p} & Pointeur vers une structure termios pour y placer le résultat.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès, -\/1 sinon. 
+\end{DoxyReturn}
+\hypertarget{termios_8c_abd381a1bb023227ec64afb8a123a0650}{\index{termios.\-c@{termios.\-c}!tcsetattr@{tcsetattr}}
+\index{tcsetattr@{tcsetattr}!termios.c@{termios.\-c}}
+\subsubsection[{tcsetattr}]{\setlength{\rightskip}{0pt plus 5cm}int tcsetattr (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{int}]{optional\-\_\-actions, }
+\item[{const struct {\bf termios} $\ast$}]{termios\-\_\-p}
+\end{DoxyParamCaption}
+)}}\label{termios_8c_abd381a1bb023227ec64afb8a123a0650}
+
+\begin{DoxyParams}{Paramètres}
+{\em fd} & File descriptor du terminal. \\
+\hline
+{\em optional\-\_\-actions} & Précise quand les changements doivent avoir lieu (non implémenté). \\
+\hline
+{\em termios\-\_\-p} & Pointeur vers une structure termios qui contient la configuration.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès, -\/1 sinon. 
+\end{DoxyReturn}

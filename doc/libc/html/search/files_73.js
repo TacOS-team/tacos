@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['scanf_2ec',['scanf.c',['../scanf_8c.html',1,'']]],
+  ['sem_2ec',['sem.c',['../sem_8c.html',1,'']]],
+  ['sem_2eh',['sem.h',['../sem_8h.html',1,'']]],
+  ['signal_2ec',['signal.c',['../signal_8c.html',1,'']]],
+  ['signal_2eh',['signal.h',['../signal_8h.html',1,'']]],
+  ['sprintf_2ec',['sprintf.c',['../sprintf_8c.html',1,'']]],
+  ['start_2ec',['start.c',['../start_8c.html',1,'']]],
+  ['stat_2eh',['stat.h',['../stat_8h.html',1,'']]],
+  ['stdarg_2eh',['stdarg.h',['../stdarg_8h.html',1,'']]],
+  ['stdbool_2eh',['stdbool.h',['../stdbool_8h.html',1,'']]],
+  ['stdfiles_2ec',['stdfiles.c',['../stdfiles_8c.html',1,'']]],
+  ['stdio_2ec',['stdio.c',['../stdio_8c.html',1,'']]],
+  ['stdio_2eh',['stdio.h',['../stdio_8h.html',1,'']]],
+  ['stdlib_2ec',['stdlib.c',['../stdlib_8c.html',1,'']]],
+  ['stdlib_2eh',['stdlib.h',['../stdlib_8h.html',1,'']]],
+  ['string_2ec',['string.c',['../string_8c.html',1,'']]],
+  ['string_2eh',['string.h',['../string_8h.html',1,'']]],
+  ['syscall_2eh',['syscall.h',['../syscall_8h.html',1,'']]]
+];

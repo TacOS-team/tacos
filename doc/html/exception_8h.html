@@ -151,8 +151,7 @@ Définitions de type</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:ac5a3d89ca654d3606b6afd836a01e207"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#ac5a3d89ca654d3606b6afd836a01e207">exception_set_routine</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> exception_id, <a class="el" href="exception_8h.html#a27a88f1aea43a3b64d4ab8d578471642">exception_handler_t</a> routine)</td></tr>
-<tr class="memitem:a845efe084f5994d748fd7c30403ac879"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a845efe084f5994d748fd7c30403ac879"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>exception_disable</b> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> exception_id)</td></tr>
+<tr class="memitem:a845efe084f5994d748fd7c30403ac879"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a845efe084f5994d748fd7c30403ac879">exception_disable</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> exception_id)</td></tr>
 </table>
 <a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
@@ -597,6 +596,39 @@ DESCRIPTION</h1>
 </div>
 </div>
 <h2>Documentation des fonctions</h2>
+<a class="anchor" id="a845efe084f5994d748fd7c30403ac879"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int exception_disable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
+          <td class="paramname"><em>exception_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Désactive le handler d'une exception.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">exception_id</td><td>identifiant de l'exception.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, -1 sinon. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="exception_8h_a845efe084f5994d748fd7c30403ac879_cgraph.png" border="0" usemap="#exception_8h_a845efe084f5994d748fd7c30403ac879_cgraph" alt=""/></div>
+<map name="exception_8h_a845efe084f5994d748fd7c30403ac879_cgraph" id="exception_8h_a845efe084f5994d748fd7c30403ac879_cgraph">
+<area shape="rect" id="node3" href="idt_8c.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption." alt="" coords="179,5,312,33"/><area shape="rect" id="node5" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="361,5,471,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="ac5a3d89ca654d3606b6afd836a01e207"></a>
 <div class="memitem">
 <div class="memproto">
@@ -620,7 +652,15 @@ DESCRIPTION</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Définit le handler associé à une exception. </p>
+<p>Définit le handler associé à une exception.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">exception_id</td><td>identifiant de l'exception. </td></tr>
+    <tr><td class="paramname">routine</td><td>handler pour cette exception.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, -1 sinon. </dd></dl>
 
 <p><div class="dynheader">
 Voici le graphe d'appel pour cette fonction :</div>
@@ -645,7 +685,7 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Mai 8 2013 09:38:42 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Mai 30 2013 19:08:36 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

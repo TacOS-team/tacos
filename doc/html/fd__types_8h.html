@@ -92,12 +92,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier fd_types.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><div class="dynheader">
+
+<p>Structures liées aux fichiers ouverts.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de fd_types.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="fd__types_8h__incl.png" border="0" usemap="#kernel_2include_2fd__types_8h" alt=""/></div>
+<map name="kernel_2include_2fd__types_8h" id="kernel_2include_2fd__types_8h">
+<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="57,83,119,111"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="fd__types_8h__dep__incl.png" border="0" usemap="#kernel_2include_2fd__types_8hdep" alt=""/></div>
 <map name="kernel_2include_2fd__types_8hdep" id="kernel_2include_2fd__types_8hdep">
-<area shape="rect" id="node3" href="elf_8c.html" title="kernel/elf.c" alt="" coords="5,83,91,111"/><area shape="rect" id="node5" href="devfs_8h.html" title="kernel/include/fs/devfs.h" alt="" coords="1045,161,1208,189"/><area shape="rect" id="node43" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="1220,339,1308,367"/><area shape="rect" id="node45" href="fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="1416,246,1563,274"/><area shape="rect" id="node51" href="procfs_8h.html" title="kernel/include/fs/procfs.h" alt="" coords="2152,161,2317,189"/><area shape="rect" id="node56" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="2935,161,3081,189"/><area shape="rect" id="node69" href="module_8c.html" title="kernel/module.c" alt="" coords="2331,246,2443,274"/><area shape="rect" id="node72" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="4148,83,4316,111"/><area shape="rect" id="node126" href="tty_8h.html" title="Terminal posix&#45;like." alt="" coords="2597,161,2728,189"/><area shape="rect" id="node137" href="vfs_8h.html" title="Virtual File System." alt="" coords="1887,161,2020,189"/><area shape="rect" id="node7" href="floppy_8c.html" title="kernel/drivers/block\l/floppy/floppy.c" alt="" coords="165,238,299,282"/><area shape="rect" id="node9" href="beeper_8c.html" title="kernel/drivers/char\l/beeper.c" alt="" coords="323,238,451,282"/><area shape="rect" id="node11" href="mouse_8c.html" title="kernel/drivers/char\l/mouse.c" alt="" coords="475,238,603,282"/><area shape="rect" id="node13" href="tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="3299,238,3427,282"/><area shape="rect" id="node15" href="vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="677,238,805,282"/><area shape="rect" id="node17" href="vga_8c.html" title="kernel/drivers/char\l/vga.c" alt="" coords="829,238,957,282"/><area shape="rect" id="node19" href="devfs_8c.html" title="DevFS." alt="" coords="1224,246,1341,274"/><area shape="rect" id="node21" href="ext2__internal_8h.html" title="kernel/fs/ext2/ext2\l_internal.h" alt="" coords="1587,238,1715,282"/><area shape="rect" id="node25" href="fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="981,246,1149,274"/><area shape="rect" id="node37" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="2897,339,3004,367"/><area shape="rect" id="node39" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="2685,246,2787,274"/><area shape="rect" id="node41" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="2200,246,2307,274"/><area shape="rect" id="node23" href="ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="1653,339,1792,367"/><area shape="rect" id="node27" href="fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="1332,339,1452,367"/><area shape="rect" id="node29" href="fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="988,339,1145,367"/><area shape="rect" id="node33" href="fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="1104,425,1272,453"/><area shape="rect" id="node31" href="fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="1249,502,1428,530"/><area shape="rect" id="node53" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="2053,246,2176,274"/><area shape="rect" id="node58" href="serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="2811,238,2939,282"/><area shape="rect" id="node61" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2\l_functions.c" alt="" coords="2131,331,2259,375"/><area shape="rect" id="node66" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="4035,246,4157,274"/><area shape="rect" id="node76" href="context_8h.html" title="kernel/include/context.h" alt="" coords="4877,161,5035,189"/><area shape="rect" id="node78" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="4931,246,5056,274"/><area shape="rect" id="node81" href="ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="4457,161,4615,189"/><area shape="rect" id="node85" href="kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="4797,246,4907,274"/><area shape="rect" id="node88" href="ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="4469,246,4581,274"/><area shape="rect" id="node93" href="scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="3933,161,4104,189"/><area shape="rect" id="node107" href="ksem_8c.html" title="Gestion des sémaphores." alt="" coords="4181,246,4283,274"/><area shape="rect" id="node111" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="3451,246,3563,274"/><area shape="rect" id="node113" href="round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="4307,246,4445,274"/><area shape="rect" id="node90" href="ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="4605,246,4723,274"/><area shape="rect" id="node96" href="round__robin_8h.html" title="kernel/include/round\l_robin.h" alt="" coords="3872,238,4011,282"/><area shape="rect" id="node99" href="init_8c.html" title="kernel/init.c" alt="" coords="3637,246,3725,274"/><area shape="rect" id="node101" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="3064,246,3173,274"/><area shape="rect" id="node116" href="vmm_8c.html" title="kernel/vmm.c" alt="" coords="3749,246,3848,274"/><area shape="rect" id="node130" href="console_8h.html" title="Console virtuelle (Fn)" alt="" coords="2517,238,2661,282"/><area shape="rect" id="node132" href="console_8c.html" title="Console virtuelle (Fn)." alt="" coords="2525,331,2653,375"/><area shape="rect" id="node139" href="dcache_8c.html" title="dentry cache" alt="" coords="1739,246,1851,274"/><area shape="rect" id="node145" href="ext2_8h.html" title="Driver Ext2." alt="" coords="1875,246,2029,274"/></map>
+<area shape="rect" id="node3" href="elf_8c.html" title="Bibliotèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="5,83,91,111"/><area shape="rect" id="node5" href="devfs_8h.html" title="kernel/include/fs/devfs.h" alt="" coords="1045,161,1208,189"/><area shape="rect" id="node43" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="1220,339,1308,367"/><area shape="rect" id="node45" href="fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="1416,246,1563,274"/><area shape="rect" id="node51" href="procfs_8h.html" title="kernel/include/fs/procfs.h" alt="" coords="2152,161,2317,189"/><area shape="rect" id="node56" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="2935,161,3081,189"/><area shape="rect" id="node69" href="module_8c.html" title="kernel/module.c" alt="" coords="2331,246,2443,274"/><area shape="rect" id="node72" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="4148,83,4316,111"/><area shape="rect" id="node126" href="tty_8h.html" title="Terminal posix&#45;like." alt="" coords="2597,161,2728,189"/><area shape="rect" id="node137" href="vfs_8h.html" title="Virtual File System." alt="" coords="1887,161,2020,189"/><area shape="rect" id="node7" href="floppy_8c.html" title="kernel/drivers/block\l/floppy/floppy.c" alt="" coords="165,238,299,282"/><area shape="rect" id="node9" href="beeper_8c.html" title="kernel/drivers/char\l/beeper.c" alt="" coords="323,238,451,282"/><area shape="rect" id="node11" href="mouse_8c.html" title="kernel/drivers/char\l/mouse.c" alt="" coords="475,238,603,282"/><area shape="rect" id="node13" href="tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="3299,238,3427,282"/><area shape="rect" id="node15" href="vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="677,238,805,282"/><area shape="rect" id="node17" href="vga_8c.html" title="kernel/drivers/char\l/vga.c" alt="" coords="829,238,957,282"/><area shape="rect" id="node19" href="devfs_8c.html" title="DevFS." alt="" coords="1224,246,1341,274"/><area shape="rect" id="node21" href="ext2__internal_8h.html" title="kernel/fs/ext2/ext2\l_internal.h" alt="" coords="1587,238,1715,282"/><area shape="rect" id="node25" href="fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="981,246,1149,274"/><area shape="rect" id="node37" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="2897,339,3004,367"/><area shape="rect" id="node39" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="2685,246,2787,274"/><area shape="rect" id="node41" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="2200,246,2307,274"/><area shape="rect" id="node23" href="ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="1653,339,1792,367"/><area shape="rect" id="node27" href="fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="1332,339,1452,367"/><area shape="rect" id="node29" href="fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="988,339,1145,367"/><area shape="rect" id="node33" href="fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="1104,425,1272,453"/><area shape="rect" id="node31" href="fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="1249,502,1428,530"/><area shape="rect" id="node53" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="2053,246,2176,274"/><area shape="rect" id="node58" href="serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="2811,238,2939,282"/><area shape="rect" id="node61" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2\l_functions.c" alt="" coords="2131,331,2259,375"/><area shape="rect" id="node66" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="4035,246,4157,274"/><area shape="rect" id="node76" href="context_8h.html" title="kernel/include/context.h" alt="" coords="4877,161,5035,189"/><area shape="rect" id="node78" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="4931,246,5056,274"/><area shape="rect" id="node81" href="ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="4457,161,4615,189"/><area shape="rect" id="node85" href="kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="4797,246,4907,274"/><area shape="rect" id="node88" href="ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="4469,246,4581,274"/><area shape="rect" id="node93" href="scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="3933,161,4104,189"/><area shape="rect" id="node107" href="ksem_8c.html" title="Gestion des sémaphores." alt="" coords="4181,246,4283,274"/><area shape="rect" id="node111" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="3451,246,3563,274"/><area shape="rect" id="node113" href="round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="4307,246,4445,274"/><area shape="rect" id="node90" href="ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="4605,246,4723,274"/><area shape="rect" id="node96" href="round__robin_8h.html" title="kernel/include/round\l_robin.h" alt="" coords="3872,238,4011,282"/><area shape="rect" id="node99" href="init_8c.html" title="kernel/init.c" alt="" coords="3637,246,3725,274"/><area shape="rect" id="node101" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="3064,246,3173,274"/><area shape="rect" id="node116" href="vmm_8c.html" title="kernel/vmm.c" alt="" coords="3749,246,3848,274"/><area shape="rect" id="node130" href="console_8h.html" title="Console virtuelle (Fn)" alt="" coords="2517,238,2661,282"/><area shape="rect" id="node132" href="console_8c.html" title="Console virtuelle (Fn)." alt="" coords="2525,331,2653,375"/><area shape="rect" id="node139" href="dcache_8c.html" title="dentry cache" alt="" coords="1739,246,1851,274"/><area shape="rect" id="node145" href="ext2_8h.html" title="Driver Ext2." alt="" coords="1875,246,2029,274"/></map>
 </div>
 </div>
 <p><a href="fd__types_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -106,26 +117,18 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 Structures de données</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__open__file__operations__t.html">_open_file_operations_t</a></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__file__descriptor.html">_file_descriptor</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:aa188a2e288c10a684622814c51337465"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa188a2e288c10a684622814c51337465"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>FOPEN_MAX</b>&#160;&#160;&#160;500</td></tr>
-<tr class="memitem:a0d112bae8fd35be772185b6ec6bcbe64"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d112bae8fd35be772185b6ec6bcbe64"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SEEK_SET</b>&#160;&#160;&#160;0</td></tr>
-<tr class="memitem:a4c8d0b76b470ba65a43ca46a88320f39"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4c8d0b76b470ba65a43ca46a88320f39"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SEEK_CUR</b>&#160;&#160;&#160;1</td></tr>
-<tr class="memitem:ad2a2e6c114780c3071efd24f16c7f7d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad2a2e6c114780c3071efd24f16c7f7d8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SEEK_END</b>&#160;&#160;&#160;2</td></tr>
+<tr class="memitem:aa188a2e288c10a684622814c51337465"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fd__types_8h.html#aa188a2e288c10a684622814c51337465">FOPEN_MAX</a>&#160;&#160;&#160;500</td></tr>
+<tr class="memitem:a0d112bae8fd35be772185b6ec6bcbe64"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fd__types_8h.html#a0d112bae8fd35be772185b6ec6bcbe64">SEEK_SET</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memitem:a4c8d0b76b470ba65a43ca46a88320f39"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fd__types_8h.html#a4c8d0b76b470ba65a43ca46a88320f39">SEEK_CUR</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memitem:ad2a2e6c114780c3071efd24f16c7f7d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fd__types_8h.html#ad2a2e6c114780c3071efd24f16c7f7d8">SEEK_END</a>&#160;&#160;&#160;2</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr class="memitem:a42bccb9b6a816213613cefffced245f0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42bccb9b6a816213613cefffced245f0"></a>
-typedef struct <br class="typebreak"/>
-<a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>open_file_descriptor</b></td></tr>
-<tr class="memitem:a27ef77b31acb21e66fdbcf09434d5312"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27ef77b31acb21e66fdbcf09434d5312"></a>
-typedef struct <a class="el" href="struct__file__descriptor.html">_file_descriptor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>file_descriptor</b></td></tr>
+<tr class="memitem:a42bccb9b6a816213613cefffced245f0"><td class="memItemLeft" align="right" valign="top">typedef struct <br class="typebreak"/>
+<a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -142,11 +145,77 @@ LICENSE</h1>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-<p>Description de ce que fait le fichier </p>
-</div></div><!-- contents -->
+</div><h2>Documentation des macros</h2>
+<a class="anchor" id="aa188a2e288c10a684622814c51337465"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FOPEN_MAX&#160;&#160;&#160;500</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Nombre max d'ouverture de fichier. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4c8d0b76b470ba65a43ca46a88320f39"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SEEK_CUR&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>SEEK relatif à la position actuelle. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad2a2e6c114780c3071efd24f16c7f7d8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SEEK_END&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>SEEK par rapport à la fin du fichier. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0d112bae8fd35be772185b6ec6bcbe64"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SEEK_SET&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>SEEK à une position donnée. </p>
+
+</div>
+</div>
+<h2>Documentation des définitions de type</h2>
+<a class="anchor" id="a42bccb9b6a816213613cefffced245f0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a>  <a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Descripteur de fichier ouvert. À chaque fichier ouvert, une structure de ce type est instanciée pour y stocker les informations sur le fichier et le FS. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Mai 8 2013 09:38:42 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Mai 30 2013 19:08:36 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

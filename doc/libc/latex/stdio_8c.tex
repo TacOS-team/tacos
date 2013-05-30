@@ -1,0 +1,61 @@
+\hypertarget{stdio_8c}{\section{Référence du fichier libc/stdio/stdio.c}
+\label{stdio_8c}\index{libc/stdio/stdio.\-c@{libc/stdio/stdio.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+Graphe des dépendances par inclusion de stdio.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{stdio_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{stdio_8c_af691eb990d669a9edec8a9ec721ce3bc}{setvbuf} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream, char $\ast$buf, int mode, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+\begin{DoxyCompactList}\small\item\em Modifie le buffer et les flags d'un stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+Description de ce que fait le fichier 
+
+\subsection{Documentation des fonctions}
+\hypertarget{stdio_8c_af691eb990d669a9edec8a9ec721ce3bc}{\index{stdio.\-c@{stdio.\-c}!setvbuf@{setvbuf}}
+\index{setvbuf@{setvbuf}!stdio.c@{stdio.\-c}}
+\subsubsection[{setvbuf}]{\setlength{\rightskip}{0pt plus 5cm}int setvbuf (
+\begin{DoxyParamCaption}
+\item[{{\bf F\-I\-L\-E} $\ast$}]{stream, }
+\item[{char $\ast$}]{buf, }
+\item[{int}]{mode, }
+\item[{{\bf size\-\_\-t}}]{size}
+\end{DoxyParamCaption}
+)}}\label{stdio_8c_af691eb990d669a9edec8a9ec721ce3bc}
+Modifie le buffer et les flags d'un stream
+
+
+\begin{DoxyParams}{Paramètres}
+{\em stream} & le stream a modifier \\
+\hline
+{\em buf} & le nouveau buffer (peut être défini à N\-U\-L\-L et sera alloué automatiquement. \\
+\hline
+{\em mode} & les nouveaux flags \\
+\hline
+{\em size} & taille du nouveau buffer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 si tout s'est bien passé. 
+\end{DoxyReturn}

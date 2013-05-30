@@ -1,8 +1,14 @@
 var searchData=
 [
+  ['hash',['hash',['../struct____hashmap__t.html#aa56e33c3baa182a530a4a8bfc27c11f1',1,'__hashmap_t']]],
   ['hashmap_2ec',['hashmap.c',['../hashmap_8c.html',1,'']]],
   ['hashmap_2eh',['hashmap.h',['../hashmap_8h.html',1,'']]],
   ['hashmap_5fcell_5ft',['hashmap_cell_t',['../structhashmap__cell__t.html',1,'']]],
+  ['hashmap_5fcreate',['hashmap_create',['../hashmap_8h.html#a81cd9ee5f00b62bf3103612cd87d8a5d',1,'hashmap_create(int size, int(*equal)(struct hashmap_key_t *, struct hashmap_key_t *), int(*hash)(struct hashmap_key_t *)):&#160;hashmap.c'],['../hashmap_8c.html#a81cd9ee5f00b62bf3103612cd87d8a5d',1,'hashmap_create(int size, int(*equal)(struct hashmap_key_t *, struct hashmap_key_t *), int(*hash)(struct hashmap_key_t *)):&#160;hashmap.c']]],
+  ['hashmap_5fget',['hashmap_get',['../hashmap_8h.html#a37bdba9503b86db73e6067b97b858dbd',1,'hashmap_get(hashmap_t *this, struct hashmap_key_t *key):&#160;hashmap.c'],['../hashmap_8c.html#a37bdba9503b86db73e6067b97b858dbd',1,'hashmap_get(hashmap_t *this, struct hashmap_key_t *key):&#160;hashmap.c']]],
+  ['hashmap_5fremove',['hashmap_remove',['../hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e',1,'hashmap_remove(hashmap_t *this, struct hashmap_key_t *key):&#160;hashmap.c'],['../hashmap_8c.html#ae3866ef4f62955d2803f96170ab2fa9e',1,'hashmap_remove(hashmap_t *this, struct hashmap_key_t *key):&#160;hashmap.c']]],
+  ['hashmap_5fset',['hashmap_set',['../hashmap_8h.html#a0c25525e8b6599bcafda45b74dcac19d',1,'hashmap_set(hashmap_t *this, struct hashmap_key_t *key, struct hashmap_value_t *value):&#160;hashmap.c'],['../hashmap_8c.html#a0c25525e8b6599bcafda45b74dcac19d',1,'hashmap_set(hashmap_t *this, struct hashmap_key_t *key, struct hashmap_value_t *value):&#160;hashmap.c']]],
+  ['hashmap_5ft',['hashmap_t',['../hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6',1,'hashmap.h']]],
   ['head',['head',['../structlist__t.html#a0c48694d3aca4dbf169881b9df794cb6',1,'list_t']]],
   ['head_5fside_5fcount',['head_side_count',['../struct__fat__BS.html#ad58562d1dd05ac79b72053708ff52c3c',1,'_fat_BS']]],
   ['header_5faddr',['header_addr',['../structmultiboot__header.html#a9718b2fc6ce29a37e9a209f92ab856e3',1,'multiboot_header']]],

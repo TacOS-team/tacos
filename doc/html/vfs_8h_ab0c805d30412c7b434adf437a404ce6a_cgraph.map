@@ -1,3 +1,5 @@
 <map id="vfs_close" name="vfs_close">
-<area shape="rect" id="node3" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="133,5,184,33"/>
+<area shape="rect" id="node3" href="$dcache_8c.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="133,5,248,33"/>
+<area shape="rect" id="node7" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="469,30,520,58"/>
+<area shape="rect" id="node5" href="$hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="296,5,421,33"/>
 </map>

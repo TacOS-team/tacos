@@ -10,6 +10,7 @@ var searchData=
   ['max_5felements',['max_elements',['../structheap__t.html#a7919079b18428f31e03827344bc5a390',1,'heap_t::max_elements()'],['../structlist__t.html#a646f05091de2a2667b0f3c9aaffdfbdc',1,'list_t::max_elements()']]],
   ['max_5fevents',['MAX_EVENTS',['../events_8c.html#ae42954bb8545d24e3e9dcde5920c9a0b',1,'events.c']]],
   ['max_5finput',['MAX_INPUT',['../tty_8h.html#a00c1f0e7816626f58349492ef0720b5f',1,'tty.h']]],
+  ['max_5fproc',['MAX_PROC',['../kprocess_8h.html#a63e32d00bc48471b4db49d481ac228dc',1,'kprocess.h']]],
   ['mbr_2ec',['mbr.c',['../mbr_8c.html',1,'']]],
   ['mbr_2eh',['mbr.h',['../mbr_8h.html',1,'']]],
   ['media_5ftype',['media_type',['../struct__fat__BS.html#ae6537235795059976bd79d26e4b61053',1,'_fat_BS']]],

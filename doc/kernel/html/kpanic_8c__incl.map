@@ -1,0 +1,17 @@
+<map id="kernel/kpanic.c" name="kernel/kpanic.c">
+<area shape="rect" id="node3" href="$kstdio_8h.html" title="kprintf" alt="" coords="244,83,311,111"/>
+<area shape="rect" id="node5" href="$exception_8h.html" title="exception.h" alt="" coords="701,161,787,189"/>
+<area shape="rect" id="node9" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="811,161,896,189"/>
+<area shape="rect" id="node12" href="$kpanic_8h.html" title="Handlers des exceptions." alt="" coords="920,161,989,189"/>
+<area shape="rect" id="node15" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="385,161,471,189"/>
+<area shape="rect" id="node27" href="$symtable_8h.html" title="symtable.h" alt="" coords="5,238,88,266"/>
+<area shape="rect" id="node36" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="465,83,553,111"/>
+<area shape="rect" id="node41" href="$ksignal_8h.html" title="ksignal.h" alt="" coords="577,83,649,111"/>
+<area shape="rect" id="node7" href="$types_8h.html" title="types.h" alt="" coords="499,315,560,343"/>
+<area shape="rect" id="node17" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="491,238,568,266"/>
+<area shape="rect" id="node20" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="112,238,192,266"/>
+<area shape="rect" id="node23" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="592,238,696,266"/>
+<area shape="rect" id="node25" href="$process__types_8h.html" title="process_types.h" alt="" coords="352,238,467,266"/>
+<area shape="rect" id="node33" href="$vmm_8h.html" title="vmm.h" alt="" coords="216,238,277,266"/>
+<area shape="rect" id="node30" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="24,315,69,343"/>
+</map>

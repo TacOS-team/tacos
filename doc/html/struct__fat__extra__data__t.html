@@ -93,22 +93,71 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a5cc9910b0f971c600d2d4a52290509fa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5cc9910b0f971c600d2d4a52290509fa"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>first_cluster</b></td></tr>
-<tr class="memitem:a0708cae473b2962cfa6c10f50d9b008b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0708cae473b2962cfa6c10f50d9b008b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>current_cluster</b></td></tr>
-<tr class="memitem:a38be57e802b36532ce01e46d7be7da44"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38be57e802b36532ce01e46d7be7da44"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>current_octet_buf</b></td></tr>
-<tr class="memitem:a74dd347d769bd4aefdf0ad1207be6798"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74dd347d769bd4aefdf0ad1207be6798"></a>
-<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>buffer</b> [512]</td></tr>
+<tr class="memitem:a5cc9910b0f971c600d2d4a52290509fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fat__extra__data__t.html#a5cc9910b0f971c600d2d4a52290509fa">first_cluster</a></td></tr>
+<tr class="memitem:a0708cae473b2962cfa6c10f50d9b008b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fat__extra__data__t.html#a0708cae473b2962cfa6c10f50d9b008b">current_cluster</a></td></tr>
+<tr class="memitem:a38be57e802b36532ce01e46d7be7da44"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fat__extra__data__t.html#a38be57e802b36532ce01e46d7be7da44">current_octet_buf</a></td></tr>
+<tr class="memitem:a74dd347d769bd4aefdf0ad1207be6798"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fat__extra__data__t.html#a74dd347d769bd4aefdf0ad1207be6798">buffer</a> [512]</td></tr>
 </table>
+<h2>Documentation des champs</h2>
+<a class="anchor" id="a74dd347d769bd4aefdf0ad1207be6798"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> _fat_extra_data_t::buffer[512]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Buffer pour limiter les appels au disque. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0708cae473b2962cfa6c10f50d9b008b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _fat_extra_data_t::current_cluster</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Cluster courant. </p>
+
+</div>
+</div>
+<a class="anchor" id="a38be57e802b36532ce01e46d7be7da44"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int _fat_extra_data_t::current_octet_buf</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Position dans le buffer. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5cc9910b0f971c600d2d4a52290509fa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _fat_extra_data_t::first_cluster</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adresse du premier cluster. </p>
+
+</div>
+</div>
 <hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
 <li>kernel/fs/fat/<a class="el" href="fat__internal_8h_source.html">fat_internal.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Mai 8 2013 09:38:43 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Mai 30 2013 19:08:42 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

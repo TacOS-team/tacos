@@ -1,0 +1,10 @@
+<map id="init_stdfd" name="init_stdfd">
+<area shape="rect" id="node3" href="$kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné." alt="" coords="129,5,223,33"/>
+<area shape="rect" id="node5" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="392,106,459,134"/>
+<area shape="rect" id="node9" href="$string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="273,207,343,235"/>
+<area shape="rect" id="node11" href="$string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="399,207,452,235"/>
+<area shape="rect" id="node13" href="$string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="397,258,453,286"/>
+<area shape="rect" id="node15" href="$vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="139,157,213,185"/>
+<area shape="rect" id="node7" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="508,106,647,134"/>
+<area shape="rect" id="node19" href="$string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="279,157,337,185"/>
+</map>

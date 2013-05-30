@@ -1,0 +1,7 @@
+<map id="kernel/include/vfs.h" name="kernel/include/vfs.h">
+<area shape="rect" id="node3" href="$types_8h.html" title="types.h" alt="" coords="119,315,180,343"/>
+<area shape="rect" id="node5" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="32,161,112,189"/>
+<area shape="rect" id="node8" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="119,83,180,111"/>
+<area shape="rect" id="node11" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="187,161,248,189"/>
+<area shape="rect" id="node14" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="237,238,315,266"/>
+</map>

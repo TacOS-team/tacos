@@ -1,0 +1,20 @@
+<map id="kernel/kdirent.c" name="kernel/kdirent.c">
+<area shape="rect" id="node3" href="$vfs_8h.html" title="Virtual File System." alt="" coords="543,83,593,111"/>
+<area shape="rect" id="node19" href="$kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="277,83,347,111"/>
+<area shape="rect" id="node24" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="5,238,83,266"/>
+<area shape="rect" id="node27" href="$string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="77,161,171,189"/>
+<area shape="rect" id="node30" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="399,161,487,189"/>
+<area shape="rect" id="node50" href="$klog_8h.html" title="Logging macros." alt="" coords="920,83,976,111"/>
+<area shape="rect" id="node5" href="$types_8h.html" title="types.h" alt="" coords="321,393,383,421"/>
+<area shape="rect" id="node7" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="924,315,1004,343"/>
+<area shape="rect" id="node10" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="263,161,324,189"/>
+<area shape="rect" id="node13" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="263,238,324,266"/>
+<area shape="rect" id="node16" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="313,315,391,343"/>
+<area shape="rect" id="node32" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="480,238,565,266"/>
+<area shape="rect" id="node36" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="551,315,655,343"/>
+<area shape="rect" id="node38" href="$process__types_8h.html" title="process_types.h" alt="" coords="679,315,793,343"/>
+<area shape="rect" id="node40" href="$symtable_8h.html" title="symtable.h" alt="" coords="817,315,900,343"/>
+<area shape="rect" id="node46" href="$vmm_8h.html" title="vmm.h" alt="" coords="415,315,476,343"/>
+<area shape="rect" id="node43" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="836,393,881,421"/>
+<area shape="rect" id="node52" href="$kstdio_8h.html" title="kprintf" alt="" coords="1079,161,1145,189"/>
+</map>

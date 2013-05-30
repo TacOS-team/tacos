@@ -1,0 +1,99 @@
+\hypertarget{struct__IO__FILE}{\section{Référence de la structure \-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}
+\label{struct__IO__FILE}\index{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}}
+}
+
+
+Gestion de stream. Inspiré de posix.  
+
+
+
+
+{\ttfamily \#include $<$libio.\-h$>$}
+
+
+
+Graphe de collaboration de \-\_\-\-I\-O\-\_\-\-F\-I\-L\-E\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{struct__IO__FILE__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{struct__IO__FILE_a364ce3577f2cdb788df3a2a54909f45a}{\-\_\-flags}
+\item 
+char $\ast$ \hyperlink{struct__IO__FILE_a1c2f65148a6f2e35c478af0fc144fded}{\-\_\-\-I\-O\-\_\-read\-\_\-ptr}
+\item 
+char $\ast$ \hyperlink{struct__IO__FILE_a6994a0f73699af311e4669b4baa0e26b}{\-\_\-\-I\-O\-\_\-read\-\_\-end}
+\item 
+char $\ast$ \hyperlink{struct__IO__FILE_a2a449978f6e6aa2172f7f82ed1d42f37}{\-\_\-\-I\-O\-\_\-read\-\_\-base}
+\item 
+char $\ast$ \hyperlink{struct__IO__FILE_a6631dc1b00cd5a378280606c9333f40a}{\-\_\-\-I\-O\-\_\-write\-\_\-base}
+\item 
+char $\ast$ \hyperlink{struct__IO__FILE_ab746b60c0613c28d3451b13afdd703b5}{\-\_\-\-I\-O\-\_\-write\-\_\-ptr}
+\item 
+char $\ast$ \hyperlink{struct__IO__FILE_ad68f27b22fb43ab7a50bdaa50dc7d725}{\-\_\-\-I\-O\-\_\-write\-\_\-end}
+\item 
+char $\ast$ \hyperlink{struct__IO__FILE_a2bf5a30fdc43564cf2e46d2cce8e82dd}{\-\_\-\-I\-O\-\_\-buf\-\_\-base}
+\item 
+char $\ast$ \hyperlink{struct__IO__FILE_ac9fa3b261e95a246dac19dc35045be42}{\-\_\-\-I\-O\-\_\-buf\-\_\-end}
+\item 
+char $\ast$ \hyperlink{struct__IO__FILE_a3ef98bd6be88c72459cf4a670a5ba35c}{\-\_\-\-I\-O\-\_\-save\-\_\-base}
+\item 
+char $\ast$ \hyperlink{struct__IO__FILE_a8e6f38619f990a207a598132f4e6e661}{\-\_\-\-I\-O\-\_\-backup\-\_\-base}
+\item 
+char $\ast$ \hyperlink{struct__IO__FILE_a48102d534ea93a120fc025b1bead08cb}{\-\_\-\-I\-O\-\_\-save\-\_\-end}
+\item 
+\hypertarget{struct__IO__FILE_a148f6239f490808c7875a5d43f13e645}{struct \hyperlink{struct__IO__FILE}{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E} $\ast$ {\bfseries \-\_\-chain}}\label{struct__IO__FILE_a148f6239f490808c7875a5d43f13e645}
+
+\item 
+\hypertarget{struct__IO__FILE_a1883574299ff3f4ac644796985ca0a1d}{int {\bfseries \-\_\-fileno}}\label{struct__IO__FILE_a1883574299ff3f4ac644796985ca0a1d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentation des champs}
+\hypertarget{struct__IO__FILE_a364ce3577f2cdb788df3a2a54909f45a}{\index{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}!\-\_\-flags@{\-\_\-flags}}
+\index{\-\_\-flags@{\-\_\-flags}!_IO_FILE@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}}
+\subsubsection[{\-\_\-flags}]{\setlength{\rightskip}{0pt plus 5cm}int \-\_\-\-I\-O\-\_\-\-F\-I\-L\-E\-::\-\_\-flags}}\label{struct__IO__FILE_a364ce3577f2cdb788df3a2a54909f45a}
+High-\/order word is \-\_\-\-I\-O\-\_\-\-M\-A\-G\-I\-C; rest is flags. \hypertarget{struct__IO__FILE_a8e6f38619f990a207a598132f4e6e661}{\index{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}!\-\_\-\-I\-O\-\_\-backup\-\_\-base@{\-\_\-\-I\-O\-\_\-backup\-\_\-base}}
+\index{\-\_\-\-I\-O\-\_\-backup\-\_\-base@{\-\_\-\-I\-O\-\_\-backup\-\_\-base}!_IO_FILE@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}}
+\subsubsection[{\-\_\-\-I\-O\-\_\-backup\-\_\-base}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \-\_\-\-I\-O\-\_\-\-F\-I\-L\-E\-::\-\_\-\-I\-O\-\_\-backup\-\_\-base}}\label{struct__IO__FILE_a8e6f38619f990a207a598132f4e6e661}
+Pointer to first valid character of backup area \hypertarget{struct__IO__FILE_a2bf5a30fdc43564cf2e46d2cce8e82dd}{\index{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}!\-\_\-\-I\-O\-\_\-buf\-\_\-base@{\-\_\-\-I\-O\-\_\-buf\-\_\-base}}
+\index{\-\_\-\-I\-O\-\_\-buf\-\_\-base@{\-\_\-\-I\-O\-\_\-buf\-\_\-base}!_IO_FILE@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}}
+\subsubsection[{\-\_\-\-I\-O\-\_\-buf\-\_\-base}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \-\_\-\-I\-O\-\_\-\-F\-I\-L\-E\-::\-\_\-\-I\-O\-\_\-buf\-\_\-base}}\label{struct__IO__FILE_a2bf5a30fdc43564cf2e46d2cce8e82dd}
+Start of reserve area. \hypertarget{struct__IO__FILE_ac9fa3b261e95a246dac19dc35045be42}{\index{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}!\-\_\-\-I\-O\-\_\-buf\-\_\-end@{\-\_\-\-I\-O\-\_\-buf\-\_\-end}}
+\index{\-\_\-\-I\-O\-\_\-buf\-\_\-end@{\-\_\-\-I\-O\-\_\-buf\-\_\-end}!_IO_FILE@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}}
+\subsubsection[{\-\_\-\-I\-O\-\_\-buf\-\_\-end}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \-\_\-\-I\-O\-\_\-\-F\-I\-L\-E\-::\-\_\-\-I\-O\-\_\-buf\-\_\-end}}\label{struct__IO__FILE_ac9fa3b261e95a246dac19dc35045be42}
+End of reserve area. \hypertarget{struct__IO__FILE_a2a449978f6e6aa2172f7f82ed1d42f37}{\index{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}!\-\_\-\-I\-O\-\_\-read\-\_\-base@{\-\_\-\-I\-O\-\_\-read\-\_\-base}}
+\index{\-\_\-\-I\-O\-\_\-read\-\_\-base@{\-\_\-\-I\-O\-\_\-read\-\_\-base}!_IO_FILE@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}}
+\subsubsection[{\-\_\-\-I\-O\-\_\-read\-\_\-base}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \-\_\-\-I\-O\-\_\-\-F\-I\-L\-E\-::\-\_\-\-I\-O\-\_\-read\-\_\-base}}\label{struct__IO__FILE_a2a449978f6e6aa2172f7f82ed1d42f37}
+Start of putback+get area. \hypertarget{struct__IO__FILE_a6994a0f73699af311e4669b4baa0e26b}{\index{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}!\-\_\-\-I\-O\-\_\-read\-\_\-end@{\-\_\-\-I\-O\-\_\-read\-\_\-end}}
+\index{\-\_\-\-I\-O\-\_\-read\-\_\-end@{\-\_\-\-I\-O\-\_\-read\-\_\-end}!_IO_FILE@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}}
+\subsubsection[{\-\_\-\-I\-O\-\_\-read\-\_\-end}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \-\_\-\-I\-O\-\_\-\-F\-I\-L\-E\-::\-\_\-\-I\-O\-\_\-read\-\_\-end}}\label{struct__IO__FILE_a6994a0f73699af311e4669b4baa0e26b}
+End of get area. \hypertarget{struct__IO__FILE_a1c2f65148a6f2e35c478af0fc144fded}{\index{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}!\-\_\-\-I\-O\-\_\-read\-\_\-ptr@{\-\_\-\-I\-O\-\_\-read\-\_\-ptr}}
+\index{\-\_\-\-I\-O\-\_\-read\-\_\-ptr@{\-\_\-\-I\-O\-\_\-read\-\_\-ptr}!_IO_FILE@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}}
+\subsubsection[{\-\_\-\-I\-O\-\_\-read\-\_\-ptr}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \-\_\-\-I\-O\-\_\-\-F\-I\-L\-E\-::\-\_\-\-I\-O\-\_\-read\-\_\-ptr}}\label{struct__IO__FILE_a1c2f65148a6f2e35c478af0fc144fded}
+Current read pointer \hypertarget{struct__IO__FILE_a3ef98bd6be88c72459cf4a670a5ba35c}{\index{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}!\-\_\-\-I\-O\-\_\-save\-\_\-base@{\-\_\-\-I\-O\-\_\-save\-\_\-base}}
+\index{\-\_\-\-I\-O\-\_\-save\-\_\-base@{\-\_\-\-I\-O\-\_\-save\-\_\-base}!_IO_FILE@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}}
+\subsubsection[{\-\_\-\-I\-O\-\_\-save\-\_\-base}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \-\_\-\-I\-O\-\_\-\-F\-I\-L\-E\-::\-\_\-\-I\-O\-\_\-save\-\_\-base}}\label{struct__IO__FILE_a3ef98bd6be88c72459cf4a670a5ba35c}
+Pointer to start of non-\/current get area. \hypertarget{struct__IO__FILE_a48102d534ea93a120fc025b1bead08cb}{\index{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}!\-\_\-\-I\-O\-\_\-save\-\_\-end@{\-\_\-\-I\-O\-\_\-save\-\_\-end}}
+\index{\-\_\-\-I\-O\-\_\-save\-\_\-end@{\-\_\-\-I\-O\-\_\-save\-\_\-end}!_IO_FILE@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}}
+\subsubsection[{\-\_\-\-I\-O\-\_\-save\-\_\-end}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \-\_\-\-I\-O\-\_\-\-F\-I\-L\-E\-::\-\_\-\-I\-O\-\_\-save\-\_\-end}}\label{struct__IO__FILE_a48102d534ea93a120fc025b1bead08cb}
+Pointer to end of non-\/current get area. \hypertarget{struct__IO__FILE_a6631dc1b00cd5a378280606c9333f40a}{\index{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}!\-\_\-\-I\-O\-\_\-write\-\_\-base@{\-\_\-\-I\-O\-\_\-write\-\_\-base}}
+\index{\-\_\-\-I\-O\-\_\-write\-\_\-base@{\-\_\-\-I\-O\-\_\-write\-\_\-base}!_IO_FILE@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}}
+\subsubsection[{\-\_\-\-I\-O\-\_\-write\-\_\-base}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \-\_\-\-I\-O\-\_\-\-F\-I\-L\-E\-::\-\_\-\-I\-O\-\_\-write\-\_\-base}}\label{struct__IO__FILE_a6631dc1b00cd5a378280606c9333f40a}
+Start of put area. \hypertarget{struct__IO__FILE_ad68f27b22fb43ab7a50bdaa50dc7d725}{\index{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}!\-\_\-\-I\-O\-\_\-write\-\_\-end@{\-\_\-\-I\-O\-\_\-write\-\_\-end}}
+\index{\-\_\-\-I\-O\-\_\-write\-\_\-end@{\-\_\-\-I\-O\-\_\-write\-\_\-end}!_IO_FILE@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}}
+\subsubsection[{\-\_\-\-I\-O\-\_\-write\-\_\-end}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \-\_\-\-I\-O\-\_\-\-F\-I\-L\-E\-::\-\_\-\-I\-O\-\_\-write\-\_\-end}}\label{struct__IO__FILE_ad68f27b22fb43ab7a50bdaa50dc7d725}
+End of put area. \hypertarget{struct__IO__FILE_ab746b60c0613c28d3451b13afdd703b5}{\index{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}!\-\_\-\-I\-O\-\_\-write\-\_\-ptr@{\-\_\-\-I\-O\-\_\-write\-\_\-ptr}}
+\index{\-\_\-\-I\-O\-\_\-write\-\_\-ptr@{\-\_\-\-I\-O\-\_\-write\-\_\-ptr}!_IO_FILE@{\-\_\-\-I\-O\-\_\-\-F\-I\-L\-E}}
+\subsubsection[{\-\_\-\-I\-O\-\_\-write\-\_\-ptr}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \-\_\-\-I\-O\-\_\-\-F\-I\-L\-E\-::\-\_\-\-I\-O\-\_\-write\-\_\-ptr}}\label{struct__IO__FILE_ab746b60c0613c28d3451b13afdd703b5}
+Current put pointer. 
+
+La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+\item 
+libc/include/\hyperlink{libio_8h}{libio.\-h}\end{DoxyCompactItemize}

@@ -96,22 +96,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier.">kstat.h</a>&gt;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="kdirent_8h.html#ac64541bdd81c961304b9babef1402640">   36</a></span>&#160;<span class="preprocessor">#define NAME_MAX 256 </span></div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="structdirent.html">   38</a></span>&#160;<span class="preprocessor">struct dirent {</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">   39</a></span>&#160;<span class="preprocessor"></span>        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">d_ino</a>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">   40</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">d_reclen</a>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">   41</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">d_type</a>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="structdirent.html#a4325a83c49c6f2cd01ef80e1ae1dd4c5">   42</a></span>&#160;        <span class="keywordtype">char</span>      d_name[<a class="code" href="kdirent_8h.html#ac64541bdd81c961304b9babef1402640">NAME_MAX</a>];</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;SYSCALL_HANDLER3(sys_readdir, <span class="keywordtype">int</span> fd, <span class="keywordtype">char</span> *entries, <span class="keywordtype">size_t</span> *size);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;SYSCALL_HANDLER3(sys_mkdir, <span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>, <span class="keywordtype">int</span> *ret);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;SYSCALL_HANDLER2(sys_rmdir, <span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <span class="keywordtype">int</span> *ret);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="structdirent.html">   41</a></span>&#160;<span class="preprocessor">struct dirent {</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">   42</a></span>&#160;<span class="preprocessor"></span>        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">d_ino</a>; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">   43</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">d_reclen</a>; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">   44</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">d_type</a>; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="structdirent.html#a4325a83c49c6f2cd01ef80e1ae1dd4c5">   45</a></span>&#160;        <span class="keywordtype">char</span>      d_name[<a class="code" href="kdirent_8h.html#ac64541bdd81c961304b9babef1402640">NAME_MAX</a>]; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;SYSCALL_HANDLER3(sys_readdir, <span class="keywordtype">int</span> fd, <span class="keywordtype">char</span> *entries, <span class="keywordtype">size_t</span> *size);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;SYSCALL_HANDLER3(sys_mkdir, <span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>, <span class="keywordtype">int</span> *ret);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;SYSCALL_HANDLER2(sys_rmdir, <span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <span class="keywordtype">int</span> *ret);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Mai 8 2013 09:38:42 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

@@ -1,9 +1,8 @@
 <map id="read" name="read">
-<area shape="rect" id="node3" href="$ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="199,5,295,33"/>
-<area shape="rect" id="node5" href="$fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae" title="mount_FAT" alt="" coords="201,93,292,121"/>
-<area shape="rect" id="node7" href="$get_8c.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream." alt="" coords="221,143,272,171"/>
-<area shape="rect" id="node15" href="$unistd_8c.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="103,61,148,89"/>
-<area shape="rect" id="node9" href="$fread_8c.html#a084251eb18ccd5c936faa2c39c86ec63" title="fread" alt="" coords="352,93,403,121"/>
-<area shape="rect" id="node11" href="$get_8c.html#a2b3df0e66b41edab3c039191fe6cc4f9" title="Lit au plus size&#45;1 caractères depuis le stream passé en argument." alt="" coords="352,143,403,171"/>
-<area shape="rect" id="node13" href="$get_8c.html#a3e29caa20f7cffe18f410f01278905a8" title="lit un caractère depuis stdin." alt="" coords="345,194,409,222"/>
+<area shape="rect" id="node3" href="$ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="199,21,295,49"/>
+<area shape="rect" id="node5" href="$get_8c.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream." alt="" coords="221,83,272,111"/>
+<area shape="rect" id="node13" href="$unistd_8c.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="103,46,148,74"/>
+<area shape="rect" id="node7" href="$fread_8c.html#a084251eb18ccd5c936faa2c39c86ec63" title="fread" alt="" coords="352,33,403,61"/>
+<area shape="rect" id="node9" href="$get_8c.html#a2b3df0e66b41edab3c039191fe6cc4f9" title="Lit au plus size&#45;1 caractères depuis le stream passé en argument." alt="" coords="352,83,403,111"/>
+<area shape="rect" id="node11" href="$get_8c.html#a3e29caa20f7cffe18f410f01278905a8" title="lit un caractère depuis stdin." alt="" coords="345,134,409,162"/>
 </map>

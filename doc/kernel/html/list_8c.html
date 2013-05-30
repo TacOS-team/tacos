@@ -1,0 +1,388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/utils/list.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_6923ce6de593e59076f620daa4ef5218.html">utils</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier list.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="list_8h_source.html">list.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="string_8h_source.html">klibc/string.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kstdio_8h_source.html">kstdio.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de list.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="list_8c__incl.png" border="0" usemap="#kernel_2utils_2list_8c" alt=""/></div>
+<map name="kernel_2utils_2list_8c" id="kernel_2utils_2list_8c">
+<area shape="rect" id="node3" href="list_8h.html" title="list.h" alt="" coords="5,83,53,111"/><area shape="rect" id="node7" href="string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="77,83,171,111"/><area shape="rect" id="node10" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="195,83,272,111"/><area shape="rect" id="node13" href="kstdio_8h.html" title="kprintf" alt="" coords="296,83,363,111"/><area shape="rect" id="node5" href="types_8h.html" title="types.h" alt="" coords="93,161,155,189"/></map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a3510ebed9ac06b45eb86b1783e8fb837"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3510ebed9ac06b45eb86b1783e8fb837"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EMPTY_SLOT</b>&#160;&#160;&#160;-1</td></tr>
+<tr class="memitem:acbe23067833544d98818fdfd38a10dc7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acbe23067833544d98818fdfd38a10dc7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>END_SLOT</b>&#160;&#160;&#160;-2</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a8111dff4de9d78342e96563621a7da63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a8111dff4de9d78342e96563621a7da63">list_init</a> (<a class="el" href="structlist__t.html">list_t</a> *l, <a class="el" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a> cmp, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> elements_size, int max_elements)</td></tr>
+<tr class="memitem:a4d06987bb22b3a5c66d2be44f6c23845"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a4d06987bb22b3a5c66d2be44f6c23845">list_get_top</a> (<a class="el" href="structlist__t.html">list_t</a> l)</td></tr>
+<tr class="memitem:a7a8bb1eb8a161ffce0167fca806e10ad"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a7a8bb1eb8a161ffce0167fca806e10ad">list_add_element</a> (<a class="el" href="structlist__t.html">list_t</a> *l, void *element)</td></tr>
+<tr class="memitem:a5ffcff1c3f7eace23a067c0051a3c8f9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a5ffcff1c3f7eace23a067c0051a3c8f9">list_remove_top</a> (<a class="el" href="structlist__t.html">list_t</a> *l)</td></tr>
+<tr class="memitem:a7b460be2c0d40f4da72af89c356ed7c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1">print_list</a> (<a class="el" href="structlist__t.html">list_t</a> ma_liste)</td></tr>
+<tr class="memitem:ad8dbf30907f29e3b4fc748a83d4b1784"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#ad8dbf30907f29e3b4fc748a83d4b1784">list_del_element</a> (<a class="el" href="structlist__t.html">list_t</a> *list, int id, id_func_type func)</td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+<p>Description de ce que fait le fichier </p>
+</div><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a7a8bb1eb8a161ffce0167fca806e10ad"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int list_add_element </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist__t.html">list_t</a> *&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>element</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ajoute un élément à la fin de la liste.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>La liste manipulée. </td></tr>
+    <tr><td class="paramname">element</td><td>Element à ajouter.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="list_8c_a7a8bb1eb8a161ffce0167fca806e10ad_cgraph.png" border="0" usemap="#list_8c_a7a8bb1eb8a161ffce0167fca806e10ad_cgraph" alt=""/></div>
+<map name="list_8c_a7a8bb1eb8a161ffce0167fca806e10ad_cgraph" id="list_8c_a7a8bb1eb8a161ffce0167fca806e10ad_cgraph">
+<area shape="rect" id="node3" href="string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="175,5,244,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="list_8c_a7a8bb1eb8a161ffce0167fca806e10ad_icgraph.png" border="0" usemap="#list_8c_a7a8bb1eb8a161ffce0167fca806e10ad_icgraph" alt=""/></div>
+<map name="list_8c_a7a8bb1eb8a161ffce0167fca806e10ad_icgraph" id="list_8c_a7a8bb1eb8a161ffce0167fca806e10ad_icgraph">
+<area shape="rect" id="node3" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="173,5,256,33"/><area shape="rect" id="node5" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="304,5,464,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ad8dbf30907f29e3b4fc748a83d4b1784"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int list_del_element </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist__t.html">list_t</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">id_func_type&#160;</td>
+          <td class="paramname"><em>func</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Suppression d'un élément de la liste.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>La liste manipulée.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="list_8c_ad8dbf30907f29e3b4fc748a83d4b1784_icgraph.png" border="0" usemap="#list_8c_ad8dbf30907f29e3b4fc748a83d4b1784_icgraph" alt=""/></div>
+<map name="list_8c_ad8dbf30907f29e3b4fc748a83d4b1784_icgraph" id="list_8c_ad8dbf30907f29e3b4fc748a83d4b1784_icgraph">
+<area shape="rect" id="node3" href="events_8h.html#a066fd6048f5a6f5a6d4b93abea00013d" title="del_event" alt="" coords="172,5,249,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a4d06987bb22b3a5c66d2be44f6c23845"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* list_get_top </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist__t.html">list_t</a>&#160;</td>
+          <td class="paramname"><em>l</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Récupère le premier élément de la liste.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>La liste manipulée. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a8111dff4de9d78342e96563621a7da63"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void list_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist__t.html">list_t</a> *&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a>&#160;</td>
+          <td class="paramname"><em>cmp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>elements_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_elements</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initialisation d'un liste.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>La liste manipulée. </td></tr>
+    <tr><td class="paramname">cmp</td><td>Fonction de comparaison. </td></tr>
+    <tr><td class="paramname">elements_size</td><td>Taille d'un élément de la liste. </td></tr>
+    <tr><td class="paramname">max_elements</td><td>Nombre max d'éléments dans la liste. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="list_8c_a8111dff4de9d78342e96563621a7da63_cgraph.png" border="0" usemap="#list_8c_a8111dff4de9d78342e96563621a7da63_cgraph" alt=""/></div>
+<map name="list_8c_a8111dff4de9d78342e96563621a7da63_cgraph" id="list_8c_a8111dff4de9d78342e96563621a7da63_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="117,5,184,33"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="233,5,372,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="list_8c_a8111dff4de9d78342e96563621a7da63_icgraph.png" border="0" usemap="#list_8c_a8111dff4de9d78342e96563621a7da63_icgraph" alt=""/></div>
+<map name="list_8c_a8111dff4de9d78342e96563621a7da63_icgraph" id="list_8c_a8111dff4de9d78342e96563621a7da63_icgraph">
+<area shape="rect" id="node3" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="117,5,203,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5ffcff1c3f7eace23a067c0051a3c8f9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int list_remove_top </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist__t.html">list_t</a> *&#160;</td>
+          <td class="paramname"><em>l</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retire le premier élément de la liste.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>La liste manipulée.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7b460be2c0d40f4da72af89c356ed7c1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_list </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist__t.html">list_t</a>&#160;</td>
+          <td class="paramname"><em>ma_liste</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Affichage d'une liste (pour debug).</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ma_liste</td><td>Liste à afficher. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="list_8c_a7b460be2c0d40f4da72af89c356ed7c1_cgraph.png" border="0" usemap="#list_8c_a7b460be2c0d40f4da72af89c356ed7c1_cgraph" alt=""/></div>
+<map name="list_8c_a7b460be2c0d40f4da72af89c356ed7c1_cgraph" id="list_8c_a7b460be2c0d40f4da72af89c356ed7c1_cgraph">
+<area shape="rect" id="node3" href="kstdio_8h.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="125,130,184,158"/><area shape="rect" id="node5" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="232,55,307,83"/><area shape="rect" id="node20" href="stdlib_8h.html#a5e1f93e3feb632ee74c5f40cdd907ca2" title="Converti l&#39;entier d en une chaîne de caractère et le stock dans buf. L&#39;entier base permet de spécifie..." alt="" coords="248,130,291,158"/><area shape="rect" id="node23" href="stdlib_8h.html#a9496eacf49af4b53f5b839899b5bf31a" title="itox" alt="" coords="248,205,291,233"/><area shape="rect" id="node7" href="string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="356,5,425,33"/><area shape="rect" id="node9" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="475,55,541,83"/><area shape="rect" id="node13" href="string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="361,106,420,134"/><area shape="rect" id="node11" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="591,55,729,83"/><area shape="rect" id="node15" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="481,106,535,134"/><area shape="rect" id="node18" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="480,157,536,185"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:23 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/include/ioports.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier ioports.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Définition des macros pour faire des IO avec le matériel. Intel-specific I/O space access routines.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="ioports_8h__dep__incl.png" border="0" usemap="#kernel_2include_2ioports_8hdep" alt=""/></div>
+<map name="kernel_2include_2ioports_8hdep" id="kernel_2include_2ioports_8hdep">
+<area shape="rect" id="node3" href="clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="5,91,107,119"/><area shape="rect" id="node5" href="floppy_8c.html" title="kernel/drivers/block\l/floppy/floppy.c" alt="" coords="131,83,264,127"/><area shape="rect" id="node7" href="floppy__dma_8c.html" title="kernel/drivers/block\l/floppy/floppy_dma.c" alt="" coords="288,83,427,127"/><area shape="rect" id="node9" href="floppy__motor_8c.html" title="kernel/drivers/block\l/floppy/floppy_motor.c" alt="" coords="451,83,597,127"/><area shape="rect" id="node11" href="floppy__utils_8c.html" title="kernel/drivers/block\l/floppy/floppy_utils.c" alt="" coords="621,83,757,127"/><area shape="rect" id="node13" href="beeper_8c.html" title="kernel/drivers/char\l/beeper.c" alt="" coords="781,83,909,127"/><area shape="rect" id="node15" href="mouse_8c.html" title="kernel/drivers/char\l/mouse.c" alt="" coords="933,83,1061,127"/><area shape="rect" id="node17" href="serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="1085,83,1213,127"/><area shape="rect" id="node19" href="keyboard_8c.html" title="Driver clavier." alt="" coords="1237,83,1365,127"/><area shape="rect" id="node21" href="vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="1389,83,1517,127"/><area shape="rect" id="node23" href="vga_8c.html" title="kernel/drivers/char\l/vga.c" alt="" coords="1541,83,1669,127"/><area shape="rect" id="node25" href="video_8c.html" title="kernel/drivers/char\l/video.c" alt="" coords="1693,83,1821,127"/><area shape="rect" id="node27" href="i8254_8c.html" title="kernel/i8254.c" alt="" coords="1845,91,1947,119"/><area shape="rect" id="node29" href="i8259_8c.html" title="kernel/i8259.c" alt="" coords="1971,91,2072,119"/><area shape="rect" id="node31" href="pci__config_8c.html" title="kernel/pci/pci_config.c" alt="" coords="2096,91,2245,119"/><area shape="rect" id="node33" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="2269,91,2395,119"/></map>
+</div>
+</div>
+<p><a href="ioports_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aff0f5d0c71d15c5888f22f86b5ca841b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ioports_8h.html#aff0f5d0c71d15c5888f22f86b5ca841b">outb</a>(value, port)</td></tr>
+<tr class="memitem:ad6488a48837d179b1833e2f48dac9665"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ioports_8h.html#ad6488a48837d179b1833e2f48dac9665">inb</a>(port)</td></tr>
+<tr class="memitem:af5cccb303b5a6c843ffc631a8e9f9bf3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ioports_8h.html#af5cccb303b5a6c843ffc631a8e9f9bf3">outw</a>(value, port)</td></tr>
+<tr class="memitem:ac4195d1c9d8dcc8366ae15a79f06514c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ioports_8h.html#ac4195d1c9d8dcc8366ae15a79f06514c">inw</a>(port)</td></tr>
+<tr class="memitem:a92861e5d69e7083cd52115acac183a2f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ioports_8h.html#a92861e5d69e7083cd52115acac183a2f">outl</a>(value, port)</td></tr>
+<tr class="memitem:ae285c9abe0ed43579db8e8ba941385f7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ioports_8h.html#ae285c9abe0ed43579db8e8ba941385f7">inl</a>(port)</td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+</div><h2>Documentation des macros</h2>
+<a class="anchor" id="ad6488a48837d179b1833e2f48dac9665"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define inb</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">port</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valeur :</b><div class="fragment"><div class="line">({ \</div>
+<div class="line">  unsigned <span class="keywordtype">char</span> _v; \</div>
+<div class="line">  __asm__ <span class="keyword">volatile</span> (<span class="stringliteral">&quot;inb %w1,%0&quot;</span> \</div>
+<div class="line">        :<span class="stringliteral">&quot;=a&quot;</span> (_v) \</div>
+<div class="line">        :<span class="stringliteral">&quot;Nd&quot;</span> (port)); \</div>
+<div class="line">  _v; \</div>
+<div class="line">})</div>
+</div><!-- fragment --><p>Read one byte from port </p>
+
+</div>
+</div>
+<a class="anchor" id="ae285c9abe0ed43579db8e8ba941385f7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define inl</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">port</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valeur :</b><div class="fragment"><div class="line">({ \</div>
+<div class="line">  unsigned <span class="keywordtype">int</span> _v; \</div>
+<div class="line">  __asm__ <span class="keyword">volatile</span> (<span class="stringliteral">&quot;inl %w1,%0&quot;</span> \</div>
+<div class="line">        :<span class="stringliteral">&quot;=a&quot;</span> (_v) \</div>
+<div class="line">        :<span class="stringliteral">&quot;Nd&quot;</span> (port)); \</div>
+<div class="line">  _v; \</div>
+<div class="line">})</div>
+</div><!-- fragment --><p>read one long from port </p>
+
+</div>
+</div>
+<a class="anchor" id="ac4195d1c9d8dcc8366ae15a79f06514c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define inw</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">port</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valeur :</b><div class="fragment"><div class="line">({ \</div>
+<div class="line">  unsigned <span class="keywordtype">int</span> _v; \</div>
+<div class="line">  __asm__ <span class="keyword">volatile</span> (<span class="stringliteral">&quot;inw %w1,%w0&quot;</span> \</div>
+<div class="line">        :<span class="stringliteral">&quot;=a&quot;</span> (_v) \</div>
+<div class="line">        :<span class="stringliteral">&quot;Nd&quot;</span> (port)); \</div>
+<div class="line">  _v; \</div>
+<div class="line">})</div>
+</div><!-- fragment --><p>Read one word from port </p>
+
+</div>
+</div>
+<a class="anchor" id="aff0f5d0c71d15c5888f22f86b5ca841b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define outb</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">port&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valeur :</b><div class="fragment"><div class="line">__asm__ <span class="keyword">volatile</span> (<span class="stringliteral">&quot;outb %b0,%w1&quot;</span> \</div>
+<div class="line">        ::<span class="stringliteral">&quot;a&quot;</span> (value),<span class="stringliteral">&quot;Nd&quot;</span> (port))</div>
+</div><!-- fragment --><p>Write value (byte) on port </p>
+
+</div>
+</div>
+<a class="anchor" id="a92861e5d69e7083cd52115acac183a2f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define outl</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">port&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valeur :</b><div class="fragment"><div class="line">__asm__ <span class="keyword">volatile</span> (<span class="stringliteral">&quot;outl %0,%w1&quot;</span> \</div>
+<div class="line">        ::<span class="stringliteral">&quot;a&quot;</span> (value),<span class="stringliteral">&quot;Nd&quot;</span> (port))</div>
+</div><!-- fragment --><p>write value (long) on port </p>
+
+</div>
+</div>
+<a class="anchor" id="af5cccb303b5a6c843ffc631a8e9f9bf3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define outw</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">port&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valeur :</b><div class="fragment"><div class="line">__asm__ <span class="keyword">volatile</span> (<span class="stringliteral">&quot;outw %w0,%w1&quot;</span> \</div>
+<div class="line">        ::<span class="stringliteral">&quot;a&quot;</span> (value),<span class="stringliteral">&quot;Nd&quot;</span> (port))</div>
+</div><!-- fragment --><p>Write value (word) on port </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:20 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

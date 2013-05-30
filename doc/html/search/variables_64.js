@@ -4,6 +4,7 @@ var searchData=
   ['d_5fino',['d_ino',['../structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba',1,'dirent']]],
   ['d_5finode',['d_inode',['../struct__dentry__t.html#ac711731a0c08b35b5d2731b8545c7454',1,'_dentry_t']]],
   ['d_5fname',['d_name',['../structdirent.html#a4325a83c49c6f2cd01ef80e1ae1dd4c5',1,'dirent::d_name()'],['../struct__dentry__t.html#ac9b991f6f5d5c5ce60e8d256d667265e',1,'_dentry_t::d_name()']]],
+  ['d_5fpdentry',['d_pdentry',['../struct__dentry__t.html#a900178add855a65bb2c42a1fbb94686b',1,'_dentry_t']]],
   ['d_5freclen',['d_reclen',['../structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d',1,'dirent']]],
   ['d_5ftype',['d_type',['../structdirent.html#a948760e3b7f607213a19f85e7af15a32',1,'dirent']]],
   ['data',['data',['../structprocess__init__data__t.html#ae950cc2a2cc04d1c00a71f70c2fde72c',1,'process_init_data_t::data()'],['../struct__DIR.html#a87bb023e0bf0b2f075e90d270ff7033e',1,'_DIR::data()']]],

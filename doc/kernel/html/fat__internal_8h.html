@@ -1,0 +1,906 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/fs/fat/fat_internal.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_8d4fa0f4a82327c9ebbcec4f28c3f560.html">fs</a></li><li class="navelem"><a class="el" href="dir_954985d205472628f201b21b520e6922.html">fat</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier fat_internal.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="types_8h_source.html">types.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="clock_8h_source.html">clock.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="vfs_8h_source.html">vfs.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="devfs_8h_source.html">fs/devfs.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de fat_internal.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__internal_8h__incl.png" border="0" usemap="#kernel_2fs_2fat_2fat__internal_8h" alt=""/></div>
+<map name="kernel_2fs_2fat_2fat__internal_8h" id="kernel_2fs_2fat_2fat__internal_8h">
+<area shape="rect" id="node3" href="types_8h.html" title="types.h" alt="" coords="178,393,240,421"/><area shape="rect" id="node5" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="101,238,162,266"/><area shape="rect" id="node11" href="vfs_8h.html" title="Virtual File System." alt="" coords="194,83,245,111"/><area shape="rect" id="node21" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="298,83,376,111"/><area shape="rect" id="node8" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="44,315,121,343"/><area shape="rect" id="node14" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="297,161,377,189"/><area shape="rect" id="node17" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="161,161,222,189"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__internal_8h__dep__incl.png" border="0" usemap="#kernel_2fs_2fat_2fat__internal_8hdep" alt=""/></div>
+<map name="kernel_2fs_2fat_2fat__internal_8hdep" id="kernel_2fs_2fat_2fat__internal_8hdep">
+<area shape="rect" id="node3" href="fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="5,83,125,111"/><area shape="rect" id="node5" href="fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="149,83,307,111"/><area shape="rect" id="node9" href="fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="312,161,480,189"/><area shape="rect" id="node7" href="fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="155,238,333,266"/><area shape="rect" id="node12" href="fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="131,161,288,189"/></map>
+</div>
+</div>
+<p><a href="fat__internal_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fat__BS.html">_fat_BS</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fat__extended__BIOS__16.html">_fat_extended_BIOS_16</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fat__extended__BIOS__32.html">_fat_extended_BIOS_32</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fat__time.html">_fat_time</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fat__date.html">_fat_date</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fat__dir__entry.html">_fat_dir_entry</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlfn__entry__t.html">lfn_entry_t</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__directory__entry.html">_directory_entry</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__directory.html">_directory</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fat__info.html">_fat_info</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fat__fs__instance__t.html">_fat_fs_instance_t</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fat__extra__data__t.html">_fat_extra_data_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Données supplémentaires qui sont ajoutés à l'ofd lors du open.  <a href="struct__fat__extra__data__t.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fat__direntry__t.html">_fat_direntry_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure fille d'un dentry_t qui ajoute quelques données.  <a href="struct__fat__direntry__t.html#details">Plus de détails...</a><br/></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:a2fa84596abf5ea3bd6f27951a77333c5"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__fat__BS.html">_fat_BS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a2fa84596abf5ea3bd6f27951a77333c5">fat_BS_t</a></td></tr>
+<tr class="memitem:a017a64d5b6e25780d01109008245c15c"><td class="memItemLeft" align="right" valign="top">typedef struct <br class="typebreak"/>
+<a class="el" href="struct__fat__extended__BIOS__16.html">_fat_extended_BIOS_16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a017a64d5b6e25780d01109008245c15c">fat_extended_BIOS_16_t</a></td></tr>
+<tr class="memitem:ac3feb4afc4c75c10410e9e867e3f99e8"><td class="memItemLeft" align="right" valign="top">typedef struct <br class="typebreak"/>
+<a class="el" href="struct__fat__extended__BIOS__32.html">_fat_extended_BIOS_32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#ac3feb4afc4c75c10410e9e867e3f99e8">fat_extended_BIOS_32_t</a></td></tr>
+<tr class="memitem:ab864004b9f8da2db1862a0da9acb1735"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__fat__time.html">_fat_time</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#ab864004b9f8da2db1862a0da9acb1735">fat_time_t</a></td></tr>
+<tr class="memitem:a50b52e2d394a6d7c7f1f2b7c7ef93a19"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__fat__date.html">_fat_date</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a50b52e2d394a6d7c7f1f2b7c7ef93a19">fat_date_t</a></td></tr>
+<tr class="memitem:a8b649d2d9d92d259f456e45f4c901f30"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__fat__dir__entry.html">_fat_dir_entry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a8b649d2d9d92d259f456e45f4c901f30">fat_dir_entry_t</a></td></tr>
+<tr class="memitem:ab6546cb0abf935a615fae20884a41818"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__directory__entry.html">_directory_entry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#ab6546cb0abf935a615fae20884a41818">directory_entry_t</a></td></tr>
+<tr class="memitem:a04e3d213fd143d58bbabf68062bdc21c"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__directory.html">_directory</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a04e3d213fd143d58bbabf68062bdc21c">directory_t</a></td></tr>
+<tr class="memitem:a1921d26ef987e5498294fe311a23c62f"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__fat__info.html">_fat_info</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a1921d26ef987e5498294fe311a23c62f">fat_info_t</a></td></tr>
+<tr class="memitem:a9e8df592f54b50d959a9b9c84fa64fce"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__fat__fs__instance__t.html">_fat_fs_instance_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a></td></tr>
+<tr class="memitem:a694136fc8bb6c88d316842fe899a0a18"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a694136fc8bb6c88d316842fe899a0a18"></a>
+typedef struct <a class="el" href="struct__fat__extra__data__t.html">_fat_extra_data_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a694136fc8bb6c88d316842fe899a0a18">fat_extra_data_t</a></td></tr>
+<tr class="memdesc:a694136fc8bb6c88d316842fe899a0a18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Données supplémentaires qui sont ajoutés à l'ofd lors du open. <br/></td></tr>
+<tr class="memitem:af3714a8ff33675b0b20d663a74b53b77"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3714a8ff33675b0b20d663a74b53b77"></a>
+typedef struct <a class="el" href="struct__fat__direntry__t.html">_fat_direntry_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#af3714a8ff33675b0b20d663a74b53b77">fat_direntry_t</a></td></tr>
+<tr class="memdesc:af3714a8ff33675b0b20d663a74b53b77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure fille d'un dentry_t qui ajoute quelques données. <br/></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:aea47744930623076e66d2f155e12ca24"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#aea47744930623076e66d2f155e12ca24">fat_t</a> { <b>FAT12</b>, 
+<b>FAT16</b>, 
+<b>FAT32</b>
+ }</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a34463693dc3fa14a062c90b9ece622c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a34463693dc3fa14a062c90b9ece622c4">fat_getroot</a> (struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *instance)</td></tr>
+<tr class="memitem:aaf2cd44da9ce9df0808a2cd823fd1295"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#aaf2cd44da9ce9df0808a2cd823fd1295">fat_lookup</a> (struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *instance, struct <a class="el" href="struct__dentry__t.html">_dentry_t</a> *dentry, const char *name)</td></tr>
+<tr class="memitem:a0ae169e11ec76cae96a82e41fed70ece"><td class="memItemLeft" align="right" valign="top"><a class="el" href="fat__internal_8h.html#a04e3d213fd143d58bbabf68062bdc21c">directory_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a0ae169e11ec76cae96a82e41fed70ece">open_root_dir</a> (<a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a> *instance)</td></tr>
+<tr class="memitem:acc9f1bc688e7d7c5459ad50676608995"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#acc9f1bc688e7d7c5459ad50676608995">read_fat</a> (<a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a> *instance)</td></tr>
+<tr class="memitem:ab2204311ec26e0134235b4a6c895312f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#ab2204311ec26e0134235b4a6c895312f">umount_FAT</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance)</td></tr>
+<tr class="memitem:ada9bd47fd90b01248fe52f302560f9f9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#ada9bd47fd90b01248fe52f302560f9f9">fat_readdir</a> (<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *ofd, char *entries, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
+<tr class="memitem:ab6005d86e7ab13445d997d03e76bf914"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914">fat_mkdir</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>)</td></tr>
+<tr class="memitem:a8442aab7b7111d30d19b4be6a4464618"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a8442aab7b7111d30d19b4be6a4464618">fat_stat</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path, struct <a class="el" href="structstat.html">stat</a> *stbuf)</td></tr>
+<tr class="memitem:a2673c2b00be14ce740290ba2e92b9f90"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a2673c2b00be14ce740290ba2e92b9f90">fat_unlink</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance, const char *path)</td></tr>
+<tr class="memitem:a84b490d3d5e212e003c6b84071bd204b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a84b490d3d5e212e003c6b84071bd204b">fat_read_file</a> (<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *ofd, void *buf, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> count)</td></tr>
+<tr class="memitem:a5e52d080338c1179ae01999006f077d3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a5e52d080338c1179ae01999006f077d3">fat_seek_file</a> (<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *ofd, long offset, int whence)</td></tr>
+<tr class="memitem:afdccf4bea2c0e70059a76f43fea9c33f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#afdccf4bea2c0e70059a76f43fea9c33f">fat_close</a> (<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *ofd)</td></tr>
+<tr class="memitem:a2ac41048fa02e77edaece792c02c5692"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a2ac41048fa02e77edaece792c02c5692">fat_open</a> (<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *ofd)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a9f07e47f75ec13bd1445162841e204d4"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct__open__file__operations__t.html">_open_file_operations_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8h.html#a9f07e47f75ec13bd1445162841e204d4">fatfs_fops</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+<p>Description de ce que fait le fichier </p>
+</div><h2>Documentation des définitions de type</h2>
+<a class="anchor" id="ab6546cb0abf935a615fae20884a41818"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__directory__entry.html">_directory_entry</a>  <a class="el" href="fat__internal_8h.html#ab6546cb0abf935a615fae20884a41818">directory_entry_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Liste chaînée pour stocker les entrées d'un dossier. </p>
+
+</div>
+</div>
+<a class="anchor" id="a04e3d213fd143d58bbabf68062bdc21c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__directory.html">_directory</a>  <a class="el" href="fat__internal_8h.html#a04e3d213fd143d58bbabf68062bdc21c">directory_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Structure de haut niveau pour stocker les informations d'un dossier. </p>
+
+</div>
+</div>
+<a class="anchor" id="a2fa84596abf5ea3bd6f27951a77333c5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__fat__BS.html">_fat_BS</a>   <a class="el" href="fat__internal_8h.html#a2fa84596abf5ea3bd6f27951a77333c5">fat_BS_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Boot Sector </p>
+
+</div>
+</div>
+<a class="anchor" id="a50b52e2d394a6d7c7f1f2b7c7ef93a19"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__fat__date.html">_fat_date</a>   <a class="el" href="fat__internal_8h.html#a50b52e2d394a6d7c7f1f2b7c7ef93a19">fat_date_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Représentation de la date au format FAT. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8b649d2d9d92d259f456e45f4c901f30"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__fat__dir__entry.html">_fat_dir_entry</a>  <a class="el" href="fat__internal_8h.html#a8b649d2d9d92d259f456e45f4c901f30">fat_dir_entry_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Entrée de dossier. </p>
+
+</div>
+</div>
+<a class="anchor" id="a017a64d5b6e25780d01109008245c15c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__fat__extended__BIOS__16.html">_fat_extended_BIOS_16</a>   <a class="el" href="fat__internal_8h.html#a017a64d5b6e25780d01109008245c15c">fat_extended_BIOS_16_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extended BIOS Parameter Block (FAT12 / FAT16) </p>
+
+</div>
+</div>
+<a class="anchor" id="ac3feb4afc4c75c10410e9e867e3f99e8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__fat__extended__BIOS__32.html">_fat_extended_BIOS_32</a>   <a class="el" href="fat__internal_8h.html#ac3feb4afc4c75c10410e9e867e3f99e8">fat_extended_BIOS_32_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extended BIOS Parameter Block (FAT 32) </p>
+
+</div>
+</div>
+<a class="anchor" id="a9e8df592f54b50d959a9b9c84fa64fce"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__fat__fs__instance__t.html">_fat_fs_instance_t</a>  <a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Instance de FS de type FAT. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1921d26ef987e5498294fe311a23c62f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__fat__info.html">_fat_info</a>  <a class="el" href="fat__internal_8h.html#a1921d26ef987e5498294fe311a23c62f">fat_info_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Structure qui contient tout ce qui est utilisé par le driver FAT. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab864004b9f8da2db1862a0da9acb1735"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__fat__time.html">_fat_time</a>   <a class="el" href="fat__internal_8h.html#ab864004b9f8da2db1862a0da9acb1735">fat_time_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Représentation du temps au format FAT. </p>
+
+</div>
+</div>
+<h2>Documentation du type de l'énumération</h2>
+<a class="anchor" id="aea47744930623076e66d2f155e12ca24"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="fat__internal_8h.html#aea47744930623076e66d2f155e12ca24">fat_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Types de FAT. </p>
+
+</div>
+</div>
+<h2>Documentation des fonctions</h2>
+<a class="anchor" id="afdccf4bea2c0e70059a76f43fea9c33f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fat_close </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Fermeture d'un fichier ouvert.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>Descripteur de fichier ouvert.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__internal_8h_afdccf4bea2c0e70059a76f43fea9c33f_cgraph.png" border="0" usemap="#fat__internal_8h_afdccf4bea2c0e70059a76f43fea9c33f_cgraph" alt=""/></div>
+<map name="fat__internal_8h_afdccf4bea2c0e70059a76f43fea9c33f_cgraph" id="fat__internal_8h_afdccf4bea2c0e70059a76f43fea9c33f_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="128,5,179,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a34463693dc3fa14a062c90b9ece622c4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a>* fat_getroot </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Fonction qui permet de récupérer le dentry à la racine.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instance de FS.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Dossier racine. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__internal_8h_a34463693dc3fa14a062c90b9ece622c4_icgraph.png" border="0" usemap="#fat__internal_8h_a34463693dc3fa14a062c90b9ece622c4_icgraph" alt=""/></div>
+<map name="fat__internal_8h_a34463693dc3fa14a062c90b9ece622c4_icgraph" id="fat__internal_8h_a34463693dc3fa14a062c90b9ece622c4_icgraph">
+<area shape="rect" id="node3" href="fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae" title="mount_FAT" alt="" coords="139,5,229,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aaf2cd44da9ce9df0808a2cd823fd1295"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vfs_8h.html#ade5c998c6b3f09d2cf45d0e5ef8787da">dentry_t</a>* fat_lookup </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct__dentry__t.html">_dentry_t</a> *&#160;</td>
+          <td class="paramname"><em>dentry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Fonction de lookup : retourne l'entrée de dossier qui correspond au nom demandé.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instance de FS. </td></tr>
+    <tr><td class="paramname">dentry</td><td>Dossier parent. </td></tr>
+    <tr><td class="paramname">name</td><td>Nom de l'entrée dans ce dossier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Entrée de dossier correspondant. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__internal_8h_aaf2cd44da9ce9df0808a2cd823fd1295_cgraph.png" border="0" usemap="#fat__internal_8h_aaf2cd44da9ce9df0808a2cd823fd1295_cgraph" alt=""/></div>
+<map name="fat__internal_8h_aaf2cd44da9ce9df0808a2cd823fd1295_cgraph" id="fat__internal_8h_aaf2cd44da9ce9df0808a2cd823fd1295_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="136,5,203,33"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="252,5,391,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__internal_8h_aaf2cd44da9ce9df0808a2cd823fd1295_icgraph.png" border="0" usemap="#fat__internal_8h_aaf2cd44da9ce9df0808a2cd823fd1295_icgraph" alt=""/></div>
+<map name="fat__internal_8h_aaf2cd44da9ce9df0808a2cd823fd1295_icgraph" id="fat__internal_8h_aaf2cd44da9ce9df0808a2cd823fd1295_icgraph">
+<area shape="rect" id="node3" href="fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae" title="mount_FAT" alt="" coords="136,5,227,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab6005d86e7ab13445d997d03e76bf914"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fat_mkdir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Création d'un dossier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instance de fs. </td></tr>
+    <tr><td class="paramname">path</td><td>Chemin du dossier à créer. </td></tr>
+    <tr><td class="paramname">mode</td><td>Droits sur le dossier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__internal_8h_ab6005d86e7ab13445d997d03e76bf914_cgraph.png" border="0" usemap="#fat__internal_8h_ab6005d86e7ab13445d997d03e76bf914_cgraph" alt=""/></div>
+<map name="fat__internal_8h_ab6005d86e7ab13445d997d03e76bf914_cgraph" id="fat__internal_8h_ab6005d86e7ab13445d997d03e76bf914_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="357,5,424,33"/><area shape="rect" id="node7" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="364,55,417,83"/><area shape="rect" id="node9" href="fat__outils_8c.html#a2bc59b6b9bca39fe4ba101a3c019b91a" title="fat_split_dir_filename" alt="" coords="148,157,292,185"/><area shape="rect" id="node15" href="fat__outils_8c.html#a015254ce721ab0097a1008ec7153b819" title="fat_lfn_to_sfn" alt="" coords="169,106,271,134"/><area shape="rect" id="node21" href="fat__outils_8c.html#a4f582028e77ee5dc535200f3e6b3312b" title="fat_encode_long_file_name" alt="" coords="131,207,309,235"/><area shape="rect" id="node23" href="string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères." alt="" coords="188,258,252,286"/><area shape="rect" id="node25" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="195,309,245,337"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="473,5,612,33"/><area shape="rect" id="node11" href="string_8h.html#a0c05a458deff028ef4d4e64059098db4" title="Rechercher un caractère dans une chaîne." alt="" coords="361,106,420,134"/><area shape="rect" id="node13" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="363,157,419,185"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a2ac41048fa02e77edaece792c02c5692"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fat_open </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ouverture d'un fichier. Initialise certaines données de l'ofd.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>Descripteur de fichier ouvert.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a84b490d3d5e212e003c6b84071bd204b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a> fat_read_file </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Lecture d'un fichier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>Descripteur du fichier ouvert. </td></tr>
+    <tr><td class="paramname">buf</td><td>Buffer où stocker les octets lus. </td></tr>
+    <tr><td class="paramname">count</td><td>Nombre d'octets à lire.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>nombre d'octets réellement lus. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ada9bd47fd90b01248fe52f302560f9f9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fat_readdir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>entries</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Lecture d'un dossier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>Descripteur de fichier qui correspond au dossier. </td></tr>
+    <tr><td class="paramname">entries</td><td>Buffer qui va recevoir les entrées de dossier. </td></tr>
+    <tr><td class="paramname">size</td><td>Nombre d'octets dans le buffer au maximum.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Nombre d'octets écrits dans entries. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__internal_8h_ada9bd47fd90b01248fe52f302560f9f9_cgraph.png" border="0" usemap="#fat__internal_8h_ada9bd47fd90b01248fe52f302560f9f9_cgraph" alt=""/></div>
+<map name="fat__internal_8h_ada9bd47fd90b01248fe52f302560f9f9_cgraph" id="fat__internal_8h_ada9bd47fd90b01248fe52f302560f9f9_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="285,5,352,33"/><area shape="rect" id="node7" href="fat__internal_8c.html#a0ae169e11ec76cae96a82e41fed70ece" title="open_root_dir" alt="" coords="137,30,236,58"/><area shape="rect" id="node10" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="293,67,344,95"/><area shape="rect" id="node13" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="160,131,213,159"/><area shape="rect" id="node15" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="159,182,215,210"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="401,5,540,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5e52d080338c1179ae01999006f077d3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fat_seek_file </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>whence</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Déplacement dans un fichier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>Descripteur de fichier ouvert. </td></tr>
+    <tr><td class="paramname">offset</td><td>Décalage </td></tr>
+    <tr><td class="paramname">whence</td><td>depuis le debut, la fin ou en relatif.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, -1 sinon. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__internal_8h_a5e52d080338c1179ae01999006f077d3_cgraph.png" border="0" usemap="#fat__internal_8h_a5e52d080338c1179ae01999006f077d3_cgraph" alt=""/></div>
+<map name="fat__internal_8h_a5e52d080338c1179ae01999006f077d3_cgraph" id="fat__internal_8h_a5e52d080338c1179ae01999006f077d3_cgraph">
+<area shape="rect" id="node3" href="fat__functions_8c.html#a5e52d080338c1179ae01999006f077d3" title="fat_seek_file" alt="" coords="151,29,244,57"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__internal_8h_a5e52d080338c1179ae01999006f077d3_icgraph.png" border="0" usemap="#fat__internal_8h_a5e52d080338c1179ae01999006f077d3_icgraph" alt=""/></div>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8442aab7b7111d30d19b4be6a4464618"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fat_stat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structstat.html">stat</a> *&#160;</td>
+          <td class="paramname"><em>stbuf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Informations sur un fichier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instance de fs. </td></tr>
+    <tr><td class="paramname">path</td><td>Chemin du fichier. </td></tr>
+    <tr><td class="paramname">stbuf</td><td>Structure pour enregistrer les informations.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a2673c2b00be14ce740290ba2e92b9f90"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fat_unlink </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Suppression d'un fichier ou dossier (vide).</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instance de fs. </td></tr>
+    <tr><td class="paramname">path</td><td>Chemin du noeud.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__internal_8h_a2673c2b00be14ce740290ba2e92b9f90_cgraph.png" border="0" usemap="#fat__internal_8h_a2673c2b00be14ce740290ba2e92b9f90_cgraph" alt=""/></div>
+<map name="fat__internal_8h_a2673c2b00be14ce740290ba2e92b9f90_cgraph" id="fat__internal_8h_a2673c2b00be14ce740290ba2e92b9f90_cgraph">
+<area shape="rect" id="node3" href="string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="153,5,215,33"/><area shape="rect" id="node5" href="fat__internal_8c.html#a0ae169e11ec76cae96a82e41fed70ece" title="open_root_dir" alt="" coords="135,55,233,83"/><area shape="rect" id="node7" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="283,30,349,58"/><area shape="rect" id="node11" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="291,81,341,109"/><area shape="rect" id="node9" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="399,30,537,58"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0ae169e11ec76cae96a82e41fed70ece"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fat__internal_8h.html#a04e3d213fd143d58bbabf68062bdc21c">directory_t</a>* open_root_dir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ouvre le répertoire racine.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instance de FS.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Dossier racine. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__internal_8h_a0ae169e11ec76cae96a82e41fed70ece_cgraph.png" border="0" usemap="#fat__internal_8h_a0ae169e11ec76cae96a82e41fed70ece_cgraph" alt=""/></div>
+<map name="fat__internal_8h_a0ae169e11ec76cae96a82e41fed70ece_cgraph" id="fat__internal_8h_a0ae169e11ec76cae96a82e41fed70ece_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="155,5,221,33"/><area shape="rect" id="node7" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="163,55,213,83"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="271,5,409,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__internal_8h_a0ae169e11ec76cae96a82e41fed70ece_icgraph.png" border="0" usemap="#fat__internal_8h_a0ae169e11ec76cae96a82e41fed70ece_icgraph" alt=""/></div>
+<map name="fat__internal_8h_a0ae169e11ec76cae96a82e41fed70ece_icgraph" id="fat__internal_8h_a0ae169e11ec76cae96a82e41fed70ece_icgraph">
+<area shape="rect" id="node3" href="fat__internal_8h.html#ada9bd47fd90b01248fe52f302560f9f9" title="fat_readdir" alt="" coords="155,5,237,33"/><area shape="rect" id="node5" href="fat__internal_8h.html#a2673c2b00be14ce740290ba2e92b9f90" title="fat_unlink" alt="" coords="157,55,235,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="acc9f1bc688e7d7c5459ad50676608995"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void read_fat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Lecture de la FAT.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instance de FS. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__internal_8h_acc9f1bc688e7d7c5459ad50676608995_icgraph.png" border="0" usemap="#fat__internal_8h_acc9f1bc688e7d7c5459ad50676608995_icgraph" alt=""/></div>
+<map name="fat__internal_8h_acc9f1bc688e7d7c5459ad50676608995_icgraph" id="fat__internal_8h_acc9f1bc688e7d7c5459ad50676608995_icgraph">
+<area shape="rect" id="node3" href="fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae" title="mount_FAT" alt="" coords="123,5,213,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab2204311ec26e0134235b4a6c895312f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void umount_FAT </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Démonte un FS.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instance de FS. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat__internal_8h_ab2204311ec26e0134235b4a6c895312f_cgraph.png" border="0" usemap="#fat__internal_8h_ab2204311ec26e0134235b4a6c895312f_cgraph" alt=""/></div>
+<map name="fat__internal_8h_ab2204311ec26e0134235b4a6c895312f_cgraph" id="fat__internal_8h_ab2204311ec26e0134235b4a6c895312f_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="152,5,203,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<h2>Documentation des variables</h2>
+<a class="anchor" id="a9f07e47f75ec13bd1445162841e204d4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="struct__open__file__operations__t.html">_open_file_operations_t</a> fatfs_fops</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pointeurs sur les fonctions de manipulation de fichiers pour ce FS. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:19 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

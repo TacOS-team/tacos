@@ -1,4 +1,5 @@
 <map id="idt_disable_handler" name="idt_disable_handler">
-<area shape="rect" id="node3" href="$idt_8h.html#a559dc3a4f73d1813f12a104840e68550" title="Initialisation de l&#39;IDT." alt="" coords="208,5,283,33"/>
-<area shape="rect" id="node5" href="$interrupts_8c.html#ac3f5203c31fd554b562cba8cec42ceb6" title="Désactive une interruption." alt="" coords="187,55,304,83"/>
+<area shape="rect" id="node3" href="$exception_8h.html#a845efe084f5994d748fd7c30403ac879" title="exception_disable" alt="" coords="187,5,312,33"/>
+<area shape="rect" id="node5" href="$idt_8h.html#a559dc3a4f73d1813f12a104840e68550" title="Initialisation de l&#39;IDT." alt="" coords="212,55,287,83"/>
+<area shape="rect" id="node7" href="$interrupts_8c.html#ac3f5203c31fd554b562cba8cec42ceb6" title="Désactive une interruption." alt="" coords="191,106,308,134"/>
 </map>

@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de kernel/include/hashmap.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">hashmap.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="hashmap_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _HASHMAP_H</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _HASHMAP_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">// Types incomplets, juste pour y voir plus clair.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">struct </span>hashmap_key_t;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">struct </span>hashmap_value_t;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="structhashmap__cell__t.html">   40</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structhashmap__cell__t.html">hashmap_cell_t</a> {</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="structhashmap__cell__t.html#a18fa668e172072e9bff5e92e52d9f3af">   41</a></span>&#160;        <span class="keyword">struct </span>hashmap_key_t *<a class="code" href="structhashmap__cell__t.html#a18fa668e172072e9bff5e92e52d9f3af">key</a>; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="structhashmap__cell__t.html#aa0758cf139adb3747a846e539d01d75d">   42</a></span>&#160;        <span class="keyword">struct </span>hashmap_value_t *<a class="code" href="structhashmap__cell__t.html#aa0758cf139adb3747a846e539d01d75d">value</a>; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="structhashmap__cell__t.html#afea1a8c217d80c95efa5b4a89ea07bf2">   43</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structhashmap__cell__t.html">hashmap_cell_t</a> *<a class="code" href="structhashmap__cell__t.html#afea1a8c217d80c95efa5b4a89ea07bf2">next</a>; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="struct____hashmap__t.html">   49</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct____hashmap__t.html">__hashmap_t</a> {</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="struct____hashmap__t.html#ab5f1e74c3fcf71ee4ac91a860cbcde19">   50</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="struct____hashmap__t.html#ab5f1e74c3fcf71ee4ac91a860cbcde19">size</a>; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="struct____hashmap__t.html#ac7d3b722978b8bafab2ce2a923b747aa">   51</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structhashmap__cell__t.html">hashmap_cell_t</a>** <a class="code" href="struct____hashmap__t.html#ac7d3b722978b8bafab2ce2a923b747aa">table</a>; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="struct____hashmap__t.html#a2b730301a68342f67a406ce1b6c2a826">   52</a></span>&#160;        int (*<a class="code" href="struct____hashmap__t.html#a2b730301a68342f67a406ce1b6c2a826">equal</a>)(<span class="keyword">struct </span>hashmap_key_t*, <span class="keyword">struct </span>hashmap_key_t*); </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="struct____hashmap__t.html#aa56e33c3baa182a530a4a8bfc27c11f1">   53</a></span>&#160;        int (*<a class="code" href="struct____hashmap__t.html#aa56e33c3baa182a530a4a8bfc27c11f1">hash</a>)(<span class="keyword">struct </span>hashmap_key_t*); </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;} <a class="code" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<a class="code" href="struct____hashmap__t.html">hashmap_t</a>* <a class="code" href="hashmap_8h.html#a81cd9ee5f00b62bf3103612cd87d8a5d">hashmap_create</a>(<span class="keywordtype">int</span> size, <span class="keywordtype">int</span> (*equal)(<span class="keyword">struct</span> hashmap_key_t*, <span class="keyword">struct</span> hashmap_key_t*), <span class="keywordtype">int</span> (*hash)(<span class="keyword">struct</span> hashmap_key_t*));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">void</span> <a class="code" href="hashmap_8h.html#a0c25525e8b6599bcafda45b74dcac19d">hashmap_set</a>(<a class="code" href="struct____hashmap__t.html">hashmap_t</a>* <span class="keyword">this</span>, <span class="keyword">struct</span> hashmap_key_t* key, <span class="keyword">struct</span> hashmap_value_t* value);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">struct </span>hashmap_value_t* <a class="code" href="hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e">hashmap_remove</a>(<a class="code" href="struct____hashmap__t.html">hashmap_t</a>* <span class="keyword">this</span>, <span class="keyword">struct</span> hashmap_key_t *key);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">struct </span>hashmap_value_t* <a class="code" href="hashmap_8h.html#a37bdba9503b86db73e6067b97b858dbd">hashmap_get</a>(<a class="code" href="struct____hashmap__t.html">hashmap_t</a>* <span class="keyword">this</span>, <span class="keyword">struct</span> hashmap_key_t *key);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:16 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

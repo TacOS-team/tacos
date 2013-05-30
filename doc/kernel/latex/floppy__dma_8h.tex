@@ -1,0 +1,119 @@
+\hypertarget{floppy__dma_8h}{\section{Référence du fichier kernel/drivers/block/floppy/floppy\-\_\-dma.h}
+\label{floppy__dma_8h}\index{kernel/drivers/block/floppy/floppy\-\_\-dma.\-h@{kernel/drivers/block/floppy/floppy\-\_\-dma.\-h}}
+}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{floppy__dma_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{floppy__dma_8h_adfcc8a5beaf1532fc574bc706d3e1fbe}{floppy\-\_\-io} \{ {\bfseries F\-L\-O\-P\-P\-Y\-\_\-\-W\-R\-I\-T\-E} =  1, 
+{\bfseries F\-L\-O\-P\-P\-Y\-\_\-\-R\-E\-A\-D} =  2
+ \}
+\begin{DoxyCompactList}\small\item\em Défini le sens de la communication (input / output) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{floppy__dma_8h_a82b03eec2e2db0df14b77521b2b0cd99}{floppy\-\_\-dma\-\_\-init} (\hyperlink{floppy__dma_8h_adfcc8a5beaf1532fc574bc706d3e1fbe}{floppy\-\_\-io} io\-\_\-dir)
+\begin{DoxyCompactList}\small\item\em Initialise le dma en écriture ou en lecture selon la valeur passée en paramètre. \end{DoxyCompactList}\item 
+void \hyperlink{floppy__dma_8h_ac6e644203ea530de67552b2debe0bac2}{floppy\-\_\-read\-\_\-sector} (int cylinder, int head, int sector, char $\ast$buffer)
+\begin{DoxyCompactList}\small\item\em Lis un secteur via le D\-M\-A à partir d'un adressage C\-H\-S. \end{DoxyCompactList}\item 
+void \hyperlink{floppy__dma_8h_af9d347980c43209de48f63cd9f201419}{floppy\-\_\-write\-\_\-sector} (int cylinder, int head, int sector, char $\ast$buffer)
+\begin{DoxyCompactList}\small\item\em Ecrit un secteur via le D\-M\-A à partir d'un adressage C\-H\-S. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+Fonctions liées à l'utilisation du D\-M\-A dans le driver disquette 
+
+\subsection{Documentation des fonctions}
+\hypertarget{floppy__dma_8h_a82b03eec2e2db0df14b77521b2b0cd99}{\index{floppy\-\_\-dma.\-h@{floppy\-\_\-dma.\-h}!floppy\-\_\-dma\-\_\-init@{floppy\-\_\-dma\-\_\-init}}
+\index{floppy\-\_\-dma\-\_\-init@{floppy\-\_\-dma\-\_\-init}!floppy_dma.h@{floppy\-\_\-dma.\-h}}
+\subsubsection[{floppy\-\_\-dma\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void floppy\-\_\-dma\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf floppy\-\_\-io}}]{io\-\_\-dir}
+\end{DoxyParamCaption}
+)}}\label{floppy__dma_8h_a82b03eec2e2db0df14b77521b2b0cd99}
+
+\begin{DoxyParams}{Paramètres}
+{\em io\-\_\-dir} & Sens de la communication du D\-M\-A à initialiser \\
+\hline
+\end{DoxyParams}
+\hypertarget{floppy__dma_8h_ac6e644203ea530de67552b2debe0bac2}{\index{floppy\-\_\-dma.\-h@{floppy\-\_\-dma.\-h}!floppy\-\_\-read\-\_\-sector@{floppy\-\_\-read\-\_\-sector}}
+\index{floppy\-\_\-read\-\_\-sector@{floppy\-\_\-read\-\_\-sector}!floppy_dma.h@{floppy\-\_\-dma.\-h}}
+\subsubsection[{floppy\-\_\-read\-\_\-sector}]{\setlength{\rightskip}{0pt plus 5cm}void floppy\-\_\-read\-\_\-sector (
+\begin{DoxyParamCaption}
+\item[{int}]{cylinder, }
+\item[{int}]{head, }
+\item[{int}]{sector, }
+\item[{char $\ast$}]{buffer}
+\end{DoxyParamCaption}
+)}}\label{floppy__dma_8h_ac6e644203ea530de67552b2debe0bac2}
+
+\begin{DoxyParams}{Paramètres}
+{\em cylinder} & Numero de cylindre \\
+\hline
+{\em head} & Numero de tête de lecture \\
+\hline
+{\em sector} & Numero de secteur \\
+\hline
+{\em buffer} & Buffer recevant les données lues \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{floppy__dma_8h_ac6e644203ea530de67552b2debe0bac2_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{floppy__dma_8h_af9d347980c43209de48f63cd9f201419}{\index{floppy\-\_\-dma.\-h@{floppy\-\_\-dma.\-h}!floppy\-\_\-write\-\_\-sector@{floppy\-\_\-write\-\_\-sector}}
+\index{floppy\-\_\-write\-\_\-sector@{floppy\-\_\-write\-\_\-sector}!floppy_dma.h@{floppy\-\_\-dma.\-h}}
+\subsubsection[{floppy\-\_\-write\-\_\-sector}]{\setlength{\rightskip}{0pt plus 5cm}void floppy\-\_\-write\-\_\-sector (
+\begin{DoxyParamCaption}
+\item[{int}]{cylinder, }
+\item[{int}]{head, }
+\item[{int}]{sector, }
+\item[{char $\ast$}]{buffer}
+\end{DoxyParamCaption}
+)}}\label{floppy__dma_8h_af9d347980c43209de48f63cd9f201419}
+
+\begin{DoxyParams}{Paramètres}
+{\em cylinder} & Numero de cylindre \\
+\hline
+{\em head} & Numero de tête de lecture \\
+\hline
+{\em sector} & Numero de secteur \\
+\hline
+{\em buffer} & Buffer contenant les données à écrire \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{floppy__dma_8h_af9d347980c43209de48f63cd9f201419_cgraph}
+\end{center}
+\end{figure}
+
+

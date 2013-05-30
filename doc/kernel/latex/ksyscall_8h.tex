@@ -1,0 +1,108 @@
+\hypertarget{ksyscall_8h}{\section{Référence du fichier kernel/include/ksyscall.h}
+\label{ksyscall_8h}\index{kernel/include/ksyscall.\-h@{kernel/include/ksyscall.\-h}}
+}
+{\ttfamily \#include $<$types.\-h$>$}\\*
+Graphe des dépendances par inclusion de ksyscall.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{ksyscall_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ksyscall_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{ksyscall_8h_a6bc306171da085f4c7df2c66d2ff8e47}{\#define {\bfseries U\-N\-U\-S\-E\-D}(X)~\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} unused\-\_\- \#\# X \-\_\-\-\_\-attribute\-\_\-\-\_\- ((unused))}\label{ksyscall_8h_a6bc306171da085f4c7df2c66d2ff8e47}
+
+\item 
+\hypertarget{ksyscall_8h_a7bb226810ac3295fe0552efab5ae23ae}{\#define {\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R0}(name)~void name(U\-N\-U\-S\-E\-D(0), U\-N\-U\-S\-E\-D(1), U\-N\-U\-S\-E\-D(2))}\label{ksyscall_8h_a7bb226810ac3295fe0552efab5ae23ae}
+
+\item 
+\hypertarget{ksyscall_8h_accf0f8185a011f193e1ad159f108fc2b}{\#define {\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}(name, param)~void name(param, U\-N\-U\-S\-E\-D(1), U\-N\-U\-S\-E\-D(2))}\label{ksyscall_8h_accf0f8185a011f193e1ad159f108fc2b}
+
+\item 
+\hypertarget{ksyscall_8h_a3cf0298f3b7871c97fb9342cdbeb044d}{\#define {\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}(name, param1, param2)~void name(param1, param2, U\-N\-U\-S\-E\-D(2))}\label{ksyscall_8h_a3cf0298f3b7871c97fb9342cdbeb044d}
+
+\item 
+\hypertarget{ksyscall_8h_ac2275bbb9650f8f9e04cee2681a36107}{\#define {\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}(name, param1, param2, param3)~void name(param1, param2, param3)}\label{ksyscall_8h_ac2275bbb9650f8f9e04cee2681a36107}
+
+\item 
+\hypertarget{ksyscall_8h_af7cc7c2782aab60d437ce809bf4c18ae}{\#define {\bfseries M\-A\-X\-\_\-\-S\-Y\-S\-C\-A\-L\-L\-\_\-\-N\-B}~256}\label{ksyscall_8h_af7cc7c2782aab60d437ce809bf4c18ae}
+
+\end{DoxyCompactItemize}
+\subsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{ksyscall_8h_a798b28d0d448df0f58dbf0daf8d93e9e}{typedef void($\ast$ {\bfseries syscall\-\_\-handler\-\_\-t} )(\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t}, \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t}, \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t})}\label{ksyscall_8h_a798b28d0d448df0f58dbf0daf8d93e9e}
+
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{ksyscall_8h_a3e64f9d87cb92e4dc7d748a495e232f1}{init\-\_\-syscall} ()
+\begin{DoxyCompactList}\small\item\em Initialisation des appels systemes. \end{DoxyCompactList}\item 
+int \hyperlink{ksyscall_8h_a348fcaaf9525f99be2dc228a7780fab8}{syscall\-\_\-set\-\_\-handler} (\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} syscall\-\_\-id, syscall\-\_\-handler\-\_\-t handler)
+\begin{DoxyCompactList}\small\item\em Associe un identifiant d'appel système à une handler. \end{DoxyCompactList}\item 
+\hypertarget{ksyscall_8h_a170b9594d1a86adb3357817c567dd287}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-dummy, \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} a, \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} b, \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} c)}\label{ksyscall_8h_a170b9594d1a86adb3357817c567dd287}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+Description de ce que fait le fichier 
+
+\subsection{Documentation des fonctions}
+\hypertarget{ksyscall_8h_a3e64f9d87cb92e4dc7d748a495e232f1}{\index{ksyscall.\-h@{ksyscall.\-h}!init\-\_\-syscall@{init\-\_\-syscall}}
+\index{init\-\_\-syscall@{init\-\_\-syscall}!ksyscall.h@{ksyscall.\-h}}
+\subsubsection[{init\-\_\-syscall}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-syscall (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{ksyscall_8h_a3e64f9d87cb92e4dc7d748a495e232f1}
+Initialise le système pour pouvoir exécuter correctement les appels systèmes 
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ksyscall_8h_a3e64f9d87cb92e4dc7d748a495e232f1_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ksyscall_8h_a348fcaaf9525f99be2dc228a7780fab8}{\index{ksyscall.\-h@{ksyscall.\-h}!syscall\-\_\-set\-\_\-handler@{syscall\-\_\-set\-\_\-handler}}
+\index{syscall\-\_\-set\-\_\-handler@{syscall\-\_\-set\-\_\-handler}!ksyscall.h@{ksyscall.\-h}}
+\subsubsection[{syscall\-\_\-set\-\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}int syscall\-\_\-set\-\_\-handler (
+\begin{DoxyParamCaption}
+\item[{{\bf uint32\-\_\-t}}]{syscall\-\_\-id, }
+\item[{syscall\-\_\-handler\-\_\-t}]{handler}
+\end{DoxyParamCaption}
+)}}\label{ksyscall_8h_a348fcaaf9525f99be2dc228a7780fab8}
+
+\begin{DoxyParams}{Paramètres}
+{\em syscall\-\_\-id} & Identifian de l'appel système. \\
+\hline
+{\em handler} & Adresse du handler\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès, une autre valeur sinon 
+\end{DoxyReturn}

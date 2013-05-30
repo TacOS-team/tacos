@@ -8,8 +8,7 @@ Gestion des exceptions.
 
 {\ttfamily \#include $<$idt.\-h$>$}\\*
 {\ttfamily \#include $<$exception.\-h$>$}\\*
-Graphe des dépendances par inclusion de exception.\-c\-:
-\nopagebreak
+Graphe des dépendances par inclusion de exception.\-c\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Graphe des dépendances par inclusion de exception.\-c\-:
 \item 
 int \hyperlink{exception_8c_ac5a3d89ca654d3606b6afd836a01e207}{exception\-\_\-set\-\_\-routine} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} exception\-\_\-id, \hyperlink{exception_8h_a27a88f1aea43a3b64d4ab8d578471642}{exception\-\_\-handler\-\_\-t} routine)
 \item 
-\hypertarget{exception_8c_a845efe084f5994d748fd7c30403ac879}{int {\bfseries exception\-\_\-disable} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} exception\-\_\-id)}\label{exception_8c_a845efe084f5994d748fd7c30403ac879}
-
+int \hyperlink{exception_8c_a845efe084f5994d748fd7c30403ac879}{exception\-\_\-disable} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} exception\-\_\-id)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -50,6 +48,34 @@ You should have received a copy of the G\-N\-U General Public License along with
 
 
 \subsection{Documentation des fonctions}
+\hypertarget{exception_8c_a845efe084f5994d748fd7c30403ac879}{\index{exception.\-c@{exception.\-c}!exception\-\_\-disable@{exception\-\_\-disable}}
+\index{exception\-\_\-disable@{exception\-\_\-disable}!exception.c@{exception.\-c}}
+\subsubsection[{exception\-\_\-disable}]{\setlength{\rightskip}{0pt plus 5cm}int exception\-\_\-disable (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\-\_\-t}}]{exception\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{exception_8c_a845efe084f5994d748fd7c30403ac879}
+Désactive le handler d'une exception.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em exception\-\_\-id} & identifiant de l'exception.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès, -\/1 sinon. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{exception_8c_a845efe084f5994d748fd7c30403ac879_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{exception_8c_ac5a3d89ca654d3606b6afd836a01e207}{\index{exception.\-c@{exception.\-c}!exception\-\_\-set\-\_\-routine@{exception\-\_\-set\-\_\-routine}}
 \index{exception\-\_\-set\-\_\-routine@{exception\-\_\-set\-\_\-routine}!exception.c@{exception.\-c}}
 \subsubsection[{exception\-\_\-set\-\_\-routine}]{\setlength{\rightskip}{0pt plus 5cm}int exception\-\_\-set\-\_\-routine (
@@ -58,10 +84,21 @@ You should have received a copy of the G\-N\-U General Public License along with
 \item[{{\bf exception\-\_\-handler\-\_\-t}}]{routine}
 \end{DoxyParamCaption}
 )}}\label{exception_8c_ac5a3d89ca654d3606b6afd836a01e207}
-Définit le handler associé à une exception. 
+Définit le handler associé à une exception.
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+
+\begin{DoxyParams}{Paramètres}
+{\em exception\-\_\-id} & identifiant de l'exception. \\
+\hline
+{\em routine} & handler pour cette exception.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès, -\/1 sinon. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -72,8 +109,7 @@ Voici le graphe d'appel pour cette fonction \-:
 
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

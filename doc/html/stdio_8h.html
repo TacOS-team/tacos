@@ -123,12 +123,9 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>_IOLBF</b>&#160;&#160;&#160;1 /* Line buffered. */</td></tr>
 <tr class="memitem:a8661edb6b53e3104bef089bef02d0508"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8661edb6b53e3104bef089bef02d0508"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>_IONBF</b>&#160;&#160;&#160;2 /* No buffering. */</td></tr>
-<tr class="memitem:a0d112bae8fd35be772185b6ec6bcbe64"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d112bae8fd35be772185b6ec6bcbe64"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SEEK_SET</b>&#160;&#160;&#160;0</td></tr>
-<tr class="memitem:a4c8d0b76b470ba65a43ca46a88320f39"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4c8d0b76b470ba65a43ca46a88320f39"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SEEK_CUR</b>&#160;&#160;&#160;1</td></tr>
-<tr class="memitem:ad2a2e6c114780c3071efd24f16c7f7d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad2a2e6c114780c3071efd24f16c7f7d8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SEEK_END</b>&#160;&#160;&#160;2</td></tr>
+<tr class="memitem:a0d112bae8fd35be772185b6ec6bcbe64"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stdio_8h.html#a0d112bae8fd35be772185b6ec6bcbe64">SEEK_SET</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memitem:a4c8d0b76b470ba65a43ca46a88320f39"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stdio_8h.html#a4c8d0b76b470ba65a43ca46a88320f39">SEEK_CUR</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memitem:ad2a2e6c114780c3071efd24f16c7f7d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stdio_8h.html#ad2a2e6c114780c3071efd24f16c7f7d8">SEEK_END</a>&#160;&#160;&#160;2</td></tr>
 <tr class="memitem:a39ae32b25ab00f0ae78b934422a0bff2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39ae32b25ab00f0ae78b934422a0bff2"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>getc</b>(stream)&#160;&#160;&#160;<a class="el" href="get_8c.html#ab11a990e4f8863a1e7736e3c1d430092">fgetc</a>(stream)</td></tr>
 </table><table class="memberdecls">
@@ -248,7 +245,47 @@ LICENSE</h1>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 <p>Description de ce que fait le fichier </p>
-</div><h2>Documentation des fonctions</h2>
+</div><h2>Documentation des macros</h2>
+<a class="anchor" id="a4c8d0b76b470ba65a43ca46a88320f39"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SEEK_CUR&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>SEEK relatif à la position actuelle. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad2a2e6c114780c3071efd24f16c7f7d8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SEEK_END&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>SEEK par rapport à la fin du fichier. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0d112bae8fd35be772185b6ec6bcbe64"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SEEK_SET&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>SEEK à une position donnée. </p>
+
+</div>
+</div>
+<h2>Documentation des fonctions</h2>
 <a class="anchor" id="ab5de865c3093158c70bf4bd88a9deea5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -273,8 +310,6 @@ DESCRIPTION</h1>
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="stdio_8h_ab5de865c3093158c70bf4bd88a9deea5_cgraph.png" border="0" usemap="#stdio_8h_ab5de865c3093158c70bf4bd88a9deea5_cgraph" alt=""/></div>
-<map name="stdio_8h_ab5de865c3093158c70bf4bd88a9deea5_cgraph" id="stdio_8h_ab5de865c3093158c70bf4bd88a9deea5_cgraph">
-</map>
 </div>
 </p>
 
@@ -282,8 +317,6 @@ Voici le graphe d'appel pour cette fonction :</div>
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="stdio_8h_ab5de865c3093158c70bf4bd88a9deea5_icgraph.png" border="0" usemap="#stdio_8h_ab5de865c3093158c70bf4bd88a9deea5_icgraph" alt=""/></div>
-<map name="stdio_8h_ab5de865c3093158c70bf4bd88a9deea5_icgraph" id="stdio_8h_ab5de865c3093158c70bf4bd88a9deea5_icgraph">
-</map>
 </div>
 </p>
 
@@ -314,8 +347,6 @@ Voici le graphe des appelants de cette fonction :</div>
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="stdio_8h_a9e71f513ad2496acb5361aedc065e3d8_cgraph.png" border="0" usemap="#stdio_8h_a9e71f513ad2496acb5361aedc065e3d8_cgraph" alt=""/></div>
-<map name="stdio_8h_a9e71f513ad2496acb5361aedc065e3d8_cgraph" id="stdio_8h_a9e71f513ad2496acb5361aedc065e3d8_cgraph">
-</map>
 </div>
 </p>
 
@@ -323,8 +354,6 @@ Voici le graphe d'appel pour cette fonction :</div>
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="stdio_8h_a9e71f513ad2496acb5361aedc065e3d8_icgraph.png" border="0" usemap="#stdio_8h_a9e71f513ad2496acb5361aedc065e3d8_icgraph" alt=""/></div>
-<map name="stdio_8h_a9e71f513ad2496acb5361aedc065e3d8_icgraph" id="stdio_8h_a9e71f513ad2496acb5361aedc065e3d8_icgraph">
-</map>
 </div>
 </p>
 
@@ -355,8 +384,6 @@ Voici le graphe des appelants de cette fonction :</div>
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="stdio_8h_a4a98383bb54291c2abede7aa28acf597_cgraph.png" border="0" usemap="#stdio_8h_a4a98383bb54291c2abede7aa28acf597_cgraph" alt=""/></div>
-<map name="stdio_8h_a4a98383bb54291c2abede7aa28acf597_cgraph" id="stdio_8h_a4a98383bb54291c2abede7aa28acf597_cgraph">
-</map>
 </div>
 </p>
 
@@ -364,8 +391,6 @@ Voici le graphe d'appel pour cette fonction :</div>
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="stdio_8h_a4a98383bb54291c2abede7aa28acf597_icgraph.png" border="0" usemap="#stdio_8h_a4a98383bb54291c2abede7aa28acf597_icgraph" alt=""/></div>
-<map name="stdio_8h_a4a98383bb54291c2abede7aa28acf597_icgraph" id="stdio_8h_a4a98383bb54291c2abede7aa28acf597_icgraph">
-</map>
 </div>
 </p>
 
@@ -484,8 +509,6 @@ Voici le graphe d'appel pour cette fonction :</div>
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="stdio_8h_af86fa14728c9bad5418a6d29cad9f9ff_cgraph.png" border="0" usemap="#stdio_8h_af86fa14728c9bad5418a6d29cad9f9ff_cgraph" alt=""/></div>
-<map name="stdio_8h_af86fa14728c9bad5418a6d29cad9f9ff_cgraph" id="stdio_8h_af86fa14728c9bad5418a6d29cad9f9ff_cgraph">
-</map>
 </div>
 </p>
 
@@ -493,8 +516,6 @@ Voici le graphe d'appel pour cette fonction :</div>
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="stdio_8h_af86fa14728c9bad5418a6d29cad9f9ff_icgraph.png" border="0" usemap="#stdio_8h_af86fa14728c9bad5418a6d29cad9f9ff_icgraph" alt=""/></div>
-<map name="stdio_8h_af86fa14728c9bad5418a6d29cad9f9ff_icgraph" id="stdio_8h_af86fa14728c9bad5418a6d29cad9f9ff_icgraph">
-</map>
 </div>
 </p>
 
@@ -1127,7 +1148,7 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Mai 8 2013 09:38:43 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Mai 30 2013 19:08:41 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

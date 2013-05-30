@@ -97,19 +97,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="structscheduler__descriptor__t.html">   38</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">char</span>* name;</div>
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="structscheduler__descriptor__t.html#a250bb59b72e7a3828160638033ac5cb3">   40</a></span>&#160;        int (*initialize)(int);                         </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="structscheduler__descriptor__t.html#a41661a5080062b563df01dfb1a02e22e">   41</a></span>&#160;        <a class="code" href="structprocess__t.html">process_t</a>* (*get_next_process)();       </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="structscheduler__descriptor__t.html#a077b3b95ecf49c9dacc40b6a87cb1008">   42</a></span>&#160;        <a class="code" href="structprocess__t.html">process_t</a>* (*get_current_process)();    </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="structscheduler__descriptor__t.html#a8919a05ae907a4b642563078a28e744a">   43</a></span>&#160;        int (*add_process)(<a class="code" href="structprocess__t.html">process_t</a>*);         </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="structscheduler__descriptor__t.html#a41661a5080062b563df01dfb1a02e22e">   41</a></span>&#160;        <a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* (*get_next_process)();       </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="structscheduler__descriptor__t.html#a077b3b95ecf49c9dacc40b6a87cb1008">   42</a></span>&#160;        <a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* (*get_current_process)();    </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="structscheduler__descriptor__t.html#a8919a05ae907a4b642563078a28e744a">   43</a></span>&#160;        int (*add_process)(<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>*);         </div>
 <div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="structscheduler__descriptor__t.html#a656d41ddd8d861d0ee55523de3693dfa">   44</a></span>&#160;        int (*<a class="code" href="kprocess_8h.html#a7cced35f469ae897c55ab96940289cf6" title="Retire un processus de la liste.">delete_process</a>)(int);                     </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        void (*inject_idle)(<a class="code" href="structprocess__t.html">process_t</a>*);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        void (*inject_idle)(<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>*);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <a class="code" href="structscheduler__descriptor__t.html">scheduler_descriptor_t</a>;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte...">init_scheduler</a>(<span class="keywordtype">int</span> Q);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span> set_scheduler(<a class="code" href="structscheduler__descriptor__t.html">scheduler_descriptor_t</a>* sched);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">int</span> scheduler_add_process(<a class="code" href="structprocess__t.html">process_t</a>* proc);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">int</span> scheduler_add_process(<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* proc);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">int</span> scheduler_delete_process(<span class="keywordtype">int</span> pid);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<a class="code" href="structprocess__t.html">process_t</a>* <a class="code" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation.">get_current_process</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* <a class="code" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation.">get_current_process</a>();</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au...">start_scheduler</a>();</div>
@@ -118,14 +118,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;SYSCALL_HANDLER1(sys_sleep, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> delay); </div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">int</span> is_schedulable(<a class="code" href="structprocess__t.html">process_t</a>* process);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keywordtype">void</span> halt();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif //SCHEDULER_H</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">int</span> <a class="code" href="scheduler_8h.html#aa561ebdf652e5c64fc2400c409e76d8d">is_schedulable</a>(<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* process);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span> halt();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif //SCHEDULER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Mai 8 2013 09:38:42 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

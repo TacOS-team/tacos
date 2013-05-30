@@ -7,8 +7,7 @@
 {\ttfamily \#include $<$klibc/string.\-h$>$}\\*
 {\ttfamily \#include $<$scheduler.\-h$>$}\\*
 {\ttfamily \#include $<$klog.\-h$>$}\\*
-Graphe des dépendances par inclusion de kdirent.\-c\-:
-\nopagebreak
+Graphe des dépendances par inclusion de kdirent.\-c\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -18,14 +17,11 @@ Graphe des dépendances par inclusion de kdirent.\-c\-:
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{kdirent_8c_adfcdfa04bbc40b5d0cd715e66d906cad}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-readdir, int fd, char $\ast$entries, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} $\ast$size)}\label{kdirent_8c_adfcdfa04bbc40b5d0cd715e66d906cad}
-
+\hyperlink{kdirent_8c_adfcdfa04bbc40b5d0cd715e66d906cad}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-readdir, int fd, char $\ast$entries, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} $\ast$size)
 \item 
-\hypertarget{kdirent_8c_a90bdfb89824032c54ece9f851ca07f69}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-mkdir, const char $\ast$pathname, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t} \hyperlink{structmode}{mode}, int $\ast$ret)}\label{kdirent_8c_a90bdfb89824032c54ece9f851ca07f69}
-
+\hyperlink{kdirent_8c_a90bdfb89824032c54ece9f851ca07f69}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-mkdir, const char $\ast$pathname, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t} \hyperlink{structmode}{mode}, int $\ast$ret)
 \item 
-\hypertarget{kdirent_8c_ad690af967ba8e26d8ac3e48b8353eacc}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2} (sys\-\_\-rmdir, const char $\ast$pathname, int $\ast$ret)}\label{kdirent_8c_ad690af967ba8e26d8ac3e48b8353eacc}
-
+\hyperlink{kdirent_8c_ad690af967ba8e26d8ac3e48b8353eacc}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2} (sys\-\_\-rmdir, const char $\ast$pathname, int $\ast$ret)
 \end{DoxyCompactItemize}
 
 
@@ -42,3 +38,98 @@ This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-
 
 You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
 Description de ce que fait le fichier 
+
+\subsection{Documentation des fonctions}
+\hypertarget{kdirent_8c_ad690af967ba8e26d8ac3e48b8353eacc}{\index{kdirent.\-c@{kdirent.\-c}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}!kdirent.c@{kdirent.\-c}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-rmdir}]{, }
+\item[{const char $\ast$}]{pathname, }
+\item[{int $\ast$}]{ret}
+\end{DoxyParamCaption}
+)}}\label{kdirent_8c_ad690af967ba8e26d8ac3e48b8353eacc}
+Suppression d'un dossier.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pathname} & Nom du dossier. \\
+\hline
+{\em ret} & Valeur de retour. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kdirent_8c_ad690af967ba8e26d8ac3e48b8353eacc_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kdirent_8c_adfcdfa04bbc40b5d0cd715e66d906cad}{\index{kdirent.\-c@{kdirent.\-c}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kdirent.c@{kdirent.\-c}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-readdir}]{, }
+\item[{int}]{fd, }
+\item[{char $\ast$}]{entries, }
+\item[{{\bf size\-\_\-t} $\ast$}]{size}
+\end{DoxyParamCaption}
+)}}\label{kdirent_8c_adfcdfa04bbc40b5d0cd715e66d906cad}
+Lecture d'un dossier.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em fd} & Identifiant du fichier ouvert. \\
+\hline
+{\em entries} & Buffer qui contient des struct dirent. \\
+\hline
+{\em size} & Taille du buffer. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{kdirent_8c_adfcdfa04bbc40b5d0cd715e66d906cad_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kdirent_8c_a90bdfb89824032c54ece9f851ca07f69}{\index{kdirent.\-c@{kdirent.\-c}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kdirent.c@{kdirent.\-c}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-mkdir}]{, }
+\item[{const char $\ast$}]{pathname, }
+\item[{{\bf mode\-\_\-t}}]{mode, }
+\item[{int $\ast$}]{ret}
+\end{DoxyParamCaption}
+)}}\label{kdirent_8c_a90bdfb89824032c54ece9f851ca07f69}
+Création d'un dossier.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pathname} & Nom du dossier. \\
+\hline
+{\em mode} & Droits. \\
+\hline
+{\em ret} & Valeur de retour. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{kdirent_8c_a90bdfb89824032c54ece9f851ca07f69_cgraph}
+\end{center}
+\end{figure}
+
+

@@ -1,0 +1,5 @@
+<map id="kernel/include/i8259.h" name="kernel/include/i8259.h">
+<area shape="rect" id="node3" href="$interrupts_8c.html" title="kernel/interrupts.c" alt="" coords="5,83,131,111"/>
+<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="155,83,261,111"/>
+<area shape="rect" id="node7" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="285,83,411,111"/>
+</map>

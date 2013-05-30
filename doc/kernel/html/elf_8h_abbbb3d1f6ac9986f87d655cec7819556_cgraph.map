@@ -1,0 +1,5 @@
+<map id="load_elf_file" name="load_elf_file">
+<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="144,5,211,33"/>
+<area shape="rect" id="node7" href="$string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="147,55,208,83"/>
+<area shape="rect" id="node5" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="260,5,399,33"/>
+</map>

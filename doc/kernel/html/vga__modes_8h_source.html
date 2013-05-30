@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de kernel/include/drivers/vga_modes.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li><li class="navelem"><a class="el" href="dir_c8660ea649945092ffc9f7148865f24e.html">drivers</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">vga_modes.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="vga__modes_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _VGA_MODES_H_</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _VGA_MODES_H_</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;vga_types.h&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="structmode.html">   37</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmode.html">mode</a> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="structmode.html#ae3caae9e51730e3fc85ab1f7c9bfce89">   38</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structmode.html#ae3caae9e51730e3fc85ab1f7c9bfce89">width</a>; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="structmode.html#a5e0e1e7b517ffe3532d75bda4b47b2c4">   39</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structmode.html#a5e0e1e7b517ffe3532d75bda4b47b2c4">height</a>; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="structmode.html#a5ca924aaa8f33c270e7896095df93c64">   40</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structmode.html#a5ca924aaa8f33c270e7896095df93c64">bpp</a>; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="structmode.html#a04810864c94405d05fdab5f4467a4db3">   41</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="structmode.html#a04810864c94405d05fdab5f4467a4db3">graphic</a>; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="structmode.html#a704a184dc9d562c705d1feeb5be8788b">   42</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<a class="code" href="structmode.html#a704a184dc9d562c705d1feeb5be8788b">reg_values</a>; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> mode_320x200x256[] = {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">/* GC */</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x05, 0x0F,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        0xFF,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">/* SEQ */</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        0x03, 0x01, 0x0F, 0x00, 0x0E,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="comment">/* AC */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        0x41, 0x00, 0x0F, 0x00, 0x00,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment">/* CRTC */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        0x5F, 0x4F, 0x50, 0x82, 0x54, 0x80, 0xBF, 0x1F,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        0x00, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        0x9C, 0x0E, 0x8F, 0x28, 0x40, 0x96, 0xB9, 0xA3,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        0xFF,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">/* MISC */</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        0x63,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> mode_320x200x256_modex[] = {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">/* GC */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x05, 0x0F,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        0xFF,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="comment">/* SEQ */</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        0x03, 0x01, 0x0F, 0x00, 0x06,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="comment">/* AC */</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        0x41, 0x00, 0x0F, 0x00, 0x00,</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="comment">/* CRTC */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        0x5F, 0x4F, 0x50, 0x82, 0x54, 0x80, 0xBF, 0x1F,</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        0x00, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        0x9C, 0x0E, 0x8F, 0x28, 0x00, 0x96, 0xB9, 0xE3,</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        0xFF,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="comment">/* MISC */</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        0x63,</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;};</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> mode_80x25_text[] = {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="comment">/* GC */</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x0E, 0x00,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        0xFF,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="comment">/* SEQ */</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        0x03, 0x00, 0x03, 0x00, 0x02,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="comment">/* AC */</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x14, 0x07,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        0x38, 0x39, 0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        0x0C, 0x00, 0x0F, 0x08, 0x00,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="comment">/* CRTC */</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        0x5F, 0x4F, 0x50, 0x82, 0x55, 0x81, 0xBF, 0x1F,</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        0x00, 0x4F, 0x0D, 0x0E, 0x00, 0x00, 0x00, 0x50,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        0x9C, 0x0E, 0x8F, 0x28, 0x1F, 0x96, 0xB9, 0xA3,</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        0xFF,</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="comment">/* MISC */</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        0x67,</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">// See enum VGA_mode in include/vga_types.h</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">static</span> <span class="keyword">struct </span><a class="code" href="structmode.html">mode</a> vga_modes[] = {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="comment">// Text: 80x25</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        { 80, 25, 1, 0, mode_80x25_text },</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="comment">// Graphic: 320x200x256 colors</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        { 320, 200, 1, 1, mode_320x200x256 },</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="comment">// Graphic: 320x200x256 colors, mode X</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        { 320, 200, 1, 1, mode_320x200x256_modex },</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;};</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:16 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

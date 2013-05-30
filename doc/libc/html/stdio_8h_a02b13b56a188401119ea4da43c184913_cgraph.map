@@ -1,0 +1,9 @@
+<map id="remove" name="remove">
+<area shape="rect" id="node3" href="$unistd_8h.html#a3dc1b07404b646712a144e2057359876" title="Obtenir l&#39;état d&#39;un fichier (status)." alt="" coords="127,5,169,33"/>
+<area shape="rect" id="node13" href="$unistd_8h.html#a570282ae7ba596263ec812b368d99b34" title="Supprimer un dossier, lequel doit être vide." alt="" coords="123,55,173,83"/>
+<area shape="rect" id="node17" href="$unistd_8h.html#af3cee068f32a919cdd638e0578c1e5f8" title="Détruire un nom et éventuellement le fichier associé." alt="" coords="120,106,176,134"/>
+<area shape="rect" id="node5" href="$unistd_8h.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="224,30,352,58"/>
+<area shape="rect" id="node11" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="257,81,319,109"/>
+<area shape="rect" id="node7" href="$string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="403,5,456,33"/>
+<area shape="rect" id="node9" href="$string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="401,55,457,83"/>
+</map>

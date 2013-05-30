@@ -97,20 +97,45 @@ Graphe de collaboration de ext2_group_desc_internal:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a5b3cee6954ef4ed21c238b46d389b9bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b3cee6954ef4ed21c238b46d389b9bf"></a>
-<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>inode_bitmap</b></td></tr>
-<tr class="memitem:a690f836bfb2c8de04ae2b1753134f8a7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a690f836bfb2c8de04ae2b1753134f8a7"></a>
-struct <a class="el" href="structext2__inode.html">ext2_inode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>inodes</b></td></tr>
+<tr class="memitem:a5b3cee6954ef4ed21c238b46d389b9bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structext2__group__desc__internal.html#a5b3cee6954ef4ed21c238b46d389b9bf">inode_bitmap</a></td></tr>
+<tr class="memitem:a690f836bfb2c8de04ae2b1753134f8a7"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structext2__inode.html">ext2_inode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structext2__group__desc__internal.html#a690f836bfb2c8de04ae2b1753134f8a7">inodes</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><p>Copie mémoire des infos du disque pour limiter le nombre d'accès inutiles. </p>
-</div><hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
+</div><h2>Documentation des champs</h2>
+<a class="anchor" id="a5b3cee6954ef4ed21c238b46d389b9bf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>* ext2_group_desc_internal::inode_bitmap</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Inode bitmap. </p>
+
+</div>
+</div>
+<a class="anchor" id="a690f836bfb2c8de04ae2b1753134f8a7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structext2__inode.html">ext2_inode</a>* ext2_group_desc_internal::inodes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Tableau d'inodes. </p>
+
+</div>
+</div>
+<hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
 <li>kernel/fs/ext2/<a class="el" href="ext2__internal_8h_source.html">ext2_internal.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Mai 8 2013 09:38:43 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Mai 30 2013 19:08:42 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

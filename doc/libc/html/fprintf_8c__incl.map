@@ -1,0 +1,11 @@
+<map id="libc/stdio/fprintf.c" name="libc/stdio/fprintf.c">
+<area shape="rect" id="node3" href="$stdio_8h.html" title="stdio.h" alt="" coords="110,83,169,111"/>
+<area shape="rect" id="node18" href="$string_8h.html" title="Fonctions de manipulation de strings." alt="" coords="190,161,254,189"/>
+<area shape="rect" id="node22" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="347,83,409,111"/>
+<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="173,315,261,343"/>
+<area shape="rect" id="node7" href="$libio_8h.html" title="libio.h" alt="" coords="113,161,166,189"/>
+<area shape="rect" id="node10" href="$types_8h.html" title="sys/types.h" alt="" coords="254,238,339,266"/>
+<area shape="rect" id="node16" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="22,161,89,189"/>
+<area shape="rect" id="node13" href="$stdbool_8h.html" title="Type bool." alt="" coords="285,315,359,343"/>
+<area shape="rect" id="node26" href="$malloc_8h.html" title="malloc.h" alt="" coords="379,161,449,189"/>
+</map>

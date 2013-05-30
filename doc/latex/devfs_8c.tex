@@ -14,8 +14,7 @@ Dev\-F\-S.
 {\ttfamily \#include $<$kerrno.\-h$>$}\\*
 {\ttfamily \#include $<$types.\-h$>$}\\*
 {\ttfamily \#include $<$vfs.\-h$>$}\\*
-Graphe des dépendances par inclusion de devfs.\-c\-:
-\nopagebreak
+Graphe des dépendances par inclusion de devfs.\-c\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -44,9 +43,9 @@ int \hyperlink{devfs_8c_acf0abbf4b629aa36d142733e27eaf6e6}{register\-\_\-chardev
 \begin{DoxyCompactList}\small\item\em Enregistre le chardev dans la liste. \end{DoxyCompactList}\item 
 int \hyperlink{devfs_8c_a3ad133a010648db1c6df6f7d00cf8d77}{register\-\_\-blkdev} (const char $\ast$name, \hyperlink{structblkdev__interfaces}{blkdev\-\_\-interfaces} $\ast$di)
 \begin{DoxyCompactList}\small\item\em Enregistre le blkdev dans la liste. \end{DoxyCompactList}\item 
-\hypertarget{devfs_8c_ac01eef8358c344396a59f06531a5dcb4}{void {\bfseries devfs\-\_\-init} ()}\label{devfs_8c_ac01eef8358c344396a59f06531a5dcb4}
+\hypertarget{devfs_8c_ac01eef8358c344396a59f06531a5dcb4}{void \hyperlink{devfs_8c_ac01eef8358c344396a59f06531a5dcb4}{devfs\-\_\-init} ()}\label{devfs_8c_ac01eef8358c344396a59f06531a5dcb4}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Initialisation du dev F\-S. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
@@ -91,8 +90,7 @@ interfaces du driver trouvé
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -109,6 +107,8 @@ Voici le graphe d'appel pour cette fonction \-:
 \item[{{\bf blkdev\-\_\-interfaces} $\ast$}]{di}
 \end{DoxyParamCaption}
 )}}\label{devfs_8c_a3ad133a010648db1c6df6f7d00cf8d77}
+Enregistre un block device dans le dev F\-S.
+
 \begin{DoxyVerb} Enregistre le driver dans la liste.
 \end{DoxyVerb}
 
@@ -125,8 +125,7 @@ Voici le graphe d'appel pour cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -143,6 +142,8 @@ Voici le graphe des appelants de cette fonction \-:
 \item[{{\bf chardev\-\_\-interfaces} $\ast$}]{di}
 \end{DoxyParamCaption}
 )}}\label{devfs_8c_acf0abbf4b629aa36d142733e27eaf6e6}
+Enregistre un char device dans le dev F\-S.
+
 \begin{DoxyVerb} Enregistre le driver dans la liste.
 \end{DoxyVerb}
 
@@ -159,8 +160,7 @@ Voici le graphe des appelants de cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

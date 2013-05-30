@@ -1,0 +1,568 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/kunistd.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier kunistd.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kprocess_8h_source.html">kprocess.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kunistd_8h_source.html">kunistd.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="scheduler_8h_source.html">scheduler.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="vfs_8h_source.html">vfs.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de kunistd.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="kunistd_8c__incl.png" border="0" usemap="#kernel_2kunistd_8c" alt=""/></div>
+<map name="kernel_2kunistd_8c" id="kernel_2kunistd_8c">
+<area shape="rect" id="node3" href="klog_8h.html" title="Logging macros." alt="" coords="352,83,408,111"/><area shape="rect" id="node7" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="405,238,491,266"/><area shape="rect" id="node29" href="kunistd_8h.html" title="Principales fonctions de l&#39;API POSIX (read, write, seek, stat...)" alt="" coords="708,83,783,111"/><area shape="rect" id="node40" href="scheduler_8h.html" title="scheduler.h" alt="" coords="485,161,573,189"/><area shape="rect" id="node44" href="vfs_8h.html" title="Virtual File System." alt="" coords="609,83,660,111"/><area shape="rect" id="node5" href="kstdio_8h.html" title="kprintf" alt="" coords="344,161,411,189"/><area shape="rect" id="node9" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="619,315,696,343"/><area shape="rect" id="node11" href="types_8h.html" title="types.h" alt="" coords="627,393,688,421"/><area shape="rect" id="node13" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="515,315,595,343"/><area shape="rect" id="node16" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="5,315,109,343"/><area shape="rect" id="node18" href="process__types_8h.html" title="process_types.h" alt="" coords="133,315,248,343"/><area shape="rect" id="node20" href="symtable_8h.html" title="symtable.h" alt="" coords="272,315,355,343"/><area shape="rect" id="node26" href="vmm_8h.html" title="vmm.h" alt="" coords="379,315,440,343"/><area shape="rect" id="node23" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="291,393,336,421"/><area shape="rect" id="node33" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="749,161,811,189"/><area shape="rect" id="node36" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="749,238,811,266"/></map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a12b7516e50c36ff9b70f66e8d7e62ba8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8c.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a> (sys_write, <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, const void *buf, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> *c)</td></tr>
+<tr class="memitem:a1a5c9caaf5f21371f9d9d6886eb26bc0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8c.html#a1a5c9caaf5f21371f9d9d6886eb26bc0">SYSCALL_HANDLER3</a> (sys_read, <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, const void *buf, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> *c)</td></tr>
+<tr class="memitem:a5dd5ee4481953b987bfc1bcb836be820"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8c.html#a5dd5ee4481953b987bfc1bcb836be820">SYSCALL_HANDLER3</a> (sys_seek, <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, long *offset, int whence)</td></tr>
+<tr class="memitem:a1eab9ba54efce654ee3cd717f2161b8f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8c.html#a1eab9ba54efce654ee3cd717f2161b8f">SYSCALL_HANDLER3</a> (sys_ioctl, <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *fd, unsigned int request, void *data)</td></tr>
+<tr class="memitem:a18585c0d8560c855f1d38405703e7eb3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8c.html#a18585c0d8560c855f1d38405703e7eb3">SYSCALL_HANDLER3</a> (sys_stat, const char *path, struct <a class="el" href="structstat.html">stat</a> *buf, int *ret)</td></tr>
+<tr class="memitem:a99434c0e561b0e99c4ef081ae5773703"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8c.html#a99434c0e561b0e99c4ef081ae5773703">SYSCALL_HANDLER2</a> (sys_unlink, const char *path, int *ret)</td></tr>
+<tr class="memitem:a55268fce444099c28094cb9c42ea6bd7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a55268fce444099c28094cb9c42ea6bd7"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_chmod, const char *path, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>, int *ret)</td></tr>
+<tr class="memitem:a33914b700f1e73c3f4908c58e7d3ec11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33914b700f1e73c3f4908c58e7d3ec11"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_utimes, const char *path, const struct <a class="el" href="structtimeval.html">timeval</a> times[2], int *ret)</td></tr>
+<tr class="memitem:a46360ac642b4433254d5fce6fa9dc076"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46360ac642b4433254d5fce6fa9dc076"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_chown, const char *path, <a class="el" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a> owner, <a class="el" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a> *group)</td></tr>
+<tr class="memitem:a8510f0ffa3080d9713c29d0e13dd3cf7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8510f0ffa3080d9713c29d0e13dd3cf7"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_rename, const char *oldpath, const char *newpath, int *ret)</td></tr>
+<tr class="memitem:a754a9d6d5d3da3db605147488e485805"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8c.html#a754a9d6d5d3da3db605147488e485805">SYSCALL_HANDLER2</a> (sys_dup, int oldfd, int *ret)</td></tr>
+<tr class="memitem:a9f1fab5ee3e02656c4b5aabbb8043f4a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f1fab5ee3e02656c4b5aabbb8043f4a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER2</b> (sys_dup2, int oldfd, int *newfd)</td></tr>
+<tr class="memitem:a8c6c302ef479ae5474c3aedf65ec8dbe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8c.html#a8c6c302ef479ae5474c3aedf65ec8dbe">SYSCALL_HANDLER3</a> (sys_mknod, const char *path, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>, <a class="el" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a> *dev)</td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+<p>Description de ce que fait le fichier </p>
+</div><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a99434c0e561b0e99c4ef081ae5773703"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SYSCALL_HANDLER2 </td>
+          <td>(</td>
+          <td class="paramtype">sys_unlink&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>ret</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Syscall pour supprimer un fichier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Le chemin du fichier à supprimer. </td></tr>
+    <tr><td class="paramname">ret</td><td>Le code retour de la fonction. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kunistd_8c_a99434c0e561b0e99c4ef081ae5773703_cgraph.png" border="0" usemap="#kunistd_8c_a99434c0e561b0e99c4ef081ae5773703_cgraph" alt=""/></div>
+<map name="kunistd_8c_a99434c0e561b0e99c4ef081ae5773703_cgraph" id="kunistd_8c_a99434c0e561b0e99c4ef081ae5773703_cgraph">
+<area shape="rect" id="node3" href="vfs_8h.html#a4f8b6a1f2b0e6012446196f18b33d686" title="Suppression d&#39;un noeud." alt="" coords="215,5,295,33"/><area shape="rect" id="node5" href="dcache_8c.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="344,5,459,33"/><area shape="rect" id="node7" href="hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="507,5,632,33"/><area shape="rect" id="node9" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="680,5,731,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a754a9d6d5d3da3db605147488e485805"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SYSCALL_HANDLER2 </td>
+          <td>(</td>
+          <td class="paramtype">sys_dup&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>oldfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>ret</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Syscall pour dupliquer un open file descriptor.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oldfd</td><td>L'identifiant de descripteur de fichier ouvert à dupliquer. </td></tr>
+    <tr><td class="paramname">ret</td><td>Le nouvel identifiant. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kunistd_8c_a754a9d6d5d3da3db605147488e485805_cgraph.png" border="0" usemap="#kunistd_8c_a754a9d6d5d3da3db605147488e485805_cgraph" alt=""/></div>
+<map name="kunistd_8c_a754a9d6d5d3da3db605147488e485805_cgraph" id="kunistd_8c_a754a9d6d5d3da3db605147488e485805_cgraph">
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a12b7516e50c36ff9b70f66e8d7e62ba8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SYSCALL_HANDLER3 </td>
+          <td>(</td>
+          <td class="paramtype">sys_write&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> *&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Syscall pour écrire dans un fichier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fd</td><td>Id du descripteur de fichier. </td></tr>
+    <tr><td class="paramname">buf</td><td>Données à écrire. </td></tr>
+    <tr><td class="paramname">c</td><td>Nombre d'octets à écrire. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kunistd_8c_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph.png" border="0" usemap="#kunistd_8c_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph" alt=""/></div>
+<map name="kunistd_8c_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph" id="kunistd_8c_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph">
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a1a5c9caaf5f21371f9d9d6886eb26bc0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SYSCALL_HANDLER3 </td>
+          <td>(</td>
+          <td class="paramtype">sys_read&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> *&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Syscall pour lire dans un fichier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fd</td><td>Id du descripteur de fichier. </td></tr>
+    <tr><td class="paramname">buf</td><td>Buffer pour stocker les données lues. </td></tr>
+    <tr><td class="paramname">c</td><td>Nombre d'octets à lire. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kunistd_8c_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph.png" border="0" usemap="#kunistd_8c_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph" alt=""/></div>
+<map name="kunistd_8c_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph" id="kunistd_8c_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph">
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5dd5ee4481953b987bfc1bcb836be820"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SYSCALL_HANDLER3 </td>
+          <td>(</td>
+          <td class="paramtype">sys_seek&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long *&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>whence</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Syscall pour se déplacer dans un fichier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fd</td><td>Id du descripteur de fichier. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kunistd_8c_a5dd5ee4481953b987bfc1bcb836be820_cgraph.png" border="0" usemap="#kunistd_8c_a5dd5ee4481953b987bfc1bcb836be820_cgraph" alt=""/></div>
+<map name="kunistd_8c_a5dd5ee4481953b987bfc1bcb836be820_cgraph" id="kunistd_8c_a5dd5ee4481953b987bfc1bcb836be820_cgraph">
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a1eab9ba54efce654ee3cd717f2161b8f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SYSCALL_HANDLER3 </td>
+          <td>(</td>
+          <td class="paramtype">sys_ioctl&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Syscall pour controler un fichier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fd</td><td>Pointeur sur l'id du descripteur de fichier. Utilisé comme code de retour. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kunistd_8c_a1eab9ba54efce654ee3cd717f2161b8f_cgraph.png" border="0" usemap="#kunistd_8c_a1eab9ba54efce654ee3cd717f2161b8f_cgraph" alt=""/></div>
+<map name="kunistd_8c_a1eab9ba54efce654ee3cd717f2161b8f_cgraph" id="kunistd_8c_a1eab9ba54efce654ee3cd717f2161b8f_cgraph">
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a18585c0d8560c855f1d38405703e7eb3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SYSCALL_HANDLER3 </td>
+          <td>(</td>
+          <td class="paramtype">sys_stat&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structstat.html">stat</a> *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>ret</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Syscall pour obtenir des informations sur un fichier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Le chemin du fichier dont on veut obtenir les informations. </td></tr>
+    <tr><td class="paramname">buf</td><td>Une structure stat pour y enregistrer les informations. </td></tr>
+    <tr><td class="paramname">ret</td><td>Le code retour de la fonction. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kunistd_8c_a18585c0d8560c855f1d38405703e7eb3_cgraph.png" border="0" usemap="#kunistd_8c_a18585c0d8560c855f1d38405703e7eb3_cgraph" alt=""/></div>
+<map name="kunistd_8c_a18585c0d8560c855f1d38405703e7eb3_cgraph" id="kunistd_8c_a18585c0d8560c855f1d38405703e7eb3_cgraph">
+<area shape="rect" id="node3" href="vfs_8h.html#a67e1b452e79d57b6080feb5e1d320234" title="Obtient des infos sur un noeud." alt="" coords="213,5,283,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8c6c302ef479ae5474c3aedf65ec8dbe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SYSCALL_HANDLER3 </td>
+          <td>(</td>
+          <td class="paramtype">sys_mknod&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a> *&#160;</td>
+          <td class="paramname"><em>dev</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Syscall pour créer un nouveau noeud. </p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kunistd_8c_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph.png" border="0" usemap="#kunistd_8c_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph" alt=""/></div>
+<map name="kunistd_8c_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph" id="kunistd_8c_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph">
+<area shape="rect" id="node3" href="vfs_8h.html#addbdd0f5a70a3babbcb5ca4d63e2c3fd" title="Création d&#39;un nouveau noeud." alt="" coords="215,5,300,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:23 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

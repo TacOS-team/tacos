@@ -1,0 +1,4 @@
+<map id="memory_setup" name="memory_setup">
+<area shape="rect" id="node3" href="$memory_8h.html#af0f914a32931e95e6e9ce2c1463b7978" title="Adresse du cadre de page en arrondissant à l&#39;inférieur." alt="" coords="164,5,321,33"/>
+<area shape="rect" id="node5" href="$memory_8h.html#a1c72d3a8d1a8b95fb4d75e634534320a" title="Adresse du cadre de page en arrondissant au supérieur." alt="" coords="160,55,325,83"/>
+</map>

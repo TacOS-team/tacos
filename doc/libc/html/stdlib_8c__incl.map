@@ -1,0 +1,18 @@
+<map id="libc/stdlib.c" name="libc/stdlib.c">
+<area shape="rect" id="node3" href="$ctype_8h.html" title="Fonctions de classification de caractères." alt="" coords="91,315,152,343"/>
+<area shape="rect" id="node7" href="$errno_8h.html" title="errno.h" alt="" coords="5,315,67,343"/>
+<area shape="rect" id="node10" href="$malloc_8h.html" title="malloc.h" alt="" coords="209,238,279,266"/>
+<area shape="rect" id="node18" href="$stdio_8h.html" title="stdio.h" alt="" coords="420,161,479,189"/>
+<area shape="rect" id="node28" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="317,161,379,189"/>
+<area shape="rect" id="node33" href="$string_8h.html" title="Fonctions de manipulation de strings." alt="" coords="623,238,687,266"/>
+<area shape="rect" id="node37" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="1044,83,1140,111"/>
+<area shape="rect" id="node39" href="$unistd_8h.html" title="unistd.h" alt="" coords="748,83,815,111"/>
+<area shape="rect" id="node51" href="$signal_8h.html" title="Gestion des signaux." alt="" coords="993,238,1060,266"/>
+<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="440,393,528,421"/>
+<area shape="rect" id="node13" href="$types_8h.html" title="sys/types.h" alt="" coords="577,315,663,343"/>
+<area shape="rect" id="node16" href="$stdbool_8h.html" title="Type bool." alt="" coords="583,393,657,421"/>
+<area shape="rect" id="node21" href="$libio_8h.html" title="libio.h" alt="" coords="404,238,457,266"/>
+<area shape="rect" id="node26" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="481,238,548,266"/>
+<area shape="rect" id="node43" href="$stat_8h.html" title="sys/stat.h" alt="" coords="781,161,859,189"/>
+<area shape="rect" id="node47" href="$time_8h.html" title="time.h" alt="" coords="812,238,868,266"/>
+</map>

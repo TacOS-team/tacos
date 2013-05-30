@@ -3,8 +3,7 @@
 }
 {\ttfamily \#include $<$kmalloc.\-h$>$}\\*
 {\ttfamily \#include $<$hashmap.\-h$>$}\\*
-Graphe des dépendances par inclusion de hashmap.\-c\-:
-\nopagebreak
+Graphe des dépendances par inclusion de hashmap.\-c\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -14,17 +13,13 @@ Graphe des dépendances par inclusion de hashmap.\-c\-:
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d}{\hyperlink{struct____hashmap__t}{hashmap\-\_\-t} $\ast$ {\bfseries hashmap\-\_\-create} (int size, int($\ast$equal)(struct hashmap\-\_\-key\-\_\-t $\ast$, struct hashmap\-\_\-key\-\_\-t $\ast$), int($\ast$hash)(struct hashmap\-\_\-key\-\_\-t $\ast$))}\label{hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d}
-
+\hyperlink{hashmap_8h_accc61a2ac7ac10813e1bfa84d0ab2cf6}{hashmap\-\_\-t} $\ast$ \hyperlink{hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d}{hashmap\-\_\-create} (int size, int($\ast$equal)(struct hashmap\-\_\-key\-\_\-t $\ast$, struct hashmap\-\_\-key\-\_\-t $\ast$), int($\ast$hash)(struct hashmap\-\_\-key\-\_\-t $\ast$))
 \item 
-\hypertarget{hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d}{void {\bfseries hashmap\-\_\-set} (\hyperlink{struct____hashmap__t}{hashmap\-\_\-t} $\ast$this, struct hashmap\-\_\-key\-\_\-t $\ast$key, struct hashmap\-\_\-value\-\_\-t $\ast$value)}\label{hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d}
-
+void \hyperlink{hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d}{hashmap\-\_\-set} (\hyperlink{hashmap_8h_accc61a2ac7ac10813e1bfa84d0ab2cf6}{hashmap\-\_\-t} $\ast$this, struct hashmap\-\_\-key\-\_\-t $\ast$key, struct hashmap\-\_\-value\-\_\-t $\ast$value)
 \item 
-\hypertarget{hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e}{struct hashmap\-\_\-value\-\_\-t $\ast$ {\bfseries hashmap\-\_\-remove} (\hyperlink{struct____hashmap__t}{hashmap\-\_\-t} $\ast$this, struct hashmap\-\_\-key\-\_\-t $\ast$key)}\label{hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e}
-
+struct hashmap\-\_\-value\-\_\-t $\ast$ \hyperlink{hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e}{hashmap\-\_\-remove} (\hyperlink{hashmap_8h_accc61a2ac7ac10813e1bfa84d0ab2cf6}{hashmap\-\_\-t} $\ast$this, struct hashmap\-\_\-key\-\_\-t $\ast$key)
 \item 
-\hypertarget{hashmap_8c_a37bdba9503b86db73e6067b97b858dbd}{struct hashmap\-\_\-value\-\_\-t $\ast$ {\bfseries hashmap\-\_\-get} (\hyperlink{struct____hashmap__t}{hashmap\-\_\-t} $\ast$this, struct hashmap\-\_\-key\-\_\-t $\ast$key)}\label{hashmap_8c_a37bdba9503b86db73e6067b97b858dbd}
-
+struct hashmap\-\_\-value\-\_\-t $\ast$ \hyperlink{hashmap_8c_a37bdba9503b86db73e6067b97b858dbd}{hashmap\-\_\-get} (\hyperlink{hashmap_8h_accc61a2ac7ac10813e1bfa84d0ab2cf6}{hashmap\-\_\-t} $\ast$this, struct hashmap\-\_\-key\-\_\-t $\ast$key)
 \end{DoxyCompactItemize}
 
 
@@ -41,3 +36,165 @@ This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-
 
 You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
 Hashmap générique. Des tests un peu plus poussés sont à faire. 
+
+\subsection{Documentation des fonctions}
+\hypertarget{hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d}{\index{hashmap.\-c@{hashmap.\-c}!hashmap\-\_\-create@{hashmap\-\_\-create}}
+\index{hashmap\-\_\-create@{hashmap\-\_\-create}!hashmap.c@{hashmap.\-c}}
+\subsubsection[{hashmap\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf hashmap\-\_\-t}$\ast$ hashmap\-\_\-create (
+\begin{DoxyParamCaption}
+\item[{int}]{size, }
+\item[{int($\ast$)(struct hashmap\-\_\-key\-\_\-t $\ast$, struct hashmap\-\_\-key\-\_\-t $\ast$)}]{equal, }
+\item[{int($\ast$)(struct hashmap\-\_\-key\-\_\-t $\ast$)}]{hash}
+\end{DoxyParamCaption}
+)}}\label{hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d}
+Crée et initialise une nouvelle hashmap.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em size} & La taille de la table, correspond à la valeur maximale -\/ 1 que peut retourner la fonction de hash. \\
+\hline
+{\em equal} & Fonction qui retourne 1 si 2 clefs sont identiques. \\
+\hline
+{\em hash} & Fonction de hash.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Pointeur vers la hashmap. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{hashmap_8c_a37bdba9503b86db73e6067b97b858dbd}{\index{hashmap.\-c@{hashmap.\-c}!hashmap\-\_\-get@{hashmap\-\_\-get}}
+\index{hashmap\-\_\-get@{hashmap\-\_\-get}!hashmap.c@{hashmap.\-c}}
+\subsubsection[{hashmap\-\_\-get}]{\setlength{\rightskip}{0pt plus 5cm}struct hashmap\-\_\-value\-\_\-t$\ast$ hashmap\-\_\-get (
+\begin{DoxyParamCaption}
+\item[{{\bf hashmap\-\_\-t} $\ast$}]{this, }
+\item[{struct hashmap\-\_\-key\-\_\-t $\ast$}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [read]}}}\label{hashmap_8c_a37bdba9503b86db73e6067b97b858dbd}
+Lit un élément de la hashmap.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em this} & Pointeur vers la hashmap à utiliser. \\
+\hline
+{\em key} & La clef de l'élément à lire.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Pointeur vers la valeur, N\-U\-L\-L si non trouvée. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{hashmap_8c_a37bdba9503b86db73e6067b97b858dbd_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e}{\index{hashmap.\-c@{hashmap.\-c}!hashmap\-\_\-remove@{hashmap\-\_\-remove}}
+\index{hashmap\-\_\-remove@{hashmap\-\_\-remove}!hashmap.c@{hashmap.\-c}}
+\subsubsection[{hashmap\-\_\-remove}]{\setlength{\rightskip}{0pt plus 5cm}struct hashmap\-\_\-value\-\_\-t$\ast$ hashmap\-\_\-remove (
+\begin{DoxyParamCaption}
+\item[{{\bf hashmap\-\_\-t} $\ast$}]{this, }
+\item[{struct hashmap\-\_\-key\-\_\-t $\ast$}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [read]}}}\label{hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e}
+Supprime un élément de la hashmap. Attention, seule la cellule est freed.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em this} & Pointeur vers la hashmap à utiliser. \\
+\hline
+{\em key} & La clef de l'élément à supprimer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Pointeur vers la valeur enlevée de la hashmap, N\-U\-L\-L si non trouvée. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d}{\index{hashmap.\-c@{hashmap.\-c}!hashmap\-\_\-set@{hashmap\-\_\-set}}
+\index{hashmap\-\_\-set@{hashmap\-\_\-set}!hashmap.c@{hashmap.\-c}}
+\subsubsection[{hashmap\-\_\-set}]{\setlength{\rightskip}{0pt plus 5cm}void hashmap\-\_\-set (
+\begin{DoxyParamCaption}
+\item[{{\bf hashmap\-\_\-t} $\ast$}]{this, }
+\item[{struct hashmap\-\_\-key\-\_\-t $\ast$}]{key, }
+\item[{struct hashmap\-\_\-value\-\_\-t $\ast$}]{value}
+\end{DoxyParamCaption}
+)}}\label{hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d}
+Ajoute ou modifie une valeur dans la hashmap.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em this} & Pointeur vers la hashmap à utiliser. \\
+\hline
+{\em key} & La clef. \\
+\hline
+{\em value} & La valeur. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d_icgraph}
+\end{center}
+\end{figure}
+
+

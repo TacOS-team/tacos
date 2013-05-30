@@ -104,12 +104,10 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a2c81f61ee897bc5a1f5491f3e2bf711b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c81f61ee897bc5a1f5491f3e2bf711b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>atoi</b> (const char *__nptr)</td></tr>
-<tr class="memitem:a5e1f93e3feb632ee74c5f40cdd907ca2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e1f93e3feb632ee74c5f40cdd907ca2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>itoa</b> (char *buf, int base, int d)</td></tr>
-<tr class="memitem:a9496eacf49af4b53f5b839899b5bf31a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9496eacf49af4b53f5b839899b5bf31a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>itox</b> (char *buf, int d)</td></tr>
+<tr class="memitem:a2c81f61ee897bc5a1f5491f3e2bf711b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kernel_2include_2klibc_2stdlib_8h.html#a2c81f61ee897bc5a1f5491f3e2bf711b">atoi</a> (const char *__nptr)</td></tr>
+<tr class="memitem:a5e1f93e3feb632ee74c5f40cdd907ca2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kernel_2include_2klibc_2stdlib_8h.html#a5e1f93e3feb632ee74c5f40cdd907ca2">itoa</a> (char *buf, int base, int d)</td></tr>
+<tr class="memdesc:a5e1f93e3feb632ee74c5f40cdd907ca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converti l'entier d en une chaîne de caractère et le stock dans buf. L'entier base permet de spécifier la base à utiliser (decimal ou hexadécimal).  <a href="#a5e1f93e3feb632ee74c5f40cdd907ca2"></a><br/></td></tr>
+<tr class="memitem:a9496eacf49af4b53f5b839899b5bf31a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kernel_2include_2klibc_2stdlib_8h.html#a9496eacf49af4b53f5b839899b5bf31a">itox</a> (char *buf, int d)</td></tr>
 </table>
 <a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
@@ -121,10 +119,144 @@ LICENSE</h1>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div></div><!-- contents -->
+</div><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a2c81f61ee897bc5a1f5491f3e2bf711b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int atoi </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>__nptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Converti une chaine de caractère en entier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">__nptr</td><td>La chaine à traduire.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La valeur convertie. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kernel_2include_2klibc_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_icgraph.png" border="0" usemap="#kernel_2include_2klibc_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_icgraph" alt=""/></div>
+<map name="kernel_2include_2klibc_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_icgraph" id="kernel_2include_2klibc_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_icgraph">
+<area shape="rect" id="node3" href="libc_2include_2stdlib_8h.html#a2c81f61ee897bc5a1f5491f3e2bf711b" title="atoi" alt="" coords="96,5,139,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5e1f93e3feb632ee74c5f40cdd907ca2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void itoa </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>base</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Converti l'entier d en une chaîne de caractère et le stock dans buf. Si base est égal à 'd', alors il interprète d comme étant en décimal et si base est égal à 'x', alors il interprète d comme étant en hexadécimal.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>une chaîne de taille suffisament grande pour y stocker le résultat de la transformation. </td></tr>
+    <tr><td class="paramname">base</td><td>la base à utiliser pour la conversion ('d' ou 'x'). </td></tr>
+    <tr><td class="paramname">d</td><td>le nombre à convertir. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kernel_2include_2klibc_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_icgraph.png" border="0" usemap="#kernel_2include_2klibc_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_icgraph" alt=""/></div>
+<map name="kernel_2include_2klibc_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_icgraph" id="kernel_2include_2klibc_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_icgraph">
+<area shape="rect" id="node3" href="libc_2include_2stdlib_8h.html#a5e1f93e3feb632ee74c5f40cdd907ca2" title="Converti l&#39;entier d en une chaîne de caractère et le stock dans buf. L&#39;entier base permet de spécifie..." alt="" coords="104,5,147,33"/><area shape="rect" id="node5" href="kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="96,55,155,83"/><area shape="rect" id="node7" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="204,55,273,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9496eacf49af4b53f5b839899b5bf31a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void itox </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Affichage des hexa en longueur fixe, c'est plus commode.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>une chaîne de taille suffisament grande pour y stocker le </td></tr>
+    <tr><td class="paramname">d</td><td>le nombre à convertir. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_cgraph.png" border="0" usemap="#kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_cgraph" alt=""/></div>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_icgraph.png" border="0" usemap="#kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_icgraph" alt=""/></div>
+<map name="kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_icgraph" id="kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_icgraph">
+<area shape="rect" id="node4" href="kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="96,29,155,57"/><area shape="rect" id="node6" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="204,29,273,57"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Mai 8 2013 09:38:43 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Mai 30 2013 19:08:37 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

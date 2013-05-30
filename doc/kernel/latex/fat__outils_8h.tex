@@ -1,0 +1,351 @@
+\hypertarget{fat__outils_8h}{\section{Référence du fichier kernel/fs/fat/fat\-\_\-outils.h}
+\label{fat__outils_8h}\index{kernel/fs/fat/fat\-\_\-outils.\-h@{kernel/fs/fat/fat\-\_\-outils.\-h}}
+}
+
+
+Fonctions d'aide pour le driver F\-A\-T.  
+
+
+{\ttfamily \#include \char`\"{}fat\-\_\-internal.\-h\char`\"{}}\\*
+Graphe des dépendances par inclusion de fat\-\_\-outils.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fat__outils_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fat__outils_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{fat__outils_8h_a93808d4692d60c69db061effc6232ee6}{fat\-\_\-last\-\_\-cluster} (\hyperlink{fat__internal_8h_a9e8df592f54b50d959a9b9c84fa64fce}{fat\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance)
+\item 
+int \hyperlink{fat__outils_8h_a90bf5b4a5741e770ea8c3f8fc15f180b}{fat\-\_\-is\-\_\-free\-\_\-cluster} (int cluster)
+\item 
+int \hyperlink{fat__outils_8h_ad7455b50fef42408155f1c32109dfe50}{fat\-\_\-is\-\_\-last\-\_\-cluster} (\hyperlink{fat__internal_8h_a9e8df592f54b50d959a9b9c84fa64fce}{fat\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance, int cluster)
+\item 
+int \hyperlink{fat__outils_8h_aa28cc73f6fb1875fde62a8ee24a13960}{fat\-\_\-is\-\_\-used\-\_\-cluster} (\hyperlink{fat__internal_8h_a9e8df592f54b50d959a9b9c84fa64fce}{fat\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance, int cluster)
+\item 
+void \hyperlink{fat__outils_8h_a4f582028e77ee5dc535200f3e6b3312b}{fat\-\_\-encode\-\_\-long\-\_\-file\-\_\-name} (char $\ast$name, \hyperlink{structlfn__entry__t}{lfn\-\_\-entry\-\_\-t} $\ast$long\-\_\-file\-\_\-name, int n\-\_\-entries)
+\item 
+char $\ast$ \hyperlink{fat__outils_8h_ac588ac3acb0265e0db3158ba5c5a4a0f}{fat\-\_\-decode\-\_\-long\-\_\-file\-\_\-name} (char $\ast$name, \hyperlink{structlfn__entry__t}{lfn\-\_\-entry\-\_\-t} $\ast$long\-\_\-file\-\_\-name)
+\item 
+\hypertarget{fat__outils_8h_ae33b4bd360a352f9b2bb6316d7221970}{time\-\_\-t {\bfseries convert\-\_\-datetime\-\_\-fat\-\_\-to\-\_\-time\-\_\-t} (\hyperlink{fat__internal_8h_a50b52e2d394a6d7c7f1f2b7c7ef93a19}{fat\-\_\-date\-\_\-t} $\ast$date, \hyperlink{fat__internal_8h_ab864004b9f8da2db1862a0da9acb1735}{fat\-\_\-time\-\_\-t} $\ast$time)}\label{fat__outils_8h_ae33b4bd360a352f9b2bb6316d7221970}
+
+\item 
+\hypertarget{fat__outils_8h_ae71051d0397ad65e7ddb79589ddd9347}{void {\bfseries convert\-\_\-time\-\_\-t\-\_\-to\-\_\-datetime\-\_\-fat} (time\-\_\-t time, \hyperlink{fat__internal_8h_ab864004b9f8da2db1862a0da9acb1735}{fat\-\_\-time\-\_\-t} $\ast$timefat, \hyperlink{fat__internal_8h_a50b52e2d394a6d7c7f1f2b7c7ef93a19}{fat\-\_\-date\-\_\-t} $\ast$datefat)}\label{fat__outils_8h_ae71051d0397ad65e7ddb79589ddd9347}
+
+\item 
+\hypertarget{fat__outils_8h_a15df5ebf35fdd77ac639ed071c731841}{void {\bfseries fat\-\_\-dir\-\_\-entry\-\_\-to\-\_\-directory\-\_\-entry} (char $\ast$filename, \hyperlink{fat__internal_8h_a8b649d2d9d92d259f456e45f4c901f30}{fat\-\_\-dir\-\_\-entry\-\_\-t} $\ast$dir, \hyperlink{fat__internal_8h_ab6546cb0abf935a615fae20884a41818}{directory\-\_\-entry\-\_\-t} $\ast$entry)}\label{fat__outils_8h_a15df5ebf35fdd77ac639ed071c731841}
+
+\item 
+char $\ast$ \hyperlink{fat__outils_8h_a015254ce721ab0097a1008ec7153b819}{fat\-\_\-lfn\-\_\-to\-\_\-sfn} (char $\ast$filename)
+\item 
+void \hyperlink{fat__outils_8h_a54dad60e76b8e913b497b0a903778093}{fat\-\_\-decode\-\_\-short\-\_\-file\-\_\-name} (char $\ast$filename, \hyperlink{fat__internal_8h_a8b649d2d9d92d259f456e45f4c901f30}{fat\-\_\-dir\-\_\-entry\-\_\-t} $\ast$fdir)
+\item 
+\hyperlink{fat__internal_8h_ab6546cb0abf935a615fae20884a41818}{directory\-\_\-entry\-\_\-t} $\ast$ \hyperlink{fat__outils_8h_acc4ab73ddc901dbfa52071c98ce0de6b}{fat\-\_\-decode\-\_\-lfn\-\_\-entry} (\hyperlink{structlfn__entry__t}{lfn\-\_\-entry\-\_\-t} $\ast$fdir)
+\item 
+\hyperlink{fat__internal_8h_ab6546cb0abf935a615fae20884a41818}{directory\-\_\-entry\-\_\-t} $\ast$ \hyperlink{fat__outils_8h_a8100c884384ccb3b8ecec7f5180ad346}{fat\-\_\-decode\-\_\-sfn\-\_\-entry} (\hyperlink{fat__internal_8h_a8b649d2d9d92d259f456e45f4c901f30}{fat\-\_\-dir\-\_\-entry\-\_\-t} $\ast$fdir)
+\item 
+void \hyperlink{fat__outils_8h_a2bc59b6b9bca39fe4ba101a3c019b91a}{fat\-\_\-split\-\_\-dir\-\_\-filename} (const char $\ast$path, char $\ast$dir, char $\ast$filename)
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{fat__outils_8h_acc4ab73ddc901dbfa52071c98ce0de6b}{\index{fat\-\_\-outils.\-h@{fat\-\_\-outils.\-h}!fat\-\_\-decode\-\_\-lfn\-\_\-entry@{fat\-\_\-decode\-\_\-lfn\-\_\-entry}}
+\index{fat\-\_\-decode\-\_\-lfn\-\_\-entry@{fat\-\_\-decode\-\_\-lfn\-\_\-entry}!fat_outils.h@{fat\-\_\-outils.\-h}}
+\subsubsection[{fat\-\_\-decode\-\_\-lfn\-\_\-entry}]{\setlength{\rightskip}{0pt plus 5cm}{\bf directory\-\_\-entry\-\_\-t}$\ast$ fat\-\_\-decode\-\_\-lfn\-\_\-entry (
+\begin{DoxyParamCaption}
+\item[{{\bf lfn\-\_\-entry\-\_\-t} $\ast$}]{fdir}
+\end{DoxyParamCaption}
+)}}\label{fat__outils_8h_acc4ab73ddc901dbfa52071c98ce0de6b}
+Décode une entrée de type long file name.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em fdir} & Tableau contenant des entrées de type lfn.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+les informations du dossier sous la forme d'un directory\-\_\-entry\-\_\-t. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fat__outils_8h_acc4ab73ddc901dbfa52071c98ce0de6b_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fat__outils_8h_ac588ac3acb0265e0db3158ba5c5a4a0f}{\index{fat\-\_\-outils.\-h@{fat\-\_\-outils.\-h}!fat\-\_\-decode\-\_\-long\-\_\-file\-\_\-name@{fat\-\_\-decode\-\_\-long\-\_\-file\-\_\-name}}
+\index{fat\-\_\-decode\-\_\-long\-\_\-file\-\_\-name@{fat\-\_\-decode\-\_\-long\-\_\-file\-\_\-name}!fat_outils.h@{fat\-\_\-outils.\-h}}
+\subsubsection[{fat\-\_\-decode\-\_\-long\-\_\-file\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ fat\-\_\-decode\-\_\-long\-\_\-file\-\_\-name (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{{\bf lfn\-\_\-entry\-\_\-t} $\ast$}]{long\-\_\-file\-\_\-name}
+\end{DoxyParamCaption}
+)}}\label{fat__outils_8h_ac588ac3acb0265e0db3158ba5c5a4a0f}
+Décode un nom long. 
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fat__outils_8h_ac588ac3acb0265e0db3158ba5c5a4a0f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fat__outils_8h_a8100c884384ccb3b8ecec7f5180ad346}{\index{fat\-\_\-outils.\-h@{fat\-\_\-outils.\-h}!fat\-\_\-decode\-\_\-sfn\-\_\-entry@{fat\-\_\-decode\-\_\-sfn\-\_\-entry}}
+\index{fat\-\_\-decode\-\_\-sfn\-\_\-entry@{fat\-\_\-decode\-\_\-sfn\-\_\-entry}!fat_outils.h@{fat\-\_\-outils.\-h}}
+\subsubsection[{fat\-\_\-decode\-\_\-sfn\-\_\-entry}]{\setlength{\rightskip}{0pt plus 5cm}{\bf directory\-\_\-entry\-\_\-t}$\ast$ fat\-\_\-decode\-\_\-sfn\-\_\-entry (
+\begin{DoxyParamCaption}
+\item[{{\bf fat\-\_\-dir\-\_\-entry\-\_\-t} $\ast$}]{fdir}
+\end{DoxyParamCaption}
+)}}\label{fat__outils_8h_a8100c884384ccb3b8ecec7f5180ad346}
+Décode une entrée de type short file name.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em fdir} & Pointeur sur une entrée de dossier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+les informations du dossier sous la forme d'un directory\-\_\-entry\-\_\-t. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fat__outils_8h_a8100c884384ccb3b8ecec7f5180ad346_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fat__outils_8h_a54dad60e76b8e913b497b0a903778093}{\index{fat\-\_\-outils.\-h@{fat\-\_\-outils.\-h}!fat\-\_\-decode\-\_\-short\-\_\-file\-\_\-name@{fat\-\_\-decode\-\_\-short\-\_\-file\-\_\-name}}
+\index{fat\-\_\-decode\-\_\-short\-\_\-file\-\_\-name@{fat\-\_\-decode\-\_\-short\-\_\-file\-\_\-name}!fat_outils.h@{fat\-\_\-outils.\-h}}
+\subsubsection[{fat\-\_\-decode\-\_\-short\-\_\-file\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}void fat\-\_\-decode\-\_\-short\-\_\-file\-\_\-name (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{filename, }
+\item[{{\bf fat\-\_\-dir\-\_\-entry\-\_\-t} $\ast$}]{fdir}
+\end{DoxyParamCaption}
+)}}\label{fat__outils_8h_a54dad60e76b8e913b497b0a903778093}
+Décodage d'un nom court. 
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fat__outils_8h_a54dad60e76b8e913b497b0a903778093_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fat__outils_8h_a4f582028e77ee5dc535200f3e6b3312b}{\index{fat\-\_\-outils.\-h@{fat\-\_\-outils.\-h}!fat\-\_\-encode\-\_\-long\-\_\-file\-\_\-name@{fat\-\_\-encode\-\_\-long\-\_\-file\-\_\-name}}
+\index{fat\-\_\-encode\-\_\-long\-\_\-file\-\_\-name@{fat\-\_\-encode\-\_\-long\-\_\-file\-\_\-name}!fat_outils.h@{fat\-\_\-outils.\-h}}
+\subsubsection[{fat\-\_\-encode\-\_\-long\-\_\-file\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}void fat\-\_\-encode\-\_\-long\-\_\-file\-\_\-name (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{{\bf lfn\-\_\-entry\-\_\-t} $\ast$}]{long\-\_\-file\-\_\-name, }
+\item[{int}]{n\-\_\-entries}
+\end{DoxyParamCaption}
+)}}\label{fat__outils_8h_a4f582028e77ee5dc535200f3e6b3312b}
+Encode un nom long.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em name} & Name to encode. \\
+\hline
+{\em long\-\_\-file\-\_\-name} & Name encoded. \\
+\hline
+{\em n\-\_\-entries} & Nombre d'entrées nécessaires. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{fat__outils_8h_a4f582028e77ee5dc535200f3e6b3312b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fat__outils_8h_a90bf5b4a5741e770ea8c3f8fc15f180b}{\index{fat\-\_\-outils.\-h@{fat\-\_\-outils.\-h}!fat\-\_\-is\-\_\-free\-\_\-cluster@{fat\-\_\-is\-\_\-free\-\_\-cluster}}
+\index{fat\-\_\-is\-\_\-free\-\_\-cluster@{fat\-\_\-is\-\_\-free\-\_\-cluster}!fat_outils.h@{fat\-\_\-outils.\-h}}
+\subsubsection[{fat\-\_\-is\-\_\-free\-\_\-cluster}]{\setlength{\rightskip}{0pt plus 5cm}int fat\-\_\-is\-\_\-free\-\_\-cluster (
+\begin{DoxyParamCaption}
+\item[{int}]{cluster}
+\end{DoxyParamCaption}
+)}}\label{fat__outils_8h_a90bf5b4a5741e770ea8c3f8fc15f180b}
+Indique si le cluster est libre.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cluster} & Adresse du cluster.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+vrai ou faux. 
+\end{DoxyReturn}
+\hypertarget{fat__outils_8h_ad7455b50fef42408155f1c32109dfe50}{\index{fat\-\_\-outils.\-h@{fat\-\_\-outils.\-h}!fat\-\_\-is\-\_\-last\-\_\-cluster@{fat\-\_\-is\-\_\-last\-\_\-cluster}}
+\index{fat\-\_\-is\-\_\-last\-\_\-cluster@{fat\-\_\-is\-\_\-last\-\_\-cluster}!fat_outils.h@{fat\-\_\-outils.\-h}}
+\subsubsection[{fat\-\_\-is\-\_\-last\-\_\-cluster}]{\setlength{\rightskip}{0pt plus 5cm}int fat\-\_\-is\-\_\-last\-\_\-cluster (
+\begin{DoxyParamCaption}
+\item[{{\bf fat\-\_\-fs\-\_\-instance\-\_\-t} $\ast$}]{instance, }
+\item[{int}]{cluster}
+\end{DoxyParamCaption}
+)}}\label{fat__outils_8h_ad7455b50fef42408155f1c32109dfe50}
+Indique si c'est le dernier cluster.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em instance} & de F\-S. \\
+\hline
+{\em cluster} & Adresse du cluster.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+vrai ou faux. 
+\end{DoxyReturn}
+\hypertarget{fat__outils_8h_aa28cc73f6fb1875fde62a8ee24a13960}{\index{fat\-\_\-outils.\-h@{fat\-\_\-outils.\-h}!fat\-\_\-is\-\_\-used\-\_\-cluster@{fat\-\_\-is\-\_\-used\-\_\-cluster}}
+\index{fat\-\_\-is\-\_\-used\-\_\-cluster@{fat\-\_\-is\-\_\-used\-\_\-cluster}!fat_outils.h@{fat\-\_\-outils.\-h}}
+\subsubsection[{fat\-\_\-is\-\_\-used\-\_\-cluster}]{\setlength{\rightskip}{0pt plus 5cm}int fat\-\_\-is\-\_\-used\-\_\-cluster (
+\begin{DoxyParamCaption}
+\item[{{\bf fat\-\_\-fs\-\_\-instance\-\_\-t} $\ast$}]{instance, }
+\item[{int}]{cluster}
+\end{DoxyParamCaption}
+)}}\label{fat__outils_8h_aa28cc73f6fb1875fde62a8ee24a13960}
+Indique si c'est le dernier cluster.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em instance} & de F\-S. \\
+\hline
+{\em cluster} & Adresse du cluster.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+vrai ou faux. 
+\end{DoxyReturn}
+\hypertarget{fat__outils_8h_a93808d4692d60c69db061effc6232ee6}{\index{fat\-\_\-outils.\-h@{fat\-\_\-outils.\-h}!fat\-\_\-last\-\_\-cluster@{fat\-\_\-last\-\_\-cluster}}
+\index{fat\-\_\-last\-\_\-cluster@{fat\-\_\-last\-\_\-cluster}!fat_outils.h@{fat\-\_\-outils.\-h}}
+\subsubsection[{fat\-\_\-last\-\_\-cluster}]{\setlength{\rightskip}{0pt plus 5cm}int fat\-\_\-last\-\_\-cluster (
+\begin{DoxyParamCaption}
+\item[{{\bf fat\-\_\-fs\-\_\-instance\-\_\-t} $\ast$}]{instance}
+\end{DoxyParamCaption}
+)}}\label{fat__outils_8h_a93808d4692d60c69db061effc6232ee6}
+Renvoie l'adresse utilisée pour indiquer que c'est le dernier cluster.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em instance} & de F\-S.\\
+\hline
+\end{DoxyParams}
+return l'adresse. \hypertarget{fat__outils_8h_a015254ce721ab0097a1008ec7153b819}{\index{fat\-\_\-outils.\-h@{fat\-\_\-outils.\-h}!fat\-\_\-lfn\-\_\-to\-\_\-sfn@{fat\-\_\-lfn\-\_\-to\-\_\-sfn}}
+\index{fat\-\_\-lfn\-\_\-to\-\_\-sfn@{fat\-\_\-lfn\-\_\-to\-\_\-sfn}!fat_outils.h@{fat\-\_\-outils.\-h}}
+\subsubsection[{fat\-\_\-lfn\-\_\-to\-\_\-sfn}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ fat\-\_\-lfn\-\_\-to\-\_\-sfn (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}}\label{fat__outils_8h_a015254ce721ab0097a1008ec7153b819}
+Converti un nom de fichier long en nom court.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em filename} & nom long.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+nom court. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fat__outils_8h_a015254ce721ab0097a1008ec7153b819_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{fat__outils_8h_a015254ce721ab0097a1008ec7153b819_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fat__outils_8h_a2bc59b6b9bca39fe4ba101a3c019b91a}{\index{fat\-\_\-outils.\-h@{fat\-\_\-outils.\-h}!fat\-\_\-split\-\_\-dir\-\_\-filename@{fat\-\_\-split\-\_\-dir\-\_\-filename}}
+\index{fat\-\_\-split\-\_\-dir\-\_\-filename@{fat\-\_\-split\-\_\-dir\-\_\-filename}!fat_outils.h@{fat\-\_\-outils.\-h}}
+\subsubsection[{fat\-\_\-split\-\_\-dir\-\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}void fat\-\_\-split\-\_\-dir\-\_\-filename (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path, }
+\item[{char $\ast$}]{dir, }
+\item[{char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}}\label{fat__outils_8h_a2bc59b6b9bca39fe4ba101a3c019b91a}
+Découpe un chemin en deux parties (dossier séparé du filename).
+
+
+\begin{DoxyParams}{Paramètres}
+{\em path} & Chemin à découper. \\
+\hline
+{\em dir} & Première partie qui va jusqu'au dernier slash du path. \\
+\hline
+{\em filename} & Dernière partie (après le dernier slash). \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{fat__outils_8h_a2bc59b6b9bca39fe4ba101a3c019b91a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{fat__outils_8h_a2bc59b6b9bca39fe4ba101a3c019b91a_icgraph}
+\end{center}
+\end{figure}
+
+

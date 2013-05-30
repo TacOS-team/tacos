@@ -7,7 +7,7 @@
 <area shape="rect" id="node13" href="$tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="765,99,893,143"/>
 <area shape="rect" id="node15" href="$vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="917,99,1045,143"/>
 <area shape="rect" id="node17" href="$vga_8c.html" title="kernel/drivers/char\l/vga.c" alt="" coords="1069,99,1197,143"/>
-<area shape="rect" id="node19" href="$elf_8c.html" title="kernel/elf.c" alt="" coords="1221,107,1307,135"/>
+<area shape="rect" id="node19" href="$elf_8c.html" title="Bibliotèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="1221,107,1307,135"/>
 <area shape="rect" id="node21" href="$devfs_8c.html" title="DevFS." alt="" coords="1331,107,1448,135"/>
 <area shape="rect" id="node23" href="$fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="1472,107,1592,135"/>
 <area shape="rect" id="node25" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="1616,107,1795,135"/>

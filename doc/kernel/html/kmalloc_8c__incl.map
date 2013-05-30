@@ -1,0 +1,6 @@
+<map id="kernel/kmalloc.c" name="kernel/kmalloc.c">
+<area shape="rect" id="node3" href="$memory_8h.html" title="Gestion des pages mémoires physiques." alt="" coords="5,83,83,111"/>
+<area shape="rect" id="node7" href="$vmm_8h.html" title="vmm.h" alt="" coords="107,83,168,111"/>
+<area shape="rect" id="node10" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="192,83,269,111"/>
+<area shape="rect" id="node5" href="$types_8h.html" title="types.h" alt="" coords="107,161,168,189"/>
+</map>

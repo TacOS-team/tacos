@@ -1,0 +1,59 @@
+\hypertarget{scanf_8c}{\section{Référence du fichier libc/stdio/scanf.c}
+\label{scanf_8c}\index{libc/stdio/scanf.\-c@{libc/stdio/scanf.\-c}}
+}
+{\ttfamily \#include $<$ctype.\-h$>$}\\*
+{\ttfamily \#include $<$stdarg.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$libio.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+Graphe des dépendances par inclusion de scanf.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scanf_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{scanf_8c_acc8409f683a7643028fcae59355b95b7}{\#define {\bfseries conv\-\_\-error}()~return -\/1}\label{scanf_8c_acc8409f683a7643028fcae59355b95b7}
+
+\item 
+\hypertarget{scanf_8c_acd07f75427de11b90788411e7465e1d8}{\#define {\bfseries input\-\_\-error}()~return (done == (0) ? E\-O\-F \-: done)}\label{scanf_8c_acd07f75427de11b90788411e7465e1d8}
+
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{scanf_8c_a7c29d4a7aefcf7ebc25f9c852e2c95d8}{int {\bfseries vsscanf} (const char $\ast$s, const char $\ast$format, va\-\_\-list ap)}\label{scanf_8c_a7c29d4a7aefcf7ebc25f9c852e2c95d8}
+
+\item 
+\hypertarget{scanf_8c_acd369d6926dd1e1fb503821a8b167414}{int {\bfseries sscanf} (const char $\ast$s, const char $\ast$format,...)}\label{scanf_8c_acd369d6926dd1e1fb503821a8b167414}
+
+\item 
+\hypertarget{scanf_8c_abdd32e401e37c9d954f3f0a6907500d9}{int {\bfseries vfscanf} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream, const char $\ast$format, va\-\_\-list ap)}\label{scanf_8c_abdd32e401e37c9d954f3f0a6907500d9}
+
+\item 
+\hypertarget{scanf_8c_ae902a7b8796799a6e076f07e9d7de045}{int {\bfseries fscanf} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream, const char $\ast$format,...)}\label{scanf_8c_ae902a7b8796799a6e076f07e9d7de045}
+
+\item 
+\hypertarget{scanf_8c_a5c48433db9c04031772d5b36e6c4411d}{int {\bfseries scanf} (const char $\ast$format,...)}\label{scanf_8c_a5c48433db9c04031772d5b36e6c4411d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+Description de ce que fait le fichier 

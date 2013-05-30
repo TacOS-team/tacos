@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/drivers/block/floppy/floppy_motor.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_0de1d64efa6df97eacc8f5b0f9da3e59.html">drivers</a></li><li class="navelem"><a class="el" href="dir_9327dbb3bc40ae88994b7f67f81babb9.html">block</a></li><li class="navelem"><a class="el" href="dir_4c153ac04b642253c2d4619fe8aafeed.html">floppy</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier floppy_motor.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="types_8h_source.html">types.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="ioports_8h_source.html">ioports.h</a>&gt;</code><br/>
+<code>#include &quot;<a class="el" href="floppy__motor_8h_source.html">floppy_motor.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="floppy__utils_8h_source.html">floppy_utils.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de floppy_motor.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="floppy__motor_8c__incl.png" border="0" usemap="#kernel_2drivers_2block_2floppy_2floppy__motor_8c" alt=""/></div>
+<map name="kernel_2drivers_2block_2floppy_2floppy__motor_8c" id="kernel_2drivers_2block_2floppy_2floppy__motor_8c">
+<area shape="rect" id="node3" href="types_8h.html" title="types.h" alt="" coords="5,99,67,127"/><area shape="rect" id="node5" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="91,99,160,127"/><area shape="rect" id="node7" href="floppy__motor_8h.html" title="floppy_motor.h" alt="" coords="184,99,288,127"/><area shape="rect" id="node9" href="floppy__utils_8h.html" title="floppy_utils.h" alt="" coords="312,99,408,127"/></map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a8e34854bf77e8b763e57b6a8986ecff5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__motor_8c.html#a8e34854bf77e8b763e57b6a8986ecff5">floppy_motor</a> (<a class="el" href="floppy__motor_8h.html#add6bb30f455445a1aa955aa5f3bc6f3d">floppy_motor_state</a> new_state)</td></tr>
+<tr class="memdesc:a8e34854bf77e8b763e57b6a8986ecff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change l'état du moteur.  <a href="#a8e34854bf77e8b763e57b6a8986ecff5"></a><br/></td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+<p>Description de ce que fait le fichier </p>
+</div><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a8e34854bf77e8b763e57b6a8986ecff5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void floppy_motor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="floppy__motor_8h.html#add6bb30f455445a1aa955aa5f3bc6f3d">floppy_motor_state</a>&#160;</td>
+          <td class="paramname"><em>new_state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_state</td><td>état du moteur désiré </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="floppy__motor_8c_a8e34854bf77e8b763e57b6a8986ecff5_cgraph.png" border="0" usemap="#floppy__motor_8c_a8e34854bf77e8b763e57b6a8986ecff5_cgraph" alt=""/></div>
+<map name="floppy__motor_8c_a8e34854bf77e8b763e57b6a8986ecff5_cgraph" id="floppy__motor_8c_a8e34854bf77e8b763e57b6a8986ecff5_cgraph">
+<area shape="rect" id="node3" href="floppy__utils_8c.html#aab49f8f343dc0a1f9c89ec5f5e444e0e" title="Retourne le numero tu lecteur courrant." alt="" coords="151,5,276,49"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="floppy__motor_8c_a8e34854bf77e8b763e57b6a8986ecff5_icgraph.png" border="0" usemap="#floppy__motor_8c_a8e34854bf77e8b763e57b6a8986ecff5_icgraph" alt=""/></div>
+<map name="floppy__motor_8c_a8e34854bf77e8b763e57b6a8986ecff5_icgraph" id="floppy__motor_8c_a8e34854bf77e8b763e57b6a8986ecff5_icgraph">
+<area shape="rect" id="node3" href="floppy__utils_8h.html#acf13f3cbd5df998eefb55cd2d15210c5" title="Déplace la tête de lecture à un cylindre défini." alt="" coords="149,5,240,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:17 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

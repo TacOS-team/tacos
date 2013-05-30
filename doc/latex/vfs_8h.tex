@@ -9,16 +9,14 @@ Virtual File System.
 {\ttfamily \#include $<$types.\-h$>$}\\*
 {\ttfamily \#include $<$fd\-\_\-types.\-h$>$}\\*
 {\ttfamily \#include $<$kstat.\-h$>$}\\*
-Graphe des dépendances par inclusion de vfs.\-h\-:
-\nopagebreak
+Graphe des dépendances par inclusion de vfs.\-h\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=254pt]{vfs_8h__incl}
+\includegraphics[width=312pt]{vfs_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:
-\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -79,7 +77,7 @@ typedef struct \hyperlink{struct__file__attributes__t}{\-\_\-file\-\_\-attribute
 \hypertarget{vfs_8h_ab2237a3610010d8a211ef3d55a521dba}{void \hyperlink{vfs_8h_ab2237a3610010d8a211ef3d55a521dba}{vfs\-\_\-register\-\_\-fs} (\hyperlink{structfile__system__t}{file\-\_\-system\-\_\-t} $\ast$fs)}\label{vfs_8h_ab2237a3610010d8a211ef3d55a521dba}
 
 \begin{DoxyCompactList}\small\item\em Enregistrer un F\-S dans le V\-F\-S pour le rendre disponible. \end{DoxyCompactList}\item 
-\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ \hyperlink{vfs_8h_a7b293d0cca90e9f633dc69cc5900c430}{vfs\-\_\-open} (const char $\ast$pathname, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} flags)
+\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ \hyperlink{vfs_8h_a7b293d0cca90e9f633dc69cc5900c430}{vfs\-\_\-open} (const char $\ast$pathname, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} flags)
 \begin{DoxyCompactList}\small\item\em Ouverture d'un fichier. \end{DoxyCompactList}\item 
 void \hyperlink{vfs_8h_a26aa39a32af0bfccaffdbcec89c0a00e}{vfs\-\_\-mount} (const char $\ast$device, const char $\ast$mountpoint, const char $\ast$type)
 \begin{DoxyCompactList}\small\item\em Montage d'un device sur un certain point de montage. \end{DoxyCompactList}\item 
@@ -103,9 +101,9 @@ int \hyperlink{vfs_8h_a64ef66712e6c30f0295e1e1cad601beb}{vfs\-\_\-rename} (const
 \begin{DoxyCompactList}\small\item\em Renomme ou déplace un fichier. \end{DoxyCompactList}\item 
 int \hyperlink{vfs_8h_a8f5dc4e5e4a2aa5d7649790256f11685}{vfs\-\_\-rmdir} (const char $\ast$pathname)
 \begin{DoxyCompactList}\small\item\em Suppression d'un dossier. \end{DoxyCompactList}\item 
-int \hyperlink{vfs_8h_a631bdc2a44ac1b7477782b058277a8d3}{vfs\-\_\-readdir} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, char $\ast$entries, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+int \hyperlink{vfs_8h_a631bdc2a44ac1b7477782b058277a8d3}{vfs\-\_\-readdir} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, char $\ast$entries, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
 \begin{DoxyCompactList}\small\item\em Lecture de plusieurs entrées d'un dossier. \end{DoxyCompactList}\item 
-int \hyperlink{vfs_8h_ab0c805d30412c7b434adf437a404ce6a}{vfs\-\_\-close} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd)
+int \hyperlink{vfs_8h_ab0c805d30412c7b434adf437a404ce6a}{vfs\-\_\-close} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd)
 \begin{DoxyCompactList}\small\item\em Fermeture d'un fichier ouvert. \end{DoxyCompactList}\item 
 void \hyperlink{vfs_8h_a2e2b9554ca8721b61981dff16a7b54ad}{vfs\-\_\-init} ()
 \end{DoxyCompactItemize}
@@ -221,12 +219,22 @@ Cellule de la liste des points de montage.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=214pt]{vfs_8h_ab0c805d30412c7b434adf437a404ce6a_cgraph}
+\includegraphics[width=350pt]{vfs_8h_ab0c805d30412c7b434adf437a404ce6a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs_8h_ab0c805d30412c7b434adf437a404ce6a_icgraph}
 \end{center}
 \end{figure}
 
@@ -240,8 +248,7 @@ Voici le graphe d'appel pour cette fonction \-:
 )}}\label{vfs_8h_a2e2b9554ca8721b61981dff16a7b54ad}
 Initialisation du V\-F\-S. 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -268,6 +275,17 @@ Voici le graphe d'appel pour cette fonction \-:
 \begin{DoxyReturn}{Renvoie}
 0 en cas de succès. 
 \end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{vfs_8h_a392f80d5c4ab48178abcd268c3f64c45_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{vfs_8h_addbdd0f5a70a3babbcb5ca4d63e2c3fd}{\index{vfs.\-h@{vfs.\-h}!vfs\-\_\-mknod@{vfs\-\_\-mknod}}
 \index{vfs\-\_\-mknod@{vfs\-\_\-mknod}!vfs.h@{vfs.\-h}}
 \subsubsection[{vfs\-\_\-mknod}]{\setlength{\rightskip}{0pt plus 5cm}int vfs\-\_\-mknod (
@@ -291,8 +309,7 @@ Voici le graphe d'appel pour cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -321,8 +338,7 @@ Voici le graphe des appelants de cette fonction \-:
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -351,20 +367,18 @@ Un descripteur de fichier ouvert.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=226pt]{vfs_8h_a7b293d0cca90e9f633dc69cc5900c430_cgraph}
+\includegraphics[width=350pt]{vfs_8h_a7b293d0cca90e9f633dc69cc5900c430_cgraph}
 \end{center}
 \end{figure}
 
 
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -396,8 +410,7 @@ Voici le graphe des appelants de cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -439,6 +452,28 @@ Voici le graphe d'appel pour cette fonction \-:
 \begin{DoxyReturn}{Renvoie}
 0 en cas de succès. 
 \end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs_8h_a8f5dc4e5e4a2aa5d7649790256f11685_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{vfs_8h_a8f5dc4e5e4a2aa5d7649790256f11685_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{vfs_8h_a67e1b452e79d57b6080feb5e1d320234}{\index{vfs.\-h@{vfs.\-h}!vfs\-\_\-stat@{vfs\-\_\-stat}}
 \index{vfs\-\_\-stat@{vfs\-\_\-stat}!vfs.h@{vfs.\-h}}
 \subsubsection[{vfs\-\_\-stat}]{\setlength{\rightskip}{0pt plus 5cm}int vfs\-\_\-stat (
@@ -459,8 +494,7 @@ Voici le graphe d'appel pour cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -486,8 +520,7 @@ Voici le graphe des appelants de cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -513,8 +546,18 @@ Voici le graphe d'appel pour cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs_8h_a4f8b6a1f2b0e6012446196f18b33d686_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

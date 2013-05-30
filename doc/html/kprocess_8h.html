@@ -107,7 +107,7 @@ Graphe des dépendances par inclusion de kprocess.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="kprocess_8h__incl.png" border="0" usemap="#kernel_2include_2kprocess_8h" alt=""/></div>
 <map name="kernel_2include_2kprocess_8h" id="kernel_2include_2kprocess_8h">
-<area shape="rect" id="node3" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="5,83,83,111"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="308,161,369,189"/><area shape="rect" id="node7" href="fd__types_8h.html" title="fd_types.h" alt="" coords="157,83,237,111"/><area shape="rect" id="node9" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="261,83,365,111"/><area shape="rect" id="node11" href="process__types_8h.html" title="process_types.h" alt="" coords="389,83,504,111"/><area shape="rect" id="node13" href="symtable_8h.html" title="symtable.h" alt="" coords="613,83,696,111"/><area shape="rect" id="node19" href="vmm_8h.html" title="vmm.h" alt="" coords="528,83,589,111"/><area shape="rect" id="node16" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="632,161,677,189"/></map>
+<area shape="rect" id="node3" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="5,83,83,111"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="167,161,228,189"/><area shape="rect" id="node7" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="157,83,237,111"/><area shape="rect" id="node10" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="261,83,365,111"/><area shape="rect" id="node12" href="process__types_8h.html" title="process_types.h" alt="" coords="389,83,504,111"/><area shape="rect" id="node14" href="symtable_8h.html" title="symtable.h" alt="" coords="613,83,696,111"/><area shape="rect" id="node20" href="vmm_8h.html" title="vmm.h" alt="" coords="528,83,589,111"/><area shape="rect" id="node17" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="632,161,677,189"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
@@ -123,26 +123,21 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 Structures de données</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprocess__init__data__t.html">process_init_data_t</a></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprocess__t.html">process_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure représentant un processus.  <a href="structprocess__t.html#details">Plus de détails...</a><br/></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__proclist__cell.html">_proclist_cell</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a2d507dcb17c4021c522e307f8d0657f7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d507dcb17c4021c522e307f8d0657f7"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>USER_PROCESS_BASE</b>&#160;&#160;&#160;0x40000000</td></tr>
-<tr class="memitem:a63e32d00bc48471b4db49d481ac228dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63e32d00bc48471b4db49d481ac228dc"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_PROC</b>&#160;&#160;&#160;512</td></tr>
+<tr class="memitem:a63e32d00bc48471b4db49d481ac228dc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#a63e32d00bc48471b4db49d481ac228dc">MAX_PROC</a>&#160;&#160;&#160;512</td></tr>
 <tr class="memitem:a49bcf7db4ee90709603629610ee9bffc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a49bcf7db4ee90709603629610ee9bffc"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CPU_USAGE_SAMPLE_RATE</b>&#160;&#160;&#160;100</td></tr>
-<tr class="memitem:a0a3202b6e8073e458785ebcdf6d8c9f2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a3202b6e8073e458785ebcdf6d8c9f2"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PROCSTATE_IDLE</b>&#160;&#160;&#160;0</td></tr>
-<tr class="memitem:a1538df1594431185fbbced3805cddc37"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1538df1594431185fbbced3805cddc37"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PROCSTATE_RUNNING</b>&#160;&#160;&#160;1</td></tr>
-<tr class="memitem:af93e7bcf4bed8ec35b44970c4b332b92"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af93e7bcf4bed8ec35b44970c4b332b92"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PROCSTATE_WAITING</b>&#160;&#160;&#160;2</td></tr>
-<tr class="memitem:a0d5a62fb2d0f0faed256d4b5b872f7f0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d5a62fb2d0f0faed256d4b5b872f7f0"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PROCSTATE_SUSPENDED</b>&#160;&#160;&#160;3</td></tr>
-<tr class="memitem:ab809d396d2bb4d37ee1facf1e8ef34e3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab809d396d2bb4d37ee1facf1e8ef34e3"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PROCSTATE_TERMINATED</b>&#160;&#160;&#160;4</td></tr>
+<tr class="memitem:a0a3202b6e8073e458785ebcdf6d8c9f2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#a0a3202b6e8073e458785ebcdf6d8c9f2">PROCSTATE_IDLE</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memitem:a1538df1594431185fbbced3805cddc37"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#a1538df1594431185fbbced3805cddc37">PROCSTATE_RUNNING</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memitem:af93e7bcf4bed8ec35b44970c4b332b92"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#af93e7bcf4bed8ec35b44970c4b332b92">PROCSTATE_WAITING</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memitem:a0d5a62fb2d0f0faed256d4b5b872f7f0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#a0d5a62fb2d0f0faed256d4b5b872f7f0">PROCSTATE_SUSPENDED</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memitem:ab809d396d2bb4d37ee1facf1e8ef34e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#ab809d396d2bb4d37ee1facf1e8ef34e3">PROCSTATE_TERMINATED</a>&#160;&#160;&#160;4</td></tr>
 <tr class="memitem:a534e21105e1b2c98193793536568d193"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a534e21105e1b2c98193793536568d193"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CURRENT_PROCESS</b>&#160;&#160;&#160;-1</td></tr>
 <tr class="memitem:adafbc738b41a660338e438e3e3797ad5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adafbc738b41a660338e438e3e3797ad5"></a>
@@ -158,8 +153,6 @@ typedef struct <a class="el" href="struct__proclist__cell.html">_proclist_cell</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a460fef0683c60cd00003caa26eda1339"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a460fef0683c60cd00003caa26eda1339"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init_process_array</b> ()</td></tr>
 <tr class="memitem:a21c8be1fe7cda8279886a50d946625bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structprocess__t.html">process_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#a21c8be1fe7cda8279886a50d946625bb">create_process</a> (<a class="el" href="structprocess__init__data__t.html">process_init_data_t</a> *init_data)</td></tr>
 <tr class="memdesc:a21c8be1fe7cda8279886a50d946625bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l'ajoute à la liste des processus avec un état d'exécution PROCSTATE_IDLE.  <a href="#a21c8be1fe7cda8279886a50d946625bb"></a><br/></td></tr>
 <tr class="memitem:a7cced35f469ae897c55ab96940289cf6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#a7cced35f469ae897c55ab96940289cf6">delete_process</a> (int pid)</td></tr>
@@ -176,25 +169,22 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kpro
 <tr class="memitem:a6b501b3d2704f5c48c90ca79bec4d289"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b501b3d2704f5c48c90ca79bec4d289"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>sample_CPU_usage</b> ()</td></tr>
 <tr class="memitem:acc70870c5d5807f03b0a58bd1e160f6f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc70870c5d5807f03b0a58bd1e160f6f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER1</b> (sys_exit, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ret_value)</td></tr>
-<tr class="memitem:aeb04c10b6eb21ece6a889c874c3e1830"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb04c10b6eb21ece6a889c874c3e1830"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER1</b> (sys_getpid, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *pid)</td></tr>
-<tr class="memitem:a1e4ed2d0a9b35c02447c629472a491f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1e4ed2d0a9b35c02447c629472a491f3"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER1</b> (sys_getppid, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *ppid)</td></tr>
-<tr class="memitem:ad12463cd6ec271bb3214cbbee8d7c1ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad12463cd6ec271bb3214cbbee8d7c1ab"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_exec, char *, char **, int *)</td></tr>
-<tr class="memitem:ac57ad880ae66a0bf4339309fada43242"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac57ad880ae66a0bf4339309fada43242"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_proc, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> sub_func, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param1, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param2)</td></tr>
-<tr class="memitem:a4e715b0cdc3fe2325e5dcc64ec07f0f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e715b0cdc3fe2325e5dcc64ec07f0f9"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER1</b> (sys_waitpid, int pid)</td></tr>
-<tr class="memitem:a95c28343e8515a53a2392068dc70d307"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a95c28343e8515a53a2392068dc70d307"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_process</b> (<a class="el" href="structprocess__t.html">process_t</a> *process)</td></tr>
-<tr class="memitem:a178269ee586c6ba0b34c554a6e05dd89"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a178269ee586c6ba0b34c554a6e05dd89"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>inject_idle</b> (<a class="el" href="structprocess__t.html">process_t</a> *proc)</td></tr>
-<tr class="memitem:a67b19f8892567cdb63c98ee660300f60"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67b19f8892567cdb63c98ee660300f60"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>procfs_init</b> ()</td></tr>
-<tr class="memitem:ab5769fb8db77d54ea9a9216f14a2248c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5769fb8db77d54ea9a9216f14a2248c"></a>
-<a class="el" href="structprocess__t.html">process_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get_process_array</b> (int i)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#acc70870c5d5807f03b0a58bd1e160f6f">SYSCALL_HANDLER1</a> (sys_exit, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ret_value)</td></tr>
+<tr class="memdesc:acc70870c5d5807f03b0a58bd1e160f6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Syscall appelé lors de la fin d'exécution d'un process. <br/></td></tr>
+<tr class="memitem:aeb04c10b6eb21ece6a889c874c3e1830"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#aeb04c10b6eb21ece6a889c874c3e1830">SYSCALL_HANDLER1</a> (sys_getpid, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *pid)</td></tr>
+<tr class="memdesc:aeb04c10b6eb21ece6a889c874c3e1830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupére le PID du process courant.  <a href="#aeb04c10b6eb21ece6a889c874c3e1830"></a><br/></td></tr>
+<tr class="memitem:a1e4ed2d0a9b35c02447c629472a491f3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#a1e4ed2d0a9b35c02447c629472a491f3">SYSCALL_HANDLER1</a> (sys_getppid, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *ppid)</td></tr>
+<tr class="memdesc:a1e4ed2d0a9b35c02447c629472a491f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupére le PID du process parent.  <a href="#a1e4ed2d0a9b35c02447c629472a491f3"></a><br/></td></tr>
+<tr class="memitem:a47ef452c5b4017727c9c4222ab133fae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#a47ef452c5b4017727c9c4222ab133fae">SYSCALL_HANDLER3</a> (sys_exec, char *cmdline, char **environ, int *retval)</td></tr>
+<tr class="memdesc:a47ef452c5b4017727c9c4222ab133fae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Syscall pour exécuter un programme.  <a href="#a47ef452c5b4017727c9c4222ab133fae"></a><br/></td></tr>
+<tr class="memitem:ac57ad880ae66a0bf4339309fada43242"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#ac57ad880ae66a0bf4339309fada43242">SYSCALL_HANDLER3</a> (sys_proc, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> sub_func, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param1, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param2)</td></tr>
+<tr class="memdesc:ac57ad880ae66a0bf4339309fada43242"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère des infos sur un process.  <a href="#ac57ad880ae66a0bf4339309fada43242"></a><br/></td></tr>
+<tr class="memitem:a4e715b0cdc3fe2325e5dcc64ec07f0f9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#a4e715b0cdc3fe2325e5dcc64ec07f0f9">SYSCALL_HANDLER1</a> (sys_waitpid, int pid)</td></tr>
+<tr class="memdesc:a4e715b0cdc3fe2325e5dcc64ec07f0f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bloque le process courant jusqu'à ce que le processus identifié par pid se termine.  <a href="#a4e715b0cdc3fe2325e5dcc64ec07f0f9"></a><br/></td></tr>
+<tr class="memitem:a67b19f8892567cdb63c98ee660300f60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#a67b19f8892567cdb63c98ee660300f60">procfs_init</a> ()</td></tr>
+<tr class="memdesc:a67b19f8892567cdb63c98ee660300f60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du proc FS.  <a href="#a67b19f8892567cdb63c98ee660300f60"></a><br/></td></tr>
+<tr class="memitem:ab5769fb8db77d54ea9a9216f14a2248c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structprocess__t.html">process_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kprocess_8h.html#ab5769fb8db77d54ea9a9216f14a2248c">get_process_array</a> (int i)</td></tr>
+<tr class="memdesc:ab5769fb8db77d54ea9a9216f14a2248c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère un process à partir de sa position dans le tableau.  <a href="#ab5769fb8db77d54ea9a9216f14a2248c"></a><br/></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
@@ -206,7 +196,86 @@ LICENSE</h1>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des définitions de type</h2>
+</div><h2>Documentation des macros</h2>
+<a class="anchor" id="a63e32d00bc48471b4db49d481ac228dc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_PROC&#160;&#160;&#160;512</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Nombre max de processus. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0a3202b6e8073e458785ebcdf6d8c9f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PROCSTATE_IDLE&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>États possibles des process.Inactif. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1538df1594431185fbbced3805cddc37"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PROCSTATE_RUNNING&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>En cours d'exécution. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0d5a62fb2d0f0faed256d4b5b872f7f0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PROCSTATE_SUSPENDED&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Suspendu. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab809d396d2bb4d37ee1facf1e8ef34e3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PROCSTATE_TERMINATED&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Terminé. </p>
+
+</div>
+</div>
+<a class="anchor" id="af93e7bcf4bed8ec35b44970c4b332b92"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PROCSTATE_WAITING&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>En attente. </p>
+
+</div>
+</div>
+<h2>Documentation des définitions de type</h2>
 <a class="anchor" id="ac9040b1162f3fbe3bc0a5c2d7f07cf58"></a>
 <div class="memitem">
 <div class="memproto">
@@ -248,7 +317,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kprocess_8h_a21c8be1fe7cda8279886a50d946625bb_cgraph.png" border="0" usemap="#kprocess_8h_a21c8be1fe7cda8279886a50d946625bb_cgraph" alt=""/></div>
 <map name="kprocess_8h_a21c8be1fe7cda8279886a50d946625bb_cgraph" id="kprocess_8h_a21c8be1fe7cda8279886a50d946625bb_cgraph">
-<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="369,5,436,33"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="209,157,263,185"/><area shape="rect" id="node9" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="208,207,264,235"/><area shape="rect" id="node11" href="ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="200,258,272,286"/><area shape="rect" id="node13" href="ksem_8h.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)" alt="" coords="203,55,269,83"/><area shape="rect" id="node17" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="167,309,305,337"/><area shape="rect" id="node19" href="kfcntl_8h.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="199,106,273,134"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="500,5,639,33"/><area shape="rect" id="node15" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné." alt="" coords="356,55,449,83"/><area shape="rect" id="node23" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="535,131,604,159"/><area shape="rect" id="node25" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="365,157,440,185"/></map>
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="501,93,568,121"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="505,321,564,349"/><area shape="rect" id="node9" href="ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="200,397,272,425"/><area shape="rect" id="node11" href="ksem_8h.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)" alt="" coords="203,93,269,121"/><area shape="rect" id="node15" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="167,448,305,476"/><area shape="rect" id="node17" href="kfcntl_8h.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="199,194,273,222"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="620,93,759,121"/><area shape="rect" id="node13" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné." alt="" coords="356,42,449,70"/><area shape="rect" id="node21" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="500,194,569,222"/><area shape="rect" id="node23" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="376,194,429,222"/><area shape="rect" id="node25" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="375,245,431,273"/><area shape="rect" id="node27" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="365,296,440,324"/></map>
 </div>
 </p>
 
@@ -321,7 +390,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kprocess_8h_a99064f971fd1f14adcbf0a0a5c2af452_icgraph.png" border="0" usemap="#kprocess_8h_a99064f971fd1f14adcbf0a0a5c2af452_icgraph" alt=""/></div>
 <map name="kprocess_8h_a99064f971fd1f14adcbf0a0a5c2af452_icgraph" id="kprocess_8h_a99064f971fd1f14adcbf0a0a5c2af452_icgraph">
-<area shape="rect" id="node3" href="kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="149,5,224,33"/><area shape="rect" id="node9" href="ksem_8c.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)" alt="" coords="153,55,220,83"/><area shape="rect" id="node12" href="ksem_8c.html#acf03efb500e930ca996059a6388b528b" title="Opération V sur un sémaphore Réalise l&#39;opération V sur le sémaphore. Le processus libère le sémaphore..." alt="" coords="156,106,217,134"/><area shape="rect" id="node5" href="kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="297,30,407,58"/><area shape="rect" id="node7" href="scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="481,30,583,58"/><area shape="rect" id="node14" href="tty_8h.html#a52453f2334ffeb8bb88cf32597fab96e" title="tty_insert_flip_char" alt="" coords="287,81,417,109"/><area shape="rect" id="node18" href="ksem_8c.html#a82fb70bceeb23516b8cbdc1bc8f77805" title="Handler de l&#39;appel système SYS_SEM Dans la pratique, sys_ksem ne fait qu&#39;exécuter la fonction corresp..." alt="" coords="272,131,432,159"/><area shape="rect" id="node16" href="serial_8h.html#ac50cbde292e2ec8e27be3384c942d56a" title="Handler d&#39;interruption du driver série." alt="" coords="495,81,569,109"/></map>
+<area shape="rect" id="node3" href="kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="192,5,267,33"/><area shape="rect" id="node9" href="kprocess_8c.html#ac57ad880ae66a0bf4339309fada43242" title="Récupère des infos sur un process." alt="" coords="149,55,309,83"/><area shape="rect" id="node11" href="kprocess_8c.html#a4e715b0cdc3fe2325e5dcc64ec07f0f9" title="Bloque le process courant jusqu&#39;à ce que le processus identifié par pid se termine." alt="" coords="149,106,309,134"/><area shape="rect" id="node13" href="ksem_8c.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)" alt="" coords="196,157,263,185"/><area shape="rect" id="node18" href="ksem_8c.html#acf03efb500e930ca996059a6388b528b" title="Opération V sur un sémaphore Réalise l&#39;opération V sur le sémaphore. Le processus libère le sémaphore..." alt="" coords="199,207,260,235"/><area shape="rect" id="node5" href="kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="383,55,492,83"/><area shape="rect" id="node7" href="scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="567,55,668,83"/><area shape="rect" id="node16" href="kprocess_8c.html#acc70870c5d5807f03b0a58bd1e160f6f" title="Syscall appelé lors de la fin d&#39;exécution d&#39;un process." alt="" coords="357,157,517,185"/><area shape="rect" id="node20" href="tty_8h.html#a52453f2334ffeb8bb88cf32597fab96e" title="tty_insert_flip_char" alt="" coords="372,207,503,235"/><area shape="rect" id="node24" href="ksem_8c.html#a82fb70bceeb23516b8cbdc1bc8f77805" title="Handler de l&#39;appel système SYS_SEM Dans la pratique, sys_ksem ne fait qu&#39;exécuter la fonction corresp..." alt="" coords="357,258,517,286"/><area shape="rect" id="node22" href="serial_8h.html#ac50cbde292e2ec8e27be3384c942d56a" title="Handler d&#39;interruption du driver série." alt="" coords="580,207,655,235"/></map>
 </div>
 </p>
 
@@ -359,10 +428,290 @@ Voici le graphe des appelants de cette fonction :</div>
 
 </div>
 </div>
+<a class="anchor" id="ab5769fb8db77d54ea9a9216f14a2248c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structprocess__t.html">process_t</a>* get_process_array </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>indice du process dans le tableau (attention, ce n'est pas son pid) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a67b19f8892567cdb63c98ee660300f60"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void procfs_init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initialisation of the proc FS. </p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kprocess_8h_a67b19f8892567cdb63c98ee660300f60_cgraph.png" border="0" usemap="#kprocess_8h_a67b19f8892567cdb63c98ee660300f60_cgraph" alt=""/></div>
+<map name="kprocess_8h_a67b19f8892567cdb63c98ee660300f60_cgraph" id="kprocess_8h_a67b19f8892567cdb63c98ee660300f60_cgraph">
+<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="164,5,217,33"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="293,106,360,134"/><area shape="rect" id="node9" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné." alt="" coords="156,106,225,134"/><area shape="rect" id="node11" href="vfs_8h.html#ab2237a3610010d8a211ef3d55a521dba" title="Enregistrer un FS dans le VFS pour le rendre disponible." alt="" coords="137,157,244,185"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="409,106,548,134"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aeb04c10b6eb21ece6a889c874c3e1830"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SYSCALL_HANDLER1 </td>
+          <td>(</td>
+          <td class="paramtype">sys_getpid&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *&#160;</td>
+          <td class="paramname"><em>pid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pid</td><td>adresse où enregistrer le pid. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kprocess_8h_aeb04c10b6eb21ece6a889c874c3e1830_cgraph.png" border="0" usemap="#kprocess_8h_aeb04c10b6eb21ece6a889c874c3e1830_cgraph" alt=""/></div>
+<map name="kprocess_8h_aeb04c10b6eb21ece6a889c874c3e1830_cgraph" id="kprocess_8h_aeb04c10b6eb21ece6a889c874c3e1830_cgraph">
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a1e4ed2d0a9b35c02447c629472a491f3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SYSCALL_HANDLER1 </td>
+          <td>(</td>
+          <td class="paramtype">sys_getppid&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *&#160;</td>
+          <td class="paramname"><em>ppid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ppid</td><td>adresse où enregistrer le ppid. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kprocess_8h_a1e4ed2d0a9b35c02447c629472a491f3_cgraph.png" border="0" usemap="#kprocess_8h_a1e4ed2d0a9b35c02447c629472a491f3_cgraph" alt=""/></div>
+<map name="kprocess_8h_a1e4ed2d0a9b35c02447c629472a491f3_cgraph" id="kprocess_8h_a1e4ed2d0a9b35c02447c629472a491f3_cgraph">
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a4e715b0cdc3fe2325e5dcc64ec07f0f9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SYSCALL_HANDLER1 </td>
+          <td>(</td>
+          <td class="paramtype">sys_waitpid&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pid</td><td>PID du process à attendre. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kprocess_8h_a4e715b0cdc3fe2325e5dcc64ec07f0f9_cgraph.png" border="0" usemap="#kprocess_8h_a4e715b0cdc3fe2325e5dcc64ec07f0f9_cgraph" alt=""/></div>
+<map name="kprocess_8h_a4e715b0cdc3fe2325e5dcc64ec07f0f9_cgraph" id="kprocess_8h_a4e715b0cdc3fe2325e5dcc64ec07f0f9_cgraph">
+<area shape="rect" id="node3" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné." alt="" coords="215,5,308,33"/><area shape="rect" id="node5" href="ksem_8h.html#acfbbd3e3f726b24309758cf6499a8141" title="Opération P sur un sémaphore Réalise l&#39;opération P sur le sémaphore. Le processus essaye donc de pren..." alt="" coords="231,55,292,83"/><area shape="rect" id="node7" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="359,55,497,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a47ef452c5b4017727c9c4222ab133fae"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SYSCALL_HANDLER3 </td>
+          <td>(</td>
+          <td class="paramtype">sys_exec&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>cmdline</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>environ</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>retval</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmdline</td><td>Ligne de commande à exécuter. </td></tr>
+    <tr><td class="paramname">environ</td><td>Variables d'environnement. </td></tr>
+    <tr><td class="paramname">retval</td><td>Pointeur servant à retourner le résultat. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kprocess_8h_a47ef452c5b4017727c9c4222ab133fae_cgraph.png" border="0" usemap="#kprocess_8h_a47ef452c5b4017727c9c4222ab133fae_cgraph" alt=""/></div>
+<map name="kprocess_8h_a47ef452c5b4017727c9c4222ab133fae_cgraph" id="kprocess_8h_a47ef452c5b4017727c9c4222ab133fae_cgraph">
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="255,55,313,83"/><area shape="rect" id="node7" href="elf_8c.html#aa84790a8edae8d2859861f19adf5dd41" title="Calcul la taille que prendra l&#39;exécutable dans la mémoire La fonction évalue l&#39;adresse de départ en m..." alt="" coords="251,106,317,134"/><area shape="rect" id="node9" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="403,207,469,235"/><area shape="rect" id="node13" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné." alt="" coords="249,207,319,235"/><area shape="rect" id="node15" href="elf_8c.html#a35e8f32030ee36d8c02357a0b483c1b2" title="charge un fichier elf Charge les données utiles de l&#39;exécutable en mémoire, de façon à ce que ce soit..." alt="" coords="251,258,317,286"/><area shape="rect" id="node17" href="elf_8c.html#abbbb3d1f6ac9986f87d655cec7819556" title="charge un fichier elf dans la structure Elf32_File" alt="" coords="239,309,329,337"/><area shape="rect" id="node22" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="259,359,309,387"/><area shape="rect" id="node11" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="519,207,657,235"/><area shape="rect" id="node20" href="kernel_2include_2klibc_2string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="405,309,467,337"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac57ad880ae66a0bf4339309fada43242"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SYSCALL_HANDLER3 </td>
+          <td>(</td>
+          <td class="paramtype">sys_proc&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>sub_func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>param1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>param2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sub_func</td><td>Action (récupère la liste ou les infos d'un process en particulier) </td></tr>
+    <tr><td class="paramname">param1</td><td>paramètre pour l'action. </td></tr>
+    <tr><td class="paramname">param2</td><td>pointeur de retour. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kprocess_8h_ac57ad880ae66a0bf4339309fada43242_cgraph.png" border="0" usemap="#kprocess_8h_ac57ad880ae66a0bf4339309fada43242_cgraph" alt=""/></div>
+<map name="kprocess_8h_ac57ad880ae66a0bf4339309fada43242_cgraph" id="kprocess_8h_ac57ad880ae66a0bf4339309fada43242_cgraph">
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/><area shape="rect" id="node5" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné." alt="" coords="237,55,331,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Mai 8 2013 09:38:43 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Mai 30 2013 19:08:37 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

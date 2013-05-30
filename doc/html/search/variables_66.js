@@ -14,6 +14,7 @@ var searchData=
   ['filename2',['filename2',['../structlfn__entry__t.html#ab88e34e402a566da06c83163e94a1763',1,'lfn_entry_t']]],
   ['filename3',['filename3',['../structlfn__entry__t.html#aa157718941579c9ef9bb5eba85015ec0',1,'lfn_entry_t']]],
   ['filepos',['filepos',['../struct__DIR.html#a759e6f1c2754b12a4aba9d120f3d1e57',1,'_DIR']]],
+  ['first_5fcluster',['first_cluster',['../struct__fat__extra__data__t.html#a5cc9910b0f971c600d2d4a52290509fa',1,'_fat_extra_data_t']]],
   ['flags',['flags',['../structx86__idt__entry.html#af0ce23f490bcc54f41c3710ab6433786',1,'x86_idt_entry::flags()'],['../structmultiboot__header.html#ab922f32c179ec7bde91519d19f27d95b',1,'multiboot_header::flags()'],['../structmultiboot__info.html#aa562865bc325fd785c9fa4c5056294f3',1,'multiboot_info::flags()'],['../struct__tty__driver__t.html#a4ce1272b5e539a50b106986a79d7cab9',1,'_tty_driver_t::flags()'],['../structnameidata.html#a9064ec2b4dd712691e3c7442e48ce798',1,'nameidata::flags()']]],
   ['front_5fbuffer',['front_buffer',['../structvga__page__t.html#a8f820f9799bc5f9886e9f74c09e24841',1,'vga_page_t']]],
   ['fs',['fs',['../struct__fs__instance__t.html#a209ef4e2ed00460eead263311373a974',1,'_fs_instance_t::fs()'],['../struct__available__fs__t.html#ab0d3f3d5cfaf664ddb4d2c136071a072',1,'_available_fs_t::fs()']]]

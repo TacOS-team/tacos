@@ -1,0 +1,9 @@
+<map id="init_syscall" name="init_syscall">
+<area shape="rect" id="node3" href="$interrupts_8h.html#aecc1fa8433fa21ba233b8feb2558e954" title="Ajoute une nouvelle interruption." alt="" coords="153,5,292,33"/>
+<area shape="rect" id="node7" href="$ksyscall_8c.html#aa10969a644d213f1e778ac8c2a97fd6a" title="Point d&#39;entrée des appels systèmes C&#39;est cette fonction qui est lancée à la réception de l&#39;IRQ_SYSCAL..." alt="" coords="175,55,271,83"/>
+<area shape="rect" id="node11" href="$interrupts_8h.html#a4eea959d9a7be06d7b87a0aad03b490e" title="Change le type d&#39;une interruption en une trapgate." alt="" coords="141,106,304,134"/>
+<area shape="rect" id="node15" href="$string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné." alt="" coords="188,157,257,185"/>
+<area shape="rect" id="node5" href="$idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="368,5,477,33"/>
+<area shape="rect" id="node9" href="$scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="353,55,492,83"/>
+<area shape="rect" id="node13" href="$idt_8c.html#affa07557443fe1c9a508b346d8f06523" title="Change le type d&#39;une interruption (interrupt gate, trap gate, task gate)." alt="" coords="352,106,493,134"/>
+</map>

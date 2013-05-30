@@ -1,0 +1,90 @@
+\hypertarget{structprocess__t}{\section{Référence de la structure process\-\_\-t}
+\label{structprocess__t}\index{process\-\_\-t@{process\-\_\-t}}
+}
+
+
+Structure représentant un processus.  
+
+
+
+
+{\ttfamily \#include $<$kprocess.\-h$>$}
+
+
+
+Graphe de collaboration de process\-\_\-t\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structprocess__t__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} \hyperlink{structprocess__t_accfb1a515727ba4c085e49166a302af0}{pid}
+\item 
+\hyperlink{types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} \hyperlink{structprocess__t_a655d3aecbef82f263f36fab5685cddd0}{ppid}
+\item 
+char $\ast$ \hyperlink{structprocess__t_ab921f5e190c38325ac7ad805dd3d696e}{name}
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structprocess__t_a985ffe8e24460762cca611546422f8ea}{state}
+\item 
+\hypertarget{structprocess__t_a6a1f138e15bdff1817c16507be416b1c}{long int {\bfseries user\-\_\-time}}\label{structprocess__t_a6a1f138e15bdff1817c16507be416b1c}
+
+\item 
+\hypertarget{structprocess__t_ad80d82f959d878a3f30ad92160e873ba}{long int {\bfseries sys\-\_\-time}}\label{structprocess__t_ad80d82f959d878a3f30ad92160e873ba}
+
+\item 
+\hypertarget{structprocess__t_ac1cd53de15f6436ec876c5668682a529}{int {\bfseries current\-\_\-sample}}\label{structprocess__t_ac1cd53de15f6436ec876c5668682a529}
+
+\item 
+\hypertarget{structprocess__t_a478480061bf040b56a798c2b5bf5940b}{int {\bfseries last\-\_\-sample}}\label{structprocess__t_a478480061bf040b56a798c2b5bf5940b}
+
+\item 
+\hypertarget{structprocess__t_ac06891b69a96f5f2da7e467e3c4fcc34}{\hyperlink{structregs__t}{regs\-\_\-t} {\bfseries regs}}\label{structprocess__t_ac06891b69a96f5f2da7e467e3c4fcc34}
+
+\item 
+\hypertarget{structprocess__t_ac507b1227ba8f485e7db6820b4f16703}{\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ {\bfseries fd} \mbox{[}\hyperlink{fd__types_8h_aa188a2e288c10a684622814c51337465}{F\-O\-P\-E\-N\-\_\-\-M\-A\-X}\mbox{]}}\label{structprocess__t_ac507b1227ba8f485e7db6820b4f16703}
+
+\item 
+\hypertarget{structprocess__t_a4fdbb20004015f653edfd8f9a3f22bde}{struct \hyperlink{structpage__directory__entry}{page\-\_\-directory\-\_\-entry} $\ast$ {\bfseries pd}}\label{structprocess__t_a4fdbb20004015f653edfd8f9a3f22bde}
+
+\item 
+\hypertarget{structprocess__t_a5a27e517888b2d262fc0f48df67a0ffb}{struct \hyperlink{structvirtual__mem}{virtual\-\_\-mem} $\ast$ {\bfseries vm}}\label{structprocess__t_a5a27e517888b2d262fc0f48df67a0ffb}
+
+\item 
+\hypertarget{structprocess__t_a38e0473349d20cb95b511d8be0a82323}{\hyperlink{structsignal__process__data__t}{signal\-\_\-process\-\_\-data\-\_\-t} {\bfseries signal\-\_\-data}}\label{structprocess__t_a38e0473349d20cb95b511d8be0a82323}
+
+\item 
+char $\ast$ \hyperlink{structprocess__t_a345124afd3f5f75fdc291d9076348950}{ctrl\-\_\-tty}
+\item 
+\hypertarget{structprocess__t_a2d3232975904be6c800c2cdb6ef73732}{\hyperlink{structsymbol__table__t}{symbol\-\_\-table\-\_\-t} $\ast$ {\bfseries symtable}}\label{structprocess__t_a2d3232975904be6c800c2cdb6ef73732}
+
+\item 
+\hypertarget{structprocess__t_a99c0e9d8a303b8890da048861e8c560e}{int {\bfseries sem\-\_\-wait}}\label{structprocess__t_a99c0e9d8a303b8890da048861e8c560e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentation des champs}
+\hypertarget{structprocess__t_a345124afd3f5f75fdc291d9076348950}{\index{process\-\_\-t@{process\-\_\-t}!ctrl\-\_\-tty@{ctrl\-\_\-tty}}
+\index{ctrl\-\_\-tty@{ctrl\-\_\-tty}!process_t@{process\-\_\-t}}
+\subsubsection[{ctrl\-\_\-tty}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ process\-\_\-t\-::ctrl\-\_\-tty}}\label{structprocess__t_a345124afd3f5f75fdc291d9076348950}
+Controlling tty. \hypertarget{structprocess__t_ab921f5e190c38325ac7ad805dd3d696e}{\index{process\-\_\-t@{process\-\_\-t}!name@{name}}
+\index{name@{name}!process_t@{process\-\_\-t}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ process\-\_\-t\-::name}}\label{structprocess__t_ab921f5e190c38325ac7ad805dd3d696e}
+Nom du processus. \hypertarget{structprocess__t_accfb1a515727ba4c085e49166a302af0}{\index{process\-\_\-t@{process\-\_\-t}!pid@{pid}}
+\index{pid@{pid}!process_t@{process\-\_\-t}}
+\subsubsection[{pid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint16\-\_\-t} process\-\_\-t\-::pid}}\label{structprocess__t_accfb1a515727ba4c085e49166a302af0}
+Process I\-D \hypertarget{structprocess__t_a655d3aecbef82f263f36fab5685cddd0}{\index{process\-\_\-t@{process\-\_\-t}!ppid@{ppid}}
+\index{ppid@{ppid}!process_t@{process\-\_\-t}}
+\subsubsection[{ppid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint16\-\_\-t} process\-\_\-t\-::ppid}}\label{structprocess__t_a655d3aecbef82f263f36fab5685cddd0}
+Parent process I\-D \hypertarget{structprocess__t_a985ffe8e24460762cca611546422f8ea}{\index{process\-\_\-t@{process\-\_\-t}!state@{state}}
+\index{state@{state}!process_t@{process\-\_\-t}}
+\subsubsection[{state}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} process\-\_\-t\-::state}}\label{structprocess__t_a985ffe8e24460762cca611546422f8ea}
+Etat du processus (idle, running, waiting...) 
+
+La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+\item 
+kernel/include/\hyperlink{kprocess_8h}{kprocess.\-h}\end{DoxyCompactItemize}

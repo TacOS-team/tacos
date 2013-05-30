@@ -1,0 +1,20 @@
+<map id="kernel/init.c" name="kernel/init.c">
+<area shape="rect" id="node3" href="$klog_8h.html" title="Logging macros." alt="" coords="101,83,157,111"/>
+<area shape="rect" id="node7" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="283,83,371,111"/>
+<area shape="rect" id="node22" href="$symtable_8h.html" title="symtable.h" alt="" coords="631,238,714,266"/>
+<area shape="rect" id="node33" href="$dummy__driver_8h.html" title="drivers/dummy_driver.h" alt="" coords="446,83,601,111"/>
+<area shape="rect" id="node35" href="$mouse_8h.html" title="drivers/mouse.h" alt="" coords="625,83,739,111"/>
+<area shape="rect" id="node39" href="$vga_8h.html" title="drivers/vga.h" alt="" coords="763,83,859,111"/>
+<area shape="rect" id="node43" href="$vesa_8h.html" title="drivers/vesa.h" alt="" coords="883,83,985,111"/>
+<area shape="rect" id="node45" href="$sock_8h.html" title="drivers/sock.h" alt="" coords="1009,83,1110,111"/>
+<area shape="rect" id="node47" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="134,161,211,189"/>
+<area shape="rect" id="node5" href="$kstdio_8h.html" title="kprintf" alt="" coords="43,161,110,189"/>
+<area shape="rect" id="node9" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="286,161,371,189"/>
+<area shape="rect" id="node11" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="23,238,101,266"/>
+<area shape="rect" id="node13" href="$types_8h.html" title="types.h" alt="" coords="291,315,353,343"/>
+<area shape="rect" id="node15" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="527,238,607,266"/>
+<area shape="rect" id="node18" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="210,238,314,266"/>
+<area shape="rect" id="node20" href="$process__types_8h.html" title="process_types.h" alt="" coords="338,238,453,266"/>
+<area shape="rect" id="node28" href="$vmm_8h.html" title="vmm.h" alt="" coords="125,238,186,266"/>
+<area shape="rect" id="node25" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="650,315,695,343"/>
+</map>

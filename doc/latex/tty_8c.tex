@@ -11,8 +11,7 @@
 {\ttfamily \#include $<$ksignal.\-h$>$}\\*
 {\ttfamily \#include $<$scheduler.\-h$>$}\\*
 {\ttfamily \#include $<$tty.\-h$>$}\\*
-Graphe des dépendances par inclusion de tty.\-c\-:
-\nopagebreak
+Graphe des dépendances par inclusion de tty.\-c\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -56,17 +55,7 @@ void \hyperlink{tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028}{tty\-\_\-insert\-\_\-f
 \item 
 int \hyperlink{tty_8c_a302b60b1c52001915aeb108b51efc397}{tty\-\_\-register\-\_\-driver} (\hyperlink{tty_8h_af1896b31f0109954b4aa8244f064e923}{tty\-\_\-driver\-\_\-t} $\ast$driver)
 \item 
-\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} \hyperlink{tty_8c_a14c960f80aeb3910c46aff4b2c56bede}{tty\-\_\-write} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, const void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} count)
-\begin{DoxyCompactList}\small\item\em Écriture sur le terminal. \end{DoxyCompactList}\item 
-\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} \hyperlink{tty_8c_a01c908d67f089bbb78825ff0add5dd19}{tty\-\_\-read} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} count)
-\begin{DoxyCompactList}\small\item\em Lecture sur le terminal. \end{DoxyCompactList}\item 
-\hypertarget{tty_8c_a4d1f11c77318b074dbc10778bdc3ef8a}{int {\bfseries tty\-\_\-ioctl} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, unsigned int request, void $\ast$data)}\label{tty_8c_a4d1f11c77318b074dbc10778bdc3ef8a}
-
-\item 
-\hypertarget{tty_8c_a9357933a4dac72480bf10919fe8dc55a}{int {\bfseries tty\-\_\-close} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd)}\label{tty_8c_a9357933a4dac72480bf10919fe8dc55a}
-
-\item 
-\hypertarget{tty_8c_a948df79fabd99c5468bc33463a0face3}{int {\bfseries tty\-\_\-open} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd)}\label{tty_8c_a948df79fabd99c5468bc33463a0face3}
+\hypertarget{tty_8c_a4d1f11c77318b074dbc10778bdc3ef8a}{int {\bfseries tty\-\_\-ioctl} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, unsigned int request, void $\ast$data)}\label{tty_8c_a4d1f11c77318b074dbc10778bdc3ef8a}
 
 \end{DoxyCompactItemize}
 \subsection*{Variables}
@@ -190,8 +179,7 @@ le driver alloué.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -202,8 +190,7 @@ Voici le graphe d'appel pour cette fonction \-:
 
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -231,8 +218,7 @@ Ajoute un caractère dans le butter du tty.
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -243,47 +229,11 @@ Voici le graphe d'appel pour cette fonction \-:
 
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=270pt]{tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{tty_8c_a01c908d67f089bbb78825ff0add5dd19}{\index{tty.\-c@{tty.\-c}!tty\-\_\-read@{tty\-\_\-read}}
-\index{tty\-\_\-read@{tty\-\_\-read}!tty.c@{tty.\-c}}
-\subsubsection[{tty\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\-\_\-t} tty\-\_\-read (
-\begin{DoxyParamCaption}
-\item[{{\bf open\-\_\-file\-\_\-descriptor} $\ast$}]{ofd, }
-\item[{void $\ast$}]{buf, }
-\item[{{\bf size\-\_\-t}}]{count}
-\end{DoxyParamCaption}
-)}}\label{tty_8c_a01c908d67f089bbb78825ff0add5dd19}
-Lecture des données stockées dans le buffer du terminal.
-
-
-\begin{DoxyParams}{Paramètres}
-{\em ofd} & Le descripteur de fichier ouvert. \\
-\hline
-{\em buf} & Le buffer où placer les données. \\
-\hline
-{\em count} & Le nombre d'octets à lire.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Renvoie}
-le nombre d'octets lus. 
-\end{DoxyReturn}
-
-
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{tty_8c_a01c908d67f089bbb78825ff0add5dd19_cgraph}
 \end{center}
 \end{figure}
 
@@ -304,8 +254,7 @@ Enregistre en tant que char device un driver alloué et configuré.
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -316,47 +265,11 @@ Voici le graphe d'appel pour cette fonction \-:
 
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=278pt]{tty_8c_a302b60b1c52001915aeb108b51efc397_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{tty_8c_a14c960f80aeb3910c46aff4b2c56bede}{\index{tty.\-c@{tty.\-c}!tty\-\_\-write@{tty\-\_\-write}}
-\index{tty\-\_\-write@{tty\-\_\-write}!tty.c@{tty.\-c}}
-\subsubsection[{tty\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\-\_\-t} tty\-\_\-write (
-\begin{DoxyParamCaption}
-\item[{{\bf open\-\_\-file\-\_\-descriptor} $\ast$}]{ofd, }
-\item[{const void $\ast$}]{buf, }
-\item[{{\bf size\-\_\-t}}]{count}
-\end{DoxyParamCaption}
-)}}\label{tty_8c_a14c960f80aeb3910c46aff4b2c56bede}
-Cette fonction est appelée pour écrire sur le périphérique rattaché au terminal (exemple\-: la console).
-
-
-\begin{DoxyParams}{Paramètres}
-{\em ofd} & Le descripteur de fichier ouvert. \\
-\hline
-{\em buf} & Le buffer qui contient les données à écrire. \\
-\hline
-{\em count} & Le nombre d'octets à écrire.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Renvoie}
-le nombre d'octets écrits. 
-\end{DoxyReturn}
-
-
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=276pt]{tty_8c_a14c960f80aeb3910c46aff4b2c56bede_cgraph}
 \end{center}
 \end{figure}
 

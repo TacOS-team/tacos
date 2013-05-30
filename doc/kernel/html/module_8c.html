@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/module.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier module.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="module_8h_source.html">module.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="symtable_8h_source.html">symtable.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="string_8h_source.html">klibc/string.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="fd__types_8h_source.html">fd_types.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kunistd_8h_source.html">kunistd.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kfcntl_8h_source.html">kfcntl.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="vfs_8h_source.html">vfs.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de module.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="module_8c__incl.png" border="0" usemap="#kernel_2module_8c" alt=""/></div>
+<map name="kernel_2module_8c" id="kernel_2module_8c">
+<area shape="rect" id="node3" href="klog_8h.html" title="Logging macros." alt="" coords="185,83,241,111"/><area shape="rect" id="node7" href="module_8h.html" title="module.h" alt="" coords="973,238,1048,266"/><area shape="rect" id="node11" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="1040,161,1117,189"/><area shape="rect" id="node14" href="symtable_8h.html" title="symtable.h" alt="" coords="5,315,88,343"/><area shape="rect" id="node19" href="string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="1123,238,1216,266"/><area shape="rect" id="node22" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="112,315,192,343"/><area shape="rect" id="node25" href="kunistd_8h.html" title="Principales fonctions de l&#39;API POSIX (read, write, seek, stat...)" alt="" coords="693,83,768,111"/><area shape="rect" id="node38" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="565,161,629,189"/><area shape="rect" id="node56" href="vfs_8h.html" title="Virtual File System." alt="" coords="792,83,843,111"/><area shape="rect" id="node5" href="kstdio_8h.html" title="kprintf" alt="" coords="177,161,244,189"/><area shape="rect" id="node9" href="types_8h.html" title="types.h" alt="" coords="753,393,815,421"/><area shape="rect" id="node17" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="24,393,69,421"/><area shape="rect" id="node28" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="669,315,747,343"/><area shape="rect" id="node31" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="787,161,848,189"/><area shape="rect" id="node34" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="787,238,848,266"/><area shape="rect" id="node42" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="471,238,556,266"/><area shape="rect" id="node46" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="216,315,320,343"/><area shape="rect" id="node48" href="process__types_8h.html" title="process_types.h" alt="" coords="344,315,459,343"/><area shape="rect" id="node52" href="vmm_8h.html" title="vmm.h" alt="" coords="483,315,544,343"/></map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a1b592a89bf90c093c0e8e9a3d6822c8c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b592a89bf90c093c0e8e9a3d6822c8c"></a>
+<a class="el" href="structmodule__info__t.html">module_info_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>load_module</b> (char *filename)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a9fafb6e1a22246096e6cf60cc664d3bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9fafb6e1a22246096e6cf60cc664d3bf"></a>
+<a class="el" href="structsymbol__table__t.html">symbol_table_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ksymtable</b></td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+<p>Loads &amp; Unloads kernel modules </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:23 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

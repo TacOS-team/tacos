@@ -3,8 +3,16 @@
 }
 
 
-Graphe de collaboration de process\-\_\-t\-:
-\nopagebreak
+Structure représentant un processus.  
+
+
+
+
+{\ttfamily \#include $<$kprocess.\-h$>$}
+
+
+
+Graphe de collaboration de process\-\_\-t\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -14,20 +22,13 @@ Graphe de collaboration de process\-\_\-t\-:
 \subsection*{Champs de données}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{structprocess__t_accfb1a515727ba4c085e49166a302af0}{\hyperlink{kernel_2include_2types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} {\bfseries pid}}\label{structprocess__t_accfb1a515727ba4c085e49166a302af0}
-
+\hyperlink{kernel_2include_2types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} \hyperlink{structprocess__t_accfb1a515727ba4c085e49166a302af0}{pid}
 \item 
-\hypertarget{structprocess__t_a655d3aecbef82f263f36fab5685cddd0}{\hyperlink{kernel_2include_2types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} {\bfseries ppid}}\label{structprocess__t_a655d3aecbef82f263f36fab5685cddd0}
-
+\hyperlink{kernel_2include_2types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} \hyperlink{structprocess__t_a655d3aecbef82f263f36fab5685cddd0}{ppid}
 \item 
-\hypertarget{structprocess__t_ab921f5e190c38325ac7ad805dd3d696e}{char $\ast$ {\bfseries name}}\label{structprocess__t_ab921f5e190c38325ac7ad805dd3d696e}
-
+char $\ast$ \hyperlink{structprocess__t_ab921f5e190c38325ac7ad805dd3d696e}{name}
 \item 
-\hypertarget{structprocess__t_a985ffe8e24460762cca611546422f8ea}{\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} {\bfseries state}}\label{structprocess__t_a985ffe8e24460762cca611546422f8ea}
-
-\item 
-\hypertarget{structprocess__t_ae67a869f0f0acfc589efae86aaa86d92}{\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} {\bfseries priority}}\label{structprocess__t_ae67a869f0f0acfc589efae86aaa86d92}
-
+\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{structprocess__t_a985ffe8e24460762cca611546422f8ea}{state}
 \item 
 \hypertarget{structprocess__t_a6a1f138e15bdff1817c16507be416b1c}{long int {\bfseries user\-\_\-time}}\label{structprocess__t_a6a1f138e15bdff1817c16507be416b1c}
 
@@ -44,7 +45,7 @@ Graphe de collaboration de process\-\_\-t\-:
 \hypertarget{structprocess__t_ac06891b69a96f5f2da7e467e3c4fcc34}{\hyperlink{structregs__t}{regs\-\_\-t} {\bfseries regs}}\label{structprocess__t_ac06891b69a96f5f2da7e467e3c4fcc34}
 
 \item 
-\hypertarget{structprocess__t_a36b1262923c31b95f120cc9b0fb89744}{\hyperlink{struct__file__descriptor}{file\-\_\-descriptor} {\bfseries fd} \mbox{[}F\-O\-P\-E\-N\-\_\-\-M\-A\-X\mbox{]}}\label{structprocess__t_a36b1262923c31b95f120cc9b0fb89744}
+\hypertarget{structprocess__t_ac507b1227ba8f485e7db6820b4f16703}{\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ {\bfseries fd} \mbox{[}\hyperlink{fd__types_8h_aa188a2e288c10a684622814c51337465}{F\-O\-P\-E\-N\-\_\-\-M\-A\-X}\mbox{]}}\label{structprocess__t_ac507b1227ba8f485e7db6820b4f16703}
 
 \item 
 \hypertarget{structprocess__t_a4fdbb20004015f653edfd8f9a3f22bde}{struct \hyperlink{structpage__directory__entry}{page\-\_\-directory\-\_\-entry} $\ast$ {\bfseries pd}}\label{structprocess__t_a4fdbb20004015f653edfd8f9a3f22bde}
@@ -56,8 +57,7 @@ Graphe de collaboration de process\-\_\-t\-:
 \hypertarget{structprocess__t_a38e0473349d20cb95b511d8be0a82323}{\hyperlink{structsignal__process__data__t}{signal\-\_\-process\-\_\-data\-\_\-t} {\bfseries signal\-\_\-data}}\label{structprocess__t_a38e0473349d20cb95b511d8be0a82323}
 
 \item 
-\hypertarget{structprocess__t_a345124afd3f5f75fdc291d9076348950}{char $\ast$ {\bfseries ctrl\-\_\-tty}}\label{structprocess__t_a345124afd3f5f75fdc291d9076348950}
-
+char $\ast$ \hyperlink{structprocess__t_a345124afd3f5f75fdc291d9076348950}{ctrl\-\_\-tty}
 \item 
 \hypertarget{structprocess__t_a2d3232975904be6c800c2cdb6ef73732}{\hyperlink{structsymbol__table__t}{symbol\-\_\-table\-\_\-t} $\ast$ {\bfseries symtable}}\label{structprocess__t_a2d3232975904be6c800c2cdb6ef73732}
 
@@ -66,6 +66,24 @@ Graphe de collaboration de process\-\_\-t\-:
 
 \end{DoxyCompactItemize}
 
+
+\subsection{Documentation des champs}
+\hypertarget{structprocess__t_a345124afd3f5f75fdc291d9076348950}{\index{process\-\_\-t@{process\-\_\-t}!ctrl\-\_\-tty@{ctrl\-\_\-tty}}
+\index{ctrl\-\_\-tty@{ctrl\-\_\-tty}!process_t@{process\-\_\-t}}
+\subsubsection[{ctrl\-\_\-tty}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ process\-\_\-t\-::ctrl\-\_\-tty}}\label{structprocess__t_a345124afd3f5f75fdc291d9076348950}
+Controlling tty. \hypertarget{structprocess__t_ab921f5e190c38325ac7ad805dd3d696e}{\index{process\-\_\-t@{process\-\_\-t}!name@{name}}
+\index{name@{name}!process_t@{process\-\_\-t}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ process\-\_\-t\-::name}}\label{structprocess__t_ab921f5e190c38325ac7ad805dd3d696e}
+Nom du processus. \hypertarget{structprocess__t_accfb1a515727ba4c085e49166a302af0}{\index{process\-\_\-t@{process\-\_\-t}!pid@{pid}}
+\index{pid@{pid}!process_t@{process\-\_\-t}}
+\subsubsection[{pid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint16\-\_\-t} process\-\_\-t\-::pid}}\label{structprocess__t_accfb1a515727ba4c085e49166a302af0}
+Process I\-D \hypertarget{structprocess__t_a655d3aecbef82f263f36fab5685cddd0}{\index{process\-\_\-t@{process\-\_\-t}!ppid@{ppid}}
+\index{ppid@{ppid}!process_t@{process\-\_\-t}}
+\subsubsection[{ppid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint16\-\_\-t} process\-\_\-t\-::ppid}}\label{structprocess__t_a655d3aecbef82f263f36fab5685cddd0}
+Parent process I\-D \hypertarget{structprocess__t_a985ffe8e24460762cca611546422f8ea}{\index{process\-\_\-t@{process\-\_\-t}!state@{state}}
+\index{state@{state}!process_t@{process\-\_\-t}}
+\subsubsection[{state}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} process\-\_\-t\-::state}}\label{structprocess__t_a985ffe8e24460762cca611546422f8ea}
+Etat du processus (idle, running, waiting...) 
 
 La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
 \item 

@@ -1,0 +1,8 @@
+<map id="mount_FAT" name="mount_FAT">
+<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="277,51,344,79"/>
+<area shape="rect" id="node7" href="$string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="152,25,221,53"/>
+<area shape="rect" id="node9" href="$fat__internal_8c.html#acc9f1bc688e7d7c5459ad50676608995" title="read_fat" alt="" coords="152,76,221,104"/>
+<area shape="rect" id="node11" href="$fat__functions_8c.html#aaf2cd44da9ce9df0808a2cd823fd1295" title="fat_lookup" alt="" coords="145,127,228,155"/>
+<area shape="rect" id="node14" href="$fat__functions_8c.html#a34463693dc3fa14a062c90b9ece622c4" title="fat_getroot" alt="" coords="145,177,228,205"/>
+<area shape="rect" id="node5" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="393,51,532,79"/>
+</map>

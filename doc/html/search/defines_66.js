@@ -18,5 +18,6 @@ var searchData=
   ['flags_5fvif',['FLAGS_VIF',['../cpu_8h.html#aa1fd46f697afacff611d12fefd48b36c',1,'cpu.h']]],
   ['flags_5fvip',['FLAGS_VIP',['../cpu_8h.html#a4ad34e0df2b9ffb461818bd987341a4e',1,'cpu.h']]],
   ['flags_5fvm',['FLAGS_VM',['../cpu_8h.html#a9774b257c7c702af7c344b936de517d1',1,'cpu.h']]],
-  ['flags_5fzf',['FLAGS_ZF',['../cpu_8h.html#a81e1a9abcac8701d25ad2fd6a8afbe62',1,'cpu.h']]]
+  ['flags_5fzf',['FLAGS_ZF',['../cpu_8h.html#a81e1a9abcac8701d25ad2fd6a8afbe62',1,'cpu.h']]],
+  ['fopen_5fmax',['FOPEN_MAX',['../fd__types_8h.html#aa188a2e288c10a684622814c51337465',1,'fd_types.h']]]
 ];

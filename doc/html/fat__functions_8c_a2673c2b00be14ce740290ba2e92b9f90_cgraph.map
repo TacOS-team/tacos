@@ -1,3 +1,7 @@
 <map id="fat_unlink" name="fat_unlink">
-<area shape="rect" id="node3" href="$kernel_2include_2klibc_2string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="135,5,196,33"/>
+<area shape="rect" id="node3" href="$kernel_2include_2klibc_2string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="153,5,215,33"/>
+<area shape="rect" id="node5" href="$fat__internal_8c.html#a0ae169e11ec76cae96a82e41fed70ece" title="open_root_dir" alt="" coords="135,55,233,83"/>
+<area shape="rect" id="node7" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="283,30,349,58"/>
+<area shape="rect" id="node11" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="291,81,341,109"/>
+<area shape="rect" id="node9" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="399,30,537,58"/>
 </map>

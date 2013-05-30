@@ -1,0 +1,5 @@
+<map id="vfs_close" name="vfs_close">
+<area shape="rect" id="node3" href="$kfcntl_8c.html#adc12a443121c63ad99a6311aa2739884" title="Ferme tous les file descriptors ouverts." alt="" coords="168,5,259,33"/>
+<area shape="rect" id="node7" href="$kfcntl_8c.html#a3a5f4c56fd3fcc2b69757102f722fc29" title="SYSCALL_HANDLER2" alt="" coords="133,55,293,83"/>
+<area shape="rect" id="node5" href="$kprocess_8c.html#acc70870c5d5807f03b0a58bd1e160f6f" title="Syscall appelé lors de la fin d&#39;exécution d&#39;un process." alt="" coords="341,5,501,33"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="hashmap_remove" name="hashmap_remove">
+<area shape="rect" id="node3" href="$dcache_8h.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="179,106,293,134"/>
+<area shape="rect" id="node5" href="$vfs_8c.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="344,55,421,83"/>
+<area shape="rect" id="node13" href="$vfs_8c.html#a4f8b6a1f2b0e6012446196f18b33d686" title="Suppression d&#39;un noeud." alt="" coords="343,106,423,134"/>
+<area shape="rect" id="node17" href="$vfs_8c.html#a8f5dc4e5e4a2aa5d7649790256f11685" title="Suppression d&#39;un dossier." alt="" coords="345,157,420,185"/>
+<area shape="rect" id="node7" href="$kfcntl_8c.html#adc12a443121c63ad99a6311aa2739884" title="Ferme tous les file descriptors ouverts." alt="" coords="507,5,597,33"/>
+<area shape="rect" id="node11" href="$kfcntl_8c.html#a3a5f4c56fd3fcc2b69757102f722fc29" title="SYSCALL_HANDLER2" alt="" coords="472,55,632,83"/>
+<area shape="rect" id="node9" href="$kprocess_8c.html#acc70870c5d5807f03b0a58bd1e160f6f" title="Syscall appelé lors de la fin d&#39;exécution d&#39;un process." alt="" coords="680,5,840,33"/>
+<area shape="rect" id="node15" href="$kunistd_8c.html#a99434c0e561b0e99c4ef081ae5773703" title="SYSCALL_HANDLER2" alt="" coords="472,106,632,134"/>
+<area shape="rect" id="node19" href="$kdirent_8c.html#ad690af967ba8e26d8ac3e48b8353eacc" title="SYSCALL_HANDLER2" alt="" coords="472,157,632,185"/>
+</map>

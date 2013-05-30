@@ -85,31 +85,120 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence de la structure _open_file_operations_t</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="fd__types_8h_source.html">fd_types.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a8fd3ceb02ffc1f1e0c7123c6827f79c2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8fd3ceb02ffc1f1e0c7123c6827f79c2"></a>
-<a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> )(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, const void *, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>)</td></tr>
-<tr class="memitem:abeef0438fc2a1902a33c94bcf9751dac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abeef0438fc2a1902a33c94bcf9751dac"></a>
-<a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> )(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, void *, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>)</td></tr>
-<tr class="memitem:ac45e5e3400e4cd9756b5784289744cc7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac45e5e3400e4cd9756b5784289744cc7"></a>
-int(*&#160;</td><td class="memItemRight" valign="bottom"><b>seek</b> )(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, long, int)</td></tr>
-<tr class="memitem:ab71efab6158837196ad4fef57565dddc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab71efab6158837196ad4fef57565dddc"></a>
-int(*&#160;</td><td class="memItemRight" valign="bottom"><b>ioctl</b> )(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, unsigned int, void *)</td></tr>
-<tr class="memitem:a22018bcaef028f486c45838ba983c170"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22018bcaef028f486c45838ba983c170"></a>
-int(*&#160;</td><td class="memItemRight" valign="bottom"><b>open</b> )(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *)</td></tr>
-<tr class="memitem:a187ebd3d665fde0a486bd7f5d3001f00"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a187ebd3d665fde0a486bd7f5d3001f00"></a>
-int(*&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> )(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *)</td></tr>
-<tr class="memitem:a7cdb4947735c5559610fb8be2472791d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7cdb4947735c5559610fb8be2472791d"></a>
-int(*&#160;</td><td class="memItemRight" valign="bottom"><b>readdir</b> )(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, char *, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>)</td></tr>
+<tr class="memitem:ae730a8e7e44c3b3168b9f091c334b337"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__open__file__operations__t.html#ae730a8e7e44c3b3168b9f091c334b337">write</a> )(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, const void *, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>)</td></tr>
+<tr class="memitem:ad5637bc6a752b9a13806748966b77e68"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__open__file__operations__t.html#ad5637bc6a752b9a13806748966b77e68">read</a> )(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, void *, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>)</td></tr>
+<tr class="memitem:ac45e5e3400e4cd9756b5784289744cc7"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__open__file__operations__t.html#ac45e5e3400e4cd9756b5784289744cc7">seek</a> )(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, long, int)</td></tr>
+<tr class="memitem:ab71efab6158837196ad4fef57565dddc"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__open__file__operations__t.html#ab71efab6158837196ad4fef57565dddc">ioctl</a> )(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, unsigned int, void *)</td></tr>
+<tr class="memitem:a22018bcaef028f486c45838ba983c170"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__open__file__operations__t.html#a22018bcaef028f486c45838ba983c170">open</a> )(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *)</td></tr>
+<tr class="memitem:a187ebd3d665fde0a486bd7f5d3001f00"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__open__file__operations__t.html#a187ebd3d665fde0a486bd7f5d3001f00">close</a> )(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *)</td></tr>
+<tr class="memitem:a7cdb4947735c5559610fb8be2472791d"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__open__file__operations__t.html#a7cdb4947735c5559610fb8be2472791d">readdir</a> )(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, char *, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>)</td></tr>
 </table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>Structure contenant les pointeurs vers les fonctions liées à un fichier ouvert. </p>
+</div><h2>Documentation des champs</h2>
+<a class="anchor" id="a187ebd3d665fde0a486bd7f5d3001f00"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* _open_file_operations_t::close)(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Fermeture du fichier. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab71efab6158837196ad4fef57565dddc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* _open_file_operations_t::ioctl)(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, unsigned int, void *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Configuration / contrôle du fichier. </p>
+
+</div>
+</div>
+<a class="anchor" id="a22018bcaef028f486c45838ba983c170"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* _open_file_operations_t::open)(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ouverture du fichier. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad5637bc6a752b9a13806748966b77e68"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>(* _open_file_operations_t::read)(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, void *, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Lecture dans le fichier. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7cdb4947735c5559610fb8be2472791d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* _open_file_operations_t::readdir)(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, char *, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Lecture du dossier. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac45e5e3400e4cd9756b5784289744cc7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* _open_file_operations_t::seek)(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, long, int)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Déplacement dans le fichier. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae730a8e7e44c3b3168b9f091c334b337"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>(* _open_file_operations_t::write)(struct <a class="el" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, const void *, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Écriture dans le fichier. </p>
+
+</div>
+</div>
 <hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
 <li>kernel/include/<a class="el" href="fd__types_8h_source.html">fd_types.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Mai 8 2013 09:38:43 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Mai 30 2013 19:08:42 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

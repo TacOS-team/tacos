@@ -1,0 +1,132 @@
+\hypertarget{get_8c}{\section{Référence du fichier libc/stdio/get.c}
+\label{get_8c}\index{libc/stdio/get.\-c@{libc/stdio/get.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$unistd.\-h$>$}\\*
+Graphe des dépendances par inclusion de get.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{get_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{get_8c_a2b3df0e66b41edab3c039191fe6cc4f9}{fgets} (char $\ast$s, int size, \hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)
+\begin{DoxyCompactList}\small\item\em Lit au plus size-\/1 caractères depuis le stream passé en argument. \end{DoxyCompactList}\item 
+int \hyperlink{get_8c_ab11a990e4f8863a1e7736e3c1d430092}{fgetc} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)
+\begin{DoxyCompactList}\small\item\em Lit un caractère depuis le flux stream. \end{DoxyCompactList}\item 
+int \hyperlink{get_8c_a3e29caa20f7cffe18f410f01278905a8}{getchar} (void)
+\begin{DoxyCompactList}\small\item\em lit un caractère depuis stdin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+Description de ce que fait le fichier 
+
+\subsection{Documentation des fonctions}
+\hypertarget{get_8c_ab11a990e4f8863a1e7736e3c1d430092}{\index{get.\-c@{get.\-c}!fgetc@{fgetc}}
+\index{fgetc@{fgetc}!get.c@{get.\-c}}
+\subsubsection[{fgetc}]{\setlength{\rightskip}{0pt plus 5cm}int fgetc (
+\begin{DoxyParamCaption}
+\item[{{\bf F\-I\-L\-E} $\ast$}]{stream}
+\end{DoxyParamCaption}
+)}}\label{get_8c_ab11a990e4f8863a1e7736e3c1d430092}
+Fgetc lit le caractère suivant depuis le flux stream.
+
+stream le stream depuis lequel on lit le caractère.
+
+\begin{DoxyReturn}{Renvoie}
+le caractère lu ou E\-O\-F en cas d'erreur ou fin de flux. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{get_8c_ab11a990e4f8863a1e7736e3c1d430092_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{get_8c_ab11a990e4f8863a1e7736e3c1d430092_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{get_8c_a2b3df0e66b41edab3c039191fe6cc4f9}{\index{get.\-c@{get.\-c}!fgets@{fgets}}
+\index{fgets@{fgets}!get.c@{get.\-c}}
+\subsubsection[{fgets}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ fgets (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{int}]{size, }
+\item[{{\bf F\-I\-L\-E} $\ast$}]{stream}
+\end{DoxyParamCaption}
+)}}\label{get_8c_a2b3df0e66b41edab3c039191fe6cc4f9}
+Lit au plus size-\/1 caractères depuis le stream passé en argument. La lecture s'arrête par E\-O\-F, retour chariot ou si size-\/1 caractères ont été lus. Attention, il n'y a pas d'allocation mémoire pour le buffer où on écrit. Le caractère nul est placé à la fin de la chaîne.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s} & buffer où on va écrire ce qu'on lit sur stream. \\
+\hline
+{\em size} & la taille du buffer. \\
+\hline
+{\em stream} & le stream depuis lequel on lit les caractères.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur sur s en cas de succès. N\-U\-L\-L en cas d'erreur. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{get_8c_a2b3df0e66b41edab3c039191fe6cc4f9_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{get_8c_a3e29caa20f7cffe18f410f01278905a8}{\index{get.\-c@{get.\-c}!getchar@{getchar}}
+\index{getchar@{getchar}!get.c@{get.\-c}}
+\subsubsection[{getchar}]{\setlength{\rightskip}{0pt plus 5cm}int getchar (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{get_8c_a3e29caa20f7cffe18f410f01278905a8}
+Fonction de la libc. getchar est équivalent à fgetc(stdin). 
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{get_8c_a3e29caa20f7cffe18f410f01278905a8_cgraph}
+\end{center}
+\end{figure}
+
+

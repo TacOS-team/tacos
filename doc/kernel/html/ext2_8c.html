@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/fs/ext2/ext2.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_8d4fa0f4a82327c9ebbcec4f28c3f560.html">fs</a></li><li class="navelem"><a class="el" href="dir_5f1a979f519abcc50fa217dc559c3e81.html">ext2</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier ext2.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="ext2_8h_source.html">fs/ext2.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br/>
+<code>#include &quot;<a class="el" href="ext2__internal_8h_source.html">ext2_internal.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de ext2.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8c__incl.png" border="0" usemap="#kernel_2fs_2ext2_2ext2_8c" alt=""/></div>
+<map name="kernel_2fs_2ext2_2ext2_8c" id="kernel_2fs_2ext2_2ext2_8c">
+<area shape="rect" id="node3" href="ext2_8h.html" title="Driver Ext2." alt="" coords="131,83,200,111"/><area shape="rect" id="node21" href="klog_8h.html" title="Logging macros." alt="" coords="405,83,461,111"/><area shape="rect" id="node25" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="340,315,417,343"/><area shape="rect" id="node28" href="ext2__internal_8h.html" title="ext2_internal.h" alt="" coords="224,83,328,111"/><area shape="rect" id="node5" href="vfs_8h.html" title="Virtual File System." alt="" coords="140,161,191,189"/><area shape="rect" id="node7" href="types_8h.html" title="types.h" alt="" coords="171,470,232,498"/><area shape="rect" id="node9" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="185,238,265,266"/><area shape="rect" id="node12" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="100,238,161,266"/><area shape="rect" id="node15" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="100,315,161,343"/><area shape="rect" id="node18" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="36,393,113,421"/><area shape="rect" id="node23" href="kstdio_8h.html" title="kprintf" alt="" coords="403,161,469,189"/><area shape="rect" id="node30" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="237,161,315,189"/></map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a9aed5bb9701eee5d20003be7dfc22e51"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9aed5bb9701eee5d20003be7dfc22e51"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8c.html#a9aed5bb9701eee5d20003be7dfc22e51">ext2_init</a> ()</td></tr>
+<tr class="memdesc:a9aed5bb9701eee5d20003be7dfc22e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du driver ext2. <br/></td></tr>
+<tr class="memitem:a162f5d230a1583a05389a6bb5d349e2a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8c.html#a162f5d230a1583a05389a6bb5d349e2a">mount_EXT2</a> (<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *ofd)</td></tr>
+<tr class="memdesc:a162f5d230a1583a05389a6bb5d349e2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un point de montage.  <a href="#a162f5d230a1583a05389a6bb5d349e2a"></a><br/></td></tr>
+<tr class="memitem:aa055d93f3693085315aa853345de0032"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8c.html#aa055d93f3693085315aa853345de0032">umount_EXT2</a> (<a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *instance)</td></tr>
+<tr class="memdesc:aa055d93f3693085315aa853345de0032"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unmount d'un point de montage.  <a href="#aa055d93f3693085315aa853345de0032"></a><br/></td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+<p>EXT2 File System. </p>
+</div><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a162f5d230a1583a05389a6bb5d349e2a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a>* mount_EXT2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>OFD du device que l'on veut monter.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Une instance de FS. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8c_a162f5d230a1583a05389a6bb5d349e2a_cgraph.png" border="0" usemap="#ext2_8c_a162f5d230a1583a05389a6bb5d349e2a_cgraph" alt=""/></div>
+<map name="ext2_8c_a162f5d230a1583a05389a6bb5d349e2a_cgraph" id="ext2_8c_a162f5d230a1583a05389a6bb5d349e2a_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="445,171,512,199"/><area shape="rect" id="node7" href="ext2__functions_8c.html#a1814eebfe79637247b38dda8e50a3263" title="Création d&#39;un noeud (fichier, dossier, fichier spécial...)" alt="" coords="301,75,392,103"/><area shape="rect" id="node10" href="ext2__functions_8c.html#a099858facc12a389ffbff826567cb7c4" title="Création d&#39;un dossier." alt="" coords="157,75,243,103"/><area shape="rect" id="node13" href="ext2__functions_8c.html#a4d19a34580976adf582bb45bd402649c" title="Renomme ou déplace un fichier." alt="" coords="152,125,248,153"/><area shape="rect" id="node15" href="ext2__functions_8c.html#acad804eba95e7600b534e07bb9134a44" title="ext2_setattr" alt="" coords="155,176,245,204"/><area shape="rect" id="node17" href="ext2__functions_8c.html#aeb55aa4d71dded497758c72d86b2b2f7" title="Change la taille d&#39;un fichier." alt="" coords="297,227,396,255"/><area shape="rect" id="node19" href="ext2__functions_8c.html#a4af1597cc97e9aa9591ed390589e6dfc" title="Suppression d&#39;un noeud." alt="" coords="157,277,243,305"/><area shape="rect" id="node21" href="ext2__functions_8c.html#a4c86d6a4886145e7cd974675eb5a19a0" title="Suppression d&#39;un dossier vide." alt="" coords="159,328,241,356"/><area shape="rect" id="node24" href="ext2__functions_8c.html#aacb0077cd0a76158c9288ecd193d58da" title="ext2_lookup" alt="" coords="155,379,245,407"/><area shape="rect" id="node35" href="ext2__functions_8c.html#a185452dee205dcca978c1c6f7fdeee22" title="ext2_getroot" alt="" coords="153,429,247,457"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="561,171,700,199"/><area shape="rect" id="node27" href="string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="317,367,376,395"/><area shape="rect" id="node29" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="452,316,505,344"/><area shape="rect" id="node32" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="451,367,507,395"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aa055d93f3693085315aa853345de0032"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void umount_EXT2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td>
+          <td class="paramname"><em>instance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>L'instance de fs que l'on veut démonter. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="ext2_8c_aa055d93f3693085315aa853345de0032_cgraph.png" border="0" usemap="#ext2_8c_aa055d93f3693085315aa853345de0032_cgraph" alt=""/></div>
+<map name="ext2_8c_aa055d93f3693085315aa853345de0032_cgraph" id="ext2_8c_aa055d93f3693085315aa853345de0032_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="157,5,208,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:18 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

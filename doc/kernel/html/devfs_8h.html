@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/include/fs/devfs.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li><li class="navelem"><a class="el" href="dir_63ad402ee0b4f0ab258f5e7abbb673c6.html">fs</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier devfs.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="types_8h_source.html">types.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="fd__types_8h_source.html">fd_types.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de devfs.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="devfs_8h__incl.png" border="0" usemap="#kernel_2include_2fs_2devfs_8h" alt=""/></div>
+<map name="kernel_2include_2fs_2devfs_8h" id="kernel_2include_2fs_2devfs_8h">
+<area shape="rect" id="node3" href="types_8h.html" title="types.h" alt="" coords="56,161,117,189"/><area shape="rect" id="node5" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="85,83,165,111"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="devfs_8h__dep__incl.png" border="0" usemap="#kernel_2include_2fs_2devfs_8hdep" alt=""/></div>
+<map name="kernel_2include_2fs_2devfs_8hdep" id="kernel_2include_2fs_2devfs_8hdep">
+<area shape="rect" id="node3" href="floppy_8c.html" title="kernel/drivers/block\l/floppy/floppy.c" alt="" coords="5,83,139,127"/><area shape="rect" id="node5" href="beeper_8c.html" title="kernel/drivers/char\l/beeper.c" alt="" coords="163,83,291,127"/><area shape="rect" id="node7" href="mouse_8c.html" title="kernel/drivers/char\l/mouse.c" alt="" coords="315,83,443,127"/><area shape="rect" id="node9" href="tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="467,83,595,127"/><area shape="rect" id="node11" href="vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="619,83,747,127"/><area shape="rect" id="node13" href="vga_8c.html" title="kernel/drivers/char\l/vga.c" alt="" coords="771,83,899,127"/><area shape="rect" id="node15" href="devfs_8c.html" title="DevFS." alt="" coords="923,91,1040,119"/><area shape="rect" id="node17" href="ext2__internal_8h.html" title="kernel/fs/ext2/ext2\l_internal.h" alt="" coords="1064,83,1192,127"/><area shape="rect" id="node21" href="fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="1216,91,1384,119"/><area shape="rect" id="node35" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="1408,91,1515,119"/><area shape="rect" id="node37" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="1539,91,1640,119"/><area shape="rect" id="node39" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1664,91,1771,119"/><area shape="rect" id="node41" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="1795,91,1883,119"/><area shape="rect" id="node19" href="ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="987,177,1125,205"/><area shape="rect" id="node23" href="fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="1149,177,1269,205"/><area shape="rect" id="node25" href="fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="1293,177,1451,205"/><area shape="rect" id="node29" href="fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="1456,254,1624,282"/><area shape="rect" id="node27" href="fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="1299,331,1477,359"/><area shape="rect" id="node32" href="fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="1275,254,1432,282"/></map>
+</div>
+</div>
+<p><a href="devfs_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structchardev__interfaces.html">chardev_interfaces</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure contenant les fonction qui permettent d'utiliser un char device.  <a href="structchardev__interfaces.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structblkdev__interfaces.html">blkdev_interfaces</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure contenant les fonctions qui permettent d'utiliser un block device.  <a href="structblkdev__interfaces.html#details">Plus de détails...</a><br/></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ae865497b0eca6bed21898d4ca1fc0ddd"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="devfs_8h.html#a7fd32b2aa211502206f2402c4846ce6a">_device_type_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="devfs_8h.html#ae865497b0eca6bed21898d4ca1fc0ddd">device_type_t</a></td></tr>
+<tr class="memitem:af4c16a0e62f4b4f3b40b28c495ce4ffd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af4c16a0e62f4b4f3b40b28c495ce4ffd"></a>
+typedef <a class="el" href="types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><b>chardev_read_t</b> )(<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *, void *, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>)</td></tr>
+<tr class="memitem:a96ca7976c3f65504b514759b5cd6916d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a96ca7976c3f65504b514759b5cd6916d"></a>
+typedef <a class="el" href="types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><b>chardev_write_t</b> )(<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *, const void *, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>)</td></tr>
+<tr class="memitem:ab5db3cd1e601e5f7347c7779ee38db86"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5db3cd1e601e5f7347c7779ee38db86"></a>
+typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>chardev_ioctl_t</b> )(<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *, unsigned int, void *)</td></tr>
+<tr class="memitem:ad342987d85e5331ed5825ddb9dadef24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad342987d85e5331ed5825ddb9dadef24"></a>
+typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>chardev_open_t</b> )(<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *)</td></tr>
+<tr class="memitem:acb1844c24d0e03a2f63d3ab4191a77ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb1844c24d0e03a2f63d3ab4191a77ff"></a>
+typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>chardev_close_t</b> )(<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *)</td></tr>
+<tr class="memitem:a36f7a3d42bf957dfcf5dadd765fd89ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a36f7a3d42bf957dfcf5dadd765fd89ca"></a>
+typedef <a class="el" href="types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><b>blkdev_read_t</b> )(<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *, void *, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>, <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>)</td></tr>
+<tr class="memitem:a3c00af66875c766f766cd4efc8e4a128"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c00af66875c766f766cd4efc8e4a128"></a>
+typedef <a class="el" href="types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><b>blkdev_write_t</b> )(<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *, const void *, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>, <a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>)</td></tr>
+<tr class="memitem:a6a1183464660086ca43ca3d9f78ee95d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a1183464660086ca43ca3d9f78ee95d"></a>
+typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>blkdev_ioctl_t</b> )(<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *, unsigned int, void *)</td></tr>
+<tr class="memitem:a6e65ea9e3a1dcb15dcd88371f734aaef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e65ea9e3a1dcb15dcd88371f734aaef"></a>
+typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>blkdev_open_t</b> )(<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *)</td></tr>
+<tr class="memitem:a37f0bf37edcd41dc4c2bd33734cd1c26"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37f0bf37edcd41dc4c2bd33734cd1c26"></a>
+typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>blkdev_close_t</b> )(<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:a7fd32b2aa211502206f2402c4846ce6a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="devfs_8h.html#a7fd32b2aa211502206f2402c4846ce6a">_device_type_t</a> { <b>CHARDEV</b>, 
+<b>BLKDEV</b>
+ }</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ac01eef8358c344396a59f06531a5dcb4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac01eef8358c344396a59f06531a5dcb4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="devfs_8h.html#ac01eef8358c344396a59f06531a5dcb4">devfs_init</a> ()</td></tr>
+<tr class="memdesc:ac01eef8358c344396a59f06531a5dcb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du dev FS. <br/></td></tr>
+<tr class="memitem:acf0abbf4b629aa36d142733e27eaf6e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="devfs_8h.html#acf0abbf4b629aa36d142733e27eaf6e6">register_chardev</a> (const char *name, <a class="el" href="structchardev__interfaces.html">chardev_interfaces</a> *di)</td></tr>
+<tr class="memdesc:acf0abbf4b629aa36d142733e27eaf6e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistre un char device dans le dev FS.  <a href="#acf0abbf4b629aa36d142733e27eaf6e6"></a><br/></td></tr>
+<tr class="memitem:a3ad133a010648db1c6df6f7d00cf8d77"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="devfs_8h.html#a3ad133a010648db1c6df6f7d00cf8d77">register_blkdev</a> (const char *name, <a class="el" href="structblkdev__interfaces.html">blkdev_interfaces</a> *di)</td></tr>
+<tr class="memdesc:a3ad133a010648db1c6df6f7d00cf8d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistre un block device dans le dev FS.  <a href="#a3ad133a010648db1c6df6f7d00cf8d77"></a><br/></td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+<p>Description de ce que fait le fichier </p>
+</div><h2>Documentation des définitions de type</h2>
+<a class="anchor" id="ae865497b0eca6bed21898d4ca1fc0ddd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="devfs_8h.html#a7fd32b2aa211502206f2402c4846ce6a">_device_type_t</a>  <a class="el" href="devfs_8h.html#ae865497b0eca6bed21898d4ca1fc0ddd">device_type_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Type de device. </p>
+
+</div>
+</div>
+<h2>Documentation du type de l'énumération</h2>
+<a class="anchor" id="a7fd32b2aa211502206f2402c4846ce6a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="devfs_8h.html#a7fd32b2aa211502206f2402c4846ce6a">_device_type_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Type de device. </p>
+
+</div>
+</div>
+<h2>Documentation des fonctions</h2>
+<a class="anchor" id="a3ad133a010648db1c6df6f7d00cf8d77"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int register_blkdev </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structblkdev__interfaces.html">blkdev_interfaces</a> *&#160;</td>
+          <td class="paramname"><em>di</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Enregistre un block device dans le dev FS.</p>
+<pre class="fragment"> Enregistre le driver dans la liste.
+</pre><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>chaine identifiant le driver </td></tr>
+    <tr><td class="paramname">di</td><td>structure contenant les interfaces du driver</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>-1 en cas d'erreur, 0 sinon </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="devfs_8h_a3ad133a010648db1c6df6f7d00cf8d77_icgraph.png" border="0" usemap="#devfs_8h_a3ad133a010648db1c6df6f7d00cf8d77_icgraph" alt=""/></div>
+<map name="devfs_8h_a3ad133a010648db1c6df6f7d00cf8d77_icgraph" id="devfs_8h_a3ad133a010648db1c6df6f7d00cf8d77_icgraph">
+<area shape="rect" id="node3" href="floppy_8h.html#a4b305e10e95fed92b047adfac6dc4881" title="Initilise le driver floppy." alt="" coords="167,5,244,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="acf0abbf4b629aa36d142733e27eaf6e6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int register_chardev </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structchardev__interfaces.html">chardev_interfaces</a> *&#160;</td>
+          <td class="paramname"><em>di</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Enregistre un char device dans le dev FS.</p>
+<pre class="fragment"> Enregistre le driver dans la liste.
+</pre><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>chaine identifiant le driver </td></tr>
+    <tr><td class="paramname">di</td><td>structure contenant les interfaces du driver</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>-1 en cas d'erreur, 0 sinon </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="devfs_8h_acf0abbf4b629aa36d142733e27eaf6e6_icgraph.png" border="0" usemap="#devfs_8h_acf0abbf4b629aa36d142733e27eaf6e6_icgraph" alt=""/></div>
+<map name="devfs_8h_acf0abbf4b629aa36d142733e27eaf6e6_icgraph" id="devfs_8h_acf0abbf4b629aa36d142733e27eaf6e6_icgraph">
+<area shape="rect" id="node3" href="beeper_8h.html#aa6492faf2e8ab1fb72659ae20b473e23" title="Initialisation du driver." alt="" coords="193,5,279,33"/><area shape="rect" id="node5" href="tty_8h.html#a302b60b1c52001915aeb108b51efc397" title="tty_register_driver" alt="" coords="173,55,299,83"/><area shape="rect" id="node11" href="vga_8h.html#ab4914929beebc81e861d0dfac915dffd" title="init_vga" alt="" coords="203,106,269,134"/><area shape="rect" id="node7" href="serial_8h.html#a459999cfa35c788b64284953a93c4b57" title="Fonction d&#39;initialisation du driver série." alt="" coords="353,30,431,58"/><area shape="rect" id="node9" href="console_8h.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;." alt="" coords="347,81,437,109"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:20 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

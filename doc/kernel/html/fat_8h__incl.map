@@ -1,0 +1,8 @@
+<map id="kernel/include/fs/fat.h" name="kernel/include/fs/fat.h">
+<area shape="rect" id="node3" href="$types_8h.html" title="types.h" alt="" coords="164,393,225,421"/>
+<area shape="rect" id="node5" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="43,161,123,189"/>
+<area shape="rect" id="node8" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="201,161,263,189"/>
+<area shape="rect" id="node17" href="$vfs_8h.html" title="Virtual File System." alt="" coords="129,83,180,111"/>
+<area shape="rect" id="node11" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="203,238,264,266"/>
+<area shape="rect" id="node14" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="195,315,272,343"/>
+</map>

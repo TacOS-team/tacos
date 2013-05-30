@@ -1,0 +1,7 @@
+<map id="opendir" name="opendir">
+<area shape="rect" id="node3" href="$unistd_8h.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="216,30,344,58"/>
+<area shape="rect" id="node9" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="249,93,311,121"/>
+<area shape="rect" id="node11" href="$fcntl_8c.html#adcb60598073f6f9cbb0091ef6768fa5c" title="open" alt="" coords="117,55,168,83"/>
+<area shape="rect" id="node5" href="$string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="395,5,448,33"/>
+<area shape="rect" id="node7" href="$string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="393,55,449,83"/>
+</map>

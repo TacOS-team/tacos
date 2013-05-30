@@ -1,19 +1,19 @@
 <map id="kernel/fs/ext2/ext2_functions.c" name="kernel/fs/ext2/ext2_functions.c">
-<area shape="rect" id="node3" href="$klog_8h.html" title="Logging macros." alt="" coords="429,99,485,127"/>
-<area shape="rect" id="node9" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="543,254,607,282"/>
-<area shape="rect" id="node35" href="$kerrno_8h.html" title="Codes erreurs." alt="" coords="738,99,805,127"/>
-<area shape="rect" id="node37" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="645,99,714,127"/>
-<area shape="rect" id="node5" href="$kstdio_8h.html" title="kprintf" alt="" coords="423,177,490,205"/>
-<area shape="rect" id="node11" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="557,486,618,514"/>
-<area shape="rect" id="node13" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="535,409,615,437"/>
-<area shape="rect" id="node15" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="409,331,494,359"/>
-<area shape="rect" id="node17" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="639,409,717,437"/>
-<area shape="rect" id="node21" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="357,409,461,437"/>
-<area shape="rect" id="node23" href="$process__types_8h.html" title="process_types.h" alt="" coords="218,409,333,437"/>
-<area shape="rect" id="node25" href="$symtable_8h.html" title="symtable.h" alt="" coords="26,409,109,437"/>
-<area shape="rect" id="node31" href="$vmm_8h.html" title="vmm.h" alt="" coords="133,409,194,437"/>
-<area shape="rect" id="node28" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="45,486,90,514"/>
-<area shape="rect" id="node39" href="$vfs_8h.html" title="Virtual File System." alt="" coords="685,177,735,205"/>
-<area shape="rect" id="node43" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="774,254,835,282"/>
-<area shape="rect" id="node46" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="774,331,835,359"/>
+<area shape="rect" id="node3" href="$klog_8h.html" title="Logging macros." alt="" coords="420,99,476,127"/>
+<area shape="rect" id="node9" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="535,254,599,282"/>
+<area shape="rect" id="node36" href="$kerrno_8h.html" title="Codes erreurs." alt="" coords="730,99,796,127"/>
+<area shape="rect" id="node38" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="636,99,706,127"/>
+<area shape="rect" id="node5" href="$kstdio_8h.html" title="kprintf" alt="" coords="415,177,482,205"/>
+<area shape="rect" id="node11" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="544,486,606,514"/>
+<area shape="rect" id="node13" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="535,409,615,437"/>
+<area shape="rect" id="node16" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="403,331,488,359"/>
+<area shape="rect" id="node18" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="639,409,716,437"/>
+<area shape="rect" id="node22" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="132,409,236,437"/>
+<area shape="rect" id="node24" href="$process__types_8h.html" title="process_types.h" alt="" coords="260,409,375,437"/>
+<area shape="rect" id="node26" href="$symtable_8h.html" title="symtable.h" alt="" coords="26,409,108,437"/>
+<area shape="rect" id="node32" href="$vmm_8h.html" title="vmm.h" alt="" coords="450,409,511,437"/>
+<area shape="rect" id="node29" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="44,486,90,514"/>
+<area shape="rect" id="node40" href="$vfs_8h.html" title="Virtual File System." alt="" coords="678,177,728,205"/>
+<area shape="rect" id="node44" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="706,254,767,282"/>
+<area shape="rect" id="node47" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="706,331,767,359"/>
 </map>

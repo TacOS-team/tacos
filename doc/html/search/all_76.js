@@ -1,6 +1,7 @@
 var searchData=
 [
   ['vaddr_5ft',['vaddr_t',['../kernel_2include_2types_8h.html#a53428b953a0ae6fba02a5b3596c867e0',1,'vaddr_t():&#160;types.h'],['../libc_2include_2sys_2types_8h.html#a53428b953a0ae6fba02a5b3596c867e0',1,'vaddr_t():&#160;types.h']]],
+  ['value',['value',['../structhashmap__cell__t.html#aa0758cf139adb3747a846e539d01d75d',1,'hashmap_cell_t']]],
   ['vbe_5fcontrol_5finfo',['vbe_control_info',['../structmultiboot__info.html#a06191cef73b64e9d64a01850547fd2e8',1,'multiboot_info']]],
   ['vdiscard',['VDISCARD',['../termios__types_8h.html#a8f3013a4641dcc40b11c99e47d9e9174',1,'VDISCARD():&#160;termios_types.h'],['../termios_8h.html#a8f3013a4641dcc40b11c99e47d9e9174',1,'VDISCARD():&#160;termios.h']]],
   ['veof',['VEOF',['../termios__types_8h.html#a2913fdfccc72db70821a2100bfc8217a',1,'VEOF():&#160;termios_types.h'],['../termios_8h.html#a2913fdfccc72db70821a2100bfc8217a',1,'VEOF():&#160;termios.h']]],

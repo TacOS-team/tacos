@@ -7,8 +7,7 @@
 {\ttfamily \#include $<$kfcntl.\-h$>$}\\*
 {\ttfamily \#include $<$kerrno.\-h$>$}\\*
 {\ttfamily \#include $<$fs/ext2.\-h$>$}\\*
-Graphe des dépendances par inclusion de ext2\-\_\-functions.\-c\-:
-\nopagebreak
+Graphe des dépendances par inclusion de ext2\-\_\-functions.\-c\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -22,32 +21,29 @@ int \hyperlink{ext2__functions_8c_a4d19a34580976adf582bb45bd402649c}{ext2\-\_\-r
 \begin{DoxyCompactList}\small\item\em Renomme ou déplace un fichier. \end{DoxyCompactList}\item 
 int \hyperlink{ext2__functions_8c_a4c86d6a4886145e7cd974675eb5a19a0}{ext2\-\_\-rmdir} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\-\_\-t} $\ast$dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$dentry)
 \begin{DoxyCompactList}\small\item\em Suppression d'un dossier vide. \end{DoxyCompactList}\item 
-\hypertarget{ext2__functions_8c_acad804eba95e7600b534e07bb9134a44}{int {\bfseries ext2\-\_\-setattr} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\-\_\-t} $\ast$inode, \hyperlink{vfs_8h_a4ad5156f3f4319159c4e28e8787713f1}{file\-\_\-attributes\-\_\-t} $\ast$attr)}\label{ext2__functions_8c_acad804eba95e7600b534e07bb9134a44}
-
+int \hyperlink{ext2__functions_8c_acad804eba95e7600b534e07bb9134a44}{ext2\-\_\-setattr} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\-\_\-t} $\ast$inode, \hyperlink{vfs_8h_a4ad5156f3f4319159c4e28e8787713f1}{file\-\_\-attributes\-\_\-t} $\ast$attr)
 \item 
 int \hyperlink{ext2__functions_8c_a4af1597cc97e9aa9591ed390589e6dfc}{ext2\-\_\-unlink} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\-\_\-t} $\ast$dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$dentry)
 \begin{DoxyCompactList}\small\item\em Suppression d'un noeud. \end{DoxyCompactList}\item 
 int \hyperlink{ext2__functions_8c_a099858facc12a389ffbff826567cb7c4}{ext2\-\_\-mkdir} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\-\_\-t} $\ast$dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$dentry, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t} \hyperlink{structmode}{mode})
 \begin{DoxyCompactList}\small\item\em Création d'un dossier. \end{DoxyCompactList}\item 
-int \hyperlink{ext2__functions_8c_ac9b55aefa79e5e521e4e5d993b4c009a}{ext2\-\_\-readdir} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, char $\ast$entries, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+int \hyperlink{ext2__functions_8c_ac9b55aefa79e5e521e4e5d993b4c009a}{ext2\-\_\-readdir} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, char $\ast$entries, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
 \begin{DoxyCompactList}\small\item\em Lecture du contenu d'un dossier. \end{DoxyCompactList}\item 
-int \hyperlink{ext2__functions_8c_a79a131bb760b0d236f6bf0209ee6f5cb}{ext2\-\_\-seek} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, long offset, int whence)
+int \hyperlink{ext2__functions_8c_a79a131bb760b0d236f6bf0209ee6f5cb}{ext2\-\_\-seek} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, long offset, int whence)
 \item 
-\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} \hyperlink{ext2__functions_8c_a598e5a2d603b1d2b31b8058b9dec3ab5}{ext2\-\_\-write} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, const void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+\hyperlink{kernel_2include_2types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\-\_\-t} \hyperlink{ext2__functions_8c_accd388d0b4601b1243922ac20a95d971}{ext2\-\_\-write} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, const void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
 \begin{DoxyCompactList}\small\item\em Ecriture d'un fichier. \end{DoxyCompactList}\item 
-\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} \hyperlink{ext2__functions_8c_aa5552876c927b5b04e708531c07344b0}{ext2\-\_\-read} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+\hyperlink{kernel_2include_2types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\-\_\-t} \hyperlink{ext2__functions_8c_a6b71fa4007d19f895b0def93e5ed8ca3}{ext2\-\_\-read} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
 \begin{DoxyCompactList}\small\item\em Lecture d'un fichier. \end{DoxyCompactList}\item 
 int \hyperlink{ext2__functions_8c_a1814eebfe79637247b38dda8e50a3263}{ext2\-\_\-mknod} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\-\_\-t} $\ast$dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$dentry, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t} \hyperlink{structmode}{mode}, \hyperlink{kstat_8h_a451f1b5788fa7cc5d33db47a5992e7a6}{dev\-\_\-t} dev)
 \begin{DoxyCompactList}\small\item\em Création d'un noeud (fichier, dossier, fichier spécial...) \end{DoxyCompactList}\item 
 int \hyperlink{ext2__functions_8c_aeb55aa4d71dded497758c72d86b2b2f7}{ext2\-\_\-truncate} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\-\_\-t} $\ast$inode, \hyperlink{libc_2include_2sys_2types_8h_a447a6a64dbb8fb44b1e62856b333db4a}{off\-\_\-t} off)
 \begin{DoxyCompactList}\small\item\em Change la taille d'un fichier. \end{DoxyCompactList}\item 
-\hypertarget{ext2__functions_8c_a185452dee205dcca978c1c6f7fdeee22}{\hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$ {\bfseries ext2\-\_\-getroot} (struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance)}\label{ext2__functions_8c_a185452dee205dcca978c1c6f7fdeee22}
-
+\hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$ \hyperlink{ext2__functions_8c_a185452dee205dcca978c1c6f7fdeee22}{ext2\-\_\-getroot} (struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance)
 \item 
-\hypertarget{ext2__functions_8c_aacb0077cd0a76158c9288ecd193d58da}{\hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$ {\bfseries ext2\-\_\-lookup} (struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance, struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$dentry, const char $\ast$name)}\label{ext2__functions_8c_aacb0077cd0a76158c9288ecd193d58da}
-
+\hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$ \hyperlink{ext2__functions_8c_aacb0077cd0a76158c9288ecd193d58da}{ext2\-\_\-lookup} (struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance, struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$dentry, const char $\ast$name)
 \item 
-int \hyperlink{ext2__functions_8c_ab2859a00444ce0ad527332da72e2629a}{ext2\-\_\-close} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd)
+int \hyperlink{ext2__functions_8c_ab2859a00444ce0ad527332da72e2629a}{ext2\-\_\-close} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd)
 \begin{DoxyCompactList}\small\item\em Fermeture d'un fichier ouvert. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -83,12 +79,84 @@ Description de ce que fait le fichier
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=218pt]{ext2__functions_8c_ab2859a00444ce0ad527332da72e2629a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ext2__functions_8c_a185452dee205dcca978c1c6f7fdeee22}{\index{ext2\-\_\-functions.\-c@{ext2\-\_\-functions.\-c}!ext2\-\_\-getroot@{ext2\-\_\-getroot}}
+\index{ext2\-\_\-getroot@{ext2\-\_\-getroot}!ext2_functions.c@{ext2\-\_\-functions.\-c}}
+\subsubsection[{ext2\-\_\-getroot}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dentry\-\_\-t}$\ast$ ext2\-\_\-getroot (
+\begin{DoxyParamCaption}
+\item[{struct {\bf \-\_\-fs\-\_\-instance\-\_\-t} $\ast$}]{instance}
+\end{DoxyParamCaption}
+)}}\label{ext2__functions_8c_a185452dee205dcca978c1c6f7fdeee22}
+Retourne le noeud racine.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em instance} & Instance de F\-S.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+le noeud racine. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{ext2__functions_8c_a185452dee205dcca978c1c6f7fdeee22_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ext2__functions_8c_aacb0077cd0a76158c9288ecd193d58da}{\index{ext2\-\_\-functions.\-c@{ext2\-\_\-functions.\-c}!ext2\-\_\-lookup@{ext2\-\_\-lookup}}
+\index{ext2\-\_\-lookup@{ext2\-\_\-lookup}!ext2_functions.c@{ext2\-\_\-functions.\-c}}
+\subsubsection[{ext2\-\_\-lookup}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dentry\-\_\-t}$\ast$ ext2\-\_\-lookup (
+\begin{DoxyParamCaption}
+\item[{struct {\bf \-\_\-fs\-\_\-instance\-\_\-t} $\ast$}]{instance, }
+\item[{struct {\bf \-\_\-dentry\-\_\-t} $\ast$}]{dentry, }
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}\label{ext2__functions_8c_aacb0077cd0a76158c9288ecd193d58da}
+Recherche le directory entry qui correspond au nom donné.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em instance} & Instance de F\-S. \\
+\hline
+{\em dentry} & Parent directory entry. \\
+\hline
+{\em name} & Nom de l'entrée.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Directory Entry de l'entrée recherchée ou N\-U\-L\-L. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ext2__functions_8c_aacb0077cd0a76158c9288ecd193d58da_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{ext2__functions_8c_aacb0077cd0a76158c9288ecd193d58da_icgraph}
 \end{center}
 \end{figure}
 
@@ -116,20 +184,18 @@ Voici le graphe d'appel pour cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=250pt]{ext2__functions_8c_a099858facc12a389ffbff826567cb7c4_cgraph}
+\includegraphics[width=350pt]{ext2__functions_8c_a099858facc12a389ffbff826567cb7c4_cgraph}
 \end{center}
 \end{figure}
 
 
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -164,8 +230,18 @@ Voici le graphe des appelants de cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ext2__functions_8c_a1814eebfe79637247b38dda8e50a3263_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -174,15 +250,15 @@ Voici le graphe des appelants de cette fonction \-:
 \end{figure}
 
 
-\hypertarget{ext2__functions_8c_aa5552876c927b5b04e708531c07344b0}{\index{ext2\-\_\-functions.\-c@{ext2\-\_\-functions.\-c}!ext2\-\_\-read@{ext2\-\_\-read}}
+\hypertarget{ext2__functions_8c_a6b71fa4007d19f895b0def93e5ed8ca3}{\index{ext2\-\_\-functions.\-c@{ext2\-\_\-functions.\-c}!ext2\-\_\-read@{ext2\-\_\-read}}
 \index{ext2\-\_\-read@{ext2\-\_\-read}!ext2_functions.c@{ext2\-\_\-functions.\-c}}
-\subsubsection[{ext2\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\-\_\-t} ext2\-\_\-read (
+\subsubsection[{ext2\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ssize\-\_\-t} ext2\-\_\-read (
 \begin{DoxyParamCaption}
 \item[{{\bf open\-\_\-file\-\_\-descriptor} $\ast$}]{ofd, }
 \item[{void $\ast$}]{buf, }
 \item[{{\bf size\-\_\-t}}]{size}
 \end{DoxyParamCaption}
-)}}\label{ext2__functions_8c_aa5552876c927b5b04e708531c07344b0}
+)}}\label{ext2__functions_8c_a6b71fa4007d19f895b0def93e5ed8ca3}
 
 \begin{DoxyParams}{Paramètres}
 {\em ofd} & Descripteur du fichier ouvert. \\
@@ -218,8 +294,7 @@ Nombre d'octets écrits dans entries.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -254,8 +329,7 @@ Voici le graphe d'appel pour cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -284,8 +358,7 @@ Voici le graphe des appelants de cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -317,6 +390,48 @@ Déplacement dans un fichier.
 \begin{DoxyReturn}{Renvoie}
 0 en cas de succès. 
 \end{DoxyReturn}
+\hypertarget{ext2__functions_8c_acad804eba95e7600b534e07bb9134a44}{\index{ext2\-\_\-functions.\-c@{ext2\-\_\-functions.\-c}!ext2\-\_\-setattr@{ext2\-\_\-setattr}}
+\index{ext2\-\_\-setattr@{ext2\-\_\-setattr}!ext2_functions.c@{ext2\-\_\-functions.\-c}}
+\subsubsection[{ext2\-\_\-setattr}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\-\_\-setattr (
+\begin{DoxyParamCaption}
+\item[{{\bf inode\-\_\-t} $\ast$}]{inode, }
+\item[{{\bf file\-\_\-attributes\-\_\-t} $\ast$}]{attr}
+\end{DoxyParamCaption}
+)}}\label{ext2__functions_8c_acad804eba95e7600b534e07bb9134a44}
+Change les attributs d'un inode.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em inode} & Inode à modifier. \\
+\hline
+{\em attr} & Nouveaux attributs.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{ext2__functions_8c_acad804eba95e7600b534e07bb9134a44_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{ext2__functions_8c_acad804eba95e7600b534e07bb9134a44_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{ext2__functions_8c_aeb55aa4d71dded497758c72d86b2b2f7}{\index{ext2\-\_\-functions.\-c@{ext2\-\_\-functions.\-c}!ext2\-\_\-truncate@{ext2\-\_\-truncate}}
 \index{ext2\-\_\-truncate@{ext2\-\_\-truncate}!ext2_functions.c@{ext2\-\_\-functions.\-c}}
 \subsubsection[{ext2\-\_\-truncate}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\-\_\-truncate (
@@ -337,12 +452,11 @@ Déplacement dans un fichier.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=266pt]{ext2__functions_8c_aeb55aa4d71dded497758c72d86b2b2f7_icgraph}
+\includegraphics[width=350pt]{ext2__functions_8c_aeb55aa4d71dded497758c72d86b2b2f7_icgraph}
 \end{center}
 \end{figure}
 
@@ -367,8 +481,7 @@ Voici le graphe des appelants de cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -377,15 +490,15 @@ Voici le graphe des appelants de cette fonction \-:
 \end{figure}
 
 
-\hypertarget{ext2__functions_8c_a598e5a2d603b1d2b31b8058b9dec3ab5}{\index{ext2\-\_\-functions.\-c@{ext2\-\_\-functions.\-c}!ext2\-\_\-write@{ext2\-\_\-write}}
+\hypertarget{ext2__functions_8c_accd388d0b4601b1243922ac20a95d971}{\index{ext2\-\_\-functions.\-c@{ext2\-\_\-functions.\-c}!ext2\-\_\-write@{ext2\-\_\-write}}
 \index{ext2\-\_\-write@{ext2\-\_\-write}!ext2_functions.c@{ext2\-\_\-functions.\-c}}
-\subsubsection[{ext2\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\-\_\-t} ext2\-\_\-write (
+\subsubsection[{ext2\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ssize\-\_\-t} ext2\-\_\-write (
 \begin{DoxyParamCaption}
 \item[{{\bf open\-\_\-file\-\_\-descriptor} $\ast$}]{ofd, }
 \item[{const void $\ast$}]{buf, }
 \item[{{\bf size\-\_\-t}}]{size}
 \end{DoxyParamCaption}
-)}}\label{ext2__functions_8c_a598e5a2d603b1d2b31b8058b9dec3ab5}
+)}}\label{ext2__functions_8c_accd388d0b4601b1243922ac20a95d971}
 
 \begin{DoxyParams}{Paramètres}
 {\em ofd} & Descripteur du fichier ouvert. \\

@@ -37,6 +37,7 @@ var searchData=
   ['enoent',['ENOENT',['../kerrno_8h.html#a03e689f378f643d16ea7537918528a48',1,'ENOENT():&#160;kerrno.h'],['../errno_8h.html#a03e689f378f643d16ea7537918528a48',1,'ENOENT():&#160;errno.h']]],
   ['enospc',['ENOSPC',['../kerrno_8h.html#a088abe8bad2df798edad3053d719b937',1,'ENOSPC():&#160;kerrno.h'],['../errno_8h.html#a088abe8bad2df798edad3053d719b937',1,'ENOSPC():&#160;errno.h']]],
   ['enotdir',['ENOTDIR',['../kerrno_8h.html#a9262fb92f7ef662d0bdd577912a5b101',1,'ENOTDIR():&#160;kerrno.h'],['../errno_8h.html#a9262fb92f7ef662d0bdd577912a5b101',1,'ENOTDIR():&#160;errno.h']]],
+  ['eof',['EOF',['../fat__internal_8c.html#a59adc4c82490d23754cd39c2fb99b0da',1,'fat_internal.c']]],
   ['eperm',['EPERM',['../kerrno_8h.html#add669d31505a077f769cff8e66c780b3',1,'EPERM():&#160;kerrno.h'],['../errno_8h.html#add669d31505a077f769cff8e66c780b3',1,'EPERM():&#160;errno.h']]],
   ['epipe',['EPIPE',['../kerrno_8h.html#a5f8d33deb08fa27c04897b278ac7f965',1,'EPIPE():&#160;kerrno.h'],['../errno_8h.html#a5f8d33deb08fa27c04897b278ac7f965',1,'EPIPE():&#160;errno.h']]],
   ['epoch_5fyr',['EPOCH_YR',['../clock_8c.html#a2cd69e03a0d15e6115c196f7ac35da13',1,'clock.c']]],

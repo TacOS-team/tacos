@@ -1,0 +1,17 @@
+<map id="libc/dirent.c" name="libc/dirent.c">
+<area shape="rect" id="node3" href="$dirent_8h.html" title="Définition de DIR et struct dirent." alt="" coords="379,83,443,111"/>
+<area shape="rect" id="node20" href="$fcntl_8h.html" title="File control operations." alt="" coords="5,315,61,343"/>
+<area shape="rect" id="node23" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="220,161,281,189"/>
+<area shape="rect" id="node31" href="$string_8h.html" title="Fonctions de manipulation de strings." alt="" coords="664,238,728,266"/>
+<area shape="rect" id="node35" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="560,83,656,111"/>
+<area shape="rect" id="node37" href="$unistd_8h.html" title="unistd.h" alt="" coords="469,83,536,111"/>
+<area shape="rect" id="node42" href="$stdio_8h.html" title="stdio.h" alt="" coords="800,161,859,189"/>
+<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="365,393,453,421"/>
+<area shape="rect" id="node7" href="$types_8h.html" title="sys/types.h" alt="" coords="523,315,608,343"/>
+<area shape="rect" id="node12" href="$stat_8h.html" title="sys/stat.h" alt="" coords="371,161,448,189"/>
+<area shape="rect" id="node10" href="$stdbool_8h.html" title="Type bool." alt="" coords="528,393,603,421"/>
+<area shape="rect" id="node16" href="$time_8h.html" title="time.h" alt="" coords="381,238,437,266"/>
+<area shape="rect" id="node27" href="$malloc_8h.html" title="malloc.h" alt="" coords="187,238,256,266"/>
+<area shape="rect" id="node45" href="$libio_8h.html" title="libio.h" alt="" coords="803,238,856,266"/>
+<area shape="rect" id="node50" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="931,238,997,266"/>
+</map>

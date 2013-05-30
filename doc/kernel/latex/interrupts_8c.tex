@@ -1,0 +1,159 @@
+\hypertarget{interrupts_8c}{\section{Référence du fichier kernel/interrupts.c}
+\label{interrupts_8c}\index{kernel/interrupts.\-c@{kernel/interrupts.\-c}}
+}
+{\ttfamily \#include $<$idt.\-h$>$}\\*
+{\ttfamily \#include $<$i8259.\-h$>$}\\*
+{\ttfamily \#include $<$interrupts.\-h$>$}\\*
+Graphe des dépendances par inclusion de interrupts.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{interrupts_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{interrupts_8c_aecc1fa8433fa21ba233b8feb2558e954}{interrupt\-\_\-set\-\_\-routine} (\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} interrupt\-\_\-id, interrupt\-\_\-handler\-\_\-t routine, \hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} privilege)
+\begin{DoxyCompactList}\small\item\em Ajoute une nouvelle interruption. \end{DoxyCompactList}\item 
+int \hyperlink{interrupts_8c_ac3f5203c31fd554b562cba8cec42ceb6}{interrupt\-\_\-disable} (\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} interrupt\-\_\-id)
+\begin{DoxyCompactList}\small\item\em Désactive une interruption. \end{DoxyCompactList}\item 
+void \hyperlink{interrupts_8c_a4eea959d9a7be06d7b87a0aad03b490e}{make\-\_\-trapgate\-\_\-from\-\_\-int} (\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} interrupt\-\_\-id)
+\begin{DoxyCompactList}\small\item\em Change le type d'une interruption en une trapgate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\-\_\-t} \hyperlink{interrupts_8c_a62023b0378f42eabb08c367d0e690925}{interrupts\-\_\-wrapper\-\_\-array} \mbox{[}\hyperlink{idt_8h_ac0283c827dbcca38f83f73900746ffa5}{I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-N\-U\-M}\mbox{]}
+\item 
+\hypertarget{interrupts_8c_a6fffdcf090c15f4a2bd9464c56134ad5}{interrupt\-\_\-handler\-\_\-t {\bfseries interrupts\-\_\-handler\-\_\-array} \mbox{[}\hyperlink{idt_8h_ac0283c827dbcca38f83f73900746ffa5}{I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-N\-U\-M}\mbox{]}}\label{interrupts_8c_a6fffdcf090c15f4a2bd9464c56134ad5}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+Description de ce que fait le fichier 
+
+\subsection{Documentation des fonctions}
+\hypertarget{interrupts_8c_ac3f5203c31fd554b562cba8cec42ceb6}{\index{interrupts.\-c@{interrupts.\-c}!interrupt\-\_\-disable@{interrupt\-\_\-disable}}
+\index{interrupt\-\_\-disable@{interrupt\-\_\-disable}!interrupts.c@{interrupts.\-c}}
+\subsubsection[{interrupt\-\_\-disable}]{\setlength{\rightskip}{0pt plus 5cm}int interrupt\-\_\-disable (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\-\_\-t}}]{interrupt\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{interrupts_8c_ac3f5203c31fd554b562cba8cec42ceb6}
+
+\begin{DoxyParams}{Paramètres}
+{\em interrupt\-\_\-id} & Le numéro de l'interruption à désactiver.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. Autre chose sinon. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{interrupts_8c_ac3f5203c31fd554b562cba8cec42ceb6_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{interrupts_8c_aecc1fa8433fa21ba233b8feb2558e954}{\index{interrupts.\-c@{interrupts.\-c}!interrupt\-\_\-set\-\_\-routine@{interrupt\-\_\-set\-\_\-routine}}
+\index{interrupt\-\_\-set\-\_\-routine@{interrupt\-\_\-set\-\_\-routine}!interrupts.c@{interrupts.\-c}}
+\subsubsection[{interrupt\-\_\-set\-\_\-routine}]{\setlength{\rightskip}{0pt plus 5cm}int interrupt\-\_\-set\-\_\-routine (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\-\_\-t}}]{interrupt\-\_\-id, }
+\item[{interrupt\-\_\-handler\-\_\-t}]{routine, }
+\item[{{\bf uint8\-\_\-t}}]{privilege}
+\end{DoxyParamCaption}
+)}}\label{interrupts_8c_aecc1fa8433fa21ba233b8feb2558e954}
+Ajoute une nouvelle interruption en mappant le numéro de l'interruption à la routine d'exécution.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em interrupt\-\_\-id} & Le numéro d'interruption. \\
+\hline
+{\em routine} & La routine qui sera exécutée lors de cette interruption. \\
+\hline
+{\em privilege} & Le niveau de privilège/priorité (0 ou 3).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. Autre chose sinon. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{interrupts_8c_aecc1fa8433fa21ba233b8feb2558e954_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{interrupts_8c_aecc1fa8433fa21ba233b8feb2558e954_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{interrupts_8c_a4eea959d9a7be06d7b87a0aad03b490e}{\index{interrupts.\-c@{interrupts.\-c}!make\-\_\-trapgate\-\_\-from\-\_\-int@{make\-\_\-trapgate\-\_\-from\-\_\-int}}
+\index{make\-\_\-trapgate\-\_\-from\-\_\-int@{make\-\_\-trapgate\-\_\-from\-\_\-int}!interrupts.c@{interrupts.\-c}}
+\subsubsection[{make\-\_\-trapgate\-\_\-from\-\_\-int}]{\setlength{\rightskip}{0pt plus 5cm}void make\-\_\-trapgate\-\_\-from\-\_\-int (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\-\_\-t}}]{interrupt\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{interrupts_8c_a4eea959d9a7be06d7b87a0aad03b490e}
+
+\begin{DoxyParams}{Paramètres}
+{\em interrupt\-\_\-id} & Le numéro de l'interruption dont on veut changer le type pour en faire une trapgate. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{interrupts_8c_a4eea959d9a7be06d7b87a0aad03b490e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{interrupts_8c_a4eea959d9a7be06d7b87a0aad03b490e_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Documentation des variables}
+\hypertarget{interrupts_8c_a62023b0378f42eabb08c367d0e690925}{\index{interrupts.\-c@{interrupts.\-c}!interrupts\-\_\-wrapper\-\_\-array@{interrupts\-\_\-wrapper\-\_\-array}}
+\index{interrupts\-\_\-wrapper\-\_\-array@{interrupts\-\_\-wrapper\-\_\-array}!interrupts.c@{interrupts.\-c}}
+\subsubsection[{interrupts\-\_\-wrapper\-\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf paddr\-\_\-t} interrupts\-\_\-wrapper\-\_\-array\mbox{[}{\bf I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-N\-U\-M}\mbox{]}}}\label{interrupts_8c_a62023b0378f42eabb08c367d0e690925}
+Le wrapper\-\_\-array on le défini dans le interrupts\-\_\-wrappers.\-S Le wrapper contient le code assembleur qui backup le contexte puis execute le handler. 

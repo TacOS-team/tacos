@@ -3,7 +3,7 @@
 <area shape="rect" id="node5" href="$serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="141,83,269,127"/>
 <area shape="rect" id="node7" href="$console_8c.html" title="Console virtuelle (Fn)." alt="" coords="293,83,421,127"/>
 <area shape="rect" id="node9" href="$tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="445,83,573,127"/>
-<area shape="rect" id="node11" href="$elf_8c.html" title="kernel/elf.c" alt="" coords="597,91,683,119"/>
+<area shape="rect" id="node11" href="$elf_8c.html" title="Bibliotèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="597,91,683,119"/>
 <area shape="rect" id="node13" href="$devfs_8c.html" title="DevFS." alt="" coords="707,91,824,119"/>
 <area shape="rect" id="node15" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="848,91,987,119"/>
 <area shape="rect" id="node17" href="$fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="1011,91,1131,119"/>

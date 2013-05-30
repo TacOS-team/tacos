@@ -130,8 +130,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc
 long int&#160;</td><td class="memItemRight" valign="bottom"><b>strtol</b> (const char *nptr, char **endptr, int base)</td></tr>
 <tr class="memitem:af171565a8838ed4f4fb2c036dce48c09"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af171565a8838ed4f4fb2c036dce48c09"></a>
 unsigned long int&#160;</td><td class="memItemRight" valign="bottom"><b>strtoul</b> (const char *nptr, char **endptr, int base)</td></tr>
-<tr class="memitem:a2c81f61ee897bc5a1f5491f3e2bf711b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c81f61ee897bc5a1f5491f3e2bf711b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>atoi</b> (const char *__nptr)</td></tr>
+<tr class="memitem:a2c81f61ee897bc5a1f5491f3e2bf711b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2stdlib_8h.html#a2c81f61ee897bc5a1f5491f3e2bf711b">atoi</a> (const char *__nptr)</td></tr>
 <tr class="memitem:a5e1f93e3feb632ee74c5f40cdd907ca2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2stdlib_8h.html#a5e1f93e3feb632ee74c5f40cdd907ca2">itoa</a> (char *buf, int base, int d)</td></tr>
 <tr class="memdesc:a5e1f93e3feb632ee74c5f40cdd907ca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converti l'entier d en une chaîne de caractère et le stock dans buf. L'entier base permet de spécifier la base à utiliser (decimal ou hexadécimal).  <a href="#a5e1f93e3feb632ee74c5f40cdd907ca2"></a><br/></td></tr>
 <tr class="memitem:ae23144bcbb8e3742b00eb687c36654d1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae23144bcbb8e3742b00eb687c36654d1"></a>
@@ -190,6 +189,39 @@ DESCRIPTION</h1>
 </div>
 </div>
 <h2>Documentation des fonctions</h2>
+<a class="anchor" id="a2c81f61ee897bc5a1f5491f3e2bf711b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int atoi </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>__nptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Converti une chaine de caractère en entier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">__nptr</td><td>La chaine à traduire.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La valeur convertie. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="libc_2include_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_cgraph.png" border="0" usemap="#libc_2include_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_cgraph" alt=""/></div>
+<map name="libc_2include_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_cgraph" id="libc_2include_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_cgraph">
+<area shape="rect" id="node3" href="kernel_2include_2klibc_2stdlib_8h.html#a2c81f61ee897bc5a1f5491f3e2bf711b" title="atoi" alt="" coords="96,5,139,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="a62b7798461bd461da64c5f9d35feddf7"></a>
 <div class="memitem">
 <div class="memproto">
@@ -263,6 +295,15 @@ DESCRIPTION</h1>
   </dd>
 </dl>
 
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="libc_2include_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_cgraph.png" border="0" usemap="#libc_2include_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_cgraph" alt=""/></div>
+<map name="libc_2include_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_cgraph" id="libc_2include_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_cgraph">
+<area shape="rect" id="node3" href="kernel_2include_2klibc_2stdlib_8h.html#a5e1f93e3feb632ee74c5f40cdd907ca2" title="Converti l&#39;entier d en une chaîne de caractère et le stock dans buf. L&#39;entier base permet de spécifie..." alt="" coords="96,5,139,33"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a1a6b5e8d2f1c37e5b43e4345586075be"></a>
@@ -315,7 +356,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Mai 8 2013 09:38:43 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Mai 30 2013 19:08:37 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

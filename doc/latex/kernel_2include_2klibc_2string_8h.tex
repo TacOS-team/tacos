@@ -7,16 +7,14 @@ Fonctions de manipulation de strings depuis le kernel.
 
 
 {\ttfamily \#include $<$types.\-h$>$}\\*
-Graphe des dépendances par inclusion de string.\-h\-:
-\nopagebreak
+Graphe des dépendances par inclusion de string.\-h\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=180pt]{kernel_2include_2klibc_2string_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:
-\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -42,9 +40,8 @@ int \hyperlink{kernel_2include_2klibc_2string_8h_a706b36f3a672f84685576723c3928b
 \begin{DoxyCompactList}\small\item\em Compare deux chaînes. \end{DoxyCompactList}\item 
 int \hyperlink{kernel_2include_2klibc_2string_8h_a674b7f779fec84cb1a3be8222b5c381a}{strncasecmp} (const char $\ast$s1, const char $\ast$s2, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
 \begin{DoxyCompactList}\small\item\em Compare deux chaînes jusqu'à n caractères. \end{DoxyCompactList}\item 
-\hypertarget{kernel_2include_2klibc_2string_8h_a48d911e1a150610b7182d19b81651828}{char $\ast$ {\bfseries strchrnul} (const char $\ast$s, int c)}\label{kernel_2include_2klibc_2string_8h_a48d911e1a150610b7182d19b81651828}
-
-\item 
+char $\ast$ \hyperlink{kernel_2include_2klibc_2string_8h_a48d911e1a150610b7182d19b81651828}{strchrnul} (const char $\ast$s, int c)
+\begin{DoxyCompactList}\small\item\em Recherche un caractère dans une chaîne. \end{DoxyCompactList}\item 
 void $\ast$ \hyperlink{kernel_2include_2klibc_2string_8h_ace6ee45c30e71865e6eb635200379db9}{memset} (void $\ast$s, int c, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
 \begin{DoxyCompactList}\small\item\em Rempli une zone mémoire avec un octet donné. \end{DoxyCompactList}\item 
 int \hyperlink{kernel_2include_2klibc_2string_8h_a9e6df54ee04e18a3772335580e2ed872}{memcmp} (const void $\ast$s1, const void $\ast$s2, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
@@ -65,9 +62,8 @@ char $\ast$ \hyperlink{kernel_2include_2klibc_2string_8h_ae9229017a4501f8d6a637b
 \begin{DoxyCompactList}\small\item\em Recherche une sous-\/chaîne en ignorant la casse. \end{DoxyCompactList}\item 
 char $\ast$ \hyperlink{kernel_2include_2klibc_2string_8h_ab1cc1a3ff560049e22576031c7c2345b}{strdup} (const char $\ast$s)
 \begin{DoxyCompactList}\small\item\em Duplique une chaine. \end{DoxyCompactList}\item 
-\hypertarget{kernel_2include_2klibc_2string_8h_a8cb460f64c449f2a9b9b7a40569ce0fe}{char $\ast$ {\bfseries strtok} (char $\ast$str, const char $\ast$delim)}\label{kernel_2include_2klibc_2string_8h_a8cb460f64c449f2a9b9b7a40569ce0fe}
-
-\end{DoxyCompactItemize}
+char $\ast$ \hyperlink{kernel_2include_2klibc_2string_8h_a8cb460f64c449f2a9b9b7a40569ce0fe}{strtok} (char $\ast$str, const char $\ast$delim)
+\begin{DoxyCompactList}\small\item\em Extraire des mots d'une chaîne. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
@@ -146,8 +142,7 @@ un pointeur sur dest.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -207,12 +202,11 @@ un pointeur vers la zone mémoire s.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=234pt]{kernel_2include_2klibc_2string_8h_ace6ee45c30e71865e6eb635200379db9_icgraph}
+\includegraphics[width=288pt]{kernel_2include_2klibc_2string_8h_ace6ee45c30e71865e6eb635200379db9_icgraph}
 \end{center}
 \end{figure}
 
@@ -297,6 +291,26 @@ La fonction \hyperlink{kernel_2include_2klibc_2string_8h_a12871ed234858ef0e363d2
 \begin{DoxyReturn}{Renvoie}
 un pointeur sur la première occurence trouvée ou N\-U\-L\-L si absent. 
 \end{DoxyReturn}
+\hypertarget{kernel_2include_2klibc_2string_8h_a48d911e1a150610b7182d19b81651828}{\index{kernel/include/klibc/string.\-h@{kernel/include/klibc/string.\-h}!strchrnul@{strchrnul}}
+\index{strchrnul@{strchrnul}!kernel/include/klibc/string.h@{kernel/include/klibc/string.\-h}}
+\subsubsection[{strchrnul}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strchrnul (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{s, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{kernel_2include_2klibc_2string_8h_a48d911e1a150610b7182d19b81651828}
+Recherche un caractère dans une chaîne, et si le caractère n'est pas présent, renvoie un pointeur vers l'octet nul de la chaîne.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s} & La chaîne dans laquelle il faut effectuer une recherche. \\
+\hline
+{\em c} & Le caractère à rechercher.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur la première occurrence du caractère dans la chaîne ou un pointeur vers la caractère nul de la chaîne si le caractère n'est pas trouvé. 
+\end{DoxyReturn}
 \hypertarget{kernel_2include_2klibc_2string_8h_a11bd144d7d44914099a3aeddf1c8567d}{\index{kernel/include/klibc/string.\-h@{kernel/include/klibc/string.\-h}!strcmp@{strcmp}}
 \index{strcmp@{strcmp}!kernel/include/klibc/string.h@{kernel/include/klibc/string.\-h}}
 \subsubsection[{strcmp}]{\setlength{\rightskip}{0pt plus 5cm}int strcmp (
@@ -319,12 +333,11 @@ un entier strictement négatif si s1 est inférieur à s2, strictement positif s
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=238pt]{kernel_2include_2klibc_2string_8h_a11bd144d7d44914099a3aeddf1c8567d_icgraph}
+\includegraphics[width=350pt]{kernel_2include_2klibc_2string_8h_a11bd144d7d44914099a3aeddf1c8567d_icgraph}
 \end{center}
 \end{figure}
 
@@ -351,8 +364,7 @@ un pointeur vers la chaîne de destination s1.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -380,12 +392,11 @@ un pointeur vers la nouvelle zone mémoire contenant une copie de la chaîne.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=208pt]{kernel_2include_2klibc_2string_8h_ab1cc1a3ff560049e22576031c7c2345b_icgraph}
+\includegraphics[width=350pt]{kernel_2include_2klibc_2string_8h_ab1cc1a3ff560049e22576031c7c2345b_icgraph}
 \end{center}
 \end{figure}
 
@@ -409,8 +420,7 @@ le nombre de caractères dans la chaîne s.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -513,8 +523,7 @@ un pointeur vers la chaîne de destination s1.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -545,8 +554,7 @@ un pointeur sur la dernière occurence trouvée ou N\-U\-L\-L si absent.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -574,4 +582,22 @@ Recherche needle (aiguille) dans la chaine heystack (meule de foin). Les caract�
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
 un pointeur vers le début de la sous-\/chaîne ou N\-U\-L\-L si non trouvée. 
+\end{DoxyReturn}
+\hypertarget{kernel_2include_2klibc_2string_8h_a8cb460f64c449f2a9b9b7a40569ce0fe}{\index{kernel/include/klibc/string.\-h@{kernel/include/klibc/string.\-h}!strtok@{strtok}}
+\index{strtok@{strtok}!kernel/include/klibc/string.h@{kernel/include/klibc/string.\-h}}
+\subsubsection[{strtok}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strtok (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{str, }
+\item[{const char $\ast$}]{delim}
+\end{DoxyParamCaption}
+)}}\label{kernel_2include_2klibc_2string_8h_a8cb460f64c449f2a9b9b7a40569ce0fe}
+
+\begin{DoxyParams}{Paramètres}
+{\em str} & La chaine à tokenizer. \\
+\hline
+{\em delim} & L'ensemble des délimiteurs possible.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur vers l'élément lexical suivant ou N\-U\-L\-L s'il n'y en a plus. 
 \end{DoxyReturn}

@@ -1,26 +1,26 @@
 <map id="kernel/fs/fat/fat_functions.c" name="kernel/fs/fat/fat_functions.c">
-<area shape="rect" id="node3" href="$fat_8h.html" title="fs/fat.h" alt="" coords="216,238,278,266"/>
-<area shape="rect" id="node9" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="596,393,658,421"/>
-<area shape="rect" id="node24" href="$kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="678,315,747,343"/>
-<area shape="rect" id="node29" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="436,393,500,421"/>
-<area shape="rect" id="node52" href="$kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="98,161,191,189"/>
-<area shape="rect" id="node55" href="$klog_8h.html" title="Logging macros." alt="" coords="727,83,783,111"/>
-<area shape="rect" id="node59" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="836,238,914,266"/>
-<area shape="rect" id="node62" href="$kerrno_8h.html" title="Codes erreurs." alt="" coords="807,83,874,111"/>
-<area shape="rect" id="node65" href="$fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="284,161,370,189"/>
-<area shape="rect" id="node76" href="$fat__internal_8c.html" title="fat_internal.c" alt="" coords="354,83,450,111"/>
-<area shape="rect" id="node7" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="54,547,134,575"/>
-<area shape="rect" id="node19" href="$vfs_8h.html" title="Virtual File System." alt="" coords="328,315,379,343"/>
-<area shape="rect" id="node11" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="730,625,791,653"/>
-<area shape="rect" id="node13" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="632,470,694,498"/>
-<area shape="rect" id="node16" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="768,547,846,575"/>
-<area shape="rect" id="node33" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="426,470,511,498"/>
-<area shape="rect" id="node37" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="416,547,520,575"/>
-<area shape="rect" id="node39" href="$process__types_8h.html" title="process_types.h" alt="" coords="544,547,659,575"/>
-<area shape="rect" id="node41" href="$symtable_8h.html" title="symtable.h" alt="" coords="208,547,291,575"/>
-<area shape="rect" id="node47" href="$vmm_8h.html" title="vmm.h" alt="" coords="683,547,744,575"/>
-<area shape="rect" id="node44" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="227,625,272,653"/>
-<area shape="rect" id="node57" href="$kstdio_8h.html" title="kprintf" alt="" coords="727,161,794,189"/>
-<area shape="rect" id="node67" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="304,238,400,266"/>
-<area shape="rect" id="node72" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="227,315,304,343"/>
+<area shape="rect" id="node3" href="$fat_8h.html" title="fs/fat.h" alt="" coords="807,238,868,266"/>
+<area shape="rect" id="node11" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="737,393,799,421"/>
+<area shape="rect" id="node25" href="$kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="611,315,680,343"/>
+<area shape="rect" id="node30" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="515,393,579,421"/>
+<area shape="rect" id="node53" href="$kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="1201,161,1295,189"/>
+<area shape="rect" id="node56" href="$klog_8h.html" title="Logging macros." alt="" coords="1047,83,1103,111"/>
+<area shape="rect" id="node60" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="1289,238,1367,266"/>
+<area shape="rect" id="node63" href="$kerrno_8h.html" title="Codes erreurs." alt="" coords="1177,83,1244,111"/>
+<area shape="rect" id="node66" href="$fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="875,161,960,189"/>
+<area shape="rect" id="node77" href="$fat__internal_8c.html" title="fat_internal.c" alt="" coords="927,83,1023,111"/>
+<area shape="rect" id="node7" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="861,547,941,575"/>
+<area shape="rect" id="node20" href="$vfs_8h.html" title="Virtual File System." alt="" coords="856,315,907,343"/>
+<area shape="rect" id="node9" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="649,625,711,653"/>
+<area shape="rect" id="node14" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="805,470,867,498"/>
+<area shape="rect" id="node17" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="565,547,643,575"/>
+<area shape="rect" id="node34" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="379,470,464,498"/>
+<area shape="rect" id="node38" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="251,547,355,575"/>
+<area shape="rect" id="node40" href="$process__types_8h.html" title="process_types.h" alt="" coords="112,547,227,575"/>
+<area shape="rect" id="node42" href="$symtable_8h.html" title="symtable.h" alt="" coords="5,547,88,575"/>
+<area shape="rect" id="node48" href="$vmm_8h.html" title="vmm.h" alt="" coords="379,547,440,575"/>
+<area shape="rect" id="node45" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="24,625,69,653"/>
+<area shape="rect" id="node58" href="$kstdio_8h.html" title="kprintf" alt="" coords="1041,161,1108,189"/>
+<area shape="rect" id="node68" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="948,238,1044,266"/>
+<area shape="rect" id="node73" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="1032,315,1109,343"/>
 </map>

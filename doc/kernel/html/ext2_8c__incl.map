@@ -1,0 +1,14 @@
+<map id="kernel/fs/ext2/ext2.c" name="kernel/fs/ext2/ext2.c">
+<area shape="rect" id="node3" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="131,83,200,111"/>
+<area shape="rect" id="node21" href="$klog_8h.html" title="Logging macros." alt="" coords="405,83,461,111"/>
+<area shape="rect" id="node25" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="340,315,417,343"/>
+<area shape="rect" id="node28" href="$ext2__internal_8h.html" title="ext2_internal.h" alt="" coords="224,83,328,111"/>
+<area shape="rect" id="node5" href="$vfs_8h.html" title="Virtual File System." alt="" coords="140,161,191,189"/>
+<area shape="rect" id="node7" href="$types_8h.html" title="types.h" alt="" coords="171,470,232,498"/>
+<area shape="rect" id="node9" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="185,238,265,266"/>
+<area shape="rect" id="node12" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="100,238,161,266"/>
+<area shape="rect" id="node15" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="100,315,161,343"/>
+<area shape="rect" id="node18" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="36,393,113,421"/>
+<area shape="rect" id="node23" href="$kstdio_8h.html" title="kprintf" alt="" coords="403,161,469,189"/>
+<area shape="rect" id="node30" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="237,161,315,189"/>
+</map>

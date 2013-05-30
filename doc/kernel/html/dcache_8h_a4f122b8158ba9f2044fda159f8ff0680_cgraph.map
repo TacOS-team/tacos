@@ -1,0 +1,5 @@
+<map id="dcache_set" name="dcache_set">
+<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="293,5,360,33"/>
+<area shape="rect" id="node7" href="$hashmap_8h.html#a0c25525e8b6599bcafda45b74dcac19d" title="hashmap_set" alt="" coords="145,30,244,58"/>
+<area shape="rect" id="node5" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="409,5,548,33"/>
+</map>

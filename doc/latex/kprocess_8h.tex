@@ -13,16 +13,14 @@ Création de nouveaux processus.
 {\ttfamily \#include $<$symtable.\-h$>$}\\*
 {\ttfamily \#include $<$types.\-h$>$}\\*
 {\ttfamily \#include $<$vmm.\-h$>$}\\*
-Graphe des dépendances par inclusion de kprocess.\-h\-:
-\nopagebreak
+Graphe des dépendances par inclusion de kprocess.\-h\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{kprocess_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:
-\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -35,7 +33,7 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 struct \hyperlink{structprocess__init__data__t}{process\-\_\-init\-\_\-data\-\_\-t}
 \item 
 struct \hyperlink{structprocess__t}{process\-\_\-t}
-\item 
+\begin{DoxyCompactList}\small\item\em Structure représentant un processus. \end{DoxyCompactList}\item 
 struct \hyperlink{struct__proclist__cell}{\-\_\-proclist\-\_\-cell}
 \end{DoxyCompactItemize}
 \subsection*{Macros}
@@ -44,26 +42,20 @@ struct \hyperlink{struct__proclist__cell}{\-\_\-proclist\-\_\-cell}
 \hypertarget{kprocess_8h_a2d507dcb17c4021c522e307f8d0657f7}{\#define {\bfseries U\-S\-E\-R\-\_\-\-P\-R\-O\-C\-E\-S\-S\-\_\-\-B\-A\-S\-E}~0x40000000}\label{kprocess_8h_a2d507dcb17c4021c522e307f8d0657f7}
 
 \item 
-\hypertarget{kprocess_8h_a63e32d00bc48471b4db49d481ac228dc}{\#define {\bfseries M\-A\-X\-\_\-\-P\-R\-O\-C}~512}\label{kprocess_8h_a63e32d00bc48471b4db49d481ac228dc}
-
+\#define \hyperlink{kprocess_8h_a63e32d00bc48471b4db49d481ac228dc}{M\-A\-X\-\_\-\-P\-R\-O\-C}~512
 \item 
 \hypertarget{kprocess_8h_a49bcf7db4ee90709603629610ee9bffc}{\#define {\bfseries C\-P\-U\-\_\-\-U\-S\-A\-G\-E\-\_\-\-S\-A\-M\-P\-L\-E\-\_\-\-R\-A\-T\-E}~100}\label{kprocess_8h_a49bcf7db4ee90709603629610ee9bffc}
 
 \item 
-\hypertarget{kprocess_8h_a0a3202b6e8073e458785ebcdf6d8c9f2}{\#define {\bfseries P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-I\-D\-L\-E}~0}\label{kprocess_8h_a0a3202b6e8073e458785ebcdf6d8c9f2}
-
+\#define \hyperlink{kprocess_8h_a0a3202b6e8073e458785ebcdf6d8c9f2}{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-I\-D\-L\-E}~0
 \item 
-\hypertarget{kprocess_8h_a1538df1594431185fbbced3805cddc37}{\#define {\bfseries P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-R\-U\-N\-N\-I\-N\-G}~1}\label{kprocess_8h_a1538df1594431185fbbced3805cddc37}
-
+\#define \hyperlink{kprocess_8h_a1538df1594431185fbbced3805cddc37}{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-R\-U\-N\-N\-I\-N\-G}~1
 \item 
-\hypertarget{kprocess_8h_af93e7bcf4bed8ec35b44970c4b332b92}{\#define {\bfseries P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-W\-A\-I\-T\-I\-N\-G}~2}\label{kprocess_8h_af93e7bcf4bed8ec35b44970c4b332b92}
-
+\#define \hyperlink{kprocess_8h_af93e7bcf4bed8ec35b44970c4b332b92}{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-W\-A\-I\-T\-I\-N\-G}~2
 \item 
-\hypertarget{kprocess_8h_a0d5a62fb2d0f0faed256d4b5b872f7f0}{\#define {\bfseries P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-S\-U\-S\-P\-E\-N\-D\-E\-D}~3}\label{kprocess_8h_a0d5a62fb2d0f0faed256d4b5b872f7f0}
-
+\#define \hyperlink{kprocess_8h_a0d5a62fb2d0f0faed256d4b5b872f7f0}{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-S\-U\-S\-P\-E\-N\-D\-E\-D}~3
 \item 
-\hypertarget{kprocess_8h_ab809d396d2bb4d37ee1facf1e8ef34e3}{\#define {\bfseries P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-T\-E\-R\-M\-I\-N\-A\-T\-E\-D}~4}\label{kprocess_8h_ab809d396d2bb4d37ee1facf1e8ef34e3}
-
+\#define \hyperlink{kprocess_8h_ab809d396d2bb4d37ee1facf1e8ef34e3}{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-T\-E\-R\-M\-I\-N\-A\-T\-E\-D}~4
 \item 
 \hypertarget{kprocess_8h_a534e21105e1b2c98193793536568d193}{\#define {\bfseries C\-U\-R\-R\-E\-N\-T\-\_\-\-P\-R\-O\-C\-E\-S\-S}~-\/1}\label{kprocess_8h_a534e21105e1b2c98193793536568d193}
 
@@ -85,9 +77,6 @@ typedef struct \hyperlink{struct__proclist__cell}{\-\_\-proclist\-\_\-cell} $\as
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{kprocess_8h_a460fef0683c60cd00003caa26eda1339}{void {\bfseries init\-\_\-process\-\_\-array} ()}\label{kprocess_8h_a460fef0683c60cd00003caa26eda1339}
-
-\item 
 \hyperlink{structprocess__t}{process\-\_\-t} $\ast$ \hyperlink{kprocess_8h_a21c8be1fe7cda8279886a50d946625bb}{create\-\_\-process} (\hyperlink{structprocess__init__data__t}{process\-\_\-init\-\_\-data\-\_\-t} $\ast$init\-\_\-data)
 \begin{DoxyCompactList}\small\item\em (O\-U\-T\-D\-A\-T\-E\-D)Crée un nouveau processus. Crée un nouveau processus et l'ajoute à la liste des processus avec un état d'exécution P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-I\-D\-L\-E. \end{DoxyCompactList}\item 
 int \hyperlink{kprocess_8h_a7cced35f469ae897c55ab96940289cf6}{delete\-\_\-process} (int pid)
@@ -104,36 +93,23 @@ int \hyperlink{kprocess_8h_a7cced35f469ae897c55ab96940289cf6}{delete\-\_\-proces
 \hypertarget{kprocess_8h_a6b501b3d2704f5c48c90ca79bec4d289}{void {\bfseries sample\-\_\-\-C\-P\-U\-\_\-usage} ()}\label{kprocess_8h_a6b501b3d2704f5c48c90ca79bec4d289}
 
 \item 
-\hypertarget{kprocess_8h_acc70870c5d5807f03b0a58bd1e160f6f}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1} (sys\-\_\-exit, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} ret\-\_\-value)}\label{kprocess_8h_acc70870c5d5807f03b0a58bd1e160f6f}
+\hypertarget{kprocess_8h_acc70870c5d5807f03b0a58bd1e160f6f}{\hyperlink{kprocess_8h_acc70870c5d5807f03b0a58bd1e160f6f}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1} (sys\-\_\-exit, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} ret\-\_\-value)}\label{kprocess_8h_acc70870c5d5807f03b0a58bd1e160f6f}
 
-\item 
-\hypertarget{kprocess_8h_aeb04c10b6eb21ece6a889c874c3e1830}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1} (sys\-\_\-getpid, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} $\ast$pid)}\label{kprocess_8h_aeb04c10b6eb21ece6a889c874c3e1830}
-
-\item 
-\hypertarget{kprocess_8h_a1e4ed2d0a9b35c02447c629472a491f3}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1} (sys\-\_\-getppid, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} $\ast$ppid)}\label{kprocess_8h_a1e4ed2d0a9b35c02447c629472a491f3}
-
-\item 
-\hypertarget{kprocess_8h_ad12463cd6ec271bb3214cbbee8d7c1ab}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-exec, char $\ast$, char $\ast$$\ast$, int $\ast$)}\label{kprocess_8h_ad12463cd6ec271bb3214cbbee8d7c1ab}
-
-\item 
-\hypertarget{kprocess_8h_ac57ad880ae66a0bf4339309fada43242}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-proc, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} sub\-\_\-func, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} param1, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} param2)}\label{kprocess_8h_ac57ad880ae66a0bf4339309fada43242}
-
-\item 
-\hypertarget{kprocess_8h_a4e715b0cdc3fe2325e5dcc64ec07f0f9}{{\bfseries S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1} (sys\-\_\-waitpid, int pid)}\label{kprocess_8h_a4e715b0cdc3fe2325e5dcc64ec07f0f9}
-
-\item 
-\hypertarget{kprocess_8h_a95c28343e8515a53a2392068dc70d307}{void {\bfseries add\-\_\-process} (\hyperlink{structprocess__t}{process\-\_\-t} $\ast$process)}\label{kprocess_8h_a95c28343e8515a53a2392068dc70d307}
-
-\item 
-\hypertarget{kprocess_8h_a178269ee586c6ba0b34c554a6e05dd89}{void {\bfseries inject\-\_\-idle} (\hyperlink{structprocess__t}{process\-\_\-t} $\ast$proc)}\label{kprocess_8h_a178269ee586c6ba0b34c554a6e05dd89}
-
-\item 
-\hypertarget{kprocess_8h_a67b19f8892567cdb63c98ee660300f60}{void {\bfseries procfs\-\_\-init} ()}\label{kprocess_8h_a67b19f8892567cdb63c98ee660300f60}
-
-\item 
-\hypertarget{kprocess_8h_ab5769fb8db77d54ea9a9216f14a2248c}{\hyperlink{structprocess__t}{process\-\_\-t} $\ast$ {\bfseries get\-\_\-process\-\_\-array} (int i)}\label{kprocess_8h_ab5769fb8db77d54ea9a9216f14a2248c}
-
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Syscall appelé lors de la fin d'exécution d'un process. \end{DoxyCompactList}\item 
+\hyperlink{kprocess_8h_aeb04c10b6eb21ece6a889c874c3e1830}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1} (sys\-\_\-getpid, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} $\ast$pid)
+\begin{DoxyCompactList}\small\item\em Récupére le P\-I\-D du process courant. \end{DoxyCompactList}\item 
+\hyperlink{kprocess_8h_a1e4ed2d0a9b35c02447c629472a491f3}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1} (sys\-\_\-getppid, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} $\ast$ppid)
+\begin{DoxyCompactList}\small\item\em Récupére le P\-I\-D du process parent. \end{DoxyCompactList}\item 
+\hyperlink{kprocess_8h_a47ef452c5b4017727c9c4222ab133fae}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-exec, char $\ast$cmdline, char $\ast$$\ast$environ, int $\ast$retval)
+\begin{DoxyCompactList}\small\item\em Syscall pour exécuter un programme. \end{DoxyCompactList}\item 
+\hyperlink{kprocess_8h_ac57ad880ae66a0bf4339309fada43242}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-proc, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} sub\-\_\-func, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} param1, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} param2)
+\begin{DoxyCompactList}\small\item\em Récupère des infos sur un process. \end{DoxyCompactList}\item 
+\hyperlink{kprocess_8h_a4e715b0cdc3fe2325e5dcc64ec07f0f9}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1} (sys\-\_\-waitpid, int pid)
+\begin{DoxyCompactList}\small\item\em Bloque le process courant jusqu'à ce que le processus identifié par pid se termine. \end{DoxyCompactList}\item 
+void \hyperlink{kprocess_8h_a67b19f8892567cdb63c98ee660300f60}{procfs\-\_\-init} ()
+\begin{DoxyCompactList}\small\item\em Initialisation du proc F\-S. \end{DoxyCompactList}\item 
+\hyperlink{structprocess__t}{process\-\_\-t} $\ast$ \hyperlink{kprocess_8h_ab5769fb8db77d54ea9a9216f14a2248c}{get\-\_\-process\-\_\-array} (int i)
+\begin{DoxyCompactList}\small\item\em Récupère un process à partir de sa position dans le tableau. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
@@ -149,6 +125,27 @@ This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-
 
 You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
 
+
+\subsection{Documentation des macros}
+\hypertarget{kprocess_8h_a63e32d00bc48471b4db49d481ac228dc}{\index{kprocess.\-h@{kprocess.\-h}!M\-A\-X\-\_\-\-P\-R\-O\-C@{M\-A\-X\-\_\-\-P\-R\-O\-C}}
+\index{M\-A\-X\-\_\-\-P\-R\-O\-C@{M\-A\-X\-\_\-\-P\-R\-O\-C}!kprocess.h@{kprocess.\-h}}
+\subsubsection[{M\-A\-X\-\_\-\-P\-R\-O\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-X\-\_\-\-P\-R\-O\-C~512}}\label{kprocess_8h_a63e32d00bc48471b4db49d481ac228dc}
+Nombre max de processus. \hypertarget{kprocess_8h_a0a3202b6e8073e458785ebcdf6d8c9f2}{\index{kprocess.\-h@{kprocess.\-h}!P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-I\-D\-L\-E@{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-I\-D\-L\-E}}
+\index{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-I\-D\-L\-E@{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-I\-D\-L\-E}!kprocess.h@{kprocess.\-h}}
+\subsubsection[{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-I\-D\-L\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-I\-D\-L\-E~0}}\label{kprocess_8h_a0a3202b6e8073e458785ebcdf6d8c9f2}
+États possibles des process.\-Inactif. \hypertarget{kprocess_8h_a1538df1594431185fbbced3805cddc37}{\index{kprocess.\-h@{kprocess.\-h}!P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-R\-U\-N\-N\-I\-N\-G@{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-R\-U\-N\-N\-I\-N\-G}}
+\index{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-R\-U\-N\-N\-I\-N\-G@{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-R\-U\-N\-N\-I\-N\-G}!kprocess.h@{kprocess.\-h}}
+\subsubsection[{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-R\-U\-N\-N\-I\-N\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-R\-U\-N\-N\-I\-N\-G~1}}\label{kprocess_8h_a1538df1594431185fbbced3805cddc37}
+En cours d'exécution. \hypertarget{kprocess_8h_a0d5a62fb2d0f0faed256d4b5b872f7f0}{\index{kprocess.\-h@{kprocess.\-h}!P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-S\-U\-S\-P\-E\-N\-D\-E\-D@{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-S\-U\-S\-P\-E\-N\-D\-E\-D}}
+\index{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-S\-U\-S\-P\-E\-N\-D\-E\-D@{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-S\-U\-S\-P\-E\-N\-D\-E\-D}!kprocess.h@{kprocess.\-h}}
+\subsubsection[{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-S\-U\-S\-P\-E\-N\-D\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-S\-U\-S\-P\-E\-N\-D\-E\-D~3}}\label{kprocess_8h_a0d5a62fb2d0f0faed256d4b5b872f7f0}
+Suspendu. \hypertarget{kprocess_8h_ab809d396d2bb4d37ee1facf1e8ef34e3}{\index{kprocess.\-h@{kprocess.\-h}!P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-T\-E\-R\-M\-I\-N\-A\-T\-E\-D@{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-T\-E\-R\-M\-I\-N\-A\-T\-E\-D}}
+\index{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-T\-E\-R\-M\-I\-N\-A\-T\-E\-D@{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-T\-E\-R\-M\-I\-N\-A\-T\-E\-D}!kprocess.h@{kprocess.\-h}}
+\subsubsection[{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-T\-E\-R\-M\-I\-N\-A\-T\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-T\-E\-R\-M\-I\-N\-A\-T\-E\-D~4}}\label{kprocess_8h_ab809d396d2bb4d37ee1facf1e8ef34e3}
+Terminé. \hypertarget{kprocess_8h_af93e7bcf4bed8ec35b44970c4b332b92}{\index{kprocess.\-h@{kprocess.\-h}!P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-W\-A\-I\-T\-I\-N\-G@{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-W\-A\-I\-T\-I\-N\-G}}
+\index{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-W\-A\-I\-T\-I\-N\-G@{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-W\-A\-I\-T\-I\-N\-G}!kprocess.h@{kprocess.\-h}}
+\subsubsection[{P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-W\-A\-I\-T\-I\-N\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-W\-A\-I\-T\-I\-N\-G~2}}\label{kprocess_8h_af93e7bcf4bed8ec35b44970c4b332b92}
+En attente. 
 
 \subsection{Documentation des définitions de type}
 \hypertarget{kprocess_8h_ac9040b1162f3fbe3bc0a5c2d7f07cf58}{\index{kprocess.\-h@{kprocess.\-h}!proc\-\_\-list@{proc\-\_\-list}}
@@ -177,8 +174,7 @@ Pid du processus créé.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -189,8 +185,7 @@ Voici le graphe d'appel pour cette fonction \-:
 
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -216,8 +211,7 @@ Voici le graphe des appelants de cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -243,8 +237,7 @@ process\-\_\-t$\ast$ correspondant au pid.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -273,3 +266,165 @@ processus suivant.
 \begin{DoxyReturn}{Renvoie}
 nombre de processus dans la liste. 
 \end{DoxyReturn}
+\hypertarget{kprocess_8h_ab5769fb8db77d54ea9a9216f14a2248c}{\index{kprocess.\-h@{kprocess.\-h}!get\-\_\-process\-\_\-array@{get\-\_\-process\-\_\-array}}
+\index{get\-\_\-process\-\_\-array@{get\-\_\-process\-\_\-array}!kprocess.h@{kprocess.\-h}}
+\subsubsection[{get\-\_\-process\-\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf process\-\_\-t}$\ast$ get\-\_\-process\-\_\-array (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}}\label{kprocess_8h_ab5769fb8db77d54ea9a9216f14a2248c}
+
+\begin{DoxyParams}{Paramètres}
+{\em i} & indice du process dans le tableau (attention, ce n'est pas son pid) \\
+\hline
+\end{DoxyParams}
+\hypertarget{kprocess_8h_a67b19f8892567cdb63c98ee660300f60}{\index{kprocess.\-h@{kprocess.\-h}!procfs\-\_\-init@{procfs\-\_\-init}}
+\index{procfs\-\_\-init@{procfs\-\_\-init}!kprocess.h@{kprocess.\-h}}
+\subsubsection[{procfs\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void procfs\-\_\-init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{kprocess_8h_a67b19f8892567cdb63c98ee660300f60}
+Initialisation of the proc F\-S. 
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kprocess_8h_a67b19f8892567cdb63c98ee660300f60_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kprocess_8h_aeb04c10b6eb21ece6a889c874c3e1830}{\index{kprocess.\-h@{kprocess.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}!kprocess.h@{kprocess.\-h}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-getpid}]{, }
+\item[{{\bf uint32\-\_\-t} $\ast$}]{pid}
+\end{DoxyParamCaption}
+)}}\label{kprocess_8h_aeb04c10b6eb21ece6a889c874c3e1830}
+
+\begin{DoxyParams}{Paramètres}
+{\em pid} & adresse où enregistrer le pid. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{kprocess_8h_aeb04c10b6eb21ece6a889c874c3e1830_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kprocess_8h_a1e4ed2d0a9b35c02447c629472a491f3}{\index{kprocess.\-h@{kprocess.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}!kprocess.h@{kprocess.\-h}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-getppid}]{, }
+\item[{{\bf uint32\-\_\-t} $\ast$}]{ppid}
+\end{DoxyParamCaption}
+)}}\label{kprocess_8h_a1e4ed2d0a9b35c02447c629472a491f3}
+
+\begin{DoxyParams}{Paramètres}
+{\em ppid} & adresse où enregistrer le ppid. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{kprocess_8h_a1e4ed2d0a9b35c02447c629472a491f3_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kprocess_8h_a4e715b0cdc3fe2325e5dcc64ec07f0f9}{\index{kprocess.\-h@{kprocess.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}!kprocess.h@{kprocess.\-h}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-waitpid}]{, }
+\item[{int}]{pid}
+\end{DoxyParamCaption}
+)}}\label{kprocess_8h_a4e715b0cdc3fe2325e5dcc64ec07f0f9}
+
+\begin{DoxyParams}{Paramètres}
+{\em pid} & P\-I\-D du process à attendre. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kprocess_8h_a4e715b0cdc3fe2325e5dcc64ec07f0f9_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kprocess_8h_a47ef452c5b4017727c9c4222ab133fae}{\index{kprocess.\-h@{kprocess.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kprocess.h@{kprocess.\-h}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-exec}]{, }
+\item[{char $\ast$}]{cmdline, }
+\item[{char $\ast$$\ast$}]{environ, }
+\item[{int $\ast$}]{retval}
+\end{DoxyParamCaption}
+)}}\label{kprocess_8h_a47ef452c5b4017727c9c4222ab133fae}
+
+\begin{DoxyParams}{Paramètres}
+{\em cmdline} & Ligne de commande à exécuter. \\
+\hline
+{\em environ} & Variables d'environnement. \\
+\hline
+{\em retval} & Pointeur servant à retourner le résultat. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kprocess_8h_a47ef452c5b4017727c9c4222ab133fae_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kprocess_8h_ac57ad880ae66a0bf4339309fada43242}{\index{kprocess.\-h@{kprocess.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kprocess.h@{kprocess.\-h}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-proc}]{, }
+\item[{{\bf uint32\-\_\-t}}]{sub\-\_\-func, }
+\item[{{\bf uint32\-\_\-t}}]{param1, }
+\item[{{\bf uint32\-\_\-t}}]{param2}
+\end{DoxyParamCaption}
+)}}\label{kprocess_8h_ac57ad880ae66a0bf4339309fada43242}
+
+\begin{DoxyParams}{Paramètres}
+{\em sub\-\_\-func} & Action (récupère la liste ou les infos d'un process en particulier) \\
+\hline
+{\em param1} & paramètre pour l'action. \\
+\hline
+{\em param2} & pointeur de retour. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{kprocess_8h_ac57ad880ae66a0bf4339309fada43242_cgraph}
+\end{center}
+\end{figure}
+
+

@@ -1,3 +1,5 @@
 <map id="ext2_truncate" name="ext2_truncate">
-<area shape="rect" id="node3" href="$ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="156,5,252,33"/>
+<area shape="rect" id="node3" href="$ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="295,20,391,48"/>
+<area shape="rect" id="node5" href="$ext2__internal_8h.html#acad804eba95e7600b534e07bb9134a44" title="ext2_setattr" alt="" coords="155,20,245,48"/>
+<area shape="rect" id="node8" href="$ext2__internal_8h.html#aacb0077cd0a76158c9288ecd193d58da" title="ext2_lookup" alt="" coords="155,71,245,99"/>
 </map>

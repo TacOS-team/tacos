@@ -2,11 +2,21 @@
 <area shape="rect" id="node3" href="$ext2__internal_8h.html#aa055d93f3693085315aa853345de0032" title="Unmount d&#39;un point de montage." alt="" coords="132,5,236,33"/>
 <area shape="rect" id="node5" href="$ext2__internal_8h.html#ab2859a00444ce0ad527332da72e2629a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="143,55,225,83"/>
 <area shape="rect" id="node7" href="$fat__internal_8h.html#ab2204311ec26e0134235b4a6c895312f" title="umount_FAT" alt="" coords="136,106,232,134"/>
-<area shape="rect" id="node9" href="$fat__internal_8h.html#ada9bd47fd90b01248fe52f302560f9f9" title="fat_readdir" alt="" coords="143,157,225,185"/>
+<area shape="rect" id="node9" href="$fat__internal_8h.html#ada9bd47fd90b01248fe52f302560f9f9" title="fat_readdir" alt="" coords="328,207,411,235"/>
 <area shape="rect" id="node11" href="$fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="147,207,221,235"/>
 <area shape="rect" id="node13" href="$fat__internal_8h.html#afdccf4bea2c0e70059a76f43fea9c33f" title="fat_close" alt="" coords="147,258,221,286"/>
-<area shape="rect" id="node15" href="$kfcntl_8c.html#adc12a443121c63ad99a6311aa2739884" title="Ferme tous les file descriptors ouverts." alt="" coords="139,309,229,337"/>
-<area shape="rect" id="node17" href="$kfcntl_8c.html#a3a5f4c56fd3fcc2b69757102f722fc29" title="SYSCALL_HANDLER2" alt="" coords="104,359,264,387"/>
-<area shape="rect" id="node19" href="$kprocess_8c.html#a7cced35f469ae897c55ab96940289cf6" title="Retire un processus de la liste." alt="" coords="129,410,239,438"/>
-<area shape="rect" id="node21" href="$vfs_8c.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="145,461,223,489"/>
+<area shape="rect" id="node15" href="$fat__internal_8h.html#a0ae169e11ec76cae96a82e41fed70ece" title="open_root_dir" alt="" coords="135,309,233,337"/>
+<area shape="rect" id="node20" href="$kprocess_8c.html#a7cced35f469ae897c55ab96940289cf6" title="Retire un processus de la liste." alt="" coords="129,359,239,387"/>
+<area shape="rect" id="node22" href="$kprocess_8c.html#a47ef452c5b4017727c9c4222ab133fae" title="Syscall pour exécuter un programme." alt="" coords="104,410,264,438"/>
+<area shape="rect" id="node24" href="$hashmap_8c.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="121,511,247,539"/>
+<area shape="rect" id="node28" href="$vfs_8c.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="477,461,555,489"/>
+<area shape="rect" id="node18" href="$fat__internal_8h.html#a2673c2b00be14ce740290ba2e92b9f90" title="fat_unlink" alt="" coords="331,309,408,337"/>
+<area shape="rect" id="node26" href="$dcache_8h.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="312,511,427,539"/>
+<area shape="rect" id="node36" href="$vfs_8c.html#a4f8b6a1f2b0e6012446196f18b33d686" title="Suppression d&#39;un noeud." alt="" coords="476,511,556,539"/>
+<area shape="rect" id="node40" href="$vfs_8c.html#a8f5dc4e5e4a2aa5d7649790256f11685" title="Suppression d&#39;un dossier." alt="" coords="479,562,553,590"/>
+<area shape="rect" id="node30" href="$kfcntl_8c.html#adc12a443121c63ad99a6311aa2739884" title="Ferme tous les file descriptors ouverts." alt="" coords="640,410,731,438"/>
+<area shape="rect" id="node34" href="$kfcntl_8c.html#a3a5f4c56fd3fcc2b69757102f722fc29" title="SYSCALL_HANDLER2" alt="" coords="605,461,765,489"/>
+<area shape="rect" id="node32" href="$kprocess_8c.html#acc70870c5d5807f03b0a58bd1e160f6f" title="Syscall appelé lors de la fin d&#39;exécution d&#39;un process." alt="" coords="813,410,973,438"/>
+<area shape="rect" id="node38" href="$kunistd_8c.html#a99434c0e561b0e99c4ef081ae5773703" title="SYSCALL_HANDLER2" alt="" coords="605,511,765,539"/>
+<area shape="rect" id="node42" href="$kdirent_8c.html#ad690af967ba8e26d8ac3e48b8353eacc" title="SYSCALL_HANDLER2" alt="" coords="605,562,765,590"/>
 </map>

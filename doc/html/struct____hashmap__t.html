@@ -85,6 +85,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence de la structure __hashmap_t</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="hashmap_8h_source.html">hashmap.h</a>&gt;</code></p>
 <div class="dynheader">
 Graphe de collaboration de __hashmap_t:</div>
 <div class="dyncontent">
@@ -95,22 +97,73 @@ Graphe de collaboration de __hashmap_t:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:ab5f1e74c3fcf71ee4ac91a860cbcde19"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5f1e74c3fcf71ee4ac91a860cbcde19"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>size</b></td></tr>
-<tr class="memitem:ac7d3b722978b8bafab2ce2a923b747aa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac7d3b722978b8bafab2ce2a923b747aa"></a>
-struct <a class="el" href="structhashmap__cell__t.html">hashmap_cell_t</a> **&#160;</td><td class="memItemRight" valign="bottom"><b>table</b></td></tr>
-<tr class="memitem:a2b730301a68342f67a406ce1b6c2a826"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b730301a68342f67a406ce1b6c2a826"></a>
-int(*&#160;</td><td class="memItemRight" valign="bottom"><b>equal</b> )(struct hashmap_key_t *, struct hashmap_key_t *)</td></tr>
-<tr class="memitem:aa56e33c3baa182a530a4a8bfc27c11f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa56e33c3baa182a530a4a8bfc27c11f1"></a>
-int(*&#160;</td><td class="memItemRight" valign="bottom"><b>hash</b> )(struct hashmap_key_t *)</td></tr>
+<tr class="memitem:ab5f1e74c3fcf71ee4ac91a860cbcde19"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____hashmap__t.html#ab5f1e74c3fcf71ee4ac91a860cbcde19">size</a></td></tr>
+<tr class="memitem:ac7d3b722978b8bafab2ce2a923b747aa"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structhashmap__cell__t.html">hashmap_cell_t</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____hashmap__t.html#ac7d3b722978b8bafab2ce2a923b747aa">table</a></td></tr>
+<tr class="memitem:a2b730301a68342f67a406ce1b6c2a826"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____hashmap__t.html#a2b730301a68342f67a406ce1b6c2a826">equal</a> )(struct hashmap_key_t *, struct hashmap_key_t *)</td></tr>
+<tr class="memitem:aa56e33c3baa182a530a4a8bfc27c11f1"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____hashmap__t.html#aa56e33c3baa182a530a4a8bfc27c11f1">hash</a> )(struct hashmap_key_t *)</td></tr>
 </table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>Structure représentant une hashmap. </p>
+</div><h2>Documentation des champs</h2>
+<a class="anchor" id="a2b730301a68342f67a406ce1b6c2a826"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* __hashmap_t::equal)(struct hashmap_key_t *, struct hashmap_key_t *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Fonction de comparaison de clefs. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa56e33c3baa182a530a4a8bfc27c11f1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* __hashmap_t::hash)(struct hashmap_key_t *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Fonction de hashage. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab5f1e74c3fcf71ee4ac91a860cbcde19"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int __hashmap_t::size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Taile de la table. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac7d3b722978b8bafab2ce2a923b747aa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structhashmap__cell__t.html">hashmap_cell_t</a>** __hashmap_t::table</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Table de liste d'éléments ayant le même hash. </p>
+
+</div>
+</div>
 <hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
 <li>kernel/include/<a class="el" href="hashmap_8h_source.html">hashmap.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Mai 8 2013 09:38:43 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Mai 30 2013 19:08:42 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

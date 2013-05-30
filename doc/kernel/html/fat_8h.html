@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/include/fs/fat.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li><li class="navelem"><a class="el" href="dir_63ad402ee0b4f0ab258f5e7abbb673c6.html">fs</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier fat.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="types_8h_source.html">types.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="fd__types_8h_source.html">fd_types.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="kstat_8h_source.html">kstat.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="vfs_8h_source.html">vfs.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de fat.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="fat_8h__incl.png" border="0" usemap="#kernel_2include_2fs_2fat_8h" alt=""/></div>
+<map name="kernel_2include_2fs_2fat_8h" id="kernel_2include_2fs_2fat_8h">
+<area shape="rect" id="node3" href="types_8h.html" title="types.h" alt="" coords="164,393,225,421"/><area shape="rect" id="node5" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="43,161,123,189"/><area shape="rect" id="node8" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="201,161,263,189"/><area shape="rect" id="node17" href="vfs_8h.html" title="Virtual File System." alt="" coords="129,83,180,111"/><area shape="rect" id="node11" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="203,238,264,266"/><area shape="rect" id="node14" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="195,315,272,343"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat_8h__dep__incl.png" border="0" usemap="#kernel_2include_2fs_2fat_8hdep" alt=""/></div>
+<map name="kernel_2include_2fs_2fat_8hdep" id="kernel_2include_2fs_2fat_8hdep">
+<area shape="rect" id="node3" href="fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="5,83,125,111"/><area shape="rect" id="node5" href="fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="149,83,328,111"/><area shape="rect" id="node7" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="352,83,459,111"/><area shape="rect" id="node9" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="483,83,571,111"/></map>
+</div>
+</div>
+<p><a href="fat_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a3d1f5d8e3b22672684528c112bc6ff06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat_8h.html#a3d1f5d8e3b22672684528c112bc6ff06">fat_init</a> ()</td></tr>
+<tr class="memitem:a23c11f139de8259ac9065efe4ba6ecae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae">mount_FAT</a> (<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *ofd)</td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+<p>Description de ce que fait le fichier </p>
+</div><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a3d1f5d8e3b22672684528c112bc6ff06"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fat_init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initialisation du FS FAT. </p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat_8h_a3d1f5d8e3b22672684528c112bc6ff06_cgraph.png" border="0" usemap="#fat_8h_a3d1f5d8e3b22672684528c112bc6ff06_cgraph" alt=""/></div>
+<map name="fat_8h_a3d1f5d8e3b22672684528c112bc6ff06_cgraph" id="fat_8h_a3d1f5d8e3b22672684528c112bc6ff06_cgraph">
+<area shape="rect" id="node3" href="vfs_8h.html#ab2237a3610010d8a211ef3d55a521dba" title="Enregistrer un FS dans le VFS pour le rendre disponible." alt="" coords="116,5,223,33"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="272,5,339,33"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="388,5,527,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a23c11f139de8259ac9065efe4ba6ecae"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a>* mount_FAT </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Monte un FS.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td>Descripteur de fichier pointant sur le device à monter.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Instance de FS. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="fat_8h_a23c11f139de8259ac9065efe4ba6ecae_cgraph.png" border="0" usemap="#fat_8h_a23c11f139de8259ac9065efe4ba6ecae_cgraph" alt=""/></div>
+<map name="fat_8h_a23c11f139de8259ac9065efe4ba6ecae_cgraph" id="fat_8h_a23c11f139de8259ac9065efe4ba6ecae_cgraph">
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="277,51,344,79"/><area shape="rect" id="node7" href="string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="152,25,221,53"/><area shape="rect" id="node9" href="fat__internal_8c.html#acc9f1bc688e7d7c5459ad50676608995" title="read_fat" alt="" coords="152,76,221,104"/><area shape="rect" id="node11" href="fat__functions_8c.html#aaf2cd44da9ce9df0808a2cd823fd1295" title="fat_lookup" alt="" coords="145,127,228,155"/><area shape="rect" id="node14" href="fat__functions_8c.html#a34463693dc3fa14a062c90b9ece622c4" title="fat_getroot" alt="" coords="145,177,228,205"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="393,51,532,79"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:20 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

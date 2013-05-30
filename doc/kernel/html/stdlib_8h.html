@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/include/klibc/stdlib.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li><li class="navelem"><a class="el" href="dir_7e8c249743d14b26b5e2fa01b79c7926.html">klibc</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier stdlib.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p> 
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="stdlib_8h__dep__incl.png" border="0" usemap="#kernel_2include_2klibc_2stdlib_8hdep" alt=""/></div>
+<map name="kernel_2include_2klibc_2stdlib_8hdep" id="kernel_2include_2klibc_2stdlib_8hdep">
+<area shape="rect" id="node3" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="5,99,128,127"/><area shape="rect" id="node5" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="152,99,259,127"/></map>
+</div>
+</div>
+<p><a href="stdlib_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a2c81f61ee897bc5a1f5491f3e2bf711b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stdlib_8h.html#a2c81f61ee897bc5a1f5491f3e2bf711b">atoi</a> (const char *__nptr)</td></tr>
+<tr class="memitem:a5e1f93e3feb632ee74c5f40cdd907ca2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stdlib_8h.html#a5e1f93e3feb632ee74c5f40cdd907ca2">itoa</a> (char *buf, int base, int d)</td></tr>
+<tr class="memdesc:a5e1f93e3feb632ee74c5f40cdd907ca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converti l'entier d en une chaîne de caractère et le stock dans buf. L'entier base permet de spécifier la base à utiliser (decimal ou hexadécimal).  <a href="#a5e1f93e3feb632ee74c5f40cdd907ca2"></a><br/></td></tr>
+<tr class="memitem:a9496eacf49af4b53f5b839899b5bf31a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stdlib_8h.html#a9496eacf49af4b53f5b839899b5bf31a">itox</a> (char *buf, int d)</td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+</div><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a2c81f61ee897bc5a1f5491f3e2bf711b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int atoi </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>__nptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Converti une chaine de caractère en entier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">__nptr</td><td>La chaine à traduire.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La valeur convertie. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_cgraph.png" border="0" usemap="#stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_cgraph" alt=""/></div>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_icgraph.png" border="0" usemap="#stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_icgraph" alt=""/></div>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5e1f93e3feb632ee74c5f40cdd907ca2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void itoa </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>base</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Converti l'entier d en une chaîne de caractère et le stock dans buf. Si base est égal à 'd', alors il interprète d comme étant en décimal et si base est égal à 'x', alors il interprète d comme étant en hexadécimal.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>une chaîne de taille suffisament grande pour y stocker le résultat de la transformation. </td></tr>
+    <tr><td class="paramname">base</td><td>la base à utiliser pour la conversion ('d' ou 'x'). </td></tr>
+    <tr><td class="paramname">d</td><td>le nombre à convertir. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_cgraph.png" border="0" usemap="#stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_cgraph" alt=""/></div>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_icgraph.png" border="0" usemap="#stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_icgraph" alt=""/></div>
+<map name="stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_icgraph" id="stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_icgraph">
+<area shape="rect" id="node4" href="kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="96,29,155,57"/><area shape="rect" id="node6" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="204,29,273,57"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9496eacf49af4b53f5b839899b5bf31a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void itox </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Affichage des hexa en longueur fixe, c'est plus commode.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>une chaîne de taille suffisament grande pour y stocker le </td></tr>
+    <tr><td class="paramname">d</td><td>le nombre à convertir. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_cgraph.png" border="0" usemap="#stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_cgraph" alt=""/></div>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_icgraph.png" border="0" usemap="#stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_icgraph" alt=""/></div>
+<map name="stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_icgraph" id="stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_icgraph">
+<area shape="rect" id="node4" href="kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="96,29,155,57"/><area shape="rect" id="node6" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="204,29,273,57"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:21 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

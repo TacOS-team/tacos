@@ -104,7 +104,7 @@ Graphe des dépendances par inclusion de tty.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="tty_8h__incl.png" border="0" usemap="#kernel_2include_2tty_8h" alt=""/></div>
 <map name="kernel_2include_2tty_8h" id="kernel_2include_2tty_8h">
-<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="5,83,67,111"/><area shape="rect" id="node5" href="termios__types_8h.html" title="termios_types.h" alt="" coords="91,83,203,111"/><area shape="rect" id="node7" href="fd__types_8h.html" title="fd_types.h" alt="" coords="227,83,307,111"/></map>
+<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="60,161,121,189"/><area shape="rect" id="node5" href="termios__types_8h.html" title="termios_types.h" alt="" coords="21,83,133,111"/><area shape="rect" id="node7" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="157,83,237,111"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
@@ -154,16 +154,6 @@ Fonctions</h2></td></tr>
 <tr class="memitem:a3bf9faf77dd76addc6deac2722b097e2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3bf9faf77dd76addc6deac2722b097e2"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8h.html#a3bf9faf77dd76addc6deac2722b097e2">tty_init</a> ()</td></tr>
 <tr class="memdesc:a3bf9faf77dd76addc6deac2722b097e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du système de terminaux. <br/></td></tr>
-<tr class="memitem:a14c960f80aeb3910c46aff4b2c56bede"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8h.html#a14c960f80aeb3910c46aff4b2c56bede">tty_write</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, const void *buf, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> count)</td></tr>
-<tr class="memdesc:a14c960f80aeb3910c46aff4b2c56bede"><td class="mdescLeft">&#160;</td><td class="mdescRight">Écriture sur le terminal.  <a href="#a14c960f80aeb3910c46aff4b2c56bede"></a><br/></td></tr>
-<tr class="memitem:a01c908d67f089bbb78825ff0add5dd19"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8h.html#a01c908d67f089bbb78825ff0add5dd19">tty_read</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, void *buf, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> count)</td></tr>
-<tr class="memdesc:a01c908d67f089bbb78825ff0add5dd19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture sur le terminal.  <a href="#a01c908d67f089bbb78825ff0add5dd19"></a><br/></td></tr>
-<tr class="memitem:a4d1f11c77318b074dbc10778bdc3ef8a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d1f11c77318b074dbc10778bdc3ef8a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>tty_ioctl</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, unsigned int request, void *data)</td></tr>
-<tr class="memitem:a9357933a4dac72480bf10919fe8dc55a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9357933a4dac72480bf10919fe8dc55a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>tty_close</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd)</td></tr>
-<tr class="memitem:a948df79fabd99c5468bc33463a0face3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a948df79fabd99c5468bc33463a0face3"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>tty_open</b> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -355,57 +345,6 @@ Voici le graphe des appelants de cette fonction :</div>
 
 </div>
 </div>
-<a class="anchor" id="a01c908d67f089bbb78825ff0add5dd19"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> tty_read </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
-          <td class="paramname"><em>ofd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
-          <td class="paramname"><em>count</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Lecture des données stockées dans le buffer du terminal.</p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ofd</td><td>Le descripteur de fichier ouvert. </td></tr>
-    <tr><td class="paramname">buf</td><td>Le buffer où placer les données. </td></tr>
-    <tr><td class="paramname">count</td><td>Le nombre d'octets à lire.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>le nombre d'octets lus. </dd></dl>
-
-<p><div class="dynheader">
-Voici le graphe d'appel pour cette fonction :</div>
-<div class="dyncontent">
-<div class="center"><img src="tty_8h_a01c908d67f089bbb78825ff0add5dd19_cgraph.png" border="0" usemap="#tty_8h_a01c908d67f089bbb78825ff0add5dd19_cgraph" alt=""/></div>
-<map name="tty_8h_a01c908d67f089bbb78825ff0add5dd19_cgraph" id="tty_8h_a01c908d67f089bbb78825ff0add5dd19_cgraph">
-<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="236,5,375,33"/><area shape="rect" id="node5" href="ksem_8h.html#acfbbd3e3f726b24309758cf6499a8141" title="Opération P sur un sémaphore Réalise l&#39;opération P sur le sémaphore. Le processus essaye donc de pren..." alt="" coords="124,30,185,58"/></map>
-</div>
-</p>
-
-</div>
-</div>
 <a class="anchor" id="a302b60b1c52001915aeb108b51efc397"></a>
 <div class="memitem">
 <div class="memproto">
@@ -447,61 +386,10 @@ Voici le graphe des appelants de cette fonction :</div>
 
 </div>
 </div>
-<a class="anchor" id="a14c960f80aeb3910c46aff4b2c56bede"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> tty_write </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
-          <td class="paramname"><em>ofd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
-          <td class="paramname"><em>count</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Cette fonction est appelée pour écrire sur le périphérique rattaché au terminal (exemple: la console).</p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ofd</td><td>Le descripteur de fichier ouvert. </td></tr>
-    <tr><td class="paramname">buf</td><td>Le buffer qui contient les données à écrire. </td></tr>
-    <tr><td class="paramname">count</td><td>Le nombre d'octets à écrire.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>le nombre d'octets écrits. </dd></dl>
-
-<p><div class="dynheader">
-Voici le graphe d'appel pour cette fonction :</div>
-<div class="dyncontent">
-<div class="center"><img src="tty_8h_a14c960f80aeb3910c46aff4b2c56bede_cgraph.png" border="0" usemap="#tty_8h_a14c960f80aeb3910c46aff4b2c56bede_cgraph" alt=""/></div>
-<map name="tty_8h_a14c960f80aeb3910c46aff4b2c56bede_cgraph" id="tty_8h_a14c960f80aeb3910c46aff4b2c56bede_cgraph">
-<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="127,5,265,33"/></map>
-</div>
-</p>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Mai 8 2013 09:38:43 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Mai 30 2013 19:08:38 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

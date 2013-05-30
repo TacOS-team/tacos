@@ -1,0 +1,4 @@
+<map id="multiboot_info" name="multiboot_info">
+<area shape="rect" id="node2" href="$structmultiboot__aout__symbol__table.html" title="multiboot_aout_symbol\l_table" alt="" coords="5,6,160,50"/>
+<area shape="rect" id="node4" href="$structmultiboot__elf__section__header__table.html" title="multiboot_elf_section\l_header_table" alt="" coords="184,6,328,50"/>
+</map>

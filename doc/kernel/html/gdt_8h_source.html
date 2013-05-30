@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de kernel/include/gdt.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">gdt.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="gdt_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _GDT_H_</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _GDT_H_</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="types_8h.html">types.h</a>&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#define KERNEL_CODE_SEGMENT             0x08</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define KERNEL_DATA_SEGMENT             0x10</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define KERNEL_STACK_SEGMENT    (KERNEL_DATA_SEGMENT)</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define USER_CODE_SEGMENT               0x1B</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define USER_DATA_SEGMENT               0x23</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define USER_STACK_SEGMENT              (USER_DATA_SEGMENT)</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">//#define SIZE_OF_GDT_ENTRY 8</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="structx86__segment__descriptor.html">   51</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structx86__segment__descriptor.html" title="Segment Descriptor (cf doc intel v3. 3.4.3)">x86_segment_descriptor</a></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="comment">/* Double mot de poids faible */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="structx86__segment__descriptor.html#af9516f6d07c24ddedde31235b05b62c2">   54</a></span>&#160;        <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> <a class="code" href="structx86__segment__descriptor.html#af9516f6d07c24ddedde31235b05b62c2">segment_limit_15_0</a>; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> base_address_15_0;  <span class="comment">/* Défini la position de l&#39;octet 0 du segment </span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">                                                                                          dans les 4Gio de l&#39;espace adressable linéaire */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">/* Double mot de poids fort */</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="structx86__segment__descriptor.html#a95889fcbabf116ba15a6cea3364b903d">   61</a></span>&#160;        <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a95889fcbabf116ba15a6cea3364b903d">base_address_23_16</a>; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="structx86__segment__descriptor.html#ab3ef0c9fce1e74ee6549bbce5ea6f25f">   62</a></span>&#160;        <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#ab3ef0c9fce1e74ee6549bbce5ea6f25f">segment_type</a>:4;                 </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="structx86__segment__descriptor.html#adda0434239b7e6c6a68b8e7556e4bb2f">   63</a></span>&#160;        <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#adda0434239b7e6c6a68b8e7556e4bb2f">descriptor_type</a>:1;      </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="structx86__segment__descriptor.html#ab45e49c27bbe57a568d914bd13e45ef7">   64</a></span>&#160;        <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#ab45e49c27bbe57a568d914bd13e45ef7">dpl</a>:2; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="structx86__segment__descriptor.html#ad4196191d05e69b42272a411a69d1eae">   65</a></span>&#160;        <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#ad4196191d05e69b42272a411a69d1eae">present</a>:1; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="structx86__segment__descriptor.html#a6ab37b8f7730fe67af946725a3dd064a">   66</a></span>&#160;        <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a6ab37b8f7730fe67af946725a3dd064a">segment_limit_19_16</a>:4; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="structx86__segment__descriptor.html#a761494a7a460e493e0d5d188a31cd052">   67</a></span>&#160;        <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a761494a7a460e493e0d5d188a31cd052">available</a>:1; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="structx86__segment__descriptor.html#a4cbd016599f85d6a2060c31d7714dbbd">   68</a></span>&#160;        <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a4cbd016599f85d6a2060c31d7714dbbd">zero</a>:1; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="structx86__segment__descriptor.html#a40c320788bf23e3660d0def872cec94c">   69</a></span>&#160;        <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a40c320788bf23e3660d0def872cec94c">operation_size</a>:1; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="structx86__segment__descriptor.html#a19d5da93d41a1ec3327cbd92ace8fa08">   70</a></span>&#160;        <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#a19d5da93d41a1ec3327cbd92ace8fa08">granularity</a>:1; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="code" href="structx86__segment__descriptor.html#af839dd21992c16573ea5b816b72f249f">   71</a></span>&#160;        <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structx86__segment__descriptor.html#af839dd21992c16573ea5b816b72f249f">base_address_31_24</a>; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;} __attribute__ ((packed, aligned (8)));</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="structtss.html">   76</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structtss.html">tss</a> {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    previous_task, __previous_task_unused;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>    esp0;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ss0, __ss0_unused;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>    esp1;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ss1, __ss1_unused;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>    esp2;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ss2, __ss2_unused;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>    cr3;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>    eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    es, __es_unused;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    cs, __cs_unused;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ss, __ss_unused;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ds, __ds_unused;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    fs, __fs_unused;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    gs, __gs_unused;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    ldt_selector, __ldt_sel_unused;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>    debug_flag, io_map;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;} __attribute__ ((packed)) <a class="code" href="structtss.html">tss_t</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gdt_8c.html#abb81c8341c9230f4e46a1054d73a0ec4">gdt_setup</a>(<span class="keywordtype">size_t</span> ram_size);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">void</span> init_tss(<a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> stack_address);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;tss_t* get_default_tss();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:16 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

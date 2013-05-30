@@ -92,7 +92,7 @@ Graphe de collaboration de process_init_data_t:</div>
 <div class="dyncontent">
 <div class="center"><img src="structprocess__init__data__t__coll__graph.png" border="0" usemap="#process__init__data__t_coll__map" alt="Collaboration graph"/></div>
 <map name="process__init__data__t_coll__map" id="process__init__data__t_coll__map">
-<area shape="rect" id="node2" href="structElf32__File.html" title="Elf32_File" alt="" coords="171,99,248,127"/><area shape="rect" id="node4" href="structElf32__Sym.html" title="Elf32_Sym" alt="" coords="5,6,88,34"/><area shape="rect" id="node6" href="structElf32__Phdr.html" title="Elf32_Phdr" alt="" coords="112,6,197,34"/><area shape="rect" id="node8" href="structElf32__Shdr.html" title="Elf32_Shdr" alt="" coords="221,6,307,34"/><area shape="rect" id="node10" href="structElf32__Ehdr.html" title="Elf32_Ehdr" alt="" coords="331,6,413,34"/></map>
+<area shape="rect" id="node2" href="structElf32__File.html" title="Structure qui caractérise un binaire elf." alt="" coords="171,99,248,127"/><area shape="rect" id="node4" href="structElf32__Sym.html" title="Elf32_Sym" alt="" coords="5,6,88,34"/><area shape="rect" id="node6" href="structElf32__Phdr.html" title="Elf32_Phdr" alt="" coords="112,6,197,34"/><area shape="rect" id="node8" href="structElf32__Shdr.html" title="Elf32_Shdr" alt="" coords="221,6,307,34"/><area shape="rect" id="node10" href="structElf32__Ehdr.html" title="Elf32_Ehdr" alt="" coords="331,6,413,34"/></map>
 <center><span class="legend">[<a href="graph_legend.html">légende</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
@@ -112,8 +112,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>mem_size</b></td></tr>
 <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>stack_size</b></td></tr>
 <tr class="memitem:a3147915ee1aa09fd84245e28635c60c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3147915ee1aa09fd84245e28635c60c8"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>priority</b></td></tr>
-<tr class="memitem:a34f85f3f56546700b1dc942070944e27"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a34f85f3f56546700b1dc942070944e27"></a>
-<a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ppid</b></td></tr>
+<tr class="memitem:a34f85f3f56546700b1dc942070944e27"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprocess__init__data__t.html#a34f85f3f56546700b1dc942070944e27">ppid</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><p>Structure à passer au noyau pour créer un nouveau processus </p>
@@ -183,13 +182,26 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>priority</b></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a34f85f3f56546700b1dc942070944e27"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> process_init_data_t::ppid</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Parent process ID </p>
+
+</div>
+</div>
 <hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
 <li>kernel/include/<a class="el" href="kprocess_8h_source.html">kprocess.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Mai 8 2013 09:38:43 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Mai 30 2013 19:08:42 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

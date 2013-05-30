@@ -1,0 +1,55 @@
+\hypertarget{struct__fat__extended__BIOS__16}{\section{Référence de la structure \-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16}
+\label{struct__fat__extended__BIOS__16}\index{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16@{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16}}
+}
+
+
+{\ttfamily \#include $<$fat\-\_\-internal.\-h$>$}
+
+\subsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct__fat__extended__BIOS__16_aa5b1c000276996144da4ad9ba9feddd5}{\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} {\bfseries bios\-\_\-drive\-\_\-num}}\label{struct__fat__extended__BIOS__16_aa5b1c000276996144da4ad9ba9feddd5}
+
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{struct__fat__extended__BIOS__16_a893876cfc91a64059613c6fe02a1e178}{reserved}
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{struct__fat__extended__BIOS__16_a96dde388d85873830b8b421d13336737}{ext\-\_\-boot\-\_\-signature}
+\item 
+\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{struct__fat__extended__BIOS__16_aa932fbe482a2da22749a6f9fa42fce59}{volume\-\_\-id}
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{struct__fat__extended__BIOS__16_a0f859beb837eb3013ef4ad48dd0c9845}{volume\-\_\-label} \mbox{[}11\mbox{]}
+\item 
+\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{struct__fat__extended__BIOS__16_a0cdaccd704186c37f3df6b7a44fdbad8}{fat\-\_\-type\-\_\-label} \mbox{[}8\mbox{]}
+\item 
+\hypertarget{struct__fat__extended__BIOS__16_a7e244ef68c27303d5598ea070d93bb5f}{\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} {\bfseries os\-\_\-boot\-\_\-code} \mbox{[}448\mbox{]}}\label{struct__fat__extended__BIOS__16_a7e244ef68c27303d5598ea070d93bb5f}
+
+\item 
+\hypertarget{struct__fat__extended__BIOS__16_a8c98dbd269ae4ee38a0ae0d062162202}{\hyperlink{types_8h_adf4d876453337156dde61095e1f20223}{uint16\-\_\-t} {\bfseries boot\-\_\-sector\-\_\-sign}}\label{struct__fat__extended__BIOS__16_a8c98dbd269ae4ee38a0ae0d062162202}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Extended B\-I\-O\-S Parameter Block (F\-A\-T12 / F\-A\-T16) 
+
+\subsection{Documentation des champs}
+\hypertarget{struct__fat__extended__BIOS__16_a96dde388d85873830b8b421d13336737}{\index{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16@{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16}!ext\-\_\-boot\-\_\-signature@{ext\-\_\-boot\-\_\-signature}}
+\index{ext\-\_\-boot\-\_\-signature@{ext\-\_\-boot\-\_\-signature}!_fat_extended_BIOS_16@{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16}}
+\subsubsection[{ext\-\_\-boot\-\_\-signature}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} \-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16\-::ext\-\_\-boot\-\_\-signature}}\label{struct__fat__extended__BIOS__16_a96dde388d85873830b8b421d13336737}
+Ext Boot record signature = 29h \hypertarget{struct__fat__extended__BIOS__16_a0cdaccd704186c37f3df6b7a44fdbad8}{\index{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16@{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16}!fat\-\_\-type\-\_\-label@{fat\-\_\-type\-\_\-label}}
+\index{fat\-\_\-type\-\_\-label@{fat\-\_\-type\-\_\-label}!_fat_extended_BIOS_16@{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16}}
+\subsubsection[{fat\-\_\-type\-\_\-label}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} \-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16\-::fat\-\_\-type\-\_\-label\mbox{[}8\mbox{]}}}\label{struct__fat__extended__BIOS__16_a0cdaccd704186c37f3df6b7a44fdbad8}
+Nom du F\-S (F\-A\-T12, F\-A\-T16 ou F\-A\-T32). \hypertarget{struct__fat__extended__BIOS__16_a893876cfc91a64059613c6fe02a1e178}{\index{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16@{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16}!reserved@{reserved}}
+\index{reserved@{reserved}!_fat_extended_BIOS_16@{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16}}
+\subsubsection[{reserved}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} \-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16\-::reserved}}\label{struct__fat__extended__BIOS__16_a893876cfc91a64059613c6fe02a1e178}
+Reserved \hypertarget{struct__fat__extended__BIOS__16_aa932fbe482a2da22749a6f9fa42fce59}{\index{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16@{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16}!volume\-\_\-id@{volume\-\_\-id}}
+\index{volume\-\_\-id@{volume\-\_\-id}!_fat_extended_BIOS_16@{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16}}
+\subsubsection[{volume\-\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} \-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16\-::volume\-\_\-id}}\label{struct__fat__extended__BIOS__16_aa932fbe482a2da22749a6f9fa42fce59}
+Identifiant du volume (serial). \hypertarget{struct__fat__extended__BIOS__16_a0f859beb837eb3013ef4ad48dd0c9845}{\index{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16@{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16}!volume\-\_\-label@{volume\-\_\-label}}
+\index{volume\-\_\-label@{volume\-\_\-label}!_fat_extended_BIOS_16@{\-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16}}
+\subsubsection[{volume\-\_\-label}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} \-\_\-fat\-\_\-extended\-\_\-\-B\-I\-O\-S\-\_\-16\-::volume\-\_\-label\mbox{[}11\mbox{]}}}\label{struct__fat__extended__BIOS__16_a0f859beb837eb3013ef4ad48dd0c9845}
+Nom du volume. 
+
+La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+\item 
+kernel/fs/fat/\hyperlink{fat__internal_8h}{fat\-\_\-internal.\-h}\end{DoxyCompactItemize}

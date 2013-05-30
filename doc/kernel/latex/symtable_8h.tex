@@ -1,0 +1,56 @@
+\hypertarget{symtable_8h}{\section{Référence du fichier kernel/include/symtable.h}
+\label{symtable_8h}\index{kernel/include/symtable.\-h@{kernel/include/symtable.\-h}}
+}
+{\ttfamily \#include $<$types.\-h$>$}\\*
+{\ttfamily \#include $<$elf.\-h$>$}\\*
+Graphe des dépendances par inclusion de symtable.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{symtable_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{symtable_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structsymbol__t}{symbol\-\_\-t}
+\item 
+struct \hyperlink{structsymbol__table__t}{symbol\-\_\-table\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{symtable_8h_a15d0718c833bdade0e0a45bceb3d18b4}{\hyperlink{structsymbol__table__t}{symbol\-\_\-table\-\_\-t} $\ast$ {\bfseries load\-\_\-symtable} (\hyperlink{structElf32__File}{Elf32\-\_\-\-File} $\ast$file)}\label{symtable_8h_a15d0718c833bdade0e0a45bceb3d18b4}
+
+\item 
+\hypertarget{symtable_8h_a4ad4ec0b1f3591d27601ff929f71693d}{void {\bfseries load\-\_\-kernel\-\_\-symtable} ()}\label{symtable_8h_a4ad4ec0b1f3591d27601ff929f71693d}
+
+\item 
+\hypertarget{symtable_8h_a91cfd3904b55421f78df2636ef52d9b0}{\hyperlink{types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\-\_\-t} {\bfseries sym\-\_\-to\-\_\-addr} (\hyperlink{structsymbol__table__t}{symbol\-\_\-table\-\_\-t} $\ast$table, char $\ast$symbol)}\label{symtable_8h_a91cfd3904b55421f78df2636ef52d9b0}
+
+\item 
+\hypertarget{symtable_8h_a1ec2572d1ab491baab1988c2c3970746}{char $\ast$ {\bfseries addr\-\_\-to\-\_\-sym} (\hyperlink{structsymbol__table__t}{symbol\-\_\-table\-\_\-t} $\ast$table, \hyperlink{types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\-\_\-t} addr)}\label{symtable_8h_a1ec2572d1ab491baab1988c2c3970746}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+Description de ce que fait le fichier 

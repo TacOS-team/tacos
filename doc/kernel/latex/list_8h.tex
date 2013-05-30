@@ -1,0 +1,242 @@
+\hypertarget{list_8h}{\section{Référence du fichier kernel/include/list.h}
+\label{list_8h}\index{kernel/include/list.\-h@{kernel/include/list.\-h}}
+}
+{\ttfamily \#include $<$types.\-h$>$}\\*
+Graphe des dépendances par inclusion de list.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{list_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{list_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structlist__t}{list\-\_\-t}
+\begin{DoxyCompactList}\small\item\em Liste générique. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+typedef int($\ast$ \hyperlink{list_8h_a35d066d4adbc5a7903210dcce0bf4717}{cmp\-\_\-func\-\_\-type} )(void $\ast$, void $\ast$)
+\item 
+\hypertarget{list_8h_a48a67855027ee831532d3b397cc95d01}{typedef int($\ast$ {\bfseries id\-\_\-func\-\_\-type} )(int, void $\ast$)}\label{list_8h_a48a67855027ee831532d3b397cc95d01}
+
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{list_8h_a8111dff4de9d78342e96563621a7da63}{list\-\_\-init} (\hyperlink{structlist__t}{list\-\_\-t} $\ast$l, \hyperlink{list_8h_a35d066d4adbc5a7903210dcce0bf4717}{cmp\-\_\-func\-\_\-type} cmp, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} elements\-\_\-size, int max\-\_\-elements)
+\item 
+void $\ast$ \hyperlink{list_8h_a4d06987bb22b3a5c66d2be44f6c23845}{list\-\_\-get\-\_\-top} (\hyperlink{structlist__t}{list\-\_\-t} l)
+\item 
+int \hyperlink{list_8h_a7a8bb1eb8a161ffce0167fca806e10ad}{list\-\_\-add\-\_\-element} (\hyperlink{structlist__t}{list\-\_\-t} $\ast$l, void $\ast$element)
+\item 
+int \hyperlink{list_8h_a5ffcff1c3f7eace23a067c0051a3c8f9}{list\-\_\-remove\-\_\-top} (\hyperlink{structlist__t}{list\-\_\-t} $\ast$l)
+\item 
+int \hyperlink{list_8h_ad8dbf30907f29e3b4fc748a83d4b1784}{list\-\_\-del\-\_\-element} (\hyperlink{structlist__t}{list\-\_\-t} $\ast$list, int id, id\-\_\-func\-\_\-type func)
+\item 
+void \hyperlink{list_8h_a7b460be2c0d40f4da72af89c356ed7c1}{print\-\_\-list} (\hyperlink{structlist__t}{list\-\_\-t} ma\-\_\-liste)
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+Structure de liste chainée générique. 
+
+\subsection{Documentation des définitions de type}
+\hypertarget{list_8h_a35d066d4adbc5a7903210dcce0bf4717}{\index{list.\-h@{list.\-h}!cmp\-\_\-func\-\_\-type@{cmp\-\_\-func\-\_\-type}}
+\index{cmp\-\_\-func\-\_\-type@{cmp\-\_\-func\-\_\-type}!list.h@{list.\-h}}
+\subsubsection[{cmp\-\_\-func\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}typedef int($\ast$ cmp\-\_\-func\-\_\-type)(void $\ast$, void $\ast$)}}\label{list_8h_a35d066d4adbc5a7903210dcce0bf4717}
+Définition du type pour une fonction de comparaison entre 2 éléments. 
+
+\subsection{Documentation des fonctions}
+\hypertarget{list_8h_a7a8bb1eb8a161ffce0167fca806e10ad}{\index{list.\-h@{list.\-h}!list\-\_\-add\-\_\-element@{list\-\_\-add\-\_\-element}}
+\index{list\-\_\-add\-\_\-element@{list\-\_\-add\-\_\-element}!list.h@{list.\-h}}
+\subsubsection[{list\-\_\-add\-\_\-element}]{\setlength{\rightskip}{0pt plus 5cm}int list\-\_\-add\-\_\-element (
+\begin{DoxyParamCaption}
+\item[{{\bf list\-\_\-t} $\ast$}]{l, }
+\item[{void $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{list_8h_a7a8bb1eb8a161ffce0167fca806e10ad}
+Ajoute un élément à la fin de la liste.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em l} & La liste manipulée. \\
+\hline
+{\em element} & Element à ajouter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{list_8h_a7a8bb1eb8a161ffce0167fca806e10ad_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{list_8h_ad8dbf30907f29e3b4fc748a83d4b1784}{\index{list.\-h@{list.\-h}!list\-\_\-del\-\_\-element@{list\-\_\-del\-\_\-element}}
+\index{list\-\_\-del\-\_\-element@{list\-\_\-del\-\_\-element}!list.h@{list.\-h}}
+\subsubsection[{list\-\_\-del\-\_\-element}]{\setlength{\rightskip}{0pt plus 5cm}int list\-\_\-del\-\_\-element (
+\begin{DoxyParamCaption}
+\item[{{\bf list\-\_\-t} $\ast$}]{list, }
+\item[{int}]{id, }
+\item[{id\-\_\-func\-\_\-type}]{func}
+\end{DoxyParamCaption}
+)}}\label{list_8h_ad8dbf30907f29e3b4fc748a83d4b1784}
+Suppression d'un élément de la liste.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em list} & La liste manipulée.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{list_8h_ad8dbf30907f29e3b4fc748a83d4b1784_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{list_8h_a4d06987bb22b3a5c66d2be44f6c23845}{\index{list.\-h@{list.\-h}!list\-\_\-get\-\_\-top@{list\-\_\-get\-\_\-top}}
+\index{list\-\_\-get\-\_\-top@{list\-\_\-get\-\_\-top}!list.h@{list.\-h}}
+\subsubsection[{list\-\_\-get\-\_\-top}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ list\-\_\-get\-\_\-top (
+\begin{DoxyParamCaption}
+\item[{{\bf list\-\_\-t}}]{l}
+\end{DoxyParamCaption}
+)}}\label{list_8h_a4d06987bb22b3a5c66d2be44f6c23845}
+Récupère le premier élément de la liste.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em l} & La liste manipulée. \\
+\hline
+\end{DoxyParams}
+\hypertarget{list_8h_a8111dff4de9d78342e96563621a7da63}{\index{list.\-h@{list.\-h}!list\-\_\-init@{list\-\_\-init}}
+\index{list\-\_\-init@{list\-\_\-init}!list.h@{list.\-h}}
+\subsubsection[{list\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void list\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf list\-\_\-t} $\ast$}]{l, }
+\item[{{\bf cmp\-\_\-func\-\_\-type}}]{cmp, }
+\item[{{\bf size\-\_\-t}}]{elements\-\_\-size, }
+\item[{int}]{max\-\_\-elements}
+\end{DoxyParamCaption}
+)}}\label{list_8h_a8111dff4de9d78342e96563621a7da63}
+Initialisation d'un liste.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em l} & La liste manipulée. \\
+\hline
+{\em cmp} & Fonction de comparaison. \\
+\hline
+{\em elements\-\_\-size} & Taille d'un élément de la liste. \\
+\hline
+{\em max\-\_\-elements} & Nombre max d'éléments dans la liste. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{list_8h_a8111dff4de9d78342e96563621a7da63_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{list_8h_a8111dff4de9d78342e96563621a7da63_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{list_8h_a5ffcff1c3f7eace23a067c0051a3c8f9}{\index{list.\-h@{list.\-h}!list\-\_\-remove\-\_\-top@{list\-\_\-remove\-\_\-top}}
+\index{list\-\_\-remove\-\_\-top@{list\-\_\-remove\-\_\-top}!list.h@{list.\-h}}
+\subsubsection[{list\-\_\-remove\-\_\-top}]{\setlength{\rightskip}{0pt plus 5cm}int list\-\_\-remove\-\_\-top (
+\begin{DoxyParamCaption}
+\item[{{\bf list\-\_\-t} $\ast$}]{l}
+\end{DoxyParamCaption}
+)}}\label{list_8h_a5ffcff1c3f7eace23a067c0051a3c8f9}
+Retire le premier élément de la liste.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em l} & La liste manipulée.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+\hypertarget{list_8h_a7b460be2c0d40f4da72af89c356ed7c1}{\index{list.\-h@{list.\-h}!print\-\_\-list@{print\-\_\-list}}
+\index{print\-\_\-list@{print\-\_\-list}!list.h@{list.\-h}}
+\subsubsection[{print\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}void print\-\_\-list (
+\begin{DoxyParamCaption}
+\item[{{\bf list\-\_\-t}}]{ma\-\_\-liste}
+\end{DoxyParamCaption}
+)}}\label{list_8h_a7b460be2c0d40f4da72af89c356ed7c1}
+Affichage d'une liste (pour debug).
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ma\-\_\-liste} & Liste à afficher. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{list_8h_a7b460be2c0d40f4da72af89c356ed7c1_cgraph}
+\end{center}
+\end{figure}
+
+

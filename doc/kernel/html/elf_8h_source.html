@@ -1,0 +1,362 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS:  Fichier source de kernel/include/elf.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">elf.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="elf_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _ELF_H_</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _ELF_H_</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>       Elf32_Addr;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span>      Elf32_Half;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>       Elf32_Off;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">signed</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>         Elf32_Sword;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>       Elf32_Word;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define EI_NIDENT       16</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="structElf32__Ehdr.html">   46</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="structElf32__Ehdr.html#aba47ac5e0af02d5668782f1fd5a7466c">   47</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>   e_ident[EI_NIDENT];     </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="structElf32__Ehdr.html#a49e40a791813c06e3b6ebcb53aef1bb8">   48</a></span>&#160;        Elf32_Half              <a class="code" href="structElf32__Ehdr.html#a49e40a791813c06e3b6ebcb53aef1bb8">e_type</a>;                         </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="structElf32__Ehdr.html#a19bca7faba9e5573814643efc3574c7b">   49</a></span>&#160;        Elf32_Half              <a class="code" href="structElf32__Ehdr.html#a19bca7faba9e5573814643efc3574c7b">e_machine</a>;                      </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="structElf32__Ehdr.html#aa27627bda53281221325df4dd782e800">   50</a></span>&#160;        Elf32_Word              <a class="code" href="structElf32__Ehdr.html#aa27627bda53281221325df4dd782e800">e_version</a>;                      </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="structElf32__Ehdr.html#ab8a982696048d807017919b7d0145482">   51</a></span>&#160;        Elf32_Addr              <a class="code" href="structElf32__Ehdr.html#ab8a982696048d807017919b7d0145482">e_entry</a>;                        </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="structElf32__Ehdr.html#a25c36fc010284a928604aae005b67ad1">   52</a></span>&#160;        Elf32_Off               <a class="code" href="structElf32__Ehdr.html#a25c36fc010284a928604aae005b67ad1">e_phoff</a>;                        </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="structElf32__Ehdr.html#a00601af5187a1b3f8babfe9cddd95c15">   53</a></span>&#160;        Elf32_Off               <a class="code" href="structElf32__Ehdr.html#a00601af5187a1b3f8babfe9cddd95c15">e_shoff</a>;                        </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="structElf32__Ehdr.html#a87cf481be7917fafde0c4ecf78c8e574">   54</a></span>&#160;        Elf32_Word              <a class="code" href="structElf32__Ehdr.html#a87cf481be7917fafde0c4ecf78c8e574">e_flags</a>;                        </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="structElf32__Ehdr.html#a04c658023e50479eed64f6d1b00a2504">   55</a></span>&#160;        Elf32_Half              <a class="code" href="structElf32__Ehdr.html#a04c658023e50479eed64f6d1b00a2504">e_ehsize</a>;                       </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="structElf32__Ehdr.html#afa2289f96d86fcc568a3b1f40cc8953e">   56</a></span>&#160;        Elf32_Half              <a class="code" href="structElf32__Ehdr.html#afa2289f96d86fcc568a3b1f40cc8953e">e_phentsize</a>;            </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="structElf32__Ehdr.html#a360898812db1655f8cb8258780d9df5b">   57</a></span>&#160;        Elf32_Half              <a class="code" href="structElf32__Ehdr.html#a360898812db1655f8cb8258780d9df5b">e_phnum</a>;                        </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="structElf32__Ehdr.html#ab53c709a841960e499da68e2316ed428">   58</a></span>&#160;        Elf32_Half              <a class="code" href="structElf32__Ehdr.html#ab53c709a841960e499da68e2316ed428">e_shentsize</a>;            </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="structElf32__Ehdr.html#a11249bd7e61642742a68a3e7f69ac721">   59</a></span>&#160;        Elf32_Half              <a class="code" href="structElf32__Ehdr.html#a11249bd7e61642742a68a3e7f69ac721">e_shnum</a>;                        </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="structElf32__Ehdr.html#a3b3070ccd7d971e8cb6ea58d4c6fab09">   60</a></span>&#160;        Elf32_Half              <a class="code" href="structElf32__Ehdr.html#a3b3070ccd7d971e8cb6ea58d4c6fab09">e_shstrndx</a>;                     </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;} <a class="code" href="structElf32__Ehdr.html">Elf32_Ehdr</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/* Indices pour e_ident: */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="elf_8h.html#aba717f40a418b0d99c2efd4cdab4f54f">   64</a></span>&#160;<span class="preprocessor">#define EI_MAG0         0       </span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="elf_8h.html#a2cae3878d982911632b418680718d53b">   65</a></span>&#160;<span class="preprocessor">#define EI_MAG1         1       </span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="elf_8h.html#a2884a339ef7aefee59d160ed3fbb1739">   66</a></span>&#160;<span class="preprocessor">#define EI_MAG2         2       </span></div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="elf_8h.html#ace03d4c5e8952e27b8505581432c3b84">   67</a></span>&#160;<span class="preprocessor">#define EI_MAG3         3       </span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#define EI_CLASS        4</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="elf_8h.html#aab8a7e71c15cccd3f1d721420cd3c2ee">   69</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">        #define ELFCLASSNONE    0       </span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="elf_8h.html#a5f84b1bf6e07374d6289eab3d8c57f1c">   70</a></span>&#160;<span class="preprocessor">        #define ELFCLASS32              1       </span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="code" href="elf_8h.html#a9ee66b59be5c78ea1f1eea8a36f2c291">   71</a></span>&#160;<span class="preprocessor">        #define ELFCLASS64              2       </span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#define EI_DATA         5</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="elf_8h.html#ad25f21c9d99ad7f440811610bfc57ff6">   74</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">        #define ELFDATANONE             0       </span></div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="elf_8h.html#af66303c799da18c8aec282ea8592e7e7">   75</a></span>&#160;<span class="preprocessor">        #define ELFDATA2LSB             1       </span></div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="elf_8h.html#a06385c3e5f0a3b62fae7f5e224e10f89">   76</a></span>&#160;<span class="preprocessor">        #define ELFDATA2MSB             2       </span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#define EI_VERSION      6</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EI_PAD          7</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/* Valeurs pour e_type: */</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="elf_8h.html#a343a36d721130c5017a5669537e96822">   83</a></span>&#160;<span class="preprocessor">#define ET_NONE         0       </span></div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="code" href="elf_8h.html#a2a91046a80fd753ce3dbfb109212761d">   84</a></span>&#160;<span class="preprocessor">#define ET_REL          1       </span></div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="code" href="elf_8h.html#acdd2a7a43d6483137646603c3c31ab80">   85</a></span>&#160;<span class="preprocessor">#define ET_EXE          2       </span></div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="code" href="elf_8h.html#a4373ea3b3d512434ebe2213829b6751b">   86</a></span>&#160;<span class="preprocessor">#define ET_DYN          3       </span></div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="code" href="elf_8h.html#a2b9430d26ba60f7a9d65c8d43e54f213">   87</a></span>&#160;<span class="preprocessor">#define ET_CORE         4       </span></div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="code" href="elf_8h.html#a929894d9c68a7d9b8c29211b1e1a7469">   88</a></span>&#160;<span class="preprocessor">#define ET_LOPROC       0xff00  </span></div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="elf_8h.html#a77894d49f8672fee77686cc7f7ba1a1a">   89</a></span>&#160;<span class="preprocessor">#define ET_HIPROC       0xffff  </span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor"></span><span class="comment">/* Valeurs pour e_machine: */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="elf_8h.html#a5a14b1234094272355977c59e351a14f">   92</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EM_NONE         0       </span></div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="code" href="elf_8h.html#a19b0cea9b063bb97e84b0931ebc7d699">   93</a></span>&#160;<span class="preprocessor">#define EM_M32          1       </span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="elf_8h.html#a3d33cb376c76e9fb077ddf5389f8f8b8">   94</a></span>&#160;<span class="preprocessor">#define EM_SPARC        2       </span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="elf_8h.html#a77301c665274669ba8d05978eb0d299e">   95</a></span>&#160;<span class="preprocessor">#define EM_386          3       </span></div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="code" href="elf_8h.html#acc74dd2d7cd1e872c2d2f52d64a7982a">   96</a></span>&#160;<span class="preprocessor">#define EM_68K          4       </span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="code" href="elf_8h.html#a66801fe3ae7746ab9386537d236cd4e4">   97</a></span>&#160;<span class="preprocessor">#define EM_88K          5       </span></div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="code" href="elf_8h.html#a80e7667a64867c4252a1c3a6333514d9">   98</a></span>&#160;<span class="preprocessor">#define EM_860          7       </span></div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="code" href="elf_8h.html#a3168ea327621f9848abb996540342fb6">   99</a></span>&#160;<span class="preprocessor">#define EM_MIPS         8       </span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor"></span><span class="comment">/* Valeurs pour e_version: */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EV_NONE         0</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EV_CURRENT      1</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">/*******************************</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment"> * PROGRAM HEADER</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment"> *******************************/</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">/* Indices des sections spéciales */</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#define SHN_UNDEF               0</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHN_LORESERVE   0xff00</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHN_LOPROC              0xff00</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHN_HIPROC              0xff1f</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHN_ABS                 0xfff1</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHN_COMMON              0xfff2</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHN_HIRESERVE   0xffff</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="code" href="structElf32__Phdr.html">  120</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="code" href="structElf32__Phdr.html#a8b1d2942ddb9abcb85db1429b5116923">  121</a></span>&#160;        Elf32_Word      <a class="code" href="structElf32__Phdr.html#a8b1d2942ddb9abcb85db1429b5116923">p_type</a>;         </div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="structElf32__Phdr.html#ac590d4c4b26104216e53058b5b03eef0">  122</a></span>&#160;        Elf32_Off       <a class="code" href="structElf32__Phdr.html#ac590d4c4b26104216e53058b5b03eef0">p_offset</a>;               </div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="code" href="structElf32__Phdr.html#a01a298ebc899bcf9c23211a7bf1155a6">  123</a></span>&#160;        Elf32_Addr      <a class="code" href="structElf32__Phdr.html#a01a298ebc899bcf9c23211a7bf1155a6">p_vaddr</a>;        </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="code" href="structElf32__Phdr.html#af18f0a179a5fca09e3c04bcdce3fac2f">  124</a></span>&#160;        Elf32_Addr      <a class="code" href="structElf32__Phdr.html#af18f0a179a5fca09e3c04bcdce3fac2f">p_paddr</a>;        </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="code" href="structElf32__Phdr.html#ac9151f2e11001284bf1c7d2d2659555c">  125</a></span>&#160;        Elf32_Word      <a class="code" href="structElf32__Phdr.html#ac9151f2e11001284bf1c7d2d2659555c">p_filesz</a>; </div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="code" href="structElf32__Phdr.html#ada1cdd3d6ccb79a17bed0e3c21379c84">  126</a></span>&#160;        Elf32_Word      <a class="code" href="structElf32__Phdr.html#ada1cdd3d6ccb79a17bed0e3c21379c84">p_memsz</a>;        </div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="code" href="structElf32__Phdr.html#a35c457e6828894b7b275730593802050">  127</a></span>&#160;        Elf32_Word      <a class="code" href="structElf32__Phdr.html#a35c457e6828894b7b275730593802050">p_flags</a>;        </div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="code" href="structElf32__Phdr.html#afd09d9e4297b13fc94fd57d09f2a9f70">  128</a></span>&#160;        Elf32_Word      <a class="code" href="structElf32__Phdr.html#afd09d9e4297b13fc94fd57d09f2a9f70">p_align</a>;        </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}<a class="code" href="structElf32__Phdr.html">Elf32_Phdr</a>;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">/* Valeurs prises par p_type: */</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="code" href="elf_8h.html#a854729c1dc4623abeaeb765a1b745012">  132</a></span>&#160;<span class="preprocessor">#define PT_NULL         0               </span></div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="code" href="elf_8h.html#a84d7768fd6c6ece599d297090900cf92">  133</a></span>&#160;<span class="preprocessor">#define PT_LOAD         1               </span></div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="code" href="elf_8h.html#a2121a2f01c51e8462bfd4d47725649d8">  134</a></span>&#160;<span class="preprocessor">#define PT_DYNAMIC      2       </span></div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="code" href="elf_8h.html#abcd3aa15bc567949c1ab6b1abc137710">  135</a></span>&#160;<span class="preprocessor">#define PT_INTERP       3               </span></div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="code" href="elf_8h.html#a72baf87d62607c7fdccd3b8010d4ce30">  136</a></span>&#160;<span class="preprocessor">#define PT_NOTE         4               </span></div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="code" href="elf_8h.html#abff9f38fd394e09e60f5640550a23e46">  137</a></span>&#160;<span class="preprocessor">#define PT_SHLIB        5               </span></div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="code" href="elf_8h.html#a58ff00be749ca4000074f9b9066a1056">  138</a></span>&#160;<span class="preprocessor">#define PT_PHDR         6               </span></div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="code" href="elf_8h.html#acaa6971207ea507ed02f22ba574b8534">  139</a></span>&#160;<span class="preprocessor">#define PT_LOPROC       0x7000000       </span></div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="code" href="elf_8h.html#a74427c5909fdced36b41134c11650249">  140</a></span>&#160;<span class="preprocessor">#define PT_HIPROC       0x7FFFFFF       </span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor"></span><span class="comment">/* Valeurs prises par p_flags */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PF_X    0x1</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PF_W    0x2</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PF_R    0x4</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">/********************************</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment"> * SECTION HEADER</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment"> ********************************/</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="code" href="structElf32__Shdr.html">  153</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="code" href="structElf32__Shdr.html#a6e8fd300ca473a31d0f65817ce371dfd">  154</a></span>&#160;        Elf32_Word      <a class="code" href="structElf32__Shdr.html#a6e8fd300ca473a31d0f65817ce371dfd">sh_name</a>;                </div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="code" href="structElf32__Shdr.html#aab6c221dbd7e16987df41280fb915408">  155</a></span>&#160;        Elf32_Word      <a class="code" href="structElf32__Shdr.html#aab6c221dbd7e16987df41280fb915408">sh_type</a>;                </div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="code" href="structElf32__Shdr.html#a27e003d8da37de3038a0065577a7743d">  156</a></span>&#160;        Elf32_Word      <a class="code" href="structElf32__Shdr.html#a27e003d8da37de3038a0065577a7743d">sh_flags</a>;               </div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="code" href="structElf32__Shdr.html#a7e668a62cee74a2f9c6edabb5f45635a">  157</a></span>&#160;        Elf32_Addr      <a class="code" href="structElf32__Shdr.html#a7e668a62cee74a2f9c6edabb5f45635a">sh_addr</a>;                </div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="code" href="structElf32__Shdr.html#a6e37227a5777cddc0a9dbbb3c2598ec1">  158</a></span>&#160;        Elf32_Off       <a class="code" href="structElf32__Shdr.html#a6e37227a5777cddc0a9dbbb3c2598ec1">sh_offset</a>;              </div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="code" href="structElf32__Shdr.html#a84dc67bb0ab65880bbcd74fbee722ff1">  159</a></span>&#160;        Elf32_Word      <a class="code" href="structElf32__Shdr.html#a84dc67bb0ab65880bbcd74fbee722ff1">sh_size</a>;                </div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="code" href="structElf32__Shdr.html#ad759308388eb14c5c6e4d636c38999da">  160</a></span>&#160;        Elf32_Word      <a class="code" href="structElf32__Shdr.html#ad759308388eb14c5c6e4d636c38999da">sh_link</a>;                </div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="code" href="structElf32__Shdr.html#aef63fe62c2c9927f374c4f987954c6e5">  161</a></span>&#160;        Elf32_Word      <a class="code" href="structElf32__Shdr.html#aef63fe62c2c9927f374c4f987954c6e5">sh_info</a>;                </div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="code" href="structElf32__Shdr.html#a399f50b3591e6286d4ad819f790979ed">  162</a></span>&#160;        Elf32_Word      <a class="code" href="structElf32__Shdr.html#a399f50b3591e6286d4ad819f790979ed">sh_addralign</a>;   </div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="code" href="structElf32__Shdr.html#a10c59cecc928aae27930601fe545d3ca">  163</a></span>&#160;        Elf32_Word      <a class="code" href="structElf32__Shdr.html#a10c59cecc928aae27930601fe545d3ca">sh_entsize</a>;             </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}<a class="code" href="structElf32__Shdr.html">Elf32_Shdr</a>;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">/* Valeurs pour sh_type */</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">#define SHT_NULL                0</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHT_PROGBITS    1</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHT_SYMTAB              2</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHT_STRTAB              3</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHT_RELA                4</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHT_HASH                5</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHT_DYNAMIC             6</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHT_NOTE                7</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHT_NOBITS              8</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHT_REL                 9</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHT_SHLIB               10</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHT_DYNSYM              11</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHT_LOPROC              0x70000000</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHT_HIPROC              0x7fffffff</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHT_LOUSER              0x80000000</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHT_HIUSER              0x8fffffff</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">/* Masques pour sh_flag */</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="preprocessor">#define SHF_WRITE               1</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHF_ALLOC               2</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHF_EXECINSTR   4</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHF_MASKPROC    0xf0000000</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">/***************************</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment"> * SYMBOL TABLE</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment"> ***************************/</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="code" href="structElf32__Sym.html">  196</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00197"></a><span class="lineno"><a class="code" href="structElf32__Sym.html#a6a972b30868879f8a1e071e0c45e5031">  197</a></span>&#160;        Elf32_Word              <a class="code" href="structElf32__Sym.html#a6a972b30868879f8a1e071e0c45e5031">st_name</a>;        </div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="code" href="structElf32__Sym.html#abf8ff76884bc5e2acb5f7eb42f733c2e">  198</a></span>&#160;        Elf32_Addr              <a class="code" href="structElf32__Sym.html#abf8ff76884bc5e2acb5f7eb42f733c2e">st_value</a>;       </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        Elf32_Word              st_size;        </div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="code" href="structElf32__Sym.html#a7d131c44ec48708b1c98f9b00ca9d528">  200</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>   <a class="code" href="structElf32__Sym.html#a7d131c44ec48708b1c98f9b00ca9d528">st_info</a>;        </div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="code" href="structElf32__Sym.html#a2e1bf6bedb5180f74ea8cbaf9cedfd36">  201</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>   <a class="code" href="structElf32__Sym.html#a2e1bf6bedb5180f74ea8cbaf9cedfd36">st_other</a>;       </div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="code" href="structElf32__Sym.html#a46e54847ab00fbea62df8ee5dff8dec6">  202</a></span>&#160;        Elf32_Half              <a class="code" href="structElf32__Sym.html#a46e54847ab00fbea62df8ee5dff8dec6">st_shndx</a>;       </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;}<a class="code" href="structElf32__Sym.html">Elf32_Sym</a>;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">/* Macros pour st_info */</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor">#define ELF32_ST_BIND(i)        ((i)&gt;&gt;4)</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define ELF32_ST_TYPE(i)        ((i)&amp;0xf)</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define ELF32_ST_INFO(b,t)      (((b)&lt;&lt;4)+((t)&amp;0xf))</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">/* Valeurs pour ELF32_ST_BIND */</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="code" href="elf_8h.html#a72c40de459931e6f1d041201dc7398b1">  213</a></span>&#160;<span class="preprocessor">#define STB_LOCAL       0               </span></div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="code" href="elf_8h.html#a8091960a6799bf71a7494551dac1a2e8">  214</a></span>&#160;<span class="preprocessor">#define STB_GLOBAL      1               </span></div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="code" href="elf_8h.html#ad4247ded90f9371e3c4d2f7dda260c93">  215</a></span>&#160;<span class="preprocessor">#define STB_WEAK        2               </span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="preprocessor">#define STB_LOPROC      13</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define STB_HIPROC      15</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">/* valeurs pour ELF32_ST_TYPE */</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno"><a class="code" href="elf_8h.html#aa15a54cc9c881e4d54daedc9d984c2fc">  220</a></span>&#160;<span class="preprocessor">#define STT_NOTYPE      0       </span></div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="code" href="elf_8h.html#ac236cc313291ed38ecb346a8b4bde6b2">  221</a></span>&#160;<span class="preprocessor">#define STT_OBJECT      1       </span></div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="code" href="elf_8h.html#a9cdfedf900935f23f6e409ce378dc1d2">  222</a></span>&#160;<span class="preprocessor">#define STT_FUNC        2       </span></div>
+<div class="line"><a name="l00223"></a><span class="lineno"><a class="code" href="elf_8h.html#a9e9a3c0fa59c3fc896f8e4c1872c6af1">  223</a></span>&#160;<span class="preprocessor">#define STT_SECTION     3       </span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="preprocessor">#define STT_FILE        4       </span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define STT_LOPROC      13</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define STT_HIPROC      15</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">/***************************</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment"> * RELOCATIONS</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment"> ***************************/</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00234"></a><span class="lineno"><a class="code" href="structElf32__Rel.html">  234</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        Elf32_Addr      r_offset;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        Elf32_Word      r_info;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;} <a class="code" href="structElf32__Rel.html">Elf32_Rel</a>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="code" href="structElf32__Rela.html">  239</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        Elf32_Addr      r_offset;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        Elf32_Word      r_info;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        Elf32_Word      r_addend;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;} <a class="code" href="structElf32__Rela.html">Elf32_Rela</a>;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment">/* Macros pour r_info */</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="preprocessor">#define ELF32_R_SYM(i)          ((i)&gt;&gt;8)</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define ELF32_R_TYPE(i)         ((unsigned char)(i))</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define ELF32_R_INFO(s,t)       (((s)&lt;&lt;8)+(unsigned char)(t))</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment">/* Valeurs pour le type contenu dans r_info */</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="preprocessor">#define R_386_NONE              0</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define R_386_32                1</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define R_386_PC32              2</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define R_386_GOT32             3</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define R_386_PLT32             4</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define R_386_COPY              5</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define R_386_GLOB_DAT  6</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define R_386_JMP_SLOT  7</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define R_386_RELATIVE  8</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define R_386_GOTOFF    9</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define R_386_GOTPC             10</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">/***************************</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment"> * ELF FILE</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment"> ***************************/</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno"><a class="code" href="structElf32__File.html">  272</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00273"></a><span class="lineno"><a class="code" href="structElf32__File.html#ad72bb34e9388d51790c6059cdd122137">  273</a></span>&#160;        <span class="keywordtype">char</span>* <a class="code" href="structElf32__File.html#ad72bb34e9388d51790c6059cdd122137">name</a>; </div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <a class="code" href="structElf32__Ehdr.html">Elf32_Ehdr</a>* elf_header;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        </div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <a class="code" href="structElf32__Phdr.html">Elf32_Phdr</a>* pheaders;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <a class="code" href="structElf32__Shdr.html">Elf32_Shdr</a>* sheaders;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="keywordtype">int</span> nb_symbols;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <a class="code" href="structElf32__Sym.html">Elf32_Sym</a>* sym_table;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <span class="keywordtype">char</span>* string_table;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        <span class="keywordtype">char</span>* symbol_string_table;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}<a class="code" href="structElf32__File.html" title="Structure qui caractérise un binaire elf.">Elf32_File</a>;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="keywordtype">int</span> <a class="code" href="elf_8h.html#a0a376bfb8dd86fece985ec35032a635b" title="charge le header principal d&#39;un fichier elf">load_efl_header</a>(<a class="code" href="structElf32__Ehdr.html">Elf32_Ehdr</a>* elf_header, <span class="keywordtype">int</span> fd);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="keywordtype">int</span> <a class="code" href="elf_8c.html#a9aae782f070af1c6009d0cc2a6d60a08" title="charge un program header depuis un fichier elf Charge le program header n°index depuis le fichier...">load_program_header</a>(<a class="code" href="structElf32__Phdr.html">Elf32_Phdr</a>* program_header, <a class="code" href="structElf32__Ehdr.html">Elf32_Ehdr</a>* elf_header, <span class="keywordtype">int</span> index, <span class="keywordtype">int</span> fd);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="keywordtype">int</span> <a class="code" href="elf_8h.html#a8138ecf1d1d9bd1e80e05694ef4362e4" title="charge un section header depuis un fichier elf Charge le section header n°index depuis le fichier...">load_section_header</a>(<a class="code" href="structElf32__Shdr.html">Elf32_Shdr</a>* section_header, <a class="code" href="structElf32__Ehdr.html">Elf32_Ehdr</a>* elf_header, <span class="keywordtype">int</span> index __attribute__ ((unused)), <span class="keywordtype">int</span> fd);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="elf_8c.html#aa84790a8edae8d2859861f19adf5dd41" title="Calcul la taille que prendra l&#39;exécutable dans la mémoire La fonction évalue l&#39;adresse de départ en m...">elf_size</a>(<span class="keywordtype">int</span> fd);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="keywordtype">int</span> <a class="code" href="elf_8c.html#a35e8f32030ee36d8c02357a0b483c1b2" title="charge un fichier elf Charge les données utiles de l&#39;exécutable en mémoire, de façon à ce que ce soit...">load_elf</a>(<span class="keywordtype">int</span> fd, <span class="keywordtype">void</span>* dest);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<a class="code" href="structElf32__File.html" title="Structure qui caractérise un binaire elf.">Elf32_File</a>* <a class="code" href="elf_8c.html#abbbb3d1f6ac9986f87d655cec7819556" title="charge un fichier elf dans la structure Elf32_File">load_elf_file</a>(<span class="keywordtype">int</span> fd);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<a class="code" href="structElf32__Sym.html">Elf32_Sym</a>* <a class="code" href="elf_8c.html#a8f556b72039271c88d4567c6e2f84ea0" title="Trouve un symbole dans un fichier.">find_symbol</a>(<a class="code" href="structElf32__File.html" title="Structure qui caractérise un binaire elf.">Elf32_File</a>* file, <span class="keyword">const</span> <span class="keywordtype">char</span>* symbol);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="keywordtype">void</span> <a class="code" href="elf_8h.html#af969175b11017f629b1dfbf557fccbcc" title="Affiche des information sur le fichier elf.">elf_info</a>(<span class="keywordtype">char</span>* name);</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _ELF_H_ */</span><span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:16 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

@@ -1,0 +1,636 @@
+\hypertarget{string_8h}{\section{Référence du fichier kernel/include/klibc/string.h}
+\label{string_8h}\index{kernel/include/klibc/string.\-h@{kernel/include/klibc/string.\-h}}
+}
+
+
+Fonctions de manipulation de strings depuis le kernel.  
+
+
+{\ttfamily \#include $<$types.\-h$>$}\\*
+Graphe des dépendances par inclusion de string.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{string_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{string_8h_ad1b7311b48288a0d08172f26ff64dd67}{memcpy} (void $\ast$dest, const void $\ast$src, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+\begin{DoxyCompactList}\small\item\em Copie une zone mémoire. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} \hyperlink{string_8h_aa383452fe445bfae989358c9d7d96f4f}{strlen} (const char $\ast$s)
+\begin{DoxyCompactList}\small\item\em Calcule la longueur d'une chaîne de caractères. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{string_8h_a12871ed234858ef0e363d2b8aa572fc1}{strchr} (const char $\ast$s, int c)
+\begin{DoxyCompactList}\small\item\em Rechercher un caractère dans une chaîne. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{string_8h_a0c05a458deff028ef4d4e64059098db4}{strrchr} (const char $\ast$s, int c)
+\begin{DoxyCompactList}\small\item\em Rechercher un caractère dans une chaîne. \end{DoxyCompactList}\item 
+int \hyperlink{string_8h_a11bd144d7d44914099a3aeddf1c8567d}{strcmp} (const char $\ast$s1, const char $\ast$s2)
+\begin{DoxyCompactList}\small\item\em Compare deux chaînes. \end{DoxyCompactList}\item 
+int \hyperlink{string_8h_a07f4a84c11c106e95c32b6ab509346ef}{strncmp} (const char $\ast$s1, const char $\ast$s2, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
+\begin{DoxyCompactList}\small\item\em Compare deux chaînes jusqu'à n caractères. \end{DoxyCompactList}\item 
+int \hyperlink{string_8h_a706b36f3a672f84685576723c3928baa}{strcasecmp} (const char $\ast$s1, const char $\ast$s2)
+\begin{DoxyCompactList}\small\item\em Compare deux chaînes. \end{DoxyCompactList}\item 
+int \hyperlink{string_8h_a674b7f779fec84cb1a3be8222b5c381a}{strncasecmp} (const char $\ast$s1, const char $\ast$s2, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
+\begin{DoxyCompactList}\small\item\em Compare deux chaînes jusqu'à n caractères. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{string_8h_a48d911e1a150610b7182d19b81651828}{strchrnul} (const char $\ast$s, int c)
+\begin{DoxyCompactList}\small\item\em Recherche un caractère dans une chaîne. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{string_8h_ace6ee45c30e71865e6eb635200379db9}{memset} (void $\ast$s, int c, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
+\begin{DoxyCompactList}\small\item\em Rempli une zone mémoire avec un octet donné. \end{DoxyCompactList}\item 
+int \hyperlink{string_8h_a9e6df54ee04e18a3772335580e2ed872}{memcmp} (const void $\ast$s1, const void $\ast$s2, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
+\begin{DoxyCompactList}\small\item\em Compare deux zones mémoire. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{string_8h_a1eb9cae61e6a6282c28dbc298ef7297e}{strcpy} (char $\ast$s1, const char $\ast$s2)
+\begin{DoxyCompactList}\small\item\em Copie une chaine. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{string_8h_a7982e2515766b25c1157ac30f8bac394}{strncpy} (char $\ast$s1, const char $\ast$s2, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
+\begin{DoxyCompactList}\small\item\em Copie une chaine en se limitant aux n premiers caractères. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{string_8h_a8908188ae9fc2f05d993257ef001d553}{strcat} (char $\ast$s1, const char $\ast$s2)
+\begin{DoxyCompactList}\small\item\em Concaténation de deux chaînes. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{string_8h_a4c10a214b02eed3dafc48c59ad71abbd}{strncat} (char $\ast$s1, const char $\ast$s2, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
+\begin{DoxyCompactList}\small\item\em Concaténation de deux chaînes avec une limite aux n premiers caractères. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{string_8h_a802c986820d3866639922b6bc9484f90}{memmove} (void $\ast$dest, const void $\ast$src, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
+\begin{DoxyCompactList}\small\item\em Copie une zone mémoire. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{string_8h_a4a710d86541afc6b7dafddcdb4b1c94f}{strstr} (const char $\ast$haystack, const char $\ast$needle)
+\begin{DoxyCompactList}\small\item\em Recherche une sous-\/chaîne. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{string_8h_ae9229017a4501f8d6a637b4498cfed2e}{strcasestr} (const char $\ast$haystack, const char $\ast$needle)
+\begin{DoxyCompactList}\small\item\em Recherche une sous-\/chaîne en ignorant la casse. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{string_8h_ab1cc1a3ff560049e22576031c7c2345b}{strdup} (const char $\ast$s)
+\begin{DoxyCompactList}\small\item\em Duplique une chaine. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{string_8h_a8cb460f64c449f2a9b9b7a40569ce0fe}{strtok} (char $\ast$str, const char $\ast$delim)
+\begin{DoxyCompactList}\small\item\em Extraire des mots d'une chaîne. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{string_8h_a9e6df54ee04e18a3772335580e2ed872}{\index{string.\-h@{string.\-h}!memcmp@{memcmp}}
+\index{memcmp@{memcmp}!string.h@{string.\-h}}
+\subsubsection[{memcmp}]{\setlength{\rightskip}{0pt plus 5cm}int memcmp (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{s1, }
+\item[{const void $\ast$}]{s2, }
+\item[{{\bf size\-\_\-t}}]{n}
+\end{DoxyParamCaption}
+)}}\label{string_8h_a9e6df54ee04e18a3772335580e2ed872}
+\begin{DoxyVerb} Compare les n premiers octets des zones mémoires s1 et s2.
+ Elle retourne un entier négatif, positif ou nul si les n premiers octets de
+ s1 sont respectivement plus petits, plus grands ou identiques aux n premiers 
+ octets de s2.
+\end{DoxyVerb}
+
+
+\begin{DoxySeeAlso}{Voir également}
+\hyperlink{string_8c_a11bd144d7d44914099a3aeddf1c8567d}{strcmp} 
+
+\hyperlink{string_8c_a07f4a84c11c106e95c32b6ab509346ef}{strncmp}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Paramètres}
+{\em s1} & pointeur vers la première zone mémoire. \\
+\hline
+{\em s2} & pointeur vers la seconde zone mémoire. \\
+\hline
+{\em n} & le nombre d'octets à comparer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un entier négatif, positif ou nul si les n premiers octets de s1 sont respectivement plus petits, plus grands ou identiques aux n premiers octets de s2. 
+\end{DoxyReturn}
+\hypertarget{string_8h_ad1b7311b48288a0d08172f26ff64dd67}{\index{string.\-h@{string.\-h}!memcpy@{memcpy}}
+\index{memcpy@{memcpy}!string.h@{string.\-h}}
+\subsubsection[{memcpy}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ memcpy (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{dest, }
+\item[{const void $\ast$}]{src, }
+\item[{{\bf size\-\_\-t}}]{size}
+\end{DoxyParamCaption}
+)}}\label{string_8h_ad1b7311b48288a0d08172f26ff64dd67}
+La fonction \hyperlink{string_8h_ad1b7311b48288a0d08172f26ff64dd67}{memcpy()} copie une zone mémoire de size octets depuis src vers la zone mémoire dest. Les deux zones ne doivent pas se chevaucher sinon il faut utiliser memmove.
+
+\begin{DoxySeeAlso}{Voir également}
+\hyperlink{string_8c_a802c986820d3866639922b6bc9484f90}{memmove}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Paramètres}
+{\em dest} & adresse mémoire où il faut copier \\
+\hline
+{\em src} & adresse mémoire source \\
+\hline
+{\em size} & taille de la zone à copier\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur sur dest. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8h_ad1b7311b48288a0d08172f26ff64dd67_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{string_8h_a802c986820d3866639922b6bc9484f90}{\index{string.\-h@{string.\-h}!memmove@{memmove}}
+\index{memmove@{memmove}!string.h@{string.\-h}}
+\subsubsection[{memmove}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ memmove (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{dest, }
+\item[{const void $\ast$}]{src, }
+\item[{{\bf size\-\_\-t}}]{n}
+\end{DoxyParamCaption}
+)}}\label{string_8h_a802c986820d3866639922b6bc9484f90}
+La fonction \hyperlink{string_8h_a802c986820d3866639922b6bc9484f90}{memmove()} copie n octets depuis la zone mémoire src vers la zone mémoire dest. La différence avec memcpy c'est que les zones peuvent se chevaucher.
+
+\begin{DoxySeeAlso}{Voir également}
+\hyperlink{string_8c_ad1b7311b48288a0d08172f26ff64dd67}{memcpy}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Paramètres}
+{\em dest} & zone mémoire de destination. \\
+\hline
+{\em src} & chaine source. \\
+\hline
+{\em n} & nombre de caractères à copier au maximum.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur sur dest. 
+\end{DoxyReturn}
+\hypertarget{string_8h_ace6ee45c30e71865e6eb635200379db9}{\index{string.\-h@{string.\-h}!memset@{memset}}
+\index{memset@{memset}!string.h@{string.\-h}}
+\subsubsection[{memset}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ memset (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{s, }
+\item[{int}]{c, }
+\item[{{\bf size\-\_\-t}}]{n}
+\end{DoxyParamCaption}
+)}}\label{string_8h_ace6ee45c30e71865e6eb635200379db9}
+Rempli la zone mémoire pointée par s et de n octets par l'octet c.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s} & zone mémoire à remplir \\
+\hline
+{\em c} & octet qui sert pour le remplissage \\
+\hline
+{\em n} & nombre d'octets à copier\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur vers la zone mémoire s. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{string_8h_ace6ee45c30e71865e6eb635200379db9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{string_8h_a706b36f3a672f84685576723c3928baa}{\index{string.\-h@{string.\-h}!strcasecmp@{strcasecmp}}
+\index{strcasecmp@{strcasecmp}!string.h@{string.\-h}}
+\subsubsection[{strcasecmp}]{\setlength{\rightskip}{0pt plus 5cm}int strcasecmp (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{s1, }
+\item[{const char $\ast$}]{s2}
+\end{DoxyParamCaption}
+)}}\label{string_8h_a706b36f3a672f84685576723c3928baa}
+La fonction \hyperlink{string_8h_a706b36f3a672f84685576723c3928baa}{strcasecmp()} compare deux chaînes de caractères et retourne en résultat un nombre négatif, positif ou nul si s1 est respectivement inférieur, supérieur ou identique à s2.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s1} & première chaîne \\
+\hline
+{\em s2} & seconde chaîne\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un entier strictement négatif si s1 est inférieur à s2, strictement positif si s1 est supérieur à s2 et nul si s1 est identique à s2. 
+\end{DoxyReturn}
+\hypertarget{string_8h_ae9229017a4501f8d6a637b4498cfed2e}{\index{string.\-h@{string.\-h}!strcasestr@{strcasestr}}
+\index{strcasestr@{strcasestr}!string.h@{string.\-h}}
+\subsubsection[{strcasestr}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strcasestr (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{haystack, }
+\item[{const char $\ast$}]{needle}
+\end{DoxyParamCaption}
+)}}\label{string_8h_ae9229017a4501f8d6a637b4498cfed2e}
+Recherche needle (aiguille) dans la chaine heystack (meule de foin). Les caractères « \textbackslash{}0 » ne sont pas comparés. La casse des arguments est ignorée.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em haystack} & chaîne dans laquelle on va effectuer la recherche. \\
+\hline
+{\em needle} & sous-\/chaîne à rechercher.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur vers le début de la sous-\/chaîne ou N\-U\-L\-L si non trouvée. 
+\end{DoxyReturn}
+\hypertarget{string_8h_a8908188ae9fc2f05d993257ef001d553}{\index{string.\-h@{string.\-h}!strcat@{strcat}}
+\index{strcat@{strcat}!string.h@{string.\-h}}
+\subsubsection[{strcat}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strcat (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s1, }
+\item[{const char $\ast$}]{s2}
+\end{DoxyParamCaption}
+)}}\label{string_8h_a8908188ae9fc2f05d993257ef001d553}
+Ajoute à la fin de s1 le contenu de s2 en s'arrêtant au premier caractère '\textbackslash{}0' rencontré.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s1} & chaine destination. \\
+\hline
+{\em s2} & chaine source qui sera ajoutée à la fin de s1.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur vers la chaine de destination s1. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{string_8h_a8908188ae9fc2f05d993257ef001d553_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{string_8h_a12871ed234858ef0e363d2b8aa572fc1}{\index{string.\-h@{string.\-h}!strchr@{strchr}}
+\index{strchr@{strchr}!string.h@{string.\-h}}
+\subsubsection[{strchr}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strchr (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{s, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{string_8h_a12871ed234858ef0e363d2b8aa572fc1}
+La fonction \hyperlink{string_8h_a12871ed234858ef0e363d2b8aa572fc1}{strchr()} renvoie un pointeur sur la première occurrence du caractère c dans la chaîne s.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s} & la chaîne dans laquelle on veut chercher le caractère. \\
+\hline
+{\em c} & le caractère que l'on recherche dans la chaine.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur sur la première occurence trouvée ou N\-U\-L\-L si absent. 
+\end{DoxyReturn}
+\hypertarget{string_8h_a48d911e1a150610b7182d19b81651828}{\index{string.\-h@{string.\-h}!strchrnul@{strchrnul}}
+\index{strchrnul@{strchrnul}!string.h@{string.\-h}}
+\subsubsection[{strchrnul}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strchrnul (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{s, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{string_8h_a48d911e1a150610b7182d19b81651828}
+Recherche un caractère dans une chaîne, et si le caractère n'est pas présent, renvoie un pointeur vers l'octet nul de la chaîne.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s} & La chaîne dans laquelle il faut effectuer une recherche. \\
+\hline
+{\em c} & Le caractère à rechercher.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur la première occurrence du caractère dans la chaîne ou un pointeur vers la caractère nul de la chaîne si le caractère n'est pas trouvé. 
+\end{DoxyReturn}
+\hypertarget{string_8h_a11bd144d7d44914099a3aeddf1c8567d}{\index{string.\-h@{string.\-h}!strcmp@{strcmp}}
+\index{strcmp@{strcmp}!string.h@{string.\-h}}
+\subsubsection[{strcmp}]{\setlength{\rightskip}{0pt plus 5cm}int strcmp (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{s1, }
+\item[{const char $\ast$}]{s2}
+\end{DoxyParamCaption}
+)}}\label{string_8h_a11bd144d7d44914099a3aeddf1c8567d}
+La fonction \hyperlink{string_8h_a11bd144d7d44914099a3aeddf1c8567d}{strcmp()} compare deux chaînes de caractères et retourne en résultat un nombre négatif, positif ou nul si s1 est respectivement inférieur, supérieur ou identique à s2.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s1} & première chaîne \\
+\hline
+{\em s2} & seconde chaîne\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un entier strictement négatif si s1 est inférieur à s2, strictement positif si s1 est supérieur à s2 et nul si s1 est identique à s2. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8h_a11bd144d7d44914099a3aeddf1c8567d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{string_8h_a1eb9cae61e6a6282c28dbc298ef7297e}{\index{string.\-h@{string.\-h}!strcpy@{strcpy}}
+\index{strcpy@{strcpy}!string.h@{string.\-h}}
+\subsubsection[{strcpy}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strcpy (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s1, }
+\item[{const char $\ast$}]{s2}
+\end{DoxyParamCaption}
+)}}\label{string_8h_a1eb9cae61e6a6282c28dbc298ef7297e}
+Copie la chaine s2 vers la zone mémoire pointée par s1. La copie s'arrête dès que le caractère '\textbackslash{}0' est rencontré dans s2.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s1} & zone mémoire de destination. \\
+\hline
+{\em s2} & chaine source.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur vers la chaîne de destination s1. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8h_a1eb9cae61e6a6282c28dbc298ef7297e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{string_8h_ab1cc1a3ff560049e22576031c7c2345b}{\index{string.\-h@{string.\-h}!strdup@{strdup}}
+\index{strdup@{strdup}!string.h@{string.\-h}}
+\subsubsection[{strdup}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strdup (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{s}
+\end{DoxyParamCaption}
+)}}\label{string_8h_ab1cc1a3ff560049e22576031c7c2345b}
+strdup va faire un malloc de taille suffisante pour y copier la chaîne en paramètre.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s} & la chaîne à dupliquer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur vers la nouvelle zone mémoire contenant une copie de la chaîne. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8h_ab1cc1a3ff560049e22576031c7c2345b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8h_ab1cc1a3ff560049e22576031c7c2345b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{string_8h_aa383452fe445bfae989358c9d7d96f4f}{\index{string.\-h@{string.\-h}!strlen@{strlen}}
+\index{strlen@{strlen}!string.h@{string.\-h}}
+\subsubsection[{strlen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\-\_\-t} strlen (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{s}
+\end{DoxyParamCaption}
+)}}\label{string_8h_aa383452fe445bfae989358c9d7d96f4f}
+La fonction \hyperlink{string_8h_aa383452fe445bfae989358c9d7d96f4f}{strlen()} calcule la longueur de la chaîne de caractères s sans compter le caractère nul « \textbackslash{}0 »
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s} & la chaîne dont on veut calculer la longueur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+le nombre de caractères dans la chaîne s. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8h_aa383452fe445bfae989358c9d7d96f4f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{string_8h_a674b7f779fec84cb1a3be8222b5c381a}{\index{string.\-h@{string.\-h}!strncasecmp@{strncasecmp}}
+\index{strncasecmp@{strncasecmp}!string.h@{string.\-h}}
+\subsubsection[{strncasecmp}]{\setlength{\rightskip}{0pt plus 5cm}int strncasecmp (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{s1, }
+\item[{const char $\ast$}]{s2, }
+\item[{{\bf size\-\_\-t}}]{n}
+\end{DoxyParamCaption}
+)}}\label{string_8h_a674b7f779fec84cb1a3be8222b5c381a}
+La fonction strncasecmp compare deux chaînes de caractères et retourne en résultat un nombre négatif, positif ou nul si les n premiers caractères de s1 sont inférieurs, supérieurs ou identiques aux n premiers caractères de s2.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s1} & première chaîne \\
+\hline
+{\em s2} & seconde chaîne \\
+\hline
+{\em n} & nombre de caractères à comparer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un entier strictement négatif si les n premiers caractères de s1 sont inférieurs aux n premiers caractères de s2, strictement positif s'ils sont supérieurs et nul s'ils sont identiques. 
+\end{DoxyReturn}
+\hypertarget{string_8h_a4c10a214b02eed3dafc48c59ad71abbd}{\index{string.\-h@{string.\-h}!strncat@{strncat}}
+\index{strncat@{strncat}!string.h@{string.\-h}}
+\subsubsection[{strncat}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strncat (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s1, }
+\item[{const char $\ast$}]{s2, }
+\item[{{\bf size\-\_\-t}}]{n}
+\end{DoxyParamCaption}
+)}}\label{string_8h_a4c10a214b02eed3dafc48c59ad71abbd}
+Ajoute à la fin de s1 le contenu de s2 en s'arrêtant à n caractères ou au premier caractère '\textbackslash{}0' rencontré.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s1} & chaine destination. \\
+\hline
+{\em s2} & chaine source qui sera ajoutée à la fin de s1. \\
+\hline
+{\em n} & nombre de caractères à copier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur vers la chaine de destination s1. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{string_8h_a4c10a214b02eed3dafc48c59ad71abbd_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{string_8h_a07f4a84c11c106e95c32b6ab509346ef}{\index{string.\-h@{string.\-h}!strncmp@{strncmp}}
+\index{strncmp@{strncmp}!string.h@{string.\-h}}
+\subsubsection[{strncmp}]{\setlength{\rightskip}{0pt plus 5cm}int strncmp (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{s1, }
+\item[{const char $\ast$}]{s2, }
+\item[{{\bf size\-\_\-t}}]{n}
+\end{DoxyParamCaption}
+)}}\label{string_8h_a07f4a84c11c106e95c32b6ab509346ef}
+La fonction strncmp compare deux chaînes de caractères et retourne en résultat un nombre négatif, positif ou nul si les n premiers caractères de s1 sont inférieurs, supérieurs ou identiques aux n premiers caractères de s2.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s1} & première chaîne \\
+\hline
+{\em s2} & seconde chaîne \\
+\hline
+{\em n} & nombre de caractères à comparer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un entier strictement négatif si les n premiers caractères de s1 sont inférieurs aux n premiers caractères de s2, strictement positif s'ils sont supérieurs et nul s'ils sont identiques. 
+\end{DoxyReturn}
+\hypertarget{string_8h_a7982e2515766b25c1157ac30f8bac394}{\index{string.\-h@{string.\-h}!strncpy@{strncpy}}
+\index{strncpy@{strncpy}!string.h@{string.\-h}}
+\subsubsection[{strncpy}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strncpy (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s1, }
+\item[{const char $\ast$}]{s2, }
+\item[{{\bf size\-\_\-t}}]{n}
+\end{DoxyParamCaption}
+)}}\label{string_8h_a7982e2515766b25c1157ac30f8bac394}
+Copie la chaine s2 vers la zone mémoire pointée par s1 en s'arrêtant aux n premiers caractères de s1. La copie s'arrête au bout de n caractères ou dès que le caractère '\textbackslash{}0' est lu dans la chaine source s2. Attention, la chaîne s1 ne contient pas forcément le caractère '\textbackslash{}0' si la limite des n caractères est atteinte.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s1} & zone mémoire de destination. \\
+\hline
+{\em s2} & chaine source. \\
+\hline
+{\em n} & nombre de caractères à copier au maximum.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur vers la chaîne de destination s1. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{string_8h_a7982e2515766b25c1157ac30f8bac394_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{string_8h_a0c05a458deff028ef4d4e64059098db4}{\index{string.\-h@{string.\-h}!strrchr@{strrchr}}
+\index{strrchr@{strrchr}!string.h@{string.\-h}}
+\subsubsection[{strrchr}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strrchr (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{s, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{string_8h_a0c05a458deff028ef4d4e64059098db4}
+La fonction \hyperlink{string_8h_a12871ed234858ef0e363d2b8aa572fc1}{strchr()} renvoie un pointeur sur la dernière occurrence du caractère c dans la chaîne s.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s} & la chaîne dans laquelle on veut chercher le caractère. \\
+\hline
+{\em c} & le caractère que l'on recherche dans la chaine.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur sur la dernière occurence trouvée ou N\-U\-L\-L si absent. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8h_a0c05a458deff028ef4d4e64059098db4_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{string_8h_a4a710d86541afc6b7dafddcdb4b1c94f}{\index{string.\-h@{string.\-h}!strstr@{strstr}}
+\index{strstr@{strstr}!string.h@{string.\-h}}
+\subsubsection[{strstr}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strstr (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{haystack, }
+\item[{const char $\ast$}]{needle}
+\end{DoxyParamCaption}
+)}}\label{string_8h_a4a710d86541afc6b7dafddcdb4b1c94f}
+Recherche needle (aiguille) dans la chaine heystack (meule de foin). Les caractères « \textbackslash{}0 » ne sont pas comparés.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em haystack} & chaine dans laquelle on va effectuer la recherche. \\
+\hline
+{\em needle} & sous-\/chaîne à rechercher.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur vers le début de la sous-\/chaîne ou N\-U\-L\-L si non trouvée. 
+\end{DoxyReturn}
+\hypertarget{string_8h_a8cb460f64c449f2a9b9b7a40569ce0fe}{\index{string.\-h@{string.\-h}!strtok@{strtok}}
+\index{strtok@{strtok}!string.h@{string.\-h}}
+\subsubsection[{strtok}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strtok (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{str, }
+\item[{const char $\ast$}]{delim}
+\end{DoxyParamCaption}
+)}}\label{string_8h_a8cb460f64c449f2a9b9b7a40569ce0fe}
+
+\begin{DoxyParams}{Paramètres}
+{\em str} & La chaine à tokenizer. \\
+\hline
+{\em delim} & L'ensemble des délimiteurs possible.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur vers l'élément lexical suivant ou N\-U\-L\-L s'il n'y en a plus. 
+\end{DoxyReturn}

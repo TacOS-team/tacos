@@ -1,5 +1,8 @@
 <map id="SYSCALL_HANDLER3" name="SYSCALL_HANDLER3">
 <area shape="rect" id="node3" href="$scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/>
 <area shape="rect" id="node5" href="$vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="247,55,321,83"/>
-<area shape="rect" id="node7" href="$kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="404,55,473,83"/>
+<area shape="rect" id="node7" href="$kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="404,5,473,33"/>
+<area shape="rect" id="node9" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="405,55,472,83"/>
+<area shape="rect" id="node13" href="$kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="409,106,468,134"/>
+<area shape="rect" id="node11" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="524,55,663,83"/>
 </map>

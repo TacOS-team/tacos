@@ -1,0 +1,6 @@
+<map id="libc/include/signal.h" name="libc/include/signal.h">
+<area shape="rect" id="node3" href="$signal_8c.html" title="Gestion des signaux." alt="" coords="5,83,96,111"/>
+<area shape="rect" id="node5" href="$start_8c.html" title="libc/start.c" alt="" coords="120,83,203,111"/>
+<area shape="rect" id="node7" href="$stdlib_8c.html" title="libc/stdlib.c" alt="" coords="227,83,312,111"/>
+<area shape="rect" id="node9" href="$wait_8c.html" title="libc/wait.c" alt="" coords="336,83,416,111"/>
+</map>

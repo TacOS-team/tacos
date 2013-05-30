@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['table',['table',['../struct____hashmap__t.html#ac7d3b722978b8bafab2ce2a923b747aa',1,'__hashmap_t']]],
   ['table_5fcount',['table_count',['../struct__fat__BS.html#aa76ccd037c4f693d968a64860be99d44',1,'_fat_BS']]],
   ['table_5fsize',['table_size',['../struct__fat__info.html#af110757af771c0f3fe0c515cca1ff177',1,'_fat_info']]],
   ['table_5fsize_5f16',['table_size_16',['../struct__fat__BS.html#aa6408c3aa26eec38e6620624c3075f27',1,'_fat_BS']]],
@@ -44,14 +45,12 @@ var searchData=
   ['tty_5finit',['tty_init',['../tty_8c.html#a3bf9faf77dd76addc6deac2722b097e2',1,'tty_init():&#160;tty.c'],['../tty_8h.html#a3bf9faf77dd76addc6deac2722b097e2',1,'tty_init():&#160;tty.c']]],
   ['tty_5finsert_5fflip_5fchar',['tty_insert_flip_char',['../tty_8c.html#aeef2c61d0ecab57968b5d1dd0f3c8028',1,'tty_insert_flip_char(tty_struct_t *tty, unsigned char c):&#160;tty.c'],['../tty_8h.html#a52453f2334ffeb8bb88cf32597fab96e',1,'tty_insert_flip_char(tty_struct_t *tty, unsigned char ch):&#160;tty.c']]],
   ['tty_5foperations_5ft',['tty_operations_t',['../tty_8h.html#af76ab451b44b0a6479abe8aeb1bab6b4',1,'tty.h']]],
-  ['tty_5fread',['tty_read',['../tty_8c.html#a01c908d67f089bbb78825ff0add5dd19',1,'tty_read(open_file_descriptor *ofd, void *buf, size_t count):&#160;tty.c'],['../tty_8h.html#a01c908d67f089bbb78825ff0add5dd19',1,'tty_read(open_file_descriptor *ofd, void *buf, size_t count):&#160;tty.c']]],
   ['tty_5fregister_5fdriver',['tty_register_driver',['../tty_8c.html#a302b60b1c52001915aeb108b51efc397',1,'tty_register_driver(tty_driver_t *driver):&#160;tty.c'],['../tty_8h.html#a302b60b1c52001915aeb108b51efc397',1,'tty_register_driver(tty_driver_t *driver):&#160;tty.c']]],
   ['tty_5fstruct_5ft',['tty_struct_t',['../tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e',1,'tty.h']]],
-  ['tty_5fwrite',['tty_write',['../tty_8c.html#a14c960f80aeb3910c46aff4b2c56bede',1,'tty_write(open_file_descriptor *ofd, const void *buf, size_t count):&#160;tty.c'],['../tty_8h.html#a14c960f80aeb3910c46aff4b2c56bede',1,'tty_write(open_file_descriptor *ofd, const void *buf, size_t count):&#160;tty.c']]],
   ['tv_5fnsec',['tv_nsec',['../structtimespec.html#aa9689622a344d847333e534ac23d3093',1,'timespec']]],
   ['tv_5fsec',['tv_sec',['../structtimeval.html#ab6fac84a084d017bb157f4681dafe8a3',1,'timeval::tv_sec()'],['../structtimespec.html#af632894a12c37dea87073c0126f99fff',1,'timespec::tv_sec()']]],
   ['tv_5fusec',['tv_usec',['../structtimeval.html#a6f90a236deb00a89fe3dd8023d525d9c',1,'timeval']]],
-  ['type',['type',['../struct__ext2__extra__data.html#a607854c0e8d75ee5be59b7e67eb2a00c',1,'_ext2_extra_data::type()'],['../structx86__idt__entry.html#a826ef1aafc2352576ec3493747b964f5',1,'x86_idt_entry::type()'],['../struct__tty__driver__t.html#a0c9f7f164f7454cf2bea36de5e23a5d1',1,'_tty_driver_t::type()']]],
+  ['type',['type',['../structdriver__entry.html#a3d74a551a1bbb2f2583ba058877b52a4',1,'driver_entry::type()'],['../structx86__idt__entry.html#a826ef1aafc2352576ec3493747b964f5',1,'x86_idt_entry::type()'],['../struct__tty__driver__t.html#a0c9f7f164f7454cf2bea36de5e23a5d1',1,'_tty_driver_t::type()']]],
   ['types_2eh',['types.h',['../libc_2include_2sys_2types_8h.html',1,'']]],
   ['types_2eh',['types.h',['../kernel_2include_2types_8h.html',1,'']]]
 ];

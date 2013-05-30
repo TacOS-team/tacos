@@ -1,0 +1,12 @@
+<map id="libc/include/sys/syscall.h" name="libc/include/sys/syscall.h">
+<area shape="rect" id="node3" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="5,83,93,111"/>
+<area shape="rect" id="node5" href="$fcntl_8c.html" title="File control operations." alt="" coords="117,83,197,111"/>
+<area shape="rect" id="node7" href="$malloc_8c.html" title="libc/malloc.c" alt="" coords="221,83,315,111"/>
+<area shape="rect" id="node9" href="$process_8c.html" title="libc/process.c" alt="" coords="339,83,440,111"/>
+<area shape="rect" id="node11" href="$sem_8c.html" title="libc/sem.c" alt="" coords="464,83,544,111"/>
+<area shape="rect" id="node13" href="$signal_8c.html" title="Gestion des signaux." alt="" coords="568,83,659,111"/>
+<area shape="rect" id="node15" href="$stdlib_8c.html" title="libc/stdlib.c" alt="" coords="683,83,768,111"/>
+<area shape="rect" id="node17" href="$time_8c.html" title="libc/time.c" alt="" coords="792,83,872,111"/>
+<area shape="rect" id="node19" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="896,83,987,111"/>
+<area shape="rect" id="node21" href="$wait_8c.html" title="libc/wait.c" alt="" coords="1011,83,1091,111"/>
+</map>

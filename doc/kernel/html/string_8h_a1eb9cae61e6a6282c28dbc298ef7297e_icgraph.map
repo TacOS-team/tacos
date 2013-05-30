@@ -1,0 +1,21 @@
+<map id="strcpy" name="strcpy">
+<area shape="rect" id="node3" href="$fat__internal_8h.html#ada9bd47fd90b01248fe52f302560f9f9" title="fat_readdir" alt="" coords="143,5,225,33"/>
+<area shape="rect" id="node5" href="$fat__outils_8h.html#a015254ce721ab0097a1008ec7153b819" title="fat_lfn_to_sfn" alt="" coords="133,55,235,83"/>
+<area shape="rect" id="node9" href="$fat__outils_8h.html#a2bc59b6b9bca39fe4ba101a3c019b91a" title="fat_split_dir_filename" alt="" coords="112,106,256,134"/>
+<area shape="rect" id="node12" href="$kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="555,157,629,185"/>
+<area shape="rect" id="node18" href="$string_8c.html#a8908188ae9fc2f05d993257ef001d553" title="Concaténation de deux chaînes." alt="" coords="157,207,211,235"/>
+<area shape="rect" id="node20" href="$string_8c.html#a4c10a214b02eed3dafc48c59ad71abbd" title="Concaténation de deux chaînes avec une limite aux n premiers caractères." alt="" coords="153,258,215,286"/>
+<area shape="rect" id="node22" href="$string_8c.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="155,309,213,337"/>
+<area shape="rect" id="node43" href="$vfs_8c.html#a631bdc2a44ac1b7477782b058277a8d3" title="Lecture de plusieurs entrées d&#39;un dossier." alt="" coords="141,359,227,387"/>
+<area shape="rect" id="node7" href="$fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="347,81,421,109"/>
+<area shape="rect" id="node14" href="$kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="721,334,831,362"/>
+<area shape="rect" id="node16" href="$scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="881,334,983,362"/>
+<area shape="rect" id="node24" href="$ext2__internal_8h.html#aacb0077cd0a76158c9288ecd193d58da" title="ext2_lookup" alt="" coords="339,359,429,387"/>
+<area shape="rect" id="node29" href="$kprocess_8c.html#a47ef452c5b4017727c9c4222ab133fae" title="Syscall pour exécuter un programme." alt="" coords="304,309,464,337"/>
+<area shape="rect" id="node31" href="$vfs_8c.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="347,207,421,235"/>
+<area shape="rect" id="node40" href="$vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage." alt="" coords="551,309,633,337"/>
+<area shape="rect" id="node26" href="$ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="544,359,640,387"/>
+<area shape="rect" id="node34" href="$kfcntl_8c.html#aa1d225acb87c04ac8d56c8096f587a03" title="SYSCALL_HANDLER3" alt="" coords="512,258,672,286"/>
+<area shape="rect" id="node36" href="$kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="563,207,621,235"/>
+<area shape="rect" id="node38" href="$list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="741,207,811,235"/>
+</map>

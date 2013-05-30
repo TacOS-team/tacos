@@ -1,10 +1,10 @@
 <map id="kernel/fs/fat/fat_outils.h" name="kernel/fs/fat/fat_outils.h">
-<area shape="rect" id="node3" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="47,83,143,111"/>
-<area shape="rect" id="node7" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="110,315,171,343"/>
-<area shape="rect" id="node14" href="$vfs_8h.html" title="Virtual File System." alt="" coords="208,161,259,189"/>
-<area shape="rect" id="node23" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="95,161,172,189"/>
-<area shape="rect" id="node9" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="186,470,247,498"/>
-<area shape="rect" id="node11" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="140,393,218,421"/>
-<area shape="rect" id="node17" href="$fd__types_8h.html" title="fd_types.h" alt="" coords="112,238,192,266"/>
-<area shape="rect" id="node19" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="216,238,278,266"/>
+<area shape="rect" id="node3" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="121,83,217,111"/>
+<area shape="rect" id="node7" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="185,315,247,343"/>
+<area shape="rect" id="node14" href="$vfs_8h.html" title="Virtual File System." alt="" coords="248,161,299,189"/>
+<area shape="rect" id="node24" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="92,161,169,189"/>
+<area shape="rect" id="node9" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="212,470,273,498"/>
+<area shape="rect" id="node11" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="128,393,205,421"/>
+<area shape="rect" id="node17" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="91,238,171,266"/>
+<area shape="rect" id="node20" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="245,238,307,266"/>
 </map>

@@ -1,0 +1,1080 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier libc/include/string.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_fc1eb218ab426e5adb60367f98438da0.html">libc</a></li><li class="navelem"><a class="el" href="dir_2a917577c833953ff5901e4935a90760.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier string.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Fonctions de manipulation de strings.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;<a class="el" href="cdefs_8h_source.html">sys/cdefs.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="types_8h_source.html">sys/types.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de string.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h__incl.png" border="0" usemap="#libc_2include_2string_8h" alt=""/></div>
+<map name="libc_2include_2string_8h" id="libc_2include_2string_8h">
+<area shape="rect" id="node3" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="5,161,93,189"/><area shape="rect" id="node5" href="types_8h.html" title="sys/types.h" alt="" coords="87,83,172,111"/><area shape="rect" id="node8" href="stdbool_8h.html" title="Type bool." alt="" coords="117,161,192,189"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h__dep__incl.png" border="0" usemap="#libc_2include_2string_8hdep" alt=""/></div>
+<map name="libc_2include_2string_8hdep" id="libc_2include_2string_8hdep">
+<area shape="rect" id="node3" href="dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="5,83,93,111"/><area shape="rect" id="node5" href="malloc_8c.html" title="libc/malloc.c" alt="" coords="117,83,211,111"/><area shape="rect" id="node7" href="process_8c.html" title="libc/process.c" alt="" coords="235,83,336,111"/><area shape="rect" id="node9" href="fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="360,83,480,111"/><area shape="rect" id="node11" href="fprintf_8c.html" title="libc/stdio/fprintf.c" alt="" coords="504,83,624,111"/><area shape="rect" id="node13" href="scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="648,83,768,111"/><area shape="rect" id="node15" href="stdfiles_8c.html" title="Définition et initialisation des fichiers standards (stdin, stdout, stderr)." alt="" coords="792,83,920,111"/><area shape="rect" id="node17" href="stdlib_8c.html" title="libc/stdlib.c" alt="" coords="944,83,1029,111"/><area shape="rect" id="node19" href="string_8c.html" title="libc/string.c" alt="" coords="1053,83,1141,111"/><area shape="rect" id="node21" href="unistd_8c.html" title="libc/unistd.c" alt="" coords="1165,83,1256,111"/></map>
+</div>
+</div>
+<p><a href="string_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a9ea2311b6ee5ded71a785075df281d97"><td class="memItemLeft" align="right" valign="top">__BEGIN_DECLS void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a9ea2311b6ee5ded71a785075df281d97">memcpy</a> (void *dest, const void *src, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
+<tr class="memdesc:a9ea2311b6ee5ded71a785075df281d97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie une zone mémoire.  <a href="#a9ea2311b6ee5ded71a785075df281d97"></a><br/></td></tr>
+<tr class="memitem:aa383452fe445bfae989358c9d7d96f4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f">strlen</a> (const char *s)</td></tr>
+<tr class="memdesc:aa383452fe445bfae989358c9d7d96f4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la longueur d'une chaîne de caractères.  <a href="#aa383452fe445bfae989358c9d7d96f4f"></a><br/></td></tr>
+<tr class="memitem:a12871ed234858ef0e363d2b8aa572fc1"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a12871ed234858ef0e363d2b8aa572fc1">strchr</a> (const char *s, int c)</td></tr>
+<tr class="memdesc:a12871ed234858ef0e363d2b8aa572fc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rechercher un caractère dans une chaîne.  <a href="#a12871ed234858ef0e363d2b8aa572fc1"></a><br/></td></tr>
+<tr class="memitem:a0c05a458deff028ef4d4e64059098db4"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a0c05a458deff028ef4d4e64059098db4">strrchr</a> (const char *s, int c)</td></tr>
+<tr class="memdesc:a0c05a458deff028ef4d4e64059098db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rechercher un caractère dans une chaîne.  <a href="#a0c05a458deff028ef4d4e64059098db4"></a><br/></td></tr>
+<tr class="memitem:a11bd144d7d44914099a3aeddf1c8567d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a11bd144d7d44914099a3aeddf1c8567d">strcmp</a> (const char *s1, const char *s2)</td></tr>
+<tr class="memdesc:a11bd144d7d44914099a3aeddf1c8567d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux chaînes.  <a href="#a11bd144d7d44914099a3aeddf1c8567d"></a><br/></td></tr>
+<tr class="memitem:a07f4a84c11c106e95c32b6ab509346ef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a07f4a84c11c106e95c32b6ab509346ef">strncmp</a> (const char *s1, const char *s2, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
+<tr class="memdesc:a07f4a84c11c106e95c32b6ab509346ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux chaînes jusqu'à n caractères.  <a href="#a07f4a84c11c106e95c32b6ab509346ef"></a><br/></td></tr>
+<tr class="memitem:a706b36f3a672f84685576723c3928baa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a706b36f3a672f84685576723c3928baa">strcasecmp</a> (const char *s1, const char *s2)</td></tr>
+<tr class="memdesc:a706b36f3a672f84685576723c3928baa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux chaînes.  <a href="#a706b36f3a672f84685576723c3928baa"></a><br/></td></tr>
+<tr class="memitem:a674b7f779fec84cb1a3be8222b5c381a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a674b7f779fec84cb1a3be8222b5c381a">strncasecmp</a> (const char *s1, const char *s2, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
+<tr class="memdesc:a674b7f779fec84cb1a3be8222b5c381a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux chaînes jusqu'à n caractères.  <a href="#a674b7f779fec84cb1a3be8222b5c381a"></a><br/></td></tr>
+<tr class="memitem:a48d911e1a150610b7182d19b81651828"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a48d911e1a150610b7182d19b81651828">strchrnul</a> (const char *s, int c)</td></tr>
+<tr class="memdesc:a48d911e1a150610b7182d19b81651828"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recherche un caractère dans une chaîne.  <a href="#a48d911e1a150610b7182d19b81651828"></a><br/></td></tr>
+<tr class="memitem:ace6ee45c30e71865e6eb635200379db9"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#ace6ee45c30e71865e6eb635200379db9">memset</a> (void *s, int c, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
+<tr class="memdesc:ace6ee45c30e71865e6eb635200379db9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rempli une zone mémoire avec un octet donné.  <a href="#ace6ee45c30e71865e6eb635200379db9"></a><br/></td></tr>
+<tr class="memitem:a9e6df54ee04e18a3772335580e2ed872"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a9e6df54ee04e18a3772335580e2ed872">memcmp</a> (const void *s1, const void *s2, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
+<tr class="memdesc:a9e6df54ee04e18a3772335580e2ed872"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux zones mémoire.  <a href="#a9e6df54ee04e18a3772335580e2ed872"></a><br/></td></tr>
+<tr class="memitem:a1eb9cae61e6a6282c28dbc298ef7297e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e">strcpy</a> (char *s1, const char *s2)</td></tr>
+<tr class="memdesc:a1eb9cae61e6a6282c28dbc298ef7297e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie une chaine.  <a href="#a1eb9cae61e6a6282c28dbc298ef7297e"></a><br/></td></tr>
+<tr class="memitem:a7982e2515766b25c1157ac30f8bac394"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a7982e2515766b25c1157ac30f8bac394">strncpy</a> (char *s1, const char *s2, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
+<tr class="memdesc:a7982e2515766b25c1157ac30f8bac394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie une chaine en se limitant aux n premiers caractères.  <a href="#a7982e2515766b25c1157ac30f8bac394"></a><br/></td></tr>
+<tr class="memitem:a8908188ae9fc2f05d993257ef001d553"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a8908188ae9fc2f05d993257ef001d553">strcat</a> (char *s1, const char *s2)</td></tr>
+<tr class="memdesc:a8908188ae9fc2f05d993257ef001d553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concaténation de deux chaînes.  <a href="#a8908188ae9fc2f05d993257ef001d553"></a><br/></td></tr>
+<tr class="memitem:a4c10a214b02eed3dafc48c59ad71abbd"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a4c10a214b02eed3dafc48c59ad71abbd">strncat</a> (char *s1, const char *s2, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
+<tr class="memdesc:a4c10a214b02eed3dafc48c59ad71abbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concaténation de deux chaînes avec une limite aux n premiers caractères.  <a href="#a4c10a214b02eed3dafc48c59ad71abbd"></a><br/></td></tr>
+<tr class="memitem:a802c986820d3866639922b6bc9484f90"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a802c986820d3866639922b6bc9484f90">memmove</a> (void *dest, const void *src, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
+<tr class="memdesc:a802c986820d3866639922b6bc9484f90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie une zone mémoire.  <a href="#a802c986820d3866639922b6bc9484f90"></a><br/></td></tr>
+<tr class="memitem:a4a710d86541afc6b7dafddcdb4b1c94f"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a4a710d86541afc6b7dafddcdb4b1c94f">strstr</a> (const char *haystack, const char *needle)</td></tr>
+<tr class="memdesc:a4a710d86541afc6b7dafddcdb4b1c94f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recherche une sous-chaîne.  <a href="#a4a710d86541afc6b7dafddcdb4b1c94f"></a><br/></td></tr>
+<tr class="memitem:ae9229017a4501f8d6a637b4498cfed2e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#ae9229017a4501f8d6a637b4498cfed2e">strcasestr</a> (const char *haystack, const char *needle)</td></tr>
+<tr class="memdesc:ae9229017a4501f8d6a637b4498cfed2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recherche une sous-chaîne en ignorant la casse.  <a href="#ae9229017a4501f8d6a637b4498cfed2e"></a><br/></td></tr>
+<tr class="memitem:ab1cc1a3ff560049e22576031c7c2345b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#ab1cc1a3ff560049e22576031c7c2345b">strdup</a> (const char *s)</td></tr>
+<tr class="memdesc:ab1cc1a3ff560049e22576031c7c2345b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Duplique une chaine.  <a href="#ab1cc1a3ff560049e22576031c7c2345b"></a><br/></td></tr>
+<tr class="memitem:a8b860ba32fef12da8acd4507c059e509"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a8b860ba32fef12da8acd4507c059e509">strndup</a> (const char *s, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
+<tr class="memdesc:a8b860ba32fef12da8acd4507c059e509"><td class="mdescLeft">&#160;</td><td class="mdescRight">Duplique une chaine.  <a href="#a8b860ba32fef12da8acd4507c059e509"></a><br/></td></tr>
+<tr class="memitem:a8cb460f64c449f2a9b9b7a40569ce0fe"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a8cb460f64c449f2a9b9b7a40569ce0fe">strtok</a> (char *str, const char *delim)</td></tr>
+<tr class="memdesc:a8cb460f64c449f2a9b9b7a40569ce0fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extraire des mots d'une chaîne.  <a href="#a8cb460f64c449f2a9b9b7a40569ce0fe"></a><br/></td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+</div><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a9e6df54ee04e18a3772335580e2ed872"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int memcmp </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment"> Compare les n premiers octets des zones mémoires s1 et s2.
+ Elle retourne un entier négatif, positif ou nul si les n premiers octets de
+ s1 sont respectivement plus petits, plus grands ou identiques aux n premiers 
+ octets de s2.
+</pre><dl class="section see"><dt>Voir également</dt><dd><a class="el" href="string_8c.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes.">strcmp</a> </dd>
+<dd>
+<a class="el" href="string_8c.html#a07f4a84c11c106e95c32b6ab509346ef" title="Compare deux chaînes jusqu&#39;à n caractères.">strncmp</a></dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s1</td><td>pointeur vers la première zone mémoire. </td></tr>
+    <tr><td class="paramname">s2</td><td>pointeur vers la seconde zone mémoire. </td></tr>
+    <tr><td class="paramname">n</td><td>le nombre d'octets à comparer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un entier négatif, positif ou nul si les n premiers octets de s1 sont respectivement plus petits, plus grands ou identiques aux n premiers octets de s2. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9ea2311b6ee5ded71a785075df281d97"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__BEGIN_DECLS void* memcpy </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>La fonction <a class="el" href="string_8h.html#a9ea2311b6ee5ded71a785075df281d97" title="Copie une zone mémoire.">memcpy()</a> copie une zone mémoire de size octets depuis src vers la zone mémoire dest. Les deux zones ne doivent pas se chevaucher sinon il faut utiliser memmove.</p>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="string_8c.html#a802c986820d3866639922b6bc9484f90" title="Copie une zone mémoire.">memmove</a></dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dest</td><td>adresse mémoire où il faut copier </td></tr>
+    <tr><td class="paramname">src</td><td>adresse mémoire source </td></tr>
+    <tr><td class="paramname">size</td><td>taille de la zone à copier</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur sur dest. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h_a9ea2311b6ee5ded71a785075df281d97_icgraph.png" border="0" usemap="#string_8h_a9ea2311b6ee5ded71a785075df281d97_icgraph" alt=""/></div>
+<map name="string_8h_a9ea2311b6ee5ded71a785075df281d97_icgraph" id="string_8h_a9ea2311b6ee5ded71a785075df281d97_icgraph">
+<area shape="rect" id="node3" href="malloc_8c.html#a1a6b5e8d2f1c37e5b43e4345586075be" title="Modifie la taille du bloc de mémoire." alt="" coords="140,5,199,33"/><area shape="rect" id="node5" href="stdfiles_8c.html#ade9e3ec960640295203ce281984da08c" title="Initialise les streams de base." alt="" coords="127,55,212,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a802c986820d3866639922b6bc9484f90"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* memmove </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>La fonction <a class="el" href="string_8h.html#a802c986820d3866639922b6bc9484f90" title="Copie une zone mémoire.">memmove()</a> copie n octets depuis la zone mémoire src vers la zone mémoire dest. La différence avec memcpy c'est que les zones peuvent se chevaucher.</p>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="string_8c.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire.">memcpy</a></dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dest</td><td>zone mémoire de destination. </td></tr>
+    <tr><td class="paramname">src</td><td>chaine source. </td></tr>
+    <tr><td class="paramname">n</td><td>nombre de caractères à copier au maximum.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur sur dest. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ace6ee45c30e71865e6eb635200379db9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* memset </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Rempli la zone mémoire pointée par s et de n octets par l'octet c.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>zone mémoire à remplir </td></tr>
+    <tr><td class="paramname">c</td><td>octet qui sert pour le remplissage </td></tr>
+    <tr><td class="paramname">n</td><td>nombre d'octets à copier</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur vers la zone mémoire s. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a706b36f3a672f84685576723c3928baa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int strcasecmp </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>La fonction <a class="el" href="string_8h.html#a706b36f3a672f84685576723c3928baa" title="Compare deux chaînes.">strcasecmp()</a> compare deux chaînes de caractères et retourne en résultat un nombre négatif, positif ou nul si s1 est respectivement inférieur, supérieur ou identique à s2.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s1</td><td>première chaîne </td></tr>
+    <tr><td class="paramname">s2</td><td>seconde chaîne</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un entier strictement négatif si s1 est inférieur à s2, strictement positif si s1 est supérieur à s2 et nul si s1 est identique à s2. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h_a706b36f3a672f84685576723c3928baa_cgraph.png" border="0" usemap="#string_8h_a706b36f3a672f84685576723c3928baa_cgraph" alt=""/></div>
+<map name="string_8h_a706b36f3a672f84685576723c3928baa_cgraph" id="string_8h_a706b36f3a672f84685576723c3928baa_cgraph">
+<area shape="rect" id="node3" href="ctype_8c.html#ac79d6114c9df7350cedcd8cf921a6ea4" title="Convertit la lettre c en minuscule." alt="" coords="144,5,208,33"/><area shape="rect" id="node5" href="ctype_8c.html#adadd6582d46775aab6a51e29d16d9f77" title="vérifie si l&#39;on a un caractère majuscule." alt="" coords="256,5,320,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ae9229017a4501f8d6a637b4498cfed2e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* strcasestr </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>haystack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>needle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Recherche needle (aiguille) dans la chaine heystack (meule de foin). Les caractères « \0 » ne sont pas comparés. La casse des arguments est ignorée.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">haystack</td><td>chaîne dans laquelle on va effectuer la recherche. </td></tr>
+    <tr><td class="paramname">needle</td><td>sous-chaîne à rechercher.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur vers le début de la sous-chaîne ou NULL si non trouvée. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h_ae9229017a4501f8d6a637b4498cfed2e_cgraph.png" border="0" usemap="#string_8h_ae9229017a4501f8d6a637b4498cfed2e_cgraph" alt=""/></div>
+<map name="string_8h_ae9229017a4501f8d6a637b4498cfed2e_cgraph" id="string_8h_ae9229017a4501f8d6a637b4498cfed2e_cgraph">
+<area shape="rect" id="node3" href="ctype_8c.html#ac79d6114c9df7350cedcd8cf921a6ea4" title="Convertit la lettre c en minuscule." alt="" coords="133,5,197,33"/><area shape="rect" id="node5" href="ctype_8c.html#adadd6582d46775aab6a51e29d16d9f77" title="vérifie si l&#39;on a un caractère majuscule." alt="" coords="245,5,309,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8908188ae9fc2f05d993257ef001d553"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* strcat </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ajoute à la fin de s1 le contenu de s2 en s'arrêtant au premier caractère '\0' rencontré.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s1</td><td>chaine destination. </td></tr>
+    <tr><td class="paramname">s2</td><td>chaine source qui sera ajoutée à la fin de s1.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur vers la chaine de destination s1. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h_a8908188ae9fc2f05d993257ef001d553_cgraph.png" border="0" usemap="#string_8h_a8908188ae9fc2f05d993257ef001d553_cgraph" alt=""/></div>
+<map name="string_8h_a8908188ae9fc2f05d993257ef001d553_cgraph" id="string_8h_a8908188ae9fc2f05d993257ef001d553_cgraph">
+<area shape="rect" id="node3" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="111,5,167,33"/><area shape="rect" id="node5" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="112,55,165,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a12871ed234858ef0e363d2b8aa572fc1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* strchr </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>La fonction <a class="el" href="string_8h.html#a12871ed234858ef0e363d2b8aa572fc1" title="Rechercher un caractère dans une chaîne.">strchr()</a> renvoie un pointeur sur la première occurrence du caractère c dans la chaîne s.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>la chaîne dans laquelle on veut chercher le caractère. </td></tr>
+    <tr><td class="paramname">c</td><td>le caractère que l'on recherche dans la chaine.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur sur la première occurence trouvée ou NULL si absent. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a48d911e1a150610b7182d19b81651828"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* strchrnul </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Recherche un caractère dans une chaîne, et si le caractère n'est pas présent, renvoie un pointeur vers l'octet nul de la chaîne.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>La chaîne dans laquelle il faut effectuer une recherche. </td></tr>
+    <tr><td class="paramname">c</td><td>Le caractère à rechercher.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur la première occurrence du caractère dans la chaîne ou un pointeur vers la caractère nul de la chaîne si le caractère n'est pas trouvé. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a11bd144d7d44914099a3aeddf1c8567d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int strcmp </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>La fonction <a class="el" href="string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes.">strcmp()</a> compare deux chaînes de caractères et retourne en résultat un nombre négatif, positif ou nul si s1 est respectivement inférieur, supérieur ou identique à s2.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s1</td><td>première chaîne </td></tr>
+    <tr><td class="paramname">s2</td><td>seconde chaîne</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un entier strictement négatif si s1 est inférieur à s2, strictement positif si s1 est supérieur à s2 et nul si s1 est identique à s2. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h_a11bd144d7d44914099a3aeddf1c8567d_icgraph.png" border="0" usemap="#string_8h_a11bd144d7d44914099a3aeddf1c8567d_icgraph" alt=""/></div>
+<map name="string_8h_a11bd144d7d44914099a3aeddf1c8567d_icgraph" id="string_8h_a11bd144d7d44914099a3aeddf1c8567d_icgraph">
+<area shape="rect" id="node3" href="fopen_8c.html#acdefa543c661333e27beda1c868e6ce9" title="Conversion de modes de lecture/ecriture/ajout..." alt="" coords="117,5,216,33"/><area shape="rect" id="node5" href="unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="141,55,192,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a1eb9cae61e6a6282c28dbc298ef7297e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* strcpy </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Copie la chaine s2 vers la zone mémoire pointée par s1. La copie s'arrête dès que le caractère '\0' est rencontré dans s2.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s1</td><td>zone mémoire de destination. </td></tr>
+    <tr><td class="paramname">s2</td><td>chaine source.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur vers la chaîne de destination s1. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h_a1eb9cae61e6a6282c28dbc298ef7297e_icgraph.png" border="0" usemap="#string_8h_a1eb9cae61e6a6282c28dbc298ef7297e_icgraph" alt=""/></div>
+<map name="string_8h_a1eb9cae61e6a6282c28dbc298ef7297e_icgraph" id="string_8h_a1eb9cae61e6a6282c28dbc298ef7297e_icgraph">
+<area shape="rect" id="node3" href="string_8c.html#a8908188ae9fc2f05d993257ef001d553" title="Concaténation de deux chaînes." alt="" coords="149,5,203,33"/><area shape="rect" id="node5" href="string_8c.html#a4c10a214b02eed3dafc48c59ad71abbd" title="Concaténation de deux chaînes avec une limite aux n premiers caractères." alt="" coords="145,55,207,83"/><area shape="rect" id="node7" href="string_8c.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="147,106,205,134"/><area shape="rect" id="node11" href="string_8c.html#a8b860ba32fef12da8acd4507c059e509" title="Duplique une chaine." alt="" coords="144,157,208,185"/><area shape="rect" id="node13" href="unistd_8c.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="112,258,240,286"/><area shape="rect" id="node9" href="unistd_8c.html#ac75704bc8cda22edbe5c8c1241297882" title="Retourne l&#39;actuel working directory." alt="" coords="288,55,352,83"/><area shape="rect" id="node15" href="dirent_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title="mkdir" alt="" coords="293,106,347,134"/><area shape="rect" id="node17" href="dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591" title="opendir" alt="" coords="401,207,465,235"/><area shape="rect" id="node19" href="unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="515,233,565,261"/><area shape="rect" id="node21" href="fcntl_8h.html#adcb60598073f6f9cbb0091ef6768fa5c" title="open" alt="" coords="295,207,345,235"/><area shape="rect" id="node25" href="unistd_8c.html#a3dc1b07404b646712a144e2057359876" title="Obtenir l&#39;état d&#39;un fichier (status)." alt="" coords="299,309,341,337"/><area shape="rect" id="node29" href="unistd_8c.html#a8ada37e3927c3e99ea7c1accfdc6576f" title="Créer un noeud du système de fichiers." alt="" coords="289,359,351,387"/><area shape="rect" id="node31" href="unistd_8c.html#a28af9471bbdf262321af663e02899a47" title="Détruire un nom et éventuellement le fichier associé." alt="" coords="292,410,348,438"/><area shape="rect" id="node34" href="unistd_8c.html#ab2df76f2c62ae012c2e417813b5fe8ce" title="Supprimer un dossier, lequel doit être vide." alt="" coords="295,461,345,489"/><area shape="rect" id="node27" href="stdio_8h.html#a02b13b56a188401119ea4da43c184913" title="Supprimer un fichier ou répertoire." alt="" coords="401,410,465,438"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab1cc1a3ff560049e22576031c7c2345b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* strdup </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>strdup va faire un malloc de taille suffisante pour y copier la chaîne en paramètre.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>la chaîne à dupliquer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur vers la nouvelle zone mémoire contenant une copie de la chaîne. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h_ab1cc1a3ff560049e22576031c7c2345b_cgraph.png" border="0" usemap="#string_8h_ab1cc1a3ff560049e22576031c7c2345b_cgraph" alt=""/></div>
+<map name="string_8h_ab1cc1a3ff560049e22576031c7c2345b_cgraph" id="string_8h_ab1cc1a3ff560049e22576031c7c2345b_cgraph">
+<area shape="rect" id="node3" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="115,5,168,33"/><area shape="rect" id="node5" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="113,55,169,83"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h_ab1cc1a3ff560049e22576031c7c2345b_icgraph.png" border="0" usemap="#string_8h_ab1cc1a3ff560049e22576031c7c2345b_icgraph" alt=""/></div>
+<map name="string_8h_ab1cc1a3ff560049e22576031c7c2345b_icgraph" id="string_8h_ab1cc1a3ff560049e22576031c7c2345b_icgraph">
+<area shape="rect" id="node3" href="unistd_8c.html#ac75704bc8cda22edbe5c8c1241297882" title="Retourne l&#39;actuel working directory." alt="" coords="112,5,176,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aa383452fe445bfae989358c9d7d96f4f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> strlen </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>La fonction <a class="el" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères.">strlen()</a> calcule la longueur de la chaîne de caractères s sans compter le caractère nul « \0 »</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>la chaîne dont on veut calculer la longueur</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le nombre de caractères dans la chaîne s. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h_aa383452fe445bfae989358c9d7d96f4f_icgraph.png" border="0" usemap="#string_8h_aa383452fe445bfae989358c9d7d96f4f_icgraph" alt=""/></div>
+<map name="string_8h_aa383452fe445bfae989358c9d7d96f4f_icgraph" id="string_8h_aa383452fe445bfae989358c9d7d96f4f_icgraph">
+<area shape="rect" id="node3" href="string_8c.html#a8908188ae9fc2f05d993257ef001d553" title="Concaténation de deux chaînes." alt="" coords="147,30,200,58"/><area shape="rect" id="node5" href="string_8c.html#a4c10a214b02eed3dafc48c59ad71abbd" title="Concaténation de deux chaînes avec une limite aux n premiers caractères." alt="" coords="143,81,204,109"/><area shape="rect" id="node7" href="string_8c.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="144,131,203,159"/><area shape="rect" id="node11" href="string_8c.html#a8b860ba32fef12da8acd4507c059e509" title="Duplique une chaine." alt="" coords="141,182,205,210"/><area shape="rect" id="node13" href="unistd_8c.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="109,233,237,261"/><area shape="rect" id="node19" href="unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="512,207,563,235"/><area shape="rect" id="node9" href="unistd_8c.html#ac75704bc8cda22edbe5c8c1241297882" title="Retourne l&#39;actuel working directory." alt="" coords="285,5,349,33"/><area shape="rect" id="node15" href="dirent_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title="mkdir" alt="" coords="291,55,344,83"/><area shape="rect" id="node17" href="dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591" title="opendir" alt="" coords="399,157,463,185"/><area shape="rect" id="node21" href="fcntl_8h.html#adcb60598073f6f9cbb0091ef6768fa5c" title="open" alt="" coords="292,157,343,185"/><area shape="rect" id="node25" href="unistd_8c.html#a3dc1b07404b646712a144e2057359876" title="Obtenir l&#39;état d&#39;un fichier (status)." alt="" coords="296,258,339,286"/><area shape="rect" id="node29" href="unistd_8c.html#a8ada37e3927c3e99ea7c1accfdc6576f" title="Créer un noeud du système de fichiers." alt="" coords="287,309,348,337"/><area shape="rect" id="node31" href="unistd_8c.html#a28af9471bbdf262321af663e02899a47" title="Détruire un nom et éventuellement le fichier associé." alt="" coords="289,359,345,387"/><area shape="rect" id="node34" href="unistd_8c.html#ab2df76f2c62ae012c2e417813b5fe8ce" title="Supprimer un dossier, lequel doit être vide." alt="" coords="292,410,343,438"/><area shape="rect" id="node27" href="stdio_8h.html#a02b13b56a188401119ea4da43c184913" title="Supprimer un fichier ou répertoire." alt="" coords="399,359,463,387"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a674b7f779fec84cb1a3be8222b5c381a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int strncasecmp </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>La fonction strncasecmp compare deux chaînes de caractères et retourne en résultat un nombre négatif, positif ou nul si les n premiers caractères de s1 sont inférieurs, supérieurs ou identiques aux n premiers caractères de s2.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s1</td><td>première chaîne </td></tr>
+    <tr><td class="paramname">s2</td><td>seconde chaîne </td></tr>
+    <tr><td class="paramname">n</td><td>nombre de caractères à comparer</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un entier strictement négatif si les n premiers caractères de s1 sont inférieurs aux n premiers caractères de s2, strictement positif s'ils sont supérieurs et nul s'ils sont identiques. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h_a674b7f779fec84cb1a3be8222b5c381a_cgraph.png" border="0" usemap="#string_8h_a674b7f779fec84cb1a3be8222b5c381a_cgraph" alt=""/></div>
+<map name="string_8h_a674b7f779fec84cb1a3be8222b5c381a_cgraph" id="string_8h_a674b7f779fec84cb1a3be8222b5c381a_cgraph">
+<area shape="rect" id="node3" href="ctype_8c.html#ac79d6114c9df7350cedcd8cf921a6ea4" title="Convertit la lettre c en minuscule." alt="" coords="152,5,216,33"/><area shape="rect" id="node5" href="ctype_8c.html#adadd6582d46775aab6a51e29d16d9f77" title="vérifie si l&#39;on a un caractère majuscule." alt="" coords="264,5,328,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a4c10a214b02eed3dafc48c59ad71abbd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* strncat </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ajoute à la fin de s1 le contenu de s2 en s'arrêtant à n caractères ou au premier caractère '\0' rencontré.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s1</td><td>chaine destination. </td></tr>
+    <tr><td class="paramname">s2</td><td>chaine source qui sera ajoutée à la fin de s1. </td></tr>
+    <tr><td class="paramname">n</td><td>nombre de caractères à copier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur vers la chaine de destination s1. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h_a4c10a214b02eed3dafc48c59ad71abbd_cgraph.png" border="0" usemap="#string_8h_a4c10a214b02eed3dafc48c59ad71abbd_cgraph" alt=""/></div>
+<map name="string_8h_a4c10a214b02eed3dafc48c59ad71abbd_cgraph" id="string_8h_a4c10a214b02eed3dafc48c59ad71abbd_cgraph">
+<area shape="rect" id="node3" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="123,5,176,33"/><area shape="rect" id="node5" href="string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères." alt="" coords="117,55,181,83"/><area shape="rect" id="node7" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="121,106,177,134"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a07f4a84c11c106e95c32b6ab509346ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int strncmp </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>La fonction strncmp compare deux chaînes de caractères et retourne en résultat un nombre négatif, positif ou nul si les n premiers caractères de s1 sont inférieurs, supérieurs ou identiques aux n premiers caractères de s2.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s1</td><td>première chaîne </td></tr>
+    <tr><td class="paramname">s2</td><td>seconde chaîne </td></tr>
+    <tr><td class="paramname">n</td><td>nombre de caractères à comparer</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un entier strictement négatif si les n premiers caractères de s1 sont inférieurs aux n premiers caractères de s2, strictement positif s'ils sont supérieurs et nul s'ils sont identiques. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7982e2515766b25c1157ac30f8bac394"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* strncpy </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Copie la chaine s2 vers la zone mémoire pointée par s1 en s'arrêtant aux n premiers caractères de s1. La copie s'arrête au bout de n caractères ou dès que le caractère '\0' est lu dans la chaine source s2. Attention, la chaîne s1 ne contient pas forcément le caractère '\0' si la limite des n caractères est atteinte.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s1</td><td>zone mémoire de destination. </td></tr>
+    <tr><td class="paramname">s2</td><td>chaine source. </td></tr>
+    <tr><td class="paramname">n</td><td>nombre de caractères à copier au maximum.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur vers la chaîne de destination s1. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h_a7982e2515766b25c1157ac30f8bac394_icgraph.png" border="0" usemap="#string_8h_a7982e2515766b25c1157ac30f8bac394_icgraph" alt=""/></div>
+<map name="string_8h_a7982e2515766b25c1157ac30f8bac394_icgraph" id="string_8h_a7982e2515766b25c1157ac30f8bac394_icgraph">
+<area shape="rect" id="node3" href="string_8c.html#a4c10a214b02eed3dafc48c59ad71abbd" title="Concaténation de deux chaînes avec une limite aux n premiers caractères." alt="" coords="119,5,180,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8b860ba32fef12da8acd4507c059e509"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* strndup </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>strndup va faire un malloc de taille suffisante pour y copier la chaîne en paramètre en se limitant à n caractères au maximum.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>la chaîne à dupliquer. </td></tr>
+    <tr><td class="paramname">n</td><td>la taille maximale de la chaîne.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur vers la nouvelle zone mémoire contenant une copie de la chaîne. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h_a8b860ba32fef12da8acd4507c059e509_cgraph.png" border="0" usemap="#string_8h_a8b860ba32fef12da8acd4507c059e509_cgraph" alt=""/></div>
+<map name="string_8h_a8b860ba32fef12da8acd4507c059e509_cgraph" id="string_8h_a8b860ba32fef12da8acd4507c059e509_cgraph">
+<area shape="rect" id="node3" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="123,5,176,33"/><area shape="rect" id="node5" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="121,55,177,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0c05a458deff028ef4d4e64059098db4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* strrchr </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>La fonction <a class="el" href="string_8h.html#a12871ed234858ef0e363d2b8aa572fc1" title="Rechercher un caractère dans une chaîne.">strchr()</a> renvoie un pointeur sur la dernière occurrence du caractère c dans la chaîne s.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>la chaîne dans laquelle on veut chercher le caractère. </td></tr>
+    <tr><td class="paramname">c</td><td>le caractère que l'on recherche dans la chaine.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur sur la dernière occurence trouvée ou NULL si absent. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="string_8h_a0c05a458deff028ef4d4e64059098db4_icgraph.png" border="0" usemap="#string_8h_a0c05a458deff028ef4d4e64059098db4_icgraph" alt=""/></div>
+<map name="string_8h_a0c05a458deff028ef4d4e64059098db4_icgraph" id="string_8h_a0c05a458deff028ef4d4e64059098db4_icgraph">
+<area shape="rect" id="node3" href="unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="112,5,163,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a4a710d86541afc6b7dafddcdb4b1c94f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* strstr </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>haystack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>needle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Recherche needle (aiguille) dans la chaine heystack (meule de foin). Les caractères « \0 » ne sont pas comparés.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">haystack</td><td>chaine dans laquelle on va effectuer la recherche. </td></tr>
+    <tr><td class="paramname">needle</td><td>sous-chaîne à rechercher.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur vers le début de la sous-chaîne ou NULL si non trouvée. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8cb460f64c449f2a9b9b7a40569ce0fe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* strtok </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>delim</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>La chaine à tokenizer. </td></tr>
+    <tr><td class="paramname">delim</td><td>L'ensemble des délimiteurs possible.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur vers l'élément lexical suivant ou NULL s'il n'y en a plus. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi Mai 28 2013 22:52:15 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

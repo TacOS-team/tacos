@@ -17,8 +17,7 @@ Fonctions pour le driver F\-A\-T.
 {\ttfamily \#include $<$types.\-h$>$}\\*
 {\ttfamily \#include \char`\"{}fat\-\_\-outils.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}fat\-\_\-internal.\-c\char`\"{}}\\*
-Graphe des dépendances par inclusion de fat\-\_\-functions.\-c\-:
-\nopagebreak
+Graphe des dépendances par inclusion de fat\-\_\-functions.\-c\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -28,29 +27,21 @@ Graphe des dépendances par inclusion de fat\-\_\-functions.\-c\-:
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{fat__functions_8c_a34463693dc3fa14a062c90b9ece622c4}{\hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$ {\bfseries fat\-\_\-getroot} (struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance)}\label{fat__functions_8c_a34463693dc3fa14a062c90b9ece622c4}
-
+\hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$ \hyperlink{fat__functions_8c_a34463693dc3fa14a062c90b9ece622c4}{fat\-\_\-getroot} (struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance)
 \item 
-\hypertarget{fat__functions_8c_aaf2cd44da9ce9df0808a2cd823fd1295}{\hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$ {\bfseries fat\-\_\-lookup} (struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance, struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$dentry, const char $\ast$name)}\label{fat__functions_8c_aaf2cd44da9ce9df0808a2cd823fd1295}
-
+\hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$ \hyperlink{fat__functions_8c_aaf2cd44da9ce9df0808a2cd823fd1295}{fat\-\_\-lookup} (struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance, struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$dentry, const char $\ast$name)
 \item 
-int \hyperlink{fat__functions_8c_ada9bd47fd90b01248fe52f302560f9f9}{fat\-\_\-readdir} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, char $\ast$entries, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+int \hyperlink{fat__functions_8c_ada9bd47fd90b01248fe52f302560f9f9}{fat\-\_\-readdir} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, char $\ast$entries, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
 \item 
-int \hyperlink{fat__functions_8c_a5e52d080338c1179ae01999006f077d3}{fat\-\_\-seek\-\_\-file} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, long offset, int whence)
+int \hyperlink{fat__functions_8c_a5e52d080338c1179ae01999006f077d3}{fat\-\_\-seek\-\_\-file} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, long offset, int whence)
 \item 
-\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} \hyperlink{fat__functions_8c_aefed2caace7abdff25dc8276de118018}{fat\-\_\-write\-\_\-file} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, const void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} nb\-\_\-octet)
-\item 
-\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} \hyperlink{fat__functions_8c_a85069bfaf4b7a57bc5d8e7bfa6aa83ad}{fat\-\_\-read\-\_\-file} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} count)
+\hyperlink{kernel_2include_2types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\-\_\-t} \hyperlink{fat__functions_8c_a84b490d3d5e212e003c6b84071bd204b}{fat\-\_\-read\-\_\-file} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} count)
 \item 
 int \hyperlink{fat__functions_8c_ab6005d86e7ab13445d997d03e76bf914}{fat\-\_\-mkdir} (\hyperlink{vfs_8h_a0eefa9aac35a5462ebf1e038992ca860}{fs\-\_\-instance\-\_\-t} $\ast$instance, const char $\ast$path, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t} \hyperlink{structmode}{mode})
 \item 
-\hypertarget{fat__functions_8c_a5965a7bd30e7fce3d16956e180663802}{int {\bfseries fat\-\_\-createfile} (\hyperlink{fat__internal_8h_a9e8df592f54b50d959a9b9c84fa64fce}{fat\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance, const char $\ast$path, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t} \hyperlink{structmode}{mode})}\label{fat__functions_8c_a5965a7bd30e7fce3d16956e180663802}
-
+int \hyperlink{fat__functions_8c_a2ac41048fa02e77edaece792c02c5692}{fat\-\_\-open} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd)
 \item 
-\hypertarget{fat__functions_8c_a2ac41048fa02e77edaece792c02c5692}{int {\bfseries fat\-\_\-open} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd)}\label{fat__functions_8c_a2ac41048fa02e77edaece792c02c5692}
-
-\item 
-int \hyperlink{fat__functions_8c_afdccf4bea2c0e70059a76f43fea9c33f}{fat\-\_\-close} (\hyperlink{struct__open__file__descriptor}{open\-\_\-file\-\_\-descriptor} $\ast$ofd)
+int \hyperlink{fat__functions_8c_afdccf4bea2c0e70059a76f43fea9c33f}{fat\-\_\-close} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd)
 \item 
 int \hyperlink{fat__functions_8c_a2673c2b00be14ce740290ba2e92b9f90}{fat\-\_\-unlink} (\hyperlink{vfs_8h_a0eefa9aac35a5462ebf1e038992ca860}{fs\-\_\-instance\-\_\-t} $\ast$instance, const char $\ast$path)
 \end{DoxyCompactItemize}
@@ -90,12 +81,84 @@ Fermeture d'un fichier ouvert.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=210pt]{fat__functions_8c_afdccf4bea2c0e70059a76f43fea9c33f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fat__functions_8c_a34463693dc3fa14a062c90b9ece622c4}{\index{fat\-\_\-functions.\-c@{fat\-\_\-functions.\-c}!fat\-\_\-getroot@{fat\-\_\-getroot}}
+\index{fat\-\_\-getroot@{fat\-\_\-getroot}!fat_functions.c@{fat\-\_\-functions.\-c}}
+\subsubsection[{fat\-\_\-getroot}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dentry\-\_\-t}$\ast$ fat\-\_\-getroot (
+\begin{DoxyParamCaption}
+\item[{struct {\bf \-\_\-fs\-\_\-instance\-\_\-t} $\ast$}]{instance}
+\end{DoxyParamCaption}
+)}}\label{fat__functions_8c_a34463693dc3fa14a062c90b9ece622c4}
+Fonction qui permet de récupérer le dentry à la racine.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em instance} & Instance de F\-S.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Dossier racine. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{fat__functions_8c_a34463693dc3fa14a062c90b9ece622c4_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fat__functions_8c_aaf2cd44da9ce9df0808a2cd823fd1295}{\index{fat\-\_\-functions.\-c@{fat\-\_\-functions.\-c}!fat\-\_\-lookup@{fat\-\_\-lookup}}
+\index{fat\-\_\-lookup@{fat\-\_\-lookup}!fat_functions.c@{fat\-\_\-functions.\-c}}
+\subsubsection[{fat\-\_\-lookup}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dentry\-\_\-t}$\ast$ fat\-\_\-lookup (
+\begin{DoxyParamCaption}
+\item[{struct {\bf \-\_\-fs\-\_\-instance\-\_\-t} $\ast$}]{instance, }
+\item[{struct {\bf \-\_\-dentry\-\_\-t} $\ast$}]{dentry, }
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}\label{fat__functions_8c_aaf2cd44da9ce9df0808a2cd823fd1295}
+Fonction de lookup \-: retourne l'entrée de dossier qui correspond au nom demandé.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em instance} & Instance de F\-S. \\
+\hline
+{\em dentry} & Dossier parent. \\
+\hline
+{\em name} & Nom de l'entrée dans ce dossier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Entrée de dossier correspondant. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fat__functions_8c_aaf2cd44da9ce9df0808a2cd823fd1295_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{fat__functions_8c_aaf2cd44da9ce9df0808a2cd823fd1295_icgraph}
 \end{center}
 \end{figure}
 
@@ -125,8 +188,7 @@ Création d'un dossier.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -135,15 +197,32 @@ Voici le graphe d'appel pour cette fonction \-:
 \end{figure}
 
 
-\hypertarget{fat__functions_8c_a85069bfaf4b7a57bc5d8e7bfa6aa83ad}{\index{fat\-\_\-functions.\-c@{fat\-\_\-functions.\-c}!fat\-\_\-read\-\_\-file@{fat\-\_\-read\-\_\-file}}
+\hypertarget{fat__functions_8c_a2ac41048fa02e77edaece792c02c5692}{\index{fat\-\_\-functions.\-c@{fat\-\_\-functions.\-c}!fat\-\_\-open@{fat\-\_\-open}}
+\index{fat\-\_\-open@{fat\-\_\-open}!fat_functions.c@{fat\-\_\-functions.\-c}}
+\subsubsection[{fat\-\_\-open}]{\setlength{\rightskip}{0pt plus 5cm}int fat\-\_\-open (
+\begin{DoxyParamCaption}
+\item[{{\bf open\-\_\-file\-\_\-descriptor} $\ast$}]{ofd}
+\end{DoxyParamCaption}
+)}}\label{fat__functions_8c_a2ac41048fa02e77edaece792c02c5692}
+Ouverture d'un fichier. Initialise certaines données de l'ofd.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ofd} & Descripteur de fichier ouvert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. 
+\end{DoxyReturn}
+\hypertarget{fat__functions_8c_a84b490d3d5e212e003c6b84071bd204b}{\index{fat\-\_\-functions.\-c@{fat\-\_\-functions.\-c}!fat\-\_\-read\-\_\-file@{fat\-\_\-read\-\_\-file}}
 \index{fat\-\_\-read\-\_\-file@{fat\-\_\-read\-\_\-file}!fat_functions.c@{fat\-\_\-functions.\-c}}
-\subsubsection[{fat\-\_\-read\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\-\_\-t} fat\-\_\-read\-\_\-file (
+\subsubsection[{fat\-\_\-read\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ssize\-\_\-t} fat\-\_\-read\-\_\-file (
 \begin{DoxyParamCaption}
 \item[{{\bf open\-\_\-file\-\_\-descriptor} $\ast$}]{ofd, }
 \item[{void $\ast$}]{buf, }
 \item[{{\bf size\-\_\-t}}]{count}
 \end{DoxyParamCaption}
-)}}\label{fat__functions_8c_a85069bfaf4b7a57bc5d8e7bfa6aa83ad}
+)}}\label{fat__functions_8c_a84b490d3d5e212e003c6b84071bd204b}
 Lecture d'un fichier.
 
 
@@ -183,8 +262,7 @@ Nombre d'octets écrits dans entries.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -218,8 +296,7 @@ Déplacement dans un fichier.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -230,8 +307,7 @@ Voici le graphe d'appel pour cette fonction \-:
 
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -262,36 +338,12 @@ Suppression d'un fichier ou dossier (vide).
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=224pt]{fat__functions_8c_a2673c2b00be14ce740290ba2e92b9f90_cgraph}
+\includegraphics[width=350pt]{fat__functions_8c_a2673c2b00be14ce740290ba2e92b9f90_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{fat__functions_8c_aefed2caace7abdff25dc8276de118018}{\index{fat\-\_\-functions.\-c@{fat\-\_\-functions.\-c}!fat\-\_\-write\-\_\-file@{fat\-\_\-write\-\_\-file}}
-\index{fat\-\_\-write\-\_\-file@{fat\-\_\-write\-\_\-file}!fat_functions.c@{fat\-\_\-functions.\-c}}
-\subsubsection[{fat\-\_\-write\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\-\_\-t} fat\-\_\-write\-\_\-file (
-\begin{DoxyParamCaption}
-\item[{{\bf open\-\_\-file\-\_\-descriptor} $\ast$}]{ofd, }
-\item[{const void $\ast$}]{buf, }
-\item[{{\bf size\-\_\-t}}]{nb\-\_\-octet}
-\end{DoxyParamCaption}
-)}}\label{fat__functions_8c_aefed2caace7abdff25dc8276de118018}
-Écriture de fichier.
-
-
-\begin{DoxyParams}{Paramètres}
-{\em ofd} & Descripteur de fichier ouvert. \\
-\hline
-{\em buf} & Données à écrire. \\
-\hline
-{\em nb\-\_\-octet} & Nombre d'octets à écrire.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Renvoie}
-Nombre d'octets écrits. 
-\end{DoxyReturn}

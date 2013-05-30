@@ -4,6 +4,7 @@ var searchData=
   ['max_5fdrivers',['MAX_DRIVERS',['../devfs_8c.html#ac2ee6026a11a2d8472c29fed769c7e9f',1,'devfs.c']]],
   ['max_5fevents',['MAX_EVENTS',['../events_8c.html#ae42954bb8545d24e3e9dcde5920c9a0b',1,'events.c']]],
   ['max_5finput',['MAX_INPUT',['../tty_8h.html#a00c1f0e7816626f58349492ef0720b5f',1,'tty.h']]],
+  ['max_5fproc',['MAX_PROC',['../kprocess_8h.html#a63e32d00bc48471b4db49d481ac228dc',1,'kprocess.h']]],
   ['milliseconds_5fper_5fday',['MILLISECONDS_PER_DAY',['../time_8c.html#a49f7c2ec546a52e3f9d643bf8ce4ab5d',1,'time.c']]],
   ['milliseconds_5fper_5fhour',['MILLISECONDS_PER_HOUR',['../time_8c.html#afda9a3746e6a8675fe65eb61d0f3318a',1,'time.c']]],
   ['milliseconds_5fper_5fminute',['MILLISECONDS_PER_MINUTE',['../time_8c.html#a2a6c2d0ac65c9922488a582a2155799e',1,'time.c']]],

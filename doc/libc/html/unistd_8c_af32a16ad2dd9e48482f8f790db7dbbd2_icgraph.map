@@ -1,0 +1,6 @@
+<map id="read" name="read">
+<area shape="rect" id="node3" href="$get_8c.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream." alt="" coords="101,55,152,83"/>
+<area shape="rect" id="node5" href="$fread_8c.html#a084251eb18ccd5c936faa2c39c86ec63" title="fread" alt="" coords="208,5,259,33"/>
+<area shape="rect" id="node7" href="$get_8c.html#a2b3df0e66b41edab3c039191fe6cc4f9" title="Lit au plus size&#45;1 caractères depuis le stream passé en argument." alt="" coords="208,55,259,83"/>
+<area shape="rect" id="node9" href="$get_8c.html#a3e29caa20f7cffe18f410f01278905a8" title="lit un caractère depuis stdin." alt="" coords="201,106,265,134"/>
+</map>

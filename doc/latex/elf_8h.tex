@@ -6,8 +6,7 @@
 Bibliothèque destinée à manipuler les fichiers exécutables E\-L\-F.  
 
 
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:
-\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,7 +29,7 @@ struct \hyperlink{structElf32__Rel}{Elf32\-\_\-\-Rel}
 struct \hyperlink{structElf32__Rela}{Elf32\-\_\-\-Rela}
 \item 
 struct \hyperlink{structElf32__File}{Elf32\-\_\-\-File}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Structure qui caractérise un binaire elf. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -489,6 +488,17 @@ Le symbol est une fonction
 \begin{DoxyReturn}{Renvoie}
 taille prise initialement par l'exécutable en mémoire 
 \end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{elf_8h_aa84790a8edae8d2859861f19adf5dd41_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{elf_8h_a8f556b72039271c88d4567c6e2f84ea0}{\index{elf.\-h@{elf.\-h}!find\-\_\-symbol@{find\-\_\-symbol}}
 \index{find\-\_\-symbol@{find\-\_\-symbol}!elf.h@{elf.\-h}}
 \subsubsection[{find\-\_\-symbol}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Elf32\-\_\-\-Sym}$\ast$ find\-\_\-symbol (
@@ -509,8 +519,7 @@ symbole recherché
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -555,6 +564,17 @@ Voici le graphe d'appel pour cette fonction \-:
 \begin{DoxyReturn}{Renvoie}
 adresse du point d'entrée de l'exécutable 
 \end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{elf_8h_a35e8f32030ee36d8c02357a0b483c1b2_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{elf_8h_abbbb3d1f6ac9986f87d655cec7819556}{\index{elf.\-h@{elf.\-h}!load\-\_\-elf\-\_\-file@{load\-\_\-elf\-\_\-file}}
 \index{load\-\_\-elf\-\_\-file@{load\-\_\-elf\-\_\-file}!elf.h@{elf.\-h}}
 \subsubsection[{load\-\_\-elf\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Elf32\-\_\-\-File}$\ast$ load\-\_\-elf\-\_\-file (
@@ -572,12 +592,22 @@ pointeur vers une structure Elf32\-\_\-file chargée, N\-U\-L\-L en cas d'échec
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{elf_8h_abbbb3d1f6ac9986f87d655cec7819556_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{elf_8h_abbbb3d1f6ac9986f87d655cec7819556_icgraph}
 \end{center}
 \end{figure}
 

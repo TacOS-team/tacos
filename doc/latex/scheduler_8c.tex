@@ -19,8 +19,7 @@
 {\ttfamily \#include $<$scheduler.\-h$>$}\\*
 {\ttfamily \#include $<$types.\-h$>$}\\*
 {\ttfamily \#include $<$vmm.\-h$>$}\\*
-Graphe des dépendances par inclusion de scheduler.\-c\-:
-\nopagebreak
+Graphe des dépendances par inclusion de scheduler.\-c\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -45,8 +44,7 @@ Graphe des dépendances par inclusion de scheduler.\-c\-:
 \hypertarget{scheduler_8c_a3566951b11a46d72a1a0828fb58fbcac}{void {\bfseries set\-\_\-scheduler} (\hyperlink{structscheduler__descriptor__t}{scheduler\-\_\-descriptor\-\_\-t} $\ast$sched)}\label{scheduler_8c_a3566951b11a46d72a1a0828fb58fbcac}
 
 \item 
-\hypertarget{scheduler_8c_aa561ebdf652e5c64fc2400c409e76d8d}{int {\bfseries is\-\_\-schedulable} (\hyperlink{structprocess__t}{process\-\_\-t} $\ast$process)}\label{scheduler_8c_aa561ebdf652e5c64fc2400c409e76d8d}
-
+int \hyperlink{scheduler_8c_aa561ebdf652e5c64fc2400c409e76d8d}{is\-\_\-schedulable} (\hyperlink{structprocess__t}{process\-\_\-t} $\ast$process)
 \item 
 \hypertarget{scheduler_8c_a7620ff35dc8ad07c342359800c4bb6c2}{void $\ast$ {\bfseries schedule} (void $\ast$data)}\label{scheduler_8c_a7620ff35dc8ad07c342359800c4bb6c2}
 
@@ -101,8 +99,7 @@ processus en cours d'utilisation.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -125,8 +122,7 @@ Voici le graphe des appelants de cette fonction \-:
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -135,6 +131,23 @@ Voici le graphe d'appel pour cette fonction \-:
 \end{figure}
 
 
+\hypertarget{scheduler_8c_aa561ebdf652e5c64fc2400c409e76d8d}{\index{scheduler.\-c@{scheduler.\-c}!is\-\_\-schedulable@{is\-\_\-schedulable}}
+\index{is\-\_\-schedulable@{is\-\_\-schedulable}!scheduler.c@{scheduler.\-c}}
+\subsubsection[{is\-\_\-schedulable}]{\setlength{\rightskip}{0pt plus 5cm}int is\-\_\-schedulable (
+\begin{DoxyParamCaption}
+\item[{{\bf process\-\_\-t} $\ast$}]{process}
+\end{DoxyParamCaption}
+)}}\label{scheduler_8c_aa561ebdf652e5c64fc2400c409e76d8d}
+Retourne si le process donné en argument est ordonnançable. C'est à dire s'il peut s'exécuter (pas bloqué ni terminé).
+
+
+\begin{DoxyParams}{Paramètres}
+{\em process} & Le processus à tester.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+1 si schedulable, 0 sinon. 
+\end{DoxyReturn}
 \hypertarget{scheduler_8c_ab180240c5e0d6459b4fafe3c81939ac5}{\index{scheduler.\-c@{scheduler.\-c}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}}
 \index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}!scheduler.c@{scheduler.\-c}}
 \subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R1 (
@@ -152,8 +165,7 @@ Endors un processus, et crée un évenement pour le réveiller
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

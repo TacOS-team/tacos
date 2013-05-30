@@ -1,0 +1,242 @@
+\hypertarget{interrupts_8h}{\section{Référence du fichier kernel/include/interrupts.h}
+\label{interrupts_8h}\index{kernel/include/interrupts.\-h@{kernel/include/interrupts.\-h}}
+}
+
+
+Gestion des interruptions..  
+
+
+{\ttfamily \#include $<$types.\-h$>$}\\*
+Graphe des dépendances par inclusion de interrupts.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{interrupts_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{interrupts_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structintframe}{intframe}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{interrupts_8h_a85fc66e3edd4ed6a4db6e455feaba8ca}{I\-R\-Q\-\_\-\-T\-I\-M\-E\-R}~0
+\item 
+\#define \hyperlink{interrupts_8h_a8092843c014fad609c1b01a4604a44a3}{I\-R\-Q\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D}~1
+\item 
+\hypertarget{interrupts_8h_acd48440eb0a6d84439b51328e2d5c542}{\#define {\bfseries I\-R\-Q\-\_\-\-S\-L\-A\-V\-E\-\_\-\-P\-I\-C}~2}\label{interrupts_8h_acd48440eb0a6d84439b51328e2d5c542}
+
+\item 
+\#define \hyperlink{interrupts_8h_afe9f19b981c093830239430dd2e42ba5}{I\-R\-Q\-\_\-\-C\-O\-M2}~3
+\item 
+\#define \hyperlink{interrupts_8h_a603b478f70a928f442e33fefba73494a}{I\-R\-Q\-\_\-\-C\-O\-M1}~4
+\item 
+\#define \hyperlink{interrupts_8h_a124409fc7614dbfc0fa4e4f051bf34bf}{I\-R\-Q\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-1}~5
+\item 
+\#define \hyperlink{interrupts_8h_a51ebc06bb64338ca52ccd907757236d5}{I\-R\-Q\-\_\-\-F\-L\-O\-P\-P\-Y}~6
+\item 
+\#define \hyperlink{interrupts_8h_a7470b817cb853efc47827610aa7d7658}{I\-R\-Q\-\_\-\-L\-P\-T1}~7
+\item 
+\#define \hyperlink{interrupts_8h_afcc3514b333a16589ac65bcd44080530}{I\-R\-Q\-\_\-8\-\_\-\-R\-E\-A\-L\-\_\-\-T\-I\-M\-E\-\_\-\-C\-L\-K}~8
+\item 
+\hypertarget{interrupts_8h_afd999e11580b7bc2219604e89ce4639d}{\#define {\bfseries I\-R\-Q\-\_\-\-R\-E\-D\-I\-R\-E\-C\-T\-\_\-\-I\-R\-Q2}~9}\label{interrupts_8h_afd999e11580b7bc2219604e89ce4639d}
+
+\item 
+\hypertarget{interrupts_8h_a3fd65360bc9ac3ee6aa4c55214aa6465}{\#define {\bfseries I\-R\-Q\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-2}~10}\label{interrupts_8h_a3fd65360bc9ac3ee6aa4c55214aa6465}
+
+\item 
+\hypertarget{interrupts_8h_a21ae588255448104f6862734a5cc18ed}{\#define {\bfseries I\-R\-Q\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-3}~11}\label{interrupts_8h_a21ae588255448104f6862734a5cc18ed}
+
+\item 
+\#define \hyperlink{interrupts_8h_aacd1e86773887394ce22a62b0af5d183}{I\-R\-Q\-\_\-\-P\-S2\-\_\-\-M\-O\-U\-S\-E}~12
+\item 
+\hypertarget{interrupts_8h_aa90f46b51383c714e3a02cfcd88dc723}{\#define {\bfseries I\-R\-Q\-\_\-\-C\-O\-P\-R\-O\-C\-E\-S\-S\-O\-R}~13}\label{interrupts_8h_aa90f46b51383c714e3a02cfcd88dc723}
+
+\item 
+\hypertarget{interrupts_8h_a87ece922ad3d4d7aeae26fd8a8dc1bc0}{\#define {\bfseries I\-R\-Q\-\_\-\-H\-A\-R\-D\-D\-I\-S\-K}~14}\label{interrupts_8h_a87ece922ad3d4d7aeae26fd8a8dc1bc0}
+
+\item 
+\hypertarget{interrupts_8h_a712e9bd5c28bb15ad962e7986bfb50b0}{\#define {\bfseries I\-R\-Q\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-4}~15}\label{interrupts_8h_a712e9bd5c28bb15ad962e7986bfb50b0}
+
+\item 
+\#define \hyperlink{interrupts_8h_a4738790c15755ecd75912c6a0228ed13}{I\-R\-Q\-\_\-\-S\-Y\-S\-C\-A\-L\-L}~16
+\end{DoxyCompactItemize}
+\subsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interrupts_8h_acc6e67964acaa4ef0f85422ef6ae6f60}{typedef void($\ast$ {\bfseries interrupt\-\_\-handler\-\_\-t} )(int interrupt\-\_\-id)}\label{interrupts_8h_acc6e67964acaa4ef0f85422ef6ae6f60}
+
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{interrupts_8h_aecc1fa8433fa21ba233b8feb2558e954}{interrupt\-\_\-set\-\_\-routine} (\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} interrupt\-\_\-id, interrupt\-\_\-handler\-\_\-t routine, \hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} privilege)
+\begin{DoxyCompactList}\small\item\em Ajoute une nouvelle interruption. \end{DoxyCompactList}\item 
+int \hyperlink{interrupts_8h_ac3f5203c31fd554b562cba8cec42ceb6}{interrupt\-\_\-disable} (\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} interrupt\-\_\-id)
+\begin{DoxyCompactList}\small\item\em Désactive une interruption. \end{DoxyCompactList}\item 
+void \hyperlink{interrupts_8h_a4eea959d9a7be06d7b87a0aad03b490e}{make\-\_\-trapgate\-\_\-from\-\_\-int} (\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} interrupt\-\_\-id)
+\begin{DoxyCompactList}\small\item\em Change le type d'une interruption en une trapgate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+
+
+\subsection{Documentation des macros}
+\hypertarget{interrupts_8h_afcc3514b333a16589ac65bcd44080530}{\index{interrupts.\-h@{interrupts.\-h}!I\-R\-Q\-\_\-8\-\_\-\-R\-E\-A\-L\-\_\-\-T\-I\-M\-E\-\_\-\-C\-L\-K@{I\-R\-Q\-\_\-8\-\_\-\-R\-E\-A\-L\-\_\-\-T\-I\-M\-E\-\_\-\-C\-L\-K}}
+\index{I\-R\-Q\-\_\-8\-\_\-\-R\-E\-A\-L\-\_\-\-T\-I\-M\-E\-\_\-\-C\-L\-K@{I\-R\-Q\-\_\-8\-\_\-\-R\-E\-A\-L\-\_\-\-T\-I\-M\-E\-\_\-\-C\-L\-K}!interrupts.h@{interrupts.\-h}}
+\subsubsection[{I\-R\-Q\-\_\-8\-\_\-\-R\-E\-A\-L\-\_\-\-T\-I\-M\-E\-\_\-\-C\-L\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-R\-Q\-\_\-8\-\_\-\-R\-E\-A\-L\-\_\-\-T\-I\-M\-E\-\_\-\-C\-L\-K~8}}\label{interrupts_8h_afcc3514b333a16589ac65bcd44080530}
+Interruption clock. \hypertarget{interrupts_8h_a603b478f70a928f442e33fefba73494a}{\index{interrupts.\-h@{interrupts.\-h}!I\-R\-Q\-\_\-\-C\-O\-M1@{I\-R\-Q\-\_\-\-C\-O\-M1}}
+\index{I\-R\-Q\-\_\-\-C\-O\-M1@{I\-R\-Q\-\_\-\-C\-O\-M1}!interrupts.h@{interrupts.\-h}}
+\subsubsection[{I\-R\-Q\-\_\-\-C\-O\-M1}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-R\-Q\-\_\-\-C\-O\-M1~4}}\label{interrupts_8h_a603b478f70a928f442e33fefba73494a}
+Interruption liaison serie 1. \hypertarget{interrupts_8h_afe9f19b981c093830239430dd2e42ba5}{\index{interrupts.\-h@{interrupts.\-h}!I\-R\-Q\-\_\-\-C\-O\-M2@{I\-R\-Q\-\_\-\-C\-O\-M2}}
+\index{I\-R\-Q\-\_\-\-C\-O\-M2@{I\-R\-Q\-\_\-\-C\-O\-M2}!interrupts.h@{interrupts.\-h}}
+\subsubsection[{I\-R\-Q\-\_\-\-C\-O\-M2}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-R\-Q\-\_\-\-C\-O\-M2~3}}\label{interrupts_8h_afe9f19b981c093830239430dd2e42ba5}
+Interruption liaison serie 2. \hypertarget{interrupts_8h_a51ebc06bb64338ca52ccd907757236d5}{\index{interrupts.\-h@{interrupts.\-h}!I\-R\-Q\-\_\-\-F\-L\-O\-P\-P\-Y@{I\-R\-Q\-\_\-\-F\-L\-O\-P\-P\-Y}}
+\index{I\-R\-Q\-\_\-\-F\-L\-O\-P\-P\-Y@{I\-R\-Q\-\_\-\-F\-L\-O\-P\-P\-Y}!interrupts.h@{interrupts.\-h}}
+\subsubsection[{I\-R\-Q\-\_\-\-F\-L\-O\-P\-P\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-R\-Q\-\_\-\-F\-L\-O\-P\-P\-Y~6}}\label{interrupts_8h_a51ebc06bb64338ca52ccd907757236d5}
+Interruption disquette. \hypertarget{interrupts_8h_a8092843c014fad609c1b01a4604a44a3}{\index{interrupts.\-h@{interrupts.\-h}!I\-R\-Q\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D@{I\-R\-Q\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D}}
+\index{I\-R\-Q\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D@{I\-R\-Q\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D}!interrupts.h@{interrupts.\-h}}
+\subsubsection[{I\-R\-Q\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-R\-Q\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D~1}}\label{interrupts_8h_a8092843c014fad609c1b01a4604a44a3}
+Interruption clavier. \hypertarget{interrupts_8h_a7470b817cb853efc47827610aa7d7658}{\index{interrupts.\-h@{interrupts.\-h}!I\-R\-Q\-\_\-\-L\-P\-T1@{I\-R\-Q\-\_\-\-L\-P\-T1}}
+\index{I\-R\-Q\-\_\-\-L\-P\-T1@{I\-R\-Q\-\_\-\-L\-P\-T1}!interrupts.h@{interrupts.\-h}}
+\subsubsection[{I\-R\-Q\-\_\-\-L\-P\-T1}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-R\-Q\-\_\-\-L\-P\-T1~7}}\label{interrupts_8h_a7470b817cb853efc47827610aa7d7658}
+Interruption port //. \hypertarget{interrupts_8h_aacd1e86773887394ce22a62b0af5d183}{\index{interrupts.\-h@{interrupts.\-h}!I\-R\-Q\-\_\-\-P\-S2\-\_\-\-M\-O\-U\-S\-E@{I\-R\-Q\-\_\-\-P\-S2\-\_\-\-M\-O\-U\-S\-E}}
+\index{I\-R\-Q\-\_\-\-P\-S2\-\_\-\-M\-O\-U\-S\-E@{I\-R\-Q\-\_\-\-P\-S2\-\_\-\-M\-O\-U\-S\-E}!interrupts.h@{interrupts.\-h}}
+\subsubsection[{I\-R\-Q\-\_\-\-P\-S2\-\_\-\-M\-O\-U\-S\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-R\-Q\-\_\-\-P\-S2\-\_\-\-M\-O\-U\-S\-E~12}}\label{interrupts_8h_aacd1e86773887394ce22a62b0af5d183}
+Interruption souris. \hypertarget{interrupts_8h_a124409fc7614dbfc0fa4e4f051bf34bf}{\index{interrupts.\-h@{interrupts.\-h}!I\-R\-Q\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-1@{I\-R\-Q\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-1}}
+\index{I\-R\-Q\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-1@{I\-R\-Q\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-1}!interrupts.h@{interrupts.\-h}}
+\subsubsection[{I\-R\-Q\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-R\-Q\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-1~5}}\label{interrupts_8h_a124409fc7614dbfc0fa4e4f051bf34bf}
+Interruption carte son. \hypertarget{interrupts_8h_a4738790c15755ecd75912c6a0228ed13}{\index{interrupts.\-h@{interrupts.\-h}!I\-R\-Q\-\_\-\-S\-Y\-S\-C\-A\-L\-L@{I\-R\-Q\-\_\-\-S\-Y\-S\-C\-A\-L\-L}}
+\index{I\-R\-Q\-\_\-\-S\-Y\-S\-C\-A\-L\-L@{I\-R\-Q\-\_\-\-S\-Y\-S\-C\-A\-L\-L}!interrupts.h@{interrupts.\-h}}
+\subsubsection[{I\-R\-Q\-\_\-\-S\-Y\-S\-C\-A\-L\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-R\-Q\-\_\-\-S\-Y\-S\-C\-A\-L\-L~16}}\label{interrupts_8h_a4738790c15755ecd75912c6a0228ed13}
+Interruption pour syscall. \hypertarget{interrupts_8h_a85fc66e3edd4ed6a4db6e455feaba8ca}{\index{interrupts.\-h@{interrupts.\-h}!I\-R\-Q\-\_\-\-T\-I\-M\-E\-R@{I\-R\-Q\-\_\-\-T\-I\-M\-E\-R}}
+\index{I\-R\-Q\-\_\-\-T\-I\-M\-E\-R@{I\-R\-Q\-\_\-\-T\-I\-M\-E\-R}!interrupts.h@{interrupts.\-h}}
+\subsubsection[{I\-R\-Q\-\_\-\-T\-I\-M\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-R\-Q\-\_\-\-T\-I\-M\-E\-R~0}}\label{interrupts_8h_a85fc66e3edd4ed6a4db6e455feaba8ca}
+Définition des I\-R\-Q \-:Interruption timer. 
+
+\subsection{Documentation des fonctions}
+\hypertarget{interrupts_8h_ac3f5203c31fd554b562cba8cec42ceb6}{\index{interrupts.\-h@{interrupts.\-h}!interrupt\-\_\-disable@{interrupt\-\_\-disable}}
+\index{interrupt\-\_\-disable@{interrupt\-\_\-disable}!interrupts.h@{interrupts.\-h}}
+\subsubsection[{interrupt\-\_\-disable}]{\setlength{\rightskip}{0pt plus 5cm}int interrupt\-\_\-disable (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\-\_\-t}}]{interrupt\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{interrupts_8h_ac3f5203c31fd554b562cba8cec42ceb6}
+
+\begin{DoxyParams}{Paramètres}
+{\em interrupt\-\_\-id} & Le numéro de l'interruption à désactiver.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. Autre chose sinon. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{interrupts_8h_ac3f5203c31fd554b562cba8cec42ceb6_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{interrupts_8h_aecc1fa8433fa21ba233b8feb2558e954}{\index{interrupts.\-h@{interrupts.\-h}!interrupt\-\_\-set\-\_\-routine@{interrupt\-\_\-set\-\_\-routine}}
+\index{interrupt\-\_\-set\-\_\-routine@{interrupt\-\_\-set\-\_\-routine}!interrupts.h@{interrupts.\-h}}
+\subsubsection[{interrupt\-\_\-set\-\_\-routine}]{\setlength{\rightskip}{0pt plus 5cm}int interrupt\-\_\-set\-\_\-routine (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\-\_\-t}}]{interrupt\-\_\-id, }
+\item[{interrupt\-\_\-handler\-\_\-t}]{routine, }
+\item[{{\bf uint8\-\_\-t}}]{privilege}
+\end{DoxyParamCaption}
+)}}\label{interrupts_8h_aecc1fa8433fa21ba233b8feb2558e954}
+Ajoute une nouvelle interruption en mappant le numéro de l'interruption à la routine d'exécution.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em interrupt\-\_\-id} & Le numéro d'interruption. \\
+\hline
+{\em routine} & La routine qui sera exécutée lors de cette interruption. \\
+\hline
+{\em privilege} & Le niveau de privilège/priorité (0 ou 3).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès. Autre chose sinon. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{interrupts_8h_aecc1fa8433fa21ba233b8feb2558e954_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{interrupts_8h_aecc1fa8433fa21ba233b8feb2558e954_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{interrupts_8h_a4eea959d9a7be06d7b87a0aad03b490e}{\index{interrupts.\-h@{interrupts.\-h}!make\-\_\-trapgate\-\_\-from\-\_\-int@{make\-\_\-trapgate\-\_\-from\-\_\-int}}
+\index{make\-\_\-trapgate\-\_\-from\-\_\-int@{make\-\_\-trapgate\-\_\-from\-\_\-int}!interrupts.h@{interrupts.\-h}}
+\subsubsection[{make\-\_\-trapgate\-\_\-from\-\_\-int}]{\setlength{\rightskip}{0pt plus 5cm}void make\-\_\-trapgate\-\_\-from\-\_\-int (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\-\_\-t}}]{interrupt\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{interrupts_8h_a4eea959d9a7be06d7b87a0aad03b490e}
+
+\begin{DoxyParams}{Paramètres}
+{\em interrupt\-\_\-id} & Le numéro de l'interruption dont on veut changer le type pour en faire une trapgate. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{interrupts_8h_a4eea959d9a7be06d7b87a0aad03b490e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{interrupts_8h_a4eea959d9a7be06d7b87a0aad03b490e_icgraph}
+\end{center}
+\end{figure}
+
+

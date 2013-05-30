@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence de la structure _inode_t</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Champs de données</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence de la structure _inode_t</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="vfs_8h_source.html">vfs.h</a>&gt;</code></p>
+<div class="dynheader">
+Graphe de collaboration de _inode_t:</div>
+<div class="dyncontent">
+<div class="center"><img src="struct__inode__t__coll__graph.png" border="0" usemap="#__inode__t_coll__map" alt="Collaboration graph"/></div>
+<map name="__inode__t_coll__map" id="__inode__t_coll__map">
+<area shape="rect" id="node6" href="struct__dentry__t.html" title="_dentry_t" alt="" coords="407,193,481,221"/><area shape="rect" id="node13" href="struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="283,489,427,517"/><area shape="rect" id="node2" href="struct__open__file__operations__t.html" title="_open_file_operations_t" alt="" coords="475,6,632,34"/><area shape="rect" id="node4" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté." alt="" coords="267,302,373,330"/><area shape="rect" id="node10" href="structfile__system__t.html" title="Structure qui représente un FS." alt="" coords="315,395,413,423"/><area shape="rect" id="node19" href="struct__mounted__fs__t.html" title="_mounted_fs_t" alt="" coords="43,395,149,423"/></map>
+<center><span class="legend">[<a href="graph_legend.html">légende</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr class="memitem:aba602b843ba63a32ca3950dbaf7e959c"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#aba602b843ba63a32ca3950dbaf7e959c">i_ino</a></td></tr>
+<tr class="memitem:acead4732b6c22ef17ada59203509e728"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#acead4732b6c22ef17ada59203509e728">i_mode</a></td></tr>
+<tr class="memitem:a7ddcb65050ac0b4c9cfbacd495d56f4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#a7ddcb65050ac0b4c9cfbacd495d56f4b">i_uid</a></td></tr>
+<tr class="memitem:a95d052a6e9b1b1e4f6837fa0f33b393e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#a95d052a6e9b1b1e4f6837fa0f33b393e">i_gid</a></td></tr>
+<tr class="memitem:aed37b31c96c90873201abfc8b4b3e463"><td class="memItemLeft" align="right" valign="top">off_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#aed37b31c96c90873201abfc8b4b3e463">i_size</a></td></tr>
+<tr class="memitem:a01f50c6c44a3b50e4414a794643b741f"><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#a01f50c6c44a3b50e4414a794643b741f">i_atime</a></td></tr>
+<tr class="memitem:a73ee1e604547b74b8e1045fd4f6699b6"><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#a73ee1e604547b74b8e1045fd4f6699b6">i_ctime</a></td></tr>
+<tr class="memitem:a331d724391efce2f89aeb1a503ae5c43"><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#a331d724391efce2f89aeb1a503ae5c43">i_mtime</a></td></tr>
+<tr class="memitem:a393de4c58241168fdf397ab8421a3539"><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#a393de4c58241168fdf397ab8421a3539">i_dtime</a></td></tr>
+<tr class="memitem:a8ea768d56d01e010bc0c809bc38dbb28"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#a8ea768d56d01e010bc0c809bc38dbb28">i_count</a></td></tr>
+<tr class="memitem:a929fc1e6837d02a2525027a121b4e67e"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#a929fc1e6837d02a2525027a121b4e67e">i_nlink</a></td></tr>
+<tr class="memitem:a36ff48a57a9e483d74682972d31ef46c"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#a36ff48a57a9e483d74682972d31ef46c">i_flags</a></td></tr>
+<tr class="memitem:a92ebe4c1e93af9fba4efae4d07e14858"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#a92ebe4c1e93af9fba4efae4d07e14858">i_blocks</a></td></tr>
+<tr class="memitem:affefc88b22f45e2ec8340d582486d0f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#affefc88b22f45e2ec8340d582486d0f2">i_instance</a></td></tr>
+<tr class="memitem:acf149d7d1601f78142b1eec480badf7e"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct__open__file__operations__t.html">_open_file_operations_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#acf149d7d1601f78142b1eec480badf7e">i_fops</a></td></tr>
+<tr class="memitem:a54e34439c448c46bae90fd040dadc5c0"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__inode__t.html#a54e34439c448c46bae90fd040dadc5c0">i_fs_specific</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>Structure inode. </p>
+</div><h2>Documentation des champs</h2>
+<a class="anchor" id="a01f50c6c44a3b50e4414a794643b741f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">time_t _inode_t::i_atime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Access time </p>
+
+</div>
+</div>
+<a class="anchor" id="a92ebe4c1e93af9fba4efae4d07e14858"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long _inode_t::i_blocks</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Blocks count </p>
+
+</div>
+</div>
+<a class="anchor" id="a8ea768d56d01e010bc0c809bc38dbb28"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _inode_t::i_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Nombre d'ofd l'utilisant </p>
+
+</div>
+</div>
+<a class="anchor" id="a73ee1e604547b74b8e1045fd4f6699b6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">time_t _inode_t::i_ctime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creation time </p>
+
+</div>
+</div>
+<a class="anchor" id="a393de4c58241168fdf397ab8421a3539"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">time_t _inode_t::i_dtime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Deletion Time </p>
+
+</div>
+</div>
+<a class="anchor" id="a36ff48a57a9e483d74682972d31ef46c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char _inode_t::i_flags</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>File flags </p>
+
+</div>
+</div>
+<a class="anchor" id="acf149d7d1601f78142b1eec480badf7e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="struct__open__file__operations__t.html">_open_file_operations_t</a>* _inode_t::i_fops</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ofd operations. </p>
+
+</div>
+</div>
+<a class="anchor" id="a54e34439c448c46bae90fd040dadc5c0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* _inode_t::i_fs_specific</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extra data </p>
+
+</div>
+</div>
+<a class="anchor" id="a95d052a6e9b1b1e4f6837fa0f33b393e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a> _inode_t::i_gid</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Low 16 bits of Group Id </p>
+
+</div>
+</div>
+<a class="anchor" id="aba602b843ba63a32ca3950dbaf7e959c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long _inode_t::i_ino</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Inode number </p>
+
+</div>
+</div>
+<a class="anchor" id="affefc88b22f45e2ec8340d582486d0f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a>* _inode_t::i_instance</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Instance de fs auquel appartient cet inoeud. </p>
+
+</div>
+</div>
+<a class="anchor" id="acead4732b6c22ef17ada59203509e728"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _inode_t::i_mode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>File mode </p>
+
+</div>
+</div>
+<a class="anchor" id="a331d724391efce2f89aeb1a503ae5c43"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">time_t _inode_t::i_mtime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Modification time </p>
+
+</div>
+</div>
+<a class="anchor" id="a929fc1e6837d02a2525027a121b4e67e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char _inode_t::i_nlink</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Links count </p>
+
+</div>
+</div>
+<a class="anchor" id="aed37b31c96c90873201abfc8b4b3e463"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">off_t _inode_t::i_size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Size in bytes </p>
+
+</div>
+</div>
+<a class="anchor" id="a7ddcb65050ac0b4c9cfbacd495d56f4b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a> _inode_t::i_uid</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Low 16 bits of Owner Uid </p>
+
+</div>
+</div>
+<hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
+<li>kernel/include/<a class="el" href="vfs_8h_source.html">vfs.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:24 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

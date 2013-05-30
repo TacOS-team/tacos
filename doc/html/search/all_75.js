@@ -17,7 +17,7 @@ var searchData=
   ['unset_5fscheduler_5fevent',['unset_scheduler_event',['../events_8c.html#a14ec7f9617d6a0f57891ce9926dca445',1,'unset_scheduler_event():&#160;events.c'],['../events_8h.html#a14ec7f9617d6a0f57891ce9926dca445',1,'unset_scheduler_event():&#160;events.c']]],
   ['uppercase',['uppercase',['../structletter.html#abcf4b11624e2497e2d5798a805002268',1,'letter']]],
   ['usec_5fper_5fsec',['USEC_PER_SEC',['../clock_8h.html#a6a69d6cbdab5f24c2e66959293f210c1',1,'clock.h']]],
-  ['used',['used',['../structconsole__t.html#ad830edd689dced40135f6afa651677e3',1,'console_t']]],
+  ['used',['used',['../structdriver__entry.html#a9a2a74aad52e09fb03bef9703530e28f',1,'driver_entry::used()'],['../structconsole__t.html#ad830edd689dced40135f6afa651677e3',1,'console_t::used()']]],
   ['usleep',['usleep',['../unistd_8h.html#ae205f852ca2b47db9e16949153e12247',1,'usleep(unsigned int microseconds):&#160;unistd.c'],['../unistd_8c.html#ae205f852ca2b47db9e16949153e12247',1,'usleep(unsigned int microseconds):&#160;unistd.c']]],
   ['utf8_5fshort_5fname',['utf8_short_name',['../struct__fat__dir__entry.html#abb18201b12e6039275e6dad91c19a99d',1,'_fat_dir_entry']]]
 ];

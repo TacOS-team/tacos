@@ -1,0 +1,12 @@
+<map id="kernel/include/kfcntl.h" name="kernel/include/kfcntl.h">
+<area shape="rect" id="node3" href="$serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="5,83,133,127"/>
+<area shape="rect" id="node5" href="$tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="157,83,285,127"/>
+<area shape="rect" id="node7" href="$ext2__functions_8c.html" title="kernel/fs/ext2/ext2\l_functions.c" alt="" coords="309,83,437,127"/>
+<area shape="rect" id="node9" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="461,91,640,119"/>
+<area shape="rect" id="node11" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="664,91,771,119"/>
+<area shape="rect" id="node13" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="795,91,896,119"/>
+<area shape="rect" id="node15" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="920,91,1043,119"/>
+<area shape="rect" id="node17" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1067,91,1173,119"/>
+<area shape="rect" id="node19" href="$module_8c.html" title="kernel/module.c" alt="" coords="1197,91,1309,119"/>
+<area shape="rect" id="node21" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="1333,91,1421,119"/>
+</map>

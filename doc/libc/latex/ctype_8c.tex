@@ -1,0 +1,434 @@
+\hypertarget{ctype_8c}{\section{Référence du fichier libc/ctype.c}
+\label{ctype_8c}\index{libc/ctype.\-c@{libc/ctype.\-c}}
+}
+
+
+Fonctions de classification des caractères.  
+
+
+{\ttfamily \#include $<$ctype.\-h$>$}\\*
+Graphe des dépendances par inclusion de ctype.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=146pt]{ctype_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{ctype_8c_adf38e126f73a010f30af76db2a28c6e1}{isalnum} (int c)
+\begin{DoxyCompactList}\small\item\em vérifie si l'on a un caractère alphanumérique. \end{DoxyCompactList}\item 
+int \hyperlink{ctype_8c_a25908ae63aac2df990634e1ae5bd14d9}{isalpha} (int c)
+\begin{DoxyCompactList}\small\item\em vérifie si l'on a un caractère alphabétique. \end{DoxyCompactList}\item 
+int \hyperlink{ctype_8c_aea4929b1b41f1a6d723e0312b1f050ed}{isblank} (int c)
+\begin{DoxyCompactList}\small\item\em vérifie si le caractère est blanc, c'est-\/à-\/dire un espace ou une tabulation. \end{DoxyCompactList}\item 
+int \hyperlink{ctype_8c_a0008a4e8e7889734dc1d83297de07158}{iscntrl} (int c)
+\begin{DoxyCompactList}\small\item\em vérifie si l'on a un caractère de contrôle. \end{DoxyCompactList}\item 
+int \hyperlink{ctype_8c_a3fa45b35c8abf67a950b6d3d4063dede}{isdigit} (int c)
+\begin{DoxyCompactList}\small\item\em vérifie si l'on a un chiffre (0 à 9). \end{DoxyCompactList}\item 
+int \hyperlink{ctype_8c_a7b8f652a0423a80922dd89d8829db5f2}{islower} (int c)
+\begin{DoxyCompactList}\small\item\em vérifie si l'on a un caractère minuscule. \end{DoxyCompactList}\item 
+int \hyperlink{ctype_8c_a99355d8f0fb41ec43effb95189db0ed4}{isprint} (int c)
+\begin{DoxyCompactList}\small\item\em vérifie s'il s'agit d'un caractère imprimable, y compris l'espace. \end{DoxyCompactList}\item 
+int \hyperlink{ctype_8c_af29554b3ec04ea7684482bffed5dbce6}{ispunct} (int c)
+\begin{DoxyCompactList}\small\item\em vérifie s'il s'agit d'un caractère imprimable, qui ne soit ni un espace, ni un caractère alphanumérique. \end{DoxyCompactList}\item 
+int \hyperlink{ctype_8c_a56be4166e4673843042a548a7f513dbc}{isspace} (int c)
+\begin{DoxyCompactList}\small\item\em vérifie si l'on a un caractère blanc, d'espacement. \end{DoxyCompactList}\item 
+int \hyperlink{ctype_8c_adadd6582d46775aab6a51e29d16d9f77}{isupper} (int c)
+\begin{DoxyCompactList}\small\item\em vérifie si l'on a un caractère majuscule. \end{DoxyCompactList}\item 
+int \hyperlink{ctype_8c_adaf3aadefe3fc4fb07b6be0d7b880f53}{isxdigit} (int c)
+\begin{DoxyCompactList}\small\item\em vérifie s'il s'agit d'un chiffre hexadécimal. \end{DoxyCompactList}\item 
+int \hyperlink{ctype_8c_ac79d6114c9df7350cedcd8cf921a6ea4}{tolower} (int c)
+\begin{DoxyCompactList}\small\item\em Convertit la lettre c en minuscule. \end{DoxyCompactList}\item 
+int \hyperlink{ctype_8c_a9c2f57ac3865af9006fdbfd5db9fd517}{toupper} (int c)
+\begin{DoxyCompactList}\small\item\em Convertit la lettre c en majuscule. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{ctype_8c_adf38e126f73a010f30af76db2a28c6e1}{\index{ctype.\-c@{ctype.\-c}!isalnum@{isalnum}}
+\index{isalnum@{isalnum}!ctype.c@{ctype.\-c}}
+\subsubsection[{isalnum}]{\setlength{\rightskip}{0pt plus 5cm}int isalnum (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{ctype_8c_adf38e126f73a010f30af76db2a28c6e1}
+Vérifie si l'on a un caractère alphanumérique. C'est équivalent à (isalpha(c) $|$$|$ isdigit(c)).
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & le caractère à vérifier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+vrai si le caractère est alphanumérique. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{ctype_8c_adf38e126f73a010f30af76db2a28c6e1_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{ctype_8c_adf38e126f73a010f30af76db2a28c6e1_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ctype_8c_a25908ae63aac2df990634e1ae5bd14d9}{\index{ctype.\-c@{ctype.\-c}!isalpha@{isalpha}}
+\index{isalpha@{isalpha}!ctype.c@{ctype.\-c}}
+\subsubsection[{isalpha}]{\setlength{\rightskip}{0pt plus 5cm}int isalpha (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{ctype_8c_a25908ae63aac2df990634e1ae5bd14d9}
+Vérifie si l'on a un caractère alphabétique. Attention, ici on suppose qu'un caractère alphabétique est soit minuscule soit majuscule et exclu donc la gestion d'une locale où un caractère alphabétique ne serait ni minuscule ni majuscule.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & le caractère à vérifier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+vrai si le caractère est alphabétique. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{ctype_8c_a25908ae63aac2df990634e1ae5bd14d9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{ctype_8c_a25908ae63aac2df990634e1ae5bd14d9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ctype_8c_aea4929b1b41f1a6d723e0312b1f050ed}{\index{ctype.\-c@{ctype.\-c}!isblank@{isblank}}
+\index{isblank@{isblank}!ctype.c@{ctype.\-c}}
+\subsubsection[{isblank}]{\setlength{\rightskip}{0pt plus 5cm}int isblank (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{ctype_8c_aea4929b1b41f1a6d723e0312b1f050ed}
+Vérifie si le caractère est blanc, c'est-\/à-\/dire un espace ou une tabulation.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & le caractère à vérifier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+vrai si le caractère est blanc. 
+\end{DoxyReturn}
+\hypertarget{ctype_8c_a0008a4e8e7889734dc1d83297de07158}{\index{ctype.\-c@{ctype.\-c}!iscntrl@{iscntrl}}
+\index{iscntrl@{iscntrl}!ctype.c@{ctype.\-c}}
+\subsubsection[{iscntrl}]{\setlength{\rightskip}{0pt plus 5cm}int iscntrl (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{ctype_8c_a0008a4e8e7889734dc1d83297de07158}
+Vérifie si l'on a un caractère de contrôle.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & le caractère à vérifier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+vrai si le caractère est de contrôle. 
+\end{DoxyReturn}
+\hypertarget{ctype_8c_a3fa45b35c8abf67a950b6d3d4063dede}{\index{ctype.\-c@{ctype.\-c}!isdigit@{isdigit}}
+\index{isdigit@{isdigit}!ctype.c@{ctype.\-c}}
+\subsubsection[{isdigit}]{\setlength{\rightskip}{0pt plus 5cm}int isdigit (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{ctype_8c_a3fa45b35c8abf67a950b6d3d4063dede}
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & le caractère à vérifier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+vrai si le caractère est un chiffre. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{ctype_8c_a3fa45b35c8abf67a950b6d3d4063dede_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ctype_8c_a7b8f652a0423a80922dd89d8829db5f2}{\index{ctype.\-c@{ctype.\-c}!islower@{islower}}
+\index{islower@{islower}!ctype.c@{ctype.\-c}}
+\subsubsection[{islower}]{\setlength{\rightskip}{0pt plus 5cm}int islower (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{ctype_8c_a7b8f652a0423a80922dd89d8829db5f2}
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & le caractère à vérifier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+vrai si le caractère est minuscule. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ctype_8c_a7b8f652a0423a80922dd89d8829db5f2_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ctype_8c_a99355d8f0fb41ec43effb95189db0ed4}{\index{ctype.\-c@{ctype.\-c}!isprint@{isprint}}
+\index{isprint@{isprint}!ctype.c@{ctype.\-c}}
+\subsubsection[{isprint}]{\setlength{\rightskip}{0pt plus 5cm}int isprint (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{ctype_8c_a99355d8f0fb41ec43effb95189db0ed4}
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & le caractère à vérifier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+vrai si le caractère est imprimable. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ctype_8c_a99355d8f0fb41ec43effb95189db0ed4_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ctype_8c_af29554b3ec04ea7684482bffed5dbce6}{\index{ctype.\-c@{ctype.\-c}!ispunct@{ispunct}}
+\index{ispunct@{ispunct}!ctype.c@{ctype.\-c}}
+\subsubsection[{ispunct}]{\setlength{\rightskip}{0pt plus 5cm}int ispunct (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{ctype_8c_af29554b3ec04ea7684482bffed5dbce6}
+Vérifie s'il s'agit d'un caractère imprimable, qui ne soit ni un espace, ni un caractère alphanumérique.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & le caractère à vérifier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+vrai si le caractère est une ponctuation. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{ctype_8c_af29554b3ec04ea7684482bffed5dbce6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ctype_8c_a56be4166e4673843042a548a7f513dbc}{\index{ctype.\-c@{ctype.\-c}!isspace@{isspace}}
+\index{isspace@{isspace}!ctype.c@{ctype.\-c}}
+\subsubsection[{isspace}]{\setlength{\rightskip}{0pt plus 5cm}int isspace (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{ctype_8c_a56be4166e4673843042a548a7f513dbc}
+Vérifie si l'on a un caractère blanc, d'espacement. Il s'agit de \-: espace, saut de page (form-\/feed, '\textbackslash{}f'), saut de ligne (newline, '\textbackslash{}n'), retour chariot (carriage return, '\textbackslash{}r'), tabulation horizontale ('\textbackslash{}t'), et tabulation verticale ('\textbackslash{}v').
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & le caractère à vérifier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+vrai si le caractère est d'espacement. 
+\end{DoxyReturn}
+\hypertarget{ctype_8c_adadd6582d46775aab6a51e29d16d9f77}{\index{ctype.\-c@{ctype.\-c}!isupper@{isupper}}
+\index{isupper@{isupper}!ctype.c@{ctype.\-c}}
+\subsubsection[{isupper}]{\setlength{\rightskip}{0pt plus 5cm}int isupper (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{ctype_8c_adadd6582d46775aab6a51e29d16d9f77}
+Vérifie si l'on a un caractère majuscule.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & le caractère à vérifier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+vrai si le caractère est majuscule. 
+\end{DoxyReturn}
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ctype_8c_adadd6582d46775aab6a51e29d16d9f77_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ctype_8c_adaf3aadefe3fc4fb07b6be0d7b880f53}{\index{ctype.\-c@{ctype.\-c}!isxdigit@{isxdigit}}
+\index{isxdigit@{isxdigit}!ctype.c@{ctype.\-c}}
+\subsubsection[{isxdigit}]{\setlength{\rightskip}{0pt plus 5cm}int isxdigit (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{ctype_8c_adaf3aadefe3fc4fb07b6be0d7b880f53}
+Vérifie s'il s'agit d'un chiffre hexadécimal, c'est à dire 0 1 2 3 4 5 6 7 8 9 a b c d e f A B C D E F.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & le caractère à vérifier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+vrai si le caractère est un chiffre hexadécimal. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{ctype_8c_adaf3aadefe3fc4fb07b6be0d7b880f53_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ctype_8c_ac79d6114c9df7350cedcd8cf921a6ea4}{\index{ctype.\-c@{ctype.\-c}!tolower@{tolower}}
+\index{tolower@{tolower}!ctype.c@{ctype.\-c}}
+\subsubsection[{tolower}]{\setlength{\rightskip}{0pt plus 5cm}int tolower (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{ctype_8c_ac79d6114c9df7350cedcd8cf921a6ea4}
+Convertit la lettre c en minuscule si c'est possible.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & le caractère à convertir.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+le caractère converti. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{ctype_8c_ac79d6114c9df7350cedcd8cf921a6ea4_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{ctype_8c_ac79d6114c9df7350cedcd8cf921a6ea4_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ctype_8c_a9c2f57ac3865af9006fdbfd5db9fd517}{\index{ctype.\-c@{ctype.\-c}!toupper@{toupper}}
+\index{toupper@{toupper}!ctype.c@{ctype.\-c}}
+\subsubsection[{toupper}]{\setlength{\rightskip}{0pt plus 5cm}int toupper (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{ctype_8c_a9c2f57ac3865af9006fdbfd5db9fd517}
+Convertit la lettre c en majuscule si c'est possible.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & le caractère à convertir.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+le caractère converti. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{ctype_8c_a9c2f57ac3865af9006fdbfd5db9fd517_cgraph}
+\end{center}
+\end{figure}
+
+

@@ -87,7 +87,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a href="#nested-classes">Structures de données</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Définitions de type</a> &#124;
-<a href="#func-members">Fonctions</a>  </div>
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Référence du fichier vfs.c</div>  </div>
 </div><!--header-->
@@ -95,7 +96,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Virtual File System. Gestion des points de montage.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="devfs_8h_source.html">fs/devfs.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="dcache_8h_source.html">dcache.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="devfs_8h_source.html">fs/devfs.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="fat_8h_source.html">fs/fat.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="kdirent_8h_source.html">kdirent.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="kfcntl_8h_source.html">kfcntl.h</a>&gt;</code><br/>
@@ -110,7 +112,7 @@ Graphe des dépendances par inclusion de vfs.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="vfs_8c__incl.png" border="0" usemap="#kernel_2vfs_8c" alt=""/></div>
 <map name="kernel_2vfs_8c" id="kernel_2vfs_8c">
-<area shape="rect" id="node3" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="232,83,309,111"/><area shape="rect" id="node7" href="fd__types_8h.html" title="fd_types.h" alt="" coords="5,393,85,421"/><area shape="rect" id="node9" href="fat_8h.html" title="fs/fat.h" alt="" coords="529,83,591,111"/><area shape="rect" id="node23" href="vfs_8h.html" title="Virtual File System." alt="" coords="603,161,653,189"/><area shape="rect" id="node28" href="kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="677,161,747,189"/><area shape="rect" id="node33" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="489,238,553,266"/><area shape="rect" id="node55" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="1016,238,1093,266"/><area shape="rect" id="node59" href="kerrno_8h.html" title="Codes erreurs." alt="" coords="821,83,888,111"/><area shape="rect" id="node61" href="kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="333,83,427,111"/><area shape="rect" id="node65" href="klog_8h.html" title="Logging macros." alt="" coords="912,83,968,111"/><area shape="rect" id="node13" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="681,238,743,266"/><area shape="rect" id="node15" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="715,470,776,498"/><area shape="rect" id="node17" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="720,315,781,343"/><area shape="rect" id="node20" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="669,393,747,421"/><area shape="rect" id="node37" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="479,315,564,343"/><area shape="rect" id="node41" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="267,393,371,421"/><area shape="rect" id="node43" href="process__types_8h.html" title="process_types.h" alt="" coords="395,393,509,421"/><area shape="rect" id="node45" href="symtable_8h.html" title="symtable.h" alt="" coords="109,393,192,421"/><area shape="rect" id="node51" href="vmm_8h.html" title="vmm.h" alt="" coords="533,393,595,421"/><area shape="rect" id="node48" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="128,470,173,498"/><area shape="rect" id="node67" href="kstdio_8h.html" title="kprintf" alt="" coords="907,161,973,189"/></map>
+<area shape="rect" id="node3" href="dcache_8h.html" title="Dentry cache." alt="" coords="202,83,276,111"/><area shape="rect" id="node5" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="402,83,479,111"/><area shape="rect" id="node9" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="706,393,786,421"/><area shape="rect" id="node13" href="fat_8h.html" title="fs/fat.h" alt="" coords="620,83,682,111"/><area shape="rect" id="node26" href="vfs_8h.html" title="Virtual File System." alt="" coords="684,161,735,189"/><area shape="rect" id="node31" href="kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="154,161,223,189"/><area shape="rect" id="node36" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="287,238,351,266"/><area shape="rect" id="node58" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="911,238,988,266"/><area shape="rect" id="node62" href="kerrno_8h.html" title="Codes erreurs." alt="" coords="810,83,876,111"/><area shape="rect" id="node64" href="kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="503,83,596,111"/><area shape="rect" id="node68" href="klog_8h.html" title="Logging macros." alt="" coords="954,83,1010,111"/><area shape="rect" id="node11" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="264,470,326,498"/><area shape="rect" id="node17" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="623,238,684,266"/><area shape="rect" id="node20" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="171,315,232,343"/><area shape="rect" id="node23" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="44,393,122,421"/><area shape="rect" id="node40" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="276,315,362,343"/><area shape="rect" id="node44" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="332,393,436,421"/><area shape="rect" id="node46" href="process__types_8h.html" title="process_types.h" alt="" coords="460,393,575,421"/><area shape="rect" id="node48" href="symtable_8h.html" title="symtable.h" alt="" coords="599,393,682,421"/><area shape="rect" id="node54" href="vmm_8h.html" title="vmm.h" alt="" coords="196,393,258,421"/><area shape="rect" id="node51" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="618,470,663,498"/><area shape="rect" id="node70" href="kstdio_8h.html" title="kprintf" alt="" coords="951,161,1018,189"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
@@ -131,9 +133,9 @@ Fonctions</h2></td></tr>
 <tr class="memitem:ab2237a3610010d8a211ef3d55a521dba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab2237a3610010d8a211ef3d55a521dba"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#ab2237a3610010d8a211ef3d55a521dba">vfs_register_fs</a> (<a class="el" href="structfile__system__t.html">file_system_t</a> *fs)</td></tr>
 <tr class="memdesc:ab2237a3610010d8a211ef3d55a521dba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistrer un FS dans le VFS pour le rendre disponible. <br/></td></tr>
-<tr class="memitem:a7b293d0cca90e9f633dc69cc5900c430"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a7b293d0cca90e9f633dc69cc5900c430">vfs_open</a> (const char *pathname, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags)</td></tr>
+<tr class="memitem:a7b293d0cca90e9f633dc69cc5900c430"><td class="memItemLeft" align="right" valign="top"><a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a7b293d0cca90e9f633dc69cc5900c430">vfs_open</a> (const char *pathname, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags)</td></tr>
 <tr class="memdesc:a7b293d0cca90e9f633dc69cc5900c430"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouverture d'un fichier.  <a href="#a7b293d0cca90e9f633dc69cc5900c430"></a><br/></td></tr>
-<tr class="memitem:ab0c805d30412c7b434adf437a404ce6a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#ab0c805d30412c7b434adf437a404ce6a">vfs_close</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd)</td></tr>
+<tr class="memitem:ab0c805d30412c7b434adf437a404ce6a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#ab0c805d30412c7b434adf437a404ce6a">vfs_close</a> (<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *ofd)</td></tr>
 <tr class="memdesc:ab0c805d30412c7b434adf437a404ce6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fermeture d'un fichier ouvert.  <a href="#ab0c805d30412c7b434adf437a404ce6a"></a><br/></td></tr>
 <tr class="memitem:a26aa39a32af0bfccaffdbcec89c0a00e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e">vfs_mount</a> (const char *device, const char *mountpoint, const char *type)</td></tr>
 <tr class="memdesc:a26aa39a32af0bfccaffdbcec89c0a00e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Montage d'un device sur un certain point de montage.  <a href="#a26aa39a32af0bfccaffdbcec89c0a00e"></a><br/></td></tr>
@@ -157,8 +159,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_
 <tr class="memdesc:aa536fea0b394849df5d127410b5b4f19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la date d'accès et de modification d'un fichier.  <a href="#aa536fea0b394849df5d127410b5b4f19"></a><br/></td></tr>
 <tr class="memitem:a64ef66712e6c30f0295e1e1cad601beb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a64ef66712e6c30f0295e1e1cad601beb">vfs_rename</a> (const char *oldpath, const char *newpath)</td></tr>
 <tr class="memdesc:a64ef66712e6c30f0295e1e1cad601beb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renomme ou déplace un fichier.  <a href="#a64ef66712e6c30f0295e1e1cad601beb"></a><br/></td></tr>
-<tr class="memitem:a631bdc2a44ac1b7477782b058277a8d3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a631bdc2a44ac1b7477782b058277a8d3">vfs_readdir</a> (<a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *ofd, char *entries, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
+<tr class="memitem:a631bdc2a44ac1b7477782b058277a8d3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vfs_8c.html#a631bdc2a44ac1b7477782b058277a8d3">vfs_readdir</a> (<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *ofd, char *entries, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
 <tr class="memdesc:a631bdc2a44ac1b7477782b058277a8d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de plusieurs entrées d'un dossier.  <a href="#a631bdc2a44ac1b7477782b058277a8d3"></a><br/></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a03e43e12af080f1b15566b6ca357a9ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03e43e12af080f1b15566b6ca357a9ca"></a>
+struct <a class="el" href="struct__open__file__operations__t.html">_open_file_operations_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pipe_fops</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
@@ -281,7 +288,7 @@ DESCRIPTION</h1>
         <tr>
           <td class="memname">int vfs_close </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *&#160;</td>
           <td class="paramname"><em>ofd</em></td><td>)</td>
           <td></td>
         </tr>
@@ -300,7 +307,16 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="vfs_8c_ab0c805d30412c7b434adf437a404ce6a_cgraph.png" border="0" usemap="#vfs_8c_ab0c805d30412c7b434adf437a404ce6a_cgraph" alt=""/></div>
 <map name="vfs_8c_ab0c805d30412c7b434adf437a404ce6a_cgraph" id="vfs_8c_ab0c805d30412c7b434adf437a404ce6a_cgraph">
-<area shape="rect" id="node3" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="133,5,184,33"/></map>
+<area shape="rect" id="node3" href="dcache_8c.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="133,5,248,33"/><area shape="rect" id="node7" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="469,30,520,58"/><area shape="rect" id="node5" href="hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="296,5,421,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_ab0c805d30412c7b434adf437a404ce6a_icgraph.png" border="0" usemap="#vfs_8c_ab0c805d30412c7b434adf437a404ce6a_icgraph" alt=""/></div>
+<map name="vfs_8c_ab0c805d30412c7b434adf437a404ce6a_icgraph" id="vfs_8c_ab0c805d30412c7b434adf437a404ce6a_icgraph">
+<area shape="rect" id="node3" href="kfcntl_8c.html#adc12a443121c63ad99a6311aa2739884" title="Ferme tous les file descriptors ouverts." alt="" coords="168,5,259,33"/><area shape="rect" id="node7" href="kfcntl_8c.html#a3a5f4c56fd3fcc2b69757102f722fc29" title="SYSCALL_HANDLER2" alt="" coords="133,55,293,83"/><area shape="rect" id="node5" href="kprocess_8c.html#acc70870c5d5807f03b0a58bd1e160f6f" title="Syscall appelé lors de la fin d&#39;exécution d&#39;un process." alt="" coords="341,5,501,33"/></map>
 </div>
 </p>
 
@@ -325,7 +341,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="vfs_8c_a2e2b9554ca8721b61981dff16a7b54ad_cgraph.png" border="0" usemap="#vfs_8c_a2e2b9554ca8721b61981dff16a7b54ad_cgraph" alt=""/></div>
 <map name="vfs_8c_a2e2b9554ca8721b61981dff16a7b54ad_cgraph" id="vfs_8c_a2e2b9554ca8721b61981dff16a7b54ad_cgraph">
-<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="117,5,184,33"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="233,5,372,33"/></map>
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="421,13,488,41"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné." alt="" coords="127,25,196,53"/><area shape="rect" id="node9" href="dcache_8c.html#a6a634167e657e519cadf44eb6e6b9068" title="dcache_init" alt="" coords="117,75,205,103"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="537,13,676,41"/><area shape="rect" id="node11" href="hashmap_8h.html#a81cd9ee5f00b62bf3103612cd87d8a5d" title="hashmap_create" alt="" coords="255,50,372,78"/></map>
 </div>
 </p>
 
@@ -362,6 +378,15 @@ Voici le graphe d'appel pour cette fonction :</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_a392f80d5c4ab48178abcd268c3f64c45_icgraph.png" border="0" usemap="#vfs_8c_a392f80d5c4ab48178abcd268c3f64c45_icgraph" alt=""/></div>
+<map name="vfs_8c_a392f80d5c4ab48178abcd268c3f64c45_icgraph" id="vfs_8c_a392f80d5c4ab48178abcd268c3f64c45_icgraph">
+<area shape="rect" id="node3" href="kdirent_8c.html#a90bdfb89824032c54ece9f851ca07f69" title="SYSCALL_HANDLER3" alt="" coords="133,5,293,33"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -458,7 +483,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="vfs_8c_a26aa39a32af0bfccaffdbcec89c0a00e_cgraph.png" border="0" usemap="#vfs_8c_a26aa39a32af0bfccaffdbcec89c0a00e_cgraph" alt=""/></div>
 <map name="vfs_8c_a26aa39a32af0bfccaffdbcec89c0a00e_cgraph" id="vfs_8c_a26aa39a32af0bfccaffdbcec89c0a00e_cgraph">
-<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="143,5,204,33"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="140,55,207,83"/><area shape="rect" id="node9" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="147,106,200,134"/><area shape="rect" id="node11" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="136,157,211,185"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="260,55,399,83"/><area shape="rect" id="node13" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="295,157,364,185"/></map>
+<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="143,5,204,33"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="261,55,328,83"/><area shape="rect" id="node9" href="kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="265,157,324,185"/><area shape="rect" id="node11" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="136,106,211,134"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="380,55,519,83"/><area shape="rect" id="node13" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="260,106,329,134"/></map>
 </div>
 </p>
 
@@ -469,7 +494,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a>* vfs_open </td>
+          <td class="memname"><a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a>* vfs_open </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>pathname</em>, </td>
@@ -501,7 +526,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="vfs_8c_a7b293d0cca90e9f633dc69cc5900c430_cgraph.png" border="0" usemap="#vfs_8c_a7b293d0cca90e9f633dc69cc5900c430_cgraph" alt=""/></div>
 <map name="vfs_8c_a7b293d0cca90e9f633dc69cc5900c430_cgraph" id="vfs_8c_a7b293d0cca90e9f633dc69cc5900c430_cgraph">
-<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="129,5,199,33"/></map>
+<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="129,5,199,33"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="131,55,197,83"/><area shape="rect" id="node9" href="kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="135,106,193,134"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="249,55,388,83"/></map>
 </div>
 </p>
 
@@ -523,7 +548,7 @@ Voici le graphe des appelants de cette fonction :</div>
         <tr>
           <td class="memname">int vfs_readdir </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__open__file__descriptor.html">open_file_descriptor</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *&#160;</td>
           <td class="paramname"><em>ofd</em>, </td>
         </tr>
         <tr>
@@ -620,6 +645,24 @@ Voici le graphe d'appel pour cette fonction :</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_a8f5dc4e5e4a2aa5d7649790256f11685_cgraph.png" border="0" usemap="#vfs_8c_a8f5dc4e5e4a2aa5d7649790256f11685_cgraph" alt=""/></div>
+<map name="vfs_8c_a8f5dc4e5e4a2aa5d7649790256f11685_cgraph" id="vfs_8c_a8f5dc4e5e4a2aa5d7649790256f11685_cgraph">
+<area shape="rect" id="node3" href="dcache_8c.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="131,5,245,33"/><area shape="rect" id="node5" href="hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="293,5,419,33"/><area shape="rect" id="node7" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="467,5,517,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_a8f5dc4e5e4a2aa5d7649790256f11685_icgraph.png" border="0" usemap="#vfs_8c_a8f5dc4e5e4a2aa5d7649790256f11685_icgraph" alt=""/></div>
+<map name="vfs_8c_a8f5dc4e5e4a2aa5d7649790256f11685_icgraph" id="vfs_8c_a8f5dc4e5e4a2aa5d7649790256f11685_icgraph">
+<area shape="rect" id="node3" href="kdirent_8c.html#ad690af967ba8e26d8ac3e48b8353eacc" title="SYSCALL_HANDLER2" alt="" coords="131,5,291,33"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -720,6 +763,15 @@ Voici le graphe d'appel pour cette fonction :</div>
 <dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès. </dd></dl>
 
 <p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vfs_8c_a4f8b6a1f2b0e6012446196f18b33d686_cgraph.png" border="0" usemap="#vfs_8c_a4f8b6a1f2b0e6012446196f18b33d686_cgraph" alt=""/></div>
+<map name="vfs_8c_a4f8b6a1f2b0e6012446196f18b33d686_cgraph" id="vfs_8c_a4f8b6a1f2b0e6012446196f18b33d686_cgraph">
+<area shape="rect" id="node3" href="dcache_8c.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="136,5,251,33"/><area shape="rect" id="node5" href="hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="299,5,424,33"/><area shape="rect" id="node7" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="472,5,523,33"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="vfs_8c_a4f8b6a1f2b0e6012446196f18b33d686_icgraph.png" border="0" usemap="#vfs_8c_a4f8b6a1f2b0e6012446196f18b33d686_icgraph" alt=""/></div>
@@ -767,7 +819,7 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Mai 8 2013 09:38:43 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Mai 30 2013 19:08:40 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

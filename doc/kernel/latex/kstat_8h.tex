@@ -1,0 +1,238 @@
+\hypertarget{kstat_8h}{\section{Référence du fichier kernel/include/kstat.h}
+\label{kstat_8h}\index{kernel/include/kstat.\-h@{kernel/include/kstat.\-h}}
+}
+
+
+Manipulation des caractéristiques d'un fichier.  
+
+
+{\ttfamily \#include $<$types.\-h$>$}\\*
+{\ttfamily \#include $<$clock.\-h$>$}\\*
+Graphe des dépendances par inclusion de kstat.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{kstat_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kstat_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structstat}{stat}
+\begin{DoxyCompactList}\small\item\em Informations sur un noeud. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{kstat_8h_ab5bee51e9ee68b83ab11d4b340f7200b}{S\-\_\-\-I\-F\-M\-T}~0170000
+\item 
+\#define \hyperlink{kstat_8h_a28e80cd43106882904be148b2a397d42}{S\-\_\-\-I\-F\-S\-O\-C\-K}~0140000
+\item 
+\#define \hyperlink{kstat_8h_afef163ce62372757e84bd9fc88c07aad}{S\-\_\-\-I\-F\-L\-N\-K}~0120000
+\item 
+\#define \hyperlink{kstat_8h_a1aaa48b192a5dd3b6d7ee91fc98cd17d}{S\-\_\-\-I\-F\-R\-E\-G}~0100000
+\item 
+\#define \hyperlink{kstat_8h_a5c5b74a1cb1a1ae83572500b94e1938f}{S\-\_\-\-I\-F\-B\-L\-K}~0060000
+\item 
+\#define \hyperlink{kstat_8h_a11fb0652b963a735f3377eb1c9239f2d}{S\-\_\-\-I\-F\-D\-I\-R}~0040000
+\item 
+\#define \hyperlink{kstat_8h_aef3a1d1ba22c83e30b5c834dd343b2a8}{S\-\_\-\-I\-F\-C\-H\-R}~0020000
+\item 
+\#define \hyperlink{kstat_8h_a4966f25d9f03a7a06bc47ac729fd86cf}{S\-\_\-\-I\-F\-I\-F\-O}~0010000
+\item 
+\#define \hyperlink{kstat_8h_a40223db1b95a04f5b28cceb3c34cfebd}{S\-\_\-\-I\-X\-O\-T\-H}~001
+\item 
+\#define \hyperlink{kstat_8h_a071147a0cb995036967c80f64b1f74b9}{S\-\_\-\-I\-R\-O\-T\-H}~002
+\item 
+\#define \hyperlink{kstat_8h_a5303f49f26293acdb9533756c78322fb}{S\-\_\-\-I\-W\-O\-T\-H}~004
+\item 
+\#define \hyperlink{kstat_8h_a042e69ac0e7dd56e5cfcd9e97d010323}{S\-\_\-\-I\-X\-G\-R\-P}~0010
+\item 
+\#define \hyperlink{kstat_8h_a4f5f280b929768113739fb34d6f7be8a}{S\-\_\-\-I\-R\-G\-R\-P}~0020
+\item 
+\#define \hyperlink{kstat_8h_ae6774871a90d9442f00abe18b87fee6e}{S\-\_\-\-I\-W\-G\-R\-P}~0040
+\item 
+\#define \hyperlink{kstat_8h_af10a35e3950795d6ee4e07157d000131}{S\-\_\-\-I\-X\-U\-S\-R}~00100
+\item 
+\#define \hyperlink{kstat_8h_a84c7dbf5cf2fdfb690f76348b60a8cb7}{S\-\_\-\-I\-R\-U\-S\-R}~00200
+\item 
+\#define \hyperlink{kstat_8h_ad70001754261c15a1bdc8e876c6d09d7}{S\-\_\-\-I\-W\-U\-S\-R}~00400
+\item 
+\#define \hyperlink{kstat_8h_a722eba7370eb3b0aafb3272182e08520}{S\-\_\-\-I\-S\-B\-L\-K}(m)~(((m) \& \hyperlink{kstat_8h_ab5bee51e9ee68b83ab11d4b340f7200b}{S\-\_\-\-I\-F\-M\-T}) == \hyperlink{kstat_8h_a5c5b74a1cb1a1ae83572500b94e1938f}{S\-\_\-\-I\-F\-B\-L\-K})
+\item 
+\#define \hyperlink{kstat_8h_a767b5d0691f435f8a9b7f5e0fa97a645}{S\-\_\-\-I\-S\-C\-H\-R}(m)~(((m) \& \hyperlink{kstat_8h_ab5bee51e9ee68b83ab11d4b340f7200b}{S\-\_\-\-I\-F\-M\-T}) == \hyperlink{kstat_8h_aef3a1d1ba22c83e30b5c834dd343b2a8}{S\-\_\-\-I\-F\-C\-H\-R})
+\item 
+\#define \hyperlink{kstat_8h_a70b64ed67c0ab484b4ba09487da34e91}{S\-\_\-\-I\-S\-D\-I\-R}(m)~(((m) \& \hyperlink{kstat_8h_ab5bee51e9ee68b83ab11d4b340f7200b}{S\-\_\-\-I\-F\-M\-T}) == \hyperlink{kstat_8h_a11fb0652b963a735f3377eb1c9239f2d}{S\-\_\-\-I\-F\-D\-I\-R})
+\item 
+\#define \hyperlink{kstat_8h_a777b706bbe9e7920c091aaa2b547b093}{S\-\_\-\-I\-S\-F\-I\-F\-O}(m)~(((m) \& \hyperlink{kstat_8h_ab5bee51e9ee68b83ab11d4b340f7200b}{S\-\_\-\-I\-F\-M\-T}) == \hyperlink{kstat_8h_a4966f25d9f03a7a06bc47ac729fd86cf}{S\-\_\-\-I\-F\-I\-F\-O})
+\item 
+\#define \hyperlink{kstat_8h_a835359614ec43fbd96f53993cde84ef2}{S\-\_\-\-I\-S\-L\-N\-K}(m)~(((m) \& \hyperlink{kstat_8h_ab5bee51e9ee68b83ab11d4b340f7200b}{S\-\_\-\-I\-F\-M\-T}) == \hyperlink{kstat_8h_afef163ce62372757e84bd9fc88c07aad}{S\-\_\-\-I\-F\-L\-N\-K})
+\item 
+\#define \hyperlink{kstat_8h_abf68371159fa46b5cc47d0f3ac9ab723}{S\-\_\-\-I\-S\-R\-E\-G}(m)~(((m) \& \hyperlink{kstat_8h_ab5bee51e9ee68b83ab11d4b340f7200b}{S\-\_\-\-I\-F\-M\-T}) == \hyperlink{kstat_8h_a1aaa48b192a5dd3b6d7ee91fc98cd17d}{S\-\_\-\-I\-F\-R\-E\-G})
+\item 
+\#define \hyperlink{kstat_8h_a765304585be8c05f7fa72495e6d5881f}{S\-\_\-\-I\-S\-S\-O\-C\-K}(m)~(((m) \& \hyperlink{kstat_8h_ab5bee51e9ee68b83ab11d4b340f7200b}{S\-\_\-\-I\-F\-M\-T}) == \hyperlink{kstat_8h_a28e80cd43106882904be148b2a397d42}{S\-\_\-\-I\-F\-S\-O\-C\-K})
+\end{DoxyCompactItemize}
+\subsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t}
+\item 
+typedef \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{kstat_8h_a451f1b5788fa7cc5d33db47a5992e7a6}{dev\-\_\-t}
+\item 
+typedef \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{kstat_8h_af2306308627701b66dc6f3babe821ab4}{uid\-\_\-t}
+\item 
+typedef \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{kstat_8h_aa7352f1065fe606194d792e2b292cf83}{gid\-\_\-t}
+\item 
+\hypertarget{kstat_8h_a9e3c03dae15b90102eb1770dd95adadc}{typedef \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} {\bfseries nlink\-\_\-t}}\label{kstat_8h_a9e3c03dae15b90102eb1770dd95adadc}
+
+\item 
+\hypertarget{kstat_8h_a390f3028d0805a15c3d28ee27439c389}{typedef \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} {\bfseries blksize\-\_\-t}}\label{kstat_8h_a390f3028d0805a15c3d28ee27439c389}
+
+\item 
+\hypertarget{kstat_8h_a2706f994576080967d7633282dfcabbf}{typedef \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} {\bfseries blkcnt\-\_\-t}}\label{kstat_8h_a2706f994576080967d7633282dfcabbf}
+
+\item 
+typedef \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{kstat_8h_aed4e918b44240739869c4bdb1c4787a9}{ino\-\_\-t}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
+
+
+\subsection{Documentation des macros}
+\hypertarget{kstat_8h_a5c5b74a1cb1a1ae83572500b94e1938f}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-F\-B\-L\-K@{S\-\_\-\-I\-F\-B\-L\-K}}
+\index{S\-\_\-\-I\-F\-B\-L\-K@{S\-\_\-\-I\-F\-B\-L\-K}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-F\-B\-L\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-F\-B\-L\-K~0060000}}\label{kstat_8h_a5c5b74a1cb1a1ae83572500b94e1938f}
+Block device. \hypertarget{kstat_8h_aef3a1d1ba22c83e30b5c834dd343b2a8}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-F\-C\-H\-R@{S\-\_\-\-I\-F\-C\-H\-R}}
+\index{S\-\_\-\-I\-F\-C\-H\-R@{S\-\_\-\-I\-F\-C\-H\-R}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-F\-C\-H\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-F\-C\-H\-R~0020000}}\label{kstat_8h_aef3a1d1ba22c83e30b5c834dd343b2a8}
+Character device. \hypertarget{kstat_8h_a11fb0652b963a735f3377eb1c9239f2d}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-F\-D\-I\-R@{S\-\_\-\-I\-F\-D\-I\-R}}
+\index{S\-\_\-\-I\-F\-D\-I\-R@{S\-\_\-\-I\-F\-D\-I\-R}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-F\-D\-I\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-F\-D\-I\-R~0040000}}\label{kstat_8h_a11fb0652b963a735f3377eb1c9239f2d}
+Directory. \hypertarget{kstat_8h_a4966f25d9f03a7a06bc47ac729fd86cf}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-F\-I\-F\-O@{S\-\_\-\-I\-F\-I\-F\-O}}
+\index{S\-\_\-\-I\-F\-I\-F\-O@{S\-\_\-\-I\-F\-I\-F\-O}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-F\-I\-F\-O}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-F\-I\-F\-O~0010000}}\label{kstat_8h_a4966f25d9f03a7a06bc47ac729fd86cf}
+F\-I\-F\-O. \hypertarget{kstat_8h_afef163ce62372757e84bd9fc88c07aad}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-F\-L\-N\-K@{S\-\_\-\-I\-F\-L\-N\-K}}
+\index{S\-\_\-\-I\-F\-L\-N\-K@{S\-\_\-\-I\-F\-L\-N\-K}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-F\-L\-N\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-F\-L\-N\-K~0120000}}\label{kstat_8h_afef163ce62372757e84bd9fc88c07aad}
+Symbolic link. \hypertarget{kstat_8h_ab5bee51e9ee68b83ab11d4b340f7200b}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-F\-M\-T@{S\-\_\-\-I\-F\-M\-T}}
+\index{S\-\_\-\-I\-F\-M\-T@{S\-\_\-\-I\-F\-M\-T}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-F\-M\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-F\-M\-T~0170000}}\label{kstat_8h_ab5bee51e9ee68b83ab11d4b340f7200b}
+These bits determine file type. \hypertarget{kstat_8h_a1aaa48b192a5dd3b6d7ee91fc98cd17d}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-F\-R\-E\-G@{S\-\_\-\-I\-F\-R\-E\-G}}
+\index{S\-\_\-\-I\-F\-R\-E\-G@{S\-\_\-\-I\-F\-R\-E\-G}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-F\-R\-E\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-F\-R\-E\-G~0100000}}\label{kstat_8h_a1aaa48b192a5dd3b6d7ee91fc98cd17d}
+Regular file. \hypertarget{kstat_8h_a28e80cd43106882904be148b2a397d42}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-F\-S\-O\-C\-K@{S\-\_\-\-I\-F\-S\-O\-C\-K}}
+\index{S\-\_\-\-I\-F\-S\-O\-C\-K@{S\-\_\-\-I\-F\-S\-O\-C\-K}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-F\-S\-O\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-F\-S\-O\-C\-K~0140000}}\label{kstat_8h_a28e80cd43106882904be148b2a397d42}
+Socket. \hypertarget{kstat_8h_a4f5f280b929768113739fb34d6f7be8a}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-R\-G\-R\-P@{S\-\_\-\-I\-R\-G\-R\-P}}
+\index{S\-\_\-\-I\-R\-G\-R\-P@{S\-\_\-\-I\-R\-G\-R\-P}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-R\-G\-R\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-R\-G\-R\-P~0020}}\label{kstat_8h_a4f5f280b929768113739fb34d6f7be8a}
+Read by group. \hypertarget{kstat_8h_a071147a0cb995036967c80f64b1f74b9}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-R\-O\-T\-H@{S\-\_\-\-I\-R\-O\-T\-H}}
+\index{S\-\_\-\-I\-R\-O\-T\-H@{S\-\_\-\-I\-R\-O\-T\-H}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-R\-O\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-R\-O\-T\-H~002}}\label{kstat_8h_a071147a0cb995036967c80f64b1f74b9}
+Read by other. \hypertarget{kstat_8h_a84c7dbf5cf2fdfb690f76348b60a8cb7}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-R\-U\-S\-R@{S\-\_\-\-I\-R\-U\-S\-R}}
+\index{S\-\_\-\-I\-R\-U\-S\-R@{S\-\_\-\-I\-R\-U\-S\-R}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-R\-U\-S\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-R\-U\-S\-R~00200}}\label{kstat_8h_a84c7dbf5cf2fdfb690f76348b60a8cb7}
+Read by user. \hypertarget{kstat_8h_a722eba7370eb3b0aafb3272182e08520}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-S\-B\-L\-K@{S\-\_\-\-I\-S\-B\-L\-K}}
+\index{S\-\_\-\-I\-S\-B\-L\-K@{S\-\_\-\-I\-S\-B\-L\-K}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-S\-B\-L\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-S\-B\-L\-K(
+\begin{DoxyParamCaption}
+\item[{}]{m}
+\end{DoxyParamCaption}
+)~(((m) \& {\bf S\-\_\-\-I\-F\-M\-T}) == {\bf S\-\_\-\-I\-F\-B\-L\-K})}}\label{kstat_8h_a722eba7370eb3b0aafb3272182e08520}
+Is block device special file. \hypertarget{kstat_8h_a767b5d0691f435f8a9b7f5e0fa97a645}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-S\-C\-H\-R@{S\-\_\-\-I\-S\-C\-H\-R}}
+\index{S\-\_\-\-I\-S\-C\-H\-R@{S\-\_\-\-I\-S\-C\-H\-R}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-S\-C\-H\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-S\-C\-H\-R(
+\begin{DoxyParamCaption}
+\item[{}]{m}
+\end{DoxyParamCaption}
+)~(((m) \& {\bf S\-\_\-\-I\-F\-M\-T}) == {\bf S\-\_\-\-I\-F\-C\-H\-R})}}\label{kstat_8h_a767b5d0691f435f8a9b7f5e0fa97a645}
+Is char device special file. \hypertarget{kstat_8h_a70b64ed67c0ab484b4ba09487da34e91}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-S\-D\-I\-R@{S\-\_\-\-I\-S\-D\-I\-R}}
+\index{S\-\_\-\-I\-S\-D\-I\-R@{S\-\_\-\-I\-S\-D\-I\-R}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-S\-D\-I\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-S\-D\-I\-R(
+\begin{DoxyParamCaption}
+\item[{}]{m}
+\end{DoxyParamCaption}
+)~(((m) \& {\bf S\-\_\-\-I\-F\-M\-T}) == {\bf S\-\_\-\-I\-F\-D\-I\-R})}}\label{kstat_8h_a70b64ed67c0ab484b4ba09487da34e91}
+Is a directory. \hypertarget{kstat_8h_a777b706bbe9e7920c091aaa2b547b093}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-S\-F\-I\-F\-O@{S\-\_\-\-I\-S\-F\-I\-F\-O}}
+\index{S\-\_\-\-I\-S\-F\-I\-F\-O@{S\-\_\-\-I\-S\-F\-I\-F\-O}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-S\-F\-I\-F\-O}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-S\-F\-I\-F\-O(
+\begin{DoxyParamCaption}
+\item[{}]{m}
+\end{DoxyParamCaption}
+)~(((m) \& {\bf S\-\_\-\-I\-F\-M\-T}) == {\bf S\-\_\-\-I\-F\-I\-F\-O})}}\label{kstat_8h_a777b706bbe9e7920c091aaa2b547b093}
+Is a F\-I\-F\-O. \hypertarget{kstat_8h_a835359614ec43fbd96f53993cde84ef2}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-S\-L\-N\-K@{S\-\_\-\-I\-S\-L\-N\-K}}
+\index{S\-\_\-\-I\-S\-L\-N\-K@{S\-\_\-\-I\-S\-L\-N\-K}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-S\-L\-N\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-S\-L\-N\-K(
+\begin{DoxyParamCaption}
+\item[{}]{m}
+\end{DoxyParamCaption}
+)~(((m) \& {\bf S\-\_\-\-I\-F\-M\-T}) == {\bf S\-\_\-\-I\-F\-L\-N\-K})}}\label{kstat_8h_a835359614ec43fbd96f53993cde84ef2}
+Is a link. \hypertarget{kstat_8h_abf68371159fa46b5cc47d0f3ac9ab723}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-S\-R\-E\-G@{S\-\_\-\-I\-S\-R\-E\-G}}
+\index{S\-\_\-\-I\-S\-R\-E\-G@{S\-\_\-\-I\-S\-R\-E\-G}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-S\-R\-E\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-S\-R\-E\-G(
+\begin{DoxyParamCaption}
+\item[{}]{m}
+\end{DoxyParamCaption}
+)~(((m) \& {\bf S\-\_\-\-I\-F\-M\-T}) == {\bf S\-\_\-\-I\-F\-R\-E\-G})}}\label{kstat_8h_abf68371159fa46b5cc47d0f3ac9ab723}
+Is a regular file. \hypertarget{kstat_8h_a765304585be8c05f7fa72495e6d5881f}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-S\-S\-O\-C\-K@{S\-\_\-\-I\-S\-S\-O\-C\-K}}
+\index{S\-\_\-\-I\-S\-S\-O\-C\-K@{S\-\_\-\-I\-S\-S\-O\-C\-K}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-S\-S\-O\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-S\-S\-O\-C\-K(
+\begin{DoxyParamCaption}
+\item[{}]{m}
+\end{DoxyParamCaption}
+)~(((m) \& {\bf S\-\_\-\-I\-F\-M\-T}) == {\bf S\-\_\-\-I\-F\-S\-O\-C\-K})}}\label{kstat_8h_a765304585be8c05f7fa72495e6d5881f}
+Is a socket. \hypertarget{kstat_8h_ae6774871a90d9442f00abe18b87fee6e}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-W\-G\-R\-P@{S\-\_\-\-I\-W\-G\-R\-P}}
+\index{S\-\_\-\-I\-W\-G\-R\-P@{S\-\_\-\-I\-W\-G\-R\-P}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-W\-G\-R\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-W\-G\-R\-P~0040}}\label{kstat_8h_ae6774871a90d9442f00abe18b87fee6e}
+Write by group. \hypertarget{kstat_8h_a5303f49f26293acdb9533756c78322fb}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-W\-O\-T\-H@{S\-\_\-\-I\-W\-O\-T\-H}}
+\index{S\-\_\-\-I\-W\-O\-T\-H@{S\-\_\-\-I\-W\-O\-T\-H}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-W\-O\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-W\-O\-T\-H~004}}\label{kstat_8h_a5303f49f26293acdb9533756c78322fb}
+Write by other. \hypertarget{kstat_8h_ad70001754261c15a1bdc8e876c6d09d7}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-W\-U\-S\-R@{S\-\_\-\-I\-W\-U\-S\-R}}
+\index{S\-\_\-\-I\-W\-U\-S\-R@{S\-\_\-\-I\-W\-U\-S\-R}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-W\-U\-S\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-W\-U\-S\-R~00400}}\label{kstat_8h_ad70001754261c15a1bdc8e876c6d09d7}
+Write by user. \hypertarget{kstat_8h_a042e69ac0e7dd56e5cfcd9e97d010323}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-X\-G\-R\-P@{S\-\_\-\-I\-X\-G\-R\-P}}
+\index{S\-\_\-\-I\-X\-G\-R\-P@{S\-\_\-\-I\-X\-G\-R\-P}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-X\-G\-R\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-X\-G\-R\-P~0010}}\label{kstat_8h_a042e69ac0e7dd56e5cfcd9e97d010323}
+Execute by group. \hypertarget{kstat_8h_a40223db1b95a04f5b28cceb3c34cfebd}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-X\-O\-T\-H@{S\-\_\-\-I\-X\-O\-T\-H}}
+\index{S\-\_\-\-I\-X\-O\-T\-H@{S\-\_\-\-I\-X\-O\-T\-H}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-X\-O\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-X\-O\-T\-H~001}}\label{kstat_8h_a40223db1b95a04f5b28cceb3c34cfebd}
+Execute by other. \hypertarget{kstat_8h_af10a35e3950795d6ee4e07157d000131}{\index{kstat.\-h@{kstat.\-h}!S\-\_\-\-I\-X\-U\-S\-R@{S\-\_\-\-I\-X\-U\-S\-R}}
+\index{S\-\_\-\-I\-X\-U\-S\-R@{S\-\_\-\-I\-X\-U\-S\-R}!kstat.h@{kstat.\-h}}
+\subsubsection[{S\-\_\-\-I\-X\-U\-S\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-I\-X\-U\-S\-R~00100}}\label{kstat_8h_af10a35e3950795d6ee4e07157d000131}
+Execute by user. 
+
+\subsection{Documentation des définitions de type}
+\hypertarget{kstat_8h_a451f1b5788fa7cc5d33db47a5992e7a6}{\index{kstat.\-h@{kstat.\-h}!dev\-\_\-t@{dev\-\_\-t}}
+\index{dev\-\_\-t@{dev\-\_\-t}!kstat.h@{kstat.\-h}}
+\subsubsection[{dev\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf uint32\-\_\-t} {\bf dev\-\_\-t}}}\label{kstat_8h_a451f1b5788fa7cc5d33db47a5992e7a6}
+Si c'est un fichier spécial, c'est le numéro du device. \hypertarget{kstat_8h_aa7352f1065fe606194d792e2b292cf83}{\index{kstat.\-h@{kstat.\-h}!gid\-\_\-t@{gid\-\_\-t}}
+\index{gid\-\_\-t@{gid\-\_\-t}!kstat.h@{kstat.\-h}}
+\subsubsection[{gid\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf uint32\-\_\-t} {\bf gid\-\_\-t}}}\label{kstat_8h_aa7352f1065fe606194d792e2b292cf83}
+Group id du owner du fichier. \hypertarget{kstat_8h_aed4e918b44240739869c4bdb1c4787a9}{\index{kstat.\-h@{kstat.\-h}!ino\-\_\-t@{ino\-\_\-t}}
+\index{ino\-\_\-t@{ino\-\_\-t}!kstat.h@{kstat.\-h}}
+\subsubsection[{ino\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf uint32\-\_\-t} {\bf ino\-\_\-t}}}\label{kstat_8h_aed4e918b44240739869c4bdb1c4787a9}
+Numéro d'inode. \hypertarget{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{\index{kstat.\-h@{kstat.\-h}!mode\-\_\-t@{mode\-\_\-t}}
+\index{mode\-\_\-t@{mode\-\_\-t}!kstat.h@{kstat.\-h}}
+\subsubsection[{mode\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf uint32\-\_\-t} {\bf mode\-\_\-t}}}\label{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}
+Mode d'accès d'un fichier (rwx...) et type. \hypertarget{kstat_8h_af2306308627701b66dc6f3babe821ab4}{\index{kstat.\-h@{kstat.\-h}!uid\-\_\-t@{uid\-\_\-t}}
+\index{uid\-\_\-t@{uid\-\_\-t}!kstat.h@{kstat.\-h}}
+\subsubsection[{uid\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf uint32\-\_\-t} {\bf uid\-\_\-t}}}\label{kstat_8h_af2306308627701b66dc6f3babe821ab4}
+User id du owner du fichier. 

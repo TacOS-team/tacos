@@ -7,8 +7,7 @@
 {\ttfamily \#include $<$klibc/string.\-h$>$}\\*
 {\ttfamily \#include $<$drivers/vga.\-h$>$}\\*
 {\ttfamily \#include $<$drivers/vga\-\_\-modes.\-h$>$}\\*
-Graphe des dépendances par inclusion de vga.\-c\-:
-\nopagebreak
+Graphe des dépendances par inclusion de vga.\-c\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -44,11 +43,7 @@ enum \hyperlink{vga_8c_ac1f0e67ab147f10622a5aca934210abb}{other\-\_\-regs\-\_\-n
 \hypertarget{vga_8c_a6f3973bec3dcf69873c06c680338ccd9}{void {\bfseries vga\-\_\-set\-\_\-mode} (enum vga\-\_\-mode \hyperlink{structmode}{mode})}\label{vga_8c_a6f3973bec3dcf69873c06c680338ccd9}
 
 \item 
-\hypertarget{vga_8c_a6449fa6f08d0b13a43ac1a373acd7ed2}{void {\bfseries vga\-\_\-back\-\_\-to\-\_\-text\-\_\-mode} ()}\label{vga_8c_a6449fa6f08d0b13a43ac1a373acd7ed2}
-
-\item 
-\hypertarget{vga_8c_ab4914929beebc81e861d0dfac915dffd}{void {\bfseries init\-\_\-vga} ()}\label{vga_8c_ab4914929beebc81e861d0dfac915dffd}
-
+void \hyperlink{vga_8c_ab4914929beebc81e861d0dfac915dffd}{init\-\_\-vga} ()
 \end{DoxyCompactItemize}
 
 
@@ -57,7 +52,7 @@ enum \hyperlink{vga_8c_ac1f0e67ab147f10622a5aca934210abb}{other\-\_\-regs\-\_\-n
 Tac\-O\-S developers
 \end{DoxyAuthor}
 \hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2011 -\/ Tac\-O\-S developers.
+Copyright (C) 2011, 2012, 2013 -\/ Tac\-O\-S developers.
 
 This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
@@ -71,7 +66,7 @@ V\-G\-A driver.
 
 \href{http://www.osdever.net/FreeVGA/vga/vga.htm}{\tt http\-://www.\-osdever.\-net/\-Free\-V\-G\-A/vga/vga.\-htm} 
 
-\href{http://files.osdev.org/mirrors/geezer/osd/graphics/modes.c}{\tt http\-://files.\-osdev.\-org/mirrors/geezer/osd/graphics/modes.\-c} (modes structs taken from there) \-: \char`\"{}paranoïd\char`\"{} advises from Free\-V\-G\-A \-: currently only supports \hyperlink{structmode}{mode} 320$\ast$200$\ast$256 colors \-: video memory base address is hardcoded 
+\href{http://files.osdev.org/mirrors/geezer/osd/graphics/modes.c}{\tt http\-://files.\-osdev.\-org/mirrors/geezer/osd/graphics/modes.\-c} (modes structs taken from there) T\-O\-D\-O\-: \char`\"{}paranoïd\char`\"{} advises from Free\-V\-G\-A T\-O\-D\-O\-: currently only supports \hyperlink{structmode}{mode} 320$\ast$200$\ast$256 colors T\-O\-D\-O\-: video memory base address is hardcoded 
 \end{DoxySeeAlso}
 
 
@@ -91,3 +86,24 @@ Defines the number of registers and the ports corresponding to the address regis
 Defines the ports corresponding to other registers used. $|$ I\-N\-S\-T\-A\-T\-\_\-1\-\_\-\-R\-E\-A\-D\-: Input Status \#1 Register -- Used to initialize the Attribute controllers registers flipflop (\begin{DoxySeeAlso}{Voir également}
 reset\-\_\-ac\-\_\-controllers\-\_\-flipflop) 
 \end{DoxySeeAlso}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{vga_8c_ab4914929beebc81e861d0dfac915dffd}{\index{vga.\-c@{vga.\-c}!init\-\_\-vga@{init\-\_\-vga}}
+\index{init\-\_\-vga@{init\-\_\-vga}!vga.c@{vga.\-c}}
+\subsubsection[{init\-\_\-vga}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-vga (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{vga_8c_ab4914929beebc81e861d0dfac915dffd}
+Initialisation Driver V\-G\-A. 
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{vga_8c_ab4914929beebc81e861d0dfac915dffd_cgraph}
+\end{center}
+\end{figure}
+
+

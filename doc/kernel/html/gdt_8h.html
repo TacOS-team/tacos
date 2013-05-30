@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/include/gdt.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier gdt.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="types_8h_source.html">types.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de gdt.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="gdt_8h__incl.png" border="0" usemap="#kernel_2include_2gdt_8h" alt=""/></div>
+<map name="kernel_2include_2gdt_8h" id="kernel_2include_2gdt_8h">
+<area shape="rect" id="node3" href="types_8h.html" title="types.h" alt="" coords="41,83,103,111"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="gdt_8h__dep__incl.png" border="0" usemap="#kernel_2include_2gdt_8hdep" alt=""/></div>
+<map name="kernel_2include_2gdt_8hdep" id="kernel_2include_2gdt_8hdep">
+<area shape="rect" id="node3" href="gdt_8c.html" title="Setup de la GDT." alt="" coords="5,83,93,111"/><area shape="rect" id="node5" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="117,83,224,111"/><area shape="rect" id="node7" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="248,83,371,111"/><area shape="rect" id="node9" href="ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="395,83,507,111"/><area shape="rect" id="node11" href="ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="531,83,648,111"/><area shape="rect" id="node13" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="672,83,797,111"/></map>
+</div>
+</div>
+<p><a href="gdt_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__segment__descriptor.html">x86_segment_descriptor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Segment Descriptor (cf doc intel v3. 3.4.3)  <a href="structx86__segment__descriptor.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtss.html">tss</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a6e6d7d33347e967d8e08331768d7613d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e6d7d33347e967d8e08331768d7613d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KERNEL_CODE_SEGMENT</b>&#160;&#160;&#160;0x08</td></tr>
+<tr class="memitem:a7bc6c629d10c61fd289f6d1f6e13f12b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7bc6c629d10c61fd289f6d1f6e13f12b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KERNEL_DATA_SEGMENT</b>&#160;&#160;&#160;0x10</td></tr>
+<tr class="memitem:a0057d5403459728557a4d57d65270b23"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0057d5403459728557a4d57d65270b23"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KERNEL_STACK_SEGMENT</b>&#160;&#160;&#160;(KERNEL_DATA_SEGMENT)</td></tr>
+<tr class="memitem:ae8b178571a26d53960aac6cda4098c58"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae8b178571a26d53960aac6cda4098c58"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>USER_CODE_SEGMENT</b>&#160;&#160;&#160;0x1B</td></tr>
+<tr class="memitem:a434b05e7d8ca833bb6ed1fe3d2de9455"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a434b05e7d8ca833bb6ed1fe3d2de9455"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>USER_DATA_SEGMENT</b>&#160;&#160;&#160;0x23</td></tr>
+<tr class="memitem:aabf885dbd6110a4f9d43f3181a288e2e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aabf885dbd6110a4f9d43f3181a288e2e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>USER_STACK_SEGMENT</b>&#160;&#160;&#160;(USER_DATA_SEGMENT)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ad75e2b81df5ee259e7964e9f16c3ec56"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad75e2b81df5ee259e7964e9f16c3ec56"></a>
+typedef struct <a class="el" href="structtss.html">tss</a>&#160;</td><td class="memItemRight" valign="bottom"><b>tss_t</b></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:abb81c8341c9230f4e46a1054d73a0ec4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gdt_8h.html#abb81c8341c9230f4e46a1054d73a0ec4">gdt_setup</a> (<a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> ram_size)</td></tr>
+<tr class="memitem:a57cd883493d6f9a5610a569e153393bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57cd883493d6f9a5610a569e153393bf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_tss</b> (<a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> stack_address)</td></tr>
+<tr class="memitem:a72360769dc5cdf35fa18b4bfa67f1a66"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72360769dc5cdf35fa18b4bfa67f1a66"></a>
+<a class="el" href="structtss.html">tss_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get_default_tss</b> ()</td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+<p>Description de ce que fait le fichier </p>
+</div><h2>Documentation des fonctions</h2>
+<a class="anchor" id="abb81c8341c9230f4e46a1054d73a0ec4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gdt_setup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>ram_size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Configuration de la gdt.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ram_size</td><td>Taille de la ram. 0 si non connue. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:20 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

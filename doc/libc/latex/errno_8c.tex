@@ -1,0 +1,61 @@
+\hypertarget{errno_8c}{\section{Référence du fichier libc/errno.c}
+\label{errno_8c}\index{libc/errno.\-c@{libc/errno.\-c}}
+}
+
+
+Contient la variable d'erreur errno.  
+
+
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{errno_8c_ad65a8842cc674e3ddf69355898c0ecbf}{errno}
+\item 
+const char $\ast$ \hyperlink{errno_8c_a76ebfe24a40210e5935998c1fa86d3a0}{sys\-\_\-errlist} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Tac\-O\-S developers
+\end{DoxyAuthor}
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+
+
+\subsection{Documentation des variables}
+\hypertarget{errno_8c_ad65a8842cc674e3ddf69355898c0ecbf}{\index{errno.\-c@{errno.\-c}!errno@{errno}}
+\index{errno@{errno}!errno.c@{errno.\-c}}
+\subsubsection[{errno}]{\setlength{\rightskip}{0pt plus 5cm}int errno}}\label{errno_8c_ad65a8842cc674e3ddf69355898c0ecbf}
+Variable qui contient le numéro de la dernière erreur. \hypertarget{errno_8c_a76ebfe24a40210e5935998c1fa86d3a0}{\index{errno.\-c@{errno.\-c}!sys\-\_\-errlist@{sys\-\_\-errlist}}
+\index{sys\-\_\-errlist@{sys\-\_\-errlist}!errno.c@{errno.\-c}}
+\subsubsection[{sys\-\_\-errlist}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ sys\-\_\-errlist\mbox{[}$\,$\mbox{]}}}\label{errno_8c_a76ebfe24a40210e5935998c1fa86d3a0}
+{\bfseries Valeur initiale \-:}
+\begin{DoxyCode}
+ \{
+\textcolor{stringliteral}{"Erreur inconnue ou pas d'erreur."},
+\textcolor{stringliteral}{"Essai encore ;)."},
+\textcolor{stringliteral}{"Mauvais numéro de fichier."},
+\textcolor{stringliteral}{"Mauvaise adresse."},
+\textcolor{stringliteral}{"Fichier trop gros."},
+\textcolor{stringliteral}{"System call interrompu."},
+\textcolor{stringliteral}{"Argument invalide."},
+\textcolor{stringliteral}{"Erreur d'entrée / sortie."},
+\textcolor{stringliteral}{"Plus d'espace libre sur le périphérique."},
+\textcolor{stringliteral}{"Tube brisé."},
+\textcolor{stringliteral}{"Résultat mathématique non representable."},
+\textcolor{stringliteral}{"Entrée non trouvée."},
+\textcolor{stringliteral}{"Ce n'est pas un dossier."},
+\textcolor{stringliteral}{"Le fichier existe déjà."},
+\textcolor{stringliteral}{"Opération non permise."},
+\textcolor{stringliteral}{"C'est un dossier."},
+\textcolor{stringliteral}{"Overflow de la file table."},
+\textcolor{stringliteral}{"Trop de fichiers ouverts."}\}
+\end{DoxyCode}
+Liste des messages d'erreur. 

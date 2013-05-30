@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>TacOS: Référence du fichier kernel/include/vmm.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TacOS
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier vmm.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="types_8h_source.html">types.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de vmm.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="vmm_8h__incl.png" border="0" usemap="#kernel_2include_2vmm_8h" alt=""/></div>
+<map name="kernel_2include_2vmm_8h" id="kernel_2include_2vmm_8h">
+<area shape="rect" id="node3" href="types_8h.html" title="types.h" alt="" coords="47,83,108,111"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="vmm_8h__dep__incl.png" border="0" usemap="#kernel_2include_2vmm_8hdep" alt=""/></div>
+<map name="kernel_2include_2vmm_8hdep" id="kernel_2include_2vmm_8hdep">
+<area shape="rect" id="node3" href="vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="5,83,133,127"/><area shape="rect" id="node5" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="1224,91,1392,119"/><area shape="rect" id="node13" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="41,262,167,290"/><area shape="rect" id="node24" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="1531,347,1637,375"/><area shape="rect" id="node71" href="vmm_8c.html" title="kernel/vmm.c" alt="" coords="1833,262,1932,290"/><area shape="rect" id="node82" href="kmalloc_8c.html" title="kernel/kmalloc.c" alt="" coords="3119,91,3233,119"/><area shape="rect" id="node84" href="pagination_8c.html" title="kernel/pagination.c" alt="" coords="3257,91,3388,119"/><area shape="rect" id="node7" href="tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="1681,254,1809,298"/><area shape="rect" id="node9" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="940,177,1063,205"/><area shape="rect" id="node11" href="context_8h.html" title="kernel/include/context.h" alt="" coords="259,177,416,205"/><area shape="rect" id="node15" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="2112,177,2259,205"/><area shape="rect" id="node26" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="1956,262,2057,290"/><area shape="rect" id="node36" href="ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="491,177,648,205"/><area shape="rect" id="node40" href="kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="191,262,300,290"/><area shape="rect" id="node43" href="ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="375,262,487,290"/><area shape="rect" id="node48" href="scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="1087,177,1257,205"/><area shape="rect" id="node62" href="ksem_8c.html" title="Gestion des sémaphores." alt="" coords="1257,262,1359,290"/><area shape="rect" id="node66" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="1383,262,1495,290"/><area shape="rect" id="node68" href="round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="1519,262,1657,290"/><area shape="rect" id="node17" href="serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="2511,254,2639,298"/><area shape="rect" id="node20" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2\l_functions.c" alt="" coords="2663,254,2791,298"/><area shape="rect" id="node22" href="fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="2815,262,2993,290"/><area shape="rect" id="node28" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="1111,262,1233,290"/><area shape="rect" id="node30" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="2132,262,2239,290"/><area shape="rect" id="node32" href="module_8c.html" title="kernel/module.c" alt="" coords="2263,262,2375,290"/><area shape="rect" id="node34" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="2399,262,2487,290"/><area shape="rect" id="node45" href="ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="511,262,628,290"/><area shape="rect" id="node51" href="round__robin_8h.html" title="kernel/include/round\l_robin.h" alt="" coords="652,254,791,298"/><area shape="rect" id="node54" href="init_8c.html" title="kernel/init.c" alt="" coords="815,262,903,290"/><area shape="rect" id="node56" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="927,262,1036,290"/></map>
+</div>
+</div>
+<p><a href="vmm_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structslab.html">slab</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a slab of pages.  <a href="structslab.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structslabs__list.html">slabs_list</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvirtual__mem.html">virtual_mem</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a99b3ba454c13cfdb437fcaadd1cd3e97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vmm_8h.html#a99b3ba454c13cfdb437fcaadd1cd3e97">init_vmm</a> (struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *kvm)</td></tr>
+<tr class="memitem:ab0e0fd30967b0927b223ea3c6eb8b72a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0e0fd30967b0927b223ea3c6eb8b72a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_process_vm</b> (struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *vm, int init_nb_pages)</td></tr>
+<tr class="memitem:aa6984df26426c14049065875c6b85e9c"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vmm_8h.html#aa6984df26426c14049065875c6b85e9c">allocate_new_page</a> (struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *vm, void **alloc, int u_s)</td></tr>
+<tr class="memdesc:aa6984df26426c14049065875c6b85e9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocation d'une nouvelle page.  <a href="#aa6984df26426c14049065875c6b85e9c"></a><br/></td></tr>
+<tr class="memitem:a042a3049e6bc33c07f2b2c2a9dcfe78b"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b">allocate_new_pages</a> (struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *vm, unsigned int nb_pages, void **alloc, int u_s)</td></tr>
+<tr class="memdesc:a042a3049e6bc33c07f2b2c2a9dcfe78b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle.  <a href="#a042a3049e6bc33c07f2b2c2a9dcfe78b"></a><br/></td></tr>
+<tr class="memitem:aebd98fed59e0c1376fe6952ec2d063c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aebd98fed59e0c1376fe6952ec2d063c4"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>unallocate_page</b> (struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *vm, void *page)</td></tr>
+<tr class="memitem:abf9022ad1609a6a896bd75311896c670"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf9022ad1609a6a896bd75311896c670"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>calculate_min_pages</b> (<a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
+<tr class="memitem:a9b15e99fd34b3e01cdfae1d5c877ea0c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b15e99fd34b3e01cdfae1d5c877ea0c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>vmm_print_heap</b> (struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *vm)</td></tr>
+<tr class="memitem:ae55ef35e3be343419b2267fbb2f664f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae55ef35e3be343419b2267fbb2f664f3"></a>
+<a class="el" href="types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">vaddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_linear_address</b> (int dir, int table, int offset)</td></tr>
+<tr class="memitem:a8a8d898de5c72c3b55b845d19ec32172"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vmm_8h.html#a8a8d898de5c72c3b55b845d19ec32172">sys_vmm</a> (<a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> min_size, void **alloc, <a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> *real_alloc_size)</td></tr>
+<tr class="memitem:a2b8567beb8e915a4313dc7d0706687b4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b8567beb8e915a4313dc7d0706687b4"></a>
+struct <a class="el" href="structpage__table__entry.html">page_table_entry</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get_pte</b> (int dir, int table)</td></tr>
+<tr class="memitem:ade03970596f39a143387325dd835d2c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade03970596f39a143387325dd835d2c4"></a>
+<a class="el" href="types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>vmm_get_page_paddr</b> (<a class="el" href="types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">vaddr_t</a> vaddr)</td></tr>
+<tr class="memitem:aed7855b392283571ac42224cb840b754"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed7855b392283571ac42224cb840b754"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>map</b> (<a class="el" href="types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> phys_page_addr, <a class="el" href="types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">vaddr_t</a> virt_page_addr, int u_s)</td></tr>
+<tr class="memitem:a7326abebbbaf3dfc84414d7ed3097ed9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7326abebbbaf3dfc84414d7ed3097ed9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>unmap</b> (<a class="el" href="types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">vaddr_t</a> virt_page_addr)</td></tr>
+</table>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
+<h1><a class="anchor" id="LICENSE"></a>
+LICENSE</h1>
+<p>Copyright (C) 2010, 2011, 2012 - TacOS developers.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+<p>vmm est l'allocateur qui s'occupe de gérer les pages virtuelles du noyau. Il se base sur l'algorithme first fit (premier emplacement de taille suffisante)</p>
+<p>Maintien la liste des espaces libres et des espaces occupés (slabs). </p>
+</div><h2>Documentation des fonctions</h2>
+<a class="anchor" id="aa6984df26426c14049065875c6b85e9c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int allocate_new_page </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *&#160;</td>
+          <td class="paramname"><em>vm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&#160;</td>
+          <td class="paramname"><em>alloc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>u_s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+    <tr><td class="paramname">alloc</td><td></td></tr>
+    <tr><td class="paramname">u_s</td><td>1 si accessible en userspace, 0 sinon.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd></dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vmm_8h_aa6984df26426c14049065875c6b85e9c_cgraph.png" border="0" usemap="#vmm_8h_aa6984df26426c14049065875c6b85e9c_cgraph" alt=""/></div>
+<map name="vmm_8h_aa6984df26426c14049065875c6b85e9c_cgraph" id="vmm_8h_aa6984df26426c14049065875c6b85e9c_cgraph">
+<area shape="rect" id="node3" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="188,5,327,33"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a042a3049e6bc33c07f2b2c2a9dcfe78b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int allocate_new_pages </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *&#160;</td>
+          <td class="paramname"><em>vm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>nb_pages</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&#160;</td>
+          <td class="paramname"><em>alloc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>u_s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+    <tr><td class="paramname">nb_pages</td><td></td></tr>
+    <tr><td class="paramname">alloc</td><td></td></tr>
+    <tr><td class="paramname">u_s</td><td>1 si accessible en userspace, 0 sinon.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd></dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vmm_8h_a042a3049e6bc33c07f2b2c2a9dcfe78b_icgraph.png" border="0" usemap="#vmm_8h_a042a3049e6bc33c07f2b2c2a9dcfe78b_icgraph" alt=""/></div>
+<map name="vmm_8h_a042a3049e6bc33c07f2b2c2a9dcfe78b_icgraph" id="vmm_8h_a042a3049e6bc33c07f2b2c2a9dcfe78b_icgraph">
+<area shape="rect" id="node3" href="kmalloc_8c.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="228,736,295,764"/><area shape="rect" id="node108" href="vmm_8c.html#aa6984df26426c14049065875c6b85e9c" title="Allocation d&#39;une nouvelle page." alt="" coords="195,787,328,815"/><area shape="rect" id="node110" href="vmm_8c.html#a8a8d898de5c72c3b55b845d19ec32172" title="sys_vmm" alt="" coords="223,837,300,865"/><area shape="rect" id="node5" href="dcache_8h.html#a4f122b8158ba9f2044fda159f8ff0680" title="dcache_set" alt="" coords="607,27,695,55"/><area shape="rect" id="node7" href="serial_8h.html#a459999cfa35c788b64284953a93c4b57" title="Fonction d&#39;initialisation du driver série." alt="" coords="612,153,689,181"/><area shape="rect" id="node9" href="console_8h.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;." alt="" coords="605,204,696,232"/><area shape="rect" id="node11" href="tty_8h.html#a9ae7085e2afaadc63a592910d4ac4328" title="alloc_tty_driver" alt="" coords="395,204,504,232"/><area shape="rect" id="node15" href="tty_8h.html#a302b60b1c52001915aeb108b51efc397" title="tty_register_driver" alt="" coords="387,153,512,181"/><area shape="rect" id="node19" href="elf_8h.html#abbbb3d1f6ac9986f87d655cec7819556" title="charge un fichier elf dans la structure Elf32_File" alt="" coords="404,356,495,384"/><area shape="rect" id="node21" href="kprocess_8c.html#a47ef452c5b4017727c9c4222ab133fae" title="Syscall pour exécuter un programme." alt="" coords="571,305,731,333"/><area shape="rect" id="node23" href="devfs_8h.html#ac01eef8358c344396a59f06531a5dcb4" title="Initialisation du dev FS." alt="" coords="612,863,689,891"/><area shape="rect" id="node25" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="811,432,907,460"/><area shape="rect" id="node27" href="ext2__internal_8h.html#a1814eebfe79637247b38dda8e50a3263" title="Création d&#39;un noeud (fichier, dossier, fichier spécial...)" alt="" coords="404,457,495,485"/><area shape="rect" id="node33" href="ext2__internal_8h.html#aacb0077cd0a76158c9288ecd193d58da" title="ext2_lookup" alt="" coords="605,508,696,536"/><area shape="rect" id="node36" href="fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae" title="mount_FAT" alt="" coords="605,1065,696,1093"/><area shape="rect" id="node38" href="fat__internal_8h.html#aaf2cd44da9ce9df0808a2cd823fd1295" title="fat_lookup" alt="" coords="408,1015,491,1043"/><area shape="rect" id="node41" href="fat__internal_8h.html#ada9bd47fd90b01248fe52f302560f9f9" title="fat_readdir" alt="" coords="609,1116,692,1144"/><area shape="rect" id="node43" href="fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="613,1217,688,1245"/><area shape="rect" id="node45" href="fat__internal_8h.html#a0ae169e11ec76cae96a82e41fed70ece" title="open_root_dir" alt="" coords="400,1116,499,1144"/><area shape="rect" id="node50" href="fat__outils_8h.html#a015254ce721ab0097a1008ec7153b819" title="fat_lfn_to_sfn" alt="" coords="399,1217,500,1245"/><area shape="rect" id="node53" href="fat__outils_8h.html#acc4ab73ddc901dbfa52071c98ce0de6b" title="fat_decode_lfn_entry" alt="" coords="379,1268,520,1296"/><area shape="rect" id="node55" href="fat__outils_8h.html#a8100c884384ccb3b8ecec7f5180ad346" title="fat_decode_sfn_entry" alt="" coords="376,1319,523,1347"/><area shape="rect" id="node57" href="kprocess_8h.html#a67b19f8892567cdb63c98ee660300f60" title="Initialisation du proc FS." alt="" coords="609,913,692,941"/><area shape="rect" id="node59" href="kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="821,660,896,688"/><area shape="rect" id="node61" href="kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="988,609,1097,637"/><area shape="rect" id="node65" href="string_8c.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="420,609,479,637"/><area shape="rect" id="node70" href="vfs_8c.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="613,711,688,739"/><area shape="rect" id="node79" href="vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage." alt="" coords="817,812,900,840"/><area shape="rect" id="node84" href="hashmap_8c.html#a81cd9ee5f00b62bf3103612cd87d8a5d" title="hashmap_create" alt="" coords="391,1420,508,1448"/><area shape="rect" id="node88" href="vfs_8c.html#a2e2b9554ca8721b61981dff16a7b54ad" title="vfs_init" alt="" coords="827,1395,891,1423"/><area shape="rect" id="node90" href="hashmap_8c.html#a0c25525e8b6599bcafda45b74dcac19d" title="hashmap_set" alt="" coords="400,52,499,80"/><area shape="rect" id="node93" href="list_8c.html#a8111dff4de9d78342e96563621a7da63" title="list_init" alt="" coords="419,1471,480,1499"/><area shape="rect" id="node98" href="vfs_8c.html#ab2237a3610010d8a211ef3d55a521dba" title="Enregistrer un FS dans le VFS pour le rendre disponible." alt="" coords="396,913,503,941"/><area shape="rect" id="node30" href="ext2__internal_8h.html#a099858facc12a389ffbff826567cb7c4" title="Création d&#39;un dossier." alt="" coords="608,457,693,485"/><area shape="rect" id="node48" href="fat__internal_8h.html#a2673c2b00be14ce740290ba2e92b9f90" title="fat_unlink" alt="" coords="612,1167,689,1195"/><area shape="rect" id="node63" href="scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="1148,609,1249,637"/><area shape="rect" id="node73" href="kfcntl_8c.html#aa1d225acb87c04ac8d56c8096f587a03" title="SYSCALL_HANDLER3" alt="" coords="779,711,939,739"/><area shape="rect" id="node75" href="kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="829,761,888,789"/><area shape="rect" id="node77" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="1008,761,1077,789"/><area shape="rect" id="node86" href="dcache_8h.html#a6a634167e657e519cadf44eb6e6b9068" title="dcache_init" alt="" coords="607,1420,695,1448"/><area shape="rect" id="node95" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="608,1471,693,1499"/><area shape="rect" id="node101" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="616,964,685,992"/><area shape="rect" id="node103" href="fat_8h.html#a3d1f5d8e3b22672684528c112bc6ff06" title="fat_init" alt="" coords="620,1015,681,1043"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a99b3ba454c13cfdb437fcaadd1cd3e97"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_vmm </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structvirtual__mem.html">virtual_mem</a> *&#160;</td>
+          <td class="paramname"><em>kvm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initialisation de la VMM.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kvm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vmm_8h_a99b3ba454c13cfdb437fcaadd1cd3e97_cgraph.png" border="0" usemap="#vmm_8h_a99b3ba454c13cfdb437fcaadd1cd3e97_cgraph" alt=""/></div>
+<map name="vmm_8h_a99b3ba454c13cfdb437fcaadd1cd3e97_cgraph" id="vmm_8h_a99b3ba454c13cfdb437fcaadd1cd3e97_cgraph">
+<area shape="rect" id="node3" href="memory_8h.html#ab67b6223b9ebbe423e9102dbbed1afce" title="memory_get_kernel_top" alt="" coords="128,5,288,33"/><area shape="rect" id="node5" href="memory_8h.html#aeed93f8c282af6d9d4428813e331f583" title="Réserve un cadre de page." alt="" coords="132,55,284,99"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8a8d898de5c72c3b55b845d19ec32172"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sys_vmm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>min_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&#160;</td>
+          <td class="paramname"><em>alloc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> *&#160;</td>
+          <td class="paramname"><em>real_alloc_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Syscall VMM pour allouer des pages. </p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="vmm_8h_a8a8d898de5c72c3b55b845d19ec32172_cgraph.png" border="0" usemap="#vmm_8h_a8a8d898de5c72c3b55b845d19ec32172_cgraph" alt=""/></div>
+<map name="vmm_8h_a8a8d898de5c72c3b55b845d19ec32172_cgraph" id="vmm_8h_a8a8d898de5c72c3b55b845d19ec32172_cgraph">
+<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="135,5,273,33"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="135,55,273,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Mai 30 2013 19:08:22 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

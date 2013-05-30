@@ -1,0 +1,12 @@
+<map id="SYSCALL_HANDLER3" name="SYSCALL_HANDLER3">
+<area shape="rect" id="node3" href="$scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/>
+<area shape="rect" id="node5" href="$kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="255,55,313,83"/>
+<area shape="rect" id="node7" href="$elf_8c.html#aa84790a8edae8d2859861f19adf5dd41" title="Calcul la taille que prendra l&#39;exécutable dans la mémoire La fonction évalue l&#39;adresse de départ en m..." alt="" coords="251,106,317,134"/>
+<area shape="rect" id="node9" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="403,207,469,235"/>
+<area shape="rect" id="node13" href="$kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné." alt="" coords="249,207,319,235"/>
+<area shape="rect" id="node15" href="$elf_8c.html#a35e8f32030ee36d8c02357a0b483c1b2" title="charge un fichier elf Charge les données utiles de l&#39;exécutable en mémoire, de façon à ce que ce soit..." alt="" coords="251,258,317,286"/>
+<area shape="rect" id="node17" href="$elf_8c.html#abbbb3d1f6ac9986f87d655cec7819556" title="charge un fichier elf dans la structure Elf32_File" alt="" coords="239,309,329,337"/>
+<area shape="rect" id="node22" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="259,359,309,387"/>
+<area shape="rect" id="node11" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="519,207,657,235"/>
+<area shape="rect" id="node20" href="$kernel_2include_2klibc_2string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes." alt="" coords="405,309,467,337"/>
+</map>

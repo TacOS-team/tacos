@@ -7,6 +7,7 @@ var searchData=
   ['kernel_5foptions',['kernel_options',['../structkernel__options.html',1,'']]],
   ['kerr',['kerr',['../klog_8h.html#a7bc73d397e0b9afbd974e4feb837f16d',1,'klog.h']]],
   ['kerrno_2eh',['kerrno.h',['../kerrno_8h.html',1,'']]],
+  ['key',['key',['../structhashmap__cell__t.html#a18fa668e172072e9bff5e92e52d9f3af',1,'hashmap_cell_t']]],
   ['key_5falt',['KEY_ALT',['../keyboard_8c.html#a5f25a8926d9c3ce4b4a0824234e8ffd4',1,'keyboard.c']]],
   ['key_5fcapslock',['KEY_CAPSLOCK',['../keyboard_8c.html#af168e54444bdaff5f50f6f4734784762',1,'keyboard.c']]],
   ['key_5fescape',['KEY_ESCAPE',['../keyboard_8c.html#a6c8ee53908fc5d6df19f1da8502b38dc',1,'keyboard.c']]],

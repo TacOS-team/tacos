@@ -1,7 +1,8 @@
 <map id="fat_readdir" name="fat_readdir">
-<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="136,5,203,33"/>
-<area shape="rect" id="node7" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="144,55,195,83"/>
-<area shape="rect" id="node9" href="$kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="143,106,196,134"/>
-<area shape="rect" id="node11" href="$kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="141,157,197,185"/>
-<area shape="rect" id="node5" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="252,5,391,33"/>
+<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="285,5,352,33"/>
+<area shape="rect" id="node7" href="$fat__internal_8c.html#a0ae169e11ec76cae96a82e41fed70ece" title="open_root_dir" alt="" coords="137,30,236,58"/>
+<area shape="rect" id="node10" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="293,67,344,95"/>
+<area shape="rect" id="node13" href="$kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="160,131,213,159"/>
+<area shape="rect" id="node15" href="$kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="159,182,215,210"/>
+<area shape="rect" id="node5" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="401,5,540,33"/>
 </map>
