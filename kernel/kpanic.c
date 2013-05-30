@@ -119,7 +119,9 @@ static void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t
 	kprintf("                              \033[31m/!\\ KERNEL PANIC /!\\ \033[47m\033[30m \n");
 	kprintf("--------------------------------------------------------------------------------\n");
 	/* On affiche le nom du bad boy */
-	kprintf("In \033[31m%s (pid:%d)\033[47m\033[30m\n\n", badboy->name, badboy->pid);
+	if (badboy) {
+		kprintf("In \033[31m%s (pid:%d)\033[47m\033[30m\n\n", badboy->name, badboy->pid);
+	}
 	//kprintf("\x10 0x%x\t[%s]\n",frame->eip, addr_to_sym(frame->eip));
 	kprintf("Register dump:\n");
 	kprintf("eax:0x%x\tesp:0x%x\n",frame->eax, frame->esp);
@@ -137,7 +139,9 @@ static void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t
 			GAME_OVER();
 			break;
 		case EXCEPTION_DIVIDE_ERROR:
-			sys_kill(badboy->pid, SIGFPE, NULL);
+			if (badboy) {
+				sys_kill(badboy->pid, SIGFPE, NULL);
+			}
 			kprintf("Division by zero.\n");
 			break;
 		case EXCEPTION_INVALID_OPCODE:
@@ -149,12 +153,16 @@ static void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t
 			GAME_OVER();
 			break;
 		case EXCEPTION_PAGE_FAULT:
-			sys_kill(badboy->pid, SIGSEGV, NULL);
+			if (badboy) {
+				sys_kill(badboy->pid, SIGSEGV, NULL);
+			}
 			kprintf("Page fault (error code : %d).\n", error_code);
 			page_fault_report(error_code);
 			break;
 		case EXCEPTION_DOUBLE_FAULT:
-			kprintf("Double fault (error code : %d).\n", error_code);
+			if (badboy) {
+				kprintf("Double fault (error code : %d).\n", error_code);
+			}
 			GAME_OVER();
 			break;
 		case EXCEPTION_GENERAL_PROTECTION :
