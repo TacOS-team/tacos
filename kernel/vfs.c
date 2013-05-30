@@ -189,15 +189,17 @@ static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, u
 	ofd->mnt = mnt;
 	ofd->file_size = dentry->d_inode->i_size;
 	ofd->current_octet = 0;
+	ofd->i_fs_specific = dentry->d_inode->i_fs_specific;
+	ofd->extra_data = NULL;
 
 	if (S_ISFIFO(dentry->d_inode->i_mode)) {
 		klog("ouverture d'un pipe !");
 		klog("i count : %d", dentry->d_inode->i_count);
 		ofd->f_ops = &pipe_fops;
+		ofd->fs_instance = NULL;
 	} else {
 		ofd->f_ops = dentry->d_inode->i_fops;
 		ofd->fs_instance = mnt->instance;
-		ofd->extra_data = dentry->d_inode->i_fs_specific;
 	}
 
 	return ofd;

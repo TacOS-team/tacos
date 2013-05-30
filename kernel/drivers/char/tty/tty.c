@@ -187,7 +187,7 @@ static ssize_t tty_write(open_file_descriptor *ofd, const void *buf, size_t coun
     return -1;
   }
 
-	chardev_interfaces *di = ofd->extra_data;
+	chardev_interfaces *di = ofd->i_fs_specific;
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;
 	process_t *current_process = get_current_process();
 
@@ -207,7 +207,7 @@ static ssize_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 
 	char c;
 	unsigned int j = 0;
-	chardev_interfaces *di = ofd->extra_data;
+	chardev_interfaces *di = ofd->i_fs_specific;
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;
 
 	process_t *current_process = get_current_process();
@@ -252,7 +252,7 @@ static ssize_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 
 int tty_ioctl (open_file_descriptor *ofd,  unsigned int request, void *data) {
 
-	chardev_interfaces *di = ofd->extra_data;
+	chardev_interfaces *di = ofd->i_fs_specific;
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;
 
 	switch	(request) {
@@ -286,7 +286,7 @@ int tty_ioctl (open_file_descriptor *ofd,  unsigned int request, void *data) {
 }
 
 static int tty_close (open_file_descriptor *ofd) {
-	chardev_interfaces *di = ofd->extra_data;
+	chardev_interfaces *di = ofd->i_fs_specific;
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;
 
 	if (t->n_open == 0) {
@@ -302,7 +302,7 @@ static int tty_close (open_file_descriptor *ofd) {
 }
 
 static int tty_open (open_file_descriptor *ofd) {
-	chardev_interfaces *di = ofd->extra_data;
+	chardev_interfaces *di = ofd->i_fs_specific;
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;
 
 	if (t->n_open == 0) {

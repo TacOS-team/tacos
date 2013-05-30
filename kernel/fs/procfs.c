@@ -158,7 +158,7 @@ static ssize_t write_string_in_buffer(open_file_descriptor * ofd, char * dest,
 
 static ssize_t procfs_read_name(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
-	extra_data_procfs_t * extra = ofd->extra_data;
+	extra_data_procfs_t * extra = ofd->i_fs_specific;
 	process_t * process         = find_process(extra->pid);
 	if(process) {
 		result = write_string_in_buffer(ofd, buffer, process->name, count);
@@ -168,7 +168,7 @@ static ssize_t procfs_read_name(open_file_descriptor * ofd, void* buffer, size_t
 
 static ssize_t procfs_read_ppid(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
-	extra_data_procfs_t *extra = ofd->extra_data;
+	extra_data_procfs_t *extra = ofd->i_fs_specific;
 	process_t* process = find_process(extra->pid);
 	if(process) {
 		char ppid[MAX_PID_LENGTH+1];
@@ -181,7 +181,7 @@ static ssize_t procfs_read_ppid(open_file_descriptor * ofd, void* buffer, size_t
 /*
 static ssize_t procfs_read_priority(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
-	extra_data_procfs_t *extra = ofd->extra_data;
+	extra_data_procfs_t *extra = ofd->i_fs_specific;
 	process_t* process = find_process(extra->pid);
 	if(process) {
 		char priority[MAX_PID_LENGTH+1];
@@ -193,7 +193,7 @@ static ssize_t procfs_read_priority(open_file_descriptor * ofd, void* buffer, si
 
 static ssize_t procfs_read_state(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
-	extra_data_procfs_t *extra = ofd->extra_data;
+	extra_data_procfs_t *extra = ofd->i_fs_specific;
 	process_t* process = find_process(extra->pid);
 	if(process) {
 		result = write_string_in_buffer(ofd, buffer, proc_status[process->state], count);
@@ -204,7 +204,7 @@ static ssize_t procfs_read_state(open_file_descriptor * ofd, void* buffer, size_
 
 static ssize_t procfs_read_process_fd(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
-	extra_data_procfs_t *extra = ofd->extra_data;
+	extra_data_procfs_t *extra = ofd->i_fs_specific;
 	process_t* process = find_process(extra->pid);
 	if(process && process->fd[extra->specific_data.fd]) {
 		result = write_string_in_buffer(ofd, buffer,
@@ -297,7 +297,7 @@ static int procfs_read_process_dir(open_file_descriptor * ofd, char * entries,
 	const size_t base_reclen = sizeof(d->d_ino)  + sizeof(d->d_reclen)
 													 + sizeof(d->d_type) + 1;
 
-	extra_data_procfs_t * extra = ofd->extra_data;
+	extra_data_procfs_t * extra = ofd->i_fs_specific;
 
 	if (find_process(extra->pid) != NULL) {
 		i = 0;
@@ -338,7 +338,7 @@ static int procfs_read_fd_process_dir(open_file_descriptor * ofd, char * entries
 	const size_t reclen = sizeof(d->d_ino)  + sizeof(d->d_reclen)
 											+ sizeof(d->d_type) + MAX_FD_LENGTH + 1;
 
-	extra_data_procfs_t * extra = ofd->extra_data;
+	extra_data_procfs_t * extra = ofd->i_fs_specific;
 
 	process_t * process = find_process(extra->pid);
 	if (process != NULL) {

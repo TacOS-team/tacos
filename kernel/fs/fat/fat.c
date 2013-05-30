@@ -68,8 +68,8 @@ fs_instance_t* mount_FAT(open_file_descriptor* ofd) {
 
 	fat_fs_instance_t *instance = kmalloc(sizeof(fat_fs_instance_t));
 	instance->super.fs = &fat_fs;
-	instance->read_data = ((blkdev_interfaces*)(ofd->extra_data))->read;
-	instance->write_data = ((blkdev_interfaces*)(ofd->extra_data))->write;
+	instance->read_data = ((blkdev_interfaces*)(ofd->i_fs_specific))->read;
+	instance->write_data = ((blkdev_interfaces*)(ofd->i_fs_specific))->write;
 
 	uint8_t sector[512];
 	instance->read_data(instance->super.device, sector, 512, 0);

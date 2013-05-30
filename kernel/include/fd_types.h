@@ -93,9 +93,9 @@ typedef struct _open_file_descriptor {
 	int current_cluster; //XXX à supprimer (sock en dépend encore).
 	uint8_t buffer[512]; //XXX à supprimer.
 	char * pathname;
-	uint32_t current_octet; // Utile pour f_pos ?
+	uint32_t current_octet; // Utile pour f_pos ? TODO: Renommer :D
 	uint32_t first_cluster;
-	uint32_t file_size; 
+	uint32_t file_size;  //XXX: Peut être à supprimer ? (redondant)
 
 	// Utile ? on peut l'avoir par mnt->instance
 	struct _fs_instance_t *fs_instance;
@@ -104,7 +104,8 @@ typedef struct _open_file_descriptor {
 	struct _dentry_t *dentry;
 	struct _mounted_fs_t *mnt;
 	struct _open_file_operations_t *f_ops;
-	void * extra_data;
+	void * i_fs_specific; /**< Pointe vers "dentry->d_inode->i_fs_specific". */
+	void * extra_data; /**< Extra data utilisée par le FS. Initialisé lors du open. */
 } open_file_descriptor;
 
 #endif

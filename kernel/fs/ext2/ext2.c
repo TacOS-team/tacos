@@ -103,8 +103,8 @@ fs_instance_t* mount_EXT2(open_file_descriptor* ofd) {
 	instance->super.fs = &ext2_fs;
 	instance->root = init_rootext2fs(instance);
 
-	instance->read_data = ((blkdev_interfaces*)(ofd->extra_data))->read;
-	instance->write_data = ((blkdev_interfaces*)(ofd->extra_data))->write;
+	instance->read_data = ((blkdev_interfaces*)(ofd->i_fs_specific))->read;
+	instance->write_data = ((blkdev_interfaces*)(ofd->i_fs_specific))->write;
 
 	instance->super.mknod = ext2_mknod;
 	instance->super.mkdir = ext2_mkdir;

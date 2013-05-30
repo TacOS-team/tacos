@@ -75,7 +75,7 @@ void init_stdfd(process_t *new_proc) {
 
 	chardev_interfaces *di;
 	open_file_descriptor *t_i = vfs_open(new_proc->ctrl_tty, 0); //XXX: flags.
-	di = t_i->extra_data;
+	di = t_i->i_fs_specific;
 	tty_struct_t *t = di->custom_data;
 	t->fg_process = new_proc->pid;
 }

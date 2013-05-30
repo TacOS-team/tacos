@@ -60,7 +60,6 @@ extern struct termios tty_std_termios;
  */
 typedef struct _tty_struct_t {
 	int index; /**< Équivalent du minor number.*/
-	void * driver_data; /**< De quoi enregistrer des données pour le driver.*/
 	struct termios termios; /**< Configuration du terminal. */
 	char buffer[MAX_INPUT]; /**< Données prêtes pour la lecture. */
 	unsigned int p_begin;

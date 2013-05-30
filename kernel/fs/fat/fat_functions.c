@@ -62,7 +62,7 @@ dentry_t* fat_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, 
 		return NULL;
 	}
 
-	d->fat_directory = NULL;
+	d->fat_directory = NULL; //XXX: pourquoi ne pas le mettre dans le extra_data ? Faut que je relise ce code...
 	d->fat_entry = next_dentry;
 	d->super.d_inode = kmalloc(sizeof(inode_t));
 	d->super.d_pdentry = dentry;
@@ -80,11 +80,7 @@ dentry_t* fat_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, 
 	d->super.d_inode->i_flags = 0; //XXX
 	d->super.d_inode->i_blocks = 1; //XXX
 	d->super.d_inode->i_instance = NULL; //XXX
-	fat_extra_data_t *fs_specific = kmalloc(sizeof(fat_extra_data_t));
-	fs_specific->first_cluster = next_dentry->cluster;
-	fs_specific->current_cluster = next_dentry->cluster;
-	fs_specific->current_octet_buf = 0;
-	d->super.d_inode->i_fs_specific = fs_specific;
+	d->super.d_inode->i_fs_specific = next_dentry;
 
 	return (dentry_t*)d;
 }
@@ -286,6 +282,14 @@ int fat_createfile (fat_fs_instance_t* instance, const char * path, mode_t mode 
 } */
 
 int fat_open(open_file_descriptor *ofd) {
+	directory_entry_t *next_dentry = (directory_entry_t*)ofd->i_fs_specific;
+
+	fat_extra_data_t *extra_data = kmalloc(sizeof(fat_extra_data_t));
+	extra_data->first_cluster = next_dentry->cluster;
+	extra_data->current_cluster = next_dentry->cluster;
+	extra_data->current_octet_buf = 0;
+	ofd->extra_data = extra_data;
+
 	load_buffer(ofd);
 	return 0;
 }
@@ -297,57 +301,6 @@ int fat_close(open_file_descriptor *ofd) {
 	kfree(ofd);
 	return 0;
 }
-
-/*
-int fat_stat(inode_t *inode, struct stat *stbuf) {
-	int res = 0;
-
-	memset(stbuf, 0, sizeof(struct stat));
-	stbuf->st_mode = 0755;
-
-	if(strcmp(path, "/") == 0) {
-		stbuf->st_mode |= S_IFDIR;
-		stbuf->st_blksize = ((fat_fs_instance_t*)instance)->fat_info.bytes_per_cluster;
-	} else {
-		directory_t *dir;
-		char filename[256];
-		char * pathdir = kmalloc(strlen(path) + 1);
-		fat_split_dir_filename(path, pathdir, filename);
-		if ((dir = open_dir_from_path((fat_fs_instance_t*)instance, pathdir)) == NULL)
-			return -ENOENT;
-		kfree(pathdir);
-
-		directory_entry_t *dir_entry = dir->entries;
-		while (dir_entry) {
-			if (strcmp(dir_entry->name, filename) == 0) {
-					break;
-			}
-			dir_entry = dir_entry->next;
-		}
-		if (!dir_entry) {
-			kfree(dir); // TODO: liberer memoire liste chainee.
-			return -ENOENT;
-		} else {
-			if (dir_entry->attributes & 0x01) { // Read Only
-				stbuf->st_mode &= ~0111;
-			}
-			if (dir_entry->attributes & 0x10) { // Dir.
-				stbuf->st_mode |= S_IFDIR;
-			} else {
-				stbuf->st_mode |= S_IFREG;
-			}
-			stbuf->st_atime = dir_entry->access_time;
-			stbuf->st_mtime = dir_entry->modification_time;
-			stbuf->st_ctime = dir_entry->creation_time;
-			stbuf->st_size = dir_entry->size;
-			stbuf->st_blksize = ((fat_fs_instance_t*)instance)->fat_info.bytes_per_cluster;
-		}
-		kfree(dir); // TODO: liberer memoire liste chainee.
-	}
-
-	return res;
-}
-*/
 
 int fat_unlink(fs_instance_t *instance, const char * path) {
   if (path[0] == '\0' || strcmp(path, "/") == 0)

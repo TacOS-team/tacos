@@ -40,11 +40,8 @@ void kprintf(const char *format, ...) {
 	static tty_struct_t *tty = NULL;
 	if (tty == NULL) {
 		open_file_descriptor* ofd = vfs_open("/dev/ttyS0", 0); //XXX:flags
-//		if (!ofd) {
-//			return;
-//		}
 		if (ofd)
-			tty = ((chardev_interfaces*)ofd->extra_data)->custom_data;
+			tty = ((chardev_interfaces*)ofd->i_fs_specific)->custom_data;
 		else
 			return;
 	}
