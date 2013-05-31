@@ -47,22 +47,31 @@ static int floppy_close(open_file_descriptor *ofd);
 static ssize_t floppy_read(open_file_descriptor *ofd, void* buf, size_t count, uint32_t offset);
 static ssize_t floppy_write(open_file_descriptor *ofd, const void* buf, size_t count, uint32_t offset);
 
-static blkdev_interfaces di = { 
+static blkdev_interfaces di[2] = {{ 
 	.read = floppy_read,
 	.write = floppy_write,
 	.ioctl = NULL,
 	.open = floppy_open,
 	.close = floppy_close
-};
+},
+{ 
+	.read = floppy_read,
+	.write = floppy_write,
+	.ioctl = NULL,
+	.open = floppy_open,
+	.close = floppy_close
+}};
+
+
+int drive_id[2] = { 0 , 1 };
 
 // Repositionne la tête de lecture sur le cylindre 0
-int floppy_calibrate()
+int floppy_calibrate(int drive)
 {
 	int i, st0, cy1 = -1;
-	int drive = floppy_get_current_drive();
 	
 	// Allumer le moteur
-	floppy_motor(ON);
+	floppy_motor(drive,ON);
 	
 	// On essaye 5 fois (oui c'est totalement arbitraire)
 	for(i=0; i<5; i++)
@@ -93,26 +102,23 @@ int floppy_calibrate()
 	
 		if(!cy1) // si cy1=0, on a bien atteint le cylindre 0 et on peut arreter la calibration
 		{
-			floppy_motor(OFF);
+			floppy_motor(drive, OFF);
 			return 0;
 		}
 		
 	}
 	kerr("floppy_recalibrate: failure.");
 	
-	floppy_motor(OFF);
+	floppy_motor(drive, OFF);
 	
 	return -1;
 }
 
-int init_floppy()
-{
-	int drive = floppy_get_current_drive();
+
+int init_drive(int drive) {
 	uint8_t drive_type = 0;
 	uint8_t CCR;
-	
-	
-	
+		
 	/* On vérifie qu'on a bien un controleur standard, sinon on affiche un warning */
 	if(floppy_get_version() != 0x90)
 		kerr("WARNING: Floppy driver may not work with 0x%x controler.", floppy_get_version());
@@ -160,15 +166,28 @@ int init_floppy()
 /* *************************************** */
 	
 	// On calibre le lecteur
-	if(floppy_calibrate()) return -1;
-	
-	register_blkdev("fd0", &di);
+	if(floppy_calibrate(drive)) return -1;
+	di[drive].custom_data = &(drive_id[drive]);
+	if(drive == 0) {
+		register_blkdev("fd0", &(di[drive]));
+	} else {
+		register_blkdev("fd1", &(di[drive]));
+	}
 	
 	return 0;
 }
 
+int init_floppy()
+{
+	int ret;
+	
+	ret = init_drive(0);
+	ret |= init_drive(1);
+	
+	return ret;
+}
 int floppy_open(open_file_descriptor *ofd __attribute__((unused))) {
-	/* TODO */
+	ofd->extra_data = ((blkdev_interfaces*)ofd->i_fs_specific)->custom_data;
 	return 0;
 }
 
@@ -180,6 +199,7 @@ int floppy_close(open_file_descriptor *ofd __attribute__((unused))) {
 static ssize_t floppy_read(open_file_descriptor *ofd __attribute__((unused)), void* buf, size_t count, uint32_t offset) {
 	int offset_sector = offset / FLOPPY_SECTOR_SIZE;
 	int offset_in_sector = offset % FLOPPY_SECTOR_SIZE;
+	int drive = *((int*)(ofd->extra_data));
 	uint32_t cylinder;
 	uint32_t head;
 	uint32_t sector;
@@ -192,7 +212,7 @@ static ssize_t floppy_read(open_file_descriptor *ofd __attribute__((unused)), vo
 		head    = (offset_sector % (FLOPPY_SECTORS_PER_TRACK * FLOPPY_NB_HEADS)) / (FLOPPY_SECTORS_PER_TRACK);
 		sector  = (offset_sector % (FLOPPY_SECTORS_PER_TRACK * FLOPPY_NB_HEADS)) % (FLOPPY_SECTORS_PER_TRACK);
 		
-		floppy_read_sector(cylinder, head, sector, buffer);
+		floppy_read_sector(drive, cylinder, head, sector, buffer);
 		c = FLOPPY_SECTOR_SIZE - offset_in_sector;
 		if (count <= c) {
 			memcpy(buf, buffer + offset_in_sector, count);
@@ -211,6 +231,7 @@ static ssize_t floppy_read(open_file_descriptor *ofd __attribute__((unused)), vo
 static ssize_t floppy_write(open_file_descriptor *ofd __attribute__((unused)), const void* buf, size_t count, uint32_t offset) {
 	int offset_sector = offset / FLOPPY_SECTOR_SIZE;
 	int offset_in_sector = offset % FLOPPY_SECTOR_SIZE;
+	int drive = *((int*)(ofd->extra_data));
 	uint32_t cylinder;
 	uint32_t head;
 	uint32_t sector;
@@ -224,7 +245,7 @@ static ssize_t floppy_write(open_file_descriptor *ofd __attribute__((unused)), c
 		head    = (offset_sector % (FLOPPY_SECTORS_PER_TRACK * FLOPPY_NB_HEADS)) / (FLOPPY_SECTORS_PER_TRACK);
 		sector  = (offset_sector % (FLOPPY_SECTORS_PER_TRACK * FLOPPY_NB_HEADS)) % (FLOPPY_SECTORS_PER_TRACK);
 
-		floppy_read_sector(cylinder, head, sector, buffer);
+		floppy_read_sector(drive, cylinder, head, sector, buffer);
 		c = FLOPPY_SECTOR_SIZE - offset_in_sector;
 		if (count <= c) {
 			memcpy(buffer + offset_in_sector, buf, count);
@@ -236,7 +257,7 @@ static ssize_t floppy_write(open_file_descriptor *ofd __attribute__((unused)), c
 			offset_in_sector = 0;
 			offset_sector++;
 		}
-		floppy_write_sector(cylinder, head, sector, buffer);
+		floppy_write_sector(drive, cylinder, head, sector, buffer);
 	}
 	return size;
 }

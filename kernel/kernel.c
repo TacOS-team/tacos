@@ -211,7 +211,8 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	vfs_mount(NULL, "proc", "ProcFS");
 	
-	vfs_mount("/dev/fd0", "tacos", "EXT2");
+	vfs_mount("/dev/fd0", "core", "FAT");
+	vfs_mount("/dev/fd1", "tacos", "EXT2");
 	
 	/* Lancement du scheduler */
 	init_scheduler(20);

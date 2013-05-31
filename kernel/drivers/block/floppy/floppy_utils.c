@@ -45,8 +45,6 @@ static const char * drive_types[8] __attribute__((unused))  = {
 	"none"
 };
 
-static volatile uint8_t current_drive = 1;
-
 bool floppy_ready()
 {
 	return ((0x80 & inb(FLOPPY_BASE + FLOPPY_MSR))!=0);
@@ -79,26 +77,15 @@ uint8_t floppy_read_data()
 	return ret;
 }
 
-// Drive selection
-uint8_t floppy_get_current_drive()
-{
-	return current_drive;
-}
 
-void floppy_set_current_drive(uint8_t drive)
-{
-	current_drive = drive;
-}
-
-int floppy_seek(int cylindre, int head)
+int floppy_seek(int drive, int cylindre, int head)
 {
 	// Fonction similaire à floppy_calibrate, mais au lieu de chercher le cylindre 0 on cherche le cylindre cyl
-	int i, drive, st0, cyl = -1;
+	int i, st0, cyl = -1;
 	
-	drive = floppy_get_current_drive();
 
 	// Allumage du moteur
-	floppy_motor(ON);
+	floppy_motor(drive, ON);
 	
 	// On fait 5 tentative à titre arbitraire
 	for(i=0; i<5; i++)
@@ -128,13 +115,13 @@ int floppy_seek(int cylindre, int head)
 		
 		if(cyl == cylindre) // si cyl=cylindre, on a bien atteint le cylindre voulu et on peut arreter le seek
 		{
-			floppy_motor(OFF);
+			floppy_motor(drive, OFF);
 			return 0;
 		}
 	}
 	kerr("failure.");
 	
-	floppy_motor(OFF);
+	floppy_motor(drive, OFF);
 	
 	return -1;
 }

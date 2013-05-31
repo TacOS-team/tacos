@@ -45,6 +45,7 @@
 static const char floppy_dma_buffer[floppy_dmalen] __attribute__((aligned(0x8000)));
 
 static uint8_t current_cylinder = -1;
+static uint8_t current_drive = 0;
 
 void floppy_dma_init(floppy_io io_dir)
 {
@@ -99,10 +100,9 @@ void floppy_dma_init(floppy_io io_dir)
 	
 }
 
-static int floppy_cylinder(int cylinder, floppy_io io_dir)
+static int floppy_cylinder(int drive, int cylinder, floppy_io io_dir)
 {
 	uint8_t command = 0;
-	uint8_t drive = floppy_get_current_drive();
 	int i; 
 	const uint8_t flags = 0xC0; // Multitrack et MFM activés
 	
@@ -125,14 +125,14 @@ static int floppy_cylinder(int cylinder, floppy_io io_dir)
 	}
 	
 	// On lit avec les deux têtes, on les met donc toutes en position
-	if(floppy_seek(cylinder, 0)) return -1;
-	if(floppy_seek(cylinder, 1)) return -1;
+	if(floppy_seek(drive, cylinder, 0)) return -1;
+	if(floppy_seek(drive, cylinder, 1)) return -1;
 	
 	// On s'accord 5 essais, totalement arbitraire, à calibrer donc.
 	for(i=0; i<5; i++)
 	{
 		// Allumage moteur
-		floppy_motor(ON);
+		floppy_motor(drive, ON);
 		
 		// Initialisation DMA
 		floppy_dma_init(io_dir);
@@ -236,12 +236,12 @@ static int floppy_cylinder(int cylinder, floppy_io io_dir)
         }
 
         if(!error) {
-            floppy_motor(OFF);
+            floppy_motor(drive, OFF);
             return 0;
         }
         if(error > 1) {
             kerr("not retrying...(rcy = %0x%x, rhe = %0x%x, rse = %0x%x)", rcy, rhe, rse);
-            floppy_motor(OFF); 
+            floppy_motor(drive, OFF); 
             return -2;
         }
 	
@@ -250,33 +250,35 @@ static int floppy_cylinder(int cylinder, floppy_io io_dir)
 	return 0;
 }
 
-void floppy_read_sector(int cylinder, int head, int sector, char* buffer)
+void floppy_read_sector(int drive, int cylinder, int head, int sector, char* buffer)
 {
-	if(cylinder != current_cylinder)
+	if(cylinder != current_cylinder || drive != current_drive)
 	{
 		// Si le cylindre que l'on a en mémoire n'est pas le bon, on charge le bon
-		floppy_cylinder(cylinder, FLOPPY_READ);
+		floppy_cylinder(drive, cylinder, FLOPPY_READ);
 		current_cylinder = cylinder;
+		current_drive = drive;
 	}		
 	
 	// copier le secteur dans buffer
 	memcpy(buffer, floppy_dma_buffer+(head*floppy_head2_start)+512*sector, 512);
 }	
 
-void floppy_write_sector(int cylinder, int head, int sector, char* buffer)
+void floppy_write_sector(int drive, int cylinder, int head, int sector, char* buffer)
 {
-	if(cylinder != current_cylinder)
+	if(cylinder != current_cylinder || current_drive != drive)
 	{
 		// Si le cylindre que l'on a en mémoire n'est pas le bon, on charge le bon
-		floppy_cylinder(cylinder, FLOPPY_READ);
+		floppy_cylinder(drive, cylinder, FLOPPY_READ);
 		current_cylinder = cylinder;
+		current_drive = drive;
 	}
 	
 	// copier le buffer à l'offset de floppy_dma_buffer
 	memcpy((void*)floppy_dma_buffer+(head*floppy_head2_start)+512*sector, buffer,  512);
 	
 	// Ecrit la nouvelle version du cylindre
-	floppy_cylinder(cylinder, FLOPPY_WRITE);
+	floppy_cylinder(drive, cylinder, FLOPPY_WRITE);
 }
 		
 	

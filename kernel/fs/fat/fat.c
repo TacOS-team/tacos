@@ -67,7 +67,7 @@ fs_instance_t* mount_FAT(open_file_descriptor* ofd) {
 	instance->super.fs = &fat_fs;
 	instance->read_data = ((blkdev_interfaces*)(ofd->i_fs_specific))->read;
 	instance->write_data = ((blkdev_interfaces*)(ofd->i_fs_specific))->write;
-
+	instance->super.device = ofd;
 	uint8_t sector[512];
 	instance->read_data(instance->super.device, sector, 512, 0);
 	memcpy(&(instance->fat_info.BS), sector, sizeof(fat_BS_t));

@@ -37,9 +37,8 @@ static volatile floppy_motor_state motor_state[] = {0, 0, 0, 0};
 // Amélioration possible: au lieu d'éteindre le moteur quand on lui 
 // passe OFF, attendre un peu avec un thread parallele, au cas ou on 
 // soit amené à le rallumer peu après. 
-void floppy_motor(floppy_motor_state new_state)
+void floppy_motor(int drive, floppy_motor_state new_state)
 {
-	uint8_t drive = floppy_get_current_drive();
 	uint8_t DOR = inb(FLOPPY_BASE + FLOPPY_DOR);
 	
 	if(new_state == ON)

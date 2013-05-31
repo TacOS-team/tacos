@@ -128,7 +128,7 @@ static void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t
 	kprintf("ecx:0x%x\tebp:0x%x\n",frame->ecx,frame->ebp);
 	kprintf("edx:0x%x\tesi:0x%x\n",frame->edx,frame->esi);
 	kprintf("ebx:0x%x\tedi:0x%x\n",frame->ebx,frame->edi);
-
+	kprintf("eip:0x%x\t\n", frame->eip);
 	printStackTrace(10, badboy);
 	
 	kprintf("\nException handled : ");

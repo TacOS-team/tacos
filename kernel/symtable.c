@@ -91,7 +91,7 @@ symbol_table_t* load_symtable(Elf32_File* file)
 
 void load_kernel_symtable() {
 	int fd;
- 	sys_open(&fd, "/tacos/system/kernel.bin", O_RDONLY);
+ 	sys_open(&fd, "/core/system/kernel.bin", O_RDONLY);
 	
 	if (fd > 0) {
 		Elf32_File* file;

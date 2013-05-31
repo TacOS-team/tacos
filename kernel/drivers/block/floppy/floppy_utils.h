@@ -96,24 +96,13 @@ int floppy_write_command(char cmd);
 uint8_t floppy_read_data();
 
 /**
- * @brief Retourne le numero tu lecteur courrant
- * @return numero du lecteur courrant
- */
-uint8_t floppy_get_current_drive();
-
-/**
- * @brief Défini le lecteur courrant
- * @param drive numero du lecteur à passer en lecteur courrant
- */
-void floppy_set_current_drive(uint8_t drive);
-
-/**
  * @brief Déplace la tête de lecture à un cylindre défini
+ * @param drive numéro de drive
  * @param cylindre numero du cylindre à atteindre
  * @param head numero de la tête a déplacer
  * @return 0 en cas de succes, -1 sinon
  */
-int floppy_seek(int cylindre, int head);
+int floppy_seek(int drive, int cylindre, int head);
 
 /*	
  * MISC  

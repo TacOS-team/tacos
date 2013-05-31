@@ -38,8 +38,9 @@ typedef enum { OFF = 0, ON = 1 } floppy_motor_state ;
 
 /**
  * @brief Change l'état du moteur
+ * @param drive Numero de drive
  * @param new_state état du moteur désiré
  */
-void floppy_motor(floppy_motor_state new_state);
+void floppy_motor(int drive, floppy_motor_state new_state);
 
 #endif

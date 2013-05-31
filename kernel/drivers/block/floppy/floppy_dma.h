@@ -44,21 +44,23 @@ void floppy_dma_init(floppy_io io_dir);
 
 /**
  * @brief Lis un secteur via le DMA à partir d'un adressage CHS
+ * @param cylinder Numero de drive
  * @param cylinder Numero de cylindre
  * @param head Numero de tête de lecture
  * @param sector Numero de secteur
  * @param buffer Buffer recevant les données lues
  */
-void floppy_read_sector(int cylinder, int head, int sector, char* buffer);
+void floppy_read_sector(int drive, int cylinder, int head, int sector, char* buffer);
 
 /**
  * @brief Ecrit un secteur via le DMA à partir d'un adressage CHS
+ * @param cylinder Numero de drive
  * @param cylinder Numero de cylindre
  * @param head Numero de tête de lecture
  * @param sector Numero de secteur
  * @param buffer Buffer contenant les données à écrire
  */
-void floppy_write_sector(int cylinder, int head, int sector, char* buffer);
+void floppy_write_sector(int drive, int cylinder, int head, int sector, char* buffer);
 
 
 
