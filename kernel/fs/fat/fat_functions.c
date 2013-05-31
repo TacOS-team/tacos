@@ -66,8 +66,10 @@ dentry_t* fat_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, 
 	d->fat_entry = next_dentry;
 	d->super.d_inode = kmalloc(sizeof(inode_t));
 	d->super.d_pdentry = dentry;
+	d->super.d_name = strdup(name);
 	d->super.d_inode->i_fops = &fatfs_fops;
 	d->super.d_inode->i_ino = 0;
+	d->super.d_inode->i_count = 0;
 	d->super.d_inode->i_mode = 00755;
 	d->super.d_inode->i_mode |= (next_dentry->attributes & 0x10) ? S_IFDIR : S_IFREG;
 	d->super.d_inode->i_uid = 0;
