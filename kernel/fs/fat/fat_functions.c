@@ -287,8 +287,13 @@ int fat_open(open_file_descriptor *ofd) {
 	directory_entry_t *next_dentry = (directory_entry_t*)ofd->i_fs_specific;
 
 	fat_extra_data_t *extra_data = kmalloc(sizeof(fat_extra_data_t));
-	extra_data->first_cluster = next_dentry->cluster;
-	extra_data->current_cluster = next_dentry->cluster;
+	if (next_dentry) {
+		extra_data->first_cluster = next_dentry->cluster;
+		extra_data->current_cluster = next_dentry->cluster;
+	} else {
+		extra_data->first_cluster = 0;
+		extra_data->current_cluster = 0;
+	}
 	extra_data->current_octet_buf = 0;
 	ofd->extra_data = extra_data;
 
