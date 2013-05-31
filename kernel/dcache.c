@@ -30,7 +30,6 @@
 #include <klibc/string.h>
 #include <vfs.h>
 #include <kmalloc.h>
-#include <klog.h>
 
 static hashmap_t *map;
 
@@ -58,7 +57,6 @@ void dcache_init() {
 
 void dcache_remove(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name) {
 	if (!instance->fs->unique_inode) return;
-	klog("dcache remove %s", name);
 	struct key_t key;
 	key.instance = instance;
 	key.dentry = dentry;
@@ -88,5 +86,4 @@ void dcache_set(struct _fs_instance_t *instance, struct _dentry_t* pdentry, cons
 
 	hashmap_set(map, (struct hashmap_key_t*)key, (struct hashmap_value_t*)dentry);
 
-	klog("set : %d %s", dentry, dentry->d_name);
 }

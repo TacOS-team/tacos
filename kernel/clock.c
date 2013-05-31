@@ -236,7 +236,7 @@ SYSCALL_HANDLER1(sys_getclock, clock_t* clock)
 	*clock = get_clock();
 }
 
-time_t get_date()
+inline time_t get_date()
 {
 	return systime;
 }
