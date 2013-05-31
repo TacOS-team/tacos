@@ -381,12 +381,12 @@ static int add_fat_dir_entry(fat_fs_instance_t *instance, char * path, fat_dir_e
 }
 
 static void load_buffer(open_file_descriptor *ofd) {
+	fat_extra_data_t* extra_data = (fat_extra_data_t*)(ofd->extra_data);
 	fat_fs_instance_t *instance = (fat_fs_instance_t*) ofd->fs_instance;
-	size_t size_buffer = sizeof(ofd->buffer) < instance->fat_info.BS.bytes_per_sector ? 
-			sizeof(ofd->buffer) : instance->fat_info.BS.bytes_per_sector;
+	size_t size_buffer = sizeof(extra_data->buffer) < instance->fat_info.BS.bytes_per_sector ? 
+			sizeof(extra_data->buffer) : instance->fat_info.BS.bytes_per_sector;
 	int current_octet_cluster = ofd->current_octet % instance->fat_info.bytes_per_cluster;
 	size_t r = instance->fat_info.bytes_per_cluster - current_octet_cluster;
-	fat_extra_data_t* extra_data = (fat_extra_data_t*)(ofd->extra_data);
 
 	if (r < size_buffer) {
 		if (r > 0)

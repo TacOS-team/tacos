@@ -91,10 +91,8 @@ typedef struct _open_file_descriptor {
 // A dégager ? Infos dans l'inode.
 	uint32_t flags;
 	int current_cluster; //XXX à supprimer (sock en dépend encore).
-	uint8_t buffer[512]; //XXX à supprimer.
 	char * pathname;
 	uint32_t current_octet; // Utile pour f_pos ? TODO: Renommer :D
-	uint32_t first_cluster;
 	uint32_t file_size;  //XXX: Peut être à supprimer ? (redondant)
 
 	// Utile ? on peut l'avoir par mnt->instance
