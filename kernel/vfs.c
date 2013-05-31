@@ -254,18 +254,18 @@ int vfs_close(open_file_descriptor *ofd) {
 	if (ofd == NULL) {
 		return -1;
 	}
-	klog("vfs close %s", ofd->pathname);
+/*	klog("vfs close %s", ofd->pathname);
 
 	klog("dentry: %d", ofd->dentry);
 	klog("d_name: %s", ofd->dentry->d_name);
 	klog("d_inode: %d", ofd->dentry->d_inode);
 	klog("d_pdentry: %d", ofd->dentry->d_pdentry);
-
+*/
 	ofd->dentry->d_inode->i_count--;
 	if (ofd->dentry->d_inode->i_count == 0 && ofd->dentry->d_pdentry) {
 			dcache_remove(ofd->fs_instance, ofd->dentry->d_pdentry, ofd->dentry->d_name);
 	} else {
-			klog("i_count ok : %s %d", ofd->dentry->d_name, ofd->dentry->d_inode->i_count);
+//			klog("i_count ok : %s %d", ofd->dentry->d_name, ofd->dentry->d_inode->i_count);
 	}
 	kfree(ofd->pathname);
 	kfree(ofd);
