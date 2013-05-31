@@ -93,7 +93,6 @@ typedef struct _open_file_descriptor {
 	int current_cluster; //XXX à supprimer (sock en dépend encore).
 	char * pathname;
 	uint32_t current_octet; // Utile pour f_pos ? TODO: Renommer :D
-	uint32_t file_size;  //XXX: Peut être à supprimer ? (redondant)
 
 	// Utile ? on peut l'avoir par mnt->instance
 	struct _fs_instance_t *fs_instance;

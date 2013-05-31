@@ -131,7 +131,7 @@ int fat_seek_file(open_file_descriptor * ofd, long offset, int whence) {
 	fat_extra_data_t *extra_data = (fat_extra_data_t*) ofd->extra_data;
 	switch (whence) {
 	case SEEK_SET: // depuis le debut du fichier
-		if ((unsigned long) offset < ofd->file_size) {
+		if ((unsigned long) offset < ofd->dentry->d_inode->i_size) {
 			// On se met au début :
 			extra_data->current_cluster = extra_data->first_cluster;
 			ofd->current_octet = 0;
@@ -150,7 +150,7 @@ int fat_seek_file(open_file_descriptor * ofd, long offset, int whence) {
 		}
 		break;
 	case SEEK_CUR:
-		if (ofd->current_octet + offset < ofd->file_size) {
+		if (ofd->current_octet + offset < ofd->dentry->d_inode->i_size) {
 			ofd->current_octet += offset;
 
 			int current_octet_cluster = ofd->current_octet % instance->fat_info.bytes_per_cluster;
@@ -165,8 +165,8 @@ int fat_seek_file(open_file_descriptor * ofd, long offset, int whence) {
 		}
 		break;
 	case SEEK_END:
-		if ((unsigned long) offset <= ofd->file_size) {
-			return fat_seek_file(ofd, ofd->file_size - offset, SEEK_SET);
+		if ((unsigned long) offset <= ofd->dentry->d_inode->i_size) {
+			return fat_seek_file(ofd, ofd->dentry->d_inode->i_size - offset, SEEK_SET);
 		} else {
 			return -1;
 		}
@@ -196,7 +196,7 @@ ssize_t fat_read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 	}
 	
 	while (count--) {
-		if (ofd->current_octet == ofd->file_size) {
+		if (ofd->current_octet == ofd->dentry->d_inode->i_size) {
 			break;
 		} else {
 			char c = extra_data->buffer[extra_data->current_octet_buf];
