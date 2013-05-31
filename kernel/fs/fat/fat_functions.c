@@ -93,9 +93,10 @@ int fat_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 	size_t c = 0;
 
 	directory_t *dir;
-	if (ofd->first_cluster > 0) {
+	fat_extra_data_t *extra_data = (fat_extra_data_t*)ofd->extra_data;
+	if (extra_data->first_cluster > 0) {
 		dir = kmalloc(sizeof(directory_t));
-		open_dir(instance, ofd->first_cluster, dir);
+		open_dir(instance, extra_data->first_cluster, dir);
 	} else {
 		dir = open_root_dir(instance);
 	}
