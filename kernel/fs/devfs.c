@@ -259,6 +259,7 @@ static void umount_devfs(fs_instance_t *instance) {
 void devfs_init() {
 	root_devfs.d_name = "dev";
 	root_devfs.d_inode = kmalloc(sizeof(inode_t));
+	memset(root_devfs.d_inode, 0, sizeof(inode_t));
 	root_devfs.d_inode->i_count = 0;
 	root_devfs.d_inode->i_ino = 0;
 	root_devfs.d_inode->i_mode = S_IFDIR | 00755;
