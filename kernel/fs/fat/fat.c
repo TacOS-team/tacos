@@ -23,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * @brief Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS.
+ * @brief Driver FAT.
  */
 
 #include <fs/fat.h>
@@ -47,7 +47,7 @@ static inline dentry_t * init_rootfatfs(fat_fs_instance_t *instance) {
 	root_fatfs->super.d_pdentry = NULL;
 	root_fatfs->super.d_name = "";
 	root_fatfs->super.d_inode = kmalloc(sizeof(inode_t));
-	root_fatfs->super.d_inode->i_ino = 0;
+	memset(root_fatfs->super.d_inode, 0, sizeof(inode_t));
 	root_fatfs->super.d_inode->i_count = 0;
 	root_fatfs->super.d_inode->i_instance = (fs_instance_t*)instance;
 	root_fatfs->super.d_inode->i_fs_specific = NULL;
