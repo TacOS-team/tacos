@@ -159,11 +159,6 @@ void* schedule(void* data __attribute__ ((unused)))
 	/* On met le contexte dans la structure "process"*/
 	process_t* current = scheduler->get_current_process();
 	
-	if(current->pid == 2) {
-		asm("nop");
-		
-	}
-	
 	/* On récupère le contexte du processus actuel uniquement si il a déja été lancé */
 	if(idle_injected!=1 && current->state != PROCSTATE_TERMINATED && current->state != PROCSTATE_IDLE)
 	{	
