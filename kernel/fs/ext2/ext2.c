@@ -77,22 +77,6 @@ static void show_info(ext2_fs_instance_t *instance) {
 	klog("Blocks par groupe : %d", instance->superblock.s_blocks_per_group);
 }
 
-static inline dentry_t * init_rootext2fs(ext2_fs_instance_t *instance) {
-	dentry_t *root_ext2fs = kmalloc(sizeof(dentry_t));
-	
-	root_ext2fs->d_name = "";
-	root_ext2fs->d_inode = kmalloc(sizeof(inode_t));
-	root_ext2fs->d_inode->i_count = 0;
-	root_ext2fs->d_inode->i_ino = EXT2_ROOT_INO;
-	root_ext2fs->d_inode->i_instance = (fs_instance_t*)instance;
-	root_ext2fs->d_inode->i_fs_specific = NULL;
-	root_ext2fs->d_inode->i_mode = S_IFDIR | 00755;
-	root_ext2fs->d_inode->i_fops = &ext2fs_fops;
-	root_ext2fs->d_pdentry = NULL;
-
-	return root_ext2fs;
-}
-
 /*
  * Init the EXT2 driver for a specific devide.
  */
@@ -101,7 +85,6 @@ fs_instance_t* mount_EXT2(open_file_descriptor* ofd) {
 	ext2_fs_instance_t *instance = kmalloc(sizeof(ext2_fs_instance_t));
 
 	instance->super.fs = &ext2_fs;
-	instance->root = init_rootext2fs(instance);
 
 	instance->read_data = ((blkdev_interfaces*)(ofd->i_fs_specific))->read;
 	instance->write_data = ((blkdev_interfaces*)(ofd->i_fs_specific))->write;
@@ -121,6 +104,9 @@ fs_instance_t* mount_EXT2(open_file_descriptor* ofd) {
 
   instance->read_data(instance->super.device, &(instance->superblock), sizeof(struct ext2_super_block), 1024);
   read_group_desc_table(instance);
+
+	instance->root = init_rootext2fs(instance);
+
   show_info(instance);
 
 	return (fs_instance_t*)instance;

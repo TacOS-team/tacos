@@ -426,3 +426,19 @@ static void ext2inode_2_inode(inode_t* inode, struct _fs_instance_t *instance, i
 	inode->i_fops = &ext2fs_fops; 
 	inode->i_fs_specific = NULL;
 }
+
+inline dentry_t * init_rootext2fs(ext2_fs_instance_t *instance) {
+	dentry_t *root_ext2fs = kmalloc(sizeof(dentry_t));
+	
+	root_ext2fs->d_name = "";
+
+	struct ext2_inode *einode = read_inode(instance, EXT2_ROOT_INO);
+	root_ext2fs->d_inode = kmalloc(sizeof(inode_t));
+	ext2inode_2_inode(root_ext2fs->d_inode, (fs_instance_t*)instance, EXT2_ROOT_INO, einode);
+	root_ext2fs->d_inode->i_count = 0;
+	root_ext2fs->d_pdentry = NULL;
+
+	return root_ext2fs;
+}
+
+
