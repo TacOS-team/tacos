@@ -275,9 +275,9 @@ int tty_ioctl (open_file_descriptor *ofd,  unsigned int request, void *data) {
 		return 0;
 	case TIOCSCTTY:
 		{
-			//XXX: C'est un peu moche, normalement je devrais utiliser ofd et non data pour mettre le chemin... Et donc on peut se demander pourquoi mettre la fonction ici aussi...
+		//XXX: Ce système de ctrl_tty est peut être pas top, à voir...
 		process_t *current_process = get_current_process();
-		current_process->ctrl_tty = strdup(data);
+		current_process->ctrl_tty = strdup(ofd->pathname);
 		}
 		return 0;
 	}

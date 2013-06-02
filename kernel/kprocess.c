@@ -713,8 +713,12 @@ SYSCALL_HANDLER1(sys_waitpid, int pid) {
 		klog("waitpid <= 0 non supporté pour l'instant.");
 	} else {
 		process_t* proc = find_process(pid);
-		if (proc->state != PROCSTATE_TERMINATED) {
-			ksemP(proc->sem_wait);
+		if (proc) {
+			if (proc->state != PROCSTATE_TERMINATED) {
+				ksemP(proc->sem_wait);
+			}
+		} else {
+			klog("waitpid sur un process non trouvé.");
 		}
 	}
 }
