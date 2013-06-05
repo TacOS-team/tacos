@@ -71,9 +71,9 @@ void* memcpy(void* dest, const void* src, size_t size)
 
 size_t strlen(const char* s)
 {
-	int len=0;
-	while(s[len++]);
-	return len-1;
+	register const char *p = s;
+	while (*p) p++;
+	return p - s;
 }
 		
 int strcmp(const char *s1, const char *s2) {

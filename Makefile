@@ -47,7 +47,7 @@ test:
 	$(MAKE) -s -C tests;
 
 core.img: all
-	@echo "drive v: file=\"`pwd`/core.img\" 1.44M filter" > mtoolsrc
+#	@echo "drive v: file=\"`pwd`/core.img\" 1.44M filter" > mtoolsrc
 	@dd if=/dev/zero of=core.img bs=512 count=2880
 	@mkfs.ext2 -F core.img
 	@e2cp README core.img:/
