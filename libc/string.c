@@ -125,13 +125,49 @@ char *strchrnul(const char *s, int c) {
 	return i;
 }
 
+#define	wsize	sizeof(unsigned int)
+#define	wmask	(wsize - 1)
+
 void *memset(void *s, int c, size_t n)
 {
-	size_t i;
+	size_t i, t;
+	register char *dst = s;
+
+	// Si c'est petit, osef de l'optimisation.
+	if (n < wsize * 3) {
+		for (i = 0; i < n; i++) {
+			*dst++ = c;
+		}
+		return s;
+	}
 	
-	for(i=0 ; i<n ; i++)
-		((char*)s)[i] = (unsigned char)c;
-		
+	// On aligne. Et on sait que n > wsize.
+	if ((t = (int)dst & wmask) != 0) {
+		t = wsize - t;
+		n -= t;
+		for (i = 0; i < t; i++) {
+			*dst++ = c;
+		}
+	}
+
+	c = c << 8 | c;
+	c = c << 16 | c;
+
+	/* On recopie à fond. */
+	t = n / wsize;
+	for (i = 0; i < t; i++) {
+		*(unsigned int*)dst = c;
+		dst += wsize;
+	}
+
+	/* On termine... */
+	t = n & wmask;
+	if (t != 0) {
+		for (i = 0; i < t; i++) {
+			*dst++ = c;
+		}
+	}
+	
 	return s;
 }
 
