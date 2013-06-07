@@ -164,6 +164,24 @@ static void remove(struct mem_list *list, struct mem *m)
 		list->end = m->prev;
 }
 
+static void replace(struct mem_list *list, struct mem *m, struct mem *new_mem)
+{
+	new_mem->next = m->next;
+	new_mem->prev = m->prev;
+
+	if (new_mem->next) {
+		new_mem->next->prev = new_mem;	
+	} else {
+		list->end = new_mem;
+	}
+
+	if (new_mem->prev) {
+		new_mem->prev->next = new_mem;
+	} else {
+		list->begin = new_mem;
+	}
+}
+
 static void add_first_element(struct mem_list *list, struct mem *m)
 {
 	list->begin = m;
@@ -174,10 +192,9 @@ static void add_first_element(struct mem_list *list, struct mem *m)
 
 static void push_back(struct mem_list *list, struct mem *m)
 {
-	if(is_empty(list))
+	if (is_empty(list)) {
 		add_first_element(list, m);
-	else
-	{
+	} else {
 		list->end->next = m;
 		m->prev = list->end;
 		m->next = NULL;
@@ -203,7 +220,10 @@ static void add(struct mem_list *list, struct mem *m)
 	// add at the end of the list
 	if(it->next == NULL)
 	{
-		push_back(list, m);
+		list->end->next = m;
+		m->prev = list->end;
+		m->next = NULL;
+		list->end = m;
 		return;
 	}
 
@@ -221,12 +241,13 @@ static void cut_mem(struct mem* m, size_t size,
 	{
 		struct mem *new_mem = (struct mem*) ((vaddr_t) m + size);
 		new_mem->size = m->size - size;
-		add(free_mem, new_mem);
+
+		replace(free_mem, m, new_mem);
 
 		m->size = size;
-	} 
-
-	remove(free_mem, m);
+	} else {
+		remove(free_mem, m);
+	}
 	add(allocated_mem, m);
 }
 
