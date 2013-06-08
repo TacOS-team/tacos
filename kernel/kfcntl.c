@@ -55,8 +55,7 @@ void init_stdfd(process_t *new_proc) {
 			if (pprocess->fd[i]) {
 				new_proc->fd[i] = kmalloc(sizeof(struct _open_file_descriptor));
 				memcpy(new_proc->fd[i], pprocess->fd[i], sizeof(struct _open_file_descriptor));
-				new_proc->fd[i]->pathname = kmalloc(strlen(pprocess->fd[i]->pathname) + 1);
-				strcpy(new_proc->fd[i]->pathname, pprocess->fd[i]->pathname);
+				new_proc->fd[i]->pathname = strdup(pprocess->fd[i]->pathname);
 				new_proc->fd[i]->dentry->d_inode->i_count++;
 			} else {
 				new_proc->fd[i] = NULL;

@@ -47,6 +47,8 @@ static void kputchar_tab(tty_struct_t *tty);
 
 static int active_console = 0;
 
+static tty_operations_t console_ops = {.open=NULL, .close=NULL, .write=console_write, .put_char=console_putchar, .set_termios=NULL, .ioctl=NULL};
+
 void console_init() {
 	int i;
 	for (i = 0; i < NB_CONSOLES; i++) {
@@ -74,13 +76,7 @@ void console_init() {
 	tty_driver->devfs_name = "tty";
 	tty_driver->type = TTY_DRIVER_TYPE_CONSOLE;
 	tty_driver->init_termios = tty_std_termios;
-	tty_driver->ops = kmalloc(sizeof(tty_operations_t));
-	tty_driver->ops->open = NULL;
-	tty_driver->ops->close = NULL;
-	tty_driver->ops->write = console_write;
-	tty_driver->ops->put_char = console_putchar;
-	tty_driver->ops->set_termios = NULL;
-	tty_driver->ops->ioctl = NULL;
+	tty_driver->ops = &console_ops;
 	tty_register_driver(tty_driver);
 }
 

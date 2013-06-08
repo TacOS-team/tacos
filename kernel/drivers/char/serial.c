@@ -68,6 +68,7 @@
 #define write_register(PORT,REG,DATA) outb(DATA,base_addr[PORT]+REG)
 #define read_register(PORT,REG) inb(base_addr[PORT]+REG)
 
+
 /***************************************
  * 
  * PROTOTYPES
@@ -342,6 +343,9 @@ static size_t serial_set_termios(struct termios* term_new, struct termios* term_
 	return 0;
 }
 
+
+static tty_operations_t serial_ops = {.open=NULL, .close=NULL, .write=serial_write, .put_char=serial_putc, .set_termios=serial_set_termios, .ioctl=NULL};
+
 int serial_init()
 {
 	int ret = 0;
@@ -354,13 +358,7 @@ int serial_init()
 	tty_driver->devfs_name = "ttyS";
 	tty_driver->type = TTY_DRIVER_TYPE_SERIAL;
 	tty_driver->init_termios = tty_std_termios;
-	tty_driver->ops = kmalloc(sizeof(tty_operations_t));
-	tty_driver->ops->open = NULL;
-	tty_driver->ops->close = NULL;
-	tty_driver->ops->write = serial_write;
-	tty_driver->ops->put_char = serial_putc;
-	tty_driver->ops->set_termios = serial_set_termios;
-	tty_driver->ops->ioctl = NULL;
+	tty_driver->ops = &serial_ops;
 	tty_register_driver(tty_driver);
 	
 	unsigned int bauds = tty_driver->init_termios.c_ispeed;
