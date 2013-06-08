@@ -189,14 +189,23 @@ void *memset(void *s, int c, size_t n)
 
 int memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned int i = 0;
-	while (((char*)s1)[i] == ((char*)s2)[i]) {
-		if (i >= n) {
-			return 0;
-		}
-		i++;
+	if (n == 0) return 0;
+	// TODO: aligner.
+	register const unsigned int * r1 = s1;
+	register const unsigned int * r2 = s2;
+	while (*r1 == *r2 && n-- > sizeof(unsigned int)) {
+		r1++;
+		r2++;
 	}
-	return ((char*)s1)[i] - ((char*)s2)[i];
+
+	unsigned char * c1 = r1;
+	unsigned char * c2 = r2;
+	while (*c1 == *c2 && n-- > 0) {
+		c1++;
+		c2++;
+	}
+
+	return *c1 - *c2;
 }
 
 char *strcpy(char * s1, const char * s2)
