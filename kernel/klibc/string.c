@@ -29,6 +29,11 @@
 #include <klibc/string.h>
 #include <kmalloc.h>
 
+
+#define	wsize	sizeof(unsigned int)
+#define	wmask	(wsize - 1)
+
+
 static int tolower(int c) {
 	if (c >= 'A' && c <= 'Z') {
 		return c + ('a' - 'A');
@@ -36,33 +41,42 @@ static int tolower(int c) {
 	return c;
 }
 
-void* memcpy(void* dest, const void* src, size_t size)
-{
-	size_t i;
+void* memcpy(void* dest, const void* src, size_t n) {
 	
-	// Si on peut diviser les données à déplacer par paquet de 4 bytes, on les transfert en uint32, sinon on reste sur du uint8
-	if(!(size%4))
-	{
-		uint32_t* d = (uint32_t*) dest;
-		uint32_t* s = (uint32_t*) src;
-		
-		i = 0;
-		while(i<(size/4))
-		{
-			d[i] = s[i];
-			i++;
-		}	
+	size_t i, t;
+	register char *dst = dest;
+	register const char *source = src;
+
+	// Si c'est petit, osef de l'optimisation.
+	if (n < wsize * 3) {
+		for (i = 0; i < n; i++) {
+			*dst++ = *source++;
+		}
+		return dest;
 	}
-	else
-	{ 
-		uint8_t* d = (uint8_t*) dest;
-		uint8_t* s = (uint8_t*) src;
-		
-		i = 0;
-		while(i<size)
-		{
-			d[i] = s[i];
-			i++;
+	
+	// On aligne. Et on sait que n > wsize.
+	if ((t = (int)dst & wmask) != 0) {
+		t = wsize - t;
+		n -= t;
+		for (i = 0; i < t; i++) {
+			*dst++ = *source++;
+		}
+	}
+
+	/* On recopie à fond. */
+	t = n / wsize;
+	for (i = 0; i < t; i++) {
+		*(unsigned int*)dst = *(unsigned int*)source;
+		dst += wsize;
+		source += wsize;
+	}
+
+	/* On termine... */
+	t = n & wmask;
+	if (t != 0) {
+		for (i = 0; i < t; i++) {
+			*dst++ = *source++;
 		}
 	}
 	
@@ -129,9 +143,6 @@ char *strchrnul(const char *s, int c) {
 	}
 	return i;
 }
-
-#define	wsize	sizeof(unsigned int)
-#define	wmask	(wsize - 1)
 
 void *memset(void *s, int c, size_t n)
 {
