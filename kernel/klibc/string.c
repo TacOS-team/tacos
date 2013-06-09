@@ -198,8 +198,8 @@ int memcmp(const void *s1, const void *s2, size_t n)
 		r2++;
 	}
 
-	unsigned char * c1 = r1;
-	unsigned char * c2 = r2;
+	unsigned char * c1 = (unsigned char*)r1;
+	unsigned char * c2 = (unsigned char*)r2;
 	while (*c1 == *c2 && n-- > 0) {
 		c1++;
 		c2++;
