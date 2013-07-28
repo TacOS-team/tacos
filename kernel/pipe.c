@@ -115,6 +115,7 @@ static int pipe_close(open_file_descriptor *ofd) {
 	struct extra_data_pipe_t *extra = (struct extra_data_pipe_t*)ofd->dentry->d_inode->i_fs_specific;
 
 	int ret;
+	ksemctl(extra->sem_open, SEM_DEL, &ret);
 	ksemctl(extra->sem_read, SEM_DEL, &ret);
 	ksemctl(extra->sem_write, SEM_DEL, &ret);
 	kfree(extra);
