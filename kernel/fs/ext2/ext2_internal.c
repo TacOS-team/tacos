@@ -324,7 +324,7 @@ static void remove_dir_entry(ext2_fs_instance_t *instance, int inode, const char
 
 		cur_pos2 = cur_pos;
 		cur_pos += dir.rec_len;
-		dir2 = dir;
+		memcpy(&dir2, &dir, sizeof(dir));
 		instance->read_data(instance->super.device, &dir, sizeof(struct ext2_directory), cur_pos);
 		if (dec > 0) {
 			if (dir.rec_len + cur_pos >= addr_debut + (1024 << instance->superblock.s_log_block_size)) {
