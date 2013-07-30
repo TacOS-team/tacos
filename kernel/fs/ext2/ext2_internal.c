@@ -218,7 +218,7 @@ static int alloc_inode(ext2_fs_instance_t *instance, struct ext2_inode *inode) {
 			for (ib = 0; ib < instance->superblock.s_inodes_per_group; ib++) {
 				int inode_n = i * instance->superblock.s_inodes_per_group + ib + 1;
 				if ((inode_bitmap[ib/8] & (1 << (ib % 8))) == 0) {
-					instance->group_desc_table_internal[i].inodes[ib] = *inode;
+					memcpy(&instance->group_desc_table_internal[i].inodes[ib], inode, sizeof(struct ext2_inode));
 					instance->write_data(instance->super.device, inode, sizeof(struct ext2_inode), addr_table * (1024 << instance->superblock.s_log_block_size) + sizeof(struct ext2_inode) * ib);
 					inode_bitmap[ib/8] |= (1 << (ib % 8));
 					instance->write_data(instance->super.device, &(inode_bitmap[ib/8]), sizeof(uint8_t), addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
