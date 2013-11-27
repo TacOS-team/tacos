@@ -85,6 +85,10 @@ static void LPT1_routine(int id __attribute__ ((unused)))
 	// XXX : avoid segment_not_present
 }
 
+paddr_t ramdisk_start = 0;
+paddr_t ramdisk_end = 0;
+
+
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
 	kernel_options options;
@@ -102,7 +106,15 @@ void cmain (unsigned long magic, unsigned long addr) {
 	initKernelOptions((char *)mbi->cmdline, &options);
 
 	gdt_setup((mbi->mem_upper << 10) + (1 << 20));
-	
+
+	/* RAMDISK Initialization */
+/*
+	if(mbi->mods_count>0) {
+		multiboot_module_t* module = (multiboot_module_t*) mbi->mods_addr;
+		ramdisk_start = module->mod_start;
+		ramdisk_end = module->mod_end;		
+	}
+*/
 	asm("":"=a"(esp_tss));
 	init_tss(esp_tss);
 
@@ -188,13 +200,15 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 	devfs_init();
 	vfs_mount(NULL, "dev", "DevFS");
-
 	console_init();
 	serial_init();
 	beeper_init();
-
+	if(ramdisk_start != 0) {
+		/*init_ramdisk(ramdisk_start, ramdisk_end);*/
+	}
 	pci_scan();
-		
+
+	
 	/* Désactivé en attendant un vrai système de drivers réseaux.
 	 * int irq = rtl8139_driver_init();
 	 * interrupt_set_routine(irq,  rtl8139_isr, 0);*/
@@ -213,9 +227,10 @@ void cmain (unsigned long magic, unsigned long addr) {
 	
 	vfs_mount("/dev/fd0", "core", "FAT");
 	vfs_mount("/dev/fd1", "tacos", "EXT2");
-	
+//	vfs_mount("/dev/ram", "init", "EXT2");
+
 	/* Lancement du scheduler */
-	init_scheduler(20);
+	init_scheduler(5);
 	set_scheduler(&round_robin);
 	klog("Init scheduler done.");
 	
