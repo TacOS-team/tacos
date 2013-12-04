@@ -427,7 +427,7 @@ static void ext2inode_2_inode(inode_t* inode, struct _fs_instance_t *instance, i
 	inode->i_fs_specific = NULL;
 }
 
-inline dentry_t * init_rootext2fs(ext2_fs_instance_t *instance) {
+dentry_t * init_rootext2fs(ext2_fs_instance_t *instance) {
 	dentry_t *root_ext2fs = kmalloc(sizeof(dentry_t));
 	
 	root_ext2fs->d_name = "";
