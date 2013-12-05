@@ -63,7 +63,7 @@ static int load_elf_header(Elf32_Ehdr* elf_header, int fd)
 	return is_elf(elf_header);
 }
 
-int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int index __attribute__ ((unused)), int fd)
+int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int index, int fd)
 {
 	/* On se déplace au bon endroit dans le fichier (offset du premier header + index*taille d'un header) */
 	long offset = elf_header->e_phoff + index*elf_header->e_phentsize;

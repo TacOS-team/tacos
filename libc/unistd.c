@@ -271,7 +271,7 @@ int execv(const char *path __attribute__ ((unused)), char *const argv[]) {
 	return exec_elf(cmd);
 }
 
-int execvp(const char *file __attribute__ ((unused)), char *const argv[]) {
+int execvp(const char *file, char *const argv[]) {
 	if (argv[0][0] == '/') {
 		return execv(file, argv);
 	} else {

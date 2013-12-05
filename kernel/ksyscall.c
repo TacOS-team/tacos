@@ -50,7 +50,7 @@ syscall_handler_t syscall_handler_table[MAX_SYSCALL_NB];
  * @param unused
  * 
  */
-void syscall_entry(int interrupt_id __attribute__ ((unused)))
+void syscall_entry(int interrupt_id)
 {	
 	uint32_t function, param1, param2, param3;
 	syscall_handler_t handler;

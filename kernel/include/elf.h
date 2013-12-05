@@ -318,7 +318,7 @@ int load_program_header(Elf32_Phdr* program_header, Elf32_Ehdr* elf_header, int 
  * 
  * @return 0 si succès, -1 sinon
  */
-int load_section_header(Elf32_Shdr* section_header, Elf32_Ehdr* elf_header, int index __attribute__ ((unused)), int fd);
+int load_section_header(Elf32_Shdr* section_header, Elf32_Ehdr* elf_header, int index, int fd);
 
 /**
  * @brief Calcul la taille que prendra l'exécutable dans la mémoire

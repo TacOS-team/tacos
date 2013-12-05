@@ -31,7 +31,7 @@
 
 #include <types.h>
 
-#define UNUSED(X) uint32_t unused_ ## X __attribute__ ((unused))
+#define UNUSED(X) uint32_t _u_n_u_s_e_d_ ## X __attribute__ ((unused))
 #define SYSCALL_HANDLER0(name) void name(UNUSED(0), UNUSED(1), UNUSED(2))
 #define SYSCALL_HANDLER1(name, param) void name(param, UNUSED(1), UNUSED(2))
 #define SYSCALL_HANDLER2(name, param1, param2) void name(param1, param2, UNUSED(2))
