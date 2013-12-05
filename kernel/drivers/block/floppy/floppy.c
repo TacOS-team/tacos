@@ -186,7 +186,7 @@ int init_floppy()
 	
 	return ret;
 }
-int floppy_open(open_file_descriptor *ofd __attribute__((unused))) {
+int floppy_open(open_file_descriptor *ofd) {
 	ofd->extra_data = ((blkdev_interfaces*)ofd->i_fs_specific)->custom_data;
 	return 0;
 }
@@ -196,7 +196,7 @@ int floppy_close(open_file_descriptor *ofd __attribute__((unused))) {
 	return 0;
 }
 
-static ssize_t floppy_read(open_file_descriptor *ofd __attribute__((unused)), void* buf, size_t count, uint32_t offset) {
+static ssize_t floppy_read(open_file_descriptor *ofd, void* buf, size_t count, uint32_t offset) {
 	int offset_sector = offset / FLOPPY_SECTOR_SIZE;
 	int offset_in_sector = offset % FLOPPY_SECTOR_SIZE;
 	int drive = *((int*)(ofd->extra_data));
@@ -228,7 +228,7 @@ static ssize_t floppy_read(open_file_descriptor *ofd __attribute__((unused)), vo
 	return size;
 }
 
-static ssize_t floppy_write(open_file_descriptor *ofd __attribute__((unused)), const void* buf, size_t count, uint32_t offset) {
+static ssize_t floppy_write(open_file_descriptor *ofd, const void* buf, size_t count, uint32_t offset) {
 	int offset_sector = offset / FLOPPY_SECTOR_SIZE;
 	int offset_in_sector = offset % FLOPPY_SECTOR_SIZE;
 	int drive = *((int*)(ofd->extra_data));
