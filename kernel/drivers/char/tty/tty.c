@@ -182,10 +182,10 @@ static ssize_t tty_write(open_file_descriptor *ofd, const void *buf, size_t coun
 		return -2;
 	}
 
-  if((ofd->flags & O_ACCMODE) == O_RDONLY) {
-    //errno = EBADF;
-    return -1;
-  }
+	if((ofd->flags & O_ACCMODE) == O_RDONLY) {
+		//errno = EBADF;
+		return -1;
+	}
 
 	chardev_interfaces *di = ofd->i_fs_specific;
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;
@@ -216,15 +216,15 @@ static ssize_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 		sys_kill(current_process->pid, SIGTTIN, NULL);
 	}
 
-  if((ofd->flags & O_ACCMODE) == O_WRONLY) {
-    //errno = EBADF;
-    return -1;
-  }
+	if((ofd->flags & O_ACCMODE) == O_WRONLY) {
+		//errno = EBADF;
+		return -1;
+	}
 
-  if(ofd->flags & O_DIRECT) {
-    //errno = EINVAL;
-    return -1;
-  }
+	if(ofd->flags & O_DIRECT) {
+		//errno = EINVAL;
+		return -1;
+	}
 
 	do {
 		if (t->p_begin == t->p_end && !(ofd->flags & O_NONBLOCK))
@@ -250,7 +250,7 @@ static ssize_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 	return j;
 }
 
-int tty_ioctl (open_file_descriptor *ofd,  unsigned int request, void *data) {
+int tty_ioctl (open_file_descriptor *ofd, unsigned int request, void *data) {
 
 	chardev_interfaces *di = ofd->i_fs_specific;
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;
