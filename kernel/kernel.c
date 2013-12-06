@@ -236,20 +236,9 @@ void cmain (unsigned long magic, unsigned long addr) {
 	klog("Init scheduler done.");
 	
 	// Création du processus par défaut.
-	
-	process_init_data_t init_process;
-	
-	init_process.name = "init";
-	init_process.args = "init";
-	init_process.exec_type = EXEC_KERNEL;
-	init_process.data = (void*)init;
-	init_process.mem_size = 0;
-	init_process.entry_point = 0;
-	init_process.stack_size = 0x1000;
-	init_process.priority = 0;
-	init_process.ppid = 0;
-	
-	scheduler_add_process(create_process(&init_process));
+	create_kprocess("init", 
+	                (void*) init,
+		        0x1000);
 	
 	events_init();
 	

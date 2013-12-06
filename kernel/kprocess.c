@@ -402,11 +402,24 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 	return new_proc;
 }
 
-process_t* create_process(process_init_data_t* init_data)
+int create_kprocess(char* _name, void* entry_point, uint32_t _stack_size)
 {
+	process_init_data_t init_data;
+
+	init_data.name = _name;
+	init_data.data = entry_point;
+	init_data.stack_size = _stack_size;
+	
+	process_t* proc = create_process(&init_data);
+	/*XXX verifier que le process est bien cree */
+	scheduler_add_process(proc);
+	return proc->pid;
+}
+
+process_t* create_process(process_init_data_t* init_data) {
 	char* name = init_data->name;
 	paddr_t prog = (paddr_t) init_data->data;
-	char* param = init_data->args;
+	char* param = "";
 	uint32_t stack_size = init_data->stack_size;
 
 	uint32_t *sys_stack, *user_stack;
@@ -426,7 +439,7 @@ process_t* create_process(process_init_data_t* init_data)
 	}
 	new_proc->name = strdup(name);
 	
-	sys_stack = kmalloc(stack_size*sizeof(uint32_t));
+	sys_stack = kmalloc(0x100000);
 	if (sys_stack == NULL)
 	{
 		kerr("impossible de reserver la memoire pour la pile systeme.");
@@ -449,13 +462,12 @@ process_t* create_process(process_init_data_t* init_data)
 	*(stack_ptr-3) = argc;
 	*(stack_ptr-4) = (vaddr_t) sys_exit;
 	
-	new_proc->ppid = init_data->ppid;
+	new_proc->ppid = 0;
 
 	new_proc->sem_wait = ksemget(SEM_NEW, SEM_CREATE);
 	int val = 0;
 	ksemctl(new_proc->sem_wait, SEM_SET, &val);
 	
-//	new_proc->priority = init_data->priority;
 	new_proc->user_time = 0;
 	new_proc->sys_time = 0;
 	new_proc->current_sample = 0;
@@ -535,8 +547,7 @@ process_t* create_process(process_init_data_t* init_data)
 	/* FIN ZONE CRITIQUE */
 	asm("sti");	
 	
-	
-	return new_proc;
+	return new_proc;	
 }
 
 void sample_CPU_usage()
@@ -587,7 +598,8 @@ static int sys_exec2(process_init_data_t* init_data)
 {
 	process_t *process;
 	if(init_data->exec_type == EXEC_KERNEL) {
-		process = create_process(init_data);
+	//	process = create_process(init_data);
+		kerr("If you reached this message, you're a nasty boy.");
 	} else {
 		process = create_process_elf(init_data);
 	}
