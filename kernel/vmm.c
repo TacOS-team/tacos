@@ -287,28 +287,28 @@ static int is_stuck(struct slab *s1, struct slab *s2)
 }
 
 // Sépare un slab en deux quand il est trop grand et déplace le slab de free_pages vers used_pages
-static void cut_slab(struct virtual_mem *vm, struct slab *s, 
-										 unsigned int nb_pages)
+static struct slab * cut_slab(struct virtual_mem *vm, struct slab *s, unsigned int nb_pages)
 {
 	if(s->nb_pages > nb_pages) // cut slab
 	{
-		struct slab *new_slab =
-			(struct slab*) ((vaddr_t) s + nb_pages*PAGE_SIZE);
-		new_slab->nb_pages = s->nb_pages - nb_pages;
-		new_slab->prev = s->prev;
-		new_slab->next = s->next;
+		// Fin du slab utilisé pour l'allocation demandée.
+		struct slab *new_used_slab = (struct slab*) ((vaddr_t) s + (s->nb_pages - nb_pages)*PAGE_SIZE);
+		new_used_slab->nb_pages = nb_pages;
+		add(&(vm->used_slabs), new_used_slab);
 
-		if(s->next != NULL)
-			s->next->prev = new_slab;
-		if(s->prev != NULL)
-			s->prev->next = new_slab;
+		// Actualisation du nombre de pages du slab coupé.
+		s->nb_pages -= nb_pages;
 
-		s->nb_pages = nb_pages;
+		// On renvoie le morceau de slab utilisé.
+		return new_used_slab;
 	} else {
-	remove(&(vm->free_slabs), s);
-	}
+		// On utilise entièrement le slab donc on retire des slabs free pour le passer en used.
+		remove(&(vm->free_slabs), s);
+		add(&(vm->used_slabs), s);
 
-	add(&(vm->used_slabs), s);
+		// Et on renvoie le slab.
+		return s;
+	}
 }
 
 // Alloue une page
@@ -318,8 +318,7 @@ unsigned int allocate_new_page(struct virtual_mem *vm, void **alloc, int u_s)
 }
 
 // Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle 
-unsigned int allocate_new_pages(struct virtual_mem *vm, unsigned int nb_pages,
-																void **alloc, int u_s)
+unsigned int allocate_new_pages(struct virtual_mem *vm, unsigned int nb_pages, void **alloc, int u_s)
 {
 	struct slab *slab = vm->free_slabs.begin;
 
@@ -334,9 +333,7 @@ unsigned int allocate_new_pages(struct virtual_mem *vm, unsigned int nb_pages,
 		slab = vm->free_slabs.end;
 	}
 
-	cut_slab(vm, slab, nb_pages);
-
-	*(alloc) = (void *) ((vaddr_t) slab + sizeof(struct slab));
+	*(alloc) = (void *) ((vaddr_t) cut_slab(vm, slab, nb_pages) + sizeof(struct slab));
 	return nb_pages*PAGE_SIZE - sizeof(struct slab); 
 }
 
