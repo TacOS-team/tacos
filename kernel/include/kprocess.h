@@ -135,14 +135,14 @@ typedef struct _proclist_cell{
 * @brief Crée un nouveau processus kernel.
 * Crée un nouveau processus kernel et l'ajoute à la liste des processus avec un état d'exécution PROCSTATE_IDLE.
 * @param name nom du process
-* @param entry_point adresse du point d'entr?e
-* @param stack_size tailler de la pile ? allouer
+* @param entry_point adresse du point d'entrée
+* @param stack_size taille de la pile à allouer
 * 
 * @return PID du processus
 */
 int create_kprocess(char* name,
-     		    void* entry_point,
-		    uint32_t stack_size);
+                    void* entry_point,
+                    uint32_t stack_size);
 
 process_t* create_process(process_init_data_t* init_data);
 /** 
