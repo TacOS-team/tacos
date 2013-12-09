@@ -48,17 +48,11 @@
 #include <memory.h>
 #include <multiboot.h>
 #include <pagination.h>
-#include <pci.h>
 #include <round_robin.h>
 #include <scheduler.h>
 #include <syscall_values.h>
 #include <vmm.h>
-
-/* Includes des fs */
-#include <fs/devfs.h>
-#include <fs/fat.h>
-#include <fs/ext2.h>
-#include <fs/procfs.h>
+#include <vfs.h>
 
 /* Includes des drivers */
 #include <drivers/beeper.h>
@@ -67,6 +61,8 @@
 #include <drivers/keyboard.h>
 #include <drivers/serial.h>
 #include <drivers/video.h>
+
+#include <fs/devfs.h>
 
 /**
  * Options passées au kernel.
@@ -197,17 +193,17 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_UTIMES, (syscall_handler_t) sys_utimes);
 	syscall_set_handler(SYS_RENAME, (syscall_handler_t) sys_rename);
 
+	if(ramdisk_start != 0) {
+		/*init_ramdisk(ramdisk_start, ramdisk_end);*/
+	}
+
 	vfs_init();
 
+	// dev doit être monté maintenant sinon on ne peut pas écrire les debugs.
 	devfs_init();
 	vfs_mount(NULL, "dev", "DevFS");
 	console_init();
 	serial_init();
-	beeper_init();
-	if(ramdisk_start != 0) {
-		/*init_ramdisk(ramdisk_start, ramdisk_end);*/
-	}
-	pci_scan();
 
 	
 	/* Désactivé en attendant un vrai système de drivers réseaux.
@@ -220,15 +216,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	if(init_floppy() != 0)
 		kerr("Initialisation du lecteur a echoue.");
 	
-	fat_init();
-	ext2_init();
-	procfs_init();
-
-	vfs_mount(NULL, "proc", "ProcFS");
-	
-	vfs_mount("/dev/fd0", "core", "FAT");
-	vfs_mount("/dev/fd1", "tacos", "EXT2");
-//	vfs_mount("/dev/ram", "init", "EXT2");
 
 	/* Lancement du scheduler */
 	init_scheduler(5);

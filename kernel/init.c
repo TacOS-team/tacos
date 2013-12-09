@@ -38,11 +38,43 @@
 #include <drivers/sock.h>
 #include <kmalloc.h>
 
+/* Includes des fs */
+#include <fs/fat.h>
+#include <fs/ext2.h>
+#include <fs/procfs.h>
+
+/* Includes des drivers */
+#include <drivers/beeper.h>
+#include <drivers/console.h>
+#include <drivers/floppy.h>
+#include <drivers/keyboard.h>
+#include <drivers/serial.h>
+#include <drivers/video.h>
+
+
+#include <pci.h>
+
+
 int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
 	//init_stdfiles();
 	klog("Starting init process...");
 	
+	beeper_init();
+	pci_scan();
+
+	klog("Init FS...");
+	fat_init();
+	ext2_init();
+	procfs_init();
+
+	klog("Mount FS!");
+	vfs_mount(NULL, "proc", "ProcFS");
+	vfs_mount("/dev/fd0", "core", "FAT");
+	vfs_mount("/dev/fd1", "tacos", "EXT2");
+//	vfs_mount("/dev/ram", "init", "EXT2");
+
+
 	klog("Loading kernel symbol table...");
 	load_kernel_symtable();
 	
