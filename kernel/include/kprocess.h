@@ -132,15 +132,19 @@ typedef struct _proclist_cell{
 }*proc_list, proclist_cell;
 
 /** 
-* @brief (OUTDATED)Crée un nouveau processus.
-* Crée un nouveau processus et l'ajoute à la liste des processus avec un état d'exécution PROCSTATE_IDLE.
-* @param init_data informations sur le processus à créer
-* @see process_init_data_t
+* @brief Crée un nouveau processus kernel.
+* Crée un nouveau processus kernel et l'ajoute à la liste des processus avec un état d'exécution PROCSTATE_IDLE.
+* @param name nom du process
+* @param entry_point adresse du point d'entrée
+* @param stack_size taille de la pile à allouer
 * 
-* @return Pid du processus créé.
+* @return PID du processus
 */
-process_t* create_process(process_init_data_t* init_data);
+int create_kprocess(char* name,
+                    void* entry_point,
+                    uint32_t stack_size);
 
+process_t* create_process(process_init_data_t* init_data);
 /** 
 * @brief Retire un processus de la liste.
 * 
