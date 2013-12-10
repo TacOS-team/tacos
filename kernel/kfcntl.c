@@ -61,22 +61,13 @@ void init_stdfd(process_t *new_proc) {
 				new_proc->fd[i] = NULL;
 			}
 		}
-	} else {
-		new_proc->ctrl_tty = "/dev/tty0";
 
-		/* stdin */
-		new_proc->fd[0] = vfs_open(new_proc->ctrl_tty, O_RDONLY);
-		/* stdout */
-		new_proc->fd[1] = vfs_open(new_proc->ctrl_tty, O_WRONLY);
-		/* stderr */
-		new_proc->fd[2] = vfs_open(new_proc->ctrl_tty, O_WRONLY);
+		chardev_interfaces *di;
+		open_file_descriptor *t_i = vfs_open(new_proc->ctrl_tty, 0); //XXX: flags.
+		di = t_i->i_fs_specific;
+		tty_struct_t *t = di->custom_data;
+		t->fg_process = new_proc->pid;
 	}
-
-	chardev_interfaces *di;
-	open_file_descriptor *t_i = vfs_open(new_proc->ctrl_tty, 0); //XXX: flags.
-	di = t_i->i_fs_specific;
-	tty_struct_t *t = di->custom_data;
-	t->fg_process = new_proc->pid;
 }
 
 void close_all_fd() {

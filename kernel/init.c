@@ -37,6 +37,7 @@
 #include <drivers/vesa.h>
 #include <drivers/sock.h>
 #include <kmalloc.h>
+#include <kfcntl.h>
 
 /* Includes des fs */
 #include <fs/fat.h>
@@ -57,9 +58,18 @@
 
 int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
 {
-	//init_stdfiles();
 	klog("Starting init process...");
 	
+	process_t *new_proc = get_current_process();
+	new_proc->ctrl_tty = "/dev/tty0";
+
+	/* stdin */
+	new_proc->fd[0] = vfs_open(new_proc->ctrl_tty, O_RDONLY);
+	/* stdout */
+	new_proc->fd[1] = vfs_open(new_proc->ctrl_tty, O_WRONLY);
+	/* stderr */
+	new_proc->fd[2] = vfs_open(new_proc->ctrl_tty, O_WRONLY);
+
 	beeper_init();
 	pci_scan();
 
