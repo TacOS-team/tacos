@@ -93,7 +93,7 @@ void load_kernel_symtable() {
 	int fd;
  	sys_open(&fd, "/core/system/kernel.bin", O_RDONLY);
 	
-	if (fd > 0) {
+	if (fd >= 0) {
 		Elf32_File* file;
 		file = load_elf_file(fd);
 		ksymtable = load_symtable(file);
