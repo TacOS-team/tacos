@@ -84,13 +84,6 @@ void init_stage_1(){
 	process_t *new_proc = get_current_process();
 	new_proc->ctrl_tty = "/dev/tty0";
 
-	/* stdin */
-	new_proc->fd[0] = vfs_open(new_proc->ctrl_tty, O_RDONLY);
-	/* stdout */
-	new_proc->fd[1] = vfs_open(new_proc->ctrl_tty, O_WRONLY);
-	/* stderr */
-	new_proc->fd[2] = vfs_open(new_proc->ctrl_tty, O_WRONLY);
-
 	beeper_init();
 	fat_init();
 	ext2_init();
