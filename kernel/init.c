@@ -70,6 +70,17 @@ void init_stage_1(){
 	klog("----------------------------");
 	
 	vfs_init();
+	/* Un fois que devfs est initialise, on peut creer tous les drivers */
+	devfs_init();
+	vfs_mount(NULL, "dev", "DevFS");
+	//create_partition_service();
+	klog("Init modules...");
+	
+	pci_scan();
+
+	console_init();
+	serial_init();
+
 		process_t *new_proc = get_current_process();
 	new_proc->ctrl_tty = "/dev/tty0";
 
@@ -81,16 +92,7 @@ void init_stage_1(){
 	new_proc->fd[2] = vfs_open(new_proc->ctrl_tty, O_WRONLY);
 
 
-	/* Un fois que devfs est initialise, on peut creer tous les drivers */
-	devfs_init();
-	vfs_mount(NULL, "dev", "DevFS");
-	//create_partition_service();
-	klog("Init modules...");
-	
-	pci_scan();
 
-	console_init();
-	serial_init();
 	beeper_init();
 	fat_init();
 	ext2_init();
