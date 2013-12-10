@@ -39,6 +39,7 @@
 #include <kmalloc.h>
 
 /* Includes des fs */
+#include <fs/devfs.h>
 #include <fs/fat.h>
 #include <fs/ext2.h>
 #include <fs/procfs.h>
@@ -54,40 +55,93 @@
 
 #include <pci.h>
 
-
-int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
-{
-	//init_stdfiles();
-	klog("Starting init process...");
+/* Init stage 1
+ *
+ * Premier niveau d'initialisation, doit comprendre le minimum 
+ * pour permettre le chargement de module. Le but ici est d'avoirs
+ * tout le necessaire pour acceder a l'init ramdisk. On ne peut 
+ * donc pas encore utiliser de modules.
+ *
+ */
+void init_stage_1(){
+	klog("----------------------------");
+	klog("---     Init Stage 1     ---");
+	klog("----------------------------");
 	
-	beeper_init();
+	vfs_init();
+	
+	/* Un fois que devfs est initialise, on peut creer tous les drivers */
+	devfs_init();
+	vfs_mount(NULL, "dev", "DevFS");
+	create_partition_service();
+
+	klog("Init modules...");
+
 	pci_scan();
 
-	klog("Init FS...");
+	console_init();
+	serial_init();
+	beeper_init();
 	fat_init();
 	ext2_init();
 	procfs_init();
+	init_dummy();
+	init_mouse();
+	init_vga();
 
-	klog("Mount FS!");
+	init_vesa();
+	init_sock();
+	init_floppy();
+
+	klog("Mounting File Systems...");
 	vfs_mount(NULL, "proc", "ProcFS");
 	vfs_mount("/dev/fd0", "core", "FAT");
 	vfs_mount("/dev/fd1", "tacos", "EXT2");
 //	vfs_mount("/dev/ram", "init", "EXT2");
 
-
 	klog("Loading kernel symbol table...");
 	load_kernel_symtable();
 	
-	
+//	ktrace_init();	
+//	ktrace_event(0x4242, 1234);
 	/* Initialisation des drivers */
 	klog("Initializing drivers...");
-	init_dummy();
-	init_mouse();
-	init_vga();
-	init_vesa();
-	init_sock();
+
 	/* ************************** */
 	
+}
+
+/* Init stage 2
+ *
+ * Comprend tout ce qui peut etre fait une fois que le ramdisk
+ * est disponible. On devrait commencer a utiliser des modules.
+ *
+ */
+void init_stage_2() {
+	klog("----------------------------");
+	klog("---     Init Stage 2     ---");
+	klog("----------------------------");
+}
+
+/* Init stage 3
+ * 
+ * Comprend tout ce qui peut etre fait apres le stage 2
+ *
+ */
+void init_stage_3() {
+	klog("----------------------------");
+	klog("---     Init Stage 3     ---");
+	klog("----------------------------");
+}
+
+int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
+{
+	//init_stdfiles();
+	klog("Starting init process...");
+	init_stage_1();
+	init_stage_2();
+	init_stage_3();	
+
 	char **environ = kmalloc(sizeof(char*) * 3);
 	environ[0] = "PWD=/";
 	environ[1] = "PATH=/tacos/bin";
@@ -96,7 +150,8 @@ int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	klog("Starting user process...");
 	int ret;
 	sys_exec("/tacos/bin/getty /dev/tty0", environ, &ret);
-
+	
+	/* XXX y'a pas plus propre pour faire ca? */
 	get_current_process()->state = PROCSTATE_WAITING;
 	while(1);
 	return 0;

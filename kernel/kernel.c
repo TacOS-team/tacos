@@ -84,7 +84,6 @@ static void LPT1_routine(int id __attribute__ ((unused)))
 paddr_t ramdisk_start = 0;
 paddr_t ramdisk_end = 0;
 
-
 void cmain (unsigned long magic, unsigned long addr) {
 	multiboot_info_t *mbi;
 	kernel_options options;
@@ -147,7 +146,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	/* Initialisation de la vmm */
 	init_kmalloc();
 
-
 	/* Initialisation des semaphores */
 	init_semaphores();
 	
@@ -196,37 +194,16 @@ void cmain (unsigned long magic, unsigned long addr) {
 	if(ramdisk_start != 0) {
 		/*init_ramdisk(ramdisk_start, ramdisk_end);*/
 	}
-
-	vfs_init();
-
-	// dev doit être monté maintenant sinon on ne peut pas écrire les debugs.
-	devfs_init();
-	vfs_mount(NULL, "dev", "DevFS");
-	console_init();
-	serial_init();
-
 	
-	/* Désactivé en attendant un vrai système de drivers réseaux.
-	 * int irq = rtl8139_driver_init();
-	 * interrupt_set_routine(irq,  rtl8139_isr, 0);*/
-	
-	floppy_detect_drives();
-	kdebug("Floppy controller version: 0x%x.", floppy_get_version());
-	
-	if(init_floppy() != 0)
-		kerr("Initialisation du lecteur a echoue.");
-	
-
 	/* Lancement du scheduler */
 	init_scheduler(5);
 	set_scheduler(&round_robin);
-	klog("Init scheduler done.");
+	klog("Scheduler initialized.");
 	
 	// Création du processus par défaut.
 	create_kprocess("init", 
 	                (void*) init,
-		        0x1000);
-	
+		        0x1000);	
 	events_init();
 	
 	start_scheduler();
