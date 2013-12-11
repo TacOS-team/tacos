@@ -91,7 +91,7 @@ symbol_table_t* load_symtable(Elf32_File* file)
 
 void load_kernel_symtable() {
 	int fd;
- 	sys_open(&fd, "/core/system/kernel.bin", O_RDONLY);
+	sys_open(&fd, "/core/system/kernel.bin", O_RDONLY);
 	
 	if (fd >= 0) {
 		Elf32_File* file;
@@ -126,7 +126,7 @@ char* addr_to_sym(symbol_table_t* table, paddr_t addr)
 	int found = 0;
 	int i = 0;
 	char* res = NULL;
-        if(table != NULL) {
+	if(table != NULL) {
 		while(!found && (i < table->count-1))
 		{	
 			if(addr >= table->symbols[i].addr && addr < table->symbols[i+1].addr)

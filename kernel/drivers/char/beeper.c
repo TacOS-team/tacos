@@ -34,7 +34,7 @@
 static void set_PIT_2(uint32_t frequency)
 {
  	uint32_t div;
-    //Set the PIT to the desired frequency
+   	//Set the PIT to the desired frequency
  	div = 1193180 / frequency;
  	outb(0xb6, 0x43);
  	outb((uint8_t) (div), 0x42);

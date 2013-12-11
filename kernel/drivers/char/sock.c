@@ -248,7 +248,7 @@ static int sock_ioctl(open_file_descriptor *ofd, unsigned int request, void *dat
         process->fd[i] = kmalloc(sizeof(open_file_descriptor));
         memcpy(process->fd[i], ofd, sizeof(open_file_descriptor));
         process->fd[i]->current_cluster = newSd;
-	// XXX: C'est juste pour que ça compile, mais c'est probablement cassé.
+        // XXX: C'est juste pour que ça compile, mais c'est probablement cassé.
         socket_descriptors[newSd] = (socket_t *)process->fd[i];
         *((int*) data) = i;
         return 0;

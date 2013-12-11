@@ -52,7 +52,7 @@ void floppy_dma_init(floppy_io io_dir)
 	//Pour initialiser le dma, on doit lui fournir l'adresse du buffer, ainsi que le nombre d'octets à lire
 	union {
 		uint8_t b[4]; // 4 x 1 octet
-		uint32_t l;    // 1 x 4 octets
+		uint32_t l;	// 1 x 4 octets
 	} address, count;
 	
 	char dma_mode;
@@ -81,23 +81,23 @@ void floppy_dma_init(floppy_io io_dir)
 			kerr("Invalid io_dir (0x%x).", io_dir);
 			return;
 	}
-	
+
 	outb(0x06, 0x0a);   // masque le channel 2
 
-    outb(0xff, 0x0c);   // reset flip-flop
-    outb(address.b[0], 0x04); //  - address low byte
-    outb(address.b[1], 0x04); //  - address high byte
+	outb(0xff, 0x0c);   // reset flip-flop
+	outb(address.b[0], 0x04); //  - address low byte
+	outb(address.b[1], 0x04); //  - address high byte
 
-    outb(address.b[2], 0x81); // registre de page externe
+	outb(address.b[2], 0x81); // registre de page externe
 
-    outb(0xff, 0x0c);   // reset flip-flop
-    outb(count.b[0], 0x05); //  - count low byte
-    outb(count.b[1], 0x05); //  - count high byte
+	outb(0xff, 0x0c);   // reset flip-flop
+	outb(count.b[0], 0x05); //  - count low byte
+	outb(count.b[1], 0x05); //  - count high byte
 
-    outb(dma_mode, 0x0b);   // donne le mode du DMA
+	outb(dma_mode, 0x0b);   // donne le mode du DMA
 
-    outb(0x02, 0x0a);   // démasque le channel 2
-	
+	outb(0x02, 0x0a);   // démasque le channel 2
+
 }
 
 static int floppy_cylinder(int drive, int cylinder, floppy_io io_dir)
@@ -121,7 +121,6 @@ static int floppy_cylinder(int drive, int cylinder, floppy_io io_dir)
 		default:
 			kerr("Invalid io_dir (0x%x).", io_dir);
 			return -1;
-
 	}
 	
 	// On lit avec les deux têtes, on les met donc toutes en position
@@ -166,84 +165,84 @@ static int floppy_cylinder(int drive, int cylinder, floppy_io io_dir)
 		
 		// Informations de statut
 		st0 = floppy_read_data();
-        st1 = floppy_read_data();
-        st2 = floppy_read_data();
-        
-        // Informations sur les CHS
-        rcy = floppy_read_data(); // Cylindre
-        rhe = floppy_read_data(); // Head
-        rse = floppy_read_data(); // Secteur
-        bps = floppy_read_data(); // Nomber de byte par secteur
-        
-        /* Traitement des erreurs repompée */
-        if(st0 & 0xC0) {
-            static const char * status[] =
-            { 0, "error", "invalid command", "drive not ready" };
-            klog("floppy_do_sector: status = %s", status[st0 >> 6]);
-            error = 1;
-        }
-        if(st1 & 0x80) {
-            kerr("end of cylinder");
-            error = 1;
-        }
-        if(st0 & 0x08) {
-            kerr("drive not ready ");
-            error = 1;
-        }
-        if(st1 & 0x20) {
-            kerr("CRC error");
-            error = 1;
-        }
-        if(st1 & 0x10) {
-            kerr("controller timeout");
-            error = 1;
-        }
-        if(st1 & 0x04) {
-            kerr("no data found\n");
-            error = 1;
-        }
-        if((st1|st2) & 0x01) {
-            kerr("no address mark found");
-            error = 1;
-        }
-        if(st2 & 0x40) {
-            kerr("deleted address mark");
-            error = 1;
-        }
-        if(st2 & 0x20) {
-            kerr("CRC error in data");
-            error = 1;
-        }
-        if(st2 & 0x10) {
-            kerr("wrong cylinder");
-            error = 1;
-        }
-        if(st2 & 0x04) {
-            kerr("uPD765 sector not found");
-            error = 1;
-        }
-        if(st2 & 0x02) {
-            kerr("bad cylinder");
-            error = 1;
-        }
-        if(bps != 0x2) {
-            kerr("wanted 512B/sector, got %d", (1<<(bps+7)));
-            error = 1;
-        }
-        if(st1 & 0x02) {
-            kerr("not writable");
-            error = 2;
-        }
+		st1 = floppy_read_data();
+		st2 = floppy_read_data();
+		
+		// Informations sur les CHS
+		rcy = floppy_read_data(); // Cylindre
+		rhe = floppy_read_data(); // Head
+		rse = floppy_read_data(); // Secteur
+		bps = floppy_read_data(); // Nomber de byte par secteur
+		
+		/* Traitement des erreurs repompée */
+		if(st0 & 0xC0) {
+			static const char * status[] =
+			{ 0, "error", "invalid command", "drive not ready" };
+			klog("floppy_do_sector: status = %s", status[st0 >> 6]);
+			error = 1;
+		}
+		if(st1 & 0x80) {
+			kerr("end of cylinder");
+			error = 1;
+		}
+		if(st0 & 0x08) {
+			kerr("drive not ready ");
+			error = 1;
+		}
+		if(st1 & 0x20) {
+			kerr("CRC error");
+			error = 1;
+		}
+		if(st1 & 0x10) {
+			kerr("controller timeout");
+			error = 1;
+		}
+		if(st1 & 0x04) {
+			kerr("no data found\n");
+			error = 1;
+		}
+		if((st1|st2) & 0x01) {
+			kerr("no address mark found");
+			error = 1;
+		}
+		if(st2 & 0x40) {
+			kerr("deleted address mark");
+			error = 1;
+		}
+		if(st2 & 0x20) {
+			kerr("CRC error in data");
+			error = 1;
+		}
+		if(st2 & 0x10) {
+			kerr("wrong cylinder");
+			error = 1;
+		}
+		if(st2 & 0x04) {
+			kerr("uPD765 sector not found");
+			error = 1;
+		}
+		if(st2 & 0x02) {
+			kerr("bad cylinder");
+			error = 1;
+		}
+		if(bps != 0x2) {
+			kerr("wanted 512B/sector, got %d", (1<<(bps+7)));
+			error = 1;
+		}
+		if(st1 & 0x02) {
+			kerr("not writable");
+			error = 2;
+		}
 
-        if(!error) {
-            floppy_motor(drive, OFF);
-            return 0;
-        }
-        if(error > 1) {
-            kerr("not retrying...(rcy = %0x%x, rhe = %0x%x, rse = %0x%x)", rcy, rhe, rse);
-            floppy_motor(drive, OFF); 
-            return -2;
-        }
+		if(!error) {
+			floppy_motor(drive, OFF);
+			return 0;
+		}
+		if(error > 1) {
+			kerr("not retrying...(rcy = %0x%x, rhe = %0x%x, rse = %0x%x)", rcy, rhe, rse);
+			floppy_motor(drive, OFF); 
+			return -2;
+		}
 	
 	}
 	

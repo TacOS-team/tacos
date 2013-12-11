@@ -131,8 +131,8 @@ static uint8_t scancode_m1 = 0;
 static uint8_t scancode_m2 = 0;
 
 static void keyBufferPush(char c) {
-    tty_struct_t *tty = get_active_terminal();
-		tty_insert_flip_char(tty, c);
+	tty_struct_t *tty = get_active_terminal();
+	tty_insert_flip_char(tty, c);
 }
 
 static char keyboardConvertToChar(uint8_t scancode) {
@@ -214,47 +214,47 @@ void keyboardInterrupt(int id __attribute__ ((unused))) {
 				keyBufferPush(c);
 			}
 		} else if (scancode_m1 == KEYBOARD_EXPAND) {
-            switch (scancode) {
-            case 0x48: // U_ARROW
-                keyBufferPush(0x1B);
-                keyBufferPush(0x5B);
-                keyBufferPush(0x41);
-                break;
-            case 0x50: // D_ARROW
-                keyBufferPush(0x1B);
-                keyBufferPush(0x5B);
-                keyBufferPush(0x42);
-                break;
-            case 0x4D: // R_ARROW
-                keyBufferPush(0x1B);
-                keyBufferPush(0x5B);
-                keyBufferPush(0x43);
-                break;
-            case 0x4B: // L_ARROW
-                keyBufferPush(0x1B);
-                keyBufferPush(0x5B);
-                keyBufferPush(0x44);
-                break;
-            case 0x49: // PG_UP
-                keyBufferPush(0x1B);
-                keyBufferPush(0x5B);
-                keyBufferPush(0x35);
-                keyBufferPush(0x7E);
-                break;
-            case 0x51: // PG_DN
-                keyBufferPush(0x1B);
-                keyBufferPush(0x5B);
-                keyBufferPush(0x36);
-                keyBufferPush(0x7E);
-                break;
-						case 0x53: // DELETE
-								keyBufferPush(0x1B);
-								keyBufferPush(0x5B);
-								keyBufferPush(0x33);
-								keyBufferPush(0x7E);
-								break;
-            }
-        }
+			switch (scancode) {
+			case 0x48: // U_ARROW
+				keyBufferPush(0x1B);
+				keyBufferPush(0x5B);
+				keyBufferPush(0x41);
+				break;
+			case 0x50: // D_ARROW
+				keyBufferPush(0x1B);
+				keyBufferPush(0x5B);
+				keyBufferPush(0x42);
+				break;
+			case 0x4D: // R_ARROW
+				keyBufferPush(0x1B);
+				keyBufferPush(0x5B);
+				keyBufferPush(0x43);
+				break;
+			case 0x4B: // L_ARROW
+				keyBufferPush(0x1B);
+				keyBufferPush(0x5B);
+				keyBufferPush(0x44);
+				break;
+			case 0x49: // PG_UP
+				keyBufferPush(0x1B);
+				keyBufferPush(0x5B);
+				keyBufferPush(0x35);
+				keyBufferPush(0x7E);
+				break;
+			case 0x51: // PG_DN
+				keyBufferPush(0x1B);
+				keyBufferPush(0x5B);
+				keyBufferPush(0x36);
+				keyBufferPush(0x7E);
+				break;
+			case 0x53: // DELETE
+				keyBufferPush(0x1B);
+				keyBufferPush(0x5B);
+				keyBufferPush(0x33);
+				keyBufferPush(0x7E);
+				break;
+			}
+		}
 	}
 
 	scancode_m2 = scancode_m1;

@@ -70,7 +70,7 @@ void set_scheduler(scheduler_descriptor_t* sched)
 
 
 int is_schedulable(process_t* process) {
-	if(	process == NULL ) {
+	if (process == NULL) {
 		return 0;
 	}
 	switch (process->state) {
@@ -127,7 +127,7 @@ static void context_switch(int mode, process_t* current)
 			"push %1;"::	        
 			"m" (current->regs.ss), 					
 			"m" (current->regs.esp)
-       );
+		);
 	}
 	
 	asm(		
@@ -138,7 +138,7 @@ static void context_switch(int mode, process_t* current)
 			"m" (eflags), 				
 			"m" (current->regs.cs), 					
 			"m" (current->regs.eip)
-    );
+	);
        
 	/* On push ensuite les registres de la tache à lancer */
 	PUSH_CONTEXT(current);
@@ -308,7 +308,7 @@ SYSCALL_HANDLER1(sys_sleep, uint32_t delay)
 {
 	/* Désactivation de l'ordonnanceur */
 	stop_scheduler();
-	
+
 	process_t* process = get_current_process();
 
 	/* Passage du processus en waiting */
@@ -316,11 +316,11 @@ SYSCALL_HANDLER1(sys_sleep, uint32_t delay)
 
 	/* Adjout de l'évènement de fin de sleep */
 	add_event(sleep_callback,(void*)process,delay);
-	
+
 	/* Scheduling immédiat */
 	start_scheduler();
-	
+
 	while(process->state == PROCSTATE_WAITING);
-		
+
 	return;
 }
