@@ -35,12 +35,18 @@ char *fgets(char *s, int size, FILE *stream) {
 	int c = 0;
 	while (i < size - 1 && c != '\n') {
 		c = fgetc(stream);
-		if (c == EOF) { // Je pars du principe que le \n on le stock dans le buffer mais pas EOF.
+		// EOF is not stored in the buffer but \n is.
+		if (c == EOF) {
 			break;
 		}
 		s[i] = (char)c;
 		i++;
 	}
+
+	// fgets returns NULL when end of file occurs while no characters have been read.
+	if (i == 0)
+		return NULL;
+
 	s[i] = '\0'; // Termine la chaine par un \0.
 	return s;
 }
