@@ -84,7 +84,7 @@ void add_builtin_cmd(func_ptr func, char* name)
 	}
 }
 
-int exec_builtin_cmd(char* cmd)
+int exec_builtin_cmd(const char* cmd)
 {
 	char * name = strdup(cmd);
 	int argc = 0;

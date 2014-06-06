@@ -4,7 +4,7 @@
 typedef int (*func_ptr)(int argc, char **argv);
 
 void add_builtin_cmd(func_ptr func, char* name);
-int exec_builtin_cmd(char* name);
+int exec_builtin_cmd(const char* name);
 void show_builtin_cmd();
 
 #endif

@@ -89,7 +89,29 @@ void print_logo()
 	printf("(codename:fajitas)\n\n\n");
 }
 
-int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused)))
+void exec(const char *buffer)
+{
+	if(exec_builtin_cmd(buffer) != 0)
+	{
+		int pid;
+		if (buffer[0] == '/') {
+			if ((pid = exec_elf(buffer)) < 0)
+				printf("%s: commande introuvable.\n", buffer);
+			else
+				waitpid(pid);
+		} else {
+			char temp[278];
+			char *path = getenv("PATH");
+			sprintf(temp, "%s/%s", path, buffer);
+			if ((pid = exec_elf(temp)) < 0)
+				printf("%s: commande introuvable.\n", buffer);
+			else
+				waitpid(pid);
+		}
+	}
+}
+
+int main(int argc, char** argv)
 {
 	
 	char *buffer;
@@ -104,10 +126,28 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	add_builtin_cmd(pwd_cmd, "pwd");
 	add_builtin_cmd(cd_cmd, "cd");
 
-	//disable_cursor(0);
-	
+	if (argc > 1) {
+		FILE* fd = fopen(argv[1], "r");
+		char buf[200];
+
+		if (fd != NULL) {
+			while (fgets(buf, sizeof(buf), fd)) {
+				size_t len = strlen(buf);
+				if (len > 1) {
+					buf[len - 1] = '\0';
+					printf("exec\n");
+					exec(buf);
+				}
+				printf("here\n");
+			}
+			printf("fini\n");
+			return 0;
+		}
+
+		return 1;
+	}
+
 	print_logo();
-	//print_logo_serial();
 
 	for(;;)
 	{
@@ -121,24 +161,7 @@ int main(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 		//getline(buffer, 1000);
 		buffer = readline(prompt);
 		if (strlen(buffer) >= 1) {
-			if(exec_builtin_cmd(buffer) != 0)
-			{
-				int pid;
-				if (buffer[0] == '/') {
-					if((pid = exec_elf(buffer)) < 0)
-						printf("commande introuvable.\n");
-					else
-						waitpid(pid);
-				} else {
-					char temp[278];
-					char *path = getenv("PATH");
-					sprintf(temp, "%s/%s", path, buffer);
-					if((pid = exec_elf(temp)) < 0)
-						printf("commande introuvable.\n");
-					else
-						waitpid(pid);
-				}
-			}
+			exec(buffer);
 		}
 		free(buffer);
 	}

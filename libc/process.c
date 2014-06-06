@@ -39,7 +39,7 @@
 
 extern char **environ;
 
-int exec_elf(char* cmdline)
+int exec_elf(const char* cmdline)
 {
 	int ret;
 	syscall(SYS_EXEC, (uint32_t)cmdline, (uint32_t)environ, (uint32_t)&ret);

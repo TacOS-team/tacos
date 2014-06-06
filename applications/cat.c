@@ -35,7 +35,6 @@ int main(int argc, char **argv)
 	char c;
 
 	for (i = 1; i < argc; i++) {
-		fd = NULL;
 		fd = fopen(argv[i], "r");
 		if (fd != NULL) {
 			c = fgetc(fd);
