@@ -135,12 +135,9 @@ int main(int argc, char** argv)
 				size_t len = strlen(buf);
 				if (len > 1) {
 					buf[len - 1] = '\0';
-					printf("exec\n");
 					exec(buf);
 				}
-				printf("here\n");
 			}
-			printf("fini\n");
 			return 0;
 		}
 

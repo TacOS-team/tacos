@@ -192,8 +192,8 @@ static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, u
 	ofd->extra_data = NULL;
 
 	if (S_ISFIFO(dentry->d_inode->i_mode)) {
-		klog("ouverture d'un pipe !");
-		klog("i count : %d", dentry->d_inode->i_count);
+		// klog("ouverture d'un pipe !");
+		// klog("i count : %d", dentry->d_inode->i_count);
 		ofd->f_ops = &pipe_fops;
 		ofd->fs_instance = NULL;
 	} else {
@@ -221,7 +221,7 @@ open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 			if (lookup(&nb_last) != 0) {
 				dentry_t *new_entry = kmalloc(sizeof(dentry_t));
 				new_entry->d_name = nb.last;
-				klog("vfs_open create d_name : %s", nb.last);
+				// klog("vfs_open create d_name : %s", nb.last);
 				new_entry->d_pdentry = nb.dentry;
 				nb.mnt->instance->mknod(nb.dentry->d_inode, new_entry, 0, 0); //XXX
 				ret = dentry_open(new_entry, nb.mnt, flags);

@@ -51,7 +51,7 @@ core.img: all
 	@dd if=/dev/zero of=core.img bs=512 count=2880
 	@mkfs.ext2 -F core.img
 	@e2cp README core.img:/
-#	@e2cp script.sh core.img:/
+	@e2cp script.sh core.img:/
 	@e2mkdir core.img:/bin
 	@e2cp -p bin/* core.img:/bin/
 #	@mkfs.vfat core.img
