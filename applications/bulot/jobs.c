@@ -111,9 +111,12 @@ void launch_process(process *p, pid_t pgid, int infile, int outfile, int errfile
 		close(errfile);
 	}
 
-	if (execvp(p->argv[0], p->argv) < 0)
+	if ((pid = execvp(p->argv[0], p->argv)) < 0) {
 	    printf("Commande inconnue\n");
-
+	    p->pid = 0;
+	} else {
+            p->pid = pid;
+	}
 }
 
 void launch_job(job *j, int foreground)
@@ -137,6 +140,9 @@ void launch_job(job *j, int foreground)
 		}
 
 		launch_process(p, j->pgid, infile, outfile, j->stderr);
+
+		// en attendant mieux...
+		pid = p->pid;
 
 		/* Processus père */
 		p->pid = pid;
@@ -180,13 +186,13 @@ process *find_process(pid_t pid)
 	return NULL;
 }
 
-void wait_job(int block)
+void wait_job(int block, int pid)
 {
 	int status;
 	process *p;
-	int pid = 0;
 
 #ifdef FONCTIONS_AVANCEES
+	int pid = 0;
 	if (block) {
 		/* Attend tous processus fils, sauvegarde leur status (fonction bloquante) */
 		pid = waitpid(-1, &status, WUNTRACED);
@@ -194,11 +200,14 @@ void wait_job(int block)
 		pid = waitpid(-1, &status, WUNTRACED|WNOHANG);
 	}
 #endif
-	//waitpid(-1);
+	waitpid(pid);
 
 	if (pid > 0) {
 		if ((p = find_process(pid)) != NULL) {
 			p->status = status;
+
+			p->stopped = 1;
+			p->completed = 1;
 #ifdef FONCTIONS_AVANCEES
 			if (WIFSTOPPED(status)) {
 				p->stopped = 1;
@@ -303,8 +312,7 @@ void put_job_foreground(job *j, int cont)
 	}
 
 	do {
-		wait_job(1);
-
+		wait_job(1, j->first_process->pid);
 	} while (!job_is_finished(j) && !job_is_stopped(j));
 
 	if (job_is_finished(j)) {
@@ -343,7 +351,7 @@ void sigchld_handler_notif()
 {
 	job *j, *jnext;
 
-	wait_job(0);
+	////wait_job(0);
 
 	for (j = first_job_list; j; j = jnext)
 	{

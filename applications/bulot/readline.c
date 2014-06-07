@@ -189,7 +189,7 @@ void readline(shell_struct *shell)
 	struct termios newt = oldt;
 	cfmakeraw(&newt);
 	/* On change la structure termios default, on ajout un retour chariot a chaque newline detecté */
-	newt.c_oflag |= (ONLCR | OPOST);
+	//newt.c_oflag |= (ONLCR | OPOST);
 	if (tcsetattr(0, TCSANOW, &newt) != 0) {
 		perror("Erreur tcset");
 	}
@@ -260,7 +260,7 @@ void readline(shell_struct *shell)
 				del_char(&pos,&cur_col,colonnes,&count,shell);
 			}
 			break;
-		case 10:/*Enter*/
+		case 13:/*Enter*/
 			end = 1;
 			while (pos != count) {
 				move_right(&pos,&cur_col,colonnes,count);

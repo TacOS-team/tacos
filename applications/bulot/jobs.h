@@ -56,7 +56,7 @@ process* find_process(pid_t pid);
  * \fn void wait_job(int block)
  * \param block
  */
-void wait_job(int block);
+void wait_job(int block, int pid);
 
 /**
  * \fn void continue_job(job *j, int foreground)

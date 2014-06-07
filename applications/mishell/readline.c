@@ -68,7 +68,6 @@ char *readline(const char *prompt)
 		switch (c) {
 		case 3:
 			buf[0] = '\0';
-		case 10:
 		case 13:
 			end = 1;
 			printf("\n");
