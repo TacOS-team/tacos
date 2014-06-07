@@ -83,24 +83,24 @@ struct symbole {
 	const char* alt_r;
 };
 
-static const char tab_key[] = {0x09, 0};
-static const char enter_key[] = {0x0d, 0}; 
-static const char esc_key[] = {0x1b, 0};
-static const char bs_key[] = {0x7f, 0};
-static const char left_key[] = {0x1b, 0x5b, 0x44, 0};
-static const char right_key[] = {0x1b, 0x5b, 0x43, 0};
-static const char up_key[] = {0x1b, 0x5b, 0x41, 0};
-static const char down_key[] = {0x1b, 0x5b, 0x42, 0};
-static const char home_key[] = {0x1b, 0x5b, 0x31, 0x7e, 0};
-static const char insert_key[] = {0x1b, 0x5b, 0x31, 0x7e, 0};
-static const char del_key[] = {0x1b, 0x5b, 0x33, 0x7e, 0};
-static const char end_key[] = {0x1b, 0x5b, 0x34, 0x7e, 0};
-static const char pgup_key[] = {0x1b, 0x5b, 0x35, 0x7e, 0};
-static const char pgdown_key[] = {0x1b, 0x5b, 0x36, 0x7e, 0};
+#define TAB_KEY 	"\x09"
+#define ENTER_KEY 	"\x0d"
+#define ESC_KEY 	"\x1b"
+#define BS_KEY 		"\x7f"
+#define LEFT_KEY 	"\x1b\x5b\x44"
+#define RIGHT_KEY	"\x1b\x5b\x43"
+#define UP_KEY 		"\x1b\x5b\x41"
+#define DOWN_KEY 	"\x1b\x5b\x42"
+#define HOME_KEY 	"\x1b\x5b\x31\x7e"
+#define INSERT_KEY 	"\x1b\x5b\x31\x7e"
+#define DEL_KEY 	"\x1b\x5b\x33\x7e"
+#define END_KEY 	"\x1b\x5b\x34\x7e"
+#define PGUP_KEY 	"\x1b\x5b\x35\x7e"
+#define PGDOWN_KEY 	"\x1b\x5b\x36\x7e"
 
 struct symbole qwerty_keymap[] = {
 	{"", "", "", "", ""},
-	{esc_key, esc_key, NULL, esc_key, NULL},
+	{ESC_KEY, ESC_KEY, NULL, ESC_KEY, NULL},
 	{"1", "!", NULL, "1", NULL},
 	{"2", "@", NULL, "2", NULL},
 	{"3", "#", NULL, "3", NULL},
@@ -113,8 +113,8 @@ struct symbole qwerty_keymap[] = {
 	{"0", ")", NULL, "0", NULL},
 	{"-", "_", NULL, "-", NULL},
 	{"=", "+", NULL, "=", NULL},
-	{bs_key, bs_key, NULL, bs_key, NULL},
-	{tab_key, tab_key, NULL, tab_key, NULL},
+	{BS_KEY, BS_KEY, NULL, BS_KEY, NULL},
+	{TAB_KEY, TAB_KEY, NULL, TAB_KEY, NULL},
 	{"q", "Q", NULL, NULL, NULL},
 	{"w", "W", NULL, NULL, NULL},
 	{"e", "E", NULL, NULL, NULL},
@@ -125,9 +125,9 @@ struct symbole qwerty_keymap[] = {
 	{"i", "I", NULL, NULL, NULL},
 	{"o", "O", NULL, NULL, NULL},
 	{"p", "P", NULL, NULL, NULL},
-	{"[", "{", NULL, esc_key, NULL},
+	{"[", "{", NULL, ESC_KEY, NULL},
 	{"]", "}", NULL, NULL, NULL},
-	{enter_key, enter_key, NULL, NULL, NULL},
+	{ENTER_KEY, ENTER_KEY, NULL, NULL, NULL},
 	{"", "", "", "", ""},
 	{"a", "A", NULL, NULL, NULL},
 	{"s", "S", NULL, NULL, NULL},
@@ -170,19 +170,19 @@ struct symbole qwerty_keymap[] = {
 	{"", "", "", "", ""},
 	{"", "", "", "", ""},
 	{"", "", "", "", ""},
-	{home_key, "7", "", "", ""},
-	{up_key, "8", "", "", ""},
-	{pgup_key, "9", "", "", ""},
+	{HOME_KEY, "7", "", "", ""},
+	{UP_KEY, "8", "", "", ""},
+	{PGUP_KEY, "9", "", "", ""},
 	{"-", "-", "-", "-", "-"},
-	{left_key, "4", "", "", ""},
+	{LEFT_KEY, "4", "", "", ""},
 	{"5", "5", "", "", ""},
-	{right_key, "6", "", "", ""},
+	{RIGHT_KEY, "6", "", "", ""},
 	{"+", "+", "+", "+", "+"},
-	{end_key, "1", "", "", ""},
-	{down_key, "2", "", "", ""},
-	{pgdown_key, "3", "", "", ""},
-	{insert_key, "0", "", "", ""},
-	{del_key, ".", "", "", ""},
+	{END_KEY, "1", "", "", ""},
+	{DOWN_KEY, "2", "", "", ""},
+	{PGDOWN_KEY, "3", "", "", ""},
+	{INSERT_KEY, "0", "", "", ""},
+	{DEL_KEY, ".", "", "", ""},
 	{"", "", "", "", ""},
 	{"", "", "", "", ""},
 	{"", "", "", "", ""},
@@ -201,16 +201,16 @@ struct symbole qwerty_keymap[] = {
 	{"", "", "", "", ""},
 	{"", "", "", "", ""},
 	{"", "", "", "", ""},
-	{home_key, home_key, home_key, home_key, home_key},
-	{up_key, "", "", "", ""},
-	{pgup_key, "", "", "", ""},
-	{left_key, "", "", "", ""},
-	{right_key, "", "", "", ""},
-	{end_key, "", "", "", ""},
-	{down_key, "", "", "", ""},
-	{pgdown_key, "", "", "", ""},
-	{insert_key, "", "", "", ""},
-	{del_key, "", "", "", ""},
+	{HOME_KEY, HOME_KEY, HOME_KEY, HOME_KEY, HOME_KEY},
+	{UP_KEY, "", "", "", ""},
+	{PGUP_KEY, "", "", "", ""},
+	{LEFT_KEY, "", "", "", ""},
+	{RIGHT_KEY, "", "", "", ""},
+	{END_KEY, "", "", "", ""},
+	{DOWN_KEY, "", "", "", ""},
+	{PGDOWN_KEY, "", "", "", ""},
+	{INSERT_KEY, "", "", "", ""},
+	{DEL_KEY, "", "", "", ""},
 	{"", "", "", "", ""},
 	{"", "", "", "", ""},
 	{"", "", "", "", ""},
@@ -233,7 +233,7 @@ struct symbole qwerty_keymap[] = {
 
 struct symbole azerty_keymap[] = {
 	{"", "", "", "", ""},
-	{esc_key, esc_key, NULL, esc_key, NULL},
+	{ESC_KEY, ESC_KEY, NULL, ESC_KEY, NULL},
 	{"&", "1", NULL, "1", NULL},
 	{"é", "2", NULL, "2", "~"},
 	{"\"", "3", NULL, "3", "#"},
@@ -246,8 +246,8 @@ struct symbole azerty_keymap[] = {
 	{"à", "0", NULL, "0", "@"},
 	{")", "°", NULL, "-", "]"},
 	{"=", "+", NULL, "=", "}"},
-	{bs_key, bs_key, NULL, bs_key, NULL},
-	{tab_key, tab_key, NULL, tab_key, NULL},
+	{BS_KEY, BS_KEY, NULL, BS_KEY, NULL},
+	{TAB_KEY, TAB_KEY, NULL, TAB_KEY, NULL},
 	{"a", "A", NULL, NULL, NULL},
 	{"z", "Z", NULL, NULL, NULL},
 	{"e", "E", NULL, NULL, NULL},
@@ -258,9 +258,9 @@ struct symbole azerty_keymap[] = {
 	{"i", "I", NULL, NULL, NULL},
 	{"o", "O", NULL, NULL, NULL},
 	{"p", "P", NULL, NULL, NULL},
-	{"^", "", NULL, esc_key, NULL},
+	{"^", "", NULL, ESC_KEY, NULL},
 	{"$", "£", NULL, NULL, "¤"},
-	{enter_key, enter_key, NULL, NULL, NULL},
+	{ENTER_KEY, ENTER_KEY, NULL, NULL, NULL},
 	{"", "", "", "", ""},
 	{"q", "Q", NULL, NULL, NULL},
 	{"s", "S", NULL, NULL, NULL},
@@ -303,19 +303,19 @@ struct symbole azerty_keymap[] = {
 	{"", "", "", "", ""},
 	{"", "", "", "", ""},
 	{"", "", "", "", ""},
-	{home_key, "7", "", "", ""},
-	{up_key, "8", "", "", ""},
-	{pgup_key, "9", "", "", ""},
+	{HOME_KEY, "7", "", "", ""},
+	{UP_KEY, "8", "", "", ""},
+	{PGUP_KEY, "9", "", "", ""},
 	{"-", "-", "-", "-", "-"},
-	{left_key, "4", "", "", ""},
+	{LEFT_KEY, "4", "", "", ""},
 	{"5", "5", "", "", ""},
-	{right_key, "6", "", "", ""},
+	{RIGHT_KEY, "6", "", "", ""},
 	{"+", "+", "+", "+", "+"},
-	{end_key, "1", "", "", ""},
-	{down_key, "2", "", "", ""},
-	{pgdown_key, "3", "", "", ""},
-	{insert_key, "0", "", "", ""},
-	{del_key, ".", "", "", ""},
+	{END_KEY, "1", "", "", ""},
+	{DOWN_KEY, "2", "", "", ""},
+	{PGDOWN_KEY, "3", "", "", ""},
+	{INSERT_KEY, "0", "", "", ""},
+	{DEL_KEY, ".", "", "", ""},
 	{"", "", "", "", ""},
 	{"", "", "", "", ""},
 	{"<", ">", "", "", ""},
@@ -334,16 +334,16 @@ struct symbole azerty_keymap[] = {
 	{"", "", "", "", ""},
 	{"", "", "", "", ""},
 	{"", "", "", "", ""},
-	{home_key, home_key, home_key, home_key, home_key},
-	{up_key, "", "", "", ""},
-	{pgup_key, "", "", "", ""},
-	{left_key, "", "", "", ""},
-	{right_key, "", "", "", ""},
-	{end_key, "", "", "", ""},
-	{down_key, "", "", "", ""},
-	{pgdown_key, "", "", "", ""},
-	{insert_key, "", "", "", ""},
-	{del_key, "", "", "", ""},
+	{HOME_KEY, HOME_KEY, HOME_KEY, HOME_KEY, HOME_KEY},
+	{UP_KEY, "", "", "", ""},
+	{PGUP_KEY, "", "", "", ""},
+	{LEFT_KEY, "", "", "", ""},
+	{RIGHT_KEY, "", "", "", ""},
+	{END_KEY, "", "", "", ""},
+	{DOWN_KEY, "", "", "", ""},
+	{PGDOWN_KEY, "", "", "", ""},
+	{INSERT_KEY, "", "", "", ""},
+	{DEL_KEY, "", "", "", ""},
 	{"", "", "", "", ""},
 	{"", "", "", "", ""},
 	{"", "", "", "", ""},
