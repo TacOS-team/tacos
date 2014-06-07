@@ -30,6 +30,7 @@
 #include <ioports.h>
 #include <drivers/keyboard.h>
 #include <drivers/console.h>
+#include <klog.h>
 
 /**
  * Scancode SET 1 : (IBM XT)
@@ -38,7 +39,7 @@
 
 /** SCAN CODES **/
 
-#define KEY_RELEASE 0x80 /**< Masque pour le scancode d'un relÃ¢chement de touche. */
+#define KEY_RELEASE 0x80 /**< Masque pour le scancode d'un relâchement de touche. */
 
 // Protocol 
 #define KEYBOARD_ERROR_MODE_2 0x00 /**< Erreur en scancode mode 2 et 3 */
@@ -74,91 +75,383 @@
 #define KEY_F11     0x57 /**< scancode F11 key. */
 #define KEY_F12     0x58 /**< scancode F12 key. */
 
-/**
- * @brief Structure permettant la conversion d'un scancode vers une lettre
- * ASCII.
- * TODO: On devrait passer par une Ã©tape de keycode.
- */
-typedef struct {
-	uint8_t scancode; /**< Le scancode. */
-	char lowercase; /**< CaractÃ¨re ASCII en lowercase. */
-	char uppercase; /**< CaractÃ¨re ASCII en uppercase. */
-} letter;
+struct symbole {
+	const char* normal;
+	const char* shift_numlock;
+	const char* alt;
+	const char* ctrl;
+	const char* alt_r;
+};
 
-static letter letters_qwerty[] __attribute__ ((unused)) = { { 0x02, '1', '!' },
-		{ 0x03, '2', '@' }, { 0x04, '3', '#' }, { 0x05, '4', '$' }, { 0x06,
-				'5', '%' }, { 0x07, '6', '^' }, { 0x08, '7', '&' }, { 0x09,
-				'8', '*' }, { 0x0a, '9', '(' }, { 0x0b, '0', ')' }, { 0x0c,
-				'-', '_' }, { 0x0d, '=', '+' }, { 0x10, 'q', 'Q' }, { 0x11,
-				'w', 'W' }, { 0x12, 'e', 'E' }, { 0x13, 'r', 'R' }, { 0x14,
-				't', 'T' }, { 0x15, 'y', 'Y' }, { 0x16, 'u', 'U' }, { 0x17,
-				'i', 'I' }, { 0x18, 'o', 'O' }, { 0x19, 'p', 'P' }, { 0x1E,
-				'a', 'A' }, { 0x1F, 's', 'S' }, { 0x20, 'd', 'D' }, { 0x21,
-				'f', 'F' }, { 0x22, 'g', 'G' }, { 0x23, 'h', 'H' }, { 0x24,
-				'j', 'J' }, { 0x25, 'k', 'K' }, { 0x26, 'l', 'L' }, { 0x2C,
-				'z', 'Z' }, { 0x2D, 'x', 'X' }, { 0x2E, 'c', 'C' }, { 0x2F,
-				'v', 'V' }, { 0x30, 'b', 'B' }, { 0x31, 'n', 'N' }, { 0x32,
-				'm', 'M' } };
+static const char tab_key[] = {0x09, 0};
+static const char enter_key[] = {0x0d, 0}; 
+static const char esc_key[] = {0x1b, 0};
+static const char bs_key[] = {0x7f, 0};
+static const char left_key[] = {0x1b, 0x5b, 0x44, 0};
+static const char right_key[] = {0x1b, 0x5b, 0x43, 0};
+static const char up_key[] = {0x1b, 0x5b, 0x41, 0};
+static const char down_key[] = {0x1b, 0x5b, 0x42, 0};
+static const char home_key[] = {0x1b, 0x5b, 0x31, 0x7e, 0};
+static const char insert_key[] = {0x1b, 0x5b, 0x31, 0x7e, 0};
+static const char del_key[] = {0x1b, 0x5b, 0x33, 0x7e, 0};
+static const char end_key[] = {0x1b, 0x5b, 0x34, 0x7e, 0};
+static const char pgup_key[] = {0x1b, 0x5b, 0x35, 0x7e, 0};
+static const char pgdown_key[] = {0x1b, 0x5b, 0x36, 0x7e, 0};
 
-static letter letters_azerty[] = { // TODO : remplacer le scancode par un keycode.
-		{ 0x02, '&', '1' }, { 0x03, 130, '2' }, { 0x04, '"', '3' }, { 0x05,
-				'\'', '4' }, { 0x06, '(', '5' }, { 0x07, '-', '6' }, { 0x08,
-				138, '7' }, { 0x09, '_', '8' }, { 0x0a, 135, '9' }, { 0x0b,
-				133, '0' }, { 0x0c, ')', 167 }, { 0x0d, '=', '+' }, { 0x0e,
-				127, 127 }, { 0x0f, '\t', '\t' }, { 0x10, 'a', 'A' }, { 0x11,
-				'z', 'Z' }, { 0x12, 'e', 'E' }, { 0x13, 'r', 'R' }, { 0x14,
-				't', 'T' }, { 0x15, 'y', 'Y' }, { 0x16, 'u', 'U' }, { 0x17,
-				'i', 'I' }, { 0x18, 'o', 'O' }, { 0x19, 'p', 'P' }, { 0x1B,
-				'$', 156 }, { 0x1E, 'q', 'Q' }, { 0x1F, 's', 'S' }, { 0x20,
-				'd', 'D' }, { 0x21, 'f', 'F' }, { 0x22, 'g', 'G' }, { 0x23,
-				'h', 'H' }, { 0x24, 'j', 'J' }, { 0x25, 'k', 'K' }, { 0x26,
-				'l', 'L' }, { 0x27, 'm', 'M' }, { 0x28, 151, '%' }, { 0x2B,
-				'*', 230 }, { 0x2C, 'w', 'W' }, { 0x2D, 'x', 'X' }, { 0x2E,
-				'c', 'C' }, { 0x2F, 'v', 'V' }, { 0x30, 'b', 'B' }, { 0x31,
-				'n', 'N' }, { 0x32, ',', '?' }, { 0x33, ';', '.' }, { 0x34,
-				':', '/' }, { 0x35, '!', ' ' }, { 0x56, '<', '>' }, { 0x52,
-				'0', '0' }, { 0x4F, '1', '1' }, { 0x50, '2', '2' }, { 0x51,
-				'3', '3' }, { 0x4B, '4', '4' }, { 0x4C, '5', '5' }, { 0x4D,
-				'6', '6' }, { 0x47, '7', '7' }, { 0x48, '8', '8' }, { 0x49,
-				'9', '9' } };
+struct symbole qwerty_keymap[] = {
+	{"", "", "", "", ""},
+	{esc_key, esc_key, NULL, esc_key, NULL},
+	{"1", "!", NULL, "1", NULL},
+	{"2", "@", NULL, "2", NULL},
+	{"3", "#", NULL, "3", NULL},
+	{"4", "$", NULL, "4", NULL},
+	{"5", "%", NULL, "5", NULL},
+	{"6", "^", NULL, "6", NULL},
+	{"7", "&", NULL, "7", NULL},
+	{"8", "*", NULL, "8", NULL},
+	{"9", "(", NULL, "9", NULL},
+	{"0", ")", NULL, "0", NULL},
+	{"-", "_", NULL, "-", NULL},
+	{"=", "+", NULL, "=", NULL},
+	{bs_key, bs_key, NULL, bs_key, NULL},
+	{tab_key, tab_key, NULL, tab_key, NULL},
+	{"q", "Q", NULL, NULL, NULL},
+	{"w", "W", NULL, NULL, NULL},
+	{"e", "E", NULL, NULL, NULL},
+	{"r", "R", NULL, NULL, NULL},
+	{"t", "T", NULL, NULL, NULL},
+	{"y", "Y", NULL, NULL, NULL},
+	{"u", "U", NULL, NULL, NULL},
+	{"i", "I", NULL, NULL, NULL},
+	{"o", "O", NULL, NULL, NULL},
+	{"p", "P", NULL, NULL, NULL},
+	{"[", "{", NULL, esc_key, NULL},
+	{"]", "}", NULL, NULL, NULL},
+	{enter_key, enter_key, NULL, NULL, NULL},
+	{"", "", "", "", ""},
+	{"a", "A", NULL, NULL, NULL},
+	{"s", "S", NULL, NULL, NULL},
+	{"d", "D", NULL, NULL, NULL},
+	{"f", "F", NULL, NULL, NULL},
+	{"g", "G", NULL, NULL, NULL},
+	{"h", "H", NULL, NULL, NULL},
+	{"j", "J", NULL, NULL, NULL},
+	{"k", "K", NULL, NULL, NULL},
+	{"l", "L", NULL, NULL, NULL},
+	{";", ":", NULL, NULL, NULL},
+	{"'", "\"", NULL, NULL, NULL},
+	{"`", "~", NULL, 0, NULL},
+	{"", "", "", "", ""},
+	{"\\", "|", NULL, NULL, NULL},
+	{"z", "Z", NULL, NULL, NULL},
+	{"x", "X", NULL, NULL, NULL},
+	{"c", "C", NULL, NULL, NULL},
+	{"v", "V", NULL, NULL, NULL},
+	{"b", "B", NULL, NULL, NULL},
+	{"n", "N", NULL, NULL, NULL},
+	{"m", "M", NULL, NULL, NULL},
+	{",", "<", NULL, "", NULL},
+	{".", ">", NULL, "", NULL},
+	{"/", "?", NULL, "", NULL},
+	{"", "", "", "", ""},
+	{"*", "*", "*", "*", NULL},
+	{"", "", "", "", ""},
+	{" ", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{home_key, "7", "", "", ""},
+	{up_key, "8", "", "", ""},
+	{pgup_key, "9", "", "", ""},
+	{"-", "-", "-", "-", "-"},
+	{left_key, "4", "", "", ""},
+	{"5", "5", "", "", ""},
+	{right_key, "6", "", "", ""},
+	{"+", "+", "+", "+", "+"},
+	{end_key, "1", "", "", ""},
+	{down_key, "2", "", "", ""},
+	{pgdown_key, "3", "", "", ""},
+	{insert_key, "0", "", "", ""},
+	{del_key, ".", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"/", "/", "/", "/", "/"},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{home_key, home_key, home_key, home_key, home_key},
+	{up_key, "", "", "", ""},
+	{pgup_key, "", "", "", ""},
+	{left_key, "", "", "", ""},
+	{right_key, "", "", "", ""},
+	{end_key, "", "", "", ""},
+	{down_key, "", "", "", ""},
+	{pgdown_key, "", "", "", ""},
+	{insert_key, "", "", "", ""},
+	{del_key, "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+};
 
-static int alt = 0; /**< 1 si la touche alt est enfoncÃ©e, 0 sinon. */
-static int shift = 0; /**< 1 si la touche shift est enfoncÃ©e, 0 sinon. */
-static int capslock = 0; /**< 1 si la les majuscules sont vÃ©rouillÃ©es, 0 sinon. */
-static int numlock = 0; /**< 1 si le pavÃ© numÃ©rique est activÃ©, 0 sinon. */
-static int ctrl = 0; /**< 1 si la touche control est activÃ©e, 0 sinon. */
+struct symbole azerty_keymap[] = {
+	{"", "", "", "", ""},
+	{esc_key, esc_key, NULL, esc_key, NULL},
+	{"&", "1", NULL, "1", NULL},
+	{"é", "2", NULL, "2", NULL},
+	{"\"", "3", NULL, "3", NULL},
+	{"'", "4", NULL, "4", NULL},
+	{"(", "5", NULL, "5", NULL},
+	{"-", "6", NULL, "6", NULL},
+	{"è", "7", NULL, "7", NULL},
+	{"_", "8", NULL, "8", NULL},
+	{"ç", "9", NULL, "9", NULL},
+	{"à", "0", NULL, "0", NULL},
+	{")", "°", NULL, "-", NULL},
+	{"=", "+", NULL, "=", NULL},
+	{bs_key, bs_key, NULL, bs_key, NULL},
+	{tab_key, tab_key, NULL, tab_key, NULL},
+	{"a", "A", NULL, NULL, NULL},
+	{"z", "Z", NULL, NULL, NULL},
+	{"e", "E", NULL, NULL, NULL},
+	{"r", "R", NULL, NULL, NULL},
+	{"t", "T", NULL, NULL, NULL},
+	{"y", "Y", NULL, NULL, NULL},
+	{"u", "U", NULL, NULL, NULL},
+	{"i", "I", NULL, NULL, NULL},
+	{"o", "O", NULL, NULL, NULL},
+	{"p", "P", NULL, NULL, NULL},
+	{"^", "", NULL, esc_key, NULL},
+	{"$", "£", NULL, NULL, NULL},
+	{enter_key, enter_key, NULL, NULL, NULL},
+	{"", "", "", "", ""},
+	{"q", "Q", NULL, NULL, NULL},
+	{"s", "S", NULL, NULL, NULL},
+	{"d", "D", NULL, NULL, NULL},
+	{"f", "F", NULL, NULL, NULL},
+	{"g", "G", NULL, NULL, NULL},
+	{"h", "H", NULL, NULL, NULL},
+	{"j", "J", NULL, NULL, NULL},
+	{"k", "K", NULL, NULL, NULL},
+	{"l", "L", NULL, NULL, NULL},
+	{"m", "M", NULL, NULL, NULL},
+	{"ù", "%", NULL, NULL, NULL},
+	{"²", "~", NULL, 0, NULL},
+	{"", "", "", "", ""},
+	{"*", "µ", NULL, NULL, NULL},
+	{"w", "W", NULL, NULL, NULL},
+	{"x", "X", NULL, NULL, NULL},
+	{"c", "C", NULL, NULL, NULL},
+	{"v", "V", NULL, NULL, NULL},
+	{"b", "B", NULL, NULL, NULL},
+	{"n", "N", NULL, NULL, NULL},
+	{",", "?", NULL, "", NULL},
+	{";", ".", NULL, "", NULL},
+	{":", "/", NULL, "", NULL},
+	{"!", "§", NULL, "", NULL},
+	{"", "", "", "", ""},
+	{"*", "*", "*", "*", NULL},
+	{"", "", "", "", ""},
+	{" ", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{home_key, "7", "", "", ""},
+	{up_key, "8", "", "", ""},
+	{pgup_key, "9", "", "", ""},
+	{"-", "-", "-", "-", "-"},
+	{left_key, "4", "", "", ""},
+	{"5", "5", "", "", ""},
+	{right_key, "6", "", "", ""},
+	{"+", "+", "+", "+", "+"},
+	{end_key, "1", "", "", ""},
+	{down_key, "2", "", "", ""},
+	{pgdown_key, "3", "", "", ""},
+	{insert_key, "0", "", "", ""},
+	{del_key, ".", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"<", ">", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"/", "/", "/", "/", "/"},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{home_key, home_key, home_key, home_key, home_key},
+	{up_key, "", "", "", ""},
+	{pgup_key, "", "", "", ""},
+	{left_key, "", "", "", ""},
+	{right_key, "", "", "", ""},
+	{end_key, "", "", "", ""},
+	{down_key, "", "", "", ""},
+	{pgdown_key, "", "", "", ""},
+	{insert_key, "", "", "", ""},
+	{del_key, "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+	{"", "", "", "", ""},
+};
+
+static struct symbole *keymap = azerty_keymap;
+
+static char scancode2keycode[] = {
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 96, 97, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 98, 0, 0, 100, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 102, 103, 104, 0, 105, 106, 106, 0, 107, 108, 109,
+	110, 111, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+};
+
+static int alt = 0; /**< 1 si la touche alt est enfoncée, 0 sinon. */
+static int alt_r = 0; /**< 1 si la touche alt gr est enfoncée, 0 sinon. */
+static int shift = 0; /**< 1 si la touche shift est enfoncée, 0 sinon. */
+static int capslock = 0; /**< 1 si la les majuscules sont vérouillées, 0 sinon. */
+static int numlock = 0; /**< 1 si le pavé numérique est activé, 0 sinon. */
+static int ctrl = 0; /**< 1 si la touche control est activée, 0 sinon. */
 static uint8_t scancode_m1 = 0;
 static uint8_t scancode_m2 = 0;
 
-static void keyBufferPush(char c) {
+static void keyBufferPush(unsigned char c) {
 	tty_struct_t *tty = get_active_terminal();
 	tty_insert_flip_char(tty, c);
 }
 
-static char keyboardConvertToChar(uint8_t scancode) {
-	unsigned int i;
-	for (i = 0; i < sizeof(letters_azerty) / sizeof(letter); i++) {
-		if (scancode == letters_azerty[i].scancode) {
-			if ((shift && !capslock) || (!shift && capslock) || (numlock
-					&& scancode >= 0x47 && scancode <= 0x52)) {
-				return letters_azerty[i].uppercase;
+static void keyBufferPushWord(const char* c) {
+	while (*c) {
+		keyBufferPush(*c);
+		c++;
+	}
+}
+
+static void convertKeyCode(uint8_t keycode) {
+// normal, shift/numlock, alt, ctrl, alt_r
+// NULL en alt signifie : 0x1b suivit du code normal.
+// NULL en ctrl signifie : normal & 0x1F
+// NULL en alt_r signifie: normal
+	if (keycode < 128 && keycode > 0) {
+		if (ctrl) {
+			if (keymap[keycode].ctrl == NULL) {
+				keyBufferPush(keymap[keycode].normal[0] & 0x1f);
 			} else {
-				return letters_azerty[i].lowercase;
+				keyBufferPushWord(keymap[keycode].ctrl);
 			}
+		} else if (numlock || shift) {
+			keyBufferPushWord(keymap[keycode].shift_numlock);
+		} else if (alt) {
+			if (keymap[keycode].alt == NULL) {
+				keyBufferPush(0x1b);
+				keyBufferPushWord(keymap[keycode].normal);
+			} else {
+				keyBufferPushWord(keymap[keycode].alt);
+			}
+		} else if (alt_r && keymap[keycode].alt_r) {
+			keyBufferPushWord(keymap[keycode].alt_r);
+		} else {
+			keyBufferPushWord(keymap[keycode].normal);
 		}
 	}
-	return 0;
 }
 
 void keyboardInterrupt(int id __attribute__ ((unused))) {
 	uint8_t scancode = inb(0x60);
+	uint8_t keycode = 0;
+
+	uint8_t scancode2 = scancode & ~KEY_RELEASE;
+
+	if (scancode2 <= 0x5f) {
+		if (scancode_m1 != KEYBOARD_EXPAND && scancode_m2 != KEYBOARD_PAUSE) {
+			keycode = scancode;
+		} else if (scancode_m1 == KEYBOARD_EXPAND) {
+			keycode = scancode2keycode[scancode2];
+		}
+		if (scancode & KEY_RELEASE) {
+			keycode = 0x80 | keycode;
+		}
+	}
 
 	switch (scancode) {
 	case KEY_ALT:
-		alt = 1;
+		if (scancode_m1 == KEYBOARD_EXPAND) {
+			alt_r = 1;
+		} else {
+			alt = 1;
+		}
 		break;
 	case KEY_ALT | KEY_RELEASE:
 		alt = 0;
+		alt_r = 0;
 		break;
 	case KEY_LSHIFT:
 		shift = 1;
@@ -184,12 +477,6 @@ void keyboardInterrupt(int id __attribute__ ((unused))) {
 	case KEY_NUMLOCK:
 		numlock = !numlock;
 		break;
-	case KEY_RETURN:
-		keyBufferPush('\n');
-		break;
-	case KEY_SPACE:
-		keyBufferPush(' ');
-		break;
 	case KEY_F1:
 		focus_console(0);
 		break;
@@ -202,62 +489,10 @@ void keyboardInterrupt(int id __attribute__ ((unused))) {
 	case KEY_F4:
 		focus_console(3);
 		break;
-	default:
-		if (ctrl) {
-			char c = keyboardConvertToChar(scancode);
-			if (c != 0) {
-				keyBufferPush(c & 0x1F);
-			}
-		} else if (scancode_m1 != KEYBOARD_EXPAND && scancode_m2 != KEYBOARD_PAUSE) {
-			char c = keyboardConvertToChar(scancode);
-			if (c != 0) {
-				keyBufferPush(c);
-			}
-		} else if (scancode_m1 == KEYBOARD_EXPAND) {
-			switch (scancode) {
-			case 0x48: // U_ARROW
-				keyBufferPush(0x1B);
-				keyBufferPush(0x5B);
-				keyBufferPush(0x41);
-				break;
-			case 0x50: // D_ARROW
-				keyBufferPush(0x1B);
-				keyBufferPush(0x5B);
-				keyBufferPush(0x42);
-				break;
-			case 0x4D: // R_ARROW
-				keyBufferPush(0x1B);
-				keyBufferPush(0x5B);
-				keyBufferPush(0x43);
-				break;
-			case 0x4B: // L_ARROW
-				keyBufferPush(0x1B);
-				keyBufferPush(0x5B);
-				keyBufferPush(0x44);
-				break;
-			case 0x49: // PG_UP
-				keyBufferPush(0x1B);
-				keyBufferPush(0x5B);
-				keyBufferPush(0x35);
-				keyBufferPush(0x7E);
-				break;
-			case 0x51: // PG_DN
-				keyBufferPush(0x1B);
-				keyBufferPush(0x5B);
-				keyBufferPush(0x36);
-				keyBufferPush(0x7E);
-				break;
-			case 0x53: // DELETE
-				keyBufferPush(0x1B);
-				keyBufferPush(0x5B);
-				keyBufferPush(0x33);
-				keyBufferPush(0x7E);
-				break;
-			}
-		}
 	}
 
 	scancode_m2 = scancode_m1;
 	scancode_m1 = scancode;
-}
 
+	convertKeyCode(keycode);
+}

@@ -157,7 +157,7 @@ char *readline(const char *prompt)
 
 			break;
 		default:
-			if (c >= 32 && c < 128) {
+			if (c >= 32 && c < 256) {
 				// Insert mode.
 				for (i = count; i >= pos; i--) {
 					buf[i + 1] = buf[i];
