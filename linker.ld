@@ -6,9 +6,11 @@ SECTIONS{
 	/* Débug chargement (load_addr) */
 	 __b_load = .;
 
-    .text :{
+    .text  ALIGN (0x500) :{
+        *(.__mbHeader)
         *(.text)
     }
+
 
     .rodata ALIGN (0x1000) : {
         *(.rodata)

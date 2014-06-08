@@ -18,16 +18,14 @@
 # define MULTIBOOT_HEADER_FLAGS         0x00010003
 #endif
 
-        .text
-
 .globl  start, _start
         start:
         _start:
 jmp     multiboot_entry
 
+.section .__mbHeader
         /* Align 32 bits boundary. */
         .align  4
-
         /* Multiboot header. */
 multiboot_header:
         /* magic */
@@ -48,6 +46,8 @@ multiboot_header:
         /* entry_addr */
         .long   multiboot_entry
 #endif /* ! __ELF__ */
+
+.text
 
 multiboot_entry:
         /* Initialize the stack pointer. */
