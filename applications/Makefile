@@ -5,8 +5,8 @@ LIBS=../lib/libtsock.a ../lib/libc.a ../lib/libsystem.a ../lib/libstl.a libutils
 LDFLAGS=-L./
 INCLUDES=-I../include/ -I../libc/include/ -I../system/include/ -I../libs/tsock/
 CPPINCLUDES=-I../libs/stl/
-CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
-CPPFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32 -fno-rtti -fno-exceptions
+CFLAGS=-W -Wall -g -nostdlib -nostdinc -fno-builtin -I`pwd` -m32
+CPPFLAGS=-W -Wall -g -nostdlib -nostdinc -fno-builtin -I`pwd` -m32 -fno-rtti -fno-exceptions
 LD=ld -Ttext=40000000 --entry=start_main -melf_i386
 BIN=../bin/
 SRCS=*.c *.cpp
