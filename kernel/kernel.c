@@ -69,7 +69,7 @@
  */
 typedef struct
 {
-	uint8_t lol; /**< Exemple d'option, qui n'est plus utilisée. */
+	uint8_t use_azerty; /**< Utilise un layout azerty */
 } kernel_options;
 
 /* Forward declarations. */
@@ -215,7 +215,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 
 static void defaultOptions(kernel_options *options)
 {
-	options->lol = 0;
+	options->use_azerty = 1;
 }
 
 static char get_opt(char **cmdLine)
@@ -243,9 +243,10 @@ static void initKernelOptions(const char *cmdLine, kernel_options *options)
 		switch(opt)
 		{
 		case 'l':
-				options->lol = 1;
+				options->use_azerty = 0;
 				break;
 		//default: printf("Unknown option %c\n", opt);
 		}
 	}
+	selectLayout(options->use_azerty);
 }

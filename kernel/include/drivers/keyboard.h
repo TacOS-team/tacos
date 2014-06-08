@@ -36,4 +36,9 @@
  */
 void keyboardInterrupt(int id);
 
+/**
+ * Choix du layout clavier. Pour le moment juste entre azerty et qwerty.
+ */
+void selectLayout(int use_azerty);
+
 #endif

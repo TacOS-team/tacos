@@ -376,6 +376,14 @@ struct symbole azerty_keymap[] = {
 
 static struct symbole *keymap = azerty_keymap;
 
+void selectLayout(int use_azerty) {
+	if (use_azerty) {
+		keymap = azerty_keymap;
+	} else {
+		keymap = qwerty_keymap;
+	}
+}
+
 static char scancode2keycode[] = {
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 96, 97, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

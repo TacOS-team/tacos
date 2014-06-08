@@ -1,12 +1,12 @@
-timeout 0
-default 1
+timeout 1
+default 0
 
-# 0 - Tacos default
-title Tacos(fajitas)
+# 0 - Tacos default (azerty)
+title Tacos(azerty)
 root (fd0)
 kernel /system/kernel.bin
 
-# 1 - Tacos lol mode
-title Tacos(loljitas)
+# 1 - Tacos (qwerty)
+title Tacos(qwerty)
 root (fd0)
 kernel /system/kernel.bin -l
