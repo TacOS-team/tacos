@@ -186,6 +186,7 @@ static uint32_t alloc_block(ext2_fs_instance_t *instance) {
 	int i;
 	for (i = 0; i < instance->n_groups; i++) {
 		if (instance->group_desc_table[i].bg_free_blocks_count) {
+			instance->group_desc_table[i].bg_free_blocks_count--;
 			// TODO: decrement bg_free_blocks_count
 			int addr_bitmap = instance->group_desc_table[i].bg_block_bitmap;
 			uint8_t *block_bitmap = kmalloc(1024 << instance->superblock.s_log_block_size);
@@ -201,6 +202,7 @@ static uint32_t alloc_block(ext2_fs_instance_t *instance) {
 			}
 		}
 	}
+	kerr("block allocation failed.");
 	return 0;
 }
 
@@ -210,7 +212,9 @@ static int alloc_inode(ext2_fs_instance_t *instance, struct ext2_inode *inode) {
 		if (instance->group_desc_table[i].bg_free_inodes_count) {
 			uint8_t *inode_bitmap = instance->group_desc_table_internal[i].inode_bitmap;
 
+			instance->group_desc_table[i].bg_free_inodes_count--;
 			// TODO: decrement bg_free_inodes_count
+			
 			int addr_bitmap = instance->group_desc_table[i].bg_inode_bitmap;
 			int addr_table = instance->group_desc_table[i].bg_inode_table;
 
@@ -227,6 +231,7 @@ static int alloc_inode(ext2_fs_instance_t *instance, struct ext2_inode *inode) {
 			}
 		}
 	}
+	kerr("inode allocation failed.");
 	return 0;
 }
 
@@ -241,6 +246,7 @@ static int alloc_block_inode(ext2_fs_instance_t *instance, int inode) {
 			return einode->i_block[i];
 		}
 	}
+	kerr("block inode allocation failed.");
 	return 0;
 }
 
