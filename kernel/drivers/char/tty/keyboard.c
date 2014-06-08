@@ -75,29 +75,36 @@
 #define KEY_F11     0x57 /**< scancode F11 key. */
 #define KEY_F12     0x58 /**< scancode F12 key. */
 
+/**
+ * Structure qui contient les charactères ANSI pour un keycode en fonction
+ * des modifiers.
+ */
 struct symbole {
-	const char* normal;
-	const char* shift_numlock;
-	const char* alt;
-	const char* ctrl;
-	const char* alt_r;
+	const char* normal; /**< Code normal. */
+	const char* shift_numlock; /**< Code si shift ou numlock est appuyé. */
+	const char* alt; /**< Code si la touche alt de gauche est appuyée. */
+	const char* ctrl; /**< Code si la touche ctrl est appuyée. */
+	const char* alt_r; /**< Code si la touche alt_gr est appuyée. */
 };
 
-#define TAB_KEY 	"\x09"
-#define ENTER_KEY 	"\x0d"
-#define ESC_KEY 	"\x1b"
-#define BS_KEY 		"\x7f"
-#define LEFT_KEY 	"\x1b\x5b\x44"
-#define RIGHT_KEY	"\x1b\x5b\x43"
-#define UP_KEY 		"\x1b\x5b\x41"
-#define DOWN_KEY 	"\x1b\x5b\x42"
-#define HOME_KEY 	"\x1b\x5b\x31\x7e"
-#define INSERT_KEY 	"\x1b\x5b\x31\x7e"
-#define DEL_KEY 	"\x1b\x5b\x33\x7e"
-#define END_KEY 	"\x1b\x5b\x34\x7e"
-#define PGUP_KEY 	"\x1b\x5b\x35\x7e"
-#define PGDOWN_KEY 	"\x1b\x5b\x36\x7e"
+#define TAB_KEY 	"\x09"			/**< ANSI code for tab key. */
+#define ENTER_KEY 	"\x0d"			/**< ANSI code for enter key. */
+#define ESC_KEY 	"\x1b"			/**< ANSI code for escape key. */
+#define BS_KEY 		"\x7f"			/**< ANSI code for backspace key. */
+#define LEFT_KEY 	"\x1b\x5b\x44"		/**< ANSI code for left key. */
+#define RIGHT_KEY	"\x1b\x5b\x43"		/**< ANSI code for right key. */
+#define UP_KEY 		"\x1b\x5b\x41"		/**< ANSI code for up key. */
+#define DOWN_KEY 	"\x1b\x5b\x42"		/**< ANSI code for down key. */
+#define HOME_KEY 	"\x1b\x5b\x31\x7e"	/**< ANSI code for home key. */
+#define INSERT_KEY 	"\x1b\x5b\x31\x7e"	/**< ANSI code for insert key. */
+#define DEL_KEY 	"\x1b\x5b\x33\x7e"	/**< ANSI code for delete key. */
+#define END_KEY 	"\x1b\x5b\x34\x7e"	/**< ANSI code for end key. */
+#define PGUP_KEY 	"\x1b\x5b\x35\x7e"	/**< ANSI code for page up key. */
+#define PGDOWN_KEY 	"\x1b\x5b\x36\x7e"	/**< ANSI code for page down key. */
 
+/**
+ * Keymap qwerty: keycode vers chaine ANSI.
+ */
 struct symbole qwerty_keymap[] = {
 	{"", "", "", "", ""},
 	{ESC_KEY, ESC_KEY, NULL, ESC_KEY, NULL},
@@ -231,6 +238,9 @@ struct symbole qwerty_keymap[] = {
 	{"", "", "", "", ""},
 };
 
+/**
+ * Keymap azerty: keycode vers chaine ANSI.
+ */
 struct symbole azerty_keymap[] = {
 	{"", "", "", "", ""},
 	{ESC_KEY, ESC_KEY, NULL, ESC_KEY, NULL},

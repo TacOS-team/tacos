@@ -29,8 +29,14 @@
 #include <klibc/string.h>
 #include <kmalloc.h>
 
-
+/**
+ * Taille d'un entier non signé.
+ */
 #define	wsize	sizeof(unsigned int)
+
+/**
+ * Masque utilisé pour copier de façon alignée.
+ */
 #define	wmask	(wsize - 1)
 
 

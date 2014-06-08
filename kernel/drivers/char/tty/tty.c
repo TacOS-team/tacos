@@ -250,7 +250,7 @@ static ssize_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 	return j;
 }
 
-int tty_ioctl (open_file_descriptor *ofd, unsigned int request, void *data) {
+static int tty_ioctl (open_file_descriptor *ofd, unsigned int request, void *data) {
 
 	chardev_interfaces *di = ofd->i_fs_specific;
 	tty_struct_t *t = (tty_struct_t *) di->custom_data;

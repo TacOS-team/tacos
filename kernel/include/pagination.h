@@ -33,10 +33,6 @@
 #include <types.h>
 
 /**
- * @file pagination.h
- */
-
-/**
  * Emplacement de mémoire virtuelle réservé au kernel : 0 -> 1gio
  */
 #define _PAGINATION_KERNEL_TOP 0x40000000
@@ -85,7 +81,7 @@ struct page_table_entry {
  * @brief Activation de la pagination et initialisation.
  *
  * Cette fonction s'occupe d'activer la pagination. (identity mapping entre 
- * autre qui permet de pas briser le lien @phys et @lineaire au début)
+ * autre qui permet de pas briser le lien addr phys et addr lineaire au début)
  */
 void pagination_setup();
 

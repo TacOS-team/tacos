@@ -119,6 +119,8 @@ tty_driver_t *alloc_tty_driver(int lines);
  * Enregistre en tant que char device un driver alloué et configuré.
  *
  * @param driver Le driver à enregistrer.
+ *
+ * @return 0 en cas de succès (mais ne détecte pas encore les erreurs...).
  */
 int tty_register_driver(tty_driver_t *driver);
 

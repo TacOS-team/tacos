@@ -23,8 +23,9 @@
  *
  * @section DESCRIPTION
  *
- * @brief .
+ * @brief Version très réduite d'un stdlib, pour le kernel.
  */
+
 #ifndef _STDLIB_H_
 #define _STDLIB_H_
 

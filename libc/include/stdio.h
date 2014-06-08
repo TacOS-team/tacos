@@ -217,7 +217,7 @@ char *fgets(char *s, int size, FILE *stream);
  *
  * Fgetc lit le caractère suivant depuis le flux stream.
  *
- * @parame stream le stream depuis lequel on lit le caractère.
+ * @param stream le stream depuis lequel on lit le caractère.
  *
  * @return le caractère lu ou EOF en cas d'erreur ou fin de flux.
  */
@@ -236,6 +236,11 @@ int getchar(void);
 
 int fflush(FILE *stream);
 
+/**
+ * Ferme le stream fd.
+ *
+ * @return 0 en cas de succès sinon EOF.
+ */
 int fclose(FILE* fd);
 int fcloseall(void);
 

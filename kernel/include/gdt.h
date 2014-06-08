@@ -52,9 +52,9 @@ struct x86_segment_descriptor
 {
 	/* Double mot de poids faible */
 	uint16_t segment_limit_15_0; /**< Segment Limit 15:00. Spécifie la taille du segment. 
-											  Le proc concatene les 2 champs segment limit pour 
-											  former une valeur de 20 bits. */
-	uint16_t base_address_15_0;  /* Défini la position de l'octet 0 du segment 
+				          Le proc concatene les 2 champs segment limit pour 
+				          former une valeur de 20 bits. */
+	uint16_t base_address_15_0;  /**< Défini la position de l'octet 0 du segment 
 										 	  dans les 4Gio de l'espace adressable linéaire */
 
 	/* Double mot de poids fort */

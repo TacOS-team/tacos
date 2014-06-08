@@ -56,7 +56,8 @@
 
 #include <pci.h>
 
-/* Init stage 1
+/**
+ * Init stage 1
  *
  * Premier niveau d'initialisation, doit comprendre le minimum 
  * pour permettre le chargement de module. Le but ici est d'avoirs
@@ -64,7 +65,7 @@
  * donc pas encore utiliser de modules.
  *
  */
-void init_stage_1(){
+static void init_stage_1(){
 	klog("----------------------------");
 	klog("---     Init Stage 1     ---");
 	klog("----------------------------");
@@ -108,24 +109,26 @@ void init_stage_1(){
 	
 }
 
-/* Init stage 2
+/**
+ * Init stage 2
  *
  * Comprend tout ce qui peut etre fait une fois que le ramdisk
  * est disponible. On devrait commencer a utiliser des modules.
  *
  */
-void init_stage_2() {
+static void init_stage_2() {
 	klog("----------------------------");
 	klog("---     Init Stage 2     ---");
 	klog("----------------------------");
 }
 
-/* Init stage 3
+/**
+ * Init stage 3
  * 
  * Comprend tout ce qui peut etre fait apres le stage 2
  *
  */
-void init_stage_3() {
+static void init_stage_3() {
 	klog("----------------------------");
 	klog("---     Init Stage 3     ---");
 	klog("----------------------------");
