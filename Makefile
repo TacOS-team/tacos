@@ -56,6 +56,7 @@ core.img: all
 	@e2cp README core.img:/
 	@e2cp script.sh core.img:/
 	@e2mkdir core.img:/bin
+#	@strip bin/*
 	@e2cp -p bin/* core.img:/bin/
 # Uncomment the 3 next lines to use pr0n.
 #	@e2mkdir core.img:/bin/fonts
@@ -74,13 +75,13 @@ grub.img: all
 	@rm mtoolsrc
 
 runqemunet: core.img grub.img
-	$(QEMU) -fda grub.img -fdb core.img -vga std -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -net tap,ifname=tap0,script=no -net dump,file=eth.log -m 50 
+	$(QEMU) -fda grub.img -fdb core.img -vga std -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -net tap,ifname=tap0,script=no -net dump,file=eth.log -m 256 
 
 runqemu: core.img grub.img 
-	$(QEMU) -fda grub.img -drive file=core.img,index=1,if=floppy,cache=writeback -vga std -parallel none -m 50 -serial stdio -serial vc -serial vc -serial vc
+	$(QEMU) -fda grub.img -drive file=core.img,index=1,if=floppy,cache=writeback -vga std -parallel none -m 256 -serial stdio -serial vc -serial vc -serial vc
 	
 runqemugdb: core.img grub.img
-	$(QEMU) -fda grub.img -fdb core.img -vga std -parallel none -m 50 -s -S -serial stdio -serial vc -serial vc -serial vc
+	$(QEMU) -fda grub.img -fdb core.img -vga std -parallel none -m 256 -s -S -serial stdio -serial vc -serial vc -serial vc
 	
 runbochs: core.img grub.img
 	BOCHSRC=bochsrc bochs

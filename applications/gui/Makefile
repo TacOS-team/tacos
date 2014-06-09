@@ -1,4 +1,4 @@
-APPS = pron_cube #pron_cube_mouse jpegviewer
+APPS = pron_cube jpegviewer #pron_cube_mouse
 LIBS = ../../lib/pronlib.a ../../lib/libcolor.a ../../lib/libtsock.a ../../lib/libstl.a ../../lib/libtacos.a ../../lib/libjpeg.a ../../lib/libc.a ../../lib/libsystem.a
 INCLUDES = -I../../include/ -I ../../libs/pronlib/ -I ../../libs/libcolor/ -I ../../libs/libjpeg/ -I../../libs/tacos/ -I../../libc/include/ -I../../libs/stl/ -I../../libs/tsock/ -I.
 CXXFLAGS = -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32 -fpermissive -fno-rtti -fno-exceptions
