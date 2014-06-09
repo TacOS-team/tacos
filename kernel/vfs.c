@@ -351,8 +351,11 @@ int vfs_unlink(const char *pathname) {
 			nb.flags &= ~LOOKUP_PARENT;
 			dentry_t *dentry = nb.dentry;
 			const char *last = nb.last;
-			lookup(&nb);
+			if (lookup(&nb) < 0) {
+				return -ENOENT;
+			}
 			//FIXME
+			//TODO: indiquer ce qu'il faut fixer...
 			dcache_remove(nb.mnt->instance, dentry, last);
 			nb.mnt->instance->unlink(pinode, nb.dentry);
 		} else {
