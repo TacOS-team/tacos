@@ -638,7 +638,7 @@ SYSCALL_HANDLER3(sys_exec, char *cmdline, char **environ, int *retval)
 	if(fd != -1)
 	{
 		init_data.name	= execpath;
-		init_data.stack_size = 0x2000;
+		init_data.stack_size = 0x1000;
 		init_data.priority = 0;
 		
 		init_data.args = cmdline;
