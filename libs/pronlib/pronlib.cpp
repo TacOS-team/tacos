@@ -121,12 +121,13 @@ Display* pronConnect() {
   tsock_write(fd, &rq, sizeof(rq));
 
   printf("Reading welcome...\n");
-  //int lRead;
   char buf[MAX_MSG_SIZE];
-  /*while ((lRead = tsock_read(fd, buf, sizeof(buf))) < 0) {
+  // NOTE(julienm): tsock_read is currently nonblocking, so we need to loop.
+  //tsock_read(fd, buf, sizeof(buf));
+  int lRead;
+  while ((lRead = tsock_read(fd, buf, sizeof(buf))) < 0) {
     usleep(100000);
-  }*/
-  tsock_read(fd, buf, sizeof(buf));
+  }
 
   RespWelcome *resp = (RespWelcome*) buf;
   printf("Welcome from server [%x - %x, root = %d]\n", resp->startId, resp->endId, resp->rootWindow);
