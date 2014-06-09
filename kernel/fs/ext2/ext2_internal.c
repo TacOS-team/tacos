@@ -211,7 +211,6 @@ static int alloc_inode(ext2_fs_instance_t *instance, struct ext2_inode *inode) {
 	int i;
 	for (i = 0; i < instance->n_groups; i++) {
 		if (instance->group_desc_table[i].bg_free_inodes_count) {
-			kprintf("inodes restants : %d\n", instance->group_desc_table[i].bg_free_inodes_count);
 			uint8_t *inode_bitmap = instance->group_desc_table_internal[i].inode_bitmap;
 
 			instance->group_desc_table[i].bg_free_inodes_count--;
@@ -269,7 +268,7 @@ static void free_block(ext2_fs_instance_t *instance, uint32_t blk) {
 	instance->write_data(instance->super.device, &(block_bitmap), sizeof(uint8_t), addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
 	
 	instance->group_desc_table[i].bg_free_blocks_count++;
-	// TODO: increment bg_free_blocks_count
+	// TODO: increment bg_free_blocks_count (ie, le faire sur le fs et pas juste en mémoire)
 }
 
 static void free_inode(ext2_fs_instance_t *instance, int inode) {
@@ -280,7 +279,22 @@ static void free_inode(ext2_fs_instance_t *instance, int inode) {
 		free_block(instance, blk);
 	}
 
-	// TODO: liberer l'inode.
+	i = (inode - 1) / instance->superblock.s_inodes_per_group; // Groupe
+	int ib = (inode - 1) - instance->superblock.s_inodes_per_group * i; // Indice dans le groupe.
+	int addr_bitmap = instance->group_desc_table[i].bg_inode_bitmap;
+
+	uint8_t *inode_bitmap = instance->group_desc_table_internal[i].inode_bitmap;
+
+	if ((inode_bitmap[ib/8] & (1 << (ib % 8))) == 0) {
+		kerr("inode deja freed.");
+		return;
+	}
+
+	inode_bitmap[ib/8] &= ~(1 << (ib % 8));
+	instance->write_data(instance->super.device, &(inode_bitmap[ib/8]), sizeof(uint8_t), addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
+
+	instance->group_desc_table[i].bg_free_inodes_count++;
+	// TODO: ecrire sur le fs l'increment.
 }
 
 static void add_dir_entry(ext2_fs_instance_t *instance, int inode, const char *name, int type, int n_inode) {
