@@ -3,6 +3,8 @@ export MAKE=make
 USECLANG=0
 WERROR=0
 
+QEMU=qemu-system-i386
+
 ifneq ($(USECLANG), 1)
 	HASCOLOR = $(shell if test `which colorgcc`; then echo true; else echo false; fi)
 	ifneq ($(HASCOLOR),true)
@@ -67,13 +69,13 @@ grub.img: all
 	@rm mtoolsrc
 
 runqemunet: core.img grub.img
-	qemu -fda grub.img -fdb core.img -vga std -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -net tap,ifname=tap0,script=no -net dump,file=eth.log -m 20 
+	$(QEMU) -fda grub.img -fdb core.img -vga std -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -net tap,ifname=tap0,script=no -net dump,file=eth.log -m 20 
 
 runqemu: core.img grub.img 
-	qemu -fda grub.img -drive file=core.img,index=1,if=floppy,cache=writeback -vga std -parallel none -m 20 -serial stdio -serial vc -serial vc -serial vc
+	$(QEMU) -fda grub.img -drive file=core.img,index=1,if=floppy,cache=writeback -vga std -parallel none -m 20 -serial stdio -serial vc -serial vc -serial vc
 	
 runqemugdb: core.img grub.img
-	qemu -fda grub.img -fdb core.img -vga std -parallel none -m 20 -s -S -serial stdio -serial vc -serial vc -serial vc
+	$(QEMU) -fda grub.img -fdb core.img -vga std -parallel none -m 20 -s -S -serial stdio -serial vc -serial vc -serial vc
 	
 runbochs: core.img grub.img
 	BOCHSRC=bochsrc bochs
