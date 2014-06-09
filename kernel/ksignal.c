@@ -38,6 +38,15 @@
 #include <scheduler.h>
 #include <syscall_values.h>
 
+
+/**
+ * Nom des signaux. Utile pour afficher leurs noms à la place de leurs numéros.
+ */
+const char* signal_names[] = {"SIGHUP", "SIGINT", "SIGQUIT", "SIGILL", "SIGTRAP",
+	"SIGABRT", "SIGBUS ", "SIGFPE ", "SIGKILL", "SIGUSR1", "SIGSEGV", "SIGUSR2",
+	"SIGPIPE", "SIGALRM", "SIGTERM", "SIGCHLD", "SIGCONT", "SIGSTOP", "SIGTSTP",
+	"SIGTTIN", "SIGTTOU", "SIGURG", "SIGSYS", "SIGRTMIN"};
+
 typedef struct {
 	vaddr_t ret_addr;
 	int sig;
@@ -131,7 +140,7 @@ SYSCALL_HANDLER3(sys_kill, int pid, int signum, int* ret)
 			exec_sighandler(process);
 		}
 		
-		klog("%d sending signal %d to pid %d.", get_current_process()->pid, signum, pid);
+		klog("%d sending signal %s to pid %d.", get_current_process()->pid, signal_names[signum], pid);
 	}
 	else
 	{
@@ -249,7 +258,7 @@ int exec_sighandler(process_t* process)
 		signum = get_first_signal(&(process->signal_data.pending_set));
 		if(process->signal_data.handlers[signum] != NULL)
 		{
-			klog("Pid %d received signal %d.", process->pid, signum);
+			klog("Pid %d received signal %s.", process->pid, signal_names[signum]);
 			ret = 1;
 			
 			/* On alloue sur la pile USER la stack frame du signal */

@@ -71,6 +71,7 @@ typedef struct
 #define SIGSYS		30 /**< Bad syscall. */
 #define SIGRTMIN	31
 #define SIGRTMAX	NSIG-1
+// Penser à modifier la liste des noms de signaux dans ksignal.c en cas de modification.
 
 /* Paramètre pour sigprocmask */
 #define SIG_BLOCK	0
