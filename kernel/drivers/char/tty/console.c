@@ -441,7 +441,7 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 		kputchar_tab(tty);
 	} else if (c == '\b') {
 		backspace(n);
-	} else {
+	} else if (c < 255) {
 		if (consoles[n].cur_x >= consoles[n].cols) {
 			newline(n);
 		}

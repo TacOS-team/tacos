@@ -47,6 +47,10 @@ struct termios tty_std_termios = {
 	.c_ispeed = 38400,
 };
 
+#ifndef EOF
+  #define EOF (-1)
+#endif
+
 #define I_ECHO(tty) (tty->termios.c_lflag & ECHO)			/**< Echo activé ? */
 #define I_CANON(tty) (tty->termios.c_lflag & ICANON)	/**< Mode canonique ? */
 
@@ -61,6 +65,7 @@ struct termios tty_std_termios = {
 #define INTR_CHAR(tty) ((tty)->termios.c_cc[VINTR])		/**< Interrupt char */
 #define SUSP_CHAR(tty) ((tty)->termios.c_cc[VSUSP])		/**< Suspend char */
 #define ERASE_CHAR(tty) ((tty)->termios.c_cc[VERASE])	/**< Erase char */
+#define EOF_CHAR(tty) ((tty)->termios.c_cc[VEOF])	/**< EOF char */
 
 static chardev_interfaces* tty_get_driver_interface(tty_struct_t *tty);
 
@@ -80,6 +85,8 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 		}
 	} else if (c == '\n' && I_INLCR(tty)) {
 		c = '\r';
+	} else if (c == EOF_CHAR(tty)) {
+		c = EOF;
 	}
 	if (L_ISIG(tty)) {
 		if (c == QUIT_CHAR(tty)) {
@@ -135,7 +142,7 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 }
 
 tty_driver_t *alloc_tty_driver(int lines) {
-	tty_driver_t *driver = (tty_driver_t *)kmalloc(sizeof(tty_driver_t));
+	tty_driver_t *driver = kmalloc(sizeof(tty_driver_t));
 	driver->num = lines;
 	return driver;
 }
@@ -232,9 +239,20 @@ static ssize_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 
 		c = t->buffer[(t->p_end + MAX_INPUT - 1) % MAX_INPUT];
 
-		if (!I_CANON(t) || c == '\n' || c == '\r') {
+		// Un seul charactere et c'est EOF.
+		if (c == EOF && (t->p_begin + 1) % MAX_INPUT == t->p_end) {
+			t->p_begin = (t->p_begin + 1) % MAX_INPUT;
+			return 0;
+		}
+
+		if (!I_CANON(t) || c == '\n' || c == '\r' || c == EOF) {
 			while (j < count && t->p_begin != t->p_end) {
-				((char*) buf)[j] = t->buffer[t->p_begin];
+				c = t->buffer[t->p_begin];
+				if (c == EOF) {
+					// on insert pas EOF dans le buffer et on le laisse ici.
+					break;
+				}
+				((char*) buf)[j] = c;
 				t->p_begin = (t->p_begin + 1) % MAX_INPUT;
 				j++;
 			}

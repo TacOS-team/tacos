@@ -24,7 +24,7 @@
  *
  * @section DESCRIPTION
  *
- * @brief Bibliotèque destinée à manipuler les fichiers exécutables ELF
+ * @brief Bibliothèque destinée à manipuler les fichiers exécutables ELF
  */
 
 #include <elf.h>
