@@ -211,6 +211,7 @@ static int alloc_inode(ext2_fs_instance_t *instance, struct ext2_inode *inode) {
 	int i;
 	for (i = 0; i < instance->n_groups; i++) {
 		if (instance->group_desc_table[i].bg_free_inodes_count) {
+			kprintf("inodes restants : %d\n", instance->group_desc_table[i].bg_free_inodes_count);
 			uint8_t *inode_bitmap = instance->group_desc_table_internal[i].inode_bitmap;
 
 			instance->group_desc_table[i].bg_free_inodes_count--;

@@ -223,7 +223,9 @@ open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
 				new_entry->d_name = nb.last;
 				// klog("vfs_open create d_name : %s", nb.last);
 				new_entry->d_pdentry = nb.dentry;
-				nb.mnt->instance->mknod(nb.dentry->d_inode, new_entry, 0, 0); //XXX
+				if (nb.mnt->instance->mknod(nb.dentry->d_inode, new_entry, 0, 0) < 0) {
+					return NULL;
+				}
 				ret = dentry_open(new_entry, nb.mnt, flags);
 				goto ok;
 			} else {
