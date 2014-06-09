@@ -123,8 +123,8 @@ static uint32_t addr_inode_data2(ext2_fs_instance_t *instance, struct ext2_inode
 	} else if (blk_n < 12 + (1024 << instance->superblock.s_log_block_size) / 4 + (1024 << instance->superblock.s_log_block_size) * (1024 << instance->superblock.s_log_block_size) / 16) { // Double indirect
 		if (einode->i_block[13]) {
 			int j = blk_n - 12 - (1024 << instance->superblock.s_log_block_size) / 4; // Indice dans ce système double-indirect.
-			int k = j / (1024 << instance->superblock.s_log_block_size) / 4; // Indice dans le premier block.
-			int l = k % (1024 << instance->superblock.s_log_block_size) / 4; // Indice dans le second block.
+			int k = j / ((1024 << instance->superblock.s_log_block_size) / 4); // Indice dans le premier block.
+			int l = j % ((1024 << instance->superblock.s_log_block_size) / 4); // Indice dans le second block.
 
 			uint32_t addr_0 = einode->i_block[13]; // @ du premier block d'adresses
 			uint32_t addr_1; // @ du second block d'adresses
