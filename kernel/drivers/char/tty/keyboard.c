@@ -39,7 +39,7 @@
 
 /** SCAN CODES **/
 
-#define KEY_RELEASE 0x80 /**< Masque pour le scancode d'un relâchement de touche. */
+#define KEY_RELEASE 0x80 /**< Masque pour le scancode d'un relÃ¢chement de touche. */
 
 // Protocol 
 #define KEYBOARD_ERROR_MODE_2 0x00 /**< Erreur en scancode mode 2 et 3 */
@@ -76,15 +76,15 @@
 #define KEY_F12     0x58 /**< scancode F12 key. */
 
 /**
- * Structure qui contient les charactères ANSI pour un keycode en fonction
+ * Structure qui contient les charactÃ¨res ANSI pour un keycode en fonction
  * des modifiers.
  */
 struct symbole {
 	const char* normal; /**< Code normal. */
-	const char* shift_numlock; /**< Code si shift ou numlock est appuyé. */
-	const char* alt; /**< Code si la touche alt de gauche est appuyée. */
-	const char* ctrl; /**< Code si la touche ctrl est appuyée. */
-	const char* alt_r; /**< Code si la touche alt_gr est appuyée. */
+	const char* shift_numlock; /**< Code si shift ou numlock est appuyÃ©. */
+	const char* alt; /**< Code si la touche alt de gauche est appuyÃ©e. */
+	const char* ctrl; /**< Code si la touche ctrl est appuyÃ©e. */
+	const char* alt_r; /**< Code si la touche alt_gr est appuyÃ©e. */
 };
 
 #define TAB_KEY 	"\x09"			/**< ANSI code for tab key. */
@@ -124,7 +124,7 @@ struct symbole qwerty_keymap[] = {
 	{TAB_KEY, TAB_KEY, NULL, TAB_KEY, NULL},
 	{"q", "Q", NULL, NULL, NULL},
 	{"w", "W", NULL, NULL, NULL},
-	{"e", "E", NULL, NULL, NULL},
+	{"e", "E", NULL, NULL, "\351"},
 	{"r", "R", NULL, NULL, NULL},
 	{"t", "T", NULL, NULL, NULL},
 	{"y", "Y", NULL, NULL, NULL},
@@ -245,16 +245,16 @@ struct symbole azerty_keymap[] = {
 	{"", "", "", "", ""},
 	{ESC_KEY, ESC_KEY, NULL, ESC_KEY, NULL},
 	{"&", "1", NULL, "1", NULL},
-	{"é", "2", NULL, "2", "~"},
+	{"\351", "2", NULL, "2", "~"},
 	{"\"", "3", NULL, "3", "#"},
 	{"'", "4", NULL, "4", "{"},
 	{"(", "5", NULL, "5", "["},
 	{"-", "6", NULL, "6", "|"},
-	{"è", "7", NULL, "7", "`"},
+	{"\350", "7", NULL, "7", "`"},
 	{"_", "8", NULL, "8", "\\"},
-	{"ç", "9", NULL, "9", "^"},
-	{"à", "0", NULL, "0", "@"},
-	{")", "°", NULL, "-", "]"},
+	{"\347", "9", NULL, "9", "^"},
+	{"\340", "0", NULL, "0", "@"},
+	{")", "\260", NULL, "-", "]"},
 	{"=", "+", NULL, "=", "}"},
 	{BS_KEY, BS_KEY, NULL, BS_KEY, NULL},
 	{TAB_KEY, TAB_KEY, NULL, TAB_KEY, NULL},
@@ -269,7 +269,7 @@ struct symbole azerty_keymap[] = {
 	{"o", "O", NULL, NULL, NULL},
 	{"p", "P", NULL, NULL, NULL},
 	{"^", "", NULL, ESC_KEY, NULL},
-	{"$", "£", NULL, NULL, "¤"},
+	{"$", "\243", NULL, NULL, "\244"},
 	{ENTER_KEY, ENTER_KEY, NULL, NULL, NULL},
 	{"", "", "", "", ""},
 	{"q", "Q", NULL, NULL, NULL},
@@ -282,10 +282,10 @@ struct symbole azerty_keymap[] = {
 	{"k", "K", NULL, NULL, NULL},
 	{"l", "L", NULL, NULL, NULL},
 	{"m", "M", NULL, NULL, NULL},
-	{"ù", "%", NULL, NULL, NULL},
-	{"²", "~", NULL, 0, NULL},
+	{"\243", "%", NULL, NULL, NULL},
+	{"Â²", "~", NULL, 0, NULL},
 	{"", "", "", "", ""},
-	{"*", "µ", NULL, NULL, NULL},
+	{"*", "\265", NULL, NULL, NULL},
 	{"w", "W", NULL, NULL, NULL},
 	{"x", "X", NULL, NULL, NULL},
 	{"c", "C", NULL, NULL, NULL},
@@ -295,7 +295,7 @@ struct symbole azerty_keymap[] = {
 	{",", "?", NULL, "", NULL},
 	{";", ".", NULL, "", NULL},
 	{":", "/", NULL, "", NULL},
-	{"!", "§", NULL, "", NULL},
+	{"!", "\025", NULL, "", NULL},
 	{"", "", "", "", ""},
 	{"*", "*", "*", "*", NULL},
 	{"", "", "", "", ""},
@@ -392,16 +392,17 @@ static char scancode2keycode[] = {
 	110, 111, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
 
-static int alt = 0; /**< 1 si la touche alt est enfoncée, 0 sinon. */
-static int alt_r = 0; /**< 1 si la touche alt gr est enfoncée, 0 sinon. */
-static int shift = 0; /**< 1 si la touche shift est enfoncée, 0 sinon. */
-static int capslock = 0; /**< 1 si la les majuscules sont vérouillées, 0 sinon. */
-static int numlock = 0; /**< 1 si le pavé numérique est activé, 0 sinon. */
-static int ctrl = 0; /**< 1 si la touche control est activée, 0 sinon. */
+static int alt = 0; /**< 1 si la touche alt est enfoncÃ©e, 0 sinon. */
+static int alt_r = 0; /**< 1 si la touche alt gr est enfoncÃ©e, 0 sinon. */
+static int shift = 0; /**< 1 si la touche shift est enfoncÃ©e, 0 sinon. */
+static int capslock = 0; /**< 1 si la les majuscules sont vÃ©rouillÃ©es, 0 sinon. */
+static int numlock = 0; /**< 1 si le pavÃ© numÃ©rique est activÃ©, 0 sinon. */
+static int ctrl = 0; /**< 1 si la touche control est activÃ©e, 0 sinon. */
 static uint8_t scancode_m1 = 0;
 static uint8_t scancode_m2 = 0;
 
 static void keyBufferPush(unsigned char c) {
+	//kprintf("%c %d\n", c, c);
 	tty_struct_t *tty = get_active_terminal();
 	tty_insert_flip_char(tty, c);
 }
