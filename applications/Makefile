@@ -1,8 +1,8 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
 OBJ=ps ls cat mkdir rm getty rmdir mv test_io mkfifo snake
 SUBDIRS=mishell utils
-#OBJ=ls getty test_io tsock_server tsock_client
-#SUBDIRS=mishell utils gui/pron
+#OBJ=ls getty test_io
+#SUBDIRS=mishell utils gui gui/pron
 LIBS=../lib/libtsock.a ../lib/libc.a ../lib/libsystem.a ../lib/libstl.a libutils.a
 LDFLAGS=-L./
 INCLUDES=-I../include/ -I../libc/include/ -I../system/include/ -I../libs/tsock/
