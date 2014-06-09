@@ -197,7 +197,7 @@ static uint32_t alloc_block(ext2_fs_instance_t *instance) {
 				if ((block_bitmap[ib/8] & (1 << (ib % 8))) == 0) {
 					block_bitmap[ib/8] |= (1 << (ib % 8));
 					instance->write_data(instance->super.device, &(block_bitmap[ib/8]), sizeof(uint8_t), addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
-					kprintf("allocation block %d\n", ib + i * instance->superblock.s_blocks_per_group);
+					//kprintf("allocation block %d\n", ib + i * instance->superblock.s_blocks_per_group);
 					return ib + i * instance->superblock.s_blocks_per_group;
 				}
 			}
@@ -252,7 +252,7 @@ static int alloc_block_inode(ext2_fs_instance_t *instance, int inode) {
 }
 
 static void free_block(ext2_fs_instance_t *instance, uint32_t blk) {
-	kprintf("libération block %d\n", blk);
+	//kprintf("libération block %d\n", blk);
 	int i = blk / instance->superblock.s_blocks_per_group; // Groupe de block.
 	int ib = blk - instance->superblock.s_blocks_per_group * i; // Indice dans le groupe.
 	int addr_bitmap = instance->group_desc_table[i].bg_block_bitmap;

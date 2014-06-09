@@ -47,6 +47,7 @@ int ext2_rename(inode_t *old_dir, dentry_t *old_dentry, inode_t *new_dir, dentry
 int ext2_rmdir(inode_t *dir, dentry_t *dentry) {
 	if (S_ISDIR(dentry->d_inode->i_mode)) {
 		remove_dir_entry((ext2_fs_instance_t*)dir->i_instance, dir->i_ino, dentry->d_name);
+		free_inode((ext2_fs_instance_t*)dir->i_instance, dentry->d_inode->i_ino);
 		return 0;
 	} else {
 		return -ENOTDIR;

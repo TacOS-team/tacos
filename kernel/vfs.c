@@ -376,7 +376,9 @@ int vfs_rmdir(const char *pathname) {
 			nb.flags &= ~LOOKUP_PARENT;
 			dentry_t *dentry = nb.dentry;
 			const char *last = nb.last;
-			lookup(&nb);
+			if (lookup(&nb) < 0) {
+				return -ENOENT;
+			}
 			//FIXME
 			dcache_remove(nb.mnt->instance, dentry, last);
 			nb.mnt->instance->rmdir(pinode, nb.dentry);
