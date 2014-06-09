@@ -54,8 +54,14 @@ SYSCALL_HANDLER3(sys_write, uint32_t fd, const void *buf, size_t *c) {
 }
 
 SYSCALL_HANDLER3(sys_read, uint32_t fd, const void *buf, size_t *c) {
-	process_t * process = get_current_process();
 	ssize_t *t = (ssize_t*)c;
+	if (buf == NULL) {
+		kerr("buffer null !");
+		*t = -1;
+		return;
+	}
+
+	process_t * process = get_current_process();
 	
 	open_file_descriptor *ofd;
 

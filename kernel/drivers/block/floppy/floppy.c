@@ -197,6 +197,9 @@ int floppy_close(open_file_descriptor *ofd __attribute__((unused))) {
 }
 
 static ssize_t floppy_read(open_file_descriptor *ofd, void* buf, size_t count, uint32_t offset) {
+	if (buf == NULL) {
+		kerr("buffer null !");
+	}
 	int offset_sector = offset / FLOPPY_SECTOR_SIZE;
 	int offset_in_sector = offset % FLOPPY_SECTOR_SIZE;
 	int drive = *((int*)(ofd->extra_data));
