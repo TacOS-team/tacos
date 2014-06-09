@@ -2,9 +2,9 @@ INCLUDES = -I../../include/ -I../../libc/include/ -I.
 CFLAGS=-O3 -W -Wall $(WE) -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 SRCS = *.c
 
-all: libtsock
+all: libtacos
 
-libtsock: tsock.o
+libtacos: libtacos.o
 	$(AR) r ../../lib/$@.a $^
 
 %.o: %.c
@@ -14,7 +14,7 @@ clean:
 	rm -f *.o .depend
 
 mrproper: clean
-	@rm ../../lib/libtsock.a
+	@rm ../../lib/libtacos.a
 
 -include .depend
 

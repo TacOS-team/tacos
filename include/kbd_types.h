@@ -33,6 +33,7 @@ typedef struct kbdstate {
   unsigned char state;
   unsigned int keysym;
   unsigned int modifiers;
+  char ch;
 } kbdstate_t;
 
 #endif

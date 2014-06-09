@@ -1,0 +1,6 @@
+[submodule "gui"]
+	path = gui
+	url = https://www.etud.insa-toulouse.fr/git/tacos-gui
+[submodule "libs/libjpeg"]
+	path = libs/libjpeg
+	url = git://github.com/CyberjujuM/libjpeg-tacos.git

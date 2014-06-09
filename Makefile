@@ -30,7 +30,7 @@ export CFLAGS=-native $(WE) -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodef
 LDLIBS=-lc -ldrivers -z nodefaultlib -lsystem -lstl
 LDLIBSKERNEL=-ldrivers -z nodefaultlib -lsystem
 LDFLAGS=-Llib/
-SUBDIRS = kernel kernel/drivers libc system libs/stl libs/tsock applications
+SUBDIRS = kernel kernel/drivers libc system libs/stl libs/tsock libs/tacos libs/pronlib libs/libcolor libs/libjpeg applications
 
 all: directories kernel.bin
 
@@ -56,6 +56,9 @@ core.img: all
 	@e2cp script.sh core.img:/
 	@e2mkdir core.img:/bin
 	@e2cp -p bin/* core.img:/bin/
+	@e2mkdir core.img:/bin/fonts
+	@e2cp -p applications/gui/pron/ressources/fonts/* core.img:/bin/fonts/
+	@e2cp applications/gui/tacos.jpg core.img:/bin/
 #	@mkfs.vfat core.img
 #	@MTOOLSRC=mtoolsrc mcopy README v:/
 #	@MTOOLSRC=mtoolsrc mcopy bin v:/
@@ -69,13 +72,13 @@ grub.img: all
 	@rm mtoolsrc
 
 runqemunet: core.img grub.img
-	$(QEMU) -fda grub.img -fdb core.img -vga std -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -net tap,ifname=tap0,script=no -net dump,file=eth.log -m 20 
+	$(QEMU) -fda grub.img -fdb core.img -vga std -net nic,model=rtl8139,macaddr=AC:DC:DE:AD:BE:EF -net tap,ifname=tap0,script=no -net dump,file=eth.log -m 50 
 
 runqemu: core.img grub.img 
-	$(QEMU) -fda grub.img -drive file=core.img,index=1,if=floppy,cache=writeback -vga std -parallel none -m 20 -serial stdio -serial vc -serial vc -serial vc
+	$(QEMU) -fda grub.img -drive file=core.img,index=1,if=floppy,cache=writeback -vga std -parallel none -m 50 -serial stdio -serial vc -serial vc -serial vc
 	
 runqemugdb: core.img grub.img
-	$(QEMU) -fda grub.img -fdb core.img -vga std -parallel none -m 20 -s -S -serial stdio -serial vc -serial vc -serial vc
+	$(QEMU) -fda grub.img -fdb core.img -vga std -parallel none -m 50 -s -S -serial stdio -serial vc -serial vc -serial vc
 	
 runbochs: core.img grub.img
 	BOCHSRC=bochsrc bochs
