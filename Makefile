@@ -30,7 +30,8 @@ export CFLAGS=-native $(WE) -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodef
 LDLIBS=-lc -ldrivers -z nodefaultlib -lsystem -lstl
 LDLIBSKERNEL=-ldrivers -z nodefaultlib -lsystem
 LDFLAGS=-Llib/
-SUBDIRS = kernel kernel/drivers libc system libs/stl libs/tsock libs/tacos libs/pronlib libs/libcolor libs/libjpeg applications
+#SUBDIRS = kernel kernel/drivers libc system libs/stl libs/tsock libs/tacos libs/pronlib libs/libcolor libs/libjpeg applications
+SUBDIRS = kernel kernel/drivers libc system libs/stl libs/tsock libs/tacos applications
 
 all: directories kernel.bin
 
@@ -56,9 +57,9 @@ core.img: all
 	@e2cp script.sh core.img:/
 	@e2mkdir core.img:/bin
 	@e2cp -p bin/* core.img:/bin/
-	@e2mkdir core.img:/bin/fonts
-	@e2cp -p applications/gui/pron/ressources/fonts/* core.img:/bin/fonts/
-	@e2cp applications/gui/tacos.jpg core.img:/bin/
+#	@e2mkdir core.img:/bin/fonts
+#	@e2cp -p applications/gui/pron/ressources/fonts/* core.img:/bin/fonts/
+#	@e2cp applications/gui/tacos.jpg core.img:/bin/
 #	@mkfs.vfat core.img
 #	@MTOOLSRC=mtoolsrc mcopy README v:/
 #	@MTOOLSRC=mtoolsrc mcopy bin v:/

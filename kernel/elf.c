@@ -218,6 +218,9 @@ Elf32_File* load_elf_file(int fd)
 					read(fd, file->symbol_string_table, file->sheaders[i].sh_size);
 				}
 				
+			} else {
+				file->sym_table = NULL;
+				file->symbol_string_table = NULL;
 			}
 			
 		}

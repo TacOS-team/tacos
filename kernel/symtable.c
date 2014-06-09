@@ -52,7 +52,7 @@ symbol_table_t* load_symtable(Elf32_File* file)
 	char* string;
 	symbol_table_t* table;
 	
-	if(file == NULL)
+	if(file == NULL || file->sym_table == NULL)
 		return NULL;
 	
 	table = kmalloc(sizeof(symbol_table_t));
