@@ -127,19 +127,6 @@ socket_t* get_socket(char *meetpoint) {
   return NULL;
 }
 
-void delete_socket(int sd) {
-  socket_t *sock = socket_descriptors[sd];
-
-  if (sock != NULL) {
-    kfree(sock->new_conn_req);
-    if (sock->meetpoint != NULL) {
-      kfree(sock->meetpoint);
-    }
-    kfree(sock);
-    socket_descriptors[sd] = NULL;
-  }
-}
-
 int sock_listen(open_file_descriptor *ofd, char *meetpoint) {
   // Create LISTENING_SERVER socket
   klog("Creating LISTENING_SERVER socket, meetpoint = %s.", meetpoint);
@@ -325,11 +312,33 @@ int sock_open(open_file_descriptor *ofd) {
   return 0;
 }
 
+int sock_close(open_file_descriptor *ofd) {
+  socket_t *sock = socket_descriptors[ofd->current_cluster];
+
+  if (sock == NULL) {
+    return -EBADF;
+  }
+
+  if (sock->new_conn_req != NULL) {
+    kfree(sock->new_conn_req);
+  }
+  if (sock->meetpoint != NULL) {
+    kfree(sock->meetpoint);
+  }
+  ksemctl(sock->accept_sem, SEM_DEL, NULL);
+  ksemctl(sock->connect_sem, SEM_DEL, NULL);
+  ksemctl(sock->read_sem, SEM_DEL, NULL);
+  ksemctl(sock->write_sem, SEM_DEL, NULL);
+  kfree(sock);
+  socket_descriptors[ofd->current_cluster] = NULL;
+  return 0;
+}
+
 static chardev_interfaces di = {
   .read = sock_read,
   .write = sock_write,
   .open = sock_open,
-  .close = NULL,
+  .close = sock_close,
   .ioctl = sock_ioctl
 };
 

@@ -190,6 +190,7 @@ static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, u
 	ofd->current_octet = 0;
 	ofd->i_fs_specific = dentry->d_inode->i_fs_specific;
 	ofd->extra_data = NULL;
+	ofd->select_sem = 0;
 
 	if (S_ISFIFO(dentry->d_inode->i_mode)) {
 		// klog("ouverture d'un pipe !");
