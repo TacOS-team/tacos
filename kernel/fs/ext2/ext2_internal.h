@@ -149,13 +149,13 @@ struct ext2_inode {
 	uint16_t	i_links_count;	/**< Links count */
 	uint32_t	i_blocks;	/**< Blocks count */
 	uint32_t	i_flags;	/**< File flags */
-	uint32_t  i_osd1;		/**< OS dependent 1 */
-	uint32_t	i_block[15];/**< Pointers to blocks */
+	uint32_t	i_osd1;		/**< OS dependent 1 */
+	uint32_t	i_block[15];	/**< Pointers to blocks */
 	uint32_t	i_generation;	/**< File version (for NFS) */
 	uint32_t	i_file_acl;	/**< File ACL */
 	uint32_t	i_dir_acl;	/**< Directory ACL */
 	uint32_t	i_faddr;	/**< Fragment address */
-	uint32_t  i_osd2[3];	/**< OS dependent 2 */
+	uint32_t 	i_osd2[3];	/**< OS dependent 2 */
 };
 
 // Types d'inode :

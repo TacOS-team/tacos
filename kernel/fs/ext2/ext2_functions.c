@@ -91,6 +91,7 @@ int ext2_setattr(inode_t *inode, file_attributes_t *attr) {
 
 int ext2_unlink(inode_t *dir, dentry_t *dentry) {
 	remove_dir_entry((ext2_fs_instance_t*)dir->i_instance, dir->i_ino, dentry->d_name);
+	free_inode((ext2_fs_instance_t*)dir->i_instance, dentry->d_inode->i_ino);
 	// TODO: nlink--
 	return 0;
 }

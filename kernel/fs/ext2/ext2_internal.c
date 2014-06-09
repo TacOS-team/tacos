@@ -197,6 +197,7 @@ static uint32_t alloc_block(ext2_fs_instance_t *instance) {
 				if ((block_bitmap[ib/8] & (1 << (ib % 8))) == 0) {
 					block_bitmap[ib/8] |= (1 << (ib % 8));
 					instance->write_data(instance->super.device, &(block_bitmap[ib/8]), sizeof(uint8_t), addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
+					kprintf("allocation block %d\n", ib + i * instance->superblock.s_blocks_per_group);
 					return ib + i * instance->superblock.s_blocks_per_group;
 				}
 			}
@@ -251,30 +252,35 @@ static int alloc_block_inode(ext2_fs_instance_t *instance, int inode) {
 }
 
 static void free_block(ext2_fs_instance_t *instance, uint32_t blk) {
+	kprintf("libération block %d\n", blk);
 	int i = blk / instance->superblock.s_blocks_per_group; // Groupe de block.
 	int ib = blk - instance->superblock.s_blocks_per_group * i; // Indice dans le groupe.
 	int addr_bitmap = instance->group_desc_table[i].bg_block_bitmap;
 
 	uint8_t block_bitmap;
 	instance->read_data(instance->super.device, &(block_bitmap), sizeof(uint8_t), addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
+
+	if (!(block_bitmap & (1 << (ib % 8)))) {
+		kerr("block deja freed.");
+	}
+
 	block_bitmap &= ~(1 << (ib % 8));
 	instance->write_data(instance->super.device, &(block_bitmap), sizeof(uint8_t), addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
 	
+	instance->group_desc_table[i].bg_free_blocks_count++;
 	// TODO: increment bg_free_blocks_count
 }
 
-#if 0
 static void free_inode(ext2_fs_instance_t *instance, int inode) {
-	int i = inode / instance->superblock.s_blocks_per_group; // Groupe de block.
-	int ib = inode - instance->superblock.s_blocks_per_group * i; // Indice dans le groupe.
-	int addr_bitmap = instance->group_desc_table[i].bg_inode_bitmap;
+	struct ext2_inode *einode = read_inode(instance, inode);
+	int i;
+	for (i = 0; einode->i_block[i]; i++) {
+		uint32_t blk = einode->i_block[i];
+		free_block(instance, blk);
+	}
 
-	uint8_t block_bitmap;
-	instance->read_data(instance->super.device, &(block_bitmap), sizeof(uint8_t), addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
-	block_bitmap &= ~(1 << (ib % 8));
-	instance->write_data(instance->super.device, &(block_bitmap), sizeof(uint8_t), addr_bitmap * (1024 << instance->superblock.s_log_block_size) + ib / 8);
+	// TODO: liberer l'inode.
 }
-#endif
 
 static void add_dir_entry(ext2_fs_instance_t *instance, int inode, const char *name, int type, int n_inode) {
 	int addr_debut = addr_inode_data(instance, inode, 0);
