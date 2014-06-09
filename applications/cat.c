@@ -27,28 +27,33 @@
  */
 
 #include <stdio.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+void cat(int fd) {
+	char buf[80];
+	int c;
+
+	while ((c = read(fd, buf, sizeof(buf))) > 0) {
+		write(1, buf, c); // écrit sur stdout.
+	}
+}
 
 int main(int argc, char **argv)
 {
 	int i;
-	FILE *fd;
-	char c;
+
+	if (argc == 1) {
+		cat(0);
+	}
 
 	for (i = 1; i < argc; i++) {
-		fd = fopen(argv[i], "r");
-		if (fd != NULL) {
-			c = fgetc(fd);
-			while (c != EOF) {
-				printf("%c", c);
-				fflush(stdout);
-				c = fgetc(fd);
-			}
-
-			//fclose(fd);
+		int fd = open(argv[i], O_RDONLY);
+		if (fd >= 0) {
+			cat(fd);
 		} else {
-			printf("%s: file not found.\n", argv[i]);
+			fprintf(stderr, "%s: file not found.\n", argv[i]);
 		}
-		printf("\n");
 	}
 	return 0;
 }

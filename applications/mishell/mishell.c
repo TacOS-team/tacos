@@ -31,11 +31,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <shell_utils.h>
 #include <signal.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include <readline.h>
+
+#include "include/readline.h"
+#include "include/shell_utils.h"
 
 void sigint_handler(int signal __attribute__((unused))) {
 	printf("On ferme pas mishell!!\n");
