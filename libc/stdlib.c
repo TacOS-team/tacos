@@ -123,8 +123,10 @@ unsigned long int strtoul(const char *nptr, char **endptr, int base)
 	{
 		ret = digit+base*ret;
 	}
-	
-	*endptr =(char*) nptr-1;
+
+	if (endptr != NULL) {
+		*endptr = (char*) nptr-1;
+	}
 	
 	return ret;
 }
