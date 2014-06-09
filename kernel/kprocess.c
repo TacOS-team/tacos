@@ -627,6 +627,7 @@ SYSCALL_HANDLER3(sys_exec, char *cmdline, char **environ, int *retval)
 
 	if (!S_ISREG(buf.st_mode) || !(S_IXUSR & buf.st_mode)) {
 		*retval = -1;
+		return;
 	}
 
 	int fd;
