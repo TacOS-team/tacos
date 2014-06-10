@@ -25,11 +25,6 @@ Screen::Screen(int width, int height, int bitsPerPixel) {
   this->bitsPerPixel = bitsPerPixel;
   this->bytesPerPixel = bitsPerPixel/8;
 
-  this->vesa_fd = open("/dev/vesa", O_RDONLY);
-  struct vesa_setmode_req req = { this->width, this->height, this->bitsPerPixel };
-  ioctl(this->vesa_fd, SETMODE, &req);
-  ioctl(this->vesa_fd, GETVIDEOADDR, &this->videoBuffer);
-
   // HACK(julienm): TacOS doesn't support scandir/alphasort.
   /*struct dirent **namelist;
   int n = scandir("resources/fonts", &namelist, 0, alphasort);
@@ -65,6 +60,11 @@ Screen::Screen(int width, int height, int bitsPerPixel) {
     fprintf(stderr, "Could not open the fonts directory.\n");
     exit(1);
   }
+
+  this->vesa_fd = open("/dev/vesa", O_RDONLY);
+  struct vesa_setmode_req req = { this->width, this->height, this->bitsPerPixel };
+  ioctl(this->vesa_fd, SETMODE, &req);
+  ioctl(this->vesa_fd, GETVIDEOADDR, &this->videoBuffer);
 
   this->clipWin = NULL;
   this->clipZone = new ClipZone(0, 0, this->width, this->height);
