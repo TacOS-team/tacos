@@ -388,7 +388,7 @@ char *strcasestr(const char *haystack, const char *needle)
 char *strdup (const char *s)
 {
 	int len = strlen(s);
-	char* new_string = (char*) kmalloc((len+1)*sizeof(char)); // len + 1 pour le '\0'
+	char* new_string = kmalloc((len+1)*sizeof(char)); // len + 1 pour le '\0'
 	
 	return strcpy(new_string, s);
 }

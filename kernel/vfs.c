@@ -153,7 +153,13 @@ static int lookup(struct nameidata *nb) {
 }
 
 static int open_namei(const char *pathname, struct nameidata *nb) {
-	nb->last = pathname;
+	size_t len = strlen(pathname);
+	char *path = kmalloc(len + 1);
+	strcpy(path, pathname);
+	while (path[len - 1] == '/') {
+		path[--len] = '\0';
+	}
+	nb->last = path;
 	nb->mnt = get_mnt_from_path(get_next_part_path(nb));
 	if (nb->mnt) {
 		if (nb->mnt->instance && nb->mnt->instance->getroot) {
@@ -170,7 +176,7 @@ static int open_namei(const char *pathname, struct nameidata *nb) {
 			}
 		}
 		return lookup(nb);
-	} else if (strlen(pathname) <= 1) {
+	} else if (len == 0) {
 		nb->mnt = &mvfs;
 		nb->dentry = &root_vfs;
 		nb->dentry->d_inode->i_count++;
