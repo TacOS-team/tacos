@@ -231,6 +231,9 @@ void listdir(const char *path) {
 }
 
 void list(const char *path) {
+	if (path[0] == '\0') {
+		return;
+	}
 	struct stat buf;
 	if (stat(path, &buf) == 0) {
 		if (S_ISDIR(buf.st_mode)) {

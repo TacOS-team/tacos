@@ -120,7 +120,7 @@ int delete_process(int pid)
 /* Valeur retournée: argc */
 static int arg_build(char* string, vaddr_t base, char*** argv_ptr)
 {
-	int argc = 1;
+	int argc = 0;
 	int len = 0;
 	int i;
 	
@@ -129,18 +129,25 @@ static int arg_build(char* string, vaddr_t base, char*** argv_ptr)
 	char* str_copy_base;
 	
 	/* Première passe: on compte argc et le nombre total de caractères de la chaine, et on remplace les espaces par des 0*/
+	int word = 0;
 	while(*ptr != '\0')
 	{
 		/* Si on a un espace on a une sous-chaine, et on incrément argc */
 		if(*ptr == ' ')
 		{
 			*ptr = '\0';
-			argc++;
+			if (word) {
+				argc++;
+			}
+			word = 0;
+		} else {
+			word = 1;
 		}
 		
 		ptr++;
 		len++;
 	}
+	argc += word;
 	argv = (char**) (base-(argc*sizeof(char*))); /* Base moins les argc cases pour les argv[x] */ 
 	str_copy_base =(char*)(base-(argc*sizeof(char*)) - 2); /* Pareil, mais on va l'utiliser en descendant dans la mémoire, et non en montant comme avec un tableau */
 	i = argc-1;
@@ -149,14 +156,19 @@ static int arg_build(char* string, vaddr_t base, char*** argv_ptr)
 	ptr--;
 	len--;
 	
-	while(len>=0)
+	word = 0;
+	while(len >= 0)
 	{
 		/* Si on trouve '\0', c'est qu'on a fini de parcourir un mot, et on fait donc pointer l'argv comme il faut */
-		if(*ptr=='\0')
-		{
-			argv[i] = str_copy_base+1;
-			//kprintf("%i:%s\n", ptr+1);
-			i--;
+		if(*ptr == '\0') {
+			if (word) {
+				argv[i] = str_copy_base+1;
+				//kprintf("%d:%s\n", i, argv[i]);
+				i--;
+			}
+			word = 0;
+		} else {
+			word = 1;
 		}
 
 			
