@@ -239,22 +239,14 @@ static ssize_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 
 		c = t->buffer[(t->p_end + MAX_INPUT - 1) % MAX_INPUT];
 
-		// Un seul charactere et c'est EOF.
-		if (c == EOF && (t->p_begin + 1) % MAX_INPUT == t->p_end) {
-			t->p_begin = (t->p_begin + 1) % MAX_INPUT;
-			return 0;
-		}
-
 		if (!I_CANON(t) || c == '\n' || c == '\r' || c == EOF) {
 			while (j < count && t->p_begin != t->p_end) {
 				c = t->buffer[t->p_begin];
-				if (c == EOF) {
-					// on insert pas EOF dans le buffer et on le laisse ici.
-					break;
+				if (c != EOF) {
+					((char*) buf)[j] = c;
+					j++;
 				}
-				((char*) buf)[j] = c;
 				t->p_begin = (t->p_begin + 1) % MAX_INPUT;
-				j++;
 			}
 			break;
 		} else {
