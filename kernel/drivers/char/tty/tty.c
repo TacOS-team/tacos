@@ -121,9 +121,7 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 				tty->driver->ops->write(tty, NULL, ch, 1);
 			}
 		} 
-	}
-
-	if ((tty->p_end + 1) % MAX_INPUT != tty->p_begin) {
+	} else if ((tty->p_end + 1) % MAX_INPUT != tty->p_begin) {
 		tty->buffer[tty->p_end] = c;
 		tty->p_end = (tty->p_end + 1) % MAX_INPUT;
 

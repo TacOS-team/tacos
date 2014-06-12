@@ -96,37 +96,31 @@ void focus_console(int n) {
 static void cursor_up(int n) {
 	if (consoles[n].cur_y > 0)
 		consoles[n].cur_y--;
-	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
 static void cursor_down(int n) {
 	if (consoles[n].cur_y < consoles[n].lines - 1)
 		consoles[n].cur_y++;
-	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
 static void cursor_back(int n) {
 	if (consoles[n].cur_x > 0)
 		consoles[n].cur_x--;
-	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
 static void cursor_forward(int n) {
 	if (consoles[n].cur_x < consoles[n].cols - 1)
 		consoles[n].cur_x++;
-	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
 static void lineup(int n) {
 	cursor_up(n);
 	consoles[n].cur_x = 0;
-	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
 static void cursor_move_col(unsigned int n, unsigned int x) {
 	if (x <= consoles[n].cols) {
 		consoles[n].cur_x = x - 1;
-		cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 	}
 }
 
@@ -137,7 +131,6 @@ static void cursor_move(unsigned int n, unsigned int y, unsigned int x) {
 	if (x > 0 && x <= consoles[n].cols) {
 		consoles[n].cur_x = x - 1;
 	}
-	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
 
 static void clear_console(int n) {
@@ -469,7 +462,6 @@ static void kputchar_tab(tty_struct_t *tty) {
 
 /**
  *	Suppression en arrière d'un caractère.
- *	XXX: Pas sûr de vouloir aussi afficher un espace.
  */
 static void backspace(int n) {
 	if (consoles[n].cur_x > 0) {
@@ -478,10 +470,4 @@ static void backspace(int n) {
 		consoles[n].cur_y--;
 		consoles[n].cur_x = consoles[n].cols - 1;
 	}
-
-	int x = consoles[n].cur_x;
-	int y = consoles[n].cur_y;
-
-	kputchar_video(n, true, ' ', x, y, consoles[n].attr);
-	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
 }
