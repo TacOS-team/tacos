@@ -60,6 +60,7 @@ struct termios tty_std_termios = {
 
 #define L_ISIG(tty) (tty->termios.c_lflag & ISIG)			/**< Signals enabled ? */
 #define L_ECHOE(tty) (tty->termios.c_lflag & ECHOE)		/**< Echo erase ? */
+#define L_ECHOCTL(tty) (tty->termios.c_lflag & ECHOCTL)		/**< Echo Ctrl ? */
 
 #define QUIT_CHAR(tty) ((tty)->termios.c_cc[VQUIT])		/**< Quit char */
 #define INTR_CHAR(tty) ((tty)->termios.c_cc[VINTR])		/**< Interrupt char */
@@ -126,6 +127,17 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 		tty->p_end = (tty->p_end + 1) % MAX_INPUT;
 
 		if (I_ECHO(tty)) {
+			if (L_ECHOCTL(tty) && c > 0 && c <= 27) {
+				if (c != 9 && c != 10) {
+					unsigned char ch[3];
+					ch[0] = '^';
+					ch[1] = c + 0x40;
+					ch[2] = '\0';
+					tty->driver->ops->write(tty, NULL, ch, 2);
+					return;
+				}
+			}
+
 			if (tty->driver->ops->put_char != NULL) {
 				tty->driver->ops->put_char(tty, c);
 			} else {
@@ -136,6 +148,7 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 			}
 		}
 	}
+
 	ksemV(tty->sem);
 }
 
