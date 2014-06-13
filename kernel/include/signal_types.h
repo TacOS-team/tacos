@@ -61,6 +61,7 @@ typedef struct
 #define SIGPIPE		12 /**< Write to pipe with no one reading. */
 #define SIGALRM		13 /**< Signal raised by alarm. */
 #define SIGTERM		14 /**< Termination. */
+// On a perdu le 15?
 #define SIGCHLD		16 /**< Fin processus fils. */
 #define SIGCONT		17 /**< Continue si arrêté. */
 #define SIGSTOP		18 /**< Stop l'exécution temporairement. */

@@ -44,7 +44,7 @@
  */
 const char* signal_names[] = {"SIGHUP", "SIGINT", "SIGQUIT", "SIGILL", "SIGTRAP",
 	"SIGABRT", "SIGBUS ", "SIGFPE ", "SIGKILL", "SIGUSR1", "SIGSEGV", "SIGUSR2",
-	"SIGPIPE", "SIGALRM", "SIGTERM", "SIGCHLD", "SIGCONT", "SIGSTOP", "SIGTSTP",
+	"SIGPIPE", "SIGALRM", "SIGTERM", "???", "SIGCHLD", "SIGCONT", "SIGSTOP", "SIGTSTP",
 	"SIGTTIN", "SIGTTOU", "SIGURG", "SIGSYS", "SIGRTMIN"};
 
 typedef struct {
@@ -140,7 +140,7 @@ SYSCALL_HANDLER3(sys_kill, int pid, int signum, int* ret)
 			exec_sighandler(process);
 		}
 		
-		klog("%d sending signal %s to pid %d.", get_current_process()->pid, signal_names[signum], pid);
+		klog("%d sending signal %s(%d) to pid %d.", get_current_process()->pid, signal_names[signum], signum, pid);
 	}
 	else
 	{
