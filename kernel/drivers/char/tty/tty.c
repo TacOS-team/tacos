@@ -66,7 +66,14 @@ struct termios tty_std_termios = {
 #define INTR_CHAR(tty) ((tty)->termios.c_cc[VINTR])		/**< Interrupt char */
 #define SUSP_CHAR(tty) ((tty)->termios.c_cc[VSUSP])		/**< Suspend char */
 #define ERASE_CHAR(tty) ((tty)->termios.c_cc[VERASE])	/**< Erase char */
+#define ERASE_WORD(tty) ((tty)->termios.c_cc[VWERASE])	/**< Erase char */
 #define EOF_CHAR(tty) ((tty)->termios.c_cc[VEOF])	/**< EOF char */
+
+/**
+ *  Indice du charactère precedent.
+ */
+#define PREV_CHAR_INDEX(tty) ((tty->p_end + MAX_INPUT - 1) % MAX_INPUT)
+#define NEXT_CHAR_INDEX(tty) ((tty->p_end + 1) % MAX_INPUT)
 
 static chardev_interfaces* tty_get_driver_interface(tty_struct_t *tty);
 
@@ -74,8 +81,19 @@ void tty_init() {
 
 }
 
+static void tty_delete_last_char(tty_struct_t *tty) {
+	if (tty->p_end != tty->p_begin) {
+		tty->p_end = PREV_CHAR_INDEX(tty);
+		tty->driver->ops->write(tty, NULL, (unsigned char*)"\b \b", 3);
+	}
+}
+
 void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 	if (tty == NULL) return;
+
+	// note: chaque driver doit fournir le write, par contre le put_char c'est
+	// juste pour optimiser et éviter un appel de fonction... C'était peut être
+	// pas nécessaire...
 
 	if (c == '\r') {
 		if (I_IGNCR(tty)) {
@@ -104,27 +122,28 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 		}
 	}
 
-	if (c == ERASE_CHAR(tty) && I_ECHO(tty)) {
-		if (tty->p_end != tty->p_begin) {
-			tty->p_end--;
+	if (c == ERASE_CHAR(tty) && I_ECHO(tty) && I_CANON(tty)) {
+		if (L_ECHOE(tty)) {
+			tty_delete_last_char(tty);
+		} else {
 			if (tty->driver->ops->put_char != NULL) {
-				if (L_ECHOE(tty)) {
-					tty->driver->ops->put_char(tty, '\b');
-					tty->driver->ops->put_char(tty, ' ');
-					tty->driver->ops->put_char(tty, '\b');
-				} else {
-					tty->driver->ops->put_char(tty, c);
-				}
+				tty->driver->ops->put_char(tty, c);
 			} else {
-				unsigned char ch[2];
-				ch[0] = c;
-				ch[1] = '\0';
-				tty->driver->ops->write(tty, NULL, ch, 1);
+				tty->driver->ops->write(tty, NULL, &c, 1);
 			}
-		} 
-	} else if ((tty->p_end + 1) % MAX_INPUT != tty->p_begin) {
+		}
+	} else if (c == ERASE_WORD(tty) && I_ECHO(tty) && I_CANON(tty)) {
+		// Supprime les espaces.
+		while (tty->p_end != tty->p_begin && tty->buffer[PREV_CHAR_INDEX(tty)] == ' ') {
+			tty_delete_last_char(tty);
+		}
+		// Supprime jusqu'au prochain espace.
+		while (tty->p_end != tty->p_begin && tty->buffer[PREV_CHAR_INDEX(tty)] != ' ') {
+			tty_delete_last_char(tty);
+		}
+	} else if (NEXT_CHAR_INDEX(tty) != tty->p_begin) {
 		tty->buffer[tty->p_end] = c;
-		tty->p_end = (tty->p_end + 1) % MAX_INPUT;
+		tty->p_end = NEXT_CHAR_INDEX(tty);
 
 		if (I_ECHO(tty)) {
 			if (L_ECHOCTL(tty) && c > 0 && c <= 27) {
@@ -141,10 +160,7 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 			if (tty->driver->ops->put_char != NULL) {
 				tty->driver->ops->put_char(tty, c);
 			} else {
-				unsigned char ch[2];
-				ch[0] = c;
-				ch[1] = '\0';
-				tty->driver->ops->write(tty, NULL, ch, 1);
+				tty->driver->ops->write(tty, NULL, &c, 1);
 			}
 		}
 	}
@@ -248,7 +264,7 @@ static ssize_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 		if (t->p_begin == t->p_end && !(ofd->flags & O_NONBLOCK))
 			ksemP(t->sem);
 
-		c = t->buffer[(t->p_end + MAX_INPUT - 1) % MAX_INPUT];
+		c = t->buffer[PREV_CHAR_INDEX(t)];
 
 		if (!I_CANON(t) || c == '\n' || c == '\r' || c == EOF) {
 			while (j < count && t->p_begin != t->p_end) {
