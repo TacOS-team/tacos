@@ -23,7 +23,7 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Gestion des terminaux tty.
  */
 
 #include <fs/devfs.h>
@@ -107,6 +107,7 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 	} else if (c == EOF_CHAR(tty)) {
 		c = EOF;
 	}
+
 	if (L_ISIG(tty)) {
 		if (c == QUIT_CHAR(tty)) {
 			sys_kill(tty->fg_process, SIGQUIT, NULL);
@@ -163,9 +164,10 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 				tty->driver->ops->write(tty, NULL, &c, 1);
 			}
 		}
-	}
 
-	ksemV(tty->sem);
+		// Un caractère a été ajouté, on débloque la lecture.
+		ksemV(tty->sem);
+	}
 }
 
 tty_driver_t *alloc_tty_driver(int lines) {
@@ -261,11 +263,16 @@ static ssize_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 	}
 
 	do {
-		if (t->p_begin == t->p_end && !(ofd->flags & O_NONBLOCK))
+		// note: cette boucle peut en théorie être remplacée par un simple if.
+		while (t->p_begin == t->p_end && !(ofd->flags & O_NONBLOCK)) {
+			// Attend l'insertion d'un caractère dans le buffer.
 			ksemP(t->sem);
+		}
 
+		// Lecture du dernier caractère inséré.
 		c = t->buffer[PREV_CHAR_INDEX(t)];
 
+		// On lit seulement si en mode non canonique ou si caractère qui flush.
 		if (!I_CANON(t) || c == '\n' || c == '\r' || c == EOF) {
 			while (j < count && t->p_begin != t->p_end) {
 				c = t->buffer[t->p_begin];
@@ -280,6 +287,7 @@ static ssize_t tty_read(open_file_descriptor *ofd, void *buf, size_t count) {
 			if (ofd->flags & O_NONBLOCK) {
 				return -1;
 			}
+			// Attend l'insertion d'un autre caractère dans le buffer.
 			ksemP(t->sem);
 		}
 	} while (1);
