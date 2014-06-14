@@ -32,7 +32,7 @@
 #include <string.h>
 #include <sys/syscall.h>
 #include <unistd.h>
-
+#include <errno.h>
 #include <stdio.h>
 
 int mkdir(const char *pathname, mode_t mode) {
@@ -41,10 +41,12 @@ int mkdir(const char *pathname, mode_t mode) {
 		char * absolutepath = get_absolute_path(pathname);
 		syscall(SYS_MKDIR, (uint32_t) absolutepath, (uint32_t) mode, (uint32_t) &ret);
 		free(absolutepath);
+		errno = -ret;
 	} else {
 		syscall(SYS_MKDIR, (uint32_t) pathname, (uint32_t) mode, (uint32_t) &ret);
+		errno = -ret;
 	}
-	return -ret;
+	return (ret ? -1 : 0);
 }
 
 DIR* opendir(const char* dirname) {

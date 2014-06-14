@@ -28,22 +28,29 @@
 
 #include <dirent.h>
 #include <stdio.h>
+#include <errno.h>
 
 int main(int argc, char** argv)
 {
 	int i;
-	DIR* dir;
 	
 	if (argc == 1) {
 		fprintf(stderr, "%s: opérande manquant\n", argv[0]);
 	} else {
 		for(i = 1; i < argc; i++) {
-			dir = opendir(argv[i]);
-			if (dir == NULL) {
-				mkdir(argv[i], 0);
-			} else {
-				fprintf(stderr, "Le dossier %s existe déjà.\n", argv[i]);
-				closedir(dir);
+			if (mkdir(argv[i], 0)) {
+				fprintf(stderr, "%s: impossible de créer le répertoire \"%s\"", argv[0], argv[i]);
+
+				switch(errno) {
+					case ENOENT:
+						fprintf(stderr, ": Aucun fichier ou dossier de ce type\n");
+						break;
+					case EEXIST:
+						fprintf(stderr, ": Le fichier existe\n");
+						break;
+					default:
+						fprintf(stderr, "\n");
+				}
 			}
 		}
 	}

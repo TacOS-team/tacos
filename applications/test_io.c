@@ -158,9 +158,21 @@ int main() {
 
 	// Test 16:
 	r = mkdir(dossiertest, 777);
-	unit_test_int("Création d'un dossier existant doit renvoyer EEXIST.", EEXIST, r);
+	unit_test_int("Création d'un dossier existant doit renvoyer EEXIST.", EEXIST, errno);
 
 	// Test 17:
+	f = fopen(fichiertest, "w");
+	r = mkdir(fichiertest, 777);
+	unit_test_int("Création d'un dossier portant un nom déjà pris doit renvoyer EEXIST.", EEXIST, errno);
+	unlink(fichiertest);
+	fclose(f);
+
+	// Test 18:
+	r = mkdir("/tacos/bla/bla", 777);
+	unit_test_int("Création d'un dossier avec un des sous-dossier inexistant (ENOENT).", ENOENT, errno);
+
+	// Test 19:
+	mkdir(dossiertest, 777);
 	r = rmdir(dossiertest);
 	unit_test_int("Suppression d'un dossier existant (retour fonction).", 0, r);
 	DIR* dir = opendir(dossiertest);
