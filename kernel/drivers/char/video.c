@@ -45,6 +45,29 @@
 static struct vga_page_t pages[NB_VGA_PAGES];
 static int current_page;
 
+/**
+ * Table de conversion latin1 vers cp437 (celui utilisé pour l'affichage)
+ */
+unsigned char convert_latin1_cp437[] = {
+  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,  14,  15,
+ 16,  17,  18,  19,  20,  21,  22,  23,  24,  25,  26,  27,  28,  29,  30,  31,
+ 32,  33,  34,  35,  36,  37,  38,  39,  40,  41,  42,  43,  44,  45,  46,  47,
+ 48,  49,  50,  51,  52,  53,  54,  55,  56,  57,  58,  59,  60,  61,  62,  63,
+ 64,  65,  66,  67,  68,  69,  70,  71,  72,  73,  74,  75,  76,  77,  78,  79,
+ 80,  81,  82,  83,  84,  85,  86,  87,  88,  89,  90,  91,  92,  93,  94,  95,
+ 96,  97,  98,  99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111,
+112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127,
+186, 205, 201, 187, 200, 188, 204, 185, 203, 202, 206, 223, 220, 219, 254, 242,
+179, 196, 218, 191, 192, 217, 195, 180, 194, 193, 197, 176, 177, 178, 213, 159,
+255, 173, 155, 156, 207, 157, 221, 21, 249, 184, 166, 174, 170, 240, 169, 238,
+248, 241, 253, 252, 239, 230, 244, 250, 247, 251, 167, 175, 172, 171, 243, 168,
+183, 181, 182, 199, 142, 143, 146, 128, 212, 144, 210, 211, 222, 214, 215, 216,
+209, 165, 227, 224, 226, 229, 153, 158, 190, 235, 233, 234, 154, 237, 232, 225,
+133, 160, 131, 198, 132, 134, 145, 135, 138, 130, 136, 137, 141, 161, 140, 139,
+208, 164, 149, 162, 147, 228, 148, 246, 189, 151, 163, 150, 129, 236, 231, 152
+};
+
+
 void init_video() {
 	// Initialisation du Attribute Mode Control Register.
 	// 0x08: Blink, 0x04: LGE, 0x02: Mono, 0x01: ATGE
@@ -136,48 +159,36 @@ void cursor_position_video(int n, int x, int y) {
 	outb((uint8_t) (pos >> 8), CRT_REG_DATA);
 }
 
-/**
- * Conversion entre latin1 et la table ASCII utilisée.
- */
-static char convert_ascii(unsigned char c) {
-		if (c == 0xE9) { // é
-				c = 0x82;
-		} else if (c == 0xE2) { // â
-				c = 0x83;
-		} else if (c == 0xE4) { // ä
-				c = 0x84;
-		} else if (c == 0xE0) { // à
-				c = 0x85;
-		} else if (c == 0xE7) { // ç
-				c = 0x87;
-		} else if (c == 0xE8) { // è
-				c = 0x8a;
-		} else if (c == 0xF4) { // ô
-				c = 0x93;
-		} else if (c == 0xFC) { // ü
-				c = 0x81;
-		} else if (c == 0xEA) { // ê
-				c = 0x88;
-		} else if (c == 0xF9) { // ù
-				c = 0x97;
-		}
-
-		return c;
-}
-
-void kputchar_video(int n, bool front, char c, int x, int y, char attr) {
+void kputchar_video(int n, bool front, unsigned char c, int x, int y, char attr) {
 	if (x < COLUMNS && y < LINES) {
 		volatile x86_video_mem *video = get_page(n, front);
-		c = convert_ascii(c);
+
+		// Conversion latin1 vers cp437.
+		c = convert_latin1_cp437[c];
+
 		video[x + y * COLUMNS].character = c & 0xFF;
 		video[x + y * COLUMNS].attribute = attr;
 	}
 }
 
-void get_char_video(int n, bool front, char *c, int x, int y, char *attr) {
-	if (x < COLUMNS && y < LINES) {
-		volatile x86_video_mem *video = get_page(n, front);
-		*c = video[x + y * COLUMNS].character;
-		*attr = video[x + y * COLUMNS].attribute;
+void scrollup(int n, char attr) {
+	volatile x86_video_mem *front = get_page(n, true);
+	volatile x86_video_mem *back = get_page(n, false);
+	unsigned int l, c;
+
+	for (l = 0; l < LINES - 1; l++) {
+		for (c = 0; c < COLUMNS; c++) {
+			char car, attr;
+			car = front[c + (l + 1) * COLUMNS].character;
+			attr = front[c + (l + 1) * COLUMNS].attribute;
+
+			back[c + l * COLUMNS].character = car & 0xFF;
+			back[c + l * COLUMNS].attribute = attr;
+		}
 	}
+	for (c = 0; c < COLUMNS; c++) {
+		kputchar_video(n, false, ' ', c, LINES - 1, attr);
+	}
+
+	flip_page(n);
 }

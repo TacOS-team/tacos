@@ -102,7 +102,7 @@ void get_char_video(int n, bool front, char *c, int x, int y, char *attr);
 /**
  * @brief Affiche dans une page le caractère souhaité à l'endroit souhaité.
  */
-void kputchar_video(int n, bool front, char c, int x, int y, char attr);
+void kputchar_video(int n, bool front, unsigned char c, int x, int y, char attr);
 
 /**
  * @brief Change la page à afficher à l'écran.
@@ -111,4 +111,11 @@ void kputchar_video(int n, bool front, char c, int x, int y, char attr);
  */
 void switch_page(int i);
 
+/**
+ * @brief Scroll everything up.
+ *
+ * @param n Le numero de la page concernée.
+ * @param attr L'attribut qui définit la couleur pour la nouvelle ligne.
+ */
+void scrollup(int n, char attr);
 #endif

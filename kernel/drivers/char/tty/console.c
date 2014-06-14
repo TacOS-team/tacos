@@ -157,29 +157,12 @@ static void clear_console(int n) {
 	cursor_position_video(n, 0, 0);
 }
 
-static void scrollup(int n) {
-	unsigned int l, c;
-
-	for (l = 0; l < consoles[n].lines - 1; l++) {
-		for (c = 0; c < consoles[n].cols; c++) {
-			char car, attr;
-			get_char_video(n, true, &car, c, l + 1, &attr);
-			kputchar_video(n, false, car, c, l, attr);
-		}
-	}
-	for (c = 0; c < consoles[n].cols; c++) {
-		kputchar_video(n, false, ' ', c,
-				consoles[n].lines - 1, consoles[n].attr);
-	}
-
-	flip_page(n);
-}
 
 static void newline(int n) {
 	consoles[n].cur_x = 0;
 	consoles[n].cur_y++;
 	if (consoles[n].cur_y >= consoles[n].lines) {
-		scrollup(n);
+		scrollup(n, consoles[n].attr);
 		consoles[n].cur_y--;
 	}
 	cursor_position_video(n, consoles[n].cur_x, consoles[n].cur_y);
@@ -436,7 +419,7 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 		kputchar_tab(tty);
 	} else if (c == '\b') {
 		backspace(n);
-	} else if (c < 255) {
+	} else if (c > 31 && c < 255) {
 		if (consoles[n].cur_x >= consoles[n].cols) {
 			newline(n);
 		}

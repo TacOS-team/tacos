@@ -147,7 +147,8 @@ void tty_insert_flip_char(tty_struct_t *tty, unsigned char c) {
 		tty->p_end = NEXT_CHAR_INDEX(tty);
 
 		if (I_ECHO(tty)) {
-			if (L_ECHOCTL(tty) && c > 0 && c <= 27) {
+			// Les 32 premiers caractères sont des caractères de ctrl.
+			if (L_ECHOCTL(tty) && c <= 31) {
 				if (c != 9 && c != 10) {
 					unsigned char ch[3];
 					ch[0] = '^';
