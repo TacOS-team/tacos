@@ -93,28 +93,36 @@ void focus_console(int n) {
 	}
 }
 
-static void cursor_up(int n) {
-	if (consoles[n].cur_y > 0)
-		consoles[n].cur_y--;
+static void cursor_up(int n, unsigned int count) {
+	if (consoles[n].cur_y > count)
+		consoles[n].cur_y -= count;
+	else
+		consoles[n].cur_y = 0;
 }
 
-static void cursor_down(int n) {
-	if (consoles[n].cur_y < consoles[n].lines - 1)
-		consoles[n].cur_y++;
+static void cursor_down(int n, unsigned int count) {
+	if (consoles[n].cur_y + count < consoles[n].lines)
+		consoles[n].cur_y += count;
+	else
+		consoles[n].cur_y = consoles[n].lines - 1;
 }
 
-static void cursor_back(int n) {
-	if (consoles[n].cur_x > 0)
-		consoles[n].cur_x--;
+static void cursor_back(int n, unsigned int count) {
+	if (consoles[n].cur_x > count)
+		consoles[n].cur_x -= count;
+	else
+		consoles[n].cur_x = 0;
 }
 
-static void cursor_forward(int n) {
-	if (consoles[n].cur_x < consoles[n].cols - 1)
-		consoles[n].cur_x++;
+static void cursor_forward(int n, unsigned int count) {
+	if (consoles[n].cur_x + count < consoles[n].cols)
+		consoles[n].cur_x += count;
+	else
+		consoles[n].cur_x = consoles[n].cols - 1;
 }
 
-static void lineup(int n) {
-	cursor_up(n);
+static void lineup(int n, unsigned int count) {
+	cursor_up(n, count);
 	consoles[n].cur_x = 0;
 }
 
@@ -222,28 +230,23 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 					consoles[n].val2 = 1;
 				switch (c) {
 				case 'A':
-					while (consoles[n].val--)
-						cursor_up(n);
+					cursor_up(n, consoles[n].val);
 					break;
 				case 'B':
-					while (consoles[n].val--)
-						cursor_down(n);
+					cursor_down(n, consoles[n].val);
 					break;
 				case 'C':
-					while (consoles[n].val--)
-						cursor_forward(n);
+					cursor_forward(n, consoles[n].val);
 					break;
 				case 'D':
-					while (consoles[n].val--)
-						cursor_back(n);
+					cursor_back(n, consoles[n].val--);
 					break;
 				case 'E':
 					while (consoles[n].val--)
 						newline(n);
 					break;
 				case 'F':
-					while (consoles[n].val--)
-						lineup(n);
+					lineup(n, consoles[n].val);
 					break;
 				case 'G':
 					cursor_move_col(n, consoles[n].val);
@@ -404,7 +407,6 @@ static void console_putchar(tty_struct_t *tty, unsigned char c) {
 							set_background(n, WHITE);
 							break;
 						}
-
 					}
 					break;
 				case 'J':
