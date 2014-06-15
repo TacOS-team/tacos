@@ -5,6 +5,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include <string.h>
+#include "history.h"
 
 
 #define KUP 454081
@@ -14,6 +15,8 @@
 #define KPGUP 58120958
 #define KPGDOWN 58121086
 #define KDEL 58120702
+#define KHOME 58120446
+#define KEND 58120830
 
 static int getbigchar()
 {
@@ -60,6 +63,69 @@ void move_right(int *pos, int *cur_col, int colonnes, int count)
 	}
 }
 
+void backspace(char* buf, int *pos, int *cur_col, int colonnes, int *count) {
+	int i;
+	if (*pos == 0) {
+		return;
+	}
+	if (*pos < *count) {
+		for (i = *pos - 1; i < *count; i++) {
+			buf[i] = buf[i + 1];
+		}
+	} else {
+		buf[*pos - 1] = '\0';
+	}
+	if (*cur_col > 0) {
+		printf("\033[D");
+		(*cur_col)--;
+	} else {
+		printf("\033[A\033[%dC", colonnes - 1);
+		*cur_col = colonnes - 1;
+	}
+	(*count)--;
+	(*pos)--;
+	printf("%s ", &buf[*pos]);
+	
+	int t = *count - *pos + 1;
+	int m = (t + *cur_col - 1) / colonnes;
+	if (m > 0) {
+		printf("\033[%dA", m);
+	}
+
+	t -= m * colonnes;
+	if (t > 0) {
+		printf("\033[%dD", t);
+	} else if (t < 0) {
+		printf("\033[%dC", -t);
+	}
+}
+
+void delete(char* buf, int pos, int cur_col, int colonnes, int *count) {
+	int i;
+	if (pos == *count) {
+		return;
+	}
+	for (i = pos; i < *count; i++) {
+		buf[i] = buf[i + 1];
+	}
+	(*count)--;
+
+	printf("%s ", &buf[pos]);
+	
+	int t = *count - pos + 1;
+	int m = (t + cur_col - 1) / colonnes;
+	if (m > 0) {
+		printf("\033[%dA", m);
+	}
+
+	t -= m * colonnes;
+	if (t > 0) {
+		printf("\033[%dD", t);
+	} else if (t < 0) {
+		printf("\033[%dC", -t);
+	}
+}
+
 char *readline(const char *prompt)
 {
 	int i;
@@ -90,6 +156,8 @@ char *readline(const char *prompt)
 	int pos = 0;
 	buf[count] = '\0';
 
+	using_history();
+
 	do {
 		int t, m;
 		int c = getbigchar();
@@ -103,6 +171,7 @@ char *readline(const char *prompt)
 			}
 			end = 1;
 			break;
+		case KHOME:
 		case 1: /*C^a*/
 			while (pos > 0) {
 				move_left(&pos,&cur_col,colonnes);
@@ -110,6 +179,7 @@ char *readline(const char *prompt)
 			break;
 		case 3:
 			buf[0] = '\0';
+		case KEND:
 		case 5: /*C^e*/
 			while (pos != count) {
 				move_right(&pos,&cur_col,colonnes,count);
@@ -126,69 +196,57 @@ char *readline(const char *prompt)
 		case KRIGHT:
 			move_right(&pos, &cur_col, colonnes, count);
 			break;
+		case 21: /*C^u*/
+			while (pos > 0) {
+				backspace(buf, &pos, &cur_col, colonnes, &count);
+			}
+			while (count > 0) {
+				delete(buf, pos, cur_col, colonnes, &count);
+			}
+			break;
 		case KUP:
+			{
+				HIST_ENTRY* up = previous_history();
+				if (up) {
+					while (pos > 0) {
+						backspace(buf, &pos, &cur_col, colonnes, &count);
+					}
+					while (count > 0) {
+						delete(buf, pos, cur_col, colonnes, &count);
+					}
+					strcpy(buf, up->cmd);
+
+					printf("%s", buf);
+					count = pos = strlen(buf);
+					cur_col = (cur_col + count) % colonnes;
+				}
+			}
 			break;
 		case KDOWN:
-			break;
+			{
+				HIST_ENTRY* next = next_history();
+				while (pos > 0) {
+					backspace(buf, &pos, &cur_col, colonnes, &count);
+				}
+				while (count > 0) {
+					delete(buf, pos, cur_col, colonnes, &count);
+				}
+				if (next) {
+					strcpy(buf, next->cmd);
+
+					printf("%s", buf);
+					count = pos = strlen(buf);
+					cur_col = (cur_col + count) % colonnes;
+				} else {
+					buf[0] = '\0';
+					count = pos = 0;
+				}
+			}
 		case KDEL:
-			if (pos == count) {
-				break;
-			}
-			for (i = pos; i < count; i++) {
-				buf[i] = buf[i + 1];
-			}
-			count--;
-
-			printf("%s ", &buf[pos]);
-			
-			t = count - pos + 1;
-			m = (t + cur_col - 1) / colonnes;
-			if (m > 0) {
-				printf("\033[%dA", m);
-			}
-
-			t -= m * colonnes;
-			if (t > 0) {
-				printf("\033[%dD", t);
-			} else if (t < 0) {
-				printf("\033[%dC", -t);
-			}
+			delete(buf, pos, cur_col, colonnes, &count);
 			break;
 		case 127:
-			if (pos == 0) {
-				break;
-			}
-			if (pos < count) {
-				for (i = pos - 1; i < count; i++) {
-					buf[i] = buf[i + 1];
-				}
-			} else {
-				buf[pos - 1] = '\0';
-			}
-			if (cur_col > 0) {
-				printf("\033[D");
-				cur_col--;
-			} else {
-				printf("\033[A\033[%dC", colonnes - 1);
-				cur_col = colonnes - 1;
-			}
-			count--;
-			pos--;
-			printf("%s ", &buf[pos]);
-			
-			t = count - pos + 1;
-			m = (t + cur_col - 1) / colonnes;
-			if (m > 0) {
-				printf("\033[%dA", m);
-			}
-
-			t -= m * colonnes;
-			if (t > 0) {
-				printf("\033[%dD", t);
-			} else if (t < 0) {
-				printf("\033[%dC", -t);
-			}
-
+			backspace(buf, &pos, &cur_col, colonnes, &count);
 			break;
 		default:
 			if (c > 26 && c < 256) {
@@ -238,6 +296,10 @@ char *readline(const char *prompt)
 	} while (!end);
 
 	tcsetattr(0, TCSANOW, &oldt);
+
+	if (buf) {
+		add_history(buf);
+	}
 
 	return buf;
 }

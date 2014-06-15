@@ -14,7 +14,7 @@ all: $(OBJ)
 depend: $(SRCS)
 	$(CC) -MM $(CFLAGS) $(INCLUDES) $(CPPINCLUDES) $^ > .depend
 
-mishell: mishell.o shell_utils.o readline.o
+mishell: mishell.o shell_utils.o readline.o history.o
 	$(LD) -o $(BIN)$@ $^ $(LIBS)
 
 .o: .c 
