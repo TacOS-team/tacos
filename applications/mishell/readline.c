@@ -32,6 +32,34 @@ static int getbigchar()
 	return r;
 }
 
+void move_left(int *pos, int *cur_col, int colonnes)
+{
+	if (*pos > 0) {
+		(*pos)--;
+		if (*cur_col > 0) {
+			printf("\033[D");
+			(*cur_col)--;
+		} else {
+			printf("\033[A\033[%dC", colonnes - 1);
+			*cur_col = colonnes - 1;
+		}
+	}
+}
+
+void move_right(int *pos, int *cur_col, int colonnes, int count)
+{
+	if (*pos < count) {
+		(*pos)++;
+		if (*cur_col < colonnes - 1) {
+			printf("\033[C");
+			(*cur_col)++;
+		} else {
+			printf("\033[B\033[%dD", colonnes - 1);
+			*cur_col = 0;
+		}
+	}
+}
+
 char *readline(const char *prompt)
 {
 	int i;
@@ -66,34 +94,41 @@ char *readline(const char *prompt)
 		int t, m;
 		int c = getbigchar();
 		switch (c) {
+		case -1:
+			if (count == 0) {
+				free(buf);
+				buf = NULL;
+			} else {
+				printf("\n");
+			}
+			end = 1;
+			break;
+		case 1: /*C^a*/
+			while (pos > 0) {
+				move_left(&pos,&cur_col,colonnes);
+			}
+			break;
 		case 3:
 			buf[0] = '\0';
+		case 5: /*C^e*/
+			while (pos != count) {
+				move_right(&pos,&cur_col,colonnes,count);
+			}
+			break;
 		case 13:
 			end = 1;
 			printf("\n");
+		case 2: /*C^b*/
 		case KLEFT:
-			if (pos > 0) {
-				pos--;
-				if (cur_col > 0) {
-					printf("\033[D");
-					cur_col--;
-				} else {
-					printf("\033[A\033[%dC", colonnes - 1);
-					cur_col = colonnes - 1;
-				}
-			}
+			move_left(&pos, &cur_col, colonnes);
 			break;
+		case 6:/*C^f*/
 		case KRIGHT:
-			if (pos < count) {
-				pos++;
-				if (cur_col < colonnes - 1) {
-					printf("\033[C");
-					cur_col++;
-				} else {
-					printf("\033[B\033[%dD", colonnes - 1);
-					cur_col = 0;
-				}
-			}
+			move_right(&pos, &cur_col, colonnes, count);
+			break;
+		case KUP:
+			break;
+		case KDOWN:
 			break;
 		case KDEL:
 			if (pos == count) {

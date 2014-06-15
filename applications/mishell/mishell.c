@@ -153,14 +153,20 @@ int main(int argc, char** argv)
 		char prompt[256];
 		sprintf(prompt, "%s>", getcwd(NULL, 0));
 		
-		//printf("%s", prompt);
-		//fflush(stdout);
-		//buffer = malloc(1000);
-		//getline(buffer, 1000);
 		buffer = readline(prompt);
+		if (!buffer) {
+			printf("exit\n");
+			break;
+		}
+		if (strcmp(buffer, "exit") == 0) {
+			free(buffer);
+			break;
+		}
 		if (strlen(buffer) >= 1) {
 			exec(buffer);
 		}
 		free(buffer);
 	}
+
+	return 0;
 }
