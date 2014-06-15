@@ -58,8 +58,9 @@ int interrupt_set_routine(uint8_t interrupt_id, interrupt_handler_t routine, uin
 	idt_set_handler(INTERRUPT_BASE + interrupt_id,
                   (paddr_t)interrupts_wrapper_array[interrupt_id], privilege);
 
-	// XXX: Est-ce utile pour les interruptions logicielles ??
-	i8259_enable_irq_line(interrupt_id);
+	if (interrupt_id != IRQ_SYSCALL) {
+		i8259_enable_irq_line(interrupt_id);
+	}
 
 	// Réactive les IRQs (restore flags) 
 	asm volatile("push %0; popfl"::"g"(flags):"memory");
