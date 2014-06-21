@@ -27,6 +27,7 @@
  */
 
 #include <memory.h>
+#include <klog.h>
 
 static struct physical_page_descr *used_frame_pages = NULL;
 static struct physical_page_descr *free_frame_pages = NULL;
@@ -49,33 +50,32 @@ paddr_t memory_align_page_sup(paddr_t value) {
 	return value - value%PAGE_SIZE;
 }
 
-/*
 void memory_print_used_frame_pages() {
 	struct physical_page_descr *p;
 	int c = 0;
 
-	printf("Used pages : ");
+	kprintf("Used pages : ");
 
 	p = used_frame_pages;
 	while (p != NULL) {
-		printf("%x ", p->addr);
+		kprintf("%x ", p->addr);
 		p = p->next;
 		c++;
 	}
-	printf(" (%d pages) \n", c);
+	kprintf(" (%d pages) \n", c);
 }
 
 void memory_print_free_frame_pages() {
 	struct physical_page_descr *p;
 
-	printf("Free pages : ");
+	kprintf("Free pages : ");
 
 	p = free_frame_pages;
 	while (p != NULL) {
-		printf("%x ", p->addr);
+		kprintf("%x ", p->addr);
 		p = p->next;
 	}
-	printf("\n");
+	kprintf("\n");
 }
 
 void memory_print() {
@@ -85,17 +85,16 @@ void memory_print() {
 	p_u = used_frame_pages;
 	while (p_f != NULL || p_u != NULL) {
 		while ((p_f != NULL && p_u == NULL) || (p_f != NULL && p_f->addr > p_u->addr)) {
-			printf("\033[34mF\033[0m");
+			kprintf("\033[34mF\033[0m");
 			p_f = p_f->next;
 		}
 		while ((p_u != NULL && p_f == NULL) || (p_u != NULL && p_u->addr > p_f->addr)) {
-			printf("\033[31mU\033[0m");
+			kprintf("\033[31mU\033[0m");
 			p_u = p_u->next;
 		}
 	}
-	printf("\n");
+	kprintf("\n");
 }
-*/
 
 struct physical_page_descr * memory_get_first_used_page() {
 	return used_frame_pages;
