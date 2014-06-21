@@ -41,6 +41,9 @@ void using_history() {
 }
 
 void add_history(const char *str) {
+	if (str[0] == '\0') {
+		return;
+	}
 	if (history_length == history_size) {
 		history_size += 100;
 		if (history_size > 0) {
