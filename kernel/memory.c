@@ -50,7 +50,7 @@ paddr_t memory_align_page_sup(paddr_t value) {
 	return value - value%PAGE_SIZE;
 }
 
-void memory_print_used_frame_pages() {
+void memory_print_used_pages() {
 	struct physical_page_descr *p;
 	int c = 0;
 
@@ -65,7 +65,7 @@ void memory_print_used_frame_pages() {
 	kprintf(" (%d pages) \n", c);
 }
 
-void memory_print_free_frame_pages() {
+void memory_print_free_pages() {
 	struct physical_page_descr *p;
 
 	kprintf("Free pages : ");

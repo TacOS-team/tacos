@@ -31,6 +31,7 @@
 #include <drivers/keyboard.h>
 #include <drivers/console.h>
 #include <klog.h>
+#include <memory.h>
 
 /**
  * Scancode SET 1 : (IBM XT)
@@ -511,6 +512,10 @@ void keyboardInterrupt(int id __attribute__ ((unused))) {
 	case KEY_F4:
 		focus_console(3);
 		break;
+	case KEY_F5:
+		memory_print();
+		break;
+
 	}
 
 	scancode_m2 = scancode_m1;
