@@ -100,6 +100,7 @@ static char tx_buffer[4][TX_BUFFER_SIZE];
 static int tx_start[4];
 static int tx_end[4];
 static int tx_size[4];
+static uint8_t tx_sem[4];
 
 /* Petit hack pour permettre d'avoir toujours la place pour inserer un \r avant le \n */
 #define TX_BUFFER_FULL(port) ((tx_size[port] == TX_BUFFER_SIZE-1)?1:0)
@@ -124,24 +125,26 @@ static void serial_putc(tty_struct_t *tty, const unsigned char c)
 	int port = tty->index;
 	char ier = read_register(port, INTERRUPT_ENABLE);
 	
-	if(!TX_BUFFER_FULL(port)) //XXX: remplacer par une sémaphore et attendre.
+	if (TX_BUFFER_FULL(port))
 	{
-		if(c == '\n')
-		{
-			tx_buffer[port][tx_end[port]] = '\r';
-			
-			tx_size[port]++;
-			tx_end[port] = (tx_end[port]+1)%TX_BUFFER_SIZE;
-		}
-				
-		tx_buffer[port][tx_end[port]] = c;
-
-		tx_size[port]++;
-		tx_end[port] = (tx_end[port]+1)%TX_BUFFER_SIZE;	
+		ksemP(tx_sem[port]);
 	}
+
+	if (c == '\n')
+	{
+		tx_buffer[port][tx_end[port]] = '\r';
+		
+		tx_size[port]++;
+		tx_end[port] = (tx_end[port]+1)%TX_BUFFER_SIZE;
+	}
+			
+	tx_buffer[port][tx_end[port]] = c;
+
+	tx_size[port]++;
+	tx_end[port] = (tx_end[port]+1)%TX_BUFFER_SIZE;	
 	
 	/* On active l'interruption de transmission si c'est pas déja le cas */
-	if(!(ier & ETBEI))
+	if (!(ier & ETBEI))
 	{
 		ier |= ETBEI;
 		write_register(port, INTERRUPT_ENABLE, ier);
@@ -213,6 +216,7 @@ void serial_isr(int id __attribute__ ((unused)))
 										tx_size[i]--;
 										tx_start[i] = (tx_start[i]+1)%TX_BUFFER_SIZE;
 										counter++;
+										ksemV(tx_sem[i]);
 									}
 								}
 								else /* Sinon on désactive l'interruption de transmission */
@@ -386,6 +390,7 @@ int serial_init()
 		tx_start[port] = 0;
 		tx_end[port] = 0; 
 		tx_size[port] = 0;
+		tx_sem[port] = ksemget(SEM_NEW, SEM_CREATE);
 		
 		/* Active les interruption (DEBUG) 
 		 * Note: A l'initialisation on n'active que l'interruption de 

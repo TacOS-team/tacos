@@ -1,4 +1,4 @@
-INCLUDES=-I. -I../../include/  -I../include/
+INCLUDES=-I../../include/  -I../include/
 CFLAGS=-W -Wall $(WE) -g -nostdlib -nostdinc -fno-builtin -I`pwd` -m32
 
 SRCS=*/*.c
