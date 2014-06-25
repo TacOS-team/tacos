@@ -27,8 +27,6 @@
  */
 
 #include <dcache.h>
-#include <fs/devfs.h>
-#include <fs/fat.h>
 #include <kdirent.h>
 #include <kfcntl.h>
 #include <kmalloc.h>

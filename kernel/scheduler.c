@@ -296,7 +296,7 @@ process_t* get_current_process()
 }
 
 
-void* sleep_callback( void* data )
+static void* sleep_callback( void* data )
 {
 	process_t* proc = (process_t*) data;
 	proc->state = PROCSTATE_RUNNING;
