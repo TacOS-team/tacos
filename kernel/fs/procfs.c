@@ -32,10 +32,12 @@
 #include <klog.h>
 #include <kmalloc.h>
 #include <kprocess.h>
+#include <scheduler.h>
 #include <kerrno.h>
 #include <types.h>
 #include <vfs.h>
 #include <klibc/stdlib.h>
+#include <klibc/ctype.h>
 
 
 /**
@@ -74,11 +76,11 @@ static void umount_procfs(fs_instance_t *instance);
 static dentry_t root_procfs;
 
 static file_system_t proc_fs = {
-												.name         = "ProcFS",
-												.unique_inode = 0,
-												.mount        = mount_procfs,
-												.umount       = umount_procfs
-											};
+	.name         = "ProcFS",
+	.unique_inode = 0,
+	.mount        = mount_procfs,
+	.umount       = umount_procfs
+};
 
 static dentry_t * procfs_getroot() {
 	return &root_procfs;
@@ -100,8 +102,8 @@ static lookup_function_t root_lookup;
 
 // readdir functions
 typedef int (procfs_read_dir_function_t) (open_file_descriptor * ofd,
-																				char * entries,
-																   			size_t size);
+											char * entries,
+											size_t size);
 static procfs_read_dir_function_t procfs_read_root_dir;
 static procfs_read_dir_function_t procfs_read_process_dir;
 static procfs_read_dir_function_t procfs_read_fd_process_dir;
@@ -284,6 +286,15 @@ static int procfs_read_root_dir(open_file_descriptor * ofd, char * entries,
 		++ofd->current_octet;
 	}
 
+	if (ofd->current_octet == MAX_PROC && count + reclen < size) {
+		d = (struct dirent *)(entries + count);
+		d->d_ino = 2;
+		strcpy(d->d_name, "self");
+		d->d_reclen = reclen;
+		count += reclen;
+		++ofd->current_octet;
+	}
+
 	return count;
 }
 
@@ -412,6 +423,45 @@ static dentry_t * get_process_dentry(struct _fs_instance_t * instance,
 	return result;
 }
 
+#if 0
+static dentry_t * get_self_dentry(struct _fs_instance_t * instance) {
+
+	inode_t * inode   = kmalloc(sizeof(inode_t));
+	memset(inode, 0, sizeof(*inode));
+	inode->i_ino      = MAX_PROC * PROCFS_PROCESS_RANGE;
+	// inode->i_uid      = 0;
+	// inode->i_gid      = 0;
+	inode->i_size     = 512;
+	// inode->i_atime    = 0;
+	// inode->i_ctime    = 0;
+	// inode->i_mtime    = 0;
+	// inode->i_dtime    = 0; // XXX
+	inode->i_nlink    = 1;
+	inode->i_blocks   = 1;
+	inode->i_instance = instance;
+	inode->i_count = 0;
+
+	extra_data_procfs_t * extra = kmalloc(sizeof(extra_data_procfs_t));
+	extra->pid    = pid;
+	extra->lookup = NULL;
+	inode->i_fs_specific = extra;
+
+	inode->i_fops = kmalloc(sizeof(open_file_operations_t));
+	memset(inode->i_fops, 0, sizeof(*(inode->i_fops)));
+	inode->i_fops->close   = procfs_close;
+	
+	dentry_t * d = kmalloc(sizeof(dentry_t));
+	d->d_name = (const char*) strdup(name);
+	d->d_inode = inode;
+	d->d_pdentry = NULL; //FIXME: Normalement il faudrait le faire à chaque niveau et appeler le père à chaque fois.
+
+	inode->i_ino     += procfs_root_process_offset;
+	inode->i_mode     = 0755 | S_IFLNK;
+
+	return result;
+}
+#endif
+
 static dentry_t * get_process_fd_dentry(struct _fs_instance_t * instance,
 															const char * name, int pid, size_t fd) {
 	dentry_t * result = get_default_dentry(instance, name, pid);
@@ -472,10 +522,30 @@ static dentry_t * root_lookup(struct _fs_instance_t *instance,
 															struct _dentry_t* dentry __attribute__((unused)),
 															const char * name) {
 	dentry_t * result = NULL;
-	int pid = atoi(name);
-	process_t * process = find_process(pid);
-	if (process != NULL) {
-		result = get_process_dentry(instance, name, pid);
+	const char *str = name;
+	while (*str)
+	{
+		if (!isdigit(*str))
+			break;
+		else
+			++str;
+	}
+
+	if (*str) {
+		if (strcmp(name, "self") == 0) {
+// TODO: Ici ce serait plus classe d'avoir un lien symbolique :D.
+//			result = get_self_dentry();
+			process_t * process = get_current_process();
+			if (process != NULL) {
+				result = get_process_dentry(instance, name, process->pid);
+			}
+		}
+	} else {
+		int pid = atoi(name);
+		process_t * process = find_process(pid);
+		if (process != NULL) {
+			result = get_process_dentry(instance, name, pid);
+		}
 	}
 	return result;
 }
