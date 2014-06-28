@@ -54,14 +54,14 @@ __BEGIN_DECLS
 #define S_ISSOCK(m) (((m) & S_IFMT) == S_IFSOCK) /**< Is a socket. */
 
 #define S_IXOTH 001   /**< Execute by other. */
-#define S_IROTH 002   /**< Read by other. */
-#define S_IWOTH 004   /**< Write by other. */
+#define S_IWOTH 002   /**< Write by other. */
+#define S_IROTH 004   /**< Read by other. */
 #define S_IXGRP 0010  /**< Execute by group. */
-#define S_IRGRP 0020  /**< Read by group. */
-#define S_IWGRP 0040  /**< Write by group. */
+#define S_IWGRP 0020  /**< Write by group. */
+#define S_IRGRP 0040  /**< Read by group. */
 #define S_IXUSR 00100 /**< Execute by user. */
-#define S_IRUSR 00200 /**< Read by user. */
-#define S_IWUSR 00400 /**< Write by user. */
+#define S_IWUSR 00200 /**< Write by user. */
+#define S_IRUSR 00400 /**< Read by user. */
 
 typedef uint32_t mode_t; /**< Mode d'accès d'un fichier (rwx...) et type. */
 typedef uint32_t dev_t; /**< Si c'est un fichier spécial, c'est le numéro du device. */
