@@ -444,7 +444,7 @@ static dentry_t * get_process_dentry(struct _fs_instance_t * instance,
 	inode_t * inode   = result->d_inode;
 
 	inode->i_ino     += procfs_root_process_offset;
-	inode->i_mode     = 0755 | S_IFDIR;
+	inode->i_mode     = 0555 | S_IFDIR;
 
 	extra_data_procfs_t *extra = inode->i_fs_specific;
 	extra->lookup = process_lookup;
@@ -500,7 +500,7 @@ static dentry_t * get_process_fd_dentry(struct _fs_instance_t * instance,
 
 	// TODO y réfléchir pour qu'ils soient vraiment uniques
 	inode->i_ino     += procfs_first_fd_offset + fd;
-	inode->i_mode     = 0755;
+	inode->i_mode     = 0555 | S_IFREG ;
 
 	extra_data_procfs_t *extra = inode->i_fs_specific;
 	extra->lookup = NULL;
@@ -520,7 +520,7 @@ static dentry_t * get_file_function_dentry(struct _fs_instance_t * instance, con
 	extra_data_procfs_t *extra = inode->i_fs_specific;
 	extra->lookup = NULL;
 
-	inode->i_mode = 0755;
+	inode->i_mode = 0555 | S_IFREG ;
 
 	return result;
 }
@@ -536,7 +536,7 @@ static dentry_t * get_directory_function_dentry(struct _fs_instance_t * instance
 	extra_data_procfs_t *extra = inode->i_fs_specific;
 	extra->lookup = lookup_function;
 
-	inode->i_mode     = 0755 | S_IFDIR;
+	inode->i_mode     = 0555 | S_IFDIR;
 
 	return result;
 }
@@ -556,7 +556,7 @@ static dentry_t * get_meminfo_dentry(struct _fs_instance_t *instance) {
 	inode->i_blocks   = 1;
 	inode->i_instance = instance;
 	inode->i_count = 0;
-	inode->i_mode     = 0755;
+	inode->i_mode     = 0444 | S_IFREG;
 
 	inode->i_fs_specific = NULL;
 
@@ -592,7 +592,6 @@ static dentry_t * root_lookup(struct _fs_instance_t *instance,
 			++str;
 	}
 
-	klog("%s", name);
 	if (*str) {
 		if (strcmp(name, "self") == 0) {
 // TODO: Ici ce serait plus classe d'avoir un lien symbolique :D.
@@ -693,7 +692,7 @@ void procfs_init() {
 	root_procfs.d_inode = kmalloc(sizeof(inode_t));
 	memset(root_procfs.d_inode, 0, sizeof(*(root_procfs.d_inode)));
 	root_procfs.d_inode->i_ino  = 0;
-	root_procfs.d_inode->i_mode = S_IFDIR | 00755;
+	root_procfs.d_inode->i_mode = S_IFDIR | 00555;
 
 	root_procfs.d_inode->i_fops = kmalloc(sizeof(struct _open_file_operations_t));
 	memset(root_procfs.d_inode->i_fops, 0, sizeof(*(root_procfs.d_inode->i_fops)));
