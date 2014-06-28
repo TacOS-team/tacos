@@ -26,9 +26,12 @@
  *
  */
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <sys/stat.h>
 #include <time.h>
 #include <unistd.h>
+
 
 static char* get_filetype(mode_t mode) {
 	if (S_ISBLK(mode)) {
@@ -50,6 +53,52 @@ static char* get_filetype(mode_t mode) {
 	}
 }
 
+char* disp_mode(mode_t mode) {
+	char *m = strdup("----------");
+	if (S_ISDIR(mode)) {
+		m[0] = 'd';
+	} else if (S_ISLNK(mode)) {
+		m[0] = 'l';
+	} else if (S_ISFIFO(mode)) {
+		m[0] = 'p';
+	} else if (S_ISSOCK(mode)) {
+		m[0] = 's';
+	}
+
+	if (mode & S_IRUSR) {
+		m[1] = 'r';
+	}
+	if (mode & S_IWUSR) {
+		m[2] = 'w';
+	}
+	if (mode & S_IXUSR) {
+		m[3] = 'x';
+	}
+
+	if (mode & S_IRGRP) {
+		m[4] = 'r';
+	}
+	if (mode & S_IWGRP) {
+		m[5] = 'w';
+	}
+	if (mode & S_IXGRP) {
+		m[6] = 'x';
+	}
+	
+	if (mode & S_IROTH) {
+		m[7] = 'r';
+	}
+	if (mode & S_IWOTH) {
+		m[8] = 'w';
+	}
+	if (mode & S_IXOTH) {
+		m[9] = 'x';
+	}
+
+	return m;
+}
+
+
 int main(int argc, char** argv) {
 	int i;
 	for(i = 1; i < argc; i++) {
@@ -59,7 +108,9 @@ int main(int argc, char** argv) {
 			printf("  Size: %d\n", buf.st_size);
 			printf(" Inode: %d\n", buf.st_ino);
 			printf("  Type: %s\n", get_filetype(buf.st_mode));
-			printf("Access: %o		uid: %d		gid: %d\n", buf.st_mode & ~S_IFMT, buf.st_uid, buf.st_gid);
+			char *mode = disp_mode(buf.st_mode);
+			printf("Access: (%o/%s)		uid: %d		gid: %d\n", buf.st_mode & ~S_IFMT, mode, buf.st_uid, buf.st_gid);
+			free(mode);
 			printf("Modify: %s", ctime(&buf.st_mtime));
 			printf("Change: %s", ctime(&buf.st_ctime));
 		} else {
