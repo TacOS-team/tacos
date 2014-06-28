@@ -590,7 +590,7 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	//kprintf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
 	// On a pas forcement envie de supprimer le processus immédiatement
 	ksemctl(current->sem_wait, SEM_DEL, NULL);
-	sys_kill(current->ppid, SIGCHLD, NULL);
+	//sys_kill(current->ppid, SIGCHLD, NULL);
 	current->state = PROCSTATE_TERMINATED;
 }
 
