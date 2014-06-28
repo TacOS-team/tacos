@@ -38,6 +38,7 @@
 #include <vfs.h>
 #include <klibc/stdlib.h>
 #include <klibc/ctype.h>
+#include <memory.h>
 
 
 /**
@@ -142,7 +143,7 @@ static char* proc_status[]= {
  *****************************************************************************/
 
 static ssize_t write_string_in_buffer(open_file_descriptor * ofd, char * dest,
-																			char * src, size_t count) {
+                                      char * src, size_t count) {
 	ssize_t result = EOF;
 	size_t src_length = strlen(src);
 	if (ofd->current_octet < src_length) {
@@ -155,6 +156,30 @@ static ssize_t write_string_in_buffer(open_file_descriptor * ofd, char * dest,
 		memcpy(dest, src + ofd->current_octet, result);
 		ofd->current_octet += result;
 	}
+	return result;
+}
+
+static char* memory_meminfo() {
+	char *buffer = kmalloc(80);
+	char *p = buffer;
+	strcpy(p, "MemTotal:\t");
+	p += 10;
+	p += itoa(p, 10, memory_get_total() / 1024);
+	strcpy(p, " k\n");
+	p += 3;
+	strcpy(p, "MemFree:\t");
+	p += 9;
+	p += itoa(p, 10, memory_get_free() / 1024);
+	strcpy(p, " k\n");
+
+	return buffer;
+}
+
+static ssize_t read_meminfo(open_file_descriptor *ofd, void* buffer, size_t count) {
+	ssize_t result = EOF;
+	char* meminfo = memory_meminfo();
+	result = write_string_in_buffer(ofd, buffer, meminfo, count);
+	kfree(meminfo);
 	return result;
 }
 
@@ -263,16 +288,13 @@ static const size_t nb_directory_functions = sizeof(procfs_directory_functions_l
  *                         read directories functions                        *
  *****************************************************************************/
 
-static int procfs_read_root_dir(open_file_descriptor * ofd, char * entries,
-																size_t size) {
+static int procfs_read_root_dir(open_file_descriptor * ofd, char * entries, size_t size) {
 	size_t count = 0;
-
 	struct dirent *d;
 
 	// On met une taille fixe à tous les dirent car on connait la taille max
 	//  d'un PID
-	const size_t reclen = sizeof(d->d_ino)  + sizeof(d->d_reclen)
-											+ sizeof(d->d_type) + MAX_PID_LENGTH + 1;
+	size_t reclen = sizeof(d->d_ino)  + sizeof(d->d_reclen) + sizeof(d->d_type) + MAX_PID_LENGTH + 1;
 
 	while (ofd->current_octet < MAX_PROC && count + reclen < size) {
 		process_t * process = get_process_array(ofd->current_octet);
@@ -286,10 +308,19 @@ static int procfs_read_root_dir(open_file_descriptor * ofd, char * entries,
 		++ofd->current_octet;
 	}
 
+	reclen = sizeof(d->d_ino)  + sizeof(d->d_reclen) + sizeof(d->d_type) + 8;
 	if (ofd->current_octet == MAX_PROC && count + reclen < size) {
 		d = (struct dirent *)(entries + count);
 		d->d_ino = 2;
 		strcpy(d->d_name, "self");
+		d->d_reclen = reclen;
+		count += reclen;
+		++ofd->current_octet;
+	}
+	if (ofd->current_octet == MAX_PROC + 1 && count + reclen < size) {
+		d = (struct dirent *)(entries + count);
+		d->d_ino = 4;
+		strcpy(d->d_name, "meminfo");
 		d->d_reclen = reclen;
 		count += reclen;
 		++ofd->current_octet;
@@ -480,9 +511,7 @@ static dentry_t * get_process_fd_dentry(struct _fs_instance_t * instance,
 	return result;
 }
 
-static dentry_t * get_file_function_dentry(struct _fs_instance_t * instance,
-																		const char * name, int pid,
-																		size_t inode_offset) {
+static dentry_t * get_file_function_dentry(struct _fs_instance_t * instance, const char * name, int pid, size_t inode_offset) {
 	dentry_t * result = get_default_dentry(instance, name, pid);
 	inode_t * inode   = result->d_inode;
 
@@ -497,9 +526,8 @@ static dentry_t * get_file_function_dentry(struct _fs_instance_t * instance,
 }
 
 static dentry_t * get_directory_function_dentry(struct _fs_instance_t * instance,
-																		const char * name, int pid,
-																		lookup_function_t lookup_function,
-																		size_t inode_offset) {
+                                                const char * name, int pid, lookup_function_t lookup_function,
+                                                size_t inode_offset) {
 	dentry_t * result = get_default_dentry(instance, name, pid);
 	inode_t * inode   = result->d_inode;
 
@@ -513,14 +541,47 @@ static dentry_t * get_directory_function_dentry(struct _fs_instance_t * instance
 	return result;
 }
 
+static dentry_t * get_meminfo_dentry(struct _fs_instance_t *instance) {
+	inode_t * inode   = kmalloc(sizeof(inode_t));
+	memset(inode, 0, sizeof(*inode));
+	inode->i_ino      = 3; // XXX: devrait etre unique et non juste arbitraire :)
+	// inode->i_uid      = 0;
+	// inode->i_gid      = 0;
+	inode->i_size     = 512;
+	// inode->i_atime    = 0;
+	// inode->i_ctime    = 0;
+	// inode->i_mtime    = 0;
+	// inode->i_dtime    = 0; // XXX
+	inode->i_nlink    = 1;
+	inode->i_blocks   = 1;
+	inode->i_instance = instance;
+	inode->i_count = 0;
+	inode->i_mode     = 0755;
+
+	inode->i_fs_specific = NULL;
+
+	inode->i_fops = kmalloc(sizeof(open_file_operations_t));
+	memset(inode->i_fops, 0, sizeof(*(inode->i_fops)));
+	inode->i_fops->close   = procfs_close;
+	inode->i_fops->read = read_meminfo;
+	
+	dentry_t * d = kmalloc(sizeof(dentry_t));
+	d->d_name = (const char*) strdup("meminfo");
+	d->d_inode = inode;
+	d->d_pdentry = NULL; //FIXME
+
+	return d;
+}
+
+
 
 /*****************************************************************************
  *                              lookup functions                             *
  *****************************************************************************/
 
 static dentry_t * root_lookup(struct _fs_instance_t *instance,
-															struct _dentry_t* dentry __attribute__((unused)),
-															const char * name) {
+                              struct _dentry_t* dentry __attribute__((unused)),
+                              const char * name) {
 	dentry_t * result = NULL;
 	const char *str = name;
 	while (*str)
@@ -531,6 +592,7 @@ static dentry_t * root_lookup(struct _fs_instance_t *instance,
 			++str;
 	}
 
+	klog("%s", name);
 	if (*str) {
 		if (strcmp(name, "self") == 0) {
 // TODO: Ici ce serait plus classe d'avoir un lien symbolique :D.
@@ -539,6 +601,8 @@ static dentry_t * root_lookup(struct _fs_instance_t *instance,
 			if (process != NULL) {
 				result = get_process_dentry(instance, name, process->pid);
 			}
+		} else if (strcmp(name, "meminfo") == 0) {
+			result = get_meminfo_dentry(instance);
 		}
 	} else {
 		int pid = atoi(name);
@@ -550,16 +614,13 @@ static dentry_t * root_lookup(struct _fs_instance_t *instance,
 	return result;
 }
 
-static dentry_t * process_lookup(struct _fs_instance_t *instance,
-																 struct _dentry_t* dentry,
-																 const char * name) {
+static dentry_t * process_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, const char * name) {
 	extra_data_procfs_t * extra = dentry->d_inode->i_fs_specific;
 	dentry_t * result = NULL;
 	size_t i;
 	for (i = 0; i < nb_file_functions && result == NULL; ++i) {
 		if (strcmp(procfs_file_functions_list[i].name, name) == 0) {
-			result = get_file_function_dentry(instance, name, extra->pid,
-																				procfs_file_functions_list[i].inode_offset);
+			result = get_file_function_dentry(instance, name, extra->pid, procfs_file_functions_list[i].inode_offset);
 			result->d_inode->i_fops->read = procfs_file_functions_list[i].read;
 		}
 	}

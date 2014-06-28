@@ -184,4 +184,8 @@ paddr_t memory_align_page_sup(paddr_t value);
  */
 paddr_t memory_get_kernel_top();
 
+int memory_get_used();
+int memory_get_free();
+int memory_get_total();
+
 #endif

@@ -26,7 +26,7 @@ int atoi(const char* __nptr)
 	return ret*sig;
 }
 
-void itoa (char *buf, int base, int d) {
+int itoa (char *buf, int base, int d) {
 	char *p = buf;
 	char *p1, *p2;
 	unsigned long ud = d;
@@ -64,6 +64,8 @@ void itoa (char *buf, int base, int d) {
 		p1++;
 		p2--;
 	}
+
+	return p - buf;
 }
 
 void itox(char *buf, int d)

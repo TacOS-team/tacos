@@ -51,8 +51,10 @@ int atoi(const char* __nptr);
  *  résultat de la transformation.
  * @param base la base à utiliser pour la conversion ('d' ou 'x').
  * @param d le nombre à convertir.
+ *
+ * @return Taille du buffer utilisé.
  */
-void itoa(char *buf, int base, int d);
+int itoa(char *buf, int base, int d);
 
 /**
  * Affichage des hexa en longueur fixe, c'est plus commode.

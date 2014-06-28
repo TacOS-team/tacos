@@ -78,6 +78,33 @@ void memory_print_free_pages() {
 	kprintf("\n");
 }
 
+int memory_get_total() {
+	return memory_get_used() + memory_get_free();
+}
+
+int memory_get_used() {
+	int count = 0;
+	struct physical_page_descr *p;
+	p = used_frame_pages;
+	while (p != NULL) {
+		count++;
+		p = p->next;
+	}
+	return count * PAGE_SIZE;
+}
+
+int memory_get_free() {
+	int count = 0;
+	struct physical_page_descr *p;
+	p = free_frame_pages;
+	while (p != NULL) {
+		count++;
+		p = p->next;
+	}
+	return count * PAGE_SIZE;
+}
+
+
 void memory_print() {
 	struct physical_page_descr *p_f, *p_u;
 
