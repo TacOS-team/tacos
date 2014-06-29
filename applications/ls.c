@@ -170,7 +170,7 @@ void listdir(const char *path) {
 				continue;
 			}
 			strcpy(filepath + pathlen, entry->d_name);
-			if (stat(filepath, &buf) == 0) {
+			if (lstat(filepath, &buf) == 0) {
 				add_entry(entry->d_name, &buf);
 			}
 		}
@@ -209,7 +209,16 @@ void listdir(const char *path) {
 					printf(" %d:%d", t->tm_hour, t->tm_min);
 				}
 
-				if (disp_classify) {
+				if (S_ISLNK(entries[i]->s.st_mode)) {
+					char link[80];
+					int s = readlink(entries[i]->name, link, sizeof(link));
+					if (s >= 0) {
+						link[s] = '\0';
+						printf(" %s -> %s\n", entries[i]->name, link);
+					} else {
+						printf(" %s\n", entries[i]->name);
+					}
+				} else if (disp_classify) {
 					printf(" %s%c\n", entries[i]->name, classify(entries[i]->s.st_mode));
 				} else {
 					printf(" %s\n", entries[i]->name);

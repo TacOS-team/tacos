@@ -187,6 +187,20 @@ int lseek(int fd, long offset, int whence);
 int stat(const char *path, struct stat *buf);
 
 /**
+ * @brief Obtenir l'état d'un fichier (status).
+ *
+ * Renvoie des informations à propos du fichier indiqué. Si c'est un lien
+ * alors ne suit pas le lien et renvoie les infos à propos de l'inode qui
+ * représente ce lien.
+ *
+ * @param path Chemin du fichier.
+ * @param buf Structure qui va recevoir les informations.
+ *
+ * @return 0 en cas de succès, -1 sinon.
+ */
+int lstat(const char *path, struct stat *buf);
+
+/**
  * @brief Détruire un nom et éventuellement le fichier associé.
  *
  * Détruit un nom dans le système de fichier. Actuellement, le fichier associé
@@ -232,6 +246,8 @@ int execv(const char *path, char *const argv[]);
 int chown(const char *path, uid_t owner, gid_t group);
 
 int exec_elf(const char *path);
+
+ssize_t readlink(const char *path, char *buf, size_t bufsize);
 
 __END_DECLS
 

@@ -192,6 +192,11 @@ int chown(const char *path, uid_t owner, gid_t group) {
 }
 
 int stat(const char *path, struct stat *buf) {
+	// TODO: si c'est un chemin alors le resoudre avant d'appeler lstat.
+	return lstat(path, buf);
+}
+
+int lstat(const char *path, struct stat *buf) {
 	int ret;
 	if (path[0] != '/') {
 		char * absolutepath = get_absolute_path(path);
@@ -202,6 +207,7 @@ int stat(const char *path, struct stat *buf) {
 	}
 	return ret;
 }
+
 
 int mknod(const char *path, mode_t mode, dev_t dev) {
 	if (path[0] != '/') {
@@ -285,4 +291,16 @@ int execvp(const char *file, char *const argv[]) {
 		}
 		return exec_elf(cmd);
 	}
+}
+
+ssize_t readlink(const char *path, char *buf, size_t bufsize) {
+	ssize_t *ret = (ssize_t*)&bufsize;
+	if (path[0] != '/') {
+		char * absolutepath = get_absolute_path(path);
+		syscall(SYS_READLINK, (uint32_t) absolutepath, (uint32_t)buf, (uint32_t)ret);
+		free(absolutepath);
+	} else {
+		syscall(SYS_READLINK, (uint32_t) path, (uint32_t)buf, (uint32_t)ret);
+	}
+	return *ret;
 }

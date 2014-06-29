@@ -150,6 +150,10 @@ SYSCALL_HANDLER3(sys_select, uint32_t *fds, size_t n, int *ret) {
 	ksemctl(sem, SEM_DEL, NULL);
 }
 
+SYSCALL_HANDLER3(sys_readlink, const char *path, char *buf, ssize_t *ret) {
+	*ret = vfs_readlink(path, buf, (size_t)*ret);
+}
+
 SYSCALL_HANDLER3(sys_stat, const char *path, struct stat *buf, int *ret) {
 	*ret = vfs_stat(path, buf);
 }

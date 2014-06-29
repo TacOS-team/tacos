@@ -43,7 +43,7 @@
 #define SYS_PROC 11				/**< Obtient un process ou la liste. */
 #define SYS_VMM 12				/**< Allocation mémoire. */
 #define SYS_SEEK 13				/**< Déplacement dans un fichier ouvert. */
-
+#define SYS_READLINK 14			/**< Lecture chemin pointé par lien symbolique. */
 #define SYS_SIGNAL 15			/**< Envoi de signal. */
 #define SYS_SIGPROCMASK 16/**< Configuration masque signal. */
 #define SYS_CLOSE 17			/**< Fermeture d'un fichier ouvert. */

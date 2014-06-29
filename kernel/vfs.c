@@ -115,6 +115,7 @@ static char * get_next_part_path(struct nameidata *nb) {
 }
 
 static int lookup(struct nameidata *nb) {
+	// TODO: Should follow symlinks.
 	dentry_t *dentry;
 	// On va de dossier en dossier.
 	while (*(nb->last)) {
@@ -210,6 +211,7 @@ static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, u
 }
 
 open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
+	// TODO: Should follow symlinks.
 	struct nameidata nb;
 	open_file_descriptor *ret = NULL;
 	nb.flags = LOOKUP_PARENT;
@@ -532,4 +534,12 @@ int vfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 	ofd->current_octet = c;
 
 	return count;
+}
+
+ssize_t vfs_readlink(const char *path, char *buf, size_t bufsize) {
+	open_file_descriptor *ofd = vfs_open(path, O_RDONLY);
+	if (ofd && ofd->f_ops->read) {
+		return ofd->f_ops->read(ofd, buf, bufsize);
+	}
+	return -1;
 }

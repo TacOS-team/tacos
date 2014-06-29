@@ -165,12 +165,12 @@ static char* memory_meminfo() {
 	strcpy(p, "MemTotal:\t");
 	p += 10;
 	p += itoa(p, 10, memory_get_total() / 1024);
-	strcpy(p, " k\n");
-	p += 3;
+	strcpy(p, " kB\n");
+	p += 4;
 	strcpy(p, "MemFree:\t");
 	p += 9;
 	p += itoa(p, 10, memory_get_free() / 1024);
-	strcpy(p, " k\n");
+	strcpy(p, " kB\n");
 
 	return buffer;
 }
@@ -235,7 +235,18 @@ static ssize_t procfs_read_process_fd(open_file_descriptor * ofd, void* buffer, 
 	process_t* process = find_process(extra->pid);
 	if(process && process->fd[extra->specific_data.fd]) {
 		result = write_string_in_buffer(ofd, buffer,
-									process->fd[extra->specific_data.fd]->pathname,count);
+		                                process->fd[extra->specific_data.fd]->pathname, count);
+	}
+	return result;
+}
+
+static ssize_t procfs_read_self(open_file_descriptor * ofd, void* buffer, size_t count) {
+	ssize_t result = EOF;
+	process_t* process = get_current_process();
+	if(process) {
+		char data[MAX_PID_LENGTH];
+		itoa(data, 10, process->pid);
+		result = write_string_in_buffer(ofd, buffer, data, count);
 	}
 	return result;
 }
@@ -255,15 +266,13 @@ typedef struct {
 } procfs_file_function_t;
 
 static procfs_file_function_t procfs_file_functions_list[] = {
-									{ "cmd_line", 0, procfs_read_name,     procfs_cmd_line_offset },
-									{ "ppid",     0, procfs_read_ppid,     procfs_ppid_offset },
-									{ "state",    0, procfs_read_state,    procfs_state_offset }/*,
-									{ "priority", 0, procfs_read_priority, procfs_priority_offset }*/
-								};
+	{ "cmd_line", 0, procfs_read_name,     procfs_cmd_line_offset },
+	{ "ppid",     0, procfs_read_ppid,     procfs_ppid_offset },
+	{ "state",    0, procfs_read_state,    procfs_state_offset }/*,
+	{ "priority", 0, procfs_read_priority, procfs_priority_offset }*/
+};
 
-const size_t nb_file_functions = sizeof(procfs_file_functions_list)
-															 / sizeof(procfs_file_functions_list[0]);
-
+const size_t nb_file_functions = sizeof(procfs_file_functions_list) / sizeof(procfs_file_functions_list[0]);
 
 /**
  *  List of directories in the process directory
@@ -277,8 +286,8 @@ typedef struct {
 } procfs_directory_function_t;
 
 static procfs_directory_function_t procfs_directory_functions_list[] = {
-		{ "fd", 0, process_fd_lookup, procfs_read_fd_process_dir, procfs_fd_offset }
-	};
+	{ "fd", 0, process_fd_lookup, procfs_read_fd_process_dir, procfs_fd_offset }
+};
 
 static const size_t nb_directory_functions = sizeof(procfs_directory_functions_list)
 															 		  / sizeof(procfs_directory_functions_list[0]);
@@ -454,15 +463,12 @@ static dentry_t * get_process_dentry(struct _fs_instance_t * instance,
 	return result;
 }
 
-#if 0
 static dentry_t * get_self_dentry(struct _fs_instance_t * instance) {
 
 	inode_t * inode   = kmalloc(sizeof(inode_t));
 	memset(inode, 0, sizeof(*inode));
 	inode->i_ino      = MAX_PROC * PROCFS_PROCESS_RANGE;
-	// inode->i_uid      = 0;
-	// inode->i_gid      = 0;
-	inode->i_size     = 512;
+	inode->i_size     = MAX_PID_LENGTH; // XXX
 	// inode->i_atime    = 0;
 	// inode->i_ctime    = 0;
 	// inode->i_mtime    = 0;
@@ -472,26 +478,21 @@ static dentry_t * get_self_dentry(struct _fs_instance_t * instance) {
 	inode->i_instance = instance;
 	inode->i_count = 0;
 
-	extra_data_procfs_t * extra = kmalloc(sizeof(extra_data_procfs_t));
-	extra->pid    = pid;
-	extra->lookup = NULL;
-	inode->i_fs_specific = extra;
-
 	inode->i_fops = kmalloc(sizeof(open_file_operations_t));
 	memset(inode->i_fops, 0, sizeof(*(inode->i_fops)));
 	inode->i_fops->close   = procfs_close;
+	inode->i_fops->read = procfs_read_self;
 	
 	dentry_t * d = kmalloc(sizeof(dentry_t));
-	d->d_name = (const char*) strdup(name);
+	d->d_name = (const char*) strdup("self");
 	d->d_inode = inode;
 	d->d_pdentry = NULL; //FIXME: Normalement il faudrait le faire à chaque niveau et appeler le père à chaque fois.
 
 	inode->i_ino     += procfs_root_process_offset;
-	inode->i_mode     = 0755 | S_IFLNK;
+	inode->i_mode     = 0444 | S_IFLNK;
 
-	return result;
+	return d;
 }
-#endif
 
 static dentry_t * get_process_fd_dentry(struct _fs_instance_t * instance,
 															const char * name, int pid, size_t fd) {
@@ -545,9 +546,7 @@ static dentry_t * get_meminfo_dentry(struct _fs_instance_t *instance) {
 	inode_t * inode   = kmalloc(sizeof(inode_t));
 	memset(inode, 0, sizeof(*inode));
 	inode->i_ino      = 3; // XXX: devrait etre unique et non juste arbitraire :)
-	// inode->i_uid      = 0;
-	// inode->i_gid      = 0;
-	inode->i_size     = 512;
+	inode->i_size     = 512; // XXX
 	// inode->i_atime    = 0;
 	// inode->i_ctime    = 0;
 	// inode->i_mtime    = 0;
@@ -594,12 +593,7 @@ static dentry_t * root_lookup(struct _fs_instance_t *instance,
 
 	if (*str) {
 		if (strcmp(name, "self") == 0) {
-// TODO: Ici ce serait plus classe d'avoir un lien symbolique :D.
-//			result = get_self_dentry();
-			process_t * process = get_current_process();
-			if (process != NULL) {
-				result = get_process_dentry(instance, name, process->pid);
-			}
+			result = get_self_dentry(instance);
 		} else if (strcmp(name, "meminfo") == 0) {
 			result = get_meminfo_dentry(instance);
 		}

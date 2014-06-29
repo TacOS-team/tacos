@@ -282,4 +282,5 @@ int vfs_close(open_file_descriptor *ofd);
  */
 void vfs_init();
 
+ssize_t vfs_readlink(const char *path, char *buf, size_t bufsize);
 #endif
