@@ -179,9 +179,9 @@ void listdir(const char *path) {
         // TODO: sort en fonction d'autres critères que la taille.
 		qsort(entries, n_entries, sizeof(struct res_entry*), compar);
 
-		int i = 0;
-		while (entries[i]) {
-			if (long_format) {
+		if (long_format) {
+			int i = 0;
+			while (entries[i]) {
 				// mode
 				disp_mode(entries[i]->s.st_mode);
 
@@ -211,7 +211,8 @@ void listdir(const char *path) {
 
 				if (S_ISLNK(entries[i]->s.st_mode)) {
 					char link[80];
-					int s = readlink(entries[i]->name, link, sizeof(link));
+					strcpy(filepath + pathlen, entries[i]->name);
+					int s = readlink(filepath, link, sizeof(link));
 					if (s >= 0) {
 						link[s] = '\0';
 						printf(" %s -> %s\n", entries[i]->name, link);
@@ -223,14 +224,19 @@ void listdir(const char *path) {
 				} else {
 					printf(" %s\n", entries[i]->name);
 				}
-			} else {
+				i++;
+			}
+		} else {
+			int i = 0;
+			while (entries[i]) {
 				if (disp_classify) {
 					printf("%s%c ", entries[i]->name, classify(entries[i]->s.st_mode));
 				} else {
 					printf("%s ", entries[i]->name);
 				}
+				i++;
 			}
-			i++;
+			printf("\n");
 		}
 	} else {
 		fprintf(stderr, "%s not found.\n", path);
@@ -280,7 +286,6 @@ int main(int argc, char** argv)
 			list(argv[i]);
 		}
 	}
-	printf("\n");
 	return 0;
 }
 
