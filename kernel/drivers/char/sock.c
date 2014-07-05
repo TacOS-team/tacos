@@ -172,7 +172,7 @@ int sock_connect(open_file_descriptor *ofd, char *meetpoint) {
 }
 
 int sock_accept(open_file_descriptor *ofd) {
-  socket_t *sock = socket_descriptors[ofd->current_cluster];
+  socket_t *sock = (socket_t*) ofd->extra_data;
 
   // Create SERVER socket
   if (!sock->blocking && sock->pending_conn_req == 0) {
@@ -202,20 +202,20 @@ static int sock_ioctl(open_file_descriptor *ofd, unsigned int request, void *dat
     case SOCK_CONNECT: {
       char *meetpoint = (char*) data;
       int sd = sock_connect(ofd, meetpoint);
-      ofd->current_cluster = sd;
       if (sd < 0) {
         return sd;
       } else {
+        ofd->extra_data = socket_descriptors[sd];
         return 0;
       }
     }
     case SOCK_LISTEN: {
       char *meetpoint = (char*) data;
       int sd = sock_listen(ofd, meetpoint);
-      ofd->current_cluster = sd;
       if (sd < 0) {
         return sd;
       } else {
+        ofd->extra_data = socket_descriptors[sd];
         return 0;
       }
     }
@@ -234,18 +234,18 @@ static int sock_ioctl(open_file_descriptor *ofd, unsigned int request, void *dat
 
         process->fd[i] = kmalloc(sizeof(open_file_descriptor));
         memcpy(process->fd[i], ofd, sizeof(open_file_descriptor));
-        process->fd[i]->current_cluster = newSd;
+        process->fd[i]->extra_data = socket_descriptors[newSd];
         *((int*) data) = i;
         return 0;
       }
     }
     case SOCK_SETBLOCK: {
-      socket_t *sock = socket_descriptors[ofd->current_cluster];
+      socket_t *sock = (socket_t*) ofd->extra_data;
       sock->blocking = true;
       return 0;
     }
     case SOCK_SETNONBLOCK: {
-      socket_t *sock = socket_descriptors[ofd->current_cluster];
+      socket_t *sock = (socket_t*) ofd->extra_data;
       sock->blocking = false;
       return 0;
     }
@@ -256,7 +256,7 @@ static int sock_ioctl(open_file_descriptor *ofd, unsigned int request, void *dat
 }
 
 static ssize_t sock_read(open_file_descriptor* ofd, void* buf, size_t count __attribute__((unused))) {
-  socket_t *sock = socket_descriptors[ofd->current_cluster];
+  socket_t *sock = (socket_t*) ofd->extra_data;
 
   //klog("Waiting for a message to read on socket %d...", sock->sd);
 
@@ -280,7 +280,7 @@ static ssize_t sock_read(open_file_descriptor* ofd, void* buf, size_t count __at
 }
 
 static ssize_t sock_write(open_file_descriptor* ofd, const void* buf, size_t count) {
-  socket_t *sock = socket_descriptors[ofd->current_cluster];
+  socket_t *sock = (socket_t*) ofd->extra_data;
   socket_t *paired_sock = sock->paired_sock;
 
   //klog("Waiting for the target buffer to have an empty place on socket %d...", sock->sd);
@@ -313,7 +313,7 @@ int sock_open(open_file_descriptor *ofd) {
 }
 
 int sock_close(open_file_descriptor *ofd) {
-  socket_t *sock = socket_descriptors[ofd->current_cluster];
+  socket_t *sock = (socket_t*) ofd->extra_data;
 
   if (sock == NULL) {
     return -EBADF;
@@ -330,7 +330,7 @@ int sock_close(open_file_descriptor *ofd) {
   ksemctl(sock->read_sem, SEM_DEL, NULL);
   ksemctl(sock->write_sem, SEM_DEL, NULL);
   kfree(sock);
-  socket_descriptors[ofd->current_cluster] = NULL;
+  ofd->extra_data = NULL;
   return 0;
 }
 

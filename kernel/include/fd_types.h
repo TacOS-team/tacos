@@ -91,7 +91,6 @@ struct _open_file_operations_t {
 typedef struct _open_file_descriptor {
 // A dégager ? Infos dans l'inode.
 	uint32_t flags;
-	int current_cluster; //XXX à supprimer (sock en dépend encore).
 	char * pathname;
 	uint32_t current_octet; // Utile pour f_pos ? TODO: Renommer :D
 	uint8_t select_sem;
