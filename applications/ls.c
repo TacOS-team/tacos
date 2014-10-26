@@ -220,7 +220,8 @@ void listdir(const char *path) {
 						printf(" %s\n", entries[i]->name);
 					}
 				} else if (disp_classify) {
-					printf(" %s%c\n", entries[i]->name, classify(entries[i]->s.st_mode));
+					char c = classify(entries[i]->s.st_mode);
+					printf(" %s%c\n", entries[i]->name, c ? c : ' ');
 				} else {
 					printf(" %s\n", entries[i]->name);
 				}
@@ -229,8 +230,12 @@ void listdir(const char *path) {
 		} else {
 			int i = 0;
 			while (entries[i]) {
+				char c = '\0';
 				if (disp_classify) {
-					printf("%s%c ", entries[i]->name, classify(entries[i]->s.st_mode));
+					c = classify(entries[i]->s.st_mode);
+				}
+				if (c) {
+					printf("%s%c ", entries[i]->name, c);
 				} else {
 					printf("%s ", entries[i]->name);
 				}
