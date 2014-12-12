@@ -608,13 +608,14 @@ SYSCALL_HANDLER1(sys_getppid, uint32_t* ppid)
 
 static int sys_exec2(process_init_data_t* init_data)
 {
-	process_t *process;
 	if(init_data->exec_type == EXEC_KERNEL) {
 	//	process = create_process(init_data);
 		kerr("If you reached this message, you're a nasty boy.");
-	} else {
-		process = create_process_elf(init_data);
+		return -1;
 	}
+
+	process_t *process;
+	process = create_process_elf(init_data);
 	scheduler_add_process(process);
 	return process->pid;
 }
