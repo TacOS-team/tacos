@@ -140,10 +140,12 @@ static inline char* get_string(Elf32_File* file, int n)
 	return file->string_table + n;
 }
 
+/*
 static inline char* get_debug_string(Elf32_File* file, int n)
 {
 	return file->symbol_string_table + n;
 }
+*/
 
 Elf32_File* load_elf_file(int fd)
 {
