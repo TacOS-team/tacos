@@ -26,7 +26,7 @@ endif
 export AR=@printf "\033[32m   AR   $$@\033[0m\n" && ar
 
 export LD=@printf "\033[31m   LD   $$@\033[0m\n" && ld
-export CFLAGS=-native $(WE) -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32  -fexec-charset=iso-8859-1
+export CFLAGS=-native $(WE) -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32  -fexec-charset=iso-8859-1  -mno-sse -mno-mmx
 LDLIBS=-lc -ldrivers -z nodefaultlib -lsystem -lstl
 LDLIBSKERNEL=-ldrivers -z nodefaultlib -lsystem
 LDFLAGS=-Llib/
