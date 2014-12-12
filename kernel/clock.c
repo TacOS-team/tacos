@@ -282,7 +282,7 @@ void timeval_add_usec(struct timeval *t, time_t usec) {
 }
 
 void klog_systime() {
-	int decimales = (int)(((float)sysclock/(float)CLOCKS_PER_SEC)*100.0f);
+	int decimales = 100 * sysclock / CLOCKS_PER_SEC;
 	kprintf("[%d.", get_date() - boot_systime);
 	if(decimales <10) {
 		kprintf("0%d]", decimales);
