@@ -116,9 +116,7 @@ SYSCALL_HANDLER2(sys_close, int fd_id, uint32_t* ret)
 	if (fd_id >= 0 && fd_id < FOPEN_MAX && process->fd[fd_id]) {
 		ofd = process->fd[fd_id];
 	
-		if(ofd->f_ops->close == NULL)
-			kerr("No \"close\" method for this device.");
-		else
+		if(ofd->f_ops->close)
 			*ret = ofd->f_ops->close(ofd);
 		vfs_close(ofd);
 		process->fd[fd_id] = NULL;
