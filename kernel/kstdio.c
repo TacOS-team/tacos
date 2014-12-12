@@ -35,8 +35,14 @@
 #include <vfs.h>
 #include <fs/devfs.h>
 #include <klibc/stdlib.h>
+#include <klibc/stdarg.h>
+
 
 void kprintf(const char *format, ...) {
+	va_list arg;
+
+	va_start(arg, format);
+
 	static tty_struct_t *tty = NULL;
 	if (tty == NULL) {
 		open_file_descriptor* ofd = vfs_open("/dev/ttyS0", 0); //XXX:flags
@@ -46,11 +52,10 @@ void kprintf(const char *format, ...) {
 			return;
 	}
 
-	char **arg = (char **) &format;
+
 	int c;
 	char buf[20];
 
-	arg++;
 
 	while ((c = *format++) != 0) {
 		if (c != '%') {
@@ -63,17 +68,17 @@ void kprintf(const char *format, ...) {
 			switch (c) {
 			case 'd':
 			case 'u':
-				itoa(buf, c, *((int *) arg++));
+				itoa(buf, c, va_arg(arg, int));
 				p = buf;
 				goto string;
 				break;
 			case 'x':
-				itox(buf,*((int *) arg++));
+				itox(buf, va_arg(arg, int));
 				p = buf;
 				goto string;
 				break;
 			case 's':
-				p = *arg++;
+				p = va_arg(arg, char*);
 				if (!p)
 					p = "(null)";
 
@@ -84,9 +89,11 @@ void kprintf(const char *format, ...) {
 
 			default:
 				//ofd->f_ops->write(ofd, (int *) arg++, 1);
-				tty->driver->ops->put_char(tty, *((int *) arg++));
+				tty->driver->ops->put_char(tty, c);
 				break;
 			}
 		}
 	}
+
+	va_end(arg);
 }
