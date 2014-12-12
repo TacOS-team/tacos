@@ -448,7 +448,7 @@ paddr_t vmm_get_page_paddr(vaddr_t vaddr) {
 
 unsigned int calculate_min_pages(size_t size)
 {
-	double nb_pages = (double) (size + sizeof(struct slab)) / PAGE_SIZE;
-	return (unsigned int) (nb_pages + ((nb_pages - (int) nb_pages > 0) ? 1 : 0));
+	unsigned int total_size = size + sizeof(struct slab);
+	return total_size / PAGE_SIZE + (total_size % PAGE_SIZE > 0);
 }
 
