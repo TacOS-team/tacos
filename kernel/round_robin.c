@@ -31,11 +31,6 @@
 #include <kprocess.h>
 #include <scheduler.h>
 
-/**
- * @file round_robin.c
- * 
- */
-
 /*
  * PROTOTYPES
  */
@@ -86,13 +81,11 @@ static process_t* rr_get_next_process()
 	do
 	{
 		aux = aux->next;
-		if(aux == NULL)
-			aux = process_list;
 		
 		if(is_schedulable(aux->proc))
 			ret = aux->proc;
 		
-	}while(aux != current_cell && ret == NULL);
+	} while (aux != current_cell && ret == NULL);
 	current_cell = aux;
 	return ret;
 }
@@ -118,19 +111,22 @@ static int rr_add_process(process_t* proc)
 	if(process_list == NULL)
 	{
 		process_list = kmalloc(sizeof(list_cell));
-		process_list->next = NULL;
-		process_list->prev = NULL;
+		process_list->next = process_list;
+		process_list->prev = process_list;
 		process_list->proc = proc;
 		current_cell = process_list;
 	}
 	else
 	{
+		list_cell* last = process_list->prev;
+
 		aux = kmalloc(sizeof(list_cell));
-		aux->prev = NULL;
+		aux->prev = last;
 		aux->next = process_list;
 		aux->proc = proc;
 		process_list->prev = aux;
 		process_list = aux;
+		last->next = aux;
 	}
 	return 0;
 }
@@ -140,7 +136,7 @@ static int rr_delete_process(int pid)
 	list_cell* aux = process_list;
 	int ret = -1;
 	
-	while(aux != NULL && aux->proc->pid != pid)
+	while(aux->next != process_list && aux->proc->pid != pid)
 		aux = aux->next;
 	
 	if(aux != NULL)
@@ -148,18 +144,13 @@ static int rr_delete_process(int pid)
 		ret = 1;
 		
 		/* si aux est la tête de la liste */
-		if(aux->prev == NULL)
-		{
+		if (aux == process_list) {
 			process_list = aux->next;
-			aux->next->prev = NULL;
 		}
-		else if(aux->next == NULL) /* si aux est la queue de la liste */
-			aux->prev->next = NULL;
-		else /* dans tous les autres cas */
-		{
-			aux->prev->next = aux->next;
-			aux->next->prev = aux->prev;
-		}
+
+		aux->prev->next = aux->next;
+		aux->next->prev = aux->prev;
+
 		kfree(aux);
 	}
 	return ret;
