@@ -43,11 +43,7 @@ paddr_t memory_align_page_inf(paddr_t value) {
 }
 
 paddr_t memory_align_page_sup(paddr_t value) {
-	if (value % PAGE_SIZE == 0) {
-		return value;
-	}
-	value += PAGE_SIZE;
-	return value - value%PAGE_SIZE;
+	return (value + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
 }
 
 void memory_print_used_pages() {
