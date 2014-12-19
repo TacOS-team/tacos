@@ -47,7 +47,7 @@ static void sort_symbols(symbol_table_t* table) {
 
 symbol_table_t* load_symtable(Elf32_File* file)
 {
-	int i,j, len;
+	int i,j;
 	int nb_func = 0;
 	char* string;
 	symbol_table_t* table;
@@ -73,12 +73,8 @@ symbol_table_t* load_symtable(Elf32_File* file)
 		if(ELF32_ST_TYPE(file->sym_table[i].st_info) == STT_FUNC)
 		{
 			string = file->symbol_string_table + file->sym_table[i].st_name;
-			len = strlen(string);
 			
-			/* Pas de strdup dans le kernel, on alloue et copie "à la main" */
-			table->symbols[j].name = kmalloc(len+1);
-			memcpy(table->symbols[j].name, string , len+1); 
-			
+			table->symbols[j].name = strdup(string);
 			table->symbols[j].addr = file->sym_table[i].st_value;
 			
 			j++;

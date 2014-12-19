@@ -373,9 +373,7 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 			pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
 		}
 		
-		for (i = 0; i < FOPEN_MAX; i++) { 
-			new_proc->fd[i] = NULL;
-		}
+		memset(new_proc->fd, 0, FOPEN_MAX * sizeof(open_file_descriptor*));
 
 		/* Initialisation des entrées/sorties standards */
 		init_stdfd(new_proc);
@@ -545,9 +543,7 @@ process_t* create_process(process_init_data_t* init_data) {
 		pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
 	}
 
-	for (i = 0; i < FOPEN_MAX; i++) {
-		new_proc->fd[i] = NULL;
-	}
+	memset(new_proc->fd, 0, FOPEN_MAX * sizeof(open_file_descriptor*));
 
 	/* Initialisation des entrées/sorties standards */
 	init_stdfd(new_proc);
