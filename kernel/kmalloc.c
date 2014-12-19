@@ -30,6 +30,7 @@
 #include <memory.h>
 #include <vmm.h>
 #include <kmalloc.h>
+#include <klibc/string.h>
 
 struct mem_list
 {
@@ -52,7 +53,7 @@ static int is_empty(struct mem_list *list);
 static void remove(struct mem_list *list, struct mem *m);
 static void add_first_element(struct mem_list *list, struct mem *m);
 static void push_back(struct mem_list *list, struct mem *m);
-static void add(struct mem_list *list, struct mem *m);
+//static void add(struct mem_list *list, struct mem *m);
 static void cut_mem(struct mem* m, size_t size, 
 										struct mem_list *free_mem, struct mem_list *allocated_mem);
 static int is_stuck(struct mem *m1, struct mem *m2);
@@ -97,8 +98,7 @@ void *kmalloc(size_t size)
 	void * ret = (void *) (((uint32_t) mem) + sizeof(struct mem));
 
 	// Uniquement pour éviter que certaines parties bugguées ne marche par chance.
-	size_t i;
-	for (i = 0; i < size; i++) ((char *)ret)[i] = 0x42;
+	memset(ret, 0x42, size);
 
 	return ret;
 }
@@ -118,7 +118,8 @@ int kfree(void *p)
 		return -1;
 
 	remove(&k_allocated_mem, m);
-	add(&k_free_mem, m);
+	//add(&k_free_mem, m);
+	push_back(&k_free_mem, m);
 
 	if(is_stuck(m->prev, m))
 	{
@@ -202,6 +203,7 @@ static void push_back(struct mem_list *list, struct mem *m)
 	}
 }
 
+/*
 // Ajoute une mem à une mem_list
 // l'ordre de la liste est celui de la mémoire virtuelle
 static void add(struct mem_list *list, struct mem *m)
@@ -232,6 +234,7 @@ static void add(struct mem_list *list, struct mem *m)
 	it->next->prev = m;
 	it->next = m;
 }
+*/
 
 // Sépare un bloc mem en deux quand il est trop grand et déplace le bloc de free_mem vers used_mem
 static void cut_mem(struct mem* m, size_t size, 
@@ -248,7 +251,8 @@ static void cut_mem(struct mem* m, size_t size,
 	} else {
 		remove(free_mem, m);
 	}
-	add(allocated_mem, m);
+	push_back(allocated_mem, m);
+//	add(allocated_mem, m);
 }
 
 static int is_stuck(struct mem *m1, struct mem *m2)
