@@ -35,7 +35,7 @@ __BEGIN_DECLS
 
 #include <sys/types.h>
 
-pid_t wait(int *status);
+pid_t wait();
 void waitpid(int pid);
 
 __END_DECLS

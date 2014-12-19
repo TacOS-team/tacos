@@ -98,7 +98,7 @@ void exec(const char *buffer)
 			if ((pid = exec_elf(buffer)) < 0)
 				printf("%s: commande introuvable.\n", buffer);
 			else
-				waitpid(pid);
+				wait();
 		} else {
 			char temp[278];
 			char *path = getenv("PATH");
@@ -106,7 +106,7 @@ void exec(const char *buffer)
 			if ((pid = exec_elf(temp)) < 0)
 				printf("%s: commande introuvable.\n", buffer);
 			else
-				waitpid(pid);
+				wait();
 		}
 	}
 }

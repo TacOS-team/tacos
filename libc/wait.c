@@ -33,12 +33,13 @@
 
 #include <stdio.h>
 
-pid_t wait(int *status __attribute__ ((unused))) {
+pid_t wait() {
+	waitpid(-1);
 //XXX: devrait juste faire : waitpid(-1, &status, 0);
-	sigset_t set;
-	sigfillset(&set);
-	sigdelset(&set, SIGCHLD);
-	sigsuspend(&set);
+//	sigset_t set;
+//	sigfillset(&set);
+//	sigdelset(&set, SIGCHLD);
+//	sigsuspend(&set);
 	return -1;
 }
 

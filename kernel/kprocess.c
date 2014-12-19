@@ -329,8 +329,11 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 	
 	// Sémaphore pour le wait
 	new_proc->sem_wait = ksemget(SEM_NEW, SEM_CREATE);
+	new_proc->sem_wait_child = ksemget(SEM_NEW, SEM_CREATE);
 	int val = 0;
 	ksemctl(new_proc->sem_wait, SEM_SET, &val);
+	ksemctl(new_proc->sem_wait_child, SEM_SET, &val);
+
 
 	new_proc->ppid = init_data_dup->ppid;
 	
@@ -475,8 +478,10 @@ process_t* create_process(process_init_data_t* init_data) {
 	new_proc->ppid = 0;
 
 	new_proc->sem_wait = ksemget(SEM_NEW, SEM_CREATE);
+	new_proc->sem_wait_child = ksemget(SEM_NEW, SEM_CREATE);
 	int val = 0;
 	ksemctl(new_proc->sem_wait, SEM_SET, &val);
+	ksemctl(new_proc->sem_wait_child, SEM_SET, &val);
 	
 	new_proc->user_time = 0;
 	new_proc->sys_time = 0;
@@ -588,6 +593,9 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	ksemctl(current->sem_wait, SEM_DEL, NULL);
 	//sys_kill(current->ppid, SIGCHLD, NULL);
 	current->state = PROCSTATE_TERMINATED;
+
+	process_t* parent = find_process(current->ppid);
+	ksemV(parent->sem_wait_child);
 }
 
 SYSCALL_HANDLER1(sys_getpid, uint32_t* pid)
@@ -731,9 +739,10 @@ SYSCALL_HANDLER3(sys_proc, uint32_t sub_func, uint32_t param1, uint32_t param2)
 }
 
 SYSCALL_HANDLER1(sys_waitpid, int pid) {
-	if (pid <= 0) {
-		klog("waitpid <= 0 non supporté pour l'instant.");
-	} else {
+	if (pid == -1) {
+		process_t* current = get_current_process();
+		ksemP(current->sem_wait_child);
+	} else if (pid > 0) {
 		process_t* proc = find_process(pid);
 		if (proc) {
 			if (proc->state != PROCSTATE_TERMINATED) {
@@ -742,5 +751,7 @@ SYSCALL_HANDLER1(sys_waitpid, int pid) {
 		} else {
 			klog("waitpid sur un process non trouvé.");
 		}
+	} else {
+		klog("waitpid <= 0 non supporté pour l'instant.");
 	}
 }

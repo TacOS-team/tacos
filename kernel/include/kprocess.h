@@ -117,8 +117,17 @@ typedef struct{
 	
 	/* Données liées au debug run-time du process */
 	symbol_table_t* symtable;
-	
+
+	/**
+	 * Sémaphore initialisé à 0 et qui est pris par les
+	 * processus en attente de la fin de ce process.
+	 */
 	int sem_wait;
+
+	/**
+	 * Sémaphore qui passe à 1 lorsqu'un fils se termine.
+	 */
+	int sem_wait_child;
 
 } process_t;
 
