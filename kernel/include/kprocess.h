@@ -89,7 +89,7 @@ struct _tty_struct_t;
 /** 
 * @brief Structure représentant un processus.
 */
-typedef struct{
+typedef struct process {
 	uint16_t	pid; /**< Process ID */
 	uint16_t	ppid; /**< Parent process ID */
 	char* 		name; /**< Nom du processus. */
@@ -128,6 +128,12 @@ typedef struct{
 	 * Sémaphore qui passe à 1 lorsqu'un fils se termine.
 	 */
 	int sem_wait_child;
+
+	/**
+	 * Liste des fils
+	 */
+	int nb_children;
+	struct process * children[MAX_PROC];
 
 } process_t;
 

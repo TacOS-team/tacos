@@ -334,6 +334,7 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 	ksemctl(new_proc->sem_wait, SEM_SET, &val);
 	ksemctl(new_proc->sem_wait_child, SEM_SET, &val);
 
+	new_proc->nb_children = 0;
 
 	new_proc->ppid = init_data_dup->ppid;
 	
@@ -483,6 +484,8 @@ process_t* create_process(process_init_data_t* init_data) {
 	ksemctl(new_proc->sem_wait, SEM_SET, &val);
 	ksemctl(new_proc->sem_wait_child, SEM_SET, &val);
 	
+	new_proc->nb_children = 0;
+
 	new_proc->user_time = 0;
 	new_proc->sys_time = 0;
 	new_proc->current_sample = 0;
@@ -596,6 +599,12 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 
 	process_t* parent = find_process(current->ppid);
 	ksemV(parent->sem_wait_child);
+
+	// Maj PPID des fils
+	int i;
+	for (i = 0; i < current->nb_children; i++) {
+		current->children[i]->ppid = current->ppid;
+	}
 }
 
 SYSCALL_HANDLER1(sys_getpid, uint32_t* pid)
@@ -620,6 +629,10 @@ static int sys_exec2(process_init_data_t* init_data)
 
 	process_t *process;
 	process = create_process_elf(init_data);
+	if (process->ppid) {
+		process_t *parent = find_process(process->ppid);
+		parent->children[parent->nb_children++] = process;
+	}
 	scheduler_add_process(process);
 	return process->pid;
 }
