@@ -425,9 +425,12 @@ int create_kprocess(char* _name, void* entry_point, uint32_t _stack_size)
 	init_data.stack_size = _stack_size;
 	
 	process_t* proc = create_process(&init_data);
-	/*XXX verifier que le process est bien cree */
-	scheduler_add_process(proc);
-	return proc->pid;
+	if (proc) {
+		scheduler_add_process(proc);
+		return proc->pid;
+	} else {
+		return -1;
+	}
 }
 
 process_t* create_process(process_init_data_t* init_data) {
