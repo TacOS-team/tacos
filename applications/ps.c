@@ -31,6 +31,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include <sys/stat.h>
 
 static const int MAX_CONTENT_LENGTH = 128;
@@ -42,7 +43,7 @@ void print_headers() {
 	for (length=0; length < MIN_NAME_LENGTH - 2; ++length) {
 		printf(" ");
 	}
-	printf("STATE\n\n");
+	printf("STATE\n");
 }
 
 void print_info(int pid, char * info_name, int min_length) {
@@ -83,11 +84,20 @@ void print_state(int pid) {
 int main() { 
 	DIR* dir = opendir("/proc");
 	struct dirent* entry;
+	struct stat buf;
+	char filepath[15];
 	int pid;
 	
 	if (dir != NULL) {
 		print_headers();
 		while ((entry = readdir(dir))) {
+			strcpy(filepath, "/proc/");
+			strcpy(filepath + 6, entry->d_name);
+			if (lstat(filepath, &buf) == 0) {
+				if (!S_ISDIR(buf.st_mode)) {
+					continue;
+				}
+			}
 			pid = atoi(entry->d_name);
 			printf("%d\t", pid);
 			print_ppid(pid);
