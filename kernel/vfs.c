@@ -38,6 +38,7 @@
 
 #define LOOKUP_PARENT 1 /**< S'arrête au niveau du parent. */
 
+static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, uint32_t flags);
 extern struct _open_file_operations_t pipe_fops;
 
 static dentry_t root_vfs;
@@ -144,6 +145,22 @@ static int lookup(struct nameidata *nb) {
 		}
 		if (dentry) {
 			nb->dentry = dentry;
+
+			if (S_ISLNK(dentry->d_inode->i_mode)) {
+				open_file_descriptor *ofd = dentry_open(nb->dentry, nb->mnt, O_RDONLY);
+				if (ofd && ofd->f_ops->read) {
+					char newpath[255];
+					int ret = ofd->f_ops->read(ofd, newpath, sizeof(newpath));
+					if (ret >= 0) {
+						newpath[ret] = '\0';
+						klog("%s\n", newpath);
+						// TODO: reconstruire le chemin et y aller !
+						// Si le chemin est relative on peut rester ici et ajouter simplement.
+					} else {
+						return -1;
+					}
+				}
+			}
 		} else {
 			return -1;
 		}

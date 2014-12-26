@@ -51,14 +51,8 @@ int mkdir(const char *pathname, mode_t mode) {
 
 DIR* opendir(const char* dirname) {
 	struct stat buf;
-	int ret;
-	if (dirname[0] != '/') {
-		char * absolutepath = get_absolute_path(dirname);
-		syscall(SYS_STAT, (uint32_t) absolutepath, (uint32_t) &buf, (uint32_t) &ret);
-		free(absolutepath);
-	} else {
-		syscall(SYS_STAT, (uint32_t) dirname, (uint32_t) &buf, (uint32_t) &ret);
-	}
+	int ret = stat(dirname, &buf);
+
 	if (ret == 0 && S_ISDIR(buf.st_mode)) {
 		DIR* dir = malloc(sizeof(DIR) + buf.st_blksize);
 		dir->fd = open(dirname, O_RDONLY);

@@ -192,8 +192,36 @@ int chown(const char *path, uid_t owner, gid_t group) {
 }
 
 int stat(const char *path, struct stat *buf) {
-	// TODO: si c'est un chemin alors le resoudre avant d'appeler lstat.
-	return lstat(path, buf);
+	int ret = lstat(path, buf);
+
+    // Je fais ici une résolution du lien mais je ne suis pas convaincu.
+    // Cela sera probablement fait au niveau du VFS.
+    // Peut-être faire un appel système dédié ou rajouter un argument si
+    // on ne veut pas que le dernier nom soit suivi.
+
+	if (ret == 0) {
+		if (S_ISLNK(buf->st_mode)) {
+			char link[255];
+			int s = readlink(path, link, sizeof(link));
+			if (s >= 0) {
+				link[s] = '\0';
+
+				char *newpath = malloc(strlen(path) + s);
+				strcpy(newpath, path);
+				char *r = strrchr(newpath, '/');
+				if (r == NULL) {
+					r = newpath;
+				} else {
+					r++;
+				}
+				strcpy(r, link);
+
+				ret = stat(newpath, buf);
+				free(newpath);
+			}
+		}
+	}
+	return ret;
 }
 
 int lstat(const char *path, struct stat *buf) {
