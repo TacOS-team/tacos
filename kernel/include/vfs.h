@@ -185,7 +185,7 @@ int vfs_mkdir(const char * pathname, mode_t mode);
  *
  * @return 0 en cas de succès.
  */
-int vfs_stat(const char *pathname, struct stat * stbuf);
+int vfs_stat(const char *pathname, struct stat * stbuf, int follow_link);
 
 /**
  * @brief Suppression d'un noeud.

@@ -37,6 +37,7 @@
 #include <klog.h>
 
 #define LOOKUP_PARENT 1 /**< S'arrête au niveau du parent. */
+#define LOOKUP_NOFOLLOW 2 /**< Ne résoud pas le dernier lien. */
 
 static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, uint32_t flags);
 extern struct _open_file_operations_t pipe_fops;
@@ -101,9 +102,9 @@ static mounted_fs_t* get_mnt_from_path(const char * name) {
 
 static char * get_next_part_path(struct nameidata *nb) {
 	const char *last = nb->last;
-	char *name = NULL;
+	char *name = "";
 	
-	if (last) {
+	if (*last) {
 		while (*last == '/') last++;
 		char *p = strchrnul(last, '/');
 		name = kmalloc(p - last + 1);
@@ -116,7 +117,6 @@ static char * get_next_part_path(struct nameidata *nb) {
 }
 
 static int lookup(struct nameidata *nb) {
-	// TODO: Should follow symlinks.
 	dentry_t *dentry;
 	// On va de dossier en dossier.
 	while (*(nb->last)) {
@@ -144,22 +144,26 @@ static int lookup(struct nameidata *nb) {
 			}
 		}
 		if (dentry) {
-			nb->dentry = dentry;
-
-			if (S_ISLNK(dentry->d_inode->i_mode)) {
-				open_file_descriptor *ofd = dentry_open(nb->dentry, nb->mnt, O_RDONLY);
+			if (S_ISLNK(dentry->d_inode->i_mode) && !(*(nb->last) == '\0' && (nb->flags & LOOKUP_NOFOLLOW))) {
+				open_file_descriptor *ofd = dentry_open(dentry, nb->mnt, O_RDONLY);
 				if (ofd && ofd->f_ops->read) {
-					char newpath[255];
-					int ret = ofd->f_ops->read(ofd, newpath, sizeof(newpath));
+					char link[255];
+					int ret = ofd->f_ops->read(ofd, link, sizeof(link));
 					if (ret >= 0) {
-						newpath[ret] = '\0';
-						klog("%s\n", newpath);
-						// TODO: reconstruire le chemin et y aller !
-						// Si le chemin est relative on peut rester ici et ajouter simplement.
+						link[ret] = '\0';
+
+						char *newpath = kmalloc(sizeof(char) * (ret + strlen(nb->last)) + 1);
+						strcpy(newpath, link);
+						strcpy(newpath + ret, nb->last);
+
+						nb->last = newpath;
+						// TODO: gérer les chemins absolus.
 					} else {
 						return -1;
 					}
 				}
+			} else {
+				nb->dentry = dentry;
 			}
 		} else {
 			return -1;
@@ -205,6 +209,7 @@ static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, u
 	dentry->d_inode->i_count++;
 
 	open_file_descriptor *ofd = kmalloc(sizeof(open_file_descriptor));
+	ofd->pathname = "";
 	ofd->flags = flags;
 	ofd->inode = dentry->d_inode;
 	ofd->dentry = dentry;
@@ -228,10 +233,14 @@ static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, u
 }
 
 open_file_descriptor * vfs_open(const char * pathname, uint32_t flags) {
-	// TODO: Should follow symlinks.
 	struct nameidata nb;
 	open_file_descriptor *ret = NULL;
 	nb.flags = LOOKUP_PARENT;
+
+	if (flags & O_NOFOLLOW) {
+		nb.flags |= LOOKUP_NOFOLLOW;
+	}
+
 	if (open_namei(pathname, &nb) == 0) {
 		if (!(flags & O_CREAT)) {
 			nb.flags &= ~LOOKUP_PARENT;
@@ -347,7 +356,7 @@ static void fill_stat_from_inode(inode_t *inode, struct stat *buf) {
 	buf->st_nlink = inode->i_nlink;
 	buf->st_uid = inode->i_uid;
 	buf->st_gid = inode->i_gid;
-// st_rdev;     /**< Type périphérique               */
+// st_rdev;	 /**< Type périphérique	*/
 	buf->st_size = inode->i_size;
 	buf->st_blocks = inode->i_blocks;
 	buf->st_blksize = 512;
@@ -356,9 +365,13 @@ static void fill_stat_from_inode(inode_t *inode, struct stat *buf) {
 	buf->st_ctime = inode->i_ctime;
 }
 
-int vfs_stat(const char *pathname, struct stat *buf) {
+int vfs_stat(const char *pathname, struct stat *buf, int follow_link) {
 	struct nameidata nd;
-	nd.flags = 0;
+	if (follow_link == 0) {
+		nd.flags = LOOKUP_NOFOLLOW;
+	} else {
+		nd.flags = 0;
+	}
 	if (open_namei(pathname, &nd) == 0) {
 		// TODO: appeler fonction stat du FS.
 		fill_stat_from_inode(nd.dentry->d_inode, buf);
@@ -554,7 +567,7 @@ int vfs_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 }
 
 ssize_t vfs_readlink(const char *path, char *buf, size_t bufsize) {
-	open_file_descriptor *ofd = vfs_open(path, O_RDONLY);
+	open_file_descriptor *ofd = vfs_open(path, O_RDONLY | O_NOFOLLOW);
 	if (ofd && ofd->f_ops->read) {
 		return ofd->f_ops->read(ofd, buf, bufsize);
 	}

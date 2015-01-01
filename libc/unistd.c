@@ -192,40 +192,19 @@ int chown(const char *path, uid_t owner, gid_t group) {
 }
 
 int stat(const char *path, struct stat *buf) {
-	int ret = lstat(path, buf);
-
-    // Je fais ici une résolution du lien mais je ne suis pas convaincu.
-    // Cela sera probablement fait au niveau du VFS.
-    // Peut-être faire un appel système dédié ou rajouter un argument si
-    // on ne veut pas que le dernier nom soit suivi.
-
-	if (ret == 0) {
-		if (S_ISLNK(buf->st_mode)) {
-			char link[255];
-			int s = readlink(path, link, sizeof(link));
-			if (s >= 0) {
-				link[s] = '\0';
-
-				char *newpath = malloc(strlen(path) + s);
-				strcpy(newpath, path);
-				char *r = strrchr(newpath, '/');
-				if (r == NULL) {
-					r = newpath;
-				} else {
-					r++;
-				}
-				strcpy(r, link);
-
-				ret = stat(newpath, buf);
-				free(newpath);
-			}
-		}
+	int ret = 1; // follow link
+	if (path[0] != '/') {
+		char * absolutepath = get_absolute_path(path);
+		syscall(SYS_STAT, (uint32_t)absolutepath, (uint32_t)buf, (uint32_t)&ret);
+		free(absolutepath);
+	} else {
+		syscall(SYS_STAT, (uint32_t)path, (uint32_t)buf, (uint32_t)&ret);
 	}
 	return ret;
 }
 
 int lstat(const char *path, struct stat *buf) {
-	int ret;
+	int ret = 0; // don't follow link
 	if (path[0] != '/') {
 		char * absolutepath = get_absolute_path(path);
 		syscall(SYS_STAT, (uint32_t)absolutepath, (uint32_t)buf, (uint32_t)&ret);

@@ -41,6 +41,7 @@
 #include <elf.h>
 #include <kstat.h>
 #include <kunistd.h>
+#include <vfs.h>
 
 #define GET_PROCESS 0
 #define GET_PROCESS_LIST 1
@@ -647,7 +648,7 @@ SYSCALL_HANDLER3(sys_exec, char *cmdline, char **environ, int *retval)
 
 	char* execpath = strdup(cmdline);
 
-	int ret = -1;
+	int ret = 0;
 	int offset = 0;
 	
 	while(execpath[offset] != ' ' && execpath[offset] != '\0')
@@ -656,7 +657,7 @@ SYSCALL_HANDLER3(sys_exec, char *cmdline, char **environ, int *retval)
 	execpath[offset] = '\0';
 	
 	struct stat buf;
-	sys_stat(execpath, &buf, &ret);
+	ret = vfs_stat(execpath, &buf, ret);
 
 	if (!S_ISREG(buf.st_mode) || !(S_IXUSR & buf.st_mode)) {
 		*retval = -1;
