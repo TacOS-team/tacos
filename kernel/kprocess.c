@@ -52,7 +52,6 @@
 typedef int (*main_func_type) (uint32_t, uint8_t**);
 
 static int proc_count = -1;
-static uint32_t next_pid = 0;	/* pid à donner au prochain processus créé */
 
 static process_t* process_array[MAX_PROC];
 
@@ -65,55 +64,43 @@ process_t* get_process_array(int i) {
 	return process_array[i];
 }
 
-static void add_process(process_t* process)
+static int add_process(process_t* process)
 {
-	int i = 0;
-
-	if(proc_count < MAX_PROC)
-	{
-		while(i<MAX_PROC && process_array[i] != NULL)
-			i++;
-		
-		process_array[i] = process;
-		proc_count++;
+	if (proc_count == MAX_PROC) {
+		return -1;
 	}
+
+	static uint32_t next_pid = 0;	/* pid à donner au prochain processus créé */
+
+	while (process_array[next_pid] != NULL) {
+		next_pid++;
+		if (next_pid == MAX_PROC) {
+			next_pid = 0;
+		}
+	}
+
+	process_array[next_pid] = process;
+	process->pid = next_pid;
+	proc_count++;
+
+	return next_pid;
 }
 
 process_t* find_process(int pid)
 {
-	process_t* proc = NULL;
-	int i = 0;
-	
-	while(proc==NULL && i<MAX_PROC)
-	{
-		if(process_array[i] != NULL && process_array[i]->pid == pid)
-			proc = process_array[i];
-		else
-			i++;
-	} 
-	return proc;
+	return process_array[pid];
 }
 
 int delete_process(int pid)
 {
-	process_t* proc = NULL;
-	int i = 0;
-	
-	while(proc==NULL && i<MAX_PROC)
-	{
-		if(process_array[i]->pid == pid)
-			proc = process_array[i];
-		else
-			i++;
-	} 
-	if(proc != NULL)
-	{
+	process_t* proc = process_array[pid];
+	if (proc != NULL) {
 		kfree(proc);
-		process_array[i] = NULL;
-		
+		process_array[pid] = NULL;
 		proc_count--;
+		return 0;
 	}
-	return 0;
+	return -1;
 }
 
 /* Procédure permettant de construire le char** argv */
@@ -347,10 +334,6 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 	paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) new_proc->pd);
 	pagination_init_page_directory_copy_kernel_only(new_proc->pd, pd_paddr);
 	
-	/* Sélection du pid du process */
-	new_proc->pid = next_pid;
-	next_pid++;
-
 	new_proc->ctrl_tty = NULL;
 	
 	/* ZONE CRITIQUE */
@@ -380,6 +363,8 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 		
 		memset(new_proc->fd, 0, FOPEN_MAX * sizeof(open_file_descriptor*));
 
+		add_process(new_proc);
+
 		/* Initialisation des entrées/sorties standards */
 		init_stdfd(new_proc);
 		
@@ -408,8 +393,6 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 	
 	/* Création de la table des symboles */
 	new_proc->symtable = load_symtable(init_data->file);
-
-	add_process(new_proc);
 
 	/* Plantait, mais ne plante plus... */
 	free_init_data(init_data_dup);
@@ -495,7 +478,6 @@ process_t* create_process(process_init_data_t* init_data) {
 	new_proc->current_sample = 0;
 	new_proc->last_sample = 0;
 	
-	new_proc->pid = next_pid;
 	new_proc->regs.eax = 0;
 	new_proc->regs.ebx = 0;
 	new_proc->regs.ecx = 0;
@@ -557,12 +539,10 @@ process_t* create_process(process_init_data_t* init_data) {
 
 	memset(new_proc->fd, 0, FOPEN_MAX * sizeof(open_file_descriptor*));
 
+	add_process(new_proc);
+
 	/* Initialisation des entrées/sorties standards */
 	init_stdfd(new_proc);
-	// Plante juste après le stdfd avec qemu lorsqu'on a déjà créé 2 process. Problème avec la mémoire ?
-	next_pid++;
-	
-	add_process(new_proc);
 	
 	/* FIN ZONE CRITIQUE */
 	asm("sti");	
