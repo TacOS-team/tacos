@@ -1,4 +1,4 @@
 <map id="alloc_tty_driver" name="alloc_tty_driver">
-<area shape="rect" id="node3" href="$serial_8h.html#a459999cfa35c788b64284953a93c4b57" title="Fonction d&#39;initialisation du driver série." alt="" coords="169,5,247,33"/>
+<area shape="rect" id="node3" href="$serial_8h.html#a459999cfa35c788b64284953a93c4b57" title="Fonction d&#39;initialisation du driver série." alt="" coords="171,5,245,33"/>
 <area shape="rect" id="node5" href="$console_8h.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;." alt="" coords="163,55,253,83"/>
 </map>

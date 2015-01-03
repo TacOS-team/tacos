@@ -1,7 +1,7 @@
 <map id="register_chardev" name="register_chardev">
-<area shape="rect" id="node3" href="$beeper_8h.html#aa6492faf2e8ab1fb72659ae20b473e23" title="Initialisation du driver." alt="" coords="193,5,279,33"/>
-<area shape="rect" id="node5" href="$tty_8h.html#a302b60b1c52001915aeb108b51efc397" title="tty_register_driver" alt="" coords="173,55,299,83"/>
-<area shape="rect" id="node11" href="$vga_8h.html#ab4914929beebc81e861d0dfac915dffd" title="init_vga" alt="" coords="203,106,269,134"/>
-<area shape="rect" id="node7" href="$serial_8h.html#a459999cfa35c788b64284953a93c4b57" title="Fonction d&#39;initialisation du driver série." alt="" coords="353,30,431,58"/>
-<area shape="rect" id="node9" href="$console_8h.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;." alt="" coords="347,81,437,109"/>
+<area shape="rect" id="node3" href="$beeper_8h.html#aa6492faf2e8ab1fb72659ae20b473e23" title="Initialisation du driver." alt="" coords="189,5,275,33"/>
+<area shape="rect" id="node5" href="$tty_8h.html#a302b60b1c52001915aeb108b51efc397" title="tty_register_driver" alt="" coords="171,55,293,83"/>
+<area shape="rect" id="node11" href="$vga_8h.html#ab4914929beebc81e861d0dfac915dffd" title="init_vga" alt="" coords="199,106,265,134"/>
+<area shape="rect" id="node7" href="$serial_8h.html#a459999cfa35c788b64284953a93c4b57" title="Fonction d&#39;initialisation du driver série." alt="" coords="349,30,424,58"/>
+<area shape="rect" id="node9" href="$console_8h.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;." alt="" coords="341,81,432,109"/>
 </map>

@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/include/drivers/keyboard.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -94,16 +95,19 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <div class="dyncontent">
 <div class="center"><img src="keyboard_8h__dep__incl.png" border="0" usemap="#kernel_2include_2drivers_2keyboard_8hdep" alt=""/></div>
 <map name="kernel_2include_2drivers_2keyboard_8hdep" id="kernel_2include_2drivers_2keyboard_8hdep">
-<area shape="rect" id="node3" href="keyboard_8c.html" title="Driver clavier." alt="" coords="5,99,133,143"/><area shape="rect" id="node5" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="157,107,264,135"/></map>
+<area shape="rect" id="node2" href="keyboard_8c.html" title="Driver clavier. " alt="" coords="5,95,135,136"/><area shape="rect" id="node3" href="init_8c.html" title="kernel/init.c" alt="" coords="159,102,247,129"/><area shape="rect" id="node4" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="271,102,378,129"/></map>
 </div>
 </div>
 <p><a href="keyboard_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:aac7ec49aa0203d9bd2dd5c4bcba7cb61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8h.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61">keyboardInterrupt</a> (int id)</td></tr>
+<tr class="separator:aac7ec49aa0203d9bd2dd5c4bcba7cb61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a189a45647e39c26e7668c0c4fdd2885e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8h.html#a189a45647e39c26e7668c0c4fdd2885e">selectLayout</a> (int use_azerty)</td></tr>
+<tr class="separator:a189a45647e39c26e7668c0c4fdd2885e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -114,7 +118,7 @@ LICENSE</h1>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 <p>Description de ce que fait le fichier </p>
-</div><h2>Documentation des fonctions</h2>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="aac7ec49aa0203d9bd2dd5c4bcba7cb61"></a>
 <div class="memitem">
 <div class="memproto">
@@ -141,18 +145,35 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="keyboard_8h_aac7ec49aa0203d9bd2dd5c4bcba7cb61_cgraph.png" border="0" usemap="#keyboard_8h_aac7ec49aa0203d9bd2dd5c4bcba7cb61_cgraph" alt=""/></div>
 <map name="keyboard_8h_aac7ec49aa0203d9bd2dd5c4bcba7cb61_cgraph" id="keyboard_8h_aac7ec49aa0203d9bd2dd5c4bcba7cb61_cgraph">
-<area shape="rect" id="node3" href="console_8c.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan." alt="" coords="176,55,283,83"/><area shape="rect" id="node5" href="video_8c.html#ab549780053994f6b1dba04869b562a43" title="Change la page à afficher à l&#39;écran." alt="" coords="359,5,452,33"/><area shape="rect" id="node7" href="video_8c.html#a61e8f22681edb740e2d057ac270e6f5b" title="Désactive l&#39;affichage du curseur." alt="" coords="352,55,459,83"/><area shape="rect" id="node9" href="video_8c.html#ab1ddd4e6afaac2e5d7ed1d7575e8186b" title="Change la position du curseur." alt="" coords="332,106,479,134"/></map>
+<area shape="rect" id="node2" href="console_8c.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan. " alt="" coords="176,56,283,83"/><area shape="rect" id="node3" href="video_8c.html#ab549780053994f6b1dba04869b562a43" title="Change la page à afficher à l&#39;écran. " alt="" coords="357,5,452,32"/><area shape="rect" id="node4" href="video_8c.html#a61e8f22681edb740e2d057ac270e6f5b" title="Désactive l&#39;affichage du curseur. " alt="" coords="351,56,458,83"/><area shape="rect" id="node5" href="video_8c.html#ab1ddd4e6afaac2e5d7ed1d7575e8186b" title="Change la position du curseur. " alt="" coords="331,107,479,133"/></map>
 </div>
 </p>
+
+</div>
+</div>
+<a class="anchor" id="a189a45647e39c26e7668c0c4fdd2885e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void selectLayout </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>use_azerty</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Choix du layout clavier. Pour le moment juste entre azerty et qwerty. </p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:36 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

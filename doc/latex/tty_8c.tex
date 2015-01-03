@@ -1,17 +1,18 @@
 \hypertarget{tty_8c}{\section{Référence du fichier kernel/drivers/char/tty/tty.c}
-\label{tty_8c}\index{kernel/drivers/char/tty/tty.\-c@{kernel/drivers/char/tty/tty.\-c}}
+\label{tty_8c}\index{kernel/drivers/char/tty/tty.\+c@{kernel/drivers/char/tty/tty.\+c}}
 }
-{\ttfamily \#include $<$fs/devfs.\-h$>$}\\*
-{\ttfamily \#include $<$kfcntl.\-h$>$}\\*
-{\ttfamily \#include $<$klibc/string.\-h$>$}\\*
-{\ttfamily \#include $<$klog.\-h$>$}\\*
-{\ttfamily \#include $<$kmalloc.\-h$>$}\\*
-{\ttfamily \#include $<$kprocess.\-h$>$}\\*
-{\ttfamily \#include $<$ksem.\-h$>$}\\*
-{\ttfamily \#include $<$ksignal.\-h$>$}\\*
-{\ttfamily \#include $<$scheduler.\-h$>$}\\*
-{\ttfamily \#include $<$tty.\-h$>$}\\*
-Graphe des dépendances par inclusion de tty.\-c\-:\nopagebreak
+{\ttfamily \#include $<$fs/devfs.\+h$>$}\\*
+{\ttfamily \#include $<$kfcntl.\+h$>$}\\*
+{\ttfamily \#include $<$klibc/string.\+h$>$}\\*
+{\ttfamily \#include $<$klog.\+h$>$}\\*
+{\ttfamily \#include $<$kmalloc.\+h$>$}\\*
+{\ttfamily \#include $<$kprocess.\+h$>$}\\*
+{\ttfamily \#include $<$ksem.\+h$>$}\\*
+{\ttfamily \#include $<$ksignal.\+h$>$}\\*
+{\ttfamily \#include $<$scheduler.\+h$>$}\\*
+{\ttfamily \#include $<$tty.\+h$>$}\\*
+Graphe des dépendances par inclusion de tty.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,148 +22,187 @@ Graphe des dépendances par inclusion de tty.\-c\-:\nopagebreak
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{tty_8c_a3c6a779e2a70103216bbe1e930a7c744}{I\-\_\-\-E\-C\-H\-O}(tty)~(tty-\/$>$\hyperlink{structtermios_a91bdd7691180800fccc4b791466ee9c3}{termios.\-c\-\_\-lflag} \& \hyperlink{termios_8h_aad1dc60a04a1d8cfc8b3ded13601e361}{E\-C\-H\-O})
+\hypertarget{tty_8c_a59adc4c82490d23754cd39c2fb99b0da}{\#define {\bfseries E\+O\+F}~(-\/1)}\label{tty_8c_a59adc4c82490d23754cd39c2fb99b0da}
+
 \item 
-\#define \hyperlink{tty_8c_a06314af20a166cbf96e764892a2b3688}{I\-\_\-\-C\-A\-N\-O\-N}(tty)~(tty-\/$>$\hyperlink{structtermios_a91bdd7691180800fccc4b791466ee9c3}{termios.\-c\-\_\-lflag} \& \hyperlink{termios_8h_a58265a371303d00a4a3b1f128d72c21e}{I\-C\-A\-N\-O\-N})
+\#define \hyperlink{tty_8c_a3c6a779e2a70103216bbe1e930a7c744}{I\+\_\+\+E\+C\+H\+O}(tty)~(tty-\/$>$\hyperlink{structtermios_a91bdd7691180800fccc4b791466ee9c3}{termios.\+c\+\_\+lflag} \& \hyperlink{termios_8h_aad1dc60a04a1d8cfc8b3ded13601e361}{E\+C\+H\+O})
 \item 
-\#define \hyperlink{tty_8c_ad03777cbc0b0ff24b31ca2ff5eeb771d}{I\-\_\-\-I\-G\-N\-C\-R}(tty)~(tty-\/$>$\hyperlink{structtermios_a85b6c86d2a3db45a3829488190e357e4}{termios.\-c\-\_\-iflag} \& \hyperlink{termios_8h_ab114b7d41f2ff7562a85ec83b62544b0}{I\-G\-N\-C\-R})
+\#define \hyperlink{tty_8c_a06314af20a166cbf96e764892a2b3688}{I\+\_\+\+C\+A\+N\+O\+N}(tty)~(tty-\/$>$\hyperlink{structtermios_a91bdd7691180800fccc4b791466ee9c3}{termios.\+c\+\_\+lflag} \& \hyperlink{termios_8h_a58265a371303d00a4a3b1f128d72c21e}{I\+C\+A\+N\+O\+N})
 \item 
-\#define \hyperlink{tty_8c_ae524240ae8b50b8e5230cbea0666db7f}{I\-\_\-\-I\-C\-R\-N\-L}(tty)~(tty-\/$>$\hyperlink{structtermios_a85b6c86d2a3db45a3829488190e357e4}{termios.\-c\-\_\-iflag} \& \hyperlink{termios_8h_ae0cbb5db9d8f8119864bb9537466c314}{I\-C\-R\-N\-L})
+\#define \hyperlink{tty_8c_ad03777cbc0b0ff24b31ca2ff5eeb771d}{I\+\_\+\+I\+G\+N\+C\+R}(tty)~(tty-\/$>$\hyperlink{structtermios_a85b6c86d2a3db45a3829488190e357e4}{termios.\+c\+\_\+iflag} \& \hyperlink{termios_8h_ab114b7d41f2ff7562a85ec83b62544b0}{I\+G\+N\+C\+R})
 \item 
-\#define \hyperlink{tty_8c_a58343ebbc092a56ca39e371d1e0d7bf5}{I\-\_\-\-I\-N\-L\-C\-R}(tty)~(tty-\/$>$\hyperlink{structtermios_a85b6c86d2a3db45a3829488190e357e4}{termios.\-c\-\_\-iflag} \& \hyperlink{termios_8h_acc6dc46be5104b67ffde1df93549472a}{I\-N\-L\-C\-R})
+\#define \hyperlink{tty_8c_ae524240ae8b50b8e5230cbea0666db7f}{I\+\_\+\+I\+C\+R\+N\+L}(tty)~(tty-\/$>$\hyperlink{structtermios_a85b6c86d2a3db45a3829488190e357e4}{termios.\+c\+\_\+iflag} \& \hyperlink{termios_8h_ae0cbb5db9d8f8119864bb9537466c314}{I\+C\+R\+N\+L})
 \item 
-\#define \hyperlink{tty_8c_a9121186e20dddeca1f87a1a9bbcc98fa}{L\-\_\-\-I\-S\-I\-G}(tty)~(tty-\/$>$\hyperlink{structtermios_a91bdd7691180800fccc4b791466ee9c3}{termios.\-c\-\_\-lflag} \& \hyperlink{termios_8h_a52c605497d066b9ae7407124f84806a7}{I\-S\-I\-G})
+\#define \hyperlink{tty_8c_a58343ebbc092a56ca39e371d1e0d7bf5}{I\+\_\+\+I\+N\+L\+C\+R}(tty)~(tty-\/$>$\hyperlink{structtermios_a85b6c86d2a3db45a3829488190e357e4}{termios.\+c\+\_\+iflag} \& \hyperlink{termios_8h_acc6dc46be5104b67ffde1df93549472a}{I\+N\+L\+C\+R})
 \item 
-\#define \hyperlink{tty_8c_a32d35a3a2ab8a8a4ba1f388acba62b79}{L\-\_\-\-E\-C\-H\-O\-E}(tty)~(tty-\/$>$\hyperlink{structtermios_a91bdd7691180800fccc4b791466ee9c3}{termios.\-c\-\_\-lflag} \& \hyperlink{termios_8h_aac931d3ce0dfc4578f76879ed095ecd7}{E\-C\-H\-O\-E})
+\#define \hyperlink{tty_8c_a9121186e20dddeca1f87a1a9bbcc98fa}{L\+\_\+\+I\+S\+I\+G}(tty)~(tty-\/$>$\hyperlink{structtermios_a91bdd7691180800fccc4b791466ee9c3}{termios.\+c\+\_\+lflag} \& \hyperlink{termios_8h_a52c605497d066b9ae7407124f84806a7}{I\+S\+I\+G})
 \item 
-\#define \hyperlink{tty_8c_abec2eb3e46639063e70f77b9b31e9b7d}{Q\-U\-I\-T\-\_\-\-C\-H\-A\-R}(tty)~((tty)-\/$>$\hyperlink{structtermios_a6058cfc222551ee750c72142299acb2e}{termios.\-c\-\_\-cc}\mbox{[}\hyperlink{termios_8h_a31cfa1f14eadee06c346549d734ed586}{V\-Q\-U\-I\-T}\mbox{]})
+\#define \hyperlink{tty_8c_a32d35a3a2ab8a8a4ba1f388acba62b79}{L\+\_\+\+E\+C\+H\+O\+E}(tty)~(tty-\/$>$\hyperlink{structtermios_a91bdd7691180800fccc4b791466ee9c3}{termios.\+c\+\_\+lflag} \& \hyperlink{termios_8h_aac931d3ce0dfc4578f76879ed095ecd7}{E\+C\+H\+O\+E})
 \item 
-\#define \hyperlink{tty_8c_a46c70f991b37ad17309a6e67662f2855}{I\-N\-T\-R\-\_\-\-C\-H\-A\-R}(tty)~((tty)-\/$>$\hyperlink{structtermios_a6058cfc222551ee750c72142299acb2e}{termios.\-c\-\_\-cc}\mbox{[}\hyperlink{termios_8h_a5760397a3b875a073800edd2052d3816}{V\-I\-N\-T\-R}\mbox{]})
+\#define \hyperlink{tty_8c_a5877372781bac3647d21e4cbf23c528d}{L\+\_\+\+E\+C\+H\+O\+C\+T\+L}(tty)~(tty-\/$>$\hyperlink{structtermios_a91bdd7691180800fccc4b791466ee9c3}{termios.\+c\+\_\+lflag} \& \hyperlink{termios_8h_a1be1e11c89f23c1651328e62b9533ac2}{E\+C\+H\+O\+C\+T\+L})
 \item 
-\#define \hyperlink{tty_8c_a2acb186a86906b4dab9f1dff4258df66}{S\-U\-S\-P\-\_\-\-C\-H\-A\-R}(tty)~((tty)-\/$>$\hyperlink{structtermios_a6058cfc222551ee750c72142299acb2e}{termios.\-c\-\_\-cc}\mbox{[}\hyperlink{termios_8h_a348dc585f00cea776b320e7527e2f656}{V\-S\-U\-S\-P}\mbox{]})
+\#define \hyperlink{tty_8c_abec2eb3e46639063e70f77b9b31e9b7d}{Q\+U\+I\+T\+\_\+\+C\+H\+A\+R}(tty)~((tty)-\/$>$\hyperlink{structtermios_a6058cfc222551ee750c72142299acb2e}{termios.\+c\+\_\+cc}\mbox{[}\hyperlink{termios_8h_a31cfa1f14eadee06c346549d734ed586}{V\+Q\+U\+I\+T}\mbox{]})
 \item 
-\#define \hyperlink{tty_8c_a10c57446745f062f3c64ef35077954a0}{E\-R\-A\-S\-E\-\_\-\-C\-H\-A\-R}(tty)~((tty)-\/$>$\hyperlink{structtermios_a6058cfc222551ee750c72142299acb2e}{termios.\-c\-\_\-cc}\mbox{[}\hyperlink{termios_8h_a6e11c405d7ddff22c2318c8623c3affa}{V\-E\-R\-A\-S\-E}\mbox{]})
+\#define \hyperlink{tty_8c_a46c70f991b37ad17309a6e67662f2855}{I\+N\+T\+R\+\_\+\+C\+H\+A\+R}(tty)~((tty)-\/$>$\hyperlink{structtermios_a6058cfc222551ee750c72142299acb2e}{termios.\+c\+\_\+cc}\mbox{[}\hyperlink{termios_8h_a5760397a3b875a073800edd2052d3816}{V\+I\+N\+T\+R}\mbox{]})
+\item 
+\#define \hyperlink{tty_8c_a2acb186a86906b4dab9f1dff4258df66}{S\+U\+S\+P\+\_\+\+C\+H\+A\+R}(tty)~((tty)-\/$>$\hyperlink{structtermios_a6058cfc222551ee750c72142299acb2e}{termios.\+c\+\_\+cc}\mbox{[}\hyperlink{termios_8h_a348dc585f00cea776b320e7527e2f656}{V\+S\+U\+S\+P}\mbox{]})
+\item 
+\#define \hyperlink{tty_8c_a10c57446745f062f3c64ef35077954a0}{E\+R\+A\+S\+E\+\_\+\+C\+H\+A\+R}(tty)~((tty)-\/$>$\hyperlink{structtermios_a6058cfc222551ee750c72142299acb2e}{termios.\+c\+\_\+cc}\mbox{[}\hyperlink{termios_8h_a6e11c405d7ddff22c2318c8623c3affa}{V\+E\+R\+A\+S\+E}\mbox{]})
+\item 
+\#define \hyperlink{tty_8c_a2519eb4edd848b472790deb7c0a97dc9}{E\+R\+A\+S\+E\+\_\+\+W\+O\+R\+D}(tty)~((tty)-\/$>$\hyperlink{structtermios_a6058cfc222551ee750c72142299acb2e}{termios.\+c\+\_\+cc}\mbox{[}\hyperlink{termios_8h_a90ee9234e26b211a5d64c4df778f6c9f}{V\+W\+E\+R\+A\+S\+E}\mbox{]})
+\item 
+\#define \hyperlink{tty_8c_ada3d7b9324d2baf6d08420ddc31be135}{E\+O\+F\+\_\+\+C\+H\+A\+R}(tty)~((tty)-\/$>$\hyperlink{structtermios_a6058cfc222551ee750c72142299acb2e}{termios.\+c\+\_\+cc}\mbox{[}\hyperlink{termios_8h_a2913fdfccc72db70821a2100bfc8217a}{V\+E\+O\+F}\mbox{]})
+\item 
+\#define \hyperlink{tty_8c_adda8c2f2fe8c05eb8e2b58ed0b4cebe2}{P\+R\+E\+V\+\_\+\+C\+H\+A\+R\+\_\+\+I\+N\+D\+E\+X}(tty)~((tty-\/$>$p\+\_\+end + \hyperlink{tty_8h_a00c1f0e7816626f58349492ef0720b5f}{M\+A\+X\+\_\+\+I\+N\+P\+U\+T} -\/ 1) \% \hyperlink{tty_8h_a00c1f0e7816626f58349492ef0720b5f}{M\+A\+X\+\_\+\+I\+N\+P\+U\+T})
+\item 
+\hypertarget{tty_8c_adfc7c9243e8b0eabb9cd6098309ad083}{\#define {\bfseries N\+E\+X\+T\+\_\+\+C\+H\+A\+R\+\_\+\+I\+N\+D\+E\+X}(tty)~((tty-\/$>$p\+\_\+end + 1) \% \hyperlink{tty_8h_a00c1f0e7816626f58349492ef0720b5f}{M\+A\+X\+\_\+\+I\+N\+P\+U\+T})}\label{tty_8c_adfc7c9243e8b0eabb9cd6098309ad083}
+
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{tty_8c_a3bf9faf77dd76addc6deac2722b097e2}{void \hyperlink{tty_8c_a3bf9faf77dd76addc6deac2722b097e2}{tty\-\_\-init} ()}\label{tty_8c_a3bf9faf77dd76addc6deac2722b097e2}
+\hypertarget{tty_8c_a3bf9faf77dd76addc6deac2722b097e2}{void \hyperlink{tty_8c_a3bf9faf77dd76addc6deac2722b097e2}{tty\+\_\+init} ()}\label{tty_8c_a3bf9faf77dd76addc6deac2722b097e2}
 
 \begin{DoxyCompactList}\small\item\em Initialisation du système de terminaux. \end{DoxyCompactList}\item 
-void \hyperlink{tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028}{tty\-\_\-insert\-\_\-flip\-\_\-char} (\hyperlink{tty_8h_a0870504b9f2d2e99a669e6df3dc9e84e}{tty\-\_\-struct\-\_\-t} $\ast$tty, unsigned char c)
+void \hyperlink{tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028}{tty\+\_\+insert\+\_\+flip\+\_\+char} (\hyperlink{tty_8h_a0870504b9f2d2e99a669e6df3dc9e84e}{tty\+\_\+struct\+\_\+t} $\ast$tty, unsigned char c)
 \item 
-\hyperlink{tty_8h_af1896b31f0109954b4aa8244f064e923}{tty\-\_\-driver\-\_\-t} $\ast$ \hyperlink{tty_8c_a9ae7085e2afaadc63a592910d4ac4328}{alloc\-\_\-tty\-\_\-driver} (int lines)
+\hyperlink{tty_8h_af1896b31f0109954b4aa8244f064e923}{tty\+\_\+driver\+\_\+t} $\ast$ \hyperlink{tty_8c_a9ae7085e2afaadc63a592910d4ac4328}{alloc\+\_\+tty\+\_\+driver} (int lines)
 \item 
-int \hyperlink{tty_8c_a302b60b1c52001915aeb108b51efc397}{tty\-\_\-register\-\_\-driver} (\hyperlink{tty_8h_af1896b31f0109954b4aa8244f064e923}{tty\-\_\-driver\-\_\-t} $\ast$driver)
-\item 
-\hypertarget{tty_8c_a4d1f11c77318b074dbc10778bdc3ef8a}{int {\bfseries tty\-\_\-ioctl} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, unsigned int request, void $\ast$data)}\label{tty_8c_a4d1f11c77318b074dbc10778bdc3ef8a}
-
+int \hyperlink{tty_8c_a302b60b1c52001915aeb108b51efc397}{tty\+\_\+register\+\_\+driver} (\hyperlink{tty_8h_af1896b31f0109954b4aa8244f064e923}{tty\+\_\+driver\+\_\+t} $\ast$driver)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structtermios}{termios} {\bfseries tty\-\_\-std\-\_\-termios}
+struct \hyperlink{structtermios}{termios} {\bfseries tty\+\_\+std\+\_\+termios}
 \end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010-\/2014 Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
-Description de ce que fait le fichier 
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
+Gestion des terminaux tty. 
 
 \subsection{Documentation des macros}
-\hypertarget{tty_8c_a10c57446745f062f3c64ef35077954a0}{\index{tty.\-c@{tty.\-c}!E\-R\-A\-S\-E\-\_\-\-C\-H\-A\-R@{E\-R\-A\-S\-E\-\_\-\-C\-H\-A\-R}}
-\index{E\-R\-A\-S\-E\-\_\-\-C\-H\-A\-R@{E\-R\-A\-S\-E\-\_\-\-C\-H\-A\-R}!tty.c@{tty.\-c}}
-\subsubsection[{E\-R\-A\-S\-E\-\_\-\-C\-H\-A\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-R\-A\-S\-E\-\_\-\-C\-H\-A\-R(
+\hypertarget{tty_8c_ada3d7b9324d2baf6d08420ddc31be135}{\index{tty.\+c@{tty.\+c}!E\+O\+F\+\_\+\+C\+H\+A\+R@{E\+O\+F\+\_\+\+C\+H\+A\+R}}
+\index{E\+O\+F\+\_\+\+C\+H\+A\+R@{E\+O\+F\+\_\+\+C\+H\+A\+R}!tty.\+c@{tty.\+c}}
+\subsubsection[{E\+O\+F\+\_\+\+C\+H\+A\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+O\+F\+\_\+\+C\+H\+A\+R(
 \begin{DoxyParamCaption}
 \item[{}]{tty}
 \end{DoxyParamCaption}
-)~((tty)-\/$>${\bf termios.\-c\-\_\-cc}\mbox{[}{\bf V\-E\-R\-A\-S\-E}\mbox{]})}}\label{tty_8c_a10c57446745f062f3c64ef35077954a0}
-Erase char \hypertarget{tty_8c_a06314af20a166cbf96e764892a2b3688}{\index{tty.\-c@{tty.\-c}!I\-\_\-\-C\-A\-N\-O\-N@{I\-\_\-\-C\-A\-N\-O\-N}}
-\index{I\-\_\-\-C\-A\-N\-O\-N@{I\-\_\-\-C\-A\-N\-O\-N}!tty.c@{tty.\-c}}
-\subsubsection[{I\-\_\-\-C\-A\-N\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-\_\-\-C\-A\-N\-O\-N(
+)~((tty)-\/$>${\bf termios.\+c\+\_\+cc}\mbox{[}{\bf V\+E\+O\+F}\mbox{]})}}\label{tty_8c_ada3d7b9324d2baf6d08420ddc31be135}
+E\+O\+F char \hypertarget{tty_8c_a10c57446745f062f3c64ef35077954a0}{\index{tty.\+c@{tty.\+c}!E\+R\+A\+S\+E\+\_\+\+C\+H\+A\+R@{E\+R\+A\+S\+E\+\_\+\+C\+H\+A\+R}}
+\index{E\+R\+A\+S\+E\+\_\+\+C\+H\+A\+R@{E\+R\+A\+S\+E\+\_\+\+C\+H\+A\+R}!tty.\+c@{tty.\+c}}
+\subsubsection[{E\+R\+A\+S\+E\+\_\+\+C\+H\+A\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+R\+A\+S\+E\+\_\+\+C\+H\+A\+R(
 \begin{DoxyParamCaption}
 \item[{}]{tty}
 \end{DoxyParamCaption}
-)~(tty-\/$>${\bf termios.\-c\-\_\-lflag} \& {\bf I\-C\-A\-N\-O\-N})}}\label{tty_8c_a06314af20a166cbf96e764892a2b3688}
-Mode canonique ? \hypertarget{tty_8c_a3c6a779e2a70103216bbe1e930a7c744}{\index{tty.\-c@{tty.\-c}!I\-\_\-\-E\-C\-H\-O@{I\-\_\-\-E\-C\-H\-O}}
-\index{I\-\_\-\-E\-C\-H\-O@{I\-\_\-\-E\-C\-H\-O}!tty.c@{tty.\-c}}
-\subsubsection[{I\-\_\-\-E\-C\-H\-O}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-\_\-\-E\-C\-H\-O(
+)~((tty)-\/$>${\bf termios.\+c\+\_\+cc}\mbox{[}{\bf V\+E\+R\+A\+S\+E}\mbox{]})}}\label{tty_8c_a10c57446745f062f3c64ef35077954a0}
+Erase char \hypertarget{tty_8c_a2519eb4edd848b472790deb7c0a97dc9}{\index{tty.\+c@{tty.\+c}!E\+R\+A\+S\+E\+\_\+\+W\+O\+R\+D@{E\+R\+A\+S\+E\+\_\+\+W\+O\+R\+D}}
+\index{E\+R\+A\+S\+E\+\_\+\+W\+O\+R\+D@{E\+R\+A\+S\+E\+\_\+\+W\+O\+R\+D}!tty.\+c@{tty.\+c}}
+\subsubsection[{E\+R\+A\+S\+E\+\_\+\+W\+O\+R\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+R\+A\+S\+E\+\_\+\+W\+O\+R\+D(
 \begin{DoxyParamCaption}
 \item[{}]{tty}
 \end{DoxyParamCaption}
-)~(tty-\/$>${\bf termios.\-c\-\_\-lflag} \& {\bf E\-C\-H\-O})}}\label{tty_8c_a3c6a779e2a70103216bbe1e930a7c744}
-Echo activé ? \hypertarget{tty_8c_ae524240ae8b50b8e5230cbea0666db7f}{\index{tty.\-c@{tty.\-c}!I\-\_\-\-I\-C\-R\-N\-L@{I\-\_\-\-I\-C\-R\-N\-L}}
-\index{I\-\_\-\-I\-C\-R\-N\-L@{I\-\_\-\-I\-C\-R\-N\-L}!tty.c@{tty.\-c}}
-\subsubsection[{I\-\_\-\-I\-C\-R\-N\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-\_\-\-I\-C\-R\-N\-L(
+)~((tty)-\/$>${\bf termios.\+c\+\_\+cc}\mbox{[}{\bf V\+W\+E\+R\+A\+S\+E}\mbox{]})}}\label{tty_8c_a2519eb4edd848b472790deb7c0a97dc9}
+Erase char \hypertarget{tty_8c_a06314af20a166cbf96e764892a2b3688}{\index{tty.\+c@{tty.\+c}!I\+\_\+\+C\+A\+N\+O\+N@{I\+\_\+\+C\+A\+N\+O\+N}}
+\index{I\+\_\+\+C\+A\+N\+O\+N@{I\+\_\+\+C\+A\+N\+O\+N}!tty.\+c@{tty.\+c}}
+\subsubsection[{I\+\_\+\+C\+A\+N\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+\_\+\+C\+A\+N\+O\+N(
 \begin{DoxyParamCaption}
 \item[{}]{tty}
 \end{DoxyParamCaption}
-)~(tty-\/$>${\bf termios.\-c\-\_\-iflag} \& {\bf I\-C\-R\-N\-L})}}\label{tty_8c_ae524240ae8b50b8e5230cbea0666db7f}
-C\-R =$>$ N\-L ? \hypertarget{tty_8c_ad03777cbc0b0ff24b31ca2ff5eeb771d}{\index{tty.\-c@{tty.\-c}!I\-\_\-\-I\-G\-N\-C\-R@{I\-\_\-\-I\-G\-N\-C\-R}}
-\index{I\-\_\-\-I\-G\-N\-C\-R@{I\-\_\-\-I\-G\-N\-C\-R}!tty.c@{tty.\-c}}
-\subsubsection[{I\-\_\-\-I\-G\-N\-C\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-\_\-\-I\-G\-N\-C\-R(
+)~(tty-\/$>${\bf termios.\+c\+\_\+lflag} \& {\bf I\+C\+A\+N\+O\+N})}}\label{tty_8c_a06314af20a166cbf96e764892a2b3688}
+Mode canonique ? \hypertarget{tty_8c_a3c6a779e2a70103216bbe1e930a7c744}{\index{tty.\+c@{tty.\+c}!I\+\_\+\+E\+C\+H\+O@{I\+\_\+\+E\+C\+H\+O}}
+\index{I\+\_\+\+E\+C\+H\+O@{I\+\_\+\+E\+C\+H\+O}!tty.\+c@{tty.\+c}}
+\subsubsection[{I\+\_\+\+E\+C\+H\+O}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+\_\+\+E\+C\+H\+O(
 \begin{DoxyParamCaption}
 \item[{}]{tty}
 \end{DoxyParamCaption}
-)~(tty-\/$>${\bf termios.\-c\-\_\-iflag} \& {\bf I\-G\-N\-C\-R})}}\label{tty_8c_ad03777cbc0b0ff24b31ca2ff5eeb771d}
-Ignore C\-R ? \hypertarget{tty_8c_a58343ebbc092a56ca39e371d1e0d7bf5}{\index{tty.\-c@{tty.\-c}!I\-\_\-\-I\-N\-L\-C\-R@{I\-\_\-\-I\-N\-L\-C\-R}}
-\index{I\-\_\-\-I\-N\-L\-C\-R@{I\-\_\-\-I\-N\-L\-C\-R}!tty.c@{tty.\-c}}
-\subsubsection[{I\-\_\-\-I\-N\-L\-C\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-\_\-\-I\-N\-L\-C\-R(
+)~(tty-\/$>${\bf termios.\+c\+\_\+lflag} \& {\bf E\+C\+H\+O})}}\label{tty_8c_a3c6a779e2a70103216bbe1e930a7c744}
+Echo activé ? \hypertarget{tty_8c_ae524240ae8b50b8e5230cbea0666db7f}{\index{tty.\+c@{tty.\+c}!I\+\_\+\+I\+C\+R\+N\+L@{I\+\_\+\+I\+C\+R\+N\+L}}
+\index{I\+\_\+\+I\+C\+R\+N\+L@{I\+\_\+\+I\+C\+R\+N\+L}!tty.\+c@{tty.\+c}}
+\subsubsection[{I\+\_\+\+I\+C\+R\+N\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+\_\+\+I\+C\+R\+N\+L(
 \begin{DoxyParamCaption}
 \item[{}]{tty}
 \end{DoxyParamCaption}
-)~(tty-\/$>${\bf termios.\-c\-\_\-iflag} \& {\bf I\-N\-L\-C\-R})}}\label{tty_8c_a58343ebbc092a56ca39e371d1e0d7bf5}
-N\-L =$>$ C\-R ? \hypertarget{tty_8c_a46c70f991b37ad17309a6e67662f2855}{\index{tty.\-c@{tty.\-c}!I\-N\-T\-R\-\_\-\-C\-H\-A\-R@{I\-N\-T\-R\-\_\-\-C\-H\-A\-R}}
-\index{I\-N\-T\-R\-\_\-\-C\-H\-A\-R@{I\-N\-T\-R\-\_\-\-C\-H\-A\-R}!tty.c@{tty.\-c}}
-\subsubsection[{I\-N\-T\-R\-\_\-\-C\-H\-A\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-N\-T\-R\-\_\-\-C\-H\-A\-R(
+)~(tty-\/$>${\bf termios.\+c\+\_\+iflag} \& {\bf I\+C\+R\+N\+L})}}\label{tty_8c_ae524240ae8b50b8e5230cbea0666db7f}
+C\+R =$>$ N\+L ? \hypertarget{tty_8c_ad03777cbc0b0ff24b31ca2ff5eeb771d}{\index{tty.\+c@{tty.\+c}!I\+\_\+\+I\+G\+N\+C\+R@{I\+\_\+\+I\+G\+N\+C\+R}}
+\index{I\+\_\+\+I\+G\+N\+C\+R@{I\+\_\+\+I\+G\+N\+C\+R}!tty.\+c@{tty.\+c}}
+\subsubsection[{I\+\_\+\+I\+G\+N\+C\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+\_\+\+I\+G\+N\+C\+R(
 \begin{DoxyParamCaption}
 \item[{}]{tty}
 \end{DoxyParamCaption}
-)~((tty)-\/$>${\bf termios.\-c\-\_\-cc}\mbox{[}{\bf V\-I\-N\-T\-R}\mbox{]})}}\label{tty_8c_a46c70f991b37ad17309a6e67662f2855}
-Interrupt char \hypertarget{tty_8c_a32d35a3a2ab8a8a4ba1f388acba62b79}{\index{tty.\-c@{tty.\-c}!L\-\_\-\-E\-C\-H\-O\-E@{L\-\_\-\-E\-C\-H\-O\-E}}
-\index{L\-\_\-\-E\-C\-H\-O\-E@{L\-\_\-\-E\-C\-H\-O\-E}!tty.c@{tty.\-c}}
-\subsubsection[{L\-\_\-\-E\-C\-H\-O\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-\_\-\-E\-C\-H\-O\-E(
+)~(tty-\/$>${\bf termios.\+c\+\_\+iflag} \& {\bf I\+G\+N\+C\+R})}}\label{tty_8c_ad03777cbc0b0ff24b31ca2ff5eeb771d}
+Ignore C\+R ? \hypertarget{tty_8c_a58343ebbc092a56ca39e371d1e0d7bf5}{\index{tty.\+c@{tty.\+c}!I\+\_\+\+I\+N\+L\+C\+R@{I\+\_\+\+I\+N\+L\+C\+R}}
+\index{I\+\_\+\+I\+N\+L\+C\+R@{I\+\_\+\+I\+N\+L\+C\+R}!tty.\+c@{tty.\+c}}
+\subsubsection[{I\+\_\+\+I\+N\+L\+C\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+\_\+\+I\+N\+L\+C\+R(
 \begin{DoxyParamCaption}
 \item[{}]{tty}
 \end{DoxyParamCaption}
-)~(tty-\/$>${\bf termios.\-c\-\_\-lflag} \& {\bf E\-C\-H\-O\-E})}}\label{tty_8c_a32d35a3a2ab8a8a4ba1f388acba62b79}
-Echo erase ? \hypertarget{tty_8c_a9121186e20dddeca1f87a1a9bbcc98fa}{\index{tty.\-c@{tty.\-c}!L\-\_\-\-I\-S\-I\-G@{L\-\_\-\-I\-S\-I\-G}}
-\index{L\-\_\-\-I\-S\-I\-G@{L\-\_\-\-I\-S\-I\-G}!tty.c@{tty.\-c}}
-\subsubsection[{L\-\_\-\-I\-S\-I\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-\_\-\-I\-S\-I\-G(
+)~(tty-\/$>${\bf termios.\+c\+\_\+iflag} \& {\bf I\+N\+L\+C\+R})}}\label{tty_8c_a58343ebbc092a56ca39e371d1e0d7bf5}
+N\+L =$>$ C\+R ? \hypertarget{tty_8c_a46c70f991b37ad17309a6e67662f2855}{\index{tty.\+c@{tty.\+c}!I\+N\+T\+R\+\_\+\+C\+H\+A\+R@{I\+N\+T\+R\+\_\+\+C\+H\+A\+R}}
+\index{I\+N\+T\+R\+\_\+\+C\+H\+A\+R@{I\+N\+T\+R\+\_\+\+C\+H\+A\+R}!tty.\+c@{tty.\+c}}
+\subsubsection[{I\+N\+T\+R\+\_\+\+C\+H\+A\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+T\+R\+\_\+\+C\+H\+A\+R(
 \begin{DoxyParamCaption}
 \item[{}]{tty}
 \end{DoxyParamCaption}
-)~(tty-\/$>${\bf termios.\-c\-\_\-lflag} \& {\bf I\-S\-I\-G})}}\label{tty_8c_a9121186e20dddeca1f87a1a9bbcc98fa}
-Signals enabled ? \hypertarget{tty_8c_abec2eb3e46639063e70f77b9b31e9b7d}{\index{tty.\-c@{tty.\-c}!Q\-U\-I\-T\-\_\-\-C\-H\-A\-R@{Q\-U\-I\-T\-\_\-\-C\-H\-A\-R}}
-\index{Q\-U\-I\-T\-\_\-\-C\-H\-A\-R@{Q\-U\-I\-T\-\_\-\-C\-H\-A\-R}!tty.c@{tty.\-c}}
-\subsubsection[{Q\-U\-I\-T\-\_\-\-C\-H\-A\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\-U\-I\-T\-\_\-\-C\-H\-A\-R(
+)~((tty)-\/$>${\bf termios.\+c\+\_\+cc}\mbox{[}{\bf V\+I\+N\+T\+R}\mbox{]})}}\label{tty_8c_a46c70f991b37ad17309a6e67662f2855}
+Interrupt char \hypertarget{tty_8c_a5877372781bac3647d21e4cbf23c528d}{\index{tty.\+c@{tty.\+c}!L\+\_\+\+E\+C\+H\+O\+C\+T\+L@{L\+\_\+\+E\+C\+H\+O\+C\+T\+L}}
+\index{L\+\_\+\+E\+C\+H\+O\+C\+T\+L@{L\+\_\+\+E\+C\+H\+O\+C\+T\+L}!tty.\+c@{tty.\+c}}
+\subsubsection[{L\+\_\+\+E\+C\+H\+O\+C\+T\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+\_\+\+E\+C\+H\+O\+C\+T\+L(
 \begin{DoxyParamCaption}
 \item[{}]{tty}
 \end{DoxyParamCaption}
-)~((tty)-\/$>${\bf termios.\-c\-\_\-cc}\mbox{[}{\bf V\-Q\-U\-I\-T}\mbox{]})}}\label{tty_8c_abec2eb3e46639063e70f77b9b31e9b7d}
-Quit char \hypertarget{tty_8c_a2acb186a86906b4dab9f1dff4258df66}{\index{tty.\-c@{tty.\-c}!S\-U\-S\-P\-\_\-\-C\-H\-A\-R@{S\-U\-S\-P\-\_\-\-C\-H\-A\-R}}
-\index{S\-U\-S\-P\-\_\-\-C\-H\-A\-R@{S\-U\-S\-P\-\_\-\-C\-H\-A\-R}!tty.c@{tty.\-c}}
-\subsubsection[{S\-U\-S\-P\-\_\-\-C\-H\-A\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-U\-S\-P\-\_\-\-C\-H\-A\-R(
+)~(tty-\/$>${\bf termios.\+c\+\_\+lflag} \& {\bf E\+C\+H\+O\+C\+T\+L})}}\label{tty_8c_a5877372781bac3647d21e4cbf23c528d}
+Echo Ctrl ? \hypertarget{tty_8c_a32d35a3a2ab8a8a4ba1f388acba62b79}{\index{tty.\+c@{tty.\+c}!L\+\_\+\+E\+C\+H\+O\+E@{L\+\_\+\+E\+C\+H\+O\+E}}
+\index{L\+\_\+\+E\+C\+H\+O\+E@{L\+\_\+\+E\+C\+H\+O\+E}!tty.\+c@{tty.\+c}}
+\subsubsection[{L\+\_\+\+E\+C\+H\+O\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+\_\+\+E\+C\+H\+O\+E(
 \begin{DoxyParamCaption}
 \item[{}]{tty}
 \end{DoxyParamCaption}
-)~((tty)-\/$>${\bf termios.\-c\-\_\-cc}\mbox{[}{\bf V\-S\-U\-S\-P}\mbox{]})}}\label{tty_8c_a2acb186a86906b4dab9f1dff4258df66}
+)~(tty-\/$>${\bf termios.\+c\+\_\+lflag} \& {\bf E\+C\+H\+O\+E})}}\label{tty_8c_a32d35a3a2ab8a8a4ba1f388acba62b79}
+Echo erase ? \hypertarget{tty_8c_a9121186e20dddeca1f87a1a9bbcc98fa}{\index{tty.\+c@{tty.\+c}!L\+\_\+\+I\+S\+I\+G@{L\+\_\+\+I\+S\+I\+G}}
+\index{L\+\_\+\+I\+S\+I\+G@{L\+\_\+\+I\+S\+I\+G}!tty.\+c@{tty.\+c}}
+\subsubsection[{L\+\_\+\+I\+S\+I\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+\_\+\+I\+S\+I\+G(
+\begin{DoxyParamCaption}
+\item[{}]{tty}
+\end{DoxyParamCaption}
+)~(tty-\/$>${\bf termios.\+c\+\_\+lflag} \& {\bf I\+S\+I\+G})}}\label{tty_8c_a9121186e20dddeca1f87a1a9bbcc98fa}
+Signals enabled ? \hypertarget{tty_8c_adda8c2f2fe8c05eb8e2b58ed0b4cebe2}{\index{tty.\+c@{tty.\+c}!P\+R\+E\+V\+\_\+\+C\+H\+A\+R\+\_\+\+I\+N\+D\+E\+X@{P\+R\+E\+V\+\_\+\+C\+H\+A\+R\+\_\+\+I\+N\+D\+E\+X}}
+\index{P\+R\+E\+V\+\_\+\+C\+H\+A\+R\+\_\+\+I\+N\+D\+E\+X@{P\+R\+E\+V\+\_\+\+C\+H\+A\+R\+\_\+\+I\+N\+D\+E\+X}!tty.\+c@{tty.\+c}}
+\subsubsection[{P\+R\+E\+V\+\_\+\+C\+H\+A\+R\+\_\+\+I\+N\+D\+E\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+E\+V\+\_\+\+C\+H\+A\+R\+\_\+\+I\+N\+D\+E\+X(
+\begin{DoxyParamCaption}
+\item[{}]{tty}
+\end{DoxyParamCaption}
+)~((tty-\/$>$p\+\_\+end + {\bf M\+A\+X\+\_\+\+I\+N\+P\+U\+T} -\/ 1) \% {\bf M\+A\+X\+\_\+\+I\+N\+P\+U\+T})}}\label{tty_8c_adda8c2f2fe8c05eb8e2b58ed0b4cebe2}
+Indice du charactère precedent. \hypertarget{tty_8c_abec2eb3e46639063e70f77b9b31e9b7d}{\index{tty.\+c@{tty.\+c}!Q\+U\+I\+T\+\_\+\+C\+H\+A\+R@{Q\+U\+I\+T\+\_\+\+C\+H\+A\+R}}
+\index{Q\+U\+I\+T\+\_\+\+C\+H\+A\+R@{Q\+U\+I\+T\+\_\+\+C\+H\+A\+R}!tty.\+c@{tty.\+c}}
+\subsubsection[{Q\+U\+I\+T\+\_\+\+C\+H\+A\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+U\+I\+T\+\_\+\+C\+H\+A\+R(
+\begin{DoxyParamCaption}
+\item[{}]{tty}
+\end{DoxyParamCaption}
+)~((tty)-\/$>${\bf termios.\+c\+\_\+cc}\mbox{[}{\bf V\+Q\+U\+I\+T}\mbox{]})}}\label{tty_8c_abec2eb3e46639063e70f77b9b31e9b7d}
+Quit char \hypertarget{tty_8c_a2acb186a86906b4dab9f1dff4258df66}{\index{tty.\+c@{tty.\+c}!S\+U\+S\+P\+\_\+\+C\+H\+A\+R@{S\+U\+S\+P\+\_\+\+C\+H\+A\+R}}
+\index{S\+U\+S\+P\+\_\+\+C\+H\+A\+R@{S\+U\+S\+P\+\_\+\+C\+H\+A\+R}!tty.\+c@{tty.\+c}}
+\subsubsection[{S\+U\+S\+P\+\_\+\+C\+H\+A\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+U\+S\+P\+\_\+\+C\+H\+A\+R(
+\begin{DoxyParamCaption}
+\item[{}]{tty}
+\end{DoxyParamCaption}
+)~((tty)-\/$>${\bf termios.\+c\+\_\+cc}\mbox{[}{\bf V\+S\+U\+S\+P}\mbox{]})}}\label{tty_8c_a2acb186a86906b4dab9f1dff4258df66}
 Suspend char 
 
 \subsection{Documentation des fonctions}
-\hypertarget{tty_8c_a9ae7085e2afaadc63a592910d4ac4328}{\index{tty.\-c@{tty.\-c}!alloc\-\_\-tty\-\_\-driver@{alloc\-\_\-tty\-\_\-driver}}
-\index{alloc\-\_\-tty\-\_\-driver@{alloc\-\_\-tty\-\_\-driver}!tty.c@{tty.\-c}}
-\subsubsection[{alloc\-\_\-tty\-\_\-driver}]{\setlength{\rightskip}{0pt plus 5cm}{\bf tty\-\_\-driver\-\_\-t}$\ast$ alloc\-\_\-tty\-\_\-driver (
+\hypertarget{tty_8c_a9ae7085e2afaadc63a592910d4ac4328}{\index{tty.\+c@{tty.\+c}!alloc\+\_\+tty\+\_\+driver@{alloc\+\_\+tty\+\_\+driver}}
+\index{alloc\+\_\+tty\+\_\+driver@{alloc\+\_\+tty\+\_\+driver}!tty.\+c@{tty.\+c}}
+\subsubsection[{alloc\+\_\+tty\+\_\+driver}]{\setlength{\rightskip}{0pt plus 5cm}{\bf tty\+\_\+driver\+\_\+t}$\ast$ alloc\+\_\+tty\+\_\+driver (
 \begin{DoxyParamCaption}
 \item[{int}]{lines}
 \end{DoxyParamCaption}
@@ -179,7 +219,8 @@ le driver alloué.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -190,7 +231,8 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -199,11 +241,11 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028}{\index{tty.\-c@{tty.\-c}!tty\-\_\-insert\-\_\-flip\-\_\-char@{tty\-\_\-insert\-\_\-flip\-\_\-char}}
-\index{tty\-\_\-insert\-\_\-flip\-\_\-char@{tty\-\_\-insert\-\_\-flip\-\_\-char}!tty.c@{tty.\-c}}
-\subsubsection[{tty\-\_\-insert\-\_\-flip\-\_\-char}]{\setlength{\rightskip}{0pt plus 5cm}void tty\-\_\-insert\-\_\-flip\-\_\-char (
+\hypertarget{tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028}{\index{tty.\+c@{tty.\+c}!tty\+\_\+insert\+\_\+flip\+\_\+char@{tty\+\_\+insert\+\_\+flip\+\_\+char}}
+\index{tty\+\_\+insert\+\_\+flip\+\_\+char@{tty\+\_\+insert\+\_\+flip\+\_\+char}!tty.\+c@{tty.\+c}}
+\subsubsection[{tty\+\_\+insert\+\_\+flip\+\_\+char}]{\setlength{\rightskip}{0pt plus 5cm}void tty\+\_\+insert\+\_\+flip\+\_\+char (
 \begin{DoxyParamCaption}
-\item[{{\bf tty\-\_\-struct\-\_\-t} $\ast$}]{tty, }
+\item[{{\bf tty\+\_\+struct\+\_\+t} $\ast$}]{tty, }
 \item[{unsigned char}]{ch}
 \end{DoxyParamCaption}
 )}}\label{tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028}
@@ -218,7 +260,8 @@ Ajoute un caractère dans le butter du tty.
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -229,7 +272,8 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -238,23 +282,27 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{tty_8c_a302b60b1c52001915aeb108b51efc397}{\index{tty.\-c@{tty.\-c}!tty\-\_\-register\-\_\-driver@{tty\-\_\-register\-\_\-driver}}
-\index{tty\-\_\-register\-\_\-driver@{tty\-\_\-register\-\_\-driver}!tty.c@{tty.\-c}}
-\subsubsection[{tty\-\_\-register\-\_\-driver}]{\setlength{\rightskip}{0pt plus 5cm}int tty\-\_\-register\-\_\-driver (
+\hypertarget{tty_8c_a302b60b1c52001915aeb108b51efc397}{\index{tty.\+c@{tty.\+c}!tty\+\_\+register\+\_\+driver@{tty\+\_\+register\+\_\+driver}}
+\index{tty\+\_\+register\+\_\+driver@{tty\+\_\+register\+\_\+driver}!tty.\+c@{tty.\+c}}
+\subsubsection[{tty\+\_\+register\+\_\+driver}]{\setlength{\rightskip}{0pt plus 5cm}int tty\+\_\+register\+\_\+driver (
 \begin{DoxyParamCaption}
-\item[{{\bf tty\-\_\-driver\-\_\-t} $\ast$}]{driver}
+\item[{{\bf tty\+\_\+driver\+\_\+t} $\ast$}]{driver}
 \end{DoxyParamCaption}
 )}}\label{tty_8c_a302b60b1c52001915aeb108b51efc397}
 Enregistre en tant que char device un driver alloué et configuré.
 
 
 \begin{DoxyParams}{Paramètres}
-{\em driver} & Le driver à enregistrer. \\
+{\em driver} & Le driver à enregistrer.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès (mais ne détecte pas encore les erreurs...). 
+\end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -265,7 +313,8 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -277,17 +326,16 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 
 
 \subsection{Documentation des variables}
-\hypertarget{tty_8c_a0eaa499ff9d9e0e80af6f56da8f47673}{\index{tty.\-c@{tty.\-c}!tty\-\_\-std\-\_\-termios@{tty\-\_\-std\-\_\-termios}}
-\index{tty\-\_\-std\-\_\-termios@{tty\-\_\-std\-\_\-termios}!tty.c@{tty.\-c}}
-\subsubsection[{tty\-\_\-std\-\_\-termios}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf termios} tty\-\_\-std\-\_\-termios}}\label{tty_8c_a0eaa499ff9d9e0e80af6f56da8f47673}
-{\bfseries Valeur initiale \-:}
+\hypertarget{tty_8c_a0eaa499ff9d9e0e80af6f56da8f47673}{\index{tty.\+c@{tty.\+c}!tty\+\_\+std\+\_\+termios@{tty\+\_\+std\+\_\+termios}}
+\index{tty\+\_\+std\+\_\+termios@{tty\+\_\+std\+\_\+termios}!tty.\+c@{tty.\+c}}
+\subsubsection[{tty\+\_\+std\+\_\+termios}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf termios} tty\+\_\+std\+\_\+termios}}\label{tty_8c_a0eaa499ff9d9e0e80af6f56da8f47673}
+{\bfseries Valeur initiale \+:}
 \begin{DoxyCode}
- \{
+= \{
         .c\_iflag = \hyperlink{termios__types_8h_ae0cbb5db9d8f8119864bb9537466c314}{ICRNL} | \hyperlink{termios__types_8h_a788d2780deb67c58ba8a049981a8161c}{IXON},
         .c\_oflag = \hyperlink{termios__types_8h_a0aad4afe9e202fff8ced3485bc835bb1}{OPOST} | \hyperlink{termios__types_8h_a957436bc6db0a0d49b081dc9b4c98ef2}{ONLCR},
         .c\_cflag = \hyperlink{termios__types_8h_a083623175b34340b14359a57c5107232}{CS8} | \hyperlink{termios__types_8h_a8925ebb5550f4c16b5308955eafe469a}{CREAD} | \hyperlink{termios__types_8h_af9d210a765b81afc6a40275185c4d5da}{HUPCL},
-        .c\_lflag = \hyperlink{termios__types_8h_a52c605497d066b9ae7407124f84806a7}{ISIG} | \hyperlink{termios__types_8h_a58265a371303d00a4a3b1f128d72c21e}{ICANON} | \hyperlink{termios__types_8h_aad1dc60a04a1d8cfc8b3ded13601e361}{ECHO} | \hyperlink{termios__types_8h_aac931d3ce0dfc4578f76879ed095ecd7}{ECHOE} | \hyperlink{termios__types_8h_a6695c16777cf8a5211cfba9a23d45985}{ECHOK}
-       |
+        .c\_lflag = \hyperlink{termios__types_8h_a52c605497d066b9ae7407124f84806a7}{ISIG} | \hyperlink{termios__types_8h_a58265a371303d00a4a3b1f128d72c21e}{ICANON} | \hyperlink{termios__types_8h_aad1dc60a04a1d8cfc8b3ded13601e361}{ECHO} | \hyperlink{termios__types_8h_aac931d3ce0dfc4578f76879ed095ecd7}{ECHOE} | \hyperlink{termios__types_8h_a6695c16777cf8a5211cfba9a23d45985}{ECHOK} |
              \hyperlink{termios__types_8h_a1be1e11c89f23c1651328e62b9533ac2}{ECHOCTL} | \hyperlink{termios__types_8h_ae5aeef4d21a390052a1a6cbb106e830c}{ECHOKE},
         .c\_cc = INIT\_C\_CC,
         .c\_ispeed = 38400,

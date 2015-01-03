@@ -12,5 +12,6 @@ var searchData=
   ['specific_5fextra_5fdata_5fprocfs_5ft',['specific_extra_data_procfs_t',['../unionspecific__extra__data__procfs__t.html',1,'']]],
   ['stat',['stat',['../structstat.html',1,'']]],
   ['symbol_5ft',['symbol_t',['../structsymbol__t.html',1,'']]],
-  ['symbol_5ftable_5ft',['symbol_table_t',['../structsymbol__table__t.html',1,'']]]
+  ['symbol_5ftable_5ft',['symbol_table_t',['../structsymbol__table__t.html',1,'']]],
+  ['symbole',['symbole',['../structsymbole.html',1,'']]]
 ];

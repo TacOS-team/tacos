@@ -1,4 +1,6 @@
 <map id="kernel/memory.c" name="kernel/memory.c">
-<area shape="rect" id="node3" href="$memory_8h.html" title="Gestion des pages mémoires physiques." alt="" coords="25,83,103,111"/>
-<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="33,161,95,189"/>
+<area shape="rect" id="node2" href="$memory_8h.html" title="Gestion des pages mémoires physiques. " alt="" coords="5,80,84,107"/>
+<area shape="rect" id="node4" href="$klog_8h.html" title="Logging macros. " alt="" coords="109,80,165,107"/>
+<area shape="rect" id="node3" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="13,155,76,181"/>
+<area shape="rect" id="node5" href="$kstdio_8h.html" title="kprintf " alt="" coords="103,155,170,181"/>
 </map>

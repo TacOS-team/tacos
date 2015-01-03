@@ -1,20 +1,21 @@
 \hypertarget{video_8h}{\section{Référence du fichier kernel/include/drivers/video.h}
-\label{video_8h}\index{kernel/include/drivers/video.\-h@{kernel/include/drivers/video.\-h}}
+\label{video_8h}\index{kernel/include/drivers/video.\+h@{kernel/include/drivers/video.\+h}}
 }
 
 
 Driver console (vidéo texte).  
 
 
-{\ttfamily \#include $<$types.\-h$>$}\\*
-Graphe des dépendances par inclusion de video.\-h\-:\nopagebreak
+{\ttfamily \#include $<$types.\+h$>$}\\*
+Graphe des dépendances par inclusion de video.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=188pt]{video_8h__incl}
+\includegraphics[width=186pt]{video_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -24,152 +25,154 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \subsection*{Structures de données}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structx86__video__mem}{x86\-\_\-video\-\_\-mem}
+struct \hyperlink{structx86__video__mem}{x86\+\_\+video\+\_\+mem}
 \begin{DoxyCompactList}\small\item\em Structure définissant un \char`\"{}caractère\char`\"{} à l'écran. \end{DoxyCompactList}\item 
-struct \hyperlink{structvga__page__t}{vga\-\_\-page\-\_\-t}
+struct \hyperlink{structvga__page__t}{vga\+\_\+page\+\_\+t}
 \begin{DoxyCompactList}\small\item\em Structure définissant une \char`\"{}page\char`\"{} vidéo. C'est en fait un couple de 2 pages pour gérer le double buffering. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{video_8h_a844ed4c612903242a4a9d1abcc3a77ae}{D\-E\-F\-A\-U\-L\-T\-\_\-\-A\-T\-T\-R\-I\-B\-U\-T\-E\-\_\-\-V\-A\-L\-U\-E}~0x0\-F
+\#define \hyperlink{video_8h_a844ed4c612903242a4a9d1abcc3a77ae}{D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+V\+A\+L\+U\+E}~0x0\+F
 \item 
-\#define \hyperlink{video_8h_a7b3b25cba33b07c303f3060fe41887f6}{B\-L\-A\-C\-K}~0x0
+\#define \hyperlink{video_8h_a7b3b25cba33b07c303f3060fe41887f6}{B\+L\+A\+C\+K}~0x0
 \item 
-\#define \hyperlink{video_8h_a79d10e672abb49ad63eeaa8aaef57c38}{B\-L\-U\-E}~0x1
+\#define \hyperlink{video_8h_a79d10e672abb49ad63eeaa8aaef57c38}{B\+L\+U\+E}~0x1
 \item 
-\#define \hyperlink{video_8h_acfbc006ea433ad708fdee3e82996e721}{G\-R\-E\-E\-N}~0x2
+\#define \hyperlink{video_8h_acfbc006ea433ad708fdee3e82996e721}{G\+R\+E\+E\+N}~0x2
 \item 
-\#define \hyperlink{video_8h_ad243f93c16bc4c1d3e0a13b84421d760}{C\-Y\-A\-N}~0x3
+\#define \hyperlink{video_8h_ad243f93c16bc4c1d3e0a13b84421d760}{C\+Y\+A\+N}~0x3
 \item 
-\#define \hyperlink{video_8h_a8d23feea868a983c8c2b661e1e16972f}{R\-E\-D}~0x4
+\#define \hyperlink{video_8h_a8d23feea868a983c8c2b661e1e16972f}{R\+E\+D}~0x4
 \item 
-\#define \hyperlink{video_8h_a6f699060902f800f12aaae150f3a708e}{M\-A\-G\-E\-N\-T\-A}~0x5
+\#define \hyperlink{video_8h_a6f699060902f800f12aaae150f3a708e}{M\+A\+G\+E\+N\+T\+A}~0x5
 \item 
-\#define \hyperlink{video_8h_ab2baea56ece91306020afd6d77fd19f9}{B\-R\-O\-W\-N}~0x6
+\#define \hyperlink{video_8h_ab2baea56ece91306020afd6d77fd19f9}{B\+R\+O\+W\+N}~0x6
 \item 
-\#define \hyperlink{video_8h_a9663e02e20b5b578e6a31adae265cb88}{L\-I\-G\-H\-T\-\_\-\-G\-R\-A\-Y}~0x7
+\#define \hyperlink{video_8h_a9663e02e20b5b578e6a31adae265cb88}{L\+I\+G\+H\+T\+\_\+\+G\+R\+A\+Y}~0x7
 \item 
-\#define \hyperlink{video_8h_aca56870f2285abae489635f0ee4d65e3}{D\-A\-R\-K\-\_\-\-G\-R\-A\-Y}~0x8
+\#define \hyperlink{video_8h_aca56870f2285abae489635f0ee4d65e3}{D\+A\+R\+K\+\_\+\+G\+R\+A\+Y}~0x8
 \item 
-\#define \hyperlink{video_8h_a959d1249a76cfbd90fc6d96e2a9744e9}{L\-I\-G\-H\-T\-\_\-\-B\-L\-U\-E}~0x9
+\#define \hyperlink{video_8h_a959d1249a76cfbd90fc6d96e2a9744e9}{L\+I\+G\+H\+T\+\_\+\+B\+L\+U\+E}~0x9
 \item 
-\#define \hyperlink{video_8h_a5a7142ee95ebc63218ed3aac2ae06b13}{L\-I\-G\-H\-T\-\_\-\-G\-R\-E\-E\-N}~0x\-A
+\#define \hyperlink{video_8h_a5a7142ee95ebc63218ed3aac2ae06b13}{L\+I\+G\+H\+T\+\_\+\+G\+R\+E\+E\+N}~0x\+A
 \item 
-\#define \hyperlink{video_8h_a15e616ad647add2891b6c7ec6a1e47f1}{L\-I\-G\-H\-T\-\_\-\-C\-Y\-A\-N}~0x\-B
+\#define \hyperlink{video_8h_a15e616ad647add2891b6c7ec6a1e47f1}{L\+I\+G\+H\+T\+\_\+\+C\+Y\+A\+N}~0x\+B
 \item 
-\#define \hyperlink{video_8h_a664c8f5b9d90f79a49a16960b9ccedba}{L\-I\-G\-H\-T\-\_\-\-R\-E\-D}~0x\-C
+\#define \hyperlink{video_8h_a664c8f5b9d90f79a49a16960b9ccedba}{L\+I\+G\+H\+T\+\_\+\+R\+E\+D}~0x\+C
 \item 
-\#define \hyperlink{video_8h_af98a47a241abb10ccec0339c7a8a8c2e}{L\-I\-G\-H\-T\-\_\-\-M\-A\-G\-E\-N\-T\-A}~0x\-D
+\#define \hyperlink{video_8h_af98a47a241abb10ccec0339c7a8a8c2e}{L\+I\+G\+H\+T\+\_\+\+M\+A\+G\+E\+N\+T\+A}~0x\+D
 \item 
-\#define \hyperlink{video_8h_abf681265909adf3d3e8116c93c0ba179}{Y\-E\-L\-L\-O\-W}~0x\-E
+\#define \hyperlink{video_8h_abf681265909adf3d3e8116c93c0ba179}{Y\+E\+L\+L\+O\+W}~0x\+E
 \item 
-\#define \hyperlink{video_8h_a87b537f5fa5c109d3c05c13d6b18f382}{W\-H\-I\-T\-E}~0x\-F
+\#define \hyperlink{video_8h_a87b537f5fa5c109d3c05c13d6b18f382}{W\+H\+I\+T\+E}~0x\+F
 \item 
-\#define \hyperlink{video_8h_a06c6c391fc11d106e9909f0401b255b1}{C\-O\-L\-U\-M\-N\-S}~80
+\#define \hyperlink{video_8h_a06c6c391fc11d106e9909f0401b255b1}{C\+O\+L\+U\+M\+N\+S}~80
 \item 
-\#define \hyperlink{video_8h_a321ae946de24c36489276616d13c46cd}{L\-I\-N\-E\-S}~25
+\#define \hyperlink{video_8h_a321ae946de24c36489276616d13c46cd}{L\+I\+N\+E\+S}~25
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{video_8h_a759f71f304c11873e67bf7cc3f2d08a8}{void \hyperlink{video_8h_a759f71f304c11873e67bf7cc3f2d08a8}{init\-\_\-video} ()}\label{video_8h_a759f71f304c11873e67bf7cc3f2d08a8}
+\hypertarget{video_8h_a759f71f304c11873e67bf7cc3f2d08a8}{void \hyperlink{video_8h_a759f71f304c11873e67bf7cc3f2d08a8}{init\+\_\+video} ()}\label{video_8h_a759f71f304c11873e67bf7cc3f2d08a8}
 
 \begin{DoxyCompactList}\small\item\em Initialise l'affichage vidéo. En particulier les 4 pages disponibles. \end{DoxyCompactList}\item 
-\hypertarget{video_8h_ab1ddd4e6afaac2e5d7ed1d7575e8186b}{void \hyperlink{video_8h_ab1ddd4e6afaac2e5d7ed1d7575e8186b}{cursor\-\_\-position\-\_\-video} (int n, int x, int y)}\label{video_8h_ab1ddd4e6afaac2e5d7ed1d7575e8186b}
+\hypertarget{video_8h_ab1ddd4e6afaac2e5d7ed1d7575e8186b}{void \hyperlink{video_8h_ab1ddd4e6afaac2e5d7ed1d7575e8186b}{cursor\+\_\+position\+\_\+video} (int n, int x, int y)}\label{video_8h_ab1ddd4e6afaac2e5d7ed1d7575e8186b}
 
 \begin{DoxyCompactList}\small\item\em Change la position du curseur. \end{DoxyCompactList}\item 
-void \hyperlink{video_8h_a61e8f22681edb740e2d057ac270e6f5b}{disable\-\_\-cursor} (int disable)
+void \hyperlink{video_8h_a61e8f22681edb740e2d057ac270e6f5b}{disable\+\_\+cursor} (int disable)
 \begin{DoxyCompactList}\small\item\em Désactive l'affichage du curseur. \end{DoxyCompactList}\item 
-void \hyperlink{video_8h_ab5839353cba28b424b12338feca82385}{flip\-\_\-page} (int n)
+void \hyperlink{video_8h_ab5839353cba28b424b12338feca82385}{flip\+\_\+page} (int n)
 \begin{DoxyCompactList}\small\item\em Interverti les 2 buffers d'une page. \end{DoxyCompactList}\item 
-\hypertarget{video_8h_a287a2812973a8101091cb0a371802334}{void \hyperlink{video_8h_a287a2812973a8101091cb0a371802334}{get\-\_\-char\-\_\-video} (int n, bool front, char $\ast$c, int x, int y, char $\ast$attr)}\label{video_8h_a287a2812973a8101091cb0a371802334}
+\hypertarget{video_8h_a287a2812973a8101091cb0a371802334}{void \hyperlink{video_8h_a287a2812973a8101091cb0a371802334}{get\+\_\+char\+\_\+video} (int n, bool front, char $\ast$c, int x, int y, char $\ast$attr)}\label{video_8h_a287a2812973a8101091cb0a371802334}
 
 \begin{DoxyCompactList}\small\item\em Permet de récupérer le caractère situé à une certaine position de l'écran. \end{DoxyCompactList}\item 
-\hypertarget{video_8h_ab1abb360e352f13b691ed232ab8bc6f7}{void \hyperlink{video_8h_ab1abb360e352f13b691ed232ab8bc6f7}{kputchar\-\_\-video} (int n, bool front, char c, int x, int y, char attr)}\label{video_8h_ab1abb360e352f13b691ed232ab8bc6f7}
+\hypertarget{video_8h_a245349c6364aa746521136a348bff3cd}{void \hyperlink{video_8h_a245349c6364aa746521136a348bff3cd}{kputchar\+\_\+video} (int n, bool front, unsigned char c, int x, int y, char attr)}\label{video_8h_a245349c6364aa746521136a348bff3cd}
 
 \begin{DoxyCompactList}\small\item\em Affiche dans une page le caractère souhaité à l'endroit souhaité. \end{DoxyCompactList}\item 
-void \hyperlink{video_8h_ab549780053994f6b1dba04869b562a43}{switch\-\_\-page} (int i)
-\begin{DoxyCompactList}\small\item\em Change la page à afficher à l'écran. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \hyperlink{video_8h_ab549780053994f6b1dba04869b562a43}{switch\+\_\+page} (int i)
+\begin{DoxyCompactList}\small\item\em Change la page à afficher à l'écran. \end{DoxyCompactList}\item 
+void \hyperlink{video_8h_a9f41de97e0b180e50aeff97af64d5dd2}{scrollup} (int n, char attr)
+\begin{DoxyCompactList}\small\item\em Scroll everything up. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 
 
 \subsection{Documentation des macros}
-\hypertarget{video_8h_a7b3b25cba33b07c303f3060fe41887f6}{\index{video.\-h@{video.\-h}!B\-L\-A\-C\-K@{B\-L\-A\-C\-K}}
-\index{B\-L\-A\-C\-K@{B\-L\-A\-C\-K}!video.h@{video.\-h}}
-\subsubsection[{B\-L\-A\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\-L\-A\-C\-K~0x0}}\label{video_8h_a7b3b25cba33b07c303f3060fe41887f6}
-Code couleur noir. \hypertarget{video_8h_a79d10e672abb49ad63eeaa8aaef57c38}{\index{video.\-h@{video.\-h}!B\-L\-U\-E@{B\-L\-U\-E}}
-\index{B\-L\-U\-E@{B\-L\-U\-E}!video.h@{video.\-h}}
-\subsubsection[{B\-L\-U\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\-L\-U\-E~0x1}}\label{video_8h_a79d10e672abb49ad63eeaa8aaef57c38}
-Code couleur bleu. \hypertarget{video_8h_ab2baea56ece91306020afd6d77fd19f9}{\index{video.\-h@{video.\-h}!B\-R\-O\-W\-N@{B\-R\-O\-W\-N}}
-\index{B\-R\-O\-W\-N@{B\-R\-O\-W\-N}!video.h@{video.\-h}}
-\subsubsection[{B\-R\-O\-W\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\-R\-O\-W\-N~0x6}}\label{video_8h_ab2baea56ece91306020afd6d77fd19f9}
-Code couleur marron. \hypertarget{video_8h_a06c6c391fc11d106e9909f0401b255b1}{\index{video.\-h@{video.\-h}!C\-O\-L\-U\-M\-N\-S@{C\-O\-L\-U\-M\-N\-S}}
-\index{C\-O\-L\-U\-M\-N\-S@{C\-O\-L\-U\-M\-N\-S}!video.h@{video.\-h}}
-\subsubsection[{C\-O\-L\-U\-M\-N\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-O\-L\-U\-M\-N\-S~80}}\label{video_8h_a06c6c391fc11d106e9909f0401b255b1}
-The number of columns. \hypertarget{video_8h_ad243f93c16bc4c1d3e0a13b84421d760}{\index{video.\-h@{video.\-h}!C\-Y\-A\-N@{C\-Y\-A\-N}}
-\index{C\-Y\-A\-N@{C\-Y\-A\-N}!video.h@{video.\-h}}
-\subsubsection[{C\-Y\-A\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-Y\-A\-N~0x3}}\label{video_8h_ad243f93c16bc4c1d3e0a13b84421d760}
-Code couleur cyan. \hypertarget{video_8h_aca56870f2285abae489635f0ee4d65e3}{\index{video.\-h@{video.\-h}!D\-A\-R\-K\-\_\-\-G\-R\-A\-Y@{D\-A\-R\-K\-\_\-\-G\-R\-A\-Y}}
-\index{D\-A\-R\-K\-\_\-\-G\-R\-A\-Y@{D\-A\-R\-K\-\_\-\-G\-R\-A\-Y}!video.h@{video.\-h}}
-\subsubsection[{D\-A\-R\-K\-\_\-\-G\-R\-A\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-A\-R\-K\-\_\-\-G\-R\-A\-Y~0x8}}\label{video_8h_aca56870f2285abae489635f0ee4d65e3}
-Code couleur gris sombre. \hypertarget{video_8h_a844ed4c612903242a4a9d1abcc3a77ae}{\index{video.\-h@{video.\-h}!D\-E\-F\-A\-U\-L\-T\-\_\-\-A\-T\-T\-R\-I\-B\-U\-T\-E\-\_\-\-V\-A\-L\-U\-E@{D\-E\-F\-A\-U\-L\-T\-\_\-\-A\-T\-T\-R\-I\-B\-U\-T\-E\-\_\-\-V\-A\-L\-U\-E}}
-\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-A\-T\-T\-R\-I\-B\-U\-T\-E\-\_\-\-V\-A\-L\-U\-E@{D\-E\-F\-A\-U\-L\-T\-\_\-\-A\-T\-T\-R\-I\-B\-U\-T\-E\-\_\-\-V\-A\-L\-U\-E}!video.h@{video.\-h}}
-\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-A\-T\-T\-R\-I\-B\-U\-T\-E\-\_\-\-V\-A\-L\-U\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-A\-T\-T\-R\-I\-B\-U\-T\-E\-\_\-\-V\-A\-L\-U\-E~0x0\-F}}\label{video_8h_a844ed4c612903242a4a9d1abcc3a77ae}
-Light blue sur fond noir. Attribut par défaut d'un caractère \hypertarget{video_8h_acfbc006ea433ad708fdee3e82996e721}{\index{video.\-h@{video.\-h}!G\-R\-E\-E\-N@{G\-R\-E\-E\-N}}
-\index{G\-R\-E\-E\-N@{G\-R\-E\-E\-N}!video.h@{video.\-h}}
-\subsubsection[{G\-R\-E\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\-R\-E\-E\-N~0x2}}\label{video_8h_acfbc006ea433ad708fdee3e82996e721}
-Code couleur vert. \hypertarget{video_8h_a959d1249a76cfbd90fc6d96e2a9744e9}{\index{video.\-h@{video.\-h}!L\-I\-G\-H\-T\-\_\-\-B\-L\-U\-E@{L\-I\-G\-H\-T\-\_\-\-B\-L\-U\-E}}
-\index{L\-I\-G\-H\-T\-\_\-\-B\-L\-U\-E@{L\-I\-G\-H\-T\-\_\-\-B\-L\-U\-E}!video.h@{video.\-h}}
-\subsubsection[{L\-I\-G\-H\-T\-\_\-\-B\-L\-U\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-G\-H\-T\-\_\-\-B\-L\-U\-E~0x9}}\label{video_8h_a959d1249a76cfbd90fc6d96e2a9744e9}
-Code couleur bleu clair. \hypertarget{video_8h_a15e616ad647add2891b6c7ec6a1e47f1}{\index{video.\-h@{video.\-h}!L\-I\-G\-H\-T\-\_\-\-C\-Y\-A\-N@{L\-I\-G\-H\-T\-\_\-\-C\-Y\-A\-N}}
-\index{L\-I\-G\-H\-T\-\_\-\-C\-Y\-A\-N@{L\-I\-G\-H\-T\-\_\-\-C\-Y\-A\-N}!video.h@{video.\-h}}
-\subsubsection[{L\-I\-G\-H\-T\-\_\-\-C\-Y\-A\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-G\-H\-T\-\_\-\-C\-Y\-A\-N~0x\-B}}\label{video_8h_a15e616ad647add2891b6c7ec6a1e47f1}
-Code couleur cyan clair. \hypertarget{video_8h_a9663e02e20b5b578e6a31adae265cb88}{\index{video.\-h@{video.\-h}!L\-I\-G\-H\-T\-\_\-\-G\-R\-A\-Y@{L\-I\-G\-H\-T\-\_\-\-G\-R\-A\-Y}}
-\index{L\-I\-G\-H\-T\-\_\-\-G\-R\-A\-Y@{L\-I\-G\-H\-T\-\_\-\-G\-R\-A\-Y}!video.h@{video.\-h}}
-\subsubsection[{L\-I\-G\-H\-T\-\_\-\-G\-R\-A\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-G\-H\-T\-\_\-\-G\-R\-A\-Y~0x7}}\label{video_8h_a9663e02e20b5b578e6a31adae265cb88}
-Code couleur gris clair. \hypertarget{video_8h_a5a7142ee95ebc63218ed3aac2ae06b13}{\index{video.\-h@{video.\-h}!L\-I\-G\-H\-T\-\_\-\-G\-R\-E\-E\-N@{L\-I\-G\-H\-T\-\_\-\-G\-R\-E\-E\-N}}
-\index{L\-I\-G\-H\-T\-\_\-\-G\-R\-E\-E\-N@{L\-I\-G\-H\-T\-\_\-\-G\-R\-E\-E\-N}!video.h@{video.\-h}}
-\subsubsection[{L\-I\-G\-H\-T\-\_\-\-G\-R\-E\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-G\-H\-T\-\_\-\-G\-R\-E\-E\-N~0x\-A}}\label{video_8h_a5a7142ee95ebc63218ed3aac2ae06b13}
-Code couleur vert clair. \hypertarget{video_8h_af98a47a241abb10ccec0339c7a8a8c2e}{\index{video.\-h@{video.\-h}!L\-I\-G\-H\-T\-\_\-\-M\-A\-G\-E\-N\-T\-A@{L\-I\-G\-H\-T\-\_\-\-M\-A\-G\-E\-N\-T\-A}}
-\index{L\-I\-G\-H\-T\-\_\-\-M\-A\-G\-E\-N\-T\-A@{L\-I\-G\-H\-T\-\_\-\-M\-A\-G\-E\-N\-T\-A}!video.h@{video.\-h}}
-\subsubsection[{L\-I\-G\-H\-T\-\_\-\-M\-A\-G\-E\-N\-T\-A}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-G\-H\-T\-\_\-\-M\-A\-G\-E\-N\-T\-A~0x\-D}}\label{video_8h_af98a47a241abb10ccec0339c7a8a8c2e}
-Code couleur magenta clair. \hypertarget{video_8h_a664c8f5b9d90f79a49a16960b9ccedba}{\index{video.\-h@{video.\-h}!L\-I\-G\-H\-T\-\_\-\-R\-E\-D@{L\-I\-G\-H\-T\-\_\-\-R\-E\-D}}
-\index{L\-I\-G\-H\-T\-\_\-\-R\-E\-D@{L\-I\-G\-H\-T\-\_\-\-R\-E\-D}!video.h@{video.\-h}}
-\subsubsection[{L\-I\-G\-H\-T\-\_\-\-R\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-G\-H\-T\-\_\-\-R\-E\-D~0x\-C}}\label{video_8h_a664c8f5b9d90f79a49a16960b9ccedba}
-Code couleur rouge clair. \hypertarget{video_8h_a321ae946de24c36489276616d13c46cd}{\index{video.\-h@{video.\-h}!L\-I\-N\-E\-S@{L\-I\-N\-E\-S}}
-\index{L\-I\-N\-E\-S@{L\-I\-N\-E\-S}!video.h@{video.\-h}}
-\subsubsection[{L\-I\-N\-E\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-N\-E\-S~25}}\label{video_8h_a321ae946de24c36489276616d13c46cd}
-The number of lines. \hypertarget{video_8h_a6f699060902f800f12aaae150f3a708e}{\index{video.\-h@{video.\-h}!M\-A\-G\-E\-N\-T\-A@{M\-A\-G\-E\-N\-T\-A}}
-\index{M\-A\-G\-E\-N\-T\-A@{M\-A\-G\-E\-N\-T\-A}!video.h@{video.\-h}}
-\subsubsection[{M\-A\-G\-E\-N\-T\-A}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-G\-E\-N\-T\-A~0x5}}\label{video_8h_a6f699060902f800f12aaae150f3a708e}
-Code couleur magenta. \hypertarget{video_8h_a8d23feea868a983c8c2b661e1e16972f}{\index{video.\-h@{video.\-h}!R\-E\-D@{R\-E\-D}}
-\index{R\-E\-D@{R\-E\-D}!video.h@{video.\-h}}
-\subsubsection[{R\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\-E\-D~0x4}}\label{video_8h_a8d23feea868a983c8c2b661e1e16972f}
-Code couleur rouge. \hypertarget{video_8h_a87b537f5fa5c109d3c05c13d6b18f382}{\index{video.\-h@{video.\-h}!W\-H\-I\-T\-E@{W\-H\-I\-T\-E}}
-\index{W\-H\-I\-T\-E@{W\-H\-I\-T\-E}!video.h@{video.\-h}}
-\subsubsection[{W\-H\-I\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\-H\-I\-T\-E~0x\-F}}\label{video_8h_a87b537f5fa5c109d3c05c13d6b18f382}
-Code couleur blanc. \hypertarget{video_8h_abf681265909adf3d3e8116c93c0ba179}{\index{video.\-h@{video.\-h}!Y\-E\-L\-L\-O\-W@{Y\-E\-L\-L\-O\-W}}
-\index{Y\-E\-L\-L\-O\-W@{Y\-E\-L\-L\-O\-W}!video.h@{video.\-h}}
-\subsubsection[{Y\-E\-L\-L\-O\-W}]{\setlength{\rightskip}{0pt plus 5cm}\#define Y\-E\-L\-L\-O\-W~0x\-E}}\label{video_8h_abf681265909adf3d3e8116c93c0ba179}
+\hypertarget{video_8h_a7b3b25cba33b07c303f3060fe41887f6}{\index{video.\+h@{video.\+h}!B\+L\+A\+C\+K@{B\+L\+A\+C\+K}}
+\index{B\+L\+A\+C\+K@{B\+L\+A\+C\+K}!video.\+h@{video.\+h}}
+\subsubsection[{B\+L\+A\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+L\+A\+C\+K~0x0}}\label{video_8h_a7b3b25cba33b07c303f3060fe41887f6}
+Code couleur noir. \hypertarget{video_8h_a79d10e672abb49ad63eeaa8aaef57c38}{\index{video.\+h@{video.\+h}!B\+L\+U\+E@{B\+L\+U\+E}}
+\index{B\+L\+U\+E@{B\+L\+U\+E}!video.\+h@{video.\+h}}
+\subsubsection[{B\+L\+U\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+L\+U\+E~0x1}}\label{video_8h_a79d10e672abb49ad63eeaa8aaef57c38}
+Code couleur bleu. \hypertarget{video_8h_ab2baea56ece91306020afd6d77fd19f9}{\index{video.\+h@{video.\+h}!B\+R\+O\+W\+N@{B\+R\+O\+W\+N}}
+\index{B\+R\+O\+W\+N@{B\+R\+O\+W\+N}!video.\+h@{video.\+h}}
+\subsubsection[{B\+R\+O\+W\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+R\+O\+W\+N~0x6}}\label{video_8h_ab2baea56ece91306020afd6d77fd19f9}
+Code couleur marron. \hypertarget{video_8h_a06c6c391fc11d106e9909f0401b255b1}{\index{video.\+h@{video.\+h}!C\+O\+L\+U\+M\+N\+S@{C\+O\+L\+U\+M\+N\+S}}
+\index{C\+O\+L\+U\+M\+N\+S@{C\+O\+L\+U\+M\+N\+S}!video.\+h@{video.\+h}}
+\subsubsection[{C\+O\+L\+U\+M\+N\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+L\+U\+M\+N\+S~80}}\label{video_8h_a06c6c391fc11d106e9909f0401b255b1}
+The number of columns. \hypertarget{video_8h_ad243f93c16bc4c1d3e0a13b84421d760}{\index{video.\+h@{video.\+h}!C\+Y\+A\+N@{C\+Y\+A\+N}}
+\index{C\+Y\+A\+N@{C\+Y\+A\+N}!video.\+h@{video.\+h}}
+\subsubsection[{C\+Y\+A\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+Y\+A\+N~0x3}}\label{video_8h_ad243f93c16bc4c1d3e0a13b84421d760}
+Code couleur cyan. \hypertarget{video_8h_aca56870f2285abae489635f0ee4d65e3}{\index{video.\+h@{video.\+h}!D\+A\+R\+K\+\_\+\+G\+R\+A\+Y@{D\+A\+R\+K\+\_\+\+G\+R\+A\+Y}}
+\index{D\+A\+R\+K\+\_\+\+G\+R\+A\+Y@{D\+A\+R\+K\+\_\+\+G\+R\+A\+Y}!video.\+h@{video.\+h}}
+\subsubsection[{D\+A\+R\+K\+\_\+\+G\+R\+A\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+A\+R\+K\+\_\+\+G\+R\+A\+Y~0x8}}\label{video_8h_aca56870f2285abae489635f0ee4d65e3}
+Code couleur gris sombre. \hypertarget{video_8h_a844ed4c612903242a4a9d1abcc3a77ae}{\index{video.\+h@{video.\+h}!D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+V\+A\+L\+U\+E@{D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+V\+A\+L\+U\+E}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+V\+A\+L\+U\+E@{D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+V\+A\+L\+U\+E}!video.\+h@{video.\+h}}
+\subsubsection[{D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+V\+A\+L\+U\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+V\+A\+L\+U\+E~0x0\+F}}\label{video_8h_a844ed4c612903242a4a9d1abcc3a77ae}
+Light blue sur fond noir. Attribut par défaut d'un caractère \hypertarget{video_8h_acfbc006ea433ad708fdee3e82996e721}{\index{video.\+h@{video.\+h}!G\+R\+E\+E\+N@{G\+R\+E\+E\+N}}
+\index{G\+R\+E\+E\+N@{G\+R\+E\+E\+N}!video.\+h@{video.\+h}}
+\subsubsection[{G\+R\+E\+E\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+R\+E\+E\+N~0x2}}\label{video_8h_acfbc006ea433ad708fdee3e82996e721}
+Code couleur vert. \hypertarget{video_8h_a959d1249a76cfbd90fc6d96e2a9744e9}{\index{video.\+h@{video.\+h}!L\+I\+G\+H\+T\+\_\+\+B\+L\+U\+E@{L\+I\+G\+H\+T\+\_\+\+B\+L\+U\+E}}
+\index{L\+I\+G\+H\+T\+\_\+\+B\+L\+U\+E@{L\+I\+G\+H\+T\+\_\+\+B\+L\+U\+E}!video.\+h@{video.\+h}}
+\subsubsection[{L\+I\+G\+H\+T\+\_\+\+B\+L\+U\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+I\+G\+H\+T\+\_\+\+B\+L\+U\+E~0x9}}\label{video_8h_a959d1249a76cfbd90fc6d96e2a9744e9}
+Code couleur bleu clair. \hypertarget{video_8h_a15e616ad647add2891b6c7ec6a1e47f1}{\index{video.\+h@{video.\+h}!L\+I\+G\+H\+T\+\_\+\+C\+Y\+A\+N@{L\+I\+G\+H\+T\+\_\+\+C\+Y\+A\+N}}
+\index{L\+I\+G\+H\+T\+\_\+\+C\+Y\+A\+N@{L\+I\+G\+H\+T\+\_\+\+C\+Y\+A\+N}!video.\+h@{video.\+h}}
+\subsubsection[{L\+I\+G\+H\+T\+\_\+\+C\+Y\+A\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+I\+G\+H\+T\+\_\+\+C\+Y\+A\+N~0x\+B}}\label{video_8h_a15e616ad647add2891b6c7ec6a1e47f1}
+Code couleur cyan clair. \hypertarget{video_8h_a9663e02e20b5b578e6a31adae265cb88}{\index{video.\+h@{video.\+h}!L\+I\+G\+H\+T\+\_\+\+G\+R\+A\+Y@{L\+I\+G\+H\+T\+\_\+\+G\+R\+A\+Y}}
+\index{L\+I\+G\+H\+T\+\_\+\+G\+R\+A\+Y@{L\+I\+G\+H\+T\+\_\+\+G\+R\+A\+Y}!video.\+h@{video.\+h}}
+\subsubsection[{L\+I\+G\+H\+T\+\_\+\+G\+R\+A\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+I\+G\+H\+T\+\_\+\+G\+R\+A\+Y~0x7}}\label{video_8h_a9663e02e20b5b578e6a31adae265cb88}
+Code couleur gris clair. \hypertarget{video_8h_a5a7142ee95ebc63218ed3aac2ae06b13}{\index{video.\+h@{video.\+h}!L\+I\+G\+H\+T\+\_\+\+G\+R\+E\+E\+N@{L\+I\+G\+H\+T\+\_\+\+G\+R\+E\+E\+N}}
+\index{L\+I\+G\+H\+T\+\_\+\+G\+R\+E\+E\+N@{L\+I\+G\+H\+T\+\_\+\+G\+R\+E\+E\+N}!video.\+h@{video.\+h}}
+\subsubsection[{L\+I\+G\+H\+T\+\_\+\+G\+R\+E\+E\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+I\+G\+H\+T\+\_\+\+G\+R\+E\+E\+N~0x\+A}}\label{video_8h_a5a7142ee95ebc63218ed3aac2ae06b13}
+Code couleur vert clair. \hypertarget{video_8h_af98a47a241abb10ccec0339c7a8a8c2e}{\index{video.\+h@{video.\+h}!L\+I\+G\+H\+T\+\_\+\+M\+A\+G\+E\+N\+T\+A@{L\+I\+G\+H\+T\+\_\+\+M\+A\+G\+E\+N\+T\+A}}
+\index{L\+I\+G\+H\+T\+\_\+\+M\+A\+G\+E\+N\+T\+A@{L\+I\+G\+H\+T\+\_\+\+M\+A\+G\+E\+N\+T\+A}!video.\+h@{video.\+h}}
+\subsubsection[{L\+I\+G\+H\+T\+\_\+\+M\+A\+G\+E\+N\+T\+A}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+I\+G\+H\+T\+\_\+\+M\+A\+G\+E\+N\+T\+A~0x\+D}}\label{video_8h_af98a47a241abb10ccec0339c7a8a8c2e}
+Code couleur magenta clair. \hypertarget{video_8h_a664c8f5b9d90f79a49a16960b9ccedba}{\index{video.\+h@{video.\+h}!L\+I\+G\+H\+T\+\_\+\+R\+E\+D@{L\+I\+G\+H\+T\+\_\+\+R\+E\+D}}
+\index{L\+I\+G\+H\+T\+\_\+\+R\+E\+D@{L\+I\+G\+H\+T\+\_\+\+R\+E\+D}!video.\+h@{video.\+h}}
+\subsubsection[{L\+I\+G\+H\+T\+\_\+\+R\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+I\+G\+H\+T\+\_\+\+R\+E\+D~0x\+C}}\label{video_8h_a664c8f5b9d90f79a49a16960b9ccedba}
+Code couleur rouge clair. \hypertarget{video_8h_a321ae946de24c36489276616d13c46cd}{\index{video.\+h@{video.\+h}!L\+I\+N\+E\+S@{L\+I\+N\+E\+S}}
+\index{L\+I\+N\+E\+S@{L\+I\+N\+E\+S}!video.\+h@{video.\+h}}
+\subsubsection[{L\+I\+N\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+I\+N\+E\+S~25}}\label{video_8h_a321ae946de24c36489276616d13c46cd}
+The number of lines. \hypertarget{video_8h_a6f699060902f800f12aaae150f3a708e}{\index{video.\+h@{video.\+h}!M\+A\+G\+E\+N\+T\+A@{M\+A\+G\+E\+N\+T\+A}}
+\index{M\+A\+G\+E\+N\+T\+A@{M\+A\+G\+E\+N\+T\+A}!video.\+h@{video.\+h}}
+\subsubsection[{M\+A\+G\+E\+N\+T\+A}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+G\+E\+N\+T\+A~0x5}}\label{video_8h_a6f699060902f800f12aaae150f3a708e}
+Code couleur magenta. \hypertarget{video_8h_a8d23feea868a983c8c2b661e1e16972f}{\index{video.\+h@{video.\+h}!R\+E\+D@{R\+E\+D}}
+\index{R\+E\+D@{R\+E\+D}!video.\+h@{video.\+h}}
+\subsubsection[{R\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+D~0x4}}\label{video_8h_a8d23feea868a983c8c2b661e1e16972f}
+Code couleur rouge. \hypertarget{video_8h_a87b537f5fa5c109d3c05c13d6b18f382}{\index{video.\+h@{video.\+h}!W\+H\+I\+T\+E@{W\+H\+I\+T\+E}}
+\index{W\+H\+I\+T\+E@{W\+H\+I\+T\+E}!video.\+h@{video.\+h}}
+\subsubsection[{W\+H\+I\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+H\+I\+T\+E~0x\+F}}\label{video_8h_a87b537f5fa5c109d3c05c13d6b18f382}
+Code couleur blanc. \hypertarget{video_8h_abf681265909adf3d3e8116c93c0ba179}{\index{video.\+h@{video.\+h}!Y\+E\+L\+L\+O\+W@{Y\+E\+L\+L\+O\+W}}
+\index{Y\+E\+L\+L\+O\+W@{Y\+E\+L\+L\+O\+W}!video.\+h@{video.\+h}}
+\subsubsection[{Y\+E\+L\+L\+O\+W}]{\setlength{\rightskip}{0pt plus 5cm}\#define Y\+E\+L\+L\+O\+W~0x\+E}}\label{video_8h_abf681265909adf3d3e8116c93c0ba179}
 Code couleur jaune. 
 
 \subsection{Documentation des fonctions}
-\hypertarget{video_8h_a61e8f22681edb740e2d057ac270e6f5b}{\index{video.\-h@{video.\-h}!disable\-\_\-cursor@{disable\-\_\-cursor}}
-\index{disable\-\_\-cursor@{disable\-\_\-cursor}!video.h@{video.\-h}}
-\subsubsection[{disable\-\_\-cursor}]{\setlength{\rightskip}{0pt plus 5cm}void disable\-\_\-cursor (
+\hypertarget{video_8h_a61e8f22681edb740e2d057ac270e6f5b}{\index{video.\+h@{video.\+h}!disable\+\_\+cursor@{disable\+\_\+cursor}}
+\index{disable\+\_\+cursor@{disable\+\_\+cursor}!video.\+h@{video.\+h}}
+\subsubsection[{disable\+\_\+cursor}]{\setlength{\rightskip}{0pt plus 5cm}void disable\+\_\+cursor (
 \begin{DoxyParamCaption}
 \item[{int}]{disable}
 \end{DoxyParamCaption}
@@ -181,7 +184,8 @@ Code couleur jaune.
 \end{DoxyParams}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -190,9 +194,9 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{video_8h_ab5839353cba28b424b12338feca82385}{\index{video.\-h@{video.\-h}!flip\-\_\-page@{flip\-\_\-page}}
-\index{flip\-\_\-page@{flip\-\_\-page}!video.h@{video.\-h}}
-\subsubsection[{flip\-\_\-page}]{\setlength{\rightskip}{0pt plus 5cm}void flip\-\_\-page (
+\hypertarget{video_8h_ab5839353cba28b424b12338feca82385}{\index{video.\+h@{video.\+h}!flip\+\_\+page@{flip\+\_\+page}}
+\index{flip\+\_\+page@{flip\+\_\+page}!video.\+h@{video.\+h}}
+\subsubsection[{flip\+\_\+page}]{\setlength{\rightskip}{0pt plus 5cm}void flip\+\_\+page (
 \begin{DoxyParamCaption}
 \item[{int}]{n}
 \end{DoxyParamCaption}
@@ -204,18 +208,58 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=244pt]{video_8h_ab5839353cba28b424b12338feca82385_cgraph}
+\includegraphics[width=242pt]{video_8h_ab5839353cba28b424b12338feca82385_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{video_8h_ab549780053994f6b1dba04869b562a43}{\index{video.\-h@{video.\-h}!switch\-\_\-page@{switch\-\_\-page}}
-\index{switch\-\_\-page@{switch\-\_\-page}!video.h@{video.\-h}}
-\subsubsection[{switch\-\_\-page}]{\setlength{\rightskip}{0pt plus 5cm}void switch\-\_\-page (
+
+
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{video_8h_ab5839353cba28b424b12338feca82385_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{video_8h_a9f41de97e0b180e50aeff97af64d5dd2}{\index{video.\+h@{video.\+h}!scrollup@{scrollup}}
+\index{scrollup@{scrollup}!video.\+h@{video.\+h}}
+\subsubsection[{scrollup}]{\setlength{\rightskip}{0pt plus 5cm}void scrollup (
+\begin{DoxyParamCaption}
+\item[{int}]{n, }
+\item[{char}]{attr}
+\end{DoxyParamCaption}
+)}}\label{video_8h_a9f41de97e0b180e50aeff97af64d5dd2}
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Le numero de la page concernée. \\
+\hline
+{\em attr} & L'attribut qui définit la couleur pour la nouvelle ligne. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video_8h_a9f41de97e0b180e50aeff97af64d5dd2_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{video_8h_ab549780053994f6b1dba04869b562a43}{\index{video.\+h@{video.\+h}!switch\+\_\+page@{switch\+\_\+page}}
+\index{switch\+\_\+page@{switch\+\_\+page}!video.\+h@{video.\+h}}
+\subsubsection[{switch\+\_\+page}]{\setlength{\rightskip}{0pt plus 5cm}void switch\+\_\+page (
 \begin{DoxyParamCaption}
 \item[{int}]{i}
 \end{DoxyParamCaption}
@@ -227,7 +271,8 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \end{DoxyParams}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

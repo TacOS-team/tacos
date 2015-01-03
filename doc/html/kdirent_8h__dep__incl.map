@@ -1,8 +1,8 @@
 <map id="kernel/include/kdirent.h" name="kernel/include/kdirent.h">
-<area shape="rect" id="node3" href="$devfs_8c.html" title="DevFS." alt="" coords="5,83,123,111"/>
-<area shape="rect" id="node5" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="147,83,325,111"/>
-<area shape="rect" id="node7" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="349,83,472,111"/>
-<area shape="rect" id="node9" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="496,83,605,111"/>
-<area shape="rect" id="node11" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="629,83,736,111"/>
-<area shape="rect" id="node13" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="760,83,848,111"/>
+<area shape="rect" id="node2" href="$devfs_8c.html" title="DevFS. " alt="" coords="5,80,124,107"/>
+<area shape="rect" id="node3" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT. " alt="" coords="148,80,328,107"/>
+<area shape="rect" id="node4" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="353,80,475,107"/>
+<area shape="rect" id="node5" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="500,80,611,107"/>
+<area shape="rect" id="node6" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="635,80,742,107"/>
+<area shape="rect" id="node7" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage. " alt="" coords="767,80,856,107"/>
 </map>

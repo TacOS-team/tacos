@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/include/klibc/stdlib.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -90,26 +91,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </div><!--header-->
 <div class="contents">
 
-<p> 
+<p>Version très réduite d'un stdlib, pour le kernel.  
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="kernel_2include_2klibc_2stdlib_8h__dep__incl.png" border="0" usemap="#kernel_2include_2klibc_2stdlib_8hdep" alt=""/></div>
 <map name="kernel_2include_2klibc_2stdlib_8hdep" id="kernel_2include_2klibc_2stdlib_8hdep">
-<area shape="rect" id="node3" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="5,99,128,127"/><area shape="rect" id="node5" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="152,99,259,127"/></map>
+<area shape="rect" id="node3" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="5,99,125,127"/><area shape="rect" id="node5" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="149,99,253,127"/></map>
 </div>
 </div>
 <p><a href="kernel_2include_2klibc_2stdlib_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a2c81f61ee897bc5a1f5491f3e2bf711b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kernel_2include_2klibc_2stdlib_8h.html#a2c81f61ee897bc5a1f5491f3e2bf711b">atoi</a> (const char *__nptr)</td></tr>
-<tr class="memitem:a5e1f93e3feb632ee74c5f40cdd907ca2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kernel_2include_2klibc_2stdlib_8h.html#a5e1f93e3feb632ee74c5f40cdd907ca2">itoa</a> (char *buf, int base, int d)</td></tr>
-<tr class="memdesc:a5e1f93e3feb632ee74c5f40cdd907ca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converti l'entier d en une chaîne de caractère et le stock dans buf. L'entier base permet de spécifier la base à utiliser (decimal ou hexadécimal).  <a href="#a5e1f93e3feb632ee74c5f40cdd907ca2"></a><br/></td></tr>
+<tr class="separator:a2c81f61ee897bc5a1f5491f3e2bf711b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3170c50e51faed10daef61b1c000d3bf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kernel_2include_2klibc_2stdlib_8h.html#a3170c50e51faed10daef61b1c000d3bf">itoa</a> (char *buf, int base, int d)</td></tr>
+<tr class="memdesc:a3170c50e51faed10daef61b1c000d3bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converti l'entier d en une chaîne de caractère et le stock dans buf. L'entier base permet de spécifier la base à utiliser (decimal ou hexadécimal).  <a href="#a3170c50e51faed10daef61b1c000d3bf">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3170c50e51faed10daef61b1c000d3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9496eacf49af4b53f5b839899b5bf31a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kernel_2include_2klibc_2stdlib_8h.html#a9496eacf49af4b53f5b839899b5bf31a">itox</a> (char *buf, int d)</td></tr>
+<tr class="separator:a9496eacf49af4b53f5b839899b5bf31a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -119,7 +123,7 @@ LICENSE</h1>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des fonctions</h2>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a2c81f61ee897bc5a1f5491f3e2bf711b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -142,23 +146,14 @@ DESCRIPTION</h1>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>La valeur convertie. </dd></dl>
 
-<p><div class="dynheader">
-Voici le graphe des appelants de cette fonction :</div>
-<div class="dyncontent">
-<div class="center"><img src="kernel_2include_2klibc_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_icgraph.png" border="0" usemap="#kernel_2include_2klibc_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_icgraph" alt=""/></div>
-<map name="kernel_2include_2klibc_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_icgraph" id="kernel_2include_2klibc_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_icgraph">
-<area shape="rect" id="node3" href="libc_2include_2stdlib_8h.html#a2c81f61ee897bc5a1f5491f3e2bf711b" title="atoi" alt="" coords="96,5,139,33"/></map>
-</div>
-</p>
-
 </div>
 </div>
-<a class="anchor" id="a5e1f93e3feb632ee74c5f40cdd907ca2"></a>
+<a class="anchor" id="a3170c50e51faed10daef61b1c000d3bf"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void itoa </td>
+          <td class="memname">int itoa </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>buf</em>, </td>
@@ -187,17 +182,18 @@ Voici le graphe des appelants de cette fonction :</div>
   <table class="params">
     <tr><td class="paramname">buf</td><td>une chaîne de taille suffisament grande pour y stocker le résultat de la transformation. </td></tr>
     <tr><td class="paramname">base</td><td>la base à utiliser pour la conversion ('d' ou 'x'). </td></tr>
-    <tr><td class="paramname">d</td><td>le nombre à convertir. </td></tr>
+    <tr><td class="paramname">d</td><td>le nombre à convertir.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Taille du buffer utilisé. </dd></dl>
 
 <p><div class="dynheader">
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
-<div class="center"><img src="kernel_2include_2klibc_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_icgraph.png" border="0" usemap="#kernel_2include_2klibc_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_icgraph" alt=""/></div>
-<map name="kernel_2include_2klibc_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_icgraph" id="kernel_2include_2klibc_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_icgraph">
-<area shape="rect" id="node3" href="libc_2include_2stdlib_8h.html#a5e1f93e3feb632ee74c5f40cdd907ca2" title="Converti l&#39;entier d en une chaîne de caractère et le stock dans buf. L&#39;entier base permet de spécifie..." alt="" coords="104,5,147,33"/><area shape="rect" id="node5" href="kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="96,55,155,83"/><area shape="rect" id="node7" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="204,55,273,83"/></map>
+<div class="center"><img src="kernel_2include_2klibc_2stdlib_8h_a3170c50e51faed10daef61b1c000d3bf_icgraph.png" border="0" usemap="#kernel_2include_2klibc_2stdlib_8h_a3170c50e51faed10daef61b1c000d3bf_icgraph" alt=""/></div>
+<map name="kernel_2include_2klibc_2stdlib_8h_a3170c50e51faed10daef61b1c000d3bf_icgraph" id="kernel_2include_2klibc_2stdlib_8h_a3170c50e51faed10daef61b1c000d3bf_icgraph">
+<area shape="rect" id="node2" href="kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran. " alt="" coords="96,81,155,108"/><area shape="rect" id="node3" href="memory_8c.html#a8fba2533a7d88ec6038d6948ca695957" title="Affiche la liste des cadres utilisés. " alt="" coords="203,5,380,32"/><area shape="rect" id="node4" href="memory_8c.html#a09a07799735fa6d6fbae7e870052daa3" title="Affiche la liste des cadres libres. " alt="" coords="206,56,377,83"/><area shape="rect" id="node5" href="memory_8c.html#a0a428a3b3b69b116515e43ffc7a96042" title="Affiche la mémoire physique. " alt="" coords="241,107,341,133"/><area shape="rect" id="node6" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="256,157,327,184"/></map>
 </div>
 </p>
 
@@ -236,18 +232,11 @@ Voici le graphe des appelants de cette fonction :</div>
 </dl>
 
 <p><div class="dynheader">
-Voici le graphe d'appel pour cette fonction :</div>
-<div class="dyncontent">
-<div class="center"><img src="kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_cgraph.png" border="0" usemap="#kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_cgraph" alt=""/></div>
-</div>
-</p>
-
-<p><div class="dynheader">
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_icgraph.png" border="0" usemap="#kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_icgraph" alt=""/></div>
 <map name="kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_icgraph" id="kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_icgraph">
-<area shape="rect" id="node4" href="kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="96,29,155,57"/><area shape="rect" id="node6" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="204,29,273,57"/></map>
+<area shape="rect" id="node2" href="kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran. " alt="" coords="96,81,155,108"/><area shape="rect" id="node3" href="memory_8c.html#a8fba2533a7d88ec6038d6948ca695957" title="Affiche la liste des cadres utilisés. " alt="" coords="203,5,380,32"/><area shape="rect" id="node4" href="memory_8c.html#a09a07799735fa6d6fbae7e870052daa3" title="Affiche la liste des cadres libres. " alt="" coords="206,56,377,83"/><area shape="rect" id="node5" href="memory_8c.html#a0a428a3b3b69b116515e43ffc7a96042" title="Affiche la mémoire physique. " alt="" coords="241,107,341,133"/><area shape="rect" id="node6" href="list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="256,157,327,184"/></map>
 </div>
 </p>
 
@@ -256,9 +245,9 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:37 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

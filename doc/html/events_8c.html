@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/events.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -93,48 +94,55 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Gestion d'évènements datés.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="i8254_8h_source.html">i8254.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="interrupts_8h_source.html">interrupts.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="list_8h_source.html">list.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="events_8h_source.html">events.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="debug_8h_source.html">debug.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="i8254_8h_source.html">i8254.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="interrupts_8h_source.html">interrupts.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="list_8h_source.html">list.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="events_8h_source.html">events.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="debug_8h_source.html">debug.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de events.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="events_8c__incl.png" border="0" usemap="#kernel_2events_8c" alt=""/></div>
 <map name="kernel_2events_8c" id="kernel_2events_8c">
-<area shape="rect" id="node3" href="i8254_8h.html" title="Initialisation du i8254 (timer)." alt="" coords="5,161,67,189"/><area shape="rect" id="node7" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="68,238,153,266"/><area shape="rect" id="node10" href="list_8h.html" title="list.h" alt="" coords="148,161,196,189"/><area shape="rect" id="node13" href="events_8h.html" title="events.h" alt="" coords="204,83,273,111"/><area shape="rect" id="node21" href="debug_8h.html" title="debug.h" alt="" coords="297,83,364,111"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="160,315,221,343"/><area shape="rect" id="node15" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="220,161,281,189"/><area shape="rect" id="node18" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="279,238,356,266"/></map>
+<area shape="rect" id="node2" href="i8254_8h.html" title="Initialisation du i8254 (timer). " alt="" coords="5,155,68,181"/><area shape="rect" id="node4" href="interrupts_8h.html" title="Gestion des interruptions.. " alt="" coords="69,229,156,256"/><area shape="rect" id="node5" href="list_8h.html" title="list.h" alt="" coords="151,155,200,181"/><area shape="rect" id="node6" href="events_8h.html" title="events.h" alt="" coords="207,80,277,107"/><area shape="rect" id="node9" href="debug_8h.html" title="debug.h" alt="" coords="302,80,369,107"/><area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="163,304,225,331"/><area shape="rect" id="node7" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="224,155,287,181"/><area shape="rect" id="node8" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="283,229,361,256"/></map>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ae42954bb8545d24e3e9dcde5920c9a0b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="events_8c.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:ae42954bb8545d24e3e9dcde5920c9a0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a784e9765a3378794c49fe9702bcf2015"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a784e9765a3378794c49fe9702bcf2015"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>compare_events</b> (void *a, void *b)</td></tr>
+<tr class="separator:a784e9765a3378794c49fe9702bcf2015"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3347d12312a3574eb868e1122639d046"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3347d12312a3574eb868e1122639d046"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="events_8c.html#a3347d12312a3574eb868e1122639d046">events_init</a> ()</td></tr>
-<tr class="memdesc:a3347d12312a3574eb868e1122639d046"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise le support des evenements <br/></td></tr>
+<tr class="memdesc:a3347d12312a3574eb868e1122639d046"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise le support des evenements <br /></td></tr>
+<tr class="separator:a3347d12312a3574eb868e1122639d046"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6184a9efd8a6c7dff128ece08e87e044"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="events_8c.html#a6184a9efd8a6c7dff128ece08e87e044">set_scheduler_event</a> (callback_t call, void *data, <a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a> dtime_usec)</td></tr>
-<tr class="memdesc:a6184a9efd8a6c7dff128ece08e87e044"><td class="mdescLeft">&#160;</td><td class="mdescRight">met à jour l'évènement de l'ordonnanceur  <a href="#a6184a9efd8a6c7dff128ece08e87e044"></a><br/></td></tr>
+<tr class="memdesc:a6184a9efd8a6c7dff128ece08e87e044"><td class="mdescLeft">&#160;</td><td class="mdescRight">met à jour l'évènement de l'ordonnanceur  <a href="#a6184a9efd8a6c7dff128ece08e87e044">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6184a9efd8a6c7dff128ece08e87e044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14ec7f9617d6a0f57891ce9926dca445"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="events_8c.html#a14ec7f9617d6a0f57891ce9926dca445">unset_scheduler_event</a> ()</td></tr>
+<tr class="separator:a14ec7f9617d6a0f57891ce9926dca445"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82d6763c7ce9298afe7e0d97553e568f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="events_8c.html#a82d6763c7ce9298afe7e0d97553e568f">add_event</a> (callback_t call, void *data, <a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a> dtime_usec)</td></tr>
-<tr class="memdesc:a82d6763c7ce9298afe7e0d97553e568f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ajoute un évènement à declencher  <a href="#a82d6763c7ce9298afe7e0d97553e568f"></a><br/></td></tr>
+<tr class="memdesc:a82d6763c7ce9298afe7e0d97553e568f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ajoute un évènement à declencher  <a href="#a82d6763c7ce9298afe7e0d97553e568f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a82d6763c7ce9298afe7e0d97553e568f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a066fd6048f5a6f5a6d4b93abea00013d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="events_8c.html#a066fd6048f5a6f5a6d4b93abea00013d">del_event</a> (int id)</td></tr>
+<tr class="separator:a066fd6048f5a6f5a6d4b93abea00013d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
-<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>Copyright (C) 2010-2014 TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des macros</h2>
+</div><h2 class="groupheader">Documentation des macros</h2>
 <a class="anchor" id="ae42954bb8545d24e3e9dcde5920c9a0b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -148,7 +156,7 @@ DESCRIPTION</h1>
 
 </div>
 </div>
-<h2>Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a82d6763c7ce9298afe7e0d97553e568f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -193,7 +201,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="events_8c_a82d6763c7ce9298afe7e0d97553e568f_cgraph.png" border="0" usemap="#events_8c_a82d6763c7ce9298afe7e0d97553e568f_cgraph" alt=""/></div>
 <map name="events_8c_a82d6763c7ce9298afe7e0d97553e568f_cgraph" id="events_8c_a82d6763c7ce9298afe7e0d97553e568f_cgraph">
-<area shape="rect" id="node3" href="clock_8c.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="171,30,229,58"/><area shape="rect" id="node9" href="clock_8c.html#a052807a5c6ae63175a937381014a5701" title="Ajoute des us à un temps. Ajoute des us à un temps contenu dans une structure timeval." alt="" coords="137,81,263,109"/><area shape="rect" id="node11" href="list_8h.html#a7a8bb1eb8a161ffce0167fca806e10ad" title="list_add_element" alt="" coords="140,131,260,159"/><area shape="rect" id="node5" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes." alt="" coords="316,5,388,33"/><area shape="rect" id="node7" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="313,55,391,83"/><area shape="rect" id="node13" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="317,131,387,159"/></map>
+<area shape="rect" id="node2" href="clock_8c.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="170,31,229,57"/><area shape="rect" id="node5" href="clock_8c.html#a052807a5c6ae63175a937381014a5701" title="Ajoute des us à un temps. Ajoute des us à un temps contenu dans une structure timeval. " alt="" coords="136,81,263,108"/><area shape="rect" id="node6" href="list_8h.html#a7a8bb1eb8a161ffce0167fca806e10ad" title="list_add_element" alt="" coords="139,132,259,159"/><area shape="rect" id="node3" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes. " alt="" coords="314,5,386,32"/><area shape="rect" id="node4" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="311,56,389,83"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire. " alt="" coords="315,132,385,159"/></map>
 </div>
 </p>
 
@@ -202,7 +210,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="events_8c_a82d6763c7ce9298afe7e0d97553e568f_icgraph.png" border="0" usemap="#events_8c_a82d6763c7ce9298afe7e0d97553e568f_icgraph" alt=""/></div>
 <map name="events_8c_a82d6763c7ce9298afe7e0d97553e568f_icgraph" id="events_8c_a82d6763c7ce9298afe7e0d97553e568f_icgraph">
-<area shape="rect" id="node3" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="136,5,296,33"/></map>
+<area shape="rect" id="node2" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep. " alt="" coords="136,5,296,32"/></map>
 </div>
 </p>
 
@@ -234,7 +242,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="events_8c_a066fd6048f5a6f5a6d4b93abea00013d_cgraph.png" border="0" usemap="#events_8c_a066fd6048f5a6f5a6d4b93abea00013d_cgraph" alt=""/></div>
 <map name="events_8c_a066fd6048f5a6f5a6d4b93abea00013d_cgraph" id="events_8c_a066fd6048f5a6f5a6d4b93abea00013d_cgraph">
-<area shape="rect" id="node3" href="list_8h.html#ad8dbf30907f29e3b4fc748a83d4b1784" title="list_del_element" alt="" coords="135,5,249,33"/></map>
+<area shape="rect" id="node3" href="list_8h.html#ad8dbf30907f29e3b4fc748a83d4b1784" title="list_del_element" alt="" coords="131,5,245,33"/></map>
 </div>
 </p>
 
@@ -283,7 +291,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="events_8c_a6184a9efd8a6c7dff128ece08e87e044_cgraph.png" border="0" usemap="#events_8c_a6184a9efd8a6c7dff128ece08e87e044_cgraph" alt=""/></div>
 <map name="events_8c_a6184a9efd8a6c7dff128ece08e87e044_cgraph" id="events_8c_a6184a9efd8a6c7dff128ece08e87e044_cgraph">
-<area shape="rect" id="node3" href="clock_8c.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="232,30,291,58"/><area shape="rect" id="node9" href="clock_8c.html#a052807a5c6ae63175a937381014a5701" title="Ajoute des us à un temps. Ajoute des us à un temps contenu dans une structure timeval." alt="" coords="199,81,324,109"/><area shape="rect" id="node5" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes." alt="" coords="377,5,449,33"/><area shape="rect" id="node7" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="375,55,452,83"/></map>
+<area shape="rect" id="node2" href="clock_8c.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="230,31,289,57"/><area shape="rect" id="node5" href="clock_8c.html#a052807a5c6ae63175a937381014a5701" title="Ajoute des us à un temps. Ajoute des us à un temps contenu dans une structure timeval. " alt="" coords="196,81,323,108"/><area shape="rect" id="node3" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes. " alt="" coords="374,5,446,32"/><area shape="rect" id="node4" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="371,56,449,83"/></map>
 </div>
 </p>
 
@@ -292,7 +300,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="events_8c_a6184a9efd8a6c7dff128ece08e87e044_icgraph.png" border="0" usemap="#events_8c_a6184a9efd8a6c7dff128ece08e87e044_icgraph" alt=""/></div>
 <map name="events_8c_a6184a9efd8a6c7dff128ece08e87e044_icgraph" id="events_8c_a6184a9efd8a6c7dff128ece08e87e044_icgraph">
-<area shape="rect" id="node3" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="199,5,308,33"/><area shape="rect" id="node5" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="357,5,517,33"/></map>
+<area shape="rect" id="node2" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="196,5,307,32"/><area shape="rect" id="node3" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep. " alt="" coords="355,5,515,32"/></map>
 </div>
 </p>
 
@@ -317,7 +325,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="events_8c_a14ec7f9617d6a0f57891ce9926dca445_icgraph.png" border="0" usemap="#events_8c_a14ec7f9617d6a0f57891ce9926dca445_icgraph" alt=""/></div>
 <map name="events_8c_a14ec7f9617d6a0f57891ce9926dca445_icgraph" id="events_8c_a14ec7f9617d6a0f57891ce9926dca445_icgraph">
-<area shape="rect" id="node3" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="224,5,309,33"/><area shape="rect" id="node5" href="scheduler_8c.html#aafa4b5a4a0ef6280c9834e1c30aff031" title="Arret du scheduler Arrète le scheduler en retirant le prochain schedule de la liste des évenements..." alt="" coords="212,55,321,83"/><area shape="rect" id="node7" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="371,55,531,83"/></map>
+<area shape="rect" id="node2" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements " alt="" coords="222,5,307,32"/><area shape="rect" id="node3" href="scheduler_8c.html#aafa4b5a4a0ef6280c9834e1c30aff031" title="Arret du scheduler Arrète le scheduler en retirant le prochain schedule de la liste des évenements..." alt="" coords="209,56,320,83"/><area shape="rect" id="node4" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep. " alt="" coords="368,56,528,83"/></map>
 </div>
 </p>
 
@@ -326,9 +334,9 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:34 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

@@ -1,0 +1,19 @@
+<map id="libc/include/sys/time.h" name="libc/include/sys/time.h">
+<area shape="rect" id="node3" href="$stat_8h.html" title="libc/include/sys/stat.h" alt="" coords="399,83,543,111"/>
+<area shape="rect" id="node5" href="$dirent_8h.html" title="Définition de DIR et struct dirent." alt="" coords="96,161,229,189"/>
+<area shape="rect" id="node11" href="$unistd_8h.html" title="libc/include/unistd.h" alt="" coords="712,161,845,189"/>
+<area shape="rect" id="node7" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="5,238,93,266"/>
+<area shape="rect" id="node9" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="117,238,208,266"/>
+<area shape="rect" id="node14" href="$fcntl_8c.html" title="File control operations." alt="" coords="944,238,1024,266"/>
+<area shape="rect" id="node16" href="$malloc_8c.html" title="libc/malloc.c" alt="" coords="1048,238,1141,266"/>
+<area shape="rect" id="node18" href="$process_8c.html" title="libc/process.c" alt="" coords="1165,238,1264,266"/>
+<area shape="rect" id="node20" href="$sem_8c.html" title="libc/sem.c" alt="" coords="1288,238,1368,266"/>
+<area shape="rect" id="node22" href="$signal_8c.html" title="Gestion des signaux." alt="" coords="1392,238,1480,266"/>
+<area shape="rect" id="node24" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="1504,238,1621,266"/>
+<area shape="rect" id="node26" href="$fseek_8c.html" title="libc/stdio/fseek.c" alt="" coords="232,238,349,266"/>
+<area shape="rect" id="node28" href="$get_8c.html" title="libc/stdio/get.c" alt="" coords="373,238,477,266"/>
+<area shape="rect" id="node30" href="$put_8c.html" title="libc/stdio/put.c" alt="" coords="501,238,605,266"/>
+<area shape="rect" id="node32" href="$stdlib_8c.html" title="libc/stdlib.c" alt="" coords="629,238,715,266"/>
+<area shape="rect" id="node34" href="$time_8c.html" title="libc/time.c" alt="" coords="739,238,819,266"/>
+<area shape="rect" id="node37" href="$wait_8c.html" title="libc/wait.c" alt="" coords="843,238,920,266"/>
+</map>

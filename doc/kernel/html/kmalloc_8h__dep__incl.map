@@ -1,27 +1,27 @@
 <map id="kernel/include/kmalloc.h" name="kernel/include/kmalloc.h">
 <area shape="rect" id="node3" href="$dcache_8c.html" title="dentry cache" alt="" coords="5,91,117,119"/>
-<area shape="rect" id="node5" href="$serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="141,83,269,127"/>
-<area shape="rect" id="node7" href="$console_8c.html" title="Console virtuelle (Fn)." alt="" coords="293,83,421,127"/>
-<area shape="rect" id="node9" href="$tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="445,83,573,127"/>
-<area shape="rect" id="node11" href="$elf_8c.html" title="Bibliotèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="597,91,683,119"/>
-<area shape="rect" id="node13" href="$devfs_8c.html" title="DevFS." alt="" coords="707,91,824,119"/>
-<area shape="rect" id="node15" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="848,91,987,119"/>
-<area shape="rect" id="node17" href="$fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="1011,91,1131,119"/>
-<area shape="rect" id="node19" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="1155,91,1333,119"/>
-<area shape="rect" id="node21" href="$fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="1357,91,1515,119"/>
-<area shape="rect" id="node23" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="1539,91,1661,119"/>
-<area shape="rect" id="node25" href="$init_8c.html" title="kernel/init.c" alt="" coords="1685,91,1773,119"/>
-<area shape="rect" id="node27" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="1797,91,1907,119"/>
-<area shape="rect" id="node29" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="1931,91,2037,119"/>
-<area shape="rect" id="node31" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="2061,91,2163,119"/>
-<area shape="rect" id="node33" href="$string_8c.html" title="Manipulation de string depuis le kernel." alt="" coords="2187,91,2320,119"/>
-<area shape="rect" id="node35" href="$kmalloc_8c.html" title="kernel/kmalloc.c" alt="" coords="2344,91,2459,119"/>
-<area shape="rect" id="node37" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="2483,91,2605,119"/>
-<area shape="rect" id="node39" href="$ksem_8c.html" title="Gestion des sémaphores." alt="" coords="2629,91,2731,119"/>
-<area shape="rect" id="node41" href="$module_8c.html" title="kernel/module.c" alt="" coords="2755,91,2867,119"/>
-<area shape="rect" id="node43" href="$round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="2891,91,3029,119"/>
-<area shape="rect" id="node45" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="3053,91,3179,119"/>
-<area shape="rect" id="node47" href="$hashmap_8c.html" title="kernel/utils/hashmap.c" alt="" coords="3203,91,3355,119"/>
-<area shape="rect" id="node49" href="$list_8c.html" title="kernel/utils/list.c" alt="" coords="3379,91,3493,119"/>
-<area shape="rect" id="node51" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="3517,91,3605,119"/>
+<area shape="rect" id="node5" href="$serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="141,83,267,127"/>
+<area shape="rect" id="node7" href="$console_8c.html" title="Console virtuelle (Fn)." alt="" coords="291,83,416,127"/>
+<area shape="rect" id="node9" href="$tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="440,83,565,127"/>
+<area shape="rect" id="node11" href="$elf_8c.html" title="Bibliotèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="589,91,675,119"/>
+<area shape="rect" id="node13" href="$devfs_8c.html" title="DevFS." alt="" coords="699,91,813,119"/>
+<area shape="rect" id="node15" href="$ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="837,91,973,119"/>
+<area shape="rect" id="node17" href="$fat_8c.html" title="Driver FAT." alt="" coords="997,91,1115,119"/>
+<area shape="rect" id="node19" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="1139,91,1317,119"/>
+<area shape="rect" id="node21" href="$fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="1341,91,1496,119"/>
+<area shape="rect" id="node23" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="1520,91,1640,119"/>
+<area shape="rect" id="node25" href="$init_8c.html" title="kernel/init.c" alt="" coords="1664,91,1752,119"/>
+<area shape="rect" id="node27" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="1776,91,1885,119"/>
+<area shape="rect" id="node29" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="1909,91,2016,119"/>
+<area shape="rect" id="node31" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="2040,91,2141,119"/>
+<area shape="rect" id="node33" href="$string_8c.html" title="Manipulation de string depuis le kernel." alt="" coords="2165,91,2299,119"/>
+<area shape="rect" id="node35" href="$kmalloc_8c.html" title="kernel/kmalloc.c" alt="" coords="2323,91,2437,119"/>
+<area shape="rect" id="node37" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="2461,91,2584,119"/>
+<area shape="rect" id="node39" href="$ksem_8c.html" title="Gestion des sémaphores." alt="" coords="2608,91,2709,119"/>
+<area shape="rect" id="node41" href="$module_8c.html" title="kernel/module.c" alt="" coords="2733,91,2845,119"/>
+<area shape="rect" id="node43" href="$round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="2869,91,3008,119"/>
+<area shape="rect" id="node45" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="3032,91,3157,119"/>
+<area shape="rect" id="node47" href="$hashmap_8c.html" title="kernel/utils/hashmap.c" alt="" coords="3181,91,3331,119"/>
+<area shape="rect" id="node49" href="$list_8c.html" title="kernel/utils/list.c" alt="" coords="3355,91,3469,119"/>
+<area shape="rect" id="node51" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="3493,91,3579,119"/>
 </map>

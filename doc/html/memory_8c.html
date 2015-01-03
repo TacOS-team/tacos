@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/memory.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -93,55 +94,86 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Gestion des pages mémoires physiques.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="memory_8h_source.html">memory.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="memory_8h_source.html">memory.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de memory.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="memory_8c__incl.png" border="0" usemap="#kernel_2memory_8c" alt=""/></div>
 <map name="kernel_2memory_8c" id="kernel_2memory_8c">
-<area shape="rect" id="node3" href="memory_8h.html" title="Gestion des pages mémoires physiques." alt="" coords="25,83,103,111"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="33,161,95,189"/></map>
+<area shape="rect" id="node2" href="memory_8h.html" title="Gestion des pages mémoires physiques. " alt="" coords="5,80,84,107"/><area shape="rect" id="node4" href="klog_8h.html" title="Logging macros. " alt="" coords="109,80,165,107"/><area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="13,155,76,181"/><area shape="rect" id="node5" href="kstdio_8h.html" title="kprintf " alt="" coords="103,155,170,181"/></map>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:af0f914a32931e95e6e9ce2c1463b7978"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#af0f914a32931e95e6e9ce2c1463b7978">memory_align_page_inf</a> (<a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> value)</td></tr>
-<tr class="memdesc:af0f914a32931e95e6e9ce2c1463b7978"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse du cadre de page en arrondissant à l'inférieur.  <a href="#af0f914a32931e95e6e9ce2c1463b7978"></a><br/></td></tr>
+<tr class="memdesc:af0f914a32931e95e6e9ce2c1463b7978"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse du cadre de page en arrondissant à l'inférieur.  <a href="#af0f914a32931e95e6e9ce2c1463b7978">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af0f914a32931e95e6e9ce2c1463b7978"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c72d3a8d1a8b95fb4d75e634534320a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a1c72d3a8d1a8b95fb4d75e634534320a">memory_align_page_sup</a> (<a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> value)</td></tr>
-<tr class="memdesc:a1c72d3a8d1a8b95fb4d75e634534320a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse du cadre de page en arrondissant au supérieur.  <a href="#a1c72d3a8d1a8b95fb4d75e634534320a"></a><br/></td></tr>
+<tr class="memdesc:a1c72d3a8d1a8b95fb4d75e634534320a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse du cadre de page en arrondissant au supérieur.  <a href="#a1c72d3a8d1a8b95fb4d75e634534320a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1c72d3a8d1a8b95fb4d75e634534320a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fba2533a7d88ec6038d6948ca695957"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a8fba2533a7d88ec6038d6948ca695957">memory_print_used_pages</a> ()</td></tr>
+<tr class="memdesc:a8fba2533a7d88ec6038d6948ca695957"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la liste des cadres utilisés.  <a href="#a8fba2533a7d88ec6038d6948ca695957">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8fba2533a7d88ec6038d6948ca695957"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09a07799735fa6d6fbae7e870052daa3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a09a07799735fa6d6fbae7e870052daa3">memory_print_free_pages</a> ()</td></tr>
+<tr class="memdesc:a09a07799735fa6d6fbae7e870052daa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la liste des cadres libres.  <a href="#a09a07799735fa6d6fbae7e870052daa3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a09a07799735fa6d6fbae7e870052daa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f033faa9b2d61ba0c8df3608dc6eed8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f033faa9b2d61ba0c8df3608dc6eed8"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>memory_get_total</b> ()</td></tr>
+<tr class="separator:a8f033faa9b2d61ba0c8df3608dc6eed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c90a727f236fb03fb9631b7a6bb5cac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0c90a727f236fb03fb9631b7a6bb5cac"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>memory_get_used</b> ()</td></tr>
+<tr class="separator:a0c90a727f236fb03fb9631b7a6bb5cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e64563d1e1be5b859c1bf8f6cab9e68"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e64563d1e1be5b859c1bf8f6cab9e68"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>memory_get_free</b> ()</td></tr>
+<tr class="separator:a2e64563d1e1be5b859c1bf8f6cab9e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a428a3b3b69b116515e43ffc7a96042"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a0a428a3b3b69b116515e43ffc7a96042">memory_print</a> ()</td></tr>
+<tr class="memdesc:a0a428a3b3b69b116515e43ffc7a96042"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la mémoire physique.  <a href="#a0a428a3b3b69b116515e43ffc7a96042">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0a428a3b3b69b116515e43ffc7a96042"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5973498654f77e506df68cfb1322d0e5"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a5973498654f77e506df68cfb1322d0e5">memory_get_first_used_page</a> ()</td></tr>
-<tr class="memdesc:a5973498654f77e506df68cfb1322d0e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne une copie du pointeur du premier descripteur de cadre de page utilisés.  <a href="#a5973498654f77e506df68cfb1322d0e5"></a><br/></td></tr>
+<tr class="memdesc:a5973498654f77e506df68cfb1322d0e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne une copie du pointeur du premier descripteur de cadre de page utilisés.  <a href="#a5973498654f77e506df68cfb1322d0e5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5973498654f77e506df68cfb1322d0e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a700b910217b425c592693b70801e8141"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a700b910217b425c592693b70801e8141">memory_get_first_free_page</a> ()</td></tr>
-<tr class="memdesc:a700b910217b425c592693b70801e8141"><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne une copie du pointeur du premier descripteur de cadre de page libres.  <a href="#a700b910217b425c592693b70801e8141"></a><br/></td></tr>
+<tr class="memdesc:a700b910217b425c592693b70801e8141"><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne une copie du pointeur du premier descripteur de cadre de page libres.  <a href="#a700b910217b425c592693b70801e8141">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a700b910217b425c592693b70801e8141"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b842dcc01f272fb96c6fbce35a81e99"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a3b842dcc01f272fb96c6fbce35a81e99">memory_has_next_page</a> (struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a> *iterator)</td></tr>
-<tr class="memdesc:a3b842dcc01f272fb96c6fbce35a81e99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne vrai s'il y a encore un cadre de page qui suit.  <a href="#a3b842dcc01f272fb96c6fbce35a81e99"></a><br/></td></tr>
+<tr class="memdesc:a3b842dcc01f272fb96c6fbce35a81e99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne vrai s'il y a encore un cadre de page qui suit.  <a href="#a3b842dcc01f272fb96c6fbce35a81e99">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3b842dcc01f272fb96c6fbce35a81e99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1de41321b1a8a9c6c12efd1a5ed998fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a1de41321b1a8a9c6c12efd1a5ed998fa">memory_next_page</a> (struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a> **iterator)</td></tr>
-<tr class="memdesc:a1de41321b1a8a9c6c12efd1a5ed998fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le prochain cadre de page.  <a href="#a1de41321b1a8a9c6c12efd1a5ed998fa"></a><br/></td></tr>
+<tr class="memdesc:a1de41321b1a8a9c6c12efd1a5ed998fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le prochain cadre de page.  <a href="#a1de41321b1a8a9c6c12efd1a5ed998fa">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1de41321b1a8a9c6c12efd1a5ed998fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2225d120bb97730dca7fe16322e706f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a2225d120bb97730dca7fe16322e706f3">memory_setup</a> (<a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> ram_size)</td></tr>
-<tr class="memdesc:a2225d120bb97730dca7fe16322e706f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Découpage de la mémoire physique en cadres de page.  <a href="#a2225d120bb97730dca7fe16322e706f3"></a><br/></td></tr>
+<tr class="memdesc:a2225d120bb97730dca7fe16322e706f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Découpage de la mémoire physique en cadres de page.  <a href="#a2225d120bb97730dca7fe16322e706f3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2225d120bb97730dca7fe16322e706f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeed93f8c282af6d9d4428813e331f583"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#aeed93f8c282af6d9d4428813e331f583">memory_reserve_page_frame</a> ()</td></tr>
-<tr class="memdesc:aeed93f8c282af6d9d4428813e331f583"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réserve un cadre de page.  <a href="#aeed93f8c282af6d9d4428813e331f583"></a><br/></td></tr>
+<tr class="memdesc:aeed93f8c282af6d9d4428813e331f583"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réserve un cadre de page.  <a href="#aeed93f8c282af6d9d4428813e331f583">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aeed93f8c282af6d9d4428813e331f583"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adcd850959d671b2d519a01d5c47ed090"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#adcd850959d671b2d519a01d5c47ed090">memory_free_page_frame</a> (<a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> addr)</td></tr>
-<tr class="memdesc:adcd850959d671b2d519a01d5c47ed090"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère un cadre de page.  <a href="#adcd850959d671b2d519a01d5c47ed090"></a><br/></td></tr>
+<tr class="memdesc:adcd850959d671b2d519a01d5c47ed090"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère un cadre de page.  <a href="#adcd850959d671b2d519a01d5c47ed090">Plus de détails...</a><br /></td></tr>
+<tr class="separator:adcd850959d671b2d519a01d5c47ed090"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab67b6223b9ebbe423e9102dbbed1afce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#ab67b6223b9ebbe423e9102dbbed1afce">memory_get_kernel_top</a> ()</td></tr>
+<tr class="separator:ab67b6223b9ebbe423e9102dbbed1afce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="var-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a42475ca62ffba0a4aea7cdb4913d40a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42475ca62ffba0a4aea7cdb4913d40a9"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><b>_start</b></td></tr>
+<tr class="separator:a42475ca62ffba0a4aea7cdb4913d40a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada8eaff0eacb8c9fb46e1b3850af042e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada8eaff0eacb8c9fb46e1b3850af042e"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><b>__e_kernel</b></td></tr>
+<tr class="separator:ada8eaff0eacb8c9fb46e1b3850af042e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
-<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>Copyright (C) 2010-2014 TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des fonctions</h2>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="af0f914a32931e95e6e9ce2c1463b7978"></a>
 <div class="memitem">
 <div class="memproto">
@@ -169,7 +201,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="memory_8c_af0f914a32931e95e6e9ce2c1463b7978_icgraph.png" border="0" usemap="#memory_8c_af0f914a32931e95e6e9ce2c1463b7978_icgraph" alt=""/></div>
 <map name="memory_8c_af0f914a32931e95e6e9ce2c1463b7978_icgraph" id="memory_8c_af0f914a32931e95e6e9ce2c1463b7978_icgraph">
-<area shape="rect" id="node3" href="memory_8c.html#a2225d120bb97730dca7fe16322e706f3" title="Découpage de la mémoire physique en cadres de page." alt="" coords="213,5,320,33"/></map>
+<area shape="rect" id="node2" href="memory_8c.html#a2225d120bb97730dca7fe16322e706f3" title="Découpage de la mémoire physique en cadres de page. " alt="" coords="212,5,319,32"/></map>
 </div>
 </p>
 
@@ -202,7 +234,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="memory_8c_a1c72d3a8d1a8b95fb4d75e634534320a_icgraph.png" border="0" usemap="#memory_8c_a1c72d3a8d1a8b95fb4d75e634534320a_icgraph" alt=""/></div>
 <map name="memory_8c_a1c72d3a8d1a8b95fb4d75e634534320a_icgraph" id="memory_8c_a1c72d3a8d1a8b95fb4d75e634534320a_icgraph">
-<area shape="rect" id="node3" href="memory_8c.html#a2225d120bb97730dca7fe16322e706f3" title="Découpage de la mémoire physique en cadres de page." alt="" coords="219,5,325,33"/></map>
+<area shape="rect" id="node2" href="memory_8c.html#a2225d120bb97730dca7fe16322e706f3" title="Découpage de la mémoire physique en cadres de page. " alt="" coords="219,5,325,32"/></map>
 </div>
 </p>
 
@@ -235,9 +267,6 @@ Voici le graphe des appelants de cette fonction :</div>
 <a class="anchor" id="a700b910217b425c592693b70801e8141"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a>* memory_get_first_free_page </td>
@@ -246,11 +275,6 @@ Voici le graphe des appelants de cette fonction :</div>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Donne une copie du pointeur du haut de la pile des descripteurs de cadre de page libres.</p>
 <dl class="section return"><dt>Renvoie</dt><dd>pointeur sur le premier descripteur de cadre de page libre. </dd></dl>
@@ -260,9 +284,6 @@ Voici le graphe des appelants de cette fonction :</div>
 <a class="anchor" id="a5973498654f77e506df68cfb1322d0e5"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">struct <a class="el" href="structphysical__page__descr.html">physical_page_descr</a>* memory_get_first_used_page </td>
@@ -271,11 +292,6 @@ Voici le graphe des appelants de cette fonction :</div>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Donne une copie du pointeur du haut de la pile des descripteurs de cadre de page utilisés.</p>
 <dl class="section return"><dt>Renvoie</dt><dd>pointeur sur le premier descripteur de cadre de page utilisé. </dd></dl>
@@ -285,7 +301,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="memory_8c_a5973498654f77e506df68cfb1322d0e5_icgraph.png" border="0" usemap="#memory_8c_a5973498654f77e506df68cfb1322d0e5_icgraph" alt=""/></div>
 <map name="memory_8c_a5973498654f77e506df68cfb1322d0e5_icgraph" id="memory_8c_a5973498654f77e506df68cfb1322d0e5_icgraph">
-<area shape="rect" id="node3" href="pagination_8c.html#a841b5f96bd3c392664b17627f55bfa36" title="Activation de la pagination et initialisation." alt="" coords="245,5,365,33"/></map>
+<area shape="rect" id="node2" href="pagination_8c.html#a841b5f96bd3c392664b17627f55bfa36" title="Activation de la pagination et initialisation. " alt="" coords="244,5,364,32"/></map>
 </div>
 </p>
 
@@ -345,7 +361,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="memory_8c_a3b842dcc01f272fb96c6fbce35a81e99_icgraph.png" border="0" usemap="#memory_8c_a3b842dcc01f272fb96c6fbce35a81e99_icgraph" alt=""/></div>
 <map name="memory_8c_a3b842dcc01f272fb96c6fbce35a81e99_icgraph" id="memory_8c_a3b842dcc01f272fb96c6fbce35a81e99_icgraph">
-<area shape="rect" id="node3" href="pagination_8c.html#a841b5f96bd3c392664b17627f55bfa36" title="Activation de la pagination et initialisation." alt="" coords="216,5,336,33"/></map>
+<area shape="rect" id="node2" href="pagination_8c.html#a841b5f96bd3c392664b17627f55bfa36" title="Activation de la pagination et initialisation. " alt="" coords="216,5,336,32"/></map>
 </div>
 </p>
 
@@ -378,7 +394,82 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="memory_8c_a1de41321b1a8a9c6c12efd1a5ed998fa_icgraph.png" border="0" usemap="#memory_8c_a1de41321b1a8a9c6c12efd1a5ed998fa_icgraph" alt=""/></div>
 <map name="memory_8c_a1de41321b1a8a9c6c12efd1a5ed998fa_icgraph" id="memory_8c_a1de41321b1a8a9c6c12efd1a5ed998fa_icgraph">
-<area shape="rect" id="node3" href="pagination_8c.html#a841b5f96bd3c392664b17627f55bfa36" title="Activation de la pagination et initialisation." alt="" coords="189,5,309,33"/></map>
+<area shape="rect" id="node2" href="pagination_8c.html#a841b5f96bd3c392664b17627f55bfa36" title="Activation de la pagination et initialisation. " alt="" coords="188,5,308,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0a428a3b3b69b116515e43ffc7a96042"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void memory_print </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Affiche la mémoire physique à l'aide de caractères F (libre) ou U (utilisée) pour chaque cadre de page. </p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="memory_8c_a0a428a3b3b69b116515e43ffc7a96042_cgraph.png" border="0" usemap="#memory_8c_a0a428a3b3b69b116515e43ffc7a96042_cgraph" alt=""/></div>
+<map name="memory_8c_a0a428a3b3b69b116515e43ffc7a96042_cgraph" id="memory_8c_a0a428a3b3b69b116515e43ffc7a96042_cgraph">
+<area shape="rect" id="node2" href="kstdio_8h.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran. " alt="" coords="153,107,212,133"/><area shape="rect" id="node3" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier. " alt="" coords="260,56,335,83"/><area shape="rect" id="node9" href="kernel_2include_2klibc_2stdlib_8h.html#a3170c50e51faed10daef61b1c000d3bf" title="Converti l&#39;entier d en une chaîne de caractère et le stock dans buf. L&#39;entier base permet de spécifie..." alt="" coords="276,107,319,133"/><area shape="rect" id="node10" href="kernel_2include_2klibc_2stdlib_8h.html#a9496eacf49af4b53f5b839899b5bf31a" title="itox" alt="" coords="276,157,319,184"/><area shape="rect" id="node4" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire. " alt="" coords="383,5,453,32"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="385,56,451,83"/><area shape="rect" id="node8" href="kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine. " alt="" coords="389,107,447,133"/><area shape="rect" id="node6" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="501,31,641,57"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="537,81,606,108"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a09a07799735fa6d6fbae7e870052daa3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void memory_print_free_pages </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Affiche la liste des cadres libres en donnant simplement la liste des adresses. </p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="memory_8c_a09a07799735fa6d6fbae7e870052daa3_cgraph.png" border="0" usemap="#memory_8c_a09a07799735fa6d6fbae7e870052daa3_cgraph" alt=""/></div>
+<map name="memory_8c_a09a07799735fa6d6fbae7e870052daa3_cgraph" id="memory_8c_a09a07799735fa6d6fbae7e870052daa3_cgraph">
+<area shape="rect" id="node2" href="kstdio_8h.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran. " alt="" coords="224,107,283,133"/><area shape="rect" id="node3" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier. " alt="" coords="331,56,405,83"/><area shape="rect" id="node9" href="kernel_2include_2klibc_2stdlib_8h.html#a3170c50e51faed10daef61b1c000d3bf" title="Converti l&#39;entier d en une chaîne de caractère et le stock dans buf. L&#39;entier base permet de spécifie..." alt="" coords="347,107,389,133"/><area shape="rect" id="node10" href="kernel_2include_2klibc_2stdlib_8h.html#a9496eacf49af4b53f5b839899b5bf31a" title="itox" alt="" coords="347,157,389,184"/><area shape="rect" id="node4" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire. " alt="" coords="453,5,524,32"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="455,56,522,83"/><area shape="rect" id="node8" href="kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine. " alt="" coords="459,107,518,133"/><area shape="rect" id="node6" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="572,31,712,57"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="607,81,677,108"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8fba2533a7d88ec6038d6948ca695957"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void memory_print_used_pages </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Affiche la liste des cadres utilisés en donnant simplement la liste des adresses. </p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="memory_8c_a8fba2533a7d88ec6038d6948ca695957_cgraph.png" border="0" usemap="#memory_8c_a8fba2533a7d88ec6038d6948ca695957_cgraph" alt=""/></div>
+<map name="memory_8c_a8fba2533a7d88ec6038d6948ca695957_cgraph" id="memory_8c_a8fba2533a7d88ec6038d6948ca695957_cgraph">
+<area shape="rect" id="node2" href="kstdio_8h.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran. " alt="" coords="231,107,289,133"/><area shape="rect" id="node3" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier. " alt="" coords="337,56,412,83"/><area shape="rect" id="node9" href="kernel_2include_2klibc_2stdlib_8h.html#a3170c50e51faed10daef61b1c000d3bf" title="Converti l&#39;entier d en une chaîne de caractère et le stock dans buf. L&#39;entier base permet de spécifie..." alt="" coords="353,107,396,133"/><area shape="rect" id="node10" href="kernel_2include_2klibc_2stdlib_8h.html#a9496eacf49af4b53f5b839899b5bf31a" title="itox" alt="" coords="353,157,396,184"/><area shape="rect" id="node4" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire. " alt="" coords="460,5,531,32"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="462,56,529,83"/><area shape="rect" id="node8" href="kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine. " alt="" coords="466,107,525,133"/><area shape="rect" id="node6" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="579,31,719,57"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="614,81,683,108"/></map>
 </div>
 </p>
 
@@ -404,7 +495,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="memory_8c_aeed93f8c282af6d9d4428813e331f583_icgraph.png" border="0" usemap="#memory_8c_aeed93f8c282af6d9d4428813e331f583_icgraph" alt=""/></div>
 <map name="memory_8c_aeed93f8c282af6d9d4428813e331f583_icgraph" id="memory_8c_aeed93f8c282af6d9d4428813e331f583_icgraph">
-<area shape="rect" id="node3" href="pagination_8c.html#a841b5f96bd3c392664b17627f55bfa36" title="Activation de la pagination et initialisation." alt="" coords="208,5,328,33"/><area shape="rect" id="node5" href="vmm_8c.html#a99b3ba454c13cfdb437fcaadd1cd3e97" title="init_vmm" alt="" coords="231,55,305,83"/></map>
+<area shape="rect" id="node2" href="pagination_8c.html#a841b5f96bd3c392664b17627f55bfa36" title="Activation de la pagination et initialisation. " alt="" coords="207,5,327,32"/><area shape="rect" id="node3" href="vmm_8c.html#a99b3ba454c13cfdb437fcaadd1cd3e97" title="init_vmm" alt="" coords="229,56,304,83"/></map>
 </div>
 </p>
 
@@ -431,7 +522,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="memory_8c_a2225d120bb97730dca7fe16322e706f3_cgraph.png" border="0" usemap="#memory_8c_a2225d120bb97730dca7fe16322e706f3_cgraph" alt=""/></div>
 <map name="memory_8c_a2225d120bb97730dca7fe16322e706f3_cgraph" id="memory_8c_a2225d120bb97730dca7fe16322e706f3_cgraph">
-<area shape="rect" id="node3" href="memory_8h.html#af0f914a32931e95e6e9ce2c1463b7978" title="Adresse du cadre de page en arrondissant à l&#39;inférieur." alt="" coords="164,5,321,33"/><area shape="rect" id="node5" href="memory_8h.html#a1c72d3a8d1a8b95fb4d75e634534320a" title="Adresse du cadre de page en arrondissant au supérieur." alt="" coords="160,55,325,83"/></map>
+<area shape="rect" id="node2" href="memory_8c.html#af0f914a32931e95e6e9ce2c1463b7978" title="Adresse du cadre de page en arrondissant à l&#39;inférieur. " alt="" coords="163,5,322,32"/><area shape="rect" id="node3" href="memory_8c.html#a1c72d3a8d1a8b95fb4d75e634534320a" title="Adresse du cadre de page en arrondissant au supérieur. " alt="" coords="160,56,325,83"/></map>
 </div>
 </p>
 
@@ -440,9 +531,9 @@ Voici le graphe d'appel pour cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:39 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:32 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

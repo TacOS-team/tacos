@@ -1,12 +1,12 @@
 <map id="libc/stdio/stdfiles.c" name="libc/stdio/stdfiles.c">
-<area shape="rect" id="node3" href="$types_8h.html" title="sys/types.h" alt="" coords="94,238,180,266"/>
-<area shape="rect" id="node9" href="$libio_8h.html" title="libio.h" alt="" coords="305,161,358,189"/>
-<area shape="rect" id="node13" href="$string_8h.html" title="Fonctions de manipulation de strings." alt="" coords="22,161,86,189"/>
-<area shape="rect" id="node17" href="$stdio_8h.html" title="stdio.h" alt="" coords="386,83,445,111"/>
-<area shape="rect" id="node24" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="182,83,244,111"/>
-<area shape="rect" id="node32" href="$fcntl_8h.html" title="File control operations." alt="" coords="574,238,630,266"/>
-<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="224,315,312,343"/>
-<area shape="rect" id="node7" href="$stdbool_8h.html" title="Type bool." alt="" coords="100,315,174,343"/>
-<area shape="rect" id="node22" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="382,161,449,189"/>
-<area shape="rect" id="node28" href="$malloc_8h.html" title="malloc.h" alt="" coords="161,161,230,189"/>
+<area shape="rect" id="node3" href="$types_8h.html" title="sys/types.h" alt="" coords="94,238,177,266"/>
+<area shape="rect" id="node9" href="$libio_8h.html" title="libio.h" alt="" coords="302,161,355,189"/>
+<area shape="rect" id="node13" href="$string_8h.html" title="Fonctions de manipulation de strings." alt="" coords="22,161,83,189"/>
+<area shape="rect" id="node17" href="$stdio_8h.html" title="stdio.h" alt="" coords="383,83,442,111"/>
+<area shape="rect" id="node24" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="179,83,241,111"/>
+<area shape="rect" id="node32" href="$fcntl_8h.html" title="File control operations." alt="" coords="571,238,627,266"/>
+<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="222,315,307,343"/>
+<area shape="rect" id="node7" href="$stdbool_8h.html" title="Type bool." alt="" coords="99,315,171,343"/>
+<area shape="rect" id="node22" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="379,161,446,189"/>
+<area shape="rect" id="node28" href="$malloc_8h.html" title="malloc.h" alt="" coords="158,161,227,189"/>
 </map>

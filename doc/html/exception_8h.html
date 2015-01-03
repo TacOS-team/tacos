@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/include/exception.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -91,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier exception.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de exception.h:</div>
 <div class="dyncontent">
@@ -104,56 +105,91 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <div class="dyncontent">
 <div class="center"><img src="exception_8h__dep__incl.png" border="0" usemap="#kernel_2include_2exception_8hdep" alt=""/></div>
 <map name="kernel_2include_2exception_8hdep" id="kernel_2include_2exception_8hdep">
-<area shape="rect" id="node3" href="exception_8c.html" title="Gestion des exceptions." alt="" coords="5,83,131,111"/><area shape="rect" id="node5" href="kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="155,83,264,111"/></map>
+<area shape="rect" id="node2" href="exception_8c.html" title="Gestion des exceptions. " alt="" coords="5,80,132,107"/><area shape="rect" id="node3" href="kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="157,80,266,107"/></map>
 </div>
 </div>
 <p><a href="exception_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ad35edefd94af5a06b579528092f53905"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#ad35edefd94af5a06b579528092f53905">EXCEPTION_DIVIDE_ERROR</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:ad35edefd94af5a06b579528092f53905"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65bef4675226bcd50c2bec6b013d826c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a65bef4675226bcd50c2bec6b013d826c">EXCEPTION_DEBUG</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a65bef4675226bcd50c2bec6b013d826c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fff968799e97bc81c65c3995715a5bc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a6fff968799e97bc81c65c3995715a5bc">EXCEPTION_NMI_INTERRUPT</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a6fff968799e97bc81c65c3995715a5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4e81d136c5938015e8332e2bbfc69cb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#ad4e81d136c5938015e8332e2bbfc69cb">EXCEPTION_BREAKPOINT</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:ad4e81d136c5938015e8332e2bbfc69cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64d813978016e23be519a7db0ccc2fcb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a64d813978016e23be519a7db0ccc2fcb">EXCEPTION_OVERFLOW</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a64d813978016e23be519a7db0ccc2fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0aabdeff397774307e200d755ea3da39"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a0aabdeff397774307e200d755ea3da39">EXCEPTION_BOUND_RANGE_EXCEDEED</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a0aabdeff397774307e200d755ea3da39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8dc64106296eed50cbbac522c97489fd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a8dc64106296eed50cbbac522c97489fd">EXCEPTION_INVALID_OPCODE</a>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:a8dc64106296eed50cbbac522c97489fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee7067ca72cf5f3f4924d781f4ab9d18"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#aee7067ca72cf5f3f4924d781f4ab9d18">EXCEPTION_DEVICE_NOT_AVAILABLE</a>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:aee7067ca72cf5f3f4924d781f4ab9d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03c881e5cf9c80352e89c2cc2aedce17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a03c881e5cf9c80352e89c2cc2aedce17">EXCEPTION_DOUBLE_FAULT</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:a03c881e5cf9c80352e89c2cc2aedce17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa2958cf0eb2220156b89780b58e06fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#afa2958cf0eb2220156b89780b58e06fb">EXCEPTION_COPROCESSOR_SEGMENT_OVERRUN</a>&#160;&#160;&#160;9</td></tr>
+<tr class="separator:afa2958cf0eb2220156b89780b58e06fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02fd7012d7fbec88227b20dd84f046c2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a02fd7012d7fbec88227b20dd84f046c2">EXCEPTION_INVALID_TSS</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:a02fd7012d7fbec88227b20dd84f046c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fe1ea0a4bf0b605af35bbddc73f6fad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a8fe1ea0a4bf0b605af35bbddc73f6fad">EXCEPTION_SEGMENT_NOT_PRESENT</a>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:a8fe1ea0a4bf0b605af35bbddc73f6fad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade6628460c124de1939d6b8abc08fdd6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#ade6628460c124de1939d6b8abc08fdd6">EXCEPTION_STACK_SEGMENT_FAULT</a>&#160;&#160;&#160;12</td></tr>
+<tr class="separator:ade6628460c124de1939d6b8abc08fdd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a664cb67866dbd9a39007f64078d677e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a664cb67866dbd9a39007f64078d677e1">EXCEPTION_GENERAL_PROTECTION</a>&#160;&#160;&#160;13</td></tr>
+<tr class="separator:a664cb67866dbd9a39007f64078d677e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb69823191506fccf4465650fe58fec9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#aeb69823191506fccf4465650fe58fec9">EXCEPTION_PAGE_FAULT</a>&#160;&#160;&#160;14</td></tr>
+<tr class="separator:aeb69823191506fccf4465650fe58fec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aada3f4afee1f6ba9699ed1cc0e275ea8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#aada3f4afee1f6ba9699ed1cc0e275ea8">EXCEPTION_INTEL_RESERVED_1</a>&#160;&#160;&#160;15</td></tr>
+<tr class="separator:aada3f4afee1f6ba9699ed1cc0e275ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5defe6df1b73c38bc29de7cec992f2c7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a5defe6df1b73c38bc29de7cec992f2c7">EXCEPTION_FLOATING_POINT_ERROR</a>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:a5defe6df1b73c38bc29de7cec992f2c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae132caa3d09be165b343fd206ba7d162"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#ae132caa3d09be165b343fd206ba7d162">EXCEPTION_ALIGNEMENT_CHECK</a>&#160;&#160;&#160;17</td></tr>
+<tr class="separator:ae132caa3d09be165b343fd206ba7d162"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ef4fc61aade77229b89d05e7ff1a365"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a8ef4fc61aade77229b89d05e7ff1a365">EXCEPTION_MACHINE_CHECK</a>&#160;&#160;&#160;18</td></tr>
+<tr class="separator:a8ef4fc61aade77229b89d05e7ff1a365"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86f81610ea78321b8c571b13a708212b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a86f81610ea78321b8c571b13a708212b">EXCEPTION_INTEL_RESERVED_2</a>&#160;&#160;&#160;19</td></tr>
+<tr class="separator:a86f81610ea78321b8c571b13a708212b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca7238d54d3a295fb655848f30a92b30"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#aca7238d54d3a295fb655848f30a92b30">EXCEPTION_INTEL_RESERVED_3</a>&#160;&#160;&#160;20</td></tr>
+<tr class="separator:aca7238d54d3a295fb655848f30a92b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6d5666ed777500640e4835ccbee5aa9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#ac6d5666ed777500640e4835ccbee5aa9">EXCEPTION_INTEL_RESERVED_4</a>&#160;&#160;&#160;21</td></tr>
+<tr class="separator:ac6d5666ed777500640e4835ccbee5aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b4c3e5b4547724e8ee44e98595b2b28"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a6b4c3e5b4547724e8ee44e98595b2b28">EXCEPTION_INTEL_RESERVED_5</a>&#160;&#160;&#160;22</td></tr>
+<tr class="separator:a6b4c3e5b4547724e8ee44e98595b2b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba3f1287c6aca7276d53688507e626b4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#aba3f1287c6aca7276d53688507e626b4">EXCEPTION_INTEL_RESERVED_6</a>&#160;&#160;&#160;23</td></tr>
+<tr class="separator:aba3f1287c6aca7276d53688507e626b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa96d17234dc55af36cf91b33edbecb4f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#aa96d17234dc55af36cf91b33edbecb4f">EXCEPTION_INTEL_RESERVED_7</a>&#160;&#160;&#160;24</td></tr>
+<tr class="separator:aa96d17234dc55af36cf91b33edbecb4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a399bcdae3445634378429da6cc4d87"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a4a399bcdae3445634378429da6cc4d87">EXCEPTION_INTEL_RESERVED_8</a>&#160;&#160;&#160;25</td></tr>
+<tr class="separator:a4a399bcdae3445634378429da6cc4d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fa646179c19865a5affa7f7624c39b5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a2fa646179c19865a5affa7f7624c39b5">EXCEPTION_INTEL_RESERVED_9</a>&#160;&#160;&#160;26</td></tr>
+<tr class="separator:a2fa646179c19865a5affa7f7624c39b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86309bab28363f553b8e8a627d2494a7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a86309bab28363f553b8e8a627d2494a7">EXCEPTION_INTEL_RESERVED_10</a>&#160;&#160;&#160;27</td></tr>
+<tr class="separator:a86309bab28363f553b8e8a627d2494a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae938f75e3f5678ca256e73ce905c82ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#ae938f75e3f5678ca256e73ce905c82ff">EXCEPTION_INTEL_RESERVED_11</a>&#160;&#160;&#160;28</td></tr>
+<tr class="separator:ae938f75e3f5678ca256e73ce905c82ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc4dd786c73179a3230da46208e3c3b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#adc4dd786c73179a3230da46208e3c3b7">EXCEPTION_INTEL_RESERVED_12</a>&#160;&#160;&#160;29</td></tr>
+<tr class="separator:adc4dd786c73179a3230da46208e3c3b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b4da35765e11fb33df732c95a9e3f74"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a3b4da35765e11fb33df732c95a9e3f74">EXCEPTION_INTEL_RESERVED_13</a>&#160;&#160;&#160;30</td></tr>
+<tr class="separator:a3b4da35765e11fb33df732c95a9e3f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ff4d33c01f9ac9362653312fd4b4ab1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a4ff4d33c01f9ac9362653312fd4b4ab1">EXCEPTION_INTEL_RESERVED_14</a>&#160;&#160;&#160;31</td></tr>
+<tr class="separator:a4ff4d33c01f9ac9362653312fd4b4ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
 <tr class="memitem:a27a88f1aea43a3b64d4ab8d578471642"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a27a88f1aea43a3b64d4ab8d578471642">exception_handler_t</a> )(<a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> error_id, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> error_code)</td></tr>
+<tr class="separator:a27a88f1aea43a3b64d4ab8d578471642"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:ac5a3d89ca654d3606b6afd836a01e207"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#ac5a3d89ca654d3606b6afd836a01e207">exception_set_routine</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> exception_id, <a class="el" href="exception_8h.html#a27a88f1aea43a3b64d4ab8d578471642">exception_handler_t</a> routine)</td></tr>
+<tr class="separator:ac5a3d89ca654d3606b6afd836a01e207"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a845efe084f5994d748fd7c30403ac879"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#a845efe084f5994d748fd7c30403ac879">exception_disable</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> exception_id)</td></tr>
+<tr class="separator:a845efe084f5994d748fd7c30403ac879"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -164,7 +200,7 @@ LICENSE</h1>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 <p>Description de ce que fait le fichier </p>
-</div><h2>Documentation des macros</h2>
+</div><h2 class="groupheader">Documentation des macros</h2>
 <a class="anchor" id="ae132caa3d09be165b343fd206ba7d162"></a>
 <div class="memitem">
 <div class="memproto">
@@ -581,7 +617,7 @@ DESCRIPTION</h1>
 
 </div>
 </div>
-<h2>Documentation des définitions de type</h2>
+<h2 class="groupheader">Documentation des définitions de type</h2>
 <a class="anchor" id="a27a88f1aea43a3b64d4ab8d578471642"></a>
 <div class="memitem">
 <div class="memproto">
@@ -595,7 +631,7 @@ DESCRIPTION</h1>
 
 </div>
 </div>
-<h2>Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a845efe084f5994d748fd7c30403ac879"></a>
 <div class="memitem">
 <div class="memproto">
@@ -623,7 +659,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="exception_8h_a845efe084f5994d748fd7c30403ac879_cgraph.png" border="0" usemap="#exception_8h_a845efe084f5994d748fd7c30403ac879_cgraph" alt=""/></div>
 <map name="exception_8h_a845efe084f5994d748fd7c30403ac879_cgraph" id="exception_8h_a845efe084f5994d748fd7c30403ac879_cgraph">
-<area shape="rect" id="node3" href="idt_8c.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption." alt="" coords="179,5,312,33"/><area shape="rect" id="node5" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="361,5,471,33"/></map>
+<area shape="rect" id="node2" href="idt_8c.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption. " alt="" coords="179,5,312,32"/><area shape="rect" id="node3" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception. " alt="" coords="360,5,471,32"/></map>
 </div>
 </p>
 
@@ -667,7 +703,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="exception_8h_ac5a3d89ca654d3606b6afd836a01e207_cgraph.png" border="0" usemap="#exception_8h_ac5a3d89ca654d3606b6afd836a01e207_cgraph" alt=""/></div>
 <map name="exception_8h_ac5a3d89ca654d3606b6afd836a01e207_cgraph" id="exception_8h_ac5a3d89ca654d3606b6afd836a01e207_cgraph">
-<area shape="rect" id="node3" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="204,5,313,33"/></map>
+<area shape="rect" id="node2" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception. " alt="" coords="201,5,312,32"/></map>
 </div>
 </p>
 
@@ -676,7 +712,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="exception_8h_ac5a3d89ca654d3606b6afd836a01e207_icgraph.png" border="0" usemap="#exception_8h_ac5a3d89ca654d3606b6afd836a01e207_icgraph" alt=""/></div>
 <map name="exception_8h_ac5a3d89ca654d3606b6afd836a01e207_icgraph" id="exception_8h_ac5a3d89ca654d3606b6afd836a01e207_icgraph">
-<area shape="rect" id="node3" href="kpanic_8c.html#acf070b3d87597bdddd1c1c413ed4adb2" title="kpanic_init" alt="" coords="204,5,287,33"/></map>
+<area shape="rect" id="node3" href="kpanic_8c.html#acf070b3d87597bdddd1c1c413ed4adb2" title="kpanic_init" alt="" coords="201,5,284,33"/></map>
 </div>
 </p>
 
@@ -685,9 +721,9 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:36 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

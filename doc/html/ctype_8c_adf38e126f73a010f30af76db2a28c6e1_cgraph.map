@@ -1,6 +1,6 @@
 <map id="isalnum" name="isalnum">
 <area shape="rect" id="node3" href="$ctype_8c.html#a25908ae63aac2df990634e1ae5bd14d9" title="vérifie si l&#39;on a un caractère alphabétique." alt="" coords="121,30,183,58"/>
-<area shape="rect" id="node9" href="$ctype_8c.html#a3fa45b35c8abf67a950b6d3d4063dede" title="vérifie si l&#39;on a un chiffre (0 à 9)." alt="" coords="124,81,180,109"/>
-<area shape="rect" id="node5" href="$ctype_8c.html#adadd6582d46775aab6a51e29d16d9f77" title="vérifie si l&#39;on a un caractère majuscule." alt="" coords="232,5,296,33"/>
+<area shape="rect" id="node9" href="$ctype_8c.html#a3fa45b35c8abf67a950b6d3d4063dede" title="vérifie si l&#39;on a un chiffre (0 à 9)." alt="" coords="125,81,179,109"/>
+<area shape="rect" id="node5" href="$ctype_8c.html#adadd6582d46775aab6a51e29d16d9f77" title="vérifie si l&#39;on a un caractère majuscule." alt="" coords="233,5,295,33"/>
 <area shape="rect" id="node7" href="$ctype_8c.html#a7b8f652a0423a80922dd89d8829db5f2" title="vérifie si l&#39;on a un caractère minuscule." alt="" coords="233,55,295,83"/>
 </map>

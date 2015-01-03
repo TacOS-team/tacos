@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/include/clock.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -95,8 +96,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Gestion de l'horloge et du temps en général.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="ksyscall_8h_source.html">ksyscall.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="ksyscall_8h_source.html">ksyscall.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de clock.h:</div>
 <div class="dyncontent">
@@ -109,58 +110,76 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <div class="dyncontent">
 <div class="center"><img src="clock_8h__dep__incl.png" border="0" usemap="#kernel_2include_2clock_8hdep" alt=""/></div>
 <map name="kernel_2include_2clock_8hdep" id="kernel_2include_2clock_8hdep">
-<area shape="rect" id="node3" href="clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="5,83,107,111"/><area shape="rect" id="node5" href="fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="292,246,460,274"/><area shape="rect" id="node16" href="fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="60,425,217,453"/><area shape="rect" id="node20" href="events_8h.html" title="kernel/include/events.h" alt="" coords="2364,83,2519,111"/><area shape="rect" id="node24" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="1877,339,1984,367"/><area shape="rect" id="node26" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="2535,161,2660,189"/><area shape="rect" id="node28" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="836,83,980,111"/><area shape="rect" id="node7" href="fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="601,339,721,367"/><area shape="rect" id="node9" href="fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="181,339,339,367"/><area shape="rect" id="node13" href="fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="292,425,460,453"/><area shape="rect" id="node11" href="fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="408,502,587,530"/><area shape="rect" id="node22" href="events_8c.html" title="Gestion d&#39;évènements datés." alt="" coords="2401,161,2511,189"/><area shape="rect" id="node31" href="fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="732,246,879,274"/><area shape="rect" id="node38" href="kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="889,161,1044,189"/><area shape="rect" id="node49" href="kunistd_8h.html" title="Principales fonctions de l&#39;API POSIX (read, write, seek, stat...)" alt="" coords="1425,161,1583,189"/><area shape="rect" id="node54" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="585,246,708,274"/><area shape="rect" id="node60" href="vfs_8h.html" title="Virtual File System." alt="" coords="1643,161,1776,189"/><area shape="rect" id="node36" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="872,339,960,367"/><area shape="rect" id="node40" href="devfs_8c.html" title="DevFS." alt="" coords="1284,246,1401,274"/><area shape="rect" id="node43" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="1004,246,1127,274"/><area shape="rect" id="node45" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="1151,246,1260,274"/><area shape="rect" id="node51" href="elf_8c.html" title="Bibliotèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="1425,246,1511,274"/><area shape="rect" id="node56" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="1721,246,1833,274"/><area shape="rect" id="node58" href="module_8c.html" title="kernel/module.c" alt="" coords="1585,246,1697,274"/><area shape="rect" id="node62" href="dcache_8c.html" title="dentry cache" alt="" coords="2164,246,2276,274"/><area shape="rect" id="node65" href="ext2__internal_8h.html" title="kernel/fs/ext2/ext2\l_internal.h" alt="" coords="2580,238,2708,282"/><area shape="rect" id="node71" href="ext2_8h.html" title="Driver Ext2." alt="" coords="2401,246,2556,274"/><area shape="rect" id="node79" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="1908,246,2009,274"/><area shape="rect" id="node81" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="2033,246,2140,274"/><area shape="rect" id="node67" href="ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="2571,339,2709,367"/><area shape="rect" id="node74" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2\l_functions.c" alt="" coords="2415,331,2543,375"/></map>
+<area shape="rect" id="node2" href="clock_8c.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="5,80,108,107"/><area shape="rect" id="node3" href="fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="328,237,497,263"/><area shape="rect" id="node8" href="fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="25,408,184,435"/><area shape="rect" id="node9" href="events_8h.html" title="kernel/include/events.h" alt="" coords="1509,80,1663,107"/><area shape="rect" id="node11" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="1282,237,1389,263"/><area shape="rect" id="node12" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="1901,155,2028,181"/><area shape="rect" id="node13" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier. " alt="" coords="1024,80,1169,107"/><area shape="rect" id="node4" href="fat_8c.html" title="Driver FAT. " alt="" coords="494,326,614,353"/><area shape="rect" id="node5" href="fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT. " alt="" coords="260,326,419,353"/><area shape="rect" id="node7" href="fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="375,408,544,435"/><area shape="rect" id="node6" href="fat__functions_8c.html" title="Fonctions pour le driver FAT. " alt="" coords="369,483,549,509"/><area shape="rect" id="node10" href="events_8c.html" title="Gestion d&#39;évènements datés. " alt="" coords="1767,155,1877,181"/><area shape="rect" id="node14" href="fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="573,237,719,263"/><area shape="rect" id="node16" href="kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers. " alt="" coords="993,155,1147,181"/><area shape="rect" id="node21" href="kunistd_8h.html" title="Principales fonctions de l&#39;API POSIX (read, write, seek, stat...) " alt="" coords="1532,155,1691,181"/><area shape="rect" id="node23" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="2415,237,2539,263"/><area shape="rect" id="node26" href="vfs_8h.html" title="Virtual File System. " alt="" coords="1373,155,1508,181"/><area shape="rect" id="node15" href="init_8c.html" title="kernel/init.c" alt="" coords="1127,326,1215,353"/><area shape="rect" id="node17" href="devfs_8c.html" title="DevFS. " alt="" coords="1139,237,1257,263"/><area shape="rect" id="node18" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="743,237,866,263"/><area shape="rect" id="node19" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="891,237,1001,263"/><area shape="rect" id="node20" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage. " alt="" coords="1025,237,1115,263"/><area shape="rect" id="node22" href="elf_8c.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF. " alt="" coords="2563,237,2649,263"/><area shape="rect" id="node24" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="2277,237,2391,263"/><area shape="rect" id="node25" href="module_8c.html" title="kernel/module.c" alt="" coords="2140,237,2253,263"/><area shape="rect" id="node27" href="dcache_8c.html" title="dentry cache " alt="" coords="1544,237,1657,263"/><area shape="rect" id="node28" href="ext2__internal_8h.html" title="kernel/fs/ext2/ext2\l_internal.h" alt="" coords="1861,229,1989,271"/><area shape="rect" id="node30" href="ext2_8h.html" title="Driver Ext2. " alt="" coords="1682,237,1837,263"/><area shape="rect" id="node32" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="2013,237,2116,263"/><area shape="rect" id="node33" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1413,237,1519,263"/><area shape="rect" id="node29" href="ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="1851,326,1990,353"/><area shape="rect" id="node31" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2\l_functions.c" alt="" coords="1695,319,1823,360"/></map>
 </div>
 </div>
 <p><a href="clock_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Structures de données</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtimeval.html">timeval</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtimespec.html">timespec</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtm.html">tm</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a3d9fc3c745d0880902fe3ea3d5d5f71e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#a3d9fc3c745d0880902fe3ea3d5d5f71e">CLOCKS_PER_SEC</a>&#160;&#160;&#160;1000</td></tr>
+<tr class="separator:a3d9fc3c745d0880902fe3ea3d5d5f71e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a69d6cbdab5f24c2e66959293f210c1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#a6a69d6cbdab5f24c2e66959293f210c1">USEC_PER_SEC</a>&#160;&#160;&#160;1000000</td></tr>
+<tr class="separator:a6a69d6cbdab5f24c2e66959293f210c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
 <tr class="memitem:aaaf414ca0598a3633e6e9161cbb5a58a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaaf414ca0598a3633e6e9161cbb5a58a"></a>
 typedef long int&#160;</td><td class="memItemRight" valign="bottom"><b>time_t</b></td></tr>
+<tr class="separator:aaaf414ca0598a3633e6e9161cbb5a58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a395cccf6dc65e52ae3eb47f3d23282b9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a395cccf6dc65e52ae3eb47f3d23282b9"></a>
 typedef long int&#160;</td><td class="memItemRight" valign="bottom"><b>clock_t</b></td></tr>
+<tr class="separator:a395cccf6dc65e52ae3eb47f3d23282b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a33cb84a5e3ce0c59505d776e5a736c08"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#a33cb84a5e3ce0c59505d776e5a736c08">compare_times</a> (struct <a class="el" href="structtimeval.html">timeval</a> a, struct <a class="el" href="structtimeval.html">timeval</a> b)</td></tr>
-<tr class="memdesc:a33cb84a5e3ce0c59505d776e5a736c08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparaison de 2 temps. Comparaison de 2 temps.  <a href="#a33cb84a5e3ce0c59505d776e5a736c08"></a><br/></td></tr>
+<tr class="memdesc:a33cb84a5e3ce0c59505d776e5a736c08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparaison de 2 temps. Comparaison de 2 temps.  <a href="#a33cb84a5e3ce0c59505d776e5a736c08">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a33cb84a5e3ce0c59505d776e5a736c08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9cc0a879e88eea28e4e8b57318ef8e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9cc0a879e88eea28e4e8b57318ef8e5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#ae9cc0a879e88eea28e4e8b57318ef8e5">clock_init</a> ()</td></tr>
-<tr class="memdesc:ae9cc0a879e88eea28e4e8b57318ef8e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation de l'horloge. Initialisation de l'horloge. <br/></td></tr>
+<tr class="memdesc:ae9cc0a879e88eea28e4e8b57318ef8e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation de l'horloge. Initialisation de l'horloge. <br /></td></tr>
+<tr class="separator:ae9cc0a879e88eea28e4e8b57318ef8e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc0cc7974581cee0900c817955ff2f5b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc0cc7974581cee0900c817955ff2f5b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#abc0cc7974581cee0900c817955ff2f5b">clock_tick</a> ()</td></tr>
-<tr class="memdesc:abc0cc7974581cee0900c817955ff2f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Incrémente le temps système. Ajoute une milliseconde au temps système, ne met rien à jour au dela du jour actuel. <br/></td></tr>
+<tr class="memdesc:abc0cc7974581cee0900c817955ff2f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Incrémente le temps système. Ajoute une milliseconde au temps système, ne met rien à jour au dela du jour actuel. <br /></td></tr>
+<tr class="separator:abc0cc7974581cee0900c817955ff2f5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36d22a2c7fc11c6f382386a8b658b6f8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a36d22a2c7fc11c6f382386a8b658b6f8"></a>
 <a class="el" href="time_8h.html#a395cccf6dc65e52ae3eb47f3d23282b9">clock_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#a36d22a2c7fc11c6f382386a8b658b6f8">get_clock</a> ()</td></tr>
-<tr class="memdesc:a36d22a2c7fc11c6f382386a8b658b6f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1ms). <br/></td></tr>
+<tr class="memdesc:a36d22a2c7fc11c6f382386a8b658b6f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1ms). <br /></td></tr>
+<tr class="separator:a36d22a2c7fc11c6f382386a8b658b6f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab594b78936f7a5c4ba0c3b7ad653b6d5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#ab594b78936f7a5c4ba0c3b7ad653b6d5">SYSCALL_HANDLER1</a> (sys_getclock, <a class="el" href="time_8h.html#a395cccf6dc65e52ae3eb47f3d23282b9">clock_t</a> *clock)</td></tr>
-<tr class="memdesc:ab594b78936f7a5c4ba0c3b7ad653b6d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Syscall handler pour get_clock. Syscall handler pour get_clock.  <a href="#ab594b78936f7a5c4ba0c3b7ad653b6d5"></a><br/></td></tr>
+<tr class="memdesc:ab594b78936f7a5c4ba0c3b7ad653b6d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Syscall handler pour get_clock. Syscall handler pour get_clock.  <a href="#ab594b78936f7a5c4ba0c3b7ad653b6d5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab594b78936f7a5c4ba0c3b7ad653b6d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1bd72177a9697cdd2eec38a4fe6651e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#ab1bd72177a9697cdd2eec38a4fe6651e">get_date</a> ()</td></tr>
-<tr class="memdesc:ab1bd72177a9697cdd2eec38a4fe6651e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la date actuelle en secondes. Retourne la date actuelle en secondes.  <a href="#ab1bd72177a9697cdd2eec38a4fe6651e"></a><br/></td></tr>
+<tr class="memdesc:ab1bd72177a9697cdd2eec38a4fe6651e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la date actuelle en secondes. Retourne la date actuelle en secondes.  <a href="#ab1bd72177a9697cdd2eec38a4fe6651e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab1bd72177a9697cdd2eec38a4fe6651e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bfadf8175457fd7fbe6b53a46788a4e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#a8bfadf8175457fd7fbe6b53a46788a4e">SYSCALL_HANDLER1</a> (sys_getdate, <a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a> *date)</td></tr>
-<tr class="memdesc:a8bfadf8175457fd7fbe6b53a46788a4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Syscall handler pour get_date. Syscall handler pour get_date.  <a href="#a8bfadf8175457fd7fbe6b53a46788a4e"></a><br/></td></tr>
+<tr class="memdesc:a8bfadf8175457fd7fbe6b53a46788a4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Syscall handler pour get_date. Syscall handler pour get_date.  <a href="#a8bfadf8175457fd7fbe6b53a46788a4e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8bfadf8175457fd7fbe6b53a46788a4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a052807a5c6ae63175a937381014a5701"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#a052807a5c6ae63175a937381014a5701">timeval_add_usec</a> (struct <a class="el" href="structtimeval.html">timeval</a> *t, <a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a> usec)</td></tr>
-<tr class="memdesc:a052807a5c6ae63175a937381014a5701"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute des us à un temps. Ajoute des us à un temps contenu dans une structure timeval.  <a href="#a052807a5c6ae63175a937381014a5701"></a><br/></td></tr>
+<tr class="memdesc:a052807a5c6ae63175a937381014a5701"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute des us à un temps. Ajoute des us à un temps contenu dans une structure timeval.  <a href="#a052807a5c6ae63175a937381014a5701">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a052807a5c6ae63175a937381014a5701"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dc3166547de3bc1b9bdf45fdfb7d2e5"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtimeval.html">timeval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5">get_tv</a> ()</td></tr>
-<tr class="memdesc:a0dc3166547de3bc1b9bdf45fdfb7d2e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et microsecondes.  <a href="#a0dc3166547de3bc1b9bdf45fdfb7d2e5"></a><br/></td></tr>
+<tr class="memdesc:a0dc3166547de3bc1b9bdf45fdfb7d2e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et microsecondes.  <a href="#a0dc3166547de3bc1b9bdf45fdfb7d2e5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0dc3166547de3bc1b9bdf45fdfb7d2e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab07bd3e86ff449c65b06fd50ec8e422e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#ab07bd3e86ff449c65b06fd50ec8e422e">clock_mktime</a> (struct <a class="el" href="structtm.html">tm</a> *timep)</td></tr>
-<tr class="memdesc:ab07bd3e86ff449c65b06fd50ec8e422e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conversion struct tm vers time_t. Conversion d'une date exprimée sous la forme secondes, minutes, heures, jour, mois, année, etc, vers le format time_t.  <a href="#ab07bd3e86ff449c65b06fd50ec8e422e"></a><br/></td></tr>
+<tr class="memdesc:ab07bd3e86ff449c65b06fd50ec8e422e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conversion struct tm vers time_t. Conversion d'une date exprimée sous la forme secondes, minutes, heures, jour, mois, année, etc, vers le format time_t.  <a href="#ab07bd3e86ff449c65b06fd50ec8e422e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab07bd3e86ff449c65b06fd50ec8e422e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accc6640b25e5d278185c360538d3cc3b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="accc6640b25e5d278185c360538d3cc3b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>klog_systime</b> ()</td></tr>
+<tr class="separator:accc6640b25e5d278185c360538d3cc3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -170,7 +189,7 @@ LICENSE</h1>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des macros</h2>
+</div><h2 class="groupheader">Documentation des macros</h2>
 <a class="anchor" id="a3d9fc3c745d0880902fe3ea3d5d5f71e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -197,7 +216,7 @@ DESCRIPTION</h1>
 
 </div>
 </div>
-<h2>Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="ab07bd3e86ff449c65b06fd50ec8e422e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -218,7 +237,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="clock_8h_ab07bd3e86ff449c65b06fd50ec8e422e_icgraph.png" border="0" usemap="#clock_8h_ab07bd3e86ff449c65b06fd50ec8e422e_icgraph" alt=""/></div>
 <map name="clock_8h_ab07bd3e86ff449c65b06fd50ec8e422e_icgraph" id="clock_8h_ab07bd3e86ff449c65b06fd50ec8e422e_icgraph">
-<area shape="rect" id="node3" href="clock_8h.html#ae9cc0a879e88eea28e4e8b57318ef8e5" title="Initialisation de l&#39;horloge. Initialisation de l&#39;horloge." alt="" coords="157,5,235,33"/><area shape="rect" id="node5" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="283,5,368,33"/></map>
+<area shape="rect" id="node2" href="clock_8h.html#ae9cc0a879e88eea28e4e8b57318ef8e5" title="Initialisation de l&#39;horloge. Initialisation de l&#39;horloge. " alt="" coords="156,5,233,32"/><area shape="rect" id="node3" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements " alt="" coords="281,5,367,32"/></map>
 </div>
 </p>
 
@@ -254,6 +273,9 @@ Voici le graphe des appelants de cette fonction :</div>
 <a class="anchor" id="ab1bd72177a9697cdd2eec38a4fe6651e"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a> get_date </td>
@@ -262,6 +284,11 @@ Voici le graphe des appelants de cette fonction :</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Renvoie</dt><dd>la date en secondes. </dd></dl>
 
@@ -270,7 +297,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="clock_8h_ab1bd72177a9697cdd2eec38a4fe6651e_icgraph.png" border="0" usemap="#clock_8h_ab1bd72177a9697cdd2eec38a4fe6651e_icgraph" alt=""/></div>
 <map name="clock_8h_ab1bd72177a9697cdd2eec38a4fe6651e_icgraph" id="clock_8h_ab1bd72177a9697cdd2eec38a4fe6651e_icgraph">
-<area shape="rect" id="node3" href="clock_8h.html#a8bfadf8175457fd7fbe6b53a46788a4e" title="Syscall handler pour get_date. Syscall handler pour get_date." alt="" coords="125,5,285,33"/><area shape="rect" id="node5" href="clock_8h.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="176,55,235,83"/><area shape="rect" id="node7" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur" alt="" coords="335,30,476,58"/><area shape="rect" id="node13" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="540,81,623,109"/><area shape="rect" id="node9" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="527,30,636,58"/><area shape="rect" id="node11" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="685,55,845,83"/></map>
+<area shape="rect" id="node2" href="clock_8h.html#a8bfadf8175457fd7fbe6b53a46788a4e" title="Syscall handler pour get_date. Syscall handler pour get_date. " alt="" coords="125,5,285,32"/><area shape="rect" id="node3" href="clock_8h.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="176,56,235,83"/><area shape="rect" id="node4" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur " alt="" coords="333,31,476,57"/><area shape="rect" id="node7" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher " alt="" coords="538,81,621,108"/><area shape="rect" id="node5" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="524,31,635,57"/><area shape="rect" id="node6" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep. " alt="" coords="683,56,843,83"/></map>
 </div>
 </p>
 
@@ -279,9 +306,6 @@ Voici le graphe des appelants de cette fonction :</div>
 <a class="anchor" id="a0dc3166547de3bc1b9bdf45fdfb7d2e5"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">struct <a class="el" href="structtimeval.html">timeval</a> get_tv </td>
@@ -290,11 +314,6 @@ Voici le graphe des appelants de cette fonction :</div>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Renvoie</dt><dd>une structure timeval. </dd></dl>
 
@@ -303,7 +322,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="clock_8h_a0dc3166547de3bc1b9bdf45fdfb7d2e5_cgraph.png" border="0" usemap="#clock_8h_a0dc3166547de3bc1b9bdf45fdfb7d2e5_cgraph" alt=""/></div>
 <map name="clock_8h_a0dc3166547de3bc1b9bdf45fdfb7d2e5_cgraph" id="clock_8h_a0dc3166547de3bc1b9bdf45fdfb7d2e5_cgraph">
-<area shape="rect" id="node3" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes." alt="" coords="116,5,188,33"/><area shape="rect" id="node5" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="113,55,191,83"/></map>
+<area shape="rect" id="node2" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes. " alt="" coords="115,5,187,32"/><area shape="rect" id="node3" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="112,56,191,83"/></map>
 </div>
 </p>
 
@@ -312,7 +331,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="clock_8h_a0dc3166547de3bc1b9bdf45fdfb7d2e5_icgraph.png" border="0" usemap="#clock_8h_a0dc3166547de3bc1b9bdf45fdfb7d2e5_icgraph" alt=""/></div>
 <map name="clock_8h_a0dc3166547de3bc1b9bdf45fdfb7d2e5_icgraph" id="clock_8h_a0dc3166547de3bc1b9bdf45fdfb7d2e5_icgraph">
-<area shape="rect" id="node3" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur" alt="" coords="113,5,255,33"/><area shape="rect" id="node9" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="319,55,401,83"/><area shape="rect" id="node5" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="305,5,415,33"/><area shape="rect" id="node7" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="464,30,624,58"/></map>
+<area shape="rect" id="node2" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur " alt="" coords="112,5,255,32"/><area shape="rect" id="node5" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher " alt="" coords="317,56,399,83"/><area shape="rect" id="node3" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="303,5,413,32"/><area shape="rect" id="node4" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep. " alt="" coords="461,31,621,57"/></map>
 </div>
 </p>
 
@@ -353,7 +372,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="clock_8h_ab594b78936f7a5c4ba0c3b7ad653b6d5_cgraph.png" border="0" usemap="#clock_8h_ab594b78936f7a5c4ba0c3b7ad653b6d5_cgraph" alt=""/></div>
 <map name="clock_8h_ab594b78936f7a5c4ba0c3b7ad653b6d5_cgraph" id="clock_8h_ab594b78936f7a5c4ba0c3b7ad653b6d5_cgraph">
-<area shape="rect" id="node3" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="215,5,292,33"/></map>
+<area shape="rect" id="node3" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="209,5,287,33"/></map>
 </div>
 </p>
 
@@ -394,7 +413,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="clock_8h_a8bfadf8175457fd7fbe6b53a46788a4e_cgraph.png" border="0" usemap="#clock_8h_a8bfadf8175457fd7fbe6b53a46788a4e_cgraph" alt=""/></div>
 <map name="clock_8h_a8bfadf8175457fd7fbe6b53a46788a4e_cgraph" id="clock_8h_a8bfadf8175457fd7fbe6b53a46788a4e_cgraph">
-<area shape="rect" id="node3" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes." alt="" coords="213,5,285,33"/></map>
+<area shape="rect" id="node2" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes. " alt="" coords="213,5,285,32"/></map>
 </div>
 </p>
 
@@ -436,7 +455,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="clock_8h_a052807a5c6ae63175a937381014a5701_icgraph.png" border="0" usemap="#clock_8h_a052807a5c6ae63175a937381014a5701_icgraph" alt=""/></div>
 <map name="clock_8h_a052807a5c6ae63175a937381014a5701_icgraph" id="clock_8h_a052807a5c6ae63175a937381014a5701_icgraph">
-<area shape="rect" id="node3" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur" alt="" coords="183,5,324,33"/><area shape="rect" id="node9" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="388,55,471,83"/><area shape="rect" id="node5" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="375,5,484,33"/><area shape="rect" id="node7" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="533,30,693,58"/></map>
+<area shape="rect" id="node2" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur " alt="" coords="180,5,323,32"/><area shape="rect" id="node5" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher " alt="" coords="385,56,467,83"/><area shape="rect" id="node3" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="371,5,481,32"/><area shape="rect" id="node4" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep. " alt="" coords="529,31,689,57"/></map>
 </div>
 </p>
 
@@ -445,9 +464,9 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:35 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

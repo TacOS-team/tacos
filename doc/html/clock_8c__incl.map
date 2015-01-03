@@ -1,11 +1,11 @@
 <map id="kernel/clock.c" name="kernel/clock.c">
-<area shape="rect" id="node5" href="$ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="91,83,160,111"/>
-<area shape="rect" id="node7" href="$i8254_8h.html" title="Initialisation du i8254 (timer)." alt="" coords="167,161,228,189"/>
-<area shape="rect" id="node11" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="235,83,296,111"/>
-<area shape="rect" id="node17" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="404,161,489,189"/>
-<area shape="rect" id="node20" href="$kstdio_8h.html" title="kprintf" alt="" coords="371,83,437,111"/>
-<area shape="rect" id="node22" href="$limits_8h.html" title="Valeurs extrèmes pour les types de base." alt="" coords="461,83,555,111"/>
-<area shape="rect" id="node24" href="$heap_8h.html" title="heap.h" alt="" coords="537,161,596,189"/>
-<area shape="rect" id="node9" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="311,238,372,266"/>
-<area shape="rect" id="node14" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="303,161,380,189"/>
+<area shape="rect" id="node3" href="$ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="92,80,163,107"/>
+<area shape="rect" id="node4" href="$i8254_8h.html" title="Initialisation du i8254 (timer). " alt="" coords="169,155,232,181"/>
+<area shape="rect" id="node6" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="239,80,301,107"/>
+<area shape="rect" id="node8" href="$interrupts_8h.html" title="Gestion des interruptions.. " alt="" coords="411,155,497,181"/>
+<area shape="rect" id="node9" href="$kstdio_8h.html" title="kprintf " alt="" coords="377,80,443,107"/>
+<area shape="rect" id="node10" href="$kernel_2include_2klibc_2limits_8h.html" title="Valeurs extrèmes pour les types de base. " alt="" coords="468,80,563,107"/>
+<area shape="rect" id="node11" href="$heap_8h.html" title="heap.h" alt="" coords="545,155,605,181"/>
+<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="316,229,379,256"/>
+<area shape="rect" id="node7" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="308,155,387,181"/>
 </map>

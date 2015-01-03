@@ -1,4 +1,4 @@
 <map id="dcache_remove" name="dcache_remove">
-<area shape="rect" id="node3" href="$hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="168,5,293,33"/>
-<area shape="rect" id="node5" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="341,5,392,33"/>
+<area shape="rect" id="node3" href="$hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="168,5,291,33"/>
+<area shape="rect" id="node5" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="339,5,389,33"/>
 </map>

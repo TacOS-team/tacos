@@ -1,52 +1,53 @@
 \hypertarget{heap_8c}{\section{Référence du fichier kernel/utils/heap.c}
-\label{heap_8c}\index{kernel/utils/heap.\-c@{kernel/utils/heap.\-c}}
+\label{heap_8c}\index{kernel/utils/heap.\+c@{kernel/utils/heap.\+c}}
 }
-{\ttfamily \#include $<$heap.\-h$>$}\\*
-{\ttfamily \#include $<$klibc/string.\-h$>$}\\*
-{\ttfamily \#include $<$debug.\-h$>$}\\*
-Graphe des dépendances par inclusion de heap.\-c\-:\nopagebreak
+{\ttfamily \#include $<$heap.\+h$>$}\\*
+{\ttfamily \#include $<$klibc/string.\+h$>$}\\*
+{\ttfamily \#include $<$debug.\+h$>$}\\*
+Graphe des dépendances par inclusion de heap.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=281pt]{heap_8c__incl}
+\includegraphics[width=284pt]{heap_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{heap_8c_ad1e10f55e192cb2229ba2b294eee1306}{init\-Heap} (\hyperlink{structheap__t}{heap\-\_\-t} $\ast$h, \hyperlink{list_8h_a35d066d4adbc5a7903210dcce0bf4717}{cmp\-\_\-func\-\_\-type} cmp, void $\ast$heap, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} elements\-\_\-size, int max\-\_\-elements)
+void \hyperlink{heap_8c_ad1e10f55e192cb2229ba2b294eee1306}{init\+Heap} (\hyperlink{structheap__t}{heap\+\_\+t} $\ast$h, \hyperlink{list_8h_a35d066d4adbc5a7903210dcce0bf4717}{cmp\+\_\+func\+\_\+type} cmp, void $\ast$heap, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} elements\+\_\+size, int max\+\_\+elements)
 \item 
-void $\ast$ \hyperlink{heap_8c_a645a9636c018450e7629b5e2c8505b58}{get\-Top} (\hyperlink{structheap__t}{heap\-\_\-t} $\ast$h)
+void $\ast$ \hyperlink{heap_8c_a645a9636c018450e7629b5e2c8505b58}{get\+Top} (\hyperlink{structheap__t}{heap\+\_\+t} $\ast$h)
 \item 
-int \hyperlink{heap_8c_af42ea714951cb83a022c742d5bce5300}{add\-Element} (\hyperlink{structheap__t}{heap\-\_\-t} $\ast$h, void $\ast$element)
+int \hyperlink{heap_8c_af42ea714951cb83a022c742d5bce5300}{add\+Element} (\hyperlink{structheap__t}{heap\+\_\+t} $\ast$h, void $\ast$element)
 \item 
-int \hyperlink{heap_8c_ab2d2b864167da4bf231eb63de7c83ff1}{removetop} (\hyperlink{structheap__t}{heap\-\_\-t} $\ast$h)
+int \hyperlink{heap_8c_ab2d2b864167da4bf231eb63de7c83ff1}{removetop} (\hyperlink{structheap__t}{heap\+\_\+t} $\ast$h)
 \item 
-\hypertarget{heap_8c_a86bf8b32a1ee2c700a5ad9f1eb07b0d9}{int {\bfseries del\-Element} (\hyperlink{structheap__t}{heap\-\_\-t} $\ast$heap, int id, id\-\_\-func\-\_\-type func)}\label{heap_8c_a86bf8b32a1ee2c700a5ad9f1eb07b0d9}
+\hypertarget{heap_8c_a86bf8b32a1ee2c700a5ad9f1eb07b0d9}{int {\bfseries del\+Element} (\hyperlink{structheap__t}{heap\+\_\+t} $\ast$heap, int id, id\+\_\+func\+\_\+type func)}\label{heap_8c_a86bf8b32a1ee2c700a5ad9f1eb07b0d9}
 
 \end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010-\/2014 Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 Description de ce que fait le fichier 
 
 \subsection{Documentation des fonctions}
-\hypertarget{heap_8c_af42ea714951cb83a022c742d5bce5300}{\index{heap.\-c@{heap.\-c}!add\-Element@{add\-Element}}
-\index{add\-Element@{add\-Element}!heap.c@{heap.\-c}}
-\subsubsection[{add\-Element}]{\setlength{\rightskip}{0pt plus 5cm}int add\-Element (
+\hypertarget{heap_8c_af42ea714951cb83a022c742d5bce5300}{\index{heap.\+c@{heap.\+c}!add\+Element@{add\+Element}}
+\index{add\+Element@{add\+Element}!heap.\+c@{heap.\+c}}
+\subsubsection[{add\+Element}]{\setlength{\rightskip}{0pt plus 5cm}int add\+Element (
 \begin{DoxyParamCaption}
-\item[{{\bf heap\-\_\-t} $\ast$}]{h, }
+\item[{{\bf heap\+\_\+t} $\ast$}]{h, }
 \item[{void $\ast$}]{element}
 \end{DoxyParamCaption}
 )}}\label{heap_8c_af42ea714951cb83a022c742d5bce5300}
@@ -64,41 +65,42 @@ Ajoute un element au tas.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=238pt]{heap_8c_af42ea714951cb83a022c742d5bce5300_cgraph}
+\includegraphics[width=237pt]{heap_8c_af42ea714951cb83a022c742d5bce5300_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{heap_8c_a645a9636c018450e7629b5e2c8505b58}{\index{heap.\-c@{heap.\-c}!get\-Top@{get\-Top}}
-\index{get\-Top@{get\-Top}!heap.c@{heap.\-c}}
-\subsubsection[{get\-Top}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ get\-Top (
+\hypertarget{heap_8c_a645a9636c018450e7629b5e2c8505b58}{\index{heap.\+c@{heap.\+c}!get\+Top@{get\+Top}}
+\index{get\+Top@{get\+Top}!heap.\+c@{heap.\+c}}
+\subsubsection[{get\+Top}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ get\+Top (
 \begin{DoxyParamCaption}
-\item[{{\bf heap\-\_\-t} $\ast$}]{h}
+\item[{{\bf heap\+\_\+t} $\ast$}]{h}
 \end{DoxyParamCaption}
 )}}\label{heap_8c_a645a9636c018450e7629b5e2c8505b58}
 Recupere le premier élément du tas. \begin{DoxyVerb}@param h pointeur vers le tas.
 
 @return pointeur vers le premier élément du tas, NULL si aucun.\end{DoxyVerb}
- \hypertarget{heap_8c_ad1e10f55e192cb2229ba2b294eee1306}{\index{heap.\-c@{heap.\-c}!init\-Heap@{init\-Heap}}
-\index{init\-Heap@{init\-Heap}!heap.c@{heap.\-c}}
-\subsubsection[{init\-Heap}]{\setlength{\rightskip}{0pt plus 5cm}void init\-Heap (
+ \hypertarget{heap_8c_ad1e10f55e192cb2229ba2b294eee1306}{\index{heap.\+c@{heap.\+c}!init\+Heap@{init\+Heap}}
+\index{init\+Heap@{init\+Heap}!heap.\+c@{heap.\+c}}
+\subsubsection[{init\+Heap}]{\setlength{\rightskip}{0pt plus 5cm}void init\+Heap (
 \begin{DoxyParamCaption}
-\item[{{\bf heap\-\_\-t} $\ast$}]{h, }
-\item[{{\bf cmp\-\_\-func\-\_\-type}}]{cmp, }
+\item[{{\bf heap\+\_\+t} $\ast$}]{h, }
+\item[{{\bf cmp\+\_\+func\+\_\+type}}]{cmp, }
 \item[{void $\ast$}]{heap, }
-\item[{{\bf size\-\_\-t}}]{elements\-\_\-size, }
-\item[{int}]{max\-\_\-elements}
+\item[{{\bf size\+\_\+t}}]{elements\+\_\+size, }
+\item[{int}]{max\+\_\+elements}
 \end{DoxyParamCaption}
 )}}\label{heap_8c_ad1e10f55e192cb2229ba2b294eee1306}
-Initialise le tas à vide et regle la fonction de comparaison \hypertarget{heap_8c_ab2d2b864167da4bf231eb63de7c83ff1}{\index{heap.\-c@{heap.\-c}!removetop@{removetop}}
-\index{removetop@{removetop}!heap.c@{heap.\-c}}
+Initialise le tas à vide et regle la fonction de comparaison \hypertarget{heap_8c_ab2d2b864167da4bf231eb63de7c83ff1}{\index{heap.\+c@{heap.\+c}!removetop@{removetop}}
+\index{removetop@{removetop}!heap.\+c@{heap.\+c}}
 \subsubsection[{removetop}]{\setlength{\rightskip}{0pt plus 5cm}int removetop (
 \begin{DoxyParamCaption}
-\item[{{\bf heap\-\_\-t} $\ast$}]{h}
+\item[{{\bf heap\+\_\+t} $\ast$}]{h}
 \end{DoxyParamCaption}
 )}}\label{heap_8c_ab2d2b864167da4bf231eb63de7c83ff1}
 Retire le sommet. 
@@ -111,11 +113,12 @@ Retire le sommet.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=232pt]{heap_8c_ab2d2b864167da4bf231eb63de7c83ff1_cgraph}
+\includegraphics[width=231pt]{heap_8c_ab2d2b864167da4bf231eb63de7c83ff1_cgraph}
 \end{center}
 \end{figure}
 

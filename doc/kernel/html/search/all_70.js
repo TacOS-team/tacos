@@ -30,6 +30,8 @@ var searchData=
   ['pci_5ffunction_5ft',['pci_function_t',['../structpci__function__t.html',1,'']]],
   ['pci_5ftypes_2eh',['pci_types.h',['../pci__types_8h.html',1,'']]],
   ['pci_5fvendor_2eh',['pci_vendor.h',['../pci__vendor_8h.html',1,'']]],
+  ['pgdown_5fkey',['PGDOWN_KEY',['../keyboard_8c.html#ab4c735965485f50ac6b61dd32726751f',1,'keyboard.c']]],
+  ['pgup_5fkey',['PGUP_KEY',['../keyboard_8c.html#a0af63b409c570a94ca8834f81fc10587',1,'keyboard.c']]],
   ['physical_5fpage_5fdescr',['physical_page_descr',['../structphysical__page__descr.html',1,'']]],
   ['pid',['pid',['../structextra__data__procfs__t.html#ad501deb466cabf589b4617eac9bcce30',1,'extra_data_procfs_t::pid()'],['../structprocess__t.html#accfb1a515727ba4c085e49166a302af0',1,'process_t::pid()']]],
   ['pos_5fread',['pos_read',['../structextra__data__pipe__t.html#ab5099bb3254b99c3601d267528cd4dc1',1,'extra_data_pipe_t']]],

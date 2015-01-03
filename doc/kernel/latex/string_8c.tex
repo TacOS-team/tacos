@@ -15,10 +15,17 @@ Graphe des dépendances par inclusion de string.\-c\-:\nopagebreak
 \includegraphics[width=226pt]{string_8c__incl}
 \end{center}
 \end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{string_8c_a01c6b59ca21f041b23efbb9845cc4e32}{wsize}~sizeof(unsigned int)
+\item 
+\#define \hyperlink{string_8c_ab5deaef115ff5ca6ef1457d923d8331a}{wmask}~(\hyperlink{string_8c_a01c6b59ca21f041b23efbb9845cc4e32}{wsize} -\/ 1)
+\end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-void $\ast$ \hyperlink{string_8c_ad1b7311b48288a0d08172f26ff64dd67}{memcpy} (void $\ast$dest, const void $\ast$src, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+void $\ast$ \hyperlink{string_8c_a14938524dcbeb59d7117ba5e151ad1b1}{memcpy} (void $\ast$dest, const void $\ast$src, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
 \begin{DoxyCompactList}\small\item\em Copie une zone mémoire. \end{DoxyCompactList}\item 
 \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} \hyperlink{string_8c_aa383452fe445bfae989358c9d7d96f4f}{strlen} (const char $\ast$s)
 \begin{DoxyCompactList}\small\item\em Calcule la longueur d'une chaîne de caractères. \end{DoxyCompactList}\item 
@@ -65,7 +72,7 @@ char $\ast$ \hyperlink{string_8c_a8cb460f64c449f2a9b9b7a40569ce0fe}{strtok} (cha
 Tac\-O\-S developers
 \end{DoxyAuthor}
 \hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+Copyright (C) 2010-\/2014 Tac\-O\-S developers.
 
 This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
@@ -73,6 +80,15 @@ This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-
 
 You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{vmm_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{vmm_8c_DESCRIPTION}
 
+
+\subsection{Documentation des macros}
+\hypertarget{string_8c_ab5deaef115ff5ca6ef1457d923d8331a}{\index{string.\-c@{string.\-c}!wmask@{wmask}}
+\index{wmask@{wmask}!string.c@{string.\-c}}
+\subsubsection[{wmask}]{\setlength{\rightskip}{0pt plus 5cm}\#define wmask~({\bf wsize} -\/ 1)}}\label{string_8c_ab5deaef115ff5ca6ef1457d923d8331a}
+Masque utilisé pour copier de façon alignée. \hypertarget{string_8c_a01c6b59ca21f041b23efbb9845cc4e32}{\index{string.\-c@{string.\-c}!wsize@{wsize}}
+\index{wsize@{wsize}!string.c@{string.\-c}}
+\subsubsection[{wsize}]{\setlength{\rightskip}{0pt plus 5cm}\#define wsize~sizeof(unsigned int)}}\label{string_8c_a01c6b59ca21f041b23efbb9845cc4e32}
+Taille d'un entier non signé. 
 
 \subsection{Documentation des fonctions}
 \hypertarget{string_8c_a9e6df54ee04e18a3772335580e2ed872}{\index{string.\-c@{string.\-c}!memcmp@{memcmp}}
@@ -108,7 +124,7 @@ You should have received a copy of the G\-N\-U General Public License along with
 \begin{DoxyReturn}{Renvoie}
 un entier négatif, positif ou nul si les n premiers octets de s1 sont respectivement plus petits, plus grands ou identiques aux n premiers octets de s2. 
 \end{DoxyReturn}
-\hypertarget{string_8c_ad1b7311b48288a0d08172f26ff64dd67}{\index{string.\-c@{string.\-c}!memcpy@{memcpy}}
+\hypertarget{string_8c_a14938524dcbeb59d7117ba5e151ad1b1}{\index{string.\-c@{string.\-c}!memcpy@{memcpy}}
 \index{memcpy@{memcpy}!string.c@{string.\-c}}
 \subsubsection[{memcpy}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ memcpy (
 \begin{DoxyParamCaption}
@@ -116,7 +132,7 @@ un entier négatif, positif ou nul si les n premiers octets de s1 sont respectiv
 \item[{const void $\ast$}]{src, }
 \item[{{\bf size\-\_\-t}}]{size}
 \end{DoxyParamCaption}
-)}}\label{string_8c_ad1b7311b48288a0d08172f26ff64dd67}
+)}}\label{string_8c_a14938524dcbeb59d7117ba5e151ad1b1}
 La fonction \hyperlink{string_8h_ad1b7311b48288a0d08172f26ff64dd67}{memcpy()} copie une zone mémoire de size octets depuis src vers la zone mémoire dest. Les deux zones ne doivent pas se chevaucher sinon il faut utiliser memmove.
 
 \begin{DoxySeeAlso}{Voir également}
@@ -140,7 +156,7 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{string_8c_ad1b7311b48288a0d08172f26ff64dd67_icgraph}
+\includegraphics[width=350pt]{string_8c_a14938524dcbeb59d7117ba5e151ad1b1_icgraph}
 \end{center}
 \end{figure}
 
@@ -157,7 +173,7 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 La fonction \hyperlink{string_8h_a802c986820d3866639922b6bc9484f90}{memmove()} copie n octets depuis la zone mémoire src vers la zone mémoire dest. La différence avec memcpy c'est que les zones peuvent se chevaucher.
 
 \begin{DoxySeeAlso}{Voir également}
-\hyperlink{string_8c_ad1b7311b48288a0d08172f26ff64dd67}{memcpy}
+\hyperlink{string_8c_a14938524dcbeb59d7117ba5e151ad1b1}{memcpy}
 \end{DoxySeeAlso}
 
 \begin{DoxyParams}{Paramètres}
@@ -200,7 +216,7 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=288pt]{string_8c_ace6ee45c30e71865e6eb635200379db9_icgraph}
+\includegraphics[width=284pt]{string_8c_ace6ee45c30e71865e6eb635200379db9_icgraph}
 \end{center}
 \end{figure}
 
@@ -271,7 +287,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=202pt]{string_8c_a8908188ae9fc2f05d993257ef001d553_cgraph}
+\includegraphics[width=200pt]{string_8c_a8908188ae9fc2f05d993257ef001d553_cgraph}
 \end{center}
 \end{figure}
 
@@ -497,7 +513,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=212pt]{string_8c_a4c10a214b02eed3dafc48c59ad71abbd_cgraph}
+\includegraphics[width=210pt]{string_8c_a4c10a214b02eed3dafc48c59ad71abbd_cgraph}
 \end{center}
 \end{figure}
 

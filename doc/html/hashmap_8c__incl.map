@@ -1,5 +1,5 @@
 <map id="kernel/utils/hashmap.c" name="kernel/utils/hashmap.c">
-<area shape="rect" id="node3" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="5,83,83,111"/>
-<area shape="rect" id="node7" href="$hashmap_8h.html" title="hashmap.h" alt="" coords="107,83,192,111"/>
-<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="13,161,75,189"/>
+<area shape="rect" id="node2" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space. " alt="" coords="5,80,83,107"/>
+<area shape="rect" id="node4" href="$hashmap_8h.html" title="hashmap.h" alt="" coords="107,80,192,107"/>
+<area shape="rect" id="node3" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="13,155,75,181"/>
 </map>

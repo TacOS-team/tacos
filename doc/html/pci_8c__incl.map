@@ -1,8 +1,8 @@
 <map id="kernel/pci/pci.c" name="kernel/pci/pci.c">
-<area shape="rect" id="node3" href="$pci_8h.html" title="pci.h" alt="" coords="5,83,53,111"/>
-<area shape="rect" id="node7" href="$pci__types_8h.html" title="pci_types.h" alt="" coords="57,161,143,189"/>
-<area shape="rect" id="node10" href="$pci__config_8h.html" title="pci_config.h" alt="" coords="128,83,219,111"/>
-<area shape="rect" id="node16" href="$klog_8h.html" title="Logging macros." alt="" coords="328,83,384,111"/>
-<area shape="rect" id="node18" href="$kstdio_8h.html" title="kprintf" alt="" coords="355,161,421,189"/>
-<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="29,238,91,266"/>
+<area shape="rect" id="node2" href="$pci_8h.html" title="pci.h" alt="" coords="5,80,55,107"/>
+<area shape="rect" id="node4" href="$pci__types_8h.html" title="pci_types.h" alt="" coords="59,155,145,181"/>
+<area shape="rect" id="node5" href="$pci__config_8h.html" title="pci_config.h" alt="" coords="130,80,221,107"/>
+<area shape="rect" id="node7" href="$klog_8h.html" title="Logging macros. " alt="" coords="333,80,389,107"/>
+<area shape="rect" id="node8" href="$kstdio_8h.html" title="kprintf " alt="" coords="359,155,426,181"/>
+<area shape="rect" id="node3" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="29,229,92,256"/>
 </map>

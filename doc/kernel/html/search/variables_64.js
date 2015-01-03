@@ -17,7 +17,6 @@ var searchData=
   ['dir',['dir',['../structdirectories__t.html#aedd8927cb97dd25be9b97fc3d823a5af',1,'directories_t']]],
   ['disp_5fcur',['disp_cur',['../structconsole__t.html#a6242c03c5b347ed6b0909c1486116bee',1,'console_t']]],
   ['dpl',['dpl',['../structx86__idt__entry.html#a5c0f7af9139df1e94d0c6d17dcd0fb66',1,'x86_idt_entry::dpl()'],['../structx86__segment__descriptor.html#ab45e49c27bbe57a568d914bd13e45ef7',1,'x86_segment_descriptor::dpl()']]],
-  ['driver_5fdata',['driver_data',['../struct__tty__struct__t.html#a974cb784cad13e547e5cace553875f90',1,'_tty_struct_t']]],
   ['driver_5fname',['driver_name',['../struct__tty__driver__t.html#ae2f43b40c48f11feab23551e34a4fe6d',1,'_tty_driver_t']]],
   ['drives_5flength',['drives_length',['../structmultiboot__info.html#abe859eaa7e97309f072b3bc1caf5742e',1,'multiboot_info']]]
 ];

@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/drivers/block/floppy/floppy_interrupt.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,23 +90,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="floppy__interrupt_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifndef _FLOPPY_INTERRUPT_H_</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _FLOPPY_INTERRUPT_H_</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__interrupt_8c.html#a19cdddd056dff00ace3567933e4d2b71" title="Initialise l&#39;IRQ floppy.">floppy_init_interrupt</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define _FLOPPY_INTERRUPT_H_</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__interrupt_8h.html#a19cdddd056dff00ace3567933e4d2b71">floppy_init_interrupt</a>();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__interrupt_8c.html#a4faeb801db3260ba0d654d34c843ddf2" title="Remet à 0 le flag software d&#39;interruption.">floppy_reset_irq</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__interrupt_8h.html#a4faeb801db3260ba0d654d34c843ddf2">floppy_reset_irq</a>();</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__interrupt_8c.html#a579397f7aad55a1eff3648712e9b1f5a" title="Attendre une interruption (XXX attente active)">floppy_wait_irq</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__interrupt_8h.html#a579397f7aad55a1eff3648712e9b1f5a">floppy_wait_irq</a>();</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__interrupt_8c.html#aa736fd868e99a0bde478ea3b5a836b04" title="Récupère des données d&#39;interruption.">floppy_sense_interrupt</a>(<span class="keywordtype">int</span>* st0, <span class="keywordtype">int</span>* cy1);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__interrupt_8h.html#aa736fd868e99a0bde478ea3b5a836b04">floppy_sense_interrupt</a>(<span class="keywordtype">int</span>* st0, <span class="keywordtype">int</span>* cy1);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="floppy__interrupt_8h_html_a19cdddd056dff00ace3567933e4d2b71"><div class="ttname"><a href="floppy__interrupt_8h.html#a19cdddd056dff00ace3567933e4d2b71">floppy_init_interrupt</a></div><div class="ttdeci">void floppy_init_interrupt()</div><div class="ttdoc">Initialise l&#39;IRQ floppy. </div><div class="ttdef"><b>Definition:</b> floppy_interrupt.c:48</div></div>
+<div class="ttc" id="floppy__interrupt_8h_html_a4faeb801db3260ba0d654d34c843ddf2"><div class="ttname"><a href="floppy__interrupt_8h.html#a4faeb801db3260ba0d654d34c843ddf2">floppy_reset_irq</a></div><div class="ttdeci">void floppy_reset_irq()</div><div class="ttdoc">Remet à 0 le flag software d&#39;interruption. </div><div class="ttdef"><b>Definition:</b> floppy_interrupt.c:53</div></div>
+<div class="ttc" id="floppy__interrupt_8h_html_aa736fd868e99a0bde478ea3b5a836b04"><div class="ttname"><a href="floppy__interrupt_8h.html#aa736fd868e99a0bde478ea3b5a836b04">floppy_sense_interrupt</a></div><div class="ttdeci">void floppy_sense_interrupt(int *st0, int *cy1)</div><div class="ttdoc">Récupère des données d&#39;interruption. </div><div class="ttdef"><b>Definition:</b> floppy_interrupt.c:58</div></div>
+<div class="ttc" id="floppy__interrupt_8h_html_a579397f7aad55a1eff3648712e9b1f5a"><div class="ttname"><a href="floppy__interrupt_8h.html#a579397f7aad55a1eff3648712e9b1f5a">floppy_wait_irq</a></div><div class="ttdeci">void floppy_wait_irq()</div><div class="ttdoc">Attendre une interruption (XXX attente active) </div><div class="ttdef"><b>Definition:</b> floppy_interrupt.c:41</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:29 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

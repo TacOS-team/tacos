@@ -1,9 +1,10 @@
 <map id="kernel/include/memory.h" name="kernel/include/memory.h">
-<area shape="rect" id="node3" href="$vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="5,83,133,127"/>
-<area shape="rect" id="node5" href="$gdt_8c.html" title="Setup de la GDT." alt="" coords="157,91,245,119"/>
-<area shape="rect" id="node7" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="269,91,376,119"/>
-<area shape="rect" id="node9" href="$kmalloc_8c.html" title="kernel/kmalloc.c" alt="" coords="400,91,515,119"/>
-<area shape="rect" id="node11" href="$memory_8c.html" title="Gestion des pages mémoires physiques." alt="" coords="539,91,656,119"/>
-<area shape="rect" id="node13" href="$pagination_8c.html" title="kernel/pagination.c" alt="" coords="680,91,811,119"/>
-<area shape="rect" id="node15" href="$vmm_8c.html" title="kernel/vmm.c" alt="" coords="835,91,933,119"/>
+<area shape="rect" id="node2" href="$vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="5,80,135,121"/>
+<area shape="rect" id="node3" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="159,87,282,114"/>
+<area shape="rect" id="node4" href="$gdt_8c.html" title="Setup de la GDT. " alt="" coords="307,87,396,114"/>
+<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="421,87,527,114"/>
+<area shape="rect" id="node6" href="$kmalloc_8c.html" title="kernel/kmalloc.c" alt="" coords="552,87,668,114"/>
+<area shape="rect" id="node7" href="$memory_8c.html" title="Gestion des pages mémoires physiques. " alt="" coords="693,87,810,114"/>
+<area shape="rect" id="node8" href="$pagination_8c.html" title="kernel/pagination.c" alt="" coords="834,87,965,114"/>
+<area shape="rect" id="node9" href="$vmm_8c.html" title="kernel/vmm.c" alt="" coords="988,87,1088,114"/>
 </map>

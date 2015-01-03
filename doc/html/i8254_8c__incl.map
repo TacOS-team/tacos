@@ -1,5 +1,5 @@
 <map id="kernel/i8254.c" name="kernel/i8254.c">
-<area shape="rect" id="node3" href="$i8254_8h.html" title="Initialisation du i8254 (timer)." alt="" coords="5,83,67,111"/>
-<area shape="rect" id="node7" href="$ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="91,83,160,111"/>
-<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="5,161,67,189"/>
+<area shape="rect" id="node2" href="$i8254_8h.html" title="Initialisation du i8254 (timer). " alt="" coords="5,80,68,107"/>
+<area shape="rect" id="node4" href="$ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="92,80,163,107"/>
+<area shape="rect" id="node3" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="5,155,68,181"/>
 </map>

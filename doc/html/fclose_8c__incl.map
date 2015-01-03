@@ -1,9 +1,9 @@
 <map id="libc/stdio/fclose.c" name="libc/stdio/fclose.c">
-<area shape="rect" id="node3" href="$stdio_8h.html" title="stdio.h" alt="" coords="144,83,203,111"/>
-<area shape="rect" id="node18" href="$fcntl_8h.html" title="File control operations." alt="" coords="275,238,331,266"/>
-<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="180,315,268,343"/>
-<area shape="rect" id="node7" href="$libio_8h.html" title="libio.h" alt="" coords="147,161,200,189"/>
-<area shape="rect" id="node10" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="64,238,149,266"/>
-<area shape="rect" id="node16" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="5,161,72,189"/>
-<area shape="rect" id="node13" href="$stdbool_8h.html" title="Type bool." alt="" coords="69,315,144,343"/>
+<area shape="rect" id="node2" href="$stdio_8h.html" title="stdio.h" alt="" coords="147,80,207,107"/>
+<area shape="rect" id="node8" href="$fcntl_8h.html" title="File control operations. " alt="" coords="280,229,337,256"/>
+<area shape="rect" id="node3" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="185,304,273,331"/>
+<area shape="rect" id="node4" href="$libio_8h.html" title="libio.h" alt="" coords="149,155,204,181"/>
+<area shape="rect" id="node5" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="67,229,153,256"/>
+<area shape="rect" id="node7" href="$libc_2include_2stdarg_8h_source.html" title="stdarg.h" alt="" coords="5,155,73,181"/>
+<area shape="rect" id="node6" href="$stdbool_8h.html" title="Type bool. " alt="" coords="73,304,147,331"/>
 </map>

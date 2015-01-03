@@ -1,10 +1,10 @@
 <map id="kernel/fs/fat/fat_outils.h" name="kernel/fs/fat/fat_outils.h">
-<area shape="rect" id="node3" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="121,83,217,111"/>
-<area shape="rect" id="node7" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="185,315,247,343"/>
-<area shape="rect" id="node14" href="$vfs_8h.html" title="Virtual File System." alt="" coords="248,161,299,189"/>
-<area shape="rect" id="node24" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="92,161,169,189"/>
-<area shape="rect" id="node9" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="212,470,273,498"/>
-<area shape="rect" id="node11" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="128,393,205,421"/>
-<area shape="rect" id="node17" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="91,238,171,266"/>
-<area shape="rect" id="node20" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="245,238,307,266"/>
+<area shape="rect" id="node2" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="123,80,219,107"/>
+<area shape="rect" id="node4" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="188,304,251,331"/>
+<area shape="rect" id="node7" href="$vfs_8h.html" title="Virtual File System. " alt="" coords="251,155,302,181"/>
+<area shape="rect" id="node10" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="93,155,172,181"/>
+<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="215,453,277,480"/>
+<area shape="rect" id="node6" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="129,379,208,405"/>
+<area shape="rect" id="node8" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts. " alt="" coords="92,229,173,256"/>
+<area shape="rect" id="node9" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier. " alt="" coords="249,229,310,256"/>
 </map>

@@ -1,7 +1,7 @@
 <map id="kernel/fpu.c" name="kernel/fpu.c">
-<area shape="rect" id="node3" href="$fpu_8h.html" title="fpu.h" alt="" coords="5,83,56,111"/>
-<area shape="rect" id="node5" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="80,83,165,111"/>
-<area shape="rect" id="node9" href="$klog_8h.html" title="Logging macros." alt="" coords="189,83,245,111"/>
-<area shape="rect" id="node7" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="92,161,153,189"/>
-<area shape="rect" id="node11" href="$kstdio_8h.html" title="kprintf" alt="" coords="184,161,251,189"/>
+<area shape="rect" id="node2" href="$fpu_8h.html" title="fpu.h" alt="" coords="5,80,56,107"/>
+<area shape="rect" id="node3" href="$interrupts_8h.html" title="Gestion des interruptions.. " alt="" coords="81,80,167,107"/>
+<area shape="rect" id="node5" href="$klog_8h.html" title="Logging macros. " alt="" coords="192,80,248,107"/>
+<area shape="rect" id="node4" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="93,155,155,181"/>
+<area shape="rect" id="node6" href="$kstdio_8h.html" title="kprintf " alt="" coords="187,155,253,181"/>
 </map>

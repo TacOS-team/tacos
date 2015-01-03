@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/include/fs/fat.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,24 +90,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="fat_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _KFAT_H_</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _KFAT_H_</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define _KFAT_H_</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;types.h&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts.">fd_types.h</a>&gt;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier.">kstat.h</a>&gt;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="vfs_8h.html" title="Virtual File System.">vfs.h</a>&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fd__types_8h.html">fd_types.h</a>&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kstat_8h.html">kstat.h</a>&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="vfs_8h.html">vfs.h</a>&gt;</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fat_8c.html#a3d1f5d8e3b22672684528c112bc6ff06">fat_init</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fat_8h.html#a3d1f5d8e3b22672684528c112bc6ff06">fat_init</a>();</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">fs_instance_t</a>* <a class="code" href="fat_8c.html#a23c11f139de8259ac9065efe4ba6ecae">mount_FAT</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>* ofd);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<a class="code" href="struct__fs__instance__t.html">fs_instance_t</a>* <a class="code" href="fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae">mount_FAT</a>(<a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>* ofd);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="vfs_8h_html"><div class="ttname"><a href="vfs_8h.html">vfs.h</a></div><div class="ttdoc">Virtual File System. </div></div>
+<div class="ttc" id="fat_8h_html_a23c11f139de8259ac9065efe4ba6ecae"><div class="ttname"><a href="fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae">mount_FAT</a></div><div class="ttdeci">fs_instance_t * mount_FAT(open_file_descriptor *ofd)</div><div class="ttdef"><b>Definition:</b> fat.c:63</div></div>
+<div class="ttc" id="struct__fs__instance__t_html"><div class="ttname"><a href="struct__fs__instance__t.html">_fs_instance_t</a></div><div class="ttdoc">Instance d&#39;un couple FS/Device monté. </div><div class="ttdef"><b>Definition:</b> vfs.h:54</div></div>
+<div class="ttc" id="fd__types_8h_html"><div class="ttname"><a href="fd__types_8h.html">fd_types.h</a></div><div class="ttdoc">Structures liées aux fichiers ouverts. </div></div>
+<div class="ttc" id="struct__open__file__descriptor_html"><div class="ttname"><a href="struct__open__file__descriptor.html">_open_file_descriptor</a></div><div class="ttdef"><b>Definition:</b> fd_types.h:91</div></div>
+<div class="ttc" id="fat_8h_html_a3d1f5d8e3b22672684528c112bc6ff06"><div class="ttname"><a href="fat_8h.html#a3d1f5d8e3b22672684528c112bc6ff06">fat_init</a></div><div class="ttdeci">void fat_init()</div><div class="ttdef"><b>Definition:</b> fat.c:38</div></div>
+<div class="ttc" id="kstat_8h_html"><div class="ttname"><a href="kstat_8h.html">kstat.h</a></div><div class="ttdoc">Manipulation des caractéristiques d&#39;un fichier. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

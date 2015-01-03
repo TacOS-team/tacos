@@ -1,4 +1,4 @@
 <map id="open" name="open">
-<area shape="rect" id="node3" href="$dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591" title="opendir" alt="" coords="104,5,168,33"/>
-<area shape="rect" id="node5" href="$unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="216,5,267,33"/>
+<area shape="rect" id="node2" href="$dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591" title="opendir" alt="" coords="104,5,168,32"/>
+<area shape="rect" id="node3" href="$unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory. " alt="" coords="216,5,267,32"/>
 </map>

@@ -1,17 +1,17 @@
 <map id="strcpy" name="strcpy">
-<area shape="rect" id="node3" href="$string_8c.html#a8908188ae9fc2f05d993257ef001d553" title="Concaténation de deux chaînes." alt="" coords="149,5,203,33"/>
-<area shape="rect" id="node5" href="$string_8c.html#a4c10a214b02eed3dafc48c59ad71abbd" title="Concaténation de deux chaînes avec une limite aux n premiers caractères." alt="" coords="145,55,207,83"/>
-<area shape="rect" id="node7" href="$string_8c.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="147,106,205,134"/>
-<area shape="rect" id="node11" href="$string_8c.html#a8b860ba32fef12da8acd4507c059e509" title="Duplique une chaine." alt="" coords="144,157,208,185"/>
-<area shape="rect" id="node13" href="$unistd_8c.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="112,258,240,286"/>
-<area shape="rect" id="node9" href="$unistd_8c.html#ac75704bc8cda22edbe5c8c1241297882" title="Retourne l&#39;actuel working directory." alt="" coords="288,55,352,83"/>
-<area shape="rect" id="node15" href="$dirent_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title="mkdir" alt="" coords="293,106,347,134"/>
-<area shape="rect" id="node17" href="$dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591" title="opendir" alt="" coords="401,207,465,235"/>
-<area shape="rect" id="node19" href="$unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="515,233,565,261"/>
-<area shape="rect" id="node21" href="$fcntl_8h.html#adcb60598073f6f9cbb0091ef6768fa5c" title="open" alt="" coords="295,207,345,235"/>
-<area shape="rect" id="node25" href="$unistd_8c.html#a3dc1b07404b646712a144e2057359876" title="Obtenir l&#39;état d&#39;un fichier (status)." alt="" coords="299,309,341,337"/>
-<area shape="rect" id="node29" href="$unistd_8c.html#a8ada37e3927c3e99ea7c1accfdc6576f" title="Créer un noeud du système de fichiers." alt="" coords="289,359,351,387"/>
-<area shape="rect" id="node31" href="$unistd_8c.html#a28af9471bbdf262321af663e02899a47" title="Détruire un nom et éventuellement le fichier associé." alt="" coords="292,410,348,438"/>
-<area shape="rect" id="node34" href="$unistd_8c.html#ab2df76f2c62ae012c2e417813b5fe8ce" title="Supprimer un dossier, lequel doit être vide." alt="" coords="295,461,345,489"/>
-<area shape="rect" id="node27" href="$stdio_8h.html#a02b13b56a188401119ea4da43c184913" title="Supprimer un fichier ou répertoire." alt="" coords="401,410,465,438"/>
+<area shape="rect" id="node3" href="$string_8c.html#a8908188ae9fc2f05d993257ef001d553" title="Concaténation de deux chaînes." alt="" coords="147,5,200,33"/>
+<area shape="rect" id="node5" href="$string_8c.html#a4c10a214b02eed3dafc48c59ad71abbd" title="Concaténation de deux chaînes avec une limite aux n premiers caractères." alt="" coords="143,55,204,83"/>
+<area shape="rect" id="node7" href="$string_8c.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="145,106,201,134"/>
+<area shape="rect" id="node11" href="$string_8c.html#a8b860ba32fef12da8acd4507c059e509" title="Duplique une chaine." alt="" coords="141,157,205,185"/>
+<area shape="rect" id="node13" href="$unistd_8c.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="111,258,236,286"/>
+<area shape="rect" id="node9" href="$unistd_8c.html#ac75704bc8cda22edbe5c8c1241297882" title="Retourne l&#39;actuel working directory." alt="" coords="287,55,348,83"/>
+<area shape="rect" id="node15" href="$dirent_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title="mkdir" alt="" coords="291,106,344,134"/>
+<area shape="rect" id="node17" href="$dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591" title="opendir" alt="" coords="397,207,461,235"/>
+<area shape="rect" id="node19" href="$unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="509,233,560,261"/>
+<area shape="rect" id="node21" href="$fcntl_8h.html#adcb60598073f6f9cbb0091ef6768fa5c" title="open" alt="" coords="292,207,343,235"/>
+<area shape="rect" id="node25" href="$unistd_8c.html#a3dc1b07404b646712a144e2057359876" title="Obtenir l&#39;état d&#39;un fichier (status)." alt="" coords="296,309,339,337"/>
+<area shape="rect" id="node29" href="$unistd_8c.html#a8ada37e3927c3e99ea7c1accfdc6576f" title="Créer un noeud du système de fichiers." alt="" coords="287,359,348,387"/>
+<area shape="rect" id="node31" href="$unistd_8c.html#a28af9471bbdf262321af663e02899a47" title="Détruire un nom et éventuellement le fichier associé." alt="" coords="289,410,345,438"/>
+<area shape="rect" id="node34" href="$unistd_8c.html#ab2df76f2c62ae012c2e417813b5fe8ce" title="Supprimer un dossier, lequel doit être vide." alt="" coords="292,461,343,489"/>
+<area shape="rect" id="node27" href="$stdio_8h.html#a02b13b56a188401119ea4da43c184913" title="Supprimer un fichier ou répertoire." alt="" coords="397,410,461,438"/>
 </map>

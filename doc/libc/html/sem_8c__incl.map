@@ -1,10 +1,10 @@
 <map id="libc/sem.c" name="libc/sem.c">
-<area shape="rect" id="node3" href="$sem_8h.html" title="l&#39;interface de manipulation des semaphores" alt="" coords="226,238,306,266"/>
-<area shape="rect" id="node12" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="131,83,227,111"/>
-<area shape="rect" id="node14" href="$unistd_8h.html" title="unistd.h" alt="" coords="40,83,107,111"/>
-<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="7,393,95,421"/>
-<area shape="rect" id="node7" href="$types_8h.html" title="sys/types.h" alt="" coords="102,315,187,343"/>
-<area shape="rect" id="node10" href="$stdbool_8h.html" title="Type bool." alt="" coords="119,393,194,421"/>
-<area shape="rect" id="node18" href="$stat_8h.html" title="sys/stat.h" alt="" coords="35,161,112,189"/>
-<area shape="rect" id="node22" href="$time_8h.html" title="time.h" alt="" coords="44,238,100,266"/>
+<area shape="rect" id="node3" href="$sem_8h.html" title="l&#39;interface de manipulation des semaphores" alt="" coords="251,161,329,189"/>
+<area shape="rect" id="node12" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="307,83,398,111"/>
+<area shape="rect" id="node14" href="$unistd_8h.html" title="unistd.h" alt="" coords="126,83,193,111"/>
+<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="85,315,170,343"/>
+<area shape="rect" id="node7" href="$types_8h.html" title="sys/types.h" alt="" coords="177,238,259,266"/>
+<area shape="rect" id="node10" href="$stdbool_8h.html" title="Type bool." alt="" coords="194,315,266,343"/>
+<area shape="rect" id="node18" href="$stat_8h.html" title="sys/stat.h" alt="" coords="102,161,177,189"/>
+<area shape="rect" id="node22" href="$sys_2time_8h.html" title="time.h" alt="" coords="22,238,78,266"/>
 </map>

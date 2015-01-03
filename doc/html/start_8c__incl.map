@@ -1,9 +1,9 @@
 <map id="libc/start.c" name="libc/start.c">
-<area shape="rect" id="node3" href="$libio_8h.html" title="libio.h" alt="" coords="96,161,149,189"/>
-<area shape="rect" id="node12" href="$signal_8h.html" title="Gestion des signaux." alt="" coords="5,161,72,189"/>
-<area shape="rect" id="node16" href="$stdio_8h.html" title="stdio.h" alt="" coords="159,83,217,111"/>
-<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="33,315,121,343"/>
-<area shape="rect" id="node7" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="115,238,200,266"/>
-<area shape="rect" id="node10" href="$stdbool_8h.html" title="Type bool." alt="" coords="145,315,220,343"/>
-<area shape="rect" id="node21" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="275,161,341,189"/>
+<area shape="rect" id="node2" href="$libio_8h.html" title="libio.h" alt="" coords="97,155,151,181"/>
+<area shape="rect" id="node6" href="$signal_8h.html" title="Gestion des signaux. " alt="" coords="5,155,72,181"/>
+<area shape="rect" id="node7" href="$stdio_8h.html" title="stdio.h" alt="" coords="161,80,221,107"/>
+<area shape="rect" id="node3" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="33,304,121,331"/>
+<area shape="rect" id="node4" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="115,229,202,256"/>
+<area shape="rect" id="node5" href="$stdbool_8h.html" title="Type bool. " alt="" coords="145,304,220,331"/>
+<area shape="rect" id="node8" href="$libc_2include_2stdarg_8h_source.html" title="stdarg.h" alt="" coords="278,155,346,181"/>
 </map>

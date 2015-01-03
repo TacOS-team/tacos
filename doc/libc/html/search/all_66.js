@@ -1,6 +1,7 @@
 var searchData=
 [
   ['false',['false',['../stdbool_8h.html#a65e9886d74aaee76545e83dd09011727',1,'stdbool.h']]],
+  ['fclose',['fclose',['../stdio_8h.html#ac41a0ad4b31be2ad59d8222a0de30bda',1,'fclose(FILE *fd):&#160;fclose.c'],['../fclose_8c.html#a76370407f9ab0402564c2bb9bc9664e0',1,'fclose(FILE *stream):&#160;fclose.c']]],
   ['fclose_2ec',['fclose.c',['../fclose_8c.html',1,'']]],
   ['fcntl',['fcntl',['../fcntl_8c.html#a5752d6571b615f1b7b1b0f719c2bc69d',1,'fcntl(int fd, unsigned int request, void *data):&#160;fcntl.c'],['../fcntl_8h.html#a5752d6571b615f1b7b1b0f719c2bc69d',1,'fcntl(int fd, unsigned int request, void *data):&#160;fcntl.c']]],
   ['fcntl_2ec',['fcntl.c',['../fcntl_8c.html',1,'']]],

@@ -1,16 +1,16 @@
 <map id="libc/process.c" name="libc/process.c">
-<area shape="rect" id="node3" href="$types_8h.html" title="sys/types.h" alt="" coords="291,315,376,343"/>
-<area shape="rect" id="node9" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="405,161,467,189"/>
-<area shape="rect" id="node17" href="$stdio_8h.html" title="stdio.h" alt="" coords="109,161,168,189"/>
-<area shape="rect" id="node27" href="$unistd_8h.html" title="unistd.h" alt="" coords="544,83,611,111"/>
-<area shape="rect" id="node39" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="869,83,965,111"/>
-<area shape="rect" id="node41" href="$string_8h.html" title="Fonctions de manipulation de strings." alt="" coords="731,238,795,266"/>
-<area shape="rect" id="node45" href="$fcntl_8h.html" title="File control operations." alt="" coords="797,315,853,343"/>
-<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="497,393,585,421"/>
-<area shape="rect" id="node7" href="$stdbool_8h.html" title="Type bool." alt="" coords="296,393,371,421"/>
-<area shape="rect" id="node13" href="$malloc_8h.html" title="malloc.h" alt="" coords="355,238,424,266"/>
-<area shape="rect" id="node20" href="$libio_8h.html" title="libio.h" alt="" coords="176,238,229,266"/>
-<area shape="rect" id="node25" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="35,238,101,266"/>
-<area shape="rect" id="node31" href="$stat_8h.html" title="sys/stat.h" alt="" coords="539,161,616,189"/>
-<area shape="rect" id="node35" href="$time_8h.html" title="time.h" alt="" coords="549,238,605,266"/>
+<area shape="rect" id="node3" href="$types_8h.html" title="sys/types.h" alt="" coords="257,238,340,266"/>
+<area shape="rect" id="node9" href="$stdlib_8h.html" title="stdlib.h" alt="" coords="63,83,124,111"/>
+<area shape="rect" id="node17" href="$stdio_8h.html" title="stdio.h" alt="" coords="305,83,364,111"/>
+<area shape="rect" id="node27" href="$unistd_8h.html" title="unistd.h" alt="" coords="539,83,605,111"/>
+<area shape="rect" id="node39" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="772,83,863,111"/>
+<area shape="rect" id="node41" href="$string_8h.html" title="Fonctions de manipulation de strings." alt="" coords="385,161,447,189"/>
+<area shape="rect" id="node45" href="$fcntl_8h.html" title="File control operations." alt="" coords="721,238,777,266"/>
+<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="411,315,496,343"/>
+<area shape="rect" id="node7" href="$stdbool_8h.html" title="Type bool." alt="" coords="263,315,335,343"/>
+<area shape="rect" id="node13" href="$malloc_8h.html" title="malloc.h" alt="" coords="23,161,92,189"/>
+<area shape="rect" id="node20" href="$libio_8h.html" title="libio.h" alt="" coords="308,161,361,189"/>
+<area shape="rect" id="node25" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="217,161,284,189"/>
+<area shape="rect" id="node31" href="$stat_8h.html" title="sys/stat.h" alt="" coords="572,161,647,189"/>
+<area shape="rect" id="node35" href="$sys_2time_8h.html" title="time.h" alt="" coords="567,238,623,266"/>
 </map>

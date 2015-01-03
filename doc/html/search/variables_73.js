@@ -48,7 +48,6 @@ var searchData=
   ['s_5fuuid',['s_uuid',['../structext2__super__block.html#a1a546d295c2dc760ece8bf44c7623eb3',1,'ext2_super_block']]],
   ['s_5fvolume_5fname',['s_volume_name',['../structext2__super__block.html#aafa5ddd1cf9fbf19aa2b80e83bff5a43',1,'ext2_super_block']]],
   ['s_5fwtime',['s_wtime',['../structext2__super__block.html#a97c255a8e87dbea1ab953b0a8fce054d',1,'ext2_super_block']]],
-  ['scancode',['scancode',['../structletter.html#a81ce8d7b41dfa934b919f660bea2b52b',1,'letter']]],
   ['seconds2',['seconds2',['../struct__fat__time.html#ab02d4606058041887618d3b9beb92749',1,'_fat_time']]],
   ['sectors_5fper_5fcluster',['sectors_per_cluster',['../struct__fat__BS.html#ab26cacbe204fc157d8165af3ad86a33f',1,'_fat_BS']]],
   ['sectors_5fper_5ftrack',['sectors_per_track',['../struct__fat__BS.html#abb98686b32bd168ee31d9847c990916a',1,'_fat_BS']]],

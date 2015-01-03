@@ -19,6 +19,7 @@ var searchData=
   ['create_5ftime',['create_time',['../struct__fat__dir__entry.html#a3c6cbf375afefcf8fc1518d5a96790a8',1,'_fat_dir_entry']]],
   ['create_5ftime_5fms',['create_time_ms',['../struct__fat__dir__entry.html#a54232a69203bce440a4bfaca30abcd00',1,'_fat_dir_entry']]],
   ['creation_5ftime',['creation_time',['../struct__directory__entry.html#a95f0f5ef18bf17f332bd0dc352d62ac4',1,'_directory_entry']]],
+  ['ctrl',['ctrl',['../structsymbole.html#a2383cac8f05d012336683f0af44535b5',1,'symbole']]],
   ['ctrl_5ftty',['ctrl_tty',['../structprocess__t.html#a345124afd3f5f75fdc291d9076348950',1,'process_t']]],
   ['cur_5fx',['cur_x',['../structconsole__t.html#a296a99289941514aee3b5751d8cd0693',1,'console_t']]],
   ['cur_5fy',['cur_y',['../structconsole__t.html#a3192dab00ef66635ae4897943c47d6ec',1,'console_t']]],

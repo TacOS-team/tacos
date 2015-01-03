@@ -1,6 +1,6 @@
 <map id="SYSCALL_HANDLER2" name="SYSCALL_HANDLER2">
-<area shape="rect" id="node3" href="$vfs_8h.html#a4f8b6a1f2b0e6012446196f18b33d686" title="Suppression d&#39;un noeud." alt="" coords="215,5,295,33"/>
-<area shape="rect" id="node5" href="$dcache_8c.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="344,5,459,33"/>
-<area shape="rect" id="node7" href="$hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="507,5,632,33"/>
-<area shape="rect" id="node9" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="680,5,731,33"/>
+<area shape="rect" id="node3" href="$vfs_8h.html#a4f8b6a1f2b0e6012446196f18b33d686" title="Suppression d&#39;un noeud." alt="" coords="209,5,287,33"/>
+<area shape="rect" id="node5" href="$dcache_8c.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="337,5,449,33"/>
+<area shape="rect" id="node7" href="$hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="499,5,621,33"/>
+<area shape="rect" id="node9" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="669,5,720,33"/>
 </map>

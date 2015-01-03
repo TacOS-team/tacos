@@ -1,288 +1,292 @@
-\hypertarget{ext2__internal_8h}{\section{Référence du fichier kernel/fs/ext2/ext2\-\_\-internal.h}
-\label{ext2__internal_8h}\index{kernel/fs/ext2/ext2\-\_\-internal.\-h@{kernel/fs/ext2/ext2\-\_\-internal.\-h}}
+\hypertarget{ext2__internal_8h}{\section{Référence du fichier kernel/fs/ext2/ext2\+\_\+internal.h}
+\label{ext2__internal_8h}\index{kernel/fs/ext2/ext2\+\_\+internal.\+h@{kernel/fs/ext2/ext2\+\_\+internal.\+h}}
 }
-{\ttfamily \#include $<$fs/devfs.\-h$>$}\\*
-{\ttfamily \#include $<$vfs.\-h$>$}\\*
-Graphe des dépendances par inclusion de ext2\-\_\-internal.\-h\-:\nopagebreak
+{\ttfamily \#include $<$fs/devfs.\+h$>$}\\*
+{\ttfamily \#include $<$vfs.\+h$>$}\\*
+Graphe des dépendances par inclusion de ext2\+\_\+internal.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{ext2__internal_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=184pt]{ext2__internal_8h__dep__incl}
+\includegraphics[width=182pt]{ext2__internal_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Structures de données}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structext2__super__block}{ext2\-\_\-super\-\_\-block}
+struct \hyperlink{structext2__super__block}{ext2\+\_\+super\+\_\+block}
 \item 
-struct \hyperlink{structext2__group__desc}{ext2\-\_\-group\-\_\-desc}
+struct \hyperlink{structext2__group__desc}{ext2\+\_\+group\+\_\+desc}
 \item 
-struct \hyperlink{structext2__group__desc__internal}{ext2\-\_\-group\-\_\-desc\-\_\-internal}
+struct \hyperlink{structext2__group__desc__internal}{ext2\+\_\+group\+\_\+desc\+\_\+internal}
 \item 
-struct \hyperlink{structext2__inode}{ext2\-\_\-inode}
+struct \hyperlink{structext2__inode}{ext2\+\_\+inode}
 \item 
-struct \hyperlink{structext2__directory}{ext2\-\_\-directory}
+struct \hyperlink{structext2__directory}{ext2\+\_\+directory}
 \begin{DoxyCompactList}\small\item\em Structure qui représente une entrée dans un dossier ext2. Format imposé par Ext2. \end{DoxyCompactList}\item 
-struct \hyperlink{structdirectories__t}{directories\-\_\-t}
+struct \hyperlink{structdirectories__t}{directories\+\_\+t}
 \begin{DoxyCompactList}\small\item\em Structure chaînée pour enregistrer les entrées d'un dossier. \end{DoxyCompactList}\item 
-struct \hyperlink{struct__ext2__fs__instance__t}{\-\_\-ext2\-\_\-fs\-\_\-instance\-\_\-t}
-\begin{DoxyCompactList}\small\item\em Instance de F\-S Ext2. \end{DoxyCompactList}\end{DoxyCompactItemize}
+struct \hyperlink{struct__ext2__fs__instance__t}{\+\_\+ext2\+\_\+fs\+\_\+instance\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Instance de F\+S Ext2. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{ext2__internal_8h_acb50ee6c9362361d2cc44d8be16f9959}{E\-X\-T2\-\_\-\-R\-O\-O\-T\-\_\-\-I\-N\-O}~2
+\#define \hyperlink{ext2__internal_8h_acb50ee6c9362361d2cc44d8be16f9959}{E\+X\+T2\+\_\+\+R\+O\+O\+T\+\_\+\+I\+N\+O}~2
 \item 
-\#define \hyperlink{ext2__internal_8h_a80253adc8e223859f4156fbabb970e32}{E\-X\-T2\-\_\-\-O\-S\-\_\-\-L\-I\-N\-U\-X}~0
+\#define \hyperlink{ext2__internal_8h_a80253adc8e223859f4156fbabb970e32}{E\+X\+T2\+\_\+\+O\+S\+\_\+\+L\+I\+N\+U\+X}~0
 \item 
-\#define \hyperlink{ext2__internal_8h_a7af4ecf350d7b5ba9f4d929bc91d4793}{E\-X\-T2\-\_\-\-O\-S\-\_\-\-H\-U\-R\-D}~1
+\#define \hyperlink{ext2__internal_8h_a7af4ecf350d7b5ba9f4d929bc91d4793}{E\+X\+T2\+\_\+\+O\+S\+\_\+\+H\+U\+R\+D}~1
 \item 
-\#define \hyperlink{ext2__internal_8h_af9871fe2b6a9510f18263e27ff224f38}{E\-X\-T2\-\_\-\-O\-S\-\_\-\-M\-A\-S\-I\-X}~2
+\#define \hyperlink{ext2__internal_8h_af9871fe2b6a9510f18263e27ff224f38}{E\+X\+T2\+\_\+\+O\+S\+\_\+\+M\+A\+S\+I\+X}~2
 \item 
-\#define \hyperlink{ext2__internal_8h_a1910a0445cd5ceb6bd436631ae5b0448}{E\-X\-T2\-\_\-\-O\-S\-\_\-\-F\-R\-E\-E\-B\-S\-D}~3
+\#define \hyperlink{ext2__internal_8h_a1910a0445cd5ceb6bd436631ae5b0448}{E\+X\+T2\+\_\+\+O\+S\+\_\+\+F\+R\+E\+E\+B\+S\+D}~3
 \item 
-\#define \hyperlink{ext2__internal_8h_aaf563eacc83118b8d11c7b25bd52d363}{E\-X\-T2\-\_\-\-O\-S\-\_\-\-L\-I\-T\-E\-S}~4
+\#define \hyperlink{ext2__internal_8h_aaf563eacc83118b8d11c7b25bd52d363}{E\+X\+T2\+\_\+\+O\+S\+\_\+\+L\+I\+T\+E\+S}~4
 \item 
-\#define \hyperlink{ext2__internal_8h_abce95b7831e511179ececb8f0a7b948c}{E\-X\-T2\-\_\-\-G\-O\-O\-D\-\_\-\-O\-L\-D\-\_\-\-R\-E\-V}~0
+\#define \hyperlink{ext2__internal_8h_abce95b7831e511179ececb8f0a7b948c}{E\+X\+T2\+\_\+\+G\+O\+O\+D\+\_\+\+O\+L\+D\+\_\+\+R\+E\+V}~0
 \item 
-\#define \hyperlink{ext2__internal_8h_ad045e597ad1e193ecc156e019129c55c}{E\-X\-T2\-\_\-\-D\-Y\-N\-A\-M\-I\-C\-\_\-\-R\-E\-V}~1
+\#define \hyperlink{ext2__internal_8h_ad045e597ad1e193ecc156e019129c55c}{E\+X\+T2\+\_\+\+D\+Y\+N\+A\+M\+I\+C\+\_\+\+R\+E\+V}~1
 \item 
-\#define \hyperlink{ext2__internal_8h_abfce2bf61a808e0e33b54cc55074769d}{E\-X\-T2\-\_\-\-F\-T\-\_\-\-U\-N\-K\-N\-O\-W\-N}~0
+\#define \hyperlink{ext2__internal_8h_abfce2bf61a808e0e33b54cc55074769d}{E\+X\+T2\+\_\+\+F\+T\+\_\+\+U\+N\+K\+N\+O\+W\+N}~0
 \item 
-\#define \hyperlink{ext2__internal_8h_af695d0f019e8655d3209478816dcbe2e}{E\-X\-T2\-\_\-\-F\-T\-\_\-\-R\-E\-G\-\_\-\-F\-I\-L\-E}~1
+\#define \hyperlink{ext2__internal_8h_af695d0f019e8655d3209478816dcbe2e}{E\+X\+T2\+\_\+\+F\+T\+\_\+\+R\+E\+G\+\_\+\+F\+I\+L\+E}~1
 \item 
-\#define \hyperlink{ext2__internal_8h_a015c3232a7dee95fe7d3117819f7c353}{E\-X\-T2\-\_\-\-F\-T\-\_\-\-D\-I\-R}~2
+\#define \hyperlink{ext2__internal_8h_a015c3232a7dee95fe7d3117819f7c353}{E\+X\+T2\+\_\+\+F\+T\+\_\+\+D\+I\+R}~2
 \item 
-\#define \hyperlink{ext2__internal_8h_aa2990e776053f7962e5a8a235ed0db5d}{E\-X\-T2\-\_\-\-F\-T\-\_\-\-C\-H\-R\-D\-E\-V}~3
+\#define \hyperlink{ext2__internal_8h_aa2990e776053f7962e5a8a235ed0db5d}{E\+X\+T2\+\_\+\+F\+T\+\_\+\+C\+H\+R\+D\+E\+V}~3
 \item 
-\#define \hyperlink{ext2__internal_8h_a5f734f7814d4cbf8c129824d3ca8a9a5}{E\-X\-T2\-\_\-\-F\-T\-\_\-\-B\-L\-K\-D\-E\-V}~4
+\#define \hyperlink{ext2__internal_8h_a5f734f7814d4cbf8c129824d3ca8a9a5}{E\+X\+T2\+\_\+\+F\+T\+\_\+\+B\+L\+K\+D\+E\+V}~4
 \item 
-\#define \hyperlink{ext2__internal_8h_a1dd9aa1f03cfeb067bb855da4049ec70}{E\-X\-T2\-\_\-\-F\-T\-\_\-\-F\-I\-F\-O}~5
+\#define \hyperlink{ext2__internal_8h_a1dd9aa1f03cfeb067bb855da4049ec70}{E\+X\+T2\+\_\+\+F\+T\+\_\+\+F\+I\+F\+O}~5
 \item 
-\#define \hyperlink{ext2__internal_8h_ade24e3d90cfa230bb96f882a5f39c71a}{E\-X\-T2\-\_\-\-F\-T\-\_\-\-S\-O\-C\-K}~6
+\#define \hyperlink{ext2__internal_8h_ade24e3d90cfa230bb96f882a5f39c71a}{E\+X\+T2\+\_\+\+F\+T\+\_\+\+S\+O\+C\+K}~6
 \item 
-\#define \hyperlink{ext2__internal_8h_ac5e03cbec437c0617e5cfafb2f4c9845}{E\-X\-T2\-\_\-\-F\-T\-\_\-\-S\-Y\-M\-L\-I\-N\-K}~7
+\#define \hyperlink{ext2__internal_8h_ac5e03cbec437c0617e5cfafb2f4c9845}{E\+X\+T2\+\_\+\+F\+T\+\_\+\+S\+Y\+M\+L\+I\+N\+K}~7
 \item 
-\#define \hyperlink{ext2__internal_8h_ad45908d1fe05e34057fc0e9e9e285df2}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-S\-O\-C\-K}~0x\-C000
+\#define \hyperlink{ext2__internal_8h_ad45908d1fe05e34057fc0e9e9e285df2}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+S\+O\+C\+K}~0x\+C000
 \item 
-\#define \hyperlink{ext2__internal_8h_aff4d841e1f50d07c6dd2c33dbc9fc75f}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-L\-N\-K}~0x\-A000
+\#define \hyperlink{ext2__internal_8h_aff4d841e1f50d07c6dd2c33dbc9fc75f}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+L\+N\+K}~0x\+A000
 \item 
-\#define \hyperlink{ext2__internal_8h_acaacf118aa2b4861775147ea812669a3}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-R\-E\-G}~0x8000
+\#define \hyperlink{ext2__internal_8h_acaacf118aa2b4861775147ea812669a3}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+R\+E\+G}~0x8000
 \item 
-\#define \hyperlink{ext2__internal_8h_a24f82827b296fe1cc2b35f3db8c41feb}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-B\-L\-K}~0x6000
+\#define \hyperlink{ext2__internal_8h_a24f82827b296fe1cc2b35f3db8c41feb}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+B\+L\+K}~0x6000
 \item 
-\#define \hyperlink{ext2__internal_8h_a7320539ed732dd6a8722ae644953ed7b}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-D\-I\-R}~0x4000
+\#define \hyperlink{ext2__internal_8h_a7320539ed732dd6a8722ae644953ed7b}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+D\+I\+R}~0x4000
 \item 
-\#define \hyperlink{ext2__internal_8h_ab8d1b41d62f66a1e91eb8f3160229431}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-C\-H\-R}~0x2000
+\#define \hyperlink{ext2__internal_8h_ab8d1b41d62f66a1e91eb8f3160229431}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+C\+H\+R}~0x2000
 \item 
-\#define \hyperlink{ext2__internal_8h_a4c48acbda2a486ccebcbd0ba501b85f8}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-I\-F\-O}~0x1000
+\#define \hyperlink{ext2__internal_8h_a4c48acbda2a486ccebcbd0ba501b85f8}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+I\+F\+O}~0x1000
 \item 
-\#define \hyperlink{ext2__internal_8h_a8a9f2cd835d659f4d6cbd63b53550f62}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-U\-I\-D}~0x0800
+\#define \hyperlink{ext2__internal_8h_a8a9f2cd835d659f4d6cbd63b53550f62}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+U\+I\+D}~0x0800
 \item 
-\#define \hyperlink{ext2__internal_8h_aa81e34e6941316e9c72793b5d6b6ab7f}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-G\-I\-D}~0x0400
+\#define \hyperlink{ext2__internal_8h_aa81e34e6941316e9c72793b5d6b6ab7f}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+G\+I\+D}~0x0400
 \item 
-\#define \hyperlink{ext2__internal_8h_a1745e9d39e3064af59ba7afd79277e5f}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-V\-T\-X}~0x0200
+\#define \hyperlink{ext2__internal_8h_a1745e9d39e3064af59ba7afd79277e5f}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+V\+T\+X}~0x0200
 \item 
-\#define \hyperlink{ext2__internal_8h_a271ff434740d4b9f06a5af49e727341c}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-U\-S\-R}~0x0100
+\#define \hyperlink{ext2__internal_8h_a271ff434740d4b9f06a5af49e727341c}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+U\+S\+R}~0x0100
 \item 
-\#define \hyperlink{ext2__internal_8h_a2770c24e68ebe2ea91b729a4e1245d53}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-U\-S\-R}~0x0080
+\#define \hyperlink{ext2__internal_8h_a2770c24e68ebe2ea91b729a4e1245d53}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+U\+S\+R}~0x0080
 \item 
-\#define \hyperlink{ext2__internal_8h_a360833154bcc6f517311e4a2ed241e03}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-U\-S\-R}~0x0040
+\#define \hyperlink{ext2__internal_8h_a360833154bcc6f517311e4a2ed241e03}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+U\+S\+R}~0x0040
 \item 
-\#define \hyperlink{ext2__internal_8h_ab6d745c8329751b2985a6029363762e5}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-G\-R\-P}~0x0020
+\#define \hyperlink{ext2__internal_8h_ab6d745c8329751b2985a6029363762e5}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+G\+R\+P}~0x0020
 \item 
-\#define \hyperlink{ext2__internal_8h_aa2b54450b815f4d44e068ae27af3a0be}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-G\-R\-P}~0x0010
+\#define \hyperlink{ext2__internal_8h_aa2b54450b815f4d44e068ae27af3a0be}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+G\+R\+P}~0x0010
 \item 
-\#define \hyperlink{ext2__internal_8h_a415d04f40b87167e5a7f1131a41afa63}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-G\-R\-P}~0x0008
+\#define \hyperlink{ext2__internal_8h_a415d04f40b87167e5a7f1131a41afa63}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+G\+R\+P}~0x0008
 \item 
-\#define \hyperlink{ext2__internal_8h_a8b2a613fd90026648c24958e02dcb24c}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-O\-T\-H}~0x0004
+\#define \hyperlink{ext2__internal_8h_a8b2a613fd90026648c24958e02dcb24c}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+O\+T\+H}~0x0004
 \item 
-\#define \hyperlink{ext2__internal_8h_ab88473468942288af1c7b2e7733ce257}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-O\-T\-H}~0x0002
+\#define \hyperlink{ext2__internal_8h_ab88473468942288af1c7b2e7733ce257}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+O\+T\+H}~0x0002
 \item 
-\#define \hyperlink{ext2__internal_8h_acb0a6cd1abe8a29c90dbae22a815f800}{E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-O\-T\-H}~0x0001
+\#define \hyperlink{ext2__internal_8h_acb0a6cd1abe8a29c90dbae22a815f800}{E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+O\+T\+H}~0x0001
 \end{DoxyCompactItemize}
 \subsection*{Définitions de type}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{ext2__internal_8h_adadd96c517f11a9b94cb4200748c2b21}{typedef struct \hyperlink{struct__ext2__fs__instance__t}{\-\_\-ext2\-\_\-fs\-\_\-instance\-\_\-t} \hyperlink{ext2__internal_8h_adadd96c517f11a9b94cb4200748c2b21}{ext2\-\_\-fs\-\_\-instance\-\_\-t}}\label{ext2__internal_8h_adadd96c517f11a9b94cb4200748c2b21}
+\hypertarget{ext2__internal_8h_adadd96c517f11a9b94cb4200748c2b21}{typedef struct \hyperlink{struct__ext2__fs__instance__t}{\+\_\+ext2\+\_\+fs\+\_\+instance\+\_\+t} \hyperlink{ext2__internal_8h_adadd96c517f11a9b94cb4200748c2b21}{ext2\+\_\+fs\+\_\+instance\+\_\+t}}\label{ext2__internal_8h_adadd96c517f11a9b94cb4200748c2b21}
 
-\begin{DoxyCompactList}\small\item\em Instance de F\-S Ext2. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Instance de F\+S Ext2. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{ext2__internal_8h_aa055d93f3693085315aa853345de0032}{umount\-\_\-\-E\-X\-T2} (\hyperlink{vfs_8h_a0eefa9aac35a5462ebf1e038992ca860}{fs\-\_\-instance\-\_\-t} $\ast$instance)
+void \hyperlink{ext2__internal_8h_aa055d93f3693085315aa853345de0032}{umount\+\_\+\+E\+X\+T2} (\hyperlink{vfs_8h_a0eefa9aac35a5462ebf1e038992ca860}{fs\+\_\+instance\+\_\+t} $\ast$instance)
 \begin{DoxyCompactList}\small\item\em Unmount d'un point de montage. \end{DoxyCompactList}\item 
-\hyperlink{kernel_2include_2types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\-\_\-t} \hyperlink{ext2__internal_8h_a6b71fa4007d19f895b0def93e5ed8ca3}{ext2\-\_\-read} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+\hyperlink{kernel_2include_2types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\+\_\+t} \hyperlink{ext2__internal_8h_a6b71fa4007d19f895b0def93e5ed8ca3}{ext2\+\_\+read} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$ofd, void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} size)
 \begin{DoxyCompactList}\small\item\em Lecture d'un fichier. \end{DoxyCompactList}\item 
-\hyperlink{kernel_2include_2types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\-\_\-t} \hyperlink{ext2__internal_8h_accd388d0b4601b1243922ac20a95d971}{ext2\-\_\-write} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, const void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+\hyperlink{kernel_2include_2types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\+\_\+t} \hyperlink{ext2__internal_8h_accd388d0b4601b1243922ac20a95d971}{ext2\+\_\+write} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$ofd, const void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} size)
 \begin{DoxyCompactList}\small\item\em Ecriture d'un fichier. \end{DoxyCompactList}\item 
-int \hyperlink{ext2__internal_8h_ab2859a00444ce0ad527332da72e2629a}{ext2\-\_\-close} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd)
+int \hyperlink{ext2__internal_8h_ab2859a00444ce0ad527332da72e2629a}{ext2\+\_\+close} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$ofd)
 \begin{DoxyCompactList}\small\item\em Fermeture d'un fichier ouvert. \end{DoxyCompactList}\item 
-int \hyperlink{ext2__internal_8h_ac9b55aefa79e5e521e4e5d993b4c009a}{ext2\-\_\-readdir} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, char $\ast$entries, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+int \hyperlink{ext2__internal_8h_ac9b55aefa79e5e521e4e5d993b4c009a}{ext2\+\_\+readdir} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$ofd, char $\ast$entries, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} size)
 \begin{DoxyCompactList}\small\item\em Lecture du contenu d'un dossier. \end{DoxyCompactList}\item 
-int \hyperlink{ext2__internal_8h_a9a8b01e29da31a35719cbf11adab1f9d}{ext2\-\_\-stat} (\hyperlink{vfs_8h_a0eefa9aac35a5462ebf1e038992ca860}{fs\-\_\-instance\-\_\-t} $\ast$instance, const char $\ast$path, struct \hyperlink{structstat}{stat} $\ast$stbuf)
+int \hyperlink{ext2__internal_8h_a9a8b01e29da31a35719cbf11adab1f9d}{ext2\+\_\+stat} (\hyperlink{vfs_8h_a0eefa9aac35a5462ebf1e038992ca860}{fs\+\_\+instance\+\_\+t} $\ast$instance, const char $\ast$path, struct \hyperlink{structstat}{stat} $\ast$stbuf)
 \begin{DoxyCompactList}\small\item\em Récupère l'état d'un fichier ou dossier. \end{DoxyCompactList}\item 
-int \hyperlink{ext2__internal_8h_a1814eebfe79637247b38dda8e50a3263}{ext2\-\_\-mknod} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\-\_\-t} $\ast$dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$dentry, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t} \hyperlink{structmode}{mode}, \hyperlink{kstat_8h_a451f1b5788fa7cc5d33db47a5992e7a6}{dev\-\_\-t} dev)
+int \hyperlink{ext2__internal_8h_a1814eebfe79637247b38dda8e50a3263}{ext2\+\_\+mknod} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\+\_\+t} $\ast$dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\+\_\+t} $\ast$dentry, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\+\_\+t} \hyperlink{structmode}{mode}, \hyperlink{kstat_8h_a451f1b5788fa7cc5d33db47a5992e7a6}{dev\+\_\+t} dev)
 \begin{DoxyCompactList}\small\item\em Création d'un noeud (fichier, dossier, fichier spécial...) \end{DoxyCompactList}\item 
-int \hyperlink{ext2__internal_8h_a099858facc12a389ffbff826567cb7c4}{ext2\-\_\-mkdir} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\-\_\-t} $\ast$dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$dentry, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t} \hyperlink{structmode}{mode})
+int \hyperlink{ext2__internal_8h_a099858facc12a389ffbff826567cb7c4}{ext2\+\_\+mkdir} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\+\_\+t} $\ast$dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\+\_\+t} $\ast$dentry, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\+\_\+t} \hyperlink{structmode}{mode})
 \begin{DoxyCompactList}\small\item\em Création d'un dossier. \end{DoxyCompactList}\item 
-int \hyperlink{ext2__internal_8h_a4af1597cc97e9aa9591ed390589e6dfc}{ext2\-\_\-unlink} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\-\_\-t} $\ast$dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$dentry)
+int \hyperlink{ext2__internal_8h_a4af1597cc97e9aa9591ed390589e6dfc}{ext2\+\_\+unlink} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\+\_\+t} $\ast$dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\+\_\+t} $\ast$dentry)
 \begin{DoxyCompactList}\small\item\em Suppression d'un noeud. \end{DoxyCompactList}\item 
-int \hyperlink{ext2__internal_8h_aeb55aa4d71dded497758c72d86b2b2f7}{ext2\-\_\-truncate} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\-\_\-t} $\ast$inode, \hyperlink{libc_2include_2sys_2types_8h_a447a6a64dbb8fb44b1e62856b333db4a}{off\-\_\-t} off)
+int \hyperlink{ext2__internal_8h_aeb55aa4d71dded497758c72d86b2b2f7}{ext2\+\_\+truncate} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\+\_\+t} $\ast$inode, \hyperlink{libc_2include_2sys_2types_8h_a447a6a64dbb8fb44b1e62856b333db4a}{off\+\_\+t} off)
 \begin{DoxyCompactList}\small\item\em Change la taille d'un fichier. \end{DoxyCompactList}\item 
-int \hyperlink{ext2__internal_8h_a4c86d6a4886145e7cd974675eb5a19a0}{ext2\-\_\-rmdir} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\-\_\-t} $\ast$dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$dentry)
+int \hyperlink{ext2__internal_8h_a4c86d6a4886145e7cd974675eb5a19a0}{ext2\+\_\+rmdir} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\+\_\+t} $\ast$dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\+\_\+t} $\ast$dentry)
 \begin{DoxyCompactList}\small\item\em Suppression d'un dossier vide. \end{DoxyCompactList}\item 
-int \hyperlink{ext2__internal_8h_acad804eba95e7600b534e07bb9134a44}{ext2\-\_\-setattr} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\-\_\-t} $\ast$inode, \hyperlink{vfs_8h_a4ad5156f3f4319159c4e28e8787713f1}{file\-\_\-attributes\-\_\-t} $\ast$attr)
+int \hyperlink{ext2__internal_8h_acad804eba95e7600b534e07bb9134a44}{ext2\+\_\+setattr} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\+\_\+t} $\ast$inode, \hyperlink{vfs_8h_a4ad5156f3f4319159c4e28e8787713f1}{file\+\_\+attributes\+\_\+t} $\ast$attr)
 \item 
-int \hyperlink{ext2__internal_8h_a79a131bb760b0d236f6bf0209ee6f5cb}{ext2\-\_\-seek} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, long offset, int whence)
+int \hyperlink{ext2__internal_8h_a79a131bb760b0d236f6bf0209ee6f5cb}{ext2\+\_\+seek} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$ofd, long offset, int whence)
 \item 
-\hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$ \hyperlink{ext2__internal_8h_a185452dee205dcca978c1c6f7fdeee22}{ext2\-\_\-getroot} (struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance)
+\hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\+\_\+t} $\ast$ \hyperlink{ext2__internal_8h_a185452dee205dcca978c1c6f7fdeee22}{ext2\+\_\+getroot} (struct \hyperlink{struct__fs__instance__t}{\+\_\+fs\+\_\+instance\+\_\+t} $\ast$instance)
 \item 
-\hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$ \hyperlink{ext2__internal_8h_aacb0077cd0a76158c9288ecd193d58da}{ext2\-\_\-lookup} (struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance, struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$dentry, const char $\ast$name)
+\hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\+\_\+t} $\ast$ \hyperlink{ext2__internal_8h_aacb0077cd0a76158c9288ecd193d58da}{ext2\+\_\+lookup} (struct \hyperlink{struct__fs__instance__t}{\+\_\+fs\+\_\+instance\+\_\+t} $\ast$instance, struct \hyperlink{struct__dentry__t}{\+\_\+dentry\+\_\+t} $\ast$dentry, const char $\ast$name)
 \item 
-int \hyperlink{ext2__internal_8h_a4d19a34580976adf582bb45bd402649c}{ext2\-\_\-rename} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\-\_\-t} $\ast$old\-\_\-dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$old\-\_\-dentry, \hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\-\_\-t} $\ast$new\-\_\-dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$new\-\_\-dentry)
-\begin{DoxyCompactList}\small\item\em Renomme ou déplace un fichier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+int \hyperlink{ext2__internal_8h_a4d19a34580976adf582bb45bd402649c}{ext2\+\_\+rename} (\hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\+\_\+t} $\ast$old\+\_\+dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\+\_\+t} $\ast$old\+\_\+dentry, \hyperlink{vfs_8h_af51b41660b60ad79b490887fe6e22da9}{inode\+\_\+t} $\ast$new\+\_\+dir, \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\+\_\+t} $\ast$new\+\_\+dentry)
+\begin{DoxyCompactList}\small\item\em Renomme ou déplace un fichier. \end{DoxyCompactList}\item 
+\hypertarget{ext2__internal_8h_ad94aae30737b46a8b56ade462c3ac79d}{\hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\+\_\+t} $\ast$ {\bfseries init\+\_\+rootext2fs} (\hyperlink{ext2__internal_8h_adadd96c517f11a9b94cb4200748c2b21}{ext2\+\_\+fs\+\_\+instance\+\_\+t} $\ast$instance)}\label{ext2__internal_8h_ad94aae30737b46a8b56ade462c3ac79d}
+
+\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{struct__open__file__operations__t}{\-\_\-open\-\_\-file\-\_\-operations\-\_\-t} \hyperlink{ext2__internal_8h_a27d0bcdadfb4d9220ed5cd2fa6693313}{ext2fs\-\_\-fops}
+struct \hyperlink{struct__open__file__operations__t}{\+\_\+open\+\_\+file\+\_\+operations\+\_\+t} \hyperlink{ext2__internal_8h_a27d0bcdadfb4d9220ed5cd2fa6693313}{ext2fs\+\_\+fops}
 \end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 Description de ce que fait le fichier 
 
 \subsection{Documentation des macros}
-\hypertarget{ext2__internal_8h_ad045e597ad1e193ecc156e019129c55c}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-D\-Y\-N\-A\-M\-I\-C\-\_\-\-R\-E\-V@{E\-X\-T2\-\_\-\-D\-Y\-N\-A\-M\-I\-C\-\_\-\-R\-E\-V}}
-\index{E\-X\-T2\-\_\-\-D\-Y\-N\-A\-M\-I\-C\-\_\-\-R\-E\-V@{E\-X\-T2\-\_\-\-D\-Y\-N\-A\-M\-I\-C\-\_\-\-R\-E\-V}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-D\-Y\-N\-A\-M\-I\-C\-\_\-\-R\-E\-V}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-D\-Y\-N\-A\-M\-I\-C\-\_\-\-R\-E\-V~1}}\label{ext2__internal_8h_ad045e597ad1e193ecc156e019129c55c}
-V2 format w/ dynamic inode sizes \hypertarget{ext2__internal_8h_a5f734f7814d4cbf8c129824d3ca8a9a5}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-F\-T\-\_\-\-B\-L\-K\-D\-E\-V@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-B\-L\-K\-D\-E\-V}}
-\index{E\-X\-T2\-\_\-\-F\-T\-\_\-\-B\-L\-K\-D\-E\-V@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-B\-L\-K\-D\-E\-V}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-F\-T\-\_\-\-B\-L\-K\-D\-E\-V}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-F\-T\-\_\-\-B\-L\-K\-D\-E\-V~4}}\label{ext2__internal_8h_a5f734f7814d4cbf8c129824d3ca8a9a5}
-Block device. \hypertarget{ext2__internal_8h_aa2990e776053f7962e5a8a235ed0db5d}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-F\-T\-\_\-\-C\-H\-R\-D\-E\-V@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-C\-H\-R\-D\-E\-V}}
-\index{E\-X\-T2\-\_\-\-F\-T\-\_\-\-C\-H\-R\-D\-E\-V@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-C\-H\-R\-D\-E\-V}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-F\-T\-\_\-\-C\-H\-R\-D\-E\-V}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-F\-T\-\_\-\-C\-H\-R\-D\-E\-V~3}}\label{ext2__internal_8h_aa2990e776053f7962e5a8a235ed0db5d}
-Char device. \hypertarget{ext2__internal_8h_a015c3232a7dee95fe7d3117819f7c353}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-F\-T\-\_\-\-D\-I\-R@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-D\-I\-R}}
-\index{E\-X\-T2\-\_\-\-F\-T\-\_\-\-D\-I\-R@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-D\-I\-R}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-F\-T\-\_\-\-D\-I\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-F\-T\-\_\-\-D\-I\-R~2}}\label{ext2__internal_8h_a015c3232a7dee95fe7d3117819f7c353}
-Dossier. \hypertarget{ext2__internal_8h_a1dd9aa1f03cfeb067bb855da4049ec70}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-F\-T\-\_\-\-F\-I\-F\-O@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-F\-I\-F\-O}}
-\index{E\-X\-T2\-\_\-\-F\-T\-\_\-\-F\-I\-F\-O@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-F\-I\-F\-O}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-F\-T\-\_\-\-F\-I\-F\-O}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-F\-T\-\_\-\-F\-I\-F\-O~5}}\label{ext2__internal_8h_a1dd9aa1f03cfeb067bb855da4049ec70}
-Fifo special file. \hypertarget{ext2__internal_8h_af695d0f019e8655d3209478816dcbe2e}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-F\-T\-\_\-\-R\-E\-G\-\_\-\-F\-I\-L\-E@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-R\-E\-G\-\_\-\-F\-I\-L\-E}}
-\index{E\-X\-T2\-\_\-\-F\-T\-\_\-\-R\-E\-G\-\_\-\-F\-I\-L\-E@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-R\-E\-G\-\_\-\-F\-I\-L\-E}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-F\-T\-\_\-\-R\-E\-G\-\_\-\-F\-I\-L\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-F\-T\-\_\-\-R\-E\-G\-\_\-\-F\-I\-L\-E~1}}\label{ext2__internal_8h_af695d0f019e8655d3209478816dcbe2e}
-Fichier régulier. \hypertarget{ext2__internal_8h_ade24e3d90cfa230bb96f882a5f39c71a}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-F\-T\-\_\-\-S\-O\-C\-K@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-S\-O\-C\-K}}
-\index{E\-X\-T2\-\_\-\-F\-T\-\_\-\-S\-O\-C\-K@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-S\-O\-C\-K}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-F\-T\-\_\-\-S\-O\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-F\-T\-\_\-\-S\-O\-C\-K~6}}\label{ext2__internal_8h_ade24e3d90cfa230bb96f882a5f39c71a}
-Socket special file. \hypertarget{ext2__internal_8h_ac5e03cbec437c0617e5cfafb2f4c9845}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-F\-T\-\_\-\-S\-Y\-M\-L\-I\-N\-K@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-S\-Y\-M\-L\-I\-N\-K}}
-\index{E\-X\-T2\-\_\-\-F\-T\-\_\-\-S\-Y\-M\-L\-I\-N\-K@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-S\-Y\-M\-L\-I\-N\-K}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-F\-T\-\_\-\-S\-Y\-M\-L\-I\-N\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-F\-T\-\_\-\-S\-Y\-M\-L\-I\-N\-K~7}}\label{ext2__internal_8h_ac5e03cbec437c0617e5cfafb2f4c9845}
-Lien symbolique. \hypertarget{ext2__internal_8h_abfce2bf61a808e0e33b54cc55074769d}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-F\-T\-\_\-\-U\-N\-K\-N\-O\-W\-N@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-U\-N\-K\-N\-O\-W\-N}}
-\index{E\-X\-T2\-\_\-\-F\-T\-\_\-\-U\-N\-K\-N\-O\-W\-N@{E\-X\-T2\-\_\-\-F\-T\-\_\-\-U\-N\-K\-N\-O\-W\-N}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-F\-T\-\_\-\-U\-N\-K\-N\-O\-W\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-F\-T\-\_\-\-U\-N\-K\-N\-O\-W\-N~0}}\label{ext2__internal_8h_abfce2bf61a808e0e33b54cc55074769d}
-Filetype inconu. \hypertarget{ext2__internal_8h_abce95b7831e511179ececb8f0a7b948c}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-G\-O\-O\-D\-\_\-\-O\-L\-D\-\_\-\-R\-E\-V@{E\-X\-T2\-\_\-\-G\-O\-O\-D\-\_\-\-O\-L\-D\-\_\-\-R\-E\-V}}
-\index{E\-X\-T2\-\_\-\-G\-O\-O\-D\-\_\-\-O\-L\-D\-\_\-\-R\-E\-V@{E\-X\-T2\-\_\-\-G\-O\-O\-D\-\_\-\-O\-L\-D\-\_\-\-R\-E\-V}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-G\-O\-O\-D\-\_\-\-O\-L\-D\-\_\-\-R\-E\-V}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-G\-O\-O\-D\-\_\-\-O\-L\-D\-\_\-\-R\-E\-V~0}}\label{ext2__internal_8h_abce95b7831e511179ececb8f0a7b948c}
-The good old (original) format \hypertarget{ext2__internal_8h_a1910a0445cd5ceb6bd436631ae5b0448}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-O\-S\-\_\-\-F\-R\-E\-E\-B\-S\-D@{E\-X\-T2\-\_\-\-O\-S\-\_\-\-F\-R\-E\-E\-B\-S\-D}}
-\index{E\-X\-T2\-\_\-\-O\-S\-\_\-\-F\-R\-E\-E\-B\-S\-D@{E\-X\-T2\-\_\-\-O\-S\-\_\-\-F\-R\-E\-E\-B\-S\-D}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-O\-S\-\_\-\-F\-R\-E\-E\-B\-S\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-O\-S\-\_\-\-F\-R\-E\-E\-B\-S\-D~3}}\label{ext2__internal_8h_a1910a0445cd5ceb6bd436631ae5b0448}
-Code pour Freebsd \hypertarget{ext2__internal_8h_a7af4ecf350d7b5ba9f4d929bc91d4793}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-O\-S\-\_\-\-H\-U\-R\-D@{E\-X\-T2\-\_\-\-O\-S\-\_\-\-H\-U\-R\-D}}
-\index{E\-X\-T2\-\_\-\-O\-S\-\_\-\-H\-U\-R\-D@{E\-X\-T2\-\_\-\-O\-S\-\_\-\-H\-U\-R\-D}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-O\-S\-\_\-\-H\-U\-R\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-O\-S\-\_\-\-H\-U\-R\-D~1}}\label{ext2__internal_8h_a7af4ecf350d7b5ba9f4d929bc91d4793}
-Code pour Hurd \hypertarget{ext2__internal_8h_a80253adc8e223859f4156fbabb970e32}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-O\-S\-\_\-\-L\-I\-N\-U\-X@{E\-X\-T2\-\_\-\-O\-S\-\_\-\-L\-I\-N\-U\-X}}
-\index{E\-X\-T2\-\_\-\-O\-S\-\_\-\-L\-I\-N\-U\-X@{E\-X\-T2\-\_\-\-O\-S\-\_\-\-L\-I\-N\-U\-X}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-O\-S\-\_\-\-L\-I\-N\-U\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-O\-S\-\_\-\-L\-I\-N\-U\-X~0}}\label{ext2__internal_8h_a80253adc8e223859f4156fbabb970e32}
-Code pour Linux \hypertarget{ext2__internal_8h_aaf563eacc83118b8d11c7b25bd52d363}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-O\-S\-\_\-\-L\-I\-T\-E\-S@{E\-X\-T2\-\_\-\-O\-S\-\_\-\-L\-I\-T\-E\-S}}
-\index{E\-X\-T2\-\_\-\-O\-S\-\_\-\-L\-I\-T\-E\-S@{E\-X\-T2\-\_\-\-O\-S\-\_\-\-L\-I\-T\-E\-S}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-O\-S\-\_\-\-L\-I\-T\-E\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-O\-S\-\_\-\-L\-I\-T\-E\-S~4}}\label{ext2__internal_8h_aaf563eacc83118b8d11c7b25bd52d363}
-Code pour Lites \hypertarget{ext2__internal_8h_af9871fe2b6a9510f18263e27ff224f38}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-O\-S\-\_\-\-M\-A\-S\-I\-X@{E\-X\-T2\-\_\-\-O\-S\-\_\-\-M\-A\-S\-I\-X}}
-\index{E\-X\-T2\-\_\-\-O\-S\-\_\-\-M\-A\-S\-I\-X@{E\-X\-T2\-\_\-\-O\-S\-\_\-\-M\-A\-S\-I\-X}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-O\-S\-\_\-\-M\-A\-S\-I\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-O\-S\-\_\-\-M\-A\-S\-I\-X~2}}\label{ext2__internal_8h_af9871fe2b6a9510f18263e27ff224f38}
-Code pour Masix \hypertarget{ext2__internal_8h_acb50ee6c9362361d2cc44d8be16f9959}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-R\-O\-O\-T\-\_\-\-I\-N\-O@{E\-X\-T2\-\_\-\-R\-O\-O\-T\-\_\-\-I\-N\-O}}
-\index{E\-X\-T2\-\_\-\-R\-O\-O\-T\-\_\-\-I\-N\-O@{E\-X\-T2\-\_\-\-R\-O\-O\-T\-\_\-\-I\-N\-O}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-R\-O\-O\-T\-\_\-\-I\-N\-O}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-R\-O\-O\-T\-\_\-\-I\-N\-O~2}}\label{ext2__internal_8h_acb50ee6c9362361d2cc44d8be16f9959}
-Numéro de l'inode racine. \hypertarget{ext2__internal_8h_a24f82827b296fe1cc2b35f3db8c41feb}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-B\-L\-K@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-B\-L\-K}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-B\-L\-K@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-B\-L\-K}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-B\-L\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-B\-L\-K~0x6000}}\label{ext2__internal_8h_a24f82827b296fe1cc2b35f3db8c41feb}
-block device \hypertarget{ext2__internal_8h_ab8d1b41d62f66a1e91eb8f3160229431}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-C\-H\-R@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-C\-H\-R}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-C\-H\-R@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-C\-H\-R}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-C\-H\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-C\-H\-R~0x2000}}\label{ext2__internal_8h_ab8d1b41d62f66a1e91eb8f3160229431}
-character device \hypertarget{ext2__internal_8h_a7320539ed732dd6a8722ae644953ed7b}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-D\-I\-R@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-D\-I\-R}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-D\-I\-R@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-D\-I\-R}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-D\-I\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-D\-I\-R~0x4000}}\label{ext2__internal_8h_a7320539ed732dd6a8722ae644953ed7b}
-directory \hypertarget{ext2__internal_8h_a4c48acbda2a486ccebcbd0ba501b85f8}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-I\-F\-O@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-I\-F\-O}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-I\-F\-O@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-I\-F\-O}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-I\-F\-O}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-I\-F\-O~0x1000}}\label{ext2__internal_8h_a4c48acbda2a486ccebcbd0ba501b85f8}
-fifo \hypertarget{ext2__internal_8h_aff4d841e1f50d07c6dd2c33dbc9fc75f}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-L\-N\-K@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-L\-N\-K}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-L\-N\-K@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-L\-N\-K}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-L\-N\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-L\-N\-K~0x\-A000}}\label{ext2__internal_8h_aff4d841e1f50d07c6dd2c33dbc9fc75f}
-symbolic link \hypertarget{ext2__internal_8h_acaacf118aa2b4861775147ea812669a3}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-R\-E\-G@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-R\-E\-G}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-R\-E\-G@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-R\-E\-G}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-R\-E\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-R\-E\-G~0x8000}}\label{ext2__internal_8h_acaacf118aa2b4861775147ea812669a3}
-regular file \hypertarget{ext2__internal_8h_ad45908d1fe05e34057fc0e9e9e285df2}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-S\-O\-C\-K@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-S\-O\-C\-K}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-S\-O\-C\-K@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-S\-O\-C\-K}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-S\-O\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-F\-S\-O\-C\-K~0x\-C000}}\label{ext2__internal_8h_ad45908d1fe05e34057fc0e9e9e285df2}
-socket \hypertarget{ext2__internal_8h_ab6d745c8329751b2985a6029363762e5}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-G\-R\-P@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-G\-R\-P}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-G\-R\-P@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-G\-R\-P}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-G\-R\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-G\-R\-P~0x0020}}\label{ext2__internal_8h_ab6d745c8329751b2985a6029363762e5}
-group read \hypertarget{ext2__internal_8h_a8b2a613fd90026648c24958e02dcb24c}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-O\-T\-H@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-O\-T\-H}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-O\-T\-H@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-O\-T\-H}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-O\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-O\-T\-H~0x0004}}\label{ext2__internal_8h_a8b2a613fd90026648c24958e02dcb24c}
-others read \hypertarget{ext2__internal_8h_a271ff434740d4b9f06a5af49e727341c}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-U\-S\-R@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-U\-S\-R}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-U\-S\-R@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-U\-S\-R}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-U\-S\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-R\-U\-S\-R~0x0100}}\label{ext2__internal_8h_a271ff434740d4b9f06a5af49e727341c}
-user read \hypertarget{ext2__internal_8h_aa81e34e6941316e9c72793b5d6b6ab7f}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-G\-I\-D@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-G\-I\-D}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-G\-I\-D@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-G\-I\-D}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-G\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-G\-I\-D~0x0400}}\label{ext2__internal_8h_aa81e34e6941316e9c72793b5d6b6ab7f}
-Set process Group I\-D \hypertarget{ext2__internal_8h_a8a9f2cd835d659f4d6cbd63b53550f62}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-U\-I\-D@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-U\-I\-D}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-U\-I\-D@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-U\-I\-D}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-U\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-U\-I\-D~0x0800}}\label{ext2__internal_8h_a8a9f2cd835d659f4d6cbd63b53550f62}
-Set process User I\-D \hypertarget{ext2__internal_8h_a1745e9d39e3064af59ba7afd79277e5f}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-V\-T\-X@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-V\-T\-X}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-V\-T\-X@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-V\-T\-X}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-V\-T\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-S\-V\-T\-X~0x0200}}\label{ext2__internal_8h_a1745e9d39e3064af59ba7afd79277e5f}
-sticky bit \hypertarget{ext2__internal_8h_aa2b54450b815f4d44e068ae27af3a0be}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-G\-R\-P@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-G\-R\-P}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-G\-R\-P@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-G\-R\-P}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-G\-R\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-G\-R\-P~0x0010}}\label{ext2__internal_8h_aa2b54450b815f4d44e068ae27af3a0be}
-group write \hypertarget{ext2__internal_8h_ab88473468942288af1c7b2e7733ce257}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-O\-T\-H@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-O\-T\-H}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-O\-T\-H@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-O\-T\-H}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-O\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-O\-T\-H~0x0002}}\label{ext2__internal_8h_ab88473468942288af1c7b2e7733ce257}
-others write \hypertarget{ext2__internal_8h_a2770c24e68ebe2ea91b729a4e1245d53}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-U\-S\-R@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-U\-S\-R}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-U\-S\-R@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-U\-S\-R}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-U\-S\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-W\-U\-S\-R~0x0080}}\label{ext2__internal_8h_a2770c24e68ebe2ea91b729a4e1245d53}
-user write \hypertarget{ext2__internal_8h_a415d04f40b87167e5a7f1131a41afa63}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-G\-R\-P@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-G\-R\-P}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-G\-R\-P@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-G\-R\-P}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-G\-R\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-G\-R\-P~0x0008}}\label{ext2__internal_8h_a415d04f40b87167e5a7f1131a41afa63}
-group execute \hypertarget{ext2__internal_8h_acb0a6cd1abe8a29c90dbae22a815f800}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-O\-T\-H@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-O\-T\-H}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-O\-T\-H@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-O\-T\-H}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-O\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-O\-T\-H~0x0001}}\label{ext2__internal_8h_acb0a6cd1abe8a29c90dbae22a815f800}
-others execute \hypertarget{ext2__internal_8h_a360833154bcc6f517311e4a2ed241e03}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-U\-S\-R@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-U\-S\-R}}
-\index{E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-U\-S\-R@{E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-U\-S\-R}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-U\-S\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-T2\-\_\-\-S\-\_\-\-I\-X\-U\-S\-R~0x0040}}\label{ext2__internal_8h_a360833154bcc6f517311e4a2ed241e03}
+\hypertarget{ext2__internal_8h_ad045e597ad1e193ecc156e019129c55c}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+D\+Y\+N\+A\+M\+I\+C\+\_\+\+R\+E\+V@{E\+X\+T2\+\_\+\+D\+Y\+N\+A\+M\+I\+C\+\_\+\+R\+E\+V}}
+\index{E\+X\+T2\+\_\+\+D\+Y\+N\+A\+M\+I\+C\+\_\+\+R\+E\+V@{E\+X\+T2\+\_\+\+D\+Y\+N\+A\+M\+I\+C\+\_\+\+R\+E\+V}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+D\+Y\+N\+A\+M\+I\+C\+\_\+\+R\+E\+V}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+D\+Y\+N\+A\+M\+I\+C\+\_\+\+R\+E\+V~1}}\label{ext2__internal_8h_ad045e597ad1e193ecc156e019129c55c}
+V2 format w/ dynamic inode sizes \hypertarget{ext2__internal_8h_a5f734f7814d4cbf8c129824d3ca8a9a5}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+F\+T\+\_\+\+B\+L\+K\+D\+E\+V@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+B\+L\+K\+D\+E\+V}}
+\index{E\+X\+T2\+\_\+\+F\+T\+\_\+\+B\+L\+K\+D\+E\+V@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+B\+L\+K\+D\+E\+V}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+F\+T\+\_\+\+B\+L\+K\+D\+E\+V}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+F\+T\+\_\+\+B\+L\+K\+D\+E\+V~4}}\label{ext2__internal_8h_a5f734f7814d4cbf8c129824d3ca8a9a5}
+Block device. \hypertarget{ext2__internal_8h_aa2990e776053f7962e5a8a235ed0db5d}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+F\+T\+\_\+\+C\+H\+R\+D\+E\+V@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+C\+H\+R\+D\+E\+V}}
+\index{E\+X\+T2\+\_\+\+F\+T\+\_\+\+C\+H\+R\+D\+E\+V@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+C\+H\+R\+D\+E\+V}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+F\+T\+\_\+\+C\+H\+R\+D\+E\+V}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+F\+T\+\_\+\+C\+H\+R\+D\+E\+V~3}}\label{ext2__internal_8h_aa2990e776053f7962e5a8a235ed0db5d}
+Char device. \hypertarget{ext2__internal_8h_a015c3232a7dee95fe7d3117819f7c353}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+F\+T\+\_\+\+D\+I\+R@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+D\+I\+R}}
+\index{E\+X\+T2\+\_\+\+F\+T\+\_\+\+D\+I\+R@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+D\+I\+R}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+F\+T\+\_\+\+D\+I\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+F\+T\+\_\+\+D\+I\+R~2}}\label{ext2__internal_8h_a015c3232a7dee95fe7d3117819f7c353}
+Dossier. \hypertarget{ext2__internal_8h_a1dd9aa1f03cfeb067bb855da4049ec70}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+F\+T\+\_\+\+F\+I\+F\+O@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+F\+I\+F\+O}}
+\index{E\+X\+T2\+\_\+\+F\+T\+\_\+\+F\+I\+F\+O@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+F\+I\+F\+O}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+F\+T\+\_\+\+F\+I\+F\+O}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+F\+T\+\_\+\+F\+I\+F\+O~5}}\label{ext2__internal_8h_a1dd9aa1f03cfeb067bb855da4049ec70}
+Fifo special file. \hypertarget{ext2__internal_8h_af695d0f019e8655d3209478816dcbe2e}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+F\+T\+\_\+\+R\+E\+G\+\_\+\+F\+I\+L\+E@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+R\+E\+G\+\_\+\+F\+I\+L\+E}}
+\index{E\+X\+T2\+\_\+\+F\+T\+\_\+\+R\+E\+G\+\_\+\+F\+I\+L\+E@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+R\+E\+G\+\_\+\+F\+I\+L\+E}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+F\+T\+\_\+\+R\+E\+G\+\_\+\+F\+I\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+F\+T\+\_\+\+R\+E\+G\+\_\+\+F\+I\+L\+E~1}}\label{ext2__internal_8h_af695d0f019e8655d3209478816dcbe2e}
+Fichier régulier. \hypertarget{ext2__internal_8h_ade24e3d90cfa230bb96f882a5f39c71a}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+F\+T\+\_\+\+S\+O\+C\+K@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+S\+O\+C\+K}}
+\index{E\+X\+T2\+\_\+\+F\+T\+\_\+\+S\+O\+C\+K@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+S\+O\+C\+K}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+F\+T\+\_\+\+S\+O\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+F\+T\+\_\+\+S\+O\+C\+K~6}}\label{ext2__internal_8h_ade24e3d90cfa230bb96f882a5f39c71a}
+Socket special file. \hypertarget{ext2__internal_8h_ac5e03cbec437c0617e5cfafb2f4c9845}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+F\+T\+\_\+\+S\+Y\+M\+L\+I\+N\+K@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+S\+Y\+M\+L\+I\+N\+K}}
+\index{E\+X\+T2\+\_\+\+F\+T\+\_\+\+S\+Y\+M\+L\+I\+N\+K@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+S\+Y\+M\+L\+I\+N\+K}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+F\+T\+\_\+\+S\+Y\+M\+L\+I\+N\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+F\+T\+\_\+\+S\+Y\+M\+L\+I\+N\+K~7}}\label{ext2__internal_8h_ac5e03cbec437c0617e5cfafb2f4c9845}
+Lien symbolique. \hypertarget{ext2__internal_8h_abfce2bf61a808e0e33b54cc55074769d}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+F\+T\+\_\+\+U\+N\+K\+N\+O\+W\+N@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+U\+N\+K\+N\+O\+W\+N}}
+\index{E\+X\+T2\+\_\+\+F\+T\+\_\+\+U\+N\+K\+N\+O\+W\+N@{E\+X\+T2\+\_\+\+F\+T\+\_\+\+U\+N\+K\+N\+O\+W\+N}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+F\+T\+\_\+\+U\+N\+K\+N\+O\+W\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+F\+T\+\_\+\+U\+N\+K\+N\+O\+W\+N~0}}\label{ext2__internal_8h_abfce2bf61a808e0e33b54cc55074769d}
+Filetype inconu. \hypertarget{ext2__internal_8h_abce95b7831e511179ececb8f0a7b948c}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+G\+O\+O\+D\+\_\+\+O\+L\+D\+\_\+\+R\+E\+V@{E\+X\+T2\+\_\+\+G\+O\+O\+D\+\_\+\+O\+L\+D\+\_\+\+R\+E\+V}}
+\index{E\+X\+T2\+\_\+\+G\+O\+O\+D\+\_\+\+O\+L\+D\+\_\+\+R\+E\+V@{E\+X\+T2\+\_\+\+G\+O\+O\+D\+\_\+\+O\+L\+D\+\_\+\+R\+E\+V}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+G\+O\+O\+D\+\_\+\+O\+L\+D\+\_\+\+R\+E\+V}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+G\+O\+O\+D\+\_\+\+O\+L\+D\+\_\+\+R\+E\+V~0}}\label{ext2__internal_8h_abce95b7831e511179ececb8f0a7b948c}
+The good old (original) format \hypertarget{ext2__internal_8h_a1910a0445cd5ceb6bd436631ae5b0448}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+O\+S\+\_\+\+F\+R\+E\+E\+B\+S\+D@{E\+X\+T2\+\_\+\+O\+S\+\_\+\+F\+R\+E\+E\+B\+S\+D}}
+\index{E\+X\+T2\+\_\+\+O\+S\+\_\+\+F\+R\+E\+E\+B\+S\+D@{E\+X\+T2\+\_\+\+O\+S\+\_\+\+F\+R\+E\+E\+B\+S\+D}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+O\+S\+\_\+\+F\+R\+E\+E\+B\+S\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+O\+S\+\_\+\+F\+R\+E\+E\+B\+S\+D~3}}\label{ext2__internal_8h_a1910a0445cd5ceb6bd436631ae5b0448}
+Code pour Freebsd \hypertarget{ext2__internal_8h_a7af4ecf350d7b5ba9f4d929bc91d4793}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+O\+S\+\_\+\+H\+U\+R\+D@{E\+X\+T2\+\_\+\+O\+S\+\_\+\+H\+U\+R\+D}}
+\index{E\+X\+T2\+\_\+\+O\+S\+\_\+\+H\+U\+R\+D@{E\+X\+T2\+\_\+\+O\+S\+\_\+\+H\+U\+R\+D}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+O\+S\+\_\+\+H\+U\+R\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+O\+S\+\_\+\+H\+U\+R\+D~1}}\label{ext2__internal_8h_a7af4ecf350d7b5ba9f4d929bc91d4793}
+Code pour Hurd \hypertarget{ext2__internal_8h_a80253adc8e223859f4156fbabb970e32}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+O\+S\+\_\+\+L\+I\+N\+U\+X@{E\+X\+T2\+\_\+\+O\+S\+\_\+\+L\+I\+N\+U\+X}}
+\index{E\+X\+T2\+\_\+\+O\+S\+\_\+\+L\+I\+N\+U\+X@{E\+X\+T2\+\_\+\+O\+S\+\_\+\+L\+I\+N\+U\+X}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+O\+S\+\_\+\+L\+I\+N\+U\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+O\+S\+\_\+\+L\+I\+N\+U\+X~0}}\label{ext2__internal_8h_a80253adc8e223859f4156fbabb970e32}
+Code pour Linux \hypertarget{ext2__internal_8h_aaf563eacc83118b8d11c7b25bd52d363}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+O\+S\+\_\+\+L\+I\+T\+E\+S@{E\+X\+T2\+\_\+\+O\+S\+\_\+\+L\+I\+T\+E\+S}}
+\index{E\+X\+T2\+\_\+\+O\+S\+\_\+\+L\+I\+T\+E\+S@{E\+X\+T2\+\_\+\+O\+S\+\_\+\+L\+I\+T\+E\+S}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+O\+S\+\_\+\+L\+I\+T\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+O\+S\+\_\+\+L\+I\+T\+E\+S~4}}\label{ext2__internal_8h_aaf563eacc83118b8d11c7b25bd52d363}
+Code pour Lites \hypertarget{ext2__internal_8h_af9871fe2b6a9510f18263e27ff224f38}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+O\+S\+\_\+\+M\+A\+S\+I\+X@{E\+X\+T2\+\_\+\+O\+S\+\_\+\+M\+A\+S\+I\+X}}
+\index{E\+X\+T2\+\_\+\+O\+S\+\_\+\+M\+A\+S\+I\+X@{E\+X\+T2\+\_\+\+O\+S\+\_\+\+M\+A\+S\+I\+X}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+O\+S\+\_\+\+M\+A\+S\+I\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+O\+S\+\_\+\+M\+A\+S\+I\+X~2}}\label{ext2__internal_8h_af9871fe2b6a9510f18263e27ff224f38}
+Code pour Masix \hypertarget{ext2__internal_8h_acb50ee6c9362361d2cc44d8be16f9959}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+R\+O\+O\+T\+\_\+\+I\+N\+O@{E\+X\+T2\+\_\+\+R\+O\+O\+T\+\_\+\+I\+N\+O}}
+\index{E\+X\+T2\+\_\+\+R\+O\+O\+T\+\_\+\+I\+N\+O@{E\+X\+T2\+\_\+\+R\+O\+O\+T\+\_\+\+I\+N\+O}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+R\+O\+O\+T\+\_\+\+I\+N\+O}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+R\+O\+O\+T\+\_\+\+I\+N\+O~2}}\label{ext2__internal_8h_acb50ee6c9362361d2cc44d8be16f9959}
+Numéro de l'inode racine. \hypertarget{ext2__internal_8h_a24f82827b296fe1cc2b35f3db8c41feb}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+B\+L\+K@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+B\+L\+K}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+B\+L\+K@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+B\+L\+K}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+B\+L\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+B\+L\+K~0x6000}}\label{ext2__internal_8h_a24f82827b296fe1cc2b35f3db8c41feb}
+block device \hypertarget{ext2__internal_8h_ab8d1b41d62f66a1e91eb8f3160229431}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+C\+H\+R@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+C\+H\+R}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+C\+H\+R@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+C\+H\+R}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+C\+H\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+C\+H\+R~0x2000}}\label{ext2__internal_8h_ab8d1b41d62f66a1e91eb8f3160229431}
+character device \hypertarget{ext2__internal_8h_a7320539ed732dd6a8722ae644953ed7b}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+D\+I\+R@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+D\+I\+R}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+D\+I\+R@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+D\+I\+R}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+D\+I\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+D\+I\+R~0x4000}}\label{ext2__internal_8h_a7320539ed732dd6a8722ae644953ed7b}
+directory \hypertarget{ext2__internal_8h_a4c48acbda2a486ccebcbd0ba501b85f8}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+I\+F\+O@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+I\+F\+O}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+I\+F\+O@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+I\+F\+O}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+I\+F\+O}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+I\+F\+O~0x1000}}\label{ext2__internal_8h_a4c48acbda2a486ccebcbd0ba501b85f8}
+fifo \hypertarget{ext2__internal_8h_aff4d841e1f50d07c6dd2c33dbc9fc75f}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+L\+N\+K@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+L\+N\+K}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+L\+N\+K@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+L\+N\+K}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+L\+N\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+L\+N\+K~0x\+A000}}\label{ext2__internal_8h_aff4d841e1f50d07c6dd2c33dbc9fc75f}
+symbolic link \hypertarget{ext2__internal_8h_acaacf118aa2b4861775147ea812669a3}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+R\+E\+G@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+R\+E\+G}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+R\+E\+G@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+R\+E\+G}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+R\+E\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+R\+E\+G~0x8000}}\label{ext2__internal_8h_acaacf118aa2b4861775147ea812669a3}
+regular file \hypertarget{ext2__internal_8h_ad45908d1fe05e34057fc0e9e9e285df2}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+S\+O\+C\+K@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+S\+O\+C\+K}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+S\+O\+C\+K@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+S\+O\+C\+K}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+S\+O\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+F\+S\+O\+C\+K~0x\+C000}}\label{ext2__internal_8h_ad45908d1fe05e34057fc0e9e9e285df2}
+socket \hypertarget{ext2__internal_8h_ab6d745c8329751b2985a6029363762e5}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+G\+R\+P@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+G\+R\+P}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+G\+R\+P@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+G\+R\+P}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+G\+R\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+G\+R\+P~0x0020}}\label{ext2__internal_8h_ab6d745c8329751b2985a6029363762e5}
+group read \hypertarget{ext2__internal_8h_a8b2a613fd90026648c24958e02dcb24c}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+O\+T\+H@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+O\+T\+H}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+O\+T\+H@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+O\+T\+H}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+O\+T\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+O\+T\+H~0x0004}}\label{ext2__internal_8h_a8b2a613fd90026648c24958e02dcb24c}
+others read \hypertarget{ext2__internal_8h_a271ff434740d4b9f06a5af49e727341c}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+U\+S\+R@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+U\+S\+R}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+U\+S\+R@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+U\+S\+R}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+U\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+R\+U\+S\+R~0x0100}}\label{ext2__internal_8h_a271ff434740d4b9f06a5af49e727341c}
+user read \hypertarget{ext2__internal_8h_aa81e34e6941316e9c72793b5d6b6ab7f}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+G\+I\+D@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+G\+I\+D}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+G\+I\+D@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+G\+I\+D}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+G\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+G\+I\+D~0x0400}}\label{ext2__internal_8h_aa81e34e6941316e9c72793b5d6b6ab7f}
+Set process Group I\+D \hypertarget{ext2__internal_8h_a8a9f2cd835d659f4d6cbd63b53550f62}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+U\+I\+D@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+U\+I\+D}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+U\+I\+D@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+U\+I\+D}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+U\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+U\+I\+D~0x0800}}\label{ext2__internal_8h_a8a9f2cd835d659f4d6cbd63b53550f62}
+Set process User I\+D \hypertarget{ext2__internal_8h_a1745e9d39e3064af59ba7afd79277e5f}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+V\+T\+X@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+V\+T\+X}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+V\+T\+X@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+V\+T\+X}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+V\+T\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+S\+V\+T\+X~0x0200}}\label{ext2__internal_8h_a1745e9d39e3064af59ba7afd79277e5f}
+sticky bit \hypertarget{ext2__internal_8h_aa2b54450b815f4d44e068ae27af3a0be}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+G\+R\+P@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+G\+R\+P}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+G\+R\+P@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+G\+R\+P}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+G\+R\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+G\+R\+P~0x0010}}\label{ext2__internal_8h_aa2b54450b815f4d44e068ae27af3a0be}
+group write \hypertarget{ext2__internal_8h_ab88473468942288af1c7b2e7733ce257}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+O\+T\+H@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+O\+T\+H}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+O\+T\+H@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+O\+T\+H}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+O\+T\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+O\+T\+H~0x0002}}\label{ext2__internal_8h_ab88473468942288af1c7b2e7733ce257}
+others write \hypertarget{ext2__internal_8h_a2770c24e68ebe2ea91b729a4e1245d53}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+U\+S\+R@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+U\+S\+R}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+U\+S\+R@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+U\+S\+R}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+U\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+W\+U\+S\+R~0x0080}}\label{ext2__internal_8h_a2770c24e68ebe2ea91b729a4e1245d53}
+user write \hypertarget{ext2__internal_8h_a415d04f40b87167e5a7f1131a41afa63}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+G\+R\+P@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+G\+R\+P}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+G\+R\+P@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+G\+R\+P}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+G\+R\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+G\+R\+P~0x0008}}\label{ext2__internal_8h_a415d04f40b87167e5a7f1131a41afa63}
+group execute \hypertarget{ext2__internal_8h_acb0a6cd1abe8a29c90dbae22a815f800}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+O\+T\+H@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+O\+T\+H}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+O\+T\+H@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+O\+T\+H}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+O\+T\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+O\+T\+H~0x0001}}\label{ext2__internal_8h_acb0a6cd1abe8a29c90dbae22a815f800}
+others execute \hypertarget{ext2__internal_8h_a360833154bcc6f517311e4a2ed241e03}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+U\+S\+R@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+U\+S\+R}}
+\index{E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+U\+S\+R@{E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+U\+S\+R}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+U\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T2\+\_\+\+S\+\_\+\+I\+X\+U\+S\+R~0x0040}}\label{ext2__internal_8h_a360833154bcc6f517311e4a2ed241e03}
 user execute 
 
 \subsection{Documentation des fonctions}
-\hypertarget{ext2__internal_8h_ab2859a00444ce0ad527332da72e2629a}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2\-\_\-close@{ext2\-\_\-close}}
-\index{ext2\-\_\-close@{ext2\-\_\-close}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2\-\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\-\_\-close (
+\hypertarget{ext2__internal_8h_ab2859a00444ce0ad527332da72e2629a}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2\+\_\+close@{ext2\+\_\+close}}
+\index{ext2\+\_\+close@{ext2\+\_\+close}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2\+\_\+close}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\+\_\+close (
 \begin{DoxyParamCaption}
-\item[{{\bf open\-\_\-file\-\_\-descriptor} $\ast$}]{ofd}
+\item[{{\bf open\+\_\+file\+\_\+descriptor} $\ast$}]{ofd}
 \end{DoxyParamCaption}
 )}}\label{ext2__internal_8h_ab2859a00444ce0ad527332da72e2629a}
 
@@ -295,27 +299,27 @@ user execute
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=218pt]{ext2__internal_8h_ab2859a00444ce0ad527332da72e2629a_cgraph}
+\includegraphics[width=216pt]{ext2__internal_8h_ab2859a00444ce0ad527332da72e2629a_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{ext2__internal_8h_a185452dee205dcca978c1c6f7fdeee22}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2\-\_\-getroot@{ext2\-\_\-getroot}}
-\index{ext2\-\_\-getroot@{ext2\-\_\-getroot}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2\-\_\-getroot}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dentry\-\_\-t}$\ast$ ext2\-\_\-getroot (
+\hypertarget{ext2__internal_8h_a185452dee205dcca978c1c6f7fdeee22}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2\+\_\+getroot@{ext2\+\_\+getroot}}
+\index{ext2\+\_\+getroot@{ext2\+\_\+getroot}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2\+\_\+getroot}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dentry\+\_\+t}$\ast$ ext2\+\_\+getroot (
 \begin{DoxyParamCaption}
-\item[{struct {\bf \-\_\-fs\-\_\-instance\-\_\-t} $\ast$}]{instance}
+\item[{struct {\bf \+\_\+fs\+\_\+instance\+\_\+t} $\ast$}]{instance}
 \end{DoxyParamCaption}
 )}}\label{ext2__internal_8h_a185452dee205dcca978c1c6f7fdeee22}
 Retourne le noeud racine.
 
 
 \begin{DoxyParams}{Paramètres}
-{\em instance} & Instance de F\-S.\\
+{\em instance} & Instance de F\+S.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
@@ -323,21 +327,22 @@ le noeud racine.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=260pt]{ext2__internal_8h_a185452dee205dcca978c1c6f7fdeee22_icgraph}
+\includegraphics[width=259pt]{ext2__internal_8h_a185452dee205dcca978c1c6f7fdeee22_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{ext2__internal_8h_aacb0077cd0a76158c9288ecd193d58da}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2\-\_\-lookup@{ext2\-\_\-lookup}}
-\index{ext2\-\_\-lookup@{ext2\-\_\-lookup}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2\-\_\-lookup}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dentry\-\_\-t}$\ast$ ext2\-\_\-lookup (
+\hypertarget{ext2__internal_8h_aacb0077cd0a76158c9288ecd193d58da}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2\+\_\+lookup@{ext2\+\_\+lookup}}
+\index{ext2\+\_\+lookup@{ext2\+\_\+lookup}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2\+\_\+lookup}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dentry\+\_\+t}$\ast$ ext2\+\_\+lookup (
 \begin{DoxyParamCaption}
-\item[{struct {\bf \-\_\-fs\-\_\-instance\-\_\-t} $\ast$}]{instance, }
-\item[{struct {\bf \-\_\-dentry\-\_\-t} $\ast$}]{dentry, }
+\item[{struct {\bf \+\_\+fs\+\_\+instance\+\_\+t} $\ast$}]{instance, }
+\item[{struct {\bf \+\_\+dentry\+\_\+t} $\ast$}]{dentry, }
 \item[{const char $\ast$}]{name}
 \end{DoxyParamCaption}
 )}}\label{ext2__internal_8h_aacb0077cd0a76158c9288ecd193d58da}
@@ -345,7 +350,7 @@ Recherche le directory entry qui correspond au nom donné.
 
 
 \begin{DoxyParams}{Paramètres}
-{\em instance} & Instance de F\-S. \\
+{\em instance} & Instance de F\+S. \\
 \hline
 {\em dentry} & Parent directory entry. \\
 \hline
@@ -353,11 +358,12 @@ Recherche le directory entry qui correspond au nom donné.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
-Directory Entry de l'entrée recherchée ou N\-U\-L\-L. 
+Directory Entry de l'entrée recherchée ou N\+U\+L\+L. 
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -368,22 +374,23 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=258pt]{ext2__internal_8h_aacb0077cd0a76158c9288ecd193d58da_icgraph}
+\includegraphics[width=257pt]{ext2__internal_8h_aacb0077cd0a76158c9288ecd193d58da_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{ext2__internal_8h_a099858facc12a389ffbff826567cb7c4}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2\-\_\-mkdir@{ext2\-\_\-mkdir}}
-\index{ext2\-\_\-mkdir@{ext2\-\_\-mkdir}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2\-\_\-mkdir}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\-\_\-mkdir (
+\hypertarget{ext2__internal_8h_a099858facc12a389ffbff826567cb7c4}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2\+\_\+mkdir@{ext2\+\_\+mkdir}}
+\index{ext2\+\_\+mkdir@{ext2\+\_\+mkdir}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2\+\_\+mkdir}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\+\_\+mkdir (
 \begin{DoxyParamCaption}
-\item[{{\bf inode\-\_\-t} $\ast$}]{dir, }
-\item[{{\bf dentry\-\_\-t} $\ast$}]{dentry, }
-\item[{{\bf mode\-\_\-t}}]{mode}
+\item[{{\bf inode\+\_\+t} $\ast$}]{dir, }
+\item[{{\bf dentry\+\_\+t} $\ast$}]{dentry, }
+\item[{{\bf mode\+\_\+t}}]{mode}
 \end{DoxyParamCaption}
 )}}\label{ext2__internal_8h_a099858facc12a389ffbff826567cb7c4}
 
@@ -400,7 +407,8 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -411,23 +419,24 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=254pt]{ext2__internal_8h_a099858facc12a389ffbff826567cb7c4_icgraph}
+\includegraphics[width=253pt]{ext2__internal_8h_a099858facc12a389ffbff826567cb7c4_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{ext2__internal_8h_a1814eebfe79637247b38dda8e50a3263}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2\-\_\-mknod@{ext2\-\_\-mknod}}
-\index{ext2\-\_\-mknod@{ext2\-\_\-mknod}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2\-\_\-mknod}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\-\_\-mknod (
+\hypertarget{ext2__internal_8h_a1814eebfe79637247b38dda8e50a3263}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2\+\_\+mknod@{ext2\+\_\+mknod}}
+\index{ext2\+\_\+mknod@{ext2\+\_\+mknod}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2\+\_\+mknod}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\+\_\+mknod (
 \begin{DoxyParamCaption}
-\item[{{\bf inode\-\_\-t} $\ast$}]{dir, }
-\item[{{\bf dentry\-\_\-t} $\ast$}]{dentry, }
-\item[{{\bf mode\-\_\-t}}]{mode, }
-\item[{{\bf dev\-\_\-t}}]{dev}
+\item[{{\bf inode\+\_\+t} $\ast$}]{dir, }
+\item[{{\bf dentry\+\_\+t} $\ast$}]{dentry, }
+\item[{{\bf mode\+\_\+t}}]{mode, }
+\item[{{\bf dev\+\_\+t}}]{dev}
 \end{DoxyParamCaption}
 )}}\label{ext2__internal_8h_a1814eebfe79637247b38dda8e50a3263}
 
@@ -446,7 +455,8 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -457,7 +467,8 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -466,13 +477,13 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{ext2__internal_8h_a6b71fa4007d19f895b0def93e5ed8ca3}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2\-\_\-read@{ext2\-\_\-read}}
-\index{ext2\-\_\-read@{ext2\-\_\-read}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ssize\-\_\-t} ext2\-\_\-read (
+\hypertarget{ext2__internal_8h_a6b71fa4007d19f895b0def93e5ed8ca3}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2\+\_\+read@{ext2\+\_\+read}}
+\index{ext2\+\_\+read@{ext2\+\_\+read}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2\+\_\+read}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ssize\+\_\+t} ext2\+\_\+read (
 \begin{DoxyParamCaption}
-\item[{{\bf open\-\_\-file\-\_\-descriptor} $\ast$}]{ofd, }
+\item[{{\bf open\+\_\+file\+\_\+descriptor} $\ast$}]{ofd, }
 \item[{void $\ast$}]{buf, }
-\item[{{\bf size\-\_\-t}}]{size}
+\item[{{\bf size\+\_\+t}}]{size}
 \end{DoxyParamCaption}
 )}}\label{ext2__internal_8h_a6b71fa4007d19f895b0def93e5ed8ca3}
 
@@ -487,13 +498,13 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{DoxyReturn}{Renvoie}
 nombre d'octets réellement lus. 
 \end{DoxyReturn}
-\hypertarget{ext2__internal_8h_ac9b55aefa79e5e521e4e5d993b4c009a}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2\-\_\-readdir@{ext2\-\_\-readdir}}
-\index{ext2\-\_\-readdir@{ext2\-\_\-readdir}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2\-\_\-readdir}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\-\_\-readdir (
+\hypertarget{ext2__internal_8h_ac9b55aefa79e5e521e4e5d993b4c009a}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2\+\_\+readdir@{ext2\+\_\+readdir}}
+\index{ext2\+\_\+readdir@{ext2\+\_\+readdir}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2\+\_\+readdir}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\+\_\+readdir (
 \begin{DoxyParamCaption}
-\item[{{\bf open\-\_\-file\-\_\-descriptor} $\ast$}]{ofd, }
+\item[{{\bf open\+\_\+file\+\_\+descriptor} $\ast$}]{ofd, }
 \item[{char $\ast$}]{entries, }
-\item[{{\bf size\-\_\-t}}]{size}
+\item[{{\bf size\+\_\+t}}]{size}
 \end{DoxyParamCaption}
 )}}\label{ext2__internal_8h_ac9b55aefa79e5e521e4e5d993b4c009a}
 
@@ -510,34 +521,35 @@ Nombre d'octets écrits dans entries.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=234pt]{ext2__internal_8h_ac9b55aefa79e5e521e4e5d993b4c009a_cgraph}
+\includegraphics[width=233pt]{ext2__internal_8h_ac9b55aefa79e5e521e4e5d993b4c009a_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{ext2__internal_8h_a4d19a34580976adf582bb45bd402649c}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2\-\_\-rename@{ext2\-\_\-rename}}
-\index{ext2\-\_\-rename@{ext2\-\_\-rename}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2\-\_\-rename}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\-\_\-rename (
+\hypertarget{ext2__internal_8h_a4d19a34580976adf582bb45bd402649c}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2\+\_\+rename@{ext2\+\_\+rename}}
+\index{ext2\+\_\+rename@{ext2\+\_\+rename}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2\+\_\+rename}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\+\_\+rename (
 \begin{DoxyParamCaption}
-\item[{{\bf inode\-\_\-t} $\ast$}]{old\-\_\-dir, }
-\item[{{\bf dentry\-\_\-t} $\ast$}]{old\-\_\-dentry, }
-\item[{{\bf inode\-\_\-t} $\ast$}]{new\-\_\-dir, }
-\item[{{\bf dentry\-\_\-t} $\ast$}]{new\-\_\-dentry}
+\item[{{\bf inode\+\_\+t} $\ast$}]{old\+\_\+dir, }
+\item[{{\bf dentry\+\_\+t} $\ast$}]{old\+\_\+dentry, }
+\item[{{\bf inode\+\_\+t} $\ast$}]{new\+\_\+dir, }
+\item[{{\bf dentry\+\_\+t} $\ast$}]{new\+\_\+dentry}
 \end{DoxyParamCaption}
 )}}\label{ext2__internal_8h_a4d19a34580976adf582bb45bd402649c}
 
 \begin{DoxyParams}{Paramètres}
-{\em old\-\_\-dir} & Inode du dossier parent de l'ancien nom. \\
+{\em old\+\_\+dir} & Inode du dossier parent de l'ancien nom. \\
 \hline
-{\em old\-\_\-dentry} & Nom et inode à déplacer. \\
+{\em old\+\_\+dentry} & Nom et inode à déplacer. \\
 \hline
-{\em new\-\_\-dir} & Inode du dossier de destination. \\
+{\em new\+\_\+dir} & Inode du dossier de destination. \\
 \hline
-{\em new\-\_\-dentry} & Nom et inode de destination.\\
+{\em new\+\_\+dentry} & Nom et inode de destination.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
@@ -545,21 +557,22 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=262pt]{ext2__internal_8h_a4d19a34580976adf582bb45bd402649c_icgraph}
+\includegraphics[width=261pt]{ext2__internal_8h_a4d19a34580976adf582bb45bd402649c_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{ext2__internal_8h_a4c86d6a4886145e7cd974675eb5a19a0}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2\-\_\-rmdir@{ext2\-\_\-rmdir}}
-\index{ext2\-\_\-rmdir@{ext2\-\_\-rmdir}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2\-\_\-rmdir}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\-\_\-rmdir (
+\hypertarget{ext2__internal_8h_a4c86d6a4886145e7cd974675eb5a19a0}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2\+\_\+rmdir@{ext2\+\_\+rmdir}}
+\index{ext2\+\_\+rmdir@{ext2\+\_\+rmdir}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2\+\_\+rmdir}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\+\_\+rmdir (
 \begin{DoxyParamCaption}
-\item[{{\bf inode\-\_\-t} $\ast$}]{dir, }
-\item[{{\bf dentry\-\_\-t} $\ast$}]{dentry}
+\item[{{\bf inode\+\_\+t} $\ast$}]{dir, }
+\item[{{\bf dentry\+\_\+t} $\ast$}]{dentry}
 \end{DoxyParamCaption}
 )}}\label{ext2__internal_8h_a4c86d6a4886145e7cd974675eb5a19a0}
 
@@ -574,20 +587,21 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=252pt]{ext2__internal_8h_a4c86d6a4886145e7cd974675eb5a19a0_icgraph}
+\includegraphics[width=251pt]{ext2__internal_8h_a4c86d6a4886145e7cd974675eb5a19a0_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{ext2__internal_8h_a79a131bb760b0d236f6bf0209ee6f5cb}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2\-\_\-seek@{ext2\-\_\-seek}}
-\index{ext2\-\_\-seek@{ext2\-\_\-seek}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2\-\_\-seek}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\-\_\-seek (
+\hypertarget{ext2__internal_8h_a79a131bb760b0d236f6bf0209ee6f5cb}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2\+\_\+seek@{ext2\+\_\+seek}}
+\index{ext2\+\_\+seek@{ext2\+\_\+seek}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2\+\_\+seek}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\+\_\+seek (
 \begin{DoxyParamCaption}
-\item[{{\bf open\-\_\-file\-\_\-descriptor} $\ast$}]{ofd, }
+\item[{{\bf open\+\_\+file\+\_\+descriptor} $\ast$}]{ofd, }
 \item[{long}]{offset, }
 \item[{int}]{whence}
 \end{DoxyParamCaption}
@@ -606,12 +620,12 @@ Déplacement dans un fichier.
 \begin{DoxyReturn}{Renvoie}
 0 en cas de succès. 
 \end{DoxyReturn}
-\hypertarget{ext2__internal_8h_acad804eba95e7600b534e07bb9134a44}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2\-\_\-setattr@{ext2\-\_\-setattr}}
-\index{ext2\-\_\-setattr@{ext2\-\_\-setattr}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2\-\_\-setattr}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\-\_\-setattr (
+\hypertarget{ext2__internal_8h_acad804eba95e7600b534e07bb9134a44}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2\+\_\+setattr@{ext2\+\_\+setattr}}
+\index{ext2\+\_\+setattr@{ext2\+\_\+setattr}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2\+\_\+setattr}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\+\_\+setattr (
 \begin{DoxyParamCaption}
-\item[{{\bf inode\-\_\-t} $\ast$}]{inode, }
-\item[{{\bf file\-\_\-attributes\-\_\-t} $\ast$}]{attr}
+\item[{{\bf inode\+\_\+t} $\ast$}]{inode, }
+\item[{{\bf file\+\_\+attributes\+\_\+t} $\ast$}]{attr}
 \end{DoxyParamCaption}
 )}}\label{ext2__internal_8h_acad804eba95e7600b534e07bb9134a44}
 Change les attributs d'un inode.
@@ -628,31 +642,33 @@ Change les attributs d'un inode.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=260pt]{ext2__internal_8h_acad804eba95e7600b534e07bb9134a44_cgraph}
+\includegraphics[width=259pt]{ext2__internal_8h_acad804eba95e7600b534e07bb9134a44_cgraph}
 \end{center}
 \end{figure}
 
 
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=258pt]{ext2__internal_8h_acad804eba95e7600b534e07bb9134a44_icgraph}
+\includegraphics[width=257pt]{ext2__internal_8h_acad804eba95e7600b534e07bb9134a44_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{ext2__internal_8h_a9a8b01e29da31a35719cbf11adab1f9d}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2\-\_\-stat@{ext2\-\_\-stat}}
-\index{ext2\-\_\-stat@{ext2\-\_\-stat}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2\-\_\-stat}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\-\_\-stat (
+\hypertarget{ext2__internal_8h_a9a8b01e29da31a35719cbf11adab1f9d}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2\+\_\+stat@{ext2\+\_\+stat}}
+\index{ext2\+\_\+stat@{ext2\+\_\+stat}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2\+\_\+stat}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\+\_\+stat (
 \begin{DoxyParamCaption}
-\item[{{\bf fs\-\_\-instance\-\_\-t} $\ast$}]{instance, }
+\item[{{\bf fs\+\_\+instance\+\_\+t} $\ast$}]{instance, }
 \item[{const char $\ast$}]{path, }
 \item[{struct {\bf stat} $\ast$}]{stbuf}
 \end{DoxyParamCaption}
@@ -669,12 +685,12 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{DoxyReturn}{Renvoie}
 0 en cas de succès. 
 \end{DoxyReturn}
-\hypertarget{ext2__internal_8h_aeb55aa4d71dded497758c72d86b2b2f7}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2\-\_\-truncate@{ext2\-\_\-truncate}}
-\index{ext2\-\_\-truncate@{ext2\-\_\-truncate}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2\-\_\-truncate}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\-\_\-truncate (
+\hypertarget{ext2__internal_8h_aeb55aa4d71dded497758c72d86b2b2f7}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2\+\_\+truncate@{ext2\+\_\+truncate}}
+\index{ext2\+\_\+truncate@{ext2\+\_\+truncate}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2\+\_\+truncate}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\+\_\+truncate (
 \begin{DoxyParamCaption}
-\item[{{\bf inode\-\_\-t} $\ast$}]{inode, }
-\item[{{\bf off\-\_\-t}}]{off}
+\item[{{\bf inode\+\_\+t} $\ast$}]{inode, }
+\item[{{\bf off\+\_\+t}}]{off}
 \end{DoxyParamCaption}
 )}}\label{ext2__internal_8h_aeb55aa4d71dded497758c72d86b2b2f7}
 
@@ -689,7 +705,8 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -698,12 +715,12 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{ext2__internal_8h_a4af1597cc97e9aa9591ed390589e6dfc}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2\-\_\-unlink@{ext2\-\_\-unlink}}
-\index{ext2\-\_\-unlink@{ext2\-\_\-unlink}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2\-\_\-unlink}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\-\_\-unlink (
+\hypertarget{ext2__internal_8h_a4af1597cc97e9aa9591ed390589e6dfc}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2\+\_\+unlink@{ext2\+\_\+unlink}}
+\index{ext2\+\_\+unlink@{ext2\+\_\+unlink}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2\+\_\+unlink}]{\setlength{\rightskip}{0pt plus 5cm}int ext2\+\_\+unlink (
 \begin{DoxyParamCaption}
-\item[{{\bf inode\-\_\-t} $\ast$}]{dir, }
-\item[{{\bf dentry\-\_\-t} $\ast$}]{dentry}
+\item[{{\bf inode\+\_\+t} $\ast$}]{dir, }
+\item[{{\bf dentry\+\_\+t} $\ast$}]{dentry}
 \end{DoxyParamCaption}
 )}}\label{ext2__internal_8h_a4af1597cc97e9aa9591ed390589e6dfc}
 
@@ -718,22 +735,23 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=256pt]{ext2__internal_8h_a4af1597cc97e9aa9591ed390589e6dfc_icgraph}
+\includegraphics[width=254pt]{ext2__internal_8h_a4af1597cc97e9aa9591ed390589e6dfc_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{ext2__internal_8h_accd388d0b4601b1243922ac20a95d971}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2\-\_\-write@{ext2\-\_\-write}}
-\index{ext2\-\_\-write@{ext2\-\_\-write}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ssize\-\_\-t} ext2\-\_\-write (
+\hypertarget{ext2__internal_8h_accd388d0b4601b1243922ac20a95d971}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2\+\_\+write@{ext2\+\_\+write}}
+\index{ext2\+\_\+write@{ext2\+\_\+write}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2\+\_\+write}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ssize\+\_\+t} ext2\+\_\+write (
 \begin{DoxyParamCaption}
-\item[{{\bf open\-\_\-file\-\_\-descriptor} $\ast$}]{ofd, }
+\item[{{\bf open\+\_\+file\+\_\+descriptor} $\ast$}]{ofd, }
 \item[{const void $\ast$}]{buf, }
-\item[{{\bf size\-\_\-t}}]{size}
+\item[{{\bf size\+\_\+t}}]{size}
 \end{DoxyParamCaption}
 )}}\label{ext2__internal_8h_accd388d0b4601b1243922ac20a95d971}
 
@@ -748,11 +766,11 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{DoxyReturn}{Renvoie}
 nombre d'octets réellement écrits. 
 \end{DoxyReturn}
-\hypertarget{ext2__internal_8h_aa055d93f3693085315aa853345de0032}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!umount\-\_\-\-E\-X\-T2@{umount\-\_\-\-E\-X\-T2}}
-\index{umount\-\_\-\-E\-X\-T2@{umount\-\_\-\-E\-X\-T2}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{umount\-\_\-\-E\-X\-T2}]{\setlength{\rightskip}{0pt plus 5cm}void umount\-\_\-\-E\-X\-T2 (
+\hypertarget{ext2__internal_8h_aa055d93f3693085315aa853345de0032}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!umount\+\_\+\+E\+X\+T2@{umount\+\_\+\+E\+X\+T2}}
+\index{umount\+\_\+\+E\+X\+T2@{umount\+\_\+\+E\+X\+T2}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{umount\+\_\+\+E\+X\+T2}]{\setlength{\rightskip}{0pt plus 5cm}void umount\+\_\+\+E\+X\+T2 (
 \begin{DoxyParamCaption}
-\item[{{\bf fs\-\_\-instance\-\_\-t} $\ast$}]{instance}
+\item[{{\bf fs\+\_\+instance\+\_\+t} $\ast$}]{instance}
 \end{DoxyParamCaption}
 )}}\label{ext2__internal_8h_aa055d93f3693085315aa853345de0032}
 
@@ -762,7 +780,7 @@ nombre d'octets réellement écrits.
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -774,7 +792,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 
 
 \subsection{Documentation des variables}
-\hypertarget{ext2__internal_8h_a27d0bcdadfb4d9220ed5cd2fa6693313}{\index{ext2\-\_\-internal.\-h@{ext2\-\_\-internal.\-h}!ext2fs\-\_\-fops@{ext2fs\-\_\-fops}}
-\index{ext2fs\-\_\-fops@{ext2fs\-\_\-fops}!ext2_internal.h@{ext2\-\_\-internal.\-h}}
-\subsubsection[{ext2fs\-\_\-fops}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \-\_\-open\-\_\-file\-\_\-operations\-\_\-t} ext2fs\-\_\-fops}}\label{ext2__internal_8h_a27d0bcdadfb4d9220ed5cd2fa6693313}
-Pointeurs sur les fonctions de manipulation de fichiers pour ce F\-S. 
+\hypertarget{ext2__internal_8h_a27d0bcdadfb4d9220ed5cd2fa6693313}{\index{ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}!ext2fs\+\_\+fops@{ext2fs\+\_\+fops}}
+\index{ext2fs\+\_\+fops@{ext2fs\+\_\+fops}!ext2\+\_\+internal.\+h@{ext2\+\_\+internal.\+h}}
+\subsubsection[{ext2fs\+\_\+fops}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \+\_\+open\+\_\+file\+\_\+operations\+\_\+t} ext2fs\+\_\+fops}}\label{ext2__internal_8h_a27d0bcdadfb4d9220ed5cd2fa6693313}
+Pointeurs sur les fonctions de manipulation de fichiers pour ce F\+S. 

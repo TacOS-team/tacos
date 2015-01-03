@@ -1,13 +1,11 @@
 <map id="kernel/dcache.c" name="kernel/dcache.c">
-<area shape="rect" id="node3" href="$hashmap_8h.html" title="hashmap.h" alt="" coords="5,83,91,111"/>
-<area shape="rect" id="node5" href="$kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="115,83,208,111"/>
-<area shape="rect" id="node9" href="$vfs_8h.html" title="Virtual File System." alt="" coords="232,83,283,111"/>
-<area shape="rect" id="node25" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="483,315,560,343"/>
-<area shape="rect" id="node28" href="$klog_8h.html" title="Logging macros." alt="" coords="469,83,525,111"/>
-<area shape="rect" id="node11" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="288,393,349,421"/>
-<area shape="rect" id="node13" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="176,238,256,266"/>
-<area shape="rect" id="node16" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="263,161,324,189"/>
-<area shape="rect" id="node19" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="331,238,392,266"/>
-<area shape="rect" id="node22" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="381,315,459,343"/>
-<area shape="rect" id="node30" href="$kstdio_8h.html" title="kprintf" alt="" coords="467,161,533,189"/>
+<area shape="rect" id="node2" href="$hashmap_8h.html" title="hashmap.h" alt="" coords="5,80,91,107"/>
+<area shape="rect" id="node3" href="$kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel. " alt="" coords="115,80,210,107"/>
+<area shape="rect" id="node5" href="$vfs_8h.html" title="Virtual File System. " alt="" coords="235,80,285,107"/>
+<area shape="rect" id="node11" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space. " alt="" coords="531,304,608,331"/>
+<area shape="rect" id="node6" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="333,379,395,405"/>
+<area shape="rect" id="node7" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts. " alt="" coords="219,229,301,256"/>
+<area shape="rect" id="node8" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier. " alt="" coords="308,155,369,181"/>
+<area shape="rect" id="node9" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="377,229,439,256"/>
+<area shape="rect" id="node10" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="427,304,506,331"/>
 </map>

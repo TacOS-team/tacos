@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence de la structure _fs_instance_t</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -95,25 +96,37 @@ Graphe de collaboration de _fs_instance_t:</div>
 <div class="dyncontent">
 <div class="center"><img src="struct__fs__instance__t__coll__graph.png" border="0" usemap="#__fs__instance__t_coll__map" alt="Collaboration graph"/></div>
 <map name="__fs__instance__t_coll__map" id="__fs__instance__t_coll__map">
-<area shape="rect" id="node5" href="struct__inode__t.html" title="_inode_t" alt="" coords="454,101,523,129"/><area shape="rect" id="node10" href="structfile__system__t.html" title="Structure qui représente un FS." alt="" coords="144,101,243,129"/><area shape="rect" id="node13" href="struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="242,302,386,330"/><area shape="rect" id="node19" href="struct__mounted__fs__t.html" title="_mounted_fs_t" alt="" coords="99,155,206,183"/><area shape="rect" id="node2" href="struct__dentry__t.html" title="_dentry_t" alt="" coords="322,209,396,237"/><area shape="rect" id="node7" href="struct__open__file__operations__t.html" title="_open_file_operations_t" alt="" coords="480,6,638,34"/></map>
+<area shape="rect" id="node3" href="struct__inode__t.html" title="_inode_t" alt="" coords="455,96,526,123"/><area shape="rect" id="node5" href="structfile__system__t.html" title="Structure qui représente un FS. " alt="" coords="147,96,245,123"/><area shape="rect" id="node6" href="struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="244,288,388,315"/><area shape="rect" id="node7" href="struct__mounted__fs__t.html" title="_mounted_fs_t" alt="" coords="99,148,207,175"/><area shape="rect" id="node2" href="struct__dentry__t.html" title="_dentry_t" alt="" coords="324,199,399,225"/><area shape="rect" id="node4" href="struct__open__file__operations__t.html" title="_open_file_operations_t" alt="" coords="482,5,641,32"/></map>
 <center><span class="legend">[<a href="graph_legend.html">légende</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
 <tr class="memitem:a209ef4e2ed00460eead263311373a974"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structfile__system__t.html">file_system_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a209ef4e2ed00460eead263311373a974">fs</a></td></tr>
+<tr class="separator:a209ef4e2ed00460eead263311373a974"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc3db122838752a84c6ecb93c3644256"><td class="memItemLeft" align="right" valign="top"><a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#acc3db122838752a84c6ecb93c3644256">device</a></td></tr>
+<tr class="separator:acc3db122838752a84c6ecb93c3644256"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6891a9d9e5c2fd0458312fd8567213a"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct__dentry__t.html">_dentry_t</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#af6891a9d9e5c2fd0458312fd8567213a">getroot</a> )(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *)</td></tr>
+<tr class="separator:af6891a9d9e5c2fd0458312fd8567213a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a820510562ecb31cbbf6b4fc8a4d2ce6a"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct__dentry__t.html">_dentry_t</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a820510562ecb31cbbf6b4fc8a4d2ce6a">lookup</a> )(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, struct <a class="el" href="struct__dentry__t.html">_dentry_t</a> *, const char *)</td></tr>
+<tr class="separator:a820510562ecb31cbbf6b4fc8a4d2ce6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a705d100026840b619f217931dc8419f3"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a705d100026840b619f217931dc8419f3">mkdir</a> )(struct <a class="el" href="struct__inode__t.html">_inode_t</a> *, struct <a class="el" href="struct__dentry__t.html">_dentry_t</a> *, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>)</td></tr>
+<tr class="separator:a705d100026840b619f217931dc8419f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae57436a3bfd6de530204a67a8ac2f4f0"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#ae57436a3bfd6de530204a67a8ac2f4f0">mknod</a> )(struct <a class="el" href="struct__inode__t.html">_inode_t</a> *, struct <a class="el" href="struct__dentry__t.html">_dentry_t</a> *, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>, <a class="el" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a>)</td></tr>
+<tr class="separator:ae57436a3bfd6de530204a67a8ac2f4f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaccc941115b40d9605fdc3895c9b8e9b"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#aaccc941115b40d9605fdc3895c9b8e9b">stat</a> )(struct <a class="el" href="struct__inode__t.html">_inode_t</a> *, struct <a class="el" href="structstat.html">stat</a> *)</td></tr>
+<tr class="separator:aaccc941115b40d9605fdc3895c9b8e9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38cfd710b2d88ebb388059e90a406db6"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a38cfd710b2d88ebb388059e90a406db6">unlink</a> )(struct <a class="el" href="struct__inode__t.html">_inode_t</a> *, struct <a class="el" href="struct__dentry__t.html">_dentry_t</a> *)</td></tr>
+<tr class="separator:a38cfd710b2d88ebb388059e90a406db6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ceb71ff00d0a5fda03aa644c4694bef"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a4ceb71ff00d0a5fda03aa644c4694bef">rmdir</a> )(struct <a class="el" href="struct__inode__t.html">_inode_t</a> *, struct <a class="el" href="struct__dentry__t.html">_dentry_t</a> *)</td></tr>
+<tr class="separator:a4ceb71ff00d0a5fda03aa644c4694bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02c8b56a14997bf58d8350a26e441954"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a02c8b56a14997bf58d8350a26e441954">truncate</a> )(struct <a class="el" href="struct__inode__t.html">_inode_t</a> *, <a class="el" href="libc_2include_2sys_2types_8h.html#a447a6a64dbb8fb44b1e62856b333db4a">off_t</a> size)</td></tr>
+<tr class="separator:a02c8b56a14997bf58d8350a26e441954"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae76a7f1f9c4653baa497343bf26918a6"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#ae76a7f1f9c4653baa497343bf26918a6">setattr</a> )(struct <a class="el" href="struct__inode__t.html">_inode_t</a> *inode, struct <a class="el" href="struct__file__attributes__t.html">_file_attributes_t</a> *attr)</td></tr>
+<tr class="separator:ae76a7f1f9c4653baa497343bf26918a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62e37513c47dda9d11e534cf84d6f48b"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__fs__instance__t.html#a62e37513c47dda9d11e534cf84d6f48b">rename</a> )(struct <a class="el" href="struct__inode__t.html">_inode_t</a> *old_dir, struct <a class="el" href="struct__dentry__t.html">_dentry_t</a> *old_dentry, struct <a class="el" href="struct__inode__t.html">_inode_t</a> *new_dir, struct <a class="el" href="struct__dentry__t.html">_dentry_t</a> *new_dentry)</td></tr>
+<tr class="separator:a62e37513c47dda9d11e534cf84d6f48b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2>Documentation des champs</h2>
+<h2 class="groupheader">Documentation des champs</h2>
 <a class="anchor" id="acc3db122838752a84c6ecb93c3644256"></a>
 <div class="memitem">
 <div class="memproto">
@@ -143,19 +156,11 @@ Champs de données</h2></td></tr>
 <a class="anchor" id="af6891a9d9e5c2fd0458312fd8567213a"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">struct <a class="el" href="struct__dentry__t.html">_dentry_t</a>*(* _fs_instance_t::getroot)(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *)</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Noeud racine. </p>
 
@@ -164,19 +169,11 @@ Champs de données</h2></td></tr>
 <a class="anchor" id="a820510562ecb31cbbf6b4fc8a4d2ce6a"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">struct <a class="el" href="struct__dentry__t.html">_dentry_t</a>*(* _fs_instance_t::lookup)(struct <a class="el" href="struct__fs__instance__t.html">_fs_instance_t</a> *, struct <a class="el" href="struct__dentry__t.html">_dentry_t</a> *, const char *)</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Résolution path. </p>
 
@@ -292,9 +289,9 @@ Champs de données</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:42 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

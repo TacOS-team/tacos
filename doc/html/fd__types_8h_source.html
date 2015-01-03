@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/include/fd_types.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,61 +90,81 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="fd__types_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifndef _FD_TYPES_H</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _FD_TYPES_H</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define _FD_TYPES_H</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="fd__types_8h.html#aa188a2e288c10a684622814c51337465">   35</a></span>&#160;<span class="preprocessor">#define FOPEN_MAX 500 </span></div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="fd__types_8h.html#a0d112bae8fd35be772185b6ec6bcbe64">   37</a></span>&#160;<span class="preprocessor">#define SEEK_SET 0 </span></div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="fd__types_8h.html#a4c8d0b76b470ba65a43ca46a88320f39">   38</a></span>&#160;<span class="preprocessor">#define SEEK_CUR 1 </span></div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="fd__types_8h.html#ad2a2e6c114780c3071efd24f16c7f7d8">   39</a></span>&#160;<span class="preprocessor">#define SEEK_END 2 </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="fd__types_8h.html#aa188a2e288c10a684622814c51337465">   35</a></span>&#160;<span class="preprocessor">#define FOPEN_MAX 500 </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="fd__types_8h.html#a0d112bae8fd35be772185b6ec6bcbe64">   37</a></span>&#160;<span class="preprocessor">#define SEEK_SET 0 </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="fd__types_8h.html#a4c8d0b76b470ba65a43ca46a88320f39">   38</a></span>&#160;<span class="preprocessor">#define SEEK_CUR 1 </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="fd__types_8h.html#ad2a2e6c114780c3071efd24f16c7f7d8">   39</a></span>&#160;<span class="preprocessor">#define SEEK_END 2 </span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">struct _open_file_descriptor;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span><span class="keyword">struct </span><a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">_fs_instance_t</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">struct </span><a class="code" href="struct__fs__instance__t.html">_fs_instance_t</a>;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a>;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="struct__open__file__operations__t.html">   49</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct__open__file__operations__t.html">_open_file_operations_t</a> {</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="struct__open__file__operations__t.html#ae730a8e7e44c3b3168b9f091c334b337">   53</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a> (*<a class="code" href="struct__open__file__operations__t.html#ae730a8e7e44c3b3168b9f091c334b337">write</a>)(<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, <span class="keyword">const</span> <span class="keywordtype">void</span>*, <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="struct__open__file__operations__t.html">   49</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct__open__file__operations__t.html">_open_file_operations_t</a> {</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="struct__open__file__operations__t.html#ae730a8e7e44c3b3168b9f091c334b337">   53</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a> (*<a class="code" href="struct__open__file__operations__t.html#ae730a8e7e44c3b3168b9f091c334b337">write</a>)(<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, <span class="keyword">const</span> <span class="keywordtype">void</span>*, <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="struct__open__file__operations__t.html#ad5637bc6a752b9a13806748966b77e68">   58</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a> (*<a class="code" href="struct__open__file__operations__t.html#ad5637bc6a752b9a13806748966b77e68">read</a>)(<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *,<span class="keywordtype">void</span>*, <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="struct__open__file__operations__t.html#ad5637bc6a752b9a13806748966b77e68">   58</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a> (*<a class="code" href="struct__open__file__operations__t.html#ad5637bc6a752b9a13806748966b77e68">read</a>)(<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *,<span class="keywordtype">void</span>*, <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="struct__open__file__operations__t.html#ac45e5e3400e4cd9756b5784289744cc7">   63</a></span>&#160;        int (*<a class="code" href="struct__open__file__operations__t.html#ac45e5e3400e4cd9756b5784289744cc7">seek</a>)(<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, long, int);</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="struct__open__file__operations__t.html#ac45e5e3400e4cd9756b5784289744cc7">   63</a></span>&#160;        int (*<a class="code" href="struct__open__file__operations__t.html#ac45e5e3400e4cd9756b5784289744cc7">seek</a>)(<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a> *, long, int);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="struct__open__file__operations__t.html#ab71efab6158837196ad4fef57565dddc">   68</a></span>&#160;        int (*<a class="code" href="struct__open__file__operations__t.html#ab71efab6158837196ad4fef57565dddc">ioctl</a>)(<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a>*, <span class="keywordtype">unsigned</span> int, <span class="keywordtype">void</span> *);</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="struct__open__file__operations__t.html#ab71efab6158837196ad4fef57565dddc">   68</a></span>&#160;        int (*<a class="code" href="struct__open__file__operations__t.html#ab71efab6158837196ad4fef57565dddc">ioctl</a>)(<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a>*, <span class="keywordtype">unsigned</span> int, <span class="keywordtype">void</span> *);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="struct__open__file__operations__t.html#a22018bcaef028f486c45838ba983c170">   73</a></span>&#160;        int (*<a class="code" href="struct__open__file__operations__t.html#a22018bcaef028f486c45838ba983c170">open</a>) (<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a>*);</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="struct__open__file__operations__t.html#a22018bcaef028f486c45838ba983c170">   73</a></span>&#160;        int (*<a class="code" href="struct__open__file__operations__t.html#a22018bcaef028f486c45838ba983c170">open</a>) (<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a>*);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="struct__open__file__operations__t.html#a187ebd3d665fde0a486bd7f5d3001f00">   78</a></span>&#160;        int (*<a class="code" href="struct__open__file__operations__t.html#a187ebd3d665fde0a486bd7f5d3001f00">close</a>) (<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a>*);</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="struct__open__file__operations__t.html#a187ebd3d665fde0a486bd7f5d3001f00">   78</a></span>&#160;        int (*<a class="code" href="struct__open__file__operations__t.html#a187ebd3d665fde0a486bd7f5d3001f00">close</a>) (<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a>*);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="struct__open__file__operations__t.html#a7cdb4947735c5559610fb8be2472791d">   83</a></span>&#160;        int (*<a class="code" href="struct__open__file__operations__t.html#a7cdb4947735c5559610fb8be2472791d">readdir</a>) (<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a>*, <span class="keywordtype">char</span>*, <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;} open_file_operations_t;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="struct__open__file__descriptor.html">   90</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a> {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">// A dégager ? Infos dans l&#39;inode.</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">int</span> current_cluster; <span class="comment">//XXX à supprimer (sock en dépend encore).</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> buffer[512]; <span class="comment">//XXX à supprimer.</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">char</span> * pathname;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> current_octet; <span class="comment">// Utile pour f_pos ?</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> first_cluster;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> file_size; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="comment">// Utile ? on peut l&#39;avoir par mnt-&gt;instance</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">_fs_instance_t</a> *fs_instance;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="comment">// Rajouter inode ?</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__inode__t.html">_inode_t</a> *inode;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a> *dentry;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__mounted__fs__t.html">_mounted_fs_t</a> *mnt;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__open__file__operations__t.html">_open_file_operations_t</a> *f_ops;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordtype">void</span> * extra_data;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;} <a class="code" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a>;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="struct__open__file__operations__t.html#a7cdb4947735c5559610fb8be2472791d">   83</a></span>&#160;        int (*<a class="code" href="struct__open__file__operations__t.html#a7cdb4947735c5559610fb8be2472791d">readdir</a>) (<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a>*, <span class="keywordtype">char</span>*, <a class="code" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;} open_file_operations_t;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="struct__open__file__descriptor.html">   91</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a> {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">// A dégager ? Infos dans l&#39;inode.</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordtype">char</span> * pathname;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> current_octet; <span class="comment">// Utile pour f_pos ? TODO: Renommer :D</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> select_sem;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="comment">// Utile ? on peut l&#39;avoir par mnt-&gt;instance</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__fs__instance__t.html">_fs_instance_t</a> *fs_instance;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="comment">// Rajouter inode ?</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__inode__t.html">_inode_t</a> *inode;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a> *dentry;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__mounted__fs__t.html">_mounted_fs_t</a> *mnt;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__open__file__operations__t.html">_open_file_operations_t</a> *f_ops;</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="struct__open__file__descriptor.html#a2fc86f185e4b611a90f7727ef26ff3de">  105</a></span>&#160;        <span class="keywordtype">void</span> * <a class="code" href="struct__open__file__descriptor.html#a2fc86f185e4b611a90f7727ef26ff3de">i_fs_specific</a>; </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="struct__open__file__descriptor.html#a99824795a31a8adea2162aed74162017">  106</a></span>&#160;        <span class="keywordtype">void</span> * <a class="code" href="struct__open__file__descriptor.html#a99824795a31a8adea2162aed74162017">extra_data</a>; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;} <a class="code" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="kernel_2include_2types_8h_html"><div class="ttname"><a href="kernel_2include_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="struct__open__file__operations__t_html_a22018bcaef028f486c45838ba983c170"><div class="ttname"><a href="struct__open__file__operations__t.html#a22018bcaef028f486c45838ba983c170">_open_file_operations_t::open</a></div><div class="ttdeci">int(* open)(struct _open_file_descriptor *)</div><div class="ttdef"><b>Definition:</b> fd_types.h:73</div></div>
+<div class="ttc" id="struct__open__file__operations__t_html_ab71efab6158837196ad4fef57565dddc"><div class="ttname"><a href="struct__open__file__operations__t.html#ab71efab6158837196ad4fef57565dddc">_open_file_operations_t::ioctl</a></div><div class="ttdeci">int(* ioctl)(struct _open_file_descriptor *, unsigned int, void *)</div><div class="ttdef"><b>Definition:</b> fd_types.h:68</div></div>
+<div class="ttc" id="struct__open__file__operations__t_html_ae730a8e7e44c3b3168b9f091c334b337"><div class="ttname"><a href="struct__open__file__operations__t.html#ae730a8e7e44c3b3168b9f091c334b337">_open_file_operations_t::write</a></div><div class="ttdeci">ssize_t(* write)(struct _open_file_descriptor *, const void *, size_t)</div><div class="ttdef"><b>Definition:</b> fd_types.h:53</div></div>
+<div class="ttc" id="struct__open__file__operations__t_html_a187ebd3d665fde0a486bd7f5d3001f00"><div class="ttname"><a href="struct__open__file__operations__t.html#a187ebd3d665fde0a486bd7f5d3001f00">_open_file_operations_t::close</a></div><div class="ttdeci">int(* close)(struct _open_file_descriptor *)</div><div class="ttdef"><b>Definition:</b> fd_types.h:78</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_a29d85914ddff32967d85ada69854206d"><div class="ttname"><a href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a></div><div class="ttdeci">uint32_t size_t</div><div class="ttdef"><b>Definition:</b> types.h:43</div></div>
+<div class="ttc" id="struct__fs__instance__t_html"><div class="ttname"><a href="struct__fs__instance__t.html">_fs_instance_t</a></div><div class="ttdoc">Instance d&#39;un couple FS/Device monté. </div><div class="ttdef"><b>Definition:</b> vfs.h:54</div></div>
+<div class="ttc" id="struct__mounted__fs__t_html"><div class="ttname"><a href="struct__mounted__fs__t.html">_mounted_fs_t</a></div><div class="ttdef"><b>Definition:</b> vfs.h:72</div></div>
+<div class="ttc" id="struct__open__file__operations__t_html_ad5637bc6a752b9a13806748966b77e68"><div class="ttname"><a href="struct__open__file__operations__t.html#ad5637bc6a752b9a13806748966b77e68">_open_file_operations_t::read</a></div><div class="ttdeci">ssize_t(* read)(struct _open_file_descriptor *, void *, size_t)</div><div class="ttdef"><b>Definition:</b> fd_types.h:58</div></div>
+<div class="ttc" id="struct__inode__t_html"><div class="ttname"><a href="struct__inode__t.html">_inode_t</a></div><div class="ttdef"><b>Definition:</b> vfs.h:81</div></div>
+<div class="ttc" id="fd__types_8h_html_a42bccb9b6a816213613cefffced245f0"><div class="ttname"><a href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a></div><div class="ttdeci">struct _open_file_descriptor open_file_descriptor</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> types.h:34</div></div>
+<div class="ttc" id="struct__open__file__operations__t_html"><div class="ttname"><a href="struct__open__file__operations__t.html">_open_file_operations_t</a></div><div class="ttdef"><b>Definition:</b> fd_types.h:49</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_af629ed855824cf5955b54529adf78ad6"><div class="ttname"><a href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a></div><div class="ttdeci">int ssize_t</div><div class="ttdef"><b>Definition:</b> types.h:44</div></div>
+<div class="ttc" id="struct__open__file__descriptor_html_a99824795a31a8adea2162aed74162017"><div class="ttname"><a href="struct__open__file__descriptor.html#a99824795a31a8adea2162aed74162017">_open_file_descriptor::extra_data</a></div><div class="ttdeci">void * extra_data</div><div class="ttdef"><b>Definition:</b> fd_types.h:106</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_a33594304e786b158f3fb30289278f5af"><div class="ttname"><a href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a></div><div class="ttdeci">unsigned long int uint32_t</div><div class="ttdef"><b>Definition:</b> types.h:36</div></div>
+<div class="ttc" id="struct__dentry__t_html"><div class="ttname"><a href="struct__dentry__t.html">_dentry_t</a></div><div class="ttdef"><b>Definition:</b> vfs.h:104</div></div>
+<div class="ttc" id="struct__open__file__descriptor_html"><div class="ttname"><a href="struct__open__file__descriptor.html">_open_file_descriptor</a></div><div class="ttdef"><b>Definition:</b> fd_types.h:91</div></div>
+<div class="ttc" id="struct__open__file__operations__t_html_a7cdb4947735c5559610fb8be2472791d"><div class="ttname"><a href="struct__open__file__operations__t.html#a7cdb4947735c5559610fb8be2472791d">_open_file_operations_t::readdir</a></div><div class="ttdeci">int(* readdir)(struct _open_file_descriptor *, char *, size_t)</div><div class="ttdef"><b>Definition:</b> fd_types.h:83</div></div>
+<div class="ttc" id="struct__open__file__descriptor_html_a2fc86f185e4b611a90f7727ef26ff3de"><div class="ttname"><a href="struct__open__file__descriptor.html#a2fc86f185e4b611a90f7727ef26ff3de">_open_file_descriptor::i_fs_specific</a></div><div class="ttdeci">void * i_fs_specific</div><div class="ttdef"><b>Definition:</b> fd_types.h:105</div></div>
+<div class="ttc" id="struct__open__file__operations__t_html_ac45e5e3400e4cd9756b5784289744cc7"><div class="ttname"><a href="struct__open__file__operations__t.html#ac45e5e3400e4cd9756b5784289744cc7">_open_file_operations_t::seek</a></div><div class="ttdeci">int(* seek)(struct _open_file_descriptor *, long, int)</div><div class="ttdef"><b>Definition:</b> fd_types.h:63</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

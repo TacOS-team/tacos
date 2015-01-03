@@ -1,7 +1,7 @@
 <map id="vfs_init" name="vfs_init">
-<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="421,13,488,41"/>
-<area shape="rect" id="node7" href="$string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné." alt="" coords="127,25,196,53"/>
+<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="419,13,485,41"/>
+<area shape="rect" id="node7" href="$string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné." alt="" coords="128,25,195,53"/>
 <area shape="rect" id="node9" href="$dcache_8c.html#a6a634167e657e519cadf44eb6e6b9068" title="dcache_init" alt="" coords="117,75,205,103"/>
-<area shape="rect" id="node5" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="537,13,676,41"/>
-<area shape="rect" id="node11" href="$hashmap_8h.html#a81cd9ee5f00b62bf3103612cd87d8a5d" title="hashmap_create" alt="" coords="255,50,372,78"/>
+<area shape="rect" id="node5" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="533,13,672,41"/>
+<area shape="rect" id="node11" href="$hashmap_8h.html#a81cd9ee5f00b62bf3103612cd87d8a5d" title="hashmap_create" alt="" coords="253,50,371,78"/>
 </map>

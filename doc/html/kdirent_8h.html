@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/include/kdirent.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -86,6 +87,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   <div class="summary">
 <a href="#nested-classes">Structures de données</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
 <a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle">
 <div class="title">Référence du fichier kdirent.h</div>  </div>
@@ -94,41 +96,64 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Syscall pour ce qui est relatif aux dossiers.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="ksyscall_8h_source.html">ksyscall.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="kstat_8h_source.html">kstat.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="ksyscall_8h_source.html">ksyscall.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="kstat_8h_source.html">kstat.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de kdirent.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="kdirent_8h__incl.png" border="0" usemap="#kernel_2include_2kdirent_8h" alt=""/></div>
 <map name="kernel_2include_2kdirent_8h" id="kernel_2include_2kdirent_8h">
-<area shape="rect" id="node3" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="53,238,131,266"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="99,315,160,343"/><area shape="rect" id="node8" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="120,83,181,111"/><area shape="rect" id="node11" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="120,161,181,189"/></map>
+<area shape="rect" id="node2" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="54,229,133,256"/><area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="101,304,163,331"/><area shape="rect" id="node4" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier. " alt="" coords="121,80,183,107"/><area shape="rect" id="node5" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="121,155,183,181"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="kdirent_8h__dep__incl.png" border="0" usemap="#kernel_2include_2kdirent_8hdep" alt=""/></div>
 <map name="kernel_2include_2kdirent_8hdep" id="kernel_2include_2kdirent_8hdep">
-<area shape="rect" id="node3" href="devfs_8c.html" title="DevFS." alt="" coords="5,83,123,111"/><area shape="rect" id="node5" href="fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="147,83,325,111"/><area shape="rect" id="node7" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="349,83,472,111"/><area shape="rect" id="node9" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="496,83,605,111"/><area shape="rect" id="node11" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="629,83,736,111"/><area shape="rect" id="node13" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="760,83,848,111"/></map>
+<area shape="rect" id="node2" href="devfs_8c.html" title="DevFS. " alt="" coords="5,80,124,107"/><area shape="rect" id="node3" href="fat__functions_8c.html" title="Fonctions pour le driver FAT. " alt="" coords="148,80,328,107"/><area shape="rect" id="node4" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="353,80,475,107"/><area shape="rect" id="node5" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="500,80,611,107"/><area shape="rect" id="node6" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="635,80,742,107"/><area shape="rect" id="node7" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage. " alt="" coords="767,80,856,107"/></map>
 </div>
 </div>
 <p><a href="kdirent_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Structures de données</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdirent.html">dirent</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ac64541bdd81c961304b9babef1402640"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kdirent_8h.html#ac64541bdd81c961304b9babef1402640">NAME_MAX</a>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:ac64541bdd81c961304b9babef1402640"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<b>DT_UNKNOWN</b> = 0, 
+<b>DT_FIFO</b> = 1, 
+<b>DT_CHR</b> = 2, 
+<b>DT_DIR</b> = 4, 
+<br />
+&#160;&#160;<b>DT_BLK</b> = 6, 
+<b>DT_REG</b> = 8, 
+<b>DT_LNK</b> = 10, 
+<b>DT_SOCK</b> = 12, 
+<br />
+&#160;&#160;<b>DT_WHT</b> = 14
+<br />
+ }</td></tr>
+<tr class="separator:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:adfcdfa04bbc40b5d0cd715e66d906cad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kdirent_8h.html#adfcdfa04bbc40b5d0cd715e66d906cad">SYSCALL_HANDLER3</a> (sys_readdir, int fd, char *entries, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> *size)</td></tr>
+<tr class="separator:adfcdfa04bbc40b5d0cd715e66d906cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90bdfb89824032c54ece9f851ca07f69"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kdirent_8h.html#a90bdfb89824032c54ece9f851ca07f69">SYSCALL_HANDLER3</a> (sys_mkdir, const char *pathname, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>, int *ret)</td></tr>
+<tr class="separator:a90bdfb89824032c54ece9f851ca07f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad690af967ba8e26d8ac3e48b8353eacc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kdirent_8h.html#ad690af967ba8e26d8ac3e48b8353eacc">SYSCALL_HANDLER2</a> (sys_rmdir, const char *pathname, int *ret)</td></tr>
+<tr class="separator:ad690af967ba8e26d8ac3e48b8353eacc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -138,7 +163,7 @@ LICENSE</h1>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des macros</h2>
+</div><h2 class="groupheader">Documentation des macros</h2>
 <a class="anchor" id="ac64541bdd81c961304b9babef1402640"></a>
 <div class="memitem">
 <div class="memproto">
@@ -152,7 +177,21 @@ DESCRIPTION</h1>
 
 </div>
 </div>
-<h2>Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a class="anchor" id="a06fc87d81c62e9abb8790b6e5713c55b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Types de fichiers pour le champ "d_type". </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="ad690af967ba8e26d8ac3e48b8353eacc"></a>
 <div class="memitem">
 <div class="memproto">
@@ -196,7 +235,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kdirent_8h_ad690af967ba8e26d8ac3e48b8353eacc_cgraph.png" border="0" usemap="#kdirent_8h_ad690af967ba8e26d8ac3e48b8353eacc_cgraph" alt=""/></div>
 <map name="kdirent_8h_ad690af967ba8e26d8ac3e48b8353eacc_cgraph" id="kdirent_8h_ad690af967ba8e26d8ac3e48b8353eacc_cgraph">
-<area shape="rect" id="node3" href="vfs_8h.html#a8f5dc4e5e4a2aa5d7649790256f11685" title="Suppression d&#39;un dossier." alt="" coords="215,5,289,33"/><area shape="rect" id="node5" href="dcache_8c.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="339,5,453,33"/><area shape="rect" id="node7" href="hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="501,5,627,33"/><area shape="rect" id="node9" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="675,5,725,33"/></map>
+<area shape="rect" id="node2" href="vfs_8h.html#a8f5dc4e5e4a2aa5d7649790256f11685" title="Suppression d&#39;un dossier. " alt="" coords="213,5,289,32"/><area shape="rect" id="node3" href="dcache_8c.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="337,5,452,32"/><area shape="rect" id="node4" href="hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="500,5,625,32"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="673,5,724,32"/></map>
 </div>
 </p>
 
@@ -252,7 +291,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kdirent_8h_adfcdfa04bbc40b5d0cd715e66d906cad_cgraph.png" border="0" usemap="#kdirent_8h_adfcdfa04bbc40b5d0cd715e66d906cad_cgraph" alt=""/></div>
 <map name="kdirent_8h_adfcdfa04bbc40b5d0cd715e66d906cad_cgraph" id="kdirent_8h_adfcdfa04bbc40b5d0cd715e66d906cad_cgraph">
-<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
+<area shape="rect" id="node2" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation. " alt="" coords="213,5,353,32"/></map>
 </div>
 </p>
 
@@ -308,7 +347,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kdirent_8h_a90bdfb89824032c54ece9f851ca07f69_cgraph.png" border="0" usemap="#kdirent_8h_a90bdfb89824032c54ece9f851ca07f69_cgraph" alt=""/></div>
 <map name="kdirent_8h_a90bdfb89824032c54ece9f851ca07f69_cgraph" id="kdirent_8h_a90bdfb89824032c54ece9f851ca07f69_cgraph">
-<area shape="rect" id="node3" href="vfs_8h.html#a392f80d5c4ab48178abcd268c3f64c45" title="Création d&#39;un dossier." alt="" coords="215,5,292,33"/></map>
+<area shape="rect" id="node2" href="vfs_8h.html#a392f80d5c4ab48178abcd268c3f64c45" title="Création d&#39;un dossier. " alt="" coords="213,5,292,32"/></map>
 </div>
 </p>
 
@@ -317,9 +356,9 @@ Voici le graphe d'appel pour cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:37 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

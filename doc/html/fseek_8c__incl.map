@@ -1,11 +1,11 @@
 <map id="libc/stdio/fseek.c" name="libc/stdio/fseek.c">
-<area shape="rect" id="node3" href="$stdio_8h.html" title="stdio.h" alt="" coords="144,161,203,189"/>
-<area shape="rect" id="node18" href="$unistd_8h.html" title="unistd.h" alt="" coords="312,83,379,111"/>
-<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="356,393,444,421"/>
-<area shape="rect" id="node7" href="$libio_8h.html" title="libio.h" alt="" coords="147,238,200,266"/>
-<area shape="rect" id="node10" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="247,315,332,343"/>
-<area shape="rect" id="node16" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="5,238,72,266"/>
-<area shape="rect" id="node13" href="$stdbool_8h.html" title="Type bool." alt="" coords="252,393,327,421"/>
-<area shape="rect" id="node22" href="$stat_8h.html" title="sys/stat.h" alt="" coords="345,161,423,189"/>
-<area shape="rect" id="node26" href="$time_8h.html" title="time.h" alt="" coords="376,238,432,266"/>
+<area shape="rect" id="node2" href="$stdio_8h.html" title="stdio.h" alt="" coords="112,80,172,107"/>
+<area shape="rect" id="node8" href="$unistd_8h.html" title="unistd.h" alt="" coords="264,80,330,107"/>
+<area shape="rect" id="node3" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="260,304,348,331"/>
+<area shape="rect" id="node4" href="$libio_8h.html" title="libio.h" alt="" coords="115,155,170,181"/>
+<area shape="rect" id="node5" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="164,229,251,256"/>
+<area shape="rect" id="node7" href="$libc_2include_2stdarg_8h_source.html" title="stdarg.h" alt="" coords="23,155,91,181"/>
+<area shape="rect" id="node6" href="$stdbool_8h.html" title="Type bool. " alt="" coords="161,304,236,331"/>
+<area shape="rect" id="node9" href="$stat_8h.html" title="sys/stat.h" alt="" coords="296,155,375,181"/>
+<area shape="rect" id="node10" href="$sys_2time_8h.html" title="time.h" alt="" coords="275,229,332,256"/>
 </map>

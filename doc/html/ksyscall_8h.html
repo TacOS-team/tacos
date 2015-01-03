@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/include/ksyscall.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -91,54 +92,64 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier ksyscall.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de ksyscall.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="ksyscall_8h__incl.png" border="0" usemap="#kernel_2include_2ksyscall_8h" alt=""/></div>
 <map name="kernel_2include_2ksyscall_8h" id="kernel_2include_2ksyscall_8h">
-<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="56,83,117,111"/></map>
+<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="55,83,116,111"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="ksyscall_8h__dep__incl.png" border="0" usemap="#kernel_2include_2ksyscall_8hdep" alt=""/></div>
 <map name="kernel_2include_2ksyscall_8hdep" id="kernel_2include_2ksyscall_8hdep">
-<area shape="rect" id="node3" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="1581,83,1728,111"/><area shape="rect" id="node26" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="2320,417,2427,445"/><area shape="rect" id="node40" href="kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="712,238,867,266"/><area shape="rect" id="node51" href="kunistd_8h.html" title="Principales fonctions de l&#39;API POSIX (read, write, seek, stat...)" alt="" coords="2311,238,2468,266"/><area shape="rect" id="node56" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="2824,323,2947,351"/><area shape="rect" id="node81" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="2411,323,2512,351"/><area shape="rect" id="node92" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="2140,238,2287,266"/><area shape="rect" id="node106" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="3200,161,3368,189"/><area shape="rect" id="node114" href="ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="3784,238,3941,266"/><area shape="rect" id="node123" href="ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="4307,323,4424,351"/><area shape="rect" id="node126" href="scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="3539,238,3709,266"/><area shape="rect" id="node147" href="vmm_8c.html" title="kernel/vmm.c" alt="" coords="4499,323,4597,351"/><area shape="rect" id="node157" href="ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="2883,238,3029,266"/><area shape="rect" id="node5" href="clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="1648,161,1749,189"/><area shape="rect" id="node7" href="fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="144,323,312,351"/><area shape="rect" id="node18" href="fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="121,502,279,530"/><area shape="rect" id="node22" href="events_8h.html" title="kernel/include/events.h" alt="" coords="1813,238,1968,266"/><area shape="rect" id="node28" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="3197,323,3323,351"/><area shape="rect" id="node30" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="1015,161,1159,189"/><area shape="rect" id="node9" href="fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="379,417,499,445"/><area shape="rect" id="node11" href="fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="147,417,304,445"/><area shape="rect" id="node15" href="fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="353,502,521,530"/><area shape="rect" id="node13" href="fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="287,579,465,607"/><area shape="rect" id="node24" href="events_8c.html" title="Gestion d&#39;évènements datés." alt="" coords="1779,323,1888,351"/><area shape="rect" id="node33" href="fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="336,323,483,351"/><area shape="rect" id="node62" href="vfs_8h.html" title="Virtual File System." alt="" coords="1020,238,1153,266"/><area shape="rect" id="node38" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="705,417,793,445"/><area shape="rect" id="node42" href="devfs_8c.html" title="DevFS." alt="" coords="704,323,821,351"/><area shape="rect" id="node45" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="557,323,680,351"/><area shape="rect" id="node47" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="1032,323,1141,351"/><area shape="rect" id="node53" href="elf_8c.html" title="Bibliotèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="2251,323,2336,351"/><area shape="rect" id="node58" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="2688,323,2800,351"/><area shape="rect" id="node60" href="module_8c.html" title="kernel/module.c" alt="" coords="2064,323,2176,351"/><area shape="rect" id="node64" href="dcache_8c.html" title="dentry cache" alt="" coords="896,323,1008,351"/><area shape="rect" id="node67" href="ext2__internal_8h.html" title="kernel/fs/ext2/ext2\l_internal.h" alt="" coords="1216,315,1344,359"/><area shape="rect" id="node73" href="ext2_8h.html" title="Driver Ext2." alt="" coords="1368,323,1523,351"/><area shape="rect" id="node83" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1648,323,1755,351"/><area shape="rect" id="node69" href="ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="1293,417,1432,445"/><area shape="rect" id="node76" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2\l_functions.c" alt="" coords="1621,409,1749,453"/><area shape="rect" id="node94" href="serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="2536,315,2664,359"/><area shape="rect" id="node96" href="tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="3397,315,3525,359"/><area shape="rect" id="node110" href="context_8h.html" title="kernel/include/context.h" alt="" coords="3205,238,3363,266"/><area shape="rect" id="node118" href="kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="4037,323,4147,351"/><area shape="rect" id="node121" href="ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="4171,323,4283,351"/><area shape="rect" id="node139" href="ksem_8c.html" title="Gestion des sémaphores." alt="" coords="3072,323,3173,351"/><area shape="rect" id="node144" href="round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="3549,323,3688,351"/><area shape="rect" id="node129" href="round__robin_8h.html" title="kernel/include/round\l_robin.h" alt="" coords="3763,315,3901,359"/><area shape="rect" id="node132" href="init_8c.html" title="kernel/init.c" alt="" coords="3925,323,4013,351"/></map>
+<area shape="rect" id="node2" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="2409,80,2555,107"/><area shape="rect" id="node12" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="3122,401,3229,427"/><area shape="rect" id="node17" href="kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers. " alt="" coords="1311,229,1466,256"/><area shape="rect" id="node22" href="kunistd_8h.html" title="Principales fonctions de l&#39;API POSIX (read, write, seek, stat...) " alt="" coords="2603,229,2761,256"/><area shape="rect" id="node24" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="2857,311,2981,338"/><area shape="rect" id="node33" href="kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="3057,311,3160,338"/><area shape="rect" id="node35" href="kfcntl_8h.html" title="Kernel file control operations. " alt="" coords="2243,229,2391,256"/><area shape="rect" id="node38" href="kprocess_8h.html" title="Création de nouveaux processus. " alt="" coords="3573,155,3743,181"/><area shape="rect" id="node40" href="ksignal_8h.html" title="kernel/include/ksignal.h" alt="" coords="4261,229,4418,256"/><area shape="rect" id="node43" href="ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="4601,311,4720,338"/><area shape="rect" id="node44" href="scheduler_8h.html" title="kernel/include/scheduler.h" alt="" coords="3572,229,3744,256"/><area shape="rect" id="node48" href="vmm_8c.html" title="kernel/vmm.c" alt="" coords="4744,311,4844,338"/><area shape="rect" id="node49" href="ksem_8h.html" title="Coté noyau de la gestion des sémaphores. " alt="" coords="2957,229,3105,256"/><area shape="rect" id="node3" href="clock_8c.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="2381,155,2484,181"/><area shape="rect" id="node4" href="fat__internal_8h.html" title="kernel/fs/fat/fat_internal.h" alt="" coords="357,311,527,338"/><area shape="rect" id="node9" href="fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="5,483,164,509"/><area shape="rect" id="node10" href="events_8h.html" title="kernel/include/events.h" alt="" coords="3259,229,3414,256"/><area shape="rect" id="node13" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="3916,311,4043,338"/><area shape="rect" id="node14" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier. " alt="" coords="1532,155,1677,181"/><area shape="rect" id="node5" href="fat_8c.html" title="Driver FAT. " alt="" coords="474,401,594,427"/><area shape="rect" id="node6" href="fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT. " alt="" coords="240,401,399,427"/><area shape="rect" id="node8" href="fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="357,483,527,509"/><area shape="rect" id="node7" href="fat__functions_8c.html" title="Fonctions pour le driver FAT. " alt="" coords="447,557,627,584"/><area shape="rect" id="node11" href="events_8c.html" title="Gestion d&#39;évènements datés. " alt="" coords="3184,311,3295,338"/><area shape="rect" id="node15" href="fat_8h.html" title="kernel/include/fs/fat.h" alt="" coords="602,311,749,338"/><area shape="rect" id="node27" href="vfs_8h.html" title="Virtual File System. " alt="" coords="1537,229,1672,256"/><area shape="rect" id="node16" href="init_8c.html" title="kernel/init.c" alt="" coords="1427,401,1515,427"/><area shape="rect" id="node18" href="devfs_8c.html" title="DevFS. " alt="" coords="773,311,892,338"/><area shape="rect" id="node19" href="procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="1735,311,1858,338"/><area shape="rect" id="node20" href="kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="1549,311,1660,338"/><area shape="rect" id="node21" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage. " alt="" coords="1299,311,1388,338"/><area shape="rect" id="node23" href="elf_8c.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF. " alt="" coords="2559,311,2645,338"/><area shape="rect" id="node25" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="2720,311,2833,338"/><area shape="rect" id="node26" href="module_8c.html" title="kernel/module.c" alt="" coords="2013,311,2127,338"/><area shape="rect" id="node28" href="dcache_8c.html" title="dentry cache " alt="" coords="1412,311,1525,338"/><area shape="rect" id="node29" href="ext2__internal_8h.html" title="kernel/fs/ext2/ext2\l_internal.h" alt="" coords="917,304,1045,345"/><area shape="rect" id="node31" href="ext2_8h.html" title="Driver Ext2. " alt="" coords="1069,311,1223,338"/><area shape="rect" id="node34" href="kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="1882,311,1989,338"/><area shape="rect" id="node30" href="ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="994,401,1133,427"/><area shape="rect" id="node32" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2\l_functions.c" alt="" coords="1914,393,2042,435"/><area shape="rect" id="node36" href="serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="2355,304,2484,345"/><area shape="rect" id="node37" href="tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="3371,304,3500,345"/><area shape="rect" id="node39" href="context_8h.html" title="kernel/include/context.h" alt="" coords="3884,229,4043,256"/><area shape="rect" id="node41" href="kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="4281,311,4390,338"/><area shape="rect" id="node42" href="ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="4414,311,4526,338"/><area shape="rect" id="node46" href="ksem_8c.html" title="Gestion des sémaphores. " alt="" coords="3524,311,3627,338"/><area shape="rect" id="node47" href="round__robin_8c.html" title="kernel/round_robin.c" alt="" coords="4067,311,4206,338"/><area shape="rect" id="node45" href="round__robin_8h.html" title="kernel/include/round\l_robin.h" alt="" coords="3753,304,3891,345"/></map>
 </div>
 </div>
 <p><a href="ksyscall_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a6bc306171da085f4c7df2c66d2ff8e47"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6bc306171da085f4c7df2c66d2ff8e47"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>UNUSED</b>(X)&#160;&#160;&#160;<a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> unused_ ## X __attribute__ ((unused))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>UNUSED</b>(X)&#160;&#160;&#160;<a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> _u_n_u_s_e_d_ ## X __attribute__ ((unused))</td></tr>
+<tr class="separator:a6bc306171da085f4c7df2c66d2ff8e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7bb226810ac3295fe0552efab5ae23ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7bb226810ac3295fe0552efab5ae23ae"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER0</b>(name)&#160;&#160;&#160;void name(UNUSED(0), UNUSED(1), UNUSED(2))</td></tr>
+<tr class="separator:a7bb226810ac3295fe0552efab5ae23ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accf0f8185a011f193e1ad159f108fc2b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="accf0f8185a011f193e1ad159f108fc2b"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER1</b>(name, param)&#160;&#160;&#160;void name(param, UNUSED(1), UNUSED(2))</td></tr>
+<tr class="separator:accf0f8185a011f193e1ad159f108fc2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cf0298f3b7871c97fb9342cdbeb044d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3cf0298f3b7871c97fb9342cdbeb044d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER2</b>(name, param1, param2)&#160;&#160;&#160;void name(param1, param2, UNUSED(2))</td></tr>
+<tr class="separator:a3cf0298f3b7871c97fb9342cdbeb044d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2275bbb9650f8f9e04cee2681a36107"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2275bbb9650f8f9e04cee2681a36107"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b>(name, param1, param2, param3)&#160;&#160;&#160;void name(param1, param2, param3)</td></tr>
+<tr class="separator:ac2275bbb9650f8f9e04cee2681a36107"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7cc7c2782aab60d437ce809bf4c18ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7cc7c2782aab60d437ce809bf4c18ae"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_SYSCALL_NB</b>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:af7cc7c2782aab60d437ce809bf4c18ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
 <tr class="memitem:a798b28d0d448df0f58dbf0daf8d93e9e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a798b28d0d448df0f58dbf0daf8d93e9e"></a>
 typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>syscall_handler_t</b> )(<a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>)</td></tr>
+<tr class="separator:a798b28d0d448df0f58dbf0daf8d93e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a3e64f9d87cb92e4dc7d748a495e232f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ksyscall_8h.html#a3e64f9d87cb92e4dc7d748a495e232f1">init_syscall</a> ()</td></tr>
-<tr class="memdesc:a3e64f9d87cb92e4dc7d748a495e232f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation des appels systemes.  <a href="#a3e64f9d87cb92e4dc7d748a495e232f1"></a><br/></td></tr>
+<tr class="memdesc:a3e64f9d87cb92e4dc7d748a495e232f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation des appels systemes.  <a href="#a3e64f9d87cb92e4dc7d748a495e232f1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3e64f9d87cb92e4dc7d748a495e232f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a348fcaaf9525f99be2dc228a7780fab8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ksyscall_8h.html#a348fcaaf9525f99be2dc228a7780fab8">syscall_set_handler</a> (<a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> syscall_id, syscall_handler_t handler)</td></tr>
-<tr class="memdesc:a348fcaaf9525f99be2dc228a7780fab8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Associe un identifiant d'appel système à une handler.  <a href="#a348fcaaf9525f99be2dc228a7780fab8"></a><br/></td></tr>
+<tr class="memdesc:a348fcaaf9525f99be2dc228a7780fab8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Associe un identifiant d'appel système à une handler.  <a href="#a348fcaaf9525f99be2dc228a7780fab8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a348fcaaf9525f99be2dc228a7780fab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a170b9594d1a86adb3357817c567dd287"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a170b9594d1a86adb3357817c567dd287"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_dummy, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> a, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> b, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> c)</td></tr>
+<tr class="separator:a170b9594d1a86adb3357817c567dd287"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -149,7 +160,7 @@ LICENSE</h1>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 <p>Description de ce que fait le fichier </p>
-</div><h2>Documentation des fonctions</h2>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a3e64f9d87cb92e4dc7d748a495e232f1"></a>
 <div class="memitem">
 <div class="memproto">
@@ -169,7 +180,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="ksyscall_8h_a3e64f9d87cb92e4dc7d748a495e232f1_cgraph.png" border="0" usemap="#ksyscall_8h_a3e64f9d87cb92e4dc7d748a495e232f1_cgraph" alt=""/></div>
 <map name="ksyscall_8h_a3e64f9d87cb92e4dc7d748a495e232f1_cgraph" id="ksyscall_8h_a3e64f9d87cb92e4dc7d748a495e232f1_cgraph">
-<area shape="rect" id="node3" href="interrupts_8h.html#aecc1fa8433fa21ba233b8feb2558e954" title="Ajoute une nouvelle interruption." alt="" coords="153,5,292,33"/><area shape="rect" id="node7" href="ksyscall_8c.html#aa10969a644d213f1e778ac8c2a97fd6a" title="Point d&#39;entrée des appels systèmes C&#39;est cette fonction qui est lancée à la réception de l&#39;IRQ_SYSCAL..." alt="" coords="175,55,271,83"/><area shape="rect" id="node11" href="interrupts_8h.html#a4eea959d9a7be06d7b87a0aad03b490e" title="Change le type d&#39;une interruption en une trapgate." alt="" coords="141,106,304,134"/><area shape="rect" id="node15" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné." alt="" coords="188,157,257,185"/><area shape="rect" id="node5" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="368,5,477,33"/><area shape="rect" id="node9" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="353,55,492,83"/><area shape="rect" id="node13" href="idt_8c.html#affa07557443fe1c9a508b346d8f06523" title="Change le type d&#39;une interruption (interrupt gate, trap gate, task gate)." alt="" coords="352,106,493,134"/></map>
+<area shape="rect" id="node2" href="interrupts_8h.html#aecc1fa8433fa21ba233b8feb2558e954" title="Ajoute une nouvelle interruption. " alt="" coords="151,5,291,32"/><area shape="rect" id="node4" href="ksyscall_8c.html#aa10969a644d213f1e778ac8c2a97fd6a" title="Point d&#39;entrée des appels systèmes C&#39;est cette fonction qui est lancée à la réception de l&#39;IRQ_SYSCAL..." alt="" coords="173,56,270,83"/><area shape="rect" id="node6" href="interrupts_8h.html#a4eea959d9a7be06d7b87a0aad03b490e" title="Change le type d&#39;une interruption en une trapgate. " alt="" coords="140,107,303,133"/><area shape="rect" id="node8" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="187,157,256,184"/><area shape="rect" id="node3" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception. " alt="" coords="366,5,477,32"/><area shape="rect" id="node5" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation. " alt="" coords="351,56,491,83"/><area shape="rect" id="node7" href="idt_8c.html#affa07557443fe1c9a508b346d8f06523" title="Change le type d&#39;une interruption (interrupt gate, trap gate, task gate). " alt="" coords="351,107,492,133"/></map>
 </div>
 </p>
 
@@ -212,9 +223,9 @@ Voici le graphe d'appel pour cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:38 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

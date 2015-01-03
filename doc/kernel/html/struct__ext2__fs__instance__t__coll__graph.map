@@ -1,13 +1,13 @@
 <map id="_ext2_fs_instance_t" name="_ext2_fs_instance_t">
-<area shape="rect" id="node2" href="$structext2__super__block.html" title="ext2_super_block" alt="" coords="667,14,789,42"/>
-<area shape="rect" id="node4" href="$structext2__group__desc.html" title="ext2_group_desc" alt="" coords="668,65,788,93"/>
+<area shape="rect" id="node2" href="$structext2__super__block.html" title="ext2_super_block" alt="" coords="657,14,780,42"/>
+<area shape="rect" id="node4" href="$structext2__group__desc.html" title="ext2_group_desc" alt="" coords="660,65,777,93"/>
 <area shape="rect" id="node6" href="$struct__dentry__t.html" title="_dentry_t" alt="" coords="5,193,80,221"/>
-<area shape="rect" id="node13" href="$struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté." alt="" coords="197,442,304,470"/>
-<area shape="rect" id="node19" href="$struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="656,290,800,318"/>
-<area shape="rect" id="node9" href="$struct__inode__t.html" title="_inode_t" alt="" coords="463,237,532,265"/>
-<area shape="rect" id="node11" href="$struct__open__file__operations__t.html" title="_open_file_operations_t" alt="" coords="172,286,329,314"/>
-<area shape="rect" id="node16" href="$structfile__system__t.html" title="Structure qui représente un FS." alt="" coords="448,671,547,699"/>
-<area shape="rect" id="node25" href="$struct__mounted__fs__t.html" title="_mounted_fs_t" alt="" coords="444,570,551,598"/>
-<area shape="rect" id="node31" href="$structext2__group__desc__internal.html" title="ext2_group_desc_internal" alt="" coords="644,543,812,571"/>
-<area shape="rect" id="node33" href="$structext2__inode.html" title="ext2_inode" alt="" coords="456,621,539,649"/>
+<area shape="rect" id="node13" href="$struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté." alt="" coords="197,442,301,470"/>
+<area shape="rect" id="node19" href="$struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="648,290,789,318"/>
+<area shape="rect" id="node9" href="$struct__inode__t.html" title="_inode_t" alt="" coords="456,237,525,265"/>
+<area shape="rect" id="node11" href="$struct__open__file__operations__t.html" title="_open_file_operations_t" alt="" coords="171,286,328,314"/>
+<area shape="rect" id="node16" href="$structfile__system__t.html" title="Structure qui représente un FS." alt="" coords="443,671,539,699"/>
+<area shape="rect" id="node25" href="$struct__mounted__fs__t.html" title="_mounted_fs_t" alt="" coords="437,570,544,598"/>
+<area shape="rect" id="node31" href="$structext2__group__desc__internal.html" title="ext2_group_desc_internal" alt="" coords="635,543,803,571"/>
+<area shape="rect" id="node33" href="$structext2__inode.html" title="ext2_inode" alt="" coords="449,621,532,649"/>
 </map>

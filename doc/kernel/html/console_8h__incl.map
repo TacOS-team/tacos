@@ -1,6 +1,6 @@
 <map id="kernel/include/drivers/console.h" name="kernel/include/drivers/console.h">
-<area shape="rect" id="node3" href="$types_8h.html" title="types.h" alt="" coords="47,254,108,282"/>
-<area shape="rect" id="node5" href="$tty_8h.html" title="Terminal posix&#45;like." alt="" coords="105,99,151,127"/>
-<area shape="rect" id="node8" href="$termios__types_8h.html" title="termios_types.h" alt="" coords="115,177,227,205"/>
-<area shape="rect" id="node10" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="251,177,331,205"/>
+<area shape="rect" id="node3" href="$types_8h.html" title="types.h" alt="" coords="45,254,107,282"/>
+<area shape="rect" id="node5" href="$tty_8h.html" title="Terminal posix&#45;like." alt="" coords="104,99,149,127"/>
+<area shape="rect" id="node8" href="$termios__types_8h.html" title="termios_types.h" alt="" coords="113,177,223,205"/>
+<area shape="rect" id="node10" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="247,177,327,205"/>
 </map>

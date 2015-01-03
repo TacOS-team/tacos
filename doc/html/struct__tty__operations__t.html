@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence de la structure _tty_operations_t</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -88,22 +89,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p><code>#include &lt;<a class="el" href="tty_8h_source.html">tty.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
 <tr class="memitem:a44fb314b6ba47294932a8fdfe8e25d63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44fb314b6ba47294932a8fdfe8e25d63"></a>
 int(*&#160;</td><td class="memItemRight" valign="bottom"><b>open</b> )(<a class="el" href="tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e">tty_struct_t</a> *, <a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *)</td></tr>
+<tr class="separator:a44fb314b6ba47294932a8fdfe8e25d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9277a33599caf8b99b1f4ba52708a117"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9277a33599caf8b99b1f4ba52708a117"></a>
 int(*&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> )(<a class="el" href="tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e">tty_struct_t</a> *, <a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *)</td></tr>
+<tr class="separator:a9277a33599caf8b99b1f4ba52708a117"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b53188048a05fa70f02311f48b6d877"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b53188048a05fa70f02311f48b6d877"></a>
 <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> )(<a class="el" href="tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e">tty_struct_t</a> *, <a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *, const unsigned char *, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>)</td></tr>
+<tr class="separator:a2b53188048a05fa70f02311f48b6d877"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6245586b6d4d0fb23f2afe2ea6e6672"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa6245586b6d4d0fb23f2afe2ea6e6672"></a>
 void(*&#160;</td><td class="memItemRight" valign="bottom"><b>put_char</b> )(<a class="el" href="tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e">tty_struct_t</a> *tty, unsigned char ch)</td></tr>
+<tr class="separator:aa6245586b6d4d0fb23f2afe2ea6e6672"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a635940084e0140e5b859572d4b1cb647"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a635940084e0140e5b859572d4b1cb647"></a>
 <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><b>set_termios</b> )(struct <a class="el" href="structtermios.html">termios</a> *, struct <a class="el" href="structtermios.html">termios</a> *)</td></tr>
+<tr class="separator:a635940084e0140e5b859572d4b1cb647"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d583c140c5fcf8896c42b571be2d2cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d583c140c5fcf8896c42b571be2d2cb"></a>
 int(*&#160;</td><td class="memItemRight" valign="bottom"><b>ioctl</b> )(<a class="el" href="tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e">tty_struct_t</a> *tty, <a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *, unsigned int, void *)</td></tr>
+<tr class="separator:a0d583c140c5fcf8896c42b571be2d2cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Contient les opérations fournies par le tty driver. </p>
 </div><hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
 <li>kernel/include/<a class="el" href="tty_8h_source.html">tty.h</a></li>
@@ -111,9 +118,9 @@ int(*&#160;</td><td class="memItemRight" valign="bottom"><b>ioctl</b> )(<a class
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:42 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

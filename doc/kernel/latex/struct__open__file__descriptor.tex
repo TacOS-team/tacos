@@ -23,19 +23,13 @@ Graphe de collaboration de \-\_\-open\-\_\-file\-\_\-descriptor\-:\nopagebreak
 \hypertarget{struct__open__file__descriptor_adc7c56cf182ec52f5ae7a5b2cbcdc201}{int {\bfseries current\-\_\-cluster}}\label{struct__open__file__descriptor_adc7c56cf182ec52f5ae7a5b2cbcdc201}
 
 \item 
-\hypertarget{struct__open__file__descriptor_a77a2aad2470554b058b4565059fa8c8c}{\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} {\bfseries buffer} \mbox{[}512\mbox{]}}\label{struct__open__file__descriptor_a77a2aad2470554b058b4565059fa8c8c}
-
-\item 
 \hypertarget{struct__open__file__descriptor_a452e65f0c6de16bfeaa62825f916b077}{char $\ast$ {\bfseries pathname}}\label{struct__open__file__descriptor_a452e65f0c6de16bfeaa62825f916b077}
 
 \item 
 \hypertarget{struct__open__file__descriptor_a0ba8e85021c79e224ca628e14d0795c2}{\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} {\bfseries current\-\_\-octet}}\label{struct__open__file__descriptor_a0ba8e85021c79e224ca628e14d0795c2}
 
 \item 
-\hypertarget{struct__open__file__descriptor_a41bcfd1c4f0c4cfe7ef960e3fb7b01c7}{\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} {\bfseries first\-\_\-cluster}}\label{struct__open__file__descriptor_a41bcfd1c4f0c4cfe7ef960e3fb7b01c7}
-
-\item 
-\hypertarget{struct__open__file__descriptor_aded6c4da94d690e18bfd35522a3ca2da}{\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} {\bfseries file\-\_\-size}}\label{struct__open__file__descriptor_aded6c4da94d690e18bfd35522a3ca2da}
+\hypertarget{struct__open__file__descriptor_a8cb6aecafd1ec572c9a9a8527ba89717}{\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} {\bfseries select\-\_\-sem}}\label{struct__open__file__descriptor_a8cb6aecafd1ec572c9a9a8527ba89717}
 
 \item 
 \hypertarget{struct__open__file__descriptor_a032a031b6293ba41fff7652cad4c507e}{struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$ {\bfseries fs\-\_\-instance}}\label{struct__open__file__descriptor_a032a031b6293ba41fff7652cad4c507e}
@@ -53,13 +47,23 @@ Graphe de collaboration de \-\_\-open\-\_\-file\-\_\-descriptor\-:\nopagebreak
 \hypertarget{struct__open__file__descriptor_a6cd707cf9a5d837feba5ef2a2f91bfcd}{struct \hyperlink{struct__open__file__operations__t}{\-\_\-open\-\_\-file\-\_\-operations\-\_\-t} $\ast$ {\bfseries f\-\_\-ops}}\label{struct__open__file__descriptor_a6cd707cf9a5d837feba5ef2a2f91bfcd}
 
 \item 
-\hypertarget{struct__open__file__descriptor_a99824795a31a8adea2162aed74162017}{void $\ast$ {\bfseries extra\-\_\-data}}\label{struct__open__file__descriptor_a99824795a31a8adea2162aed74162017}
-
+void $\ast$ \hyperlink{struct__open__file__descriptor_a2fc86f185e4b611a90f7727ef26ff3de}{i\-\_\-fs\-\_\-specific}
+\item 
+void $\ast$ \hyperlink{struct__open__file__descriptor_a99824795a31a8adea2162aed74162017}{extra\-\_\-data}
 \end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
 Descripteur de fichier ouvert. À chaque fichier ouvert, une structure de ce type est instanciée pour y stocker les informations sur le fichier et le F\-S. 
+
+\subsection{Documentation des champs}
+\hypertarget{struct__open__file__descriptor_a99824795a31a8adea2162aed74162017}{\index{\-\_\-open\-\_\-file\-\_\-descriptor@{\-\_\-open\-\_\-file\-\_\-descriptor}!extra\-\_\-data@{extra\-\_\-data}}
+\index{extra\-\_\-data@{extra\-\_\-data}!_open_file_descriptor@{\-\_\-open\-\_\-file\-\_\-descriptor}}
+\subsubsection[{extra\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ \-\_\-open\-\_\-file\-\_\-descriptor\-::extra\-\_\-data}}\label{struct__open__file__descriptor_a99824795a31a8adea2162aed74162017}
+Extra data utilisée par le F\-S. Initialisé lors du open. \hypertarget{struct__open__file__descriptor_a2fc86f185e4b611a90f7727ef26ff3de}{\index{\-\_\-open\-\_\-file\-\_\-descriptor@{\-\_\-open\-\_\-file\-\_\-descriptor}!i\-\_\-fs\-\_\-specific@{i\-\_\-fs\-\_\-specific}}
+\index{i\-\_\-fs\-\_\-specific@{i\-\_\-fs\-\_\-specific}!_open_file_descriptor@{\-\_\-open\-\_\-file\-\_\-descriptor}}
+\subsubsection[{i\-\_\-fs\-\_\-specific}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ \-\_\-open\-\_\-file\-\_\-descriptor\-::i\-\_\-fs\-\_\-specific}}\label{struct__open__file__descriptor_a2fc86f185e4b611a90f7727ef26ff3de}
+Pointe vers \char`\"{}dentry-\/$>$d\-\_\-inode-\/$>$i\-\_\-fs\-\_\-specific\char`\"{}. 
 
 La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
 \item 

@@ -1,42 +1,44 @@
 <map id="kmalloc" name="kmalloc">
-<area shape="rect" id="node3" href="$dcache_8h.html#a4f122b8158ba9f2044fda159f8ff0680" title="dcache_set" alt="" coords="351,28,439,56"/>
-<area shape="rect" id="node5" href="$serial_8h.html#a459999cfa35c788b64284953a93c4b57" title="Fonction d&#39;initialisation du driver série." alt="" coords="356,154,433,182"/>
-<area shape="rect" id="node7" href="$console_8h.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;." alt="" coords="349,205,440,233"/>
-<area shape="rect" id="node9" href="$tty_8h.html#a9ae7085e2afaadc63a592910d4ac4328" title="alloc_tty_driver" alt="" coords="139,154,248,182"/>
-<area shape="rect" id="node13" href="$tty_8h.html#a302b60b1c52001915aeb108b51efc397" title="tty_register_driver" alt="" coords="131,205,256,233"/>
-<area shape="rect" id="node17" href="$elf_8h.html#abbbb3d1f6ac9986f87d655cec7819556" title="charge un fichier elf dans la structure Elf32_File" alt="" coords="148,357,239,385"/>
-<area shape="rect" id="node19" href="$kprocess_8c.html#a47ef452c5b4017727c9c4222ab133fae" title="Syscall pour exécuter un programme." alt="" coords="315,306,475,334"/>
-<area shape="rect" id="node21" href="$devfs_8h.html#ac01eef8358c344396a59f06531a5dcb4" title="Initialisation du dev FS." alt="" coords="356,357,433,385"/>
-<area shape="rect" id="node23" href="$ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="531,636,627,664"/>
-<area shape="rect" id="node25" href="$ext2__internal_8h.html#a1814eebfe79637247b38dda8e50a3263" title="Création d&#39;un noeud (fichier, dossier, fichier spécial...)" alt="" coords="148,610,239,638"/>
-<area shape="rect" id="node31" href="$ext2__internal_8h.html#aacb0077cd0a76158c9288ecd193d58da" title="ext2_lookup" alt="" coords="148,661,239,689"/>
-<area shape="rect" id="node34" href="$fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae" title="mount_FAT" alt="" coords="349,762,440,790"/>
-<area shape="rect" id="node36" href="$fat__internal_8h.html#aaf2cd44da9ce9df0808a2cd823fd1295" title="fat_lookup" alt="" coords="152,762,235,790"/>
-<area shape="rect" id="node39" href="$fat__internal_8h.html#ada9bd47fd90b01248fe52f302560f9f9" title="fat_readdir" alt="" coords="353,813,436,841"/>
-<area shape="rect" id="node41" href="$fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="357,940,432,968"/>
-<area shape="rect" id="node43" href="$fat__internal_8h.html#a0ae169e11ec76cae96a82e41fed70ece" title="open_root_dir" alt="" coords="144,864,243,892"/>
-<area shape="rect" id="node48" href="$fat__outils_8h.html#a015254ce721ab0097a1008ec7153b819" title="fat_lfn_to_sfn" alt="" coords="143,965,244,993"/>
-<area shape="rect" id="node51" href="$fat__outils_8h.html#acc4ab73ddc901dbfa52071c98ce0de6b" title="fat_decode_lfn_entry" alt="" coords="123,1016,264,1044"/>
-<area shape="rect" id="node53" href="$fat__outils_8h.html#a8100c884384ccb3b8ecec7f5180ad346" title="fat_decode_sfn_entry" alt="" coords="120,1066,267,1094"/>
-<area shape="rect" id="node55" href="$kprocess_8h.html#a67b19f8892567cdb63c98ee660300f60" title="Initialisation du proc FS." alt="" coords="353,408,436,436"/>
-<area shape="rect" id="node57" href="$kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="357,1168,432,1196"/>
-<area shape="rect" id="node59" href="$kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="524,1142,633,1170"/>
-<area shape="rect" id="node63" href="$libc_2include_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="164,1320,223,1348"/>
-<area shape="rect" id="node67" href="$hashmap_8c.html#a81cd9ee5f00b62bf3103612cd87d8a5d" title="hashmap_create" alt="" coords="135,1421,252,1449"/>
-<area shape="rect" id="node71" href="$vfs_8c.html#a2e2b9554ca8721b61981dff16a7b54ad" title="vfs_init" alt="" coords="547,1396,611,1424"/>
-<area shape="rect" id="node73" href="$hashmap_8c.html#a0c25525e8b6599bcafda45b74dcac19d" title="hashmap_set" alt="" coords="144,53,243,81"/>
-<area shape="rect" id="node76" href="$list_8c.html#a8111dff4de9d78342e96563621a7da63" title="list_init" alt="" coords="163,1472,224,1500"/>
-<area shape="rect" id="node81" href="$vfs_8c.html#ab2237a3610010d8a211ef3d55a521dba" title="Enregistrer un FS dans le VFS pour le rendre disponible." alt="" coords="140,509,247,537"/>
-<area shape="rect" id="node89" href="$vfs_8c.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="156,1218,231,1246"/>
-<area shape="rect" id="node98" href="$vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage." alt="" coords="353,1320,436,1348"/>
-<area shape="rect" id="node28" href="$ext2__internal_8h.html#a099858facc12a389ffbff826567cb7c4" title="Création d&#39;un dossier." alt="" coords="352,661,437,689"/>
-<area shape="rect" id="node46" href="$fat__internal_8h.html#a2673c2b00be14ce740290ba2e92b9f90" title="fat_unlink" alt="" coords="356,864,433,892"/>
-<area shape="rect" id="node61" href="$scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="684,1142,785,1170"/>
-<area shape="rect" id="node69" href="$dcache_8h.html#a6a634167e657e519cadf44eb6e6b9068" title="dcache_init" alt="" coords="351,1421,439,1449"/>
-<area shape="rect" id="node78" href="$events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="352,1472,437,1500"/>
-<area shape="rect" id="node84" href="$ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2." alt="" coords="360,458,429,486"/>
-<area shape="rect" id="node86" href="$fat_8h.html#a3d1f5d8e3b22672684528c112bc6ff06" title="fat_init" alt="" coords="364,509,425,537"/>
-<area shape="rect" id="node92" href="$kfcntl_8c.html#aa1d225acb87c04ac8d56c8096f587a03" title="SYSCALL_HANDLER3" alt="" coords="315,1218,475,1246"/>
-<area shape="rect" id="node94" href="$kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="365,1269,424,1297"/>
-<area shape="rect" id="node96" href="$list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="544,1269,613,1297"/>
+<area shape="rect" id="node2" href="$dcache_8h.html#a4f122b8158ba9f2044fda159f8ff0680" title="dcache_set" alt="" coords="350,28,439,55"/>
+<area shape="rect" id="node3" href="$tty_8h.html#a9ae7085e2afaadc63a592910d4ac4328" title="alloc_tty_driver" alt="" coords="139,104,248,131"/>
+<area shape="rect" id="node6" href="$tty_8h.html#a302b60b1c52001915aeb108b51efc397" title="tty_register_driver" alt="" coords="131,155,256,181"/>
+<area shape="rect" id="node7" href="$elf_8h.html#abbbb3d1f6ac9986f87d655cec7819556" title="charge un fichier elf dans la structure Elf32_File " alt="" coords="148,256,239,283"/>
+<area shape="rect" id="node8" href="$kprocess_8c.html#a47ef452c5b4017727c9c4222ab133fae" title="Syscall pour exécuter un programme. " alt="" coords="315,205,475,232"/>
+<area shape="rect" id="node9" href="$devfs_8h.html#ac01eef8358c344396a59f06531a5dcb4" title="Initialisation du dev FS. " alt="" coords="355,256,434,283"/>
+<area shape="rect" id="node10" href="$ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage. " alt="" coords="563,535,660,561"/>
+<area shape="rect" id="node11" href="$ext2__internal_8h.html#a1814eebfe79637247b38dda8e50a3263" title="Création d&#39;un noeud (fichier, dossier, fichier spécial...) " alt="" coords="147,459,239,485"/>
+<area shape="rect" id="node13" href="$ext2__internal_8h.html#aacb0077cd0a76158c9288ecd193d58da" title="ext2_lookup" alt="" coords="148,560,239,587"/>
+<area shape="rect" id="node14" href="$fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae" title="mount_FAT" alt="" coords="349,661,440,688"/>
+<area shape="rect" id="node15" href="$fat__internal_8h.html#aaf2cd44da9ce9df0808a2cd823fd1295" title="fat_lookup" alt="" coords="152,661,235,688"/>
+<area shape="rect" id="node16" href="$fat__internal_8h.html#ada9bd47fd90b01248fe52f302560f9f9" title="fat_readdir" alt="" coords="353,712,436,739"/>
+<area shape="rect" id="node17" href="$fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="357,839,433,865"/>
+<area shape="rect" id="node18" href="$fat__internal_8h.html#a2ac41048fa02e77edaece792c02c5692" title="fat_open" alt="" coords="157,915,229,941"/>
+<area shape="rect" id="node19" href="$fat__internal_8h.html#a0ae169e11ec76cae96a82e41fed70ece" title="open_root_dir" alt="" coords="143,763,243,789"/>
+<area shape="rect" id="node21" href="$fat__outils_8h.html#a015254ce721ab0097a1008ec7153b819" title="fat_lfn_to_sfn" alt="" coords="143,864,244,891"/>
+<area shape="rect" id="node22" href="$fat__outils_8h.html#acc4ab73ddc901dbfa52071c98ce0de6b" title="fat_decode_lfn_entry" alt="" coords="122,965,265,992"/>
+<area shape="rect" id="node23" href="$fat__outils_8h.html#a8100c884384ccb3b8ecec7f5180ad346" title="fat_decode_sfn_entry" alt="" coords="120,1016,267,1043"/>
+<area shape="rect" id="node24" href="$kprocess_8h.html#a67b19f8892567cdb63c98ee660300f60" title="Initialisation du proc FS. " alt="" coords="353,307,436,333"/>
+<area shape="rect" id="node25" href="$kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards. " alt="" coords="357,1041,432,1068"/>
+<area shape="rect" id="node26" href="$libc_2include_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine. " alt="" coords="164,1219,223,1245"/>
+<area shape="rect" id="node27" href="$hashmap_8c.html#a81cd9ee5f00b62bf3103612cd87d8a5d" title="hashmap_create" alt="" coords="134,1269,253,1296"/>
+<area shape="rect" id="node29" href="$vfs_8c.html#a2e2b9554ca8721b61981dff16a7b54ad" title="vfs_init" alt="" coords="579,1295,643,1321"/>
+<area shape="rect" id="node30" href="$hashmap_8c.html#a0c25525e8b6599bcafda45b74dcac19d" title="hashmap_set" alt="" coords="143,53,243,80"/>
+<area shape="rect" id="node31" href="$list_8c.html#a8111dff4de9d78342e96563621a7da63" title="list_init" alt="" coords="162,1371,225,1397"/>
+<area shape="rect" id="node33" href="$vfs_8c.html#ab2237a3610010d8a211ef3d55a521dba" title="Enregistrer un FS dans le VFS pour le rendre disponible. " alt="" coords="139,408,247,435"/>
+<area shape="rect" id="node36" href="$vfs_8c.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier. " alt="" coords="156,1117,231,1144"/>
+<area shape="rect" id="node43" href="$vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage. " alt="" coords="353,1193,436,1220"/>
+<area shape="rect" id="node4" href="$serial_8h.html#a459999cfa35c788b64284953a93c4b57" title="Fonction d&#39;initialisation du driver série. " alt="" coords="356,155,433,181"/>
+<area shape="rect" id="node5" href="$console_8h.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;. " alt="" coords="349,104,440,131"/>
+<area shape="rect" id="node12" href="$ext2__internal_8h.html#a099858facc12a389ffbff826567cb7c4" title="Création d&#39;un dossier. " alt="" coords="352,509,437,536"/>
+<area shape="rect" id="node20" href="$fat__internal_8h.html#a2673c2b00be14ce740290ba2e92b9f90" title="fat_unlink" alt="" coords="355,763,434,789"/>
+<area shape="rect" id="node28" href="$dcache_8h.html#a6a634167e657e519cadf44eb6e6b9068" title="dcache_init" alt="" coords="351,1269,439,1296"/>
+<area shape="rect" id="node32" href="$events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements " alt="" coords="352,1371,437,1397"/>
+<area shape="rect" id="node34" href="$ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51" title="Initialisation du driver ext2. " alt="" coords="359,408,430,435"/>
+<area shape="rect" id="node35" href="$fat_8h.html#a3d1f5d8e3b22672684528c112bc6ff06" title="fat_init" alt="" coords="364,357,425,384"/>
+<area shape="rect" id="node37" href="$kfcntl_8c.html#aa1d225acb87c04ac8d56c8096f587a03" title="SYSCALL_HANDLER3" alt="" coords="315,1143,475,1169"/>
+<area shape="rect" id="node38" href="$kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran. " alt="" coords="365,1092,424,1119"/>
+<area shape="rect" id="node39" href="$memory_8c.html#a8fba2533a7d88ec6038d6948ca695957" title="Affiche la liste des cadres utilisés. " alt="" coords="523,1117,700,1144"/>
+<area shape="rect" id="node40" href="$memory_8c.html#a09a07799735fa6d6fbae7e870052daa3" title="Affiche la liste des cadres libres. " alt="" coords="526,1168,697,1195"/>
+<area shape="rect" id="node41" href="$memory_8c.html#a0a428a3b3b69b116515e43ffc7a96042" title="Affiche la mémoire physique. " alt="" coords="561,1016,661,1043"/>
+<area shape="rect" id="node42" href="$list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="576,1067,647,1093"/>
 </map>

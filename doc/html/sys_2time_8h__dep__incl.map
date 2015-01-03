@@ -1,0 +1,19 @@
+<map id="libc/include/sys/time.h" name="libc/include/sys/time.h">
+<area shape="rect" id="node2" href="$stat_8h.html" title="libc/include/sys/stat.h" alt="" coords="403,81,549,108"/>
+<area shape="rect" id="node3" href="$dirent_8h.html" title="Définition de DIR et struct dirent. " alt="" coords="96,156,229,182"/>
+<area shape="rect" id="node6" href="$unistd_8h.html" title="libc/include/unistd.h" alt="" coords="721,156,857,182"/>
+<area shape="rect" id="node4" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers. " alt="" coords="5,230,93,257"/>
+<area shape="rect" id="node5" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="117,230,208,257"/>
+<area shape="rect" id="node7" href="$fcntl_8c.html" title="File control operations. " alt="" coords="959,230,1041,257"/>
+<area shape="rect" id="node8" href="$malloc_8c.html" title="libc/malloc.c" alt="" coords="1065,230,1159,257"/>
+<area shape="rect" id="node9" href="$process_8c.html" title="libc/process.c" alt="" coords="1183,230,1286,257"/>
+<area shape="rect" id="node10" href="$sem_8c.html" title="libc/sem.c" alt="" coords="1310,230,1391,257"/>
+<area shape="rect" id="node11" href="$signal_8c.html" title="Gestion des signaux. " alt="" coords="1416,230,1507,257"/>
+<area shape="rect" id="node12" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="1531,230,1651,257"/>
+<area shape="rect" id="node13" href="$fseek_8c.html" title="libc/stdio/fseek.c" alt="" coords="232,230,352,257"/>
+<area shape="rect" id="node14" href="$get_8c.html" title="libc/stdio/get.c" alt="" coords="376,230,483,257"/>
+<area shape="rect" id="node15" href="$put_8c.html" title="libc/stdio/put.c" alt="" coords="507,230,613,257"/>
+<area shape="rect" id="node16" href="$libc_2stdlib_8c.html" title="libc/stdlib.c" alt="" coords="638,230,725,257"/>
+<area shape="rect" id="node17" href="$time_8c.html" title="libc/time.c" alt="" coords="749,230,830,257"/>
+<area shape="rect" id="node18" href="$wait_8c.html" title="libc/wait.c" alt="" coords="855,230,935,257"/>
+</map>

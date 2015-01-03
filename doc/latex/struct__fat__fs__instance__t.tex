@@ -1,13 +1,14 @@
-\hypertarget{struct__fat__fs__instance__t}{\section{Référence de la structure \-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t}
-\label{struct__fat__fs__instance__t}\index{\-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t}}
+\hypertarget{struct__fat__fs__instance__t}{\section{Référence de la structure \+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t}
+\label{struct__fat__fs__instance__t}\index{\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t}}
 }
 
 
-{\ttfamily \#include $<$fat\-\_\-internal.\-h$>$}
+{\ttfamily \#include $<$fat\+\_\+internal.\+h$>$}
 
 
 
-Graphe de collaboration de \-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t\-:\nopagebreak
+Graphe de collaboration de \+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,37 +18,37 @@ Graphe de collaboration de \-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t\-:\nopagebreak
 \subsection*{Champs de données}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{vfs_8h_a0eefa9aac35a5462ebf1e038992ca860}{fs\-\_\-instance\-\_\-t} \hyperlink{struct__fat__fs__instance__t_ac50318180f107a1950961c404ec6fd6d}{super}
+\hyperlink{vfs_8h_a0eefa9aac35a5462ebf1e038992ca860}{fs\+\_\+instance\+\_\+t} \hyperlink{struct__fat__fs__instance__t_ac50318180f107a1950961c404ec6fd6d}{super}
 \item 
-\hypertarget{struct__fat__fs__instance__t_a209928b7f7db95270001a2eb47db4313}{\hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$ {\bfseries root}}\label{struct__fat__fs__instance__t_a209928b7f7db95270001a2eb47db4313}
+\hypertarget{struct__fat__fs__instance__t_a209928b7f7db95270001a2eb47db4313}{\hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\+\_\+t} $\ast$ {\bfseries root}}\label{struct__fat__fs__instance__t_a209928b7f7db95270001a2eb47db4313}
 
 \item 
-\hyperlink{fat__internal_8h_a1921d26ef987e5498294fe311a23c62f}{fat\-\_\-info\-\_\-t} \hyperlink{struct__fat__fs__instance__t_acebada58b620f950c9ef3c454db812fc}{fat\-\_\-info}
+\hyperlink{fat__internal_8h_a1921d26ef987e5498294fe311a23c62f}{fat\+\_\+info\+\_\+t} \hyperlink{struct__fat__fs__instance__t_acebada58b620f950c9ef3c454db812fc}{fat\+\_\+info}
 \item 
-blkdev\-\_\-read\-\_\-t \hyperlink{struct__fat__fs__instance__t_adfdb319d2d87dc55a678366740a2bba9}{read\-\_\-data}
+blkdev\+\_\+read\+\_\+t \hyperlink{struct__fat__fs__instance__t_adfdb319d2d87dc55a678366740a2bba9}{read\+\_\+data}
 \item 
-blkdev\-\_\-write\-\_\-t \hyperlink{struct__fat__fs__instance__t_a3056aeef9254049e772d6475510b0957}{write\-\_\-data}
+blkdev\+\_\+write\+\_\+t \hyperlink{struct__fat__fs__instance__t_a3056aeef9254049e772d6475510b0957}{write\+\_\+data}
 \end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
-Instance de F\-S de type F\-A\-T. 
+Instance de F\+S de type F\+A\+T. 
 
 \subsection{Documentation des champs}
-\hypertarget{struct__fat__fs__instance__t_acebada58b620f950c9ef3c454db812fc}{\index{\-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t}!fat\-\_\-info@{fat\-\_\-info}}
-\index{fat\-\_\-info@{fat\-\_\-info}!_fat_fs_instance_t@{\-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{fat\-\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fat\-\_\-info\-\_\-t} \-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t\-::fat\-\_\-info}}\label{struct__fat__fs__instance__t_acebada58b620f950c9ef3c454db812fc}
-Informations sur le volume monté. \hypertarget{struct__fat__fs__instance__t_adfdb319d2d87dc55a678366740a2bba9}{\index{\-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t}!read\-\_\-data@{read\-\_\-data}}
-\index{read\-\_\-data@{read\-\_\-data}!_fat_fs_instance_t@{\-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{read\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}blkdev\-\_\-read\-\_\-t \-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t\-::read\-\_\-data}}\label{struct__fat__fs__instance__t_adfdb319d2d87dc55a678366740a2bba9}
-Fonction pour lire une donnée. \hypertarget{struct__fat__fs__instance__t_ac50318180f107a1950961c404ec6fd6d}{\index{\-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t}!super@{super}}
-\index{super@{super}!_fat_fs_instance_t@{\-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{super}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fs\-\_\-instance\-\_\-t} \-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t\-::super}}\label{struct__fat__fs__instance__t_ac50318180f107a1950961c404ec6fd6d}
-Classe parente (fs\-\_\-instance\-\_\-t). \hypertarget{struct__fat__fs__instance__t_a3056aeef9254049e772d6475510b0957}{\index{\-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t}!write\-\_\-data@{write\-\_\-data}}
-\index{write\-\_\-data@{write\-\_\-data}!_fat_fs_instance_t@{\-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{write\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}blkdev\-\_\-write\-\_\-t \-\_\-fat\-\_\-fs\-\_\-instance\-\_\-t\-::write\-\_\-data}}\label{struct__fat__fs__instance__t_a3056aeef9254049e772d6475510b0957}
+\hypertarget{struct__fat__fs__instance__t_acebada58b620f950c9ef3c454db812fc}{\index{\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t}!fat\+\_\+info@{fat\+\_\+info}}
+\index{fat\+\_\+info@{fat\+\_\+info}!\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{fat\+\_\+info}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fat\+\_\+info\+\_\+t} \+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t\+::fat\+\_\+info}}\label{struct__fat__fs__instance__t_acebada58b620f950c9ef3c454db812fc}
+Informations sur le volume monté. \hypertarget{struct__fat__fs__instance__t_adfdb319d2d87dc55a678366740a2bba9}{\index{\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t}!read\+\_\+data@{read\+\_\+data}}
+\index{read\+\_\+data@{read\+\_\+data}!\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{read\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}blkdev\+\_\+read\+\_\+t \+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t\+::read\+\_\+data}}\label{struct__fat__fs__instance__t_adfdb319d2d87dc55a678366740a2bba9}
+Fonction pour lire une donnée. \hypertarget{struct__fat__fs__instance__t_ac50318180f107a1950961c404ec6fd6d}{\index{\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t}!super@{super}}
+\index{super@{super}!\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{super}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fs\+\_\+instance\+\_\+t} \+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t\+::super}}\label{struct__fat__fs__instance__t_ac50318180f107a1950961c404ec6fd6d}
+Classe parente (fs\+\_\+instance\+\_\+t). \hypertarget{struct__fat__fs__instance__t_a3056aeef9254049e772d6475510b0957}{\index{\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t}!write\+\_\+data@{write\+\_\+data}}
+\index{write\+\_\+data@{write\+\_\+data}!\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{write\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}blkdev\+\_\+write\+\_\+t \+\_\+fat\+\_\+fs\+\_\+instance\+\_\+t\+::write\+\_\+data}}\label{struct__fat__fs__instance__t_a3056aeef9254049e772d6475510b0957}
 Fonction pour écriture une donnée. 
 
-La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
 \item 
-kernel/fs/fat/\hyperlink{fat__internal_8h}{fat\-\_\-internal.\-h}\end{DoxyCompactItemize}
+kernel/fs/fat/\hyperlink{fat__internal_8h}{fat\+\_\+internal.\+h}\end{DoxyCompactItemize}

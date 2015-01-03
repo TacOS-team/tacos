@@ -1,0 +1,8 @@
+<map id="floppy_seek" name="floppy_seek">
+<area shape="rect" id="node2" href="$floppy__motor_8c.html#a898833517cf74583ac034d3e8bde709d" title="Change l&#39;état du moteur. " alt="" coords="172,5,267,32"/>
+<area shape="rect" id="node3" href="$floppy__utils_8c.html#a0e012dd33083ef16c714cda568627983" title="Envoi une commande au controleur floppy. " alt="" coords="343,107,497,133"/>
+<area shape="rect" id="node5" href="$floppy__interrupt_8c.html#a579397f7aad55a1eff3648712e9b1f5a" title="Attendre une interruption (XXX attente active) " alt="" coords="166,107,273,133"/>
+<area shape="rect" id="node6" href="$floppy__interrupt_8c.html#aa736fd868e99a0bde478ea3b5a836b04" title="Récupère des données d&#39;interruption. " alt="" coords="144,157,295,184"/>
+<area shape="rect" id="node4" href="$floppy__utils_8c.html#a1b528d56e03dda853060f541fa772847" title="Vérifie si le controleur floppy est en état ready. " alt="" coords="545,132,639,159"/>
+<area shape="rect" id="node7" href="$floppy__utils_8c.html#accc0dbdcd680cab9890db94a13067284" title="Lis les données disponibles sur la FIFO du controleur. " alt="" coords="361,157,479,184"/>
+</map>

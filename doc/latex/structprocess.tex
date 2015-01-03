@@ -1,0 +1,106 @@
+\hypertarget{structprocess}{\section{Référence de la structure process}
+\label{structprocess}\index{process@{process}}
+}
+
+
+Structure représentant un processus.  
+
+
+
+
+{\ttfamily \#include $<$kprocess.\+h$>$}
+
+
+
+Graphe de collaboration de process\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structprocess__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{kernel_2include_2types_8h_adf4d876453337156dde61095e1f20223}{uint16\+\_\+t} \hyperlink{structprocess_a5f455d8121a78f8050bf669326fbe731}{pid}
+\item 
+\hyperlink{kernel_2include_2types_8h_adf4d876453337156dde61095e1f20223}{uint16\+\_\+t} \hyperlink{structprocess_a75c12130e8e78afe9d8fc94a6f59f9ba}{ppid}
+\item 
+char $\ast$ \hyperlink{structprocess_ab00affa63607d02095f147da6f1c0983}{name}
+\item 
+\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} \hyperlink{structprocess_adceb5d278a54b128096a76c8405f27d5}{state}
+\item 
+\hypertarget{structprocess_a23f09ce6092f55f1831ccdf783e4c918}{long int {\bfseries user\+\_\+time}}\label{structprocess_a23f09ce6092f55f1831ccdf783e4c918}
+
+\item 
+\hypertarget{structprocess_a4d3b0c1b6ca8af26f8894c6f2de4a0dd}{long int {\bfseries sys\+\_\+time}}\label{structprocess_a4d3b0c1b6ca8af26f8894c6f2de4a0dd}
+
+\item 
+\hypertarget{structprocess_a1b45bc782bdb0e3d224bdc5b2a5e71e5}{int {\bfseries current\+\_\+sample}}\label{structprocess_a1b45bc782bdb0e3d224bdc5b2a5e71e5}
+
+\item 
+\hypertarget{structprocess_a2fbbc34d98fc7e76fff32d7e3c26f403}{int {\bfseries last\+\_\+sample}}\label{structprocess_a2fbbc34d98fc7e76fff32d7e3c26f403}
+
+\item 
+\hypertarget{structprocess_a4120a716f24023eb6cef4cceaa6c00c6}{\hyperlink{structregs__t}{regs\+\_\+t} {\bfseries regs}}\label{structprocess_a4120a716f24023eb6cef4cceaa6c00c6}
+
+\item 
+\hypertarget{structprocess_aece5b08bde0f923df93524036cf4e341}{\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$ {\bfseries fd} \mbox{[}\hyperlink{fd__types_8h_aa188a2e288c10a684622814c51337465}{F\+O\+P\+E\+N\+\_\+\+M\+A\+X}\mbox{]}}\label{structprocess_aece5b08bde0f923df93524036cf4e341}
+
+\item 
+\hypertarget{structprocess_abcbf7a270377aa5b48eb721846fb1c7e}{struct \hyperlink{structpage__directory__entry}{page\+\_\+directory\+\_\+entry} $\ast$ {\bfseries pd}}\label{structprocess_abcbf7a270377aa5b48eb721846fb1c7e}
+
+\item 
+\hypertarget{structprocess_a24ef7b4ac4d8fb179021edafc01382e2}{struct \hyperlink{structvirtual__mem}{virtual\+\_\+mem} $\ast$ {\bfseries vm}}\label{structprocess_a24ef7b4ac4d8fb179021edafc01382e2}
+
+\item 
+\hypertarget{structprocess_aa0b756ca0430888550293be06072ff81}{\hyperlink{structsignal__process__data__t}{signal\+\_\+process\+\_\+data\+\_\+t} {\bfseries signal\+\_\+data}}\label{structprocess_aa0b756ca0430888550293be06072ff81}
+
+\item 
+char $\ast$ \hyperlink{structprocess_ac44ae9d0fbc98179b8f89bf666580086}{ctrl\+\_\+tty}
+\item 
+\hypertarget{structprocess_aa0d0b60e2eb7539ac10277bbe5fed4ff}{\hyperlink{structsymbol__table__t}{symbol\+\_\+table\+\_\+t} $\ast$ {\bfseries symtable}}\label{structprocess_aa0d0b60e2eb7539ac10277bbe5fed4ff}
+
+\item 
+int \hyperlink{structprocess_ac41b1192ed3707ececd1b3d5a8030e07}{sem\+\_\+wait}
+\item 
+int \hyperlink{structprocess_af6d26a303bcfd1d6fb8249b26aa1b8a8}{sem\+\_\+wait\+\_\+child}
+\item 
+int \hyperlink{structprocess_a3c7e75af24b759fca4705883fd3bc68a}{nb\+\_\+children}
+\item 
+\hypertarget{structprocess_abbe1ee17bb932b72a9c3f1aaf4475d42}{struct \hyperlink{structprocess}{process} $\ast$ {\bfseries children} \mbox{[}\hyperlink{kprocess_8h_a63e32d00bc48471b4db49d481ac228dc}{M\+A\+X\+\_\+\+P\+R\+O\+C}\mbox{]}}\label{structprocess_abbe1ee17bb932b72a9c3f1aaf4475d42}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentation des champs}
+\hypertarget{structprocess_ac44ae9d0fbc98179b8f89bf666580086}{\index{process@{process}!ctrl\+\_\+tty@{ctrl\+\_\+tty}}
+\index{ctrl\+\_\+tty@{ctrl\+\_\+tty}!process@{process}}
+\subsubsection[{ctrl\+\_\+tty}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ process\+::ctrl\+\_\+tty}}\label{structprocess_ac44ae9d0fbc98179b8f89bf666580086}
+Controlling tty. \hypertarget{structprocess_ab00affa63607d02095f147da6f1c0983}{\index{process@{process}!name@{name}}
+\index{name@{name}!process@{process}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ process\+::name}}\label{structprocess_ab00affa63607d02095f147da6f1c0983}
+Nom du processus. \hypertarget{structprocess_a3c7e75af24b759fca4705883fd3bc68a}{\index{process@{process}!nb\+\_\+children@{nb\+\_\+children}}
+\index{nb\+\_\+children@{nb\+\_\+children}!process@{process}}
+\subsubsection[{nb\+\_\+children}]{\setlength{\rightskip}{0pt plus 5cm}int process\+::nb\+\_\+children}}\label{structprocess_a3c7e75af24b759fca4705883fd3bc68a}
+Liste des fils \hypertarget{structprocess_a5f455d8121a78f8050bf669326fbe731}{\index{process@{process}!pid@{pid}}
+\index{pid@{pid}!process@{process}}
+\subsubsection[{pid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint16\+\_\+t} process\+::pid}}\label{structprocess_a5f455d8121a78f8050bf669326fbe731}
+Process I\+D \hypertarget{structprocess_a75c12130e8e78afe9d8fc94a6f59f9ba}{\index{process@{process}!ppid@{ppid}}
+\index{ppid@{ppid}!process@{process}}
+\subsubsection[{ppid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint16\+\_\+t} process\+::ppid}}\label{structprocess_a75c12130e8e78afe9d8fc94a6f59f9ba}
+Parent process I\+D \hypertarget{structprocess_ac41b1192ed3707ececd1b3d5a8030e07}{\index{process@{process}!sem\+\_\+wait@{sem\+\_\+wait}}
+\index{sem\+\_\+wait@{sem\+\_\+wait}!process@{process}}
+\subsubsection[{sem\+\_\+wait}]{\setlength{\rightskip}{0pt plus 5cm}int process\+::sem\+\_\+wait}}\label{structprocess_ac41b1192ed3707ececd1b3d5a8030e07}
+Sémaphore initialisé à 0 et qui est pris par les processus en attente de la fin de ce process. \hypertarget{structprocess_af6d26a303bcfd1d6fb8249b26aa1b8a8}{\index{process@{process}!sem\+\_\+wait\+\_\+child@{sem\+\_\+wait\+\_\+child}}
+\index{sem\+\_\+wait\+\_\+child@{sem\+\_\+wait\+\_\+child}!process@{process}}
+\subsubsection[{sem\+\_\+wait\+\_\+child}]{\setlength{\rightskip}{0pt plus 5cm}int process\+::sem\+\_\+wait\+\_\+child}}\label{structprocess_af6d26a303bcfd1d6fb8249b26aa1b8a8}
+Sémaphore qui passe à 1 lorsqu'un fils se termine. \hypertarget{structprocess_adceb5d278a54b128096a76c8405f27d5}{\index{process@{process}!state@{state}}
+\index{state@{state}!process@{process}}
+\subsubsection[{state}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\+\_\+t} process\+::state}}\label{structprocess_adceb5d278a54b128096a76c8405f27d5}
+Etat du processus (idle, running, waiting...) 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+kernel/include/\hyperlink{kprocess_8h}{kprocess.\+h}\end{DoxyCompactItemize}

@@ -103,17 +103,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="structdirent.html#a7b4cbd53dc600257b2746225c8a8f3be">   45</a></span>&#160;        <span class="keywordtype">char</span>      d_name[<a class="code" href="kdirent_8h.html#ac64541bdd81c961304b9babef1402640">NAME_MAX</a>]; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;SYSCALL_HANDLER3(sys_readdir, <span class="keywordtype">int</span> fd, <span class="keywordtype">char</span> *entries, <span class="keywordtype">size_t</span> *size);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;SYSCALL_HANDLER3(sys_mkdir, <span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>, <span class="keywordtype">int</span> *ret);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;SYSCALL_HANDLER2(sys_rmdir, <span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <span class="keywordtype">int</span> *ret);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        DT_UNKNOWN = 0,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        DT_FIFO = 1,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        DT_CHR = 2,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        DT_DIR = 4,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        DT_BLK = 6,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        DT_REG = 8,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        DT_LNK = 10,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        DT_SOCK = 12,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        DT_WHT = 14</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;SYSCALL_HANDLER3(sys_readdir, <span class="keywordtype">int</span> fd, <span class="keywordtype">char</span> *entries, <span class="keywordtype">size_t</span> *size);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;SYSCALL_HANDLER3(sys_mkdir, <span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>, <span class="keywordtype">int</span> *ret);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;SYSCALL_HANDLER2(sys_rmdir, <span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <span class="keywordtype">int</span> *ret);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:16 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 8 2014 09:54:14 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

@@ -1,7 +1,7 @@
 <map id="SYSCALL_HANDLER2" name="SYSCALL_HANDLER2">
-<area shape="rect" id="node3" href="$scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/>
-<area shape="rect" id="node5" href="$vfs_8h.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="245,55,323,83"/>
-<area shape="rect" id="node7" href="$dcache_8c.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="403,30,517,58"/>
-<area shape="rect" id="node11" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="739,55,789,83"/>
-<area shape="rect" id="node9" href="$hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="565,30,691,58"/>
+<area shape="rect" id="node2" href="$scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation. " alt="" coords="213,5,353,32"/>
+<area shape="rect" id="node3" href="$vfs_8h.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert. " alt="" coords="244,56,323,83"/>
+<area shape="rect" id="node4" href="$dcache_8c.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="401,31,516,57"/>
+<area shape="rect" id="node6" href="$kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="737,56,788,83"/>
+<area shape="rect" id="node5" href="$hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="564,31,689,57"/>
 </map>

@@ -1,11 +1,11 @@
 <map id="kernel/drivers/char/tty/console.c" name="kernel/drivers/char/tty/console.c">
-<area shape="rect" id="node3" href="$console_8h.html" title="Console virtuelle (Fn)" alt="" coords="136,99,256,127"/>
-<area shape="rect" id="node16" href="$video_8h.html" title="Driver console (vidéo texte)." alt="" coords="5,99,112,127"/>
-<area shape="rect" id="node19" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="309,254,387,282"/>
-<area shape="rect" id="node22" href="$klog_8h.html" title="Logging macros." alt="" coords="333,99,389,127"/>
-<area shape="rect" id="node7" href="$tty_8h.html" title="Terminal posix&#45;like." alt="" coords="157,177,203,205"/>
-<area shape="rect" id="node9" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="215,331,276,359"/>
-<area shape="rect" id="node11" href="$termios__types_8h.html" title="termios_types.h" alt="" coords="69,254,181,282"/>
-<area shape="rect" id="node13" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="205,254,285,282"/>
-<area shape="rect" id="node24" href="$kstdio_8h.html" title="kprintf" alt="" coords="331,177,397,205"/>
+<area shape="rect" id="node2" href="$console_8h.html" title="Console virtuelle (Fn) " alt="" coords="136,95,256,121"/>
+<area shape="rect" id="node8" href="$video_8h.html" title="Driver console (vidéo texte). " alt="" coords="5,95,112,121"/>
+<area shape="rect" id="node9" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space. " alt="" coords="312,244,389,271"/>
+<area shape="rect" id="node10" href="$klog_8h.html" title="Logging macros. " alt="" coords="333,95,389,121"/>
+<area shape="rect" id="node4" href="$tty_8h.html" title="Terminal posix&#45;like. " alt="" coords="158,169,205,196"/>
+<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="215,319,278,345"/>
+<area shape="rect" id="node6" href="$termios__types_8h.html" title="termios_types.h" alt="" coords="69,244,182,271"/>
+<area shape="rect" id="node7" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts. " alt="" coords="206,244,287,271"/>
+<area shape="rect" id="node11" href="$kstdio_8h.html" title="kprintf " alt="" coords="331,169,397,196"/>
 </map>

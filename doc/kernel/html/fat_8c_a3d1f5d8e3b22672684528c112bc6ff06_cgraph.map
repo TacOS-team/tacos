@@ -1,5 +1,5 @@
 <map id="fat_init" name="fat_init">
-<area shape="rect" id="node3" href="$vfs_8h.html#ab2237a3610010d8a211ef3d55a521dba" title="Enregistrer un FS dans le VFS pour le rendre disponible." alt="" coords="116,5,223,33"/>
-<area shape="rect" id="node5" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="272,5,339,33"/>
-<area shape="rect" id="node7" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="388,5,527,33"/>
+<area shape="rect" id="node3" href="$vfs_8h.html#ab2237a3610010d8a211ef3d55a521dba" title="Enregistrer un FS dans le VFS pour le rendre disponible." alt="" coords="115,5,219,33"/>
+<area shape="rect" id="node5" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="267,5,333,33"/>
+<area shape="rect" id="node7" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="381,5,520,33"/>
 </map>

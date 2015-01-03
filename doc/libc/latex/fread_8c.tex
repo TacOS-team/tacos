@@ -2,12 +2,11 @@
 \label{fread_8c}\index{libc/stdio/fread.\-c@{libc/stdio/fread.\-c}}
 }
 {\ttfamily \#include $<$stdio.\-h$>$}\\*
-Graphe des dépendances par inclusion de fread.\-c\-:
-\nopagebreak
+Graphe des dépendances par inclusion de fread.\-c\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=260pt]{fread_8c__incl}
+\includegraphics[width=257pt]{fread_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Fonctions}
@@ -22,7 +21,7 @@ Graphe des dépendances par inclusion de fread.\-c\-:
 Tac\-O\-S developers
 \end{DoxyAuthor}
 \hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+Copyright (C) 2010-\/2014 Tac\-O\-S developers.
 
 This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
@@ -44,12 +43,11 @@ Description de ce que fait le fichier
 )}}\label{fread_8c_a084251eb18ccd5c936faa2c39c86ec63}
 The \hyperlink{stdio_8h_a084251eb18ccd5c936faa2c39c86ec63}{fread( )} function shall read into the array pointed to by ptr up to nitems elements whose size is specified by size in bytes, from the stream pointed to by stream. For each object, size calls shall be made to the \hyperlink{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092}{fgetc( )} function and the results stored, in the order read, in an array of unsigned char exactly overlaying the object. The file position indicator for the stream (if defined) shall be advanced by the number of bytes successfully read. If an error occurs, the resulting value of the file position indicator for the stream is unspecified. If a partial element is read, its value is unspecified. 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=348pt]{fread_8c_a084251eb18ccd5c936faa2c39c86ec63_cgraph}
+\includegraphics[width=346pt]{fread_8c_a084251eb18ccd5c936faa2c39c86ec63_cgraph}
 \end{center}
 \end{figure}
 

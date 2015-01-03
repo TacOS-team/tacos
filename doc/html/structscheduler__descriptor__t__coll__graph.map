@@ -1,18 +1,18 @@
 <map id="scheduler_descriptor_t" name="scheduler_descriptor_t">
-<area shape="rect" id="node2" href="$structprocess__t.html" title="Structure représentant un processus." alt="" coords="700,131,777,159"/>
-<area shape="rect" id="node4" href="$structsignal__process__data__t.html" title="signal_process_data_t" alt="" coords="413,5,565,33"/>
-<area shape="rect" id="node6" href="$structregs__t.html" title="regs_t" alt="" coords="460,55,519,83"/>
-<area shape="rect" id="node8" href="$structvirtual__mem.html" title="virtual_mem" alt="" coords="443,106,536,134"/>
-<area shape="rect" id="node10" href="$structslabs__list.html" title="slabs_list" alt="" coords="177,106,255,134"/>
-<area shape="rect" id="node12" href="$structslab.html" title="a slab of pages." alt="" coords="7,106,52,134"/>
-<area shape="rect" id="node15" href="$structpage__directory__entry.html" title="Page Directory Entry." alt="" coords="419,157,560,185"/>
-<area shape="rect" id="node17" href="$structsymbol__table__t.html" title="symbol_table_t" alt="" coords="435,207,544,235"/>
-<area shape="rect" id="node19" href="$structsymbol__t.html" title="symbol_t" alt="" coords="179,207,253,235"/>
-<area shape="rect" id="node21" href="$struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="417,499,561,527"/>
-<area shape="rect" id="node31" href="$struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté." alt="" coords="685,453,792,481"/>
-<area shape="rect" id="node23" href="$struct__open__file__operations__t.html" title="_open_file_operations_t" alt="" coords="137,621,295,649"/>
-<area shape="rect" id="node28" href="$struct__inode__t.html" title="_inode_t" alt="" coords="1005,597,1075,625"/>
-<area shape="rect" id="node25" href="$struct__dentry__t.html" title="_dentry_t" alt="" coords="1216,362,1291,390"/>
-<area shape="rect" id="node34" href="$structfile__system__t.html" title="Structure qui représente un FS." alt="" coords="991,434,1089,462"/>
-<area shape="rect" id="node40" href="$struct__mounted__fs__t.html" title="_mounted_fs_t" alt="" coords="987,531,1093,559"/>
+<area shape="rect" id="node2" href="$structprocess.html" title="Structure représentant un processus. " alt="" coords="701,132,769,159"/>
+<area shape="rect" id="node3" href="$structsignal__process__data__t.html" title="signal_process_data_t" alt="" coords="411,5,563,32"/>
+<area shape="rect" id="node4" href="$structregs__t.html" title="regs_t" alt="" coords="457,56,516,83"/>
+<area shape="rect" id="node5" href="$structvirtual__mem.html" title="virtual_mem" alt="" coords="440,107,533,133"/>
+<area shape="rect" id="node6" href="$structslabs__list.html" title="slabs_list" alt="" coords="175,107,253,133"/>
+<area shape="rect" id="node7" href="$structslab.html" title="a slab of pages. " alt="" coords="5,107,52,133"/>
+<area shape="rect" id="node8" href="$structpage__directory__entry.html" title="Page Directory Entry. " alt="" coords="416,157,557,184"/>
+<area shape="rect" id="node9" href="$structsymbol__table__t.html" title="symbol_table_t" alt="" coords="432,208,541,235"/>
+<area shape="rect" id="node10" href="$structsymbol__t.html" title="symbol_t" alt="" coords="177,208,251,235"/>
+<area shape="rect" id="node11" href="$struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="415,491,559,517"/>
+<area shape="rect" id="node15" href="$struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté. " alt="" coords="681,445,788,472"/>
+<area shape="rect" id="node12" href="$struct__open__file__operations__t.html" title="_open_file_operations_t" alt="" coords="135,611,293,637"/>
+<area shape="rect" id="node14" href="$struct__inode__t.html" title="_inode_t" alt="" coords="999,588,1069,615"/>
+<area shape="rect" id="node13" href="$struct__dentry__t.html" title="_dentry_t" alt="" coords="1208,357,1283,384"/>
+<area shape="rect" id="node16" href="$structfile__system__t.html" title="Structure qui représente un FS. " alt="" coords="985,428,1083,455"/>
+<area shape="rect" id="node17" href="$struct__mounted__fs__t.html" title="_mounted_fs_t" alt="" coords="980,524,1088,551"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="strndup" name="strndup">
-<area shape="rect" id="node3" href="$kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="123,5,176,33"/>
-<area shape="rect" id="node5" href="$kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="121,55,177,83"/>
+<area shape="rect" id="node2" href="$kernel_2klibc_2string_8c.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères. " alt="" coords="120,5,175,32"/>
+<area shape="rect" id="node3" href="$kernel_2klibc_2string_8c.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine. " alt="" coords="119,56,176,83"/>
 </map>

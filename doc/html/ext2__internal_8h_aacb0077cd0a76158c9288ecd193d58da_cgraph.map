@@ -1,6 +1,7 @@
 <map id="ext2_lookup" name="ext2_lookup">
-<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="161,5,228,33"/>
-<area shape="rect" id="node7" href="$kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="165,55,224,83"/>
-<area shape="rect" id="node9" href="$ext2__functions_8c.html#aeb55aa4d71dded497758c72d86b2b2f7" title="Change la taille d&#39;un fichier." alt="" coords="145,106,244,134"/>
-<area shape="rect" id="node5" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="295,5,433,33"/>
+<area shape="rect" id="node2" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="161,31,227,57"/>
+<area shape="rect" id="node5" href="$kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine. " alt="" coords="165,81,223,108"/>
+<area shape="rect" id="node6" href="$ext2__functions_8c.html#aeb55aa4d71dded497758c72d86b2b2f7" title="Change la taille d&#39;un fichier. " alt="" coords="144,132,244,159"/>
+<area shape="rect" id="node3" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="292,5,432,32"/>
+<area shape="rect" id="node4" href="$kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="327,56,397,83"/>
 </map>

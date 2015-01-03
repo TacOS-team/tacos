@@ -1,6 +1,7 @@
 <map id="strdup" name="strdup">
-<area shape="rect" id="node3" href="$kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="119,5,172,33"/>
-<area shape="rect" id="node5" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="112,55,179,83"/>
-<area shape="rect" id="node9" href="$kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="117,106,173,134"/>
-<area shape="rect" id="node7" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="228,55,367,83"/>
+<area shape="rect" id="node2" href="$kernel_2klibc_2string_8c.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères. " alt="" coords="118,5,173,32"/>
+<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="112,56,179,83"/>
+<area shape="rect" id="node6" href="$kernel_2klibc_2string_8c.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine. " alt="" coords="117,107,174,133"/>
+<area shape="rect" id="node4" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="227,31,367,57"/>
+<area shape="rect" id="node5" href="$kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="262,81,331,108"/>
 </map>

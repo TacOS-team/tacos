@@ -54,9 +54,6 @@ void \hyperlink{tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028}{tty\-\_\-insert\-\_\-f
 \hyperlink{tty_8h_af1896b31f0109954b4aa8244f064e923}{tty\-\_\-driver\-\_\-t} $\ast$ \hyperlink{tty_8c_a9ae7085e2afaadc63a592910d4ac4328}{alloc\-\_\-tty\-\_\-driver} (int lines)
 \item 
 int \hyperlink{tty_8c_a302b60b1c52001915aeb108b51efc397}{tty\-\_\-register\-\_\-driver} (\hyperlink{tty_8h_af1896b31f0109954b4aa8244f064e923}{tty\-\_\-driver\-\_\-t} $\ast$driver)
-\item 
-\hypertarget{tty_8c_a4d1f11c77318b074dbc10778bdc3ef8a}{int {\bfseries tty\-\_\-ioctl} (\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, unsigned int request, void $\ast$data)}\label{tty_8c_a4d1f11c77318b074dbc10778bdc3ef8a}
-
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -70,7 +67,7 @@ struct \hyperlink{structtermios}{termios} {\bfseries tty\-\_\-std\-\_\-termios}
 Tac\-O\-S developers
 \end{DoxyAuthor}
 \hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+Copyright (C) 2010-\/2014 Tac\-O\-S developers.
 
 This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
@@ -233,7 +230,7 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=270pt]{tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028_icgraph}
+\includegraphics[width=268pt]{tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028_icgraph}
 \end{center}
 \end{figure}
 
@@ -249,9 +246,12 @@ Enregistre en tant que char device un driver alloué et configuré.
 
 
 \begin{DoxyParams}{Paramètres}
-{\em driver} & Le driver à enregistrer. \\
+{\em driver} & Le driver à enregistrer.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès (mais ne détecte pas encore les erreurs...). 
+\end{DoxyReturn}
 
 
 Voici le graphe d'appel pour cette fonction \-:\nopagebreak
@@ -269,7 +269,7 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=278pt]{tty_8c_a302b60b1c52001915aeb108b51efc397_icgraph}
+\includegraphics[width=276pt]{tty_8c_a302b60b1c52001915aeb108b51efc397_icgraph}
 \end{center}
 \end{figure}
 

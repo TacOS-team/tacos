@@ -109,27 +109,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;} <a class="code" href="dirent_8h.html#a9e986c0f8d94ffe9983a6eabb17cbb9a">DIR</a>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="structdirent.html">   58</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structdirent.html">dirent</a> {</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">   59</a></span>&#160;        <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">d_ino</a>; </div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">   60</a></span>&#160;        <a class="code" href="types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">d_reclen</a>; </div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">   61</a></span>&#160;        <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">d_type</a>; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">   59</a></span>&#160;        <a class="code" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">d_ino</a>; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">   60</a></span>&#160;        <a class="code" href="stdint_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">d_reclen</a>; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">   61</a></span>&#160;        <a class="code" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">d_type</a>; </div>
 <div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="structdirent.html#a7b4cbd53dc600257b2746225c8a8f3be">   62</a></span>&#160;        <span class="keywordtype">char</span>      <a class="code" href="structdirent.html#a7b4cbd53dc600257b2746225c8a8f3be">d_name</a>[<a class="code" href="dirent_8h.html#ac64541bdd81c961304b9babef1402640">NAME_MAX</a>]; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">int</span> <a class="code" href="dirent_8c.html#aee98bbe743c2d14dbaa67f01c3fb9ed5">mkdir</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <a class="code" href="stat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> mode);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<a class="code" href="struct__DIR.html">DIR</a>* <a class="code" href="dirent_8c.html#ad09dd96447776d2bc5d8321e4b499591">opendir</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* dirname);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">struct </span><a class="code" href="structdirent.html">dirent</a>* <a class="code" href="dirent_8c.html#a58257faf8b13b3f14558613c632b2373">readdir</a>(<a class="code" href="struct__DIR.html">DIR</a>* dirp);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keywordtype">int</span> <a class="code" href="dirent_8c.html#aaeac2b41e8c2c3a5f91c9bd511a8c0a6">closedir</a>(<a class="code" href="struct__DIR.html">DIR</a>* dirp);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;__END_DECLS</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        DT_UNKNOWN = 0,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        DT_FIFO = 1,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        DT_CHR = 2,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        DT_DIR = 4,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        DT_BLK = 6,</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        DT_REG = 8,</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        DT_LNK = 10,</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        DT_SOCK = 12,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        DT_WHT = 14</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keywordtype">int</span> <a class="code" href="dirent_8c.html#aee98bbe743c2d14dbaa67f01c3fb9ed5">mkdir</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <a class="code" href="stat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> mode);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<a class="code" href="struct__DIR.html">DIR</a>* <a class="code" href="dirent_8c.html#ad09dd96447776d2bc5d8321e4b499591">opendir</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* dirname);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">struct </span><a class="code" href="structdirent.html">dirent</a>* <a class="code" href="dirent_8c.html#a58257faf8b13b3f14558613c632b2373">readdir</a>(<a class="code" href="struct__DIR.html">DIR</a>* dirp);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keywordtype">int</span> <a class="code" href="dirent_8c.html#aaeac2b41e8c2c3a5f91c9bd511a8c0a6">closedir</a>(<a class="code" href="struct__DIR.html">DIR</a>* dirp);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;__END_DECLS</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Mai 28 2013 22:52:15 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 8 2014 09:54:10 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

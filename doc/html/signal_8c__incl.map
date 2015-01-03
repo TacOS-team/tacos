@@ -1,10 +1,10 @@
 <map id="libc/signal.c" name="libc/signal.c">
-<area shape="rect" id="node3" href="$signal_8h.html" title="Gestion des signaux." alt="" coords="247,238,313,266"/>
-<area shape="rect" id="node14" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="181,83,277,111"/>
-<area shape="rect" id="node16" href="$unistd_8h.html" title="unistd.h" alt="" coords="5,83,72,111"/>
-<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="28,393,116,421"/>
-<area shape="rect" id="node7" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="123,315,208,343"/>
-<area shape="rect" id="node10" href="$stdbool_8h.html" title="Type bool." alt="" coords="140,393,215,421"/>
-<area shape="rect" id="node20" href="$stat_8h.html" title="sys/stat.h" alt="" coords="35,161,112,189"/>
-<area shape="rect" id="node24" href="$time_8h.html" title="time.h" alt="" coords="65,238,121,266"/>
+<area shape="rect" id="node2" href="$signal_8h.html" title="Gestion des signaux. " alt="" coords="255,155,322,181"/>
+<area shape="rect" id="node7" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="394,80,490,107"/>
+<area shape="rect" id="node8" href="$unistd_8h.html" title="unistd.h" alt="" coords="126,80,193,107"/>
+<area shape="rect" id="node3" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="85,304,173,331"/>
+<area shape="rect" id="node4" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="179,229,265,256"/>
+<area shape="rect" id="node5" href="$stdbool_8h.html" title="Type bool. " alt="" coords="197,304,271,331"/>
+<area shape="rect" id="node9" href="$stat_8h.html" title="sys/stat.h" alt="" coords="101,155,180,181"/>
+<area shape="rect" id="node10" href="$sys_2time_8h.html" title="time.h" alt="" coords="21,229,79,256"/>
 </map>

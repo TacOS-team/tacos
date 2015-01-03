@@ -1,8 +1,8 @@
 <map id="kernel/include/fs/ext2.h" name="kernel/include/fs/ext2.h">
-<area shape="rect" id="node3" href="$vfs_8h.html" title="Virtual File System." alt="" coords="57,83,108,111"/>
+<area shape="rect" id="node3" href="$vfs_8h.html" title="Virtual File System." alt="" coords="59,83,107,111"/>
 <area shape="rect" id="node5" href="$types_8h.html" title="types.h" alt="" coords="129,393,191,421"/>
 <area shape="rect" id="node7" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="43,238,123,266"/>
-<area shape="rect" id="node10" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="129,161,191,189"/>
+<area shape="rect" id="node10" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="131,161,189,189"/>
 <area shape="rect" id="node13" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="197,238,259,266"/>
 <area shape="rect" id="node16" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="248,315,325,343"/>
 </map>

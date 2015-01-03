@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/include/hashmap.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,23 +90,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="hashmap_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _HASHMAP_H</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _HASHMAP_H</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define _HASHMAP_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">// Types incomplets, juste pour y voir plus clair.</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">struct </span>hashmap_key_t;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">struct </span>hashmap_value_t;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="structhashmap__cell__t.html">   40</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structhashmap__cell__t.html">hashmap_cell_t</a> {</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="structhashmap__cell__t.html#a18fa668e172072e9bff5e92e52d9f3af">   41</a></span>&#160;        <span class="keyword">struct </span>hashmap_key_t *<a class="code" href="structhashmap__cell__t.html#a18fa668e172072e9bff5e92e52d9f3af">key</a>; </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="structhashmap__cell__t.html#aa0758cf139adb3747a846e539d01d75d">   42</a></span>&#160;        <span class="keyword">struct </span>hashmap_value_t *<a class="code" href="structhashmap__cell__t.html#aa0758cf139adb3747a846e539d01d75d">value</a>; </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="structhashmap__cell__t.html#afea1a8c217d80c95efa5b4a89ea07bf2">   43</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structhashmap__cell__t.html">hashmap_cell_t</a> *<a class="code" href="structhashmap__cell__t.html#afea1a8c217d80c95efa5b4a89ea07bf2">next</a>; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structhashmap__cell__t.html">   40</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structhashmap__cell__t.html">hashmap_cell_t</a> {</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structhashmap__cell__t.html#a18fa668e172072e9bff5e92e52d9f3af">   41</a></span>&#160;        <span class="keyword">struct </span>hashmap_key_t *<a class="code" href="structhashmap__cell__t.html#a18fa668e172072e9bff5e92e52d9f3af">key</a>; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structhashmap__cell__t.html#aa0758cf139adb3747a846e539d01d75d">   42</a></span>&#160;        <span class="keyword">struct </span>hashmap_value_t *<a class="code" href="structhashmap__cell__t.html#aa0758cf139adb3747a846e539d01d75d">value</a>; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structhashmap__cell__t.html#afea1a8c217d80c95efa5b4a89ea07bf2">   43</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structhashmap__cell__t.html">hashmap_cell_t</a> *<a class="code" href="structhashmap__cell__t.html#afea1a8c217d80c95efa5b4a89ea07bf2">next</a>; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="struct____hashmap__t.html">   49</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct____hashmap__t.html">__hashmap_t</a> {</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="struct____hashmap__t.html#ab5f1e74c3fcf71ee4ac91a860cbcde19">   50</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="struct____hashmap__t.html#ab5f1e74c3fcf71ee4ac91a860cbcde19">size</a>; </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="struct____hashmap__t.html#ac7d3b722978b8bafab2ce2a923b747aa">   51</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structhashmap__cell__t.html">hashmap_cell_t</a>** <a class="code" href="struct____hashmap__t.html#ac7d3b722978b8bafab2ce2a923b747aa">table</a>; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="struct____hashmap__t.html#a2b730301a68342f67a406ce1b6c2a826">   52</a></span>&#160;        int (*<a class="code" href="struct____hashmap__t.html#a2b730301a68342f67a406ce1b6c2a826">equal</a>)(<span class="keyword">struct </span>hashmap_key_t*, <span class="keyword">struct </span>hashmap_key_t*); </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="struct____hashmap__t.html#aa56e33c3baa182a530a4a8bfc27c11f1">   53</a></span>&#160;        int (*<a class="code" href="struct____hashmap__t.html#aa56e33c3baa182a530a4a8bfc27c11f1">hash</a>)(<span class="keyword">struct </span>hashmap_key_t*); </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="struct____hashmap__t.html">   49</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct____hashmap__t.html">__hashmap_t</a> {</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="struct____hashmap__t.html#ab5f1e74c3fcf71ee4ac91a860cbcde19">   50</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="struct____hashmap__t.html#ab5f1e74c3fcf71ee4ac91a860cbcde19">size</a>; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="struct____hashmap__t.html#ac7d3b722978b8bafab2ce2a923b747aa">   51</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structhashmap__cell__t.html">hashmap_cell_t</a>** <a class="code" href="struct____hashmap__t.html#ac7d3b722978b8bafab2ce2a923b747aa">table</a>; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="struct____hashmap__t.html#a2b730301a68342f67a406ce1b6c2a826">   52</a></span>&#160;        int (*<a class="code" href="struct____hashmap__t.html#a2b730301a68342f67a406ce1b6c2a826">equal</a>)(<span class="keyword">struct </span>hashmap_key_t*, <span class="keyword">struct </span>hashmap_key_t*); </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="struct____hashmap__t.html#aa56e33c3baa182a530a4a8bfc27c11f1">   53</a></span>&#160;        int (*<a class="code" href="struct____hashmap__t.html#aa56e33c3baa182a530a4a8bfc27c11f1">hash</a>)(<span class="keyword">struct </span>hashmap_key_t*); </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;} <a class="code" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a>;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<a class="code" href="struct____hashmap__t.html">hashmap_t</a>* <a class="code" href="hashmap_8h.html#a81cd9ee5f00b62bf3103612cd87d8a5d">hashmap_create</a>(<span class="keywordtype">int</span> size, <span class="keywordtype">int</span> (*equal)(<span class="keyword">struct</span> hashmap_key_t*, <span class="keyword">struct</span> hashmap_key_t*), <span class="keywordtype">int</span> (*hash)(<span class="keyword">struct</span> hashmap_key_t*));</div>
@@ -117,12 +118,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">struct </span>hashmap_value_t* <a class="code" href="hashmap_8h.html#a37bdba9503b86db73e6067b97b858dbd">hashmap_get</a>(<a class="code" href="struct____hashmap__t.html">hashmap_t</a>* <span class="keyword">this</span>, <span class="keyword">struct</span> hashmap_key_t *key);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="struct____hashmap__t_html_ac7d3b722978b8bafab2ce2a923b747aa"><div class="ttname"><a href="struct____hashmap__t.html#ac7d3b722978b8bafab2ce2a923b747aa">__hashmap_t::table</a></div><div class="ttdeci">struct hashmap_cell_t ** table</div><div class="ttdef"><b>Definition:</b> hashmap.h:51</div></div>
+<div class="ttc" id="struct____hashmap__t_html"><div class="ttname"><a href="struct____hashmap__t.html">__hashmap_t</a></div><div class="ttdef"><b>Definition:</b> hashmap.h:49</div></div>
+<div class="ttc" id="hashmap_8h_html_a37bdba9503b86db73e6067b97b858dbd"><div class="ttname"><a href="hashmap_8h.html#a37bdba9503b86db73e6067b97b858dbd">hashmap_get</a></div><div class="ttdeci">struct hashmap_value_t * hashmap_get(hashmap_t *this, struct hashmap_key_t *key)</div><div class="ttdef"><b>Definition:</b> hashmap.c:84</div></div>
+<div class="ttc" id="hashmap_8h_html_ae3866ef4f62955d2803f96170ab2fa9e"><div class="ttname"><a href="hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e">hashmap_remove</a></div><div class="ttdeci">struct hashmap_value_t * hashmap_remove(hashmap_t *this, struct hashmap_key_t *key)</div><div class="ttdef"><b>Definition:</b> hashmap.c:62</div></div>
+<div class="ttc" id="struct____hashmap__t_html_ab5f1e74c3fcf71ee4ac91a860cbcde19"><div class="ttname"><a href="struct____hashmap__t.html#ab5f1e74c3fcf71ee4ac91a860cbcde19">__hashmap_t::size</a></div><div class="ttdeci">int size</div><div class="ttdef"><b>Definition:</b> hashmap.h:50</div></div>
+<div class="ttc" id="hashmap_8h_html_accc61a2ac7ac10813e1bfa84d0ab2cf6"><div class="ttname"><a href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a></div><div class="ttdeci">struct __hashmap_t hashmap_t</div></div>
+<div class="ttc" id="struct____hashmap__t_html_a2b730301a68342f67a406ce1b6c2a826"><div class="ttname"><a href="struct____hashmap__t.html#a2b730301a68342f67a406ce1b6c2a826">__hashmap_t::equal</a></div><div class="ttdeci">int(* equal)(struct hashmap_key_t *, struct hashmap_key_t *)</div><div class="ttdef"><b>Definition:</b> hashmap.h:52</div></div>
+<div class="ttc" id="hashmap_8h_html_a81cd9ee5f00b62bf3103612cd87d8a5d"><div class="ttname"><a href="hashmap_8h.html#a81cd9ee5f00b62bf3103612cd87d8a5d">hashmap_create</a></div><div class="ttdeci">hashmap_t * hashmap_create(int size, int(*equal)(struct hashmap_key_t *, struct hashmap_key_t *), int(*hash)(struct hashmap_key_t *))</div><div class="ttdef"><b>Definition:</b> hashmap.c:32</div></div>
+<div class="ttc" id="structhashmap__cell__t_html_a18fa668e172072e9bff5e92e52d9f3af"><div class="ttname"><a href="structhashmap__cell__t.html#a18fa668e172072e9bff5e92e52d9f3af">hashmap_cell_t::key</a></div><div class="ttdeci">struct hashmap_key_t * key</div><div class="ttdef"><b>Definition:</b> hashmap.h:41</div></div>
+<div class="ttc" id="struct____hashmap__t_html_aa56e33c3baa182a530a4a8bfc27c11f1"><div class="ttname"><a href="struct____hashmap__t.html#aa56e33c3baa182a530a4a8bfc27c11f1">__hashmap_t::hash</a></div><div class="ttdeci">int(* hash)(struct hashmap_key_t *)</div><div class="ttdef"><b>Definition:</b> hashmap.h:53</div></div>
+<div class="ttc" id="hashmap_8h_html_a0c25525e8b6599bcafda45b74dcac19d"><div class="ttname"><a href="hashmap_8h.html#a0c25525e8b6599bcafda45b74dcac19d">hashmap_set</a></div><div class="ttdeci">void hashmap_set(hashmap_t *this, struct hashmap_key_t *key, struct hashmap_value_t *value)</div><div class="ttdef"><b>Definition:</b> hashmap.c:45</div></div>
+<div class="ttc" id="structhashmap__cell__t_html"><div class="ttname"><a href="structhashmap__cell__t.html">hashmap_cell_t</a></div><div class="ttdef"><b>Definition:</b> hashmap.h:40</div></div>
+<div class="ttc" id="structhashmap__cell__t_html_aa0758cf139adb3747a846e539d01d75d"><div class="ttname"><a href="structhashmap__cell__t.html#aa0758cf139adb3747a846e539d01d75d">hashmap_cell_t::value</a></div><div class="ttdeci">struct hashmap_value_t * value</div><div class="ttdef"><b>Definition:</b> hashmap.h:42</div></div>
+<div class="ttc" id="structhashmap__cell__t_html_afea1a8c217d80c95efa5b4a89ea07bf2"><div class="ttname"><a href="structhashmap__cell__t.html#afea1a8c217d80c95efa5b4a89ea07bf2">hashmap_cell_t::next</a></div><div class="ttdeci">struct hashmap_cell_t * next</div><div class="ttdef"><b>Definition:</b> hashmap.h:43</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

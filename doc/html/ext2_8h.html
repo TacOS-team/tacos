@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/include/fs/ext2.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -92,33 +93,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Driver Ext2.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="vfs_8h_source.html">vfs.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="vfs_8h_source.html">vfs.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de ext2.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="ext2_8h__incl.png" border="0" usemap="#kernel_2include_2fs_2ext2_8h" alt=""/></div>
 <map name="kernel_2include_2fs_2ext2_8h" id="kernel_2include_2fs_2ext2_8h">
-<area shape="rect" id="node3" href="vfs_8h.html" title="Virtual File System." alt="" coords="57,83,108,111"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="129,393,191,421"/><area shape="rect" id="node7" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="43,238,123,266"/><area shape="rect" id="node10" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="129,161,191,189"/><area shape="rect" id="node13" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="197,238,259,266"/><area shape="rect" id="node16" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="248,315,325,343"/></map>
+<area shape="rect" id="node2" href="vfs_8h.html" title="Virtual File System. " alt="" coords="57,80,108,107"/><area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="130,379,193,405"/><area shape="rect" id="node4" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts. " alt="" coords="42,229,123,256"/><area shape="rect" id="node5" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier. " alt="" coords="131,155,192,181"/><area shape="rect" id="node6" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="199,229,262,256"/><area shape="rect" id="node7" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="250,304,329,331"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="ext2_8h__dep__incl.png" border="0" usemap="#kernel_2include_2fs_2ext2_8hdep" alt=""/></div>
 <map name="kernel_2include_2fs_2ext2_8hdep" id="kernel_2include_2fs_2ext2_8hdep">
-<area shape="rect" id="node3" href="ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="5,91,144,119"/><area shape="rect" id="node5" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2\l_functions.c" alt="" coords="168,83,296,127"/><area shape="rect" id="node7" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="320,91,427,119"/></map>
+<area shape="rect" id="node3" href="ext2_8c.html" title="kernel/fs/ext2/ext2.c" alt="" coords="5,91,141,119"/><area shape="rect" id="node5" href="ext2__functions_8c.html" title="kernel/fs/ext2/ext2\l_functions.c" alt="" coords="165,83,291,127"/><area shape="rect" id="node7" href="init_8c.html" title="kernel/init.c" alt="" coords="315,91,403,119"/></map>
 </div>
 </div>
 <p><a href="ext2_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a9aed5bb9701eee5d20003be7dfc22e51"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9aed5bb9701eee5d20003be7dfc22e51"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8h.html#a9aed5bb9701eee5d20003be7dfc22e51">ext2_init</a> ()</td></tr>
-<tr class="memdesc:a9aed5bb9701eee5d20003be7dfc22e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du driver ext2. <br/></td></tr>
+<tr class="memdesc:a9aed5bb9701eee5d20003be7dfc22e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du driver ext2. <br /></td></tr>
+<tr class="separator:a9aed5bb9701eee5d20003be7dfc22e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a162f5d230a1583a05389a6bb5d349e2a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a">mount_EXT2</a> (<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *ofd)</td></tr>
-<tr class="memdesc:a162f5d230a1583a05389a6bb5d349e2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un point de montage.  <a href="#a162f5d230a1583a05389a6bb5d349e2a"></a><br/></td></tr>
+<tr class="memdesc:a162f5d230a1583a05389a6bb5d349e2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un point de montage.  <a href="#a162f5d230a1583a05389a6bb5d349e2a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a162f5d230a1583a05389a6bb5d349e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -128,7 +131,7 @@ LICENSE</h1>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des fonctions</h2>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a162f5d230a1583a05389a6bb5d349e2a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -155,7 +158,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="ext2_8h_a162f5d230a1583a05389a6bb5d349e2a_cgraph.png" border="0" usemap="#ext2_8h_a162f5d230a1583a05389a6bb5d349e2a_cgraph" alt=""/></div>
 <map name="ext2_8h_a162f5d230a1583a05389a6bb5d349e2a_cgraph" id="ext2_8h_a162f5d230a1583a05389a6bb5d349e2a_cgraph">
-<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="445,199,512,227"/><area shape="rect" id="node7" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="177,72,223,100"/><area shape="rect" id="node12" href="unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier." alt="" coords="175,123,225,151"/><area shape="rect" id="node15" href="ext2__functions_8c.html#a1814eebfe79637247b38dda8e50a3263" title="Création d&#39;un noeud (fichier, dossier, fichier spécial...)" alt="" coords="301,199,392,227"/><area shape="rect" id="node18" href="ext2__functions_8c.html#a099858facc12a389ffbff826567cb7c4" title="Création d&#39;un dossier." alt="" coords="157,224,243,252"/><area shape="rect" id="node21" href="ext2__functions_8c.html#a4d19a34580976adf582bb45bd402649c" title="Renomme ou déplace un fichier." alt="" coords="152,275,248,303"/><area shape="rect" id="node23" href="ext2__functions_8c.html#acad804eba95e7600b534e07bb9134a44" title="ext2_setattr" alt="" coords="155,325,245,353"/><area shape="rect" id="node25" href="ext2__functions_8c.html#aeb55aa4d71dded497758c72d86b2b2f7" title="Change la taille d&#39;un fichier." alt="" coords="297,376,396,404"/><area shape="rect" id="node27" href="ext2__functions_8c.html#a4af1597cc97e9aa9591ed390589e6dfc" title="Suppression d&#39;un noeud." alt="" coords="157,427,243,455"/><area shape="rect" id="node29" href="ext2__functions_8c.html#a4c86d6a4886145e7cd974675eb5a19a0" title="Suppression d&#39;un dossier vide." alt="" coords="159,477,241,505"/><area shape="rect" id="node32" href="ext2__functions_8c.html#aacb0077cd0a76158c9288ecd193d58da" title="ext2_lookup" alt="" coords="155,528,245,556"/><area shape="rect" id="node38" href="ext2__functions_8c.html#a185452dee205dcca978c1c6f7fdeee22" title="ext2_getroot" alt="" coords="153,579,247,607"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="561,199,700,227"/><area shape="rect" id="node10" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="316,97,377,125"/><area shape="rect" id="node35" href="kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="317,528,376,556"/></map>
+<area shape="rect" id="node2" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="443,152,509,179"/><area shape="rect" id="node5" href="unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier. " alt="" coords="175,26,222,52"/><area shape="rect" id="node7" href="unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier. " alt="" coords="173,76,224,103"/><area shape="rect" id="node8" href="ext2__functions_8c.html#a1814eebfe79637247b38dda8e50a3263" title="Création d&#39;un noeud (fichier, dossier, fichier spécial...) " alt="" coords="299,152,391,179"/><area shape="rect" id="node9" href="ext2__functions_8c.html#a099858facc12a389ffbff826567cb7c4" title="Création d&#39;un dossier. " alt="" coords="156,178,241,204"/><area shape="rect" id="node10" href="ext2__functions_8c.html#a4d19a34580976adf582bb45bd402649c" title="Renomme ou déplace un fichier. " alt="" coords="151,228,247,255"/><area shape="rect" id="node11" href="ext2__functions_8c.html#acad804eba95e7600b534e07bb9134a44" title="ext2_setattr" alt="" coords="153,279,244,306"/><area shape="rect" id="node12" href="ext2__functions_8c.html#aeb55aa4d71dded497758c72d86b2b2f7" title="Change la taille d&#39;un fichier. " alt="" coords="295,330,395,356"/><area shape="rect" id="node13" href="ext2__functions_8c.html#a4af1597cc97e9aa9591ed390589e6dfc" title="Suppression d&#39;un noeud. " alt="" coords="155,380,242,407"/><area shape="rect" id="node14" href="ext2__functions_8c.html#a4c86d6a4886145e7cd974675eb5a19a0" title="Suppression d&#39;un dossier vide. " alt="" coords="157,431,240,458"/><area shape="rect" id="node15" href="ext2__functions_8c.html#aacb0077cd0a76158c9288ecd193d58da" title="ext2_lookup" alt="" coords="153,482,244,508"/><area shape="rect" id="node17" href="ext2__functions_8c.html#a185452dee205dcca978c1c6f7fdeee22" title="ext2_getroot" alt="" coords="152,532,245,559"/><area shape="rect" id="node3" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="557,127,697,154"/><area shape="rect" id="node4" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="593,178,662,204"/><area shape="rect" id="node6" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant. " alt="" coords="313,51,376,78"/><area shape="rect" id="node16" href="kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine. " alt="" coords="315,482,374,508"/></map>
 </div>
 </p>
 
@@ -164,9 +167,9 @@ Voici le graphe d'appel pour cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:36 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

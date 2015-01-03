@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/include/idt.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,38 +90,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="idt_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifndef _IDT_H_</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _IDT_H_</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="idt_8h.html#a1e638762d3982aadbcb3a847d7cb396b">   43</a></span>&#160;<span class="preprocessor">#define EXCEPTION_NUM 32</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="idt_8h.html#ac9c6830789e26eebd0ccc5b4d6304c40">   47</a></span>&#160;<span class="preprocessor">#define EXCEPTION_BASE 0</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="idt_8h.html#ac0283c827dbcca38f83f73900746ffa5">   51</a></span>&#160;<span class="preprocessor">#define INTERRUPT_NUM 32</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="idt_8h.html#ac375aea9903187b528bbc74c208a0f02">   55</a></span>&#160;<span class="preprocessor">#define INTERRUPT_BASE 32 </span><span class="comment">/* Juste après les exceptions */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define _IDT_H_</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="idt_8h.html#a1e638762d3982aadbcb3a847d7cb396b">   43</a></span>&#160;<span class="preprocessor">#define EXCEPTION_NUM 32</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="idt_8h.html#ac9c6830789e26eebd0ccc5b4d6304c40">   47</a></span>&#160;<span class="preprocessor">#define EXCEPTION_BASE 0</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="idt_8h.html#ac0283c827dbcca38f83f73900746ffa5">   51</a></span>&#160;<span class="preprocessor">#define INTERRUPT_NUM 32</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="idt_8h.html#ac375aea9903187b528bbc74c208a0f02">   55</a></span>&#160;<span class="preprocessor">#define INTERRUPT_BASE 32 </span><span class="comment">/* Juste après les exceptions */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define IDT_TRAPGATE            0x7</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define IDT_INTGATE             0x6</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define IDT_TASKGATE    0x5</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define IDT_INTGATE             0x6</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define IDT_TASKGATE    0x5</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span> <a class="code" href="idt_8c.html#a559dc3a4f73d1813f12a104840e68550" title="Initialisation de l&#39;IDT.">idt_setup</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span> <a class="code" href="idt_8h.html#a559dc3a4f73d1813f12a104840e68550">idt_setup</a>();</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">int</span> <a class="code" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception.">idt_set_handler</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> index, <a class="code" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> handler_address, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> priority);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">int</span> <a class="code" href="idt_8h.html#a042510d9d3af14a9dac9a6c46f27c403">idt_set_handler</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> index, <a class="code" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> handler_address, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> priority);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">void</span> <a class="code" href="idt_8c.html#affa07557443fe1c9a508b346d8f06523" title="Change le type d&#39;une interruption (interrupt gate, trap gate, task gate).">idt_set_handler_type</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> index, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> trap_type);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">void</span> <a class="code" href="idt_8h.html#affa07557443fe1c9a508b346d8f06523">idt_set_handler_type</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> index, <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> trap_type);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keywordtype">void</span> <a class="code" href="idt_8c.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption.">idt_disable_handler</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> index);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keywordtype">void</span> <a class="code" href="idt_8h.html#a49a66783b420e15221ba67a340267b8d">idt_disable_handler</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> index);</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="kernel_2include_2types_8h_html"><div class="ttname"><a href="kernel_2include_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="idt_8h_html_a042510d9d3af14a9dac9a6c46f27c403"><div class="ttname"><a href="idt_8h.html#a042510d9d3af14a9dac9a6c46f27c403">idt_set_handler</a></div><div class="ttdeci">int idt_set_handler(uint8_t index, paddr_t handler_address, uint8_t priority)</div><div class="ttdoc">Associe un handler à une interruption/exception. </div><div class="ttdef"><b>Definition:</b> idt.c:104</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> types.h:34</div></div>
+<div class="ttc" id="idt_8h_html_affa07557443fe1c9a508b346d8f06523"><div class="ttname"><a href="idt_8h.html#affa07557443fe1c9a508b346d8f06523">idt_set_handler_type</a></div><div class="ttdeci">void idt_set_handler_type(uint8_t index, uint8_t trap_type)</div><div class="ttdoc">Change le type d&#39;une interruption (interrupt gate, trap gate, task gate). </div><div class="ttdef"><b>Definition:</b> idt.c:131</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_a9f047c1f0917f6184a7a013d4b4277a6"><div class="ttname"><a href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a></div><div class="ttdeci">uint32_t paddr_t</div><div class="ttdef"><b>Definition:</b> types.h:52</div></div>
+<div class="ttc" id="idt_8h_html_a559dc3a4f73d1813f12a104840e68550"><div class="ttname"><a href="idt_8h.html#a559dc3a4f73d1813f12a104840e68550">idt_setup</a></div><div class="ttdeci">void idt_setup()</div><div class="ttdoc">Initialisation de l&#39;IDT. </div><div class="ttdef"><b>Definition:</b> idt.c:69</div></div>
+<div class="ttc" id="idt_8h_html_a49a66783b420e15221ba67a340267b8d"><div class="ttname"><a href="idt_8h.html#a49a66783b420e15221ba67a340267b8d">idt_disable_handler</a></div><div class="ttdeci">void idt_disable_handler(uint8_t index)</div><div class="ttdoc">Désactive une interruption. </div><div class="ttdef"><b>Definition:</b> idt.c:99</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

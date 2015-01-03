@@ -1,3 +1,4 @@
 <map id="kmalloc" name="kmalloc">
-<area shape="rect" id="node3" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="121,5,260,33"/>
+<area shape="rect" id="node2" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="120,5,260,32"/>
+<area shape="rect" id="node3" href="$kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="155,56,225,83"/>
 </map>

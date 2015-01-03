@@ -1,5 +1,5 @@
 <map id="kernel/include/pci_config.h" name="kernel/include/pci_config.h">
-<area shape="rect" id="node3" href="$vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="5,99,133,143"/>
-<area shape="rect" id="node5" href="$pci_8c.html" title="kernel/pci/pci.c" alt="" coords="157,107,267,135"/>
-<area shape="rect" id="node7" href="$pci__config_8c.html" title="kernel/pci/pci_config.c" alt="" coords="291,107,440,135"/>
+<area shape="rect" id="node3" href="$vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="5,99,131,143"/>
+<area shape="rect" id="node5" href="$pci_8c.html" title="kernel/pci/pci.c" alt="" coords="155,107,264,135"/>
+<area shape="rect" id="node7" href="$pci__config_8c.html" title="kernel/pci/pci_config.c" alt="" coords="288,107,437,135"/>
 </map>

@@ -1,17 +1,21 @@
 \hypertarget{procfs_8c}{\section{Référence du fichier kernel/fs/procfs.c}
-\label{procfs_8c}\index{kernel/fs/procfs.\-c@{kernel/fs/procfs.\-c}}
+\label{procfs_8c}\index{kernel/fs/procfs.\+c@{kernel/fs/procfs.\+c}}
 }
-{\ttfamily \#include $<$fs/procfs.\-h$>$}\\*
-{\ttfamily \#include $<$kdirent.\-h$>$}\\*
-{\ttfamily \#include $<$klibc/string.\-h$>$}\\*
-{\ttfamily \#include $<$klog.\-h$>$}\\*
-{\ttfamily \#include $<$kmalloc.\-h$>$}\\*
-{\ttfamily \#include $<$kprocess.\-h$>$}\\*
-{\ttfamily \#include $<$kerrno.\-h$>$}\\*
-{\ttfamily \#include $<$types.\-h$>$}\\*
-{\ttfamily \#include $<$vfs.\-h$>$}\\*
-{\ttfamily \#include $<$klibc/stdlib.\-h$>$}\\*
-Graphe des dépendances par inclusion de procfs.\-c\-:\nopagebreak
+{\ttfamily \#include $<$fs/procfs.\+h$>$}\\*
+{\ttfamily \#include $<$kdirent.\+h$>$}\\*
+{\ttfamily \#include $<$klibc/string.\+h$>$}\\*
+{\ttfamily \#include $<$klog.\+h$>$}\\*
+{\ttfamily \#include $<$kmalloc.\+h$>$}\\*
+{\ttfamily \#include $<$kprocess.\+h$>$}\\*
+{\ttfamily \#include $<$scheduler.\+h$>$}\\*
+{\ttfamily \#include $<$kerrno.\+h$>$}\\*
+{\ttfamily \#include $<$types.\+h$>$}\\*
+{\ttfamily \#include $<$vfs.\+h$>$}\\*
+{\ttfamily \#include $<$klibc/stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$klibc/ctype.\+h$>$}\\*
+{\ttfamily \#include $<$memory.\+h$>$}\\*
+Graphe des dépendances par inclusion de procfs.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,99 +25,101 @@ Graphe des dépendances par inclusion de procfs.\-c\-:\nopagebreak
 \subsection*{Structures de données}
 \begin{DoxyCompactItemize}
 \item 
-union \hyperlink{unionspecific__extra__data__procfs__t}{specific\-\_\-extra\-\_\-data\-\_\-procfs\-\_\-t}
+union \hyperlink{unionspecific__extra__data__procfs__t}{specific\+\_\+extra\+\_\+data\+\_\+procfs\+\_\+t}
 \item 
-struct \hyperlink{structextra__data__procfs__t}{extra\-\_\-data\-\_\-procfs\-\_\-t}
+struct \hyperlink{structextra__data__procfs__t}{extra\+\_\+data\+\_\+procfs\+\_\+t}
 \item 
-struct \hyperlink{structprocfs__file__function__t}{procfs\-\_\-file\-\_\-function\-\_\-t}
+struct \hyperlink{structprocfs__file__function__t}{procfs\+\_\+file\+\_\+function\+\_\+t}
 \item 
-struct \hyperlink{structprocfs__directory__function__t}{procfs\-\_\-directory\-\_\-function\-\_\-t}
+struct \hyperlink{structprocfs__directory__function__t}{procfs\+\_\+directory\+\_\+function\+\_\+t}
 \end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{procfs_8c_a7b59605600222e4a5eada2f42bca8de9}{procfs\-\_\-root\-\_\-process\-\_\-offset}~1
+\#define \hyperlink{procfs_8c_a7b59605600222e4a5eada2f42bca8de9}{procfs\+\_\+root\+\_\+process\+\_\+offset}~1
 \item 
-\hypertarget{procfs_8c_a809bf43c9a95226e75295d4e7a7b1766}{\#define {\bfseries procfs\-\_\-cmd\-\_\-line\-\_\-offset}~\hyperlink{procfs_8c_a7b59605600222e4a5eada2f42bca8de9}{procfs\-\_\-root\-\_\-process\-\_\-offset} + 1}\label{procfs_8c_a809bf43c9a95226e75295d4e7a7b1766}
+\hypertarget{procfs_8c_a809bf43c9a95226e75295d4e7a7b1766}{\#define {\bfseries procfs\+\_\+cmd\+\_\+line\+\_\+offset}~\hyperlink{procfs_8c_a7b59605600222e4a5eada2f42bca8de9}{procfs\+\_\+root\+\_\+process\+\_\+offset} + 1}\label{procfs_8c_a809bf43c9a95226e75295d4e7a7b1766}
 
 \item 
-\hypertarget{procfs_8c_abb681c1129229ad6e534bfa97cb0dde3}{\#define {\bfseries procfs\-\_\-state\-\_\-offset}~procfs\-\_\-cmd\-\_\-line\-\_\-offset + 1}\label{procfs_8c_abb681c1129229ad6e534bfa97cb0dde3}
+\hypertarget{procfs_8c_abb681c1129229ad6e534bfa97cb0dde3}{\#define {\bfseries procfs\+\_\+state\+\_\+offset}~procfs\+\_\+cmd\+\_\+line\+\_\+offset + 1}\label{procfs_8c_abb681c1129229ad6e534bfa97cb0dde3}
 
 \item 
-\hypertarget{procfs_8c_ab29e19d6cc09fbb46055f6456c7e5121}{\#define {\bfseries procfs\-\_\-ppid\-\_\-offset}~procfs\-\_\-state\-\_\-offset + 1}\label{procfs_8c_ab29e19d6cc09fbb46055f6456c7e5121}
+\hypertarget{procfs_8c_ab29e19d6cc09fbb46055f6456c7e5121}{\#define {\bfseries procfs\+\_\+ppid\+\_\+offset}~procfs\+\_\+state\+\_\+offset + 1}\label{procfs_8c_ab29e19d6cc09fbb46055f6456c7e5121}
 
 \item 
-\hypertarget{procfs_8c_a0468edb18ccc48cbf52a5b5c7847e38e}{\#define {\bfseries procfs\-\_\-fd\-\_\-offset}~procfs\-\_\-ppid\-\_\-offset + 1}\label{procfs_8c_a0468edb18ccc48cbf52a5b5c7847e38e}
+\hypertarget{procfs_8c_a0468edb18ccc48cbf52a5b5c7847e38e}{\#define {\bfseries procfs\+\_\+fd\+\_\+offset}~procfs\+\_\+ppid\+\_\+offset + 1}\label{procfs_8c_a0468edb18ccc48cbf52a5b5c7847e38e}
 
 \item 
-\hypertarget{procfs_8c_a908f1baf90b341df57c05c5b07b13691}{\#define {\bfseries procfs\-\_\-first\-\_\-fd\-\_\-offset}~procfs\-\_\-fd\-\_\-offset + 1}\label{procfs_8c_a908f1baf90b341df57c05c5b07b13691}
+\hypertarget{procfs_8c_a908f1baf90b341df57c05c5b07b13691}{\#define {\bfseries procfs\+\_\+first\+\_\+fd\+\_\+offset}~procfs\+\_\+fd\+\_\+offset + 1}\label{procfs_8c_a908f1baf90b341df57c05c5b07b13691}
 
 \item 
-\hypertarget{procfs_8c_a563e83550532b486e8855a41871c8bf3}{\#define {\bfseries procfs\-\_\-priority\-\_\-offset}~procfs\-\_\-first\-\_\-fd\-\_\-offset + \hyperlink{fd__types_8h_aa188a2e288c10a684622814c51337465}{F\-O\-P\-E\-N\-\_\-\-M\-A\-X}}\label{procfs_8c_a563e83550532b486e8855a41871c8bf3}
+\hypertarget{procfs_8c_a563e83550532b486e8855a41871c8bf3}{\#define {\bfseries procfs\+\_\+priority\+\_\+offset}~procfs\+\_\+first\+\_\+fd\+\_\+offset + \hyperlink{fd__types_8h_aa188a2e288c10a684622814c51337465}{F\+O\+P\+E\+N\+\_\+\+M\+A\+X}}\label{procfs_8c_a563e83550532b486e8855a41871c8bf3}
 
 \item 
-\hypertarget{procfs_8c_a37f0a52a902cdf85502d19443636c16c}{\#define {\bfseries P\-R\-O\-C\-F\-S\-\_\-\-P\-R\-O\-C\-E\-S\-S\-\_\-\-R\-A\-N\-G\-E}~60$\ast$1000;}\label{procfs_8c_a37f0a52a902cdf85502d19443636c16c}
+\hypertarget{procfs_8c_a37f0a52a902cdf85502d19443636c16c}{\#define {\bfseries P\+R\+O\+C\+F\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+\_\+\+R\+A\+N\+G\+E}~60$\ast$1000;}\label{procfs_8c_a37f0a52a902cdf85502d19443636c16c}
 
 \item 
-\hypertarget{procfs_8c_a59adc4c82490d23754cd39c2fb99b0da}{\#define {\bfseries E\-O\-F}~(-\/1)}\label{procfs_8c_a59adc4c82490d23754cd39c2fb99b0da}
+\hypertarget{procfs_8c_a59adc4c82490d23754cd39c2fb99b0da}{\#define {\bfseries E\+O\+F}~(-\/1)}\label{procfs_8c_a59adc4c82490d23754cd39c2fb99b0da}
 
 \end{DoxyCompactItemize}
 \subsection*{Définitions de type}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{procfs_8c_a7a43bd8174c325b21b3fb8ae2088bfac}{typedef \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\-\_\-t} $\ast$( {\bfseries lookup\-\_\-function\-\_\-t} )(struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$instance, struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$dentry, const char $\ast$name)}\label{procfs_8c_a7a43bd8174c325b21b3fb8ae2088bfac}
+\hypertarget{procfs_8c_a7a43bd8174c325b21b3fb8ae2088bfac}{typedef \hyperlink{vfs_8h_ade5c998c6b3f09d2cf45d0e5ef8787da}{dentry\+\_\+t} $\ast$( {\bfseries lookup\+\_\+function\+\_\+t} )(struct \hyperlink{struct__fs__instance__t}{\+\_\+fs\+\_\+instance\+\_\+t} $\ast$instance, struct \hyperlink{struct__dentry__t}{\+\_\+dentry\+\_\+t} $\ast$dentry, const char $\ast$name)}\label{procfs_8c_a7a43bd8174c325b21b3fb8ae2088bfac}
 
 \item 
-\hypertarget{procfs_8c_a219572c7f1a1cc474c2558b2f8161afe}{typedef int( {\bfseries procfs\-\_\-read\-\_\-dir\-\_\-function\-\_\-t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ofd, char $\ast$entries, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)}\label{procfs_8c_a219572c7f1a1cc474c2558b2f8161afe}
+\hypertarget{procfs_8c_a219572c7f1a1cc474c2558b2f8161afe}{typedef int( {\bfseries procfs\+\_\+read\+\_\+dir\+\_\+function\+\_\+t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$ofd, char $\ast$entries, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} size)}\label{procfs_8c_a219572c7f1a1cc474c2558b2f8161afe}
 
 \item 
 \hypertarget{procfs_8c_aeebc53c033053ffbddbae50f9a052a36}{typedef union \\*
-\hyperlink{unionspecific__extra__data__procfs__t}{specific\-\_\-extra\-\_\-data\-\_\-procfs\-\_\-t} {\bfseries specific\-\_\-extra\-\_\-data\-\_\-procfs\-\_\-t}}\label{procfs_8c_aeebc53c033053ffbddbae50f9a052a36}
+\hyperlink{unionspecific__extra__data__procfs__t}{specific\+\_\+extra\+\_\+data\+\_\+procfs\+\_\+t} {\bfseries specific\+\_\+extra\+\_\+data\+\_\+procfs\+\_\+t}}\label{procfs_8c_aeebc53c033053ffbddbae50f9a052a36}
 
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{procfs_8c_a67b19f8892567cdb63c98ee660300f60}{procfs\-\_\-init} ()
-\begin{DoxyCompactList}\small\item\em Initialisation du proc F\-S. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \hyperlink{procfs_8c_a67b19f8892567cdb63c98ee660300f60}{procfs\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em Initialisation du proc F\+S. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-const \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} {\bfseries nb\-\_\-file\-\_\-functions}
+\hypertarget{procfs_8c_ad3c67c34cdaaf9915d86525a9de067f3}{const \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} {\bfseries nb\+\_\+file\+\_\+functions} = sizeof(procfs\+\_\+file\+\_\+functions\+\_\+list) / sizeof(procfs\+\_\+file\+\_\+functions\+\_\+list\mbox{[}0\mbox{]})}\label{procfs_8c_ad3c67c34cdaaf9915d86525a9de067f3}
+
 \end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010-\/2014 Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
-Proc F\-S. 
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
+Proc F\+S. 
 
 \subsection{Documentation des macros}
-\hypertarget{procfs_8c_a7b59605600222e4a5eada2f42bca8de9}{\index{procfs.\-c@{procfs.\-c}!procfs\-\_\-root\-\_\-process\-\_\-offset@{procfs\-\_\-root\-\_\-process\-\_\-offset}}
-\index{procfs\-\_\-root\-\_\-process\-\_\-offset@{procfs\-\_\-root\-\_\-process\-\_\-offset}!procfs.c@{procfs.\-c}}
-\subsubsection[{procfs\-\_\-root\-\_\-process\-\_\-offset}]{\setlength{\rightskip}{0pt plus 5cm}\#define procfs\-\_\-root\-\_\-process\-\_\-offset~1}}\label{procfs_8c_a7b59605600222e4a5eada2f42bca8de9}
-Unique id policy \-: each process has a range of P\-R\-O\-C\-F\-S\-\_\-\-P\-P\-R\-O\-C\-E\-S\-S\-\_\-\-R\-A\-N\-G\-E possible values for inode ids The begining of the range is computed by pid $\ast$ P\-R\-O\-C\-F\-S\-\_\-\-P\-P\-R\-O\-C\-E\-S\-S\-\_\-\-R\-A\-N\-G\-E Then for each process, the vars ofset are \-: 
+\hypertarget{procfs_8c_a7b59605600222e4a5eada2f42bca8de9}{\index{procfs.\+c@{procfs.\+c}!procfs\+\_\+root\+\_\+process\+\_\+offset@{procfs\+\_\+root\+\_\+process\+\_\+offset}}
+\index{procfs\+\_\+root\+\_\+process\+\_\+offset@{procfs\+\_\+root\+\_\+process\+\_\+offset}!procfs.\+c@{procfs.\+c}}
+\subsubsection[{procfs\+\_\+root\+\_\+process\+\_\+offset}]{\setlength{\rightskip}{0pt plus 5cm}\#define procfs\+\_\+root\+\_\+process\+\_\+offset~1}}\label{procfs_8c_a7b59605600222e4a5eada2f42bca8de9}
+Unique id policy \+: each process has a range of P\+R\+O\+C\+F\+S\+\_\+\+P\+P\+R\+O\+C\+E\+S\+S\+\_\+\+R\+A\+N\+G\+E possible values for inode ids The begining of the range is computed by pid $\ast$ P\+R\+O\+C\+F\+S\+\_\+\+P\+P\+R\+O\+C\+E\+S\+S\+\_\+\+R\+A\+N\+G\+E Then for each process, the vars ofset are \+: 
 
 \subsection{Documentation des fonctions}
-\hypertarget{procfs_8c_a67b19f8892567cdb63c98ee660300f60}{\index{procfs.\-c@{procfs.\-c}!procfs\-\_\-init@{procfs\-\_\-init}}
-\index{procfs\-\_\-init@{procfs\-\_\-init}!procfs.c@{procfs.\-c}}
-\subsubsection[{procfs\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void procfs\-\_\-init (
+\hypertarget{procfs_8c_a67b19f8892567cdb63c98ee660300f60}{\index{procfs.\+c@{procfs.\+c}!procfs\+\_\+init@{procfs\+\_\+init}}
+\index{procfs\+\_\+init@{procfs\+\_\+init}!procfs.\+c@{procfs.\+c}}
+\subsubsection[{procfs\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void procfs\+\_\+init (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{procfs_8c_a67b19f8892567cdb63c98ee660300f60}
-Initialisation of the proc F\-S. 
+Initialisation of the proc F\+S. 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -122,15 +128,3 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \end{figure}
 
 
-
-
-\subsection{Documentation des variables}
-\hypertarget{procfs_8c_ad3c67c34cdaaf9915d86525a9de067f3}{\index{procfs.\-c@{procfs.\-c}!nb\-\_\-file\-\_\-functions@{nb\-\_\-file\-\_\-functions}}
-\index{nb\-\_\-file\-\_\-functions@{nb\-\_\-file\-\_\-functions}!procfs.c@{procfs.\-c}}
-\subsubsection[{nb\-\_\-file\-\_\-functions}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf size\-\_\-t} nb\-\_\-file\-\_\-functions}}\label{procfs_8c_ad3c67c34cdaaf9915d86525a9de067f3}
-{\bfseries Valeur initiale \-:}
-\begin{DoxyCode}
- \textcolor{keyword}{sizeof}(procfs\_file\_functions\_list)
-                                                                                                                        
-       / \textcolor{keyword}{sizeof}(procfs\_file\_functions\_list[0])
-\end{DoxyCode}

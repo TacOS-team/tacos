@@ -12,6 +12,8 @@ var searchData=
   ['alloc_5ftty_5fdriver',['alloc_tty_driver',['../tty_8c.html#a9ae7085e2afaadc63a592910d4ac4328',1,'alloc_tty_driver(int lines):&#160;tty.c'],['../tty_8h.html#a9ae7085e2afaadc63a592910d4ac4328',1,'alloc_tty_driver(int lines):&#160;tty.c']]],
   ['allocate_5fnew_5fpage',['allocate_new_page',['../vmm_8h.html#aa6984df26426c14049065875c6b85e9c',1,'allocate_new_page(struct virtual_mem *vm, void **alloc, int u_s):&#160;vmm.c'],['../vmm_8c.html#aa6984df26426c14049065875c6b85e9c',1,'allocate_new_page(struct virtual_mem *vm, void **alloc, int u_s):&#160;vmm.c']]],
   ['allocate_5fnew_5fpages',['allocate_new_pages',['../vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b',1,'allocate_new_pages(struct virtual_mem *vm, unsigned int nb_pages, void **alloc, int u_s):&#160;vmm.c'],['../vmm_8c.html#a042a3049e6bc33c07f2b2c2a9dcfe78b',1,'allocate_new_pages(struct virtual_mem *vm, unsigned int nb_pages, void **alloc, int u_s):&#160;vmm.c']]],
+  ['alt',['alt',['../structsymbole.html#a35f794a092160ffe7926bbf11c670298',1,'symbole']]],
+  ['alt_5fr',['alt_r',['../structsymbole.html#abd9f93b644b1d63156ff92f3f1a65649',1,'symbole']]],
   ['apm_5ftable',['apm_table',['../structmultiboot__info.html#ad4285d60142d241a9e6b68a03e62ee0a',1,'multiboot_info']]],
   ['args',['args',['../structprocess__init__data__t.html#a16d011771835f06e0bb3d5fd6115e13c',1,'process_init_data_t']]],
   ['atoi',['atoi',['../stdlib_8h.html#a2c81f61ee897bc5a1f5491f3e2bf711b',1,'stdlib.c']]],
@@ -26,5 +28,6 @@ var searchData=
   ['attribute',['attribute',['../structx86__video__mem.html#ab513d18ce9ef33e2d22e426973fd7417',1,'x86_video_mem']]],
   ['attributes',['attributes',['../structlfn__entry__t.html#a5b1eb8b963f05e47b3d6508b5a986985',1,'lfn_entry_t::attributes()'],['../struct__directory__entry.html#a63da8f87e73a3eb30e55b2d405fa35d7',1,'_directory_entry::attributes()']]],
   ['available',['available',['../structx86__segment__descriptor.html#a761494a7a460e493e0d5d188a31cd052',1,'x86_segment_descriptor']]],
-  ['available_5ffs_5ft',['available_fs_t',['../vfs_8c.html#a2e535233f88552b377b2f1523c182acc',1,'vfs.c']]]
+  ['available_5ffs_5ft',['available_fs_t',['../vfs_8c.html#a2e535233f88552b377b2f1523c182acc',1,'vfs.c']]],
+  ['azerty_5fkeymap',['azerty_keymap',['../keyboard_8c.html#a365c795e67b8150aaf3e878076153424',1,'keyboard.c']]]
 ];

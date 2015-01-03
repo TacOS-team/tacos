@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/include/kprocess.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,40 +90,40 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="kprocess_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _KPROCESS_H_</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _KPROCESS_H_</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define _KPROCESS_H_</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#define USER_PROCESS_BASE 0x40000000</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ksyscall_8h.html">ksyscall.h</a>&gt;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts.">fd_types.h</a>&gt;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux).">signal_types.h</a>&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fd__types_8h.html">fd_types.h</a>&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="signal__types_8h.html">signal_types.h</a>&gt;</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="process__types_8h.html">process_types.h</a>&gt;</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="symtable_8h.html">symtable.h</a>&gt;</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="vmm_8h.html">vmm.h</a>&gt;</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="kprocess_8h.html#a63e32d00bc48471b4db49d481ac228dc">   42</a></span>&#160;<span class="preprocessor">#define MAX_PROC 512 </span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="kprocess_8h.html#a63e32d00bc48471b4db49d481ac228dc">   42</a></span>&#160;<span class="preprocessor">#define MAX_PROC 512 </span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define CPU_USAGE_SAMPLE_RATE 100</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="kprocess_8h.html#a0a3202b6e8073e458785ebcdf6d8c9f2">   49</a></span>&#160;<span class="preprocessor">#define PROCSTATE_IDLE 0 </span></div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="kprocess_8h.html#a1538df1594431185fbbced3805cddc37">   50</a></span>&#160;<span class="preprocessor">#define PROCSTATE_RUNNING 1 </span></div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="kprocess_8h.html#af93e7bcf4bed8ec35b44970c4b332b92">   51</a></span>&#160;<span class="preprocessor">#define PROCSTATE_WAITING 2 </span></div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="kprocess_8h.html#a0d5a62fb2d0f0faed256d4b5b872f7f0">   52</a></span>&#160;<span class="preprocessor">#define PROCSTATE_SUSPENDED 3 </span></div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="kprocess_8h.html#ab809d396d2bb4d37ee1facf1e8ef34e3">   53</a></span>&#160;<span class="preprocessor">#define PROCSTATE_TERMINATED 4 </span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="kprocess_8h.html#a0a3202b6e8073e458785ebcdf6d8c9f2">   49</a></span>&#160;<span class="preprocessor">#define PROCSTATE_IDLE 0 </span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="kprocess_8h.html#a1538df1594431185fbbced3805cddc37">   50</a></span>&#160;<span class="preprocessor">#define PROCSTATE_RUNNING 1 </span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="kprocess_8h.html#af93e7bcf4bed8ec35b44970c4b332b92">   51</a></span>&#160;<span class="preprocessor">#define PROCSTATE_WAITING 2 </span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="kprocess_8h.html#a0d5a62fb2d0f0faed256d4b5b872f7f0">   52</a></span>&#160;<span class="preprocessor">#define PROCSTATE_SUSPENDED 3 </span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="kprocess_8h.html#ab809d396d2bb4d37ee1facf1e8ef34e3">   53</a></span>&#160;<span class="preprocessor">#define PROCSTATE_TERMINATED 4 </span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define CURRENT_PROCESS -1</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/* Type d&#39;exécution */</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define EXEC_ELF 0</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EXEC_KERNEL 1</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="structprocess__init__data__t.html">   64</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define EXEC_KERNEL 1</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structprocess__init__data__t.html">   64</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="structprocess__init__data__t.html#a6bdcab0bceaafa6e65a236904fb5a157">   66</a></span>&#160;        <span class="keywordtype">char</span>* <a class="code" href="structprocess__init__data__t.html#a6bdcab0bceaafa6e65a236904fb5a157">name</a>; </div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="structprocess__init__data__t.html#a16d011771835f06e0bb3d5fd6115e13c">   67</a></span>&#160;        <span class="keywordtype">char</span>* <a class="code" href="structprocess__init__data__t.html#a16d011771835f06e0bb3d5fd6115e13c">args</a>; </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="structprocess__init__data__t.html#a863d82fbd718f53164a520f67376eac2">   68</a></span>&#160;        <span class="keywordtype">char</span>** <a class="code" href="structprocess__init__data__t.html#a863d82fbd718f53164a520f67376eac2">envp</a>; </div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="structprocess__init__data__t.html#a1cda790f7d2446a04562094f09e358ab">   70</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structprocess__init__data__t.html#a1cda790f7d2446a04562094f09e358ab">exec_type</a>; </div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="code" href="structprocess__init__data__t.html#ae950cc2a2cc04d1c00a71f70c2fde72c">   72</a></span>&#160;        <span class="keywordtype">void</span>* <a class="code" href="structprocess__init__data__t.html#ae950cc2a2cc04d1c00a71f70c2fde72c">data</a>; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <a class="code" href="structElf32__File.html" title="Structure qui caractérise un binaire elf.">Elf32_File</a>* file;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structprocess__init__data__t.html#a6bdcab0bceaafa6e65a236904fb5a157">   66</a></span>&#160;        <span class="keywordtype">char</span>* <a class="code" href="structprocess__init__data__t.html#a6bdcab0bceaafa6e65a236904fb5a157">name</a>; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structprocess__init__data__t.html#a16d011771835f06e0bb3d5fd6115e13c">   67</a></span>&#160;        <span class="keywordtype">char</span>* <a class="code" href="structprocess__init__data__t.html#a16d011771835f06e0bb3d5fd6115e13c">args</a>; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="structprocess__init__data__t.html#a863d82fbd718f53164a520f67376eac2">   68</a></span>&#160;        <span class="keywordtype">char</span>** <a class="code" href="structprocess__init__data__t.html#a863d82fbd718f53164a520f67376eac2">envp</a>; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structprocess__init__data__t.html#a1cda790f7d2446a04562094f09e358ab">   70</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structprocess__init__data__t.html#a1cda790f7d2446a04562094f09e358ab">exec_type</a>; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structprocess__init__data__t.html#ae950cc2a2cc04d1c00a71f70c2fde72c">   72</a></span>&#160;        <span class="keywordtype">void</span>* <a class="code" href="structprocess__init__data__t.html#ae950cc2a2cc04d1c00a71f70c2fde72c">data</a>; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <a class="code" href="structElf32__File.html">Elf32_File</a>* file;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        </div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="comment">/* Données pour le chargement de l&#39;elf */</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">int</span> mem_size;</div>
@@ -131,16 +132,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> stack_size;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">int</span> priority;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="structprocess__init__data__t.html#a34f85f3f56546700b1dc942070944e27">   83</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> <a class="code" href="structprocess__init__data__t.html#a34f85f3f56546700b1dc942070944e27">ppid</a>; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="structprocess__init__data__t.html#a34f85f3f56546700b1dc942070944e27">   83</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> <a class="code" href="structprocess__init__data__t.html#a34f85f3f56546700b1dc942070944e27">ppid</a>; </div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;} <a class="code" href="structprocess__init__data__t.html">process_init_data_t</a>;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">struct </span><a class="code" href="struct__tty__struct__t.html">_tty_struct_t</a>;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="structprocess__t.html">   92</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="code" href="structprocess__t.html#accfb1a515727ba4c085e49166a302af0">   93</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>        <a class="code" href="structprocess__t.html#accfb1a515727ba4c085e49166a302af0">pid</a>; </div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="structprocess__t.html#a655d3aecbef82f263f36fab5685cddd0">   94</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>        <a class="code" href="structprocess__t.html#a655d3aecbef82f263f36fab5685cddd0">ppid</a>; </div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="structprocess__t.html#ab921f5e190c38325ac7ad805dd3d696e">   95</a></span>&#160;        <span class="keywordtype">char</span>*           <a class="code" href="structprocess__t.html#ab921f5e190c38325ac7ad805dd3d696e">name</a>; </div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="code" href="structprocess__t.html#a985ffe8e24460762cca611546422f8ea">   96</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structprocess__t.html#a985ffe8e24460762cca611546422f8ea">state</a>; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="structprocess.html">   92</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structprocess.html">process</a> {</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="structprocess.html#a5f455d8121a78f8050bf669326fbe731">   93</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>        <a class="code" href="structprocess.html#a5f455d8121a78f8050bf669326fbe731">pid</a>; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="structprocess.html#a75c12130e8e78afe9d8fc94a6f59f9ba">   94</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>        <a class="code" href="structprocess.html#a75c12130e8e78afe9d8fc94a6f59f9ba">ppid</a>; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="structprocess.html#ab00affa63607d02095f147da6f1c0983">   95</a></span>&#160;        <span class="keywordtype">char</span>*           <a class="code" href="structprocess.html#ab00affa63607d02095f147da6f1c0983">name</a>; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="structprocess.html#adceb5d278a54b128096a76c8405f27d5">   96</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structprocess.html#adceb5d278a54b128096a76c8405f27d5">state</a>; </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="comment">//uint8_t       priority; // Not used.</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        </div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="comment">/* Données dédiées au évaluation de perf */</span></div>
@@ -155,62 +156,123 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="comment">/* Données utilisées pour les IO */</span></div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="struct__open__file__descriptor.html">open_file_descriptor</a>* fd[<a class="code" href="fd__types_8h.html#aa188a2e288c10a684622814c51337465">FOPEN_MAX</a>];</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">struct </span><a class="code" href="structpage__directory__entry.html" title="Page Directory Entry.">page_directory_entry</a> * pd;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">struct </span><a class="code" href="structpage__directory__entry.html">page_directory_entry</a> * pd;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keyword">struct </span><a class="code" href="structvirtual__mem.html">virtual_mem</a> *vm;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        </div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <a class="code" href="structsignal__process__data__t.html">signal_process_data_t</a> signal_data;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00116"></a><span class="lineno"><a class="code" href="structprocess__t.html#a345124afd3f5f75fdc291d9076348950">  116</a></span>&#160;        <span class="keywordtype">char</span> *<a class="code" href="structprocess__t.html#a345124afd3f5f75fdc291d9076348950">ctrl_tty</a>; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="structprocess.html#ac44ae9d0fbc98179b8f89bf666580086">  116</a></span>&#160;        <span class="keywordtype">char</span> *<a class="code" href="structprocess.html#ac44ae9d0fbc98179b8f89bf666580086">ctrl_tty</a>; </div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="comment">/* Données liées au debug run-time du process */</span></div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <a class="code" href="structsymbol__table__t.html">symbol_table_t</a>* symtable;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordtype">int</span> sem_wait;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;} <a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
-<div class="line"><a name="l00128"></a><span class="lineno"><a class="code" href="struct__proclist__cell.html">  128</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__proclist__cell.html">_proclist_cell</a>{</div>
-<div class="line"><a name="l00129"></a><span class="lineno"><a class="code" href="struct__proclist__cell.html#abe320ebc4ea6556f17dd28e93efb6b31">  129</a></span>&#160;        <a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* <a class="code" href="struct__proclist__cell.html#abe320ebc4ea6556f17dd28e93efb6b31">process</a>; </div>
-<div class="line"><a name="l00130"></a><span class="lineno"><a class="code" href="struct__proclist__cell.html#a76062c3c8bce7b458ed610e7568c0858">  130</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__proclist__cell.html">_proclist_cell</a>* <a class="code" href="struct__proclist__cell.html#a76062c3c8bce7b458ed610e7568c0858">next</a>; </div>
-<div class="line"><a name="l00131"></a><span class="lineno"><a class="code" href="struct__proclist__cell.html#aee5c3bd7595d05c693fe6df63937052e">  131</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__proclist__cell.html">_proclist_cell</a>* <a class="code" href="struct__proclist__cell.html#aee5c3bd7595d05c693fe6df63937052e">prev</a>; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}*<a class="code" href="kprocess_8h.html#ac9040b1162f3fbe3bc0a5c2d7f07cf58">proc_list</a>, <a class="code" href="struct__proclist__cell.html">proclist_cell</a>;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* <a class="code" href="kprocess_8h.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a...">create_process</a>(<a class="code" href="structprocess__init__data__t.html">process_init_data_t</a>* init_data);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="keywordtype">int</span> <a class="code" href="kprocess_8h.html#a7cced35f469ae897c55ab96940289cf6" title="Retire un processus de la liste.">delete_process</a>(<span class="keywordtype">int</span> pid);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* <a class="code" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné.">find_process</a>(<span class="keywordtype">int</span> pid);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* <a class="code" href="kprocess_8h.html#ab9b171d0bff7fe92083df6efaa920030" title="Retourne le processus suivant le processus courant dans la liste.">get_next_process</a>();</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="kprocess_8h.html#a63bbc7e770ccf29ac484112986ee7640" title="Retourne le nombre de processus dans la liste.">get_proc_count</a>();</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keywordtype">void</span> <a class="code" href="kprocess_8h.html#a8d3174a39442391c9d23454a3bcf482b" title="Nettoie la liste des processus. Retire de la liste tous les processus en état PROCSTATE_TERMINATED.">clean_process_list</a>();</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="keywordtype">void</span> sample_CPU_usage();</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;SYSCALL_HANDLER1(sys_exit,<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ret_value __attribute__ ((unused)));</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;SYSCALL_HANDLER1(sys_getpid, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>* pid);</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;SYSCALL_HANDLER1(sys_getppid, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>* ppid);</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;SYSCALL_HANDLER3(sys_exec, <span class="keywordtype">char</span> *cmdline, <span class="keywordtype">char</span> **environ, <span class="keywordtype">int</span> *retval);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;SYSCALL_HANDLER3(sys_proc, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> sub_func, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param1, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param2);</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;SYSCALL_HANDLER1(sys_waitpid, <span class="keywordtype">int</span> pid);</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="keywordtype">void</span> <a class="code" href="procfs_8c.html#a67b19f8892567cdb63c98ee660300f60" title="Initialisation du proc FS.">procfs_init</a>();</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* <a class="code" href="kprocess_8h.html#ab5769fb8db77d54ea9a9216f14a2248c" title="Récupère un process à partir de sa position dans le tableau.">get_process_array</a>(<span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="structprocess.html#ac41b1192ed3707ececd1b3d5a8030e07">  125</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structprocess.html#ac41b1192ed3707ececd1b3d5a8030e07">sem_wait</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="structprocess.html#af6d26a303bcfd1d6fb8249b26aa1b8a8">  130</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structprocess.html#af6d26a303bcfd1d6fb8249b26aa1b8a8">sem_wait_child</a>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="structprocess.html#a3c7e75af24b759fca4705883fd3bc68a">  135</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structprocess.html#a3c7e75af24b759fca4705883fd3bc68a">nb_children</a>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keyword">struct </span><a class="code" href="structprocess.html">process</a> * children[<a class="code" href="kprocess_8h.html#a63e32d00bc48471b4db49d481ac228dc">MAX_PROC</a>];</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;} <a class="code" href="kprocess_8h.html#a7742ed3a86b7bcb5a4b76893fc331ede">process_t</a>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="struct__proclist__cell.html">  143</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__proclist__cell.html">_proclist_cell</a>{</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="struct__proclist__cell.html#abe320ebc4ea6556f17dd28e93efb6b31">  144</a></span>&#160;        <a class="code" href="structprocess.html">process_t</a>* <a class="code" href="struct__proclist__cell.html#abe320ebc4ea6556f17dd28e93efb6b31">process</a>; </div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="struct__proclist__cell.html#a76062c3c8bce7b458ed610e7568c0858">  145</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__proclist__cell.html">_proclist_cell</a>* <a class="code" href="struct__proclist__cell.html#a76062c3c8bce7b458ed610e7568c0858">next</a>; </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="struct__proclist__cell.html#aee5c3bd7595d05c693fe6df63937052e">  146</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__proclist__cell.html">_proclist_cell</a>* <a class="code" href="struct__proclist__cell.html#aee5c3bd7595d05c693fe6df63937052e">prev</a>; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}*<a class="code" href="kprocess_8h.html#ac9040b1162f3fbe3bc0a5c2d7f07cf58">proc_list</a>, <a class="code" href="struct__proclist__cell.html">proclist_cell</a>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keywordtype">int</span> <a class="code" href="kprocess_8h.html#a19a88a02c4baad09f86d6c110f3d3240">create_kprocess</a>(<span class="keywordtype">char</span>* name,</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                    <span class="keywordtype">void</span>* entry_point,</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                    <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> stack_size);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<a class="code" href="structprocess.html">process_t</a>* create_process(<a class="code" href="structprocess__init__data__t.html">process_init_data_t</a>* init_data);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keywordtype">int</span> <a class="code" href="kprocess_8h.html#a7cced35f469ae897c55ab96940289cf6">delete_process</a>(<span class="keywordtype">int</span> pid);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<a class="code" href="structprocess.html">process_t</a>* <a class="code" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452">find_process</a>(<span class="keywordtype">int</span> pid);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<a class="code" href="structprocess.html">process_t</a>* <a class="code" href="kprocess_8h.html#ab9b171d0bff7fe92083df6efaa920030">get_next_process</a>();</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="kprocess_8h.html#a63bbc7e770ccf29ac484112986ee7640">get_proc_count</a>();</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="keywordtype">void</span> <a class="code" href="kprocess_8h.html#a8d3174a39442391c9d23454a3bcf482b">clean_process_list</a>();</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keywordtype">void</span> sample_CPU_usage();</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<a class="code" href="kprocess_8h.html#acc70870c5d5807f03b0a58bd1e160f6f">SYSCALL_HANDLER1</a>(sys_exit,<a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ret_value __attribute__ ((unused)));</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<a class="code" href="kprocess_8h.html#acc70870c5d5807f03b0a58bd1e160f6f">SYSCALL_HANDLER1</a>(sys_getpid, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>* pid);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<a class="code" href="kprocess_8h.html#acc70870c5d5807f03b0a58bd1e160f6f">SYSCALL_HANDLER1</a>(sys_getppid, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>* ppid);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<a class="code" href="kprocess_8h.html#a47ef452c5b4017727c9c4222ab133fae">SYSCALL_HANDLER3</a>(sys_exec, <span class="keywordtype">char</span> *cmdline, <span class="keywordtype">char</span> **environ, <span class="keywordtype">int</span> *retval);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<a class="code" href="kprocess_8h.html#a47ef452c5b4017727c9c4222ab133fae">SYSCALL_HANDLER3</a>(sys_proc, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> sub_func, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param1, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param2);</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _K_PROCESS_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<a class="code" href="kprocess_8h.html#acc70870c5d5807f03b0a58bd1e160f6f">SYSCALL_HANDLER1</a>(sys_waitpid, <span class="keywordtype">int</span> pid);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="keywordtype">void</span> <a class="code" href="kprocess_8h.html#a67b19f8892567cdb63c98ee660300f60">procfs_init</a>();</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<a class="code" href="structprocess.html">process_t</a>* <a class="code" href="kprocess_8h.html#ab5769fb8db77d54ea9a9216f14a2248c">get_process_array</a>(<span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _K_PROCESS_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="structpage__directory__entry_html"><div class="ttname"><a href="structpage__directory__entry.html">page_directory_entry</a></div><div class="ttdoc">Page Directory Entry. </div><div class="ttdef"><b>Definition:</b> pagination.h:46</div></div>
+<div class="ttc" id="structprocess_html"><div class="ttname"><a href="structprocess.html">process</a></div><div class="ttdoc">Structure représentant un processus. </div><div class="ttdef"><b>Definition:</b> kprocess.h:92</div></div>
+<div class="ttc" id="struct__proclist__cell_html"><div class="ttname"><a href="struct__proclist__cell.html">_proclist_cell</a></div><div class="ttdef"><b>Definition:</b> kprocess.h:143</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html"><div class="ttname"><a href="kernel_2include_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="structprocess_html_a5f455d8121a78f8050bf669326fbe731"><div class="ttname"><a href="structprocess.html#a5f455d8121a78f8050bf669326fbe731">process::pid</a></div><div class="ttdeci">uint16_t pid</div><div class="ttdef"><b>Definition:</b> kprocess.h:93</div></div>
+<div class="ttc" id="struct__tty__struct__t_html"><div class="ttname"><a href="struct__tty__struct__t.html">_tty_struct_t</a></div><div class="ttdef"><b>Definition:</b> tty.h:61</div></div>
+<div class="ttc" id="struct__proclist__cell_html_aee5c3bd7595d05c693fe6df63937052e"><div class="ttname"><a href="struct__proclist__cell.html#aee5c3bd7595d05c693fe6df63937052e">_proclist_cell::prev</a></div><div class="ttdeci">struct _proclist_cell * prev</div><div class="ttdef"><b>Definition:</b> kprocess.h:146</div></div>
+<div class="ttc" id="kprocess_8h_html_ab9b171d0bff7fe92083df6efaa920030"><div class="ttname"><a href="kprocess_8h.html#ab9b171d0bff7fe92083df6efaa920030">get_next_process</a></div><div class="ttdeci">process_t * get_next_process()</div><div class="ttdoc">Retourne le processus suivant le processus courant dans la liste. </div></div>
+<div class="ttc" id="structprocess_html_a75c12130e8e78afe9d8fc94a6f59f9ba"><div class="ttname"><a href="structprocess.html#a75c12130e8e78afe9d8fc94a6f59f9ba">process::ppid</a></div><div class="ttdeci">uint16_t ppid</div><div class="ttdef"><b>Definition:</b> kprocess.h:94</div></div>
+<div class="ttc" id="structElf32__File_html"><div class="ttname"><a href="structElf32__File.html">Elf32_File</a></div><div class="ttdoc">Structure qui caractérise un binaire elf. </div><div class="ttdef"><b>Definition:</b> elf.h:272</div></div>
+<div class="ttc" id="symtable_8h_html"><div class="ttname"><a href="symtable_8h.html">symtable.h</a></div></div>
+<div class="ttc" id="structprocess__init__data__t_html_a863d82fbd718f53164a520f67376eac2"><div class="ttname"><a href="structprocess__init__data__t.html#a863d82fbd718f53164a520f67376eac2">process_init_data_t::envp</a></div><div class="ttdeci">char ** envp</div><div class="ttdef"><b>Definition:</b> kprocess.h:68</div></div>
+<div class="ttc" id="structprocess__init__data__t_html_a6bdcab0bceaafa6e65a236904fb5a157"><div class="ttname"><a href="structprocess__init__data__t.html#a6bdcab0bceaafa6e65a236904fb5a157">process_init_data_t::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> kprocess.h:66</div></div>
+<div class="ttc" id="signal__types_8h_html"><div class="ttname"><a href="signal__types_8h.html">signal_types.h</a></div><div class="ttdoc">Types pour les signaux (en particulier les numéros de signaux). </div></div>
+<div class="ttc" id="structprocess_html_adceb5d278a54b128096a76c8405f27d5"><div class="ttname"><a href="structprocess.html#adceb5d278a54b128096a76c8405f27d5">process::state</a></div><div class="ttdeci">uint8_t state</div><div class="ttdef"><b>Definition:</b> kprocess.h:96</div></div>
+<div class="ttc" id="structregs__t_html"><div class="ttname"><a href="structregs__t.html">regs_t</a></div><div class="ttdef"><b>Definition:</b> process_types.h:34</div></div>
+<div class="ttc" id="structprocess__init__data__t_html"><div class="ttname"><a href="structprocess__init__data__t.html">process_init_data_t</a></div><div class="ttdef"><b>Definition:</b> kprocess.h:64</div></div>
+<div class="ttc" id="fd__types_8h_html_aa188a2e288c10a684622814c51337465"><div class="ttname"><a href="fd__types_8h.html#aa188a2e288c10a684622814c51337465">FOPEN_MAX</a></div><div class="ttdeci">#define FOPEN_MAX</div><div class="ttdef"><b>Definition:</b> fd_types.h:35</div></div>
+<div class="ttc" id="structprocess__init__data__t_html_ae950cc2a2cc04d1c00a71f70c2fde72c"><div class="ttname"><a href="structprocess__init__data__t.html#ae950cc2a2cc04d1c00a71f70c2fde72c">process_init_data_t::data</a></div><div class="ttdeci">void * data</div><div class="ttdef"><b>Definition:</b> kprocess.h:72</div></div>
+<div class="ttc" id="kprocess_8h_html_a7742ed3a86b7bcb5a4b76893fc331ede"><div class="ttname"><a href="kprocess_8h.html#a7742ed3a86b7bcb5a4b76893fc331ede">process_t</a></div><div class="ttdeci">struct process process_t</div><div class="ttdoc">Structure représentant un processus. </div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_adf4d876453337156dde61095e1f20223"><div class="ttname"><a href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a></div><div class="ttdeci">unsigned short int uint16_t</div><div class="ttdef"><b>Definition:</b> types.h:35</div></div>
+<div class="ttc" id="kprocess_8h_html_a63bbc7e770ccf29ac484112986ee7640"><div class="ttname"><a href="kprocess_8h.html#a63bbc7e770ccf29ac484112986ee7640">get_proc_count</a></div><div class="ttdeci">uint32_t get_proc_count()</div><div class="ttdoc">Retourne le nombre de processus dans la liste. </div><div class="ttdef"><b>Definition:</b> kprocess.c:58</div></div>
+<div class="ttc" id="structvirtual__mem_html"><div class="ttname"><a href="structvirtual__mem.html">virtual_mem</a></div><div class="ttdef"><b>Definition:</b> vmm.h:56</div></div>
+<div class="ttc" id="structsymbol__table__t_html"><div class="ttname"><a href="structsymbol__table__t.html">symbol_table_t</a></div><div class="ttdef"><b>Definition:</b> symtable.h:40</div></div>
+<div class="ttc" id="struct__proclist__cell_html_a76062c3c8bce7b458ed610e7568c0858"><div class="ttname"><a href="struct__proclist__cell.html#a76062c3c8bce7b458ed610e7568c0858">_proclist_cell::next</a></div><div class="ttdeci">struct _proclist_cell * next</div><div class="ttdef"><b>Definition:</b> kprocess.h:145</div></div>
+<div class="ttc" id="process__types_8h_html"><div class="ttname"><a href="process__types_8h.html">process_types.h</a></div></div>
+<div class="ttc" id="kprocess_8h_html_acc70870c5d5807f03b0a58bd1e160f6f"><div class="ttname"><a href="kprocess_8h.html#acc70870c5d5807f03b0a58bd1e160f6f">SYSCALL_HANDLER1</a></div><div class="ttdeci">SYSCALL_HANDLER1(sys_exit, uint32_t ret_value)</div><div class="ttdoc">Syscall appelé lors de la fin d&#39;exécution d&#39;un process. </div><div class="ttdef"><b>Definition:</b> kprocess.c:570</div></div>
+<div class="ttc" id="vmm_8h_html"><div class="ttname"><a href="vmm_8h.html">vmm.h</a></div></div>
+<div class="ttc" id="kprocess_8h_html_a99064f971fd1f14adcbf0a0a5c2af452"><div class="ttname"><a href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452">find_process</a></div><div class="ttdeci">process_t * find_process(int pid)</div><div class="ttdoc">Cherche le process_t* en correspondant à un pid donné. </div><div class="ttdef"><b>Definition:</b> kprocess.c:89</div></div>
+<div class="ttc" id="structprocess_html_ac41b1192ed3707ececd1b3d5a8030e07"><div class="ttname"><a href="structprocess.html#ac41b1192ed3707ececd1b3d5a8030e07">process::sem_wait</a></div><div class="ttdeci">int sem_wait</div><div class="ttdef"><b>Definition:</b> kprocess.h:125</div></div>
+<div class="ttc" id="structprocess__init__data__t_html_a1cda790f7d2446a04562094f09e358ab"><div class="ttname"><a href="structprocess__init__data__t.html#a1cda790f7d2446a04562094f09e358ab">process_init_data_t::exec_type</a></div><div class="ttdeci">int exec_type</div><div class="ttdef"><b>Definition:</b> kprocess.h:70</div></div>
+<div class="ttc" id="kprocess_8h_html_a67b19f8892567cdb63c98ee660300f60"><div class="ttname"><a href="kprocess_8h.html#a67b19f8892567cdb63c98ee660300f60">procfs_init</a></div><div class="ttdeci">void procfs_init()</div><div class="ttdoc">Initialisation du proc FS. </div><div class="ttdef"><b>Definition:</b> procfs.c:671</div></div>
+<div class="ttc" id="kprocess_8h_html_a19a88a02c4baad09f86d6c110f3d3240"><div class="ttname"><a href="kprocess_8h.html#a19a88a02c4baad09f86d6c110f3d3240">create_kprocess</a></div><div class="ttdeci">int create_kprocess(char *name, void *entry_point, uint32_t stack_size)</div><div class="ttdoc">Crée un nouveau processus kernel. Crée un nouveau processus kernel et l&#39;ajoute à la liste des process...</div><div class="ttdef"><b>Definition:</b> kprocess.c:403</div></div>
+<div class="ttc" id="fd__types_8h_html"><div class="ttname"><a href="fd__types_8h.html">fd_types.h</a></div><div class="ttdoc">Structures liées aux fichiers ouverts. </div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> types.h:34</div></div>
+<div class="ttc" id="structprocess_html_a3c7e75af24b759fca4705883fd3bc68a"><div class="ttname"><a href="structprocess.html#a3c7e75af24b759fca4705883fd3bc68a">process::nb_children</a></div><div class="ttdeci">int nb_children</div><div class="ttdef"><b>Definition:</b> kprocess.h:135</div></div>
+<div class="ttc" id="structprocess_html_af6d26a303bcfd1d6fb8249b26aa1b8a8"><div class="ttname"><a href="structprocess.html#af6d26a303bcfd1d6fb8249b26aa1b8a8">process::sem_wait_child</a></div><div class="ttdeci">int sem_wait_child</div><div class="ttdef"><b>Definition:</b> kprocess.h:130</div></div>
+<div class="ttc" id="structsignal__process__data__t_html"><div class="ttname"><a href="structsignal__process__data__t.html">signal_process_data_t</a></div><div class="ttdef"><b>Definition:</b> signal_types.h:40</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_a53428b953a0ae6fba02a5b3596c867e0"><div class="ttname"><a href="kernel_2include_2types_8h.html#a53428b953a0ae6fba02a5b3596c867e0">vaddr_t</a></div><div class="ttdeci">uint32_t vaddr_t</div><div class="ttdef"><b>Definition:</b> types.h:38</div></div>
+<div class="ttc" id="ksyscall_8h_html"><div class="ttname"><a href="ksyscall_8h.html">ksyscall.h</a></div></div>
+<div class="ttc" id="kprocess_8h_html_ac9040b1162f3fbe3bc0a5c2d7f07cf58"><div class="ttname"><a href="kprocess_8h.html#ac9040b1162f3fbe3bc0a5c2d7f07cf58">proc_list</a></div><div class="ttdeci">struct _proclist_cell * proc_list</div></div>
+<div class="ttc" id="structprocess_html_ac44ae9d0fbc98179b8f89bf666580086"><div class="ttname"><a href="structprocess.html#ac44ae9d0fbc98179b8f89bf666580086">process::ctrl_tty</a></div><div class="ttdeci">char * ctrl_tty</div><div class="ttdef"><b>Definition:</b> kprocess.h:116</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_a33594304e786b158f3fb30289278f5af"><div class="ttname"><a href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a></div><div class="ttdeci">unsigned long int uint32_t</div><div class="ttdef"><b>Definition:</b> types.h:36</div></div>
+<div class="ttc" id="kprocess_8h_html_a63e32d00bc48471b4db49d481ac228dc"><div class="ttname"><a href="kprocess_8h.html#a63e32d00bc48471b4db49d481ac228dc">MAX_PROC</a></div><div class="ttdeci">#define MAX_PROC</div><div class="ttdef"><b>Definition:</b> kprocess.h:42</div></div>
+<div class="ttc" id="structprocess__init__data__t_html_a34f85f3f56546700b1dc942070944e27"><div class="ttname"><a href="structprocess__init__data__t.html#a34f85f3f56546700b1dc942070944e27">process_init_data_t::ppid</a></div><div class="ttdeci">uint16_t ppid</div><div class="ttdef"><b>Definition:</b> kprocess.h:83</div></div>
+<div class="ttc" id="kprocess_8h_html_ab5769fb8db77d54ea9a9216f14a2248c"><div class="ttname"><a href="kprocess_8h.html#ab5769fb8db77d54ea9a9216f14a2248c">get_process_array</a></div><div class="ttdeci">process_t * get_process_array(int i)</div><div class="ttdoc">Récupère un process à partir de sa position dans le tableau. </div><div class="ttdef"><b>Definition:</b> kprocess.c:63</div></div>
+<div class="ttc" id="struct__open__file__descriptor_html"><div class="ttname"><a href="struct__open__file__descriptor.html">_open_file_descriptor</a></div><div class="ttdef"><b>Definition:</b> fd_types.h:91</div></div>
+<div class="ttc" id="kprocess_8h_html_a7cced35f469ae897c55ab96940289cf6"><div class="ttname"><a href="kprocess_8h.html#a7cced35f469ae897c55ab96940289cf6">delete_process</a></div><div class="ttdeci">int delete_process(int pid)</div><div class="ttdoc">Retire un processus de la liste. </div><div class="ttdef"><b>Definition:</b> kprocess.c:94</div></div>
+<div class="ttc" id="structprocess__init__data__t_html_a16d011771835f06e0bb3d5fd6115e13c"><div class="ttname"><a href="structprocess__init__data__t.html#a16d011771835f06e0bb3d5fd6115e13c">process_init_data_t::args</a></div><div class="ttdeci">char * args</div><div class="ttdef"><b>Definition:</b> kprocess.h:67</div></div>
+<div class="ttc" id="kprocess_8h_html_a8d3174a39442391c9d23454a3bcf482b"><div class="ttname"><a href="kprocess_8h.html#a8d3174a39442391c9d23454a3bcf482b">clean_process_list</a></div><div class="ttdeci">void clean_process_list()</div><div class="ttdoc">Nettoie la liste des processus. Retire de la liste tous les processus en état PROCSTATE_TERMINATED. </div></div>
+<div class="ttc" id="struct__proclist__cell_html_abe320ebc4ea6556f17dd28e93efb6b31"><div class="ttname"><a href="struct__proclist__cell.html#abe320ebc4ea6556f17dd28e93efb6b31">_proclist_cell::process</a></div><div class="ttdeci">process_t * process</div><div class="ttdef"><b>Definition:</b> kprocess.h:144</div></div>
+<div class="ttc" id="structprocess_html_ab00affa63607d02095f147da6f1c0983"><div class="ttname"><a href="structprocess.html#ab00affa63607d02095f147da6f1c0983">process::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> kprocess.h:95</div></div>
+<div class="ttc" id="kprocess_8h_html_a47ef452c5b4017727c9c4222ab133fae"><div class="ttname"><a href="kprocess_8h.html#a47ef452c5b4017727c9c4222ab133fae">SYSCALL_HANDLER3</a></div><div class="ttdeci">SYSCALL_HANDLER3(sys_exec, char *cmdline, char **environ, int *retval)</div><div class="ttdoc">Syscall pour exécuter un programme. </div><div class="ttdef"><b>Definition:</b> kprocess.c:624</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

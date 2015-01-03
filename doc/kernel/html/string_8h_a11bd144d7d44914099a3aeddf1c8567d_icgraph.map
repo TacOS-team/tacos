@@ -1,9 +1,9 @@
 <map id="strcmp" name="strcmp">
-<area shape="rect" id="node3" href="$elf_8h.html#abbbb3d1f6ac9986f87d655cec7819556" title="charge un fichier elf dans la structure Elf32_File" alt="" coords="117,5,208,33"/>
-<area shape="rect" id="node7" href="$elf_8h.html#a8f556b72039271c88d4567c6e2f84ea0" title="Trouve un symbole dans un fichier." alt="" coords="117,55,208,83"/>
-<area shape="rect" id="node9" href="$devfs_8c.html#a38f6fa048d759685554ab60cae2fb250" title="Trouve les interfaces d&#39;un driver en fonction de son nom." alt="" coords="123,106,203,134"/>
-<area shape="rect" id="node11" href="$fat__internal_8h.html#a2673c2b00be14ce740290ba2e92b9f90" title="fat_unlink" alt="" coords="124,157,201,185"/>
-<area shape="rect" id="node13" href="$vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage." alt="" coords="121,207,204,235"/>
-<area shape="rect" id="node15" href="$vfs_8c.html#a69a4424755e56bad13f341c1600db527" title="Démonte un point de montage." alt="" coords="117,258,208,286"/>
-<area shape="rect" id="node5" href="$kprocess_8c.html#a47ef452c5b4017727c9c4222ab133fae" title="Syscall pour exécuter un programme." alt="" coords="256,5,416,33"/>
+<area shape="rect" id="node3" href="$elf_8h.html#abbbb3d1f6ac9986f87d655cec7819556" title="charge un fichier elf dans la structure Elf32_File" alt="" coords="115,5,205,33"/>
+<area shape="rect" id="node7" href="$elf_8h.html#a8f556b72039271c88d4567c6e2f84ea0" title="Trouve un symbole dans un fichier." alt="" coords="116,55,204,83"/>
+<area shape="rect" id="node9" href="$devfs_8c.html#a38f6fa048d759685554ab60cae2fb250" title="Trouve les interfaces d&#39;un driver en fonction de son nom." alt="" coords="120,106,200,134"/>
+<area shape="rect" id="node11" href="$fat__internal_8h.html#a2673c2b00be14ce740290ba2e92b9f90" title="fat_unlink" alt="" coords="121,157,199,185"/>
+<area shape="rect" id="node13" href="$vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage." alt="" coords="120,207,200,235"/>
+<area shape="rect" id="node15" href="$vfs_8c.html#a69a4424755e56bad13f341c1600db527" title="Démonte un point de montage." alt="" coords="116,258,204,286"/>
+<area shape="rect" id="node5" href="$kprocess_8c.html#a47ef452c5b4017727c9c4222ab133fae" title="Syscall pour exécuter un programme." alt="" coords="253,5,408,33"/>
 </map>

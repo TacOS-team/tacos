@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/include/ksem.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,38 +90,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="ksem_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef KSEM_H</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define KSEM_H</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define KSEM_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ksyscall_8h.html">ksyscall.h</a>&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="ksem_8h.html#a50eabf011dba36652a098b706c2b0bc7">   35</a></span>&#160;<span class="preprocessor">#define SEM_NEW 255 </span></div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="ksem_8h.html#a6509192a31012daee9e37542c101b383">   36</a></span>&#160;<span class="preprocessor">#define SEM_CREATE 1 </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="ksem_8h.html#a50eabf011dba36652a098b706c2b0bc7">   35</a></span>&#160;<span class="preprocessor">#define SEM_NEW 255 </span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="ksem_8h.html#a6509192a31012daee9e37542c101b383">   36</a></span>&#160;<span class="preprocessor">#define SEM_CREATE 1 </span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">// semctl commands</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="ksem_8h.html#a64f2292daa17048ddad96280a7e7ad43">   39</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SEM_GETVAL 1 </span></div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="ksem_8h.html#a9b107c7e8a214a9a97aaf58711f6ebd9">   40</a></span>&#160;<span class="preprocessor">#define SEM_DEL 2 </span></div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="ksem_8h.html#a618218b969fbc9639e1d988cadaea5ec">   41</a></span>&#160;<span class="preprocessor">#define SEM_ZCNT 3 </span></div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="ksem_8h.html#aeef734ee66a32553f40421752c4e8cbf">   42</a></span>&#160;<span class="preprocessor">#define SEM_SET 4 </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="ksem_8h.html#a64f2292daa17048ddad96280a7e7ad43">   39</a></span>&#160;<span class="preprocessor">#define SEM_GETVAL 1 </span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="ksem_8h.html#a9b107c7e8a214a9a97aaf58711f6ebd9">   40</a></span>&#160;<span class="preprocessor">#define SEM_DEL 2 </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="ksem_8h.html#a618218b969fbc9639e1d988cadaea5ec">   41</a></span>&#160;<span class="preprocessor">#define SEM_ZCNT 3 </span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="ksem_8h.html#aeef734ee66a32553f40421752c4e8cbf">   42</a></span>&#160;<span class="preprocessor">#define SEM_SET 4 </span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">int init_semaphores();</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;SYSCALL_HANDLER3(sys_ksem, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> op, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param, <span class="keywordtype">int</span> *ret);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<a class="code" href="ksem_8h.html#a82fb70bceeb23516b8cbdc1bc8f77805">SYSCALL_HANDLER3</a>(sys_ksem, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> op, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param, <span class="keywordtype">int</span> *ret);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé...">ksemget</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key, <span class="keywordtype">int</span> flags);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#a7f54885ee2689208328406935525f0a5">ksemget</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key, <span class="keywordtype">int</span> flags);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)">ksemctl</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key, <span class="keywordtype">int</span> cmd, <span class="keywordtype">void</span>* res);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#af980f49354b68b113faee6edd6851bf9">ksemctl</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key, <span class="keywordtype">int</span> cmd, <span class="keywordtype">void</span>* res);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#acfbbd3e3f726b24309758cf6499a8141" title="Opération P sur un sémaphore Réalise l&#39;opération P sur le sémaphore. Le processus essaye donc de pren...">ksemP</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#acfbbd3e3f726b24309758cf6499a8141">ksemP</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#acf03efb500e930ca996059a6388b528b" title="Opération V sur un sémaphore Réalise l&#39;opération V sur le sémaphore. Le processus libère le sémaphore...">ksemV</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ksem_8h.html#acf03efb500e930ca996059a6388b528b">ksemV</a>(<a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key);</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif //KSEM_H</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="ttc" id="kernel_2include_2types_8h_html"><div class="ttname"><a href="kernel_2include_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="ksem_8h_html_acfbbd3e3f726b24309758cf6499a8141"><div class="ttname"><a href="ksem_8h.html#acfbbd3e3f726b24309758cf6499a8141">ksemP</a></div><div class="ttdeci">int ksemP(uint8_t key)</div><div class="ttdoc">Opération P sur un sémaphore Réalise l&#39;opération P sur le sémaphore. Le processus essaye donc de pren...</div><div class="ttdef"><b>Definition:</b> ksem.c:234</div></div>
+<div class="ttc" id="ksem_8h_html_a82fb70bceeb23516b8cbdc1bc8f77805"><div class="ttname"><a href="ksem_8h.html#a82fb70bceeb23516b8cbdc1bc8f77805">SYSCALL_HANDLER3</a></div><div class="ttdeci">SYSCALL_HANDLER3(sys_ksem, uint32_t op, uint32_t param, int *ret)</div><div class="ttdoc">Handler de l&#39;appel système SYS_SEM Dans la pratique, sys_ksem ne fait qu&#39;exécuter la fonction corresp...</div><div class="ttdef"><b>Definition:</b> ksem.c:276</div></div>
+<div class="ttc" id="ksem_8h_html_a7f54885ee2689208328406935525f0a5"><div class="ttname"><a href="ksem_8h.html#a7f54885ee2689208328406935525f0a5">ksemget</a></div><div class="ttdeci">int ksemget(uint8_t key, int flags)</div><div class="ttdoc">Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé...</div><div class="ttdef"><b>Definition:</b> ksem.c:189</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> types.h:34</div></div>
+<div class="ttc" id="ksem_8h_html_af980f49354b68b113faee6edd6851bf9"><div class="ttname"><a href="ksem_8h.html#af980f49354b68b113faee6edd6851bf9">ksemctl</a></div><div class="ttdeci">int ksemctl(uint8_t key, int cmd, void *res)</div><div class="ttdoc">Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.) </div><div class="ttdef"><b>Definition:</b> ksem.c:205</div></div>
+<div class="ttc" id="ksyscall_8h_html"><div class="ttname"><a href="ksyscall_8h.html">ksyscall.h</a></div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_a33594304e786b158f3fb30289278f5af"><div class="ttname"><a href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a></div><div class="ttdeci">unsigned long int uint32_t</div><div class="ttdef"><b>Definition:</b> types.h:36</div></div>
+<div class="ttc" id="ksem_8h_html_acf03efb500e930ca996059a6388b528b"><div class="ttname"><a href="ksem_8h.html#acf03efb500e930ca996059a6388b528b">ksemV</a></div><div class="ttdeci">int ksemV(uint8_t key)</div><div class="ttdoc">Opération V sur un sémaphore Réalise l&#39;opération V sur le sémaphore. Le processus libère le sémaphore...</div><div class="ttdef"><b>Definition:</b> ksem.c:257</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

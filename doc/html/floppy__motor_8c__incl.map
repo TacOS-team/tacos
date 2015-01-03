@@ -1,5 +1,5 @@
 <map id="kernel/drivers/block/floppy/floppy_motor.c" name="kernel/drivers/block/floppy/floppy_motor.c">
 <area shape="rect" id="node5" href="$ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="91,99,160,127"/>
 <area shape="rect" id="node7" href="$floppy__motor_8h.html" title="floppy_motor.h" alt="" coords="184,99,288,127"/>
-<area shape="rect" id="node9" href="$floppy__utils_8h.html" title="floppy_utils.h" alt="" coords="312,99,408,127"/>
+<area shape="rect" id="node9" href="$floppy__utils_8h.html" title="floppy_utils.h" alt="" coords="312,99,405,127"/>
 </map>

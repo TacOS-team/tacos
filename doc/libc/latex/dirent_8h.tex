@@ -9,16 +9,14 @@ Définition de D\-I\-R et struct dirent.
 {\ttfamily \#include $<$sys/cdefs.\-h$>$}\\*
 {\ttfamily \#include $<$sys/types.\-h$>$}\\*
 {\ttfamily \#include $<$sys/stat.\-h$>$}\\*
-Graphe des dépendances par inclusion de dirent.\-h\-:
-\nopagebreak
+Graphe des dépendances par inclusion de dirent.\-h\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=234pt]{dirent_8h__incl}
+\includegraphics[width=270pt]{dirent_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:
-\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -41,6 +39,23 @@ struct \hyperlink{structdirent}{dirent}
 \begin{DoxyCompactItemize}
 \item 
 typedef struct \hyperlink{struct__DIR}{\-\_\-\-D\-I\-R} \hyperlink{dirent_8h_a9e986c0f8d94ffe9983a6eabb17cbb9a}{D\-I\-R}
+\end{DoxyCompactItemize}
+\subsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \\*
+{\bfseries D\-T\-\_\-\-U\-N\-K\-N\-O\-W\-N} =  0, 
+{\bfseries D\-T\-\_\-\-F\-I\-F\-O} =  1, 
+{\bfseries D\-T\-\_\-\-C\-H\-R} =  2, 
+{\bfseries D\-T\-\_\-\-D\-I\-R} =  4, 
+\\*
+{\bfseries D\-T\-\_\-\-B\-L\-K} =  6, 
+{\bfseries D\-T\-\_\-\-R\-E\-G} =  8, 
+{\bfseries D\-T\-\_\-\-L\-N\-K} =  10, 
+{\bfseries D\-T\-\_\-\-S\-O\-C\-K} =  12, 
+\\*
+{\bfseries D\-T\-\_\-\-W\-H\-T} =  14
+ \}
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
@@ -81,6 +96,10 @@ Taille maximale d'un nom de fichier.
 \subsubsection[{D\-I\-R}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \-\_\-\-D\-I\-R}  {\bf D\-I\-R}}}\label{dirent_8h_a9e986c0f8d94ffe9983a6eabb17cbb9a}
 Structure permettant de lire un dossier. 
 
+\subsection{Documentation du type de l'énumération}
+\hypertarget{dirent_8h_a06fc87d81c62e9abb8790b6e5713c55b}{\subsubsection[{anonymous enum}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}\label{dirent_8h_a06fc87d81c62e9abb8790b6e5713c55b}
+Types de fichiers pour le champ \char`\"{}d\-\_\-type\char`\"{}. 
+
 \subsection{Documentation des fonctions}
 \hypertarget{dirent_8h_aaeac2b41e8c2c3a5f91c9bd511a8c0a6}{\index{dirent.\-h@{dirent.\-h}!closedir@{closedir}}
 \index{closedir@{closedir}!dirent.h@{dirent.\-h}}
@@ -101,12 +120,11 @@ Fermeture d'un dossier ouvert.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=290pt]{dirent_8h_aaeac2b41e8c2c3a5f91c9bd511a8c0a6_cgraph}
+\includegraphics[width=288pt]{dirent_8h_aaeac2b41e8c2c3a5f91c9bd511a8c0a6_cgraph}
 \end{center}
 \end{figure}
 
@@ -133,12 +151,11 @@ Crée un nouveau répertoire.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=334pt]{dirent_8h_aee98bbe743c2d14dbaa67f01c3fb9ed5_cgraph}
+\includegraphics[width=332pt]{dirent_8h_aee98bbe743c2d14dbaa67f01c3fb9ed5_cgraph}
 \end{center}
 \end{figure}
 
@@ -162,8 +179,7 @@ Une structure D\-I\-R permettant de lire le contenu du dossier.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -174,8 +190,7 @@ Voici le graphe d'appel pour cette fonction \-:
 
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -203,12 +218,11 @@ Un directory entry.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=210pt]{dirent_8h_a58257faf8b13b3f14558613c632b2373_cgraph}
+\includegraphics[width=208pt]{dirent_8h_a58257faf8b13b3f14558613c632b2373_cgraph}
 \end{center}
 \end{figure}
 

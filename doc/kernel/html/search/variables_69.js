@@ -11,7 +11,7 @@ var searchData=
   ['i_5ffile_5facl',['i_file_acl',['../structext2__inode.html#aee0fba48998e7d27b836d04ee53e4463',1,'ext2_inode']]],
   ['i_5fflags',['i_flags',['../structext2__inode.html#a2037da1edbe1d421dd4453f84cb973e6',1,'ext2_inode::i_flags()'],['../struct__inode__t.html#a36ff48a57a9e483d74682972d31ef46c',1,'_inode_t::i_flags()']]],
   ['i_5ffops',['i_fops',['../struct__inode__t.html#acf149d7d1601f78142b1eec480badf7e',1,'_inode_t']]],
-  ['i_5ffs_5fspecific',['i_fs_specific',['../struct__inode__t.html#a54e34439c448c46bae90fd040dadc5c0',1,'_inode_t']]],
+  ['i_5ffs_5fspecific',['i_fs_specific',['../struct__open__file__descriptor.html#a2fc86f185e4b611a90f7727ef26ff3de',1,'_open_file_descriptor::i_fs_specific()'],['../struct__inode__t.html#a54e34439c448c46bae90fd040dadc5c0',1,'_inode_t::i_fs_specific()']]],
   ['i_5fgeneration',['i_generation',['../structext2__inode.html#a551df9f3b8f61eb5840eeeb5921c69fb',1,'ext2_inode']]],
   ['i_5fgid',['i_gid',['../structext2__inode.html#af1686b705ca7912d370d12ceaab83b8b',1,'ext2_inode::i_gid()'],['../struct__inode__t.html#a95d052a6e9b1b1e4f6837fa0f33b393e',1,'_inode_t::i_gid()']]],
   ['i_5fino',['i_ino',['../struct__inode__t.html#aba602b843ba63a32ca3950dbaf7e959c',1,'_inode_t']]],

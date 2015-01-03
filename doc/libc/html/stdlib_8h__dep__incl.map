@@ -1,20 +1,20 @@
 <map id="libc/include/stdlib.h" name="libc/include/stdlib.h">
 <area shape="rect" id="node3" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="5,83,93,111"/>
 <area shape="rect" id="node5" href="$fcntl_8c.html" title="File control operations." alt="" coords="117,83,197,111"/>
-<area shape="rect" id="node7" href="$process_8c.html" title="libc/process.c" alt="" coords="221,83,323,111"/>
-<area shape="rect" id="node9" href="$signal_8c.html" title="Gestion des signaux." alt="" coords="347,83,437,111"/>
-<area shape="rect" id="node11" href="$start_8c.html" title="libc/start.c" alt="" coords="461,83,544,111"/>
-<area shape="rect" id="node13" href="$fclose_8c.html" title="Define &quot;fclose&quot; method." alt="" coords="568,83,691,111"/>
-<area shape="rect" id="node15" href="$fmemopen_8c.html" title="libc/stdio/fmemopen.c" alt="" coords="715,83,864,111"/>
-<area shape="rect" id="node17" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="888,83,1008,111"/>
-<area shape="rect" id="node19" href="$fprintf_8c.html" title="libc/stdio/fprintf.c" alt="" coords="1032,83,1152,111"/>
-<area shape="rect" id="node21" href="$get_8c.html" title="libc/stdio/get.c" alt="" coords="1176,83,1283,111"/>
-<area shape="rect" id="node23" href="$put_8c.html" title="libc/stdio/put.c" alt="" coords="1307,83,1413,111"/>
-<area shape="rect" id="node25" href="$scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="1437,83,1557,111"/>
-<area shape="rect" id="node27" href="$stdfiles_8c.html" title="Définition et initialisation des fichiers standards (stdin, stdout, stderr)." alt="" coords="1581,83,1709,111"/>
-<area shape="rect" id="node29" href="$stdio_8c.html" title="libc/stdio/stdio.c" alt="" coords="1733,83,1848,111"/>
-<area shape="rect" id="node31" href="$stdlib_8c.html" title="libc/stdlib.c" alt="" coords="1872,83,1957,111"/>
-<area shape="rect" id="node33" href="$string_8c.html" title="libc/string.c" alt="" coords="1981,83,2069,111"/>
-<area shape="rect" id="node35" href="$time_8c.html" title="libc/time.c" alt="" coords="2093,83,2173,111"/>
-<area shape="rect" id="node37" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="2197,83,2288,111"/>
+<area shape="rect" id="node7" href="$process_8c.html" title="libc/process.c" alt="" coords="221,83,320,111"/>
+<area shape="rect" id="node9" href="$signal_8c.html" title="Gestion des signaux." alt="" coords="344,83,432,111"/>
+<area shape="rect" id="node11" href="$start_8c.html" title="libc/start.c" alt="" coords="456,83,536,111"/>
+<area shape="rect" id="node13" href="$fclose_8c.html" title="Define &quot;fclose&quot; method." alt="" coords="560,83,680,111"/>
+<area shape="rect" id="node15" href="$fmemopen_8c.html" title="libc/stdio/fmemopen.c" alt="" coords="704,83,851,111"/>
+<area shape="rect" id="node17" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="875,83,992,111"/>
+<area shape="rect" id="node19" href="$fprintf_8c.html" title="libc/stdio/fprintf.c" alt="" coords="1016,83,1136,111"/>
+<area shape="rect" id="node21" href="$get_8c.html" title="libc/stdio/get.c" alt="" coords="1160,83,1264,111"/>
+<area shape="rect" id="node23" href="$put_8c.html" title="libc/stdio/put.c" alt="" coords="1288,83,1392,111"/>
+<area shape="rect" id="node25" href="$scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="1416,83,1533,111"/>
+<area shape="rect" id="node27" href="$stdfiles_8c.html" title="Définition et initialisation des fichiers standards (stdin, stdout, stderr)." alt="" coords="1557,83,1683,111"/>
+<area shape="rect" id="node29" href="$stdio_8c.html" title="libc/stdio/stdio.c" alt="" coords="1707,83,1821,111"/>
+<area shape="rect" id="node31" href="$stdlib_8c.html" title="libc/stdlib.c" alt="" coords="1845,83,1931,111"/>
+<area shape="rect" id="node33" href="$string_8c.html" title="libc/string.c" alt="" coords="1955,83,2040,111"/>
+<area shape="rect" id="node35" href="$time_8c.html" title="libc/time.c" alt="" coords="2064,83,2144,111"/>
+<area shape="rect" id="node37" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="2168,83,2259,111"/>
 </map>

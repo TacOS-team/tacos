@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/pci/pci_vendor.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -102,56 +103,77 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 </div>
 <p><a href="pci__vendor_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Structures de données</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__PCI__VENTABLE.html">_PCI_VENTABLE</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__PCI__DEVTABLE.html">_PCI_DEVTABLE</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__PCI__CLASSCODETABLE.html">_PCI_CLASSCODETABLE</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a4e89aa5e502b8695293201c5ce91608e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e89aa5e502b8695293201c5ce91608e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_VENTABLE_LEN</b>&#160;&#160;&#160;(sizeof(PciVenTable)/sizeof(<a class="el" href="struct__PCI__VENTABLE.html">PCI_VENTABLE</a>))</td></tr>
+<tr class="separator:a4e89aa5e502b8695293201c5ce91608e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab883eccf5cf2a02694f1e62906fda6a7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab883eccf5cf2a02694f1e62906fda6a7"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_DEVTABLE_LEN</b>&#160;&#160;&#160;(sizeof(PciDevTable)/sizeof(<a class="el" href="struct__PCI__DEVTABLE.html">PCI_DEVTABLE</a>))</td></tr>
+<tr class="separator:ab883eccf5cf2a02694f1e62906fda6a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0276831eccf2773ad5c40ffe17a60c7d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0276831eccf2773ad5c40ffe17a60c7d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_CLASSCODETABLE_LEN</b>&#160;&#160;&#160;(sizeof(PciClassCodeTable)/sizeof(<a class="el" href="struct__PCI__CLASSCODETABLE.html">PCI_CLASSCODETABLE</a>))</td></tr>
+<tr class="separator:a0276831eccf2773ad5c40ffe17a60c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a390c78eb58fe0eb7fd997e8ad54fef9f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a390c78eb58fe0eb7fd997e8ad54fef9f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_COMMANDFLAGS_LEN</b>&#160;&#160;&#160;(sizeof(PciCommandFlags)/sizeof(char *))</td></tr>
+<tr class="separator:a390c78eb58fe0eb7fd997e8ad54fef9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f20336703d308b47fa5650a36335842"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f20336703d308b47fa5650a36335842"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_STATUSFLAGS_LEN</b>&#160;&#160;&#160;(sizeof(PciStatusFlags)/sizeof(char *))</td></tr>
+<tr class="separator:a6f20336703d308b47fa5650a36335842"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a531dcdbc6066b4fe04d8e815b0706917"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a531dcdbc6066b4fe04d8e815b0706917"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_DEVSELFLAGS_LEN</b>&#160;&#160;&#160;(sizeof(PciDevSelFlags)/sizeof(char *))</td></tr>
+<tr class="separator:a531dcdbc6066b4fe04d8e815b0706917"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
 <tr class="memitem:a6bc80ec3329e2808858485388d5af812"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6bc80ec3329e2808858485388d5af812"></a>
 typedef struct <a class="el" href="struct__PCI__VENTABLE.html">_PCI_VENTABLE</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_VENTABLE</b></td></tr>
+<tr class="separator:a6bc80ec3329e2808858485388d5af812"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7575dbc15162e14f66a81f24490fc2a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac7575dbc15162e14f66a81f24490fc2a"></a>
 typedef struct <a class="el" href="struct__PCI__VENTABLE.html">_PCI_VENTABLE</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PPCI_VENTABLE</b></td></tr>
+<tr class="separator:ac7575dbc15162e14f66a81f24490fc2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09cfaf8246964380436bf1495ccb066b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09cfaf8246964380436bf1495ccb066b"></a>
 typedef struct <a class="el" href="struct__PCI__DEVTABLE.html">_PCI_DEVTABLE</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_DEVTABLE</b></td></tr>
+<tr class="separator:a09cfaf8246964380436bf1495ccb066b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a800c3be31c1eca3899ee43fe95fa78d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a800c3be31c1eca3899ee43fe95fa78d3"></a>
 typedef struct <a class="el" href="struct__PCI__DEVTABLE.html">_PCI_DEVTABLE</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PPCI_DEVTABLE</b></td></tr>
+<tr class="separator:a800c3be31c1eca3899ee43fe95fa78d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5532c32fe8312433f2da2d7f6ea385fb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5532c32fe8312433f2da2d7f6ea385fb"></a>
 typedef struct <a class="el" href="struct__PCI__CLASSCODETABLE.html">_PCI_CLASSCODETABLE</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_CLASSCODETABLE</b></td></tr>
+<tr class="separator:a5532c32fe8312433f2da2d7f6ea385fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53f59bd8912804c9acd6ff4b346800ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a53f59bd8912804c9acd6ff4b346800ac"></a>
-typedef struct <br class="typebreak"/>
+typedef struct <br class="typebreak" />
 <a class="el" href="struct__PCI__CLASSCODETABLE.html">_PCI_CLASSCODETABLE</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PPCI_CLASSCODETABLE</b></td></tr>
+<tr class="separator:a53f59bd8912804c9acd6ff4b346800ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="var-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a0f3207ced174b50192ac00d326911424"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f3207ced174b50192ac00d326911424"></a>
 <a class="el" href="struct__PCI__VENTABLE.html">PCI_VENTABLE</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PciVenTable</b> []</td></tr>
+<tr class="separator:a0f3207ced174b50192ac00d326911424"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac00f433400d146963a3dd09b1aebb2da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac00f433400d146963a3dd09b1aebb2da"></a>
 <a class="el" href="struct__PCI__DEVTABLE.html">PCI_DEVTABLE</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PciDevTable</b> []</td></tr>
+<tr class="separator:ac00f433400d146963a3dd09b1aebb2da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec4648724009d1af53aa9b005b1bd17c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec4648724009d1af53aa9b005b1bd17c"></a>
 <a class="el" href="struct__PCI__CLASSCODETABLE.html">PCI_CLASSCODETABLE</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PciClassCodeTable</b> []</td></tr>
+<tr class="separator:aec4648724009d1af53aa9b005b1bd17c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a266726de430d31938a028659c2d9fa76"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><b>PciCommandFlags</b> []</td></tr>
+<tr class="separator:a266726de430d31938a028659c2d9fa76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00c6776ef84d63a661a88c563af345f6"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><b>PciStatusFlags</b> []</td></tr>
+<tr class="separator:a00c6776ef84d63a661a88c563af345f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bbb3edfd7384c3679e745ff73eaeedb"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><b>PciDevSelFlags</b> []</td></tr>
+<tr class="separator:a4bbb3edfd7384c3679e745ff73eaeedb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -162,7 +184,7 @@ LICENSE</h1>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 <p>Description de ce que fait le fichier </p>
-</div><h2>Documentation des variables</h2>
+</div><h2 class="groupheader">Documentation des variables</h2>
 <a class="anchor" id="a266726de430d31938a028659c2d9fa76"></a>
 <div class="memitem">
 <div class="memproto">
@@ -172,7 +194,7 @@ DESCRIPTION</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Valeur initiale :</b><div class="fragment"><div class="line"></div>
+<b>Valeur initiale :</b><div class="fragment"><div class="line">=</div>
 <div class="line">{</div>
 <div class="line">        <span class="stringliteral">&quot;I/O Access&quot;</span>,</div>
 <div class="line">        <span class="stringliteral">&quot;Memory Access&quot;</span>,</div>
@@ -203,7 +225,7 @@ DESCRIPTION</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Valeur initiale :</b><div class="fragment"><div class="line"></div>
+<b>Valeur initiale :</b><div class="fragment"><div class="line">=</div>
 <div class="line">{</div>
 <div class="line">        <span class="stringliteral">&quot;Fast Devsel Speed&quot;</span>,     </div>
 <div class="line">        <span class="stringliteral">&quot;Medium Devsel Speed&quot;</span>,   </div>
@@ -222,7 +244,7 @@ DESCRIPTION</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Valeur initiale :</b><div class="fragment"><div class="line"></div>
+<b>Valeur initiale :</b><div class="fragment"><div class="line">=</div>
 <div class="line">{</div>
 <div class="line">        <span class="stringliteral">&quot;Reserved 0&quot;</span>,</div>
 <div class="line">        <span class="stringliteral">&quot;Reserved 1&quot;</span>,</div>
@@ -247,9 +269,9 @@ DESCRIPTION</h1>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:39 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:32 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

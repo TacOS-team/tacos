@@ -77,8 +77,11 @@ typedef struct \hyperlink{struct__proclist__cell}{\-\_\-proclist\-\_\-cell} $\as
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{structprocess__t}{process\-\_\-t} $\ast$ \hyperlink{kprocess_8h_a21c8be1fe7cda8279886a50d946625bb}{create\-\_\-process} (\hyperlink{structprocess__init__data__t}{process\-\_\-init\-\_\-data\-\_\-t} $\ast$init\-\_\-data)
-\begin{DoxyCompactList}\small\item\em (O\-U\-T\-D\-A\-T\-E\-D)Crée un nouveau processus. Crée un nouveau processus et l'ajoute à la liste des processus avec un état d'exécution P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-I\-D\-L\-E. \end{DoxyCompactList}\item 
+int \hyperlink{kprocess_8h_a19a88a02c4baad09f86d6c110f3d3240}{create\-\_\-kprocess} (char $\ast$name, void $\ast$entry\-\_\-point, \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} stack\-\_\-size)
+\begin{DoxyCompactList}\small\item\em Crée un nouveau processus kernel. Crée un nouveau processus kernel et l'ajoute à la liste des processus avec un état d'exécution P\-R\-O\-C\-S\-T\-A\-T\-E\-\_\-\-I\-D\-L\-E. \end{DoxyCompactList}\item 
+\hypertarget{kprocess_8h_a21c8be1fe7cda8279886a50d946625bb}{\hyperlink{structprocess__t}{process\-\_\-t} $\ast$ {\bfseries create\-\_\-process} (\hyperlink{structprocess__init__data__t}{process\-\_\-init\-\_\-data\-\_\-t} $\ast$init\-\_\-data)}\label{kprocess_8h_a21c8be1fe7cda8279886a50d946625bb}
+
+\item 
 int \hyperlink{kprocess_8h_a7cced35f469ae897c55ab96940289cf6}{delete\-\_\-process} (int pid)
 \begin{DoxyCompactList}\small\item\em Retire un processus de la liste. \end{DoxyCompactList}\item 
 \hyperlink{structprocess__t}{process\-\_\-t} $\ast$ \hyperlink{kprocess_8h_a99064f971fd1f14adcbf0a0a5c2af452}{find\-\_\-process} (int pid)
@@ -154,46 +157,27 @@ En attente.
 Cellule de la liste des processus. 
 
 \subsection{Documentation des fonctions}
-\hypertarget{kprocess_8h_a21c8be1fe7cda8279886a50d946625bb}{\index{kprocess.\-h@{kprocess.\-h}!create\-\_\-process@{create\-\_\-process}}
-\index{create\-\_\-process@{create\-\_\-process}!kprocess.h@{kprocess.\-h}}
-\subsubsection[{create\-\_\-process}]{\setlength{\rightskip}{0pt plus 5cm}{\bf process\-\_\-t}$\ast$ create\-\_\-process (
+\hypertarget{kprocess_8h_a19a88a02c4baad09f86d6c110f3d3240}{\index{kprocess.\-h@{kprocess.\-h}!create\-\_\-kprocess@{create\-\_\-kprocess}}
+\index{create\-\_\-kprocess@{create\-\_\-kprocess}!kprocess.h@{kprocess.\-h}}
+\subsubsection[{create\-\_\-kprocess}]{\setlength{\rightskip}{0pt plus 5cm}int create\-\_\-kprocess (
 \begin{DoxyParamCaption}
-\item[{{\bf process\-\_\-init\-\_\-data\-\_\-t} $\ast$}]{init\-\_\-data}
+\item[{char $\ast$}]{name, }
+\item[{void $\ast$}]{entry\-\_\-point, }
+\item[{{\bf uint32\-\_\-t}}]{stack\-\_\-size}
 \end{DoxyParamCaption}
-)}}\label{kprocess_8h_a21c8be1fe7cda8279886a50d946625bb}
+)}}\label{kprocess_8h_a19a88a02c4baad09f86d6c110f3d3240}
 
 \begin{DoxyParams}{Paramètres}
-{\em init\-\_\-data} & informations sur le processus à créer \\
+{\em name} & nom du process \\
+\hline
+{\em entry\-\_\-point} & adresse du point d'entrée \\
+\hline
+{\em stack\-\_\-size} & taille de la pile à allouer\\
 \hline
 \end{DoxyParams}
-\begin{DoxySeeAlso}{Voir également}
-\hyperlink{structprocess__init__data__t}{process\-\_\-init\-\_\-data\-\_\-t}
-\end{DoxySeeAlso}
 \begin{DoxyReturn}{Renvoie}
-Pid du processus créé. 
+P\-I\-D du processus 
 \end{DoxyReturn}
-
-
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{kprocess_8h_a21c8be1fe7cda8279886a50d946625bb_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=278pt]{kprocess_8h_a21c8be1fe7cda8279886a50d946625bb_icgraph}
-\end{center}
-\end{figure}
-
-
 \hypertarget{kprocess_8h_a7cced35f469ae897c55ab96940289cf6}{\index{kprocess.\-h@{kprocess.\-h}!delete\-\_\-process@{delete\-\_\-process}}
 \index{delete\-\_\-process@{delete\-\_\-process}!kprocess.h@{kprocess.\-h}}
 \subsubsection[{delete\-\_\-process}]{\setlength{\rightskip}{0pt plus 5cm}int delete\-\_\-process (
@@ -215,7 +199,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=238pt]{kprocess_8h_a7cced35f469ae897c55ab96940289cf6_cgraph}
+\includegraphics[width=236pt]{kprocess_8h_a7cced35f469ae897c55ab96940289cf6_cgraph}
 \end{center}
 \end{figure}
 
@@ -315,7 +299,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{kprocess_8h_aeb04c10b6eb21ece6a889c874c3e1830_cgraph}
+\includegraphics[width=336pt]{kprocess_8h_aeb04c10b6eb21ece6a889c874c3e1830_cgraph}
 \end{center}
 \end{figure}
 
@@ -339,7 +323,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{kprocess_8h_a1e4ed2d0a9b35c02447c629472a491f3_cgraph}
+\includegraphics[width=336pt]{kprocess_8h_a1e4ed2d0a9b35c02447c629472a491f3_cgraph}
 \end{center}
 \end{figure}
 
@@ -423,7 +407,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{kprocess_8h_ac57ad880ae66a0bf4339309fada43242_cgraph}
+\includegraphics[width=336pt]{kprocess_8h_ac57ad880ae66a0bf4339309fada43242_cgraph}
 \end{center}
 \end{figure}
 

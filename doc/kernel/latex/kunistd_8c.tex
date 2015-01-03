@@ -3,6 +3,7 @@
 }
 {\ttfamily \#include $<$klog.\-h$>$}\\*
 {\ttfamily \#include $<$kprocess.\-h$>$}\\*
+{\ttfamily \#include $<$ksem.\-h$>$}\\*
 {\ttfamily \#include $<$kunistd.\-h$>$}\\*
 {\ttfamily \#include $<$scheduler.\-h$>$}\\*
 {\ttfamily \#include $<$vfs.\-h$>$}\\*
@@ -23,6 +24,8 @@ Graphe des dépendances par inclusion de kunistd.\-c\-:\nopagebreak
 \hyperlink{kunistd_8c_a5dd5ee4481953b987bfc1bcb836be820}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-seek, \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} fd, long $\ast$offset, int whence)
 \item 
 \hyperlink{kunistd_8c_a1eab9ba54efce654ee3cd717f2161b8f}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-ioctl, \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} $\ast$fd, unsigned int request, void $\ast$data)
+\item 
+\hyperlink{kunistd_8c_aa1b39a7592422088f94dc4437d891db9}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-select, \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} $\ast$fds, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n, int $\ast$ret)
 \item 
 \hyperlink{kunistd_8c_a18585c0d8560c855f1d38405703e7eb3}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-stat, const char $\ast$path, struct \hyperlink{structstat}{stat} $\ast$buf, int $\ast$ret)
 \item 
@@ -54,7 +57,7 @@ Graphe des dépendances par inclusion de kunistd.\-c\-:\nopagebreak
 Tac\-O\-S developers
 \end{DoxyAuthor}
 \hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+Copyright (C) 2010-\/2014 Tac\-O\-S developers.
 
 This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
@@ -117,7 +120,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{kunistd_8c_a754a9d6d5d3da3db605147488e485805_cgraph}
+\includegraphics[width=336pt]{kunistd_8c_a754a9d6d5d3da3db605147488e485805_cgraph}
 \end{center}
 \end{figure}
 
@@ -149,7 +152,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{kunistd_8c_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph}
+\includegraphics[width=336pt]{kunistd_8c_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph}
 \end{center}
 \end{figure}
 
@@ -181,7 +184,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{kunistd_8c_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph}
+\includegraphics[width=336pt]{kunistd_8c_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph}
 \end{center}
 \end{figure}
 
@@ -209,7 +212,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{kunistd_8c_a5dd5ee4481953b987bfc1bcb836be820_cgraph}
+\includegraphics[width=336pt]{kunistd_8c_a5dd5ee4481953b987bfc1bcb836be820_cgraph}
 \end{center}
 \end{figure}
 
@@ -237,7 +240,39 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{kunistd_8c_a1eab9ba54efce654ee3cd717f2161b8f_cgraph}
+\includegraphics[width=336pt]{kunistd_8c_a1eab9ba54efce654ee3cd717f2161b8f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kunistd_8c_aa1b39a7592422088f94dc4437d891db9}{\index{kunistd.\-c@{kunistd.\-c}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kunistd.c@{kunistd.\-c}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-select}]{, }
+\item[{{\bf uint32\-\_\-t} $\ast$}]{fd, }
+\item[{{\bf size\-\_\-t}}]{n, }
+\item[{int $\ast$}]{ret}
+\end{DoxyParamCaption}
+)}}\label{kunistd_8c_aa1b39a7592422088f94dc4437d891db9}
+Syscall pour surveiller des descripteurs de fichier.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em fd} & Tableau de numéros de descripteurs de fichier à surveiller. \\
+\hline
+{\em n} & Nombre de descripteurs de fichier. \\
+\hline
+{\em ret} & Retour de la fonction \-: premier descripteur de fichier prêt en lecture. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kunistd_8c_aa1b39a7592422088f94dc4437d891db9_cgraph}
 \end{center}
 \end{figure}
 
@@ -269,7 +304,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=288pt]{kunistd_8c_a18585c0d8560c855f1d38405703e7eb3_cgraph}
+\includegraphics[width=282pt]{kunistd_8c_a18585c0d8560c855f1d38405703e7eb3_cgraph}
 \end{center}
 \end{figure}
 
@@ -290,7 +325,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=302pt]{kunistd_8c_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph}
+\includegraphics[width=296pt]{kunistd_8c_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph}
 \end{center}
 \end{figure}
 

@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/fs/fat/fat_outils.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,42 +90,60 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="fat__outils_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _FAT_OUTILS_H</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _FAT_OUTILS_H</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define _FAT_OUTILS_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fat__internal_8h.html">fat_internal.h</a>&quot;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">int</span> <a class="code" href="fat__outils_8c.html#a93808d4692d60c69db061effc6232ee6">fat_last_cluster</a>(<a class="code" href="struct__fat__fs__instance__t.html">fat_fs_instance_t</a> *instance);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">int</span> <a class="code" href="fat__outils_8h.html#a93808d4692d60c69db061effc6232ee6">fat_last_cluster</a>(<a class="code" href="struct__fat__fs__instance__t.html">fat_fs_instance_t</a> *instance);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">int</span> <a class="code" href="fat__outils_8c.html#a90bf5b4a5741e770ea8c3f8fc15f180b">fat_is_free_cluster</a>(<span class="keywordtype">int</span> cluster);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">int</span> <a class="code" href="fat__outils_8h.html#a90bf5b4a5741e770ea8c3f8fc15f180b">fat_is_free_cluster</a>(<span class="keywordtype">int</span> cluster);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">int</span> <a class="code" href="fat__outils_8c.html#ad7455b50fef42408155f1c32109dfe50">fat_is_last_cluster</a>(<a class="code" href="struct__fat__fs__instance__t.html">fat_fs_instance_t</a> *instance, <span class="keywordtype">int</span> cluster);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">int</span> <a class="code" href="fat__outils_8h.html#ad7455b50fef42408155f1c32109dfe50">fat_is_last_cluster</a>(<a class="code" href="struct__fat__fs__instance__t.html">fat_fs_instance_t</a> *instance, <span class="keywordtype">int</span> cluster);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">int</span> <a class="code" href="fat__outils_8c.html#aa28cc73f6fb1875fde62a8ee24a13960">fat_is_used_cluster</a>(<a class="code" href="struct__fat__fs__instance__t.html">fat_fs_instance_t</a> *instance, <span class="keywordtype">int</span> cluster);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">int</span> <a class="code" href="fat__outils_8h.html#aa28cc73f6fb1875fde62a8ee24a13960">fat_is_used_cluster</a>(<a class="code" href="struct__fat__fs__instance__t.html">fat_fs_instance_t</a> *instance, <span class="keywordtype">int</span> cluster);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fat__outils_8c.html#a4f582028e77ee5dc535200f3e6b3312b">fat_encode_long_file_name</a>(<span class="keywordtype">char</span> * name, <a class="code" href="structlfn__entry__t.html">lfn_entry_t</a> * long_file_name, <span class="keywordtype">int</span> n_entries);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fat__outils_8h.html#a4f582028e77ee5dc535200f3e6b3312b">fat_encode_long_file_name</a>(<span class="keywordtype">char</span> * name, <a class="code" href="structlfn__entry__t.html">lfn_entry_t</a> * long_file_name, <span class="keywordtype">int</span> n_entries);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">char</span> * <a class="code" href="fat__outils_8c.html#ac588ac3acb0265e0db3158ba5c5a4a0f">fat_decode_long_file_name</a>(<span class="keywordtype">char</span> * name, <a class="code" href="structlfn__entry__t.html">lfn_entry_t</a> * long_file_name);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">char</span> * <a class="code" href="fat__outils_8h.html#ac588ac3acb0265e0db3158ba5c5a4a0f">fat_decode_long_file_name</a>(<span class="keywordtype">char</span> * name, <a class="code" href="structlfn__entry__t.html">lfn_entry_t</a> * long_file_name);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;time_t convert_datetime_fat_to_time_t(<a class="code" href="struct__fat__date.html">fat_date_t</a> *date, <a class="code" href="struct__fat__time.html">fat_time_t</a> *time);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> convert_time_t_to_datetime_fat(time_t time, <a class="code" href="struct__fat__time.html">fat_time_t</a> *timefat, <a class="code" href="struct__fat__date.html">fat_date_t</a> *datefat);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">void</span> fat_dir_entry_to_directory_entry(<span class="keywordtype">char</span> *filename, <a class="code" href="struct__fat__dir__entry.html">fat_dir_entry_t</a> *dir, <a class="code" href="struct__directory__entry.html">directory_entry_t</a> *entry);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">char</span> * <a class="code" href="fat__outils_8c.html#a015254ce721ab0097a1008ec7153b819">fat_lfn_to_sfn</a>(<span class="keywordtype">char</span> * filename);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">char</span> * <a class="code" href="fat__outils_8h.html#a015254ce721ab0097a1008ec7153b819">fat_lfn_to_sfn</a>(<span class="keywordtype">char</span> * filename);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fat__outils_8c.html#a54dad60e76b8e913b497b0a903778093">fat_decode_short_file_name</a>(<span class="keywordtype">char</span> *filename, <a class="code" href="struct__fat__dir__entry.html">fat_dir_entry_t</a> *fdir);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fat__outils_8h.html#a54dad60e76b8e913b497b0a903778093">fat_decode_short_file_name</a>(<span class="keywordtype">char</span> *filename, <a class="code" href="struct__fat__dir__entry.html">fat_dir_entry_t</a> *fdir);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<a class="code" href="struct__directory__entry.html">directory_entry_t</a> * <a class="code" href="fat__outils_8c.html#acc4ab73ddc901dbfa52071c98ce0de6b">fat_decode_lfn_entry</a>(<a class="code" href="structlfn__entry__t.html">lfn_entry_t</a>* fdir);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<a class="code" href="struct__directory__entry.html">directory_entry_t</a> * <a class="code" href="fat__outils_8h.html#acc4ab73ddc901dbfa52071c98ce0de6b">fat_decode_lfn_entry</a>(<a class="code" href="structlfn__entry__t.html">lfn_entry_t</a>* fdir);</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<a class="code" href="struct__directory__entry.html">directory_entry_t</a> * <a class="code" href="fat__outils_8c.html#a8100c884384ccb3b8ecec7f5180ad346">fat_decode_sfn_entry</a>(<a class="code" href="struct__fat__dir__entry.html">fat_dir_entry_t</a> *fdir);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<a class="code" href="struct__directory__entry.html">directory_entry_t</a> * <a class="code" href="fat__outils_8h.html#a8100c884384ccb3b8ecec7f5180ad346">fat_decode_sfn_entry</a>(<a class="code" href="struct__fat__dir__entry.html">fat_dir_entry_t</a> *fdir);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fat__outils_8c.html#a2bc59b6b9bca39fe4ba101a3c019b91a">fat_split_dir_filename</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * path, <span class="keywordtype">char</span> * dir, <span class="keywordtype">char</span> * filename);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fat__outils_8h.html#a2bc59b6b9bca39fe4ba101a3c019b91a">fat_split_dir_filename</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * path, <span class="keywordtype">char</span> * dir, <span class="keywordtype">char</span> * filename);</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="fat__outils_8h_html_acc4ab73ddc901dbfa52071c98ce0de6b"><div class="ttname"><a href="fat__outils_8h.html#acc4ab73ddc901dbfa52071c98ce0de6b">fat_decode_lfn_entry</a></div><div class="ttdeci">directory_entry_t * fat_decode_lfn_entry(lfn_entry_t *fdir)</div><div class="ttdef"><b>Definition:</b> fat_outils.c:378</div></div>
+<div class="ttc" id="struct__fat__date_html"><div class="ttname"><a href="struct__fat__date.html">_fat_date</a></div><div class="ttdef"><b>Definition:</b> fat_internal.h:107</div></div>
+<div class="ttc" id="fat__outils_8h_html_ad7455b50fef42408155f1c32109dfe50"><div class="ttname"><a href="fat__outils_8h.html#ad7455b50fef42408155f1c32109dfe50">fat_is_last_cluster</a></div><div class="ttdeci">int fat_is_last_cluster(fat_fs_instance_t *instance, int cluster)</div><div class="ttdef"><b>Definition:</b> fat_outils.c:48</div></div>
+<div class="ttc" id="fat__outils_8h_html_a4f582028e77ee5dc535200f3e6b3312b"><div class="ttname"><a href="fat__outils_8h.html#a4f582028e77ee5dc535200f3e6b3312b">fat_encode_long_file_name</a></div><div class="ttdeci">void fat_encode_long_file_name(char *name, lfn_entry_t *long_file_name, int n_entries)</div><div class="ttdef"><b>Definition:</b> fat_outils.c:68</div></div>
+<div class="ttc" id="fat__internal_8h_html"><div class="ttname"><a href="fat__internal_8h.html">fat_internal.h</a></div></div>
+<div class="ttc" id="struct__fat__dir__entry_html"><div class="ttname"><a href="struct__fat__dir__entry.html">_fat_dir_entry</a></div><div class="ttdef"><b>Definition:</b> fat_internal.h:116</div></div>
+<div class="ttc" id="fat__outils_8h_html_a90bf5b4a5741e770ea8c3f8fc15f180b"><div class="ttname"><a href="fat__outils_8h.html#a90bf5b4a5741e770ea8c3f8fc15f180b">fat_is_free_cluster</a></div><div class="ttdeci">int fat_is_free_cluster(int cluster)</div><div class="ttdef"><b>Definition:</b> fat_outils.c:44</div></div>
+<div class="ttc" id="fat__outils_8h_html_a2bc59b6b9bca39fe4ba101a3c019b91a"><div class="ttname"><a href="fat__outils_8h.html#a2bc59b6b9bca39fe4ba101a3c019b91a">fat_split_dir_filename</a></div><div class="ttdeci">void fat_split_dir_filename(const char *path, char *dir, char *filename)</div><div class="ttdef"><b>Definition:</b> fat_outils.c:401</div></div>
+<div class="ttc" id="structlfn__entry__t_html"><div class="ttname"><a href="structlfn__entry__t.html">lfn_entry_t</a></div><div class="ttdef"><b>Definition:</b> fat_internal.h:137</div></div>
+<div class="ttc" id="struct__fat__time_html"><div class="ttname"><a href="struct__fat__time.html">_fat_time</a></div><div class="ttdef"><b>Definition:</b> fat_internal.h:98</div></div>
+<div class="ttc" id="fat__outils_8h_html_a93808d4692d60c69db061effc6232ee6"><div class="ttname"><a href="fat__outils_8h.html#a93808d4692d60c69db061effc6232ee6">fat_last_cluster</a></div><div class="ttdeci">int fat_last_cluster(fat_fs_instance_t *instance)</div><div class="ttdef"><b>Definition:</b> fat_outils.c:34</div></div>
+<div class="ttc" id="struct__fat__fs__instance__t_html"><div class="ttname"><a href="struct__fat__fs__instance__t.html">_fat_fs_instance_t</a></div><div class="ttdef"><b>Definition:</b> fat_internal.h:204</div></div>
+<div class="ttc" id="fat__outils_8h_html_ac588ac3acb0265e0db3158ba5c5a4a0f"><div class="ttname"><a href="fat__outils_8h.html#ac588ac3acb0265e0db3158ba5c5a4a0f">fat_decode_long_file_name</a></div><div class="ttdeci">char * fat_decode_long_file_name(char *name, lfn_entry_t *long_file_name)</div><div class="ttdef"><b>Definition:</b> fat_outils.c:130</div></div>
+<div class="ttc" id="fat__outils_8h_html_a54dad60e76b8e913b497b0a903778093"><div class="ttname"><a href="fat__outils_8h.html#a54dad60e76b8e913b497b0a903778093">fat_decode_short_file_name</a></div><div class="ttdeci">void fat_decode_short_file_name(char *filename, fat_dir_entry_t *fdir)</div><div class="ttdef"><b>Definition:</b> fat_outils.c:331</div></div>
+<div class="ttc" id="fat__outils_8h_html_a8100c884384ccb3b8ecec7f5180ad346"><div class="ttname"><a href="fat__outils_8h.html#a8100c884384ccb3b8ecec7f5180ad346">fat_decode_sfn_entry</a></div><div class="ttdeci">directory_entry_t * fat_decode_sfn_entry(fat_dir_entry_t *fdir)</div><div class="ttdef"><b>Definition:</b> fat_outils.c:392</div></div>
+<div class="ttc" id="struct__directory__entry_html"><div class="ttname"><a href="struct__directory__entry.html">_directory_entry</a></div><div class="ttdef"><b>Definition:</b> fat_internal.h:154</div></div>
+<div class="ttc" id="fat__outils_8h_html_aa28cc73f6fb1875fde62a8ee24a13960"><div class="ttname"><a href="fat__outils_8h.html#aa28cc73f6fb1875fde62a8ee24a13960">fat_is_used_cluster</a></div><div class="ttdeci">int fat_is_used_cluster(fat_fs_instance_t *instance, int cluster)</div><div class="ttdef"><b>Definition:</b> fat_outils.c:58</div></div>
+<div class="ttc" id="fat__outils_8h_html_a015254ce721ab0097a1008ec7153b819"><div class="ttname"><a href="fat__outils_8h.html#a015254ce721ab0097a1008ec7153b819">fat_lfn_to_sfn</a></div><div class="ttdeci">char * fat_lfn_to_sfn(char *filename)</div><div class="ttdef"><b>Definition:</b> fat_outils.c:253</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

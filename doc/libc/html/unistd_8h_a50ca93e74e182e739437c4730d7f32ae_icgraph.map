@@ -1,35 +1,36 @@
 <map id="syscall" name="syscall">
-<area shape="rect" id="node3" href="$dirent_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title="mkdir" alt="" coords="124,5,177,33"/>
-<area shape="rect" id="node5" href="$dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591" title="opendir" alt="" coords="244,106,308,134"/>
-<area shape="rect" id="node9" href="$dirent_8h.html#a58257faf8b13b3f14558613c632b2373" title="readdir" alt="" coords="120,106,181,134"/>
-<area shape="rect" id="node11" href="$fcntl_8h.html#adcb60598073f6f9cbb0091ef6768fa5c" title="open" alt="" coords="125,157,176,185"/>
-<area shape="rect" id="node14" href="$fcntl_8h.html#ae68e7e3d0b126184d5d00e78e94305fb" title="close" alt="" coords="124,207,177,235"/>
-<area shape="rect" id="node18" href="$fcntl_8h.html#a5752d6571b615f1b7b1b0f719c2bc69d" title="fcntl" alt="" coords="128,258,173,286"/>
-<area shape="rect" id="node20" href="$sem_8c.html#a1ea8785f5ec6eadaa818747e4cbb6298" title="donne l&#39;identifiant (semid) d&#39;un sémaphore déjà existant" alt="" coords="119,309,183,337"/>
-<area shape="rect" id="node22" href="$sem_8c.html#a51cd1d5e354c3e1cc996c424bbf71be5" title="supprime un sémaphore" alt="" coords="119,359,183,387"/>
-<area shape="rect" id="node24" href="$signal_8c.html#ae9fc1d1a853fcc23a5e434506aa47bca" title="kill" alt="" coords="132,410,169,438"/>
-<area shape="rect" id="node28" href="$signal_8c.html#a18b3c89ca28c1045ee53f16a1ebca8b3" title="signal" alt="" coords="123,511,179,539"/>
-<area shape="rect" id="node32" href="$unistd_8c.html#ac61b207337ca21b3b309593fd1a0cb82" title="Obtenir l&#39;identifiant du processus." alt="" coords="123,461,179,489"/>
-<area shape="rect" id="node35" href="$unistd_8c.html#ac6d7f7ade00dcdc302b0da5664eee812" title="Obtenir l&#39;identifiant du processus père." alt="" coords="119,562,183,590"/>
-<area shape="rect" id="node37" href="$unistd_8c.html#ae205f852ca2b47db9e16949153e12247" title="Endort le processus pour une durée déterminée (en microsecondes)." alt="" coords="121,613,180,641"/>
-<area shape="rect" id="node41" href="$unistd_8c.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier." alt="" coords="125,663,176,691"/>
-<area shape="rect" id="node43" href="$unistd_8c.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="128,714,173,742"/>
-<area shape="rect" id="node53" href="$unistd_8c.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier." alt="" coords="124,765,177,793"/>
-<area shape="rect" id="node61" href="$unistd_8c.html#a3dc1b07404b646712a144e2057359876" title="Obtenir l&#39;état d&#39;un fichier (status)." alt="" coords="129,815,172,843"/>
-<area shape="rect" id="node65" href="$unistd_8c.html#a8ada37e3927c3e99ea7c1accfdc6576f" title="Créer un noeud du système de fichiers." alt="" coords="120,866,181,894"/>
-<area shape="rect" id="node67" href="$unistd_8c.html#a28af9471bbdf262321af663e02899a47" title="Détruire un nom et éventuellement le fichier associé." alt="" coords="123,917,179,945"/>
-<area shape="rect" id="node70" href="$unistd_8c.html#ab2df76f2c62ae012c2e417813b5fe8ce" title="Supprimer un dossier, lequel doit être vide." alt="" coords="125,967,176,995"/>
-<area shape="rect" id="node7" href="$unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="376,106,427,134"/>
-<area shape="rect" id="node16" href="$dirent_8h.html#aaeac2b41e8c2c3a5f91c9bd511a8c0a6" title="closedir" alt="" coords="243,207,309,235"/>
-<area shape="rect" id="node26" href="$signal_8c.html#a08ba0dd26a850108a1746412faba2b21" title="raise" alt="" coords="251,435,301,463"/>
-<area shape="rect" id="node30" href="$signal_8c.html#a1de31bdef82f181f8045b94ae0933916" title="init_signals" alt="" coords="233,511,319,539"/>
-<area shape="rect" id="node39" href="$unistd_8c.html#a69c97039c9ec10a30e5edbdf365e3bbd" title="Endort le processus pour une durée déterminée (en secondes)." alt="" coords="249,613,303,641"/>
-<area shape="rect" id="node45" href="$get_8c.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream." alt="" coords="251,701,301,729"/>
-<area shape="rect" id="node47" href="$fread_8c.html#a084251eb18ccd5c936faa2c39c86ec63" title="fread" alt="" coords="376,638,427,666"/>
-<area shape="rect" id="node49" href="$get_8c.html#a2b3df0e66b41edab3c039191fe6cc4f9" title="Lit au plus size&#45;1 caractères depuis le stream passé en argument." alt="" coords="376,689,427,717"/>
-<area shape="rect" id="node51" href="$get_8c.html#a3e29caa20f7cffe18f410f01278905a8" title="lit un caractère depuis stdin." alt="" coords="369,739,433,767"/>
-<area shape="rect" id="node55" href="$fseek_8c.html#a5e25775bd8597f839a28125b616bd241" title="Fixe l&#39;indicateur de position du flux." alt="" coords="249,765,303,793"/>
-<area shape="rect" id="node59" href="$fseek_8c.html#a5a002ad43f113e8c634d284ee34d1d53" title="Obtient la valeur de l&#39;indicateur de position." alt="" coords="255,815,297,843"/>
-<area shape="rect" id="node57" href="$fseek_8c.html#aa0cd401f198d33d9d01a9e8aa4026819" title="Place l&#39;indicateur de position au début du fichier." alt="" coords="372,790,431,818"/>
-<area shape="rect" id="node63" href="$stdio_8h.html#a02b13b56a188401119ea4da43c184913" title="Supprimer un fichier ou répertoire." alt="" coords="244,917,308,945"/>
+<area shape="rect" id="node3" href="$dirent_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title="mkdir" alt="" coords="120,5,173,33"/>
+<area shape="rect" id="node5" href="$dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591" title="opendir" alt="" coords="237,81,301,109"/>
+<area shape="rect" id="node9" href="$dirent_8h.html#a58257faf8b13b3f14558613c632b2373" title="readdir" alt="" coords="116,106,177,134"/>
+<area shape="rect" id="node11" href="$fcntl_8h.html#adcb60598073f6f9cbb0091ef6768fa5c" title="open" alt="" coords="121,157,172,185"/>
+<area shape="rect" id="node14" href="$fcntl_8h.html#ae68e7e3d0b126184d5d00e78e94305fb" title="close" alt="" coords="121,207,172,235"/>
+<area shape="rect" id="node20" href="$fcntl_8h.html#a5752d6571b615f1b7b1b0f719c2bc69d" title="fcntl" alt="" coords="124,258,169,286"/>
+<area shape="rect" id="node22" href="$sem_8c.html#a1ea8785f5ec6eadaa818747e4cbb6298" title="donne l&#39;identifiant (semid) d&#39;un sémaphore déjà existant" alt="" coords="115,309,179,337"/>
+<area shape="rect" id="node24" href="$sem_8c.html#a51cd1d5e354c3e1cc996c424bbf71be5" title="supprime un sémaphore" alt="" coords="116,359,177,387"/>
+<area shape="rect" id="node26" href="$signal_8c.html#ae9fc1d1a853fcc23a5e434506aa47bca" title="kill" alt="" coords="128,410,165,438"/>
+<area shape="rect" id="node30" href="$signal_8c.html#a18b3c89ca28c1045ee53f16a1ebca8b3" title="signal" alt="" coords="120,511,173,539"/>
+<area shape="rect" id="node34" href="$unistd_8c.html#ac61b207337ca21b3b309593fd1a0cb82" title="Obtenir l&#39;identifiant du processus." alt="" coords="119,461,175,489"/>
+<area shape="rect" id="node37" href="$unistd_8c.html#ac6d7f7ade00dcdc302b0da5664eee812" title="Obtenir l&#39;identifiant du processus père." alt="" coords="115,562,179,590"/>
+<area shape="rect" id="node39" href="$unistd_8c.html#ae205f852ca2b47db9e16949153e12247" title="Endort le processus pour une durée déterminée (en microsecondes)." alt="" coords="117,613,176,641"/>
+<area shape="rect" id="node43" href="$unistd_8c.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier." alt="" coords="123,663,171,691"/>
+<area shape="rect" id="node45" href="$unistd_8c.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="124,714,169,742"/>
+<area shape="rect" id="node55" href="$unistd_8c.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier." alt="" coords="121,765,172,793"/>
+<area shape="rect" id="node63" href="$unistd_8c.html#a3dc1b07404b646712a144e2057359876" title="Obtenir l&#39;état d&#39;un fichier (status)." alt="" coords="125,815,168,843"/>
+<area shape="rect" id="node67" href="$unistd_8c.html#a8ada37e3927c3e99ea7c1accfdc6576f" title="Créer un noeud du système de fichiers." alt="" coords="116,866,177,894"/>
+<area shape="rect" id="node69" href="$unistd_8c.html#a28af9471bbdf262321af663e02899a47" title="Détruire un nom et éventuellement le fichier associé." alt="" coords="119,917,175,945"/>
+<area shape="rect" id="node72" href="$unistd_8c.html#ab2df76f2c62ae012c2e417813b5fe8ce" title="Supprimer un dossier, lequel doit être vide." alt="" coords="121,967,172,995"/>
+<area shape="rect" id="node7" href="$unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="368,81,419,109"/>
+<area shape="rect" id="node16" href="$dirent_8h.html#aaeac2b41e8c2c3a5f91c9bd511a8c0a6" title="closedir" alt="" coords="236,182,303,210"/>
+<area shape="rect" id="node18" href="$fclose_8c.html#a76370407f9ab0402564c2bb9bc9664e0" title="fclose" alt="" coords="241,233,297,261"/>
+<area shape="rect" id="node28" href="$signal_8c.html#a08ba0dd26a850108a1746412faba2b21" title="raise" alt="" coords="245,435,293,463"/>
+<area shape="rect" id="node32" href="$signal_8c.html#a1de31bdef82f181f8045b94ae0933916" title="init_signals" alt="" coords="227,511,312,539"/>
+<area shape="rect" id="node41" href="$unistd_8c.html#a69c97039c9ec10a30e5edbdf365e3bbd" title="Endort le processus pour une durée déterminée (en secondes)." alt="" coords="244,613,295,641"/>
+<area shape="rect" id="node47" href="$get_8c.html#ab11a990e4f8863a1e7736e3c1d430092" title="Lit un caractère depuis le flux stream." alt="" coords="244,701,295,729"/>
+<area shape="rect" id="node49" href="$fread_8c.html#a084251eb18ccd5c936faa2c39c86ec63" title="fread" alt="" coords="368,638,419,666"/>
+<area shape="rect" id="node51" href="$get_8c.html#a2b3df0e66b41edab3c039191fe6cc4f9" title="Lit au plus size&#45;1 caractères depuis le stream passé en argument." alt="" coords="368,689,419,717"/>
+<area shape="rect" id="node53" href="$get_8c.html#a3e29caa20f7cffe18f410f01278905a8" title="lit un caractère depuis stdin." alt="" coords="361,739,425,767"/>
+<area shape="rect" id="node57" href="$fseek_8c.html#a5e25775bd8597f839a28125b616bd241" title="Fixe l&#39;indicateur de position du flux." alt="" coords="243,765,296,793"/>
+<area shape="rect" id="node61" href="$fseek_8c.html#a5a002ad43f113e8c634d284ee34d1d53" title="Obtient la valeur de l&#39;indicateur de position." alt="" coords="248,815,291,843"/>
+<area shape="rect" id="node59" href="$fseek_8c.html#aa0cd401f198d33d9d01a9e8aa4026819" title="Place l&#39;indicateur de position au début du fichier." alt="" coords="364,790,423,818"/>
+<area shape="rect" id="node65" href="$stdio_8h.html#a02b13b56a188401119ea4da43c184913" title="Supprimer un fichier ou répertoire." alt="" coords="237,917,301,945"/>
 </map>

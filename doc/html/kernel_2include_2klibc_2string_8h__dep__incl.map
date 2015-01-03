@@ -1,26 +1,28 @@
 <map id="kernel/include/klibc/string.h" name="kernel/include/klibc/string.h">
-<area shape="rect" id="node3" href="$dcache_8c.html" title="dentry cache" alt="" coords="5,107,117,135"/>
-<area shape="rect" id="node5" href="$floppy_8c.html" title="kernel/drivers/block\l/floppy/floppy.c" alt="" coords="141,99,275,143"/>
-<area shape="rect" id="node7" href="$floppy__dma_8c.html" title="kernel/drivers/block\l/floppy/floppy_dma.c" alt="" coords="299,99,437,143"/>
-<area shape="rect" id="node9" href="$mouse_8c.html" title="kernel/drivers/char\l/mouse.c" alt="" coords="461,99,589,143"/>
-<area shape="rect" id="node11" href="$serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="613,99,741,143"/>
-<area shape="rect" id="node13" href="$tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="765,99,893,143"/>
-<area shape="rect" id="node15" href="$vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="917,99,1045,143"/>
-<area shape="rect" id="node17" href="$vga_8c.html" title="kernel/drivers/char\l/vga.c" alt="" coords="1069,99,1197,143"/>
-<area shape="rect" id="node19" href="$elf_8c.html" title="Bibliotèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="1221,107,1307,135"/>
-<area shape="rect" id="node21" href="$devfs_8c.html" title="DevFS." alt="" coords="1331,107,1448,135"/>
-<area shape="rect" id="node23" href="$fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="1472,107,1592,135"/>
-<area shape="rect" id="node25" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="1616,107,1795,135"/>
-<area shape="rect" id="node27" href="$fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="1819,107,1976,135"/>
-<area shape="rect" id="node29" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="2000,107,2123,135"/>
-<area shape="rect" id="node31" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="2147,107,2256,135"/>
-<area shape="rect" id="node33" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="2280,107,2381,135"/>
-<area shape="rect" id="node35" href="$kernel_2klibc_2string_8c.html" title="Manipulation de string depuis le kernel." alt="" coords="2405,107,2539,135"/>
-<area shape="rect" id="node37" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="2563,107,2685,135"/>
-<area shape="rect" id="node39" href="$ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="2709,107,2827,135"/>
-<area shape="rect" id="node41" href="$module_8c.html" title="kernel/module.c" alt="" coords="2851,107,2963,135"/>
-<area shape="rect" id="node43" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="2987,107,3112,135"/>
-<area shape="rect" id="node45" href="$heap_8c.html" title="kernel/utils/heap.c" alt="" coords="3136,107,3261,135"/>
-<area shape="rect" id="node47" href="$list_8c.html" title="kernel/utils/list.c" alt="" coords="3285,107,3400,135"/>
-<area shape="rect" id="node49" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="3424,107,3512,135"/>
+<area shape="rect" id="node2" href="$dcache_8c.html" title="dentry cache " alt="" coords="5,102,119,129"/>
+<area shape="rect" id="node3" href="$floppy_8c.html" title="kernel/drivers/block\l/floppy/floppy.c" alt="" coords="143,95,277,136"/>
+<area shape="rect" id="node4" href="$floppy__dma_8c.html" title="kernel/drivers/block\l/floppy/floppy_dma.c" alt="" coords="302,95,441,136"/>
+<area shape="rect" id="node5" href="$ram_8c.html" title="kernel/drivers/block\l/ram/ram.c" alt="" coords="465,95,600,136"/>
+<area shape="rect" id="node6" href="$mouse_8c.html" title="kernel/drivers/char\l/mouse.c" alt="" coords="624,95,753,136"/>
+<area shape="rect" id="node7" href="$serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="777,95,907,136"/>
+<area shape="rect" id="node8" href="$tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="931,95,1060,136"/>
+<area shape="rect" id="node9" href="$vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="1084,95,1213,136"/>
+<area shape="rect" id="node10" href="$vga_8c.html" title="kernel/drivers/char\l/vga.c" alt="" coords="1237,95,1367,136"/>
+<area shape="rect" id="node11" href="$elf_8c.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF. " alt="" coords="1391,102,1477,129"/>
+<area shape="rect" id="node12" href="$devfs_8c.html" title="DevFS. " alt="" coords="1501,102,1620,129"/>
+<area shape="rect" id="node13" href="$fat_8c.html" title="Driver FAT. " alt="" coords="1645,102,1765,129"/>
+<area shape="rect" id="node14" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT. " alt="" coords="1789,102,1969,129"/>
+<area shape="rect" id="node15" href="$fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="1993,102,2152,129"/>
+<area shape="rect" id="node16" href="$procfs_8c.html" title="kernel/fs/procfs.c" alt="" coords="2177,102,2299,129"/>
+<area shape="rect" id="node17" href="$kdirent_8c.html" title="kernel/kdirent.c" alt="" coords="2324,102,2435,129"/>
+<area shape="rect" id="node18" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="2459,102,2561,129"/>
+<area shape="rect" id="node19" href="$kernel_2klibc_2string_8c.html" title="Manipulation de string depuis le kernel. " alt="" coords="2585,102,2720,129"/>
+<area shape="rect" id="node20" href="$kmalloc_8c.html" title="kernel/kmalloc.c" alt="" coords="2744,102,2860,129"/>
+<area shape="rect" id="node21" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="2884,102,3008,129"/>
+<area shape="rect" id="node22" href="$ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="3032,102,3151,129"/>
+<area shape="rect" id="node23" href="$module_8c.html" title="kernel/module.c" alt="" coords="3175,102,3288,129"/>
+<area shape="rect" id="node24" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="3312,102,3439,129"/>
+<area shape="rect" id="node25" href="$heap_8c.html" title="kernel/utils/heap.c" alt="" coords="3463,102,3589,129"/>
+<area shape="rect" id="node26" href="$list_8c.html" title="kernel/utils/list.c" alt="" coords="3613,102,3729,129"/>
+<area shape="rect" id="node27" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage. " alt="" coords="3753,102,3843,129"/>
 </map>

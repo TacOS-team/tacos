@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/include/kfcntl.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,79 +90,89 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="kfcntl_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _KFCNTL_H</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _KFCNTL_H</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define _KFCNTL_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts.">fd_types.h</a>&gt;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kprocess_8h.html" title="Création de nouveaux processus.">kprocess.h</a>&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fd__types_8h.html">fd_types.h</a>&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kprocess_8h.html">kprocess.h</a>&gt;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ksyscall_8h.html">ksyscall.h</a>&gt;</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">// Defines pour open.</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="kfcntl_8h.html#a4dc4d45e07d2abc899bcaf04b2846a87">   39</a></span>&#160;<span class="preprocessor">#define O_ACCMODE 00000003  </span></div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="kfcntl_8h.html#a7a68c9ffaac7dbcd652225dd7c06a54b">   40</a></span>&#160;<span class="preprocessor">#define O_RDONLY  00000000  </span></div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="kfcntl_8h.html#a11b644a8526139c4cc1850dac1271ced">   41</a></span>&#160;<span class="preprocessor">#define O_WRONLY  00000001  </span></div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="kfcntl_8h.html#abb0586253488ee61072b73557eeb873b">   42</a></span>&#160;<span class="preprocessor">#define O_RDWR    00000002  </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="kfcntl_8h.html#a4dc4d45e07d2abc899bcaf04b2846a87">   39</a></span>&#160;<span class="preprocessor">#define O_ACCMODE 00000003  </span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="kfcntl_8h.html#a7a68c9ffaac7dbcd652225dd7c06a54b">   40</a></span>&#160;<span class="preprocessor">#define O_RDONLY  00000000  </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="kfcntl_8h.html#a11b644a8526139c4cc1850dac1271ced">   41</a></span>&#160;<span class="preprocessor">#define O_WRONLY  00000001  </span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="kfcntl_8h.html#abb0586253488ee61072b73557eeb873b">   42</a></span>&#160;<span class="preprocessor">#define O_RDWR    00000002  </span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#ifndef O_CREAT</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="kfcntl_8h.html#a1cf6b1de1fffedaa1d26b189e9a8d2cc">   44</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define O_CREAT      00000100 </span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="kfcntl_8h.html#a1cf6b1de1fffedaa1d26b189e9a8d2cc">   44</a></span>&#160;<span class="preprocessor">#define O_CREAT      00000100 </span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef O_EXCL</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define O_EXCL    00000200 </span><span class="comment">/* not fcntl */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef O_NOCTTY</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define O_NOCTTY  00000400 </span><span class="comment">/* not fcntl */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef O_TRUNC</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="kfcntl_8h.html#ad1d67e453fb3031f40f8cd3403773813">   53</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define O_TRUNC      00001000 </span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#ifndef O_EXCL</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define O_EXCL    00000200 </span><span class="comment">/* not fcntl */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#ifndef O_NOCTTY</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define O_NOCTTY  00000400 </span><span class="comment">/* not fcntl */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#ifndef O_TRUNC</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="kfcntl_8h.html#ad1d67e453fb3031f40f8cd3403773813">   53</a></span>&#160;<span class="preprocessor">#define O_TRUNC      00001000 </span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef O_APPEND</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="kfcntl_8h.html#ae036f789407d21f07b211552d67b3214">   56</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define O_APPEND  00002000 </span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#ifndef O_APPEND</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="kfcntl_8h.html#ae036f789407d21f07b211552d67b3214">   56</a></span>&#160;<span class="preprocessor">#define O_APPEND  00002000 </span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef O_NONBLOCK</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="kfcntl_8h.html#a39d33ce33804efd4d52606d59071c6d8">   59</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define O_NONBLOCK   00004000 </span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#ifndef O_NONBLOCK</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="kfcntl_8h.html#a39d33ce33804efd4d52606d59071c6d8">   59</a></span>&#160;<span class="preprocessor">#define O_NONBLOCK   00004000 </span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef O_SYNC</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="kfcntl_8h.html#aae85139bfa94236d126bb1e3b772998f">   62</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define O_SYNC    00010000 </span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#ifndef O_SYNC</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="kfcntl_8h.html#aae85139bfa94236d126bb1e3b772998f">   62</a></span>&#160;<span class="preprocessor">#define O_SYNC    00010000 </span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef FASYNC</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define FASYNC    00020000 </span><span class="comment">/* fcntl, for BSD compatibility */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef O_DIRECT</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="kfcntl_8h.html#ad28ccbf6f0a42c91c160ac5ada0c8429">   68</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define O_DIRECT  00040000 </span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#ifndef FASYNC</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#define FASYNC    00020000 </span><span class="comment">/* fcntl, for BSD compatibility */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#ifndef O_DIRECT</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="kfcntl_8h.html#ad28ccbf6f0a42c91c160ac5ada0c8429">   68</a></span>&#160;<span class="preprocessor">#define O_DIRECT  00040000 </span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef O_DIRECTORY</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="code" href="kfcntl_8h.html#a6afd3dd2f570069804b40e6aa24fc966">   71</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define O_DIRECTORY  00200000 </span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#ifndef O_DIRECTORY</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="kfcntl_8h.html#a6afd3dd2f570069804b40e6aa24fc966">   71</a></span>&#160;<span class="preprocessor">#define O_DIRECTORY  00200000 </span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef O_NOFOLLOW</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="kfcntl_8h.html#a82d4d551b214905742c9e045185d352a">   74</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define O_NOFOLLOW   00400000 </span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#ifndef O_NOFOLLOW</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="kfcntl_8h.html#a82d4d551b214905742c9e045185d352a">   74</a></span>&#160;<span class="preprocessor">#define O_NOFOLLOW   00400000 </span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef O_NOATIME</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define O_NOATIME 01000000</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef O_CLOEXEC</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="kfcntl_8h.html#ad6d8fbe4e494b4dbe051612572d3f757">   80</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define O_CLOEXEC 02000000 </span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#ifndef O_NOATIME</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#define O_NOATIME 01000000</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#ifndef O_CLOEXEC</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="kfcntl_8h.html#ad6d8fbe4e494b4dbe051612572d3f757">   80</a></span>&#160;<span class="preprocessor">#define O_CLOEXEC 02000000 </span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#define F_SETFL 4</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define F_GETFL 5</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">void</span> <a class="code" href="kfcntl_8h.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards.">init_stdfd</a>(<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a> *new_proc);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#define F_GETFL 5</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">void</span> <a class="code" href="kfcntl_8h.html#a5cb8d11eeb6842f49090696dbda4490b">init_stdfd</a>(<a class="code" href="structprocess.html">process_t</a> *new_proc);</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span> <a class="code" href="kfcntl_8h.html#adc12a443121c63ad99a6311aa2739884" title="Ferme tous les file descriptors ouverts.">close_all_fd</a>();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span> <a class="code" href="kfcntl_8h.html#adc12a443121c63ad99a6311aa2739884">close_all_fd</a>();</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;SYSCALL_HANDLER3(sys_open, <span class="keywordtype">int</span> *fd_id, <span class="keywordtype">char</span> *path , <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<a class="code" href="kfcntl_8h.html#aa1d225acb87c04ac8d56c8096f587a03">SYSCALL_HANDLER3</a>(sys_open, <span class="keywordtype">int</span> *fd_id, <span class="keywordtype">char</span> *path , <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags);</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;SYSCALL_HANDLER2(sys_close, <span class="keywordtype">int</span> fd_id, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>* ret);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<a class="code" href="kfcntl_8h.html#a3a5f4c56fd3fcc2b69757102f722fc29">SYSCALL_HANDLER2</a>(sys_close, <span class="keywordtype">int</span> fd_id, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>* ret);</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;SYSCALL_HANDLER3(sys_fcntl, <span class="keywordtype">int</span> *fd_id, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> request, <span class="keywordtype">void</span> * data);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<a class="code" href="kfcntl_8h.html#aa1d225acb87c04ac8d56c8096f587a03">SYSCALL_HANDLER3</a>(sys_fcntl, <span class="keywordtype">int</span> *fd_id, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> request, <span class="keywordtype">void</span> * data);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="structprocess_html"><div class="ttname"><a href="structprocess.html">process</a></div><div class="ttdoc">Structure représentant un processus. </div><div class="ttdef"><b>Definition:</b> kprocess.h:92</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html"><div class="ttname"><a href="kernel_2include_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="kfcntl_8h_html_a3a5f4c56fd3fcc2b69757102f722fc29"><div class="ttname"><a href="kfcntl_8h.html#a3a5f4c56fd3fcc2b69757102f722fc29">SYSCALL_HANDLER2</a></div><div class="ttdeci">SYSCALL_HANDLER2(sys_close, int fd_id, uint32_t *ret)</div><div class="ttdef"><b>Definition:</b> kfcntl.c:110</div></div>
+<div class="ttc" id="kfcntl_8h_html_adc12a443121c63ad99a6311aa2739884"><div class="ttname"><a href="kfcntl_8h.html#adc12a443121c63ad99a6311aa2739884">close_all_fd</a></div><div class="ttdeci">void close_all_fd()</div><div class="ttdoc">Ferme tous les file descriptors ouverts. </div><div class="ttdef"><b>Definition:</b> kfcntl.c:73</div></div>
+<div class="ttc" id="kprocess_8h_html"><div class="ttname"><a href="kprocess_8h.html">kprocess.h</a></div><div class="ttdoc">Création de nouveaux processus. </div></div>
+<div class="ttc" id="kfcntl_8h_html_a5cb8d11eeb6842f49090696dbda4490b"><div class="ttname"><a href="kfcntl_8h.html#a5cb8d11eeb6842f49090696dbda4490b">init_stdfd</a></div><div class="ttdeci">void init_stdfd(process_t *new_proc)</div><div class="ttdoc">Initialise les descripteurs de fichiers standards. </div><div class="ttdef"><b>Definition:</b> kfcntl.c:41</div></div>
+<div class="ttc" id="fd__types_8h_html"><div class="ttname"><a href="fd__types_8h.html">fd_types.h</a></div><div class="ttdoc">Structures liées aux fichiers ouverts. </div></div>
+<div class="ttc" id="ksyscall_8h_html"><div class="ttname"><a href="ksyscall_8h.html">ksyscall.h</a></div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_a33594304e786b158f3fb30289278f5af"><div class="ttname"><a href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a></div><div class="ttdeci">unsigned long int uint32_t</div><div class="ttdef"><b>Definition:</b> types.h:36</div></div>
+<div class="ttc" id="kfcntl_8h_html_aa1d225acb87c04ac8d56c8096f587a03"><div class="ttname"><a href="kfcntl_8h.html#aa1d225acb87c04ac8d56c8096f587a03">SYSCALL_HANDLER3</a></div><div class="ttdeci">SYSCALL_HANDLER3(sys_open, int *fd_id, char *path, uint32_t flags)</div><div class="ttdef"><b>Definition:</b> kfcntl.c:92</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

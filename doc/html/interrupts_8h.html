@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/include/interrupts.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -95,70 +96,92 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Gestion des interruptions..  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de interrupts.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="interrupts_8h__incl.png" border="0" usemap="#kernel_2include_2interrupts_8h" alt=""/></div>
 <map name="kernel_2include_2interrupts_8h" id="kernel_2include_2interrupts_8h">
-<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="60,83,121,111"/></map>
+<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="59,83,120,111"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="interrupts_8h__dep__incl.png" border="0" usemap="#kernel_2include_2interrupts_8hdep" alt=""/></div>
 <map name="kernel_2include_2interrupts_8hdep" id="kernel_2include_2interrupts_8hdep">
-<area shape="rect" id="node3" href="clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="5,91,107,119"/><area shape="rect" id="node5" href="floppy__interrupt_8c.html" title="kernel/drivers/block\l/floppy/floppy_interrupt.c" alt="" coords="131,83,291,127"/><area shape="rect" id="node7" href="mouse_8c.html" title="kernel/drivers/char\l/mouse.c" alt="" coords="315,83,443,127"/><area shape="rect" id="node9" href="serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="467,83,595,127"/><area shape="rect" id="node11" href="events_8c.html" title="Gestion d&#39;évènements datés." alt="" coords="619,91,728,119"/><area shape="rect" id="node13" href="fpu_8c.html" title="Configuration de la FPU." alt="" coords="752,91,840,119"/><area shape="rect" id="node15" href="interrupts_8c.html" title="kernel/interrupts.c" alt="" coords="864,91,989,119"/><area shape="rect" id="node17" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="1013,91,1120,119"/><area shape="rect" id="node19" href="kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="1144,91,1253,119"/><area shape="rect" id="node21" href="ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="1277,91,1389,119"/><area shape="rect" id="node23" href="ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="1413,91,1531,119"/><area shape="rect" id="node25" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="1555,91,1680,119"/></map>
+<area shape="rect" id="node2" href="clock_8c.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="5,87,108,114"/><area shape="rect" id="node3" href="floppy__interrupt_8c.html" title="kernel/drivers/block\l/floppy/floppy_interrupt.c" alt="" coords="133,80,293,121"/><area shape="rect" id="node4" href="mouse_8c.html" title="kernel/drivers/char\l/mouse.c" alt="" coords="316,80,445,121"/><area shape="rect" id="node5" href="serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="469,80,599,121"/><area shape="rect" id="node6" href="events_8c.html" title="Gestion d&#39;évènements datés. " alt="" coords="623,87,733,114"/><area shape="rect" id="node7" href="fpu_8c.html" title="Configuration de la FPU. " alt="" coords="757,87,847,114"/><area shape="rect" id="node8" href="interrupts_8c.html" title="kernel/interrupts.c" alt="" coords="871,87,997,114"/><area shape="rect" id="node9" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="1021,87,1127,114"/><area shape="rect" id="node10" href="kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="1151,87,1261,114"/><area shape="rect" id="node11" href="ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="1285,87,1397,114"/><area shape="rect" id="node12" href="ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="1420,87,1539,114"/><area shape="rect" id="node13" href="scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="1563,87,1689,114"/></map>
 </div>
 </div>
 <p><a href="interrupts_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Structures de données</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structintframe.html">intframe</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a85fc66e3edd4ed6a4db6e455feaba8ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#a85fc66e3edd4ed6a4db6e455feaba8ca">IRQ_TIMER</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a85fc66e3edd4ed6a4db6e455feaba8ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8092843c014fad609c1b01a4604a44a3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#a8092843c014fad609c1b01a4604a44a3">IRQ_KEYBOARD</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a8092843c014fad609c1b01a4604a44a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd48440eb0a6d84439b51328e2d5c542"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acd48440eb0a6d84439b51328e2d5c542"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IRQ_SLAVE_PIC</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:acd48440eb0a6d84439b51328e2d5c542"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe9f19b981c093830239430dd2e42ba5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#afe9f19b981c093830239430dd2e42ba5">IRQ_COM2</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:afe9f19b981c093830239430dd2e42ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a603b478f70a928f442e33fefba73494a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#a603b478f70a928f442e33fefba73494a">IRQ_COM1</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a603b478f70a928f442e33fefba73494a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a124409fc7614dbfc0fa4e4f051bf34bf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#a124409fc7614dbfc0fa4e4f051bf34bf">IRQ_RESERVED_1</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a124409fc7614dbfc0fa4e4f051bf34bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51ebc06bb64338ca52ccd907757236d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#a51ebc06bb64338ca52ccd907757236d5">IRQ_FLOPPY</a>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:a51ebc06bb64338ca52ccd907757236d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7470b817cb853efc47827610aa7d7658"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#a7470b817cb853efc47827610aa7d7658">IRQ_LPT1</a>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:a7470b817cb853efc47827610aa7d7658"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcc3514b333a16589ac65bcd44080530"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#afcc3514b333a16589ac65bcd44080530">IRQ_8_REAL_TIME_CLK</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:afcc3514b333a16589ac65bcd44080530"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd999e11580b7bc2219604e89ce4639d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afd999e11580b7bc2219604e89ce4639d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IRQ_REDIRECT_IRQ2</b>&#160;&#160;&#160;9</td></tr>
+<tr class="separator:afd999e11580b7bc2219604e89ce4639d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fd65360bc9ac3ee6aa4c55214aa6465"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3fd65360bc9ac3ee6aa4c55214aa6465"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IRQ_RESERVED_2</b>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:a3fd65360bc9ac3ee6aa4c55214aa6465"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21ae588255448104f6862734a5cc18ed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a21ae588255448104f6862734a5cc18ed"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IRQ_RESERVED_3</b>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:a21ae588255448104f6862734a5cc18ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacd1e86773887394ce22a62b0af5d183"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#aacd1e86773887394ce22a62b0af5d183">IRQ_PS2_MOUSE</a>&#160;&#160;&#160;12</td></tr>
+<tr class="separator:aacd1e86773887394ce22a62b0af5d183"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa90f46b51383c714e3a02cfcd88dc723"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa90f46b51383c714e3a02cfcd88dc723"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IRQ_COPROCESSOR</b>&#160;&#160;&#160;13</td></tr>
+<tr class="separator:aa90f46b51383c714e3a02cfcd88dc723"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87ece922ad3d4d7aeae26fd8a8dc1bc0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87ece922ad3d4d7aeae26fd8a8dc1bc0"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IRQ_HARDDISK</b>&#160;&#160;&#160;14</td></tr>
+<tr class="separator:a87ece922ad3d4d7aeae26fd8a8dc1bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a712e9bd5c28bb15ad962e7986bfb50b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a712e9bd5c28bb15ad962e7986bfb50b0"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IRQ_RESERVED_4</b>&#160;&#160;&#160;15</td></tr>
+<tr class="separator:a712e9bd5c28bb15ad962e7986bfb50b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4738790c15755ecd75912c6a0228ed13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#a4738790c15755ecd75912c6a0228ed13">IRQ_SYSCALL</a>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:a4738790c15755ecd75912c6a0228ed13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
 <tr class="memitem:acc6e67964acaa4ef0f85422ef6ae6f60"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc6e67964acaa4ef0f85422ef6ae6f60"></a>
 typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>interrupt_handler_t</b> )(int interrupt_id)</td></tr>
+<tr class="separator:acc6e67964acaa4ef0f85422ef6ae6f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:aecc1fa8433fa21ba233b8feb2558e954"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#aecc1fa8433fa21ba233b8feb2558e954">interrupt_set_routine</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id, interrupt_handler_t routine, <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> privilege)</td></tr>
-<tr class="memdesc:aecc1fa8433fa21ba233b8feb2558e954"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une nouvelle interruption.  <a href="#aecc1fa8433fa21ba233b8feb2558e954"></a><br/></td></tr>
+<tr class="memdesc:aecc1fa8433fa21ba233b8feb2558e954"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une nouvelle interruption.  <a href="#aecc1fa8433fa21ba233b8feb2558e954">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aecc1fa8433fa21ba233b8feb2558e954"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3f5203c31fd554b562cba8cec42ceb6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#ac3f5203c31fd554b562cba8cec42ceb6">interrupt_disable</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id)</td></tr>
-<tr class="memdesc:ac3f5203c31fd554b562cba8cec42ceb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Désactive une interruption.  <a href="#ac3f5203c31fd554b562cba8cec42ceb6"></a><br/></td></tr>
+<tr class="memdesc:ac3f5203c31fd554b562cba8cec42ceb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Désactive une interruption.  <a href="#ac3f5203c31fd554b562cba8cec42ceb6">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac3f5203c31fd554b562cba8cec42ceb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4eea959d9a7be06d7b87a0aad03b490e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupts_8h.html#a4eea959d9a7be06d7b87a0aad03b490e">make_trapgate_from_int</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> interrupt_id)</td></tr>
-<tr class="memdesc:a4eea959d9a7be06d7b87a0aad03b490e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change le type d'une interruption en une trapgate.  <a href="#a4eea959d9a7be06d7b87a0aad03b490e"></a><br/></td></tr>
+<tr class="memdesc:a4eea959d9a7be06d7b87a0aad03b490e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change le type d'une interruption en une trapgate.  <a href="#a4eea959d9a7be06d7b87a0aad03b490e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4eea959d9a7be06d7b87a0aad03b490e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -168,7 +191,7 @@ LICENSE</h1>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des macros</h2>
+</div><h2 class="groupheader">Documentation des macros</h2>
 <a class="anchor" id="afcc3514b333a16589ac65bcd44080530"></a>
 <div class="memitem">
 <div class="memproto">
@@ -299,7 +322,7 @@ DESCRIPTION</h1>
 
 </div>
 </div>
-<h2>Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="ac3f5203c31fd554b562cba8cec42ceb6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -326,7 +349,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="interrupts_8h_ac3f5203c31fd554b562cba8cec42ceb6_cgraph.png" border="0" usemap="#interrupts_8h_ac3f5203c31fd554b562cba8cec42ceb6_cgraph" alt=""/></div>
 <map name="interrupts_8h_ac3f5203c31fd554b562cba8cec42ceb6_cgraph" id="interrupts_8h_ac3f5203c31fd554b562cba8cec42ceb6_cgraph">
-<area shape="rect" id="node3" href="idt_8c.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption." alt="" coords="171,5,304,33"/><area shape="rect" id="node5" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="353,5,463,33"/></map>
+<area shape="rect" id="node2" href="idt_8c.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption. " alt="" coords="171,5,304,32"/><area shape="rect" id="node3" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception. " alt="" coords="352,5,463,32"/></map>
 </div>
 </p>
 
@@ -377,7 +400,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="interrupts_8h_aecc1fa8433fa21ba233b8feb2558e954_cgraph.png" border="0" usemap="#interrupts_8h_aecc1fa8433fa21ba233b8feb2558e954_cgraph" alt=""/></div>
 <map name="interrupts_8h_aecc1fa8433fa21ba233b8feb2558e954_cgraph" id="interrupts_8h_aecc1fa8433fa21ba233b8feb2558e954_cgraph">
-<area shape="rect" id="node3" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="196,5,305,33"/></map>
+<area shape="rect" id="node2" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception. " alt="" coords="193,5,304,32"/></map>
 </div>
 </p>
 
@@ -386,7 +409,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="interrupts_8h_aecc1fa8433fa21ba233b8feb2558e954_icgraph.png" border="0" usemap="#interrupts_8h_aecc1fa8433fa21ba233b8feb2558e954_icgraph" alt=""/></div>
 <map name="interrupts_8h_aecc1fa8433fa21ba233b8feb2558e954_icgraph" id="interrupts_8h_aecc1fa8433fa21ba233b8feb2558e954_icgraph">
-<area shape="rect" id="node3" href="floppy__interrupt_8h.html#a19cdddd056dff00ace3567933e4d2b71" title="Initialise l&#39;IRQ floppy." alt="" coords="195,5,328,33"/><area shape="rect" id="node7" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="219,55,304,83"/><area shape="rect" id="node9" href="ksyscall_8c.html#a3e64f9d87cb92e4dc7d748a495e232f1" title="Initialisation des appels systemes." alt="" coords="219,106,304,134"/><area shape="rect" id="node5" href="floppy_8h.html#a4b305e10e95fed92b047adfac6dc4881" title="Initilise le driver floppy." alt="" coords="377,5,455,33"/></map>
+<area shape="rect" id="node2" href="floppy__interrupt_8h.html#a19cdddd056dff00ace3567933e4d2b71" title="Initialise l&#39;IRQ floppy. " alt="" coords="193,5,327,32"/><area shape="rect" id="node3" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements " alt="" coords="217,56,303,83"/><area shape="rect" id="node4" href="ksyscall_8c.html#a3e64f9d87cb92e4dc7d748a495e232f1" title="Initialisation des appels systemes. " alt="" coords="217,107,303,133"/></map>
 </div>
 </p>
 
@@ -417,7 +440,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="interrupts_8h_a4eea959d9a7be06d7b87a0aad03b490e_cgraph.png" border="0" usemap="#interrupts_8h_a4eea959d9a7be06d7b87a0aad03b490e_cgraph" alt=""/></div>
 <map name="interrupts_8h_a4eea959d9a7be06d7b87a0aad03b490e_cgraph" id="interrupts_8h_a4eea959d9a7be06d7b87a0aad03b490e_cgraph">
-<area shape="rect" id="node3" href="idt_8c.html#affa07557443fe1c9a508b346d8f06523" title="Change le type d&#39;une interruption (interrupt gate, trap gate, task gate)." alt="" coords="216,5,357,33"/></map>
+<area shape="rect" id="node2" href="idt_8c.html#affa07557443fe1c9a508b346d8f06523" title="Change le type d&#39;une interruption (interrupt gate, trap gate, task gate). " alt="" coords="216,5,357,32"/></map>
 </div>
 </p>
 
@@ -426,7 +449,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="interrupts_8h_a4eea959d9a7be06d7b87a0aad03b490e_icgraph.png" border="0" usemap="#interrupts_8h_a4eea959d9a7be06d7b87a0aad03b490e_icgraph" alt=""/></div>
 <map name="interrupts_8h_a4eea959d9a7be06d7b87a0aad03b490e_icgraph" id="interrupts_8h_a4eea959d9a7be06d7b87a0aad03b490e_icgraph">
-<area shape="rect" id="node3" href="ksyscall_8c.html#a3e64f9d87cb92e4dc7d748a495e232f1" title="Initialisation des appels systemes." alt="" coords="217,5,303,33"/></map>
+<area shape="rect" id="node2" href="ksyscall_8c.html#a3e64f9d87cb92e4dc7d748a495e232f1" title="Initialisation des appels systemes. " alt="" coords="216,5,303,32"/></map>
 </div>
 </p>
 
@@ -435,9 +458,9 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:37 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

@@ -174,41 +174,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00131"></a><span class="lineno"><a class="code" href="struct__proclist__cell.html#aee5c3bd7595d05c693fe6df63937052e">  131</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__proclist__cell.html">_proclist_cell</a>* <a class="code" href="struct__proclist__cell.html#aee5c3bd7595d05c693fe6df63937052e">prev</a>; </div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}*<a class="code" href="kprocess_8h.html#ac9040b1162f3fbe3bc0a5c2d7f07cf58">proc_list</a>, <a class="code" href="struct__proclist__cell.html">proclist_cell</a>;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* <a class="code" href="kprocess_8h.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a...">create_process</a>(<a class="code" href="structprocess__init__data__t.html">process_init_data_t</a>* init_data);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="keywordtype">int</span> <a class="code" href="kprocess_8h.html#a7cced35f469ae897c55ab96940289cf6" title="Retire un processus de la liste.">delete_process</a>(<span class="keywordtype">int</span> pid);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* <a class="code" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné.">find_process</a>(<span class="keywordtype">int</span> pid);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* <a class="code" href="kprocess_8h.html#ab9b171d0bff7fe92083df6efaa920030" title="Retourne le processus suivant le processus courant dans la liste.">get_next_process</a>();</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="kprocess_8h.html#a63bbc7e770ccf29ac484112986ee7640" title="Retourne le nombre de processus dans la liste.">get_proc_count</a>();</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keywordtype">void</span> <a class="code" href="kprocess_8h.html#a8d3174a39442391c9d23454a3bcf482b" title="Nettoie la liste des processus. Retire de la liste tous les processus en état PROCSTATE_TERMINATED.">clean_process_list</a>();</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="keywordtype">void</span> sample_CPU_usage();</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;SYSCALL_HANDLER1(sys_exit,<a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ret_value __attribute__ ((unused)));</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;SYSCALL_HANDLER1(sys_getpid, <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>* pid);</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;SYSCALL_HANDLER1(sys_getppid, <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>* ppid);</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;SYSCALL_HANDLER3(sys_exec, <span class="keywordtype">char</span> *cmdline, <span class="keywordtype">char</span> **environ, <span class="keywordtype">int</span> *retval);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;SYSCALL_HANDLER3(sys_proc, <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> sub_func, <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param1, <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param2);</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;SYSCALL_HANDLER1(sys_waitpid, <span class="keywordtype">int</span> pid);</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="keywordtype">void</span> <a class="code" href="procfs_8c.html#a67b19f8892567cdb63c98ee660300f60" title="Initialisation du proc FS.">procfs_init</a>();</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* <a class="code" href="kprocess_8h.html#ab5769fb8db77d54ea9a9216f14a2248c" title="Récupère un process à partir de sa position dans le tableau.">get_process_array</a>(<span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _K_PROCESS_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keywordtype">int</span> <a class="code" href="kprocess_8h.html#a19a88a02c4baad09f86d6c110f3d3240" title="Crée un nouveau processus kernel. Crée un nouveau processus kernel et l&#39;ajoute à la liste des process...">create_kprocess</a>(<span class="keywordtype">char</span>* name,</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                    <span class="keywordtype">void</span>* entry_point,</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> stack_size);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* create_process(<a class="code" href="structprocess__init__data__t.html">process_init_data_t</a>* init_data);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="keywordtype">int</span> <a class="code" href="kprocess_8h.html#a7cced35f469ae897c55ab96940289cf6" title="Retire un processus de la liste.">delete_process</a>(<span class="keywordtype">int</span> pid);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* <a class="code" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné.">find_process</a>(<span class="keywordtype">int</span> pid);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* <a class="code" href="kprocess_8h.html#ab9b171d0bff7fe92083df6efaa920030" title="Retourne le processus suivant le processus courant dans la liste.">get_next_process</a>();</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="kprocess_8h.html#a63bbc7e770ccf29ac484112986ee7640" title="Retourne le nombre de processus dans la liste.">get_proc_count</a>();</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="keywordtype">void</span> <a class="code" href="kprocess_8h.html#a8d3174a39442391c9d23454a3bcf482b" title="Nettoie la liste des processus. Retire de la liste tous les processus en état PROCSTATE_TERMINATED.">clean_process_list</a>();</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="keywordtype">void</span> sample_CPU_usage();</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;SYSCALL_HANDLER1(sys_exit,<a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ret_value __attribute__ ((unused)));</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;SYSCALL_HANDLER1(sys_getpid, <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>* pid);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;SYSCALL_HANDLER1(sys_getppid, <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>* ppid);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;SYSCALL_HANDLER3(sys_exec, <span class="keywordtype">char</span> *cmdline, <span class="keywordtype">char</span> **environ, <span class="keywordtype">int</span> *retval);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;SYSCALL_HANDLER3(sys_proc, <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> sub_func, <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param1, <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> param2);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;SYSCALL_HANDLER1(sys_waitpid, <span class="keywordtype">int</span> pid);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="keywordtype">void</span> <a class="code" href="procfs_8c.html#a67b19f8892567cdb63c98ee660300f60" title="Initialisation du proc FS.">procfs_init</a>();</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* <a class="code" href="kprocess_8h.html#ab5769fb8db77d54ea9a9216f14a2248c" title="Récupère un process à partir de sa position dans le tableau.">get_process_array</a>(<span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _K_PROCESS_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:16 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 8 2014 09:54:14 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/include/cpu.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -102,28 +103,46 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 </div>
 <p><a href="cpu_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a2bedd71ee3fb79ef52f892f0d8c38944"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a2bedd71ee3fb79ef52f892f0d8c38944">FLAGS_CF</a>&#160;&#160;&#160;0x00000001</td></tr>
+<tr class="separator:a2bedd71ee3fb79ef52f892f0d8c38944"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e6aff229a00df76b28aabb5151fa0d9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a7e6aff229a00df76b28aabb5151fa0d9">FLAGS_PF</a>&#160;&#160;&#160;0x00000004</td></tr>
+<tr class="separator:a7e6aff229a00df76b28aabb5151fa0d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2e065f36c5ae17f3dae4406b5333e45"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ac2e065f36c5ae17f3dae4406b5333e45">FLAGS_AF</a>&#160;&#160;&#160;0x00000010</td></tr>
+<tr class="separator:ac2e065f36c5ae17f3dae4406b5333e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81e1a9abcac8701d25ad2fd6a8afbe62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a81e1a9abcac8701d25ad2fd6a8afbe62">FLAGS_ZF</a>&#160;&#160;&#160;0x00000040</td></tr>
+<tr class="separator:a81e1a9abcac8701d25ad2fd6a8afbe62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a932a45daf3fa04dd038df7b8644c0778"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a932a45daf3fa04dd038df7b8644c0778">FLAGS_SF</a>&#160;&#160;&#160;0x00000080</td></tr>
+<tr class="separator:a932a45daf3fa04dd038df7b8644c0778"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1792407992a5406c18966aa379deb928"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a1792407992a5406c18966aa379deb928">FLAGS_TF</a>&#160;&#160;&#160;0x00000100</td></tr>
+<tr class="separator:a1792407992a5406c18966aa379deb928"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86444793225d0c51717c9cccf541f47c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a86444793225d0c51717c9cccf541f47c">FLAGS_IF</a>&#160;&#160;&#160;0x00000200</td></tr>
+<tr class="separator:a86444793225d0c51717c9cccf541f47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2db82202c9d87e24f787b4972ac82d01"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a2db82202c9d87e24f787b4972ac82d01">FLAGS_DF</a>&#160;&#160;&#160;0x00000400</td></tr>
+<tr class="separator:a2db82202c9d87e24f787b4972ac82d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e2d10c6161198293e49ae2dc3e1b281"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a7e2d10c6161198293e49ae2dc3e1b281">FLAGS_OF</a>&#160;&#160;&#160;0x00000800</td></tr>
+<tr class="separator:a7e2d10c6161198293e49ae2dc3e1b281"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d5fda33cf0f6d6819ed984535cb8ff5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a9d5fda33cf0f6d6819ed984535cb8ff5">FLAGS_IOPL1</a>&#160;&#160;&#160;0x00001000</td></tr>
+<tr class="separator:a9d5fda33cf0f6d6819ed984535cb8ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a362713d800ef199939855c9d727ef045"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a362713d800ef199939855c9d727ef045">FLAGS_IOPL2</a>&#160;&#160;&#160;0x00002000</td></tr>
+<tr class="separator:a362713d800ef199939855c9d727ef045"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cdb72124771ac31c011b328c2b080d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a0cdb72124771ac31c011b328c2b080d7">FLAGS_NT</a>&#160;&#160;&#160;0x00004000</td></tr>
+<tr class="separator:a0cdb72124771ac31c011b328c2b080d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9ad3a8a690973cdf9d50328edddaa93"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ab9ad3a8a690973cdf9d50328edddaa93">FLAGS_RF</a>&#160;&#160;&#160;0x00010000</td></tr>
+<tr class="separator:ab9ad3a8a690973cdf9d50328edddaa93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9774b257c7c702af7c344b936de517d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a9774b257c7c702af7c344b936de517d1">FLAGS_VM</a>&#160;&#160;&#160;0x00020000</td></tr>
+<tr class="separator:a9774b257c7c702af7c344b936de517d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3640ad0b12f50bedbd1836c946bf0368"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a3640ad0b12f50bedbd1836c946bf0368">FLAGS_AC</a>&#160;&#160;&#160;0x00040000</td></tr>
+<tr class="separator:a3640ad0b12f50bedbd1836c946bf0368"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1fd46f697afacff611d12fefd48b36c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#aa1fd46f697afacff611d12fefd48b36c">FLAGS_VIF</a>&#160;&#160;&#160;0x00080000</td></tr>
+<tr class="separator:aa1fd46f697afacff611d12fefd48b36c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ad34e0df2b9ffb461818bd987341a4e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a4ad34e0df2b9ffb461818bd987341a4e">FLAGS_VIP</a>&#160;&#160;&#160;0x00100000</td></tr>
+<tr class="separator:a4ad34e0df2b9ffb461818bd987341a4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1642f73f6c83284f3d7ab2427c261d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ac1642f73f6c83284f3d7ab2427c261d8">FLAGS_ID</a>&#160;&#160;&#160;0x00200000</td></tr>
+<tr class="separator:ac1642f73f6c83284f3d7ab2427c261d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -133,7 +152,7 @@ LICENSE</h1>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des macros</h2>
+</div><h2 class="groupheader">Documentation des macros</h2>
 <a class="anchor" id="a3640ad0b12f50bedbd1836c946bf0368"></a>
 <div class="memitem">
 <div class="memproto">
@@ -371,9 +390,9 @@ DESCRIPTION</h1>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:35 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

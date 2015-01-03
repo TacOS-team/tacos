@@ -194,6 +194,7 @@ var searchData=
   ['ext_5fbios_5f16',['ext_BIOS_16',['../struct__fat__info.html#a4da4c2a7a629ca59a686822e6447acb8',1,'_fat_info']]],
   ['ext_5fbios_5f32',['ext_BIOS_32',['../struct__fat__info.html#aab203e7eb3c2027e3034d7765a2d5281',1,'_fat_info']]],
   ['ext_5fboot_5fsignature',['ext_boot_signature',['../struct__fat__extended__BIOS__16.html#a96dde388d85873830b8b421d13336737',1,'_fat_extended_BIOS_16']]],
+  ['extra_5fdata',['extra_data',['../struct__open__file__descriptor.html#a99824795a31a8adea2162aed74162017',1,'_open_file_descriptor']]],
   ['extra_5fdata_5fpipe_5ft',['extra_data_pipe_t',['../structextra__data__pipe__t.html',1,'']]],
   ['extra_5fdata_5fprocfs_5ft',['extra_data_procfs_t',['../structextra__data__procfs__t.html',1,'']]]
 ];

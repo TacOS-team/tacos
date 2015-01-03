@@ -2,6 +2,8 @@ var searchData=
 [
   ['parenb',['PARENB',['../termios__types_8h.html#ac4f671a0015eb258fcbfaf62bd5a9b17',1,'termios_types.h']]],
   ['parodd',['PARODD',['../termios__types_8h.html#a339516a423571344e92138e42623843a',1,'termios_types.h']]],
+  ['pgdown_5fkey',['PGDOWN_KEY',['../keyboard_8c.html#ab4c735965485f50ac6b61dd32726751f',1,'keyboard.c']]],
+  ['pgup_5fkey',['PGUP_KEY',['../keyboard_8c.html#a0af63b409c570a94ca8834f81fc10587',1,'keyboard.c']]],
   ['procfs_5froot_5fprocess_5foffset',['procfs_root_process_offset',['../procfs_8c.html#a7b59605600222e4a5eada2f42bca8de9',1,'procfs.c']]],
   ['procstate_5fidle',['PROCSTATE_IDLE',['../kprocess_8h.html#a0a3202b6e8073e458785ebcdf6d8c9f2',1,'kprocess.h']]],
   ['procstate_5frunning',['PROCSTATE_RUNNING',['../kprocess_8h.html#a1538df1594431185fbbced3805cddc37',1,'kprocess.h']]],

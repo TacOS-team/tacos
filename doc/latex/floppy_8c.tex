@@ -1,17 +1,18 @@
 \hypertarget{floppy_8c}{\section{Référence du fichier kernel/drivers/block/floppy/floppy.c}
-\label{floppy_8c}\index{kernel/drivers/block/floppy/floppy.\-c@{kernel/drivers/block/floppy/floppy.\-c}}
+\label{floppy_8c}\index{kernel/drivers/block/floppy/floppy.\+c@{kernel/drivers/block/floppy/floppy.\+c}}
 }
-{\ttfamily \#include $<$fs/devfs.\-h$>$}\\*
-{\ttfamily \#include $<$ioports.\-h$>$}\\*
-{\ttfamily \#include $<$kstdio.\-h$>$}\\*
-{\ttfamily \#include $<$klibc/string.\-h$>$}\\*
-{\ttfamily \#include $<$types.\-h$>$}\\*
-{\ttfamily \#include $<$klog.\-h$>$}\\*
-{\ttfamily \#include \char`\"{}floppy\-\_\-interrupt.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}floppy\-\_\-utils.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}floppy\-\_\-motor.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}floppy\-\_\-dma.\-h\char`\"{}}\\*
-Graphe des dépendances par inclusion de floppy.\-c\-:\nopagebreak
+{\ttfamily \#include $<$fs/devfs.\+h$>$}\\*
+{\ttfamily \#include $<$ioports.\+h$>$}\\*
+{\ttfamily \#include $<$kstdio.\+h$>$}\\*
+{\ttfamily \#include $<$klibc/string.\+h$>$}\\*
+{\ttfamily \#include $<$types.\+h$>$}\\*
+{\ttfamily \#include $<$klog.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}floppy\+\_\+interrupt.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}floppy\+\_\+utils.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}floppy\+\_\+motor.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}floppy\+\_\+dma.\+h\char`\"{}}\\*
+Graphe des dépendances par inclusion de floppy.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,36 +22,45 @@ Graphe des dépendances par inclusion de floppy.\-c\-:\nopagebreak
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{floppy_8c_a2d80f166138f54b8808b0977de138096}{\#define {\bfseries F\-L\-O\-P\-P\-Y\-\_\-\-S\-E\-C\-T\-O\-R\-\_\-\-S\-I\-Z\-E}~512}\label{floppy_8c_a2d80f166138f54b8808b0977de138096}
+\hypertarget{floppy_8c_a2d80f166138f54b8808b0977de138096}{\#define {\bfseries F\+L\+O\+P\+P\+Y\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+\+S\+I\+Z\+E}~512}\label{floppy_8c_a2d80f166138f54b8808b0977de138096}
 
 \item 
-\hypertarget{floppy_8c_a1a1ec045732bf94510027aef2ef10c79}{\#define {\bfseries F\-L\-O\-P\-P\-Y\-\_\-\-N\-B\-\_\-\-H\-E\-A\-D\-S}~2}\label{floppy_8c_a1a1ec045732bf94510027aef2ef10c79}
+\hypertarget{floppy_8c_a1a1ec045732bf94510027aef2ef10c79}{\#define {\bfseries F\+L\+O\+P\+P\+Y\+\_\+\+N\+B\+\_\+\+H\+E\+A\+D\+S}~2}\label{floppy_8c_a1a1ec045732bf94510027aef2ef10c79}
 
 \item 
-\hypertarget{floppy_8c_ad0d69d8da349ac2b68dfd1ad5d2a8489}{\#define {\bfseries F\-L\-O\-P\-P\-Y\-\_\-\-S\-E\-C\-T\-O\-R\-S\-\_\-\-P\-E\-R\-\_\-\-T\-R\-A\-C\-K}~18}\label{floppy_8c_ad0d69d8da349ac2b68dfd1ad5d2a8489}
+\hypertarget{floppy_8c_ad0d69d8da349ac2b68dfd1ad5d2a8489}{\#define {\bfseries F\+L\+O\+P\+P\+Y\+\_\+\+S\+E\+C\+T\+O\+R\+S\+\_\+\+P\+E\+R\+\_\+\+T\+R\+A\+C\+K}~18}\label{floppy_8c_ad0d69d8da349ac2b68dfd1ad5d2a8489}
 
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{floppy_8c_aa628c68a29a61ef1a4e65641de73665f}{int {\bfseries floppy\-\_\-calibrate} ()}\label{floppy_8c_aa628c68a29a61ef1a4e65641de73665f}
+\hypertarget{floppy_8c_ada662b3b3dadf97620b0dbd24156ad96}{int {\bfseries floppy\+\_\+calibrate} (int drive)}\label{floppy_8c_ada662b3b3dadf97620b0dbd24156ad96}
 
 \item 
-\hypertarget{floppy_8c_a4b305e10e95fed92b047adfac6dc4881}{int \hyperlink{floppy_8c_a4b305e10e95fed92b047adfac6dc4881}{init\-\_\-floppy} ()}\label{floppy_8c_a4b305e10e95fed92b047adfac6dc4881}
+\hypertarget{floppy_8c_a605c0d56d74b7622a0072c41988d0a7e}{int {\bfseries init\+\_\+drive} (int drive)}\label{floppy_8c_a605c0d56d74b7622a0072c41988d0a7e}
+
+\item 
+\hypertarget{floppy_8c_a4b305e10e95fed92b047adfac6dc4881}{int \hyperlink{floppy_8c_a4b305e10e95fed92b047adfac6dc4881}{init\+\_\+floppy} ()}\label{floppy_8c_a4b305e10e95fed92b047adfac6dc4881}
 
 \begin{DoxyCompactList}\small\item\em Initilise le driver floppy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{floppy_8c_a4696258b0efc4ca3ffb03937e9743cc7}{int {\bfseries drive\+\_\+id} \mbox{[}2\mbox{]} = \{ 0 , 1 \}}\label{floppy_8c_a4696258b0efc4ca3ffb03937e9743cc7}
+
+\end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010-\/2014 Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 Floppy driver 

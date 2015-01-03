@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/drivers/char/tty/tty.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -91,65 +92,110 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier tty.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="devfs_8h_source.html">fs/devfs.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="kfcntl_8h_source.html">kfcntl.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="kernel_2include_2klibc_2string_8h_source.html">klibc/string.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="kprocess_8h_source.html">kprocess.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="ksem_8h_source.html">ksem.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="ksignal_8h_source.html">ksignal.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="scheduler_8h_source.html">scheduler.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="tty_8h_source.html">tty.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="devfs_8h_source.html">fs/devfs.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="kfcntl_8h_source.html">kfcntl.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="kernel_2include_2klibc_2string_8h_source.html">klibc/string.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="kprocess_8h_source.html">kprocess.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="ksem_8h_source.html">ksem.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="ksignal_8h_source.html">ksignal.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="scheduler_8h_source.html">scheduler.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="tty_8h_source.html">tty.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de tty.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="tty_8c__incl.png" border="0" usemap="#kernel_2drivers_2char_2tty_2tty_8c" alt=""/></div>
 <map name="kernel_2drivers_2char_2tty_2tty_8c" id="kernel_2drivers_2char_2tty_2tty_8c">
-<area shape="rect" id="node3" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="656,99,733,127"/><area shape="rect" id="node11" href="kfcntl_8h.html" title="Kernel file control operations." alt="" coords="757,99,821,127"/><area shape="rect" id="node15" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="640,177,725,205"/><area shape="rect" id="node35" href="kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="488,99,581,127"/><area shape="rect" id="node38" href="klog_8h.html" title="Logging macros." alt="" coords="200,99,256,127"/><area shape="rect" id="node42" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="5,177,83,205"/><area shape="rect" id="node46" href="ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="107,177,171,205"/><area shape="rect" id="node50" href="ksignal_8h.html" title="ksignal.h" alt="" coords="392,99,464,127"/><area shape="rect" id="node56" href="scheduler_8h.html" title="scheduler.h" alt="" coords="280,99,368,127"/><area shape="rect" id="node60" href="tty_8h.html" title="Terminal posix&#45;like." alt="" coords="1059,177,1104,205"/><area shape="rect" id="node7" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="904,254,984,282"/><area shape="rect" id="node9" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="689,331,751,359"/><area shape="rect" id="node17" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="243,254,320,282"/><area shape="rect" id="node21" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="395,254,499,282"/><area shape="rect" id="node23" href="process__types_8h.html" title="process_types.h" alt="" coords="629,254,744,282"/><area shape="rect" id="node25" href="symtable_8h.html" title="symtable.h" alt="" coords="523,254,605,282"/><area shape="rect" id="node31" href="vmm_8h.html" title="vmm.h" alt="" coords="768,254,829,282"/><area shape="rect" id="node28" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="541,331,587,359"/><area shape="rect" id="node40" href="kstdio_8h.html" title="kprintf" alt="" coords="195,177,261,205"/><area shape="rect" id="node63" href="termios__types_8h.html" title="termios_types.h" alt="" coords="1109,254,1221,282"/></map>
+<area shape="rect" id="node2" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="661,95,739,121"/><area shape="rect" id="node6" href="kfcntl_8h.html" title="Kernel file control operations. " alt="" coords="764,95,828,121"/><area shape="rect" id="node7" href="kprocess_8h.html" title="Création de nouveaux processus. " alt="" coords="644,169,729,196"/><area shape="rect" id="node14" href="kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel. " alt="" coords="490,95,585,121"/><area shape="rect" id="node15" href="klog_8h.html" title="Logging macros. " alt="" coords="200,95,256,121"/><area shape="rect" id="node17" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space. " alt="" coords="5,169,83,196"/><area shape="rect" id="node18" href="ksem_8h.html" title="Coté noyau de la gestion des sémaphores. " alt="" coords="107,169,171,196"/><area shape="rect" id="node19" href="ksignal_8h.html" title="ksignal.h" alt="" coords="393,95,466,121"/><area shape="rect" id="node20" href="scheduler_8h.html" title="scheduler.h" alt="" coords="280,95,368,121"/><area shape="rect" id="node21" href="tty_8h.html" title="Terminal posix&#45;like. " alt="" coords="1066,169,1113,196"/><area shape="rect" id="node4" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts. " alt="" coords="909,244,990,271"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="691,319,754,345"/><area shape="rect" id="node8" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="241,244,319,271"/><area shape="rect" id="node9" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux). " alt="" coords="395,244,499,271"/><area shape="rect" id="node10" href="process__types_8h.html" title="process_types.h" alt="" coords="631,244,747,271"/><area shape="rect" id="node11" href="symtable_8h.html" title="symtable.h" alt="" coords="523,244,607,271"/><area shape="rect" id="node13" href="vmm_8h.html" title="vmm.h" alt="" coords="772,244,833,271"/><area shape="rect" id="node12" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF. " alt="" coords="542,319,589,345"/><area shape="rect" id="node16" href="kstdio_8h.html" title="kprintf " alt="" coords="195,169,261,196"/><area shape="rect" id="node22" href="termios__types_8h.html" title="termios_types.h" alt="" coords="1117,244,1230,271"/></map>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a59adc4c82490d23754cd39c2fb99b0da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a59adc4c82490d23754cd39c2fb99b0da"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EOF</b>&#160;&#160;&#160;(-1)</td></tr>
+<tr class="separator:a59adc4c82490d23754cd39c2fb99b0da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c6a779e2a70103216bbe1e930a7c744"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#a3c6a779e2a70103216bbe1e930a7c744">I_ECHO</a>(tty)&#160;&#160;&#160;(tty-&gt;<a class="el" href="structtermios.html#a91bdd7691180800fccc4b791466ee9c3">termios.c_lflag</a> &amp; <a class="el" href="termios_8h.html#aad1dc60a04a1d8cfc8b3ded13601e361">ECHO</a>)</td></tr>
+<tr class="separator:a3c6a779e2a70103216bbe1e930a7c744"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06314af20a166cbf96e764892a2b3688"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#a06314af20a166cbf96e764892a2b3688">I_CANON</a>(tty)&#160;&#160;&#160;(tty-&gt;<a class="el" href="structtermios.html#a91bdd7691180800fccc4b791466ee9c3">termios.c_lflag</a> &amp; <a class="el" href="termios_8h.html#a58265a371303d00a4a3b1f128d72c21e">ICANON</a>)</td></tr>
+<tr class="separator:a06314af20a166cbf96e764892a2b3688"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad03777cbc0b0ff24b31ca2ff5eeb771d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#ad03777cbc0b0ff24b31ca2ff5eeb771d">I_IGNCR</a>(tty)&#160;&#160;&#160;(tty-&gt;<a class="el" href="structtermios.html#a85b6c86d2a3db45a3829488190e357e4">termios.c_iflag</a> &amp; <a class="el" href="termios_8h.html#ab114b7d41f2ff7562a85ec83b62544b0">IGNCR</a>)</td></tr>
+<tr class="separator:ad03777cbc0b0ff24b31ca2ff5eeb771d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae524240ae8b50b8e5230cbea0666db7f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#ae524240ae8b50b8e5230cbea0666db7f">I_ICRNL</a>(tty)&#160;&#160;&#160;(tty-&gt;<a class="el" href="structtermios.html#a85b6c86d2a3db45a3829488190e357e4">termios.c_iflag</a> &amp; <a class="el" href="termios_8h.html#ae0cbb5db9d8f8119864bb9537466c314">ICRNL</a>)</td></tr>
+<tr class="separator:ae524240ae8b50b8e5230cbea0666db7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58343ebbc092a56ca39e371d1e0d7bf5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#a58343ebbc092a56ca39e371d1e0d7bf5">I_INLCR</a>(tty)&#160;&#160;&#160;(tty-&gt;<a class="el" href="structtermios.html#a85b6c86d2a3db45a3829488190e357e4">termios.c_iflag</a> &amp; <a class="el" href="termios_8h.html#acc6dc46be5104b67ffde1df93549472a">INLCR</a>)</td></tr>
+<tr class="separator:a58343ebbc092a56ca39e371d1e0d7bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9121186e20dddeca1f87a1a9bbcc98fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#a9121186e20dddeca1f87a1a9bbcc98fa">L_ISIG</a>(tty)&#160;&#160;&#160;(tty-&gt;<a class="el" href="structtermios.html#a91bdd7691180800fccc4b791466ee9c3">termios.c_lflag</a> &amp; <a class="el" href="termios_8h.html#a52c605497d066b9ae7407124f84806a7">ISIG</a>)</td></tr>
+<tr class="separator:a9121186e20dddeca1f87a1a9bbcc98fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32d35a3a2ab8a8a4ba1f388acba62b79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#a32d35a3a2ab8a8a4ba1f388acba62b79">L_ECHOE</a>(tty)&#160;&#160;&#160;(tty-&gt;<a class="el" href="structtermios.html#a91bdd7691180800fccc4b791466ee9c3">termios.c_lflag</a> &amp; <a class="el" href="termios_8h.html#aac931d3ce0dfc4578f76879ed095ecd7">ECHOE</a>)</td></tr>
+<tr class="separator:a32d35a3a2ab8a8a4ba1f388acba62b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5877372781bac3647d21e4cbf23c528d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#a5877372781bac3647d21e4cbf23c528d">L_ECHOCTL</a>(tty)&#160;&#160;&#160;(tty-&gt;<a class="el" href="structtermios.html#a91bdd7691180800fccc4b791466ee9c3">termios.c_lflag</a> &amp; <a class="el" href="termios_8h.html#a1be1e11c89f23c1651328e62b9533ac2">ECHOCTL</a>)</td></tr>
+<tr class="separator:a5877372781bac3647d21e4cbf23c528d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abec2eb3e46639063e70f77b9b31e9b7d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#abec2eb3e46639063e70f77b9b31e9b7d">QUIT_CHAR</a>(tty)&#160;&#160;&#160;((tty)-&gt;<a class="el" href="structtermios.html#a6058cfc222551ee750c72142299acb2e">termios.c_cc</a>[<a class="el" href="termios_8h.html#a31cfa1f14eadee06c346549d734ed586">VQUIT</a>])</td></tr>
+<tr class="separator:abec2eb3e46639063e70f77b9b31e9b7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46c70f991b37ad17309a6e67662f2855"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#a46c70f991b37ad17309a6e67662f2855">INTR_CHAR</a>(tty)&#160;&#160;&#160;((tty)-&gt;<a class="el" href="structtermios.html#a6058cfc222551ee750c72142299acb2e">termios.c_cc</a>[<a class="el" href="termios_8h.html#a5760397a3b875a073800edd2052d3816">VINTR</a>])</td></tr>
+<tr class="separator:a46c70f991b37ad17309a6e67662f2855"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2acb186a86906b4dab9f1dff4258df66"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#a2acb186a86906b4dab9f1dff4258df66">SUSP_CHAR</a>(tty)&#160;&#160;&#160;((tty)-&gt;<a class="el" href="structtermios.html#a6058cfc222551ee750c72142299acb2e">termios.c_cc</a>[<a class="el" href="termios_8h.html#a348dc585f00cea776b320e7527e2f656">VSUSP</a>])</td></tr>
+<tr class="separator:a2acb186a86906b4dab9f1dff4258df66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10c57446745f062f3c64ef35077954a0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#a10c57446745f062f3c64ef35077954a0">ERASE_CHAR</a>(tty)&#160;&#160;&#160;((tty)-&gt;<a class="el" href="structtermios.html#a6058cfc222551ee750c72142299acb2e">termios.c_cc</a>[<a class="el" href="termios_8h.html#a6e11c405d7ddff22c2318c8623c3affa">VERASE</a>])</td></tr>
+<tr class="separator:a10c57446745f062f3c64ef35077954a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2519eb4edd848b472790deb7c0a97dc9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#a2519eb4edd848b472790deb7c0a97dc9">ERASE_WORD</a>(tty)&#160;&#160;&#160;((tty)-&gt;<a class="el" href="structtermios.html#a6058cfc222551ee750c72142299acb2e">termios.c_cc</a>[<a class="el" href="termios_8h.html#a90ee9234e26b211a5d64c4df778f6c9f">VWERASE</a>])</td></tr>
+<tr class="separator:a2519eb4edd848b472790deb7c0a97dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada3d7b9324d2baf6d08420ddc31be135"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#ada3d7b9324d2baf6d08420ddc31be135">EOF_CHAR</a>(tty)&#160;&#160;&#160;((tty)-&gt;<a class="el" href="structtermios.html#a6058cfc222551ee750c72142299acb2e">termios.c_cc</a>[<a class="el" href="termios_8h.html#a2913fdfccc72db70821a2100bfc8217a">VEOF</a>])</td></tr>
+<tr class="separator:ada3d7b9324d2baf6d08420ddc31be135"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adda8c2f2fe8c05eb8e2b58ed0b4cebe2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#adda8c2f2fe8c05eb8e2b58ed0b4cebe2">PREV_CHAR_INDEX</a>(tty)&#160;&#160;&#160;((tty-&gt;p_end + <a class="el" href="tty_8h.html#a00c1f0e7816626f58349492ef0720b5f">MAX_INPUT</a> - 1) % <a class="el" href="tty_8h.html#a00c1f0e7816626f58349492ef0720b5f">MAX_INPUT</a>)</td></tr>
+<tr class="separator:adda8c2f2fe8c05eb8e2b58ed0b4cebe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfc7c9243e8b0eabb9cd6098309ad083"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adfc7c9243e8b0eabb9cd6098309ad083"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NEXT_CHAR_INDEX</b>(tty)&#160;&#160;&#160;((tty-&gt;p_end + 1) % <a class="el" href="tty_8h.html#a00c1f0e7816626f58349492ef0720b5f">MAX_INPUT</a>)</td></tr>
+<tr class="separator:adfc7c9243e8b0eabb9cd6098309ad083"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a3bf9faf77dd76addc6deac2722b097e2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3bf9faf77dd76addc6deac2722b097e2"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#a3bf9faf77dd76addc6deac2722b097e2">tty_init</a> ()</td></tr>
-<tr class="memdesc:a3bf9faf77dd76addc6deac2722b097e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du système de terminaux. <br/></td></tr>
+<tr class="memdesc:a3bf9faf77dd76addc6deac2722b097e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du système de terminaux. <br /></td></tr>
+<tr class="separator:a3bf9faf77dd76addc6deac2722b097e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeef2c61d0ecab57968b5d1dd0f3c8028"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#aeef2c61d0ecab57968b5d1dd0f3c8028">tty_insert_flip_char</a> (<a class="el" href="tty_8h.html#a0870504b9f2d2e99a669e6df3dc9e84e">tty_struct_t</a> *tty, unsigned char c)</td></tr>
+<tr class="separator:aeef2c61d0ecab57968b5d1dd0f3c8028"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ae7085e2afaadc63a592910d4ac4328"><td class="memItemLeft" align="right" valign="top"><a class="el" href="tty_8h.html#af1896b31f0109954b4aa8244f064e923">tty_driver_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#a9ae7085e2afaadc63a592910d4ac4328">alloc_tty_driver</a> (int lines)</td></tr>
+<tr class="separator:a9ae7085e2afaadc63a592910d4ac4328"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a302b60b1c52001915aeb108b51efc397"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tty_8c.html#a302b60b1c52001915aeb108b51efc397">tty_register_driver</a> (<a class="el" href="tty_8h.html#af1896b31f0109954b4aa8244f064e923">tty_driver_t</a> *driver)</td></tr>
-<tr class="memitem:a4d1f11c77318b074dbc10778bdc3ef8a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d1f11c77318b074dbc10778bdc3ef8a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>tty_ioctl</b> (<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *ofd, unsigned int request, void *data)</td></tr>
+<tr class="separator:a302b60b1c52001915aeb108b51efc397"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="var-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a0eaa499ff9d9e0e80af6f56da8f47673"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtermios.html">termios</a>&#160;</td><td class="memItemRight" valign="bottom"><b>tty_std_termios</b></td></tr>
+<tr class="separator:a0eaa499ff9d9e0e80af6f56da8f47673"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
-<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>Copyright (C) 2010-2014 TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-<p>Description de ce que fait le fichier </p>
-</div><h2>Documentation des macros</h2>
+<p>Gestion des terminaux tty. </p>
+</div><h2 class="groupheader">Documentation des macros</h2>
+<a class="anchor" id="ada3d7b9324d2baf6d08420ddc31be135"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EOF_CHAR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">tty</td><td>)</td>
+          <td>&#160;&#160;&#160;((tty)-&gt;<a class="el" href="structtermios.html#a6058cfc222551ee750c72142299acb2e">termios.c_cc</a>[<a class="el" href="termios_8h.html#a2913fdfccc72db70821a2100bfc8217a">VEOF</a>])</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>EOF char </p>
+
+</div>
+</div>
 <a class="anchor" id="a10c57446745f062f3c64ef35077954a0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -160,6 +206,23 @@ DESCRIPTION</h1>
           <td class="paramtype">&#160;</td>
           <td class="paramname">tty</td><td>)</td>
           <td>&#160;&#160;&#160;((tty)-&gt;<a class="el" href="structtermios.html#a6058cfc222551ee750c72142299acb2e">termios.c_cc</a>[<a class="el" href="termios_8h.html#a6e11c405d7ddff22c2318c8623c3affa">VERASE</a>])</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Erase char </p>
+
+</div>
+</div>
+<a class="anchor" id="a2519eb4edd848b472790deb7c0a97dc9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ERASE_WORD</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">tty</td><td>)</td>
+          <td>&#160;&#160;&#160;((tty)-&gt;<a class="el" href="structtermios.html#a6058cfc222551ee750c72142299acb2e">termios.c_cc</a>[<a class="el" href="termios_8h.html#a90ee9234e26b211a5d64c4df778f6c9f">VWERASE</a>])</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -269,6 +332,23 @@ DESCRIPTION</h1>
 
 </div>
 </div>
+<a class="anchor" id="a5877372781bac3647d21e4cbf23c528d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define L_ECHOCTL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">tty</td><td>)</td>
+          <td>&#160;&#160;&#160;(tty-&gt;<a class="el" href="structtermios.html#a91bdd7691180800fccc4b791466ee9c3">termios.c_lflag</a> &amp; <a class="el" href="termios_8h.html#a1be1e11c89f23c1651328e62b9533ac2">ECHOCTL</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Echo Ctrl ? </p>
+
+</div>
+</div>
 <a class="anchor" id="a32d35a3a2ab8a8a4ba1f388acba62b79"></a>
 <div class="memitem">
 <div class="memproto">
@@ -300,6 +380,23 @@ DESCRIPTION</h1>
       </table>
 </div><div class="memdoc">
 <p>Signals enabled ? </p>
+
+</div>
+</div>
+<a class="anchor" id="adda8c2f2fe8c05eb8e2b58ed0b4cebe2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PREV_CHAR_INDEX</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">tty</td><td>)</td>
+          <td>&#160;&#160;&#160;((tty-&gt;p_end + <a class="el" href="tty_8h.html#a00c1f0e7816626f58349492ef0720b5f">MAX_INPUT</a> - 1) % <a class="el" href="tty_8h.html#a00c1f0e7816626f58349492ef0720b5f">MAX_INPUT</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Indice du charactère precedent. </p>
 
 </div>
 </div>
@@ -337,7 +434,7 @@ DESCRIPTION</h1>
 
 </div>
 </div>
-<h2>Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a9ae7085e2afaadc63a592910d4ac4328"></a>
 <div class="memitem">
 <div class="memproto">
@@ -365,7 +462,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="tty_8c_a9ae7085e2afaadc63a592910d4ac4328_cgraph.png" border="0" usemap="#tty_8c_a9ae7085e2afaadc63a592910d4ac4328_cgraph" alt=""/></div>
 <map name="tty_8c_a9ae7085e2afaadc63a592910d4ac4328_cgraph" id="tty_8c_a9ae7085e2afaadc63a592910d4ac4328_cgraph">
-<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="163,5,229,33"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="279,5,417,33"/></map>
+<area shape="rect" id="node2" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="163,31,229,57"/><area shape="rect" id="node3" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="277,5,417,32"/><area shape="rect" id="node4" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="313,56,382,83"/></map>
 </div>
 </p>
 
@@ -374,7 +471,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="tty_8c_a9ae7085e2afaadc63a592910d4ac4328_icgraph.png" border="0" usemap="#tty_8c_a9ae7085e2afaadc63a592910d4ac4328_icgraph" alt=""/></div>
 <map name="tty_8c_a9ae7085e2afaadc63a592910d4ac4328_icgraph" id="tty_8c_a9ae7085e2afaadc63a592910d4ac4328_icgraph">
-<area shape="rect" id="node3" href="serial_8h.html#a459999cfa35c788b64284953a93c4b57" title="Fonction d&#39;initialisation du driver série." alt="" coords="169,5,247,33"/><area shape="rect" id="node5" href="console_8h.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;." alt="" coords="163,55,253,83"/></map>
+<area shape="rect" id="node2" href="serial_8h.html#a459999cfa35c788b64284953a93c4b57" title="Fonction d&#39;initialisation du driver série. " alt="" coords="169,5,247,32"/><area shape="rect" id="node3" href="console_8h.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;. " alt="" coords="163,56,253,83"/></map>
 </div>
 </p>
 
@@ -417,7 +514,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028_cgraph.png" border="0" usemap="#tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028_cgraph" alt=""/></div>
 <map name="tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028_cgraph" id="tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028_cgraph">
-<area shape="rect" id="node3" href="ksem_8h.html#acf03efb500e930ca996059a6388b528b" title="Opération V sur un sémaphore Réalise l&#39;opération V sur le sémaphore. Le processus libère le sémaphore..." alt="" coords="185,5,247,33"/><area shape="rect" id="node5" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné." alt="" coords="297,5,391,33"/></map>
+<area shape="rect" id="node2" href="ksem_8h.html#acf03efb500e930ca996059a6388b528b" title="Opération V sur un sémaphore Réalise l&#39;opération V sur le sémaphore. Le processus libère le sémaphore..." alt="" coords="184,5,247,32"/><area shape="rect" id="node3" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné. " alt="" coords="295,5,389,32"/></map>
 </div>
 </p>
 
@@ -426,7 +523,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028_icgraph.png" border="0" usemap="#tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028_icgraph" alt=""/></div>
 <map name="tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028_icgraph" id="tty_8c_aeef2c61d0ecab57968b5d1dd0f3c8028_icgraph">
-<area shape="rect" id="node3" href="serial_8h.html#ac50cbde292e2ec8e27be3384c942d56a" title="Handler d&#39;interruption du driver série." alt="" coords="184,5,259,33"/></map>
+<area shape="rect" id="node2" href="serial_8h.html#ac50cbde292e2ec8e27be3384c942d56a" title="Handler d&#39;interruption du driver série. " alt="" coords="184,5,259,32"/></map>
 </div>
 </p>
 
@@ -448,17 +545,18 @@ Voici le graphe des appelants de cette fonction :</div>
 <p>Enregistre en tant que char device un driver alloué et configuré.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">driver</td><td>Le driver à enregistrer. </td></tr>
+    <tr><td class="paramname">driver</td><td>Le driver à enregistrer.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès (mais ne détecte pas encore les erreurs...). </dd></dl>
 
 <p><div class="dynheader">
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="tty_8c_a302b60b1c52001915aeb108b51efc397_cgraph.png" border="0" usemap="#tty_8c_a302b60b1c52001915aeb108b51efc397_cgraph" alt=""/></div>
 <map name="tty_8c_a302b60b1c52001915aeb108b51efc397_cgraph" id="tty_8c_a302b60b1c52001915aeb108b51efc397_cgraph">
-<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="205,5,272,33"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="212,55,265,83"/><area shape="rect" id="node9" href="ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="203,106,275,134"/><area shape="rect" id="node11" href="devfs_8c.html#acf0abbf4b629aa36d142733e27eaf6e6" title="Enregistre le chardev dans la liste." alt="" coords="180,157,297,185"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="348,5,487,33"/></map>
+<area shape="rect" id="node2" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="205,31,271,57"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères. " alt="" coords="211,81,265,108"/><area shape="rect" id="node6" href="ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="202,132,274,159"/><area shape="rect" id="node7" href="devfs_8c.html#acf0abbf4b629aa36d142733e27eaf6e6" title="Enregistre le chardev dans la liste. " alt="" coords="179,183,297,209"/><area shape="rect" id="node3" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="345,5,485,32"/><area shape="rect" id="node4" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="381,56,450,83"/></map>
 </div>
 </p>
 
@@ -467,13 +565,13 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="tty_8c_a302b60b1c52001915aeb108b51efc397_icgraph.png" border="0" usemap="#tty_8c_a302b60b1c52001915aeb108b51efc397_icgraph" alt=""/></div>
 <map name="tty_8c_a302b60b1c52001915aeb108b51efc397_icgraph" id="tty_8c_a302b60b1c52001915aeb108b51efc397_icgraph">
-<area shape="rect" id="node3" href="serial_8h.html#a459999cfa35c788b64284953a93c4b57" title="Fonction d&#39;initialisation du driver série." alt="" coords="185,5,263,33"/><area shape="rect" id="node5" href="console_8h.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;." alt="" coords="179,55,269,83"/></map>
+<area shape="rect" id="node2" href="serial_8h.html#a459999cfa35c788b64284953a93c4b57" title="Fonction d&#39;initialisation du driver série. " alt="" coords="185,5,263,32"/><area shape="rect" id="node3" href="console_8h.html#a463df5bcb42f4d4ad7d73c17c555e53d" title="Initialise les consoles à &quot;inutilisée&quot;. " alt="" coords="179,56,269,83"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<h2>Documentation des variables</h2>
+<h2 class="groupheader">Documentation des variables</h2>
 <a class="anchor" id="a0eaa499ff9d9e0e80af6f56da8f47673"></a>
 <div class="memitem">
 <div class="memproto">
@@ -483,7 +581,7 @@ Voici le graphe des appelants de cette fonction :</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Valeur initiale :</b><div class="fragment"><div class="line"> {</div>
+<b>Valeur initiale :</b><div class="fragment"><div class="line">= {</div>
 <div class="line">        .c_iflag = <a class="code" href="termios__types_8h.html#ae0cbb5db9d8f8119864bb9537466c314">ICRNL</a> | <a class="code" href="termios__types_8h.html#a788d2780deb67c58ba8a049981a8161c">IXON</a>,</div>
 <div class="line">        .c_oflag = <a class="code" href="termios__types_8h.html#a0aad4afe9e202fff8ced3485bc835bb1">OPOST</a> | <a class="code" href="termios__types_8h.html#a957436bc6db0a0d49b081dc9b4c98ef2">ONLCR</a>,</div>
 <div class="line">        .c_cflag = <a class="code" href="termios__types_8h.html#a083623175b34340b14359a57c5107232">CS8</a> | <a class="code" href="termios__types_8h.html#a8925ebb5550f4c16b5308955eafe469a">CREAD</a> | <a class="code" href="termios__types_8h.html#af9d210a765b81afc6a40275185c4d5da">HUPCL</a>,</div>
@@ -492,15 +590,29 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="line">        .c_cc = INIT_C_CC,</div>
 <div class="line">        .c_ispeed = 38400,</div>
 <div class="line">}</div>
+<div class="ttc" id="termios__types_8h_html_a8925ebb5550f4c16b5308955eafe469a"><div class="ttname"><a href="termios__types_8h.html#a8925ebb5550f4c16b5308955eafe469a">CREAD</a></div><div class="ttdeci">#define CREAD</div><div class="ttdef"><b>Definition:</b> termios_types.h:74</div></div>
+<div class="ttc" id="termios__types_8h_html_a957436bc6db0a0d49b081dc9b4c98ef2"><div class="ttname"><a href="termios__types_8h.html#a957436bc6db0a0d49b081dc9b4c98ef2">ONLCR</a></div><div class="ttdeci">#define ONLCR</div><div class="ttdef"><b>Definition:</b> termios_types.h:53</div></div>
+<div class="ttc" id="termios__types_8h_html_a52c605497d066b9ae7407124f84806a7"><div class="ttname"><a href="termios__types_8h.html#a52c605497d066b9ae7407124f84806a7">ISIG</a></div><div class="ttdeci">#define ISIG</div><div class="ttdef"><b>Definition:</b> termios_types.h:59</div></div>
+<div class="ttc" id="termios__types_8h_html_ae0cbb5db9d8f8119864bb9537466c314"><div class="ttname"><a href="termios__types_8h.html#ae0cbb5db9d8f8119864bb9537466c314">ICRNL</a></div><div class="ttdeci">#define ICRNL</div><div class="ttdef"><b>Definition:</b> termios_types.h:47</div></div>
+<div class="ttc" id="termios__types_8h_html_a0aad4afe9e202fff8ced3485bc835bb1"><div class="ttname"><a href="termios__types_8h.html#a0aad4afe9e202fff8ced3485bc835bb1">OPOST</a></div><div class="ttdeci">#define OPOST</div><div class="ttdef"><b>Definition:</b> termios_types.h:52</div></div>
+<div class="ttc" id="termios__types_8h_html_aad1dc60a04a1d8cfc8b3ded13601e361"><div class="ttname"><a href="termios__types_8h.html#aad1dc60a04a1d8cfc8b3ded13601e361">ECHO</a></div><div class="ttdeci">#define ECHO</div><div class="ttdef"><b>Definition:</b> termios_types.h:61</div></div>
+<div class="ttc" id="termios__types_8h_html_a083623175b34340b14359a57c5107232"><div class="ttname"><a href="termios__types_8h.html#a083623175b34340b14359a57c5107232">CS8</a></div><div class="ttdeci">#define CS8</div><div class="ttdef"><b>Definition:</b> termios_types.h:72</div></div>
+<div class="ttc" id="termios__types_8h_html_a788d2780deb67c58ba8a049981a8161c"><div class="ttname"><a href="termios__types_8h.html#a788d2780deb67c58ba8a049981a8161c">IXON</a></div><div class="ttdeci">#define IXON</div><div class="ttdef"><b>Definition:</b> termios_types.h:48</div></div>
+<div class="ttc" id="termios__types_8h_html_af9d210a765b81afc6a40275185c4d5da"><div class="ttname"><a href="termios__types_8h.html#af9d210a765b81afc6a40275185c4d5da">HUPCL</a></div><div class="ttdeci">#define HUPCL</div><div class="ttdef"><b>Definition:</b> termios_types.h:77</div></div>
+<div class="ttc" id="termios__types_8h_html_aac931d3ce0dfc4578f76879ed095ecd7"><div class="ttname"><a href="termios__types_8h.html#aac931d3ce0dfc4578f76879ed095ecd7">ECHOE</a></div><div class="ttdeci">#define ECHOE</div><div class="ttdef"><b>Definition:</b> termios_types.h:62</div></div>
+<div class="ttc" id="termios__types_8h_html_ae5aeef4d21a390052a1a6cbb106e830c"><div class="ttname"><a href="termios__types_8h.html#ae5aeef4d21a390052a1a6cbb106e830c">ECHOKE</a></div><div class="ttdeci">#define ECHOKE</div><div class="ttdef"><b>Definition:</b> termios_types.h:65</div></div>
+<div class="ttc" id="termios__types_8h_html_a58265a371303d00a4a3b1f128d72c21e"><div class="ttname"><a href="termios__types_8h.html#a58265a371303d00a4a3b1f128d72c21e">ICANON</a></div><div class="ttdeci">#define ICANON</div><div class="ttdef"><b>Definition:</b> termios_types.h:60</div></div>
+<div class="ttc" id="termios__types_8h_html_a6695c16777cf8a5211cfba9a23d45985"><div class="ttname"><a href="termios__types_8h.html#a6695c16777cf8a5211cfba9a23d45985">ECHOK</a></div><div class="ttdeci">#define ECHOK</div><div class="ttdef"><b>Definition:</b> termios_types.h:63</div></div>
+<div class="ttc" id="termios__types_8h_html_a1be1e11c89f23c1651328e62b9533ac2"><div class="ttname"><a href="termios__types_8h.html#a1be1e11c89f23c1651328e62b9533ac2">ECHOCTL</a></div><div class="ttdeci">#define ECHOCTL</div><div class="ttdef"><b>Definition:</b> termios_types.h:64</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:34 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <map id="strrchr" name="strrchr">
-<area shape="rect" id="node3" href="$fat__outils_8h.html#a015254ce721ab0097a1008ec7153b819" title="fat_lfn_to_sfn" alt="" coords="133,5,235,33"/>
-<area shape="rect" id="node7" href="$fat__outils_8h.html#a2bc59b6b9bca39fe4ba101a3c019b91a" title="fat_split_dir_filename" alt="" coords="112,55,256,83"/>
-<area shape="rect" id="node10" href="$unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory." alt="" coords="159,106,209,134"/>
-<area shape="rect" id="node5" href="$fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="305,30,380,58"/>
+<area shape="rect" id="node2" href="$fat__outils_8h.html#a015254ce721ab0097a1008ec7153b819" title="fat_lfn_to_sfn" alt="" coords="133,5,235,32"/>
+<area shape="rect" id="node4" href="$fat__outils_8h.html#a2bc59b6b9bca39fe4ba101a3c019b91a" title="fat_split_dir_filename" alt="" coords="112,56,256,83"/>
+<area shape="rect" id="node5" href="$unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory. " alt="" coords="159,107,209,133"/>
+<area shape="rect" id="node3" href="$fat__internal_8h.html#ab6005d86e7ab13445d997d03e76bf914" title="fat_mkdir" alt="" coords="304,31,380,57"/>
 </map>

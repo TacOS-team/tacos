@@ -23,5 +23,6 @@ var searchData=
   ['ext2fs_5ffops',['ext2fs_fops',['../ext2__internal_8h.html#a27d0bcdadfb4d9220ed5cd2fa6693313',1,'ext2_internal.c']]],
   ['ext_5fbios_5f16',['ext_BIOS_16',['../struct__fat__info.html#a4da4c2a7a629ca59a686822e6447acb8',1,'_fat_info']]],
   ['ext_5fbios_5f32',['ext_BIOS_32',['../struct__fat__info.html#aab203e7eb3c2027e3034d7765a2d5281',1,'_fat_info']]],
-  ['ext_5fboot_5fsignature',['ext_boot_signature',['../struct__fat__extended__BIOS__16.html#a96dde388d85873830b8b421d13336737',1,'_fat_extended_BIOS_16']]]
+  ['ext_5fboot_5fsignature',['ext_boot_signature',['../struct__fat__extended__BIOS__16.html#a96dde388d85873830b8b421d13336737',1,'_fat_extended_BIOS_16']]],
+  ['extra_5fdata',['extra_data',['../struct__open__file__descriptor.html#a99824795a31a8adea2162aed74162017',1,'_open_file_descriptor']]]
 ];

@@ -1,12 +1,14 @@
 \hypertarget{kstdio_8c}{\section{Référence du fichier kernel/kstdio.c}
-\label{kstdio_8c}\index{kernel/kstdio.\-c@{kernel/kstdio.\-c}}
+\label{kstdio_8c}\index{kernel/kstdio.\+c@{kernel/kstdio.\+c}}
 }
-{\ttfamily \#include $<$kfcntl.\-h$>$}\\*
-{\ttfamily \#include $<$tty.\-h$>$}\\*
-{\ttfamily \#include $<$vfs.\-h$>$}\\*
-{\ttfamily \#include $<$fs/devfs.\-h$>$}\\*
-{\ttfamily \#include $<$klibc/stdlib.\-h$>$}\\*
-Graphe des dépendances par inclusion de kstdio.\-c\-:\nopagebreak
+{\ttfamily \#include $<$kfcntl.\+h$>$}\\*
+{\ttfamily \#include $<$tty.\+h$>$}\\*
+{\ttfamily \#include $<$vfs.\+h$>$}\\*
+{\ttfamily \#include $<$fs/devfs.\+h$>$}\\*
+{\ttfamily \#include $<$klibc/stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$klibc/stdarg.\+h$>$}\\*
+Graphe des dépendances par inclusion de kstdio.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,10 +18,10 @@ Graphe des dépendances par inclusion de kstdio.\-c\-:\nopagebreak
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{kstdio_8c_ae34803786b6601cbba477e85a355db96}{\#define {\bfseries \-\_\-\-\_\-\-K\-T\-W\-\_\-\-C\-O\-L\-U\-M\-N\-S}~80}\label{kstdio_8c_ae34803786b6601cbba477e85a355db96}
+\hypertarget{kstdio_8c_ae34803786b6601cbba477e85a355db96}{\#define {\bfseries \+\_\+\+\_\+\+K\+T\+W\+\_\+\+C\+O\+L\+U\+M\+N\+S}~80}\label{kstdio_8c_ae34803786b6601cbba477e85a355db96}
 
 \item 
-\hypertarget{kstdio_8c_a70320627ae0ca2ff6df60bd487fe345d}{\#define {\bfseries \-\_\-\-\_\-\-K\-T\-W\-\_\-\-L\-I\-N\-E\-S}~25}\label{kstdio_8c_a70320627ae0ca2ff6df60bd487fe345d}
+\hypertarget{kstdio_8c_a70320627ae0ca2ff6df60bd487fe345d}{\#define {\bfseries \+\_\+\+\_\+\+K\+T\+W\+\_\+\+L\+I\+N\+E\+S}~25}\label{kstdio_8c_a70320627ae0ca2ff6df60bd487fe345d}
 
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
@@ -31,21 +33,21 @@ void \hyperlink{kstdio_8c_a139d07e37f4cb84769b3c892f58696be}{kprintf} (const cha
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010-\/2014 Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 Description de ce que fait le fichier 
 
 \subsection{Documentation des fonctions}
-\hypertarget{kstdio_8c_a139d07e37f4cb84769b3c892f58696be}{\index{kstdio.\-c@{kstdio.\-c}!kprintf@{kprintf}}
-\index{kprintf@{kprintf}!kstdio.c@{kstdio.\-c}}
+\hypertarget{kstdio_8c_a139d07e37f4cb84769b3c892f58696be}{\index{kstdio.\+c@{kstdio.\+c}!kprintf@{kprintf}}
+\index{kprintf@{kprintf}!kstdio.\+c@{kstdio.\+c}}
 \subsubsection[{kprintf}]{\setlength{\rightskip}{0pt plus 5cm}void kprintf (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{format, }
@@ -80,7 +82,8 @@ vsnprintf
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -91,11 +94,12 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=214pt]{kstdio_8c_a139d07e37f4cb84769b3c892f58696be_icgraph}
+\includegraphics[width=293pt]{kstdio_8c_a139d07e37f4cb84769b3c892f58696be_icgraph}
 \end{center}
 \end{figure}
 

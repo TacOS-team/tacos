@@ -1,24 +1,24 @@
 \hypertarget{kernel_2include_2klibc_2stdlib_8h}{\section{Référence du fichier kernel/include/klibc/stdlib.h}
-\label{kernel_2include_2klibc_2stdlib_8h}\index{kernel/include/klibc/stdlib.\-h@{kernel/include/klibc/stdlib.\-h}}
+\label{kernel_2include_2klibc_2stdlib_8h}\index{kernel/include/klibc/stdlib.\+h@{kernel/include/klibc/stdlib.\+h}}
 }
 
 
- 
+Version très réduite d'un stdlib, pour le kernel.  
 
 
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=270pt]{kernel_2include_2klibc_2stdlib_8h__dep__incl}
+\includegraphics[width=266pt]{kernel_2include_2klibc_2stdlib_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{kernel_2include_2klibc_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b}{atoi} (const char $\ast$\-\_\-\-\_\-nptr)
+int \hyperlink{kernel_2include_2klibc_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b}{atoi} (const char $\ast$\+\_\+\+\_\+nptr)
 \item 
-void \hyperlink{kernel_2include_2klibc_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2}{itoa} (char $\ast$buf, int base, int d)
+int \hyperlink{kernel_2include_2klibc_2stdlib_8h_a3170c50e51faed10daef61b1c000d3bf}{itoa} (char $\ast$buf, int base, int d)
 \begin{DoxyCompactList}\small\item\em Converti l'entier d en une chaîne de caractère et le stock dans buf. L'entier base permet de spécifier la base à utiliser (decimal ou hexadécimal). \end{DoxyCompactList}\item 
 void \hyperlink{kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a}{itox} (char $\ast$buf, int d)
 \end{DoxyCompactItemize}
@@ -26,56 +26,45 @@ void \hyperlink{kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 
 
 \subsection{Documentation des fonctions}
-\hypertarget{kernel_2include_2klibc_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b}{\index{kernel/include/klibc/stdlib.\-h@{kernel/include/klibc/stdlib.\-h}!atoi@{atoi}}
-\index{atoi@{atoi}!kernel/include/klibc/stdlib.h@{kernel/include/klibc/stdlib.\-h}}
+\hypertarget{kernel_2include_2klibc_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b}{\index{kernel/include/klibc/stdlib.\+h@{kernel/include/klibc/stdlib.\+h}!atoi@{atoi}}
+\index{atoi@{atoi}!kernel/include/klibc/stdlib.\+h@{kernel/include/klibc/stdlib.\+h}}
 \subsubsection[{atoi}]{\setlength{\rightskip}{0pt plus 5cm}int atoi (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$}]{\-\_\-\-\_\-nptr}
+\item[{const char $\ast$}]{\+\_\+\+\_\+nptr}
 \end{DoxyParamCaption}
 )}}\label{kernel_2include_2klibc_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b}
 Converti une chaine de caractère en entier.
 
 
 \begin{DoxyParams}{Paramètres}
-{\em \-\_\-\-\_\-nptr} & La chaine à traduire.\\
+{\em \+\_\+\+\_\+nptr} & La chaine à traduire.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
 La valeur convertie. 
 \end{DoxyReturn}
-
-
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=180pt]{kernel_2include_2klibc_2stdlib_8h_a2c81f61ee897bc5a1f5491f3e2bf711b_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{kernel_2include_2klibc_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2}{\index{kernel/include/klibc/stdlib.\-h@{kernel/include/klibc/stdlib.\-h}!itoa@{itoa}}
-\index{itoa@{itoa}!kernel/include/klibc/stdlib.h@{kernel/include/klibc/stdlib.\-h}}
-\subsubsection[{itoa}]{\setlength{\rightskip}{0pt plus 5cm}void itoa (
+\hypertarget{kernel_2include_2klibc_2stdlib_8h_a3170c50e51faed10daef61b1c000d3bf}{\index{kernel/include/klibc/stdlib.\+h@{kernel/include/klibc/stdlib.\+h}!itoa@{itoa}}
+\index{itoa@{itoa}!kernel/include/klibc/stdlib.\+h@{kernel/include/klibc/stdlib.\+h}}
+\subsubsection[{itoa}]{\setlength{\rightskip}{0pt plus 5cm}int itoa (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{buf, }
 \item[{int}]{base, }
 \item[{int}]{d}
 \end{DoxyParamCaption}
-)}}\label{kernel_2include_2klibc_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2}
+)}}\label{kernel_2include_2klibc_2stdlib_8h_a3170c50e51faed10daef61b1c000d3bf}
 Converti l'entier d en une chaîne de caractère et le stock dans buf. Si base est égal à 'd', alors il interprète d comme étant en décimal et si base est égal à 'x', alors il interprète d comme étant en hexadécimal.
 
 
@@ -84,22 +73,26 @@ Converti l'entier d en une chaîne de caractère et le stock dans buf. Si base e
 \hline
 {\em base} & la base à utiliser pour la conversion ('d' ou 'x'). \\
 \hline
-{\em d} & le nombre à convertir. \\
+{\em d} & le nombre à convertir.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Taille du buffer utilisé. 
+\end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=282pt]{kernel_2include_2klibc_2stdlib_8h_a5e1f93e3feb632ee74c5f40cdd907ca2_icgraph}
+\includegraphics[width=350pt]{kernel_2include_2klibc_2stdlib_8h_a3170c50e51faed10daef61b1c000d3bf_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a}{\index{kernel/include/klibc/stdlib.\-h@{kernel/include/klibc/stdlib.\-h}!itox@{itox}}
-\index{itox@{itox}!kernel/include/klibc/stdlib.h@{kernel/include/klibc/stdlib.\-h}}
+\hypertarget{kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a}{\index{kernel/include/klibc/stdlib.\+h@{kernel/include/klibc/stdlib.\+h}!itox@{itox}}
+\index{itox@{itox}!kernel/include/klibc/stdlib.\+h@{kernel/include/klibc/stdlib.\+h}}
 \subsubsection[{itox}]{\setlength{\rightskip}{0pt plus 5cm}void itox (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{buf, }
@@ -117,22 +110,12 @@ Affichage des hexa en longueur fixe, c'est plus commode.
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=112pt]{kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=282pt]{kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_icgraph}
+\includegraphics[width=350pt]{kernel_2include_2klibc_2stdlib_8h_a9496eacf49af4b53f5b839899b5bf31a_icgraph}
 \end{center}
 \end{figure}
 

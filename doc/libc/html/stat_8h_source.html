@@ -96,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;__BEGIN_DECLS</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="types_8h.html">sys/types.h</a>&gt;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="time_8h.html">time.h</a>&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="sys_2time_8h.html">time.h</a>&gt;</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/* File types.  */</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="stat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">   39</a></span>&#160;<span class="preprocessor">#define S_IFMT   0170000 </span></div>
@@ -128,9 +128,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="stat_8h.html#af2306308627701b66dc6f3babe821ab4">   68</a></span>&#160;<span class="preprocessor">typedef uint32_t uid_t; </span></div>
 <div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="stat_8h.html#aa7352f1065fe606194d792e2b292cf83">   69</a></span>&#160;<span class="preprocessor">typedef uint32_t gid_t; </span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">typedef uint32_t nlink_t;</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor"></span><span class="keyword">typedef</span> <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> blksize_t;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">typedef</span> <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> blkcnt_t;</div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="stat_8h.html#aed4e918b44240739869c4bdb1c4787a9">   73</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="stat_8h.html#aed4e918b44240739869c4bdb1c4787a9">ino_t</a>; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor"></span><span class="keyword">typedef</span> <a class="code" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> blksize_t;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">typedef</span> <a class="code" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> blkcnt_t;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="stat_8h.html#aed4e918b44240739869c4bdb1c4787a9">   73</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="stat_8h.html#aed4e918b44240739869c4bdb1c4787a9">ino_t</a>; </div>
 <div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="structstat.html">   78</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structstat.html">stat</a> {</div>
 <div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="structstat.html#ac5b90090ae323741ae4c9e4f3683a29f">   79</a></span>&#160;        <a class="code" href="stat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a>     <a class="code" href="structstat.html#ac5b90090ae323741ae4c9e4f3683a29f">st_dev</a>;      </div>
 <div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="structstat.html#a9769ed8f0d4c5a9f329c32bc92479d56">   80</a></span>&#160;        <a class="code" href="stat_8h.html#aed4e918b44240739869c4bdb1c4787a9">ino_t</a>     <a class="code" href="structstat.html#a9769ed8f0d4c5a9f329c32bc92479d56">st_ino</a>;      </div>
@@ -155,7 +155,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Mai 28 2013 22:52:15 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 8 2014 09:54:10 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

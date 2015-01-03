@@ -1,5 +1,5 @@
-\hypertarget{structchardev__interfaces}{\section{Référence de la structure chardev\-\_\-interfaces}
-\label{structchardev__interfaces}\index{chardev\-\_\-interfaces@{chardev\-\_\-interfaces}}
+\hypertarget{structchardev__interfaces}{\section{Référence de la structure chardev\+\_\+interfaces}
+\label{structchardev__interfaces}\index{chardev\+\_\+interfaces@{chardev\+\_\+interfaces}}
 }
 
 
@@ -8,11 +8,12 @@ Structure contenant les fonction qui permettent d'utiliser un char device.
 
 
 
-{\ttfamily \#include $<$devfs.\-h$>$}
+{\ttfamily \#include $<$devfs.\+h$>$}
 
 
 
-Graphe de collaboration de chardev\-\_\-interfaces\-:\nopagebreak
+Graphe de collaboration de chardev\+\_\+interfaces\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -22,41 +23,41 @@ Graphe de collaboration de chardev\-\_\-interfaces\-:\nopagebreak
 \subsection*{Champs de données}
 \begin{DoxyCompactItemize}
 \item 
-chardev\-\_\-read\-\_\-t \hyperlink{structchardev__interfaces_afeba560360e6a5dfff549d78c220b68b}{read}
+chardev\+\_\+read\+\_\+t \hyperlink{structchardev__interfaces_afeba560360e6a5dfff549d78c220b68b}{read}
 \item 
-chardev\-\_\-write\-\_\-t \hyperlink{structchardev__interfaces_a6f70961f2f888de24d500d50bae85a3f}{write}
+chardev\+\_\+write\+\_\+t \hyperlink{structchardev__interfaces_a6f70961f2f888de24d500d50bae85a3f}{write}
 \item 
-chardev\-\_\-ioctl\-\_\-t \hyperlink{structchardev__interfaces_a9e5903e31e8e5ab21e9abc4b3a844e4a}{ioctl}
+chardev\+\_\+ioctl\+\_\+t \hyperlink{structchardev__interfaces_a9e5903e31e8e5ab21e9abc4b3a844e4a}{ioctl}
 \item 
-chardev\-\_\-open\-\_\-t \hyperlink{structchardev__interfaces_a7962a67531ea5263a2f837c36fb18dc0}{open}
+chardev\+\_\+open\+\_\+t \hyperlink{structchardev__interfaces_a7962a67531ea5263a2f837c36fb18dc0}{open}
 \item 
-chardev\-\_\-close\-\_\-t \hyperlink{structchardev__interfaces_a9cba421c4dddc041e4b5029d011dbbd9}{close}
+chardev\+\_\+close\+\_\+t \hyperlink{structchardev__interfaces_a9cba421c4dddc041e4b5029d011dbbd9}{close}
 \item 
-void $\ast$ \hyperlink{structchardev__interfaces_a9b6b938d76fe7e20c93da8a032a42ad7}{custom\-\_\-data}
+void $\ast$ \hyperlink{structchardev__interfaces_a9b6b938d76fe7e20c93da8a032a42ad7}{custom\+\_\+data}
 \end{DoxyCompactItemize}
 
 
 \subsection{Documentation des champs}
-\hypertarget{structchardev__interfaces_a9cba421c4dddc041e4b5029d011dbbd9}{\index{chardev\-\_\-interfaces@{chardev\-\_\-interfaces}!close@{close}}
-\index{close@{close}!chardev_interfaces@{chardev\-\_\-interfaces}}
-\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}chardev\-\_\-close\-\_\-t chardev\-\_\-interfaces\-::close}}\label{structchardev__interfaces_a9cba421c4dddc041e4b5029d011dbbd9}
-Fonction appelée à la fermeture du device. \hypertarget{structchardev__interfaces_a9b6b938d76fe7e20c93da8a032a42ad7}{\index{chardev\-\_\-interfaces@{chardev\-\_\-interfaces}!custom\-\_\-data@{custom\-\_\-data}}
-\index{custom\-\_\-data@{custom\-\_\-data}!chardev_interfaces@{chardev\-\_\-interfaces}}
-\subsubsection[{custom\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ chardev\-\_\-interfaces\-::custom\-\_\-data}}\label{structchardev__interfaces_a9b6b938d76fe7e20c93da8a032a42ad7}
-Données complémentaires qui peuvent être nécessaires pour utiliser le device. \hypertarget{structchardev__interfaces_a9e5903e31e8e5ab21e9abc4b3a844e4a}{\index{chardev\-\_\-interfaces@{chardev\-\_\-interfaces}!ioctl@{ioctl}}
-\index{ioctl@{ioctl}!chardev_interfaces@{chardev\-\_\-interfaces}}
-\subsubsection[{ioctl}]{\setlength{\rightskip}{0pt plus 5cm}chardev\-\_\-ioctl\-\_\-t chardev\-\_\-interfaces\-::ioctl}}\label{structchardev__interfaces_a9e5903e31e8e5ab21e9abc4b3a844e4a}
-Fonction de contrôle du périphérique. \hypertarget{structchardev__interfaces_a7962a67531ea5263a2f837c36fb18dc0}{\index{chardev\-\_\-interfaces@{chardev\-\_\-interfaces}!open@{open}}
-\index{open@{open}!chardev_interfaces@{chardev\-\_\-interfaces}}
-\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}chardev\-\_\-open\-\_\-t chardev\-\_\-interfaces\-::open}}\label{structchardev__interfaces_a7962a67531ea5263a2f837c36fb18dc0}
-Fonction appelée à l'ouverture du device. \hypertarget{structchardev__interfaces_afeba560360e6a5dfff549d78c220b68b}{\index{chardev\-\_\-interfaces@{chardev\-\_\-interfaces}!read@{read}}
-\index{read@{read}!chardev_interfaces@{chardev\-\_\-interfaces}}
-\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}chardev\-\_\-read\-\_\-t chardev\-\_\-interfaces\-::read}}\label{structchardev__interfaces_afeba560360e6a5dfff549d78c220b68b}
-Fonction de lecture. \hypertarget{structchardev__interfaces_a6f70961f2f888de24d500d50bae85a3f}{\index{chardev\-\_\-interfaces@{chardev\-\_\-interfaces}!write@{write}}
-\index{write@{write}!chardev_interfaces@{chardev\-\_\-interfaces}}
-\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}chardev\-\_\-write\-\_\-t chardev\-\_\-interfaces\-::write}}\label{structchardev__interfaces_a6f70961f2f888de24d500d50bae85a3f}
+\hypertarget{structchardev__interfaces_a9cba421c4dddc041e4b5029d011dbbd9}{\index{chardev\+\_\+interfaces@{chardev\+\_\+interfaces}!close@{close}}
+\index{close@{close}!chardev\+\_\+interfaces@{chardev\+\_\+interfaces}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}chardev\+\_\+close\+\_\+t chardev\+\_\+interfaces\+::close}}\label{structchardev__interfaces_a9cba421c4dddc041e4b5029d011dbbd9}
+Fonction appelée à la fermeture du device. \hypertarget{structchardev__interfaces_a9b6b938d76fe7e20c93da8a032a42ad7}{\index{chardev\+\_\+interfaces@{chardev\+\_\+interfaces}!custom\+\_\+data@{custom\+\_\+data}}
+\index{custom\+\_\+data@{custom\+\_\+data}!chardev\+\_\+interfaces@{chardev\+\_\+interfaces}}
+\subsubsection[{custom\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ chardev\+\_\+interfaces\+::custom\+\_\+data}}\label{structchardev__interfaces_a9b6b938d76fe7e20c93da8a032a42ad7}
+Données complémentaires qui peuvent être nécessaires pour utiliser le device. \hypertarget{structchardev__interfaces_a9e5903e31e8e5ab21e9abc4b3a844e4a}{\index{chardev\+\_\+interfaces@{chardev\+\_\+interfaces}!ioctl@{ioctl}}
+\index{ioctl@{ioctl}!chardev\+\_\+interfaces@{chardev\+\_\+interfaces}}
+\subsubsection[{ioctl}]{\setlength{\rightskip}{0pt plus 5cm}chardev\+\_\+ioctl\+\_\+t chardev\+\_\+interfaces\+::ioctl}}\label{structchardev__interfaces_a9e5903e31e8e5ab21e9abc4b3a844e4a}
+Fonction de contrôle du périphérique. \hypertarget{structchardev__interfaces_a7962a67531ea5263a2f837c36fb18dc0}{\index{chardev\+\_\+interfaces@{chardev\+\_\+interfaces}!open@{open}}
+\index{open@{open}!chardev\+\_\+interfaces@{chardev\+\_\+interfaces}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}chardev\+\_\+open\+\_\+t chardev\+\_\+interfaces\+::open}}\label{structchardev__interfaces_a7962a67531ea5263a2f837c36fb18dc0}
+Fonction appelée à l'ouverture du device. \hypertarget{structchardev__interfaces_afeba560360e6a5dfff549d78c220b68b}{\index{chardev\+\_\+interfaces@{chardev\+\_\+interfaces}!read@{read}}
+\index{read@{read}!chardev\+\_\+interfaces@{chardev\+\_\+interfaces}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}chardev\+\_\+read\+\_\+t chardev\+\_\+interfaces\+::read}}\label{structchardev__interfaces_afeba560360e6a5dfff549d78c220b68b}
+Fonction de lecture. \hypertarget{structchardev__interfaces_a6f70961f2f888de24d500d50bae85a3f}{\index{chardev\+\_\+interfaces@{chardev\+\_\+interfaces}!write@{write}}
+\index{write@{write}!chardev\+\_\+interfaces@{chardev\+\_\+interfaces}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}chardev\+\_\+write\+\_\+t chardev\+\_\+interfaces\+::write}}\label{structchardev__interfaces_a6f70961f2f888de24d500d50bae85a3f}
 Fonction d'écriture. 
 
-La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
 \item 
-kernel/include/fs/\hyperlink{devfs_8h}{devfs.\-h}\end{DoxyCompactItemize}
+kernel/include/fs/\hyperlink{devfs_8h}{devfs.\+h}\end{DoxyCompactItemize}

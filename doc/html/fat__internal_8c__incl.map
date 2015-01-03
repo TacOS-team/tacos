@@ -1,11 +1,11 @@
 <map id="kernel/fs/fat/fat_internal.c" name="kernel/fs/fat/fat_internal.c">
-<area shape="rect" id="node3" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="121,161,217,189"/>
-<area shape="rect" id="node28" href="$fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="167,83,252,111"/>
-<area shape="rect" id="node7" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="185,393,247,421"/>
-<area shape="rect" id="node14" href="$vfs_8h.html" title="Virtual File System." alt="" coords="248,238,299,266"/>
-<area shape="rect" id="node24" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="92,238,169,266"/>
-<area shape="rect" id="node9" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="212,547,273,575"/>
-<area shape="rect" id="node11" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="128,470,205,498"/>
-<area shape="rect" id="node17" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="91,315,171,343"/>
-<area shape="rect" id="node20" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="245,315,307,343"/>
+<area shape="rect" id="node2" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="123,155,219,181"/>
+<area shape="rect" id="node11" href="$fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT. " alt="" coords="169,80,254,107"/>
+<area shape="rect" id="node4" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="188,379,251,405"/>
+<area shape="rect" id="node7" href="$vfs_8h.html" title="Virtual File System. " alt="" coords="251,229,302,256"/>
+<area shape="rect" id="node10" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="93,229,172,256"/>
+<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="215,528,277,555"/>
+<area shape="rect" id="node6" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="129,453,208,480"/>
+<area shape="rect" id="node8" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts. " alt="" coords="92,304,173,331"/>
+<area shape="rect" id="node9" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier. " alt="" coords="249,304,310,331"/>
 </map>

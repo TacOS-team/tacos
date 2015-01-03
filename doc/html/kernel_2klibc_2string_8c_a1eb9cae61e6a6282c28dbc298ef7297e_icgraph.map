@@ -1,0 +1,6 @@
+<map id="strcpy" name="strcpy">
+<area shape="rect" id="node2" href="$libc_2include_2string_8h.html#a8908188ae9fc2f05d993257ef001d553" title="Concaténation de deux chaînes. " alt="" coords="116,5,171,32"/>
+<area shape="rect" id="node3" href="$libc_2include_2string_8h.html#a4c10a214b02eed3dafc48c59ad71abbd" title="Concaténation de deux chaînes avec une limite aux n premiers caractères. " alt="" coords="112,56,175,83"/>
+<area shape="rect" id="node4" href="$libc_2include_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine. " alt="" coords="114,107,173,133"/>
+<area shape="rect" id="node5" href="$libc_2string_8c.html#a8b860ba32fef12da8acd4507c059e509" title="Duplique une chaine. " alt="" coords="111,157,176,184"/>
+</map>

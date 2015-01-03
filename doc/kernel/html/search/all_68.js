@@ -19,6 +19,7 @@ var searchData=
   ['heap_5ft',['heap_t',['../structheap__t.html',1,'']]],
   ['height',['height',['../structmode.html#a5e0e1e7b517ffe3532d75bda4b47b2c4',1,'mode']]],
   ['hidden_5fsector_5fcount',['hidden_sector_count',['../struct__fat__BS.html#a92f0f210cd522150211d990b4d3aeecb',1,'_fat_BS']]],
+  ['home_5fkey',['HOME_KEY',['../keyboard_8c.html#a546042e025fd8bf5365be7ab1069c054',1,'keyboard.c']]],
   ['hours',['hours',['../struct__fat__time.html#a7a3028be0bfed0b785e012d88c45f873',1,'_fat_time']]],
   ['hupcl',['HUPCL',['../termios__types_8h.html#af9d210a765b81afc6a40275185c4d5da',1,'termios_types.h']]]
 ];

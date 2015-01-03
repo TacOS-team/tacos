@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/exception.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -93,8 +94,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Gestion des exceptions.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="idt_8h_source.html">idt.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="exception_8h_source.html">exception.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="idt_8h_source.html">idt.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="exception_8h_source.html">exception.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de exception.c:</div>
 <div class="dyncontent">
@@ -103,29 +104,33 @@ Graphe des dépendances par inclusion de exception.c:</div>
 <area shape="rect" id="node3" href="idt_8h.html" title="Initialisation de la table des descripteurs d&#39;interruption (et exceptions) et association aux handler..." alt="" coords="5,83,51,111"/><area shape="rect" id="node7" href="exception_8h.html" title="exception.h" alt="" coords="75,83,160,111"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="41,161,103,189"/></map>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:ac5a3d89ca654d3606b6afd836a01e207"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8c.html#ac5a3d89ca654d3606b6afd836a01e207">exception_set_routine</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> exception_id, <a class="el" href="exception_8h.html#a27a88f1aea43a3b64d4ab8d578471642">exception_handler_t</a> routine)</td></tr>
+<tr class="separator:ac5a3d89ca654d3606b6afd836a01e207"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a845efe084f5994d748fd7c30403ac879"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8c.html#a845efe084f5994d748fd7c30403ac879">exception_disable</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> exception_id)</td></tr>
+<tr class="separator:a845efe084f5994d748fd7c30403ac879"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="var-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ae3a2ef644e2e40acf9a7844e65e8ce19"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae3a2ef644e2e40acf9a7844e65e8ce19"></a>
 <a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>exception_wrapper_array</b> [<a class="el" href="idt_8h.html#a1e638762d3982aadbcb3a847d7cb396b">EXCEPTION_NUM</a>]</td></tr>
+<tr class="separator:ae3a2ef644e2e40acf9a7844e65e8ce19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ede695acf41b0e60948d79f8395c5b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ede695acf41b0e60948d79f8395c5b8"></a>
 <a class="el" href="exception_8h.html#a27a88f1aea43a3b64d4ab8d578471642">exception_handler_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>exception_handler_array</b> [<a class="el" href="idt_8h.html#a1e638762d3982aadbcb3a847d7cb396b">EXCEPTION_NUM</a>]</td></tr>
+<tr class="separator:a1ede695acf41b0e60948d79f8395c5b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
-<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>Copyright (C) 2010-2014 TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des fonctions</h2>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a845efe084f5994d748fd7c30403ac879"></a>
 <div class="memitem">
 <div class="memproto">
@@ -153,7 +158,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="exception_8c_a845efe084f5994d748fd7c30403ac879_cgraph.png" border="0" usemap="#exception_8c_a845efe084f5994d748fd7c30403ac879_cgraph" alt=""/></div>
 <map name="exception_8c_a845efe084f5994d748fd7c30403ac879_cgraph" id="exception_8c_a845efe084f5994d748fd7c30403ac879_cgraph">
-<area shape="rect" id="node3" href="idt_8c.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption." alt="" coords="179,5,312,33"/><area shape="rect" id="node5" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="361,5,471,33"/></map>
+<area shape="rect" id="node2" href="idt_8c.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption. " alt="" coords="179,5,312,32"/><area shape="rect" id="node3" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception. " alt="" coords="360,5,471,32"/></map>
 </div>
 </p>
 
@@ -197,7 +202,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="exception_8c_ac5a3d89ca654d3606b6afd836a01e207_cgraph.png" border="0" usemap="#exception_8c_ac5a3d89ca654d3606b6afd836a01e207_cgraph" alt=""/></div>
 <map name="exception_8c_ac5a3d89ca654d3606b6afd836a01e207_cgraph" id="exception_8c_ac5a3d89ca654d3606b6afd836a01e207_cgraph">
-<area shape="rect" id="node3" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="204,5,313,33"/></map>
+<area shape="rect" id="node2" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception. " alt="" coords="201,5,312,32"/></map>
 </div>
 </p>
 
@@ -206,7 +211,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="exception_8c_ac5a3d89ca654d3606b6afd836a01e207_icgraph.png" border="0" usemap="#exception_8c_ac5a3d89ca654d3606b6afd836a01e207_icgraph" alt=""/></div>
 <map name="exception_8c_ac5a3d89ca654d3606b6afd836a01e207_icgraph" id="exception_8c_ac5a3d89ca654d3606b6afd836a01e207_icgraph">
-<area shape="rect" id="node3" href="kpanic_8c.html#acf070b3d87597bdddd1c1c413ed4adb2" title="kpanic_init" alt="" coords="204,5,287,33"/></map>
+<area shape="rect" id="node3" href="kpanic_8c.html#acf070b3d87597bdddd1c1c413ed4adb2" title="kpanic_init" alt="" coords="201,5,284,33"/></map>
 </div>
 </p>
 
@@ -215,9 +220,9 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:34 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

@@ -1,12 +1,12 @@
 <map id="libc/include/string.h" name="libc/include/string.h">
 <area shape="rect" id="node3" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="5,83,93,111"/>
 <area shape="rect" id="node5" href="$malloc_8c.html" title="libc/malloc.c" alt="" coords="117,83,211,111"/>
-<area shape="rect" id="node7" href="$process_8c.html" title="libc/process.c" alt="" coords="235,83,336,111"/>
-<area shape="rect" id="node9" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="360,83,480,111"/>
-<area shape="rect" id="node11" href="$fprintf_8c.html" title="libc/stdio/fprintf.c" alt="" coords="504,83,624,111"/>
-<area shape="rect" id="node13" href="$scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="648,83,768,111"/>
-<area shape="rect" id="node15" href="$stdfiles_8c.html" title="Définition et initialisation des fichiers standards (stdin, stdout, stderr)." alt="" coords="792,83,920,111"/>
-<area shape="rect" id="node17" href="$stdlib_8c.html" title="libc/stdlib.c" alt="" coords="944,83,1029,111"/>
-<area shape="rect" id="node19" href="$string_8c.html" title="libc/string.c" alt="" coords="1053,83,1141,111"/>
-<area shape="rect" id="node21" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="1165,83,1256,111"/>
+<area shape="rect" id="node7" href="$process_8c.html" title="libc/process.c" alt="" coords="235,83,333,111"/>
+<area shape="rect" id="node9" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="357,83,475,111"/>
+<area shape="rect" id="node11" href="$fprintf_8c.html" title="libc/stdio/fprintf.c" alt="" coords="499,83,619,111"/>
+<area shape="rect" id="node13" href="$scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="643,83,760,111"/>
+<area shape="rect" id="node15" href="$stdfiles_8c.html" title="Définition et initialisation des fichiers standards (stdin, stdout, stderr)." alt="" coords="784,83,909,111"/>
+<area shape="rect" id="node17" href="$stdlib_8c.html" title="libc/stdlib.c" alt="" coords="933,83,1019,111"/>
+<area shape="rect" id="node19" href="$string_8c.html" title="libc/string.c" alt="" coords="1043,83,1128,111"/>
+<area shape="rect" id="node21" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="1152,83,1243,111"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="fseek" name="fseek">
-<area shape="rect" id="node3" href="$unistd_8h.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier." alt="" coords="109,5,163,33"/>
-<area shape="rect" id="node5" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="212,5,273,33"/>
+<area shape="rect" id="node2" href="$unistd_8h.html#a9360f19507acbecf3d3e35789150f64b" title="Positionner la tête de lecture/écriture dans un fichier. " alt="" coords="108,5,161,32"/>
+<area shape="rect" id="node3" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant. " alt="" coords="209,5,272,32"/>
 </map>

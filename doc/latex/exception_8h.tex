@@ -1,234 +1,235 @@
 \hypertarget{exception_8h}{\section{Référence du fichier kernel/include/exception.h}
-\label{exception_8h}\index{kernel/include/exception.\-h@{kernel/include/exception.\-h}}
+\label{exception_8h}\index{kernel/include/exception.\+h@{kernel/include/exception.\+h}}
 }
-{\ttfamily \#include $<$types.\-h$>$}\\*
-Graphe des dépendances par inclusion de exception.\-h\-:\nopagebreak
+{\ttfamily \#include $<$types.\+h$>$}\\*
+Graphe des dépendances par inclusion de exception.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=208pt]{exception_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=274pt]{exception_8h__dep__incl}
+\includegraphics[width=276pt]{exception_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{exception_8h_ad35edefd94af5a06b579528092f53905}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-I\-V\-I\-D\-E\-\_\-\-E\-R\-R\-O\-R}~0
+\#define \hyperlink{exception_8h_ad35edefd94af5a06b579528092f53905}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+I\+V\+I\+D\+E\+\_\+\+E\+R\+R\+O\+R}~0
 \item 
-\#define \hyperlink{exception_8h_a65bef4675226bcd50c2bec6b013d826c}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-E\-B\-U\-G}~1
+\#define \hyperlink{exception_8h_a65bef4675226bcd50c2bec6b013d826c}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+E\+B\+U\+G}~1
 \item 
-\#define \hyperlink{exception_8h_a6fff968799e97bc81c65c3995715a5bc}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-N\-M\-I\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T}~2
+\#define \hyperlink{exception_8h_a6fff968799e97bc81c65c3995715a5bc}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+M\+I\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T}~2
 \item 
-\#define \hyperlink{exception_8h_ad4e81d136c5938015e8332e2bbfc69cb}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-B\-R\-E\-A\-K\-P\-O\-I\-N\-T}~3
+\#define \hyperlink{exception_8h_ad4e81d136c5938015e8332e2bbfc69cb}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+B\+R\+E\+A\+K\+P\+O\+I\+N\+T}~3
 \item 
-\#define \hyperlink{exception_8h_a64d813978016e23be519a7db0ccc2fcb}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W}~4
+\#define \hyperlink{exception_8h_a64d813978016e23be519a7db0ccc2fcb}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+O\+V\+E\+R\+F\+L\+O\+W}~4
 \item 
-\#define \hyperlink{exception_8h_a0aabdeff397774307e200d755ea3da39}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-B\-O\-U\-N\-D\-\_\-\-R\-A\-N\-G\-E\-\_\-\-E\-X\-C\-E\-D\-E\-E\-D}~5
+\#define \hyperlink{exception_8h_a0aabdeff397774307e200d755ea3da39}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+B\+O\+U\+N\+D\+\_\+\+R\+A\+N\+G\+E\+\_\+\+E\+X\+C\+E\+D\+E\+E\+D}~5
 \item 
-\#define \hyperlink{exception_8h_a8dc64106296eed50cbbac522c97489fd}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-O\-P\-C\-O\-D\-E}~6
+\#define \hyperlink{exception_8h_a8dc64106296eed50cbbac522c97489fd}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+O\+P\+C\+O\+D\+E}~6
 \item 
-\#define \hyperlink{exception_8h_aee7067ca72cf5f3f4924d781f4ab9d18}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-N\-O\-T\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E}~7
+\#define \hyperlink{exception_8h_aee7067ca72cf5f3f4924d781f4ab9d18}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+N\+O\+T\+\_\+\+A\+V\+A\+I\+L\+A\+B\+L\+E}~7
 \item 
-\#define \hyperlink{exception_8h_a03c881e5cf9c80352e89c2cc2aedce17}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-F\-A\-U\-L\-T}~8
+\#define \hyperlink{exception_8h_a03c881e5cf9c80352e89c2cc2aedce17}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+F\+A\+U\+L\+T}~8
 \item 
-\#define \hyperlink{exception_8h_afa2958cf0eb2220156b89780b58e06fb}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-C\-O\-P\-R\-O\-C\-E\-S\-S\-O\-R\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-O\-V\-E\-R\-R\-U\-N}~9
+\#define \hyperlink{exception_8h_afa2958cf0eb2220156b89780b58e06fb}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+C\+O\+P\+R\+O\+C\+E\+S\+S\+O\+R\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+O\+V\+E\+R\+R\+U\+N}~9
 \item 
-\#define \hyperlink{exception_8h_a02fd7012d7fbec88227b20dd84f046c2}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-T\-S\-S}~10
+\#define \hyperlink{exception_8h_a02fd7012d7fbec88227b20dd84f046c2}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+S\+S}~10
 \item 
-\#define \hyperlink{exception_8h_a8fe1ea0a4bf0b605af35bbddc73f6fad}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-N\-O\-T\-\_\-\-P\-R\-E\-S\-E\-N\-T}~11
+\#define \hyperlink{exception_8h_a8fe1ea0a4bf0b605af35bbddc73f6fad}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+N\+O\+T\+\_\+\+P\+R\+E\+S\+E\+N\+T}~11
 \item 
-\#define \hyperlink{exception_8h_ade6628460c124de1939d6b8abc08fdd6}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-S\-T\-A\-C\-K\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-F\-A\-U\-L\-T}~12
+\#define \hyperlink{exception_8h_ade6628460c124de1939d6b8abc08fdd6}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+F\+A\+U\+L\+T}~12
 \item 
-\#define \hyperlink{exception_8h_a664cb67866dbd9a39007f64078d677e1}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-G\-E\-N\-E\-R\-A\-L\-\_\-\-P\-R\-O\-T\-E\-C\-T\-I\-O\-N}~13
+\#define \hyperlink{exception_8h_a664cb67866dbd9a39007f64078d677e1}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+G\+E\+N\+E\+R\+A\+L\+\_\+\+P\+R\+O\+T\+E\+C\+T\+I\+O\+N}~13
 \item 
-\#define \hyperlink{exception_8h_aeb69823191506fccf4465650fe58fec9}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-P\-A\-G\-E\-\_\-\-F\-A\-U\-L\-T}~14
+\#define \hyperlink{exception_8h_aeb69823191506fccf4465650fe58fec9}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+P\+A\+G\+E\+\_\+\+F\+A\+U\+L\+T}~14
 \item 
-\#define \hyperlink{exception_8h_aada3f4afee1f6ba9699ed1cc0e275ea8}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-1}~15
+\#define \hyperlink{exception_8h_aada3f4afee1f6ba9699ed1cc0e275ea8}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+1}~15
 \item 
-\#define \hyperlink{exception_8h_a5defe6df1b73c38bc29de7cec992f2c7}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-F\-L\-O\-A\-T\-I\-N\-G\-\_\-\-P\-O\-I\-N\-T\-\_\-\-E\-R\-R\-O\-R}~16
+\#define \hyperlink{exception_8h_a5defe6df1b73c38bc29de7cec992f2c7}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+F\+L\+O\+A\+T\+I\+N\+G\+\_\+\+P\+O\+I\+N\+T\+\_\+\+E\+R\+R\+O\+R}~16
 \item 
-\#define \hyperlink{exception_8h_ae132caa3d09be165b343fd206ba7d162}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-A\-L\-I\-G\-N\-E\-M\-E\-N\-T\-\_\-\-C\-H\-E\-C\-K}~17
+\#define \hyperlink{exception_8h_ae132caa3d09be165b343fd206ba7d162}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+A\+L\+I\+G\+N\+E\+M\+E\+N\+T\+\_\+\+C\+H\+E\+C\+K}~17
 \item 
-\#define \hyperlink{exception_8h_a8ef4fc61aade77229b89d05e7ff1a365}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-M\-A\-C\-H\-I\-N\-E\-\_\-\-C\-H\-E\-C\-K}~18
+\#define \hyperlink{exception_8h_a8ef4fc61aade77229b89d05e7ff1a365}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+M\+A\+C\+H\+I\+N\+E\+\_\+\+C\+H\+E\+C\+K}~18
 \item 
-\#define \hyperlink{exception_8h_a86f81610ea78321b8c571b13a708212b}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-2}~19
+\#define \hyperlink{exception_8h_a86f81610ea78321b8c571b13a708212b}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+2}~19
 \item 
-\#define \hyperlink{exception_8h_aca7238d54d3a295fb655848f30a92b30}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-3}~20
+\#define \hyperlink{exception_8h_aca7238d54d3a295fb655848f30a92b30}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+3}~20
 \item 
-\#define \hyperlink{exception_8h_ac6d5666ed777500640e4835ccbee5aa9}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-4}~21
+\#define \hyperlink{exception_8h_ac6d5666ed777500640e4835ccbee5aa9}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+4}~21
 \item 
-\#define \hyperlink{exception_8h_a6b4c3e5b4547724e8ee44e98595b2b28}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-5}~22
+\#define \hyperlink{exception_8h_a6b4c3e5b4547724e8ee44e98595b2b28}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+5}~22
 \item 
-\#define \hyperlink{exception_8h_aba3f1287c6aca7276d53688507e626b4}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-6}~23
+\#define \hyperlink{exception_8h_aba3f1287c6aca7276d53688507e626b4}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+6}~23
 \item 
-\#define \hyperlink{exception_8h_aa96d17234dc55af36cf91b33edbecb4f}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-7}~24
+\#define \hyperlink{exception_8h_aa96d17234dc55af36cf91b33edbecb4f}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+7}~24
 \item 
-\#define \hyperlink{exception_8h_a4a399bcdae3445634378429da6cc4d87}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-8}~25
+\#define \hyperlink{exception_8h_a4a399bcdae3445634378429da6cc4d87}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+8}~25
 \item 
-\#define \hyperlink{exception_8h_a2fa646179c19865a5affa7f7624c39b5}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-9}~26
+\#define \hyperlink{exception_8h_a2fa646179c19865a5affa7f7624c39b5}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+9}~26
 \item 
-\#define \hyperlink{exception_8h_a86309bab28363f553b8e8a627d2494a7}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-10}~27
+\#define \hyperlink{exception_8h_a86309bab28363f553b8e8a627d2494a7}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+10}~27
 \item 
-\#define \hyperlink{exception_8h_ae938f75e3f5678ca256e73ce905c82ff}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-11}~28
+\#define \hyperlink{exception_8h_ae938f75e3f5678ca256e73ce905c82ff}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+11}~28
 \item 
-\#define \hyperlink{exception_8h_adc4dd786c73179a3230da46208e3c3b7}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-12}~29
+\#define \hyperlink{exception_8h_adc4dd786c73179a3230da46208e3c3b7}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+12}~29
 \item 
-\#define \hyperlink{exception_8h_a3b4da35765e11fb33df732c95a9e3f74}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-13}~30
+\#define \hyperlink{exception_8h_a3b4da35765e11fb33df732c95a9e3f74}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+13}~30
 \item 
-\#define \hyperlink{exception_8h_a4ff4d33c01f9ac9362653312fd4b4ab1}{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-14}~31
+\#define \hyperlink{exception_8h_a4ff4d33c01f9ac9362653312fd4b4ab1}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+14}~31
 \end{DoxyCompactItemize}
 \subsection*{Définitions de type}
 \begin{DoxyCompactItemize}
 \item 
-typedef void($\ast$ \hyperlink{exception_8h_a27a88f1aea43a3b64d4ab8d578471642}{exception\-\_\-handler\-\_\-t} )(\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} error\-\_\-id, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} error\-\_\-code)
+typedef void($\ast$ \hyperlink{exception_8h_a27a88f1aea43a3b64d4ab8d578471642}{exception\+\_\+handler\+\_\+t} )(\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\+\_\+t} error\+\_\+id, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\+\_\+t} error\+\_\+code)
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{exception_8h_ac5a3d89ca654d3606b6afd836a01e207}{exception\-\_\-set\-\_\-routine} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} exception\-\_\-id, \hyperlink{exception_8h_a27a88f1aea43a3b64d4ab8d578471642}{exception\-\_\-handler\-\_\-t} routine)
+int \hyperlink{exception_8h_ac5a3d89ca654d3606b6afd836a01e207}{exception\+\_\+set\+\_\+routine} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} exception\+\_\+id, \hyperlink{exception_8h_a27a88f1aea43a3b64d4ab8d578471642}{exception\+\_\+handler\+\_\+t} routine)
 \item 
-int \hyperlink{exception_8h_a845efe084f5994d748fd7c30403ac879}{exception\-\_\-disable} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} exception\-\_\-id)
+int \hyperlink{exception_8h_a845efe084f5994d748fd7c30403ac879}{exception\+\_\+disable} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} exception\+\_\+id)
 \end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 Description de ce que fait le fichier 
 
 \subsection{Documentation des macros}
-\hypertarget{exception_8h_ae132caa3d09be165b343fd206ba7d162}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-A\-L\-I\-G\-N\-E\-M\-E\-N\-T\-\_\-\-C\-H\-E\-C\-K@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-A\-L\-I\-G\-N\-E\-M\-E\-N\-T\-\_\-\-C\-H\-E\-C\-K}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-A\-L\-I\-G\-N\-E\-M\-E\-N\-T\-\_\-\-C\-H\-E\-C\-K@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-A\-L\-I\-G\-N\-E\-M\-E\-N\-T\-\_\-\-C\-H\-E\-C\-K}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-A\-L\-I\-G\-N\-E\-M\-E\-N\-T\-\_\-\-C\-H\-E\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-A\-L\-I\-G\-N\-E\-M\-E\-N\-T\-\_\-\-C\-H\-E\-C\-K~17}}\label{exception_8h_ae132caa3d09be165b343fd206ba7d162}
-Défaut d'alignement. \hypertarget{exception_8h_a0aabdeff397774307e200d755ea3da39}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-B\-O\-U\-N\-D\-\_\-\-R\-A\-N\-G\-E\-\_\-\-E\-X\-C\-E\-D\-E\-E\-D@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-B\-O\-U\-N\-D\-\_\-\-R\-A\-N\-G\-E\-\_\-\-E\-X\-C\-E\-D\-E\-E\-D}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-B\-O\-U\-N\-D\-\_\-\-R\-A\-N\-G\-E\-\_\-\-E\-X\-C\-E\-D\-E\-E\-D@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-B\-O\-U\-N\-D\-\_\-\-R\-A\-N\-G\-E\-\_\-\-E\-X\-C\-E\-D\-E\-E\-D}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-B\-O\-U\-N\-D\-\_\-\-R\-A\-N\-G\-E\-\_\-\-E\-X\-C\-E\-D\-E\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-B\-O\-U\-N\-D\-\_\-\-R\-A\-N\-G\-E\-\_\-\-E\-X\-C\-E\-D\-E\-E\-D~5}}\label{exception_8h_a0aabdeff397774307e200d755ea3da39}
-Levé par l'instruction bound. \hypertarget{exception_8h_ad4e81d136c5938015e8332e2bbfc69cb}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-B\-R\-E\-A\-K\-P\-O\-I\-N\-T@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-B\-R\-E\-A\-K\-P\-O\-I\-N\-T}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-B\-R\-E\-A\-K\-P\-O\-I\-N\-T@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-B\-R\-E\-A\-K\-P\-O\-I\-N\-T}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-B\-R\-E\-A\-K\-P\-O\-I\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-B\-R\-E\-A\-K\-P\-O\-I\-N\-T~3}}\label{exception_8h_ad4e81d136c5938015e8332e2bbfc69cb}
-Point d'arrêt. \hypertarget{exception_8h_afa2958cf0eb2220156b89780b58e06fb}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-C\-O\-P\-R\-O\-C\-E\-S\-S\-O\-R\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-O\-V\-E\-R\-R\-U\-N@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-C\-O\-P\-R\-O\-C\-E\-S\-S\-O\-R\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-O\-V\-E\-R\-R\-U\-N}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-C\-O\-P\-R\-O\-C\-E\-S\-S\-O\-R\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-O\-V\-E\-R\-R\-U\-N@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-C\-O\-P\-R\-O\-C\-E\-S\-S\-O\-R\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-O\-V\-E\-R\-R\-U\-N}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-C\-O\-P\-R\-O\-C\-E\-S\-S\-O\-R\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-O\-V\-E\-R\-R\-U\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-C\-O\-P\-R\-O\-C\-E\-S\-S\-O\-R\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-O\-V\-E\-R\-R\-U\-N~9}}\label{exception_8h_afa2958cf0eb2220156b89780b58e06fb}
-Coprocessor Segment Overrun. \hypertarget{exception_8h_a65bef4675226bcd50c2bec6b013d826c}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-E\-B\-U\-G@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-E\-B\-U\-G}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-E\-B\-U\-G@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-E\-B\-U\-G}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-E\-B\-U\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-E\-B\-U\-G~1}}\label{exception_8h_a65bef4675226bcd50c2bec6b013d826c}
-Debug exception. \hypertarget{exception_8h_aee7067ca72cf5f3f4924d781f4ab9d18}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-N\-O\-T\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-N\-O\-T\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-N\-O\-T\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-N\-O\-T\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-N\-O\-T\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-N\-O\-T\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E~7}}\label{exception_8h_aee7067ca72cf5f3f4924d781f4ab9d18}
-F\-P\-U instruction sans F\-P\-U. \hypertarget{exception_8h_ad35edefd94af5a06b579528092f53905}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-I\-V\-I\-D\-E\-\_\-\-E\-R\-R\-O\-R@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-I\-V\-I\-D\-E\-\_\-\-E\-R\-R\-O\-R}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-I\-V\-I\-D\-E\-\_\-\-E\-R\-R\-O\-R@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-I\-V\-I\-D\-E\-\_\-\-E\-R\-R\-O\-R}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-I\-V\-I\-D\-E\-\_\-\-E\-R\-R\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-I\-V\-I\-D\-E\-\_\-\-E\-R\-R\-O\-R~0}}\label{exception_8h_ad35edefd94af5a06b579528092f53905}
-Division par zero. \hypertarget{exception_8h_a03c881e5cf9c80352e89c2cc2aedce17}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-F\-A\-U\-L\-T@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-F\-A\-U\-L\-T}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-F\-A\-U\-L\-T@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-F\-A\-U\-L\-T}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-F\-A\-U\-L\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-F\-A\-U\-L\-T~8}}\label{exception_8h_a03c881e5cf9c80352e89c2cc2aedce17}
-Double faute. \hypertarget{exception_8h_a5defe6df1b73c38bc29de7cec992f2c7}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-F\-L\-O\-A\-T\-I\-N\-G\-\_\-\-P\-O\-I\-N\-T\-\_\-\-E\-R\-R\-O\-R@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-F\-L\-O\-A\-T\-I\-N\-G\-\_\-\-P\-O\-I\-N\-T\-\_\-\-E\-R\-R\-O\-R}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-F\-L\-O\-A\-T\-I\-N\-G\-\_\-\-P\-O\-I\-N\-T\-\_\-\-E\-R\-R\-O\-R@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-F\-L\-O\-A\-T\-I\-N\-G\-\_\-\-P\-O\-I\-N\-T\-\_\-\-E\-R\-R\-O\-R}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-F\-L\-O\-A\-T\-I\-N\-G\-\_\-\-P\-O\-I\-N\-T\-\_\-\-E\-R\-R\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-F\-L\-O\-A\-T\-I\-N\-G\-\_\-\-P\-O\-I\-N\-T\-\_\-\-E\-R\-R\-O\-R~16}}\label{exception_8h_a5defe6df1b73c38bc29de7cec992f2c7}
-Floating point error. \hypertarget{exception_8h_a664cb67866dbd9a39007f64078d677e1}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-G\-E\-N\-E\-R\-A\-L\-\_\-\-P\-R\-O\-T\-E\-C\-T\-I\-O\-N@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-G\-E\-N\-E\-R\-A\-L\-\_\-\-P\-R\-O\-T\-E\-C\-T\-I\-O\-N}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-G\-E\-N\-E\-R\-A\-L\-\_\-\-P\-R\-O\-T\-E\-C\-T\-I\-O\-N@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-G\-E\-N\-E\-R\-A\-L\-\_\-\-P\-R\-O\-T\-E\-C\-T\-I\-O\-N}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-G\-E\-N\-E\-R\-A\-L\-\_\-\-P\-R\-O\-T\-E\-C\-T\-I\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-G\-E\-N\-E\-R\-A\-L\-\_\-\-P\-R\-O\-T\-E\-C\-T\-I\-O\-N~13}}\label{exception_8h_a664cb67866dbd9a39007f64078d677e1}
-General Protection Fault. (segment, droits, etc) \hypertarget{exception_8h_aada3f4afee1f6ba9699ed1cc0e275ea8}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-1@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-1}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-1@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-1}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-1~15}}\label{exception_8h_aada3f4afee1f6ba9699ed1cc0e275ea8}
-Réservé. \hypertarget{exception_8h_a86309bab28363f553b8e8a627d2494a7}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-10@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-10}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-10@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-10}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-10}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-10~27}}\label{exception_8h_a86309bab28363f553b8e8a627d2494a7}
-Réservé. \hypertarget{exception_8h_ae938f75e3f5678ca256e73ce905c82ff}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-11@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-11}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-11@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-11}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-11}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-11~28}}\label{exception_8h_ae938f75e3f5678ca256e73ce905c82ff}
-Réservé. \hypertarget{exception_8h_adc4dd786c73179a3230da46208e3c3b7}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-12@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-12}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-12@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-12}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-12}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-12~29}}\label{exception_8h_adc4dd786c73179a3230da46208e3c3b7}
-Réservé. \hypertarget{exception_8h_a3b4da35765e11fb33df732c95a9e3f74}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-13@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-13}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-13@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-13}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-13}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-13~30}}\label{exception_8h_a3b4da35765e11fb33df732c95a9e3f74}
-Réservé. \hypertarget{exception_8h_a4ff4d33c01f9ac9362653312fd4b4ab1}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-14@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-14}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-14@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-14}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-14}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-14~31}}\label{exception_8h_a4ff4d33c01f9ac9362653312fd4b4ab1}
-Réservé. \hypertarget{exception_8h_a86f81610ea78321b8c571b13a708212b}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-2@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-2}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-2@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-2}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-2~19}}\label{exception_8h_a86f81610ea78321b8c571b13a708212b}
-Réservé. \hypertarget{exception_8h_aca7238d54d3a295fb655848f30a92b30}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-3@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-3}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-3@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-3}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-3}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-3~20}}\label{exception_8h_aca7238d54d3a295fb655848f30a92b30}
-Réservé. \hypertarget{exception_8h_ac6d5666ed777500640e4835ccbee5aa9}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-4@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-4}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-4@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-4}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-4}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-4~21}}\label{exception_8h_ac6d5666ed777500640e4835ccbee5aa9}
-Réservé. \hypertarget{exception_8h_a6b4c3e5b4547724e8ee44e98595b2b28}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-5@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-5}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-5@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-5}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-5}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-5~22}}\label{exception_8h_a6b4c3e5b4547724e8ee44e98595b2b28}
-Réservé. \hypertarget{exception_8h_aba3f1287c6aca7276d53688507e626b4}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-6@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-6}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-6@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-6}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-6}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-6~23}}\label{exception_8h_aba3f1287c6aca7276d53688507e626b4}
-Réservé. \hypertarget{exception_8h_aa96d17234dc55af36cf91b33edbecb4f}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-7@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-7}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-7@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-7}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-7}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-7~24}}\label{exception_8h_aa96d17234dc55af36cf91b33edbecb4f}
-Réservé. \hypertarget{exception_8h_a4a399bcdae3445634378429da6cc4d87}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-8@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-8}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-8@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-8}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-8}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-8~25}}\label{exception_8h_a4a399bcdae3445634378429da6cc4d87}
-Réservé. \hypertarget{exception_8h_a2fa646179c19865a5affa7f7624c39b5}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-9@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-9}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-9@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-9}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-9}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-T\-E\-L\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D\-\_\-9~26}}\label{exception_8h_a2fa646179c19865a5affa7f7624c39b5}
-Réservé. \hypertarget{exception_8h_a8dc64106296eed50cbbac522c97489fd}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-O\-P\-C\-O\-D\-E@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-O\-P\-C\-O\-D\-E}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-O\-P\-C\-O\-D\-E@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-O\-P\-C\-O\-D\-E}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-O\-P\-C\-O\-D\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-O\-P\-C\-O\-D\-E~6}}\label{exception_8h_a8dc64106296eed50cbbac522c97489fd}
-Opcode invalide. \hypertarget{exception_8h_a02fd7012d7fbec88227b20dd84f046c2}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-T\-S\-S@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-T\-S\-S}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-T\-S\-S@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-T\-S\-S}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-T\-S\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-T\-S\-S~10}}\label{exception_8h_a02fd7012d7fbec88227b20dd84f046c2}
-Invalid segment selector. \hypertarget{exception_8h_a8ef4fc61aade77229b89d05e7ff1a365}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-M\-A\-C\-H\-I\-N\-E\-\_\-\-C\-H\-E\-C\-K@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-M\-A\-C\-H\-I\-N\-E\-\_\-\-C\-H\-E\-C\-K}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-M\-A\-C\-H\-I\-N\-E\-\_\-\-C\-H\-E\-C\-K@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-M\-A\-C\-H\-I\-N\-E\-\_\-\-C\-H\-E\-C\-K}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-M\-A\-C\-H\-I\-N\-E\-\_\-\-C\-H\-E\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-M\-A\-C\-H\-I\-N\-E\-\_\-\-C\-H\-E\-C\-K~18}}\label{exception_8h_a8ef4fc61aade77229b89d05e7ff1a365}
-Détection d'erreur interne. \hypertarget{exception_8h_a6fff968799e97bc81c65c3995715a5bc}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-N\-M\-I\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-N\-M\-I\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-N\-M\-I\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-N\-M\-I\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-N\-M\-I\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-N\-M\-I\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T~2}}\label{exception_8h_a6fff968799e97bc81c65c3995715a5bc}
-Interruption non masquable. \hypertarget{exception_8h_a64d813978016e23be519a7db0ccc2fcb}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W~4}}\label{exception_8h_a64d813978016e23be519a7db0ccc2fcb}
-Overflow. \hypertarget{exception_8h_aeb69823191506fccf4465650fe58fec9}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-P\-A\-G\-E\-\_\-\-F\-A\-U\-L\-T@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-P\-A\-G\-E\-\_\-\-F\-A\-U\-L\-T}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-P\-A\-G\-E\-\_\-\-F\-A\-U\-L\-T@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-P\-A\-G\-E\-\_\-\-F\-A\-U\-L\-T}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-P\-A\-G\-E\-\_\-\-F\-A\-U\-L\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-P\-A\-G\-E\-\_\-\-F\-A\-U\-L\-T~14}}\label{exception_8h_aeb69823191506fccf4465650fe58fec9}
-Page fault. \hypertarget{exception_8h_a8fe1ea0a4bf0b605af35bbddc73f6fad}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-N\-O\-T\-\_\-\-P\-R\-E\-S\-E\-N\-T@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-N\-O\-T\-\_\-\-P\-R\-E\-S\-E\-N\-T}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-N\-O\-T\-\_\-\-P\-R\-E\-S\-E\-N\-T@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-N\-O\-T\-\_\-\-P\-R\-E\-S\-E\-N\-T}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-N\-O\-T\-\_\-\-P\-R\-E\-S\-E\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-N\-O\-T\-\_\-\-P\-R\-E\-S\-E\-N\-T~11}}\label{exception_8h_a8fe1ea0a4bf0b605af35bbddc73f6fad}
-Segment non présent (bit present à 0). \hypertarget{exception_8h_ade6628460c124de1939d6b8abc08fdd6}{\index{exception.\-h@{exception.\-h}!E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-S\-T\-A\-C\-K\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-F\-A\-U\-L\-T@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-S\-T\-A\-C\-K\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-F\-A\-U\-L\-T}}
-\index{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-S\-T\-A\-C\-K\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-F\-A\-U\-L\-T@{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-S\-T\-A\-C\-K\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-F\-A\-U\-L\-T}!exception.h@{exception.\-h}}
-\subsubsection[{E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-S\-T\-A\-C\-K\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-F\-A\-U\-L\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-X\-C\-E\-P\-T\-I\-O\-N\-\_\-\-S\-T\-A\-C\-K\-\_\-\-S\-E\-G\-M\-E\-N\-T\-\_\-\-F\-A\-U\-L\-T~12}}\label{exception_8h_ade6628460c124de1939d6b8abc08fdd6}
+\hypertarget{exception_8h_ae132caa3d09be165b343fd206ba7d162}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+A\+L\+I\+G\+N\+E\+M\+E\+N\+T\+\_\+\+C\+H\+E\+C\+K@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+A\+L\+I\+G\+N\+E\+M\+E\+N\+T\+\_\+\+C\+H\+E\+C\+K}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+A\+L\+I\+G\+N\+E\+M\+E\+N\+T\+\_\+\+C\+H\+E\+C\+K@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+A\+L\+I\+G\+N\+E\+M\+E\+N\+T\+\_\+\+C\+H\+E\+C\+K}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+A\+L\+I\+G\+N\+E\+M\+E\+N\+T\+\_\+\+C\+H\+E\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+A\+L\+I\+G\+N\+E\+M\+E\+N\+T\+\_\+\+C\+H\+E\+C\+K~17}}\label{exception_8h_ae132caa3d09be165b343fd206ba7d162}
+Défaut d'alignement. \hypertarget{exception_8h_a0aabdeff397774307e200d755ea3da39}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+B\+O\+U\+N\+D\+\_\+\+R\+A\+N\+G\+E\+\_\+\+E\+X\+C\+E\+D\+E\+E\+D@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+B\+O\+U\+N\+D\+\_\+\+R\+A\+N\+G\+E\+\_\+\+E\+X\+C\+E\+D\+E\+E\+D}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+B\+O\+U\+N\+D\+\_\+\+R\+A\+N\+G\+E\+\_\+\+E\+X\+C\+E\+D\+E\+E\+D@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+B\+O\+U\+N\+D\+\_\+\+R\+A\+N\+G\+E\+\_\+\+E\+X\+C\+E\+D\+E\+E\+D}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+B\+O\+U\+N\+D\+\_\+\+R\+A\+N\+G\+E\+\_\+\+E\+X\+C\+E\+D\+E\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+B\+O\+U\+N\+D\+\_\+\+R\+A\+N\+G\+E\+\_\+\+E\+X\+C\+E\+D\+E\+E\+D~5}}\label{exception_8h_a0aabdeff397774307e200d755ea3da39}
+Levé par l'instruction bound. \hypertarget{exception_8h_ad4e81d136c5938015e8332e2bbfc69cb}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+B\+R\+E\+A\+K\+P\+O\+I\+N\+T@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+B\+R\+E\+A\+K\+P\+O\+I\+N\+T}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+B\+R\+E\+A\+K\+P\+O\+I\+N\+T@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+B\+R\+E\+A\+K\+P\+O\+I\+N\+T}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+B\+R\+E\+A\+K\+P\+O\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+B\+R\+E\+A\+K\+P\+O\+I\+N\+T~3}}\label{exception_8h_ad4e81d136c5938015e8332e2bbfc69cb}
+Point d'arrêt. \hypertarget{exception_8h_afa2958cf0eb2220156b89780b58e06fb}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+C\+O\+P\+R\+O\+C\+E\+S\+S\+O\+R\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+O\+V\+E\+R\+R\+U\+N@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+C\+O\+P\+R\+O\+C\+E\+S\+S\+O\+R\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+O\+V\+E\+R\+R\+U\+N}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+C\+O\+P\+R\+O\+C\+E\+S\+S\+O\+R\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+O\+V\+E\+R\+R\+U\+N@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+C\+O\+P\+R\+O\+C\+E\+S\+S\+O\+R\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+O\+V\+E\+R\+R\+U\+N}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+C\+O\+P\+R\+O\+C\+E\+S\+S\+O\+R\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+O\+V\+E\+R\+R\+U\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+C\+O\+P\+R\+O\+C\+E\+S\+S\+O\+R\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+O\+V\+E\+R\+R\+U\+N~9}}\label{exception_8h_afa2958cf0eb2220156b89780b58e06fb}
+Coprocessor Segment Overrun. \hypertarget{exception_8h_a65bef4675226bcd50c2bec6b013d826c}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+E\+B\+U\+G@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+E\+B\+U\+G}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+E\+B\+U\+G@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+E\+B\+U\+G}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+E\+B\+U\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+E\+B\+U\+G~1}}\label{exception_8h_a65bef4675226bcd50c2bec6b013d826c}
+Debug exception. \hypertarget{exception_8h_aee7067ca72cf5f3f4924d781f4ab9d18}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+N\+O\+T\+\_\+\+A\+V\+A\+I\+L\+A\+B\+L\+E@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+N\+O\+T\+\_\+\+A\+V\+A\+I\+L\+A\+B\+L\+E}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+N\+O\+T\+\_\+\+A\+V\+A\+I\+L\+A\+B\+L\+E@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+N\+O\+T\+\_\+\+A\+V\+A\+I\+L\+A\+B\+L\+E}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+N\+O\+T\+\_\+\+A\+V\+A\+I\+L\+A\+B\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+N\+O\+T\+\_\+\+A\+V\+A\+I\+L\+A\+B\+L\+E~7}}\label{exception_8h_aee7067ca72cf5f3f4924d781f4ab9d18}
+F\+P\+U instruction sans F\+P\+U. \hypertarget{exception_8h_ad35edefd94af5a06b579528092f53905}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+I\+V\+I\+D\+E\+\_\+\+E\+R\+R\+O\+R@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+I\+V\+I\+D\+E\+\_\+\+E\+R\+R\+O\+R}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+I\+V\+I\+D\+E\+\_\+\+E\+R\+R\+O\+R@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+I\+V\+I\+D\+E\+\_\+\+E\+R\+R\+O\+R}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+I\+V\+I\+D\+E\+\_\+\+E\+R\+R\+O\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+I\+V\+I\+D\+E\+\_\+\+E\+R\+R\+O\+R~0}}\label{exception_8h_ad35edefd94af5a06b579528092f53905}
+Division par zero. \hypertarget{exception_8h_a03c881e5cf9c80352e89c2cc2aedce17}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+F\+A\+U\+L\+T@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+F\+A\+U\+L\+T}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+F\+A\+U\+L\+T@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+F\+A\+U\+L\+T}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+F\+A\+U\+L\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+F\+A\+U\+L\+T~8}}\label{exception_8h_a03c881e5cf9c80352e89c2cc2aedce17}
+Double faute. \hypertarget{exception_8h_a5defe6df1b73c38bc29de7cec992f2c7}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+F\+L\+O\+A\+T\+I\+N\+G\+\_\+\+P\+O\+I\+N\+T\+\_\+\+E\+R\+R\+O\+R@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+F\+L\+O\+A\+T\+I\+N\+G\+\_\+\+P\+O\+I\+N\+T\+\_\+\+E\+R\+R\+O\+R}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+F\+L\+O\+A\+T\+I\+N\+G\+\_\+\+P\+O\+I\+N\+T\+\_\+\+E\+R\+R\+O\+R@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+F\+L\+O\+A\+T\+I\+N\+G\+\_\+\+P\+O\+I\+N\+T\+\_\+\+E\+R\+R\+O\+R}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+F\+L\+O\+A\+T\+I\+N\+G\+\_\+\+P\+O\+I\+N\+T\+\_\+\+E\+R\+R\+O\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+F\+L\+O\+A\+T\+I\+N\+G\+\_\+\+P\+O\+I\+N\+T\+\_\+\+E\+R\+R\+O\+R~16}}\label{exception_8h_a5defe6df1b73c38bc29de7cec992f2c7}
+Floating point error. \hypertarget{exception_8h_a664cb67866dbd9a39007f64078d677e1}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+G\+E\+N\+E\+R\+A\+L\+\_\+\+P\+R\+O\+T\+E\+C\+T\+I\+O\+N@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+G\+E\+N\+E\+R\+A\+L\+\_\+\+P\+R\+O\+T\+E\+C\+T\+I\+O\+N}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+G\+E\+N\+E\+R\+A\+L\+\_\+\+P\+R\+O\+T\+E\+C\+T\+I\+O\+N@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+G\+E\+N\+E\+R\+A\+L\+\_\+\+P\+R\+O\+T\+E\+C\+T\+I\+O\+N}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+G\+E\+N\+E\+R\+A\+L\+\_\+\+P\+R\+O\+T\+E\+C\+T\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+G\+E\+N\+E\+R\+A\+L\+\_\+\+P\+R\+O\+T\+E\+C\+T\+I\+O\+N~13}}\label{exception_8h_a664cb67866dbd9a39007f64078d677e1}
+General Protection Fault. (segment, droits, etc) \hypertarget{exception_8h_aada3f4afee1f6ba9699ed1cc0e275ea8}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+1@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+1}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+1@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+1}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+1}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+1~15}}\label{exception_8h_aada3f4afee1f6ba9699ed1cc0e275ea8}
+Réservé. \hypertarget{exception_8h_a86309bab28363f553b8e8a627d2494a7}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+10@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+10}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+10@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+10}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+10}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+10~27}}\label{exception_8h_a86309bab28363f553b8e8a627d2494a7}
+Réservé. \hypertarget{exception_8h_ae938f75e3f5678ca256e73ce905c82ff}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+11@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+11}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+11@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+11}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+11}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+11~28}}\label{exception_8h_ae938f75e3f5678ca256e73ce905c82ff}
+Réservé. \hypertarget{exception_8h_adc4dd786c73179a3230da46208e3c3b7}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+12@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+12}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+12@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+12}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+12}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+12~29}}\label{exception_8h_adc4dd786c73179a3230da46208e3c3b7}
+Réservé. \hypertarget{exception_8h_a3b4da35765e11fb33df732c95a9e3f74}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+13@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+13}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+13@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+13}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+13}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+13~30}}\label{exception_8h_a3b4da35765e11fb33df732c95a9e3f74}
+Réservé. \hypertarget{exception_8h_a4ff4d33c01f9ac9362653312fd4b4ab1}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+14@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+14}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+14@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+14}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+14}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+14~31}}\label{exception_8h_a4ff4d33c01f9ac9362653312fd4b4ab1}
+Réservé. \hypertarget{exception_8h_a86f81610ea78321b8c571b13a708212b}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+2@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+2}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+2@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+2}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+2}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+2~19}}\label{exception_8h_a86f81610ea78321b8c571b13a708212b}
+Réservé. \hypertarget{exception_8h_aca7238d54d3a295fb655848f30a92b30}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+3@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+3}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+3@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+3}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+3}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+3~20}}\label{exception_8h_aca7238d54d3a295fb655848f30a92b30}
+Réservé. \hypertarget{exception_8h_ac6d5666ed777500640e4835ccbee5aa9}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+4@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+4}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+4@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+4}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+4}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+4~21}}\label{exception_8h_ac6d5666ed777500640e4835ccbee5aa9}
+Réservé. \hypertarget{exception_8h_a6b4c3e5b4547724e8ee44e98595b2b28}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+5@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+5}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+5@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+5}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+5}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+5~22}}\label{exception_8h_a6b4c3e5b4547724e8ee44e98595b2b28}
+Réservé. \hypertarget{exception_8h_aba3f1287c6aca7276d53688507e626b4}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+6@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+6}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+6@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+6}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+6}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+6~23}}\label{exception_8h_aba3f1287c6aca7276d53688507e626b4}
+Réservé. \hypertarget{exception_8h_aa96d17234dc55af36cf91b33edbecb4f}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+7@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+7}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+7@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+7}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+7}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+7~24}}\label{exception_8h_aa96d17234dc55af36cf91b33edbecb4f}
+Réservé. \hypertarget{exception_8h_a4a399bcdae3445634378429da6cc4d87}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+8@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+8}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+8@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+8}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+8}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+8~25}}\label{exception_8h_a4a399bcdae3445634378429da6cc4d87}
+Réservé. \hypertarget{exception_8h_a2fa646179c19865a5affa7f7624c39b5}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+9@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+9}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+9@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+9}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+9}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+L\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+9~26}}\label{exception_8h_a2fa646179c19865a5affa7f7624c39b5}
+Réservé. \hypertarget{exception_8h_a8dc64106296eed50cbbac522c97489fd}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+O\+P\+C\+O\+D\+E@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+O\+P\+C\+O\+D\+E}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+O\+P\+C\+O\+D\+E@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+O\+P\+C\+O\+D\+E}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+O\+P\+C\+O\+D\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+O\+P\+C\+O\+D\+E~6}}\label{exception_8h_a8dc64106296eed50cbbac522c97489fd}
+Opcode invalide. \hypertarget{exception_8h_a02fd7012d7fbec88227b20dd84f046c2}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+S\+S@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+S\+S}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+S\+S@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+S\+S}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+S\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+S\+S~10}}\label{exception_8h_a02fd7012d7fbec88227b20dd84f046c2}
+Invalid segment selector. \hypertarget{exception_8h_a8ef4fc61aade77229b89d05e7ff1a365}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+M\+A\+C\+H\+I\+N\+E\+\_\+\+C\+H\+E\+C\+K@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+M\+A\+C\+H\+I\+N\+E\+\_\+\+C\+H\+E\+C\+K}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+M\+A\+C\+H\+I\+N\+E\+\_\+\+C\+H\+E\+C\+K@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+M\+A\+C\+H\+I\+N\+E\+\_\+\+C\+H\+E\+C\+K}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+M\+A\+C\+H\+I\+N\+E\+\_\+\+C\+H\+E\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+M\+A\+C\+H\+I\+N\+E\+\_\+\+C\+H\+E\+C\+K~18}}\label{exception_8h_a8ef4fc61aade77229b89d05e7ff1a365}
+Détection d'erreur interne. \hypertarget{exception_8h_a6fff968799e97bc81c65c3995715a5bc}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+M\+I\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+M\+I\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+M\+I\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+M\+I\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+M\+I\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+M\+I\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T~2}}\label{exception_8h_a6fff968799e97bc81c65c3995715a5bc}
+Interruption non masquable. \hypertarget{exception_8h_a64d813978016e23be519a7db0ccc2fcb}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+O\+V\+E\+R\+F\+L\+O\+W@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+O\+V\+E\+R\+F\+L\+O\+W}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+O\+V\+E\+R\+F\+L\+O\+W@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+O\+V\+E\+R\+F\+L\+O\+W}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+O\+V\+E\+R\+F\+L\+O\+W}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+O\+V\+E\+R\+F\+L\+O\+W~4}}\label{exception_8h_a64d813978016e23be519a7db0ccc2fcb}
+Overflow. \hypertarget{exception_8h_aeb69823191506fccf4465650fe58fec9}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+P\+A\+G\+E\+\_\+\+F\+A\+U\+L\+T@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+P\+A\+G\+E\+\_\+\+F\+A\+U\+L\+T}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+P\+A\+G\+E\+\_\+\+F\+A\+U\+L\+T@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+P\+A\+G\+E\+\_\+\+F\+A\+U\+L\+T}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+P\+A\+G\+E\+\_\+\+F\+A\+U\+L\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+P\+A\+G\+E\+\_\+\+F\+A\+U\+L\+T~14}}\label{exception_8h_aeb69823191506fccf4465650fe58fec9}
+Page fault. \hypertarget{exception_8h_a8fe1ea0a4bf0b605af35bbddc73f6fad}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+N\+O\+T\+\_\+\+P\+R\+E\+S\+E\+N\+T@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+N\+O\+T\+\_\+\+P\+R\+E\+S\+E\+N\+T}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+N\+O\+T\+\_\+\+P\+R\+E\+S\+E\+N\+T@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+N\+O\+T\+\_\+\+P\+R\+E\+S\+E\+N\+T}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+N\+O\+T\+\_\+\+P\+R\+E\+S\+E\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+N\+O\+T\+\_\+\+P\+R\+E\+S\+E\+N\+T~11}}\label{exception_8h_a8fe1ea0a4bf0b605af35bbddc73f6fad}
+Segment non présent (bit present à 0). \hypertarget{exception_8h_ade6628460c124de1939d6b8abc08fdd6}{\index{exception.\+h@{exception.\+h}!E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+F\+A\+U\+L\+T@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+F\+A\+U\+L\+T}}
+\index{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+F\+A\+U\+L\+T@{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+F\+A\+U\+L\+T}!exception.\+h@{exception.\+h}}
+\subsubsection[{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+F\+A\+U\+L\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+E\+G\+M\+E\+N\+T\+\_\+\+F\+A\+U\+L\+T~12}}\label{exception_8h_ade6628460c124de1939d6b8abc08fdd6}
 Stack segment fault. 
 
 \subsection{Documentation des définitions de type}
-\hypertarget{exception_8h_a27a88f1aea43a3b64d4ab8d578471642}{\index{exception.\-h@{exception.\-h}!exception\-\_\-handler\-\_\-t@{exception\-\_\-handler\-\_\-t}}
-\index{exception\-\_\-handler\-\_\-t@{exception\-\_\-handler\-\_\-t}!exception.h@{exception.\-h}}
-\subsubsection[{exception\-\_\-handler\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ exception\-\_\-handler\-\_\-t)({\bf uint32\-\_\-t} error\-\_\-id, {\bf uint32\-\_\-t} error\-\_\-code)}}\label{exception_8h_a27a88f1aea43a3b64d4ab8d578471642}
+\hypertarget{exception_8h_a27a88f1aea43a3b64d4ab8d578471642}{\index{exception.\+h@{exception.\+h}!exception\+\_\+handler\+\_\+t@{exception\+\_\+handler\+\_\+t}}
+\index{exception\+\_\+handler\+\_\+t@{exception\+\_\+handler\+\_\+t}!exception.\+h@{exception.\+h}}
+\subsubsection[{exception\+\_\+handler\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ exception\+\_\+handler\+\_\+t)({\bf uint32\+\_\+t} error\+\_\+id, {\bf uint32\+\_\+t} error\+\_\+code)}}\label{exception_8h_a27a88f1aea43a3b64d4ab8d578471642}
 Définition du type pour un handler d'exception. 
 
 \subsection{Documentation des fonctions}
-\hypertarget{exception_8h_a845efe084f5994d748fd7c30403ac879}{\index{exception.\-h@{exception.\-h}!exception\-\_\-disable@{exception\-\_\-disable}}
-\index{exception\-\_\-disable@{exception\-\_\-disable}!exception.h@{exception.\-h}}
-\subsubsection[{exception\-\_\-disable}]{\setlength{\rightskip}{0pt plus 5cm}int exception\-\_\-disable (
+\hypertarget{exception_8h_a845efe084f5994d748fd7c30403ac879}{\index{exception.\+h@{exception.\+h}!exception\+\_\+disable@{exception\+\_\+disable}}
+\index{exception\+\_\+disable@{exception\+\_\+disable}!exception.\+h@{exception.\+h}}
+\subsubsection[{exception\+\_\+disable}]{\setlength{\rightskip}{0pt plus 5cm}int exception\+\_\+disable (
 \begin{DoxyParamCaption}
-\item[{{\bf uint8\-\_\-t}}]{exception\-\_\-id}
+\item[{{\bf uint8\+\_\+t}}]{exception\+\_\+id}
 \end{DoxyParamCaption}
 )}}\label{exception_8h_a845efe084f5994d748fd7c30403ac879}
 Désactive le handler d'une exception.
 
 
 \begin{DoxyParams}{Paramètres}
-{\em exception\-\_\-id} & identifiant de l'exception.\\
+{\em exception\+\_\+id} & identifiant de l'exception.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
@@ -236,7 +237,8 @@ Désactive le handler d'une exception.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -245,19 +247,19 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{exception_8h_ac5a3d89ca654d3606b6afd836a01e207}{\index{exception.\-h@{exception.\-h}!exception\-\_\-set\-\_\-routine@{exception\-\_\-set\-\_\-routine}}
-\index{exception\-\_\-set\-\_\-routine@{exception\-\_\-set\-\_\-routine}!exception.h@{exception.\-h}}
-\subsubsection[{exception\-\_\-set\-\_\-routine}]{\setlength{\rightskip}{0pt plus 5cm}int exception\-\_\-set\-\_\-routine (
+\hypertarget{exception_8h_ac5a3d89ca654d3606b6afd836a01e207}{\index{exception.\+h@{exception.\+h}!exception\+\_\+set\+\_\+routine@{exception\+\_\+set\+\_\+routine}}
+\index{exception\+\_\+set\+\_\+routine@{exception\+\_\+set\+\_\+routine}!exception.\+h@{exception.\+h}}
+\subsubsection[{exception\+\_\+set\+\_\+routine}]{\setlength{\rightskip}{0pt plus 5cm}int exception\+\_\+set\+\_\+routine (
 \begin{DoxyParamCaption}
-\item[{{\bf uint8\-\_\-t}}]{exception\-\_\-id, }
-\item[{{\bf exception\-\_\-handler\-\_\-t}}]{routine}
+\item[{{\bf uint8\+\_\+t}}]{exception\+\_\+id, }
+\item[{{\bf exception\+\_\+handler\+\_\+t}}]{routine}
 \end{DoxyParamCaption}
 )}}\label{exception_8h_ac5a3d89ca654d3606b6afd836a01e207}
 Définit le handler associé à une exception.
 
 
 \begin{DoxyParams}{Paramètres}
-{\em exception\-\_\-id} & identifiant de l'exception. \\
+{\em exception\+\_\+id} & identifiant de l'exception. \\
 \hline
 {\em routine} & handler pour cette exception.\\
 \hline
@@ -267,22 +269,23 @@ Définit le handler associé à une exception.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=312pt]{exception_8h_ac5a3d89ca654d3606b6afd836a01e207_cgraph}
+\includegraphics[width=310pt]{exception_8h_ac5a3d89ca654d3606b6afd836a01e207_cgraph}
 \end{center}
 \end{figure}
 
 
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=292pt]{exception_8h_ac5a3d89ca654d3606b6afd836a01e207_icgraph}
+\includegraphics[width=290pt]{exception_8h_ac5a3d89ca654d3606b6afd836a01e207_icgraph}
 \end{center}
 \end{figure}
 

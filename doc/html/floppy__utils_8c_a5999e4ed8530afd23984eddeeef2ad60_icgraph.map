@@ -1,4 +1,3 @@
 <map id="floppy_get_type" name="floppy_get_type">
-<area shape="rect" id="node3" href="$floppy_8h.html#a4b305e10e95fed92b047adfac6dc4881" title="Initilise le driver floppy." alt="" coords="197,5,275,33"/>
-<area shape="rect" id="node5" href="$floppy_8h.html#aa4a9a9bd28b1b9b857febc670b883517" title="Fonction de détection des lecteur floppy présents." alt="" coords="167,55,305,83"/>
+<area shape="rect" id="node2" href="$floppy_8h.html#aa4a9a9bd28b1b9b857febc670b883517" title="Fonction de détection des lecteur floppy présents. " alt="" coords="164,5,304,32"/>
 </map>

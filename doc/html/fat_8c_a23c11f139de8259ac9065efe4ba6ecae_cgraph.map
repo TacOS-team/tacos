@@ -1,10 +1,12 @@
 <map id="mount_FAT" name="mount_FAT">
-<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="277,131,344,159"/>
-<area shape="rect" id="node7" href="$unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier." alt="" coords="161,5,212,33"/>
-<area shape="rect" id="node11" href="$kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="152,106,221,134"/>
-<area shape="rect" id="node13" href="$fat__internal_8c.html#acc9f1bc688e7d7c5459ad50676608995" title="read_fat" alt="" coords="152,157,221,185"/>
-<area shape="rect" id="node15" href="$fat__functions_8c.html#aaf2cd44da9ce9df0808a2cd823fd1295" title="fat_lookup" alt="" coords="145,207,228,235"/>
-<area shape="rect" id="node18" href="$fat__functions_8c.html#a34463693dc3fa14a062c90b9ece622c4" title="fat_getroot" alt="" coords="145,258,228,286"/>
-<area shape="rect" id="node5" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="393,131,532,159"/>
-<area shape="rect" id="node9" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="280,5,341,33"/>
+<area shape="rect" id="node2" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="276,107,343,133"/>
+<area shape="rect" id="node5" href="$unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier. " alt="" coords="161,5,211,32"/>
+<area shape="rect" id="node7" href="$kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire. " alt="" coords="151,107,221,133"/>
+<area shape="rect" id="node8" href="$fat__internal_8c.html#acc9f1bc688e7d7c5459ad50676608995" title="read_fat" alt="" coords="151,157,221,184"/>
+<area shape="rect" id="node9" href="$fat__functions_8c.html#aaf2cd44da9ce9df0808a2cd823fd1295" title="fat_lookup" alt="" coords="145,208,227,235"/>
+<area shape="rect" id="node11" href="$fat__functions_8c.html#a34463693dc3fa14a062c90b9ece622c4" title="fat_getroot" alt="" coords="144,259,228,285"/>
+<area shape="rect" id="node3" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="391,81,531,108"/>
+<area shape="rect" id="node4" href="$kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="426,132,495,159"/>
+<area shape="rect" id="node6" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant. " alt="" coords="278,5,341,32"/>
+<area shape="rect" id="node10" href="$kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine. " alt="" coords="280,208,339,235"/>
 </map>

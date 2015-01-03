@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/drivers/char/beeper.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -90,34 +91,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier beeper.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="beeper_8h_source.html">drivers/beeper.h</a>&gt;</code><br/>
-<code>#include &lt;types.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="ioports_8h_source.html">ioports.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="devfs_8h_source.html">fs/devfs.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="beeper_8h_source.html">drivers/beeper.h</a>&gt;</code><br />
+<code>#include &lt;types.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="ioports_8h_source.html">ioports.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="devfs_8h_source.html">fs/devfs.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de beeper.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="beeper_8c__incl.png" border="0" usemap="#kernel_2drivers_2char_2beeper_8c" alt=""/></div>
 <map name="kernel_2drivers_2char_2beeper_8c" id="kernel_2drivers_2char_2beeper_8c">
-<area shape="rect" id="node3" href="beeper_8h.html" title="Driver pour utiliser le beeper." alt="" coords="5,99,120,127"/><area shape="rect" id="node7" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="195,99,264,127"/><area shape="rect" id="node9" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="288,99,365,127"/><area shape="rect" id="node12" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="287,177,367,205"/><area shape="rect" id="node14" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="296,254,357,282"/></map>
+<area shape="rect" id="node2" href="beeper_8h.html" title="Driver pour utiliser le beeper. " alt="" coords="5,95,120,121"/><area shape="rect" id="node4" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="195,95,266,121"/><area shape="rect" id="node5" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="290,95,369,121"/><area shape="rect" id="node6" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts. " alt="" coords="289,169,370,196"/><area shape="rect" id="node7" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="298,244,361,271"/></map>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:adb03a526b1ae05cbecf13fbd9c0c90e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb03a526b1ae05cbecf13fbd9c0c90e5"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_NOTE</b>(x)&#160;&#160;&#160;((x &amp; 128) == 0)</td></tr>
+<tr class="separator:adb03a526b1ae05cbecf13fbd9c0c90e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:aa6492faf2e8ab1fb72659ae20b473e23"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa6492faf2e8ab1fb72659ae20b473e23"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="beeper_8c.html#aa6492faf2e8ab1fb72659ae20b473e23">beeper_init</a> ()</td></tr>
-<tr class="memdesc:aa6492faf2e8ab1fb72659ae20b473e23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du driver. <br/></td></tr>
+<tr class="memdesc:aa6492faf2e8ab1fb72659ae20b473e23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du driver. <br /></td></tr>
+<tr class="separator:aa6492faf2e8ab1fb72659ae20b473e23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
-<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>Copyright (C) 2010-2014 TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
@@ -127,9 +130,9 @@ DESCRIPTION</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:34 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

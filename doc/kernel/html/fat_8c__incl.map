@@ -1,15 +1,15 @@
 <map id="kernel/fs/fat/fat.c" name="kernel/fs/fat/fat.c">
-<area shape="rect" id="node3" href="$fat_8h.html" title="fs/fat.h" alt="" coords="232,83,293,111"/>
+<area shape="rect" id="node3" href="$fat_8h.html" title="fs/fat.h" alt="" coords="231,83,292,111"/>
 <area shape="rect" id="node24" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="5,315,83,343"/>
-<area shape="rect" id="node27" href="$klog_8h.html" title="Logging macros." alt="" coords="561,83,617,111"/>
-<area shape="rect" id="node31" href="$string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="615,393,708,421"/>
-<area shape="rect" id="node34" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="380,83,476,111"/>
-<area shape="rect" id="node5" href="$types_8h.html" title="types.h" alt="" coords="303,470,364,498"/>
-<area shape="rect" id="node7" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="293,238,373,266"/>
-<area shape="rect" id="node10" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="157,238,219,266"/>
-<area shape="rect" id="node19" href="$vfs_8h.html" title="Virtual File System." alt="" coords="237,161,288,189"/>
-<area shape="rect" id="node13" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="321,315,383,343"/>
-<area shape="rect" id="node16" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="333,393,411,421"/>
-<area shape="rect" id="node29" href="$kstdio_8h.html" title="kprintf" alt="" coords="587,161,653,189"/>
-<area shape="rect" id="node39" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="435,161,512,189"/>
+<area shape="rect" id="node27" href="$klog_8h.html" title="Logging macros." alt="" coords="559,83,615,111"/>
+<area shape="rect" id="node31" href="$string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="612,393,705,421"/>
+<area shape="rect" id="node34" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="379,83,475,111"/>
+<area shape="rect" id="node5" href="$types_8h.html" title="types.h" alt="" coords="300,470,361,498"/>
+<area shape="rect" id="node7" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="291,238,371,266"/>
+<area shape="rect" id="node10" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="157,238,216,266"/>
+<area shape="rect" id="node19" href="$vfs_8h.html" title="Virtual File System." alt="" coords="237,161,285,189"/>
+<area shape="rect" id="node13" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="317,315,379,343"/>
+<area shape="rect" id="node16" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="331,393,408,421"/>
+<area shape="rect" id="node29" href="$kstdio_8h.html" title="kprintf" alt="" coords="584,161,651,189"/>
+<area shape="rect" id="node39" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="435,161,509,189"/>
 </map>

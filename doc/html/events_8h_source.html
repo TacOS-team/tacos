@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/include/events.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,13 +90,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="events_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _EVENTS_H_</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _EVENTS_H_</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général.">clock.h</a>&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define _EVENTS_H_</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="clock_8h.html">clock.h</a>&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">void</span> *(*callback_t) (<span class="keywordtype">void</span> *);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="structevent__t.html">   39</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structevent__t.html" title="structure stockant un évènement à declencher">event_t</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structevent__t.html">   39</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structevent__t.html">event_t</a></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordtype">int</span> id;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keyword">struct </span><a class="code" href="structtimeval.html">timeval</a> date;</div>
@@ -103,24 +104,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordtype">void</span> *data;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">void</span> <a class="code" href="events_8c.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements">events_init</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">void</span> <a class="code" href="events_8h.html#a3347d12312a3574eb868e1122639d046">events_init</a>();</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">void</span> <a class="code" href="events_8c.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur">set_scheduler_event</a>(callback_t call, <span class="keywordtype">void</span> *data, time_t dtime_usec);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">void</span> <a class="code" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044">set_scheduler_event</a>(callback_t call, <span class="keywordtype">void</span> *data, time_t dtime_usec);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="events_8c.html#a14ec7f9617d6a0f57891ce9926dca445">unset_scheduler_event</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="events_8h.html#a14ec7f9617d6a0f57891ce9926dca445">unset_scheduler_event</a>();</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">int</span> <a class="code" href="events_8c.html#a82d6763c7ce9298afe7e0d97553e568f" title="ajoute un évènement à declencher">add_event</a>(callback_t call, <span class="keywordtype">void</span>* data, clock_t time);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">int</span> <a class="code" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa">add_event</a>(callback_t call, <span class="keywordtype">void</span>* data, clock_t time);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">int</span> <a class="code" href="events_8c.html#a066fd6048f5a6f5a6d4b93abea00013d">del_event</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">int</span> <a class="code" href="events_8h.html#a066fd6048f5a6f5a6d4b93abea00013d">del_event</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="ttc" id="events_8h_html_a6184a9efd8a6c7dff128ece08e87e044"><div class="ttname"><a href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044">set_scheduler_event</a></div><div class="ttdeci">void set_scheduler_event(callback_t call, void *data, time_t dtime_usec)</div><div class="ttdoc">met à jour l&#39;évènement de l&#39;ordonnanceur </div><div class="ttdef"><b>Definition:</b> events.c:88</div></div>
+<div class="ttc" id="events_8h_html_ac4029f71d470b358efa7d186ddd80aaa"><div class="ttname"><a href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa">add_event</a></div><div class="ttdeci">int add_event(callback_t call, void *data, clock_t time)</div><div class="ttdoc">ajoute un évènement à declencher </div><div class="ttdef"><b>Definition:</b> events.c:100</div></div>
+<div class="ttc" id="clock_8h_html"><div class="ttname"><a href="clock_8h.html">clock.h</a></div><div class="ttdoc">Gestion de l&#39;horloge et du temps en général. </div></div>
+<div class="ttc" id="events_8h_html_a14ec7f9617d6a0f57891ce9926dca445"><div class="ttname"><a href="events_8h.html#a14ec7f9617d6a0f57891ce9926dca445">unset_scheduler_event</a></div><div class="ttdeci">void unset_scheduler_event()</div><div class="ttdef"><b>Definition:</b> events.c:96</div></div>
+<div class="ttc" id="structtimeval_html"><div class="ttname"><a href="structtimeval.html">timeval</a></div><div class="ttdef"><b>Definition:</b> clock.h:41</div></div>
+<div class="ttc" id="events_8h_html_a3347d12312a3574eb868e1122639d046"><div class="ttname"><a href="events_8h.html#a3347d12312a3574eb868e1122639d046">events_init</a></div><div class="ttdeci">void events_init()</div><div class="ttdoc">initialise le support des evenements </div><div class="ttdef"><b>Definition:</b> events.c:73</div></div>
+<div class="ttc" id="events_8h_html_a066fd6048f5a6f5a6d4b93abea00013d"><div class="ttname"><a href="events_8h.html#a066fd6048f5a6f5a6d4b93abea00013d">del_event</a></div><div class="ttdeci">int del_event(int id)</div><div class="ttdef"><b>Definition:</b> events.c:125</div></div>
+<div class="ttc" id="structevent__t_html"><div class="ttname"><a href="structevent__t.html">event_t</a></div><div class="ttdoc">structure stockant un évènement à declencher </div><div class="ttdef"><b>Definition:</b> events.h:39</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

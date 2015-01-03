@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/drivers/char/tty/keyboard.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -86,7 +87,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   <div class="summary">
 <a href="#nested-classes">Structures de données</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Fonctions</a>  </div>
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Référence du fichier keyboard.c</div>  </div>
 </div><!--header-->
@@ -94,72 +96,246 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Driver clavier.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;types.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="ioports_8h_source.html">ioports.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="keyboard_8h_source.html">drivers/keyboard.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="console_8h_source.html">drivers/console.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;types.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="ioports_8h_source.html">ioports.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="keyboard_8h_source.html">drivers/keyboard.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="console_8h_source.html">drivers/console.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de keyboard.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="keyboard_8c__incl.png" border="0" usemap="#kernel_2drivers_2char_2tty_2keyboard_8c" alt=""/></div>
 <map name="kernel_2drivers_2char_2tty_2keyboard_8c" id="kernel_2drivers_2char_2tty_2keyboard_8c">
-<area shape="rect" id="node5" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="22,99,91,127"/><area shape="rect" id="node7" href="keyboard_8h.html" title="drivers/keyboard.h" alt="" coords="115,99,240,127"/><area shape="rect" id="node9" href="console_8h.html" title="Console virtuelle (Fn)" alt="" coords="264,99,384,127"/><area shape="rect" id="node12" href="tty_8h.html" title="Terminal posix&#45;like." alt="" coords="302,177,347,205"/><area shape="rect" id="node14" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="307,331,368,359"/><area shape="rect" id="node16" href="termios__types_8h.html" title="termios_types.h" alt="" coords="268,254,380,282"/><area shape="rect" id="node18" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="404,254,484,282"/></map>
+<area shape="rect" id="node3" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="24,95,94,121"/><area shape="rect" id="node4" href="keyboard_8h.html" title="drivers/keyboard.h" alt="" coords="118,95,245,121"/><area shape="rect" id="node5" href="console_8h.html" title="Console virtuelle (Fn) " alt="" coords="270,95,390,121"/><area shape="rect" id="node10" href="klog_8h.html" title="Logging macros. " alt="" coords="414,95,470,121"/><area shape="rect" id="node6" href="tty_8h.html" title="Terminal posix&#45;like. " alt="" coords="306,169,353,196"/><area shape="rect" id="node7" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="312,319,374,345"/><area shape="rect" id="node8" href="termios__types_8h.html" title="termios_types.h" alt="" coords="273,244,386,271"/><area shape="rect" id="node9" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts. " alt="" coords="410,244,492,271"/><area shape="rect" id="node11" href="kstdio_8h.html" title="kprintf " alt="" coords="408,169,475,196"/></map>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structletter.html">letter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure permettant la conversion d'un scancode vers une lettre ASCII. TODO: On devrait passer par une étape de keycode.  <a href="structletter.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsymbole.html">symbole</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:abf733d62dcb751685e3210c34fe513a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#abf733d62dcb751685e3210c34fe513a9">KEY_RELEASE</a>&#160;&#160;&#160;0x80</td></tr>
+<tr class="separator:abf733d62dcb751685e3210c34fe513a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d4a986e607033bfc29af8cd64fac10e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a3d4a986e607033bfc29af8cd64fac10e">KEYBOARD_ERROR_MODE_2</a>&#160;&#160;&#160;0x00</td></tr>
+<tr class="separator:a3d4a986e607033bfc29af8cd64fac10e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9e455bca51c4c348c41fd25b43f8d36"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ab9e455bca51c4c348c41fd25b43f8d36">KEYBOARD_BAT_OK</a>&#160;&#160;&#160;0xAA</td></tr>
+<tr class="separator:ab9e455bca51c4c348c41fd25b43f8d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a591a53aabe6ff5ad73d714b9fa84dd61"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a591a53aabe6ff5ad73d714b9fa84dd61">KEYBOARD_ECHO_RES</a>&#160;&#160;&#160;0xEE</td></tr>
+<tr class="separator:a591a53aabe6ff5ad73d714b9fa84dd61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c3c8f01e96a5def954ce91f9e198602"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a0c3c8f01e96a5def954ce91f9e198602">KEYBOARD_UNKNOWN</a>&#160;&#160;&#160;0xF1</td></tr>
+<tr class="separator:a0c3c8f01e96a5def954ce91f9e198602"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78b9cc2c6b6852cf6d70397f347f6087"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a78b9cc2c6b6852cf6d70397f347f6087">KEYBOARD_BAT_KO</a>&#160;&#160;&#160;0xFC</td></tr>
+<tr class="separator:a78b9cc2c6b6852cf6d70397f347f6087"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a970038aa0ef60de1aac31b61cdc4ce23"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a970038aa0ef60de1aac31b61cdc4ce23">KEYBOARD_FAILURE</a>&#160;&#160;&#160;0xFD</td></tr>
+<tr class="separator:a970038aa0ef60de1aac31b61cdc4ce23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78bccde615c6200a835e5af95cfc3d93"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a78bccde615c6200a835e5af95cfc3d93">KEYBOARD_ERROR_MODE_1</a>&#160;&#160;&#160;0xFF</td></tr>
+<tr class="separator:a78bccde615c6200a835e5af95cfc3d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76724347f77910592dedb79be93b5c59"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a76724347f77910592dedb79be93b5c59">KEYBOARD_EXPAND</a>&#160;&#160;&#160;0xE0</td></tr>
+<tr class="separator:a76724347f77910592dedb79be93b5c59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c36913f02e82864a374d734521446a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a7c36913f02e82864a374d734521446a1">KEYBOARD_PAUSE</a>&#160;&#160;&#160;0xE1</td></tr>
+<tr class="separator:a7c36913f02e82864a374d734521446a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c8ee53908fc5d6df19f1da8502b38dc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a6c8ee53908fc5d6df19f1da8502b38dc">KEY_ESCAPE</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="separator:a6c8ee53908fc5d6df19f1da8502b38dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f25a8926d9c3ce4b4a0824234e8ffd4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a5f25a8926d9c3ce4b4a0824234e8ffd4">KEY_ALT</a>&#160;&#160;&#160;0x38</td></tr>
+<tr class="separator:a5f25a8926d9c3ce4b4a0824234e8ffd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8b9735c4a7fd10317aaab6dcbe91e51"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ae8b9735c4a7fd10317aaab6dcbe91e51">KEY_LSHIFT</a>&#160;&#160;&#160;0x2A</td></tr>
+<tr class="separator:ae8b9735c4a7fd10317aaab6dcbe91e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b52e8d492e96e2b4c21a94f50a689c5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a5b52e8d492e96e2b4c21a94f50a689c5">KEY_RSHIFT</a>&#160;&#160;&#160;0x36</td></tr>
+<tr class="separator:a5b52e8d492e96e2b4c21a94f50a689c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5286700e5cf8acb2707c1c08968c6c25"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a5286700e5cf8acb2707c1c08968c6c25">KEY_LCTRL</a>&#160;&#160;&#160;0x1D</td></tr>
+<tr class="separator:a5286700e5cf8acb2707c1c08968c6c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af168e54444bdaff5f50f6f4734784762"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#af168e54444bdaff5f50f6f4734784762">KEY_CAPSLOCK</a>&#160;&#160;&#160;0x3A</td></tr>
+<tr class="separator:af168e54444bdaff5f50f6f4734784762"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9a01a8ed5fb358424866f4bc61d7c13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#aa9a01a8ed5fb358424866f4bc61d7c13">KEY_NUMLOCK</a>&#160;&#160;&#160;0x45</td></tr>
+<tr class="separator:aa9a01a8ed5fb358424866f4bc61d7c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe5716cf1626fceab51044a6c2492831"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#afe5716cf1626fceab51044a6c2492831">KEY_RETURN</a>&#160;&#160;&#160;0x1C</td></tr>
+<tr class="separator:afe5716cf1626fceab51044a6c2492831"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a5ff83d21dfa704c1c3eff56d5b3a4b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a8a5ff83d21dfa704c1c3eff56d5b3a4b">KEY_SPACE</a>&#160;&#160;&#160;0x39</td></tr>
+<tr class="separator:a8a5ff83d21dfa704c1c3eff56d5b3a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2772a1f7024ba1fd62e88ec1adb541f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a2772a1f7024ba1fd62e88ec1adb541f8">KEY_F1</a>&#160;&#160;&#160;0x3b</td></tr>
+<tr class="separator:a2772a1f7024ba1fd62e88ec1adb541f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2e2edb31bb7796786da12f85f2d5cd1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ae2e2edb31bb7796786da12f85f2d5cd1">KEY_F2</a>&#160;&#160;&#160;0x3c</td></tr>
+<tr class="separator:ae2e2edb31bb7796786da12f85f2d5cd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38ebe8e5c5f1d5727c9638bf79fc3952"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a38ebe8e5c5f1d5727c9638bf79fc3952">KEY_F3</a>&#160;&#160;&#160;0x3d</td></tr>
+<tr class="separator:a38ebe8e5c5f1d5727c9638bf79fc3952"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab99474b01ffcbc57d74b60a77895e5e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ab99474b01ffcbc57d74b60a77895e5e8">KEY_F4</a>&#160;&#160;&#160;0x3e</td></tr>
+<tr class="separator:ab99474b01ffcbc57d74b60a77895e5e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a0aae1931111382ade29fd75ef64790"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a2a0aae1931111382ade29fd75ef64790">KEY_F5</a>&#160;&#160;&#160;0x3f</td></tr>
+<tr class="separator:a2a0aae1931111382ade29fd75ef64790"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad31281b771b8b85f4aa98bbd527d91a0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ad31281b771b8b85f4aa98bbd527d91a0">KEY_F6</a>&#160;&#160;&#160;0x40</td></tr>
+<tr class="separator:ad31281b771b8b85f4aa98bbd527d91a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7eed6766ef9ddb721c6a2bce807fc9dc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a7eed6766ef9ddb721c6a2bce807fc9dc">KEY_F7</a>&#160;&#160;&#160;0x41</td></tr>
+<tr class="separator:a7eed6766ef9ddb721c6a2bce807fc9dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a8ad03f07f2e4757a70385e88fbbe3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a7a8ad03f07f2e4757a70385e88fbbe3c">KEY_F8</a>&#160;&#160;&#160;0x42</td></tr>
+<tr class="separator:a7a8ad03f07f2e4757a70385e88fbbe3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a417a382624f91fb0cdfdf1c33adc8c90"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a417a382624f91fb0cdfdf1c33adc8c90">KEY_F9</a>&#160;&#160;&#160;0x43</td></tr>
+<tr class="separator:a417a382624f91fb0cdfdf1c33adc8c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad37282615edb2c357149c2a1342b4a85"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ad37282615edb2c357149c2a1342b4a85">KEY_F10</a>&#160;&#160;&#160;0x44</td></tr>
+<tr class="separator:ad37282615edb2c357149c2a1342b4a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd820bb8b4b2a47e4210401b13789106"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#abd820bb8b4b2a47e4210401b13789106">KEY_F11</a>&#160;&#160;&#160;0x57</td></tr>
+<tr class="separator:abd820bb8b4b2a47e4210401b13789106"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a3de83275f6bbc2b88692f947f0d595"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a0a3de83275f6bbc2b88692f947f0d595">KEY_F12</a>&#160;&#160;&#160;0x58</td></tr>
+<tr class="separator:a0a3de83275f6bbc2b88692f947f0d595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0136ce50a394c7f0ac7ef51f84ce7321"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a0136ce50a394c7f0ac7ef51f84ce7321">TAB_KEY</a>&#160;&#160;&#160;&quot;\x09&quot;</td></tr>
+<tr class="separator:a0136ce50a394c7f0ac7ef51f84ce7321"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afba17fd121bcd7abc852f1ae1f3abb58"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#afba17fd121bcd7abc852f1ae1f3abb58">ENTER_KEY</a>&#160;&#160;&#160;&quot;\x0d&quot;</td></tr>
+<tr class="separator:afba17fd121bcd7abc852f1ae1f3abb58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b4f59fc9220530978f12905fe51b1d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a9b4f59fc9220530978f12905fe51b1d0">ESC_KEY</a>&#160;&#160;&#160;&quot;\x1b&quot;</td></tr>
+<tr class="separator:a9b4f59fc9220530978f12905fe51b1d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dc78921d4bcad31c9ac9c48d9254f74"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a4dc78921d4bcad31c9ac9c48d9254f74">BS_KEY</a>&#160;&#160;&#160;&quot;\x7f&quot;</td></tr>
+<tr class="separator:a4dc78921d4bcad31c9ac9c48d9254f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cd87a710fd069baf487e7b44d01e1b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a3cd87a710fd069baf487e7b44d01e1b9">LEFT_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x44&quot;</td></tr>
+<tr class="separator:a3cd87a710fd069baf487e7b44d01e1b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cc261de4fdcbf43464428947a52ce32"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a1cc261de4fdcbf43464428947a52ce32">RIGHT_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x43&quot;</td></tr>
+<tr class="separator:a1cc261de4fdcbf43464428947a52ce32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c34fc6f48366ae6334736730fd9b0e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a1c34fc6f48366ae6334736730fd9b0e7">UP_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x41&quot;</td></tr>
+<tr class="separator:a1c34fc6f48366ae6334736730fd9b0e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a687b69f632086f6e1a03279964257c24"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a687b69f632086f6e1a03279964257c24">DOWN_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x42&quot;</td></tr>
+<tr class="separator:a687b69f632086f6e1a03279964257c24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a546042e025fd8bf5365be7ab1069c054"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a546042e025fd8bf5365be7ab1069c054">HOME_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x31\x7e&quot;</td></tr>
+<tr class="separator:a546042e025fd8bf5365be7ab1069c054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48891a70925e78c2384c0c868b93a6cd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a48891a70925e78c2384c0c868b93a6cd">INSERT_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x31\x7e&quot;</td></tr>
+<tr class="separator:a48891a70925e78c2384c0c868b93a6cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3df5f1b9e975540d1b385be6691e2f5c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a3df5f1b9e975540d1b385be6691e2f5c">DEL_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x33\x7e&quot;</td></tr>
+<tr class="separator:a3df5f1b9e975540d1b385be6691e2f5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e3c0fe0009594127f7acd46b7e87e71"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a5e3c0fe0009594127f7acd46b7e87e71">END_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x34\x7e&quot;</td></tr>
+<tr class="separator:a5e3c0fe0009594127f7acd46b7e87e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0af63b409c570a94ca8834f81fc10587"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a0af63b409c570a94ca8834f81fc10587">PGUP_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x35\x7e&quot;</td></tr>
+<tr class="separator:a0af63b409c570a94ca8834f81fc10587"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4c735965485f50ac6b61dd32726751f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ab4c735965485f50ac6b61dd32726751f">PGDOWN_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x36\x7e&quot;</td></tr>
+<tr class="separator:ab4c735965485f50ac6b61dd32726751f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
+<tr class="memitem:a189a45647e39c26e7668c0c4fdd2885e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a189a45647e39c26e7668c0c4fdd2885e">selectLayout</a> (int use_azerty)</td></tr>
+<tr class="separator:a189a45647e39c26e7668c0c4fdd2885e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac7ec49aa0203d9bd2dd5c4bcba7cb61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61">keyboardInterrupt</a> (int id)</td></tr>
+<tr class="separator:aac7ec49aa0203d9bd2dd5c4bcba7cb61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a9466fe26648d1e3b23c90415ee3622c8"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structsymbole.html">symbole</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a9466fe26648d1e3b23c90415ee3622c8">qwerty_keymap</a> []</td></tr>
+<tr class="separator:a9466fe26648d1e3b23c90415ee3622c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a365c795e67b8150aaf3e878076153424"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structsymbole.html">symbole</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a365c795e67b8150aaf3e878076153424">azerty_keymap</a> []</td></tr>
+<tr class="separator:a365c795e67b8150aaf3e878076153424"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
-<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>Copyright (C) 2010-2014 TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des macros</h2>
+</div><h2 class="groupheader">Documentation des macros</h2>
+<a class="anchor" id="a4dc78921d4bcad31c9ac9c48d9254f74"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BS_KEY&#160;&#160;&#160;&quot;\x7f&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for backspace key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3df5f1b9e975540d1b385be6691e2f5c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEL_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x33\x7e&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for delete key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a687b69f632086f6e1a03279964257c24"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DOWN_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x42&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for down key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5e3c0fe0009594127f7acd46b7e87e71"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define END_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x34\x7e&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for end key. </p>
+
+</div>
+</div>
+<a class="anchor" id="afba17fd121bcd7abc852f1ae1f3abb58"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENTER_KEY&#160;&#160;&#160;&quot;\x0d&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for enter key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9b4f59fc9220530978f12905fe51b1d0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ESC_KEY&#160;&#160;&#160;&quot;\x1b&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for escape key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a546042e025fd8bf5365be7ab1069c054"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HOME_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x31\x7e&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for home key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a48891a70925e78c2384c0c868b93a6cd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INSERT_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x31\x7e&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for insert key. </p>
+
+</div>
+</div>
 <a class="anchor" id="a5f25a8926d9c3ce4b4a0824234e8ffd4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -563,7 +739,85 @@ DESCRIPTION</h1>
 
 </div>
 </div>
-<h2>Documentation des fonctions</h2>
+<a class="anchor" id="a3cd87a710fd069baf487e7b44d01e1b9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LEFT_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x44&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for left key. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab4c735965485f50ac6b61dd32726751f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PGDOWN_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x36\x7e&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for page down key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0af63b409c570a94ca8834f81fc10587"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PGUP_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x35\x7e&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for page up key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1cc261de4fdcbf43464428947a52ce32"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RIGHT_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x43&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for right key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0136ce50a394c7f0ac7ef51f84ce7321"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TAB_KEY&#160;&#160;&#160;&quot;\x09&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for tab key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1c34fc6f48366ae6334736730fd9b0e7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define UP_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x41&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for up key. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="aac7ec49aa0203d9bd2dd5c4bcba7cb61"></a>
 <div class="memitem">
 <div class="memproto">
@@ -590,18 +844,62 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="keyboard_8c_aac7ec49aa0203d9bd2dd5c4bcba7cb61_cgraph.png" border="0" usemap="#keyboard_8c_aac7ec49aa0203d9bd2dd5c4bcba7cb61_cgraph" alt=""/></div>
 <map name="keyboard_8c_aac7ec49aa0203d9bd2dd5c4bcba7cb61_cgraph" id="keyboard_8c_aac7ec49aa0203d9bd2dd5c4bcba7cb61_cgraph">
-<area shape="rect" id="node3" href="console_8c.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan." alt="" coords="176,55,283,83"/><area shape="rect" id="node5" href="video_8c.html#ab549780053994f6b1dba04869b562a43" title="Change la page à afficher à l&#39;écran." alt="" coords="359,5,452,33"/><area shape="rect" id="node7" href="video_8c.html#a61e8f22681edb740e2d057ac270e6f5b" title="Désactive l&#39;affichage du curseur." alt="" coords="352,55,459,83"/><area shape="rect" id="node9" href="video_8c.html#ab1ddd4e6afaac2e5d7ed1d7575e8186b" title="Change la position du curseur." alt="" coords="332,106,479,134"/></map>
+<area shape="rect" id="node2" href="console_8c.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan. " alt="" coords="176,56,283,83"/><area shape="rect" id="node3" href="video_8c.html#ab549780053994f6b1dba04869b562a43" title="Change la page à afficher à l&#39;écran. " alt="" coords="357,5,452,32"/><area shape="rect" id="node4" href="video_8c.html#a61e8f22681edb740e2d057ac270e6f5b" title="Désactive l&#39;affichage du curseur. " alt="" coords="351,56,458,83"/><area shape="rect" id="node5" href="video_8c.html#ab1ddd4e6afaac2e5d7ed1d7575e8186b" title="Change la position du curseur. " alt="" coords="331,107,479,133"/></map>
 </div>
 </p>
+
+</div>
+</div>
+<a class="anchor" id="a189a45647e39c26e7668c0c4fdd2885e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void selectLayout </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>use_azerty</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Choix du layout clavier. Pour le moment juste entre azerty et qwerty. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a class="anchor" id="a365c795e67b8150aaf3e878076153424"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structsymbole.html">symbole</a> azerty_keymap[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Keymap azerty: keycode vers chaine ANSI. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9466fe26648d1e3b23c90415ee3622c8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structsymbole.html">symbole</a> qwerty_keymap[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Keymap qwerty: keycode vers chaine ANSI. </p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:34 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

@@ -1,19 +1,19 @@
 <map id="kernel/ksignal.c" name="kernel/ksignal.c">
 <area shape="rect" id="node3" href="$gdt_8h.html" title="gdt.h" alt="" coords="5,161,56,189"/>
-<area shape="rect" id="node7" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="137,161,223,189"/>
-<area shape="rect" id="node10" href="$klog_8h.html" title="Logging macros." alt="" coords="731,83,787,111"/>
-<area shape="rect" id="node12" href="$kstdio_8h.html" title="kprintf" alt="" coords="929,161,996,189"/>
-<area shape="rect" id="node14" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="416,161,501,189"/>
-<area shape="rect" id="node35" href="$ksignal_8h.html" title="ksignal.h" alt="" coords="533,83,605,111"/>
-<area shape="rect" id="node42" href="$pagination_8h.html" title="pagination.h" alt="" coords="815,161,905,189"/>
-<area shape="rect" id="node45" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="371,83,459,111"/>
-<area shape="rect" id="node49" href="$syscall__values_8h.html" title="syscall_values.h" alt="" coords="811,83,928,111"/>
-<area shape="rect" id="node5" href="$types_8h.html" title="types.h" alt="" coords="381,315,443,343"/>
+<area shape="rect" id="node7" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="100,161,185,189"/>
+<area shape="rect" id="node10" href="$klog_8h.html" title="Logging macros." alt="" coords="727,83,783,111"/>
+<area shape="rect" id="node12" href="$kstdio_8h.html" title="kprintf" alt="" coords="921,161,988,189"/>
+<area shape="rect" id="node14" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="415,161,497,189"/>
+<area shape="rect" id="node35" href="$ksignal_8h.html" title="ksignal.h" alt="" coords="529,83,601,111"/>
+<area shape="rect" id="node42" href="$pagination_8h.html" title="pagination.h" alt="" coords="807,161,897,189"/>
+<area shape="rect" id="node45" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="369,83,455,111"/>
+<area shape="rect" id="node49" href="$syscall__values_8h.html" title="syscall_values.h" alt="" coords="807,83,919,111"/>
+<area shape="rect" id="node5" href="$types_8h.html" title="types.h" alt="" coords="379,315,440,343"/>
 <area shape="rect" id="node16" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="81,238,159,266"/>
-<area shape="rect" id="node19" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="372,238,452,266"/>
-<area shape="rect" id="node22" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="668,238,772,266"/>
-<area shape="rect" id="node24" href="$process__types_8h.html" title="process_types.h" alt="" coords="183,238,297,266"/>
-<area shape="rect" id="node26" href="$symtable_8h.html" title="symtable.h" alt="" coords="561,238,644,266"/>
-<area shape="rect" id="node32" href="$vmm_8h.html" title="vmm.h" alt="" coords="476,238,537,266"/>
-<area shape="rect" id="node29" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="580,315,625,343"/>
+<area shape="rect" id="node19" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="369,238,449,266"/>
+<area shape="rect" id="node22" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="663,238,764,266"/>
+<area shape="rect" id="node24" href="$process__types_8h.html" title="process_types.h" alt="" coords="183,238,295,266"/>
+<area shape="rect" id="node26" href="$symtable_8h.html" title="symtable.h" alt="" coords="556,238,639,266"/>
+<area shape="rect" id="node32" href="$vmm_8h.html" title="vmm.h" alt="" coords="473,238,532,266"/>
+<area shape="rect" id="node29" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="575,315,620,343"/>
 </map>

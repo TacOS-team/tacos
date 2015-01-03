@@ -5,5 +5,6 @@ var searchData=
   ['name_5flen',['name_len',['../structext2__directory.html#ab2ab4e90da260d09d51d74abdaabb095',1,'ext2_directory']]],
   ['nb_5felements',['nb_elements',['../structheap__t.html#a3e3c1dd26d87564ee5beb5e2835bb445',1,'heap_t::nb_elements()'],['../structlist__t.html#a21f815dfb80c00df4cc95304bc29161f',1,'list_t::nb_elements()']]],
   ['next',['next',['../structdirectories__t.html#a5c41ffb210dce35d7cc655777a354c92',1,'directories_t::next()'],['../struct__directory__entry.html#a75001bda0d1d80e4ff5350ad69f83030',1,'_directory_entry::next()'],['../structhashmap__cell__t.html#afea1a8c217d80c95efa5b4a89ea07bf2',1,'hashmap_cell_t::next()'],['../struct__proclist__cell.html#a76062c3c8bce7b458ed610e7568c0858',1,'_proclist_cell::next()'],['../structphysical__page__descr.html#ab5fc54ca3d91062fbadb940f9c0a5495',1,'physical_page_descr::next()'],['../struct__mounted__fs__t.html#af0751160c22589b18daa3ed6e775aeb8',1,'_mounted_fs_t::next()'],['../struct__available__fs__t.html#a1f870d42e7b92140da5442e9b677c7a0',1,'_available_fs_t::next()']]],
+  ['normal',['normal',['../structsymbole.html#a325f3bf3c7b29dbc931ec1a61df19bea',1,'symbole']]],
   ['num',['num',['../struct__tty__driver__t.html#a0f0243090bc705d41b3a6cc28c886cdf',1,'_tty_driver_t']]]
 ];

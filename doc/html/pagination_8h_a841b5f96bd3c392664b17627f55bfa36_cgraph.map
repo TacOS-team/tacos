@@ -1,8 +1,8 @@
 <map id="pagination_setup" name="pagination_setup">
-<area shape="rect" id="node3" href="$memory_8h.html#a5973498654f77e506df68cfb1322d0e5" title="Donne une copie du pointeur du premier descripteur de cadre de page utilisés." alt="" coords="175,5,364,33"/>
-<area shape="rect" id="node5" href="$memory_8h.html#aeed93f8c282af6d9d4428813e331f583" title="Réserve un cadre de page." alt="" coords="193,55,345,99"/>
-<area shape="rect" id="node7" href="$pagination_8h.html#a9081608a88f7fb6a6779806c5b1d5b9d" title="Initialise un repertoire de page." alt="" coords="200,122,339,166"/>
-<area shape="rect" id="node9" href="$memory_8h.html#a3b842dcc01f272fb96c6fbce35a81e99" title="Retourne vrai s&#39;il y a encore un cadre de page qui suit." alt="" coords="188,189,351,217"/>
-<area shape="rect" id="node11" href="$memory_8h.html#a1de41321b1a8a9c6c12efd1a5ed998fa" title="Retourne le prochain cadre de page." alt="" coords="203,239,336,267"/>
-<area shape="rect" id="node13" href="$pagination_8c.html#a5381525d35f097fd34920549cc98cf68" title="Mappe une adresse en identity mapping." alt="" coords="205,290,333,334"/>
+<area shape="rect" id="node2" href="$memory_8h.html#a5973498654f77e506df68cfb1322d0e5" title="Donne une copie du pointeur du premier descripteur de cadre de page utilisés. " alt="" coords="173,5,364,32"/>
+<area shape="rect" id="node3" href="$memory_8h.html#aeed93f8c282af6d9d4428813e331f583" title="Réserve un cadre de page. " alt="" coords="192,57,345,98"/>
+<area shape="rect" id="node4" href="$pagination_8c.html#a9081608a88f7fb6a6779806c5b1d5b9d" title="Initialise un repertoire de page. " alt="" coords="199,122,339,163"/>
+<area shape="rect" id="node5" href="$memory_8h.html#a3b842dcc01f272fb96c6fbce35a81e99" title="Retourne vrai s&#39;il y a encore un cadre de page qui suit. " alt="" coords="187,188,350,215"/>
+<area shape="rect" id="node6" href="$memory_8h.html#a1de41321b1a8a9c6c12efd1a5ed998fa" title="Retourne le prochain cadre de page. " alt="" coords="201,239,336,265"/>
+<area shape="rect" id="node7" href="$pagination_8c.html#a5381525d35f097fd34920549cc98cf68" title="Mappe une adresse en identity mapping. " alt="" coords="204,290,333,331"/>
 </map>

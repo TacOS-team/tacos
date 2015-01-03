@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/idt.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -91,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier idt.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="idt_8h_source.html">idt.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="idt_8h_source.html">idt.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de idt.c:</div>
 <div class="dyncontent">
@@ -100,40 +101,47 @@ Graphe des dépendances par inclusion de idt.c:</div>
 <area shape="rect" id="node3" href="idt_8h.html" title="Initialisation de la table des descripteurs d&#39;interruption (et exceptions) et association aux handler..." alt="" coords="25,83,71,111"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="17,161,79,189"/></map>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Structures de données</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__idt__entry.html">x86_idt_entry</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entrée de l'IDT.  <a href="structx86__idt__entry.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entrée de l'IDT.  <a href="structx86__idt__entry.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__idt__register.html">x86_idt_register</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a70b91088ce41c3e827fddcca477b407c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a70b91088ce41c3e827fddcca477b407c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IDT_ENTRIES_NUM</b>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:a70b91088ce41c3e827fddcca477b407c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a559dc3a4f73d1813f12a104840e68550"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8c.html#a559dc3a4f73d1813f12a104840e68550">idt_setup</a> ()</td></tr>
-<tr class="memdesc:a559dc3a4f73d1813f12a104840e68550"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation de l'IDT.  <a href="#a559dc3a4f73d1813f12a104840e68550"></a><br/></td></tr>
+<tr class="memdesc:a559dc3a4f73d1813f12a104840e68550"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation de l'IDT.  <a href="#a559dc3a4f73d1813f12a104840e68550">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a559dc3a4f73d1813f12a104840e68550"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49a66783b420e15221ba67a340267b8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8c.html#a49a66783b420e15221ba67a340267b8d">idt_disable_handler</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> index)</td></tr>
-<tr class="memdesc:a49a66783b420e15221ba67a340267b8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Désactive une interruption.  <a href="#a49a66783b420e15221ba67a340267b8d"></a><br/></td></tr>
+<tr class="memdesc:a49a66783b420e15221ba67a340267b8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Désactive une interruption.  <a href="#a49a66783b420e15221ba67a340267b8d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a49a66783b420e15221ba67a340267b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a042510d9d3af14a9dac9a6c46f27c403"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403">idt_set_handler</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> index, <a class="el" href="kernel_2include_2types_8h.html#a9f047c1f0917f6184a7a013d4b4277a6">paddr_t</a> handler_address, <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> priority)</td></tr>
-<tr class="memdesc:a042510d9d3af14a9dac9a6c46f27c403"><td class="mdescLeft">&#160;</td><td class="mdescRight">Associe un handler à une interruption/exception.  <a href="#a042510d9d3af14a9dac9a6c46f27c403"></a><br/></td></tr>
+<tr class="memdesc:a042510d9d3af14a9dac9a6c46f27c403"><td class="mdescLeft">&#160;</td><td class="mdescRight">Associe un handler à une interruption/exception.  <a href="#a042510d9d3af14a9dac9a6c46f27c403">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a042510d9d3af14a9dac9a6c46f27c403"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affa07557443fe1c9a508b346d8f06523"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idt_8c.html#affa07557443fe1c9a508b346d8f06523">idt_set_handler_type</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> index, <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> trap_type)</td></tr>
-<tr class="memdesc:affa07557443fe1c9a508b346d8f06523"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change le type d'une interruption (interrupt gate, trap gate, task gate).  <a href="#affa07557443fe1c9a508b346d8f06523"></a><br/></td></tr>
+<tr class="memdesc:affa07557443fe1c9a508b346d8f06523"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change le type d'une interruption (interrupt gate, trap gate, task gate).  <a href="#affa07557443fe1c9a508b346d8f06523">Plus de détails...</a><br /></td></tr>
+<tr class="separator:affa07557443fe1c9a508b346d8f06523"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
-<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>Copyright (C) 2010-2014 TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 <p>Description de ce que fait le fichier </p>
-</div><h2>Documentation des fonctions</h2>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a49a66783b420e15221ba67a340267b8d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -159,7 +167,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="idt_8c_a49a66783b420e15221ba67a340267b8d_cgraph.png" border="0" usemap="#idt_8c_a49a66783b420e15221ba67a340267b8d_cgraph" alt=""/></div>
 <map name="idt_8c_a49a66783b420e15221ba67a340267b8d_cgraph" id="idt_8c_a49a66783b420e15221ba67a340267b8d_cgraph">
-<area shape="rect" id="node3" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="188,5,297,33"/></map>
+<area shape="rect" id="node2" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception. " alt="" coords="187,5,297,32"/></map>
 </div>
 </p>
 
@@ -168,7 +176,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="idt_8c_a49a66783b420e15221ba67a340267b8d_icgraph.png" border="0" usemap="#idt_8c_a49a66783b420e15221ba67a340267b8d_icgraph" alt=""/></div>
 <map name="idt_8c_a49a66783b420e15221ba67a340267b8d_icgraph" id="idt_8c_a49a66783b420e15221ba67a340267b8d_icgraph">
-<area shape="rect" id="node3" href="exception_8h.html#a845efe084f5994d748fd7c30403ac879" title="exception_disable" alt="" coords="187,5,312,33"/><area shape="rect" id="node5" href="idt_8h.html#a559dc3a4f73d1813f12a104840e68550" title="Initialisation de l&#39;IDT." alt="" coords="212,55,287,83"/><area shape="rect" id="node7" href="interrupts_8c.html#ac3f5203c31fd554b562cba8cec42ceb6" title="Désactive une interruption." alt="" coords="191,106,308,134"/></map>
+<area shape="rect" id="node2" href="exception_8h.html#a845efe084f5994d748fd7c30403ac879" title="exception_disable" alt="" coords="187,5,312,32"/><area shape="rect" id="node3" href="idt_8h.html#a559dc3a4f73d1813f12a104840e68550" title="Initialisation de l&#39;IDT. " alt="" coords="212,56,287,83"/><area shape="rect" id="node4" href="interrupts_8c.html#ac3f5203c31fd554b562cba8cec42ceb6" title="Désactive une interruption. " alt="" coords="191,107,308,133"/></map>
 </div>
 </p>
 
@@ -218,7 +226,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="idt_8c_a042510d9d3af14a9dac9a6c46f27c403_icgraph.png" border="0" usemap="#idt_8c_a042510d9d3af14a9dac9a6c46f27c403_icgraph" alt=""/></div>
 <map name="idt_8c_a042510d9d3af14a9dac9a6c46f27c403_icgraph" id="idt_8c_a042510d9d3af14a9dac9a6c46f27c403_icgraph">
-<area shape="rect" id="node3" href="exception_8h.html#ac5a3d89ca654d3606b6afd836a01e207" title="exception_set_routine" alt="" coords="167,30,313,58"/><area shape="rect" id="node7" href="idt_8h.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption." alt="" coords="173,106,307,134"/><area shape="rect" id="node15" href="interrupts_8c.html#aecc1fa8433fa21ba233b8feb2558e954" title="Ajoute une nouvelle interruption." alt="" coords="171,233,309,261"/><area shape="rect" id="node5" href="kpanic_8c.html#acf070b3d87597bdddd1c1c413ed4adb2" title="kpanic_init" alt="" coords="388,5,471,33"/><area shape="rect" id="node9" href="exception_8h.html#a845efe084f5994d748fd7c30403ac879" title="exception_disable" alt="" coords="367,55,492,83"/><area shape="rect" id="node11" href="idt_8h.html#a559dc3a4f73d1813f12a104840e68550" title="Initialisation de l&#39;IDT." alt="" coords="392,106,467,134"/><area shape="rect" id="node13" href="interrupts_8c.html#ac3f5203c31fd554b562cba8cec42ceb6" title="Désactive une interruption." alt="" coords="371,157,488,185"/><area shape="rect" id="node17" href="floppy__interrupt_8h.html#a19cdddd056dff00ace3567933e4d2b71" title="Initialise l&#39;IRQ floppy." alt="" coords="363,207,496,235"/><area shape="rect" id="node21" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="387,258,472,286"/><area shape="rect" id="node23" href="ksyscall_8c.html#a3e64f9d87cb92e4dc7d748a495e232f1" title="Initialisation des appels systemes." alt="" coords="387,309,472,337"/><area shape="rect" id="node19" href="floppy_8h.html#a4b305e10e95fed92b047adfac6dc4881" title="Initilise le driver floppy." alt="" coords="545,207,623,235"/></map>
+<area shape="rect" id="node2" href="exception_8h.html#ac5a3d89ca654d3606b6afd836a01e207" title="exception_set_routine" alt="" coords="164,31,312,57"/><area shape="rect" id="node4" href="idt_8h.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption. " alt="" coords="171,107,305,133"/><area shape="rect" id="node8" href="interrupts_8c.html#aecc1fa8433fa21ba233b8feb2558e954" title="Ajoute une nouvelle interruption. " alt="" coords="168,233,308,260"/><area shape="rect" id="node3" href="kpanic_8c.html#acf070b3d87597bdddd1c1c413ed4adb2" title="kpanic_init" alt="" coords="385,5,469,32"/><area shape="rect" id="node5" href="exception_8h.html#a845efe084f5994d748fd7c30403ac879" title="exception_disable" alt="" coords="364,56,489,83"/><area shape="rect" id="node6" href="idt_8h.html#a559dc3a4f73d1813f12a104840e68550" title="Initialisation de l&#39;IDT. " alt="" coords="389,107,464,133"/><area shape="rect" id="node7" href="interrupts_8c.html#ac3f5203c31fd554b562cba8cec42ceb6" title="Désactive une interruption. " alt="" coords="368,157,485,184"/><area shape="rect" id="node9" href="floppy__interrupt_8h.html#a19cdddd056dff00ace3567933e4d2b71" title="Initialise l&#39;IRQ floppy. " alt="" coords="360,208,493,235"/><area shape="rect" id="node10" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements " alt="" coords="384,259,469,285"/><area shape="rect" id="node11" href="ksyscall_8c.html#a3e64f9d87cb92e4dc7d748a495e232f1" title="Initialisation des appels systemes. " alt="" coords="383,309,470,336"/></map>
 </div>
 </p>
 
@@ -260,7 +268,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="idt_8c_affa07557443fe1c9a508b346d8f06523_icgraph.png" border="0" usemap="#idt_8c_affa07557443fe1c9a508b346d8f06523_icgraph" alt=""/></div>
 <map name="idt_8c_affa07557443fe1c9a508b346d8f06523_icgraph" id="idt_8c_affa07557443fe1c9a508b346d8f06523_icgraph">
-<area shape="rect" id="node3" href="interrupts_8c.html#a4eea959d9a7be06d7b87a0aad03b490e" title="Change le type d&#39;une interruption en une trapgate." alt="" coords="195,5,357,33"/><area shape="rect" id="node5" href="ksyscall_8c.html#a3e64f9d87cb92e4dc7d748a495e232f1" title="Initialisation des appels systemes." alt="" coords="407,5,492,33"/></map>
+<area shape="rect" id="node2" href="interrupts_8c.html#a4eea959d9a7be06d7b87a0aad03b490e" title="Change le type d&#39;une interruption en une trapgate. " alt="" coords="195,5,357,32"/><area shape="rect" id="node3" href="ksyscall_8c.html#a3e64f9d87cb92e4dc7d748a495e232f1" title="Initialisation des appels systemes. " alt="" coords="405,5,492,32"/></map>
 </div>
 </p>
 
@@ -285,7 +293,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="idt_8c_a559dc3a4f73d1813f12a104840e68550_cgraph.png" border="0" usemap="#idt_8c_a559dc3a4f73d1813f12a104840e68550_cgraph" alt=""/></div>
 <map name="idt_8c_a559dc3a4f73d1813f12a104840e68550_cgraph" id="idt_8c_a559dc3a4f73d1813f12a104840e68550_cgraph">
-<area shape="rect" id="node3" href="idt_8c.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption." alt="" coords="128,5,261,33"/><area shape="rect" id="node5" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="311,5,420,33"/></map>
+<area shape="rect" id="node2" href="idt_8c.html#a49a66783b420e15221ba67a340267b8d" title="Désactive une interruption. " alt="" coords="128,5,261,32"/><area shape="rect" id="node3" href="idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception. " alt="" coords="309,5,420,32"/></map>
 </div>
 </p>
 
@@ -294,9 +302,9 @@ Voici le graphe d'appel pour cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:35 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

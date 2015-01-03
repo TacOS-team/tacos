@@ -86,7 +86,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   <div class="summary">
 <a href="#nested-classes">Structures de données</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Fonctions</a>  </div>
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Référence du fichier keyboard.c</div>  </div>
 </div><!--header-->
@@ -98,18 +99,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <code>#include &lt;<a class="el" href="ioports_8h_source.html">ioports.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="keyboard_8h_source.html">drivers/keyboard.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="console_8h_source.html">drivers/console.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de keyboard.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="keyboard_8c__incl.png" border="0" usemap="#kernel_2drivers_2char_2tty_2keyboard_8c" alt=""/></div>
 <map name="kernel_2drivers_2char_2tty_2keyboard_8c" id="kernel_2drivers_2char_2tty_2keyboard_8c">
-<area shape="rect" id="node3" href="types_8h.html" title="types.h" alt="" coords="175,331,236,359"/><area shape="rect" id="node5" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="22,99,91,127"/><area shape="rect" id="node7" href="keyboard_8h.html" title="drivers/keyboard.h" alt="" coords="115,99,240,127"/><area shape="rect" id="node9" href="console_8h.html" title="Console virtuelle (Fn)" alt="" coords="264,99,384,127"/><area shape="rect" id="node12" href="tty_8h.html" title="Terminal posix&#45;like." alt="" coords="302,177,347,205"/><area shape="rect" id="node15" href="termios__types_8h.html" title="termios_types.h" alt="" coords="268,254,380,282"/><area shape="rect" id="node17" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="404,254,484,282"/></map>
+<area shape="rect" id="node3" href="types_8h.html" title="types.h" alt="" coords="174,331,235,359"/><area shape="rect" id="node5" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="21,99,90,127"/><area shape="rect" id="node7" href="keyboard_8h.html" title="drivers/keyboard.h" alt="" coords="114,99,239,127"/><area shape="rect" id="node9" href="console_8h.html" title="Console virtuelle (Fn)" alt="" coords="263,99,381,127"/><area shape="rect" id="node20" href="klog_8h.html" title="Logging macros." alt="" coords="405,99,461,127"/><area shape="rect" id="node12" href="tty_8h.html" title="Terminal posix&#45;like." alt="" coords="299,177,345,205"/><area shape="rect" id="node15" href="termios__types_8h.html" title="termios_types.h" alt="" coords="267,254,377,282"/><area shape="rect" id="node17" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="401,254,481,282"/><area shape="rect" id="node22" href="kstdio_8h.html" title="kprintf" alt="" coords="399,177,466,205"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structletter.html">letter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure permettant la conversion d'un scancode vers une lettre ASCII. TODO: On devrait passer par une étape de keycode.  <a href="structletter.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsymbole.html">symbole</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
 Macros</h2></td></tr>
@@ -144,22 +145,145 @@ Macros</h2></td></tr>
 <tr class="memitem:ad37282615edb2c357149c2a1342b4a85"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ad37282615edb2c357149c2a1342b4a85">KEY_F10</a>&#160;&#160;&#160;0x44</td></tr>
 <tr class="memitem:abd820bb8b4b2a47e4210401b13789106"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#abd820bb8b4b2a47e4210401b13789106">KEY_F11</a>&#160;&#160;&#160;0x57</td></tr>
 <tr class="memitem:a0a3de83275f6bbc2b88692f947f0d595"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a0a3de83275f6bbc2b88692f947f0d595">KEY_F12</a>&#160;&#160;&#160;0x58</td></tr>
+<tr class="memitem:a0136ce50a394c7f0ac7ef51f84ce7321"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a0136ce50a394c7f0ac7ef51f84ce7321">TAB_KEY</a>&#160;&#160;&#160;&quot;\x09&quot;</td></tr>
+<tr class="memitem:afba17fd121bcd7abc852f1ae1f3abb58"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#afba17fd121bcd7abc852f1ae1f3abb58">ENTER_KEY</a>&#160;&#160;&#160;&quot;\x0d&quot;</td></tr>
+<tr class="memitem:a9b4f59fc9220530978f12905fe51b1d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a9b4f59fc9220530978f12905fe51b1d0">ESC_KEY</a>&#160;&#160;&#160;&quot;\x1b&quot;</td></tr>
+<tr class="memitem:a4dc78921d4bcad31c9ac9c48d9254f74"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a4dc78921d4bcad31c9ac9c48d9254f74">BS_KEY</a>&#160;&#160;&#160;&quot;\x7f&quot;</td></tr>
+<tr class="memitem:a3cd87a710fd069baf487e7b44d01e1b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a3cd87a710fd069baf487e7b44d01e1b9">LEFT_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x44&quot;</td></tr>
+<tr class="memitem:a1cc261de4fdcbf43464428947a52ce32"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a1cc261de4fdcbf43464428947a52ce32">RIGHT_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x43&quot;</td></tr>
+<tr class="memitem:a1c34fc6f48366ae6334736730fd9b0e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a1c34fc6f48366ae6334736730fd9b0e7">UP_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x41&quot;</td></tr>
+<tr class="memitem:a687b69f632086f6e1a03279964257c24"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a687b69f632086f6e1a03279964257c24">DOWN_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x42&quot;</td></tr>
+<tr class="memitem:a546042e025fd8bf5365be7ab1069c054"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a546042e025fd8bf5365be7ab1069c054">HOME_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x31\x7e&quot;</td></tr>
+<tr class="memitem:a48891a70925e78c2384c0c868b93a6cd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a48891a70925e78c2384c0c868b93a6cd">INSERT_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x31\x7e&quot;</td></tr>
+<tr class="memitem:a3df5f1b9e975540d1b385be6691e2f5c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a3df5f1b9e975540d1b385be6691e2f5c">DEL_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x33\x7e&quot;</td></tr>
+<tr class="memitem:a5e3c0fe0009594127f7acd46b7e87e71"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a5e3c0fe0009594127f7acd46b7e87e71">END_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x34\x7e&quot;</td></tr>
+<tr class="memitem:a0af63b409c570a94ca8834f81fc10587"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a0af63b409c570a94ca8834f81fc10587">PGUP_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x35\x7e&quot;</td></tr>
+<tr class="memitem:ab4c735965485f50ac6b61dd32726751f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#ab4c735965485f50ac6b61dd32726751f">PGDOWN_KEY</a>&#160;&#160;&#160;&quot;\x1b\x5b\x36\x7e&quot;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:aac7ec49aa0203d9bd2dd5c4bcba7cb61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61">keyboardInterrupt</a> (int id)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a9466fe26648d1e3b23c90415ee3622c8"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structsymbole.html">symbole</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a9466fe26648d1e3b23c90415ee3622c8">qwerty_keymap</a> []</td></tr>
+<tr class="memitem:a365c795e67b8150aaf3e878076153424"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structsymbole.html">symbole</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="keyboard_8c.html#a365c795e67b8150aaf3e878076153424">azerty_keymap</a> []</td></tr>
 </table>
 <a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
-<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>Copyright (C) 2010-2014 TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 </div><h2>Documentation des macros</h2>
+<a class="anchor" id="a4dc78921d4bcad31c9ac9c48d9254f74"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BS_KEY&#160;&#160;&#160;&quot;\x7f&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for backspace key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3df5f1b9e975540d1b385be6691e2f5c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEL_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x33\x7e&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for delete key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a687b69f632086f6e1a03279964257c24"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DOWN_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x42&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for down key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5e3c0fe0009594127f7acd46b7e87e71"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define END_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x34\x7e&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for end key. </p>
+
+</div>
+</div>
+<a class="anchor" id="afba17fd121bcd7abc852f1ae1f3abb58"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENTER_KEY&#160;&#160;&#160;&quot;\x0d&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for enter key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9b4f59fc9220530978f12905fe51b1d0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ESC_KEY&#160;&#160;&#160;&quot;\x1b&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for escape key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a546042e025fd8bf5365be7ab1069c054"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HOME_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x31\x7e&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for home key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a48891a70925e78c2384c0c868b93a6cd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INSERT_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x31\x7e&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for insert key. </p>
+
+</div>
+</div>
 <a class="anchor" id="a5f25a8926d9c3ce4b4a0824234e8ffd4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -403,7 +527,7 @@ DESCRIPTION</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Scancode SET 1 : (IBM XT) <a href="http://www.computer-engineering.org/ps2keyboard/scancodes1.htmlSCAN">http://www.computer-engineering.org/ps2keyboard/scancodes1.htmlSCAN</a> CODES Masque pour le scancode d'un relâchement de touche. </p>
+<p>Scancode SET 1 : (IBM XT) <a href="http://www.computer-engineering.org/ps2keyboard/scancodes1.htmlSCAN">http://www.computer-engineering.org/ps2keyboard/scancodes1.htmlSCAN</a> CODES Masque pour le scancode d'un rel�chement de touche. </p>
 
 </div>
 </div>
@@ -563,6 +687,84 @@ DESCRIPTION</h1>
 
 </div>
 </div>
+<a class="anchor" id="a3cd87a710fd069baf487e7b44d01e1b9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LEFT_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x44&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for left key. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab4c735965485f50ac6b61dd32726751f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PGDOWN_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x36\x7e&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for page down key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0af63b409c570a94ca8834f81fc10587"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PGUP_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x35\x7e&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for page up key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1cc261de4fdcbf43464428947a52ce32"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RIGHT_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x43&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for right key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0136ce50a394c7f0ac7ef51f84ce7321"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TAB_KEY&#160;&#160;&#160;&quot;\x09&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for tab key. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1c34fc6f48366ae6334736730fd9b0e7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define UP_KEY&#160;&#160;&#160;&quot;\x1b\x5b\x41&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ANSI code for up key. </p>
+
+</div>
+</div>
 <h2>Documentation des fonctions</h2>
 <a class="anchor" id="aac7ec49aa0203d9bd2dd5c4bcba7cb61"></a>
 <div class="memitem">
@@ -590,16 +792,43 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="keyboard_8c_aac7ec49aa0203d9bd2dd5c4bcba7cb61_cgraph.png" border="0" usemap="#keyboard_8c_aac7ec49aa0203d9bd2dd5c4bcba7cb61_cgraph" alt=""/></div>
 <map name="keyboard_8c_aac7ec49aa0203d9bd2dd5c4bcba7cb61_cgraph" id="keyboard_8c_aac7ec49aa0203d9bd2dd5c4bcba7cb61_cgraph">
-<area shape="rect" id="node3" href="console_8c.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan." alt="" coords="176,55,283,83"/><area shape="rect" id="node5" href="video_8c.html#ab549780053994f6b1dba04869b562a43" title="Change la page à afficher à l&#39;écran." alt="" coords="359,5,452,33"/><area shape="rect" id="node7" href="video_8c.html#a61e8f22681edb740e2d057ac270e6f5b" title="Désactive l&#39;affichage du curseur." alt="" coords="352,55,459,83"/><area shape="rect" id="node9" href="video_8c.html#ab1ddd4e6afaac2e5d7ed1d7575e8186b" title="Change la position du curseur." alt="" coords="332,106,479,134"/></map>
+<area shape="rect" id="node3" href="console_8c.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan." alt="" coords="176,55,280,83"/><area shape="rect" id="node5" href="video_8c.html#ab549780053994f6b1dba04869b562a43" title="Change la page à afficher à l&#39;écran." alt="" coords="355,5,448,33"/><area shape="rect" id="node7" href="video_8c.html#a61e8f22681edb740e2d057ac270e6f5b" title="Désactive l&#39;affichage du curseur." alt="" coords="349,55,453,83"/><area shape="rect" id="node9" href="video_8c.html#ab1ddd4e6afaac2e5d7ed1d7575e8186b" title="Change la position du curseur." alt="" coords="329,106,473,134"/></map>
 </div>
 </p>
+
+</div>
+</div>
+<h2>Documentation des variables</h2>
+<a class="anchor" id="a365c795e67b8150aaf3e878076153424"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structsymbole.html">symbole</a> azerty_keymap[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Keymap azerty: keycode vers chaine ANSI. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9466fe26648d1e3b23c90415ee3622c8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structsymbole.html">symbole</a> qwerty_keymap[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Keymap qwerty: keycode vers chaine ANSI. </p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:17 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 8 2014 09:54:15 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

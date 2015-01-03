@@ -1,0 +1,7 @@
+<map id="SYSCALL_HANDLER3" name="SYSCALL_HANDLER3">
+<area shape="rect" id="node2" href="$scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation. " alt="" coords="333,21,473,48"/>
+<area shape="rect" id="node3" href="$ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="213,21,285,48"/>
+<area shape="rect" id="node4" href="$ksem_8h.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.) " alt="" coords="215,123,283,149"/>
+<area shape="rect" id="node6" href="$ksem_8h.html#acfbbd3e3f726b24309758cf6499a8141" title="Opération P sur un sémaphore Réalise l&#39;opération P sur le sémaphore. Le processus essaye donc de pren..." alt="" coords="218,72,281,99"/>
+<area shape="rect" id="node5" href="$kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné. " alt="" coords="356,123,451,149"/>
+</map>

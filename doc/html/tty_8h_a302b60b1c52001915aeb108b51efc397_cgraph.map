@@ -1,7 +1,8 @@
 <map id="tty_register_driver" name="tty_register_driver">
-<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="205,5,272,33"/>
-<area shape="rect" id="node7" href="$kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="212,55,265,83"/>
-<area shape="rect" id="node9" href="$ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="203,106,275,134"/>
-<area shape="rect" id="node11" href="$devfs_8c.html#acf0abbf4b629aa36d142733e27eaf6e6" title="Enregistre le chardev dans la liste." alt="" coords="180,157,297,185"/>
-<area shape="rect" id="node5" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="348,5,487,33"/>
+<area shape="rect" id="node2" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="205,31,271,57"/>
+<area shape="rect" id="node5" href="$kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères. " alt="" coords="211,81,265,108"/>
+<area shape="rect" id="node6" href="$ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="202,132,274,159"/>
+<area shape="rect" id="node7" href="$devfs_8c.html#acf0abbf4b629aa36d142733e27eaf6e6" title="Enregistre le chardev dans la liste. " alt="" coords="179,183,297,209"/>
+<area shape="rect" id="node3" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="345,5,485,32"/>
+<area shape="rect" id="node4" href="$kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="381,56,450,83"/>
 </map>

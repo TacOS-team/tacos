@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/scheduler.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -90,85 +91,96 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier scheduler.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="clock_8h_source.html">clock.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="context_8h_source.html">context.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="cpu_8h_source.html">cpu.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="debug_8h_source.html">debug.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="events_8h_source.html">events.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="gdt_8h_source.html">gdt.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="i8259_8h_source.html">i8259.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="interrupts_8h_source.html">interrupts.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="ioports_8h_source.html">ioports.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="kernel_2include_2klibc_2string_8h_source.html">klibc/string.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="kprocess_8h_source.html">kprocess.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="ksignal_8h_source.html">ksignal.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="pagination_8h_source.html">pagination.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="scheduler_8h_source.html">scheduler.h</a>&gt;</code><br/>
-<code>#include &lt;types.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="vmm_8h_source.html">vmm.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="clock_8h_source.html">clock.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="context_8h_source.html">context.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="cpu_8h_source.html">cpu.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="debug_8h_source.html">debug.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="events_8h_source.html">events.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="gdt_8h_source.html">gdt.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="i8259_8h_source.html">i8259.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="interrupts_8h_source.html">interrupts.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="ioports_8h_source.html">ioports.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="kernel_2include_2klibc_2string_8h_source.html">klibc/string.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="kprocess_8h_source.html">kprocess.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="ksignal_8h_source.html">ksignal.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="pagination_8h_source.html">pagination.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="scheduler_8h_source.html">scheduler.h</a>&gt;</code><br />
+<code>#include &lt;types.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="vmm_8h_source.html">vmm.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de scheduler.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="scheduler_8c__incl.png" border="0" usemap="#kernel_2scheduler_8c" alt=""/></div>
 <map name="kernel_2scheduler_8c" id="kernel_2scheduler_8c">
-<area shape="rect" id="node3" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="43,161,105,189"/><area shape="rect" id="node10" href="context_8h.html" title="context.h" alt="" coords="446,83,521,111"/><area shape="rect" id="node12" href="kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="366,161,451,189"/><area shape="rect" id="node28" href="vmm_8h.html" title="vmm.h" alt="" coords="705,238,766,266"/><area shape="rect" id="node31" href="cpu_8h.html" title="Définitions liées au fonctionnement interne du processeur." alt="" coords="957,83,1010,111"/><area shape="rect" id="node33" href="debug_8h.html" title="debug.h" alt="" coords="1034,83,1101,111"/><area shape="rect" id="node35" href="events_8h.html" title="events.h" alt="" coords="167,83,237,111"/><area shape="rect" id="node38" href="gdt_8h.html" title="gdt.h" alt="" coords="691,161,742,189"/><area shape="rect" id="node41" href="i8259_8h.html" title="Initialisation du i8259 qui s&#39;occupe des interruptions." alt="" coords="766,161,827,189"/><area shape="rect" id="node44" href="interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="851,161,937,189"/><area shape="rect" id="node47" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="1125,83,1194,111"/><area shape="rect" id="node49" href="kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="1269,83,1362,111"/><area shape="rect" id="node53" href="klog_8h.html" title="Logging macros." alt="" coords="1386,83,1442,111"/><area shape="rect" id="node57" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="942,238,1019,266"/><area shape="rect" id="node61" href="ksignal_8h.html" title="ksignal.h" alt="" coords="545,83,617,111"/><area shape="rect" id="node67" href="pagination_8h.html" title="pagination.h" alt="" coords="1011,161,1102,189"/><area shape="rect" id="node70" href="scheduler_8h.html" title="scheduler.h" alt="" coords="283,83,371,111"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="606,315,667,343"/><area shape="rect" id="node7" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="25,238,102,266"/><area shape="rect" id="node15" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="283,238,363,266"/><area shape="rect" id="node18" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="577,238,681,266"/><area shape="rect" id="node20" href="process__types_8h.html" title="process_types.h" alt="" coords="387,238,502,266"/><area shape="rect" id="node22" href="symtable_8h.html" title="symtable.h" alt="" coords="126,238,209,266"/><area shape="rect" id="node25" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="145,315,190,343"/><area shape="rect" id="node55" href="kstdio_8h.html" title="kprintf" alt="" coords="1381,161,1447,189"/></map>
+<area shape="rect" id="node2" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="43,155,106,181"/><area shape="rect" id="node5" href="context_8h.html" title="context.h" alt="" coords="447,80,521,107"/><area shape="rect" id="node6" href="kprocess_8h.html" title="Création de nouveaux processus. " alt="" coords="367,155,452,181"/><area shape="rect" id="node12" href="vmm_8h.html" title="vmm.h" alt="" coords="712,229,773,256"/><area shape="rect" id="node13" href="cpu_8h.html" title="Définitions liées au fonctionnement interne du processeur. " alt="" coords="960,80,1013,107"/><area shape="rect" id="node14" href="debug_8h.html" title="debug.h" alt="" coords="1037,80,1104,107"/><area shape="rect" id="node15" href="events_8h.html" title="events.h" alt="" coords="167,80,238,107"/><area shape="rect" id="node16" href="gdt_8h.html" title="gdt.h" alt="" coords="695,155,745,181"/><area shape="rect" id="node17" href="i8259_8h.html" title="Initialisation du i8259 qui s&#39;occupe des interruptions. " alt="" coords="770,155,833,181"/><area shape="rect" id="node18" href="interrupts_8h.html" title="Gestion des interruptions.. " alt="" coords="857,155,943,181"/><area shape="rect" id="node19" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="1129,80,1199,107"/><area shape="rect" id="node20" href="kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel. " alt="" coords="1275,80,1370,107"/><area shape="rect" id="node22" href="klog_8h.html" title="Logging macros. " alt="" coords="1395,80,1451,107"/><area shape="rect" id="node24" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space. " alt="" coords="949,229,1027,256"/><area shape="rect" id="node25" href="ksignal_8h.html" title="ksignal.h" alt="" coords="546,80,619,107"/><area shape="rect" id="node26" href="pagination_8h.html" title="pagination.h" alt="" coords="1019,155,1109,181"/><area shape="rect" id="node27" href="scheduler_8h.html" title="scheduler.h" alt="" coords="284,80,372,107"/><area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="613,304,675,331"/><area shape="rect" id="node4" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="25,229,103,256"/><area shape="rect" id="node7" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts. " alt="" coords="287,229,369,256"/><area shape="rect" id="node8" href="signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux). " alt="" coords="584,229,688,256"/><area shape="rect" id="node9" href="process__types_8h.html" title="process_types.h" alt="" coords="393,229,509,256"/><area shape="rect" id="node10" href="symtable_8h.html" title="symtable.h" alt="" coords="127,229,211,256"/><area shape="rect" id="node11" href="elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF. " alt="" coords="146,304,193,331"/><area shape="rect" id="node23" href="kstdio_8h.html" title="kprintf " alt="" coords="1389,155,1456,181"/></map>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:aeea353e4cd967a42bff0d68d76ba92e4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeea353e4cd967a42bff0d68d76ba92e4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>USER_PROCESS</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:aeea353e4cd967a42bff0d68d76ba92e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10cc1aac362796183908e847deb168a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a10cc1aac362796183908e847deb168a5"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KERNEL_PROCESS</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a10cc1aac362796183908e847deb168a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a83abbeda22fc5e6c2b35523b64199c1c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83abbeda22fc5e6c2b35523b64199c1c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>idle</b> ()</td></tr>
+<tr class="separator:a83abbeda22fc5e6c2b35523b64199c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3566951b11a46d72a1a0828fb58fbcac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3566951b11a46d72a1a0828fb58fbcac"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_scheduler</b> (<a class="el" href="structscheduler__descriptor__t.html">scheduler_descriptor_t</a> *sched)</td></tr>
-<tr class="memitem:aa561ebdf652e5c64fc2400c409e76d8d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scheduler_8c.html#aa561ebdf652e5c64fc2400c409e76d8d">is_schedulable</a> (<a class="el" href="structprocess__t.html">process_t</a> *process)</td></tr>
+<tr class="separator:a3566951b11a46d72a1a0828fb58fbcac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa561ebdf652e5c64fc2400c409e76d8d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scheduler_8c.html#aa561ebdf652e5c64fc2400c409e76d8d">is_schedulable</a> (<a class="el" href="kprocess_8h.html#a7742ed3a86b7bcb5a4b76893fc331ede">process_t</a> *<a class="el" href="structprocess.html">process</a>)</td></tr>
+<tr class="separator:aa561ebdf652e5c64fc2400c409e76d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7620ff35dc8ad07c342359800c4bb6c2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7620ff35dc8ad07c342359800c4bb6c2"></a>
 void *&#160;</td><td class="memItemRight" valign="bottom"><b>schedule</b> (void *data)</td></tr>
+<tr class="separator:a7620ff35dc8ad07c342359800c4bb6c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a353a4f6525d48b0459246ae392d81e23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23">init_scheduler</a> (int Q)</td></tr>
-<tr class="memdesc:a353a4f6525d48b0459246ae392d81e23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du scheduler Initialise les données du scheduler pour qu'il puisse être lancé correctement.  <a href="#a353a4f6525d48b0459246ae392d81e23"></a><br/></td></tr>
+<tr class="memdesc:a353a4f6525d48b0459246ae392d81e23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du scheduler Initialise les données du scheduler pour qu'il puisse être lancé correctement.  <a href="#a353a4f6525d48b0459246ae392d81e23">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a353a4f6525d48b0459246ae392d81e23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafa4b5a4a0ef6280c9834e1c30aff031"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafa4b5a4a0ef6280c9834e1c30aff031"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scheduler_8c.html#aafa4b5a4a0ef6280c9834e1c30aff031">stop_scheduler</a> ()</td></tr>
-<tr class="memdesc:aafa4b5a4a0ef6280c9834e1c30aff031"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arret du scheduler Arrète le scheduler en retirant le prochain schedule de la liste des évenements. <br/></td></tr>
+<tr class="memdesc:aafa4b5a4a0ef6280c9834e1c30aff031"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arret du scheduler Arrète le scheduler en retirant le prochain schedule de la liste des évenements. <br /></td></tr>
+<tr class="separator:aafa4b5a4a0ef6280c9834e1c30aff031"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad39da00e42a0897e378c98fc3319b17d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad39da00e42a0897e378c98fc3319b17d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d">start_scheduler</a> ()</td></tr>
-<tr class="memdesc:ad39da00e42a0897e378c98fc3319b17d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au temps Q (quantum) <br/></td></tr>
+<tr class="memdesc:ad39da00e42a0897e378c98fc3319b17d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au temps Q (quantum) <br /></td></tr>
+<tr class="separator:ad39da00e42a0897e378c98fc3319b17d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5423022aedadc5b3ef45ee6898775998"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5423022aedadc5b3ef45ee6898775998"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>scheduler_add_process</b> (<a class="el" href="structprocess__t.html">process_t</a> *proc)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>scheduler_add_process</b> (<a class="el" href="kprocess_8h.html#a7742ed3a86b7bcb5a4b76893fc331ede">process_t</a> *proc)</td></tr>
+<tr class="separator:a5423022aedadc5b3ef45ee6898775998"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afaaea97ffa26c63b4d6e596d27a18edc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afaaea97ffa26c63b4d6e596d27a18edc"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>scheduler_delete_process</b> (int pid)</td></tr>
-<tr class="memitem:a2d69bf5462cbcb1bddac7b8c4f7b6973"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structprocess__t.html">process_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scheduler_8c.html#a2d69bf5462cbcb1bddac7b8c4f7b6973">get_current_process</a> ()</td></tr>
-<tr class="memdesc:a2d69bf5462cbcb1bddac7b8c4f7b6973"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le processus en cours d'utilisation.  <a href="#a2d69bf5462cbcb1bddac7b8c4f7b6973"></a><br/></td></tr>
-<tr class="memitem:a472099de8a0b86d23f1d4b44872d4417"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a472099de8a0b86d23f1d4b44872d4417"></a>
-void *&#160;</td><td class="memItemRight" valign="bottom"><b>sleep_callback</b> (void *data)</td></tr>
+<tr class="separator:afaaea97ffa26c63b4d6e596d27a18edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d69bf5462cbcb1bddac7b8c4f7b6973"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kprocess_8h.html#a7742ed3a86b7bcb5a4b76893fc331ede">process_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scheduler_8c.html#a2d69bf5462cbcb1bddac7b8c4f7b6973">get_current_process</a> ()</td></tr>
+<tr class="memdesc:a2d69bf5462cbcb1bddac7b8c4f7b6973"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le processus en cours d'utilisation.  <a href="#a2d69bf5462cbcb1bddac7b8c4f7b6973">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2d69bf5462cbcb1bddac7b8c4f7b6973"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab180240c5e0d6459b4fafe3c81939ac5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5">SYSCALL_HANDLER1</a> (sys_sleep, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> delay)</td></tr>
-<tr class="memdesc:ab180240c5e0d6459b4fafe3c81939ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler de l'appel système sleep.  <a href="#ab180240c5e0d6459b4fafe3c81939ac5"></a><br/></td></tr>
+<tr class="memdesc:ab180240c5e0d6459b4fafe3c81939ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler de l'appel système sleep.  <a href="#ab180240c5e0d6459b4fafe3c81939ac5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab180240c5e0d6459b4fafe3c81939ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
-<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>Copyright (C) 2010-2014 TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 <p>Description de ce que fait le fichier </p>
-</div><h2>Documentation des fonctions</h2>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a2d69bf5462cbcb1bddac7b8c4f7b6973"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structprocess__t.html">process_t</a>* get_current_process </td>
+          <td class="memname"><a class="el" href="kprocess_8h.html#a7742ed3a86b7bcb5a4b76893fc331ede">process_t</a>* get_current_process </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -182,7 +194,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="scheduler_8c_a2d69bf5462cbcb1bddac7b8c4f7b6973_icgraph.png" border="0" usemap="#scheduler_8c_a2d69bf5462cbcb1bddac7b8c4f7b6973_icgraph" alt=""/></div>
 <map name="scheduler_8c_a2d69bf5462cbcb1bddac7b8c4f7b6973_icgraph" id="scheduler_8c_a2d69bf5462cbcb1bddac7b8c4f7b6973_icgraph">
-<area shape="rect" id="node3" href="kdirent_8c.html#adfcdfa04bbc40b5d0cd715e66d906cad" title="SYSCALL_HANDLER3" alt="" coords="195,5,355,33"/><area shape="rect" id="node5" href="kfcntl_8c.html#adc12a443121c63ad99a6311aa2739884" title="Ferme tous les file descriptors ouverts." alt="" coords="229,55,320,83"/><area shape="rect" id="node7" href="kprocess_8c.html#acc70870c5d5807f03b0a58bd1e160f6f" title="Syscall appelé lors de la fin d&#39;exécution d&#39;un process." alt="" coords="403,81,563,109"/><area shape="rect" id="node9" href="kfcntl_8c.html#a3a5f4c56fd3fcc2b69757102f722fc29" title="SYSCALL_HANDLER2" alt="" coords="195,157,355,185"/><area shape="rect" id="node11" href="kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="220,207,329,235"/><area shape="rect" id="node16" href="ksem_8c.html#acfbbd3e3f726b24309758cf6499a8141" title="Opération P sur un sémaphore Réalise l&#39;opération P sur le sémaphore. Le processus essaye donc de pren..." alt="" coords="244,258,305,286"/><area shape="rect" id="node22" href="ksyscall_8c.html#aa10969a644d213f1e778ac8c2a97fd6a" title="Point d&#39;entrée des appels systèmes C&#39;est cette fonction qui est lancée à la réception de l&#39;IRQ_SYSCAL..." alt="" coords="227,309,323,337"/><area shape="rect" id="node26" href="vmm_8c.html#a8a8d898de5c72c3b55b845d19ec32172" title="sys_vmm" alt="" coords="236,359,313,387"/><area shape="rect" id="node13" href="scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="432,182,533,210"/><area shape="rect" id="node18" href="kprocess_8c.html#a4e715b0cdc3fe2325e5dcc64ec07f0f9" title="Bloque le process courant jusqu&#39;à ce que le processus identifié par pid se termine." alt="" coords="403,233,563,261"/><area shape="rect" id="node20" href="ksem_8c.html#a82fb70bceeb23516b8cbdc1bc8f77805" title="Handler de l&#39;appel système SYS_SEM Dans la pratique, sys_ksem ne fait qu&#39;exécuter la fonction corresp..." alt="" coords="403,283,563,311"/><area shape="rect" id="node24" href="ksyscall_8c.html#a3e64f9d87cb92e4dc7d748a495e232f1" title="Initialisation des appels systemes." alt="" coords="440,334,525,362"/></map>
+<area shape="rect" id="node2" href="kdirent_8c.html#adfcdfa04bbc40b5d0cd715e66d906cad" title="SYSCALL_HANDLER3" alt="" coords="193,5,353,32"/><area shape="rect" id="node3" href="kfcntl_8c.html#adc12a443121c63ad99a6311aa2739884" title="Ferme tous les file descriptors ouverts. " alt="" coords="228,56,319,83"/><area shape="rect" id="node4" href="kprocess_8c.html#acc70870c5d5807f03b0a58bd1e160f6f" title="Syscall appelé lors de la fin d&#39;exécution d&#39;un process. " alt="" coords="401,107,561,133"/><area shape="rect" id="node5" href="kfcntl_8c.html#a3a5f4c56fd3fcc2b69757102f722fc29" title="SYSCALL_HANDLER2" alt="" coords="193,157,353,184"/><area shape="rect" id="node6" href="ksem_8c.html#acfbbd3e3f726b24309758cf6499a8141" title="Opération P sur un sémaphore Réalise l&#39;opération P sur le sémaphore. Le processus essaye donc de pren..." alt="" coords="242,208,305,235"/><area shape="rect" id="node9" href="ksyscall_8c.html#aa10969a644d213f1e778ac8c2a97fd6a" title="Point d&#39;entrée des appels systèmes C&#39;est cette fonction qui est lancée à la réception de l&#39;IRQ_SYSCAL..." alt="" coords="225,259,322,285"/><area shape="rect" id="node11" href="vmm_8c.html#a8a8d898de5c72c3b55b845d19ec32172" title="sys_vmm" alt="" coords="234,309,313,336"/><area shape="rect" id="node7" href="kprocess_8c.html#a4e715b0cdc3fe2325e5dcc64ec07f0f9" title="Bloque le process courant jusqu&#39;à ce que le processus identifié par pid se termine. " alt="" coords="401,157,561,184"/><area shape="rect" id="node8" href="ksem_8c.html#a82fb70bceeb23516b8cbdc1bc8f77805" title="Handler de l&#39;appel système SYS_SEM Dans la pratique, sys_ksem ne fait qu&#39;exécuter la fonction corresp..." alt="" coords="401,208,561,235"/><area shape="rect" id="node10" href="ksyscall_8c.html#a3e64f9d87cb92e4dc7d748a495e232f1" title="Initialisation des appels systemes. " alt="" coords="438,259,525,285"/></map>
 </div>
 </p>
 
@@ -208,15 +220,6 @@ Voici le graphe des appelants de cette fonction :</div>
   </dd>
 </dl>
 
-<p><div class="dynheader">
-Voici le graphe d'appel pour cette fonction :</div>
-<div class="dyncontent">
-<div class="center"><img src="scheduler_8c_a353a4f6525d48b0459246ae392d81e23_cgraph.png" border="0" usemap="#scheduler_8c_a353a4f6525d48b0459246ae392d81e23_cgraph" alt=""/></div>
-<map name="scheduler_8c_a353a4f6525d48b0459246ae392d81e23_cgraph" id="scheduler_8c_a353a4f6525d48b0459246ae392d81e23_cgraph">
-<area shape="rect" id="node3" href="kprocess_8h.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="159,270,268,298"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="653,93,720,121"/><area shape="rect" id="node9" href="kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="657,321,716,349"/><area shape="rect" id="node11" href="ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="352,397,424,425"/><area shape="rect" id="node13" href="ksem_8h.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)" alt="" coords="355,93,421,121"/><area shape="rect" id="node17" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="319,448,457,476"/><area shape="rect" id="node19" href="kfcntl_8h.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="351,194,425,222"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="772,93,911,121"/><area shape="rect" id="node15" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné." alt="" coords="508,42,601,70"/><area shape="rect" id="node23" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="652,194,721,222"/><area shape="rect" id="node25" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="528,194,581,222"/><area shape="rect" id="node27" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="527,245,583,273"/><area shape="rect" id="node29" href="vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="517,296,592,324"/></map>
-</div>
-</p>
-
 </div>
 </div>
 <a class="anchor" id="aa561ebdf652e5c64fc2400c409e76d8d"></a>
@@ -226,7 +229,7 @@ Voici le graphe d'appel pour cette fonction :</div>
         <tr>
           <td class="memname">int is_schedulable </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structprocess__t.html">process_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="kprocess_8h.html#a7742ed3a86b7bcb5a4b76893fc331ede">process_t</a> *&#160;</td>
           <td class="paramname"><em>process</em></td><td>)</td>
           <td></td>
         </tr>
@@ -279,7 +282,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="scheduler_8c_ab180240c5e0d6459b4fafe3c81939ac5_cgraph.png" border="0" usemap="#scheduler_8c_ab180240c5e0d6459b4fafe3c81939ac5_cgraph" alt=""/></div>
 <map name="scheduler_8c_ab180240c5e0d6459b4fafe3c81939ac5_cgraph" id="scheduler_8c_ab180240c5e0d6459b4fafe3c81939ac5_cgraph">
-<area shape="rect" id="node3" href="scheduler_8h.html#aafa4b5a4a0ef6280c9834e1c30aff031" title="Arret du scheduler Arrète le scheduler en retirant le prochain schedule de la liste des évenements..." alt="" coords="229,5,339,33"/><area shape="rect" id="node7" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,55,353,83"/><area shape="rect" id="node9" href="events_8c.html#a82d6763c7ce9298afe7e0d97553e568f" title="ajoute un évènement à declencher" alt="" coords="440,157,523,185"/><area shape="rect" id="node23" href="scheduler_8h.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="229,106,339,134"/><area shape="rect" id="node5" href="events_8c.html#a14ec7f9617d6a0f57891ce9926dca445" title="unset_scheduler_event" alt="" coords="404,5,559,33"/><area shape="rect" id="node11" href="clock_8c.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="643,157,701,185"/><area shape="rect" id="node17" href="clock_8c.html#a052807a5c6ae63175a937381014a5701" title="Ajoute des us à un temps. Ajoute des us à un temps contenu dans une structure timeval." alt="" coords="609,106,735,134"/><area shape="rect" id="node19" href="list_8h.html#a7a8bb1eb8a161ffce0167fca806e10ad" title="list_add_element" alt="" coords="612,207,732,235"/><area shape="rect" id="node13" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes." alt="" coords="788,157,860,185"/><area shape="rect" id="node15" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="785,106,863,134"/><area shape="rect" id="node21" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="789,207,859,235"/><area shape="rect" id="node25" href="events_8c.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur" alt="" coords="411,106,552,134"/></map>
+<area shape="rect" id="node2" href="scheduler_8c.html#aafa4b5a4a0ef6280c9834e1c30aff031" title="Arret du scheduler Arrète le scheduler en retirant le prochain schedule de la liste des évenements..." alt="" coords="228,5,339,32"/><area shape="rect" id="node4" href="scheduler_8c.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation. " alt="" coords="213,56,353,83"/><area shape="rect" id="node5" href="events_8c.html#a82d6763c7ce9298afe7e0d97553e568f" title="ajoute un évènement à declencher " alt="" coords="438,157,521,184"/><area shape="rect" id="node12" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="228,107,339,133"/><area shape="rect" id="node3" href="events_8c.html#a14ec7f9617d6a0f57891ce9926dca445" title="unset_scheduler_event" alt="" coords="401,5,557,32"/><area shape="rect" id="node6" href="clock_8c.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="639,157,698,184"/><area shape="rect" id="node9" href="clock_8c.html#a052807a5c6ae63175a937381014a5701" title="Ajoute des us à un temps. Ajoute des us à un temps contenu dans une structure timeval. " alt="" coords="605,107,732,133"/><area shape="rect" id="node10" href="list_8h.html#a7a8bb1eb8a161ffce0167fca806e10ad" title="list_add_element" alt="" coords="609,208,729,235"/><area shape="rect" id="node7" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes. " alt="" coords="783,157,855,184"/><area shape="rect" id="node8" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="780,107,859,133"/><area shape="rect" id="node11" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire. " alt="" coords="784,208,855,235"/><area shape="rect" id="node13" href="events_8c.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur " alt="" coords="408,107,551,133"/></map>
 </div>
 </p>
 
@@ -288,9 +291,9 @@ Voici le graphe d'appel pour cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:39 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:32 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

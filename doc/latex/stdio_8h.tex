@@ -1,18 +1,20 @@
 \hypertarget{stdio_8h}{\section{Référence du fichier libc/include/stdio.h}
-\label{stdio_8h}\index{libc/include/stdio.\-h@{libc/include/stdio.\-h}}
+\label{stdio_8h}\index{libc/include/stdio.\+h@{libc/include/stdio.\+h}}
 }
-{\ttfamily \#include $<$sys/cdefs.\-h$>$}\\*
-{\ttfamily \#include $<$libio.\-h$>$}\\*
-{\ttfamily \#include $<$sys/types.\-h$>$}\\*
-{\ttfamily \#include $<$stdarg.\-h$>$}\\*
-Graphe des dépendances par inclusion de stdio.\-h\-:\nopagebreak
+{\ttfamily \#include $<$sys/cdefs.\+h$>$}\\*
+{\ttfamily \#include $<$libio.\+h$>$}\\*
+{\ttfamily \#include $<$sys/types.\+h$>$}\\*
+{\ttfamily \#include $<$stdarg.\+h$>$}\\*
+Graphe des dépendances par inclusion de stdio.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=260pt]{stdio_8h__incl}
+\includegraphics[width=262pt]{stdio_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -22,23 +24,23 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{stdio_8h_a59adc4c82490d23754cd39c2fb99b0da}{\#define {\bfseries E\-O\-F}~(-\/1)}\label{stdio_8h_a59adc4c82490d23754cd39c2fb99b0da}
+\hypertarget{stdio_8h_a59adc4c82490d23754cd39c2fb99b0da}{\#define {\bfseries E\+O\+F}~(-\/1)}\label{stdio_8h_a59adc4c82490d23754cd39c2fb99b0da}
 
 \item 
-\hypertarget{stdio_8h_af7475971eb93ce0184379e71fe7626e9}{\#define {\bfseries \-\_\-\-I\-O\-F\-B\-F}~0 /$\ast$ Fully buffered. $\ast$/}\label{stdio_8h_af7475971eb93ce0184379e71fe7626e9}
+\hypertarget{stdio_8h_af7475971eb93ce0184379e71fe7626e9}{\#define {\bfseries \+\_\+\+I\+O\+F\+B\+F}~0 /$\ast$ Fully buffered. $\ast$/}\label{stdio_8h_af7475971eb93ce0184379e71fe7626e9}
 
 \item 
-\hypertarget{stdio_8h_aca9e52813bd224e4519e0b1289abbce9}{\#define {\bfseries \-\_\-\-I\-O\-L\-B\-F}~1 /$\ast$ Line buffered. $\ast$/}\label{stdio_8h_aca9e52813bd224e4519e0b1289abbce9}
+\hypertarget{stdio_8h_aca9e52813bd224e4519e0b1289abbce9}{\#define {\bfseries \+\_\+\+I\+O\+L\+B\+F}~1 /$\ast$ Line buffered. $\ast$/}\label{stdio_8h_aca9e52813bd224e4519e0b1289abbce9}
 
 \item 
-\hypertarget{stdio_8h_a8661edb6b53e3104bef089bef02d0508}{\#define {\bfseries \-\_\-\-I\-O\-N\-B\-F}~2 /$\ast$ No buffering. $\ast$/}\label{stdio_8h_a8661edb6b53e3104bef089bef02d0508}
+\hypertarget{stdio_8h_a8661edb6b53e3104bef089bef02d0508}{\#define {\bfseries \+\_\+\+I\+O\+N\+B\+F}~2 /$\ast$ No buffering. $\ast$/}\label{stdio_8h_a8661edb6b53e3104bef089bef02d0508}
 
 \item 
-\#define \hyperlink{stdio_8h_a0d112bae8fd35be772185b6ec6bcbe64}{S\-E\-E\-K\-\_\-\-S\-E\-T}~0
+\#define \hyperlink{stdio_8h_a0d112bae8fd35be772185b6ec6bcbe64}{S\+E\+E\+K\+\_\+\+S\+E\+T}~0
 \item 
-\#define \hyperlink{stdio_8h_a4c8d0b76b470ba65a43ca46a88320f39}{S\-E\-E\-K\-\_\-\-C\-U\-R}~1
+\#define \hyperlink{stdio_8h_a4c8d0b76b470ba65a43ca46a88320f39}{S\+E\+E\+K\+\_\+\+C\+U\+R}~1
 \item 
-\#define \hyperlink{stdio_8h_ad2a2e6c114780c3071efd24f16c7f7d8}{S\-E\-E\-K\-\_\-\-E\-N\-D}~2
+\#define \hyperlink{stdio_8h_ad2a2e6c114780c3071efd24f16c7f7d8}{S\+E\+E\+K\+\_\+\+E\+N\+D}~2
 \item 
 \hypertarget{stdio_8h_a39ae32b25ab00f0ae78b934422a0bff2}{\#define {\bfseries getc}(stream)~\hyperlink{get_8c_ab11a990e4f8863a1e7736e3c1d430092}{fgetc}(stream)}\label{stdio_8h_a39ae32b25ab00f0ae78b934422a0bff2}
 
@@ -46,7 +48,7 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \subsection*{Définitions de type}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{stdio_8h_a423f0d9af1916bae0cc534148fe9cd57}{typedef long {\bfseries fpos\-\_\-t}}\label{stdio_8h_a423f0d9af1916bae0cc534148fe9cd57}
+\hypertarget{stdio_8h_a423f0d9af1916bae0cc534148fe9cd57}{typedef long {\bfseries fpos\+\_\+t}}\label{stdio_8h_a423f0d9af1916bae0cc534148fe9cd57}
 
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
@@ -54,22 +56,22 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \item 
 int \hyperlink{stdio_8h_a98631211a4a8aee62f572375d5b637be}{printf} (const char $\ast$format,...)
 \begin{DoxyCompactList}\small\item\em Affiche un message sur la sortie standard stdout. \end{DoxyCompactList}\item 
-int \hyperlink{stdio_8h_ad9291335f34e874c8431285d705bc3aa}{fprintf} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream, const char $\ast$format,...)
+int \hyperlink{stdio_8h_ad9291335f34e874c8431285d705bc3aa}{fprintf} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream, const char $\ast$format,...)
 \begin{DoxyCompactList}\small\item\em Affiche un message dans le stream passé en argument. \end{DoxyCompactList}\item 
 int \hyperlink{stdio_8h_a3082155ec11e7229f7a20439b31a169e}{sprintf} (char $\ast$str, const char $\ast$format,...)
 \begin{DoxyCompactList}\small\item\em Écrit un message dans le buffer passé en argument. \end{DoxyCompactList}\item 
-int \hyperlink{stdio_8h_ad76145a6edfc98981ded8815a760e0cd}{snprintf} (char $\ast$str, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size, const char $\ast$format,...)
+int \hyperlink{stdio_8h_ad76145a6edfc98981ded8815a760e0cd}{snprintf} (char $\ast$str, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} size, const char $\ast$format,...)
 \begin{DoxyCompactList}\small\item\em Écrit un message dans le buffer passé en argument avec une limite sur le nombre de caractères à écrire. \end{DoxyCompactList}\item 
-\hypertarget{stdio_8h_aa715ef816dc040c8b367fde4ba84d6f3}{int {\bfseries vprintf} (const char $\ast$format, va\-\_\-list ap)}\label{stdio_8h_aa715ef816dc040c8b367fde4ba84d6f3}
+\hypertarget{stdio_8h_aa715ef816dc040c8b367fde4ba84d6f3}{int {\bfseries vprintf} (const char $\ast$format, va\+\_\+list ap)}\label{stdio_8h_aa715ef816dc040c8b367fde4ba84d6f3}
 
 \item 
-\hypertarget{stdio_8h_ad80f05917df38df3a5e1817498d67c26}{int {\bfseries vfprintf} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream, const char $\ast$format, va\-\_\-list ap)}\label{stdio_8h_ad80f05917df38df3a5e1817498d67c26}
+\hypertarget{stdio_8h_ad80f05917df38df3a5e1817498d67c26}{int {\bfseries vfprintf} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream, const char $\ast$format, va\+\_\+list ap)}\label{stdio_8h_ad80f05917df38df3a5e1817498d67c26}
 
 \item 
-\hypertarget{stdio_8h_aab3db67c98c32122fcb3d076d4207bbc}{int {\bfseries vsprintf} (char $\ast$str, const char $\ast$format, va\-\_\-list ap)}\label{stdio_8h_aab3db67c98c32122fcb3d076d4207bbc}
+\hypertarget{stdio_8h_aab3db67c98c32122fcb3d076d4207bbc}{int {\bfseries vsprintf} (char $\ast$str, const char $\ast$format, va\+\_\+list ap)}\label{stdio_8h_aab3db67c98c32122fcb3d076d4207bbc}
 
 \item 
-\hypertarget{stdio_8h_a2cadafbeb2d6e0d5781f6e5106d41fc2}{int {\bfseries vsnprintf} (char $\ast$str, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size, const char $\ast$format, va\-\_\-list ap)}\label{stdio_8h_a2cadafbeb2d6e0d5781f6e5106d41fc2}
+\hypertarget{stdio_8h_a2cadafbeb2d6e0d5781f6e5106d41fc2}{int {\bfseries vsnprintf} (char $\ast$str, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} size, const char $\ast$format, va\+\_\+list ap)}\label{stdio_8h_a2cadafbeb2d6e0d5781f6e5106d41fc2}
 
 \item 
 \hypertarget{stdio_8h_a5c48433db9c04031772d5b36e6c4411d}{int {\bfseries scanf} (const char $\ast$format,...)}\label{stdio_8h_a5c48433db9c04031772d5b36e6c4411d}
@@ -78,25 +80,25 @@ int \hyperlink{stdio_8h_ad76145a6edfc98981ded8815a760e0cd}{snprintf} (char $\ast
 \hypertarget{stdio_8h_acd369d6926dd1e1fb503821a8b167414}{int {\bfseries sscanf} (const char $\ast$s, const char $\ast$format,...)}\label{stdio_8h_acd369d6926dd1e1fb503821a8b167414}
 
 \item 
-\hypertarget{stdio_8h_ae902a7b8796799a6e076f07e9d7de045}{int {\bfseries fscanf} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream, const char $\ast$format,...)}\label{stdio_8h_ae902a7b8796799a6e076f07e9d7de045}
+\hypertarget{stdio_8h_ae902a7b8796799a6e076f07e9d7de045}{int {\bfseries fscanf} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream, const char $\ast$format,...)}\label{stdio_8h_ae902a7b8796799a6e076f07e9d7de045}
 
 \item 
-\hypertarget{stdio_8h_a7c29d4a7aefcf7ebc25f9c852e2c95d8}{int {\bfseries vsscanf} (const char $\ast$s, const char $\ast$format, va\-\_\-list ap)}\label{stdio_8h_a7c29d4a7aefcf7ebc25f9c852e2c95d8}
+\hypertarget{stdio_8h_a7c29d4a7aefcf7ebc25f9c852e2c95d8}{int {\bfseries vsscanf} (const char $\ast$s, const char $\ast$format, va\+\_\+list ap)}\label{stdio_8h_a7c29d4a7aefcf7ebc25f9c852e2c95d8}
 
 \item 
-\hypertarget{stdio_8h_abdd32e401e37c9d954f3f0a6907500d9}{int {\bfseries vfscanf} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream, const char $\ast$format, va\-\_\-list ap)}\label{stdio_8h_abdd32e401e37c9d954f3f0a6907500d9}
+\hypertarget{stdio_8h_abdd32e401e37c9d954f3f0a6907500d9}{int {\bfseries vfscanf} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream, const char $\ast$format, va\+\_\+list ap)}\label{stdio_8h_abdd32e401e37c9d954f3f0a6907500d9}
 
 \item 
-\hypertarget{stdio_8h_a40250d63904acd3e898061c9eab6ead3}{int {\bfseries vscanf} (const char $\ast$format, va\-\_\-list ap)}\label{stdio_8h_a40250d63904acd3e898061c9eab6ead3}
+\hypertarget{stdio_8h_a40250d63904acd3e898061c9eab6ead3}{int {\bfseries vscanf} (const char $\ast$format, va\+\_\+list ap)}\label{stdio_8h_a40250d63904acd3e898061c9eab6ead3}
 
 \item 
-\hypertarget{stdio_8h_abe6299d5823dd023e610aaa619735a3f}{int {\bfseries fputc} (int c, \hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)}\label{stdio_8h_abe6299d5823dd023e610aaa619735a3f}
+\hypertarget{stdio_8h_abe6299d5823dd023e610aaa619735a3f}{int {\bfseries fputc} (int c, \hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)}\label{stdio_8h_abe6299d5823dd023e610aaa619735a3f}
 
 \item 
-\hypertarget{stdio_8h_a68236e664c1f0da049b25fba1c1695f6}{int {\bfseries fputs} (const char $\ast$s, \hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)}\label{stdio_8h_a68236e664c1f0da049b25fba1c1695f6}
+\hypertarget{stdio_8h_a68236e664c1f0da049b25fba1c1695f6}{int {\bfseries fputs} (const char $\ast$s, \hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)}\label{stdio_8h_a68236e664c1f0da049b25fba1c1695f6}
 
 \item 
-\hypertarget{stdio_8h_a38f980218f04ebdddcdcd1b77e1cf6b1}{int {\bfseries putc} (int c, \hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)}\label{stdio_8h_a38f980218f04ebdddcdcd1b77e1cf6b1}
+\hypertarget{stdio_8h_a38f980218f04ebdddcdcd1b77e1cf6b1}{int {\bfseries putc} (int c, \hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)}\label{stdio_8h_a38f980218f04ebdddcdcd1b77e1cf6b1}
 
 \item 
 \hypertarget{stdio_8h_af4de2514b7778805db3815e8dd6cf09a}{int {\bfseries putchar} (int c)}\label{stdio_8h_af4de2514b7778805db3815e8dd6cf09a}
@@ -105,68 +107,67 @@ int \hyperlink{stdio_8h_ad76145a6edfc98981ded8815a760e0cd}{snprintf} (char $\ast
 \hypertarget{stdio_8h_ad41876f99f190c7488e64ef39c50a23f}{int {\bfseries puts} (const char $\ast$s)}\label{stdio_8h_ad41876f99f190c7488e64ef39c50a23f}
 
 \item 
-\hypertarget{stdio_8h_a199aa6cfa2a5386697a004926a122a5e}{int {\bfseries fgetline} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$fp, char s\mbox{[}$\,$\mbox{]}, int lim)}\label{stdio_8h_a199aa6cfa2a5386697a004926a122a5e}
+\hypertarget{stdio_8h_a199aa6cfa2a5386697a004926a122a5e}{int {\bfseries fgetline} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$fp, char s\mbox{[}$\,$\mbox{]}, int lim)}\label{stdio_8h_a199aa6cfa2a5386697a004926a122a5e}
 
 \item 
 \hypertarget{stdio_8h_abecaec01dda7ccd229a32c69303be89e}{int {\bfseries getline} (char $\ast$s, int lim)}\label{stdio_8h_abecaec01dda7ccd229a32c69303be89e}
 
 \item 
-\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} \hyperlink{stdio_8h_a20d465b196f378c16fc31d4117170623}{fwrite} (const void $\ast$ptr, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} nmemb, \hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)
+\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} \hyperlink{stdio_8h_a20d465b196f378c16fc31d4117170623}{fwrite} (const void $\ast$ptr, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} size, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} nmemb, \hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)
 \begin{DoxyCompactList}\small\item\em Écriture binaire sur un flux. \end{DoxyCompactList}\item 
-\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} \hyperlink{stdio_8h_a084251eb18ccd5c936faa2c39c86ec63}{fread} (void $\ast$ptr, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} nmemb, \hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)
+\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} \hyperlink{stdio_8h_a084251eb18ccd5c936faa2c39c86ec63}{fread} (void $\ast$ptr, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} size, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} nmemb, \hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)
 \item 
-char $\ast$ \hyperlink{stdio_8h_a2b3df0e66b41edab3c039191fe6cc4f9}{fgets} (char $\ast$s, int size, \hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)
+char $\ast$ \hyperlink{stdio_8h_a2b3df0e66b41edab3c039191fe6cc4f9}{fgets} (char $\ast$s, int size, \hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)
 \begin{DoxyCompactList}\small\item\em Lit au plus size-\/1 caractères depuis le stream passé en argument. \end{DoxyCompactList}\item 
-int \hyperlink{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092}{fgetc} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)
+int \hyperlink{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092}{fgetc} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)
 \begin{DoxyCompactList}\small\item\em Lit un caractère depuis le flux stream. \end{DoxyCompactList}\item 
 int \hyperlink{stdio_8h_a3e29caa20f7cffe18f410f01278905a8}{getchar} (void)
 \begin{DoxyCompactList}\small\item\em lit un caractère depuis stdin. \end{DoxyCompactList}\item 
-\hypertarget{stdio_8h_adb974f28765a31026ee6bf71d5175951}{int {\bfseries fflush} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)}\label{stdio_8h_adb974f28765a31026ee6bf71d5175951}
+\hypertarget{stdio_8h_adb974f28765a31026ee6bf71d5175951}{int {\bfseries fflush} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)}\label{stdio_8h_adb974f28765a31026ee6bf71d5175951}
 
 \item 
-\hypertarget{stdio_8h_ac41a0ad4b31be2ad59d8222a0de30bda}{int {\bfseries fclose} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$fd)}\label{stdio_8h_ac41a0ad4b31be2ad59d8222a0de30bda}
-
+int \hyperlink{stdio_8h_ac41a0ad4b31be2ad59d8222a0de30bda}{fclose} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$fd)
 \item 
 \hypertarget{stdio_8h_ae0e7e1430321e50efcd950be60346e37}{int {\bfseries fcloseall} (void)}\label{stdio_8h_ae0e7e1430321e50efcd950be60346e37}
 
 \item 
-\hypertarget{stdio_8h_a61171f829f6067fa0c9936fc4e0cbb82}{\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$ {\bfseries fopen} (const char $\ast$path, const char $\ast$\hyperlink{structmode}{mode})}\label{stdio_8h_a61171f829f6067fa0c9936fc4e0cbb82}
+\hypertarget{stdio_8h_a61171f829f6067fa0c9936fc4e0cbb82}{\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$ {\bfseries fopen} (const char $\ast$path, const char $\ast$\hyperlink{structmode}{mode})}\label{stdio_8h_a61171f829f6067fa0c9936fc4e0cbb82}
 
 \item 
-\hypertarget{stdio_8h_ab13b5edcd6e585f41214da079623b209}{\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$ {\bfseries fdopen} (int fd, const char $\ast$\hyperlink{structmode}{mode})}\label{stdio_8h_ab13b5edcd6e585f41214da079623b209}
+\hypertarget{stdio_8h_ab13b5edcd6e585f41214da079623b209}{\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$ {\bfseries fdopen} (int fd, const char $\ast$\hyperlink{structmode}{mode})}\label{stdio_8h_ab13b5edcd6e585f41214da079623b209}
 
 \item 
-\hypertarget{stdio_8h_a317d5eb3bcd77341b0c2d5ba95859410}{\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$ {\bfseries freopen} (const char $\ast$path, const char $\ast$\hyperlink{structmode}{mode}, \hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)}\label{stdio_8h_a317d5eb3bcd77341b0c2d5ba95859410}
+\hypertarget{stdio_8h_a317d5eb3bcd77341b0c2d5ba95859410}{\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$ {\bfseries freopen} (const char $\ast$path, const char $\ast$\hyperlink{structmode}{mode}, \hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)}\label{stdio_8h_a317d5eb3bcd77341b0c2d5ba95859410}
 
 \item 
-\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$ \hyperlink{stdio_8h_a6b2efc6515c53ab5f0c9800c35f65789}{fmemopen} (void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size, const char $\ast$\hyperlink{structmode}{mode})
+\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$ \hyperlink{stdio_8h_a6b2efc6515c53ab5f0c9800c35f65789}{fmemopen} (void $\ast$buf, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} size, const char $\ast$\hyperlink{structmode}{mode})
 \item 
-int \hyperlink{stdio_8h_af691eb990d669a9edec8a9ec721ce3bc}{setvbuf} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream, char $\ast$buf, int \hyperlink{structmode}{mode}, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+int \hyperlink{stdio_8h_af691eb990d669a9edec8a9ec721ce3bc}{setvbuf} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream, char $\ast$buf, int \hyperlink{structmode}{mode}, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} size)
 \begin{DoxyCompactList}\small\item\em Modifie le buffer et les flags d'un stream. \end{DoxyCompactList}\item 
-\hypertarget{stdio_8h_ade9e3ec960640295203ce281984da08c}{void \hyperlink{stdio_8h_ade9e3ec960640295203ce281984da08c}{init\-\_\-stdfiles} (void)}\label{stdio_8h_ade9e3ec960640295203ce281984da08c}
+\hypertarget{stdio_8h_ade9e3ec960640295203ce281984da08c}{void \hyperlink{stdio_8h_ade9e3ec960640295203ce281984da08c}{init\+\_\+stdfiles} (void)}\label{stdio_8h_ade9e3ec960640295203ce281984da08c}
 
 \begin{DoxyCompactList}\small\item\em Initialise les streams de base. \end{DoxyCompactList}\item 
-int \hyperlink{stdio_8h_a5e25775bd8597f839a28125b616bd241}{fseek} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream, long offset, int whence)
+int \hyperlink{stdio_8h_a5e25775bd8597f839a28125b616bd241}{fseek} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream, long offset, int whence)
 \begin{DoxyCompactList}\small\item\em Fixe l'indicateur de position du flux. \end{DoxyCompactList}\item 
-long \hyperlink{stdio_8h_a5a002ad43f113e8c634d284ee34d1d53}{ftell} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)
+long \hyperlink{stdio_8h_a5a002ad43f113e8c634d284ee34d1d53}{ftell} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)
 \begin{DoxyCompactList}\small\item\em Obtient la valeur de l'indicateur de position. \end{DoxyCompactList}\item 
-void \hyperlink{stdio_8h_aa0cd401f198d33d9d01a9e8aa4026819}{rewind} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)
+void \hyperlink{stdio_8h_aa0cd401f198d33d9d01a9e8aa4026819}{rewind} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)
 \begin{DoxyCompactList}\small\item\em Place l'indicateur de position au début du fichier. \end{DoxyCompactList}\item 
-\hypertarget{stdio_8h_af2e2b1a01359f5f7068b61d1dffcdcdd}{int {\bfseries fgetpos} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream, fpos\-\_\-t $\ast$pos)}\label{stdio_8h_af2e2b1a01359f5f7068b61d1dffcdcdd}
+\hypertarget{stdio_8h_af2e2b1a01359f5f7068b61d1dffcdcdd}{int {\bfseries fgetpos} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream, fpos\+\_\+t $\ast$pos)}\label{stdio_8h_af2e2b1a01359f5f7068b61d1dffcdcdd}
 
 \item 
-\hypertarget{stdio_8h_ace35eefa6dd65f49f1acb0255787df49}{int {\bfseries fsetpos} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream, fpos\-\_\-t $\ast$pos)}\label{stdio_8h_ace35eefa6dd65f49f1acb0255787df49}
+\hypertarget{stdio_8h_ace35eefa6dd65f49f1acb0255787df49}{int {\bfseries fsetpos} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream, fpos\+\_\+t $\ast$pos)}\label{stdio_8h_ace35eefa6dd65f49f1acb0255787df49}
 
 \item 
 int \hyperlink{stdio_8h_a02b13b56a188401119ea4da43c184913}{remove} (const char $\ast$pathname)
 \begin{DoxyCompactList}\small\item\em Supprimer un fichier ou répertoire. \end{DoxyCompactList}\item 
-void \hyperlink{stdio_8h_ab5de865c3093158c70bf4bd88a9deea5}{clearerr} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)
+void \hyperlink{stdio_8h_ab5de865c3093158c70bf4bd88a9deea5}{clearerr} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)
 \begin{DoxyCompactList}\small\item\em Efface la fin de fichier et les indicateurs d'erreur du flux. \end{DoxyCompactList}\item 
-int \hyperlink{stdio_8h_a9e71f513ad2496acb5361aedc065e3d8}{feof} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)
+int \hyperlink{stdio_8h_a9e71f513ad2496acb5361aedc065e3d8}{feof} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)
 \begin{DoxyCompactList}\small\item\em Teste l'indicateur de fin de fichier. \end{DoxyCompactList}\item 
-int \hyperlink{stdio_8h_a4a98383bb54291c2abede7aa28acf597}{ferror} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)
+int \hyperlink{stdio_8h_a4a98383bb54291c2abede7aa28acf597}{ferror} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)
 \begin{DoxyCompactList}\small\item\em Teste l'indicateur d'erreur du flux. \end{DoxyCompactList}\item 
-int \hyperlink{stdio_8h_af86fa14728c9bad5418a6d29cad9f9ff}{fileno} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)
+int \hyperlink{stdio_8h_af86fa14728c9bad5418a6d29cad9f9ff}{fileno} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)
 \begin{DoxyCompactList}\small\item\em Renvoie le numéro de descripteur de fichier associé au stream. \end{DoxyCompactList}\item 
 void \hyperlink{stdio_8h_ab39f9634fa53ffd52b87431f3afab11b}{perror} (const char $\ast$s)
 \begin{DoxyCompactList}\small\item\em Affiche un message d'erreur système. \end{DoxyCompactList}\item 
@@ -176,42 +177,42 @@ void \hyperlink{stdio_8h_ab39f9634fa53ffd52b87431f3afab11b}{perror} (const char 
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$ \hyperlink{stdio_8h_ad9a717e4aa4b82cb2e26752399eaa918}{\-\_\-\-\_\-file\-\_\-list}
+\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$ \hyperlink{stdio_8h_ad9a717e4aa4b82cb2e26752399eaa918}{\+\_\+\+\_\+file\+\_\+list}
 \end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 Description de ce que fait le fichier 
 
 \subsection{Documentation des macros}
-\hypertarget{stdio_8h_a4c8d0b76b470ba65a43ca46a88320f39}{\index{stdio.\-h@{stdio.\-h}!S\-E\-E\-K\-\_\-\-C\-U\-R@{S\-E\-E\-K\-\_\-\-C\-U\-R}}
-\index{S\-E\-E\-K\-\_\-\-C\-U\-R@{S\-E\-E\-K\-\_\-\-C\-U\-R}!stdio.h@{stdio.\-h}}
-\subsubsection[{S\-E\-E\-K\-\_\-\-C\-U\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-E\-E\-K\-\_\-\-C\-U\-R~1}}\label{stdio_8h_a4c8d0b76b470ba65a43ca46a88320f39}
-S\-E\-E\-K relatif à la position actuelle. \hypertarget{stdio_8h_ad2a2e6c114780c3071efd24f16c7f7d8}{\index{stdio.\-h@{stdio.\-h}!S\-E\-E\-K\-\_\-\-E\-N\-D@{S\-E\-E\-K\-\_\-\-E\-N\-D}}
-\index{S\-E\-E\-K\-\_\-\-E\-N\-D@{S\-E\-E\-K\-\_\-\-E\-N\-D}!stdio.h@{stdio.\-h}}
-\subsubsection[{S\-E\-E\-K\-\_\-\-E\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-E\-E\-K\-\_\-\-E\-N\-D~2}}\label{stdio_8h_ad2a2e6c114780c3071efd24f16c7f7d8}
-S\-E\-E\-K par rapport à la fin du fichier. \hypertarget{stdio_8h_a0d112bae8fd35be772185b6ec6bcbe64}{\index{stdio.\-h@{stdio.\-h}!S\-E\-E\-K\-\_\-\-S\-E\-T@{S\-E\-E\-K\-\_\-\-S\-E\-T}}
-\index{S\-E\-E\-K\-\_\-\-S\-E\-T@{S\-E\-E\-K\-\_\-\-S\-E\-T}!stdio.h@{stdio.\-h}}
-\subsubsection[{S\-E\-E\-K\-\_\-\-S\-E\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-E\-E\-K\-\_\-\-S\-E\-T~0}}\label{stdio_8h_a0d112bae8fd35be772185b6ec6bcbe64}
-S\-E\-E\-K à une position donnée. 
+\hypertarget{stdio_8h_a4c8d0b76b470ba65a43ca46a88320f39}{\index{stdio.\+h@{stdio.\+h}!S\+E\+E\+K\+\_\+\+C\+U\+R@{S\+E\+E\+K\+\_\+\+C\+U\+R}}
+\index{S\+E\+E\+K\+\_\+\+C\+U\+R@{S\+E\+E\+K\+\_\+\+C\+U\+R}!stdio.\+h@{stdio.\+h}}
+\subsubsection[{S\+E\+E\+K\+\_\+\+C\+U\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+E\+K\+\_\+\+C\+U\+R~1}}\label{stdio_8h_a4c8d0b76b470ba65a43ca46a88320f39}
+S\+E\+E\+K relatif à la position actuelle. \hypertarget{stdio_8h_ad2a2e6c114780c3071efd24f16c7f7d8}{\index{stdio.\+h@{stdio.\+h}!S\+E\+E\+K\+\_\+\+E\+N\+D@{S\+E\+E\+K\+\_\+\+E\+N\+D}}
+\index{S\+E\+E\+K\+\_\+\+E\+N\+D@{S\+E\+E\+K\+\_\+\+E\+N\+D}!stdio.\+h@{stdio.\+h}}
+\subsubsection[{S\+E\+E\+K\+\_\+\+E\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+E\+K\+\_\+\+E\+N\+D~2}}\label{stdio_8h_ad2a2e6c114780c3071efd24f16c7f7d8}
+S\+E\+E\+K par rapport à la fin du fichier. \hypertarget{stdio_8h_a0d112bae8fd35be772185b6ec6bcbe64}{\index{stdio.\+h@{stdio.\+h}!S\+E\+E\+K\+\_\+\+S\+E\+T@{S\+E\+E\+K\+\_\+\+S\+E\+T}}
+\index{S\+E\+E\+K\+\_\+\+S\+E\+T@{S\+E\+E\+K\+\_\+\+S\+E\+T}!stdio.\+h@{stdio.\+h}}
+\subsubsection[{S\+E\+E\+K\+\_\+\+S\+E\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+E\+K\+\_\+\+S\+E\+T~0}}\label{stdio_8h_a0d112bae8fd35be772185b6ec6bcbe64}
+S\+E\+E\+K à une position donnée. 
 
 \subsection{Documentation des fonctions}
-\hypertarget{stdio_8h_ab5de865c3093158c70bf4bd88a9deea5}{\index{stdio.\-h@{stdio.\-h}!clearerr@{clearerr}}
-\index{clearerr@{clearerr}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_ab5de865c3093158c70bf4bd88a9deea5}{\index{stdio.\+h@{stdio.\+h}!clearerr@{clearerr}}
+\index{clearerr@{clearerr}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{clearerr}]{\setlength{\rightskip}{0pt plus 5cm}void clearerr (
 \begin{DoxyParamCaption}
-\item[{{\bf F\-I\-L\-E} $\ast$}]{stream}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
 \end{DoxyParamCaption}
 )}}\label{stdio_8h_ab5de865c3093158c70bf4bd88a9deea5}
 
@@ -219,33 +220,35 @@ S\-E\-E\-K à une position donnée.
 {\em stream} & Flux à réinitialiser. \\
 \hline
 \end{DoxyParams}
+\hypertarget{stdio_8h_ac41a0ad4b31be2ad59d8222a0de30bda}{\index{stdio.\+h@{stdio.\+h}!fclose@{fclose}}
+\index{fclose@{fclose}!stdio.\+h@{stdio.\+h}}
+\subsubsection[{fclose}]{\setlength{\rightskip}{0pt plus 5cm}int fclose (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{fd}
+\end{DoxyParamCaption}
+)}}\label{stdio_8h_ac41a0ad4b31be2ad59d8222a0de30bda}
+Ferme le stream fd.
+
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès sinon E\+O\+F. 
+\end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=130pt]{stdio_8h_ab5de865c3093158c70bf4bd88a9deea5_cgraph}
+\includegraphics[width=282pt]{stdio_8h_ac41a0ad4b31be2ad59d8222a0de30bda_cgraph}
 \end{center}
 \end{figure}
 
 
-
-
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=130pt]{stdio_8h_ab5de865c3093158c70bf4bd88a9deea5_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{stdio_8h_a9e71f513ad2496acb5361aedc065e3d8}{\index{stdio.\-h@{stdio.\-h}!feof@{feof}}
-\index{feof@{feof}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_a9e71f513ad2496acb5361aedc065e3d8}{\index{stdio.\+h@{stdio.\+h}!feof@{feof}}
+\index{feof@{feof}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{feof}]{\setlength{\rightskip}{0pt plus 5cm}int feof (
 \begin{DoxyParamCaption}
-\item[{{\bf F\-I\-L\-E} $\ast$}]{stream}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
 \end{DoxyParamCaption}
 )}}\label{stdio_8h_a9e71f513ad2496acb5361aedc065e3d8}
 
@@ -256,33 +259,11 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{DoxyReturn}{Renvoie}
 0 si faux, sinon vrai. 
 \end{DoxyReturn}
-
-
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=114pt]{stdio_8h_a9e71f513ad2496acb5361aedc065e3d8_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=114pt]{stdio_8h_a9e71f513ad2496acb5361aedc065e3d8_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{stdio_8h_a4a98383bb54291c2abede7aa28acf597}{\index{stdio.\-h@{stdio.\-h}!ferror@{ferror}}
-\index{ferror@{ferror}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_a4a98383bb54291c2abede7aa28acf597}{\index{stdio.\+h@{stdio.\+h}!ferror@{ferror}}
+\index{ferror@{ferror}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{ferror}]{\setlength{\rightskip}{0pt plus 5cm}int ferror (
 \begin{DoxyParamCaption}
-\item[{{\bf F\-I\-L\-E} $\ast$}]{stream}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
 \end{DoxyParamCaption}
 )}}\label{stdio_8h_a4a98383bb54291c2abede7aa28acf597}
 
@@ -293,74 +274,57 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{DoxyReturn}{Renvoie}
 non nul si indicateur actif. 
 \end{DoxyReturn}
-
-
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=120pt]{stdio_8h_a4a98383bb54291c2abede7aa28acf597_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=120pt]{stdio_8h_a4a98383bb54291c2abede7aa28acf597_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092}{\index{stdio.\-h@{stdio.\-h}!fgetc@{fgetc}}
-\index{fgetc@{fgetc}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092}{\index{stdio.\+h@{stdio.\+h}!fgetc@{fgetc}}
+\index{fgetc@{fgetc}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{fgetc}]{\setlength{\rightskip}{0pt plus 5cm}int fgetc (
 \begin{DoxyParamCaption}
-\item[{{\bf F\-I\-L\-E} $\ast$}]{stream}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
 \end{DoxyParamCaption}
 )}}\label{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092}
 Fgetc lit le caractère suivant depuis le flux stream.
 
-stream le stream depuis lequel on lit le caractère.
 
+\begin{DoxyParams}{Paramètres}
+{\em stream} & le stream depuis lequel on lit le caractère.\\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
-le caractère lu ou E\-O\-F en cas d'erreur ou fin de flux. 
+le caractère lu ou E\+O\+F en cas d'erreur ou fin de flux. 
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=274pt]{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092_cgraph}
+\includegraphics[width=272pt]{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092_cgraph}
 \end{center}
 \end{figure}
 
 
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=204pt]{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092_icgraph}
+\includegraphics[width=203pt]{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{stdio_8h_a2b3df0e66b41edab3c039191fe6cc4f9}{\index{stdio.\-h@{stdio.\-h}!fgets@{fgets}}
-\index{fgets@{fgets}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_a2b3df0e66b41edab3c039191fe6cc4f9}{\index{stdio.\+h@{stdio.\+h}!fgets@{fgets}}
+\index{fgets@{fgets}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{fgets}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ fgets (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{s, }
 \item[{int}]{size, }
-\item[{{\bf F\-I\-L\-E} $\ast$}]{stream}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
 \end{DoxyParamCaption}
 )}}\label{stdio_8h_a2b3df0e66b41edab3c039191fe6cc4f9}
-Lit au plus size-\/1 caractères depuis le stream passé en argument. La lecture s'arrête par E\-O\-F, retour chariot ou si size-\/1 caractères ont été lus. Attention, il n'y a pas d'allocation mémoire pour le buffer où on écrit. Le caractère nul est placé à la fin de la chaîne.
+Lit au plus size-\/1 caractères depuis le stream passé en argument. La lecture s'arrête par E\+O\+F, retour chariot ou si size-\/1 caractères ont été lus. Attention, il n'y a pas d'allocation mémoire pour le buffer où on écrit. Le caractère nul est placé à la fin de la chaîne.
 
 
 \begin{DoxyParams}{Paramètres}
@@ -372,24 +336,25 @@ Lit au plus size-\/1 caractères depuis le stream passé en argument. La lecture
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
-un pointeur sur s en cas de succès. N\-U\-L\-L en cas d'erreur. 
+un pointeur sur s en cas de succès. N\+U\+L\+L en cas d'erreur. 
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=348pt]{stdio_8h_a2b3df0e66b41edab3c039191fe6cc4f9_cgraph}
+\includegraphics[width=346pt]{stdio_8h_a2b3df0e66b41edab3c039191fe6cc4f9_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{stdio_8h_af86fa14728c9bad5418a6d29cad9f9ff}{\index{stdio.\-h@{stdio.\-h}!fileno@{fileno}}
-\index{fileno@{fileno}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_af86fa14728c9bad5418a6d29cad9f9ff}{\index{stdio.\+h@{stdio.\+h}!fileno@{fileno}}
+\index{fileno@{fileno}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{fileno}]{\setlength{\rightskip}{0pt plus 5cm}int fileno (
 \begin{DoxyParamCaption}
-\item[{{\bf F\-I\-L\-E} $\ast$}]{stream}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
 \end{DoxyParamCaption}
 )}}\label{stdio_8h_af86fa14728c9bad5418a6d29cad9f9ff}
 
@@ -400,34 +365,12 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{DoxyReturn}{Renvoie}
 le numéro du descripteur de fichier. 
 \end{DoxyReturn}
-
-
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=120pt]{stdio_8h_af86fa14728c9bad5418a6d29cad9f9ff_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=120pt]{stdio_8h_af86fa14728c9bad5418a6d29cad9f9ff_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{stdio_8h_a6b2efc6515c53ab5f0c9800c35f65789}{\index{stdio.\-h@{stdio.\-h}!fmemopen@{fmemopen}}
-\index{fmemopen@{fmemopen}!stdio.h@{stdio.\-h}}
-\subsubsection[{fmemopen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\-I\-L\-E}$\ast$ fmemopen (
+\hypertarget{stdio_8h_a6b2efc6515c53ab5f0c9800c35f65789}{\index{stdio.\+h@{stdio.\+h}!fmemopen@{fmemopen}}
+\index{fmemopen@{fmemopen}!stdio.\+h@{stdio.\+h}}
+\subsubsection[{fmemopen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+I\+L\+E}$\ast$ fmemopen (
 \begin{DoxyParamCaption}
 \item[{void $\ast$}]{buf, }
-\item[{{\bf size\-\_\-t}}]{size, }
+\item[{{\bf size\+\_\+t}}]{size, }
 \item[{const char $\ast$}]{mode}
 \end{DoxyParamCaption}
 )}}\label{stdio_8h_a6b2efc6515c53ab5f0c9800c35f65789}
@@ -436,11 +379,11 @@ Cette fonction associe un buffer de taille size à un nouveau stream. Les modes 
 \begin{DoxyReturn}{Renvoie}
 le nouveau stream. 
 \end{DoxyReturn}
-\hypertarget{stdio_8h_ad9291335f34e874c8431285d705bc3aa}{\index{stdio.\-h@{stdio.\-h}!fprintf@{fprintf}}
-\index{fprintf@{fprintf}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_ad9291335f34e874c8431285d705bc3aa}{\index{stdio.\+h@{stdio.\+h}!fprintf@{fprintf}}
+\index{fprintf@{fprintf}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{fprintf}]{\setlength{\rightskip}{0pt plus 5cm}int fprintf (
 \begin{DoxyParamCaption}
-\item[{{\bf F\-I\-L\-E} $\ast$}]{stream, }
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream, }
 \item[{const char $\ast$}]{format, }
 \item[{}]{...}
 \end{DoxyParamCaption}
@@ -469,41 +412,43 @@ En cas de succès, renvoit le nombre de caractères affichés. Négatif en cas d
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=200pt]{stdio_8h_ad9291335f34e874c8431285d705bc3aa_icgraph}
+\includegraphics[width=198pt]{stdio_8h_ad9291335f34e874c8431285d705bc3aa_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{stdio_8h_a084251eb18ccd5c936faa2c39c86ec63}{\index{stdio.\-h@{stdio.\-h}!fread@{fread}}
-\index{fread@{fread}!stdio.h@{stdio.\-h}}
-\subsubsection[{fread}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\-\_\-t} fread (
+\hypertarget{stdio_8h_a084251eb18ccd5c936faa2c39c86ec63}{\index{stdio.\+h@{stdio.\+h}!fread@{fread}}
+\index{fread@{fread}!stdio.\+h@{stdio.\+h}}
+\subsubsection[{fread}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\+\_\+t} fread (
 \begin{DoxyParamCaption}
 \item[{void $\ast$}]{ptr, }
-\item[{{\bf size\-\_\-t}}]{size, }
-\item[{{\bf size\-\_\-t}}]{nmemb, }
-\item[{{\bf F\-I\-L\-E} $\ast$}]{stream}
+\item[{{\bf size\+\_\+t}}]{size, }
+\item[{{\bf size\+\_\+t}}]{nmemb, }
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
 \end{DoxyParamCaption}
 )}}\label{stdio_8h_a084251eb18ccd5c936faa2c39c86ec63}
-The \hyperlink{stdio_8h_a084251eb18ccd5c936faa2c39c86ec63}{fread( )} function shall read into the array pointed to by ptr up to nitems elements whose size is specified by size in bytes, from the stream pointed to by stream. For each object, size calls shall be made to the \hyperlink{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092}{fgetc( )} function and the results stored, in the order read, in an array of unsigned char exactly overlaying the object. The file position indicator for the stream (if defined) shall be advanced by the number of bytes successfully read. If an error occurs, the resulting value of the file position indicator for the stream is unspecified. If a partial element is read, its value is unspecified. 
+The \hyperlink{fread_8c_a084251eb18ccd5c936faa2c39c86ec63}{fread( )} function shall read into the array pointed to by ptr up to nitems elements whose size is specified by size in bytes, from the stream pointed to by stream. For each object, size calls shall be made to the \hyperlink{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092}{fgetc( )} function and the results stored, in the order read, in an array of unsigned char exactly overlaying the object. The file position indicator for the stream (if defined) shall be advanced by the number of bytes successfully read. If an error occurs, the resulting value of the file position indicator for the stream is unspecified. If a partial element is read, its value is unspecified. 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=348pt]{stdio_8h_a084251eb18ccd5c936faa2c39c86ec63_cgraph}
+\includegraphics[width=346pt]{stdio_8h_a084251eb18ccd5c936faa2c39c86ec63_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{stdio_8h_a5e25775bd8597f839a28125b616bd241}{\index{stdio.\-h@{stdio.\-h}!fseek@{fseek}}
-\index{fseek@{fseek}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_a5e25775bd8597f839a28125b616bd241}{\index{stdio.\+h@{stdio.\+h}!fseek@{fseek}}
+\index{fseek@{fseek}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{fseek}]{\setlength{\rightskip}{0pt plus 5cm}int fseek (
 \begin{DoxyParamCaption}
-\item[{{\bf F\-I\-L\-E} $\ast$}]{stream, }
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream, }
 \item[{long}]{offset, }
 \item[{int}]{whence}
 \end{DoxyParamCaption}
@@ -514,7 +459,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \hline
 {\em offset} & Le décalage. \\
 \hline
-{\em whence} & Méthode \-: depuis le début, la fin ou en relatif.\\
+{\em whence} & Méthode \+: depuis le début, la fin ou en relatif.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
@@ -522,31 +467,33 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=282pt]{stdio_8h_a5e25775bd8597f839a28125b616bd241_cgraph}
+\includegraphics[width=280pt]{stdio_8h_a5e25775bd8597f839a28125b616bd241_cgraph}
 \end{center}
 \end{figure}
 
 
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=204pt]{stdio_8h_a5e25775bd8597f839a28125b616bd241_icgraph}
+\includegraphics[width=202pt]{stdio_8h_a5e25775bd8597f839a28125b616bd241_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{stdio_8h_a5a002ad43f113e8c634d284ee34d1d53}{\index{stdio.\-h@{stdio.\-h}!ftell@{ftell}}
-\index{ftell@{ftell}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_a5a002ad43f113e8c634d284ee34d1d53}{\index{stdio.\+h@{stdio.\+h}!ftell@{ftell}}
+\index{ftell@{ftell}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{ftell}]{\setlength{\rightskip}{0pt plus 5cm}long ftell (
 \begin{DoxyParamCaption}
-\item[{{\bf F\-I\-L\-E} $\ast$}]{stream}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
 \end{DoxyParamCaption}
 )}}\label{stdio_8h_a5a002ad43f113e8c634d284ee34d1d53}
 
@@ -559,23 +506,24 @@ la position absolue.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=272pt]{stdio_8h_a5a002ad43f113e8c634d284ee34d1d53_cgraph}
+\includegraphics[width=271pt]{stdio_8h_a5a002ad43f113e8c634d284ee34d1d53_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{stdio_8h_a20d465b196f378c16fc31d4117170623}{\index{stdio.\-h@{stdio.\-h}!fwrite@{fwrite}}
-\index{fwrite@{fwrite}!stdio.h@{stdio.\-h}}
-\subsubsection[{fwrite}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\-\_\-t} fwrite (
+\hypertarget{stdio_8h_a20d465b196f378c16fc31d4117170623}{\index{stdio.\+h@{stdio.\+h}!fwrite@{fwrite}}
+\index{fwrite@{fwrite}!stdio.\+h@{stdio.\+h}}
+\subsubsection[{fwrite}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\+\_\+t} fwrite (
 \begin{DoxyParamCaption}
 \item[{const void $\ast$}]{ptr, }
-\item[{{\bf size\-\_\-t}}]{size, }
-\item[{{\bf size\-\_\-t}}]{nmemb, }
-\item[{{\bf F\-I\-L\-E} $\ast$}]{stream}
+\item[{{\bf size\+\_\+t}}]{size, }
+\item[{{\bf size\+\_\+t}}]{nmemb, }
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
 \end{DoxyParamCaption}
 )}}\label{stdio_8h_a20d465b196f378c16fc31d4117170623}
 Cette fonction écrit jusqu'à nmemb elements dont la taille est définie par size vers le stream pointé par le pointeur stream. Pour chaque elements, fwrite fait size appels à fputc en castant simplement l'element en un tableau de uchar.
@@ -594,8 +542,8 @@ Cette fonction écrit jusqu'à nmemb elements dont la taille est définie par si
 \begin{DoxyReturn}{Renvoie}
 Nombre d'éléments écrits. 
 \end{DoxyReturn}
-\hypertarget{stdio_8h_a3e29caa20f7cffe18f410f01278905a8}{\index{stdio.\-h@{stdio.\-h}!getchar@{getchar}}
-\index{getchar@{getchar}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_a3e29caa20f7cffe18f410f01278905a8}{\index{stdio.\+h@{stdio.\+h}!getchar@{getchar}}
+\index{getchar@{getchar}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{getchar}]{\setlength{\rightskip}{0pt plus 5cm}int getchar (
 \begin{DoxyParamCaption}
 \item[{void}]{}
@@ -604,11 +552,12 @@ Nombre d'éléments écrits.
 Lit un caractère depuis stdin. Strictement équivalent à fgetc(stdin).
 
 \begin{DoxyReturn}{Renvoie}
-le caractère lu ou E\-O\-F en cas d'erreur ou fin de flux.
+le caractère lu ou E\+O\+F en cas d'erreur ou fin de flux.
 \end{DoxyReturn}
 Fonction de la libc. getchar est équivalent à fgetc(stdin). 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -617,8 +566,8 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{stdio_8h_ab39f9634fa53ffd52b87431f3afab11b}{\index{stdio.\-h@{stdio.\-h}!perror@{perror}}
-\index{perror@{perror}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_ab39f9634fa53ffd52b87431f3afab11b}{\index{stdio.\+h@{stdio.\+h}!perror@{perror}}
+\index{perror@{perror}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{perror}]{\setlength{\rightskip}{0pt plus 5cm}void perror (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{s}
@@ -633,17 +582,18 @@ Afficher le message donné en argument suivi du message associé à l'erreur (er
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=200pt]{stdio_8h_ab39f9634fa53ffd52b87431f3afab11b_cgraph}
+\includegraphics[width=198pt]{stdio_8h_ab39f9634fa53ffd52b87431f3afab11b_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{stdio_8h_a98631211a4a8aee62f572375d5b637be}{\index{stdio.\-h@{stdio.\-h}!printf@{printf}}
-\index{printf@{printf}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_a98631211a4a8aee62f572375d5b637be}{\index{stdio.\+h@{stdio.\+h}!printf@{printf}}
+\index{printf@{printf}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{printf}]{\setlength{\rightskip}{0pt plus 5cm}int printf (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{format, }
@@ -670,8 +620,8 @@ Affiche un message sur la sortie standard stdout (peut donc être buffurisé et 
 \begin{DoxyReturn}{Renvoie}
 En cas de succès, renvoit le nombre de caractères affichés. Négatif en cas d'erreur. 
 \end{DoxyReturn}
-\hypertarget{stdio_8h_a02b13b56a188401119ea4da43c184913}{\index{stdio.\-h@{stdio.\-h}!remove@{remove}}
-\index{remove@{remove}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_a02b13b56a188401119ea4da43c184913}{\index{stdio.\+h@{stdio.\+h}!remove@{remove}}
+\index{remove@{remove}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}int remove (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{pathname}
@@ -689,7 +639,8 @@ ce que return unlink et rmdir.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -698,11 +649,11 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{stdio_8h_aa0cd401f198d33d9d01a9e8aa4026819}{\index{stdio.\-h@{stdio.\-h}!rewind@{rewind}}
-\index{rewind@{rewind}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_aa0cd401f198d33d9d01a9e8aa4026819}{\index{stdio.\+h@{stdio.\+h}!rewind@{rewind}}
+\index{rewind@{rewind}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{rewind}]{\setlength{\rightskip}{0pt plus 5cm}void rewind (
 \begin{DoxyParamCaption}
-\item[{{\bf F\-I\-L\-E} $\ast$}]{stream}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
 \end{DoxyParamCaption}
 )}}\label{stdio_8h_aa0cd401f198d33d9d01a9e8aa4026819}
 
@@ -715,7 +666,8 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -724,14 +676,14 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{stdio_8h_af691eb990d669a9edec8a9ec721ce3bc}{\index{stdio.\-h@{stdio.\-h}!setvbuf@{setvbuf}}
-\index{setvbuf@{setvbuf}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_af691eb990d669a9edec8a9ec721ce3bc}{\index{stdio.\+h@{stdio.\+h}!setvbuf@{setvbuf}}
+\index{setvbuf@{setvbuf}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{setvbuf}]{\setlength{\rightskip}{0pt plus 5cm}int setvbuf (
 \begin{DoxyParamCaption}
-\item[{{\bf F\-I\-L\-E} $\ast$}]{stream, }
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream, }
 \item[{char $\ast$}]{buf, }
 \item[{int}]{mode, }
-\item[{{\bf size\-\_\-t}}]{size}
+\item[{{\bf size\+\_\+t}}]{size}
 \end{DoxyParamCaption}
 )}}\label{stdio_8h_af691eb990d669a9edec8a9ec721ce3bc}
 Modifie le buffer et les flags d'un stream
@@ -740,7 +692,7 @@ Modifie le buffer et les flags d'un stream
 \begin{DoxyParams}{Paramètres}
 {\em stream} & le stream a modifier \\
 \hline
-{\em buf} & le nouveau buffer (peut être défini à N\-U\-L\-L et sera alloué automatiquement. \\
+{\em buf} & le nouveau buffer (peut être défini à N\+U\+L\+L et sera alloué automatiquement. \\
 \hline
 {\em mode} & les nouveaux flags \\
 \hline
@@ -750,12 +702,12 @@ Modifie le buffer et les flags d'un stream
 \begin{DoxyReturn}{Renvoie}
 0 si tout s'est bien passé. 
 \end{DoxyReturn}
-\hypertarget{stdio_8h_ad76145a6edfc98981ded8815a760e0cd}{\index{stdio.\-h@{stdio.\-h}!snprintf@{snprintf}}
-\index{snprintf@{snprintf}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_ad76145a6edfc98981ded8815a760e0cd}{\index{stdio.\+h@{stdio.\+h}!snprintf@{snprintf}}
+\index{snprintf@{snprintf}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{snprintf}]{\setlength{\rightskip}{0pt plus 5cm}int snprintf (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{str, }
-\item[{{\bf size\-\_\-t}}]{size, }
+\item[{{\bf size\+\_\+t}}]{size, }
 \item[{const char $\ast$}]{format, }
 \item[{}]{...}
 \end{DoxyParamCaption}
@@ -784,8 +736,8 @@ Modifie le buffer et les flags d'un stream
 \begin{DoxyReturn}{Renvoie}
 En cas de succès, renvoit le nombre de caractères affichés. Négatif en cas d'erreur. 
 \end{DoxyReturn}
-\hypertarget{stdio_8h_a3082155ec11e7229f7a20439b31a169e}{\index{stdio.\-h@{stdio.\-h}!sprintf@{sprintf}}
-\index{sprintf@{sprintf}!stdio.h@{stdio.\-h}}
+\hypertarget{stdio_8h_a3082155ec11e7229f7a20439b31a169e}{\index{stdio.\+h@{stdio.\+h}!sprintf@{sprintf}}
+\index{sprintf@{sprintf}!stdio.\+h@{stdio.\+h}}
 \subsubsection[{sprintf}]{\setlength{\rightskip}{0pt plus 5cm}int sprintf (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{str, }
@@ -817,7 +769,8 @@ En cas de succès, renvoit le nombre de caractères affichés. Négatif en cas d
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -829,7 +782,7 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 
 
 \subsection{Documentation des variables}
-\hypertarget{stdio_8h_ad9a717e4aa4b82cb2e26752399eaa918}{\index{stdio.\-h@{stdio.\-h}!\-\_\-\-\_\-file\-\_\-list@{\-\_\-\-\_\-file\-\_\-list}}
-\index{\-\_\-\-\_\-file\-\_\-list@{\-\_\-\-\_\-file\-\_\-list}!stdio.h@{stdio.\-h}}
-\subsubsection[{\-\_\-\-\_\-file\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\-I\-L\-E}$\ast$ \-\_\-\-\_\-file\-\_\-list}}\label{stdio_8h_ad9a717e4aa4b82cb2e26752399eaa918}
+\hypertarget{stdio_8h_ad9a717e4aa4b82cb2e26752399eaa918}{\index{stdio.\+h@{stdio.\+h}!\+\_\+\+\_\+file\+\_\+list@{\+\_\+\+\_\+file\+\_\+list}}
+\index{\+\_\+\+\_\+file\+\_\+list@{\+\_\+\+\_\+file\+\_\+list}!stdio.\+h@{stdio.\+h}}
+\subsubsection[{\+\_\+\+\_\+file\+\_\+list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+I\+L\+E}$\ast$ \+\_\+\+\_\+file\+\_\+list}}\label{stdio_8h_ad9a717e4aa4b82cb2e26752399eaa918}
 Liste chainée qui contient les streams. 

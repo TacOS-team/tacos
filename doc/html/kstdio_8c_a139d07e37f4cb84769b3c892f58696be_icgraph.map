@@ -1,3 +1,6 @@
 <map id="kprintf" name="kprintf">
-<area shape="rect" id="node3" href="$list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="113,5,183,33"/>
+<area shape="rect" id="node2" href="$memory_8c.html#a8fba2533a7d88ec6038d6948ca695957" title="Affiche la liste des cadres utilisés. " alt="" coords="112,5,289,32"/>
+<area shape="rect" id="node3" href="$memory_8c.html#a09a07799735fa6d6fbae7e870052daa3" title="Affiche la liste des cadres libres. " alt="" coords="115,56,286,83"/>
+<area shape="rect" id="node4" href="$memory_8c.html#a0a428a3b3b69b116515e43ffc7a96042" title="Affiche la mémoire physique. " alt="" coords="151,107,251,133"/>
+<area shape="rect" id="node5" href="$list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="165,157,236,184"/>
 </map>

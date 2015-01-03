@@ -171,7 +171,7 @@ time_t&#160;</td><td class="memItemRight" valign="bottom"><b>boot_systime</b></t
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
-<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>Copyright (C) 2010-2014 TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
@@ -441,7 +441,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="clock_8c_ab07bd3e86ff449c65b06fd50ec8e422e_icgraph.png" border="0" usemap="#clock_8c_ab07bd3e86ff449c65b06fd50ec8e422e_icgraph" alt=""/></div>
 <map name="clock_8c_ab07bd3e86ff449c65b06fd50ec8e422e_icgraph" id="clock_8c_ab07bd3e86ff449c65b06fd50ec8e422e_icgraph">
-<area shape="rect" id="node3" href="clock_8h.html#ae9cc0a879e88eea28e4e8b57318ef8e5" title="Initialisation de l&#39;horloge. Initialisation de l&#39;horloge." alt="" coords="157,5,235,33"/><area shape="rect" id="node5" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="283,5,368,33"/></map>
+<area shape="rect" id="node3" href="clock_8h.html#ae9cc0a879e88eea28e4e8b57318ef8e5" title="Initialisation de l&#39;horloge. Initialisation de l&#39;horloge." alt="" coords="157,5,235,33"/><area shape="rect" id="node5" href="events_8h.html#a3347d12312a3574eb868e1122639d046" title="initialise le support des evenements" alt="" coords="283,5,365,33"/></map>
 </div>
 </p>
 
@@ -477,6 +477,9 @@ Voici le graphe des appelants de cette fonction :</div>
 <a class="anchor" id="ab1bd72177a9697cdd2eec38a4fe6651e"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">time_t get_date </td>
@@ -485,6 +488,11 @@ Voici le graphe des appelants de cette fonction :</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Renvoie</dt><dd>la date en secondes. </dd></dl>
 
@@ -493,7 +501,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="clock_8c_ab1bd72177a9697cdd2eec38a4fe6651e_icgraph.png" border="0" usemap="#clock_8c_ab1bd72177a9697cdd2eec38a4fe6651e_icgraph" alt=""/></div>
 <map name="clock_8c_ab1bd72177a9697cdd2eec38a4fe6651e_icgraph" id="clock_8c_ab1bd72177a9697cdd2eec38a4fe6651e_icgraph">
-<area shape="rect" id="node3" href="clock_8h.html#a8bfadf8175457fd7fbe6b53a46788a4e" title="Syscall handler pour get_date. Syscall handler pour get_date." alt="" coords="125,5,285,33"/><area shape="rect" id="node5" href="clock_8h.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="176,55,235,83"/><area shape="rect" id="node7" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur" alt="" coords="335,30,476,58"/><area shape="rect" id="node13" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="540,81,623,109"/><area shape="rect" id="node9" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="527,30,636,58"/><area shape="rect" id="node11" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="685,55,845,83"/></map>
+<area shape="rect" id="node3" href="clock_8h.html#a8bfadf8175457fd7fbe6b53a46788a4e" title="Syscall handler pour get_date. Syscall handler pour get_date." alt="" coords="125,5,280,33"/><area shape="rect" id="node5" href="clock_8h.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="175,55,231,83"/><area shape="rect" id="node7" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur" alt="" coords="328,30,467,58"/><area shape="rect" id="node13" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="529,81,609,109"/><area shape="rect" id="node9" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="515,30,624,58"/><area shape="rect" id="node11" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="672,55,827,83"/></map>
 </div>
 </p>
 
@@ -535,7 +543,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="clock_8c_a0dc3166547de3bc1b9bdf45fdfb7d2e5_icgraph.png" border="0" usemap="#clock_8c_a0dc3166547de3bc1b9bdf45fdfb7d2e5_icgraph" alt=""/></div>
 <map name="clock_8c_a0dc3166547de3bc1b9bdf45fdfb7d2e5_icgraph" id="clock_8c_a0dc3166547de3bc1b9bdf45fdfb7d2e5_icgraph">
-<area shape="rect" id="node3" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur" alt="" coords="113,5,255,33"/><area shape="rect" id="node9" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="319,55,401,83"/><area shape="rect" id="node5" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="305,5,415,33"/><area shape="rect" id="node7" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="464,30,624,58"/></map>
+<area shape="rect" id="node3" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur" alt="" coords="112,5,251,33"/><area shape="rect" id="node9" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="313,55,393,83"/><area shape="rect" id="node5" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="299,5,408,33"/><area shape="rect" id="node7" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="456,30,611,58"/></map>
 </div>
 </p>
 
@@ -576,7 +584,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="clock_8c_ab594b78936f7a5c4ba0c3b7ad653b6d5_cgraph.png" border="0" usemap="#clock_8c_ab594b78936f7a5c4ba0c3b7ad653b6d5_cgraph" alt=""/></div>
 <map name="clock_8c_ab594b78936f7a5c4ba0c3b7ad653b6d5_cgraph" id="clock_8c_ab594b78936f7a5c4ba0c3b7ad653b6d5_cgraph">
-<area shape="rect" id="node3" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="215,5,292,33"/></map>
+<area shape="rect" id="node3" href="clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="209,5,287,33"/></map>
 </div>
 </p>
 
@@ -617,7 +625,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="clock_8c_a8bfadf8175457fd7fbe6b53a46788a4e_cgraph.png" border="0" usemap="#clock_8c_a8bfadf8175457fd7fbe6b53a46788a4e_cgraph" alt=""/></div>
 <map name="clock_8c_a8bfadf8175457fd7fbe6b53a46788a4e_cgraph" id="clock_8c_a8bfadf8175457fd7fbe6b53a46788a4e_cgraph">
-<area shape="rect" id="node3" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes." alt="" coords="213,5,285,33"/></map>
+<area shape="rect" id="node3" href="clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes." alt="" coords="208,5,280,33"/></map>
 </div>
 </p>
 
@@ -659,7 +667,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="clock_8c_a052807a5c6ae63175a937381014a5701_icgraph.png" border="0" usemap="#clock_8c_a052807a5c6ae63175a937381014a5701_icgraph" alt=""/></div>
 <map name="clock_8c_a052807a5c6ae63175a937381014a5701_icgraph" id="clock_8c_a052807a5c6ae63175a937381014a5701_icgraph">
-<area shape="rect" id="node3" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur" alt="" coords="183,5,324,33"/><area shape="rect" id="node9" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="388,55,471,83"/><area shape="rect" id="node5" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="375,5,484,33"/><area shape="rect" id="node7" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="533,30,693,58"/></map>
+<area shape="rect" id="node3" href="events_8h.html#a6184a9efd8a6c7dff128ece08e87e044" title="met à jour l&#39;évènement de l&#39;ordonnanceur" alt="" coords="179,5,317,33"/><area shape="rect" id="node9" href="events_8h.html#ac4029f71d470b358efa7d186ddd80aaa" title="ajoute un évènement à declencher" alt="" coords="380,55,460,83"/><area shape="rect" id="node5" href="scheduler_8c.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au..." alt="" coords="365,5,475,33"/><area shape="rect" id="node7" href="scheduler_8c.html#ab180240c5e0d6459b4fafe3c81939ac5" title="Handler de l&#39;appel système sleep." alt="" coords="523,30,677,58"/></map>
 </div>
 </p>
 
@@ -683,7 +691,7 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:16 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 8 2014 09:54:15 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

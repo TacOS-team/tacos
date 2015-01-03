@@ -1,4 +1,4 @@
 <map id="kpanic_init" name="kpanic_init">
-<area shape="rect" id="node3" href="$exception_8c.html#ac5a3d89ca654d3606b6afd836a01e207" title="exception_set_routine" alt="" coords="140,5,287,33"/>
-<area shape="rect" id="node5" href="$idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception." alt="" coords="337,5,447,33"/>
+<area shape="rect" id="node2" href="$exception_8c.html#ac5a3d89ca654d3606b6afd836a01e207" title="exception_set_routine" alt="" coords="137,5,285,32"/>
+<area shape="rect" id="node3" href="$idt_8c.html#a042510d9d3af14a9dac9a6c46f27c403" title="Associe un handler à une interruption/exception. " alt="" coords="333,5,444,32"/>
 </map>

@@ -2,26 +2,26 @@
 <area shape="rect" id="node3" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="5,83,93,111"/>
 <area shape="rect" id="node5" href="$libio_8c.html" title="libc/libio.c" alt="" coords="117,83,195,111"/>
 <area shape="rect" id="node7" href="$malloc_8c.html" title="libc/malloc.c" alt="" coords="219,83,312,111"/>
-<area shape="rect" id="node9" href="$process_8c.html" title="libc/process.c" alt="" coords="336,83,437,111"/>
-<area shape="rect" id="node11" href="$start_8c.html" title="libc/start.c" alt="" coords="461,83,544,111"/>
-<area shape="rect" id="node13" href="$fclose_8c.html" title="Define &quot;fclose&quot; method." alt="" coords="568,83,691,111"/>
-<area shape="rect" id="node15" href="$fmemopen_8c.html" title="libc/stdio/fmemopen.c" alt="" coords="715,83,864,111"/>
-<area shape="rect" id="node17" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="888,83,1008,111"/>
-<area shape="rect" id="node19" href="$fprintf_8c.html" title="libc/stdio/fprintf.c" alt="" coords="1032,83,1152,111"/>
-<area shape="rect" id="node21" href="$fread_8c.html" title="libc/stdio/fread.c" alt="" coords="1176,83,1293,111"/>
-<area shape="rect" id="node23" href="$fseek_8c.html" title="libc/stdio/fseek.c" alt="" coords="1317,83,1437,111"/>
-<area shape="rect" id="node25" href="$fwrite_8c.html" title="libc/stdio/fwrite.c" alt="" coords="1461,83,1581,111"/>
-<area shape="rect" id="node27" href="$get_8c.html" title="libc/stdio/get.c" alt="" coords="1605,83,1712,111"/>
-<area shape="rect" id="node29" href="$getline_8c.html" title="libc/stdio/getline.c" alt="" coords="1736,83,1861,111"/>
-<area shape="rect" id="node31" href="$perror_8c.html" title="libc/stdio/perror.c" alt="" coords="1885,83,2005,111"/>
-<area shape="rect" id="node33" href="$printf_8c.html" title="libc/stdio/printf.c" alt="" coords="2029,83,2147,111"/>
-<area shape="rect" id="node35" href="$put_8c.html" title="libc/stdio/put.c" alt="" coords="2171,83,2277,111"/>
-<area shape="rect" id="node37" href="$scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="2301,83,2421,111"/>
-<area shape="rect" id="node39" href="$sprintf_8c.html" title="libc/stdio/sprintf.c" alt="" coords="2445,83,2568,111"/>
-<area shape="rect" id="node41" href="$stdfiles_8c.html" title="Définition et initialisation des fichiers standards (stdin, stdout, stderr)." alt="" coords="2592,83,2720,111"/>
-<area shape="rect" id="node43" href="$stdio_8c.html" title="libc/stdio/stdio.c" alt="" coords="2744,83,2859,111"/>
-<area shape="rect" id="node45" href="$stdlib_8c.html" title="libc/stdlib.c" alt="" coords="2883,83,2968,111"/>
-<area shape="rect" id="node47" href="$time_8c.html" title="libc/time.c" alt="" coords="2992,83,3072,111"/>
-<area shape="rect" id="node49" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="3096,83,3187,111"/>
-<area shape="rect" id="node51" href="$wait_8c.html" title="libc/wait.c" alt="" coords="3211,83,3291,111"/>
+<area shape="rect" id="node9" href="$process_8c.html" title="libc/process.c" alt="" coords="336,83,435,111"/>
+<area shape="rect" id="node11" href="$start_8c.html" title="libc/start.c" alt="" coords="459,83,539,111"/>
+<area shape="rect" id="node13" href="$fclose_8c.html" title="Define &quot;fclose&quot; method." alt="" coords="563,83,683,111"/>
+<area shape="rect" id="node15" href="$fmemopen_8c.html" title="libc/stdio/fmemopen.c" alt="" coords="707,83,853,111"/>
+<area shape="rect" id="node17" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="877,83,995,111"/>
+<area shape="rect" id="node19" href="$fprintf_8c.html" title="libc/stdio/fprintf.c" alt="" coords="1019,83,1139,111"/>
+<area shape="rect" id="node21" href="$fread_8c.html" title="libc/stdio/fread.c" alt="" coords="1163,83,1277,111"/>
+<area shape="rect" id="node23" href="$fseek_8c.html" title="libc/stdio/fseek.c" alt="" coords="1301,83,1419,111"/>
+<area shape="rect" id="node25" href="$fwrite_8c.html" title="libc/stdio/fwrite.c" alt="" coords="1443,83,1560,111"/>
+<area shape="rect" id="node27" href="$get_8c.html" title="libc/stdio/get.c" alt="" coords="1584,83,1688,111"/>
+<area shape="rect" id="node29" href="$getline_8c.html" title="libc/stdio/getline.c" alt="" coords="1712,83,1837,111"/>
+<area shape="rect" id="node31" href="$perror_8c.html" title="libc/stdio/perror.c" alt="" coords="1861,83,1981,111"/>
+<area shape="rect" id="node33" href="$printf_8c.html" title="libc/stdio/printf.c" alt="" coords="2005,83,2120,111"/>
+<area shape="rect" id="node35" href="$put_8c.html" title="libc/stdio/put.c" alt="" coords="2144,83,2248,111"/>
+<area shape="rect" id="node37" href="$scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="2272,83,2389,111"/>
+<area shape="rect" id="node39" href="$sprintf_8c.html" title="libc/stdio/sprintf.c" alt="" coords="2413,83,2536,111"/>
+<area shape="rect" id="node41" href="$stdfiles_8c.html" title="Définition et initialisation des fichiers standards (stdin, stdout, stderr)." alt="" coords="2560,83,2685,111"/>
+<area shape="rect" id="node43" href="$stdio_8c.html" title="libc/stdio/stdio.c" alt="" coords="2709,83,2824,111"/>
+<area shape="rect" id="node45" href="$stdlib_8c.html" title="libc/stdlib.c" alt="" coords="2848,83,2933,111"/>
+<area shape="rect" id="node47" href="$time_8c.html" title="libc/time.c" alt="" coords="2957,83,3037,111"/>
+<area shape="rect" id="node49" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="3061,83,3152,111"/>
+<area shape="rect" id="node51" href="$wait_8c.html" title="libc/wait.c" alt="" coords="3176,83,3253,111"/>
 </map>

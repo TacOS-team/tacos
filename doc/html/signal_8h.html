@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier libc/include/signal.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -94,96 +95,142 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Gestion des signaux.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="cdefs_8h_source.html">sys/cdefs.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="libc_2include_2sys_2types_8h_source.html">sys/types.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="cdefs_8h_source.html">sys/cdefs.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="libc_2include_2sys_2types_8h_source.html">sys/types.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de signal.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="signal_8h__incl.png" border="0" usemap="#libc_2include_2signal_8h" alt=""/></div>
 <map name="libc_2include_2signal_8h" id="libc_2include_2signal_8h">
-<area shape="rect" id="node3" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="5,161,93,189"/><area shape="rect" id="node5" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="87,83,172,111"/><area shape="rect" id="node8" href="stdbool_8h.html" title="Type bool." alt="" coords="117,161,192,189"/></map>
+<area shape="rect" id="node2" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="5,155,93,181"/><area shape="rect" id="node3" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="87,80,174,107"/><area shape="rect" id="node4" href="stdbool_8h.html" title="Type bool. " alt="" coords="117,155,192,181"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="signal_8h__dep__incl.png" border="0" usemap="#libc_2include_2signal_8hdep" alt=""/></div>
 <map name="libc_2include_2signal_8hdep" id="libc_2include_2signal_8hdep">
-<area shape="rect" id="node3" href="signal_8c.html" title="Gestion des signaux." alt="" coords="5,83,96,111"/><area shape="rect" id="node5" href="start_8c.html" title="libc/start.c" alt="" coords="120,83,203,111"/><area shape="rect" id="node7" href="libc_2stdlib_8c.html" title="libc/stdlib.c" alt="" coords="227,83,312,111"/><area shape="rect" id="node9" href="wait_8c.html" title="libc/wait.c" alt="" coords="336,83,416,111"/></map>
+<area shape="rect" id="node2" href="signal_8c.html" title="Gestion des signaux. " alt="" coords="5,80,96,107"/><area shape="rect" id="node3" href="start_8c.html" title="libc/start.c" alt="" coords="120,80,203,107"/><area shape="rect" id="node4" href="libc_2stdlib_8c.html" title="libc/stdlib.c" alt="" coords="227,80,314,107"/><area shape="rect" id="node5" href="wait_8c.html" title="libc/wait.c" alt="" coords="339,80,419,107"/></map>
 </div>
 </div>
 <p><a href="signal_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ab83b88daaecc469d1edb90a527ab4a39"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#ab83b88daaecc469d1edb90a527ab4a39">NSIG</a>&#160;&#160;&#160;32</td></tr>
+<tr class="separator:ab83b88daaecc469d1edb90a527ab4a39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1836b0246d63153d3443f07a230f5797"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1836b0246d63153d3443f07a230f5797"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGTYPES</b></td></tr>
+<tr class="separator:a1836b0246d63153d3443f07a230f5797"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a136c64ec2d1306de745e39d6aee362ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a136c64ec2d1306de745e39d6aee362ca">SIGHUP</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a136c64ec2d1306de745e39d6aee362ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a487309e3e9e0527535644115204a639a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a487309e3e9e0527535644115204a639a">SIGINT</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a487309e3e9e0527535644115204a639a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62045b465be11891160d53c10861b16c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a62045b465be11891160d53c10861b16c">SIGQUIT</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a62045b465be11891160d53c10861b16c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c9c5284f8c8d146bd7a93d25017fc62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a4c9c5284f8c8d146bd7a93d25017fc62">SIGILL</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a4c9c5284f8c8d146bd7a93d25017fc62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2beb906ab1b46676e63823f4e773c38"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#aa2beb906ab1b46676e63823f4e773c38">SIGTRAP</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:aa2beb906ab1b46676e63823f4e773c38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa86c630133e5b5174ac970227b273446"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#aa86c630133e5b5174ac970227b273446">SIGABRT</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:aa86c630133e5b5174ac970227b273446"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aead3d488474201acf18c4b63d91edc3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#aead3d488474201acf18c4b63d91edc3c">SIGBUS</a>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:aead3d488474201acf18c4b63d91edc3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fbba29aec3e4a8daae12935299df92d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a7fbba29aec3e4a8daae12935299df92d">SIGFPE</a>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:a7fbba29aec3e4a8daae12935299df92d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addd8dcd406ce514ab3b4f576a5343d42"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#addd8dcd406ce514ab3b4f576a5343d42">SIGKILL</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:addd8dcd406ce514ab3b4f576a5343d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a944a8250e34bfd7991123abd3436d8c0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a944a8250e34bfd7991123abd3436d8c0">SIGUSR1</a>&#160;&#160;&#160;9</td></tr>
+<tr class="separator:a944a8250e34bfd7991123abd3436d8c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae20b4f7171a09516ea73c9d2745bd596"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#ae20b4f7171a09516ea73c9d2745bd596">SIGSEGV</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:ae20b4f7171a09516ea73c9d2745bd596"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaaa61abe503c43481e35e21b0b5a031"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#abaaa61abe503c43481e35e21b0b5a031">SIGUSR2</a>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:abaaa61abe503c43481e35e21b0b5a031"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57e9c8c5fa13bf86bc779a9f6f408b7c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a57e9c8c5fa13bf86bc779a9f6f408b7c">SIGPIPE</a>&#160;&#160;&#160;12</td></tr>
+<tr class="separator:a57e9c8c5fa13bf86bc779a9f6f408b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6946723c6b7a86ec3c33caaf832840b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#aa6946723c6b7a86ec3c33caaf832840b">SIGALRM</a>&#160;&#160;&#160;13</td></tr>
+<tr class="separator:aa6946723c6b7a86ec3c33caaf832840b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a682182a5e5f38fd61f4311501e9dac5d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a682182a5e5f38fd61f4311501e9dac5d">SIGTERM</a>&#160;&#160;&#160;14</td></tr>
+<tr class="separator:a682182a5e5f38fd61f4311501e9dac5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e63521a64cc8bc2b91d36a87d32c9f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a0e63521a64cc8bc2b91d36a87d32c9f8">SIGCHLD</a>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:a0e63521a64cc8bc2b91d36a87d32c9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a024f43063003e753afc6cca1acd6e104"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a024f43063003e753afc6cca1acd6e104">SIGCONT</a>&#160;&#160;&#160;17</td></tr>
+<tr class="separator:a024f43063003e753afc6cca1acd6e104"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a069e358bc9a864b7dc4fed2440eda14c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a069e358bc9a864b7dc4fed2440eda14c">SIGSTOP</a>&#160;&#160;&#160;18</td></tr>
+<tr class="separator:a069e358bc9a864b7dc4fed2440eda14c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe65c086e01f0d286b7a785a7e3cdd1a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#abe65c086e01f0d286b7a785a7e3cdd1a">SIGTSTP</a>&#160;&#160;&#160;19</td></tr>
+<tr class="separator:abe65c086e01f0d286b7a785a7e3cdd1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c146e34a6b5a78dfba41cded3331181"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a2c146e34a6b5a78dfba41cded3331181">SIGTTIN</a>&#160;&#160;&#160;20</td></tr>
+<tr class="separator:a2c146e34a6b5a78dfba41cded3331181"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a782864287613e2c5c030411fa9c5e9b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a782864287613e2c5c030411fa9c5e9b1">SIGTTOU</a>&#160;&#160;&#160;21</td></tr>
+<tr class="separator:a782864287613e2c5c030411fa9c5e9b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9ff13149e36144a4ea28788948c34dd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#ad9ff13149e36144a4ea28788948c34dd">SIGURG</a>&#160;&#160;&#160;22</td></tr>
+<tr class="separator:ad9ff13149e36144a4ea28788948c34dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bacf9eb18fd539099c1bb4666c45d60"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a8bacf9eb18fd539099c1bb4666c45d60">SIGSYS</a>&#160;&#160;&#160;30</td></tr>
+<tr class="separator:a8bacf9eb18fd539099c1bb4666c45d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae89f9a1282bd2d1b2a2b310c12ea16a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae89f9a1282bd2d1b2a2b310c12ea16a5"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGRTMIN</b>&#160;&#160;&#160;31</td></tr>
+<tr class="separator:ae89f9a1282bd2d1b2a2b310c12ea16a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5336d2c76af22b10373e3dd28fb3b0f0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5336d2c76af22b10373e3dd28fb3b0f0"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SIGRTMAX</b>&#160;&#160;&#160;<a class="el" href="signal_8h.html#ab83b88daaecc469d1edb90a527ab4a39">NSIG</a>-1</td></tr>
+<tr class="separator:a5336d2c76af22b10373e3dd28fb3b0f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a927f6ae16379576d638006c7498ac5d7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a927f6ae16379576d638006c7498ac5d7"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SIG_BLOCK</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a927f6ae16379576d638006c7498ac5d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fcd73313a63dac2cc7eb3b654215250"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5fcd73313a63dac2cc7eb3b654215250"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SIG_UNBLOCK</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a5fcd73313a63dac2cc7eb3b654215250"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37750b78b7ae75fe02ad26e70f6cc845"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37750b78b7ae75fe02ad26e70f6cc845"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SIG_SETMASK</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a37750b78b7ae75fe02ad26e70f6cc845"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf0e499b0ac946b366b4f47a3b3e8b9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#acf0e499b0ac946b366b4f47a3b3e8b9e">SIG_IGN</a>&#160;&#160;&#160;sig_ignore_handler</td></tr>
+<tr class="separator:acf0e499b0ac946b366b4f47a3b3e8b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27d5dc561093d6243542e6a2465bc0f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a27d5dc561093d6243542e6a2465bc0f8">SIG_DFL</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a27d5dc561093d6243542e6a2465bc0f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
 <tr class="memitem:a9140a5882f847f67b8155c759ac6aa05"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9140a5882f847f67b8155c759ac6aa05"></a>
 typedef unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>sigset_t</b></td></tr>
+<tr class="separator:a9140a5882f847f67b8155c759ac6aa05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a564498016effaee1f3384e07b7ced24f"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a> )(int)</td></tr>
+<tr class="separator:a564498016effaee1f3384e07b7ced24f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a1de31bdef82f181f8045b94ae0933916"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a1de31bdef82f181f8045b94ae0933916">init_signals</a> (void)</td></tr>
+<tr class="separator:a1de31bdef82f181f8045b94ae0933916"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9fc1d1a853fcc23a5e434506aa47bca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#ae9fc1d1a853fcc23a5e434506aa47bca">kill</a> (unsigned int pid, int sig)</td></tr>
+<tr class="separator:ae9fc1d1a853fcc23a5e434506aa47bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08ba0dd26a850108a1746412faba2b21"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a08ba0dd26a850108a1746412faba2b21">raise</a> (int sig)</td></tr>
+<tr class="separator:a08ba0dd26a850108a1746412faba2b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18b3c89ca28c1045ee53f16a1ebca8b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="signal_8h.html#a18b3c89ca28c1045ee53f16a1ebca8b3">signal</a> (int sig, <a class="el" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a> func)</td></tr>
+<tr class="separator:a18b3c89ca28c1045ee53f16a1ebca8b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20d9f879bbe69c79f62bd3813fcc1e63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20d9f879bbe69c79f62bd3813fcc1e63"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>sigsuspend</b> (const sigset_t *sigmask)</td></tr>
+<tr class="separator:a20d9f879bbe69c79f62bd3813fcc1e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fd1024302d5bc062261b9b732bdf92b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0fd1024302d5bc062261b9b732bdf92b"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>sigprocmask</b> (int how, const sigset_t *set, sigset_t *oldset)</td></tr>
+<tr class="separator:a0fd1024302d5bc062261b9b732bdf92b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5925352f90eb589393274fa0376d7def"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5925352f90eb589393274fa0376d7def"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>sigemptyset</b> (sigset_t *set)</td></tr>
+<tr class="separator:a5925352f90eb589393274fa0376d7def"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88d7bbc77ea1569ee21c90db549ea023"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88d7bbc77ea1569ee21c90db549ea023"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>sigfillset</b> (sigset_t *set)</td></tr>
+<tr class="separator:a88d7bbc77ea1569ee21c90db549ea023"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae412e6a5436a6c28424b0173251d349c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae412e6a5436a6c28424b0173251d349c"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>sigaddset</b> (sigset_t *set, int signum)</td></tr>
+<tr class="separator:ae412e6a5436a6c28424b0173251d349c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0025e4f32ce2737c40cc0074cc6d7d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0025e4f32ce2737c40cc0074cc6d7d2"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>sigdelset</b> (sigset_t *set, int signum)</td></tr>
+<tr class="separator:ab0025e4f32ce2737c40cc0074cc6d7d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63693cc65f43d772729b588b453fe1ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63693cc65f43d772729b588b453fe1ef"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>sigismember</b> (const sigset_t *set, int signum)</td></tr>
+<tr class="separator:a63693cc65f43d772729b588b453fe1ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad63ce69011851ac099d5d95d3db1863b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad63ce69011851ac099d5d95d3db1863b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>sig_ignore_handler</b> (int <a class="el" href="signal_8c.html#a18b3c89ca28c1045ee53f16a1ebca8b3">signal</a>)</td></tr>
+<tr class="separator:ad63ce69011851ac099d5d95d3db1863b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -193,7 +240,7 @@ LICENSE</h1>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des macros</h2>
+</div><h2 class="groupheader">Documentation des macros</h2>
 <a class="anchor" id="ab83b88daaecc469d1edb90a527ab4a39"></a>
 <div class="memitem">
 <div class="memproto">
@@ -532,7 +579,7 @@ DESCRIPTION</h1>
 
 </div>
 </div>
-<h2>Documentation des définitions de type</h2>
+<h2 class="groupheader">Documentation des définitions de type</h2>
 <a class="anchor" id="a564498016effaee1f3384e07b7ced24f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -546,7 +593,7 @@ DESCRIPTION</h1>
 
 </div>
 </div>
-<h2>Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a1de31bdef82f181f8045b94ae0933916"></a>
 <div class="memitem">
 <div class="memproto">
@@ -567,7 +614,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="signal_8h_a1de31bdef82f181f8045b94ae0933916_cgraph.png" border="0" usemap="#signal_8h_a1de31bdef82f181f8045b94ae0933916_cgraph" alt=""/></div>
 <map name="signal_8h_a1de31bdef82f181f8045b94ae0933916_cgraph" id="signal_8h_a1de31bdef82f181f8045b94ae0933916_cgraph">
-<area shape="rect" id="node3" href="signal_8h.html#a18b3c89ca28c1045ee53f16a1ebca8b3" title="signal" alt="" coords="141,5,197,33"/><area shape="rect" id="node5" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="247,5,308,33"/></map>
+<area shape="rect" id="node2" href="signal_8c.html#a18b3c89ca28c1045ee53f16a1ebca8b3" title="signal" alt="" coords="140,5,196,32"/><area shape="rect" id="node3" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant. " alt="" coords="244,5,307,32"/></map>
 </div>
 </p>
 
@@ -611,7 +658,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="signal_8h_ae9fc1d1a853fcc23a5e434506aa47bca_cgraph.png" border="0" usemap="#signal_8h_ae9fc1d1a853fcc23a5e434506aa47bca_cgraph" alt=""/></div>
 <map name="signal_8h_ae9fc1d1a853fcc23a5e434506aa47bca_cgraph" id="signal_8h_ae9fc1d1a853fcc23a5e434506aa47bca_cgraph">
-<area shape="rect" id="node3" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="95,5,156,33"/></map>
+<area shape="rect" id="node2" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant. " alt="" coords="92,5,155,32"/></map>
 </div>
 </p>
 
@@ -620,7 +667,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="signal_8h_ae9fc1d1a853fcc23a5e434506aa47bca_icgraph.png" border="0" usemap="#signal_8h_ae9fc1d1a853fcc23a5e434506aa47bca_icgraph" alt=""/></div>
 <map name="signal_8h_ae9fc1d1a853fcc23a5e434506aa47bca_icgraph" id="signal_8h_ae9fc1d1a853fcc23a5e434506aa47bca_icgraph">
-<area shape="rect" id="node3" href="signal_8c.html#a08ba0dd26a850108a1746412faba2b21" title="raise" alt="" coords="93,5,144,33"/></map>
+<area shape="rect" id="node3" href="signal_8c.html#a08ba0dd26a850108a1746412faba2b21" title="raise" alt="" coords="95,5,143,33"/></map>
 </div>
 </p>
 
@@ -653,7 +700,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="signal_8h_a08ba0dd26a850108a1746412faba2b21_cgraph.png" border="0" usemap="#signal_8h_a08ba0dd26a850108a1746412faba2b21_cgraph" alt=""/></div>
 <map name="signal_8h_a08ba0dd26a850108a1746412faba2b21_cgraph" id="signal_8h_a08ba0dd26a850108a1746412faba2b21_cgraph">
-<area shape="rect" id="node3" href="signal_8h.html#ae9fc1d1a853fcc23a5e434506aa47bca" title="kill" alt="" coords="115,5,152,33"/><area shape="rect" id="node7" href="unistd_8h.html#ac61b207337ca21b3b309593fd1a0cb82" title="Obtenir l&#39;identifiant du processus." alt="" coords="105,55,161,83"/><area shape="rect" id="node5" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="212,30,273,58"/></map>
+<area shape="rect" id="node2" href="signal_8c.html#ae9fc1d1a853fcc23a5e434506aa47bca" title="kill" alt="" coords="113,5,152,32"/><area shape="rect" id="node4" href="unistd_8h.html#ac61b207337ca21b3b309593fd1a0cb82" title="Obtenir l&#39;identifiant du processus. " alt="" coords="104,56,161,83"/><area shape="rect" id="node3" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant. " alt="" coords="209,31,272,57"/></map>
 </div>
 </p>
 
@@ -696,7 +743,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="signal_8h_a18b3c89ca28c1045ee53f16a1ebca8b3_cgraph.png" border="0" usemap="#signal_8h_a18b3c89ca28c1045ee53f16a1ebca8b3_cgraph" alt=""/></div>
 <map name="signal_8h_a18b3c89ca28c1045ee53f16a1ebca8b3_cgraph" id="signal_8h_a18b3c89ca28c1045ee53f16a1ebca8b3_cgraph">
-<area shape="rect" id="node3" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="111,5,172,33"/></map>
+<area shape="rect" id="node2" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant. " alt="" coords="109,5,172,32"/></map>
 </div>
 </p>
 
@@ -705,7 +752,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="signal_8h_a18b3c89ca28c1045ee53f16a1ebca8b3_icgraph.png" border="0" usemap="#signal_8h_a18b3c89ca28c1045ee53f16a1ebca8b3_icgraph" alt=""/></div>
 <map name="signal_8h_a18b3c89ca28c1045ee53f16a1ebca8b3_icgraph" id="signal_8h_a18b3c89ca28c1045ee53f16a1ebca8b3_icgraph">
-<area shape="rect" id="node3" href="signal_8c.html#a1de31bdef82f181f8045b94ae0933916" title="init_signals" alt="" coords="111,5,196,33"/></map>
+<area shape="rect" id="node3" href="signal_8c.html#a1de31bdef82f181f8045b94ae0933916" title="init_signals" alt="" coords="109,5,195,33"/></map>
 </div>
 </p>
 
@@ -714,9 +761,9 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:40 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:32 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

@@ -1,14 +1,14 @@
 <map id="kernel/ksem.c" name="kernel/ksem.c">
-<area shape="rect" id="node3" href="$ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="771,161,835,189"/>
-<area shape="rect" id="node10" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="427,161,512,189"/>
-<area shape="rect" id="node29" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="688,83,765,111"/>
-<area shape="rect" id="node32" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="576,83,664,111"/>
-<area shape="rect" id="node5" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="619,238,696,266"/>
-<area shape="rect" id="node7" href="$types_8h.html" title="types.h" alt="" coords="533,315,595,343"/>
-<area shape="rect" id="node13" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="429,238,509,266"/>
-<area shape="rect" id="node16" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="5,238,109,266"/>
-<area shape="rect" id="node18" href="$process__types_8h.html" title="process_types.h" alt="" coords="133,238,248,266"/>
-<area shape="rect" id="node20" href="$symtable_8h.html" title="symtable.h" alt="" coords="272,238,355,266"/>
-<area shape="rect" id="node26" href="$vmm_8h.html" title="vmm.h" alt="" coords="533,238,595,266"/>
-<area shape="rect" id="node23" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="291,315,336,343"/>
+<area shape="rect" id="node3" href="$ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="763,161,824,189"/>
+<area shape="rect" id="node10" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="423,161,505,189"/>
+<area shape="rect" id="node29" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="679,83,756,111"/>
+<area shape="rect" id="node32" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="569,83,655,111"/>
+<area shape="rect" id="node5" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="611,238,688,266"/>
+<area shape="rect" id="node7" href="$types_8h.html" title="types.h" alt="" coords="527,315,588,343"/>
+<area shape="rect" id="node13" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="424,238,504,266"/>
+<area shape="rect" id="node16" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="5,238,107,266"/>
+<area shape="rect" id="node18" href="$process__types_8h.html" title="process_types.h" alt="" coords="131,238,243,266"/>
+<area shape="rect" id="node20" href="$symtable_8h.html" title="symtable.h" alt="" coords="267,238,349,266"/>
+<area shape="rect" id="node26" href="$vmm_8h.html" title="vmm.h" alt="" coords="528,238,587,266"/>
+<area shape="rect" id="node23" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="285,315,331,343"/>
 </map>

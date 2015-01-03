@@ -1,9 +1,9 @@
 <map id="libc/stdio/perror.c" name="libc/stdio/perror.c">
-<area shape="rect" id="node3" href="$errno_8h.html" title="errno.h" alt="" coords="5,238,67,266"/>
-<area shape="rect" id="node7" href="$stdio_8h.html" title="stdio.h" alt="" coords="139,83,197,111"/>
-<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="72,315,160,343"/>
-<area shape="rect" id="node10" href="$libio_8h.html" title="libio.h" alt="" coords="141,161,195,189"/>
-<area shape="rect" id="node13" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="192,238,277,266"/>
-<area shape="rect" id="node19" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="269,161,336,189"/>
-<area shape="rect" id="node16" href="$stdbool_8h.html" title="Type bool." alt="" coords="197,315,272,343"/>
+<area shape="rect" id="node2" href="$errno_8h.html" title="errno.h" alt="" coords="5,229,67,256"/>
+<area shape="rect" id="node4" href="$stdio_8h.html" title="stdio.h" alt="" coords="139,80,199,107"/>
+<area shape="rect" id="node3" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="73,304,161,331"/>
+<area shape="rect" id="node5" href="$libio_8h.html" title="libio.h" alt="" coords="142,155,197,181"/>
+<area shape="rect" id="node6" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="193,229,279,256"/>
+<area shape="rect" id="node8" href="$libc_2include_2stdarg_8h_source.html" title="stdarg.h" alt="" coords="273,155,341,181"/>
+<area shape="rect" id="node7" href="$stdbool_8h.html" title="Type bool. " alt="" coords="199,304,273,331"/>
 </map>

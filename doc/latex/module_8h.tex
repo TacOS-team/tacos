@@ -1,15 +1,15 @@
 \hypertarget{module_8h}{\section{Référence du fichier kernel/include/module.h}
-\label{module_8h}\index{kernel/include/module.\-h@{kernel/include/module.\-h}}
+\label{module_8h}\index{kernel/include/module.\+h@{kernel/include/module.\+h}}
 }
-{\ttfamily \#include $<$types.\-h$>$}\\*
-Graphe des dépendances par inclusion de module.\-h\-:\nopagebreak
+{\ttfamily \#include $<$types.\+h$>$}\\*
+Graphe des dépendances par inclusion de module.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=198pt]{module_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -19,41 +19,41 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \subsection*{Structures de données}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structmodule__info__t}{module\-\_\-info\-\_\-t}
+struct \hyperlink{structmodule__info__t}{module\+\_\+info\+\_\+t}
 \end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{module_8h_aad4709052183850d8e957269322d9fcb}{\#define {\bfseries M\-O\-D\-U\-L\-E\-\_\-\-N\-A\-M\-E}(X)~char \-\_\-\-\_\-modname\mbox{[}$\,$\mbox{]} \-\_\-\-\_\-attribute\-\_\-\-\_\- ((section(\char`\"{}.modname\char`\"{}))) = X}\label{module_8h_aad4709052183850d8e957269322d9fcb}
+\hypertarget{module_8h_aad4709052183850d8e957269322d9fcb}{\#define {\bfseries M\+O\+D\+U\+L\+E\+\_\+\+N\+A\+M\+E}(X)~char \+\_\+\+\_\+modname\mbox{[}$\,$\mbox{]} \+\_\+\+\_\+attribute\+\_\+\+\_\+ ((section(\char`\"{}.modname\char`\"{}))) = X}\label{module_8h_aad4709052183850d8e957269322d9fcb}
 
 \item 
-\hypertarget{module_8h_a53ffbdffe06adf9011c7017499113a9d}{\#define {\bfseries M\-O\-D\-U\-L\-E\-\_\-\-V\-E\-R\-S\-I\-O\-N}(X)~char \-\_\-\-\_\-modversion\mbox{[}$\,$\mbox{]} \-\_\-\-\_\-attribute\-\_\-\-\_\- ((section(\char`\"{}.modversion\char`\"{}))) = X}\label{module_8h_a53ffbdffe06adf9011c7017499113a9d}
+\hypertarget{module_8h_a53ffbdffe06adf9011c7017499113a9d}{\#define {\bfseries M\+O\+D\+U\+L\+E\+\_\+\+V\+E\+R\+S\+I\+O\+N}(X)~char \+\_\+\+\_\+modversion\mbox{[}$\,$\mbox{]} \+\_\+\+\_\+attribute\+\_\+\+\_\+ ((section(\char`\"{}.modversion\char`\"{}))) = X}\label{module_8h_a53ffbdffe06adf9011c7017499113a9d}
 
 \item 
-\hypertarget{module_8h_a331939f37e14438a56751ccce42b7dc5}{\#define {\bfseries M\-O\-D\-U\-L\-E\-\_\-\-L\-O\-A\-D}(X)~int X(void) \-\_\-\-\_\-attribute\-\_\-\-\_\- ((section(\char`\"{}.modload\char`\"{})))}\label{module_8h_a331939f37e14438a56751ccce42b7dc5}
+\hypertarget{module_8h_a331939f37e14438a56751ccce42b7dc5}{\#define {\bfseries M\+O\+D\+U\+L\+E\+\_\+\+L\+O\+A\+D}(X)~int X(void) \+\_\+\+\_\+attribute\+\_\+\+\_\+ ((section(\char`\"{}.modload\char`\"{})))}\label{module_8h_a331939f37e14438a56751ccce42b7dc5}
 
 \item 
-\hypertarget{module_8h_a7e6805a34137e57f3fa01228333378ae}{\#define {\bfseries M\-O\-D\-U\-L\-E\-\_\-\-U\-N\-L\-O\-A\-D}(X)~int X(void) \-\_\-\-\_\-attribute\-\_\-\-\_\- ((section(\char`\"{}.modunload\char`\"{})))}\label{module_8h_a7e6805a34137e57f3fa01228333378ae}
+\hypertarget{module_8h_a7e6805a34137e57f3fa01228333378ae}{\#define {\bfseries M\+O\+D\+U\+L\+E\+\_\+\+U\+N\+L\+O\+A\+D}(X)~int X(void) \+\_\+\+\_\+attribute\+\_\+\+\_\+ ((section(\char`\"{}.modunload\char`\"{})))}\label{module_8h_a7e6805a34137e57f3fa01228333378ae}
 
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{module_8h_a1b592a89bf90c093c0e8e9a3d6822c8c}{\hyperlink{structmodule__info__t}{module\-\_\-info\-\_\-t} $\ast$ {\bfseries load\-\_\-module} (char $\ast$filename)}\label{module_8h_a1b592a89bf90c093c0e8e9a3d6822c8c}
+\hypertarget{module_8h_a1b592a89bf90c093c0e8e9a3d6822c8c}{\hyperlink{structmodule__info__t}{module\+\_\+info\+\_\+t} $\ast$ {\bfseries load\+\_\+module} (char $\ast$filename)}\label{module_8h_a1b592a89bf90c093c0e8e9a3d6822c8c}
 
 \end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 Loads \& Unloads kernel modules 

@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/drivers/char/video.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -85,68 +86,86 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Fonctions</a>  </div>
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Référence du fichier video.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;types.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="ioports_8h_source.html">ioports.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="video_8h_source.html">drivers/video.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;types.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="ioports_8h_source.html">ioports.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="video_8h_source.html">drivers/video.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de video.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="video_8c__incl.png" border="0" usemap="#kernel_2drivers_2char_2video_8c" alt=""/></div>
 <map name="kernel_2drivers_2char_2video_8c" id="kernel_2drivers_2char_2video_8c">
-<area shape="rect" id="node5" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="35,99,104,127"/><area shape="rect" id="node7" href="video_8h.html" title="Driver console (vidéo texte)." alt="" coords="128,99,235,127"/></map>
+<area shape="rect" id="node3" href="ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="35,95,105,121"/><area shape="rect" id="node4" href="video_8h.html" title="Driver console (vidéo texte). " alt="" coords="130,95,237,121"/></map>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ad7ed43a2e8bd59c7bb6c00e1e3f88d1b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#ad7ed43a2e8bd59c7bb6c00e1e3f88d1b">BASE_VGA_VIDEO</a>&#160;&#160;&#160;0xB8000</td></tr>
+<tr class="separator:ad7ed43a2e8bd59c7bb6c00e1e3f88d1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8725fb7a6014e9fdccb345f16f712ce4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8725fb7a6014e9fdccb345f16f712ce4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CRT_REG_INDEX</b>&#160;&#160;&#160;0x3d4</td></tr>
+<tr class="separator:a8725fb7a6014e9fdccb345f16f712ce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e64c358bf521d0f067c58b74fcf02e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e64c358bf521d0f067c58b74fcf02e7"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CRT_REG_DATA</b>&#160;&#160;&#160;0x3d5</td></tr>
+<tr class="separator:a3e64c358bf521d0f067c58b74fcf02e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3595eefb56271fd4e57c51f85eeb1cb2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3595eefb56271fd4e57c51f85eeb1cb2"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CURSOR_POS_MSB</b>&#160;&#160;&#160;0x0E</td></tr>
+<tr class="separator:a3595eefb56271fd4e57c51f85eeb1cb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd16c06f0724819659298faa07d8e0f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acd16c06f0724819659298faa07d8e0f4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CURSOR_POS_LSB</b>&#160;&#160;&#160;0x0F</td></tr>
+<tr class="separator:acd16c06f0724819659298faa07d8e0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeac6f81ecab12113ca0beab3094f086c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#aeac6f81ecab12113ca0beab3094f086c">NB_VGA_PAGES</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:aeac6f81ecab12113ca0beab3094f086c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a759f71f304c11873e67bf7cc3f2d08a8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a759f71f304c11873e67bf7cc3f2d08a8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#a759f71f304c11873e67bf7cc3f2d08a8">init_video</a> ()</td></tr>
-<tr class="memdesc:a759f71f304c11873e67bf7cc3f2d08a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise l'affichage vidéo. En particulier les 4 pages disponibles. <br/></td></tr>
+<tr class="memdesc:a759f71f304c11873e67bf7cc3f2d08a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise l'affichage vidéo. En particulier les 4 pages disponibles. <br /></td></tr>
+<tr class="separator:a759f71f304c11873e67bf7cc3f2d08a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab549780053994f6b1dba04869b562a43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#ab549780053994f6b1dba04869b562a43">switch_page</a> (int i)</td></tr>
-<tr class="memdesc:ab549780053994f6b1dba04869b562a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la page à afficher à l'écran.  <a href="#ab549780053994f6b1dba04869b562a43"></a><br/></td></tr>
+<tr class="memdesc:ab549780053994f6b1dba04869b562a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la page à afficher à l'écran.  <a href="#ab549780053994f6b1dba04869b562a43">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab549780053994f6b1dba04869b562a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5839353cba28b424b12338feca82385"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#ab5839353cba28b424b12338feca82385">flip_page</a> (int n)</td></tr>
-<tr class="memdesc:ab5839353cba28b424b12338feca82385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interverti les 2 buffers d'une page.  <a href="#ab5839353cba28b424b12338feca82385"></a><br/></td></tr>
+<tr class="memdesc:ab5839353cba28b424b12338feca82385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interverti les 2 buffers d'une page.  <a href="#ab5839353cba28b424b12338feca82385">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab5839353cba28b424b12338feca82385"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61e8f22681edb740e2d057ac270e6f5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#a61e8f22681edb740e2d057ac270e6f5b">disable_cursor</a> (int disable)</td></tr>
-<tr class="memdesc:a61e8f22681edb740e2d057ac270e6f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Désactive l'affichage du curseur.  <a href="#a61e8f22681edb740e2d057ac270e6f5b"></a><br/></td></tr>
+<tr class="memdesc:a61e8f22681edb740e2d057ac270e6f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Désactive l'affichage du curseur.  <a href="#a61e8f22681edb740e2d057ac270e6f5b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a61e8f22681edb740e2d057ac270e6f5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1ddd4e6afaac2e5d7ed1d7575e8186b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1ddd4e6afaac2e5d7ed1d7575e8186b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#ab1ddd4e6afaac2e5d7ed1d7575e8186b">cursor_position_video</a> (int n, int x, int y)</td></tr>
-<tr class="memdesc:ab1ddd4e6afaac2e5d7ed1d7575e8186b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la position du curseur. <br/></td></tr>
-<tr class="memitem:ab1abb360e352f13b691ed232ab8bc6f7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1abb360e352f13b691ed232ab8bc6f7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#ab1abb360e352f13b691ed232ab8bc6f7">kputchar_video</a> (int n, bool front, char c, int x, int y, char attr)</td></tr>
-<tr class="memdesc:ab1abb360e352f13b691ed232ab8bc6f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche dans une page le caractère souhaité à l'endroit souhaité. <br/></td></tr>
-<tr class="memitem:a287a2812973a8101091cb0a371802334"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a287a2812973a8101091cb0a371802334"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#a287a2812973a8101091cb0a371802334">get_char_video</a> (int n, bool front, char *c, int x, int y, char *attr)</td></tr>
-<tr class="memdesc:a287a2812973a8101091cb0a371802334"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de récupérer le caractère situé à une certaine position de l'écran. <br/></td></tr>
+<tr class="memdesc:ab1ddd4e6afaac2e5d7ed1d7575e8186b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la position du curseur. <br /></td></tr>
+<tr class="separator:ab1ddd4e6afaac2e5d7ed1d7575e8186b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a245349c6364aa746521136a348bff3cd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a245349c6364aa746521136a348bff3cd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#a245349c6364aa746521136a348bff3cd">kputchar_video</a> (int n, bool front, unsigned char c, int x, int y, char attr)</td></tr>
+<tr class="memdesc:a245349c6364aa746521136a348bff3cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche dans une page le caractère souhaité à l'endroit souhaité. <br /></td></tr>
+<tr class="separator:a245349c6364aa746521136a348bff3cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f41de97e0b180e50aeff97af64d5dd2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#a9f41de97e0b180e50aeff97af64d5dd2">scrollup</a> (int n, char attr)</td></tr>
+<tr class="memdesc:a9f41de97e0b180e50aeff97af64d5dd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scroll everything up.  <a href="#a9f41de97e0b180e50aeff97af64d5dd2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9f41de97e0b180e50aeff97af64d5dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a612f1d730f1f1ec5e7aac18bba60f094"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8c.html#a612f1d730f1f1ec5e7aac18bba60f094">convert_latin1_cp437</a> []</td></tr>
+<tr class="separator:a612f1d730f1f1ec5e7aac18bba60f094"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
-<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>Copyright (C) 2010-2014 TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 <p>Description de ce que fait le fichier </p>
-</div><h2>Documentation des macros</h2>
+</div><h2 class="groupheader">Documentation des macros</h2>
 <a class="anchor" id="ad7ed43a2e8bd59c7bb6c00e1e3f88d1b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -173,7 +192,7 @@ DESCRIPTION</h1>
 
 </div>
 </div>
-<h2>Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a61e8f22681edb740e2d057ac270e6f5b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -199,7 +218,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="video_8c_a61e8f22681edb740e2d057ac270e6f5b_icgraph.png" border="0" usemap="#video_8c_a61e8f22681edb740e2d057ac270e6f5b_icgraph" alt=""/></div>
 <map name="video_8c_a61e8f22681edb740e2d057ac270e6f5b_icgraph" id="video_8c_a61e8f22681edb740e2d057ac270e6f5b_icgraph">
-<area shape="rect" id="node3" href="console_8h.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan." alt="" coords="160,5,267,33"/><area shape="rect" id="node5" href="keyboard_8h.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61" title="keyboardInterrupt" alt="" coords="315,5,437,33"/></map>
+<area shape="rect" id="node2" href="console_8h.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan. " alt="" coords="160,5,267,32"/><area shape="rect" id="node3" href="keyboard_8h.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61" title="keyboardInterrupt" alt="" coords="315,5,437,32"/></map>
 </div>
 </p>
 
@@ -230,7 +249,58 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="video_8c_ab5839353cba28b424b12338feca82385_cgraph.png" border="0" usemap="#video_8c_ab5839353cba28b424b12338feca82385_cgraph" alt=""/></div>
 <map name="video_8c_ab5839353cba28b424b12338feca82385_cgraph" id="video_8c_ab5839353cba28b424b12338feca82385_cgraph">
-<area shape="rect" id="node3" href="video_8c.html#ab549780053994f6b1dba04869b562a43" title="Change la page à afficher à l&#39;écran." alt="" coords="129,5,223,33"/></map>
+<area shape="rect" id="node2" href="video_8c.html#ab549780053994f6b1dba04869b562a43" title="Change la page à afficher à l&#39;écran. " alt="" coords="127,5,221,32"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="video_8c_ab5839353cba28b424b12338feca82385_icgraph.png" border="0" usemap="#video_8c_ab5839353cba28b424b12338feca82385_icgraph" alt=""/></div>
+<map name="video_8c_ab5839353cba28b424b12338feca82385_icgraph" id="video_8c_ab5839353cba28b424b12338feca82385_icgraph">
+<area shape="rect" id="node2" href="video_8h.html#a9f41de97e0b180e50aeff97af64d5dd2" title="Scroll everything up. " alt="" coords="127,5,193,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9f41de97e0b180e50aeff97af64d5dd2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void scrollup </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>attr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Le numero de la page concernée. </td></tr>
+    <tr><td class="paramname">attr</td><td>L'attribut qui définit la couleur pour la nouvelle ligne. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="video_8c_a9f41de97e0b180e50aeff97af64d5dd2_cgraph.png" border="0" usemap="#video_8c_a9f41de97e0b180e50aeff97af64d5dd2_cgraph" alt=""/></div>
+<map name="video_8c_a9f41de97e0b180e50aeff97af64d5dd2_cgraph" id="video_8c_a9f41de97e0b180e50aeff97af64d5dd2_cgraph">
+<area shape="rect" id="node2" href="video_8c.html#a245349c6364aa746521136a348bff3cd" title="Affiche dans une page le caractère souhaité à l&#39;endroit souhaité. " alt="" coords="120,5,231,32"/><area shape="rect" id="node3" href="video_8c.html#ab5839353cba28b424b12338feca82385" title="Interverti les 2 buffers d&#39;une page. " alt="" coords="139,56,212,83"/><area shape="rect" id="node4" href="video_8c.html#ab549780053994f6b1dba04869b562a43" title="Change la page à afficher à l&#39;écran. " alt="" coords="279,56,373,83"/></map>
 </div>
 </p>
 
@@ -261,18 +331,50 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="video_8c_ab549780053994f6b1dba04869b562a43_icgraph.png" border="0" usemap="#video_8c_ab549780053994f6b1dba04869b562a43_icgraph" alt=""/></div>
 <map name="video_8c_ab549780053994f6b1dba04869b562a43_icgraph" id="video_8c_ab549780053994f6b1dba04869b562a43_icgraph">
-<area shape="rect" id="node3" href="console_8h.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan." alt="" coords="149,5,256,33"/><area shape="rect" id="node7" href="video_8h.html#ab5839353cba28b424b12338feca82385" title="Interverti les 2 buffers d&#39;une page." alt="" coords="167,55,239,83"/><area shape="rect" id="node5" href="keyboard_8h.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61" title="keyboardInterrupt" alt="" coords="304,5,427,33"/></map>
+<area shape="rect" id="node2" href="console_8h.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan. " alt="" coords="148,5,255,32"/><area shape="rect" id="node4" href="video_8h.html#ab5839353cba28b424b12338feca82385" title="Interverti les 2 buffers d&#39;une page. " alt="" coords="165,56,238,83"/><area shape="rect" id="node3" href="keyboard_8h.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61" title="keyboardInterrupt" alt="" coords="303,5,425,32"/><area shape="rect" id="node5" href="video_8h.html#a9f41de97e0b180e50aeff97af64d5dd2" title="Scroll everything up. " alt="" coords="331,56,397,83"/></map>
 </div>
 </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a class="anchor" id="a612f1d730f1f1ec5e7aac18bba60f094"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char convert_latin1_cp437[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valeur initiale :</b><div class="fragment"><div class="line">= {</div>
+<div class="line">  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,  14,  15,</div>
+<div class="line"> 16,  17,  18,  19,  20,  21,  22,  23,  24,  25,  26,  27,  28,  29,  30,  31,</div>
+<div class="line"> 32,  33,  34,  35,  36,  37,  38,  39,  40,  41,  42,  43,  44,  45,  46,  47,</div>
+<div class="line"> 48,  49,  50,  51,  52,  53,  54,  55,  56,  57,  58,  59,  60,  61,  62,  63,</div>
+<div class="line"> 64,  65,  66,  67,  68,  69,  70,  71,  72,  73,  74,  75,  76,  77,  78,  79,</div>
+<div class="line"> 80,  81,  82,  83,  84,  85,  86,  87,  88,  89,  90,  91,  92,  93,  94,  95,</div>
+<div class="line"> 96,  97,  98,  99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111,</div>
+<div class="line">112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127,</div>
+<div class="line">186, 205, 201, 187, 200, 188, 204, 185, 203, 202, 206, 223, 220, 219, 254, 242,</div>
+<div class="line">179, 196, 218, 191, 192, 217, 195, 180, 194, 193, 197, 176, 177, 178, 213, 159,</div>
+<div class="line">255, 173, 155, 156, 207, 157, 221, 21, 249, 184, 166, 174, 170, 240, 169, 238,</div>
+<div class="line">248, 241, 253, 252, 239, 230, 244, 250, 247, 251, 167, 175, 172, 171, 243, 168,</div>
+<div class="line">183, 181, 182, 199, 142, 143, 146, 128, 212, 144, 210, 211, 222, 214, 215, 216,</div>
+<div class="line">209, 165, 227, 224, 226, 229, 153, 158, 190, 235, 233, 234, 154, 237, 232, 225,</div>
+<div class="line">133, 160, 131, 198, 132, 134, 145, 135, 138, 130, 136, 137, 141, 161, 140, 139,</div>
+<div class="line">208, 164, 149, 162, 147, 228, 148, 246, 189, 151, 163, 150, 129, 236, 231, 152</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Table de conversion latin1 vers cp437 (celui utilisé pour l'affichage) </p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:34 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

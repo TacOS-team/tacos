@@ -1,6 +1,6 @@
 <map id="mknod" name="mknod">
-<area shape="rect" id="node3" href="$unistd_8h.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="115,30,243,58"/>
-<area shape="rect" id="node9" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="148,81,209,109"/>
-<area shape="rect" id="node5" href="$kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="293,5,347,33"/>
-<area shape="rect" id="node7" href="$kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="292,55,348,83"/>
+<area shape="rect" id="node2" href="$unistd_8c.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd. " alt="" coords="115,31,243,57"/>
+<area shape="rect" id="node5" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant. " alt="" coords="147,81,210,108"/>
+<area shape="rect" id="node3" href="$kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères. " alt="" coords="292,5,347,32"/>
+<area shape="rect" id="node4" href="$kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine. " alt="" coords="291,56,348,83"/>
 </map>

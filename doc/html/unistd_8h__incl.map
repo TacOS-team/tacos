@@ -1,7 +1,7 @@
 <map id="libc/include/unistd.h" name="libc/include/unistd.h">
-<area shape="rect" id="node3" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="5,315,93,343"/>
-<area shape="rect" id="node5" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="125,238,211,266"/>
-<area shape="rect" id="node10" href="$stat_8h.html" title="sys/stat.h" alt="" coords="64,83,141,111"/>
-<area shape="rect" id="node8" href="$stdbool_8h.html" title="Type bool." alt="" coords="131,315,205,343"/>
-<area shape="rect" id="node14" href="$time_8h.html" title="time.h" alt="" coords="75,161,131,189"/>
+<area shape="rect" id="node2" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="131,229,219,256"/>
+<area shape="rect" id="node3" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="5,155,92,181"/>
+<area shape="rect" id="node5" href="$stat_8h.html" title="sys/stat.h" alt="" coords="91,80,169,107"/>
+<area shape="rect" id="node4" href="$stdbool_8h.html" title="Type bool. " alt="" coords="11,229,86,256"/>
+<area shape="rect" id="node6" href="$sys_2time_8h.html" title="time.h" alt="" coords="168,155,225,181"/>
 </map>

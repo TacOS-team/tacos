@@ -2,6 +2,8 @@ var searchData=
 [
   ['r_5fw',['r_w',['../structpage__directory__entry.html#af4aa8287c5da23728d33053fcb3f1715',1,'page_directory_entry::r_w()'],['../structpage__table__entry.html#a5d33a8057c30817a0680a3b8928d028e',1,'page_table_entry::r_w()']]],
   ['raise',['raise',['../signal_8h.html#a08ba0dd26a850108a1746412faba2b21',1,'raise(int sig):&#160;signal.c'],['../signal_8c.html#a08ba0dd26a850108a1746412faba2b21',1,'raise(int sig):&#160;signal.c']]],
+  ['ram_2ec',['ram.c',['../ram_8c.html',1,'']]],
+  ['ram_2eh',['ram.h',['../ram_8h.html',1,'']]],
   ['read',['read',['../struct__open__file__operations__t.html#ad5637bc6a752b9a13806748966b77e68',1,'_open_file_operations_t::read()'],['../structchardev__interfaces.html#afeba560360e6a5dfff549d78c220b68b',1,'chardev_interfaces::read()'],['../structblkdev__interfaces.html#ad14a2ad714105cdb8ce002eb4fb9e747',1,'blkdev_interfaces::read()'],['../unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2',1,'read(int fd, void *buf, size_t count):&#160;unistd.c'],['../unistd_8c.html#af32a16ad2dd9e48482f8f790db7dbbd2',1,'read(int fd, void *buf, size_t count):&#160;unistd.c']]],
   ['read_5fdata',['read_data',['../struct__ext2__fs__instance__t.html#ac3ea85962b66914cb42ec884d70a853d',1,'_ext2_fs_instance_t::read_data()'],['../struct__fat__fs__instance__t.html#adfdb319d2d87dc55a678366740a2bba9',1,'_fat_fs_instance_t::read_data()']]],
   ['read_5ffat',['read_fat',['../fat__internal_8c.html#acc9f1bc688e7d7c5459ad50676608995',1,'read_fat(fat_fs_instance_t *instance):&#160;fat_internal.c'],['../fat__internal_8h.html#acc9f1bc688e7d7c5459ad50676608995',1,'read_fat(fat_fs_instance_t *instance):&#160;fat_internal.c']]],

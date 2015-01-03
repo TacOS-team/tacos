@@ -1,10 +1,10 @@
 <map id="libc/fcntl.c" name="libc/fcntl.c">
-<area shape="rect" id="node5" href="$fcntl_8h.html" title="File control operations." alt="" coords="31,161,87,189"/>
-<area shape="rect" id="node9" href="$unistd_8h.html" title="unistd.h" alt="" coords="141,83,208,111"/>
-<area shape="rect" id="node25" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="232,83,328,111"/>
-<area shape="rect" id="node7" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="131,393,219,421"/>
-<area shape="rect" id="node12" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="263,315,348,343"/>
-<area shape="rect" id="node17" href="$stat_8h.html" title="sys/stat.h" alt="" coords="181,161,259,189"/>
-<area shape="rect" id="node15" href="$stdbool_8h.html" title="Type bool." alt="" coords="268,393,343,421"/>
-<area shape="rect" id="node21" href="$time_8h.html" title="time.h" alt="" coords="212,238,268,266"/>
+<area shape="rect" id="node3" href="$fcntl_8h.html" title="File control operations. " alt="" coords="325,155,383,181"/>
+<area shape="rect" id="node5" href="$unistd_8h.html" title="unistd.h" alt="" coords="174,80,241,107"/>
+<area shape="rect" id="node10" href="$syscall_8h.html" title="sys/syscall.h" alt="" coords="315,80,411,107"/>
+<area shape="rect" id="node4" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="153,304,241,331"/>
+<area shape="rect" id="node6" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="5,229,92,256"/>
+<area shape="rect" id="node8" href="$stat_8h.html" title="sys/stat.h" alt="" coords="124,155,203,181"/>
+<area shape="rect" id="node7" href="$stdbool_8h.html" title="Type bool. " alt="" coords="11,304,86,331"/>
+<area shape="rect" id="node9" href="$sys_2time_8h.html" title="time.h" alt="" coords="168,229,225,256"/>
 </map>

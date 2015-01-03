@@ -1,8 +1,8 @@
 <map id="libc/stdio/fprintf.c" name="libc/stdio/fprintf.c">
-<area shape="rect" id="node3" href="$stdio_8h.html" title="stdio.h" alt="" coords="80,83,139,111"/>
-<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="5,315,93,343"/>
-<area shape="rect" id="node7" href="$libio_8h.html" title="libio.h" alt="" coords="51,161,104,189"/>
-<area shape="rect" id="node10" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="100,238,185,266"/>
-<area shape="rect" id="node16" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="179,161,245,189"/>
-<area shape="rect" id="node13" href="$stdbool_8h.html" title="Type bool." alt="" coords="117,315,192,343"/>
+<area shape="rect" id="node2" href="$stdio_8h.html" title="stdio.h" alt="" coords="78,80,138,107"/>
+<area shape="rect" id="node3" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="5,304,93,331"/>
+<area shape="rect" id="node4" href="$libio_8h.html" title="libio.h" alt="" coords="49,155,103,181"/>
+<area shape="rect" id="node5" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="99,229,186,256"/>
+<area shape="rect" id="node7" href="$libc_2include_2stdarg_8h_source.html" title="stdarg.h" alt="" coords="179,155,247,181"/>
+<area shape="rect" id="node6" href="$stdbool_8h.html" title="Type bool. " alt="" coords="117,304,192,331"/>
 </map>

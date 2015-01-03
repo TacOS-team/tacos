@@ -1,13 +1,13 @@
 <map id="_fat_fs_instance_t" name="_fat_fs_instance_t">
-<area shape="rect" id="node2" href="$struct__dentry__t.html" title="_dentry_t" alt="" coords="607,6,681,34"/>
-<area shape="rect" id="node9" href="$struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté." alt="" coords="351,115,457,143"/>
-<area shape="rect" id="node15" href="$struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="452,302,596,330"/>
-<area shape="rect" id="node5" href="$struct__inode__t.html" title="_inode_t" alt="" coords="703,209,772,237"/>
-<area shape="rect" id="node7" href="$struct__open__file__operations__t.html" title="_open_file_operations_t" alt="" coords="540,115,697,143"/>
-<area shape="rect" id="node12" href="$structfile__system__t.html" title="Structure qui représente un FS." alt="" coords="288,209,387,237"/>
-<area shape="rect" id="node21" href="$struct__mounted__fs__t.html" title="_mounted_fs_t" alt="" coords="105,209,212,237"/>
-<area shape="rect" id="node26" href="$struct__fat__info.html" title="_fat_info" alt="" coords="937,302,1009,330"/>
-<area shape="rect" id="node28" href="$struct__fat__extended__BIOS__32.html" title="_fat_extended_BIOS_32" alt="" coords="963,209,1125,237"/>
-<area shape="rect" id="node30" href="$struct__fat__extended__BIOS__16.html" title="_fat_extended_BIOS_16" alt="" coords="1149,209,1312,237"/>
-<area shape="rect" id="node32" href="$struct__fat__BS.html" title="_fat_BS" alt="" coords="869,209,939,237"/>
+<area shape="rect" id="node2" href="$struct__dentry__t.html" title="_dentry_t" alt="" coords="609,5,684,32"/>
+<area shape="rect" id="node5" href="$struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté. " alt="" coords="353,109,460,136"/>
+<area shape="rect" id="node7" href="$struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="455,288,599,315"/>
+<area shape="rect" id="node3" href="$struct__inode__t.html" title="_inode_t" alt="" coords="706,199,777,225"/>
+<area shape="rect" id="node4" href="$struct__open__file__operations__t.html" title="_open_file_operations_t" alt="" coords="541,109,699,136"/>
+<area shape="rect" id="node6" href="$structfile__system__t.html" title="Structure qui représente un FS. " alt="" coords="291,199,389,225"/>
+<area shape="rect" id="node8" href="$struct__mounted__fs__t.html" title="_mounted_fs_t" alt="" coords="106,199,214,225"/>
+<area shape="rect" id="node9" href="$struct__fat__info.html" title="_fat_info" alt="" coords="940,288,1012,315"/>
+<area shape="rect" id="node10" href="$struct__fat__extended__BIOS__32.html" title="_fat_extended_BIOS_32" alt="" coords="965,199,1128,225"/>
+<area shape="rect" id="node11" href="$struct__fat__extended__BIOS__16.html" title="_fat_extended_BIOS_16" alt="" coords="1152,199,1315,225"/>
+<area shape="rect" id="node12" href="$struct__fat__BS.html" title="_fat_BS" alt="" coords="872,199,941,225"/>
 </map>

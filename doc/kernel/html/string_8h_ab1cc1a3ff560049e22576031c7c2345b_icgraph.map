@@ -1,13 +1,13 @@
 <map id="strdup" name="strdup">
-<area shape="rect" id="node3" href="$ext2__internal_8h.html#aacb0077cd0a76158c9288ecd193d58da" title="ext2_lookup" alt="" coords="147,5,237,33"/>
-<area shape="rect" id="node7" href="$kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="529,81,639,109"/>
-<area shape="rect" id="node11" href="$kprocess_8c.html#a47ef452c5b4017727c9c4222ab133fae" title="Syscall pour exécuter un programme." alt="" coords="112,106,272,134"/>
-<area shape="rect" id="node13" href="$vfs_8c.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="155,157,229,185"/>
-<area shape="rect" id="node24" href="$vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage." alt="" coords="359,258,441,286"/>
-<area shape="rect" id="node5" href="$ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="352,5,448,33"/>
-<area shape="rect" id="node9" href="$scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="689,81,791,109"/>
-<area shape="rect" id="node15" href="$kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="363,106,437,134"/>
-<area shape="rect" id="node18" href="$kfcntl_8c.html#aa1d225acb87c04ac8d56c8096f587a03" title="SYSCALL_HANDLER3" alt="" coords="320,157,480,185"/>
-<area shape="rect" id="node20" href="$kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="371,207,429,235"/>
-<area shape="rect" id="node22" href="$list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="549,207,619,235"/>
+<area shape="rect" id="node3" href="$ext2__internal_8h.html#aacb0077cd0a76158c9288ecd193d58da" title="ext2_lookup" alt="" coords="144,5,235,33"/>
+<area shape="rect" id="node7" href="$fat__internal_8h.html#aaf2cd44da9ce9df0808a2cd823fd1295" title="fat_lookup" alt="" coords="148,55,231,83"/>
+<area shape="rect" id="node11" href="$kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="355,106,429,134"/>
+<area shape="rect" id="node13" href="$kprocess_8c.html#a47ef452c5b4017727c9c4222ab133fae" title="Syscall pour exécuter un programme." alt="" coords="112,157,267,185"/>
+<area shape="rect" id="node15" href="$vfs_8c.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="153,207,225,235"/>
+<area shape="rect" id="node24" href="$vfs_8c.html#a26aa39a32af0bfccaffdbcec89c0a00e" title="Montage d&#39;un device sur un certain point de montage." alt="" coords="352,258,432,286"/>
+<area shape="rect" id="node5" href="$ext2_8h.html#a162f5d230a1583a05389a6bb5d349e2a" title="Ajoute un point de montage." alt="" coords="344,5,440,33"/>
+<area shape="rect" id="node9" href="$fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae" title="mount_FAT" alt="" coords="347,55,437,83"/>
+<area shape="rect" id="node18" href="$kfcntl_8c.html#aa1d225acb87c04ac8d56c8096f587a03" title="SYSCALL_HANDLER3" alt="" coords="315,157,469,185"/>
+<area shape="rect" id="node20" href="$kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="363,207,421,235"/>
+<area shape="rect" id="node22" href="$list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="519,207,588,235"/>
 </map>

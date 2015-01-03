@@ -1,4 +1,4 @@
 <map id="get_tv" name="get_tv">
-<area shape="rect" id="node3" href="$clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes." alt="" coords="116,5,188,33"/>
-<area shape="rect" id="node5" href="$clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="113,55,191,83"/>
+<area shape="rect" id="node2" href="$clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes. " alt="" coords="115,5,187,32"/>
+<area shape="rect" id="node3" href="$clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="112,56,191,83"/>
 </map>

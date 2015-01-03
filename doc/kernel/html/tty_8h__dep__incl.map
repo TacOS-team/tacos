@@ -1,10 +1,11 @@
 <map id="kernel/include/tty.h" name="kernel/include/tty.h">
-<area shape="rect" id="node3" href="$serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="5,83,133,127"/>
-<area shape="rect" id="node5" href="$tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="157,83,285,127"/>
-<area shape="rect" id="node7" href="$console_8h.html" title="Console virtuelle (Fn)" alt="" coords="309,83,453,127"/>
-<area shape="rect" id="node15" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="477,91,579,119"/>
-<area shape="rect" id="node17" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="603,91,709,119"/>
-<area shape="rect" id="node9" href="$console_8c.html" title="Console virtuelle (Fn)." alt="" coords="165,177,293,221"/>
-<area shape="rect" id="node11" href="$keyboard_8c.html" title="Driver clavier." alt="" coords="317,177,445,221"/>
-<area shape="rect" id="node13" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="469,185,576,213"/>
+<area shape="rect" id="node3" href="$serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="5,83,131,127"/>
+<area shape="rect" id="node5" href="$tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="155,83,280,127"/>
+<area shape="rect" id="node7" href="$console_8h.html" title="Console virtuelle (Fn)" alt="" coords="304,83,445,127"/>
+<area shape="rect" id="node17" href="$kfcntl_8c.html" title="kernel/kfcntl.c" alt="" coords="469,91,571,119"/>
+<area shape="rect" id="node19" href="$kstdio_8c.html" title="kernel/kstdio.c" alt="" coords="595,91,699,119"/>
+<area shape="rect" id="node9" href="$console_8c.html" title="Console virtuelle (Fn)." alt="" coords="97,177,223,221"/>
+<area shape="rect" id="node11" href="$keyboard_8c.html" title="Driver clavier." alt="" coords="247,177,372,221"/>
+<area shape="rect" id="node13" href="$init_8c.html" title="kernel/init.c" alt="" coords="396,185,484,213"/>
+<area shape="rect" id="node15" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="508,185,615,213"/>
 </map>

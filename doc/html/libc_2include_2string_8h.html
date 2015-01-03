@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier libc/include/string.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -92,71 +93,92 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Fonctions de manipulation de strings.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="cdefs_8h_source.html">sys/cdefs.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="libc_2include_2sys_2types_8h_source.html">sys/types.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="cdefs_8h_source.html">sys/cdefs.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="libc_2include_2sys_2types_8h_source.html">sys/types.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de string.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="libc_2include_2string_8h__incl.png" border="0" usemap="#libc_2include_2string_8h" alt=""/></div>
 <map name="libc_2include_2string_8h" id="libc_2include_2string_8h">
-<area shape="rect" id="node3" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="5,161,93,189"/><area shape="rect" id="node5" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="87,83,172,111"/><area shape="rect" id="node8" href="stdbool_8h.html" title="Type bool." alt="" coords="117,161,192,189"/></map>
+<area shape="rect" id="node2" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="5,155,93,181"/><area shape="rect" id="node3" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="87,80,174,107"/><area shape="rect" id="node4" href="stdbool_8h.html" title="Type bool. " alt="" coords="117,155,192,181"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="libc_2include_2string_8h__dep__incl.png" border="0" usemap="#libc_2include_2string_8hdep" alt=""/></div>
 <map name="libc_2include_2string_8hdep" id="libc_2include_2string_8hdep">
-<area shape="rect" id="node3" href="dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="5,83,93,111"/><area shape="rect" id="node5" href="malloc_8c.html" title="libc/malloc.c" alt="" coords="117,83,211,111"/><area shape="rect" id="node7" href="process_8c.html" title="libc/process.c" alt="" coords="235,83,336,111"/><area shape="rect" id="node9" href="fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="360,83,480,111"/><area shape="rect" id="node11" href="fprintf_8c.html" title="libc/stdio/fprintf.c" alt="" coords="504,83,624,111"/><area shape="rect" id="node13" href="scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="648,83,768,111"/><area shape="rect" id="node15" href="stdfiles_8c.html" title="Définition et initialisation des fichiers standards (stdin, stdout, stderr)." alt="" coords="792,83,920,111"/><area shape="rect" id="node17" href="libc_2stdlib_8c.html" title="libc/stdlib.c" alt="" coords="944,83,1029,111"/><area shape="rect" id="node19" href="libc_2string_8c.html" title="libc/string.c" alt="" coords="1053,83,1141,111"/><area shape="rect" id="node21" href="unistd_8c.html" title="libc/unistd.c" alt="" coords="1165,83,1256,111"/></map>
+<area shape="rect" id="node2" href="dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers. " alt="" coords="5,80,93,107"/><area shape="rect" id="node3" href="malloc_8c.html" title="libc/malloc.c" alt="" coords="118,80,213,107"/><area shape="rect" id="node4" href="process_8c.html" title="libc/process.c" alt="" coords="237,80,339,107"/><area shape="rect" id="node5" href="fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="364,80,484,107"/><area shape="rect" id="node6" href="fprintf_8c.html" title="libc/stdio/fprintf.c" alt="" coords="509,80,630,107"/><area shape="rect" id="node7" href="scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="655,80,775,107"/><area shape="rect" id="node8" href="stdfiles_8c.html" title="Définition et initialisation des fichiers standards (stdin, stdout, stderr). " alt="" coords="799,80,929,107"/><area shape="rect" id="node9" href="libc_2stdlib_8c.html" title="libc/stdlib.c" alt="" coords="953,80,1039,107"/><area shape="rect" id="node10" href="libc_2string_8c.html" title="libc/string.c" alt="" coords="1064,80,1152,107"/><area shape="rect" id="node11" href="unistd_8c.html" title="libc/unistd.c" alt="" coords="1176,80,1267,107"/></map>
 </div>
 </div>
 <p><a href="libc_2include_2string_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a9ea2311b6ee5ded71a785075df281d97"><td class="memItemLeft" align="right" valign="top">__BEGIN_DECLS void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a9ea2311b6ee5ded71a785075df281d97">memcpy</a> (void *dest, const void *src, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> size)</td></tr>
-<tr class="memdesc:a9ea2311b6ee5ded71a785075df281d97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie une zone mémoire.  <a href="#a9ea2311b6ee5ded71a785075df281d97"></a><br/></td></tr>
+<tr class="memdesc:a9ea2311b6ee5ded71a785075df281d97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie une zone mémoire.  <a href="#a9ea2311b6ee5ded71a785075df281d97">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9ea2311b6ee5ded71a785075df281d97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa383452fe445bfae989358c9d7d96f4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f">strlen</a> (const char *s)</td></tr>
-<tr class="memdesc:aa383452fe445bfae989358c9d7d96f4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la longueur d'une chaîne de caractères.  <a href="#aa383452fe445bfae989358c9d7d96f4f"></a><br/></td></tr>
+<tr class="memdesc:aa383452fe445bfae989358c9d7d96f4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la longueur d'une chaîne de caractères.  <a href="#aa383452fe445bfae989358c9d7d96f4f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa383452fe445bfae989358c9d7d96f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12871ed234858ef0e363d2b8aa572fc1"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a12871ed234858ef0e363d2b8aa572fc1">strchr</a> (const char *s, int c)</td></tr>
-<tr class="memdesc:a12871ed234858ef0e363d2b8aa572fc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rechercher un caractère dans une chaîne.  <a href="#a12871ed234858ef0e363d2b8aa572fc1"></a><br/></td></tr>
+<tr class="memdesc:a12871ed234858ef0e363d2b8aa572fc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rechercher un caractère dans une chaîne.  <a href="#a12871ed234858ef0e363d2b8aa572fc1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a12871ed234858ef0e363d2b8aa572fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c05a458deff028ef4d4e64059098db4"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a0c05a458deff028ef4d4e64059098db4">strrchr</a> (const char *s, int c)</td></tr>
-<tr class="memdesc:a0c05a458deff028ef4d4e64059098db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rechercher un caractère dans une chaîne.  <a href="#a0c05a458deff028ef4d4e64059098db4"></a><br/></td></tr>
+<tr class="memdesc:a0c05a458deff028ef4d4e64059098db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rechercher un caractère dans une chaîne.  <a href="#a0c05a458deff028ef4d4e64059098db4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0c05a458deff028ef4d4e64059098db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11bd144d7d44914099a3aeddf1c8567d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a11bd144d7d44914099a3aeddf1c8567d">strcmp</a> (const char *s1, const char *s2)</td></tr>
-<tr class="memdesc:a11bd144d7d44914099a3aeddf1c8567d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux chaînes.  <a href="#a11bd144d7d44914099a3aeddf1c8567d"></a><br/></td></tr>
+<tr class="memdesc:a11bd144d7d44914099a3aeddf1c8567d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux chaînes.  <a href="#a11bd144d7d44914099a3aeddf1c8567d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a11bd144d7d44914099a3aeddf1c8567d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07f4a84c11c106e95c32b6ab509346ef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a07f4a84c11c106e95c32b6ab509346ef">strncmp</a> (const char *s1, const char *s2, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
-<tr class="memdesc:a07f4a84c11c106e95c32b6ab509346ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux chaînes jusqu'à n caractères.  <a href="#a07f4a84c11c106e95c32b6ab509346ef"></a><br/></td></tr>
+<tr class="memdesc:a07f4a84c11c106e95c32b6ab509346ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux chaînes jusqu'à n caractères.  <a href="#a07f4a84c11c106e95c32b6ab509346ef">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a07f4a84c11c106e95c32b6ab509346ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a706b36f3a672f84685576723c3928baa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a706b36f3a672f84685576723c3928baa">strcasecmp</a> (const char *s1, const char *s2)</td></tr>
-<tr class="memdesc:a706b36f3a672f84685576723c3928baa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux chaînes.  <a href="#a706b36f3a672f84685576723c3928baa"></a><br/></td></tr>
+<tr class="memdesc:a706b36f3a672f84685576723c3928baa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux chaînes.  <a href="#a706b36f3a672f84685576723c3928baa">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a706b36f3a672f84685576723c3928baa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a674b7f779fec84cb1a3be8222b5c381a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a674b7f779fec84cb1a3be8222b5c381a">strncasecmp</a> (const char *s1, const char *s2, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
-<tr class="memdesc:a674b7f779fec84cb1a3be8222b5c381a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux chaînes jusqu'à n caractères.  <a href="#a674b7f779fec84cb1a3be8222b5c381a"></a><br/></td></tr>
+<tr class="memdesc:a674b7f779fec84cb1a3be8222b5c381a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux chaînes jusqu'à n caractères.  <a href="#a674b7f779fec84cb1a3be8222b5c381a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a674b7f779fec84cb1a3be8222b5c381a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48d911e1a150610b7182d19b81651828"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a48d911e1a150610b7182d19b81651828">strchrnul</a> (const char *s, int c)</td></tr>
-<tr class="memdesc:a48d911e1a150610b7182d19b81651828"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recherche un caractère dans une chaîne.  <a href="#a48d911e1a150610b7182d19b81651828"></a><br/></td></tr>
+<tr class="memdesc:a48d911e1a150610b7182d19b81651828"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recherche un caractère dans une chaîne.  <a href="#a48d911e1a150610b7182d19b81651828">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a48d911e1a150610b7182d19b81651828"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace6ee45c30e71865e6eb635200379db9"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#ace6ee45c30e71865e6eb635200379db9">memset</a> (void *s, int c, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
-<tr class="memdesc:ace6ee45c30e71865e6eb635200379db9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rempli une zone mémoire avec un octet donné.  <a href="#ace6ee45c30e71865e6eb635200379db9"></a><br/></td></tr>
+<tr class="memdesc:ace6ee45c30e71865e6eb635200379db9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rempli une zone mémoire avec un octet donné.  <a href="#ace6ee45c30e71865e6eb635200379db9">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ace6ee45c30e71865e6eb635200379db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e6df54ee04e18a3772335580e2ed872"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a9e6df54ee04e18a3772335580e2ed872">memcmp</a> (const void *s1, const void *s2, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
-<tr class="memdesc:a9e6df54ee04e18a3772335580e2ed872"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux zones mémoire.  <a href="#a9e6df54ee04e18a3772335580e2ed872"></a><br/></td></tr>
+<tr class="memdesc:a9e6df54ee04e18a3772335580e2ed872"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux zones mémoire.  <a href="#a9e6df54ee04e18a3772335580e2ed872">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9e6df54ee04e18a3772335580e2ed872"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1eb9cae61e6a6282c28dbc298ef7297e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e">strcpy</a> (char *s1, const char *s2)</td></tr>
-<tr class="memdesc:a1eb9cae61e6a6282c28dbc298ef7297e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie une chaine.  <a href="#a1eb9cae61e6a6282c28dbc298ef7297e"></a><br/></td></tr>
+<tr class="memdesc:a1eb9cae61e6a6282c28dbc298ef7297e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie une chaine.  <a href="#a1eb9cae61e6a6282c28dbc298ef7297e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1eb9cae61e6a6282c28dbc298ef7297e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7982e2515766b25c1157ac30f8bac394"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a7982e2515766b25c1157ac30f8bac394">strncpy</a> (char *s1, const char *s2, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
-<tr class="memdesc:a7982e2515766b25c1157ac30f8bac394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie une chaine en se limitant aux n premiers caractères.  <a href="#a7982e2515766b25c1157ac30f8bac394"></a><br/></td></tr>
+<tr class="memdesc:a7982e2515766b25c1157ac30f8bac394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie une chaine en se limitant aux n premiers caractères.  <a href="#a7982e2515766b25c1157ac30f8bac394">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a7982e2515766b25c1157ac30f8bac394"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8908188ae9fc2f05d993257ef001d553"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a8908188ae9fc2f05d993257ef001d553">strcat</a> (char *s1, const char *s2)</td></tr>
-<tr class="memdesc:a8908188ae9fc2f05d993257ef001d553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concaténation de deux chaînes.  <a href="#a8908188ae9fc2f05d993257ef001d553"></a><br/></td></tr>
+<tr class="memdesc:a8908188ae9fc2f05d993257ef001d553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concaténation de deux chaînes.  <a href="#a8908188ae9fc2f05d993257ef001d553">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8908188ae9fc2f05d993257ef001d553"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c10a214b02eed3dafc48c59ad71abbd"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a4c10a214b02eed3dafc48c59ad71abbd">strncat</a> (char *s1, const char *s2, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
-<tr class="memdesc:a4c10a214b02eed3dafc48c59ad71abbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concaténation de deux chaînes avec une limite aux n premiers caractères.  <a href="#a4c10a214b02eed3dafc48c59ad71abbd"></a><br/></td></tr>
+<tr class="memdesc:a4c10a214b02eed3dafc48c59ad71abbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concaténation de deux chaînes avec une limite aux n premiers caractères.  <a href="#a4c10a214b02eed3dafc48c59ad71abbd">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4c10a214b02eed3dafc48c59ad71abbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a802c986820d3866639922b6bc9484f90"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a802c986820d3866639922b6bc9484f90">memmove</a> (void *dest, const void *src, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
-<tr class="memdesc:a802c986820d3866639922b6bc9484f90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie une zone mémoire.  <a href="#a802c986820d3866639922b6bc9484f90"></a><br/></td></tr>
+<tr class="memdesc:a802c986820d3866639922b6bc9484f90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie une zone mémoire.  <a href="#a802c986820d3866639922b6bc9484f90">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a802c986820d3866639922b6bc9484f90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a710d86541afc6b7dafddcdb4b1c94f"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a4a710d86541afc6b7dafddcdb4b1c94f">strstr</a> (const char *haystack, const char *needle)</td></tr>
-<tr class="memdesc:a4a710d86541afc6b7dafddcdb4b1c94f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recherche une sous-chaîne.  <a href="#a4a710d86541afc6b7dafddcdb4b1c94f"></a><br/></td></tr>
+<tr class="memdesc:a4a710d86541afc6b7dafddcdb4b1c94f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recherche une sous-chaîne.  <a href="#a4a710d86541afc6b7dafddcdb4b1c94f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4a710d86541afc6b7dafddcdb4b1c94f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9229017a4501f8d6a637b4498cfed2e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#ae9229017a4501f8d6a637b4498cfed2e">strcasestr</a> (const char *haystack, const char *needle)</td></tr>
-<tr class="memdesc:ae9229017a4501f8d6a637b4498cfed2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recherche une sous-chaîne en ignorant la casse.  <a href="#ae9229017a4501f8d6a637b4498cfed2e"></a><br/></td></tr>
+<tr class="memdesc:ae9229017a4501f8d6a637b4498cfed2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recherche une sous-chaîne en ignorant la casse.  <a href="#ae9229017a4501f8d6a637b4498cfed2e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae9229017a4501f8d6a637b4498cfed2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1cc1a3ff560049e22576031c7c2345b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b">strdup</a> (const char *s)</td></tr>
-<tr class="memdesc:ab1cc1a3ff560049e22576031c7c2345b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Duplique une chaine.  <a href="#ab1cc1a3ff560049e22576031c7c2345b"></a><br/></td></tr>
+<tr class="memdesc:ab1cc1a3ff560049e22576031c7c2345b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Duplique une chaine.  <a href="#ab1cc1a3ff560049e22576031c7c2345b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab1cc1a3ff560049e22576031c7c2345b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b860ba32fef12da8acd4507c059e509"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a8b860ba32fef12da8acd4507c059e509">strndup</a> (const char *s, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n)</td></tr>
-<tr class="memdesc:a8b860ba32fef12da8acd4507c059e509"><td class="mdescLeft">&#160;</td><td class="mdescRight">Duplique une chaine.  <a href="#a8b860ba32fef12da8acd4507c059e509"></a><br/></td></tr>
+<tr class="memdesc:a8b860ba32fef12da8acd4507c059e509"><td class="mdescLeft">&#160;</td><td class="mdescRight">Duplique une chaine.  <a href="#a8b860ba32fef12da8acd4507c059e509">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8b860ba32fef12da8acd4507c059e509"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cb460f64c449f2a9b9b7a40569ce0fe"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2string_8h.html#a8cb460f64c449f2a9b9b7a40569ce0fe">strtok</a> (char *str, const char *delim)</td></tr>
-<tr class="memdesc:a8cb460f64c449f2a9b9b7a40569ce0fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extraire des mots d'une chaîne.  <a href="#a8cb460f64c449f2a9b9b7a40569ce0fe"></a><br/></td></tr>
+<tr class="memdesc:a8cb460f64c449f2a9b9b7a40569ce0fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extraire des mots d'une chaîne.  <a href="#a8cb460f64c449f2a9b9b7a40569ce0fe">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8cb460f64c449f2a9b9b7a40569ce0fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -166,7 +188,7 @@ LICENSE</h1>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des fonctions</h2>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a9e6df54ee04e18a3772335580e2ed872"></a>
 <div class="memitem">
 <div class="memproto">
@@ -196,13 +218,10 @@ DESCRIPTION</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment"> Compare les n premiers octets des zones mémoires s1 et s2.
- Elle retourne un entier négatif, positif ou nul si les n premiers octets de
- s1 sont respectivement plus petits, plus grands ou identiques aux n premiers 
- octets de s2.
-</pre><dl class="section see"><dt>Voir également</dt><dd><a class="el" href="libc_2string_8c.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes.">strcmp</a> </dd>
+<p>Compare les n premiers octets des zones mémoires s1 et s2. Elle retourne un entier négatif, positif ou nul si les n premiers octets de s1 sont respectivement plus petits, plus grands ou identiques aux n premiers octets de s2.</p>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="kernel_2include_2klibc_2string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes. ">strcmp</a> </dd>
 <dd>
-<a class="el" href="libc_2string_8c.html#a07f4a84c11c106e95c32b6ab509346ef" title="Compare deux chaînes jusqu&#39;à n caractères.">strncmp</a></dd></dl>
+<a class="el" href="kernel_2include_2klibc_2string_8h.html#a07f4a84c11c106e95c32b6ab509346ef" title="Compare deux chaînes jusqu&#39;à n caractères. ">strncmp</a></dd></dl>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">s1</td><td>pointeur vers la première zone mémoire. </td></tr>
@@ -244,8 +263,8 @@ DESCRIPTION</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>La fonction <a class="el" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire.">memcpy()</a> copie une zone mémoire de size octets depuis src vers la zone mémoire dest. Les deux zones ne doivent pas se chevaucher sinon il faut utiliser memmove.</p>
-<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="libc_2string_8c.html#a802c986820d3866639922b6bc9484f90" title="Copie une zone mémoire.">memmove</a></dd></dl>
+<p>La fonction <a class="el" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire. ">memcpy()</a> copie une zone mémoire de size octets depuis src vers la zone mémoire dest. Les deux zones ne doivent pas se chevaucher sinon il faut utiliser memmove.</p>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="kernel_2include_2klibc_2string_8h.html#a802c986820d3866639922b6bc9484f90" title="Copie une zone mémoire. ">memmove</a></dd></dl>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">dest</td><td>adresse mémoire où il faut copier </td></tr>
@@ -287,8 +306,8 @@ DESCRIPTION</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>La fonction <a class="el" href="kernel_2include_2klibc_2string_8h.html#a802c986820d3866639922b6bc9484f90" title="Copie une zone mémoire.">memmove()</a> copie n octets depuis la zone mémoire src vers la zone mémoire dest. La différence avec memcpy c'est que les zones peuvent se chevaucher.</p>
-<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="libc_2string_8c.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire.">memcpy</a></dd></dl>
+<p>La fonction <a class="el" href="kernel_2include_2klibc_2string_8h.html#a802c986820d3866639922b6bc9484f90" title="Copie une zone mémoire. ">memmove()</a> copie n octets depuis la zone mémoire src vers la zone mémoire dest. La différence avec memcpy c'est que les zones peuvent se chevaucher.</p>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire. ">memcpy</a></dd></dl>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">dest</td><td>zone mémoire de destination. </td></tr>
@@ -366,7 +385,7 @@ DESCRIPTION</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>La fonction <a class="el" href="kernel_2include_2klibc_2string_8h.html#a706b36f3a672f84685576723c3928baa" title="Compare deux chaînes.">strcasecmp()</a> compare deux chaînes de caractères et retourne en résultat un nombre négatif, positif ou nul si s1 est respectivement inférieur, supérieur ou identique à s2.</p>
+<p>La fonction <a class="el" href="kernel_2include_2klibc_2string_8h.html#a706b36f3a672f84685576723c3928baa" title="Compare deux chaînes. ">strcasecmp()</a> compare deux chaînes de caractères et retourne en résultat un nombre négatif, positif ou nul si s1 est respectivement inférieur, supérieur ou identique à s2.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">s1</td><td>première chaîne </td></tr>
@@ -375,15 +394,6 @@ DESCRIPTION</h1>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>un entier strictement négatif si s1 est inférieur à s2, strictement positif si s1 est supérieur à s2 et nul si s1 est identique à s2. </dd></dl>
-
-<p><div class="dynheader">
-Voici le graphe d'appel pour cette fonction :</div>
-<div class="dyncontent">
-<div class="center"><img src="libc_2include_2string_8h_a706b36f3a672f84685576723c3928baa_cgraph.png" border="0" usemap="#libc_2include_2string_8h_a706b36f3a672f84685576723c3928baa_cgraph" alt=""/></div>
-<map name="libc_2include_2string_8h_a706b36f3a672f84685576723c3928baa_cgraph" id="libc_2include_2string_8h_a706b36f3a672f84685576723c3928baa_cgraph">
-<area shape="rect" id="node3" href="ctype_8c.html#ac79d6114c9df7350cedcd8cf921a6ea4" title="Convertit la lettre c en minuscule." alt="" coords="144,29,208,57"/><area shape="rect" id="node6" href="ctype_8c.html#adadd6582d46775aab6a51e29d16d9f77" title="vérifie si l&#39;on a un caractère majuscule." alt="" coords="256,29,320,57"/></map>
-</div>
-</p>
 
 </div>
 </div>
@@ -419,15 +429,6 @@ Voici le graphe d'appel pour cette fonction :</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>un pointeur vers le début de la sous-chaîne ou NULL si non trouvée. </dd></dl>
-
-<p><div class="dynheader">
-Voici le graphe d'appel pour cette fonction :</div>
-<div class="dyncontent">
-<div class="center"><img src="libc_2include_2string_8h_ae9229017a4501f8d6a637b4498cfed2e_cgraph.png" border="0" usemap="#libc_2include_2string_8h_ae9229017a4501f8d6a637b4498cfed2e_cgraph" alt=""/></div>
-<map name="libc_2include_2string_8h_ae9229017a4501f8d6a637b4498cfed2e_cgraph" id="libc_2include_2string_8h_ae9229017a4501f8d6a637b4498cfed2e_cgraph">
-<area shape="rect" id="node3" href="ctype_8c.html#ac79d6114c9df7350cedcd8cf921a6ea4" title="Convertit la lettre c en minuscule." alt="" coords="133,29,197,57"/><area shape="rect" id="node6" href="ctype_8c.html#adadd6582d46775aab6a51e29d16d9f77" title="vérifie si l&#39;on a un caractère majuscule." alt="" coords="245,29,309,57"/></map>
-</div>
-</p>
 
 </div>
 </div>
@@ -469,7 +470,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="libc_2include_2string_8h_a8908188ae9fc2f05d993257ef001d553_cgraph.png" border="0" usemap="#libc_2include_2string_8h_a8908188ae9fc2f05d993257ef001d553_cgraph" alt=""/></div>
 <map name="libc_2include_2string_8h_a8908188ae9fc2f05d993257ef001d553_cgraph" id="libc_2include_2string_8h_a8908188ae9fc2f05d993257ef001d553_cgraph">
-<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="111,5,167,33"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="112,55,165,83"/></map>
+<area shape="rect" id="node2" href="kernel_2klibc_2string_8c.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine. " alt="" coords="108,5,165,32"/><area shape="rect" id="node3" href="kernel_2klibc_2string_8c.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères. " alt="" coords="109,56,164,83"/></map>
 </div>
 </p>
 
@@ -498,7 +499,7 @@ Voici le graphe d'appel pour cette fonction :</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>La fonction <a class="el" href="kernel_2include_2klibc_2string_8h.html#a12871ed234858ef0e363d2b8aa572fc1" title="Rechercher un caractère dans une chaîne.">strchr()</a> renvoie un pointeur sur la première occurrence du caractère c dans la chaîne s.</p>
+<p>La fonction <a class="el" href="kernel_2include_2klibc_2string_8h.html#a12871ed234858ef0e363d2b8aa572fc1" title="Rechercher un caractère dans une chaîne. ">strchr()</a> renvoie un pointeur sur la première occurrence du caractère c dans la chaîne s.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">s</td><td>la chaîne dans laquelle on veut chercher le caractère. </td></tr>
@@ -568,7 +569,7 @@ Voici le graphe d'appel pour cette fonction :</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>La fonction <a class="el" href="kernel_2include_2klibc_2string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes.">strcmp()</a> compare deux chaînes de caractères et retourne en résultat un nombre négatif, positif ou nul si s1 est respectivement inférieur, supérieur ou identique à s2.</p>
+<p>La fonction <a class="el" href="kernel_2include_2klibc_2string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title="Compare deux chaînes. ">strcmp()</a> compare deux chaînes de caractères et retourne en résultat un nombre négatif, positif ou nul si s1 est respectivement inférieur, supérieur ou identique à s2.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">s1</td><td>première chaîne </td></tr>
@@ -613,6 +614,15 @@ Voici le graphe d'appel pour cette fonction :</div>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>un pointeur vers la chaîne de destination s1. </dd></dl>
 
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="libc_2include_2string_8h_a1eb9cae61e6a6282c28dbc298ef7297e_icgraph.png" border="0" usemap="#libc_2include_2string_8h_a1eb9cae61e6a6282c28dbc298ef7297e_icgraph" alt=""/></div>
+<map name="libc_2include_2string_8h_a1eb9cae61e6a6282c28dbc298ef7297e_icgraph" id="libc_2include_2string_8h_a1eb9cae61e6a6282c28dbc298ef7297e_icgraph">
+<area shape="rect" id="node2" href="libc_2include_2string_8h.html#a8908188ae9fc2f05d993257ef001d553" title="Concaténation de deux chaînes. " alt="" coords="116,5,171,32"/><area shape="rect" id="node3" href="libc_2include_2string_8h.html#a4c10a214b02eed3dafc48c59ad71abbd" title="Concaténation de deux chaînes avec une limite aux n premiers caractères. " alt="" coords="112,56,175,83"/><area shape="rect" id="node4" href="libc_2include_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine. " alt="" coords="114,107,173,133"/><area shape="rect" id="node5" href="libc_2string_8c.html#a8b860ba32fef12da8acd4507c059e509" title="Duplique une chaine. " alt="" coords="111,157,176,184"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="ab1cc1a3ff560049e22576031c7c2345b"></a>
@@ -642,7 +652,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="libc_2include_2string_8h_ab1cc1a3ff560049e22576031c7c2345b_cgraph.png" border="0" usemap="#libc_2include_2string_8h_ab1cc1a3ff560049e22576031c7c2345b_cgraph" alt=""/></div>
 <map name="libc_2include_2string_8h_ab1cc1a3ff560049e22576031c7c2345b_cgraph" id="libc_2include_2string_8h_ab1cc1a3ff560049e22576031c7c2345b_cgraph">
-<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="119,5,172,33"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="112,55,179,83"/><area shape="rect" id="node9" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="117,106,173,134"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="228,55,367,83"/></map>
+<area shape="rect" id="node2" href="kernel_2klibc_2string_8c.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères. " alt="" coords="118,5,173,32"/><area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="112,56,179,83"/><area shape="rect" id="node6" href="kernel_2klibc_2string_8c.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine. " alt="" coords="117,107,174,133"/><area shape="rect" id="node4" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="227,31,367,57"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="262,81,331,108"/></map>
 </div>
 </p>
 
@@ -661,7 +671,7 @@ Voici le graphe d'appel pour cette fonction :</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>La fonction <a class="el" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères.">strlen()</a> calcule la longueur de la chaîne de caractères s sans compter le caractère nul « \0 »</p>
+<p>La fonction <a class="el" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères. ">strlen()</a> calcule la longueur de la chaîne de caractères s sans compter le caractère nul « \0 »</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">s</td><td>la chaîne dont on veut calculer la longueur</td></tr>
@@ -669,6 +679,15 @@ Voici le graphe d'appel pour cette fonction :</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>le nombre de caractères dans la chaîne s. </dd></dl>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="libc_2include_2string_8h_aa383452fe445bfae989358c9d7d96f4f_icgraph.png" border="0" usemap="#libc_2include_2string_8h_aa383452fe445bfae989358c9d7d96f4f_icgraph" alt=""/></div>
+<map name="libc_2include_2string_8h_aa383452fe445bfae989358c9d7d96f4f_icgraph" id="libc_2include_2string_8h_aa383452fe445bfae989358c9d7d96f4f_icgraph">
+<area shape="rect" id="node2" href="libc_2include_2string_8h.html#a8908188ae9fc2f05d993257ef001d553" title="Concaténation de deux chaînes. " alt="" coords="113,5,168,32"/><area shape="rect" id="node3" href="libc_2include_2string_8h.html#a4c10a214b02eed3dafc48c59ad71abbd" title="Concaténation de deux chaînes avec une limite aux n premiers caractères. " alt="" coords="109,56,172,83"/><area shape="rect" id="node4" href="libc_2include_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine. " alt="" coords="111,107,170,133"/><area shape="rect" id="node5" href="libc_2string_8c.html#a8b860ba32fef12da8acd4507c059e509" title="Duplique une chaine. " alt="" coords="108,157,173,184"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -711,15 +730,6 @@ Voici le graphe d'appel pour cette fonction :</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>un entier strictement négatif si les n premiers caractères de s1 sont inférieurs aux n premiers caractères de s2, strictement positif s'ils sont supérieurs et nul s'ils sont identiques. </dd></dl>
-
-<p><div class="dynheader">
-Voici le graphe d'appel pour cette fonction :</div>
-<div class="dyncontent">
-<div class="center"><img src="libc_2include_2string_8h_a674b7f779fec84cb1a3be8222b5c381a_cgraph.png" border="0" usemap="#libc_2include_2string_8h_a674b7f779fec84cb1a3be8222b5c381a_cgraph" alt=""/></div>
-<map name="libc_2include_2string_8h_a674b7f779fec84cb1a3be8222b5c381a_cgraph" id="libc_2include_2string_8h_a674b7f779fec84cb1a3be8222b5c381a_cgraph">
-<area shape="rect" id="node3" href="ctype_8c.html#ac79d6114c9df7350cedcd8cf921a6ea4" title="Convertit la lettre c en minuscule." alt="" coords="152,29,216,57"/><area shape="rect" id="node6" href="ctype_8c.html#adadd6582d46775aab6a51e29d16d9f77" title="vérifie si l&#39;on a un caractère majuscule." alt="" coords="264,29,328,57"/></map>
-</div>
-</p>
 
 </div>
 </div>
@@ -768,7 +778,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="libc_2include_2string_8h_a4c10a214b02eed3dafc48c59ad71abbd_cgraph.png" border="0" usemap="#libc_2include_2string_8h_a4c10a214b02eed3dafc48c59ad71abbd_cgraph" alt=""/></div>
 <map name="libc_2include_2string_8h_a4c10a214b02eed3dafc48c59ad71abbd_cgraph" id="libc_2include_2string_8h_a4c10a214b02eed3dafc48c59ad71abbd_cgraph">
-<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="123,5,176,33"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères." alt="" coords="117,55,181,83"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="121,106,177,134"/></map>
+<area shape="rect" id="node2" href="kernel_2klibc_2string_8c.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères. " alt="" coords="121,5,175,32"/><area shape="rect" id="node3" href="kernel_2klibc_2string_8c.html#a7982e2515766b25c1157ac30f8bac394" title="Copie une chaine en se limitant aux n premiers caractères. " alt="" coords="116,56,180,83"/><area shape="rect" id="node4" href="kernel_2klibc_2string_8c.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine. " alt="" coords="119,107,177,133"/></map>
 </div>
 </p>
 
@@ -856,6 +866,15 @@ Voici le graphe d'appel pour cette fonction :</div>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>un pointeur vers la chaîne de destination s1. </dd></dl>
 
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="libc_2include_2string_8h_a7982e2515766b25c1157ac30f8bac394_icgraph.png" border="0" usemap="#libc_2include_2string_8h_a7982e2515766b25c1157ac30f8bac394_icgraph" alt=""/></div>
+<map name="libc_2include_2string_8h_a7982e2515766b25c1157ac30f8bac394_icgraph" id="libc_2include_2string_8h_a7982e2515766b25c1157ac30f8bac394_icgraph">
+<area shape="rect" id="node2" href="libc_2include_2string_8h.html#a4c10a214b02eed3dafc48c59ad71abbd" title="Concaténation de deux chaînes avec une limite aux n premiers caractères. " alt="" coords="117,5,180,32"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a8b860ba32fef12da8acd4507c059e509"></a>
@@ -896,7 +915,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="libc_2include_2string_8h_a8b860ba32fef12da8acd4507c059e509_cgraph.png" border="0" usemap="#libc_2include_2string_8h_a8b860ba32fef12da8acd4507c059e509_cgraph" alt=""/></div>
 <map name="libc_2include_2string_8h_a8b860ba32fef12da8acd4507c059e509_cgraph" id="libc_2include_2string_8h_a8b860ba32fef12da8acd4507c059e509_cgraph">
-<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="123,5,176,33"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="121,55,177,83"/></map>
+<area shape="rect" id="node2" href="kernel_2klibc_2string_8c.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères. " alt="" coords="120,5,175,32"/><area shape="rect" id="node3" href="kernel_2klibc_2string_8c.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine. " alt="" coords="119,56,176,83"/></map>
 </div>
 </p>
 
@@ -925,7 +944,7 @@ Voici le graphe d'appel pour cette fonction :</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>La fonction <a class="el" href="kernel_2include_2klibc_2string_8h.html#a12871ed234858ef0e363d2b8aa572fc1" title="Rechercher un caractère dans une chaîne.">strchr()</a> renvoie un pointeur sur la dernière occurrence du caractère c dans la chaîne s.</p>
+<p>La fonction <a class="el" href="kernel_2include_2klibc_2string_8h.html#a12871ed234858ef0e363d2b8aa572fc1" title="Rechercher un caractère dans une chaîne. ">strchr()</a> renvoie un pointeur sur la dernière occurrence du caractère c dans la chaîne s.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">s</td><td>la chaîne dans laquelle on veut chercher le caractère. </td></tr>
@@ -1009,9 +1028,9 @@ Voici le graphe d'appel pour cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:37 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

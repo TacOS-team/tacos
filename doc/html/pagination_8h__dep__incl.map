@@ -1,9 +1,9 @@
 <map id="kernel/include/pagination.h" name="kernel/include/pagination.h">
-<area shape="rect" id="node3" href="$vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="5,83,133,127"/>
-<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="157,91,264,119"/>
-<area shape="rect" id="node7" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="288,91,411,119"/>
-<area shape="rect" id="node9" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="435,91,547,119"/>
-<area shape="rect" id="node11" href="$pagination_8c.html" title="kernel/pagination.c" alt="" coords="571,91,701,119"/>
-<area shape="rect" id="node13" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="725,91,851,119"/>
-<area shape="rect" id="node15" href="$vmm_8c.html" title="kernel/vmm.c" alt="" coords="875,91,973,119"/>
+<area shape="rect" id="node3" href="$vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="5,83,131,127"/>
+<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="155,91,261,119"/>
+<area shape="rect" id="node7" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="285,91,408,119"/>
+<area shape="rect" id="node9" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="432,91,541,119"/>
+<area shape="rect" id="node11" href="$pagination_8c.html" title="kernel/pagination.c" alt="" coords="565,91,696,119"/>
+<area shape="rect" id="node13" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="720,91,845,119"/>
+<area shape="rect" id="node15" href="$vmm_8c.html" title="kernel/vmm.c" alt="" coords="869,91,968,119"/>
 </map>

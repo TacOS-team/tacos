@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/include/kstat.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,68 +90,90 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="kstat_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _KSTAT_H_</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _KSTAT_H_</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define _KSTAT_H_</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général.">clock.h</a>&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="clock_8h.html">clock.h</a>&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* File types.  */</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">   36</a></span>&#160;<span class="preprocessor">#define S_IFMT   0170000 </span></div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="kstat_8h.html#a28e80cd43106882904be148b2a397d42">   37</a></span>&#160;<span class="preprocessor">#define S_IFSOCK 0140000 </span></div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="kstat_8h.html#afef163ce62372757e84bd9fc88c07aad">   38</a></span>&#160;<span class="preprocessor">#define S_IFLNK  0120000 </span></div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="kstat_8h.html#a1aaa48b192a5dd3b6d7ee91fc98cd17d">   39</a></span>&#160;<span class="preprocessor">#define S_IFREG  0100000 </span></div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="kstat_8h.html#a5c5b74a1cb1a1ae83572500b94e1938f">   40</a></span>&#160;<span class="preprocessor">#define S_IFBLK  0060000 </span></div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="kstat_8h.html#a11fb0652b963a735f3377eb1c9239f2d">   41</a></span>&#160;<span class="preprocessor">#define S_IFDIR  0040000 </span></div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="kstat_8h.html#aef3a1d1ba22c83e30b5c834dd343b2a8">   42</a></span>&#160;<span class="preprocessor">#define S_IFCHR  0020000 </span></div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="kstat_8h.html#a4966f25d9f03a7a06bc47ac729fd86cf">   43</a></span>&#160;<span class="preprocessor">#define S_IFIFO  0010000 </span></div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="kstat_8h.html#a40223db1b95a04f5b28cceb3c34cfebd">   45</a></span>&#160;<span class="preprocessor">#define S_IXOTH 001   </span></div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="kstat_8h.html#a071147a0cb995036967c80f64b1f74b9">   46</a></span>&#160;<span class="preprocessor">#define S_IROTH 002   </span></div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="kstat_8h.html#a5303f49f26293acdb9533756c78322fb">   47</a></span>&#160;<span class="preprocessor">#define S_IWOTH 004   </span></div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="kstat_8h.html#a042e69ac0e7dd56e5cfcd9e97d010323">   48</a></span>&#160;<span class="preprocessor">#define S_IXGRP 0010  </span></div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="kstat_8h.html#a4f5f280b929768113739fb34d6f7be8a">   49</a></span>&#160;<span class="preprocessor">#define S_IRGRP 0020  </span></div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="kstat_8h.html#ae6774871a90d9442f00abe18b87fee6e">   50</a></span>&#160;<span class="preprocessor">#define S_IWGRP 0040  </span></div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="kstat_8h.html#af10a35e3950795d6ee4e07157d000131">   51</a></span>&#160;<span class="preprocessor">#define S_IXUSR 00100 </span></div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="kstat_8h.html#a84c7dbf5cf2fdfb690f76348b60a8cb7">   52</a></span>&#160;<span class="preprocessor">#define S_IRUSR 00200 </span></div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="kstat_8h.html#ad70001754261c15a1bdc8e876c6d09d7">   53</a></span>&#160;<span class="preprocessor">#define S_IWUSR 00400 </span></div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="kstat_8h.html#a722eba7370eb3b0aafb3272182e08520">   55</a></span>&#160;<span class="preprocessor">#define S_ISBLK(m)  (((m) &amp; S_IFMT) == S_IFBLK) </span></div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="kstat_8h.html#a767b5d0691f435f8a9b7f5e0fa97a645">   56</a></span>&#160;<span class="preprocessor">#define S_ISCHR(m)  (((m) &amp; S_IFMT) == S_IFCHR) </span></div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="kstat_8h.html#a70b64ed67c0ab484b4ba09487da34e91">   57</a></span>&#160;<span class="preprocessor">#define S_ISDIR(m)  (((m) &amp; S_IFMT) == S_IFDIR) </span></div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="kstat_8h.html#a777b706bbe9e7920c091aaa2b547b093">   58</a></span>&#160;<span class="preprocessor">#define S_ISFIFO(m) (((m) &amp; S_IFMT) == S_IFIFO) </span></div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="kstat_8h.html#a835359614ec43fbd96f53993cde84ef2">   59</a></span>&#160;<span class="preprocessor">#define S_ISLNK(m)  (((m) &amp; S_IFMT) == S_IFLNK) </span></div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="kstat_8h.html#abf68371159fa46b5cc47d0f3ac9ab723">   60</a></span>&#160;<span class="preprocessor">#define S_ISREG(m)  (((m) &amp; S_IFMT) == S_IFREG) </span></div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="kstat_8h.html#a765304585be8c05f7fa72495e6d5881f">   61</a></span>&#160;<span class="preprocessor">#define S_ISSOCK(m) (((m) &amp; S_IFMT) == S_IFSOCK) </span></div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">   63</a></span>&#160;<span class="preprocessor">typedef uint32_t mode_t; </span></div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">   64</a></span>&#160;<span class="preprocessor">typedef uint32_t dev_t; </span></div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">   65</a></span>&#160;<span class="preprocessor">typedef uint32_t uid_t; </span></div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">   66</a></span>&#160;<span class="preprocessor">typedef uint32_t gid_t; </span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="kstat_8h.html#ab5bee51e9ee68b83ab11d4b340f7200b">   36</a></span>&#160;<span class="preprocessor">#define S_IFMT   0170000 </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="kstat_8h.html#a28e80cd43106882904be148b2a397d42">   37</a></span>&#160;<span class="preprocessor">#define S_IFSOCK 0140000 </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="kstat_8h.html#afef163ce62372757e84bd9fc88c07aad">   38</a></span>&#160;<span class="preprocessor">#define S_IFLNK  0120000 </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="kstat_8h.html#a1aaa48b192a5dd3b6d7ee91fc98cd17d">   39</a></span>&#160;<span class="preprocessor">#define S_IFREG  0100000 </span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="kstat_8h.html#a5c5b74a1cb1a1ae83572500b94e1938f">   40</a></span>&#160;<span class="preprocessor">#define S_IFBLK  0060000 </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="kstat_8h.html#a11fb0652b963a735f3377eb1c9239f2d">   41</a></span>&#160;<span class="preprocessor">#define S_IFDIR  0040000 </span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="kstat_8h.html#aef3a1d1ba22c83e30b5c834dd343b2a8">   42</a></span>&#160;<span class="preprocessor">#define S_IFCHR  0020000 </span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="kstat_8h.html#a4966f25d9f03a7a06bc47ac729fd86cf">   43</a></span>&#160;<span class="preprocessor">#define S_IFIFO  0010000 </span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="kstat_8h.html#a40223db1b95a04f5b28cceb3c34cfebd">   45</a></span>&#160;<span class="preprocessor">#define S_IXOTH 001   </span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="kstat_8h.html#a5303f49f26293acdb9533756c78322fb">   46</a></span>&#160;<span class="preprocessor">#define S_IWOTH 002   </span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="kstat_8h.html#a071147a0cb995036967c80f64b1f74b9">   47</a></span>&#160;<span class="preprocessor">#define S_IROTH 004   </span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="kstat_8h.html#a042e69ac0e7dd56e5cfcd9e97d010323">   48</a></span>&#160;<span class="preprocessor">#define S_IXGRP 0010  </span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="kstat_8h.html#ae6774871a90d9442f00abe18b87fee6e">   49</a></span>&#160;<span class="preprocessor">#define S_IWGRP 0020  </span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="kstat_8h.html#a4f5f280b929768113739fb34d6f7be8a">   50</a></span>&#160;<span class="preprocessor">#define S_IRGRP 0040  </span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="kstat_8h.html#af10a35e3950795d6ee4e07157d000131">   51</a></span>&#160;<span class="preprocessor">#define S_IXUSR 00100 </span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="kstat_8h.html#ad70001754261c15a1bdc8e876c6d09d7">   52</a></span>&#160;<span class="preprocessor">#define S_IWUSR 00200 </span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="kstat_8h.html#a84c7dbf5cf2fdfb690f76348b60a8cb7">   53</a></span>&#160;<span class="preprocessor">#define S_IRUSR 00400 </span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="kstat_8h.html#a722eba7370eb3b0aafb3272182e08520">   55</a></span>&#160;<span class="preprocessor">#define S_ISBLK(m)  (((m) &amp; S_IFMT) == S_IFBLK) </span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="kstat_8h.html#a767b5d0691f435f8a9b7f5e0fa97a645">   56</a></span>&#160;<span class="preprocessor">#define S_ISCHR(m)  (((m) &amp; S_IFMT) == S_IFCHR) </span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="kstat_8h.html#a70b64ed67c0ab484b4ba09487da34e91">   57</a></span>&#160;<span class="preprocessor">#define S_ISDIR(m)  (((m) &amp; S_IFMT) == S_IFDIR) </span></div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="kstat_8h.html#a777b706bbe9e7920c091aaa2b547b093">   58</a></span>&#160;<span class="preprocessor">#define S_ISFIFO(m) (((m) &amp; S_IFMT) == S_IFIFO) </span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="kstat_8h.html#a835359614ec43fbd96f53993cde84ef2">   59</a></span>&#160;<span class="preprocessor">#define S_ISLNK(m)  (((m) &amp; S_IFMT) == S_IFLNK) </span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="kstat_8h.html#abf68371159fa46b5cc47d0f3ac9ab723">   60</a></span>&#160;<span class="preprocessor">#define S_ISREG(m)  (((m) &amp; S_IFMT) == S_IFREG) </span></div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="kstat_8h.html#a765304585be8c05f7fa72495e6d5881f">   61</a></span>&#160;<span class="preprocessor">#define S_ISSOCK(m) (((m) &amp; S_IFMT) == S_IFSOCK) </span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">   63</a></span>&#160;<span class="preprocessor">typedef uint32_t mode_t; </span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">   64</a></span>&#160;<span class="preprocessor">typedef uint32_t dev_t; </span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">   65</a></span>&#160;<span class="preprocessor">typedef uint32_t uid_t; </span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">   66</a></span>&#160;<span class="preprocessor">typedef uint32_t gid_t; </span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">typedef uint32_t nlink_t;</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor"></span><span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> blksize_t;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> blksize_t;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> blkcnt_t;</div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="kstat_8h.html#aed4e918b44240739869c4bdb1c4787a9">   70</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="kstat_8h.html#aed4e918b44240739869c4bdb1c4787a9">ino_t</a>; </div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="structstat.html">   75</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structstat.html" title="Informations sur un noeud.">stat</a> {</div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="structstat.html#ac5b90090ae323741ae4c9e4f3683a29f">   76</a></span>&#160;        <a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a>     <a class="code" href="structstat.html#ac5b90090ae323741ae4c9e4f3683a29f">st_dev</a>;      </div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="code" href="structstat.html#a9769ed8f0d4c5a9f329c32bc92479d56">   77</a></span>&#160;        <a class="code" href="kstat_8h.html#aed4e918b44240739869c4bdb1c4787a9">ino_t</a>     <a class="code" href="structstat.html#a9769ed8f0d4c5a9f329c32bc92479d56">st_ino</a>;      </div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="structstat.html#a5cbdd829011af82ba61e83773bbcbc7d">   78</a></span>&#160;        <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>    <a class="code" href="structstat.html#a5cbdd829011af82ba61e83773bbcbc7d">st_mode</a>;     </div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="structstat.html#a0ed9092fa6c77a3251b9b9a4738ef84f">   79</a></span>&#160;        nlink_t   <a class="code" href="structstat.html#a0ed9092fa6c77a3251b9b9a4738ef84f">st_nlink</a>;    </div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="structstat.html#a4a8708a3d18be60ee7b2f06c4cab0c70">   80</a></span>&#160;        <a class="code" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a>     <a class="code" href="structstat.html#a4a8708a3d18be60ee7b2f06c4cab0c70">st_uid</a>;      </div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="structstat.html#ab864f16f436cec370f0ced585d897698">   81</a></span>&#160;        <a class="code" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a>     <a class="code" href="structstat.html#ab864f16f436cec370f0ced585d897698">st_gid</a>;      </div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="code" href="structstat.html#aa61e6c1a8a91c69f1d26f6700a0546cb">   82</a></span>&#160;        <a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a>     <a class="code" href="structstat.html#aa61e6c1a8a91c69f1d26f6700a0546cb">st_rdev</a>;     </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="structstat.html#a040e19c8b9766f841fde8786ce9297bf">   83</a></span>&#160;        off_t     <a class="code" href="structstat.html#a040e19c8b9766f841fde8786ce9297bf">st_size</a>;     </div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="code" href="structstat.html#a38d474e1ae3cf6fbdde89ac3c3e308f1">   84</a></span>&#160;        blksize_t <a class="code" href="structstat.html#a38d474e1ae3cf6fbdde89ac3c3e308f1">st_blksize</a>;  </div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="code" href="structstat.html#a42dd716b2f9234f961d949fc9500eefb">   85</a></span>&#160;        blkcnt_t  <a class="code" href="structstat.html#a42dd716b2f9234f961d949fc9500eefb">st_blocks</a>;   </div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="code" href="structstat.html#ab74d1e7e345e88b9d0fb2688a97cba64">   86</a></span>&#160;        time_t    <a class="code" href="structstat.html#ab74d1e7e345e88b9d0fb2688a97cba64">st_atime</a>;    </div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="code" href="structstat.html#a77e235090f8cb6897f1c0ce65689006b">   87</a></span>&#160;        time_t    <a class="code" href="structstat.html#a77e235090f8cb6897f1c0ce65689006b">st_mtime</a>;    </div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="code" href="structstat.html#a1b4b858db1ebe79c3d6e0fc1ef721024">   88</a></span>&#160;        time_t    <a class="code" href="structstat.html#a1b4b858db1ebe79c3d6e0fc1ef721024">st_ctime</a>;    </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="kstat_8h.html#aed4e918b44240739869c4bdb1c4787a9">   70</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code" href="kstat_8h.html#aed4e918b44240739869c4bdb1c4787a9">ino_t</a>; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="structstat.html">   75</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structstat.html">stat</a> {</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="structstat.html#ac5b90090ae323741ae4c9e4f3683a29f">   76</a></span>&#160;        <a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a>     <a class="code" href="structstat.html#ac5b90090ae323741ae4c9e4f3683a29f">st_dev</a>;      </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="structstat.html#a9769ed8f0d4c5a9f329c32bc92479d56">   77</a></span>&#160;        <a class="code" href="kstat_8h.html#aed4e918b44240739869c4bdb1c4787a9">ino_t</a>     <a class="code" href="structstat.html#a9769ed8f0d4c5a9f329c32bc92479d56">st_ino</a>;      </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="structstat.html#a5cbdd829011af82ba61e83773bbcbc7d">   78</a></span>&#160;        <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a>    <a class="code" href="structstat.html#a5cbdd829011af82ba61e83773bbcbc7d">st_mode</a>;     </div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="structstat.html#a0ed9092fa6c77a3251b9b9a4738ef84f">   79</a></span>&#160;        nlink_t   <a class="code" href="structstat.html#a0ed9092fa6c77a3251b9b9a4738ef84f">st_nlink</a>;    </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="structstat.html#a4a8708a3d18be60ee7b2f06c4cab0c70">   80</a></span>&#160;        <a class="code" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a>     <a class="code" href="structstat.html#a4a8708a3d18be60ee7b2f06c4cab0c70">st_uid</a>;      </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structstat.html#ab864f16f436cec370f0ced585d897698">   81</a></span>&#160;        <a class="code" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a>     <a class="code" href="structstat.html#ab864f16f436cec370f0ced585d897698">st_gid</a>;      </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="structstat.html#aa61e6c1a8a91c69f1d26f6700a0546cb">   82</a></span>&#160;        <a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a>     <a class="code" href="structstat.html#aa61e6c1a8a91c69f1d26f6700a0546cb">st_rdev</a>;     </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="structstat.html#a040e19c8b9766f841fde8786ce9297bf">   83</a></span>&#160;        off_t     <a class="code" href="structstat.html#a040e19c8b9766f841fde8786ce9297bf">st_size</a>;     </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="structstat.html#a38d474e1ae3cf6fbdde89ac3c3e308f1">   84</a></span>&#160;        blksize_t <a class="code" href="structstat.html#a38d474e1ae3cf6fbdde89ac3c3e308f1">st_blksize</a>;  </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="structstat.html#a42dd716b2f9234f961d949fc9500eefb">   85</a></span>&#160;        blkcnt_t  <a class="code" href="structstat.html#a42dd716b2f9234f961d949fc9500eefb">st_blocks</a>;   </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="structstat.html#ab74d1e7e345e88b9d0fb2688a97cba64">   86</a></span>&#160;        time_t    <a class="code" href="structstat.html#ab74d1e7e345e88b9d0fb2688a97cba64">st_atime</a>;    </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="structstat.html#a77e235090f8cb6897f1c0ce65689006b">   87</a></span>&#160;        time_t    <a class="code" href="structstat.html#a77e235090f8cb6897f1c0ce65689006b">st_mtime</a>;    </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structstat.html#a1b4b858db1ebe79c3d6e0fc1ef721024">   88</a></span>&#160;        time_t    <a class="code" href="structstat.html#a1b4b858db1ebe79c3d6e0fc1ef721024">st_ctime</a>;    </div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;};</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="kernel_2include_2types_8h_html"><div class="ttname"><a href="kernel_2include_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="structstat_html_a42dd716b2f9234f961d949fc9500eefb"><div class="ttname"><a href="structstat.html#a42dd716b2f9234f961d949fc9500eefb">stat::st_blocks</a></div><div class="ttdeci">blkcnt_t st_blocks</div><div class="ttdef"><b>Definition:</b> kstat.h:85</div></div>
+<div class="ttc" id="structstat_html_a1b4b858db1ebe79c3d6e0fc1ef721024"><div class="ttname"><a href="structstat.html#a1b4b858db1ebe79c3d6e0fc1ef721024">stat::st_ctime</a></div><div class="ttdeci">time_t st_ctime</div><div class="ttdef"><b>Definition:</b> kstat.h:88</div></div>
+<div class="ttc" id="kstat_8h_html_af2306308627701b66dc6f3babe821ab4"><div class="ttname"><a href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a></div><div class="ttdeci">uint32_t uid_t</div><div class="ttdef"><b>Definition:</b> kstat.h:65</div></div>
+<div class="ttc" id="structstat_html_ac5b90090ae323741ae4c9e4f3683a29f"><div class="ttname"><a href="structstat.html#ac5b90090ae323741ae4c9e4f3683a29f">stat::st_dev</a></div><div class="ttdeci">dev_t st_dev</div><div class="ttdef"><b>Definition:</b> kstat.h:76</div></div>
+<div class="ttc" id="structstat_html_aa61e6c1a8a91c69f1d26f6700a0546cb"><div class="ttname"><a href="structstat.html#aa61e6c1a8a91c69f1d26f6700a0546cb">stat::st_rdev</a></div><div class="ttdeci">dev_t st_rdev</div><div class="ttdef"><b>Definition:</b> kstat.h:82</div></div>
+<div class="ttc" id="clock_8h_html"><div class="ttname"><a href="clock_8h.html">clock.h</a></div><div class="ttdoc">Gestion de l&#39;horloge et du temps en général. </div></div>
+<div class="ttc" id="structstat_html_a0ed9092fa6c77a3251b9b9a4738ef84f"><div class="ttname"><a href="structstat.html#a0ed9092fa6c77a3251b9b9a4738ef84f">stat::st_nlink</a></div><div class="ttdeci">nlink_t st_nlink</div><div class="ttdef"><b>Definition:</b> kstat.h:79</div></div>
+<div class="ttc" id="structstat_html_a5cbdd829011af82ba61e83773bbcbc7d"><div class="ttname"><a href="structstat.html#a5cbdd829011af82ba61e83773bbcbc7d">stat::st_mode</a></div><div class="ttdeci">mode_t st_mode</div><div class="ttdef"><b>Definition:</b> kstat.h:78</div></div>
+<div class="ttc" id="kstat_8h_html_a451f1b5788fa7cc5d33db47a5992e7a6"><div class="ttname"><a href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a></div><div class="ttdeci">uint32_t dev_t</div><div class="ttdef"><b>Definition:</b> kstat.h:64</div></div>
+<div class="ttc" id="kstat_8h_html_aa7352f1065fe606194d792e2b292cf83"><div class="ttname"><a href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a></div><div class="ttdeci">uint32_t gid_t</div><div class="ttdef"><b>Definition:</b> kstat.h:66</div></div>
+<div class="ttc" id="structstat_html"><div class="ttname"><a href="structstat.html">stat</a></div><div class="ttdoc">Informations sur un noeud. </div><div class="ttdef"><b>Definition:</b> kstat.h:75</div></div>
+<div class="ttc" id="structstat_html_a9769ed8f0d4c5a9f329c32bc92479d56"><div class="ttname"><a href="structstat.html#a9769ed8f0d4c5a9f329c32bc92479d56">stat::st_ino</a></div><div class="ttdeci">ino_t st_ino</div><div class="ttdef"><b>Definition:</b> kstat.h:77</div></div>
+<div class="ttc" id="kstat_8h_html_af8f4385bb42836d1e3ad4fea9d71d1b9"><div class="ttname"><a href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a></div><div class="ttdeci">uint32_t mode_t</div><div class="ttdef"><b>Definition:</b> kstat.h:63</div></div>
+<div class="ttc" id="structstat_html_ab74d1e7e345e88b9d0fb2688a97cba64"><div class="ttname"><a href="structstat.html#ab74d1e7e345e88b9d0fb2688a97cba64">stat::st_atime</a></div><div class="ttdeci">time_t st_atime</div><div class="ttdef"><b>Definition:</b> kstat.h:86</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_a33594304e786b158f3fb30289278f5af"><div class="ttname"><a href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a></div><div class="ttdeci">unsigned long int uint32_t</div><div class="ttdef"><b>Definition:</b> types.h:36</div></div>
+<div class="ttc" id="structstat_html_a040e19c8b9766f841fde8786ce9297bf"><div class="ttname"><a href="structstat.html#a040e19c8b9766f841fde8786ce9297bf">stat::st_size</a></div><div class="ttdeci">off_t st_size</div><div class="ttdef"><b>Definition:</b> kstat.h:83</div></div>
+<div class="ttc" id="structstat_html_a38d474e1ae3cf6fbdde89ac3c3e308f1"><div class="ttname"><a href="structstat.html#a38d474e1ae3cf6fbdde89ac3c3e308f1">stat::st_blksize</a></div><div class="ttdeci">blksize_t st_blksize</div><div class="ttdef"><b>Definition:</b> kstat.h:84</div></div>
+<div class="ttc" id="structstat_html_a77e235090f8cb6897f1c0ce65689006b"><div class="ttname"><a href="structstat.html#a77e235090f8cb6897f1c0ce65689006b">stat::st_mtime</a></div><div class="ttdeci">time_t st_mtime</div><div class="ttdef"><b>Definition:</b> kstat.h:87</div></div>
+<div class="ttc" id="structstat_html_a4a8708a3d18be60ee7b2f06c4cab0c70"><div class="ttname"><a href="structstat.html#a4a8708a3d18be60ee7b2f06c4cab0c70">stat::st_uid</a></div><div class="ttdeci">uid_t st_uid</div><div class="ttdef"><b>Definition:</b> kstat.h:80</div></div>
+<div class="ttc" id="kstat_8h_html_aed4e918b44240739869c4bdb1c4787a9"><div class="ttname"><a href="kstat_8h.html#aed4e918b44240739869c4bdb1c4787a9">ino_t</a></div><div class="ttdeci">uint32_t ino_t</div><div class="ttdef"><b>Definition:</b> kstat.h:70</div></div>
+<div class="ttc" id="structstat_html_ab864f16f436cec370f0ced585d897698"><div class="ttname"><a href="structstat.html#ab864f16f436cec370f0ced585d897698">stat::st_gid</a></div><div class="ttdeci">gid_t st_gid</div><div class="ttdef"><b>Definition:</b> kstat.h:81</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

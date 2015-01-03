@@ -1,9 +1,8 @@
 <map id="libc/stdio/scanf.c" name="libc/stdio/scanf.c">
-<area shape="rect" id="node3" href="$ctype_8h.html" title="Fonctions de classification de caractères." alt="" coords="5,238,67,266"/>
-<area shape="rect" id="node7" href="$stdarg_8h.html" title="stdarg.h" alt="" coords="248,161,315,189"/>
-<area shape="rect" id="node11" href="$stdio_8h.html" title="stdio.h" alt="" coords="133,83,192,111"/>
-<area shape="rect" id="node14" href="$libio_8h.html" title="libio.h" alt="" coords="69,161,123,189"/>
-<area shape="rect" id="node5" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="76,315,164,343"/>
-<area shape="rect" id="node17" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="196,238,281,266"/>
-<area shape="rect" id="node20" href="$stdbool_8h.html" title="Type bool." alt="" coords="201,315,276,343"/>
+<area shape="rect" id="node5" href="$stdio_8h.html" title="stdio.h" alt="" coords="271,80,331,107"/>
+<area shape="rect" id="node7" href="$libio_8h.html" title="libio.h" alt="" coords="341,155,396,181"/>
+<area shape="rect" id="node6" href="$cdefs_8h.html" title="sys/cdefs.h" alt="" coords="271,304,359,331"/>
+<area shape="rect" id="node8" href="$libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="179,229,265,256"/>
+<area shape="rect" id="node10" href="$libc_2include_2stdarg_8h_source.html" title="stdarg.h" alt="" coords="147,155,215,181"/>
+<area shape="rect" id="node9" href="$stdbool_8h.html" title="Type bool. " alt="" coords="173,304,247,331"/>
 </map>

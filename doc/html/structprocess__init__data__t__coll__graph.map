@@ -1,7 +1,7 @@
 <map id="process_init_data_t" name="process_init_data_t">
-<area shape="rect" id="node2" href="$structElf32__File.html" title="Structure qui caractérise un binaire elf." alt="" coords="171,99,248,127"/>
-<area shape="rect" id="node4" href="$structElf32__Sym.html" title="Elf32_Sym" alt="" coords="5,6,88,34"/>
-<area shape="rect" id="node6" href="$structElf32__Phdr.html" title="Elf32_Phdr" alt="" coords="112,6,197,34"/>
-<area shape="rect" id="node8" href="$structElf32__Shdr.html" title="Elf32_Shdr" alt="" coords="221,6,307,34"/>
-<area shape="rect" id="node10" href="$structElf32__Ehdr.html" title="Elf32_Ehdr" alt="" coords="331,6,413,34"/>
+<area shape="rect" id="node2" href="$structElf32__File.html" title="Structure qui caractérise un binaire elf. " alt="" coords="172,95,251,121"/>
+<area shape="rect" id="node3" href="$structElf32__Sym.html" title="Elf32_Sym" alt="" coords="5,5,89,32"/>
+<area shape="rect" id="node4" href="$structElf32__Phdr.html" title="Elf32_Phdr" alt="" coords="114,5,199,32"/>
+<area shape="rect" id="node5" href="$structElf32__Shdr.html" title="Elf32_Shdr" alt="" coords="223,5,309,32"/>
+<area shape="rect" id="node6" href="$structElf32__Ehdr.html" title="Elf32_Ehdr" alt="" coords="333,5,417,32"/>
 </map>

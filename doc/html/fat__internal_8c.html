@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/fs/fat/fat_internal.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -91,48 +92,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier fat_internal.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="fat__internal_8h_source.html">fat_internal.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="fat__outils_8h_source.html">fat_outils.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="fat__internal_8h_source.html">fat_internal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fat__outils_8h_source.html">fat_outils.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de fat_internal.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="fat__internal_8c__incl.png" border="0" usemap="#kernel_2fs_2fat_2fat__internal_8c" alt=""/></div>
 <map name="kernel_2fs_2fat_2fat__internal_8c" id="kernel_2fs_2fat_2fat__internal_8c">
-<area shape="rect" id="node3" href="fat__internal_8h.html" title="fat_internal.h" alt="" coords="121,161,217,189"/><area shape="rect" id="node28" href="fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="167,83,252,111"/><area shape="rect" id="node7" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="185,393,247,421"/><area shape="rect" id="node14" href="vfs_8h.html" title="Virtual File System." alt="" coords="248,238,299,266"/><area shape="rect" id="node24" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="92,238,169,266"/><area shape="rect" id="node9" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="212,547,273,575"/><area shape="rect" id="node11" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="128,470,205,498"/><area shape="rect" id="node17" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="91,315,171,343"/><area shape="rect" id="node20" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="245,315,307,343"/></map>
+<area shape="rect" id="node2" href="fat__internal_8h.html" title="fat_internal.h" alt="" coords="123,155,219,181"/><area shape="rect" id="node11" href="fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT. " alt="" coords="169,80,254,107"/><area shape="rect" id="node4" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="188,379,251,405"/><area shape="rect" id="node7" href="vfs_8h.html" title="Virtual File System. " alt="" coords="251,229,302,256"/><area shape="rect" id="node10" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="93,229,172,256"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="215,528,277,555"/><area shape="rect" id="node6" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="129,453,208,480"/><area shape="rect" id="node8" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts. " alt="" coords="92,304,173,331"/><area shape="rect" id="node9" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier. " alt="" coords="249,304,310,331"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="fat__internal_8c__dep__incl.png" border="0" usemap="#kernel_2fs_2fat_2fat__internal_8cdep" alt=""/></div>
 <map name="kernel_2fs_2fat_2fat__internal_8cdep" id="kernel_2fs_2fat_2fat__internal_8cdep">
-<area shape="rect" id="node3" href="fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="5,83,184,111"/></map>
+<area shape="rect" id="node2" href="fat__functions_8c.html" title="Fonctions pour le driver FAT. " alt="" coords="5,80,185,107"/></map>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a59adc4c82490d23754cd39c2fb99b0da"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8c.html#a59adc4c82490d23754cd39c2fb99b0da">EOF</a>&#160;&#160;&#160;(-1)</td></tr>
+<tr class="separator:a59adc4c82490d23754cd39c2fb99b0da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:acc9f1bc688e7d7c5459ad50676608995"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8c.html#acc9f1bc688e7d7c5459ad50676608995">read_fat</a> (<a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a> *instance)</td></tr>
+<tr class="separator:acc9f1bc688e7d7c5459ad50676608995"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ae169e11ec76cae96a82e41fed70ece"><td class="memItemLeft" align="right" valign="top"><a class="el" href="fat__internal_8h.html#a04e3d213fd143d58bbabf68062bdc21c">directory_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8c.html#a0ae169e11ec76cae96a82e41fed70ece">open_root_dir</a> (<a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a> *instance)</td></tr>
+<tr class="separator:a0ae169e11ec76cae96a82e41fed70ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="var-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a9f07e47f75ec13bd1445162841e204d4"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct__open__file__operations__t.html">_open_file_operations_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__internal_8c.html#a9f07e47f75ec13bd1445162841e204d4">fatfs_fops</a> = {.<a class="el" href="unistd_8c.html#abb39b21888372e95ad3e5c59b166f5c8">write</a> = <a class="el" href="libc_2include_2sys_2types_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, .<a class="el" href="unistd_8c.html#af32a16ad2dd9e48482f8f790db7dbbd2">read</a> = <a class="el" href="fat__internal_8h.html#a84b490d3d5e212e003c6b84071bd204b">fat_read_file</a>, .seek = <a class="el" href="fat__internal_8h.html#a5e52d080338c1179ae01999006f077d3">fat_seek_file</a>, .ioctl = <a class="el" href="libc_2include_2sys_2types_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, .<a class="el" href="fcntl_8h.html#adcb60598073f6f9cbb0091ef6768fa5c">open</a> = <a class="el" href="fat__internal_8h.html#a2ac41048fa02e77edaece792c02c5692">fat_open</a>, .<a class="el" href="fcntl_8h.html#ae68e7e3d0b126184d5d00e78e94305fb">close</a> = <a class="el" href="fat__internal_8h.html#afdccf4bea2c0e70059a76f43fea9c33f">fat_close</a>, .<a class="el" href="dirent_8h.html#a58257faf8b13b3f14558613c632b2373">readdir</a> = <a class="el" href="fat__internal_8h.html#ada9bd47fd90b01248fe52f302560f9f9">fat_readdir</a>}</td></tr>
+<tr class="separator:a9f07e47f75ec13bd1445162841e204d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
-<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>Copyright (C) 2010-2014 TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 <p>Description de ce que fait le fichier </p>
-</div><h2>Documentation des macros</h2>
+</div><h2 class="groupheader">Documentation des macros</h2>
 <a class="anchor" id="a59adc4c82490d23754cd39c2fb99b0da"></a>
 <div class="memitem">
 <div class="memproto">
@@ -146,7 +151,7 @@ DESCRIPTION</h1>
 
 </div>
 </div>
-<h2>Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a0ae169e11ec76cae96a82e41fed70ece"></a>
 <div class="memitem">
 <div class="memproto">
@@ -174,7 +179,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="fat__internal_8c_a0ae169e11ec76cae96a82e41fed70ece_cgraph.png" border="0" usemap="#fat__internal_8c_a0ae169e11ec76cae96a82e41fed70ece_cgraph" alt=""/></div>
 <map name="fat__internal_8c_a0ae169e11ec76cae96a82e41fed70ece_cgraph" id="fat__internal_8c_a0ae169e11ec76cae96a82e41fed70ece_cgraph">
-<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="155,5,221,33"/><area shape="rect" id="node7" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="163,55,213,83"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="271,5,409,33"/></map>
+<area shape="rect" id="node2" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="153,31,220,57"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="161,81,212,108"/><area shape="rect" id="node3" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="268,5,408,32"/><area shape="rect" id="node4" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="303,56,373,83"/></map>
 </div>
 </p>
 
@@ -221,7 +226,7 @@ Voici le graphe des appelants de cette fonction :</div>
 
 </div>
 </div>
-<h2>Documentation des variables</h2>
+<h2 class="groupheader">Documentation des variables</h2>
 <a class="anchor" id="a9f07e47f75ec13bd1445162841e204d4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -238,9 +243,9 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:35 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

@@ -1,13 +1,12 @@
 <map id="find_process" name="find_process">
-<area shape="rect" id="node3" href="$kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="192,5,267,33"/>
-<area shape="rect" id="node9" href="$kprocess_8c.html#ac57ad880ae66a0bf4339309fada43242" title="Récupère des infos sur un process." alt="" coords="149,55,309,83"/>
-<area shape="rect" id="node11" href="$kprocess_8c.html#a4e715b0cdc3fe2325e5dcc64ec07f0f9" title="Bloque le process courant jusqu&#39;à ce que le processus identifié par pid se termine." alt="" coords="149,106,309,134"/>
-<area shape="rect" id="node13" href="$ksem_8c.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)" alt="" coords="196,157,263,185"/>
-<area shape="rect" id="node18" href="$ksem_8c.html#acf03efb500e930ca996059a6388b528b" title="Opération V sur un sémaphore Réalise l&#39;opération V sur le sémaphore. Le processus libère le sémaphore..." alt="" coords="199,207,260,235"/>
-<area shape="rect" id="node5" href="$kprocess_8c.html#a21c8be1fe7cda8279886a50d946625bb" title="(OUTDATED)Crée un nouveau processus. Crée un nouveau processus et l&#39;ajoute à la liste des processus a..." alt="" coords="383,55,492,83"/>
-<area shape="rect" id="node7" href="$scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte..." alt="" coords="567,55,668,83"/>
-<area shape="rect" id="node16" href="$kprocess_8c.html#acc70870c5d5807f03b0a58bd1e160f6f" title="Syscall appelé lors de la fin d&#39;exécution d&#39;un process." alt="" coords="357,157,517,185"/>
-<area shape="rect" id="node20" href="$tty_8h.html#a52453f2334ffeb8bb88cf32597fab96e" title="tty_insert_flip_char" alt="" coords="372,207,503,235"/>
-<area shape="rect" id="node24" href="$ksem_8c.html#a82fb70bceeb23516b8cbdc1bc8f77805" title="Handler de l&#39;appel système SYS_SEM Dans la pratique, sys_ksem ne fait qu&#39;exécuter la fonction corresp..." alt="" coords="357,258,517,286"/>
-<area shape="rect" id="node22" href="$serial_8h.html#ac50cbde292e2ec8e27be3384c942d56a" title="Handler d&#39;interruption du driver série." alt="" coords="580,207,655,235"/>
+<area shape="rect" id="node3" href="$kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b" title="Initialise les descripteurs de fichiers standards." alt="" coords="187,5,261,33"/>
+<area shape="rect" id="node5" href="$kprocess_8c.html#ac57ad880ae66a0bf4339309fada43242" title="Récupère des infos sur un process." alt="" coords="147,55,301,83"/>
+<area shape="rect" id="node7" href="$kprocess_8c.html#a4e715b0cdc3fe2325e5dcc64ec07f0f9" title="Bloque le process courant jusqu&#39;à ce que le processus identifié par pid se termine." alt="" coords="147,106,301,134"/>
+<area shape="rect" id="node9" href="$ksem_8c.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.)" alt="" coords="191,157,257,185"/>
+<area shape="rect" id="node15" href="$ksem_8c.html#acf03efb500e930ca996059a6388b528b" title="Opération V sur un sémaphore Réalise l&#39;opération V sur le sémaphore. Le processus libère le sémaphore..." alt="" coords="193,207,255,235"/>
+<area shape="rect" id="node11" href="$kprocess_8c.html#acc70870c5d5807f03b0a58bd1e160f6f" title="Syscall appelé lors de la fin d&#39;exécution d&#39;un process." alt="" coords="349,106,504,134"/>
+<area shape="rect" id="node13" href="$kunistd_8c.html#aa1b39a7592422088f94dc4437d891db9" title="SYSCALL_HANDLER3" alt="" coords="349,157,504,185"/>
+<area shape="rect" id="node17" href="$tty_8h.html#a52453f2334ffeb8bb88cf32597fab96e" title="tty_insert_flip_char" alt="" coords="363,207,491,235"/>
+<area shape="rect" id="node21" href="$ksem_8c.html#a82fb70bceeb23516b8cbdc1bc8f77805" title="Handler de l&#39;appel système SYS_SEM Dans la pratique, sys_ksem ne fait qu&#39;exécuter la fonction corresp..." alt="" coords="349,258,504,286"/>
+<area shape="rect" id="node19" href="$serial_8h.html#ac50cbde292e2ec8e27be3384c942d56a" title="Handler d&#39;interruption du driver série." alt="" coords="552,207,624,235"/>
 </map>

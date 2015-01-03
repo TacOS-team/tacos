@@ -1,8 +1,8 @@
 <map id="_fs_instance_t" name="_fs_instance_t">
-<area shape="rect" id="node5" href="$struct__inode__t.html" title="_inode_t" alt="" coords="454,101,523,129"/>
-<area shape="rect" id="node10" href="$structfile__system__t.html" title="Structure qui représente un FS." alt="" coords="144,101,243,129"/>
-<area shape="rect" id="node13" href="$struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="242,302,386,330"/>
-<area shape="rect" id="node19" href="$struct__mounted__fs__t.html" title="_mounted_fs_t" alt="" coords="99,155,206,183"/>
-<area shape="rect" id="node2" href="$struct__dentry__t.html" title="_dentry_t" alt="" coords="322,209,396,237"/>
-<area shape="rect" id="node7" href="$struct__open__file__operations__t.html" title="_open_file_operations_t" alt="" coords="480,6,638,34"/>
+<area shape="rect" id="node5" href="$struct__inode__t.html" title="_inode_t" alt="" coords="452,101,522,129"/>
+<area shape="rect" id="node10" href="$structfile__system__t.html" title="Structure qui représente un FS." alt="" coords="146,101,242,129"/>
+<area shape="rect" id="node13" href="$struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="242,302,383,330"/>
+<area shape="rect" id="node19" href="$struct__mounted__fs__t.html" title="_mounted_fs_t" alt="" coords="98,155,204,183"/>
+<area shape="rect" id="node2" href="$struct__dentry__t.html" title="_dentry_t" alt="" coords="320,209,395,237"/>
+<area shape="rect" id="node7" href="$struct__open__file__operations__t.html" title="_open_file_operations_t" alt="" coords="479,6,636,34"/>
 </map>

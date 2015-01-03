@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['clocks_5fper_5fsec',['CLOCKS_PER_SEC',['../time_8c.html#a3d9fc3c745d0880902fe3ea3d5d5f71e',1,'time.c']]],
   ['cread',['CREAD',['../termios_8h.html#a8925ebb5550f4c16b5308955eafe469a',1,'termios.h']]],
   ['cs5',['CS5',['../termios_8h.html#a4d47fc38b83dc3e81f6075313cb8e8b2',1,'termios.h']]],
   ['cs6',['CS6',['../termios_8h.html#a9cf7186015f5a77e4796eee416867ab3',1,'termios.h']]],

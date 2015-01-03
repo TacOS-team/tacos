@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/pci/pci.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -90,41 +91,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier pci.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="pci_8h_source.html">pci.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="pci__config_8h_source.html">pci_config.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="pci__types_8h_source.html">pci_types.h</a>&gt;</code><br/>
-<code>#include &lt;types.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="kstdio_8h_source.html">kstdio.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="pci_8h_source.html">pci.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="pci__config_8h_source.html">pci_config.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="pci__types_8h_source.html">pci_types.h</a>&gt;</code><br />
+<code>#include &lt;types.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="klog_8h_source.html">klog.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="kstdio_8h_source.html">kstdio.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de pci.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="pci_8c__incl.png" border="0" usemap="#kernel_2pci_2pci_8c" alt=""/></div>
 <map name="kernel_2pci_2pci_8c" id="kernel_2pci_2pci_8c">
-<area shape="rect" id="node3" href="pci_8h.html" title="pci.h" alt="" coords="5,83,53,111"/><area shape="rect" id="node7" href="pci__types_8h.html" title="pci_types.h" alt="" coords="57,161,143,189"/><area shape="rect" id="node10" href="pci__config_8h.html" title="pci_config.h" alt="" coords="128,83,219,111"/><area shape="rect" id="node16" href="klog_8h.html" title="Logging macros." alt="" coords="328,83,384,111"/><area shape="rect" id="node18" href="kstdio_8h.html" title="kprintf" alt="" coords="355,161,421,189"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="29,238,91,266"/></map>
+<area shape="rect" id="node2" href="pci_8h.html" title="pci.h" alt="" coords="5,80,55,107"/><area shape="rect" id="node4" href="pci__types_8h.html" title="pci_types.h" alt="" coords="59,155,145,181"/><area shape="rect" id="node5" href="pci__config_8h.html" title="pci_config.h" alt="" coords="130,80,221,107"/><area shape="rect" id="node7" href="klog_8h.html" title="Logging macros. " alt="" coords="333,80,389,107"/><area shape="rect" id="node8" href="kstdio_8h.html" title="kprintf " alt="" coords="359,155,426,181"/><area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="29,229,92,256"/></map>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ac92b961e4ae0fbfdb814592b74fa3229"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac92b961e4ae0fbfdb814592b74fa3229"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_MAX_DEVICES</b>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:ac92b961e4ae0fbfdb814592b74fa3229"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:abef0a0bef829772a184a39844c85dfe1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abef0a0bef829772a184a39844c85dfe1"></a>
 <a class="el" href="structpci__function__t.html">pci_function_p</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pci_get_function</b> (pci_desc_t desc)</td></tr>
+<tr class="separator:abef0a0bef829772a184a39844c85dfe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d01c2522d6ba81abf85b6d8d2ad4be4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d01c2522d6ba81abf85b6d8d2ad4be4"></a>
 <a class="el" href="structpci__function__t.html">pci_function_p</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pci_find_device</b> (<a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> vendor_id, <a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> device_id)</td></tr>
+<tr class="separator:a0d01c2522d6ba81abf85b6d8d2ad4be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51703bed24b16ecc8f4dec3ddbc3c117"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51703bed24b16ecc8f4dec3ddbc3c117"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>pci_scan</b> ()</td></tr>
+<tr class="separator:a51703bed24b16ecc8f4dec3ddbc3c117"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48874e39232daa001e87ee61ad2f5e54"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48874e39232daa001e87ee61ad2f5e54"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>pci_list</b> ()</td></tr>
+<tr class="separator:a48874e39232daa001e87ee61ad2f5e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
-<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>Copyright (C) 2010-2014 TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
@@ -134,9 +140,9 @@ DESCRIPTION</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:39 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:32 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

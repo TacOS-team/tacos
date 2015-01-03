@@ -1,70 +1,146 @@
-\documentclass{book}
-\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
-\usepackage{makeidx}
-\usepackage{natbib}
+\documentclass[twoside]{book}
+
+% Packages required by doxygen
+\usepackage{fixltx2e}
+\usepackage{calc}
+\usepackage{doxygen}
 \usepackage{graphicx}
-\usepackage{multicol}
-\usepackage{float}
-\usepackage{listings}
-\usepackage{color}
-\usepackage{ifthen}
-\usepackage[table]{xcolor}
-\usepackage{textcomp}
-\usepackage{alltt}
-\usepackage{ifpdf}
-\ifpdf
-\usepackage[pdftex,
-            pagebackref=true,
-            colorlinks=true,
-            linkcolor=blue,
-            unicode
-           ]{hyperref}
-\else
-\usepackage[ps2pdf,
-            pagebackref=true,
-            colorlinks=true,
-            linkcolor=blue,
-            unicode
-           ]{hyperref}
-\usepackage{pspicture}
-\fi
 \usepackage[utf8]{inputenc}
+\usepackage{makeidx}
+\usepackage{multicol}
+\usepackage{multirow}
+\PassOptionsToPackage{warn}{textcomp}
+\usepackage{textcomp}
+\usepackage[nointegrals]{wasysym}
+\usepackage[table]{xcolor}
+
+% NLS support packages
 \usepackage[french]{babel}
 
+% Font selection
+\usepackage[T1]{fontenc}
 \usepackage{mathptmx}
 \usepackage[scaled=.90]{helvet}
 \usepackage{courier}
-\usepackage{sectsty}
 \usepackage{amssymb}
-\usepackage[titles]{tocloft}
-\usepackage{doxygen}
-\lstset{language=C++,inputencoding=utf8,basicstyle=\footnotesize,breaklines=true,breakatwhitespace=true,tabsize=8,numbers=left }
-\makeindex
-\setcounter{tocdepth}{3}
-\renewcommand{\footrulewidth}{0.4pt}
+\usepackage{sectsty}
 \renewcommand{\familydefault}{\sfdefault}
-\hfuzz=15pt
-\setlength{\emergencystretch}{15pt}
-\hbadness=750
+\allsectionsfont{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\renewcommand{\DoxyLabelFont}{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\newcommand{\+}{\discretionary{\mbox{\scriptsize$\hookleftarrow$}}{}{}}
+
+% Page & text layout
+\usepackage{geometry}
+\geometry{%
+  a4paper,%
+  top=2.5cm,%
+  bottom=2.5cm,%
+  left=2.5cm,%
+  right=2.5cm%
+}
 \tolerance=750
+\hfuzz=15pt
+\hbadness=750
+\setlength{\emergencystretch}{15pt}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.2cm}
+\makeatletter
+\renewcommand{\paragraph}{%
+  \@startsection{paragraph}{4}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@parafont%
+  }%
+}
+\renewcommand{\subparagraph}{%
+  \@startsection{subparagraph}{5}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@subparafont%
+  }%
+}
+\makeatother
+
+% Headers & footers
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead[LE]{\fancyplain{}{\bfseries\thepage}}
+\fancyhead[CE]{\fancyplain{}{}}
+\fancyhead[RE]{\fancyplain{}{\bfseries\leftmark}}
+\fancyhead[LO]{\fancyplain{}{\bfseries\rightmark}}
+\fancyhead[CO]{\fancyplain{}{}}
+\fancyhead[RO]{\fancyplain{}{\bfseries\thepage}}
+\fancyfoot[LE]{\fancyplain{}{}}
+\fancyfoot[CE]{\fancyplain{}{}}
+\fancyfoot[RE]{\fancyplain{}{\bfseries\scriptsize Généré le Samedi 3 Janvier 2015 13\+:22\+:33 pour Tac\+O\+S par Doxygen }}
+\fancyfoot[LO]{\fancyplain{}{\bfseries\scriptsize Généré le Samedi 3 Janvier 2015 13\+:22\+:33 pour Tac\+O\+S par Doxygen }}
+\fancyfoot[CO]{\fancyplain{}{}}
+\fancyfoot[RO]{\fancyplain{}{}}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\chaptermark}[1]{%
+  \markboth{#1}{}%
+}
+\renewcommand{\sectionmark}[1]{%
+  \markright{\thesection\ #1}%
+}
+
+% Indices & bibliography
+\usepackage{natbib}
+\usepackage[titles]{tocloft}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
+\makeindex
+
+% Hyperlinks (required, but should be loaded last)
+\usepackage{ifpdf}
+\ifpdf
+  \usepackage[pdftex,pagebackref=true]{hyperref}
+\else
+  \usepackage[ps2pdf,pagebackref=true]{hyperref}
+\fi
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  unicode%
+}
+
+% Custom commands
+\newcommand{\clearemptydoublepage}{%
+  \newpage{\pagestyle{empty}\cleardoublepage}%
+}
+
+
+%===== C O N T E N T S =====
+
 \begin{document}
-\hypersetup{pageanchor=false,citecolor=blue}
+
+% Titlepage & ToC
+\hypersetup{pageanchor=false,
+             bookmarks=true,
+             bookmarksnumbered=true,
+             pdfencoding=unicode
+            }
+\pagenumbering{roman}
 \begin{titlepage}
 \vspace*{7cm}
-\begin{center}
-{\Large Tac\-O\-S \\[1ex]\large 0.\-1 }\\
+\begin{center}%
+{\Large Tac\+O\+S \\[1ex]\large 0.\+2 }\\
 \vspace*{1cm}
-{\large Généré par Doxygen 1.8.1.2}\\
+{\large Généré par Doxygen 1.8.7}\\
 \vspace*{0.5cm}
-{\small Jeudi Mai 30 2013 19:08:43}\\
+{\small Samedi 3 Janvier 2015 13:22:33}\\
 \end{center}
 \end{titlepage}
 \clearemptydoublepage
-\pagenumbering{roman}
 \tableofcontents
 \clearemptydoublepage
 \pagenumbering{arabic}
-\hypersetup{pageanchor=true,citecolor=blue}
+\hypersetup{pageanchor=true}
+
+%--- Begin generated contents ---
 \chapter{Index des structures de données}
 \input{annotated}
 \chapter{Index des fichiers}
@@ -131,7 +207,6 @@
 \input{structintframe}
 \input{structkernel__options}
 \input{structkey__t}
-\input{structletter}
 \input{structlfn__entry__t}
 \input{structlist__t}
 \input{structmem}
@@ -149,8 +224,8 @@
 \input{structpage__table__entry}
 \input{structpci__function__t}
 \input{structphysical__page__descr}
+\input{structprocess}
 \input{structprocess__init__data__t}
-\input{structprocess__t}
 \input{structprocfs__directory__function__t}
 \input{structprocfs__file__function__t}
 \input{structregs__t}
@@ -167,6 +242,7 @@
 \input{structstat}
 \input{structsymbol__t}
 \input{structsymbol__table__t}
+\input{structsymbole}
 \input{structtermios}
 \input{structtimespec}
 \input{structtimeval}
@@ -192,6 +268,7 @@
 \input{floppy__motor_8h}
 \input{floppy__utils_8c}
 \input{floppy__utils_8h}
+\input{ram_8c}
 \input{beeper_8c}
 \input{mouse_8c}
 \input{serial_8c}
@@ -232,6 +309,7 @@
 \input{floppy_8h}
 \input{keyboard_8h}
 \input{mouse_8h}
+\input{ram_8h}
 \input{serial_8h}
 \input{sock_8h}
 \input{vesa_8h}
@@ -259,7 +337,9 @@
 \input{kdirent_8h}
 \input{kerrno_8h}
 \input{kfcntl_8h}
-\input{limits_8h}
+\input{kernel_2include_2klibc_2limits_8h}
+\input{libc_2include_2limits_8h}
+\input{kernel_2include_2klibc_2stdarg_8h}
 \input{kernel_2include_2klibc_2stdlib_8h}
 \input{libc_2include_2stdlib_8h}
 \input{kernel_2include_2klibc_2string_8h}
@@ -287,6 +367,7 @@
 \input{round__robin_8h}
 \input{scheduler_8h}
 \input{signal__types_8h}
+\input{spinlock_8h}
 \input{symtable_8h}
 \input{syscall__values_8h}
 \input{termios__types_8h}
@@ -325,11 +406,9 @@
 \input{list_8c}
 \input{vfs_8c}
 \input{vmm_8c}
-\input{ctype_8c}
 \input{dirent_8c}
 \input{errno_8c}
 \input{fcntl_8c}
-\input{ctype_8h}
 \input{dirent_8h}
 \input{errno_8h}
 \input{fcntl_8h}
@@ -338,17 +417,19 @@
 \input{malloc_8h}
 \input{process_8h}
 \input{signal_8h}
-\input{stdarg_8h}
 \input{stdbool_8h}
+\input{stdint_8h}
 \input{stdio_8h}
 \input{cdefs_8h}
 \input{ioctl_8h}
+\input{select_8h}
 \input{sem_8h}
 \input{stat_8h}
 \input{syscall_8h}
+\input{sys_2time_8h}
+\input{time_8h}
 \input{wait_8h}
 \input{termios_8h}
-\input{time_8h}
 \input{unistd_8h}
 \input{libio_8c}
 \input{malloc_8c}
@@ -376,5 +457,12 @@
 \input{time_8c}
 \input{unistd_8c}
 \input{wait_8c}
+%--- End generated contents ---
+
+% Index
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Index}
 \printindex
+
 \end{document}

@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/include/scheduler.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,45 +90,57 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="scheduler_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef SCHEDULER_H</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SCHEDULER_H</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span> </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kprocess_8h.html" title="Création de nouveaux processus.">kprocess.h</a>&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define SCHEDULER_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kprocess_8h.html">kprocess.h</a>&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ksyscall_8h.html">ksyscall.h</a>&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="structscheduler__descriptor__t.html">   38</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structscheduler__descriptor__t.html">   38</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">char</span>* name;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="structscheduler__descriptor__t.html#a250bb59b72e7a3828160638033ac5cb3">   40</a></span>&#160;        int (*initialize)(int);                         </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="structscheduler__descriptor__t.html#a41661a5080062b563df01dfb1a02e22e">   41</a></span>&#160;        <a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* (*get_next_process)();       </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="structscheduler__descriptor__t.html#a077b3b95ecf49c9dacc40b6a87cb1008">   42</a></span>&#160;        <a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* (*get_current_process)();    </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="structscheduler__descriptor__t.html#a8919a05ae907a4b642563078a28e744a">   43</a></span>&#160;        int (*add_process)(<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>*);         </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="structscheduler__descriptor__t.html#a656d41ddd8d861d0ee55523de3693dfa">   44</a></span>&#160;        int (*<a class="code" href="kprocess_8h.html#a7cced35f469ae897c55ab96940289cf6" title="Retire un processus de la liste.">delete_process</a>)(int);                     </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        void (*inject_idle)(<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>*);</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structscheduler__descriptor__t.html#a250bb59b72e7a3828160638033ac5cb3">   40</a></span>&#160;        int (*initialize)(int);                         </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structscheduler__descriptor__t.html#a41661a5080062b563df01dfb1a02e22e">   41</a></span>&#160;        <a class="code" href="structprocess.html">process_t</a>* (*get_next_process)();       </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structscheduler__descriptor__t.html#a077b3b95ecf49c9dacc40b6a87cb1008">   42</a></span>&#160;        <a class="code" href="structprocess.html">process_t</a>* (*get_current_process)();    </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structscheduler__descriptor__t.html#a8919a05ae907a4b642563078a28e744a">   43</a></span>&#160;        int (*add_process)(<a class="code" href="structprocess.html">process_t</a>*);         </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structscheduler__descriptor__t.html#a656d41ddd8d861d0ee55523de3693dfa">   44</a></span>&#160;        int (*<a class="code" href="kprocess_8h.html#a7cced35f469ae897c55ab96940289cf6">delete_process</a>)(int);                     </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        void (*inject_idle)(<a class="code" href="structprocess.html">process_t</a>*);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <a class="code" href="structscheduler__descriptor__t.html">scheduler_descriptor_t</a>;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#a353a4f6525d48b0459246ae392d81e23" title="Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte...">init_scheduler</a>(<span class="keywordtype">int</span> Q);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#a353a4f6525d48b0459246ae392d81e23">init_scheduler</a>(<span class="keywordtype">int</span> Q);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span> set_scheduler(<a class="code" href="structscheduler__descriptor__t.html">scheduler_descriptor_t</a>* sched);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">int</span> scheduler_add_process(<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* proc);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">int</span> scheduler_add_process(<a class="code" href="structprocess.html">process_t</a>* proc);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">int</span> scheduler_delete_process(<span class="keywordtype">int</span> pid);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* <a class="code" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation.">get_current_process</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<a class="code" href="structprocess.html">process_t</a>* <a class="code" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973">get_current_process</a>();</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#ad39da00e42a0897e378c98fc3319b17d" title="Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au...">start_scheduler</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#ad39da00e42a0897e378c98fc3319b17d">start_scheduler</a>();</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#aafa4b5a4a0ef6280c9834e1c30aff031" title="Arret du scheduler Arrète le scheduler en retirant le prochain schedule de la liste des évenements...">stop_scheduler</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#aafa4b5a4a0ef6280c9834e1c30aff031">stop_scheduler</a>();</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;SYSCALL_HANDLER1(sys_sleep, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> delay); </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<a class="code" href="scheduler_8h.html#ab180240c5e0d6459b4fafe3c81939ac5">SYSCALL_HANDLER1</a>(sys_sleep, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> delay); </div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">int</span> <a class="code" href="scheduler_8h.html#aa561ebdf652e5c64fc2400c409e76d8d">is_schedulable</a>(<a class="code" href="structprocess__t.html" title="Structure représentant un processus.">process_t</a>* process);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">int</span> <a class="code" href="scheduler_8h.html#aa561ebdf652e5c64fc2400c409e76d8d">is_schedulable</a>(<a class="code" href="structprocess.html">process_t</a>* <a class="code" href="structprocess.html">process</a>);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span> halt();</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif //SCHEDULER_H</span></div>
+<div class="ttc" id="structprocess_html"><div class="ttname"><a href="structprocess.html">process</a></div><div class="ttdoc">Structure représentant un processus. </div><div class="ttdef"><b>Definition:</b> kprocess.h:92</div></div>
+<div class="ttc" id="scheduler_8h_html_ab180240c5e0d6459b4fafe3c81939ac5"><div class="ttname"><a href="scheduler_8h.html#ab180240c5e0d6459b4fafe3c81939ac5">SYSCALL_HANDLER1</a></div><div class="ttdeci">SYSCALL_HANDLER1(sys_sleep, uint32_t delay)</div><div class="ttdoc">Handler de l&#39;appel système sleep. </div><div class="ttdef"><b>Definition:</b> scheduler.c:307</div></div>
+<div class="ttc" id="scheduler_8h_html_aa561ebdf652e5c64fc2400c409e76d8d"><div class="ttname"><a href="scheduler_8h.html#aa561ebdf652e5c64fc2400c409e76d8d">is_schedulable</a></div><div class="ttdeci">int is_schedulable(process_t *process)</div><div class="ttdef"><b>Definition:</b> scheduler.c:72</div></div>
+<div class="ttc" id="scheduler_8h_html_aafa4b5a4a0ef6280c9834e1c30aff031"><div class="ttname"><a href="scheduler_8h.html#aafa4b5a4a0ef6280c9834e1c30aff031">stop_scheduler</a></div><div class="ttdeci">void stop_scheduler()</div><div class="ttdoc">Arret du scheduler Arrète le scheduler en retirant le prochain schedule de la liste des évenements...</div><div class="ttdef"><b>Definition:</b> scheduler.c:273</div></div>
+<div class="ttc" id="scheduler_8h_html_a353a4f6525d48b0459246ae392d81e23"><div class="ttname"><a href="scheduler_8h.html#a353a4f6525d48b0459246ae392d81e23">init_scheduler</a></div><div class="ttdeci">void init_scheduler(int Q)</div><div class="ttdoc">Initialisation du scheduler Initialise les données du scheduler pour qu&#39;il puisse être lancé correcte...</div><div class="ttdef"><b>Definition:</b> scheduler.c:252</div></div>
+<div class="ttc" id="structscheduler__descriptor__t_html"><div class="ttname"><a href="structscheduler__descriptor__t.html">scheduler_descriptor_t</a></div><div class="ttdef"><b>Definition:</b> scheduler.h:38</div></div>
+<div class="ttc" id="kprocess_8h_html"><div class="ttname"><a href="kprocess_8h.html">kprocess.h</a></div><div class="ttdoc">Création de nouveaux processus. </div></div>
+<div class="ttc" id="scheduler_8h_html_a2d69bf5462cbcb1bddac7b8c4f7b6973"><div class="ttname"><a href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973">get_current_process</a></div><div class="ttdeci">process_t * get_current_process()</div><div class="ttdoc">Retourne le processus en cours d&#39;utilisation. </div><div class="ttdef"><b>Definition:</b> scheduler.c:293</div></div>
+<div class="ttc" id="scheduler_8h_html_ad39da00e42a0897e378c98fc3319b17d"><div class="ttname"><a href="scheduler_8h.html#ad39da00e42a0897e378c98fc3319b17d">start_scheduler</a></div><div class="ttdeci">void start_scheduler()</div><div class="ttdoc">Mise en route du scheduler Met en route le scheduler en ajoutant la fonction schedule en évenement au...</div><div class="ttdef"><b>Definition:</b> scheduler.c:278</div></div>
+<div class="ttc" id="ksyscall_8h_html"><div class="ttname"><a href="ksyscall_8h.html">ksyscall.h</a></div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_a33594304e786b158f3fb30289278f5af"><div class="ttname"><a href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a></div><div class="ttdeci">unsigned long int uint32_t</div><div class="ttdef"><b>Definition:</b> types.h:36</div></div>
+<div class="ttc" id="kprocess_8h_html_a7cced35f469ae897c55ab96940289cf6"><div class="ttname"><a href="kprocess_8h.html#a7cced35f469ae897c55ab96940289cf6">delete_process</a></div><div class="ttdeci">int delete_process(int pid)</div><div class="ttdoc">Retire un processus de la liste. </div><div class="ttdef"><b>Definition:</b> kprocess.c:94</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

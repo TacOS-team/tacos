@@ -1,5 +1,6 @@
 <map id="libc/include/errno.h" name="libc/include/errno.h">
-<area shape="rect" id="node3" href="$perror_8c.html" title="libc/stdio/perror.c" alt="" coords="5,83,125,111"/>
-<area shape="rect" id="node5" href="$libc_2stdlib_8c.html" title="libc/stdlib.c" alt="" coords="149,83,235,111"/>
-<area shape="rect" id="node7" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="259,83,349,111"/>
+<area shape="rect" id="node2" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers. " alt="" coords="5,80,93,107"/>
+<area shape="rect" id="node3" href="$perror_8c.html" title="libc/stdio/perror.c" alt="" coords="118,80,239,107"/>
+<area shape="rect" id="node4" href="$libc_2stdlib_8c.html" title="libc/stdlib.c" alt="" coords="263,80,350,107"/>
+<area shape="rect" id="node5" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="375,80,465,107"/>
 </map>

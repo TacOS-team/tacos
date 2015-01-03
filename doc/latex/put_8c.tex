@@ -1,11 +1,12 @@
 \hypertarget{put_8c}{\section{Référence du fichier libc/stdio/put.c}
-\label{put_8c}\index{libc/stdio/put.\-c@{libc/stdio/put.\-c}}
+\label{put_8c}\index{libc/stdio/put.\+c@{libc/stdio/put.\+c}}
 }
-{\ttfamily \#include $<$stdio.\-h$>$}\\*
-{\ttfamily \#include $<$stdlib.\-h$>$}\\*
-{\ttfamily \#include $<$unistd.\-h$>$}\\*
-{\ttfamily \#include $<$fcntl.\-h$>$}\\*
-Graphe des dépendances par inclusion de put.\-c\-:\nopagebreak
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$fcntl.\+h$>$}\\*
+Graphe des dépendances par inclusion de put.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,13 +16,13 @@ Graphe des dépendances par inclusion de put.\-c\-:\nopagebreak
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{put_8c_adb974f28765a31026ee6bf71d5175951}{int {\bfseries fflush} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)}\label{put_8c_adb974f28765a31026ee6bf71d5175951}
+\hypertarget{put_8c_adb974f28765a31026ee6bf71d5175951}{int {\bfseries fflush} (\hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)}\label{put_8c_adb974f28765a31026ee6bf71d5175951}
 
 \item 
-\hypertarget{put_8c_abe6299d5823dd023e610aaa619735a3f}{int {\bfseries fputc} (int c, \hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)}\label{put_8c_abe6299d5823dd023e610aaa619735a3f}
+\hypertarget{put_8c_abe6299d5823dd023e610aaa619735a3f}{int {\bfseries fputc} (int c, \hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)}\label{put_8c_abe6299d5823dd023e610aaa619735a3f}
 
 \item 
-\hypertarget{put_8c_a68236e664c1f0da049b25fba1c1695f6}{int {\bfseries fputs} (const char $\ast$s, \hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)}\label{put_8c_a68236e664c1f0da049b25fba1c1695f6}
+\hypertarget{put_8c_a68236e664c1f0da049b25fba1c1695f6}{int {\bfseries fputs} (const char $\ast$s, \hyperlink{struct__IO__FILE}{F\+I\+L\+E} $\ast$stream)}\label{put_8c_a68236e664c1f0da049b25fba1c1695f6}
 
 \item 
 \hypertarget{put_8c_af4de2514b7778805db3815e8dd6cf09a}{int {\bfseries putchar} (int c)}\label{put_8c_af4de2514b7778805db3815e8dd6cf09a}
@@ -34,14 +35,14 @@ Graphe des dépendances par inclusion de put.\-c\-:\nopagebreak
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010-\/2014 Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 Description de ce que fait le fichier 

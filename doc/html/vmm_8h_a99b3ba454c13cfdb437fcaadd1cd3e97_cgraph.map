@@ -1,4 +1,4 @@
 <map id="init_vmm" name="init_vmm">
-<area shape="rect" id="node3" href="$memory_8h.html#ab67b6223b9ebbe423e9102dbbed1afce" title="memory_get_kernel_top" alt="" coords="128,5,288,33"/>
-<area shape="rect" id="node5" href="$memory_8h.html#aeed93f8c282af6d9d4428813e331f583" title="Réserve un cadre de page." alt="" coords="132,55,284,99"/>
+<area shape="rect" id="node2" href="$memory_8h.html#ab67b6223b9ebbe423e9102dbbed1afce" title="memory_get_kernel_top" alt="" coords="128,5,288,32"/>
+<area shape="rect" id="node3" href="$memory_8h.html#aeed93f8c282af6d9d4428813e331f583" title="Réserve un cadre de page. " alt="" coords="131,57,285,98"/>
 </map>

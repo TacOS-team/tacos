@@ -1,13 +1,13 @@
-\hypertarget{struct__directory__entry}{\section{Référence de la structure \-\_\-directory\-\_\-entry}
-\label{struct__directory__entry}\index{\-\_\-directory\-\_\-entry@{\-\_\-directory\-\_\-entry}}
+\hypertarget{struct__directory__entry}{\section{Référence de la structure \+\_\+directory\+\_\+entry}
+\label{struct__directory__entry}\index{\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}}
 }
 
 
-{\ttfamily \#include $<$fat\-\_\-internal.\-h$>$}
+{\ttfamily \#include $<$fat\+\_\+internal.\+h$>$}
 
 
 
-Graphe de collaboration de \-\_\-directory\-\_\-entry\-:\nopagebreak
+Graphe de collaboration de \+\_\+directory\+\_\+entry\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -19,19 +19,19 @@ Graphe de collaboration de \-\_\-directory\-\_\-entry\-:\nopagebreak
 \item 
 char \hyperlink{struct__directory__entry_ac9142fdeb8e265f045fee1edf9608c78}{name} \mbox{[}256\mbox{]}
 \item 
-\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{struct__directory__entry_a63da8f87e73a3eb30e55b2d405fa35d7}{attributes}
+\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} \hyperlink{struct__directory__entry_a63da8f87e73a3eb30e55b2d405fa35d7}{attributes}
 \item 
-\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{struct__directory__entry_a5d6f559c1b7ab2b5a64643073172cc25}{size}
+\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\+\_\+t} \hyperlink{struct__directory__entry_a5d6f559c1b7ab2b5a64643073172cc25}{size}
 \item 
-\hyperlink{time_8h_aaaf414ca0598a3633e6e9161cbb5a58a}{time\-\_\-t} \hyperlink{struct__directory__entry_a27e1020c5262094ab3b58759da9660ae}{access\-\_\-time}
+\hyperlink{time_8h_aaaf414ca0598a3633e6e9161cbb5a58a}{time\+\_\+t} \hyperlink{struct__directory__entry_a27e1020c5262094ab3b58759da9660ae}{access\+\_\+time}
 \item 
-\hyperlink{time_8h_aaaf414ca0598a3633e6e9161cbb5a58a}{time\-\_\-t} \hyperlink{struct__directory__entry_a120c3a3857bd7892a0fc2e6644e6f188}{modification\-\_\-time}
+\hyperlink{time_8h_aaaf414ca0598a3633e6e9161cbb5a58a}{time\+\_\+t} \hyperlink{struct__directory__entry_a120c3a3857bd7892a0fc2e6644e6f188}{modification\+\_\+time}
 \item 
-\hyperlink{time_8h_aaaf414ca0598a3633e6e9161cbb5a58a}{time\-\_\-t} \hyperlink{struct__directory__entry_a95f0f5ef18bf17f332bd0dc352d62ac4}{creation\-\_\-time}
+\hyperlink{time_8h_aaaf414ca0598a3633e6e9161cbb5a58a}{time\+\_\+t} \hyperlink{struct__directory__entry_a95f0f5ef18bf17f332bd0dc352d62ac4}{creation\+\_\+time}
 \item 
-\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} \hyperlink{struct__directory__entry_a8c70d9d0c2b2557cba83fb827d5c6e90}{cluster}
+\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\+\_\+t} \hyperlink{struct__directory__entry_a8c70d9d0c2b2557cba83fb827d5c6e90}{cluster}
 \item 
-struct \hyperlink{struct__directory__entry}{\-\_\-directory\-\_\-entry} $\ast$ \hyperlink{struct__directory__entry_a75001bda0d1d80e4ff5350ad69f83030}{next}
+struct \hyperlink{struct__directory__entry}{\+\_\+directory\+\_\+entry} $\ast$ \hyperlink{struct__directory__entry_a75001bda0d1d80e4ff5350ad69f83030}{next}
 \end{DoxyCompactItemize}
 
 
@@ -39,32 +39,32 @@ struct \hyperlink{struct__directory__entry}{\-\_\-directory\-\_\-entry} $\ast$ \
 Liste chaînée pour stocker les entrées d'un dossier. 
 
 \subsection{Documentation des champs}
-\hypertarget{struct__directory__entry_a27e1020c5262094ab3b58759da9660ae}{\index{\-\_\-directory\-\_\-entry@{\-\_\-directory\-\_\-entry}!access\-\_\-time@{access\-\_\-time}}
-\index{access\-\_\-time@{access\-\_\-time}!_directory_entry@{\-\_\-directory\-\_\-entry}}
-\subsubsection[{access\-\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf time\-\_\-t} \-\_\-directory\-\_\-entry\-::access\-\_\-time}}\label{struct__directory__entry_a27e1020c5262094ab3b58759da9660ae}
-Date du dernier accès. \hypertarget{struct__directory__entry_a63da8f87e73a3eb30e55b2d405fa35d7}{\index{\-\_\-directory\-\_\-entry@{\-\_\-directory\-\_\-entry}!attributes@{attributes}}
-\index{attributes@{attributes}!_directory_entry@{\-\_\-directory\-\_\-entry}}
-\subsubsection[{attributes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} \-\_\-directory\-\_\-entry\-::attributes}}\label{struct__directory__entry_a63da8f87e73a3eb30e55b2d405fa35d7}
-Attributs du fichier/dossier. \hypertarget{struct__directory__entry_a8c70d9d0c2b2557cba83fb827d5c6e90}{\index{\-\_\-directory\-\_\-entry@{\-\_\-directory\-\_\-entry}!cluster@{cluster}}
-\index{cluster@{cluster}!_directory_entry@{\-\_\-directory\-\_\-entry}}
-\subsubsection[{cluster}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} \-\_\-directory\-\_\-entry\-::cluster}}\label{struct__directory__entry_a8c70d9d0c2b2557cba83fb827d5c6e90}
-Cluster où est le fichier/dossier. \hypertarget{struct__directory__entry_a95f0f5ef18bf17f332bd0dc352d62ac4}{\index{\-\_\-directory\-\_\-entry@{\-\_\-directory\-\_\-entry}!creation\-\_\-time@{creation\-\_\-time}}
-\index{creation\-\_\-time@{creation\-\_\-time}!_directory_entry@{\-\_\-directory\-\_\-entry}}
-\subsubsection[{creation\-\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf time\-\_\-t} \-\_\-directory\-\_\-entry\-::creation\-\_\-time}}\label{struct__directory__entry_a95f0f5ef18bf17f332bd0dc352d62ac4}
-Date de création. \hypertarget{struct__directory__entry_a120c3a3857bd7892a0fc2e6644e6f188}{\index{\-\_\-directory\-\_\-entry@{\-\_\-directory\-\_\-entry}!modification\-\_\-time@{modification\-\_\-time}}
-\index{modification\-\_\-time@{modification\-\_\-time}!_directory_entry@{\-\_\-directory\-\_\-entry}}
-\subsubsection[{modification\-\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf time\-\_\-t} \-\_\-directory\-\_\-entry\-::modification\-\_\-time}}\label{struct__directory__entry_a120c3a3857bd7892a0fc2e6644e6f188}
-Date de la dernière modification. \hypertarget{struct__directory__entry_ac9142fdeb8e265f045fee1edf9608c78}{\index{\-\_\-directory\-\_\-entry@{\-\_\-directory\-\_\-entry}!name@{name}}
-\index{name@{name}!_directory_entry@{\-\_\-directory\-\_\-entry}}
-\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}char \-\_\-directory\-\_\-entry\-::name\mbox{[}256\mbox{]}}}\label{struct__directory__entry_ac9142fdeb8e265f045fee1edf9608c78}
-Nom de l'entrée. \hypertarget{struct__directory__entry_a75001bda0d1d80e4ff5350ad69f83030}{\index{\-\_\-directory\-\_\-entry@{\-\_\-directory\-\_\-entry}!next@{next}}
-\index{next@{next}!_directory_entry@{\-\_\-directory\-\_\-entry}}
-\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \-\_\-directory\-\_\-entry}$\ast$ \-\_\-directory\-\_\-entry\-::next}}\label{struct__directory__entry_a75001bda0d1d80e4ff5350ad69f83030}
-Pointeur vers la prochaine entrée du dossier ou N\-U\-L\-L. \hypertarget{struct__directory__entry_a5d6f559c1b7ab2b5a64643073172cc25}{\index{\-\_\-directory\-\_\-entry@{\-\_\-directory\-\_\-entry}!size@{size}}
-\index{size@{size}!_directory_entry@{\-\_\-directory\-\_\-entry}}
-\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\-\_\-t} \-\_\-directory\-\_\-entry\-::size}}\label{struct__directory__entry_a5d6f559c1b7ab2b5a64643073172cc25}
+\hypertarget{struct__directory__entry_a27e1020c5262094ab3b58759da9660ae}{\index{\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}!access\+\_\+time@{access\+\_\+time}}
+\index{access\+\_\+time@{access\+\_\+time}!\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}}
+\subsubsection[{access\+\_\+time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf time\+\_\+t} \+\_\+directory\+\_\+entry\+::access\+\_\+time}}\label{struct__directory__entry_a27e1020c5262094ab3b58759da9660ae}
+Date du dernier accès. \hypertarget{struct__directory__entry_a63da8f87e73a3eb30e55b2d405fa35d7}{\index{\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}!attributes@{attributes}}
+\index{attributes@{attributes}!\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}}
+\subsubsection[{attributes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\+\_\+t} \+\_\+directory\+\_\+entry\+::attributes}}\label{struct__directory__entry_a63da8f87e73a3eb30e55b2d405fa35d7}
+Attributs du fichier/dossier. \hypertarget{struct__directory__entry_a8c70d9d0c2b2557cba83fb827d5c6e90}{\index{\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}!cluster@{cluster}}
+\index{cluster@{cluster}!\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}}
+\subsubsection[{cluster}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\+\_\+t} \+\_\+directory\+\_\+entry\+::cluster}}\label{struct__directory__entry_a8c70d9d0c2b2557cba83fb827d5c6e90}
+Cluster où est le fichier/dossier. \hypertarget{struct__directory__entry_a95f0f5ef18bf17f332bd0dc352d62ac4}{\index{\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}!creation\+\_\+time@{creation\+\_\+time}}
+\index{creation\+\_\+time@{creation\+\_\+time}!\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}}
+\subsubsection[{creation\+\_\+time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf time\+\_\+t} \+\_\+directory\+\_\+entry\+::creation\+\_\+time}}\label{struct__directory__entry_a95f0f5ef18bf17f332bd0dc352d62ac4}
+Date de création. \hypertarget{struct__directory__entry_a120c3a3857bd7892a0fc2e6644e6f188}{\index{\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}!modification\+\_\+time@{modification\+\_\+time}}
+\index{modification\+\_\+time@{modification\+\_\+time}!\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}}
+\subsubsection[{modification\+\_\+time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf time\+\_\+t} \+\_\+directory\+\_\+entry\+::modification\+\_\+time}}\label{struct__directory__entry_a120c3a3857bd7892a0fc2e6644e6f188}
+Date de la dernière modification. \hypertarget{struct__directory__entry_ac9142fdeb8e265f045fee1edf9608c78}{\index{\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}!name@{name}}
+\index{name@{name}!\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}char \+\_\+directory\+\_\+entry\+::name\mbox{[}256\mbox{]}}}\label{struct__directory__entry_ac9142fdeb8e265f045fee1edf9608c78}
+Nom de l'entrée. \hypertarget{struct__directory__entry_a75001bda0d1d80e4ff5350ad69f83030}{\index{\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}!next@{next}}
+\index{next@{next}!\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \+\_\+directory\+\_\+entry}$\ast$ \+\_\+directory\+\_\+entry\+::next}}\label{struct__directory__entry_a75001bda0d1d80e4ff5350ad69f83030}
+Pointeur vers la prochaine entrée du dossier ou N\+U\+L\+L. \hypertarget{struct__directory__entry_a5d6f559c1b7ab2b5a64643073172cc25}{\index{\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}!size@{size}}
+\index{size@{size}!\+\_\+directory\+\_\+entry@{\+\_\+directory\+\_\+entry}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\+\_\+t} \+\_\+directory\+\_\+entry\+::size}}\label{struct__directory__entry_a5d6f559c1b7ab2b5a64643073172cc25}
 Taille. 
 
-La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
 \item 
-kernel/fs/fat/\hyperlink{fat__internal_8h}{fat\-\_\-internal.\-h}\end{DoxyCompactItemize}
+kernel/fs/fat/\hyperlink{fat__internal_8h}{fat\+\_\+internal.\+h}\end{DoxyCompactItemize}

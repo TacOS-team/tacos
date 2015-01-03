@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier libc/sem.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -90,55 +91,65 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier sem.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="sem_8h_source.html">sys/sem.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="syscall_8h_source.html">sys/syscall.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="unistd_8h_source.html">unistd.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="sem_8h_source.html">sys/sem.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="syscall_8h_source.html">sys/syscall.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="unistd_8h_source.html">unistd.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de sem.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="sem_8c__incl.png" border="0" usemap="#libc_2sem_8c" alt=""/></div>
 <map name="libc_2sem_8c" id="libc_2sem_8c">
-<area shape="rect" id="node3" href="sem_8h.html" title="l&#39;interface de manipulation des semaphores" alt="" coords="226,238,306,266"/><area shape="rect" id="node12" href="syscall_8h.html" title="sys/syscall.h" alt="" coords="131,83,227,111"/><area shape="rect" id="node14" href="unistd_8h.html" title="unistd.h" alt="" coords="40,83,107,111"/><area shape="rect" id="node5" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="7,393,95,421"/><area shape="rect" id="node7" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="102,315,187,343"/><area shape="rect" id="node10" href="stdbool_8h.html" title="Type bool." alt="" coords="119,393,194,421"/><area shape="rect" id="node18" href="stat_8h.html" title="sys/stat.h" alt="" coords="35,161,112,189"/><area shape="rect" id="node22" href="time_8h.html" title="time.h" alt="" coords="44,238,100,266"/></map>
+<area shape="rect" id="node2" href="sem_8h.html" title="l&#39;interface de manipulation des semaphores " alt="" coords="256,155,337,181"/><area shape="rect" id="node6" href="syscall_8h.html" title="sys/syscall.h" alt="" coords="313,80,409,107"/><area shape="rect" id="node7" href="unistd_8h.html" title="unistd.h" alt="" coords="129,80,195,107"/><area shape="rect" id="node3" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="85,304,173,331"/><area shape="rect" id="node4" href="libc_2include_2sys_2types_8h.html" title="sys/types.h" alt="" coords="179,229,265,256"/><area shape="rect" id="node5" href="stdbool_8h.html" title="Type bool. " alt="" coords="197,304,271,331"/><area shape="rect" id="node8" href="stat_8h.html" title="sys/stat.h" alt="" coords="101,155,180,181"/><area shape="rect" id="node9" href="sys_2time_8h.html" title="time.h" alt="" coords="21,229,79,256"/></map>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a90160a50ad7f0c2c2da0743933744188"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a90160a50ad7f0c2c2da0743933744188"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_SEM</b>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:a90160a50ad7f0c2c2da0743933744188"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34813dd4352a423334c8c44ecbe8eecf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a34813dd4352a423334c8c44ecbe8eecf"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KSEM_GET</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a34813dd4352a423334c8c44ecbe8eecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98aacd763caf46bf89bbee8d0daf196e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98aacd763caf46bf89bbee8d0daf196e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KSEM_CREATE</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a98aacd763caf46bf89bbee8d0daf196e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a485d63b9002d3b7c69b778eddd7270d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a485d63b9002d3b7c69b778eddd7270d2"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KSEM_DEL</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a485d63b9002d3b7c69b778eddd7270d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad352fc4cad6b104c8a663959320e91a0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad352fc4cad6b104c8a663959320e91a0"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KSEM_P</b>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:ad352fc4cad6b104c8a663959320e91a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fa1d3274d3ba8f120ed3223f389bceb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1fa1d3274d3ba8f120ed3223f389bceb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KSEM_V</b>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a1fa1d3274d3ba8f120ed3223f389bceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a1ea8785f5ec6eadaa818747e4cbb6298"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sem_8c.html#a1ea8785f5ec6eadaa818747e4cbb6298">semget</a> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> key, int semflg)</td></tr>
-<tr class="memdesc:a1ea8785f5ec6eadaa818747e4cbb6298"><td class="mdescLeft">&#160;</td><td class="mdescRight">donne l'identifiant (semid) d'un sémaphore déjà existant  <a href="#a1ea8785f5ec6eadaa818747e4cbb6298"></a><br/></td></tr>
+<tr class="memdesc:a1ea8785f5ec6eadaa818747e4cbb6298"><td class="mdescLeft">&#160;</td><td class="mdescRight">donne l'identifiant (semid) d'un sémaphore déjà existant  <a href="#a1ea8785f5ec6eadaa818747e4cbb6298">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1ea8785f5ec6eadaa818747e4cbb6298"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51cd1d5e354c3e1cc996c424bbf71be5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sem_8c.html#a51cd1d5e354c3e1cc996c424bbf71be5">semdel</a> (<a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> semid)</td></tr>
-<tr class="memdesc:a51cd1d5e354c3e1cc996c424bbf71be5"><td class="mdescLeft">&#160;</td><td class="mdescRight">supprime un sémaphore  <a href="#a51cd1d5e354c3e1cc996c424bbf71be5"></a><br/></td></tr>
+<tr class="memdesc:a51cd1d5e354c3e1cc996c424bbf71be5"><td class="mdescLeft">&#160;</td><td class="mdescRight">supprime un sémaphore  <a href="#a51cd1d5e354c3e1cc996c424bbf71be5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a51cd1d5e354c3e1cc996c424bbf71be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41a767d191dcdb83ffd277b23797ff61"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41a767d191dcdb83ffd277b23797ff61"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>semP</b> (<a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> semid)</td></tr>
+<tr class="separator:a41a767d191dcdb83ffd277b23797ff61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a274f0e825fa433b94a16c2c7211ae71f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a274f0e825fa433b94a16c2c7211ae71f"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>semV</b> (<a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> semid)</td></tr>
+<tr class="separator:a274f0e825fa433b94a16c2c7211ae71f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
-<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>Copyright (C) 2010-2014 TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 <p>Description de ce que fait le fichier </p>
-</div><h2>Documentation des fonctions</h2>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a51cd1d5e354c3e1cc996c424bbf71be5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -165,7 +176,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="sem_8c_a51cd1d5e354c3e1cc996c424bbf71be5_cgraph.png" border="0" usemap="#sem_8c_a51cd1d5e354c3e1cc996c424bbf71be5_cgraph" alt=""/></div>
 <map name="sem_8c_a51cd1d5e354c3e1cc996c424bbf71be5_cgraph" id="sem_8c_a51cd1d5e354c3e1cc996c424bbf71be5_cgraph">
-<area shape="rect" id="node3" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="119,5,180,33"/></map>
+<area shape="rect" id="node2" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant. " alt="" coords="117,5,180,32"/></map>
 </div>
 </p>
 
@@ -207,7 +218,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="sem_8c_a1ea8785f5ec6eadaa818747e4cbb6298_cgraph.png" border="0" usemap="#sem_8c_a1ea8785f5ec6eadaa818747e4cbb6298_cgraph" alt=""/></div>
 <map name="sem_8c_a1ea8785f5ec6eadaa818747e4cbb6298_cgraph" id="sem_8c_a1ea8785f5ec6eadaa818747e4cbb6298_cgraph">
-<area shape="rect" id="node3" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="121,5,183,33"/></map>
+<area shape="rect" id="node2" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant. " alt="" coords="119,5,181,32"/></map>
 </div>
 </p>
 
@@ -216,9 +227,9 @@ Voici le graphe d'appel pour cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:41 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:32 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

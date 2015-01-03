@@ -1,4 +1,5 @@
 <map id="kernel/include/drivers/beeper.h" name="kernel/include/drivers/beeper.h">
-<area shape="rect" id="node3" href="$beeper_8c.html" title="kernel/drivers/char\l/beeper.c" alt="" coords="5,99,133,143"/>
-<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="157,107,264,135"/>
+<area shape="rect" id="node3" href="$beeper_8c.html" title="kernel/drivers/char\l/beeper.c" alt="" coords="5,99,131,143"/>
+<area shape="rect" id="node5" href="$init_8c.html" title="kernel/init.c" alt="" coords="155,107,243,135"/>
+<area shape="rect" id="node7" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="267,107,373,135"/>
 </map>

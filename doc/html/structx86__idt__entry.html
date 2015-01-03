@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence de la structure x86_idt_entry</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,20 +90,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <p>Entrée de l'IDT.  
 </p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
 <tr class="memitem:a7efe04d7c37c746487da6d2ae5349525"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__idt__entry.html#a7efe04d7c37c746487da6d2ae5349525">offset_low</a></td></tr>
+<tr class="separator:a7efe04d7c37c746487da6d2ae5349525"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47f891095976b78c547b428be1b91c87"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__idt__entry.html#a47f891095976b78c547b428be1b91c87">seg_sel</a></td></tr>
+<tr class="separator:a47f891095976b78c547b428be1b91c87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb99b161a27397d74e715d962b1c65fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__idt__entry.html#adb99b161a27397d74e715d962b1c65fa">reserved</a>:5</td></tr>
+<tr class="separator:adb99b161a27397d74e715d962b1c65fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0ce23f490bcc54f41c3710ab6433786"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__idt__entry.html#af0ce23f490bcc54f41c3710ab6433786">flags</a>:3</td></tr>
+<tr class="separator:af0ce23f490bcc54f41c3710ab6433786"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a826ef1aafc2352576ec3493747b964f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__idt__entry.html#a826ef1aafc2352576ec3493747b964f5">type</a>:3</td></tr>
+<tr class="separator:a826ef1aafc2352576ec3493747b964f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58f211f10555adac756847fa46a0c856"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__idt__entry.html#a58f211f10555adac756847fa46a0c856">op_size</a>:1</td></tr>
+<tr class="separator:a58f211f10555adac756847fa46a0c856"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac291c67a44d2457bda76146d1bc5e920"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__idt__entry.html#ac291c67a44d2457bda76146d1bc5e920">zero</a>:1</td></tr>
+<tr class="separator:ac291c67a44d2457bda76146d1bc5e920"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c0f7af9139df1e94d0c6d17dcd0fb66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__idt__entry.html#a5c0f7af9139df1e94d0c6d17dcd0fb66">dpl</a>:2</td></tr>
+<tr class="separator:a5c0f7af9139df1e94d0c6d17dcd0fb66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad5f9c737cf3c83abf7f5561acaa0891"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__idt__entry.html#aad5f9c737cf3c83abf7f5561acaa0891">present</a>:1</td></tr>
+<tr class="separator:aad5f9c737cf3c83abf7f5561acaa0891"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0206c9a35f101b3cc450fce405df1c0e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__idt__entry.html#a0206c9a35f101b3cc450fce405df1c0e">offset_high</a></td></tr>
+<tr class="separator:a0206c9a35f101b3cc450fce405df1c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2>Documentation des champs</h2>
+<h2 class="groupheader">Documentation des champs</h2>
 <a class="anchor" id="a5c0f7af9139df1e94d0c6d17dcd0fb66"></a>
 <div class="memitem">
 <div class="memproto">
@@ -239,9 +250,9 @@ Champs de données</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:42 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/include/pci_config.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -90,7 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier pci_config.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="pci__types_8h_source.html">pci_types.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="pci__types_8h_source.html">pci_types.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de pci_config.h:</div>
 <div class="dyncontent">
@@ -103,82 +104,114 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <div class="dyncontent">
 <div class="center"><img src="pci__config_8h__dep__incl.png" border="0" usemap="#kernel_2include_2pci__config_8hdep" alt=""/></div>
 <map name="kernel_2include_2pci__config_8hdep" id="kernel_2include_2pci__config_8hdep">
-<area shape="rect" id="node3" href="vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="5,99,133,143"/><area shape="rect" id="node5" href="pci_8c.html" title="kernel/pci/pci.c" alt="" coords="157,107,267,135"/><area shape="rect" id="node7" href="pci__config_8c.html" title="kernel/pci/pci_config.c" alt="" coords="291,107,440,135"/></map>
+<area shape="rect" id="node3" href="vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="5,99,131,143"/><area shape="rect" id="node5" href="pci_8c.html" title="kernel/pci/pci.c" alt="" coords="155,107,264,135"/><area shape="rect" id="node7" href="pci__config_8c.html" title="kernel/pci/pci_config.c" alt="" coords="288,107,437,135"/></map>
 </div>
 </div>
 <p><a href="pci__config_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ad26cd5a9786b77d9fb9ae23cd2d7eae5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad26cd5a9786b77d9fb9ae23cd2d7eae5"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_DEVICE_ID</b>&#160;&#160;&#160;0x00, 16, 0xffff</td></tr>
+<tr class="separator:ad26cd5a9786b77d9fb9ae23cd2d7eae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae01a383ed97f2fef624e91dadb388637"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae01a383ed97f2fef624e91dadb388637"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_VENDOR_ID</b>&#160;&#160;&#160;0x00,  0, 0xffff</td></tr>
+<tr class="separator:ae01a383ed97f2fef624e91dadb388637"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a250f9aa7637e1c67edc266e2d36adf49"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a250f9aa7637e1c67edc266e2d36adf49"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_STATUS</b>&#160;&#160;&#160;0x04, 16, 0xffff</td></tr>
+<tr class="separator:a250f9aa7637e1c67edc266e2d36adf49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace199ecb77d8e32d759ac065c22304b3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace199ecb77d8e32d759ac065c22304b3"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_COMMAND</b>&#160;&#160;&#160;0x04,  0, 0xffff</td></tr>
+<tr class="separator:ace199ecb77d8e32d759ac065c22304b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeceb83f22ca5473d93fb37286277a025"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeceb83f22ca5473d93fb37286277a025"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_CLASS_CODE</b>&#160;&#160;&#160;0x08, 24, 0x00ff</td></tr>
+<tr class="separator:aeceb83f22ca5473d93fb37286277a025"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85484470d77ed1db1d1201f4a6a7cae5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a85484470d77ed1db1d1201f4a6a7cae5"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_SUBCLASS</b>&#160;&#160;&#160;0x08, 16, 0x00ff</td></tr>
+<tr class="separator:a85484470d77ed1db1d1201f4a6a7cae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5db735214607cd17d8430346faa7728"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5db735214607cd17d8430346faa7728"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_PROG_IF</b>&#160;&#160;&#160;0x08,  8, 0x00ff</td></tr>
+<tr class="separator:ad5db735214607cd17d8430346faa7728"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad929de128f7af09f5859000ee3cff800"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad929de128f7af09f5859000ee3cff800"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_REVISION_ID</b>&#160;&#160;&#160;0x08,  0, 0x00ff</td></tr>
+<tr class="separator:ad929de128f7af09f5859000ee3cff800"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e90cb70f5d4911a8126fe93cdac2147"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e90cb70f5d4911a8126fe93cdac2147"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_BIST</b>&#160;&#160;&#160;0x0C, 24, 0x00ff</td></tr>
+<tr class="separator:a7e90cb70f5d4911a8126fe93cdac2147"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19e39e2931bb71460a3b5e1e30206d7b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19e39e2931bb71460a3b5e1e30206d7b"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_HEADER_TYPE</b>&#160;&#160;&#160;0x0C, 16, 0x00ff</td></tr>
+<tr class="separator:a19e39e2931bb71460a3b5e1e30206d7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2cade69be1011c19d4918689e988e2d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae2cade69be1011c19d4918689e988e2d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_LATENCY_TIMER</b>&#160;&#160;&#160;0x0C,  8, 0x00ff</td></tr>
+<tr class="separator:ae2cade69be1011c19d4918689e988e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0714901b1972ad6700d98d11d683f04"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0714901b1972ad6700d98d11d683f04"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_CACHE_LINE_SIZE</b>&#160;&#160;&#160;0x0C,  0, 0x00ff</td></tr>
+<tr class="separator:ab0714901b1972ad6700d98d11d683f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a178d44cd6a809bca6a3e73c331390983"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a178d44cd6a809bca6a3e73c331390983"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_BAR0</b>&#160;&#160;&#160;0x10,  0, 0xffffffff</td></tr>
+<tr class="separator:a178d44cd6a809bca6a3e73c331390983"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae298b06cba997596cedec711e0836b0e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae298b06cba997596cedec711e0836b0e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_BAR1</b>&#160;&#160;&#160;0x14,  0, 0xffffffff</td></tr>
+<tr class="separator:ae298b06cba997596cedec711e0836b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a866210f8f707527a62e3280e8fc84a34"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a866210f8f707527a62e3280e8fc84a34"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_BAR2</b>&#160;&#160;&#160;0x18,  0, 0xffffffff</td></tr>
+<tr class="separator:a866210f8f707527a62e3280e8fc84a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a444e88eba503daded2bf995b1a35b104"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a444e88eba503daded2bf995b1a35b104"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_BAR3</b>&#160;&#160;&#160;0x1C,  0, 0xffffffff</td></tr>
+<tr class="separator:a444e88eba503daded2bf995b1a35b104"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac92507fba4c7755722bbe9b45f3536f2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac92507fba4c7755722bbe9b45f3536f2"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_BAR4</b>&#160;&#160;&#160;0x20,  0, 0xffffffff</td></tr>
+<tr class="separator:ac92507fba4c7755722bbe9b45f3536f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8beff8dcd21e35c86d181c0acaac92c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8beff8dcd21e35c86d181c0acaac92c4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_BAR5</b>&#160;&#160;&#160;0x24,  0, 0xffffffff</td></tr>
+<tr class="separator:a8beff8dcd21e35c86d181c0acaac92c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e7c945eec114b650ff22921a47d2a16"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e7c945eec114b650ff22921a47d2a16"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_CARDBUS_CIS_POINTER</b>&#160;&#160;&#160;0x28,  0, 0xffffffff</td></tr>
+<tr class="separator:a6e7c945eec114b650ff22921a47d2a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6d2a91786fa97a96f3811f556c98a37"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae6d2a91786fa97a96f3811f556c98a37"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_SUBSYS_ID</b>&#160;&#160;&#160;0x2C, 16, 0xffff</td></tr>
+<tr class="separator:ae6d2a91786fa97a96f3811f556c98a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a70b285f10eb6a5ea523d58dbbb8f54"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a70b285f10eb6a5ea523d58dbbb8f54"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_SUBSYS_VENDOR_ID</b>&#160;&#160;&#160;0x2C,  0, 0xffff</td></tr>
+<tr class="separator:a5a70b285f10eb6a5ea523d58dbbb8f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb2eeb8ea34da361eb567bdc5118db1a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb2eeb8ea34da361eb567bdc5118db1a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_EXPROM_BAR</b>&#160;&#160;&#160;0x30,  0, 0xffffffff</td></tr>
+<tr class="separator:acb2eeb8ea34da361eb567bdc5118db1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb5d43de38a010d7ecd97630ae273876"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb5d43de38a010d7ecd97630ae273876"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_CAP_POINTER</b>&#160;&#160;&#160;0x34,  0, 0x00ff</td></tr>
+<tr class="separator:aeb5d43de38a010d7ecd97630ae273876"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5adab4edfee70aaad976084734e6505"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5adab4edfee70aaad976084734e6505"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_MAX_LATENCY</b>&#160;&#160;&#160;0x3c, 24, 0x00ff</td></tr>
+<tr class="separator:ad5adab4edfee70aaad976084734e6505"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc188a9c54214a9332d68b093dac96cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc188a9c54214a9332d68b093dac96cf"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_MIN_GRANT</b>&#160;&#160;&#160;0x3c, 16, 0x00ff</td></tr>
+<tr class="separator:adc188a9c54214a9332d68b093dac96cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fd66cd39d51eb4c24f40749a45c103c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5fd66cd39d51eb4c24f40749a45c103c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_INTERRUPT_PIN</b>&#160;&#160;&#160;0x3c,  8, 0x00ff</td></tr>
+<tr class="separator:a5fd66cd39d51eb4c24f40749a45c103c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8116525040b6cde4a11b3aaaf5e40ec7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8116525040b6cde4a11b3aaaf5e40ec7"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PCI_INTERRUPT_LINE</b>&#160;&#160;&#160;0x3c,  0, 0x00ff</td></tr>
+<tr class="separator:a8116525040b6cde4a11b3aaaf5e40ec7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a903d96667ed8f019b1ead1735bd252af"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a903d96667ed8f019b1ead1735bd252af"></a>
 <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pci_read_register</b> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> bus, <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> device, <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> func, <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> reg)</td></tr>
+<tr class="separator:a903d96667ed8f019b1ead1735bd252af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad30d98fc1a7a24917852b76af04a232f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad30d98fc1a7a24917852b76af04a232f"></a>
 <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pci_read_value</b> (<a class="el" href="structpci__function__t.html">pci_function_p</a> func, <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> reg, <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> offset, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> mask)</td></tr>
+<tr class="separator:ad30d98fc1a7a24917852b76af04a232f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac20cc5bc0b7c4f3257dc1b9c9b49abd1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac20cc5bc0b7c4f3257dc1b9c9b49abd1"></a>
 <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pci_write_register</b> (<a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> bus, <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> slot, <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> func, <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> reg, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> value)</td></tr>
+<tr class="separator:ac20cc5bc0b7c4f3257dc1b9c9b49abd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7ee8cd1e2665021fba95f4922d0003a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7ee8cd1e2665021fba95f4922d0003a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>pci_print_info</b> (<a class="el" href="structpci__function__t.html">pci_function_p</a> function)</td></tr>
+<tr class="separator:af7ee8cd1e2665021fba95f4922d0003a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0fa4ce97d44994969ebde46d6c76c75"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae0fa4ce97d44994969ebde46d6c76c75"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>pci_print_detailed_info</b> (<a class="el" href="structpci__function__t.html">pci_function_p</a> func)</td></tr>
+<tr class="separator:ae0fa4ce97d44994969ebde46d6c76c75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -192,9 +225,9 @@ DESCRIPTION</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:38 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

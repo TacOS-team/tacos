@@ -60,10 +60,12 @@ var searchData=
   ['em_5fnone',['EM_NONE',['../elf_8h.html#a5a14b1234094272355977c59e351a14f',1,'elf.h']]],
   ['em_5fsparc',['EM_SPARC',['../elf_8h.html#a3d33cb376c76e9fb077ddf5389f8f8b8',1,'elf.h']]],
   ['emfile',['EMFILE',['../kerrno_8h.html#a64a75c174882ddbfa726c7fd040f87a1',1,'kerrno.h']]],
+  ['end_5fkey',['END_KEY',['../keyboard_8c.html#a5e3c0fe0009594127f7acd46b7e87e71',1,'keyboard.c']]],
   ['enfile',['ENFILE',['../kerrno_8h.html#a5554094b3fb4bb6ebeb0157cb3f82a55',1,'kerrno.h']]],
   ['enoent',['ENOENT',['../kerrno_8h.html#a03e689f378f643d16ea7537918528a48',1,'kerrno.h']]],
   ['enospc',['ENOSPC',['../kerrno_8h.html#a088abe8bad2df798edad3053d719b937',1,'kerrno.h']]],
   ['enotdir',['ENOTDIR',['../kerrno_8h.html#a9262fb92f7ef662d0bdd577912a5b101',1,'kerrno.h']]],
+  ['enter_5fkey',['ENTER_KEY',['../keyboard_8c.html#afba17fd121bcd7abc852f1ae1f3abb58',1,'keyboard.c']]],
   ['entries',['entries',['../struct__directory.html#a2aa96162372442698a14e116ce88110d',1,'_directory']]],
   ['envp',['envp',['../structprocess__init__data__t.html#a863d82fbd718f53164a520f67376eac2',1,'process_init_data_t']]],
   ['eof',['EOF',['../fat__internal_8c.html#a59adc4c82490d23754cd39c2fb99b0da',1,'fat_internal.c']]],
@@ -73,6 +75,7 @@ var searchData=
   ['equal',['equal',['../struct____hashmap__t.html#a2b730301a68342f67a406ce1b6c2a826',1,'__hashmap_t']]],
   ['erange',['ERANGE',['../kerrno_8h.html#aa1591a4f3a86360108de5b9ba34980ca',1,'kerrno.h']]],
   ['erase_5fchar',['ERASE_CHAR',['../tty_8c.html#a10c57446745f062f3c64ef35077954a0',1,'tty.c']]],
+  ['esc_5fkey',['ESC_KEY',['../keyboard_8c.html#a9b4f59fc9220530978f12905fe51b1d0',1,'keyboard.c']]],
   ['et_5fcore',['ET_CORE',['../elf_8h.html#a2b9430d26ba60f7a9d65c8d43e54f213',1,'elf.h']]],
   ['et_5fdyn',['ET_DYN',['../elf_8h.html#a4373ea3b3d512434ebe2213829b6751b',1,'elf.h']]],
   ['et_5fexe',['ET_EXE',['../elf_8h.html#acdd2a7a43d6483137646603c3c31ab80',1,'elf.h']]],
@@ -189,6 +192,7 @@ var searchData=
   ['ext_5fbios_5f16',['ext_BIOS_16',['../struct__fat__info.html#a4da4c2a7a629ca59a686822e6447acb8',1,'_fat_info']]],
   ['ext_5fbios_5f32',['ext_BIOS_32',['../struct__fat__info.html#aab203e7eb3c2027e3034d7765a2d5281',1,'_fat_info']]],
   ['ext_5fboot_5fsignature',['ext_boot_signature',['../struct__fat__extended__BIOS__16.html#a96dde388d85873830b8b421d13336737',1,'_fat_extended_BIOS_16']]],
+  ['extra_5fdata',['extra_data',['../struct__open__file__descriptor.html#a99824795a31a8adea2162aed74162017',1,'_open_file_descriptor']]],
   ['extra_5fdata_5fpipe_5ft',['extra_data_pipe_t',['../structextra__data__pipe__t.html',1,'']]],
   ['extra_5fdata_5fprocfs_5ft',['extra_data_procfs_t',['../structextra__data__procfs__t.html',1,'']]]
 ];

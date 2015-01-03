@@ -34,6 +34,8 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \item 
 \hyperlink{kunistd_8h_a1eab9ba54efce654ee3cd717f2161b8f}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-ioctl, \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} $\ast$fd, unsigned int request, void $\ast$data)
 \item 
+\hyperlink{kunistd_8h_a2500c755854466e0369d6c3718e5eccf}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-select, \hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} $\ast$fd, \hyperlink{types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n, int $\ast$ret)
+\item 
 \hyperlink{kunistd_8h_a18585c0d8560c855f1d38405703e7eb3}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-stat, const char $\ast$path, struct \hyperlink{structstat}{stat} $\ast$buf, int $\ast$ret)
 \item 
 \hyperlink{kunistd_8h_a99434c0e561b0e99c4ef081ae5773703}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2} (sys\-\_\-unlink, const char $\ast$path, int $\ast$ret)
@@ -127,7 +129,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{kunistd_8h_a754a9d6d5d3da3db605147488e485805_cgraph}
+\includegraphics[width=336pt]{kunistd_8h_a754a9d6d5d3da3db605147488e485805_cgraph}
 \end{center}
 \end{figure}
 
@@ -159,7 +161,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{kunistd_8h_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph}
+\includegraphics[width=336pt]{kunistd_8h_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph}
 \end{center}
 \end{figure}
 
@@ -191,7 +193,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{kunistd_8h_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph}
+\includegraphics[width=336pt]{kunistd_8h_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph}
 \end{center}
 \end{figure}
 
@@ -219,7 +221,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{kunistd_8h_a5dd5ee4481953b987bfc1bcb836be820_cgraph}
+\includegraphics[width=336pt]{kunistd_8h_a5dd5ee4481953b987bfc1bcb836be820_cgraph}
 \end{center}
 \end{figure}
 
@@ -247,7 +249,39 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{kunistd_8h_a1eab9ba54efce654ee3cd717f2161b8f_cgraph}
+\includegraphics[width=336pt]{kunistd_8h_a1eab9ba54efce654ee3cd717f2161b8f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{kunistd_8h_a2500c755854466e0369d6c3718e5eccf}{\index{kunistd.\-h@{kunistd.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
+\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kunistd.h@{kunistd.\-h}}
+\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3 (
+\begin{DoxyParamCaption}
+\item[{sys\-\_\-select}]{, }
+\item[{{\bf uint32\-\_\-t} $\ast$}]{fd, }
+\item[{{\bf size\-\_\-t}}]{n, }
+\item[{int $\ast$}]{ret}
+\end{DoxyParamCaption}
+)}}\label{kunistd_8h_a2500c755854466e0369d6c3718e5eccf}
+Syscall pour surveiller des descripteurs de fichier.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em fd} & Tableau de numéros de descripteurs de fichier à surveiller. \\
+\hline
+{\em n} & Nombre de descripteurs de fichier. \\
+\hline
+{\em ret} & Retour de la fonction \-: premier descripteur de fichier prêt en lecture. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kunistd_8h_a2500c755854466e0369d6c3718e5eccf_cgraph}
 \end{center}
 \end{figure}
 
@@ -279,7 +313,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=288pt]{kunistd_8h_a18585c0d8560c855f1d38405703e7eb3_cgraph}
+\includegraphics[width=282pt]{kunistd_8h_a18585c0d8560c855f1d38405703e7eb3_cgraph}
 \end{center}
 \end{figure}
 
@@ -300,7 +334,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=302pt]{kunistd_8h_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph}
+\includegraphics[width=296pt]{kunistd_8h_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph}
 \end{center}
 \end{figure}
 

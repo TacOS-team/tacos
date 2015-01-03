@@ -1,4 +1,7 @@
 <map id="itox" name="itox">
-<area shape="rect" id="node4" href="$kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="96,29,155,57"/>
-<area shape="rect" id="node6" href="$list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="204,29,273,57"/>
+<area shape="rect" id="node2" href="$kstdio_8c.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran. " alt="" coords="96,81,155,108"/>
+<area shape="rect" id="node3" href="$memory_8c.html#a8fba2533a7d88ec6038d6948ca695957" title="Affiche la liste des cadres utilisés. " alt="" coords="203,5,380,32"/>
+<area shape="rect" id="node4" href="$memory_8c.html#a09a07799735fa6d6fbae7e870052daa3" title="Affiche la liste des cadres libres. " alt="" coords="206,56,377,83"/>
+<area shape="rect" id="node5" href="$memory_8c.html#a0a428a3b3b69b116515e43ffc7a96042" title="Affiche la mémoire physique. " alt="" coords="241,107,341,133"/>
+<area shape="rect" id="node6" href="$list_8c.html#a7b460be2c0d40f4da72af89c356ed7c1" title="print_list" alt="" coords="256,157,327,184"/>
 </map>

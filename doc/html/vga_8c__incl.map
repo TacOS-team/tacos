@@ -1,11 +1,11 @@
 <map id="kernel/drivers/char/vga.c" name="kernel/drivers/char/vga.c">
-<area shape="rect" id="node3" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="7,99,84,127"/>
-<area shape="rect" id="node11" href="$ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="108,99,177,127"/>
-<area shape="rect" id="node13" href="$klog_8h.html" title="Logging macros." alt="" coords="319,99,375,127"/>
-<area shape="rect" id="node17" href="$kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel." alt="" coords="201,99,295,127"/>
-<area shape="rect" id="node20" href="$vga_8h.html" title="drivers/vga.h" alt="" coords="399,99,495,127"/>
-<area shape="rect" id="node24" href="$vga__modes_8h.html" title="drivers/vga_modes.h" alt="" coords="519,99,660,127"/>
-<area shape="rect" id="node7" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="5,177,85,205"/>
-<area shape="rect" id="node9" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="15,254,76,282"/>
-<area shape="rect" id="node15" href="$kstdio_8h.html" title="kprintf" alt="" coords="313,177,380,205"/>
+<area shape="rect" id="node2" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="7,95,85,121"/>
+<area shape="rect" id="node6" href="$ioports_8h.html" title="Définition des macros pour faire des IO avec le matériel. Intel&#45;specific I/O space access routines..." alt="" coords="109,95,180,121"/>
+<area shape="rect" id="node7" href="$klog_8h.html" title="Logging macros. " alt="" coords="323,95,379,121"/>
+<area shape="rect" id="node9" href="$kernel_2include_2klibc_2string_8h.html" title="Fonctions de manipulation de strings depuis le kernel. " alt="" coords="204,95,299,121"/>
+<area shape="rect" id="node10" href="$vga_8h.html" title="drivers/vga.h" alt="" coords="403,95,499,121"/>
+<area shape="rect" id="node12" href="$vga__modes_8h.html" title="drivers/vga_modes.h" alt="" coords="524,95,667,121"/>
+<area shape="rect" id="node4" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts. " alt="" coords="5,169,87,196"/>
+<area shape="rect" id="node5" href="$kernel_2include_2types_8h.html" title="types.h" alt="" coords="15,244,77,271"/>
+<area shape="rect" id="node8" href="$kstdio_8h.html" title="kprintf " alt="" coords="318,169,385,196"/>
 </map>

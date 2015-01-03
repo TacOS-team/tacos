@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/include/pci.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -90,8 +91,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier pci.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="pci__types_8h_source.html">pci_types.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="pci__types_8h_source.html">pci_types.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de pci.h:</div>
 <div class="dyncontent">
@@ -104,32 +105,39 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <div class="dyncontent">
 <div class="center"><img src="pci_8h__dep__incl.png" border="0" usemap="#kernel_2include_2pci_8hdep" alt=""/></div>
 <map name="kernel_2include_2pci_8hdep" id="kernel_2include_2pci_8hdep">
-<area shape="rect" id="node3" href="vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="5,83,133,127"/><area shape="rect" id="node5" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="157,91,264,119"/><area shape="rect" id="node7" href="pci_8c.html" title="kernel/pci/pci.c" alt="" coords="288,91,397,119"/></map>
+<area shape="rect" id="node3" href="vesa_8c.html" title="kernel/drivers/char\l/vesa.c" alt="" coords="5,83,131,127"/><area shape="rect" id="node5" href="init_8c.html" title="kernel/init.c" alt="" coords="155,91,243,119"/><area shape="rect" id="node7" href="pci_8c.html" title="kernel/pci/pci.c" alt="" coords="267,91,376,119"/></map>
 </div>
 </div>
 <p><a href="pci_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
 <tr class="memitem:a1b64883c056174f9353c9837bcdc83bb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b64883c056174f9353c9837bcdc83bb"></a>
 typedef unsigned short int&#160;</td><td class="memItemRight" valign="bottom"><b>pci_device_t</b></td></tr>
+<tr class="separator:a1b64883c056174f9353c9837bcdc83bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a0d01c2522d6ba81abf85b6d8d2ad4be4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d01c2522d6ba81abf85b6d8d2ad4be4"></a>
 <a class="el" href="structpci__function__t.html">pci_function_p</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pci_find_device</b> (<a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> vendor_id, <a class="el" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a> device_id)</td></tr>
+<tr class="separator:a0d01c2522d6ba81abf85b6d8d2ad4be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae90c23088d125879f11f2b8703e06bfb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae90c23088d125879f11f2b8703e06bfb"></a>
 <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pci_get_device_bus</b> (pci_device_t device)</td></tr>
+<tr class="separator:ae90c23088d125879f11f2b8703e06bfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c8c09751baa3da9fa99ac4575cf9dc9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4c8c09751baa3da9fa99ac4575cf9dc9"></a>
 <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pci_get_device_slot</b> (pci_device_t device)</td></tr>
+<tr class="separator:a4c8c09751baa3da9fa99ac4575cf9dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0410ececc3e9256ceda29229aed2a16c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0410ececc3e9256ceda29229aed2a16c"></a>
 <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pci_get_device_function_nb</b> (pci_device_t device)</td></tr>
+<tr class="separator:a0410ececc3e9256ceda29229aed2a16c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51703bed24b16ecc8f4dec3ddbc3c117"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51703bed24b16ecc8f4dec3ddbc3c117"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>pci_scan</b> ()</td></tr>
+<tr class="separator:a51703bed24b16ecc8f4dec3ddbc3c117"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48874e39232daa001e87ee61ad2f5e54"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48874e39232daa001e87ee61ad2f5e54"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>pci_list</b> ()</td></tr>
+<tr class="separator:a48874e39232daa001e87ee61ad2f5e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -143,9 +151,9 @@ DESCRIPTION</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:38 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/fs/fat/fat_outils.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -92,45 +93,59 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Fonctions d'aide pour le driver FAT.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="fat__internal_8h_source.html">fat_internal.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="fat__internal_8h_source.html">fat_internal.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de fat_outils.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="fat__outils_8h__incl.png" border="0" usemap="#kernel_2fs_2fat_2fat__outils_8h" alt=""/></div>
 <map name="kernel_2fs_2fat_2fat__outils_8h" id="kernel_2fs_2fat_2fat__outils_8h">
-<area shape="rect" id="node3" href="fat__internal_8h.html" title="fat_internal.h" alt="" coords="121,83,217,111"/><area shape="rect" id="node7" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="185,315,247,343"/><area shape="rect" id="node14" href="vfs_8h.html" title="Virtual File System." alt="" coords="248,161,299,189"/><area shape="rect" id="node24" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="92,161,169,189"/><area shape="rect" id="node9" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="212,470,273,498"/><area shape="rect" id="node11" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="128,393,205,421"/><area shape="rect" id="node17" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="91,238,171,266"/><area shape="rect" id="node20" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="245,238,307,266"/></map>
+<area shape="rect" id="node2" href="fat__internal_8h.html" title="fat_internal.h" alt="" coords="123,80,219,107"/><area shape="rect" id="node4" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="188,304,251,331"/><area shape="rect" id="node7" href="vfs_8h.html" title="Virtual File System. " alt="" coords="251,155,302,181"/><area shape="rect" id="node10" href="devfs_8h.html" title="fs/devfs.h" alt="" coords="93,155,172,181"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="215,453,277,480"/><area shape="rect" id="node6" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="129,379,208,405"/><area shape="rect" id="node8" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts. " alt="" coords="92,229,173,256"/><area shape="rect" id="node9" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier. " alt="" coords="249,229,310,256"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="fat__outils_8h__dep__incl.png" border="0" usemap="#kernel_2fs_2fat_2fat__outils_8hdep" alt=""/></div>
 <map name="kernel_2fs_2fat_2fat__outils_8hdep" id="kernel_2fs_2fat_2fat__outils_8hdep">
-<area shape="rect" id="node3" href="fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="5,161,184,189"/><area shape="rect" id="node5" href="fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="72,83,240,111"/><area shape="rect" id="node8" href="fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="264,83,421,111"/></map>
+<area shape="rect" id="node2" href="fat__functions_8c.html" title="Fonctions pour le driver FAT. " alt="" coords="5,155,185,181"/><area shape="rect" id="node3" href="fat__internal_8c.html" title="kernel/fs/fat/fat_internal.c" alt="" coords="72,80,241,107"/><area shape="rect" id="node4" href="fat__outils_8c.html" title="kernel/fs/fat/fat_outils.c" alt="" coords="265,80,424,107"/></map>
 </div>
 </div>
 <p><a href="fat__outils_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a93808d4692d60c69db061effc6232ee6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8h.html#a93808d4692d60c69db061effc6232ee6">fat_last_cluster</a> (<a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a> *instance)</td></tr>
+<tr class="separator:a93808d4692d60c69db061effc6232ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90bf5b4a5741e770ea8c3f8fc15f180b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8h.html#a90bf5b4a5741e770ea8c3f8fc15f180b">fat_is_free_cluster</a> (int cluster)</td></tr>
+<tr class="separator:a90bf5b4a5741e770ea8c3f8fc15f180b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7455b50fef42408155f1c32109dfe50"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8h.html#ad7455b50fef42408155f1c32109dfe50">fat_is_last_cluster</a> (<a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a> *instance, int cluster)</td></tr>
+<tr class="separator:ad7455b50fef42408155f1c32109dfe50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa28cc73f6fb1875fde62a8ee24a13960"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8h.html#aa28cc73f6fb1875fde62a8ee24a13960">fat_is_used_cluster</a> (<a class="el" href="fat__internal_8h.html#a9e8df592f54b50d959a9b9c84fa64fce">fat_fs_instance_t</a> *instance, int cluster)</td></tr>
+<tr class="separator:aa28cc73f6fb1875fde62a8ee24a13960"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f582028e77ee5dc535200f3e6b3312b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8h.html#a4f582028e77ee5dc535200f3e6b3312b">fat_encode_long_file_name</a> (char *name, <a class="el" href="structlfn__entry__t.html">lfn_entry_t</a> *long_file_name, int n_entries)</td></tr>
+<tr class="separator:a4f582028e77ee5dc535200f3e6b3312b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac588ac3acb0265e0db3158ba5c5a4a0f"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8h.html#ac588ac3acb0265e0db3158ba5c5a4a0f">fat_decode_long_file_name</a> (char *name, <a class="el" href="structlfn__entry__t.html">lfn_entry_t</a> *long_file_name)</td></tr>
+<tr class="separator:ac588ac3acb0265e0db3158ba5c5a4a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae33b4bd360a352f9b2bb6316d7221970"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae33b4bd360a352f9b2bb6316d7221970"></a>
 <a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>convert_datetime_fat_to_time_t</b> (<a class="el" href="fat__internal_8h.html#a50b52e2d394a6d7c7f1f2b7c7ef93a19">fat_date_t</a> *date, <a class="el" href="fat__internal_8h.html#ab864004b9f8da2db1862a0da9acb1735">fat_time_t</a> *time)</td></tr>
+<tr class="separator:ae33b4bd360a352f9b2bb6316d7221970"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae71051d0397ad65e7ddb79589ddd9347"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae71051d0397ad65e7ddb79589ddd9347"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>convert_time_t_to_datetime_fat</b> (<a class="el" href="time_8h.html#aaaf414ca0598a3633e6e9161cbb5a58a">time_t</a> time, <a class="el" href="fat__internal_8h.html#ab864004b9f8da2db1862a0da9acb1735">fat_time_t</a> *timefat, <a class="el" href="fat__internal_8h.html#a50b52e2d394a6d7c7f1f2b7c7ef93a19">fat_date_t</a> *datefat)</td></tr>
+<tr class="separator:ae71051d0397ad65e7ddb79589ddd9347"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15df5ebf35fdd77ac639ed071c731841"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15df5ebf35fdd77ac639ed071c731841"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>fat_dir_entry_to_directory_entry</b> (char *filename, <a class="el" href="fat__internal_8h.html#a8b649d2d9d92d259f456e45f4c901f30">fat_dir_entry_t</a> *dir, <a class="el" href="fat__internal_8h.html#ab6546cb0abf935a615fae20884a41818">directory_entry_t</a> *entry)</td></tr>
+<tr class="separator:a15df5ebf35fdd77ac639ed071c731841"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a015254ce721ab0097a1008ec7153b819"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8h.html#a015254ce721ab0097a1008ec7153b819">fat_lfn_to_sfn</a> (char *filename)</td></tr>
+<tr class="separator:a015254ce721ab0097a1008ec7153b819"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54dad60e76b8e913b497b0a903778093"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8h.html#a54dad60e76b8e913b497b0a903778093">fat_decode_short_file_name</a> (char *filename, <a class="el" href="fat__internal_8h.html#a8b649d2d9d92d259f456e45f4c901f30">fat_dir_entry_t</a> *fdir)</td></tr>
+<tr class="separator:a54dad60e76b8e913b497b0a903778093"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc4ab73ddc901dbfa52071c98ce0de6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="fat__internal_8h.html#ab6546cb0abf935a615fae20884a41818">directory_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8h.html#acc4ab73ddc901dbfa52071c98ce0de6b">fat_decode_lfn_entry</a> (<a class="el" href="structlfn__entry__t.html">lfn_entry_t</a> *fdir)</td></tr>
+<tr class="separator:acc4ab73ddc901dbfa52071c98ce0de6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8100c884384ccb3b8ecec7f5180ad346"><td class="memItemLeft" align="right" valign="top"><a class="el" href="fat__internal_8h.html#ab6546cb0abf935a615fae20884a41818">directory_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8h.html#a8100c884384ccb3b8ecec7f5180ad346">fat_decode_sfn_entry</a> (<a class="el" href="fat__internal_8h.html#a8b649d2d9d92d259f456e45f4c901f30">fat_dir_entry_t</a> *fdir)</td></tr>
+<tr class="separator:a8100c884384ccb3b8ecec7f5180ad346"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bc59b6b9bca39fe4ba101a3c019b91a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat__outils_8h.html#a2bc59b6b9bca39fe4ba101a3c019b91a">fat_split_dir_filename</a> (const char *path, char *dir, char *filename)</td></tr>
+<tr class="separator:a2bc59b6b9bca39fe4ba101a3c019b91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -140,7 +155,7 @@ LICENSE</h1>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des fonctions</h2>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="acc4ab73ddc901dbfa52071c98ce0de6b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -168,7 +183,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="fat__outils_8h_acc4ab73ddc901dbfa52071c98ce0de6b_cgraph.png" border="0" usemap="#fat__outils_8h_acc4ab73ddc901dbfa52071c98ce0de6b_cgraph" alt=""/></div>
 <map name="fat__outils_8h_acc4ab73ddc901dbfa52071c98ce0de6b_cgraph" id="fat__outils_8h_acc4ab73ddc901dbfa52071c98ce0de6b_cgraph">
-<area shape="rect" id="node3" href="fat__outils_8c.html#ac588ac3acb0265e0db3158ba5c5a4a0f" title="fat_decode_long_file_name" alt="" coords="197,5,376,33"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="253,55,320,83"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="425,55,564,83"/></map>
+<area shape="rect" id="node2" href="fat__outils_8c.html#ac588ac3acb0265e0db3158ba5c5a4a0f" title="fat_decode_long_file_name" alt="" coords="196,5,375,32"/><area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="252,56,319,83"/><area shape="rect" id="node4" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="423,31,563,57"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="458,81,527,108"/></map>
 </div>
 </p>
 
@@ -237,7 +252,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="fat__outils_8h_a8100c884384ccb3b8ecec7f5180ad346_cgraph.png" border="0" usemap="#fat__outils_8h_a8100c884384ccb3b8ecec7f5180ad346_cgraph" alt=""/></div>
 <map name="fat__outils_8h_a8100c884384ccb3b8ecec7f5180ad346_cgraph" id="fat__outils_8h_a8100c884384ccb3b8ecec7f5180ad346_cgraph">
-<area shape="rect" id="node3" href="fat__outils_8c.html#a54dad60e76b8e913b497b0a903778093" title="fat_decode_short_file_name" alt="" coords="200,5,384,33"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="259,55,325,83"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="433,55,572,83"/></map>
+<area shape="rect" id="node2" href="fat__outils_8c.html#a54dad60e76b8e913b497b0a903778093" title="fat_decode_short_file_name" alt="" coords="200,5,384,32"/><area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="259,56,325,83"/><area shape="rect" id="node4" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="432,31,572,57"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="467,81,537,108"/></map>
 </div>
 </p>
 
@@ -273,7 +288,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="fat__outils_8h_a54dad60e76b8e913b497b0a903778093_icgraph.png" border="0" usemap="#fat__outils_8h_a54dad60e76b8e913b497b0a903778093_icgraph" alt=""/></div>
 <map name="fat__outils_8h_a54dad60e76b8e913b497b0a903778093_icgraph" id="fat__outils_8h_a54dad60e76b8e913b497b0a903778093_icgraph">
-<area shape="rect" id="node3" href="fat__outils_8h.html#a8100c884384ccb3b8ecec7f5180ad346" title="fat_decode_sfn_entry" alt="" coords="237,5,384,33"/></map>
+<area shape="rect" id="node3" href="fat__outils_8h.html#a8100c884384ccb3b8ecec7f5180ad346" title="fat_decode_sfn_entry" alt="" coords="239,5,383,33"/></map>
 </div>
 </p>
 
@@ -474,7 +489,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="fat__outils_8h_a015254ce721ab0097a1008ec7153b819_cgraph.png" border="0" usemap="#fat__outils_8h_a015254ce721ab0097a1008ec7153b819_cgraph" alt=""/></div>
 <map name="fat__outils_8h_a015254ce721ab0097a1008ec7153b819_cgraph" id="fat__outils_8h_a015254ce721ab0097a1008ec7153b819_cgraph">
-<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="161,5,215,33"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="155,55,221,83"/><area shape="rect" id="node9" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="160,106,216,134"/><area shape="rect" id="node11" href="kernel_2include_2klibc_2string_8h.html#a0c05a458deff028ef4d4e64059098db4" title="Rechercher un caractère dans une chaîne." alt="" coords="159,157,217,185"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="271,55,409,83"/></map>
+<area shape="rect" id="node2" href="kernel_2include_2klibc_2string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères. " alt="" coords="161,5,215,32"/><area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="155,56,221,83"/><area shape="rect" id="node6" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine. " alt="" coords="159,107,217,133"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#a0c05a458deff028ef4d4e64059098db4" title="Rechercher un caractère dans une chaîne. " alt="" coords="159,157,217,184"/><area shape="rect" id="node4" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="269,31,409,57"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="305,81,374,108"/></map>
 </div>
 </p>
 
@@ -533,7 +548,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="fat__outils_8h_a2bc59b6b9bca39fe4ba101a3c019b91a_cgraph.png" border="0" usemap="#fat__outils_8h_a2bc59b6b9bca39fe4ba101a3c019b91a_cgraph" alt=""/></div>
 <map name="fat__outils_8h_a2bc59b6b9bca39fe4ba101a3c019b91a_cgraph" id="fat__outils_8h_a2bc59b6b9bca39fe4ba101a3c019b91a_cgraph">
-<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#a0c05a458deff028ef4d4e64059098db4" title="Rechercher un caractère dans une chaîne." alt="" coords="197,5,256,33"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="199,55,255,83"/></map>
+<area shape="rect" id="node2" href="kernel_2include_2klibc_2string_8h.html#a0c05a458deff028ef4d4e64059098db4" title="Rechercher un caractère dans une chaîne. " alt="" coords="197,5,256,32"/><area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine. " alt="" coords="198,56,255,83"/></map>
 </div>
 </p>
 
@@ -551,9 +566,9 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:35 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

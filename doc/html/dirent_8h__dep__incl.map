@@ -1,4 +1,4 @@
 <map id="libc/include/dirent.h" name="libc/include/dirent.h">
-<area shape="rect" id="node3" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="5,83,93,111"/>
-<area shape="rect" id="node5" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="117,83,208,111"/>
+<area shape="rect" id="node2" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers. " alt="" coords="5,80,93,107"/>
+<area shape="rect" id="node3" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="117,80,208,107"/>
 </map>

@@ -1,16 +1,18 @@
 \hypertarget{devfs_8h}{\section{Référence du fichier kernel/include/fs/devfs.h}
-\label{devfs_8h}\index{kernel/include/fs/devfs.\-h@{kernel/include/fs/devfs.\-h}}
+\label{devfs_8h}\index{kernel/include/fs/devfs.\+h@{kernel/include/fs/devfs.\+h}}
 }
-{\ttfamily \#include $<$types.\-h$>$}\\*
-{\ttfamily \#include $<$fd\-\_\-types.\-h$>$}\\*
-Graphe des dépendances par inclusion de devfs.\-h\-:\nopagebreak
+{\ttfamily \#include $<$types.\+h$>$}\\*
+{\ttfamily \#include $<$fd\+\_\+types.\+h$>$}\\*
+Graphe des dépendances par inclusion de devfs.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=207pt]{devfs_8h__incl}
+\includegraphics[width=208pt]{devfs_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,104 +22,102 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \subsection*{Structures de données}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structchardev__interfaces}{chardev\-\_\-interfaces}
+struct \hyperlink{structchardev__interfaces}{chardev\+\_\+interfaces}
 \begin{DoxyCompactList}\small\item\em Structure contenant les fonction qui permettent d'utiliser un char device. \end{DoxyCompactList}\item 
-struct \hyperlink{structblkdev__interfaces}{blkdev\-\_\-interfaces}
+struct \hyperlink{structblkdev__interfaces}{blkdev\+\_\+interfaces}
 \begin{DoxyCompactList}\small\item\em Structure contenant les fonctions qui permettent d'utiliser un block device. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Définitions de type}
 \begin{DoxyCompactItemize}
 \item 
-typedef enum \hyperlink{devfs_8h_a7fd32b2aa211502206f2402c4846ce6a}{\-\_\-device\-\_\-type\-\_\-t} \hyperlink{devfs_8h_ae865497b0eca6bed21898d4ca1fc0ddd}{device\-\_\-type\-\_\-t}
+typedef enum \hyperlink{devfs_8h_a7fd32b2aa211502206f2402c4846ce6a}{\+\_\+device\+\_\+type\+\_\+t} \hyperlink{devfs_8h_ae865497b0eca6bed21898d4ca1fc0ddd}{device\+\_\+type\+\_\+t}
 \item 
-\hypertarget{devfs_8h_af4c16a0e62f4b4f3b40b28c495ce4ffd}{typedef \hyperlink{kernel_2include_2types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\-\_\-t}($\ast$ {\bfseries chardev\-\_\-read\-\_\-t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$, void $\ast$, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t})}\label{devfs_8h_af4c16a0e62f4b4f3b40b28c495ce4ffd}
+\hypertarget{devfs_8h_af4c16a0e62f4b4f3b40b28c495ce4ffd}{typedef \hyperlink{kernel_2include_2types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\+\_\+t}($\ast$ {\bfseries chardev\+\_\+read\+\_\+t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$, void $\ast$, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t})}\label{devfs_8h_af4c16a0e62f4b4f3b40b28c495ce4ffd}
 
 \item 
-\hypertarget{devfs_8h_a96ca7976c3f65504b514759b5cd6916d}{typedef \hyperlink{kernel_2include_2types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\-\_\-t}($\ast$ {\bfseries chardev\-\_\-write\-\_\-t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$, const void $\ast$, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t})}\label{devfs_8h_a96ca7976c3f65504b514759b5cd6916d}
+\hypertarget{devfs_8h_a96ca7976c3f65504b514759b5cd6916d}{typedef \hyperlink{kernel_2include_2types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\+\_\+t}($\ast$ {\bfseries chardev\+\_\+write\+\_\+t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$, const void $\ast$, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t})}\label{devfs_8h_a96ca7976c3f65504b514759b5cd6916d}
 
 \item 
-\hypertarget{devfs_8h_ab5db3cd1e601e5f7347c7779ee38db86}{typedef int($\ast$ {\bfseries chardev\-\_\-ioctl\-\_\-t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$, unsigned int, void $\ast$)}\label{devfs_8h_ab5db3cd1e601e5f7347c7779ee38db86}
+\hypertarget{devfs_8h_ab5db3cd1e601e5f7347c7779ee38db86}{typedef int($\ast$ {\bfseries chardev\+\_\+ioctl\+\_\+t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$, unsigned int, void $\ast$)}\label{devfs_8h_ab5db3cd1e601e5f7347c7779ee38db86}
 
 \item 
-\hypertarget{devfs_8h_ad342987d85e5331ed5825ddb9dadef24}{typedef int($\ast$ {\bfseries chardev\-\_\-open\-\_\-t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$)}\label{devfs_8h_ad342987d85e5331ed5825ddb9dadef24}
+\hypertarget{devfs_8h_ad342987d85e5331ed5825ddb9dadef24}{typedef int($\ast$ {\bfseries chardev\+\_\+open\+\_\+t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$)}\label{devfs_8h_ad342987d85e5331ed5825ddb9dadef24}
 
 \item 
-\hypertarget{devfs_8h_acb1844c24d0e03a2f63d3ab4191a77ff}{typedef int($\ast$ {\bfseries chardev\-\_\-close\-\_\-t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$)}\label{devfs_8h_acb1844c24d0e03a2f63d3ab4191a77ff}
+\hypertarget{devfs_8h_acb1844c24d0e03a2f63d3ab4191a77ff}{typedef int($\ast$ {\bfseries chardev\+\_\+close\+\_\+t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$)}\label{devfs_8h_acb1844c24d0e03a2f63d3ab4191a77ff}
 
 \item 
-\hypertarget{devfs_8h_a36f7a3d42bf957dfcf5dadd765fd89ca}{typedef \hyperlink{kernel_2include_2types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\-\_\-t}($\ast$ {\bfseries blkdev\-\_\-read\-\_\-t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$, void $\ast$, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t}, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t})}\label{devfs_8h_a36f7a3d42bf957dfcf5dadd765fd89ca}
+\hypertarget{devfs_8h_a36f7a3d42bf957dfcf5dadd765fd89ca}{typedef \hyperlink{kernel_2include_2types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\+\_\+t}($\ast$ {\bfseries blkdev\+\_\+read\+\_\+t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$, void $\ast$, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t}, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\+\_\+t})}\label{devfs_8h_a36f7a3d42bf957dfcf5dadd765fd89ca}
 
 \item 
-\hypertarget{devfs_8h_a3c00af66875c766f766cd4efc8e4a128}{typedef \hyperlink{kernel_2include_2types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\-\_\-t}($\ast$ {\bfseries blkdev\-\_\-write\-\_\-t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$, const void $\ast$, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t}, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t})}\label{devfs_8h_a3c00af66875c766f766cd4efc8e4a128}
+\hypertarget{devfs_8h_a3c00af66875c766f766cd4efc8e4a128}{typedef \hyperlink{kernel_2include_2types_8h_af629ed855824cf5955b54529adf78ad6}{ssize\+\_\+t}($\ast$ {\bfseries blkdev\+\_\+write\+\_\+t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$, const void $\ast$, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t}, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\+\_\+t})}\label{devfs_8h_a3c00af66875c766f766cd4efc8e4a128}
 
 \item 
-\hypertarget{devfs_8h_a6a1183464660086ca43ca3d9f78ee95d}{typedef int($\ast$ {\bfseries blkdev\-\_\-ioctl\-\_\-t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$, unsigned int, void $\ast$)}\label{devfs_8h_a6a1183464660086ca43ca3d9f78ee95d}
+\hypertarget{devfs_8h_a6a1183464660086ca43ca3d9f78ee95d}{typedef int($\ast$ {\bfseries blkdev\+\_\+ioctl\+\_\+t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$, unsigned int, void $\ast$)}\label{devfs_8h_a6a1183464660086ca43ca3d9f78ee95d}
 
 \item 
-\hypertarget{devfs_8h_a6e65ea9e3a1dcb15dcd88371f734aaef}{typedef int($\ast$ {\bfseries blkdev\-\_\-open\-\_\-t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$)}\label{devfs_8h_a6e65ea9e3a1dcb15dcd88371f734aaef}
+\hypertarget{devfs_8h_a6e65ea9e3a1dcb15dcd88371f734aaef}{typedef int($\ast$ {\bfseries blkdev\+\_\+open\+\_\+t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$)}\label{devfs_8h_a6e65ea9e3a1dcb15dcd88371f734aaef}
 
 \item 
-\hypertarget{devfs_8h_a37f0bf37edcd41dc4c2bd33734cd1c26}{typedef int($\ast$ {\bfseries blkdev\-\_\-close\-\_\-t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$)}\label{devfs_8h_a37f0bf37edcd41dc4c2bd33734cd1c26}
+\hypertarget{devfs_8h_a37f0bf37edcd41dc4c2bd33734cd1c26}{typedef int($\ast$ {\bfseries blkdev\+\_\+close\+\_\+t} )(\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$)}\label{devfs_8h_a37f0bf37edcd41dc4c2bd33734cd1c26}
 
 \end{DoxyCompactItemize}
 \subsection*{Énumérations}
 \begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{devfs_8h_a7fd32b2aa211502206f2402c4846ce6a}{\-\_\-device\-\_\-type\-\_\-t} \{ {\bfseries C\-H\-A\-R\-D\-E\-V}, 
-{\bfseries B\-L\-K\-D\-E\-V}
+enum \hyperlink{devfs_8h_a7fd32b2aa211502206f2402c4846ce6a}{\+\_\+device\+\_\+type\+\_\+t} \{ {\bfseries C\+H\+A\+R\+D\+E\+V}, 
+{\bfseries B\+L\+K\+D\+E\+V}
  \}
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{devfs_8h_ac01eef8358c344396a59f06531a5dcb4}{void \hyperlink{devfs_8h_ac01eef8358c344396a59f06531a5dcb4}{devfs\-\_\-init} ()}\label{devfs_8h_ac01eef8358c344396a59f06531a5dcb4}
+\hypertarget{devfs_8h_ac01eef8358c344396a59f06531a5dcb4}{void \hyperlink{devfs_8h_ac01eef8358c344396a59f06531a5dcb4}{devfs\+\_\+init} ()}\label{devfs_8h_ac01eef8358c344396a59f06531a5dcb4}
 
-\begin{DoxyCompactList}\small\item\em Initialisation du dev F\-S. \end{DoxyCompactList}\item 
-int \hyperlink{devfs_8h_acf0abbf4b629aa36d142733e27eaf6e6}{register\-\_\-chardev} (const char $\ast$name, \hyperlink{structchardev__interfaces}{chardev\-\_\-interfaces} $\ast$di)
-\begin{DoxyCompactList}\small\item\em Enregistre un char device dans le dev F\-S. \end{DoxyCompactList}\item 
-int \hyperlink{devfs_8h_a3ad133a010648db1c6df6f7d00cf8d77}{register\-\_\-blkdev} (const char $\ast$name, \hyperlink{structblkdev__interfaces}{blkdev\-\_\-interfaces} $\ast$di)
-\begin{DoxyCompactList}\small\item\em Enregistre un block device dans le dev F\-S. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Initialisation du dev F\+S. \end{DoxyCompactList}\item 
+int \hyperlink{devfs_8h_acf0abbf4b629aa36d142733e27eaf6e6}{register\+\_\+chardev} (const char $\ast$name, \hyperlink{structchardev__interfaces}{chardev\+\_\+interfaces} $\ast$di)
+\begin{DoxyCompactList}\small\item\em Enregistre un char device dans le dev F\+S. \end{DoxyCompactList}\item 
+int \hyperlink{devfs_8h_a3ad133a010648db1c6df6f7d00cf8d77}{register\+\_\+blkdev} (const char $\ast$name, \hyperlink{structblkdev__interfaces}{blkdev\+\_\+interfaces} $\ast$di)
+\begin{DoxyCompactList}\small\item\em Enregistre un block device dans le dev F\+S. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 Description de ce que fait le fichier 
 
 \subsection{Documentation des définitions de type}
-\hypertarget{devfs_8h_ae865497b0eca6bed21898d4ca1fc0ddd}{\index{devfs.\-h@{devfs.\-h}!device\-\_\-type\-\_\-t@{device\-\_\-type\-\_\-t}}
-\index{device\-\_\-type\-\_\-t@{device\-\_\-type\-\_\-t}!devfs.h@{devfs.\-h}}
-\subsubsection[{device\-\_\-type\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf \-\_\-device\-\_\-type\-\_\-t}  {\bf device\-\_\-type\-\_\-t}}}\label{devfs_8h_ae865497b0eca6bed21898d4ca1fc0ddd}
+\hypertarget{devfs_8h_ae865497b0eca6bed21898d4ca1fc0ddd}{\index{devfs.\+h@{devfs.\+h}!device\+\_\+type\+\_\+t@{device\+\_\+type\+\_\+t}}
+\index{device\+\_\+type\+\_\+t@{device\+\_\+type\+\_\+t}!devfs.\+h@{devfs.\+h}}
+\subsubsection[{device\+\_\+type\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf \+\_\+device\+\_\+type\+\_\+t}  {\bf device\+\_\+type\+\_\+t}}}\label{devfs_8h_ae865497b0eca6bed21898d4ca1fc0ddd}
 Type de device. 
 
 \subsection{Documentation du type de l'énumération}
-\hypertarget{devfs_8h_a7fd32b2aa211502206f2402c4846ce6a}{\index{devfs.\-h@{devfs.\-h}!\-\_\-device\-\_\-type\-\_\-t@{\-\_\-device\-\_\-type\-\_\-t}}
-\index{\-\_\-device\-\_\-type\-\_\-t@{\-\_\-device\-\_\-type\-\_\-t}!devfs.h@{devfs.\-h}}
-\subsubsection[{\-\_\-device\-\_\-type\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf \-\_\-device\-\_\-type\-\_\-t}}}\label{devfs_8h_a7fd32b2aa211502206f2402c4846ce6a}
+\hypertarget{devfs_8h_a7fd32b2aa211502206f2402c4846ce6a}{\index{devfs.\+h@{devfs.\+h}!\+\_\+device\+\_\+type\+\_\+t@{\+\_\+device\+\_\+type\+\_\+t}}
+\index{\+\_\+device\+\_\+type\+\_\+t@{\+\_\+device\+\_\+type\+\_\+t}!devfs.\+h@{devfs.\+h}}
+\subsubsection[{\+\_\+device\+\_\+type\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf \+\_\+device\+\_\+type\+\_\+t}}}\label{devfs_8h_a7fd32b2aa211502206f2402c4846ce6a}
 Type de device. 
 
 \subsection{Documentation des fonctions}
-\hypertarget{devfs_8h_a3ad133a010648db1c6df6f7d00cf8d77}{\index{devfs.\-h@{devfs.\-h}!register\-\_\-blkdev@{register\-\_\-blkdev}}
-\index{register\-\_\-blkdev@{register\-\_\-blkdev}!devfs.h@{devfs.\-h}}
-\subsubsection[{register\-\_\-blkdev}]{\setlength{\rightskip}{0pt plus 5cm}int register\-\_\-blkdev (
+\hypertarget{devfs_8h_a3ad133a010648db1c6df6f7d00cf8d77}{\index{devfs.\+h@{devfs.\+h}!register\+\_\+blkdev@{register\+\_\+blkdev}}
+\index{register\+\_\+blkdev@{register\+\_\+blkdev}!devfs.\+h@{devfs.\+h}}
+\subsubsection[{register\+\_\+blkdev}]{\setlength{\rightskip}{0pt plus 5cm}int register\+\_\+blkdev (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{name, }
-\item[{{\bf blkdev\-\_\-interfaces} $\ast$}]{di}
+\item[{{\bf blkdev\+\_\+interfaces} $\ast$}]{di}
 \end{DoxyParamCaption}
 )}}\label{devfs_8h_a3ad133a010648db1c6df6f7d00cf8d77}
-Enregistre un block device dans le dev F\-S.
+Enregistre un block device dans le dev F\+S.
 
-\begin{DoxyVerb} Enregistre le driver dans la liste.
-\end{DoxyVerb}
-
+Enregistre le driver dans la liste.
 
 
 \begin{DoxyParams}{Paramètres}
@@ -131,28 +131,27 @@ Enregistre un block device dans le dev F\-S.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=260pt]{devfs_8h_a3ad133a010648db1c6df6f7d00cf8d77_icgraph}
+\includegraphics[width=268pt]{devfs_8h_a3ad133a010648db1c6df6f7d00cf8d77_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{devfs_8h_acf0abbf4b629aa36d142733e27eaf6e6}{\index{devfs.\-h@{devfs.\-h}!register\-\_\-chardev@{register\-\_\-chardev}}
-\index{register\-\_\-chardev@{register\-\_\-chardev}!devfs.h@{devfs.\-h}}
-\subsubsection[{register\-\_\-chardev}]{\setlength{\rightskip}{0pt plus 5cm}int register\-\_\-chardev (
+\hypertarget{devfs_8h_acf0abbf4b629aa36d142733e27eaf6e6}{\index{devfs.\+h@{devfs.\+h}!register\+\_\+chardev@{register\+\_\+chardev}}
+\index{register\+\_\+chardev@{register\+\_\+chardev}!devfs.\+h@{devfs.\+h}}
+\subsubsection[{register\+\_\+chardev}]{\setlength{\rightskip}{0pt plus 5cm}int register\+\_\+chardev (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{name, }
-\item[{{\bf chardev\-\_\-interfaces} $\ast$}]{di}
+\item[{{\bf chardev\+\_\+interfaces} $\ast$}]{di}
 \end{DoxyParamCaption}
 )}}\label{devfs_8h_acf0abbf4b629aa36d142733e27eaf6e6}
-Enregistre un char device dans le dev F\-S.
+Enregistre un char device dans le dev F\+S.
 
-\begin{DoxyVerb} Enregistre le driver dans la liste.
-\end{DoxyVerb}
-
+Enregistre le driver dans la liste.
 
 
 \begin{DoxyParams}{Paramètres}
@@ -166,7 +165,8 @@ Enregistre un char device dans le dev F\-S.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

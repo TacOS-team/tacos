@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/include/drivers/video.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -94,7 +95,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Driver console (vidéo texte).  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;types.h&gt;</code><br/>
+<div class="textblock"><code>#include &lt;types.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de video.h:</div>
 <div class="dyncontent">
@@ -105,62 +106,93 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <div class="dyncontent">
 <div class="center"><img src="video_8h__dep__incl.png" border="0" usemap="#kernel_2include_2drivers_2video_8hdep" alt=""/></div>
 <map name="kernel_2include_2drivers_2video_8hdep" id="kernel_2include_2drivers_2video_8hdep">
-<area shape="rect" id="node3" href="console_8c.html" title="Console virtuelle (Fn)." alt="" coords="5,99,133,143"/><area shape="rect" id="node5" href="video_8c.html" title="kernel/drivers/char\l/video.c" alt="" coords="157,99,285,143"/><area shape="rect" id="node7" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="309,107,416,135"/></map>
+<area shape="rect" id="node2" href="console_8c.html" title="Console virtuelle (Fn). " alt="" coords="5,95,135,136"/><area shape="rect" id="node3" href="video_8c.html" title="kernel/drivers/char\l/video.c" alt="" coords="159,95,288,136"/><area shape="rect" id="node4" href="init_8c.html" title="kernel/init.c" alt="" coords="313,102,401,129"/><area shape="rect" id="node5" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="425,102,531,129"/></map>
 </div>
 </div>
 <p><a href="video_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Structures de données</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__video__mem.html">x86_video_mem</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure définissant un "caractère" à l'écran.  <a href="structx86__video__mem.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure définissant un "caractère" à l'écran.  <a href="structx86__video__mem.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvga__page__t.html">vga_page_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure définissant une "page" vidéo. C'est en fait un couple de 2 pages pour gérer le double buffering.  <a href="structvga__page__t.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure définissant une "page" vidéo. C'est en fait un couple de 2 pages pour gérer le double buffering.  <a href="structvga__page__t.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a844ed4c612903242a4a9d1abcc3a77ae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a844ed4c612903242a4a9d1abcc3a77ae">DEFAULT_ATTRIBUTE_VALUE</a>&#160;&#160;&#160;0x0F</td></tr>
+<tr class="separator:a844ed4c612903242a4a9d1abcc3a77ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b3b25cba33b07c303f3060fe41887f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a7b3b25cba33b07c303f3060fe41887f6">BLACK</a>&#160;&#160;&#160;0x0</td></tr>
+<tr class="separator:a7b3b25cba33b07c303f3060fe41887f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79d10e672abb49ad63eeaa8aaef57c38"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a79d10e672abb49ad63eeaa8aaef57c38">BLUE</a>&#160;&#160;&#160;0x1</td></tr>
+<tr class="separator:a79d10e672abb49ad63eeaa8aaef57c38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfbc006ea433ad708fdee3e82996e721"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#acfbc006ea433ad708fdee3e82996e721">GREEN</a>&#160;&#160;&#160;0x2</td></tr>
+<tr class="separator:acfbc006ea433ad708fdee3e82996e721"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad243f93c16bc4c1d3e0a13b84421d760"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#ad243f93c16bc4c1d3e0a13b84421d760">CYAN</a>&#160;&#160;&#160;0x3</td></tr>
+<tr class="separator:ad243f93c16bc4c1d3e0a13b84421d760"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d23feea868a983c8c2b661e1e16972f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a8d23feea868a983c8c2b661e1e16972f">RED</a>&#160;&#160;&#160;0x4</td></tr>
+<tr class="separator:a8d23feea868a983c8c2b661e1e16972f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f699060902f800f12aaae150f3a708e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a6f699060902f800f12aaae150f3a708e">MAGENTA</a>&#160;&#160;&#160;0x5</td></tr>
+<tr class="separator:a6f699060902f800f12aaae150f3a708e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2baea56ece91306020afd6d77fd19f9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#ab2baea56ece91306020afd6d77fd19f9">BROWN</a>&#160;&#160;&#160;0x6</td></tr>
+<tr class="separator:ab2baea56ece91306020afd6d77fd19f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9663e02e20b5b578e6a31adae265cb88"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a9663e02e20b5b578e6a31adae265cb88">LIGHT_GRAY</a>&#160;&#160;&#160;0x7</td></tr>
+<tr class="separator:a9663e02e20b5b578e6a31adae265cb88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca56870f2285abae489635f0ee4d65e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#aca56870f2285abae489635f0ee4d65e3">DARK_GRAY</a>&#160;&#160;&#160;0x8</td></tr>
+<tr class="separator:aca56870f2285abae489635f0ee4d65e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a959d1249a76cfbd90fc6d96e2a9744e9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a959d1249a76cfbd90fc6d96e2a9744e9">LIGHT_BLUE</a>&#160;&#160;&#160;0x9</td></tr>
+<tr class="separator:a959d1249a76cfbd90fc6d96e2a9744e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a7142ee95ebc63218ed3aac2ae06b13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a5a7142ee95ebc63218ed3aac2ae06b13">LIGHT_GREEN</a>&#160;&#160;&#160;0xA</td></tr>
+<tr class="separator:a5a7142ee95ebc63218ed3aac2ae06b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15e616ad647add2891b6c7ec6a1e47f1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a15e616ad647add2891b6c7ec6a1e47f1">LIGHT_CYAN</a>&#160;&#160;&#160;0xB</td></tr>
+<tr class="separator:a15e616ad647add2891b6c7ec6a1e47f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a664c8f5b9d90f79a49a16960b9ccedba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a664c8f5b9d90f79a49a16960b9ccedba">LIGHT_RED</a>&#160;&#160;&#160;0xC</td></tr>
+<tr class="separator:a664c8f5b9d90f79a49a16960b9ccedba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af98a47a241abb10ccec0339c7a8a8c2e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#af98a47a241abb10ccec0339c7a8a8c2e">LIGHT_MAGENTA</a>&#160;&#160;&#160;0xD</td></tr>
+<tr class="separator:af98a47a241abb10ccec0339c7a8a8c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf681265909adf3d3e8116c93c0ba179"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#abf681265909adf3d3e8116c93c0ba179">YELLOW</a>&#160;&#160;&#160;0xE</td></tr>
+<tr class="separator:abf681265909adf3d3e8116c93c0ba179"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87b537f5fa5c109d3c05c13d6b18f382"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a87b537f5fa5c109d3c05c13d6b18f382">WHITE</a>&#160;&#160;&#160;0xF</td></tr>
+<tr class="separator:a87b537f5fa5c109d3c05c13d6b18f382"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06c6c391fc11d106e9909f0401b255b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a06c6c391fc11d106e9909f0401b255b1">COLUMNS</a>&#160;&#160;&#160;80</td></tr>
+<tr class="separator:a06c6c391fc11d106e9909f0401b255b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a321ae946de24c36489276616d13c46cd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a321ae946de24c36489276616d13c46cd">LINES</a>&#160;&#160;&#160;25</td></tr>
+<tr class="separator:a321ae946de24c36489276616d13c46cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a759f71f304c11873e67bf7cc3f2d08a8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a759f71f304c11873e67bf7cc3f2d08a8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a759f71f304c11873e67bf7cc3f2d08a8">init_video</a> ()</td></tr>
-<tr class="memdesc:a759f71f304c11873e67bf7cc3f2d08a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise l'affichage vidéo. En particulier les 4 pages disponibles. <br/></td></tr>
+<tr class="memdesc:a759f71f304c11873e67bf7cc3f2d08a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise l'affichage vidéo. En particulier les 4 pages disponibles. <br /></td></tr>
+<tr class="separator:a759f71f304c11873e67bf7cc3f2d08a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1ddd4e6afaac2e5d7ed1d7575e8186b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1ddd4e6afaac2e5d7ed1d7575e8186b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#ab1ddd4e6afaac2e5d7ed1d7575e8186b">cursor_position_video</a> (int n, int x, int y)</td></tr>
-<tr class="memdesc:ab1ddd4e6afaac2e5d7ed1d7575e8186b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la position du curseur. <br/></td></tr>
+<tr class="memdesc:ab1ddd4e6afaac2e5d7ed1d7575e8186b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la position du curseur. <br /></td></tr>
+<tr class="separator:ab1ddd4e6afaac2e5d7ed1d7575e8186b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61e8f22681edb740e2d057ac270e6f5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a61e8f22681edb740e2d057ac270e6f5b">disable_cursor</a> (int disable)</td></tr>
-<tr class="memdesc:a61e8f22681edb740e2d057ac270e6f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Désactive l'affichage du curseur.  <a href="#a61e8f22681edb740e2d057ac270e6f5b"></a><br/></td></tr>
+<tr class="memdesc:a61e8f22681edb740e2d057ac270e6f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Désactive l'affichage du curseur.  <a href="#a61e8f22681edb740e2d057ac270e6f5b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a61e8f22681edb740e2d057ac270e6f5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5839353cba28b424b12338feca82385"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#ab5839353cba28b424b12338feca82385">flip_page</a> (int n)</td></tr>
-<tr class="memdesc:ab5839353cba28b424b12338feca82385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interverti les 2 buffers d'une page.  <a href="#ab5839353cba28b424b12338feca82385"></a><br/></td></tr>
+<tr class="memdesc:ab5839353cba28b424b12338feca82385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interverti les 2 buffers d'une page.  <a href="#ab5839353cba28b424b12338feca82385">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab5839353cba28b424b12338feca82385"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a287a2812973a8101091cb0a371802334"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a287a2812973a8101091cb0a371802334"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a287a2812973a8101091cb0a371802334">get_char_video</a> (int n, bool front, char *c, int x, int y, char *attr)</td></tr>
-<tr class="memdesc:a287a2812973a8101091cb0a371802334"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de récupérer le caractère situé à une certaine position de l'écran. <br/></td></tr>
-<tr class="memitem:ab1abb360e352f13b691ed232ab8bc6f7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1abb360e352f13b691ed232ab8bc6f7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#ab1abb360e352f13b691ed232ab8bc6f7">kputchar_video</a> (int n, bool front, char c, int x, int y, char attr)</td></tr>
-<tr class="memdesc:ab1abb360e352f13b691ed232ab8bc6f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche dans une page le caractère souhaité à l'endroit souhaité. <br/></td></tr>
+<tr class="memdesc:a287a2812973a8101091cb0a371802334"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de récupérer le caractère situé à une certaine position de l'écran. <br /></td></tr>
+<tr class="separator:a287a2812973a8101091cb0a371802334"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a245349c6364aa746521136a348bff3cd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a245349c6364aa746521136a348bff3cd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a245349c6364aa746521136a348bff3cd">kputchar_video</a> (int n, bool front, unsigned char c, int x, int y, char attr)</td></tr>
+<tr class="memdesc:a245349c6364aa746521136a348bff3cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche dans une page le caractère souhaité à l'endroit souhaité. <br /></td></tr>
+<tr class="separator:a245349c6364aa746521136a348bff3cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab549780053994f6b1dba04869b562a43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#ab549780053994f6b1dba04869b562a43">switch_page</a> (int i)</td></tr>
-<tr class="memdesc:ab549780053994f6b1dba04869b562a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la page à afficher à l'écran.  <a href="#ab549780053994f6b1dba04869b562a43"></a><br/></td></tr>
+<tr class="memdesc:ab549780053994f6b1dba04869b562a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la page à afficher à l'écran.  <a href="#ab549780053994f6b1dba04869b562a43">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab549780053994f6b1dba04869b562a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f41de97e0b180e50aeff97af64d5dd2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="video_8h.html#a9f41de97e0b180e50aeff97af64d5dd2">scrollup</a> (int n, char attr)</td></tr>
+<tr class="memdesc:a9f41de97e0b180e50aeff97af64d5dd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scroll everything up.  <a href="#a9f41de97e0b180e50aeff97af64d5dd2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9f41de97e0b180e50aeff97af64d5dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -170,7 +202,7 @@ LICENSE</h1>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des macros</h2>
+</div><h2 class="groupheader">Documentation des macros</h2>
 <a class="anchor" id="a7b3b25cba33b07c303f3060fe41887f6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -418,7 +450,7 @@ DESCRIPTION</h1>
 
 </div>
 </div>
-<h2>Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a61e8f22681edb740e2d057ac270e6f5b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -444,7 +476,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="video_8h_a61e8f22681edb740e2d057ac270e6f5b_icgraph.png" border="0" usemap="#video_8h_a61e8f22681edb740e2d057ac270e6f5b_icgraph" alt=""/></div>
 <map name="video_8h_a61e8f22681edb740e2d057ac270e6f5b_icgraph" id="video_8h_a61e8f22681edb740e2d057ac270e6f5b_icgraph">
-<area shape="rect" id="node3" href="console_8h.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan." alt="" coords="160,5,267,33"/><area shape="rect" id="node5" href="keyboard_8h.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61" title="keyboardInterrupt" alt="" coords="315,5,437,33"/></map>
+<area shape="rect" id="node2" href="console_8h.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan. " alt="" coords="160,5,267,32"/><area shape="rect" id="node3" href="keyboard_8h.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61" title="keyboardInterrupt" alt="" coords="315,5,437,32"/></map>
 </div>
 </p>
 
@@ -475,7 +507,58 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="video_8h_ab5839353cba28b424b12338feca82385_cgraph.png" border="0" usemap="#video_8h_ab5839353cba28b424b12338feca82385_cgraph" alt=""/></div>
 <map name="video_8h_ab5839353cba28b424b12338feca82385_cgraph" id="video_8h_ab5839353cba28b424b12338feca82385_cgraph">
-<area shape="rect" id="node3" href="video_8c.html#ab549780053994f6b1dba04869b562a43" title="Change la page à afficher à l&#39;écran." alt="" coords="129,5,223,33"/></map>
+<area shape="rect" id="node2" href="video_8c.html#ab549780053994f6b1dba04869b562a43" title="Change la page à afficher à l&#39;écran. " alt="" coords="127,5,221,32"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="video_8h_ab5839353cba28b424b12338feca82385_icgraph.png" border="0" usemap="#video_8h_ab5839353cba28b424b12338feca82385_icgraph" alt=""/></div>
+<map name="video_8h_ab5839353cba28b424b12338feca82385_icgraph" id="video_8h_ab5839353cba28b424b12338feca82385_icgraph">
+<area shape="rect" id="node2" href="video_8h.html#a9f41de97e0b180e50aeff97af64d5dd2" title="Scroll everything up. " alt="" coords="127,5,193,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9f41de97e0b180e50aeff97af64d5dd2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void scrollup </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>attr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Le numero de la page concernée. </td></tr>
+    <tr><td class="paramname">attr</td><td>L'attribut qui définit la couleur pour la nouvelle ligne. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="video_8h_a9f41de97e0b180e50aeff97af64d5dd2_cgraph.png" border="0" usemap="#video_8h_a9f41de97e0b180e50aeff97af64d5dd2_cgraph" alt=""/></div>
+<map name="video_8h_a9f41de97e0b180e50aeff97af64d5dd2_cgraph" id="video_8h_a9f41de97e0b180e50aeff97af64d5dd2_cgraph">
+<area shape="rect" id="node2" href="video_8c.html#a245349c6364aa746521136a348bff3cd" title="Affiche dans une page le caractère souhaité à l&#39;endroit souhaité. " alt="" coords="120,5,231,32"/><area shape="rect" id="node3" href="video_8c.html#ab5839353cba28b424b12338feca82385" title="Interverti les 2 buffers d&#39;une page. " alt="" coords="139,56,212,83"/><area shape="rect" id="node4" href="video_8c.html#ab549780053994f6b1dba04869b562a43" title="Change la page à afficher à l&#39;écran. " alt="" coords="279,56,373,83"/></map>
 </div>
 </p>
 
@@ -506,7 +589,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="video_8h_ab549780053994f6b1dba04869b562a43_icgraph.png" border="0" usemap="#video_8h_ab549780053994f6b1dba04869b562a43_icgraph" alt=""/></div>
 <map name="video_8h_ab549780053994f6b1dba04869b562a43_icgraph" id="video_8h_ab549780053994f6b1dba04869b562a43_icgraph">
-<area shape="rect" id="node3" href="console_8h.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan." alt="" coords="149,5,256,33"/><area shape="rect" id="node7" href="video_8h.html#ab5839353cba28b424b12338feca82385" title="Interverti les 2 buffers d&#39;une page." alt="" coords="167,55,239,83"/><area shape="rect" id="node5" href="keyboard_8h.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61" title="keyboardInterrupt" alt="" coords="304,5,427,33"/></map>
+<area shape="rect" id="node2" href="console_8h.html#aa1b7adaa8346dcef6b4a5a967322b205" title="Passe une console au premier plan. " alt="" coords="148,5,255,32"/><area shape="rect" id="node4" href="video_8h.html#ab5839353cba28b424b12338feca82385" title="Interverti les 2 buffers d&#39;une page. " alt="" coords="165,56,238,83"/><area shape="rect" id="node3" href="keyboard_8h.html#aac7ec49aa0203d9bd2dd5c4bcba7cb61" title="keyboardInterrupt" alt="" coords="303,5,425,32"/><area shape="rect" id="node5" href="video_8h.html#a9f41de97e0b180e50aeff97af64d5dd2" title="Scroll everything up. " alt="" coords="331,56,397,83"/></map>
 </div>
 </p>
 
@@ -515,9 +598,9 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:36 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

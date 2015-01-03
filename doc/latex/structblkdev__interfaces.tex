@@ -1,5 +1,5 @@
-\hypertarget{structblkdev__interfaces}{\section{Référence de la structure blkdev\-\_\-interfaces}
-\label{structblkdev__interfaces}\index{blkdev\-\_\-interfaces@{blkdev\-\_\-interfaces}}
+\hypertarget{structblkdev__interfaces}{\section{Référence de la structure blkdev\+\_\+interfaces}
+\label{structblkdev__interfaces}\index{blkdev\+\_\+interfaces@{blkdev\+\_\+interfaces}}
 }
 
 
@@ -8,11 +8,12 @@ Structure contenant les fonctions qui permettent d'utiliser un block device.
 
 
 
-{\ttfamily \#include $<$devfs.\-h$>$}
+{\ttfamily \#include $<$devfs.\+h$>$}
 
 
 
-Graphe de collaboration de blkdev\-\_\-interfaces\-:\nopagebreak
+Graphe de collaboration de blkdev\+\_\+interfaces\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -22,41 +23,41 @@ Graphe de collaboration de blkdev\-\_\-interfaces\-:\nopagebreak
 \subsection*{Champs de données}
 \begin{DoxyCompactItemize}
 \item 
-blkdev\-\_\-read\-\_\-t \hyperlink{structblkdev__interfaces_ad14a2ad714105cdb8ce002eb4fb9e747}{read}
+blkdev\+\_\+read\+\_\+t \hyperlink{structblkdev__interfaces_ad14a2ad714105cdb8ce002eb4fb9e747}{read}
 \item 
-blkdev\-\_\-write\-\_\-t \hyperlink{structblkdev__interfaces_ae99fb7e1529ef6c24df9dc454bc0f9f6}{write}
+blkdev\+\_\+write\+\_\+t \hyperlink{structblkdev__interfaces_ae99fb7e1529ef6c24df9dc454bc0f9f6}{write}
 \item 
-blkdev\-\_\-ioctl\-\_\-t \hyperlink{structblkdev__interfaces_ae93720624e6f1a1ea33e31bf1da4c097}{ioctl}
+blkdev\+\_\+ioctl\+\_\+t \hyperlink{structblkdev__interfaces_ae93720624e6f1a1ea33e31bf1da4c097}{ioctl}
 \item 
-blkdev\-\_\-open\-\_\-t \hyperlink{structblkdev__interfaces_a08eaa39b105826d2780991b32577867a}{open}
+blkdev\+\_\+open\+\_\+t \hyperlink{structblkdev__interfaces_a08eaa39b105826d2780991b32577867a}{open}
 \item 
-blkdev\-\_\-close\-\_\-t \hyperlink{structblkdev__interfaces_ab7623005e31211894853b3524e1e74eb}{close}
+blkdev\+\_\+close\+\_\+t \hyperlink{structblkdev__interfaces_ab7623005e31211894853b3524e1e74eb}{close}
 \item 
-void $\ast$ \hyperlink{structblkdev__interfaces_a8eea79e70042c41cc171796b501a9fd1}{custom\-\_\-data}
+void $\ast$ \hyperlink{structblkdev__interfaces_a8eea79e70042c41cc171796b501a9fd1}{custom\+\_\+data}
 \end{DoxyCompactItemize}
 
 
 \subsection{Documentation des champs}
-\hypertarget{structblkdev__interfaces_ab7623005e31211894853b3524e1e74eb}{\index{blkdev\-\_\-interfaces@{blkdev\-\_\-interfaces}!close@{close}}
-\index{close@{close}!blkdev_interfaces@{blkdev\-\_\-interfaces}}
-\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}blkdev\-\_\-close\-\_\-t blkdev\-\_\-interfaces\-::close}}\label{structblkdev__interfaces_ab7623005e31211894853b3524e1e74eb}
-Fonction appelée à la fermeture du device. \hypertarget{structblkdev__interfaces_a8eea79e70042c41cc171796b501a9fd1}{\index{blkdev\-\_\-interfaces@{blkdev\-\_\-interfaces}!custom\-\_\-data@{custom\-\_\-data}}
-\index{custom\-\_\-data@{custom\-\_\-data}!blkdev_interfaces@{blkdev\-\_\-interfaces}}
-\subsubsection[{custom\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ blkdev\-\_\-interfaces\-::custom\-\_\-data}}\label{structblkdev__interfaces_a8eea79e70042c41cc171796b501a9fd1}
-Données complémentaires qui peuvent être nécessaires pour utiliser le device. \hypertarget{structblkdev__interfaces_ae93720624e6f1a1ea33e31bf1da4c097}{\index{blkdev\-\_\-interfaces@{blkdev\-\_\-interfaces}!ioctl@{ioctl}}
-\index{ioctl@{ioctl}!blkdev_interfaces@{blkdev\-\_\-interfaces}}
-\subsubsection[{ioctl}]{\setlength{\rightskip}{0pt plus 5cm}blkdev\-\_\-ioctl\-\_\-t blkdev\-\_\-interfaces\-::ioctl}}\label{structblkdev__interfaces_ae93720624e6f1a1ea33e31bf1da4c097}
-Fonction de contrôle du périphérique. \hypertarget{structblkdev__interfaces_a08eaa39b105826d2780991b32577867a}{\index{blkdev\-\_\-interfaces@{blkdev\-\_\-interfaces}!open@{open}}
-\index{open@{open}!blkdev_interfaces@{blkdev\-\_\-interfaces}}
-\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}blkdev\-\_\-open\-\_\-t blkdev\-\_\-interfaces\-::open}}\label{structblkdev__interfaces_a08eaa39b105826d2780991b32577867a}
-Fonction appelée à l'ouverture du device. \hypertarget{structblkdev__interfaces_ad14a2ad714105cdb8ce002eb4fb9e747}{\index{blkdev\-\_\-interfaces@{blkdev\-\_\-interfaces}!read@{read}}
-\index{read@{read}!blkdev_interfaces@{blkdev\-\_\-interfaces}}
-\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}blkdev\-\_\-read\-\_\-t blkdev\-\_\-interfaces\-::read}}\label{structblkdev__interfaces_ad14a2ad714105cdb8ce002eb4fb9e747}
-Fonction de lecture. \hypertarget{structblkdev__interfaces_ae99fb7e1529ef6c24df9dc454bc0f9f6}{\index{blkdev\-\_\-interfaces@{blkdev\-\_\-interfaces}!write@{write}}
-\index{write@{write}!blkdev_interfaces@{blkdev\-\_\-interfaces}}
-\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}blkdev\-\_\-write\-\_\-t blkdev\-\_\-interfaces\-::write}}\label{structblkdev__interfaces_ae99fb7e1529ef6c24df9dc454bc0f9f6}
+\hypertarget{structblkdev__interfaces_ab7623005e31211894853b3524e1e74eb}{\index{blkdev\+\_\+interfaces@{blkdev\+\_\+interfaces}!close@{close}}
+\index{close@{close}!blkdev\+\_\+interfaces@{blkdev\+\_\+interfaces}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}blkdev\+\_\+close\+\_\+t blkdev\+\_\+interfaces\+::close}}\label{structblkdev__interfaces_ab7623005e31211894853b3524e1e74eb}
+Fonction appelée à la fermeture du device. \hypertarget{structblkdev__interfaces_a8eea79e70042c41cc171796b501a9fd1}{\index{blkdev\+\_\+interfaces@{blkdev\+\_\+interfaces}!custom\+\_\+data@{custom\+\_\+data}}
+\index{custom\+\_\+data@{custom\+\_\+data}!blkdev\+\_\+interfaces@{blkdev\+\_\+interfaces}}
+\subsubsection[{custom\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ blkdev\+\_\+interfaces\+::custom\+\_\+data}}\label{structblkdev__interfaces_a8eea79e70042c41cc171796b501a9fd1}
+Données complémentaires qui peuvent être nécessaires pour utiliser le device. \hypertarget{structblkdev__interfaces_ae93720624e6f1a1ea33e31bf1da4c097}{\index{blkdev\+\_\+interfaces@{blkdev\+\_\+interfaces}!ioctl@{ioctl}}
+\index{ioctl@{ioctl}!blkdev\+\_\+interfaces@{blkdev\+\_\+interfaces}}
+\subsubsection[{ioctl}]{\setlength{\rightskip}{0pt plus 5cm}blkdev\+\_\+ioctl\+\_\+t blkdev\+\_\+interfaces\+::ioctl}}\label{structblkdev__interfaces_ae93720624e6f1a1ea33e31bf1da4c097}
+Fonction de contrôle du périphérique. \hypertarget{structblkdev__interfaces_a08eaa39b105826d2780991b32577867a}{\index{blkdev\+\_\+interfaces@{blkdev\+\_\+interfaces}!open@{open}}
+\index{open@{open}!blkdev\+\_\+interfaces@{blkdev\+\_\+interfaces}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}blkdev\+\_\+open\+\_\+t blkdev\+\_\+interfaces\+::open}}\label{structblkdev__interfaces_a08eaa39b105826d2780991b32577867a}
+Fonction appelée à l'ouverture du device. \hypertarget{structblkdev__interfaces_ad14a2ad714105cdb8ce002eb4fb9e747}{\index{blkdev\+\_\+interfaces@{blkdev\+\_\+interfaces}!read@{read}}
+\index{read@{read}!blkdev\+\_\+interfaces@{blkdev\+\_\+interfaces}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}blkdev\+\_\+read\+\_\+t blkdev\+\_\+interfaces\+::read}}\label{structblkdev__interfaces_ad14a2ad714105cdb8ce002eb4fb9e747}
+Fonction de lecture. \hypertarget{structblkdev__interfaces_ae99fb7e1529ef6c24df9dc454bc0f9f6}{\index{blkdev\+\_\+interfaces@{blkdev\+\_\+interfaces}!write@{write}}
+\index{write@{write}!blkdev\+\_\+interfaces@{blkdev\+\_\+interfaces}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}blkdev\+\_\+write\+\_\+t blkdev\+\_\+interfaces\+::write}}\label{structblkdev__interfaces_ae99fb7e1529ef6c24df9dc454bc0f9f6}
 Fonction d'écriture. 
 
-La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
 \item 
-kernel/include/fs/\hyperlink{devfs_8h}{devfs.\-h}\end{DoxyCompactItemize}
+kernel/include/fs/\hyperlink{devfs_8h}{devfs.\+h}\end{DoxyCompactItemize}

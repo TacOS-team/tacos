@@ -4,12 +4,11 @@
 {\ttfamily \#include $<$sys/sem.\-h$>$}\\*
 {\ttfamily \#include $<$sys/syscall.\-h$>$}\\*
 {\ttfamily \#include $<$unistd.\-h$>$}\\*
-Graphe des dépendances par inclusion de sem.\-c\-:
-\nopagebreak
+Graphe des dépendances par inclusion de sem.\-c\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=305pt]{sem_8c__incl}
+\includegraphics[width=350pt]{sem_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Macros}
@@ -36,14 +35,14 @@ Graphe des dépendances par inclusion de sem.\-c\-:
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{sem_8c_a1ea8785f5ec6eadaa818747e4cbb6298}{semget} (\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} key, int semflg)
+int \hyperlink{sem_8c_a1ea8785f5ec6eadaa818747e4cbb6298}{semget} (\hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} key, int semflg)
 \begin{DoxyCompactList}\small\item\em donne l'identifiant (semid) d'un sémaphore déjà existant \end{DoxyCompactList}\item 
-int \hyperlink{sem_8c_a51cd1d5e354c3e1cc996c424bbf71be5}{semdel} (\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} semid)
+int \hyperlink{sem_8c_a51cd1d5e354c3e1cc996c424bbf71be5}{semdel} (\hyperlink{stdint_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} semid)
 \begin{DoxyCompactList}\small\item\em supprime un sémaphore \end{DoxyCompactList}\item 
-\hypertarget{sem_8c_a41a767d191dcdb83ffd277b23797ff61}{int {\bfseries sem\-P} (\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} semid)}\label{sem_8c_a41a767d191dcdb83ffd277b23797ff61}
+\hypertarget{sem_8c_a41a767d191dcdb83ffd277b23797ff61}{int {\bfseries sem\-P} (\hyperlink{stdint_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} semid)}\label{sem_8c_a41a767d191dcdb83ffd277b23797ff61}
 
 \item 
-\hypertarget{sem_8c_a274f0e825fa433b94a16c2c7211ae71f}{int {\bfseries sem\-V} (\hyperlink{types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} semid)}\label{sem_8c_a274f0e825fa433b94a16c2c7211ae71f}
+\hypertarget{sem_8c_a274f0e825fa433b94a16c2c7211ae71f}{int {\bfseries sem\-V} (\hyperlink{stdint_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} semid)}\label{sem_8c_a274f0e825fa433b94a16c2c7211ae71f}
 
 \end{DoxyCompactItemize}
 
@@ -53,7 +52,7 @@ int \hyperlink{sem_8c_a51cd1d5e354c3e1cc996c424bbf71be5}{semdel} (\hyperlink{typ
 Tac\-O\-S developers
 \end{DoxyAuthor}
 \hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+Copyright (C) 2010-\/2014 Tac\-O\-S developers.
 
 This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
@@ -80,12 +79,11 @@ Description de ce que fait le fichier
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=212pt]{sem_8c_a51cd1d5e354c3e1cc996c424bbf71be5_cgraph}
+\includegraphics[width=210pt]{sem_8c_a51cd1d5e354c3e1cc996c424bbf71be5_cgraph}
 \end{center}
 \end{figure}
 
@@ -108,12 +106,11 @@ le semid correspondant au sémaphore, -\/1 si une erreur s'est produite.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=214pt]{sem_8c_a1ea8785f5ec6eadaa818747e4cbb6298_cgraph}
+\includegraphics[width=210pt]{sem_8c_a1ea8785f5ec6eadaa818747e4cbb6298_cgraph}
 \end{center}
 \end{figure}
 

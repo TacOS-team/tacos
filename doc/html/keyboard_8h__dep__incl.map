@@ -1,4 +1,5 @@
 <map id="kernel/include/drivers/keyboard.h" name="kernel/include/drivers/keyboard.h">
-<area shape="rect" id="node3" href="$keyboard_8c.html" title="Driver clavier." alt="" coords="5,99,133,143"/>
-<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="157,107,264,135"/>
+<area shape="rect" id="node2" href="$keyboard_8c.html" title="Driver clavier. " alt="" coords="5,95,135,136"/>
+<area shape="rect" id="node3" href="$init_8c.html" title="kernel/init.c" alt="" coords="159,102,247,129"/>
+<area shape="rect" id="node4" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="271,102,378,129"/>
 </map>

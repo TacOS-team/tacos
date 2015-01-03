@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/include/kdirent.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,33 +90,59 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="kdirent_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _KDIRENT_H</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _KDIRENT_H</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define _KDIRENT_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ksyscall_8h.html">ksyscall.h</a>&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier.">kstat.h</a>&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kstat_8h.html">kstat.h</a>&gt;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="kdirent_8h.html#ac64541bdd81c961304b9babef1402640">   36</a></span>&#160;<span class="preprocessor">#define NAME_MAX 256 </span></div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="structdirent.html">   41</a></span>&#160;<span class="preprocessor">struct dirent {</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">   42</a></span>&#160;<span class="preprocessor"></span>        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">d_ino</a>; </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">   43</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">d_reclen</a>; </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">   44</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">d_type</a>; </div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="structdirent.html#a4325a83c49c6f2cd01ef80e1ae1dd4c5">   45</a></span>&#160;        <span class="keywordtype">char</span>      d_name[<a class="code" href="kdirent_8h.html#ac64541bdd81c961304b9babef1402640">NAME_MAX</a>]; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="kdirent_8h.html#ac64541bdd81c961304b9babef1402640">   36</a></span>&#160;<span class="preprocessor">#define NAME_MAX 256 </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structdirent.html">   41</a></span>&#160;<span class="preprocessor">struct dirent {</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">   42</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>  <a class="code" href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">d_ino</a>; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">   43</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a>  <a class="code" href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">d_reclen</a>; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">   44</a></span>&#160;        <a class="code" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   <a class="code" href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">d_type</a>; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structdirent.html#a4325a83c49c6f2cd01ef80e1ae1dd4c5">   45</a></span>&#160;        <span class="keywordtype">char</span>      d_name[<a class="code" href="kdirent_8h.html#ac64541bdd81c961304b9babef1402640">NAME_MAX</a>]; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;SYSCALL_HANDLER3(sys_readdir, <span class="keywordtype">int</span> fd, <span class="keywordtype">char</span> *entries, <span class="keywordtype">size_t</span> *size);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;SYSCALL_HANDLER3(sys_mkdir, <span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>, <span class="keywordtype">int</span> *ret);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;SYSCALL_HANDLER2(sys_rmdir, <span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <span class="keywordtype">int</span> *ret);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        DT_UNKNOWN = 0,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        DT_FIFO = 1,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        DT_CHR = 2,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        DT_DIR = 4,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        DT_BLK = 6,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        DT_REG = 8,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        DT_LNK = 10,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        DT_SOCK = 12,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        DT_WHT = 14</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<a class="code" href="kdirent_8h.html#adfcdfa04bbc40b5d0cd715e66d906cad">SYSCALL_HANDLER3</a>(sys_readdir, <span class="keywordtype">int</span> fd, <span class="keywordtype">char</span> *entries, <span class="keywordtype">size_t</span> *size);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<a class="code" href="kdirent_8h.html#adfcdfa04bbc40b5d0cd715e66d906cad">SYSCALL_HANDLER3</a>(sys_mkdir, <span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>, <span class="keywordtype">int</span> *ret);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<a class="code" href="kdirent_8h.html#ad690af967ba8e26d8ac3e48b8353eacc">SYSCALL_HANDLER2</a>(sys_rmdir, <span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <span class="keywordtype">int</span> *ret);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="kernel_2include_2types_8h_html"><div class="ttname"><a href="kernel_2include_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="kdirent_8h_html_ad690af967ba8e26d8ac3e48b8353eacc"><div class="ttname"><a href="kdirent_8h.html#ad690af967ba8e26d8ac3e48b8353eacc">SYSCALL_HANDLER2</a></div><div class="ttdeci">SYSCALL_HANDLER2(sys_rmdir, const char *pathname, int *ret)</div><div class="ttdef"><b>Definition:</b> kdirent.c:61</div></div>
+<div class="ttc" id="structdirent_html_a0ed2e5ea3c71500f628914bf3966e4ba"><div class="ttname"><a href="structdirent.html#a0ed2e5ea3c71500f628914bf3966e4ba">dirent::d_ino</a></div><div class="ttdeci">uint32_t d_ino</div><div class="ttdef"><b>Definition:</b> kdirent.h:42</div></div>
+<div class="ttc" id="structdirent_html_a7cc67dd4ba5a8bed7f107f249957688d"><div class="ttname"><a href="structdirent.html#a7cc67dd4ba5a8bed7f107f249957688d">dirent::d_reclen</a></div><div class="ttdeci">uint16_t d_reclen</div><div class="ttdef"><b>Definition:</b> kdirent.h:43</div></div>
+<div class="ttc" id="kdirent_8h_html_adfcdfa04bbc40b5d0cd715e66d906cad"><div class="ttname"><a href="kdirent_8h.html#adfcdfa04bbc40b5d0cd715e66d906cad">SYSCALL_HANDLER3</a></div><div class="ttdeci">SYSCALL_HANDLER3(sys_readdir, int fd, char *entries, size_t *size)</div><div class="ttdef"><b>Definition:</b> kdirent.c:37</div></div>
+<div class="ttc" id="kdirent_8h_html_ac64541bdd81c961304b9babef1402640"><div class="ttname"><a href="kdirent_8h.html#ac64541bdd81c961304b9babef1402640">NAME_MAX</a></div><div class="ttdeci">#define NAME_MAX</div><div class="ttdef"><b>Definition:</b> kdirent.h:36</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_adf4d876453337156dde61095e1f20223"><div class="ttname"><a href="kernel_2include_2types_8h.html#adf4d876453337156dde61095e1f20223">uint16_t</a></div><div class="ttdeci">unsigned short int uint16_t</div><div class="ttdef"><b>Definition:</b> types.h:35</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> types.h:34</div></div>
+<div class="ttc" id="kstat_8h_html_af8f4385bb42836d1e3ad4fea9d71d1b9"><div class="ttname"><a href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a></div><div class="ttdeci">uint32_t mode_t</div><div class="ttdef"><b>Definition:</b> kstat.h:63</div></div>
+<div class="ttc" id="ksyscall_8h_html"><div class="ttname"><a href="ksyscall_8h.html">ksyscall.h</a></div></div>
+<div class="ttc" id="structdirent_html_a948760e3b7f607213a19f85e7af15a32"><div class="ttname"><a href="structdirent.html#a948760e3b7f607213a19f85e7af15a32">dirent::d_type</a></div><div class="ttdeci">uint8_t d_type</div><div class="ttdef"><b>Definition:</b> kdirent.h:44</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_a33594304e786b158f3fb30289278f5af"><div class="ttname"><a href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a></div><div class="ttdeci">unsigned long int uint32_t</div><div class="ttdef"><b>Definition:</b> types.h:36</div></div>
+<div class="ttc" id="structmode_html"><div class="ttname"><a href="structmode.html">mode</a></div><div class="ttdef"><b>Definition:</b> vga_modes.h:37</div></div>
+<div class="ttc" id="kstat_8h_html"><div class="ttname"><a href="kstat_8h.html">kstat.h</a></div><div class="ttdoc">Manipulation des caractéristiques d&#39;un fichier. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

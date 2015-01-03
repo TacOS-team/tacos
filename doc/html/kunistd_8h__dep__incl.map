@@ -1,7 +1,7 @@
 <map id="kernel/include/kunistd.h" name="kernel/include/kunistd.h">
-<area shape="rect" id="node3" href="$elf_8c.html" title="Bibliotèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="5,83,91,111"/>
-<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="115,83,221,111"/>
-<area shape="rect" id="node7" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="245,83,368,111"/>
-<area shape="rect" id="node9" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="392,83,504,111"/>
-<area shape="rect" id="node11" href="$module_8c.html" title="kernel/module.c" alt="" coords="528,83,640,111"/>
+<area shape="rect" id="node2" href="$elf_8c.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF. " alt="" coords="5,80,91,107"/>
+<area shape="rect" id="node3" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="115,80,221,107"/>
+<area shape="rect" id="node4" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="246,80,370,107"/>
+<area shape="rect" id="node5" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="394,80,507,107"/>
+<area shape="rect" id="node6" href="$module_8c.html" title="kernel/module.c" alt="" coords="531,80,645,107"/>
 </map>

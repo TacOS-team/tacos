@@ -1,71 +1,72 @@
 \hypertarget{sem_8h}{\section{Référence du fichier libc/include/sys/sem.h}
-\label{sem_8h}\index{libc/include/sys/sem.\-h@{libc/include/sys/sem.\-h}}
+\label{sem_8h}\index{libc/include/sys/sem.\+h@{libc/include/sys/sem.\+h}}
 }
 
 
 l'interface de manipulation des semaphores  
 
 
-{\ttfamily \#include $<$sys/cdefs.\-h$>$}\\*
-{\ttfamily \#include $<$sys/types.\-h$>$}\\*
-Graphe des dépendances par inclusion de sem.\-h\-:\nopagebreak
+{\ttfamily \#include $<$sys/cdefs.\+h$>$}\\*
+{\ttfamily \#include $<$sys/types.\+h$>$}\\*
+Graphe des dépendances par inclusion de sem.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=220pt]{sem_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=192pt]{sem_8h__dep__incl}
+\includegraphics[width=190pt]{sem_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{sem_8h_a50eabf011dba36652a098b706c2b0bc7}{\#define {\bfseries S\-E\-M\-\_\-\-N\-E\-W}~255}\label{sem_8h_a50eabf011dba36652a098b706c2b0bc7}
+\hypertarget{sem_8h_a50eabf011dba36652a098b706c2b0bc7}{\#define {\bfseries S\+E\+M\+\_\+\+N\+E\+W}~255}\label{sem_8h_a50eabf011dba36652a098b706c2b0bc7}
 
 \item 
-\hypertarget{sem_8h_a6509192a31012daee9e37542c101b383}{\#define {\bfseries S\-E\-M\-\_\-\-C\-R\-E\-A\-T\-E}~1}\label{sem_8h_a6509192a31012daee9e37542c101b383}
+\hypertarget{sem_8h_a6509192a31012daee9e37542c101b383}{\#define {\bfseries S\+E\+M\+\_\+\+C\+R\+E\+A\+T\+E}~1}\label{sem_8h_a6509192a31012daee9e37542c101b383}
 
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{sem_8h_a1ea8785f5ec6eadaa818747e4cbb6298}{semget} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} key, int semflg)
+int \hyperlink{sem_8h_a1ea8785f5ec6eadaa818747e4cbb6298}{semget} (\hyperlink{kernel_2include_2types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} key, int semflg)
 \begin{DoxyCompactList}\small\item\em donne l'identifiant (semid) d'un sémaphore déjà existant \end{DoxyCompactList}\item 
-int \hyperlink{sem_8h_a51cd1d5e354c3e1cc996c424bbf71be5}{semdel} (\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} semid)
+int \hyperlink{sem_8h_a51cd1d5e354c3e1cc996c424bbf71be5}{semdel} (\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\+\_\+t} semid)
 \begin{DoxyCompactList}\small\item\em supprime un sémaphore \end{DoxyCompactList}\item 
-\hypertarget{sem_8h_a41a767d191dcdb83ffd277b23797ff61}{int {\bfseries sem\-P} (\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} semid)}\label{sem_8h_a41a767d191dcdb83ffd277b23797ff61}
+\hypertarget{sem_8h_a41a767d191dcdb83ffd277b23797ff61}{int {\bfseries sem\+P} (\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\+\_\+t} semid)}\label{sem_8h_a41a767d191dcdb83ffd277b23797ff61}
 
 \item 
-\hypertarget{sem_8h_a274f0e825fa433b94a16c2c7211ae71f}{int {\bfseries sem\-V} (\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} semid)}\label{sem_8h_a274f0e825fa433b94a16c2c7211ae71f}
+\hypertarget{sem_8h_a274f0e825fa433b94a16c2c7211ae71f}{int {\bfseries sem\+V} (\hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\+\_\+t} semid)}\label{sem_8h_a274f0e825fa433b94a16c2c7211ae71f}
 
 \end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 Description de ce que fait le fichier 
 
 \subsection{Documentation des fonctions}
-\hypertarget{sem_8h_a51cd1d5e354c3e1cc996c424bbf71be5}{\index{sem.\-h@{sem.\-h}!semdel@{semdel}}
-\index{semdel@{semdel}!sem.h@{sem.\-h}}
+\hypertarget{sem_8h_a51cd1d5e354c3e1cc996c424bbf71be5}{\index{sem.\+h@{sem.\+h}!semdel@{semdel}}
+\index{semdel@{semdel}!sem.\+h@{sem.\+h}}
 \subsubsection[{semdel}]{\setlength{\rightskip}{0pt plus 5cm}int semdel (
 \begin{DoxyParamCaption}
-\item[{{\bf uint32\-\_\-t}}]{semid}
+\item[{{\bf uint32\+\_\+t}}]{semid}
 \end{DoxyParamCaption}
 )}}\label{sem_8h_a51cd1d5e354c3e1cc996c424bbf71be5}
 
@@ -78,20 +79,21 @@ Description de ce que fait le fichier
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=212pt]{sem_8h_a51cd1d5e354c3e1cc996c424bbf71be5_cgraph}
+\includegraphics[width=211pt]{sem_8h_a51cd1d5e354c3e1cc996c424bbf71be5_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{sem_8h_a1ea8785f5ec6eadaa818747e4cbb6298}{\index{sem.\-h@{sem.\-h}!semget@{semget}}
-\index{semget@{semget}!sem.h@{sem.\-h}}
+\hypertarget{sem_8h_a1ea8785f5ec6eadaa818747e4cbb6298}{\index{sem.\+h@{sem.\+h}!semget@{semget}}
+\index{semget@{semget}!sem.\+h@{sem.\+h}}
 \subsubsection[{semget}]{\setlength{\rightskip}{0pt plus 5cm}int semget (
 \begin{DoxyParamCaption}
-\item[{{\bf uint8\-\_\-t}}]{key, }
+\item[{{\bf uint8\+\_\+t}}]{key, }
 \item[{int}]{semflg}
 \end{DoxyParamCaption}
 )}}\label{sem_8h_a1ea8785f5ec6eadaa818747e4cbb6298}
@@ -105,11 +107,12 @@ le semid correspondant au sémaphore, -\/1 si une erreur s'est produite.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=214pt]{sem_8h_a1ea8785f5ec6eadaa818747e4cbb6298_cgraph}
+\includegraphics[width=212pt]{sem_8h_a1ea8785f5ec6eadaa818747e4cbb6298_cgraph}
 \end{center}
 \end{figure}
 

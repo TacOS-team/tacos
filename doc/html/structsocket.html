@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence de la structure socket</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -90,43 +91,62 @@ Graphe de collaboration de socket:</div>
 <div class="dyncontent">
 <div class="center"><img src="structsocket__coll__graph.png" border="0" usemap="#socket_coll__map" alt="Collaboration graph"/></div>
 <map name="socket_coll__map" id="socket_coll__map">
-<area shape="rect" id="node3" href="structsocket__msg.html" title="socket_msg" alt="" coords="5,6,99,34"/></map>
+<area shape="rect" id="node2" href="structsocket__msg.html" title="socket_msg" alt="" coords="607,95,701,121"/><area shape="rect" id="node3" href="struct__open__file__descriptor.html" title="_open_file_descriptor" alt="" coords="245,95,389,121"/><area shape="rect" id="node7" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté. " alt="" coords="191,185,298,212"/><area shape="rect" id="node4" href="struct__open__file__operations__t.html" title="_open_file_operations_t" alt="" coords="5,5,164,32"/><area shape="rect" id="node6" href="struct__inode__t.html" title="_inode_t" alt="" coords="33,277,104,304"/><area shape="rect" id="node5" href="struct__dentry__t.html" title="_dentry_t" alt="" coords="257,368,331,395"/><area shape="rect" id="node8" href="structfile__system__t.html" title="Structure qui représente un FS. " alt="" coords="145,277,243,304"/><area shape="rect" id="node9" href="struct__mounted__fs__t.html" title="_mounted_fs_t" alt="" coords="360,277,468,304"/></map>
 <center><span class="legend">[<a href="graph_legend.html">légende</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
 <tr class="memitem:a037d2cd88c0121624d25f35336209987"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a037d2cd88c0121624d25f35336209987"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>sd</b></td></tr>
+<tr class="separator:a037d2cd88c0121624d25f35336209987"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6e9667f4af37e9e9e80a4b84fc0a4f8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae6e9667f4af37e9e9e80a4b84fc0a4f8"></a>
+<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ofd</b></td></tr>
+<tr class="separator:ae6e9667f4af37e9e9e80a4b84fc0a4f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a2a2dc58ec6cd873af3250bc79500c5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a2a2dc58ec6cd873af3250bc79500c5"></a>
 enum socket_type&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="separator:a9a2a2dc58ec6cd873af3250bc79500c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafe6721566c75c89097ff0560ef3bbaa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafe6721566c75c89097ff0560ef3bbaa"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>blocking</b></td></tr>
+<tr class="separator:aafe6721566c75c89097ff0560ef3bbaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a469ff1719b3ae4543e8abe5808d880e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a469ff1719b3ae4543e8abe5808d880e9"></a>
 char *&#160;</td><td class="memItemRight" valign="bottom"><b>meetpoint</b></td></tr>
+<tr class="separator:a469ff1719b3ae4543e8abe5808d880e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a467a2a2bbfea6313b115962a4d33b5b5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a467a2a2bbfea6313b115962a4d33b5b5"></a>
 enum socket_state&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
+<tr class="separator:a467a2a2bbfea6313b115962a4d33b5b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59c47caae0b05514624b05c6dba8ce70"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a59c47caae0b05514624b05c6dba8ce70"></a>
 struct <a class="el" href="structsocket.html">socket</a> **&#160;</td><td class="memItemRight" valign="bottom"><b>new_conn_req</b></td></tr>
+<tr class="separator:a59c47caae0b05514624b05c6dba8ce70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1209b382268731beb19f8326f2a35c57"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1209b382268731beb19f8326f2a35c57"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>pending_conn_req</b></td></tr>
+<tr class="separator:a1209b382268731beb19f8326f2a35c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab4bbd1c8b3389000215a1cc5ffd80df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab4bbd1c8b3389000215a1cc5ffd80df"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>max_conn_req_backlog</b></td></tr>
+<tr class="separator:aab4bbd1c8b3389000215a1cc5ffd80df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3300340c7565a298271a06aecf968091"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3300340c7565a298271a06aecf968091"></a>
 struct <a class="el" href="structsocket.html">socket</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>paired_sock</b></td></tr>
+<tr class="separator:a3300340c7565a298271a06aecf968091"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ee09df65b7ec6bccd58fe2d4eebe6d9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ee09df65b7ec6bccd58fe2d4eebe6d9"></a>
 struct <a class="el" href="structsocket__msg.html">socket_msg</a>&#160;</td><td class="memItemRight" valign="bottom"><b>in_buffer</b> [MAX_MESSAGES]</td></tr>
+<tr class="separator:a9ee09df65b7ec6bccd58fe2d4eebe6d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1f8d42ded9f1e8a017780fa5bde11a0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1f8d42ded9f1e8a017780fa5bde11a0"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>in_base</b></td></tr>
+<tr class="separator:ad1f8d42ded9f1e8a017780fa5bde11a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f3e2a3210219cad6bf97effcb29c074"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f3e2a3210219cad6bf97effcb29c074"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>in_count</b></td></tr>
+<tr class="separator:a3f3e2a3210219cad6bf97effcb29c074"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7b80474cddbbbe5b8ca6a88c3790519"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad7b80474cddbbbe5b8ca6a88c3790519"></a>
 <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>accept_sem</b></td></tr>
+<tr class="separator:ad7b80474cddbbbe5b8ca6a88c3790519"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2892cf67b33e9b8fc0cfd3094ad3d3fd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2892cf67b33e9b8fc0cfd3094ad3d3fd"></a>
 <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>connect_sem</b></td></tr>
+<tr class="separator:a2892cf67b33e9b8fc0cfd3094ad3d3fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acff0fb866f8282e667e1ee6ecc3ea355"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acff0fb866f8282e667e1ee6ecc3ea355"></a>
 <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>read_sem</b></td></tr>
+<tr class="separator:acff0fb866f8282e667e1ee6ecc3ea355"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6dcd09bbe72cd9781a3d3bfff9dda45b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6dcd09bbe72cd9781a3d3bfff9dda45b"></a>
 <a class="el" href="kernel_2include_2types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>write_sem</b></td></tr>
+<tr class="separator:a6dcd09bbe72cd9781a3d3bfff9dda45b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
 <li>kernel/drivers/char/sock.c</li>
@@ -134,9 +154,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>in_count</b></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:42 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

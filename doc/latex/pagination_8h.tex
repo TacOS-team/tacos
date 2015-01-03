@@ -1,15 +1,15 @@
 \hypertarget{pagination_8h}{\section{Référence du fichier kernel/include/pagination.h}
-\label{pagination_8h}\index{kernel/include/pagination.\-h@{kernel/include/pagination.\-h}}
+\label{pagination_8h}\index{kernel/include/pagination.\+h@{kernel/include/pagination.\+h}}
 }
-{\ttfamily \#include $<$types.\-h$>$}\\*
-Graphe des dépendances par inclusion de pagination.\-h\-:\nopagebreak
+{\ttfamily \#include $<$types.\+h$>$}\\*
+Graphe des dépendances par inclusion de pagination.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=210pt]{pagination_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -19,62 +19,62 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \subsection*{Structures de données}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structpage__directory__entry}{page\-\_\-directory\-\_\-entry}
+struct \hyperlink{structpage__directory__entry}{page\+\_\+directory\+\_\+entry}
 \begin{DoxyCompactList}\small\item\em Page Directory Entry. \end{DoxyCompactList}\item 
-struct \hyperlink{structpage__table__entry}{page\-\_\-table\-\_\-entry}
+struct \hyperlink{structpage__table__entry}{page\+\_\+table\+\_\+entry}
 \begin{DoxyCompactList}\small\item\em Page Table Entry. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{pagination_8h_a3c6b528b1f430d4a244e3cc2933cd24c}{\-\_\-\-P\-A\-G\-I\-N\-A\-T\-I\-O\-N\-\_\-\-K\-E\-R\-N\-E\-L\-\_\-\-T\-O\-P}~0x40000000
+\#define \hyperlink{pagination_8h_a3c6b528b1f430d4a244e3cc2933cd24c}{\+\_\+\+P\+A\+G\+I\+N\+A\+T\+I\+O\+N\+\_\+\+K\+E\+R\+N\+E\+L\+\_\+\+T\+O\+P}~0x40000000
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{pagination_8h_a841b5f96bd3c392664b17627f55bfa36}{pagination\-\_\-setup} ()
+void \hyperlink{pagination_8h_a841b5f96bd3c392664b17627f55bfa36}{pagination\+\_\+setup} ()
 \begin{DoxyCompactList}\small\item\em Activation de la pagination et initialisation. \end{DoxyCompactList}\item 
-void \hyperlink{pagination_8h_a9081608a88f7fb6a6779806c5b1d5b9d}{pagination\-\_\-init\-\_\-page\-\_\-directory} (struct \hyperlink{structpage__directory__entry}{page\-\_\-directory\-\_\-entry} $\ast$pd)
+void \hyperlink{pagination_8h_a9081608a88f7fb6a6779806c5b1d5b9d}{pagination\+\_\+init\+\_\+page\+\_\+directory} (struct \hyperlink{structpage__directory__entry}{page\+\_\+directory\+\_\+entry} $\ast$pd)
 \begin{DoxyCompactList}\small\item\em Initialise un repertoire de page. \end{DoxyCompactList}\item 
-\hypertarget{pagination_8h_aa3369e1fab7d0fe1bafc3877f10496a2}{void {\bfseries pagination\-\_\-init\-\_\-page\-\_\-directory\-\_\-copy\-\_\-kernel\-\_\-only} (struct \hyperlink{structpage__directory__entry}{page\-\_\-directory\-\_\-entry} $\ast$pd, \hyperlink{kernel_2include_2types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\-\_\-t} pd\-\_\-paddr)}\label{pagination_8h_aa3369e1fab7d0fe1bafc3877f10496a2}
+\hypertarget{pagination_8h_aa3369e1fab7d0fe1bafc3877f10496a2}{void {\bfseries pagination\+\_\+init\+\_\+page\+\_\+directory\+\_\+copy\+\_\+kernel\+\_\+only} (struct \hyperlink{structpage__directory__entry}{page\+\_\+directory\+\_\+entry} $\ast$pd, \hyperlink{kernel_2include_2types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\+\_\+t} pd\+\_\+paddr)}\label{pagination_8h_aa3369e1fab7d0fe1bafc3877f10496a2}
 
 \item 
-\hyperlink{kernel_2include_2types_8h_a53428b953a0ae6fba02a5b3596c867e0}{vaddr\-\_\-t} \hyperlink{pagination_8h_affecf8cced0803c2edd9decf5aa5aa44}{get\-\_\-page\-\_\-table\-\_\-vaddr} (int index\-\_\-page)
+\hyperlink{kernel_2include_2types_8h_a53428b953a0ae6fba02a5b3596c867e0}{vaddr\+\_\+t} \hyperlink{pagination_8h_affecf8cced0803c2edd9decf5aa5aa44}{get\+\_\+page\+\_\+table\+\_\+vaddr} (int index\+\_\+page)
 \end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
-Description de ce que fait le fichier
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
+Description de ce que fait le fichier 
 
 \subsection{Documentation des macros}
-\hypertarget{pagination_8h_a3c6b528b1f430d4a244e3cc2933cd24c}{\index{pagination.\-h@{pagination.\-h}!\-\_\-\-P\-A\-G\-I\-N\-A\-T\-I\-O\-N\-\_\-\-K\-E\-R\-N\-E\-L\-\_\-\-T\-O\-P@{\-\_\-\-P\-A\-G\-I\-N\-A\-T\-I\-O\-N\-\_\-\-K\-E\-R\-N\-E\-L\-\_\-\-T\-O\-P}}
-\index{\-\_\-\-P\-A\-G\-I\-N\-A\-T\-I\-O\-N\-\_\-\-K\-E\-R\-N\-E\-L\-\_\-\-T\-O\-P@{\-\_\-\-P\-A\-G\-I\-N\-A\-T\-I\-O\-N\-\_\-\-K\-E\-R\-N\-E\-L\-\_\-\-T\-O\-P}!pagination.h@{pagination.\-h}}
-\subsubsection[{\-\_\-\-P\-A\-G\-I\-N\-A\-T\-I\-O\-N\-\_\-\-K\-E\-R\-N\-E\-L\-\_\-\-T\-O\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-P\-A\-G\-I\-N\-A\-T\-I\-O\-N\-\_\-\-K\-E\-R\-N\-E\-L\-\_\-\-T\-O\-P~0x40000000}}\label{pagination_8h_a3c6b528b1f430d4a244e3cc2933cd24c}
-Emplacement de mémoire virtuelle réservé au kernel \-: 0 -\/$>$ 1gio 
+\hypertarget{pagination_8h_a3c6b528b1f430d4a244e3cc2933cd24c}{\index{pagination.\+h@{pagination.\+h}!\+\_\+\+P\+A\+G\+I\+N\+A\+T\+I\+O\+N\+\_\+\+K\+E\+R\+N\+E\+L\+\_\+\+T\+O\+P@{\+\_\+\+P\+A\+G\+I\+N\+A\+T\+I\+O\+N\+\_\+\+K\+E\+R\+N\+E\+L\+\_\+\+T\+O\+P}}
+\index{\+\_\+\+P\+A\+G\+I\+N\+A\+T\+I\+O\+N\+\_\+\+K\+E\+R\+N\+E\+L\+\_\+\+T\+O\+P@{\+\_\+\+P\+A\+G\+I\+N\+A\+T\+I\+O\+N\+\_\+\+K\+E\+R\+N\+E\+L\+\_\+\+T\+O\+P}!pagination.\+h@{pagination.\+h}}
+\subsubsection[{\+\_\+\+P\+A\+G\+I\+N\+A\+T\+I\+O\+N\+\_\+\+K\+E\+R\+N\+E\+L\+\_\+\+T\+O\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define \+\_\+\+P\+A\+G\+I\+N\+A\+T\+I\+O\+N\+\_\+\+K\+E\+R\+N\+E\+L\+\_\+\+T\+O\+P~0x40000000}}\label{pagination_8h_a3c6b528b1f430d4a244e3cc2933cd24c}
+Emplacement de mémoire virtuelle réservé au kernel \+: 0 -\/$>$ 1gio 
 
 \subsection{Documentation des fonctions}
-\hypertarget{pagination_8h_affecf8cced0803c2edd9decf5aa5aa44}{\index{pagination.\-h@{pagination.\-h}!get\-\_\-page\-\_\-table\-\_\-vaddr@{get\-\_\-page\-\_\-table\-\_\-vaddr}}
-\index{get\-\_\-page\-\_\-table\-\_\-vaddr@{get\-\_\-page\-\_\-table\-\_\-vaddr}!pagination.h@{pagination.\-h}}
-\subsubsection[{get\-\_\-page\-\_\-table\-\_\-vaddr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf vaddr\-\_\-t} get\-\_\-page\-\_\-table\-\_\-vaddr (
+\hypertarget{pagination_8h_affecf8cced0803c2edd9decf5aa5aa44}{\index{pagination.\+h@{pagination.\+h}!get\+\_\+page\+\_\+table\+\_\+vaddr@{get\+\_\+page\+\_\+table\+\_\+vaddr}}
+\index{get\+\_\+page\+\_\+table\+\_\+vaddr@{get\+\_\+page\+\_\+table\+\_\+vaddr}!pagination.\+h@{pagination.\+h}}
+\subsubsection[{get\+\_\+page\+\_\+table\+\_\+vaddr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf vaddr\+\_\+t} get\+\_\+page\+\_\+table\+\_\+vaddr (
 \begin{DoxyParamCaption}
-\item[{int}]{index\-\_\-page}
+\item[{int}]{index\+\_\+page}
 \end{DoxyParamCaption}
 )}}\label{pagination_8h_affecf8cced0803c2edd9decf5aa5aa44}
-Retourne l'emplacement en mémoire virtuelle reservé pour la table de page correspondant à cet identifiant \hypertarget{pagination_8h_a9081608a88f7fb6a6779806c5b1d5b9d}{\index{pagination.\-h@{pagination.\-h}!pagination\-\_\-init\-\_\-page\-\_\-directory@{pagination\-\_\-init\-\_\-page\-\_\-directory}}
-\index{pagination\-\_\-init\-\_\-page\-\_\-directory@{pagination\-\_\-init\-\_\-page\-\_\-directory}!pagination.h@{pagination.\-h}}
-\subsubsection[{pagination\-\_\-init\-\_\-page\-\_\-directory}]{\setlength{\rightskip}{0pt plus 5cm}void pagination\-\_\-init\-\_\-page\-\_\-directory (
+Retourne l'emplacement en mémoire virtuelle reservé pour la table de page correspondant à cet identifiant \hypertarget{pagination_8h_a9081608a88f7fb6a6779806c5b1d5b9d}{\index{pagination.\+h@{pagination.\+h}!pagination\+\_\+init\+\_\+page\+\_\+directory@{pagination\+\_\+init\+\_\+page\+\_\+directory}}
+\index{pagination\+\_\+init\+\_\+page\+\_\+directory@{pagination\+\_\+init\+\_\+page\+\_\+directory}!pagination.\+h@{pagination.\+h}}
+\subsubsection[{pagination\+\_\+init\+\_\+page\+\_\+directory}]{\setlength{\rightskip}{0pt plus 5cm}void pagination\+\_\+init\+\_\+page\+\_\+directory (
 \begin{DoxyParamCaption}
-\item[{struct {\bf page\-\_\-directory\-\_\-entry} $\ast$}]{pd}
+\item[{struct {\bf page\+\_\+directory\+\_\+entry} $\ast$}]{pd}
 \end{DoxyParamCaption}
 )}}\label{pagination_8h_a9081608a88f7fb6a6779806c5b1d5b9d}
 Initialise un repertoire de page vide.
@@ -86,29 +86,31 @@ Initialise un repertoire de page vide.
 \end{DoxyParams}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=312pt]{pagination_8h_a9081608a88f7fb6a6779806c5b1d5b9d_icgraph}
+\includegraphics[width=311pt]{pagination_8h_a9081608a88f7fb6a6779806c5b1d5b9d_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{pagination_8h_a841b5f96bd3c392664b17627f55bfa36}{\index{pagination.\-h@{pagination.\-h}!pagination\-\_\-setup@{pagination\-\_\-setup}}
-\index{pagination\-\_\-setup@{pagination\-\_\-setup}!pagination.h@{pagination.\-h}}
-\subsubsection[{pagination\-\_\-setup}]{\setlength{\rightskip}{0pt plus 5cm}void pagination\-\_\-setup (
+\hypertarget{pagination_8h_a841b5f96bd3c392664b17627f55bfa36}{\index{pagination.\+h@{pagination.\+h}!pagination\+\_\+setup@{pagination\+\_\+setup}}
+\index{pagination\+\_\+setup@{pagination\+\_\+setup}!pagination.\+h@{pagination.\+h}}
+\subsubsection[{pagination\+\_\+setup}]{\setlength{\rightskip}{0pt plus 5cm}void pagination\+\_\+setup (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{pagination_8h_a841b5f96bd3c392664b17627f55bfa36}
-Cette fonction s'occupe d'activer la pagination. (identity mapping entre autre qui permet de pas briser le lien  et  au début) 
+Cette fonction s'occupe d'activer la pagination. (identity mapping entre autre qui permet de pas briser le lien addr phys et addr lineaire au début) 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{pagination_8h_a841b5f96bd3c392664b17627f55bfa36_cgraph}
+\includegraphics[width=349pt]{pagination_8h_a841b5f96bd3c392664b17627f55bfa36_cgraph}
 \end{center}
 \end{figure}
 

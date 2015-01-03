@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/include/multiboot.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,81 +90,81 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="multiboot_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef MULTIBOOT_HEADER</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MULTIBOOT_HEADER 1</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="multiboot_8h.html#a0b53e2de91aa7498c4b476776b27e5f3">   35</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_SEARCH                        8192</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="multiboot_8h.html#ab36ad4b4a42c58aac4ad1f2ba13054e9">   40</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_HEADER_MAGIC                  0x1BADB002</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="multiboot_8h.html#aacd617f4e3daafd6eab95fb6215ccae4">   45</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_BOOTLOADER_MAGIC              0x2BADB002</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="multiboot_8h.html#a1dfc3a6c2fc159eee9e7f5b05b37c60a">   50</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_UNSUPPORTED                   0x0000fffc</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="multiboot_8h.html#ab3284a28549f2a2f1a2001ca023aaa1e">   55</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_MOD_ALIGN                     0x00001000</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="multiboot_8h.html#a7f583196f43e30e93323f5e44554d726">   60</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_ALIGN                    0x00000004</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="multiboot_8h.html#aab5e5487e858de2a031cd3f1232f7b60">   69</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_PAGE_ALIGN                    0x00000001</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="multiboot_8h.html#afdfca6bbbf4b7dca40e9d43e58201f55">   74</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_MEMORY_INFO                   0x00000002</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="multiboot_8h.html#a74a1da9293ae3835241c60b2d9e65e8d">   79</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_VIDEO_MODE                    0x00000004</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="code" href="multiboot_8h.html#a791f0c6a97c36de5388c990503ee4639">   84</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_AOUT_KLUDGE                   0x00010000</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define MULTIBOOT_HEADER 1</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="multiboot_8h.html#a0b53e2de91aa7498c4b476776b27e5f3">   35</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_SEARCH                        8192</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="multiboot_8h.html#ab36ad4b4a42c58aac4ad1f2ba13054e9">   40</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_HEADER_MAGIC                  0x1BADB002</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="multiboot_8h.html#aacd617f4e3daafd6eab95fb6215ccae4">   45</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_BOOTLOADER_MAGIC              0x2BADB002</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="multiboot_8h.html#a1dfc3a6c2fc159eee9e7f5b05b37c60a">   50</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_UNSUPPORTED                   0x0000fffc</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="multiboot_8h.html#ab3284a28549f2a2f1a2001ca023aaa1e">   55</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_MOD_ALIGN                     0x00001000</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="multiboot_8h.html#a7f583196f43e30e93323f5e44554d726">   60</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_ALIGN                    0x00000004</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="multiboot_8h.html#aab5e5487e858de2a031cd3f1232f7b60">   69</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_PAGE_ALIGN                    0x00000001</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="multiboot_8h.html#afdfca6bbbf4b7dca40e9d43e58201f55">   74</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_MEMORY_INFO                   0x00000002</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="multiboot_8h.html#a74a1da9293ae3835241c60b2d9e65e8d">   79</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_VIDEO_MODE                    0x00000004</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="multiboot_8h.html#a791f0c6a97c36de5388c990503ee4639">   84</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_AOUT_KLUDGE                   0x00010000</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">/* Flags to be set in the &#39;flags&#39; member of the multiboot info structure. */</span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="multiboot_8h.html#a1cb6047ede9a179b2958048573269d7a">   91</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_MEMORY                   0x00000001</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="multiboot_8h.html#acfde5ffdd699c023dd8f4b89aa66556f">   95</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_BOOTDEV                  0x00000002</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="code" href="multiboot_8h.html#ae75fb4f821b7ab405d46318d9b90a677">   99</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_CMDLINE                  0x00000004</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="code" href="multiboot_8h.html#a9a06a0175854cc6af54ddb6bd798c5bc">  103</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_MODS                     0x00000008</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="multiboot_8h.html#a1cb6047ede9a179b2958048573269d7a">   91</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_MEMORY                   0x00000001</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="multiboot_8h.html#acfde5ffdd699c023dd8f4b89aa66556f">   95</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_BOOTDEV                  0x00000002</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="multiboot_8h.html#ae75fb4f821b7ab405d46318d9b90a677">   99</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_CMDLINE                  0x00000004</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="multiboot_8h.html#a9a06a0175854cc6af54ddb6bd798c5bc">  103</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_MODS                     0x00000008</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">/* These next two are mutually exclusive */</span></div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="code" href="multiboot_8h.html#a186ab9e55c5bc612b9fd7e10b4be5600">  110</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_AOUT_SYMS                0x00000010</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00114"></a><span class="lineno"><a class="code" href="multiboot_8h.html#ad7d22ae99c11dc92152acdc8494a71f0">  114</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_ELF_SHDR                 0X00000020</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="code" href="multiboot_8h.html#a2d16dabdfdee01362c3457d06f0ff850">  119</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_MEM_MAP                  0x00000040</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00124"></a><span class="lineno"><a class="code" href="multiboot_8h.html#af2c5803d8cc6e1e8c00181ca546e68ab">  124</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_DRIVE_INFO               0x00000080</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00129"></a><span class="lineno"><a class="code" href="multiboot_8h.html#ad60e5b72325f5752e955879f3fbb44c3">  129</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_CONFIG_TABLE             0x00000100</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00134"></a><span class="lineno"><a class="code" href="multiboot_8h.html#a9743476d5f32c9ae22f6254a0e3ba11d">  134</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_BOOT_LOADER_NAME         0x00000200</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00139"></a><span class="lineno"><a class="code" href="multiboot_8h.html#aab73446f0cee2e9dc91f43eb9a0c806b">  139</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_APM_TABLE                0x00000400</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00144"></a><span class="lineno"><a class="code" href="multiboot_8h.html#a2b0229990b8df377e730a8625803304f">  144</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_VIDEO_INFO               0x00000800</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="multiboot_8h.html#a186ab9e55c5bc612b9fd7e10b4be5600">  110</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_AOUT_SYMS                0x00000010</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="multiboot_8h.html#ad7d22ae99c11dc92152acdc8494a71f0">  114</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_ELF_SHDR                 0X00000020</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="multiboot_8h.html#a2d16dabdfdee01362c3457d06f0ff850">  119</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_MEM_MAP                  0x00000040</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="multiboot_8h.html#af2c5803d8cc6e1e8c00181ca546e68ab">  124</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_DRIVE_INFO               0x00000080</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="multiboot_8h.html#ad60e5b72325f5752e955879f3fbb44c3">  129</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_CONFIG_TABLE             0x00000100</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="multiboot_8h.html#a9743476d5f32c9ae22f6254a0e3ba11d">  134</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_BOOT_LOADER_NAME         0x00000200</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="multiboot_8h.html#aab73446f0cee2e9dc91f43eb9a0c806b">  139</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_APM_TABLE                0x00000400</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="multiboot_8h.html#a2b0229990b8df377e730a8625803304f">  144</a></span>&#160;<span class="preprocessor">#define MULTIBOOT_INFO_VIDEO_INFO               0x00000800</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="preprocessor">#ifndef ASM_FILE</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>          multiboot_uint16_t;</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>            multiboot_uint32_t;</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>      multiboot_uint64_t;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno"><a class="code" href="structmultiboot__header.html">  152</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmultiboot__header.html">multiboot_header</a></div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="structmultiboot__header.html">  152</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmultiboot__header.html">multiboot_header</a></div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;{</div>
-<div class="line"><a name="l00154"></a><span class="lineno"><a class="code" href="structmultiboot__header.html#a7fddee92e60ff58e159c6bf2c40bf29b">  154</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__header.html#a7fddee92e60ff58e159c6bf2c40bf29b">magic</a>; </div>
-<div class="line"><a name="l00156"></a><span class="lineno"><a class="code" href="structmultiboot__header.html#ab922f32c179ec7bde91519d19f27d95b">  156</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__header.html#ab922f32c179ec7bde91519d19f27d95b">flags</a>; </div>
-<div class="line"><a name="l00161"></a><span class="lineno"><a class="code" href="structmultiboot__header.html#a17e73abddfe8264c254767a20099038d">  161</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__header.html#a17e73abddfe8264c254767a20099038d">checksum</a>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="structmultiboot__header.html#a7fddee92e60ff58e159c6bf2c40bf29b">  154</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__header.html#a7fddee92e60ff58e159c6bf2c40bf29b">magic</a>; </div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="structmultiboot__header.html#ab922f32c179ec7bde91519d19f27d95b">  156</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__header.html#ab922f32c179ec7bde91519d19f27d95b">flags</a>; </div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="structmultiboot__header.html#a17e73abddfe8264c254767a20099038d">  161</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__header.html#a17e73abddfe8264c254767a20099038d">checksum</a>;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
-<div class="line"><a name="l00166"></a><span class="lineno"><a class="code" href="structmultiboot__header.html#a9718b2fc6ce29a37e9a209f92ab856e3">  166</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__header.html#a9718b2fc6ce29a37e9a209f92ab856e3">header_addr</a>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="structmultiboot__header.html#a9718b2fc6ce29a37e9a209f92ab856e3">  166</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__header.html#a9718b2fc6ce29a37e9a209f92ab856e3">header_addr</a>;</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        multiboot_uint32_t load_addr;</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        multiboot_uint32_t load_end_addr;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        multiboot_uint32_t bss_end_addr;</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        multiboot_uint32_t entry_addr;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
-<div class="line"><a name="l00175"></a><span class="lineno"><a class="code" href="structmultiboot__header.html#a4c90b7929342dd5aab7d08afa0906d28">  175</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__header.html#a4c90b7929342dd5aab7d08afa0906d28">mode_type</a>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="structmultiboot__header.html#a4c90b7929342dd5aab7d08afa0906d28">  175</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__header.html#a4c90b7929342dd5aab7d08afa0906d28">mode_type</a>;</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        multiboot_uint32_t width;</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        multiboot_uint32_t height;</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        multiboot_uint32_t depth;</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;};</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
-<div class="line"><a name="l00184"></a><span class="lineno"><a class="code" href="structmultiboot__aout__symbol__table.html">  184</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmultiboot__aout__symbol__table.html">multiboot_aout_symbol_table</a></div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="structmultiboot__aout__symbol__table.html">  184</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmultiboot__aout__symbol__table.html">multiboot_aout_symbol_table</a></div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;{</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        multiboot_uint32_t tabsize;</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        multiboot_uint32_t strsize;</div>
@@ -172,7 +173,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;};</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmultiboot__aout__symbol__table.html">multiboot_aout_symbol_table</a> <a class="code" href="structmultiboot__aout__symbol__table.html">multiboot_aout_symbol_table_t</a>;</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
-<div class="line"><a name="l00196"></a><span class="lineno"><a class="code" href="structmultiboot__elf__section__header__table.html">  196</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmultiboot__elf__section__header__table.html">multiboot_elf_section_header_table</a></div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="structmultiboot__elf__section__header__table.html">  196</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmultiboot__elf__section__header__table.html">multiboot_elf_section_header_table</a></div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;{</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        multiboot_uint32_t num;</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        multiboot_uint32_t size;</div>
@@ -181,16 +182,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;};</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmultiboot__elf__section__header__table.html">multiboot_elf_section_header_table</a> <a class="code" href="structmultiboot__elf__section__header__table.html">multiboot_elf_section_header_table_t</a>;</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00205"></a><span class="lineno"><a class="code" href="structmultiboot__info.html">  205</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmultiboot__info.html">multiboot_info</a></div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="structmultiboot__info.html">  205</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmultiboot__info.html">multiboot_info</a></div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;{</div>
-<div class="line"><a name="l00207"></a><span class="lineno"><a class="code" href="structmultiboot__info.html#aa562865bc325fd785c9fa4c5056294f3">  207</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#aa562865bc325fd785c9fa4c5056294f3">flags</a>; </div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="structmultiboot__info.html#aa562865bc325fd785c9fa4c5056294f3">  207</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#aa562865bc325fd785c9fa4c5056294f3">flags</a>; </div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="comment">/* Available memory from BIOS */</span></div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        multiboot_uint32_t mem_lower;</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        multiboot_uint32_t mem_upper;</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
-<div class="line"><a name="l00213"></a><span class="lineno"><a class="code" href="structmultiboot__info.html#ac7dd626a05c9ba62d55ea8a7a254de80">  213</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#ac7dd626a05c9ba62d55ea8a7a254de80">boot_device</a>; </div>
-<div class="line"><a name="l00215"></a><span class="lineno"><a class="code" href="structmultiboot__info.html#a0f2f05f69c69c615bf2b4820d357cf36">  215</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#a0f2f05f69c69c615bf2b4820d357cf36">cmdline</a>; </div>
-<div class="line"><a name="l00220"></a><span class="lineno"><a class="code" href="structmultiboot__info.html#aebdafce31f94277d138202f7b1ec35cc">  220</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#aebdafce31f94277d138202f7b1ec35cc">mods_count</a>;</div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="structmultiboot__info.html#ac7dd626a05c9ba62d55ea8a7a254de80">  213</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#ac7dd626a05c9ba62d55ea8a7a254de80">boot_device</a>; </div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="structmultiboot__info.html#a0f2f05f69c69c615bf2b4820d357cf36">  215</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#a0f2f05f69c69c615bf2b4820d357cf36">cmdline</a>; </div>
+<div class="line"><a name="l00220"></a><span class="lineno"><a class="line" href="structmultiboot__info.html#aebdafce31f94277d138202f7b1ec35cc">  220</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#aebdafce31f94277d138202f7b1ec35cc">mods_count</a>;</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        multiboot_uint32_t mods_addr;</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="keyword">union</span></div>
@@ -199,16 +200,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                 <a class="code" href="structmultiboot__elf__section__header__table.html">multiboot_elf_section_header_table_t</a> elf_sec;</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        } syms;</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
-<div class="line"><a name="l00232"></a><span class="lineno"><a class="code" href="structmultiboot__info.html#a86a0d881c5233a4b1c8cd690ccd19b75">  232</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#a86a0d881c5233a4b1c8cd690ccd19b75">mmap_length</a>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno"><a class="line" href="structmultiboot__info.html#a86a0d881c5233a4b1c8cd690ccd19b75">  232</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#a86a0d881c5233a4b1c8cd690ccd19b75">mmap_length</a>;</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        multiboot_uint32_t mmap_addr;</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
-<div class="line"><a name="l00238"></a><span class="lineno"><a class="code" href="structmultiboot__info.html#abe859eaa7e97309f072b3bc1caf5742e">  238</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#abe859eaa7e97309f072b3bc1caf5742e">drives_length</a>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno"><a class="line" href="structmultiboot__info.html#abe859eaa7e97309f072b3bc1caf5742e">  238</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#abe859eaa7e97309f072b3bc1caf5742e">drives_length</a>;</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        multiboot_uint32_t drives_addr;</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
-<div class="line"><a name="l00241"></a><span class="lineno"><a class="code" href="structmultiboot__info.html#a919ce01f85d05ab90857f8591dfb3948">  241</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#a919ce01f85d05ab90857f8591dfb3948">config_table</a>; </div>
-<div class="line"><a name="l00243"></a><span class="lineno"><a class="code" href="structmultiboot__info.html#a4442438f7c2da9c0cf87a94ffd1acc04">  243</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#a4442438f7c2da9c0cf87a94ffd1acc04">boot_loader_name</a>; </div>
-<div class="line"><a name="l00245"></a><span class="lineno"><a class="code" href="structmultiboot__info.html#ad4285d60142d241a9e6b68a03e62ee0a">  245</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#ad4285d60142d241a9e6b68a03e62ee0a">apm_table</a>; </div>
-<div class="line"><a name="l00250"></a><span class="lineno"><a class="code" href="structmultiboot__info.html#a06191cef73b64e9d64a01850547fd2e8">  250</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#a06191cef73b64e9d64a01850547fd2e8">vbe_control_info</a>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="structmultiboot__info.html#a919ce01f85d05ab90857f8591dfb3948">  241</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#a919ce01f85d05ab90857f8591dfb3948">config_table</a>; </div>
+<div class="line"><a name="l00243"></a><span class="lineno"><a class="line" href="structmultiboot__info.html#a4442438f7c2da9c0cf87a94ffd1acc04">  243</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#a4442438f7c2da9c0cf87a94ffd1acc04">boot_loader_name</a>; </div>
+<div class="line"><a name="l00245"></a><span class="lineno"><a class="line" href="structmultiboot__info.html#ad4285d60142d241a9e6b68a03e62ee0a">  245</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#ad4285d60142d241a9e6b68a03e62ee0a">apm_table</a>; </div>
+<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="structmultiboot__info.html#a06191cef73b64e9d64a01850547fd2e8">  250</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__info.html#a06191cef73b64e9d64a01850547fd2e8">vbe_control_info</a>;</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        multiboot_uint32_t vbe_mode_info;</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        multiboot_uint16_t vbe_mode;</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        multiboot_uint16_t vbe_interface_seg;</div>
@@ -217,38 +218,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;};</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmultiboot__info.html">multiboot_info</a> <a class="code" href="structmultiboot__info.html">multiboot_info_t</a>;</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;</div>
-<div class="line"><a name="l00259"></a><span class="lineno"><a class="code" href="structmultiboot__mmap__entry.html">  259</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmultiboot__mmap__entry.html">multiboot_mmap_entry</a></div>
+<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="structmultiboot__mmap__entry.html">  259</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmultiboot__mmap__entry.html">multiboot_mmap_entry</a></div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;{</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        multiboot_uint32_t size;</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        multiboot_uint64_t addr;</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        multiboot_uint64_t len;</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="preprocessor">        #define MULTIBOOT_MEMORY_AVAILABLE              1</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor"></span><span class="preprocessor">        #define MULTIBOOT_MEMORY_RESERVED               2</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="preprocessor"></span>        multiboot_uint32_t type;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor">        #define MULTIBOOT_MEMORY_RESERVED               2</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        multiboot_uint32_t type;</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;} __attribute__((packed));</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmultiboot__mmap__entry.html">multiboot_mmap_entry</a> <a class="code" href="structmultiboot__mmap__entry.html">multiboot_memory_map_t</a>;</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;</div>
-<div class="line"><a name="l00270"></a><span class="lineno"><a class="code" href="structmultiboot__mod__list.html">  270</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmultiboot__mod__list.html">multiboot_mod_list</a></div>
+<div class="line"><a name="l00270"></a><span class="lineno"><a class="line" href="structmultiboot__mod__list.html">  270</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmultiboot__mod__list.html">multiboot_mod_list</a></div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;{</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="comment">/* the memory used goes from bytes &#39;mod_start&#39; to &#39;mod_end-1&#39; inclusive */</span></div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        multiboot_uint32_t mod_start;</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        multiboot_uint32_t mod_end;</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
-<div class="line"><a name="l00276"></a><span class="lineno"><a class="code" href="structmultiboot__mod__list.html#a31365a9d2d0cae071f5cb8bddb9b33fb">  276</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__mod__list.html#a31365a9d2d0cae071f5cb8bddb9b33fb">cmdline</a>; </div>
-<div class="line"><a name="l00278"></a><span class="lineno"><a class="code" href="structmultiboot__mod__list.html#a63d98e6d313098a4d35b828e204a4e0c">  278</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__mod__list.html#a63d98e6d313098a4d35b828e204a4e0c">pad</a>; </div>
+<div class="line"><a name="l00276"></a><span class="lineno"><a class="line" href="structmultiboot__mod__list.html#a31365a9d2d0cae071f5cb8bddb9b33fb">  276</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__mod__list.html#a31365a9d2d0cae071f5cb8bddb9b33fb">cmdline</a>; </div>
+<div class="line"><a name="l00278"></a><span class="lineno"><a class="line" href="structmultiboot__mod__list.html#a63d98e6d313098a4d35b828e204a4e0c">  278</a></span>&#160;        multiboot_uint32_t <a class="code" href="structmultiboot__mod__list.html#a63d98e6d313098a4d35b828e204a4e0c">pad</a>; </div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;};</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmultiboot__mod__list.html">multiboot_mod_list</a> <a class="code" href="structmultiboot__mod__list.html">multiboot_module_t</a>;</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* ! ASM_FILE */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* ! MULTIBOOT_HEADER */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
+<div class="ttc" id="structmultiboot__aout__symbol__table_html"><div class="ttname"><a href="structmultiboot__aout__symbol__table.html">multiboot_aout_symbol_table</a></div><div class="ttdef"><b>Definition:</b> multiboot.h:184</div></div>
+<div class="ttc" id="structmultiboot__info_html_a4442438f7c2da9c0cf87a94ffd1acc04"><div class="ttname"><a href="structmultiboot__info.html#a4442438f7c2da9c0cf87a94ffd1acc04">multiboot_info::boot_loader_name</a></div><div class="ttdeci">multiboot_uint32_t boot_loader_name</div><div class="ttdef"><b>Definition:</b> multiboot.h:243</div></div>
+<div class="ttc" id="structmultiboot__header_html_a17e73abddfe8264c254767a20099038d"><div class="ttname"><a href="structmultiboot__header.html#a17e73abddfe8264c254767a20099038d">multiboot_header::checksum</a></div><div class="ttdeci">multiboot_uint32_t checksum</div><div class="ttdef"><b>Definition:</b> multiboot.h:161</div></div>
+<div class="ttc" id="structmultiboot__mod__list_html"><div class="ttname"><a href="structmultiboot__mod__list.html">multiboot_mod_list</a></div><div class="ttdef"><b>Definition:</b> multiboot.h:270</div></div>
+<div class="ttc" id="structmultiboot__info_html"><div class="ttname"><a href="structmultiboot__info.html">multiboot_info</a></div><div class="ttdef"><b>Definition:</b> multiboot.h:205</div></div>
+<div class="ttc" id="structmultiboot__header_html_a7fddee92e60ff58e159c6bf2c40bf29b"><div class="ttname"><a href="structmultiboot__header.html#a7fddee92e60ff58e159c6bf2c40bf29b">multiboot_header::magic</a></div><div class="ttdeci">multiboot_uint32_t magic</div><div class="ttdef"><b>Definition:</b> multiboot.h:154</div></div>
+<div class="ttc" id="structmultiboot__header_html_a9718b2fc6ce29a37e9a209f92ab856e3"><div class="ttname"><a href="structmultiboot__header.html#a9718b2fc6ce29a37e9a209f92ab856e3">multiboot_header::header_addr</a></div><div class="ttdeci">multiboot_uint32_t header_addr</div><div class="ttdef"><b>Definition:</b> multiboot.h:166</div></div>
+<div class="ttc" id="structmultiboot__mod__list_html_a63d98e6d313098a4d35b828e204a4e0c"><div class="ttname"><a href="structmultiboot__mod__list.html#a63d98e6d313098a4d35b828e204a4e0c">multiboot_mod_list::pad</a></div><div class="ttdeci">multiboot_uint32_t pad</div><div class="ttdef"><b>Definition:</b> multiboot.h:278</div></div>
+<div class="ttc" id="structmultiboot__info_html_ad4285d60142d241a9e6b68a03e62ee0a"><div class="ttname"><a href="structmultiboot__info.html#ad4285d60142d241a9e6b68a03e62ee0a">multiboot_info::apm_table</a></div><div class="ttdeci">multiboot_uint32_t apm_table</div><div class="ttdef"><b>Definition:</b> multiboot.h:245</div></div>
+<div class="ttc" id="structmultiboot__info_html_abe859eaa7e97309f072b3bc1caf5742e"><div class="ttname"><a href="structmultiboot__info.html#abe859eaa7e97309f072b3bc1caf5742e">multiboot_info::drives_length</a></div><div class="ttdeci">multiboot_uint32_t drives_length</div><div class="ttdef"><b>Definition:</b> multiboot.h:238</div></div>
+<div class="ttc" id="structmultiboot__header_html_ab922f32c179ec7bde91519d19f27d95b"><div class="ttname"><a href="structmultiboot__header.html#ab922f32c179ec7bde91519d19f27d95b">multiboot_header::flags</a></div><div class="ttdeci">multiboot_uint32_t flags</div><div class="ttdef"><b>Definition:</b> multiboot.h:156</div></div>
+<div class="ttc" id="structmultiboot__info_html_ac7dd626a05c9ba62d55ea8a7a254de80"><div class="ttname"><a href="structmultiboot__info.html#ac7dd626a05c9ba62d55ea8a7a254de80">multiboot_info::boot_device</a></div><div class="ttdeci">multiboot_uint32_t boot_device</div><div class="ttdef"><b>Definition:</b> multiboot.h:213</div></div>
+<div class="ttc" id="structmultiboot__info_html_aa562865bc325fd785c9fa4c5056294f3"><div class="ttname"><a href="structmultiboot__info.html#aa562865bc325fd785c9fa4c5056294f3">multiboot_info::flags</a></div><div class="ttdeci">multiboot_uint32_t flags</div><div class="ttdef"><b>Definition:</b> multiboot.h:207</div></div>
+<div class="ttc" id="structmultiboot__elf__section__header__table_html"><div class="ttname"><a href="structmultiboot__elf__section__header__table.html">multiboot_elf_section_header_table</a></div><div class="ttdef"><b>Definition:</b> multiboot.h:196</div></div>
+<div class="ttc" id="structmultiboot__info_html_a0f2f05f69c69c615bf2b4820d357cf36"><div class="ttname"><a href="structmultiboot__info.html#a0f2f05f69c69c615bf2b4820d357cf36">multiboot_info::cmdline</a></div><div class="ttdeci">multiboot_uint32_t cmdline</div><div class="ttdef"><b>Definition:</b> multiboot.h:215</div></div>
+<div class="ttc" id="structmultiboot__header_html_a4c90b7929342dd5aab7d08afa0906d28"><div class="ttname"><a href="structmultiboot__header.html#a4c90b7929342dd5aab7d08afa0906d28">multiboot_header::mode_type</a></div><div class="ttdeci">multiboot_uint32_t mode_type</div><div class="ttdef"><b>Definition:</b> multiboot.h:175</div></div>
+<div class="ttc" id="structmultiboot__info_html_aebdafce31f94277d138202f7b1ec35cc"><div class="ttname"><a href="structmultiboot__info.html#aebdafce31f94277d138202f7b1ec35cc">multiboot_info::mods_count</a></div><div class="ttdeci">multiboot_uint32_t mods_count</div><div class="ttdef"><b>Definition:</b> multiboot.h:220</div></div>
+<div class="ttc" id="structmultiboot__mmap__entry_html"><div class="ttname"><a href="structmultiboot__mmap__entry.html">multiboot_mmap_entry</a></div><div class="ttdef"><b>Definition:</b> multiboot.h:259</div></div>
+<div class="ttc" id="structmultiboot__mod__list_html_a31365a9d2d0cae071f5cb8bddb9b33fb"><div class="ttname"><a href="structmultiboot__mod__list.html#a31365a9d2d0cae071f5cb8bddb9b33fb">multiboot_mod_list::cmdline</a></div><div class="ttdeci">multiboot_uint32_t cmdline</div><div class="ttdef"><b>Definition:</b> multiboot.h:276</div></div>
+<div class="ttc" id="structmultiboot__info_html_a919ce01f85d05ab90857f8591dfb3948"><div class="ttname"><a href="structmultiboot__info.html#a919ce01f85d05ab90857f8591dfb3948">multiboot_info::config_table</a></div><div class="ttdeci">multiboot_uint32_t config_table</div><div class="ttdef"><b>Definition:</b> multiboot.h:241</div></div>
+<div class="ttc" id="structmultiboot__info_html_a06191cef73b64e9d64a01850547fd2e8"><div class="ttname"><a href="structmultiboot__info.html#a06191cef73b64e9d64a01850547fd2e8">multiboot_info::vbe_control_info</a></div><div class="ttdeci">multiboot_uint32_t vbe_control_info</div><div class="ttdef"><b>Definition:</b> multiboot.h:250</div></div>
+<div class="ttc" id="structmultiboot__info_html_a86a0d881c5233a4b1c8cd690ccd19b75"><div class="ttname"><a href="structmultiboot__info.html#a86a0d881c5233a4b1c8cd690ccd19b75">multiboot_info::mmap_length</a></div><div class="ttdeci">multiboot_uint32_t mmap_length</div><div class="ttdef"><b>Definition:</b> multiboot.h:232</div></div>
+<div class="ttc" id="structmultiboot__header_html"><div class="ttname"><a href="structmultiboot__header.html">multiboot_header</a></div><div class="ttdef"><b>Definition:</b> multiboot.h:152</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

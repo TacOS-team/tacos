@@ -1,5 +1,6 @@
 <map id="fat_decode_sfn_entry" name="fat_decode_sfn_entry">
-<area shape="rect" id="node3" href="$fat__outils_8c.html#a54dad60e76b8e913b497b0a903778093" title="fat_decode_short_file_name" alt="" coords="200,5,384,33"/>
-<area shape="rect" id="node5" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="259,55,325,83"/>
-<area shape="rect" id="node7" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="433,55,572,83"/>
+<area shape="rect" id="node2" href="$fat__outils_8c.html#a54dad60e76b8e913b497b0a903778093" title="fat_decode_short_file_name" alt="" coords="200,5,384,32"/>
+<area shape="rect" id="node3" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="259,56,325,83"/>
+<area shape="rect" id="node4" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="432,31,572,57"/>
+<area shape="rect" id="node5" href="$kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="467,81,537,108"/>
 </map>

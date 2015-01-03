@@ -1,11 +1,11 @@
 <map id="kernel/fs/fat/fat_internal.c" name="kernel/fs/fat/fat_internal.c">
-<area shape="rect" id="node3" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="124,161,220,189"/>
-<area shape="rect" id="node27" href="$fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="169,83,254,111"/>
+<area shape="rect" id="node3" href="$fat__internal_8h.html" title="fat_internal.h" alt="" coords="126,161,222,189"/>
+<area shape="rect" id="node27" href="$fat__outils_8h.html" title="Fonctions d&#39;aide pour le driver FAT." alt="" coords="173,83,256,111"/>
 <area shape="rect" id="node5" href="$types_8h.html" title="types.h" alt="" coords="178,547,240,575"/>
-<area shape="rect" id="node7" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="101,393,162,421"/>
-<area shape="rect" id="node13" href="$vfs_8h.html" title="Virtual File System." alt="" coords="194,238,245,266"/>
-<area shape="rect" id="node23" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="298,238,376,266"/>
+<area shape="rect" id="node7" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="102,393,164,421"/>
+<area shape="rect" id="node13" href="$vfs_8h.html" title="Virtual File System." alt="" coords="198,238,246,266"/>
+<area shape="rect" id="node23" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="300,238,374,266"/>
 <area shape="rect" id="node10" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="44,470,121,498"/>
 <area shape="rect" id="node16" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="297,315,377,343"/>
-<area shape="rect" id="node19" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="161,315,222,343"/>
+<area shape="rect" id="node19" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="164,315,222,343"/>
 </map>

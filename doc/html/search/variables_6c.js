@@ -8,6 +8,5 @@ var searchData=
   ['lines',['lines',['../structconsole__t.html#ada36635a93afd23c3eb88c856f218103',1,'console_t']]],
   ['link_5farray',['link_array',['../structlist__t.html#ae66525dffaeeeda67bd46d8c90fa2863',1,'list_t']]],
   ['lol',['lol',['../structkernel__options.html#aaf8b5378f13106d9ddbc9e392e7f0367',1,'kernel_options']]],
-  ['lookup',['lookup',['../struct__fs__instance__t.html#a820510562ecb31cbbf6b4fc8a4d2ce6a',1,'_fs_instance_t']]],
-  ['lowercase',['lowercase',['../structletter.html#af4289f944a89553b8145286331ca3bdd',1,'letter']]]
+  ['lookup',['lookup',['../struct__fs__instance__t.html#a820510562ecb31cbbf6b4fc8a4d2ce6a',1,'_fs_instance_t']]]
 ];

@@ -11,7 +11,7 @@ var searchData=
   ['light_5fmagenta',['LIGHT_MAGENTA',['../video_8h.html#af98a47a241abb10ccec0339c7a8a8c2e',1,'video.h']]],
   ['light_5fred',['LIGHT_RED',['../video_8h.html#a664c8f5b9d90f79a49a16960b9ccedba',1,'video.h']]],
   ['lines',['LINES',['../video_8h.html#a321ae946de24c36489276616d13c46cd',1,'video.h']]],
-  ['long_5fmax',['LONG_MAX',['../limits_8h.html#a50fece4db74f09568b2938db583c5655',1,'limits.h']]],
-  ['long_5fmin',['LONG_MIN',['../limits_8h.html#ae8a44c5a7436466221e0f3859d02420f',1,'limits.h']]],
+  ['long_5fmax',['LONG_MAX',['../kernel_2include_2klibc_2limits_8h.html#a50fece4db74f09568b2938db583c5655',1,'limits.h']]],
+  ['long_5fmin',['LONG_MIN',['../kernel_2include_2klibc_2limits_8h.html#ae8a44c5a7436466221e0f3859d02420f',1,'limits.h']]],
   ['lookup_5fparent',['LOOKUP_PARENT',['../vfs_8c.html#a63ed32a1a370c741228dad9092324038',1,'vfs.c']]]
 ];

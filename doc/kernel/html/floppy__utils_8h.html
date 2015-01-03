@@ -159,12 +159,8 @@ Fonctions</h2></td></tr>
 <tr class="memdesc:a0e012dd33083ef16c714cda568627983"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoi une commande au controleur floppy.  <a href="#a0e012dd33083ef16c714cda568627983"></a><br/></td></tr>
 <tr class="memitem:accc0dbdcd680cab9890db94a13067284"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__utils_8h.html#accc0dbdcd680cab9890db94a13067284">floppy_read_data</a> ()</td></tr>
 <tr class="memdesc:accc0dbdcd680cab9890db94a13067284"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lis les données disponibles sur la FIFO du controleur.  <a href="#accc0dbdcd680cab9890db94a13067284"></a><br/></td></tr>
-<tr class="memitem:aab49f8f343dc0a1f9c89ec5f5e444e0e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__utils_8h.html#aab49f8f343dc0a1f9c89ec5f5e444e0e">floppy_get_current_drive</a> ()</td></tr>
-<tr class="memdesc:aab49f8f343dc0a1f9c89ec5f5e444e0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le numero tu lecteur courrant.  <a href="#aab49f8f343dc0a1f9c89ec5f5e444e0e"></a><br/></td></tr>
-<tr class="memitem:a0f4c4c2b326322e490f1db0071ad1073"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__utils_8h.html#a0f4c4c2b326322e490f1db0071ad1073">floppy_set_current_drive</a> (<a class="el" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> drive)</td></tr>
-<tr class="memdesc:a0f4c4c2b326322e490f1db0071ad1073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Défini le lecteur courrant.  <a href="#a0f4c4c2b326322e490f1db0071ad1073"></a><br/></td></tr>
-<tr class="memitem:acf13f3cbd5df998eefb55cd2d15210c5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__utils_8h.html#acf13f3cbd5df998eefb55cd2d15210c5">floppy_seek</a> (int cylindre, int head)</td></tr>
-<tr class="memdesc:acf13f3cbd5df998eefb55cd2d15210c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplace la tête de lecture à un cylindre défini.  <a href="#acf13f3cbd5df998eefb55cd2d15210c5"></a><br/></td></tr>
+<tr class="memitem:a751e18d73696c87a576a9a24ac4fcfd3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__utils_8h.html#a751e18d73696c87a576a9a24ac4fcfd3">floppy_seek</a> (int drive, int cylindre, int head)</td></tr>
+<tr class="memdesc:a751e18d73696c87a576a9a24ac4fcfd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplace la tête de lecture à un cylindre défini.  <a href="#a751e18d73696c87a576a9a24ac4fcfd3"></a><br/></td></tr>
 <tr class="memitem:a5999e4ed8530afd23984eddeeef2ad60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__utils_8h.html#a5999e4ed8530afd23984eddeeef2ad60">floppy_get_type</a> (int drive)</td></tr>
 <tr class="memdesc:a5999e4ed8530afd23984eddeeef2ad60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le type de disquette accepté par le lecteur.  <a href="#a5999e4ed8530afd23984eddeeef2ad60"></a><br/></td></tr>
 <tr class="memitem:aa4a9a9bd28b1b9b857febc670b883517"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4a9a9bd28b1b9b857febc670b883517"></a>
@@ -185,31 +181,6 @@ LICENSE</h1>
 DESCRIPTION</h1>
 <p>Fonctions utilitaires du driver floppy </p>
 </div><h2>Documentation des fonctions</h2>
-<a class="anchor" id="aab49f8f343dc0a1f9c89ec5f5e444e0e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> floppy_get_current_drive </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Renvoie</dt><dd>numero du lecteur courrant </dd></dl>
-
-<p><div class="dynheader">
-Voici le graphe des appelants de cette fonction :</div>
-<div class="dyncontent">
-<div class="center"><img src="floppy__utils_8h_aab49f8f343dc0a1f9c89ec5f5e444e0e_icgraph.png" border="0" usemap="#floppy__utils_8h_aab49f8f343dc0a1f9c89ec5f5e444e0e_icgraph" alt=""/></div>
-<map name="floppy__utils_8h_aab49f8f343dc0a1f9c89ec5f5e444e0e_icgraph" id="floppy__utils_8h_aab49f8f343dc0a1f9c89ec5f5e444e0e_icgraph">
-<area shape="rect" id="node3" href="floppy_8h.html#a4b305e10e95fed92b047adfac6dc4881" title="Initilise le driver floppy." alt="" coords="191,5,268,33"/><area shape="rect" id="node5" href="floppy__motor_8h.html#a8e34854bf77e8b763e57b6a8986ecff5" title="Change l&#39;état du moteur." alt="" coords="183,55,276,83"/><area shape="rect" id="node7" href="floppy__utils_8h.html#acf13f3cbd5df998eefb55cd2d15210c5" title="Déplace la tête de lecture à un cylindre défini." alt="" coords="325,81,416,109"/></map>
-</div>
-</p>
-
-</div>
-</div>
 <a class="anchor" id="a5999e4ed8530afd23984eddeeef2ad60"></a>
 <div class="memitem">
 <div class="memproto">
@@ -236,7 +207,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="floppy__utils_8h_a5999e4ed8530afd23984eddeeef2ad60_icgraph.png" border="0" usemap="#floppy__utils_8h_a5999e4ed8530afd23984eddeeef2ad60_icgraph" alt=""/></div>
 <map name="floppy__utils_8h_a5999e4ed8530afd23984eddeeef2ad60_icgraph" id="floppy__utils_8h_a5999e4ed8530afd23984eddeeef2ad60_icgraph">
-<area shape="rect" id="node3" href="floppy_8h.html#a4b305e10e95fed92b047adfac6dc4881" title="Initilise le driver floppy." alt="" coords="197,5,275,33"/><area shape="rect" id="node5" href="floppy_8h.html#aa4a9a9bd28b1b9b857febc670b883517" title="Fonction de détection des lecteur floppy présents." alt="" coords="167,55,305,83"/></map>
+<area shape="rect" id="node3" href="floppy_8h.html#aa4a9a9bd28b1b9b857febc670b883517" title="Fonction de détection des lecteur floppy présents." alt="" coords="165,5,304,33"/></map>
 </div>
 </p>
 
@@ -286,7 +257,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="floppy__utils_8h_accc0dbdcd680cab9890db94a13067284_icgraph.png" border="0" usemap="#floppy__utils_8h_accc0dbdcd680cab9890db94a13067284_icgraph" alt=""/></div>
 <map name="floppy__utils_8h_accc0dbdcd680cab9890db94a13067284_icgraph" id="floppy__utils_8h_accc0dbdcd680cab9890db94a13067284_icgraph">
-<area shape="rect" id="node3" href="floppy__interrupt_8h.html#aa736fd868e99a0bde478ea3b5a836b04" title="Récupère des données d&#39;interruption." alt="" coords="175,55,324,83"/><area shape="rect" id="node9" href="floppy_8h.html#a54d322040af5e9281dc034336f286398" title="Retourne le numero de version du controleur disquette." alt="" coords="185,5,313,33"/><area shape="rect" id="node5" href="floppy_8h.html#a4b305e10e95fed92b047adfac6dc4881" title="Initilise le driver floppy." alt="" coords="380,5,457,33"/><area shape="rect" id="node7" href="floppy__utils_8h.html#acf13f3cbd5df998eefb55cd2d15210c5" title="Déplace la tête de lecture à un cylindre défini." alt="" coords="373,55,464,83"/></map>
+<area shape="rect" id="node3" href="floppy__interrupt_8h.html#aa736fd868e99a0bde478ea3b5a836b04" title="Récupère des données d&#39;interruption." alt="" coords="173,5,323,33"/><area shape="rect" id="node7" href="floppy_8h.html#a54d322040af5e9281dc034336f286398" title="Retourne le numero de version du controleur disquette." alt="" coords="185,55,311,83"/><area shape="rect" id="node5" href="floppy__utils_8h.html#a751e18d73696c87a576a9a24ac4fcfd3" title="Déplace la tête de lecture à un cylindre défini." alt="" coords="372,5,460,33"/></map>
 </div>
 </p>
 
@@ -311,19 +282,25 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="floppy__utils_8h_a1b528d56e03dda853060f541fa772847_icgraph.png" border="0" usemap="#floppy__utils_8h_a1b528d56e03dda853060f541fa772847_icgraph" alt=""/></div>
 <map name="floppy__utils_8h_a1b528d56e03dda853060f541fa772847_icgraph" id="floppy__utils_8h_a1b528d56e03dda853060f541fa772847_icgraph">
-<area shape="rect" id="node3" href="floppy__utils_8h.html#a0e012dd33083ef16c714cda568627983" title="Envoi une commande au controleur floppy." alt="" coords="147,55,301,83"/><area shape="rect" id="node16" href="floppy__utils_8h.html#accc0dbdcd680cab9890db94a13067284" title="Lis les données disponibles sur la FIFO du controleur." alt="" coords="165,106,283,134"/><area shape="rect" id="node5" href="floppy_8h.html#a4b305e10e95fed92b047adfac6dc4881" title="Initilise le driver floppy." alt="" coords="556,81,633,109"/><area shape="rect" id="node7" href="floppy__interrupt_8h.html#aa736fd868e99a0bde478ea3b5a836b04" title="Récupère des données d&#39;interruption." alt="" coords="351,81,500,109"/><area shape="rect" id="node10" href="floppy__utils_8h.html#acf13f3cbd5df998eefb55cd2d15210c5" title="Déplace la tête de lecture à un cylindre défini." alt="" coords="549,5,640,33"/><area shape="rect" id="node13" href="floppy_8h.html#a54d322040af5e9281dc034336f286398" title="Retourne le numero de version du controleur disquette." alt="" coords="361,131,489,159"/></map>
+<area shape="rect" id="node3" href="floppy__utils_8h.html#a0e012dd33083ef16c714cda568627983" title="Envoi une commande au controleur floppy." alt="" coords="148,23,300,51"/><area shape="rect" id="node12" href="floppy__utils_8h.html#accc0dbdcd680cab9890db94a13067284" title="Lis les données disponibles sur la FIFO du controleur." alt="" coords="165,73,283,101"/><area shape="rect" id="node5" href="floppy__interrupt_8h.html#aa736fd868e99a0bde478ea3b5a836b04" title="Récupère des données d&#39;interruption." alt="" coords="349,73,499,101"/><area shape="rect" id="node7" href="floppy__utils_8h.html#a751e18d73696c87a576a9a24ac4fcfd3" title="Déplace la tête de lecture à un cylindre défini." alt="" coords="548,23,636,51"/><area shape="rect" id="node10" href="floppy_8h.html#a54d322040af5e9281dc034336f286398" title="Retourne le numero de version du controleur disquette." alt="" coords="361,23,487,51"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="acf13f3cbd5df998eefb55cd2d15210c5"></a>
+<a class="anchor" id="a751e18d73696c87a576a9a24ac4fcfd3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int floppy_seek </td>
           <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>drive</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>cylindre</em>, </td>
         </tr>
@@ -342,6 +319,7 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><div class="memdoc">
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
+    <tr><td class="paramname">drive</td><td>numéro de drive </td></tr>
     <tr><td class="paramname">cylindre</td><td>numero du cylindre à atteindre </td></tr>
     <tr><td class="paramname">head</td><td>numero de la tête a déplacer </td></tr>
   </table>
@@ -352,33 +330,11 @@ Voici le graphe des appelants de cette fonction :</div>
 <p><div class="dynheader">
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
-<div class="center"><img src="floppy__utils_8h_acf13f3cbd5df998eefb55cd2d15210c5_cgraph.png" border="0" usemap="#floppy__utils_8h_acf13f3cbd5df998eefb55cd2d15210c5_cgraph" alt=""/></div>
-<map name="floppy__utils_8h_acf13f3cbd5df998eefb55cd2d15210c5_cgraph" id="floppy__utils_8h_acf13f3cbd5df998eefb55cd2d15210c5_cgraph">
-<area shape="rect" id="node3" href="floppy__utils_8c.html#aab49f8f343dc0a1f9c89ec5f5e444e0e" title="Retourne le numero tu lecteur courrant." alt="" coords="359,5,484,49"/><area shape="rect" id="node5" href="floppy__motor_8c.html#a8e34854bf77e8b763e57b6a8986ecff5" title="Change l&#39;état du moteur." alt="" coords="173,38,267,66"/><area shape="rect" id="node8" href="floppy__utils_8c.html#a0e012dd33083ef16c714cda568627983" title="Envoi une commande au controleur floppy." alt="" coords="344,139,499,167"/><area shape="rect" id="node12" href="floppy__interrupt_8c.html#a579397f7aad55a1eff3648712e9b1f5a" title="Attendre une interruption (XXX attente active)" alt="" coords="167,139,273,167"/><area shape="rect" id="node14" href="floppy__interrupt_8c.html#aa736fd868e99a0bde478ea3b5a836b04" title="Récupère des données d&#39;interruption." alt="" coords="145,190,295,218"/><area shape="rect" id="node10" href="floppy__utils_8c.html#a1b528d56e03dda853060f541fa772847" title="Vérifie si le controleur floppy est en état ready." alt="" coords="547,165,640,193"/><area shape="rect" id="node17" href="floppy__utils_8c.html#accc0dbdcd680cab9890db94a13067284" title="Lis les données disponibles sur la FIFO du controleur." alt="" coords="363,190,480,218"/></map>
+<div class="center"><img src="floppy__utils_8h_a751e18d73696c87a576a9a24ac4fcfd3_cgraph.png" border="0" usemap="#floppy__utils_8h_a751e18d73696c87a576a9a24ac4fcfd3_cgraph" alt=""/></div>
+<map name="floppy__utils_8h_a751e18d73696c87a576a9a24ac4fcfd3_cgraph" id="floppy__utils_8h_a751e18d73696c87a576a9a24ac4fcfd3_cgraph">
+<area shape="rect" id="node3" href="floppy__motor_8c.html#a898833517cf74583ac034d3e8bde709d" title="Change l&#39;état du moteur." alt="" coords="172,5,265,33"/><area shape="rect" id="node5" href="floppy__utils_8c.html#a0e012dd33083ef16c714cda568627983" title="Envoi une commande au controleur floppy." alt="" coords="343,106,495,134"/><area shape="rect" id="node9" href="floppy__interrupt_8c.html#a579397f7aad55a1eff3648712e9b1f5a" title="Attendre une interruption (XXX attente active)" alt="" coords="165,106,272,134"/><area shape="rect" id="node11" href="floppy__interrupt_8c.html#aa736fd868e99a0bde478ea3b5a836b04" title="Récupère des données d&#39;interruption." alt="" coords="144,157,293,185"/><area shape="rect" id="node7" href="floppy__utils_8c.html#a1b528d56e03dda853060f541fa772847" title="Vérifie si le controleur floppy est en état ready." alt="" coords="544,131,637,159"/><area shape="rect" id="node14" href="floppy__utils_8c.html#accc0dbdcd680cab9890db94a13067284" title="Lis les données disponibles sur la FIFO du controleur." alt="" coords="360,157,477,185"/></map>
 </div>
 </p>
-
-</div>
-</div>
-<a class="anchor" id="a0f4c4c2b326322e490f1db0071ad1073"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void floppy_set_current_drive </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
-          <td class="paramname"><em>drive</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">drive</td><td>numero du lecteur à passer en lecteur courrant </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -417,7 +373,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="floppy__utils_8h_a0e012dd33083ef16c714cda568627983_icgraph.png" border="0" usemap="#floppy__utils_8h_a0e012dd33083ef16c714cda568627983_icgraph" alt=""/></div>
 <map name="floppy__utils_8h_a0e012dd33083ef16c714cda568627983_icgraph" id="floppy__utils_8h_a0e012dd33083ef16c714cda568627983_icgraph">
-<area shape="rect" id="node3" href="floppy_8h.html#a4b305e10e95fed92b047adfac6dc4881" title="Initilise le driver floppy." alt="" coords="415,25,492,53"/><area shape="rect" id="node5" href="floppy__interrupt_8h.html#aa736fd868e99a0bde478ea3b5a836b04" title="Récupère des données d&#39;interruption." alt="" coords="209,76,359,104"/><area shape="rect" id="node8" href="floppy__utils_8h.html#acf13f3cbd5df998eefb55cd2d15210c5" title="Déplace la tête de lecture à un cylindre défini." alt="" coords="408,101,499,129"/><area shape="rect" id="node11" href="floppy_8h.html#a54d322040af5e9281dc034336f286398" title="Retourne le numero de version du controleur disquette." alt="" coords="220,25,348,53"/></map>
+<area shape="rect" id="node3" href="floppy__interrupt_8h.html#aa736fd868e99a0bde478ea3b5a836b04" title="Récupère des données d&#39;interruption." alt="" coords="208,5,357,33"/><area shape="rect" id="node5" href="floppy__utils_8h.html#a751e18d73696c87a576a9a24ac4fcfd3" title="Déplace la tête de lecture à un cylindre défini." alt="" coords="407,30,495,58"/><area shape="rect" id="node8" href="floppy_8h.html#a54d322040af5e9281dc034336f286398" title="Retourne le numero de version du controleur disquette." alt="" coords="220,106,345,134"/></map>
 </div>
 </p>
 
@@ -426,7 +382,7 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:17 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 8 2014 09:54:15 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

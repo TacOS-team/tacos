@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['fclose',['fclose',['../stdio_8h.html#ac41a0ad4b31be2ad59d8222a0de30bda',1,'fclose(FILE *fd):&#160;fclose.c'],['../fclose_8c.html#a76370407f9ab0402564c2bb9bc9664e0',1,'fclose(FILE *stream):&#160;fclose.c']]],
   ['fcntl',['fcntl',['../fcntl_8c.html#a5752d6571b615f1b7b1b0f719c2bc69d',1,'fcntl(int fd, unsigned int request, void *data):&#160;fcntl.c'],['../fcntl_8h.html#a5752d6571b615f1b7b1b0f719c2bc69d',1,'fcntl(int fd, unsigned int request, void *data):&#160;fcntl.c']]],
   ['feof',['feof',['../stdio_8h.html#a9e71f513ad2496acb5361aedc065e3d8',1,'ferr.c']]],
   ['ferror',['ferror',['../stdio_8h.html#a4a98383bb54291c2abede7aa28acf597',1,'ferr.c']]],

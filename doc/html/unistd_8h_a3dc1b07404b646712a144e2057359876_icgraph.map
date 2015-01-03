@@ -1,3 +1,5 @@
 <map id="stat" name="stat">
-<area shape="rect" id="node3" href="$stdio_8h.html#a02b13b56a188401119ea4da43c184913" title="Supprimer un fichier ou répertoire." alt="" coords="100,5,164,33"/>
+<area shape="rect" id="node2" href="$dirent_8h.html#ad09dd96447776d2bc5d8321e4b499591" title="opendir" alt="" coords="98,5,162,32"/>
+<area shape="rect" id="node4" href="$stdio_8h.html#a02b13b56a188401119ea4da43c184913" title="Supprimer un fichier ou répertoire. " alt="" coords="97,56,163,83"/>
+<area shape="rect" id="node3" href="$unistd_8c.html#a03af571dfb595681bfa203c83385c07b" title="Change le current working directory. " alt="" coords="211,5,261,32"/>
 </map>

@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/utils/hashmap.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,35 +90,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier hashmap.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="hashmap_8h_source.html">hashmap.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="hashmap_8h_source.html">hashmap.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de hashmap.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="hashmap_8c__incl.png" border="0" usemap="#kernel_2utils_2hashmap_8c" alt=""/></div>
 <map name="kernel_2utils_2hashmap_8c" id="kernel_2utils_2hashmap_8c">
-<area shape="rect" id="node3" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="5,83,83,111"/><area shape="rect" id="node7" href="hashmap_8h.html" title="hashmap.h" alt="" coords="107,83,192,111"/><area shape="rect" id="node5" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="13,161,75,189"/></map>
+<area shape="rect" id="node2" href="kmalloc_8h.html" title="Allocateur mémoire en kernel space. " alt="" coords="5,80,83,107"/><area shape="rect" id="node4" href="hashmap_8h.html" title="hashmap.h" alt="" coords="107,80,192,107"/><area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="13,155,75,181"/></map>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a81cd9ee5f00b62bf3103612cd87d8a5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashmap_8c.html#a81cd9ee5f00b62bf3103612cd87d8a5d">hashmap_create</a> (int size, int(*equal)(struct hashmap_key_t *, struct hashmap_key_t *), int(*hash)(struct hashmap_key_t *))</td></tr>
+<tr class="separator:a81cd9ee5f00b62bf3103612cd87d8a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c25525e8b6599bcafda45b74dcac19d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashmap_8c.html#a0c25525e8b6599bcafda45b74dcac19d">hashmap_set</a> (<a class="el" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a> *this, struct hashmap_key_t *key, struct hashmap_value_t *value)</td></tr>
+<tr class="separator:a0c25525e8b6599bcafda45b74dcac19d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3866ef4f62955d2803f96170ab2fa9e"><td class="memItemLeft" align="right" valign="top">struct hashmap_value_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashmap_8c.html#ae3866ef4f62955d2803f96170ab2fa9e">hashmap_remove</a> (<a class="el" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a> *this, struct hashmap_key_t *key)</td></tr>
+<tr class="separator:ae3866ef4f62955d2803f96170ab2fa9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37bdba9503b86db73e6067b97b858dbd"><td class="memItemLeft" align="right" valign="top">struct hashmap_value_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashmap_8c.html#a37bdba9503b86db73e6067b97b858dbd">hashmap_get</a> (<a class="el" href="hashmap_8h.html#accc61a2ac7ac10813e1bfa84d0ab2cf6">hashmap_t</a> *this, struct hashmap_key_t *key)</td></tr>
+<tr class="separator:a37bdba9503b86db73e6067b97b858dbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
-<p>Copyright (C) 2010, 2011, 2012, 2013 - TacOS developers.</p>
+<p>Copyright (C) 2010-2014 TacOS developers.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 <p>Hashmap générique. Des tests un peu plus poussés sont à faire. </p>
-</div><h2>Documentation des fonctions</h2>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a81cd9ee5f00b62bf3103612cd87d8a5d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -163,7 +168,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d_cgraph.png" border="0" usemap="#hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d_cgraph" alt=""/></div>
 <map name="hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d_cgraph" id="hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d_cgraph">
-<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="173,5,240,33"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="289,5,428,33"/></map>
+<area shape="rect" id="node2" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="172,31,239,57"/><area shape="rect" id="node3" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="287,5,427,32"/><area shape="rect" id="node4" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="322,56,391,83"/></map>
 </div>
 </p>
 
@@ -172,7 +177,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d_icgraph.png" border="0" usemap="#hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d_icgraph" alt=""/></div>
 <map name="hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d_icgraph" id="hashmap_8c_a81cd9ee5f00b62bf3103612cd87d8a5d_icgraph">
-<area shape="rect" id="node3" href="dcache_8h.html#a6a634167e657e519cadf44eb6e6b9068" title="dcache_init" alt="" coords="173,5,261,33"/><area shape="rect" id="node5" href="vfs_8c.html#a2e2b9554ca8721b61981dff16a7b54ad" title="vfs_init" alt="" coords="309,5,373,33"/></map>
+<area shape="rect" id="node3" href="dcache_8h.html#a6a634167e657e519cadf44eb6e6b9068" title="dcache_init" alt="" coords="171,5,259,33"/><area shape="rect" id="node5" href="vfs_8c.html#a2e2b9554ca8721b61981dff16a7b54ad" title="vfs_init" alt="" coords="308,5,369,33"/></map>
 </div>
 </p>
 
@@ -181,9 +186,6 @@ Voici le graphe des appelants de cette fonction :</div>
 <a class="anchor" id="a37bdba9503b86db73e6067b97b858dbd"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">struct hashmap_value_t* hashmap_get </td>
@@ -203,11 +205,6 @@ Voici le graphe des appelants de cette fonction :</div>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Lit un élément de la hashmap.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
@@ -224,7 +221,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="hashmap_8c_a37bdba9503b86db73e6067b97b858dbd_icgraph.png" border="0" usemap="#hashmap_8c_a37bdba9503b86db73e6067b97b858dbd_icgraph" alt=""/></div>
 <map name="hashmap_8c_a37bdba9503b86db73e6067b97b858dbd_icgraph" id="hashmap_8c_a37bdba9503b86db73e6067b97b858dbd_icgraph">
-<area shape="rect" id="node3" href="dcache_8h.html#a4ba65ffaa114e5eb940fa446292f08da" title="dcache_get" alt="" coords="156,5,244,33"/></map>
+<area shape="rect" id="node3" href="dcache_8h.html#a4ba65ffaa114e5eb940fa446292f08da" title="dcache_get" alt="" coords="153,5,241,33"/></map>
 </div>
 </p>
 
@@ -233,9 +230,6 @@ Voici le graphe des appelants de cette fonction :</div>
 <a class="anchor" id="ae3866ef4f62955d2803f96170ab2fa9e"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">struct hashmap_value_t* hashmap_remove </td>
@@ -255,11 +249,6 @@ Voici le graphe des appelants de cette fonction :</div>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Supprime un élément de la hashmap. Attention, seule la cellule est freed.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
@@ -276,7 +265,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e_cgraph.png" border="0" usemap="#hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e_cgraph" alt=""/></div>
 <map name="hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e_cgraph" id="hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e_cgraph">
-<area shape="rect" id="node3" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="179,5,229,33"/></map>
+<area shape="rect" id="node3" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="176,5,227,33"/></map>
 </div>
 </p>
 
@@ -285,7 +274,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e_icgraph.png" border="0" usemap="#hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e_icgraph" alt=""/></div>
 <map name="hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e_icgraph" id="hashmap_8c_ae3866ef4f62955d2803f96170ab2fa9e_icgraph">
-<area shape="rect" id="node3" href="dcache_8h.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="179,106,293,134"/><area shape="rect" id="node5" href="vfs_8c.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert." alt="" coords="344,55,421,83"/><area shape="rect" id="node13" href="vfs_8c.html#a4f8b6a1f2b0e6012446196f18b33d686" title="Suppression d&#39;un noeud." alt="" coords="343,106,423,134"/><area shape="rect" id="node17" href="vfs_8c.html#a8f5dc4e5e4a2aa5d7649790256f11685" title="Suppression d&#39;un dossier." alt="" coords="345,157,420,185"/><area shape="rect" id="node7" href="kfcntl_8c.html#adc12a443121c63ad99a6311aa2739884" title="Ferme tous les file descriptors ouverts." alt="" coords="507,5,597,33"/><area shape="rect" id="node11" href="kfcntl_8c.html#a3a5f4c56fd3fcc2b69757102f722fc29" title="SYSCALL_HANDLER2" alt="" coords="472,55,632,83"/><area shape="rect" id="node9" href="kprocess_8c.html#acc70870c5d5807f03b0a58bd1e160f6f" title="Syscall appelé lors de la fin d&#39;exécution d&#39;un process." alt="" coords="680,5,840,33"/><area shape="rect" id="node15" href="kunistd_8c.html#a99434c0e561b0e99c4ef081ae5773703" title="SYSCALL_HANDLER2" alt="" coords="472,106,632,134"/><area shape="rect" id="node19" href="kdirent_8c.html#ad690af967ba8e26d8ac3e48b8353eacc" title="SYSCALL_HANDLER2" alt="" coords="472,157,632,185"/></map>
+<area shape="rect" id="node2" href="dcache_8h.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="179,107,293,133"/><area shape="rect" id="node3" href="vfs_8c.html#ab0c805d30412c7b434adf437a404ce6a" title="Fermeture d&#39;un fichier ouvert. " alt="" coords="343,56,421,83"/><area shape="rect" id="node7" href="vfs_8c.html#a4f8b6a1f2b0e6012446196f18b33d686" title="Suppression d&#39;un noeud. " alt="" coords="341,107,423,133"/><area shape="rect" id="node9" href="vfs_8c.html#a8f5dc4e5e4a2aa5d7649790256f11685" title="Suppression d&#39;un dossier. " alt="" coords="344,157,420,184"/><area shape="rect" id="node4" href="kfcntl_8c.html#adc12a443121c63ad99a6311aa2739884" title="Ferme tous les file descriptors ouverts. " alt="" coords="505,5,596,32"/><area shape="rect" id="node6" href="kfcntl_8c.html#a3a5f4c56fd3fcc2b69757102f722fc29" title="SYSCALL_HANDLER2" alt="" coords="471,56,631,83"/><area shape="rect" id="node5" href="kprocess_8c.html#acc70870c5d5807f03b0a58bd1e160f6f" title="Syscall appelé lors de la fin d&#39;exécution d&#39;un process. " alt="" coords="679,5,839,32"/><area shape="rect" id="node8" href="kunistd_8c.html#a99434c0e561b0e99c4ef081ae5773703" title="SYSCALL_HANDLER2" alt="" coords="471,107,631,133"/><area shape="rect" id="node10" href="kdirent_8c.html#ad690af967ba8e26d8ac3e48b8353eacc" title="SYSCALL_HANDLER2" alt="" coords="471,157,631,184"/></map>
 </div>
 </p>
 
@@ -335,7 +324,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d_cgraph.png" border="0" usemap="#hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d_cgraph" alt=""/></div>
 <map name="hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d_cgraph" id="hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d_cgraph">
-<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="155,5,221,33"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="271,5,409,33"/></map>
+<area shape="rect" id="node2" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="153,31,220,57"/><area shape="rect" id="node3" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="268,5,408,32"/><area shape="rect" id="node4" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="303,56,373,83"/></map>
 </div>
 </p>
 
@@ -344,7 +333,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d_icgraph.png" border="0" usemap="#hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d_icgraph" alt=""/></div>
 <map name="hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d_icgraph" id="hashmap_8c_a0c25525e8b6599bcafda45b74dcac19d_icgraph">
-<area shape="rect" id="node3" href="dcache_8h.html#a4f122b8158ba9f2044fda159f8ff0680" title="dcache_set" alt="" coords="156,5,244,33"/></map>
+<area shape="rect" id="node3" href="dcache_8h.html#a4f122b8158ba9f2044fda159f8ff0680" title="dcache_set" alt="" coords="152,5,240,33"/></map>
 </div>
 </p>
 
@@ -353,9 +342,9 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:40 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:32 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

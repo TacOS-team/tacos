@@ -1,23 +1,25 @@
 \hypertarget{kfcntl_8h}{\section{Référence du fichier kernel/include/kfcntl.h}
-\label{kfcntl_8h}\index{kernel/include/kfcntl.\-h@{kernel/include/kfcntl.\-h}}
+\label{kfcntl_8h}\index{kernel/include/kfcntl.\+h@{kernel/include/kfcntl.\+h}}
 }
 
 
 Kernel file control operations.  
 
 
-{\ttfamily \#include $<$types.\-h$>$}\\*
-{\ttfamily \#include $<$fd\-\_\-types.\-h$>$}\\*
-{\ttfamily \#include $<$kprocess.\-h$>$}\\*
-{\ttfamily \#include $<$ksyscall.\-h$>$}\\*
-Graphe des dépendances par inclusion de kfcntl.\-h\-:\nopagebreak
+{\ttfamily \#include $<$types.\+h$>$}\\*
+{\ttfamily \#include $<$fd\+\_\+types.\+h$>$}\\*
+{\ttfamily \#include $<$kprocess.\+h$>$}\\*
+{\ttfamily \#include $<$ksyscall.\+h$>$}\\*
+Graphe des dépendances par inclusion de kfcntl.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{kfcntl_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -27,142 +29,141 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{kfcntl_8h_a4dc4d45e07d2abc899bcaf04b2846a87}{O\-\_\-\-A\-C\-C\-M\-O\-D\-E}~00000003
+\#define \hyperlink{kfcntl_8h_a4dc4d45e07d2abc899bcaf04b2846a87}{O\+\_\+\+A\+C\+C\+M\+O\+D\+E}~00000003
 \item 
-\#define \hyperlink{kfcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}{O\-\_\-\-R\-D\-O\-N\-L\-Y}~00000000
+\#define \hyperlink{kfcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}{O\+\_\+\+R\+D\+O\+N\+L\+Y}~00000000
 \item 
-\#define \hyperlink{kfcntl_8h_a11b644a8526139c4cc1850dac1271ced}{O\-\_\-\-W\-R\-O\-N\-L\-Y}~00000001
+\#define \hyperlink{kfcntl_8h_a11b644a8526139c4cc1850dac1271ced}{O\+\_\+\+W\+R\+O\+N\+L\+Y}~00000001
 \item 
-\#define \hyperlink{kfcntl_8h_abb0586253488ee61072b73557eeb873b}{O\-\_\-\-R\-D\-W\-R}~00000002
+\#define \hyperlink{kfcntl_8h_abb0586253488ee61072b73557eeb873b}{O\+\_\+\+R\+D\+W\+R}~00000002
 \item 
-\#define \hyperlink{kfcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}{O\-\_\-\-C\-R\-E\-A\-T}~00000100
+\#define \hyperlink{kfcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}{O\+\_\+\+C\+R\+E\+A\+T}~00000100
 \item 
-\hypertarget{kfcntl_8h_a9f5acfe79fafe14b6694447bd0e9f10b}{\#define {\bfseries O\-\_\-\-E\-X\-C\-L}~00000200 /$\ast$ not \hyperlink{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d}{fcntl} $\ast$/}\label{kfcntl_8h_a9f5acfe79fafe14b6694447bd0e9f10b}
+\hypertarget{kfcntl_8h_a9f5acfe79fafe14b6694447bd0e9f10b}{\#define {\bfseries O\+\_\+\+E\+X\+C\+L}~00000200 /$\ast$ not \hyperlink{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d}{fcntl} $\ast$/}\label{kfcntl_8h_a9f5acfe79fafe14b6694447bd0e9f10b}
 
 \item 
-\hypertarget{kfcntl_8h_a2e375ab32c7ef4581b026be28e4cc116}{\#define {\bfseries O\-\_\-\-N\-O\-C\-T\-T\-Y}~00000400 /$\ast$ not \hyperlink{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d}{fcntl} $\ast$/}\label{kfcntl_8h_a2e375ab32c7ef4581b026be28e4cc116}
+\hypertarget{kfcntl_8h_a2e375ab32c7ef4581b026be28e4cc116}{\#define {\bfseries O\+\_\+\+N\+O\+C\+T\+T\+Y}~00000400 /$\ast$ not \hyperlink{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d}{fcntl} $\ast$/}\label{kfcntl_8h_a2e375ab32c7ef4581b026be28e4cc116}
 
 \item 
-\#define \hyperlink{kfcntl_8h_ad1d67e453fb3031f40f8cd3403773813}{O\-\_\-\-T\-R\-U\-N\-C}~00001000
+\#define \hyperlink{kfcntl_8h_ad1d67e453fb3031f40f8cd3403773813}{O\+\_\+\+T\+R\+U\+N\+C}~00001000
 \item 
-\#define \hyperlink{kfcntl_8h_ae036f789407d21f07b211552d67b3214}{O\-\_\-\-A\-P\-P\-E\-N\-D}~00002000
+\#define \hyperlink{kfcntl_8h_ae036f789407d21f07b211552d67b3214}{O\+\_\+\+A\+P\+P\+E\+N\+D}~00002000
 \item 
-\#define \hyperlink{kfcntl_8h_a39d33ce33804efd4d52606d59071c6d8}{O\-\_\-\-N\-O\-N\-B\-L\-O\-C\-K}~00004000
+\#define \hyperlink{kfcntl_8h_a39d33ce33804efd4d52606d59071c6d8}{O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K}~00004000
 \item 
-\#define \hyperlink{kfcntl_8h_aae85139bfa94236d126bb1e3b772998f}{O\-\_\-\-S\-Y\-N\-C}~00010000
+\#define \hyperlink{kfcntl_8h_aae85139bfa94236d126bb1e3b772998f}{O\+\_\+\+S\+Y\+N\+C}~00010000
 \item 
-\hypertarget{kfcntl_8h_a1c28a43c30721462ad7e40f37051c9ca}{\#define {\bfseries F\-A\-S\-Y\-N\-C}~00020000 /$\ast$ \hyperlink{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d}{fcntl}, for B\-S\-D compatibility $\ast$/}\label{kfcntl_8h_a1c28a43c30721462ad7e40f37051c9ca}
+\hypertarget{kfcntl_8h_a1c28a43c30721462ad7e40f37051c9ca}{\#define {\bfseries F\+A\+S\+Y\+N\+C}~00020000 /$\ast$ \hyperlink{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d}{fcntl}, for B\+S\+D compatibility $\ast$/}\label{kfcntl_8h_a1c28a43c30721462ad7e40f37051c9ca}
 
 \item 
-\#define \hyperlink{kfcntl_8h_ad28ccbf6f0a42c91c160ac5ada0c8429}{O\-\_\-\-D\-I\-R\-E\-C\-T}~00040000
+\#define \hyperlink{kfcntl_8h_ad28ccbf6f0a42c91c160ac5ada0c8429}{O\+\_\+\+D\+I\+R\+E\+C\+T}~00040000
 \item 
-\#define \hyperlink{kfcntl_8h_a6afd3dd2f570069804b40e6aa24fc966}{O\-\_\-\-D\-I\-R\-E\-C\-T\-O\-R\-Y}~00200000
+\#define \hyperlink{kfcntl_8h_a6afd3dd2f570069804b40e6aa24fc966}{O\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y}~00200000
 \item 
-\#define \hyperlink{kfcntl_8h_a82d4d551b214905742c9e045185d352a}{O\-\_\-\-N\-O\-F\-O\-L\-L\-O\-W}~00400000
+\#define \hyperlink{kfcntl_8h_a82d4d551b214905742c9e045185d352a}{O\+\_\+\+N\+O\+F\+O\+L\+L\+O\+W}~00400000
 \item 
-\hypertarget{kfcntl_8h_a476bb0c47c4ceb1669c15c2635c94300}{\#define {\bfseries O\-\_\-\-N\-O\-A\-T\-I\-M\-E}~01000000}\label{kfcntl_8h_a476bb0c47c4ceb1669c15c2635c94300}
+\hypertarget{kfcntl_8h_a476bb0c47c4ceb1669c15c2635c94300}{\#define {\bfseries O\+\_\+\+N\+O\+A\+T\+I\+M\+E}~01000000}\label{kfcntl_8h_a476bb0c47c4ceb1669c15c2635c94300}
 
 \item 
-\#define \hyperlink{kfcntl_8h_ad6d8fbe4e494b4dbe051612572d3f757}{O\-\_\-\-C\-L\-O\-E\-X\-E\-C}~02000000
+\#define \hyperlink{kfcntl_8h_ad6d8fbe4e494b4dbe051612572d3f757}{O\+\_\+\+C\+L\+O\+E\+X\+E\+C}~02000000
 \item 
-\hypertarget{kfcntl_8h_af2939853c650561d3495ed40f68f6249}{\#define {\bfseries F\-\_\-\-S\-E\-T\-F\-L}~4}\label{kfcntl_8h_af2939853c650561d3495ed40f68f6249}
+\hypertarget{kfcntl_8h_af2939853c650561d3495ed40f68f6249}{\#define {\bfseries F\+\_\+\+S\+E\+T\+F\+L}~4}\label{kfcntl_8h_af2939853c650561d3495ed40f68f6249}
 
 \item 
-\hypertarget{kfcntl_8h_a025fad21a889c79f02ec53abe3526c32}{\#define {\bfseries F\-\_\-\-G\-E\-T\-F\-L}~5}\label{kfcntl_8h_a025fad21a889c79f02ec53abe3526c32}
+\hypertarget{kfcntl_8h_a025fad21a889c79f02ec53abe3526c32}{\#define {\bfseries F\+\_\+\+G\+E\+T\+F\+L}~5}\label{kfcntl_8h_a025fad21a889c79f02ec53abe3526c32}
 
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{kfcntl_8h_a5cb8d11eeb6842f49090696dbda4490b}{init\-\_\-stdfd} (\hyperlink{structprocess__t}{process\-\_\-t} $\ast$new\-\_\-proc)
+void \hyperlink{kfcntl_8h_a5cb8d11eeb6842f49090696dbda4490b}{init\+\_\+stdfd} (\hyperlink{kprocess_8h_a7742ed3a86b7bcb5a4b76893fc331ede}{process\+\_\+t} $\ast$new\+\_\+proc)
 \begin{DoxyCompactList}\small\item\em Initialise les descripteurs de fichiers standards. \end{DoxyCompactList}\item 
-\hypertarget{kfcntl_8h_adc12a443121c63ad99a6311aa2739884}{void \hyperlink{kfcntl_8h_adc12a443121c63ad99a6311aa2739884}{close\-\_\-all\-\_\-fd} ()}\label{kfcntl_8h_adc12a443121c63ad99a6311aa2739884}
+\hypertarget{kfcntl_8h_adc12a443121c63ad99a6311aa2739884}{void \hyperlink{kfcntl_8h_adc12a443121c63ad99a6311aa2739884}{close\+\_\+all\+\_\+fd} ()}\label{kfcntl_8h_adc12a443121c63ad99a6311aa2739884}
 
 \begin{DoxyCompactList}\small\item\em Ferme tous les file descriptors ouverts. \end{DoxyCompactList}\item 
-\hyperlink{kfcntl_8h_aa1d225acb87c04ac8d56c8096f587a03}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-open, int $\ast$fd\-\_\-id, char $\ast$path, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} flags)
+\hyperlink{kfcntl_8h_aa1d225acb87c04ac8d56c8096f587a03}{S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R3} (sys\+\_\+open, int $\ast$fd\+\_\+id, char $\ast$path, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\+\_\+t} flags)
 \item 
-\hyperlink{kfcntl_8h_a3a5f4c56fd3fcc2b69757102f722fc29}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2} (sys\-\_\-close, int fd\-\_\-id, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\-\_\-t} $\ast$ret)
+\hyperlink{kfcntl_8h_a3a5f4c56fd3fcc2b69757102f722fc29}{S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R2} (sys\+\_\+close, int fd\+\_\+id, \hyperlink{kernel_2include_2types_8h_a33594304e786b158f3fb30289278f5af}{uint32\+\_\+t} $\ast$ret)
 \item 
-\hyperlink{kfcntl_8h_a7c5292eb7af1637f45a0512c58c58cbc}{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3} (sys\-\_\-fcntl, int $\ast$fd\-\_\-id, unsigned int request, void $\ast$data)
+\hyperlink{kfcntl_8h_a7c5292eb7af1637f45a0512c58c58cbc}{S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R3} (sys\+\_\+fcntl, int $\ast$fd\+\_\+id, unsigned int request, void $\ast$data)
 \end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 
 
 \subsection{Documentation des macros}
-\hypertarget{kfcntl_8h_a4dc4d45e07d2abc899bcaf04b2846a87}{\index{kfcntl.\-h@{kfcntl.\-h}!O\-\_\-\-A\-C\-C\-M\-O\-D\-E@{O\-\_\-\-A\-C\-C\-M\-O\-D\-E}}
-\index{O\-\_\-\-A\-C\-C\-M\-O\-D\-E@{O\-\_\-\-A\-C\-C\-M\-O\-D\-E}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{O\-\_\-\-A\-C\-C\-M\-O\-D\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-A\-C\-C\-M\-O\-D\-E~00000003}}\label{kfcntl_8h_a4dc4d45e07d2abc899bcaf04b2846a87}
-Access mode mask. \hypertarget{kfcntl_8h_ae036f789407d21f07b211552d67b3214}{\index{kfcntl.\-h@{kfcntl.\-h}!O\-\_\-\-A\-P\-P\-E\-N\-D@{O\-\_\-\-A\-P\-P\-E\-N\-D}}
-\index{O\-\_\-\-A\-P\-P\-E\-N\-D@{O\-\_\-\-A\-P\-P\-E\-N\-D}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{O\-\_\-\-A\-P\-P\-E\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-A\-P\-P\-E\-N\-D~00002000}}\label{kfcntl_8h_ae036f789407d21f07b211552d67b3214}
-Ajoute en fin de fichier. \hypertarget{kfcntl_8h_ad6d8fbe4e494b4dbe051612572d3f757}{\index{kfcntl.\-h@{kfcntl.\-h}!O\-\_\-\-C\-L\-O\-E\-X\-E\-C@{O\-\_\-\-C\-L\-O\-E\-X\-E\-C}}
-\index{O\-\_\-\-C\-L\-O\-E\-X\-E\-C@{O\-\_\-\-C\-L\-O\-E\-X\-E\-C}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{O\-\_\-\-C\-L\-O\-E\-X\-E\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-C\-L\-O\-E\-X\-E\-C~02000000}}\label{kfcntl_8h_ad6d8fbe4e494b4dbe051612572d3f757}
-set close\-\_\-on\-\_\-exec \hypertarget{kfcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}{\index{kfcntl.\-h@{kfcntl.\-h}!O\-\_\-\-C\-R\-E\-A\-T@{O\-\_\-\-C\-R\-E\-A\-T}}
-\index{O\-\_\-\-C\-R\-E\-A\-T@{O\-\_\-\-C\-R\-E\-A\-T}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{O\-\_\-\-C\-R\-E\-A\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-C\-R\-E\-A\-T~00000100}}\label{kfcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}
-Create file if non-\/existant. \hypertarget{kfcntl_8h_ad28ccbf6f0a42c91c160ac5ada0c8429}{\index{kfcntl.\-h@{kfcntl.\-h}!O\-\_\-\-D\-I\-R\-E\-C\-T@{O\-\_\-\-D\-I\-R\-E\-C\-T}}
-\index{O\-\_\-\-D\-I\-R\-E\-C\-T@{O\-\_\-\-D\-I\-R\-E\-C\-T}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{O\-\_\-\-D\-I\-R\-E\-C\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-D\-I\-R\-E\-C\-T~00040000}}\label{kfcntl_8h_ad28ccbf6f0a42c91c160ac5ada0c8429}
-direct disk access hint \hypertarget{kfcntl_8h_a6afd3dd2f570069804b40e6aa24fc966}{\index{kfcntl.\-h@{kfcntl.\-h}!O\-\_\-\-D\-I\-R\-E\-C\-T\-O\-R\-Y@{O\-\_\-\-D\-I\-R\-E\-C\-T\-O\-R\-Y}}
-\index{O\-\_\-\-D\-I\-R\-E\-C\-T\-O\-R\-Y@{O\-\_\-\-D\-I\-R\-E\-C\-T\-O\-R\-Y}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{O\-\_\-\-D\-I\-R\-E\-C\-T\-O\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-D\-I\-R\-E\-C\-T\-O\-R\-Y~00200000}}\label{kfcntl_8h_a6afd3dd2f570069804b40e6aa24fc966}
-must be a directory \hypertarget{kfcntl_8h_a82d4d551b214905742c9e045185d352a}{\index{kfcntl.\-h@{kfcntl.\-h}!O\-\_\-\-N\-O\-F\-O\-L\-L\-O\-W@{O\-\_\-\-N\-O\-F\-O\-L\-L\-O\-W}}
-\index{O\-\_\-\-N\-O\-F\-O\-L\-L\-O\-W@{O\-\_\-\-N\-O\-F\-O\-L\-L\-O\-W}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{O\-\_\-\-N\-O\-F\-O\-L\-L\-O\-W}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-N\-O\-F\-O\-L\-L\-O\-W~00400000}}\label{kfcntl_8h_a82d4d551b214905742c9e045185d352a}
-don't follow links \hypertarget{kfcntl_8h_a39d33ce33804efd4d52606d59071c6d8}{\index{kfcntl.\-h@{kfcntl.\-h}!O\-\_\-\-N\-O\-N\-B\-L\-O\-C\-K@{O\-\_\-\-N\-O\-N\-B\-L\-O\-C\-K}}
-\index{O\-\_\-\-N\-O\-N\-B\-L\-O\-C\-K@{O\-\_\-\-N\-O\-N\-B\-L\-O\-C\-K}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{O\-\_\-\-N\-O\-N\-B\-L\-O\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-N\-O\-N\-B\-L\-O\-C\-K~00004000}}\label{kfcntl_8h_a39d33ce33804efd4d52606d59071c6d8}
-Le read ne sera pas bloquant. \hypertarget{kfcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}{\index{kfcntl.\-h@{kfcntl.\-h}!O\-\_\-\-R\-D\-O\-N\-L\-Y@{O\-\_\-\-R\-D\-O\-N\-L\-Y}}
-\index{O\-\_\-\-R\-D\-O\-N\-L\-Y@{O\-\_\-\-R\-D\-O\-N\-L\-Y}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{O\-\_\-\-R\-D\-O\-N\-L\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-R\-D\-O\-N\-L\-Y~00000000}}\label{kfcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}
-Open file for read only access. \hypertarget{kfcntl_8h_abb0586253488ee61072b73557eeb873b}{\index{kfcntl.\-h@{kfcntl.\-h}!O\-\_\-\-R\-D\-W\-R@{O\-\_\-\-R\-D\-W\-R}}
-\index{O\-\_\-\-R\-D\-W\-R@{O\-\_\-\-R\-D\-W\-R}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{O\-\_\-\-R\-D\-W\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-R\-D\-W\-R~00000002}}\label{kfcntl_8h_abb0586253488ee61072b73557eeb873b}
-Open file for both reading and writing. \hypertarget{kfcntl_8h_aae85139bfa94236d126bb1e3b772998f}{\index{kfcntl.\-h@{kfcntl.\-h}!O\-\_\-\-S\-Y\-N\-C@{O\-\_\-\-S\-Y\-N\-C}}
-\index{O\-\_\-\-S\-Y\-N\-C@{O\-\_\-\-S\-Y\-N\-C}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{O\-\_\-\-S\-Y\-N\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-S\-Y\-N\-C~00010000}}\label{kfcntl_8h_aae85139bfa94236d126bb1e3b772998f}
-Appel à write bloquant tant que les données ne sont pas écrites physiquement sur le disque. \hypertarget{kfcntl_8h_ad1d67e453fb3031f40f8cd3403773813}{\index{kfcntl.\-h@{kfcntl.\-h}!O\-\_\-\-T\-R\-U\-N\-C@{O\-\_\-\-T\-R\-U\-N\-C}}
-\index{O\-\_\-\-T\-R\-U\-N\-C@{O\-\_\-\-T\-R\-U\-N\-C}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{O\-\_\-\-T\-R\-U\-N\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-T\-R\-U\-N\-C~00001000}}\label{kfcntl_8h_ad1d67e453fb3031f40f8cd3403773813}
-Tronque le fichier à une longueur nulle. \hypertarget{kfcntl_8h_a11b644a8526139c4cc1850dac1271ced}{\index{kfcntl.\-h@{kfcntl.\-h}!O\-\_\-\-W\-R\-O\-N\-L\-Y@{O\-\_\-\-W\-R\-O\-N\-L\-Y}}
-\index{O\-\_\-\-W\-R\-O\-N\-L\-Y@{O\-\_\-\-W\-R\-O\-N\-L\-Y}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{O\-\_\-\-W\-R\-O\-N\-L\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-W\-R\-O\-N\-L\-Y~00000001}}\label{kfcntl_8h_a11b644a8526139c4cc1850dac1271ced}
+\hypertarget{kfcntl_8h_a4dc4d45e07d2abc899bcaf04b2846a87}{\index{kfcntl.\+h@{kfcntl.\+h}!O\+\_\+\+A\+C\+C\+M\+O\+D\+E@{O\+\_\+\+A\+C\+C\+M\+O\+D\+E}}
+\index{O\+\_\+\+A\+C\+C\+M\+O\+D\+E@{O\+\_\+\+A\+C\+C\+M\+O\+D\+E}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{O\+\_\+\+A\+C\+C\+M\+O\+D\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+A\+C\+C\+M\+O\+D\+E~00000003}}\label{kfcntl_8h_a4dc4d45e07d2abc899bcaf04b2846a87}
+Access mode mask. \hypertarget{kfcntl_8h_ae036f789407d21f07b211552d67b3214}{\index{kfcntl.\+h@{kfcntl.\+h}!O\+\_\+\+A\+P\+P\+E\+N\+D@{O\+\_\+\+A\+P\+P\+E\+N\+D}}
+\index{O\+\_\+\+A\+P\+P\+E\+N\+D@{O\+\_\+\+A\+P\+P\+E\+N\+D}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{O\+\_\+\+A\+P\+P\+E\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+A\+P\+P\+E\+N\+D~00002000}}\label{kfcntl_8h_ae036f789407d21f07b211552d67b3214}
+Ajoute en fin de fichier. \hypertarget{kfcntl_8h_ad6d8fbe4e494b4dbe051612572d3f757}{\index{kfcntl.\+h@{kfcntl.\+h}!O\+\_\+\+C\+L\+O\+E\+X\+E\+C@{O\+\_\+\+C\+L\+O\+E\+X\+E\+C}}
+\index{O\+\_\+\+C\+L\+O\+E\+X\+E\+C@{O\+\_\+\+C\+L\+O\+E\+X\+E\+C}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{O\+\_\+\+C\+L\+O\+E\+X\+E\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+C\+L\+O\+E\+X\+E\+C~02000000}}\label{kfcntl_8h_ad6d8fbe4e494b4dbe051612572d3f757}
+set close\+\_\+on\+\_\+exec \hypertarget{kfcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}{\index{kfcntl.\+h@{kfcntl.\+h}!O\+\_\+\+C\+R\+E\+A\+T@{O\+\_\+\+C\+R\+E\+A\+T}}
+\index{O\+\_\+\+C\+R\+E\+A\+T@{O\+\_\+\+C\+R\+E\+A\+T}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{O\+\_\+\+C\+R\+E\+A\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+C\+R\+E\+A\+T~00000100}}\label{kfcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}
+Create file if non-\/existant. \hypertarget{kfcntl_8h_ad28ccbf6f0a42c91c160ac5ada0c8429}{\index{kfcntl.\+h@{kfcntl.\+h}!O\+\_\+\+D\+I\+R\+E\+C\+T@{O\+\_\+\+D\+I\+R\+E\+C\+T}}
+\index{O\+\_\+\+D\+I\+R\+E\+C\+T@{O\+\_\+\+D\+I\+R\+E\+C\+T}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{O\+\_\+\+D\+I\+R\+E\+C\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+D\+I\+R\+E\+C\+T~00040000}}\label{kfcntl_8h_ad28ccbf6f0a42c91c160ac5ada0c8429}
+direct disk access hint \hypertarget{kfcntl_8h_a6afd3dd2f570069804b40e6aa24fc966}{\index{kfcntl.\+h@{kfcntl.\+h}!O\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y@{O\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y}}
+\index{O\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y@{O\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{O\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y~00200000}}\label{kfcntl_8h_a6afd3dd2f570069804b40e6aa24fc966}
+must be a directory \hypertarget{kfcntl_8h_a82d4d551b214905742c9e045185d352a}{\index{kfcntl.\+h@{kfcntl.\+h}!O\+\_\+\+N\+O\+F\+O\+L\+L\+O\+W@{O\+\_\+\+N\+O\+F\+O\+L\+L\+O\+W}}
+\index{O\+\_\+\+N\+O\+F\+O\+L\+L\+O\+W@{O\+\_\+\+N\+O\+F\+O\+L\+L\+O\+W}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{O\+\_\+\+N\+O\+F\+O\+L\+L\+O\+W}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+N\+O\+F\+O\+L\+L\+O\+W~00400000}}\label{kfcntl_8h_a82d4d551b214905742c9e045185d352a}
+don't follow links \hypertarget{kfcntl_8h_a39d33ce33804efd4d52606d59071c6d8}{\index{kfcntl.\+h@{kfcntl.\+h}!O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K@{O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K}}
+\index{O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K@{O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K~00004000}}\label{kfcntl_8h_a39d33ce33804efd4d52606d59071c6d8}
+Le read ne sera pas bloquant. \hypertarget{kfcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}{\index{kfcntl.\+h@{kfcntl.\+h}!O\+\_\+\+R\+D\+O\+N\+L\+Y@{O\+\_\+\+R\+D\+O\+N\+L\+Y}}
+\index{O\+\_\+\+R\+D\+O\+N\+L\+Y@{O\+\_\+\+R\+D\+O\+N\+L\+Y}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{O\+\_\+\+R\+D\+O\+N\+L\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+R\+D\+O\+N\+L\+Y~00000000}}\label{kfcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}
+Open file for read only access. \hypertarget{kfcntl_8h_abb0586253488ee61072b73557eeb873b}{\index{kfcntl.\+h@{kfcntl.\+h}!O\+\_\+\+R\+D\+W\+R@{O\+\_\+\+R\+D\+W\+R}}
+\index{O\+\_\+\+R\+D\+W\+R@{O\+\_\+\+R\+D\+W\+R}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{O\+\_\+\+R\+D\+W\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+R\+D\+W\+R~00000002}}\label{kfcntl_8h_abb0586253488ee61072b73557eeb873b}
+Open file for both reading and writing. \hypertarget{kfcntl_8h_aae85139bfa94236d126bb1e3b772998f}{\index{kfcntl.\+h@{kfcntl.\+h}!O\+\_\+\+S\+Y\+N\+C@{O\+\_\+\+S\+Y\+N\+C}}
+\index{O\+\_\+\+S\+Y\+N\+C@{O\+\_\+\+S\+Y\+N\+C}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{O\+\_\+\+S\+Y\+N\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+S\+Y\+N\+C~00010000}}\label{kfcntl_8h_aae85139bfa94236d126bb1e3b772998f}
+Appel à write bloquant tant que les données ne sont pas écrites physiquement sur le disque. \hypertarget{kfcntl_8h_ad1d67e453fb3031f40f8cd3403773813}{\index{kfcntl.\+h@{kfcntl.\+h}!O\+\_\+\+T\+R\+U\+N\+C@{O\+\_\+\+T\+R\+U\+N\+C}}
+\index{O\+\_\+\+T\+R\+U\+N\+C@{O\+\_\+\+T\+R\+U\+N\+C}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{O\+\_\+\+T\+R\+U\+N\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+T\+R\+U\+N\+C~00001000}}\label{kfcntl_8h_ad1d67e453fb3031f40f8cd3403773813}
+Tronque le fichier à une longueur nulle. \hypertarget{kfcntl_8h_a11b644a8526139c4cc1850dac1271ced}{\index{kfcntl.\+h@{kfcntl.\+h}!O\+\_\+\+W\+R\+O\+N\+L\+Y@{O\+\_\+\+W\+R\+O\+N\+L\+Y}}
+\index{O\+\_\+\+W\+R\+O\+N\+L\+Y@{O\+\_\+\+W\+R\+O\+N\+L\+Y}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{O\+\_\+\+W\+R\+O\+N\+L\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+W\+R\+O\+N\+L\+Y~00000001}}\label{kfcntl_8h_a11b644a8526139c4cc1850dac1271ced}
 Open file for write only access. 
 
 \subsection{Documentation des fonctions}
-\hypertarget{kfcntl_8h_a5cb8d11eeb6842f49090696dbda4490b}{\index{kfcntl.\-h@{kfcntl.\-h}!init\-\_\-stdfd@{init\-\_\-stdfd}}
-\index{init\-\_\-stdfd@{init\-\_\-stdfd}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{init\-\_\-stdfd}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-stdfd (
+\hypertarget{kfcntl_8h_a5cb8d11eeb6842f49090696dbda4490b}{\index{kfcntl.\+h@{kfcntl.\+h}!init\+\_\+stdfd@{init\+\_\+stdfd}}
+\index{init\+\_\+stdfd@{init\+\_\+stdfd}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{init\+\_\+stdfd}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+stdfd (
 \begin{DoxyParamCaption}
-\item[{{\bf process\-\_\-t} $\ast$}]{new\-\_\-proc}
+\item[{{\bf process\+\_\+t} $\ast$}]{new\+\_\+proc}
 \end{DoxyParamCaption}
 )}}\label{kfcntl_8h_a5cb8d11eeb6842f49090696dbda4490b}
-\begin{DoxyVerb} Initialise les descripteurs de fichiers standards.
-\end{DoxyVerb}
-
+Initialise les descripteurs de fichiers standards.
 
 
 \begin{DoxyParams}{Paramètres}
-{\em new\-\_\-proc} & Processus à initialiser. \\
+{\em new\+\_\+proc} & Processus à initialiser. \\
 \hline
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -171,38 +172,28 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \end{figure}
 
 
-
-
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{kfcntl_8h_a5cb8d11eeb6842f49090696dbda4490b_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{kfcntl_8h_a3a5f4c56fd3fcc2b69757102f722fc29}{\index{kfcntl.\-h@{kfcntl.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}}
-\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R2 (
+\hypertarget{kfcntl_8h_a3a5f4c56fd3fcc2b69757102f722fc29}{\index{kfcntl.\+h@{kfcntl.\+h}!S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R2@{S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R2}}
+\index{S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R2@{S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R2}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R2}]{\setlength{\rightskip}{0pt plus 5cm}S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R2 (
 \begin{DoxyParamCaption}
-\item[{sys\-\_\-close}]{, }
-\item[{int}]{fd\-\_\-id, }
-\item[{{\bf uint32\-\_\-t} $\ast$}]{ret}
+\item[{sys\+\_\+close}]{, }
+\item[{int}]{fd\+\_\+id, }
+\item[{{\bf uint32\+\_\+t} $\ast$}]{ret}
 \end{DoxyParamCaption}
 )}}\label{kfcntl_8h_a3a5f4c56fd3fcc2b69757102f722fc29}
 Syscall pour fermer un fichier.
 
 
 \begin{DoxyParams}{Paramètres}
-{\em fd\-\_\-id} & Identifiant du descripteur de fichier. \\
+{\em fd\+\_\+id} & Identifiant du descripteur de fichier. \\
 \hline
 {\em ret} & Pointeur pour enregistrer le résultat. \\
 \hline
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -211,21 +202,21 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{kfcntl_8h_aa1d225acb87c04ac8d56c8096f587a03}{\index{kfcntl.\-h@{kfcntl.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
-\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3 (
+\hypertarget{kfcntl_8h_aa1d225acb87c04ac8d56c8096f587a03}{\index{kfcntl.\+h@{kfcntl.\+h}!S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R3@{S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R3}}
+\index{S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R3@{S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R3}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R3}]{\setlength{\rightskip}{0pt plus 5cm}S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R3 (
 \begin{DoxyParamCaption}
-\item[{sys\-\_\-open}]{, }
-\item[{int $\ast$}]{fd\-\_\-id, }
+\item[{sys\+\_\+open}]{, }
+\item[{int $\ast$}]{fd\+\_\+id, }
 \item[{char $\ast$}]{path, }
-\item[{{\bf uint32\-\_\-t}}]{flags}
+\item[{{\bf uint32\+\_\+t}}]{flags}
 \end{DoxyParamCaption}
 )}}\label{kfcntl_8h_aa1d225acb87c04ac8d56c8096f587a03}
 Syscall pour ouvrir un fichier.
 
 
 \begin{DoxyParams}{Paramètres}
-{\em fd\-\_\-id} & Pointeur pour enregistrer le resultat. \\
+{\em fd\+\_\+id} & Pointeur pour enregistrer le resultat. \\
 \hline
 {\em path} & Chemin du fichier à ouvrir. \\
 \hline
@@ -234,7 +225,8 @@ Syscall pour ouvrir un fichier.
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -243,12 +235,12 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{kfcntl_8h_a7c5292eb7af1637f45a0512c58c58cbc}{\index{kfcntl.\-h@{kfcntl.\-h}!S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}}
-\index{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3@{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}!kfcntl.h@{kfcntl.\-h}}
-\subsubsection[{S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3}]{\setlength{\rightskip}{0pt plus 5cm}S\-Y\-S\-C\-A\-L\-L\-\_\-\-H\-A\-N\-D\-L\-E\-R3 (
+\hypertarget{kfcntl_8h_a7c5292eb7af1637f45a0512c58c58cbc}{\index{kfcntl.\+h@{kfcntl.\+h}!S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R3@{S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R3}}
+\index{S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R3@{S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R3}!kfcntl.\+h@{kfcntl.\+h}}
+\subsubsection[{S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R3}]{\setlength{\rightskip}{0pt plus 5cm}S\+Y\+S\+C\+A\+L\+L\+\_\+\+H\+A\+N\+D\+L\+E\+R3 (
 \begin{DoxyParamCaption}
-\item[{sys\-\_\-fcntl}]{, }
-\item[{int $\ast$}]{fd\-\_\-id, }
+\item[{sys\+\_\+fcntl}]{, }
+\item[{int $\ast$}]{fd\+\_\+id, }
 \item[{unsigned int}]{request, }
 \item[{void $\ast$}]{data}
 \end{DoxyParamCaption}
@@ -257,7 +249,7 @@ Syscall pour la manipulation d'un descripteur de fichier.
 
 
 \begin{DoxyParams}{Paramètres}
-{\em fd\-\_\-id} & descripteur du fichier et enregistrement du résultat. \\
+{\em fd\+\_\+id} & descripteur du fichier et enregistrement du résultat. \\
 \hline
 {\em request} & action à faire. \\
 \hline
@@ -266,11 +258,12 @@ Syscall pour la manipulation d'un descripteur de fichier.
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{kfcntl_8h_a7c5292eb7af1637f45a0512c58c58cbc_cgraph}
+\includegraphics[width=341pt]{kfcntl_8h_a7c5292eb7af1637f45a0512c58c58cbc_cgraph}
 \end{center}
 \end{figure}
 

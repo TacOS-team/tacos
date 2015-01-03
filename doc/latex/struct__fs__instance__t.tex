@@ -1,18 +1,19 @@
-\hypertarget{struct__fs__instance__t}{\section{Référence de la structure \-\_\-fs\-\_\-instance\-\_\-t}
-\label{struct__fs__instance__t}\index{\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fs\-\_\-instance\-\_\-t}}
+\hypertarget{struct__fs__instance__t}{\section{Référence de la structure \+\_\+fs\+\_\+instance\+\_\+t}
+\label{struct__fs__instance__t}\index{\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}}
 }
 
 
-Instance d'un couple F\-S/\-Device monté.  
+Instance d'un couple F\+S/\+Device monté.  
 
 
 
 
-{\ttfamily \#include $<$vfs.\-h$>$}
+{\ttfamily \#include $<$vfs.\+h$>$}
 
 
 
-Graphe de collaboration de \-\_\-fs\-\_\-instance\-\_\-t\-:\nopagebreak
+Graphe de collaboration de \+\_\+fs\+\_\+instance\+\_\+t\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -22,71 +23,71 @@ Graphe de collaboration de \-\_\-fs\-\_\-instance\-\_\-t\-:\nopagebreak
 \subsection*{Champs de données}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{structfile__system__t}{file\-\_\-system\-\_\-t} $\ast$ \hyperlink{struct__fs__instance__t_a209ef4e2ed00460eead263311373a974}{fs}
+\hyperlink{structfile__system__t}{file\+\_\+system\+\_\+t} $\ast$ \hyperlink{struct__fs__instance__t_a209ef4e2ed00460eead263311373a974}{fs}
 \item 
-\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\-\_\-file\-\_\-descriptor} $\ast$ \hyperlink{struct__fs__instance__t_acc3db122838752a84c6ecb93c3644256}{device}
+\hyperlink{fd__types_8h_a42bccb9b6a816213613cefffced245f0}{open\+\_\+file\+\_\+descriptor} $\ast$ \hyperlink{struct__fs__instance__t_acc3db122838752a84c6ecb93c3644256}{device}
 \item 
-struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$($\ast$ \hyperlink{struct__fs__instance__t_af6891a9d9e5c2fd0458312fd8567213a}{getroot} )(struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$)
+struct \hyperlink{struct__dentry__t}{\+\_\+dentry\+\_\+t} $\ast$($\ast$ \hyperlink{struct__fs__instance__t_af6891a9d9e5c2fd0458312fd8567213a}{getroot} )(struct \hyperlink{struct__fs__instance__t}{\+\_\+fs\+\_\+instance\+\_\+t} $\ast$)
 \item 
-struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$($\ast$ \hyperlink{struct__fs__instance__t_a820510562ecb31cbbf6b4fc8a4d2ce6a}{lookup} )(struct \hyperlink{struct__fs__instance__t}{\-\_\-fs\-\_\-instance\-\_\-t} $\ast$, struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$, const char $\ast$)
+struct \hyperlink{struct__dentry__t}{\+\_\+dentry\+\_\+t} $\ast$($\ast$ \hyperlink{struct__fs__instance__t_a820510562ecb31cbbf6b4fc8a4d2ce6a}{lookup} )(struct \hyperlink{struct__fs__instance__t}{\+\_\+fs\+\_\+instance\+\_\+t} $\ast$, struct \hyperlink{struct__dentry__t}{\+\_\+dentry\+\_\+t} $\ast$, const char $\ast$)
 \item 
-int($\ast$ \hyperlink{struct__fs__instance__t_a705d100026840b619f217931dc8419f3}{mkdir} )(struct \hyperlink{struct__inode__t}{\-\_\-inode\-\_\-t} $\ast$, struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t})
+int($\ast$ \hyperlink{struct__fs__instance__t_a705d100026840b619f217931dc8419f3}{mkdir} )(struct \hyperlink{struct__inode__t}{\+\_\+inode\+\_\+t} $\ast$, struct \hyperlink{struct__dentry__t}{\+\_\+dentry\+\_\+t} $\ast$, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\+\_\+t})
 \item 
-int($\ast$ \hyperlink{struct__fs__instance__t_ae57436a3bfd6de530204a67a8ac2f4f0}{mknod} )(struct \hyperlink{struct__inode__t}{\-\_\-inode\-\_\-t} $\ast$, struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\-\_\-t}, \hyperlink{kstat_8h_a451f1b5788fa7cc5d33db47a5992e7a6}{dev\-\_\-t})
+int($\ast$ \hyperlink{struct__fs__instance__t_ae57436a3bfd6de530204a67a8ac2f4f0}{mknod} )(struct \hyperlink{struct__inode__t}{\+\_\+inode\+\_\+t} $\ast$, struct \hyperlink{struct__dentry__t}{\+\_\+dentry\+\_\+t} $\ast$, \hyperlink{kstat_8h_af8f4385bb42836d1e3ad4fea9d71d1b9}{mode\+\_\+t}, \hyperlink{kstat_8h_a451f1b5788fa7cc5d33db47a5992e7a6}{dev\+\_\+t})
 \item 
-int($\ast$ \hyperlink{struct__fs__instance__t_aaccc941115b40d9605fdc3895c9b8e9b}{stat} )(struct \hyperlink{struct__inode__t}{\-\_\-inode\-\_\-t} $\ast$, struct \hyperlink{structstat}{stat} $\ast$)
+int($\ast$ \hyperlink{struct__fs__instance__t_aaccc941115b40d9605fdc3895c9b8e9b}{stat} )(struct \hyperlink{struct__inode__t}{\+\_\+inode\+\_\+t} $\ast$, struct \hyperlink{structstat}{stat} $\ast$)
 \item 
-int($\ast$ \hyperlink{struct__fs__instance__t_a38cfd710b2d88ebb388059e90a406db6}{unlink} )(struct \hyperlink{struct__inode__t}{\-\_\-inode\-\_\-t} $\ast$, struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$)
+int($\ast$ \hyperlink{struct__fs__instance__t_a38cfd710b2d88ebb388059e90a406db6}{unlink} )(struct \hyperlink{struct__inode__t}{\+\_\+inode\+\_\+t} $\ast$, struct \hyperlink{struct__dentry__t}{\+\_\+dentry\+\_\+t} $\ast$)
 \item 
-int($\ast$ \hyperlink{struct__fs__instance__t_a4ceb71ff00d0a5fda03aa644c4694bef}{rmdir} )(struct \hyperlink{struct__inode__t}{\-\_\-inode\-\_\-t} $\ast$, struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$)
+int($\ast$ \hyperlink{struct__fs__instance__t_a4ceb71ff00d0a5fda03aa644c4694bef}{rmdir} )(struct \hyperlink{struct__inode__t}{\+\_\+inode\+\_\+t} $\ast$, struct \hyperlink{struct__dentry__t}{\+\_\+dentry\+\_\+t} $\ast$)
 \item 
-int($\ast$ \hyperlink{struct__fs__instance__t_a02c8b56a14997bf58d8350a26e441954}{truncate} )(struct \hyperlink{struct__inode__t}{\-\_\-inode\-\_\-t} $\ast$, \hyperlink{libc_2include_2sys_2types_8h_a447a6a64dbb8fb44b1e62856b333db4a}{off\-\_\-t} size)
+int($\ast$ \hyperlink{struct__fs__instance__t_a02c8b56a14997bf58d8350a26e441954}{truncate} )(struct \hyperlink{struct__inode__t}{\+\_\+inode\+\_\+t} $\ast$, \hyperlink{libc_2include_2sys_2types_8h_a447a6a64dbb8fb44b1e62856b333db4a}{off\+\_\+t} size)
 \item 
-int($\ast$ \hyperlink{struct__fs__instance__t_ae76a7f1f9c4653baa497343bf26918a6}{setattr} )(struct \hyperlink{struct__inode__t}{\-\_\-inode\-\_\-t} $\ast$inode, struct \hyperlink{struct__file__attributes__t}{\-\_\-file\-\_\-attributes\-\_\-t} $\ast$attr)
+int($\ast$ \hyperlink{struct__fs__instance__t_ae76a7f1f9c4653baa497343bf26918a6}{setattr} )(struct \hyperlink{struct__inode__t}{\+\_\+inode\+\_\+t} $\ast$inode, struct \hyperlink{struct__file__attributes__t}{\+\_\+file\+\_\+attributes\+\_\+t} $\ast$attr)
 \item 
-int($\ast$ \hyperlink{struct__fs__instance__t_a62e37513c47dda9d11e534cf84d6f48b}{rename} )(struct \hyperlink{struct__inode__t}{\-\_\-inode\-\_\-t} $\ast$old\-\_\-dir, struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$old\-\_\-dentry, struct \hyperlink{struct__inode__t}{\-\_\-inode\-\_\-t} $\ast$new\-\_\-dir, struct \hyperlink{struct__dentry__t}{\-\_\-dentry\-\_\-t} $\ast$new\-\_\-dentry)
+int($\ast$ \hyperlink{struct__fs__instance__t_a62e37513c47dda9d11e534cf84d6f48b}{rename} )(struct \hyperlink{struct__inode__t}{\+\_\+inode\+\_\+t} $\ast$old\+\_\+dir, struct \hyperlink{struct__dentry__t}{\+\_\+dentry\+\_\+t} $\ast$old\+\_\+dentry, struct \hyperlink{struct__inode__t}{\+\_\+inode\+\_\+t} $\ast$new\+\_\+dir, struct \hyperlink{struct__dentry__t}{\+\_\+dentry\+\_\+t} $\ast$new\+\_\+dentry)
 \end{DoxyCompactItemize}
 
 
 \subsection{Documentation des champs}
-\hypertarget{struct__fs__instance__t_acc3db122838752a84c6ecb93c3644256}{\index{\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fs\-\_\-instance\-\_\-t}!device@{device}}
-\index{device@{device}!_fs_instance_t@{\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{device}]{\setlength{\rightskip}{0pt plus 5cm}{\bf open\-\_\-file\-\_\-descriptor}$\ast$ \-\_\-fs\-\_\-instance\-\_\-t\-::device}}\label{struct__fs__instance__t_acc3db122838752a84c6ecb93c3644256}
-Device utilisé. \hypertarget{struct__fs__instance__t_a209ef4e2ed00460eead263311373a974}{\index{\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fs\-\_\-instance\-\_\-t}!fs@{fs}}
-\index{fs@{fs}!_fs_instance_t@{\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{fs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf file\-\_\-system\-\_\-t}$\ast$ \-\_\-fs\-\_\-instance\-\_\-t\-::fs}}\label{struct__fs__instance__t_a209ef4e2ed00460eead263311373a974}
-Pointeur vers le F\-S utilisé. \hypertarget{struct__fs__instance__t_af6891a9d9e5c2fd0458312fd8567213a}{\index{\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fs\-\_\-instance\-\_\-t}!getroot@{getroot}}
-\index{getroot@{getroot}!_fs_instance_t@{\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{getroot}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \-\_\-dentry\-\_\-t}$\ast$($\ast$ \-\_\-fs\-\_\-instance\-\_\-t\-::getroot)(struct {\bf \-\_\-fs\-\_\-instance\-\_\-t} $\ast$)\hspace{0.3cm}{\ttfamily [read]}}}\label{struct__fs__instance__t_af6891a9d9e5c2fd0458312fd8567213a}
-Noeud racine. \hypertarget{struct__fs__instance__t_a820510562ecb31cbbf6b4fc8a4d2ce6a}{\index{\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fs\-\_\-instance\-\_\-t}!lookup@{lookup}}
-\index{lookup@{lookup}!_fs_instance_t@{\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{lookup}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \-\_\-dentry\-\_\-t}$\ast$($\ast$ \-\_\-fs\-\_\-instance\-\_\-t\-::lookup)(struct {\bf \-\_\-fs\-\_\-instance\-\_\-t} $\ast$, struct {\bf \-\_\-dentry\-\_\-t} $\ast$, const char $\ast$)\hspace{0.3cm}{\ttfamily [read]}}}\label{struct__fs__instance__t_a820510562ecb31cbbf6b4fc8a4d2ce6a}
-Résolution path. \hypertarget{struct__fs__instance__t_a705d100026840b619f217931dc8419f3}{\index{\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fs\-\_\-instance\-\_\-t}!mkdir@{mkdir}}
-\index{mkdir@{mkdir}!_fs_instance_t@{\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{mkdir}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \-\_\-fs\-\_\-instance\-\_\-t\-::mkdir)(struct {\bf \-\_\-inode\-\_\-t} $\ast$, struct {\bf \-\_\-dentry\-\_\-t} $\ast$, {\bf mode\-\_\-t})}}\label{struct__fs__instance__t_a705d100026840b619f217931dc8419f3}
-Création d'un dossier. \hypertarget{struct__fs__instance__t_ae57436a3bfd6de530204a67a8ac2f4f0}{\index{\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fs\-\_\-instance\-\_\-t}!mknod@{mknod}}
-\index{mknod@{mknod}!_fs_instance_t@{\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{mknod}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \-\_\-fs\-\_\-instance\-\_\-t\-::mknod)(struct {\bf \-\_\-inode\-\_\-t} $\ast$, struct {\bf \-\_\-dentry\-\_\-t} $\ast$, {\bf mode\-\_\-t}, {\bf dev\-\_\-t})}}\label{struct__fs__instance__t_ae57436a3bfd6de530204a67a8ac2f4f0}
-Création d'un noeud. \hypertarget{struct__fs__instance__t_a62e37513c47dda9d11e534cf84d6f48b}{\index{\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fs\-\_\-instance\-\_\-t}!rename@{rename}}
-\index{rename@{rename}!_fs_instance_t@{\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{rename}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \-\_\-fs\-\_\-instance\-\_\-t\-::rename)(struct {\bf \-\_\-inode\-\_\-t} $\ast$old\-\_\-dir, struct {\bf \-\_\-dentry\-\_\-t} $\ast$old\-\_\-dentry, struct {\bf \-\_\-inode\-\_\-t} $\ast$new\-\_\-dir, struct {\bf \-\_\-dentry\-\_\-t} $\ast$new\-\_\-dentry)}}\label{struct__fs__instance__t_a62e37513c47dda9d11e534cf84d6f48b}
-Renomme ou déplace un fichier. \hypertarget{struct__fs__instance__t_a4ceb71ff00d0a5fda03aa644c4694bef}{\index{\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fs\-\_\-instance\-\_\-t}!rmdir@{rmdir}}
-\index{rmdir@{rmdir}!_fs_instance_t@{\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{rmdir}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \-\_\-fs\-\_\-instance\-\_\-t\-::rmdir)(struct {\bf \-\_\-inode\-\_\-t} $\ast$, struct {\bf \-\_\-dentry\-\_\-t} $\ast$)}}\label{struct__fs__instance__t_a4ceb71ff00d0a5fda03aa644c4694bef}
-Suppression d'un dossier vide. \hypertarget{struct__fs__instance__t_ae76a7f1f9c4653baa497343bf26918a6}{\index{\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fs\-\_\-instance\-\_\-t}!setattr@{setattr}}
-\index{setattr@{setattr}!_fs_instance_t@{\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{setattr}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \-\_\-fs\-\_\-instance\-\_\-t\-::setattr)(struct {\bf \-\_\-inode\-\_\-t} $\ast$inode, struct {\bf \-\_\-file\-\_\-attributes\-\_\-t} $\ast$attr)}}\label{struct__fs__instance__t_ae76a7f1f9c4653baa497343bf26918a6}
-Modifie certains paramètres. \hypertarget{struct__fs__instance__t_aaccc941115b40d9605fdc3895c9b8e9b}{\index{\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fs\-\_\-instance\-\_\-t}!stat@{stat}}
-\index{stat@{stat}!_fs_instance_t@{\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{stat}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \-\_\-fs\-\_\-instance\-\_\-t\-::stat)(struct {\bf \-\_\-inode\-\_\-t} $\ast$, struct {\bf stat} $\ast$)}}\label{struct__fs__instance__t_aaccc941115b40d9605fdc3895c9b8e9b}
-Obtenir les infos d'un noeud. \hypertarget{struct__fs__instance__t_a02c8b56a14997bf58d8350a26e441954}{\index{\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fs\-\_\-instance\-\_\-t}!truncate@{truncate}}
-\index{truncate@{truncate}!_fs_instance_t@{\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{truncate}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \-\_\-fs\-\_\-instance\-\_\-t\-::truncate)(struct {\bf \-\_\-inode\-\_\-t} $\ast$, {\bf off\-\_\-t} size)}}\label{struct__fs__instance__t_a02c8b56a14997bf58d8350a26e441954}
-Changer la taille d'un fichier. \hypertarget{struct__fs__instance__t_a38cfd710b2d88ebb388059e90a406db6}{\index{\-\_\-fs\-\_\-instance\-\_\-t@{\-\_\-fs\-\_\-instance\-\_\-t}!unlink@{unlink}}
-\index{unlink@{unlink}!_fs_instance_t@{\-\_\-fs\-\_\-instance\-\_\-t}}
-\subsubsection[{unlink}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \-\_\-fs\-\_\-instance\-\_\-t\-::unlink)(struct {\bf \-\_\-inode\-\_\-t} $\ast$, struct {\bf \-\_\-dentry\-\_\-t} $\ast$)}}\label{struct__fs__instance__t_a38cfd710b2d88ebb388059e90a406db6}
+\hypertarget{struct__fs__instance__t_acc3db122838752a84c6ecb93c3644256}{\index{\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}!device@{device}}
+\index{device@{device}!\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{device}]{\setlength{\rightskip}{0pt plus 5cm}{\bf open\+\_\+file\+\_\+descriptor}$\ast$ \+\_\+fs\+\_\+instance\+\_\+t\+::device}}\label{struct__fs__instance__t_acc3db122838752a84c6ecb93c3644256}
+Device utilisé. \hypertarget{struct__fs__instance__t_a209ef4e2ed00460eead263311373a974}{\index{\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}!fs@{fs}}
+\index{fs@{fs}!\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{fs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf file\+\_\+system\+\_\+t}$\ast$ \+\_\+fs\+\_\+instance\+\_\+t\+::fs}}\label{struct__fs__instance__t_a209ef4e2ed00460eead263311373a974}
+Pointeur vers le F\+S utilisé. \hypertarget{struct__fs__instance__t_af6891a9d9e5c2fd0458312fd8567213a}{\index{\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}!getroot@{getroot}}
+\index{getroot@{getroot}!\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{getroot}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \+\_\+dentry\+\_\+t}$\ast$($\ast$ \+\_\+fs\+\_\+instance\+\_\+t\+::getroot)(struct {\bf \+\_\+fs\+\_\+instance\+\_\+t} $\ast$)}}\label{struct__fs__instance__t_af6891a9d9e5c2fd0458312fd8567213a}
+Noeud racine. \hypertarget{struct__fs__instance__t_a820510562ecb31cbbf6b4fc8a4d2ce6a}{\index{\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}!lookup@{lookup}}
+\index{lookup@{lookup}!\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{lookup}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \+\_\+dentry\+\_\+t}$\ast$($\ast$ \+\_\+fs\+\_\+instance\+\_\+t\+::lookup)(struct {\bf \+\_\+fs\+\_\+instance\+\_\+t} $\ast$, struct {\bf \+\_\+dentry\+\_\+t} $\ast$, const char $\ast$)}}\label{struct__fs__instance__t_a820510562ecb31cbbf6b4fc8a4d2ce6a}
+Résolution path. \hypertarget{struct__fs__instance__t_a705d100026840b619f217931dc8419f3}{\index{\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}!mkdir@{mkdir}}
+\index{mkdir@{mkdir}!\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{mkdir}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \+\_\+fs\+\_\+instance\+\_\+t\+::mkdir)(struct {\bf \+\_\+inode\+\_\+t} $\ast$, struct {\bf \+\_\+dentry\+\_\+t} $\ast$, {\bf mode\+\_\+t})}}\label{struct__fs__instance__t_a705d100026840b619f217931dc8419f3}
+Création d'un dossier. \hypertarget{struct__fs__instance__t_ae57436a3bfd6de530204a67a8ac2f4f0}{\index{\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}!mknod@{mknod}}
+\index{mknod@{mknod}!\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{mknod}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \+\_\+fs\+\_\+instance\+\_\+t\+::mknod)(struct {\bf \+\_\+inode\+\_\+t} $\ast$, struct {\bf \+\_\+dentry\+\_\+t} $\ast$, {\bf mode\+\_\+t}, {\bf dev\+\_\+t})}}\label{struct__fs__instance__t_ae57436a3bfd6de530204a67a8ac2f4f0}
+Création d'un noeud. \hypertarget{struct__fs__instance__t_a62e37513c47dda9d11e534cf84d6f48b}{\index{\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}!rename@{rename}}
+\index{rename@{rename}!\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{rename}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \+\_\+fs\+\_\+instance\+\_\+t\+::rename)(struct {\bf \+\_\+inode\+\_\+t} $\ast$old\+\_\+dir, struct {\bf \+\_\+dentry\+\_\+t} $\ast$old\+\_\+dentry, struct {\bf \+\_\+inode\+\_\+t} $\ast$new\+\_\+dir, struct {\bf \+\_\+dentry\+\_\+t} $\ast$new\+\_\+dentry)}}\label{struct__fs__instance__t_a62e37513c47dda9d11e534cf84d6f48b}
+Renomme ou déplace un fichier. \hypertarget{struct__fs__instance__t_a4ceb71ff00d0a5fda03aa644c4694bef}{\index{\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}!rmdir@{rmdir}}
+\index{rmdir@{rmdir}!\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{rmdir}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \+\_\+fs\+\_\+instance\+\_\+t\+::rmdir)(struct {\bf \+\_\+inode\+\_\+t} $\ast$, struct {\bf \+\_\+dentry\+\_\+t} $\ast$)}}\label{struct__fs__instance__t_a4ceb71ff00d0a5fda03aa644c4694bef}
+Suppression d'un dossier vide. \hypertarget{struct__fs__instance__t_ae76a7f1f9c4653baa497343bf26918a6}{\index{\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}!setattr@{setattr}}
+\index{setattr@{setattr}!\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{setattr}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \+\_\+fs\+\_\+instance\+\_\+t\+::setattr)(struct {\bf \+\_\+inode\+\_\+t} $\ast$inode, struct {\bf \+\_\+file\+\_\+attributes\+\_\+t} $\ast$attr)}}\label{struct__fs__instance__t_ae76a7f1f9c4653baa497343bf26918a6}
+Modifie certains paramètres. \hypertarget{struct__fs__instance__t_aaccc941115b40d9605fdc3895c9b8e9b}{\index{\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}!stat@{stat}}
+\index{stat@{stat}!\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{stat}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \+\_\+fs\+\_\+instance\+\_\+t\+::stat)(struct {\bf \+\_\+inode\+\_\+t} $\ast$, struct {\bf stat} $\ast$)}}\label{struct__fs__instance__t_aaccc941115b40d9605fdc3895c9b8e9b}
+Obtenir les infos d'un noeud. \hypertarget{struct__fs__instance__t_a02c8b56a14997bf58d8350a26e441954}{\index{\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}!truncate@{truncate}}
+\index{truncate@{truncate}!\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{truncate}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \+\_\+fs\+\_\+instance\+\_\+t\+::truncate)(struct {\bf \+\_\+inode\+\_\+t} $\ast$, {\bf off\+\_\+t} size)}}\label{struct__fs__instance__t_a02c8b56a14997bf58d8350a26e441954}
+Changer la taille d'un fichier. \hypertarget{struct__fs__instance__t_a38cfd710b2d88ebb388059e90a406db6}{\index{\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}!unlink@{unlink}}
+\index{unlink@{unlink}!\+\_\+fs\+\_\+instance\+\_\+t@{\+\_\+fs\+\_\+instance\+\_\+t}}
+\subsubsection[{unlink}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \+\_\+fs\+\_\+instance\+\_\+t\+::unlink)(struct {\bf \+\_\+inode\+\_\+t} $\ast$, struct {\bf \+\_\+dentry\+\_\+t} $\ast$)}}\label{struct__fs__instance__t_a38cfd710b2d88ebb388059e90a406db6}
 Suppression d'un noeud. 
 
-La documentation de cette structure a été générée à partir du fichier suivant \-:\begin{DoxyCompactItemize}
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
 \item 
-kernel/include/\hyperlink{vfs_8h}{vfs.\-h}\end{DoxyCompactItemize}
+kernel/include/\hyperlink{vfs_8h}{vfs.\+h}\end{DoxyCompactItemize}

@@ -1,50 +1,45 @@
 <map id="kernel/kernel.c" name="kernel/kernel.c">
-<area shape="rect" id="node3" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="1069,315,1131,343"/>
-<area shape="rect" id="node7" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="355,393,432,421"/>
-<area shape="rect" id="node10" href="$events_8h.html" title="events.h" alt="" coords="1075,161,1144,189"/>
-<area shape="rect" id="node13" href="$fpu_8h.html" title="fpu.h" alt="" coords="2245,83,2296,111"/>
-<area shape="rect" id="node15" href="$gdt_8h.html" title="gdt.h" alt="" coords="1400,161,1451,189"/>
-<area shape="rect" id="node18" href="$i8259_8h.html" title="Initialisation du i8259 qui s&#39;occupe des interruptions." alt="" coords="1459,238,1520,266"/>
-<area shape="rect" id="node21" href="$idt_8h.html" title="Initialisation de la table des descripteurs d&#39;interruption (et exceptions) et association aux handler..." alt="" coords="1532,161,1577,189"/>
-<area shape="rect" id="node24" href="$init_8h.html" title="init.h" alt="" coords="2320,83,2368,111"/>
-<area shape="rect" id="node26" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="1595,238,1680,266"/>
-<area shape="rect" id="node29" href="$kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="1301,161,1371,189"/>
-<area shape="rect" id="node37" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="339,238,403,266"/>
-<area shape="rect" id="node43" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="296,315,381,343"/>
-<area shape="rect" id="node57" href="$vmm_8h.html" title="vmm.h" alt="" coords="685,393,747,421"/>
-<area shape="rect" id="node61" href="$klog_8h.html" title="Logging macros." alt="" coords="2392,83,2448,111"/>
-<area shape="rect" id="node65" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="1761,161,1839,189"/>
-<area shape="rect" id="node68" href="$kpanic_8h.html" title="Handlers des exceptions." alt="" coords="1899,238,1968,266"/>
-<area shape="rect" id="node72" href="$ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="5,315,69,343"/>
-<area shape="rect" id="node76" href="$ksignal_8h.html" title="ksignal.h" alt="" coords="496,238,568,266"/>
-<area shape="rect" id="node83" href="$kunistd_8h.html" title="Principales fonctions de l&#39;API POSIX (read, write, seek, stat...)" alt="" coords="1191,161,1265,189"/>
-<area shape="rect" id="node88" href="$memory_8h.html" title="Gestion des pages mémoires physiques." alt="" coords="1945,315,2023,343"/>
-<area shape="rect" id="node91" href="$multiboot_8h.html" title="multiboot.h" alt="" coords="2472,83,2557,111"/>
-<area shape="rect" id="node93" href="$pagination_8h.html" title="pagination.h" alt="" coords="1979,161,2069,189"/>
-<area shape="rect" id="node96" href="$pci_8h.html" title="pci.h" alt="" coords="2097,315,2145,343"/>
-<area shape="rect" id="node102" href="$round__robin_8h.html" title="round_robin.h" alt="" coords="221,161,320,189"/>
-<area shape="rect" id="node104" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="227,238,315,266"/>
-<area shape="rect" id="node109" href="$syscall__values_8h.html" title="syscall_values.h" alt="" coords="2581,83,2699,111"/>
-<area shape="rect" id="node112" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="861,315,939,343"/>
-<area shape="rect" id="node116" href="$fat_8h.html" title="fs/fat.h" alt="" coords="793,83,855,111"/>
-<area shape="rect" id="node126" href="$ext2_8h.html" title="Driver Ext2." alt="" coords="688,83,757,111"/>
-<area shape="rect" id="node129" href="$procfs_8h.html" title="fs/procfs.h" alt="" coords="963,315,1045,343"/>
-<area shape="rect" id="node133" href="$beeper_8h.html" title="Driver pour utiliser le beeper." alt="" coords="2723,83,2837,111"/>
-<area shape="rect" id="node135" href="$console_8h.html" title="Console virtuelle (Fn)" alt="" coords="1704,238,1824,266"/>
-<area shape="rect" id="node144" href="$floppy_8h.html" title="drivers/floppy.h" alt="" coords="2144,238,2251,266"/>
-<area shape="rect" id="node147" href="$keyboard_8h.html" title="drivers/keyboard.h" alt="" coords="2861,83,2987,111"/>
-<area shape="rect" id="node149" href="$serial_8h.html" title="drivers/serial.h" alt="" coords="3011,83,3117,111"/>
-<area shape="rect" id="node151" href="$video_8h.html" title="Driver console (vidéo texte)." alt="" coords="2257,315,2364,343"/>
-<area shape="rect" id="node5" href="$types_8h.html" title="types.h" alt="" coords="1264,470,1325,498"/>
-<area shape="rect" id="node33" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="1120,238,1181,266"/>
-<area shape="rect" id="node40" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="872,393,952,421"/>
-<area shape="rect" id="node47" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="557,393,661,421"/>
-<area shape="rect" id="node49" href="$process__types_8h.html" title="process_types.h" alt="" coords="109,393,224,421"/>
-<area shape="rect" id="node51" href="$symtable_8h.html" title="symtable.h" alt="" coords="248,393,331,421"/>
-<area shape="rect" id="node54" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="267,470,312,498"/>
-<area shape="rect" id="node63" href="$kstdio_8h.html" title="kprintf" alt="" coords="2387,161,2453,189"/>
-<area shape="rect" id="node99" href="$pci__types_8h.html" title="pci_types.h" alt="" coords="2097,393,2183,421"/>
-<area shape="rect" id="node121" href="$vfs_8h.html" title="Virtual File System." alt="" coords="685,161,736,189"/>
-<area shape="rect" id="node138" href="$tty_8h.html" title="Terminal posix&#45;like." alt="" coords="1681,315,1727,343"/>
-<area shape="rect" id="node141" href="$termios__types_8h.html" title="termios_types.h" alt="" coords="1607,393,1719,421"/>
+<area shape="rect" id="node3" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="359,238,421,266"/>
+<area shape="rect" id="node7" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="163,315,241,343"/>
+<area shape="rect" id="node10" href="$events_8h.html" title="events.h" alt="" coords="430,161,499,189"/>
+<area shape="rect" id="node13" href="$fpu_8h.html" title="fpu.h" alt="" coords="202,83,253,111"/>
+<area shape="rect" id="node15" href="$gdt_8h.html" title="gdt.h" alt="" coords="1885,238,1935,266"/>
+<area shape="rect" id="node18" href="$i8259_8h.html" title="Initialisation du i8259 qui s&#39;occupe des interruptions." alt="" coords="1942,161,2003,189"/>
+<area shape="rect" id="node21" href="$idt_8h.html" title="Initialisation de la table des descripteurs d&#39;interruption (et exceptions) et association aux handler..." alt="" coords="2134,238,2179,266"/>
+<area shape="rect" id="node24" href="$init_8h.html" title="init.h" alt="" coords="501,83,549,111"/>
+<area shape="rect" id="node26" href="$interrupts_8h.html" title="Gestion des interruptions.." alt="" coords="2318,161,2403,189"/>
+<area shape="rect" id="node29" href="$kdirent_8h.html" title="Syscall pour ce qui est relatif aux dossiers." alt="" coords="58,83,127,111"/>
+<area shape="rect" id="node37" href="$kfcntl_8h.html" title="Kernel file control operations." alt="" coords="945,161,1009,189"/>
+<area shape="rect" id="node43" href="$kprocess_8h.html" title="Création de nouveaux processus." alt="" coords="613,238,695,266"/>
+<area shape="rect" id="node57" href="$vmm_8h.html" title="vmm.h" alt="" coords="835,315,894,343"/>
+<area shape="rect" id="node61" href="$klog_8h.html" title="Logging macros." alt="" coords="674,83,730,111"/>
+<area shape="rect" id="node65" href="$kmalloc_8h.html" title="Allocateur mémoire en kernel space." alt="" coords="918,238,995,266"/>
+<area shape="rect" id="node68" href="$kpanic_8h.html" title="Handlers des exceptions." alt="" coords="1070,315,1139,343"/>
+<area shape="rect" id="node72" href="$ksem_8h.html" title="Coté noyau de la gestion des sémaphores." alt="" coords="21,238,82,266"/>
+<area shape="rect" id="node76" href="$ksignal_8h.html" title="ksignal.h" alt="" coords="523,161,595,189"/>
+<area shape="rect" id="node83" href="$kunistd_8h.html" title="Principales fonctions de l&#39;API POSIX (read, write, seek, stat...)" alt="" coords="754,83,826,111"/>
+<area shape="rect" id="node88" href="$memory_8h.html" title="Gestion des pages mémoires physiques." alt="" coords="1134,161,1211,189"/>
+<area shape="rect" id="node91" href="$multiboot_8h.html" title="multiboot.h" alt="" coords="1307,83,1393,111"/>
+<area shape="rect" id="node93" href="$pagination_8h.html" title="pagination.h" alt="" coords="1171,238,1262,266"/>
+<area shape="rect" id="node96" href="$round__robin_8h.html" title="round_robin.h" alt="" coords="327,83,426,111"/>
+<area shape="rect" id="node98" href="$scheduler_8h.html" title="scheduler.h" alt="" coords="219,161,305,189"/>
+<area shape="rect" id="node103" href="$syscall__values_8h.html" title="syscall_values.h" alt="" coords="1569,83,1681,111"/>
+<area shape="rect" id="node106" href="$vfs_8h.html" title="Virtual File System." alt="" coords="1235,83,1283,111"/>
+<area shape="rect" id="node111" href="$beeper_8h.html" title="Driver pour utiliser le beeper." alt="" coords="1755,83,1867,111"/>
+<area shape="rect" id="node113" href="$console_8h.html" title="Console virtuelle (Fn)" alt="" coords="1491,161,1609,189"/>
+<area shape="rect" id="node122" href="$floppy_8h.html" title="drivers/floppy.h" alt="" coords="1705,315,1811,343"/>
+<area shape="rect" id="node125" href="$keyboard_8h.html" title="drivers/keyboard.h" alt="" coords="1993,83,2118,111"/>
+<area shape="rect" id="node127" href="$serial_8h.html" title="drivers/serial.h" alt="" coords="2142,83,2243,111"/>
+<area shape="rect" id="node129" href="$video_8h.html" title="Driver console (vidéo texte)." alt="" coords="1737,161,1838,189"/>
+<area shape="rect" id="node132" href="$devfs_8h.html" title="fs/devfs.h" alt="" coords="1438,238,1513,266"/>
+<area shape="rect" id="node5" href="$types_8h.html" title="types.h" alt="" coords="1110,393,1171,421"/>
+<area shape="rect" id="node33" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="710,161,769,189"/>
+<area shape="rect" id="node40" href="$fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="1315,315,1395,343"/>
+<area shape="rect" id="node47" href="$signal__types_8h.html" title="Types pour les signaux (en particulier les numéros de signaux)." alt="" coords="366,315,467,343"/>
+<area shape="rect" id="node49" href="$process__types_8h.html" title="process_types.h" alt="" coords="598,315,710,343"/>
+<area shape="rect" id="node51" href="$symtable_8h.html" title="symtable.h" alt="" coords="491,315,574,343"/>
+<area shape="rect" id="node54" href="$elf_8h.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="510,393,555,421"/>
+<area shape="rect" id="node63" href="$kstdio_8h.html" title="kprintf" alt="" coords="619,161,686,189"/>
+<area shape="rect" id="node116" href="$tty_8h.html" title="Terminal posix&#45;like." alt="" coords="1587,238,1633,266"/>
+<area shape="rect" id="node119" href="$termios__types_8h.html" title="termios_types.h" alt="" coords="1571,315,1681,343"/>
 </map>

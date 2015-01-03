@@ -11,6 +11,7 @@ var searchData=
   ['inb',['inb',['../ioports_8h.html#ad6488a48837d179b1833e2f48dac9665',1,'ioports.h']]],
   ['inl',['inl',['../ioports_8h.html#ae285c9abe0ed43579db8e8ba941385f7',1,'ioports.h']]],
   ['inlcr',['INLCR',['../termios__types_8h.html#acc6dc46be5104b67ffde1df93549472a',1,'termios_types.h']]],
+  ['insert_5fkey',['INSERT_KEY',['../keyboard_8c.html#a48891a70925e78c2384c0c868b93a6cd',1,'keyboard.c']]],
   ['int_5fmax',['INT_MAX',['../limits_8h.html#a9ec306f36d50c7375e74f0d1c55a3a67',1,'limits.h']]],
   ['int_5fmin',['INT_MIN',['../limits_8h.html#a21658776274b3d146c674318b635a334',1,'limits.h']]],
   ['interrupt_5fbase',['INTERRUPT_BASE',['../idt_8h.html#ac375aea9903187b528bbc74c208a0f02',1,'idt.h']]],

@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/drivers/block/floppy/floppy_motor.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -100,19 +101,21 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 </div>
 <p><a href="floppy__motor_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="enum-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Énumérations</h2></td></tr>
-<tr class="memitem:add6bb30f455445a1aa955aa5f3bc6f3d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__motor_8h.html#add6bb30f455445a1aa955aa5f3bc6f3d">floppy_motor_state</a> { <b>OFF</b> =  0, 
-<b>ON</b> =  1
+<tr class="memitem:add6bb30f455445a1aa955aa5f3bc6f3d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add6bb30f455445a1aa955aa5f3bc6f3d"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__motor_8h.html#add6bb30f455445a1aa955aa5f3bc6f3d">floppy_motor_state</a> { <b>OFF</b> = 0, 
+<b>ON</b> = 1
  }</td></tr>
-<tr class="memdesc:add6bb30f455445a1aa955aa5f3bc6f3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Décrit l'état du moteur (on/off) <br/></td></tr>
+<tr class="memdesc:add6bb30f455445a1aa955aa5f3bc6f3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Décrit l'état du moteur (on/off) <br /></td></tr>
+<tr class="separator:add6bb30f455445a1aa955aa5f3bc6f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a8e34854bf77e8b763e57b6a8986ecff5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__motor_8h.html#a8e34854bf77e8b763e57b6a8986ecff5">floppy_motor</a> (<a class="el" href="floppy__motor_8h.html#add6bb30f455445a1aa955aa5f3bc6f3d">floppy_motor_state</a> new_state)</td></tr>
-<tr class="memdesc:a8e34854bf77e8b763e57b6a8986ecff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change l'état du moteur.  <a href="#a8e34854bf77e8b763e57b6a8986ecff5"></a><br/></td></tr>
+<tr class="memitem:a898833517cf74583ac034d3e8bde709d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy__motor_8h.html#a898833517cf74583ac034d3e8bde709d">floppy_motor</a> (int drive, <a class="el" href="floppy__motor_8h.html#add6bb30f455445a1aa955aa5f3bc6f3d">floppy_motor_state</a> new_state)</td></tr>
+<tr class="memdesc:a898833517cf74583ac034d3e8bde709d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change l'état du moteur.  <a href="#a898833517cf74583ac034d3e8bde709d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a898833517cf74583ac034d3e8bde709d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -123,42 +126,44 @@ LICENSE</h1>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 <p>Description de ce que fait le fichier </p>
-</div><h2>Documentation des fonctions</h2>
-<a class="anchor" id="a8e34854bf77e8b763e57b6a8986ecff5"></a>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="a898833517cf74583ac034d3e8bde709d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void floppy_motor </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="floppy__motor_8h.html#add6bb30f455445a1aa955aa5f3bc6f3d">floppy_motor_state</a>&#160;</td>
-          <td class="paramname"><em>new_state</em></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>drive</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="floppy__motor_8h.html#add6bb30f455445a1aa955aa5f3bc6f3d">floppy_motor_state</a>&#160;</td>
+          <td class="paramname"><em>new_state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
+    <tr><td class="paramname">drive</td><td>Numero de drive </td></tr>
     <tr><td class="paramname">new_state</td><td>état du moteur désiré </td></tr>
   </table>
   </dd>
 </dl>
 
 <p><div class="dynheader">
-Voici le graphe d'appel pour cette fonction :</div>
-<div class="dyncontent">
-<div class="center"><img src="floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_cgraph.png" border="0" usemap="#floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_cgraph" alt=""/></div>
-<map name="floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_cgraph" id="floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_cgraph">
-<area shape="rect" id="node3" href="floppy__utils_8c.html#aab49f8f343dc0a1f9c89ec5f5e444e0e" title="Retourne le numero tu lecteur courrant." alt="" coords="151,5,276,49"/></map>
-</div>
-</p>
-
-<p><div class="dynheader">
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
-<div class="center"><img src="floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_icgraph.png" border="0" usemap="#floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_icgraph" alt=""/></div>
-<map name="floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_icgraph" id="floppy__motor_8h_a8e34854bf77e8b763e57b6a8986ecff5_icgraph">
-<area shape="rect" id="node3" href="floppy__utils_8h.html#acf13f3cbd5df998eefb55cd2d15210c5" title="Déplace la tête de lecture à un cylindre défini." alt="" coords="149,5,240,33"/></map>
+<div class="center"><img src="floppy__motor_8h_a898833517cf74583ac034d3e8bde709d_icgraph.png" border="0" usemap="#floppy__motor_8h_a898833517cf74583ac034d3e8bde709d_icgraph" alt=""/></div>
+<map name="floppy__motor_8h_a898833517cf74583ac034d3e8bde709d_icgraph" id="floppy__motor_8h_a898833517cf74583ac034d3e8bde709d_icgraph">
+<area shape="rect" id="node2" href="floppy__utils_8h.html#a751e18d73696c87a576a9a24ac4fcfd3" title="Déplace la tête de lecture à un cylindre défini. " alt="" coords="148,5,239,32"/></map>
 </div>
 </p>
 
@@ -167,9 +172,9 @@ Voici le graphe des appelants de cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:34 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

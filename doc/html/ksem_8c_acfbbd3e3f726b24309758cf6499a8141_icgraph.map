@@ -1,4 +1,4 @@
 <map id="ksemP" name="ksemP">
-<area shape="rect" id="node3" href="$kprocess_8c.html#a4e715b0cdc3fe2325e5dcc64ec07f0f9" title="Bloque le process courant jusqu&#39;à ce que le processus identifié par pid se termine." alt="" coords="117,5,277,33"/>
-<area shape="rect" id="node5" href="$ksem_8c.html#a82fb70bceeb23516b8cbdc1bc8f77805" title="Handler de l&#39;appel système SYS_SEM Dans la pratique, sys_ksem ne fait qu&#39;exécuter la fonction corresp..." alt="" coords="117,55,277,83"/>
+<area shape="rect" id="node2" href="$kprocess_8c.html#a4e715b0cdc3fe2325e5dcc64ec07f0f9" title="Bloque le process courant jusqu&#39;à ce que le processus identifié par pid se termine. " alt="" coords="116,5,276,32"/>
+<area shape="rect" id="node3" href="$ksem_8c.html#a82fb70bceeb23516b8cbdc1bc8f77805" title="Handler de l&#39;appel système SYS_SEM Dans la pratique, sys_ksem ne fait qu&#39;exécuter la fonction corresp..." alt="" coords="116,56,276,83"/>
 </map>

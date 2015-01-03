@@ -1,85 +1,90 @@
 \hypertarget{video_8c}{\section{Référence du fichier kernel/drivers/char/video.c}
-\label{video_8c}\index{kernel/drivers/char/video.\-c@{kernel/drivers/char/video.\-c}}
+\label{video_8c}\index{kernel/drivers/char/video.\+c@{kernel/drivers/char/video.\+c}}
 }
-{\ttfamily \#include $<$types.\-h$>$}\\*
-{\ttfamily \#include $<$ioports.\-h$>$}\\*
-{\ttfamily \#include $<$drivers/video.\-h$>$}\\*
-Graphe des dépendances par inclusion de video.\-c\-:\nopagebreak
+{\ttfamily \#include $<$types.\+h$>$}\\*
+{\ttfamily \#include $<$ioports.\+h$>$}\\*
+{\ttfamily \#include $<$drivers/video.\+h$>$}\\*
+Graphe des dépendances par inclusion de video.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=252pt]{video_8c__incl}
+\includegraphics[width=254pt]{video_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{video_8c_ad7ed43a2e8bd59c7bb6c00e1e3f88d1b}{B\-A\-S\-E\-\_\-\-V\-G\-A\-\_\-\-V\-I\-D\-E\-O}~0x\-B8000
+\#define \hyperlink{video_8c_ad7ed43a2e8bd59c7bb6c00e1e3f88d1b}{B\+A\+S\+E\+\_\+\+V\+G\+A\+\_\+\+V\+I\+D\+E\+O}~0x\+B8000
 \item 
-\hypertarget{video_8c_a8725fb7a6014e9fdccb345f16f712ce4}{\#define {\bfseries C\-R\-T\-\_\-\-R\-E\-G\-\_\-\-I\-N\-D\-E\-X}~0x3d4}\label{video_8c_a8725fb7a6014e9fdccb345f16f712ce4}
+\hypertarget{video_8c_a8725fb7a6014e9fdccb345f16f712ce4}{\#define {\bfseries C\+R\+T\+\_\+\+R\+E\+G\+\_\+\+I\+N\+D\+E\+X}~0x3d4}\label{video_8c_a8725fb7a6014e9fdccb345f16f712ce4}
 
 \item 
-\hypertarget{video_8c_a3e64c358bf521d0f067c58b74fcf02e7}{\#define {\bfseries C\-R\-T\-\_\-\-R\-E\-G\-\_\-\-D\-A\-T\-A}~0x3d5}\label{video_8c_a3e64c358bf521d0f067c58b74fcf02e7}
+\hypertarget{video_8c_a3e64c358bf521d0f067c58b74fcf02e7}{\#define {\bfseries C\+R\+T\+\_\+\+R\+E\+G\+\_\+\+D\+A\+T\+A}~0x3d5}\label{video_8c_a3e64c358bf521d0f067c58b74fcf02e7}
 
 \item 
-\hypertarget{video_8c_a3595eefb56271fd4e57c51f85eeb1cb2}{\#define {\bfseries C\-U\-R\-S\-O\-R\-\_\-\-P\-O\-S\-\_\-\-M\-S\-B}~0x0\-E}\label{video_8c_a3595eefb56271fd4e57c51f85eeb1cb2}
+\hypertarget{video_8c_a3595eefb56271fd4e57c51f85eeb1cb2}{\#define {\bfseries C\+U\+R\+S\+O\+R\+\_\+\+P\+O\+S\+\_\+\+M\+S\+B}~0x0\+E}\label{video_8c_a3595eefb56271fd4e57c51f85eeb1cb2}
 
 \item 
-\hypertarget{video_8c_acd16c06f0724819659298faa07d8e0f4}{\#define {\bfseries C\-U\-R\-S\-O\-R\-\_\-\-P\-O\-S\-\_\-\-L\-S\-B}~0x0\-F}\label{video_8c_acd16c06f0724819659298faa07d8e0f4}
+\hypertarget{video_8c_acd16c06f0724819659298faa07d8e0f4}{\#define {\bfseries C\+U\+R\+S\+O\+R\+\_\+\+P\+O\+S\+\_\+\+L\+S\+B}~0x0\+F}\label{video_8c_acd16c06f0724819659298faa07d8e0f4}
 
 \item 
-\#define \hyperlink{video_8c_aeac6f81ecab12113ca0beab3094f086c}{N\-B\-\_\-\-V\-G\-A\-\_\-\-P\-A\-G\-E\-S}~4
+\#define \hyperlink{video_8c_aeac6f81ecab12113ca0beab3094f086c}{N\+B\+\_\+\+V\+G\+A\+\_\+\+P\+A\+G\+E\+S}~4
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{video_8c_a759f71f304c11873e67bf7cc3f2d08a8}{void \hyperlink{video_8c_a759f71f304c11873e67bf7cc3f2d08a8}{init\-\_\-video} ()}\label{video_8c_a759f71f304c11873e67bf7cc3f2d08a8}
+\hypertarget{video_8c_a759f71f304c11873e67bf7cc3f2d08a8}{void \hyperlink{video_8c_a759f71f304c11873e67bf7cc3f2d08a8}{init\+\_\+video} ()}\label{video_8c_a759f71f304c11873e67bf7cc3f2d08a8}
 
 \begin{DoxyCompactList}\small\item\em Initialise l'affichage vidéo. En particulier les 4 pages disponibles. \end{DoxyCompactList}\item 
-void \hyperlink{video_8c_ab549780053994f6b1dba04869b562a43}{switch\-\_\-page} (int i)
+void \hyperlink{video_8c_ab549780053994f6b1dba04869b562a43}{switch\+\_\+page} (int i)
 \begin{DoxyCompactList}\small\item\em Change la page à afficher à l'écran. \end{DoxyCompactList}\item 
-void \hyperlink{video_8c_ab5839353cba28b424b12338feca82385}{flip\-\_\-page} (int n)
+void \hyperlink{video_8c_ab5839353cba28b424b12338feca82385}{flip\+\_\+page} (int n)
 \begin{DoxyCompactList}\small\item\em Interverti les 2 buffers d'une page. \end{DoxyCompactList}\item 
-void \hyperlink{video_8c_a61e8f22681edb740e2d057ac270e6f5b}{disable\-\_\-cursor} (int disable)
+void \hyperlink{video_8c_a61e8f22681edb740e2d057ac270e6f5b}{disable\+\_\+cursor} (int disable)
 \begin{DoxyCompactList}\small\item\em Désactive l'affichage du curseur. \end{DoxyCompactList}\item 
-\hypertarget{video_8c_ab1ddd4e6afaac2e5d7ed1d7575e8186b}{void \hyperlink{video_8c_ab1ddd4e6afaac2e5d7ed1d7575e8186b}{cursor\-\_\-position\-\_\-video} (int n, int x, int y)}\label{video_8c_ab1ddd4e6afaac2e5d7ed1d7575e8186b}
+\hypertarget{video_8c_ab1ddd4e6afaac2e5d7ed1d7575e8186b}{void \hyperlink{video_8c_ab1ddd4e6afaac2e5d7ed1d7575e8186b}{cursor\+\_\+position\+\_\+video} (int n, int x, int y)}\label{video_8c_ab1ddd4e6afaac2e5d7ed1d7575e8186b}
 
 \begin{DoxyCompactList}\small\item\em Change la position du curseur. \end{DoxyCompactList}\item 
-\hypertarget{video_8c_ab1abb360e352f13b691ed232ab8bc6f7}{void \hyperlink{video_8c_ab1abb360e352f13b691ed232ab8bc6f7}{kputchar\-\_\-video} (int n, bool front, char c, int x, int y, char attr)}\label{video_8c_ab1abb360e352f13b691ed232ab8bc6f7}
+\hypertarget{video_8c_a245349c6364aa746521136a348bff3cd}{void \hyperlink{video_8c_a245349c6364aa746521136a348bff3cd}{kputchar\+\_\+video} (int n, bool front, unsigned char c, int x, int y, char attr)}\label{video_8c_a245349c6364aa746521136a348bff3cd}
 
 \begin{DoxyCompactList}\small\item\em Affiche dans une page le caractère souhaité à l'endroit souhaité. \end{DoxyCompactList}\item 
-\hypertarget{video_8c_a287a2812973a8101091cb0a371802334}{void \hyperlink{video_8c_a287a2812973a8101091cb0a371802334}{get\-\_\-char\-\_\-video} (int n, bool front, char $\ast$c, int x, int y, char $\ast$attr)}\label{video_8c_a287a2812973a8101091cb0a371802334}
-
-\begin{DoxyCompactList}\small\item\em Permet de récupérer le caractère situé à une certaine position de l'écran. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \hyperlink{video_8c_a9f41de97e0b180e50aeff97af64d5dd2}{scrollup} (int n, char attr)
+\begin{DoxyCompactList}\small\item\em Scroll everything up. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \hyperlink{video_8c_a612f1d730f1f1ec5e7aac18bba60f094}{convert\+\_\+latin1\+\_\+cp437} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010-\/2014 Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 Description de ce que fait le fichier 
 
 \subsection{Documentation des macros}
-\hypertarget{video_8c_ad7ed43a2e8bd59c7bb6c00e1e3f88d1b}{\index{video.\-c@{video.\-c}!B\-A\-S\-E\-\_\-\-V\-G\-A\-\_\-\-V\-I\-D\-E\-O@{B\-A\-S\-E\-\_\-\-V\-G\-A\-\_\-\-V\-I\-D\-E\-O}}
-\index{B\-A\-S\-E\-\_\-\-V\-G\-A\-\_\-\-V\-I\-D\-E\-O@{B\-A\-S\-E\-\_\-\-V\-G\-A\-\_\-\-V\-I\-D\-E\-O}!video.c@{video.\-c}}
-\subsubsection[{B\-A\-S\-E\-\_\-\-V\-G\-A\-\_\-\-V\-I\-D\-E\-O}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\-A\-S\-E\-\_\-\-V\-G\-A\-\_\-\-V\-I\-D\-E\-O~0x\-B8000}}\label{video_8c_ad7ed43a2e8bd59c7bb6c00e1e3f88d1b}
-The video memory address. \hypertarget{video_8c_aeac6f81ecab12113ca0beab3094f086c}{\index{video.\-c@{video.\-c}!N\-B\-\_\-\-V\-G\-A\-\_\-\-P\-A\-G\-E\-S@{N\-B\-\_\-\-V\-G\-A\-\_\-\-P\-A\-G\-E\-S}}
-\index{N\-B\-\_\-\-V\-G\-A\-\_\-\-P\-A\-G\-E\-S@{N\-B\-\_\-\-V\-G\-A\-\_\-\-P\-A\-G\-E\-S}!video.c@{video.\-c}}
-\subsubsection[{N\-B\-\_\-\-V\-G\-A\-\_\-\-P\-A\-G\-E\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-B\-\_\-\-V\-G\-A\-\_\-\-P\-A\-G\-E\-S~4}}\label{video_8c_aeac6f81ecab12113ca0beab3094f086c}
-Nombre de pages possibles par le driver V\-G\-A dans le mode texte. 
+\hypertarget{video_8c_ad7ed43a2e8bd59c7bb6c00e1e3f88d1b}{\index{video.\+c@{video.\+c}!B\+A\+S\+E\+\_\+\+V\+G\+A\+\_\+\+V\+I\+D\+E\+O@{B\+A\+S\+E\+\_\+\+V\+G\+A\+\_\+\+V\+I\+D\+E\+O}}
+\index{B\+A\+S\+E\+\_\+\+V\+G\+A\+\_\+\+V\+I\+D\+E\+O@{B\+A\+S\+E\+\_\+\+V\+G\+A\+\_\+\+V\+I\+D\+E\+O}!video.\+c@{video.\+c}}
+\subsubsection[{B\+A\+S\+E\+\_\+\+V\+G\+A\+\_\+\+V\+I\+D\+E\+O}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+A\+S\+E\+\_\+\+V\+G\+A\+\_\+\+V\+I\+D\+E\+O~0x\+B8000}}\label{video_8c_ad7ed43a2e8bd59c7bb6c00e1e3f88d1b}
+The video memory address. \hypertarget{video_8c_aeac6f81ecab12113ca0beab3094f086c}{\index{video.\+c@{video.\+c}!N\+B\+\_\+\+V\+G\+A\+\_\+\+P\+A\+G\+E\+S@{N\+B\+\_\+\+V\+G\+A\+\_\+\+P\+A\+G\+E\+S}}
+\index{N\+B\+\_\+\+V\+G\+A\+\_\+\+P\+A\+G\+E\+S@{N\+B\+\_\+\+V\+G\+A\+\_\+\+P\+A\+G\+E\+S}!video.\+c@{video.\+c}}
+\subsubsection[{N\+B\+\_\+\+V\+G\+A\+\_\+\+P\+A\+G\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+B\+\_\+\+V\+G\+A\+\_\+\+P\+A\+G\+E\+S~4}}\label{video_8c_aeac6f81ecab12113ca0beab3094f086c}
+Nombre de pages possibles par le driver V\+G\+A dans le mode texte. 
 
 \subsection{Documentation des fonctions}
-\hypertarget{video_8c_a61e8f22681edb740e2d057ac270e6f5b}{\index{video.\-c@{video.\-c}!disable\-\_\-cursor@{disable\-\_\-cursor}}
-\index{disable\-\_\-cursor@{disable\-\_\-cursor}!video.c@{video.\-c}}
-\subsubsection[{disable\-\_\-cursor}]{\setlength{\rightskip}{0pt plus 5cm}void disable\-\_\-cursor (
+\hypertarget{video_8c_a61e8f22681edb740e2d057ac270e6f5b}{\index{video.\+c@{video.\+c}!disable\+\_\+cursor@{disable\+\_\+cursor}}
+\index{disable\+\_\+cursor@{disable\+\_\+cursor}!video.\+c@{video.\+c}}
+\subsubsection[{disable\+\_\+cursor}]{\setlength{\rightskip}{0pt plus 5cm}void disable\+\_\+cursor (
 \begin{DoxyParamCaption}
 \item[{int}]{disable}
 \end{DoxyParamCaption}
@@ -91,7 +96,8 @@ Nombre de pages possibles par le driver V\-G\-A dans le mode texte.
 \end{DoxyParams}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -100,9 +106,9 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{video_8c_ab5839353cba28b424b12338feca82385}{\index{video.\-c@{video.\-c}!flip\-\_\-page@{flip\-\_\-page}}
-\index{flip\-\_\-page@{flip\-\_\-page}!video.c@{video.\-c}}
-\subsubsection[{flip\-\_\-page}]{\setlength{\rightskip}{0pt plus 5cm}void flip\-\_\-page (
+\hypertarget{video_8c_ab5839353cba28b424b12338feca82385}{\index{video.\+c@{video.\+c}!flip\+\_\+page@{flip\+\_\+page}}
+\index{flip\+\_\+page@{flip\+\_\+page}!video.\+c@{video.\+c}}
+\subsubsection[{flip\+\_\+page}]{\setlength{\rightskip}{0pt plus 5cm}void flip\+\_\+page (
 \begin{DoxyParamCaption}
 \item[{int}]{n}
 \end{DoxyParamCaption}
@@ -114,18 +120,58 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=244pt]{video_8c_ab5839353cba28b424b12338feca82385_cgraph}
+\includegraphics[width=242pt]{video_8c_ab5839353cba28b424b12338feca82385_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{video_8c_ab549780053994f6b1dba04869b562a43}{\index{video.\-c@{video.\-c}!switch\-\_\-page@{switch\-\_\-page}}
-\index{switch\-\_\-page@{switch\-\_\-page}!video.c@{video.\-c}}
-\subsubsection[{switch\-\_\-page}]{\setlength{\rightskip}{0pt plus 5cm}void switch\-\_\-page (
+
+
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{video_8c_ab5839353cba28b424b12338feca82385_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{video_8c_a9f41de97e0b180e50aeff97af64d5dd2}{\index{video.\+c@{video.\+c}!scrollup@{scrollup}}
+\index{scrollup@{scrollup}!video.\+c@{video.\+c}}
+\subsubsection[{scrollup}]{\setlength{\rightskip}{0pt plus 5cm}void scrollup (
+\begin{DoxyParamCaption}
+\item[{int}]{n, }
+\item[{char}]{attr}
+\end{DoxyParamCaption}
+)}}\label{video_8c_a9f41de97e0b180e50aeff97af64d5dd2}
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Le numero de la page concernée. \\
+\hline
+{\em attr} & L'attribut qui définit la couleur pour la nouvelle ligne. \\
+\hline
+\end{DoxyParams}
+
+
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video_8c_a9f41de97e0b180e50aeff97af64d5dd2_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{video_8c_ab549780053994f6b1dba04869b562a43}{\index{video.\+c@{video.\+c}!switch\+\_\+page@{switch\+\_\+page}}
+\index{switch\+\_\+page@{switch\+\_\+page}!video.\+c@{video.\+c}}
+\subsubsection[{switch\+\_\+page}]{\setlength{\rightskip}{0pt plus 5cm}void switch\+\_\+page (
 \begin{DoxyParamCaption}
 \item[{int}]{i}
 \end{DoxyParamCaption}
@@ -137,7 +183,8 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \end{DoxyParams}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -146,3 +193,31 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{figure}
 
 
+
+
+\subsection{Documentation des variables}
+\hypertarget{video_8c_a612f1d730f1f1ec5e7aac18bba60f094}{\index{video.\+c@{video.\+c}!convert\+\_\+latin1\+\_\+cp437@{convert\+\_\+latin1\+\_\+cp437}}
+\index{convert\+\_\+latin1\+\_\+cp437@{convert\+\_\+latin1\+\_\+cp437}!video.\+c@{video.\+c}}
+\subsubsection[{convert\+\_\+latin1\+\_\+cp437}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char convert\+\_\+latin1\+\_\+cp437\mbox{[}$\,$\mbox{]}}}\label{video_8c_a612f1d730f1f1ec5e7aac18bba60f094}
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}
+= \{
+  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,  14,  15,
+ 16,  17,  18,  19,  20,  21,  22,  23,  24,  25,  26,  27,  28,  29,  30,  31,
+ 32,  33,  34,  35,  36,  37,  38,  39,  40,  41,  42,  43,  44,  45,  46,  47,
+ 48,  49,  50,  51,  52,  53,  54,  55,  56,  57,  58,  59,  60,  61,  62,  63,
+ 64,  65,  66,  67,  68,  69,  70,  71,  72,  73,  74,  75,  76,  77,  78,  79,
+ 80,  81,  82,  83,  84,  85,  86,  87,  88,  89,  90,  91,  92,  93,  94,  95,
+ 96,  97,  98,  99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111,
+112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127,
+186, 205, 201, 187, 200, 188, 204, 185, 203, 202, 206, 223, 220, 219, 254, 242,
+179, 196, 218, 191, 192, 217, 195, 180, 194, 193, 197, 176, 177, 178, 213, 159,
+255, 173, 155, 156, 207, 157, 221, 21, 249, 184, 166, 174, 170, 240, 169, 238,
+248, 241, 253, 252, 239, 230, 244, 250, 247, 251, 167, 175, 172, 171, 243, 168,
+183, 181, 182, 199, 142, 143, 146, 128, 212, 144, 210, 211, 222, 214, 215, 216,
+209, 165, 227, 224, 226, 229, 153, 158, 190, 235, 233, 234, 154, 237, 232, 225,
+133, 160, 131, 198, 132, 134, 145, 135, 138, 130, 136, 137, 141, 161, 140, 139,
+208, 164, 149, 162, 147, 228, 148, 246, 189, 151, 163, 150, 129, 236, 231, 152
+\}
+\end{DoxyCode}
+Table de conversion latin1 vers cp437 (celui utilisé pour l'affichage) 

@@ -1,6 +1,6 @@
 <map id="kernel/include/kdirent.h" name="kernel/include/kdirent.h">
 <area shape="rect" id="node3" href="$ksyscall_8h.html" title="ksyscall.h" alt="" coords="53,238,131,266"/>
 <area shape="rect" id="node5" href="$types_8h.html" title="types.h" alt="" coords="99,315,160,343"/>
-<area shape="rect" id="node8" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="120,83,181,111"/>
+<area shape="rect" id="node8" href="$kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="121,83,180,111"/>
 <area shape="rect" id="node11" href="$clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="120,161,181,189"/>
 </map>

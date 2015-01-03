@@ -6,6 +6,7 @@ var searchData=
   ['idt_5fsetup',['idt_setup',['../idt_8c.html#a559dc3a4f73d1813f12a104840e68550',1,'idt_setup():&#160;idt.c'],['../idt_8h.html#a559dc3a4f73d1813f12a104840e68550',1,'idt_setup():&#160;idt.c']]],
   ['init_5fdriver_5flist',['init_driver_list',['../devfs_8c.html#a1279d0621da67d0065d99077517d197a',1,'devfs.c']]],
   ['init_5ffloppy',['init_floppy',['../floppy_8c.html#a4b305e10e95fed92b047adfac6dc4881',1,'init_floppy():&#160;floppy.c'],['../floppy_8h.html#a4b305e10e95fed92b047adfac6dc4881',1,'init_floppy():&#160;floppy.c']]],
+  ['init_5framdisk',['init_ramdisk',['../ram_8c.html#a3d9369faea2678ed6a6da7267ad28464',1,'init_ramdisk(vaddr_t start, vaddr_t end):&#160;ram.c'],['../ram_8h.html#a3d9369faea2678ed6a6da7267ad28464',1,'init_ramdisk(vaddr_t start, vaddr_t end):&#160;ram.c']]],
   ['init_5fscheduler',['init_scheduler',['../scheduler_8h.html#a353a4f6525d48b0459246ae392d81e23',1,'init_scheduler(int Q):&#160;scheduler.c'],['../scheduler_8c.html#a353a4f6525d48b0459246ae392d81e23',1,'init_scheduler(int Q):&#160;scheduler.c']]],
   ['init_5fsemaphores',['init_semaphores',['../ksem_8h.html#a191f0fb163ab01b5d2041bdd20d6d424',1,'init_semaphores():&#160;ksem.c'],['../ksem_8c.html#a191f0fb163ab01b5d2041bdd20d6d424',1,'init_semaphores():&#160;ksem.c']]],
   ['init_5fstdfd',['init_stdfd',['../kfcntl_8h.html#a5cb8d11eeb6842f49090696dbda4490b',1,'init_stdfd(process_t *new_proc):&#160;kfcntl.c'],['../kfcntl_8c.html#a5cb8d11eeb6842f49090696dbda4490b',1,'init_stdfd(process_t *new_proc):&#160;kfcntl.c']]],

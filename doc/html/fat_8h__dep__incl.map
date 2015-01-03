@@ -1,6 +1,5 @@
 <map id="kernel/include/fs/fat.h" name="kernel/include/fs/fat.h">
-<area shape="rect" id="node3" href="$fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="5,83,125,111"/>
-<area shape="rect" id="node5" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="149,83,328,111"/>
-<area shape="rect" id="node7" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="352,83,459,111"/>
-<area shape="rect" id="node9" href="$vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="483,83,571,111"/>
+<area shape="rect" id="node2" href="$fat_8c.html" title="Driver FAT. " alt="" coords="5,80,125,107"/>
+<area shape="rect" id="node3" href="$fat__functions_8c.html" title="Fonctions pour le driver FAT. " alt="" coords="150,80,330,107"/>
+<area shape="rect" id="node4" href="$init_8c.html" title="kernel/init.c" alt="" coords="355,80,443,107"/>
 </map>

@@ -1,9 +1,9 @@
 <map id="libc/include/fcntl.h" name="libc/include/fcntl.h">
-<area shape="rect" id="node3" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="5,83,93,111"/>
-<area shape="rect" id="node5" href="$fcntl_8c.html" title="File control operations." alt="" coords="117,83,197,111"/>
-<area shape="rect" id="node7" href="$process_8c.html" title="libc/process.c" alt="" coords="221,83,323,111"/>
-<area shape="rect" id="node9" href="$fclose_8c.html" title="Define &quot;fclose&quot; method." alt="" coords="347,83,469,111"/>
-<area shape="rect" id="node11" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="493,83,613,111"/>
-<area shape="rect" id="node13" href="$put_8c.html" title="libc/stdio/put.c" alt="" coords="637,83,744,111"/>
-<area shape="rect" id="node15" href="$stdfiles_8c.html" title="Définition et initialisation des fichiers standards (stdin, stdout, stderr)." alt="" coords="768,83,896,111"/>
+<area shape="rect" id="node2" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers. " alt="" coords="5,80,93,107"/>
+<area shape="rect" id="node3" href="$fcntl_8c.html" title="File control operations. " alt="" coords="118,80,199,107"/>
+<area shape="rect" id="node4" href="$process_8c.html" title="libc/process.c" alt="" coords="223,80,326,107"/>
+<area shape="rect" id="node5" href="$fclose_8c.html" title="Define &quot;fclose&quot; method. " alt="" coords="351,80,473,107"/>
+<area shape="rect" id="node6" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="497,80,617,107"/>
+<area shape="rect" id="node7" href="$put_8c.html" title="libc/stdio/put.c" alt="" coords="641,80,748,107"/>
+<area shape="rect" id="node8" href="$stdfiles_8c.html" title="Définition et initialisation des fichiers standards (stdin, stdout, stderr). " alt="" coords="773,80,902,107"/>
 </map>

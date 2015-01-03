@@ -115,33 +115,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="struct__open__file__operations__t.html#a187ebd3d665fde0a486bd7f5d3001f00">   78</a></span>&#160;        int (*<a class="code" href="struct__open__file__operations__t.html#a187ebd3d665fde0a486bd7f5d3001f00">close</a>) (<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a>*);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="struct__open__file__operations__t.html#a7cdb4947735c5559610fb8be2472791d">   83</a></span>&#160;        int (*<a class="code" href="struct__open__file__operations__t.html#a7cdb4947735c5559610fb8be2472791d">readdir</a>) (<span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a>*, <span class="keywordtype">char</span>*, <a class="code" href="types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;} open_file_operations_t;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="struct__open__file__descriptor.html">   90</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a> {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">// A dégager ? Infos dans l&#39;inode.</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">int</span> current_cluster; <span class="comment">//XXX à supprimer (sock en dépend encore).</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> buffer[512]; <span class="comment">//XXX à supprimer.</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;} open_file_operations_t;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="struct__open__file__descriptor.html">   91</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__open__file__descriptor.html">_open_file_descriptor</a> {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">// A dégager ? Infos dans l&#39;inode.</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> flags;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordtype">int</span> current_cluster; <span class="comment">//XXX à supprimer (sock en dépend encore).</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">char</span> * pathname;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> current_octet; <span class="comment">// Utile pour f_pos ?</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> first_cluster;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> file_size; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="comment">// Utile ? on peut l&#39;avoir par mnt-&gt;instance</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">_fs_instance_t</a> *fs_instance;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="comment">// Rajouter inode ?</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__inode__t.html">_inode_t</a> *inode;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a> *dentry;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__mounted__fs__t.html">_mounted_fs_t</a> *mnt;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__open__file__operations__t.html">_open_file_operations_t</a> *f_ops;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordtype">void</span> * extra_data;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> current_octet; <span class="comment">// Utile pour f_pos ? TODO: Renommer :D</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <a class="code" href="types_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> select_sem;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="comment">// Utile ? on peut l&#39;avoir par mnt-&gt;instance</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__fs__instance__t.html" title="Instance d&#39;un couple FS/Device monté.">_fs_instance_t</a> *fs_instance;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="comment">// Rajouter inode ?</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__inode__t.html">_inode_t</a> *inode;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__dentry__t.html">_dentry_t</a> *dentry;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__mounted__fs__t.html">_mounted_fs_t</a> *mnt;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct__open__file__operations__t.html">_open_file_operations_t</a> *f_ops;</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="code" href="struct__open__file__descriptor.html#a2fc86f185e4b611a90f7727ef26ff3de">  106</a></span>&#160;        <span class="keywordtype">void</span> * <a class="code" href="struct__open__file__descriptor.html#a2fc86f185e4b611a90f7727ef26ff3de">i_fs_specific</a>; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="code" href="struct__open__file__descriptor.html#a99824795a31a8adea2162aed74162017">  107</a></span>&#160;        <span class="keywordtype">void</span> * <a class="code" href="struct__open__file__descriptor.html#a99824795a31a8adea2162aed74162017">extra_data</a>; </div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;} <a class="code" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a>;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:16 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 8 2014 09:54:14 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

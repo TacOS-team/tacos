@@ -95,17 +95,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__dma_8c.html#a82b03eec2e2db0df14b77521b2b0cd99" title="Initialise le dma en écriture ou en lecture selon la valeur passée en paramètre.">floppy_dma_init</a>(<a class="code" href="floppy__dma_8h.html#adfcc8a5beaf1532fc574bc706d3e1fbe" title="Défini le sens de la communication (input / output)">floppy_io</a> io_dir);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__dma_8c.html#ac6e644203ea530de67552b2debe0bac2" title="Lis un secteur via le DMA à partir d&#39;un adressage CHS.">floppy_read_sector</a>(<span class="keywordtype">int</span> cylinder, <span class="keywordtype">int</span> head, <span class="keywordtype">int</span> sector, <span class="keywordtype">char</span>* buffer);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__dma_8c.html#af9d347980c43209de48f63cd9f201419" title="Ecrit un secteur via le DMA à partir d&#39;un adressage CHS.">floppy_write_sector</a>(<span class="keywordtype">int</span> cylinder, <span class="keywordtype">int</span> head, <span class="keywordtype">int</span> sector, <span class="keywordtype">char</span>* buffer);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__dma_8c.html#a9a073de9335769383869ae2d32b91356" title="Lis un secteur via le DMA à partir d&#39;un adressage CHS.">floppy_read_sector</a>(<span class="keywordtype">int</span> drive, <span class="keywordtype">int</span> cylinder, <span class="keywordtype">int</span> head, <span class="keywordtype">int</span> sector, <span class="keywordtype">char</span>* buffer);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floppy__dma_8c.html#ad7009dd44478d9d4b167f74d5b098b43" title="Ecrit un secteur via le DMA à partir d&#39;un adressage CHS.">floppy_write_sector</a>(<span class="keywordtype">int</span> drive, <span class="keywordtype">int</span> cylinder, <span class="keywordtype">int</span> head, <span class="keywordtype">int</span> sector, <span class="keywordtype">char</span>* buffer);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:15 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 8 2014 09:54:14 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

@@ -1,12 +1,12 @@
 <map id="libc/include/string.h" name="libc/include/string.h">
-<area shape="rect" id="node3" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers." alt="" coords="5,83,93,111"/>
-<area shape="rect" id="node5" href="$malloc_8c.html" title="libc/malloc.c" alt="" coords="117,83,211,111"/>
-<area shape="rect" id="node7" href="$process_8c.html" title="libc/process.c" alt="" coords="235,83,336,111"/>
-<area shape="rect" id="node9" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="360,83,480,111"/>
-<area shape="rect" id="node11" href="$fprintf_8c.html" title="libc/stdio/fprintf.c" alt="" coords="504,83,624,111"/>
-<area shape="rect" id="node13" href="$scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="648,83,768,111"/>
-<area shape="rect" id="node15" href="$stdfiles_8c.html" title="Définition et initialisation des fichiers standards (stdin, stdout, stderr)." alt="" coords="792,83,920,111"/>
-<area shape="rect" id="node17" href="$libc_2stdlib_8c.html" title="libc/stdlib.c" alt="" coords="944,83,1029,111"/>
-<area shape="rect" id="node19" href="$libc_2string_8c.html" title="libc/string.c" alt="" coords="1053,83,1141,111"/>
-<area shape="rect" id="node21" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="1165,83,1256,111"/>
+<area shape="rect" id="node2" href="$dirent_8c.html" title="Fonctions pour faciliter la gestion des dossiers. " alt="" coords="5,80,93,107"/>
+<area shape="rect" id="node3" href="$malloc_8c.html" title="libc/malloc.c" alt="" coords="118,80,213,107"/>
+<area shape="rect" id="node4" href="$process_8c.html" title="libc/process.c" alt="" coords="237,80,339,107"/>
+<area shape="rect" id="node5" href="$fopen_8c.html" title="libc/stdio/fopen.c" alt="" coords="364,80,484,107"/>
+<area shape="rect" id="node6" href="$fprintf_8c.html" title="libc/stdio/fprintf.c" alt="" coords="509,80,630,107"/>
+<area shape="rect" id="node7" href="$scanf_8c.html" title="libc/stdio/scanf.c" alt="" coords="655,80,775,107"/>
+<area shape="rect" id="node8" href="$stdfiles_8c.html" title="Définition et initialisation des fichiers standards (stdin, stdout, stderr). " alt="" coords="799,80,929,107"/>
+<area shape="rect" id="node9" href="$libc_2stdlib_8c.html" title="libc/stdlib.c" alt="" coords="953,80,1039,107"/>
+<area shape="rect" id="node10" href="$libc_2string_8c.html" title="libc/string.c" alt="" coords="1064,80,1152,107"/>
+<area shape="rect" id="node11" href="$unistd_8c.html" title="libc/unistd.c" alt="" coords="1176,80,1267,107"/>
 </map>

@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/include/kunistd.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -92,48 +93,66 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Principales fonctions de l'API POSIX (read, write, seek, stat...)  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="ksyscall_8h_source.html">ksyscall.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="kstat_8h_source.html">kstat.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="ksyscall_8h_source.html">ksyscall.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="kstat_8h_source.html">kstat.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de kunistd.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h__incl.png" border="0" usemap="#kernel_2include_2kunistd_8h" alt=""/></div>
 <map name="kernel_2include_2kunistd_8h" id="kernel_2include_2kunistd_8h">
-<area shape="rect" id="node3" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="100,315,161,343"/><area shape="rect" id="node5" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="55,238,132,266"/><area shape="rect" id="node8" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="121,83,183,111"/><area shape="rect" id="node11" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="121,161,183,189"/></map>
+<area shape="rect" id="node2" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="103,304,165,331"/><area shape="rect" id="node3" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="56,229,135,256"/><area shape="rect" id="node4" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier. " alt="" coords="123,80,185,107"/><area shape="rect" id="node5" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="123,155,185,181"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h__dep__incl.png" border="0" usemap="#kernel_2include_2kunistd_8hdep" alt=""/></div>
 <map name="kernel_2include_2kunistd_8hdep" id="kernel_2include_2kunistd_8hdep">
-<area shape="rect" id="node3" href="elf_8c.html" title="Bibliotèque destinée à manipuler les fichiers exécutables ELF." alt="" coords="5,83,91,111"/><area shape="rect" id="node5" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="115,83,221,111"/><area shape="rect" id="node7" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="245,83,368,111"/><area shape="rect" id="node9" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="392,83,504,111"/><area shape="rect" id="node11" href="module_8c.html" title="kernel/module.c" alt="" coords="528,83,640,111"/></map>
+<area shape="rect" id="node2" href="elf_8c.html" title="Bibliothèque destinée à manipuler les fichiers exécutables ELF. " alt="" coords="5,80,91,107"/><area shape="rect" id="node3" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="115,80,221,107"/><area shape="rect" id="node4" href="kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="246,80,370,107"/><area shape="rect" id="node5" href="kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="394,80,507,107"/><area shape="rect" id="node6" href="module_8c.html" title="kernel/module.c" alt="" coords="531,80,645,107"/></map>
 </div>
 </div>
 <p><a href="kunistd_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a12b7516e50c36ff9b70f66e8d7e62ba8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a> (sys_write, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, const void *buf, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> *c)</td></tr>
+<tr class="separator:a12b7516e50c36ff9b70f66e8d7e62ba8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a5c9caaf5f21371f9d9d6886eb26bc0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a1a5c9caaf5f21371f9d9d6886eb26bc0">SYSCALL_HANDLER3</a> (sys_read, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, const void *buf, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> *c)</td></tr>
+<tr class="separator:a1a5c9caaf5f21371f9d9d6886eb26bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5dd5ee4481953b987bfc1bcb836be820"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a5dd5ee4481953b987bfc1bcb836be820">SYSCALL_HANDLER3</a> (sys_seek, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, long *offset, int whence)</td></tr>
+<tr class="separator:a5dd5ee4481953b987bfc1bcb836be820"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1eab9ba54efce654ee3cd717f2161b8f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a1eab9ba54efce654ee3cd717f2161b8f">SYSCALL_HANDLER3</a> (sys_ioctl, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *fd, unsigned int request, void *data)</td></tr>
+<tr class="separator:a1eab9ba54efce654ee3cd717f2161b8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2500c755854466e0369d6c3718e5eccf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a2500c755854466e0369d6c3718e5eccf">SYSCALL_HANDLER3</a> (sys_select, <a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *fd, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> n, int *ret)</td></tr>
+<tr class="separator:a2500c755854466e0369d6c3718e5eccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18585c0d8560c855f1d38405703e7eb3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a18585c0d8560c855f1d38405703e7eb3">SYSCALL_HANDLER3</a> (sys_stat, const char *path, struct <a class="el" href="structstat.html">stat</a> *buf, int *ret)</td></tr>
+<tr class="separator:a18585c0d8560c855f1d38405703e7eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99434c0e561b0e99c4ef081ae5773703"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a99434c0e561b0e99c4ef081ae5773703">SYSCALL_HANDLER2</a> (sys_unlink, const char *path, int *ret)</td></tr>
+<tr class="separator:a99434c0e561b0e99c4ef081ae5773703"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a754a9d6d5d3da3db605147488e485805"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a754a9d6d5d3da3db605147488e485805">SYSCALL_HANDLER2</a> (sys_dup, int oldfd, int *ret)</td></tr>
+<tr class="separator:a754a9d6d5d3da3db605147488e485805"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f1fab5ee3e02656c4b5aabbb8043f4a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f1fab5ee3e02656c4b5aabbb8043f4a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER2</b> (sys_dup2, int oldfd, int *newfd)</td></tr>
+<tr class="separator:a9f1fab5ee3e02656c4b5aabbb8043f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c6c302ef479ae5474c3aedf65ec8dbe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kunistd_8h.html#a8c6c302ef479ae5474c3aedf65ec8dbe">SYSCALL_HANDLER3</a> (sys_mknod, const char *path, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>, <a class="el" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a> *dev)</td></tr>
+<tr class="separator:a8c6c302ef479ae5474c3aedf65ec8dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55268fce444099c28094cb9c42ea6bd7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a55268fce444099c28094cb9c42ea6bd7"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_chmod, const char *path, <a class="el" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="el" href="structmode.html">mode</a>, int *ret)</td></tr>
+<tr class="separator:a55268fce444099c28094cb9c42ea6bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46360ac642b4433254d5fce6fa9dc076"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46360ac642b4433254d5fce6fa9dc076"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_chown, const char *path, <a class="el" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a> owner, <a class="el" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a> *group)</td></tr>
+<tr class="separator:a46360ac642b4433254d5fce6fa9dc076"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33914b700f1e73c3f4908c58e7d3ec11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33914b700f1e73c3f4908c58e7d3ec11"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_utimes, const char *path, const struct <a class="el" href="structtimeval.html">timeval</a> times[2], int *ret)</td></tr>
+<tr class="separator:a33914b700f1e73c3f4908c58e7d3ec11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8510f0ffa3080d9713c29d0e13dd3cf7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8510f0ffa3080d9713c29d0e13dd3cf7"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_rename, const char *oldpath, const char *newpath, int *ret)</td></tr>
+<tr class="separator:a8510f0ffa3080d9713c29d0e13dd3cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae71cbff52224975ee9ce4b8687316eb9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae71cbff52224975ee9ce4b8687316eb9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SYSCALL_HANDLER3</b> (sys_readlink, const char *path, char *buf, <a class="el" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a> *ret)</td></tr>
+<tr class="separator:ae71cbff52224975ee9ce4b8687316eb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -143,7 +162,7 @@ LICENSE</h1>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-</div><h2>Documentation des fonctions</h2>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a99434c0e561b0e99c4ef081ae5773703"></a>
 <div class="memitem">
 <div class="memproto">
@@ -187,7 +206,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h_a99434c0e561b0e99c4ef081ae5773703_cgraph.png" border="0" usemap="#kunistd_8h_a99434c0e561b0e99c4ef081ae5773703_cgraph" alt=""/></div>
 <map name="kunistd_8h_a99434c0e561b0e99c4ef081ae5773703_cgraph" id="kunistd_8h_a99434c0e561b0e99c4ef081ae5773703_cgraph">
-<area shape="rect" id="node3" href="vfs_8h.html#a4f8b6a1f2b0e6012446196f18b33d686" title="Suppression d&#39;un noeud." alt="" coords="215,5,295,33"/><area shape="rect" id="node5" href="dcache_8c.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="344,5,459,33"/><area shape="rect" id="node7" href="hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="507,5,632,33"/><area shape="rect" id="node9" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="680,5,731,33"/></map>
+<area shape="rect" id="node2" href="vfs_8h.html#a4f8b6a1f2b0e6012446196f18b33d686" title="Suppression d&#39;un noeud. " alt="" coords="213,5,295,32"/><area shape="rect" id="node3" href="dcache_8c.html#a1532980bfa072d469940da4b8ce176ac" title="dcache_remove" alt="" coords="343,5,457,32"/><area shape="rect" id="node4" href="hashmap_8h.html#ae3866ef4f62955d2803f96170ab2fa9e" title="hashmap_remove" alt="" coords="505,5,631,32"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5aaca0462e88916f57db57384fd7618a" title="kfree" alt="" coords="679,5,729,32"/></map>
 </div>
 </p>
 
@@ -236,7 +255,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h_a754a9d6d5d3da3db605147488e485805_cgraph.png" border="0" usemap="#kunistd_8h_a754a9d6d5d3da3db605147488e485805_cgraph" alt=""/></div>
 <map name="kunistd_8h_a754a9d6d5d3da3db605147488e485805_cgraph" id="kunistd_8h_a754a9d6d5d3da3db605147488e485805_cgraph">
-<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
+<area shape="rect" id="node2" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation. " alt="" coords="213,5,353,32"/></map>
 </div>
 </p>
 
@@ -292,7 +311,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph.png" border="0" usemap="#kunistd_8h_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph" alt=""/></div>
 <map name="kunistd_8h_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph" id="kunistd_8h_a12b7516e50c36ff9b70f66e8d7e62ba8_cgraph">
-<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
+<area shape="rect" id="node2" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation. " alt="" coords="213,5,353,32"/></map>
 </div>
 </p>
 
@@ -348,7 +367,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph.png" border="0" usemap="#kunistd_8h_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph" alt=""/></div>
 <map name="kunistd_8h_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph" id="kunistd_8h_a1a5c9caaf5f21371f9d9d6886eb26bc0_cgraph">
-<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
+<area shape="rect" id="node2" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation. " alt="" coords="213,5,353,32"/></map>
 </div>
 </p>
 
@@ -402,7 +421,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h_a5dd5ee4481953b987bfc1bcb836be820_cgraph.png" border="0" usemap="#kunistd_8h_a5dd5ee4481953b987bfc1bcb836be820_cgraph" alt=""/></div>
 <map name="kunistd_8h_a5dd5ee4481953b987bfc1bcb836be820_cgraph" id="kunistd_8h_a5dd5ee4481953b987bfc1bcb836be820_cgraph">
-<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
+<area shape="rect" id="node2" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation. " alt="" coords="213,5,353,32"/></map>
 </div>
 </p>
 
@@ -456,7 +475,63 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h_a1eab9ba54efce654ee3cd717f2161b8f_cgraph.png" border="0" usemap="#kunistd_8h_a1eab9ba54efce654ee3cd717f2161b8f_cgraph" alt=""/></div>
 <map name="kunistd_8h_a1eab9ba54efce654ee3cd717f2161b8f_cgraph" id="kunistd_8h_a1eab9ba54efce654ee3cd717f2161b8f_cgraph">
-<area shape="rect" id="node3" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation." alt="" coords="215,5,353,33"/></map>
+<area shape="rect" id="node2" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation. " alt="" coords="213,5,353,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a2500c755854466e0369d6c3718e5eccf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SYSCALL_HANDLER3 </td>
+          <td>(</td>
+          <td class="paramtype">sys_select&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a>&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>ret</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Syscall pour surveiller des descripteurs de fichier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fd</td><td>Tableau de numéros de descripteurs de fichier à surveiller. </td></tr>
+    <tr><td class="paramname">n</td><td>Nombre de descripteurs de fichier. </td></tr>
+    <tr><td class="paramname">ret</td><td>Retour de la fonction : premier descripteur de fichier prêt en lecture. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="kunistd_8h_a2500c755854466e0369d6c3718e5eccf_cgraph.png" border="0" usemap="#kunistd_8h_a2500c755854466e0369d6c3718e5eccf_cgraph" alt=""/></div>
+<map name="kunistd_8h_a2500c755854466e0369d6c3718e5eccf_cgraph" id="kunistd_8h_a2500c755854466e0369d6c3718e5eccf_cgraph">
+<area shape="rect" id="node2" href="scheduler_8h.html#a2d69bf5462cbcb1bddac7b8c4f7b6973" title="Retourne le processus en cours d&#39;utilisation. " alt="" coords="333,21,473,48"/><area shape="rect" id="node3" href="ksem_8h.html#a7f54885ee2689208328406935525f0a5" title="Obtenir ou créer un sémaphore. ksemget retourne un semid propre au processus, associé au sémaphore dé..." alt="" coords="213,21,285,48"/><area shape="rect" id="node4" href="ksem_8h.html#af980f49354b68b113faee6edd6851bf9" title="Manipulation d&#39;un sémaphore. ksemctl permet de manipuler un sémaphore (suppression, libération, valeur, etc.) " alt="" coords="215,123,283,149"/><area shape="rect" id="node6" href="ksem_8h.html#acfbbd3e3f726b24309758cf6499a8141" title="Opération P sur un sémaphore Réalise l&#39;opération P sur le sémaphore. Le processus essaye donc de pren..." alt="" coords="218,72,281,99"/><area shape="rect" id="node5" href="kprocess_8h.html#a99064f971fd1f14adcbf0a0a5c2af452" title="Cherche le process_t* en correspondant à un pid donné. " alt="" coords="356,123,451,149"/></map>
 </div>
 </p>
 
@@ -512,7 +587,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h_a18585c0d8560c855f1d38405703e7eb3_cgraph.png" border="0" usemap="#kunistd_8h_a18585c0d8560c855f1d38405703e7eb3_cgraph" alt=""/></div>
 <map name="kunistd_8h_a18585c0d8560c855f1d38405703e7eb3_cgraph" id="kunistd_8h_a18585c0d8560c855f1d38405703e7eb3_cgraph">
-<area shape="rect" id="node3" href="vfs_8h.html#a67e1b452e79d57b6080feb5e1d320234" title="Obtient des infos sur un noeud." alt="" coords="213,5,283,33"/></map>
+<area shape="rect" id="node2" href="vfs_8h.html#a39d949890bbe2bd87e7add21eab37ba1" title="Obtient des infos sur un noeud. " alt="" coords="213,5,283,32"/></map>
 </div>
 </p>
 
@@ -560,7 +635,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="kunistd_8h_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph.png" border="0" usemap="#kunistd_8h_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph" alt=""/></div>
 <map name="kunistd_8h_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph" id="kunistd_8h_a8c6c302ef479ae5474c3aedf65ec8dbe_cgraph">
-<area shape="rect" id="node3" href="vfs_8h.html#addbdd0f5a70a3babbcb5ca4d63e2c3fd" title="Création d&#39;un nouveau noeud." alt="" coords="215,5,300,33"/></map>
+<area shape="rect" id="node2" href="vfs_8h.html#addbdd0f5a70a3babbcb5ca4d63e2c3fd" title="Création d&#39;un nouveau noeud. " alt="" coords="213,5,300,32"/></map>
 </div>
 </p>
 
@@ -569,9 +644,9 @@ Voici le graphe d'appel pour cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:38 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

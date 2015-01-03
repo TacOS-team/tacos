@@ -1,6 +1,6 @@
 <map id="set_scheduler_event" name="set_scheduler_event">
-<area shape="rect" id="node3" href="$clock_8c.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="232,30,291,58"/>
-<area shape="rect" id="node9" href="$clock_8c.html#a052807a5c6ae63175a937381014a5701" title="Ajoute des us à un temps. Ajoute des us à un temps contenu dans une structure timeval." alt="" coords="199,81,324,109"/>
-<area shape="rect" id="node5" href="$clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes." alt="" coords="377,5,449,33"/>
-<area shape="rect" id="node7" href="$clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="375,55,452,83"/>
+<area shape="rect" id="node3" href="$clock_8c.html#a0dc3166547de3bc1b9bdf45fdfb7d2e5" title="Retourne date courante. Retourne une structure timeval qui contient la date courante en seconde et mi..." alt="" coords="227,30,283,58"/>
+<area shape="rect" id="node9" href="$clock_8c.html#a052807a5c6ae63175a937381014a5701" title="Ajoute des us à un temps. Ajoute des us à un temps contenu dans une structure timeval." alt="" coords="192,81,317,109"/>
+<area shape="rect" id="node5" href="$clock_8c.html#ab1bd72177a9697cdd2eec38a4fe6651e" title="Retourne la date actuelle en secondes. Retourne la date actuelle en secondes." alt="" coords="369,5,441,33"/>
+<area shape="rect" id="node7" href="$clock_8c.html#a36d22a2c7fc11c6f382386a8b658b6f8" title="Retourne le temps système. Renvoie la valeur actuelle du temps système en nombre de ticks (1 tick = 1..." alt="" coords="367,55,444,83"/>
 </map>

@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/include/kunistd.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,41 +90,58 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="kunistd_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _KUNISTD_H</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _KUNISTD_H</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define _KUNISTD_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ksyscall_8h.html">ksyscall.h</a>&gt;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier.">kstat.h</a>&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kstat_8h.html">kstat.h</a>&gt;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;SYSCALL_HANDLER3(sys_write, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> *c);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<a class="code" href="kunistd_8h.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a>(sys_write, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> *c);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;SYSCALL_HANDLER3(sys_read, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> *c);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<a class="code" href="kunistd_8h.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a>(sys_read, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> *c);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;SYSCALL_HANDLER3(sys_seek, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, <span class="keywordtype">long</span> *offset, <span class="keywordtype">int</span> whence);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<a class="code" href="kunistd_8h.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a>(sys_seek, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> fd, <span class="keywordtype">long</span> *offset, <span class="keywordtype">int</span> whence);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;SYSCALL_HANDLER3(sys_ioctl, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *fd, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> request, <span class="keywordtype">void</span> *data);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<a class="code" href="kunistd_8h.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a>(sys_ioctl, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *fd, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> request, <span class="keywordtype">void</span> *data);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;SYSCALL_HANDLER3(sys_stat, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">struct</span> <a class="code" href="structstat.html" title="Informations sur un noeud.">stat</a> *buf, <span class="keywordtype">int</span> *ret);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<a class="code" href="kunistd_8h.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a>(sys_select, <a class="code" href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> *fd, <span class="keywordtype">size_t</span> n, <span class="keywordtype">int</span> *ret);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;SYSCALL_HANDLER2(sys_unlink, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keywordtype">int</span> *ret);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;SYSCALL_HANDLER2(sys_dup, <span class="keywordtype">int</span> oldfd, <span class="keywordtype">int</span> *ret);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;SYSCALL_HANDLER2(sys_dup2, <span class="keywordtype">int</span> oldfd, <span class="keywordtype">int</span> *newfd);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;SYSCALL_HANDLER3(sys_mknod, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>, <a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a> *dev);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;SYSCALL_HANDLER3(sys_chmod, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>, <span class="keywordtype">int</span> *ret);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;SYSCALL_HANDLER3(sys_chown, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <a class="code" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a> owner, <a class="code" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a> *group);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;SYSCALL_HANDLER3(sys_utimes, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structtimeval.html">timeval</a> times[2], <span class="keywordtype">int</span> *ret);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;SYSCALL_HANDLER3(sys_rename, <span class="keyword">const</span> <span class="keywordtype">char</span> *oldpath, <span class="keyword">const</span> <span class="keywordtype">char</span> *newpath, <span class="keywordtype">int</span> *ret);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<a class="code" href="kunistd_8h.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a>(sys_stat, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">struct</span> <a class="code" href="structstat.html">stat</a> *buf, <span class="keywordtype">int</span> *ret);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<a class="code" href="kunistd_8h.html#a99434c0e561b0e99c4ef081ae5773703">SYSCALL_HANDLER2</a>(sys_unlink, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keywordtype">int</span> *ret);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<a class="code" href="kunistd_8h.html#a99434c0e561b0e99c4ef081ae5773703">SYSCALL_HANDLER2</a>(sys_dup, <span class="keywordtype">int</span> oldfd, <span class="keywordtype">int</span> *ret);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<a class="code" href="kunistd_8h.html#a99434c0e561b0e99c4ef081ae5773703">SYSCALL_HANDLER2</a>(sys_dup2, <span class="keywordtype">int</span> oldfd, <span class="keywordtype">int</span> *newfd);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<a class="code" href="kunistd_8h.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a>(sys_mknod, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>, <a class="code" href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a> *dev);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<a class="code" href="kunistd_8h.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a>(sys_chmod, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <a class="code" href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a> <a class="code" href="structmode.html">mode</a>, <span class="keywordtype">int</span> *ret);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<a class="code" href="kunistd_8h.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a>(sys_chown, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <a class="code" href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a> owner, <a class="code" href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a> *group);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<a class="code" href="kunistd_8h.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a>(sys_utimes, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structtimeval.html">timeval</a> times[2], <span class="keywordtype">int</span> *ret);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<a class="code" href="kunistd_8h.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a>(sys_rename, <span class="keyword">const</span> <span class="keywordtype">char</span> *oldpath, <span class="keyword">const</span> <span class="keywordtype">char</span> *newpath, <span class="keywordtype">int</span> *ret);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<a class="code" href="kunistd_8h.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a>(sys_readlink, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keywordtype">char</span> *buf, <a class="code" href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a> *ret);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="kernel_2include_2types_8h_html"><div class="ttname"><a href="kernel_2include_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="kunistd_8h_html_a12b7516e50c36ff9b70f66e8d7e62ba8"><div class="ttname"><a href="kunistd_8h.html#a12b7516e50c36ff9b70f66e8d7e62ba8">SYSCALL_HANDLER3</a></div><div class="ttdeci">SYSCALL_HANDLER3(sys_write, uint32_t fd, const void *buf, size_t *c)</div><div class="ttdef"><b>Definition:</b> kunistd.c:37</div></div>
+<div class="ttc" id="kstat_8h_html_af2306308627701b66dc6f3babe821ab4"><div class="ttname"><a href="kstat_8h.html#af2306308627701b66dc6f3babe821ab4">uid_t</a></div><div class="ttdeci">uint32_t uid_t</div><div class="ttdef"><b>Definition:</b> kstat.h:65</div></div>
+<div class="ttc" id="structtimeval_html"><div class="ttname"><a href="structtimeval.html">timeval</a></div><div class="ttdef"><b>Definition:</b> clock.h:41</div></div>
+<div class="ttc" id="kstat_8h_html_a451f1b5788fa7cc5d33db47a5992e7a6"><div class="ttname"><a href="kstat_8h.html#a451f1b5788fa7cc5d33db47a5992e7a6">dev_t</a></div><div class="ttdeci">uint32_t dev_t</div><div class="ttdef"><b>Definition:</b> kstat.h:64</div></div>
+<div class="ttc" id="kstat_8h_html_aa7352f1065fe606194d792e2b292cf83"><div class="ttname"><a href="kstat_8h.html#aa7352f1065fe606194d792e2b292cf83">gid_t</a></div><div class="ttdeci">uint32_t gid_t</div><div class="ttdef"><b>Definition:</b> kstat.h:66</div></div>
+<div class="ttc" id="structstat_html"><div class="ttname"><a href="structstat.html">stat</a></div><div class="ttdoc">Informations sur un noeud. </div><div class="ttdef"><b>Definition:</b> kstat.h:75</div></div>
+<div class="ttc" id="kstat_8h_html_af8f4385bb42836d1e3ad4fea9d71d1b9"><div class="ttname"><a href="kstat_8h.html#af8f4385bb42836d1e3ad4fea9d71d1b9">mode_t</a></div><div class="ttdeci">uint32_t mode_t</div><div class="ttdef"><b>Definition:</b> kstat.h:63</div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_af629ed855824cf5955b54529adf78ad6"><div class="ttname"><a href="kernel_2include_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a></div><div class="ttdeci">int ssize_t</div><div class="ttdef"><b>Definition:</b> types.h:44</div></div>
+<div class="ttc" id="ksyscall_8h_html"><div class="ttname"><a href="ksyscall_8h.html">ksyscall.h</a></div></div>
+<div class="ttc" id="kernel_2include_2types_8h_html_a33594304e786b158f3fb30289278f5af"><div class="ttname"><a href="kernel_2include_2types_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a></div><div class="ttdeci">unsigned long int uint32_t</div><div class="ttdef"><b>Definition:</b> types.h:36</div></div>
+<div class="ttc" id="structmode_html"><div class="ttname"><a href="structmode.html">mode</a></div><div class="ttdef"><b>Definition:</b> vga_modes.h:37</div></div>
+<div class="ttc" id="kunistd_8h_html_a99434c0e561b0e99c4ef081ae5773703"><div class="ttname"><a href="kunistd_8h.html#a99434c0e561b0e99c4ef081ae5773703">SYSCALL_HANDLER2</a></div><div class="ttdeci">SYSCALL_HANDLER2(sys_unlink, const char *path, int *ret)</div><div class="ttdef"><b>Definition:</b> kunistd.c:161</div></div>
+<div class="ttc" id="kstat_8h_html"><div class="ttname"><a href="kstat_8h.html">kstat.h</a></div><div class="ttdoc">Manipulation des caractéristiques d&#39;un fichier. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

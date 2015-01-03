@@ -6,8 +6,7 @@
 {\ttfamily \#include $<$stdlib.\-h$>$}\\*
 {\ttfamily \#include $<$unistd.\-h$>$}\\*
 {\ttfamily \#include $<$sys/syscall.\-h$>$}\\*
-Graphe des dépendances par inclusion de time.\-c\-:
-\nopagebreak
+Graphe des dépendances par inclusion de time.\-c\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -51,6 +50,10 @@ Graphe des dépendances par inclusion de time.\-c\-:
 \item 
 \hypertarget{time_8c_a0540485394df82add6b7c4f2137c7f21}{\#define {\bfseries T\-I\-M\-E\-\_\-\-M\-A\-X}~0x\-F\-F\-F\-F\-F\-F\-F\-F\-L}\label{time_8c_a0540485394df82add6b7c4f2137c7f21}
 
+\item 
+\#define \hyperlink{time_8c_a3d9fc3c745d0880902fe3ea3d5d5f71e}{C\-L\-O\-C\-K\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}~1000
+\item 
+\#define \hyperlink{time_8c_a6a69d6cbdab5f24c2e66959293f210c1}{U\-S\-E\-C\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}~1000000
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
@@ -70,6 +73,9 @@ Graphe des dépendances par inclusion de time.\-c\-:
 \hypertarget{time_8c_a281c7b9f05d5bd8f947c62b585adc476}{double {\bfseries difftime} (\hyperlink{time_8h_aaaf414ca0598a3633e6e9161cbb5a58a}{time\-\_\-t} time1, \hyperlink{time_8h_aaaf414ca0598a3633e6e9161cbb5a58a}{time\-\_\-t} time0)}\label{time_8c_a281c7b9f05d5bd8f947c62b585adc476}
 
 \item 
+\hypertarget{time_8c_a7ce22a174871ef5206ec0812f759b1c4}{int {\bfseries gettimeofday} (struct \hyperlink{structtimeval}{timeval} $\ast$tv, void $\ast$tz\-\_\-unused)}\label{time_8c_a7ce22a174871ef5206ec0812f759b1c4}
+
+\item 
 \hypertarget{time_8c_a129bf00a0400a4850fcbe47eec72a4e7}{\hyperlink{time_8h_aaaf414ca0598a3633e6e9161cbb5a58a}{time\-\_\-t} {\bfseries mktime} (struct \hyperlink{structtm}{tm} $\ast$timep)}\label{time_8c_a129bf00a0400a4850fcbe47eec72a4e7}
 
 \item 
@@ -86,7 +92,7 @@ Graphe des dépendances par inclusion de time.\-c\-:
 Tac\-O\-S developers
 \end{DoxyAuthor}
 \hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+Copyright (C) 2010-\/2014 Tac\-O\-S developers.
 
 This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
@@ -96,7 +102,10 @@ You should have received a copy of the G\-N\-U General Public License along with
 Description de ce que fait le fichier 
 
 \subsection{Documentation des macros}
-\hypertarget{time_8c_ab6e4646c1e386028708330569ee98f64}{\index{time.\-c@{time.\-c}!H\-O\-U\-R\-S\-\_\-\-P\-E\-R\-\_\-\-D\-A\-Y@{H\-O\-U\-R\-S\-\_\-\-P\-E\-R\-\_\-\-D\-A\-Y}}
+\hypertarget{time_8c_a3d9fc3c745d0880902fe3ea3d5d5f71e}{\index{time.\-c@{time.\-c}!C\-L\-O\-C\-K\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C@{C\-L\-O\-C\-K\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}}
+\index{C\-L\-O\-C\-K\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C@{C\-L\-O\-C\-K\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}!time.c@{time.\-c}}
+\subsubsection[{C\-L\-O\-C\-K\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-L\-O\-C\-K\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C~1000}}\label{time_8c_a3d9fc3c745d0880902fe3ea3d5d5f71e}
+Nombre de secondes par tick d'horloge. \hypertarget{time_8c_ab6e4646c1e386028708330569ee98f64}{\index{time.\-c@{time.\-c}!H\-O\-U\-R\-S\-\_\-\-P\-E\-R\-\_\-\-D\-A\-Y@{H\-O\-U\-R\-S\-\_\-\-P\-E\-R\-\_\-\-D\-A\-Y}}
 \index{H\-O\-U\-R\-S\-\_\-\-P\-E\-R\-\_\-\-D\-A\-Y@{H\-O\-U\-R\-S\-\_\-\-P\-E\-R\-\_\-\-D\-A\-Y}!time.c@{time.\-c}}
 \subsubsection[{H\-O\-U\-R\-S\-\_\-\-P\-E\-R\-\_\-\-D\-A\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-O\-U\-R\-S\-\_\-\-P\-E\-R\-\_\-\-D\-A\-Y~24}}\label{time_8c_ab6e4646c1e386028708330569ee98f64}
 Nombre d'heures par jour. \hypertarget{time_8c_a3ac65777322869d89cd0cbb9ba3c165c}{\index{time.\-c@{time.\-c}!L\-E\-A\-P\-Y\-E\-A\-R@{L\-E\-A\-P\-Y\-E\-A\-R}}
@@ -127,7 +136,10 @@ Nombre de minutes par heure. \hypertarget{time_8c_a096c53b93f98d5295e97390d06ff0
 Nombre de mois par année. \hypertarget{time_8c_ae5e089b553f791f79d02046ff63f3cdb}{\index{time.\-c@{time.\-c}!S\-E\-C\-O\-N\-D\-S\-\_\-\-P\-E\-R\-\_\-\-M\-I\-N\-U\-T\-E@{S\-E\-C\-O\-N\-D\-S\-\_\-\-P\-E\-R\-\_\-\-M\-I\-N\-U\-T\-E}}
 \index{S\-E\-C\-O\-N\-D\-S\-\_\-\-P\-E\-R\-\_\-\-M\-I\-N\-U\-T\-E@{S\-E\-C\-O\-N\-D\-S\-\_\-\-P\-E\-R\-\_\-\-M\-I\-N\-U\-T\-E}!time.c@{time.\-c}}
 \subsubsection[{S\-E\-C\-O\-N\-D\-S\-\_\-\-P\-E\-R\-\_\-\-M\-I\-N\-U\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-E\-C\-O\-N\-D\-S\-\_\-\-P\-E\-R\-\_\-\-M\-I\-N\-U\-T\-E~60}}\label{time_8c_ae5e089b553f791f79d02046ff63f3cdb}
-Nombre de secondes par minute. \hypertarget{time_8c_a9db507ef8c3ce0d32650da0f0a7e5b48}{\index{time.\-c@{time.\-c}!Y\-E\-A\-R\-S\-I\-Z\-E@{Y\-E\-A\-R\-S\-I\-Z\-E}}
+Nombre de secondes par minute. \hypertarget{time_8c_a6a69d6cbdab5f24c2e66959293f210c1}{\index{time.\-c@{time.\-c}!U\-S\-E\-C\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C@{U\-S\-E\-C\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}}
+\index{U\-S\-E\-C\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C@{U\-S\-E\-C\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}!time.c@{time.\-c}}
+\subsubsection[{U\-S\-E\-C\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-S\-E\-C\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C~1000000}}\label{time_8c_a6a69d6cbdab5f24c2e66959293f210c1}
+Nombre de us par secondes. \hypertarget{time_8c_a9db507ef8c3ce0d32650da0f0a7e5b48}{\index{time.\-c@{time.\-c}!Y\-E\-A\-R\-S\-I\-Z\-E@{Y\-E\-A\-R\-S\-I\-Z\-E}}
 \index{Y\-E\-A\-R\-S\-I\-Z\-E@{Y\-E\-A\-R\-S\-I\-Z\-E}!time.c@{time.\-c}}
 \subsubsection[{Y\-E\-A\-R\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Y\-E\-A\-R\-S\-I\-Z\-E(
 \begin{DoxyParamCaption}

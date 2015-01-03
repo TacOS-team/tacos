@@ -22,21 +22,18 @@
 {\ttfamily \#include $<$memory.\-h$>$}\\*
 {\ttfamily \#include $<$multiboot.\-h$>$}\\*
 {\ttfamily \#include $<$pagination.\-h$>$}\\*
-{\ttfamily \#include $<$pci.\-h$>$}\\*
 {\ttfamily \#include $<$round\-\_\-robin.\-h$>$}\\*
 {\ttfamily \#include $<$scheduler.\-h$>$}\\*
 {\ttfamily \#include $<$syscall\-\_\-values.\-h$>$}\\*
 {\ttfamily \#include $<$vmm.\-h$>$}\\*
-{\ttfamily \#include $<$fs/devfs.\-h$>$}\\*
-{\ttfamily \#include $<$fs/fat.\-h$>$}\\*
-{\ttfamily \#include $<$fs/ext2.\-h$>$}\\*
-{\ttfamily \#include $<$fs/procfs.\-h$>$}\\*
+{\ttfamily \#include $<$vfs.\-h$>$}\\*
 {\ttfamily \#include $<$drivers/beeper.\-h$>$}\\*
 {\ttfamily \#include $<$drivers/console.\-h$>$}\\*
 {\ttfamily \#include $<$drivers/floppy.\-h$>$}\\*
 {\ttfamily \#include $<$drivers/keyboard.\-h$>$}\\*
 {\ttfamily \#include $<$drivers/serial.\-h$>$}\\*
 {\ttfamily \#include $<$drivers/video.\-h$>$}\\*
+{\ttfamily \#include $<$fs/devfs.\-h$>$}\\*
 Graphe des dépendances par inclusion de kernel.\-c\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -55,6 +52,15 @@ struct \hyperlink{structkernel__options}{kernel\-\_\-options}
 \hypertarget{kernel_8c_a1bfc511cb9209fa1f98e7cdb85e8093e}{void {\bfseries cmain} (unsigned long magic, unsigned long addr)}\label{kernel_8c_a1bfc511cb9209fa1f98e7cdb85e8093e}
 
 \end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{kernel_8c_a8a56ec5c5ea0d4fa7c1643f7e250090f}{\hyperlink{types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\-\_\-t} {\bfseries ramdisk\-\_\-start} = 0}\label{kernel_8c_a8a56ec5c5ea0d4fa7c1643f7e250090f}
+
+\item 
+\hypertarget{kernel_8c_a41ed08106b57734a862f9f229465aceb}{\hyperlink{types_8h_a9f047c1f0917f6184a7a013d4b4277a6}{paddr\-\_\-t} {\bfseries ramdisk\-\_\-end} = 0}\label{kernel_8c_a41ed08106b57734a862f9f229465aceb}
+
+\end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
@@ -62,7 +68,7 @@ struct \hyperlink{structkernel__options}{kernel\-\_\-options}
 Tac\-O\-S developers
 \end{DoxyAuthor}
 \hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+Copyright (C) 2010-\/2014 Tac\-O\-S developers.
 
 This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 

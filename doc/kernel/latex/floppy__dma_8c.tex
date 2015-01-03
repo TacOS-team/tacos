@@ -30,9 +30,9 @@ Graphe des dépendances par inclusion de floppy\-\_\-dma.\-c\-:\nopagebreak
 \item 
 void \hyperlink{floppy__dma_8c_a82b03eec2e2db0df14b77521b2b0cd99}{floppy\-\_\-dma\-\_\-init} (\hyperlink{floppy__dma_8h_adfcc8a5beaf1532fc574bc706d3e1fbe}{floppy\-\_\-io} io\-\_\-dir)
 \begin{DoxyCompactList}\small\item\em Initialise le dma en écriture ou en lecture selon la valeur passée en paramètre. \end{DoxyCompactList}\item 
-void \hyperlink{floppy__dma_8c_ac6e644203ea530de67552b2debe0bac2}{floppy\-\_\-read\-\_\-sector} (int cylinder, int head, int sector, char $\ast$buffer)
+void \hyperlink{floppy__dma_8c_a9a073de9335769383869ae2d32b91356}{floppy\-\_\-read\-\_\-sector} (int drive, int cylinder, int head, int sector, char $\ast$buffer)
 \begin{DoxyCompactList}\small\item\em Lis un secteur via le D\-M\-A à partir d'un adressage C\-H\-S. \end{DoxyCompactList}\item 
-void \hyperlink{floppy__dma_8c_af9d347980c43209de48f63cd9f201419}{floppy\-\_\-write\-\_\-sector} (int cylinder, int head, int sector, char $\ast$buffer)
+void \hyperlink{floppy__dma_8c_ad7009dd44478d9d4b167f74d5b098b43}{floppy\-\_\-write\-\_\-sector} (int drive, int cylinder, int head, int sector, char $\ast$buffer)
 \begin{DoxyCompactList}\small\item\em Ecrit un secteur via le D\-M\-A à partir d'un adressage C\-H\-S. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -41,7 +41,7 @@ void \hyperlink{floppy__dma_8c_af9d347980c43209de48f63cd9f201419}{floppy\-\_\-wr
 Tac\-O\-S developers
 \end{DoxyAuthor}
 \hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+Copyright (C) 2010-\/2014 Tac\-O\-S developers.
 
 This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
@@ -63,18 +63,21 @@ Fonctions liées à l'utilisation du D\-M\-A dans le driver disquette
 {\em io\-\_\-dir} & Sens de la communication du D\-M\-A à initialiser \\
 \hline
 \end{DoxyParams}
-\hypertarget{floppy__dma_8c_ac6e644203ea530de67552b2debe0bac2}{\index{floppy\-\_\-dma.\-c@{floppy\-\_\-dma.\-c}!floppy\-\_\-read\-\_\-sector@{floppy\-\_\-read\-\_\-sector}}
+\hypertarget{floppy__dma_8c_a9a073de9335769383869ae2d32b91356}{\index{floppy\-\_\-dma.\-c@{floppy\-\_\-dma.\-c}!floppy\-\_\-read\-\_\-sector@{floppy\-\_\-read\-\_\-sector}}
 \index{floppy\-\_\-read\-\_\-sector@{floppy\-\_\-read\-\_\-sector}!floppy_dma.c@{floppy\-\_\-dma.\-c}}
 \subsubsection[{floppy\-\_\-read\-\_\-sector}]{\setlength{\rightskip}{0pt plus 5cm}void floppy\-\_\-read\-\_\-sector (
 \begin{DoxyParamCaption}
+\item[{int}]{drive, }
 \item[{int}]{cylinder, }
 \item[{int}]{head, }
 \item[{int}]{sector, }
 \item[{char $\ast$}]{buffer}
 \end{DoxyParamCaption}
-)}}\label{floppy__dma_8c_ac6e644203ea530de67552b2debe0bac2}
+)}}\label{floppy__dma_8c_a9a073de9335769383869ae2d32b91356}
 
 \begin{DoxyParams}{Paramètres}
+{\em cylinder} & Numero de drive \\
+\hline
 {\em cylinder} & Numero de cylindre \\
 \hline
 {\em head} & Numero de tête de lecture \\
@@ -90,23 +93,26 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=268pt]{floppy__dma_8c_ac6e644203ea530de67552b2debe0bac2_cgraph}
+\includegraphics[width=268pt]{floppy__dma_8c_a9a073de9335769383869ae2d32b91356_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{floppy__dma_8c_af9d347980c43209de48f63cd9f201419}{\index{floppy\-\_\-dma.\-c@{floppy\-\_\-dma.\-c}!floppy\-\_\-write\-\_\-sector@{floppy\-\_\-write\-\_\-sector}}
+\hypertarget{floppy__dma_8c_ad7009dd44478d9d4b167f74d5b098b43}{\index{floppy\-\_\-dma.\-c@{floppy\-\_\-dma.\-c}!floppy\-\_\-write\-\_\-sector@{floppy\-\_\-write\-\_\-sector}}
 \index{floppy\-\_\-write\-\_\-sector@{floppy\-\_\-write\-\_\-sector}!floppy_dma.c@{floppy\-\_\-dma.\-c}}
 \subsubsection[{floppy\-\_\-write\-\_\-sector}]{\setlength{\rightskip}{0pt plus 5cm}void floppy\-\_\-write\-\_\-sector (
 \begin{DoxyParamCaption}
+\item[{int}]{drive, }
 \item[{int}]{cylinder, }
 \item[{int}]{head, }
 \item[{int}]{sector, }
 \item[{char $\ast$}]{buffer}
 \end{DoxyParamCaption}
-)}}\label{floppy__dma_8c_af9d347980c43209de48f63cd9f201419}
+)}}\label{floppy__dma_8c_ad7009dd44478d9d4b167f74d5b098b43}
 
 \begin{DoxyParams}{Paramètres}
+{\em cylinder} & Numero de drive \\
+\hline
 {\em cylinder} & Numero de cylindre \\
 \hline
 {\em head} & Numero de tête de lecture \\
@@ -122,7 +128,7 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=270pt]{floppy__dma_8c_af9d347980c43209de48f63cd9f201419_cgraph}
+\includegraphics[width=268pt]{floppy__dma_8c_ad7009dd44478d9d4b167f74d5b098b43_cgraph}
 \end{center}
 \end{figure}
 

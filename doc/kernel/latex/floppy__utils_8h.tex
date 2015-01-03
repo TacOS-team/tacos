@@ -66,11 +66,7 @@ int \hyperlink{floppy__utils_8h_a0e012dd33083ef16c714cda568627983}{floppy\-\_\-w
 \begin{DoxyCompactList}\small\item\em Envoi une commande au controleur floppy. \end{DoxyCompactList}\item 
 \hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{floppy__utils_8h_accc0dbdcd680cab9890db94a13067284}{floppy\-\_\-read\-\_\-data} ()
 \begin{DoxyCompactList}\small\item\em Lis les données disponibles sur la F\-I\-F\-O du controleur. \end{DoxyCompactList}\item 
-\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{floppy__utils_8h_aab49f8f343dc0a1f9c89ec5f5e444e0e}{floppy\-\_\-get\-\_\-current\-\_\-drive} ()
-\begin{DoxyCompactList}\small\item\em Retourne le numero tu lecteur courrant. \end{DoxyCompactList}\item 
-void \hyperlink{floppy__utils_8h_a0f4c4c2b326322e490f1db0071ad1073}{floppy\-\_\-set\-\_\-current\-\_\-drive} (\hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} drive)
-\begin{DoxyCompactList}\small\item\em Défini le lecteur courrant. \end{DoxyCompactList}\item 
-int \hyperlink{floppy__utils_8h_acf13f3cbd5df998eefb55cd2d15210c5}{floppy\-\_\-seek} (int cylindre, int head)
+int \hyperlink{floppy__utils_8h_a751e18d73696c87a576a9a24ac4fcfd3}{floppy\-\_\-seek} (int drive, int cylindre, int head)
 \begin{DoxyCompactList}\small\item\em Déplace la tête de lecture à un cylindre défini. \end{DoxyCompactList}\item 
 \hyperlink{types_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\-\_\-t} \hyperlink{floppy__utils_8h_a5999e4ed8530afd23984eddeeef2ad60}{floppy\-\_\-get\-\_\-type} (int drive)
 \begin{DoxyCompactList}\small\item\em Retourne le type de disquette accepté par le lecteur. \end{DoxyCompactList}\item 
@@ -96,27 +92,6 @@ You should have received a copy of the G\-N\-U General Public License along with
 Fonctions utilitaires du driver floppy 
 
 \subsection{Documentation des fonctions}
-\hypertarget{floppy__utils_8h_aab49f8f343dc0a1f9c89ec5f5e444e0e}{\index{floppy\-\_\-utils.\-h@{floppy\-\_\-utils.\-h}!floppy\-\_\-get\-\_\-current\-\_\-drive@{floppy\-\_\-get\-\_\-current\-\_\-drive}}
-\index{floppy\-\_\-get\-\_\-current\-\_\-drive@{floppy\-\_\-get\-\_\-current\-\_\-drive}!floppy_utils.h@{floppy\-\_\-utils.\-h}}
-\subsubsection[{floppy\-\_\-get\-\_\-current\-\_\-drive}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} floppy\-\_\-get\-\_\-current\-\_\-drive (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{floppy__utils_8h_aab49f8f343dc0a1f9c89ec5f5e444e0e}
-\begin{DoxyReturn}{Renvoie}
-numero du lecteur courrant 
-\end{DoxyReturn}
-
-
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{floppy__utils_8h_aab49f8f343dc0a1f9c89ec5f5e444e0e_icgraph}
-\end{center}
-\end{figure}
-
-
 \hypertarget{floppy__utils_8h_a5999e4ed8530afd23984eddeeef2ad60}{\index{floppy\-\_\-utils.\-h@{floppy\-\_\-utils.\-h}!floppy\-\_\-get\-\_\-type@{floppy\-\_\-get\-\_\-type}}
 \index{floppy\-\_\-get\-\_\-type@{floppy\-\_\-get\-\_\-type}!floppy_utils.h@{floppy\-\_\-utils.\-h}}
 \subsubsection[{floppy\-\_\-get\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8\-\_\-t} floppy\-\_\-get\-\_\-type (
@@ -138,7 +113,7 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=306pt]{floppy__utils_8h_a5999e4ed8530afd23984eddeeef2ad60_icgraph}
+\includegraphics[width=304pt]{floppy__utils_8h_a5999e4ed8530afd23984eddeeef2ad60_icgraph}
 \end{center}
 \end{figure}
 
@@ -206,16 +181,19 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{floppy__utils_8h_acf13f3cbd5df998eefb55cd2d15210c5}{\index{floppy\-\_\-utils.\-h@{floppy\-\_\-utils.\-h}!floppy\-\_\-seek@{floppy\-\_\-seek}}
+\hypertarget{floppy__utils_8h_a751e18d73696c87a576a9a24ac4fcfd3}{\index{floppy\-\_\-utils.\-h@{floppy\-\_\-utils.\-h}!floppy\-\_\-seek@{floppy\-\_\-seek}}
 \index{floppy\-\_\-seek@{floppy\-\_\-seek}!floppy_utils.h@{floppy\-\_\-utils.\-h}}
 \subsubsection[{floppy\-\_\-seek}]{\setlength{\rightskip}{0pt plus 5cm}int floppy\-\_\-seek (
 \begin{DoxyParamCaption}
+\item[{int}]{drive, }
 \item[{int}]{cylindre, }
 \item[{int}]{head}
 \end{DoxyParamCaption}
-)}}\label{floppy__utils_8h_acf13f3cbd5df998eefb55cd2d15210c5}
+)}}\label{floppy__utils_8h_a751e18d73696c87a576a9a24ac4fcfd3}
 
 \begin{DoxyParams}{Paramètres}
+{\em drive} & numéro de drive \\
+\hline
 {\em cylindre} & numero du cylindre à atteindre \\
 \hline
 {\em head} & numero de la tête a déplacer \\
@@ -230,23 +208,11 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{floppy__utils_8h_acf13f3cbd5df998eefb55cd2d15210c5_cgraph}
+\includegraphics[width=350pt]{floppy__utils_8h_a751e18d73696c87a576a9a24ac4fcfd3_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{floppy__utils_8h_a0f4c4c2b326322e490f1db0071ad1073}{\index{floppy\-\_\-utils.\-h@{floppy\-\_\-utils.\-h}!floppy\-\_\-set\-\_\-current\-\_\-drive@{floppy\-\_\-set\-\_\-current\-\_\-drive}}
-\index{floppy\-\_\-set\-\_\-current\-\_\-drive@{floppy\-\_\-set\-\_\-current\-\_\-drive}!floppy_utils.h@{floppy\-\_\-utils.\-h}}
-\subsubsection[{floppy\-\_\-set\-\_\-current\-\_\-drive}]{\setlength{\rightskip}{0pt plus 5cm}void floppy\-\_\-set\-\_\-current\-\_\-drive (
-\begin{DoxyParamCaption}
-\item[{{\bf uint8\-\_\-t}}]{drive}
-\end{DoxyParamCaption}
-)}}\label{floppy__utils_8h_a0f4c4c2b326322e490f1db0071ad1073}
-
-\begin{DoxyParams}{Paramètres}
-{\em drive} & numero du lecteur à passer en lecteur courrant \\
-\hline
-\end{DoxyParams}
 \hypertarget{floppy__utils_8h_a0e012dd33083ef16c714cda568627983}{\index{floppy\-\_\-utils.\-h@{floppy\-\_\-utils.\-h}!floppy\-\_\-write\-\_\-command@{floppy\-\_\-write\-\_\-command}}
 \index{floppy\-\_\-write\-\_\-command@{floppy\-\_\-write\-\_\-command}!floppy_utils.h@{floppy\-\_\-utils.\-h}}
 \subsubsection[{floppy\-\_\-write\-\_\-command}]{\setlength{\rightskip}{0pt plus 5cm}int floppy\-\_\-write\-\_\-command (

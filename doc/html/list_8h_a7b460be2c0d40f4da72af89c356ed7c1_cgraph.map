@@ -1,10 +1,11 @@
 <map id="print_list" name="print_list">
-<area shape="rect" id="node3" href="$kstdio_8h.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran." alt="" coords="125,106,184,134"/>
-<area shape="rect" id="node5" href="$vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier." alt="" coords="232,55,307,83"/>
-<area shape="rect" id="node15" href="$kernel_2include_2klibc_2stdlib_8h.html#a5e1f93e3feb632ee74c5f40cdd907ca2" title="Converti l&#39;entier d en une chaîne de caractère et le stock dans buf. L&#39;entier base permet de spécifie..." alt="" coords="248,106,291,134"/>
-<area shape="rect" id="node17" href="$kernel_2include_2klibc_2stdlib_8h.html#a9496eacf49af4b53f5b839899b5bf31a" title="itox" alt="" coords="248,181,291,209"/>
-<area shape="rect" id="node7" href="$kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="356,5,425,33"/>
-<area shape="rect" id="node9" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="357,55,424,83"/>
-<area shape="rect" id="node13" href="$kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine." alt="" coords="361,106,420,134"/>
-<area shape="rect" id="node11" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="476,55,615,83"/>
+<area shape="rect" id="node2" href="$kstdio_8h.html#a139d07e37f4cb84769b3c892f58696be" title="Affiche un message sur l&#39;écran. " alt="" coords="124,107,183,133"/>
+<area shape="rect" id="node3" href="$vfs_8h.html#a7b293d0cca90e9f633dc69cc5900c430" title="Ouverture d&#39;un fichier. " alt="" coords="231,56,305,83"/>
+<area shape="rect" id="node9" href="$kernel_2include_2klibc_2stdlib_8h.html#a3170c50e51faed10daef61b1c000d3bf" title="Converti l&#39;entier d en une chaîne de caractère et le stock dans buf. L&#39;entier base permet de spécifie..." alt="" coords="247,107,289,133"/>
+<area shape="rect" id="node10" href="$kernel_2include_2klibc_2stdlib_8h.html#a9496eacf49af4b53f5b839899b5bf31a" title="itox" alt="" coords="247,157,289,184"/>
+<area shape="rect" id="node4" href="$kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire. " alt="" coords="353,5,424,32"/>
+<area shape="rect" id="node5" href="$kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="355,56,422,83"/>
+<area shape="rect" id="node8" href="$kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine. " alt="" coords="359,107,418,133"/>
+<area shape="rect" id="node6" href="$vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="472,31,612,57"/>
+<area shape="rect" id="node7" href="$kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="507,81,577,108"/>
 </map>

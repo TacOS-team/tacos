@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de libc/include/stdlib.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,8 +90,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="libc_2include_2stdlib_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifndef _STDLIB_H_</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _STDLIB_H_</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define _STDLIB_H_</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cdefs_8h.html">sys/cdefs.h</a>&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;__BEGIN_DECLS</div>
@@ -98,22 +99,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="libc_2include_2sys_2types_8h.html">sys/types.h</a>&gt;</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="malloc_8h.html">malloc.h</a>&gt;</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="libc_2include_2stdlib_8h.html#a687984f47d8cce148d1b914d2b79612a">   40</a></span>&#160;<span class="preprocessor">#define EXIT_SUCCESS 0 </span></div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="libc_2include_2stdlib_8h.html#a73efe787c131b385070f25d18b7c9aa4">   41</a></span>&#160;<span class="preprocessor">#define EXIT_FAILURE 1 </span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="libc_2include_2stdlib_8h.html#a687984f47d8cce148d1b914d2b79612a">   40</a></span>&#160;<span class="preprocessor">#define EXIT_SUCCESS 0 </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="libc_2include_2stdlib_8h.html#a73efe787c131b385070f25d18b7c9aa4">   41</a></span>&#160;<span class="preprocessor">#define EXIT_FAILURE 1 </span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define RAND_MAX 2147483647</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libc_2include_2stdlib_8h.html#a8dec7c95227ff149687066cf04029191" title="Terminer de manière anormale un programme.">abort</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libc_2include_2stdlib_8h.html#a8dec7c95227ff149687066cf04029191">abort</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> *<a class="code" href="libc_2include_2stdlib_8h.html#a1a6b5e8d2f1c37e5b43e4345586075be" title="Modifie la taille du bloc de mémoire.">realloc</a>(<span class="keywordtype">void</span> *ptr, <span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> *<a class="code" href="libc_2include_2stdlib_8h.html#a1a6b5e8d2f1c37e5b43e4345586075be">realloc</a>(<span class="keywordtype">void</span> *ptr, <span class="keywordtype">size_t</span> size);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">void</span> *<a class="code" href="libc_2include_2stdlib_8h.html#a62b7798461bd461da64c5f9d35feddf7" title="Alloue un bloc mémoire initiallement à 0.">calloc</a>(<span class="keywordtype">size_t</span> nmemb, <span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">void</span> *<a class="code" href="libc_2include_2stdlib_8h.html#a62b7798461bd461da64c5f9d35feddf7">calloc</a>(<span class="keywordtype">size_t</span> nmemb, <span class="keywordtype">size_t</span> size);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">long</span> <span class="keywordtype">int</span> strtol(<span class="keyword">const</span> <span class="keywordtype">char</span>* nptr, <span class="keywordtype">char</span>** endptr, <span class="keywordtype">int</span> base);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> strtoul(<span class="keyword">const</span> <span class="keywordtype">char</span> *nptr, <span class="keywordtype">char</span> **endptr, <span class="keywordtype">int</span> base);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">int</span> <a class="code" href="kernel_2include_2klibc_2stdlib_8h.html#a2c81f61ee897bc5a1f5491f3e2bf711b">atoi</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* __nptr);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">void</span> <a class="code" href="kernel_2include_2klibc_2stdlib_8h.html#a5e1f93e3feb632ee74c5f40cdd907ca2" title="Converti l&#39;entier d en une chaîne de caractère et le stock dans buf. L&#39;entier base permet de spécifie...">itoa</a> (<span class="keywordtype">char</span> *buf, <span class="keywordtype">int</span> base, <span class="keywordtype">int</span> d);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">void</span> <a class="code" href="kernel_2include_2klibc_2stdlib_8h.html#a3170c50e51faed10daef61b1c000d3bf">itoa</a> (<span class="keywordtype">char</span> *buf, <span class="keywordtype">int</span> base, <span class="keywordtype">int</span> d);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">int</span> rand(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keywordtype">void</span> srand(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> seed);</div>
@@ -133,13 +134,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;__END_DECLS</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="ttc" id="libc_2include_2stdlib_8h_html_a62b7798461bd461da64c5f9d35feddf7"><div class="ttname"><a href="libc_2include_2stdlib_8h.html#a62b7798461bd461da64c5f9d35feddf7">calloc</a></div><div class="ttdeci">void * calloc(size_t nmemb, size_t size)</div><div class="ttdoc">Alloue un bloc mémoire initiallement à 0. </div><div class="ttdef"><b>Definition:</b> stdlib.c:57</div></div>
+<div class="ttc" id="libc_2include_2sys_2types_8h_html"><div class="ttname"><a href="libc_2include_2sys_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="kernel_2include_2klibc_2stdlib_8h_html_a3170c50e51faed10daef61b1c000d3bf"><div class="ttname"><a href="kernel_2include_2klibc_2stdlib_8h.html#a3170c50e51faed10daef61b1c000d3bf">itoa</a></div><div class="ttdeci">int itoa(char *buf, int base, int d)</div><div class="ttdoc">Converti l&#39;entier d en une chaîne de caractère et le stock dans buf. L&#39;entier base permet de spécifie...</div><div class="ttdef"><b>Definition:</b> stdlib.c:29</div></div>
+<div class="ttc" id="malloc_8h_html"><div class="ttname"><a href="malloc_8h.html">malloc.h</a></div></div>
+<div class="ttc" id="cdefs_8h_html"><div class="ttname"><a href="cdefs_8h.html">cdefs.h</a></div></div>
+<div class="ttc" id="libc_2include_2stdlib_8h_html_a8dec7c95227ff149687066cf04029191"><div class="ttname"><a href="libc_2include_2stdlib_8h.html#a8dec7c95227ff149687066cf04029191">abort</a></div><div class="ttdeci">void abort(void)</div><div class="ttdoc">Terminer de manière anormale un programme. </div><div class="ttdef"><b>Definition:</b> stdlib.c:343</div></div>
+<div class="ttc" id="libc_2include_2stdlib_8h_html_a1a6b5e8d2f1c37e5b43e4345586075be"><div class="ttname"><a href="libc_2include_2stdlib_8h.html#a1a6b5e8d2f1c37e5b43e4345586075be">realloc</a></div><div class="ttdeci">void * realloc(void *ptr, size_t size)</div><div class="ttdoc">Modifie la taille du bloc de mémoire. </div><div class="ttdef"><b>Definition:</b> malloc.c:270</div></div>
+<div class="ttc" id="kernel_2include_2klibc_2stdlib_8h_html_a2c81f61ee897bc5a1f5491f3e2bf711b"><div class="ttname"><a href="kernel_2include_2klibc_2stdlib_8h.html#a2c81f61ee897bc5a1f5491f3e2bf711b">atoi</a></div><div class="ttdeci">int atoi(const char *__nptr)</div><div class="ttdef"><b>Definition:</b> stdlib.c:3</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

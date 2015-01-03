@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de libc/include/signal.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,58 +90,58 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="signal_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _SIGNAL_H</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _SIGNAL_H</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define _SIGNAL_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cdefs_8h.html">sys/cdefs.h</a>&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;__BEGIN_DECLS</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="libc_2include_2sys_2types_8h.html">sys/types.h</a>&gt;</span>  </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="signal_8h.html#ab83b88daaecc469d1edb90a527ab4a39">   38</a></span>&#160;<span class="preprocessor">#define NSIG            32 </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="signal_8h.html#ab83b88daaecc469d1edb90a527ab4a39">   38</a></span>&#160;<span class="preprocessor">#define NSIG            32 </span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#ifndef SIGTYPES</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SIGTYPES</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> sigset_t;</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">   42</a></span>&#160;<span class="keyword">typedef</span> void (*<a class="code" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a>)(int); </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#define SIGTYPES</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> sigset_t;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">   42</a></span>&#160;<span class="keyword">typedef</span> void (*<a class="code" href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a>)(int); </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/* Définition des signaux */</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">//XXX: Est-ce qu&#39;on ne devrait pas se caller sur les numéros POSIX ?</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="signal_8h.html#a136c64ec2d1306de745e39d6aee362ca">   47</a></span>&#160;<span class="preprocessor">#define SIGHUP           0 </span></div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="signal_8h.html#a487309e3e9e0527535644115204a639a">   48</a></span>&#160;<span class="preprocessor">#define SIGINT           1 </span></div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="signal_8h.html#a62045b465be11891160d53c10861b16c">   49</a></span>&#160;<span class="preprocessor">#define SIGQUIT          2 </span></div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="signal_8h.html#a4c9c5284f8c8d146bd7a93d25017fc62">   50</a></span>&#160;<span class="preprocessor">#define SIGILL           3 </span></div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="signal_8h.html#aa2beb906ab1b46676e63823f4e773c38">   51</a></span>&#160;<span class="preprocessor">#define SIGTRAP          4 </span></div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="signal_8h.html#aa86c630133e5b5174ac970227b273446">   52</a></span>&#160;<span class="preprocessor">#define SIGABRT          5 </span></div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="signal_8h.html#aead3d488474201acf18c4b63d91edc3c">   53</a></span>&#160;<span class="preprocessor">#define SIGBUS           6 </span></div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="signal_8h.html#a7fbba29aec3e4a8daae12935299df92d">   54</a></span>&#160;<span class="preprocessor">#define SIGFPE           7 </span></div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="signal_8h.html#addd8dcd406ce514ab3b4f576a5343d42">   55</a></span>&#160;<span class="preprocessor">#define SIGKILL          8 </span></div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="signal_8h.html#a944a8250e34bfd7991123abd3436d8c0">   56</a></span>&#160;<span class="preprocessor">#define SIGUSR1          9 </span></div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="signal_8h.html#ae20b4f7171a09516ea73c9d2745bd596">   57</a></span>&#160;<span class="preprocessor">#define SIGSEGV         10 </span></div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="signal_8h.html#abaaa61abe503c43481e35e21b0b5a031">   58</a></span>&#160;<span class="preprocessor">#define SIGUSR2         11 </span></div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="signal_8h.html#a57e9c8c5fa13bf86bc779a9f6f408b7c">   59</a></span>&#160;<span class="preprocessor">#define SIGPIPE         12 </span></div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="signal_8h.html#aa6946723c6b7a86ec3c33caaf832840b">   60</a></span>&#160;<span class="preprocessor">#define SIGALRM         13 </span></div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="signal_8h.html#a682182a5e5f38fd61f4311501e9dac5d">   61</a></span>&#160;<span class="preprocessor">#define SIGTERM         14 </span></div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="signal_8h.html#a0e63521a64cc8bc2b91d36a87d32c9f8">   62</a></span>&#160;<span class="preprocessor">#define SIGCHLD         16 </span></div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="signal_8h.html#a024f43063003e753afc6cca1acd6e104">   63</a></span>&#160;<span class="preprocessor">#define SIGCONT         17 </span></div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="signal_8h.html#a069e358bc9a864b7dc4fed2440eda14c">   64</a></span>&#160;<span class="preprocessor">#define SIGSTOP         18 </span></div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="signal_8h.html#abe65c086e01f0d286b7a785a7e3cdd1a">   65</a></span>&#160;<span class="preprocessor">#define SIGTSTP         19 </span></div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="signal_8h.html#a2c146e34a6b5a78dfba41cded3331181">   66</a></span>&#160;<span class="preprocessor">#define SIGTTIN         20 </span></div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="signal_8h.html#a782864287613e2c5c030411fa9c5e9b1">   67</a></span>&#160;<span class="preprocessor">#define SIGTTOU         21 </span></div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="signal_8h.html#ad9ff13149e36144a4ea28788948c34dd">   68</a></span>&#160;<span class="preprocessor">#define SIGURG          22 </span></div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="signal_8h.html#a8bacf9eb18fd539099c1bb4666c45d60">   69</a></span>&#160;<span class="preprocessor">#define SIGSYS          30 </span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="signal_8h.html#a136c64ec2d1306de745e39d6aee362ca">   47</a></span>&#160;<span class="preprocessor">#define SIGHUP           0 </span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="signal_8h.html#a487309e3e9e0527535644115204a639a">   48</a></span>&#160;<span class="preprocessor">#define SIGINT           1 </span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="signal_8h.html#a62045b465be11891160d53c10861b16c">   49</a></span>&#160;<span class="preprocessor">#define SIGQUIT          2 </span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="signal_8h.html#a4c9c5284f8c8d146bd7a93d25017fc62">   50</a></span>&#160;<span class="preprocessor">#define SIGILL           3 </span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="signal_8h.html#aa2beb906ab1b46676e63823f4e773c38">   51</a></span>&#160;<span class="preprocessor">#define SIGTRAP          4 </span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="signal_8h.html#aa86c630133e5b5174ac970227b273446">   52</a></span>&#160;<span class="preprocessor">#define SIGABRT          5 </span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="signal_8h.html#aead3d488474201acf18c4b63d91edc3c">   53</a></span>&#160;<span class="preprocessor">#define SIGBUS           6 </span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="signal_8h.html#a7fbba29aec3e4a8daae12935299df92d">   54</a></span>&#160;<span class="preprocessor">#define SIGFPE           7 </span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="signal_8h.html#addd8dcd406ce514ab3b4f576a5343d42">   55</a></span>&#160;<span class="preprocessor">#define SIGKILL          8 </span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="signal_8h.html#a944a8250e34bfd7991123abd3436d8c0">   56</a></span>&#160;<span class="preprocessor">#define SIGUSR1          9 </span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="signal_8h.html#ae20b4f7171a09516ea73c9d2745bd596">   57</a></span>&#160;<span class="preprocessor">#define SIGSEGV         10 </span></div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="signal_8h.html#abaaa61abe503c43481e35e21b0b5a031">   58</a></span>&#160;<span class="preprocessor">#define SIGUSR2         11 </span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="signal_8h.html#a57e9c8c5fa13bf86bc779a9f6f408b7c">   59</a></span>&#160;<span class="preprocessor">#define SIGPIPE         12 </span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="signal_8h.html#aa6946723c6b7a86ec3c33caaf832840b">   60</a></span>&#160;<span class="preprocessor">#define SIGALRM         13 </span></div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="signal_8h.html#a682182a5e5f38fd61f4311501e9dac5d">   61</a></span>&#160;<span class="preprocessor">#define SIGTERM         14 </span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="signal_8h.html#a0e63521a64cc8bc2b91d36a87d32c9f8">   62</a></span>&#160;<span class="preprocessor">#define SIGCHLD         16 </span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="signal_8h.html#a024f43063003e753afc6cca1acd6e104">   63</a></span>&#160;<span class="preprocessor">#define SIGCONT         17 </span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="signal_8h.html#a069e358bc9a864b7dc4fed2440eda14c">   64</a></span>&#160;<span class="preprocessor">#define SIGSTOP         18 </span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="signal_8h.html#abe65c086e01f0d286b7a785a7e3cdd1a">   65</a></span>&#160;<span class="preprocessor">#define SIGTSTP         19 </span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="signal_8h.html#a2c146e34a6b5a78dfba41cded3331181">   66</a></span>&#160;<span class="preprocessor">#define SIGTTIN         20 </span></div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="signal_8h.html#a782864287613e2c5c030411fa9c5e9b1">   67</a></span>&#160;<span class="preprocessor">#define SIGTTOU         21 </span></div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="signal_8h.html#ad9ff13149e36144a4ea28788948c34dd">   68</a></span>&#160;<span class="preprocessor">#define SIGURG          22 </span></div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="signal_8h.html#a8bacf9eb18fd539099c1bb4666c45d60">   69</a></span>&#160;<span class="preprocessor">#define SIGSYS          30 </span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define SIGRTMIN        31</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SIGRTMAX        NSIG-1</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#define SIGRTMAX        NSIG-1</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/* Paramètre pour sigprocmask */</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#define SIG_BLOCK       0</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SIG_UNBLOCK     1</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SIG_SETMASK     2</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="signal_8h.html#acf0e499b0ac946b366b4f47a3b3e8b9e">   78</a></span>&#160;<span class="preprocessor">#define SIG_IGN     sig_ignore_handler  </span></div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="signal_8h.html#a27d5dc561093d6243542e6a2465bc0f8">   79</a></span>&#160;<span class="preprocessor">#define SIG_DFL                 0                                                                               </span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#define SIG_UNBLOCK     1</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#define SIG_SETMASK     2</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="signal_8h.html#acf0e499b0ac946b366b4f47a3b3e8b9e">   78</a></span>&#160;<span class="preprocessor">#define SIG_IGN     sig_ignore_handler  </span></div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="signal_8h.html#a27d5dc561093d6243542e6a2465bc0f8">   79</a></span>&#160;<span class="preprocessor">#define SIG_DFL                 0                                                                               </span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">void init_signals(void);</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordtype">int</span> <a class="code" href="signal_8h.html#ae9fc1d1a853fcc23a5e434506aa47bca">kill</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> pid, <span class="keywordtype">int</span> sig);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">int</span> <span class="keyword">raise</span>(<span class="keywordtype">int</span> sig);</div>
@@ -149,29 +150,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keywordtype">int</span> sigsuspend(<span class="keyword">const</span> sigset_t *sigmask);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keywordtype">int</span> sigprocmask(<span class="keywordtype">int</span> how, <span class="keyword">const</span> sigset_t *<span class="keyword">set</span>, sigset_t *oldset);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keywordtype">int</span> sigprocmask(<span class="keywordtype">int</span> how, <span class="keyword">const</span> sigset_t *set, sigset_t *oldset);</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keywordtype">int</span> sigemptyset(sigset_t *<span class="keyword">set</span>);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keywordtype">int</span> sigemptyset(sigset_t *set);</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keywordtype">int</span> sigfillset(sigset_t *<span class="keyword">set</span>);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keywordtype">int</span> sigfillset(sigset_t *set);</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keywordtype">int</span> sigaddset(sigset_t *<span class="keyword">set</span>, <span class="keywordtype">int</span> signum);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keywordtype">int</span> sigaddset(sigset_t *set, <span class="keywordtype">int</span> signum);</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keywordtype">int</span> sigdelset(sigset_t *<span class="keyword">set</span>, <span class="keywordtype">int</span> signum);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keywordtype">int</span> sigdelset(sigset_t *set, <span class="keywordtype">int</span> signum);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keywordtype">int</span> sigismember(<span class="keyword">const</span> sigset_t *<span class="keyword">set</span>, <span class="keywordtype">int</span> signum);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keywordtype">int</span> sigismember(<span class="keyword">const</span> sigset_t *set, <span class="keywordtype">int</span> signum);</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keywordtype">void</span> sig_ignore_handler(<span class="keywordtype">int</span> <a class="code" href="signal_8h.html#a18b3c89ca28c1045ee53f16a1ebca8b3">signal</a>);</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;__END_DECLS</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SIGNAL_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="signal_8h_html_ae9fc1d1a853fcc23a5e434506aa47bca"><div class="ttname"><a href="signal_8h.html#ae9fc1d1a853fcc23a5e434506aa47bca">kill</a></div><div class="ttdeci">int kill(unsigned int pid, int sig)</div><div class="ttdef"><b>Definition:</b> signal.c:37</div></div>
+<div class="ttc" id="libc_2include_2sys_2types_8h_html"><div class="ttname"><a href="libc_2include_2sys_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="cdefs_8h_html"><div class="ttname"><a href="cdefs_8h.html">cdefs.h</a></div></div>
+<div class="ttc" id="signal_8h_html_a18b3c89ca28c1045ee53f16a1ebca8b3"><div class="ttname"><a href="signal_8h.html#a18b3c89ca28c1045ee53f16a1ebca8b3">signal</a></div><div class="ttdeci">sighandler_t signal(int sig, sighandler_t func)</div><div class="ttdef"><b>Definition:</b> signal.c:51</div></div>
+<div class="ttc" id="signal_8h_html_a564498016effaee1f3384e07b7ced24f"><div class="ttname"><a href="signal_8h.html#a564498016effaee1f3384e07b7ced24f">sighandler_t</a></div><div class="ttdeci">void(* sighandler_t)(int)</div><div class="ttdef"><b>Definition:</b> signal.h:42</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

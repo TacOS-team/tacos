@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/include/termios_types.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,83 +90,88 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="termios__types_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifndef _TERMIOS_TYPES_H</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _TERMIOS_TYPES_H</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define _TERMIOS_TYPES_H</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> tcflag_t;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> cc_t;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> speed_t;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define NCCS 17</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define TCGETS 1</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define TCSETS 2</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a8147c7f8db262c162c187575e17eeb63">   42</a></span>&#160;<span class="preprocessor">#define TCSANOW 1 </span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#define TCSETS 2</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a8147c7f8db262c162c187575e17eeb63">   42</a></span>&#160;<span class="preprocessor">#define TCSANOW 1 </span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span><span class="comment">/* c_iflag bits */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="termios__types_8h.html#acc6dc46be5104b67ffde1df93549472a">   45</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define INLCR 0000100 </span></div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="termios__types_8h.html#ab114b7d41f2ff7562a85ec83b62544b0">   46</a></span>&#160;<span class="preprocessor">#define IGNCR 0000200 </span></div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="termios__types_8h.html#ae0cbb5db9d8f8119864bb9537466c314">   47</a></span>&#160;<span class="preprocessor">#define ICRNL 0000400 </span></div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a788d2780deb67c58ba8a049981a8161c">   48</a></span>&#160;<span class="preprocessor">#define IXON  0002000 </span></div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="termios__types_8h.html#afdda6cad5fc4a9b67ba6dbe620065d91">   49</a></span>&#160;<span class="preprocessor">#define IXOFF 0010000 </span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="termios__types_8h.html#acc6dc46be5104b67ffde1df93549472a">   45</a></span>&#160;<span class="preprocessor">#define INLCR 0000100 </span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="termios__types_8h.html#ab114b7d41f2ff7562a85ec83b62544b0">   46</a></span>&#160;<span class="preprocessor">#define IGNCR 0000200 </span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="termios__types_8h.html#ae0cbb5db9d8f8119864bb9537466c314">   47</a></span>&#160;<span class="preprocessor">#define ICRNL 0000400 </span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a788d2780deb67c58ba8a049981a8161c">   48</a></span>&#160;<span class="preprocessor">#define IXON  0002000 </span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="termios__types_8h.html#afdda6cad5fc4a9b67ba6dbe620065d91">   49</a></span>&#160;<span class="preprocessor">#define IXOFF 0010000 </span></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor"></span><span class="comment">/* c_oflag bits */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a0aad4afe9e202fff8ced3485bc835bb1">   52</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define OPOST 0000001 </span></div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a957436bc6db0a0d49b081dc9b4c98ef2">   53</a></span>&#160;<span class="preprocessor">#define ONLCR 0000004 </span></div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="termios__types_8h.html#adc345d36b46c6ccdd079c9ecc3fc1296">   54</a></span>&#160;<span class="preprocessor">#define OCRNL 0000010 </span></div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="termios__types_8h.html#aab452deaf5d1b993c3b0ff2d3e408577">   55</a></span>&#160;<span class="preprocessor">#define ONOCR 0000020 </span></div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a8fd17e0aa25ab2abd07477442ba1928e">   56</a></span>&#160;<span class="preprocessor">#define ONLRET 0000040 </span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a0aad4afe9e202fff8ced3485bc835bb1">   52</a></span>&#160;<span class="preprocessor">#define OPOST 0000001 </span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a957436bc6db0a0d49b081dc9b4c98ef2">   53</a></span>&#160;<span class="preprocessor">#define ONLCR 0000004 </span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="termios__types_8h.html#adc345d36b46c6ccdd079c9ecc3fc1296">   54</a></span>&#160;<span class="preprocessor">#define OCRNL 0000010 </span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="termios__types_8h.html#aab452deaf5d1b993c3b0ff2d3e408577">   55</a></span>&#160;<span class="preprocessor">#define ONOCR 0000020 </span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a8fd17e0aa25ab2abd07477442ba1928e">   56</a></span>&#160;<span class="preprocessor">#define ONLRET 0000040 </span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span><span class="comment">/* c_lflag bits */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a52c605497d066b9ae7407124f84806a7">   59</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define ISIG  0000001 </span></div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a58265a371303d00a4a3b1f128d72c21e">   60</a></span>&#160;<span class="preprocessor">#define ICANON  0000002 </span></div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="termios__types_8h.html#aad1dc60a04a1d8cfc8b3ded13601e361">   61</a></span>&#160;<span class="preprocessor">#define ECHO  0000010 </span></div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="termios__types_8h.html#aac931d3ce0dfc4578f76879ed095ecd7">   62</a></span>&#160;<span class="preprocessor">#define ECHOE 0000020 </span></div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a6695c16777cf8a5211cfba9a23d45985">   63</a></span>&#160;<span class="preprocessor">#define ECHOK 0000040 </span></div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a1be1e11c89f23c1651328e62b9533ac2">   64</a></span>&#160;<span class="preprocessor">#define ECHOCTL 0001000 </span></div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="termios__types_8h.html#ae5aeef4d21a390052a1a6cbb106e830c">   65</a></span>&#160;<span class="preprocessor">#define ECHOKE  0004000 </span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a52c605497d066b9ae7407124f84806a7">   59</a></span>&#160;<span class="preprocessor">#define ISIG  0000001 </span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a58265a371303d00a4a3b1f128d72c21e">   60</a></span>&#160;<span class="preprocessor">#define ICANON  0000002 </span></div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="termios__types_8h.html#aad1dc60a04a1d8cfc8b3ded13601e361">   61</a></span>&#160;<span class="preprocessor">#define ECHO  0000010 </span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="termios__types_8h.html#aac931d3ce0dfc4578f76879ed095ecd7">   62</a></span>&#160;<span class="preprocessor">#define ECHOE 0000020 </span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a6695c16777cf8a5211cfba9a23d45985">   63</a></span>&#160;<span class="preprocessor">#define ECHOK 0000040 </span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a1be1e11c89f23c1651328e62b9533ac2">   64</a></span>&#160;<span class="preprocessor">#define ECHOCTL 0001000 </span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="termios__types_8h.html#ae5aeef4d21a390052a1a6cbb106e830c">   65</a></span>&#160;<span class="preprocessor">#define ECHOKE  0004000 </span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor"></span><span class="comment">/* c_cflag bit meaning */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="termios__types_8h.html#ad8f114959b29521f5e2bb245cc6bf62a">   68</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define CSIZE 0000060 </span></div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a4d47fc38b83dc3e81f6075313cb8e8b2">   69</a></span>&#160;<span class="preprocessor">#define   CS5 0000000 </span></div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a9cf7186015f5a77e4796eee416867ab3">   70</a></span>&#160;<span class="preprocessor">#define   CS6 0000020 </span></div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a92de6c3a5fad380a69d67671987822b1">   71</a></span>&#160;<span class="preprocessor">#define   CS7 0000040 </span></div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a083623175b34340b14359a57c5107232">   72</a></span>&#160;<span class="preprocessor">#define   CS8 0000060 </span></div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a61e9f563e0f9533dc9cf221f427f6d1a">   73</a></span>&#160;<span class="preprocessor">#define CSTOPB  0000100 </span></div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a8925ebb5550f4c16b5308955eafe469a">   74</a></span>&#160;<span class="preprocessor">#define CREAD 0000200 </span></div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="termios__types_8h.html#ac4f671a0015eb258fcbfaf62bd5a9b17">   75</a></span>&#160;<span class="preprocessor">#define PARENB  0000400 </span></div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a339516a423571344e92138e42623843a">   76</a></span>&#160;<span class="preprocessor">#define PARODD  0001000 </span></div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="code" href="termios__types_8h.html#af9d210a765b81afc6a40275185c4d5da">   77</a></span>&#160;<span class="preprocessor">#define HUPCL 0002000 </span></div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="termios__types_8h.html#ad8f114959b29521f5e2bb245cc6bf62a">   68</a></span>&#160;<span class="preprocessor">#define CSIZE 0000060 </span></div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a4d47fc38b83dc3e81f6075313cb8e8b2">   69</a></span>&#160;<span class="preprocessor">#define   CS5 0000000 </span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a9cf7186015f5a77e4796eee416867ab3">   70</a></span>&#160;<span class="preprocessor">#define   CS6 0000020 </span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a92de6c3a5fad380a69d67671987822b1">   71</a></span>&#160;<span class="preprocessor">#define   CS7 0000040 </span></div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a083623175b34340b14359a57c5107232">   72</a></span>&#160;<span class="preprocessor">#define   CS8 0000060 </span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a61e9f563e0f9533dc9cf221f427f6d1a">   73</a></span>&#160;<span class="preprocessor">#define CSTOPB  0000100 </span></div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a8925ebb5550f4c16b5308955eafe469a">   74</a></span>&#160;<span class="preprocessor">#define CREAD 0000200 </span></div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="termios__types_8h.html#ac4f671a0015eb258fcbfaf62bd5a9b17">   75</a></span>&#160;<span class="preprocessor">#define PARENB  0000400 </span></div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a339516a423571344e92138e42623843a">   76</a></span>&#160;<span class="preprocessor">#define PARODD  0001000 </span></div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="termios__types_8h.html#af9d210a765b81afc6a40275185c4d5da">   77</a></span>&#160;<span class="preprocessor">#define HUPCL 0002000 </span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor"></span><span class="comment">/* c_cc characters */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a5760397a3b875a073800edd2052d3816">   80</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define VINTR 0 </span></div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a31cfa1f14eadee06c346549d734ed586">   81</a></span>&#160;<span class="preprocessor">#define VQUIT 1 </span></div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a6e11c405d7ddff22c2318c8623c3affa">   82</a></span>&#160;<span class="preprocessor">#define VERASE 2 </span></div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a88b8378648f28423304b9f589276279d">   83</a></span>&#160;<span class="preprocessor">#define VKILL 3 </span></div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a2913fdfccc72db70821a2100bfc8217a">   84</a></span>&#160;<span class="preprocessor">#define VEOF 4 </span></div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a674c937c98eb91a74265cd9cb55565a3">   85</a></span>&#160;<span class="preprocessor">#define VTIME 5 </span></div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a52eb058f379b5122d28b036a06ce0e76">   86</a></span>&#160;<span class="preprocessor">#define VMIN 6 </span></div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a319d50b414b08f633a04a0144b63ca39">   87</a></span>&#160;<span class="preprocessor">#define VSWTC 7 </span></div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="code" href="termios__types_8h.html#afdce6a08e849190113d017282db3d425">   88</a></span>&#160;<span class="preprocessor">#define VSTART 8 </span></div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="termios__types_8h.html#af3c4df8e33e15100b0a9e3ae6aa02d92">   89</a></span>&#160;<span class="preprocessor">#define VSTOP 9 </span></div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a348dc585f00cea776b320e7527e2f656">   90</a></span>&#160;<span class="preprocessor">#define VSUSP 10 </span></div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a659dbdf07b27a95c6ca57fb14a9e15ad">   91</a></span>&#160;<span class="preprocessor">#define VEOL 11 </span></div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a2927e7726bcf80e23592e0d0ddcfeac6">   92</a></span>&#160;<span class="preprocessor">#define VREPRINT 12 </span></div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a8f3013a4641dcc40b11c99e47d9e9174">   93</a></span>&#160;<span class="preprocessor">#define VDISCARD 13 </span></div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a90ee9234e26b211a5d64c4df778f6c9f">   94</a></span>&#160;<span class="preprocessor">#define VWERASE 14 </span></div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a7e5739beec7c3db4a694aa9bd242f48c">   95</a></span>&#160;<span class="preprocessor">#define VLNEXT 15 </span></div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="code" href="termios__types_8h.html#a0008abcc29ab2adba2c8fda3566de6ed">   96</a></span>&#160;<span class="preprocessor">#define VEOL2 16 </span></div>
-<div class="line"><a name="l00098"></a><span class="lineno"><a class="code" href="structtermios.html">   98</a></span>&#160;<span class="preprocessor">struct termios {</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="code" href="structtermios.html#a85b6c86d2a3db45a3829488190e357e4">   99</a></span>&#160;<span class="preprocessor"></span>        tcflag_t <a class="code" href="structtermios.html#a85b6c86d2a3db45a3829488190e357e4">c_iflag</a>; </div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="code" href="structtermios.html#ad6e2cfedb81530e5a6a3a0e30b8c6362">  100</a></span>&#160;        tcflag_t <a class="code" href="structtermios.html#ad6e2cfedb81530e5a6a3a0e30b8c6362">c_oflag</a>; </div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="code" href="structtermios.html#a5d42b95faa4745c3bea53652d2812162">  101</a></span>&#160;        tcflag_t <a class="code" href="structtermios.html#a5d42b95faa4745c3bea53652d2812162">c_cflag</a>; </div>
-<div class="line"><a name="l00102"></a><span class="lineno"><a class="code" href="structtermios.html#a91bdd7691180800fccc4b791466ee9c3">  102</a></span>&#160;        tcflag_t <a class="code" href="structtermios.html#a91bdd7691180800fccc4b791466ee9c3">c_lflag</a>; </div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="code" href="structtermios.html#a6058cfc222551ee750c72142299acb2e">  103</a></span>&#160;        cc_t c_cc[NCCS];  </div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="code" href="structtermios.html#a02ae972cbc9fb2cf4a1aa6a6751a421a">  104</a></span>&#160;        speed_t <a class="code" href="structtermios.html#a02ae972cbc9fb2cf4a1aa6a6751a421a">c_ispeed</a>; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a5760397a3b875a073800edd2052d3816">   80</a></span>&#160;<span class="preprocessor">#define VINTR 0 </span></div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a31cfa1f14eadee06c346549d734ed586">   81</a></span>&#160;<span class="preprocessor">#define VQUIT 1 </span></div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a6e11c405d7ddff22c2318c8623c3affa">   82</a></span>&#160;<span class="preprocessor">#define VERASE 2 </span></div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a88b8378648f28423304b9f589276279d">   83</a></span>&#160;<span class="preprocessor">#define VKILL 3 </span></div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a2913fdfccc72db70821a2100bfc8217a">   84</a></span>&#160;<span class="preprocessor">#define VEOF 4 </span></div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a674c937c98eb91a74265cd9cb55565a3">   85</a></span>&#160;<span class="preprocessor">#define VTIME 5 </span></div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a52eb058f379b5122d28b036a06ce0e76">   86</a></span>&#160;<span class="preprocessor">#define VMIN 6 </span></div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a319d50b414b08f633a04a0144b63ca39">   87</a></span>&#160;<span class="preprocessor">#define VSWTC 7 </span></div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="termios__types_8h.html#afdce6a08e849190113d017282db3d425">   88</a></span>&#160;<span class="preprocessor">#define VSTART 8 </span></div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="termios__types_8h.html#af3c4df8e33e15100b0a9e3ae6aa02d92">   89</a></span>&#160;<span class="preprocessor">#define VSTOP 9 </span></div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a348dc585f00cea776b320e7527e2f656">   90</a></span>&#160;<span class="preprocessor">#define VSUSP 10 </span></div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a659dbdf07b27a95c6ca57fb14a9e15ad">   91</a></span>&#160;<span class="preprocessor">#define VEOL 11 </span></div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a2927e7726bcf80e23592e0d0ddcfeac6">   92</a></span>&#160;<span class="preprocessor">#define VREPRINT 12 </span></div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a8f3013a4641dcc40b11c99e47d9e9174">   93</a></span>&#160;<span class="preprocessor">#define VDISCARD 13 </span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a90ee9234e26b211a5d64c4df778f6c9f">   94</a></span>&#160;<span class="preprocessor">#define VWERASE 14 </span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a7e5739beec7c3db4a694aa9bd242f48c">   95</a></span>&#160;<span class="preprocessor">#define VLNEXT 15 </span></div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="termios__types_8h.html#a0008abcc29ab2adba2c8fda3566de6ed">   96</a></span>&#160;<span class="preprocessor">#define VEOL2 16 </span></div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="structtermios.html">   98</a></span>&#160;<span class="preprocessor">struct termios {</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="structtermios.html#a85b6c86d2a3db45a3829488190e357e4">   99</a></span>&#160;        tcflag_t <a class="code" href="structtermios.html#a85b6c86d2a3db45a3829488190e357e4">c_iflag</a>; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="structtermios.html#ad6e2cfedb81530e5a6a3a0e30b8c6362">  100</a></span>&#160;        tcflag_t <a class="code" href="structtermios.html#ad6e2cfedb81530e5a6a3a0e30b8c6362">c_oflag</a>; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="structtermios.html#a5d42b95faa4745c3bea53652d2812162">  101</a></span>&#160;        tcflag_t <a class="code" href="structtermios.html#a5d42b95faa4745c3bea53652d2812162">c_cflag</a>; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="structtermios.html#a91bdd7691180800fccc4b791466ee9c3">  102</a></span>&#160;        tcflag_t <a class="code" href="structtermios.html#a91bdd7691180800fccc4b791466ee9c3">c_lflag</a>; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="structtermios.html#a6058cfc222551ee750c72142299acb2e">  103</a></span>&#160;        cc_t c_cc[NCCS];  </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="structtermios.html#a02ae972cbc9fb2cf4a1aa6a6751a421a">  104</a></span>&#160;        speed_t <a class="code" href="structtermios.html#a02ae972cbc9fb2cf4a1aa6a6751a421a">c_ispeed</a>; </div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;};</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="structtermios_html_a91bdd7691180800fccc4b791466ee9c3"><div class="ttname"><a href="structtermios.html#a91bdd7691180800fccc4b791466ee9c3">termios::c_lflag</a></div><div class="ttdeci">tcflag_t c_lflag</div><div class="ttdef"><b>Definition:</b> termios_types.h:102</div></div>
+<div class="ttc" id="structtermios_html_a02ae972cbc9fb2cf4a1aa6a6751a421a"><div class="ttname"><a href="structtermios.html#a02ae972cbc9fb2cf4a1aa6a6751a421a">termios::c_ispeed</a></div><div class="ttdeci">speed_t c_ispeed</div><div class="ttdef"><b>Definition:</b> termios_types.h:104</div></div>
+<div class="ttc" id="structtermios_html_ad6e2cfedb81530e5a6a3a0e30b8c6362"><div class="ttname"><a href="structtermios.html#ad6e2cfedb81530e5a6a3a0e30b8c6362">termios::c_oflag</a></div><div class="ttdeci">tcflag_t c_oflag</div><div class="ttdef"><b>Definition:</b> termios_types.h:100</div></div>
+<div class="ttc" id="structtermios_html_a85b6c86d2a3db45a3829488190e357e4"><div class="ttname"><a href="structtermios.html#a85b6c86d2a3db45a3829488190e357e4">termios::c_iflag</a></div><div class="ttdeci">tcflag_t c_iflag</div><div class="ttdef"><b>Definition:</b> termios_types.h:99</div></div>
+<div class="ttc" id="structtermios_html_a5d42b95faa4745c3bea53652d2812162"><div class="ttname"><a href="structtermios.html#a5d42b95faa4745c3bea53652d2812162">termios::c_cflag</a></div><div class="ttdeci">tcflag_t c_cflag</div><div class="ttdef"><b>Definition:</b> termios_types.h:101</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

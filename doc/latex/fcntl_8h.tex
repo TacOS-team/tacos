@@ -1,20 +1,21 @@
 \hypertarget{fcntl_8h}{\section{Référence du fichier libc/include/fcntl.h}
-\label{fcntl_8h}\index{libc/include/fcntl.\-h@{libc/include/fcntl.\-h}}
+\label{fcntl_8h}\index{libc/include/fcntl.\+h@{libc/include/fcntl.\+h}}
 }
 
 
 File control operations.  
 
 
-{\ttfamily \#include $<$sys/cdefs.\-h$>$}\\*
-Graphe des dépendances par inclusion de fcntl.\-h\-:\nopagebreak
+{\ttfamily \#include $<$sys/cdefs.\+h$>$}\\*
+Graphe des dépendances par inclusion de fcntl.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=174pt]{fcntl_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -24,48 +25,48 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{fcntl_8h_a4dc4d45e07d2abc899bcaf04b2846a87}{O\-\_\-\-A\-C\-C\-M\-O\-D\-E}~00000003
+\#define \hyperlink{fcntl_8h_a4dc4d45e07d2abc899bcaf04b2846a87}{O\+\_\+\+A\+C\+C\+M\+O\+D\+E}~00000003
 \item 
-\#define \hyperlink{fcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}{O\-\_\-\-R\-D\-O\-N\-L\-Y}~00000000
+\#define \hyperlink{fcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}{O\+\_\+\+R\+D\+O\+N\+L\+Y}~00000000
 \item 
-\#define \hyperlink{fcntl_8h_a11b644a8526139c4cc1850dac1271ced}{O\-\_\-\-W\-R\-O\-N\-L\-Y}~00000001
+\#define \hyperlink{fcntl_8h_a11b644a8526139c4cc1850dac1271ced}{O\+\_\+\+W\+R\+O\+N\+L\+Y}~00000001
 \item 
-\#define \hyperlink{fcntl_8h_abb0586253488ee61072b73557eeb873b}{O\-\_\-\-R\-D\-W\-R}~00000002
+\#define \hyperlink{fcntl_8h_abb0586253488ee61072b73557eeb873b}{O\+\_\+\+R\+D\+W\+R}~00000002
 \item 
-\#define \hyperlink{fcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}{O\-\_\-\-C\-R\-E\-A\-T}~00000100
+\#define \hyperlink{fcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}{O\+\_\+\+C\+R\+E\+A\+T}~00000100
 \item 
-\hypertarget{fcntl_8h_a9f5acfe79fafe14b6694447bd0e9f10b}{\#define {\bfseries O\-\_\-\-E\-X\-C\-L}~00000200 /$\ast$ not \hyperlink{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d}{fcntl} $\ast$/}\label{fcntl_8h_a9f5acfe79fafe14b6694447bd0e9f10b}
+\hypertarget{fcntl_8h_a9f5acfe79fafe14b6694447bd0e9f10b}{\#define {\bfseries O\+\_\+\+E\+X\+C\+L}~00000200 /$\ast$ not \hyperlink{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d}{fcntl} $\ast$/}\label{fcntl_8h_a9f5acfe79fafe14b6694447bd0e9f10b}
 
 \item 
-\hypertarget{fcntl_8h_a2e375ab32c7ef4581b026be28e4cc116}{\#define {\bfseries O\-\_\-\-N\-O\-C\-T\-T\-Y}~00000400 /$\ast$ not \hyperlink{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d}{fcntl} $\ast$/}\label{fcntl_8h_a2e375ab32c7ef4581b026be28e4cc116}
+\hypertarget{fcntl_8h_a2e375ab32c7ef4581b026be28e4cc116}{\#define {\bfseries O\+\_\+\+N\+O\+C\+T\+T\+Y}~00000400 /$\ast$ not \hyperlink{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d}{fcntl} $\ast$/}\label{fcntl_8h_a2e375ab32c7ef4581b026be28e4cc116}
 
 \item 
-\#define \hyperlink{fcntl_8h_ad1d67e453fb3031f40f8cd3403773813}{O\-\_\-\-T\-R\-U\-N\-C}~00001000
+\#define \hyperlink{fcntl_8h_ad1d67e453fb3031f40f8cd3403773813}{O\+\_\+\+T\+R\+U\+N\+C}~00001000
 \item 
-\#define \hyperlink{fcntl_8h_ae036f789407d21f07b211552d67b3214}{O\-\_\-\-A\-P\-P\-E\-N\-D}~00002000
+\#define \hyperlink{fcntl_8h_ae036f789407d21f07b211552d67b3214}{O\+\_\+\+A\+P\+P\+E\+N\+D}~00002000
 \item 
-\#define \hyperlink{fcntl_8h_a39d33ce33804efd4d52606d59071c6d8}{O\-\_\-\-N\-O\-N\-B\-L\-O\-C\-K}~00004000
+\#define \hyperlink{fcntl_8h_a39d33ce33804efd4d52606d59071c6d8}{O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K}~00004000
 \item 
-\#define \hyperlink{fcntl_8h_aae85139bfa94236d126bb1e3b772998f}{O\-\_\-\-S\-Y\-N\-C}~00010000
+\#define \hyperlink{fcntl_8h_aae85139bfa94236d126bb1e3b772998f}{O\+\_\+\+S\+Y\+N\+C}~00010000
 \item 
-\hypertarget{fcntl_8h_a1c28a43c30721462ad7e40f37051c9ca}{\#define {\bfseries F\-A\-S\-Y\-N\-C}~00020000 /$\ast$ \hyperlink{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d}{fcntl}, for B\-S\-D compatibility $\ast$/}\label{fcntl_8h_a1c28a43c30721462ad7e40f37051c9ca}
+\hypertarget{fcntl_8h_a1c28a43c30721462ad7e40f37051c9ca}{\#define {\bfseries F\+A\+S\+Y\+N\+C}~00020000 /$\ast$ \hyperlink{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d}{fcntl}, for B\+S\+D compatibility $\ast$/}\label{fcntl_8h_a1c28a43c30721462ad7e40f37051c9ca}
 
 \item 
-\#define \hyperlink{fcntl_8h_ad28ccbf6f0a42c91c160ac5ada0c8429}{O\-\_\-\-D\-I\-R\-E\-C\-T}~00040000
+\#define \hyperlink{fcntl_8h_ad28ccbf6f0a42c91c160ac5ada0c8429}{O\+\_\+\+D\+I\+R\+E\+C\+T}~00040000
 \item 
-\#define \hyperlink{fcntl_8h_a6afd3dd2f570069804b40e6aa24fc966}{O\-\_\-\-D\-I\-R\-E\-C\-T\-O\-R\-Y}~00200000
+\#define \hyperlink{fcntl_8h_a6afd3dd2f570069804b40e6aa24fc966}{O\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y}~00200000
 \item 
-\#define \hyperlink{fcntl_8h_a82d4d551b214905742c9e045185d352a}{O\-\_\-\-N\-O\-F\-O\-L\-L\-O\-W}~00400000
+\#define \hyperlink{fcntl_8h_a82d4d551b214905742c9e045185d352a}{O\+\_\+\+N\+O\+F\+O\+L\+L\+O\+W}~00400000
 \item 
-\hypertarget{fcntl_8h_a476bb0c47c4ceb1669c15c2635c94300}{\#define {\bfseries O\-\_\-\-N\-O\-A\-T\-I\-M\-E}~01000000}\label{fcntl_8h_a476bb0c47c4ceb1669c15c2635c94300}
+\hypertarget{fcntl_8h_a476bb0c47c4ceb1669c15c2635c94300}{\#define {\bfseries O\+\_\+\+N\+O\+A\+T\+I\+M\+E}~01000000}\label{fcntl_8h_a476bb0c47c4ceb1669c15c2635c94300}
 
 \item 
-\#define \hyperlink{fcntl_8h_ad6d8fbe4e494b4dbe051612572d3f757}{O\-\_\-\-C\-L\-O\-E\-X\-E\-C}~02000000
+\#define \hyperlink{fcntl_8h_ad6d8fbe4e494b4dbe051612572d3f757}{O\+\_\+\+C\+L\+O\+E\+X\+E\+C}~02000000
 \item 
-\hypertarget{fcntl_8h_af2939853c650561d3495ed40f68f6249}{\#define {\bfseries F\-\_\-\-S\-E\-T\-F\-L}~4}\label{fcntl_8h_af2939853c650561d3495ed40f68f6249}
+\hypertarget{fcntl_8h_af2939853c650561d3495ed40f68f6249}{\#define {\bfseries F\+\_\+\+S\+E\+T\+F\+L}~4}\label{fcntl_8h_af2939853c650561d3495ed40f68f6249}
 
 \item 
-\hypertarget{fcntl_8h_a025fad21a889c79f02ec53abe3526c32}{\#define {\bfseries F\-\_\-\-G\-E\-T\-F\-L}~5}\label{fcntl_8h_a025fad21a889c79f02ec53abe3526c32}
+\hypertarget{fcntl_8h_a025fad21a889c79f02ec53abe3526c32}{\#define {\bfseries F\+\_\+\+G\+E\+T\+F\+L}~5}\label{fcntl_8h_a025fad21a889c79f02ec53abe3526c32}
 
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
@@ -81,63 +82,63 @@ int \hyperlink{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d}{fcntl} (int fd, unsig
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010, 2011, 2012 -\/ Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 
 
 \subsection{Documentation des macros}
-\hypertarget{fcntl_8h_a4dc4d45e07d2abc899bcaf04b2846a87}{\index{fcntl.\-h@{fcntl.\-h}!O\-\_\-\-A\-C\-C\-M\-O\-D\-E@{O\-\_\-\-A\-C\-C\-M\-O\-D\-E}}
-\index{O\-\_\-\-A\-C\-C\-M\-O\-D\-E@{O\-\_\-\-A\-C\-C\-M\-O\-D\-E}!fcntl.h@{fcntl.\-h}}
-\subsubsection[{O\-\_\-\-A\-C\-C\-M\-O\-D\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-A\-C\-C\-M\-O\-D\-E~00000003}}\label{fcntl_8h_a4dc4d45e07d2abc899bcaf04b2846a87}
-Access mode mask. \hypertarget{fcntl_8h_ae036f789407d21f07b211552d67b3214}{\index{fcntl.\-h@{fcntl.\-h}!O\-\_\-\-A\-P\-P\-E\-N\-D@{O\-\_\-\-A\-P\-P\-E\-N\-D}}
-\index{O\-\_\-\-A\-P\-P\-E\-N\-D@{O\-\_\-\-A\-P\-P\-E\-N\-D}!fcntl.h@{fcntl.\-h}}
-\subsubsection[{O\-\_\-\-A\-P\-P\-E\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-A\-P\-P\-E\-N\-D~00002000}}\label{fcntl_8h_ae036f789407d21f07b211552d67b3214}
-Ajoute en fin de fichier. \hypertarget{fcntl_8h_ad6d8fbe4e494b4dbe051612572d3f757}{\index{fcntl.\-h@{fcntl.\-h}!O\-\_\-\-C\-L\-O\-E\-X\-E\-C@{O\-\_\-\-C\-L\-O\-E\-X\-E\-C}}
-\index{O\-\_\-\-C\-L\-O\-E\-X\-E\-C@{O\-\_\-\-C\-L\-O\-E\-X\-E\-C}!fcntl.h@{fcntl.\-h}}
-\subsubsection[{O\-\_\-\-C\-L\-O\-E\-X\-E\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-C\-L\-O\-E\-X\-E\-C~02000000}}\label{fcntl_8h_ad6d8fbe4e494b4dbe051612572d3f757}
-set close\-\_\-on\-\_\-exec \hypertarget{fcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}{\index{fcntl.\-h@{fcntl.\-h}!O\-\_\-\-C\-R\-E\-A\-T@{O\-\_\-\-C\-R\-E\-A\-T}}
-\index{O\-\_\-\-C\-R\-E\-A\-T@{O\-\_\-\-C\-R\-E\-A\-T}!fcntl.h@{fcntl.\-h}}
-\subsubsection[{O\-\_\-\-C\-R\-E\-A\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-C\-R\-E\-A\-T~00000100}}\label{fcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}
-Create file if non-\/existant. \hypertarget{fcntl_8h_ad28ccbf6f0a42c91c160ac5ada0c8429}{\index{fcntl.\-h@{fcntl.\-h}!O\-\_\-\-D\-I\-R\-E\-C\-T@{O\-\_\-\-D\-I\-R\-E\-C\-T}}
-\index{O\-\_\-\-D\-I\-R\-E\-C\-T@{O\-\_\-\-D\-I\-R\-E\-C\-T}!fcntl.h@{fcntl.\-h}}
-\subsubsection[{O\-\_\-\-D\-I\-R\-E\-C\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-D\-I\-R\-E\-C\-T~00040000}}\label{fcntl_8h_ad28ccbf6f0a42c91c160ac5ada0c8429}
-direct disk access hint \hypertarget{fcntl_8h_a6afd3dd2f570069804b40e6aa24fc966}{\index{fcntl.\-h@{fcntl.\-h}!O\-\_\-\-D\-I\-R\-E\-C\-T\-O\-R\-Y@{O\-\_\-\-D\-I\-R\-E\-C\-T\-O\-R\-Y}}
-\index{O\-\_\-\-D\-I\-R\-E\-C\-T\-O\-R\-Y@{O\-\_\-\-D\-I\-R\-E\-C\-T\-O\-R\-Y}!fcntl.h@{fcntl.\-h}}
-\subsubsection[{O\-\_\-\-D\-I\-R\-E\-C\-T\-O\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-D\-I\-R\-E\-C\-T\-O\-R\-Y~00200000}}\label{fcntl_8h_a6afd3dd2f570069804b40e6aa24fc966}
-must be a directory \hypertarget{fcntl_8h_a82d4d551b214905742c9e045185d352a}{\index{fcntl.\-h@{fcntl.\-h}!O\-\_\-\-N\-O\-F\-O\-L\-L\-O\-W@{O\-\_\-\-N\-O\-F\-O\-L\-L\-O\-W}}
-\index{O\-\_\-\-N\-O\-F\-O\-L\-L\-O\-W@{O\-\_\-\-N\-O\-F\-O\-L\-L\-O\-W}!fcntl.h@{fcntl.\-h}}
-\subsubsection[{O\-\_\-\-N\-O\-F\-O\-L\-L\-O\-W}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-N\-O\-F\-O\-L\-L\-O\-W~00400000}}\label{fcntl_8h_a82d4d551b214905742c9e045185d352a}
-don't follow links \hypertarget{fcntl_8h_a39d33ce33804efd4d52606d59071c6d8}{\index{fcntl.\-h@{fcntl.\-h}!O\-\_\-\-N\-O\-N\-B\-L\-O\-C\-K@{O\-\_\-\-N\-O\-N\-B\-L\-O\-C\-K}}
-\index{O\-\_\-\-N\-O\-N\-B\-L\-O\-C\-K@{O\-\_\-\-N\-O\-N\-B\-L\-O\-C\-K}!fcntl.h@{fcntl.\-h}}
-\subsubsection[{O\-\_\-\-N\-O\-N\-B\-L\-O\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-N\-O\-N\-B\-L\-O\-C\-K~00004000}}\label{fcntl_8h_a39d33ce33804efd4d52606d59071c6d8}
-Le read ne sera pas bloquant. \hypertarget{fcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}{\index{fcntl.\-h@{fcntl.\-h}!O\-\_\-\-R\-D\-O\-N\-L\-Y@{O\-\_\-\-R\-D\-O\-N\-L\-Y}}
-\index{O\-\_\-\-R\-D\-O\-N\-L\-Y@{O\-\_\-\-R\-D\-O\-N\-L\-Y}!fcntl.h@{fcntl.\-h}}
-\subsubsection[{O\-\_\-\-R\-D\-O\-N\-L\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-R\-D\-O\-N\-L\-Y~00000000}}\label{fcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}
-Open file for read only access. \hypertarget{fcntl_8h_abb0586253488ee61072b73557eeb873b}{\index{fcntl.\-h@{fcntl.\-h}!O\-\_\-\-R\-D\-W\-R@{O\-\_\-\-R\-D\-W\-R}}
-\index{O\-\_\-\-R\-D\-W\-R@{O\-\_\-\-R\-D\-W\-R}!fcntl.h@{fcntl.\-h}}
-\subsubsection[{O\-\_\-\-R\-D\-W\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-R\-D\-W\-R~00000002}}\label{fcntl_8h_abb0586253488ee61072b73557eeb873b}
-Open file for both reading and writing. \hypertarget{fcntl_8h_aae85139bfa94236d126bb1e3b772998f}{\index{fcntl.\-h@{fcntl.\-h}!O\-\_\-\-S\-Y\-N\-C@{O\-\_\-\-S\-Y\-N\-C}}
-\index{O\-\_\-\-S\-Y\-N\-C@{O\-\_\-\-S\-Y\-N\-C}!fcntl.h@{fcntl.\-h}}
-\subsubsection[{O\-\_\-\-S\-Y\-N\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-S\-Y\-N\-C~00010000}}\label{fcntl_8h_aae85139bfa94236d126bb1e3b772998f}
-Appel à write bloquant tant que les données ne sont pas écrites physiquement sur le disque. \hypertarget{fcntl_8h_ad1d67e453fb3031f40f8cd3403773813}{\index{fcntl.\-h@{fcntl.\-h}!O\-\_\-\-T\-R\-U\-N\-C@{O\-\_\-\-T\-R\-U\-N\-C}}
-\index{O\-\_\-\-T\-R\-U\-N\-C@{O\-\_\-\-T\-R\-U\-N\-C}!fcntl.h@{fcntl.\-h}}
-\subsubsection[{O\-\_\-\-T\-R\-U\-N\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-T\-R\-U\-N\-C~00001000}}\label{fcntl_8h_ad1d67e453fb3031f40f8cd3403773813}
-Tronque le fichier à une longueur nulle. \hypertarget{fcntl_8h_a11b644a8526139c4cc1850dac1271ced}{\index{fcntl.\-h@{fcntl.\-h}!O\-\_\-\-W\-R\-O\-N\-L\-Y@{O\-\_\-\-W\-R\-O\-N\-L\-Y}}
-\index{O\-\_\-\-W\-R\-O\-N\-L\-Y@{O\-\_\-\-W\-R\-O\-N\-L\-Y}!fcntl.h@{fcntl.\-h}}
-\subsubsection[{O\-\_\-\-W\-R\-O\-N\-L\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-\_\-\-W\-R\-O\-N\-L\-Y~00000001}}\label{fcntl_8h_a11b644a8526139c4cc1850dac1271ced}
+\hypertarget{fcntl_8h_a4dc4d45e07d2abc899bcaf04b2846a87}{\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+A\+C\+C\+M\+O\+D\+E@{O\+\_\+\+A\+C\+C\+M\+O\+D\+E}}
+\index{O\+\_\+\+A\+C\+C\+M\+O\+D\+E@{O\+\_\+\+A\+C\+C\+M\+O\+D\+E}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+A\+C\+C\+M\+O\+D\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+A\+C\+C\+M\+O\+D\+E~00000003}}\label{fcntl_8h_a4dc4d45e07d2abc899bcaf04b2846a87}
+Access mode mask. \hypertarget{fcntl_8h_ae036f789407d21f07b211552d67b3214}{\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+A\+P\+P\+E\+N\+D@{O\+\_\+\+A\+P\+P\+E\+N\+D}}
+\index{O\+\_\+\+A\+P\+P\+E\+N\+D@{O\+\_\+\+A\+P\+P\+E\+N\+D}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+A\+P\+P\+E\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+A\+P\+P\+E\+N\+D~00002000}}\label{fcntl_8h_ae036f789407d21f07b211552d67b3214}
+Ajoute en fin de fichier. \hypertarget{fcntl_8h_ad6d8fbe4e494b4dbe051612572d3f757}{\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+C\+L\+O\+E\+X\+E\+C@{O\+\_\+\+C\+L\+O\+E\+X\+E\+C}}
+\index{O\+\_\+\+C\+L\+O\+E\+X\+E\+C@{O\+\_\+\+C\+L\+O\+E\+X\+E\+C}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+C\+L\+O\+E\+X\+E\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+C\+L\+O\+E\+X\+E\+C~02000000}}\label{fcntl_8h_ad6d8fbe4e494b4dbe051612572d3f757}
+set close\+\_\+on\+\_\+exec \hypertarget{fcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}{\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+C\+R\+E\+A\+T@{O\+\_\+\+C\+R\+E\+A\+T}}
+\index{O\+\_\+\+C\+R\+E\+A\+T@{O\+\_\+\+C\+R\+E\+A\+T}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+C\+R\+E\+A\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+C\+R\+E\+A\+T~00000100}}\label{fcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}
+Create file if non-\/existant. \hypertarget{fcntl_8h_ad28ccbf6f0a42c91c160ac5ada0c8429}{\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+D\+I\+R\+E\+C\+T@{O\+\_\+\+D\+I\+R\+E\+C\+T}}
+\index{O\+\_\+\+D\+I\+R\+E\+C\+T@{O\+\_\+\+D\+I\+R\+E\+C\+T}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+D\+I\+R\+E\+C\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+D\+I\+R\+E\+C\+T~00040000}}\label{fcntl_8h_ad28ccbf6f0a42c91c160ac5ada0c8429}
+direct disk access hint \hypertarget{fcntl_8h_a6afd3dd2f570069804b40e6aa24fc966}{\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y@{O\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y}}
+\index{O\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y@{O\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y~00200000}}\label{fcntl_8h_a6afd3dd2f570069804b40e6aa24fc966}
+must be a directory \hypertarget{fcntl_8h_a82d4d551b214905742c9e045185d352a}{\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+N\+O\+F\+O\+L\+L\+O\+W@{O\+\_\+\+N\+O\+F\+O\+L\+L\+O\+W}}
+\index{O\+\_\+\+N\+O\+F\+O\+L\+L\+O\+W@{O\+\_\+\+N\+O\+F\+O\+L\+L\+O\+W}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+N\+O\+F\+O\+L\+L\+O\+W}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+N\+O\+F\+O\+L\+L\+O\+W~00400000}}\label{fcntl_8h_a82d4d551b214905742c9e045185d352a}
+don't follow links \hypertarget{fcntl_8h_a39d33ce33804efd4d52606d59071c6d8}{\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K@{O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K}}
+\index{O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K@{O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K~00004000}}\label{fcntl_8h_a39d33ce33804efd4d52606d59071c6d8}
+Le read ne sera pas bloquant. \hypertarget{fcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}{\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+R\+D\+O\+N\+L\+Y@{O\+\_\+\+R\+D\+O\+N\+L\+Y}}
+\index{O\+\_\+\+R\+D\+O\+N\+L\+Y@{O\+\_\+\+R\+D\+O\+N\+L\+Y}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+R\+D\+O\+N\+L\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+R\+D\+O\+N\+L\+Y~00000000}}\label{fcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}
+Open file for read only access. \hypertarget{fcntl_8h_abb0586253488ee61072b73557eeb873b}{\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+R\+D\+W\+R@{O\+\_\+\+R\+D\+W\+R}}
+\index{O\+\_\+\+R\+D\+W\+R@{O\+\_\+\+R\+D\+W\+R}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+R\+D\+W\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+R\+D\+W\+R~00000002}}\label{fcntl_8h_abb0586253488ee61072b73557eeb873b}
+Open file for both reading and writing. \hypertarget{fcntl_8h_aae85139bfa94236d126bb1e3b772998f}{\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+S\+Y\+N\+C@{O\+\_\+\+S\+Y\+N\+C}}
+\index{O\+\_\+\+S\+Y\+N\+C@{O\+\_\+\+S\+Y\+N\+C}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+S\+Y\+N\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+S\+Y\+N\+C~00010000}}\label{fcntl_8h_aae85139bfa94236d126bb1e3b772998f}
+Appel à write bloquant tant que les données ne sont pas écrites physiquement sur le disque. \hypertarget{fcntl_8h_ad1d67e453fb3031f40f8cd3403773813}{\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+T\+R\+U\+N\+C@{O\+\_\+\+T\+R\+U\+N\+C}}
+\index{O\+\_\+\+T\+R\+U\+N\+C@{O\+\_\+\+T\+R\+U\+N\+C}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+T\+R\+U\+N\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+T\+R\+U\+N\+C~00001000}}\label{fcntl_8h_ad1d67e453fb3031f40f8cd3403773813}
+Tronque le fichier à une longueur nulle. \hypertarget{fcntl_8h_a11b644a8526139c4cc1850dac1271ced}{\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+W\+R\+O\+N\+L\+Y@{O\+\_\+\+W\+R\+O\+N\+L\+Y}}
+\index{O\+\_\+\+W\+R\+O\+N\+L\+Y@{O\+\_\+\+W\+R\+O\+N\+L\+Y}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+W\+R\+O\+N\+L\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+W\+R\+O\+N\+L\+Y~00000001}}\label{fcntl_8h_a11b644a8526139c4cc1850dac1271ced}
 Open file for write only access. 
 
 \subsection{Documentation des fonctions}
-\hypertarget{fcntl_8h_ae68e7e3d0b126184d5d00e78e94305fb}{\index{fcntl.\-h@{fcntl.\-h}!close@{close}}
-\index{close@{close}!fcntl.h@{fcntl.\-h}}
+\hypertarget{fcntl_8h_ae68e7e3d0b126184d5d00e78e94305fb}{\index{fcntl.\+h@{fcntl.\+h}!close@{close}}
+\index{close@{close}!fcntl.\+h@{fcntl.\+h}}
 \subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}int close (
 \begin{DoxyParamCaption}
 \item[{int}]{id}
@@ -155,18 +156,20 @@ Ferme un fichier ouvert.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=204pt]{fcntl_8h_ae68e7e3d0b126184d5d00e78e94305fb_cgraph}
+\includegraphics[width=203pt]{fcntl_8h_ae68e7e3d0b126184d5d00e78e94305fb_cgraph}
 \end{center}
 \end{figure}
 
 
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -175,8 +178,8 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d}{\index{fcntl.\-h@{fcntl.\-h}!fcntl@{fcntl}}
-\index{fcntl@{fcntl}!fcntl.h@{fcntl.\-h}}
+\hypertarget{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d}{\index{fcntl.\+h@{fcntl.\+h}!fcntl@{fcntl}}
+\index{fcntl@{fcntl}!fcntl.\+h@{fcntl.\+h}}
 \subsubsection[{fcntl}]{\setlength{\rightskip}{0pt plus 5cm}int fcntl (
 \begin{DoxyParamCaption}
 \item[{int}]{fd, }
@@ -200,17 +203,18 @@ valeur en fonction de l'action.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=200pt]{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d_cgraph}
+\includegraphics[width=198pt]{fcntl_8h_a5752d6571b615f1b7b1b0f719c2bc69d_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{fcntl_8h_adcb60598073f6f9cbb0091ef6768fa5c}{\index{fcntl.\-h@{fcntl.\-h}!open@{open}}
-\index{open@{open}!fcntl.h@{fcntl.\-h}}
+\hypertarget{fcntl_8h_adcb60598073f6f9cbb0091ef6768fa5c}{\index{fcntl.\+h@{fcntl.\+h}!open@{open}}
+\index{open@{open}!fcntl.\+h@{fcntl.\+h}}
 \subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}int open (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{pathname, }
@@ -231,18 +235,20 @@ l'id du file descriptor. -\/1 en cas d'erreur.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=330pt]{fcntl_8h_adcb60598073f6f9cbb0091ef6768fa5c_cgraph}
+\includegraphics[width=329pt]{fcntl_8h_adcb60598073f6f9cbb0091ef6768fa5c_cgraph}
 \end{center}
 \end{figure}
 
 
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

@@ -1,4 +1,4 @@
 <map id="kernel/include/drivers/vga.h" name="kernel/include/drivers/vga.h">
-<area shape="rect" id="node3" href="$vga_8c.html" title="kernel/drivers/char\l/vga.c" alt="" coords="5,99,133,143"/>
-<area shape="rect" id="node5" href="$init_8c.html" title="kernel/init.c" alt="" coords="157,107,245,135"/>
+<area shape="rect" id="node3" href="$vga_8c.html" title="kernel/drivers/char\l/vga.c" alt="" coords="5,99,131,143"/>
+<area shape="rect" id="node5" href="$init_8c.html" title="kernel/init.c" alt="" coords="155,107,243,135"/>
 </map>

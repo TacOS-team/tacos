@@ -1,4 +1,3 @@
 <map id="read" name="read">
-<area shape="rect" id="node3" href="$unistd_8h.html#af32a16ad2dd9e48482f8f790db7dbbd2" title="Lire depuis un descripteur de fichier." alt="" coords="103,29,148,57"/>
-<area shape="rect" id="node6" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="199,54,260,82"/>
+<area shape="rect" id="node2" href="$unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant. " alt="" coords="100,5,163,32"/>
 </map>

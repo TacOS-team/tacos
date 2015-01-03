@@ -1,7 +1,8 @@
 <map id="kernel/include/ksem.h" name="kernel/include/ksem.h">
-<area shape="rect" id="node3" href="$serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="5,83,133,127"/>
-<area shape="rect" id="node5" href="$tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="157,83,285,127"/>
-<area shape="rect" id="node7" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="309,91,416,119"/>
-<area shape="rect" id="node9" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="440,91,563,119"/>
-<area shape="rect" id="node11" href="$ksem_8c.html" title="Gestion des sémaphores." alt="" coords="587,91,688,119"/>
+<area shape="rect" id="node2" href="$serial_8c.html" title="kernel/drivers/char\l/serial.c" alt="" coords="5,80,135,121"/>
+<area shape="rect" id="node3" href="$tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="159,80,288,121"/>
+<area shape="rect" id="node4" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="313,87,419,114"/>
+<area shape="rect" id="node5" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="444,87,568,114"/>
+<area shape="rect" id="node6" href="$ksem_8c.html" title="Gestion des sémaphores. " alt="" coords="592,87,695,114"/>
+<area shape="rect" id="node7" href="$kunistd_8c.html" title="kernel/kunistd.c" alt="" coords="719,87,832,114"/>
 </map>

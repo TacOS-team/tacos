@@ -1,9 +1,9 @@
 <map id="kernel/include/ksignal.h" name="kernel/include/ksignal.h">
-<area shape="rect" id="node3" href="$tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="5,83,133,127"/>
-<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="157,91,264,119"/>
-<area shape="rect" id="node7" href="$kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="288,91,397,119"/>
-<area shape="rect" id="node9" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="421,91,544,119"/>
-<area shape="rect" id="node11" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="568,91,680,119"/>
-<area shape="rect" id="node13" href="$ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="704,91,821,119"/>
-<area shape="rect" id="node15" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="845,91,971,119"/>
+<area shape="rect" id="node3" href="$tty_8c.html" title="kernel/drivers/char\l/tty/tty.c" alt="" coords="5,83,131,127"/>
+<area shape="rect" id="node5" href="$kernel_8c.html" title="kernel/kernel.c" alt="" coords="155,91,261,119"/>
+<area shape="rect" id="node7" href="$kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="285,91,395,119"/>
+<area shape="rect" id="node9" href="$kprocess_8c.html" title="kernel/kprocess.c" alt="" coords="419,91,541,119"/>
+<area shape="rect" id="node11" href="$ksignal_8c.html" title="kernel/ksignal.c" alt="" coords="565,91,675,119"/>
+<area shape="rect" id="node13" href="$ksyscall_8c.html" title="kernel/ksyscall.c" alt="" coords="699,91,813,119"/>
+<area shape="rect" id="node15" href="$scheduler_8c.html" title="kernel/scheduler.c" alt="" coords="837,91,963,119"/>
 </map>

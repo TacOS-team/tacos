@@ -1,4 +1,4 @@
 <map id="kernel/include/exception.h" name="kernel/include/exception.h">
-<area shape="rect" id="node3" href="$exception_8c.html" title="Gestion des exceptions." alt="" coords="5,83,131,111"/>
-<area shape="rect" id="node5" href="$kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="155,83,264,111"/>
+<area shape="rect" id="node2" href="$exception_8c.html" title="Gestion des exceptions. " alt="" coords="5,80,132,107"/>
+<area shape="rect" id="node3" href="$kpanic_8c.html" title="kernel/kpanic.c" alt="" coords="157,80,266,107"/>
 </map>

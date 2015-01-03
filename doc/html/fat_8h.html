@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/include/fs/fat.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,33 +90,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier fat.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;types.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="fd__types_8h_source.html">fd_types.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="kstat_8h_source.html">kstat.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="vfs_8h_source.html">vfs.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;types.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="fd__types_8h_source.html">fd_types.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="kstat_8h_source.html">kstat.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="vfs_8h_source.html">vfs.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de fat.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="fat_8h__incl.png" border="0" usemap="#kernel_2include_2fs_2fat_8h" alt=""/></div>
 <map name="kernel_2include_2fs_2fat_8h" id="kernel_2include_2fs_2fat_8h">
-<area shape="rect" id="node5" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts." alt="" coords="49,161,129,189"/><area shape="rect" id="node9" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier." alt="" coords="204,161,265,189"/><area shape="rect" id="node18" href="vfs_8h.html" title="Virtual File System." alt="" coords="141,83,192,111"/><area shape="rect" id="node7" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="187,393,248,421"/><area shape="rect" id="node12" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="263,238,324,266"/><area shape="rect" id="node15" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="255,315,332,343"/></map>
+<area shape="rect" id="node3" href="fd__types_8h.html" title="Structures liées aux fichiers ouverts. " alt="" coords="49,155,131,181"/><area shape="rect" id="node5" href="kstat_8h.html" title="Manipulation des caractéristiques d&#39;un fichier. " alt="" coords="206,155,267,181"/><area shape="rect" id="node8" href="vfs_8h.html" title="Virtual File System. " alt="" coords="143,80,194,107"/><area shape="rect" id="node4" href="kernel_2include_2types_8h.html" title="types.h" alt="" coords="188,379,251,405"/><area shape="rect" id="node6" href="clock_8h.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="265,229,328,256"/><area shape="rect" id="node7" href="ksyscall_8h.html" title="ksyscall.h" alt="" coords="257,304,336,331"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="fat_8h__dep__incl.png" border="0" usemap="#kernel_2include_2fs_2fat_8hdep" alt=""/></div>
 <map name="kernel_2include_2fs_2fat_8hdep" id="kernel_2include_2fs_2fat_8hdep">
-<area shape="rect" id="node3" href="fat_8c.html" title="Driver FAT. /!\ TODO: Pas mis à jour suite à la mise à jour VFS." alt="" coords="5,83,125,111"/><area shape="rect" id="node5" href="fat__functions_8c.html" title="Fonctions pour le driver FAT." alt="" coords="149,83,328,111"/><area shape="rect" id="node7" href="kernel_8c.html" title="kernel/kernel.c" alt="" coords="352,83,459,111"/><area shape="rect" id="node9" href="vfs_8c.html" title="Virtual File System. Gestion des points de montage." alt="" coords="483,83,571,111"/></map>
+<area shape="rect" id="node2" href="fat_8c.html" title="Driver FAT. " alt="" coords="5,80,125,107"/><area shape="rect" id="node3" href="fat__functions_8c.html" title="Fonctions pour le driver FAT. " alt="" coords="150,80,330,107"/><area shape="rect" id="node4" href="init_8c.html" title="kernel/init.c" alt="" coords="355,80,443,107"/></map>
 </div>
 </div>
 <p><a href="fat_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a3d1f5d8e3b22672684528c112bc6ff06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat_8h.html#a3d1f5d8e3b22672684528c112bc6ff06">fat_init</a> ()</td></tr>
+<tr class="separator:a3d1f5d8e3b22672684528c112bc6ff06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23c11f139de8259ac9065efe4ba6ecae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vfs_8h.html#a0eefa9aac35a5462ebf1e038992ca860">fs_instance_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat_8h.html#a23c11f139de8259ac9065efe4ba6ecae">mount_FAT</a> (<a class="el" href="fd__types_8h.html#a42bccb9b6a816213613cefffced245f0">open_file_descriptor</a> *ofd)</td></tr>
+<tr class="separator:a23c11f139de8259ac9065efe4ba6ecae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -126,7 +129,7 @@ LICENSE</h1>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 <p>Description de ce que fait le fichier </p>
-</div><h2>Documentation des fonctions</h2>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a3d1f5d8e3b22672684528c112bc6ff06"></a>
 <div class="memitem">
 <div class="memproto">
@@ -146,7 +149,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="fat_8h_a3d1f5d8e3b22672684528c112bc6ff06_cgraph.png" border="0" usemap="#fat_8h_a3d1f5d8e3b22672684528c112bc6ff06_cgraph" alt=""/></div>
 <map name="fat_8h_a3d1f5d8e3b22672684528c112bc6ff06_cgraph" id="fat_8h_a3d1f5d8e3b22672684528c112bc6ff06_cgraph">
-<area shape="rect" id="node3" href="vfs_8h.html#ab2237a3610010d8a211ef3d55a521dba" title="Enregistrer un FS dans le VFS pour le rendre disponible." alt="" coords="116,5,223,33"/><area shape="rect" id="node5" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="272,5,339,33"/><area shape="rect" id="node7" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="388,5,527,33"/></map>
+<area shape="rect" id="node2" href="vfs_8h.html#ab2237a3610010d8a211ef3d55a521dba" title="Enregistrer un FS dans le VFS pour le rendre disponible. " alt="" coords="115,31,223,57"/><area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="271,31,337,57"/><area shape="rect" id="node4" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="385,5,525,32"/><area shape="rect" id="node5" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="421,56,490,83"/></map>
 </div>
 </p>
 
@@ -179,7 +182,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="fat_8h_a23c11f139de8259ac9065efe4ba6ecae_cgraph.png" border="0" usemap="#fat_8h_a23c11f139de8259ac9065efe4ba6ecae_cgraph" alt=""/></div>
 <map name="fat_8h_a23c11f139de8259ac9065efe4ba6ecae_cgraph" id="fat_8h_a23c11f139de8259ac9065efe4ba6ecae_cgraph">
-<area shape="rect" id="node3" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets." alt="" coords="277,131,344,159"/><area shape="rect" id="node7" href="unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier." alt="" coords="161,5,212,33"/><area shape="rect" id="node11" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="152,106,221,134"/><area shape="rect" id="node13" href="fat__internal_8c.html#acc9f1bc688e7d7c5459ad50676608995" title="read_fat" alt="" coords="152,157,221,185"/><area shape="rect" id="node15" href="fat__functions_8c.html#aaf2cd44da9ce9df0808a2cd823fd1295" title="fat_lookup" alt="" coords="145,207,228,235"/><area shape="rect" id="node18" href="fat__functions_8c.html#a34463693dc3fa14a062c90b9ece622c4" title="fat_getroot" alt="" coords="145,258,228,286"/><area shape="rect" id="node5" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle." alt="" coords="393,131,532,159"/><area shape="rect" id="node9" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="280,5,341,33"/></map>
+<area shape="rect" id="node2" href="kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocation de size octets. " alt="" coords="276,107,343,133"/><area shape="rect" id="node5" href="unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title="Écrire dans un descripteur de fichier. " alt="" coords="161,5,211,32"/><area shape="rect" id="node7" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire. " alt="" coords="151,107,221,133"/><area shape="rect" id="node8" href="fat__internal_8c.html#acc9f1bc688e7d7c5459ad50676608995" title="read_fat" alt="" coords="151,157,221,184"/><area shape="rect" id="node9" href="fat__functions_8c.html#aaf2cd44da9ce9df0808a2cd823fd1295" title="fat_lookup" alt="" coords="145,208,227,235"/><area shape="rect" id="node11" href="fat__functions_8c.html#a34463693dc3fa14a062c90b9ece622c4" title="fat_getroot" alt="" coords="144,259,228,285"/><area shape="rect" id="node3" href="vmm_8h.html#a042a3049e6bc33c07f2b2c2a9dcfe78b" title="Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle. " alt="" coords="391,81,531,108"/><area shape="rect" id="node4" href="kernel_2include_2klibc_2string_8h.html#ace6ee45c30e71865e6eb635200379db9" title="Rempli une zone mémoire avec un octet donné. " alt="" coords="426,132,495,159"/><area shape="rect" id="node6" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant. " alt="" coords="278,5,341,32"/><area shape="rect" id="node10" href="kernel_2include_2klibc_2string_8h.html#ab1cc1a3ff560049e22576031c7c2345b" title="Duplique une chaine. " alt="" coords="280,208,339,235"/></map>
 </div>
 </p>
 
@@ -188,9 +191,9 @@ Voici le graphe d'appel pour cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:36 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

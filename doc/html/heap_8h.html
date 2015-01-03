@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS: Référence du fichier kernel/include/heap.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -92,7 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier heap.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="kernel_2include_2types_8h_source.html">types.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de heap.h:</div>
 <div class="dyncontent">
@@ -105,35 +106,44 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <div class="dyncontent">
 <div class="center"><img src="heap_8h__dep__incl.png" border="0" usemap="#kernel_2include_2heap_8hdep" alt=""/></div>
 <map name="kernel_2include_2heap_8hdep" id="kernel_2include_2heap_8hdep">
-<area shape="rect" id="node3" href="clock_8c.html" title="Gestion de l&#39;horloge et du temps en général." alt="" coords="5,83,107,111"/><area shape="rect" id="node5" href="heap_8c.html" title="kernel/utils/heap.c" alt="" coords="131,83,256,111"/></map>
+<area shape="rect" id="node2" href="clock_8c.html" title="Gestion de l&#39;horloge et du temps en général. " alt="" coords="5,80,108,107"/><area shape="rect" id="node3" href="heap_8c.html" title="kernel/utils/heap.c" alt="" coords="132,80,259,107"/></map>
 </div>
 </div>
 <p><a href="heap_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Structures de données</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structheap__t.html">heap_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a7085c62c43230e23f6fa23eed518061e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8h.html#a7085c62c43230e23f6fa23eed518061e">HEAP_MAX_SIZE</a>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:a7085c62c43230e23f6fa23eed518061e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
 <tr class="memitem:a35d066d4adbc5a7903210dcce0bf4717"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a> )(void *, void *)</td></tr>
+<tr class="separator:a35d066d4adbc5a7903210dcce0bf4717"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48a67855027ee831532d3b397cc95d01"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48a67855027ee831532d3b397cc95d01"></a>
 typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>id_func_type</b> )(int, void *)</td></tr>
+<tr class="separator:a48a67855027ee831532d3b397cc95d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:ad1e10f55e192cb2229ba2b294eee1306"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8h.html#ad1e10f55e192cb2229ba2b294eee1306">initHeap</a> (<a class="el" href="structheap__t.html">heap_t</a> *h, <a class="el" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a> cmp, void *heap, <a class="el" href="kernel_2include_2types_8h.html#a29d85914ddff32967d85ada69854206d">size_t</a> elements_size, int max_elements)</td></tr>
+<tr class="separator:ad1e10f55e192cb2229ba2b294eee1306"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a645a9636c018450e7629b5e2c8505b58"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8h.html#a645a9636c018450e7629b5e2c8505b58">getTop</a> (<a class="el" href="structheap__t.html">heap_t</a> *h)</td></tr>
+<tr class="separator:a645a9636c018450e7629b5e2c8505b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af42ea714951cb83a022c742d5bce5300"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8h.html#af42ea714951cb83a022c742d5bce5300">addElement</a> (<a class="el" href="structheap__t.html">heap_t</a> *h, void *element)</td></tr>
+<tr class="separator:af42ea714951cb83a022c742d5bce5300"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2d2b864167da4bf231eb63de7c83ff1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8h.html#ab2d2b864167da4bf231eb63de7c83ff1">removetop</a> (<a class="el" href="structheap__t.html">heap_t</a> *h)</td></tr>
+<tr class="separator:ab2d2b864167da4bf231eb63de7c83ff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86bf8b32a1ee2c700a5ad9f1eb07b0d9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86bf8b32a1ee2c700a5ad9f1eb07b0d9"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>delElement</b> (<a class="el" href="structheap__t.html">heap_t</a> *heap, int id, id_func_type func)</td></tr>
+<tr class="separator:a86bf8b32a1ee2c700a5ad9f1eb07b0d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2>Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>TacOS developers</dd></dl>
 <h1><a class="anchor" id="LICENSE"></a>
 LICENSE</h1>
@@ -144,7 +154,7 @@ LICENSE</h1>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 <p>Description de ce que fait le fichier </p>
-</div><h2>Documentation des macros</h2>
+</div><h2 class="groupheader">Documentation des macros</h2>
 <a class="anchor" id="a7085c62c43230e23f6fa23eed518061e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -158,7 +168,7 @@ DESCRIPTION</h1>
 
 </div>
 </div>
-<h2>Documentation des définitions de type</h2>
+<h2 class="groupheader">Documentation des définitions de type</h2>
 <a class="anchor" id="a35d066d4adbc5a7903210dcce0bf4717"></a>
 <div class="memitem">
 <div class="memproto">
@@ -172,7 +182,7 @@ DESCRIPTION</h1>
 
 </div>
 </div>
-<h2>Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="af42ea714951cb83a022c742d5bce5300"></a>
 <div class="memitem">
 <div class="memproto">
@@ -211,7 +221,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="heap_8h_af42ea714951cb83a022c742d5bce5300_cgraph.png" border="0" usemap="#heap_8h_af42ea714951cb83a022c742d5bce5300_cgraph" alt=""/></div>
 <map name="heap_8h_af42ea714951cb83a022c742d5bce5300_cgraph" id="heap_8h_af42ea714951cb83a022c742d5bce5300_cgraph">
-<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="145,5,215,33"/></map>
+<area shape="rect" id="node2" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire. " alt="" coords="144,5,215,32"/></map>
 </div>
 </p>
 
@@ -230,8 +240,7 @@ Voici le graphe d'appel pour cette fonction :</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Recupere le premier élément du tas. </p>
-<pre class="fragment">@param h pointeur vers le tas.
+<p>Recupere le premier élément du tas. </p><pre class="fragment">@param h pointeur vers le tas.
 
 @return pointeur vers le premier élément du tas, NULL si aucun.</pre> 
 </div>
@@ -294,8 +303,7 @@ Voici le graphe d'appel pour cette fonction :</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Retire le sommet. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
+<p>Retire le sommet. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">h</td><td>pointeur vers le tas.</td></tr>
   </table>
@@ -308,7 +316,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="heap_8h_ab2d2b864167da4bf231eb63de7c83ff1_cgraph.png" border="0" usemap="#heap_8h_ab2d2b864167da4bf231eb63de7c83ff1_cgraph" alt=""/></div>
 <map name="heap_8h_ab2d2b864167da4bf231eb63de7c83ff1_cgraph" id="heap_8h_ab2d2b864167da4bf231eb63de7c83ff1_cgraph">
-<area shape="rect" id="node3" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire." alt="" coords="137,5,207,33"/></map>
+<area shape="rect" id="node2" href="kernel_2include_2klibc_2string_8h.html#ad1b7311b48288a0d08172f26ff64dd67" title="Copie une zone mémoire. " alt="" coords="136,5,207,32"/></map>
 </div>
 </p>
 
@@ -317,9 +325,9 @@ Voici le graphe d'appel pour cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:36 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:31 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>

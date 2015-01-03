@@ -87,6 +87,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a href="#nested-classes">Structures de données</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
 <a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle">
 <div class="title">Référence du fichier dirent.h</div>  </div>
@@ -103,7 +104,7 @@ Graphe des dépendances par inclusion de dirent.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="dirent_8h__incl.png" border="0" usemap="#libc_2include_2dirent_8h" alt=""/></div>
 <map name="libc_2include_2dirent_8h" id="libc_2include_2dirent_8h">
-<area shape="rect" id="node3" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="5,315,93,343"/><area shape="rect" id="node5" href="types_8h.html" title="sys/types.h" alt="" coords="125,238,211,266"/><area shape="rect" id="node10" href="stat_8h.html" title="sys/stat.h" alt="" coords="64,83,141,111"/><area shape="rect" id="node8" href="stdbool_8h.html" title="Type bool." alt="" coords="131,315,205,343"/><area shape="rect" id="node14" href="time_8h.html" title="time.h" alt="" coords="75,161,131,189"/></map>
+<area shape="rect" id="node3" href="cdefs_8h.html" title="sys/cdefs.h" alt="" coords="127,238,212,266"/><area shape="rect" id="node5" href="types_8h.html" title="sys/types.h" alt="" coords="5,161,88,189"/><area shape="rect" id="node10" href="stat_8h.html" title="sys/stat.h" alt="" coords="88,83,163,111"/><area shape="rect" id="node8" href="stdbool_8h.html" title="Type bool." alt="" coords="11,238,83,266"/><area shape="rect" id="node14" href="sys_2time_8h.html" title="time.h" alt="" coords="163,161,219,189"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
@@ -127,6 +128,23 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
 <tr class="memitem:a9e986c0f8d94ffe9983a6eabb17cbb9a"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__DIR.html">_DIR</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dirent_8h.html#a9e986c0f8d94ffe9983a6eabb17cbb9a">DIR</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br/>
+&#160;&#160;<b>DT_UNKNOWN</b> =  0, 
+<b>DT_FIFO</b> =  1, 
+<b>DT_CHR</b> =  2, 
+<b>DT_DIR</b> =  4, 
+<br/>
+&#160;&#160;<b>DT_BLK</b> =  6, 
+<b>DT_REG</b> =  8, 
+<b>DT_LNK</b> =  10, 
+<b>DT_SOCK</b> =  12, 
+<br/>
+&#160;&#160;<b>DT_WHT</b> =  14
+<br/>
+ }</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
@@ -173,6 +191,20 @@ DESCRIPTION</h1>
 
 </div>
 </div>
+<h2>Documentation du type de l'énumération</h2>
+<a class="anchor" id="a06fc87d81c62e9abb8790b6e5713c55b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Types de fichiers pour le champ "d_type". </p>
+
+</div>
+</div>
 <h2>Documentation des fonctions</h2>
 <a class="anchor" id="aaeac2b41e8c2c3a5f91c9bd511a8c0a6"></a>
 <div class="memitem">
@@ -201,7 +233,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="dirent_8h_aaeac2b41e8c2c3a5f91c9bd511a8c0a6_cgraph.png" border="0" usemap="#dirent_8h_aaeac2b41e8c2c3a5f91c9bd511a8c0a6_cgraph" alt=""/></div>
 <map name="dirent_8h_aaeac2b41e8c2c3a5f91c9bd511a8c0a6_cgraph" id="dirent_8h_aaeac2b41e8c2c3a5f91c9bd511a8c0a6_cgraph">
-<area shape="rect" id="node3" href="fcntl_8c.html#ae68e7e3d0b126184d5d00e78e94305fb" title="close" alt="" coords="120,5,173,33"/><area shape="rect" id="node5" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="223,5,284,33"/></map>
+<area shape="rect" id="node3" href="fcntl_8c.html#ae68e7e3d0b126184d5d00e78e94305fb" title="close" alt="" coords="121,5,172,33"/><area shape="rect" id="node5" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="223,5,281,33"/></map>
 </div>
 </p>
 
@@ -245,7 +277,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="dirent_8h_aee98bbe743c2d14dbaa67f01c3fb9ed5_cgraph.png" border="0" usemap="#dirent_8h_aee98bbe743c2d14dbaa67f01c3fb9ed5_cgraph" alt=""/></div>
 <map name="dirent_8h_aee98bbe743c2d14dbaa67f01c3fb9ed5_cgraph" id="dirent_8h_aee98bbe743c2d14dbaa67f01c3fb9ed5_cgraph">
-<area shape="rect" id="node3" href="unistd_8h.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="109,30,237,58"/><area shape="rect" id="node9" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="143,81,204,109"/><area shape="rect" id="node5" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="288,5,341,33"/><area shape="rect" id="node7" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="287,55,343,83"/></map>
+<area shape="rect" id="node3" href="unistd_8h.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="111,30,236,58"/><area shape="rect" id="node9" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="144,81,203,109"/><area shape="rect" id="node5" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="287,5,340,33"/><area shape="rect" id="node7" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="285,55,341,83"/></map>
 </div>
 </p>
 
@@ -278,7 +310,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="dirent_8h_ad09dd96447776d2bc5d8321e4b499591_cgraph.png" border="0" usemap="#dirent_8h_ad09dd96447776d2bc5d8321e4b499591_cgraph" alt=""/></div>
 <map name="dirent_8h_ad09dd96447776d2bc5d8321e4b499591_cgraph" id="dirent_8h_ad09dd96447776d2bc5d8321e4b499591_cgraph">
-<area shape="rect" id="node3" href="unistd_8h.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="216,30,344,58"/><area shape="rect" id="node9" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="249,93,311,121"/><area shape="rect" id="node11" href="fcntl_8c.html#adcb60598073f6f9cbb0091ef6768fa5c" title="open" alt="" coords="117,55,168,83"/><area shape="rect" id="node5" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="395,5,448,33"/><area shape="rect" id="node7" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="393,55,449,83"/></map>
+<area shape="rect" id="node3" href="unistd_8h.html#a466cc5f8cdff7b6c5dc4b28fdb43f01d" title="Retourne le chemin absolu d&#39;un path en fonction du cwd." alt="" coords="217,30,343,58"/><area shape="rect" id="node9" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="251,93,309,121"/><area shape="rect" id="node11" href="fcntl_8c.html#adcb60598073f6f9cbb0091ef6768fa5c" title="open" alt="" coords="117,55,168,83"/><area shape="rect" id="node5" href="string_8h.html#aa383452fe445bfae989358c9d7d96f4f" title="Calcule la longueur d&#39;une chaîne de caractères." alt="" coords="393,5,447,33"/><area shape="rect" id="node7" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e" title="Copie une chaine." alt="" coords="392,55,448,83"/></map>
 </div>
 </p>
 
@@ -328,7 +360,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="dirent_8h_a58257faf8b13b3f14558613c632b2373_cgraph.png" border="0" usemap="#dirent_8h_a58257faf8b13b3f14558613c632b2373_cgraph" alt=""/></div>
 <map name="dirent_8h_a58257faf8b13b3f14558613c632b2373_cgraph" id="dirent_8h_a58257faf8b13b3f14558613c632b2373_cgraph">
-<area shape="rect" id="node3" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="116,5,177,33"/></map>
+<area shape="rect" id="node3" href="unistd_8h.html#a50ca93e74e182e739437c4730d7f32ae" title="Réalise l&#39;appel&#45;système indiqué par son identifiant." alt="" coords="116,5,175,33"/></map>
 </div>
 </p>
 
@@ -337,7 +369,7 @@ Voici le graphe d'appel pour cette fonction :</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi Mai 28 2013 22:52:15 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche Juin 8 2014 09:54:11 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

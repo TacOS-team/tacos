@@ -5,16 +5,14 @@
 {\ttfamily \#include $<$libio.\-h$>$}\\*
 {\ttfamily \#include $<$sys/types.\-h$>$}\\*
 {\ttfamily \#include $<$stdarg.\-h$>$}\\*
-Graphe des dépendances par inclusion de stdio.\-h\-:
-\nopagebreak
+Graphe des dépendances par inclusion de stdio.\-h\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=260pt]{stdio_8h__incl}
+\includegraphics[width=257pt]{stdio_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:
-\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -126,8 +124,7 @@ int \hyperlink{stdio_8h_a3e29caa20f7cffe18f410f01278905a8}{getchar} (void)
 \hypertarget{stdio_8h_adb974f28765a31026ee6bf71d5175951}{int {\bfseries fflush} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$stream)}\label{stdio_8h_adb974f28765a31026ee6bf71d5175951}
 
 \item 
-\hypertarget{stdio_8h_ac41a0ad4b31be2ad59d8222a0de30bda}{int {\bfseries fclose} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$fd)}\label{stdio_8h_ac41a0ad4b31be2ad59d8222a0de30bda}
-
+int \hyperlink{stdio_8h_ac41a0ad4b31be2ad59d8222a0de30bda}{fclose} (\hyperlink{struct__IO__FILE}{F\-I\-L\-E} $\ast$fd)
 \item 
 \hypertarget{stdio_8h_ae0e7e1430321e50efcd950be60346e37}{int {\bfseries fcloseall} (void)}\label{stdio_8h_ae0e7e1430321e50efcd950be60346e37}
 
@@ -223,8 +220,7 @@ S\-E\-E\-K à une position donnée.
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -235,12 +231,34 @@ Voici le graphe d'appel pour cette fonction \-:
 
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=130pt]{stdio_8h_ab5de865c3093158c70bf4bd88a9deea5_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{stdio_8h_ac41a0ad4b31be2ad59d8222a0de30bda}{\index{stdio.\-h@{stdio.\-h}!fclose@{fclose}}
+\index{fclose@{fclose}!stdio.h@{stdio.\-h}}
+\subsubsection[{fclose}]{\setlength{\rightskip}{0pt plus 5cm}int fclose (
+\begin{DoxyParamCaption}
+\item[{{\bf F\-I\-L\-E} $\ast$}]{fd}
+\end{DoxyParamCaption}
+)}}\label{stdio_8h_ac41a0ad4b31be2ad59d8222a0de30bda}
+Ferme le stream fd.
+
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès sinon E\-O\-F. 
+\end{DoxyReturn}
+
+
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{stdio_8h_ac41a0ad4b31be2ad59d8222a0de30bda_cgraph}
 \end{center}
 \end{figure}
 
@@ -262,8 +280,7 @@ Voici le graphe des appelants de cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -274,8 +291,7 @@ Voici le graphe d'appel pour cette fonction \-:
 
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -301,8 +317,7 @@ non nul si indicateur actif.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -313,8 +328,7 @@ Voici le graphe d'appel pour cette fonction \-:
 
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -332,27 +346,28 @@ Voici le graphe des appelants de cette fonction \-:
 )}}\label{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092}
 Fgetc lit le caractère suivant depuis le flux stream.
 
-stream le stream depuis lequel on lit le caractère.
 
+\begin{DoxyParams}{Paramètres}
+{\em stream} & le stream depuis lequel on lit le caractère.\\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
 le caractère lu ou E\-O\-F en cas d'erreur ou fin de flux. 
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=274pt]{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092_cgraph}
+\includegraphics[width=272pt]{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092_cgraph}
 \end{center}
 \end{figure}
 
 
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -386,12 +401,11 @@ un pointeur sur s en cas de succès. N\-U\-L\-L en cas d'erreur.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=348pt]{stdio_8h_a2b3df0e66b41edab3c039191fe6cc4f9_cgraph}
+\includegraphics[width=346pt]{stdio_8h_a2b3df0e66b41edab3c039191fe6cc4f9_cgraph}
 \end{center}
 \end{figure}
 
@@ -413,8 +427,7 @@ le numéro du descripteur de fichier.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -425,8 +438,7 @@ Voici le graphe d'appel pour cette fonction \-:
 
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -482,8 +494,7 @@ En cas de succès, renvoit le nombre de caractères affichés. Négatif en cas d
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -504,12 +515,11 @@ Voici le graphe des appelants de cette fonction \-:
 )}}\label{stdio_8h_a084251eb18ccd5c936faa2c39c86ec63}
 The \hyperlink{stdio_8h_a084251eb18ccd5c936faa2c39c86ec63}{fread( )} function shall read into the array pointed to by ptr up to nitems elements whose size is specified by size in bytes, from the stream pointed to by stream. For each object, size calls shall be made to the \hyperlink{stdio_8h_ab11a990e4f8863a1e7736e3c1d430092}{fgetc( )} function and the results stored, in the order read, in an array of unsigned char exactly overlaying the object. The file position indicator for the stream (if defined) shall be advanced by the number of bytes successfully read. If an error occurs, the resulting value of the file position indicator for the stream is unspecified. If a partial element is read, its value is unspecified. 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=348pt]{stdio_8h_a084251eb18ccd5c936faa2c39c86ec63_cgraph}
+\includegraphics[width=346pt]{stdio_8h_a084251eb18ccd5c936faa2c39c86ec63_cgraph}
 \end{center}
 \end{figure}
 
@@ -537,24 +547,22 @@ Voici le graphe d'appel pour cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=282pt]{stdio_8h_a5e25775bd8597f839a28125b616bd241_cgraph}
+\includegraphics[width=278pt]{stdio_8h_a5e25775bd8597f839a28125b616bd241_cgraph}
 \end{center}
 \end{figure}
 
 
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=204pt]{stdio_8h_a5e25775bd8597f839a28125b616bd241_icgraph}
+\includegraphics[width=200pt]{stdio_8h_a5e25775bd8597f839a28125b616bd241_icgraph}
 \end{center}
 \end{figure}
 
@@ -576,12 +584,11 @@ la position absolue.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=272pt]{stdio_8h_a5a002ad43f113e8c634d284ee34d1d53_cgraph}
+\includegraphics[width=270pt]{stdio_8h_a5a002ad43f113e8c634d284ee34d1d53_cgraph}
 \end{center}
 \end{figure}
 
@@ -626,8 +633,7 @@ le caractère lu ou E\-O\-F en cas d'erreur ou fin de flux.
 \end{DoxyReturn}
 Fonction de la libc. getchar est équivalent à fgetc(stdin). 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -652,8 +658,7 @@ Afficher le message donné en argument suivi du message associé à l'erreur (er
 \end{DoxyParams}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -709,8 +714,7 @@ ce que return unlink et rmdir.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -736,8 +740,7 @@ Voici le graphe d'appel pour cette fonction \-:
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:
-\nopagebreak
+Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -839,8 +842,7 @@ En cas de succès, renvoit le nombre de caractères affichés. Négatif en cas d
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

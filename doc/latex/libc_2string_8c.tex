@@ -1,46 +1,56 @@
 \hypertarget{libc_2string_8c}{\section{Référence du fichier libc/string.c}
-\label{libc_2string_8c}\index{libc/string.\-c@{libc/string.\-c}}
+\label{libc_2string_8c}\index{libc/string.\+c@{libc/string.\+c}}
 }
-{\ttfamily \#include $<$stdlib.\-h$>$}\\*
-{\ttfamily \#include $<$string.\-h$>$}\\*
-{\ttfamily \#include $<$ctype.\-h$>$}\\*
-Graphe des dépendances par inclusion de string.\-c\-:\nopagebreak
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$ctype.\+h$>$}\\*
+Graphe des dépendances par inclusion de string.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=266pt]{libc_2string_8c__incl}
+\includegraphics[width=259pt]{libc_2string_8c__incl}
 \end{center}
 \end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{libc_2string_8c_a01c6b59ca21f041b23efbb9845cc4e32}{\#define {\bfseries wsize}~sizeof(unsigned int)}\label{libc_2string_8c_a01c6b59ca21f041b23efbb9845cc4e32}
+
+\item 
+\hypertarget{libc_2string_8c_ab5deaef115ff5ca6ef1457d923d8331a}{\#define {\bfseries wmask}~(\hyperlink{kernel_2klibc_2string_8c_a01c6b59ca21f041b23efbb9845cc4e32}{wsize} -\/ 1)}\label{libc_2string_8c_ab5deaef115ff5ca6ef1457d923d8331a}
+
+\end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-void $\ast$ \hyperlink{libc_2string_8c_ad1b7311b48288a0d08172f26ff64dd67}{memcpy} (void $\ast$dest, const void $\ast$src, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} size)
+void $\ast$ \hyperlink{libc_2string_8c_a14938524dcbeb59d7117ba5e151ad1b1}{memcpy} (void $\ast$dest, const void $\ast$src, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} n)
 \begin{DoxyCompactList}\small\item\em Copie une zone mémoire. \end{DoxyCompactList}\item 
-\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} \hyperlink{libc_2string_8c_aa383452fe445bfae989358c9d7d96f4f}{strlen} (const char $\ast$s)
+\hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} \hyperlink{libc_2string_8c_aa383452fe445bfae989358c9d7d96f4f}{strlen} (const char $\ast$s)
 \begin{DoxyCompactList}\small\item\em Calcule la longueur d'une chaîne de caractères. \end{DoxyCompactList}\item 
 int \hyperlink{libc_2string_8c_a11bd144d7d44914099a3aeddf1c8567d}{strcmp} (const char $\ast$s1, const char $\ast$s2)
 \begin{DoxyCompactList}\small\item\em Compare deux chaînes. \end{DoxyCompactList}\item 
-int \hyperlink{libc_2string_8c_a07f4a84c11c106e95c32b6ab509346ef}{strncmp} (const char $\ast$s1, const char $\ast$s2, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
+int \hyperlink{libc_2string_8c_a07f4a84c11c106e95c32b6ab509346ef}{strncmp} (const char $\ast$s1, const char $\ast$s2, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} n)
 \begin{DoxyCompactList}\small\item\em Compare deux chaînes jusqu'à n caractères. \end{DoxyCompactList}\item 
 int \hyperlink{libc_2string_8c_a706b36f3a672f84685576723c3928baa}{strcasecmp} (const char $\ast$s1, const char $\ast$s2)
 \begin{DoxyCompactList}\small\item\em Compare deux chaînes. \end{DoxyCompactList}\item 
-int \hyperlink{libc_2string_8c_a674b7f779fec84cb1a3be8222b5c381a}{strncasecmp} (const char $\ast$s1, const char $\ast$s2, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
+int \hyperlink{libc_2string_8c_a674b7f779fec84cb1a3be8222b5c381a}{strncasecmp} (const char $\ast$s1, const char $\ast$s2, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} n)
 \begin{DoxyCompactList}\small\item\em Compare deux chaînes jusqu'à n caractères. \end{DoxyCompactList}\item 
 char $\ast$ \hyperlink{libc_2string_8c_a48d911e1a150610b7182d19b81651828}{strchrnul} (const char $\ast$s, int c)
 \begin{DoxyCompactList}\small\item\em Recherche un caractère dans une chaîne. \end{DoxyCompactList}\item 
-void $\ast$ \hyperlink{libc_2string_8c_ace6ee45c30e71865e6eb635200379db9}{memset} (void $\ast$s, int c, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
+void $\ast$ \hyperlink{libc_2string_8c_ace6ee45c30e71865e6eb635200379db9}{memset} (void $\ast$s, int c, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} n)
 \begin{DoxyCompactList}\small\item\em Rempli une zone mémoire avec un octet donné. \end{DoxyCompactList}\item 
-int \hyperlink{libc_2string_8c_a9e6df54ee04e18a3772335580e2ed872}{memcmp} (const void $\ast$s1, const void $\ast$s2, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
+int \hyperlink{libc_2string_8c_a9e6df54ee04e18a3772335580e2ed872}{memcmp} (const void $\ast$s1, const void $\ast$s2, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} n)
 \begin{DoxyCompactList}\small\item\em Compare deux zones mémoire. \end{DoxyCompactList}\item 
 char $\ast$ \hyperlink{libc_2string_8c_a1eb9cae61e6a6282c28dbc298ef7297e}{strcpy} (char $\ast$s1, const char $\ast$s2)
 \begin{DoxyCompactList}\small\item\em Copie une chaine. \end{DoxyCompactList}\item 
-char $\ast$ \hyperlink{libc_2string_8c_a7982e2515766b25c1157ac30f8bac394}{strncpy} (char $\ast$s1, const char $\ast$s2, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
+char $\ast$ \hyperlink{libc_2string_8c_a7982e2515766b25c1157ac30f8bac394}{strncpy} (char $\ast$s1, const char $\ast$s2, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} n)
 \begin{DoxyCompactList}\small\item\em Copie une chaine en se limitant aux n premiers caractères. \end{DoxyCompactList}\item 
 char $\ast$ \hyperlink{libc_2string_8c_a8908188ae9fc2f05d993257ef001d553}{strcat} (char $\ast$s1, const char $\ast$s2)
 \begin{DoxyCompactList}\small\item\em Concaténation de deux chaînes. \end{DoxyCompactList}\item 
-char $\ast$ \hyperlink{libc_2string_8c_a4c10a214b02eed3dafc48c59ad71abbd}{strncat} (char $\ast$s1, const char $\ast$s2, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
+char $\ast$ \hyperlink{libc_2string_8c_a4c10a214b02eed3dafc48c59ad71abbd}{strncat} (char $\ast$s1, const char $\ast$s2, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} n)
 \begin{DoxyCompactList}\small\item\em Concaténation de deux chaînes avec une limite aux n premiers caractères. \end{DoxyCompactList}\item 
-void $\ast$ \hyperlink{libc_2string_8c_a802c986820d3866639922b6bc9484f90}{memmove} (void $\ast$dest, const void $\ast$src, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
+void $\ast$ \hyperlink{libc_2string_8c_a802c986820d3866639922b6bc9484f90}{memmove} (void $\ast$dest, const void $\ast$src, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} n)
 \begin{DoxyCompactList}\small\item\em Copie une zone mémoire. \end{DoxyCompactList}\item 
 char $\ast$ \hyperlink{libc_2string_8c_a4a710d86541afc6b7dafddcdb4b1c94f}{strstr} (const char $\ast$haystack, const char $\ast$needle)
 \begin{DoxyCompactList}\small\item\em Recherche une sous-\/chaîne. \end{DoxyCompactList}\item 
@@ -48,7 +58,7 @@ char $\ast$ \hyperlink{libc_2string_8c_ae9229017a4501f8d6a637b4498cfed2e}{strcas
 \begin{DoxyCompactList}\small\item\em Recherche une sous-\/chaîne en ignorant la casse. \end{DoxyCompactList}\item 
 char $\ast$ \hyperlink{libc_2string_8c_ab1cc1a3ff560049e22576031c7c2345b}{strdup} (const char $\ast$s)
 \begin{DoxyCompactList}\small\item\em Duplique une chaine. \end{DoxyCompactList}\item 
-char $\ast$ \hyperlink{libc_2string_8c_a8b860ba32fef12da8acd4507c059e509}{strndup} (const char $\ast$s, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\-\_\-t} n)
+char $\ast$ \hyperlink{libc_2string_8c_a8b860ba32fef12da8acd4507c059e509}{strndup} (const char $\ast$s, \hyperlink{kernel_2include_2types_8h_a29d85914ddff32967d85ada69854206d}{size\+\_\+t} n)
 \begin{DoxyCompactList}\small\item\em Duplique une chaine. \end{DoxyCompactList}\item 
 char $\ast$ \hyperlink{libc_2string_8c_a12871ed234858ef0e363d2b8aa572fc1}{strchr} (const char $\ast$s, int c)
 \begin{DoxyCompactList}\small\item\em Rechercher un caractère dans une chaîne. \end{DoxyCompactList}\item 
@@ -60,39 +70,34 @@ char $\ast$ \hyperlink{libc_2string_8c_a8cb460f64c449f2a9b9b7a40569ce0fe}{strtok
 
 \subsection{Description détaillée}
 \begin{DoxyAuthor}{Auteur}
-Tac\-O\-S developers
+Tac\+O\+S developers
 \end{DoxyAuthor}
-\hypertarget{wait_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{wait_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+\hypertarget{wait_8c_LICENSE}{}\subsection{L\+I\+C\+E\+N\+S\+E}\label{wait_8c_LICENSE}
+Copyright (C) 2010-\/2014 Tac\+O\+S developers.
 
-This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+N\+U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\-://www.\-gnu.\-org/copyleft/gpl.\-html}
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y or F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E. See the G\+N\+U General Public License for more details at \href{http://www.gnu.org/copyleft/gpl.html}{\tt http\+://www.\+gnu.\+org/copyleft/gpl.\+html}
 
-You should have received a copy of the G\-N\-U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\-://www.\-gnu.\-org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{wait_8c_DESCRIPTION}
+You should have received a copy of the G\+N\+U General Public License along with this program; if not, see \href{http://www.gnu.org/licenses}{\tt http\+://www.\+gnu.\+org/licenses}.\hypertarget{wait_8c_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+O\+N}\label{wait_8c_DESCRIPTION}
 Description de ce que fait le fichier 
 
 \subsection{Documentation des fonctions}
-\hypertarget{libc_2string_8c_a9e6df54ee04e18a3772335580e2ed872}{\index{libc/string.\-c@{libc/string.\-c}!memcmp@{memcmp}}
-\index{memcmp@{memcmp}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a9e6df54ee04e18a3772335580e2ed872}{\index{libc/string.\+c@{libc/string.\+c}!memcmp@{memcmp}}
+\index{memcmp@{memcmp}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{memcmp}]{\setlength{\rightskip}{0pt plus 5cm}int memcmp (
 \begin{DoxyParamCaption}
 \item[{const void $\ast$}]{s1, }
 \item[{const void $\ast$}]{s2, }
-\item[{{\bf size\-\_\-t}}]{n}
+\item[{{\bf size\+\_\+t}}]{n}
 \end{DoxyParamCaption}
 )}}\label{libc_2string_8c_a9e6df54ee04e18a3772335580e2ed872}
-\begin{DoxyVerb} Compare les n premiers octets des zones mémoires s1 et s2.
- Elle retourne un entier négatif, positif ou nul si les n premiers octets de
- s1 sont respectivement plus petits, plus grands ou identiques aux n premiers 
- octets de s2.
-\end{DoxyVerb}
-
+Compare les n premiers octets des zones mémoires s1 et s2. Elle retourne un entier négatif, positif ou nul si les n premiers octets de s1 sont respectivement plus petits, plus grands ou identiques aux n premiers octets de s2.
 
 \begin{DoxySeeAlso}{Voir également}
-\hyperlink{libc_2string_8c_a11bd144d7d44914099a3aeddf1c8567d}{strcmp} 
+\hyperlink{kernel_2include_2klibc_2string_8h_a11bd144d7d44914099a3aeddf1c8567d}{strcmp} 
 
-\hyperlink{libc_2string_8c_a07f4a84c11c106e95c32b6ab509346ef}{strncmp}
+\hyperlink{kernel_2include_2klibc_2string_8h_a07f4a84c11c106e95c32b6ab509346ef}{strncmp}
 \end{DoxySeeAlso}
 
 \begin{DoxyParams}{Paramètres}
@@ -106,19 +111,19 @@ Description de ce que fait le fichier
 \begin{DoxyReturn}{Renvoie}
 un entier négatif, positif ou nul si les n premiers octets de s1 sont respectivement plus petits, plus grands ou identiques aux n premiers octets de s2. 
 \end{DoxyReturn}
-\hypertarget{libc_2string_8c_ad1b7311b48288a0d08172f26ff64dd67}{\index{libc/string.\-c@{libc/string.\-c}!memcpy@{memcpy}}
-\index{memcpy@{memcpy}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a14938524dcbeb59d7117ba5e151ad1b1}{\index{libc/string.\+c@{libc/string.\+c}!memcpy@{memcpy}}
+\index{memcpy@{memcpy}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{memcpy}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ memcpy (
 \begin{DoxyParamCaption}
 \item[{void $\ast$}]{dest, }
 \item[{const void $\ast$}]{src, }
-\item[{{\bf size\-\_\-t}}]{size}
+\item[{{\bf size\+\_\+t}}]{size}
 \end{DoxyParamCaption}
-)}}\label{libc_2string_8c_ad1b7311b48288a0d08172f26ff64dd67}
+)}}\label{libc_2string_8c_a14938524dcbeb59d7117ba5e151ad1b1}
 La fonction \hyperlink{kernel_2include_2klibc_2string_8h_ad1b7311b48288a0d08172f26ff64dd67}{memcpy()} copie une zone mémoire de size octets depuis src vers la zone mémoire dest. Les deux zones ne doivent pas se chevaucher sinon il faut utiliser memmove.
 
 \begin{DoxySeeAlso}{Voir également}
-\hyperlink{libc_2string_8c_a802c986820d3866639922b6bc9484f90}{memmove}
+\hyperlink{kernel_2include_2klibc_2string_8h_a802c986820d3866639922b6bc9484f90}{memmove}
 \end{DoxySeeAlso}
 
 \begin{DoxyParams}{Paramètres}
@@ -134,28 +139,29 @@ un pointeur sur dest.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{libc_2string_8c_ad1b7311b48288a0d08172f26ff64dd67_icgraph}
+\includegraphics[width=350pt]{libc_2string_8c_a14938524dcbeb59d7117ba5e151ad1b1_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{libc_2string_8c_a802c986820d3866639922b6bc9484f90}{\index{libc/string.\-c@{libc/string.\-c}!memmove@{memmove}}
-\index{memmove@{memmove}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a802c986820d3866639922b6bc9484f90}{\index{libc/string.\+c@{libc/string.\+c}!memmove@{memmove}}
+\index{memmove@{memmove}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{memmove}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ memmove (
 \begin{DoxyParamCaption}
 \item[{void $\ast$}]{dest, }
 \item[{const void $\ast$}]{src, }
-\item[{{\bf size\-\_\-t}}]{n}
+\item[{{\bf size\+\_\+t}}]{n}
 \end{DoxyParamCaption}
 )}}\label{libc_2string_8c_a802c986820d3866639922b6bc9484f90}
 La fonction \hyperlink{kernel_2include_2klibc_2string_8h_a802c986820d3866639922b6bc9484f90}{memmove()} copie n octets depuis la zone mémoire src vers la zone mémoire dest. La différence avec memcpy c'est que les zones peuvent se chevaucher.
 
 \begin{DoxySeeAlso}{Voir également}
-\hyperlink{libc_2string_8c_ad1b7311b48288a0d08172f26ff64dd67}{memcpy}
+\hyperlink{kernel_2include_2klibc_2string_8h_ad1b7311b48288a0d08172f26ff64dd67}{memcpy}
 \end{DoxySeeAlso}
 
 \begin{DoxyParams}{Paramètres}
@@ -169,13 +175,13 @@ La fonction \hyperlink{kernel_2include_2klibc_2string_8h_a802c986820d3866639922b
 \begin{DoxyReturn}{Renvoie}
 un pointeur sur dest. 
 \end{DoxyReturn}
-\hypertarget{libc_2string_8c_ace6ee45c30e71865e6eb635200379db9}{\index{libc/string.\-c@{libc/string.\-c}!memset@{memset}}
-\index{memset@{memset}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_ace6ee45c30e71865e6eb635200379db9}{\index{libc/string.\+c@{libc/string.\+c}!memset@{memset}}
+\index{memset@{memset}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{memset}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ memset (
 \begin{DoxyParamCaption}
 \item[{void $\ast$}]{s, }
 \item[{int}]{c, }
-\item[{{\bf size\-\_\-t}}]{n}
+\item[{{\bf size\+\_\+t}}]{n}
 \end{DoxyParamCaption}
 )}}\label{libc_2string_8c_ace6ee45c30e71865e6eb635200379db9}
 Rempli la zone mémoire pointée par s et de n octets par l'octet c.
@@ -194,17 +200,18 @@ un pointeur vers la zone mémoire s.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=288pt]{libc_2string_8c_ace6ee45c30e71865e6eb635200379db9_icgraph}
+\includegraphics[height=550pt]{libc_2string_8c_ace6ee45c30e71865e6eb635200379db9_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{libc_2string_8c_a706b36f3a672f84685576723c3928baa}{\index{libc/string.\-c@{libc/string.\-c}!strcasecmp@{strcasecmp}}
-\index{strcasecmp@{strcasecmp}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a706b36f3a672f84685576723c3928baa}{\index{libc/string.\+c@{libc/string.\+c}!strcasecmp@{strcasecmp}}
+\index{strcasecmp@{strcasecmp}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strcasecmp}]{\setlength{\rightskip}{0pt plus 5cm}int strcasecmp (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{s1, }
@@ -223,19 +230,8 @@ La fonction \hyperlink{kernel_2include_2klibc_2string_8h_a706b36f3a672f846855767
 \begin{DoxyReturn}{Renvoie}
 un entier strictement négatif si s1 est inférieur à s2, strictement positif si s1 est supérieur à s2 et nul si s1 est identique à s2. 
 \end{DoxyReturn}
-
-
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=316pt]{libc_2string_8c_a706b36f3a672f84685576723c3928baa_cgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{libc_2string_8c_ae9229017a4501f8d6a637b4498cfed2e}{\index{libc/string.\-c@{libc/string.\-c}!strcasestr@{strcasestr}}
-\index{strcasestr@{strcasestr}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_ae9229017a4501f8d6a637b4498cfed2e}{\index{libc/string.\+c@{libc/string.\+c}!strcasestr@{strcasestr}}
+\index{strcasestr@{strcasestr}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strcasestr}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strcasestr (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{haystack, }
@@ -252,21 +248,10 @@ Recherche needle (aiguille) dans la chaine heystack (meule de foin). Les caract�
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
-un pointeur vers le début de la sous-\/chaîne ou N\-U\-L\-L si non trouvée. 
+un pointeur vers le début de la sous-\/chaîne ou N\+U\+L\+L si non trouvée. 
 \end{DoxyReturn}
-
-
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=308pt]{libc_2string_8c_ae9229017a4501f8d6a637b4498cfed2e_cgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{libc_2string_8c_a8908188ae9fc2f05d993257ef001d553}{\index{libc/string.\-c@{libc/string.\-c}!strcat@{strcat}}
-\index{strcat@{strcat}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a8908188ae9fc2f05d993257ef001d553}{\index{libc/string.\+c@{libc/string.\+c}!strcat@{strcat}}
+\index{strcat@{strcat}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strcat}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strcat (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{s1, }
@@ -287,17 +272,18 @@ un pointeur vers la chaine de destination s1.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=202pt]{libc_2string_8c_a8908188ae9fc2f05d993257ef001d553_cgraph}
+\includegraphics[width=200pt]{libc_2string_8c_a8908188ae9fc2f05d993257ef001d553_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{libc_2string_8c_a12871ed234858ef0e363d2b8aa572fc1}{\index{libc/string.\-c@{libc/string.\-c}!strchr@{strchr}}
-\index{strchr@{strchr}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a12871ed234858ef0e363d2b8aa572fc1}{\index{libc/string.\+c@{libc/string.\+c}!strchr@{strchr}}
+\index{strchr@{strchr}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strchr}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strchr (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{s, }
@@ -314,10 +300,10 @@ La fonction \hyperlink{kernel_2include_2klibc_2string_8h_a12871ed234858ef0e363d2
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
-un pointeur sur la première occurence trouvée ou N\-U\-L\-L si absent. 
+un pointeur sur la première occurence trouvée ou N\+U\+L\+L si absent. 
 \end{DoxyReturn}
-\hypertarget{libc_2string_8c_a48d911e1a150610b7182d19b81651828}{\index{libc/string.\-c@{libc/string.\-c}!strchrnul@{strchrnul}}
-\index{strchrnul@{strchrnul}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a48d911e1a150610b7182d19b81651828}{\index{libc/string.\+c@{libc/string.\+c}!strchrnul@{strchrnul}}
+\index{strchrnul@{strchrnul}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strchrnul}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strchrnul (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{s, }
@@ -336,8 +322,8 @@ Recherche un caractère dans une chaîne, et si le caractère n'est pas présent
 \begin{DoxyReturn}{Renvoie}
 Un pointeur sur la première occurrence du caractère dans la chaîne ou un pointeur vers la caractère nul de la chaîne si le caractère n'est pas trouvé. 
 \end{DoxyReturn}
-\hypertarget{libc_2string_8c_a11bd144d7d44914099a3aeddf1c8567d}{\index{libc/string.\-c@{libc/string.\-c}!strcmp@{strcmp}}
-\index{strcmp@{strcmp}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a11bd144d7d44914099a3aeddf1c8567d}{\index{libc/string.\+c@{libc/string.\+c}!strcmp@{strcmp}}
+\index{strcmp@{strcmp}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strcmp}]{\setlength{\rightskip}{0pt plus 5cm}int strcmp (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{s1, }
@@ -358,7 +344,8 @@ un entier strictement négatif si s1 est inférieur à s2, strictement positif s
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -367,8 +354,8 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{libc_2string_8c_a1eb9cae61e6a6282c28dbc298ef7297e}{\index{libc/string.\-c@{libc/string.\-c}!strcpy@{strcpy}}
-\index{strcpy@{strcpy}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a1eb9cae61e6a6282c28dbc298ef7297e}{\index{libc/string.\+c@{libc/string.\+c}!strcpy@{strcpy}}
+\index{strcpy@{strcpy}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strcpy}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strcpy (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{s1, }
@@ -389,7 +376,8 @@ un pointeur vers la chaîne de destination s1.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -398,8 +386,8 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{libc_2string_8c_ab1cc1a3ff560049e22576031c7c2345b}{\index{libc/string.\-c@{libc/string.\-c}!strdup@{strdup}}
-\index{strdup@{strdup}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_ab1cc1a3ff560049e22576031c7c2345b}{\index{libc/string.\+c@{libc/string.\+c}!strdup@{strdup}}
+\index{strdup@{strdup}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strdup}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strdup (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{s}
@@ -417,7 +405,8 @@ un pointeur vers la nouvelle zone mémoire contenant une copie de la chaîne.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -428,7 +417,8 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -437,9 +427,9 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{libc_2string_8c_aa383452fe445bfae989358c9d7d96f4f}{\index{libc/string.\-c@{libc/string.\-c}!strlen@{strlen}}
-\index{strlen@{strlen}!libc/string.c@{libc/string.\-c}}
-\subsubsection[{strlen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\-\_\-t} strlen (
+\hypertarget{libc_2string_8c_aa383452fe445bfae989358c9d7d96f4f}{\index{libc/string.\+c@{libc/string.\+c}!strlen@{strlen}}
+\index{strlen@{strlen}!libc/string.\+c@{libc/string.\+c}}
+\subsubsection[{strlen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf size\+\_\+t} strlen (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{s}
 \end{DoxyParamCaption}
@@ -456,7 +446,8 @@ le nombre de caractères dans la chaîne s.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -465,13 +456,13 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{libc_2string_8c_a674b7f779fec84cb1a3be8222b5c381a}{\index{libc/string.\-c@{libc/string.\-c}!strncasecmp@{strncasecmp}}
-\index{strncasecmp@{strncasecmp}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a674b7f779fec84cb1a3be8222b5c381a}{\index{libc/string.\+c@{libc/string.\+c}!strncasecmp@{strncasecmp}}
+\index{strncasecmp@{strncasecmp}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strncasecmp}]{\setlength{\rightskip}{0pt plus 5cm}int strncasecmp (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{s1, }
 \item[{const char $\ast$}]{s2, }
-\item[{{\bf size\-\_\-t}}]{n}
+\item[{{\bf size\+\_\+t}}]{n}
 \end{DoxyParamCaption}
 )}}\label{libc_2string_8c_a674b7f779fec84cb1a3be8222b5c381a}
 La fonction strncasecmp compare deux chaînes de caractères et retourne en résultat un nombre négatif, positif ou nul si les n premiers caractères de s1 sont inférieurs, supérieurs ou identiques aux n premiers caractères de s2.
@@ -488,24 +479,13 @@ La fonction strncasecmp compare deux chaînes de caractères et retourne en rés
 \begin{DoxyReturn}{Renvoie}
 un entier strictement négatif si les n premiers caractères de s1 sont inférieurs aux n premiers caractères de s2, strictement positif s'ils sont supérieurs et nul s'ils sont identiques. 
 \end{DoxyReturn}
-
-
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=322pt]{libc_2string_8c_a674b7f779fec84cb1a3be8222b5c381a_cgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{libc_2string_8c_a4c10a214b02eed3dafc48c59ad71abbd}{\index{libc/string.\-c@{libc/string.\-c}!strncat@{strncat}}
-\index{strncat@{strncat}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a4c10a214b02eed3dafc48c59ad71abbd}{\index{libc/string.\+c@{libc/string.\+c}!strncat@{strncat}}
+\index{strncat@{strncat}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strncat}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strncat (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{s1, }
 \item[{const char $\ast$}]{s2, }
-\item[{{\bf size\-\_\-t}}]{n}
+\item[{{\bf size\+\_\+t}}]{n}
 \end{DoxyParamCaption}
 )}}\label{libc_2string_8c_a4c10a214b02eed3dafc48c59ad71abbd}
 Ajoute à la fin de s1 le contenu de s2 en s'arrêtant à n caractères ou au premier caractère '\textbackslash{}0' rencontré.
@@ -524,22 +504,23 @@ un pointeur vers la chaine de destination s1.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=212pt]{libc_2string_8c_a4c10a214b02eed3dafc48c59ad71abbd_cgraph}
+\includegraphics[width=211pt]{libc_2string_8c_a4c10a214b02eed3dafc48c59ad71abbd_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{libc_2string_8c_a07f4a84c11c106e95c32b6ab509346ef}{\index{libc/string.\-c@{libc/string.\-c}!strncmp@{strncmp}}
-\index{strncmp@{strncmp}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a07f4a84c11c106e95c32b6ab509346ef}{\index{libc/string.\+c@{libc/string.\+c}!strncmp@{strncmp}}
+\index{strncmp@{strncmp}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strncmp}]{\setlength{\rightskip}{0pt plus 5cm}int strncmp (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{s1, }
 \item[{const char $\ast$}]{s2, }
-\item[{{\bf size\-\_\-t}}]{n}
+\item[{{\bf size\+\_\+t}}]{n}
 \end{DoxyParamCaption}
 )}}\label{libc_2string_8c_a07f4a84c11c106e95c32b6ab509346ef}
 La fonction strncmp compare deux chaînes de caractères et retourne en résultat un nombre négatif, positif ou nul si les n premiers caractères de s1 sont inférieurs, supérieurs ou identiques aux n premiers caractères de s2.
@@ -556,13 +537,13 @@ La fonction strncmp compare deux chaînes de caractères et retourne en résulta
 \begin{DoxyReturn}{Renvoie}
 un entier strictement négatif si les n premiers caractères de s1 sont inférieurs aux n premiers caractères de s2, strictement positif s'ils sont supérieurs et nul s'ils sont identiques. 
 \end{DoxyReturn}
-\hypertarget{libc_2string_8c_a7982e2515766b25c1157ac30f8bac394}{\index{libc/string.\-c@{libc/string.\-c}!strncpy@{strncpy}}
-\index{strncpy@{strncpy}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a7982e2515766b25c1157ac30f8bac394}{\index{libc/string.\+c@{libc/string.\+c}!strncpy@{strncpy}}
+\index{strncpy@{strncpy}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strncpy}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strncpy (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{s1, }
 \item[{const char $\ast$}]{s2, }
-\item[{{\bf size\-\_\-t}}]{n}
+\item[{{\bf size\+\_\+t}}]{n}
 \end{DoxyParamCaption}
 )}}\label{libc_2string_8c_a7982e2515766b25c1157ac30f8bac394}
 Copie la chaine s2 vers la zone mémoire pointée par s1 en s'arrêtant aux n premiers caractères de s1. La copie s'arrête au bout de n caractères ou dès que le caractère '\textbackslash{}0' est lu dans la chaine source s2. Attention, la chaîne s1 ne contient pas forcément le caractère '\textbackslash{}0' si la limite des n caractères est atteinte.
@@ -581,21 +562,22 @@ un pointeur vers la chaîne de destination s1.
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=234pt]{libc_2string_8c_a7982e2515766b25c1157ac30f8bac394_icgraph}
+\includegraphics[width=233pt]{libc_2string_8c_a7982e2515766b25c1157ac30f8bac394_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{libc_2string_8c_a8b860ba32fef12da8acd4507c059e509}{\index{libc/string.\-c@{libc/string.\-c}!strndup@{strndup}}
-\index{strndup@{strndup}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a8b860ba32fef12da8acd4507c059e509}{\index{libc/string.\+c@{libc/string.\+c}!strndup@{strndup}}
+\index{strndup@{strndup}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strndup}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strndup (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{s, }
-\item[{{\bf size\-\_\-t}}]{n}
+\item[{{\bf size\+\_\+t}}]{n}
 \end{DoxyParamCaption}
 )}}\label{libc_2string_8c_a8b860ba32fef12da8acd4507c059e509}
 strndup va faire un malloc de taille suffisante pour y copier la chaîne en paramètre en se limitant à n caractères au maximum.
@@ -612,17 +594,18 @@ un pointeur vers la nouvelle zone mémoire contenant une copie de la chaîne.
 \end{DoxyReturn}
 
 
-Voici le graphe d'appel pour cette fonction \-:\nopagebreak
+Voici le graphe d'appel pour cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=210pt]{libc_2string_8c_a8b860ba32fef12da8acd4507c059e509_cgraph}
+\includegraphics[width=208pt]{libc_2string_8c_a8b860ba32fef12da8acd4507c059e509_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{libc_2string_8c_a0c05a458deff028ef4d4e64059098db4}{\index{libc/string.\-c@{libc/string.\-c}!strrchr@{strrchr}}
-\index{strrchr@{strrchr}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a0c05a458deff028ef4d4e64059098db4}{\index{libc/string.\+c@{libc/string.\+c}!strrchr@{strrchr}}
+\index{strrchr@{strrchr}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strrchr}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strrchr (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{s, }
@@ -639,11 +622,12 @@ La fonction \hyperlink{kernel_2include_2klibc_2string_8h_a12871ed234858ef0e363d2
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
-un pointeur sur la dernière occurence trouvée ou N\-U\-L\-L si absent. 
+un pointeur sur la dernière occurence trouvée ou N\+U\+L\+L si absent. 
 \end{DoxyReturn}
 
 
-Voici le graphe des appelants de cette fonction \-:\nopagebreak
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -652,8 +636,8 @@ Voici le graphe des appelants de cette fonction \-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{libc_2string_8c_a4a710d86541afc6b7dafddcdb4b1c94f}{\index{libc/string.\-c@{libc/string.\-c}!strstr@{strstr}}
-\index{strstr@{strstr}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a4a710d86541afc6b7dafddcdb4b1c94f}{\index{libc/string.\+c@{libc/string.\+c}!strstr@{strstr}}
+\index{strstr@{strstr}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strstr}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strstr (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{haystack, }
@@ -670,10 +654,10 @@ Recherche needle (aiguille) dans la chaine heystack (meule de foin). Les caract�
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
-un pointeur vers le début de la sous-\/chaîne ou N\-U\-L\-L si non trouvée. 
+un pointeur vers le début de la sous-\/chaîne ou N\+U\+L\+L si non trouvée. 
 \end{DoxyReturn}
-\hypertarget{libc_2string_8c_a8cb460f64c449f2a9b9b7a40569ce0fe}{\index{libc/string.\-c@{libc/string.\-c}!strtok@{strtok}}
-\index{strtok@{strtok}!libc/string.c@{libc/string.\-c}}
+\hypertarget{libc_2string_8c_a8cb460f64c449f2a9b9b7a40569ce0fe}{\index{libc/string.\+c@{libc/string.\+c}!strtok@{strtok}}
+\index{strtok@{strtok}!libc/string.\+c@{libc/string.\+c}}
 \subsubsection[{strtok}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strtok (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{str, }
@@ -688,5 +672,5 @@ un pointeur vers le début de la sous-\/chaîne ou N\-U\-L\-L si non trouvée.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
-Un pointeur vers l'élément lexical suivant ou N\-U\-L\-L s'il n'y en a plus. 
+Un pointeur vers l'élément lexical suivant ou N\+U\+L\+L s'il n'y en a plus. 
 \end{DoxyReturn}

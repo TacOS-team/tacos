@@ -10,6 +10,7 @@ Driver clavier.
 {\ttfamily \#include $<$ioports.\-h$>$}\\*
 {\ttfamily \#include $<$drivers/keyboard.\-h$>$}\\*
 {\ttfamily \#include $<$drivers/console.\-h$>$}\\*
+{\ttfamily \#include $<$klog.\-h$>$}\\*
 Graphe des dépendances par inclusion de keyboard.\-c\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -20,8 +21,8 @@ Graphe des dépendances par inclusion de keyboard.\-c\-:\nopagebreak
 \subsection*{Structures de données}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structletter}{letter}
-\begin{DoxyCompactList}\small\item\em Structure permettant la conversion d'un scancode vers une lettre A\-S\-C\-I\-I. T\-O\-D\-O\-: On devrait passer par une étape de keycode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+struct \hyperlink{structsymbole}{symbole}
+\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -86,11 +87,46 @@ struct \hyperlink{structletter}{letter}
 \#define \hyperlink{keyboard_8c_abd820bb8b4b2a47e4210401b13789106}{K\-E\-Y\-\_\-\-F11}~0x57
 \item 
 \#define \hyperlink{keyboard_8c_a0a3de83275f6bbc2b88692f947f0d595}{K\-E\-Y\-\_\-\-F12}~0x58
+\item 
+\#define \hyperlink{keyboard_8c_a0136ce50a394c7f0ac7ef51f84ce7321}{T\-A\-B\-\_\-\-K\-E\-Y}~\char`\"{}\textbackslash{}x09\char`\"{}
+\item 
+\#define \hyperlink{keyboard_8c_afba17fd121bcd7abc852f1ae1f3abb58}{E\-N\-T\-E\-R\-\_\-\-K\-E\-Y}~\char`\"{}\textbackslash{}x0d\char`\"{}
+\item 
+\#define \hyperlink{keyboard_8c_a9b4f59fc9220530978f12905fe51b1d0}{E\-S\-C\-\_\-\-K\-E\-Y}~\char`\"{}\textbackslash{}x1b\char`\"{}
+\item 
+\#define \hyperlink{keyboard_8c_a4dc78921d4bcad31c9ac9c48d9254f74}{B\-S\-\_\-\-K\-E\-Y}~\char`\"{}\textbackslash{}x7f\char`\"{}
+\item 
+\#define \hyperlink{keyboard_8c_a3cd87a710fd069baf487e7b44d01e1b9}{L\-E\-F\-T\-\_\-\-K\-E\-Y}~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x44\char`\"{}
+\item 
+\#define \hyperlink{keyboard_8c_a1cc261de4fdcbf43464428947a52ce32}{R\-I\-G\-H\-T\-\_\-\-K\-E\-Y}~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x43\char`\"{}
+\item 
+\#define \hyperlink{keyboard_8c_a1c34fc6f48366ae6334736730fd9b0e7}{U\-P\-\_\-\-K\-E\-Y}~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x41\char`\"{}
+\item 
+\#define \hyperlink{keyboard_8c_a687b69f632086f6e1a03279964257c24}{D\-O\-W\-N\-\_\-\-K\-E\-Y}~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x42\char`\"{}
+\item 
+\#define \hyperlink{keyboard_8c_a546042e025fd8bf5365be7ab1069c054}{H\-O\-M\-E\-\_\-\-K\-E\-Y}~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x31\textbackslash{}x7e\char`\"{}
+\item 
+\#define \hyperlink{keyboard_8c_a48891a70925e78c2384c0c868b93a6cd}{I\-N\-S\-E\-R\-T\-\_\-\-K\-E\-Y}~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x31\textbackslash{}x7e\char`\"{}
+\item 
+\#define \hyperlink{keyboard_8c_a3df5f1b9e975540d1b385be6691e2f5c}{D\-E\-L\-\_\-\-K\-E\-Y}~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x33\textbackslash{}x7e\char`\"{}
+\item 
+\#define \hyperlink{keyboard_8c_a5e3c0fe0009594127f7acd46b7e87e71}{E\-N\-D\-\_\-\-K\-E\-Y}~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x34\textbackslash{}x7e\char`\"{}
+\item 
+\#define \hyperlink{keyboard_8c_a0af63b409c570a94ca8834f81fc10587}{P\-G\-U\-P\-\_\-\-K\-E\-Y}~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x35\textbackslash{}x7e\char`\"{}
+\item 
+\#define \hyperlink{keyboard_8c_ab4c735965485f50ac6b61dd32726751f}{P\-G\-D\-O\-W\-N\-\_\-\-K\-E\-Y}~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x36\textbackslash{}x7e\char`\"{}
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{keyboard_8c_aac7ec49aa0203d9bd2dd5c4bcba7cb61}{keyboard\-Interrupt} (int id)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structsymbole}{symbole} \hyperlink{keyboard_8c_a9466fe26648d1e3b23c90415ee3622c8}{qwerty\-\_\-keymap} \mbox{[}$\,$\mbox{]}
+\item 
+struct \hyperlink{structsymbole}{symbole} \hyperlink{keyboard_8c_a365c795e67b8150aaf3e878076153424}{azerty\-\_\-keymap} \mbox{[}$\,$\mbox{]}
 \end{DoxyCompactItemize}
 
 
@@ -99,7 +135,7 @@ void \hyperlink{keyboard_8c_aac7ec49aa0203d9bd2dd5c4bcba7cb61}{keyboard\-Interru
 Tac\-O\-S developers
 \end{DoxyAuthor}
 \hypertarget{vmm_8c_LICENSE}{}\subsection{L\-I\-C\-E\-N\-S\-E}\label{vmm_8c_LICENSE}
-Copyright (C) 2010, 2011, 2012, 2013 -\/ Tac\-O\-S developers.
+Copyright (C) 2010-\/2014 Tac\-O\-S developers.
 
 This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
@@ -109,7 +145,31 @@ You should have received a copy of the G\-N\-U General Public License along with
 
 
 \subsection{Documentation des macros}
-\hypertarget{keyboard_8c_a5f25a8926d9c3ce4b4a0824234e8ffd4}{\index{keyboard.\-c@{keyboard.\-c}!K\-E\-Y\-\_\-\-A\-L\-T@{K\-E\-Y\-\_\-\-A\-L\-T}}
+\hypertarget{keyboard_8c_a4dc78921d4bcad31c9ac9c48d9254f74}{\index{keyboard.\-c@{keyboard.\-c}!B\-S\-\_\-\-K\-E\-Y@{B\-S\-\_\-\-K\-E\-Y}}
+\index{B\-S\-\_\-\-K\-E\-Y@{B\-S\-\_\-\-K\-E\-Y}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{B\-S\-\_\-\-K\-E\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\-S\-\_\-\-K\-E\-Y~\char`\"{}\textbackslash{}x7f\char`\"{}}}\label{keyboard_8c_a4dc78921d4bcad31c9ac9c48d9254f74}
+A\-N\-S\-I code for backspace key. \hypertarget{keyboard_8c_a3df5f1b9e975540d1b385be6691e2f5c}{\index{keyboard.\-c@{keyboard.\-c}!D\-E\-L\-\_\-\-K\-E\-Y@{D\-E\-L\-\_\-\-K\-E\-Y}}
+\index{D\-E\-L\-\_\-\-K\-E\-Y@{D\-E\-L\-\_\-\-K\-E\-Y}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{D\-E\-L\-\_\-\-K\-E\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-L\-\_\-\-K\-E\-Y~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x33\textbackslash{}x7e\char`\"{}}}\label{keyboard_8c_a3df5f1b9e975540d1b385be6691e2f5c}
+A\-N\-S\-I code for delete key. \hypertarget{keyboard_8c_a687b69f632086f6e1a03279964257c24}{\index{keyboard.\-c@{keyboard.\-c}!D\-O\-W\-N\-\_\-\-K\-E\-Y@{D\-O\-W\-N\-\_\-\-K\-E\-Y}}
+\index{D\-O\-W\-N\-\_\-\-K\-E\-Y@{D\-O\-W\-N\-\_\-\-K\-E\-Y}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{D\-O\-W\-N\-\_\-\-K\-E\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-O\-W\-N\-\_\-\-K\-E\-Y~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x42\char`\"{}}}\label{keyboard_8c_a687b69f632086f6e1a03279964257c24}
+A\-N\-S\-I code for down key. \hypertarget{keyboard_8c_a5e3c0fe0009594127f7acd46b7e87e71}{\index{keyboard.\-c@{keyboard.\-c}!E\-N\-D\-\_\-\-K\-E\-Y@{E\-N\-D\-\_\-\-K\-E\-Y}}
+\index{E\-N\-D\-\_\-\-K\-E\-Y@{E\-N\-D\-\_\-\-K\-E\-Y}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{E\-N\-D\-\_\-\-K\-E\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-N\-D\-\_\-\-K\-E\-Y~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x34\textbackslash{}x7e\char`\"{}}}\label{keyboard_8c_a5e3c0fe0009594127f7acd46b7e87e71}
+A\-N\-S\-I code for end key. \hypertarget{keyboard_8c_afba17fd121bcd7abc852f1ae1f3abb58}{\index{keyboard.\-c@{keyboard.\-c}!E\-N\-T\-E\-R\-\_\-\-K\-E\-Y@{E\-N\-T\-E\-R\-\_\-\-K\-E\-Y}}
+\index{E\-N\-T\-E\-R\-\_\-\-K\-E\-Y@{E\-N\-T\-E\-R\-\_\-\-K\-E\-Y}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{E\-N\-T\-E\-R\-\_\-\-K\-E\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-N\-T\-E\-R\-\_\-\-K\-E\-Y~\char`\"{}\textbackslash{}x0d\char`\"{}}}\label{keyboard_8c_afba17fd121bcd7abc852f1ae1f3abb58}
+A\-N\-S\-I code for enter key. \hypertarget{keyboard_8c_a9b4f59fc9220530978f12905fe51b1d0}{\index{keyboard.\-c@{keyboard.\-c}!E\-S\-C\-\_\-\-K\-E\-Y@{E\-S\-C\-\_\-\-K\-E\-Y}}
+\index{E\-S\-C\-\_\-\-K\-E\-Y@{E\-S\-C\-\_\-\-K\-E\-Y}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{E\-S\-C\-\_\-\-K\-E\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-S\-C\-\_\-\-K\-E\-Y~\char`\"{}\textbackslash{}x1b\char`\"{}}}\label{keyboard_8c_a9b4f59fc9220530978f12905fe51b1d0}
+A\-N\-S\-I code for escape key. \hypertarget{keyboard_8c_a546042e025fd8bf5365be7ab1069c054}{\index{keyboard.\-c@{keyboard.\-c}!H\-O\-M\-E\-\_\-\-K\-E\-Y@{H\-O\-M\-E\-\_\-\-K\-E\-Y}}
+\index{H\-O\-M\-E\-\_\-\-K\-E\-Y@{H\-O\-M\-E\-\_\-\-K\-E\-Y}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{H\-O\-M\-E\-\_\-\-K\-E\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-O\-M\-E\-\_\-\-K\-E\-Y~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x31\textbackslash{}x7e\char`\"{}}}\label{keyboard_8c_a546042e025fd8bf5365be7ab1069c054}
+A\-N\-S\-I code for home key. \hypertarget{keyboard_8c_a48891a70925e78c2384c0c868b93a6cd}{\index{keyboard.\-c@{keyboard.\-c}!I\-N\-S\-E\-R\-T\-\_\-\-K\-E\-Y@{I\-N\-S\-E\-R\-T\-\_\-\-K\-E\-Y}}
+\index{I\-N\-S\-E\-R\-T\-\_\-\-K\-E\-Y@{I\-N\-S\-E\-R\-T\-\_\-\-K\-E\-Y}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{I\-N\-S\-E\-R\-T\-\_\-\-K\-E\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-N\-S\-E\-R\-T\-\_\-\-K\-E\-Y~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x31\textbackslash{}x7e\char`\"{}}}\label{keyboard_8c_a48891a70925e78c2384c0c868b93a6cd}
+A\-N\-S\-I code for insert key. \hypertarget{keyboard_8c_a5f25a8926d9c3ce4b4a0824234e8ffd4}{\index{keyboard.\-c@{keyboard.\-c}!K\-E\-Y\-\_\-\-A\-L\-T@{K\-E\-Y\-\_\-\-A\-L\-T}}
 \index{K\-E\-Y\-\_\-\-A\-L\-T@{K\-E\-Y\-\_\-\-A\-L\-T}!keyboard.c@{keyboard.\-c}}
 \subsubsection[{K\-E\-Y\-\_\-\-A\-L\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define K\-E\-Y\-\_\-\-A\-L\-T~0x38}}\label{keyboard_8c_a5f25a8926d9c3ce4b4a0824234e8ffd4}
 scancode alt key. \hypertarget{keyboard_8c_af168e54444bdaff5f50f6f4734784762}{\index{keyboard.\-c@{keyboard.\-c}!K\-E\-Y\-\_\-\-C\-A\-P\-S\-L\-O\-C\-K@{K\-E\-Y\-\_\-\-C\-A\-P\-S\-L\-O\-C\-K}}
@@ -166,7 +226,7 @@ scancode left shift key. \hypertarget{keyboard_8c_aa9a01a8ed5fb358424866f4bc61d7
 scancode numlock key. \hypertarget{keyboard_8c_abf733d62dcb751685e3210c34fe513a9}{\index{keyboard.\-c@{keyboard.\-c}!K\-E\-Y\-\_\-\-R\-E\-L\-E\-A\-S\-E@{K\-E\-Y\-\_\-\-R\-E\-L\-E\-A\-S\-E}}
 \index{K\-E\-Y\-\_\-\-R\-E\-L\-E\-A\-S\-E@{K\-E\-Y\-\_\-\-R\-E\-L\-E\-A\-S\-E}!keyboard.c@{keyboard.\-c}}
 \subsubsection[{K\-E\-Y\-\_\-\-R\-E\-L\-E\-A\-S\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define K\-E\-Y\-\_\-\-R\-E\-L\-E\-A\-S\-E~0x80}}\label{keyboard_8c_abf733d62dcb751685e3210c34fe513a9}
-Scancode S\-E\-T 1 \-: (I\-B\-M X\-T) \href{http://www.computer-engineering.org/ps2keyboard/scancodes1.htmlSCAN}{\tt http\-://www.\-computer-\/engineering.\-org/ps2keyboard/scancodes1.\-html\-S\-C\-A\-N} C\-O\-D\-E\-S Masque pour le scancode d'un relâchement de touche. \hypertarget{keyboard_8c_afe5716cf1626fceab51044a6c2492831}{\index{keyboard.\-c@{keyboard.\-c}!K\-E\-Y\-\_\-\-R\-E\-T\-U\-R\-N@{K\-E\-Y\-\_\-\-R\-E\-T\-U\-R\-N}}
+Scancode S\-E\-T 1 \-: (I\-B\-M X\-T) \href{http://www.computer-engineering.org/ps2keyboard/scancodes1.htmlSCAN}{\tt http\-://www.\-computer-\/engineering.\-org/ps2keyboard/scancodes1.\-html\-S\-C\-A\-N} C\-O\-D\-E\-S Masque pour le scancode d'un rel�chement de touche. \hypertarget{keyboard_8c_afe5716cf1626fceab51044a6c2492831}{\index{keyboard.\-c@{keyboard.\-c}!K\-E\-Y\-\_\-\-R\-E\-T\-U\-R\-N@{K\-E\-Y\-\_\-\-R\-E\-T\-U\-R\-N}}
 \index{K\-E\-Y\-\_\-\-R\-E\-T\-U\-R\-N@{K\-E\-Y\-\_\-\-R\-E\-T\-U\-R\-N}!keyboard.c@{keyboard.\-c}}
 \subsubsection[{K\-E\-Y\-\_\-\-R\-E\-T\-U\-R\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define K\-E\-Y\-\_\-\-R\-E\-T\-U\-R\-N~0x1\-C}}\label{keyboard_8c_afe5716cf1626fceab51044a6c2492831}
 scancode return key. \hypertarget{keyboard_8c_a5b52e8d492e96e2b4c21a94f50a689c5}{\index{keyboard.\-c@{keyboard.\-c}!K\-E\-Y\-\_\-\-R\-S\-H\-I\-F\-T@{K\-E\-Y\-\_\-\-R\-S\-H\-I\-F\-T}}
@@ -202,7 +262,25 @@ Internal failure \hypertarget{keyboard_8c_a7c36913f02e82864a374d734521446a1}{\in
 scancode sur 3 octets. \hypertarget{keyboard_8c_a0c3c8f01e96a5def954ce91f9e198602}{\index{keyboard.\-c@{keyboard.\-c}!K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-U\-N\-K\-N\-O\-W\-N@{K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-U\-N\-K\-N\-O\-W\-N}}
 \index{K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-U\-N\-K\-N\-O\-W\-N@{K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-U\-N\-K\-N\-O\-W\-N}!keyboard.c@{keyboard.\-c}}
 \subsubsection[{K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-U\-N\-K\-N\-O\-W\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-U\-N\-K\-N\-O\-W\-N~0x\-F1}}\label{keyboard_8c_a0c3c8f01e96a5def954ce91f9e198602}
-???? 
+???? \hypertarget{keyboard_8c_a3cd87a710fd069baf487e7b44d01e1b9}{\index{keyboard.\-c@{keyboard.\-c}!L\-E\-F\-T\-\_\-\-K\-E\-Y@{L\-E\-F\-T\-\_\-\-K\-E\-Y}}
+\index{L\-E\-F\-T\-\_\-\-K\-E\-Y@{L\-E\-F\-T\-\_\-\-K\-E\-Y}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{L\-E\-F\-T\-\_\-\-K\-E\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-E\-F\-T\-\_\-\-K\-E\-Y~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x44\char`\"{}}}\label{keyboard_8c_a3cd87a710fd069baf487e7b44d01e1b9}
+A\-N\-S\-I code for left key. \hypertarget{keyboard_8c_ab4c735965485f50ac6b61dd32726751f}{\index{keyboard.\-c@{keyboard.\-c}!P\-G\-D\-O\-W\-N\-\_\-\-K\-E\-Y@{P\-G\-D\-O\-W\-N\-\_\-\-K\-E\-Y}}
+\index{P\-G\-D\-O\-W\-N\-\_\-\-K\-E\-Y@{P\-G\-D\-O\-W\-N\-\_\-\-K\-E\-Y}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{P\-G\-D\-O\-W\-N\-\_\-\-K\-E\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-G\-D\-O\-W\-N\-\_\-\-K\-E\-Y~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x36\textbackslash{}x7e\char`\"{}}}\label{keyboard_8c_ab4c735965485f50ac6b61dd32726751f}
+A\-N\-S\-I code for page down key. \hypertarget{keyboard_8c_a0af63b409c570a94ca8834f81fc10587}{\index{keyboard.\-c@{keyboard.\-c}!P\-G\-U\-P\-\_\-\-K\-E\-Y@{P\-G\-U\-P\-\_\-\-K\-E\-Y}}
+\index{P\-G\-U\-P\-\_\-\-K\-E\-Y@{P\-G\-U\-P\-\_\-\-K\-E\-Y}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{P\-G\-U\-P\-\_\-\-K\-E\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-G\-U\-P\-\_\-\-K\-E\-Y~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x35\textbackslash{}x7e\char`\"{}}}\label{keyboard_8c_a0af63b409c570a94ca8834f81fc10587}
+A\-N\-S\-I code for page up key. \hypertarget{keyboard_8c_a1cc261de4fdcbf43464428947a52ce32}{\index{keyboard.\-c@{keyboard.\-c}!R\-I\-G\-H\-T\-\_\-\-K\-E\-Y@{R\-I\-G\-H\-T\-\_\-\-K\-E\-Y}}
+\index{R\-I\-G\-H\-T\-\_\-\-K\-E\-Y@{R\-I\-G\-H\-T\-\_\-\-K\-E\-Y}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{R\-I\-G\-H\-T\-\_\-\-K\-E\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\-I\-G\-H\-T\-\_\-\-K\-E\-Y~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x43\char`\"{}}}\label{keyboard_8c_a1cc261de4fdcbf43464428947a52ce32}
+A\-N\-S\-I code for right key. \hypertarget{keyboard_8c_a0136ce50a394c7f0ac7ef51f84ce7321}{\index{keyboard.\-c@{keyboard.\-c}!T\-A\-B\-\_\-\-K\-E\-Y@{T\-A\-B\-\_\-\-K\-E\-Y}}
+\index{T\-A\-B\-\_\-\-K\-E\-Y@{T\-A\-B\-\_\-\-K\-E\-Y}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{T\-A\-B\-\_\-\-K\-E\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-B\-\_\-\-K\-E\-Y~\char`\"{}\textbackslash{}x09\char`\"{}}}\label{keyboard_8c_a0136ce50a394c7f0ac7ef51f84ce7321}
+A\-N\-S\-I code for tab key. \hypertarget{keyboard_8c_a1c34fc6f48366ae6334736730fd9b0e7}{\index{keyboard.\-c@{keyboard.\-c}!U\-P\-\_\-\-K\-E\-Y@{U\-P\-\_\-\-K\-E\-Y}}
+\index{U\-P\-\_\-\-K\-E\-Y@{U\-P\-\_\-\-K\-E\-Y}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{U\-P\-\_\-\-K\-E\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-P\-\_\-\-K\-E\-Y~\char`\"{}\textbackslash{}x1b\textbackslash{}x5b\textbackslash{}x41\char`\"{}}}\label{keyboard_8c_a1c34fc6f48366ae6334736730fd9b0e7}
+A\-N\-S\-I code for up key. 
 
 \subsection{Documentation des fonctions}
 \hypertarget{keyboard_8c_aac7ec49aa0203d9bd2dd5c4bcba7cb61}{\index{keyboard.\-c@{keyboard.\-c}!keyboard\-Interrupt@{keyboard\-Interrupt}}
@@ -230,3 +308,13 @@ Voici le graphe d'appel pour cette fonction \-:\nopagebreak
 \end{figure}
 
 
+
+
+\subsection{Documentation des variables}
+\hypertarget{keyboard_8c_a365c795e67b8150aaf3e878076153424}{\index{keyboard.\-c@{keyboard.\-c}!azerty\-\_\-keymap@{azerty\-\_\-keymap}}
+\index{azerty\-\_\-keymap@{azerty\-\_\-keymap}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{azerty\-\_\-keymap}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf symbole} azerty\-\_\-keymap\mbox{[}$\,$\mbox{]}}}\label{keyboard_8c_a365c795e67b8150aaf3e878076153424}
+Keymap azerty\-: keycode vers chaine A\-N\-S\-I. \hypertarget{keyboard_8c_a9466fe26648d1e3b23c90415ee3622c8}{\index{keyboard.\-c@{keyboard.\-c}!qwerty\-\_\-keymap@{qwerty\-\_\-keymap}}
+\index{qwerty\-\_\-keymap@{qwerty\-\_\-keymap}!keyboard.c@{keyboard.\-c}}
+\subsubsection[{qwerty\-\_\-keymap}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf symbole} qwerty\-\_\-keymap\mbox{[}$\,$\mbox{]}}}\label{keyboard_8c_a9466fe26648d1e3b23c90415ee3622c8}
+Keymap qwerty\-: keycode vers chaine A\-N\-S\-I. 

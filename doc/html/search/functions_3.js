@@ -1,0 +1,11 @@
+var searchData=
+[
+  ['dcache_5fget',['dcache_get',['../dcache_8c.html#a4ba65ffaa114e5eb940fa446292f08da',1,'dcache_get(struct _fs_instance_t *instance, struct _dentry_t *dentry, const char *name):&#160;dcache.c'],['../dcache_8h.html#a4ba65ffaa114e5eb940fa446292f08da',1,'dcache_get(struct _fs_instance_t *instance, struct _dentry_t *dentry, const char *name):&#160;dcache.c']]],
+  ['dcache_5finit',['dcache_init',['../dcache_8c.html#a6a634167e657e519cadf44eb6e6b9068',1,'dcache_init():&#160;dcache.c'],['../dcache_8h.html#a6a634167e657e519cadf44eb6e6b9068',1,'dcache_init():&#160;dcache.c']]],
+  ['dcache_5fremove',['dcache_remove',['../dcache_8c.html#a1532980bfa072d469940da4b8ce176ac',1,'dcache_remove(struct _fs_instance_t *instance, struct _dentry_t *dentry, const char *name):&#160;dcache.c'],['../dcache_8h.html#a1532980bfa072d469940da4b8ce176ac',1,'dcache_remove(struct _fs_instance_t *instance, struct _dentry_t *dentry, const char *name):&#160;dcache.c']]],
+  ['dcache_5fset',['dcache_set',['../dcache_8c.html#a4f122b8158ba9f2044fda159f8ff0680',1,'dcache_set(struct _fs_instance_t *instance, struct _dentry_t *pdentry, const char *name, struct _dentry_t *dentry):&#160;dcache.c'],['../dcache_8h.html#a4f122b8158ba9f2044fda159f8ff0680',1,'dcache_set(struct _fs_instance_t *instance, struct _dentry_t *pdentry, const char *name, struct _dentry_t *dentry):&#160;dcache.c']]],
+  ['del_5fevent',['del_event',['../events_8c.html#a066fd6048f5a6f5a6d4b93abea00013d',1,'del_event(int id):&#160;events.c'],['../events_8h.html#a066fd6048f5a6f5a6d4b93abea00013d',1,'del_event(int id):&#160;events.c']]],
+  ['delete_5fprocess',['delete_process',['../kprocess_8h.html#a7cced35f469ae897c55ab96940289cf6',1,'delete_process(int pid):&#160;kprocess.c'],['../kprocess_8c.html#a7cced35f469ae897c55ab96940289cf6',1,'delete_process(int pid):&#160;kprocess.c']]],
+  ['devfs_5finit',['devfs_init',['../devfs_8c.html#ac01eef8358c344396a59f06531a5dcb4',1,'devfs_init():&#160;devfs.c'],['../devfs_8h.html#ac01eef8358c344396a59f06531a5dcb4',1,'devfs_init():&#160;devfs.c']]],
+  ['disable_5fcursor',['disable_cursor',['../video_8c.html#a61e8f22681edb740e2d057ac270e6f5b',1,'disable_cursor(int disable):&#160;video.c'],['../video_8h.html#a61e8f22681edb740e2d057ac270e6f5b',1,'disable_cursor(int disable):&#160;video.c']]]
+];

@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>TacOS:  Fichier source de kernel/include/list.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">TacOS
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -30,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.1.2 -->
+<!-- Généré par Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -89,42 +90,58 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="contents">
 <a href="list_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef _LIST_H_</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _LIST_H_</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define _LIST_H_</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2types_8h.html">types.h</a>&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">   37</a></span>&#160;<span class="keyword">typedef</span> int (*<a class="code" href="heap_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a>) (<span class="keywordtype">void</span>*, <span class="keywordtype">void</span>*);</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">   37</a></span>&#160;<span class="keyword">typedef</span> int (*<a class="code" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a>) (<span class="keywordtype">void</span>*, <span class="keywordtype">void</span>*);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">typedef</span> int (*id_func_type) (int, <span class="keywordtype">void</span>*);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="structlist__t.html">   43</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="structlist__t.html#a37b34fd423a00ddc7ad662c29fbd177e">   44</a></span>&#160;        <a class="code" href="heap_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a> <a class="code" href="structlist__t.html#a37b34fd423a00ddc7ad662c29fbd177e">comparator</a>; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="structlist__t.html#a0c48694d3aca4dbf169881b9df794cb6">   46</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structlist__t.html#a0c48694d3aca4dbf169881b9df794cb6">head</a>;                               </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="structlist__t.html#a799d9396ef609198dc4dff6456a99bb9">   47</a></span>&#160;        <span class="keywordtype">void</span>* <a class="code" href="structlist__t.html#a799d9396ef609198dc4dff6456a99bb9">elements_array</a>;   </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="structlist__t.html#ae66525dffaeeeda67bd46d8c90fa2863">   48</a></span>&#160;        <span class="keywordtype">int</span>* <a class="code" href="structlist__t.html#ae66525dffaeeeda67bd46d8c90fa2863">link_array</a>;                </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="structlist__t.html#a21f815dfb80c00df4cc95304bc29161f">   50</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structlist__t.html#a21f815dfb80c00df4cc95304bc29161f">nb_elements</a>;                </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="structlist__t.html#a467978ad64ca202b560905f80a93bf8a">   51</a></span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="structlist__t.html#a467978ad64ca202b560905f80a93bf8a">elements_size</a>;   </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="structlist__t.html#a646f05091de2a2667b0f3c9aaffdfbdc">   52</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structlist__t.html#a646f05091de2a2667b0f3c9aaffdfbdc">max_elements</a>;               </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;} <a class="code" href="structlist__t.html" title="Liste générique.">list_t</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structlist__t.html">   43</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structlist__t.html#a37b34fd423a00ddc7ad662c29fbd177e">   44</a></span>&#160;        <a class="code" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a> <a class="code" href="structlist__t.html#a37b34fd423a00ddc7ad662c29fbd177e">comparator</a>; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structlist__t.html#a0c48694d3aca4dbf169881b9df794cb6">   46</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structlist__t.html#a0c48694d3aca4dbf169881b9df794cb6">head</a>;                               </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structlist__t.html#a799d9396ef609198dc4dff6456a99bb9">   47</a></span>&#160;        <span class="keywordtype">void</span>* <a class="code" href="structlist__t.html#a799d9396ef609198dc4dff6456a99bb9">elements_array</a>;   </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structlist__t.html#ae66525dffaeeeda67bd46d8c90fa2863">   48</a></span>&#160;        <span class="keywordtype">int</span>* <a class="code" href="structlist__t.html#ae66525dffaeeeda67bd46d8c90fa2863">link_array</a>;                </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structlist__t.html#a21f815dfb80c00df4cc95304bc29161f">   50</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structlist__t.html#a21f815dfb80c00df4cc95304bc29161f">nb_elements</a>;                </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="structlist__t.html#a467978ad64ca202b560905f80a93bf8a">   51</a></span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="structlist__t.html#a467978ad64ca202b560905f80a93bf8a">elements_size</a>;   </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structlist__t.html#a646f05091de2a2667b0f3c9aaffdfbdc">   52</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structlist__t.html#a646f05091de2a2667b0f3c9aaffdfbdc">max_elements</a>;               </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;} <a class="code" href="structlist__t.html">list_t</a>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> <a class="code" href="list_8h.html#a8111dff4de9d78342e96563621a7da63">list_init</a>(<a class="code" href="structlist__t.html" title="Liste générique.">list_t</a>* l, <a class="code" href="heap_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a> cmp, <span class="keywordtype">size_t</span> elements_size, <span class="keywordtype">int</span> max_elements);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> <a class="code" href="list_8h.html#a8111dff4de9d78342e96563621a7da63">list_init</a>(<a class="code" href="structlist__t.html">list_t</a>* l, <a class="code" href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a> cmp, <span class="keywordtype">size_t</span> elements_size, <span class="keywordtype">int</span> max_elements);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span>* <a class="code" href="list_8h.html#a4d06987bb22b3a5c66d2be44f6c23845">list_get_top</a>(<a class="code" href="structlist__t.html" title="Liste générique.">list_t</a> l);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span>* <a class="code" href="list_8h.html#a4d06987bb22b3a5c66d2be44f6c23845">list_get_top</a>(<a class="code" href="structlist__t.html">list_t</a> l);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a7a8bb1eb8a161ffce0167fca806e10ad">list_add_element</a>(<a class="code" href="structlist__t.html" title="Liste générique.">list_t</a>* l, <span class="keywordtype">void</span>* element);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a7a8bb1eb8a161ffce0167fca806e10ad">list_add_element</a>(<a class="code" href="structlist__t.html">list_t</a>* l, <span class="keywordtype">void</span>* element);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a5ffcff1c3f7eace23a067c0051a3c8f9">list_remove_top</a>(<a class="code" href="structlist__t.html" title="Liste générique.">list_t</a>* l);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a5ffcff1c3f7eace23a067c0051a3c8f9">list_remove_top</a>(<a class="code" href="structlist__t.html">list_t</a>* l);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#ad8dbf30907f29e3b4fc748a83d4b1784">list_del_element</a>(<a class="code" href="structlist__t.html" title="Liste générique.">list_t</a>* list, <span class="keywordtype">int</span> <span class="keywordtype">id</span>, id_func_type func);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#ad8dbf30907f29e3b4fc748a83d4b1784">list_del_element</a>(<a class="code" href="structlist__t.html">list_t</a>* list, <span class="keywordtype">int</span> <span class="keywordtype">id</span>, id_func_type func);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keywordtype">void</span> <a class="code" href="list_8h.html#a7b460be2c0d40f4da72af89c356ed7c1">print_list</a>(<a class="code" href="structlist__t.html" title="Liste générique.">list_t</a> ma_liste);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keywordtype">void</span> <a class="code" href="list_8h.html#a7b460be2c0d40f4da72af89c356ed7c1">print_list</a>(<a class="code" href="structlist__t.html">list_t</a> ma_liste);</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif //_LIST_H_</span></div>
+<div class="ttc" id="kernel_2include_2types_8h_html"><div class="ttname"><a href="kernel_2include_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="structlist__t_html"><div class="ttname"><a href="structlist__t.html">list_t</a></div><div class="ttdoc">Liste générique. </div><div class="ttdef"><b>Definition:</b> list.h:43</div></div>
+<div class="ttc" id="list_8h_html_a35d066d4adbc5a7903210dcce0bf4717"><div class="ttname"><a href="list_8h.html#a35d066d4adbc5a7903210dcce0bf4717">cmp_func_type</a></div><div class="ttdeci">int(* cmp_func_type)(void *, void *)</div><div class="ttdef"><b>Definition:</b> list.h:37</div></div>
+<div class="ttc" id="structlist__t_html_ae66525dffaeeeda67bd46d8c90fa2863"><div class="ttname"><a href="structlist__t.html#ae66525dffaeeeda67bd46d8c90fa2863">list_t::link_array</a></div><div class="ttdeci">int * link_array</div><div class="ttdef"><b>Definition:</b> list.h:48</div></div>
+<div class="ttc" id="list_8h_html_a5ffcff1c3f7eace23a067c0051a3c8f9"><div class="ttname"><a href="list_8h.html#a5ffcff1c3f7eace23a067c0051a3c8f9">list_remove_top</a></div><div class="ttdeci">int list_remove_top(list_t *l)</div><div class="ttdef"><b>Definition:</b> list.c:119</div></div>
+<div class="ttc" id="structlist__t_html_a0c48694d3aca4dbf169881b9df794cb6"><div class="ttname"><a href="structlist__t.html#a0c48694d3aca4dbf169881b9df794cb6">list_t::head</a></div><div class="ttdeci">int head</div><div class="ttdef"><b>Definition:</b> list.h:46</div></div>
+<div class="ttc" id="structlist__t_html_a799d9396ef609198dc4dff6456a99bb9"><div class="ttname"><a href="structlist__t.html#a799d9396ef609198dc4dff6456a99bb9">list_t::elements_array</a></div><div class="ttdeci">void * elements_array</div><div class="ttdef"><b>Definition:</b> list.h:47</div></div>
+<div class="ttc" id="structlist__t_html_a467978ad64ca202b560905f80a93bf8a"><div class="ttname"><a href="structlist__t.html#a467978ad64ca202b560905f80a93bf8a">list_t::elements_size</a></div><div class="ttdeci">size_t elements_size</div><div class="ttdef"><b>Definition:</b> list.h:51</div></div>
+<div class="ttc" id="structlist__t_html_a646f05091de2a2667b0f3c9aaffdfbdc"><div class="ttname"><a href="structlist__t.html#a646f05091de2a2667b0f3c9aaffdfbdc">list_t::max_elements</a></div><div class="ttdeci">int max_elements</div><div class="ttdef"><b>Definition:</b> list.h:52</div></div>
+<div class="ttc" id="list_8h_html_ad8dbf30907f29e3b4fc748a83d4b1784"><div class="ttname"><a href="list_8h.html#ad8dbf30907f29e3b4fc748a83d4b1784">list_del_element</a></div><div class="ttdeci">int list_del_element(list_t *list, int id, id_func_type func)</div><div class="ttdef"><b>Definition:</b> list.c:145</div></div>
+<div class="ttc" id="list_8h_html_a7a8bb1eb8a161ffce0167fca806e10ad"><div class="ttname"><a href="list_8h.html#a7a8bb1eb8a161ffce0167fca806e10ad">list_add_element</a></div><div class="ttdeci">int list_add_element(list_t *l, void *element)</div><div class="ttdef"><b>Definition:</b> list.c:74</div></div>
+<div class="ttc" id="structlist__t_html_a21f815dfb80c00df4cc95304bc29161f"><div class="ttname"><a href="structlist__t.html#a21f815dfb80c00df4cc95304bc29161f">list_t::nb_elements</a></div><div class="ttdeci">int nb_elements</div><div class="ttdef"><b>Definition:</b> list.h:50</div></div>
+<div class="ttc" id="list_8h_html_a4d06987bb22b3a5c66d2be44f6c23845"><div class="ttname"><a href="list_8h.html#a4d06987bb22b3a5c66d2be44f6c23845">list_get_top</a></div><div class="ttdeci">void * list_get_top(list_t l)</div><div class="ttdef"><b>Definition:</b> list.c:64</div></div>
+<div class="ttc" id="list_8h_html_a7b460be2c0d40f4da72af89c356ed7c1"><div class="ttname"><a href="list_8h.html#a7b460be2c0d40f4da72af89c356ed7c1">print_list</a></div><div class="ttdeci">void print_list(list_t ma_liste)</div><div class="ttdef"><b>Definition:</b> list.c:133</div></div>
+<div class="ttc" id="list_8h_html_a8111dff4de9d78342e96563621a7da63"><div class="ttname"><a href="list_8h.html#a8111dff4de9d78342e96563621a7da63">list_init</a></div><div class="ttdeci">void list_init(list_t *l, cmp_func_type cmp, size_t elements_size, int max_elements)</div><div class="ttdef"><b>Definition:</b> list.c:41</div></div>
+<div class="ttc" id="structlist__t_html_a37b34fd423a00ddc7ad662c29fbd177e"><div class="ttname"><a href="structlist__t.html#a37b34fd423a00ddc7ad662c29fbd177e">list_t::comparator</a></div><div class="ttdeci">cmp_func_type comparator</div><div class="ttdef"><b>Definition:</b> list.h:44</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Mai 30 2013 19:08:33 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 3 Janvier 2015 13:22:30 pour TacOS par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.1.2
+</a> 1.8.7
 </small></address>
 </body>
 </html>
