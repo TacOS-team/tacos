@@ -215,6 +215,17 @@ int lstat(const char *path, struct stat *buf) {
 	return ret;
 }
 
+int symlink(const char *target, const char *linkpath) {
+	int ret;
+	if (linkpath[0] != '/') {
+		char * absolutepath = get_absolute_path(linkpath);
+		syscall(SYS_SYMLINK, (uint32_t)target, (uint32_t)absolutepath, (uint32_t)&ret);
+		free(absolutepath);
+	} else {
+		syscall(SYS_SYMLINK, (uint32_t)target, (uint32_t)linkpath, (uint32_t)&ret);
+	}
+	return ret;
+}
 
 int mknod(const char *path, mode_t mode, dev_t dev) {
 	if (path[0] != '/') {

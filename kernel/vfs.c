@@ -447,6 +447,30 @@ int vfs_mknod(const char * pathname, mode_t mode, dev_t dev) {
 	}
 }
 
+int vfs_symlink(const char * target, const char * linkpath) {
+	struct nameidata nd1;
+	nd1.flags = 0;
+	if (open_namei(linkpath, &nd1) == 0) {
+		return -EEXIST;
+	}
+
+	struct nameidata nb;
+	nb.flags = LOOKUP_PARENT;
+	if (open_namei(linkpath, &nb) == 0) {
+		if (nb.mnt->instance->symlink) {
+			dentry_t new_entry;
+			new_entry.d_name = nb.last;
+			nb.mnt->instance->symlink(nb.dentry->d_inode, &new_entry, target);
+		} else {
+			klog("Pas de symlink pour ce fs.");
+			return -EPERM;
+		}
+		return 0;
+	} else {
+		return -ENOENT;
+	}
+}
+
 int vfs_mkdir(const char * pathname, mode_t mode) {
 	struct nameidata nd1;
 	nd1.flags = 0;
@@ -463,6 +487,7 @@ int vfs_mkdir(const char * pathname, mode_t mode) {
 			nb.mnt->instance->mkdir(nb.dentry->d_inode, &new_entry, mode);
 		} else {
 			klog("Pas de mkdir pour ce fs.");
+			return -EPERM;
 		}
 		return 0;
 	} else {

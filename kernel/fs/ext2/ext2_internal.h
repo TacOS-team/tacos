@@ -392,6 +392,10 @@ dentry_t* ext2_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry,
  */
 int ext2_rename(inode_t *old_dir, dentry_t *old_dentry, inode_t *new_dir, dentry_t *new_dentry);
 
+
+int ext2_symlink(inode_t *dir, dentry_t *dentry, const char* target);
+
+
 dentry_t * init_rootext2fs(ext2_fs_instance_t *instance);
 
 extern struct _open_file_operations_t ext2fs_fops; /**< Pointeurs sur les fonctions de manipulation de fichiers pour ce FS. */

@@ -158,6 +158,10 @@ SYSCALL_HANDLER3(sys_stat, const char *path, struct stat *buf, int *ret) {
 	*ret = vfs_stat(path, buf, *ret);
 }
 
+SYSCALL_HANDLER3(sys_symlink, const char *target, const char *linkpath, int *ret) {
+	*ret = vfs_symlink(target, linkpath);
+}
+
 SYSCALL_HANDLER2(sys_unlink, const char *path, int *ret) {
 	*ret = vfs_unlink(path);
 }

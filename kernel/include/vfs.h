@@ -56,6 +56,7 @@ typedef struct _fs_instance_t {
 	open_file_descriptor * device;								/**< Device utilisé. */
 	struct _dentry_t* (*getroot) (struct _fs_instance_t *); /**< Noeud racine. */
 	struct _dentry_t* (*lookup) (struct _fs_instance_t *, struct _dentry_t*, const char *); /**< Résolution path. */
+	int (*symlink) (struct _inode_t *, struct _dentry_t *, const char* target);											/**< Création d'un lien symbolique. */
 	int (*mkdir) (struct _inode_t *, struct _dentry_t *, mode_t);											/**< Création d'un dossier. */
 	int (*mknod) (struct _inode_t *, struct _dentry_t *, mode_t, dev_t);								/**< Création d'un noeud. */
 	int (*stat) (struct _inode_t *, struct stat *);									/**< Obtenir les infos d'un noeud. */
@@ -276,6 +277,8 @@ int vfs_readdir(open_file_descriptor * ofd, char * entries, size_t size);
  * @return 0 en cas de succès.
  */
 int vfs_close(open_file_descriptor *ofd);
+
+int vfs_symlink(const char * target, const char * linkpath);
 
 /**
  * Initialisation du VFS.

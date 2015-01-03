@@ -68,5 +68,6 @@
 #define SYS_UTIMES 36			/**< Change la date d'accès et de modification d'un fichier. */
 #define SYS_RENAME 37			/**< Déplace ou renomme un fichier. */
 #define SYS_SELECT 38
+#define SYS_SYMLINK 39
 
 #endif

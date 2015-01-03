@@ -249,6 +249,8 @@ int exec_elf(const char *path);
 
 ssize_t readlink(const char *path, char *buf, size_t bufsize);
 
+int symlink(const char *target, const char *linkpath);
+
 __END_DECLS
 
 #endif //_UNISTD_H_

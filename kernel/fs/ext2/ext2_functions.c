@@ -101,6 +101,20 @@ int ext2_mkdir(inode_t *dir, dentry_t *dentry, mode_t mode) {
 	return ext2_mknod(dir, dentry, mode | EXT2_S_IFDIR, 0);
 }
 
+
+int ext2_symlink(inode_t *dir, dentry_t *dentry, const char* target) {
+	int ret = ext2_mknod(dir, dentry, 0777 | EXT2_S_IFLNK, 0);
+	if (ret) {
+		return ret;
+	}
+
+	int inode = dentry->d_inode->i_ino;
+	ext2_fs_instance_t* instance = (ext2_fs_instance_t*)dir->i_instance;
+	struct ext2_inode *einode = read_inode(instance, inode);
+	ext2_write2inode(instance, inode, einode, 0, target, strlen(target));
+	return 0;
+}
+
 /*
 int ext2_stat(dentry_t *dentry, struct stat *stbuf) {
 	getattr_inode((ext2_fs_instance_t*)dentry->d_inode->i_instance, dentry->d_inode, stbuf);
@@ -198,61 +212,16 @@ ssize_t ext2_write(open_file_descriptor * ofd, const void *buf, size_t size) {
 	int inode = ofd->inode->i_ino;
 	if (inode >= 0) {
 		ext2_fs_instance_t *instance = (ext2_fs_instance_t*) ofd->fs_instance;
-		
 		struct ext2_inode *einode = read_inode(instance, inode);
-		if (einode != NULL) {
-			unsigned int offset;
-			if (ofd->flags & O_APPEND) {
-				offset = einode->i_size;
-			} else {
-			 	offset = ofd->current_octet;
-			}
 
-			int count = 0;
-
-			// On avance de block en block tant que offset > taille d'un block.
-			int n_blk = 0;
-			int off = offset;
-			while (off >= (1024 << instance->superblock.s_log_block_size)) {
-				if (addr_inode_data2(instance, einode, n_blk) == 0) {
-					int addr = alloc_block(instance);
-					set_block_inode_data(instance, einode, n_blk, addr);
-				}
-
-				off -= 1024 << instance->superblock.s_log_block_size;
-				n_blk++;
-			}
-
-			while (size > 0) {
-				int addr = addr_inode_data2(instance, einode, n_blk);
-				if (addr == 0) {
-					addr = alloc_block(instance);
-					set_block_inode_data(instance, einode, n_blk, addr);
-					addr *= (1024 << instance->superblock.s_log_block_size);
-				}
-				addr += off;
-
-				size_t size2 = (1024 << instance->superblock.s_log_block_size) - off;
-				off = 0;
-				if (size2 > size) {
-					size2 = size;
-				}
-				instance->write_data(instance->super.device, ((char*)buf) + count, size2, addr);
-				size -= size2;
-				count += size2;
-				n_blk++;
-			}
-
-			einode->i_size = max(einode->i_size, offset + count);
-	//		struct timeval tv;
-	//		gettimeofday(&tv, NULL);
-	//		einode.i_mtime = tv.tv_sec;
-			write_inode(instance, inode, einode);
-			return count;		
+		unsigned int offset;
+		if (ofd->flags & O_APPEND) {
+			offset = einode->i_size;
 		} else {
-			return -ENOENT;
+		 	offset = ofd->current_octet;
 		}
-		return size;
+	
+		return ext2_write2inode(instance, inode, einode, offset, buf, size);
 	} else {
 		return inode;
 	}

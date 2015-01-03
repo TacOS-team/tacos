@@ -91,6 +91,7 @@ fs_instance_t* mount_EXT2(open_file_descriptor* ofd) {
 
 	instance->super.mknod = ext2_mknod;
 	instance->super.mkdir = ext2_mkdir;
+	instance->super.symlink = ext2_symlink;
 	instance->super.rename = ext2_rename;
 	instance->super.setattr = ext2_setattr;
 	instance->super.unlink = ext2_unlink;
