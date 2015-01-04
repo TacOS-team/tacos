@@ -69,5 +69,6 @@
 #define SYS_RENAME 37			/**< Déplace ou renomme un fichier. */
 #define SYS_SELECT 38
 #define SYS_SYMLINK 39
+#define SYS_CHDIR 40
 
 #endif

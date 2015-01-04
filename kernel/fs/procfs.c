@@ -54,8 +54,10 @@
 #define procfs_cmd_line_offset     procfs_root_process_offset + 1
 // state
 #define procfs_state_offset        procfs_cmd_line_offset + 1
+// cwd
+#define procfs_cwd_offset          procfs_state_offset + 1
 // ppid
-#define procfs_ppid_offset         procfs_state_offset + 1
+#define procfs_ppid_offset         procfs_cwd_offset + 1
 // fd
 #define procfs_fd_offset           procfs_ppid_offset + 1
 // fd/* => taille de FOPEN_MAX
@@ -228,6 +230,15 @@ static ssize_t procfs_read_state(open_file_descriptor * ofd, void* buffer, size_
 	return result;
 }
 
+static ssize_t procfs_read_cwd(open_file_descriptor * ofd, void* buffer, size_t count) {
+	ssize_t result = EOF;
+	extra_data_procfs_t *extra = ofd->i_fs_specific;
+	process_t* process = find_process(extra->pid);
+	if(process) {
+		result = write_string_in_buffer(ofd, buffer, process->cwd, count);
+	}
+	return result;
+}
 
 static ssize_t procfs_read_process_fd(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
@@ -268,7 +279,8 @@ typedef struct {
 static procfs_file_function_t procfs_file_functions_list[] = {
 	{ "cmd_line", 0, procfs_read_name,     procfs_cmd_line_offset },
 	{ "ppid",     0, procfs_read_ppid,     procfs_ppid_offset },
-	{ "state",    0, procfs_read_state,    procfs_state_offset }/*,
+	{ "state",    0, procfs_read_state,    procfs_state_offset },
+	{ "cwd",      0, procfs_read_cwd,      procfs_cwd_offset }/*,
 	{ "priority", 0, procfs_read_priority, procfs_priority_offset }*/
 };
 
@@ -521,7 +533,11 @@ static dentry_t * get_file_function_dentry(struct _fs_instance_t * instance, con
 	extra_data_procfs_t *extra = inode->i_fs_specific;
 	extra->lookup = NULL;
 
-	inode->i_mode = 0555 | S_IFREG ;
+    if (strcmp(name, "cwd") == 0) {
+	    inode->i_mode = 0555 | S_IFLNK;
+    } else {
+	    inode->i_mode = 0555 | S_IFREG;
+    }
 
 	return result;
 }

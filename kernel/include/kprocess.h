@@ -81,7 +81,6 @@ typedef struct
 	int priority;
 	
 	uint16_t ppid; /**< Parent process ID */
-	
 } process_init_data_t;
 
 struct _tty_struct_t;
@@ -102,6 +101,8 @@ typedef struct process {
 	int current_sample;
 	int last_sample;
 	
+	char *cwd; /**< Current Working Directory */
+
 	/* Données propres au contexte du processus */
 	regs_t regs;
 	

@@ -46,7 +46,9 @@ void sigstp_handler(int signal __attribute__((unused))) {
 
 static int pwd_cmd(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 {
-	printf("%s\n", getcwd(NULL, 0));
+	char *pwd = get_current_dir_name();
+	printf("%s\n", pwd);
+	free(pwd);
 	return 0;
 }
 
@@ -150,7 +152,7 @@ int main(int argc, char** argv)
 	{
 		//time_t curr_time = time(NULL);
 		char prompt[256];
-		sprintf(prompt, "%s>", getcwd(NULL, 0));
+		sprintf(prompt, "%s>", get_current_dir_name());
 		
 		buffer = readline(prompt);
 		if (!buffer) {

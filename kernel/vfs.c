@@ -35,6 +35,7 @@
 #include <klibc/string.h>
 #include <fd_types.h>
 #include <klog.h>
+#include <scheduler.h>
 
 #define LOOKUP_PARENT 1 /**< S'arrête au niveau du parent. */
 #define LOOKUP_NOFOLLOW 2 /**< Ne résoud pas le dernier lien. */
@@ -204,6 +205,32 @@ static int open_namei(const char *pathname, struct nameidata *nb) {
 	}
 	return -2;
 }
+
+int vfs_chdir(const char* path) {
+	process_t* process = get_current_process();
+	
+	struct nameidata nb;
+    nb.flags = 0;
+
+    int len = strlen(process->cwd);
+    int len2 = strlen(path);
+
+    char *pathname = kmalloc(len + len2 + 2);
+    strcpy(pathname, process->cwd);
+    strcpy(pathname + len, path);
+	pathname[len + len2] = '/';
+	pathname[len + len2 + 1] = '\0';
+
+    int ret = open_namei(pathname, &nb);
+	if (ret == 0) {
+        char *oldpath = process->cwd;
+        process->cwd = pathname;
+        kfree(oldpath);
+    }
+
+	return ret;
+}
+
 
 static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, uint32_t flags) {
 	dentry->d_inode->i_count++;

@@ -194,22 +194,22 @@ static char** envp_build(uint32_t* base, char** envp) {
 }
 
 static vaddr_t init_stack(uint32_t* base, char* args, char** envp, paddr_t return_func) {
-		int argc;
-		char** argv;
-		uint32_t* stack_ptr;
-		
-		char** benvp = envp_build(base, envp);
-		argc = arg_build(args, (vaddr_t)benvp[0], &argv);
-		
-		stack_ptr = (uint32_t*) argv[0];
-		*(stack_ptr-1) = (vaddr_t) benvp;
-		*(stack_ptr-2) = (vaddr_t) argv;
-		*(stack_ptr-3) = argc;
-		*(stack_ptr-4) = (vaddr_t) return_func;
-		
-		stack_ptr = stack_ptr - 4;
-		
-		return (vaddr_t) stack_ptr;
+	int argc;
+	char** argv;
+	uint32_t* stack_ptr;
+	
+	char** benvp = envp_build(base, envp);
+	argc = arg_build(args, (vaddr_t)benvp[0], &argv);
+	
+	stack_ptr = (uint32_t*) argv[0];
+	*(stack_ptr-1) = (vaddr_t) benvp;
+	*(stack_ptr-2) = (vaddr_t) argv;
+	*(stack_ptr-3) = argc;
+	*(stack_ptr-4) = (vaddr_t) return_func;
+	
+	stack_ptr = stack_ptr - 4;
+	
+	return (vaddr_t) stack_ptr;
 }
 
 static void init_regs(regs_t* regs, vaddr_t esp, vaddr_t kesp, vaddr_t eip) {
@@ -306,6 +306,7 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 	}
 	
 	new_proc->name = strdup(init_data_dup->name);
+	new_proc->cwd = NULL;
 	
 	/* Initialisation de la kernel stack */
 	sys_stack = kmalloc(init_data_dup->stack_size*sizeof(uint32_t));
@@ -335,7 +336,7 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 	pagination_init_page_directory_copy_kernel_only(new_proc->pd, pd_paddr);
 	
 	new_proc->ctrl_tty = NULL;
-	
+
 	/* ZONE CRITIQUE */
 	asm("cli");
 
@@ -439,6 +440,7 @@ process_t* create_process(process_init_data_t* init_data) {
 		return NULL;
 	}
 	new_proc->name = strdup(name);
+	new_proc->cwd = NULL;
 	
 	sys_stack = kmalloc(0x100000);
 	if (sys_stack == NULL)
@@ -615,6 +617,11 @@ static int sys_exec2(process_init_data_t* init_data)
 	process = create_process_elf(init_data);
 	if (process->ppid) {
 		process_t *parent = find_process(process->ppid);
+		if (parent->cwd) {
+			process->cwd = strdup(parent->cwd);
+		} else {
+			process->cwd = strdup("/");
+		}
 		parent->children[parent->nb_children++] = process;
 	}
 	scheduler_add_process(process);

@@ -103,10 +103,16 @@ int main(int argc, char** argv) {
 	int i;
 	for(i = 1; i < argc; i++) {
 		struct stat buf;
-		if (stat(argv[i], &buf) == 0) {
-			printf("  File: '%s'\n", argv[i]);
-			printf("  Size: %d\n", buf.st_size);
-			printf(" Inode: %d\n", buf.st_ino);
+		if (lstat(argv[i], &buf) == 0) {
+			if (S_ISLNK(buf.st_mode)) {
+				char link[80];
+				readlink(argv[i], link, sizeof(link));
+				printf("  File: '%s' -> '%s'\n", argv[i], link);
+			} else {
+				printf("  File: '%s'\n", argv[i]);
+			}
+			printf("  Size: %d\n", (int) buf.st_size);
+			printf(" Inode: %u\n", (unsigned int) buf.st_ino);
 			printf("  Type: %s\n", get_filetype(buf.st_mode));
 			char *mode = disp_mode(buf.st_mode);
 			printf("Access: (%o/%s)		uid: %d		gid: %d\n", buf.st_mode & ~S_IFMT, mode, buf.st_uid, buf.st_gid);

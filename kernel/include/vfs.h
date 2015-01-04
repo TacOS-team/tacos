@@ -280,6 +280,7 @@ int vfs_close(open_file_descriptor *ofd);
 
 int vfs_symlink(const char * target, const char * linkpath);
 
+int vfs_chdir(const char* path);
 /**
  * Initialisation du VFS.
  */

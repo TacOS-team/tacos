@@ -64,7 +64,17 @@ int chdir(const char *path);
  *
  * @return Le chemin actuel. NULL en cas d'erreur.
  */
-const char * getcwd(char * buf, size_t size);
+char * getcwd(char * buf, size_t size);
+
+/**
+ * @brief Retourne l'actuel working directory en utilisant PWD si disponible.
+ *
+ * Return l'actuel working directory en utilisant PWD si disponible et correct.
+ * Le chemin est malloc'é et devra donc être libéré par l'utilisateur.
+ *
+ * @return Le chemin du CWD. NULL en cas d'erreur.
+ */
+char *get_current_dir_name(void);
 
 /**
  * @brief Retourne le chemin absolu d'un path en fonction du cwd.

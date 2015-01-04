@@ -52,11 +52,10 @@ char * get_absolute_path(const char *dirname) {
 }
 
 int chdir(const char *path) {
-	char * cwd = getenv("PWD");
-	if (cwd == NULL) {
-		putenv("PWD=/");
-		cwd = "/";
-	}
+	int ret;
+	syscall(SYS_CHDIR, (uint32_t) path, (uint32_t) &ret, 0);
+
+	char * cwd = get_current_dir_name();
 
 	DIR *dir;
 	//XXX: Je l'ai mis ici mais vu que ".." est dispo dans le fs, je devrais 
@@ -93,31 +92,39 @@ int chdir(const char *path) {
 	return 1;
 }
 
-const char * getcwd(char * buf, size_t size) {
-	char * cwd = getenv("PWD");
-	if (cwd == NULL) {
-		cwd = "/";
+char *get_current_dir_name(void) {
+	// Utilise PWD si existe et correct.
+	
+	char * pwd = getenv("PWD");
+	struct stat pwdstat;
+
+	if (pwd != NULL && stat(pwd, &pwdstat) == 0) {
+		return strdup(pwd);
+	}
+
+	return getcwd(NULL, 0);
+}
+
+char * getcwd(char * buf, size_t size) {
+	struct stat st_cwd;
+	if (stat("/proc/self/cwd", &st_cwd) != 0) {
+		return NULL;	
+	}
+
+	if (size && size <= st_cwd.st_size) {
+		errno = ERANGE;
+		return NULL;
 	}
 
 	if (buf == NULL) {
 		if (size == 0) {
-			return strdup(cwd);
-		} else {
-			buf = malloc(size);		
+			size = st_cwd.st_size;
 		}
+		buf = malloc(size);
 	}
 
-	int i = 0;
-	while (cwd[i] != '\0') {
-		size--;
-		if (size <= 0) {
-			errno = ERANGE;
-			return NULL;
-		}
-		buf[i] = cwd[i];
-		i++;
-	}
-	buf[i] = '\0';
+	readlink("/proc/self/cwd", buf, st_cwd.st_size);
+	buf[st_cwd.st_size] = '\0';
 
 	return buf;
 }

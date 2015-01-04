@@ -55,8 +55,10 @@ static int disp_all = 0;
 static int disp_classify = 0;
 static int human = 0;
 
-void add_entry(char *name, struct stat *s) {
-	entries[n_entries] = malloc(sizeof(struct res_entry));
+void add_entry(const char *name, struct stat *s) {
+	if (entries[n_entries] == NULL) {
+		entries[n_entries] = malloc(sizeof(struct res_entry));
+	}
 	strcpy(entries[n_entries]->name, name);
 	entries[n_entries]->s = *s;
 	n_entries++;
@@ -152,6 +154,85 @@ static int compar(const void *p1, const void *p2) {
 	return strcasecmp((*a1)->name, (*a2)->name);
 }
 
+static void disp_entry_long(char* filepath, int pathlen, struct res_entry* entry) {
+	// mode
+	disp_mode(entry->s.st_mode);
+
+	// user + group
+	printf(" %d %d", entry->s.st_uid, entry->s.st_gid);
+
+	// taille
+	if (human) {
+		char c;
+		size_t size;
+		convert_human(entry->s.st_size, &size, &c);
+		printf(" %d%c", size, c);
+	} else {
+		printf(" %d", entry->s.st_size);
+	}
+	
+	// date
+	time_t n = time(NULL);
+	time_t d = entry->s.st_mtime;
+	struct tm *t = localtime(&d);
+	printf(" %s %d", mon_name[t->tm_mon], t->tm_mday);
+	if (n - d > 366 * 24 * 60 * 60) {
+		printf("  %d", t->tm_year + 1900);
+	} else {
+		printf(" %d:%d", t->tm_hour, t->tm_min);
+	}
+
+	if (S_ISLNK(entry->s.st_mode)) {
+		char link[80];
+		strcpy(filepath + pathlen, entry->name);
+		int s = readlink(filepath, link, sizeof(link));
+		if (s >= 0) {
+			link[s] = '\0';
+			printf(" %s -> %s\n", entry->name, link);
+		} else {
+			printf(" %s\n", entry->name);
+		}
+	} else if (disp_classify) {
+		char c = classify(entry->s.st_mode);
+		printf(" %s%c\n", entry->name, c ? c : ' ');
+	} else {
+		printf(" %s\n", entry->name);
+	}
+}
+
+static void disp_entry(struct res_entry* entry) {
+	char c = '\0';
+	if (disp_classify) {
+		c = classify(entry->s.st_mode);
+	}
+	if (c) {
+		printf("%s%c ", entry->name, c);
+	} else {
+		printf("%s ", entry->name);
+	}
+}
+
+static void list_entries(char* filepath, int pathlen) {
+    // TODO: sort en fonction d'autres critères que la taille.
+	qsort(entries, n_entries, sizeof(struct res_entry*), compar);
+
+	if (long_format) {
+		int i = 0;
+		while (entries[i]) {
+			disp_entry_long(filepath, pathlen, entries[i]);
+			i++;
+		}
+	} else {
+		int i = 0;
+		while (entries[i]) {
+			disp_entry(entries[i]);
+			i++;
+		}
+		printf("\n");
+	}
+	n_entries = 0;
+}
+
 void listdir(const char *path) {
 	struct stat buf;
 	DIR* dir = opendir(path);
@@ -176,73 +257,7 @@ void listdir(const char *path) {
 		}
 		closedir(dir);
 
-        // TODO: sort en fonction d'autres critères que la taille.
-		qsort(entries, n_entries, sizeof(struct res_entry*), compar);
-
-		if (long_format) {
-			int i = 0;
-			while (entries[i]) {
-				// mode
-				disp_mode(entries[i]->s.st_mode);
-
-				// user + group
-				printf(" %d %d", entries[i]->s.st_uid, entries[i]->s.st_gid);
-
-				// taille
-				if (human) {
-					char c;
-					size_t size;
-					convert_human(entries[i]->s.st_size, &size, &c);
-					printf(" %d%c", size, c);
-				} else {
-					printf(" %d", entries[i]->s.st_size);
-				}
-				
-				// date
-				time_t n = time(NULL);
-				time_t d = entries[i]->s.st_mtime;
-				struct tm *t = localtime(&d);
-				printf(" %s %d", mon_name[t->tm_mon], t->tm_mday);
-				if (n - d > 366 * 24 * 60 * 60) {
-					printf("  %d", t->tm_year + 1900);
-				} else {
-					printf(" %d:%d", t->tm_hour, t->tm_min);
-				}
-
-				if (S_ISLNK(entries[i]->s.st_mode)) {
-					char link[80];
-					strcpy(filepath + pathlen, entries[i]->name);
-					int s = readlink(filepath, link, sizeof(link));
-					if (s >= 0) {
-						link[s] = '\0';
-						printf(" %s -> %s\n", entries[i]->name, link);
-					} else {
-						printf(" %s\n", entries[i]->name);
-					}
-				} else if (disp_classify) {
-					char c = classify(entries[i]->s.st_mode);
-					printf(" %s%c\n", entries[i]->name, c ? c : ' ');
-				} else {
-					printf(" %s\n", entries[i]->name);
-				}
-				i++;
-			}
-		} else {
-			int i = 0;
-			while (entries[i]) {
-				char c = '\0';
-				if (disp_classify) {
-					c = classify(entries[i]->s.st_mode);
-				}
-				if (c) {
-					printf("%s%c ", entries[i]->name, c);
-				} else {
-					printf("%s ", entries[i]->name);
-				}
-				i++;
-			}
-			printf("\n");
-		}
+		list_entries(filepath, pathlen);
 	} else {
 		fprintf(stderr, "%s not found.\n", path);
 	}
@@ -255,11 +270,12 @@ void list(const char *path) {
 		return;
 	}
 	struct stat buf;
-	if (stat(path, &buf) == 0) {
+	if (lstat(path, &buf) == 0) {
 		if (S_ISDIR(buf.st_mode)) {
 			listdir(path);
 		} else {
-			printf("%s ", path);
+			add_entry(path, &buf);
+			list_entries(malloc(255), 0);
 		}
 	} else {
 		fprintf(stderr, "%s not found.\n", path);
@@ -284,13 +300,16 @@ int main(int argc, char** argv)
 	}
 
 	if (argc == marg) {
-		listdir(getcwd(NULL, 0));
+		char *cwd = get_current_dir_name();
+		listdir(cwd);
+		free(cwd);
 	} else {
 		int i;
 		for(i = marg; i < argc; i++) {
 			list(argv[i]);
 		}
 	}
+
 	return 0;
 }
 
