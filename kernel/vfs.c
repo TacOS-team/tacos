@@ -59,6 +59,8 @@ static available_fs_t *fs_list;
 
 static mounted_fs_t *mount_list;
 
+static int open_namei(const char *pathname, struct nameidata *nb);
+
 static struct _dentry_t* vfs_getroot (struct _fs_instance_t *instance __attribute__((unused))) {
 	return &root_vfs;
 }
@@ -157,8 +159,11 @@ static int lookup(struct nameidata *nb) {
 						strcpy(newpath, link);
 						strcpy(newpath + ret, nb->last);
 
-						nb->last = newpath;
-						// TODO: gérer les chemins absolus.
+						if (newpath[0] == '/') {
+							return open_namei(newpath, nb);
+						} else {
+							nb->last = newpath;
+						}
 					} else {
 						return -1;
 					}
@@ -210,23 +215,23 @@ int vfs_chdir(const char* path) {
 	process_t* process = get_current_process();
 	
 	struct nameidata nb;
-    nb.flags = 0;
+	nb.flags = 0;
 
-    int len = strlen(process->cwd);
-    int len2 = strlen(path);
+	int len = strlen(process->cwd);
+	int len2 = strlen(path);
 
-    char *pathname = kmalloc(len + len2 + 2);
-    strcpy(pathname, process->cwd);
-    strcpy(pathname + len, path);
+	char *pathname = kmalloc(len + len2 + 2);
+	strcpy(pathname, process->cwd);
+	strcpy(pathname + len, path);
 	pathname[len + len2] = '/';
 	pathname[len + len2 + 1] = '\0';
 
-    int ret = open_namei(pathname, &nb);
+	int ret = open_namei(pathname, &nb);
 	if (ret == 0) {
-        char *oldpath = process->cwd;
-        process->cwd = pathname;
-        kfree(oldpath);
-    }
+		char *oldpath = process->cwd;
+		process->cwd = pathname;
+		kfree(oldpath);
+	}
 
 	return ret;
 }
