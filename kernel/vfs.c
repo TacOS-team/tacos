@@ -179,9 +179,20 @@ static int lookup(struct nameidata *nb) {
 }
 
 static int open_namei(const char *pathname, struct nameidata *nb) {
+	char *path;
 	size_t len = strlen(pathname);
-	char *path = kmalloc(len + 1);
-	strcpy(path, pathname);
+	if (pathname[0] != '/') {
+		process_t *process = get_current_process();
+		size_t len2 = strlen(process->cwd);
+		path = kmalloc(len + len2 + 1);
+		strcpy(path, process->cwd);
+		strcpy(path + len2, pathname);
+		len += len2;
+	} else {
+		path = kmalloc(len + 1);
+		strcpy(path, pathname);
+	}
+
 	while (path[len - 1] == '/') {
 		path[--len] = '\0';
 	}
@@ -213,19 +224,55 @@ static int open_namei(const char *pathname, struct nameidata *nb) {
 
 int vfs_chdir(const char* path) {
 	process_t* process = get_current_process();
-	
-	struct nameidata nb;
-	nb.flags = 0;
-
-	int len = strlen(process->cwd);
+	int len = 0;
 	int len2 = strlen(path);
+	
+	char *pathname;
+	if (path[0] != '/') {
+		len = strlen(process->cwd);
+	}
+	pathname = kmalloc(len + len2 + 2);
 
-	char *pathname = kmalloc(len + len2 + 2);
-	strcpy(pathname, process->cwd);
+	if (len) {
+		strcpy(pathname, process->cwd);
+	}
 	strcpy(pathname + len, path);
-	pathname[len + len2] = '/';
-	pathname[len + len2 + 1] = '\0';
 
+	int lenp = 1;
+	struct nameidata nb;
+	nb.last = strdup(pathname);
+	pathname[lenp] = '\0';
+
+	while (*(nb.last)) {
+		char* name = get_next_part_path(&nb);
+
+		if (name[0] == '.') {
+			if (name[1] == '.' && name[2] == '\0') {
+				pathname[lenp - 1] = '\0';
+				char *r = strrchr(pathname, '/');
+				if (r != NULL) {
+					lenp = r - pathname + 1;
+				}
+				strcpy(pathname + lenp - 1, "/");
+				kfree(name);
+				continue;
+			} else if (name[1] == '\0') {
+				kfree(name);
+				continue;
+			}
+		}
+
+		strcpy(pathname + lenp, name);
+		int l = strlen(name);
+		if (l > 0) {
+			lenp += l;
+			pathname[lenp++] = '/';
+		}
+		pathname[lenp] = '\0';
+		kfree(name);
+	}
+
+	nb.flags = 0;
 	int ret = open_namei(pathname, &nb);
 	if (ret == 0) {
 		char *oldpath = process->cwd;

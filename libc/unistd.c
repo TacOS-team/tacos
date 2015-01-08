@@ -35,6 +35,8 @@
 #include <unistd.h>
 
 char * get_absolute_path(const char *dirname) {
+	return strdup(dirname);
+	/*
 	char * cwd = getenv("PWD");
 	if (cwd == NULL) {
 		cwd = "/";
@@ -48,48 +50,21 @@ char * get_absolute_path(const char *dirname) {
 	strcpy(abs, cwd);
 	abs[lencwd] = '/';
 	strcpy(abs + lencwd + 1, dirname);
-	return abs;
+	return abs;*/
 }
 
 int chdir(const char *path) {
 	int ret;
 	syscall(SYS_CHDIR, (uint32_t) path, (uint32_t) &ret, 0);
 
-	char * cwd = get_current_dir_name();
-
-	DIR *dir;
-	//XXX: Je l'ai mis ici mais vu que ".." est dispo dans le fs, je devrais 
-	//     pouvoir le mettre dans le if du opendir.
-	if (strcmp(path, "..") == 0 && strcmp(cwd, "/") != 0) {
-		char *r = strrchr(cwd, '/');
-		if (r == cwd) {
-			r[1] = '\0';
-		} else {
-			*r = '\0';
-		}		
+	if (ret == 0) {
+		char *cwd = getcwd(NULL, 0);
 		char *dest = malloc(5 + strlen(cwd));
 		sprintf(dest, "PWD=%s", cwd);
 		putenv(dest);
-		return 0;
 	}
 
-	if ((dir = opendir(path)) != NULL) {
-		if (path[0] == '/') {
-			cwd = (char*)path;
-		} else {
-			cwd = get_absolute_path(path);
-		}
-		int len = strlen(cwd);
-		if (len > 1 && cwd[len-1] == '/') {
-			cwd[len-1] = '\0';
-			len--;
-		}
-		char *dest = malloc(5 + len);
-		sprintf(dest, "PWD=%s", cwd);
-		putenv(dest);
-		return 0;
-	}
-	return 1;
+	return ret;
 }
 
 char *get_current_dir_name(void) {
@@ -106,27 +81,39 @@ char *get_current_dir_name(void) {
 }
 
 char * getcwd(char * buf, size_t size) {
-	struct stat st_cwd;
-	if (stat("/proc/self/cwd", &st_cwd) != 0) {
-		return NULL;	
-	}
+	int need_free = 0;
 
-	if (size && size <= st_cwd.st_size) {
-		errno = ERANGE;
-		return NULL;
+	if (size == 0 && buf != NULL) {
+		errno = EINVAL;
+		goto err;
 	}
 
 	if (buf == NULL) {
 		if (size == 0) {
-			size = st_cwd.st_size;
+			size = 1024;
 		}
 		buf = malloc(size);
+		need_free = 1;
 	}
 
-	readlink("/proc/self/cwd", buf, st_cwd.st_size);
-	buf[st_cwd.st_size] = '\0';
+	ssize_t s = readlink("/proc/self/cwd", buf, size);
+	if (s == -1) {
+		goto err;
+	}
+
+	if (size && size <= (size_t) s) {
+		errno = ERANGE;
+		goto err;
+	}
+	buf[s] = '\0';
 
 	return buf;
+
+err:
+	if (need_free) {
+		free(buf);
+	}
+	return NULL;
 }
 
 pid_t getpid(void) {
