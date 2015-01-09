@@ -34,25 +34,6 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 
-char * get_absolute_path(const char *dirname) {
-	return strdup(dirname);
-	/*
-	char * cwd = getenv("PWD");
-	if (cwd == NULL) {
-		cwd = "/";
-	}
-
-	int lencwd = strlen(cwd);
-	if (lencwd <= 1) {
-		lencwd = 0;
-	}
-	char *abs = malloc(lencwd + strlen(dirname) + 2);
-	strcpy(abs, cwd);
-	abs[lencwd] = '/';
-	strcpy(abs + lencwd + 1, dirname);
-	return abs;*/
-}
-
 int chdir(const char *path) {
 	int ret;
 	syscall(SYS_CHDIR, (uint32_t) path, (uint32_t) &ret, 0);
@@ -163,96 +144,48 @@ int lseek(int fd, long offset, int whence) {
 
 int chmod(const char *path, mode_t mode) {
 	int ret;
-	if (path[0] != '/') {
-		char * absolutepath = get_absolute_path(path);
-		syscall(SYS_CHMOD, (uint32_t)absolutepath, (uint32_t)mode, (uint32_t)&ret);
-		free(absolutepath);
-	} else {
-		syscall(SYS_CHMOD, (uint32_t)path, (uint32_t)mode, (uint32_t)&ret);
-	}
+	syscall(SYS_CHMOD, (uint32_t)path, (uint32_t)mode, (uint32_t)&ret);
 	return ret;
 }
 
 int chown(const char *path, uid_t owner, gid_t group) {
 	int *ret = (int*)&group;
-	if (path[0] != '/') {
-		char * absolutepath = get_absolute_path(path);
-		syscall(SYS_CHOWN, (uint32_t)absolutepath, (uint32_t)owner, (uint32_t)ret);
-		free(absolutepath);
-	} else {
-		syscall(SYS_CHMOD, (uint32_t)path, (uint32_t)owner, (uint32_t)ret);
-	}
+	syscall(SYS_CHMOD, (uint32_t)path, (uint32_t)owner, (uint32_t)ret);
 	return *ret;
 }
 
 int stat(const char *path, struct stat *buf) {
 	int ret = 1; // follow link
-	if (path[0] != '/') {
-		char * absolutepath = get_absolute_path(path);
-		syscall(SYS_STAT, (uint32_t)absolutepath, (uint32_t)buf, (uint32_t)&ret);
-		free(absolutepath);
-	} else {
-		syscall(SYS_STAT, (uint32_t)path, (uint32_t)buf, (uint32_t)&ret);
-	}
+	syscall(SYS_STAT, (uint32_t)path, (uint32_t)buf, (uint32_t)&ret);
 	return ret;
 }
 
 int lstat(const char *path, struct stat *buf) {
 	int ret = 0; // don't follow link
-	if (path[0] != '/') {
-		char * absolutepath = get_absolute_path(path);
-		syscall(SYS_STAT, (uint32_t)absolutepath, (uint32_t)buf, (uint32_t)&ret);
-		free(absolutepath);
-	} else {
-		syscall(SYS_STAT, (uint32_t)path, (uint32_t)buf, (uint32_t)&ret);
-	}
+	syscall(SYS_STAT, (uint32_t)path, (uint32_t)buf, (uint32_t)&ret);
 	return ret;
 }
 
 int symlink(const char *target, const char *linkpath) {
 	int ret;
-	if (linkpath[0] != '/') {
-		char * absolutepath = get_absolute_path(linkpath);
-		syscall(SYS_SYMLINK, (uint32_t)target, (uint32_t)absolutepath, (uint32_t)&ret);
-		free(absolutepath);
-	} else {
-		syscall(SYS_SYMLINK, (uint32_t)target, (uint32_t)linkpath, (uint32_t)&ret);
-	}
+	syscall(SYS_SYMLINK, (uint32_t)target, (uint32_t)linkpath, (uint32_t)&ret);
 	return ret;
 }
 
 int mknod(const char *path, mode_t mode, dev_t dev) {
-	if (path[0] != '/') {
-		char * absolutepath = get_absolute_path(path);
-		syscall(SYS_MKNOD, (uint32_t)absolutepath, (uint32_t)mode, (uint32_t)&dev);
-		free(absolutepath);
-	} else {
-		syscall(SYS_MKNOD, (uint32_t)path, (uint32_t)mode, (uint32_t)&dev);
-	}
+	syscall(SYS_MKNOD, (uint32_t)path, (uint32_t)mode, (uint32_t)&dev);
 	return (int)dev;
 }
 
 int unlink(const char *path) {
 	int ret;
-	if (path[0] != '/') {
-		char * absolutepath = get_absolute_path(path);
-		syscall(SYS_UNLINK, (uint32_t)absolutepath, (uint32_t)&ret, 0);
-		free(absolutepath);
-	} else {
-		syscall(SYS_UNLINK, (uint32_t)path, (uint32_t)&ret, 0);
-	}
+	syscall(SYS_UNLINK, (uint32_t)path, (uint32_t)&ret, 0);
 	return ret;
 }
 
 int rmdir(const char *path) {
 	int ret;
-	if (path[0] != '/') {
-		char * absolutepath = get_absolute_path(path);
-		syscall(SYS_RMDIR, (uint32_t)absolutepath, (uint32_t)&ret, 0);
-		free(absolutepath);
-	} else {
-		syscall(SYS_RMDIR, (uint32_t)path, (uint32_t)&ret, 0);
-	}
+	syscall(SYS_RMDIR, (uint32_t)path, (uint32_t)&ret, 0);
 	return ret;
 }
 
@@ -307,12 +240,6 @@ int execvp(const char *file, char *const argv[]) {
 
 ssize_t readlink(const char *path, char *buf, size_t bufsize) {
 	ssize_t *ret = (ssize_t*)&bufsize;
-	if (path[0] != '/') {
-		char * absolutepath = get_absolute_path(path);
-		syscall(SYS_READLINK, (uint32_t) absolutepath, (uint32_t)buf, (uint32_t)ret);
-		free(absolutepath);
-	} else {
-		syscall(SYS_READLINK, (uint32_t) path, (uint32_t)buf, (uint32_t)ret);
-	}
+	syscall(SYS_READLINK, (uint32_t) path, (uint32_t)buf, (uint32_t)ret);
 	return *ret;
 }

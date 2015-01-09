@@ -77,18 +77,6 @@ char * getcwd(char * buf, size_t size);
 char *get_current_dir_name(void);
 
 /**
- * @brief Retourne le chemin absolu d'un path en fonction du cwd.
- *
- * Retourne le chemin absolue d'un path en fonction du cwd à partir 
- * d'un chemin relatif.
- *
- * @param dirname Chemin relatif.
- *
- * @return Chemin absolu.
- */
-char * get_absolute_path(const char *dirname);
-
-/**
  * @brief Obtenir l'identifiant du processus.
  *
  * Obtenir l'identifiant du processus.

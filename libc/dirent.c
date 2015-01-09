@@ -37,15 +37,8 @@
 
 int mkdir(const char *pathname, mode_t mode) {
 	int ret;
-	if (pathname[0] != '/') {
-		char * absolutepath = get_absolute_path(pathname);
-		syscall(SYS_MKDIR, (uint32_t) absolutepath, (uint32_t) mode, (uint32_t) &ret);
-		free(absolutepath);
-		errno = -ret;
-	} else {
-		syscall(SYS_MKDIR, (uint32_t) pathname, (uint32_t) mode, (uint32_t) &ret);
-		errno = -ret;
-	}
+	syscall(SYS_MKDIR, (uint32_t) pathname, (uint32_t) mode, (uint32_t) &ret);
+	errno = -ret;
 	return (ret ? -1 : 0);
 }
 
