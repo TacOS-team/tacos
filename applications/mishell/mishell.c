@@ -91,12 +91,24 @@ void print_logo()
 	printf("(codename:fajitas)\n\n\n");
 }
 
+static int is_a_path(const char* buffer) {
+    const char* spc = strchrnul(buffer, ' ');
+    const char* b = buffer;
+    while (b < spc) {
+        if (*b == '/') {
+            return 1;
+        }
+        b++;
+    }
+    return 0;
+}
+
 void exec(const char *buffer)
 {
 	if(exec_builtin_cmd(buffer) != 0)
 	{
 		int pid;
-		if (buffer[0] == '/') {
+		if (is_a_path(buffer)) {
 			if ((pid = exec_elf(buffer)) < 0)
 				printf("%s: commande introuvable.\n", buffer);
 			else
