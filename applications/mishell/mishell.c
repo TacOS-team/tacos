@@ -92,15 +92,15 @@ void print_logo()
 }
 
 static int is_a_path(const char* buffer) {
-    const char* spc = strchrnul(buffer, ' ');
-    const char* b = buffer;
-    while (b < spc) {
-        if (*b == '/') {
-            return 1;
-        }
-        b++;
-    }
-    return 0;
+	const char* spc = strchrnul(buffer, ' ');
+	const char* b = buffer;
+	while (b < spc) {
+		if (*b == '/') {
+			return 1;
+		}
+		b++;
+	}
+	return 0;
 }
 
 void exec(const char *buffer)
