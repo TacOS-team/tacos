@@ -633,21 +633,19 @@ SYSCALL_HANDLER3(sys_exec, char *cmdline, char **environ, int *retval)
 	process_t* process = get_current_process();
 	int pid = process->pid;
 
-	char* execpath = strdup(cmdline);
+	// execpath ne contient que la partie avant l'éventuel premier espace.
+	char* spc = strchrnul(cmdline, ' ');
+	char* execpath = kmalloc(spc - cmdline + 1);
+	strncpy(execpath, cmdline, spc - cmdline);
+	execpath[spc - cmdline] = '\0';
 
 	int ret = 0;
-	int offset = 0;
-	
-	while(execpath[offset] != ' ' && execpath[offset] != '\0')
-		offset++;
-	
-	execpath[offset] = '\0';
-	
 	struct stat buf;
 	ret = vfs_stat(execpath, &buf, ret);
 
 	if (!S_ISREG(buf.st_mode) || !(S_IXUSR & buf.st_mode)) {
 		*retval = -1;
+		kfree(execpath);
 		return;
 	}
 
