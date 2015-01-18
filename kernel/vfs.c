@@ -124,13 +124,6 @@ static int lookup(struct nameidata *nb) {
 	// On va de dossier en dossier.
 	while (*(nb->last)) {
 		const char *name = get_next_part_path(nb);
-		if (name[0] == '.') {
-			if (name[1] == '\0') {
-				continue;
-			} else if (name[1] == '.' && name[2] == '\0') {
-				// TODO: remonter d'un niveau.
-			}
-		}
 
 		if (*(nb->last) == '\0') { // Si c'est le dernier élément
 			if (nb->flags & LOOKUP_PARENT) {
