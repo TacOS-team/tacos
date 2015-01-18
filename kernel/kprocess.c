@@ -639,9 +639,8 @@ SYSCALL_HANDLER3(sys_exec, char *cmdline, char **environ, int *retval)
 	strncpy(execpath, cmdline, spc - cmdline);
 	execpath[spc - cmdline] = '\0';
 
-	int ret = 0;
 	struct stat buf;
-	ret = vfs_stat(execpath, &buf, ret);
+	int ret = vfs_stat(execpath, &buf, 1);
 
 	if (!S_ISREG(buf.st_mode) || !(S_IXUSR & buf.st_mode)) {
 		*retval = -1;
