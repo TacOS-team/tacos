@@ -67,64 +67,64 @@ int fat_is_used_cluster(fat_fs_instance_t *instance, int cluster) {
 
 void fat_encode_long_file_name(char * name, lfn_entry_t * long_file_name, int n_entries) {
  // TODO: Checksum.
-  long_file_name[0].seq_number = 0x40 + n_entries;
-  int i, j;
-  int last = 0;
-  for (i = n_entries - 1; i >= 0; i--) {
-    long_file_name[i].attributes = 0x0f;
-    if (i != n_entries - 1)
-      long_file_name[i].seq_number = i + 1;
-    for (j = 0; j < 5; j++) {
-      if (last) {
-        long_file_name[i].filename1[j * 2] = 0xFF;
-        long_file_name[i].filename1[j * 2 + 1] = 0xFF;
-      } else if (name[j] != '\0') {
-        long_file_name[i].filename1[j * 2] = name[i * 13 + j];
-        long_file_name[i].filename1[j * 2 + 1] = 0;
-      } else {
-        long_file_name[i].filename1[j * 2] = 0;
-        long_file_name[i].filename1[j * 2 + 1] = 0;
-        last = 1;
-      } 
-    }
-    for (j = 5; j < 11; j++) {
-      if (last) {
-        long_file_name[i].filename2[(j - 5) * 2] = 0xFF;
-        long_file_name[i].filename2[(j - 5) * 2 + 1] = 0xFF;
-      } else if (name[j] != '\0') {
-        long_file_name[i].filename2[(j - 5) * 2] = name[i * 13 + j];
-        long_file_name[i].filename2[(j - 5) * 2 + 1] = 0;
-      } else {
-        long_file_name[i].filename2[(j - 5) * 2] = 0;
-        long_file_name[i].filename2[(j - 5) * 2 + 1] = 0;
-        last = 1;
-      }
-    }
+	long_file_name[0].seq_number = 0x40 + n_entries;
+	int i, j;
+	int last = 0;
+	for (i = n_entries - 1; i >= 0; i--) {
+		long_file_name[i].attributes = 0x0f;
+		if (i != n_entries - 1)
+			long_file_name[i].seq_number = i + 1;
+		for (j = 0; j < 5; j++) {
+			if (last) {
+				long_file_name[i].filename1[j * 2] = 0xFF;
+				long_file_name[i].filename1[j * 2 + 1] = 0xFF;
+			} else if (name[j] != '\0') {
+				long_file_name[i].filename1[j * 2] = name[i * 13 + j];
+				long_file_name[i].filename1[j * 2 + 1] = 0;
+			} else {
+				long_file_name[i].filename1[j * 2] = 0;
+				long_file_name[i].filename1[j * 2 + 1] = 0;
+				last = 1;
+			} 
+		}
+		for (j = 5; j < 11; j++) {
+			if (last) {
+				long_file_name[i].filename2[(j - 5) * 2] = 0xFF;
+				long_file_name[i].filename2[(j - 5) * 2 + 1] = 0xFF;
+			} else if (name[j] != '\0') {
+				long_file_name[i].filename2[(j - 5) * 2] = name[i * 13 + j];
+				long_file_name[i].filename2[(j - 5) * 2 + 1] = 0;
+			} else {
+				long_file_name[i].filename2[(j - 5) * 2] = 0;
+				long_file_name[i].filename2[(j - 5) * 2 + 1] = 0;
+				last = 1;
+			}
+		}
 
-    if (last) {
-      long_file_name[i].filename3[0] = 0xFF;
-      long_file_name[i].filename3[1] = 0xFF;
-    } else if (name[11] != '\0') {
-      long_file_name[i].filename3[0] = name[i * 13 + 11];
-      long_file_name[i].filename3[1] = 0;
-    } else {
-      long_file_name[i].filename3[0] = 0;
-      long_file_name[i].filename3[1] = 0;
-      last = 1;
-    }
+		if (last) {
+			long_file_name[i].filename3[0] = 0xFF;
+			long_file_name[i].filename3[1] = 0xFF;
+		} else if (name[11] != '\0') {
+			long_file_name[i].filename3[0] = name[i * 13 + 11];
+			long_file_name[i].filename3[1] = 0;
+		} else {
+			long_file_name[i].filename3[0] = 0;
+			long_file_name[i].filename3[1] = 0;
+			last = 1;
+		}
 
-    if (last) {
-      long_file_name[i].filename3[0] = 0xFF;
-      long_file_name[i].filename3[1] = 0xFF;
-    } else if (name[12] != '\0') {
-      long_file_name[i].filename3[0] = name[i * 13 + 12];
-      long_file_name[i].filename3[1] = 0;
-    } else {
-      long_file_name[i].filename3[0] = 0;
-      long_file_name[i].filename3[1] = 0;
-      last = 1;
-    }
-  }
+		if (last) {
+			long_file_name[i].filename3[0] = 0xFF;
+			long_file_name[i].filename3[1] = 0xFF;
+		} else if (name[12] != '\0') {
+			long_file_name[i].filename3[0] = name[i * 13 + 12];
+			long_file_name[i].filename3[1] = 0;
+		} else {
+			long_file_name[i].filename3[0] = 0;
+			long_file_name[i].filename3[1] = 0;
+			last = 1;
+		}
+	}
 }
 
 char * fat_decode_long_file_name(char * name, lfn_entry_t * long_file_name) {
@@ -181,60 +181,60 @@ time_t convert_datetime_fat_to_time_t(fat_date_t *date, fat_time_t *time) {
 }
 
 void convert_time_t_to_datetime_fat(time_t time, fat_time_t *timefat, fat_date_t *datefat) {
-  #define MINUTES 60 /**< Nombre de secondes dans une minute. */
-  #define HOURS 3600 /**< Nombre de secondes dans une heure. */
-  #define DAYS 86400 /**< Nombre de secondes dans un jour. */
+	#define MINUTES 60 /**< Nombre de secondes dans une minute. */
+	#define HOURS 3600 /**< Nombre de secondes dans une heure. */
+	#define DAYS 86400 /**< Nombre de secondes dans un jour. */
 
-  int days_per_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-  int days_per_month_leap[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	int days_per_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	int days_per_month_leap[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-  int year = 1970;
-  int month = 0;
-  int day = 0;
-  int hours = 0;
-  int min = 0;
-  int sec = 0;
+	int year = 1970;
+	int month = 0;
+	int day = 0;
+	int hours = 0;
+	int min = 0;
+	int sec = 0;
 
-  int secs_year = DAYS * 365;
-  int *dpm = days_per_month;
+	int secs_year = DAYS * 365;
+	int *dpm = days_per_month;
 
-  while (time) {
-    if (time >= secs_year) {
-      year++;
-      time -= secs_year;
+	while (time) {
+		if (time >= secs_year) {
+			year++;
+			time -= secs_year;
 
-      if (!(year % 400 && (year % 100 == 0 || (year & 3)))) {
-        secs_year = DAYS * 366;
-        dpm = days_per_month_leap;
-      } else {
-        secs_year = DAYS * 365;
-        dpm = days_per_month;
-      }
-    } else {
-      if (time >= dpm[month] * DAYS) {
-        time -= dpm[month] * DAYS;
-        month++;
-      } else {
-        day = time / DAYS;
-        time -= day * DAYS;
-        hours = time / HOURS;
-        time -= hours * HOURS;
-        min = time / MINUTES;
-        time -= min * MINUTES;
-        sec = time;
-        time = 0;
-      }
-    }
-  }
+			if (!(year % 400 && (year % 100 == 0 || (year & 3)))) {
+				secs_year = DAYS * 366;
+				dpm = days_per_month_leap;
+			} else {
+				secs_year = DAYS * 365;
+				dpm = days_per_month;
+			}
+		} else {
+			if (time >= dpm[month] * DAYS) {
+				time -= dpm[month] * DAYS;
+				month++;
+			} else {
+				day = time / DAYS;
+				time -= day * DAYS;
+				hours = time / HOURS;
+				time -= hours * HOURS;
+				min = time / MINUTES;
+				time -= min * MINUTES;
+				sec = time;
+				time = 0;
+			}
+		}
+	}
 
-  datefat->year = year - 1980;
-  datefat->month = month + 1;
-  datefat->day = day + 1;
-  if (timefat) {
-    timefat->hours = hours;
-    timefat->minutes = min;
-    timefat->seconds2 = sec / 2;
-  }
+	datefat->year = year - 1980;
+	datefat->month = month + 1;
+	datefat->day = day + 1;
+	if (timefat) {
+		timefat->hours = hours;
+		timefat->minutes = min;
+		timefat->seconds2 = sec / 2;
+	}
 }
 
 void fat_dir_entry_to_directory_entry(char *filename, fat_dir_entry_t *dir, directory_entry_t *entry) {
@@ -251,126 +251,123 @@ void fat_dir_entry_to_directory_entry(char *filename, fat_dir_entry_t *dir, dire
 }
 
 char * fat_lfn_to_sfn(char * filename) {
-//  char * lfn = strdup(filename);
+//	char * lfn = strdup(filename);
 	int len = strlen(filename);
 	char* lfn = (char*) kmalloc((len+1)*sizeof(char)); // len + 1 pour le '\0'
 	strcpy(lfn, filename);
 
-  char * sfn = kmalloc(12);
+	char * sfn = kmalloc(12);
 
-  // To upper case.
-  int i = 0;
-  while (lfn[i] != '\0') {
+	// To upper case.
+	int i = 0;
+	while (lfn[i] != '\0') {
 		if (lfn[i] >= 'a') {
 			lfn[i] = lfn[i] + 'A' - 'a';
 		}
-    i++;
-  }
+		i++;
+	}
 
-  // TODO: Convert to OEM (=> '_').
+	// TODO: Convert to OEM (=> '_').
 
-  // Strip all leading and embedded spaces
-  int j = 0;
-  i = 0;
-  while (lfn[i] != '\0') {
-    if (lfn[i] != ' ') {
-      lfn[j] = lfn[i];
-      j++;
-    }
-    i++;
-  }
-  lfn[j] = '\0';
+	// Strip all leading and embedded spaces
+	int j = 0;
+	i = 0;
+	while (lfn[i] != '\0') {
+		if (lfn[i] != ' ') {
+			lfn[j] = lfn[i];
+			j++;
+		}
+		i++;
+	}
+	lfn[j] = '\0';
 
-  char * ext = strrchr(lfn, '.');
-  int has_ext = (ext != NULL) && (lfn + j - ext - 1 <= 3);
+	char * ext = strrchr(lfn, '.');
+	int has_ext = (ext != NULL) && (lfn + j - ext - 1 <= 3);
 
-  if (has_ext) {
-    // Copy first 8 caracters.
-    i = 0;
-    j = 0;
-    while (&lfn[i] <= ext) {
-      if (lfn[i] != '.' && j < 8) {
-        sfn[j] = lfn[i];
-        j++;
-      }
-      i++;
-    }
-  
-    // padding
-    while (j < 8)
-      sfn[j++] = ' ';
+	if (has_ext) {
+		// Copy first 8 caracters.
+		i = 0;
+		j = 0;
+		while (&lfn[i] <= ext) {
+			if (lfn[i] != '.' && j < 8) {
+				sfn[j] = lfn[i];
+				j++;
+			}
+			i++;
+		}
+	
+		// padding
+		while (j < 8)
+			sfn[j++] = ' ';
 
-    // Copy extension.
-    sfn[j++] = '.';
-    while (lfn[i] != '\0') {
-      sfn[j++] = lfn[i];
-      i++;
-    }
+		// Copy extension.
+		sfn[j++] = '.';
+		while (lfn[i] != '\0') {
+			sfn[j++] = lfn[i];
+			i++;
+		}
 
-    while (j < 12)
-      sfn[j++] = ' ';
-  } else {
-    i = 0;
-    j = 0;
-    while (lfn[i] != '\0' && j < 8) {
-      if (lfn[i] != '.') {
-        sfn[j] = lfn[i];
-        j++;
-      }
-      i++;
-    }
-    while (j < 12)
-      sfn[j++] = ' ';
-  }
+		while (j < 12)
+			sfn[j++] = ' ';
+	} else {
+		i = 0;
+		j = 0;
+		while (lfn[i] != '\0' && j < 8) {
+			if (lfn[i] != '.') {
+				sfn[j] = lfn[i];
+				j++;
+			}
+			i++;
+		}
+		while (j < 12)
+			sfn[j++] = ' ';
+	}
 
-  // TODO: numeric-tail generation.
+	// TODO: numeric-tail generation.
 
-  return sfn;
+	return sfn;
 }
 
 void fat_decode_short_file_name(char *filename, fat_dir_entry_t *fdir) {
-  int j, k;
+	int j, k;
 	int notspace = 0;
 
-  // Copy basis name.
-  for (j = 7; j >= 0; j--) {
+	// Sous NT et plus récent, ce bit signifie basename en lowercase.
+	int lc_basename = fdir->reserved & 0x08;
+	// Sous NT et plus récent, ce bit signifie extension en lowercase.
+	int lc_ext = fdir->reserved & 0x10;
+
+	// Copy basis name.
+	for (j = 7; j >= 0; j--) {
 		if (notspace || fdir->utf8_short_name[j] != ' ') {
 			if (!notspace) {
 				notspace = j;
 			}
-			if (fdir->reserved & 0x08) {
-				if (fdir->utf8_short_name[j] < 'a') {
-					filename[j] = fdir->utf8_short_name[j] + 'a' - 'A';
-				} else {
-					filename[j] = fdir->utf8_short_name[j];
-				}
+			if (lc_basename && fdir->utf8_short_name[j] >= 'A' && fdir->utf8_short_name[j] <= 'Z') {
+				filename[j] = fdir->utf8_short_name[j] + 'a' - 'A';
 			} else {
 				filename[j] = fdir->utf8_short_name[j];
 			}
 		}
-  }
-  
+	}
+	
 	notspace++; // notspace est la position du premier caractère != ' '
-  filename[notspace++] = '.';
+	filename[notspace++] = '.';
 
 	int notspaceext = -2;
-  // Copy extension.
-  for (k = 2; k >= 0; k--) {
+	// Copy extension.
+	for (k = 2; k >= 0; k--) {
 		if (notspaceext > 0 || fdir->file_extension[k] != ' ') {
 			if (notspaceext <= 0) {
 				notspaceext = k;
 			}
-			if (fdir->reserved & 0x10) {
-				if (fdir->file_extension[k] < 'a') {
-					filename[notspace + k] = fdir->file_extension[k] + 'a' - 'A';
-				} else {
-					filename[notspace + k] = fdir->file_extension[k];
-				}
+			if (lc_ext && fdir->file_extension[k] >= 'A' && fdir->file_extension[k] <= 'Z') {
+				filename[notspace + k] = fdir->file_extension[k] + 'a' - 'A';
 			} else {
 				filename[notspace + k] = fdir->file_extension[k];
 			}
 		}
-  }
+	}
 
 	filename[notspace + notspaceext + 1] = '\0';
 }
@@ -390,7 +387,7 @@ directory_entry_t * fat_decode_lfn_entry(lfn_entry_t* fdir) {
 }
 
 directory_entry_t * fat_decode_sfn_entry(fat_dir_entry_t *fdir) {
-  char filename[256];
+	char filename[256];
 	fat_decode_short_file_name(filename, fdir);
 	directory_entry_t *dir_entry = kmalloc(sizeof(directory_entry_t));
 	fat_dir_entry_to_directory_entry(filename, fdir, dir_entry);

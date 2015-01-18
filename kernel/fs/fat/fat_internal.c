@@ -211,19 +211,12 @@ directory_t * open_root_dir(fat_fs_instance_t *instance) {
 }
 
 static directory_entry_t* open_next_direntry(directory_t * prev_dir,  const char * name) {
-	int next = 0;
-
 	directory_entry_t *dentry = prev_dir->entries;
 	while (dentry) {
 		if (strcmp(dentry->name, name) == 0) {
-			next = dentry->cluster;
 			break;
 		}
 		dentry = dentry->next;
-	}
-
-	if (next == 0) {
-		return NULL;
 	}
 
 	return dentry;
@@ -398,19 +391,19 @@ static void load_buffer(open_file_descriptor *ofd) {
 }
 
 static int delete_dir_entry(fat_dir_entry_t *fdir, const char *name, int n) {
-  char filename[256];
-  int i;
+	char filename[256];
+	int i;
 
-  for (i = 0; i < n && fdir[i].utf8_short_name[0]; i++) {
-    if ((unsigned char)fdir[i].utf8_short_name[0] != 0xE5) {
-      if (fdir[i].file_attributes == 0x0F && ((lfn_entry_t*) &fdir[i])->seq_number & 0x40) {
-			  int j;
-			  uint8_t i_filename = 0;
-			  uint8_t seq = ((lfn_entry_t*) &fdir[i])->seq_number - 0x40;
-			  for (j = seq-1; j >= 0; j--) {
-			    fat_decode_long_file_name(filename + i_filename, (lfn_entry_t*) &fdir[i+j]);
-			    i_filename += 13;
-			  }
+	for (i = 0; i < n && fdir[i].utf8_short_name[0]; i++) {
+		if ((unsigned char)fdir[i].utf8_short_name[0] != 0xE5) {
+			if (fdir[i].file_attributes == 0x0F && ((lfn_entry_t*) &fdir[i])->seq_number & 0x40) {
+				int j;
+				uint8_t i_filename = 0;
+				uint8_t seq = ((lfn_entry_t*) &fdir[i])->seq_number - 0x40;
+				for (j = seq-1; j >= 0; j--) {
+					fat_decode_long_file_name(filename + i_filename, (lfn_entry_t*) &fdir[i+j]);
+					i_filename += 13;
+				}
 
 				if (strcmp(filename, name) == 0) {
 					for (j = seq; j >= 0; j--) {
@@ -418,56 +411,56 @@ static int delete_dir_entry(fat_dir_entry_t *fdir, const char *name, int n) {
 					}
 					return 0;
 				}
-        i += seq;
-      } else {
-        fat_decode_short_file_name(filename, &fdir[i]);
+				i += seq;
+			} else {
+				fat_decode_short_file_name(filename, &fdir[i]);
 				if (strcmp(filename, name) == 0) {
 					fdir[i].utf8_short_name[0] = 0xE5;
 					return 0;
 				}
-      }
-    }
-  }
+			}
+		}
+	}
 	return 1;
 }
 
 
 static int delete_file_dir(fat_fs_instance_t *instance, int cluster, const char * name) {
-  int n_dir_entries = instance->fat_info.BS.bytes_per_sector * instance->fat_info.BS.sectors_per_cluster / sizeof(fat_dir_entry_t);
+	int n_dir_entries = instance->fat_info.BS.bytes_per_sector * instance->fat_info.BS.sectors_per_cluster / sizeof(fat_dir_entry_t);
 	if (cluster >= 0) {
 
-	  int n_clusters = 0;
-	  int next = cluster;
-	  while (!fat_is_last_cluster(instance, next)) {
-	    next = instance->fat_info.file_alloc_table[next];
-	    n_clusters++;
-	  }
-	
-	  fat_dir_entry_t * sub_dir = kmalloc(n_dir_entries * sizeof(fat_dir_entry_t) * n_clusters);
-	
-	  int c = 0;
-	  next = cluster;
-	  while (!fat_is_last_cluster(instance, next)) {
-	    instance->read_data(instance->super.device, (uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
-	    next = instance->fat_info.file_alloc_table[next];
-	    c++;
-	  }
+		int n_clusters = 0;
+		int next = cluster;
+		while (!fat_is_last_cluster(instance, next)) {
+			next = instance->fat_info.file_alloc_table[next];
+			n_clusters++;
+		}
+		
+		fat_dir_entry_t * sub_dir = kmalloc(n_dir_entries * sizeof(fat_dir_entry_t) * n_clusters);
+		
+		int c = 0;
+		next = cluster;
+		while (!fat_is_last_cluster(instance, next)) {
+			instance->read_data(instance->super.device, (uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
+			next = instance->fat_info.file_alloc_table[next];
+			c++;
+		}
 	
 		if (delete_dir_entry(sub_dir, name, n_dir_entries * n_clusters) == 0) {
 			c = 0;
 			next = cluster;
-		  while (!fat_is_last_cluster(instance, next)) {
+			while (!fat_is_last_cluster(instance, next)) {
 				instance->write_data(instance->super.device, (uint8_t*)(sub_dir + c * n_dir_entries), n_dir_entries * sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (next - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector);
-		    next = instance->fat_info.file_alloc_table[next];
-		    c++;
+				next = instance->fat_info.file_alloc_table[next];
+				c++;
 			}
 			kfree(sub_dir);
 			return 0;
 		}
 		kfree(sub_dir);
 	} else {
-    fat_dir_entry_t *root_dir = kmalloc(sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count);
-    instance->read_data(instance->super.device, (uint8_t*)(root_dir), sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count, instance->fat_info.addr_root_dir);
+		fat_dir_entry_t *root_dir = kmalloc(sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count);
+		instance->read_data(instance->super.device, (uint8_t*)(root_dir), sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count, instance->fat_info.addr_root_dir);
 		if (delete_dir_entry(root_dir, name, n_dir_entries) == 0) {
 			instance->write_data(instance->super.device, (uint8_t*)(root_dir), sizeof(fat_dir_entry_t) * instance->fat_info.BS.root_entry_count, instance->fat_info.addr_root_dir);
 			kfree(root_dir);

@@ -218,70 +218,70 @@ ssize_t fat_read_file(open_file_descriptor * ofd, void * buf, size_t count) {
 }
 
 int fat_mkdir (fs_instance_t *instance, const char * path, mode_t mode __attribute__((__unused__))) {
-  char * dir = kmalloc(strlen(path));
-  char filename[256];
-  fat_split_dir_filename(path, dir, filename);
+	char * dir = kmalloc(strlen(path));
+	char filename[256];
+	fat_split_dir_filename(path, dir, filename);
 
-  char * sfn = fat_lfn_to_sfn(filename);
+	char * sfn = fat_lfn_to_sfn(filename);
 
-  int n_entries = 1 + ((strlen(filename) - 1) / 13);
-  lfn_entry_t * long_file_name = kmalloc(sizeof(lfn_entry_t) * (n_entries + 1));
-  fat_dir_entry_t *fentry = (fat_dir_entry_t*) &long_file_name[n_entries];
+	int n_entries = 1 + ((strlen(filename) - 1) / 13);
+	lfn_entry_t * long_file_name = kmalloc(sizeof(lfn_entry_t) * (n_entries + 1));
+	fat_dir_entry_t *fentry = (fat_dir_entry_t*) &long_file_name[n_entries];
 
-  fat_encode_long_file_name(filename, long_file_name, n_entries);
+	fat_encode_long_file_name(filename, long_file_name, n_entries);
 
-  strncpy(fentry->utf8_short_name, sfn, 8);
-  strncpy(fentry->file_extension, sfn + 8, 3);
-  fentry->file_attributes = 0x10; //TODO: Utiliser variable mode et des defines.
-  fentry->reserved = 0;
-  fentry->create_time_ms = 0;
-//  time_t t = time(NULL);
-//  convert_time_t_to_datetime_fat(t, &(fentry->create_time), &(fentry->create_date));
-//  convert_time_t_to_datetime_fat(t, NULL, &(fentry->last_access_date));
-  fentry->ea_index = 0; //XXX
-//  convert_time_t_to_datetime_fat(t, &(fentry->last_modif_time), &(fentry->last_modif_date));
-  fentry->file_size = 0;
-  fentry->cluster_pointer = alloc_cluster((fat_fs_instance_t*)instance, 1);
-  init_dir_cluster((fat_fs_instance_t*)instance, fentry->cluster_pointer);
+	strncpy(fentry->utf8_short_name, sfn, 8);
+	strncpy(fentry->file_extension, sfn + 8, 3);
+	fentry->file_attributes = 0x10; //TODO: Utiliser variable mode et des defines.
+	fentry->reserved = 0;
+	fentry->create_time_ms = 0;
+//	time_t t = time(NULL);
+//	convert_time_t_to_datetime_fat(t, &(fentry->create_time), &(fentry->create_date));
+//	convert_time_t_to_datetime_fat(t, NULL, &(fentry->last_access_date));
+	fentry->ea_index = 0; //XXX
+//	convert_time_t_to_datetime_fat(t, &(fentry->last_modif_time), &(fentry->last_modif_date));
+	fentry->file_size = 0;
+	fentry->cluster_pointer = alloc_cluster((fat_fs_instance_t*)instance, 1);
+	init_dir_cluster((fat_fs_instance_t*)instance, fentry->cluster_pointer);
 
-  add_fat_dir_entry((fat_fs_instance_t*)instance, dir, (fat_dir_entry_t*)long_file_name, n_entries + 1);
+	add_fat_dir_entry((fat_fs_instance_t*)instance, dir, (fat_dir_entry_t*)long_file_name, n_entries + 1);
 	kfree(dir);
 
-  return 0;
+	return 0;
 }
 
 /*
 int fat_createfile (fat_fs_instance_t* instance, const char * path, mode_t mode __attribute__((__unused__))) {
-  char * dir = kmalloc(strlen(path));
-  char filename[256];
-  fat_split_dir_filename(path, dir, filename);
+	char * dir = kmalloc(strlen(path));
+	char filename[256];
+	fat_split_dir_filename(path, dir, filename);
 
-  char * sfn = fat_lfn_to_sfn(filename);
+	char * sfn = fat_lfn_to_sfn(filename);
 
-  int n_entries = 1 + ((strlen(filename) - 1) / 13);
-  lfn_entry_t * long_file_name = kmalloc(sizeof(lfn_entry_t) * (n_entries + 1));
-  fat_dir_entry_t *fentry = (fat_dir_entry_t*) &long_file_name[n_entries];
+	int n_entries = 1 + ((strlen(filename) - 1) / 13);
+	lfn_entry_t * long_file_name = kmalloc(sizeof(lfn_entry_t) * (n_entries + 1));
+	fat_dir_entry_t *fentry = (fat_dir_entry_t*) &long_file_name[n_entries];
 
-  fat_encode_long_file_name(filename, long_file_name, n_entries);
+	fat_encode_long_file_name(filename, long_file_name, n_entries);
 
-  strncpy(fentry->utf8_short_name, sfn, 8);
-  strncpy(fentry->file_extension, sfn + 8, 3);
-  fentry->file_attributes = 0x0; //TODO: Utiliser variable mode et des defines.
-  fentry->reserved = 0;
-  fentry->create_time_ms = 0;
-//  time_t t = time(NULL);
-//  convert_time_t_to_datetime_fat(t, &(fentry->create_time), &(fentry->create_date));
-//  convert_time_t_to_datetime_fat(t, NULL, &(fentry->last_access_date));
-  fentry->ea_index = 0; //XXX
-//  convert_time_t_to_datetime_fat(t, &(fentry->last_modif_time), &(fentry->last_modif_date));
-  fentry->file_size = 0;
-  fentry->cluster_pointer = alloc_cluster(instance, 1);
-  init_dir_cluster(instance, fentry->cluster_pointer);
+	strncpy(fentry->utf8_short_name, sfn, 8);
+	strncpy(fentry->file_extension, sfn + 8, 3);
+	fentry->file_attributes = 0x0; //TODO: Utiliser variable mode et des defines.
+	fentry->reserved = 0;
+	fentry->create_time_ms = 0;
+//	time_t t = time(NULL);
+//	convert_time_t_to_datetime_fat(t, &(fentry->create_time), &(fentry->create_date));
+//	convert_time_t_to_datetime_fat(t, NULL, &(fentry->last_access_date));
+	fentry->ea_index = 0; //XXX
+//	convert_time_t_to_datetime_fat(t, &(fentry->last_modif_time), &(fentry->last_modif_date));
+	fentry->file_size = 0;
+	fentry->cluster_pointer = alloc_cluster(instance, 1);
+	init_dir_cluster(instance, fentry->cluster_pointer);
 
-  add_fat_dir_entry(instance, dir, (fat_dir_entry_t*)long_file_name, n_entries + 1);
+	add_fat_dir_entry(instance, dir, (fat_dir_entry_t*)long_file_name, n_entries + 1);
 	kfree(dir);
 
-  return 0;
+	return 0;
 } */
 
 int fat_open(open_file_descriptor *ofd) {
@@ -311,36 +311,36 @@ int fat_close(open_file_descriptor *ofd) {
 }
 
 int fat_unlink(fs_instance_t *instance, const char * path) {
-  if (path[0] == '\0' || strcmp(path, "/") == 0)
-    return -1;
+	if (path[0] == '\0' || strcmp(path, "/") == 0)
+		return -1;
 
-  // Only absolute paths.
-  if (path[0] != '/')
-    return -1;
+	// Only absolute paths.
+	if (path[0] != '/')
+		return -1;
 
-  char buf[256];
-  int i = 1;
-  while (path[i] == '/')
-    i++;
+	char buf[256];
+	int i = 1;
+	while (path[i] == '/')
+		i++;
 
-  directory_t * dir = open_root_dir((fat_fs_instance_t*)instance);
+	directory_t * dir = open_root_dir((fat_fs_instance_t*)instance);
 
-  int j = 0;
-  do {
-    if (path[i] == '/' || path[i] == '\0') {
-      buf[j] = '\0';
+	int j = 0;
+	do {
+		if (path[i] == '/' || path[i] == '\0') {
+			buf[j] = '\0';
 
 			int cluster = dir->cluster;
-      if (j > 0 && open_next_dir((fat_fs_instance_t*)instance, dir, dir, buf) == 2) {
+			if (j > 0 && open_next_dir((fat_fs_instance_t*)instance, dir, dir, buf) == 2) {
 					return delete_file_dir((fat_fs_instance_t*)instance, cluster, buf);
 			}
 
-      j = 0;
-    } else {
-      buf[j] = path[i];
-      j++;
-    }
-  } while (path[i++] != '\0');
+			j = 0;
+		} else {
+			buf[j] = path[i];
+			j++;
+		}
+	} while (path[i++] != '\0');
 
 	return 1;
 }
