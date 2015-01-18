@@ -34,9 +34,6 @@
 #include <string.h>
 #include <fcntl.h>
 
-#define GET_PROCESS 0 /**< Action pour obtenir les infos d'un process. */
-#define GET_PROCESS_LIST 1 /**< Action pour obtenir la liste. */
-
 extern char **environ;
 
 int exec_elf(const char* cmdline)
