@@ -197,19 +197,23 @@ void memory_setup(size_t ram_size) {
 paddr_t memory_reserve_page_frame()
 {
 	struct physical_page_descr *p = free_frame_pages;
- 
-	// pop it from free page stack
-	free_frame_pages = free_frame_pages->next;
-	if(free_frame_pages != NULL)
-		free_frame_pages->prev = NULL;
- 
-	// put the new reserved on used page stack
-	used_frame_pages->prev = p;
-	p->next = used_frame_pages;
-	used_frame_pages = p;
-	p->prev = NULL;
 
-	return p->addr;
+	if (p != NULL) {
+		// pop it from free page stack
+		free_frame_pages = free_frame_pages->next;
+		if(free_frame_pages != NULL)
+			free_frame_pages->prev = NULL;
+
+		// put the new reserved on used page stack
+		used_frame_pages->prev = p;
+		p->next = used_frame_pages;
+		used_frame_pages = p;
+		p->prev = NULL;
+
+		return p->addr;
+	} else {
+		return 0;
+	}
 }
 
 int memory_free_page_frame(paddr_t addr)

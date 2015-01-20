@@ -254,20 +254,15 @@ static int increase_heap(struct virtual_mem *vm, unsigned int nb_pages, int u_s)
 	/* vaddr_t top_last_slab; unused */
 	struct slab *slab = (struct slab *) vm->vmm_top;
 
-	for(i=0 ; i<nb_pages ; i++)
-	{
-		if(memory_get_first_free_page() == NULL)
-			return -1;
-		if(map(memory_reserve_page_frame(), vm->vmm_top, u_s) == -1)
+	for (i = 0; i < nb_pages; i++){
+		paddr_t paddr = memory_reserve_page_frame();
+		if(!paddr || map(paddr, vm->vmm_top, u_s) == -1)
 			return -1;
 		vm->vmm_top += PAGE_SIZE;
 	}
 	
-	/* Il semble que si on calcul cette ligne à cet endroit, et que on a !is_empty(&(vm->free_slabs)), ça plante, alors
-	 * je commente et j'insert directement la ligne dans le if 
-	 * top_last_slab = (vaddr_t) vm->free_slabs.end + vm->free_slabs.end->nb_pages*PAGE_SIZE;*/
-	
-	if(!is_empty(&(vm->free_slabs)) && ((vaddr_t) vm->free_slabs.end + vm->free_slabs.end->nb_pages*PAGE_SIZE) == vm->vmm_top)
+	// S'il y a un free slab et que la fin correspond à la fin du heap:
+	if(!is_empty(&(vm->free_slabs)) && ((vaddr_t) vm->free_slabs.end + vm->free_slabs.end->nb_pages*PAGE_SIZE) == (vaddr_t)slab)
 	{
 	 	// agrandit juste le dernier free slab
 		vm->free_slabs.end->nb_pages += nb_pages;
