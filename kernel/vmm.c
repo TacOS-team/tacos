@@ -135,57 +135,11 @@ vaddr_t get_linear_address(int dir, int table, int offset)
 	return (((dir&0x3FF) << 22) | ((table&0x3FF) << 12) | (offset&0xFFF));
 }
 
-// créer une entrée de page
-static void create_page_entry(struct page_table_entry *pte, paddr_t page_addr, int u_s)
-{
-	if (pte->present == 1) 
-	{
-		kprintf("wtf???? %x\n", page_addr);
-	} else 
-	{
-		pte->present = 1;
-		pte->page_addr = page_addr >> 12;
-		pte->r_w = 1;
-		pte->u_s = u_s;
-	}
-}
 
-// créer une entrée de répertoire
-static int create_page_dir(struct page_directory_entry *pde, int dir, int u_s)
-{
-	if(memory_get_first_free_page() == NULL)
-		return -1;
-	paddr_t page_addr = memory_reserve_page_frame();
-
-	pde->present = 1;
-	pde->page_table_addr = page_addr >> 12; // check phys or virtual
-	pde->r_w = 1;
-	pde->u_s = u_s;
-
-	// map new PTE
-	vaddr_t v_page_addr = get_page_table_vaddr(dir);
-	map(page_addr, v_page_addr, u_s);
-
-	int i;
-	struct page_table_entry *pte = (struct page_table_entry *) v_page_addr;
-	for(i=0 ; i < 1024 ; i++)
-		(pte + i)->present = 0;
-
-	return 0;
-}
-
-/* XXX : A changer de fichier (pagination l'utilise au final) */
 // Map dans le répertoire des pages une nouvelle page
 int map(paddr_t phys_page_addr, vaddr_t virt_page_addr, int u_s)
 {
-	int dir = virt_page_addr >> 22;
-	int table = (virt_page_addr >> 12) & 0x3FF;
-	struct page_directory_entry * pde = get_pde(dir);
-
-	if (!pde->present && create_page_dir(pde, dir, u_s) == -1)
-		return -1;
-
-	create_page_entry(get_pte(dir, table), phys_page_addr, u_s);
+	pagination_map((struct page_directory_entry *) PDE_MAGIC, phys_page_addr, virt_page_addr, u_s);
 
 	return 0;
 }

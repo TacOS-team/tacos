@@ -37,6 +37,8 @@
  */
 #define _PAGINATION_KERNEL_TOP 0x40000000
 
+extern int pagination_activated;
+
 /**
  * @struct page_directory_entry
  * @brief Page Directory Entry
@@ -94,6 +96,9 @@ void pagination_setup();
  */
 void pagination_init_page_directory(struct page_directory_entry * pd);
 void pagination_init_page_directory_copy_kernel_only(struct page_directory_entry *pd, paddr_t pd_paddr); 
+
+void pagination_map(struct page_directory_entry * pagination_kernel, paddr_t page_addr, vaddr_t v_page_addr, int u_s);
+int pagination_create_page_dir(struct page_directory_entry *pagination_kernel, int index_pd, int u_s);
 
 static inline void pagination_load_page_directory(struct page_directory_entry * pd) __attribute__((always_inline));
 

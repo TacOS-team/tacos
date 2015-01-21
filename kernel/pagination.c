@@ -24,53 +24,72 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Mise en place et gestion de la pagination.
  */
 
-/**
- * @file pagination.c
- */
 
 #include <types.h>
 #include <memory.h>
 #include <pagination.h>
 #include <vmm.h>
 
-void pagination_map(struct page_directory_entry * pagination_kernel, paddr_t page_addr, vaddr_t v_page_addr);
+// Page Table Entry Magic
+#define PTE_MAGIC 0xFFC00000
+#define PDE_MAGIC 0xFFFFF000
 
-void pagination_create_page_dir(struct page_directory_entry *pagination_kernel, int index_pd) {
+int pagination_activated;
+
+
+int pagination_create_page_dir(struct page_directory_entry *pagination_kernel, int index_pd, int u_s) {
 	int i;
 	struct page_directory_entry * pde = &pagination_kernel[index_pd];
+
+	if(memory_get_first_free_page() == NULL)
+		return -1;
 	paddr_t pt_addr = memory_reserve_page_frame();
+
 	pde->r_w = 1;
-	pde->u_s = 1; // XXX: hack temporaire pour faire fonctionner le driver VESA
+	pde->u_s = u_s;
 	pde->present = 1;
 	pde->page_table_addr = pt_addr >> 12;
 
-	struct page_table_entry *pt = (struct page_table_entry *) pt_addr;
+	// On map la table de page
+	pagination_map(pagination_kernel, pt_addr, get_page_table_vaddr(index_pd), 1);
+
+	struct page_table_entry *pt;
+	if (pagination_activated) {
+		pt = (struct page_table_entry*) get_page_table_vaddr(index_pd);
+	} else {
+		pt = (struct page_table_entry *) pt_addr;
+	}
+
 	for (i = 0; i < 1024; i++)
 		pt[i].present = 0;
 
-	// On map la table de page
-	pagination_map(pagination_kernel, pt_addr, get_page_table_vaddr(index_pd));
+	return 0;
 }
 
-void pagination_map(struct page_directory_entry * pagination_kernel, paddr_t page_addr, vaddr_t v_page_addr) {
+void pagination_map(struct page_directory_entry * pagination_kernel, paddr_t page_addr, vaddr_t v_page_addr, int u_s) {
 	int index_pd = v_page_addr >> 22;
 	int index_pt = (v_page_addr & 0x003FF000) >> 12;
 
 	struct page_directory_entry * pde = &pagination_kernel[index_pd];
 	if (!pde->present) {
-		pagination_create_page_dir(pagination_kernel, index_pd);
+		pagination_create_page_dir(pagination_kernel, index_pd, u_s);
 	}
 
-	struct page_table_entry * page_table = (struct page_table_entry *) (pde->page_table_addr << 12);
+	struct page_table_entry *page_table;
+	if (pagination_activated) {
+		page_table = ((struct page_table_entry *) PTE_MAGIC) + (1024 * index_pd);
+	} else {
+		page_table = (struct page_table_entry *) (pde->page_table_addr << 12);
+	}
 	struct page_table_entry * pte = &page_table[index_pt];
 
 	pte->present = 1;
 	pte->page_addr = page_addr >> 12;
 	pte->r_w = 1;
-	pte->u_s = 1; // XXX: hack temporaire pour faire fonctionner le driver VESA
+	pte->u_s = u_s;
 }
 
 /** 
@@ -82,8 +101,8 @@ void pagination_map(struct page_directory_entry * pagination_kernel, paddr_t pag
  * @param pagination_kernel
  * @param page_addr
  */
-void pagination_identity_map_addr(struct page_directory_entry * pagination_kernel, paddr_t page_addr) {
-	pagination_map(pagination_kernel, page_addr, page_addr);
+static void pagination_identity_map_addr(struct page_directory_entry * pagination_kernel, paddr_t page_addr) {
+	pagination_map(pagination_kernel, page_addr, page_addr, 1);
 }
 
 static void pagination_create_page_table_for_kernel(struct page_directory_entry *pagination_kernel) {
@@ -92,7 +111,7 @@ static void pagination_create_page_table_for_kernel(struct page_directory_entry 
 
 	for(i=0 ; i<kernel_top_last_dir_entry ; i++) {
 		if(!pagination_kernel[i].present) {
-			pagination_create_page_dir(pagination_kernel, i);
+			pagination_create_page_dir(pagination_kernel, i, 1);
 		}
 	}
 }
@@ -110,7 +129,7 @@ void pagination_setup() {
 
 	pagination_init_page_directory(pagination_kernel);
 	pagination_map(pagination_kernel, (paddr_t) pagination_kernel,
-								 page_dir_vaddr);
+								 page_dir_vaddr, 1);
 
 	// identity mapping :
 	paddr_t current_page;
@@ -124,6 +143,8 @@ void pagination_setup() {
 	pagination_create_page_table_for_kernel(pagination_kernel);
 
 	pagination_load_page_directory(pagination_kernel);
+
+	pagination_activated = 1;
 
 	//reads cr0, switches the "paging enable" bit, and writes it back.
 	unsigned int cr0;

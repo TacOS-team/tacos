@@ -353,8 +353,6 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 		user_stack = (uint32_t*) (USER_PROCESS_BASE + init_data_dup->mem_size + init_data_dup->stack_size-1);
 		stack_ptr = (uint32_t*) init_stack(user_stack, init_data_dup->args, init_data_dup->envp, (paddr_t)sys_exit);
 		
-		/* TODO : Ajouter (ici ?) le passage de l'environnement utilisateur */
-
 		/* Remet le repertoire de page du process courant (le père donc) */
 		if(proc_count > 0)
 		{
