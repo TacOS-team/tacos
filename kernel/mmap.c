@@ -3,6 +3,7 @@
 #include <scheduler.h>
 #include <kprocess.h>
 #include <kmalloc.h>
+#include <memory.h>
 
 struct mmap_region {
 	vaddr_t addr;
@@ -45,7 +46,7 @@ static void add_region(process_t *process, vaddr_t addr, struct mmap_data *data)
 void print_regions(process_t *process) {
 	struct mmap_region* aux = process->list_regions;
 	while (aux) {
-		klog("%d -- %d", aux->addr, aux->addr + aux->length);
+		klog("%u -- %u", aux->addr, aux->addr + aux->length);
 		aux = aux->next;
 	}
 }
@@ -55,8 +56,28 @@ SYSCALL_HANDLER2(sys_mmap, struct mmap_data* data, void** ret) {
 
 	process_t *process = get_current_process();
 
-	size_t real_alloc_size;
-	sys_vmm(data->length, ret, &real_alloc_size);
+	vaddr_t current = USER_PROCESS_MMAP;
+	vaddr_t top_heap = process->vm->vmm_top;
+
+	struct mmap_region* aux = process->list_regions;
+	while (aux) {
+		vaddr_t last = aux->addr + aux->length;
+
+		if (current - last > data->length) {
+			break;
+		}
+
+		current = aux->addr;
+		aux = aux->next;
+	}
+
+	if (current - top_heap < data->length) {
+		klog("out of mem");
+		*ret = NULL;
+		return;
+	}
+
+	*ret = (void*) (current - data->length);
 
 	add_region(process, (vaddr_t)*ret, data);
 
