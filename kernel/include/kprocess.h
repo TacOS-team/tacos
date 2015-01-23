@@ -124,6 +124,7 @@ typedef struct process {
 	
 	struct page_directory_entry * pd;
 	struct virtual_mem *vm;
+	struct mmap_region* list_regions;
 	
 	signal_process_data_t signal_data;
 

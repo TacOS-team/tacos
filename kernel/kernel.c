@@ -53,6 +53,7 @@
 #include <syscall_values.h>
 #include <vmm.h>
 #include <vfs.h>
+#include <mmap.h>
 
 /* Includes des drivers */
 #include <drivers/beeper.h>
@@ -193,6 +194,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_RENAME, (syscall_handler_t) sys_rename);
 	syscall_set_handler(SYS_SYMLINK, (syscall_handler_t) sys_symlink);
 	syscall_set_handler(SYS_CHDIR, (syscall_handler_t) sys_chdir);
+	syscall_set_handler(SYS_MMAP, (syscall_handler_t) sys_mmap);
 
 	if(ramdisk_start != 0) {
 		/*init_ramdisk(ramdisk_start, ramdisk_end);*/

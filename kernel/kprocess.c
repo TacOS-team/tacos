@@ -331,6 +331,7 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 	
 	// Initialisation des données pour la vmm
 	new_proc->vm = (struct virtual_mem *) kmalloc(sizeof(struct virtual_mem));
+	new_proc->list_regions = NULL;
 
 	// Ne devrait pas utiliser kmalloc. Cf remarque suivante.
 	new_proc->pd = kmalloc_one_aligned_page();
@@ -523,6 +524,7 @@ process_t* create_process(process_init_data_t* init_data) {
 	
 	// Initialisation des données pour la vmm
 	new_proc->vm = (struct virtual_mem *) kmalloc(sizeof(struct virtual_mem));
+	new_proc->list_regions = NULL;
 
 	// Ne devrait pas utiliser kmalloc. Cf remarque suivante.
 	new_proc->pd = kmalloc_one_aligned_page();

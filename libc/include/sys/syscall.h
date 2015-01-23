@@ -70,5 +70,6 @@
 #define SYS_SELECT 38
 #define SYS_SYMLINK 39
 #define SYS_CHDIR 40
+#define SYS_MMAP 41
 
 #endif

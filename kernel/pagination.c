@@ -32,6 +32,7 @@
 #include <memory.h>
 #include <pagination.h>
 #include <vmm.h>
+#include <kprocess.h>
 
 // Page Table Entry Magic
 #define PTE_MAGIC 0xFFC00000
@@ -42,16 +43,25 @@ int pagination_activated;
 
 int pagination_create_page_dir(struct page_directory_entry *pagination_kernel, int index_pd, int u_s) {
 	int i;
-	struct page_directory_entry * pde = &pagination_kernel[index_pd];
 
 	if(memory_get_first_free_page() == NULL)
 		return -1;
 	paddr_t pt_addr = memory_reserve_page_frame();
 
-	pde->r_w = 1;
-	pde->u_s = u_s;
-	pde->present = 1;
-	pde->page_table_addr = pt_addr >> 12;
+	// On doit mettre à jour tous les répertoires de page pour éviter les mauvaises surprises.
+	// note: il faudrait peut être songer à modifier la pagination pour ne pas se traîner des copies.
+	//int nb_procs = get_proc_count();
+	//for (i = 0; i < nb_procs; i++) {
+	//	process_t *process = get_process_array(i);
+
+		//struct page_directory_entry *pde = &(process->pd[index_pd]);
+		struct page_directory_entry *pde = &(pagination_kernel[index_pd]);
+
+		pde->r_w = 1;
+		pde->u_s = u_s;
+		pde->present = 1;
+		pde->page_table_addr = pt_addr >> 12;
+	//}
 
 	// On map la table de page
 	pagination_map(pagination_kernel, pt_addr, get_page_table_vaddr(index_pd), 1);
