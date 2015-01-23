@@ -34,6 +34,8 @@
 #include <scheduler.h>
 #include <symtable.h>
 #include <ksignal.h>
+#include <mmap.h>
+#include <gdt.h>
 
 #define GAME_OVER() asm("cli\n\thlt");
 
@@ -83,6 +85,7 @@ static void page_fault_report(int error_code)
 	uint32_t address;
 	/* On récupère le registre cr2 qui contient l'addresse virtuelle à l'origine de l'exception */
 	asm("mov %%cr2, %%eax":"=a"(address));
+
 	kprintf("Virtual address: 0x%x\n",address);
 
 	kprintf("Cause: ");
@@ -153,12 +156,15 @@ static void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t
 			GAME_OVER();
 			break;
 		case EXCEPTION_PAGE_FAULT:
+			{
+
 			if (badboy) {
 				sys_kill(badboy->pid, SIGSEGV, NULL);
 			}
 			kprintf("Page fault (error code : %d).\n", error_code);
 			page_fault_report(error_code);
 			break;
+			}
 		case EXCEPTION_DOUBLE_FAULT:
 			if (badboy) {
 				kprintf("Double fault (error code : %d).\n", error_code);
@@ -200,6 +206,16 @@ static void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t
 	
 static void kpanic_handler(uint32_t error_id, uint32_t error_code)
 {
+	if (error_id == EXCEPTION_PAGE_FAULT) {
+		uint32_t address;
+		/* On récupère le registre cr2 qui contient l'addresse virtuelle à l'origine de l'exception */
+		asm("mov %%cr2, %%eax":"=a"(address));
+		if (is_mmaped(address)) {
+			kprintf("access mmap %u\n", address);
+			return;
+		}
+	}
+
 	process_t* badboy;
 	uint32_t* stack_ptr;
 	/* récupération du pointeur de pile */
@@ -213,6 +229,7 @@ static void kpanic_handler(uint32_t error_id, uint32_t error_code)
 	badboy = get_current_process();	/* On récupère le bad boy */
 	
 	asm("sti");			/* Et on tente de revenir au choses normales */
+
 	kpanic_main_report(error_id, error_code, badboy, frame);	/* Affichage des information plus ou moins utiles */
 	start_scheduler();
 	

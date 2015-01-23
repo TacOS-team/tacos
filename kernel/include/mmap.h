@@ -44,4 +44,6 @@ struct mmap_data {
 
 SYSCALL_HANDLER2(sys_mmap, struct mmap_data* data, void **ret);
 
+int is_mmaped(vaddr_t addr);
+
 #endif

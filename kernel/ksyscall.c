@@ -44,7 +44,7 @@ syscall_handler_t syscall_handler_table[MAX_SYSCALL_NB];
 /**
  * @brief Point d'entrée des appels systèmes
  * C'est cette fonction qui est lancée à la réception de l'IRQ_SYSCALL
- * Sont rôle est de récupérer l'identifiant de l'appel système, et
+ * Son rôle est de récupérer l'identifiant de l'appel système, et
  * d'exécuter en conséquence le handler correspondant
  * 
  * @param unused

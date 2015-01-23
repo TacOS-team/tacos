@@ -4,6 +4,7 @@
 #include <kprocess.h>
 #include <kmalloc.h>
 #include <memory.h>
+#include <klibc/string.h>
 
 struct mmap_region {
 	vaddr_t addr;
@@ -49,6 +50,23 @@ void print_regions(process_t *process) {
 		klog("%u -- %u", aux->addr, aux->addr + aux->length);
 		aux = aux->next;
 	}
+}
+
+int is_mmaped(vaddr_t addr) {
+	process_t *process = get_current_process();
+	struct mmap_region* aux = process->list_regions;
+	while (aux && aux->addr <= addr) {
+		if (aux->addr + aux->length > addr) {
+			int page_addr = addr & ~(PAGE_SIZE - 1);
+			// mmap anonyme pour le moment :
+			map(memory_reserve_page_frame(), page_addr,1);
+			memset((void*)page_addr, 0, PAGE_SIZE);
+			return 1;
+		}
+		aux = aux->next;
+	}
+
+	return 0;
 }
 
 SYSCALL_HANDLER2(sys_mmap, struct mmap_data* data, void** ret) {

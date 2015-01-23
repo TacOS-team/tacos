@@ -95,11 +95,18 @@
 					push %ds
 					push %es
 
+					/* On repasse le bon segment de data au kernel */
+					push %ebx
+					mov $0x10,%bx
+					mov %bx,%ds
+					pop %ebx
+
 					/* Call the handler with exception number as
 					 * argument */
 					addl $48, %esp /* J'en suis pas fier. C'est pour recuperer le code d'erreur */
 					popl %edi
-					subl $44, %esp
+					pushl %edi
+					subl $48, %esp
 					pushl %edi
 					pushl $\id
 					leal  exception_handler_array,%edi
