@@ -32,13 +32,13 @@
 
 int main()
 {
-	int* t = mmap(0, 800000, 0, 0, -1, 0);
-	t[20000] = 42;
+	int* t = mmap(NULL, 800000, PROT_READ , MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+	//t[20000] = 42;
 	printf("%u %d\n", t, t[20000]);
 
-	int* t2 = mmap(0, 800000, 0, 0, -1, 0);
+	int* t2 = mmap(NULL, 800000, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
 	t2[20000] = 42;
 	printf("%u %d\n", t2, t2[20000]);
 
 	return 0;
-}	
+}

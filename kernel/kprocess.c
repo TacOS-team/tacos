@@ -353,7 +353,7 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 
 		// Allocation stack (attention à ne pas dépasser 8 Mio en l'état)
 		for(i = 1; i <= stack_pages; i++)
-			map(memory_reserve_page_frame(), USER_PROCESS_STACK - i*PAGE_SIZE, 1);
+			map(memory_reserve_page_frame(), USER_PROCESS_STACK - i*PAGE_SIZE, 1, 1);
 
 		/* Copie du programme au bon endroit */
 		memcpy((void*)USER_PROCESS_BASE, (void*)init_data_dup->data, init_data_dup->mem_size);

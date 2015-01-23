@@ -206,7 +206,7 @@ static void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t
 	
 static void kpanic_handler(uint32_t error_id, uint32_t error_code)
 {
-	if (error_id == EXCEPTION_PAGE_FAULT) {
+	if (error_id == EXCEPTION_PAGE_FAULT && !(error_code & 1)) {
 		uint32_t address;
 		/* On récupère le registre cr2 qui contient l'addresse virtuelle à l'origine de l'exception */
 		asm("mov %%cr2, %%eax":"=a"(address));

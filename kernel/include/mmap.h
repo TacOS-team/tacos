@@ -33,6 +33,17 @@
 #include <ksyscall.h>
 #include <types.h>
 
+#define PROT_NONE     0x00   /* No access.  */
+#define PROT_READ     0x04   /* Pages can be read.  */
+#define PROT_WRITE    0x02   /* Pages can be written.  */
+#define PROT_EXEC     0x01   /* Pages can be executed.  */
+
+#define MAP_PRIVATE   0x00
+#define MAP_SHARED    0x10 /* Share changes.  */
+#define MAP_FIXED     0x20
+#define MAP_ANONYMOUS 0x02
+#define MAP_FILE      0x01
+
 struct mmap_data {
 	void *addr;
 	size_t length;

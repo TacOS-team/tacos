@@ -59,7 +59,7 @@ int is_mmaped(vaddr_t addr) {
 		if (aux->addr + aux->length > addr) {
 			int page_addr = addr & ~(PAGE_SIZE - 1);
 			// mmap anonyme pour le moment :
-			map(memory_reserve_page_frame(), page_addr,1);
+			map(memory_reserve_page_frame(), page_addr, 1, (aux->prot & PROT_WRITE) > 0);
 			memset((void*)page_addr, 0, PAGE_SIZE);
 			return 1;
 		}

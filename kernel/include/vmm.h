@@ -106,7 +106,7 @@ void sys_vmm(uint32_t min_size, void **alloc, size_t *real_alloc_size);
 struct page_table_entry *get_pte(int dir, int table);
 paddr_t vmm_get_page_paddr(vaddr_t vaddr); 
 
-int map(paddr_t phys_page_addr, vaddr_t virt_page_addr, int u_s);
+int map(paddr_t phys_page_addr, vaddr_t virt_page_addr, int u_s, int r_w);
 void unmap(vaddr_t virt_page_addr);
 
 #endif

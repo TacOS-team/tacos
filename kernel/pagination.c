@@ -64,7 +64,7 @@ int pagination_create_page_dir(struct page_directory_entry *pagination_kernel, i
 	//}
 
 	// On map la table de page
-	pagination_map(pagination_kernel, pt_addr, get_page_table_vaddr(index_pd), 1);
+	pagination_map(pagination_kernel, pt_addr, get_page_table_vaddr(index_pd), 1, 1);
 
 	struct page_table_entry *pt;
 	if (pagination_activated) {
@@ -79,7 +79,7 @@ int pagination_create_page_dir(struct page_directory_entry *pagination_kernel, i
 	return 0;
 }
 
-void pagination_map(struct page_directory_entry * pagination_kernel, paddr_t page_addr, vaddr_t v_page_addr, int u_s) {
+void pagination_map(struct page_directory_entry * pagination_kernel, paddr_t page_addr, vaddr_t v_page_addr, int u_s, int r_w) {
 	int index_pd = v_page_addr >> 22;
 	int index_pt = (v_page_addr & 0x003FF000) >> 12;
 
@@ -98,7 +98,7 @@ void pagination_map(struct page_directory_entry * pagination_kernel, paddr_t pag
 
 	pte->present = 1;
 	pte->page_addr = page_addr >> 12;
-	pte->r_w = 1;
+	pte->r_w = r_w;
 	pte->u_s = u_s;
 }
 
@@ -112,7 +112,7 @@ void pagination_map(struct page_directory_entry * pagination_kernel, paddr_t pag
  * @param page_addr
  */
 static void pagination_identity_map_addr(struct page_directory_entry * pagination_kernel, paddr_t page_addr) {
-	pagination_map(pagination_kernel, page_addr, page_addr, 1);
+	pagination_map(pagination_kernel, page_addr, page_addr, 1, 1);
 }
 
 static void pagination_create_page_table_for_kernel(struct page_directory_entry *pagination_kernel) {
@@ -139,7 +139,7 @@ void pagination_setup() {
 
 	pagination_init_page_directory(pagination_kernel);
 	pagination_map(pagination_kernel, (paddr_t) pagination_kernel,
-								 page_dir_vaddr, 1);
+								 page_dir_vaddr, 1, 1);
 
 	// identity mapping :
 	paddr_t current_page;

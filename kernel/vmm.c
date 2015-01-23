@@ -137,9 +137,9 @@ vaddr_t get_linear_address(int dir, int table, int offset)
 
 
 // Map dans le répertoire des pages une nouvelle page
-int map(paddr_t phys_page_addr, vaddr_t virt_page_addr, int u_s)
+int map(paddr_t phys_page_addr, vaddr_t virt_page_addr, int u_s, int r_w)
 {
-	pagination_map((struct page_directory_entry *) PDE_MAGIC, phys_page_addr, virt_page_addr, u_s);
+	pagination_map((struct page_directory_entry *) PDE_MAGIC, phys_page_addr, virt_page_addr, u_s, r_w);
 
 	return 0;
 }
@@ -161,7 +161,7 @@ void init_vmm(struct virtual_mem *kvm)
 {
 	vaddr_t page_sup_end_kernel = memory_get_kernel_top();
 
-	map(memory_reserve_page_frame(), page_sup_end_kernel, 0);
+	map(memory_reserve_page_frame(), page_sup_end_kernel, 0, 1);
 
 	kvm->free_slabs.begin = (struct slab *) page_sup_end_kernel; 
 	kvm->free_slabs.begin->prev = NULL;
@@ -182,7 +182,7 @@ void init_process_vm(struct virtual_mem *vm, int init_nb_pages)
 	vaddr_t vm_begin = _PAGINATION_KERNEL_TOP;
 	
 	for(i = 0; i < (init_nb_pages+1); i++)
-		map(memory_reserve_page_frame(), vm_begin + i*PAGE_SIZE, 1); //XXX: u_s = 0 ?
+		map(memory_reserve_page_frame(), vm_begin + i*PAGE_SIZE, 1, 1); //XXX: u_s = 0 ?
 
 	//vm->used_slabs.begin = (struct slab *) vm_begin;
 	vm->used_slabs.begin = (struct slab *) (vm_begin + init_nb_pages*PAGE_SIZE - sizeof(struct slab));
@@ -209,7 +209,7 @@ static int increase_heap(struct virtual_mem *vm, unsigned int nb_pages, int u_s)
 
 	for (i = 0; i < nb_pages; i++){
 		paddr_t paddr = memory_reserve_page_frame();
-		if(!paddr || map(paddr, vm->vmm_top, u_s) == -1)
+		if(!paddr || map(paddr, vm->vmm_top, u_s, 1) == -1)
 			return -1;
 		vm->vmm_top += PAGE_SIZE;
 	}

@@ -85,7 +85,7 @@ static void remap_backbuffer(paddr_t p_addr_base) {
 	unsigned int page;
 	for (page = 0; page < back_buffer_size/PAGE_SIZE; page++) {
 		unmap(V_BACKBUFFER_BASE + page * PAGE_SIZE);
-		map(p_addr_base + page * PAGE_SIZE, V_BACKBUFFER_BASE + page * PAGE_SIZE, 1);
+		map(p_addr_base + page * PAGE_SIZE, V_BACKBUFFER_BASE + page * PAGE_SIZE, 1, 1);
 	}
 }
 
@@ -168,6 +168,6 @@ void init_vesa() {
 	size_t video_mem_size = 16 * 1024 * 1024; // 16Mio
 	unsigned int page;
 	for (page = 0; page < video_mem_size/PAGE_SIZE; page++) {
-		map(p_lfb_base + page*PAGE_SIZE, V_BACKBUFFER_BASE + page*PAGE_SIZE, 1);
+		map(p_lfb_base + page*PAGE_SIZE, V_BACKBUFFER_BASE + page*PAGE_SIZE, 1, 1);
 	}
 }
