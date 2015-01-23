@@ -285,7 +285,6 @@ void list(const char *path) {
 int main(int argc, char** argv)
 {
 	int marg = 1;
-	printf("%u\n", &marg);
 	if (argc > 1 && argv[1][0] == '-') {
 		int i = 1;
 		while (argv[1][i] != '\0') {
