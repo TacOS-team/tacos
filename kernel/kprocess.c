@@ -350,7 +350,7 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 		
 		init_process_vm(new_proc->vm, calculate_min_pages(init_data_dup->mem_size));
 
-		// Allocation stack (XXX: devrait devenir une région mmap).
+		// Allocation stack (attention à ne pas dépasser 8 Mio en l'état)
 		for(i = 1; i <= stack_pages; i++)
 			map(memory_reserve_page_frame(), USER_PROCESS_STACK - i*PAGE_SIZE, 1);
 

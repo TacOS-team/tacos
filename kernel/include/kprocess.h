@@ -29,8 +29,20 @@
 #ifndef _KPROCESS_H_
 #define _KPROCESS_H_
 
+/**
+ * Adresse de debut du heap.
+ */
 #define USER_PROCESS_BASE 0x40000000
+
+/**
+ * Adresse de debut de la stack (Attention, part vers le bas !)
+ */
 #define USER_PROCESS_STACK 0xFF000000
+
+/**
+ * Adresse maximale pour un mmap (alloue le plus haut possible)
+ */
+#define USER_PROCESS_MMAP 0xFE800000
 
 #include <ksyscall.h>
 #include <fd_types.h>
