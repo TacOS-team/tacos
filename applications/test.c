@@ -28,20 +28,17 @@
 
 #include <stdio.h>
 #include <signal.h>
+#include <sys/mman.h>
 
-void handler(int signal) {
-	printf("Signal reçu : %d\n", signal);
-}
-
-int main(int argc, char** argv)
+int main()
 {
-	int i = 0;
-	
-	signal(SIGSYS, handler);
+	int* t = mmap(0, 800000, 0, 0, -1, 0);
+	t[20000] = 42;
+	printf("%d %d\n", t, t[20000]);
 
-	syscall(9999, 0, 0, 0);
-	
-	printf("was here.\n");
+	int* t2 = mmap(0, 800000, 0, 0, -1, 0);
+	t2[20000] = 42;
+	printf("%d %d\n", t2, t2[20000]);
 
 	return 0;
 }	
