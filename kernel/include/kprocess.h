@@ -30,6 +30,7 @@
 #define _KPROCESS_H_
 
 #define USER_PROCESS_BASE 0x40000000
+#define USER_PROCESS_STACK 0xFF000000
 
 #include <ksyscall.h>
 #include <fd_types.h>

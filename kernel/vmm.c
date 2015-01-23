@@ -177,9 +177,8 @@ void init_vmm(struct virtual_mem *kvm)
 
 void init_process_vm(struct virtual_mem *vm, int init_nb_pages) 
 {
-  int i;
+	int i;
 
-	/* laissez une page libre, pour détecter page fault avec un pointeur à null */
 	vaddr_t vm_begin = _PAGINATION_KERNEL_TOP;
 	
 	for(i = 0; i < (init_nb_pages+1); i++)

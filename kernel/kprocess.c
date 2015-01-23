@@ -42,6 +42,7 @@
 #include <kstat.h>
 #include <kunistd.h>
 #include <vfs.h>
+#include <memory.h>
 
 #define GET_PROCESS 0
 #define GET_PROCESS_LIST 1
@@ -309,6 +310,7 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->cwd = NULL;
 	
 	/* Initialisation de la kernel stack */
+
 	sys_stack = kmalloc(init_data_dup->stack_size*sizeof(uint32_t));
 	if( new_proc == NULL )
 	{
@@ -337,6 +339,8 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 	
 	new_proc->ctrl_tty = NULL;
 
+	int stack_pages = init_data_dup->stack_size / PAGE_SIZE;
+
 	/* ZONE CRITIQUE */
 	asm("cli");
 
@@ -344,13 +348,17 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 		// soit contigü en mémoire physique et aligné dans un cadre...
 		pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
 		
-		init_process_vm(new_proc->vm, calculate_min_pages(init_data_dup->mem_size + (init_data_dup->stack_size)*sizeof(uint32_t)));
-		
+		init_process_vm(new_proc->vm, calculate_min_pages(init_data_dup->mem_size));
+
+		// Allocation stack (XXX: devrait devenir une région mmap).
+		for(i = 1; i <= stack_pages; i++)
+			map(memory_reserve_page_frame(), USER_PROCESS_STACK - i*PAGE_SIZE, 1);
+
 		/* Copie du programme au bon endroit */
 		memcpy((void*)USER_PROCESS_BASE, (void*)init_data_dup->data, init_data_dup->mem_size);
 		
 		/* Initialisation de la pile utilisateur */
-		user_stack = (uint32_t*) (USER_PROCESS_BASE + init_data_dup->mem_size + init_data_dup->stack_size-1);
+		user_stack = (uint32_t*) USER_PROCESS_STACK - 4;
 		stack_ptr = (uint32_t*) init_stack(user_stack, init_data_dup->args, init_data_dup->envp, (paddr_t)sys_exit);
 		
 		/* Remet le repertoire de page du process courant (le père donc) */
@@ -378,7 +386,6 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->sys_time = 0;
 	new_proc->current_sample = 0;
 	new_proc->last_sample = 0;
-	
 
 	/* On attend son premier ordonnancement pour le passer en RUNNING, donc pour le moment on le laisse IDLE */
 	new_proc->state = PROCSTATE_IDLE;
