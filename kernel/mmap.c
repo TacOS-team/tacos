@@ -30,7 +30,7 @@ static void add_region(process_t *process, vaddr_t addr, struct mmap_data *data)
 
 	struct mmap_region* aux = process->list_regions;
 	struct mmap_region* prec = NULL;
-	while (aux && aux->addr < cell->addr) {
+	while (aux && aux->addr > cell->addr) {
 		prec = aux;
 		aux = aux->next;
 	}
@@ -55,15 +55,31 @@ void print_regions(process_t *process) {
 int is_mmaped(vaddr_t addr) {
 	process_t *process = get_current_process();
 	struct mmap_region* aux = process->list_regions;
-	while (aux && aux->addr <= addr) {
-		if (aux->addr + aux->length > addr) {
-			int page_addr = addr & ~(PAGE_SIZE - 1);
-			// mmap anonyme pour le moment :
-			map(memory_reserve_page_frame(), page_addr, 1, (aux->prot & PROT_WRITE) > 0);
-			memset((void*)page_addr, 0, PAGE_SIZE);
-			return 1;
-		}
+	while (aux && aux->addr > addr) {
 		aux = aux->next;
+	}
+
+	if (aux) {
+		if (aux->addr + aux->length > addr) {
+			vaddr_t page_addr = addr & ~(PAGE_SIZE - 1);
+
+			map(memory_reserve_page_frame(), page_addr, 1, (aux->prot & PROT_WRITE) > 0);
+			if (aux->flags & MAP_ANONYMOUS) {
+				memset((void*)page_addr, 0, PAGE_SIZE);
+				return 1;
+			} else if(aux->fd > -1) {
+				open_file_descriptor* ofd = process->fd[aux->fd];
+				if (ofd) {
+					// FIXME: l'offset n'est pas correct.
+					ofd->f_ops->seek(ofd, aux->offset, SEEK_SET);
+					// FIXME: ne peut pas lire depuis une exception...
+					ofd->f_ops->read(ofd, (void*) page_addr, PAGE_SIZE);
+					return 1;
+				} else {
+					return 0;
+				}
+			}
+		}
 	}
 
 	return 0;

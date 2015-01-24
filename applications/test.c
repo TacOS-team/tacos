@@ -29,6 +29,7 @@
 #include <stdio.h>
 #include <signal.h>
 #include <sys/mman.h>
+#include <fcntl.h>
 
 int main()
 {
@@ -39,6 +40,10 @@ int main()
 	int* t2 = mmap(NULL, 800000, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
 	t2[20000] = 42;
 	printf("%u %d\n", t2, t2[20000]);
+
+	int fd = open("/tacos/README", O_RDONLY);
+	char* t3 = mmap(NULL, 100, PROT_READ, MAP_PRIVATE | MAP_FILE, fd, 0);
+	printf("%u %c\n", t3, t3[0]);
 
 	return 0;
 }
