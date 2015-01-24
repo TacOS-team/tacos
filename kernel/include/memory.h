@@ -154,26 +154,20 @@ paddr_t memory_next_page(struct physical_page_descr ** iterator);
 /** 
  * @brief Adresse du cadre de page en arrondissant à l'inférieur.
  * 
- * Prend en argument une adresse physique et donne l'adresse du cadre 
+ * Prend en argument une adresse et donne l'adresse du cadre 
  * correspondant en arrondissant à l'inférieur.
  *
- * @param value l'adresse physique à arrondir.
- * 
- * @return l'adresse physique arrondie.
  */
-paddr_t memory_align_page_inf(paddr_t value);
+#define ALIGN_PAGE_INF(addr) ((uint32_t)(addr) & ~(PAGE_SIZE - 1))
 
 /** 
  * @brief Adresse du cadre de page en arrondissant au supérieur.
  *
- * Prend en argument une adresse physique et donne l'adresse du cadre 
+ * Prend en argument une adresse et donne l'adresse du cadre 
  * correspondant en arrondissant au supérieur.
  * 
- * @param value l'adresse physique à arrondir.
- * 
- * @return l'adresse physique arrondie.
  */
-paddr_t memory_align_page_sup(paddr_t value); 
+#define ALIGN_PAGE_SUP(addr) (((uint32_t)(addr) + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1))
 
 /**
  * @ Premier cadre de page libre au dessus du kernel

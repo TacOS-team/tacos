@@ -142,7 +142,7 @@ void *kmalloc_one_aligned_page() {
 	uint32_t tmp;
 	allocate_new_pages(&kvm, 2, (void **) &tmp, 0);
 	
-	return (void *) memory_align_page_sup((paddr_t) tmp);
+	return (void *) ALIGN_PAGE_SUP(tmp);
 }
 
 static int is_empty(struct mem_list *list)

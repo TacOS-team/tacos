@@ -38,14 +38,6 @@ extern char _start, __e_kernel;
 static struct physical_page_descr * phys_page_descr_array;
 static paddr_t kernel_top;
 
-paddr_t memory_align_page_inf(paddr_t value) {
-	return value - value%PAGE_SIZE;
-}
-
-paddr_t memory_align_page_sup(paddr_t value) {
-	return (value + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
-}
-
 void memory_print_used_pages() {
 	struct physical_page_descr *p;
 	int c = 0;
@@ -147,19 +139,19 @@ paddr_t memory_next_page(struct physical_page_descr ** iterator) {
  * que de cadres.
  */
 void memory_setup(size_t ram_size) {
-	ram_size = memory_align_page_inf(ram_size); /* On abandonne un petit bout de mémoire pour avoir que des pages completes */
+	ram_size = ALIGN_PAGE_INF(ram_size); /* On abandonne un petit bout de mémoire pour avoir que des pages completes */
 
 	/* On place le tableau de pages juste après la fin du kernel. */
-	phys_page_descr_array = (struct physical_page_descr*) memory_align_page_sup((size_t)(& __e_kernel));
+	phys_page_descr_array = (struct physical_page_descr*) ALIGN_PAGE_SUP((size_t)(& __e_kernel));
 
 	size_t phys_mem_base = PAGE_SIZE; /* La page d'adresse 0 est réservée pour les erreurs. (c'est un choix arbitraire) */
 	size_t phys_mem_top = ram_size;
 
 	/* Maintenant on va récupérer les pages qui chevauchent l'emplacement où est le
 	 * kernel ainsi que la table qui contient les pages. On va les marquer utilisées. */
-	paddr_t kernel_base = memory_align_page_inf((paddr_t)(& _start));
+	paddr_t kernel_base = (paddr_t) ALIGN_PAGE_INF(& _start);
 	uint32_t n_pages = ram_size / PAGE_SIZE; /* ram_size est un multiple de PAGE_SIZE ! */
-	kernel_top = (paddr_t)phys_page_descr_array + memory_align_page_sup(n_pages * sizeof(struct physical_page_descr));
+	kernel_top = (paddr_t)phys_page_descr_array + ALIGN_PAGE_SUP(n_pages * sizeof(struct physical_page_descr));
 
 	struct physical_page_descr *phys_page_descr = (struct physical_page_descr*) phys_page_descr_array;
 	paddr_t phys_page_addr = phys_mem_base; /* Adresse d'une page */

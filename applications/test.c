@@ -43,7 +43,11 @@ int main()
 
 	int fd = open("/tacos/README", O_RDONLY);
 	char* t3 = mmap(NULL, 100, PROT_READ, MAP_PRIVATE | MAP_FILE, fd, 0);
-	printf("%u %c\n", t3, t3[0]);
+	int i;
+	for (i = 0; i < 100; i++) {
+		printf("%c", t3[i]);
+	}
+	printf("\n");
 
 	return 0;
 }

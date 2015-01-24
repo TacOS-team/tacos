@@ -61,7 +61,7 @@ int is_mmaped(vaddr_t addr) {
 
 	if (aux) {
 		if (aux->addr + aux->length > addr) {
-			vaddr_t page_addr = addr & ~(PAGE_SIZE - 1);
+			vaddr_t page_addr = ALIGN_PAGE_INF(addr);
 
 			map(memory_reserve_page_frame(), page_addr, 1, (aux->prot & PROT_WRITE) > 0);
 			if (aux->flags & MAP_ANONYMOUS) {
@@ -70,10 +70,10 @@ int is_mmaped(vaddr_t addr) {
 			} else if(aux->fd > -1) {
 				open_file_descriptor* ofd = process->fd[aux->fd];
 				if (ofd) {
-					// FIXME: l'offset n'est pas correct.
-					ofd->f_ops->seek(ofd, aux->offset, SEEK_SET);
-					// FIXME: ne peut pas lire depuis une exception...
+					asm("sti");			/* Et on tente de revenir au choses normales */
+					ofd->f_ops->seek(ofd, aux->offset + page_addr - aux->addr, SEEK_SET);
 					ofd->f_ops->read(ofd, (void*) page_addr, PAGE_SIZE);
+					asm("cli");
 					return 1;
 				} else {
 					return 0;
@@ -95,9 +95,9 @@ SYSCALL_HANDLER2(sys_mmap, struct mmap_data* data, void** ret) {
 
 	struct mmap_region* aux = process->list_regions;
 	while (aux) {
-		vaddr_t last = aux->addr + aux->length;
+		vaddr_t last = ALIGN_PAGE_SUP(aux->addr + aux->length);
 
-		if (current - last > data->length) {
+		if (current - last >= data->length) {
 			break;
 		}
 
@@ -105,13 +105,12 @@ SYSCALL_HANDLER2(sys_mmap, struct mmap_data* data, void** ret) {
 		aux = aux->next;
 	}
 
-	if (current - top_heap < data->length) {
+	*ret = (void*) ALIGN_PAGE_INF(current - data->length);
+	if ((vaddr_t)*ret < top_heap) {
 		klog("out of mem");
 		*ret = NULL;
 		return;
 	}
-
-	*ret = (void*) (current - data->length);
 
 	add_region(process, (vaddr_t)*ret, data);
 
