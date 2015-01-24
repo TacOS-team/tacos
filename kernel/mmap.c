@@ -47,7 +47,7 @@ static void add_region(process_t *process, vaddr_t addr, struct mmap_data *data)
 void print_regions(process_t *process) {
 	struct mmap_region* aux = process->list_regions;
 	while (aux) {
-		klog("%u -- %u", aux->addr, aux->addr + aux->length);
+		klog("%x -- %x", aux->addr, aux->addr + aux->length);
 		aux = aux->next;
 	}
 }
@@ -89,23 +89,42 @@ SYSCALL_HANDLER2(sys_mmap, struct mmap_data* data, void** ret) {
 	klog("sys mmap %d", data->length);
 
 	process_t *process = get_current_process();
-
 	vaddr_t current = USER_PROCESS_MMAP;
-	vaddr_t top_heap = process->vm->vmm_top;
 
-	struct mmap_region* aux = process->list_regions;
-	while (aux) {
-		vaddr_t last = ALIGN_PAGE_SUP(aux->addr + aux->length);
-
-		if (current - last >= data->length) {
-			break;
+	if (data->flags & MAP_FIXED) {
+		if ((vaddr_t)data->addr != (vaddr_t)ALIGN_PAGE_INF(data->addr)) {
+			*ret = NULL;
+			return;
 		}
 
-		current = aux->addr;
-		aux = aux->next;
+		struct mmap_region* aux = process->list_regions;
+		while (aux && aux->addr + aux->length > (vaddr_t) data->addr) {
+			current = aux->addr;
+			aux = aux->next;
+		}
+		if ((vaddr_t)data->addr + data->length > current) {
+			*ret = NULL;
+			return;
+		}
+		*ret = data->addr;
+	} else {
+
+		struct mmap_region* aux = process->list_regions;
+		while (aux) {
+			vaddr_t last = ALIGN_PAGE_SUP(aux->addr + aux->length);
+
+			if (current - last >= data->length) {
+				break;
+			}
+
+			current = aux->addr;
+			aux = aux->next;
+		}
+		
+		*ret = (void*) ALIGN_PAGE_INF(current - data->length);
 	}
 
-	*ret = (void*) ALIGN_PAGE_INF(current - data->length);
+	vaddr_t top_heap = process->vm->vmm_top;
 	if ((vaddr_t)*ret < top_heap) {
 		klog("out of mem");
 		*ret = NULL;

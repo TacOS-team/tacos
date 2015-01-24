@@ -211,7 +211,7 @@ static void kpanic_handler(uint32_t error_id, uint32_t error_code)
 		/* On récupère le registre cr2 qui contient l'addresse virtuelle à l'origine de l'exception */
 		asm("mov %%cr2, %%eax":"=a"(address));
 		if (is_mmaped(address)) {
-			kprintf("access mmap %u\n", address);
+			kprintf("access mmap %x\n", address);
 			return;
 		}
 	}
