@@ -202,7 +202,8 @@ int tty_register_driver(tty_driver_t *driver) {
 		name[i] = '\0';
 		driver->ttys[n] = kmalloc(sizeof(tty_struct_t));
 		driver->ttys[n]->driver = driver;
-		driver->ttys[n]->termios = driver->init_termios;
+		// XXX: plantage sous bochs si affectation
+		memcpy(&driver->ttys[n]->termios, &driver->init_termios, sizeof(driver->init_termios));
 		driver->ttys[n]->p_begin = 0;
 		driver->ttys[n]->p_end = 0;
 		driver->ttys[n]->sem = ksemget(SEM_NEW, SEM_CREATE);

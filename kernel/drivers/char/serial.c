@@ -361,7 +361,8 @@ int serial_init()
 	tty_driver->driver_name = "serial";
 	tty_driver->devfs_name = "ttyS";
 	tty_driver->type = TTY_DRIVER_TYPE_SERIAL;
-	tty_driver->init_termios = tty_std_termios;
+	// XXX: Plantage Bochs si affectation
+	memcpy(&tty_driver->init_termios, &tty_std_termios, sizeof(tty_std_termios));
 	tty_driver->ops = &serial_ops;
 	tty_register_driver(tty_driver);
 	
