@@ -40,6 +40,16 @@
 #define LOOKUP_PARENT 1 /**< S'arrête au niveau du parent. */
 #define LOOKUP_NOFOLLOW 2 /**< Ne résoud pas le dernier lien. */
 
+/**
+ * Structure servant au lookup.
+ */
+struct nameidata {
+	int flags; /**< Flags pour le lookup pour par exemple s'arréter au parent. */
+	dentry_t *dentry; /**< Directory Entry. */
+	mounted_fs_t *mnt; /**< Le FS utilisé. */
+	char *last; /**< Ce qu'il reste du path à parcourir. */
+};
+
 static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, uint32_t flags);
 extern struct _open_file_operations_t pipe_fops;
 
@@ -120,10 +130,37 @@ static char * get_next_part_path(struct nameidata *nb) {
 }
 
 static int lookup(struct nameidata *nb) {
+	int is_absolute_path = 0;
 	dentry_t *dentry;
 	// On va de dossier en dossier.
 	while (*(nb->last)) {
-		const char *name = get_next_part_path(nb);
+		char *name = get_next_part_path(nb);
+
+		if (is_absolute_path) {
+			nb->mnt = get_mnt_from_path(name);
+			if (nb->mnt) {
+				if (nb->mnt->instance && nb->mnt->instance->getroot) {
+					nb->dentry = nb->mnt->instance->getroot(nb->mnt->instance);
+				} else {
+					kerr("instance ou getroot null");
+					return -1;
+				}
+			} else if (name[0] == '\0') {
+				nb->mnt = &mvfs;
+				nb->dentry = &root_vfs;
+				nb->dentry->d_inode->i_count++;
+				return 0;
+			}
+
+			is_absolute_path = 0;
+			continue;
+		}
+
+		if (nb->dentry->d_pdentry == NULL && strcmp(name, "..") == 0) {
+			is_absolute_path = 1;
+			continue;
+		}
+
 
 		if (*(nb->last) == '\0') { // Si c'est le dernier élément
 			if (nb->flags & LOOKUP_PARENT) {
@@ -151,11 +188,11 @@ static int lookup(struct nameidata *nb) {
 						char *newpath = kmalloc(sizeof(char) * (ret + strlen(nb->last)) + 1);
 						strcpy(newpath, link);
 						strcpy(newpath + ret, nb->last);
+						kfree(nb->last);
+						nb->last = newpath;
 
-						if (newpath[0] == '/') {
-							return open_namei(newpath, nb);
-						} else {
-							nb->last = newpath;
+						if (nb->last[0] == '/') {
+							is_absolute_path = 1;
 						}
 					} else {
 						return -1;

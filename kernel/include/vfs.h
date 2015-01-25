@@ -108,16 +108,6 @@ typedef struct _dentry_t {
 	struct _dentry_t *d_pdentry; /**< Parent dentry. */
 } dentry_t;
 
-/**
- * Structure servant au lookup.
- */
-struct nameidata {
-	int flags; /**< Flags pour le lookup pour par exemple s'arréter au parent. */
-	dentry_t *dentry; /**< Directory Entry. */
-	mounted_fs_t *mnt; /**< Le FS utilisé. */
-	const char *last; /**< Ce qu'il reste du path à parcourir. */
-};
-
 #define ATTR_UID 1 /**< Attribut uid valide. */
 #define ATTR_GID (1 << 1) /**< Attribut gid valide. */
 #define ATTR_MODE (1 << 2) /**< Attribut mode valide. */
