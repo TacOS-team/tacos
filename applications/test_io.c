@@ -168,7 +168,7 @@ int main() {
 	fclose(f);
 
 	// Test 18:
-	r = mkdir("/tacos/bla/bla", 777);
+	r = mkdir("/tacos/bla123456789/bla", 777);
 	unit_test_int("Création d'un dossier avec un des sous-dossier inexistant (ENOENT).", ENOENT, errno);
 
 	// Test 19:
