@@ -5,6 +5,7 @@
 #include <kmalloc.h>
 #include <memory.h>
 #include <klibc/string.h>
+#include <vmm.h>
 
 struct mmap_region {
 	vaddr_t addr;
@@ -63,7 +64,7 @@ int is_mmaped(vaddr_t addr) {
 		if (aux->addr + aux->length > addr) {
 			vaddr_t page_addr = ALIGN_PAGE_INF(addr);
 
-			map(memory_reserve_page_frame(), page_addr, 1, (aux->prot & PROT_WRITE) > 0);
+			map(reserve_page_frame(process), page_addr, 1, (aux->prot & PROT_WRITE) > 0);
 			if (aux->flags & MAP_ANONYMOUS) {
 				memset((void*)page_addr, 0, PAGE_SIZE);
 				return 1;

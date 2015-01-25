@@ -161,9 +161,9 @@ void init_vmm(struct virtual_mem *kvm)
 {
 	vaddr_t page_sup_end_kernel = memory_get_kernel_top();
 
-	map(memory_reserve_page_frame(), page_sup_end_kernel, 0, 1);
+	map(reserve_page_frame(NULL), page_sup_end_kernel, 0, 1);
 
-	kvm->free_slabs.begin = (struct slab *) page_sup_end_kernel; 
+	kvm->free_slabs.begin = (struct slab *) page_sup_end_kernel;
 	kvm->free_slabs.begin->prev = NULL;
 	kvm->free_slabs.begin->nb_pages = 1;
 	kvm->free_slabs.begin->next = NULL;
@@ -175,14 +175,14 @@ void init_vmm(struct virtual_mem *kvm)
 	kvm->vmm_top = page_sup_end_kernel + PAGE_SIZE;
 }
 
-void init_process_vm(struct virtual_mem *vm, int init_nb_pages) 
+void init_process_vm(process_t *process, struct virtual_mem *vm, int init_nb_pages)
 {
 	int i;
 
 	vaddr_t vm_begin = _PAGINATION_KERNEL_TOP;
 	
 	for(i = 0; i < (init_nb_pages+1); i++)
-		map(memory_reserve_page_frame(), vm_begin + i*PAGE_SIZE, 1, 1); //XXX: u_s = 0 ?
+		map(reserve_page_frame(process), vm_begin + i*PAGE_SIZE, 1, 1); //XXX: u_s = 0 ?
 
 	//vm->used_slabs.begin = (struct slab *) vm_begin;
 	vm->used_slabs.begin = (struct slab *) (vm_begin + init_nb_pages*PAGE_SIZE - sizeof(struct slab));
@@ -201,14 +201,14 @@ void init_process_vm(struct virtual_mem *vm, int init_nb_pages)
 }
 
 // Agrandit le heap de nb_pages pages et ajoute le nouveau slab à la fin de free_pages
-static int increase_heap(struct virtual_mem *vm, unsigned int nb_pages, int u_s)
+static int increase_heap(process_t *process, struct virtual_mem *vm, unsigned int nb_pages, int u_s)
 {
 	unsigned int i;
 	/* vaddr_t top_last_slab; unused */
 	struct slab *slab = (struct slab *) vm->vmm_top;
 
 	for (i = 0; i < nb_pages; i++){
-		paddr_t paddr = memory_reserve_page_frame();
+		paddr_t paddr = reserve_page_frame(process);
 		if(!paddr || map(paddr, vm->vmm_top, u_s, 1) == -1)
 			return -1;
 		vm->vmm_top += PAGE_SIZE;
@@ -260,13 +260,13 @@ static struct slab * cut_slab(struct virtual_mem *vm, struct slab *s, unsigned i
 }
 
 // Alloue une page
-unsigned int allocate_new_page(struct virtual_mem *vm, void **alloc, int u_s)
+unsigned int allocate_new_page(process_t *process, struct virtual_mem *vm, void **alloc, int u_s)
 {
-	return allocate_new_pages(vm, 1, alloc, u_s);
+	return allocate_new_pages(process, vm, 1, alloc, u_s);
 }
 
-// Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle 
-unsigned int allocate_new_pages(struct virtual_mem *vm, unsigned int nb_pages, void **alloc, int u_s)
+// Alloue nb_pages pages qui sont placé en espace contigüe de la mémoire virtuelle
+unsigned int allocate_new_pages(process_t *process, struct virtual_mem *vm, unsigned int nb_pages, void **alloc, int u_s)
 {
 	struct slab *slab = vm->free_slabs.begin;
 
@@ -275,14 +275,14 @@ unsigned int allocate_new_pages(struct virtual_mem *vm, unsigned int nb_pages, v
 
 	if(slab == NULL)
 	{
-		if(increase_heap(vm, nb_pages, u_s) == -1)
+		if(increase_heap(process, vm, nb_pages, u_s) == -1)
 			return 0;
 
 		slab = vm->free_slabs.end;
 	}
 
 	*(alloc) = (void *) ((vaddr_t) cut_slab(vm, slab, nb_pages) + sizeof(struct slab));
-	return nb_pages*PAGE_SIZE - sizeof(struct slab); 
+	return nb_pages*PAGE_SIZE - sizeof(struct slab);
 }
 
 // Unallocate a page
@@ -378,11 +378,12 @@ void vmm_print_heap(struct virtual_mem *vm)
 }
 
 void sys_vmm(uint32_t min_size, void **alloc, size_t *real_alloc_size) {
-  struct virtual_mem* vm = get_current_process()->vm;
+	process_t *process = get_current_process();
+	struct virtual_mem* vm = process->vm;
 
 	asm("cli");
-	*real_alloc_size = allocate_new_pages(vm, calculate_min_pages(min_size),
-                                        alloc, 1); 
+	*real_alloc_size = allocate_new_pages(process, vm, calculate_min_pages(min_size),
+                                          alloc, 1);
 	asm("sti");
 }
 

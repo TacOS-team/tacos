@@ -50,7 +50,6 @@
 #include <process_types.h>
 #include <symtable.h>
 #include <types.h>
-#include <vmm.h>
 
 #define MAX_PROC 512 /**< Nombre max de processus. */
 
@@ -125,6 +124,7 @@ typedef struct process {
 	struct page_directory_entry * pd;
 	struct virtual_mem *vm;
 	struct mmap_region* list_regions;
+	struct physical_page_descr *reserved_pages;
 	
 	signal_process_data_t signal_data;
 
@@ -270,5 +270,8 @@ void procfs_init();
  * @param i indice du process dans le tableau (attention, ce n'est pas son pid)
  */
 process_t* get_process_array(int i);
+
+paddr_t reserve_page_frame(process_t* process);
+void release_page_frames(process_t* process);
 
 #endif /* _K_PROCESS_H_ */

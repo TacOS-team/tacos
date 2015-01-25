@@ -34,6 +34,7 @@
 #define _VMM_H_
 
 #include <types.h>
+#include <kprocess.h>
 
 /**
  * @brief a slab of pages.
@@ -67,7 +68,7 @@ struct virtual_mem
  */
 void init_vmm(struct virtual_mem *kvm);
 
-void init_process_vm(struct virtual_mem *vm, int init_nb_pages);
+void init_process_vm(process_t *process, struct virtual_mem *vm, int init_nb_pages);
 
 /**
  * @brief Allocation d'une nouvelle page.
@@ -78,7 +79,7 @@ void init_process_vm(struct virtual_mem *vm, int init_nb_pages);
  *
  * @return 
  */
-unsigned int allocate_new_page(struct virtual_mem *vm, void **alloc, int u_s);
+unsigned int allocate_new_page(process_t* process, struct virtual_mem *vm, void **alloc, int u_s);
 
 /**
  * @brief Alloue nb_pages pages qui sont placé en espace contigüe de la 
@@ -91,7 +92,7 @@ unsigned int allocate_new_page(struct virtual_mem *vm, void **alloc, int u_s);
  *
  * @return
  */
-unsigned int allocate_new_pages(struct virtual_mem *vm, unsigned int nb_pages,
+unsigned int allocate_new_pages(process_t* process, struct virtual_mem *vm, unsigned int nb_pages,
 																void **alloc, int u_s);
 int unallocate_page(struct virtual_mem *vm, void *page);
 unsigned int calculate_min_pages(size_t size);

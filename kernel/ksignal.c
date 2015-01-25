@@ -37,7 +37,7 @@
 #include <pagination.h>
 #include <scheduler.h>
 #include <syscall_values.h>
-
+#include <vmm.h>
 
 /**
  * Nom des signaux. Utile pour afficher leurs noms à la place de leurs numéros.

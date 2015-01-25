@@ -43,6 +43,7 @@
 #include <kunistd.h>
 #include <vfs.h>
 #include <memory.h>
+#include <vmm.h>
 
 #define GET_PROCESS 0
 #define GET_PROCESS_LIST 1
@@ -55,6 +56,28 @@ typedef int (*main_func_type) (uint32_t, uint8_t**);
 static int proc_count = -1;
 
 static process_t* process_array[MAX_PROC];
+
+paddr_t reserve_page_frame(process_t* process) {
+	paddr_t addr = memory_reserve_page_frame();
+	if (addr) {
+		if (process) {
+			struct physical_page_descr *el = kmalloc(sizeof(struct physical_page_descr));
+			el->addr = addr;
+			el->next = process->reserved_pages;
+			process->reserved_pages = el;
+		}
+		return addr;
+	}
+	return 0;
+}
+
+void release_page_frames(process_t* process) {
+	struct physical_page_descr *aux = process->reserved_pages;
+	while (aux) {
+		memory_free_page_frame(aux->addr);
+		aux = aux->next;
+	}
+}
 
 uint32_t get_proc_count()
 {
@@ -330,8 +353,9 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 	new_proc->ppid = init_data_dup->ppid;
 	
 	// Initialisation des données pour la vmm
-	new_proc->vm = (struct virtual_mem *) kmalloc(sizeof(struct virtual_mem));
+	new_proc->vm = kmalloc(sizeof(struct virtual_mem));
 	new_proc->list_regions = NULL;
+	new_proc->reserved_pages = NULL;
 
 	// Ne devrait pas utiliser kmalloc. Cf remarque suivante.
 	new_proc->pd = kmalloc_one_aligned_page();
@@ -349,11 +373,11 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 		// soit contigü en mémoire physique et aligné dans un cadre...
 		pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
 		
-		init_process_vm(new_proc->vm, calculate_min_pages(init_data_dup->mem_size));
+		init_process_vm(new_proc, new_proc->vm, calculate_min_pages(init_data_dup->mem_size));
 
 		// Allocation stack (attention à ne pas dépasser 8 Mio en l'état)
 		for(i = 1; i <= stack_pages; i++)
-			map(memory_reserve_page_frame(), USER_PROCESS_STACK - i*PAGE_SIZE, 1, 1);
+			map(reserve_page_frame(new_proc), USER_PROCESS_STACK - i*PAGE_SIZE, 1, 1);
 
 		/* Copie du programme au bon endroit */
 		memcpy((void*)USER_PROCESS_BASE, (void*)init_data_dup->data, init_data_dup->mem_size);
@@ -538,7 +562,7 @@ process_t* create_process(process_init_data_t* init_data) {
 	// soit contigü en mémoire physique et aligné dans un cadre...
 	pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
 	
-	init_process_vm(new_proc->vm, 1);
+	init_process_vm(new_proc, new_proc->vm, 1);
 	
 	if(proc_count > 0)
 	{
@@ -598,6 +622,8 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	for (i = 0; i < current->nb_children; i++) {
 		current->children[i]->ppid = current->ppid;
 	}
+
+	release_page_frames(current);
 }
 
 SYSCALL_HANDLER1(sys_getpid, uint32_t* pid)
