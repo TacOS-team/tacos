@@ -46,6 +46,7 @@ struct slab
 	struct slab *prev;
 	size_t nb_pages;
 	struct slab *next;
+	uint32_t padding;
 };
 
 struct slabs_list

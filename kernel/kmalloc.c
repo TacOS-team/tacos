@@ -32,6 +32,8 @@
 #include <kmalloc.h>
 #include <klibc/string.h>
 
+#define ALIGN_BYTE(addr) (((uint32_t)(addr) + 7) & ~(7))
+
 struct mem_list
 {
 	struct mem *begin;
@@ -43,6 +45,7 @@ struct mem
 	struct mem *prev;
 	size_t size; // (struct mem) + data
 	struct mem *next;
+	uint32_t padding;
 };
 
 static struct virtual_mem kvm;
@@ -71,7 +74,7 @@ void init_kmalloc()
 void *kmalloc(size_t size)
 {
 	struct mem *mem = k_free_mem.begin;
-	size_t real_size = size + sizeof(struct mem);
+	size_t real_size = ALIGN_BYTE(size + sizeof(struct mem));
 
 	while(mem != NULL && mem->size < real_size)
 		mem = mem->next;
@@ -79,16 +82,14 @@ void *kmalloc(size_t size)
 	if(mem == NULL)
 	{
 		struct mem *new_mem;
-		struct mem *alloc;
 		size_t real_alloc_size;
 
 		real_alloc_size = allocate_new_pages(NULL, &kvm, calculate_min_pages(real_size),
-																				 (void **) &alloc, 0);
+																				 (void **) &new_mem, 0);
 		
 		if(real_alloc_size <= 0)
 			return NULL;
 		
-		new_mem = (struct mem *) alloc;
 		new_mem->size = real_alloc_size;
 		push_back(&k_free_mem, new_mem);
 		mem = k_free_mem.end;
