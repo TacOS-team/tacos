@@ -247,9 +247,9 @@ static void init_regs(regs_t* regs, vaddr_t esp, vaddr_t kesp, vaddr_t eip) {
 	regs->cs = USER_CODE_SEGMENT;
 	regs->ss = USER_STACK_SEGMENT;
 	regs->ds = USER_DATA_SEGMENT;
-	regs->es = 0x0;
-	regs->fs = 0x0;
-	regs->gs = 0x0;
+	regs->es = USER_DATA_SEGMENT;
+	regs->fs = USER_DATA_SEGMENT;
+	regs->gs = USER_DATA_SEGMENT;
 	
 	regs->eflags = 0;
 	regs->eip = eip;
@@ -518,13 +518,13 @@ process_t* create_process(process_init_data_t* init_data) {
 	new_proc->regs.esi = 0;
 	new_proc->regs.edi = 0;
 
-	new_proc->regs.cs = 0x8;
-	new_proc->regs.ds = 0x10;
-	new_proc->regs.ss = 0x10;
+	new_proc->regs.cs = KERNEL_CODE_SEGMENT;
+	new_proc->regs.ds = KERNEL_DATA_SEGMENT;
+	new_proc->regs.ss = KERNEL_DATA_SEGMENT;
 
-	new_proc->regs.es = 0;
-	new_proc->regs.fs = 0;
-	new_proc->regs.gs = 0;
+	new_proc->regs.es = KERNEL_DATA_SEGMENT;
+	new_proc->regs.fs = KERNEL_DATA_SEGMENT;
+	new_proc->regs.gs = KERNEL_DATA_SEGMENT;
 	new_proc->regs.cr3 = 0;
 	
 	new_proc->regs.eflags = 0;

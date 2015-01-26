@@ -160,15 +160,7 @@ time_t convert_datetime_fat_to_time_t(fat_date_t *date, fat_time_t *time) {
 	} else {
 		seconds = minutes = hours = 0;
 	}
-	struct tm t1;
-	t1.tm_sec = seconds;
-	t1.tm_min = minutes;
-	t1.tm_hour = hours;
-	t1.tm_mday = date->day;
-	t1.tm_mon = date->month - 1;
-	t1.tm_year = date->year + 80;
 
-	/* Crash avec Bochs!!!1!!
 	struct tm t = {
 		.tm_sec = seconds,
 		.tm_min = minutes,
@@ -176,8 +168,8 @@ time_t convert_datetime_fat_to_time_t(fat_date_t *date, fat_time_t *time) {
 		.tm_mday = date->day,
 		.tm_mon = date->month - 1,
 		.tm_year = date->year + 80,
-	};*/
-	return clock_mktime(&t1);
+	};
+	return clock_mktime(&t);
 }
 
 void convert_time_t_to_datetime_fat(time_t time, fat_time_t *timefat, fat_date_t *datefat) {

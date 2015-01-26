@@ -13,5 +13,5 @@ keyboard: keymap=$BXSHARE/keymaps/x11-pc-fr.map
 
 # A mettre dans votre /etc/bochs-init/bochsrc !
 # magic_break: enabled=1
-gdbstub: enabled=1
+gdbstub: enabled=1, port=1234
 

@@ -76,8 +76,7 @@ void console_init() {
 	tty_driver->driver_name = "console";
 	tty_driver->devfs_name = "tty";
 	tty_driver->type = TTY_DRIVER_TYPE_CONSOLE;
-	// XXX: plantage sous bochs si je fais une affectation.
-	memcpy(&(tty_driver->init_termios), &(tty_std_termios), sizeof(tty_std_termios));
+	tty_driver->init_termios = tty_std_termios;
 	tty_driver->ops = &console_ops;
 	tty_register_driver(tty_driver);
 }

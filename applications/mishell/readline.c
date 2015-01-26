@@ -143,10 +143,7 @@ char *readline(const char *prompt)
 	struct termios oldt;
 	tcgetattr(0, &oldt);
 
-	//XXX: Cette ligne plante sous bochs... remplacée par un memcpy...
-	//struct termios newt = oldt;
-	struct termios newt;
-	memcpy(&newt, &oldt, sizeof(newt));
+	struct termios newt = oldt;
 	
 	cfmakeraw(&newt);
 	tcsetattr(0, TCSANOW, &newt);
