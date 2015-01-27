@@ -304,7 +304,7 @@ int vfs_chdir(const char* path) {
 
 	nb.flags = 0;
 	int ret = open_namei(pathname, &nb);
-	if (ret == 0) {
+	if (ret == 0 && S_ISDIR(nb.dentry->d_inode->i_mode)) {
 		char *oldpath = process->cwd;
 		process->cwd = pathname;
 		kfree(oldpath);
