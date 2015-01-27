@@ -513,7 +513,7 @@ static dentry_t * get_process_fd_dentry(struct _fs_instance_t * instance,
 
 	// TODO y réfléchir pour qu'ils soient vraiment uniques
 	inode->i_ino     += procfs_first_fd_offset + fd;
-	inode->i_mode     = 0555 | S_IFREG ;
+	inode->i_mode     = 0555 | S_IFLNK ;
 
 	extra_data_procfs_t *extra = inode->i_fs_specific;
 	extra->lookup = NULL;
