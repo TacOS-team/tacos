@@ -7,16 +7,7 @@
 #include <klibc/string.h>
 #include <vmm.h>
 
-struct mmap_region {
-	vaddr_t addr;
-	size_t length;
-	int prot;
-	int flags;
-	int fd;
-	off_t offset;
 
-	struct mmap_region* next;
-};
 
 
 static void add_region(process_t *process, vaddr_t addr, struct mmap_data *data) {

@@ -32,6 +32,7 @@
 #include <klog.h>
 #include <kmalloc.h>
 #include <kprocess.h>
+#include <mmap.h>
 #include <scheduler.h>
 #include <kerrno.h>
 #include <types.h>
@@ -58,8 +59,10 @@
 #define procfs_cwd_offset          procfs_state_offset + 1
 // ppid
 #define procfs_ppid_offset         procfs_cwd_offset + 1
+// maps
+#define procfs_maps_offset 	   procfs_ppid_offset + 1
 // fd
-#define procfs_fd_offset           procfs_ppid_offset + 1
+#define procfs_fd_offset           procfs_maps_offset + 1
 // fd/* => taille de FOPEN_MAX
 #define procfs_first_fd_offset     procfs_fd_offset + 1
 // priority
@@ -195,6 +198,81 @@ static ssize_t procfs_read_name(open_file_descriptor * ofd, void* buffer, size_t
 	return result;
 }
 
+static uint32_t count_regions(process_t* process) {
+	struct mmap_region* aux = process->list_regions;
+	uint32_t count = 0;
+	while (aux) {
+		count++;
+		aux = aux->next;
+	}
+	return count;
+}
+
+static char* memory_maps(process_t* process) {
+	struct mmap_region* aux = process->list_regions;
+	int region_count = count_regions(process);
+	
+	char* buffer = kmalloc(80 * region_count); /* XXX à la louche */
+	char* p = buffer;
+	
+	while(aux != NULL) {
+		/* Start address */
+		itox(p, aux->addr);
+		p += 8;
+
+		/* : */
+		strcpy(p, ":");
+		p += 1;
+
+		/* End address */
+		itox(p, aux->addr + aux->length);
+		p += 8;
+
+		/* Space */
+		strcpy(p, " ");
+		p += 1;
+
+		/* Offset */
+		itox(p, aux->offset);
+		p += 8;
+
+		/* Space */
+		strcpy(p, " ");
+		p += 1;
+
+		/* Path */
+		if(aux->fd == -1) {
+			strcpy(p, "[anonymous]");
+			p += 11;
+		} else if(process->fd[aux->fd] == NULL) {
+			strcpy(p, "[fd lost]");
+			p += 9;
+		} else {
+			strcpy(p, process->fd[aux->fd]->pathname);
+			p += strlen(process->fd[aux->fd]->pathname);
+		}
+
+		/* EOL */
+		strcpy(p,"\n");
+		p += 1;
+
+		aux = aux->next;
+	}
+	strcpy(p , "\0");
+	return buffer;
+}
+
+static ssize_t procfs_read_maps(open_file_descriptor * ofd, void* buffer, size_t count) {
+	ssize_t result = EOF;
+	extra_data_procfs_t* extra = ofd->i_fs_specific;
+	process_t* process = find_process(extra->pid);
+	if(process) {
+		char* maps = memory_maps(process);
+		result = write_string_in_buffer(ofd, buffer, maps, count);
+	}
+	return result;
+}
+
 static ssize_t procfs_read_ppid(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
 	extra_data_procfs_t *extra = ofd->i_fs_specific;
@@ -280,7 +358,8 @@ static procfs_file_function_t procfs_file_functions_list[] = {
 	{ "cmd_line", 0, procfs_read_name,     procfs_cmd_line_offset },
 	{ "ppid",     0, procfs_read_ppid,     procfs_ppid_offset },
 	{ "state",    0, procfs_read_state,    procfs_state_offset },
-	{ "cwd",      0, procfs_read_cwd,      procfs_cwd_offset }/*,
+	{ "cwd",      0, procfs_read_cwd,      procfs_cwd_offset },
+	{ "maps",     0, procfs_read_maps,     procfs_maps_offset }/*,
 	{ "priority", 0, procfs_read_priority, procfs_priority_offset }*/
 };
 
