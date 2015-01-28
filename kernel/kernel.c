@@ -77,11 +77,6 @@ typedef struct
 void cmain (unsigned long magic, unsigned long addr);
 static void initKernelOptions(const char *cmdLine, kernel_options *options);
 
-static void LPT1_routine(int id __attribute__ ((unused)))
-{
-	// XXX : avoid segment_not_present
-}
-
 paddr_t ramdisk_start = 0;
 paddr_t ramdisk_end = 0;
 
@@ -132,7 +127,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 		kerr("ELF section headers unavailable");
 
 	interrupt_set_routine(IRQ_KEYBOARD, keyboardInterrupt, 0);
-	interrupt_set_routine(IRQ_LPT1, LPT1_routine, 0);
 	interrupt_set_routine(IRQ_COM1, serial_isr, 0);
 	interrupt_set_routine(IRQ_COM2, serial_isr, 0);
 	init_fpu();
