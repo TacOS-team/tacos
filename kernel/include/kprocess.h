@@ -174,7 +174,6 @@ int create_kprocess(char* name,
                     void* entry_point,
                     uint32_t stack_size);
 
-process_t* create_process(process_init_data_t* init_data);
 /** 
 * @brief Retire un processus de la liste.
 * 

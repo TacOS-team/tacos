@@ -236,24 +236,37 @@ static vaddr_t init_stack(uint32_t* base, char* args, char** envp, paddr_t retur
 	return (vaddr_t) stack_ptr;
 }
 
-static void init_regs(regs_t* regs, vaddr_t esp, vaddr_t kesp, vaddr_t eip) {
+static void init_regs(regs_t* regs, vaddr_t esp, vaddr_t kesp, vaddr_t eip, uint8_t isKernel) {
 	regs->eax = 0;
 	regs->ebx = 0;
 	regs->ecx = 0;
 	regs->edx = 0;
 	regs->esp = esp;
 	regs->ebp = regs->esp;
-	
-	regs->cs = USER_CODE_SEGMENT;
-	regs->ss = USER_STACK_SEGMENT;
-	regs->ds = USER_DATA_SEGMENT;
-	regs->es = USER_DATA_SEGMENT;
-	regs->fs = USER_DATA_SEGMENT;
-	regs->gs = USER_DATA_SEGMENT;
-	
+	regs->esi = 0;
+	regs->edi = 0;
+
+	if(isKernel) {
+		regs->cs = KERNEL_CODE_SEGMENT;
+		regs->ds = KERNEL_DATA_SEGMENT;
+		regs->ss = KERNEL_DATA_SEGMENT;
+		regs->es = KERNEL_DATA_SEGMENT;
+		regs->fs = KERNEL_DATA_SEGMENT;
+		regs->gs = KERNEL_DATA_SEGMENT;
+
+	} else {
+		regs->cs = USER_CODE_SEGMENT;
+		regs->ss = USER_STACK_SEGMENT;
+		regs->ds = USER_DATA_SEGMENT;
+		regs->es = USER_DATA_SEGMENT;
+		regs->fs = USER_DATA_SEGMENT;
+		regs->gs = USER_DATA_SEGMENT;
+	}
+		
 	regs->eflags = 0;
 	regs->eip = eip;
-	
+	regs->cr3 = 0;
+
 	regs->kss = KERNEL_STACK_SEGMENT;
 	regs->kesp = kesp;
 }
@@ -310,38 +323,44 @@ static void free_init_data(process_init_data_t* init_data) {
 	kfree(init_data);
 }
 
-static process_t* create_process_elf(process_init_data_t* init_data)
-{
-	uint32_t *sys_stack, *user_stack;
-	process_init_data_t* init_data_dup;
+process_t* create_process(process_init_data_t* init_data, uint8_t isKernel) {
 	process_t* new_proc;
-	
+	uint32_t *sys_stack, *user_stack;
 	uint32_t* stack_ptr;
-		
 	int i;
-	
-	init_data_dup = dup_init_data(init_data);
-	
+
+	/* Création  de la structure process_t */
 	new_proc = kmalloc(sizeof(process_t));
-	if( new_proc == NULL )
+	if (new_proc == NULL)
 	{
 		kerr("impossible de reserver la memoire pour le nouveau processus.");
 		return NULL;
 	}
-	
-	new_proc->name = strdup(init_data_dup->name);
-	new_proc->cwd = NULL;
-	
-	/* Initialisation de la kernel stack */
 
-	sys_stack = kmalloc(init_data_dup->stack_size*sizeof(uint32_t));
+	/* Creation de la kernel stack */
+	sys_stack = kmalloc(init_data->stack_size * sizeof(uint32_t));
 	if( new_proc == NULL )
 	{
 		kerr("impossible de reserver la memoire pour la pile systeme.");
 		return NULL;
 	}
-	
-	// Sémaphore pour le wait
+
+	if(isKernel){
+		/* Création de la main stack pour un process kernel.
+ 		 * Un l'alloue à part uniquement dans ce cas, car pour un process "classique" la pile est allouée en même temps que le reste
+ 		 */
+		user_stack = kmalloc(init_data->stack_size * sizeof(uint32_t));
+		if (user_stack == NULL)
+		{
+			kerr("impossible de reserver la memoire pour la pile utilisateur.");
+			return NULL;
+		}
+	}
+
+	new_proc->name = strdup(init_data->name);
+	new_proc->cwd = NULL;
+
+	/* Sémaphore pour le wait */
 	new_proc->sem_wait = ksemget(SEM_NEW, SEM_CREATE);
 	new_proc->sem_wait_child = ksemget(SEM_NEW, SEM_CREATE);
 	int val = 0;
@@ -349,63 +368,26 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 	ksemctl(new_proc->sem_wait_child, SEM_SET, &val);
 
 	new_proc->nb_children = 0;
+	new_proc->ppid = init_data->ppid;
 
-	new_proc->ppid = init_data_dup->ppid;
-	
-	// Initialisation des données pour la vmm
+	/* Initialisation des données pour la vmm */
 	new_proc->vm = kmalloc(sizeof(struct virtual_mem));
 	new_proc->list_regions = NULL;
 	new_proc->reserved_pages = NULL;
+	new_proc->pd = kmalloc_one_aligned_page(); // XXX Ne devrait pas utiliser kmalloc. Cf remarque suivante.
 
-	// Ne devrait pas utiliser kmalloc. Cf remarque suivante.
-	new_proc->pd = kmalloc_one_aligned_page();
 	paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) new_proc->pd);
 	pagination_init_page_directory_copy_kernel_only(new_proc->pd, pd_paddr);
-	
+
 	new_proc->ctrl_tty = NULL;
 
-	int stack_pages = init_data_dup->stack_size / PAGE_SIZE;
+	/* Initilisation des masques de signal */
+	new_proc->signal_data.mask = 0;
+	new_proc->signal_data.pending_set = 0;
+	for (i = 0; i < NSIG; i++) {
+		new_proc->signal_data.handlers[i] = NULL;
+	}
 
-	/* ZONE CRITIQUE */
-	asm("cli");
-
-		// Passer l'adresse physique et non virtuelle ! Attention, il faut que ça 
-		// soit contigü en mémoire physique et aligné dans un cadre...
-		pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
-		
-		init_process_vm(new_proc, new_proc->vm, calculate_min_pages(init_data_dup->mem_size));
-
-		// Allocation stack (attention à ne pas dépasser 8 Mio en l'état)
-		for(i = 1; i <= stack_pages; i++)
-			map(reserve_page_frame(new_proc), USER_PROCESS_STACK - i*PAGE_SIZE, 1, 1);
-
-		/* Copie du programme au bon endroit */
-		memcpy((void*)USER_PROCESS_BASE, (void*)init_data_dup->data, init_data_dup->mem_size);
-		
-		/* Initialisation de la pile utilisateur */
-		user_stack = (uint32_t*) USER_PROCESS_STACK - 4;
-		stack_ptr = (uint32_t*) init_stack(user_stack, init_data_dup->args, init_data_dup->envp, (paddr_t)sys_exit);
-		
-		/* Remet le repertoire de page du process courant (le père donc) */
-		if(proc_count > 0)
-		{
-			pd_paddr = vmm_get_page_paddr((vaddr_t) get_current_process()->pd);
-			pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
-		}
-		
-		memset(new_proc->fd, 0, FOPEN_MAX * sizeof(open_file_descriptor*));
-
-		add_process(new_proc);
-
-		/* Initialisation des entrées/sorties standards */
-		init_stdfd(new_proc);
-		
-	/* FIN ZONE CRITIQUE */
-	asm("sti");
-	
-	/* Initialisation des registres */
-	init_regs(&(new_proc->regs), (vaddr_t)stack_ptr, (vaddr_t)(&sys_stack[init_data_dup->stack_size-1]), init_data_dup->entry_point);
-	
 	/* Initialisation des compteurs de temps CPU */
 	new_proc->user_time = 0;
 	new_proc->sys_time = 0;
@@ -414,22 +396,94 @@ static process_t* create_process_elf(process_init_data_t* init_data)
 
 	/* On attend son premier ordonnancement pour le passer en RUNNING, donc pour le moment on le laisse IDLE */
 	new_proc->state = PROCSTATE_IDLE;
-	
-	/* Initilisation des masques de signal */
-	new_proc->signal_data.mask = 0;
-	new_proc->signal_data.pending_set = 0;
-	for (i = 0; i < NSIG; i++) {
-		new_proc->signal_data.handlers[i] = NULL;
-	}
-	
-	/* Création de la table des symboles */
-	new_proc->symtable = load_symtable(init_data->file);
 
-	/* Plantait, mais ne plante plus... */
-	free_init_data(init_data_dup);
+	/* ZONE CRITIQUE */
+	asm("cli");
+		// Passer l'adresse physique et non virtuelle ! Attention, il faut que ça 
+		// soit contigü en mémoire physique et aligné dans un cadre...
+		pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
+		if(isKernel)
+			init_process_vm(new_proc, new_proc->vm, 1);
+		else
+			init_process_vm(new_proc, new_proc->vm, calculate_min_pages(init_data->mem_size));
+		
+		if(!isKernel) {
+			int stack_pages = init_data->stack_size / PAGE_SIZE;
+
+		
+			// Passer l'adresse physique et non virtuelle ! Attention, il faut que ça 
+			// soit contigü en mémoire physique et aligné dans un cadre...
+			pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
+
+			// Allocation stack (attention à ne pas dépasser 8 Mio en l'état)
+			for(i = 1; i <= stack_pages; i++)
+				map(reserve_page_frame(new_proc), USER_PROCESS_STACK - i*PAGE_SIZE, 1, 1);
+
+			/* Copie du programme au bon endroit */
+			memcpy((void*)USER_PROCESS_BASE, (void*)init_data->data, init_data->mem_size);
+
+			/* Initialisation de la pile utilisateur */
+			user_stack = (uint32_t*) USER_PROCESS_STACK - 4;
+			
+		}
+
+		if(isKernel) {
+			/* Initialisation de la pile du processus */
+			char** argv;
+			int argc;
 	
+			argc = arg_build("",(vaddr_t) &(user_stack[init_data->stack_size-1]), &argv);
+			stack_ptr = (uint32_t*) argv[0];
+	
+			*(stack_ptr-1) = (vaddr_t) NULL;
+			*(stack_ptr-2) = (vaddr_t) argv;
+			*(stack_ptr-3) = argc;
+			*(stack_ptr-4) = (vaddr_t) sys_exit;
+		} else {
+			stack_ptr = (uint32_t*) init_stack(user_stack, init_data->args, init_data->envp, (paddr_t)sys_exit);
+		}
+
+		
+		/* Remet le repertoire de page du process courant (le père donc) */
+		if(proc_count > 0)
+		{
+			pd_paddr = vmm_get_page_paddr((vaddr_t) get_current_process()->pd);
+			pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
+		}
+
+		memset(new_proc->fd, 0, FOPEN_MAX * sizeof(open_file_descriptor*));
+	
+		add_process(new_proc);
+
+		/* Initialisation des entrées/sorties standards */
+		init_stdfd(new_proc);
+
+	/* FIN ZONE CRITIQUE */
+	asm("sti");
+
+	/* Initialisation des registres */
+	if(isKernel) {
+		init_regs(&(new_proc->regs), 
+			  (vaddr_t)stack_ptr-4, 
+			  (vaddr_t)(&sys_stack[init_data->stack_size-1]), 
+			  (paddr_t) init_data->data, 
+			  isKernel);
+	
+	} else {
+		init_regs(&(new_proc->regs), 
+			  (vaddr_t)stack_ptr, 
+			  (vaddr_t)(&sys_stack[init_data->stack_size-1]), 
+			  init_data->entry_point, 
+			  isKernel);
+	}
+
+	/* XXX: Création de la table des symboles, il faut la dupliquer dans la structure sinon ça plante */
+	//new_proc->symtable = load_symtable(init_data->file);
+
 	return new_proc;
 }
+
+
 
 int create_kprocess(char* _name, void* entry_point, uint32_t _stack_size)
 {
@@ -438,8 +492,9 @@ int create_kprocess(char* _name, void* entry_point, uint32_t _stack_size)
 	init_data.name = _name;
 	init_data.data = entry_point;
 	init_data.stack_size = _stack_size;
+	init_data.ppid = 0; /* XXX Mettre le bon ppid? */
 	
-	process_t* proc = create_process(&init_data);
+	process_t* proc = create_process(&init_data, 1);
 	if (proc) {
 		scheduler_add_process(proc);
 		return proc->pid;
@@ -448,140 +503,6 @@ int create_kprocess(char* _name, void* entry_point, uint32_t _stack_size)
 	}
 }
 
-process_t* create_process(process_init_data_t* init_data) {
-	char* name = init_data->name;
-	paddr_t prog = (paddr_t) init_data->data;
-	char* param = "";
-	uint32_t stack_size = init_data->stack_size;
-
-	uint32_t *sys_stack, *user_stack;
-	process_t* new_proc;
-	
-	char** argv;
-	int argc;
-	uint32_t* stack_ptr;
-	
-	int i;
-	
-	new_proc = kmalloc(sizeof(process_t));
-	if (new_proc == NULL)
-	{
-		kerr("impossible de reserver la memoire pour le nouveau processus.");
-		return NULL;
-	}
-	new_proc->name = strdup(name);
-	new_proc->cwd = NULL;
-	
-	sys_stack = kmalloc(0x100000);
-	if (sys_stack == NULL)
-	{
-		kerr("impossible de reserver la memoire pour la pile systeme.");
-		return NULL;
-	}
-	
-	user_stack = kmalloc(stack_size*sizeof(uint32_t));
-	if (user_stack == NULL)
-	{
-		kerr("impossible de reserver la memoire pour la pile utilisateur.");
-		return NULL;
-	}
-	
-	/* Initialisation de la pile du processus */
-	argc = arg_build(param,(vaddr_t) &(user_stack[stack_size-1]), &argv);
-	stack_ptr = (uint32_t*) argv[0];
-	
-	*(stack_ptr-1) = (vaddr_t) NULL;
-	*(stack_ptr-2) = (vaddr_t) argv;
-	*(stack_ptr-3) = argc;
-	*(stack_ptr-4) = (vaddr_t) sys_exit;
-	
-	new_proc->ppid = 0;
-
-	new_proc->sem_wait = ksemget(SEM_NEW, SEM_CREATE);
-	new_proc->sem_wait_child = ksemget(SEM_NEW, SEM_CREATE);
-	int val = 0;
-	ksemctl(new_proc->sem_wait, SEM_SET, &val);
-	ksemctl(new_proc->sem_wait_child, SEM_SET, &val);
-	
-	new_proc->nb_children = 0;
-
-	new_proc->user_time = 0;
-	new_proc->sys_time = 0;
-	new_proc->current_sample = 0;
-	new_proc->last_sample = 0;
-	
-	new_proc->regs.eax = 0;
-	new_proc->regs.ebx = 0;
-	new_proc->regs.ecx = 0;
-	new_proc->regs.edx = 0;
-
-	new_proc->regs.esi = 0;
-	new_proc->regs.edi = 0;
-
-	new_proc->regs.cs = KERNEL_CODE_SEGMENT;
-	new_proc->regs.ds = KERNEL_DATA_SEGMENT;
-	new_proc->regs.ss = KERNEL_DATA_SEGMENT;
-
-	new_proc->regs.es = KERNEL_DATA_SEGMENT;
-	new_proc->regs.fs = KERNEL_DATA_SEGMENT;
-	new_proc->regs.gs = KERNEL_DATA_SEGMENT;
-	new_proc->regs.cr3 = 0;
-	
-	new_proc->regs.eflags = 0;
-	new_proc->regs.eip = prog;
-	new_proc->regs.esp = (vaddr_t)(stack_ptr-4);
-	new_proc->regs.ebp = new_proc->regs.esp;
-	
-	new_proc->regs.kss = 0x10;
-	new_proc->regs.kesp = (vaddr_t)(&sys_stack[stack_size-1]);
-	
-	new_proc->state = PROCSTATE_IDLE;
-	
-	new_proc->ctrl_tty = NULL;
-
-	/* Initialisation des signaux */
-	for(i=0; i<NSIG; i++)
-		new_proc->signal_data.handlers[i] = NULL;
-	
-	new_proc->signal_data.mask = 0;
-	new_proc->signal_data.pending_set = 0;
-	
-	// Initialisation des données pour la vmm
-	new_proc->vm = (struct virtual_mem *) kmalloc(sizeof(struct virtual_mem));
-	new_proc->list_regions = NULL;
-
-	// Ne devrait pas utiliser kmalloc. Cf remarque suivante.
-	new_proc->pd = kmalloc_one_aligned_page();
-	paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) new_proc->pd);
-	pagination_init_page_directory_copy_kernel_only(new_proc->pd, pd_paddr);
-
-	/* ZONE CRITIQUE */
-	asm("cli");
-
-	// Passer l'adresse physique et non virtuelle ! Attention, il faut que ça 
-	// soit contigü en mémoire physique et aligné dans un cadre...
-	pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
-	
-	init_process_vm(new_proc, new_proc->vm, 1);
-	
-	if(proc_count > 0)
-	{
-		pd_paddr = vmm_get_page_paddr((vaddr_t) get_current_process()->pd);
-		pagination_load_page_directory((struct page_directory_entry *) pd_paddr);
-	}
-
-	memset(new_proc->fd, 0, FOPEN_MAX * sizeof(open_file_descriptor*));
-
-	add_process(new_proc);
-
-	/* Initialisation des entrées/sorties standards */
-	init_stdfd(new_proc);
-	
-	/* FIN ZONE CRITIQUE */
-	asm("sti");	
-	
-	return new_proc;	
-}
 
 void sample_CPU_usage()
 {
@@ -647,7 +568,12 @@ static int sys_exec2(process_init_data_t* init_data)
 	}
 
 	process_t *process;
-	process = create_process_elf(init_data);
+	process_init_data_t* init_data_dup = dup_init_data(init_data);
+
+	process = create_process(init_data_dup, 0);
+
+	free_init_data(init_data);
+
 	if (process->ppid) {
 		process_t *parent = find_process(process->ppid);
 		if (parent->cwd) {

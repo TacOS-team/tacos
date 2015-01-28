@@ -265,7 +265,7 @@ void init_scheduler(int Q)
 	idle_init.priority = 0;
 	idle_init.ppid = 0;
 	
-	idle_process = create_process(&idle_init);
+	idle_process = create_process(&idle_init, 1);
 	idle_process->state = PROCSTATE_IDLE;
 
 }

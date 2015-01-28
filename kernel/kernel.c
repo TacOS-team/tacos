@@ -206,7 +206,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	klog("Scheduler initialized.");
 	
 	// Création du processus par défaut.
-	create_kprocess("init", (void*) init, 0x1000);
+	create_kprocess("init", (void*) init, 0x100000);
 	events_init();
 	
 	start_scheduler();
