@@ -56,6 +56,7 @@ static int sample_counter;	/* Compteur du nombre d'échantillonnage pour l'éval
 static process_t* idle_process = NULL;
 static scheduler_descriptor_t* scheduler = NULL;
 static int idle_injected = 0;
+static int scheduler_activated;
 
 void idle()
 {
@@ -154,6 +155,10 @@ static void context_switch(int mode, process_t* current)
 
 void* schedule(void* data __attribute__ ((unused)))
 {
+	if (!scheduler_activated) {
+		return NULL;
+	}
+
 	uint32_t* stack_ptr;
 
 	/* On met le contexte dans la structure "process"*/
@@ -237,7 +242,7 @@ void* schedule(void* data __attribute__ ((unused)))
 
 	/* Mise en place de l'interruption sur le quantum de temps */
 	/* XXX en lisant ça, je me demande si on pourrait pas le faire un peu plus tard, genre juste avant de changer de contexte */
-	set_scheduler_event(schedule,NULL,quantum*1000);	
+	add_event(schedule, NULL, quantum * 1000);
 
 	/* Changer le contexte:*/
 	if(current->regs.cs == KERNEL_CODE_SEGMENT)
@@ -272,12 +277,13 @@ void init_scheduler(int Q)
 
 void stop_scheduler()
 {
-	unset_scheduler_event();
+	scheduler_activated = 0;
 }
 
 void start_scheduler()
 {
-	set_scheduler_event(schedule,NULL,quantum);
+	scheduler_activated = 1;
+	add_event(schedule, NULL, quantum * 1000);
 }
 
 int scheduler_add_process(process_t* proc)
