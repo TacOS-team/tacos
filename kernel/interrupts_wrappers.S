@@ -14,6 +14,8 @@
 /* La table des handlers est definie dans interrupts.c. */
 .extern interrupts_handler_array
 
+.extern do_schedule
+
 /* C'est ici qu'on va declarer la table des wrappers */
 .globl interrupts_wrapper_array
 
@@ -38,18 +40,27 @@
 					mov %bx, %ds
 					pop %ebx
 
+
 					/**
 					 * Appelle le handler qui a été enregistré dans le tableau interrupts_handler_array.
 					 */
 					pushl $\id
 					leal  interrupts_handler_array,%edi
 					call  *\id*4(%edi)
+					addl  $4, %esp
+
+					.ifeq \id
+					push %ebp
+					mov %esp,%ebp
+					call do_schedule
+					pop %ebp
+					.endif
+
                /* La seule difference avec les exceptions : */
                /* Send EOI to PIC. See i8259 datasheet */
                movb $0x20, %al
                outb %al, $0x20
 
-					addl  $4, %esp
 
 					pop %es
 					pop %ds
@@ -125,9 +136,16 @@
 					pushl $\id
 					leal  interrupts_handler_array,%edi
 					call  *\id*4(%edi)
-
 					addl  $4, %esp
-					
+
+					.ifeq \id - 16
+					push %ebp
+					mov %esp,%ebp
+					call do_schedule
+					pop %ebp
+					.endif
+
+
 					pop %es
 					pop %ds
 					pop %fs

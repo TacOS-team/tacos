@@ -52,6 +52,7 @@
 
 static uint32_t quantum;	/* Quantum de temps alloué aux process */
 static int sample_counter;	/* Compteur du nombre d'échantillonnage pour l'évaluation de l'usage CPU */
+static int resched;
 
 static process_t* idle_process = NULL;
 static scheduler_descriptor_t* scheduler = NULL;
@@ -153,11 +154,14 @@ static void context_switch(int mode, process_t* current)
 	RESTORE_CONTEXT();
 }
 
-void* schedule(void* data __attribute__ ((unused)))
+void* schedule(void* data __attribute__ ((unused)));
+
+void do_schedule()
 {
-	if (!scheduler_activated) {
-		return NULL;
+	if (!scheduler_activated || !resched) {
+		return;
 	}
+	resched = 0;
 
 	uint32_t* stack_ptr;
 
@@ -171,7 +175,7 @@ void* schedule(void* data __attribute__ ((unused)))
 		/* On récupere un pointeur de pile pour acceder aux registres empilés */
 		asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
 		
-		intframe* frame = (intframe*)(stack_ptr + 2);
+		intframe* frame = (intframe*)(stack_ptr);
 
 		current->regs.eflags = frame->eflags;
 		current->regs.cs  = frame->cs;
@@ -241,7 +245,6 @@ void* schedule(void* data __attribute__ ((unused)))
 	}
 
 	/* Mise en place de l'interruption sur le quantum de temps */
-	/* XXX en lisant ça, je me demande si on pourrait pas le faire un peu plus tard, genre juste avant de changer de contexte */
 	add_event(schedule, NULL, quantum * 1000);
 
 	/* Changer le contexte:*/
@@ -249,10 +252,15 @@ void* schedule(void* data __attribute__ ((unused)))
 		context_switch(KERNEL_PROCESS, current);
 	else
 		context_switch(USER_PROCESS, current);
-		
 
+}
+
+void* schedule(void* data __attribute__ ((unused))) {
+	resched = 1;
 	return NULL;
 }
+
+
 
 void init_scheduler(int Q)
 {
@@ -273,6 +281,7 @@ void init_scheduler(int Q)
 	idle_process = create_process(&idle_init, 1);
 	idle_process->state = PROCSTATE_IDLE;
 
+	resched = 1;
 }
 
 void stop_scheduler()
