@@ -56,7 +56,6 @@ static int resched;
 
 static process_t* idle_process = NULL;
 static scheduler_descriptor_t* scheduler = NULL;
-static int idle_injected = 0;
 static int scheduler_activated;
 
 void idle()
@@ -169,7 +168,7 @@ void do_schedule()
 	process_t* current = scheduler->get_current_process();
 	
 	/* On récupère le contexte du processus actuel uniquement si il a déja été lancé */
-	if(idle_injected!=1 && current->state != PROCSTATE_TERMINATED && current->state != PROCSTATE_IDLE)
+	if(current != idle_process && current->state != PROCSTATE_TERMINATED && current->state != PROCSTATE_IDLE)
 	{	
 		
 		/* On récupere un pointeur de pile pour acceder aux registres empilés */
@@ -212,7 +211,6 @@ void do_schedule()
 		current->user_time += quantum;
 	}
 	
-	idle_injected = 0;
 	
 	/* On recupere le prochain processus à executer.
 	 * TODO: Dans l'idéal, on devrait ici faire appel à un scheduler, 
@@ -223,7 +221,6 @@ void do_schedule()
 		/* Si on a rien à faire, on passe dans le processus idle */
 		scheduler->inject_idle(idle_process);	
 		current = idle_process;
-		idle_injected = 1;
 	}
 	//else {
 		/* Sinon on regarde si le process a des signaux en attente */
