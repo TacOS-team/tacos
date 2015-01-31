@@ -33,7 +33,6 @@
 #include <interrupts.h>
 #include <kstdio.h>
 #include <klibc/limits.h>
-#include "heap.h"
 
 // Note: RTC signifie Real Time Clock.
 
