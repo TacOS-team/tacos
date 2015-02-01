@@ -31,6 +31,7 @@
 #include <list.h>
 #include <events.h>
 #include <debug.h>
+#include <scheduler.h>
 
 #define MAX_EVENTS 256 /**< Nombre d'évènements au maximum. */
 
@@ -51,6 +52,7 @@ static void events_interrupt(int interrupt_id __attribute__ ((unused)))
 	struct event_t *event;
 
 	clock_tick();
+	update_stats();
 
 	event = (struct event_t *) list_get_top(events);
 	while(event != NULL && compare_times(event->date, get_tv()) <= 0)

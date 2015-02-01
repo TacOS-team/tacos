@@ -110,8 +110,6 @@ typedef struct process {
 	/* Données dédiées au évaluation de perf */
 	long int	user_time;
 	long int	sys_time;
-	int current_sample;
-	int last_sample;
 	
 	char *cwd; /**< Current Working Directory */
 

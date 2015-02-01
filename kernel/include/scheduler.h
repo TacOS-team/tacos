@@ -55,6 +55,7 @@ void init_scheduler(int Q);
 void set_scheduler(scheduler_descriptor_t* sched);
 int scheduler_add_process(process_t* proc);
 int scheduler_delete_process(int pid);
+void update_stats();
 
 /** 
 * @brief Retourne le processus en cours d'utilisation

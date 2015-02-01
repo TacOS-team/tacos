@@ -94,6 +94,7 @@ static process_t* rr_get_current_process()
 {
 	process_t* ret = NULL;
 	
+	// XXX: Je trouve ça moche de virer le idle_process en faisant un get_current_process.
 	if(idle_process != NULL)
 	{
 		ret = idle_process;

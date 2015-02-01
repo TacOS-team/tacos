@@ -51,12 +51,13 @@
 #define KERNEL_PROCESS 1
 
 static uint32_t quantum;	/* Quantum de temps alloué aux process */
-static int sample_counter;	/* Compteur du nombre d'échantillonnage pour l'évaluation de l'usage CPU */
 static int resched;
 
 static process_t* idle_process = NULL;
 static scheduler_descriptor_t* scheduler = NULL;
 static int scheduler_activated;
+
+static process_t* current_process = NULL;
 
 void idle()
 {
@@ -85,6 +86,14 @@ int is_schedulable(process_t* process) {
 	}
 }
 
+void update_stats() {
+	if (current_process && current_process != idle_process) {
+		if (current_process->regs.cs == KERNEL_CODE_SEGMENT)
+			current_process->sys_time++;
+		else
+			current_process->user_time++;
+	}
+}
 
 /* Effectue le changement de contexte proprement dit */
 static void context_switch(int mode, process_t* current)
@@ -93,6 +102,8 @@ static void context_switch(int mode, process_t* current)
 	uint32_t kesp;
 	uint16_t kss;
 	
+	current_process = current;
+
 	/* Récupère l'adresse physique de répertoire de page du processus */
 	paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) current->pd);
 	
@@ -207,10 +218,6 @@ void do_schedule()
 	/* On met le contexte dans la structure "process"*/
 	process_t* current = scheduler->get_current_process();
 	
-	// XXX
-	//current->user_time += quantum;
-	
-	
 	/* On recupere le prochain processus à executer.
 	 * TODO: Dans l'idéal, on devrait ici faire appel à un scheduler, 
 	 * qui aurait pour rôle de choisir le processus celon une politique spécifique */
@@ -225,14 +232,6 @@ void do_schedule()
 		/* Sinon on regarde si le process a des signaux en attente */
 	//	exec_sighandler(next);
 	//}
-	/* Evaluation de l'usage du CPU */
-	next->current_sample++;
-	sample_counter++;
-	if(sample_counter >= CPU_USAGE_SAMPLE_RATE)
-	{
-		sample_CPU_usage();
-		sample_counter = 0;
-	}
 	
 	/* Mise en place de l'interruption sur le quantum de temps */
 	add_event(schedule, NULL, quantum * 1000);
@@ -311,7 +310,7 @@ int scheduler_delete_process(int pid)
 
 process_t* get_current_process()
 {
-	return scheduler ? scheduler->get_current_process() : NULL;
+	return current_process;
 }
 
 

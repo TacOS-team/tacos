@@ -391,8 +391,6 @@ process_t* create_process(process_init_data_t* init_data, uint8_t isKernel) {
 	/* Initialisation des compteurs de temps CPU */
 	new_proc->user_time = 0;
 	new_proc->sys_time = 0;
-	new_proc->current_sample = 0;
-	new_proc->last_sample = 0;
 
 	/* On attend son premier ordonnancement pour le passer en RUNNING, donc pour le moment on le laisse IDLE */
 	new_proc->state = PROCSTATE_IDLE;
@@ -503,19 +501,6 @@ int create_kprocess(char* _name, void* entry_point, uint32_t _stack_size)
 	}
 }
 
-
-void sample_CPU_usage()
-{
-	int i = 0;
-	for(i=0; i<MAX_PROC; i++)
-	{
-		if(process_array[i] != NULL)
-		{
-			process_array[i]->last_sample = process_array[i]->current_sample;
-			process_array[i]->current_sample = 0;
-		}
-	}
-}
 
 /*
  * SYSCALL
