@@ -215,19 +215,19 @@ void do_schedule()
 	/* On recupere le prochain processus à executer.
 	 * TODO: Dans l'idéal, on devrait ici faire appel à un scheduler, 
 	 * qui aurait pour rôle de choisir le processus celon une politique spécifique */
-	current = scheduler->get_next_process();
+	process_t *next = scheduler->get_next_process();
 	
-	if(!is_schedulable(current)) {
+	if(!is_schedulable(next)) {
 		/* Si on a rien à faire, on passe dans le processus idle */
 		scheduler->inject_idle(idle_process);	
-		current = idle_process;
+		next = idle_process;
 	}
 	//else {
 		/* Sinon on regarde si le process a des signaux en attente */
-	//	exec_sighandler(current);
+	//	exec_sighandler(next);
 	//}
 	/* Evaluation de l'usage du CPU */
-	current->current_sample++;
+	next->current_sample++;
 	sample_counter++;
 	if(sample_counter >= CPU_USAGE_SAMPLE_RATE)
 	{
@@ -235,20 +235,21 @@ void do_schedule()
 		sample_counter = 0;
 	}
 	
-	/* Si le processus courant n'a pas encore commencé son exécution, on le lance */
-	if(current->state == PROCSTATE_IDLE)
-	{
-		current->state = PROCSTATE_RUNNING;
-	}
-
 	/* Mise en place de l'interruption sur le quantum de temps */
 	add_event(schedule, NULL, quantum * 1000);
 
+	/* Si le processus courant n'a pas encore commencé son exécution, on le lance */
+	if(next->state == PROCSTATE_IDLE) {
+		next->state = PROCSTATE_RUNNING;
+	} else if (current == next) {
+		return;
+	}
+
 	/* Changer le contexte:*/
-	if(current->regs.cs == KERNEL_CODE_SEGMENT)
-		context_switch(KERNEL_PROCESS, current);
+	if(next->regs.cs == KERNEL_CODE_SEGMENT)
+		context_switch(KERNEL_PROCESS, next);
 	else
-		context_switch(USER_PROCESS, current);
+		context_switch(USER_PROCESS, next);
 
 }
 
