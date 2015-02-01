@@ -155,6 +155,42 @@ static void context_switch(int mode, process_t* current)
 
 void* schedule(void* data __attribute__ ((unused)));
 
+static void copy_context_current(process_t* current, intframe* frame) {
+
+	current->regs.eflags = frame->eflags;
+	current->regs.cs  = frame->cs;
+	current->regs.eip = frame->eip;
+	current->regs.eax = frame->eax;
+	current->regs.ecx = frame->ecx;
+	current->regs.edx = frame->edx;
+	current->regs.ebx = frame->ebx;
+	current->regs.ebp = frame->ebp;
+	current->regs.esi = frame->esi;
+	current->regs.edi = frame->edi;
+	current->regs.fs = frame->fs;
+	current->regs.gs = frame->gs;
+	current->regs.ds = frame->ds;
+	current->regs.es = frame->es;
+	
+	/* Si on ordonnance une tache en cours d'appel systeme.. */
+	if(current->regs.cs == KERNEL_CODE_SEGMENT)
+	{
+		current->regs.ss = get_default_tss()->ss0;
+		current->regs.esp = frame->kesp + 12;	/* Valeur hardcodée, je cherche encore un moyen d'éviter ça... */
+		current->regs.kesp = current->regs.esp;
+	}
+	else
+	{
+		current->regs.ss = frame->ss;
+		current->regs.esp = frame->esp;
+		current->regs.kesp = (uint32_t)(frame+1);
+	}
+/*
+		current->regs.kss = get_default_tss()->ss0;
+		current->regs.kesp = get_default_tss()->esp0;
+	*/	
+}
+
 void do_schedule()
 {
 	if (!scheduler_activated || !resched) {
@@ -162,54 +198,17 @@ void do_schedule()
 	}
 	resched = 0;
 
+	/* On récupere un pointeur de pile pour acceder aux registres empilés
+	 * C'est fait au début pour éviter de toucher à ebp.
+	 * */
 	uint32_t* stack_ptr;
+	asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
 
 	/* On met le contexte dans la structure "process"*/
 	process_t* current = scheduler->get_current_process();
 	
-	/* On récupère le contexte du processus actuel uniquement si il a déja été lancé */
-	if(current != idle_process && current->state != PROCSTATE_TERMINATED && current->state != PROCSTATE_IDLE)
-	{	
-		
-		/* On récupere un pointeur de pile pour acceder aux registres empilés */
-		asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
-		
-		intframe* frame = (intframe*)(stack_ptr);
-
-		current->regs.eflags = frame->eflags;
-		current->regs.cs  = frame->cs;
-		current->regs.eip = frame->eip;
-		current->regs.eax = frame->eax;
-		current->regs.ecx = frame->ecx;
-		current->regs.edx = frame->edx;
-		current->regs.ebx = frame->ebx;
-		current->regs.ebp = frame->ebp;
-		current->regs.esi = frame->esi;
-		current->regs.edi = frame->edi;
-		current->regs.fs = frame->fs;
-		current->regs.gs = frame->gs;
-		current->regs.ds = frame->ds;
-		current->regs.es = frame->es;
-		
-		/* Si on ordonnance une tache en cours d'appel systeme.. */
-		if(current->regs.cs == KERNEL_CODE_SEGMENT)
-		{
-			current->regs.ss = get_default_tss()->ss0;
-			current->regs.esp = frame->kesp + 12;	/* Valeur hardcodée, je cherche encore un moyen d'éviter ça... */
-			current->regs.kesp = current->regs.esp;
-		}
-		else
-		{
-			current->regs.ss = frame->ss;
-			current->regs.esp = frame->esp;
-			current->regs.kesp = (uint32_t)(frame+1);
-		}
-/*
-		current->regs.kss = get_default_tss()->ss0;
-		current->regs.kesp = get_default_tss()->esp0;
-	*/	
-		current->user_time += quantum;
-	}
+	// XXX
+	//current->user_time += quantum;
 	
 	
 	/* On recupere le prochain processus à executer.
@@ -238,19 +237,26 @@ void do_schedule()
 	/* Mise en place de l'interruption sur le quantum de temps */
 	add_event(schedule, NULL, quantum * 1000);
 
-	/* Si le processus courant n'a pas encore commencé son exécution, on le lance */
-	if(next->state == PROCSTATE_IDLE) {
-		next->state = PROCSTATE_RUNNING;
-	} else if (current == next) {
+	/* Si la décision de l'ordo est de ne pas changer le processus courant */
+	if (current == next && next->state != PROCSTATE_IDLE) {
 		return;
 	}
 
+	/* On récupère le contexte du processus actuel uniquement si il a déja été lancé */
+	if (current != idle_process && current->state != PROCSTATE_TERMINATED && current->state != PROCSTATE_IDLE) {
+		copy_context_current(current, (intframe*)(stack_ptr));
+	}
+
+	/* Si le processus courant n'a pas encore commencé son exécution, on le lance */
+	if (next->state == PROCSTATE_IDLE) {
+		next->state = PROCSTATE_RUNNING;
+	} 
+
 	/* Changer le contexte:*/
-	if(next->regs.cs == KERNEL_CODE_SEGMENT)
+	if (next->regs.cs == KERNEL_CODE_SEGMENT)
 		context_switch(KERNEL_PROCESS, next);
 	else
 		context_switch(USER_PROCESS, next);
-
 }
 
 void* schedule(void* data __attribute__ ((unused))) {
