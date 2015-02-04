@@ -108,8 +108,8 @@ typedef struct process {
 	//uint8_t	priority; // Not used.
 	
 	/* Données dédiées au évaluation de perf */
-	long int	user_time;
-	long int	sys_time;
+	long long int	user_time;
+	long long int	sys_time;
 	
 	char *cwd; /**< Current Working Directory */
 
