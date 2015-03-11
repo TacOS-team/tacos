@@ -59,6 +59,7 @@ dentry_t* fat_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry, 
 	directory_entry_t *next_dentry = open_next_direntry(prev_dentry->fat_directory, name);
 
 	if (!next_dentry) {
+		kfree(d);
 		return NULL;
 	}
 

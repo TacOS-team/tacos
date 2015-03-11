@@ -19,6 +19,7 @@ static struct directories_t * readdir_inode(ext2_fs_instance_t *instance, int in
 	int addr_debut = addr_inode_data(instance, inode, 0);
 
 	if (addr_debut == 0) {
+		kfree(dir_result);
 		return NULL;
 	}
 
