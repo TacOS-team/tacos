@@ -66,7 +66,8 @@
 // fd/* => taille de FOPEN_MAX
 #define procfs_first_fd_offset     procfs_fd_offset + 1
 // priority
-#define procfs_priority_offset     procfs_first_fd_offset + FOPEN_MAX
+#define procfs_stat_offset     procfs_first_fd_offset + FOPEN_MAX
+#define procfs_priority_offset     procfs_priority_offset + 1
 
 #define PROCFS_PROCESS_RANGE       60*1000;
 
@@ -285,6 +286,18 @@ static ssize_t procfs_read_ppid(open_file_descriptor * ofd, void* buffer, size_t
 	return result;
 }
 
+static ssize_t procfs_read_stat(open_file_descriptor * ofd, void* buffer, size_t count) {
+	ssize_t result = EOF;
+	extra_data_procfs_t *extra = ofd->i_fs_specific;
+	process_t* process = find_process(extra->pid);
+	if(process) {
+		char buf[100];
+		sprintf(buf, "%d %s %llu %llu\n", process->pid, process->name, process->sys_time, process->user_time);
+		result = write_string_in_buffer(ofd, buffer, buf, count);
+	}
+	return result;
+}
+
 /*
 static ssize_t procfs_read_priority(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
@@ -359,7 +372,8 @@ static procfs_file_function_t procfs_file_functions_list[] = {
 	{ "ppid",     0, procfs_read_ppid,     procfs_ppid_offset },
 	{ "state",    0, procfs_read_state,    procfs_state_offset },
 	{ "cwd",      0, procfs_read_cwd,      procfs_cwd_offset },
-	{ "maps",     0, procfs_read_maps,     procfs_maps_offset }/*,
+	{ "maps",     0, procfs_read_maps,     procfs_maps_offset },
+	{ "stat",     0, procfs_read_stat,     procfs_stat_offset }/*,
 	{ "priority", 0, procfs_read_priority, procfs_priority_offset }*/
 };
 

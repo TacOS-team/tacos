@@ -27,10 +27,6 @@
  * Description de ce que fait le fichier
  */
 
-/**
- * @file sprintf.c
- */
-
 #include "stdio.h"
 
 int sprintf(char *str, const char *format, ...) {
