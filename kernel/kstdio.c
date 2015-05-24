@@ -63,12 +63,25 @@ void kprintf(const char *format, ...) {
 			tty->driver->ops->put_char(tty, c);
 		} else {
 			char *p;
+			int long_modifier = 0;
 
 			c = *format++;
+
+			while (c == 'l') {
+				long_modifier++;
+				c = *format++;
+			}
+
 			switch (c) {
 			case 'd':
 			case 'u':
-				itoa(buf, c, va_arg(arg, int));
+				if (long_modifier == 2) {
+					itoa(buf, c, va_arg(arg, long long));
+				} else if (long_modifier == 1) {
+					itoa(buf, c, va_arg(arg, long));
+				} else {
+					itoa(buf, c, va_arg(arg, int));
+				}
 				p = buf;
 				goto string;
 				break;
@@ -95,5 +108,63 @@ void kprintf(const char *format, ...) {
 		}
 	}
 
+	va_end(arg);
+}
+
+
+
+void sprintf(char *str, const char *format, ...) {
+	va_list arg;
+
+	va_start(arg, format);
+
+	int c;
+	char buf[20];
+
+	while ((c = *format++) != 0) {
+		if (c != '%') {
+			*str = c;
+			str++;
+		} else {
+			char *p = NULL;
+			int long_modifier = 0;
+			c = *format++;
+
+			while (c == 'l') {
+				long_modifier++;
+				c = *format++;
+			}
+
+			switch (c) {
+			case 'd':
+			case 'u':
+			case 'x':
+				if (long_modifier == 2) {
+					itoa(buf, c, va_arg(arg, long long));
+				} else if (long_modifier == 1) {
+					itoa(buf, c, va_arg(arg, long));
+				} else {
+					itoa(buf, c, va_arg(arg, int));
+				}
+				p = buf;
+			case 's':
+				if (p == NULL) {
+					p = va_arg(arg, char*);
+					if (!p)
+						p = "(null)";
+				}
+				while (*p) {
+					*str = *p;
+					str++;
+					p++;
+				}
+				break;
+			default:
+				*str = c;
+				break;
+			}
+		}
+	}
+	*str = '\0';
 	va_end(arg);
 }

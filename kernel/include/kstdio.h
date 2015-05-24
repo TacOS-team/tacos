@@ -49,5 +49,6 @@
  * @param ... liste variable d'arguments à afficher.
  */
 void kprintf(const char *format, ...);
+void sprintf(char *str, const char *format, ...);
 
 #endif
