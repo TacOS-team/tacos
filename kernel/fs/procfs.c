@@ -189,6 +189,15 @@ static ssize_t read_meminfo(open_file_descriptor *ofd, void* buffer, size_t coun
 	return result;
 }
 
+static ssize_t read_stat(open_file_descriptor *ofd, void* buffer, size_t count) {
+	ssize_t result = EOF;
+	char statinfo[80];
+
+	sprintf(statinfo, "cpu %llu 0 %llu %llu\n", user_time, sys_time, idle_time);
+	result = write_string_in_buffer(ofd, buffer, statinfo, count);
+	return result;
+}
+
 static ssize_t procfs_read_name(open_file_descriptor * ofd, void* buffer, size_t count) {
 	ssize_t result = EOF;
 	extra_data_procfs_t * extra = ofd->i_fs_specific;
@@ -435,10 +444,20 @@ static int procfs_read_root_dir(open_file_descriptor * ofd, char * entries, size
 		d = (struct dirent *)(entries + count);
 		d->d_ino = 4;
 		strcpy(d->d_name, "meminfo");
+		// XXX: ce reclen me parait étrange...
 		d->d_reclen = reclen;
 		count += reclen;
 		++ofd->current_octet;
 	}
+	if (ofd->current_octet == MAX_PROC + 2 && count + reclen < size) {
+		d = (struct dirent *)(entries + count);
+		d->d_ino = 5;
+		strcpy(d->d_name, "stat");
+		d->d_reclen = reclen;
+		count += reclen;
+		++ofd->current_octet;
+	}
+
 
 	return count;
 }
@@ -681,6 +700,35 @@ static dentry_t * get_meminfo_dentry(struct _fs_instance_t *instance) {
 	return d;
 }
 
+static dentry_t * get_stat_dentry(struct _fs_instance_t *instance) {
+	inode_t * inode   = kmalloc(sizeof(inode_t));
+	memset(inode, 0, sizeof(*inode));
+	inode->i_ino      = 5; // XXX: devrait etre unique et non juste arbitraire :)
+	inode->i_size     = 512; // XXX
+	// inode->i_atime    = 0;
+	// inode->i_ctime    = 0;
+	// inode->i_mtime    = 0;
+	// inode->i_dtime    = 0; // XXX
+	inode->i_nlink    = 1;
+	inode->i_blocks   = 1;
+	inode->i_instance = instance;
+	inode->i_count = 0;
+	inode->i_mode     = 0444 | S_IFREG;
+
+	inode->i_fs_specific = NULL;
+
+	inode->i_fops = kmalloc(sizeof(open_file_operations_t));
+	memset(inode->i_fops, 0, sizeof(*(inode->i_fops)));
+	inode->i_fops->close   = procfs_close;
+	inode->i_fops->read = read_stat;
+	
+	dentry_t * d = kmalloc(sizeof(dentry_t));
+	d->d_name = (const char*) strdup("stat");
+	d->d_inode = inode;
+	d->d_pdentry = NULL; //FIXME
+
+	return d;
+}
 
 
 /*****************************************************************************
@@ -705,6 +753,8 @@ static dentry_t * root_lookup(struct _fs_instance_t *instance,
 			result = get_self_dentry(instance);
 		} else if (strcmp(name, "meminfo") == 0) {
 			result = get_meminfo_dentry(instance);
+		} else if (strcmp(name, "stat") == 0) {
+			result = get_stat_dentry(instance);
 		}
 	} else {
 		int pid = atoi(name);

@@ -88,10 +88,15 @@ int is_schedulable(process_t* process) {
 
 void update_stats() {
 	if (current_process && current_process != idle_process) {
-		if (current_process->regs.cs == KERNEL_CODE_SEGMENT)
+		if (current_process->regs.cs == KERNEL_CODE_SEGMENT) {
 			current_process->sys_time++;
-		else
+			sys_time++;
+		} else {
 			current_process->user_time++;
+			user_time++;
+		}
+	} else {
+		idle_time++;
 	}
 }
 

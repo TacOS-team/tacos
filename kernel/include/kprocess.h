@@ -70,6 +70,11 @@
 #define EXEC_ELF 0
 #define EXEC_KERNEL 1
 
+/* Données dédiées au évaluation de perf */
+extern unsigned long long user_time;
+extern unsigned long long sys_time;
+extern unsigned long long idle_time;
+
 /**
  * Structure à passer au noyau pour créer un nouveau processus
  */

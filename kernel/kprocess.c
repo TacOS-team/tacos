@@ -57,6 +57,10 @@ static int proc_count = -1;
 
 static process_t* process_array[MAX_PROC];
 
+unsigned long long user_time;
+unsigned long long sys_time;
+unsigned long long idle_time;
+
 paddr_t reserve_page_frame(process_t* process) {
 	paddr_t addr = memory_reserve_page_frame();
 	if (addr) {
