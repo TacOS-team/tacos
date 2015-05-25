@@ -74,12 +74,24 @@ int vfprintf(FILE *stream, const char *format, va_list ap) {
 			  c = *(format-1);
 			}
 
+			int long_modifier = 0;
+			while (c == 'l') {
+				long_modifier++;
+				c = *format++;
+			}
+
 			switch (c) {
 				case 'o':
 				case 'd':
 				case 'u':
 				case 'x':
-					itoa(buf, c, va_arg(ap, int));
+					if (long_modifier == 2) {
+						itoa(buf, c, va_arg(ap, long long));
+					} else if (long_modifier == 1) {
+						itoa(buf, c, va_arg(ap, long));
+					} else {
+						itoa(buf, c, va_arg(ap, int));
+					}
 					p = buf;
 					goto string;
 					break;
