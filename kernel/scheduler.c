@@ -187,7 +187,7 @@ static void copy_context_current(process_t* current, intframe* frame) {
 	current->regs.gs = frame->gs;
 	current->regs.ds = frame->ds;
 	current->regs.es = frame->es;
-	
+
 	/* Si on ordonnance une tache en cours d'appel systeme.. */
 	if(current->regs.cs == KERNEL_CODE_SEGMENT)
 	{
