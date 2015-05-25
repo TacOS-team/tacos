@@ -343,9 +343,10 @@ process_t* create_process(process_init_data_t* init_data, uint8_t isKernel) {
 
 	/* Creation de la kernel stack */
 	sys_stack = kmalloc(init_data->stack_size * sizeof(uint32_t));
-	if( new_proc == NULL )
+	if( sys_stack == NULL )
 	{
 		kerr("impossible de reserver la memoire pour la pile systeme.");
+		kfree(new_proc);
 		return NULL;
 	}
 
@@ -357,6 +358,8 @@ process_t* create_process(process_init_data_t* init_data, uint8_t isKernel) {
 		if (user_stack == NULL)
 		{
 			kerr("impossible de reserver la memoire pour la pile utilisateur.");
+			kfree(new_proc);
+			kfree(sys_stack);
 			return NULL;
 		}
 	}

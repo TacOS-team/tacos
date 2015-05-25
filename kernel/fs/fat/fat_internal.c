@@ -328,6 +328,7 @@ static int add_fat_dir_entry(fat_fs_instance_t *instance, char * path, fat_dir_e
               next = instance->fat_info.file_alloc_table[next];
             }
           }
+          kfree(dir_entries);
           return 0;
         }
       } else {
@@ -352,6 +353,7 @@ static int add_fat_dir_entry(fat_fs_instance_t *instance, char * path, fat_dir_e
         int off = n_dir_entries - consecutif + j;
         instance->write_data(instance->super.device, (uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (newcluster - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
       }
+	  kfree(dir_entries);
       return 0;
     }
   } else if (instance->fat_info.fat_type != FAT32) {
