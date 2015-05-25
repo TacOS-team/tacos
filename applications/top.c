@@ -3,7 +3,6 @@
  *
  * @author TacOS developers 
  *
- *
  * @section LICENSE
  *
  * Copyright (C) 2010-2014 TacOS developers.
@@ -24,88 +23,79 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Statistiques utilisation du système par les programmes.
  */
 
-#include <process.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <unistd.h>
+#include <fcntl.h>
+#include <dirent.h>
 
-void kill_handler()
-{
-	static int try = 1;
-	if(try>0)
-	{
-		printf("essaye encore...\n");
-		try--;
+unsigned long long values[32768];
+unsigned long long prev_tot = 0;
+unsigned long long tot = 0;
+
+void compute(int p) {
+	int pid;//, ppid, pgrp, session, tty, tpgid;
+	char name[100];
+	//char state;
+	//unsigned long flags, min_flt, cmin_flt, maj_flt, cmaj_flt;
+	unsigned long long utime = 0, stime = 0;
+
+
+	char path[100];
+	sprintf(path, "/proc/%d/stat", p);
+
+	FILE *f = fopen(path, "r");
+	/*
+	fscanf(f, "%d %s %c %d %d %d %d %d"
+		  "%lu %lu %lu %lu %lu"
+		  "%llu %llu",
+		&pid, name, &state, &ppid, &pgrp, &session, &tty, &tpgid,
+		&flags, &min_flt, &cmin_flt, &maj_flt, &cmaj_flt,
+		&utime, &stime);
+		*/
+	//fscanf(f, "%d %s %llu %llu", &pid, name, &stime, &utime);
+	fscanf(f, "%d %s %u %u", &pid, name, &stime, &utime);
+
+	fclose(f);
+
+	if (values[pid]) {
+		int percent = (100 * (double)(utime + stime - values[pid]) / (tot - prev_tot)) + .5;
+		printf("%d %s %d %llu\n", pid, name, percent, utime + stime);
 	}
-	else
-	{
-		exit(0);
-	}
+
+	values[pid] = utime + stime;
 }
-		
-	
 
-void ps()
-{
-	process_t* aux = get_process_list(FIRST_PROCESS);
-	
-	long int ms;
-	int s;
-	int m;
-	int h;
-	printf("pid\tname\t\ttime\t\t%CPU\tstate\n");   
-	while(aux!=NULL)
-	{
-			
-			/* Calcul du temps d'execution du processus */
-			ms = aux->user_time;
-			s = ms / 1000;
-			
-			m = s / 60;
-			s = s % 60;
-			h = m / 60;
-			m = m % 60;
-			
-			/*if (aux->process == active_process) {
-					printf("*");
-			}*/
-			
-			printf("%d\t%s\t\t%dh %dm %ds\t%d\%\t",aux->pid, aux->name, h, m ,s, (int)(((float)aux->last_sample/(float)CPU_USAGE_SAMPLE_RATE)*100.f));
-			
-			switch(aux->state)
-			{
-					case PROCSTATE_IDLE:
-							printf("IDLE\n");
-							break;
-					case PROCSTATE_RUNNING:
-							printf("RUNNING\n");
-							break;
-					case PROCSTATE_WAITING:
-							printf("WAITING\n");
-							break;
-					case PROCSTATE_TERMINATED:
-							printf("TERMINATED\n");
-							break;
-					default:
-							break;
+int main() {
+	while (1) {
+		printf("\e[1;1H\e[2J");
+		char name[100];
+		unsigned long long user, nice, system, idle;
+		FILE* f = fopen("/proc/stat", "r");
+		//fscanf(f, "%s %llu %llu %llu %llu", name, &user, &nice, &system, &idle);
+		fscanf(f, "%s %u %u %u %u", name, &user, &nice, &system, &idle);
+		tot = user + nice + system + idle;
+		fclose(f);
+		//rewinddir(dir);	
+		DIR* dir = opendir("/proc");
+
+		printf("PID COMMAND CPU TIME\n");
+
+		struct dirent *d;
+		while ((d = readdir(dir)) != NULL) {
+			int pid = atoi(d->d_name);
+			if (pid >= 0) {
+				compute(pid);
 			}
-			
-			aux = get_process_list(NEXT_PROCESS);
-	}
-}
-
-int main()
-{
-	signal(SIGINT, kill_handler);
-	while(1)
-	{
+		}
 		
-		printf("\033[1;1H");
-		ps();
+		prev_tot = tot;
+
 		sleep(1);
 	}
+
+	return 0;
 }
