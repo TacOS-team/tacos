@@ -300,8 +300,9 @@ static ssize_t procfs_read_stat(open_file_descriptor * ofd, void* buffer, size_t
 	extra_data_procfs_t *extra = ofd->i_fs_specific;
 	process_t* process = find_process(extra->pid);
 	if(process) {
+		char *state_char = "IRWST";
 		char buf[100];
-		sprintf(buf, "%d %s %llu %llu\n", process->pid, process->name, process->sys_time, process->user_time);
+		sprintf(buf, "%d %s %c %llu %llu\n", process->pid, process->name, state_char[process->state], process->sys_time, process->user_time);
 		result = write_string_in_buffer(ofd, buffer, buf, count);
 	}
 	return result;
