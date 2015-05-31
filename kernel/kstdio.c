@@ -75,6 +75,9 @@ void kprintf(const char *format, ...) {
 			}
 
 			switch (c) {
+			case 'c':
+				tty->driver->ops->put_char(tty, va_arg(arg, int));
+				break;
 			case 'd':
 			case 'u':
 				if (long_modifier == 2) {
@@ -138,6 +141,10 @@ void sprintf(char *str, const char *format, ...) {
 			}
 
 			switch (c) {
+			case 'c':
+				*str = va_arg(arg, int);
+				str++;
+				break;
 			case 'd':
 			case 'u':
 			case 'x':

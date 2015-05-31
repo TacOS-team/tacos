@@ -5,7 +5,7 @@
  *
  * @section LICENSE
  *
- * Copyright (C) 2010-2014 TacOS developers.
+ * Copyright (C) 2010-2015 TacOS developers.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -32,57 +32,66 @@
 #include <fcntl.h>
 #include <dirent.h>
 
-unsigned long long values[32768];
+static int first;
 unsigned long long prev_tot = 0;
 unsigned long long tot = 0;
 
-void compute(int p) {
-	int pid;//, ppid, pgrp, session, tty, tpgid;
-	char name[100];
-	//char state;
-	//unsigned long flags, min_flt, cmin_flt, maj_flt, cmaj_flt;
-	unsigned long long utime = 0, stime = 0;
+struct process {
+	int pid;
+	char name[255];
+	unsigned long long utime;
+	unsigned long long stime;
+	int percent;
+	char state[2];
+};
 
+unsigned long long values[32768];
+struct process tab_process[32768];
+unsigned int nb_process;
+unsigned int nb_running;
+unsigned int nb_sleeping;
+unsigned int nb_terminated;
+
+void compute(int pid) {
+	struct process* p = &tab_process[nb_process++];
+
+	p->utime = p->stime = 0; // XXX: temporaire le temps d'avoir un scanf %llu
 
 	char path[100];
-	sprintf(path, "/proc/%d/stat", p);
+	sprintf(path, "/proc/%d/stat", pid);
 
 	FILE *f = fopen(path, "r");
-	/*
-	fscanf(f, "%d %s %c %d %d %d %d %d"
-		  "%lu %lu %lu %lu %lu"
-		  "%llu %llu",
-		&pid, name, &state, &ppid, &pgrp, &session, &tty, &tpgid,
-		&flags, &min_flt, &cmin_flt, &maj_flt, &cmaj_flt,
-		&utime, &stime);
-		*/
-	//fscanf(f, "%d %s %llu %llu", &pid, name, &stime, &utime);
-	fscanf(f, "%d %s %u %u", &pid, name, &stime, &utime);
-
+	fscanf(f, "%d %s %s %u %u", &p->pid, p->name, p->state, &p->stime, &p->utime);
 	fclose(f);
 
-	if (values[pid]) {
-		int percent = (100 * (double)(utime + stime - values[pid]) / (tot - prev_tot)) + .5;
-		printf("%d %s %d %llu\n", pid, name, percent, utime + stime);
+	switch (p->state[0]) {
+		case 'R': nb_running++; break;
+		case 'W': nb_sleeping++; break;
+		case 'T': nb_terminated++; break;
 	}
 
-	values[pid] = utime + stime;
+	if (!first) {
+		p->percent = (100 * (double)(p->utime + p->stime - values[pid]) / (tot - prev_tot)) + .5;
+	} else {
+		p->percent = -1;
+	}
+
+	values[pid] = p->utime + p->stime;
 }
 
 int main() {
+	first = 1;
 	while (1) {
-		printf("\e[1;1H\e[2J");
+		nb_process = nb_running = nb_terminated = nb_sleeping = 0;
+
 		char name[100];
 		unsigned long long user, nice, system, idle;
 		FILE* f = fopen("/proc/stat", "r");
-		//fscanf(f, "%s %llu %llu %llu %llu", name, &user, &nice, &system, &idle);
 		fscanf(f, "%s %u %u %u %u", name, &user, &nice, &system, &idle);
 		tot = user + nice + system + idle;
 		fclose(f);
 		//rewinddir(dir);	
 		DIR* dir = opendir("/proc");
-
-		printf("PID COMMAND CPU TIME\n");
 
 		struct dirent *d;
 		while ((d = readdir(dir)) != NULL) {
@@ -91,9 +100,29 @@ int main() {
 				compute(pid);
 			}
 		}
+
+		// display:
+		
+		// clear screen:
+		printf("\e[1;1H\e[2J");
+		printf("Tasks: %d total, %d running, %d sleeping, %d terminated\n\n", nb_process, nb_running, nb_sleeping, nb_terminated);
+		printf("\033[30m\033[107mPID CPU TIME COMMAND                                                            \n\033[0m");
+		unsigned int i;
+		for (i = 0; i < nb_process; i++) {
+			struct process* p = &tab_process[i];
+
+			if (p->state[0] == 'T') {
+				printf("\033[30m");
+			}
+			printf("  %d  %d   %llu %s\n", p->pid, p->percent, p->utime + p->stime, p->name);
+			if (p->state[0] == 'T') {
+				printf("\033[0m");
+			}
+		}
 		
 		prev_tot = tot;
 
+		first = 0;
 		sleep(1);
 	}
 
