@@ -27,10 +27,6 @@
  * Description de ce que fait le fichier
  */
 
-/**
- * @file fprintf.c
- */
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -97,6 +93,12 @@ int vfprintf(FILE *stream, const char *format, va_list ap) {
 					break;
 				case 'c':
 					if (fputc(va_arg(ap, int), stream) == EOF) {
+						return -1;
+					}
+					n++;
+					break;
+				case '%':
+					if (fputc('%', stream) == EOF) {
 						return -1;
 					}
 					n++;

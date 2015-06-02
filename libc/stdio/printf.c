@@ -27,10 +27,6 @@
  * Description de ce que fait le fichier
  */
 
-/**
- * @file printf.c
- */
-
 #include <stdio.h>
 
 int printf(const char *format, ...) {
