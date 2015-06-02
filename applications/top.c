@@ -35,6 +35,8 @@
 static int first;
 unsigned long long prev_tot = 0;
 unsigned long long tot = 0;
+unsigned long long prev_cpu_time = 0;
+unsigned long long cpu_time = 0;
 
 char *padding = "     ";
 
@@ -91,6 +93,7 @@ int main() {
 		FILE* f = fopen("/proc/stat", "r");
 		fscanf(f, "%s %u %u %u %u", name, &user, &nice, &system, &idle);
 		tot = user + nice + system + idle;
+		cpu_time = user + nice + system;
 		fclose(f);
 		//rewinddir(dir);	
 		DIR* dir = opendir("/proc");
@@ -107,8 +110,10 @@ int main() {
 		
 		// clear screen:
 		printf("\e[1;1H\e[2J");
-		printf("Tasks: %d total, %d running, %d sleeping, %d terminated\n\n", nb_process, nb_running, nb_sleeping, nb_terminated);
-		printf("\033[30m\033[107m   PID   CPU  TIME  COMMAND                                                     \n\033[0m");
+		printf("Tasks: %d total, %d running, %d sleeping, %d terminated\n", nb_process, nb_running, nb_sleeping, nb_terminated);
+		printf("CPU: %d%%\n",  (int)(100 * (double)(cpu_time - prev_cpu_time) / (tot - prev_tot) + .5));
+		printf("\n");
+		printf("\033[30m\033[107m   PID  %%CPU  TIME  COMMAND                                                     \n\033[0m");
 		unsigned int i;
 		for (i = 0; i < nb_process; i++) {
 			struct process* p = &tab_process[i];
@@ -140,6 +145,7 @@ int main() {
 		}
 		
 		prev_tot = tot;
+		prev_cpu_time = cpu_time;
 
 		first = 0;
 		sleep(1);
