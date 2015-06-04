@@ -84,6 +84,7 @@ void compute(int pid) {
 }
 
 int main() {
+	DIR* dir = opendir("/proc");
 	first = 1;
 	while (1) {
 		nb_process = nb_running = nb_terminated = nb_sleeping = 0;
@@ -95,8 +96,7 @@ int main() {
 		tot = user + nice + system + idle;
 		cpu_time = user + nice + system;
 		fclose(f);
-		//rewinddir(dir);	
-		DIR* dir = opendir("/proc");
+		rewinddir(dir);	
 
 		struct dirent *d;
 		while ((d = readdir(dir)) != NULL) {
