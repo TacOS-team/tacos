@@ -350,17 +350,6 @@ int ext2_rmdir(inode_t *dir, dentry_t *dentry);
 int ext2_setattr(inode_t *inode, file_attributes_t *attr);
 
 /**
- * Déplacement dans un fichier.
- *
- * @param ofd Descripteur de fichier ouvert.
- * @param offset Décalage
- * @param whence depuis le debut, la fin ou en relatif.
- *
- * @return 0 en cas de succès.
- */
-int ext2_seek(open_file_descriptor * ofd, long offset, int whence);
-
-/**
  * Retourne le noeud racine.
  *
  * @param instance Instance de FS.

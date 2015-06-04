@@ -179,31 +179,6 @@ int ext2_readdir(open_file_descriptor * ofd, char * entries, size_t size) {
 	return count;
 }
 
-int ext2_seek(open_file_descriptor * ofd, long offset, int whence) {
-	switch (whence) {
-	case SEEK_SET:
-		if ((uint32_t)offset > ofd->dentry->d_inode->i_size) {
-			return -1;
-		}
-		ofd->current_octet = offset;
-		break;
-	case SEEK_CUR:
-		if (ofd->current_octet + (uint32_t)offset > ofd->dentry->d_inode->i_size) {
-			return -1;
-		}
-		ofd->current_octet += offset;
-		break;
-	case SEEK_END:
-		if ((uint32_t)offset > ofd->dentry->d_inode->i_size) {
-			return -1;
-		}
-		ofd->current_octet = ofd->dentry->d_inode->i_size - offset;
-		break;
-	}
-
-	return 0;
-}
-
 ssize_t ext2_write(open_file_descriptor * ofd, const void *buf, size_t size) {
 	if ((ofd->flags & O_ACCMODE) == O_RDONLY) {
 		return 0;

@@ -106,6 +106,13 @@ DIR* opendir(const char* dirname);
 struct dirent* readdir(DIR* dirp);
 
 /**
+ * Réinitialisation au début du dossier.
+ *
+ * @param dirp La structure DIR à reinitialiser au début du fichier.
+ */
+void rewinddir(DIR* dirp);
+
+/**
  * Fermeture d'un dossier ouvert.
  *
  * @param dirp La structure DIR initialisée par opendir.

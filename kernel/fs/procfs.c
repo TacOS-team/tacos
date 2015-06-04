@@ -562,7 +562,8 @@ static dentry_t * get_default_dentry(struct _fs_instance_t * instance,
 
 	inode->i_fops = kmalloc(sizeof(open_file_operations_t));
 	memset(inode->i_fops, 0, sizeof(*(inode->i_fops)));
-	inode->i_fops->close   = procfs_close;
+	inode->i_fops->close = procfs_close;
+	inode->i_fops->seek = generic_seek;
 	
 	dentry_t * d = kmalloc(sizeof(dentry_t));
 	d->d_name = (const char*) strdup(name);
@@ -851,6 +852,7 @@ void procfs_init() {
 	root_procfs.d_inode->i_fops = kmalloc(sizeof(struct _open_file_operations_t));
 	memset(root_procfs.d_inode->i_fops, 0, sizeof(*(root_procfs.d_inode->i_fops)));
 	root_procfs.d_inode->i_fops->readdir = procfs_read_root_dir;
+	root_procfs.d_inode->i_fops->seek = generic_seek;
 
 	extra_data_procfs_t *extra = kmalloc(sizeof(extra_data_procfs_t));
 	extra->pid    = -1;

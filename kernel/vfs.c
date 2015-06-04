@@ -54,8 +54,9 @@ static open_file_descriptor * dentry_open(dentry_t *dentry, mounted_fs_t *mnt, u
 extern struct _open_file_operations_t pipe_fops;
 
 static dentry_t root_vfs;
-static struct _open_file_operations_t vfs_fops = {.write = NULL, .read = NULL, .seek = NULL, .ioctl = NULL, .open = NULL, .close = NULL, .readdir = vfs_readdir};
+static struct _open_file_operations_t vfs_fops = {.write = NULL, .read = NULL, .seek = generic_seek, .ioctl = NULL, .open = NULL, .close = NULL, .readdir = vfs_readdir};
 static mounted_fs_t mvfs;
+
 
 /**
  * Cellule d'une liste de fs disponibles.
@@ -710,3 +711,30 @@ ssize_t vfs_readlink(const char *path, char *buf, size_t bufsize) {
 	}
 	return -1;
 }
+
+int generic_seek(open_file_descriptor * ofd, long offset, int whence) {
+	switch (whence) {
+	case SEEK_SET:
+		if ((uint32_t)offset > ofd->dentry->d_inode->i_size) {
+			return -1;
+		}
+		ofd->current_octet = offset;
+		break;
+	case SEEK_CUR:
+		if (ofd->current_octet + (uint32_t)offset > ofd->dentry->d_inode->i_size) {
+			return -1;
+		}
+		ofd->current_octet += offset;
+		break;
+	case SEEK_END:
+		if ((uint32_t)offset > ofd->dentry->d_inode->i_size) {
+			return -1;
+		}
+		ofd->current_octet = ofd->dentry->d_inode->i_size - offset;
+		break;
+	}
+
+	return 0;
+}
+
+

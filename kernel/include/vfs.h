@@ -277,4 +277,20 @@ int vfs_chdir(const char* path);
 void vfs_init();
 
 ssize_t vfs_readlink(const char *path, char *buf, size_t bufsize);
+
+//
+// Fonctions génériques pour éviter de dupliquer du code inutilement.
+//
+
+/**
+ * Déplacement dans un fichier.
+ *
+ * @param ofd Descripteur de fichier ouvert.
+ * @param offset Décalage
+ * @param whence depuis le debut, la fin ou en relatif.
+ *
+ * @return 0 en cas de succès.
+ */
+int generic_seek(open_file_descriptor * ofd, long offset, int whence);
+
 #endif

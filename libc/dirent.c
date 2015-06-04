@@ -58,6 +58,13 @@ DIR* opendir(const char* dirname) {
 	return NULL;
 }
 
+void rewinddir(DIR* dirp) {
+	lseek(dirp->fd, 0, SEEK_SET);
+	dirp->offset = 0;
+	dirp->filepos = 0;
+	dirp->size = 0;
+}
+
 struct dirent* readdir(DIR* dirp) {
 	if (dirp->offset >= dirp->size) {
 		int size = dirp->allocation;
