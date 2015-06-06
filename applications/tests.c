@@ -6,7 +6,52 @@
 
 #include "utils/include/unittest.h"
 
-int main() {
+/**
+ * Test l'affichage de floats / doubles.
+ */
+void test_sprintf()
+{
+	char buf[80];
+
+	sprintf(buf, "%f", 42.5);
+	unit_test_str("Nombre > 0:", "42.500000", buf);
+
+	sprintf(buf, "%f", .5);
+	unit_test_str("Nombre > 0 et < 1:", "0.500000", buf);
+
+	sprintf(buf, "%f", 12.34567891);
+	unit_test_str("Nombre > 0 arrondi:", "12.345679", buf);
+
+	sprintf(buf, "%f", -12.34567891);
+	unit_test_str("Nombre < 0 arrondi:", "-12.345679", buf);
+
+	sprintf(buf, "%lf", 42.5);
+	unit_test_str("Nombre > 0 avec ajout de 0's:", "42.500000", buf);
+
+	sprintf(buf, "%f", 42.001);
+	unit_test_str("Nombre > 0 avec risque arrondi:", "42.001000", buf);
+
+	sprintf(buf, "%lf", 12.34567891);
+	unit_test_str("Affichage nombre avec %lf:", "12.345679", buf);
+
+	sprintf(buf, "%.2f", 12.34567891);
+	unit_test_str("Affichage avec %.2f:", "12.35", buf);
+
+	sprintf(buf, "%.5f", 12.34567891);
+	unit_test_str("Affichage avec %.5f:", "12.34568", buf);
+
+	sprintf(buf, "%.15f", 12.3456789123456789);
+	unit_test_str("Affichage avec %.15f et arrondi:", "12.345678912345679", buf);
+
+	sprintf(buf, "%.15f", 12.34567891);
+	unit_test_str("Affichage avec %.15f et padding 0:", "12.345678910000000", buf);
+}
+
+
+/**
+ * Test les ouvertures / lectures / écritures dans des fichiers.
+ */
+void test_io() {
 	FILE * f;
 	struct stat buf;
 	int r;
@@ -177,6 +222,10 @@ int main() {
 	unit_test_int("Suppression d'un dossier existant (retour fonction).", 0, r);
 	DIR* dir = opendir(dossiertest);
 	unit_test_int("Suppression d'un dossier existant (opendir).", (int)NULL, (int)dir);
+}
 
+int main() {
+	test_io();
+	test_sprintf();
 	return 0;
 }

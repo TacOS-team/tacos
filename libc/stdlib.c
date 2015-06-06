@@ -157,6 +157,70 @@ long int strtol(const char* nptr, char** endptr, int base)
 	return ret;
 }
 
+int powi(int x, int y) {
+	if (y == 0) {
+		return 0;
+	} else if (y == 1) {
+		return x;
+	} else if (y % 2) {
+		return x * powi(x * x, y / 2);
+	} else {
+		return powi(x * x, y / 2);
+	}
+}
+
+char* itoa2(unsigned int n, char *buf, int p) {
+	int len = 0;
+	do {
+		buf[len++] = '0' + n % 10;
+		n /= 10;
+	} while (n);
+	while (p > len) {
+		buf[len++] = '0';
+	}
+	int i;
+	for (i = 0; i < len / 2; i++) {
+		int aux = buf[i];
+		buf[i] = buf[len - i - 1];
+		buf[len - i - 1] = aux;
+	}
+	return buf + len;
+}
+
+// XXX: attention ce code est temporaire à défaut de mieux.
+// Passage par des entiers intermédiaires...
+void dtoa(double n, char *buf, int p) {
+	if (n < 0) {
+		*buf = '-';
+		buf++;
+		n *= -1;
+	}
+	int pe = (int) n;
+	n -= pe;
+
+	buf = itoa2(pe, buf, 0);
+
+	if (p > 0) {
+		*buf = '.';
+		buf++;
+	}
+
+	while (p > 0) {
+		if (p <= 9) {
+			unsigned int fp = n * powi(10, p) + .5;
+			buf = itoa2(fp, buf, p);
+			p = 0;
+		} else {
+			unsigned int fp = n * powi(10, 9) + .5;
+			buf = itoa2(fp, buf, 9);
+			n = n * powi(10, 9) - fp;
+			p -= 9;
+		}
+	}
+	*buf = '\0';
+}
+
+
 int atoi(const char* __nptr)
 {
 	int ret = 0;

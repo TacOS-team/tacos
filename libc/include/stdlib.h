@@ -95,6 +95,9 @@ int atoi(const char* __nptr);
 */
 void itoa (char *buf, int base, int d);
 
+void dtoa(double n, char *buf, int p);
+
+
 int rand(void);
 void srand(unsigned int seed);
 

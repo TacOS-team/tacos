@@ -44,7 +44,7 @@ int fprintf(FILE *stream, const char *format, ...) {
 
 int vfprintf(FILE *stream, const char *format, va_list ap) {
 	int c;
-	char buf[20];
+	char buf[30];
 	int n = 0;
 
 	while ((c = *format++) != 0) {
@@ -77,6 +77,15 @@ int vfprintf(FILE *stream, const char *format, va_list ap) {
 			}
 
 			switch (c) {
+				case 'f':
+					if (size > -1) {
+						dtoa(va_arg(ap, double), buf, size);
+					} else {
+						dtoa(va_arg(ap, double), buf, 6);
+					}
+					p = buf;
+					goto string;
+					break;
 				case 'o':
 				case 'd':
 				case 'u':
@@ -89,6 +98,12 @@ int vfprintf(FILE *stream, const char *format, va_list ap) {
 						itoa(buf, c, va_arg(ap, int));
 					}
 					p = buf;
+
+					if (size >= 0) {
+						p[size] = '\0';
+						n += size;
+					}
+
 					goto string;
 					break;
 				case 'c':
@@ -108,12 +123,7 @@ int vfprintf(FILE *stream, const char *format, va_list ap) {
 					if (p == NULL)
 						p = "(null)";
 				string:
-					if (size >= 0) {
-						p[size] = '\0';
-						n += size;
-					} else {
-						n += strlen(p);
-					}
+					n += strlen(p);
 					if (fputs(p, stream) == EOF) {
 						return -1;
 					}
