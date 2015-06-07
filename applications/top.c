@@ -45,7 +45,7 @@ struct process {
 	char name[255];
 	unsigned long long utime;
 	unsigned long long stime;
-	int percent;
+	float percent;
 	char state[2];
 };
 
@@ -75,7 +75,7 @@ void compute(int pid) {
 	}
 
 	if (!first) {
-		p->percent = (100 * (double)(p->utime + p->stime - values[pid]) / (tot - prev_tot)) + .5;
+		p->percent = 100 * (double)(p->utime + p->stime - values[pid]) / (tot - prev_tot);
 	} else {
 		p->percent = -1;
 	}
@@ -111,9 +111,9 @@ int main() {
 		// clear screen:
 		printf("\e[1;1H\e[2J");
 		printf("Tasks: %d total, %d running, %d sleeping, %d terminated\n", nb_process, nb_running, nb_sleeping, nb_terminated);
-		printf("CPU: %d%%\n",  (int)(100 * (double)(cpu_time - prev_cpu_time) / (tot - prev_tot) + .5));
+		printf("CPU: %.1f%%\n", 100 * (double)(cpu_time - prev_cpu_time) / (tot - prev_tot));
 		printf("\n");
-		printf("\033[30m\033[107m   PID  %%CPU  TIME  COMMAND                                                     \n\033[0m");
+		printf("\033[30m\033[107m   PID   %%CPU  TIME  COMMAND                                                    \n\033[0m");
 		unsigned int i;
 		for (i = 0; i < nb_process; i++) {
 			struct process* p = &tab_process[i];
@@ -126,9 +126,9 @@ int main() {
 			if (p->pid > 99) padding_pid++;
 			if (p->pid > 999) padding_pid++;
 
-			char *padding_percent = padding;
-			if (p->percent < 0 || p->percent > 9) padding_percent++;
-			if (p->percent > 99) padding_percent++;
+			char *padding_percent = padding + 1;
+			if (p->percent < 0 || p->percent >= 10) padding_percent++;
+			if (p->percent >= 100) padding_percent++;
 
 			unsigned long long time = p->utime + p->stime;
 			char *padding_time = padding;
@@ -138,7 +138,7 @@ int main() {
 			if (time > 9999) padding_time++;
 			if (time > 99999) padding_time++;
 
-			printf("%s%d%s%d%s%llu  %s\n", padding_pid, p->pid, padding_percent, p->percent, padding_time, time, p->name);
+			printf("%s%d%s%.1f%s%llu  %s\n", padding_pid, p->pid, padding_percent, p->percent, padding_time, time, p->name);
 			if (p->state[0] == 'T') {
 				printf("\033[0m");
 			}
