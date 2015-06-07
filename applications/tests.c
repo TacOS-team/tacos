@@ -37,6 +37,9 @@ void test_sprintf()
 	sprintf(buf, "%.2f", 12.34567891);
 	unit_test_str("Affichage avec %.2f:", "12.35", buf);
 
+	sprintf(buf, "%.1f", .99);
+	unit_test_str("Nombre > 0 et < 1 avec %.1f:", "1.0", buf);
+
 	sprintf(buf, "%.5f", 12.34567891);
 	unit_test_str("Affichage avec %.5f:", "12.34568", buf);
 
@@ -225,7 +228,7 @@ void test_io() {
 }
 
 int main() {
-	test_io();
+	//test_io();
 	test_sprintf();
 	return 0;
 }
