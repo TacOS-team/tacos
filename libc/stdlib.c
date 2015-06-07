@@ -157,7 +157,7 @@ long int strtol(const char* nptr, char** endptr, int base)
 	return ret;
 }
 
-int powi(int x, int y) {
+unsigned long long powi(int x, int y) {
 	if (y == 0) {
 		return 0;
 	} else if (y == 1) {
@@ -195,6 +195,8 @@ void dtoa(double n, char *buf, int p) {
 		buf++;
 		n *= -1;
 	}
+
+	n += .5 / (powi(10, p));
 	int pe = (int) n;
 	n -= pe;
 
@@ -205,13 +207,13 @@ void dtoa(double n, char *buf, int p) {
 		buf++;
 	}
 
-	while (p > 0) {
+	while (p > 0 && n > 0) {
 		if (p <= 9) {
-			unsigned int fp = n * powi(10, p) + .5;
+			unsigned int fp = n * powi(10, p);
 			buf = itoa2(fp, buf, p);
 			p = 0;
 		} else {
-			unsigned int fp = n * powi(10, 9) + .5;
+			unsigned int fp = n * powi(10, 9);
 			buf = itoa2(fp, buf, 9);
 			n = n * powi(10, 9) - fp;
 			p -= 9;
