@@ -213,12 +213,14 @@ void do_schedule()
 		return;
 	}
 	resched = 0;
+	
+	int exec_signal;
 
 	/* On récupere un pointeur de pile pour acceder aux registres empilés
 	 * C'est fait au début pour éviter de toucher à ebp.
 	 * */
 	uint32_t* stack_ptr;
-	asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
+	asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) ::"%eax" );
 
 	/* On met le contexte dans la structure "process"*/
 	process_t* current = scheduler->get_current_process();
@@ -233,21 +235,25 @@ void do_schedule()
 		scheduler->inject_idle(idle_process);	
 		next = idle_process;
 	}
-	//else {
+	else {
 		/* Sinon on regarde si le process a des signaux en attente */
-	//	exec_sighandler(next);
-	//}
+		if (signal_pending(next) && current == next) {
+			// backup de current pour éviter de mettre dans sigframe de vieilles données.
+			copy_context_current(current, (intframe*)(stack_ptr));
+		}
+		exec_signal = exec_sighandler(next);
+	}
 	
 	/* Mise en place de l'interruption sur le quantum de temps */
 	add_event(schedule, NULL, quantum * 1000);
 
 	/* Si la décision de l'ordo est de ne pas changer le processus courant */
-	if (current == next && next->state != PROCSTATE_IDLE) {
+	if (current == next && next->state != PROCSTATE_IDLE && !exec_signal) {
 		return;
 	}
 
 	/* On récupère le contexte du processus actuel uniquement si il a déja été lancé */
-	if (current != idle_process && current->state != PROCSTATE_TERMINATED && current->state != PROCSTATE_IDLE) {
+	if (current != next && current != idle_process && current->state != PROCSTATE_TERMINATED && current->state != PROCSTATE_IDLE) {
 		copy_context_current(current, (intframe*)(stack_ptr));
 	}
 
