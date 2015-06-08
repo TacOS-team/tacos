@@ -158,15 +158,13 @@ SYSCALL_HANDLER0(sys_sigret)
 	 * Je met un petit trophée ici, ce code a marche du premier coup
 	 */
 	uint32_t* stack_ptr;
-	
 	/* On récupere un pointeur de pile pour acceder aux registres empilés */
-	asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : :"%eax");
+	GET_INTFRAME(stack_ptr);
 
 	sigframe* sframe;
 	intframe* iframe;
 	process_t* current = get_current_process();
 
-	
 	/* On récupère les données empilées par l'interruption */
 	/* Le but ici est de remplacer ces valeurs par celles stockées dans la sigframe, 
 	 * de cette manière l'iret à la fin de l'interruption restaurera le contexte du processus */

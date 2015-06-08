@@ -139,10 +139,7 @@
 					addl  $4, %esp
 
 					.ifeq \id - 16
-					push %ebp
-					mov %esp,%ebp
 					call do_schedule
-					pop %ebp
 					.endif
 
 

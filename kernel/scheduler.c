@@ -220,7 +220,7 @@ void do_schedule()
 	 * C'est fait au début pour éviter de toucher à ebp.
 	 * */
 	uint32_t* stack_ptr;
-	asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) ::"%eax" );
+	GET_INTFRAME(stack_ptr);
 
 	/* On met le contexte dans la structure "process"*/
 	process_t* current = scheduler->get_current_process();

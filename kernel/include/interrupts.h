@@ -84,6 +84,8 @@ typedef struct {
 	
 } intframe;
 
+#define GET_INTFRAME(stack_ptr) {__asm__ __volatile__("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : :"%eax");}
+
 typedef void (*interrupt_handler_t)(int interrupt_id);
 
 /** 
