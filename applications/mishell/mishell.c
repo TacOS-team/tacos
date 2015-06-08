@@ -37,13 +37,6 @@
 #include "include/readline.h"
 #include "include/shell_utils.h"
 
-void sigint_handler(int signal __attribute__((unused))) {
-	printf("On ferme pas mishell!!\n");
-}
-
-void sigstp_handler(int signal __attribute__((unused))) {
-}
-
 static int pwd_cmd(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 {
 	char *pwd = get_current_dir_name();
@@ -130,10 +123,10 @@ int main(int argc, char** argv)
 	
 	char *buffer;
 	
-	signal(SIGINT, sigint_handler);
-	signal(SIGTSTP, sigstp_handler);
-	signal(SIGTTOU, sigstp_handler);
-	signal(SIGTTIN, sigstp_handler);
+	signal(SIGINT, SIG_IGN);
+	signal(SIGTSTP, SIG_DFL);
+	signal(SIGTTOU, SIG_DFL);
+	signal(SIGTTIN, SIG_DFL);
 
 	add_builtin_cmd(help_cmd, "help");
 	add_builtin_cmd(cls_cmd, "clear");
