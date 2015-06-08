@@ -47,19 +47,21 @@ syscall_handler_t syscall_handler_table[MAX_SYSCALL_NB];
  * Son rôle est de récupérer l'identifiant de l'appel système, et
  * d'exécuter en conséquence le handler correspondant
  * 
- * @param unused
- * 
  */
-void syscall_entry(int interrupt_id)
+void syscall_entry()
 {	
 	uint32_t function, param1, param2, param3;
 	syscall_handler_t handler;
 	intframe* frame;
 	
-	/* On récupère les parametres */
-	asm("":"=a"(function),"=b"(param1),"=c"(param2),"=d"(param3));
 	/* Récupération des données empilées par l'interruption*/
-	frame = (intframe*) &interrupt_id;
+	uint32_t ebp;
+	asm volatile("mov %%ebp, %0" : "=r" (ebp));
+	frame = (intframe*) (ebp + 8);
+	function = frame->eax;
+	param1 = frame->ebx;
+	param2 = frame->ecx;
+	param3 = frame->edx;
 
 	//klog("syscall:0x%x 0x%x", frame+1, frame->kesp);
 
