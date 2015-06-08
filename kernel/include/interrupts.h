@@ -63,10 +63,10 @@ typedef struct {
 	uint16_t __es_unused;
 	uint16_t ds;
 	uint16_t __ds_unused;
-	uint16_t gs;
-	uint16_t __gs_unused;
 	uint16_t fs;
 	uint16_t __fs_unused;
+	uint16_t gs;
+	uint16_t __gs_unused;
 	uint32_t edi;
 	uint32_t esi;
 	uint32_t ebp;
