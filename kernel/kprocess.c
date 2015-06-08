@@ -525,7 +525,6 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	// On a pas forcement envie de supprimer le processus immédiatement
 	ksemctl(current->sem_wait, SEM_DEL, NULL);
 	//sys_kill(current->ppid, SIGCHLD, NULL);
-	current->state = PROCSTATE_TERMINATED;
 
 	process_t* parent = find_process(current->ppid);
 	ksemV(parent->sem_wait_child);
@@ -537,6 +536,9 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	}
 
 	release_page_frames(current);
+	scheduler_delete_process(current->pid);
+	delete_process(current->pid);
+	current->state = PROCSTATE_TERMINATED;
 }
 
 SYSCALL_HANDLER1(sys_getpid, uint32_t* pid)

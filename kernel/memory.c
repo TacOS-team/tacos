@@ -223,16 +223,18 @@ int memory_free_page_frame(paddr_t addr)
 				p->next->prev = p->prev;
 			if(p->prev != NULL)
 				p->prev->next = p->next;
+			else
+				used_frame_pages = used_frame_pages->next;
 
 			break;
 		}
+		p = p->next;
 	}
 	
 	if(!found)
 		return -1;
 
-	used_frame_pages = used_frame_pages->next;
-
+	// Ajoute dans les pages libres.
 	if(free_frame_pages != NULL) 
 		free_frame_pages->prev = p;
 	p->prev = NULL;
