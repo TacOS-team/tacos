@@ -444,6 +444,7 @@ process_t* create_process(process_init_data_t* init_data, uint8_t isKernel) {
 			*(stack_ptr-2) = (vaddr_t) argv;
 			*(stack_ptr-3) = argc;
 			*(stack_ptr-4) = (vaddr_t) sys_exit;
+			stack_ptr -= 4;
 		} else {
 			stack_ptr = (uint32_t*) init_stack(user_stack, init_data->args, init_data->envp, (paddr_t)sys_exit);
 		}
@@ -467,20 +468,11 @@ process_t* create_process(process_init_data_t* init_data, uint8_t isKernel) {
 	asm("sti");
 
 	/* Initialisation des registres */
-	if(isKernel) {
-		init_regs(&(new_proc->regs), 
-			  (vaddr_t)stack_ptr-4, 
-			  (vaddr_t)(&sys_stack[init_data->stack_size-1]), 
-			  (paddr_t) init_data->data, 
-			  isKernel);
-	
-	} else {
-		init_regs(&(new_proc->regs), 
-			  (vaddr_t)stack_ptr, 
-			  (vaddr_t)(&sys_stack[init_data->stack_size-1]), 
-			  init_data->entry_point, 
-			  isKernel);
-	}
+	init_regs(&(new_proc->regs),
+			(vaddr_t)stack_ptr,
+			(vaddr_t)(&sys_stack[init_data->stack_size-1]),
+			isKernel ? (vaddr_t)(init_data->data) : init_data->entry_point,
+			isKernel);
 
 	/* XXX: Création de la table des symboles, il faut la dupliquer dans la structure sinon ça plante */
 	//new_proc->symtable = load_symtable(init_data->file);
