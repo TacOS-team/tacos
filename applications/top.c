@@ -31,6 +31,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <dirent.h>
+#include <string.h>
 
 static int first;
 unsigned long long prev_tot = 0;
@@ -55,6 +56,27 @@ unsigned int nb_process;
 unsigned int nb_running;
 unsigned int nb_sleeping;
 unsigned int nb_terminated;
+
+FILE *file_meminfo;
+
+void print_meminfo() {
+	fseek(file_meminfo, 0, SEEK_SET);
+	char name[20];
+	int value;
+	char unit[3];
+
+	int mtotal, mfree;
+
+	while (fscanf(file_meminfo, "%s %d %s", name, &value, unit) > 1) {
+		if (strcmp(name, "MemTotal:") == 0) {
+			mtotal = value;
+		} else if (strcmp(name, "MemFree:") == 0) {
+			mfree = value;
+		}
+
+	}
+	printf("KiB Mem:   %d total, \t%d used, \t%d free\n", mtotal, (mtotal - mfree), mfree);
+}
 
 void compute(int pid) {
 	struct process* p = &tab_process[nb_process++];
@@ -84,6 +106,7 @@ void compute(int pid) {
 }
 
 int main() {
+	file_meminfo = fopen("/proc/meminfo", "r");
 	DIR* dir = opendir("/proc");
 	first = 1;
 	while (1) {
@@ -112,6 +135,7 @@ int main() {
 		printf("\e[1;1H\e[2J");
 		printf("Tasks: %d total, %d running, %d sleeping, %d terminated\n", nb_process, nb_running, nb_sleeping, nb_terminated);
 		printf("CPU: %.1f%%\n", 100 * (double)(cpu_time - prev_cpu_time) / (tot - prev_tot));
+		print_meminfo();
 		printf("\n");
 		printf("\033[30m\033[107m   PID   %%CPU  TIME  COMMAND                                                    \n\033[0m");
 		unsigned int i;

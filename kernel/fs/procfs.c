@@ -693,6 +693,7 @@ static dentry_t * get_meminfo_dentry(struct _fs_instance_t *instance) {
 	memset(inode->i_fops, 0, sizeof(*(inode->i_fops)));
 	inode->i_fops->close   = procfs_close;
 	inode->i_fops->read = read_meminfo;
+	inode->i_fops->seek = generic_seek;
 	
 	dentry_t * d = kmalloc(sizeof(dentry_t));
 	d->d_name = (const char*) strdup("meminfo");
