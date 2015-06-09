@@ -1,5 +1,5 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=ps ls cat ln rm getty mv tests stat top test_sig
+OBJ=ps ls cat ln rm getty mv tests stat top snake_graph
 SUBDIRS=mishell utils
 #OBJ=ls getty
 #SUBDIRS=mishell utils gui gui/guacamole gui/pron

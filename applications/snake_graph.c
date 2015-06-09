@@ -37,6 +37,7 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 #include <vga_types.h>
+#include <sys/ioctl.h>
 
 #define HAUTEUR 200
 #define LARGEUR 320
@@ -182,7 +183,7 @@ int avance_snake() {
 }
 
 void game() {
-  setvbuf(stdin, NULL, _IO_MAGIC | _IONBF, 0);
+	setvbuf(stdin, NULL, _IO_MAGIC | _IONBF, 0);
 
 	struct termios oldt, newt;
 	tcgetattr( STDIN_FILENO, &oldt );
@@ -190,13 +191,15 @@ void game() {
 	newt.c_lflag &= ~( ICANON | ECHO );
 	tcsetattr( STDIN_FILENO, TCSETS, &newt );
 	fcntl(STDIN_FILENO, F_SETFL, (void*)O_NONBLOCK);
-	syscall(SYS_VGASETMODE, vga_mode_320x200x256, 0, 0);
-  init_snake();
+	int vga_fd = open("/dev/vga", O_RDONLY);
+	ioctl(vga_fd, SETMODE, (void*)vga_mode_320x200x256); 
+
+	init_snake();
 
 	while(avance_snake() != -1) {
 		usleep(100000);
 		thread_input();
-		syscall(SYS_VGAWRITEBUF, (uint32_t)buffer, 0, 0);
+		ioctl(vga_fd, FLUSH, buffer);
 	}
 
 	tcsetattr( STDIN_FILENO, TCSETS, &oldt );
