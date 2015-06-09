@@ -108,12 +108,37 @@ static void gauche() {
 
 void thread_input() {
 	char c;
+	int r;
 	c = getchar();
 	switch(c) {
 		case 'z': haut(); break;
 		case 's': bas(); break;
 		case 'd': droite(); break;
 		case 'q': gauche(); break;
+		case 27:
+			r = 1;
+			while ((c = getchar()) != -1) {
+				if (c == 27) {
+					r = 1;
+					continue;
+				}
+				r = r * 128 + c;
+			}
+			switch (r) {
+			case 28097:
+				haut();
+				break;
+			case 28098:
+				bas();
+				break;
+			case 28099:
+				droite();
+				break;
+			case 28100:
+				gauche();
+				break;
+			}
+
 	}
 }
 
