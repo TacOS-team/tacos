@@ -1,5 +1,6 @@
 #include "include/test_stdio.h"
 #include "include/test_sig.h"
+#include "include/test_malloc.h"
 
 int main() {
 	test_io();
