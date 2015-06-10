@@ -261,11 +261,16 @@ int ksemV(uint8_t key)
 	
 	if (sem->allocated) {
 		/* Si la file est vide, on incrémente la valeur, sinon, on débloque le premier processus en attente */
-		if (sem_fifo_size(&(sem->fifo)) == 0) {
-			sem->value++;
-		} else {
-			process_t *proc = find_process(sem_fifo_get(&(sem->fifo)));
+
+		process_t *proc = NULL;
+		while (proc == NULL && sem_fifo_size(&(sem->fifo)) > 0) {
+			proc = find_process(sem_fifo_get(&(sem->fifo)));
+		}
+
+		if (proc) {
 			proc->state = PROCSTATE_RUNNING;
+		} else {
+			sem->value++;
 		}
 		ret = 0;
 	}
