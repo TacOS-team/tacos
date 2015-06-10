@@ -77,12 +77,13 @@ static int rr_initialize(int max)
 static process_t* rr_get_next_process()
 {
 	list_cell* aux = current_cell->next;
+	list_cell* first = aux;
 	do {
-		if(is_schedulable(aux->proc))
+		if (is_schedulable(aux->proc))
 			current_cell = aux;
 		else
 			aux = aux->next;
-	} while (aux != current_cell);
+	} while (aux != current_cell && aux != first);
 
 	return aux->proc;
 }
