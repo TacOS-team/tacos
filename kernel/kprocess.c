@@ -507,17 +507,18 @@ int create_kprocess(char* _name, void* entry_point, uint32_t _stack_size)
 
 SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 {
-	process_t* current;
+	//kprintf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
 	// On cherche le processus courant:
-	current = get_current_process(); 
+	process_t* current = get_current_process();
 	
 	close_all_fd();
 
-	//kprintf("DEBUG: exit(process %d returned %d)\n", current->pid, ret_value);
-	// On a pas forcement envie de supprimer le processus immédiatement
-	ksemctl(current->sem_wait, SEM_DEL, NULL);
 	//sys_kill(current->ppid, SIGCHLD, NULL);
 
+	/* ZONE CRITIQUE */
+	asm("cli");
+
+	ksemctl(current->sem_wait, SEM_DEL, NULL);
 	process_t* parent = find_process(current->ppid);
 	ksemV(parent->sem_wait_child);
 
@@ -531,6 +532,9 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	scheduler_delete_process(current->pid);
 	delete_process(current->pid);
 	current->state = PROCSTATE_TERMINATED;
+
+	/* FIN ZONE CRITIQUE */
+	asm("sti");
 }
 
 SYSCALL_HANDLER1(sys_getpid, uint32_t* pid)

@@ -243,9 +243,6 @@ void do_schedule()
 		}
 		exec_signal = exec_sighandler(next);
 	}
-	
-	/* Mise en place de l'interruption sur le quantum de temps */
-	add_event(schedule, NULL, quantum * 1000);
 
 	/* Si la décision de l'ordo est de ne pas changer le processus courant */
 	if (current == next && next->state != PROCSTATE_IDLE && !exec_signal) {
@@ -271,6 +268,10 @@ void do_schedule()
 
 void* schedule(void* data __attribute__ ((unused))) {
 	resched = 1;
+	
+	/* Mise en place de l'interruption sur le quantum de temps */
+	add_event(schedule, NULL, quantum * 1000);
+
 	return NULL;
 }
 
