@@ -4,7 +4,7 @@
 #include <dirent.h>
 #include <errno.h>
 
-#include "utils/include/unittest.h"
+#include "../utils/include/unittest.h"
 
 /**
  * Test l'affichage de floats / doubles.
@@ -49,7 +49,6 @@ void test_sprintf()
 	sprintf(buf, "%.15f", 12.34567891);
 	unit_test_str("Affichage avec %.15f et padding 0:", "12.345678910000000", buf);
 }
-
 
 /**
  * Test les ouvertures / lectures / écritures dans des fichiers.
@@ -227,8 +226,3 @@ void test_io() {
 	unit_test_int("Suppression d'un dossier existant (opendir).", (int)NULL, (int)dir);
 }
 
-int main() {
-	//test_io();
-	test_sprintf();
-	return 0;
-}

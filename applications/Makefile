@@ -1,6 +1,6 @@
 #OBJ=cube top matrix test test_sig demo cat ls fopen snake
-OBJ=ps ls cat ln rm getty mv tests stat top
-SUBDIRS=mishell utils
+OBJ=ps ls cat ln rm getty mv stat top
+SUBDIRS=mishell utils tests
 #OBJ=ls getty
 #SUBDIRS=mishell utils gui gui/guacamole gui/pron
 LIBS=../lib/libtsock.a ../lib/libc.a ../lib/libsystem.a ../lib/libstl.a libutils.a

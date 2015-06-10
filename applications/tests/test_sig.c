@@ -31,7 +31,7 @@
 #include <signal.h>
 #include <string.h>
 
-#include "utils/include/unittest.h"
+#include "../utils/include/unittest.h"
 
 static int var;
 
@@ -93,7 +93,7 @@ static void usr_handler9(int signum __attribute__((unused))) {
     }
 }
 
-int main()
+void test_sig()
 {
 	int pid = getpid();
 	
@@ -155,6 +155,4 @@ int main()
 	kill(pid, SIGUSR1);
 	sleep(1);
 	unit_test_int("Appels recursifs entre 2 signaux.", 0, var);
-
-	return 0;
 }
