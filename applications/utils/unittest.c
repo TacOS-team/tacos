@@ -7,7 +7,7 @@ static void padding(int c) {
 	}
 }
 
-void unit_test_int(const char* msg, int attendu, int obtenu) {
+void unit_test_int(const char* msg, long long attendu, long long obtenu) {
 	int len = strlen(msg);
 	printf("%s", msg);
 	if (attendu == obtenu) {
@@ -16,7 +16,7 @@ void unit_test_int(const char* msg, int attendu, int obtenu) {
 	} else {
 		padding(80 - len - 7);
 		printf("[ERROR]\n");
-		printf("Attendu : %d, Obtenu : %d\n", attendu, obtenu);
+		printf("Attendu : %ld, Obtenu : %ld\n", attendu, obtenu);
 	}
 }
 

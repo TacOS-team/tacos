@@ -5,6 +5,7 @@
 int main() {
 	test_io();
 	test_sprintf();
+	test_sscanf();
 	test_malloc();
 	test_sig();
 	return 0;

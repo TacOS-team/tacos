@@ -6,6 +6,28 @@
 
 #include "../utils/include/unittest.h"
 
+void test_sscanf() {
+	int i;
+	sscanf("7", "%d", &i);
+	unit_test_int("sscanf (unique) nombre entier positif", 7, i);
+
+	sscanf("-42", "%d", &i);
+	unit_test_int("sscanf (unique) nombre entier négatif", -42, i);
+
+	char *in = "Hello u 1024 1325431532151 -42";
+	char buf[80];
+	char l;
+	int k;
+	long long j;
+	sscanf(in, "%s %c %d %lu %d", buf, &l, &i, &j, &k);
+
+	unit_test_str("sscanf (multiple) string", "Hello", buf);
+	unit_test_int("sscanf (multiple) caractere", 'u', l);
+	unit_test_int("sscanf (multiple) nombre entier signé", 1024, i);
+	unit_test_int("sscanf (multiple) nombre entier long non signé", 1325431532151, j);
+	unit_test_int("sscanf (multiple) nombre entier négatif", -42, k);
+}
+
 /**
  * Test l'affichage de floats / doubles.
  */
@@ -212,7 +234,7 @@ void test_io() {
 	r = mkdir(fichiertest, 777);
 	unit_test_int("Création d'un dossier portant un nom déjà pris doit renvoyer EEXIST.", EEXIST, errno);
 	unlink(fichiertest);
-	fclose(f);
+	if (f) fclose(f);
 
 	// Test 18:
 	r = mkdir("/tacos/bla123456789/bla", 777);
