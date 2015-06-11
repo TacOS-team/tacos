@@ -39,7 +39,6 @@ typedef struct {
 	char* name;
 	int (*initialize)(int);				/**< Initialisation du scheduler */
 	process_t* (*get_next_process)();	/**< Trouver le prochain processus selon le scheduler */
-	process_t* (*get_current_process)();	/**< Trouver le processus actuel */
 	int (*add_process)(process_t*);		/**< Ajouter un processus */
 	int (*delete_process)(int);			/**< Supprimer un processus */
 } scheduler_descriptor_t;

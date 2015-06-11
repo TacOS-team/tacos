@@ -498,6 +498,16 @@ int create_kprocess(char* _name, void* entry_point, uint32_t _stack_size)
 	}
 }
 
+static void remove_child(process_t *current, process_t *child) {
+	int i;
+	for (i = 0; i < current->nb_children; i++) {
+		if (current->children[i] == child) {
+			current->nb_children--;
+			current->children[i] = current->children[current->nb_children];
+		}
+	}
+}
+
 
 /*
  * SYSCALL
@@ -511,15 +521,16 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	
 	close_all_fd();
 
-	sys_kill(current->ppid, SIGCHLD, NULL);
-
-
 	/* ZONE CRITIQUE */
 	asm("cli");
+	sys_kill(current->ppid, SIGCHLD, NULL);
+
 	current->state = PROCSTATE_TERMINATED;
 	ksemctl(current->sem_wait, SEM_DEL, NULL);
 	process_t* parent = find_process(current->ppid);
 	ksemV(parent->sem_wait_child);
+
+	remove_child(parent, current);
 
 	// Maj PPID des fils
 	int i;

@@ -132,13 +132,7 @@ SYSCALL_HANDLER3(sys_kill, int pid, int signum, int* ret)
 	
 	if(process != NULL)
 	{
-		
-		
 		retour = sigaddset( &(process->signal_data.pending_set), signum );
-		
-		/*if(get_current_process()->pid != pid) {
-			exec_sighandler(process);
-		}*/
 		
 		klog("%d sending signal %s(%d) to pid %d.", get_current_process()->pid, signal_names[signum], signum, pid);
 	}
@@ -325,13 +319,6 @@ int exec_sighandler(process_t* process)
 			process->regs.ss = USER_STACK_SEGMENT;
 			
 			process->state = PROCSTATE_RUNNING;
-			
-			if (current_process != process) {	
-				/* Récupère l'adresse physique de répertoire de page du processus */
-				paddr_t pd_paddr = vmm_get_page_paddr((vaddr_t) current_process->pd);
-				/* On lui remet sa page directory */
-				pagination_load_page_directory((struct page_directory_entry *)pd_paddr);
-			}
 			
 			sigaddset(&(process->signal_data.mask),signum);
 		}

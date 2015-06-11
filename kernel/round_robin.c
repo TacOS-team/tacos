@@ -35,7 +35,6 @@
  * PROTOTYPES
  */
 static process_t* rr_get_next_process();
-static process_t* rr_get_current_process();
 static int rr_add_process(process_t* proc);
 static int rr_delete_process(int pid);
 
@@ -46,7 +45,6 @@ scheduler_descriptor_t round_robin = {
 	.name = "Round robin",
 	.initialize = NULL,
 	.get_next_process = rr_get_next_process,
-	.get_current_process = rr_get_current_process,
 	.add_process = rr_add_process,
 	.delete_process = rr_delete_process
 };
@@ -80,14 +78,6 @@ static process_t* rr_get_next_process()
 		is_idle = 1;
 
 	return aux->proc;
-}
-
-static process_t* rr_get_current_process()
-{
-	if (is_idle)
-		return NULL;
-		
-	return current_cell->proc;
 }
 
 static int rr_add_process(process_t* proc)

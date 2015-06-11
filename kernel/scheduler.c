@@ -221,7 +221,7 @@ void do_schedule()
 	GET_INTFRAME(stack_ptr);
 
 	/* On met le contexte dans la structure "process"*/
-	process_t* current = scheduler->get_current_process();
+	process_t* current = get_current_process();
 	if (!current) current = idle_process;
 	
 	/* On recupere le prochain processus à executer.
@@ -317,6 +317,7 @@ int scheduler_add_process(process_t* proc)
 
 int scheduler_delete_process(int pid)
 {
+	if (current_process && current_process->pid == pid) current_process = NULL;
 	return scheduler->delete_process(pid);
 }
 
