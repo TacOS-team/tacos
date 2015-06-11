@@ -177,20 +177,26 @@ SYSCALL_HANDLER0(sys_sigret)
 	iframe->ecx = sframe->context.ecx;
 	iframe->edx = sframe->context.edx;
 	iframe->ebx = sframe->context.ebx;
-	iframe->esp = sframe->context.esp;
-	iframe->kesp = sframe->context.esp;
+	iframe->kesp = sframe->context.kesp;
 	iframe->ebp = sframe->context.ebp;
 	iframe->esi = sframe->context.esi;
 	iframe->edi = sframe->context.edi;
 	iframe->eip = sframe->context.eip;
 	iframe->eflags = sframe->context.eflags;
 	iframe->cs = sframe->context.cs;
-	iframe->ss = sframe->context.ss;
 	iframe->ds = sframe->context.ds;
 	iframe->es = sframe->context.es;
 	iframe->fs = sframe->context.fs;
 	iframe->gs = sframe->context.gs;
 	
+	if (sframe->context.cs == KERNEL_CODE_SEGMENT) {
+		/* On remet esp à son origine */
+		asm("mov %0, %%esp;"::"m" (iframe->kesp));
+	} else {
+		iframe->esp = sframe->context.esp;
+		iframe->ss = sframe->context.ss;
+	}
+
 	current->signal_data.mask = sframe->mask;
 	
 	if(sframe->state == PROCSTATE_SUSPENDED)
