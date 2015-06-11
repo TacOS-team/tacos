@@ -169,8 +169,6 @@ static void context_switch(int mode, process_t* current)
 	RESTORE_CONTEXT();
 }
 
-void* schedule(void* data __attribute__ ((unused)));
-
 static void copy_context_current(process_t* current, intframe* frame) {
 
 	current->regs.eflags = frame->eflags;
@@ -224,24 +222,23 @@ void do_schedule()
 
 	/* On met le contexte dans la structure "process"*/
 	process_t* current = scheduler->get_current_process();
+	if (!current) current = idle_process;
 	
 	/* On recupere le prochain processus à executer.
 	 * TODO: Dans l'idéal, on devrait ici faire appel à un scheduler, 
 	 * qui aurait pour rôle de choisir le processus celon une politique spécifique */
 	process_t *next = scheduler->get_next_process();
 	
-	if(!is_schedulable(next)) {
-		/* Si on a rien à faire, on passe dans le processus idle */
-		scheduler->inject_idle(idle_process);	
-		next = idle_process;
-	}
-	else {
-		/* Sinon on regarde si le process a des signaux en attente */
+	if(is_schedulable(next)) {
+		/* On regarde si le process a des signaux en attente */
 		if (signal_pending(next) && current == next) {
 			// backup de current pour éviter de mettre dans sigframe de vieilles données.
 			copy_context_current(current, (intframe*)(stack_ptr));
 		}
 		exec_signal = exec_sighandler(next);
+	} else {
+		/* Sinon, si on a rien à faire, on passe dans le processus idle */
+		next = idle_process;
 	}
 
 	/* Si la décision de l'ordo est de ne pas changer le processus courant */
@@ -249,8 +246,8 @@ void do_schedule()
 		return;
 	}
 
-	/* On récupère le contexte du processus actuel uniquement si il a déja été lancé */
-	if (current != next && current != idle_process && current->state != PROCSTATE_TERMINATED && current->state != PROCSTATE_IDLE) {
+	/* On fait une copie du contexte du processus actuel uniquement si il a déja été lancé */
+	if (current != idle_process && current != next && current->state != PROCSTATE_IDLE) {
 		copy_context_current(current, (intframe*)(stack_ptr));
 	}
 
@@ -275,6 +272,9 @@ void* schedule(void* data __attribute__ ((unused))) {
 	return NULL;
 }
 
+void force_reschedule() {
+	resched = 1;
+}
 
 
 void init_scheduler(int Q)

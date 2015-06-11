@@ -42,7 +42,6 @@ typedef struct {
 	process_t* (*get_current_process)();	/**< Trouver le processus actuel */
 	int (*add_process)(process_t*);		/**< Ajouter un processus */
 	int (*delete_process)(int);			/**< Supprimer un processus */
-	void (*inject_idle)(process_t*);
 } scheduler_descriptor_t;
 
 /**
@@ -64,6 +63,12 @@ void update_stats();
 */
 process_t* get_current_process();
 
+/**
+ * @brief provoque un réordonnancement dès que possible.
+ *
+ * Au prochain appel de la fonction do_schedule, une prise de décision devra être prise.
+ */
+void force_reschedule();
 
 /**
  * @brief Mise en route du scheduler

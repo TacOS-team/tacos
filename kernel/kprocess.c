@@ -511,11 +511,12 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	
 	close_all_fd();
 
-	//sys_kill(current->ppid, SIGCHLD, NULL);
+	sys_kill(current->ppid, SIGCHLD, NULL);
+
 
 	/* ZONE CRITIQUE */
 	asm("cli");
-
+	current->state = PROCSTATE_TERMINATED;
 	ksemctl(current->sem_wait, SEM_DEL, NULL);
 	process_t* parent = find_process(current->ppid);
 	ksemV(parent->sem_wait_child);
@@ -529,8 +530,8 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	release_page_frames(current);
 	scheduler_delete_process(current->pid);
 	delete_process(current->pid);
-	current->state = PROCSTATE_TERMINATED;
 
+	force_reschedule();
 	/* FIN ZONE CRITIQUE */
 	asm("sti");
 }
