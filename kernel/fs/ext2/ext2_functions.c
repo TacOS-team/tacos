@@ -351,11 +351,3 @@ dentry_t* ext2_lookup(struct _fs_instance_t *instance, struct _dentry_t* dentry,
 
 	return d;
 }
-
-int ext2_close(open_file_descriptor *ofd) {
-	if (ofd == NULL) {
-		return -1;
-	}
-	kfree(ofd);
-	return 0;
-}

@@ -255,15 +255,6 @@ ssize_t ext2_read(open_file_descriptor * ofd, void * buf, size_t size);
 ssize_t ext2_write (open_file_descriptor * ofd, const void *buf, size_t size);
 
 /**
- * @brief Fermeture d'un fichier ouvert.
- *
- * @param ofd Descripteur du fichier ouvert.
- *
- * @return 0 en cas de succès, -1 sinon.
- */
-int ext2_close(open_file_descriptor *ofd);
-
-/**
  * @brief Lecture du contenu d'un dossier.
  *
  * @param ofd Descripteur de fichier qui correspond au dossier.

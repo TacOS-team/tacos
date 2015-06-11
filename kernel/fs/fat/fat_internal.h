@@ -340,15 +340,6 @@ ssize_t fat_read_file (open_file_descriptor * ofd, void * buf, size_t count);
 int fat_seek_file (open_file_descriptor * ofd, long offset, int whence);
 
 /**
- * Fermeture d'un fichier ouvert.
- *
- * @param ofd Descripteur de fichier ouvert.
- *
- * @return 0 en cas de succès.
- */
-int fat_close(open_file_descriptor *ofd);
-
-/**
  * Ouverture d'un fichier. Initialise certaines données de l'ofd.
  *
  * @param ofd Descripteur de fichier ouvert.

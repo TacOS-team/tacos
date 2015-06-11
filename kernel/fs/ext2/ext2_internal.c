@@ -6,7 +6,7 @@
 #include <clock.h>
 #include <klog.h>
 
-struct _open_file_operations_t ext2fs_fops = {.write = ext2_write, .read = ext2_read, .seek = generic_seek, .ioctl = NULL, .open = NULL, .close = ext2_close, .readdir = ext2_readdir};
+struct _open_file_operations_t ext2fs_fops = {.write = ext2_write, .read = ext2_read, .seek = generic_seek, .ioctl = NULL, .open = NULL, .close = NULL, .readdir = ext2_readdir};
 
 static int addr_inode_data(ext2_fs_instance_t *instance, int inode, int n_blk);
 static uint32_t alloc_block(ext2_fs_instance_t *instance);

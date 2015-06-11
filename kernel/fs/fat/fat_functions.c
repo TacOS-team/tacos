@@ -303,14 +303,6 @@ int fat_open(open_file_descriptor *ofd) {
 	return 0;
 }
 
-int fat_close(open_file_descriptor *ofd) {
-	if (ofd == NULL) {
-		return -1;
-	}
-	kfree(ofd);
-	return 0;
-}
-
 int fat_unlink(fs_instance_t *instance, const char * path) {
 	if (path[0] == '\0' || strcmp(path, "/") == 0)
 		return -1;
