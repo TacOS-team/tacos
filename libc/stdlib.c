@@ -80,9 +80,13 @@ static int digitvalue(char c)
 	return -1;
 }
 
-unsigned long int strtoul(const char *nptr, char **endptr, int base)
+unsigned long int strtoul(const char *nptr, char **endptr, int base) {
+	return strtoull(nptr, endptr, base);
+}
+
+unsigned long long int strtoull(const char *nptr, char **endptr, int base)
 {
-	unsigned long int ret = 0;
+	unsigned long long int ret = 0;
 	
 	//on ignore les espaces
 	while(isspace(*(nptr))) nptr++;
@@ -133,8 +137,13 @@ unsigned long int strtoul(const char *nptr, char **endptr, int base)
 
 long int strtol(const char* nptr, char** endptr, int base)
 {
-	long int ret = 0;
-	unsigned long int uret;
+	return strtoll(nptr, endptr, base);
+}
+
+long long int strtoll(const char* nptr, char** endptr, int base)
+{
+	long long int ret = 0;
+	unsigned long long int uret;
 	int signe = 1;
 	const char* bckp = nptr;
 	//on ignore les espaces
@@ -152,10 +161,11 @@ long int strtol(const char* nptr, char** endptr, int base)
 		bckp++;
 	}
 	
-	uret = strtoul(nptr,endptr,base);
-	ret = signe*(long int)uret;
+	uret = strtoull(nptr,endptr,base);
+	ret = signe * (long long int)uret;
 	return ret;
 }
+
 
 unsigned long long powi(int x, int y) {
 	if (y == 0) {

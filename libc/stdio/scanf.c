@@ -41,11 +41,11 @@ int vsscanf(const char *s, const char *format, va_list ap) {
 	FILE stream;
 	stream._fileno = -1;
 	stream._IO_buf_base = (char*) s;
-	stream._IO_buf_end =(char*) (s + strlen(s));
+	stream._IO_buf_end = (char*) (s + strlen(s));
 	*stream._IO_buf_end++ = EOF;
-	stream._IO_read_base =(char*) s;
-	stream._IO_read_ptr = stream._IO_buf_end;
-	stream._IO_read_end = (char*) s;
+	stream._IO_read_base = stream._IO_buf_base;
+	stream._IO_read_ptr  = stream._IO_buf_base;
+	stream._IO_read_end  = stream._IO_buf_end;
 	stream._flags = _IO_MAGIC + _IO_UNBUFFERED;
 	return vfscanf(&stream, format, ap);
 }
@@ -72,8 +72,8 @@ int vfscanf(FILE *stream, const char *format, va_list ap) {
   /* Signedness for integral numbers.  */
   int number_signed = 0;
   /* Integral holding variables.  */
-  long int num;
-  unsigned long int unum;
+  long long int num;
+  unsigned long long int unum;
   /* Character-buffer pointer.  */
   register char *str;
   /* Workspace.  */
@@ -112,6 +112,18 @@ int vfscanf(FILE *stream, const char *format, va_list ap) {
 		/* Find the conversion specifier.  */
 		w = work;
 		fc = *f++;
+
+		int long_specifier = 0;
+		if (fc == 'l') {
+			long_specifier = 1;
+
+			if (*f == '\0') {
+				conv_error();
+			}
+
+			fc = *f++;
+		}
+
 		switch (fc) {
 		  case '%':		  /* Must match a literal '%'.  */
 				if (c != fc)
@@ -125,7 +137,9 @@ int vfscanf(FILE *stream, const char *format, va_list ap) {
 
 				if (c == EOF)
 					input_error();
-
+				*str = c;
+				++done;
+				c = fgetc(stream);
 				break;
 
 		  case 's':					 /* Read a string.  */
@@ -230,17 +244,27 @@ int vfscanf(FILE *stream, const char *format, va_list ap) {
 
 				/* Convert the number.  */
 				*w = '\0';
+
 				if (number_signed)
-					num = strtol (work, &w, base);
+					num = strtoll (work, &w, base);
 				else
-					unum = strtoul (work, &w, base);
+					unum = strtoull (work, &w, base);
+
 				if (w == work)
 					conv_error ();
 
 				if (!number_signed) {
-					*va_arg(ap, unsigned int *) = (unsigned int) unum;
+					if (long_specifier) {
+						*va_arg(ap, unsigned long long *) = (unsigned long long) unum;
+					} else {
+						*va_arg(ap, unsigned int *) = (unsigned int) unum;
+					}
 				} else {
-					*va_arg(ap, int *) = (int) num;
+					if (long_specifier) {
+						*va_arg(ap, long long *) = (long long) num;
+					} else {
+						*va_arg(ap, int *) = (int) num;
+					}
 				}
 				++done;
 				break;

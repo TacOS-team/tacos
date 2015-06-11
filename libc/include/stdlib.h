@@ -69,6 +69,8 @@ void *calloc(size_t nmemb, size_t size);
 
 long int strtol(const char* nptr, char** endptr, int base);
 unsigned long int strtoul(const char *nptr, char **endptr, int base);
+long long int strtoll(const char* nptr, char** endptr, int base);
+unsigned long long int strtoull(const char *nptr, char **endptr, int base);
 
 /**
  * Converti une chaine de caractère en entier.
