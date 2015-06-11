@@ -93,10 +93,6 @@ static dentry_t * procfs_getroot() {
 	return &root_procfs;
 }								
 
-static int procfs_close(open_file_descriptor *ofd) {
-	return kfree(ofd);
-}
-
 // lookup fonctions
 typedef dentry_t* (lookup_function_t)(struct _fs_instance_t *instance,
 											struct _dentry_t* dentry,
@@ -562,7 +558,6 @@ static dentry_t * get_default_dentry(struct _fs_instance_t * instance,
 
 	inode->i_fops = kmalloc(sizeof(open_file_operations_t));
 	memset(inode->i_fops, 0, sizeof(*(inode->i_fops)));
-	inode->i_fops->close = procfs_close;
 	inode->i_fops->seek = generic_seek;
 	
 	dentry_t * d = kmalloc(sizeof(dentry_t));
@@ -606,7 +601,6 @@ static dentry_t * get_self_dentry(struct _fs_instance_t * instance) {
 
 	inode->i_fops = kmalloc(sizeof(open_file_operations_t));
 	memset(inode->i_fops, 0, sizeof(*(inode->i_fops)));
-	inode->i_fops->close   = procfs_close;
 	inode->i_fops->read = procfs_read_self;
 	
 	dentry_t * d = kmalloc(sizeof(dentry_t));
@@ -691,7 +685,6 @@ static dentry_t * get_meminfo_dentry(struct _fs_instance_t *instance) {
 
 	inode->i_fops = kmalloc(sizeof(open_file_operations_t));
 	memset(inode->i_fops, 0, sizeof(*(inode->i_fops)));
-	inode->i_fops->close   = procfs_close;
 	inode->i_fops->read = read_meminfo;
 	inode->i_fops->seek = generic_seek;
 	
@@ -722,7 +715,6 @@ static dentry_t * get_stat_dentry(struct _fs_instance_t *instance) {
 
 	inode->i_fops = kmalloc(sizeof(open_file_operations_t));
 	memset(inode->i_fops, 0, sizeof(*(inode->i_fops)));
-	inode->i_fops->close   = procfs_close;
 	inode->i_fops->read = read_stat;
 	
 	dentry_t * d = kmalloc(sizeof(dentry_t));
