@@ -116,14 +116,16 @@ int kfree(void *p)
 	struct mem *m = k_allocated_mem.end;
 
 	while(m != NULL) {
-		if((vaddr_t) m + sizeof(struct mem) <= (vaddr_t) p &&
-			 (vaddr_t) p < (vaddr_t) m + m->size)
+		if((vaddr_t) m + sizeof(struct mem) == (vaddr_t) p)
 			break;
 		m = m->prev;
 	}
 
 	if(m == NULL)
 		return -1;
+
+	// Uniquement pour éviter que certaines parties bugguées ne marche par chance.
+	memset(p, 0xdd, m->size - sizeof(struct mem));
 
 	remove(&k_allocated_mem, m);
 	//add(&k_free_mem, m);
