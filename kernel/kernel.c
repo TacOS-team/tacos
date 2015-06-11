@@ -160,7 +160,6 @@ void cmain (unsigned long magic, unsigned long addr) {
 	syscall_set_handler(SYS_EXEC, 	(syscall_handler_t)sys_exec);
 	syscall_set_handler(SYS_SLEEP, 	(syscall_handler_t)sys_sleep);
 	syscall_set_handler(SYS_SEMCTL, (syscall_handler_t)sys_ksem);
-	syscall_set_handler(SYS_PROC, 	(syscall_handler_t)sys_proc);
 	syscall_set_handler(SYS_VMM, 	(syscall_handler_t) sys_vmm);
 	syscall_set_handler(SYS_SEEK, 	(syscall_handler_t) sys_seek);
 	syscall_set_handler(SYS_READLINK, (syscall_handler_t) sys_readlink);

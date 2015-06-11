@@ -38,10 +38,10 @@
 
 #define MAX_INPUT 255 /**< Taille du buffer où sont enregistrés les caractères prêt pour la lecture. */
 
-#define TTY_DRIVER_TYPE_SYSTEM 1
-#define TTY_DRIVER_TYPE_CONSOLE 2
-#define TTY_DRIVER_TYPE_SERIAL 3
-#define TTY_DRIVER_TYPE_PTY 4
+#define TTY_DRIVER_TYPE_SYSTEM 1 /**< tty interne. */
+#define TTY_DRIVER_TYPE_CONSOLE 2 /**< tty qui utilise l'une des consoles. */
+#define TTY_DRIVER_TYPE_SERIAL 3 /**< tty qui utilise la liaison série. */
+#define TTY_DRIVER_TYPE_PTY 4 /**< pseudo tty. */
 
 struct _tty_driver_t;
 

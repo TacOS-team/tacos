@@ -170,7 +170,7 @@ paddr_t memory_next_page(struct physical_page_descr ** iterator);
 #define ALIGN_PAGE_SUP(addr) (((uint32_t)(addr) + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1))
 
 /**
- * @ Premier cadre de page libre au dessus du kernel
+ * @brief Premier cadre de page libre au dessus du kernel
  *
  * Premier cadre de page libre au dessus du kernel
  *
@@ -178,8 +178,31 @@ paddr_t memory_next_page(struct physical_page_descr ** iterator);
  */
 paddr_t memory_get_kernel_top();
 
+/**
+ * @brief Occupation mémoire totale en octets.
+ * 
+ * Occupation mémoire totale en octets.
+ *
+ * @return quantité mémoire utilisée.
+ */
 int memory_get_used();
+
+/**
+ * @brief Mémoire disponible en octets.
+ *
+ * Mémoire disponible en octets.
+ *
+ * @return quantité mémoire disponible.
+ */
 int memory_get_free();
+
+/**
+ * @brief Mémoire memoire au total (free + used).
+ *
+ * Mémoire memoire au total (free + used).
+ *
+ * @return quantité mémoire disponible au total.
+ */
 int memory_get_total();
 
 #endif

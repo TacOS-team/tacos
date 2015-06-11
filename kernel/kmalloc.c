@@ -34,16 +34,23 @@
 
 #define ALIGN_BYTE(addr) (((uint32_t)(addr) + 7) & ~(7))
 
+/**
+ * Liste doublement chaînée de struct mem.
+ */
 struct mem_list
 {
 	struct mem *begin;
 	struct mem *end;
 };
 
+/**
+ * Chaque zone allouée débute par cette structure qui permet le chaînage (double)
+ * dans les listes k_free_mem et k_allocated_mem.
+ */
 struct mem
 {
-	struct mem *prev;
-	size_t size; // (struct mem) + data
+	struct mem *prev; /**<  */
+	size_t size; /**< taille (struct mem) + data */
 	struct mem *next;
 	uint32_t padding;
 };

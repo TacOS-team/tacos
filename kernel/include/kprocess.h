@@ -250,15 +250,6 @@ SYSCALL_HANDLER1(sys_getppid, uint32_t* ppid);
 SYSCALL_HANDLER3(sys_exec, char *cmdline, char **environ, int *retval);
 
 /**
- * @brief Récupère des infos sur un process.
- *
- * @param sub_func Action (récupère la liste ou les infos d'un process en particulier)
- * @param param1 paramètre pour l'action.
- * @param param2 pointeur de retour.
- */
-SYSCALL_HANDLER3(sys_proc, uint32_t sub_func, uint32_t param1, uint32_t param2);
-
-/**
  * @brief Bloque le process courant jusqu'à ce que le processus identifié par pid se termine.
  *
  * @param pid PID du process à attendre.

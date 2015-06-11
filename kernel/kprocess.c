@@ -45,8 +45,6 @@
 #include <memory.h>
 #include <vmm.h>
 
-#define GET_PROCESS 0
-#define GET_PROCESS_LIST 1
 #define FIRST_PROCESS 0
 #define NEXT_PROCESS 1
 #define PREV_PROCESS 2
@@ -666,26 +664,6 @@ process_t* sys_proc_list(uint32_t action)
 		ret = process_array[index];
 		
 	return ret;
-}
-
-SYSCALL_HANDLER3(sys_proc, uint32_t sub_func, uint32_t param1, uint32_t param2)
-{
-	switch(sub_func)
-	{
-		case GET_PROCESS:
-			if((int)param1 == CURRENT_PROCESS)
-				*((process_t**) param2) = get_current_process();
-			else
-				*((process_t**) param2) = find_process(param1);
-			break;
-			
-		case GET_PROCESS_LIST:
-			*((process_t**) param2) = sys_proc_list(param1);
-			break;
-			
-		default:
-			kerr("invalid syscall (0x%x).\n", sub_func);
-	}
 }
 
 SYSCALL_HANDLER1(sys_waitpid, int pid) {

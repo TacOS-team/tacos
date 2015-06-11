@@ -39,8 +39,6 @@
 #define SYS_EXEC 7				/**< Exécution d'un processus. */
 #define SYS_SLEEP 8				/**< Mise en pause. */
 #define SYS_SEMCTL 9			/**< Configuration d'un sémaphore. */
-#define SYS_VIDEO_CTL 10	/**< Configuration vidéo. */
-#define SYS_PROC 11				/**< Obtient un process ou la liste. */
 #define SYS_VMM 12				/**< Allocation mémoire. */
 #define SYS_SEEK 13				/**< Déplacement dans un fichier ouvert. */
 #define SYS_READLINK 14			/**< Lecture chemin pointé par lien symbolique. */
@@ -67,9 +65,9 @@
 #define SYS_CHOWN 35			/**< Change les propriétaires d'un fichier. */
 #define SYS_UTIMES 36			/**< Change la date d'accès et de modification d'un fichier. */
 #define SYS_RENAME 37			/**< Déplace ou renomme un fichier. */
-#define SYS_SELECT 38
-#define SYS_SYMLINK 39
-#define SYS_CHDIR 40
-#define SYS_MMAP 41
+#define SYS_SELECT 38			/**< Utile à la commande select() pour le multiplexage d'io. */
+#define SYS_SYMLINK 39			/**< Création d'un lien symbolique. */
+#define SYS_CHDIR 40			/**< Change le dossier courant. */
+#define SYS_MMAP 41				/**< Permet d'établir/supprimer un mapping mémoire d'un fichier. */
 
 #endif
