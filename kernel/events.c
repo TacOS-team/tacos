@@ -88,8 +88,9 @@ int add_event(callback_t call, void* data, time_t dtime_usec)
 	event.callback = call;
 	event.data = data;											
 	event.id = id;
+	asm("cli");
 	list_add_element(&events, &event);
-
+	asm("sti");
 	id++;
 
 	return id-1;

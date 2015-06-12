@@ -52,6 +52,7 @@
 
 static uint32_t quantum;	/* Quantum de temps alloué aux process */
 static int resched;
+static int sched_planned;
 
 static process_t* idle_process = NULL;
 static scheduler_descriptor_t* scheduler = NULL;
@@ -207,6 +208,7 @@ static void copy_context_current(process_t* current, intframe* frame) {
 
 void do_schedule()
 {
+	sched_planned = 0;
 	if (!scheduler_activated || !resched) {
 		return;
 	}
@@ -265,9 +267,13 @@ void do_schedule()
 
 void* schedule(void* data __attribute__ ((unused))) {
 	resched = 1;
-	
-	/* Mise en place de l'interruption sur le quantum de temps */
-	add_event(schedule, NULL, quantum * 1000);
+
+	// Ce test sert à éviter une accumulation d'évènements schedule.
+	if (sched_planned == 0) {
+		/* Mise en place de l'interruption sur le quantum de temps */
+		add_event(schedule, NULL, quantum * 1000);
+		sched_planned = 1;
+	}
 
 	return NULL;
 }
