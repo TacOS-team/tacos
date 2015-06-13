@@ -33,7 +33,6 @@
 
 int main(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unused)))
 {
-	int i;
 	printf("\033[40m\033[32m\033[0j");
 	while(1) {
 		int c1 = (int)(78.0*(float)rand()/(RAND_MAX+1.0));
@@ -54,9 +53,7 @@ int main(int argc __attribute__ ((unused)), char* argv[] __attribute__ ((unused)
 		while(c2--) printf(" ");
 		printf("%c\n", caractere2);
 
-		// usleep plante, mais en même temps, il n'utilise même pas de syscall...
-		//usleep(1000);
-		for(i = 0; i < 100000; i++);
+		usleep(30000);
 	}
 }
 
