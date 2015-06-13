@@ -32,6 +32,9 @@
 #include <fcntl.h>
 #include <dirent.h>
 #include <string.h>
+#include <sys/ioctl.h>
+#include <signal.h>
+#include <termios.h>
 
 static int first;
 unsigned long long prev_tot = 0;
@@ -105,7 +108,47 @@ void compute(int pid) {
 	values[pid] = p->utime + p->stime;
 }
 
+static struct termios newt;
+static struct termios oldt;
+
+static void handler(int signum __attribute__ ((unused)))
+{
+	tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+	fcntl(STDIN_FILENO, F_SETFL, (void*)0);
+	exit(0);
+}
+
+void thread_input() {
+	int pid;
+	char c = getchar();
+	if (c == 'k') {
+		tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+		fcntl(STDIN_FILENO, F_SETFL, (void*)0);
+
+		printf("\033[4;0H > PID to kill: ");
+		fflush(stdout);
+		if (scanf("%d", &pid) == 1) {
+			printf("kill %d\n", pid);
+			kill(pid, 15);
+		}
+
+		tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+		fcntl(STDIN_FILENO, F_SETFL, (void*)O_NONBLOCK);
+	}
+}
+
 int main() {
+	/* Gestion clavier */
+	tcgetattr(STDIN_FILENO, &oldt);
+
+	signal(SIGINT, handler);
+
+	memcpy(&newt, &oldt, sizeof(newt));
+	
+	newt.c_lflag &= ~(ICANON | ECHO);
+	tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+	fcntl(STDIN_FILENO, F_SETFL, (void *)O_NONBLOCK);
+
 	file_meminfo = fopen("/proc/meminfo", "r");
 	DIR* dir = opendir("/proc");
 	first = 1;
@@ -172,7 +215,12 @@ int main() {
 		prev_cpu_time = cpu_time;
 
 		first = 0;
-		sleep(1);
+
+		int t;
+		for (t = 0; t < 10; t++) {
+			thread_input();
+			usleep(100000);
+		}
 	}
 
 	return 0;
