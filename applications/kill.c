@@ -8,6 +8,6 @@ int main(int argc, char * argv[]) {
 		printf("Usage: %s SIGNAL PID\n", argv[0]);
 		return 1;
 	}
-	pid_t pid = atoi(argv[1]);
-	return kill(pid, atoi(argv[2]));
+	pid_t pid = atoi(argv[2]);
+	return kill(pid, atoi(argv[1]));
 }
