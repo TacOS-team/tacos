@@ -43,29 +43,29 @@ typedef void (*sighandler_t)(int); /**< Type pour un handler de signal. */
 #endif
 
 /* Définition des signaux */
-//XXX: Est-ce qu'on ne devrait pas se caller sur les numéros POSIX ?
-#define SIGHUP		 0 /**< Hang up. */
-#define SIGINT		 1 /**< Interrupt. */
-#define SIGQUIT		 2 /**< Quit and dump. */
-#define SIGILL		 3 /**< Illegal instruction. */
-#define SIGTRAP		 4 /**< Trap. */
-#define SIGABRT		 5 /**< Abort. */
-#define SIGBUS		 6 /**< Bus error. */
-#define SIGFPE		 7 /**< Floating Point Exception. */
-#define SIGKILL		 8 /**< Terminate. */
-#define SIGUSR1		 9 /**< Signal utilisateur 1. */
-#define SIGSEGV		10 /**< Segmentation Violation. */
-#define SIGUSR2		11 /**< Signal utilisateur 2. */
-#define SIGPIPE		12 /**< Write to pipe with no one reading. */
-#define SIGALRM		13 /**< Signal raised by alarm. */
-#define SIGTERM		14 /**< Termination. */
-#define SIGCHLD		16 /**< Fin processus fils. */
-#define SIGCONT		17 /**< Continue si arrêté. */
-#define SIGSTOP		18 /**< Stop l'exécution temporairement. */
-#define SIGTSTP		19 /**< Terminal Stop. */
-#define SIGTTIN		20 /**< Le process en background essaye de lire le tty. */
-#define SIGTTOU		21 /**< Le process en background essaye d'écrire sur le tty. */
-#define SIGURG		22 /**< Urgent data available on socket. */
+#define SIGHUP		 1 /**< Hang up. */
+#define SIGINT		 2 /**< Interrupt. */
+#define SIGQUIT		 3 /**< Quit and dump. */
+#define SIGILL		 4 /**< Illegal instruction. */
+#define SIGTRAP		 5 /**< Trap. */
+#define SIGABRT		 6 /**< Abort. */
+#define SIGBUS		 7 /**< Bus error. */
+#define SIGFPE		 8 /**< Floating Point Exception. */
+#define SIGKILL		 9 /**< Terminate. */
+#define SIGUSR1		10 /**< Signal utilisateur 1. */
+#define SIGSEGV		11 /**< Segmentation Violation. */
+#define SIGUSR2		12 /**< Signal utilisateur 2. */
+#define SIGPIPE		13 /**< Write to pipe with no one reading. */
+#define SIGALRM		14 /**< Signal raised by alarm. */
+#define SIGTERM		15 /**< Termination. */
+#define SIGSTKFLT	16 /**< Stack fault. */
+#define SIGCHLD		17 /**< Fin processus fils. */
+#define SIGCONT		18 /**< Continue si arrêté. */
+#define SIGSTOP		19 /**< Stop l'exécution temporairement. */
+#define SIGTSTP		20 /**< Terminal Stop. */
+#define SIGTTIN		21 /**< Le process en background essaye de lire le tty. */
+#define SIGTTOU		22 /**< Le process en background essaye d'écrire sur le tty. */
+#define SIGURG		23 /**< Urgent data available on socket. */
 #define SIGSYS		30 /**< Bad syscall. */
 #define SIGRTMIN	31
 #define SIGRTMAX	NSIG-1

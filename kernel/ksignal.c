@@ -42,10 +42,10 @@
 /**
  * Nom des signaux. Utile pour afficher leurs noms à la place de leurs numéros.
  */
-const char* signal_names[] = {"SIGHUP", "SIGINT", "SIGQUIT", "SIGILL", "SIGTRAP",
+const char* signal_names[] = {"???", "SIGHUP", "SIGINT", "SIGQUIT", "SIGILL", "SIGTRAP",
 	"SIGABRT", "SIGBUS ", "SIGFPE ", "SIGKILL", "SIGUSR1", "SIGSEGV", "SIGUSR2",
-	"SIGPIPE", "SIGALRM", "SIGTERM", "???", "SIGCHLD", "SIGCONT", "SIGSTOP", "SIGTSTP",
-	"SIGTTIN", "SIGTTOU", "SIGURG", "SIGSYS", "SIGRTMIN"};
+	"SIGPIPE", "SIGALRM", "SIGTERM", "SIGSTKFLT", "SIGCHLD", "SIGCONT", "SIGSTOP",
+	"SIGTSTP", "SIGTTIN", "SIGTTOU", "SIGURG", "SIGSYS", "SIGRTMIN"};
 
 typedef struct {
 	vaddr_t ret_addr;
