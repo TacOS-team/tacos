@@ -105,6 +105,7 @@ int exec_builtin_cmd(const char* cmd)
 		putenv(buf);
 		ret = 0;
 	}
+	free(name);
 	return ret;
 }
 
