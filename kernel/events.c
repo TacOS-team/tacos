@@ -28,7 +28,7 @@
 
 #include <i8254.h>
 #include <interrupts.h>
-#include <list.h>
+#include <heap.h>
 #include <events.h>
 #include <debug.h>
 #include <scheduler.h>
@@ -37,7 +37,7 @@
 
 //static const int TIMER_FREQ = I8254_MAX_FREQ / 1000;
 //static int ticks;
-static list_t events;
+static heap_t events;
 
 int compare_events(void* a, void* b)
 {
@@ -54,19 +54,19 @@ static void events_interrupt(int interrupt_id __attribute__ ((unused)))
 	clock_tick();
 	update_stats();
 
-	event = (struct event_t *) list_get_top(events);
+	event = (struct event_t *) heap_top(&events);
 	while(event != NULL && compare_times(event->date, get_tv()) <= 0)
 	{
-		list_remove_top(&events);
 		event->callback(event->data);
-		event = (struct event_t *) list_get_top(events);
+		heap_remove(&events);
+		event = (struct event_t *) heap_top(&events);
 	}
 }
 
 void events_init()
 {
 	clock_init();
-	list_init(	&events, 
+	heap_init(	&events, 
 			(cmp_func_type)compare_events, 
 			sizeof(struct event_t), 
 			MAX_EVENTS);
@@ -89,21 +89,9 @@ int add_event(callback_t call, void* data, time_t dtime_usec)
 	event.data = data;											
 	event.id = id;
 	asm("cli");
-	list_add_element(&events, &event);
+	heap_push(&events, &event);
 	asm("sti");
 	id++;
 
 	return id-1;
 }
-
-static int identifier(int id, void* element)
-{
-	struct event_t *event_element = (struct event_t *) element;
-	return event_element->id == id;
-}
-
-int del_event(int id)
-{
-	return list_del_element(&events, id, identifier);
-}
-

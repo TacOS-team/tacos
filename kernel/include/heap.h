@@ -1,5 +1,5 @@
 /**
- * @file events.h
+ * @file heap.c
  *
  * @author TacOS developers 
  *
@@ -23,42 +23,32 @@
  *
  * @section DESCRIPTION
  *
- * Gestion d'évènements datés.
+ * Description de ce que fait le fichier
  */
 
-#ifndef _EVENTS_H_
-#define _EVENTS_H_
+#ifndef _HEAP_H_
+#define _HEAP_H_
 
-#include <clock.h>
+#include <types.h>
 
-typedef void *(*callback_t) (void *);
+typedef int (*cmp_func_type) (void*, void*);
 
-/** 
-* @brief structure stockant un évènement à declencher
-*/
-struct event_t
-{
-  int id;
-  struct timeval date;
-  callback_t callback;
-  void *data;
-};
-
-/** 
-* @brief initialise le support des evenements
-*/
-void events_init();
-
-/** 
- * @brief ajoute un évènement à declencher
- * 
- * @param call la fonction qui sera lancée
- * @param data un pointeur qui sera passé à la fonction
- * @param time la fonction sera lancée dans "time" usec
- *
- * @return l'id du nouvel évènement
+/**
+ * @brief Liste générique.
  */
-int add_event(callback_t call, void* data, clock_t time);
+typedef struct {
+	cmp_func_type comparator; /**< Fonction de comparaison des elements */
+
+	void* elements_array; 	/**< Tableau contenant les éléments */
+	
+	int nb_elements; 		/**< Nombre d'éléments présents dans la tas */
+	size_t elements_size; 	/**< Taille du type d'élement à contenir */
+	int max_elements; 		/**< Nombre maximum d'élements dans le tas */
+} heap_t;
+
+void heap_init(heap_t* l, cmp_func_type cmp, size_t elements_size, int max_elements);
+void* heap_top(heap_t *l);
+void heap_remove(heap_t *l);
+void heap_push(heap_t *l, void* element);
 
 #endif
-
