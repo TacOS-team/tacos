@@ -237,6 +237,8 @@ void do_schedule()
 				copy_context_current(current, (intframe*)(stack_ptr));
 			}
 			exec_signal = exec_sighandler(next);
+		} else if (next->state == PROCSTATE_WAITING) {
+			next->state = PROCSTATE_RUNNING;
 		}
 	} else {
 		/* Sinon, si on a rien à faire, on passe dans le processus idle */
@@ -343,21 +345,12 @@ static void* sleep_callback( void* data )
 
 SYSCALL_HANDLER1(sys_sleep, uint32_t delay)
 {
-	/* Désactivation de l'ordonnanceur */
-	stop_scheduler();
-
 	process_t* process = get_current_process();
-
-	/* Passage du processus en waiting */
-	process->state = PROCSTATE_WAITING;
 
 	/* Adjout de l'évènement de fin de sleep */
 	add_event(sleep_callback,(void*)process,delay);
 
-	/* Scheduling immédiat */
-	start_scheduler();
-
+	/* Passage du processus en waiting */
+	process->state = PROCSTATE_WAITING;
 	while(process->state == PROCSTATE_WAITING);
-
-	return;
 }
