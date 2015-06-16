@@ -212,18 +212,11 @@ SYSCALL_HANDLER1(sys_sigsuspend, sigset_t* mask) {
 	sigset_t old_mask = current->signal_data.mask;
 	uint8_t	old_state = current->state;
 	
-	/* Désactivation de l'ordonnanceur */
-	stop_scheduler();
-	
 	/* Utilisation du nouveau mask */
 	current->signal_data.mask = *mask;
 	
 	/* Passage du processus en suspended */
 	current->state = PROCSTATE_SUSPENDED;
-	
-	/* Scheduling immédiat */
-	start_scheduler();
-	
 	while(current->state == PROCSTATE_SUSPENDED);
 	
 	/* Restauration de l'état et du mask */

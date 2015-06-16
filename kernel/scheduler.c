@@ -237,7 +237,7 @@ void do_schedule()
 				copy_context_current(current, (intframe*)(stack_ptr));
 			}
 			exec_signal = exec_sighandler(next);
-		} else if (next->state == PROCSTATE_WAITING) {
+		} else if (next->state == PROCSTATE_WAITING || next->state == PROCSTATE_SUSPENDED) {
 			next->state = PROCSTATE_RUNNING;
 		}
 	} else {
