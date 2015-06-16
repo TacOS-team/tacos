@@ -230,12 +230,14 @@ void do_schedule()
 	process_t *next = scheduler->get_next_process();
 	
 	if(is_schedulable(next)) {
-		/* On regarde si le process a des signaux en attente */
-		if (signal_pending(next) && current == next) {
-			// backup de current pour éviter de mettre dans sigframe de vieilles données.
-			copy_context_current(current, (intframe*)(stack_ptr));
+		if (next->sig_interruptable) {
+			/* On regarde si le process a des signaux en attente */
+			if (signal_pending(next) && current == next) {
+				// backup de current pour éviter de mettre dans sigframe de vieilles données.
+				copy_context_current(current, (intframe*)(stack_ptr));
+			}
+			exec_signal = exec_sighandler(next);
 		}
-		exec_signal = exec_sighandler(next);
 	} else {
 		/* Sinon, si on a rien à faire, on passe dans le processus idle */
 		next = idle_process;

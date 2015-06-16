@@ -399,6 +399,7 @@ process_t* create_process(process_init_data_t* init_data, uint8_t isKernel) {
 
 	/* On attend son premier ordonnancement pour le passer en RUNNING, donc pour le moment on le laisse IDLE */
 	new_proc->state = PROCSTATE_IDLE;
+	new_proc->sig_interruptable = 1;
 
 	/* ZONE CRITIQUE */
 	asm("cli");

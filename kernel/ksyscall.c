@@ -50,6 +50,8 @@ syscall_handler_t syscall_handler_table[MAX_SYSCALL_NB];
  */
 void syscall_entry()
 {	
+	process_t *process = get_current_process();
+	process->sig_interruptable = 0;
 	uint32_t function, param1, param2, param3;
 	syscall_handler_t handler;
 	intframe* frame;
@@ -78,14 +80,16 @@ void syscall_entry()
 	}
 	else {
 		kerr("Unknown syscall handler (0x%x).\n", function);
-		process_t *badboy = get_current_process();
-		sys_kill(badboy->pid, SIGSYS, NULL);
+		sys_kill(process->pid, SIGSYS, NULL);
 	}
 	
 	
 	asm("cli");
 	get_default_tss()->esp0 = (uint32_t)(frame+1);
 	asm("sti");
+
+	process->sig_interruptable = 1;
+	force_reschedule();
 }
 
 int syscall_set_handler(uint32_t syscall_id, syscall_handler_t handler)

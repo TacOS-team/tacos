@@ -7,7 +7,6 @@ int main() {
 	test_sprintf();
 	test_sscanf();
 	test_malloc();
-	//test_sig();
-	exit(0);
+	test_sig();
 	return 0;
 }

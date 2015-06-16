@@ -111,6 +111,7 @@ typedef struct process {
 	char* 		name; /**< Nom du processus. */
 	uint8_t	state; /**< Etat du processus (idle, running, waiting...) */
 	//uint8_t	priority; // Not used.
+	uint8_t sig_interruptable; /**< 1 si process peut être interrompu par signal */
 	
 	/* Données dédiées au évaluation de perf */
 	unsigned long long user_time;
