@@ -84,13 +84,11 @@ void print_meminfo() {
 void compute(int pid) {
 	struct process* p = &tab_process[nb_process++];
 
-	p->utime = p->stime = 0; // XXX: temporaire le temps d'avoir un scanf %llu
-
 	char path[100];
 	sprintf(path, "/proc/%d/stat", pid);
 
 	FILE *f = fopen(path, "r");
-	fscanf(f, "%d %s %s %u %u", &p->pid, p->name, p->state, &p->stime, &p->utime);
+	fscanf(f, "%d %s %s %llu %llu", &p->pid, p->name, p->state, &p->stime, &p->utime);
 	fclose(f);
 
 	switch (p->state[0]) {
@@ -158,7 +156,7 @@ int main() {
 		char name[100];
 		unsigned long long user, nice, system, idle;
 		FILE* f = fopen("/proc/stat", "r");
-		fscanf(f, "%s %u %u %u %u", name, &user, &nice, &system, &idle);
+		fscanf(f, "%s %llu %llu %llu %llu", name, &user, &nice, &system, &idle);
 		tot = user + nice + system + idle;
 		cpu_time = user + nice + system;
 		fclose(f);

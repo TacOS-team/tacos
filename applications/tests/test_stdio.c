@@ -8,23 +8,28 @@
 
 void test_sscanf() {
 	int i;
+	unsigned long long j;
 	sscanf("7", "%d", &i);
 	unit_test_int("sscanf (unique) nombre entier positif", 7, i);
 
 	sscanf("-42", "%d", &i);
 	unit_test_int("sscanf (unique) nombre entier négatif", -42, i);
 
-	char *in = "Hello u 1024 1325431532151 -42";
+	sscanf("132423421234", "%llu", &j);
+	unit_test_int("sscanf (unique) nombre entier positif long long", 132423421234, j);
+
+	char *in = "Hello u 1024 132542151 13403482082 -42";
 	char buf[80];
 	char l;
 	int k;
-	long long j;
-	sscanf(in, "%s %c %d %lu %d", buf, &l, &i, &j, &k);
+	unsigned long m;
+	sscanf(in, "%s %c %d %lu %llu %d", buf, &l, &i, &m, &j, &k);
 
 	unit_test_str("sscanf (multiple) string", "Hello", buf);
 	unit_test_int("sscanf (multiple) caractere", 'u', l);
 	unit_test_int("sscanf (multiple) nombre entier signé", 1024, i);
-	unit_test_int("sscanf (multiple) nombre entier long non signé", 1325431532151, j);
+	unit_test_int("sscanf (multiple) nombre entier long long non signé", 132542151, m);
+	unit_test_int("sscanf (multiple) nombre entier long non signé", 13403482082, j);
 	unit_test_int("sscanf (multiple) nombre entier négatif", -42, k);
 }
 

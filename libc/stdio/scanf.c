@@ -114,8 +114,8 @@ int vfscanf(FILE *stream, const char *format, va_list ap) {
 		fc = *f++;
 
 		int long_specifier = 0;
-		if (fc == 'l') {
-			long_specifier = 1;
+		while (fc == 'l') {
+			long_specifier++;
 
 			if (*f == '\0') {
 				conv_error();
@@ -254,13 +254,17 @@ int vfscanf(FILE *stream, const char *format, va_list ap) {
 					conv_error ();
 
 				if (!number_signed) {
-					if (long_specifier) {
+					if (long_specifier == 2) {
 						*va_arg(ap, unsigned long long *) = (unsigned long long) unum;
+					} else if (long_specifier == 1) {
+						*va_arg(ap, unsigned long *) = (unsigned long) unum;
 					} else {
 						*va_arg(ap, unsigned int *) = (unsigned int) unum;
 					}
 				} else {
-					if (long_specifier) {
+					if (long_specifier == 2) {
+						*va_arg(ap, long long *) = (long long) num;
+					} else if (long_specifier == 1) {
 						*va_arg(ap, long long *) = (long long) num;
 					} else {
 						*va_arg(ap, int *) = (int) num;
