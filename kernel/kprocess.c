@@ -474,6 +474,7 @@ process_t* create_process(process_init_data_t* init_data, uint8_t isKernel) {
 
 	/* XXX: Création de la table des symboles, il faut la dupliquer dans la structure sinon ça plante */
 	//new_proc->symtable = load_symtable(init_data->file);
+	new_proc->symtable = NULL;
 
 	return new_proc;
 }

@@ -138,10 +138,12 @@
 					call  *\id*4(%edi)
 					addl  $4, %esp
 
-					.ifeq \id - 16
+					.ifeq \id-16
+					push %ebp
+					mov %esp,%ebp
 					call do_schedule
+					pop %ebp
 					.endif
-
 
 					pop %es
 					pop %ds

@@ -86,7 +86,6 @@ void syscall_entry()
 	asm("cli");
 	get_default_tss()->esp0 = (uint32_t)(frame+1);
 	asm("sti");
-	
 }
 
 int syscall_set_handler(uint32_t syscall_id, syscall_handler_t handler)

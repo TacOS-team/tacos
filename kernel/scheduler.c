@@ -214,7 +214,7 @@ void do_schedule()
 	}
 	resched = 0;
 	
-	int exec_signal;
+	int exec_signal = 0;
 
 	/* On récupere un pointeur de pile pour acceder aux registres empilés
 	 * C'est fait au début pour éviter de toucher à ebp.
@@ -226,9 +226,7 @@ void do_schedule()
 	process_t* current = get_current_process();
 	if (!current) current = idle_process;
 	
-	/* On recupere le prochain processus à executer.
-	 * TODO: Dans l'idéal, on devrait ici faire appel à un scheduler, 
-	 * qui aurait pour rôle de choisir le processus celon une politique spécifique */
+	/* On recupere le prochain processus à executer. */
 	process_t *next = scheduler->get_next_process();
 	
 	if(is_schedulable(next)) {
