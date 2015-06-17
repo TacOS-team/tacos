@@ -166,6 +166,7 @@ static void context_switch(int mode, process_t* current)
 	/* On lui remet sa page directory */
 	pagination_load_page_directory((struct page_directory_entry *)pd_paddr);
 
+	scheduler_activated = 1;
 	/* Pop les registres généraux puis iret */
 	RESTORE_CONTEXT();
 }
@@ -209,10 +210,11 @@ static void copy_context_current(process_t* current, intframe* frame) {
 void do_schedule()
 {
 	sched_planned = 0;
-	if (!scheduler_activated || !resched) {
+	if (!resched || !scheduler_activated) {
 		return;
 	}
 	resched = 0;
+	scheduler_activated = 0;
 	
 	int exec_signal = 0;
 
@@ -247,6 +249,7 @@ void do_schedule()
 
 	/* Si la décision de l'ordo est de ne pas changer le processus courant */
 	if (current == next && next->state != PROCSTATE_IDLE && !exec_signal) {
+		scheduler_activated = 1;
 		return;
 	}
 
