@@ -571,10 +571,8 @@ static int sys_exec2(process_init_data_t* init_data)
 
 	process_t *process;
 	process_init_data_t* init_data_dup = dup_init_data(init_data);
-
 	process = create_process(init_data_dup, 0);
-
-	free_init_data(init_data);
+	free_init_data(init_data_dup);
 
 	if (process->ppid) {
 		process_t *parent = find_process(process->ppid);
