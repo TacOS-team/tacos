@@ -171,9 +171,9 @@ void draw_cube(char *buffer)
 }
 
 void refresh()
-{
-	printf("\033[1;1H");
-	printf("%s", buffer);
+{	
+	write(1, "\033[1;1H", 8);
+	write(1, buffer, LARGEUR*HAUTEUR);
 }
 
 
@@ -190,7 +190,7 @@ int main()
 				rotate_point(cube[i]);
 		draw_cube(buffer);
 		refresh();
-		usleep(10000);
+		usleep(50000);
 		
 	}
 	return 0;
