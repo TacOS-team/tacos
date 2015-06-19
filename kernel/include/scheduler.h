@@ -32,6 +32,7 @@
 #include <kprocess.h>
 #include <ksyscall.h>
 
+
 /**
  * Cette structure doit contenir les differents pointeurs de fonctions pour manipuler le scheduler
  */
@@ -101,4 +102,15 @@ SYSCALL_HANDLER1(sys_sleep, uint32_t delay);
 int is_schedulable(process_t* process);
 
 void halt();
+
+/**
+ * Passe le process courant en WAITING et reordonnancement immédiat.
+ */
+void set_state_waiting();
+
+/**
+ * Fake interruption pour appeler do_schedule.
+ */
+void force_immediate_resched();
+
 #endif //SCHEDULER_H

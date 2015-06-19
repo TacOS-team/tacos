@@ -207,6 +207,9 @@ static void copy_context_current(process_t* current, intframe* frame) {
 	*/	
 }
 
+
+
+
 void do_schedule()
 {
 	sched_planned = 0;
@@ -353,7 +356,37 @@ SYSCALL_HANDLER1(sys_sleep, uint32_t delay)
 	/* Adjout de l'évènement de fin de sleep */
 	add_event(sleep_callback,(void*)process,delay);
 
+	set_state_waiting();
+}
+
+void set_state_waiting() {
+	process_t* process = get_current_process();
 	/* Passage du processus en waiting */
 	process->state = PROCSTATE_WAITING;
-	while(process->state == PROCSTATE_WAITING);
+	force_immediate_resched();
+	while(process->state == PROCSTATE_WAITING) asm("hlt"); // Ne peut normalement plus rentrer dans cette boucle !
+}
+
+void force_immediate_resched() {
+	resched = 1;
+	// Fait ce que le CPU fait lors d'une interruption :
+	asm(
+			"pushfl\n\t"
+			"push %cs\n\t"
+			"push $fin_force_immediate_resched\n\t"
+		);
+	// Fait ce que le wrapper d'interruption aurait fait :
+	asm(
+			"pusha \n\t"
+			"push %gs \n\t"
+			"push %fs \n\t"
+			"push %ds \n\t"
+			"push %es \n\t"
+
+			"push %ebp \n\t"
+			"mov %esp,%ebp \n\t"
+			"call do_schedule \n"
+			"add $64, %esp \n\t"
+			"fin_force_immediate_resched:"
+	   );
 }
