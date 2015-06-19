@@ -243,11 +243,7 @@ void fat_dir_entry_to_directory_entry(char *filename, fat_dir_entry_t *dir, dire
 }
 
 char * fat_lfn_to_sfn(char * filename) {
-//	char * lfn = strdup(filename);
-	int len = strlen(filename);
-	char* lfn = (char*) kmalloc((len+1)*sizeof(char)); // len + 1 pour le '\0'
-	strcpy(lfn, filename);
-
+	char * lfn = strdup(filename);
 	char * sfn = kmalloc(12);
 
 	// To upper case.
@@ -317,6 +313,7 @@ char * fat_lfn_to_sfn(char * filename) {
 
 	// TODO: numeric-tail generation.
 
+	kfree(lfn);
 	return sfn;
 }
 

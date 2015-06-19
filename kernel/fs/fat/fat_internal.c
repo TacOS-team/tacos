@@ -353,9 +353,10 @@ static int add_fat_dir_entry(fat_fs_instance_t *instance, char * path, fat_dir_e
         int off = n_dir_entries - consecutif + j;
         instance->write_data(instance->super.device, (uint8_t*)(&fentry[j]), sizeof(fat_dir_entry_t), instance->fat_info.addr_data + (newcluster - 2) * instance->fat_info.BS.sectors_per_cluster * instance->fat_info.BS.bytes_per_sector + off * sizeof(fat_dir_entry_t));
       }
-	  kfree(dir_entries);
+      kfree(dir_entries);
       return 0;
     }
+    kfree(dir_entries);
   } else if (instance->fat_info.fat_type != FAT32) {
     int i;
     int consecutif = 0;
@@ -367,10 +368,13 @@ static int add_fat_dir_entry(fat_fs_instance_t *instance, char * path, fat_dir_e
         consecutif++;
         if (consecutif == n) {
           instance->write_data(instance->super.device, (uint8_t*)fentry, sizeof(fat_dir_entry_t) * n, instance->fat_info.addr_root_dir + (i - n + 1) * sizeof(fat_dir_entry_t));
+          kfree(root_dir);
           return 0;
         }
       }
     }
+
+	kfree(root_dir);
   }
   return 1;
 }
