@@ -117,8 +117,8 @@ void lens(char* buffer1, char* buffer2, int cx, int cy,float radius,float curve)
 
 void boisson()
 {
-	printf("\033[1;1H");
-	printf("%s", buffer);
+	write(1, "\033[1;1H", 8);
+	write(1, buffer, LARGEUR*HAUTEUR);
 }
 
 void sombrero2()
@@ -154,7 +154,7 @@ void sombrero1()
 		dessert(buffer);
 		letsdosomemagic(HARICOT,0.0,0.35, x, HARICOT, mexican_food, HO_YEAH, HO_RIGHT, buffer);
 		x+= 0.1;
-		usleep(10000);
+		usleep(50000);
 	 }
 	 sleep(2);
 	 while(galette >= 0)
@@ -163,7 +163,7 @@ void sombrero1()
 		dessert(buffer);
 		letsdosomemagic(HARICOT,0.0,galette, x, HARICOT, mexican_food, HO_YEAH, HO_RIGHT, buffer);
 		galette -= 0.005;
-		usleep(10000);	
+		usleep(50000);	
 	}
 }
 
