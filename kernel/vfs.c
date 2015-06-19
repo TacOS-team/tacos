@@ -116,7 +116,8 @@ static mounted_fs_t* get_mnt_from_path(const char * name) {
 
 static char * get_next_part_path(struct nameidata *nb) {
 	const char *last = nb->last;
-	char *name = "";
+	char *name = kmalloc(1);
+	name[0] = '\0';
 	
 	if (*last) {
 		while (*last == '/') last++;
@@ -154,11 +155,13 @@ static int lookup(struct nameidata *nb) {
 			}
 
 			is_absolute_path = 0;
+			kfree(name);
 			continue;
 		}
 
 		if (nb->dentry->d_pdentry == NULL && strcmp(name, "..") == 0) {
 			is_absolute_path = 1;
+			kfree(name);
 			continue;
 		}
 
@@ -196,15 +199,21 @@ static int lookup(struct nameidata *nb) {
 							is_absolute_path = 1;
 						}
 					} else {
+						kfree(name);
+						kfree(ofd);
 						return -1;
 					}
 				}
+				kfree(ofd);
 			} else {
 				nb->dentry = dentry;
 			}
 		} else {
+			kfree(name);
 			return -1;
 		}
+
+		kfree(name);
 	}
 	return 0;
 }

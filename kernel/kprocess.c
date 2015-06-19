@@ -601,7 +601,7 @@ SYSCALL_HANDLER3(sys_exec, char *cmdline, char **environ, int *retval)
 	struct stat buf;
 	int ret = vfs_stat(execpath, &buf, 1);
 
-	if (!S_ISREG(buf.st_mode) || !(S_IXUSR & buf.st_mode)) {
+	if (ret < 0 || !S_ISREG(buf.st_mode) || !(S_IXUSR & buf.st_mode)) {
 		*retval = -1;
 		kfree(execpath);
 		return;
