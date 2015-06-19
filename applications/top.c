@@ -68,7 +68,7 @@ void print_meminfo() {
 	int value;
 	char unit[3];
 
-	int mtotal, mfree;
+	int mtotal = 0, mfree = 0;
 
 	while (fscanf(file_meminfo, "%s %d %s", name, &value, unit) > 1) {
 		if (strcmp(name, "MemTotal:") == 0) {
