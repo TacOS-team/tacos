@@ -27,5 +27,18 @@ make doc
 Regénérer les dépendances (après ajout d'un include) :
 make depend
 
-Installtion des hooks pour git:
+Installation des hooks pour git:
 make installhooks
+
+------------------------------------
+Pour faire tourner le serveur pr0n:
+
+git submodule init libs/libjpeg
+git submodule update
+
+Editer /Makefile:
+	- Décommenter la seconde ligne SUBDIRS.
+	- Repérer les 3 lignes à décommenter plus bas (sous commentaire Uncomment)
+
+Editer /applications/Makefile:
+	- Décommenter les binaires liés à pr0n.
