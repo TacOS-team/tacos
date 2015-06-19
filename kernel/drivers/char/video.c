@@ -29,6 +29,7 @@
 #include <types.h>
 #include <ioports.h>
 #include <drivers/video.h>
+#include <klibc/string.h>
 
 /**
  *  The video memory address. 
@@ -171,24 +172,30 @@ void kputchar_video(int n, bool front, unsigned char c, int x, int y, char attr)
 	}
 }
 
-void scrollup(int n, char attr) {
-	volatile x86_video_mem *front = get_page(n, true);
-	volatile x86_video_mem *back = get_page(n, false);
-	unsigned int l, c;
-
-	for (l = 0; l < LINES - 1; l++) {
-		for (c = 0; c < COLUMNS; c++) {
-			char car, attr;
-			car = front[c + (l + 1) * COLUMNS].character;
-			attr = front[c + (l + 1) * COLUMNS].attribute;
-
-			back[c + l * COLUMNS].character = car & 0xFF;
-			back[c + l * COLUMNS].attribute = attr;
+static void kputchar_blankline(int n, bool front, int y, char attr) {
+	if (y < LINES) {
+		volatile x86_video_mem *video = get_page(n, front);
+		int off = y * COLUMNS;
+		int x;
+		for (x = off; x < off + COLUMNS; x++) {
+			video[x].character = ' ';
+			video[x].attribute = attr;
 		}
 	}
-	for (c = 0; c < COLUMNS; c++) {
-		kputchar_video(n, false, ' ', c, LINES - 1, attr);
+}
+
+void scrollup(int n, char attr) {
+	unsigned int l;
+
+	//XXX: discard volatile. Je ne sais pas si c'est grave...
+	x86_video_mem *frontline = (x86_video_mem*) get_page(n, true) + COLUMNS;
+	x86_video_mem *backline  = (x86_video_mem*) get_page(n, false);
+	for (l = 0; l < LINES - 1; l++) {
+		memcpy(backline, frontline, sizeof(x86_video_mem) * COLUMNS);
+		frontline += COLUMNS;
+		backline += COLUMNS;
 	}
+	kputchar_blankline(n, false, LINES - 1, attr);
 
 	flip_page(n);
 }
