@@ -173,12 +173,13 @@ static int lookup(struct nameidata *nb) {
 			}
 		}
 
-		dentry = dcache_get(nb->mnt->instance, nb->dentry, name);
+		//dentry = dcache_get(nb->mnt->instance, nb->dentry, name);
+		dentry = NULL;
 		if (!dentry) {
 			dentry = nb->mnt->instance->lookup(nb->mnt->instance, nb->dentry, name);
-			if (dentry) {
-				dcache_set(nb->mnt->instance, nb->dentry, name, dentry);
-			}
+			//if (dentry) {
+			//	dcache_set(nb->mnt->instance, nb->dentry, name, dentry);
+			//}
 		}
 		if (dentry) {
 			if (S_ISLNK(dentry->d_inode->i_mode) && !(*(nb->last) == '\0' && (nb->flags & LOOKUP_NOFOLLOW))) {
