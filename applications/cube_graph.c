@@ -183,7 +183,8 @@ void read_mouse(mousestate_t* data) {
 		mouse_fd = open("/dev/mouse", O_RDONLY);
 	}
 	read(mouse_fd, data, sizeof(mousestate_t));
-	data->y = 199 - data->y;
+	data->y = data->y / 600.0 * HAUTEUR;
+	data->x = data->x / 800.0 * LARGEUR;
 }
 
 
