@@ -40,7 +40,6 @@
 #define KSEM_DEL 3
 #define KSEM_P 4
 #define KSEM_V 5
-#define SYS_SEMCTL 8
 
 /***********************************
  * 
