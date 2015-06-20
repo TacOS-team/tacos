@@ -194,7 +194,7 @@ void cmain (unsigned long magic, unsigned long addr) {
 	}
 	
 	/* Lancement du scheduler */
-	init_scheduler(5);
+	init_scheduler(50);
 	set_scheduler(&round_robin);
 	klog("Scheduler initialized.");
 	

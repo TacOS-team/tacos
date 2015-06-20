@@ -89,7 +89,8 @@ void syscall_entry()
 	asm("sti");
 
 	process->sig_interruptable = 1;
-	force_reschedule();
+	if (signal_pending(process))
+		force_reschedule();
 }
 
 int syscall_set_handler(uint32_t syscall_id, syscall_handler_t handler)
