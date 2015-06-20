@@ -219,7 +219,9 @@ int execv(const char *path __attribute__ ((unused)), char *const argv[]) {
 		strcat(cmd, argv[i]);
 		i++;
 	}
-	return exec_elf(cmd);
+	int ret = exec_elf(cmd);
+	free(cmd);
+	return ret;
 }
 
 int execvp(const char *file, char *const argv[]) {
