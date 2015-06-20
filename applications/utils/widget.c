@@ -202,12 +202,11 @@ void runWindow(struct window_t* win)
 	while(1)
 	{
 		read(fd, &mousedata, sizeof(mousedata));
-		x = (mousedata.x * 79) / 319;
-		y = 24 - (mousedata.y * 24) /199;
-		if ((x != old_x || y != old_y) && !(x == 79 && y == 24)) {
-			// Dernière condition car si on est tout en bas à gauche, une nouvelle ligne apparaît :/
+		x = (mousedata.x * 79) / 800.0 + .5;
+		y = (mousedata.y * 24) / 600.0 + .5;
+		if ((x != old_x || y != old_y)) {
 			displayWindow(win);
-			printf("\033[%d;%dH\033[10%dm ", y + 1, x + 1, 6);
+			printf("\033[%d;%dH\033[10%dm \033[%d;%df", y + 1, x + 1, 6, 25, 80);
 			fflush(stdout);
 			old_x = x;
 			old_y = y;
