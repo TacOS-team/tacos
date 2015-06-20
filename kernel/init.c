@@ -151,8 +151,5 @@ int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	int ret;
 	sys_exec("/tacos/bin/getty /dev/tty0", environ, &ret);
 	
-	/* XXX y'a pas plus propre pour faire ca? */
-	get_current_process()->state = PROCSTATE_WAITING;
-	while(1);
 	return 0;
 }
