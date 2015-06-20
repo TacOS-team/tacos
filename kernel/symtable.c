@@ -27,6 +27,15 @@ static void swap_elements(symbol_table_t* table, int i, int j)
 	table->symbols[j].addr = temp.addr;
 }
 
+/*
+static void print_symbols(symbol_table_t* table) {
+	int i;
+	for(i = 0; i < table->count; i++)
+	{
+		klog("%x %s", table->symbols[i].addr, table->symbols[i].name);
+	}
+}*/
+
 static void sort_symbols(symbol_table_t* table) {
 	int no_swap = 1;
 	int i;

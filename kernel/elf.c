@@ -159,6 +159,7 @@ Elf32_File* load_elf_file(int fd)
 	{
 		/* Allocation de la mémoire pour la structure principale et le header du fichier */
 		file = kmalloc(sizeof(Elf32_File));
+		memset(file, 0, sizeof(Elf32_File));
 		file->elf_header = kmalloc(sizeof(Elf32_Ehdr));
 		
 		if (load_elf_header(file->elf_header, fd)) 

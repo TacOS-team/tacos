@@ -306,6 +306,7 @@ void init_scheduler(int Q)
 	idle_init.stack_size = 0x1000;
 	idle_init.priority = 0;
 	idle_init.ppid = 0;
+	idle_init.file = NULL;
 	
 	idle_process = create_process(&idle_init, 1);
 	idle_process->state = PROCSTATE_IDLE;

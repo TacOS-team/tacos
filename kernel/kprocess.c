@@ -303,6 +303,7 @@ static process_init_data_t* dup_init_data(process_init_data_t* init_data) {
 	dup->stack_size = init_data->stack_size;
 	dup->priority = init_data->priority;
 	dup->ppid = init_data->ppid;
+	dup->file = init_data->file;
 	
 	return dup;
 }
@@ -474,8 +475,7 @@ process_t* create_process(process_init_data_t* init_data, uint8_t isKernel) {
 			isKernel);
 
 	/* XXX: Création de la table des symboles, il faut la dupliquer dans la structure sinon ça plante */
-	//new_proc->symtable = load_symtable(init_data->file);
-	new_proc->symtable = NULL;
+	new_proc->symtable = load_symtable(init_data->file);
 
 	return new_proc;
 }
@@ -487,10 +487,17 @@ int create_kprocess(char* _name, void* entry_point, uint32_t _stack_size)
 	process_init_data_t init_data;
 
 	init_data.name = _name;
+	init_data.args = _name;
+	init_data.envp = NULL;
+	init_data.exec_type = EXEC_KERNEL;
 	init_data.data = entry_point;
+	init_data.file = NULL;
 	init_data.stack_size = _stack_size;
+	init_data.mem_size = 0;
+	init_data.entry_point = 0;
+	init_data.priority = 0;
 	init_data.ppid = 0; /* XXX Mettre le bon ppid? */
-	
+
 	process_t* proc = create_process(&init_data, 1);
 	if (proc) {
 		scheduler_add_process(proc);
