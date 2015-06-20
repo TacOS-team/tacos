@@ -521,6 +521,7 @@ int vfs_unlink(const char *pathname) {
 			nb.mnt->instance->unlink(pinode, nb.dentry);
 		} else {
 			klog("Pas de unlink pour ce fs.");
+			return -EPERM;
 		}
 		return 0;
 	} else {
@@ -545,6 +546,7 @@ int vfs_rmdir(const char *pathname) {
 			nb.mnt->instance->rmdir(pinode, nb.dentry);
 		} else {
 			klog("Pas de rmdir pour ce fs.");
+			return -EPERM;
 		}
 		return 0;
 	} else {
@@ -557,11 +559,20 @@ int vfs_mknod(const char * pathname, mode_t mode, dev_t dev) {
 	nb.flags = LOOKUP_PARENT;
 	if (open_namei(pathname, &nb) == 0) {
 		if (nb.mnt->instance->mknod) {
+			inode_t *pinode = nb.dentry->d_inode;
 			dentry_t new_entry;
 			new_entry.d_name = nb.last;
-			nb.mnt->instance->mknod(nb.dentry->d_inode, &new_entry, mode, dev);
+
+			// Check existe pas déjà.
+			nb.flags &= ~LOOKUP_PARENT;
+			if (lookup(&nb) == 0) {
+				return -EEXIST;
+			}
+
+			nb.mnt->instance->mknod(pinode, &new_entry, mode, dev);
 		} else {
 			klog("Pas de mknod pour ce fs.");
+			return -EPERM;
 		}
 		return 0;
 	} else {
@@ -570,19 +581,21 @@ int vfs_mknod(const char * pathname, mode_t mode, dev_t dev) {
 }
 
 int vfs_symlink(const char * target, const char * linkpath) {
-	struct nameidata nd1;
-	nd1.flags = 0;
-	if (open_namei(linkpath, &nd1) == 0) {
-		return -EEXIST;
-	}
-
 	struct nameidata nb;
 	nb.flags = LOOKUP_PARENT;
 	if (open_namei(linkpath, &nb) == 0) {
 		if (nb.mnt->instance->symlink) {
+			inode_t *pinode = nb.dentry->d_inode;
 			dentry_t new_entry;
 			new_entry.d_name = nb.last;
-			nb.mnt->instance->symlink(nb.dentry->d_inode, &new_entry, target);
+
+			// Check existe pas déjà.
+			nb.flags &= ~LOOKUP_PARENT;
+			if (lookup(&nb) == 0) {
+				return -EEXIST;
+			}
+
+			nb.mnt->instance->symlink(pinode, &new_entry, target);
 		} else {
 			klog("Pas de symlink pour ce fs.");
 			return -EPERM;
@@ -594,19 +607,21 @@ int vfs_symlink(const char * target, const char * linkpath) {
 }
 
 int vfs_mkdir(const char * pathname, mode_t mode) {
-	struct nameidata nd1;
-	nd1.flags = 0;
-	if (open_namei(pathname, &nd1) == 0) {
-		return -EEXIST;
-	}
-
 	struct nameidata nb;
 	nb.flags = LOOKUP_PARENT;
 	if (open_namei(pathname, &nb) == 0) {
 		if (nb.mnt->instance->mkdir) {
+			inode_t *pinode = nb.dentry->d_inode;
 			dentry_t new_entry;
 			new_entry.d_name = nb.last;
-			nb.mnt->instance->mkdir(nb.dentry->d_inode, &new_entry, mode);
+
+			// Check existe pas déjà.
+			nb.flags &= ~LOOKUP_PARENT;
+			if (lookup(&nb) == 0) {
+				return -EEXIST;
+			}
+
+			nb.mnt->instance->mkdir(pinode, &new_entry, mode);
 		} else {
 			klog("Pas de mkdir pour ce fs.");
 			return -EPERM;
@@ -666,15 +681,21 @@ int vfs_rename(const char *oldpath, const char *newpath) {
 		if (nb.mnt->instance->rename) {
 			inode_t *old_dir = nb.dentry->d_inode;
 			nb.flags &= ~LOOKUP_PARENT;
-			lookup(&nb);
+			if (lookup(&nb)) {
+				// Ancien n'existe pas...
+				return -ENOENT;
+			}
 			dentry_t *old_dentry = nb.dentry;
 
 			nb.flags = LOOKUP_PARENT;
 			if (open_namei(newpath, &nb) == 0) {
 				dentry_t new_entry;
 				new_entry.d_name = nb.last;
-	
-				nb.mnt->instance->rename(old_dir, old_dentry, nb.dentry->d_inode, &new_entry);
+				// TODO: check destination est un fichier ou un repertoire vide ou n'existe pas.
+
+				return nb.mnt->instance->rename(old_dir, old_dentry, nb.dentry->d_inode, &new_entry);
+			} else {
+				return -ENOENT;
 			}
 		} else {
 			klog("Pas de rename pour ce fs.");

@@ -43,9 +43,11 @@ int chdir(const char *path) {
 		char *dest = malloc(5 + strlen(cwd));
 		sprintf(dest, "PWD=%s", cwd);
 		putenv(dest);
+		return 0;
 	}
 
-	return ret;
+	errno = -ret;
+	return -1;
 }
 
 char *get_current_dir_name(void) {
@@ -124,7 +126,6 @@ ssize_t write(int fd, const void *buf, size_t count) {
 	if (count > 0) {
 		syscall(SYS_WRITE, fd, (uint32_t) buf, (uint32_t)(&count));
 	}
-
 	return count;
 }
 
@@ -132,13 +133,15 @@ ssize_t read(int fd, void *buf, size_t count) {
 	if (count > 0) {
 		syscall(SYS_READ, fd, (uint32_t) buf, (uint32_t)(&count));
 	}
-
 	return count;
 }
 
 int lseek(int fd, long offset, int whence) {
 	syscall(SYS_SEEK, fd, (uint32_t)(&offset), (uint32_t)(whence));
-
+	if (offset < 0) {
+		errno = -offset;
+		return -1;
+	}
 	return offset;
 }
 
@@ -151,7 +154,8 @@ int chmod(const char *path, mode_t mode) {
 int chown(const char *path, uid_t owner, gid_t group) {
 	int *ret = (int*)&group;
 	syscall(SYS_CHMOD, (uint32_t)path, (uint32_t)owner, (uint32_t)ret);
-	return *ret;
+	errno = -*ret;
+	return (*ret ? -1 : 0);
 }
 
 int stat(const char *path, struct stat *buf) {
@@ -163,40 +167,53 @@ int stat(const char *path, struct stat *buf) {
 int lstat(const char *path, struct stat *buf) {
 	int ret = 0; // don't follow link
 	syscall(SYS_STAT, (uint32_t)path, (uint32_t)buf, (uint32_t)&ret);
-	return ret;
+	errno = -ret;
+	return (ret ? -1 : 0);
 }
 
 int symlink(const char *target, const char *linkpath) {
 	int ret;
 	syscall(SYS_SYMLINK, (uint32_t)target, (uint32_t)linkpath, (uint32_t)&ret);
-	return ret;
+	errno = -ret;
+	return (ret ? -1 : 0);
 }
 
 int mknod(const char *path, mode_t mode, dev_t dev) {
 	syscall(SYS_MKNOD, (uint32_t)path, (uint32_t)mode, (uint32_t)&dev);
-	return (int)dev;
+	errno = -dev;
+	return (dev ? -1 : 0);
 }
 
 int unlink(const char *path) {
 	int ret;
 	syscall(SYS_UNLINK, (uint32_t)path, (uint32_t)&ret, 0);
-	return ret;
+	errno = -ret;
+	return (ret ? -1 : 0);
 }
 
 int rmdir(const char *path) {
 	int ret;
 	syscall(SYS_RMDIR, (uint32_t)path, (uint32_t)&ret, 0);
-	return ret;
+	errno = -ret;
+	return (ret ? -1 : 0);
 }
 
 int dup(int oldfd) {
 	int newfd;
 	syscall(SYS_DUP, (uint32_t) oldfd, (uint32_t)&newfd, 0);
+	if (newfd < 0) {
+		errno = -newfd;
+		return -1;
+	}
 	return newfd;
 }
 
 int dup2(int oldfd, int newfd) {
 	syscall(SYS_DUP2, (uint32_t) oldfd, (uint32_t)&newfd, 0);
+	if (newfd < 0) {
+		errno = -newfd;
+		return -1;
+	}
 	return newfd;
 }
 
@@ -243,5 +260,9 @@ int execvp(const char *file, char *const argv[]) {
 ssize_t readlink(const char *path, char *buf, size_t bufsize) {
 	ssize_t *ret = (ssize_t*)&bufsize;
 	syscall(SYS_READLINK, (uint32_t) path, (uint32_t)buf, (uint32_t)ret);
+	if (*ret < 0) {
+		errno = -*ret;
+		return -1;
+	}
 	return *ret;
 }

@@ -23,10 +23,10 @@
  *
  * @section DESCRIPTION
  *
- * List files
+ * Creation d'un pipe nommé.
  */
 
-#include <sys/stat.h>
+#include <errno.h>
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -34,16 +34,19 @@
 int main(int argc, char** argv)
 {
 	int i;
-	struct stat st;
 	
 	if (argc == 1) {
 		fprintf(stderr, "%s: opérande manquant\n", argv[0]);
 	} else {
 		for(i = 1; i < argc; i++) {
-			if (stat(argv[i], &st)) {
-				mknod(argv[i], S_IFIFO|0666, 0);
-			} else {
-				fprintf(stderr, "Le fichier %s existe déjà.\n", argv[i]);
+			if (mknod(argv[i], S_IFIFO|0666, 0)) {
+				switch (errno) {
+					case EEXIST:
+						fprintf(stderr, "Le fichier %s existe déjà.\n", argv[i]);
+						break;
+					default:
+						fprintf(stderr, "Impossible de créer le fichier %s\n", argv[i]);
+				}
 			}
 		}
 	}
