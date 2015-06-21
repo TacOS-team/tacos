@@ -116,8 +116,6 @@ static void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t
 	kprintf("\033[47m");
 	// Foreground black
 	kprintf("\033[30m");
-	// cls :
-	kprintf("\033[2J");
 
 	kprintf("                              \033[31m/!\\ KERNEL PANIC /!\\ \033[47m\033[30m \n");
 	kprintf("--------------------------------------------------------------------------------\n");
@@ -201,6 +199,8 @@ static void kpanic_main_report(uint32_t error_id, uint32_t error_code, process_t
 			kprintf("Unknown exception.\n");
 			GAME_OVER();
 	}
+
+	kprintf("\033[107m\n");
 }
 	
 	
@@ -216,19 +216,12 @@ static void kpanic_handler(uint32_t error_id, uint32_t error_code)
 		}
 	}
 
-	process_t* badboy;
-
-	//XXX: La récupération du stack_ptr est un peu trop moche...
-	uint32_t* stack_ptr;
-	/* récupération du pointeur de pile */
-	asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );
-	
 	intframe* frame;
-	
-	frame = (intframe*)(stack_ptr-27); /* wtf? */
+	GET_INTFRAME(frame);
+	frame = (intframe*)((uint32_t*)frame + 1); // Décallage nécessaire pour error_code.
 	
 	stop_scheduler();	/* On arrête le déroulement des taches durant la gestion du kernel panic */
-	badboy = get_current_process();	/* On récupère le bad boy */
+	process_t* badboy = get_current_process();	/* On récupère le bad boy */
 	
 	asm("sti");			/* Et on tente de revenir au choses normales */
 
