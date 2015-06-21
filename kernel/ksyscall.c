@@ -54,12 +54,11 @@ void syscall_entry()
 	process->sig_interruptable = 0;
 	uint32_t function, param1, param2, param3;
 	syscall_handler_t handler;
-	intframe* frame;
-	
+
 	/* Récupération des données empilées par l'interruption*/
-	uint32_t ebp;
-	asm volatile("mov %%ebp, %0" : "=r" (ebp));
-	frame = (intframe*) (ebp + 8);
+	intframe* frame;
+	GET_INTFRAME(frame);
+	
 	function = frame->eax;
 	param1 = frame->ebx;
 	param2 = frame->ecx;

@@ -224,7 +224,7 @@ void do_schedule()
 	/* On récupere un pointeur de pile pour acceder aux registres empilés
 	 * C'est fait au début pour éviter de toucher à ebp.
 	 * */
-	uint32_t* stack_ptr;
+	intframe* stack_ptr;
 	GET_INTFRAME(stack_ptr);
 
 	/* On met le contexte dans la structure "process"*/
@@ -239,7 +239,7 @@ void do_schedule()
 			/* On regarde si le process a des signaux en attente */
 			if (signal_pending(next) && current == next) {
 				// backup de current pour éviter de mettre dans sigframe de vieilles données.
-				copy_context_current(current, (intframe*)(stack_ptr));
+				copy_context_current(current, stack_ptr);
 			}
 			exec_signal = exec_sighandler(next);
 		} else if (next->state == PROCSTATE_WAITING || next->state == PROCSTATE_SUSPENDED) {
@@ -258,7 +258,7 @@ void do_schedule()
 
 	/* On fait une copie du contexte du processus actuel uniquement si il a déja été lancé */
 	if (current != idle_process && current != next && current->state != PROCSTATE_IDLE) {
-		copy_context_current(current, (intframe*)(stack_ptr));
+		copy_context_current(current, stack_ptr);
 	}
 
 	/* Si le processus courant n'a pas encore commencé son exécution, on le lance */
@@ -384,8 +384,7 @@ void force_immediate_resched() {
 			"push %ds \n\t"
 			"push %es \n\t"
 
-			"push %ebp \n\t"
-			"mov %esp,%ebp \n\t"
+			"push $0 \n\t"
 			"call do_schedule \n"
 			"add $64, %esp \n\t"
 			"fin_force_immediate_resched:"

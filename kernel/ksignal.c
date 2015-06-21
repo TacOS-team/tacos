@@ -148,29 +148,19 @@ SYSCALL_HANDLER3(sys_kill, int pid, int signum, int* ret)
 
 SYSCALL_HANDLER0(sys_sigret)
 {
-	/* 
-	 * Je met un petit trophée ici, ce code a marche du premier coup
-	 */
-	uint32_t* stack_ptr;
-	/* On récupere un pointeur de pile pour acceder aux registres empilés */
-	GET_INTFRAME(stack_ptr);
-
-	sigframe* sframe;
-	intframe* iframe;
-	process_t* current = get_current_process();
-
 	/* On récupère les données empilées par l'interruption */
 	/* Le but ici est de remplacer ces valeurs par celles stockées dans la sigframe, 
 	 * de cette manière l'iret à la fin de l'interruption restaurera le contexte du processus */
-	iframe = (intframe*) (stack_ptr+2); /* XXX le "+4" a été déduis, pas très safe, faudrait chercher pourquoi */
-	
-	/* On récupère les données empilées avant le signal. */
-	
+	intframe* iframe;
+	GET_INTFRAME2(iframe);
+
+	process_t* current = get_current_process();
+
 	/* A la fin du handler, on pop l'adresse de retour, puis on pop eax, 
 	 * esp se retrouve donc à +8 par rapport à la stack frame du signal, 
 	 * on va donc chercher cette frame à esp-8
 	 */	
-	sframe = (sigframe*) (iframe->esp-8);
+	sigframe* sframe = (sigframe*) (iframe->esp-8);
 
 	
 	iframe->eax = sframe->context.eax;

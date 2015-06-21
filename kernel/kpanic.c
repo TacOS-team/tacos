@@ -217,6 +217,8 @@ static void kpanic_handler(uint32_t error_id, uint32_t error_code)
 	}
 
 	process_t* badboy;
+
+	//XXX: La récupération du stack_ptr est un peu trop moche...
 	uint32_t* stack_ptr;
 	/* récupération du pointeur de pile */
 	asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : );

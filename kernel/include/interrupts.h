@@ -84,7 +84,10 @@ typedef struct {
 	
 } intframe;
 
-#define GET_INTFRAME(stack_ptr) {__asm__ __volatile__("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack_ptr) : :"%eax");}
+// +8 car dans le call de la fonction a empilé l'@ de retour et la fonction a empilé ebp.
+#define GET_INTFRAME(stack_ptr) {__asm__ __volatile__("mov %%ebp, %%eax; add $8, %%eax; mov %%eax, %0" : "=m" (stack_ptr) : :"%eax");}
+// à utiliser après un autre appel de fonction :
+#define GET_INTFRAME2(stack_ptr) {__asm__ __volatile__("mov (%%ebp), %%eax; add $8, %%eax; mov %%eax, %0" : "=m" (stack_ptr) : :"%eax");}
 
 typedef void (*interrupt_handler_t)(int interrupt_id);
 
