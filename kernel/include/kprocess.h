@@ -130,7 +130,7 @@ typedef struct process {
 	struct mmap_region* list_regions;
 	struct physical_page_descr *reserved_pages;
 	
-	signal_process_data_t signal_data;
+	signal_process_data_t signal_data; /**< Signaux bloqués / à traiter / handlers associés */
 
 	char *ctrl_tty; /**< Controlling tty. */
 	

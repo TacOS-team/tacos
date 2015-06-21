@@ -29,19 +29,20 @@
 #ifndef _SIGNAL_TYPES_H
 #define _SIGNAL_TYPES_H
 
-#define NSIG		32
+#define NSIG		32 /**< Nombre de signaux au total */
 
-#ifndef SIGTYPES
-#define SIGTYPES
-typedef unsigned long sigset_t;
-typedef void (*sighandler_t)(int);
-#endif
+typedef unsigned long sigset_t; /**< masque de signaux. */
+typedef void (*sighandler_t)(int); /**< type d'un handler de signal. */
 
+/**
+ * Structure définissant les signaux bloqués, ceux en attente et les
+ * handlers associés.
+ */
 typedef struct
 {
-	sigset_t mask;
-	sigset_t pending_set;
-	sighandler_t handlers[NSIG];
+	sigset_t mask; /**< Signaux bloqués. */
+	sigset_t pending_set; /**< Signaux en attente de traitement. */
+	sighandler_t handlers[NSIG]; /**< Handlers configurés pour les signaux. */
 } signal_process_data_t;
 
 /* Définition des signaux (/!\ code aussi dupliqué dans la libc) */
@@ -69,14 +70,14 @@ typedef struct
 #define SIGTTOU		22 /**< Le process en background essaye d'écrire sur le tty. */
 #define SIGURG		23 /**< Urgent data available on socket. */
 #define SIGSYS		30 /**< Bad syscall. */
-#define SIGRTMIN	31
-#define SIGRTMAX	NSIG-1
+#define SIGRTMIN	31 /**< Début plage signaux temps reels */
+#define SIGRTMAX	NSIG-1 /**< Fin plage signaux temps reels */
 // Penser à modifier la liste des noms de signaux dans ksignal.c en cas de modification.
 
 /* Paramètre pour sigprocmask */
-#define SIG_BLOCK	0
-#define SIG_UNBLOCK	1
-#define SIG_SETMASK	2
+#define SIG_BLOCK	0 /**< Valeur pour how indiquant que les signaux indiqués doivent être bloqués. */
+#define SIG_UNBLOCK	1 /**< Valeur pour how indiquant que les signaux indiqués ne doivent pas être bloqués. */
+#define SIG_SETMASK	2 /**< Valeur pour how indiquant que les signaux bloqués doivent être ceux de mask. */
 
 
 #endif

@@ -24,10 +24,9 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Gestion des signaux côté kernel.
  */
 
-/* Kernel */
 #include <gdt.h>
 #include <interrupts.h>
 #include <klog.h>
@@ -47,16 +46,21 @@ const char* signal_names[] = {"???", "SIGHUP", "SIGINT", "SIGQUIT", "SIGILL", "S
 	"SIGPIPE", "SIGALRM", "SIGTERM", "SIGSTKFLT", "SIGCHLD", "SIGCONT", "SIGSTOP",
 	"SIGTSTP", "SIGTTIN", "SIGTTOU", "SIGURG", "SIGSYS", "SIGRTMIN"};
 
+/**
+ * Structure correspondant aux éléments mis sur la stack avant d'appeler le handler.
+ * Permet d'effectuer une sauvegarde du processus avant d'exécuter le handler
+ * du signal. Cela permet à sigret de rétablir son exécution normale.
+ */
 typedef struct {
-	vaddr_t ret_addr;
-	int sig;
-	regs_t context;
-	uint32_t state;
-	sigset_t mask;
-	char retcode[8];
+	vaddr_t ret_addr; /**< Adresse de la fonction de retour (retcode). */
+	int sig; /**< Numéro du signal qui a déclenché l'exécution d'un handler. */
+	regs_t context; /**< Ancien contexte du processus avant exec handler. */
+	uint32_t state; /**< Ancien état du processus. */
+	sigset_t mask; /**< Ancien masque de signaux. */
+	char retcode[8]; /**< Code asm pour appeler sigret. */
 } sigframe;
 
-// Dupliqué de la libc.
+
 static int sigaddset(sigset_t *set, int signum)
 {
 	int ret = -1;
@@ -80,21 +84,15 @@ static int sigdelset(sigset_t *set, int signum)
 }
 
 
-
-
-
-
-/*
- * TODO: gérer SIG_IGN et SIG_DFL 
- */
 SYSCALL_HANDLER3(sys_signal, uint32_t signum, sighandler_t handler, sighandler_t* ret)
 {
 	process_t* current = get_current_process();
 
-	if(signum <= NSIG)
-	{
+	if (signum <= NSIG)	{
+		*ret = current->signal_data.handlers[signum];
 		current->signal_data.handlers[signum] = handler;
-		*ret = handler;
+	} else {
+		*ret = 0;
 	}
 }
 
@@ -103,9 +101,13 @@ SYSCALL_HANDLER3(sys_sigprocmask, uint32_t how, sigset_t* set, sigset_t* oldset)
 	process_t* current = get_current_process();
 	
 	/* On récupère l'ancien set */
-	if(oldset != NULL)
+	if (oldset != NULL)
 		*oldset = current->signal_data.mask;
 	
+	/* Si set est null, alors on fait rien. */
+	if (set == NULL)
+		return;
+
 	/* Et on met à jour le nouveau */
 	switch(how)
 	{
