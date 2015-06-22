@@ -51,27 +51,27 @@
  * Cellule d'une fifo.
  */
 typedef struct _sem_fifo_cell{
-	int pid;
-	struct _sem_fifo_cell* prev;
-	struct _sem_fifo_cell* next;
+	int pid; /**< PID du processus. */
+	struct _sem_fifo_cell* prev; /**< Précédent élément liste chainée. */
+	struct _sem_fifo_cell* next; /**< Prochain élément liste chainée. */
 } sem_fifo_cell;
 
 /**
  * Structure d'une fifo.
  */
 typedef struct {
-	int size;
-	sem_fifo_cell* head;
-	sem_fifo_cell* tail;
+	int size; /**< Nombre d'éléments dans la fifo. */
+	sem_fifo_cell* head; /**< Premier élément. */
+	sem_fifo_cell* tail; /**< Dernier élément. */
 } sem_fifo;
 
 /**
  * Structure définissant une sémaphore.
  */
 typedef struct {
-	int value;
-	uint8_t allocated;
-	sem_fifo fifo;
+	int value; /**< Valeur courante du sémaphore */
+	uint8_t allocated; /**< 1 si ce sémaphore est utilisé */
+	sem_fifo fifo; /**< Liste des processus en attente. */
 } sem_t;
 
 /************************************

@@ -60,7 +60,7 @@
 static clock_t sysclock; /**< Nombre de ticks d'horloge. */
 static time_t systime; /**< Date en secondes. */
 
-time_t boot_systime;
+static time_t boot_systime; /**< Heure du boot de l'os. */
 
 const int _ytab[2][12] = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 },
                            { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }};

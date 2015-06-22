@@ -474,7 +474,6 @@ process_t* create_process(process_init_data_t* init_data, uint8_t isKernel) {
 			isKernel ? (vaddr_t)(init_data->data) : init_data->entry_point,
 			isKernel);
 
-	/* XXX: Création de la table des symboles, il faut la dupliquer dans la structure sinon ça plante */
 	new_proc->symtable = load_symtable(init_data->file);
 
 	return new_proc;

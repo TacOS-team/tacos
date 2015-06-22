@@ -44,10 +44,10 @@
 #define O_CREAT      00000100 /**< Create file if non-existant. */
 #endif
 #ifndef O_EXCL
-#define O_EXCL    00000200 /* not fcntl */
+#define O_EXCL    00000200 /**< Associé à O_CREAT, permet de vérifier qu'il n'existait pas déjà. */
 #endif
 #ifndef O_NOCTTY
-#define O_NOCTTY  00000400 /* not fcntl */
+#define O_NOCTTY  00000400 /**< Empeche le fichier ouvert de devenir le ctrl terminal. */
 #endif
 #ifndef O_TRUNC
 #define O_TRUNC      00001000 /**< Tronque le fichier à une longueur nulle. */
@@ -74,7 +74,7 @@
 #define O_NOFOLLOW   00400000 /**< don't follow links */
 #endif
 #ifndef O_NOATIME
-#define O_NOATIME 01000000
+#define O_NOATIME 01000000 /**< ne met pas à jour l'heure du dernier accès. */
 #endif
 #ifndef O_CLOEXEC
 #define O_CLOEXEC 02000000 /**< set close_on_exec */
