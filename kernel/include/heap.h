@@ -23,7 +23,8 @@
  *
  * @section DESCRIPTION
  *
- * Description de ce que fait le fichier
+ * Tas binaire générique basé sur un tableau. La taille est fixe mais
+ * il suffirait de faire un realloc si nécessaire.
  */
 
 #ifndef _HEAP_H_
@@ -31,7 +32,7 @@
 
 #include <types.h>
 
-typedef int (*cmp_func_type) (void*, void*);
+typedef int (*cmp_func_type) (void*, void*); /**< Type de la fonction de comparaison. */
 
 /**
  * @brief Liste générique.
@@ -46,9 +47,39 @@ typedef struct {
 	int max_elements; 		/**< Nombre maximum d'élements dans le tas */
 } heap_t;
 
+/**
+ * Initialisation du tas.
+ *
+ * @param l Adresse du tas à initialiser.
+ * @param cmp Fonction de comparaison des éléments.
+ * @param elements_size Taille d'un élement.
+ * @param max_elements Nombre d'éléments au maximum contenu dans le tas.
+ */
 void heap_init(heap_t* l, cmp_func_type cmp, size_t elements_size, int max_elements);
+
+/**
+ * Retourne l'élément racine du tas. Attention, l'élément n'est pas dupliqué,
+ * si un nouvel élément prend sa place, ce sera l'adresse de ce nouvel élément.
+ *
+ * @param l Adresse du tas.
+ *
+ * @return un pointeur vers le premier élément du tas.
+ */
 void* heap_top(heap_t *l);
+
+/**
+ * Supprime l'élément racine du tas.
+ *
+ * @param l Adresse du tas.
+ */
 void heap_remove(heap_t *l);
+
+/**
+ * Ajoute un élément au tas.
+ *
+ * @param l Adresse du tas.
+ * @param element Adresse de l'élément à ajouter.
+ */
 void heap_push(heap_t *l, void* element);
 
 #endif
