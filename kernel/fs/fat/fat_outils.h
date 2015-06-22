@@ -80,6 +80,11 @@ void fat_encode_long_file_name(char * name, lfn_entry_t * long_file_name, int n_
 
 /**
  * Décode un nom long.
+ *
+ * @param name Buffer de sortie contenant le nom long.
+ * @param long_file_name Tableau de lfn_entry_t.
+ *
+ * @return name en cas de succès.
  */
 char * fat_decode_long_file_name(char * name, lfn_entry_t * long_file_name);
 time_t convert_datetime_fat_to_time_t(fat_date_t *date, fat_time_t *time);
