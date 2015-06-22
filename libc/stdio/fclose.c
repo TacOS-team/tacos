@@ -34,8 +34,8 @@
 int fclose(FILE* stream)
 {
 	fflush(stream);
-	if (stream->_IO_write_base != NULL) {
-		free(stream->_IO_write_base);
+	if (stream->_IO_buf_base != NULL) {
+		free(stream->_IO_buf_base);
 	}
 	close(stream->_fileno);
 	
