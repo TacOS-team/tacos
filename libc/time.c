@@ -81,10 +81,10 @@ static const int _ytab[2][12] = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 
 
 char *asctime(const struct tm *timeptr)
 {
-     static const char wday_name[7][3] = {
+     static const char wday_name[7][4] = {
           "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
      };
-     static const char mon_name[12][3] = {
+     static const char mon_name[12][4] = {
           "Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
      };
@@ -98,7 +98,7 @@ char *asctime(const struct tm *timeptr)
           1900 + timeptr->tm_year);
 	*/
 		if (timeptr) {
-			sprintf(result, "%.3s %.3s %d %d:%d:%d %d\n",
+			sprintf(result, "%s %s %d %d:%d:%d %d\n",
           wday_name[timeptr->tm_wday],
           mon_name[timeptr->tm_mon],
           timeptr->tm_mday, timeptr->tm_hour,
