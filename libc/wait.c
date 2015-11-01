@@ -34,15 +34,12 @@
 #include <stdio.h>
 
 pid_t wait() {
-	waitpid(-1);
-//XXX: devrait juste faire : waitpid(-1, &status, 0);
-//	sigset_t set;
-//	sigfillset(&set);
-//	sigdelset(&set, SIGCHLD);
-//	sigsuspend(&set);
-	return -1;
+	return waitpid(-1);
+//XXX: devrait faire : waitpid(-1, &status, 0);
 }
 
-void waitpid(pid_t pid) {
-	syscall(SYS_WAITPID, (uint32_t) pid, (uint32_t)NULL, (uint32_t)NULL);
+pid_t waitpid(pid_t pid) {
+	int ret;
+	syscall(SYS_WAITPID, (uint32_t) pid, (uint32_t)&ret, (uint32_t)NULL);
+	return ret;
 }

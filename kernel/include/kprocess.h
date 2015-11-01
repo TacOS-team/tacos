@@ -254,8 +254,17 @@ SYSCALL_HANDLER3(sys_exec, char *cmdline, char **environ, int *retval);
  * @brief Bloque le process courant jusqu'à ce que le processus identifié par pid se termine.
  *
  * @param pid PID du process à attendre.
+ * @param ret valeur de retour.
  */
-SYSCALL_HANDLER1(sys_waitpid, int pid);
+SYSCALL_HANDLER2(sys_waitpid, int pid, int* ret);
+
+/**
+ * @brief Bloque le process courant jusqu'à ce que le processus identifié par pid se termine.
+ *
+ * @param pid PID du process à attendre.
+ * @return valeur de retour.
+ */
+int waitpid(int pid);
 
 /**
  * @brief Initialisation du proc FS.

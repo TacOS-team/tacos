@@ -38,6 +38,7 @@
 #include <drivers/sock.h>
 #include <kmalloc.h>
 #include <kfcntl.h>
+#include <kprocess.h>
 
 /* Includes des fs */
 #include <fs/devfs.h>
@@ -151,5 +152,9 @@ int init(int argc __attribute__ ((unused)), char** argv __attribute__ ((unused))
 	int ret;
 	sys_exec("/tacos/bin/getty /dev/tty0", environ, &ret);
 	
+	// Acknowledge the death of all its children.
+	while (waitpid(-1) > -1);
+
+	klog("bye.");
 	return 0;
 }

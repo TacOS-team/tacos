@@ -516,6 +516,38 @@ static void remove_child(process_t *current, process_t *child) {
 	}
 }
 
+int waitpid(int pid) {
+	process_t* current = get_current_process();
+	if (pid == -1) {
+		if (current->nb_children == 0) {
+			klog("no children left");
+			return -1;
+		}
+		ksemP(current->sem_wait_child);
+		//XXX: get the pid of the child...
+		return 0;
+	} else if (pid > 0) {
+		process_t* proc = find_process(pid);
+		if (proc) {
+			if (proc->ppid != current->pid) {
+				klog("not a child");
+				return -1;
+			}
+			if (proc->state == PROCSTATE_TERMINATED) {
+				return -1;
+			}
+
+			ksemP(proc->sem_wait);
+			return proc->pid;
+		} else {
+			klog("waitpid sur un process non trouvé.");
+			return -1;
+		}
+	} else {
+		klog("waitpid <= 0 non supporté pour l'instant.");
+		return -1;
+	}
+}
 
 /*
  * SYSCALL
@@ -538,16 +570,20 @@ SYSCALL_HANDLER1(sys_exit,uint32_t ret_value __attribute__ ((unused)))
 	process_t* parent = find_process(current->ppid);
 	ksemV(parent->sem_wait_child);
 
-	remove_child(parent, current);
-
 	// Maj PPID des fils
 	int i;
 	for (i = 0; i < current->nb_children; i++) {
-		current->children[i]->ppid = current->ppid;
+		process_t *initproc = find_process(1);
+		initproc->children[initproc->nb_children++] = current;
+		current->children[i]->ppid = 1;
 	}
+
+	// Retire ce process de la liste de ses parents.
+	remove_child(parent, current);
 
 	release_page_frames(current);
 	scheduler_delete_process(current->pid);
+	//XXX: devrait être fait par le parent du process lors du wait? zombie en attendant.
 	delete_process(current->pid);
 
 	force_reschedule();
@@ -684,20 +720,6 @@ process_t* sys_proc_list(uint32_t action)
 	return ret;
 }
 
-SYSCALL_HANDLER1(sys_waitpid, int pid) {
-	if (pid == -1) {
-		process_t* current = get_current_process();
-		ksemP(current->sem_wait_child);
-	} else if (pid > 0) {
-		process_t* proc = find_process(pid);
-		if (proc) {
-			if (proc->state != PROCSTATE_TERMINATED) {
-				ksemP(proc->sem_wait);
-			}
-		} else {
-			klog("waitpid sur un process non trouvé.");
-		}
-	} else {
-		klog("waitpid <= 0 non supporté pour l'instant.");
-	}
+SYSCALL_HANDLER2(sys_waitpid, int pid, int *ret) {
+	*ret = waitpid(pid);
 }
