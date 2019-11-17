@@ -185,6 +185,7 @@ char *readline(const char *prompt)
 		case 13:
 			end = 1;
 			printf("\n");
+			/* Falls Through. */
 		case 2: /*C^b*/
 		case KLEFT:
 			move_left(&pos, &cur_col, colonnes);
@@ -239,6 +240,7 @@ char *readline(const char *prompt)
 					count = pos = 0;
 				}
 			}
+			break;
 		case KDEL:
 			delete(buf, pos, cur_col, colonnes, &count);
 			break;

@@ -156,6 +156,7 @@ void sprintf(char *str, const char *format, ...) {
 					itoa(buf, c, va_arg(arg, int));
 				}
 				p = buf;
+				/* Falls through. */
 			case 's':
 				if (p == NULL) {
 					p = va_arg(arg, char*);
