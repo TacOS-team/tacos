@@ -2,7 +2,7 @@ ENTRY (start)
 
 SECTIONS{
     /* Notre kernel est chargé à cette adresse (juste après la partie réservée au BIOS) : */
-    . = 0x00100000;
+    . = 0x00200000;
     /* Débug chargement (load_addr) */
      __b_load = .;
 
