@@ -1,4 +1,4 @@
-INCLUDES = -I../../include/ -I../libc/include/ -I.
+INCLUDES = -I../tacos/include/ -I../libc/include/ -I.
 CFLAGS=-O3 -W -Wall $(WE) -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 SRCS = *.c
 

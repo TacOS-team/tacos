@@ -5,7 +5,7 @@ SUBDIRS=mishell utils tests
 #SUBDIRS=mishell utils gui gui/guacamole gui/pron
 LIBS=../lib/libtsock.a ../lib/libc.a ../lib/libtacos.a ../lib/libstl.a libutils.a
 LDFLAGS=-L./
-INCLUDES=-I../include/ -I../libs/libc/include/ -I../libs/tsock/
+INCLUDES=-I../libs/tacos/include/ -I../libs/libc/include/ -I../libs/tsock/
 CPPINCLUDES=-I../libs/stl/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -fno-builtin -I`pwd` -m32 -fexec-charset=iso-8859-1  -mno-sse -mno-mmx
 CPPFLAGS=-W -Wall -g -nostdlib -nostdinc -fno-builtin -I`pwd` -m32 -fno-rtti -fno-exceptions

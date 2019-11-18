@@ -1,4 +1,4 @@
-INCLUDES=-I../../include/  -I../include/
+INCLUDES=-I../../libs/tacos/include/  -I../include/
 CFLAGS=-W -Wall $(WE) -g -nostdlib -nostdinc -fno-builtin -I`pwd` -m32  -mno-sse -mno-mmx
 
 SRCS=*/*.c
