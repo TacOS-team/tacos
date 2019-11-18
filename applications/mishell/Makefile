@@ -1,5 +1,5 @@
 OBJ=mishell
-LIBS=../../lib/libc.a ../../lib/libsystem.a
+LIBS=../../lib/libc.a ../../lib/libtacos.a
 INCLUDES=-I../../include/ -I../../libs/libc/include/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32
 LD=ld -melf_i386 -Ttext=40000000 --entry=start_main

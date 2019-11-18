@@ -1,5 +1,5 @@
 OBJ=tests
-LIBS=../../lib/libtsock.a ../../lib/libc.a ../../lib/libsystem.a ../../lib/libstl.a ../libutils.a
+LIBS=../../lib/libtsock.a ../../lib/libc.a ../../lib/libtacos.a ../../lib/libstl.a ../libutils.a
 LDFLAGS=-L./
 INCLUDES=-I../../include/ -I../../libs/libc/include/ -I../../system/include/ -I../../libs/tsock/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -fno-builtin -I`pwd` -m32 -fexec-charset=iso-8859-1  -mno-sse -mno-mmx
