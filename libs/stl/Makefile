@@ -1,4 +1,4 @@
-CPPINCLUDES=-I../../include/ -I../../libc/include/ -I.
+CPPINCLUDES=-I../../include/ -I../libc/include/ -I.
 CPPFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32 -fno-rtti -fno-exceptions
 
 SRCS=*.cpp

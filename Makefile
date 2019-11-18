@@ -25,8 +25,8 @@ export CFLAGS=-native $(WE) -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodef
 LDLIBS=-lc -ldrivers -z nodefaultlib -lsystem -lstl
 LDLIBSKERNEL=-ldrivers -z nodefaultlib -lsystem
 LDFLAGS=-Llib/
-SUBDIRS = kernel kernel/drivers libc system libs/stl libs/tsock libs/tacos applications
-#SUBDIRS = kernel kernel/drivers libc system libs/stl libs/tsock libs/tacos libs/pronlib libs/libcolor libs/libjpeg applications
+SUBDIRS = kernel kernel/drivers libs/libc system libs/stl libs/tsock libs/tacos applications
+#SUBDIRS = kernel kernel/drivers libs/libc system libs/stl libs/tsock libs/tacos libs/pronlib libs/libcolor libs/libjpeg applications
 
 all: directories kernel.bin
 

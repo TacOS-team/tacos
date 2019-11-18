@@ -1,4 +1,4 @@
-INCLUDES = -I../../include/ -I../../libc/include/ -I../libcolor/ -I../stl/ -I../tsock/ -I.
+INCLUDES = -I../../include/ -I../libc/include/ -I../libcolor/ -I../stl/ -I../tsock/ -I.
 CXXFLAGS = -W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32 -fpermissive -fno-rtti -fno-exceptions
 SRCS = *.cpp
 

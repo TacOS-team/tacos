@@ -1,5 +1,5 @@
 LIBS=../../lib/libc.a ../../lib/libsystem.a
-INCLUDES=-I../../include/ -I../../libc/include/ -Iinclude/
+INCLUDES=-I../../include/ -I../../libs/libc/include/ -Iinclude/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32 -D_BSD_SOURCE
 CC=gcc $(INCLUDES) 
 LD=ld -melf_i386 -Ttext=40000000 --entry=start_main
