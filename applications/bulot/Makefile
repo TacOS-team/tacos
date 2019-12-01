@@ -1,4 +1,4 @@
-LIBS=../../lib/libc.a ../../lib/libsystem.a
+LIBS=../../lib/libc.a
 INCLUDES=-I../../include/ -I../../libs/libc/include/ -Iinclude/
 CFLAGS=-W -Wall -g -nostdlib -nostdinc -nostartfiles -nodefaultlibs -fno-builtin -I`pwd` -m32 -D_BSD_SOURCE
 CC=gcc $(INCLUDES) 
