@@ -96,14 +96,16 @@ int exec_builtin_cmd(const char* cmd)
 		s = strtok(NULL, " ");
 	}
 
-	func_ptr func = find_builtin_cmd(argv[0]);
 	int ret = -1;
-	if(func != NULL)
-	{
-		char *buf = malloc(10);
-		sprintf(buf, "?=%d", func(argc, argv));
-		putenv(buf);
-		ret = 0;
+	if (argc > 0) {
+		func_ptr func = find_builtin_cmd(argv[0]);
+		if(func != NULL)
+		{
+			char *buf = malloc(10);
+			sprintf(buf, "?=%d", func(argc, argv));
+			putenv(buf);
+			ret = 0;
+		}
 	}
 	free(name);
 	return ret;

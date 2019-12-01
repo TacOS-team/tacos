@@ -429,6 +429,7 @@ char *strtok(char *str, const char *delim) {
 		return NULL;
 	}
 
+	// Remove all delimiters at the begin of the string:
 	int j = 0;
 	while (delim[j] != '\0') {
 		if (current_str[0] == delim[j]) {
@@ -439,6 +440,7 @@ char *strtok(char *str, const char *delim) {
 		j++;
 	}
 
+	// return a part of current_str if any delimiter found
 	int i = 0;
 	while (current_str[i] != '\0') {
 		int j = 0;
@@ -454,7 +456,13 @@ char *strtok(char *str, const char *delim) {
 		i++;
 	}
 
-	ret = current_str;
+	// if the string isn't empty, return it
+	if (i > 0) {
+		ret = current_str;
+	} else {
+		ret = NULL;
+	}
+
 	current_str = NULL;
 
 	return ret;
