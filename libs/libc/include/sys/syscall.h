@@ -29,6 +29,8 @@
 #ifndef _SYSCALL_H_
 #define _SYSCALL_H_
 
+#include <sys/types.h>
+
 #define SYS_EXIT 0				/**< Terminer le processus. */
 #define SYS_GETPID 1			/**< Obtient le PID du processus. */
 #define SYS_GETPPID 2 		/**< Obtient le PPID du processus. */
@@ -69,5 +71,7 @@
 #define SYS_SYMLINK 39			/**< Création d'un lien symbolique. */
 #define SYS_CHDIR 40			/**< Change le dossier courant. */
 #define SYS_MMAP 41				/**< Permet d'établir/supprimer un mapping mémoire d'un fichier. */
+
+void syscall(uint32_t func, uint32_t param1, uint32_t param2, uint32_t param3);
 
 #endif
