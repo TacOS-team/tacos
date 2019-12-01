@@ -196,7 +196,7 @@ int main() {
 	ioctl(vga_fd, SETMODE, (void*)vga_mode_320x200x256); 
 	init();
 	mousestate_t data;
-	int prevx,prevy;
+	int prevx = 0, prevy = 0;
 	
 	float theta = 0.0f;
 	float phi = 0.0f;
