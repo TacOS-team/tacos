@@ -7,7 +7,7 @@ LIBS=../lib/libtsock.a ../lib/libc.a ../lib/libtacos.a ../lib/libstl.a libutils.
 LDFLAGS=-L./
 INCLUDES=-I../libs/tacos/include/ -I../libs/libc/include/ -I../libs/tsock/
 CPPINCLUDES=-I../libs/stl/
-CFLAGS=-W -Wall -g -nostdlib -nostdinc -fno-builtin -I`pwd` -m32 -fexec-charset=iso-8859-1  -mno-sse -mno-mmx
+CFLAGS=-W -Wall -g -nostdlib -nostdinc -fno-builtin -I`pwd` -m32 -mno-sse -mno-mmx
 CPPFLAGS=-W -Wall -g -nostdlib -nostdinc -fno-builtin -I`pwd` -m32 -fno-rtti -fno-exceptions
 LD=ld -Ttext=40000000 --entry=start_main -melf_i386
 BIN=../bin/
